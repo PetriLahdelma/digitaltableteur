@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400&display=swap");
+
+.home {
+  text-align: left;
+  padding: 24px;
+}
+
+.grid-item-pink {
+  background-color: #f205c5; /* Fallback for browsers that don't support CSS variables */
+  background-color: var(--accent-pink);
+  height: 100px;
+}
+
+.grid-item-purple {
+  background-color: #812eff; /* Fallback */
+  background-color: var(--accent-purple);
+  height: 100px;
+}
+
+.grid-item-teal {
+  background-color: #85b5bd; /* Fallback */
+  background-color: var(--accent-teal);
+  height: 100px;
+}
+
+.grid-item-violet {
+  background-color: #bc6dff; /* Fallback */
+  background-color: var(--accent-violet);
+  height: 100px;
+}
+
+.grid-item-cyan {
+  background-color: #71efff; /* Fallback */
+  background-color: var(--accent-cyan);
+  height: 100px;
+}
+
+.grid-item-yellow {
+  background-color: #f2e274; /* Fallback */
+  background-color: var(--accent-yellow);
+  height: 100px;
+}
+
+.grid-item-blank {
+  background-color: transparent;
+  height: 100px;
+}
+
+h2 {
+  font-family: var(--primary-heading-font, "Times New Roman"), serif;
+  font-size: 8rem;
+  font-weight: 300;
+}
+
+.home p {
+  font-family: var(--primary-body-font);
+  font-size: 8rem;
+  color: var(--main-body-copy-color, #00f);
+  text-transform: uppercase;
+}

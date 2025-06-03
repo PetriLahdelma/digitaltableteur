@@ -1,0 +1,16 @@
+:root {
+  --main-body-copy-color: #00f;
+  --primary-body-font: "Moderat-Regular", sans-serif;
+  --secondary-body-font: "TiemposText-Regular", serif;
+
+  --primary-heading-font: "TiemposText-Regular", serif font-weight: 300;
+  --secondary-heading-font: "Moderat-Regular", serif font-weight: 400;
+
+  /* Accent colors */
+  --accent-pink: #f205c5;
+  --accent-purple: #812eff;
+  --accent-teal: #85b5bd;
+  --accent-violet: #bc6dff;
+  --accent-cyan: #71efff;
+  --accent-yellow: #f2e274;
+}

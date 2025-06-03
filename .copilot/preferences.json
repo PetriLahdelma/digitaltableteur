@@ -1,0 +1,6 @@
+{
+  "dimensionRule": "Always use values divisible by 2 (e.g., 8, 16, 24, 32, etc.)",
+  "unitPreference": "Prefer ems or rems where possible",
+  "cssClassNamingConvention": "kebab-case",
+  "commentRule": "Do not add comments to code unless explicitly requested"
+}

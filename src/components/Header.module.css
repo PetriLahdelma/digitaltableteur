@@ -1,0 +1,22 @@
+.header {
+  color: #00f;
+  padding: 32px;
+}
+
+header h1 {
+  font-family: var(--primary-body-font, "Moderat-Regular"), serif;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+.nav a {
+  font-family: var(--primary-body-font, "Moderat-Regular"), serif;
+  color: #00f;
+  text-decoration: none;
+}
