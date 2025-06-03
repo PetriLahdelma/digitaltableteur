@@ -1,0 +1,16 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  color: #00f;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-family: "Moderat-Regular";
+  color: #00f;
+}
