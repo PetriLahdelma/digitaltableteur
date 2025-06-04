@@ -8,12 +8,13 @@ const ProgressMessage = () => {
       position: 'fixed',
       top: 0,
       width: '100%',
+      height: '100%',
       backgroundColor: '#ffcc00',
       textAlign: 'center',
       padding: '10px',
       zIndex: 1000,
     }}>
-      <p>Site is currently under development. Stay tuned!</p>
+      <p style={{ verticalAlign: 'middle' }}>Site is currently under development. Stay tuned!</p>
     </div>
   );
 };
