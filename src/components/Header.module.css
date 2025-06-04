@@ -1,4 +1,8 @@
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: transparent;
   color: #00f;
   padding: 32px;
 }
@@ -19,4 +23,8 @@ header h1 {
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
   color: #00f;
   text-decoration: none;
+}
+
+ul {
+  padding-inline-start: 0;
 }
