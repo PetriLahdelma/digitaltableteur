@@ -1,4 +1,8 @@
 const ProgressMessage = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return null; // Do not show the message in production
+  }
+
   return (
     <div style={{
       position: 'fixed',
