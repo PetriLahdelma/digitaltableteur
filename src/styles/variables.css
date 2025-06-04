@@ -1,9 +1,9 @@
 :root {
   --main-body-copy-color: #00f;
   --primary-body-font: "Moderat-Regular", sans-serif;
-  --secondary-body-font: "TiemposText-Regular", serif;
+  --secondary-body-font: "TiemposHeadline-Regular", serif;
 
-  --primary-heading-font: "TiemposText-Regular", serif font-weight: 300;
+  --primary-heading-font: "TiemposHeadline-Light", serif font-weight: 500;
   --secondary-heading-font: "Moderat-Regular", serif font-weight: 400;
 
   /* Accent colors */
