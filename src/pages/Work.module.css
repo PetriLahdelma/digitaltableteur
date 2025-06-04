@@ -2,3 +2,69 @@
   text-align: center;
   padding: 20px;
 }
+
+.work h1 {
+  font-family: var(--primary-heading-font, "Times New Roman"), serif;
+  font-size: 14rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.workPage {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #fff;
+  transition: transform 0.5s cubic-bezier(0.25, 1.25, 0.5, 1);
+}
+
+/* Added keyboard navigation styles */
+:focus-visible {
+  outline: none;
+}
+
+.workPage:focus-visible {
+  scroll-behavior: smooth;
+}
+
+.section1 {
+  background-color: #f205c5;
+}
+
+.section2 {
+  background-color: #812eff;
+}
+
+.section3 {
+  background-color: #85b5bd;
+}
+
+.section4 {
+  background-color: #bc6dff;
+}
+
+.section5 {
+  background-color: #71efff;
+}
+
+.section6 {
+  background-color: #f2e274;
+}
+
+.section7 {
+  background-color: #333;
+}
+
+.section8 {
+  background-color: #00f;
+}
