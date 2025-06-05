@@ -1,4 +1,4 @@
-// src/components/UnderDevelopment.tsx
+// src/pages/UnderDevelopment.tsx
 const UnderDevelopment = () => {
   if (process.env.NODE_ENV !== 'production') {
     return null; // Do not show in development
