@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+    _ _      _ _        _ _        _    _     _                
+ __| (_)__ _(_) |_ __ _| | |_ __ _| |__| |___| |_ ___ _  _ _ _ 
+/ _` | / _` | |  _/ _` | |  _/ _` | '_ \ / -_)  _/ -_) || | '_|
+\__,_|_\__, |_|\__\__,_|_|\__\__,_|_.__/_\___|\__\___|\_,_|_|  
+       |___/                                                   
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Digital Tableteur
 
-## Available Scripts
+Digital Tableteur is a React application. Below you'll find how to run the project and a quick overview of the folder structure.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+Install dependencies with:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+npm ci
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Run the development server
 
-### `npm test`
+```bash
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Open `http://localhost:3000` in your browser. The app automatically reloads as you edit files.
 
-### `npm run build`
+### Run Storybook
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm run storybook
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This will start Storybook at `http://localhost:6006` so you can browse the UI components.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Build for production
 
-### `npm run eject`
+```bash
+npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The optimized output is placed in the `build` folder.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Folder overview
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **src/** – application source code
+- **public/** – static assets and the HTML template
+- **.storybook/** – Storybook configuration files
+- **build/** – compiled production build (generated after running `npm run build`)
+- **node_modules/** – project dependencies installed via npm
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You can read the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started) and the [React documentation](https://reactjs.org/) for more details.
