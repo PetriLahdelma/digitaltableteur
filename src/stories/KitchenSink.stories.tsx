@@ -50,7 +50,7 @@ export const AllComponents = () => (
                 display: "grid",
                 gridTemplateColumns: name === "Button" ? "repeat(5, 1fr)" : "repeat(3, 1fr)",
                 gap: name === "Button" ? "1rem" : "3rem", /* Updated gap for Button grid */
-                maxWidth: "900px",
+                maxWidth: "var(--size-width-lg)",
                 margin: "0 auto",
                 textAlign: "left", /* Align nested grids to the left */
               }}

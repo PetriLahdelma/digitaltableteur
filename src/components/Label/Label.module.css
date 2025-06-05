@@ -4,20 +4,20 @@
   display: flex;
   align-items: center;
   gap: 0.25rem; /* 8px */
-  color: #5e5e5e;
+  color: var(--color-gray);
 }
 
 .label.disabled {
-  color: #909090;
+  color: var(--color-muted-light);
   cursor: not-allowed;
 }
 
 .required {
-  color: #dc3545;
+  color: var(--color-error);
 }
 
 .tooltip {
   font-size: 0.875rem; /* 14px */
-  color: #6c757d;
+  color: var(--color-muted);
   margin-left: 0.5rem; /* 8px */
 }

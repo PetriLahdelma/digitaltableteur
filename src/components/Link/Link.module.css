@@ -25,6 +25,6 @@
 
 .link.disabled {
   pointer-events: none;
-  color: gray;
+  color: var(--color-gray-medium);
   opacity: 0.5;
 }
