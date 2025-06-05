@@ -1,0 +1,57 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: "Moderat", sans-serif;
+}
+
+.input {
+  padding: 0.5rem;
+  margin-block-start: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-family: "Moderat", sans-serif;
+  transition: border-color 0.3s;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+  border-width: 1px;
+  outline: 1px solid #007bff;
+  box-sizing: border-box;
+}
+
+.error {
+  border-color: #dc3545;
+  background-color: #dfbdbc;
+}
+
+.errorMessage {
+  font-family: "Moderat", sans-serif;
+  font-size: 0.875rem;
+  color: #d9534f;
+  margin-top: 0.5rem;
+}
+
+.input.error::placeholder {
+  color: #dc3545; /* Error color for placeholder */
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  background-color: #d8d8d8;
+}
+
+.input:disabled::placeholder {
+  color: #858585;
+}

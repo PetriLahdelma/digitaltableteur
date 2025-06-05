@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   width: 100%;
-  grid-auto-rows: minmax(100px, auto);
+  grid-auto-rows: minmax(6.25rem, auto); /* Converted 100px to rem */
 }
 
 /* Example classes for nested grids */
@@ -16,6 +16,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  padding: 1rem; /* Converted 16px to rem */
 }
 
 /* Added support for spanning */

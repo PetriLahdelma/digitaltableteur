@@ -1,0 +1,55 @@
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: "Moderat", sans-serif;
+}
+
+.select {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #c0c0c0;
+  border-radius: 0.25rem;
+  background: white;
+  appearance: none; /* Hide native arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select:focus {
+  border: 1px solid #007bff;
+  outline: 1px solid #007bff;
+}
+
+.select:disabled {
+  background-color: #e0e0e0;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.disabled {
+  color: #6c757d;
+}
+
+.selectWrapper {
+  position: relative;
+  display: inline-block;
+  width: 320px;
+}
+
+.chevronIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #222;
+  z-index: 1;
+}
