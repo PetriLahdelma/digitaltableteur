@@ -28,5 +28,29 @@ Checked.args = {
 export const Indeterminate = Template.bind({});
 Indeterminate.args = {
   label: "Indeterminate Checkbox",
+  checked: false,
   indeterminate: true,
+};
+
+export const TriState = () => {
+  const [checked, setChecked] = React.useState(false);
+  const [indeterminate, setIndeterminate] = React.useState(true);
+
+  const handleChange = (nextChecked: boolean) => {
+    if (indeterminate) {
+      setChecked(true);
+      setIndeterminate(false);
+    } else {
+      setChecked(nextChecked);
+    }
+  };
+
+  return (
+    <Checkbox
+      label="Tri-state Checkbox"
+      checked={checked}
+      indeterminate={indeterminate}
+      onChange={handleChange}
+    />
+  );
 };
