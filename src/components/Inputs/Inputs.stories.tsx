@@ -20,7 +20,7 @@ export default {
 } as Meta;
 
 const Template: StoryFn<typeof Input> = (args) => (
-  <div style={{ maxWidth: "320px" }}>
+  <div style={{ maxWidth: "var(--size-width-md)" }}>
     <Input {...args} />
   </div>
 );

@@ -1,6 +1,4 @@
-:root {
-  --main-body-copy-color: #00f;
-}
+@import "./styles/variables.css";
 
 body {
   margin: 0;
