@@ -12,12 +12,12 @@ export interface CheckboxProps {
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    { label, showLabel = true, checked, indeterminate, onChange },
+    { label, showLabel = true, checked, indeterminate = false, onChange },
     ref
   ) => {
     useEffect(() => {
       if (ref && "current" in ref && ref.current) {
-        ref.current.indeterminate = indeterminate || false;
+        ref.current.indeterminate = indeterminate;
       }
     }, [indeterminate, ref]);
 
@@ -26,12 +26,16 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <input
           type="checkbox"
           ref={ref}
-          className={`${styles.checkbox} ${indeterminate ? styles.indeterminate : ""}`}
-          checked={checked && !indeterminate}
-          onChange={(e) => {
-            const isChecked = e.target.checked;
+          className={styles.checkbox}
+          checked={checked}
+          aria-checked={indeterminate ? "mixed" : checked}
+          onChange={() => {
             if (onChange) {
-              onChange(isChecked);
+              if (indeterminate) {
+                onChange(true);
+              } else {
+                onChange(!checked);
+              }
             }
           }}
         />
