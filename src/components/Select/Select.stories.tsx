@@ -14,7 +14,7 @@ export default {
 } as Meta;
 
 const Template: StoryFn<typeof Select> = (args) => (
-  <div style={{ maxWidth: "320px" }}>
+  <div style={{ maxWidth: "var(--size-width-md)" }}>
     <Select {...args} />
   </div>
 );

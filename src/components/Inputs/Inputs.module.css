@@ -15,8 +15,8 @@
   padding: 0.5rem;
   margin-block-start: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
   font-family: "Moderat", sans-serif;
   transition: border-color 0.3s;
   height: 36px;
@@ -24,34 +24,34 @@
 }
 
 .input:focus {
-  border-color: #007bff;
+  border-color: var(--color-primary);
   outline: none;
   border-width: 1px;
-  outline: 1px solid #007bff;
+  outline: 1px solid var(--color-primary);
   box-sizing: border-box;
 }
 
 .error {
-  border-color: #dc3545;
-  background-color: #dfbdbc;
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
 }
 
 .errorMessage {
   font-family: "Moderat", sans-serif;
   font-size: 0.875rem;
-  color: #d9534f;
+  color: var(--color-error-text);
   margin-top: 0.5rem;
 }
 
 .input.error::placeholder {
-  color: #dc3545; /* Error color for placeholder */
+  color: var(--color-error); /* Error color for placeholder */
 }
 
 .input:disabled {
   cursor: not-allowed;
-  background-color: #d8d8d8;
+  background-color: var(--color-disabled-bg-light);
 }
 
 .input:disabled::placeholder {
-  color: #858585;
+  color: var(--color-disabled-placeholder);
 }

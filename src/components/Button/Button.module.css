@@ -4,7 +4,7 @@
   justify-content: center;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   height: 2.5rem;
@@ -12,44 +12,44 @@
 }
 
 .button.primary {
-  background-color: #007bff;
+  background-color: var(--color-primary);
   color: white;
   border: none;
 }
 
 .button.secondary {
   background-color: transparent;
-  color: #007bff;
-  border: 0.125rem solid #007bff;
+  color: var(--color-primary);
+  border: 0.125rem solid var(--color-primary);
 }
 
 .button.tertiary {
   background-color: transparent;
-  color: #007bff;
+  color: var(--color-primary);
   border: none;
 }
 
 .button.error {
-  background-color: #dc3545;
+  background-color: var(--color-error);
   color: white;
   border: none;
 }
 
 .button.success {
-  background-color: #28a745;
+  background-color: var(--color-success);
   color: white;
   border: none;
 }
 
 .button.info {
-  background-color: #17a2b8;
+  background-color: var(--color-info);
   color: white;
   border: none;
 }
 
 .button:disabled {
-  background-color: #e0e0e0;
-  color: #6c757d;
+  background-color: var(--color-disabled-bg);
+  color: var(--color-muted);
   cursor: not-allowed;
 }
 
