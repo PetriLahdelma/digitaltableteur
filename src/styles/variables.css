@@ -15,4 +15,38 @@
   --accent-violet: #bc6dff;
   --accent-cyan: #71efff;
   --accent-yellow: #f2e274;
+
+  /* Greyscale palette */
+  --color-dark: #222;
+  --color-gray-dark: #333;
+  --color-gray: #5e5e5e;
+  --color-muted: #6c757d;
+  --color-muted-light: #909090;
+  --color-border: #c0c0c0;
+  --color-border-light: #ccc;
+  --color-disabled-bg: #e0e0e0;
+  --color-disabled-bg-light: #d8d8d8;
+  --color-disabled-placeholder: #858585;
+  --color-gray-medium: #666;
+  --color-light-bg: #f9f9f9;
+
+  /* Functional colors */
+  --color-primary: #007bff;
+  --color-success: #28a745;
+  --color-info: #17a2b8;
+  --color-error: #dc3545;
+  --color-error-bg: #dfbdbc;
+  --color-error-text: #d9534f;
+
+  /* Other colors */
+  --color-react: #61dafb;
+  --color-header-bg: #282c34;
+
+  /* Sizing */
+  --radius-sm: 2px;
+  --radius-md: 0.25rem;
+  --radius-lg: 8px;
+  --size-width-md: 320px;
+  --size-width-lg: 900px;
+  --size-width-form: 600px;
 }

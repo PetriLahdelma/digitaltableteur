@@ -38,11 +38,11 @@ section {
 }
 
 .section1 {
-  background-color: #f205c5;
+  background-color: var(--accent-pink);
 }
 
 .section2 {
-  background-color: #812eff;
+  background-color: var(--accent-purple);
 }
 
 .section3 {
@@ -59,23 +59,23 @@ section {
 }
 
 .section4 {
-  background-color: #bc6dff;
+  background-color: var(--accent-violet);
 }
 
 .section5 {
-  background-color: #71efff;
+  background-color: var(--accent-cyan);
 }
 
 .section6 {
-  background-color: #f2e274;
+  background-color: var(--accent-yellow);
 }
 
 .section7 {
-  background-color: #333;
+  background-color: var(--color-gray-dark);
 }
 
 .section8 {
-  background-color: #00f;
+  background-color: var(--main-body-copy-color);
 }
 
 ul {

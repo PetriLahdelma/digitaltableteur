@@ -3,7 +3,7 @@
   bottom: 0;
   width: 100%;
   background-color: transparent;
-  color: #00f;
+  color: var(--main-body-copy-color);
   text-align: center;
   padding: 1rem;
 }
@@ -12,5 +12,5 @@ footer p {
   margin: 0;
   font-size: 1rem;
   font-family: "Moderat-Regular";
-  color: #00f;
+  color: var(--main-body-copy-color);
 }

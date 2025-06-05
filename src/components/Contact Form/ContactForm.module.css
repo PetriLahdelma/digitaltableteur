@@ -1,9 +1,9 @@
 .contactForm {
-  max-width: 500px;
+  max-width: var(--size-width-lg, 500px);
   margin: 0 auto;
   padding: 1.5rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+  background-color: var(--color-light-bg);
+  border-radius: var(--radius-lg);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -13,12 +13,12 @@
 
 .privacyPolicy {
   font-size: 0.875rem;
-  color: #666;
+  color: var(--color-gray-medium);
   text-align: center;
 }
 
 .privacyPolicy a {
-  color: #007bff;
+  color: var(--color-primary);
   text-decoration: none;
 }
 

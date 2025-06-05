@@ -3,7 +3,7 @@
   top: 0;
   z-index: 1000;
   background-color: transparent;
-  color: #00f;
+  color: var(--main-body-copy-color);
   padding: 2rem;
 }
 
@@ -21,7 +21,7 @@ header h1 {
 
 .nav a {
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
-  color: #00f;
+  color: var(--main-body-copy-color);
   text-decoration: none;
 }
 
