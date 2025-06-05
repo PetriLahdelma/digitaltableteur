@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import Checkbox from "../Checkbox/Checkbox";
+import GroupLabel from "../GroupLabel/GroupLabel";
 import styles from "./CheckboxGroup.module.css";
 
 export interface CheckboxGroupProps {
@@ -61,7 +62,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ label, options, onChange 
 
   return (
     <div className={styles.checkboxGroup}>
-      <div className={styles.groupLabel}>{label}</div>
+      <GroupLabel htmlFor="master-checkbox">{label}</GroupLabel>
       <Checkbox
         ref={masterCheckboxRef}
         label="All"
