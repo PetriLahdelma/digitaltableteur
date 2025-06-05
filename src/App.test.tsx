@@ -1,15 +1,16 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Home from './pages/Home';
+
 
 test('renders the home page title', () => {
-  render(<App />);
-  const titleElement = screen.getByText(/Welcome to Digitaltableteur/i);
+  render(<Home />);
+  const titleElement = screen.getByText(/Creative & Development/i);
   expect(titleElement).toBeInTheDocument();
 });
 
 test('renders the grid items', () => {
-  render(<App />);
-  const gridItems = screen.getAllByRole('gridcell');
+  const { container } = render(<Home />);
+  const gridItems = container.querySelectorAll('.grid > div');
   expect(gridItems.length).toBeGreaterThan(0);
 });
