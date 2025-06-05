@@ -40,6 +40,12 @@ npm run build
 
 The optimized output is placed in the `build` folder.
 
+### Preview pull requests
+
+When a pull request is opened, GitHub Actions automatically builds the site and publishes a preview to GitHub Pages.
+The preview link is shown in the pull request checks so you can review changes before merging.
+
+
 ## Folder overview
 
 - **src/** – application source code
