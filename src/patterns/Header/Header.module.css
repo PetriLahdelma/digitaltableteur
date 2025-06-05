@@ -4,7 +4,7 @@
   z-index: 1000;
   background-color: transparent;
   color: #00f;
-  padding: 32px;
+  padding: 2rem;
 }
 
 header h1 {
@@ -16,7 +16,7 @@ header h1 {
 .nav {
   list-style: none;
   display: flex;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .nav a {
