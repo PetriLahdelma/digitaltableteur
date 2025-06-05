@@ -28,5 +28,7 @@ Checked.args = {
 export const Indeterminate = Template.bind({});
 Indeterminate.args = {
   label: "Indeterminate Checkbox",
+  checked: false,
   indeterminate: true,
 };
+
