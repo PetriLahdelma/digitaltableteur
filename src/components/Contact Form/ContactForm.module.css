@@ -1,5 +1,5 @@
 .contactForm {
-  max-width: var(--size-width-lg, 500px);
+  max-width: var(--size-width-form, 500px);
   margin: 0 auto;
   padding: 1.5rem;
   background-color: var(--color-light-bg);
