@@ -3,7 +3,6 @@ import styles from "./Home.module.css";
 import "../styles/variables.css";
 
 const Home = () => {
-  console.log(styles); // Debugging the styles object
 
   return (
     <div className={styles.home}>
