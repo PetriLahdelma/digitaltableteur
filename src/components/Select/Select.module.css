@@ -15,8 +15,8 @@
   width: 100%;
   padding: 0.5rem 2.5rem 0.5rem 0.75rem;
   font-size: 1rem;
-  border: 1px solid #c0c0c0;
-  border-radius: 0.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   background: white;
   appearance: none; /* Hide native arrow */
   -webkit-appearance: none;
@@ -24,24 +24,24 @@
 }
 
 .select:focus {
-  border: 1px solid #007bff;
-  outline: 1px solid #007bff;
+  border: 1px solid var(--color-primary);
+  outline: 1px solid var(--color-primary);
 }
 
 .select:disabled {
-  background-color: #e0e0e0;
-  color: #6c757d;
+  background-color: var(--color-disabled-bg);
+  color: var(--color-muted);
   cursor: not-allowed;
 }
 
 .disabled {
-  color: #6c757d;
+  color: var(--color-muted);
 }
 
 .selectWrapper {
   position: relative;
   display: inline-block;
-  width: 320px;
+  width: var(--size-width-md);
 }
 
 .chevronIcon {
@@ -50,6 +50,6 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  color: #222;
+  color: var(--color-dark);
   z-index: 1;
 }
