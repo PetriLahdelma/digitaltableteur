@@ -43,7 +43,7 @@
 h2 {
   font-family: var(--primary-heading-font, "Times New Roman"), serif;
   font-size: 8rem;
-  font-weight: 300;
+  font-weight: var(--primary-heading-weight, 300);
   line-height: 6rem;
   margin-block-start: -5.6rem;
 }
