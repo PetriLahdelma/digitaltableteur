@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../../patterns/Header/Header";
+import Footer from "../../patterns/Footer/Footer";
 import styles from "./Layout.module.css";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

@@ -1,0 +1,9 @@
+.groupLabel {
+  font-size: 1.25rem; /* 20px */
+  font-family: "Moderat", sans-serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+  color: #333;
+}

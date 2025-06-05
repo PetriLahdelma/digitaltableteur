@@ -1,10 +1,11 @@
 import styles from "./Contact.module.css";
+import ContactForm from "../components/Contact Form/ContactForm";
 
 const Contact = () => {
   return (
     <div className={styles.contact}>
       <h2>Contact Us</h2>
-      <p>Get in touch for inquiries or collaborations.</p>
+      <ContactForm />
     </div>
   );
 };

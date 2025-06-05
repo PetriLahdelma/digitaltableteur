@@ -1,0 +1,30 @@
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Moderat", sans-serif;
+}
+
+.link.S {
+  font-size: 1rem; /* 16px */
+}
+
+.link.M {
+  font-size: 1.5rem; /* 24px */
+}
+
+.link.L {
+  font-size: 3.5rem; /* 56px */
+}
+
+.icon {
+  font-size: 0.75em; /* 12px */
+}
+
+.link.disabled {
+  pointer-events: none;
+  color: gray;
+  opacity: 0.5;
+}

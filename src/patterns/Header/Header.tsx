@@ -1,6 +1,7 @@
+import React from "react";
 import styles from "./Header.module.css";
-import "../styles/variables.css";
-import "../styles/fonts.css";
+import "../../styles/variables.css";
+import "../../styles/fonts.css";
 
 const Header = () => {
   return (

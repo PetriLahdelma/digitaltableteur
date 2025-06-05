@@ -1,0 +1,23 @@
+.label {
+  font-size: 1rem; /* 16px */
+  font-family: "Moderat", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* 8px */
+  color: #5e5e5e;
+}
+
+.label.disabled {
+  color: #909090;
+  cursor: not-allowed;
+}
+
+.required {
+  color: #dc3545;
+}
+
+.tooltip {
+  font-size: 0.875rem; /* 14px */
+  color: #6c757d;
+  margin-left: 0.5rem; /* 8px */
+}

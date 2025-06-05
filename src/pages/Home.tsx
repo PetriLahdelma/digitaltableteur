@@ -1,4 +1,4 @@
-import Grid from "../components/Grid";
+import Grid from "../components/Grid/Grid";
 import styles from "./Home.module.css";
 import "../styles/variables.css";
 
@@ -9,8 +9,29 @@ const Home = () => {
     <div className={styles.home}>
       <Grid columns={1} gap="1rem">
         <div
-          className={styles["grid-item-purple"]}
+          className={styles["grid-item-blank"]}
+          style={{ gridColumn: "1 / span 3",
+            background: "linear-gradient(120deg, #007cf0 0%, #ff0080 50%, #fff200 100%)",
+            backgroundSize: "200% 200%",
+            animation: "gradientMove 4s ease-in-out infinite",
+            height: "50vh",
+          }}
         ></div>
+        <style>
+          {`
+            @keyframes gradientMove {
+              0% {
+          background-position: 0% 50%;
+              }
+              50% {
+          background-position: 100% 50%;
+              }
+              100% {
+          background-position: 0% 50%;
+              }
+            }
+          `}
+        </style>
       </Grid>
       <h2>Creative & Development</h2>
       <Grid columns={3} gap="1rem">
