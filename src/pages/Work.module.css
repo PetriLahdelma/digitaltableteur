@@ -6,7 +6,7 @@
 .work h1 {
   font-family: var(--primary-heading-font, "Times New Roman"), serif;
   font-size: 14rem;
-  font-weight: 300;
+  font-weight: var(--primary-heading-weight, 300);
   line-height: 1.2;
 }
 

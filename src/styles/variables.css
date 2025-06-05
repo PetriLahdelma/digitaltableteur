@@ -3,8 +3,10 @@
   --primary-body-font: "Moderat-Regular", sans-serif;
   --secondary-body-font: "TiemposHeadline-Regular", serif;
 
-  --primary-heading-font: "TiemposHeadline-Light", serif;
-  --secondary-heading-font: "Moderat-Regular", serif;
+  --primary-heading-font: "TiemposHeadline", serif;
+  --primary-heading-weight: 300;
+  --secondary-heading-font: "Moderat", serif;
+  --secondary-heading-weight: 400;
 
   /* Accent colors */
   --accent-pink: #f205c5;
