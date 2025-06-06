@@ -1,5 +1,5 @@
 import styles from "./Work.module.css";
-import ParticlesBackground from "../components/ParticlesBackground";
+import MoireBackground from "../components/MoireBackground";
 
 const Work = () => {
   return (
@@ -17,10 +17,11 @@ const Work = () => {
       </section>
       <section className={styles.section2}>Section 2</section>
       <section className={styles.section3}>
-        <ParticlesBackground
+        <MoireBackground
           title="Realtime Particle generation"
           subtitle="Particles Background"
-          particleCount={2000}
+          lineCount={800}
+          lineSpacing={2}
         />
       </section>
       <section className={styles.section4}>Section 4</section>
