@@ -11,8 +11,9 @@
 }
 
 .checkbox:indeterminate {
-  background-color: var(--color-disabled-bg);
-  border: 1px solid var(--color-gray-dark);
+  background-color: #e0e0e0;
+  border: 1px solid var(--colo-primary);
+  border-radius: 2px; /* Slightly rounded corners */
   appearance: none;
   display: inline-block;
   width: 24px;
@@ -27,8 +28,9 @@
   left: 50%;
   width: 12px;
   height: 2px;
-  background-color: var(--color-gray-dark);
+  background-color: #333;
   transform: translate(-50%, -50%);
+  border-radius: 1px; /* Slightly rounded edges for the dash */
 }
 
 .label {
