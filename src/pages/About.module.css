@@ -2,6 +2,54 @@
 @import "../styles/fonts.css";
 
 .about {
+  text-align: left;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background-color: var(--accent-purple);
+  color: #fff;
   text-align: center;
-  padding: 20px;
+}
+
+.hero h1 {
+  font-family: var(--primary-heading-font, "Times New Roman"), serif;
+  font-size: 8rem;
+  font-weight: var(--primary-heading-weight, 300);
+  line-height: 1.1;
+  margin: 0 0 1rem 0;
+}
+
+.hero p {
+  font-family: var(--secondary-body-font, "TiemposHeadline-Regular"), serif;
+  font-size: 2rem;
+  max-width: 40rem;
+  line-height: 1.4;
+}
+
+.section {
+  padding: 4rem 1rem;
+}
+
+.section:nth-of-type(even) {
+  background-color: var(--color-light-bg);
+}
+
+.section h2 {
+  font-family: var(--secondary-heading-font, "Moderat"), serif;
+  font-size: 3rem;
+  font-weight: var(--secondary-heading-weight, 400);
+  margin-bottom: 1rem;
+}
+
+.section p {
+  font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: 50rem;
 }
