@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Tiempos+Headline:wght@400&display=swap");
+@import "../../styles/variables.css";
+@import "../../styles/fonts.css";
 
 .home {
   text-align: left;

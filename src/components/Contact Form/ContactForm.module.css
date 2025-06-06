@@ -1,3 +1,6 @@
+@import "../../styles/variables.css";
+@import "../../styles/fonts.css";
+
 .contactForm {
   max-width: var(--size-width-form, 500px);
   margin: 0 auto;
