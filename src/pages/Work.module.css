@@ -46,6 +46,8 @@ section {
 
 .section2 {
   background-color: var(--accent-purple);
+  font-family: "Moderat", sans-serif;
+  font-size: 5rem;
 }
 
 .section3 {
@@ -63,6 +65,9 @@ section {
 
 .section4 {
   background-color: var(--accent-violet);
+  font-family: "TiemposHeadline-BlackItalic", serif;
+  font-size: 15rem;
+  font-style: italic;
 }
 
 .section5 {
