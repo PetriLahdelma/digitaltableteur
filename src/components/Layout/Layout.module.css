@@ -1,3 +1,6 @@
+@import "../../styles/variables.css";
+@import "../../styles/fonts.css";
+
 .layout {
   display: flex;
   flex-direction: column;
