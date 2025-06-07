@@ -4,6 +4,7 @@ import styles from "./Label.module.css";
 interface LabelProps {
   htmlFor: string;
   children: React.ReactNode;
+  className?: string;
   tooltipText?: string;
   required?: boolean;
   disabled?: boolean;
