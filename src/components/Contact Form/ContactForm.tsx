@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { send } from "@emailjs/browser";
 import styles from "./ContactForm.module.css";
 import Inputs from "../Inputs/Inputs";
 import Button from "../Button/Button";
@@ -35,13 +36,20 @@ const ContactForm = () => {
     setFormData({ ...formData, interest: selectedOptions.join(", ") });
   };
 
+  const SERVICE_ID = "service_ix55445";
+  const TEMPLATE_ID = "template_bfw826h";
+  const PUBLIC_KEY = "ockSR3pBVF7_k4-Tu";
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:mail@digitaltableteur.com?subject=Contact Form Submission&body=${encodeURIComponent(
-      `Full Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nInterest: ${formData.interest}\nMessage: ${formData.message}`,
-    )}`;
-    window.location.href = mailtoLink;
-    setIsModalOpen(true);
+    send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
+      .then(() => {
+        setIsModalOpen(true);
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error("Failed to send message", err);
+      });
   };
 
   return (
