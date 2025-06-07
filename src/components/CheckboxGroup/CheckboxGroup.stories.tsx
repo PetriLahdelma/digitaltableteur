@@ -11,7 +11,9 @@ export default {
   },
 } as Meta<CheckboxGroupProps>;
 
-const Template: StoryFn<CheckboxGroupProps> = (args) => <CheckboxGroup {...args} />;
+const Template: StoryFn<CheckboxGroupProps> = (args) => (
+  <CheckboxGroup {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
