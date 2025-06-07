@@ -8,6 +8,11 @@
   --secondary-heading-font: "Moderat", serif;
   --secondary-heading-weight: 400;
 
+  /* Text colors */
+  --primary-text-color: #00f;
+  --secondary-text-color: #333;
+  --inverted-text-color: #fff;
+
   /* Accent colors */
   --accent-pink: #f205c5;
   --accent-purple: #812eff;
