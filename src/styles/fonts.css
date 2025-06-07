@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Moderat-Regular";
-  src: url("../assets/fonts/Moderat-Regular.woff") format("woff"),
+  src:
+    url("../assets/fonts/Moderat-Regular.woff") format("woff"),
     url("../assets/fonts/Moderat-Regular.ttf") format("truetype"),
     url("../assets/fonts/Moderat-Regular.otf") format("opentype"),
     url("../assets/fonts/Moderat-Regular.eot") format("embedded-opentype");
@@ -10,7 +11,8 @@
 
 @font-face {
   font-family: "Moderat-Bold";
-  src: url("../assets/fonts/Moderat-Bold.woff") format("woff"),
+  src:
+    url("../assets/fonts/Moderat-Bold.woff") format("woff"),
     url("../assets/fonts/Moderat-Bold.ttf") format("truetype"),
     url("../assets/fonts/Moderat-Bold.otf") format("opentype"),
     url("../assets/fonts/Moderat-Bold.eot") format("embedded-opentype");
@@ -27,7 +29,8 @@
 
 @font-face {
   font-family: "TiemposText-Bold";
-  src: url("../assets/fonts/TiemposText-Bold.otf") format("opentype"),
+  src:
+    url("../assets/fonts/TiemposText-Bold.otf") format("opentype"),
     url("../assets/fonts/TiemposText-BoldItalic.otf") format("opentype");
   font-weight: bold;
   font-style: normal;
@@ -35,7 +38,8 @@
 
 @font-face {
   font-family: "TiemposText-Medium";
-  src: url("../assets/fonts/TiemposText-Medium.otf") format("opentype"),
+  src:
+    url("../assets/fonts/TiemposText-Medium.otf") format("opentype"),
     url("../assets/fonts/TiemposText-Medium Italic.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
@@ -43,7 +47,8 @@
 
 @font-face {
   font-family: "TiemposText-Semibold";
-  src: url("../assets/fonts/TiemposText-Semibold.otf") format("opentype"),
+  src:
+    url("../assets/fonts/TiemposText-Semibold.otf") format("opentype"),
     url("../assets/fonts/TiemposText-SemiboldItalic.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
@@ -51,7 +56,8 @@
 
 @font-face {
   font-family: "TiemposHeadline-Light";
-  src: url("../assets/fonts/TiemposHeadline-Light.woff") format("woff"),
+  src:
+    url("../assets/fonts/TiemposHeadline-Light.woff") format("woff"),
     url("../assets/fonts/TiemposHeadline-Light.ttf") format("truetype"),
     url("../assets/fonts/TiemposHeadline-Light.otf") format("opentype"),
     url("../assets/fonts/TiemposHeadline-Light.eot") format("embedded-opentype");
@@ -61,7 +67,8 @@
 
 @font-face {
   font-family: "TiemposHeadline-Black";
-  src: url("../assets/fonts/TiemposHeadline-Black.otf") format("opentype"),
+  src:
+    url("../assets/fonts/TiemposHeadline-Black.otf") format("opentype"),
     url("../assets/fonts/TiemposHeadline-BlackItalic.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
@@ -69,7 +76,8 @@
 
 @font-face {
   font-family: "TiemposHeadline-Bold";
-  src: url("../assets/fonts/TiemposHeadline-Bold.otf") format("opentype"),
+  src:
+    url("../assets/fonts/TiemposHeadline-Bold.otf") format("opentype"),
     url("../assets/fonts/TiemposHeadline-BoldItalic.otf") format("opentype");
   font-weight: bold;
   font-style: normal;
@@ -77,7 +85,8 @@
 
 @font-face {
   font-family: "TiemposHeadline-Medium";
-  src: url("../assets/fonts/TiemposHeadline-Medium.otf") format("opentype"),
+  src:
+    url("../assets/fonts/TiemposHeadline-Medium.otf") format("opentype"),
     url("../assets/fonts/TiemposHeadline-MediumItalic.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
@@ -85,7 +94,8 @@
 
 @font-face {
   font-family: "TiemposHeadline-Regular";
-  src: url("../assets/fonts/TiemposHeadline-Regular.otf") format("opentype"),
+  src:
+    url("../assets/fonts/TiemposHeadline-Regular.otf") format("opentype"),
     url("../assets/fonts/TiemposHeadline-RegularItalic.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
@@ -93,7 +103,8 @@
 
 @font-face {
   font-family: "TiemposHeadline-Semibold";
-  src: url("../assets/fonts/TiemposHeadline-Semibold.otf") format("opentype"),
+  src:
+    url("../assets/fonts/TiemposHeadline-Semibold.otf") format("opentype"),
     url("../assets/fonts/TiemposHeadline-SemiboldItalic.otf") format("opentype");
   font-weight: 600;
   font-style: normal;

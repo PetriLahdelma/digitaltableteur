@@ -10,7 +10,14 @@ export default {
     variant: {
       control: {
         type: "select",
-        options: ["primary", "secondary", "tertiary", "error", "success", "info"],
+        options: [
+          "primary",
+          "secondary",
+          "tertiary",
+          "error",
+          "success",
+          "info",
+        ],
       },
     },
     disabled: { control: "boolean" },
