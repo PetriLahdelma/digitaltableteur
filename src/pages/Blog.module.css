@@ -2,7 +2,15 @@
 @import "../styles/fonts.css";
 
 .blog {
-  padding: 2rem;
+  padding: 6rem;
+}
+
+.blog h1 {
+  font-family: "var(--primary-heading-font, serif)";
+  font-weight: var(--primary-heading-weight, 300);
+  font-size: 5rem;
+  text-align: left;
+  margin-bottom: 4rem;
 }
 
 .list {
@@ -18,15 +26,17 @@
   text-decoration: none;
   color: inherit;
   padding: 1.5rem;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s;
 }
 
-.card:hover,
+.card:hover {
+  filter: brightness(120%);
+}
+
 .card:focus {
-  background-color: #fff7e3;
   outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
 }
-
 .card h2 {
   font-family: var(--primary-heading-font, serif);
   font-size: 1.5rem;
@@ -55,13 +65,17 @@
   margin-top: auto;
 }
 
+.meta span {
+  font-family: var(--primary-body-font);
+  font-weight: 500;
+}
+
 .read-more {
   text-decoration: underline;
 }
 
 .pink {
   background-color: var(--accent-pink);
-  color: var(--inverted-text-color);
 }
 .teal {
   background-color: var(--accent-teal);
