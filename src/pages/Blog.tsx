@@ -39,7 +39,11 @@ const Blog = () => {
       <h1>Articles on Design and Technology</h1>
       <div className={styles.list}>
         {posts.map((post) => (
-          <a key={post.link} href={post.link} className={`${styles.card} ${post.color}`}> 
+          <a
+            key={post.link}
+            href={post.link}
+            className={`${styles.card} ${post.color}`}
+          >
             <h2 className={styles.title}>{post.title}</h2>
             <p className={styles.lead}>{post.lead}</p>
             <div className={styles.meta}>
