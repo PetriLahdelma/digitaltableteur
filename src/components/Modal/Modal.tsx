@@ -3,7 +3,7 @@ import { FaTimes } from "react-icons/fa";
 import styles from "./Modal.module.css";
 import Button from "../Button/Button";
 
-export type ModalVariant = "default" | "success" | "error" | "loading";
+export type ModalVariant = "default" | "success" | "error" | "info" | "loading";
 
 export interface ModalProps {
   /** Controls visibility */
@@ -20,6 +20,8 @@ export interface ModalProps {
   footer?: React.ReactNode;
   /** Close callback */
   onClose?: () => void;
+  /** Optional icon to display in the header */
+  icon?: React.ReactNode;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -30,6 +32,7 @@ const Modal: React.FC<ModalProps> = ({
   children,
   footer,
   onClose,
+  icon,
 }) => {
   if (!isOpen) {
     return null;
@@ -50,10 +53,22 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className={styles.overlay} role="dialog" aria-modal="true">
+    <div
+      className={styles.overlay}
+      role="dialog"
+      aria-modal="true"
+      {...(title
+        ? { "aria-labelledby": "modal-title" }
+        : { "aria-label": "Dialog" })}
+    >
       <div className={`${styles.modal} ${styles[variant]}`}>
         <div className={styles.header}>
-          {title && <h2 className={styles.title}>{title}</h2>}
+          {icon && <span className={styles.icon}>{icon}</span>}
+          {title && (
+            <h2 id="modal-title" className={styles.title}>
+              {title}
+            </h2>
+          )}
           <div className={styles.menu}>
             {menu}
             {onClose && (
@@ -62,7 +77,7 @@ const Modal: React.FC<ModalProps> = ({
                 onClick={onClose}
                 aria-label="Close"
               >
-                <FaTimes />
+                {FaTimes({})}
               </button>
             )}
           </div>

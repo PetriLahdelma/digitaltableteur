@@ -1,19 +1,47 @@
 import React, { useState } from "react";
-import { Meta, StoryFn } from "@storybook/react-webpack5";
+import { Meta, StoryFn } from "@storybook/react";
 import Modal, { ModalProps } from "./Modal";
 import Button from "../Button/Button";
+import { FaInfoCircle, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
 export default {
   title: "Components/Modal",
   component: Modal,
-} as Meta<ModalProps>;
+  argTypes: {
+    title: { control: "text" },
+    variant: {
+      control: {
+        type: "select",
+        options: ["default", "success", "error", "loading", "info"],
+      },
+    },
+    icon: {
+      control: {
+        type: "select",
+        options: {
+          None: null,
+          Error: <FaTimesCircle />, // Directly use as JSX element
+          Success: <FaCheckCircle />, // Directly use as JSX element
+          Info: <FaInfoCircle />, // Directly use as JSX element
+        },
+      },
+    },
+    children: { control: "text" },
+    onClose: { action: "closed" },
+  },
+} as Meta;
 
-const Template: StoryFn<ModalProps> = (args) => {
+const Template: StoryFn<ModalProps> = (args: ModalProps) => {
   const [open, setOpen] = useState(true);
   return (
     <>
       <Button onClick={() => setOpen(true)}>Open modal</Button>
-      <Modal {...args} isOpen={open} onClose={() => setOpen(false)} />
+      <Modal
+        {...args}
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        icon={args.icon} // Pass icon directly as ReactNode
+      />
     </>
   );
 };
@@ -21,21 +49,8 @@ const Template: StoryFn<ModalProps> = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   title: "Default Modal",
-  children: <p>This is a regular modal dialog.</p>,
-};
-
-export const Success = Template.bind({});
-Success.args = {
-  variant: "success",
-  title: "Success",
-  children: <p>Action completed successfully!</p>,
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  variant: "error",
-  title: "Error",
-  children: <p>Something went wrong.</p>,
+  variant: "default",
+  icon: null,
 };
 
 export const Loading = Template.bind({});
@@ -43,4 +58,34 @@ Loading.args = {
   variant: "loading",
   title: "Loading",
   children: <p>Please wait...</p>,
+};
+
+export const ErrorDialog = Template.bind({});
+ErrorDialog.args = {
+  isOpen: true,
+  title: "Error",
+  icon: <FaTimesCircle />, // Directly use as JSX element
+  variant: "error",
+  children: "An error occurred while processing your request.",
+  onClose: () => alert("Closed"),
+};
+
+export const SuccessDialog = Template.bind({});
+SuccessDialog.args = {
+  isOpen: true,
+  title: "Success",
+  icon: <FaCheckCircle />, // Directly use as JSX element
+  variant: "success",
+  children: "Your operation was successful!",
+  onClose: () => alert("Closed"),
+};
+
+export const InfoDialog = Template.bind({});
+InfoDialog.args = {
+  isOpen: true,
+  title: "Information",
+  icon: <FaInfoCircle />, // Directly use as JSX element
+  variant: "info",
+  children: "Here is some important information.",
+  onClose: () => alert("Closed"),
 };
