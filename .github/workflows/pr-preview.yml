@@ -5,6 +5,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  pull-requests: write
 concurrency:
   group: pages-preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true
@@ -30,3 +31,8 @@ jobs:
     steps:
       - id: deploy
         uses: actions/deploy-pages@v2
+      - uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🚀 Preview: ${{ steps.deploy.outputs.page_url }}
