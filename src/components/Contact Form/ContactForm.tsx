@@ -105,7 +105,7 @@ const ContactForm = () => {
         </div>
 
         <p className={styles.privacyPolicy}>
-          By pressing submit you agree for your information to be processed according to our
+          By pressing submit you agree for your information to be processed <br /> according to our
           <a href="/privacy-policy"> privacy policy</a>.
         </p>
       </form>

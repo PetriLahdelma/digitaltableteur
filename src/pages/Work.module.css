@@ -72,6 +72,9 @@ section {
 
 .section5 {
   background-color: var(--accent-cyan);
+  background-image: url("../assets/images/sausage.webp");
+  background-size: cover;
+  background-position: center;
 }
 
 .section6 {

@@ -15,8 +15,10 @@
 }
 
 .privacyPolicy {
-  font-size: 0.875rem;
-  color: var(--color-gray-medium);
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  font-family: "Moderat", sans-serif;
+  line-height: 1.4;
   text-align: center;
 }
 

@@ -34,10 +34,15 @@
 
 .section {
   padding: 4rem 1rem;
+  background-color: var(--color-light-bg);
 }
-
 .section:nth-of-type(even) {
   background-color: var(--color-light-bg);
+  color: var(--color-dark);
+}
+
+.section:nth-of-type(odd) {
+  background-color: var(--color-dark);
 }
 
 .section h2 {
