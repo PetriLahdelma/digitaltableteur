@@ -1,0 +1,55 @@
+@import "../styles/variables.css";
+@import "../styles/fonts.css";
+
+.blog {
+  padding: 2rem;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  transition: background-color 0.3s;
+}
+
+.card:hover,
+.card:focus {
+  background-color: #fff7e3;
+  outline: 3px solid var(--color-dark);
+}
+
+.title {
+  font-family: var(--primary-heading-font, serif);
+  font-size: 1.75rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.lead {
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.875rem;
+}
+
+.readMore {
+  text-decoration: underline;
+}
+
+.pink { background-color: var(--accent-pink); }
+.teal { background-color: var(--accent-teal); }
+.purple { background-color: var(--accent-purple); }
