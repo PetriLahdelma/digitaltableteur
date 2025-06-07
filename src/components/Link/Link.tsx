@@ -9,8 +9,7 @@ interface LinkProps {
 }
 
 const Link: React.FC<LinkProps> = ({ href, size = "M", children }) => {
-  const isExternal =
-    typeof href === "string" && !href.includes("digitaltableteur.com");
+  const isExternal = typeof href === "string" && !href.includes("digitaltableteur.com");
 
   return (
     <a
