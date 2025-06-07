@@ -4,12 +4,11 @@ import Label from "../components/Label/Label";
 import Link from "../components/Link/Link";
 import { FaSearch, FaArrowLeft } from "react-icons/fa";
 
-// TypeScript declaration for Vite's import.meta.glob
-
-// Use Vite's import.meta.glob for dynamic imports (adjust if using another bundler)
-function isReactComponent(component: any): component is React.ComponentType<any> {
-  return typeof component === "function" || (typeof component === "object" && component !== null && "render" in component);
-}
+const componentsContext: __WebpackModuleApi.RequireContext = require.context(
+  "../components",
+  true,
+  /\.tsx$/
+);
 
 const modules = import.meta.glob("../components/**/*.tsx", { eager: true });
 
