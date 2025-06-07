@@ -6,10 +6,11 @@ import styles from "./CheckboxGroup.module.css";
 export interface CheckboxGroupProps {
   label: string;
   options: { label: string; value: string }[];
+  // eslint-disable-next-line no-unused-vars
   onChange?: (selectedOptions: string[]) => void;
 }
 
-const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ label, options, onChange }) => {
+const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ label, options = [], onChange }) => {
   const [checkedStates, setCheckedStates] = useState(
     options.map(() => false)
   );
@@ -34,7 +35,9 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ label, options, onChange 
     setCheckedStates(newCheckedStates);
 
     if (onChange) {
-      const selectedOptions = checked ? options.map((option) => option.value) : [];
+      const selectedOptions = newCheckedStates
+        .map((state, index) => (state ? options[index].value : ""))
+        .filter(Boolean);
       onChange(selectedOptions);
     }
   };
@@ -45,9 +48,9 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ label, options, onChange 
     setCheckedStates(newCheckedStates);
 
     if (onChange) {
-      const selectedOptions = options
-        .filter((_, i) => newCheckedStates[i])
-        .map((option) => option.value);
+      const selectedOptions = newCheckedStates
+        .map((state, index) => (state ? options[index].value : ""))
+        .filter(Boolean);
       onChange(selectedOptions);
     }
 

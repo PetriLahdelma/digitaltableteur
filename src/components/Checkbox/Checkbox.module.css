@@ -1,5 +1,5 @@
-@import "../../styles/variables.css";
-@import "../../styles/fonts.css";
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
 .checkbox-container {
   display: flex;
@@ -15,7 +15,7 @@
 
 .checkbox:indeterminate {
   background-color: #e0e0e0;
-  border: 1px solid var(--colo-primary);
+  border: 1px solid var(--color-primary);
   border-radius: 2px; /* Slightly rounded corners */
   appearance: none;
   display: inline-block;

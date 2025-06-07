@@ -3,14 +3,14 @@
   --primary-body-font: "Moderat-Regular", sans-serif;
   --secondary-body-font: "TiemposHeadline-Regular", serif;
 
-  --primary-heading-font: "TiemposHeadline", serif;
-  --primary-heading-weight: 300;
-  --secondary-heading-font: "Moderat", serif;
+  --primary-heading-font: "Tiempos Headline", Cambria, serif;
+  --primary-heading-weight: 400;
+  --secondary-heading-font: "Moderat", sans-serif;
   --secondary-heading-weight: 400;
 
   /* Text colors */
   --primary-text-color: #00f;
-  --secondary-text-color: #333;
+  --secondary-text-color: #555555;
   --inverted-text-color: #fff;
 
   /* Accent colors */
@@ -22,6 +22,8 @@
   --accent-yellow: #f2e274;
 
   /* Greyscale palette */
+  --color-black: #000;
+  --color-white: #fff;
   --color-dark: #222;
   --color-gray-dark: #333;
   --color-gray: #5e5e5e;
@@ -36,7 +38,7 @@
   --color-light-bg: #f9f9f9;
 
   /* Functional colors */
-  --color-primary: #007bff;
+  --color-primary: #00f;
   --color-success: #28a745;
   --color-info: #17a2b8;
   --color-error: #dc3545;
