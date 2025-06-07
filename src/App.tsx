@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home";
@@ -9,6 +10,7 @@ import Blog from "./pages/Blog";
 import Designing2025 from "./pages/Designing2025";
 import WorkflowTips from "./pages/WorkflowTips";
 import DigitalCraftsmanship from "./pages/DigitalCraftsmanship";
+
 
 function App() {
   return (

@@ -7,7 +7,6 @@ const config: StorybookConfig = {
   ],
   "addons": [
     "@storybook/preset-create-react-app",
-    "@storybook/addon-onboarding",
     "@storybook/addon-docs"
   ],
   "framework": {

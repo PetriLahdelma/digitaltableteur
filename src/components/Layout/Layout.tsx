@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "../../patterns/Header/Header";
 import Footer from "../../patterns/Footer/Footer";
 import styles from "./Layout.module.css";

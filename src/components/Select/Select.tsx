@@ -7,6 +7,7 @@ interface SelectProps {
   label: string;
   options: { value: string; label: string }[];
   value?: string;
+  // eslint-disable-next-line no-unused-vars
   onChange?: (value: string) => void;
   disabled?: boolean;
 }
