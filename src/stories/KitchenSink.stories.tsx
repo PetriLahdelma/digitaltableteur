@@ -4,7 +4,12 @@ import Label from "../components/Label/Label";
 import Link from "../components/Link/Link";
 import { FaSearch, FaArrowLeft } from "react-icons/fa";
 
-const componentsContext = (require as any).context("../components", true, /\.tsx$/);
+// Use Webpack's `require.context` to load all component modules eagerly.
+const componentsContext: __WebpackModuleApi.RequireContext = require.context(
+  "../components",
+  true,
+  /\.tsx$/
+);
 
 function isReactComponent(component: any): component is React.ComponentType<any> {
   return typeof component === "function" || (typeof component === "object" && component !== null && "render" in component);
