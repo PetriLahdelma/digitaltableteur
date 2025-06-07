@@ -4,12 +4,6 @@ import Label from "../components/Label/Label";
 import Link from "../components/Link/Link";
 import { FaSearch, FaArrowLeft } from "react-icons/fa";
 
-const componentsContext: __WebpackModuleApi.RequireContext = require.context(
-  "../components",
-  true,
-  /\.tsx$/,
-);
-
 const modules = import.meta.glob("../components/**/*.tsx", { eager: true });
 
 const components = Object.entries(modules).reduce(

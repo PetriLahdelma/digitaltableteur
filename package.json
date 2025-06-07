@@ -32,7 +32,7 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "prettier \"src/**/*.{ts,tsx,css}\" --check && eslint src/**/*.tsx && stylelint src/**/*.css"
+    "lint": "prettier \"src/**/*.{ts,tsx,css}\" --check && eslint -c .eslintrc.json \"src/**/*.tsx\" && stylelint \"src/**/*.css\""
   },
   "eslintConfig": {
     "extends": [
