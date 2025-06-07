@@ -20,9 +20,9 @@ export default {
         type: "select",
         options: {
           None: null,
-          Error: <FaTimesCircle />, // Directly use as JSX element
-          Success: <FaCheckCircle />, // Directly use as JSX element
-          Info: <FaInfoCircle />, // Directly use as JSX element
+          Error: FaTimesCircle({}),
+          Success: FaCheckCircle({}),
+          Info: FaInfoCircle({}),
         },
       },
     },
@@ -64,7 +64,7 @@ export const ErrorDialog = Template.bind({});
 ErrorDialog.args = {
   isOpen: true,
   title: "Error",
-  icon: <FaTimesCircle />, // Directly use as JSX element
+  icon: FaTimesCircle({}),
   variant: "error",
   children: "An error occurred while processing your request.",
   onClose: () => alert("Closed"),
@@ -74,7 +74,7 @@ export const SuccessDialog = Template.bind({});
 SuccessDialog.args = {
   isOpen: true,
   title: "Success",
-  icon: <FaCheckCircle />, // Directly use as JSX element
+  icon: FaCheckCircle({}),
   variant: "success",
   children: "Your operation was successful!",
   onClose: () => alert("Closed"),
@@ -84,7 +84,7 @@ export const InfoDialog = Template.bind({});
 InfoDialog.args = {
   isOpen: true,
   title: "Information",
-  icon: <FaInfoCircle />, // Directly use as JSX element
+  icon: FaInfoCircle({}),
   variant: "info",
   children: "Here is some important information.",
   onClose: () => alert("Closed"),
