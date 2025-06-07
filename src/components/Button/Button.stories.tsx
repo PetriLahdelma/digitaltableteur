@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-webpack5";
-import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa"; // Add FaArrowLeft to the import
+import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Button from "./Button";
 
 export default {
