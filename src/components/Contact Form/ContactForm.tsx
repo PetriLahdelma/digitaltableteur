@@ -3,6 +3,7 @@ import styles from "./ContactForm.module.css";
 import Inputs from "../Inputs/Inputs";
 import Button from "../Button/Button";
 import CheckboxGroup from "../CheckboxGroup/CheckboxGroup";
+import Modal from "../Modal/Modal";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const ContactForm = () => {
     interest: "",
     message: "",
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleFullNameChange = (value: string | number) => {
     setFormData({ ...formData, fullName: String(value) });
@@ -39,7 +41,7 @@ const ContactForm = () => {
       `Full Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nInterest: ${formData.interest}\nMessage: ${formData.message}`,
     )}`;
     window.location.href = mailtoLink;
-    alert("Email sent successfully!");
+    setIsModalOpen(true);
   };
 
   return (
@@ -113,6 +115,14 @@ const ContactForm = () => {
           <a href="/privacy-policy"> privacy policy</a>.
         </p>
       </form>
+      <Modal
+        isOpen={isModalOpen}
+        variant="success"
+        title="Success"
+        onClose={() => setIsModalOpen(false)}
+      >
+        Email successfully sent
+      </Modal>
     </div>
   );
 };
