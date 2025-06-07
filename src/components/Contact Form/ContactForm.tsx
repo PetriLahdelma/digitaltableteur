@@ -43,9 +43,9 @@ const ContactForm = () => {
   };
 
   return (
-    <div className={styles.contactForm}>
+    <div className={styles["contact-form"]}>
       <form onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
+        <div className={styles["form-group"]}>
           <Inputs
             label="Full Name"
             type="text"
@@ -55,7 +55,7 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles.formGroup}>
+        <div className={styles["form-group"]}>
           <Inputs
             label="Email Address"
             type="email"
@@ -65,7 +65,7 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles.formGroup}>
+        <div className={styles["form-group"]}>
           <Inputs
             label="Phone Number"
             type="text"
@@ -75,7 +75,7 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles.formGroup}>
+        <div className={styles["form-group"]}>
           <CheckboxGroup
             label="Your Interest"
             options={[
@@ -88,7 +88,7 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles.formGroup}>
+        <div className={styles["form-group"]}>
           <Inputs
             label="Your Message"
             type="text"
@@ -98,13 +98,13 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles.formGroup}>
+        <div className={styles["form-group"]}>
           <Button type="submit" variant="primary">
             Submit
           </Button>
         </div>
 
-        <p className={styles.privacyPolicy}>
+        <p className={styles["privacy-policy"]}>
           By pressing submit you agree for your information to be processed according to our
           <a href="/privacy-policy"> privacy policy</a>.
         </p>

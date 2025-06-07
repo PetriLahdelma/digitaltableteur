@@ -56,7 +56,7 @@
   cursor: not-allowed;
 }
 
-.button.iconOnly {
+.button.icon-only {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +68,7 @@
   line-height: 1;
 }
 
-.button.iconOnly .icon {
+.button.icon-only .icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +79,7 @@
   margin-right: 0.5rem;
 }
 
-.endIcon {
+.end-icon {
   margin-left: 0.5rem;
 }
 
@@ -87,6 +87,6 @@
   margin-left: 0.5rem; /* Add padding between icon and text */
 }
 
-.button > .text + :is(svg, .endIcon) {
+.button > .text + :is(svg, .end-icon) {
   margin-left: 0.5rem; /* Add padding between text and icon when icon is on the right */
 }

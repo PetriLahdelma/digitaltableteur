@@ -1,7 +1,7 @@
 @import "../../styles/variables.css";
 @import "../../styles/fonts.css";
 
-.selectContainer {
+.select-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -41,13 +41,13 @@
   color: var(--color-muted);
 }
 
-.selectWrapper {
+.select-wrapper {
   position: relative;
   display: inline-block;
   width: var(--size-width-md);
 }
 
-.chevronIcon {
+.chevron-icon {
   position: absolute;
   right: 1rem;
   top: 50%;
