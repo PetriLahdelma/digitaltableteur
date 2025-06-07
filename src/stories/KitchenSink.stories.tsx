@@ -4,24 +4,19 @@ import Label from "../components/Label/Label";
 import Link from "../components/Link/Link";
 import { FaSearch, FaArrowLeft } from "react-icons/fa";
 
-// Use Webpack's `require.context` to load all component modules eagerly.
 const componentsContext: __WebpackModuleApi.RequireContext = require.context(
   "../components",
   true,
   /\.tsx$/
 );
 
-function isReactComponent(component: any): component is React.ComponentType<any> {
-  return typeof component === "function" || (typeof component === "object" && component !== null && "render" in component);
-}
+const modules = import.meta.glob("../components/**/*.tsx", { eager: true });
 
-const components = componentsContext.keys().reduce((acc: Record<string, React.ComponentType<any>>, path: string) => {
-  const componentName = path.match(/\/([A-Za-z0-9_-]+)\/([A-Za-z0-9_-]+)\.tsx$/)?.[2];
-  if (componentName) {
-    const module = componentsContext(path);
-    if (module && module.default && isReactComponent(module.default)) {
-      acc[componentName] = module.default;
-    }
+const components = Object.entries(modules).reduce((acc: Record<string, React.ComponentType<any>>, [path, module]: [string, any]) => {
+  const match = path.match(/\/([A-Za-z0-9_-]+)\/([A-Za-z0-9_-]+)\.tsx$/);
+  const componentName = match?.[2];
+  if (componentName && module && module.default && isReactComponent(module.default)) {
+    acc[componentName] = module.default;
   }
   return acc;
 }, {});
@@ -86,7 +81,7 @@ export const AllComponents = () => (
                   {name === "Button" && (
                     <>
                       <Component icon={FaSearch} />
-                      <Component icon={FaArrowLeft} children="Icon Left" />
+                      <Component icon={FaArrowLeft}>Icon Left</Component>
                     </>
                   )}
                   {name === "Label" && (

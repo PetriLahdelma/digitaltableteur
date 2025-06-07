@@ -37,7 +37,7 @@
 }
 
 .section:nth-of-type(even) {
-  background-color: var(--color-light-bg);
+  background-color: var(--accent-teal);
 }
 
 .section h2 {

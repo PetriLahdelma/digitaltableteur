@@ -14,6 +14,7 @@ interface ButtonProps {
   submits?: boolean;
   tooltip?: string;
   type?: "button" | "submit" | "reset";
+  // eslint-disable-next-line no-unused-vars
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -45,11 +46,7 @@ const Button: React.FC<ButtonProps> = ({
       role={accessibleRole}
       type={submits ? "submit" : type}
       title={tooltip}
-      onClick={(event) => {
-        if (!disabled && onClick) {
-          onClick(event);
-        }
-      }}
+      onClick={onClick}
     >
       {normalizedIcon}
       {children && <span className={styles.text}>{children}</span>}

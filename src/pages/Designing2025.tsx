@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Article.module.css";
 import image from "../assets/images/abduction.webp";
 
@@ -36,7 +37,7 @@ const Designing2025 = () => (
 
     <h2>From Stylist to Steward</h2>
     <p>One of the most significant shifts in the past decade is the evolution of our role.</p>
-    <p>We’re no longer just stylists brought in at the end to "make it pretty." We’re stewards of systems. Authors of intent. Designers of participation.</p>
+    <p>We’re no longer just stylists brought in at the end to &quot;make it pretty.&quot; We’re stewards of systems. Authors of intent. Designers of participation.</p>
     <p>With AI in the mix, our responsibilities expand even further. We must now act as ethical gatekeepers:</p>
     <p>What data trained this model?</p>
     <p>Who benefits from this feature—and who’s left out?</p>
