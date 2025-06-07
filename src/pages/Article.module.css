@@ -69,6 +69,12 @@
   outline: 3px solid var(--color-dark);
 }
 
-.pink { background-color: var(--accent-pink); }
-.teal { background-color: var(--accent-teal); }
-.purple { background-color: var(--accent-purple); }
+.pink {
+  background-color: var(--accent-pink);
+}
+.teal {
+  background-color: var(--accent-teal);
+}
+.purple {
+  background-color: var(--accent-purple);
+}
