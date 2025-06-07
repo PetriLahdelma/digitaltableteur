@@ -12,16 +12,13 @@ export interface CheckboxProps {
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  (
-    { label, showLabel = true, checked, indeterminate, onChange },
-    ref
-  ) => {
+  ({ label, showLabel = true, checked, indeterminate, onChange }, ref) => {
     useEffect(() => {
       if (ref && "current" in ref && ref.current) {
         ref.current.indeterminate = indeterminate || false;
         ref.current.checked = checked;
       }
-      }, [indeterminate, ref]);
+    }, [indeterminate, ref]);
 
     const handleClick = () => {
       if (indeterminate && ref && "current" in ref && ref.current) {
@@ -53,7 +50,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Checkbox.displayName = "Checkbox";

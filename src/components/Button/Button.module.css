@@ -9,7 +9,9 @@
   font-size: 1rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
   height: 2.5rem;
   font-family: "Moderat", sans-serif;
 }

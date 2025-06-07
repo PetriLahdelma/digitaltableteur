@@ -7,7 +7,10 @@ const WorkflowTips = () => (
       <h1>Workflow Tips</h1>
       <p className={styles.author}>By Digitaltableteur</p>
     </header>
-    <p>We are preparing this article. Check back soon for insights into our day-to-day process.</p>
+    <p>
+      We are preparing this article. Check back soon for insights into our
+      day-to-day process.
+    </p>
   </article>
 );
 

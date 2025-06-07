@@ -8,7 +8,12 @@ interface GridProps {
   className?: string;
 }
 
-const Grid: React.FC<GridProps> = ({ children, columns = 1, gap = "1rem", className = "" }) => {
+const Grid: React.FC<GridProps> = ({
+  children,
+  columns = 1,
+  gap = "1rem",
+  className = "",
+}) => {
   return (
     <div
       className={`${styles.grid} ${className}`}

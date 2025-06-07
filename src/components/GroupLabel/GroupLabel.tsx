@@ -10,7 +10,14 @@ interface GroupLabelProps {
   title?: string; // Add title for browser tooltips
 }
 
-const GroupLabel: React.FC<GroupLabelProps> = ({ htmlFor, children, tooltipText, required, disabled = false, title }) => {
+const GroupLabel: React.FC<GroupLabelProps> = ({
+  htmlFor,
+  children,
+  tooltipText,
+  required,
+  disabled = false,
+  title,
+}) => {
   return (
     <label
       htmlFor={htmlFor}
