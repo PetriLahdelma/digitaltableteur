@@ -19,7 +19,7 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: PUBLIC_URL=. npm run build
-      - uses: actions/upload-pages-artifact@v2
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
   deploy:
