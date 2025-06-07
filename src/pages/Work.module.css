@@ -13,7 +13,7 @@
   line-height: 1.2;
 }
 
-.workPage {
+.work-page {
   scroll-snap-type: y mandatory;
   height: 100vh;
   overflow-y: scroll;
@@ -36,7 +36,7 @@ section {
   outline: none;
 }
 
-.workPage:focus-visible {
+.work-page:focus-visible {
   scroll-behavior: smooth;
 }
 

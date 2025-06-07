@@ -1,7 +1,7 @@
 @import "../../styles/variables.css";
 @import "../../styles/fonts.css";
 
-.contactForm {
+.contact-form {
   max-width: var(--size-width-form, 500px);
   margin: 0 auto;
   padding: 1.5rem;
@@ -10,22 +10,22 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.formGroup {
+.form-group {
   margin-bottom: 1.5rem;
 }
 
-.privacyPolicy {
+.privacy-policy {
   font-size: 0.875rem;
   color: var(--color-gray-medium);
   text-align: center;
 }
 
-.privacyPolicy a {
+.privacy-policy a {
   color: var(--color-primary);
   text-decoration: none;
 }
 
-.privacyPolicy a:hover {
+.privacy-policy a:hover {
   text-decoration: underline;
 }
 
