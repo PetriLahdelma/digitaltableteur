@@ -7,30 +7,19 @@ import { FaSearch, FaArrowLeft } from "react-icons/fa";
 const componentsContext: __WebpackModuleApi.RequireContext = require.context(
   "../components",
   true,
-  /\.tsx$/,
+  /\.tsx$/
 );
 
 const modules = import.meta.glob("../components/**/*.tsx", { eager: true });
 
-const components = Object.entries(modules).reduce(
-  (
-    acc: Record<string, React.ComponentType<any>>,
-    [path, module]: [string, any],
-  ) => {
-    const match = path.match(/\/([A-Za-z0-9_-]+)\/([A-Za-z0-9_-]+)\.tsx$/);
-    const componentName = match?.[2];
-    if (
-      componentName &&
-      module &&
-      module.default &&
-      isReactComponent(module.default)
-    ) {
-      acc[componentName] = module.default;
-    }
-    return acc;
-  },
-  {},
-);
+const components = Object.entries(modules).reduce((acc: Record<string, React.ComponentType<any>>, [path, module]: [string, any]) => {
+  const match = path.match(/\/([A-Za-z0-9_-]+)\/([A-Za-z0-9_-]+)\.tsx$/);
+  const componentName = match?.[2];
+  if (componentName && module && module.default && isReactComponent(module.default)) {
+    acc[componentName] = module.default;
+  }
+  return acc;
+}, {});
 
 // Add Label to the components list
 const allComponents = {
@@ -53,98 +42,41 @@ export const AllComponents = () => (
         .map(([name, Component]) => (
           <div
             key={name}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: "3rem",
-              textAlign: "left",
-            }}
+            style={{ display: "grid", gridTemplateColumns: "1fr", gap: "3rem", textAlign: "left" }}
           >
             <Label htmlFor={name}>{name}</Label>
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns:
-                  name === "Button" ? "repeat(5, 1fr)" : "repeat(3, 1fr)",
-                gap:
-                  name === "Button"
-                    ? "1rem"
-                    : "3rem" /* Updated gap for Button grid */,
+                gridTemplateColumns: name === "Button" ? "repeat(5, 1fr)" : "repeat(3, 1fr)",
+                gap: name === "Button" ? "1rem" : "3rem", /* Updated gap for Button grid */
                 maxWidth: "var(--size-width-lg)",
                 margin: "0 auto",
-                textAlign: "left" /* Align nested grids to the left */,
+                textAlign: "left", /* Align nested grids to the left */
               }}
             >
               {isReactComponent(Component) ? (
                 <>
                   <Component
-                    {...(name === "Button"
-                      ? { children: "Primary Button", variant: "primary" }
-                      : {})}
-                    {...(name === "Inputs"
-                      ? {
-                          label: "Input with Placeholder",
-                          placeholder: "Enter text...",
-                        }
-                      : {})}
-                    {...(name === "Link"
-                      ? {
-                          children: "Large Link",
-                          href: "https://digitaltableteur.com",
-                          size: "L",
-                        }
-                      : {})}
-                    {...(name === "Select"
-                      ? {
-                          label: "Default Select",
-                          options: [
-                            { value: "option1", label: "Option 1" },
-                            { value: "option2", label: "Option 2" },
-                            { value: "option3", label: "Option 3" },
-                          ],
-                        }
-                      : {})}
+                    {...(name === "Button" ? { children: "Primary Button", variant: "primary" } : {})}
+                    {...(name === "Inputs" ? { label: "Input with Placeholder", placeholder: "Enter text..." } : {})}
+                    {...(name === "Link" ? { children: "Large Link", href: "https://digitaltableteur.com", size: "L" } : {})}
+                    {...(name === "Select" ? { label: "Default Select", options: [
+                      { value: "option1", label: "Option 1" },
+                      { value: "option2", label: "Option 2" },
+                      { value: "option3", label: "Option 3" }
+                    ] } : {})}
                   />
                   <Component
-                    {...(name === "Button"
-                      ? { children: "Secondary Button", variant: "secondary" }
-                      : {})}
-                    {...(name === "Inputs"
-                      ? {
-                          label: "Disabled Input",
-                          placeholder: "Cannot type...",
-                          disabled: true,
-                        }
-                      : {})}
-                    {...(name === "Link"
-                      ? {
-                          children: "External Link",
-                          className: "link external",
-                          href: "https://google.com",
-                        }
-                      : {})}
-                    {...(name === "Select"
-                      ? { label: "Disabled Select", disabled: true }
-                      : {})}
+                    {...(name === "Button" ? { children: "Secondary Button", variant: "secondary" } : {})}
+                    {...(name === "Inputs" ? { label: "Disabled Input", placeholder: "Cannot type...", disabled: true } : {})}
+                    {...(name === "Link" ? { children: "External Link", className: "link external", href: "https://google.com" } : {})}
+                    {...(name === "Select" ? { label: "Disabled Select", disabled: true } : {})}
                   />
                   <Component
-                    {...(name === "Button"
-                      ? { children: "Error Button", variant: "error" }
-                      : {})}
-                    {...(name === "Inputs"
-                      ? {
-                          label: "Error Input",
-                          placeholder: "Invalid input",
-                          error: "This field is required",
-                        }
-                      : {})}
-                    {...(name === "Link"
-                      ? {
-                          children: "Disabled Link",
-                          href: "",
-                          className: "link disabled",
-                        }
-                      : {})}
+                    {...(name === "Button" ? { children: "Error Button", variant: "error" } : {})}
+                    {...(name === "Inputs" ? { label: "Error Input", placeholder: "Invalid input", error: "This field is required" } : {})}
+                    {...(name === "Link" ? { children: "Disabled Link", href: "", className: "link disabled" } : {})}
                   />
                   {name === "Button" && (
                     <>
@@ -155,36 +87,16 @@ export const AllComponents = () => (
                   {name === "Label" && (
                     <>
                       <Component
-                        {...(name === "Label"
-                          ? { children: "Default Label", htmlFor: "input-id" }
-                          : {})}
+                        {...(name === "Label" ? { children: "Default Label", htmlFor: "input-id" } : {})}
                       />
                       <Component
-                        {...(name === "Label"
-                          ? {
-                              children: "Label with Tooltip",
-                              htmlFor: "input-id",
-                              title: "This is a tooltip",
-                            }
-                          : {})}
+                        {...(name === "Label" ? { children: "Label with Tooltip", htmlFor: "input-id", title: "This is a tooltip" } : {})}
                       />
                       <Component
-                        {...(name === "Label"
-                          ? {
-                              children: "Required Label",
-                              htmlFor: "input-id",
-                              required: true,
-                            }
-                          : {})}
+                        {...(name === "Label" ? { children: "Required Label", htmlFor: "input-id", required: true } : {})}
                       />
                       <Component
-                        {...(name === "Label"
-                          ? {
-                              children: "Disabled Label",
-                              htmlFor: "input-id",
-                              disabled: true,
-                            }
-                          : {})}
+                        {...(name === "Label" ? { children: "Disabled Label", htmlFor: "input-id", disabled: true } : {})}
                       />
                     </>
                   )}

@@ -36,7 +36,7 @@ const ContactForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const mailtoLink = `mailto:mail@digitaltableteur.com?subject=Contact Form Submission&body=${encodeURIComponent(
-      `Full Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nInterest: ${formData.interest}\nMessage: ${formData.message}`,
+      `Full Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nInterest: ${formData.interest}\nMessage: ${formData.message}`
     )}`;
     window.location.href = mailtoLink;
     alert("Email sent successfully!");
@@ -81,10 +81,7 @@ const ContactForm = () => {
             options={[
               { label: "Brand strategy", value: "brand-strategy" },
               { label: "Design and creative", value: "design-creative" },
-              {
-                label: "Digital products and website",
-                value: "digital-products",
-              },
+              { label: "Digital products and website", value: "digital-products" },
               { label: "Help me choose", value: "help-me-choose" },
             ]}
             onChange={handleInterestChange}
@@ -108,8 +105,7 @@ const ContactForm = () => {
         </div>
 
         <p className={styles["privacy-policy"]}>
-          By pressing submit you agree for your information to be processed
-          according to our
+          By pressing submit you agree for your information to be processed according to our
           <a href="/privacy-policy"> privacy policy</a>.
         </p>
       </form>

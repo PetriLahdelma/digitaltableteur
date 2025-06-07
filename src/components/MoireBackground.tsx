@@ -126,9 +126,7 @@ export default function MoireBackground({
   }, [lineCount, lineSpacing, animationSpeed]);
 
   return (
-    <div
-      className={`relative w-full h-screen overflow-hidden bg-white dark:bg-black ${className}`}
-    >
+    <div className={`relative w-full h-screen overflow-hidden bg-white dark:bg-black ${className}`}>
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
       <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
         <motion.div
