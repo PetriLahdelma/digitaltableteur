@@ -33,3 +33,12 @@
 .privacyPolicy a:hover {
   text-decoration: underline;
 }
+
+/* Added a class for styling the privacy policy paragraph */
+.contact-form p {
+  font-family: "Moderat", sans-serif;
+  font-size: 0.875rem;
+  color: var(--color-gray-medium);
+  text-align: center;
+  margin: 0;
+}
