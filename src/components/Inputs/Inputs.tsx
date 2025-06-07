@@ -30,7 +30,7 @@ const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <div className={styles.inputContainer}>
+    <div className={styles["input-container"]}>
       <Label
         htmlFor={label}
         required={!!error}
@@ -48,7 +48,7 @@ const Input: React.FC<InputProps> = ({
         onChange={handleChange}
         disabled={disabled} // Apply disabled prop
       />
-      {error && <span className={styles.errorMessage}>{error}</span>}
+      {error && <span className={styles["error-message"]}>{error}</span>}
     </div>
   );
 };

@@ -25,9 +25,9 @@ const Select: React.FC<SelectProps> = ({
   };
 
   return (
-    <div className={styles.selectContainer}>
+    <div className={styles["select-container"]}>
       {label && <Label htmlFor={label}>{label}</Label>}
-      <div className={styles.selectWrapper}>
+      <div className={styles["select-wrapper"]}>
         <select
           className={styles.select}
           value={value}
@@ -40,7 +40,7 @@ const Select: React.FC<SelectProps> = ({
             </option>
           ))}
         </select>
-        {FaChevronDown({ className: styles.chevronIcon })}
+        {FaChevronDown({ className: styles["chevron-icon"] })}
       </div>
     </div>
   );

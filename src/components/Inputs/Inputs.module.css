@@ -1,7 +1,7 @@
 @import "../../styles/variables.css";
 @import "../../styles/fonts.css";
 
-.inputContainer {
+.input-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -39,7 +39,7 @@
   background-color: var(--color-error-bg);
 }
 
-.errorMessage {
+.error-message {
   font-family: "Moderat", sans-serif;
   font-size: 0.875rem;
   color: var(--color-error-text);

@@ -57,9 +57,9 @@ const Designing2025 = () => (
 
     <div className={styles.similar}>
       <h2>Similar reads</h2>
-      <div className={styles.similarList}>
-        <a href="/blog/workflow-tips" className={`${styles.similarCard} ${styles.teal}`}>Workflow Tips</a>
-        <a href="/blog/digital-craftsmanship" className={`${styles.similarCard} ${styles.purple}`}>Digital Craftsmanship</a>
+      <div className={styles["similar-list"]}>
+        <a href="/blog/workflow-tips" className={`${styles["similar-card"]} ${styles.teal}`}>Workflow Tips</a>
+        <a href="/blog/digital-craftsmanship" className={`${styles["similar-card"]} ${styles.purple}`}>Digital Craftsmanship</a>
       </div>
     </div>
   </article>
