@@ -10,10 +10,12 @@ export interface CheckboxGroupProps {
   onChange?: (selectedOptions: string[]) => void;
 }
 
-const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ label, options = [], onChange }) => {
-  const [checkedStates, setCheckedStates] = useState(
-    options.map(() => false)
-  );
+const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
+  label,
+  options = [],
+  onChange,
+}) => {
+  const [checkedStates, setCheckedStates] = useState(options.map(() => false));
 
   const masterCheckboxRef = useRef<HTMLInputElement>(null);
 
