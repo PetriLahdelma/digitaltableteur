@@ -49,12 +49,12 @@
   margin-top: 3rem;
 }
 
-.similarList {
+.similar-list {
   display: grid;
   gap: 1rem;
 }
 
-.similarCard {
+.similar-card {
   display: block;
   padding: 1rem;
   border-radius: var(--radius-md);
@@ -63,8 +63,8 @@
   transition: background-color 0.3s;
 }
 
-.similarCard:hover,
-.similarCard:focus {
+.similar-card:hover,
+.similar-card:focus {
   background-color: #fff7e3;
   outline: 3px solid var(--color-dark);
 }
