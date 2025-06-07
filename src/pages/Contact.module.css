@@ -6,7 +6,7 @@
   padding: 20px;
 }
 
-.contact-form {
+.contactForm {
   max-width: var(--size-width-form);
   margin: 0 auto;
   padding: 1rem;
@@ -15,22 +15,22 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
+.formGroup {
   margin-bottom: 1.5rem;
 }
 
-.privacy-policy {
+.privacyPolicy {
   font-size: 0.875rem;
   color: var(--color-gray-medium);
   text-align: center;
 }
 
-.privacy-policy a {
+.privacyPolicy a {
   color: var(--color-primary);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
-.privacy-policy a:hover {
+.privacyPolicy a:hover {
   text-decoration: underline;
 }
 

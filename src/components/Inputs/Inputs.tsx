@@ -8,6 +8,7 @@ interface InputProps {
   placeholder?: string;
   value?: string | number;
   error?: string;
+  // eslint-disable-next-line no-unused-vars
   onChange?: (value: string | number) => void;
   disabled?: boolean;
 }

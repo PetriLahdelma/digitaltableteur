@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Blog.module.css";
 
 interface Post {
@@ -35,7 +36,7 @@ const posts: Post[] = [
 const Blog = () => {
   return (
     <div className={styles.blog}>
-      <h1>Blog</h1>
+      <h1>Articles on Design and Technology</h1>
       <div className={styles.list}>
         {posts.map((post) => (
           <a key={post.link} href={post.link} className={`${styles.card} ${post.color}`}> 

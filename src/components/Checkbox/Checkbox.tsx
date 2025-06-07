@@ -7,6 +7,7 @@ export interface CheckboxProps {
   showLabel?: boolean;
   checked: boolean;
   indeterminate?: boolean;
+  // eslint-disable-next-line no-unused-vars
   onChange: (checked: boolean) => void;
 }
 
@@ -18,8 +19,9 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     useEffect(() => {
       if (ref && "current" in ref && ref.current) {
         ref.current.indeterminate = indeterminate || false;
+        ref.current.checked = checked;
       }
-    }, [indeterminate, ref]);
+      }, [indeterminate, ref]);
 
     const handleClick = () => {
       if (indeterminate && ref && "current" in ref && ref.current) {
@@ -29,11 +31,12 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     };
 
     return (
-      <div className={styles["checkbox-container"]}>
+      <div className={styles.checkbox}>
         <input
+          id="checkbox"
           type="checkbox"
-          ref={ref}
           className={styles.checkbox}
+          ref={ref}
           checked={checked}
           onClick={handleClick}
           onChange={(e) => {
@@ -52,5 +55,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
   }
 );
+
+Checkbox.displayName = "Checkbox";
 
 export default Checkbox;
