@@ -34,6 +34,11 @@ npm run build
 
 The optimized output is placed in the `build` folder.
 
+## Pull Request Workflow
+
+Every pull request is validated with lint and unit tests using GitHub Actions.
+Preview builds are automatically deployed so changes can be reviewed live.
+
 ## Folder overview
 
 - **src/** – application source code
