@@ -1,0 +1,32 @@
+name: PR Preview
+on:
+  pull_request:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: PUBLIC_URL=. npm run build
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v2
