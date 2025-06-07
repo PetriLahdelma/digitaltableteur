@@ -1,7 +1,7 @@
 @import "../../styles/variables.css";
 @import "../../styles/fonts.css";
 
-.checkboxGroup {
+.checkbox-group {
   display: flex;
   flex-direction: column;
   gap: 1rem;
