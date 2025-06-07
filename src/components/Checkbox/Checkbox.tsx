@@ -7,7 +7,6 @@ export interface CheckboxProps {
   showLabel?: boolean;
   checked: boolean;
   indeterminate?: boolean;
-  // eslint-disable-next-line no-unused-vars
   onChange: (checked: boolean) => void;
 }
 
@@ -28,7 +27,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     };
 
     return (
-      <div className={styles.checkbox}>
+      <div className={styles["checkbox-container"]}>
         <input
           id="checkbox"
           type="checkbox"
@@ -44,7 +43,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           }}
         />
         {showLabel && label && (
-          <Label htmlFor="checkbox" disabled={false}>
+          <Label htmlFor="checkbox" disabled={false} className={styles.label}>
             {label}
           </Label>
         )}

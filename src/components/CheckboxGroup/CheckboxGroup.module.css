@@ -2,9 +2,16 @@
 @import "../../styles/fonts.css";
 
 .checkbox-group {
+  width: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+@supports (width: fit-content) {
+  .checkbox-group {
+    width: fit-content;
+  }
 }
 
 .options {
