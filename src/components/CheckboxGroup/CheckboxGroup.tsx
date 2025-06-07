@@ -61,7 +61,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ label, options, onChange 
   };
 
   return (
-    <div className={styles.checkboxGroup}>
+    <div className={styles["checkbox-group"]}>
       <GroupLabel htmlFor="master-checkbox">{label}</GroupLabel>
       <Checkbox
         ref={masterCheckboxRef}

@@ -29,7 +29,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     };
 
     return (
-      <div className={styles.checkboxContainer}>
+      <div className={styles["checkbox-container"]}>
         <input
           type="checkbox"
           ref={ref}
