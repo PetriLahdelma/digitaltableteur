@@ -11,7 +11,6 @@ import Designing2025 from "./pages/Designing2025";
 import WorkflowTips from "./pages/WorkflowTips";
 import DigitalCraftsmanship from "./pages/DigitalCraftsmanship";
 
-
 function App() {
   return (
     <Router>
@@ -26,7 +25,10 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/designing-in-2025" element={<Designing2025 />} />
             <Route path="/blog/workflow-tips" element={<WorkflowTips />} />
-            <Route path="/blog/digital-craftsmanship" element={<DigitalCraftsmanship />} />
+            <Route
+              path="/blog/digital-craftsmanship"
+              element={<DigitalCraftsmanship />}
+            />
           </Routes>
         </Layout>
       </div>
