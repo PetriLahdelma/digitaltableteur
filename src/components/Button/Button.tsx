@@ -33,10 +33,8 @@ const Button: React.FC<ButtonProps> = ({
   type = "button",
   onClick,
 }) => {
-  const normalizedIcon =
-    typeof icon === "function" ? React.createElement(icon) : icon;
-  const normalizedEndIcon =
-    typeof endIcon === "function" ? React.createElement(endIcon) : endIcon;
+  const normalizedIcon = typeof icon === "function" ? React.createElement(icon) : icon;
+  const normalizedEndIcon = typeof endIcon === "function" ? React.createElement(endIcon) : endIcon;
 
   return (
     <button

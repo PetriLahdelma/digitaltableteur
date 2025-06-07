@@ -10,14 +10,7 @@ interface LabelProps {
   title?: string; // Add title for browser tooltips
 }
 
-const Label: React.FC<LabelProps> = ({
-  htmlFor,
-  children,
-  tooltipText,
-  required,
-  disabled = false,
-  title,
-}) => {
+const Label: React.FC<LabelProps> = ({ htmlFor, children, tooltipText, required, disabled = false, title }) => {
   return (
     <label
       htmlFor={htmlFor}
