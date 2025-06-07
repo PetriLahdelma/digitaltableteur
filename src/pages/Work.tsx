@@ -3,7 +3,7 @@ import MoireBackground from "../components/MoireBackground";
 
 const Work = () => {
   return (
-    <div className={styles.workPage}>
+    <div className={styles["work-page"]}>
       <section className={styles.section1}>
         <ul>
           <li>Strategy</li>
