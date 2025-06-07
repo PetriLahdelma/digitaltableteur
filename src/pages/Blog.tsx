@@ -43,7 +43,7 @@ const Blog = () => {
             <p className={styles.lead}>{post.lead}</p>
             <div className={styles.meta}>
               <span className={styles.readTime}>{post.readTime}</span>
-              <span className={styles.readMore}>Read</span>
+              <span className={styles["read-more"]}>Read more</span>
             </div>
           </a>
         ))}
