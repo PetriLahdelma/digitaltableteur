@@ -4,7 +4,19 @@ import Label from "../components/Label/Label";
 import Link from "../components/Link/Link";
 import { FaSearch, FaArrowLeft } from "react-icons/fa";
 
+declare global {
+  interface ImportMeta {
+    glob: (pattern: string, opts: { eager: boolean }) => Record<string, any>;
+  }
+}
+
 const modules = import.meta.glob("../components/**/*.tsx", { eager: true });
+
+const isReactComponent = (
+  component: any,
+): component is React.ComponentType<any> =>
+  typeof component === "function" ||
+  (typeof component === "object" && component !== null);
 
 const components = Object.entries(modules).reduce(
   (
@@ -27,7 +39,7 @@ const components = Object.entries(modules).reduce(
 );
 
 // Add Label to the components list
-const allComponents = {
+const allComponents: Record<string, React.ComponentType<any>> = {
   ...components,
   Label,
   Link,
