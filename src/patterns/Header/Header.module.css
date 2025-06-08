@@ -10,11 +10,11 @@
   padding: 2rem;
 }
 
-header h1 a {
+header h2 a {
   font-family: var(--primary-body-font, "Moderat-Bold"), serif;
   text-transform: uppercase;
   color: var(--main-body-copy-color);
-  font-size: 1.8rem;
+  font-size: 2.1rem;
   font-weight: 600;
   letter-spacing: 0.08rem;
   text-decoration: none;
@@ -28,6 +28,7 @@ header h1 a {
 
 .nav a {
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
+  font-size: 1.2rem;
   color: var(--main-body-copy-color);
   text-decoration: none;
 }
