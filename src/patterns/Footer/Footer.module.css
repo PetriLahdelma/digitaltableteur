@@ -6,7 +6,6 @@
   width: 100%;
   background-color: var(--color-primary);
   text-align: left;
-  padding: 2rem;
 }
 
 .footer {
@@ -21,11 +20,10 @@
   font-weight: 600;
   letter-spacing: 0.08rem;
   text-decoration: none;
-  padding-inline-start: 1rem;
+  margin-inline-start: 2rem;
 }
 
 footer p {
-  margin: 0;
   font-size: 1rem;
   font-family: "Moderat-Regular";
   color: var(--inverted-text-color);
@@ -35,7 +33,7 @@ footer p {
 .social-links {
   display: flex;
   justify-content: center;
-  margin-block-start: 1rem;
+  margin-block: 1rem;
   gap: 1rem;
 }
 
