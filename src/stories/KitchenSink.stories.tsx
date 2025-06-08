@@ -4,13 +4,36 @@ import Label from "../components/Label/Label";
 import Link from "../components/Link/Link";
 import { FaSearch, FaArrowLeft } from "react-icons/fa";
 
+declare const require: any;
+
 declare global {
   interface ImportMeta {
-    glob: (pattern: string, opts: { eager: boolean }) => Record<string, any>;
+    glob?: (pattern: string, opts: { eager: boolean }) => Record<string, any>;
   }
 }
 
-const modules = import.meta.glob("../components/**/*.tsx", { eager: true });
+let modules: Record<string, any> = {};
+
+if (
+  typeof import.meta !== "undefined" &&
+  typeof import.meta.glob === "function"
+) {
+  modules = import.meta.glob("../components/**/*.tsx", { eager: true });
+} else if (
+  typeof require !== "undefined" &&
+  typeof require.context === "function"
+) {
+  const req = require.context("../components", true, /\.tsx$/);
+  modules = req.keys().reduce(
+    (acc: Record<string, any>, key: string) => {
+      acc[`../components/${key.replace(/^\.\//, "")}`] = {
+        default: req(key).default || req(key),
+      };
+      return acc;
+    },
+    {} as Record<string, any>,
+  );
+}
 
 const isReactComponent = (
   component: any,
