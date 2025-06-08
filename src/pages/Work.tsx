@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "./Work.module.css";
 import MoireBackground from "../components/MoireBackground";
+import Ufo from "../assets/images/ufo.webp";
+import sausage from "../assets/images/sausage.webp";
+import fur from "../assets/images/fur.webp";
 
 const Work = () => {
   return (
@@ -18,15 +21,36 @@ const Work = () => {
       </section>
       <section className={styles.section2}>Section 2</section>
       <section className={styles.section3}>
-        <MoireBackground
-          title="Realtime Particle generation"
-          subtitle="Particles Background"
-          lineCount={800}
-          lineSpacing={2}
-        />
+        <MoireBackground lineCount={800} lineSpacing={2} />
       </section>
       <section className={styles.section4}>Section 4</section>
-      <section className={styles.section5}>Section 5</section>
+      <section className={styles.section5}>
+        <div className={styles.scrollableContainer}>
+          <div className={styles.scrollableContent}>
+            <div className={styles.scrollItem}>
+              <img
+                src={Ufo}
+                alt="UFO"
+                style={{ width: "100%", height: "100%", objectFit: "fill" }}
+              />
+            </div>
+            <div className={styles.scrollItem}>
+              <img
+                src={sausage}
+                alt="Sausage"
+                style={{ width: "100%", height: "100%", objectFit: "fill" }}
+              />
+            </div>
+            <div className={styles.scrollItem}>
+              <img
+                src={fur}
+                alt="Fur"
+                style={{ width: "100%", height: "100%", objectFit: "fill" }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
       <section className={styles.section6}>Section 6</section>
       <section className={styles.section7}>Section 7</section>
       <section className={styles.section8}>Section 8</section>

@@ -3,7 +3,6 @@
 
 .work {
   text-align: center;
-  padding: 20px;
 }
 
 .work h1 {
@@ -86,8 +85,30 @@ section {
   background-color: var(--main-body-copy-color);
 }
 
-ul {
+.section1 ul {
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
   padding: 0;
-  line-height: 1.2;
+  line-height: 1.5;
+  align-items: center;
+}
+
+.scrollableContainer {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.scrollableContent {
+  display: inline-flex;
+}
+
+.scrollItem {
+  flex: 0 0 auto;
+  width: fit-content;
+  background-color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

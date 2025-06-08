@@ -34,7 +34,7 @@ const Home = () => {
               "linear-gradient(120deg, #007cf0 0%, #ff0080 50%, #fff200 100%)",
             backgroundSize: "200% 200%",
             animation: "gradientMove 4s ease-in-out infinite",
-            height: "50vh",
+            height: "75vh",
           }}
         ></div>
         <style>

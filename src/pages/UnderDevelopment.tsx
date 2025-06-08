@@ -22,7 +22,7 @@ const UnderDevelopment = () => {
         zIndex: 10000,
       }}
     >
-      <h1>Site Under Development! 🚧 Stay tuned!</h1>
+      <h2>Site Under Development! 🚧 Stay tuned!</h2>
     </div>
   );
 };
