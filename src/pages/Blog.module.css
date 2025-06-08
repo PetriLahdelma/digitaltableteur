@@ -61,13 +61,13 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-top: auto;
 }
 
 .meta span {
   font-family: var(--primary-body-font);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .read-more {
@@ -82,4 +82,10 @@
 }
 .purple {
   background-color: var(--accent-purple);
+}
+
+.blue {
+  background-color: var(--color-light-bg);
+  box-sizing: border-box;
+  border: 2px solid var(--color-primary);
 }

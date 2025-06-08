@@ -15,21 +15,21 @@ const posts: Post[] = [
     lead: "After more than two decades in the design field, we’re exploring how AI partners with creativity.",
     link: "/blog/designing-in-2025",
     readTime: "5 min read",
-    color: styles.pink,
+    color: styles.blue,
   },
   {
     title: "Workflow Tips",
     lead: "A behind-the-scenes look at how we keep projects moving.",
     link: "/blog/workflow-tips",
     readTime: "3 min read",
-    color: styles.teal,
+    color: styles.blue,
   },
   {
     title: "Digital Craftsmanship",
     lead: "Thoughts on maintaining quality in a hurry-up culture.",
     link: "/blog/digital-craftsmanship",
     readTime: "4 min read",
-    color: styles.purple,
+    color: styles.blue,
   },
 ];
 
