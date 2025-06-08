@@ -1,0 +1,26 @@
+.phoneInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.phoneInputLabel {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.phoneInputField {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.error {
+  border-color: red;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 0.875rem;
+}

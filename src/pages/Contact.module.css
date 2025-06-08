@@ -3,7 +3,24 @@
 
 .contact {
   text-align: center;
-  padding: 20px;
+  padding: 32px;
+}
+
+.contact h1 {
+  font-family: var(--primary-heading-font, serif);
+  font-size: 5rem;
+  font-weight: var(--primary-heading-weight, 300);
+  margin-bottom: 12rem;
+  color: var(--color-primary);
+}
+
+.contact h2 {
+  font-family: var(--secondary-heading-font, sans-serif);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-secondary);
 }
 
 .contactForm {

@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "../components/Grid/Grid";
 import styles from "./Home.module.css";
 import "../styles/variables.css";
 
 const Home = () => {
+  const [currentText, setCurrentText] = useState("Creative & Development");
+  const texts = [
+    "Creative & Development",
+    "Strategy & Branding",
+    "Illustration & Editorial Design",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentText((prevText) => {
+        const currentIndex = texts.indexOf(prevText);
+        const nextIndex = (currentIndex + 1) % texts.length;
+        return texts[nextIndex];
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={styles.home}>
       <Grid columns={1} gap="1rem">
@@ -34,7 +53,7 @@ const Home = () => {
           `}
         </style>
       </Grid>
-      <h2>Creative & Development</h2>
+      <h1>{currentText}</h1>
       <Grid columns={3} gap="1rem">
         <div
           className={styles["grid-item-blank"]}

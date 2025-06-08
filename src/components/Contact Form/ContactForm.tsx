@@ -5,6 +5,7 @@ import Inputs from "../Inputs/Inputs";
 import Button from "../Button/Button";
 import CheckboxGroup from "../CheckboxGroup/CheckboxGroup";
 import Modal from "../Modal/Modal";
+import PhoneInput from "../PhoneInput/PhoneInput";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -45,6 +46,13 @@ const ContactForm = () => {
     send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
       .then(() => {
         setIsModalOpen(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          interest: "",
+          message: "",
+        });
       })
       .catch((err) => {
         // eslint-disable-next-line no-console
@@ -76,9 +84,8 @@ const ContactForm = () => {
         </div>
 
         <div className={styles["form-group"]}>
-          <Inputs
+          <PhoneInput
             label="Phone Number"
-            type="text"
             placeholder="Enter your phone number"
             value={formData.phone}
             onChange={handlePhoneChange}
@@ -112,22 +119,23 @@ const ContactForm = () => {
         </div>
 
         <div className={styles["form-group"]}>
+          <p className={styles["privacy-policy"]}>
+            By pressing submit you agree for your information to be processed
+            according to our<a href="/privacy-policy"> privacy policy</a>.
+          </p>
           <Button type="submit" variant="primary">
             Submit
           </Button>
         </div>
-
-        <p className={styles["privacy-policy"]}>
-          By pressing submit you agree for your information to be processed
-          according to our
-          <a href="/privacy-policy"> privacy policy</a>.
-        </p>
       </form>
       <Modal
         isOpen={isModalOpen}
         variant="success"
         title="Success"
-        onClose={() => setIsModalOpen(false)}
+        onClose={() => {
+          setIsModalOpen(false);
+          window.location.reload();
+        }}
       >
         Email successfully sent
       </Modal>

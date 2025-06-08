@@ -6,9 +6,9 @@ import "../../styles/fonts.css";
 const Header = () => {
   return (
     <header className={styles.header}>
-      <h1>
+      <h2>
         <a href="/">Digitaltableteur</a>
-      </h1>
+      </h2>
       <nav>
         <ul className={styles.nav}>
           <li>

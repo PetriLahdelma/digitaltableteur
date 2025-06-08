@@ -2,18 +2,45 @@
 @import "../../styles/fonts.css";
 
 .footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: transparent;
-  color: var(--main-body-copy-color);
-  text-align: center;
-  padding: 1rem;
+  background-color: var(--color-primary);
+  text-align: left;
+  padding: 2rem;
+}
+
+.footer {
+  margin-inline-start: 0;
+}
+
+.footer h2 a {
+  font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+  text-transform: uppercase;
+  color: var(--inverted-text-color);
+  font-size: 2.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  text-decoration: none;
+  padding-inline-start: 1rem;
 }
 
 footer p {
   margin: 0;
   font-size: 1rem;
   font-family: "Moderat-Regular";
-  color: var(--main-body-copy-color);
+  color: var(--inverted-text-color);
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  margin-block-start: 1rem;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: var(--inverted-text-color);
+  text-decoration: none;
+  font-size: 1.5rem;
 }
