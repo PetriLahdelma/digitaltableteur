@@ -37,7 +37,7 @@ The optimized output is placed in the `build` folder.
 ## Pull Request Workflow
 
 Every pull request is validated with lint and unit tests using GitHub Actions.
-Preview builds are automatically deployed so changes can be reviewed live.
+Preview builds are automatically deployed so changes can be reviewed live in the `pr-preview` environment.
 A comment with a link to the preview URL is posted on each PR once deployment finishes.
 
 ## Folder overview
