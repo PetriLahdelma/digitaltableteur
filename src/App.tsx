@@ -10,6 +10,7 @@ import Blog from "./pages/Blog";
 import Designing2025 from "./pages/Designing2025";
 import WorkflowTips from "./pages/WorkflowTips";
 import DigitalCraftsmanship from "./pages/DigitalCraftsmanship";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               path="/blog/digital-craftsmanship"
               element={<DigitalCraftsmanship />}
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
       </div>
