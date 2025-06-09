@@ -64,7 +64,7 @@ export const ErrorDialog = Template.bind({});
 ErrorDialog.args = {
   isOpen: true,
   title: "Error",
-  icon: FaTimesCircle({}),
+  icon: FaTimesCircle({ style: { color: "var(--color-error)" } }),
   variant: "error",
   children: "An error occurred while processing your request.",
   onClose: () => alert("Closed"),
@@ -74,7 +74,7 @@ export const SuccessDialog = Template.bind({});
 SuccessDialog.args = {
   isOpen: true,
   title: "Success",
-  icon: FaCheckCircle({}),
+  icon: FaCheckCircle({ style: { color: "var(--color-success)" } }),
   variant: "success",
   children: "Your operation was successful!",
   onClose: () => alert("Closed"),
@@ -84,7 +84,7 @@ export const InfoDialog = Template.bind({});
 InfoDialog.args = {
   isOpen: true,
   title: "Information",
-  icon: FaInfoCircle({}),
+  icon: FaInfoCircle({ style: { color: "var(--color-info)" } }), // Updated icon format with style prop
   variant: "info",
   children: "Here is some important information.",
   onClose: () => alert("Closed"),
