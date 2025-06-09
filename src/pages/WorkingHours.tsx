@@ -21,7 +21,7 @@ ChartJS.register(
   PointElement,
   LineElement,
   Tooltip,
-  Legend
+  Legend,
 );
 
 interface Entry {
@@ -38,7 +38,7 @@ const parseTime = (t: string) => {
   const s = t.trim();
   if (!s) return 0;
   const [h, m] = s.split(":");
-  return parseInt(h || "0", 10) + (parseInt(m || "0", 10) / 60);
+  return parseInt(h || "0", 10) + parseInt(m || "0", 10) / 60;
 };
 
 const parseDate = (s: string) => {
@@ -65,7 +65,9 @@ const parseCSV = (text: string): Entry[] => {
 
 const uniqueYears = (data: Entry[]) => {
   const years = Array.from(new Set(data.map((d) => d.date.getFullYear())));
-  return years.sort((a, b) => a - b).map((y) => ({ label: y.toString(), value: y.toString() }));
+  return years
+    .sort((a, b) => a - b)
+    .map((y) => ({ label: y.toString(), value: y.toString() }));
 };
 
 const months = [
@@ -98,7 +100,8 @@ const WorkingHours = () => {
   const yearOptions = [{ label: "All", value: "all" }, ...uniqueYears(entries)];
 
   const filtered = entries.filter((e) => {
-    const matchYear = year === "all" || e.date.getFullYear().toString() === year;
+    const matchYear =
+      year === "all" || e.date.getFullYear().toString() === year;
     const matchMonth =
       month === "all" || (e.date.getMonth() + 1).toString() === month;
     return matchYear && matchMonth;
@@ -119,13 +122,13 @@ const WorkingHours = () => {
   const sumLunch = (data: Entry[]) => data.reduce((s, e) => s + e.lunch, 0);
 
   const weekHours = sumHours(
-    filtered.filter((e) => e.date >= startOfWeek && e.date < endOfWeek)
+    filtered.filter((e) => e.date >= startOfWeek && e.date < endOfWeek),
   );
   const monthHours = sumHours(
-    filtered.filter((e) => e.date >= startOfMonth && e.date < startNextMonth)
+    filtered.filter((e) => e.date >= startOfMonth && e.date < startNextMonth),
   );
   const yearHours = sumHours(
-    filtered.filter((e) => e.date >= startOfYear && e.date < startNextYear)
+    filtered.filter((e) => e.date >= startOfYear && e.date < startNextYear),
   );
   const totalHours = sumHours(filtered);
 
@@ -175,7 +178,9 @@ const WorkingHours = () => {
     const idx = ele[0].index;
     const note = filtered[idx].note;
     setSelectedNote(
-      note ? `${filtered[idx].date.toLocaleDateString()}: ${note}` : "No notes for this day"
+      note
+        ? `${filtered[idx].date.toLocaleDateString()}: ${note}`
+        : "No notes for this day",
     );
   };
 
@@ -213,7 +218,7 @@ const WorkingHours = () => {
               event.nativeEvent as unknown as Event,
               "nearest",
               { intersect: true },
-              false
+              false,
             );
             handleDayClick(elements);
           }}
