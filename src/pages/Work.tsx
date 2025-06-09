@@ -4,6 +4,7 @@ import MoireBackground from "../components/MoireBackground";
 import Ufo from "../assets/images/ufo.webp";
 import sausage from "../assets/images/sausage.webp";
 import fur from "../assets/images/fur.webp";
+import blackletter from "../assets/images/blackletter.webp";
 
 const Work = () => {
   return (
@@ -29,8 +30,8 @@ const Work = () => {
           <div className={styles.scrollableContent}>
             <div className={styles.scrollItem}>
               <img
-                src={Ufo}
-                alt="UFO"
+                src={blackletter}
+                alt="Blackletter"
                 style={{ width: "100%", height: "100%", objectFit: "fill" }}
               />
             </div>
