@@ -63,24 +63,23 @@ const Modal: React.FC<ModalProps> = ({
     >
       <div className={`${styles.modal} ${styles[variant]}`}>
         <div className={styles.header}>
-          {icon && <span className={styles.icon}>{icon}</span>}
-          {title && (
-            <h2 id="modal-title" className={styles.title}>
-              {title}
-            </h2>
-          )}
-          <div className={styles.menu}>
-            {menu}
-            {onClose && (
-              <button
-                className={styles["close-button"]}
-                onClick={onClose}
-                aria-label="Close"
-              >
-                {FaTimes({})}
-              </button>
+          <div className={styles.leftHeader}>
+            {icon && <span className={styles.icon}>{icon}</span>}
+            {title && (
+              <h2 id="modal-title" className={styles.title}>
+                {title}
+              </h2>
             )}
           </div>
+          {onClose && (
+            <button
+              className={styles["close-button"]}
+              onClick={onClose}
+              aria-label="Close"
+            >
+              {FaTimes({})}
+            </button>
+          )}
         </div>
         <div className={styles.content}>
           {variant === "loading" && <div className={styles.spinner} />}
