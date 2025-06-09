@@ -22,19 +22,20 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
-    deploy:
-      needs: build
-      runs-on: ubuntu-latest
-      environment:
-        name: pr-preview
-        url: ${{ steps.deploy.outputs.page_url }}
-      steps:
-        - id: deploy
-          uses: actions/deploy-pages@v4
-          with:
-            preview: true
-        - uses: peter-evans/create-or-update-comment@v4
-          with:
-            issue-number: ${{ github.event.pull_request.number }}
-            body: |
-              🚀 Preview: ${{ steps.deploy.outputs.page_url }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pr-preview
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
+        with:
+          preview: true
+      - uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🚀 Preview: ${{ steps.deploy.outputs.page_url }}
