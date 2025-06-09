@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5b5d2fc7.css",
-    "main.js": "/static/js/main.eaf4272d.js",
+    "main.css": "/static/css/main.80dd6489.css",
+    "main.js": "/static/js/main.2f910972.js",
     "static/js/453.52cffaf3.chunk.js": "/static/js/453.52cffaf3.chunk.js",
     "static/media/404.webp": "/static/media/404.4834f11b5dea47bc0204.webp",
     "static/media/blackletter.webp": "/static/media/blackletter.746cd282621e5a29ac7a.webp",
@@ -38,12 +38,12 @@
     "static/media/TiemposHeadline-Light.otf": "/static/media/TiemposHeadline-Light.6b8be80b9f45412b89af.otf",
     "static/media/TiemposHeadline-Light.woff": "/static/media/TiemposHeadline-Light.65ef5e054c07da318731.woff",
     "index.html": "/index.html",
-    "main.5b5d2fc7.css.map": "/static/css/main.5b5d2fc7.css.map",
-    "main.eaf4272d.js.map": "/static/js/main.eaf4272d.js.map",
+    "main.80dd6489.css.map": "/static/css/main.80dd6489.css.map",
+    "main.2f910972.js.map": "/static/js/main.2f910972.js.map",
     "453.52cffaf3.chunk.js.map": "/static/js/453.52cffaf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b5d2fc7.css",
-    "static/js/main.eaf4272d.js"
+    "static/css/main.80dd6489.css",
+    "static/js/main.2f910972.js"
   ]
 }
