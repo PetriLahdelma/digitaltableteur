@@ -17,25 +17,26 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - uses: actions/configure-pages@v5
       - run: npm ci
       - run: PUBLIC_URL=. npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: pr-preview
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - id: deploy
-        uses: actions/deploy-pages@v4
-        with:
-          preview: true
-      - uses: peter-evans/create-or-update-comment@v4
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            🚀 Preview: ${{ steps.deploy.outputs.page_url }}
+    
+deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      environment:
+        name: github-pages
+        url: ${{ steps.deploy.outputs.page_url }}
+      steps:
+        - id: deploy
+          uses: actions/deploy-pages@v4
+          with:
+            preview: true
+        - uses: peter-evans/create-or-update-comment@v4
+          with:
+            issue-number: ${{ github.event.pull_request.number }}
+            body: |
+              🚀 Preview: ${{ steps.deploy.outputs.page_url }}
