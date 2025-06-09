@@ -1,0 +1,22 @@
+@import "../styles/variables.css";
+@import "../styles/fonts.css";
+
+.page {
+  padding: 2rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.chart {
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.notes {
+  margin-top: 2rem;
+  font-family: var(--primary-body-font, sans-serif);
+}
