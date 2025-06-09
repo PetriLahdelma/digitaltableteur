@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - uses: actions/configure-pages@v5
       - run: npm ci
       - run: PUBLIC_URL=. npm run build
       - uses: actions/upload-pages-artifact@v3
@@ -26,7 +27,7 @@ jobs:
       needs: build
       runs-on: ubuntu-latest
       environment:
-        name: pr-preview
+        name: github-pages
         url: ${{ steps.deploy.outputs.page_url }}
       steps:
         - id: deploy
