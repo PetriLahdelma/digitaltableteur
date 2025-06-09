@@ -26,9 +26,6 @@ const Header = () => {
           <li>
             <a href="/contact">Contact</a>
           </li>
-          <li>
-            <a href="/working-hours">Working hours</a>
-          </li>
         </ul>
       </nav>
     </header>
