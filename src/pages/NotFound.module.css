@@ -1,0 +1,40 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--color-primary);
+  color: var(--inverted-text-color);
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.message {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.homeLink {
+  font-size: 1rem;
+  color: var(--inverted-text-color);
+  text-decoration: none;
+  border: 1px solid var(--inverted-text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.homeLink:hover {
+  background-color: var(--inverted-text-color);
+  color: var(--color-primary);
+}
+
+.notFoundPage img {
+  width: 100%;
+  height: auto;
+}
