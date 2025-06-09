@@ -63,7 +63,7 @@ const Modal: React.FC<ModalProps> = ({
     >
       <div className={`${styles.modal} ${styles[variant]}`}>
         <div className={styles.header}>
-          <div className={styles.leftHeader}>
+          <div className={styles["left-header"]}>
             {icon && <span className={styles.icon}>{icon}</span>}
             {title && (
               <h2 id="modal-title" className={styles.title}>

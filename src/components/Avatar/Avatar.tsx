@@ -28,7 +28,7 @@ const Avatar: React.FC<AvatarProps> = ({
       <img
         src={resolvedImageUrl}
         alt={name || "Avatar"}
-        className={styles.avatarImage}
+          className={styles["avatar-image"]}
         onClick={clickable ? handleClick : undefined}
         style={clickable ? { cursor: "pointer" } : undefined}
       />
@@ -44,7 +44,7 @@ const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <div
-      className={styles.avatarText}
+        className={styles["avatar-text"]}
       onClick={clickable ? handleClick : undefined}
       style={clickable ? { cursor: "pointer" } : undefined}
     >

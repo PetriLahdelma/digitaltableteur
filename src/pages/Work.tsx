@@ -26,23 +26,23 @@ const Work = () => {
       </section>
       <section className={styles.section4}>Section 4</section>
       <section className={styles.section5}>
-        <div className={styles.scrollableContainer}>
-          <div className={styles.scrollableContent}>
-            <div className={styles.scrollItem}>
+          <div className={styles["scrollable-container"]}>
+            <div className={styles["scrollable-content"]}>
+              <div className={styles["scroll-item"]}>
               <img
                 src={blackletter}
                 alt="Blackletter"
                 style={{ width: "100%", height: "100%", objectFit: "fill" }}
               />
             </div>
-            <div className={styles.scrollItem}>
+              <div className={styles["scroll-item"]}>
               <img
                 src={sausage}
                 alt="Sausage"
                 style={{ width: "100%", height: "100%", objectFit: "fill" }}
               />
             </div>
-            <div className={styles.scrollItem}>
+              <div className={styles["scroll-item"]}>
               <img
                 src={fur}
                 alt="Fur"

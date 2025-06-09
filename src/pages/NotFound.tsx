@@ -5,7 +5,7 @@ import Button from "../components/Button/Button";
 
 const NotFound = () => {
   return (
-    <div className={styles.notFoundPage}>
+      <div className={styles["not-found-page"]}>
       <img src={notFoundImage} alt="404 Not Found" />
       <Button variant="secondary" onClick={() => (window.location.href = "/")}>
         Go back to Home
