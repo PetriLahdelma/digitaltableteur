@@ -1,6 +1,4 @@
 import React from "react";
-import blackletter from "../assets/images/blackletter.webp";
-
 const UnderDevelopment = () => {
   if (process.env.NODE_ENV !== "production") {
     return null; // Do not show in development
@@ -13,8 +11,8 @@ const UnderDevelopment = () => {
         top: 0,
         left: 0,
         width: "100%",
-        height: "auto",
-        backgroundImage: `url(${blackletter})`,
+        height: "100%",
+        backgroundColor: "rgb(0, 0, 0)",
         fontFamily: "Moderat, sans-serif",
         fontSize: "2rem",
         color: "#fff",
