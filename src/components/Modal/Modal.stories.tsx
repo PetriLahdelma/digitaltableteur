@@ -3,6 +3,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import Modal, { ModalProps } from "./Modal";
 import Button from "../Button/Button";
 import { FaInfoCircle, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { MdOutlineError } from "react-icons/md";
 
 export default {
   title: "Components/Modal",
@@ -64,7 +65,7 @@ export const ErrorDialog = Template.bind({});
 ErrorDialog.args = {
   isOpen: true,
   title: "Error",
-  icon: FaTimesCircle({ style: { color: "var(--color-error)" } }),
+  icon: MdOutlineError({ style: { color: "var(--color-error)" } }),
   variant: "error",
   children: "An error occurred while processing your request.",
   onClose: () => alert("Closed"),

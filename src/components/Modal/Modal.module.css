@@ -43,6 +43,8 @@
 .header svg {
   vertical-align: middle;
   align-items: center;
+  width: 24px;
+  height: 24px;
 }
 
 .title {
