@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.7d9e3951.css",
-    "main.js": "/static/js/main.254a7a62.js",
+    "main.css": "/static/css/main.f0d2bd50.css",
+    "main.js": "/static/js/main.fef3bf5b.js",
     "static/js/453.52cffaf3.chunk.js": "/static/js/453.52cffaf3.chunk.js",
     "static/media/404.webp": "/static/media/404.4834f11b5dea47bc0204.webp",
     "static/media/blackletter.webp": "/static/media/blackletter.746cd282621e5a29ac7a.webp",
@@ -20,7 +20,6 @@
     "static/media/TiemposText-Bold.otf": "/static/media/TiemposText-Bold.7e18c08a025cbc924fec.otf",
     "static/media/TiemposText-Medium Italic.otf": "/static/media/TiemposText-Medium Italic.014631ea066ce5564dc6.otf",
     "static/media/TiemposText-Regular.otf": "/static/media/TiemposText-Regular.a124c41af18389024fc7.otf",
-    "static/media/Petri Lahdelma Time Bob-Omb(Pete).csv": "/static/media/Petri Lahdelma Time Bob-Omb(Pete).b1ee879ab042c5114898.csv",
     "static/media/TiemposText-Medium.otf": "/static/media/TiemposText-Medium.34ac079b9e8b0981e3c5.otf",
     "static/media/TiemposHeadline-Light.eot": "/static/media/TiemposHeadline-Light.0eba973aa6bd84701e70.eot",
     "static/media/TiemposHeadline-Light.ttf": "/static/media/TiemposHeadline-Light.f22a02269a75ec4b4398.ttf",
@@ -39,12 +38,12 @@
     "static/media/TiemposHeadline-Light.otf": "/static/media/TiemposHeadline-Light.6b8be80b9f45412b89af.otf",
     "static/media/TiemposHeadline-Light.woff": "/static/media/TiemposHeadline-Light.65ef5e054c07da318731.woff",
     "index.html": "/index.html",
-    "main.7d9e3951.css.map": "/static/css/main.7d9e3951.css.map",
-    "main.254a7a62.js.map": "/static/js/main.254a7a62.js.map",
+    "main.f0d2bd50.css.map": "/static/css/main.f0d2bd50.css.map",
+    "main.fef3bf5b.js.map": "/static/js/main.fef3bf5b.js.map",
     "453.52cffaf3.chunk.js.map": "/static/js/453.52cffaf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d9e3951.css",
-    "static/js/main.254a7a62.js"
+    "static/css/main.f0d2bd50.css",
+    "static/js/main.fef3bf5b.js"
   ]
 }
