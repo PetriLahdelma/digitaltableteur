@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.c444ae4f.css",
-    "main.js": "/static/js/main.34417198.js",
+    "main.css": "/static/css/main.0319451f.css",
+    "main.js": "/static/js/main.d1df5dbb.js",
     "static/js/453.52cffaf3.chunk.js": "/static/js/453.52cffaf3.chunk.js",
+    "static/media/future5.gif": "/static/media/future5.b8d16f99b6eb744cc9e6.gif",
     "static/media/404.webp": "/static/media/404.4834f11b5dea47bc0204.webp",
     "static/media/pete-vault-boy.jpg": "/static/media/pete-vault-boy.f71ae35f78511d67a444.jpg",
     "static/media/blackletter.webp": "/static/media/blackletter.746cd282621e5a29ac7a.webp",
@@ -13,6 +14,7 @@
     "static/media/Moderat-Bold.ttf": "/static/media/Moderat-Bold.aef2636d46f65ae7f67a.ttf",
     "static/media/Moderat-Regular.otf": "/static/media/Moderat-Regular.425114be75268ab63c17.otf",
     "static/media/Moderat-Bold.otf": "/static/media/Moderat-Bold.0dd4edb8c50d2001d48b.otf",
+    "static/media/future4.webp": "/static/media/future4.5a898659789f96bcdf31.webp",
     "static/media/TiemposText-SemiboldItalic.otf": "/static/media/TiemposText-SemiboldItalic.7542b95bea7dfab00d51.otf",
     "static/media/TiemposText-Semibold.otf": "/static/media/TiemposText-Semibold.01490a4e0dbdbfed5b7a.otf",
     "static/media/TiemposText-BoldItalic.otf": "/static/media/TiemposText-BoldItalic.f1f7ca01e379acb300f0.otf",
@@ -21,6 +23,7 @@
     "static/media/TiemposText-Medium Italic.otf": "/static/media/TiemposText-Medium Italic.014631ea066ce5564dc6.otf",
     "static/media/TiemposText-Regular.otf": "/static/media/TiemposText-Regular.a124c41af18389024fc7.otf",
     "static/media/TiemposText-Medium.otf": "/static/media/TiemposText-Medium.34ac079b9e8b0981e3c5.otf",
+    "static/media/future9.webp": "/static/media/future9.3b05649d811aa660224f.webp",
     "static/media/TiemposHeadline-Light.eot": "/static/media/TiemposHeadline-Light.0eba973aa6bd84701e70.eot",
     "static/media/TiemposHeadline-Light.ttf": "/static/media/TiemposHeadline-Light.f22a02269a75ec4b4398.ttf",
     "static/media/Moderat-Regular.woff": "/static/media/Moderat-Regular.8cc6f54b6be4958131ff.woff",
@@ -36,14 +39,18 @@
     "static/media/TiemposHeadline-Black.otf": "/static/media/TiemposHeadline-Black.7807b1aefb046389fd2a.otf",
     "static/media/TiemposHeadline-BlackItalic.otf": "/static/media/TiemposHeadline-BlackItalic.656b47923bcdb6c58897.otf",
     "static/media/TiemposHeadline-Light.otf": "/static/media/TiemposHeadline-Light.6b8be80b9f45412b89af.otf",
+    "static/media/future1.webp": "/static/media/future1.86a31196626a6f143a99.webp",
     "static/media/TiemposHeadline-Light.woff": "/static/media/TiemposHeadline-Light.65ef5e054c07da318731.woff",
+    "static/media/future8.webp": "/static/media/future8.4abce5d5ea063c0254a6.webp",
+    "static/media/future2.webp": "/static/media/future2.41637c8bdeeea4e89835.webp",
+    "static/media/future3.webp": "/static/media/future3.007fce61761f4bfff34c.webp",
     "index.html": "/index.html",
-    "main.c444ae4f.css.map": "/static/css/main.c444ae4f.css.map",
-    "main.34417198.js.map": "/static/js/main.34417198.js.map",
+    "main.0319451f.css.map": "/static/css/main.0319451f.css.map",
+    "main.d1df5dbb.js.map": "/static/js/main.d1df5dbb.js.map",
     "453.52cffaf3.chunk.js.map": "/static/js/453.52cffaf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c444ae4f.css",
-    "static/js/main.34417198.js"
+    "static/css/main.0319451f.css",
+    "static/js/main.d1df5dbb.js"
   ]
 }
