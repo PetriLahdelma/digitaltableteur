@@ -3,6 +3,7 @@
 
 .blog {
   padding: 6rem;
+  margin-block-start: 4rem;
 }
 
 .blog h1 {
