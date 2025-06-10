@@ -48,6 +48,7 @@ p + :not(p):not(blockquote) {
 }
 
 .article img {
+  width: 100%;
   max-width: 100%;
   display: block;
   margin: 2rem 0;
@@ -107,4 +108,25 @@ p + :not(p):not(blockquote) {
 }
 .purple {
   background-color: var(--accent-purple);
+}
+
+caption {
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: 1rem;
+  color: var(--primary-text-color);
+  margin-top: 0.5rem;
+  max-width: 100%;
+  display: flex;
+}
+
+.article-caption {
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: 0.85rem;
+  color: var(--secondary-text-color);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.boldText {
+  font-family: var(--secondary-bold-font);
 }
