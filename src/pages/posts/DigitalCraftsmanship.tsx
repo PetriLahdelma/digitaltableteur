@@ -2,20 +2,20 @@ import React from "react";
 import Avatar from "../../components/Avatar/Avatar";
 import Author from "../../components/Author/Author";
 import styles from "../Article.module.css";
+import Pizza from "../../assets/images/pizza.jpg";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 
 const DigitalCraftsmanship = () => (
   <article className={styles.article}>
-    <header>
-      <h1>
-        Digital Craftsmanship — Thoughts on Maintaining Quality in a Hurry-Up
-        Culture
-      </h1>
-      <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
-    </header>
+    <h1>
+      Digital Craftsmanship — Thoughts on Maintaining Quality in a Hurry-Up
+      Culture
+    </h1>
+    <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
     <h2>
       {"<tldr>"}In a hurry-up culture, choosing to care is radical.{"</tldr>"}
     </h2>
+    <img src={Pizza} width="100%" alt="Pizza" className={styles.image} />
     <p>
       The tools are faster, the deadlines tighter, and the expectations steeper.
       Somewhere between shipping faster and scaling bigger, something subtle
