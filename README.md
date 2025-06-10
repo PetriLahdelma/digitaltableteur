@@ -1,12 +1,22 @@
 # Digitaltableteur
 
-░▒▓███████▓▒░▒▓████████▓▒░
-░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  
-░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  
-░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  
-░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  
-░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  
-░▒▓███████▓▒░  ░▒▓█▓▒░
+DDDDDDDDDDDDD       TTTTTTTTTTTTTTTTTTTTTTT
+D::::::::::::DDD    T:::::::::::::::::::::T
+D:::::::::::::::DD  T:::::::::::::::::::::T
+DDD:::::DDDDD:::::D T:::::TT:::::::TT:::::T
+  D:::::D    D:::::DTTTTTT  T:::::T  TTTTTT
+  D:::::D     D:::::D       T:::::T        
+  D:::::D     D:::::D       T:::::T        
+  D:::::D     D:::::D       T:::::T        
+  D:::::D     D:::::D       T:::::T        
+  D:::::D     D:::::D       T:::::T        
+  D:::::D     D:::::D       T:::::T        
+  D:::::D    D:::::D        T:::::T        
+DDD:::::DDDDD:::::D       TT:::::::TT      
+D:::::::::::::::DD        T:::::::::T      
+D::::::::::::DDD          T:::::::::T      
+DDDDDDDDDDDDD             TTTTTTTTTTT      
+
 
 Digitaltableteur is a React application for a portfolio site. Below you'll find how to run the project and a quick overview of the folder structure.
 
