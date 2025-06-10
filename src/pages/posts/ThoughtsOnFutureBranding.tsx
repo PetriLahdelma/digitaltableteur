@@ -15,11 +15,7 @@ const ThoughtsOnFutureBranding = () => {
     <article className={styles.article}>
       <header className={styles.header}>
         <h1>Thoughts on Future Branding</h1>
-        <Author
-          name="Petri Lahdelma"
-          imageUrl="/images/authors/petri-lahdelma.jpg"
-          size="32px"
-        />
+        <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
       </header>
       <p>
         <img src={future1} alt="Future Branding Concept" />

@@ -13,6 +13,7 @@ import DigitalCraftsmanship from "./pages/DigitalCraftsmanship";
 import NotFound from "./pages/NotFound";
 import CookiePolicy from "./pages/CookiePolicy";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
+import ThoughtsOnFutureBranding from "./pages/posts/ThoughtsOnFutureBranding";
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
             <Route
               path="/blog/digital-craftsmanship"
               element={<DigitalCraftsmanship />}
+            />
+            <Route
+              path="/blog/thoughts-on-future-branding"
+              element={<ThoughtsOnFutureBranding />}
             />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="*" element={<NotFound />} />
