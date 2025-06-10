@@ -2,19 +2,19 @@ import React from "react";
 import Avatar from "../../components/Avatar/Avatar";
 import Author from "../../components/Author/Author";
 import styles from "../Article.module.css";
-import Pizza from "../../assets/images/pizza.jpg";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
+import { css } from "storybook/internal/theming";
+import Pizza from "../../assets/images/pizza.jpg";
 
 const DigitalCraftsmanship = () => (
   <article className={styles.article}>
-    <h1>
-      Digital Craftsmanship — Thoughts on Maintaining Quality in a Hurry-Up
-      Culture
-    </h1>
-    <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
-    <h2>
-      {"<tldr>"}In a hurry-up culture, choosing to care is radical.{"</tldr>"}
-    </h2>
+    <header>
+      <h1>
+        Digital Craftsmanship — Thoughts on Maintaining Quality in a Hurry-Up
+        Culture
+      </h1>
+      <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
+    </header>
     <img src={Pizza} width="100%" alt="Pizza" className={styles.image} />
     <p>
       The tools are faster, the deadlines tighter, and the expectations steeper.
@@ -48,7 +48,51 @@ const DigitalCraftsmanship = () => (
     <p>
       AI is writing copy, generating layouts, filling in alt texts and icons —
       and oftentimes doing it quite decently. But the danger isn’t in letting
+      machines help. It’s in letting them decide what “good enough” looks like.
+      When we stop noticing the difference, we stop caring.
     </p>
+    <p>
+      Craft today, more than ever, means keeping a human fingerprint on the
+      product. Not because we should resist progress or the tools that deliver
+      it, but because we’re still the ones accountable for the emotional
+      resonance.
+    </p>
+    <h2>Leave Traces of Care</h2>
+    <p>
+      In every project, there’s a point where we could cut a corner and no one
+      would notice. But someone always does — even if they can’t name it.
+      Quality has a texture. It lingers. Not just in design, but in the culture
+      it fosters: attention to detail becomes contagious. The team starts to
+      raise their own bar.
+    </p>
+    <blockquote>
+      Digital craftsmanship isn’t about perfection. It’s about giving a damn.
+    </blockquote>
+    <h2>In Praise of Slowness, Even When We’re Fast</h2>
+    <p>
+      We won’t go back to slower cycles. That’s not the point. But we can bake
+      slowness into the process: quick iterations, slow reflection. Fast drafts,
+      considered revisions. Space for questions no prompt can answer. In the
+      end, craft is just a pattern of choices made deliberately, not reactively.
+    </p>
+    <strong>In a hurry-up culture, choosing to care is radical.☻</strong>
+    <div className={styles.similar}>
+      <h2>Similar reads</h2>
+      <div className={styles["similar-list"]}>
+        <a
+          href="/blog/workflow-tips"
+          className={`${styles["similar-card"]} ${styles.teal}`}
+        >
+          Workflow Tips
+        </a>
+        <a
+          href="/blog/designing-in-2025"
+          className={`${styles["similar-card"]} ${styles.purple}`}
+        >
+          Designing in 2025
+        </a>
+      </div>
+    </div>
   </article>
 );
 
