@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Article.module.css";
-import Author from "../components/Author/Author";
-import VaultBoy from "../assets/images/pete-vault-boy.jpg";
+import styles from "../Article.module.css";
+import Author from "../../components/Author/Author";
+import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 
 const WorkflowTips = () => (
   <article className={styles.article}>

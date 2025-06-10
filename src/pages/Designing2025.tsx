@@ -1,12 +1,18 @@
 import React from "react";
 import styles from "./Article.module.css";
 import image from "../assets/images/abduction.webp";
+import Author from "../components/Author/Author";
+import VaultBoy from "../assets/images/pete-vault-boy.jpg";
 
 const Designing2025 = () => (
   <article className={styles.article}>
     <header>
-      <h1>Designing in 2025: Navigating the AI-Assisted Creative Landscape</h1>
-      <p className={styles.author}>By Digitaltableteur</p>
+      <h1>
+        Designing in 2025:
+        <br />
+        Navigating the AI-Assisted Creative Landscape
+      </h1>
+      <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
     </header>
     <p>
       After more than two decades in the design field, I’ve had the pleasure and
@@ -130,15 +136,7 @@ const Designing2025 = () => (
     <p>
       Because the goal isn’t just to make things—it’s to make things matter.
     </p>
-    <p>And in 2025, that principle has never been more vital.</p>
-
-    <img src={image} alt="abstract background" />
-    <video className={styles.video} controls>
-      <source
-        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
-        type="video/webm"
-      />
-    </video>
+    <p>And in 2025, that principle has never been more vital.☻</p>
 
     <div className={styles.similar}>
       <h2>Similar reads</h2>

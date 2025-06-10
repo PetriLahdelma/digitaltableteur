@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Blog.module.css";
+import { posts } from "./posts";
 
 interface Post {
   title: string;
@@ -7,38 +8,22 @@ interface Post {
   link: string;
   readTime: string;
   color: string;
+  date: string;
+  component: React.FC;
 }
 
-const posts: Post[] = [
-  {
-    title: "Designing in 2025: Navigating the AI-Assisted Creative Landscape",
-    lead: "After more than two decades in the design field, we’re exploring how AI partners with creativity.",
-    link: "/blog/designing-in-2025",
-    readTime: "5 min read",
-    color: styles.blue,
-  },
-  {
-    title: "Workflow Tips",
-    lead: "A behind-the-scenes look at how we keep projects moving.",
-    link: "/blog/workflow-tips",
-    readTime: "3 min read",
-    color: styles.blue,
-  },
-  {
-    title: "Digital Craftsmanship",
-    lead: "Thoughts on maintaining quality in a hurry-up culture.",
-    link: "/blog/digital-craftsmanship",
-    readTime: "4 min read",
-    color: styles.blue,
-  },
-];
-
 const Blog = () => {
+  const sortedPosts = posts.sort((a: Post, b: Post) => {
+    const dateA = new Date(a.date.split(".").reverse().join("-"));
+    const dateB = new Date(b.date.split(".").reverse().join("-"));
+    return dateB.getTime() - dateA.getTime();
+  });
+
   return (
     <div className={styles.blog}>
-      <h1>Articles on Design and Technology</h1>
+      <h1>Articles</h1>
       <div className={styles.list}>
-        {posts.map((post) => (
+        {sortedPosts.map((post: Post) => (
           <a
             key={post.link}
             href={post.link}
