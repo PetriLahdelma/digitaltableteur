@@ -1,0 +1,17 @@
+@import "../styles/variables.css";
+@import "../styles/fonts.css";
+
+.policyPage {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: var(--primary-body-font, sans-serif);
+  line-height: 1.6;
+}
+
+.policyPage h1 {
+  font-family: var(--secondary-heading-font, sans-serif);
+  font-weight: var(--secondary-heading-weight, 400);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
