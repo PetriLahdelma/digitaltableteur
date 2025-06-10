@@ -28,6 +28,8 @@
   color: inherit;
   padding: 1.5rem;
   transition: background-color 0.2s;
+  background-color: var(--color-light-bg);
+  border: 2px solid var(--color-primary);
 }
 
 .card:hover {
