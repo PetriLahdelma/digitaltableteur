@@ -1,13 +1,4 @@
 # Digitaltableteur
-
- (            
- )\ )  *   )  
-(()/(` )  /(  
- /(_))( )(_)) 
-(_))_(_(_())  
- |   \_   _|  
- | |) || |    
- |___/ |_|    
               
 Digitaltableteur is a React application for a portfolio site. Below you'll find how to run the project and a quick overview of the folder structure.
 
