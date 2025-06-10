@@ -6,6 +6,7 @@ type AvatarProps = {
   imageUrl?: string | { default: string };
   clickable?: boolean;
   destinationUrl?: string;
+  size?: string;
 };
 
 const Avatar: React.FC<AvatarProps> = ({
@@ -13,6 +14,7 @@ const Avatar: React.FC<AvatarProps> = ({
   imageUrl,
   clickable,
   destinationUrl,
+  size,
 }) => {
   const resolvedImageUrl =
     typeof imageUrl === "string" ? imageUrl : imageUrl?.default;
@@ -23,6 +25,8 @@ const Avatar: React.FC<AvatarProps> = ({
     }
   };
 
+  const avatarStyle = size ? { width: size, height: size } : undefined;
+
   if (resolvedImageUrl) {
     return (
       <img
@@ -30,7 +34,7 @@ const Avatar: React.FC<AvatarProps> = ({
         alt={name || "Avatar"}
         className={styles.avatarImage}
         onClick={clickable ? handleClick : undefined}
-        style={clickable ? { cursor: "pointer" } : undefined}
+        style={avatarStyle}
       />
     );
   }
@@ -46,7 +50,7 @@ const Avatar: React.FC<AvatarProps> = ({
     <div
       className={styles.avatarText}
       onClick={clickable ? handleClick : undefined}
-      style={clickable ? { cursor: "pointer" } : undefined}
+      style={avatarStyle}
     >
       {initials}
     </div>

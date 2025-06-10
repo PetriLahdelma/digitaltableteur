@@ -1,0 +1,11 @@
+.authorContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.author {
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: 1rem;
+  color: var(--color-primary);
+}
