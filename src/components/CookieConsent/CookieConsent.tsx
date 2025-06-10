@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
 import Link from "../Link/Link";
+import styles from "./CookieConsent.module.css";
 
 const CookieConsent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,11 +40,16 @@ const CookieConsent = () => {
       }
     >
       <p>
-        We use cookies to improve your experience. Choosing
+        We use cookies to improve your experience. Choosing &nbsp;
         <strong>Accept all</strong> enables optional analytics cookies.
         Selecting <strong>Accept only essential</strong> stores only the cookies
-        required for the site to function. Read our
-        <Link href="/cookie-policy"> cookie policy</Link> to learn more.
+        required for the site to function.
+        <br />
+        Read our&nbsp;
+        <Link size="S" href="/cookie-policy">
+          cookie policy
+        </Link>
+        &nbsp;to learn more.
       </p>
     </Modal>
   );
