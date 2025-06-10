@@ -20,10 +20,12 @@ const ThoughtsOnFutureBranding = () => {
           company does) from the other with numerous defining sub-genres and
           classifications, such as entry-level, iconic, luxury, etc. Usually
           consisting of a logo (logomark/logotype) and other graphic means
-          designed to increase brand recognition. Brands have now adopted
-          subtler tactics in retrospect to the early days. Brands tell stories
-          on popular platforms—and in a subtle way that is nearly
-          indistinguishable (advertorials) from the media readers already
+          designed to increase brand recognition.
+          <blockquote>Brands have now adopted subtler tactics in retrospect to the early days.</blockquote>
+        </p>
+        <p>
+          Brands tell stories on popular platforms—and in a subtle way that is
+          nearly indistinguishable (advertorials) from the media readers already
           consume. By molding the message to the platform, brands can draw loyal
           customers and occasionally even make their content go viral. Tone of
           voice plays a big role in how brands are adopted by the masses. This

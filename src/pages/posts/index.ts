@@ -5,6 +5,15 @@ import Designing2025 from "./Designing2025";
 
 export const posts = [
   {
+    title: "Template Article",
+    lead: "This is a template article for testing purposes.",
+    link: "/blog/template-article",
+    readTime: "1 min read",
+    color: "blue",
+    date: "07.06.2018",
+    component: ThoughtsOnFutureBranding,
+  },
+  {
     title: "Thoughts on Future Branding",
     lead: "Exploring branding in the age of AI and exponential design.",
     link: "/blog/thoughts-on-future-branding",
