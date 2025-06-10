@@ -5,8 +5,10 @@
   max-width: 60rem;
   margin: 0 auto;
   padding: 2rem;
-  font-family: var(--primary-body-font, sans-serif);
+  font-family: var(--secondary-body-font, serif);
+  font-size: 1.5rem;
   line-height: 1.6;
+  margin-block-start: 7rem;
 }
 
 .article h1 {
@@ -15,22 +17,33 @@
   margin-bottom: 0.5rem;
 }
 
-.author {
-  font-size: 0.875rem;
-  color: var(--color-muted);
-  margin-bottom: 2rem;
-}
-
 .article h2 {
   font-family: var(--secondary-heading-font, sans-serif);
   font-size: 1.75rem;
   margin-top: 2rem;
 }
 
+.article h3 {
+  font-family: var(--secondary-heading-font, sans-serif);
+  color: var(--primary-text-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.5rem;
+}
+
+h3 + p {
+  margin-block-start: 1rem;
+}
+
+p + :not(p):not(blockquote) {
+  padding-block-start: 2rem;
+}
+
 .article blockquote {
-  margin: 1.5rem 0;
+  margin-block: 4rem;
   padding-left: 1rem;
-  border-left: 4px solid var(--color-gray);
+  border-left: 4px solid var(--primary-text-color);
   font-style: italic;
 }
 
@@ -40,7 +53,24 @@
   margin: 2rem 0;
 }
 
+.authorContainer {
+  display: flex;
+  align-items: center; /* Align image and text vertically */
+  gap: 0.5rem; /* Add spacing between image and text */
+}
+
+.author {
+  display: flex;
+  flex-direction: row;
+  font-family: var(--primary-body-font);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
 .video {
+  display: block;
+  max-width: 100%;
   width: 100%;
   margin: 2rem 0;
 }
