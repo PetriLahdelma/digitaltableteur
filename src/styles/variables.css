@@ -3,10 +3,11 @@
   --primary-body-font: "Moderat-Regular", sans-serif;
   --secondary-body-font: "TiemposHeadline-Regular", serif;
 
+  --primary-bold-font: "Moderat-Bold", sans-serif;
+  --secondary-bold-font: "TiemposHeadline-Semibold", serif;
+
   --primary-heading-font: "Tiempos Headline", Cambria, serif;
-  --primary-heading-weight: 400;
   --secondary-heading-font: "Moderat", sans-serif;
-  --secondary-heading-weight: 400;
 
   /* Text colors */
   --primary-text-color: #00f;
