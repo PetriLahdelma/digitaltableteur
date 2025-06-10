@@ -11,12 +11,15 @@ import Designing2025 from "./pages/Designing2025";
 import WorkflowTips from "./pages/WorkflowTips";
 import DigitalCraftsmanship from "./pages/DigitalCraftsmanship";
 import NotFound from "./pages/NotFound";
+import CookiePolicy from "./pages/CookiePolicy";
+import CookieConsent from "./components/CookieConsent/CookieConsent";
 
 function App() {
   return (
     <Router>
       <div>
         <UnderDevelopment />
+        <CookieConsent />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -30,6 +33,7 @@ function App() {
               path="/blog/digital-craftsmanship"
               element={<DigitalCraftsmanship />}
             />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
