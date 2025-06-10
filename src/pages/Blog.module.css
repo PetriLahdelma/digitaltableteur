@@ -21,6 +21,8 @@
 }
 
 .card {
+  background-color: var(--color-light-bg);
+  border: 2px solid var(--color-primary);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

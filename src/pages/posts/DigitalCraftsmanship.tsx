@@ -1,5 +1,4 @@
 import React from "react";
-import Avatar from "../../components/Avatar/Avatar";
 import Author from "../../components/Author/Author";
 import styles from "../Article.module.css";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
