@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.1a344c8e.css",
-    "main.js": "/static/js/main.7d88a9f0.js",
+    "main.css": "/static/css/main.ac343c54.css",
+    "main.js": "/static/js/main.94d24fbe.js",
     "static/js/453.52cffaf3.chunk.js": "/static/js/453.52cffaf3.chunk.js",
     "static/media/404.webp": "/static/media/404.4834f11b5dea47bc0204.webp",
+    "static/media/pete-vault-boy.jpg": "/static/media/pete-vault-boy.f71ae35f78511d67a444.jpg",
     "static/media/blackletter.webp": "/static/media/blackletter.746cd282621e5a29ac7a.webp",
-    "static/media/abduction.webp": "/static/media/abduction.45f873d31fde735aa60b.webp",
     "static/media/sausage.webp": "/static/media/sausage.9fe71261c5a934ee9c0f.webp",
     "static/media/Moderat-Regular.eot": "/static/media/Moderat-Regular.da1560470afc5b97bb5b.eot",
     "static/media/Moderat-Regular.ttf": "/static/media/Moderat-Regular.a2f5d8ffc1a74928e3a2.ttf",
@@ -38,12 +38,12 @@
     "static/media/TiemposHeadline-Light.otf": "/static/media/TiemposHeadline-Light.6b8be80b9f45412b89af.otf",
     "static/media/TiemposHeadline-Light.woff": "/static/media/TiemposHeadline-Light.65ef5e054c07da318731.woff",
     "index.html": "/index.html",
-    "main.1a344c8e.css.map": "/static/css/main.1a344c8e.css.map",
-    "main.7d88a9f0.js.map": "/static/js/main.7d88a9f0.js.map",
+    "main.ac343c54.css.map": "/static/css/main.ac343c54.css.map",
+    "main.94d24fbe.js.map": "/static/js/main.94d24fbe.js.map",
     "453.52cffaf3.chunk.js.map": "/static/js/453.52cffaf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1a344c8e.css",
-    "static/js/main.7d88a9f0.js"
+    "static/css/main.ac343c54.css",
+    "static/js/main.94d24fbe.js"
   ]
 }
