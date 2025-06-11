@@ -10,7 +10,7 @@
   font-family: var(--primary-heading-font, serif);
   font-size: 5rem;
   font-weight: var(--primary-heading-weight, 300);
-  margin-bottom: 12rem;
+  margin-block: 6rem;
   color: var(--color-primary);
 }
 
