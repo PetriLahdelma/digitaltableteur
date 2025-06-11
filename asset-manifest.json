@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8b51b689.css",
-    "main.js": "/static/js/main.aedcb3b1.js",
+    "main.css": "/static/css/main.9e9021f1.css",
+    "main.js": "/static/js/main.ce11d314.js",
     "static/js/453.52cffaf3.chunk.js": "/static/js/453.52cffaf3.chunk.js",
     "static/media/future5.gif": "/static/media/future5.b8d16f99b6eb744cc9e6.gif",
     "static/media/404.webp": "/static/media/404.4834f11b5dea47bc0204.webp",
@@ -43,15 +43,16 @@
     "static/media/future1.webp": "/static/media/future1.86a31196626a6f143a99.webp",
     "static/media/TiemposHeadline-Light.woff": "/static/media/TiemposHeadline-Light.65ef5e054c07da318731.woff",
     "static/media/future8.webp": "/static/media/future8.4abce5d5ea063c0254a6.webp",
+    "static/media/future6.webp": "/static/media/future6.fe3d059ed8bc2f94ebf0.webp",
     "static/media/future2.webp": "/static/media/future2.41637c8bdeeea4e89835.webp",
     "static/media/future3.webp": "/static/media/future3.007fce61761f4bfff34c.webp",
     "index.html": "/index.html",
-    "main.8b51b689.css.map": "/static/css/main.8b51b689.css.map",
-    "main.aedcb3b1.js.map": "/static/js/main.aedcb3b1.js.map",
+    "main.9e9021f1.css.map": "/static/css/main.9e9021f1.css.map",
+    "main.ce11d314.js.map": "/static/js/main.ce11d314.js.map",
     "453.52cffaf3.chunk.js.map": "/static/js/453.52cffaf3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8b51b689.css",
-    "static/js/main.aedcb3b1.js"
+    "static/css/main.9e9021f1.css",
+    "static/js/main.ce11d314.js"
   ]
 }
