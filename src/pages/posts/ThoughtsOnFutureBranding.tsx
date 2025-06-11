@@ -9,6 +9,7 @@ import future2 from "../../assets/images/future2.webp";
 import future3 from "../../assets/images/future3.webp";
 import future4 from "../../assets/images/future4.webp";
 import future5 from "../../assets/images/future5.gif";
+import future8 from "../../assets/images/future6.webp";
 
 const ThoughtsOnFutureBranding = () => {
   return (
@@ -118,6 +119,31 @@ const ThoughtsOnFutureBranding = () => {
       <caption style={{ display: "block", textAlign: "center" }}>
         Identity for Ministry for Foreign Affairs of Finland echoes the world
         events with changing color schemes. By 358
+      </caption>
+      <img src={future8} alt="A futuristic branding concept" />
+      <caption
+        style={{
+          display: "block",
+          textAlign: "center",
+          marginBlockEnd: "2rem",
+        }}
+      >
+        The applications make great use of the possible variations of the globe
+        that yields some lovely color combinations and compositions. By 358
+      </caption>
+      <div className={styles.videoContainer}>
+        <iframe
+          width="100%"
+          height="315"
+          src="https://www.youtube.com/embed/YZUP4vfDonU?si=uSndXsN5I-dyBAoh"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        ></iframe>
+      </div>
+      <caption style={{ display: "block", textAlign: "center" }}>
+        An organisation that operates in a stable manner in a turbulent world
+        and that works to make the world a better place. Video courtesy of the
+        Ministry for Foreign Affairs of Finland and 358
       </caption>
       <p>
         By focusing on the individual experience instead of the user itself, we
