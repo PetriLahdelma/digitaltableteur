@@ -1,11 +1,11 @@
-.avatarImage {
+.avatar-image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.avatarText {
+.avatar-text {
   width: 40px;
   height: 40px;
   border-radius: 50%;

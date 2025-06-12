@@ -94,17 +94,17 @@ section {
   align-items: center;
 }
 
-.scrollableContainer {
+.scrollable-container {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
 }
 
-.scrollableContent {
+.scrollable-content {
   display: inline-flex;
 }
 
-.scrollItem {
+.scroll-item {
   flex: 0 0 auto;
   width: fit-content;
   background-color: var(--color-secondary);

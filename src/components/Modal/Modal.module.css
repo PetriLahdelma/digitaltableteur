@@ -23,7 +23,7 @@
   flex-direction: column;
 }
 
-.modalContent {
+.modal-content {
   padding-block-start: 1rem;
 }
 
@@ -34,7 +34,7 @@
   align-items: center;
 }
 
-.leftHeader {
+.left-header {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;

@@ -33,18 +33,18 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   };
 
   return (
-    <div className={styles.phoneInputContainer}>
+    <div className={styles["phone-input-container"]}>
       <Label htmlFor={label} tooltipText={error} required={!!error}>
         {label}
       </Label>
       <input
         type="tel"
-        className={`${styles.phoneInputField} ${error ? styles.error : ""}`}
+        className={`${styles["phone-input-field"]} ${error ? styles.error : ""}`}
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
       />
-      {error && <span className={styles.errorMessage}>{error}</span>}
+      {error && <span className={styles["error-message"]}>{error}</span>}
     </div>
   );
 };
