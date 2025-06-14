@@ -2,6 +2,7 @@ import ThoughtsOnFutureBranding from "./ThoughtsOnFutureBranding";
 import DigitalCraftsmanship from "./DigitalCraftsmanship";
 import WorkflowTips from "./WorkflowTips";
 import Designing2025 from "./Designing2025";
+import FigmaMCP from "./FigmaMCP";
 
 export const posts = [
   {
@@ -39,5 +40,14 @@ export const posts = [
     color: "blue",
     date: "10.06.2025",
     component: Designing2025,
+  },
+  {
+    title: "MCP, Design Systems, and Generative UI",
+    lead: "How Figma's MCP server speeds up design-to-code workflows.",
+    link: "/blog/figma-mcp-design-systems",
+    readTime: "4 min read",
+    color: "pink",
+    date: "12.06.2025",
+    component: FigmaMCP,
   },
 ];

@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound";
 import CookiePolicy from "./pages/CookiePolicy";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
 import ThoughtsOnFutureBranding from "./pages/posts/ThoughtsOnFutureBranding";
+import FigmaMCP from "./pages/posts/FigmaMCP";
 
 function App() {
   return (
@@ -37,6 +38,10 @@ function App() {
             <Route
               path="/blog/thoughts-on-future-branding"
               element={<ThoughtsOnFutureBranding />}
+            />
+            <Route
+              path="/blog/figma-mcp-design-systems"
+              element={<FigmaMCP />}
             />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="*" element={<NotFound />} />
