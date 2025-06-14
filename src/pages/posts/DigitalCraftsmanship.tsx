@@ -17,6 +17,15 @@ const DigitalCraftsmanship = () => (
     </header>
     <img src={Pizza} width="100%" alt="Pizza" className={styles.image} />
     <p>
+      Our very first lecture in design school was led by a passionate advocate
+      for craftsmanship, Professor Tapio Vapaasalo. He began his lecture with
+      showing a two distinctly different youtube videos. The first one featured
+      a parrot that could mimic whatever the owner said, while the second one
+      featured a craftsman who had spent years perfecting his skill. The
+      difference was clear: the parrot could repeat words, but the craftsman
+      created something meaningful.
+    </p>
+    <p>
       The tools are faster, the deadlines tighter, and the expectations steeper.
       Somewhere between shipping faster and scaling bigger, something subtle
       gets lost. Not visibly. But you can feel it — in the way a product
