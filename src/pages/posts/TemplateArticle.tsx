@@ -15,7 +15,7 @@ const TemplateArticle = () => {
         your article. Ensure that the content is well-structured and formatted
         according to the design guidelines.
       </p>
-        <p>Ensure that all media files are properly linked and accessible.</p>
+      <p>Ensure that all media files are properly linked and accessible.</p>
     </article>
   );
 };
