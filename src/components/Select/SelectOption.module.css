@@ -1,6 +1,6 @@
 .option {
   font-size: 1rem;
-  color: var(--primary-text-color, #222);
+  color: var(--primary-text-color);
   background: var(--background, #fff);
   padding: 0.5em 1em;
   /* Hide native option visually but keep it accessible for screen readers */

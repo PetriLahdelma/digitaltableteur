@@ -15,11 +15,11 @@ const FigmaMCP = () => (
     <img src={DTmindmap} alt="Illustration" />
     <p>
       Recently, I experimented with Figma’s official MCP (Metadata Component
-      Properties) server in tandem with the design system, and the results were
-      eye-opening. By enriching our components with machine-readable metadata
-      directly within Figma, we unlocked a new layer of semantic clarity — not
-      just for designers, but for tooling and automation as well. This
-      integration allowed us to embed context such as intent, behavior, and
+      Properties) server in tandem with the dt design system, and the results
+      were eye-opening. By enriching the components with machine-readable
+      metadata directly within Figma, I unlocked a new layer of semantic clarity
+      — not just for designers, but for tooling and automation as well. This
+      integration allowed me to embed context such as intent, behavior, and
       variant logic directly into each component.
     </p>
     <p>
@@ -34,9 +34,16 @@ const FigmaMCP = () => (
     </p>
     <h2>The Problem with the Current Workflow</h2>
     <p>
-      Even with well-documented systems the handoff from designer to developer
-      often involves translating visual intent and double-checking tokens.
-      Details can slip and iteration slows down.
+      Even with well-documented systems, the handoff from designer to developer
+      often involves a layer of translation—interpreting visual intent,
+      cross-referencing token usage, and validating component variants. It’s a
+      process that still relies heavily on human interpretation and manual
+      alignment. Small details, like the exact padding on a card or the semantic
+      use of a color token, can easily slip through the cracks, leading to
+      inconsistencies in implementation. These discrepancies not only require
+      back-and-forth to resolve but can also erode trust in the system itself.
+      As a result, iteration slows down, and teams spend more time fixing gaps
+      than pushing the experience forward.
     </p>
     <h2>What MCP Changes</h2>
     <p>
@@ -60,12 +67,12 @@ const FigmaMCP = () => (
       I took it a step further by connecting the output to a local tool that
       generates layouts from text prompts. Typing “Build a login form” or
       “Create a three column feature grid” produces a quick preview that
-      respects our components and styling conventions.
+      respects my components and styling conventions.
     </p>
     <h2>This Isn’t About Replacing Roles</h2>
     <p>
-      Engineers still play a critical role in refining the output, ensuring
-      performance, scalability, and maintainability, while designers continue to
+      Engineering still plays a critical role in refining the output, ensuring
+      performance, scalability, and maintainability, while design continues to
       shape and own the overall user experience. But what’s changing is the
       nature of that collaboration. By automating the repetitive and predictable
       parts of the workflow — the boilerplate code, standard layout scaffolding,
@@ -83,7 +90,7 @@ const FigmaMCP = () => (
       At least my personal goal is to make this workflow approachable for bigger
       teams. With stable tools and repeatable patterns, the gap between idea and
       implementation keeps shrinking. It’s an exciting time to rethink how we
-      collaborate—and MCP is a big part of that conversation.☻
+      collaborate—and MCP&#39;s are a big part of that conversation.☻
     </p>
     <h2>Share</h2>
     <SocialShare
