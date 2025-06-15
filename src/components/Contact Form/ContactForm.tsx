@@ -16,6 +16,7 @@ const ContactForm = () => {
     message: "",
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isErrorOpen, setIsErrorOpen] = useState(false);
 
   const handleFullNameChange = (value: string | number) => {
     setFormData({ ...formData, fullName: String(value) });
@@ -37,9 +38,12 @@ const ContactForm = () => {
     setFormData({ ...formData, interest: selectedOptions.join(", ") });
   };
 
-  const SERVICE_ID = "service_ix55445";
-  const TEMPLATE_ID = "template_bfw826h";
-  const PUBLIC_KEY = "ockSR3pBVF7_k4-Tu";
+  const SERVICE_ID =
+    process.env.REACT_APP_EMAIL_SERVICE_ID || "service_ix55445";
+  const TEMPLATE_ID =
+    process.env.REACT_APP_EMAIL_TEMPLATE_ID || "template_bfw826h";
+  const PUBLIC_KEY =
+    process.env.REACT_APP_EMAIL_PUBLIC_KEY || "ockSR3pBVF7_k4-Tu";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,6 +61,7 @@ const ContactForm = () => {
       .catch((err) => {
         // eslint-disable-next-line no-console
         console.error("Failed to send message", err);
+        setIsErrorOpen(true);
       });
   };
 
@@ -139,6 +144,14 @@ const ContactForm = () => {
         }}
       >
         Email successfully sent
+      </Modal>
+      <Modal
+        isOpen={isErrorOpen}
+        variant="error"
+        title="Error"
+        onClose={() => setIsErrorOpen(false)}
+      >
+        Failed to send message. Please try again later.
       </Modal>
     </div>
   );
