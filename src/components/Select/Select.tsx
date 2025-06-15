@@ -1,11 +1,13 @@
 import React from "react";
 import { FaChevronDown } from "react-icons/fa";
 import Label from "../Label/Label";
+import SelectOption from "./SelectOption";
 import styles from "./Select.module.css";
 
 interface SelectProps {
   label: string;
-  options: { value: string; label: string }[];
+  children?: React.ReactNode;
+  options?: { value: string; label: string }[];
   value?: string;
   // eslint-disable-next-line no-unused-vars
   onChange?: (value: string) => void;
@@ -18,6 +20,7 @@ const Select: React.FC<SelectProps> = ({
   value,
   onChange,
   disabled = false,
+  children,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (onChange) {
@@ -35,11 +38,17 @@ const Select: React.FC<SelectProps> = ({
           onChange={handleChange}
           disabled={disabled}
         >
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
+          {/* Render children if provided, otherwise map options */}
+          {children
+            ? children
+            : options.map((option) => (
+                <SelectOption
+                  key={option.value}
+                  value={option.value}
+                  label={option.label}
+                  disabled={disabled}
+                />
+              ))}
         </select>
         {FaChevronDown({ className: styles["chevron-icon"] })}
       </div>

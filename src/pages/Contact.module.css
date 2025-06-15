@@ -59,3 +59,7 @@
   text-align: center;
   margin: 0;
 }
+
+.checkbox-group {
+  margin-block-start: 1rem;
+}

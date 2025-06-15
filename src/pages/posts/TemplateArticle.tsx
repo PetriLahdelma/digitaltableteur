@@ -2,6 +2,8 @@ import React from "react";
 import styles from "../Article.module.css";
 import Author from "../../components/Author/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
+import Card from "../../components/Card/Card";
+import { SocialShare } from "../../components/SocialShare/SocialShare";
 
 const TemplateArticle = () => {
   return (
@@ -16,6 +18,26 @@ const TemplateArticle = () => {
         according to the design guidelines.
       </p>
       <p>Ensure that all media files are properly linked and accessible.</p>
+      <h2>Share</h2>
+      <SocialShare
+        url={window.location.href}
+        title="Thoughts on Future Branding"
+      />
+      <div className={styles.similar}>
+        <h2>Similar reads</h2>
+        <div className={styles["similar-list"]}>
+          <Card
+            title="Title of Similar Article"
+            link="/blog/template-article"
+            className={`${styles["similar-card"]}`}
+          ></Card>
+          <Card
+            title="Title of Similar Article"
+            link="/blog/template-article"
+            className={`${styles["similar-card"]}`}
+          ></Card>
+        </div>
+      </div>
     </article>
   );
 };

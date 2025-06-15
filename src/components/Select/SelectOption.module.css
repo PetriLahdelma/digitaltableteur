@@ -1,0 +1,27 @@
+.option {
+  font-size: 1rem;
+  color: var(--primary-text-color, #222);
+  background: var(--background, #fff);
+  padding: 0.5em 1em;
+  /* Hide native option visually but keep it accessible for screen readers */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* Hide the option visually in most browsers */
+.option {
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.option:disabled {
+  color: var(--disabled-text-color, #aaa);
+  background: var(--disabled-bg, #f5f5f5);
+  cursor: not-allowed;
+}

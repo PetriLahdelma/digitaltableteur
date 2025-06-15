@@ -2,6 +2,8 @@ import React from "react";
 import styles from "../Article.module.css";
 import Author from "../../components/Author/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
+import Card from "../../components/Card/Card";
+import { SocialShare } from "../../components/SocialShare/SocialShare";
 
 const Designing2025 = () => (
   <article className={styles.article}>
@@ -136,22 +138,24 @@ const Designing2025 = () => (
       Because the goal isn’t just to make things—it’s to make things matter.
     </p>
     <p>And in 2025, that principle has never been more vital.☻</p>
-
+    <h2>Share</h2>
+    <SocialShare
+      url={window.location.href}
+      title="Designing in 2025: Navigating the AI-Assisted Creative Landscape"
+    />
     <div className={styles.similar}>
       <h2>Similar reads</h2>
       <div className={styles["similar-list"]}>
-        <a
-          href="/blog/workflow-tips"
-          className={`${styles["similar-card"]} ${styles.teal}`}
-        >
-          Workflow Tips
-        </a>
-        <a
-          href="/blog/digital-craftsmanship"
-          className={`${styles["similar-card"]} ${styles.purple}`}
-        >
-          Digital Craftsmanship
-        </a>
+        <Card
+          title="Workflow Tips"
+          link="/blog/workflow-tips"
+          className={`${styles["similar-card"]}`}
+        ></Card>
+        <Card
+          title="Digital Craftsmanship"
+          link="/blog/digital-craftsmanship"
+          className={`${styles["similar-card"]}`}
+        ></Card>
       </div>
     </div>
   </article>
