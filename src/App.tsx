@@ -15,6 +15,7 @@ import CookiePolicy from "./pages/CookiePolicy";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
 import ThoughtsOnFutureBranding from "./pages/posts/ThoughtsOnFutureBranding";
 import FigmaMCP from "./pages/posts/FigmaMCP";
+import PetriLahdelmaBio from "./pages/posts/PetriLahdelmaBio";
 
 function App() {
   return (
@@ -42,6 +43,10 @@ function App() {
             <Route
               path="/blog/figma-mcp-design-systems"
               element={<FigmaMCP />}
+            />
+            <Route
+              path="/blog/petri-lahdelma-bio"
+              element={<PetriLahdelmaBio />}
             />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="*" element={<NotFound />} />
