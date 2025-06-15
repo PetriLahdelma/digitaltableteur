@@ -29,7 +29,7 @@ export const posts = [
     link: "/blog/workflow-tips",
     readTime: "3 min read",
     color: "teal",
-    date: "10.06.2025",
+    date: "12.05.2025",
     component: WorkflowTips,
   },
   {
@@ -38,7 +38,7 @@ export const posts = [
     link: "/blog/designing-in-2025",
     readTime: "5 min read",
     color: "blue",
-    date: "10.06.2025",
+    date: "09.02.2025",
     component: Designing2025,
   },
   {
@@ -47,7 +47,7 @@ export const posts = [
     link: "/blog/figma-mcp-design-systems",
     readTime: "4 min read",
     color: "pink",
-    date: "12.06.2025",
+    date: "05.06.2025",
     component: FigmaMCP,
   },
 ];
