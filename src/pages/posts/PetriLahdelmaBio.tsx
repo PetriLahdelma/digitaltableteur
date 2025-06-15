@@ -19,6 +19,7 @@ const PetriLahdelmaBio = () => (
       at the University of Cumbria, and later to Aalto University in Helsinki
       for a master&#39;s degree.
     </p>
+    <br />
     <p>
       Among the mentors who shaped his craft were Rhiannon Robinson, who
       sharpened his critical eye, and Tapio Vapaasalo, who instilled a love for
@@ -26,6 +27,7 @@ const PetriLahdelmaBio = () => (
       decades moving through agencies, startups, and entrepreneurial ventures,
       always refusing to stand still.
     </p>
+    <br />
     <p>
       Today he leads a design system team in a global enterprise of more than
       300,000 colleagues, balancing enterprise UX with scalable systems
@@ -34,6 +36,7 @@ const PetriLahdelmaBio = () => (
       as New Things Company, and he laid the strategic groundwork for the
       Helsinki Design System.
     </p>
+    <br />
     <p>
       Throughout his career Petri has founded and led design guilds and special
       interest programs, shaping team culture as much as the work itself. He
@@ -41,6 +44,7 @@ const PetriLahdelmaBio = () => (
       of his own—his influence lives in the systems, standards, and ethics he
       brings to every project.
     </p>
+    <br />
     <p>
       He believes clarity matters more than decoration, that form follows
       function, and that users seldom say what they really need. Guided by
