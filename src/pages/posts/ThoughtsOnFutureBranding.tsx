@@ -10,6 +10,8 @@ import future3 from "../../assets/images/future3.webp";
 import future4 from "../../assets/images/future4.webp";
 import future5 from "../../assets/images/future5.gif";
 import future8 from "../../assets/images/future6.webp";
+import { SocialShare } from "../../components/SocialShare/SocialShare";
+import Card from "../../components/Card/Card";
 
 const ThoughtsOnFutureBranding = () => {
   return (
@@ -195,6 +197,26 @@ const ThoughtsOnFutureBranding = () => {
         “Everything should be made as simple as possible, but not simpler.”
       </blockquote>
       <p>— Albert Einstein</p>
+      <h2>Share</h2>
+      <SocialShare
+        url={window.location.href}
+        title="Thoughts on Future Branding"
+      />
+      <div className={styles.similar}>
+        <h2>Similar reads</h2>
+        <div className={styles["similar-list"]}>
+          <Card
+            title="Designing in 2025"
+            link="/blog/designing-in-2025"
+            className={`${styles["similar-card"]} ${styles.teal}`}
+          />
+          <Card
+            title="Digital Craftsmanship"
+            link="/blog/digital-craftsmanship"
+            className={`${styles["similar-card"]} ${styles.purple}`}
+          />
+        </div>
+      </div>
     </article>
   );
 };

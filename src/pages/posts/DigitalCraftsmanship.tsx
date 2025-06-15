@@ -5,6 +5,8 @@ import styles from "../Article.module.css";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import { css } from "storybook/internal/theming";
 import Pizza from "../../assets/images/pizza.jpg";
+import Card from "../../components/Card/Card";
+import { SocialShare } from "../../components/SocialShare/SocialShare";
 
 const DigitalCraftsmanship = () => (
   <article className={styles.article}>
@@ -85,21 +87,24 @@ const DigitalCraftsmanship = () => (
       end, craft is just a pattern of choices made deliberately, not reactively.
     </p>
     <strong>In a hurry-up culture, choosing to care is radical.☻</strong>
+    <h2>Share</h2>
+    <SocialShare
+      url={window.location.href}
+      title="Maintaining Quality in a Hurry-Up Culture"
+    />
     <div className={styles.similar}>
       <h2>Similar reads</h2>
       <div className={styles["similar-list"]}>
-        <a
-          href="/blog/workflow-tips"
+        <Card
+          title="Workflow Tips"
+          link="/blog/workflow-tips"
           className={`${styles["similar-card"]} ${styles.teal}`}
-        >
-          Workflow Tips
-        </a>
-        <a
-          href="/blog/designing-in-2025"
+        ></Card>
+        <Card
+          title="Designing in 2025"
+          link="/blog/designing-in-2025"
           className={`${styles["similar-card"]} ${styles.purple}`}
-        >
-          Designing in 2025
-        </a>
+        ></Card>
       </div>
     </div>
   </article>
