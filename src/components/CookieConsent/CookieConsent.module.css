@@ -1,5 +1,5 @@
-@import "../styles/variables.css";
-@import "../styles/fonts.css";
+@import "../../styles/variables.css";
+@import "../../styles/fonts.css";
 
 .cookie-consent {
   background-color: var(--color-gray-light);
@@ -10,10 +10,10 @@
   flex-direction: column;
 }
 
-.cookie-consent p {
+p {
   margin: 0;
-  font-size: 0.875rem; /* 14px */
-  line-height: 1.5;
+  font-size: 1.1rem; /* 14px */
+  line-height: 1.6;
   align-items: start;
 }
 
@@ -22,22 +22,8 @@
   text-decoration: underline;
 }
 
-.link {
-  color: var(--color-primary);
-  text-decoration: underline;
-}
-
 .cookie-consent .footer {
   display: flex;
   gap: 0.5rem;
   margin-top: 1rem;
-}
-
-.cookie-consent button {
-  background-color: var(--color-primary);
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem; /* 14px */
-  cursor: pointer;
 }
