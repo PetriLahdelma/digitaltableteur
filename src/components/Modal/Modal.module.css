@@ -18,19 +18,19 @@
   background-color: var(--color-white);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 90%;
-  max-width: var(--size-width-md);
+  max-width: var(--size-width-lg);
   display: flex;
   flex-direction: column;
 }
 
 .modalContent {
-  padding-block-start: 1rem;
+  padding-block-start: 1.5rem;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1.5rem 1rem 1.5rem;
+  padding: 2rem 1.5rem 1rem 1.5rem;
   align-items: center;
 }
 

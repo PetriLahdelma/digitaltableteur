@@ -5,6 +5,7 @@ interface LinkProps {
   href: string;
   size?: "S" | "M" | "L";
   children: React.ReactNode;
+  className?: string;
 }
 
 const Link: React.FC<LinkProps> = ({ href, size = "M", children }) => {

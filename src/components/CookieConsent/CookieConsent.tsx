@@ -30,23 +30,24 @@ const CookieConsent = () => {
       title="Cookie consent"
       footer={
         <>
-          <Button variant="secondary" onClick={handleEssentialOnly}>
-            Accept only essential
-          </Button>
           <Button variant="primary" onClick={handleAcceptAll}>
             Accept all
+          </Button>
+          <Button variant="secondary" onClick={handleEssentialOnly}>
+            Only essential
           </Button>
         </>
       }
     >
       <p>
-        We use cookies to improve your experience. Choosing &nbsp;
-        <strong>Accept all</strong> enables optional analytics cookies.
-        Selecting <strong>Accept only essential</strong> stores only the cookies
+        Digitaltableteur uses cookies to improve your experience. Choosing
+        &nbsp;<strong>Accept all</strong> enables optional analytics cookies.
+        Selecting <strong>Only essential</strong> stores only the cookies
         required for the site to function.
         <br />
+        <br />
         Read our&nbsp;
-        <Link size="S" href="/cookie-policy">
+        <Link className={styles.link} size="S" href="/cookie-policy">
           cookie policy
         </Link>
         &nbsp;to learn more.
