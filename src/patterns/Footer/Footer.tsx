@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaLinkedin, FaMedium } from "react-icons/fa";
 import Grid from "../../components/Grid/Grid";
 
 const Footer = () => {
@@ -42,6 +42,14 @@ const Footer = () => {
           aria-label="LinkedIn"
         >
           {FaLinkedin({ size: 24 })}
+        </a>
+        <a
+          href="https://medium.com/@petrilahdelma/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Medium"
+        >
+          {FaMedium({ size: 24 })}
         </a>
       </div>
     </footer>

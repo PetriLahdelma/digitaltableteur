@@ -52,6 +52,6 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  color: var(--color-dark);
+  color: var(--color-primary);
   z-index: 1;
 }
