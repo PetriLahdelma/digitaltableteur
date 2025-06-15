@@ -3,6 +3,7 @@ import DigitalCraftsmanship from "./DigitalCraftsmanship";
 import WorkflowTips from "./WorkflowTips";
 import Designing2025 from "./Designing2025";
 import FigmaMCP from "./FigmaMCP";
+import PetriLahdelmaBio from "./PetriLahdelmaBio";
 
 export const posts = [
   {
@@ -49,5 +50,14 @@ export const posts = [
     color: "pink",
     date: "12.06.2025",
     component: FigmaMCP,
+  },
+  {
+    title: "Petri Lahdelma: A Biography",
+    lead: "From Varissuo to leading global design systems.",
+    link: "/blog/petri-lahdelma-bio",
+    readTime: "3 min read",
+    color: "blue",
+    date: "15.06.2025",
+    component: PetriLahdelmaBio,
   },
 ];
