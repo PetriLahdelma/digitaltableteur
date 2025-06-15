@@ -6,6 +6,7 @@ import Ufo from "../assets/images/ufo.webp";
 import sausage from "../assets/images/sausage.webp";
 import fur from "../assets/images/fur.webp";
 import blackletter from "../assets/images/blackletter.webp";
+import projectData from "../data/workData.json";
 
 const Work = () => {
   return (
@@ -60,6 +61,15 @@ const Work = () => {
               </div>
             </div>
           </div>
+        </section>
+        <section className={styles.projectSection}>
+          {projectData.slice(0, 6).map((project, idx) => (
+            <div key={idx} className={styles.project}>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <div className={styles.year}>{project.year}</div>
+            </div>
+          ))}
         </section>
         <section className={styles.section6}>Section 6</section>
         <section className={styles.section7}>Section 7</section>
