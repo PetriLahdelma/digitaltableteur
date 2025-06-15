@@ -10,6 +10,12 @@ Install dependencies with:
 npm ci
 ```
 
+Copy `.env.example` to `.env` and fill in your EmailJS credentials if you want the contact form to work locally:
+
+```bash
+cp .env.example .env
+```
+
 ### Run the development server
 
 ```bash
