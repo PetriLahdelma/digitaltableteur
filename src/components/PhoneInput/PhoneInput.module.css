@@ -11,9 +11,14 @@
 
 .phoneInputField {
   padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--color-primary, #0070f3);
   font-size: 1rem;
+  color: var(--color-primary, #0070f3);
+}
+
+.phoneInputField::placeholder {
+  color: var(--color-primary);
+  opacity: 1; /* Ensures full opacity for placeholder */
 }
 
 .error {
