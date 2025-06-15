@@ -6,7 +6,7 @@
   margin: 0 auto;
   padding: 1.5rem;
   background-color: var(--color-light-bg);
-  border-radius: var(--radius-lg);
+  border: 2px solid var(--color-primary);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 

@@ -81,33 +81,33 @@ p + :not(p):not(blockquote) {
 }
 
 .similar-list {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   gap: 1rem;
+  inline-size: 100%;
 }
 
 .similar-card {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   padding: 1rem;
-  border-radius: var(--radius-md);
   text-decoration: none;
   color: inherit;
+  background-color: var(--color-light-bg);
   transition: background-color 0.3s;
+  inline-size: 100%;
 }
 
-.similar-card:hover,
+.similar-card:hover {
+  background-color: var(--color-white);
+  box-sizing: border-box;
+  outline: 2px solid var(--color-primary);
+}
+
 .similar-card:focus {
-  background-color: #fff7e3;
-  outline: 3px solid var(--color-dark);
-}
-
-.pink {
-  background-color: var(--accent-pink);
-}
-.teal {
-  background-color: var(--accent-teal);
-}
-.purple {
-  background-color: var(--accent-purple);
+  outline: 3px solid var(--color-primary);
 }
 
 caption {

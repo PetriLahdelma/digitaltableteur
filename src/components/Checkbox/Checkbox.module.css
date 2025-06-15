@@ -11,12 +11,17 @@
 .checkbox {
   width: 24px;
   height: 24px;
+  background-color: var(--color-primary);
+}
+
+.checkbox:hover {
+  color: var(--color-primary);
 }
 
 .checkbox:indeterminate {
   background-color: #e0e0e0;
   border: 1px solid var(--color-primary);
-  border-radius: 2px; /* Slightly rounded corners */
+  color: var(--color-primary);
   appearance: none;
   display: inline-block;
   width: 24px;
@@ -24,6 +29,22 @@
   position: relative;
 }
 
+.checkbox:checked {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+}
+
+.checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  background-color: white;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
 .checkbox:indeterminate::after {
   content: "";
   position: absolute;
@@ -31,12 +52,11 @@
   left: 50%;
   width: 12px;
   height: 2px;
-  background-color: #333;
+  background-color: var(--color-primary);
   transform: translate(-50%, -50%);
-  border-radius: 1px; /* Slightly rounded edges for the dash */
 }
 
 .label {
   font-size: 1rem;
-  color: var(--color-gray-dark);
+  color: var(--color-primary);
 }

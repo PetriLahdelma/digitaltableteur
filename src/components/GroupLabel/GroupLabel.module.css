@@ -8,5 +8,5 @@
   display: flex;
   align-items: center;
   gap: 0.5rem; /* 8px */
-  color: var(--color-gray);
+  color: var(--color-primary);
 }

@@ -16,6 +16,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   // eslint-disable-next-line no-unused-vars
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
