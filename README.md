@@ -40,6 +40,17 @@ npm run build
 
 The optimized output is placed in the `build` folder.
 
+### Fetch Figma design
+
+If you need the raw design data, you can download the Figma file as JSON. Set the
+`FIGMA_TOKEN` environment variable with your personal access token, then run:
+
+```bash
+npm run fetch-figma
+```
+
+The file is saved as `figma.json` in the project root.
+
 ## Pull Request Workflow
 
 Every pull request is validated with lint and unit tests using GitHub Actions.
