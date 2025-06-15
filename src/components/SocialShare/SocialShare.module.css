@@ -1,0 +1,18 @@
+.socialShare {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  align-items: center;
+  block-size: 2.5rem;
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--primary-text-color);
+  text-decoration: none;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+}

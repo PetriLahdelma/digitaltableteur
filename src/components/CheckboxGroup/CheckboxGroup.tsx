@@ -5,6 +5,7 @@ import styles from "./CheckboxGroup.module.css";
 
 export interface CheckboxGroupProps {
   label: string;
+  clasassName?: string;
   options: { label: string; value: string }[];
   // eslint-disable-next-line no-unused-vars
   onChange?: (selectedOptions: string[]) => void;
