@@ -5,7 +5,6 @@ import Inputs from "../Inputs/Inputs";
 import Button from "../Button/Button";
 import CheckboxGroup from "../CheckboxGroup/CheckboxGroup";
 import Modal from "../Modal/Modal";
-import PhoneInput from "../PhoneInput/PhoneInput";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -89,8 +88,9 @@ const ContactForm = () => {
         </div>
 
         <div className={styles["form-group"]}>
-          <PhoneInput
+          <Inputs
             label="Phone Number"
+            type="tel"
             placeholder="Enter your phone number"
             value={formData.phone}
             onChange={handlePhoneChange}

@@ -4,7 +4,7 @@ import Label from "../Label/Label";
 
 interface InputProps {
   label: string;
-  type: "text" | "number" | "email" | "password" | "search";
+  type: "text" | "number" | "email" | "password" | "search" | "tel";
   placeholder?: string;
   value?: string | number;
   error?: string;
@@ -23,33 +23,54 @@ const Input: React.FC<InputProps> = ({
   disabled = false,
 }) => {
   const [inputValue, setInputValue] = useState(value || "");
+  const [phoneError, setPhoneError] = useState("");
+
+  const validatePhoneNumber = (phone: string) => {
+    const phoneRegex = /^[0-9+\s]{1}[0-9\s]{0,15}$/;
+    return phoneRegex.test(phone);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = type === "number" ? +e.target.value : e.target.value;
-    setInputValue(newValue);
-    if (onChange) onChange(newValue);
+    let newValue: string | number;
+    newValue = type === "number" ? +e.target.value : e.target.value;
+    if (type === "tel") {
+      if (validatePhoneNumber(e.target.value)) {
+        setPhoneError("");
+        setInputValue(e.target.value);
+        if (onChange) onChange(e.target.value);
+      } else {
+        setPhoneError("Invalid phone number format");
+        setInputValue(e.target.value);
+        if (onChange) onChange(e.target.value);
+      }
+    } else {
+      setInputValue(newValue);
+      if (onChange) onChange(newValue);
+    }
   };
 
   return (
     <div className={styles["input-container"]}>
       <Label
         htmlFor={label}
-        required={!!error}
-        tooltipText={error}
-        disabled={disabled} // Pass 'disabled' prop to Label
+        required={!!error || !!phoneError}
+        tooltipText={error || phoneError}
+        disabled={disabled}
       >
         {label}
       </Label>
       <input
         id={label}
-        className={`${styles.input} ${error ? styles.error : ""}`}
+        className={`${styles.input} ${error || phoneError ? styles.error : ""}`}
         type={type}
         placeholder={placeholder}
         value={inputValue}
         onChange={handleChange}
-        disabled={disabled} // Apply disabled prop
+        disabled={disabled}
       />
-      {error && <span className={styles["error-message"]}>{error}</span>}
+      {(error || phoneError) && (
+        <span className={styles["error-message"]}>{error || phoneError}</span>
+      )}
     </div>
   );
 };
