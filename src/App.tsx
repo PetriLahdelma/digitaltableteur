@@ -17,11 +17,23 @@ import ThoughtsOnFutureBranding from "./pages/posts/ThoughtsOnFutureBranding";
 import FigmaMCP from "./pages/posts/FigmaMCP";
 import PetriLahdelmaBio from "./pages/posts/PetriLahdelmaBio";
 
+const SECRET_PARAM = "preview";
+const SECRET_VALUE = "letmein"; // Change this to your own secret
+
+function isBypass() {
+  if (typeof window === "undefined") return false;
+  const params = new URLSearchParams(window.location.search);
+  return params.get(SECRET_PARAM) === SECRET_VALUE;
+}
+
 function App() {
+  if (!isBypass()) {
+    return <UnderDevelopment />;
+  }
+
   return (
     <Router>
       <div>
-        <UnderDevelopment />
         <CookieConsent />
         <Layout>
           <Routes>
