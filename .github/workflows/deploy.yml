@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
       - run: npm ci
+      - run: npm run generate:sitemap
+      - run: npm run generate:llms
       - run: npm run build
       - name: Add CNAME file
         run: echo "digitaltableteur.com" > ./build/CNAME
