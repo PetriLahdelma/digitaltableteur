@@ -1,0 +1,30 @@
+# LLM.txt - Website Content Structure
+# Generated: 2025-06-16T20:49:23.983Z
+# Source: https://digitaltableteur.com/sitemap.xml
+# Total Pages: 7
+# Success Rate: 14.3%
+
+## Site Metadata
+Site URL: https://digitaltableteur.com
+Extraction Date: 2025-06-16
+Total Pages Processed: 7
+Successful Pages: 1
+Failed Pages: 6
+Success Rate: 14.3%
+
+---
+
+### Page: https://digitaltableteur.com/
+Title: Digital Tableteur - Modern Design and Applications
+Meta Description: Digitaltableteur - Modern solutions for design and development.
+Language: en
+Canonical URL: https://digitaltableteur.com/
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+You need to enable JavaScript to run this app.
+
+---
+
