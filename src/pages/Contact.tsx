@@ -14,9 +14,7 @@ const Contact = () => {
         />
       </Helmet>
       <div className={styles.contact}>
-        <h1>
-          Connect with us for a free strategy session tailored to your vision.
-        </h1>
+        <h1>Connect for a free strategy session tailored to your vision.</h1>
 
         <h2>Contact Request Form</h2>
         <p className={styles.contactInfo}>

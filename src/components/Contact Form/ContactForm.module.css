@@ -31,5 +31,9 @@
 }
 
 button {
-  margin-block: 1.2rem;
+  margin-block: 1.2rem 0.5rem;
+}
+
+.form-group:last-child {
+  margin-block-end: 0;
 }

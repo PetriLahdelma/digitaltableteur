@@ -37,7 +37,7 @@
 }
 
 .privacyPolicy {
-  font-size: 0.875rem;
+  font-size: 1.1rem;
   color: var(--color-gray-medium);
   text-align: center;
 }
@@ -62,4 +62,9 @@
 
 .checkbox-group {
   margin-block-start: 1rem;
+}
+
+.contactInfo {
+  margin-block-end: 2rem;
+  font-size: 1.1rem;
 }
