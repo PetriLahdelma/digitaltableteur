@@ -13,11 +13,33 @@ const Footer = () => {
           <h2>
             <a href="/">Digitaltableteur</a>
           </h2>
+          <p>
+            Hämeentie 8
+            <br />
+            00530 Helsinki
+            <br />
+            <a href="mailto:mail@digitaltableteur.com">
+              mail@digitaltableteur.com
+            </a>
+          </p>
+          <br />
+          <p>Billing details</p>
+          <p>
+            Digitaltableteur
+            <br />
+            Hämeentie 8 C26
+            <br />
+            00530 Helsinki
+            <br />
+            VAT FI2264455–2
+          </p>
         </div>
         <div className={styles["grid-item-blank"]}></div>
         <div className={styles["grid-item-blank"]}></div>
       </Grid>
-      <p>&copy; {currentYear} Digitaltableteur. All rights reserved.</p>
+      <p className={styles["footer-text"]}>
+        &copy; {currentYear} Digitaltableteur. All rights reserved.
+      </p>
       <div className={styles["social-links"]}>
         <a
           href="https://www.instagram.com/digitaltableteur/"

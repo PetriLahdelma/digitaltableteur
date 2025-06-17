@@ -16,7 +16,7 @@
   font-family: var(--primary-body-font, "Moderat-Bold"), serif;
   text-transform: uppercase;
   color: var(--inverted-text-color);
-  font-size: 2.1rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.08rem;
   text-decoration: none;
@@ -27,7 +27,22 @@ footer p {
   font-size: 1rem;
   font-family: "Moderat-Regular";
   color: var(--inverted-text-color);
-  text-align: center;
+  margin-inline-start: 2rem;
+}
+
+.footer p a {
+  color: var(--inverted-text-color);
+  text-decoration: none;
+}
+
+.footer p a:hover {
+  text-decoration: underline;
+}
+
+.footer-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .social-links {
