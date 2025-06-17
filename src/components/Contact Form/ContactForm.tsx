@@ -126,10 +126,14 @@ const ContactForm = () => {
 
         <div className={styles["form-group"]}>
           <p className={styles["privacy-policy"]}>
-            By pressing submit you agree for your information to be processed
+            *By pressing submit you agree for your information to be processed
             according to our<a href="/privacy-policy"> privacy policy</a>.
           </p>
-          <Button type="submit" variant="primary">
+          <Button
+            className={styles["submit-button"]}
+            type="submit"
+            variant="primary"
+          >
             Submit
           </Button>
         </div>
