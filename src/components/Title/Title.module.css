@@ -1,0 +1,23 @@
+.title {
+  font-family: var(--font-title);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-title);
+  color: var(--color-title);
+  margin: 0 0 1rem 0;
+}
+
+.title-sm {
+  font-size: 1.5rem;
+}
+
+.title-md {
+  font-size: 2rem;
+}
+
+.title-lg {
+  font-size: 3rem;
+}
+
+.title-xl {
+  font-size: 5rem;
+}
