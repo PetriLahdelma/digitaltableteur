@@ -85,10 +85,12 @@
 
 .success {
   border-top: 4px solid var(--color-success);
+  max-width: 30vw;
 }
 
 .error {
   border-top: 4px solid var(--color-error);
+  max-width: 30vw;
 }
 
 .loading {

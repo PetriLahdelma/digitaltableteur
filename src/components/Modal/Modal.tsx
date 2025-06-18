@@ -22,6 +22,8 @@ export interface ModalProps {
   onClose?: () => void;
   /** Optional icon to display in the header */
   icon?: React.ReactNode;
+  /** Optional className for additional styling */
+  className?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({

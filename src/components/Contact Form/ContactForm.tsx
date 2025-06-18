@@ -5,6 +5,7 @@ import Inputs from "../Inputs/Inputs";
 import Button from "../Button/Button";
 import CheckboxGroup from "../CheckboxGroup/CheckboxGroup";
 import Modal from "../Modal/Modal";
+import TextArea from "../Inputs/TextArea";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -115,9 +116,8 @@ const ContactForm = () => {
         </div>
 
         <div className={styles["form-group"]}>
-          <Inputs
+          <TextArea
             label="Your Message"
-            type="text"
             placeholder="Enter your message"
             value={formData.message}
             onChange={handleMessageChange}
@@ -139,6 +139,7 @@ const ContactForm = () => {
         </div>
       </form>
       <Modal
+        className={styles["success-modal"]}
         isOpen={isModalOpen}
         variant="success"
         title="Success"
@@ -147,9 +148,10 @@ const ContactForm = () => {
           window.location.reload();
         }}
       >
-        Email successfully sent
+        Your message was successfully sent.
       </Modal>
       <Modal
+        className={styles["error-modal"]}
         isOpen={isErrorOpen}
         variant="error"
         title="Error"
