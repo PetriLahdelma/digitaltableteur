@@ -4,6 +4,36 @@ import Text from "./Text";
 export default {
   title: "Components/Text",
   component: Text,
+  argTypes: {
+    as: {
+      control: { type: "select" },
+      options: ["p", "span", "div", "strong", "em"],
+      description: "HTML tag to render",
+    },
+    size: {
+      control: { type: "radio" },
+      options: ["S", "M", "L"],
+      description: "Text size variant",
+    },
+    terminals: {
+      control: { type: "radio" },
+      options: ["sans", "serif"],
+      description: "Font family (sans or serif)",
+    },
+    className: { control: "text", description: "Custom class name" },
+    children: { control: "text", description: "Text content" },
+  },
+};
+
+const Template = (args: any) => <Text {...args} />;
+
+export const Playground: any = Template.bind({});
+Playground.args = {
+  children: "Play with the Text component!",
+  as: "p",
+  size: "M",
+  terminals: "sans",
+  className: "",
 };
 
 export const Default = () => <Text>This is default text.</Text>;
@@ -21,5 +51,20 @@ export const AllTags = () => (
     <Text as="div">Div</Text>
     <Text as="strong">Strong</Text>
     <Text as="em">Emphasized</Text>
+  </>
+);
+
+export const Sizes = () => (
+  <>
+    <Text size="S">Small text (S)</Text>
+    <Text size="M">Medium text (M, default)</Text>
+    <Text size="L">Large text (L)</Text>
+  </>
+);
+
+export const SerifAndSans = () => (
+  <>
+    <Text terminals="sans">Sans-serif text</Text>
+    <Text terminals="serif">Serif text</Text>
   </>
 );

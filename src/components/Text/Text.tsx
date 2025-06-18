@@ -2,15 +2,39 @@ import React from "react";
 import styles from "./Text.module.css";
 import "../../styles/variables.css";
 
+type TextSize = "S" | "M" | "L";
+
 type TextProps = {
   children: React.ReactNode;
   as?: keyof React.JSX.IntrinsicElements;
   className?: string;
+  terminals?: "serif" | "sans";
+  size?: TextSize;
 };
 
-const Text: React.FC<TextProps> = ({ children, as = "p", className = "" }) => {
+const sizeClassMap: Record<TextSize, string> = {
+  S: styles["text-s"] || "",
+  M: styles["text-m"] || "",
+  L: styles["text-l"] || "",
+};
+
+const Text: React.FC<TextProps> = ({
+  children,
+  as = "p",
+  className = "",
+  terminals = "sans",
+  size = "M",
+}) => {
   const Tag = as;
-  return <Tag className={`${styles.text} ${className}`.trim()}>{children}</Tag>;
+  const terminalClass = terminals === "serif" ? styles.serif : styles.sans;
+  const sizeClass = sizeClassMap[size] || "";
+  return (
+    <Tag
+      className={`${styles.text} ${terminalClass} ${sizeClass} ${className}`.trim()}
+    >
+      {children}
+    </Tag>
+  );
 };
 
 export default Text;

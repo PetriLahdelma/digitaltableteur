@@ -82,8 +82,7 @@ p + :not(p):not(blockquote) {
 
 .similar-list {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-flow: wrap row;
   gap: 1rem;
   inline-size: 100%;
 }

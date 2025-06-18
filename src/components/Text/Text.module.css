@@ -5,3 +5,23 @@
   color: var(--color-text);
   margin: 0 0 1rem 0;
 }
+
+.text-s {
+  font-size: 0.95rem;
+}
+
+.text-m {
+  font-size: 1.125rem;
+}
+
+.text-l {
+  font-size: 1.5rem;
+}
+
+.serif {
+  font-family: var(--font-serif, "Tiempos-Text", serif);
+}
+
+.sans {
+  font-family: var(--font-sans, "Moderat", sans-serif);
+}

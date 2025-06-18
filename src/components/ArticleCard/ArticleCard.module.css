@@ -1,7 +1,10 @@
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
+
 .card {
   display: flex;
   background: var(--color-light-bg, #f9f9f9);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
   padding: 1.5rem;
   margin: 1rem 0;
   text-decoration: none;
@@ -10,17 +13,34 @@
   transition:
     box-shadow 0.2s,
     background 0.2s;
+  flex-direction: column;
+  border: 2px solid var(--color-primary);
 }
 
 .card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
   background: var(--color-white);
+  filter: brightness(120%);
+}
+
+.card:focus {
+  outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
+}
+
+.card h2 {
+  font-family: var(--primary-heading-font, serif);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: bold;
+  margin: 0.5rem 0;
 }
 
 .title {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  font-family: var(--primary-heading-font, serif);
+  margin: 0 0 0.5rem 0.5rem;
 }
 
 .lead {
@@ -28,16 +48,23 @@
   font-size: 1.1rem;
   color: var(--primary-text-color, #222);
   margin-block-end: 1rem;
+  margin: 0 0 1rem;
 }
 
 .meta {
   display: flex;
   gap: 1rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-family: var(--font-text);
   color: var(--primary-text-color, #888);
   align-items: center;
   justify-content: space-between;
+  margin-block-start: auto;
+}
+
+.meta span {
+  font-family: var(--primary-body-font);
+  font-weight: 600;
 }
 
 .readTime {
