@@ -5,23 +5,25 @@ import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import DTmindmap from "../../assets/images/dt-mindmap.webp";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
 import Card from "../../components/Card/Card";
+import MCP from "../../assets/images/MCP.webp";
 
 const FigmaMCP = () => (
   <article className={styles.article}>
     <header>
       <h1>Rethinking Design-to-Product Workflows with Figma MCP</h1>
-      <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
+      <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
     </header>
-    <img src={DTmindmap} alt="Illustration" />
+    <img src={MCP} alt="Illustration" style={{ marginBlockEnd: "3rem" }} />
     <p>
-      Recently, I experimented with Figma’s official MCP (Metadata Component
-      Properties) server in tandem with the dt design system, and the results
-      were eye-opening. By enriching the components with machine-readable
-      metadata directly within Figma, I unlocked a new layer of semantic clarity
-      — not just for designers, but for tooling and automation as well. This
+      Recently, I experimented with Figma’s official MCP (Model Context
+      Protocol) server in tandem with the dt design system, and the results were
+      eye-opening. By enriching the components with machine-readable metadata
+      directly within Figma, I unlocked a new layer of semantic clarity — not
+      just for designers, but for tooling and automation as well. This
       integration allowed me to embed context such as intent, behavior, and
       variant logic directly into each component.
     </p>
+    <br />
     <p>
       When combined with a well-structured design system, this metadata forms a
       bridge between design and development that’s both expressive and
@@ -51,6 +53,7 @@ const FigmaMCP = () => (
       referencing screenshots or static specs, the assistant consumes real
       components, variants, and tokens right from Figma.
     </p>
+    <br />
     <p>
       In the trials I dropped a component URL into the editor and watched as it
       generated a nearly complete web component. Minor styling fixes aside, it

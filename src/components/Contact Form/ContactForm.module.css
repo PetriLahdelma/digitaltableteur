@@ -19,6 +19,7 @@
   font-size: 0.875rem;
   color: var(--color-primary);
   text-align: center;
+  margin-block-end: 1.2rem;
 }
 
 .privacy-policy a {
@@ -28,10 +29,6 @@
 
 .privacy-policy a:hover {
   text-decoration: underline;
-}
-
-button {
-  margin-block: 1.2rem 0.5rem;
 }
 
 .form-group:last-child {

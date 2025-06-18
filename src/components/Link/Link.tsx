@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./Link.module.css";
+import "../../styles/variables.css";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 interface LinkProps {
   href: string;
@@ -15,7 +17,11 @@ const Link: React.FC<LinkProps> = ({ href, size = "M", children }) => {
   return (
     <a href={href} className={`${styles.link} ${styles[size]}`}>
       {children}
-      {isExternal && <span className={styles.externalIcon}>🔗</span>}{" "}
+      {isExternal && (
+        <span className={styles.externalIcon}>
+          {FaExternalLinkAlt({ "aria-label": "External link" })}
+        </span>
+      )}
     </a>
   );
 };

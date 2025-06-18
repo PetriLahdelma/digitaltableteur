@@ -10,7 +10,7 @@ const WorkflowTips = () => (
   <article className={styles.article}>
     <header>
       <h1>Workflow Tips</h1>
-      <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
+      <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
     </header>
     <img src={AI} alt="AI illustration" className={styles.image} />
     <blockquote>
