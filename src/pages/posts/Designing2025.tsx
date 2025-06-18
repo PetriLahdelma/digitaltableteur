@@ -13,7 +13,7 @@ const Designing2025 = () => (
         <br />
         Navigating the AI-Assisted Creative Landscape
       </h1>
-      <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
+      <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
     </header>
     <p>
       After more than two decades in the design field, I’ve had the pleasure and

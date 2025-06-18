@@ -24,6 +24,8 @@ export interface ModalProps {
   icon?: React.ReactNode;
   /** Optional className for additional styling */
   className?: string;
+  /** Show close icon button in header */
+  showCloseIcon?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -35,6 +37,7 @@ const Modal: React.FC<ModalProps> = ({
   footer,
   onClose,
   icon,
+  showCloseIcon = true,
 }) => {
   if (!isOpen) {
     return null;
@@ -64,25 +67,27 @@ const Modal: React.FC<ModalProps> = ({
         : { "aria-label": "Dialog" })}
     >
       <div className={`${styles.modal} ${styles[variant]}`}>
-        <div className={styles.header}>
-          <div className={styles.leftHeader}>
-            {icon && <span className={styles.icon}>{icon}</span>}
-            {title && (
-              <h2 id="modal-title" className={styles.title}>
-                {title}
-              </h2>
+        {variant !== "loading" && (
+          <div className={styles.header}>
+            <div className={styles.leftHeader}>
+              {icon && <span className={styles.icon}>{icon}</span>}
+              {title && (
+                <h2 id="modal-title" className={styles.title}>
+                  {title}
+                </h2>
+              )}
+            </div>
+            {onClose && showCloseIcon && (
+              <button
+                className={styles["close-button"]}
+                onClick={onClose}
+                aria-label="Close"
+              >
+                {FaTimes({})}
+              </button>
             )}
           </div>
-          {onClose && (
-            <button
-              className={styles["close-button"]}
-              onClick={onClose}
-              aria-label="Close"
-            >
-              {FaTimes({})}
-            </button>
-          )}
-        </div>
+        )}
         <div className={styles.content}>
           {variant === "loading" && <div className={styles.spinner} />}
           {children}

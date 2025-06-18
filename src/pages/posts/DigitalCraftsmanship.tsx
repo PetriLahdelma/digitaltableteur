@@ -15,7 +15,7 @@ const DigitalCraftsmanship = () => (
         Digital Craftsmanship — Thoughts on Maintaining Quality in a Hurry-Up
         Culture
       </h1>
-      <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
+      <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
     </header>
     <img src={Pizza} width="100%" alt="Pizza" className={styles.image} />
     <p>
@@ -27,6 +27,7 @@ const DigitalCraftsmanship = () => (
       difference was clear: the parrot could repeat words, but the craftsman
       created something meaningful.
     </p>
+    <br />
     <p>
       The tools are faster, the deadlines tighter, and the expectations steeper.
       Somewhere between shipping faster and scaling bigger, something subtle
@@ -51,6 +52,7 @@ const DigitalCraftsmanship = () => (
       that softens a delay. The way a transition suggests something human was
       here, thinking about how it would feel — how others would feel using it.
     </p>
+    <br />
     <p>
       Craftsmanship is about honoring the parts that don’t shout but shape the
       whole. It’s not about polish. It’s about presence.
@@ -62,6 +64,7 @@ const DigitalCraftsmanship = () => (
       machines help. It’s in letting them decide what “good enough” looks like.
       When we stop noticing the difference, we stop caring.
     </p>
+    <br />
     <p>
       Craft today, more than ever, means keeping a human fingerprint on the
       product. Not because we should resist progress or the tools that deliver
@@ -86,7 +89,9 @@ const DigitalCraftsmanship = () => (
       considered revisions. Space for questions no prompt can answer. In the
       end, craft is just a pattern of choices made deliberately, not reactively.
     </p>
-    <strong>In a hurry-up culture, choosing to care is radical.☻</strong>
+    <blockquote>
+      In a hurry-up culture, choosing to care is radical.☻
+    </blockquote>
     <h2>Share</h2>
     <SocialShare
       url={window.location.href}
