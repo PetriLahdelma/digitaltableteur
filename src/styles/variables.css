@@ -1,5 +1,14 @@
 :root {
-  --main-body-copy-color: #00f;
+  /* Typography tokens */
+  --font-title: "TiemposHeadline-Regular", serif;
+  --font-text: "Moderat", sans-serif;
+  --font-size-title: 2.5rem;
+  --font-size-text: 1.125rem;
+  --font-weight-title: 700;
+  --font-weight-text: 400;
+  --color-title: var(--color-primary, #222);
+  --color-text: var(--primary-text-color, #222);
+
   --primary-body-font: "Moderat-Regular", sans-serif;
   --secondary-body-font: "TiemposHeadline-Regular", serif;
 
@@ -10,6 +19,8 @@
   --secondary-heading-font: "Moderat", sans-serif;
 
   /* Text colors */
+  --main-body-copy-color: #00f;
+
   --primary-text-color: #00f;
   --secondary-text-color: #555555;
   --inverted-text-color: #fff;

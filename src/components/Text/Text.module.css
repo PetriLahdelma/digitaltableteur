@@ -1,0 +1,7 @@
+.text {
+  font-family: var(--font-text);
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-text);
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
+}

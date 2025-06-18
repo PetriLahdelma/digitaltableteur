@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet";
 import Grid from "../components/Grid/Grid";
 import styles from "./Home.module.css";
 import "../styles/variables.css";
+import Title from "../components/Title/Title";
+import Text from "../components/Text/Text";
 
 const Home = () => {
   const [currentText, setCurrentText] = useState("Creative & Development");
@@ -76,6 +78,36 @@ const Home = () => {
               noise to deliver clarity, presence, and expression. Well known for
               obsession to craft, systems, and a little bit of chaos.
             </p>
+          </div>
+        </Grid>
+        <Grid columns={1} gap="1rem">
+          <div
+            className={styles["grid-item-blank"]}
+            style={{ gridColumn: "1 / span 3" }}
+          >
+            <Title level={2} size="XL">
+              Our Approach
+            </Title>
+            <Text>
+              We believe in a holistic approach to design and development,
+              combining creativity with strategic thinking to deliver impactful
+              solutions.
+            </Text>
+          </div>
+        </Grid>
+        <Grid columns={1} gap="1rem">
+          <div>
+            <Title level={2} size="XL">
+              Our Services
+            </Title>
+            <Text>
+              <ul>
+                <li>Web Design</li>
+                <li>Brand Strategy</li>
+                <li>UI/UX Design</li>
+                <li>Content Creation</li>
+              </ul>
+            </Text>
           </div>
         </Grid>
       </div>
