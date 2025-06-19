@@ -79,7 +79,7 @@ const Modal: React.FC<ModalProps> = ({
             </div>
             {onClose && showCloseIcon && (
               <button
-                className={styles["close-button"]}
+                className={styles["closeButton"]}
                 onClick={onClose}
                 aria-label="Close"
               >
