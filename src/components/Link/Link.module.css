@@ -2,12 +2,11 @@
 @import "../../styles/fonts.css";
 
 .link {
-  text-decoration: none;
   color: inherit;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: "Moderat", sans-serif;
+  font-family: Moderat, sans-serif;
   text-decoration: underline;
 }
 
