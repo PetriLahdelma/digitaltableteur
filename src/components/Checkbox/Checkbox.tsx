@@ -27,7 +27,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     };
 
     return (
-      <div className={styles["checkbox-container"]}>
+      <div className={styles["checkboxContainer"]}>
         <input
           id="checkbox"
           type="checkbox"

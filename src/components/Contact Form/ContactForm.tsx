@@ -78,7 +78,7 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles["form-group"]}>
+        <div className={styles["formGroup"]}>
           <Inputs
             label="Email Address"
             type="email"
@@ -88,7 +88,7 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles["form-group"]}>
+        <div className={styles["formGroup"]}>
           <Inputs
             label="Phone Number"
             type="tel"
@@ -98,9 +98,8 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles["form-group"]}>
+        <div className={styles["formGroup"]}>
           <CheckboxGroup
-            clasassName={styles["checkbox-group"]}
             label="Your Interest"
             options={[
               { label: "Brand strategy", value: "brand-strategy" },
@@ -115,7 +114,7 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles["form-group"]}>
+        <div className={styles["formGroup"]}>
           <TextArea
             label="Your Message"
             placeholder="Enter your message"
@@ -124,13 +123,13 @@ const ContactForm = () => {
           />
         </div>
 
-        <div className={styles["form-group"]}>
-          <p className={styles["privacy-policy"]}>
+        <div className={styles["formGroup"]}>
+          <p className={styles["privacyPolicy"]}>
             *By pressing submit you agree for your information to be processed
             according to our<a href="/privacy-policy"> privacy policy</a>.
           </p>
           <Button
-            className={styles["submit-button"]}
+            className={styles["submitButton"]}
             type="submit"
             variant="primary"
           >
@@ -139,7 +138,7 @@ const ContactForm = () => {
         </div>
       </form>
       <Modal
-        className={styles["success-modal"]}
+        className={styles["successModal"]}
         isOpen={isModalOpen}
         variant="success"
         title="Success"
@@ -151,7 +150,7 @@ const ContactForm = () => {
         Your message was successfully sent.
       </Modal>
       <Modal
-        className={styles["error-modal"]}
+        className={styles["errorModal"]}
         isOpen={isErrorOpen}
         variant="error"
         title="Error"
