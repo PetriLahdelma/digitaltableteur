@@ -66,7 +66,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className={styles["contact-form"]}>
+    <div className={styles["contactForm"]}>
       <form onSubmit={handleSubmit}>
         <div className={styles["form-group"]}>
           <Inputs
