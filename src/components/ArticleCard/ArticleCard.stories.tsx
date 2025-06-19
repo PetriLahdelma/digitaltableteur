@@ -37,5 +37,5 @@ WithCustomClass.args = {
   link: "/blog/branding-2025",
   readTime: "7 min read",
   colorClass: "purple",
-  className: "custom-class",
+  className: "customClass",
 };
