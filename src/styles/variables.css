@@ -8,21 +8,17 @@
   --font-weight-text: 400;
   --color-title: var(--color-primary, #222);
   --color-text: var(--primary-text-color, #222);
-
   --primary-body-font: "Moderat-Regular", sans-serif;
   --secondary-body-font: "TiemposHeadline-Regular", serif;
-
   --primary-bold-font: "Moderat-Bold", sans-serif;
   --secondary-bold-font: "TiemposHeadline-Semibold", serif;
-
-  --primary-heading-font: "Tiempos Headline", Cambria, serif;
+  --primary-heading-font: "Tiempos Headline", serif;
   --secondary-heading-font: "Moderat", sans-serif;
 
   /* Text colors */
   --main-body-copy-color: #00f;
-
   --primary-text-color: #00f;
-  --secondary-text-color: #555555;
+  --secondary-text-color: #555;
   --inverted-text-color: #fff;
 
   /* Accent colors */

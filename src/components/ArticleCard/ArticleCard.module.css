@@ -17,18 +17,18 @@
   border: 2px solid var(--color-primary);
 }
 
-.card:hover {
+.cardHover {
   box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
   background: var(--color-white);
   filter: brightness(120%);
 }
 
-.card:focus {
+.cardFocus {
   outline: 3px solid var(--color-primary);
   outline-offset: -3px;
 }
 
-.card h2 {
+.cardHeading {
   font-family: var(--primary-heading-font, serif);
   font-size: 1.5rem;
   line-height: 1.5;
