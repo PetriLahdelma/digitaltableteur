@@ -1,7 +1,7 @@
-@import "../../styles/variables.css";
-@import "../../styles/fonts.css";
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
-.checkbox-group {
+.checkboxGroup {
   width: auto;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 @supports (width: fit-content) {
-  .checkbox-group {
+  .checkboxGroup {
     width: fit-content;
   }
 }
