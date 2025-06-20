@@ -1,5 +1,5 @@
 // components/SocialShare.tsx
-import React from "react";
+import React, { useState } from "react";
 import styles from "./SocialShare.module.css";
 import {
   FaTwitter,
@@ -10,6 +10,7 @@ import {
   FaLink,
 } from "react-icons/fa";
 import Button from "../Button/Button";
+import Toast from "../Toast/Toast";
 
 interface SocialShareProps {
   url: string;
@@ -19,10 +20,15 @@ interface SocialShareProps {
 export const SocialShare = ({ url, title }: SocialShareProps) => {
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
+  const [toastOpen, setToastOpen] = useState(false);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(url);
-    alert("Link copied!");
+    setToastOpen(true);
+  };
+
+  const handleToastClose = () => {
+    setToastOpen(false);
   };
 
   return (
@@ -70,12 +76,17 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
       <Button
         variant="secondary"
         icon={FaLink({})}
-        className={styles["copy-button"]}
+        className={styles.copyButton}
         onClick={handleCopy}
         aria-label="Copy link to clipboard"
       >
         Copy link to clipboard
       </Button>
+      <Toast
+        message="Link copied!"
+        open={toastOpen}
+        onClose={handleToastClose}
+      />
     </div>
   );
 };
