@@ -34,6 +34,25 @@ const Home = () => {
           name="description"
           content="Design-led digital studio delivering strategy, branding and development."
         />
+        <meta
+          property="og:title"
+          content="Digitaltableteur - Creative & Development"
+        />
+        <meta
+          property="og:description"
+          content="Design-led digital studio delivering strategy, branding and development."
+        />
+        <meta property="og:image" content="/logo512.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Digitaltableteur - Creative & Development"
+        />
+        <meta
+          name="twitter:description"
+          content="Design-led digital studio delivering strategy, branding and development."
+        />
+        <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.home}>
         <Grid columns={1} gap="1rem">

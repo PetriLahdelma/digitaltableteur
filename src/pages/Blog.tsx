@@ -31,6 +31,19 @@ const Blog = () => {
           name="description"
           content="Insights and articles from the Digitaltableteur team"
         />
+        <meta property="og:title" content="Blog | Digitaltableteur" />
+        <meta
+          property="og:description"
+          content="Insights and articles from the Digitaltableteur team"
+        />
+        <meta property="og:image" content="/logo512.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blog | Digitaltableteur" />
+        <meta
+          name="twitter:description"
+          content="Insights and articles from the Digitaltableteur team"
+        />
+        <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.blog}>
         <Title size="L">Articles</Title>
