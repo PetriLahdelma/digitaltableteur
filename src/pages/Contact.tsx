@@ -14,6 +14,19 @@ const Contact = () => {
           name="description"
           content="Get in touch with Digitaltableteur to discuss your next project."
         />
+        <meta property="og:title" content="Contact | Digitaltableteur" />
+        <meta
+          property="og:description"
+          content="Get in touch with Digitaltableteur to discuss your next project."
+        />
+        <meta property="og:image" content="/logo512.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact | Digitaltableteur" />
+        <meta
+          name="twitter:description"
+          content="Get in touch with Digitaltableteur to discuss your next project."
+        />
+        <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.contact}>
         <Title size="L">

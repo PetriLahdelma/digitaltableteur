@@ -13,6 +13,19 @@ const About = () => {
           name="description"
           content="Learn about Digitaltableteur's approach to design and development."
         />
+        <meta property="og:title" content="About | Digitaltableteur" />
+        <meta
+          property="og:description"
+          content="Learn about Digitaltableteur's approach to design and development."
+        />
+        <meta property="og:image" content="/logo512.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About | Digitaltableteur" />
+        <meta
+          name="twitter:description"
+          content="Learn about Digitaltableteur's approach to design and development."
+        />
+        <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.about}>
         <section className={styles.hero}>
