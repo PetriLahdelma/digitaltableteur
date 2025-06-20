@@ -8,19 +8,19 @@ const CookieConsent = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie-consent");
+    const consent = localStorage.getItem("cookieConsent");
     if (!consent) {
       setIsOpen(true);
     }
   }, []);
 
   const handleAcceptAll = () => {
-    localStorage.setItem("cookie-consent", "accepted");
+    localStorage.setItem("cookieConsent", "accepted");
     setIsOpen(false);
   };
 
   const handleEssentialOnly = () => {
-    localStorage.setItem("cookie-consent", "essential-only");
+    localStorage.setItem("cookieConsent", "essential-only");
     setIsOpen(false);
   };
 
@@ -47,7 +47,7 @@ const CookieConsent = () => {
         <br />
         <br />
         Read our&nbsp;
-        <Link className={styles.link} size="S" href="/cookie-policy">
+        <Link className={styles.link} size="S" href="/cookiePolicy">
           cookie policy
         </Link>
         &nbsp;to learn more.
