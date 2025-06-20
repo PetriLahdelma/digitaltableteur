@@ -42,7 +42,15 @@ function App() {
     <Router>
       <div>
         <CookieConsent />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div
+              style={{ fontSize: "1rem", fontFamily: "Moderat, sans-serif" }}
+            >
+              Loading...
+            </div>
+          }
+        >
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
