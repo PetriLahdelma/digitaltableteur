@@ -8,8 +8,6 @@
   margin: 0;
 
   /* Hide native option visually but keep it accessible for screen readers */
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   border: none;
   outline: none;

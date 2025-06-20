@@ -20,8 +20,6 @@
   font-size: 1rem;
   border: 1px solid var(--color-primary);
   background: white;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none; /* Hide native arrow */
 }
 
