@@ -1,5 +1,5 @@
-@import "../styles/variables.css";
-@import "../styles/fonts.css";
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
 
 .contact {
   text-align: center;
@@ -29,7 +29,7 @@
   padding: 1rem;
   background-color: var(--color-light-bg);
   border-radius: var(--radius-lg);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .formGroup {
@@ -52,15 +52,15 @@
 }
 
 /* Added a class for styling the privacy policy paragraph */
-.contact-form p {
-  font-family: "Moderat", sans-serif;
+.contactForm p {
+  font-family: Moderat, sans-serif;
   font-size: 0.875rem;
   color: var(--color-gray-medium);
   text-align: center;
   margin: 0;
 }
 
-.checkbox-group {
+.checkboxGroup {
   margin-block-start: 1rem;
 }
 
