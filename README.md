@@ -40,6 +40,17 @@ npm run build
 
 The optimized output is placed in the `build` folder.
 
+### Service worker
+
+The app registers a service worker using Workbox to cache static assets and
+pages. The registration happens in `src/index.tsx` via the helper in
+`serviceWorkerRegistration.ts`.
+
+To update the service worker, deploy a new build and refresh any open tabs so
+the new worker can take control. If offline support needs to be disabled,
+replace the `register()` call with `unregister()` in `src/index.tsx` and rebuild
+the project.
+
 ### Fetch Figma design
 
 If you need the raw design data, you can download the Figma file as JSON. Set the
