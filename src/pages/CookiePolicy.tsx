@@ -11,6 +11,19 @@ const CookiePolicy = () => {
           name="description"
           content="How Digitaltableteur uses cookies and your choices about them"
         />
+        <meta property="og:title" content="Cookie Policy | Digitaltableteur" />
+        <meta
+          property="og:description"
+          content="How Digitaltableteur uses cookies and your choices about them"
+        />
+        <meta property="og:image" content="/logo512.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cookie Policy | Digitaltableteur" />
+        <meta
+          name="twitter:description"
+          content="How Digitaltableteur uses cookies and your choices about them"
+        />
+        <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.policyPage}>
         <h1>Cookie Policy</h1>
