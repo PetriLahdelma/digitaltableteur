@@ -15,7 +15,7 @@ const Link: React.FC<LinkProps> = ({ href, size = "M", children }) => {
     !href.startsWith("/") && !href.includes("digitaltableteur.com");
 
   return (
-    <a href={href} className={`${styles.link} ${styles[size]}`}>
+    <a href={href} className={`${styles.link} ${styles[`link${size}`]}`}>
       {children}
       {isExternal && (
         <span className={styles.externalIcon}>
