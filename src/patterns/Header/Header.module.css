@@ -36,3 +36,9 @@ header h2 a {
   color: var(--main-body-copy-color);
   text-decoration: none;
 }
+
+.logo {
+  width: 300px;
+  height: auto;
+  display: block;
+}
