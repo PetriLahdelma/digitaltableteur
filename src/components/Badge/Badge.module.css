@@ -16,10 +16,6 @@
   padding: var(--space-internal-8) var(--space-internal-12);
 }
 
-.m {
-  /* Default, matches .badge */
-}
-
 .l {
   font-size: 1.1em;
   padding: var(--space-internal-12) var(--space-internal-16);
