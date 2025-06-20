@@ -1,11 +1,11 @@
-@import "../../styles/variables.css";
-@import "../../styles/fonts.css";
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
-.cookie-consent {
+.cookieConsent {
   background-color: var(--color-gray-light);
   border-top: 1px solid var(--color-gray);
   padding: 1rem;
-  font-family: "Moderat", sans-serif;
+  font-family: Moderat, sans-serif;
   display: flex;
   flex-direction: column;
 }
@@ -17,12 +17,12 @@ p {
   align-items: start;
 }
 
-.cookie-consent a {
+.cookieConsent a {
   color: var(--color-primary);
   text-decoration: underline;
 }
 
-.cookie-consent .footer {
+.cookieConsent .footer {
   display: flex;
   gap: 0.5rem;
   margin-top: 1rem;

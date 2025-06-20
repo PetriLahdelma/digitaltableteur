@@ -41,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${styles.button} ${styles[variant]} ${!children && normalizedIcon ? styles["icon-only"] : ""}`}
+      className={`${styles.button} ${styles[variant]} ${!children && normalizedIcon ? styles["iconOnly"] : ""}`}
       disabled={disabled}
       aria-describedby={accessibleDescription}
       aria-label={accessibleName}

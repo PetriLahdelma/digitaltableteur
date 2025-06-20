@@ -1,9 +1,9 @@
-@import "../../styles/variables.css";
-@import "../../styles/fonts.css";
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
 .label {
   font-size: 1rem; /* 16px */
-  font-family: "Moderat", sans-serif;
+  font-family: Moderat, sans-serif;
   display: flex;
   align-items: center;
   gap: 0.25rem; /* 8px */

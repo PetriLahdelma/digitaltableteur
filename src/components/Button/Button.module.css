@@ -13,7 +13,7 @@
     background-color 0.3s,
     color 0.3s;
   height: 2.5rem;
-  font-family: "Moderat", sans-serif;
+  font-family: Moderat, sans-serif;
 }
 
 .button.primary {
@@ -58,7 +58,7 @@
   cursor: not-allowed;
 }
 
-.button.icon-only {
+.button.iconOnly {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,18 +70,18 @@
   line-height: 1;
 }
 
-.button.icon-only .icon {
+.icon {
+  margin-right: 0.5rem;
+}
+
+.button.iconOnly .icon {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
 }
 
-.icon {
-  margin-right: 0.5rem;
-}
-
-.end-icon {
+.endIcon {
   margin-left: 0.5rem;
 }
 
@@ -89,6 +89,6 @@
   margin-left: 0.5rem; /* Add padding between icon and text */
 }
 
-.button > .text + :is(svg, .end-icon) {
+.button > .text + :is(svg, .endIcon) {
   margin-left: 0.5rem; /* Add padding between text and icon when icon is on the right */
 }
