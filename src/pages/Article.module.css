@@ -1,5 +1,5 @@
-@import "../styles/variables.css";
-@import "../styles/fonts.css";
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
 
 .article {
   max-width: 60rem;
@@ -36,7 +36,7 @@ h3 + p {
   margin-block-start: 1rem;
 }
 
-p + :not(p):not(blockquote) {
+p + :not(p, blockquote) {
   padding-block-start: 2rem;
 }
 
@@ -80,18 +80,16 @@ p + :not(p):not(blockquote) {
   margin-top: 3rem;
 }
 
-.similar-list {
+.similarList {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-flow: wrap row;
   gap: 1rem;
   inline-size: 100%;
 }
 
-.similar-card {
+.similarCard {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   padding: 1rem;
   text-decoration: none;
   color: inherit;
@@ -100,13 +98,13 @@ p + :not(p):not(blockquote) {
   inline-size: 100%;
 }
 
-.similar-card:hover {
+.similarCard:hover {
   background-color: var(--color-white);
   box-sizing: border-box;
   outline: 2px solid var(--color-primary);
 }
 
-.similar-card:focus {
+.similarCard:focus {
   outline: 3px solid var(--color-primary);
 }
 
@@ -117,14 +115,6 @@ caption {
   margin-top: 0.5rem;
   max-width: 100%;
   display: flex;
-}
-
-.article-caption {
-  font-family: var(--primary-body-font, sans-serif);
-  font-size: 0.85rem;
-  color: var(--secondary-text-color);
-  margin-top: 1rem;
-  text-align: center;
 }
 
 .boldText {

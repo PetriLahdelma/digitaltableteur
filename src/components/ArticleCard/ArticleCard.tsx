@@ -22,6 +22,10 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
     <a
       href={link}
       className={`${styles.card} ${colorClass} ${className}`.trim()}
+      onFocus={(e) => e.currentTarget.classList.add(styles.cardFocus)}
+      onBlur={(e) => e.currentTarget.classList.remove(styles.cardFocus)}
+      onMouseOver={(e) => e.currentTarget.classList.add(styles.cardHover)}
+      onMouseOut={(e) => e.currentTarget.classList.remove(styles.cardHover)}
     >
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.lead}>{lead}</p>

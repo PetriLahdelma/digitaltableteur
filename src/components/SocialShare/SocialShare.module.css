@@ -6,7 +6,7 @@
   block-size: 2.5rem;
 }
 
-.copy-button {
+.copyButton {
   display: flex;
   align-items: center;
   gap: 0.5rem;

@@ -57,17 +57,17 @@ const PetriLahdelmaBio = () => (
       title="Petri Lahdelma: A Biography"
     />
     <div className={styles.similar}>
-      <h2>Similar reads</h2>
-      <div className={styles["similar-list"]}>
+      <h2>Similar Reads</h2>
+      <div className={styles["similarList"]}>
         <Card
           title="Digital Craftsmanship"
           link="/blog/digital-craftsmanship"
-          className={`${styles["similar-card"]} ${styles.purple}`}
+          className={`${styles["similarCard"]} ${styles.purple}`}
         />
         <Card
           title="Designing in 2025"
           link="/blog/designing-in-2025"
-          className={`${styles["similar-card"]} ${styles.teal}`}
+          className={`${styles["similarCard"]} ${styles.teal}`}
         />
       </div>
     </div>

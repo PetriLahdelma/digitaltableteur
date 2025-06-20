@@ -13,7 +13,7 @@ const Designing2025 = () => (
         <br />
         Navigating the AI-Assisted Creative Landscape
       </h1>
-      <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
+      <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
     </header>
     <p>
       After more than two decades in the design field, I’ve had the pleasure and
@@ -144,17 +144,17 @@ const Designing2025 = () => (
       title="Designing in 2025: Navigating the AI-Assisted Creative Landscape"
     />
     <div className={styles.similar}>
-      <h2>Similar reads</h2>
-      <div className={styles["similar-list"]}>
+      <h2>Similar Reads</h2>
+      <div className={styles["similarList"]}>
         <Card
           title="Workflow Tips"
           link="/blog/workflow-tips"
-          className={`${styles["similar-card"]}`}
+          className={`${styles["similarCard"]}`}
         ></Card>
         <Card
           title="Digital Craftsmanship"
           link="/blog/digital-craftsmanship"
-          className={`${styles["similar-card"]}`}
+          className={`${styles["similarCard"]}`}
         ></Card>
       </div>
     </div>

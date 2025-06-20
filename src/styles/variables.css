@@ -8,22 +8,19 @@
   --font-weight-text: 400;
   --color-title: var(--color-primary, #222);
   --color-text: var(--primary-text-color, #222);
-
   --primary-body-font: "Moderat-Regular", sans-serif;
   --secondary-body-font: "TiemposHeadline-Regular", serif;
-
   --primary-bold-font: "Moderat-Bold", sans-serif;
   --secondary-bold-font: "TiemposHeadline-Semibold", serif;
-
-  --primary-heading-font: "Tiempos Headline", Cambria, serif;
+  --primary-heading-font: "Tiempos Headline", serif;
   --secondary-heading-font: "Moderat", sans-serif;
 
   /* Text colors */
   --main-body-copy-color: #00f;
-
   --primary-text-color: #00f;
-  --secondary-text-color: #555555;
+  --secondary-text-color: #555;
   --inverted-text-color: #fff;
+  --link-color: #00f;
 
   /* Accent colors */
   --accent-pink: #f205c5;
@@ -68,4 +65,31 @@
   --size-width-md: 320px;
   --size-width-lg: 900px;
   --size-width-form: 600px;
+
+  /* Spacing system */
+
+  /* Internal (component) spacing tokens: for padding, gaps, etc. */
+  --space-internal-0: 0; /* 0px */
+  --space-internal-2: 0.125rem; /* 2px */
+  --space-internal-4: 0.25rem; /* 4px */
+  --space-internal-8: 0.5rem; /* 8px */
+  --space-internal-12: 0.75rem; /* 12px */
+  --space-internal-16: 1rem; /* 16px */
+  --space-internal-24: 1.5rem; /* 24px */
+  --space-internal-32: 2rem; /* 32px */
+
+  /* Layout (outer) spacing tokens: for margins, grid gaps, section spacing, etc. */
+  --space-layout-0: 0; /* 0px */
+  --space-layout-4: 0.25rem; /* 4px */
+  --space-layout-8: 0.5rem; /* 8px */
+  --space-layout-16: 1rem; /* 16px */
+  --space-layout-24: 1.5rem; /* 24px */
+  --space-layout-32: 2rem; /* 32px */
+  --space-layout-40: 2.5rem; /* 40px */
+  --space-layout-48: 3rem; /* 48px */
+  --space-layout-64: 4rem; /* 64px */
+  --space-layout-80: 5rem; /* 80px */
+  --space-layout-96: 6rem; /* 96px */
+
+  /* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
 }

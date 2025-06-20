@@ -1,13 +1,11 @@
-@import "../../styles/variables.css";
-@import "../../styles/fonts.css";
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
 .link {
-  text-decoration: none;
-  color: inherit;
+  color: var(--link-color);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: "Moderat", sans-serif;
+  font-family: Moderat, sans-serif;
   text-decoration: underline;
 }
 
@@ -15,16 +13,19 @@
   text-decoration: underline;
 }
 
-.link.S {
+.linkS {
   font-size: 1rem; /* 16px */
+  gap: 0.3rem;
 }
 
-.link.M {
+.linkM {
   font-size: 1.5rem; /* 24px */
+  gap: 0.5rem;
 }
 
-.link.L {
-  font-size: 3.5rem; /* 56px */
+.linkL {
+  font-size: 3rem; /* 48px */
+  gap: 1rem;
 }
 
 .icon {

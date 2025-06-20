@@ -1,5 +1,5 @@
-@import "../styles/variables.css";
-@import "../styles/fonts.css";
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
 
 .policyPage {
   max-width: 600px;

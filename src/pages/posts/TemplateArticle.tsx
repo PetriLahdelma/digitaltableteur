@@ -24,17 +24,17 @@ const TemplateArticle = () => {
         title="Thoughts on Future Branding"
       />
       <div className={styles.similar}>
-        <h2>Similar reads</h2>
-        <div className={styles["similar-list"]}>
+        <h2>Similar Reads</h2>
+        <div className={styles["similarList"]}>
           <Card
             title="Title of Similar Article"
             link="/blog/template-article"
-            className={`${styles["similar-card"]}`}
+            className={`${styles["similarCard"]}`}
           ></Card>
           <Card
             title="Title of Similar Article"
             link="/blog/template-article"
-            className={`${styles["similar-card"]}`}
+            className={`${styles["similarCard"]}`}
           ></Card>
         </div>
       </div>
