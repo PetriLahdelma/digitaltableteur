@@ -5,23 +5,32 @@ import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import DTmindmap from "../../assets/images/dt-mindmap.webp";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
 import Card from "../../components/Card/Card";
+import MCP from "../../assets/images/MCP.webp";
+import Grid from "../../components/Grid/Grid";
+import {
+  TbCircleNumber1,
+  TbCircleNumber2,
+  TbCircleNumber3,
+  TbCircleNumber4,
+} from "react-icons/tb";
 
 const FigmaMCP = () => (
   <article className={styles.article}>
     <header>
       <h1>Rethinking Design-to-Product Workflows with Figma MCP</h1>
-      <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
+      <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
     </header>
-    <img src={DTmindmap} alt="Illustration" />
+    <img src={MCP} alt="Illustration" style={{ marginBlockEnd: "3rem" }} />
     <p>
-      Recently, I experimented with Figma’s official MCP (Metadata Component
-      Properties) server in tandem with the dt design system, and the results
-      were eye-opening. By enriching the components with machine-readable
-      metadata directly within Figma, I unlocked a new layer of semantic clarity
-      — not just for designers, but for tooling and automation as well. This
+      Recently, I experimented with Figma’s official MCP (Model Context
+      Protocol) server in tandem with the dt design system, and the results were
+      eye-opening. By enriching the components with machine-readable metadata
+      directly within Figma, I unlocked a new layer of semantic clarity — not
+      just for designers, but for tooling and automation as well. This
       integration allowed me to embed context such as intent, behavior, and
       variant logic directly into each component.
     </p>
+    <br />
     <p>
       When combined with a well-structured design system, this metadata forms a
       bridge between design and development that’s both expressive and
@@ -51,6 +60,48 @@ const FigmaMCP = () => (
       referencing screenshots or static specs, the assistant consumes real
       components, variants, and tokens right from Figma.
     </p>
+    <div>
+      <img
+        src={DTmindmap}
+        alt="Digitaltableteur mindmap"
+        style={{ width: "100%", height: "auto" }}
+      />
+    </div>
+    <div>
+      <p>
+        This means the AI can generate code that’s not just visually accurate,
+        but also semantically aligned with the design system’s intent. It
+        understands how components relate to each other, what variants are
+        available, and how tokens should be applied.
+      </p>
+    </div>
+    <br />
+    <Grid columns={4} gap="2rem">
+      <div>
+        <TbCircleNumber1 size={32} />
+        <h3>Figma MCP</h3>
+        <p>Define structured, variant-rich component data</p>
+      </div>
+
+      <div>
+        <TbCircleNumber2 size={32} />
+        <h3>Figma API</h3>
+        <p>Export that structure as JSON</p>
+      </div>
+
+      <div>
+        <TbCircleNumber3 size={32} />
+        <h3>ChatGPT</h3>
+        <p>Transform exported JSON into reusable React/TS components</p>
+      </div>
+
+      <div>
+        <TbCircleNumber4 size={32} />
+        <h3>GitHub Copilot</h3>
+        <p>Assist with logic, styling, and integration in your IDE</p>
+      </div>
+    </Grid>
+    <br />
     <p>
       In the trials I dropped a component URL into the editor and watched as it
       generated a nearly complete web component. Minor styling fixes aside, it
@@ -98,17 +149,17 @@ const FigmaMCP = () => (
       title="Rethinking Design-to-Product Workflows with Figma MCP"
     />
     <div className={styles.similar}>
-      <h2>Similar reads</h2>
-      <div className={styles["similar-list"]}>
+      <h2>Similar Reads</h2>
+      <div className={styles["similarList"]}>
         <Card
           title="Designing in 2025"
           link="/blog/designing-in-2025"
-          className={`${styles["similar-card"]} ${styles.teal}`}
+          className={`${styles["similarCard"]} ${styles.teal}`}
         ></Card>
         <Card
           title="Digital Craftsmanship"
           link="/blog/digital-craftsmanship"
-          className={`${styles["similar-card"]} ${styles.purple}`}
+          className={`${styles["similarCard"]} ${styles.purple}`}
         ></Card>
       </div>
     </div>

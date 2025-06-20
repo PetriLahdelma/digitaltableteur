@@ -13,10 +13,10 @@ type TitleProps = {
 };
 
 const sizeClassMap: Record<TitleSize, string> = {
-  S: styles["title-s"] || "",
-  M: styles["title-m"] || "",
-  L: styles["title-l"] || "",
-  XL: styles["title-xl"] || "",
+  S: styles["titleS"] || "",
+  M: styles["titleM"] || "",
+  L: styles["titleL"] || "",
+  XL: styles["titleXL"] || "",
 };
 
 const Title: React.FC<TitleProps> = ({

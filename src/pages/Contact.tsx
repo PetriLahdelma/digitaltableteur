@@ -2,6 +2,8 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import styles from "./Contact.module.css";
 import ContactForm from "../components/Contact Form/ContactForm";
+import Title from "../components/Title/Title";
+import Text from "../components/Text/Text";
 
 const Contact = () => {
   return (
@@ -14,15 +16,17 @@ const Contact = () => {
         />
       </Helmet>
       <div className={styles.contact}>
-        <h1>Connect for a free strategy session tailored to your vision.</h1>
+        <Title size="L">
+          Connect for a free strategy session tailored to your vision.
+        </Title>
 
-        <h2>Contact Request Form</h2>
-        <p className={styles.contactInfo}>
+        <Text>Contact Request Form</Text>
+        <Text className={styles.contactInfo}>
           For new business enquiries, please use the form or{" "}
           <a href="mailto:mail@digitaltableteur.com">
             mail@digitaltableteur.com
           </a>
-        </p>
+        </Text>
         <ContactForm />
       </div>
     </>

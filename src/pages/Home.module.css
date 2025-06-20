@@ -1,9 +1,9 @@
-@import "../styles/variables.css";
-@import "../styles/fonts.css";
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
 
 .home {
   text-align: left;
-  padding: 24px;
+  padding-inline: 2rem;
 }
 
 h1 {
