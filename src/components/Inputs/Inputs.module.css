@@ -13,6 +13,7 @@
   margin-bottom: 0.5rem;
   font-family: Moderat, sans-serif;
   color: var(--color-primary);
+  align-items: flex-start;
 }
 
 .input {
@@ -25,6 +26,7 @@
   transition: border-color 0.3s;
   height: 36px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .input::placeholder {
@@ -62,4 +64,10 @@
 
 .input:disabled::placeholder {
   color: var(--color-disabled-placeholder);
+}
+
+.masterCheckbox {
+  display: flex;
+  align-items: flex-start;
+  margin-block: 1.5rem;
 }

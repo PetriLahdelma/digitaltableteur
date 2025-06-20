@@ -68,7 +68,7 @@ const ContactForm = () => {
   return (
     <div className={styles["contactForm"]}>
       <form onSubmit={handleSubmit}>
-        <div className={styles["form-group"]}>
+        <div className={styles["formGroup"]}>
           <Inputs
             label="Full Name"
             type="text"
@@ -126,7 +126,7 @@ const ContactForm = () => {
         <div className={styles["formGroup"]}>
           <p className={styles["privacyPolicy"]}>
             *By pressing submit you agree for your information to be processed
-            according to our<a href="/privacy-policy"> privacy policy</a>.
+            according to our<a href="/privacyPolicy"> privacy policy</a>.
           </p>
           <Button
             className={styles["submitButton"]}

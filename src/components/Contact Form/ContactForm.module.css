@@ -12,6 +12,7 @@
 
 .formGroup {
   margin-block: 0.5rem;
+  width: 100%;
 }
 
 .privacyPolicy {
