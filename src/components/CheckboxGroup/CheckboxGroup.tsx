@@ -5,7 +5,7 @@ import styles from "./CheckboxGroup.module.css";
 
 export interface CheckboxGroupProps {
   label: string;
-  clasassName?: string;
+  className?: string;
   options: { label: string; value: string }[];
   // eslint-disable-next-line no-unused-vars
   onChange?: (selectedOptions: string[]) => void;
@@ -67,8 +67,8 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   };
 
   return (
-    <div className={styles["checkbox-group"]}>
-      <GroupLabel htmlFor="master-checkbox">{label}</GroupLabel>
+    <div className={styles["checkboxGroup"]}>
+      <GroupLabel htmlFor="masterCheckbox">{label}</GroupLabel>
       <Checkbox
         ref={masterCheckboxRef}
         label="All"
