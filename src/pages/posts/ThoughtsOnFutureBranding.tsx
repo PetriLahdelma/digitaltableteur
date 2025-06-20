@@ -80,6 +80,7 @@ const ThoughtsOnFutureBranding = () => {
           itself has also somewhat evolved from promoting simple logomarks, and
           this has made the industry even more intricate.
         </p>
+        <br />
         <p>
           With advancements in machine learning, greater capacity for deeper
           neural networks (thanks to cloud solutions and Google’s efforts to
@@ -114,6 +115,7 @@ const ThoughtsOnFutureBranding = () => {
           on yet another tech or gadget that will completely revolutionize the
           way we experience, exist, and interact.
         </p>
+        <br />
         <p>
           Thinking outside the box has always been the mantra of the creative
           industry. The truth is that more times than we’d like to admit, we’re

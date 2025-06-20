@@ -8,7 +8,7 @@
   font-family: var(--secondary-body-font, serif);
   font-size: 1.5rem;
   line-height: 1.6;
-  margin-block-start: 7rem;
+  margin-block-start: 0rem;
 }
 
 .article h1 {
@@ -110,9 +110,9 @@ p + :not(p, blockquote) {
 
 caption {
   font-family: var(--primary-body-font, sans-serif);
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--primary-text-color);
-  margin-top: 0.5rem;
+  margin-block: 0.5rem 1rem;
   max-width: 100%;
   display: flex;
 }
