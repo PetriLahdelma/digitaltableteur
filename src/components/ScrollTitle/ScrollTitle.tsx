@@ -1,16 +1,38 @@
 import React, { useEffect, useState } from "react";
 
 const TITLES = ["Digitaltableteur"];
-
 const SCROLL_STEP = 1; // px per frame
 const SCROLL_DELAY = 20; // ms per frame
+const SCROLL_TRIGGER = 50; // px scrollY to show title
 
 const ScrollTitle: React.FC = () => {
   const [offset, setOffset] = useState(0);
   const [width, setWidth] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
+  const [visible, setVisible] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
   const containerRef = React.useRef<HTMLDivElement>(null);
+
+  // Show/hide on scroll with smooth fade and delay
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    const handleScroll = () => {
+      if (window.scrollY > SCROLL_TRIGGER) {
+        setShouldRender(true);
+        timeout = setTimeout(() => setVisible(true), 10); // fade in
+      } else {
+        setVisible(false);
+        timeout = setTimeout(() => setShouldRender(false), 400); // fade out after transition
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeout);
+    };
+  }, []);
 
   useEffect(() => {
     if (ref.current && containerRef.current) {
@@ -30,6 +52,8 @@ const ScrollTitle: React.FC = () => {
     return () => clearInterval(interval);
   }, [width, containerWidth]);
 
+  if (!shouldRender) return null;
+
   return (
     <div
       ref={containerRef}
@@ -40,6 +64,9 @@ const ScrollTitle: React.FC = () => {
         height: "2em",
         display: "flex",
         alignItems: "center",
+        opacity: visible ? 1 : 0,
+        transition: "opacity 0.4s cubic-bezier(.4,0,.2,1)",
+        pointerEvents: visible ? "auto" : "none",
       }}
       aria-label="Scrolling site title"
     >
