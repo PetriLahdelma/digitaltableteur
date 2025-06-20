@@ -27,9 +27,9 @@ function isBypass() {
 }
 
 function App() {
-  if (!isBypass()) {
-    return <UnderDevelopment />;
-  }
+  // if (!isBypass()) {
+  //   return <UnderDevelopment />;
+  // }
 
   return (
     <Router>

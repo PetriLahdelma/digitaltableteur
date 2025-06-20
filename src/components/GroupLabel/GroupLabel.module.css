@@ -1,9 +1,9 @@
-@import "../../styles/variables.css";
-@import "../../styles/fonts.css";
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
-.group-label {
+.groupLabel {
   font-size: 1rem;
-  font-family: "Moderat", sans-serif;
+  font-family: Moderat, sans-serif;
   font-weight: 500;
   display: flex;
   align-items: center;

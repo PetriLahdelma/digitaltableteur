@@ -1,0 +1,11 @@
+{
+      "mcpServers": {
+        "figma-developer-mcp": {
+          "type": "sse",
+          "url": "http://localhost:3333/sse",
+          "env": {
+            "FIGMA_API_KEY": "<YOUR_FIGMA_API_KEY>"
+          }
+        }
+      }
+    }

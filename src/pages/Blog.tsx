@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet";
 import styles from "./Blog.module.css";
 import { posts } from "./posts";
 import ArticleCard from "../components/ArticleCard/ArticleCard";
+import Title from "../components/Title/Title";
+import HelsinkiClock from "../components/HelsinkiClock/HelsinkiClock";
 
 interface Post {
   title: string;
@@ -31,7 +33,8 @@ const Blog = () => {
         />
       </Helmet>
       <div className={styles.blog}>
-        <h1>Articles</h1>
+        <Title size="L">Articles</Title>
+        <HelsinkiClock />
         <div className={styles.list}>
           {sortedPosts.map((post: Post) => (
             <ArticleCard

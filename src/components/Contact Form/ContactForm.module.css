@@ -1,39 +1,35 @@
-@import "../../styles/variables.css";
-@import "../../styles/fonts.css";
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
-.contact-form {
+.contactForm {
   width: 450px;
   margin: 0 auto;
   padding: 1.5rem;
   background-color: var(--color-light-bg);
   border: 2px solid var(--color-primary);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
-.form-group {
-  margin-block-start: 0.5rem;
-  margin-block-end: 0.5rem;
+.formGroup {
+  margin-block: 0.5rem;
 }
 
-.privacy-policy {
+.privacyPolicy {
   font-size: 0.875rem;
   color: var(--color-primary);
   text-align: center;
+  margin-block-end: 1.2rem;
 }
 
-.privacy-policy a {
+.privacyPolicy a {
   color: var(--color-primary);
   text-decoration: none;
 }
 
-.privacy-policy a:hover {
+.privacyPolicy a:hover {
   text-decoration: underline;
 }
 
-button {
-  margin-block: 1.2rem 0.5rem;
-}
-
-.form-group:last-child {
+.formGroup:last-child {
   margin-block-end: 0;
 }

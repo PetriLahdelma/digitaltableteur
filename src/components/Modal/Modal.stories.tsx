@@ -52,6 +52,7 @@ Default.args = {
   title: "Default Modal",
   variant: "default",
   icon: null,
+  showCloseIcon: true,
 };
 
 export const Loading = Template.bind({});
@@ -59,6 +60,7 @@ Loading.args = {
   variant: "loading",
   title: "Loading",
   children: <p>Please wait...</p>,
+  showCloseIcon: false,
 };
 
 export const ErrorDialog = Template.bind({});
@@ -89,4 +91,12 @@ InfoDialog.args = {
   variant: "info",
   children: "Here is some important information.",
   onClose: () => alert("Closed"),
+};
+
+export const BusyDialog = Template.bind({});
+BusyDialog.args = {
+  variant: "loading",
+  title: undefined,
+  children: <p>Loading, please wait...</p>,
+  showCloseIcon: false,
 };
