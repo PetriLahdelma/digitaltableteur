@@ -19,3 +19,14 @@ h1 {
   line-height: 1.5;
   color: var(--main-body-copy-color);
 }
+
+@media (width <= 768px) {
+  h1 {
+    font-size: 4rem;
+    margin-block-start: -3.84rem;
+  }
+
+  .lead {
+    font-size: 1.5rem;
+  }
+}
