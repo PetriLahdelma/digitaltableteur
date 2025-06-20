@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import "../../styles/variables.css";
 import "../../styles/fonts.css";
+import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
 
 const Header = () => {
   return (
     <header className={styles.header}>
-      <h2>
-        <Link to="/">Digitaltableteur</Link>
-      </h2>
+      <Link to="/">
+        <img src={Logo} alt="Digitaltableteur Logo" className={styles.logo} />
+      </Link>
+
       <nav>
         <ul className={styles.nav}>
           <li>
