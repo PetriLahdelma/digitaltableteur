@@ -100,6 +100,7 @@ const ContactForm = () => {
 
         <div className={styles["formGroup"]}>
           <CheckboxGroup
+            className={styles["checkboxGroup"]}
             label="Your Interest"
             options={[
               { label: "Brand strategy", value: "brand-strategy" },

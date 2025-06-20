@@ -8,7 +8,7 @@
   font-family: var(--secondary-body-font, serif);
   font-size: 1.5rem;
   line-height: 1.6;
-  margin-block-start: 0rem;
+  margin-block-start: 0;
 }
 
 .article h1 {

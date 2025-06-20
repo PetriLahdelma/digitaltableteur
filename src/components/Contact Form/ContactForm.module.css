@@ -34,3 +34,9 @@
 .formGroup:last-child {
   margin-block-end: 0;
 }
+
+label {
+  font-family: var(--primary-body-font, sans-serif);
+  text-align: left;
+  justify-content: flex-start;
+}
