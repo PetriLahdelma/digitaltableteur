@@ -10,11 +10,13 @@ Install dependencies with:
 npm ci
 ```
 
-Copy `.env.example` to `.env` and fill in your EmailJS credentials if you want the contact form to work locally:
+Copy `.env.example` to `.env` and fill in your EmailJS credentials if you want the contact form to work locally. The file also includes `REACT_APP_GA_ID` for configuring Google Analytics:
 
 ```bash
 cp .env.example .env
 ```
+
+Set `REACT_APP_GA_ID` to your Google Analytics measurement ID if you want to collect usage statistics.
 
 ### Run the development server
 
