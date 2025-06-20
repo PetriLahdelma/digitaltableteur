@@ -57,7 +57,7 @@ const DigitalCraftsmanship = () => (
       Craftsmanship is about honoring the parts that don’t shout but shape the
       whole. It’s not about polish. It’s about presence.
     </p>
-    <h3>Quality in the Age of Generators</h3>
+    <h2>Quality in the Age of Generators</h2>
     <p>
       AI is writing copy, generating layouts, filling in alt texts and icons —
       and oftentimes doing it quite decently. But the danger isn’t in letting
@@ -98,17 +98,17 @@ const DigitalCraftsmanship = () => (
       title="Maintaining Quality in a Hurry-Up Culture"
     />
     <div className={styles.similar}>
-      <h2>Similar reads</h2>
-      <div className={styles["similar-list"]}>
+      <h2>Similar Reads</h2>
+      <div className={styles["similarList"]}>
         <Card
           title="Workflow Tips"
           link="/blog/workflow-tips"
-          className={`${styles["similar-card"]} ${styles.teal}`}
+          className={`${styles["similarCard"]} ${styles.teal}`}
         ></Card>
         <Card
           title="Designing in 2025"
           link="/blog/designing-in-2025"
-          className={`${styles["similar-card"]} ${styles.purple}`}
+          className={`${styles["similarCard"]} ${styles.purple}`}
         ></Card>
       </div>
     </div>

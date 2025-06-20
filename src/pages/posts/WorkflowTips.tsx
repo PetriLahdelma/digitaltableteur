@@ -31,7 +31,7 @@ const WorkflowTips = () => (
       intersection of both, here are key workflow tips to stay effective and
       aligned in this rapidly evolving landscape.
     </p>
-    <h3>Treat Your Design System Like a Product</h3>
+    <h2>Treat Your Design System Like a Product</h2>
     <p>
       Your design system should no longer be seen as a passive library of
       components—it’s an active product with its own users (developers,
@@ -56,7 +56,7 @@ const WorkflowTips = () => (
       <strong>Workflow Tip:</strong> Maintain a changelog, version your tokens,
       and establish governance for components just like you would with APIs.
     </p>
-    <h3>Use Figma MCP to Build a Smarter Handoff Layer</h3>
+    <h2>Use Figma MCP to Build a Smarter Handoff Layer</h2>
     <p>
       Figma’s MCP server lets you attach machine-readable context to components.
       Think of it as giving your design files a brain. You’re not just placing a
@@ -85,7 +85,7 @@ const WorkflowTips = () => (
         allowFullScreen
       ></iframe>
     </div>
-    <h3>Automate the Boring Stuff — Focus on the Edges</h3>
+    <h2>Automate the Boring Stuff — Focus on the Edges</h2>
     Engineers still refine the output and designers still own the experience.
     But by automating the repetitive tasks—like token mapping, boilerplate
     scaffolding, and layout generation—you unlock time for high-value work.
@@ -124,7 +124,7 @@ const WorkflowTips = () => (
       <strong>Workflow Tip:</strong> Build your docs once, then publish them
       everywhere: Figma, Storybook, GitHub, Confluence, even AI chat interfaces.
     </p>
-    <h3>Build a Shared Language Between Design and Dev</h3>
+    <h2>Build a Shared Language Between Design and Dev</h2>
     <p>
       A design system isn’t just about buttons—it’s a communication protocol.
       When your tokens, components, and behaviors are named clearly and
@@ -141,7 +141,7 @@ const WorkflowTips = () => (
       cross-functional reviews to ensure that your naming makes sense to both
       humans and machines.
     </p>
-    <h3>Final Thought: Orchestrate, Don’t Just Execute</h3>
+    <h2>Final Thought: Orchestrate, Don’t Just Execute</h2>
     <p>
       Design and development roles are shifting from execution toward
       orchestration. In 2025, the real craft lies in setting up systems that can
@@ -163,7 +163,7 @@ const WorkflowTips = () => (
     <h2>Share</h2>
     <SocialShare url={window.location.href} title="Workflow Tips" />
     <div className={styles.similar}>
-      <h2>Similar reads</h2>
+      <h2>Similar Reads</h2>
       <div className={styles["similar-list"]}>
         <Card
           title="Rethinking Design-to-Product Workflows with Figma MCP"

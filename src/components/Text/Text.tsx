@@ -13,9 +13,9 @@ type TextProps = {
 };
 
 const sizeClassMap: Record<TextSize, string> = {
-  S: styles["text-s"] || "",
-  M: styles["text-m"] || "",
-  L: styles["text-l"] || "",
+  S: styles["textS"] || "",
+  M: styles["textM"] || "",
+  L: styles["textL"] || "",
 };
 
 const Text: React.FC<TextProps> = ({

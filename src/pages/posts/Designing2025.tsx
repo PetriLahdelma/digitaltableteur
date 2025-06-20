@@ -144,17 +144,17 @@ const Designing2025 = () => (
       title="Designing in 2025: Navigating the AI-Assisted Creative Landscape"
     />
     <div className={styles.similar}>
-      <h2>Similar reads</h2>
-      <div className={styles["similar-list"]}>
+      <h2>Similar Reads</h2>
+      <div className={styles["similarList"]}>
         <Card
           title="Workflow Tips"
           link="/blog/workflow-tips"
-          className={`${styles["similar-card"]}`}
+          className={`${styles["similarCard"]}`}
         ></Card>
         <Card
           title="Digital Craftsmanship"
           link="/blog/digital-craftsmanship"
-          className={`${styles["similar-card"]}`}
+          className={`${styles["similarCard"]}`}
         ></Card>
       </div>
     </div>

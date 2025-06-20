@@ -5,10 +5,11 @@ export default {
   title: "Components/ArticleCard",
   component: ArticleCard,
   args: {
-    title: "How to Build a Design System",
-    lead: "A practical guide to building and scaling a design system for modern teams.",
+    title:
+      "How to Build a Design System for Modern Teams and Ensure Consistency Across All Products",
+    lead: "A practical and comprehensive guide to building, scaling, and maintaining a robust design system for modern teams, covering best practices, common pitfalls, and strategies for ensuring consistency and efficiency across all digital products and platforms.",
     link: "/blog/design-system-guide",
-    readTime: "5 min read",
+    readTime: "10 min read",
     colorClass: "teal",
   },
   argTypes: {
@@ -32,10 +33,10 @@ export const Default = Template.bind({});
 
 export const WithCustomClass = Template.bind({});
 WithCustomClass.args = {
-  title: "Branding in 2025",
-  lead: "What the future holds for digital branding and identity.",
+  title: "Branding in 2025: Trends, Challenges, and Opportunities",
+  lead: "Explore what the future holds for digital branding and identity, including emerging technologies, evolving consumer expectations, and strategies for building resilient brands in a rapidly changing landscape.",
   link: "/blog/branding-2025",
-  readTime: "7 min read",
+  readTime: "14 min read",
   colorClass: "purple",
   className: "customClass",
 };
