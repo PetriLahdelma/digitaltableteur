@@ -1,33 +1,42 @@
-@import "../../styles/variables.css";
-@import "../../styles/fonts.css";
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
 .footer {
   bottom: 0;
   width: 100%;
   background-color: var(--color-primary);
   text-align: left;
+  margin-inline-start: 0;
+  padding-inline: var(--space-layout-32);
 }
 
-.footer {
-  margin-inline-start: 0;
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  margin-block: var(--space-layout-16);
+  gap: var(--space-internal-16);
+}
+
+.socialLinks a {
+  color: var(--inverted-text-color);
+  text-decoration: none;
+  font-size: 1.5rem;
 }
 
 .footer h2 a {
-  font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+  font-family: var(--primary-body-font, Moderat-Bold), sans-serif;
   text-transform: uppercase;
   color: var(--inverted-text-color);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.08rem;
   text-decoration: none;
-  margin-inline-start: 2rem;
 }
 
 footer p {
   font-size: 1rem;
-  font-family: "Moderat-Regular";
+  font-family: Moderat-Regular, sans-serif;
   color: var(--inverted-text-color);
-  margin-inline-start: 2rem;
 }
 
 .footer p a {
@@ -39,21 +48,8 @@ footer p {
   text-decoration: underline;
 }
 
-.footer-text {
+.footerText {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  margin-block: 1rem;
-  gap: 1rem;
-}
-
-.social-links a {
-  color: var(--inverted-text-color);
-  text-decoration: none;
-  font-size: 1.5rem;
 }

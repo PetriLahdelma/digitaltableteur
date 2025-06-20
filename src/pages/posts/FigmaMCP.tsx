@@ -6,6 +6,13 @@ import DTmindmap from "../../assets/images/dt-mindmap.webp";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
 import Card from "../../components/Card/Card";
 import MCP from "../../assets/images/MCP.webp";
+import Grid from "../../components/Grid/Grid";
+import {
+  TbCircleNumber1,
+  TbCircleNumber2,
+  TbCircleNumber3,
+  TbCircleNumber4,
+} from "react-icons/tb";
 
 const FigmaMCP = () => (
   <article className={styles.article}>
@@ -53,6 +60,47 @@ const FigmaMCP = () => (
       referencing screenshots or static specs, the assistant consumes real
       components, variants, and tokens right from Figma.
     </p>
+    <div>
+      <img
+        src={DTmindmap}
+        alt="Digitaltableteur mindmap"
+        style={{ width: "100%", height: "auto" }}
+      />
+    </div>
+    <div>
+      <p>
+        This means the AI can generate code that’s not just visually accurate,
+        but also semantically aligned with the design system’s intent. It
+        understands how components relate to each other, what variants are
+        available, and how tokens should be applied.
+      </p>
+    </div>
+    <br />
+    <Grid columns={4} gap="2rem">
+      <div>
+        <TbCircleNumber1 size={32} />
+        <h3>Figma MCP</h3>
+        <p>Define structured, variant-rich component data</p>
+      </div>
+
+      <div>
+        <TbCircleNumber2 size={32} />
+        <h3>Figma API</h3>
+        <p>Export that structure as JSON</p>
+      </div>
+
+      <div>
+        <TbCircleNumber3 size={32} />
+        <h3>ChatGPT</h3>
+        <p>Transform exported JSON into reusable React/TS components</p>
+      </div>
+
+      <div>
+        <TbCircleNumber4 size={32} />
+        <h3>GitHub Copilot</h3>
+        <p>Assist with logic, styling, and integration in your IDE</p>
+      </div>
+    </Grid>
     <br />
     <p>
       In the trials I dropped a component URL into the editor and watched as it
@@ -101,17 +149,17 @@ const FigmaMCP = () => (
       title="Rethinking Design-to-Product Workflows with Figma MCP"
     />
     <div className={styles.similar}>
-      <h2>Similar reads</h2>
-      <div className={styles["similar-list"]}>
+      <h2>Similar Reads</h2>
+      <div className={styles["similarList"]}>
         <Card
           title="Designing in 2025"
           link="/blog/designing-in-2025"
-          className={`${styles["similar-card"]} ${styles.teal}`}
+          className={`${styles["similarCard"]} ${styles.teal}`}
         ></Card>
         <Card
           title="Digital Craftsmanship"
           link="/blog/digital-craftsmanship"
-          className={`${styles["similar-card"]} ${styles.purple}`}
+          className={`${styles["similarCard"]} ${styles.purple}`}
         ></Card>
       </div>
     </div>

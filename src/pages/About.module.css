@@ -1,5 +1,5 @@
-@import "../styles/variables.css";
-@import "../styles/fonts.css";
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
 
 .about {
   text-align: left;
@@ -22,7 +22,7 @@
   font-size: 8rem;
   font-weight: var(--primary-heading-weight, 300);
   line-height: 1.1;
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
 }
 
 .hero p {

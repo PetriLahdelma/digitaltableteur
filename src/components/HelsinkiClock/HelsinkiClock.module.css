@@ -1,0 +1,18 @@
+.clockContainer {
+  text-align: left;
+  justify-content: flex-start;
+  align-items: start;
+  margin-block-end: var(--space-layout-32);
+  font-family: var(--primary-body-font, sans-serif);
+}
+
+.date {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.time {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}

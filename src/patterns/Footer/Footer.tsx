@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <Grid columns={3} gap="1rem">
+      <Grid columns={3}>
         <div className={styles["grid-item-blank"]}>
           <h2>
             <a href="/">Digitaltableteur</a>
@@ -37,10 +37,10 @@ const Footer = () => {
         <div className={styles["grid-item-blank"]}></div>
         <div className={styles["grid-item-blank"]}></div>
       </Grid>
-      <p className={styles["footer-text"]}>
+      <p className={styles["footerText"]}>
         &copy; {currentYear} Digitaltableteur. All rights reserved.
       </p>
-      <div className={styles["social-links"]}>
+      <div className={styles["socialLinks"]}>
         <a
           href="https://www.instagram.com/digitaltableteur/"
           target="_blank"

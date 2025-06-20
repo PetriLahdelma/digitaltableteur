@@ -3,18 +3,18 @@
   font-size: var(--font-size-text);
   font-weight: var(--font-weight-text);
   color: var(--color-text);
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
 }
 
-.text-s {
+.textS {
   font-size: 0.95rem;
 }
 
-.text-m {
+.textM {
   font-size: 1.125rem;
 }
 
-.text-l {
+.textL {
   font-size: 1.5rem;
 }
 
