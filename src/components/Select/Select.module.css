@@ -1,7 +1,7 @@
-@import "../../styles/variables.css";
-@import "../../styles/fonts.css";
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
-.select-container {
+.selectContainer {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -11,7 +11,7 @@
 .label {
   font-size: 1rem;
   margin-bottom: 0.5rem;
-  font-family: "Moderat", sans-serif;
+  font-family: Moderat, sans-serif;
 }
 
 .select {
@@ -40,13 +40,13 @@
   color: var(--color-muted);
 }
 
-.select-wrapper {
+.selectWrapper {
   position: relative;
   display: inline-block;
   width: var(--size-width-md);
 }
 
-.chevron-icon {
+.chevronIcon {
   position: absolute;
   right: 1rem;
   top: 50%;
