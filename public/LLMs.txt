@@ -15,7 +15,7 @@ Success Rate: 100.0%
 ---
 
 ### Page: https://digitaltableteur.com/
-Title: Digital Tableteur - Modern Design and Applications
+Title: Digitaltableteur - Modern Design and Applications
 Meta Description: Digitaltableteur - Modern solutions for design and development.
 Language: en
 Canonical URL: https://digitaltableteur.com/
