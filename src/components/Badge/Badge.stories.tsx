@@ -1,6 +1,7 @@
 import React from "react";
 import Badge from "./Badge";
 import * as FaIcons from "react-icons/fa";
+import { within } from "@storybook/testing-library";
 
 // Dynamically generate all icon options from react-icons/fa
 const iconOptions = {
@@ -63,6 +64,16 @@ type BadgeProps = React.ComponentProps<typeof Badge>;
 const Template: StoryFn<BadgeProps> = (args: BadgeProps) => <Badge {...args} />;
 
 export const Playground = Template.bind({});
+
+export const Primary = Template.bind({});
+Primary.args = {
+  design: "primary",
+  children: "Primary Badge",
+};
+Primary.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/primary badge/i);
+};
 
 export const AllVariants = () => (
   <div style={{ display: "flex", gap: "1rem" }}>
