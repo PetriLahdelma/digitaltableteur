@@ -1,5 +1,6 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-webpack5";
+import { within } from "@storybook/testing-library";
 import Checkbox, { CheckboxProps } from "./Checkbox";
 
 export default {
@@ -17,6 +18,10 @@ const Template: StoryFn<CheckboxProps> = (args) => <Checkbox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   label: "Default Checkbox",
+};
+Default.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByLabelText(/default checkbox/i);
 };
 
 export const Checked = Template.bind({});

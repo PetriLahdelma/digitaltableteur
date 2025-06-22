@@ -2,6 +2,7 @@ import React from "react";
 import { Meta, StoryFn } from "@storybook/react-webpack5";
 import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Button from "./Button";
+import { within, userEvent } from "@storybook/testing-library";
 
 export default {
   title: "Components/Button",
@@ -34,11 +35,20 @@ Primary.args = {
   variant: "primary",
   children: "Primary Button",
 };
+Primary.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  // Check that the button is rendered
+  await canvas.findByRole("button", { name: /primary button/i });
+};
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: "secondary",
   children: "Secondary Button",
+};
+Secondary.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByRole("button", { name: /secondary button/i });
 };
 
 export const Tertiary = Template.bind({});
