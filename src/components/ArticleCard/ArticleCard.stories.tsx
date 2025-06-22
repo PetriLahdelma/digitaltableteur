@@ -1,4 +1,5 @@
 import React from "react";
+import { within } from "@storybook/testing-library";
 import ArticleCard from "./ArticleCard";
 
 export default {
@@ -23,6 +24,15 @@ export default {
 const Template: any = (args: any) => <ArticleCard {...args} />;
 
 export const Default = Template.bind({});
+import type { StoryContext } from "@storybook/react";
+
+Default.play = async (
+  { canvasElement }: { canvasElement: HTMLElement },
+  _context?: StoryContext,
+) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/design system/i);
+};
 
 export const WithCustomClass = Template.bind({});
 WithCustomClass.args = {

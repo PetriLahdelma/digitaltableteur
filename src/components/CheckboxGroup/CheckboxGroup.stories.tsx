@@ -1,5 +1,6 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-webpack5";
+import { within } from "@storybook/testing-library";
 import CheckboxGroup, { CheckboxGroupProps } from "./CheckboxGroup";
 
 export default {
@@ -25,4 +26,8 @@ Default.args = {
     { label: "Option 4", value: "option4" },
     { label: "Option 5", value: "option5" },
   ],
+};
+Default.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/group label/i);
 };

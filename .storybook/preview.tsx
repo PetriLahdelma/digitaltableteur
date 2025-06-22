@@ -6,7 +6,7 @@ const THEME_KEY = "storybook-theme";
 
 const setThemeClass = (theme: string) => {
   if (typeof window !== "undefined") {
-    document.documentElement.classList.toggle("theme-dark", theme === "dark");
+    document.documentElement.classList.toggle("themeDark", theme === "dark");
   }
 };
 
@@ -34,6 +34,13 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#fff' },
+        { name: 'dark', value: '#000' },
+      ],
+    },
   },
   decorators: [
     (Story, context) => {
@@ -41,6 +48,10 @@ const preview: Preview = {
       React.useEffect(() => {
         setThemeClass(theme);
         localStorage.setItem(THEME_KEY, theme);
+        // Set preview frame background color
+        if (typeof window !== "undefined") {
+          document.body.style.background = theme === "dark" ? "#000" : "#fff";
+        }
       }, [theme]);
       return (
         <MemoryRouter>
