@@ -6,7 +6,6 @@ interface ArticleCardProps {
   lead?: string;
   link: string;
   readTime: string;
-  colorClass?: string;
   className?: string;
 }
 
@@ -15,13 +14,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   lead,
   link,
   readTime,
-  colorClass = "",
   className = "",
 }) => {
   return (
     <a
       href={link}
-      className={`${styles.card} ${colorClass} ${className}`.trim()}
+      className={`${styles.card} ${className}`.trim()}
       onFocus={(e) => e.currentTarget.classList.add(styles.cardFocus)}
       onBlur={(e) => e.currentTarget.classList.remove(styles.cardFocus)}
       onMouseOver={(e) => e.currentTarget.classList.add(styles.cardHover)}

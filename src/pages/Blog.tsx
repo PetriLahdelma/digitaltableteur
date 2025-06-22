@@ -56,7 +56,6 @@ const Blog = () => {
               lead={post.lead}
               link={post.link}
               readTime={post.readTime}
-              colorClass={post.color}
               className={styles.card}
             />
           ))}
