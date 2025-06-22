@@ -6,7 +6,7 @@
   --font-size-text: 1.125rem;
   --font-weight-title: 700;
   --font-weight-text: 400;
-  --color-title: var(--color-primary, #222);
+  --color-title: var(--primary-text-color, #222);
   --color-text: var(--primary-text-color, #222);
   --primary-body-font: "Moderat-Regular", sans-serif;
   --secondary-body-font: "TiemposHeadline-Regular", serif;
@@ -47,6 +47,7 @@
   --color-light-bg: #f9f9f9;
 
   /* Functional colors */
+  --main-body-background-color: #fff;
   --color-primary: #00f;
   --color-success: #28a745;
   --color-info: #17a2b8;
@@ -96,6 +97,7 @@
 
 .themeDark,
 .themeDark :root {
+  --main-body-background-color: #181a1b;
   --color-title: #fff;
   --color-text: #e0e0e0;
   --primary-text-color: #fff;
