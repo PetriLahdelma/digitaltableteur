@@ -10,19 +10,12 @@ export default {
     lead: "A practical and comprehensive guide to building, scaling, and maintaining a robust design system for modern teams, covering best practices, common pitfalls, and strategies for ensuring consistency and efficiency across all digital products and platforms.",
     link: "/blog/design-system-guide",
     readTime: "10 min read",
-    colorClass: "teal",
   },
   argTypes: {
     title: { control: "text" },
     lead: { control: "text" },
     link: { control: "text" },
     readTime: { control: "text" },
-    colorClass: {
-      control: {
-        type: "select",
-        options: ["teal", "purple", "blue", "orange", "green"],
-      },
-    },
     className: { control: "text" },
   },
 };
@@ -37,6 +30,5 @@ WithCustomClass.args = {
   lead: "Explore what the future holds for digital branding and identity, including emerging technologies, evolving consumer expectations, and strategies for building resilient brands in a rapidly changing landscape.",
   link: "/blog/branding-2025",
   readTime: "14 min read",
-  colorClass: "purple",
   className: "customClass",
 };

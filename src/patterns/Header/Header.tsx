@@ -5,8 +5,10 @@ import "../../styles/variables.css";
 import "../../styles/fonts.css";
 import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
 import ScrollTitle from "../../components/ScrollTitle/ScrollTitle";
+import { useTheme } from "../../components/ThemeProvider/ThemeProvider";
 
 const Header = () => {
+  const { theme, toggleTheme } = useTheme();
   return (
     <header className={styles.header}>
       <Link to="/">
@@ -21,7 +23,6 @@ const Header = () => {
         />
       </Link>
       {typeof window !== "undefined" && <ScrollTitle />}
-
       <nav>
         <ul className={styles.nav}>
           <li>
@@ -41,6 +42,14 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+      <button
+        onClick={toggleTheme}
+        className={styles.themeToggle}
+        aria-label="Toggle dark mode"
+        style={{ marginLeft: "auto", marginRight: 0 }}
+      >
+        {theme === "dark" ? "🌙" : "☀️"}
+      </button>
     </header>
   );
 };
