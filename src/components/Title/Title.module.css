@@ -1,3 +1,6 @@
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
+
 .title {
   font-family: var(--font-title);
   font-size: var(--font-size-title);
