@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
+import { s } from 'framer-motion/client';
 
 const config: StorybookConfig = {
   "stories": [
@@ -7,7 +8,8 @@ const config: StorybookConfig = {
   ],
   "addons": [
     "@storybook/preset-create-react-app",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
+    "@storybook/addon-essentials"
   ],
   "framework": {
     "name": "@storybook/react-webpack5",

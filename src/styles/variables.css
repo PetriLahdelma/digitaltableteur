@@ -93,3 +93,35 @@
 
   /* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
 }
+
+.themeDark {
+  --color-title: #fff;
+  --color-text: #e0e0e0;
+  --primary-text-color: #e0e0e0;
+  --main-body-copy-color: #6fa8ff;
+  --secondary-text-color: #aaa;
+  --inverted-text-color: #181a1b;
+  --link-color: #71efff;
+  --color-primary: #6fa8ff;
+  --color-success: #4fd18b;
+  --color-info: #71efff;
+  --color-error: #ff6b6b;
+  --color-error-bg: #2d2323;
+  --color-error-text: #ffb3b3;
+  --color-react: #61dafb;
+  --color-header-bg: #181a1b;
+  --color-white: #181a1b;
+  --color-black: #fff;
+  --color-dark: #e0e0e0;
+  --color-gray-dark: #bbb;
+  --color-gray: #aaa;
+  --color-muted: #888;
+  --color-muted-light: #555;
+  --color-border: #333;
+  --color-border-light: #444;
+  --color-disabled-bg: #23272a;
+  --color-disabled-bg-light: #23272a;
+  --color-disabled-placeholder: #555;
+  --color-gray-medium: #888;
+  --color-light-bg: #23272a;
+}
