@@ -94,7 +94,7 @@
   /* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
 }
 
-.theme-dark {
+.themeDark {
   --color-title: #fff;
   --color-text: #e0e0e0;
   --primary-text-color: #e0e0e0;
