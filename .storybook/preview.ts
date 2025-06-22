@@ -1,14 +1,1 @@
-import type { Preview } from '@storybook/react-webpack5'
-
-const preview: Preview = {
-  parameters: {
-    controls: {
-      matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
-      },
-    },
-  },
-};
-
-export default preview;
+// This file is intentionally left blank. Use preview.tsx for Storybook configuration with JSX/React decorators.

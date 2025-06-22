@@ -42,3 +42,19 @@ header h2 a {
   height: auto;
   display: block;
 }
+
+.themeToggle {
+  background: none;
+  border: none;
+  color: var(--color-title);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 0;
+  padding: 0.5em 1em;
+  transition: color 0.2s;
+}
+
+.themeToggle:hover {
+  color: var(--color-primary);
+}
