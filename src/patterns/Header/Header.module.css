@@ -24,6 +24,12 @@ header h2 a {
   padding-inline-start: var(--space-layout-0);
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .nav {
   list-style: none;
   display: flex;
@@ -49,7 +55,7 @@ header h2 a {
   color: var(--color-primary);
   font-size: 1.5rem;
   cursor: pointer;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: 0;
   padding: 0.5em 1em;
   transition: color 0.2s;

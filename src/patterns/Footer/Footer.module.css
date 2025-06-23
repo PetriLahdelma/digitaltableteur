@@ -7,7 +7,9 @@
   background-color: var(--color-primary);
   text-align: left;
   margin-inline-start: 0;
-  padding-inline: var(--space-layout-32);
+  padding-left: var(--space-layout-32);
+  padding-right: var(--space-layout-32);
+  box-sizing: border-box;
 }
 
 .socialLinks {
@@ -15,6 +17,7 @@
   justify-content: center;
   margin-block: var(--space-layout-16);
   gap: var(--space-internal-16);
+  block-size: 1.5rem;
 }
 
 .socialLinks a {
@@ -52,4 +55,5 @@ footer p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-block-end: 2rem;
 }
