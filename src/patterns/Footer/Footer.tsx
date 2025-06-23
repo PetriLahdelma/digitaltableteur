@@ -37,9 +37,6 @@ const Footer = () => {
         <div className={styles["grid-item-blank"]}></div>
         <div className={styles["grid-item-blank"]}></div>
       </Grid>
-      <p className={styles["footerText"]}>
-        &copy; {currentYear} Digitaltableteur. All rights reserved.
-      </p>
       <div className={styles["socialLinks"]}>
         <a
           href="https://www.instagram.com/digitaltableteur/"
@@ -74,6 +71,9 @@ const Footer = () => {
           {FaMedium({ size: 24 })}
         </a>
       </div>
+      <p className={styles["footerText"]}>
+        &copy; {currentYear} Digitaltableteur. All rights reserved.
+      </p>
     </footer>
   );
 };

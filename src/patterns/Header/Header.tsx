@@ -15,7 +15,7 @@ const Header = () => {
       <Link to="/">
         <img src={Logo} alt="Digitaltableteur Logo" className={styles.logo} />
       </Link>
-      <nav>
+      <nav className={styles.navbar}>
         <ul className={styles.nav}>
           <li>
             <Link to="/">Home</Link>
@@ -33,15 +33,14 @@ const Header = () => {
             <Link to="/contact">Contact</Link>
           </li>
         </ul>
+        <button
+          onClick={toggleTheme}
+          className={styles.themeToggle}
+          aria-label="Toggle dark mode"
+        >
+          {theme === "dark" ? <WiMoonAltNew /> : <IoSunnySharp />}
+        </button>
       </nav>
-      <button
-        onClick={toggleTheme}
-        className={styles.themeToggle}
-        aria-label="Toggle dark mode"
-        style={{ marginLeft: "auto", marginRight: 0 }}
-      >
-        {theme === "dark" ? <WiMoonAltNew /> : <IoSunnySharp />}
-      </button>
     </header>
   );
 };
