@@ -5,6 +5,11 @@ import styles from "./Home.module.css";
 import "../styles/variables.css";
 import Title from "../components/Title/Title";
 import Text from "../components/Text/Text";
+import Link from "../components/Link/Link";
+import FlexBox from "../components/FlexBox/FlexBox";
+import BlueArrow from "../assets/images/portfolio/blue_arrow/bluearrow@2x.webp";
+import Sc5Icon from "../assets/images/portfolio/sc5/sc5_icon@2x.webp";
+import IceCream from "../assets/images/portfolio/illustration/ice-cream.webp";
 
 const Home = () => {
   const [currentText, setCurrentText] = useState("Creative & Development");
@@ -55,80 +60,62 @@ const Home = () => {
         <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.home}>
-        <Grid columns={1} gap="1rem">
-          <div
-            className={styles["grid-item-blank"]}
-            style={{
-              gridColumn: "1 / span 3",
-              background:
-                "linear-gradient(120deg, #007cf0 0%, #ff0080 50%, #fff200 100%)",
-              backgroundSize: "200% 200%",
-              animation: "gradientMove 4s ease-in-out infinite",
-              height: "75vh",
-            }}
-          ></div>
-          <style>
-            {`
-            @keyframes gradientMove {
-              0% {
-          background-position: 0% 50%;
-              }
-              50% {
-          background-position: 100% 50%;
-              }
-              100% {
-          background-position: 0% 50%;
-              }
-            }
-          `}
-          </style>
-        </Grid>
-        <h1>{currentText}</h1>
-        <Grid columns={3} gap="1rem">
-          <div
-            className={styles["grid-item-blank"]}
-            style={{ gridColumn: "2 / span 2" }}
-          >
-            <p className={styles.lead}>
-              That&apos;s what makes Digitaltableteur — a design-led digital
-              studio. Based online, working globally. Helping brands and
-              individuals rethink, simplify, and stand out. Whether it’s
-              strategy, identity, interface, or experience — DS cuts through the
-              noise to deliver clarity, presence, and expression. Well known for
-              obsession to craft, systems, and a little bit of chaos.
-            </p>
-          </div>
-        </Grid>
-        <Grid columns={1} gap="1rem">
-          <div
-            className={styles["grid-item-blank"]}
-            style={{ gridColumn: "1 / span 3" }}
-          >
-            <Title level={2} size="XL">
-              Our Approach
-            </Title>
-            <Text>
-              We believe in a holistic approach to design and development,
-              combining creativity with strategic thinking to deliver impactful
-              solutions.
-            </Text>
-          </div>
-        </Grid>
-        <Grid columns={1} gap="1rem">
-          <div>
-            <Title level={2} size="XL">
-              Our Services
-            </Title>
-            <Text>
-              <ul>
-                <li>Web Design</li>
-                <li>Brand Strategy</li>
-                <li>UI/UX Design</li>
-                <li>Content Creation</li>
-              </ul>
-            </Text>
-          </div>
-        </Grid>
+        <section className={styles.hero}>
+          <Grid columns={1} gap="1rem">
+            <div
+              style={{
+                gridColumn: "1 / span 3",
+                background:
+                  "linear-gradient(120deg, #007cf0 0%, #ff0080 50%, #fff200 100%)",
+                backgroundSize: "200% 200%",
+                animation: "gradientMove 4s ease-in-out infinite",
+                height: "75vh",
+              }}
+            ></div>
+            <style>
+              {`
+                @keyframes gradientMove {
+                  0% {
+                    background-position: 0% 50%;
+                  }
+                  50% {
+                    background-position: 100% 50%;
+                  }
+                  100% {
+                    background-position: 0% 50%;
+                  }
+                }
+              `}
+            </style>
+          </Grid>
+        </section>
+        <section className={styles.about}>
+          <Title level={1} size="XL">
+            {currentText}
+          </Title>
+          <Grid columns={3} gap="1rem">
+            <div
+              className={styles["grid-item-blank"]}
+              style={{ gridColumn: "2 / span 2" }}
+            >
+              <p className={styles.lead}>
+                That&apos;s what makes Digitaltableteur — a design-led
+                development studio. Based online, working globally. Helping
+                individuals rethink, simplify, and stand out. Whether it’s
+                strategy, identity, interface, or experience — DT cuts through
+                the noise to deliver clarity, presence, and expression. Well
+                known for obsession to craft, systems, and a little bit of
+                chaos.
+              </p>
+            </div>
+          </Grid>
+        </section>
+        <section className={styles.cta}>
+          <h2>Ready to create something extraordinary?</h2>
+          <Link className={styles.ctaLink} href="/contact">
+            Let&apos;s talk
+          </Link>
+        </section>
       </div>
     </>
   );

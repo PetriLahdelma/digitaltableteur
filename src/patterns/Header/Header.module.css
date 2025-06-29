@@ -7,7 +7,7 @@
   z-index: 1000;
   background-color: transparent;
   color: var(--main-body-copy-color);
-  padding: var(--space-layout-32);
+  padding-inline: var(--space-layout-32);
 }
 
 header h2 a {
@@ -20,47 +20,125 @@ header h2 a {
   text-decoration: none;
 }
 
+.headerInner {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  padding: 14px 0;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex: 0 0 auto;
+}
+
+.logo {
+  width: 15rem;
+  height: 15rem;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .header nav ul {
   padding-inline-start: var(--space-layout-0);
 }
 
 .navbar {
+  flex: 1 1 auto;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
 }
 
 .nav {
   list-style: none;
   display: flex;
-  gap: var(--space-internal-16);
+  gap: 16px;
+  padding: 0;
+  margin: 0;
 }
 
 .nav a {
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
-  font-size: 1.2rem;
+  font-size: 20px;
   color: var(--main-body-copy-color);
   text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 24px;
+  transition: color 0.2s;
 }
 
-.logo {
-  width: 18rem;
-  height: auto;
-  display: block;
+.nav a:hover,
+.nav a:focus {
+  color: var(--color-primary);
 }
 
 .themeToggle {
   background: none;
   border: none;
-  color: var(--color-primary);
-  font-size: 1.5rem;
+  color: #06f;
+  font-size: 24px;
   cursor: pointer;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0.5em 1em;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: color 0.2s;
+  flex: 0 0 auto;
+  margin-right: 0;
+  margin-left: auto;
 }
 
-.themeToggle:hover {
+.themeToggle:hover,
+.themeToggle:focus {
   color: var(--color-primary);
+}
+
+@media (width <= 900px) {
+  .headerInner {
+    max-width: 100%;
+    padding: 10px 16px;
+  }
+
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .nav a {
+    font-size: 16px;
+  }
+}
+
+@media (width <= 600px) {
+  .headerInner {
+    flex-direction: column;
+    height: auto;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .navbar {
+    justify-content: center;
+  }
+
+  .nav {
+    gap: 8px;
+  }
+
+  .themeToggle {
+    margin-left: 0;
+    margin-top: 8px;
+  }
 }

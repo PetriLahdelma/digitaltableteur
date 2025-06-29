@@ -1,5 +1,4 @@
 .badge {
-  display: inline-block;
   font-family: var(--primary-body-font);
   padding: var(--space-internal-12) var(--space-internal-16);
   border-radius: 999px;
@@ -9,11 +8,15 @@
   color: var(--color-dark, #222);
   letter-spacing: 0.02em;
   vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  overflow: hidden;
 }
 
 .s {
-  font-size: 0.65em;
   padding: var(--space-internal-8) var(--space-internal-12);
+  font-size: 0.65em;
 }
 
 .l {
@@ -50,28 +53,25 @@
   color: var(--color-dark, #222);
 }
 
+.removable {
+  padding-block: 0;
+  padding-inline-end: 0;
+}
+
 .closeButton {
   background: none;
   border: none;
-  color: inherit;
-  margin-left: 0.5em;
+  margin-left: -1.25em; /* Pull button into reserved space */
   cursor: pointer;
   padding: 0;
-  line-height: 1;
   vertical-align: middle;
-  font-size: 1em;
-}
-
-.closeButton.s {
-  font-size: 0.9em;
-}
-
-.closeButton.m {
-  font-size: 1.1em;
-}
-
-.closeButton.l {
-  font-size: 1.3em;
+  color: var(--color-white, #fff);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  height: 1.5em;
+  width: 1.5em;
+  justify-content: center;
 }
 
 .icon {
