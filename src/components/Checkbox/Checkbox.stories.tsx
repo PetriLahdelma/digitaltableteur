@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-webpack5";
-import { within } from "@storybook/testing-library";
+import { within, userEvent } from "@storybook/testing-library";
 import Checkbox, { CheckboxProps } from "./Checkbox";
 
 export default {
@@ -23,7 +23,8 @@ Default.args = {
 };
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByLabelText(/default checkbox/i);
+  const checkbox = await canvas.findByLabelText(/default checkbox/i);
+  await userEvent.click(checkbox);
 };
 
 export const Checked = Template.bind({});
@@ -31,10 +32,22 @@ Checked.args = {
   label: "Checked Checkbox",
   checked: true,
 };
+Checked.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByLabelText(/checked checkbox/i);
+};
 
 export const Indeterminate = Template.bind({});
 Indeterminate.args = {
   label: "Indeterminate Checkbox",
   checked: false,
   indeterminate: true,
+};
+Indeterminate.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  await canvas.findByLabelText(/indeterminate checkbox/i);
 };
