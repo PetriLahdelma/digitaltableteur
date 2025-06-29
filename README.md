@@ -81,6 +81,10 @@ The file is saved as `figma.json` in the project root.
 Every pull request is validated with lint and unit tests using GitHub Actions.
 Preview builds are automatically deployed so changes can be reviewed live.
 A comment with a link to the preview URL is posted on each PR once deployment finishes.
+If the workflow fails with a "branch is not allowed to deploy" error, check the
+environment rules for GitHub Pages. Go to **Settings → Environments →
+`github-pages`** and make sure the branch restrictions allow your pull request
+branches, otherwise the preview deployment will be rejected.
 
 ## Folder overview
 
