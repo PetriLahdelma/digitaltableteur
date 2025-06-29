@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-webpack5";
 import Input from "./Inputs";
+import { within, userEvent } from "@storybook/testing-library";
 
 export default {
   title: "Components/Inputs",
@@ -32,6 +33,11 @@ TextInput.args = {
   label: "Text Input",
   type: "text",
   placeholder: "Enter text",
+};
+TextInput.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  const input = await canvas.findByLabelText(/text input/i);
+  await userEvent.type(input, "Hello");
 };
 
 export const NumberInput = Template.bind({});

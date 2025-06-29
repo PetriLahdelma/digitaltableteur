@@ -1,5 +1,6 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-webpack5";
+import { within, userEvent } from "@storybook/testing-library";
 import Label from "./Label";
 
 export default {
@@ -43,4 +44,27 @@ Disabled.args = {
   htmlFor: "input-id",
   children: "Disabled Label",
   disabled: true,
+};
+
+Default.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/default label/i);
+};
+
+WithTooltip.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const label = await canvas.findByText(/label with tooltip/i);
+  await userEvent.hover(label);
+  // Optionally, check for tooltip appearance if implemented
+};
+
+Required.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/required label/i);
+};
+
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const label = await canvas.findByText(/disabled label/i);
+  // Optionally, check for disabled state if implemented
 };

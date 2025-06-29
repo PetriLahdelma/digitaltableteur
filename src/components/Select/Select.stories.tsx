@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-webpack5";
 import Select from "./Select";
+import { within, userEvent } from "@storybook/testing-library";
 
 export default {
   title: "Components/Select",
@@ -42,4 +43,19 @@ Disabled.args = {
   ],
   value: "option1",
   disabled: true,
+};
+
+Default.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const select = await canvas.findByLabelText(/select an option/i);
+  await userEvent.selectOptions(select, "option2");
+  // Focus test
+  await userEvent.tab();
+};
+
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const select = await canvas.findByLabelText(/disabled select/i);
+  // Focus test
+  await userEvent.tab();
 };
