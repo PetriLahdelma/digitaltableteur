@@ -64,6 +64,15 @@
   margin-block-start: 1rem;
 }
 
+.contactFormTitle {
+  font-family: var(--secondary-heading-font, sans-serif);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-secondary);
+}
+
 .contactInfo {
   margin-block-end: 2rem;
   font-size: 1.1rem;
