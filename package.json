@@ -21,7 +21,6 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^4.10.1",
     "react-router-dom": "^7.6.2",
-    "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "xml2js": "^0.6.2"
@@ -29,10 +28,9 @@
   "scripts": {
     "predeploy": "npm run build && cp CNAME build/CNAME",
     "deploy": "gh-pages -d build --dotfiles",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "prettier \"src/**/*.{ts,tsx,css}\" --check && eslint -c .eslintrc.json \"src/**/*.tsx\" && stylelint \"src/**/*.css\"",
