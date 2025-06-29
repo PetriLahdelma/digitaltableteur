@@ -4,6 +4,7 @@ import styles from "./Contact.module.css";
 import ContactForm from "../components/Contact Form/ContactForm";
 import Title from "../components/Title/Title";
 import Text from "../components/Text/Text";
+import Link from "../components/Link/Link";
 
 const Contact = () => {
   return (
@@ -35,13 +36,13 @@ const Contact = () => {
           Connect for a free strategy session tailored to your vision.
         </Title>
 
-        <Text>Contact Request Form</Text>
+        <Text className={styles.contactFormTitle}>Contact Request Form</Text>
         <Text className={styles.contactInfo}>
-          For new business enquiries, please use the form or{" "}
-          <a href="mailto:mail@digitaltableteur.com">
-            mail@digitaltableteur.com
-          </a>
+          For new business enquiries, please use the form or
         </Text>
+        <Link href="mailto:mail@digitaltableteur.com">
+          mail@digitaltableteur.com
+        </Link>
         <ContactForm />
       </div>
     </>

@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Meta } from "@storybook/react-webpack5";
+import { Meta } from "@storybook/react-vite";
 import {
   AllVariants as ButtonVariants,
   AllSizes as ButtonSizes,
