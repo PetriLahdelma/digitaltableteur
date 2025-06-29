@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-webpack5";
 import Avatar from "./Avatar";
 import peteVaultBoy from "../../assets/images/pete-vault-boy.jpg";
 
