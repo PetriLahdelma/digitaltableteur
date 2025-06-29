@@ -14,6 +14,7 @@ interface LabelProps {
 const Label: React.FC<LabelProps> = ({
   htmlFor,
   children,
+  className = "",
   tooltipText,
   required,
   disabled = false,
@@ -22,7 +23,9 @@ const Label: React.FC<LabelProps> = ({
   return (
     <label
       htmlFor={htmlFor}
-      className={`${styles.label} ${disabled ? styles.disabled : ""}`}
+      className={[styles.label, disabled ? styles.disabled : "", className]
+        .filter(Boolean)
+        .join(" ")}
       title={title || tooltipText} // Use title or fallback to tooltipText
     >
       {children}

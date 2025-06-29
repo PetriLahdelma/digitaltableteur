@@ -49,8 +49,8 @@
   left: 50%;
   width: 12px;
   height: 6px;
-  border-left: 3px solid #fff;
-  border-bottom: 3px solid #fff;
+  border-left: 3px solid var(--color-white);
+  border-bottom: 3px solid var(--color-white);
   transform: translate(-50%, -60%) rotate(-45deg);
   border-radius: 1px;
 }
