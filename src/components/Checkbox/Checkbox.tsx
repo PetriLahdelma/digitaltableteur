@@ -8,19 +8,31 @@ export interface CheckboxProps {
   checked: boolean;
   indeterminate?: boolean;
   onChange: (checked: boolean) => void;
+  disabled?: boolean;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ label, showLabel = true, checked, indeterminate, onChange }, ref) => {
+  (
+    {
+      label,
+      showLabel = true,
+      checked,
+      indeterminate,
+      onChange,
+      disabled = false,
+      ...props
+    },
+    ref,
+  ) => {
     useEffect(() => {
-      if (ref && "current" in ref && ref.current) {
+      if (ref && typeof ref !== "function" && ref.current) {
         ref.current.indeterminate = indeterminate || false;
         ref.current.checked = checked;
       }
-    }, [indeterminate, ref]);
+    }, [indeterminate, checked, ref]);
 
     const handleClick = () => {
-      if (indeterminate && ref && "current" in ref && ref.current) {
+      if (indeterminate && ref && typeof ref !== "function" && ref.current) {
         ref.current.indeterminate = false;
         onChange(false); // Reset to unchecked when clicked
       }
@@ -41,12 +53,12 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               onChange(isChecked);
             }
           }}
+          disabled={disabled}
+          {...props}
         />
-        {showLabel && label && (
-          <Label htmlFor="checkbox" disabled={false} className={styles.label}>
-            {label}
-          </Label>
-        )}
+        <Label htmlFor="checkbox" disabled={disabled} className={styles.label}>
+          {showLabel && label}
+        </Label>
       </div>
     );
   },

@@ -19,7 +19,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<typeof Input> = (args) => (
+const Template: StoryFn<typeof Input> = (
+  args: React.ComponentProps<typeof Input>,
+) => (
   <div style={{ maxWidth: "var(--size-width-md)" }}>
     <Input {...args} />
   </div>

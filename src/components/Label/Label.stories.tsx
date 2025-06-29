@@ -14,7 +14,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<typeof Label> = (args) => <Label {...args} />;
+const Template: StoryFn<typeof Label> = (
+  args: React.ComponentProps<typeof Label>,
+) => <Label {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
