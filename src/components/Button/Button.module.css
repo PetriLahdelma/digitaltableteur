@@ -18,7 +18,7 @@
 
 .button.primary {
   background-color: var(--color-primary);
-  color: white;
+  color: var(--color-white);
   border: none;
 }
 
@@ -36,19 +36,19 @@
 
 .button.error {
   background-color: var(--color-error);
-  color: white;
+  color: var(--color-white);
   border: none;
 }
 
 .button.success {
   background-color: var(--color-success);
-  color: white;
+  color: var(--color-white);
   border: none;
 }
 
 .button.info {
   background-color: var(--color-info);
-  color: white;
+  color: var(--color-white);
   border: none;
 }
 

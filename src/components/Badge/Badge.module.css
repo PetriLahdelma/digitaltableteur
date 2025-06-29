@@ -4,8 +4,8 @@
   border-radius: 999px;
   font-size: 0.75em;
   font-weight: 600;
-  background: var(--color-muted-light, #eee);
-  color: var(--color-dark, #222);
+  background: var(--color-muted-light);
+  color: var(--color-dark);
   letter-spacing: 0.02em;
   vertical-align: middle;
   display: inline-flex;
@@ -29,28 +29,28 @@
 }
 
 .primary {
-  background: var(--color-primary, #00f);
-  color: var(--color-white, #fff);
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
 .success {
-  background: var(--color-success, #28a745);
-  color: var(--color-white, #fff);
+  background: var(--color-success);
+  color: var(--color-white);
 }
 
 .info {
-  background: var(--color-info, #17a2b8);
-  color: var(--color-white, #fff);
+  background: var(--color-info);
+  color: var(--color-white);
 }
 
 .error {
-  background: var(--color-error, #dc3545);
-  color: var(--color-white, #fff);
+  background: var(--color-error);
+  color: var(--color-white);
 }
 
 .neutral {
-  background: var(--color-muted-light, #eee);
-  color: var(--color-dark, #222);
+  background: var(--color-muted-light);
+  color: var(--color-dark);
 }
 
 .removable {
@@ -65,7 +65,7 @@
   cursor: pointer;
   padding: 0;
   vertical-align: middle;
-  color: var(--color-white, #fff);
+  color: var(--color-white);
   display: inline-flex;
   align-items: center;
   gap: 0.25em;

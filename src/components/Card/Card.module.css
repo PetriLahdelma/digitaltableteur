@@ -1,12 +1,12 @@
 .card {
-  background: #fff;
+  background: var(--color-white);
   padding: 2rem;
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   transition: box-shadow 0.2s;
-  outline: 2px solid var(--color-primary, #0070f3);
+  outline: 2px solid var(--color-primary);
 }
 
 .card:hover {
@@ -16,7 +16,7 @@
 
 .card:focus {
   box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
-  outline: 3px solid var(--color-primary, #0070f3);
+  outline: 3px solid var(--color-primary);
 }
 
 .header {
@@ -39,11 +39,11 @@
 
 .body {
   font-size: 1.1rem;
-  color: var(--primary-text-color, #222);
+  color: var(--primary-text-color);
 }
 
 .link {
-  color: var(--color-primary, #0070f3);
+  color: var(--color-primary);
   text-decoration: underline;
   font-weight: 500;
   margin-top: 0.5rem;
