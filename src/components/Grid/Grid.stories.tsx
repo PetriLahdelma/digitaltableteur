@@ -39,7 +39,7 @@ export default {
 };
 
 import type { ComponentProps } from "react";
-import type { StoryFn } from "@storybook/react";
+import type { StoryFn } from "@storybook/react-webpack5";
 
 const Template: StoryFn<ComponentProps<typeof Grid>> = (
   args: ComponentProps<typeof Grid>,
