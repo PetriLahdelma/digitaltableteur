@@ -22,7 +22,7 @@ jobs:
       - run: PUBLIC_URL=. npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./dist
 
   deploy:
     needs: build
