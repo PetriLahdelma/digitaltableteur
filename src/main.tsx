@@ -5,8 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
+import { HelmetProvider } from "react-helmet-async";
 
-const gaId = process.env.REACT_APP_GA_ID;
+// Use Vite's environment variable style
+const gaId = import.meta.env.VITE_GA_ID;
 if (gaId) {
   const gtagScript = document.createElement("script");
   gtagScript.async = true;
@@ -28,9 +30,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 );
 
@@ -41,3 +45,9 @@ reportWebVitals();
 
 // Register service worker for offline support
 serviceWorkerRegistration.register();
+
+declare global {
+  interface ImportMeta {
+    env: Record<string, string>;
+  }
+}

@@ -41,7 +41,8 @@ export const AllComponents = () => (
           <div key={name} style={{ display: "grid", gap: "1rem" }}>
             <div style={{ fontWeight: 600 }}>{name}</div>
             <div>
-              <Component />
+              {/* Defensive: Only render if Component is a function or class */}
+              {typeof Component === "function" ? <Component /> : null}
             </div>
           </div>
         ))}

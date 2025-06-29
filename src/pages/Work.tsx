@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./Work.module.css";
 import MoireBackground from "../components/MoireBackground";
 import Ufo from "../assets/images/ufo.webp";
@@ -15,54 +15,60 @@ import IceCream from "../assets/images/portfolio/illustration/ice-cream.webp";
 const Work = () => {
   return (
     <>
-      <Helmet>
-        <title>Work | Digitaltableteur</title>
-        <meta
-          name="description"
-          content="Selected projects and experiments by Digitaltableteur"
-        />
-        <meta property="og:title" content="Work | Digitaltableteur" />
-        <meta
-          property="og:description"
-          content="Selected projects and experiments by Digitaltableteur"
-        />
-        <meta property="og:image" content="/logo512.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Work | Digitaltableteur" />
-        <meta
-          name="twitter:description"
-          content="Selected projects and experiments by Digitaltableteur"
-        />
-        <meta name="twitter:image" content="/logo512.png" />
-      </Helmet>
-      <div className={styles["workPage"]}>
-        <section className={styles.works}>
-          <FlexBox
-            direction="row"
-            wrap="wrap"
-            gap="5rem"
-            className={styles.worksGrid}
-          >
-            <div className={styles.workItem}>
-              <img
-                className={styles.blueArrowImage}
-                src={IceCream}
-                alt="Illustration"
-              />
-            </div>
-            <div className={styles.workItem}>
-              <img className={styles.blueArrowImage} src={Sc5Icon} alt="Icon" />
-            </div>
-            <div className={styles.workItem}>
-              <img
-                className={styles.blueArrowImage}
-                src={BlueArrow}
-                alt="Blue Arrow Awards"
-              />
-            </div>
-          </FlexBox>
-        </section>
-      </div>
+      <HelmetProvider>
+        <Helmet>
+          <title>Work | Digitaltableteur</title>
+          <meta
+            name="description"
+            content="Selected projects and experiments by Digitaltableteur"
+          />
+          <meta property="og:title" content="Work | Digitaltableteur" />
+          <meta
+            property="og:description"
+            content="Selected projects and experiments by Digitaltableteur"
+          />
+          <meta property="og:image" content="/logo512.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Work | Digitaltableteur" />
+          <meta
+            name="twitter:description"
+            content="Selected projects and experiments by Digitaltableteur"
+          />
+          <meta name="twitter:image" content="/logo512.png" />
+        </Helmet>
+        <div className={styles["workPage"]}>
+          <section className={styles.works}>
+            <FlexBox
+              direction="row"
+              wrap="wrap"
+              gap="5rem"
+              className={styles.worksGrid}
+            >
+              <div className={styles.workItem}>
+                <img
+                  className={styles.blueArrowImage}
+                  src={IceCream}
+                  alt="Illustration"
+                />
+              </div>
+              <div className={styles.workItem}>
+                <img
+                  className={styles.blueArrowImage}
+                  src={Sc5Icon}
+                  alt="Icon"
+                />
+              </div>
+              <div className={styles.workItem}>
+                <img
+                  className={styles.blueArrowImage}
+                  src={BlueArrow}
+                  alt="Blue Arrow Awards"
+                />
+              </div>
+            </FlexBox>
+          </section>
+        </div>
+      </HelmetProvider>
     </>
   );
 };
