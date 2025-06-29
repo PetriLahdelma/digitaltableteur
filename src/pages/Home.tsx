@@ -6,10 +6,6 @@ import "../styles/variables.css";
 import Title from "../components/Title/Title";
 import Text from "../components/Text/Text";
 import Link from "../components/Link/Link";
-import FlexBox from "../components/FlexBox/FlexBox";
-import BlueArrow from "../assets/images/portfolio/blue_arrow/bluearrow@2x.webp";
-import Sc5Icon from "../assets/images/portfolio/sc5/sc5_icon@2x.webp";
-import IceCream from "../assets/images/portfolio/illustration/ice-cream.webp";
 
 const Home = () => {
   const [currentText, setCurrentText] = useState("Creative & Development");

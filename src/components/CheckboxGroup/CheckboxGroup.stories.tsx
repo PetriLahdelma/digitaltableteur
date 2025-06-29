@@ -12,7 +12,7 @@ export default {
   },
 } as Meta<CheckboxGroupProps>;
 
-const Template: StoryFn<CheckboxGroupProps> = (args) => (
+const Template: StoryFn<CheckboxGroupProps> = (args: CheckboxGroupProps) => (
   <CheckboxGroup {...args} />
 );
 
@@ -27,7 +27,7 @@ Default.args = {
     { label: "Option 5", value: "option5" },
   ],
 };
-Default.play = async ({ canvasElement }) => {
+Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByText(/group label/i);
 };

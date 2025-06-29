@@ -13,7 +13,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<typeof Select> = (args) => (
+const Template: StoryFn<typeof Select> = (
+  args: React.ComponentProps<typeof Select>,
+) => (
   <div style={{ maxWidth: "var(--size-width-md)" }}>
     <Select {...args} />
   </div>

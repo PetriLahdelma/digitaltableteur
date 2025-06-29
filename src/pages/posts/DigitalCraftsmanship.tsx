@@ -4,7 +4,6 @@ import Avatar from "../../components/Avatar/Avatar";
 import Author from "../../components/Author/Author";
 import styles from "../Article.module.css";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
-import { css } from "storybook/internal/theming";
 import Pizza from "../../assets/images/pizza.jpg";
 import Card from "../../components/Card/Card";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
