@@ -42,7 +42,7 @@ const HelsinkiClock: React.FC = () => {
   return (
     <div className={styles.clockContainer}>
       <div className={styles.date}>{helsinki.date}</div>
-      <div className={styles.time}>Helsinki, {helsinki.time}</div>
+      <div className={styles.time}>Helsinki (GMT+2), {helsinki.time}</div>
     </div>
   );
 };
