@@ -23,3 +23,11 @@
 .titleXL {
   font-size: 5rem;
 }
+
+.fontSerif {
+  font-family: var(--font-title, "TiemposHeadline-Regular"), serif;
+}
+
+.fontSans {
+  font-family: Moderat, var(--font-text, Moderat), sans-serif;
+}

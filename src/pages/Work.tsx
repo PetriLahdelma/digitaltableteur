@@ -7,6 +7,10 @@ import sausage from "../assets/images/sausage.webp";
 import fur from "../assets/images/fur.webp";
 import blackletter from "../assets/images/blackletter.webp";
 import projectData from "../data/workData.json";
+import FlexBox from "../components/FlexBox/FlexBox";
+import BlueArrow from "../assets/images/portfolio/blue_arrow/bluearrow@2x.webp";
+import Sc5Icon from "../assets/images/portfolio/sc5/sc5_icon@2x.webp";
+import IceCream from "../assets/images/portfolio/illustration/ice-cream.webp";
 
 const Work = () => {
   return (
@@ -31,54 +35,33 @@ const Work = () => {
         />
         <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
-      <div className={styles["work-page"]}>
-        <section className={styles.section1}>
-          <ul>
-            <li>Strategy</li>
-            <li>Concept development</li>
-            <li>Identity systems</li>
-            <li>Content</li>
-            <li>Experimental</li>
-            <li>Development</li>
-            <li>Impact and sustainability</li>
-          </ul>
-        </section>
-        <section className={styles.section2}>Section 2</section>
-        <section className={styles.section3}>
-          <MoireBackground lineCount={800} lineSpacing={2} />
-        </section>
-        <section className={styles.section4}>Section 4</section>
-        <section className={styles.section5}>
-          <div className={styles.scrollableContainer}>
-            <div className={styles.scrollableContent}>
-              <div className={styles.scrollItem}>
-                <img
-                  src={blackletter}
-                  alt="Blackletter"
-                  style={{ width: "100%", height: "100%", objectFit: "fill" }}
-                />
-              </div>
-              <div className={styles.scrollItem}>
-                <img
-                  src={sausage}
-                  alt="Sausage"
-                  style={{ width: "100%", height: "100%", objectFit: "fill" }}
-                />
-              </div>
-              <div className={styles.scrollItem}>
-                <img
-                  src={fur}
-                  alt="Fur"
-                  style={{ width: "100%", height: "100%", objectFit: "fill" }}
-                />
-              </div>
+      <div className={styles["workPage"]}>
+        <section className={styles.works}>
+          <FlexBox
+            direction="row"
+            wrap="wrap"
+            gap="5rem"
+            className={styles.worksGrid}
+          >
+            <div className={styles.workItem}>
+              <img
+                className={styles.blueArrowImage}
+                src={IceCream}
+                alt="Illustration"
+              />
             </div>
-          </div>
+            <div className={styles.workItem}>
+              <img className={styles.blueArrowImage} src={Sc5Icon} alt="Icon" />
+            </div>
+            <div className={styles.workItem}>
+              <img
+                className={styles.blueArrowImage}
+                src={BlueArrow}
+                alt="Blue Arrow Awards"
+              />
+            </div>
+          </FlexBox>
         </section>
-        <section className={styles.section5}></section>
-        <section className={styles.section6}>Section 6</section>
-        <section className={styles.section7}>Section 7</section>
-        <section className={styles.section8}>Section 8</section>
       </div>
     </>
   );

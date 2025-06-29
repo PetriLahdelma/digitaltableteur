@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Badge.module.css";
 import * as FaIcons from "react-icons/fa";
+import Button from "../Button/Button";
+import { IoMdClose } from "react-icons/io";
 
 // Dynamically create options and mapping for all icons
 const iconOptions = {
@@ -41,6 +43,7 @@ export const Badge: React.FC<BadgeProps> = ({
         styles[size], // Add size class
         className,
         square ? styles.square : "",
+        removable ? styles.removable : "",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -48,17 +51,16 @@ export const Badge: React.FC<BadgeProps> = ({
       {icon && <span className={styles.icon}>{icon}</span>}
       {children}
       {removable && (
-        <button
+        <Button
           type="button"
+          icon={IoMdClose ? <IoMdClose /> : null}
           className={styles.closeButton}
           aria-label="Remove badge"
           onClick={() => {
             setVisible(false);
             if (onRemove) onRemove();
           }}
-        >
-          ×
-        </button>
+        ></Button>
       )}
     </span>
   );
