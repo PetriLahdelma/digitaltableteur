@@ -88,7 +88,7 @@ const Home = () => {
           </Grid>
         </section>
         <section className={styles.about}>
-          <Title level={1} size="XL">
+          <Title className={styles.gradientText} level={1} size="XL">
             {currentText}
           </Title>
           <Grid columns={3} gap="1rem">

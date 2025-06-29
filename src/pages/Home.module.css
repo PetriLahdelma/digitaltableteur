@@ -44,6 +44,27 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
+.gradientText {
+  background: linear-gradient(120deg, #007cf0 0%, #ff0080 50%, #fff200 100%);
+  background-size: 200% 200%;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradientMove 4s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 @media (width <= 768px) {
   h1 {
     font-size: 4rem;
