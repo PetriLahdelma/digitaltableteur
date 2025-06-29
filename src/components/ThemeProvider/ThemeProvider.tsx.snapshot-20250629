@@ -1,15 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-// Synchronously set theme class before React renders
-function syncThemeClass() {
-  if (typeof window !== "undefined") {
-    const theme =
-      (localStorage.getItem("theme") as "light" | "dark") || "light";
-    document.body.classList.toggle("themeDark", theme === "dark");
-  }
-}
-syncThemeClass();
-
 type Theme = "light" | "dark";
 interface ThemeContextProps {
   theme: Theme;

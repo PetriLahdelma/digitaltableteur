@@ -38,12 +38,11 @@ const ContactForm = () => {
     setFormData({ ...formData, interest: selectedOptions.join(", ") });
   };
 
-  const SERVICE_ID =
-    process.env.REACT_APP_EMAIL_SERVICE_ID || "service_ix55445";
+  const SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID || "service_ix55445";
   const TEMPLATE_ID =
-    process.env.REACT_APP_EMAIL_TEMPLATE_ID || "template_bfw826h";
+    import.meta.env.VITE_EMAIL_TEMPLATE_ID || "template_bfw826h";
   const PUBLIC_KEY =
-    process.env.REACT_APP_EMAIL_PUBLIC_KEY || "***REMOVED***";
+    import.meta.env.VITE_EMAIL_PUBLIC_KEY || "***REMOVED***";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
