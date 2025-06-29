@@ -31,7 +31,7 @@
     "dev": "vite",
     "start": "vite",
     "build": "vite build",
-    "test": "vitest run",
+    "test": "vitest run --config vitest.config.mts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "prettier \"src/**/*.{ts,tsx,css}\" --check && eslint -c .eslintrc.json \"src/**/*.tsx\" && stylelint \"src/**/*.css\"",
