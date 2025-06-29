@@ -42,6 +42,18 @@ npm run build
 
 The optimized output is placed in the `build` folder.
 
+### Lint
+
+Run all code quality checks with:
+
+```bash
+npm run lint
+```
+
+Stylelint is configured with `stylelint-declaration-strict-value` to warn about
+hardcoded color values in CSS files and inline styles found in `.tsx` and `.html`
+files. Use CSS variables or functions for colors to avoid warnings.
+
 ### Service worker
 
 The app registers a service worker using Workbox to cache static assets and
