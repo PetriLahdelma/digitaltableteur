@@ -31,7 +31,7 @@ Default.play = async (
   _context?: StoryContext,
 ) => {
   const canvas = within(canvasElement);
-  await canvas.findByText(/design system/i);
+  await canvas.findAllByText(/design system/i);
 };
 
 export const WithCustomClass = Template.bind({});

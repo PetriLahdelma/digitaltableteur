@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "../Article.module.css";
 import Author from "../../components/Author/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
@@ -17,34 +17,36 @@ import {
 
 const FigmaMCP = () => (
   <>
-    <Helmet>
-      <title>
-        Figma MCP, Design Systems, and Generative UI | Digitaltableteur
-      </title>
-      <meta
-        name="description"
-        content="How Figma's MCP server speeds up design-to-code workflows."
-      />
-      <meta
-        property="og:title"
-        content="Figma MCP, Design Systems, and Generative UI | Digitaltableteur"
-      />
-      <meta
-        property="og:description"
-        content="How Figma's MCP server speeds up design-to-code workflows."
-      />
-      <meta property="og:image" content="/logo512.png" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        name="twitter:title"
-        content="Figma MCP, Design Systems, and Generative UI | Digitaltableteur"
-      />
-      <meta
-        name="twitter:description"
-        content="How Figma's MCP server speeds up design-to-code workflows."
-      />
-      <meta name="twitter:image" content="/logo512.png" />
-    </Helmet>
+    <HelmetProvider>
+      <Helmet>
+        <title>
+          Figma MCP, Design Systems, and Generative UI | Digitaltableteur
+        </title>
+        <meta
+          name="description"
+          content="How Figma's MCP server speeds up design-to-code workflows."
+        />
+        <meta
+          property="og:title"
+          content="Figma MCP, Design Systems, and Generative UI | Digitaltableteur"
+        />
+        <meta
+          property="og:description"
+          content="How Figma's MCP server speeds up design-to-code workflows."
+        />
+        <meta property="og:image" content="/logo512.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Figma MCP, Design Systems, and Generative UI | Digitaltableteur"
+        />
+        <meta
+          name="twitter:description"
+          content="How Figma's MCP server speeds up design-to-code workflows."
+        />
+        <meta name="twitter:image" content="/logo512.png" />
+      </Helmet>
+    </HelmetProvider>
     <article className={styles.article}>
       <header>
         <h1>Rethinking Design-to-Product Workflows with Figma MCP</h1>
