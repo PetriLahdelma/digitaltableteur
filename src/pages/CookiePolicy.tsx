@@ -1,30 +1,38 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./CookiePolicy.module.css";
 
 const CookiePolicy = () => {
   return (
     <>
-      <Helmet>
-        <title>Cookie Policy | Digitaltableteur</title>
-        <meta
-          name="description"
-          content="How Digitaltableteur uses cookies and your choices about them"
-        />
-        <meta property="og:title" content="Cookie Policy | Digitaltableteur" />
-        <meta
-          property="og:description"
-          content="How Digitaltableteur uses cookies and your choices about them"
-        />
-        <meta property="og:image" content="/logo512.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Cookie Policy | Digitaltableteur" />
-        <meta
-          name="twitter:description"
-          content="How Digitaltableteur uses cookies and your choices about them"
-        />
-        <meta name="twitter:image" content="/logo512.png" />
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>Cookie Policy | Digitaltableteur</title>
+          <meta
+            name="description"
+            content="How Digitaltableteur uses cookies and your choices about them"
+          />
+          <meta
+            property="og:title"
+            content="Cookie Policy | Digitaltableteur"
+          />
+          <meta
+            property="og:description"
+            content="How Digitaltableteur uses cookies and your choices about them"
+          />
+          <meta property="og:image" content="/logo512.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content="Cookie Policy | Digitaltableteur"
+          />
+          <meta
+            name="twitter:description"
+            content="How Digitaltableteur uses cookies and your choices about them"
+          />
+          <meta name="twitter:image" content="/logo512.png" />
+        </Helmet>
+      </HelmetProvider>
       <div className={styles.policyPage}>
         <h1>Cookie Policy</h1>
         <p>

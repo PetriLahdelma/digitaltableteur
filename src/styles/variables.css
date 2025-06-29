@@ -6,8 +6,8 @@
   --font-size-text: 1.125rem;
   --font-weight-title: 700;
   --font-weight-text: 400;
-  --color-title: var(--primary-text-color, #222);
-  --color-text: var(--primary-text-color, #222);
+  --color-title: var(--primary-text-color, #00f);
+  --color-text: var(--primary-text-color, #00f);
   --primary-body-font: "Moderat-Regular", sans-serif;
   --secondary-body-font: "TiemposHeadline-Regular", serif;
   --primary-bold-font: "Moderat-Bold", sans-serif;
@@ -18,7 +18,7 @@
   /* Text colors */
   --main-body-copy-color: #00f;
   --primary-text-color: #00f;
-  --secondary-text-color: #555;
+  --secondary-text-color: #00f;
   --inverted-text-color: #fff;
   --link-color: #00f;
 
@@ -110,9 +110,9 @@
 .themeDark,
 .themeDark :root {
   --main-body-background-color: #181a1b;
-  --color-title: #fff;
+  --color-title: #6fa8ff;
   --color-text: #e0e0e0;
-  --primary-text-color: #fff;
+  --primary-text-color: #6fa8ff;
   --main-body-copy-color: #6fa8ff;
   --secondary-text-color: #aaa;
   --inverted-text-color: #181a1b;
