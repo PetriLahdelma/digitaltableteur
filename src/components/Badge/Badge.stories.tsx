@@ -56,7 +56,7 @@ export default {
   },
 };
 
-import { StoryFn } from "@storybook/react";
+import { StoryFn } from "@storybook/react-webpack5";
 // If BadgeProps is a type exported from Badge.tsx, ensure it's exported as 'export type BadgeProps = ...' in Badge.tsx.
 // import type { BadgeProps } from "./Badge";
 type BadgeProps = React.ComponentProps<typeof Badge>;
