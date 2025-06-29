@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Grid from "../components/Grid/Grid";
 import styles from "./Home.module.css";
 import "../styles/variables.css";
@@ -29,32 +29,34 @@ const Home = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Digitaltableteur - Creative & Development</title>
-        <meta
-          name="description"
-          content="Design-led digital studio delivering strategy, branding and development."
-        />
-        <meta
-          property="og:title"
-          content="Digitaltableteur - Creative & Development"
-        />
-        <meta
-          property="og:description"
-          content="Design-led digital studio delivering strategy, branding and development."
-        />
-        <meta property="og:image" content="/logo512.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Digitaltableteur - Creative & Development"
-        />
-        <meta
-          name="twitter:description"
-          content="Design-led digital studio delivering strategy, branding and development."
-        />
-        <meta name="twitter:image" content="/logo512.png" />
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>Digitaltableteur - Creative & Development</title>
+          <meta
+            name="description"
+            content="Design-led digital studio delivering strategy, branding and development."
+          />
+          <meta
+            property="og:title"
+            content="Digitaltableteur - Creative & Development"
+          />
+          <meta
+            property="og:description"
+            content="Design-led digital studio delivering strategy, branding and development."
+          />
+          <meta property="og:image" content="/logo512.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content="Digitaltableteur - Creative & Development"
+          />
+          <meta
+            name="twitter:description"
+            content="Design-led digital studio delivering strategy, branding and development."
+          />
+          <meta name="twitter:image" content="/logo512.png" />
+        </Helmet>
+      </HelmetProvider>
       <div className={styles.home}>
         <section className={styles.hero}>
           <Grid columns={1} gap="1rem">

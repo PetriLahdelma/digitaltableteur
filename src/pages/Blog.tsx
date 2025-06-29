@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./Blog.module.css";
 import { posts } from "./posts";
 import ArticleCard from "../components/ArticleCard/ArticleCard";
@@ -24,7 +24,7 @@ const Blog = () => {
   });
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet>
         <title>Blog | Digitaltableteur</title>
         <meta
@@ -61,7 +61,7 @@ const Blog = () => {
           ))}
         </div>
       </div>
-    </>
+    </HelmetProvider>
   );
 };
 
