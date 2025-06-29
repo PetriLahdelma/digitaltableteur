@@ -1,7 +1,7 @@
 import React from "react";
 import Badge from "./Badge";
 import * as FaIcons from "react-icons/fa";
-import { within } from "@storybook/testing-library";
+import { within, userEvent } from "@storybook/testing-library";
 
 // Dynamically generate all icon options from react-icons/fa
 const iconOptions = {
@@ -64,6 +64,12 @@ type BadgeProps = React.ComponentProps<typeof Badge>;
 const Template: StoryFn<BadgeProps> = (args: BadgeProps) => <Badge {...args} />;
 
 export const Playground = Template.bind({});
+Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/badge/i);
+  // Focus test
+  await userEvent.tab();
+};
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -73,6 +79,7 @@ Primary.args = {
 Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByText(/primary badge/i);
+  await userEvent.tab();
 };
 
 export const AllVariants = () => (
@@ -92,11 +99,30 @@ export const AllVariants = () => (
     </Badge>
   </div>
 );
+AllVariants.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/primary/i);
+  await canvas.findByText(/success/i);
+  await canvas.findByText(/info/i);
+  await canvas.findByText(/error/i);
+  await canvas.findByText(/neutral/i);
+};
 
 export const Removable = Template.bind({});
 Removable.args = {
   removable: true,
   children: "Removable Badge",
+};
+Removable.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/removable badge/i);
+  // Optionally, click the remove button if present
+  const removeBtn = canvas.queryByRole?.("button", { name: /remove|close|×/i });
+  if (removeBtn) await userEvent.click(removeBtn);
 };
 
 export const AllSizes = () => (
@@ -112,3 +138,9 @@ export const AllSizes = () => (
     </Badge>
   </div>
 );
+AllSizes.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/small/i);
+  await canvas.findByText(/medium/i);
+  await canvas.findByText(/large/i);
+};

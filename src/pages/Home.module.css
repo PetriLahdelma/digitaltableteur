@@ -50,16 +50,18 @@ h1 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-  animation: gradientMove 4s ease-in-out infinite;
+  animation: gradient-move 4s ease-in-out infinite;
 }
 
-@keyframes gradientMove {
+@keyframes gradient-move {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

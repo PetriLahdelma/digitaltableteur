@@ -1,5 +1,6 @@
 import React from "react";
 import Text from "./Text";
+import { within } from "@storybook/testing-library";
 
 export default {
   title: "Components/Text",
@@ -34,6 +35,11 @@ Playground.args = {
   size: "M",
   terminals: "sans",
   className: "",
+};
+
+Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/play with the text component!/i);
 };
 
 export const Default = () => <Text>This is default text.</Text>;
