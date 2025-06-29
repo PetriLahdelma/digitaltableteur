@@ -24,7 +24,7 @@ export default {
 const Template: any = (args: any) => <ArticleCard {...args} />;
 
 export const Default = Template.bind({});
-import type { StoryContext } from "@storybook/react";
+import type { StoryContext } from "@storybook/react-webpack5";
 
 Default.play = async (
   { canvasElement }: { canvasElement: HTMLElement },

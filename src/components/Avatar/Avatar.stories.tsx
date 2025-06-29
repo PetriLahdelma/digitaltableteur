@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryFn, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react-webpack5";
 import Avatar from "./Avatar";
 import peteVaultBoy from "../../assets/images/pete-vault-boy.jpg";
 
@@ -8,7 +8,9 @@ export default {
   component: Avatar,
 } as Meta<typeof Avatar>;
 
-const Template: StoryFn<typeof Avatar> = (args) => <Avatar {...args} />;
+const Template: StoryFn<typeof Avatar> = (
+  args: React.ComponentProps<typeof Avatar>,
+) => <Avatar {...args} />;
 
 export const WithImage = Template.bind({});
 WithImage.args = {

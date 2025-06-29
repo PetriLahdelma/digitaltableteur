@@ -18,7 +18,9 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<typeof Link> = (args) => <Link {...args} />;
+const Template: StoryFn<typeof Link> = (
+  args: React.ComponentProps<typeof Link>,
+) => <Link {...args} />;
 
 export const Playground = Template.bind({});
 Playground.args = {

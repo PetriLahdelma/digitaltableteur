@@ -11,4 +11,4 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run lint
-      - run: npm test -- --watchAll=false
+      - run: npm test

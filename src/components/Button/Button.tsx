@@ -33,6 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   tooltip,
   type = "button",
   onClick,
+  className = "",
 }) => {
   const normalizedIcon =
     typeof icon === "function" ? React.createElement(icon) : icon;
@@ -41,7 +42,14 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${styles.button} ${styles[variant]} ${!children && normalizedIcon ? styles["iconOnly"] : ""}`}
+      className={[
+        styles.button,
+        styles[variant],
+        !children && normalizedIcon ? styles["iconOnly"] : "",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       disabled={disabled}
       aria-describedby={accessibleDescription}
       aria-label={accessibleName}

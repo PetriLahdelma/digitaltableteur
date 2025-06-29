@@ -25,13 +25,6 @@ h1 {
   margin-block-end: var(--space-layout-96);
 }
 
-.servicesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-layout-32);
-  margin-block-end: var(--space-layout-96);
-}
-
 .cta {
   margin-block-start: 2rem;
   background-color: var(--color-primary);
@@ -49,12 +42,6 @@ h1 {
   text-decoration: underline;
   border-radius: 0.5rem;
   transition: background-color 0.3s ease;
-}
-
-.blueArrowImage {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: var(--space-layout-16);
 }
 
 @media (width <= 768px) {
