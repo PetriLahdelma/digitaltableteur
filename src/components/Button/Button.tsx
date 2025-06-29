@@ -17,6 +17,7 @@ interface ButtonProps {
   // eslint-disable-next-line no-unused-vars
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
+  size?: "s" | "m" | "l";
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -34,6 +35,7 @@ const Button: React.FC<ButtonProps> = ({
   type = "button",
   onClick,
   className = "",
+  size = "m",
 }) => {
   const normalizedIcon =
     typeof icon === "function" ? React.createElement(icon) : icon;
@@ -45,6 +47,7 @@ const Button: React.FC<ButtonProps> = ({
       className={[
         styles.button,
         styles[variant],
+        styles[size],
         !children && normalizedIcon ? styles["iconOnly"] : "",
         className,
       ]

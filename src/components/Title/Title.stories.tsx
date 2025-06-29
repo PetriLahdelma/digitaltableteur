@@ -1,5 +1,6 @@
 import React from "react";
 import Title from "./Title";
+import { within } from "@storybook/testing-library";
 
 export default {
   title: "Components/Title",
@@ -60,4 +61,14 @@ Playground.argTypes = {
     defaultValue: "serif",
   },
   as: { control: "text" },
+};
+
+AllSizes.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/small title/i);
+};
+
+AllLevels.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/heading 1/i);
 };
