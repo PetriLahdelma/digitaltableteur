@@ -30,9 +30,10 @@ const Select: React.FC<SelectProps> = ({
 
   return (
     <div className={styles["select-container"]}>
-      {label && <Label htmlFor={label}>{label}</Label>}
+      {label && <Label htmlFor={`select-${label}`}>{label}</Label>}
       <div className={styles["select-wrapper"]}>
         <select
+          id={`select-${label}`}
           className={styles.select}
           value={value}
           onChange={handleChange}
