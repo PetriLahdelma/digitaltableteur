@@ -1,5 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
-import type { Preview } from '@storybook/react-webpack5';
+import { ThemeProvider } from "../src/components/ThemeProvider/ThemeProvider";
+import type { Preview } from '@storybook/react-vite';
 import React from "react";
 
 const THEME_KEY = "storybook-theme";
@@ -48,14 +49,15 @@ const preview: Preview = {
       React.useEffect(() => {
         setThemeClass(theme);
         localStorage.setItem(THEME_KEY, theme);
-        // Set preview frame background color
         if (typeof window !== "undefined") {
           document.body.style.background = theme === "dark" ? "#000" : "#fff";
         }
       }, [theme]);
       return (
         <MemoryRouter>
-          <Story />
+          <ThemeProvider forcedTheme={theme}>
+            <Story />
+          </ThemeProvider>
         </MemoryRouter>
       );
     },

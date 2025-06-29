@@ -65,9 +65,9 @@
   },
   "devDependencies": {
     "@storybook/addon-docs": "^9.0.13",
+    "@storybook/builder-vite": "^9.0.14",
     "@storybook/cli": "^9.0.14",
-    "@storybook/preset-create-react-app": "^9.0.13",
-    "@storybook/react-webpack5": "^9.0.13",
+    "@storybook/react-vite": "^9.0.14",
     "@storybook/test-runner": "^0.23.0",
     "@storybook/testing-library": "^0.2.1",
     "@testing-library/jest-dom": "^6.6.3",
@@ -89,7 +89,6 @@
     "stylelint": "^16.20.0",
     "stylelint-config-standard": "^38.0.0",
     "stylelint-order": "^7.0.0",
-    "vitest": "^3.2.4",
-    "webpack": "^5.99.9"
+    "vitest": "^3.2.4"
   }
 }
