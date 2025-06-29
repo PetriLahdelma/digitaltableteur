@@ -23,9 +23,10 @@ const ThemeContext = createContext<ThemeContextProps>({
 
 export const useTheme = () => useContext(ThemeContext);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const ThemeProvider: React.FC<{
+  children: React.ReactNode;
+  forcedTheme?: Theme;
+}> = ({ children, forcedTheme }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
       return (localStorage.getItem("theme") as Theme) || "light";
@@ -33,15 +34,18 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     return "light";
   });
 
+  // If forcedTheme is provided, always use it
+  const effectiveTheme = forcedTheme || theme;
+
   useEffect(() => {
-    document.body.classList.toggle("themeDark", theme === "dark");
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    document.body.classList.toggle("themeDark", effectiveTheme === "dark");
+    localStorage.setItem("theme", effectiveTheme);
+  }, [effectiveTheme]);
 
   const toggleTheme = () => setTheme((t) => (t === "light" ? "dark" : "light"));
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: effectiveTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

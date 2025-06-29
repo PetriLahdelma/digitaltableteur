@@ -1,24 +1,22 @@
-import type { StorybookConfig } from '@storybook/react-webpack5';
-import { s } from 'framer-motion/client';
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-  "stories": [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  stories: [
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'
   ],
-  "addons": [
-    "@storybook/preset-create-react-app",
-    "@storybook/addon-docs",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-a11y",
+  addons: [
+    '@storybook/addon-docs',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-a11y',
   ],
-  "framework": {
-    "name": "@storybook/react-webpack5",
-    "options": {}
+  framework: {
+    name: '@storybook/react-vite',
+    options: {}
   },
-  "staticDirs": [
-    "../public"
+  staticDirs: [
+    '../public'
   ]
 };
 export default config;

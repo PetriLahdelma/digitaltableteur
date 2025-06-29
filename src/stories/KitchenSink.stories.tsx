@@ -345,12 +345,6 @@ const COMPONENTS = [
         "Checkbox Default",
         "Checkbox Checked",
         "Checkbox Indeterminate",
-        "Modal Default",
-        "Modal Loading",
-        "Modal ErrorDialog",
-        "Modal SuccessDialog",
-        "Modal InfoDialog",
-        "Modal BusyDialog",
       ].includes(c.name) === false,
   )
   .sort((a, b) => a.name.localeCompare(b.name));
