@@ -17,8 +17,8 @@ jobs:
       - run: npm run generate:llms
       - run: npm run build
       - name: Add CNAME file
-        run: echo "digitaltableteur.com" > ./build/CNAME
+        run: echo "digitaltableteur.com" > ./dist/CNAME
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist
