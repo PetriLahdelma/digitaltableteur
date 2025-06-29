@@ -12,27 +12,29 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
   return (
     <header className={styles.header}>
-      <Link to="/">
-        <img src={Logo} alt="Digitaltableteur Logo" className={styles.logo} />
-      </Link>
-      <nav className={styles.navbar}>
-        <ul className={styles.nav}>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/work">Work</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
+      <div className={styles.headerInner}>
+        <Link to="/" className={styles.logoLink}>
+          <img src={Logo} alt="Digitaltableteur Logo" className={styles.logo} />
+        </Link>
+        <nav className={styles.navbar}>
+          <ul className={styles.nav}>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/work">Work</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
         <button
           onClick={toggleTheme}
           className={styles.themeToggle}
@@ -40,7 +42,7 @@ const Header = () => {
         >
           {theme === "dark" ? <WiMoonAltNew /> : <IoSunnySharp />}
         </button>
-      </nav>
+      </div>
     </header>
   );
 };

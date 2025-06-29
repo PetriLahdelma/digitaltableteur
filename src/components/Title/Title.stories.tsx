@@ -31,3 +31,33 @@ export const CustomTagAndClass = () => (
     Custom Tag (div) with custom class
   </Title>
 );
+
+export const Playground = (args: any) => <Title {...args} />;
+Playground.args = {
+  level: 2,
+  size: "M",
+  children: "Play with the Title component!",
+};
+Playground.argTypes = {
+  level: {
+    control: { type: "select" },
+    options: [1, 2, 3, 4, 5, 6],
+    defaultValue: 2,
+  },
+  size: {
+    control: { type: "select" },
+    options: ["XS", "S", "M", "L", "XL"],
+    defaultValue: "M",
+  },
+  children: {
+    control: "text",
+    defaultValue: "Playground Title",
+  },
+  className: { control: "text" },
+  terminals: {
+    control: { type: "select" },
+    options: ["serif", "sans"],
+    defaultValue: "serif",
+  },
+  as: { control: "text" },
+};

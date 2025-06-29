@@ -21,7 +21,7 @@ const GroupLabel: React.FC<GroupLabelProps> = ({
   return (
     <label
       htmlFor={htmlFor}
-      className={`${styles["group-label"]} ${disabled ? styles.disabled : ""}`}
+      className={`${styles["groupLabel"]} ${disabled ? styles.disabled : ""}`}
       title={title || tooltipText} // Use title or fallback to tooltipText
     >
       {children}

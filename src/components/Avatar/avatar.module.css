@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #007cf0;
+  background-color: var(--color-primary);
   color: white;
   font-family: Moderat, sans-serif;
   font-size: 1rem;

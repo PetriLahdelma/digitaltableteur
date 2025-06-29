@@ -93,6 +93,18 @@
   --space-layout-96: 6rem; /* 96px */
 
   /* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
+
+  /* Storybook Helper Colors */
+  --storybook-blue: #00f; /* Storybook Helper Color: Blue */
+  --storybook-cyan: #71efff; /* Storybook Helper Color: Cyan */
+  --storybook-pink: #f0f; /* Storybook Helper Color: Pink */
+  --storybook-purple: #812eff; /* Storybook Helper Color: Purple */
+  --storybook-violet: #bc6dff; /* Storybook Helper Color: Violet */
+  --storybook-bg: #f9f9f9; /* Storybook Helper Color: Background */
+  --storybook-dark: #222; /* Storybook Helper Color: Dark Text */
+  --storybook-yellow: #ff0; /* Storybook Helper Color: Yellow */
+  --storybook-white: #fff; /* Storybook Helper Color: White Text */
+  --storybook-gray: #707070; /* Storybook Helper Color: Gray */
 }
 
 .themeDark,
@@ -127,4 +139,14 @@
   --color-disabled-placeholder: #555;
   --color-gray-medium: #888;
   --color-light-bg: #23272a;
+  --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
+  --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
+  --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
+  --storybook-purple: #a884d7; /* Storybook Helper Color: Purple (darker for dark mode) */
+  --storybook-violet: #bc9de0; /* Storybook Helper Color: Violet (darker for dark mode) */
+  --storybook-bg: #23272a; /* Storybook Helper Color: Background (dark) */
+  --storybook-dark: #e0e0e0; /* Storybook Helper Color: Light Text for dark mode */
+  --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
+  --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
+  --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
 }
