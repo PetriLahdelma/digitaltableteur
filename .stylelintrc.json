@@ -1,8 +1,33 @@
 {
   "extends": ["stylelint-config-standard"],
-  "plugins": ["stylelint-order"],
+  "plugins": ["stylelint-order", "stylelint-declaration-strict-value"],
+  "overrides": [
+    {
+      "files": ["**/*.html"],
+      "customSyntax": "postcss-html"
+    },
+    {
+      "files": ["**/*.tsx"],
+      "customSyntax": "postcss-jsx",
+      "rules": {
+        "declaration-property-value-no-unknown": null,
+        "color-function-notation": null
+      }
+    }
+  ],
   "rules": {
     "order/properties-order": [],
-    "selector-class-pattern": "^[a-z][a-zA-Z0-9]*$"
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9]*$",
+    "scale-unlimited/declaration-strict-value": [
+      ["/color/", "fill", "stroke"],
+      {
+        "ignoreKeywords": [
+          "currentColor",
+          "inherit",
+          "transparent"
+        ],
+        "severity": "warning"
+      }
+    ]
   }
 }
