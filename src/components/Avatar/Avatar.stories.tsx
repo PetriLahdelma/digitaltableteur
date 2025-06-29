@@ -8,7 +8,9 @@ export default {
   component: Avatar,
 } as Meta<typeof Avatar>;
 
-const Template: StoryFn<typeof Avatar> = (args) => <Avatar {...args} />;
+const Template: StoryFn<typeof Avatar> = (
+  args: React.ComponentProps<typeof Avatar>,
+) => <Avatar {...args} />;
 
 export const WithImage = Template.bind({});
 WithImage.args = {

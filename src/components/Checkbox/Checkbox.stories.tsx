@@ -13,13 +13,15 @@ export default {
   },
 } as Meta<CheckboxProps>;
 
-const Template: StoryFn<CheckboxProps> = (args) => <Checkbox {...args} />;
+const Template: StoryFn<CheckboxProps> = (args: CheckboxProps) => (
+  <Checkbox {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
   label: "Default Checkbox",
 };
-Default.play = async ({ canvasElement }) => {
+Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByLabelText(/default checkbox/i);
 };

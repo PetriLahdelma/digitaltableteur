@@ -70,7 +70,7 @@ Primary.args = {
   design: "primary",
   children: "Primary Badge",
 };
-Primary.play = async ({ canvasElement }) => {
+Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByText(/primary badge/i);
 };
