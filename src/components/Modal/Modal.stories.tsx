@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Meta, StoryFn } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react-webpack5";
 import Modal, { ModalProps } from "./Modal";
 import Button from "../Button/Button";
 import { FaInfoCircle, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
