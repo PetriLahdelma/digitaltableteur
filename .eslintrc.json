@@ -23,5 +23,10 @@
     "prettier/prettier": ["error", { "singleQuote": false, "jsxSingleQuote": false }],
     "no-undef": "off",
     "no-unused-vars": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

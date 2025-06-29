@@ -85,7 +85,7 @@ header h2 a {
 .themeToggle {
   background: none;
   border: none;
-  color: #06f;
+  color: var(--color-primary);
   font-size: 24px;
   cursor: pointer;
   padding: 0;

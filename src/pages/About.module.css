@@ -13,7 +13,7 @@
   min-height: 80vh;
   padding: 2rem;
   background-color: var(--accent-purple);
-  color: #fff;
+  color: var(--color-white);
   text-align: center;
 }
 
