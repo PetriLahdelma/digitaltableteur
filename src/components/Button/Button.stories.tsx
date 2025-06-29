@@ -28,14 +28,16 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn = (args) => <Button {...args} />;
+const Template: StoryFn = (args: React.ComponentProps<typeof Button>) => (
+  <Button {...args} />
+);
 
 export const Primary = Template.bind({});
 Primary.args = {
   variant: "primary",
   children: "Primary Button",
 };
-Primary.play = async ({ canvasElement }) => {
+Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   // Check that the button is rendered
   await canvas.findByRole("button", { name: /primary button/i });
@@ -46,7 +48,7 @@ Secondary.args = {
   variant: "secondary",
   children: "Secondary Button",
 };
-Secondary.play = async ({ canvasElement }) => {
+Secondary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByRole("button", { name: /secondary button/i });
 };
