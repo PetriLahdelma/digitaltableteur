@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Avatar from "../../components/Avatar/Avatar";
 import Author from "../../components/Author/Author";
 import styles from "../Article.module.css";
@@ -10,32 +10,34 @@ import { SocialShare } from "../../components/SocialShare/SocialShare";
 
 const DigitalCraftsmanship = () => (
   <>
-    <Helmet>
-      <title>Digital Craftsmanship | Digitaltableteur</title>
-      <meta
-        name="description"
-        content="Thoughts on maintaining quality in a hurry-up culture."
-      />
-      <meta
-        property="og:title"
-        content="Digital Craftsmanship | Digitaltableteur"
-      />
-      <meta
-        property="og:description"
-        content="Thoughts on maintaining quality in a hurry-up culture."
-      />
-      <meta property="og:image" content="/logo512.png" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        name="twitter:title"
-        content="Digital Craftsmanship | Digitaltableteur"
-      />
-      <meta
-        name="twitter:description"
-        content="Thoughts on maintaining quality in a hurry-up culture."
-      />
-      <meta name="twitter:image" content="/logo512.png" />
-    </Helmet>
+    <HelmetProvider>
+      <Helmet>
+        <title>Digital Craftsmanship | Digitaltableteur</title>
+        <meta
+          name="description"
+          content="Thoughts on maintaining quality in a hurry-up culture."
+        />
+        <meta
+          property="og:title"
+          content="Digital Craftsmanship | Digitaltableteur"
+        />
+        <meta
+          property="og:description"
+          content="Thoughts on maintaining quality in a hurry-up culture."
+        />
+        <meta property="og:image" content="/logo512.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Digital Craftsmanship | Digitaltableteur"
+        />
+        <meta
+          name="twitter:description"
+          content="Thoughts on maintaining quality in a hurry-up culture."
+        />
+        <meta name="twitter:image" content="/logo512.png" />
+      </Helmet>
+    </HelmetProvider>
     <article className={styles.article}>
       <header>
         <h1>

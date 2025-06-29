@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "../Article.module.css";
 import Author from "../../components/Author/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
@@ -9,32 +9,34 @@ import { SocialShare } from "../../components/SocialShare/SocialShare";
 const TemplateArticle = () => {
   return (
     <>
-      <Helmet>
-        <title>Template Article Title | Digitaltableteur</title>
-        <meta
-          name="description"
-          content="Template description for future articles."
-        />
-        <meta
-          property="og:title"
-          content="Template Article Title | Digitaltableteur"
-        />
-        <meta
-          property="og:description"
-          content="Template description for future articles."
-        />
-        <meta property="og:image" content="/logo512.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Template Article Title | Digitaltableteur"
-        />
-        <meta
-          name="twitter:description"
-          content="Template description for future articles."
-        />
-        <meta name="twitter:image" content="/logo512.png" />
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>Template Article Title | Digitaltableteur</title>
+          <meta
+            name="description"
+            content="Template description for future articles."
+          />
+          <meta
+            property="og:title"
+            content="Template Article Title | Digitaltableteur"
+          />
+          <meta
+            property="og:description"
+            content="Template description for future articles."
+          />
+          <meta property="og:image" content="/logo512.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content="Template Article Title | Digitaltableteur"
+          />
+          <meta
+            name="twitter:description"
+            content="Template description for future articles."
+          />
+          <meta name="twitter:image" content="/logo512.png" />
+        </Helmet>
+      </HelmetProvider>
       <article className={styles.article}>
         <header className={styles.header}>
           <h1>Template Article Title</h1>
