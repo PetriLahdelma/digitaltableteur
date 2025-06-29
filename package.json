@@ -34,7 +34,7 @@
     "test": "vitest run --config vitest.config.mts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "prettier \"src/**/*.{ts,tsx,css}\" --check && eslint -c .eslintrc.json \"src/**/*.tsx\" && stylelint \"src/**/*.css\"",
+    "lint": "prettier \"src/**/*.{ts,tsx,css}\" --check && eslint -c .eslintrc.json \"src/**/*.tsx\" && stylelint \"src/**/*.{css,tsx,html}\"",
     "fetch-figma": "node scripts/fetch-figma.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "generate:llms": "node scripts/generate-llms-txt.js"
@@ -89,6 +89,9 @@
     "stylelint": "^16.20.0",
     "stylelint-config-standard": "^38.0.0",
     "stylelint-order": "^7.0.0",
+    "stylelint-declaration-strict-value": "^1.10.11",
+    "postcss-jsx": "^0.36.4",
+    "postcss-html": "^1.8.0",
     "vitest": "^3.2.4"
   }
 }
