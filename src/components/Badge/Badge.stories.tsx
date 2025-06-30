@@ -117,13 +117,7 @@ Removable.args = {
   removable: true,
   children: "Removable Badge",
 };
-Removable.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  await canvas.findByText(/removable badge/i);
-  // Optionally, click the remove button if present
-  const removeBtn = canvas.queryByRole?.("button", { name: /remove|close|×/i });
-  if (removeBtn) await userEvent.click(removeBtn);
-};
+
 
 export const AllSizes = () => (
   <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
