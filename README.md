@@ -1,6 +1,6 @@
 # Digitaltableteur
               
-Digitaltableteur is a React application for a portfolio site. Below you'll find how to run the project and a quick overview of the folder structure.
+Digitaltableteur is a React application for a portfolio site. The project has been migrated from Create React App to [Vite](https://vitejs.dev/) for faster builds and a leaner development setup. Below you'll find how to run the project and a quick overview of the folder structure.
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ Set `REACT_APP_GA_ID` to your Google Analytics measurement ID if you want to col
 npm start
 ```
 
-Open `http://localhost:3000` in your browser. The app automatically reloads as you edit files.
+Vite serves the app at `http://localhost:5173` by default and automatically reloads as you edit files.
 
 ### Run Storybook
 
@@ -40,7 +40,7 @@ This will start Storybook at `http://localhost:6006` so you can browse the UI co
 npm run build
 ```
 
-The optimized output is placed in the `build` folder.
+The optimized output is placed in the `dist` folder.
 
 ### Lint
 
@@ -91,9 +91,9 @@ branches, otherwise the preview deployment will be rejected.
 - **src/** – application source code
 - **public/** – static assets and the HTML template
 - **.storybook/** – Storybook configuration files
-- **build/** – compiled production build (generated after running `npm run build`)
+- **dist/** – compiled production build (generated after running `npm run build`)
 - **node_modules/** – project dependencies installed via npm
 
 ## Learn More
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You can read the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started) and the [React documentation](https://reactjs.org/) for more details.
+This project now uses [Vite](https://vitejs.dev/) for development and builds. You can read the [Vite guide](https://vitejs.dev/guide/) and the [React documentation](https://reactjs.org/) for more details.
