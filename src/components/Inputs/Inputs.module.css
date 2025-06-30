@@ -29,10 +29,11 @@
   width: 100%;
 }
 
-span {
+.errorMessage {
   font-family: Moderat, sans-serif;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--color-error);
+  margin-top: 0.5rem;
 }
 
 .input::placeholder {
@@ -51,13 +52,6 @@ span {
 .error {
   border-color: var(--color-error);
   background-color: var(--color-error-bg);
-}
-
-.errorMessage {
-  font-family: Moderat, sans-serif;
-  font-size: 0.875rem;
-  color: var(--color-error-text);
-  margin-top: 0.5rem;
 }
 
 .input.error::placeholder {
