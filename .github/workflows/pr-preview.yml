@@ -27,6 +27,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: pr-preview
     steps:
       - id: deploy
         uses: actions/deploy-pages@v4
