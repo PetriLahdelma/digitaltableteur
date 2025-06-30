@@ -70,7 +70,7 @@ const Input: React.FC<InputProps> = ({
         disabled={disabled}
       />
       {(error || phoneError) && (
-        <span className={styles["error-message"]}>{error || phoneError}</span>
+        <span className={styles["errorMessage"]}>{error || phoneError}</span>
       )}
     </div>
   );
