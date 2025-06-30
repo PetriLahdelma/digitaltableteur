@@ -61,6 +61,7 @@ const Input: React.FC<InputProps> = ({
       </Label>
       <input
         id={label}
+        name={label.replace(/\s+/g, "-").toLowerCase()}
         className={`${styles.input} ${error || phoneError ? styles.error : ""}`}
         type={type}
         placeholder={placeholder}

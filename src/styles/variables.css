@@ -49,6 +49,7 @@
   /* Functional colors */
   --main-body-background-color: #fff;
   --color-primary: #00f;
+  --color-primary-disabled: #0000ff50;
   --color-success: #28a745;
   --color-info: #17a2b8;
   --color-error: #dc3545;
@@ -73,6 +74,7 @@
   --space-internal-0: 0; /* 0px */
   --space-internal-2: 0.125rem; /* 2px */
   --space-internal-4: 0.25rem; /* 4px */
+  --space-internal-6: 0.375rem; /* 6px */
   --space-internal-8: 0.5rem; /* 8px */
   --space-internal-12: 0.75rem; /* 12px */
   --space-internal-16: 1rem; /* 16px */
@@ -82,6 +84,7 @@
   /* Layout (outer) spacing tokens: for margins, grid gaps, section spacing, etc. */
   --space-layout-0: 0; /* 0px */
   --space-layout-4: 0.25rem; /* 4px */
+  --space-layout-6: 0.375rem; /* 6px */
   --space-layout-8: 0.5rem; /* 8px */
   --space-layout-16: 1rem; /* 16px */
   --space-layout-24: 1.5rem; /* 24px */
@@ -118,6 +121,7 @@
   --inverted-text-color: #181a1b;
   --link-color: #71efff;
   --color-primary: #6fa8ff;
+  --color-primary-disabled: #6fa8ff50;
   --color-success: #4fd18b;
   --color-info: #71efff;
   --color-error: #ff6b6b;

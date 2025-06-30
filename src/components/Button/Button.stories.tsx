@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta, StoryFn } from "@storybook/react-webpack5";
+import { Meta, StoryFn } from "@storybook/react-vite";
 import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Button from "./Button";
 import { within, userEvent } from "@storybook/testing-library";
