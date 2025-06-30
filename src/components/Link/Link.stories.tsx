@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "./Link";
-import { Meta, StoryFn } from "@storybook/react-webpack5";
+import { Meta, StoryFn } from "@storybook/react-vite";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { within, userEvent } from "@storybook/testing-library";
 
