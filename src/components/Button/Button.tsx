@@ -62,9 +62,17 @@ const Button: React.FC<ButtonProps> = ({
       title={tooltip}
       onClick={onClick}
     >
-      {normalizedIcon}
+      {normalizedIcon && (
+        <span className={styles.icon} data-size={size}>
+          {normalizedIcon}
+        </span>
+      )}
       {children && <span className={styles.text}>{children}</span>}
-      {normalizedEndIcon}
+      {normalizedEndIcon && (
+        <span className={styles.icon} data-size={size}>
+          {normalizedEndIcon}
+        </span>
+      )}
     </button>
   );
 };

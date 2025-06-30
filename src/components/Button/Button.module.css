@@ -63,15 +63,16 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  min-width: 2.5rem;
   text-align: center;
   line-height: 1;
 }
 
 .icon {
   margin-right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
 }
 
 .button.iconOnly .icon {
@@ -79,6 +80,11 @@
   align-items: center;
   justify-content: center;
   margin: 0;
+}
+
+.icon svg {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .endIcon {
@@ -93,20 +99,53 @@
   margin-left: 0.5rem; /* Add padding between text and icon when icon is on the right */
 }
 
+.button > .text + .icon {
+  margin-left: 0.5rem; /* Add padding between text and icon when icon appears after the text */
+}
+
 .button.s {
   font-size: 0.875rem;
-  padding: 0.25rem 0.75rem;
+  padding: var(--space-internal-4) var(--space-internal-12);
   height: 1.5rem;
 }
 
 .button.m {
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: var(--space-internal-8) var(--space-internal-16);
   height: 2.5rem;
 }
 
 .button.l {
   font-size: 1.125rem;
-  padding: 0.75rem 1.5rem;
+  padding: var(--space-internal-12) var(--space-internal-24);
   height: 3rem;
+}
+
+.button.s.iconOnly {
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  padding: 0;
+}
+
+.button.m.iconOnly {
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  padding: 0;
+}
+
+.button.l.iconOnly {
+  width: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  padding: 0;
+}
+
+.button.s.iconOnly .icon svg {
+  font-size: 0.75rem;
+}
+
+.button.l.iconOnly .icon svg {
+  font-size: 1.25rem;
 }
