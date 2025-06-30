@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import FlexBox, { FlexBoxProps } from "./FlexBox";
 
 const meta: Meta<typeof FlexBox> = {

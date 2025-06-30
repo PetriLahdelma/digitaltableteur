@@ -64,6 +64,7 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^9.0.14",
     "@storybook/addon-docs": "^9.0.13",
     "@storybook/builder-vite": "^9.0.14",
     "@storybook/cli": "^9.0.14",
