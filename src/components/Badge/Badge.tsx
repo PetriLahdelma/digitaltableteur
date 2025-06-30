@@ -52,10 +52,12 @@ export const Badge: React.FC<BadgeProps> = ({
       {children}
       {removable && (
         <Button
+          size={size === "s" ? "s" : size === "l" ? "l" : "m"}
           type="button"
           icon={IoMdClose ? <IoMdClose /> : null}
           className={styles.closeButton}
           aria-label="Remove badge"
+          accessibleName="Remove badge"
           onClick={() => {
             setVisible(false);
             if (onRemove) onRemove();
