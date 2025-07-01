@@ -6,7 +6,7 @@ import Button from "../components/Button/Button";
 const NotFound = () => {
   return (
     <div className={styles.notFoundPage}>
-      <img src={notFoundImage} alt="404 Not Found" />
+      <img src={notFoundImage} alt="An error image indicating a missing or inaccessible resource." />
       <Button variant="secondary" onClick={() => (window.location.href = "/")}>
         Go back to Home
       </Button>
