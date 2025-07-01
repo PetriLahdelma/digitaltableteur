@@ -1,3 +1,10 @@
+#  ____   _______
+# |  _ \ |__   __|
+# | | | |   | |   
+# | |_| |   | |   
+# |____/    |_|   
+#                 
+
 # Digitaltableteur
 
 Digitaltableteur is a React application for a portfolio site. The project has been migrated from Create React App to [Vite](https://vitejs.dev/) for faster builds and a leaner development setup. Below you'll find how to run the project and a quick overview of the folder structure.
