@@ -167,7 +167,7 @@ export const Nested = () => (
         <Grid.Item
           style={{
             background: "var(--storybook-cyan)",
-            color: "var(--storybook---storybook-white)",
+            color: "var(--storybook-white)",
             padding: 12,
           }}
         >
