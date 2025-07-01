@@ -57,3 +57,7 @@ footer p {
   align-items: center;
   margin-block-end: 2rem;
 }
+
+.billingDetails {
+  font-weight: 600;
+}
