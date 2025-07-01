@@ -56,7 +56,7 @@ const Template: StoryFn<ComponentProps<typeof Grid>> = (
       <Grid.Item
         style={{
           background: "var(--storybook-blue)",
-          color: "#fff",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -65,7 +65,7 @@ const Template: StoryFn<ComponentProps<typeof Grid>> = (
       <Grid.Item
         style={{
           background: "var(--storybook-cyan)",
-          color: "#222",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -74,7 +74,7 @@ const Template: StoryFn<ComponentProps<typeof Grid>> = (
       <Grid.Item
         style={{
           background: "var(--storybook-pink)",
-          color: "#fff",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -105,7 +105,7 @@ export const Spans = () => (
         span={2}
         style={{
           background: "var(--storybook-blue)",
-          color: "#fff",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -114,7 +114,7 @@ export const Spans = () => (
       <Grid.Item
         style={{
           background: "var(--storybook-cyan)",
-          color: "#222",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -124,7 +124,7 @@ export const Spans = () => (
         span={2}
         style={{
           background: "var(--storybook-pink)",
-          color: "#fff",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -133,7 +133,7 @@ export const Spans = () => (
       <Grid.Item
         style={{
           background: "var(--storybook-purple)",
-          color: "#fff",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -157,7 +157,7 @@ export const Nested = () => (
       <Grid.Item
         style={{
           background: "var(--storybook-blue)",
-          color: "#fff",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -167,7 +167,7 @@ export const Nested = () => (
         <Grid.Item
           style={{
             background: "var(--storybook-cyan)",
-            color: "#222",
+            color: "var(--storybook---storybook-white)",
             padding: 12,
           }}
         >
@@ -176,7 +176,7 @@ export const Nested = () => (
         <Grid.Item
           style={{
             background: "var(--storybook-pink)",
-            color: "#fff",
+            color: "var(--storybook-white)",
             padding: 12,
           }}
         >
@@ -185,7 +185,7 @@ export const Nested = () => (
         <Grid.Item
           style={{
             background: "var(--storybook-purple)",
-            color: "#fff",
+            color: "var(--storybook-white)",
             padding: 12,
           }}
         >
