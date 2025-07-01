@@ -38,4 +38,4 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🚀 Preview: ${{ steps.deploy.outputs.page_url }}
+            🚀 [Preview](${{ steps.deploy.outputs.page_url }})
