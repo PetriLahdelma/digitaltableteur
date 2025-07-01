@@ -46,7 +46,7 @@ export const Basic: Story = {
         key="1"
         style={{
           background: "var(--storybook-blue)",
-          color: "var(--storybook-on-blue)",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -56,7 +56,7 @@ export const Basic: Story = {
         key="2"
         style={{
           background: "var(--storybook-pink)",
-          color: "var(--storybook-on-pink)",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -66,7 +66,7 @@ export const Basic: Story = {
         key="3"
         style={{
           background: "var(--storybook-yellow)",
-          color: "var(--storybook-on-yellow)",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -85,7 +85,7 @@ export const Column: Story = {
         key="1"
         style={{
           background: "var(--storybook-blue)",
-          color: "var(--storybook-on-blue)",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -95,7 +95,7 @@ export const Column: Story = {
         key="2"
         style={{
           background: "var(--storybook-pink)",
-          color: "var(--storybook-on-pink)",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -105,7 +105,7 @@ export const Column: Story = {
         key="3"
         style={{
           background: "var(--storybook-yellow)",
-          color: "var(--storybook-on-yellow)",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -127,7 +127,7 @@ export const JustifyAlign: Story = {
         key="1"
         style={{
           background: "var(--storybook-blue)",
-          color: "var(--storybook-on-blue)",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -137,7 +137,7 @@ export const JustifyAlign: Story = {
         key="2"
         style={{
           background: "var(--storybook-pink)",
-          color: "var(--storybook-on-pink)",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -147,7 +147,7 @@ export const JustifyAlign: Story = {
         key="3"
         style={{
           background: "var(--storybook-yellow)",
-          color: "var(--storybook-on-yellow)",
+          color: "var(--storybook-white)",
           padding: 16,
         }}
       >
@@ -168,7 +168,7 @@ export const Wrap: Story = {
         key="1"
         style={{
           background: "var(--storybook-blue)",
-          color: "var(--storybook-on-blue)",
+          color: "var(--storybook-white)",
           padding: 16,
           minWidth: 120,
         }}
@@ -179,7 +179,7 @@ export const Wrap: Story = {
         key="2"
         style={{
           background: "var(--storybook-pink)",
-          color: "var(--storybook-on-pink)",
+          color: "var(--storybook-white)",
           padding: 16,
           minWidth: 120,
         }}
@@ -190,7 +190,7 @@ export const Wrap: Story = {
         key="3"
         style={{
           background: "var(--storybook-yellow)",
-          color: "var(--storybook-on-yellow)",
+          color: "var(--storybook-white)",
           padding: 16,
           minWidth: 120,
         }}
@@ -201,7 +201,7 @@ export const Wrap: Story = {
         key="4"
         style={{
           background: "var(--storybook-gray)",
-          color: "var(--storybook-on-gray)",
+          color: "var(--storybook-white)",
           padding: 16,
           minWidth: 120,
         }}
@@ -225,7 +225,7 @@ export const GapVariants: Story = {
         key="1"
         style={{
           background: "var(--storybook-blue)",
-          color: "var(--storybook-on-blue)",
+          color: "var(--storybook-white)",
           padding: 16,
           minWidth: 120,
         }}
@@ -236,7 +236,7 @@ export const GapVariants: Story = {
         key="2"
         style={{
           background: "var(--storybook-pink)",
-          color: "var(--storybook-on-pink)",
+          color: "var(--storybook-white)",
           padding: 16,
           minWidth: 120,
         }}
@@ -247,7 +247,7 @@ export const GapVariants: Story = {
         key="3"
         style={{
           background: "var(--storybook-yellow)",
-          color: "var(--storybook-on-yellow)",
+          color: "var(--storybook-white)",
           padding: 16,
           minWidth: 120,
         }}
@@ -258,7 +258,7 @@ export const GapVariants: Story = {
         key="4"
         style={{
           background: "var(--storybook-gray)",
-          color: "var(--storybook-on-gray)",
+          color: "var(--storybook-white)",
           padding: 16,
           minWidth: 120,
         }}

@@ -15,7 +15,7 @@ const UnderDevelopment = () => {
         backgroundColor: "rgb(0, 0, 0)",
         fontFamily: "Moderat, sans-serif",
         fontSize: "2rem",
-        color: "#fff",
+        color: "var(--color-white)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
