@@ -39,7 +39,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label="Share on Instagram"
       >
-        {FaInstagram({})}
+        <FaInstagram role="img" aria-label="Instagram icon" />
       </a>
       <a
         href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
@@ -47,7 +47,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label="Share on Twitter"
       >
-        {FaTwitter({})}
+        <FaTwitter role="img" aria-label="Twitter icon" />
       </a>
       <a
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
@@ -55,7 +55,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label="Share on Facebook"
       >
-        {FaFacebook({})}
+        <FaFacebook role="img" aria-label="Facebook icon" />
       </a>
       <a
         href={`https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`}
@@ -63,7 +63,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label="Share on Reddit"
       >
-        {FaReddit({})}
+        <FaReddit role="img" aria-label="Reddit icon" />
       </a>
       <a
         href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
@@ -71,11 +71,11 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label="Share on WhatsApp"
       >
-        {FaWhatsapp({})}
+        <FaWhatsapp role="img" aria-label="WhatsApp icon" />
       </a>
       <Button
         variant="secondary"
-        icon={FaLink({})}
+        icon={<FaLink role="img" aria-label="Copy link icon" />}
         className={styles.copyButton}
         onClick={handleCopy}
         aria-label="Copy link to clipboard"

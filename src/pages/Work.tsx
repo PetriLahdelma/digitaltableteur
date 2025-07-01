@@ -48,21 +48,21 @@ const Work = () => {
                 <img
                   className={styles.blueArrowImage}
                   src={IceCream}
-                  alt="Illustration"
+                  alt="A colorful scoop of ice cream in a cone, melting slightly."
                 />
               </div>
               <div className={styles.workItem}>
                 <img
                   className={styles.blueArrowImage}
                   src={Sc5Icon}
-                  alt="Icon"
+                  alt="The image features a stylized icon labeled 'Sc5.'"
                 />
               </div>
               <div className={styles.workItem}>
                 <img
                   className={styles.blueArrowImage}
                   src={BlueArrow}
-                  alt="Blue Arrow Awards"
+                  alt="A vibrant blue arrow pointing right against a contrasting background."
                 />
               </div>
             </FlexBox>
