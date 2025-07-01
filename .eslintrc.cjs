@@ -27,4 +27,9 @@ module.exports = {
     "no-undef": "off",
     "no-unused-vars": "off",
   },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 };
