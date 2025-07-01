@@ -23,7 +23,7 @@ const Footer = () => {
             </a>
           </p>
           <br />
-          <p>Billing details</p>
+          <p className={styles.billingDetails}>Billing details</p>
           <p>
             Digitaltableteur
             <br />
