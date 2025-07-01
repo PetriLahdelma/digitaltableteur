@@ -7,27 +7,25 @@ permissions:
   pages: write
   id-token: write
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Needed for pushing to gh-pages
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: actions/configure-pages@v5
       - run: npm ci
       - run: npm run generate:sitemap
       - run: npm run generate:llms
       - run: npm run build
       - name: Add CNAME file
         run: echo "digitaltableteur.com" > ./dist/CNAME
-      - uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - id: deploy
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true
