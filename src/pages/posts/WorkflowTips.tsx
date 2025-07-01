@@ -50,6 +50,7 @@ const WorkflowTips = () => (
           everyday tooling means we’re not just designing screens — we’re
           designing systems of understanding.
         </p>
+        <br />
         <p>
           Whether you&#39;re a designer, developer, or someone who lives at the
           intersection of both, here are key workflow tips to stay effective and
@@ -59,41 +60,44 @@ const WorkflowTips = () => (
         <p>
           Your design system should no longer be seen as a passive library of
           components—it’s an active product with its own users (developers,
-          designers), backlog, documentation, and evolution cycle. Robust
-          systems in 2025 are:
+          designers), backlog, documentation, and evolution cycle.
         </p>
+        <br />
+        <h3>Robust systems in 2025 are:</h3>
         <ul>
           <li>
-            Token-first: With clear, versioned design tokens driving color,
-            typography, spacing, and elevation.
+            <b>Token-first:</b> With clear, versioned design tokens driving 
+            color, typography, spacing, and elevation.
           </li>
           <li>
-            Metadata-aware: Components carry machine-readable data like intent,
-            states, and accessibility traits via MCP.
+            <b>Metadata-aware:</b> Components carry machine-readable data like
+            intent, states, and accessibility traits via MCP.
           </li>
           <li>
-            Bi-directional: Design inputs influence code output, and coded
-            components feed back into design for parity.
+            <b>Bi-directional:</b> Design inputs influence code output, and
+            coded components feed back into design for parity.
           </li>
         </ul>
-        <p>
-          <strong>Workflow Tip:</strong> Maintain a changelog, version your
-          tokens, and establish governance for components just like you would
-          with APIs.
-        </p>
-        <h2>Use Figma MCP to Build a Smarter Handoff Layer</h2>
+        <br />
+        <strong>Workflow Tip:</strong> Maintain a changelog, version your
+        tokens, and establish governance for components just like you would
+        APIs.
+        <br />
+        <h2>Using Figma MCP to Build a Smarter Handoff Layer</h2>
         <p>
           Figma’s MCP server lets you attach machine-readable context to
           components. Think of it as giving your design files a brain. You’re
           not just placing a “button”—you’re tagging it as primary, disabled,
           semantic:cta, and linking it to the token color-background-primary.
         </p>
+        <br />
         <p>
           When paired with a structured design system, this opens up a
           design-to-code workflow where tools and AI can assist or even
           auto-generate scaffolding code.
         </p>
         <p>
+          <br />
           <strong>Workflow Tip:</strong> Standardize naming conventions and
           metadata structures. Create shared guidelines on how to tag variants,
           behaviors, and semantic intent.
@@ -111,25 +115,25 @@ const WorkflowTips = () => (
           ></iframe>
         </div>
         <h2>Automate the Boring Stuff — Focus on the Edges</h2>
-        Engineers still refine the output and designers still own the
-        experience. But by automating the repetitive tasks—like token mapping,
-        boilerplate scaffolding, and layout generation—you unlock time for
-        high-value work.
         <p>
-          This means more attention to edge cases, accessibility, motion,
-          responsive logic, and product vision. The time saved is best spent
-          crafting delightful moments and designing inclusively—not renaming
-          layers.
+          Engineers still refine the output and designers still own the
+          experience. But by automating the repetitive tasks—like token mapping,
+          boilerplate scaffolding, and layout generation—you unlock time for
+          high-value work. This means more attention to edge cases,
+          accessibility, motion,responsive logic, and product vision. The time
+          saved is best spent crafting delightful moments and designing
+          inclusively—not renaming layers.
         </p>
+        <br />
         <p>
           <strong>Workflow Tip:</strong> Use automation for grunt work, not
           decision-making. Let your team spend energy on what machines can’t do
           well: judgment, intuition, and empathy.
         </p>
-        <h3>Centralize Knowledge and Make It Machine-Readable</h3>
-        <p>
-          In 2025, wikis and PDFs aren’t enough. Your documentation should be:
-        </p>
+        <h2>Centralize Knowledge and Make It Machine-Readable</h2>
+        <p>In 2025, wikis and PDFs aren’t enough.</p>
+        <br />
+        <b>Your documentation should be:</b>
         <ul>
           <li>
             <strong>Atomic:</strong> Break things into tokens, components,
@@ -150,6 +154,7 @@ const WorkflowTips = () => (
           tools.
         </p>
         <p>
+          <br />
           <strong>Workflow Tip:</strong> Build your docs once, then publish them
           everywhere: Figma, Storybook, GitHub, Confluence, even AI chat
           interfaces.
@@ -161,6 +166,7 @@ const WorkflowTips = () => (
           clearly and consistently, they become interoperable across people and
           platforms.
         </p>
+        <br />
         <p>
           A consistent system gives MCP data meaning. A properly named component
           like <code>Card/Product/Featured</code> combined with a token
@@ -168,6 +174,7 @@ const WorkflowTips = () => (
           <code>spacing-grid-lg</code> enables tools to generate layout logic
           without human interpretation.
         </p>
+        <br />
         <p>
           <strong>Workflow Tip:</strong> Run regular naming audits and
           cross-functional reviews to ensure that your naming makes sense to
@@ -177,15 +184,10 @@ const WorkflowTips = () => (
         <p>
           Design and development roles are shifting from execution toward
           orchestration. In 2025, the real craft lies in setting up systems that
-          can scale, adapt, and communicate across disciplines and tools.
-        </p>
-        <p>
-          Great workflows today aren’t just fast—they’re intentional. They’re
-          designed for clarity, for automation, and for collaboration at scale.
-        </p>
-        <p>
-          So before you jump into the next Figma file or VSCode tab, ask
-          yourself:
+          can scale, adapt, and communicate across disciplines and tools. Great
+          workflows today aren’t just fast—they’re intentional. They’re designed
+          for clarity, for automation, and for collaboration at scale. So before
+          you jump into the next Figma file or VSCode tab, ask yourself:
         </p>
         <blockquote>
           <p>
@@ -193,6 +195,13 @@ const WorkflowTips = () => (
             design and code?&quot;
           </p>
         </blockquote>
+        <hr
+          style={{
+            border: "none",
+            borderTop: "3px solid #00f",
+            margin: "3rem 0 1.5rem 0",
+          }}
+        />
         <h2>Share</h2>
         <SocialShare url={window.location.href} title="Workflow Tips" />
         <div className={styles.similar}>

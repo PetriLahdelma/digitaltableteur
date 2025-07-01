@@ -62,33 +62,28 @@ const Designing2025 = () => (
           At its best, design is how we care for people at scale.
         </blockquote>
         <p>
-          Our challenge now is not about keeping up with the speed of
-          machines—it’s about preserving the purpose of design in an age of
-          abundance.
+          Our challenge now is not about keeping up with the speed of machines
+        </p>
+        <p>
+          —it’s about preserving the purpose of design in an age of abundance.
         </p>
 
         <h2>Beyond Automation: Reclaiming the Core of Creative Work</h2>
         <p>
           We no longer face a blinking cursor on a blank canvas. AI can
           instantly generate layouts, suggest type pairings, or convert sketches
-          into code. It’s impressive. But speed can’t replace soul.
-        </p>
-        <p>
-          AI, in my experience, isn’t here to replace creativity—it’s here to
-          amplify it.
-        </p>
-        <p>
+          into code. It’s impressive. But speed can’t replace soul. AI, in my
+          experience, isn’t here to replace creativity—it’s here to amplify it.
           This means shifting our mindset. Not toward competing with machines,
           but toward outthinking them. Toward asking sharper questions.
           Challenging assumptions. Understanding people, behaviors, and contexts
           more deeply.
         </p>
+        <br />
         <p>
           Because in a world where any prompt can output a hundred variations,
           our craft becomes less about creation and more about curation. Less
           about what we can generate, and more about what we choose to keep.
-        </p>
-        <p>
           This is a return to judgment. To narrative. To human insight as the
           foundation of meaningful work.
         </p>
@@ -101,15 +96,17 @@ const Designing2025 = () => (
         <p>
           Great AI tools remove friction, not responsibility. They clear the
           repetitive and procedural, allowing us to focus on higher-order
-          challenges: behavior, structure, intention, emotion.
+          challenges: behavior, structure, intention, emotion. That’s where
+          modern creative leadership lives.
         </p>
-        <p>That’s where modern creative leadership lives.</p>
+        <br />
         <p>
-          When mentoring younger designers, I often say: Your job isn’t to
-          outpace the machine. It’s to know what matters and why. To hold the
-          line when an output is technically correct but emotionally hollow.
+          When working with younger designers, I often tell them: Your job isn’t
+          to outpace the machine. It’s to know what matters and why. To hold the
+          line when an output is technically correct but emotionally hollow. AI
+          can optimize. Only humans can care.
         </p>
-        <p>AI can optimize. Only humans can care.</p>
+        <br />
         <p>
           To succeed in 2025, designers must become bilingual—fluent in both
           human needs and machine capabilities. Because AI isn’t replacing our
@@ -120,41 +117,36 @@ const Designing2025 = () => (
         <p>
           With infinite content at our fingertips, the temptation is to flood
           the space with more. But “more” isn’t the answer. “Better” is.
+          Paradoxically, making is easier—but mattering is harder. Design must
+          move from aesthetic polishing to strategic storytelling. In 2025,
+          2025, brands don’t compete solely on product—they compete on clarity,
+          clarity, relevance, and emotional resonance. 
         </p>
-        <p>Paradoxically, making is easier—but mattering is harder.</p>
+        <br />
         <p>
-          Design must move from aesthetic polishing to strategic storytelling.
-          In 2025, brands don’t compete solely on product—they compete on
-          clarity, relevance, and emotional resonance. These are design
-          problems.
-        </p>
-        <p>
-          A great visual system is no longer just about a logo or a palette.
-          It’s a behavioral signal: it tells people what you stand for. It
-          creates trust. It builds consistency in a fragmented landscape.
-        </p>
-        <p>
-          Done right, visual communication becomes a strategic layer—one that
-          simplifies, clarifies, and connects.
+          These are design problems. A great visual system is no longer just
+          about a logo or a palette. It’s a behavioral signal: it tells people
+          what you stand for. It creates trust. It builds consistency in a
+          fragmented landscape. Done right, visual communication becomes a
+          strategic layer—one that simplifies, clarifies, and connects.
         </p>
 
         <h2>From Stylist to Steward</h2>
         <p>
           One of the most significant shifts in the past decade is the evolution
-          of our role.
+          of our role. We’re no longer just stylists brought in at the end to
+          &quot;make it pretty.&quot; We’re stewards of systems. Authors of
+          intent. Designers of participation. With AI in the mix, our
+          responsibilities expand even further. We must now act as ethical
+          gatekeepers:
         </p>
-        <p>
-          We’re no longer just stylists brought in at the end to &quot;make it
-          pretty.&quot; We’re stewards of systems. Authors of intent. Designers
-          of participation.
-        </p>
-        <p>
-          With AI in the mix, our responsibilities expand even further. We must
-          now act as ethical gatekeepers:
-        </p>
-        <p>What data trained this model?</p>
-        <p>Who benefits from this feature—and who’s left out?</p>
-        <p>Are we reinforcing bias, or challenging it?</p>
+        <br />
+        <ul>
+          <li>What data trained this model?</li>
+          <li>Who benefits from this feature—and who’s left out?</li>
+          <li>Are we reinforcing bias, or challenging it?</li>
+        </ul>
+        <br />
         <p>
           These aren’t edge cases. They are the new core of responsible design.
         </p>
@@ -162,19 +154,23 @@ const Designing2025 = () => (
         <h2>A Return to Purpose</h2>
         <p>
           Yes, tools will continue to evolve. But our greatest assets remain
-          unchanged: empathy, curiosity, judgment, courage.
+          unchanged: empathy, curiosity, judgment, courage. These qualities
+          don’t show up in any plugin. They’re not automatable. They’re
+          earned—in practice, in conversation, in critique.
         </p>
-        <p>
-          These qualities don’t show up in any plugin. They’re not automatable.
-          They’re earned—in practice, in conversation, in critique.
-        </p>
+        <br />
         <p>
           As AI shifts how we design, it’s up to us to preserve why we design.
-        </p>
-        <p>
           Because the goal isn’t just to make things—it’s to make things matter.
+          And in 2025, that principle has never been more vital. ☻
         </p>
-        <p>And in 2025, that principle has never been more vital.☻</p>
+        <hr
+          style={{
+            border: "none",
+            borderTop: "3px solid #00f",
+            margin: "3rem 0 1.5rem 0",
+          }}
+        />
         <h2>Share</h2>
         <SocialShare
           url={window.location.href}
