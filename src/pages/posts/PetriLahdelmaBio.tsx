@@ -84,8 +84,8 @@ const PetriLahdelmaBio = () => (
         <hr
           style={{
             border: "none",
-            borderTop: "3px solid #00f",
-            margin: "3rem 0 1.5rem 0",
+            borderTop: "3px solid var(--color-primary)",
+            margin: "3rem 0 1.5rem",
           }}
         />
         <h2>Share</h2>
