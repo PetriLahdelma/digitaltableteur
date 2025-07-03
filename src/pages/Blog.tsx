@@ -5,6 +5,7 @@ import { posts } from "./posts";
 import ArticleCard from "../components/ArticleCard/ArticleCard";
 import Title from "../components/Title/Title";
 import HelsinkiClock from "../components/HelsinkiClock/HelsinkiClock";
+import { useTranslation } from "react-i18next";
 
 interface Post {
   title: string;
@@ -17,6 +18,7 @@ interface Post {
 }
 
 const Blog = () => {
+  const { t } = useTranslation();
   const sortedPosts = posts.sort((a: Post, b: Post) => {
     const dateA = new Date(a.date.split(".").reverse().join("-"));
     const dateB = new Date(b.date.split(".").reverse().join("-"));
@@ -46,7 +48,7 @@ const Blog = () => {
         <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.blog}>
-        <Title size="L">Articles</Title>
+        <Title size="L">{t("blogArticlesTitle")}</Title>
         <HelsinkiClock />
         <div className={styles.list}>
           {sortedPosts.map((post: Post) => (

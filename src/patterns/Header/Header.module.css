@@ -105,6 +105,28 @@ header h2 a {
   color: var(--color-primary);
 }
 
+.languageSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.languageLink {
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+  padding: 0 2px;
+}
+
+.languageLink:hover,
+.languageLink:focus {
+  border-bottom: 2px solid var(--color-primary);
+  outline: none;
+}
+
 @media (width <= 900px) {
   .headerInner {
     max-width: 100%;

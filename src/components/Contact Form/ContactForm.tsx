@@ -6,8 +6,10 @@ import Button from "../Button/Button";
 import CheckboxGroup from "../CheckboxGroup/CheckboxGroup";
 import Modal from "../Modal/Modal";
 import TextArea from "../Inputs/TextArea";
+import { useTranslation } from "react-i18next";
 
 const ContactForm = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -69,9 +71,9 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles["formGroup"]}>
           <Inputs
-            label="Full Name"
+            label={t("contactFullName")}
             type="text"
-            placeholder="Enter your full name"
+            placeholder={t("contactFullNamePlaceholder")}
             value={formData.fullName}
             onChange={handleFullNameChange}
           />
@@ -79,9 +81,9 @@ const ContactForm = () => {
 
         <div className={styles["formGroup"]}>
           <Inputs
-            label="Email Address"
+            label={t("contactEmail")}
             type="email"
-            placeholder="Enter your email address"
+            placeholder={t("contactEmailPlaceholder")}
             value={formData.email}
             onChange={handleEmailChange}
           />
@@ -89,9 +91,9 @@ const ContactForm = () => {
 
         <div className={styles["formGroup"]}>
           <Inputs
-            label="Phone Number"
+            label={t("contactPhone")}
             type="tel"
-            placeholder="Enter your phone number"
+            placeholder={t("contactPhonePlaceholder")}
             value={formData.phone}
             onChange={handlePhoneChange}
           />
@@ -100,15 +102,24 @@ const ContactForm = () => {
         <div className={styles["formGroup"]}>
           <CheckboxGroup
             className={styles["checkboxGroup"]}
-            label="Your Interest"
+            label={t("contactInterest")}
             options={[
-              { label: "Brand strategy", value: "brand-strategy" },
-              { label: "Design and creative", value: "design-creative" },
               {
-                label: "Digital products and website",
+                label: t("contactInterestBrandStrategy"),
+                value: "brand-strategy",
+              },
+              {
+                label: t("contactInterestDesignCreative"),
+                value: "design-creative",
+              },
+              {
+                label: t("contactInterestDigitalProducts"),
                 value: "digital-products",
               },
-              { label: "Help me choose", value: "help-me-choose" },
+              {
+                label: t("contactInterestHelpMeChoose"),
+                value: "help-me-choose",
+              },
             ]}
             onChange={handleInterestChange}
           />
@@ -116,8 +127,8 @@ const ContactForm = () => {
 
         <div className={styles["formGroup"]}>
           <TextArea
-            label="Your Message"
-            placeholder="Enter your message"
+            label={t("contactMessage")}
+            placeholder={t("contactMessagePlaceholder")}
             value={formData.message}
             onChange={handleMessageChange}
           />
@@ -125,15 +136,15 @@ const ContactForm = () => {
 
         <div className={styles["formGroup"]}>
           <p className={styles["privacyPolicy"]}>
-            *By pressing submit you agree for your information to be processed
-            according to our<a href="/privacyPolicy"> privacy policy</a>.
+            *{t("contactPrivacyPolicy1")}{" "}
+            <a href="/privacyPolicy">{t("contactPrivacyPolicy2")}</a>.
           </p>
           <Button
             className={styles["submitButton"]}
             type="submit"
             variant="primary"
           >
-            Submit
+            {t("contactSubmit")}
           </Button>
         </div>
       </form>
@@ -141,22 +152,22 @@ const ContactForm = () => {
         className={styles["successModal"]}
         isOpen={isModalOpen}
         variant="success"
-        title="Success"
+        title={t("contactSuccessTitle")}
         onClose={() => {
           setIsModalOpen(false);
           window.location.reload();
         }}
       >
-        Your message was successfully sent.
+        {t("contactSuccessMessage")}
       </Modal>
       <Modal
         className={styles["errorModal"]}
         isOpen={isErrorOpen}
         variant="error"
-        title="Error"
+        title={t("contactErrorTitle")}
         onClose={() => setIsErrorOpen(false)}
       >
-        Failed to send message. Please try again later.
+        {t("contactErrorMessage")}
       </Modal>
     </div>
   );
