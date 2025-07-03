@@ -12,12 +12,12 @@ const About = () => {
       <Helmet>
         <title>{t("aboutMetaTitle")}</title>
         <meta name="description" content={t("aboutMetaDescription")} />
-        <meta property="og:title" content={t("aboutMetaTitle")}/>
-        <meta property="og:description" content={t("aboutMetaDescription")}/>
+        <meta property="og:title" content={t("aboutMetaTitle")} />
+        <meta property="og:description" content={t("aboutMetaDescription")} />
         <meta property="og:image" content="/logo512.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t("aboutMetaTitle")}/>
-        <meta name="twitter:description" content={t("aboutMetaDescription")}/>
+        <meta name="twitter:title" content={t("aboutMetaTitle")} />
+        <meta name="twitter:description" content={t("aboutMetaDescription")} />
         <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.about}>
