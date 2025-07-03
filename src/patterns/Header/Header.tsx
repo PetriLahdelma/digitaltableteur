@@ -68,7 +68,9 @@ const Header = () => {
             <li>
               <Link
                 to="/"
-                className={location.pathname === "/" ? styles.selected : undefined}
+                className={
+                  location.pathname === "/" ? styles.selected : undefined
+                }
               >
                 {t("navHome")}
               </Link>

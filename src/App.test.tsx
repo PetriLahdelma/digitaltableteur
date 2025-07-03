@@ -10,7 +10,7 @@ describe("App", () => {
     render(
       <I18nextProvider i18n={i18n}>
         <Home />
-      </I18nextProvider>
+      </I18nextProvider>,
     );
     const titleElement = screen.getByText(/Creative & Development/i);
     expect(titleElement).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe("App", () => {
     render(
       <I18nextProvider i18n={i18n}>
         <Home />
-      </I18nextProvider>
+      </I18nextProvider>,
     );
     // Try to find grid items by role or test id for robustness
     const gridItems = screen.queryAllByTestId("grid-item");
