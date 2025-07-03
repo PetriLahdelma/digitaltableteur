@@ -81,6 +81,13 @@ const PetriLahdelmaBio = () => (
           a thoughtful, kind collaborator who insists on doing things the right
           way.
         </p>
+        <hr
+          style={{
+            border: "none",
+            borderTop: "3px solid var(--color-primary)",
+            margin: "3rem 0 1.5rem",
+          }}
+        />
         <h2>Share</h2>
         <SocialShare
           url={window.location.href}
