@@ -11,8 +11,11 @@ import FlexBox from "../components/FlexBox/FlexBox";
 import BlueArrow from "../assets/images/portfolio/blue_arrow/bluearrow@2x.webp";
 import Sc5Icon from "../assets/images/portfolio/sc5/sc5_icon@2x.webp";
 import IceCream from "../assets/images/portfolio/illustration/ice-cream.webp";
+import { useTranslation } from "react-i18next";
 
 const Work = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <HelmetProvider>
@@ -48,21 +51,21 @@ const Work = () => {
                 <img
                   className={styles.blueArrowImage}
                   src={IceCream}
-                  alt="A colorful scoop of ice cream in a cone, melting slightly."
+                  alt={t("workAltIceCream")}
                 />
               </div>
               <div className={styles.workItem}>
                 <img
                   className={styles.blueArrowImage}
                   src={Sc5Icon}
-                  alt="The image features a stylized icon labeled 'Sc5.'"
+                  alt={t("workAltSc5Icon")}
                 />
               </div>
               <div className={styles.workItem}>
                 <img
                   className={styles.blueArrowImage}
                   src={BlueArrow}
-                  alt="A vibrant blue arrow pointing right against a contrasting background."
+                  alt={t("workAltBlueArrow")}
                 />
               </div>
             </FlexBox>

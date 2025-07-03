@@ -6,16 +6,19 @@ import "../styles/variables.css";
 import Title from "../components/Title/Title";
 import Text from "../components/Text/Text";
 import Link from "../components/Link/Link";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
-  const [currentText, setCurrentText] = useState("Creative & Development");
+  const { t } = useTranslation();
   const texts = [
-    "Creative & Development",
-    "Strategy & Branding",
-    "Illustration & Editorial Design",
+    t("homeCreativeDevelopment"),
+    t("homeStrategyBranding"),
+    t("homeIllustrationEditorial"),
   ];
+  const [currentText, setCurrentText] = useState(texts[0]);
 
   useEffect(() => {
+    setCurrentText(texts[0]); // Reset on language change
     const interval = setInterval(() => {
       setCurrentText((prevText) => {
         const currentIndex = texts.indexOf(prevText);
@@ -23,37 +26,22 @@ const Home = () => {
         return texts[nextIndex];
       });
     }, 3000);
-
     return () => clearInterval(interval);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [t]);
 
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>Digitaltableteur - Creative & Development</title>
-          <meta
-            name="description"
-            content="Design-led digital studio delivering strategy, branding and development."
-          />
-          <meta
-            property="og:title"
-            content="Digitaltableteur - Creative & Development"
-          />
-          <meta
-            property="og:description"
-            content="Design-led digital studio delivering strategy, branding and development."
-          />
+          <title>{t("homeMetaTitle")}</title>
+          <meta name="description" content={t("homeMetaDescription")} />
+          <meta property="og:title" content={t("homeMetaTitle")} />
+          <meta property="og:description" content={t("homeMetaDescription")} />
           <meta property="og:image" content="/logo512.png" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta
-            name="twitter:title"
-            content="Digitaltableteur - Creative & Development"
-          />
-          <meta
-            name="twitter:description"
-            content="Design-led digital studio delivering strategy, branding and development."
-          />
+          <meta name="twitter:title" content={t("homeMetaTitle")} />
+          <meta name="twitter:description" content={t("homeMetaDescription")} />
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
       </HelmetProvider>
@@ -96,22 +84,14 @@ const Home = () => {
               className={styles["grid-item-blank"]}
               style={{ gridColumn: "2 / span 2" }}
             >
-              <p className={styles.lead}>
-                That&apos;s what makes Digitaltableteur — a design-led
-                development studio. Based online, working globally. Helping
-                individuals rethink, simplify, and stand out. Whether it’s
-                strategy, identity, interface, or experience — DT cuts through
-                the noise to deliver clarity, presence, and expression. Well
-                known for obsession to craft, systems, and a little bit of
-                chaos.
-              </p>
+              <p className={styles.lead}>{t("homeAbout")}</p>
             </div>
           </Grid>
         </section>
         <section className={styles.cta}>
-          <h2>Ready to create something extraordinary?</h2>
+          <h2>{t("homeCtaTitle")}</h2>
           <Link className={styles.ctaLink} href="/contact">
-            Let&apos;s talk
+            {t("homeCtaLink")}
           </Link>
         </section>
       </div>

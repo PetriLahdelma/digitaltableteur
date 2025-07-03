@@ -2,8 +2,10 @@ import React from "react";
 import styles from "./Footer.module.css";
 import { FaInstagram, FaFacebook, FaLinkedin, FaMedium } from "react-icons/fa";
 import Grid from "../../components/Grid/Grid";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -14,24 +16,24 @@ const Footer = () => {
             <a href="/">Digitaltableteur</a>
           </h2>
           <p>
-            Hämeentie 8
+            {t("footerAddress1")}
             <br />
-            00530 Helsinki
+            {t("footerAddress2")}
             <br />
             <a href="mailto:mail@digitaltableteur.com">
               mail@digitaltableteur.com
             </a>
           </p>
           <br />
-          <p className={styles.billingDetails}>Billing details</p>
+          <p className={styles.billingDetails}>{t("footerBillingTitle")}</p>
           <p>
-            Digitaltableteur
+            {t("footerBillingName")}
             <br />
-            Hämeentie 8 C26
+            {t("footerBillingAddress")}
             <br />
-            00530 Helsinki
+            {t("footerBillingZip")}
             <br />
-            VAT FI2264455–2
+            {t("footerBillingVat")}
           </p>
         </div>
         <div className={styles["grid-item-blank"]}></div>
@@ -42,7 +44,7 @@ const Footer = () => {
           href="https://www.instagram.com/digitaltableteur/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Instagram"
+          aria-label={t("footerAriaInstagram")}
         >
           {FaInstagram({ size: 24 })}
         </a>
@@ -50,7 +52,7 @@ const Footer = () => {
           href="https://www.facebook.com/digitaltableteur"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Facebook"
+          aria-label={t("footerAriaFacebook")}
         >
           {FaFacebook({ size: 24 })}
         </a>
@@ -58,7 +60,7 @@ const Footer = () => {
           href="https://www.linkedin.com/company/digitaltableteur/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="LinkedIn"
+          aria-label={t("footerAriaLinkedin")}
         >
           {FaLinkedin({ size: 24 })}
         </a>
@@ -66,13 +68,13 @@ const Footer = () => {
           href="https://medium.com/@petrilahdelma/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Medium"
+          aria-label={t("footerAriaMedium")}
         >
           {FaMedium({ size: 24 })}
         </a>
       </div>
       <p className={styles["footerText"]}>
-        &copy; {currentYear} Digitaltableteur. All rights reserved.
+        &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
       </p>
     </footer>
   );
