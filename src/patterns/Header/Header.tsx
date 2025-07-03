@@ -45,7 +45,7 @@ const Header = () => {
     }
   }, [theme]);
   // Normalize language code to base (e.g., 'en-US' -> 'en')
-  const currentLang = i18n.language.split("-")[0];
+  const currentlang = i18n.language.split("-")[0];
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
     setCookie("i18next", code);
@@ -88,11 +88,11 @@ const Header = () => {
                 key={lang.code}
                 onClick={() => changeLanguage(lang.code)}
                 style={{
-                  cursor: currentLang === lang.code ? "default" : "pointer",
-                  opacity: currentLang === lang.code ? 0.5 : 1,
+                  cursor: currentlang === lang.code ? "default" : "pointer",
+                  opacity: currentlang === lang.code ? 0.5 : 1,
                   textDecoration: "none",
                   borderBottom:
-                    currentLang !== lang.code
+                    currentlang !== lang.code
                       ? "2px solid transparent"
                       : undefined,
                   marginRight: idx < languages.length - 1 ? 8 : 0,
@@ -101,9 +101,9 @@ const Header = () => {
                 className={styles.languageLink}
                 tabIndex={0}
                 aria-label={lang.label}
-                aria-current={currentLang === lang.code ? "true" : undefined}
+                aria-current={currentlang === lang.code ? "true" : undefined}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" && currentLang !== lang.code)
+                  if (e.key === "Enter" && currentlang !== lang.code)
                     changeLanguage(lang.code);
                 }}
               >
