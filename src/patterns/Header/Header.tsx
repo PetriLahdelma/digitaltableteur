@@ -92,9 +92,9 @@ const Header = () => {
                   opacity: currentlang === lang.code ? 0.5 : 1,
                   textDecoration: "none",
                   borderBottom:
-                    currentlang !== lang.code
-                      ? "2px solid transparent"
-                      : undefined,
+                    currentlang === lang.code
+                      ? "2px solid"
+                      : "2px solid transparent",
                   marginRight: idx < languages.length - 1 ? 8 : 0,
                   transition: "border-color 0.2s",
                 }}
