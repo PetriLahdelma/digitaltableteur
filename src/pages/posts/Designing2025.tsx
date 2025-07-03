@@ -120,7 +120,7 @@ const Designing2025 = () => (
           Paradoxically, making is easier—but mattering is harder. Design must
           move from aesthetic polishing to strategic storytelling. In 2025,
           2025, brands don’t compete solely on product—they compete on clarity,
-          clarity, relevance, and emotional resonance. 
+          clarity, relevance, and emotional resonance.
         </p>
         <br />
         <p>

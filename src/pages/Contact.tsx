@@ -16,11 +16,17 @@ const Contact = () => {
           <title>{t("contactMetaTitle")}</title>
           <meta name="description" content={t("contactMetaDescription")} />
           <meta property="og:title" content={t("contactMetaTitle")} />
-          <meta property="og:description" content={t("contactMetaDescription")} />
+          <meta
+            property="og:description"
+            content={t("contactMetaDescription")}
+          />
           <meta property="og:image" content="/logo512.png" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={t("contactMetaTitle")} />
-          <meta name="twitter:description" content={t("contactMetaDescription")} />
+          <meta
+            name="twitter:description"
+            content={t("contactMetaDescription")}
+          />
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
       </HelmetProvider>

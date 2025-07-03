@@ -121,7 +121,8 @@ caption {
   font-family: var(--secondary-bold-font);
 }
 
-.article b, strong {
+.article b,
+strong {
   font-family: TiemposText-Bold, serif;
   font-weight: 600;
 }
