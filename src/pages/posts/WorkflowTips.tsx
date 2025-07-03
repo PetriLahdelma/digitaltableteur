@@ -66,7 +66,7 @@ const WorkflowTips = () => (
         <h3>Robust systems in 2025 are:</h3>
         <ul>
           <li>
-            <b>Token-first:</b> With clear, versioned design tokens driving 
+            <b>Token-first:</b> With clear, versioned design tokens driving
             color, typography, spacing, and elevation.
           </li>
           <li>
