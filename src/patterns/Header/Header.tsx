@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import "../../styles/variables.css";
 import "../../styles/fonts.css";
@@ -24,6 +24,7 @@ function getCookie(name: string) {
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const { t, i18n } = useTranslation();
+  const location = useLocation();
   const languages = [
     { code: "en", label: t("langEN") },
     { code: "fi", label: t("langFI") },
@@ -65,19 +66,60 @@ const Header = () => {
         <nav className={styles.navbar}>
           <ul className={styles.nav}>
             <li>
-              <Link to="/">{t("navHome")}</Link>
+              <Link
+                to="/"
+                className={location.pathname === "/" ? styles.selected : undefined}
+              >
+                {t("navHome")}
+              </Link>
             </li>
             <li>
-              <Link to="/work">{t("navWork")}</Link>
+              <Link
+                to="/work"
+                className={
+                  location.pathname.startsWith("/work")
+                    ? styles.selected
+                    : undefined
+                }
+              >
+                {t("navWork")}
+              </Link>
             </li>
             <li>
-              <Link to="/about">{t("navAbout")}</Link>
+              <Link
+                to="/about"
+                className={
+                  location.pathname.startsWith("/about")
+                    ? styles.selected
+                    : undefined
+                }
+              >
+                {t("navAbout")}
+              </Link>
             </li>
             <li>
-              <Link to="/blog">{t("navBlog")}</Link>
+              <Link
+                to="/blog"
+                className={
+                  location.pathname.startsWith("/blog")
+                    ? styles.selected
+                    : undefined
+                }
+              >
+                {t("navBlog")}
+              </Link>
             </li>
             <li>
-              <Link to="/contact">{t("navContact")}</Link>
+              <Link
+                to="/contact"
+                className={
+                  location.pathname.startsWith("/contact")
+                    ? styles.selected
+                    : undefined
+                }
+              >
+                {t("navContact")}
+              </Link>
             </li>
           </ul>
         </nav>

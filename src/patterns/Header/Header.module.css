@@ -82,6 +82,11 @@ header h2 a {
   color: var(--color-primary);
 }
 
+.nav a.selected {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .themeToggle {
   background: none;
   border: none;
@@ -110,7 +115,7 @@ header h2 a {
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
-  font-family: inherit;
+  font-family: var(--primary-body-font, "Moderat-Regular"), serif;
 }
 
 .languageLink {
