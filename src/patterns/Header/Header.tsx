@@ -7,9 +7,55 @@ import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp
 import { useTheme } from "../../components/ThemeProvider/ThemeProvider";
 import { WiMoonAltNew } from "react-icons/wi";
 import { IoSunnySharp } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
+
+// Helper to get/set cookie
+function setCookie(name: string, value: string, days = 365) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+}
+function getCookie(name: string) {
+  return document.cookie.split("; ").reduce((r, v) => {
+    const parts = v.split("=");
+    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+  }, "");
+}
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
+  const { t, i18n } = useTranslation();
+  const languages = [
+    { code: "en", label: t("langEN") },
+    { code: "fi", label: t("langFI") },
+    { code: "sv", label: t("langSV") },
+  ];
+  // On mount, check for cookie and set language if needed
+  React.useEffect(() => {
+    const cookieLang = getCookie("i18next");
+    if (cookieLang && i18n.language.split("-")[0] !== cookieLang) {
+      i18n.changeLanguage(cookieLang);
+    }
+  }, [i18n]);
+  // On mount, check for theme cookie and set theme if needed
+  React.useEffect(() => {
+    const cookieTheme = getCookie("dt_theme");
+    if (cookieTheme && theme !== cookieTheme) {
+      // Only toggle if the cookie value differs from the current theme
+      toggleTheme();
+    }
+  }, [theme]);
+  // Normalize language code to base (e.g., 'en-US' -> 'en')
+  const currentLang = i18n.language.split("-")[0];
+  const changeLanguage = (code: string) => {
+    i18n.changeLanguage(code);
+    setCookie("i18next", code);
+    localStorage.setItem("i18nextLng", code);
+  };
+  const changeTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setCookie("dt_theme", newTheme);
+    toggleTheme();
+  };
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
@@ -19,29 +65,60 @@ const Header = () => {
         <nav className={styles.navbar}>
           <ul className={styles.nav}>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/">{t("navHome")}</Link>
             </li>
             <li>
-              <Link to="/work">Work</Link>
+              <Link to="/work">{t("navWork")}</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about">{t("navAbout")}</Link>
             </li>
             <li>
-              <Link to="/blog">Blog</Link>
+              <Link to="/blog">{t("navBlog")}</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact">{t("navContact")}</Link>
             </li>
           </ul>
         </nav>
-        <button
-          onClick={toggleTheme}
-          className={styles.themeToggle}
-          aria-label="Toggle dark mode"
-        >
-          {theme === "dark" ? <WiMoonAltNew /> : <IoSunnySharp />}
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <div className={styles.languageSwitcher}>
+            {languages.map((lang, idx) => (
+              <span
+                key={lang.code}
+                onClick={() => changeLanguage(lang.code)}
+                style={{
+                  cursor: currentLang === lang.code ? "default" : "pointer",
+                  opacity: currentLang === lang.code ? 0.5 : 1,
+                  textDecoration: "none",
+                  borderBottom:
+                    currentLang !== lang.code
+                      ? "2px solid transparent"
+                      : undefined,
+                  marginRight: idx < languages.length - 1 ? 8 : 0,
+                  transition: "border-color 0.2s",
+                }}
+                className={styles.languageLink}
+                tabIndex={0}
+                aria-label={lang.label}
+                aria-current={currentLang === lang.code ? "true" : undefined}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && currentLang !== lang.code)
+                    changeLanguage(lang.code);
+                }}
+              >
+                {lang.label}
+              </span>
+            ))}
+          </div>
+          <button
+            onClick={changeTheme}
+            className={styles.themeToggle}
+            aria-label={t("toggleDarkMode")}
+          >
+            {theme === "dark" ? <WiMoonAltNew /> : <IoSunnySharp />}
+          </button>
+        </div>
       </div>
     </header>
   );
