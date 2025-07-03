@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./ArticleCard.module.css";
 
 interface ArticleCardProps {
@@ -16,6 +17,13 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   readTime,
   className = "",
 }) => {
+  const { t } = useTranslation();
+  // Support "3 min read" style: split and translate 'read'
+  let readTimeDisplay = readTime;
+  const match = readTime.match(/^(\d+)\s*(min)\s*(read)$/i);
+  if (match) {
+    readTimeDisplay = `${match[1]} min ${t("blogRead")}`;
+  }
   return (
     <a
       href={link}
@@ -28,8 +36,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.lead}>{lead}</p>
       <div className={styles.meta}>
-        <span className={styles.readTime}>{readTime}</span>
-        <span className={styles.readMore}>Read more</span>
+        <span className={styles.readTime}>{readTimeDisplay}</span>
+        <span className={styles.readMore}>{t("blogReadMore")}</span>
       </div>
     </a>
   );
