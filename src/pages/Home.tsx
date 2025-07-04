@@ -50,8 +50,7 @@ const Home = () => {
             <div
               style={{
                 gridColumn: "1 / span 3",
-                background:
-                  "linear-gradient(120deg, #007cf0 0%, #ff0080 50%, #fff200 100%)",
+                background: "var(--home-gradient)",
                 backgroundSize: "200% 200%",
                 animation: "gradientMove 4s ease-in-out infinite",
                 height: "75vh",

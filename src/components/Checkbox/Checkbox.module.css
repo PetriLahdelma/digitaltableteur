@@ -19,7 +19,7 @@
   -webkit-appearance: none;
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -moz-appearance: none;
-  background: #fff;
+  background: var(--color-white);
   position: relative;
   transition:
     border-color 0.2s,

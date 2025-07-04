@@ -59,6 +59,12 @@
   /* Other colors */
   --color-react: #61dafb;
   --color-header-bg: #282c34;
+  --home-gradient: linear-gradient(
+    120deg,
+    #007cf0 0%,
+    #ff0080 50%,
+    #fff200 100%
+  );
 
   /* Sizing */
   --radius-sm: 2px;
@@ -129,6 +135,12 @@
   --color-error-text: #ffb3b3;
   --color-react: #61dafb;
   --color-header-bg: #181a1b;
+  --home-gradient: linear-gradient(
+    120deg,
+    #007cf0 0%,
+    #ff0080 50%,
+    #fff200 100%
+  );
   --color-white: #181a1b;
   --color-black: #fff;
   --color-dark: #e0e0e0;
