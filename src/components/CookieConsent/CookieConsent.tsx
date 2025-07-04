@@ -3,8 +3,10 @@ import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
 import Link from "../Link/Link";
 import styles from "./CookieConsent.module.css";
+import { useTranslation } from "react-i18next";
 
 const CookieConsent = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -27,30 +29,27 @@ const CookieConsent = () => {
   return (
     <Modal
       isOpen={isOpen}
-      title="Cookie consent"
+      title={t("cookieConsentTitle")}
       footer={
         <>
           <Button variant="primary" onClick={handleAcceptAll}>
-            Accept all
+            {t("cookieAcceptAll")}
           </Button>
           <Button variant="secondary" onClick={handleEssentialOnly}>
-            Only essential
+            {t("cookieAcceptEssential")}
           </Button>
         </>
       }
     >
       <p>
-        Digitaltableteur uses cookies to improve your experience. Choosing
-        &nbsp;<strong>Accept all</strong> enables optional analytics cookies.
-        Selecting <strong>Only essential</strong> stores only the cookies
-        required for the site to function.
+        {t("cookieConsentText")}
         <br />
         <br />
-        Read our&nbsp;
+        {t("cookieConsentReadOur")}&nbsp;
         <Link className={styles.link} size="S" href="/cookiePolicy">
-          cookie policy
+          {t("cookiePolicyLink")}
         </Link>
-        &nbsp;to learn more.
+        &nbsp;{t("cookieConsentToLearnMore")}
       </p>
     </Modal>
   );
