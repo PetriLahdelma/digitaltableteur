@@ -84,7 +84,9 @@ Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
 export const AllVariants: StoryFn<BadgeProps> = (args) => (
   <div style={{ display: "flex", gap: "1rem" }}>
-    <Badge design="primary" square={args.square}>Primary</Badge>
+    <Badge design="primary" square={args.square}>
+      Primary
+    </Badge>
     <Badge design="success" icon={<FaIcons.FaCheck />} square={args.square}>
       Success
     </Badge>
