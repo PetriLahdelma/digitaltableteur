@@ -74,6 +74,7 @@
 }
 
 .contactInfo {
+  color: var(--color-primary);
   margin-block-end: 2rem;
   font-size: 1.1rem;
 }
