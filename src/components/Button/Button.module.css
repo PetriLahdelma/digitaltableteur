@@ -13,7 +13,7 @@
     background-color 0.3s,
     color 0.3s;
   height: 2.5rem;
-  font-family: Moderat, sans-serif;
+  font-family: var(--primary-body-font, Moderat, sans-serif);
 }
 
 .button.primary {
