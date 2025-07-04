@@ -1,0 +1,129 @@
+.caseStudy {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  font-family: var(--primary-body-font, "Moderat-Regular"), serif;
+  color: var(--main-body-copy-color);
+}
+
+.heroSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+.heroText {
+  flex: 1 1 320px;
+  min-width: 280px;
+}
+
+.heroText h1 {
+  font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.heroText h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  margin-bottom: 1.2rem;
+}
+
+.heroSummary {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.heroImage {
+  flex: 1 1 320px;
+  min-width: 280px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.twoCol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.twoCol > div {
+  flex: 1 1 320px;
+  min-width: 240px;
+}
+
+.projectMeta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.projectMeta li {
+  margin-bottom: 0.5rem;
+}
+
+.processSteps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.processStep {
+  flex: 1 1 180px;
+  min-width: 160px;
+  background: #f7f7fa;
+  border-radius: 12px;
+  padding: 1.2rem 1rem 1.2rem 1.2rem;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
+}
+
+.processStep h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.gallery > div {
+  flex: 1 1 260px;
+  min-width: 180px;
+  border-radius: 16px;
+}
+
+.resultsList {
+  list-style: disc inside;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+@media (width <= 700px) {
+  .heroSection,
+  .twoCol,
+  .processSteps,
+  .gallery {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .heroImage {
+    justify-content: center;
+  }
+}

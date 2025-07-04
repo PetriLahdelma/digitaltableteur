@@ -35,6 +35,10 @@ export const Badge: React.FC<BadgeProps> = ({
 }) => {
   const [visible, setVisible] = useState(true);
   if (!visible) return null;
+  // Require children to render
+  if (!children || (typeof children === "string" && children.trim() === "")) {
+    return null;
+  }
   return (
     <span
       className={[
