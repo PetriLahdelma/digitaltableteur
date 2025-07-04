@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import Button from "../Button/Button";
 import Toast from "../Toast/Toast";
+import { useTranslation } from "react-i18next";
 
 interface SocialShareProps {
   url: string;
@@ -18,6 +19,7 @@ interface SocialShareProps {
 }
 
 export const SocialShare = ({ url, title }: SocialShareProps) => {
+  const { t } = useTranslation();
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
   const [toastOpen, setToastOpen] = useState(false);
@@ -37,7 +39,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         href="https://www.instagram.com/"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on Instagram"
+        aria-label={t("shareOnInstagram")}
       >
         <FaInstagram role="img" aria-label="Instagram icon" />
       </a>
@@ -45,7 +47,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on Twitter"
+        aria-label={t("shareOnTwitter")}
       >
         <FaTwitter role="img" aria-label="Twitter icon" />
       </a>
@@ -53,7 +55,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on Facebook"
+        aria-label={t("shareOnFacebook")}
       >
         <FaFacebook role="img" aria-label="Facebook icon" />
       </a>
@@ -61,7 +63,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         href={`https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on Reddit"
+        aria-label={t("shareOnReddit")}
       >
         <FaReddit role="img" aria-label="Reddit icon" />
       </a>
@@ -69,7 +71,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on WhatsApp"
+        aria-label={t("shareOnWhatsapp")}
       >
         <FaWhatsapp role="img" aria-label="WhatsApp icon" />
       </a>
@@ -78,12 +80,12 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         icon={<FaLink role="img" aria-label="Copy link icon" />}
         className={styles.copyButton}
         onClick={handleCopy}
-        aria-label="Copy link to clipboard"
+        aria-label={t("copyLinkToClipboard")}
       >
-        Copy link to clipboard
+        {t("copyLinkToClipboard")}
       </Button>
       <Toast
-        message="Link copied!"
+        message={t("linkCopied")}
         open={toastOpen}
         onClose={handleToastClose}
       />

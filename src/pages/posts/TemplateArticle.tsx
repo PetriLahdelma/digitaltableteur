@@ -5,34 +5,36 @@ import Author from "../../components/Author/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Card from "../../components/Card/Card";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
+import { useTranslation } from "react-i18next";
 
 const TemplateArticle = () => {
+  const { t } = useTranslation();
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>Template Article Title | Digitaltableteur</title>
+          <title>{t("templateArticleMetaTitle")}</title>
           <meta
             name="description"
-            content="Template description for future articles."
+            content={t("templateArticleMetaDescription")}
           />
           <meta
             property="og:title"
-            content="Template Article Title | Digitaltableteur"
+            content={t("templateArticleMetaTitle") as string}
           />
           <meta
             property="og:description"
-            content="Template description for future articles."
+            content={t("templateArticleMetaDescription") as string}
           />
           <meta property="og:image" content="/logo512.png" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:title"
-            content="Template Article Title | Digitaltableteur"
+            content={t("templateArticleMetaTitle") as string}
           />
           <meta
             name="twitter:description"
-            content="Template description for future articles."
+            content={t("templateArticleMetaDescription") as string}
           />
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
@@ -48,7 +50,7 @@ const TemplateArticle = () => {
           formatted according to the design guidelines.
         </p>
         <p>Ensure that all media files are properly linked and accessible.</p>
-        <h2>Share</h2>
+        <h2>{t("shareHeading")}</h2>
         <SocialShare
           url={window.location.href}
           title="Thoughts on Future Branding"

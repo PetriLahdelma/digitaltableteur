@@ -1,5 +1,7 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 const UnderDevelopment = () => {
+  const { t } = useTranslation();
   if (process.env.NODE_ENV !== "production") {
     return null; // Do not show in development
   }
@@ -22,7 +24,7 @@ const UnderDevelopment = () => {
         zIndex: 10000,
       }}
     >
-      <h2>Site Under Development! 🚧 Stay tuned!</h2>
+      <h2>{t("siteUnderDevelopment")}</h2>
     </div>
   );
 };
