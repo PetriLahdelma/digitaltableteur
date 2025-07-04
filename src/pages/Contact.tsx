@@ -33,10 +33,12 @@ const Contact = () => {
       <div className={styles.contact}>
         <Title size="L">{t("contactHeroTitle")}</Title>
         <Text className={styles.contactFormTitle}>{t("contactFormTitle")}</Text>
-        <Text className={styles.contactInfo}>{t("contactInfo")}</Text>
-        <Link href="mailto:mail@digitaltableteur.com">
-          mail@digitaltableteur.com
-        </Link>
+        <Text className={styles.contactInfo}>
+          {t("contactInfo")}{" "}
+          <Link size="S" href="mailto:mail@digitaltableteur.com">
+            mail@digitaltableteur.com
+          </Link>
+        </Text>
         <ContactForm />
       </div>
     </>
