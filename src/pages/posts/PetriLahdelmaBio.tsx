@@ -113,8 +113,7 @@ const PetriLahdelmaBio = () => {
           </div>
         </div>
       </article>
-    </HelmetProvider>
-  </>
+    </>
   );
 };
 

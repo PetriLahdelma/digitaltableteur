@@ -230,8 +230,7 @@ const WorkflowTips = () => {
           </div>
         </div>
       </article>
-    </HelmetProvider>
-  </>
+    </>
   );
 };
 

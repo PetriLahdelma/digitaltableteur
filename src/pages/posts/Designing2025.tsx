@@ -196,8 +196,7 @@ const Designing2025 = () => {
           </div>
         </div>
       </article>
-    </HelmetProvider>
-  </>
+    </>
   );
 };
 
