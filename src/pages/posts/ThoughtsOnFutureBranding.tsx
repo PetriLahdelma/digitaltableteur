@@ -13,34 +13,36 @@ import future5 from "../../assets/images/future5.gif";
 import future8 from "../../assets/images/future6.webp";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
 import Card from "../../components/Card/Card";
+import { useTranslation } from "react-i18next";
 
 const ThoughtsOnFutureBranding = () => {
+  const { t } = useTranslation();
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>Thoughts on Future Branding | Digitaltableteur</title>
+          <title>{t("postThoughtsOnFutureBrandingMetaTitle")}</title>
           <meta
             name="description"
-            content="Exploring branding in the age of AI and exponential design."
+            content={t("postThoughtsOnFutureBrandingMetaDescription")}
           />
           <meta
             property="og:title"
-            content="Thoughts on Future Branding | Digitaltableteur"
+            content={t("postThoughtsOnFutureBrandingMetaTitle") as string}
           />
           <meta
             property="og:description"
-            content="Exploring branding in the age of AI and exponential design."
+            content={t("postThoughtsOnFutureBrandingMetaDescription") as string}
           />
           <meta property="og:image" content="/logo512.png" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:title"
-            content="Thoughts on Future Branding | Digitaltableteur"
+            content={t("postThoughtsOnFutureBrandingMetaTitle") as string}
           />
           <meta
             name="twitter:description"
-            content="Exploring branding in the age of AI and exponential design."
+            content={t("postThoughtsOnFutureBrandingMetaDescription") as string}
           />
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
@@ -242,7 +244,7 @@ const ThoughtsOnFutureBranding = () => {
               margin: "3rem 0 1.5rem",
             }}
           />
-          <h2>Share</h2>
+          <h2>{t("shareHeading")}</h2>
           <SocialShare
             url={window.location.href}
             title="Thoughts on Future Branding"

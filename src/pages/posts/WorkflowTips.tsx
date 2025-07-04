@@ -6,30 +6,40 @@ import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
 import Card from "../../components/Card/Card";
 import AI from "../../assets/images/ai.webp";
+import { useTranslation } from "react-i18next";
 
-const WorkflowTips = () => (
-  <>
-    <HelmetProvider>
-      <Helmet>
-        <title>Workflow Tips | Digitaltableteur</title>
-        <meta
-          name="description"
-          content="A behind-the-scenes look at how we keep projects moving."
-        />
-        <meta property="og:title" content="Workflow Tips | Digitaltableteur" />
-        <meta
-          property="og:description"
-          content="A behind-the-scenes look at how we keep projects moving."
-        />
-        <meta property="og:image" content="/logo512.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Workflow Tips | Digitaltableteur" />
-        <meta
-          name="twitter:description"
-          content="A behind-the-scenes look at how we keep projects moving."
-        />
-        <meta name="twitter:image" content="/logo512.png" />
-      </Helmet>
+const WorkflowTips = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <HelmetProvider>
+        <Helmet>
+          <title>{t("postWorkflowTipsMetaTitle")}</title>
+          <meta
+            name="description"
+            content={t("postWorkflowTipsMetaDescription")}
+          />
+          <meta
+            property="og:title"
+            content={t("postWorkflowTipsMetaTitle") as string}
+          />
+          <meta
+            property="og:description"
+            content={t("postWorkflowTipsMetaDescription") as string}
+          />
+          <meta property="og:image" content="/logo512.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content={t("postWorkflowTipsMetaTitle") as string}
+          />
+          <meta
+            name="twitter:description"
+            content={t("postWorkflowTipsMetaDescription") as string}
+          />
+          <meta name="twitter:image" content="/logo512.png" />
+        </Helmet>
+      </HelmetProvider>
       <article className={styles.article}>
         <header>
           <h1>Workflow Tips</h1>
@@ -202,7 +212,7 @@ const WorkflowTips = () => (
             margin: "3rem 0 1.5rem",
           }}
         />
-        <h2>Share</h2>
+        <h2>{t("shareHeading")}</h2>
         <SocialShare url={window.location.href} title="Workflow Tips" />
         <div className={styles.similar}>
           <h2>Similar Reads</h2>
@@ -222,6 +232,7 @@ const WorkflowTips = () => (
       </article>
     </HelmetProvider>
   </>
-);
+  );
+};
 
 export default WorkflowTips;

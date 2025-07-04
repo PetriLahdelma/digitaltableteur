@@ -5,36 +5,40 @@ import Author from "../../components/Author/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Card from "../../components/Card/Card";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
+import { useTranslation } from "react-i18next";
 
-const PetriLahdelmaBio = () => (
-  <>
-    <HelmetProvider>
-      <Helmet>
-        <title>Petri Lahdelma: A Biography | Digitaltableteur</title>
-        <meta
-          name="description"
-          content="From Varissuo to leading global design systems."
-        />
-        <meta
-          property="og:title"
-          content="Petri Lahdelma: A Biography | Digitaltableteur"
-        />
-        <meta
-          property="og:description"
-          content="From Varissuo to leading global design systems."
-        />
-        <meta property="og:image" content="/logo512.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Petri Lahdelma: A Biography | Digitaltableteur"
-        />
-        <meta
-          name="twitter:description"
-          content="From Varissuo to leading global design systems."
-        />
-        <meta name="twitter:image" content="/logo512.png" />
-      </Helmet>
+const PetriLahdelmaBio = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <HelmetProvider>
+        <Helmet>
+          <title>{t("postPetriLahdelmaBioMetaTitle")}</title>
+          <meta
+            name="description"
+            content={t("postPetriLahdelmaBioMetaDescription")}
+          />
+          <meta
+            property="og:title"
+            content={t("postPetriLahdelmaBioMetaTitle") as string}
+          />
+          <meta
+            property="og:description"
+            content={t("postPetriLahdelmaBioMetaDescription") as string}
+          />
+          <meta property="og:image" content="/logo512.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content={t("postPetriLahdelmaBioMetaTitle") as string}
+          />
+          <meta
+            name="twitter:description"
+            content={t("postPetriLahdelmaBioMetaDescription") as string}
+          />
+          <meta name="twitter:image" content="/logo512.png" />
+        </Helmet>
+      </HelmetProvider>
       <article className={styles.article}>
         <header>
           <h1>Petri Lahdelma: A Biography</h1>
@@ -88,7 +92,7 @@ const PetriLahdelmaBio = () => (
             margin: "3rem 0 1.5rem",
           }}
         />
-        <h2>Share</h2>
+        <h2>{t("shareHeading")}</h2>
         <SocialShare
           url={window.location.href}
           title="Petri Lahdelma: A Biography"
@@ -111,6 +115,7 @@ const PetriLahdelmaBio = () => (
       </article>
     </HelmetProvider>
   </>
-);
+  );
+};
 
 export default PetriLahdelmaBio;
