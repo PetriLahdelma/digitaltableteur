@@ -9,10 +9,10 @@
   --color-title: var(--primary-text-color, #00f);
   --color-text: var(--primary-text-color, #00f);
   --primary-body-font: "Moderat-Regular", sans-serif;
-  --secondary-body-font: "TiemposHeadline-Regular", serif;
+  --secondary-body-font: "TiemposText-Regular", serif;
   --primary-bold-font: "Moderat-Bold", sans-serif;
   --secondary-bold-font: "TiemposHeadline-Semibold", serif;
-  --primary-heading-font: "Tiempos Headline", serif;
+  --primary-heading-font: "TiemposHeadline-Regular", serif;
   --secondary-heading-font: "Moderat", sans-serif;
 
   /* Text colors */
@@ -66,6 +66,19 @@
     #fff200 100%
   );
 
+    /* Storybook Helper Colors */
+  --storybook-blue: #00f; /* Storybook Helper Color: Blue */
+  --storybook-cyan: #71efff; /* Storybook Helper Color: Cyan */
+  --storybook-pink: #f0f; /* Storybook Helper Color: Pink */
+  --storybook-purple: #812eff; /* Storybook Helper Color: Purple */
+  --storybook-violet: #bc6dff; /* Storybook Helper Color: Violet */
+  --storybook-bg: #f9f9f9; /* Storybook Helper Color: Background */
+  --storybook-dark: #222; /* Storybook Helper Color: Dark Text */
+  --storybook-yellow: #ff0; /* Storybook Helper Color: Yellow */
+  --storybook-white: #fff; /* Storybook Helper Color: White Text */
+  --storybook-gray: #707070; /* Storybook Helper Color: Gray */
+
+
   /* Sizing */
   --radius-sm: 2px;
   --radius-md: 0.25rem;
@@ -103,17 +116,6 @@
 
   /* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
 
-  /* Storybook Helper Colors */
-  --storybook-blue: #00f; /* Storybook Helper Color: Blue */
-  --storybook-cyan: #71efff; /* Storybook Helper Color: Cyan */
-  --storybook-pink: #f0f; /* Storybook Helper Color: Pink */
-  --storybook-purple: #812eff; /* Storybook Helper Color: Purple */
-  --storybook-violet: #bc6dff; /* Storybook Helper Color: Violet */
-  --storybook-bg: #f9f9f9; /* Storybook Helper Color: Background */
-  --storybook-dark: #222; /* Storybook Helper Color: Dark Text */
-  --storybook-yellow: #ff0; /* Storybook Helper Color: Yellow */
-  --storybook-white: #fff; /* Storybook Helper Color: White Text */
-  --storybook-gray: #707070; /* Storybook Helper Color: Gray */
 }
 
 .themeDark,
@@ -155,6 +157,12 @@
   --color-disabled-placeholder: #555;
   --color-gray-medium: #888;
   --color-light-bg: #23272a;
+  --accent-pink: #c94f9e;
+  --accent-purple: #6d4aff;
+  --accent-teal: #3a6e7c;
+  --accent-violet: #7c5fd4;
+  --accent-cyan: #3fd0e0;
+  --accent-yellow: #bfae3c;
   --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
   --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
   --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */

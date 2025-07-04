@@ -19,6 +19,7 @@
 
 .hero h1 {
   font-family: var(--primary-heading-font, "Times New Roman"), serif;
+  color: var(--color-white);
   font-size: 8rem;
   font-weight: var(--primary-heading-weight, 300);
   line-height: 1.1;
@@ -27,6 +28,7 @@
 
 .hero p {
   font-family: var(--secondary-body-font, "TiemposHeadline-Regular"), serif;
+  color: var(--color-white);
   font-size: 2rem;
   max-width: 40rem;
   line-height: 1.4;
@@ -36,9 +38,6 @@
   padding: 4rem 1rem;
 }
 
-.section:nth-of-type(even) {
-  background-color: var(--accent-teal);
-}
 
 .section h2 {
   font-family: var(--secondary-heading-font, "Moderat"), serif;
@@ -49,6 +48,7 @@
 
 .section p {
   font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
+  color: var(--color-primary);
   font-size: 1.25rem;
   line-height: 1.6;
   max-width: 50rem;
