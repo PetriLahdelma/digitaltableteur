@@ -14,13 +14,28 @@ const TemplateArticle = () => {
       <HelmetProvider>
         <Helmet>
           <title>{t("templateArticleMetaTitle")}</title>
-          <meta name="description" content={t("templateArticleMetaDescription")} />
-          <meta property="og:title" content={t("templateArticleMetaTitle") as string} />
-          <meta property="og:description" content={t("templateArticleMetaDescription") as string} />
+          <meta
+            name="description"
+            content={t("templateArticleMetaDescription")}
+          />
+          <meta
+            property="og:title"
+            content={t("templateArticleMetaTitle") as string}
+          />
+          <meta
+            property="og:description"
+            content={t("templateArticleMetaDescription") as string}
+          />
           <meta property="og:image" content="/logo512.png" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={t("templateArticleMetaTitle") as string} />
-          <meta name="twitter:description" content={t("templateArticleMetaDescription") as string} />
+          <meta
+            name="twitter:title"
+            content={t("templateArticleMetaTitle") as string}
+          />
+          <meta
+            name="twitter:description"
+            content={t("templateArticleMetaDescription") as string}
+          />
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
       </HelmetProvider>
