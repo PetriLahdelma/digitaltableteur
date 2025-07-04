@@ -5,6 +5,7 @@ import CookieConsent from "./components/CookieConsent/CookieConsent";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Work = React.lazy(() => import("./pages/Work"));
+const CaseStudyTemplate = React.lazy(() => import("./pages/CaseStudyTemplate"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const UnderDevelopment = React.lazy(() => import("./pages/UnderDevelopment"));
@@ -80,6 +81,10 @@ function App() {
                 element={<PetriLahdelmaBio />}
               />
               <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route
+                path="/case-study-template"
+                element={<CaseStudyTemplate />}
+              />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
