@@ -124,9 +124,8 @@ const DigitalCraftsmanship = () => {
           answer. In the end, craft is just a pattern of choices made
           deliberately, not reactively.
         </p>
-        <blockquote>
-          In a hurry-up culture, choosing to care is radical.☻
-        </blockquote>
+        <br />
+        <p>In a hurry-up culture, choosing to care is radical.☻</p>
         <hr
           style={{
             border: "none",
