@@ -6,12 +6,34 @@
   block-size: 2.5rem;
 }
 
+.socialShare a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+  text-decoration: none;
+}
+
 .copyButton {
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-internal-4);
   cursor: pointer;
   color: var(--primary-text-color);
   text-decoration: none;
+}
+
+.copyButton span {
+  margin-right: 0;
+}
+
+.copyButton svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--primary-text-color);
+  margin:0 auto;
+  padding: 0;
 }
