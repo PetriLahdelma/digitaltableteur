@@ -82,23 +82,26 @@ Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   await userEvent.tab();
 };
 
-export const AllVariants = () => (
+export const AllVariants: StoryFn<BadgeProps> = (args) => (
   <div style={{ display: "flex", gap: "1rem" }}>
-    <Badge design="primary">Primary</Badge>
-    <Badge design="success" icon={<FaIcons.FaCheck />}>
+    <Badge design="primary" square={args.square}>Primary</Badge>
+    <Badge design="success" icon={<FaIcons.FaCheck />} square={args.square}>
       Success
     </Badge>
-    <Badge design="info" icon={<FaIcons.FaInfoCircle />}>
+    <Badge design="info" icon={<FaIcons.FaInfoCircle />} square={args.square}>
       Info
     </Badge>
-    <Badge design="error" icon={<FaIcons.FaExclamation />}>
+    <Badge design="error" icon={<FaIcons.FaExclamation />} square={args.square}>
       Error
     </Badge>
-    <Badge design="neutral" icon={<FaIcons.FaTimes />}>
+    <Badge design="neutral" icon={<FaIcons.FaTimes />} square={args.square}>
       Neutral
     </Badge>
   </div>
 );
+AllVariants.args = {
+  square: false,
+};
 AllVariants.play = async ({
   canvasElement,
 }: {
@@ -125,19 +128,22 @@ Removable.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   await canvas.findByRole("button", { name: /remove badge/i });
 };
 
-export const AllSizes = () => (
+export const AllSizes: StoryFn<BadgeProps> = (args) => (
   <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-    <Badge size="s" design="primary">
+    <Badge size="s" design="primary" square={args.square}>
       Small
     </Badge>
-    <Badge size="m" design="primary">
+    <Badge size="m" design="primary" square={args.square}>
       Medium
     </Badge>
-    <Badge size="l" design="primary">
+    <Badge size="l" design="primary" square={args.square}>
       Large
     </Badge>
   </div>
 );
+AllSizes.args = {
+  square: false,
+};
 AllSizes.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByText(/small/i);
