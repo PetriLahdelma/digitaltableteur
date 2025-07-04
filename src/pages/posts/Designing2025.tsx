@@ -5,36 +5,40 @@ import Author from "../../components/Author/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Card from "../../components/Card/Card";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
+import { useTranslation } from "react-i18next";
 
-const Designing2025 = () => (
-  <>
-    <HelmetProvider>
-      <Helmet>
-        <title>Designing in 2025 | Digitaltableteur</title>
-        <meta
-          name="description"
-          content="Navigating the AI-assisted creative landscape."
-        />
-        <meta
-          property="og:title"
-          content="Designing in 2025 | Digitaltableteur"
-        />
-        <meta
-          property="og:description"
-          content="Navigating the AI-assisted creative landscape."
-        />
-        <meta property="og:image" content="/logo512.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Designing in 2025 | Digitaltableteur"
-        />
-        <meta
-          name="twitter:description"
-          content="Navigating the AI-assisted creative landscape."
-        />
-        <meta name="twitter:image" content="/logo512.png" />
-      </Helmet>
+const Designing2025 = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <HelmetProvider>
+        <Helmet>
+          <title>{t("postDesigning2025MetaTitle")}</title>
+          <meta
+            name="description"
+            content={t("postDesigning2025MetaDescription")}
+          />
+          <meta
+            property="og:title"
+            content={t("postDesigning2025MetaTitle") as string}
+          />
+          <meta
+            property="og:description"
+            content={t("postDesigning2025MetaDescription") as string}
+          />
+          <meta property="og:image" content="/logo512.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content={t("postDesigning2025MetaTitle") as string}
+          />
+          <meta
+            name="twitter:description"
+            content={t("postDesigning2025MetaDescription") as string}
+          />
+          <meta name="twitter:image" content="/logo512.png" />
+        </Helmet>
+      </HelmetProvider>
       <article className={styles.article}>
         <header>
           <h1>
@@ -171,7 +175,7 @@ const Designing2025 = () => (
             margin: "3rem 0 1.5rem",
           }}
         />
-        <h2>Share</h2>
+        <h2>{t("shareHeading")}</h2>
         <SocialShare
           url={window.location.href}
           title="Designing in 2025: Navigating the AI-Assisted Creative Landscape"
@@ -194,6 +198,7 @@ const Designing2025 = () => (
       </article>
     </HelmetProvider>
   </>
-);
+  );
+};
 
 export default Designing2025;

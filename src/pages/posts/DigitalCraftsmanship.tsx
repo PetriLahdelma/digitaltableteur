@@ -7,37 +7,40 @@ import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Pizza from "../../assets/images/pizza.jpg";
 import Card from "../../components/Card/Card";
 import { SocialShare } from "../../components/SocialShare/SocialShare";
+import { useTranslation } from "react-i18next";
 
-const DigitalCraftsmanship = () => (
-  <>
-    <HelmetProvider>
-      <Helmet>
-        <title>Digital Craftsmanship | Digitaltableteur</title>
-        <meta
-          name="description"
-          content="Thoughts on maintaining quality in a hurry-up culture."
-        />
-        <meta
-          property="og:title"
-          content="Digital Craftsmanship | Digitaltableteur"
-        />
-        <meta
-          property="og:description"
-          content="Thoughts on maintaining quality in a hurry-up culture."
-        />
-        <meta property="og:image" content="/logo512.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Digital Craftsmanship | Digitaltableteur"
-        />
-        <meta
-          name="twitter:description"
-          content="Thoughts on maintaining quality in a hurry-up culture."
-        />
-        <meta name="twitter:image" content="/logo512.png" />
-      </Helmet>
-    </HelmetProvider>
+const DigitalCraftsmanship = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <HelmetProvider>
+        <Helmet>
+          <title>{t("postDigitalCraftsmanshipMetaTitle")}</title>
+          <meta
+            name="description"
+            content={t("postDigitalCraftsmanshipMetaDescription")}
+          />
+          <meta
+            property="og:title"
+            content={t("postDigitalCraftsmanshipMetaTitle") as string}
+          />
+          <meta
+            property="og:description"
+            content={t("postDigitalCraftsmanshipMetaDescription") as string}
+          />
+          <meta property="og:image" content="/logo512.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content={t("postDigitalCraftsmanshipMetaTitle") as string}
+          />
+          <meta
+            name="twitter:description"
+            content={t("postDigitalCraftsmanshipMetaDescription") as string}
+          />
+          <meta name="twitter:image" content="/logo512.png" />
+        </Helmet>
+      </HelmetProvider>
     <article className={styles.article}>
       <header>
         <h1>
@@ -129,7 +132,7 @@ const DigitalCraftsmanship = () => (
           margin: "3rem 0 1.5rem",
         }}
       />
-      <h2>Share</h2>
+      <h2>{t("shareHeading")}</h2>
       <SocialShare
         url={window.location.href}
         title="Maintaining Quality in a Hurry-Up Culture"
@@ -151,6 +154,7 @@ const DigitalCraftsmanship = () => (
       </div>
     </article>
   </>
-);
+  );
+};
 
 export default DigitalCraftsmanship;

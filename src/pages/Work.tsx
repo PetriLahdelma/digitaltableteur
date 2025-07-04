@@ -20,22 +20,19 @@ const Work = () => {
     <>
       <HelmetProvider>
         <Helmet>
-          <title>Work | Digitaltableteur</title>
-          <meta
-            name="description"
-            content="Selected projects and experiments by Digitaltableteur"
-          />
-          <meta property="og:title" content="Work | Digitaltableteur" />
+          <title>{t("workMetaTitle")}</title>
+          <meta name="description" content={t("workMetaDescription")} />
+          <meta property="og:title" content={t("workMetaTitle") as string} />
           <meta
             property="og:description"
-            content="Selected projects and experiments by Digitaltableteur"
+            content={t("workMetaDescription") as string}
           />
           <meta property="og:image" content="/logo512.png" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Work | Digitaltableteur" />
+          <meta name="twitter:title" content={t("workMetaTitle") as string} />
           <meta
             name="twitter:description"
-            content="Selected projects and experiments by Digitaltableteur"
+            content={t("workMetaDescription") as string}
           />
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
