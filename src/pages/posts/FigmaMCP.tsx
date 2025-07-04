@@ -14,39 +14,40 @@ import {
   TbCircleNumber3,
   TbCircleNumber4,
 } from "react-icons/tb";
+import { useTranslation } from "react-i18next";
 
-const FigmaMCP = () => (
-  <>
-    <HelmetProvider>
-      <Helmet>
-        <title>
-          Figma MCP, Design Systems, and Generative UI | Digitaltableteur
-        </title>
-        <meta
-          name="description"
-          content="How Figma's MCP server speeds up design-to-code workflows."
-        />
-        <meta
-          property="og:title"
-          content="Figma MCP, Design Systems, and Generative UI | Digitaltableteur"
-        />
-        <meta
-          property="og:description"
-          content="How Figma's MCP server speeds up design-to-code workflows."
-        />
-        <meta property="og:image" content="/logo512.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Figma MCP, Design Systems, and Generative UI | Digitaltableteur"
-        />
-        <meta
-          name="twitter:description"
-          content="How Figma's MCP server speeds up design-to-code workflows."
-        />
-        <meta name="twitter:image" content="/logo512.png" />
-      </Helmet>
-    </HelmetProvider>
+const FigmaMCP = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <HelmetProvider>
+        <Helmet>
+          <title>{t("postFigmaMCPMetaTitle")}</title>
+          <meta
+            name="description"
+            content={t("postFigmaMCPMetaDescription")}
+          />
+          <meta
+            property="og:title"
+            content={t("postFigmaMCPMetaTitle") as string}
+          />
+          <meta
+            property="og:description"
+            content={t("postFigmaMCPMetaDescription") as string}
+          />
+          <meta property="og:image" content="/logo512.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:title"
+            content={t("postFigmaMCPMetaTitle") as string}
+          />
+          <meta
+            name="twitter:description"
+            content={t("postFigmaMCPMetaDescription") as string}
+          />
+          <meta name="twitter:image" content="/logo512.png" />
+        </Helmet>
+      </HelmetProvider>
     <article className={styles.article}>
       <header>
         <h1>Rethinking Design-to-Product Workflows with Figma MCP</h1>
@@ -184,7 +185,7 @@ const FigmaMCP = () => (
           margin: "3rem 0 1.5rem",
         }}
       />
-      <h2>Share</h2>
+      <h2>{t("shareHeading")}</h2>
       <SocialShare
         url={window.location.href}
         title="Rethinking Design-to-Product Workflows with Figma MCP"
@@ -206,6 +207,7 @@ const FigmaMCP = () => (
       </div>
     </article>
   </>
-);
+  );
+};
 
 export default FigmaMCP;

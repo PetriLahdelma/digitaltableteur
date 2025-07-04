@@ -61,7 +61,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <Link to="/" className={styles.logoLink}>
-          <img src={Logo} alt="Digitaltableteur Logo" className={styles.logo} />
+          <img src={Logo} alt={t("headerLogoAlt")} className={styles.logo} />
         </Link>
         <nav className={styles.navbar}>
           <ul className={styles.nav}>
