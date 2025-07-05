@@ -79,7 +79,7 @@ const Home = () => {
           </Title>
           <Grid columns={3} gap="1rem">
             <div
-              className={styles["grid-item-blank"]}
+              className={styles["gridItemBlank"]}
               style={{ gridColumn: "2 / span 2" }}
             >
               <p className={styles.lead}>{t("homeAbout")}</p>

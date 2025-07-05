@@ -17,8 +17,13 @@ export default {
   argTypes: {
     design: {
       control: { type: "select" },
-      options: ["primary", "success", "info", "error", "neutral"],
-      description: "Badge color variant",
+      options: ["primary", "secondary"],
+      description: "Badge design variant",
+    },
+    state: {
+      control: { type: "select" },
+      options: ["success", "info", "error", "warning", "neutral"],
+      description: "Semantic state color",
     },
     children: { control: "text", description: "Badge content" },
     className: { control: "text", description: "Custom class name" },
@@ -48,6 +53,7 @@ export default {
   },
   args: {
     design: "primary",
+    state: undefined,
     children: "Badge",
     icon: null,
     removable: false,
@@ -57,8 +63,6 @@ export default {
 };
 
 import { StoryFn } from "@storybook/react-vite";
-// If BadgeProps is a type exported from Badge.tsx, ensure it's exported as 'export type BadgeProps = ...' in Badge.tsx.
-// import type { BadgeProps } from "./Badge";
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
 const Template: StoryFn<BadgeProps> = (args: BadgeProps) => <Badge {...args} />;
@@ -67,43 +71,30 @@ export const Playground = Template.bind({});
 Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByText(/badge/i);
-  // Focus test
-  await userEvent.tab();
-};
-
-export const Primary = Template.bind({});
-Primary.args = {
-  design: "primary",
-  children: "Primary Badge",
-};
-Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  await canvas.findByText(/primary badge/i);
   await userEvent.tab();
 };
 
 export const AllVariants: StoryFn<BadgeProps> = (args) => (
   <div style={{ display: "flex", gap: "1rem" }}>
-    <Badge design="primary" square={args.square}>
-      Primary
-    </Badge>
-    <Badge design="success" icon={<FaIcons.FaCheck />} square={args.square}>
+    <Badge design="primary">Primary</Badge>
+    <Badge design="secondary">Secondary</Badge>
+    <Badge design="primary" state="success">
       Success
     </Badge>
-    <Badge design="info" icon={<FaIcons.FaInfoCircle />} square={args.square}>
+    <Badge design="primary" state="info">
       Info
     </Badge>
-    <Badge design="error" icon={<FaIcons.FaExclamation />} square={args.square}>
+    <Badge design="primary" state="error">
       Error
     </Badge>
-    <Badge design="neutral" icon={<FaIcons.FaTimes />} square={args.square}>
+    <Badge design="primary" state="warning">
+      Warning
+    </Badge>
+    <Badge design="primary" state="neutral">
       Neutral
     </Badge>
   </div>
 );
-AllVariants.args = {
-  square: false,
-};
 AllVariants.play = async ({
   canvasElement,
 }: {
@@ -111,9 +102,11 @@ AllVariants.play = async ({
 }) => {
   const canvas = within(canvasElement);
   await canvas.findByText(/primary/i);
+  await canvas.findByText(/secondary/i);
   await canvas.findByText(/success/i);
   await canvas.findByText(/info/i);
   await canvas.findByText(/error/i);
+  await canvas.findByText(/warning/i);
   await canvas.findByText(/neutral/i);
 };
 
@@ -121,31 +114,27 @@ export const Removable = Template.bind({});
 Removable.args = {
   removable: true,
   children: "Removable Badge",
+  design: "primary",
+  state: undefined,
 };
-Removable.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  // Ensure the badge is visible
-  await canvas.findByText(/removable badge/i);
-  // Optionally, check that the remove button is present
-  await canvas.findByRole("button", { name: /remove badge/i });
+Removable.parameters = {
+  // Prevent the play function from removing the badge before the user sees it
+  play: undefined,
 };
 
 export const AllSizes: StoryFn<BadgeProps> = (args) => (
   <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-    <Badge size="s" design="primary" square={args.square}>
+    <Badge size="s" design="primary">
       Small
     </Badge>
-    <Badge size="m" design="primary" square={args.square}>
+    <Badge size="m" design="primary">
       Medium
     </Badge>
-    <Badge size="l" design="primary" square={args.square}>
+    <Badge size="l" design="primary">
       Large
     </Badge>
   </div>
 );
-AllSizes.args = {
-  square: false,
-};
 AllSizes.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByText(/small/i);

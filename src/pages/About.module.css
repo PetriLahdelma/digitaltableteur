@@ -53,3 +53,12 @@
   line-height: 1.6;
   max-width: 50rem;
 }
+
+@media (width <= 768px) {
+  .about {
+    grid-column: 1 / -1;
+    width: 100vw;
+    margin-left: calc(-1 * var(--space-layout-0, 0));
+    margin-right: calc(-1 * var(--space-layout-0, 0));
+  }
+}
