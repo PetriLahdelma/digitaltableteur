@@ -48,7 +48,21 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
+    const now = new Date();
+    const time = now.toLocaleString(); // You can customize the format if needed
+    send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      {
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        interest: formData.interest,
+        message: formData.message,
+        time, // Add the current time for EmailJS {{time}}
+      },
+      PUBLIC_KEY,
+    )
       .then(() => {
         setIsModalOpen(true);
         setFormData({
