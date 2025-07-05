@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./CaseStudyTemplate.module.css";
 import FlexBox from "../components/FlexBox/FlexBox";
 import Title from "../components/Title/Title";
+import Badge from "../components/Badge/Badge";
+import LegoHackathon from "../assets/lego_hackathon.webp";
+import Gallery from "../components/Gallery/Gallery";
+import Grid from "../components/Grid/Grid";
 
-// Placeholder image component
 interface PlaceholderImgProps {
   aspect?: string;
   color?: string;
@@ -20,7 +23,7 @@ const PlaceholderImg: React.FC<PlaceholderImgProps> = ({
       background: color,
       width: "100%",
       aspectRatio: aspect,
-      borderRadius: "16px",
+      borderRadius: "0",
       margin: "1.5rem 0",
       ...style,
     }}
@@ -29,40 +32,177 @@ const PlaceholderImg: React.FC<PlaceholderImgProps> = ({
 
 const CaseStudyTemplate = () => (
   <main className={styles.caseStudy}>
-    {/* Hero Section */}
-    <section className={styles.heroSection}>
+    <section className={styles.caseHeroSection}>
       <div className={styles.heroText}>
-        <Title level={1}>Brand.ai</Title>
-        <Title level={2}>Branding, Design System, Website</Title>
+        <Title level={1}>New Things Co</Title>
+        <FlexBox className={styles.caseBadges} gap={8}>
+          <Badge size="s" design="secondary">
+            Branding
+          </Badge>
+          <Badge size="s" design="secondary">
+            Design System
+          </Badge>
+          <Badge size="s" design="secondary">
+            Web Design
+          </Badge>
+        </FlexBox>
+        <Grid columns={3} gap="2rem" style={{ marginBottom: "2rem" }}>
+          <img
+            src="/images/portfolio/new_things_co/gallery/logo@2x.webp"
+            alt="New Things Co logo"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "1 / span 3",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/concept.webp"
+            alt="New Things Co business card"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "1 / span 3",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/colors@2x.webp"
+            alt="New Things Co business card"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "1 / span 3",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/typography@2x.webp"
+            alt="New Things Co business card"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "1 / span 3",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/NewThingsCo_Business-Card_recycled2.webp"
+            alt="New Things Co business card"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "1 / span 3",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/Bizcard_top_recycled.webp"
+            alt="New Things Co business card"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "2 / span 1",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/Bizcard_top_recycled_back.webp"
+            alt="New Things Co business card"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "3 / span 1",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/NTC_Letterhead-and-envelope.webp"
+            alt="New Things Co logo"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "2 / span 2",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/NTC_Letterhead-and-envelope.jpg"
+            alt="New Things Co business card"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "1 / span 1",
+            }}
+          />
+        </Grid>
         <p className={styles.heroSummary}>
-          Brand.ai is a platform for managing and sharing design systems. We
-          worked with their team to create a new brand identity, design system,
-          and marketing website.
+          DT was first approached by New Things Co in September 2017, by Sami,
+          Jukkis and Kimmo. Back then the company was still called Lab of New.
+        </p>
+        <br />
+        <p>
+          They sought to establish a cohesive brand identity that resonated with
+          their innovative approach to software development consulting. Their
+          existing identity and online presence lacked a unified visual
+          language, making it challenging to communicate their values and
+          expertise effectively.
+        </p>
+        <br />
+        <p>
+          The task was the complete rebranding of the company name and
+          aesthetic. Starting from the strategic pillars, purpose, core values
+          following following visual identity, down to the most minute details,
+          applications and all the various other bits and bobs for eg.
+          marketing, events, recruitment and cultural purposes.
+        </p>
+        <br />
+        <p>
+          Both print and online assets were conceptualized, designed and
+          delivered during a 16 month period. DT also prepared Figma based Brand
+          Identity Guidelines and a Design System in React TS. Most of the
+          ground work was put in the strategic positioning and differentiation
+          from the competition.
         </p>
       </div>
-      <div className={styles.heroImage}>
-        {/* <PlaceholderImg aspect="16/7" color="#b3c6ff" /> */}
+      <div className={styles.heroVideo}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/portfolio/new_things_co/gallery/ntc_guidelines_poster.jpg"
+          style={{
+            width: "100%",
+            height: "auto",
+            borderRadius: 0,
+            margin: "1.5rem 0",
+          }}
+        >
+          <source
+            src="/images/portfolio/new_things_co/gallery/ntc_guidelines_short.webm"
+            type="video/webm"
+          />
+          <source
+            src="/images/portfolio/new_things_co/gallery/ntc_guidelines_short.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
       </div>
     </section>
-
-    {/* Project Overview */}
     <section className={styles.section}>
-      <Title level={3}>Project Overview</Title>
+      <Title size="M" level={3} terminals="sans">
+        Project Overview
+      </Title>
       <div className={styles.twoCol}>
         <div>
           <p>
-            Brand.ai needed a new identity and digital presence to reflect their
-            growth and vision. We collaborated closely to define their brand
-            strategy, visual language, and digital experience.
+            New Things Co needed a new identity and digital presence to reflect
+            their growth and vision. We collaborated closely to define their
+            brand strategy, visual language, and digital experience.
           </p>
         </div>
         <div>
           <ul className={styles.projectMeta}>
             <li>
-              <strong>Client:</strong> Brand.ai
+              <strong>Client:</strong> New Things Co
             </li>
             <li>
-              <strong>Year:</strong> 2023
+              <strong>Year:</strong> 2017
             </li>
             <li>
               <strong>Services:</strong> Branding, Design System, Web Design
@@ -74,7 +214,9 @@ const CaseStudyTemplate = () => (
 
     {/* Process Section */}
     <section className={styles.section}>
-      <Title level={3}>Process</Title>
+      <Title size="M" level={3} terminals="sans">
+        Process
+      </Title>
       <div className={styles.processSteps}>
         <div className={styles.processStep}>
           <Title level={4}>01. Discovery</Title>
@@ -99,21 +241,85 @@ const CaseStudyTemplate = () => (
 
     {/* Gallery Section */}
     <section className={styles.section}>
-      <Title level={3}>Gallery</Title>
-      <FlexBox className={styles.gallery}>
-        <PlaceholderImg aspect="16/7" color="#ffe0b2" />
-        <PlaceholderImg aspect="16/7" color="#b2dfdb" />
-        <PlaceholderImg aspect="16/7" color="#d1c4e9" />
-      </FlexBox>
+      <Gallery
+        gutter={32}
+        minColumnWidth={300}
+        images={[
+          {
+            src: "/images/portfolio/new_things_co/gallery/housewarming_eventbrite.webp",
+            fallback:
+              "/images/portfolio/new_things_co/gallery/housewarming_eventbrite.png",
+            alt: "Housewarming Eventbrite invitation screenshot",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/lab-2.webp",
+            fallback: "/images/portfolio/new_things_co/gallery/lab-2.png",
+            alt: "Lab 2 workspace photo",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/lab-3.webp",
+            fallback: "/images/portfolio/new_things_co/gallery/lab-3.png",
+            alt: "Lab 3 workspace photo",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/Envelope-back_figma.webp",
+            fallback:
+              "/images/portfolio/new_things_co/gallery/Envelope-back_figma.png",
+            alt: "Envelope back Figma",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/NTC-Flag.webp",
+            fallback: "/images/portfolio/new_things_co/gallery/NTC-Flag.png",
+            alt: "NTC Flag",
+          },
+          // Images with no fallback
+          {
+            src: "/images/portfolio/new_things_co/gallery/rekry.png",
+            alt: "Rekry poster",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/stickers_grid.png",
+            alt: "Stickers grid",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/NEW_FRNDS_logo.png",
+            alt: "NEW FRNDS Logo",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/kapteeni.webp",
+            alt: "Kapteeni illustration",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/IMG_8817.webp",
+            alt: "Team photo IMG_8817",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/200 Devs 2.webp",
+            alt: "200 Devs event",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/futures_cone_2.webp",
+            alt: "Futures cone diagram",
+          },
+        ]}
+      />
     </section>
 
     {/* Results Section */}
     <section className={styles.section}>
-      <Title level={3}>Results</Title>
+      <Title size="M" level={3} terminals="sans">
+        Results
+      </Title>
+      <p>
+        The branding efforts paid off and New Things Co was on its way to being
+        established as the small but fierce new player in the Finnish ITC-market
+        early 2018.
+      </p>
+      <br />
       <ul className={styles.resultsList}>
         <li>New brand identity and guidelines</li>
         <li>Comprehensive design system</li>
-        <li>Modern, responsive marketing website</li>
+        <li>Modern, responsive online presence</li>
         <li>Improved brand recognition and engagement</li>
       </ul>
     </section>

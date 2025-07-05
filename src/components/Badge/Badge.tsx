@@ -14,7 +14,8 @@ const iconOptions = {
 
 interface BadgeProps {
   children: React.ReactNode;
-  design?: "primary" | "success" | "info" | "error" | "neutral";
+  design?: "primary" | "secondary";
+  state?: "success" | "info" | "error" | "warning" | "neutral";
   className?: string;
   removable?: boolean;
   onRemove?: () => void;
@@ -26,6 +27,7 @@ interface BadgeProps {
 export const Badge: React.FC<BadgeProps> = ({
   children,
   design = "primary",
+  state,
   className = "",
   removable = false,
   onRemove,
@@ -35,15 +37,12 @@ export const Badge: React.FC<BadgeProps> = ({
 }) => {
   const [visible, setVisible] = useState(true);
   if (!visible) return null;
-  // Require children to render
-  if (!children || (typeof children === "string" && children.trim() === "")) {
-    return null;
-  }
   return (
     <span
       className={[
         styles.badge,
         styles[design],
+        state ? styles[state] : "",
         styles[size], // Add size class
         className,
         square ? styles.square : "",
