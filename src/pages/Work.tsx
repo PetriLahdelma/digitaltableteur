@@ -11,61 +11,68 @@ import FlexBox from "../components/FlexBox/FlexBox";
 import BlueArrow from "../assets/images/portfolio/blue_arrow/bluearrow@2x.webp";
 import Sc5Icon from "../assets/images/portfolio/sc5/sc5_icon@2x.webp";
 import IceCream from "../assets/images/portfolio/illustration/ice-cream.webp";
-import { useTranslation } from "react-i18next";
+import Grid from "../components/Grid/Grid";
 
 const Work = () => {
-  const { t } = useTranslation();
-
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>{t("workMetaTitle")}</title>
-          <meta name="description" content={t("workMetaDescription")} />
-          <meta property="og:title" content={t("workMetaTitle") as string} />
+          <title>Work | Digitaltableteur</title>
+          <meta
+            name="description"
+            content="Selected projects and experiments by Digitaltableteur"
+          />
+          <meta property="og:title" content="Work | Digitaltableteur" />
           <meta
             property="og:description"
-            content={t("workMetaDescription") as string}
+            content="Selected projects and experiments by Digitaltableteur"
           />
           <meta property="og:image" content="/logo512.png" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={t("workMetaTitle") as string} />
+          <meta name="twitter:title" content="Work | Digitaltableteur" />
           <meta
             name="twitter:description"
-            content={t("workMetaDescription") as string}
+            content="Selected projects and experiments by Digitaltableteur"
           />
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
         <div className={styles["workPage"]}>
           <section className={styles.works}>
-            <FlexBox
-              direction="row"
-              wrap="wrap"
-              gap="5rem"
-              className={styles.worksGrid}
-            >
+            <Grid columns={3} gap="2rem" className={styles.worksGrid}>
+              <a
+                href="work/new-things-co"
+                rel="noopener noreferrer"
+                className={styles.workItem}
+              >
+                <img
+                  className={styles.newthingsImage}
+                  src="/images/portfolio/new_things_co/gallery/logo@2x.webp"
+                  alt="A UFO with a glowing light beam, hovering above a field."
+                />
+              </a>
               <div className={styles.workItem}>
                 <img
                   className={styles.blueArrowImage}
                   src={IceCream}
-                  alt={t("workAltIceCream")}
+                  alt="A colorful scoop of ice cream in a cone, melting slightly."
                 />
               </div>
               <div className={styles.workItem}>
                 <img
                   className={styles.blueArrowImage}
                   src={Sc5Icon}
-                  alt={t("workAltSc5Icon")}
+                  alt="The image features a stylized icon labeled 'Sc5.'"
                 />
               </div>
               <div className={styles.workItem}>
                 <img
                   className={styles.blueArrowImage}
                   src={BlueArrow}
-                  alt={t("workAltBlueArrow")}
+                  alt="A vibrant blue arrow pointing right against a contrasting background."
                 />
               </div>
-            </FlexBox>
+            </Grid>
           </section>
         </div>
       </HelmetProvider>

@@ -4,6 +4,10 @@
   --font-text: "Moderat", sans-serif;
   --font-size-title: 2.5rem;
   --font-size-text: 1.125rem;
+  --font-size-title-s: 1.5rem;
+  --font-size-title-m: 2rem;
+  --font-size-title-l: 3rem;
+  --font-size-title-xl: 5rem;
   --font-weight-title: 700;
   --font-weight-text: 400;
   --color-title: var(--primary-text-color, #00f);
@@ -53,6 +57,7 @@
   --color-success: #28a745;
   --color-info: #17a2b8;
   --color-error: #dc3545;
+  --color-warning: #ffc107;
   --color-error-bg: #dfbdbc;
   --color-error-text: #d9534f;
 
@@ -66,7 +71,7 @@
     #fff200 100%
   );
 
-    /* Storybook Helper Colors */
+  /* Storybook Helper Colors */
   --storybook-blue: #00f; /* Storybook Helper Color: Blue */
   --storybook-cyan: #71efff; /* Storybook Helper Color: Cyan */
   --storybook-pink: #f0f; /* Storybook Helper Color: Pink */
@@ -78,8 +83,8 @@
   --storybook-white: #fff; /* Storybook Helper Color: White Text */
   --storybook-gray: #707070; /* Storybook Helper Color: Gray */
 
-
   /* Sizing */
+
   --radius-sm: 2px;
   --radius-md: 0.25rem;
   --radius-lg: 8px;
@@ -113,10 +118,9 @@
   --space-layout-64: 4rem; /* 64px */
   --space-layout-80: 5rem; /* 80px */
   --space-layout-96: 6rem; /* 96px */
-
-  /* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
-
 }
+
+/* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
 
 .themeDark,
 .themeDark :root {
@@ -133,6 +137,7 @@
   --color-success: #4fd18b;
   --color-info: #71efff;
   --color-error: #ff6b6b;
+  --color-warning: #ffb366;
   --color-error-bg: #2d2323;
   --color-error-text: #ffb3b3;
   --color-react: #61dafb;
@@ -157,12 +162,12 @@
   --color-disabled-placeholder: #555;
   --color-gray-medium: #888;
   --color-light-bg: #23272a;
-  --accent-pink: #c94f9e;
-  --accent-purple: #6d4aff;
-  --accent-teal: #3a6e7c;
-  --accent-violet: #7c5fd4;
-  --accent-cyan: #3fd0e0;
-  --accent-yellow: #bfae3c;
+  --accent-pink: #f205c5;
+  --accent-purple: #812eff;
+  --accent-teal: #85b5bd;
+  --accent-violet: #bc6dff;
+  --accent-cyan: #71efff;
+  --accent-yellow: #f2e274;
   --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
   --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
   --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */

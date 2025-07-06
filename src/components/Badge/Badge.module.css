@@ -27,9 +27,21 @@
   padding: var(--space-internal-12) var(--space-internal-16);
 }
 
+.square {
+  border-radius: 0;
+}
+
 .primary {
   background: var(--color-primary);
   color: var(--color-white);
+  border: none;
+}
+
+.secondary {
+  background: none;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  box-sizing: border-box;
 }
 
 .success {
@@ -44,6 +56,11 @@
 
 .error {
   background: var(--color-error);
+  color: var(--color-white);
+}
+
+.warning {
+  background: var(--color-warning, #ffb300);
   color: var(--color-white);
 }
 
@@ -66,31 +83,24 @@
 }
 
 .icon {
-  display: inline-flex;
+  display: inline-block;
   margin-right: 0.4em;
   vertical-align: middle;
 }
 
 .removable.s {
-  gap: var(--space-internal-0);
   padding: var(--space-internal-2) var(--space-internal-12);
   padding-inline-end: var(--space-internal-2);
   font-size: 0.75rem;
 }
 
 .removable.m {
-  gap: var(--space-internal-0);
-  padding: 0 var(--space-internal-16);
+  padding: var(--space-internal-6) var(--space-internal-16);
   padding-inline-end: var(--space-internal-4);
   font-size: 1rem;
 }
 
 .removable.l {
-  gap: var(--space-internal-0);
   font-size: 1.25rem;
-  padding: 0 var(--space-internal-16) 0 var(--space-internal-16);
-}
-
-.square {
-  border-radius: 0;
+  padding: var(--space-internal-12) var(--space-internal-16);
 }

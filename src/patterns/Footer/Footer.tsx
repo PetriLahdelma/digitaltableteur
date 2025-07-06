@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <Grid columns={3}>
-        <div className={styles["grid-item-blank"]}>
+        <div className={styles["gridItemBlank"]}>
           <h2>
             <a href="/">Digitaltableteur</a>
           </h2>
@@ -36,8 +36,8 @@ const Footer = () => {
             {t("footerBillingVat")}
           </p>
         </div>
-        <div className={styles["grid-item-blank"]}></div>
-        <div className={styles["grid-item-blank"]}></div>
+        <div className={styles["gridItemBlank"]}></div>
+        <div className={styles["gridItemBlank"]}></div>
       </Grid>
       <div className={styles["socialLinks"]}>
         <a
