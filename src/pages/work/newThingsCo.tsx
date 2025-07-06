@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./CaseStudyTemplate.module.css";
-import FlexBox from "../components/FlexBox/FlexBox";
-import Title from "../components/Title/Title";
-import Badge from "../components/Badge/Badge";
+import styles from "./newThingsCo.module.css";
+import FlexBox from "../../components/FlexBox/FlexBox";
+import Title from "../../components/Title/Title";
+import Badge from "../../components/Badge/Badge";
 import LegoHackathon from "../assets/lego_hackathon.webp";
-import Gallery from "../components/Gallery/Gallery";
-import Grid from "../components/Grid/Grid";
+import Gallery from "../../components/Gallery/Gallery";
+import Grid from "../../components/Grid/Grid";
 
 interface PlaceholderImgProps {
   aspect?: string;
@@ -30,7 +30,7 @@ const PlaceholderImg: React.FC<PlaceholderImgProps> = ({
   />
 );
 
-const CaseStudyTemplate = () => (
+const newThingsCo = () => (
   <main className={styles.caseStudy}>
     <section className={styles.caseHeroSection}>
       <div className={styles.heroText}>
@@ -65,9 +65,45 @@ const CaseStudyTemplate = () => (
               gridColumn: "1 / span 3",
             }}
           />
+          <div
+            style={{
+              gridColumn: "1 / span 3",
+              marginBottom: "-0.5rem",
+            }}
+          >
+            <video
+              aria-label="New Things Co animated HQ infoscreens"
+              autoPlay
+              loop={true}
+              muted
+              playsInline
+              poster="/images/portfolio/new_things_co/gallery/animated_hq.png"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: 0,
+              }}
+              onEnded={(e) => {
+                // Force loop in case browser fails to honor loop attribute
+                const vid = e.target as HTMLVideoElement;
+                vid.currentTime = 0;
+                vid.play().catch(() => {});
+              }}
+            >
+              <source
+                src="/images/portfolio/new_things_co/gallery/animated_hq.webm"
+                type="video/webm"
+              />
+              <source
+                src="/images/portfolio/new_things_co/gallery/animated_hq.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
           <img
             src="/images/portfolio/new_things_co/gallery/colors@2x.webp"
-            alt="New Things Co business card"
+            alt="New Things Co identity colors"
             style={{
               width: "100%",
               height: "auto",
@@ -76,7 +112,7 @@ const CaseStudyTemplate = () => (
           />
           <img
             src="/images/portfolio/new_things_co/gallery/typography@2x.webp"
-            alt="New Things Co business card"
+            alt="New Things Co typography"
             style={{
               width: "100%",
               height: "auto",
@@ -94,7 +130,7 @@ const CaseStudyTemplate = () => (
           />
           <img
             src="/images/portfolio/new_things_co/gallery/Bizcard_top_recycled.webp"
-            alt="New Things Co business card"
+            alt="New Things Co business card front"
             style={{
               width: "100%",
               height: "auto",
@@ -103,7 +139,7 @@ const CaseStudyTemplate = () => (
           />
           <img
             src="/images/portfolio/new_things_co/gallery/Bizcard_top_recycled_back.webp"
-            alt="New Things Co business card"
+            alt="New Things Co business card back"
             style={{
               width: "100%",
               height: "auto",
@@ -112,7 +148,7 @@ const CaseStudyTemplate = () => (
           />
           <img
             src="/images/portfolio/new_things_co/gallery/NTC_Letterhead-and-envelope.webp"
-            alt="New Things Co logo"
+            alt="New Things Co letterhead and envelope"
             style={{
               width: "100%",
               height: "auto",
@@ -120,56 +156,85 @@ const CaseStudyTemplate = () => (
             }}
           />
           <img
-            src="/images/portfolio/new_things_co/gallery/NTC_Letterhead-and-envelope.jpg"
-            alt="New Things Co business card"
+            src="/images/portfolio/new_things_co/gallery/site@2x.webp"
+            alt="New Things Co website"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "1 / span 3",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/presentation_template@2x.webp"
+            alt="New Things Co presentation template Title Slide"
             style={{
               width: "100%",
               height: "auto",
               gridColumn: "1 / span 1",
             }}
           />
+          <img
+            src="/images/portfolio/new_things_co/gallery/presentation_template2@2x.webp"
+            alt="New Things Co peresentation template People Slide"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "2 / span 1",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/presentation_template3@2x.webp"
+            alt="New Things Co presentation template Timeline Slide"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "3 / span 1",
+            }}
+          />
         </Grid>
-        <p className={styles.heroSummary}>
-          DT was first approached by New Things Co in September 2017, by Sami,
-          Jukkis and Kimmo. Back then the company was still called Lab of New.
-        </p>
-        <br />
-        <p>
-          They sought to establish a cohesive brand identity that resonated with
-          their innovative approach to software development consulting. Their
-          existing identity and online presence lacked a unified visual
-          language, making it challenging to communicate their values and
-          expertise effectively.
-        </p>
-        <br />
-        <p>
-          The task was the complete rebranding of the company name and
-          aesthetic. Starting from the strategic pillars, purpose, core values
-          following following visual identity, down to the most minute details,
-          applications and all the various other bits and bobs for eg.
-          marketing, events, recruitment and cultural purposes.
-        </p>
-        <br />
-        <p>
-          Both print and online assets were conceptualized, designed and
-          delivered during a 16 month period. DT also prepared Figma based Brand
-          Identity Guidelines and a Design System in React TS. Most of the
-          ground work was put in the strategic positioning and differentiation
-          from the competition.
-        </p>
+        <div className={styles.heroSummary}>
+          <p>
+            DT was first approached by New Things Co in September 2017, by Sami,
+            Jukkis and Kimmo. Back then the company was still called Lab of New.
+          </p>
+          <br />
+          <p>
+            They sought to establish a cohesive brand identity that resonated
+            with their innovative approach to software development consulting.
+            Their existing identity and online presence lacked a unified visual
+            language, making it challenging to communicate their values and
+            expertise effectively.
+          </p>
+          <br />
+          <p>
+            The task was the complete rebranding of the company name and
+            aesthetic. Starting from the strategic pillars, purpose, core values
+            following following visual identity, down to the most minute
+            details, applications and all the various other bits and bobs for
+            eg. marketing, events, recruitment and cultural purposes.
+          </p>
+          <br />
+          <p>
+            Both print and online assets were conceptualized, designed and
+            delivered during a 16 month period. DT also prepared Figma based
+            Brand Identity Guidelines and a Design System in React TS. Most of
+            the ground work was put in the strategic positioning and
+            differentiation from the competition.
+          </p>
+        </div>
       </div>
       <div className={styles.heroVideo}>
         <video
+          aria-label="New Things Co Identity Guidelines Video"
           autoPlay
-          loop
+          loop={true}
           muted
           playsInline
-          poster="/images/portfolio/new_things_co/gallery/ntc_guidelines_poster.jpg"
+          poster="/images/portfolio/new_things_co/gallery/ntc_guidelines_poster.png"
           style={{
             width: "100%",
             height: "auto",
             borderRadius: 0,
-            margin: "1.5rem 0",
           }}
         >
           <source
@@ -249,57 +314,58 @@ const CaseStudyTemplate = () => (
             src: "/images/portfolio/new_things_co/gallery/housewarming_eventbrite.webp",
             fallback:
               "/images/portfolio/new_things_co/gallery/housewarming_eventbrite.png",
-            alt: "Housewarming Eventbrite invitation screenshot",
+            alt: "Housewarming Eventbrite invitation",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/stranger_things_co.webp",
+            fallback:
+              "/images/portfolio/new_things_co/gallery/stranger_things_co.jpg",
+            alt: "Stranger Things Co parody logo",
           },
           {
             src: "/images/portfolio/new_things_co/gallery/lab-2.webp",
             fallback: "/images/portfolio/new_things_co/gallery/lab-2.png",
-            alt: "Lab 2 workspace photo",
-          },
-          {
-            src: "/images/portfolio/new_things_co/gallery/lab-3.webp",
-            fallback: "/images/portfolio/new_things_co/gallery/lab-3.png",
-            alt: "Lab 3 workspace photo",
+            alt: "LEGO Robots Lab badge design 1",
           },
           {
             src: "/images/portfolio/new_things_co/gallery/Envelope-back_figma.webp",
             fallback:
               "/images/portfolio/new_things_co/gallery/Envelope-back_figma.png",
-            alt: "Envelope back Figma",
+            alt: "New Things Co Envelope Back",
           },
           {
             src: "/images/portfolio/new_things_co/gallery/NTC-Flag.webp",
             fallback: "/images/portfolio/new_things_co/gallery/NTC-Flag.png",
-            alt: "NTC Flag",
+            alt: "NTC HQ Flag",
           },
           // Images with no fallback
           {
             src: "/images/portfolio/new_things_co/gallery/rekry.png",
-            alt: "Rekry poster",
+            alt: "Recruitment advertisement on social media",
           },
           {
             src: "/images/portfolio/new_things_co/gallery/stickers_grid.png",
-            alt: "Stickers grid",
+            alt: "New Things Co Sticker Designs",
           },
           {
             src: "/images/portfolio/new_things_co/gallery/NEW_FRNDS_logo.png",
-            alt: "NEW FRNDS Logo",
+            alt: "NEW FRNDS Logo for New Things Co alumni network",
           },
           {
             src: "/images/portfolio/new_things_co/gallery/kapteeni.webp",
-            alt: "Kapteeni illustration",
+            alt: "CEO wearing the New Things Co Croatia trip t-shirt",
           },
           {
             src: "/images/portfolio/new_things_co/gallery/IMG_8817.webp",
-            alt: "Team photo IMG_8817",
+            alt: "HQ interior with New Things Co related illustrations by Jukka Peltosaari",
           },
           {
             src: "/images/portfolio/new_things_co/gallery/200 Devs 2.webp",
-            alt: "200 Devs event",
+            alt: "Recruitment Advertisement for social media",
           },
           {
             src: "/images/portfolio/new_things_co/gallery/futures_cone_2.webp",
-            alt: "Futures cone diagram",
+            alt: "Futures cone diagram for a workshop",
           },
         ]}
       />
@@ -326,4 +392,4 @@ const CaseStudyTemplate = () => (
   </main>
 );
 
-export default CaseStudyTemplate;
+export default newThingsCo;
