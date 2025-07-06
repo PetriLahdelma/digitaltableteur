@@ -5,6 +5,12 @@
   padding: var(--space-layout-32);
 }
 
+.worksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-layout-32);
+}
+
 .works img {
   max-width: 538px;
 }

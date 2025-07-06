@@ -5,7 +5,7 @@ import CookieConsent from "./components/CookieConsent/CookieConsent";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Work = React.lazy(() => import("./pages/Work"));
-const CaseStudyTemplate = React.lazy(() => import("./pages/CaseStudyTemplate"));
+const NewThingsCo = React.lazy(() => import("./pages/work/newThingsCo"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const UnderDevelopment = React.lazy(() => import("./pages/UnderDevelopment"));
@@ -35,9 +35,9 @@ function isBypass() {
 }
 
 function App() {
-  if (!isBypass()) {
-    return <UnderDevelopment />;
-  }
+  // if (!isBypass()) {
+  //   return <UnderDevelopment />;
+  // }
 
   return (
     <Router>
@@ -81,10 +81,7 @@ function App() {
                 element={<PetriLahdelmaBio />}
               />
               <Route path="/cookie-policy" element={<CookiePolicy />} />
-              <Route
-                path="/case-study-template"
-                element={<CaseStudyTemplate />}
-              />
+              <Route path="/work/new-things-co" element={<NewThingsCo />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
