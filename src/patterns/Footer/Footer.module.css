@@ -61,3 +61,14 @@ footer p {
 .billingDetails {
   font-weight: 600;
 }
+
+@media (width <= 768px) {
+  .footer {
+    padding-left: var(--space-layout-32);
+    padding-right: var(--space-layout-32);
+    box-sizing: border-box;
+    width: 100vw;
+    margin-left: calc(-1 * (50vw - 50%));
+    margin-right: calc(-1 * (50vw - 50%));
+  }
+}
