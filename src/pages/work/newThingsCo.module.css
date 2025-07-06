@@ -42,7 +42,7 @@
 .heroSummary {
   font-size: 1.1rem;
   line-height: 1.7;
-  margin-bottom: 0;
+  margin-block: 4rem;
 }
 
 .heroImage {
@@ -51,6 +51,13 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+}
+
+.heroVideo {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
   margin-block-end: 2rem;
 }
 
