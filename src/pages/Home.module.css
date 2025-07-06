@@ -76,4 +76,10 @@ h1 {
   .lead {
     font-size: 1.5rem;
   }
+
+  .about .gridItemBlank {
+    grid-column: 1 / -1 !important;
+    width: 100vw;
+    margin-left: calc(-1 * var(--space-layout-0, 0));
+  }
 }
