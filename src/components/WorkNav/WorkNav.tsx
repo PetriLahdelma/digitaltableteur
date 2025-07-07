@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../Button/Button";
 import { MdArrowBack, MdArrowForward, MdWork } from "react-icons/md";
 import styles from "./worknav.module.css";
+import { useNavigate } from "react-router-dom";
 
 const workPages = [
   { path: "/work/new-things-co", label: "New Things Co" },
@@ -12,6 +13,7 @@ const workPages = [
 const WorkNav: React.FC = () => {
   const currentPath = window.location.pathname;
   const currentIndex = workPages.findIndex((p) => p.path === currentPath);
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles.workNavBar}>
@@ -19,7 +21,7 @@ const WorkNav: React.FC = () => {
           variant="tertiary"
           size="m"
           icon={<MdWork />}
-          onClick={() => (window.location.href = "/work")}
+          onClick={() => navigate("/work")}
         >
           Back to Work
         </Button>
@@ -30,8 +32,7 @@ const WorkNav: React.FC = () => {
             icon={<MdArrowBack />}
             disabled={currentIndex <= 0}
             onClick={() => {
-              if (currentIndex > 0)
-                window.location.href = workPages[currentIndex - 1].path;
+              if (currentIndex > 0) navigate(workPages[currentIndex - 1].path);
             }}
           >
             Prev
@@ -43,7 +44,7 @@ const WorkNav: React.FC = () => {
             disabled={currentIndex === workPages.length - 1}
             onClick={() => {
               if (currentIndex < workPages.length - 1)
-                window.location.href = workPages[currentIndex + 1].path;
+                navigate(workPages[currentIndex + 1].path);
             }}
           >
             Next
