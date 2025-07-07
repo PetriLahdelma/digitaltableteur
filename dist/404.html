@@ -4,16 +4,11 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script>
-      // GitHub Pages SPA redirect: preserve path for React Router
       (function () {
         var l = window.location;
-        var pathname = l.pathname.replace(/^\/[^/]+\//, "/"); // Remove repo name if present
-        var search = l.search || "";
-        var hash = l.hash || "";
-        var newUrl =
-          "/index.html?redirected=1&path=" +
-          encodeURIComponent(pathname + search + hash);
-        window.location.replace(newUrl);
+        var fullPath = l.pathname + l.search + l.hash;
+        sessionStorage.setItem("redirectPath", fullPath);
+        window.location.replace("/index.html");
       })();
     </script>
   </head>
