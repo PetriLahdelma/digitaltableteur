@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button/Button";
-import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import { MdArrowBack, MdArrowForward, MdWork } from "react-icons/md";
 import styles from "./worknav.module.css";
 
 const workPages = [
@@ -18,27 +18,37 @@ const WorkNav: React.FC = () => {
         <Button
           variant="tertiary"
           size="m"
-          icon={<MdArrowBack />}
-          disabled={currentIndex <= 0}
-          onClick={() => {
-            if (currentIndex > 0)
-              window.location.href = workPages[currentIndex - 1].path;
-          }}
+          icon={<MdWork />}
+          onClick={() => (window.location.href = "/work")}
         >
-          Prev
+          Back to Work
         </Button>
-        <Button
-          variant="tertiary"
-          size="m"
-          endIcon={<MdArrowForward />}
-          disabled={currentIndex === workPages.length - 1}
-          onClick={() => {
-            if (currentIndex < workPages.length - 1)
-              window.location.href = workPages[currentIndex + 1].path;
-          }}
-        >
-          Next
-        </Button>
+        <div className={styles.rightNavGroup}>
+          <Button
+            variant="tertiary"
+            size="m"
+            icon={<MdArrowBack />}
+            disabled={currentIndex <= 0}
+            onClick={() => {
+              if (currentIndex > 0)
+                window.location.href = workPages[currentIndex - 1].path;
+            }}
+          >
+            Prev
+          </Button>
+          <Button
+            variant="tertiary"
+            size="m"
+            endIcon={<MdArrowForward />}
+            disabled={currentIndex === workPages.length - 1}
+            onClick={() => {
+              if (currentIndex < workPages.length - 1)
+                window.location.href = workPages[currentIndex + 1].path;
+            }}
+          >
+            Next
+          </Button>
+        </div>
       </div>
       <hr className={styles.hrLine} />
     </>
