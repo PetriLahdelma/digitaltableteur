@@ -33,7 +33,7 @@ const illustrations = () => (
           />
           <img
             src="/images/portfolio/illustrations/gallery/crisis-lifering.avif"
-            alt="Shadow from Donald Duck illustration"
+            alt="Editorial illustration of liferings for crisises"
             style={{
               width: "100%",
               height: "auto",
@@ -42,7 +42,7 @@ const illustrations = () => (
           />
           <img
             src="/images/portfolio/illustrations/gallery/power-low.avif"
-            alt="Shadow from Donald Duck illustration"
+            alt="An editorial illustration of a low battery metaphor"
             style={{
               width: "100%",
               height: "auto",
