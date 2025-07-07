@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      // GitHub Pages SPA redirect: preserve path for React Router
+      (function () {
+        var l = window.location;
+        var pathname = l.pathname.replace(/^\/[^/]+\//, "/"); // Remove repo name if present
+        var search = l.search || "";
+        var hash = l.hash || "";
+        var newUrl =
+          "/index.html?redirected=1&path=" +
+          encodeURIComponent(pathname + search + hash);
+        window.location.replace(newUrl);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
+  </body>
+</html>
