@@ -6,7 +6,7 @@ import styles from "./CookieConsent.module.css";
 import { useTranslation } from "react-i18next";
 
 const CookieConsent = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -46,7 +46,17 @@ const CookieConsent = () => {
         <br />
         <br />
         {t("cookieConsentReadOur")}&nbsp;
-        <Link className={styles.link} size="S" href="/cookiePolicy">
+        <Link
+          className={styles.link}
+          size="S"
+          href={
+            i18n.language === "fi"
+              ? "/cookie-policy-full-fi"
+              : i18n.language === "sv"
+                ? "/cookie-policy-full-sv"
+                : "/cookie-policy-full"
+          }
+        >
           {t("cookiePolicyLink")}
         </Link>
         &nbsp;{t("cookieConsentToLearnMore")}
