@@ -68,14 +68,7 @@ files. Use CSS variables or functions for colors to avoid warnings.
 
 ### Service worker
 
-The app registers a service worker using Workbox to cache static assets and
-pages. The registration happens in `src/main.tsx` via the helper in
-`serviceWorkerRegistration.ts`.
-
-To update the service worker, deploy a new build and refresh any open tabs so
-the new worker can take control. If offline support needs to be disabled,
-replace the `register()` call with `unregister()` in `src/main.tsx` and rebuild
-the project.
+Service worker support has been removed. The app no longer registers a service worker and does not provide offline caching or PWA features.
 
 ### Fetch Figma design
 
