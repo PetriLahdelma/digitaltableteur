@@ -2,11 +2,11 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
-
 const Home = React.lazy(() => import("./pages/Home"));
 const Work = React.lazy(() => import("./pages/Work"));
 const NewThingsCo = React.lazy(() => import("./pages/work/newThingsCo"));
 const Nitor = React.lazy(() => import("./pages/work/nitor"));
+// Make sure the file exists at './pages/work/Illustrations.tsx' or update the path below to match the actual file name and casing.
 const Illustrations = React.lazy(() => import("./pages/work/illustrations"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
@@ -25,7 +25,16 @@ const PetriLahdelmaBio = React.lazy(
   () => import("./pages/posts/PetriLahdelmaBio"),
 );
 const NotFound = React.lazy(() => import("./pages/NotFound"));
-const CookiePolicy = React.lazy(() => import("./pages/CookiePolicy"));
+
+const CookiePolicyFullEN = React.lazy(
+  () => import("./pages/CookiePolicy-full-en"),
+);
+const CookiePolicyFullFI = React.lazy(
+  () => import("./pages/CookiePolicy-full-fi"),
+);
+const CookiePolicyFullSV = React.lazy(
+  () => import("./pages/CookiePolicy-full-sv"),
+);
 
 const SECRET_PARAM = "preview";
 const SECRET_VALUE = "letmein"; // Change this to your own secret
@@ -37,9 +46,9 @@ function isBypass() {
 }
 
 function App() {
-  // if (!isBypass()) {
-  //   return <UnderDevelopment />;
-  // }
+  if (!isBypass()) {
+    return <UnderDevelopment />;
+  }
 
   return (
     <Router>
@@ -82,7 +91,24 @@ function App() {
                 path="/blog/petri-lahdelma-bio"
                 element={<PetriLahdelmaBio />}
               />
-              <Route path="/cookie-policy" element={<CookiePolicy />} />
+              {/* Cookie Policy Full routes for all languages */}
+              <Route
+                path="/cookie-policy-full-en"
+                element={<CookiePolicyFullEN />}
+              />
+              <Route
+                path="/cookie-policy-full-fi"
+                element={<CookiePolicyFullFI />}
+              />
+              <Route
+                path="/cookie-policy-full-sv"
+                element={<CookiePolicyFullSV />}
+              />
+              {/* Optionally, make /cookie-policy-full default to EN */}
+              <Route
+                path="/cookie-policy-full"
+                element={<CookiePolicyFullEN />}
+              />
               <Route path="/work/new-things-co" element={<NewThingsCo />} />
               <Route path="/work/nitor" element={<Nitor />} />
               <Route path="/work/illustrations" element={<Illustrations />} />
