@@ -1,24 +1,10 @@
 <!doctype html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=" />
+    <meta http-equiv="refresh" content="0; url=/" />
     <title>Redirecting...</title>
   </head>
   <body>
-    <p>
-      If you are not redirected automatically,
-      <a id="redirect-link" href="#">click here</a>.
-    </p>
-    <script>
-      // Redirect to the current path (preserves the route for React Router)
-      var path =
-        window.location.pathname +
-        window.location.search +
-        window.location.hash;
-      document
-        .querySelector('meta[http-equiv="refresh"]')
-        .setAttribute("content", "0; url=" + path);
-      document.getElementById("redirect-link").setAttribute("href", path);
-    </script>
+    <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
   </body>
 </html>
