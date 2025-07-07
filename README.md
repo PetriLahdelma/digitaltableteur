@@ -1,4 +1,4 @@
-# \_**\_ **\_****
+# \_**\_ **\_\*\*\*\*
 
 # | \_ \ |\_\_ \_\_|
 
@@ -102,6 +102,13 @@ If the workflow fails with a "branch is not allowed to deploy" error, check the
 environment rules for GitHub Pages. Go to **Settings → Environments →
 `github-pages`** and make sure the branch restrictions allow your pull request
 branches, otherwise the preview deployment will be rejected.
+
+## Deployment notes
+
+When a nonexistent path is visited on GitHub Pages, `404.html` saves the full
+location in `sessionStorage.redirectPath` and then redirects to `/index.html`.
+`src/main.tsx` reads this value on startup to restore the intended URL so deep
+links continue to work.
 
 ## Folder overview
 
