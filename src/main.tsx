@@ -7,6 +7,12 @@ import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
 import { HelmetProvider } from "react-helmet-async";
 import "./i18n";
 
+const redirectPath = sessionStorage.getItem("redirectPath");
+if (redirectPath) {
+  history.replaceState(null, "", redirectPath);
+  sessionStorage.removeItem("redirectPath");
+}
+
 // Use Vite's environment variable style
 const gaId = import.meta.env.VITE_GA_ID;
 if (gaId) {
