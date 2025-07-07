@@ -59,30 +59,6 @@ const Work = () => {
                   />
                 </a>
               </div>
-              <div className={styles.workItem}>
-                <a
-                  href="work/new-things-co"
-                  rel="noopener noreferrer"
-                  className={styles.workItem}
-                >
-                  <img
-                    src="/images/portfolio/sc5/sc5_icon@2x.webp"
-                    alt="SC5 project link"
-                  />
-                </a>
-              </div>
-              <div className={styles.workItem}>
-                <a
-                  href="work/new-things-co"
-                  rel="noopener noreferrer"
-                  className={styles.workItem}
-                >
-                  <img
-                    src="/images/portfolio/blue_arrow/bluearrow@2x.webp"
-                    alt="Blue Arrow project link"
-                  />
-                </a>
-              </div>
             </Grid>
           </section>
         </div>
