@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./newThingsCo.module.css";
+import styles from "./nitor.module.css";
 import FlexBox from "../../components/FlexBox/FlexBox";
 import Title from "../../components/Title/Title";
 import Badge from "../../components/Badge/Badge";
@@ -7,7 +7,7 @@ import Gallery from "../../components/Gallery/Gallery";
 import Grid from "../../components/Grid/Grid";
 import WorkNav from "./WorkNav";
 
-const NewThingsCo = () => (
+const nitor = () => (
   <main className={styles.caseStudy}>
     <WorkNav />
     <section className={styles.caseHeroSection}>
@@ -370,4 +370,4 @@ const NewThingsCo = () => (
   </main>
 );
 
-export default NewThingsCo;
+export default nitor;

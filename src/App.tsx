@@ -6,6 +6,8 @@ import CookieConsent from "./components/CookieConsent/CookieConsent";
 const Home = React.lazy(() => import("./pages/Home"));
 const Work = React.lazy(() => import("./pages/Work"));
 const NewThingsCo = React.lazy(() => import("./pages/work/newThingsCo"));
+const Nitor = React.lazy(() => import("./pages/work/nitor"));
+const Illustrations = React.lazy(() => import("./pages/work/illustrations"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const UnderDevelopment = React.lazy(() => import("./pages/UnderDevelopment"));
@@ -82,6 +84,8 @@ function App() {
               />
               <Route path="/cookie-policy" element={<CookiePolicy />} />
               <Route path="/work/new-things-co" element={<NewThingsCo />} />
+              <Route path="/work/nitor" element={<Nitor />} />
+              <Route path="/work/illustrations" element={<Illustrations />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
