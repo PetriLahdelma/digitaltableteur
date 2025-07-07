@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./illustrations.module.css";
 import Title from "../../components/Title/Title";
 import Grid from "../../components/Grid/Grid";
-import WorkNav from "./WorkNav";
+import WorkNav from "../../components/WorkNav/WorkNav";
 
 const illustrations = () => (
   <main className={styles.caseStudy}>
