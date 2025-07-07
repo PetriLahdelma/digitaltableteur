@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const workPages = [
   { path: "/work/new-things-co", label: "New Things Co" },
-  { path: "/work/nitor", label: "Nitor" },
   { path: "/work/illustrations", label: "Illustrations" },
 ];
 
