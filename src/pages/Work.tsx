@@ -8,9 +8,6 @@ import fur from "../assets/images/fur.webp";
 import blackletter from "../assets/images/blackletter.webp";
 import projectData from "../data/workData.json";
 import FlexBox from "../components/FlexBox/FlexBox";
-import BlueArrow from "../assets/images/portfolio/blue_arrow/bluearrow@2x.webp";
-import Sc5Icon from "../assets/images/portfolio/sc5/sc5_icon@2x.webp";
-import IceCream from "../assets/images/portfolio/illustration/ice-cream.webp";
 import Grid from "../components/Grid/Grid";
 
 const Work = () => {
@@ -46,31 +43,45 @@ const Work = () => {
                 className={styles.workItem}
               >
                 <img
-                  className={styles.newthingsImage}
-                  src="/images/portfolio/new_things_co/gallery/logo@2x.webp"
-                  alt="A UFO with a glowing light beam, hovering above a field."
+                  src="/images/portfolio/new_things_co/new_things_co_item.webp"
+                  alt="New Things Co project link."
                 />
               </a>
               <div className={styles.workItem}>
-                <img
-                  className={styles.blueArrowImage}
-                  src={IceCream}
-                  alt="A colorful scoop of ice cream in a cone, melting slightly."
-                />
+                <a
+                  href="work/illustrations"
+                  rel="noopener noreferrer"
+                  className={styles.workItem}
+                >
+                  <img
+                    src="/images/portfolio/illustrations/ice-cream.webp"
+                    alt="Illustrations project link"
+                  />
+                </a>
               </div>
               <div className={styles.workItem}>
-                <img
-                  className={styles.blueArrowImage}
-                  src={Sc5Icon}
-                  alt="The image features a stylized icon labeled 'Sc5.'"
-                />
+                <a
+                  href="work/new-things-co"
+                  rel="noopener noreferrer"
+                  className={styles.workItem}
+                >
+                  <img
+                    src="/images/portfolio/sc5/sc5_icon@2x.webp"
+                    alt="SC5 project link"
+                  />
+                </a>
               </div>
               <div className={styles.workItem}>
-                <img
-                  className={styles.blueArrowImage}
-                  src={BlueArrow}
-                  alt="A vibrant blue arrow pointing right against a contrasting background."
-                />
+                <a
+                  href="work/new-things-co"
+                  rel="noopener noreferrer"
+                  className={styles.workItem}
+                >
+                  <img
+                    src="/images/portfolio/blue_arrow/bluearrow@2x.webp"
+                    alt="Blue Arrow project link"
+                  />
+                </a>
               </div>
             </Grid>
           </section>

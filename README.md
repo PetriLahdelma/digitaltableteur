@@ -1,9 +1,14 @@
-#  ____   _______
-# |  _ \ |__   __|
-# | | | |   | |   
-# | |_| |   | |   
-# |____/    |_|   
-#                 
+# \_**\_ **\_****
+
+# | \_ \ |\_\_ \_\_|
+
+# | | | | | |
+
+# | |\_| | | |
+
+# |\__\_\_/ |_|
+
+#
 
 # Digitaltableteur
 
@@ -64,12 +69,12 @@ files. Use CSS variables or functions for colors to avoid warnings.
 ### Service worker
 
 The app registers a service worker using Workbox to cache static assets and
-pages. The registration happens in `src/index.tsx` via the helper in
+pages. The registration happens in `src/main.tsx` via the helper in
 `serviceWorkerRegistration.ts`.
 
 To update the service worker, deploy a new build and refresh any open tabs so
 the new worker can take control. If offline support needs to be disabled,
-replace the `register()` call with `unregister()` in `src/index.tsx` and rebuild
+replace the `register()` call with `unregister()` in `src/main.tsx` and rebuild
 the project.
 
 ### Fetch Figma design
