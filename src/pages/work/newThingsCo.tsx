@@ -36,7 +36,7 @@ const NewThingsCo = () => (
           />
           <img
             src="/images/portfolio/new_things_co/gallery/concept.webp"
-            alt="New Things Co business card"
+            alt="New Things Co logo concept in use"
             style={{
               width: "100%",
               height: "auto",
@@ -163,6 +163,24 @@ const NewThingsCo = () => (
           <img
             src="/images/portfolio/new_things_co/gallery/presentation_template3@2x.webp"
             alt="New Things Co presentation template Timeline Slide"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "3 / span 1",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/ntc_t_shirts.webp"
+            alt="New Things Co t-shirts and gym shirt"
+            style={{
+              width: "100%",
+              height: "auto",
+              gridColumn: "1 / span 2",
+            }}
+          />
+          <img
+            src="/images/portfolio/new_things_co/gallery/ntc_sweatshirt.webp"
+            alt="New Things Co Sweatshirt"
             style={{
               width: "100%",
               height: "auto",
