@@ -10,7 +10,6 @@ const Nitor = React.lazy(() => import("./pages/work/nitor"));
 const Illustrations = React.lazy(() => import("./pages/work/illustrations"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
-const UnderDevelopment = React.lazy(() => import("./pages/UnderDevelopment"));
 const Blog = React.lazy(() => import("./pages/Blog"));
 const Designing2025 = React.lazy(() => import("./pages/posts/Designing2025"));
 const WorkflowTips = React.lazy(() => import("./pages/posts/WorkflowTips"));
@@ -36,20 +35,7 @@ const CookiePolicyFullSV = React.lazy(
   () => import("./pages/CookiePolicy-full-sv"),
 );
 
-const SECRET_PARAM = "preview";
-const SECRET_VALUE = "letmein"; // Change this to your own secret
-
-function isBypass() {
-  if (typeof window === "undefined") return false;
-  const params = new URLSearchParams(window.location.search);
-  return params.get(SECRET_PARAM) === SECRET_VALUE;
-}
-
 function App() {
-  // if (!isBypass()) {
-  //   return <UnderDevelopment />;
-  // }
-
   return (
     <Router>
       <div>
