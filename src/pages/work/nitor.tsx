@@ -5,7 +5,7 @@ import Title from "../../components/Title/Title";
 import Badge from "../../components/Badge/Badge";
 import Gallery from "../../components/Gallery/Gallery";
 import Grid from "../../components/Grid/Grid";
-import WorkNav from "./WorkNav";
+import WorkNav from "../../components/WorkNav/WorkNav";
 
 const nitor = () => (
   <main className={styles.caseStudy}>
