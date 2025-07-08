@@ -63,13 +63,27 @@ const ContactForm = () => {
         message: formData.message,
         time,
       }),
-    })
-      .then(async (res) => {
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({}));
-          throw new Error(err.error || "Unknown error");
-        }
-        // Only show success modal if MongoDB save succeeded
+    }).catch((err) => {
+      // eslint-disable-next-line no-console
+      console.error("Failed to save to MongoDB", err);
+      // Do not show error modal for MongoDB failure
+    });
+
+    // Show modal only after successful EmailJS send
+    send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      {
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        interest: formData.interest,
+        message: formData.message,
+        time, // Add the current time for EmailJS {{time}}
+      },
+      PUBLIC_KEY,
+    )
+      .then(() => {
         setIsModalOpen(true);
         setFormData({
           fullName: "",
@@ -81,8 +95,7 @@ const ContactForm = () => {
       })
       .catch((err) => {
         // eslint-disable-next-line no-console
-        console.error("Failed to save to MongoDB", err);
-        // Only show error modal if MongoDB save failed and NOT if email was sent
+        console.error("Failed to send message via EmailJS", err);
         setIsErrorOpen(true);
       });
   };
