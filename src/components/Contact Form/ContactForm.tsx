@@ -51,7 +51,7 @@ const ContactForm = () => {
     const now = new Date();
     const time = now.toLocaleString(); // You can customize the format if needed
 
-    // Always try to store in MongoDB
+    // Always try to store in MongoDB and handle response
     fetch("/api/save-contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -63,11 +63,28 @@ const ContactForm = () => {
         message: formData.message,
         time,
       }),
-    }).catch(() => {
-      // Silently ignore logging failures
-    });
+    })
+      .then(async (res) => {
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || "Unknown error");
+        }
+        setIsModalOpen(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          interest: "",
+          message: "",
+        });
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error("Failed to save to MongoDB", err);
+        setIsErrorOpen(true);
+      });
 
-    // Then try to send with EmailJS
+    // Then try to send with EmailJS (optional, can be removed if not needed)
     send(
       SERVICE_ID,
       TEMPLATE_ID,
@@ -80,22 +97,11 @@ const ContactForm = () => {
         time, // Add the current time for EmailJS {{time}}
       },
       PUBLIC_KEY,
-    )
-      .then(() => {
-        setIsModalOpen(true);
-        setFormData({
-          fullName: "",
-          email: "",
-          phone: "",
-          interest: "",
-          message: "",
-        });
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.error("Failed to send message", err);
-        setIsErrorOpen(true);
-      });
+    ).catch((err) => {
+      // eslint-disable-next-line no-console
+      console.error("Failed to send message via EmailJS", err);
+      // Do not show error modal for EmailJS failure if MongoDB succeeded
+    });
   };
 
   return (
