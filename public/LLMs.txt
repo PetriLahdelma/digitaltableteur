@@ -1,5 +1,5 @@
 # LLM.txt - Website Content Structure
-# Generated: 2025-07-08T09:54:16.236Z
+# Generated: 2025-07-08T12:33:49.623Z
 # Source: https://digitaltableteur.com/sitemap.xml
 # Total Pages: 16
 # Success Rate: 100.0%
