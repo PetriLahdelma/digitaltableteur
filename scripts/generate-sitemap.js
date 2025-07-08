@@ -69,7 +69,12 @@ const xml = [
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
   ...ROUTES.map(
     (route) =>
-      `  <url>\n    <loc>${BASE_URL}${route}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${CHANGEFREQ[route]}</changefreq>\n    <priority>${PRIORITY[route]}</priority>\n  </url>`,
+      `  <url>
+    <loc>${BASE_URL}${route}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${CHANGEFREQ[route]}</changefreq>
+    <priority>${PRIORITY[route]}</priority>
+  </url>`,
   ),
   "</urlset>",
 ].join("\n");
