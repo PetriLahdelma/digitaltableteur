@@ -1,16 +1,26 @@
-# LLM.txt - Website Content Structure
-# Generated: 2025-07-08T09:54:16.236Z
-# Source: https://digitaltableteur.com/sitemap.xml
-# Total Pages: 16
-# Success Rate: 100.0%
+# Digital Tableteur
 
-## Site Metadata
-Site URL: https://digitaltableteur.com
-Extraction Date: 2025-07-08
-Total Pages Processed: 16
-Successful Pages: 16
-Failed Pages: 0
-Success Rate: 100.0%
+> Digital Tableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.
+
+This site showcases all public pages, works, and blog posts in English, Finnish, and Swedish.
+
+## All Pages
+- [Digitaltableteur - Modern Design and Applications](https://digitaltableteur.com/): Digitaltableteur - Modern solutions for design and development.
+- [Redirecting...](https://digitaltableteur.com/about)
+- [Redirecting...](https://digitaltableteur.com/contact)
+- [Redirecting...](https://digitaltableteur.com/blog)
+- [Redirecting...](https://digitaltableteur.com/work)
+- [Redirecting...](https://digitaltableteur.com/cookie-policy-full)
+- [Redirecting...](https://digitaltableteur.com/cookie-policy-full-fi)
+- [Redirecting...](https://digitaltableteur.com/cookie-policy-full-sv)
+- [Redirecting...](https://digitaltableteur.com/blog/designing-in-2025)
+- [Redirecting...](https://digitaltableteur.com/blog/workflow-tips)
+- [Redirecting...](https://digitaltableteur.com/blog/digital-craftsmanship)
+- [Redirecting...](https://digitaltableteur.com/blog/thoughts-on-future-branding)
+- [Redirecting...](https://digitaltableteur.com/blog/figma-mcp-design-systems)
+- [Redirecting...](https://digitaltableteur.com/blog/petri-lahdelma-bio)
+- [Redirecting...](https://digitaltableteur.com/work/new-things-co)
+- [Redirecting...](https://digitaltableteur.com/work/illustrations)
 
 ---
 
