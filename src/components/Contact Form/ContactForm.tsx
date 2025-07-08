@@ -52,7 +52,7 @@ const ContactForm = () => {
     const time = now.toLocaleString(); // You can customize the format if needed
 
     // Always try to store in MongoDB and handle response
-    fetch("/api/save-contact", {
+    fetch("https://digitaltableteursecureproxy.vercel.app/api/save-contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -1,6 +1,17 @@
 import { MongoClient } from "mongodb";
 
 export default async function handler(request, response) {
+  response.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://digitaltableteur.com",
+  );
+  response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (request.method === "OPTIONS") {
+    response.status(200).end();
+    return;
+  }
+
   if (request.method !== "POST") {
     response.status(405).json({ error: "Method not allowed" });
     return;
