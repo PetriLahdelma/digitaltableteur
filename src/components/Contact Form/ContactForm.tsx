@@ -66,9 +66,10 @@ const ContactForm = () => {
     })
       .then(async (res) => {
         if (!res.ok) {
-          const err = await res.json();
+          const err = await res.json().catch(() => ({}));
           throw new Error(err.error || "Unknown error");
         }
+        // Only show success modal if MongoDB save succeeded
         setIsModalOpen(true);
         setFormData({
           fullName: "",
@@ -81,27 +82,9 @@ const ContactForm = () => {
       .catch((err) => {
         // eslint-disable-next-line no-console
         console.error("Failed to save to MongoDB", err);
+        // Only show error modal if MongoDB save failed and NOT if email was sent
         setIsErrorOpen(true);
       });
-
-    // Then try to send with EmailJS (optional, can be removed if not needed)
-    send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      {
-        name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        interest: formData.interest,
-        message: formData.message,
-        time, // Add the current time for EmailJS {{time}}
-      },
-      PUBLIC_KEY,
-    ).catch((err) => {
-      // eslint-disable-next-line no-console
-      console.error("Failed to send message via EmailJS", err);
-      // Do not show error modal for EmailJS failure if MongoDB succeeded
-    });
   };
 
   return (
