@@ -29,6 +29,7 @@ cp .env.example .env
 ```
 
 Set `REACT_APP_GA_ID` to your Google Analytics measurement ID if you want to collect usage statistics.
+To save contact form submissions to a database, provide `MONGODB_URI` and `MONGODB_DB` in the `.env` file with your MongoDB connection details.
 
 ### Run the development server
 
