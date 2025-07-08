@@ -45,7 +45,11 @@ const WorkflowTips = () => {
           <h1>Workflow Tips</h1>
           <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
         </header>
-        <img src={AI} alt="A futuristic depiction of artificial intelligence, showcasing advanced technology and creativity." className={styles.image} />
+        <img
+          src={AI}
+          alt="A futuristic depiction of artificial intelligence, showcasing advanced technology and creativity."
+          className={styles.image}
+        />
         <blockquote>
           How to work faster, smarter, and more in sync as a designer in the age
           of automation and AI-enhanced tooling

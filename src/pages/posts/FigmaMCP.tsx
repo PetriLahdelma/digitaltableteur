@@ -50,7 +50,11 @@ const FigmaMCP = () => {
           <h1>Rethinking Design-to-Product Workflows with Figma MCP</h1>
           <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
         </header>
-        <img src={MCP} alt="MCP features a colorful abstract design with geometric shapes and patterns." style={{ marginBlockEnd: "3rem" }} />
+        <img
+          src={MCP}
+          alt="MCP features a colorful abstract design with geometric shapes and patterns."
+          style={{ marginBlockEnd: "3rem" }}
+        />
         <p>
           Recently, I experimented with Figma’s official MCP (Model Context
           Protocol) server in tandem with the dt design system, and the results
