@@ -94,7 +94,6 @@ function App() {
                 element={<CookiePolicyFullEN />}
               />
               <Route path="/work/new-things-co" element={<NewThingsCo />} />
-              <Route path="/work/nitor" element={<Nitor />} />
               <Route path="/work/illustrations" element={<Illustrations />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
