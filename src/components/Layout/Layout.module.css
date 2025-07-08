@@ -10,3 +10,18 @@
 .main {
   flex: 1;
 }
+
+.skipLink {
+  position: absolute;
+  left: 0;
+  top: -40px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skipLink:focus {
+  top: 0;
+}
