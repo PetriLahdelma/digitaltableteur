@@ -1,14 +1,25 @@
 import React from "react";
 import Header from "../../patterns/Header/Header";
 import Footer from "../../patterns/Footer/Footer";
+import Button from "../../components/Button/Button";
 import styles from "./Layout.module.css";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={styles.layout}>
-      <a href="#main" className={styles.skipLink}>
+      <Button
+        variant="secondary"
+        accessibleRole="link"
+        className={styles.skipLink}
+        onClick={(e) => {
+          e.preventDefault();
+          const main = document.getElementById("main");
+          if (main) main.focus();
+          window.location.hash = "main";
+        }}
+      >
         Skip to main content
-      </a>
+      </Button>
       <Header />
       <main id="main" className={styles.main}>
         {children}
