@@ -1,14 +1,14 @@
 # LLM.txt - Website Content Structure
-# Generated: 2025-06-16T20:57:53.502Z
+# Generated: 2025-07-08T08:24:44.073Z
 # Source: https://digitaltableteur.com/sitemap.xml
-# Total Pages: 7
+# Total Pages: 16
 # Success Rate: 100.0%
 
 ## Site Metadata
 Site URL: https://digitaltableteur.com
-Extraction Date: 2025-06-16
-Total Pages Processed: 7
-Successful Pages: 7
+Extraction Date: 2025-07-08
+Total Pages Processed: 16
+Successful Pages: 16
 Failed Pages: 0
 Success Rate: 100.0%
 
@@ -29,217 +29,211 @@ You need to enable JavaScript to run this app.
 ---
 
 ### Page: https://digitaltableteur.com/about
-Title: Page not found · GitHub Pages
+Title: Redirecting...
 Meta Description: 
 Language: en
 Canonical URL: https://digitaltableteur.com/about
 
 ## Headings Structure:
-- 404
+No headings found
 
 ## Main Content:
-404
-      File not found
-
-      
-        The site configured at this address does not
-        contain the requested file.
-      
-
-      
-        If this is your site, make sure that the filename case matches the URL
-        as well as any file permissions.
-        For root URLs (like http://example.com/) you must provide an
-        index.html file.
-      
-
-      
-        Read the full documentation
-        for more information about using GitHub Pages.
-      
-
-      
-        GitHub Status —
-    
+If you are not redirected automatically, click here.
 
 ---
 
 ### Page: https://digitaltableteur.com/contact
-Title: Page not found · GitHub Pages
+Title: Redirecting...
 Meta Description: 
 Language: en
 Canonical URL: https://digitaltableteur.com/contact
 
 ## Headings Structure:
-- 404
+No headings found
 
 ## Main Content:
-404
-      File not found
-
-      
-        The site configured at this address does not
-        contain the requested file.
-      
-
-      
-        If this is your site, make sure that the filename case matches the URL
-        as well as any file permissions.
-        For root URLs (like http://example.com/) you must provide an
-        index.html file.
-      
-
-      
-        Read the full documentation
-        for more information about using GitHub Pages.
-      
-
-      
-        GitHub Status —
-    
+If you are not redirected automatically, click here.
 
 ---
 
 ### Page: https://digitaltableteur.com/blog
-Title: Page not found · GitHub Pages
+Title: Redirecting...
 Meta Description: 
 Language: en
 Canonical URL: https://digitaltableteur.com/blog
 
 ## Headings Structure:
-- 404
+No headings found
 
 ## Main Content:
-404
-      File not found
-
-      
-        The site configured at this address does not
-        contain the requested file.
-      
-
-      
-        If this is your site, make sure that the filename case matches the URL
-        as well as any file permissions.
-        For root URLs (like http://example.com/) you must provide an
-        index.html file.
-      
-
-      
-        Read the full documentation
-        for more information about using GitHub Pages.
-      
-
-      
-        GitHub Status —
-    
+If you are not redirected automatically, click here.
 
 ---
 
 ### Page: https://digitaltableteur.com/work
-Title: Page not found · GitHub Pages
+Title: Redirecting...
 Meta Description: 
 Language: en
 Canonical URL: https://digitaltableteur.com/work
 
 ## Headings Structure:
-- 404
+No headings found
 
 ## Main Content:
-404
-      File not found
-
-      
-        The site configured at this address does not
-        contain the requested file.
-      
-
-      
-        If this is your site, make sure that the filename case matches the URL
-        as well as any file permissions.
-        For root URLs (like http://example.com/) you must provide an
-        index.html file.
-      
-
-      
-        Read the full documentation
-        for more information about using GitHub Pages.
-      
-
-      
-        GitHub Status —
-    
+If you are not redirected automatically, click here.
 
 ---
 
-### Page: https://digitaltableteur.com/cookie-policy
-Title: Page not found · GitHub Pages
+### Page: https://digitaltableteur.com/cookie-policy-full
+Title: Redirecting...
 Meta Description: 
 Language: en
-Canonical URL: https://digitaltableteur.com/cookie-policy
+Canonical URL: https://digitaltableteur.com/cookie-policy-full
 
 ## Headings Structure:
-- 404
+No headings found
 
 ## Main Content:
-404
-      File not found
-
-      
-        The site configured at this address does not
-        contain the requested file.
-      
-
-      
-        If this is your site, make sure that the filename case matches the URL
-        as well as any file permissions.
-        For root URLs (like http://example.com/) you must provide an
-        index.html file.
-      
-
-      
-        Read the full documentation
-        for more information about using GitHub Pages.
-      
-
-      
-        GitHub Status —
-    
+If you are not redirected automatically, click here.
 
 ---
 
-### Page: https://digitaltableteur.com/privacy-policy
-Title: Page not found · GitHub Pages
+### Page: https://digitaltableteur.com/cookie-policy-full-fi
+Title: Redirecting...
 Meta Description: 
 Language: en
-Canonical URL: https://digitaltableteur.com/privacy-policy
+Canonical URL: https://digitaltableteur.com/cookie-policy-full-fi
 
 ## Headings Structure:
-- 404
+No headings found
 
 ## Main Content:
-404
-      File not found
+If you are not redirected automatically, click here.
 
-      
-        The site configured at this address does not
-        contain the requested file.
-      
+---
 
-      
-        If this is your site, make sure that the filename case matches the URL
-        as well as any file permissions.
-        For root URLs (like http://example.com/) you must provide an
-        index.html file.
-      
+### Page: https://digitaltableteur.com/cookie-policy-full-sv
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/cookie-policy-full-sv
 
-      
-        Read the full documentation
-        for more information about using GitHub Pages.
-      
+## Headings Structure:
+No headings found
 
-      
-        GitHub Status —
-    
+## Main Content:
+If you are not redirected automatically, click here.
+
+---
+
+### Page: https://digitaltableteur.com/blog/designing-in-2025
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/blog/designing-in-2025
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+
+---
+
+### Page: https://digitaltableteur.com/blog/workflow-tips
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/blog/workflow-tips
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+
+---
+
+### Page: https://digitaltableteur.com/blog/digital-craftsmanship
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/blog/digital-craftsmanship
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+
+---
+
+### Page: https://digitaltableteur.com/blog/thoughts-on-future-branding
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/blog/thoughts-on-future-branding
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+
+---
+
+### Page: https://digitaltableteur.com/blog/figma-mcp-design-systems
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/blog/figma-mcp-design-systems
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+
+---
+
+### Page: https://digitaltableteur.com/blog/petri-lahdelma-bio
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/blog/petri-lahdelma-bio
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+
+---
+
+### Page: https://digitaltableteur.com/work/new-things-co
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/work/new-things-co
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+
+---
+
+### Page: https://digitaltableteur.com/work/illustrations
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/work/illustrations
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
 
 ---

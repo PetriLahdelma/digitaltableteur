@@ -42,9 +42,23 @@ async function processFile(filePath) {
   fs.writeFileSync(filePath, content);
 }
 
+function getAllTsxFiles(dir) {
+  let results = [];
+  const list = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of list) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results = results.concat(getAllTsxFiles(fullPath));
+    } else if (entry.isFile() && entry.name.endsWith(".tsx")) {
+      results.push(fullPath);
+    }
+  }
+  return results;
+}
+
 (async () => {
-  const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".tsx"));
+  const files = getAllTsxFiles(POSTS_DIR);
   for (const file of files) {
-    await processFile(path.join(POSTS_DIR, file));
+    await processFile(file);
   }
 })();

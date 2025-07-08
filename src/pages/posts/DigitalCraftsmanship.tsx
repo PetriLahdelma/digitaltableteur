@@ -49,7 +49,12 @@ const DigitalCraftsmanship = () => {
           </h1>
           <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
         </header>
-        <img src={Pizza} width="100%" alt="Pizza" className={styles.image} />
+        <img
+          src={Pizza}
+          width="100%"
+          alt="A colorless pizza topped with melted cheese and vibrant toppings."
+          className={styles.image}
+        />
         <p>
           Our very first lecture in design school was led by a passionate
           advocate for craftsmanship, Professor Tapio Vapaasalo. He began his

@@ -20,7 +20,6 @@ const ROUTES = [
   "/blog/petri-lahdelma-bio",
   // Work pages
   "/work/new-things-co",
-  "/work/nitor",
   "/work/illustrations",
 ];
 const PRIORITY = {
@@ -39,7 +38,6 @@ const PRIORITY = {
   "/blog/figma-mcp-design-systems": "0.6",
   "/blog/petri-lahdelma-bio": "0.6",
   "/work/new-things-co": "0.7",
-  "/work/nitor": "0.7",
   "/work/illustrations": "0.7",
 };
 const CHANGEFREQ = {
@@ -58,7 +56,6 @@ const CHANGEFREQ = {
   "/blog/figma-mcp-design-systems": "yearly",
   "/blog/petri-lahdelma-bio": "yearly",
   "/work/new-things-co": "yearly",
-  "/work/nitor": "yearly",
   "/work/illustrations": "yearly",
 };
 
