@@ -64,6 +64,20 @@ const ContactForm = () => {
       PUBLIC_KEY,
     )
       .then(() => {
+        fetch("/api/save-contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            interest: formData.interest,
+            message: formData.message,
+            time,
+          }),
+        }).catch(() => {
+          // Silently ignore logging failures
+        });
         setIsModalOpen(true);
         setFormData({
           fullName: "",
