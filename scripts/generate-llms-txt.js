@@ -92,8 +92,8 @@ async function extractPageData(url) {
 
   // --- llms-full.txt (all pages, more detail) ---
   let fullTxt =
-    "# Digital Tableteur\n\n" +
-    "> Digital Tableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.\n\n" +
+    "# Digitaltableteur\n\n" +
+    "> Digitaltableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.\n\n" +
     "This site showcases all public pages, works, and blog posts in English, Finnish, and Swedish.\n\n" +
     "## All Pages\n";
   for (const page of results) {

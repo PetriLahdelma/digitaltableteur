@@ -1,6 +1,6 @@
-# Digital Tableteur
+# Digitaltableteur
 
-> Digital Tableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.
+> Digitaltableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.
 
 This site showcases all public pages, works, and blog posts in English, Finnish, and Swedish.
 
