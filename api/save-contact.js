@@ -3,6 +3,7 @@ import { MongoClient } from "mongodb";
 export default async function handler(request, response) {
   const allowedOrigins = [
     "https://digitaltableteur.com",
+    "https://www.digitaltableteur.com",
     "http://localhost:5173",
     "http://localhost:3000",
   ];
