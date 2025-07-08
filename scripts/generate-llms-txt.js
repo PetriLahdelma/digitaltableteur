@@ -60,21 +60,77 @@ async function extractPageData(url) {
     results.push(data);
   }
   const now = new Date().toISOString();
-  let txt = `# LLM.txt - Website Content Structure\n# Generated: ${now}\n# Source: https://digitaltableteur.com/sitemap.xml\n# Total Pages: ${urls.length}\n# Success Rate: ${((successCount / urls.length) * 100).toFixed(1)}%\n\n## Site Metadata\nSite URL: https://digitaltableteur.com\nExtraction Date: ${now.slice(0, 10)}\nTotal Pages Processed: ${urls.length}\nSuccessful Pages: ${successCount}\nFailed Pages: ${urls.length - successCount}\nSuccess Rate: ${((successCount / urls.length) * 100).toFixed(1)}%\n\n---\n`;
+  // --- llms.txt (concise) ---
+  let txt =
+    "# Digital Tableteur\n\n" +
+    "> Digital Tableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.\n\n" +
+    "This site showcases selected works, blog posts, and legal information in English, Finnish, and Swedish.\n\n" +
+    "## Key Pages\n";
+  // Only include main/important pages (home, about, works, blog, cookie policy, etc)
+  const keyPages = results.filter(
+    (page) =>
+      page.success &&
+      (page.url.endsWith("/") ||
+        /about|cookie|privacy|blog|work|portfolio|projects/i.test(page.url)),
+  );
+  for (const page of keyPages) {
+    txt += `- [${page.title || page.url}](${page.url})`;
+    if (page.metaDesc) txt += `: ${page.metaDesc}`;
+    txt += "\n";
+  }
+  txt += "\n## Optional\n";
+  // List other pages as optional
+  const optionalPages = results.filter(
+    (page) => page.success && !keyPages.includes(page),
+  );
+  for (const page of optionalPages) {
+    txt += `- [${page.title || page.url}](${page.url})`;
+    if (page.metaDesc) txt += `: ${page.metaDesc}`;
+    txt += "\n";
+  }
+  fs.writeFileSync("./public/llms.txt", txt);
+
+  // --- llms-full.txt (all pages, more detail) ---
+  let fullTxt =
+    "# Digital Tableteur\n\n" +
+    "> Digital Tableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.\n\n" +
+    "This site showcases all public pages, works, and blog posts in English, Finnish, and Swedish.\n\n" +
+    "## All Pages\n";
   for (const page of results) {
-    txt += `\n### Page: ${page.url}\n`;
+    fullTxt += `- [${page.title || page.url}](${page.url})`;
+    if (page.metaDesc) fullTxt += `: ${page.metaDesc}`;
+    fullTxt += "\n";
+  }
+  fullTxt += "\n---\n";
+  for (const page of results) {
+    if (!page.success) continue;
+    fullTxt += `\n### Page: ${page.url}\n`;
+    fullTxt += `Title: ${page.title}\nMeta Description: ${page.metaDesc}\nLanguage: ${page.lang}\nCanonical URL: ${page.canonical}\n\n## Headings Structure:\n`;
+    if (page.headings.length) {
+      fullTxt += page.headings.map((h) => `- ${h}`).join("\n") + "\n";
+    } else {
+      fullTxt += "No headings found\n";
+    }
+    fullTxt += `\n## Main Content:\n${page.mainContent}\n\n---\n`;
+  }
+  fs.writeFileSync("./public/llms-full.txt", fullTxt);
+
+  // --- legacy LLMs.txt (if you want to keep it) ---
+  let legacyTxt = `# LLM.txt - Website Content Structure\n# Generated: ${now}\n# Source: https://digitaltableteur.com/sitemap.xml\n# Total Pages: ${urls.length}\n# Success Rate: ${((successCount / urls.length) * 100).toFixed(1)}%\n\n## Site Metadata\nSite URL: https://digitaltableteur.com\nExtraction Date: ${now.slice(0, 10)}\nTotal Pages Processed: ${urls.length}\nSuccessful Pages: ${successCount}\nFailed Pages: ${urls.length - successCount}\nSuccess Rate: ${((successCount / urls.length) * 100).toFixed(1)}%\n\n---\n`;
+  for (const page of results) {
+    legacyTxt += `\n### Page: ${page.url}\n`;
     if (!page.success) {
-      txt += "Extraction failed.\n---\n";
+      legacyTxt += "Extraction failed.\n---\n";
       continue;
     }
-    txt += `Title: ${page.title}\nMeta Description: ${page.metaDesc}\nLanguage: ${page.lang}\nCanonical URL: ${page.canonical}\n\n## Headings Structure:\n`;
+    legacyTxt += `Title: ${page.title}\nMeta Description: ${page.metaDesc}\nLanguage: ${page.lang}\nCanonical URL: ${page.canonical}\n\n## Headings Structure:\n`;
     if (page.headings.length) {
-      txt += page.headings.map((h) => `- ${h}`).join("\n") + "\n";
+      legacyTxt += page.headings.map((h) => `- ${h}`).join("\n") + "\n";
     } else {
-      txt += "No headings found\n";
+      legacyTxt += "No headings found\n";
     }
-    txt += `\n## Main Content:\n${page.mainContent}\n\n---\n`;
+    legacyTxt += `\n## Main Content:\n${page.mainContent}\n\n---\n`;
   }
-  fs.writeFileSync(OUTPUT_PATH, txt);
-  console.log("LLMs.txt generated.");
+  fs.writeFileSync(OUTPUT_PATH, legacyTxt);
+  console.log("llms.txt, llms-full.txt, and LLMs.txt generated.");
 })();
