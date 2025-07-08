@@ -6,8 +6,13 @@ import styles from "./Layout.module.css";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={styles.layout}>
+      <a href="#main" className={styles.skipLink}>
+        Skip to main content
+      </a>
       <Header />
-      <main className={styles.main}>{children}</main>
+      <main id="main" className={styles.main}>
+        {children}
+      </main>
       <Footer />
     </div>
   );
