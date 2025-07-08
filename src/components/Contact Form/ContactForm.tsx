@@ -50,6 +50,24 @@ const ContactForm = () => {
     e.preventDefault();
     const now = new Date();
     const time = now.toLocaleString(); // You can customize the format if needed
+
+    // Always try to store in MongoDB
+    fetch("/api/save-contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        interest: formData.interest,
+        message: formData.message,
+        time,
+      }),
+    }).catch(() => {
+      // Silently ignore logging failures
+    });
+
+    // Then try to send with EmailJS
     send(
       SERVICE_ID,
       TEMPLATE_ID,
@@ -64,20 +82,6 @@ const ContactForm = () => {
       PUBLIC_KEY,
     )
       .then(() => {
-        fetch("/api/save-contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.fullName,
-            email: formData.email,
-            phone: formData.phone,
-            interest: formData.interest,
-            message: formData.message,
-            time,
-          }),
-        }).catch(() => {
-          // Silently ignore logging failures
-        });
         setIsModalOpen(true);
         setFormData({
           fullName: "",
