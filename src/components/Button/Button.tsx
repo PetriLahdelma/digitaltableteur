@@ -2,7 +2,14 @@ import React from "react";
 import styles from "./Button.module.css";
 
 interface ButtonProps {
-  variant?: "primary" | "secondary" | "tertiary" | "error" | "success" | "info";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "error"
+    | "warning"
+    | "success"
+    | "info";
   disabled?: boolean;
   icon?: React.ReactNode;
   endIcon?: React.ReactNode;

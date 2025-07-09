@@ -96,7 +96,7 @@ InfoDialog.args = {
 export const BusyDialog = Template.bind({});
 BusyDialog.args = {
   variant: "loading",
-  title: undefined,
+  title: "Busy",
   children: <p>Loading, please wait...</p>,
   showCloseIcon: false,
 };
