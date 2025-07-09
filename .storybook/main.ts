@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { resolve } from 'path';
 
 const config: StorybookConfig = {
   stories: [
@@ -16,6 +17,13 @@ const config: StorybookConfig = {
   },
   staticDirs: [
     '../public'
-  ]
-};
-export default config;
+  ],
+  viteFinal: async (config) => {
+    config.resolve = config.resolve || {};
+    config.resolve.alias = [
+      ...(config.resolve.alias || []),
+      { find: '@dt', replacement: resolve(__dirname, '../src/components') },
+    ];
+    return config;
+  },
+};export default config;

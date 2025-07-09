@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import { FaInstagram, FaFacebook, FaLinkedin, FaMedium } from "react-icons/fa";
-import Grid from "../../components/Grid/Grid";
+import Grid from "@dt/Grid";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {
