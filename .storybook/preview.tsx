@@ -1,5 +1,5 @@
 import { MemoryRouter } from "react-router-dom";
-import { ThemeProvider } from "../src/components/ThemeProvider/ThemeProvider";
+import { ThemeProvider } from "@dt/ThemeProvider";
 import type { Preview } from '@storybook/react-vite';
 import React from "react";
 

@@ -2,9 +2,9 @@ import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./CookiePolicy.module.css";
 import { useTranslation } from "react-i18next";
-import Button from "../components/Button/Button";
+import Button from "@dt/Button";
 import { FaArrowLeft } from "react-icons/fa";
-import Title from "../components/Title/Title";
+import Title from "@dt/Title";
 
 const CookiePolicyFullFI = () => {
   const { t, i18n } = useTranslation();
