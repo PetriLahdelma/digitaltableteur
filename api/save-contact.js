@@ -1,22 +1,8 @@
 import { MongoClient } from "mongodb";
+import handleCors from "./cors";
 
 export default async function handler(request, response) {
-  const allowedOrigins = [
-    "https://digitaltableteur.com",
-    "https://www.digitaltableteur.com",
-    "http://localhost:5173",
-    "http://localhost:3000",
-  ];
-  const origin = request.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    response.setHeader("Access-Control-Allow-Origin", origin);
-  } else {
-    response.setHeader("Access-Control-Allow-Origin", allowedOrigins[0]);
-  }
-  response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  response.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  if (request.method === "OPTIONS") {
-    response.status(200).end();
+  if (handleCors(request, response)) {
     return;
   }
 
@@ -26,8 +12,6 @@ export default async function handler(request, response) {
   }
 
   let body = request.body;
-  // Logging incoming body
-  console.log("Raw request.body:", body);
 
   // If body is undefined or a string, try to parse it
   if (!body || typeof body === "string") {
@@ -45,9 +29,7 @@ export default async function handler(request, response) {
         });
       }
       body = rawBody ? JSON.parse(rawBody) : {};
-      console.log("Parsed body:", body);
     } catch (err) {
-      console.error("Failed to parse body:", err);
       response.status(400).json({ error: "Invalid JSON body" });
       return;
     }
@@ -55,8 +37,9 @@ export default async function handler(request, response) {
 
   const { name, email, phone, interest, message, time } = body || {};
 
-  if (!name || !email) {
-    response.status(400).json({ error: "Missing required fields" });
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!name || !email || !emailRegex.test(email)) {
+    response.status(400).json({ error: "Invalid form data" });
     return;
   }
 
