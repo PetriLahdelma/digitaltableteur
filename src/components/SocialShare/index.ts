@@ -1,1 +1,2 @@
-export { default } from "./SocialShare";
+export { SocialShare } from "./SocialShare";
+export { SocialShare as default } from "./SocialShare";
