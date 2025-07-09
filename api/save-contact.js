@@ -25,7 +25,35 @@ export default async function handler(request, response) {
     return;
   }
 
-  const { name, email, phone, interest, message, time } = request.body || {};
+  let body = request.body;
+  // Logging incoming body
+  console.log("Raw request.body:", body);
+
+  // If body is undefined or a string, try to parse it
+  if (!body || typeof body === "string") {
+    try {
+      // For Vercel/Node, read the raw body from the stream
+      let rawBody = body;
+      if (!rawBody && request.readable) {
+        rawBody = await new Promise((resolve, reject) => {
+          let data = "";
+          request.on("data", (chunk) => {
+            data += chunk;
+          });
+          request.on("end", () => resolve(data));
+          request.on("error", (err) => reject(err));
+        });
+      }
+      body = rawBody ? JSON.parse(rawBody) : {};
+      console.log("Parsed body:", body);
+    } catch (err) {
+      console.error("Failed to parse body:", err);
+      response.status(400).json({ error: "Invalid JSON body" });
+      return;
+    }
+  }
+
+  const { name, email, phone, interest, message, time } = body || {};
 
   if (!name || !email) {
     response.status(400).json({ error: "Missing required fields" });
@@ -49,6 +77,7 @@ export default async function handler(request, response) {
     await contacts.insertOne({ name, email, phone, interest, message, time });
     response.status(200).json({ status: "ok" });
   } catch (err) {
+    console.error("MongoDB error:", err);
     response.status(500).json({ error: err.message });
   } finally {
     await client.close();
