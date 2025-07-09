@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "../Article.module.css";
-import Author from "../../components/Author/Author";
+import Author from "@dt/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import future6 from "../../assets/images/future9.webp";
 import future7 from "../../assets/images/future8.webp";
@@ -11,8 +11,8 @@ import future3 from "../../assets/images/future3.webp";
 import future4 from "../../assets/images/future4.webp";
 import future5 from "../../assets/images/future5.gif";
 import future8 from "../../assets/images/future6.webp";
-import { SocialShare } from "../../components/SocialShare/SocialShare";
-import Card from "../../components/Card/Card";
+import { SocialShare } from "@dt/SocialShare";
+import Card from "@dt/Card";
 import { useTranslation } from "react-i18next";
 
 const ThoughtsOnFutureBranding = () => {

@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout/Layout";
-import CookieConsent from "./components/CookieConsent/CookieConsent";
+import Layout from "@dt/Layout";
+import CookieConsent from "@dt/CookieConsent";
 const Home = React.lazy(() => import("./pages/Home"));
 const Work = React.lazy(() => import("./pages/Work"));
 const NewThingsCo = React.lazy(() => import("./pages/work/newThingsCo"));
