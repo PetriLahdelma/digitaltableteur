@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect } from "react";
-import Label from "../Label/Label";
+import Label from "@dt/Label";
 import styles from "./Checkbox.module.css";
 
 export interface CheckboxProps {

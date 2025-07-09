@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
+import { ThemeProvider } from "@dt/ThemeProvider";
 import { HelmetProvider } from "react-helmet-async";
 import "./i18n";
 
