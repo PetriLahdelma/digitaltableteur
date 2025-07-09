@@ -1,0 +1,1 @@
+import{u as t,j as n,B as s}from"./index-DESxs-gb.js";const a="_notFoundPage_19gy8_1",e={notFoundPage:a},u="/assets/404-Dn_ec7R-.webp",c=()=>{const{t:o}=t();return n.jsxs("div",{className:e.notFoundPage,children:[n.jsx("img",{src:u,alt:o("notFoundAlt")}),n.jsx(s,{variant:"secondary",onClick:()=>window.location.href="/",children:o("notFoundButton")})]})};export{c as default};

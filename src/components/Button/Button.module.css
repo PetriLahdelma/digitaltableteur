@@ -24,19 +24,25 @@
 
 .button.secondary {
   background-color: transparent;
-  color: var(--color-primary);
+  color: color-mix(in srgb, var(--color-primary) 100%, white 60%);
   border: 0.125rem solid var(--color-primary);
 }
 
 .button.tertiary {
   background-color: transparent;
-  color: var(--color-primary);
+  color: color-mix(in srgb, var(--color-primary) 100%, white 60%);
   border: none;
 }
 
 .button.error {
   background-color: var(--color-error);
   color: var(--color-white);
+  border: none;
+}
+
+.button.warning {
+  background-color: var(--color-warning);
+  color: var(--color-black);
   border: none;
 }
 
