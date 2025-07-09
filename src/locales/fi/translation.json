@@ -134,5 +134,10 @@
   "templateArticleMetaTitle": "Mallipohjan otsikko | Digitaltableteur",
   "templateArticleMetaDescription": "Mallikuvaus tuleville artikkeleille.",
   "shareHeading": "Jaa",
-  "siteUnderDevelopment": "Sivusto kehitteillä! 🚧 Pysy kuulolla!"
+  "siteUnderDevelopment": "Sivusto kehitteillä! 🚧 Pysy kuulolla!",
+  "workNavBackToWork": "Takaisin töihin",
+  "workNavPrev": "Edellinen",
+  "workNavNext": "Seuraava",
+  "workNavNewThingsCo": "New Things Co",
+  "workNavIllustrations": "Kuvitukset"
 }
