@@ -3,13 +3,15 @@ import Button from "../Button/Button";
 import { MdArrowBack, MdArrowForward, MdWork } from "react-icons/md";
 import styles from "./worknav.module.css";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const workPages = [
-  { path: "/work/new-things-co", label: "New Things Co" },
-  { path: "/work/illustrations", label: "Illustrations" },
+  { path: "/work/new-things-co", labelKey: "workNavNewThingsCo" },
+  { path: "/work/illustrations", labelKey: "workNavIllustrations" },
 ];
 
 const WorkNav: React.FC = () => {
+  const { t } = useTranslation();
   const currentPath = window.location.pathname;
   const currentIndex = workPages.findIndex((p) => p.path === currentPath);
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ const WorkNav: React.FC = () => {
           icon={<MdWork />}
           onClick={() => navigate("/work")}
         >
-          Back to Work
+          {t("workNavBackToWork")}
         </Button>
         <div className={styles.rightNavGroup}>
           <Button
@@ -34,7 +36,7 @@ const WorkNav: React.FC = () => {
               if (currentIndex > 0) navigate(workPages[currentIndex - 1].path);
             }}
           >
-            Prev
+            {t("workNavPrev")}
           </Button>
           <Button
             variant="tertiary"
@@ -46,7 +48,7 @@ const WorkNav: React.FC = () => {
                 navigate(workPages[currentIndex + 1].path);
             }}
           >
-            Next
+            {t("workNavNext")}
           </Button>
         </div>
       </div>
