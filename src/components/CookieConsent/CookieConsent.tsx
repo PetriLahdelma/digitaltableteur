@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Modal from "../Modal/Modal";
-import Button from "../Button/Button";
-import Link from "../Link/Link";
+import Modal from "@dt/Modal";
+import Button from "@dt/Button";
+import Link from "@dt/Link";
 import styles from "./CookieConsent.module.css";
 import { useTranslation } from "react-i18next";
 

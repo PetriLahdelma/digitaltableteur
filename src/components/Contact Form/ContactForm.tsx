@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { send } from "@emailjs/browser";
 import styles from "./ContactForm.module.css";
-import Inputs from "../Inputs/Inputs";
-import Button from "../Button/Button";
-import CheckboxGroup from "../CheckboxGroup/CheckboxGroup";
-import Modal from "../Modal/Modal";
-import TextArea from "../Inputs/TextArea";
+import Inputs from "@dt/Inputs";
+import Button from "@dt/Button";
+import CheckboxGroup from "@dt/CheckboxGroup";
+import Modal from "@dt/Modal";
+import TextArea from "@dt/Inputs/TextArea";
 import { useTranslation } from "react-i18next";
 
 const ContactForm = () => {

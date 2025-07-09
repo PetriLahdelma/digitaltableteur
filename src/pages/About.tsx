@@ -1,8 +1,8 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./About.module.css";
-import Title from "../components/Title/Title";
-import Text from "../components/Text/Text";
+import Title from "@dt/Title";
+import Text from "@dt/Text";
 import { useTranslation } from "react-i18next";
 
 const About = () => {

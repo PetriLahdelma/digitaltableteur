@@ -1,10 +1,10 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./Contact.module.css";
-import ContactForm from "../components/Contact Form/ContactForm";
-import Title from "../components/Title/Title";
-import Text from "../components/Text/Text";
-import Link from "../components/Link/Link";
+import ContactForm from "@dt/ContactForm";
+import Title from "@dt/Title";
+import Text from "@dt/Text";
+import Link from "@dt/Link";
 import { useTranslation } from "react-i18next";
 
 const Contact = () => {
