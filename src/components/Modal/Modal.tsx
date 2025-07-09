@@ -67,15 +67,13 @@ const Modal: React.FC<ModalProps> = ({
         : { "aria-label": "Dialog" })}
     >
       <div className={`${styles.modal} ${styles[variant]}`}>
-        {variant !== "loading" && (
+        {title && (
           <div className={styles.header}>
             <div className={styles.leftHeader}>
               {icon && <span className={styles.icon}>{icon}</span>}
-              {title && (
-                <h2 id="modal-title" className={styles.title}>
-                  {title}
-                </h2>
-              )}
+              <h2 id="modal-title" className={styles.title}>
+                {title}
+              </h2>
             </div>
             {onClose && showCloseIcon && (
               <button

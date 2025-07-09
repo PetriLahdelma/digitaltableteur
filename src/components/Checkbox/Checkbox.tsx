@@ -9,6 +9,7 @@ export interface CheckboxProps {
   indeterminate?: boolean;
   onChange: (checked: boolean) => void;
   disabled?: boolean;
+  id?: string;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -41,7 +42,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <div className={styles["checkboxContainer"]}>
         <input
-          id="checkbox"
+          id={props.id || "checkbox"}
           type="checkbox"
           className={styles.checkbox}
           ref={ref}
@@ -56,7 +57,11 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           disabled={disabled}
           {...props}
         />
-        <Label htmlFor="checkbox" disabled={disabled} className={styles.label}>
+        <Label
+          htmlFor={props.id || "checkbox"}
+          disabled={disabled}
+          className={styles.label}
+        >
           {showLabel && label}
         </Label>
       </div>
