@@ -1,6 +1,6 @@
 import React from "react";
 import { FaChevronDown } from "react-icons/fa";
-import Label from "../Label/Label";
+import Label from "@dt/Label";
 import SelectOption from "./SelectOption";
 import styles from "./Select.module.css";
 

@@ -2,9 +2,9 @@ import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./Blog.module.css";
 import { posts } from "./posts";
-import ArticleCard from "../components/ArticleCard/ArticleCard";
-import Title from "../components/Title/Title";
-import HelsinkiClock from "../components/HelsinkiClock/HelsinkiClock";
+import ArticleCard from "@dt/ArticleCard";
+import Title from "@dt/Title";
+import HelsinkiClock from "@dt/HelsinkiClock";
 import { useTranslation } from "react-i18next";
 
 interface Post {

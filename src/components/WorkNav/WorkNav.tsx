@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button/Button";
+import Button from "@dt/Button";
 import { MdArrowBack, MdArrowForward, MdWork } from "react-icons/md";
 import styles from "./worknav.module.css";
 import { useNavigate } from "react-router-dom";
