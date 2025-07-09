@@ -40,7 +40,7 @@
     "test": "vitest run --config vitest.config.mts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "prettier \"src/**/*.{ts,tsx,css}\" --check && eslint -c .eslintrc.cjs \"src/**/*.tsx\" && stylelint \"src/**/*.{css,tsx,html}\"",
+    "lint": "npx prettier \"src/**/*.{ts,tsx,css}\" --check && npx eslint -c .eslintrc.cjs \"src/**/*.{ts,tsx}\" && npx stylelint \"src/**/*.{css,tsx,html}\"",
     "fetch-figma": "node scripts/fetch-figma.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "generate:llms": "node scripts/generate-llms-txt.js",
