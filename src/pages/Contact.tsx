@@ -32,7 +32,9 @@ const Contact = () => {
       </HelmetProvider>
       <div className={styles.contact}>
         <Title size="L">{t("contactHeroTitle")}</Title>
-        <Text className={styles.contactFormTitle}>{t("contactFormTitle")}</Text>
+        <Title level={2} size="S" className={styles.contactFormTitle}>
+          {t("contactFormTitle")}
+        </Title>
         <Text className={styles.contactInfo}>
           {t("contactInfo")}{" "}
           <Link size="S" href="mailto:mail@digitaltableteur.com">
