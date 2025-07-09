@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Badge.module.css";
 import * as FaIcons from "react-icons/fa";
-import Button from "../Button/Button";
+import Button from "@dt/Button";
 import { IoMdClose } from "react-icons/io";
 
 // Dynamically create options and mapping for all icons

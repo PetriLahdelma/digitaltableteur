@@ -1,13 +1,13 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "../Article.module.css";
-import Author from "../../components/Author/Author";
+import Author from "@dt/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import DTmindmap from "../../assets/images/dt-mindmap.webp";
-import { SocialShare } from "../../components/SocialShare/SocialShare";
-import Card from "../../components/Card/Card";
+import { SocialShare } from "@dt/SocialShare";
+import Card from "@dt/Card";
 import MCP from "../../assets/images/MCP.webp";
-import Grid from "../../components/Grid/Grid";
+import Grid from "@dt/Grid";
 import {
   TbCircleNumber1,
   TbCircleNumber2,
