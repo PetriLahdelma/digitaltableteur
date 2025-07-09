@@ -1,7 +1,7 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
 import styles from "./Modal.module.css";
-import Button from "../Button/Button";
+import Button from "@dt/Button";
 
 export type ModalVariant = "default" | "success" | "error" | "info" | "loading";
 

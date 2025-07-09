@@ -29,7 +29,7 @@ import {
   Default as ArticleCardDefault,
   WithCustomClass as ArticleCardWithCustomClass,
 } from "../components/ArticleCard/ArticleCard.stories";
-import Avatar from "../components/Avatar/Avatar";
+import Avatar from "@dt/Avatar";
 import {
   WithImage as AvatarWithImageStory,
   WithName as AvatarWithNameStory,
@@ -40,9 +40,9 @@ import {
   Indeterminate as CheckboxIndeterminateStory,
 } from "../components/Checkbox/Checkbox.stories";
 import { Default as CheckboxGroupDefaultStory } from "../components/CheckboxGroup/CheckboxGroup.stories";
-import Checkbox from "../components/Checkbox/Checkbox";
-import CheckboxGroup from "../components/CheckboxGroup/CheckboxGroup";
-import FlexBox from "../components/FlexBox/FlexBox";
+import Checkbox from "@dt/Checkbox";
+import CheckboxGroup from "@dt/CheckboxGroup";
+import FlexBox from "@dt/FlexBox";
 import {
   Basic as FlexBoxBasicStory,
   Column as FlexBoxColumnStory,
@@ -53,9 +53,9 @@ import {
 import * as InputsStories from "../components/Inputs/Inputs.stories";
 import * as LabelStories from "../components/Label/Label.stories";
 import * as LinkStories from "../components/Link/Link.stories";
-import Input from "../components/Inputs/Inputs";
-import Label from "../components/Label/Label";
-import Link from "../components/Link/Link";
+import Input from "@dt/Inputs";
+import Label from "@dt/Label";
+import Link from "@dt/Link";
 
 export default {
   title: "Testing/Kitchen Sink",

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../patterns/Header/Header";
 import Footer from "../../patterns/Footer/Footer";
-import Button from "../../components/Button/Button";
+import Button from "@dt/Button";
 import styles from "./Layout.module.css";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

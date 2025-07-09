@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
 import Modal, { ModalProps } from "./Modal";
-import Button from "../Button/Button";
+import Button from "@dt/Button";
 import { FaInfoCircle, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { MdOutlineError } from "react-icons/md";
 

@@ -9,7 +9,7 @@ import {
   FaWhatsapp,
   FaLink,
 } from "react-icons/fa";
-import Button from "../Button/Button";
+import Button from "@dt/Button";
 import Toast from "../Toast/Toast";
 import { useTranslation } from "react-i18next";
 
