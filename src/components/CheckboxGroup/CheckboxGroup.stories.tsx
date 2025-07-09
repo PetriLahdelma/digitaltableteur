@@ -9,6 +9,7 @@ export default {
   argTypes: {
     label: { control: "text" },
     options: { control: "object" },
+    id: { control: "text" },
   },
 } as Meta<CheckboxGroupProps>;
 

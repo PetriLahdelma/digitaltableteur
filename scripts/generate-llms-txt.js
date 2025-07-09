@@ -4,7 +4,7 @@ const { JSDOM } = require("jsdom");
 const { parseStringPromise } = require("xml2js");
 
 const SITEMAP_PATH = "./public/sitemap.xml";
-const OUTPUT_PATH = "./public/LLMs.txt";
+const OUTPUT_PATH = "./public/llms.txt";
 
 function fetchPage(url) {
   return new Promise((resolve, reject) => {
@@ -62,8 +62,8 @@ async function extractPageData(url) {
   const now = new Date().toISOString();
   // --- llms.txt (concise) ---
   let txt =
-    "# Digital Tableteur\n\n" +
-    "> Digital Tableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.\n\n" +
+    "# Digitaltableteur\n\n" +
+    "> Digitaltableteur is a multilingual, accessible portfolio site, featuring internationalized content, responsive design, and best practices for LLMs and users.\n\n" +
     "This site showcases selected works, blog posts, and legal information in English, Finnish, and Swedish.\n\n" +
     "## Key Pages\n";
   // Only include main/important pages (home, about, works, blog, cookie policy, etc)
@@ -115,22 +115,5 @@ async function extractPageData(url) {
   }
   fs.writeFileSync("./public/llms-full.txt", fullTxt);
 
-  // --- legacy LLMs.txt (if you want to keep it) ---
-  let legacyTxt = `# LLM.txt - Website Content Structure\n# Generated: ${now}\n# Source: https://digitaltableteur.com/sitemap.xml\n# Total Pages: ${urls.length}\n# Success Rate: ${((successCount / urls.length) * 100).toFixed(1)}%\n\n## Site Metadata\nSite URL: https://digitaltableteur.com\nExtraction Date: ${now.slice(0, 10)}\nTotal Pages Processed: ${urls.length}\nSuccessful Pages: ${successCount}\nFailed Pages: ${urls.length - successCount}\nSuccess Rate: ${((successCount / urls.length) * 100).toFixed(1)}%\n\n---\n`;
-  for (const page of results) {
-    legacyTxt += `\n### Page: ${page.url}\n`;
-    if (!page.success) {
-      legacyTxt += "Extraction failed.\n---\n";
-      continue;
-    }
-    legacyTxt += `Title: ${page.title}\nMeta Description: ${page.metaDesc}\nLanguage: ${page.lang}\nCanonical URL: ${page.canonical}\n\n## Headings Structure:\n`;
-    if (page.headings.length) {
-      legacyTxt += page.headings.map((h) => `- ${h}`).join("\n") + "\n";
-    } else {
-      legacyTxt += "No headings found\n";
-    }
-    legacyTxt += `\n## Main Content:\n${page.mainContent}\n\n---\n`;
-  }
-  fs.writeFileSync(OUTPUT_PATH, legacyTxt);
-  console.log("llms.txt, llms-full.txt, and LLMs.txt generated.");
+  console.log("llms.txt (concise) and llms-full.txt (detailed) generated.");
 })();

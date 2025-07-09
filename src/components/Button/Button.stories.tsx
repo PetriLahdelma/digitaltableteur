@@ -16,6 +16,7 @@ export default {
           "secondary",
           "tertiary",
           "error",
+          "warning",
           "success",
           "info",
         ],
@@ -81,6 +82,18 @@ Error.args = {
 Error.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.findByRole("button", { name: /error button/i });
+  await userEvent.click(button);
+  await userEvent.tab();
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  variant: "warning",
+  children: "Warning Button",
+};
+Warning.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  const button = await canvas.findByRole("button", { name: /warning button/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -168,6 +181,7 @@ export const AllVariants = () => (
     <Button variant="secondary">Secondary</Button>
     <Button variant="tertiary">Tertiary</Button>
     <Button variant="error">Error</Button>
+    <Button variant="warning">Warning</Button>
     <Button variant="success">Success</Button>
     <Button variant="info">Info</Button>
   </div>
@@ -182,6 +196,7 @@ AllVariants.play = async ({
   await canvas.findByRole("button", { name: /secondary/i });
   await canvas.findByRole("button", { name: /tertiary/i });
   await canvas.findByRole("button", { name: /error/i });
+  await canvas.findByRole("button", { name: /warning/i });
   await canvas.findByRole("button", { name: /success/i });
   await canvas.findByRole("button", { name: /info/i });
 };
