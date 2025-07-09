@@ -1,10 +1,10 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "../Article.module.css";
-import Author from "../../components/Author/Author";
+import Author from "@dt/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
-import Card from "../../components/Card/Card";
-import { SocialShare } from "../../components/SocialShare/SocialShare";
+import Card from "@dt/Card";
+import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
 
 const Designing2025 = () => {

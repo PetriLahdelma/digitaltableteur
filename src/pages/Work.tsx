@@ -7,8 +7,8 @@ import sausage from "../assets/images/sausage.webp";
 import fur from "../assets/images/fur.webp";
 import blackletter from "../assets/images/blackletter.webp";
 import projectData from "../data/workData.json";
-import FlexBox from "../components/FlexBox/FlexBox";
-import Grid from "../components/Grid/Grid";
+import FlexBox from "@dt/FlexBox";
+import Grid from "@dt/Grid";
 
 const Work = () => {
   return (

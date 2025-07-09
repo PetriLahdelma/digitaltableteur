@@ -1,12 +1,12 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Avatar from "../../components/Avatar/Avatar";
-import Author from "../../components/Author/Author";
+import Avatar from "@dt/Avatar";
+import Author from "@dt/Author";
 import styles from "../Article.module.css";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Pizza from "../../assets/images/pizza.jpg";
-import Card from "../../components/Card/Card";
-import { SocialShare } from "../../components/SocialShare/SocialShare";
+import Card from "@dt/Card";
+import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
 
 const DigitalCraftsmanship = () => {

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Grid from "../components/Grid/Grid";
+import Grid from "@dt/Grid";
 import styles from "./Home.module.css";
 import "../styles/variables.css";
-import Title from "../components/Title/Title";
-import Text from "../components/Text/Text";
-import Link from "../components/Link/Link";
+import Title from "@dt/Title";
+import Text from "@dt/Text";
+import Link from "@dt/Link";
 import { useTranslation } from "react-i18next";
 
 const Home = () => {

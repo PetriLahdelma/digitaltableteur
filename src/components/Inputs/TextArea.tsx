@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Inputs.module.css";
-import Label from "../Label/Label";
+import Label from "@dt/Label";
 
 interface TextAreaProps {
   label: string;

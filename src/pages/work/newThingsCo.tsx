@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./newThingsCo.module.css";
-import FlexBox from "../../components/FlexBox/FlexBox";
-import Title from "../../components/Title/Title";
-import Badge from "../../components/Badge/Badge";
-import Gallery from "../../components/Gallery/Gallery";
-import Grid from "../../components/Grid/Grid";
-import WorkNav from "../../components/WorkNav/WorkNav";
+import FlexBox from "@dt/FlexBox";
+import Title from "@dt/Title";
+import Badge from "@dt/Badge";
+import Gallery from "@dt/Gallery";
+import Grid from "@dt/Grid";
+import WorkNav from "@dt/WorkNav";
 
 const NewThingsCo = () => (
   <main className={styles.caseStudy}>
