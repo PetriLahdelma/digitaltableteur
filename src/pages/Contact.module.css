@@ -10,7 +10,7 @@
   font-family: var(--primary-heading-font, serif);
   font-size: 5rem;
   font-weight: var(--primary-heading-weight, 300);
-  margin-block: 6rem;
+  margin-block: 2rem 6rem;
   color: var(--color-primary);
 }
 
@@ -21,15 +21,6 @@
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--color-secondary);
-}
-
-.contactForm {
-  max-width: var(--size-width-form);
-  margin: 0 auto;
-  padding: 1rem;
-  background-color: var(--color-light-bg);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .formGroup {
@@ -51,7 +42,6 @@
   text-decoration: underline;
 }
 
-/* Added a class for styling the privacy policy paragraph */
 .contactForm p {
   font-family: Moderat, sans-serif;
   font-size: 0.875rem;
@@ -66,7 +56,6 @@
 
 .contactFormTitle {
   font-family: var(--secondary-heading-font, sans-serif);
-  font-size: 1.8rem;
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -76,5 +65,5 @@
 .contactInfo {
   color: var(--color-primary);
   margin-block-end: 2rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
