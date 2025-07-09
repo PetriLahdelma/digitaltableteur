@@ -21,7 +21,7 @@ export { default as Modal } from "./Modal/Modal";
 export { default as Select } from "./Select/Select";
 export { default as SocialShare } from "./SocialShare/SocialShare";
 export { default as Text } from "./Text/Text";
-export { default as ThemeProvider } from "./ThemeProvider/ThemeProvider";
+export { ThemeProvider, useTheme } from "./ThemeProvider/ThemeProvider";
 export { default as Title } from "./Title/Title";
 export { default as Toast } from "./Toast/Toast";
 export { default as WorkNav } from "./WorkNav/WorkNav";
