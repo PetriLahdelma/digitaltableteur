@@ -4,6 +4,7 @@ import GroupLabel from "../GroupLabel/GroupLabel";
 import styles from "./CheckboxGroup.module.css";
 
 export interface CheckboxGroupProps {
+  id?: string;
   label: string;
   className?: string;
   options: { label: string; value: string }[];
@@ -12,6 +13,7 @@ export interface CheckboxGroupProps {
 }
 
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
+  id = "",
   label,
   options = [],
   onChange,
@@ -68,22 +70,27 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
   return (
     <div className={styles["checkboxGroup"]}>
-      <GroupLabel htmlFor="masterCheckbox">{label}</GroupLabel>
+      <GroupLabel htmlFor={`masterCheckbox-${id}`}>{label}</GroupLabel>
       <Checkbox
         ref={masterCheckboxRef}
         label="All"
         checked={checkedStates.every((state) => state)}
         onChange={(checked) => handleMasterCheckboxChange(checked)}
+        id={`masterCheckbox-${id}`}
       />
       <div className={styles.options}>
-        {options.map((option, index) => (
-          <Checkbox
-            key={option.value}
-            label={option.label}
-            checked={checkedStates[index]}
-            onChange={(checked) => handleCheckboxChange(index, checked)}
-          />
-        ))}
+        {options.map((option, index) => {
+          const optionId = `${id || "checkboxgroup"}-option-${option.value || index}`;
+          return (
+            <Checkbox
+              key={option.value}
+              label={option.label}
+              checked={checkedStates[index]}
+              onChange={(checked) => handleCheckboxChange(index, checked)}
+              id={optionId}
+            />
+          );
+        })}
       </div>
     </div>
   );
