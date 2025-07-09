@@ -1,7 +1,9 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "@dt/Layout";
 import CookieConsent from "@dt/CookieConsent";
+import { useTranslation } from "react-i18next";
+
 const Home = React.lazy(() => import("./pages/Home"));
 const Work = React.lazy(() => import("./pages/Work"));
 const NewThingsCo = React.lazy(() => import("./pages/work/newThingsCo"));
@@ -34,6 +36,17 @@ const CookiePolicyFullSV = React.lazy(
 );
 
 function App() {
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    const storedLang =
+      localStorage.getItem("lang") ||
+      (typeof window !== "undefined" &&
+        document.cookie.match(/i18next=([a-zA-Z-]+)/)?.[1]);
+    if (storedLang && i18n.language !== storedLang) {
+      i18n.changeLanguage(storedLang);
+    }
+  }, [i18n]);
+
   return (
     <Router>
       <div>
