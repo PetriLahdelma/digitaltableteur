@@ -1,2 +1,0 @@
-DELETE /Users/petrilahdelma/SAPDevelop/digitaltableteur/src/serviceWorkerRegistration.ts
-DELETE /Users/petrilahdelma/SAPDevelop/digitaltableteur/src/service-worker.ts
