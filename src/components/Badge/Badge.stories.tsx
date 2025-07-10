@@ -96,15 +96,16 @@ export const AllVariants: StoryFn<BadgeProps> = (args) => {
       <Badge design="primary" state="success">
         {t("badgeSuccess")}
       </Badge>
-      <Badge design="primary" state="info">
-        {t("badgeInfo")}
-      </Badge>
       <Badge design="primary" state="error">
         {t("badgeError")}
       </Badge>
       <Badge design="primary" state="warning">
         {t("badgeWarning")}
       </Badge>
+      <Badge design="primary" state="info">
+        {t("badgeInfo")}
+      </Badge>
+
       <Badge design="primary" state="neutral">
         {t("badgeNeutral")}
       </Badge>
@@ -120,9 +121,9 @@ AllVariants.play = async ({
   await canvas.findByText(/primary/i);
   await canvas.findByText(/secondary/i);
   await canvas.findByText(/success/i);
-  await canvas.findByText(/info/i);
   await canvas.findByText(/error/i);
   await canvas.findByText(/warning/i);
+  await canvas.findByText(/info/i);
   await canvas.findByText(/neutral/i);
 };
 
