@@ -57,6 +57,7 @@ p + :not(p, blockquote) {
   color: var(--primary-text-color);
   font-size: 1rem;
 }
+
 .metaRow > * {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
