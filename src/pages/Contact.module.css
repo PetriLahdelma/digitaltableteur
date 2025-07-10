@@ -1,3 +1,6 @@
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
+
 .contact {
   text-align: center;
   padding: 32px;
