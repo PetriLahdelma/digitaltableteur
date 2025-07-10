@@ -117,32 +117,25 @@ const GarageJunction = () => (
         </Grid>
         <div className={styles.heroSummary}>
           <p>
-            DT was first approached by New Things Co in September 2017, by Sami,
-            Jukkis and Kimmo. Back then the company was still called Lab of New.
+            Garage Junction was a collaborative event series and brand concept
+            launched at Merikerho, Helsinki, in 2018. The project brought music
+            lovers, artists, and creative professionals for a club night and
+            cultural happening, celebrating underground music and visual arts.
           </p>
           <br />
           <p>
-            They sought to establish a cohesive brand identity that resonated
-            with their innovative approach to software development consulting.
-            Their existing identity and online presence lacked a unified visual
-            language, making it challenging to communicate their values and
-            expertise effectively.
+            The vision was to create an inclusive platform that captured the raw
+            energy and diversity of Helsinki’s nightlife with a UK twist. The
+            brand identity needed to reflect this spirit—bold, memorable, and
+            flexible for both digital and print promotion.
           </p>
           <br />
           <p>
-            The task was the complete rebranding of the company name and
-            aesthetic. Starting from the strategic pillars, purpose, core values
-            following following visual identity, down to the most minute
-            details, applications and all the various other bits and bobs for
-            eg. marketing, events, recruitment and cultural purposes.
-          </p>
-          <br />
-          <p>
-            Both print and online assets were conceptualized, designed and
-            delivered during a 16 month period. DT also prepared Figma based
-            Brand Identity Guidelines and a Design System in React TS. Most of
-            the ground work was put in the strategic positioning and
-            differentiation from the competition.
+            The work included developing the Garage Junction name, logo, and
+            visual identity, as well as designing event materials, social media
+            assets, and a modular design system for future use. The result was a
+            brand that resonated with the target audience and helped establish
+            Garage Junction as a recognized name in the city’s club culture.
           </p>
         </div>
       </div>
@@ -154,21 +147,24 @@ const GarageJunction = () => (
       <div className={styles.twoCol}>
         <div>
           <p>
-            New Things Co needed a new identity and digital presence to reflect
-            their growth and vision. We collaborated closely to define their
-            brand strategy, visual language, and digital experience.
+            Garage Junction needed a distinctive identity and digital presence
+            to launch its event at Merikerho. DT worked closely with the
+            organizers to define the brand’s strategy, visual language, and
+            promotional materials, ensuring a consistent experience across all
+            touchpoints.
           </p>
         </div>
         <div>
           <ul className={styles.projectMeta}>
             <li>
-              <strong>Client:</strong> New Things Co
+              <strong>Client:</strong> Garage Junction / Merikerho
             </li>
             <li>
-              <strong>Year:</strong> 2017
+              <strong>Year:</strong> 2018
             </li>
             <li>
-              <strong>Services:</strong> Branding, Design System, Web Design
+              <strong>Services:</strong> Branding, Visual Identity, Event
+              Promotion, Social Media Assets
             </li>
           </ul>
         </div>
@@ -182,22 +178,33 @@ const GarageJunction = () => (
       </Title>
       <div className={styles.processSteps}>
         <div className={styles.processStep}>
-          <Title level={4}>01. Discovery</Title>
+          <Title level={4}>01. Research & Discovery</Title>
           <p>
-            Workshops and interviews to understand the brand, users, and goals.
+            Explored Helsinki’s club scene and audience expectations. Conducted
+            workshops with the organizing team to define the event’s core values
+            and vision.
           </p>
         </div>
         <div className={styles.processStep}>
-          <Title level={4}>02. Strategy</Title>
-          <p>Brand positioning, messaging, and visual direction.</p>
+          <Title level={4}>02. Brand Strategy</Title>
+          <p>
+            Developed the Garage Junction name, positioning, and messaging to
+            capture the event’s underground and collaborative ethos.
+          </p>
         </div>
         <div className={styles.processStep}>
-          <Title level={4}>03. Design</Title>
-          <p>Identity, design system, and website design.</p>
+          <Title level={4}>03. Visual Identity</Title>
+          <p>
+            Designed the logo, color palette, and graphic elements. Created
+            digital and print materials for event promotion and social media.
+          </p>
         </div>
         <div className={styles.processStep}>
-          <Title level={4}>04. Delivery</Title>
-          <p>Final assets, documentation, and launch support.</p>
+          <Title level={4}>04. Launch & Support</Title>
+          <p>
+            Delivered final assets and provided ongoing support for event
+            rollouts and future branding needs.
+          </p>
         </div>
       </div>
     </section>
@@ -208,16 +215,17 @@ const GarageJunction = () => (
         Results
       </Title>
       <p>
-        The branding efforts paid off and New Things Co was on its way to being
-        established as the small but fierce new player in the Finnish ITC-market
-        early 2018.
+        Garage Junction quickly gained recognition as a fresh and authentic
+        addition to Helsinki’s nightlife. The brand identity helped attract a
+        loyal following and fostered a collaborative community around music and
+        art.
       </p>
       <br />
       <ul className={styles.resultsList}>
-        <li>New brand identity and guidelines</li>
-        <li>Comprehensive design system</li>
-        <li>Modern, responsive online presence</li>
-        <li>Improved brand recognition and engagement</li>
+        <li>Distinctive brand identity and event visuals</li>
+        <li>Successful launch at Merikerho with strong attendance</li>
+        <li>Engaged community of artists, DJs, and attendees</li>
+        <li>Flexible design system for future events and promotions</li>
       </ul>
     </section>
   </main>

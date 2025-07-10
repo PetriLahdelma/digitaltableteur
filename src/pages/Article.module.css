@@ -47,17 +47,30 @@ p + :not(p, blockquote) {
   font-style: italic;
 }
 
-.article img {
-  width: 100%;
-  max-width: 100%;
-  display: block;
-  margin: 2rem 0;
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
-.authorContainer {
+.metaRow p {
+  color: var(--primary-text-color);
+  font-size: 1rem;
+}
+
+.metaRow > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1.2;
+}
+
+div.authorContainer {
   display: flex;
   align-items: center; /* Align image and text vertically */
   gap: 0.5rem; /* Add spacing between image and text */
+  margin: 0;
 }
 
 .author {
@@ -67,6 +80,19 @@ p + :not(p, blockquote) {
   font-weight: 500;
   font-size: 1.1rem;
   color: var(--color-primary);
+}
+
+.author > img {
+  margin-block: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.article img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: 2rem 0;
 }
 
 .video {
