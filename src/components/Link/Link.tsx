@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Link.module.css";
-import "../../styles/variables.css";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 interface LinkProps {
