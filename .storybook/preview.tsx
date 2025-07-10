@@ -68,6 +68,7 @@ const withI18next = (Story, context) => {
   useEffect(() => {
     setThemeClass(theme);
     localStorage.setItem(THEME_KEY, theme);
+    localStorage.setItem("theme", theme);
     if (typeof window !== "undefined") {
       document.body.style.background = theme === "dark" ? "#000" : "#fff";
     }

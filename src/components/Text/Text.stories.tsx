@@ -1,6 +1,7 @@
 import React from "react";
 import Text from "./Text";
 import { within } from "@storybook/testing-library";
+import { useTranslation } from "react-i18next";
 
 export default {
   title: "Components/Text",
@@ -26,11 +27,16 @@ export default {
   },
 };
 
-const Template = (args: any) => <Text {...args} />;
+const TextStory: React.FC<any> = (args) => {
+  const { t } = useTranslation();
+  return <Text {...args}>{t(args.children as string)}</Text>;
+};
+
+const Template = (args: any) => <TextStory {...args} />;
 
 export const Playground: any = Template.bind({});
 Playground.args = {
-  children: "Play with the Text component!",
+  children: "storyTextPlayground",
   as: "p",
   size: "M",
   terminals: "sans",
@@ -42,35 +48,51 @@ Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   await canvas.findByText(/play with the text component!/i);
 };
 
-export const Default = () => <Text>This is default text.</Text>;
+export const Default = () => {
+  const { t } = useTranslation();
+  return <Text>{t("storyTextDefault")}</Text>;
+};
 
-export const AsSpan = () => <Text as="span">This is a span text.</Text>;
+export const AsSpan = () => {
+  const { t } = useTranslation();
+  return <Text as="span">{t("storyTextSpan")}</Text>;
+};
 
-export const CustomClass = () => (
-  <Text className="custom-class">Text with custom class</Text>
-);
+export const CustomClass = () => {
+  const { t } = useTranslation();
+  return <Text className="custom-class">{t("storyTextCustom")}</Text>;
+};
 
-export const AllTags = () => (
-  <>
-    <Text as="p">Paragraph</Text>
-    <Text as="span">Span</Text>
-    <Text as="div">Div</Text>
-    <Text as="strong">Strong</Text>
-    <Text as="em">Emphasized</Text>
-  </>
-);
+export const AllTags = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <Text as="p">{t("storyTextParagraph")}</Text>
+      <Text as="span">{t("storyTextSpanTag")}</Text>
+      <Text as="div">{t("storyTextDiv")}</Text>
+      <Text as="strong">{t("storyTextStrong")}</Text>
+      <Text as="em">{t("storyTextEmphasized")}</Text>
+    </>
+  );
+};
 
-export const Sizes = () => (
-  <>
-    <Text size="S">Small text (S)</Text>
-    <Text size="M">Medium text (M, default)</Text>
-    <Text size="L">Large text (L)</Text>
-  </>
-);
+export const Sizes = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <Text size="S">{t("storyTextSmall")}</Text>
+      <Text size="M">{t("storyTextMedium")}</Text>
+      <Text size="L">{t("storyTextLarge")}</Text>
+    </>
+  );
+};
 
-export const SerifAndSans = () => (
-  <>
-    <Text terminals="sans">Sans-serif text</Text>
-    <Text terminals="serif">Serif text</Text>
-  </>
-);
+export const SerifAndSans = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <Text terminals="sans">{t("storyTextSans")}</Text>
+      <Text terminals="serif">{t("storyTextSerif")}</Text>
+    </>
+  );
+};

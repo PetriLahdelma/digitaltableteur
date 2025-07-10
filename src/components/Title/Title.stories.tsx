@@ -1,43 +1,56 @@
 import React from "react";
 import Title from "./Title";
 import { within } from "@storybook/testing-library";
+import { useTranslation } from "react-i18next";
 
 export default {
   title: "Components/Title",
   component: Title,
 };
 
-export const AllSizes = () => (
-  <>
-    <Title size="S">Small Title</Title>
-    <Title size="M">Medium Title</Title>
-    <Title size="L">Large Title</Title>
-    <Title size="XL">Extra Large Title</Title>
-  </>
-);
+export const AllSizes = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <Title size="S">{t("storyTitleSmall")}</Title>
+      <Title size="M">{t("storyTitleMedium")}</Title>
+      <Title size="L">{t("storyTitleLarge")}</Title>
+      <Title size="XL">{t("storyTitleXL")}</Title>
+    </>
+  );
+};
 
-export const AllLevels = () => (
-  <>
-    <Title level={1}>Heading 1</Title>
-    <Title level={2}>Heading 2</Title>
-    <Title level={3}>Heading 3</Title>
-    <Title level={4}>Heading 4</Title>
-    <Title level={5}>Heading 5</Title>
-    <Title level={6}>Heading 6</Title>
-  </>
-);
+export const AllLevels = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <Title level={1}>{t("storyHeading1")}</Title>
+      <Title level={2}>{t("storyHeading2")}</Title>
+      <Title level={3}>{t("storyHeading3")}</Title>
+      <Title level={4}>{t("storyHeading4")}</Title>
+      <Title level={5}>{t("storyHeading5")}</Title>
+      <Title level={6}>{t("storyHeading6")}</Title>
+    </>
+  );
+};
 
-export const CustomTagAndClass = () => (
-  <Title as="div" className="custom-class" size="M">
-    Custom Tag (div) with custom class
-  </Title>
-);
+export const CustomTagAndClass = () => {
+  const { t } = useTranslation();
+  return (
+    <Title as="div" className="custom-class" size="M">
+      {t("storyTitleCustom")}
+    </Title>
+  );
+};
 
-export const Playground = (args: any) => <Title {...args} />;
+export const Playground = (args: any) => {
+  const { t } = useTranslation();
+  return <Title {...args}>{t(args.children)}</Title>;
+};
 Playground.args = {
   level: 2,
   size: "M",
-  children: "Play with the Title component!",
+  children: "storyTitlePlayground",
 };
 Playground.argTypes = {
   level: {
