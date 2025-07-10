@@ -1,3 +1,6 @@
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
+
 .article {
   max-width: 60rem;
   margin: 0 auto;
@@ -29,11 +32,11 @@
   margin-top: 1.5rem;
 }
 
-.article h3 + p {
+h3 + p {
   margin-block-start: 1rem;
 }
 
-.article p + :not(p, blockquote) {
+p + :not(p, blockquote) {
   padding-block-start: 2rem;
 }
 
@@ -105,7 +108,7 @@
   outline: 3px solid var(--color-primary);
 }
 
-.article caption {
+caption {
   font-family: var(--primary-body-font, sans-serif);
   font-size: 0.9rem;
   color: var(--primary-text-color);
@@ -118,12 +121,8 @@
   font-family: var(--secondary-bold-font);
 }
 
-.article b {
-  font-family: TiemposText-Bold, serif;
-  font-weight: 600;
-}
-
-.article strong {
+.article b,
+strong {
   font-family: TiemposText-Bold, serif;
   font-weight: 600;
 }

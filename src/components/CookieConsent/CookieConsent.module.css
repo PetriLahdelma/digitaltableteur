@@ -1,3 +1,6 @@
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
+
 .cookieConsent {
   background-color: var(--color-gray-light);
   border-top: 1px solid var(--color-gray);

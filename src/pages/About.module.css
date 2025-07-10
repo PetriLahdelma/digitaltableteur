@@ -1,3 +1,6 @@
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
+
 .about {
   text-align: left;
 }
