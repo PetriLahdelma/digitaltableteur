@@ -3,6 +3,8 @@ import styles from "./illustrations.module.css";
 import Title from "@dt/Title";
 import Grid from "@dt/Grid";
 import WorkNav from "@dt/WorkNav";
+import FlexBox from "@dt/FlexBox";
+import Badge from "@dt/Badge";
 
 const illustrations = () => (
   <main className={styles.caseStudy}>
@@ -10,17 +12,20 @@ const illustrations = () => (
     <section className={styles.caseHeroSection}>
       <div className={styles.heroText}>
         <Title level={1}>Illustrations</Title>
-        {/* <FlexBox className={styles.caseBadges} gap={8}>
+        <FlexBox className={styles.caseBadges} gap={8}>
           <Badge size="s" design="secondary">
-            Branding
+            Pencil & Paper
           </Badge>
           <Badge size="s" design="secondary">
-            Design System
+            Brush & Paint
           </Badge>
           <Badge size="s" design="secondary">
-            Web Design
+            Vector
           </Badge>
-        </FlexBox> */}
+          <Badge size="s" design="secondary">
+            Pixel
+          </Badge>
+        </FlexBox>
         <Grid columns={3} gap="2rem" style={{ marginBottom: "2rem" }}>
           <img
             src="/images/portfolio/illustrations/gallery/ice-cream.webp"

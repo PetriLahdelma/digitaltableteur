@@ -79,9 +79,13 @@ const Header = () => {
               <Link
                 to="/work"
                 className={
-                  location.pathname.startsWith("/work")
-                    ? styles.selected
-                    : undefined
+                  styles.navLink +
+                  " " +
+                  (location.pathname.startsWith("/work") ? styles.selected : "")
+                }
+                tabIndex={0}
+                aria-current={
+                  location.pathname.startsWith("/work") ? "page" : undefined
                 }
               >
                 {t("navWork")}

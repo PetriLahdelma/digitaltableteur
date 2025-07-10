@@ -4,6 +4,7 @@ import styles from "../Article.module.css";
 import Author from "@dt/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Card from "@dt/Card";
+import Text from "@dt/Text";
 import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
 
@@ -42,7 +43,10 @@ const PetriLahdelmaBio = () => {
       <article className={styles.article}>
         <header>
           <h1>Petri Lahdelma: A Biography</h1>
-          <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          <div className={styles.metaRow}>
+            <Text className={styles.releaseDate}>July 11, 2025</Text>
+            <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          </div>
         </header>
         <p>
           Petri Lahdelma is a Finnish designer, systems thinker, and advocate
