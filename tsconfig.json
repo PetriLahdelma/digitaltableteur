@@ -18,16 +18,24 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@dt/*": ["src/components/*"]
+      "@dt/*": [
+        "src/components/*"
+      ]
     },
     "types": [
       "vitest"
-    ]
+    ],
+    "incremental": true
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/App.tsx",
+    "**/*.stories.tsx"
   ]
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Title.module.css";
-import "../../styles/variables.css";
 
 type TitleSize = "S" | "M" | "L" | "XL";
 type TitleTerminals = "sans" | "serif";
