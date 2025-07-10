@@ -6,6 +6,7 @@ import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Card from "@dt/Card";
 import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
+import Text from "@dt/Text";
 
 const Designing2025 = () => {
   const { t } = useTranslation();
@@ -46,7 +47,10 @@ const Designing2025 = () => {
             <br />
             Navigating the AI-Assisted Creative Landscape
           </h1>
-          <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          <div className={styles.metaRow}>
+            <Text className={styles.releaseDate}>July 11, 2025</Text>
+            <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          </div>
         </header>
         <p>
           After more than two decades in the design field, I’ve had the pleasure
