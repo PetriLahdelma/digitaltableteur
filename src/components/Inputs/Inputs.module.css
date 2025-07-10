@@ -1,3 +1,6 @@
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
+
 .inputContainer {
   display: flex;
   flex-direction: column;

@@ -1,3 +1,6 @@
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
+
 .label {
   font-size: 1rem; /* 16px */
   font-family: Moderat, sans-serif;
