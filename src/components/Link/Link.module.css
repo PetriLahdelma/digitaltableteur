@@ -1,3 +1,6 @@
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
+
 .link {
   color: var(--link-color);
   display: inline-flex;

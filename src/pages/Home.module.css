@@ -1,3 +1,6 @@
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
+
 .home {
   text-align: left;
   padding-inline: 2rem;
@@ -7,7 +10,7 @@
   margin-block-end: var(--space-layout-96);
 }
 
-.homeTitle {
+h1 {
   font-family: var(--primary-heading-font);
   font-size: 8rem;
   font-weight: 500;
@@ -65,7 +68,7 @@
 }
 
 @media (width <= 768px) {
-  .homeTitle {
+  h1 {
     font-size: 4rem;
     margin-block-start: -3.84rem;
   }

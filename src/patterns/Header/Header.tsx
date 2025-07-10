@@ -1,7 +1,8 @@
 import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
+import "../../styles/variables.css";
+import "../../styles/fonts.css";
 import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
 import { useTheme } from "@dt/ThemeProvider";
 import { WiMoonAltNew } from "react-icons/wi";
@@ -23,7 +24,7 @@ function getCookie(name: string) {
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const { t, i18n } = useTranslation();
-  const { pathname } = useRouter();
+  const location = useLocation();
   const languages = [
     { code: "en", label: t("langEN") },
     { code: "fi", label: t("langFI") },
@@ -59,24 +60,28 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <Link href="/" className={styles.logoLink}>
+        <Link to="/" className={styles.logoLink}>
           <img src={Logo} alt={t("headerLogoAlt")} className={styles.logo} />
         </Link>
         <nav className={styles.navbar}>
           <ul className={styles.nav}>
             <li>
               <Link
-                href="/"
-                className={pathname === "/" ? styles.selected : undefined}
+                to="/"
+                className={
+                  location.pathname === "/" ? styles.selected : undefined
+                }
               >
                 {t("navHome")}
               </Link>
             </li>
             <li>
               <Link
-                href="/work"
+                to="/work"
                 className={
-                  pathname.startsWith("/work") ? styles.selected : undefined
+                  location.pathname.startsWith("/work")
+                    ? styles.selected
+                    : undefined
                 }
               >
                 {t("navWork")}
@@ -84,9 +89,11 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="/about"
+                to="/about"
                 className={
-                  pathname.startsWith("/about") ? styles.selected : undefined
+                  location.pathname.startsWith("/about")
+                    ? styles.selected
+                    : undefined
                 }
               >
                 {t("navAbout")}
@@ -94,9 +101,11 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="/blog"
+                to="/blog"
                 className={
-                  pathname.startsWith("/blog") ? styles.selected : undefined
+                  location.pathname.startsWith("/blog")
+                    ? styles.selected
+                    : undefined
                 }
               >
                 {t("navBlog")}
@@ -104,9 +113,11 @@ const Header = () => {
             </li>
             <li>
               <Link
-                href="/contact"
+                to="/contact"
                 className={
-                  pathname.startsWith("/contact") ? styles.selected : undefined
+                  location.pathname.startsWith("/contact")
+                    ? styles.selected
+                    : undefined
                 }
               >
                 {t("navContact")}

@@ -19,7 +19,7 @@ export { default as Layout } from "./Layout/Layout";
 export { default as Link } from "./Link/Link";
 export { default as Modal } from "./Modal/Modal";
 export { default as Select } from "./Select/Select";
-export { default as SocialShare } from "./SocialShare";
+export { default as SocialShare } from "./SocialShare/SocialShare";
 export { default as Text } from "./Text/Text";
 export { ThemeProvider, useTheme } from "./ThemeProvider/ThemeProvider";
 export { default as Title } from "./Title/Title";
