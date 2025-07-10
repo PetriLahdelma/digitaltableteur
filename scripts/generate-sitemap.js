@@ -2,12 +2,37 @@ const fs = require("fs");
 const path = require("path");
 
 const BASE_URL = "https://digitaltableteur.com";
-const ROUTES = [
-  "/",
-  "/about",
-  "/contact",
-  "/blog",
-  "/work",
+const PAGES_DIR = path.join(__dirname, "../src/pages");
+
+// Recursively scan pages directory for .tsx files (excluding files starting with _ or [)
+function getPageRoutes(dir, prefix = "") {
+  let routes = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      routes = routes.concat(
+        getPageRoutes(path.join(dir, entry.name), prefix + "/" + entry.name)
+      );
+    } else if (
+      entry.isFile() &&
+      entry.name.endsWith(".tsx") &&
+      !entry.name.startsWith("_") &&
+      !entry.name.startsWith("[")
+    ) {
+      let route =
+        prefix +
+        "/" +
+        entry.name.replace(/index\.tsx$/, "").replace(/\.tsx$/, "");
+      route = route.replace(/\/+/g, "/"); // Remove duplicate slashes
+      if (route === "") route = "/";
+      routes.push(route);
+    }
+  }
+  return routes;
+}
+
+// Hardcoded routes for special/dynamic pages
+const EXTRA_ROUTES = [
   "/cookie-policy-full",
   "/cookie-policy-full-fi",
   "/cookie-policy-full-sv",
@@ -21,7 +46,12 @@ const ROUTES = [
   // Work pages
   "/work/new-things-co",
   "/work/illustrations",
+  "/garage-junction",
 ];
+
+let ROUTES = getPageRoutes(PAGES_DIR);
+ROUTES = Array.from(new Set([...ROUTES, ...EXTRA_ROUTES]));
+
 const PRIORITY = {
   "/": "1.0",
   "/about": "0.8",
@@ -39,6 +69,7 @@ const PRIORITY = {
   "/blog/petri-lahdelma-bio": "0.6",
   "/work/new-things-co": "0.7",
   "/work/illustrations": "0.7",
+  "/garage-junction": "0.7",
 };
 const CHANGEFREQ = {
   "/": "daily",
@@ -57,6 +88,7 @@ const CHANGEFREQ = {
   "/blog/petri-lahdelma-bio": "yearly",
   "/work/new-things-co": "yearly",
   "/work/illustrations": "yearly",
+  "/garage-junction": "yearly",
 };
 
 const today = new Date().toISOString().slice(0, 10);
@@ -66,12 +98,7 @@ const xml = [
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
   ...ROUTES.map(
     (route) =>
-      `  <url>
-    <loc>${BASE_URL}${route}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${CHANGEFREQ[route]}</changefreq>
-    <priority>${PRIORITY[route]}</priority>
-  </url>`,
+      `  <url>\n    <loc>${BASE_URL}${route}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${CHANGEFREQ[route] || "yearly"}</changefreq>\n    <priority>${PRIORITY[route] || "0.5"}</priority>\n  </url>`,
   ),
   "</urlset>",
 ].join("\n");
