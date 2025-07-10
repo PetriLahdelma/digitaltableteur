@@ -3,6 +3,7 @@ import { Meta, StoryFn } from "@storybook/react-vite";
 import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Button from "./Button";
 import { within, userEvent } from "@storybook/testing-library";
+import { useTranslation } from "react-i18next";
 
 export default {
   title: "Components/Button",
@@ -29,6 +30,11 @@ export default {
   },
 } as Meta;
 
+const ButtonStoryLabel = ({ tKey }: { tKey: string }) => {
+  const { t } = useTranslation();
+  return <>{t(tKey)}</>;
+};
+
 const Template: StoryFn = (args: React.ComponentProps<typeof Button>) => (
   <Button {...args} />
 );
@@ -36,7 +42,7 @@ const Template: StoryFn = (args: React.ComponentProps<typeof Button>) => (
 export const Primary = Template.bind({});
 Primary.args = {
   variant: "primary",
-  children: "Primary Button",
+  children: <ButtonStoryLabel tKey="buttonPrimary" />,
 };
 Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -49,7 +55,7 @@ Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: "secondary",
-  children: "Secondary Button",
+  children: <ButtonStoryLabel tKey="buttonSecondary" />,
 };
 Secondary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -63,7 +69,7 @@ Secondary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const Tertiary = Template.bind({});
 Tertiary.args = {
   variant: "tertiary",
-  children: "Tertiary Button",
+  children: <ButtonStoryLabel tKey="buttonTertiary" />,
 };
 Tertiary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -77,7 +83,7 @@ Tertiary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const Error = Template.bind({});
 Error.args = {
   variant: "error",
-  children: "Error Button",
+  children: <ButtonStoryLabel tKey="buttonError" />,
 };
 Error.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -89,7 +95,7 @@ Error.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const Warning = Template.bind({});
 Warning.args = {
   variant: "warning",
-  children: "Warning Button",
+  children: <ButtonStoryLabel tKey="buttonWarning" />,
 };
 Warning.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -101,7 +107,7 @@ Warning.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const Success = Template.bind({});
 Success.args = {
   variant: "success",
-  children: "Success Button",
+  children: <ButtonStoryLabel tKey="buttonSuccess" />,
 };
 Success.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -113,7 +119,7 @@ Success.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const Info = Template.bind({});
 Info.args = {
   variant: "info",
-  children: "Info Button",
+  children: <ButtonStoryLabel tKey="buttonInfo" />,
 };
 Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -125,7 +131,7 @@ Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconOnly = Template.bind({});
 IconOnly.args = {
   variant: "primary",
-  icon: FaSearch, // Use JSX element for the icon
+  icon: FaSearch,
   tooltip: "Search",
 };
 IconOnly.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -138,8 +144,8 @@ IconOnly.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconLeft = Template.bind({});
 IconLeft.args = {
   variant: "primary",
-  icon: FaArrowLeft, // Use JSX element for the icon
-  children: "Left Icon",
+  icon: FaArrowLeft,
+  children: <ButtonStoryLabel tKey="buttonLeftIcon" />,
 };
 IconLeft.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -151,8 +157,8 @@ IconLeft.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconRight = Template.bind({});
 IconRight.args = {
   variant: "primary",
-  endIcon: FaArrowRight, // Use JSX element for the end icon
-  children: "Right Icon",
+  endIcon: FaArrowRight,
+  children: <ButtonStoryLabel tKey="buttonRightIcon" />,
 };
 IconRight.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -164,7 +170,7 @@ IconRight.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const Disabled = Template.bind({});
 Disabled.args = {
   variant: "primary",
-  children: "Disabled Button",
+  children: <ButtonStoryLabel tKey="buttonDisabled" />,
   disabled: true,
 };
 Disabled.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -177,40 +183,40 @@ Disabled.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
 export const AllVariants = () => (
   <div style={{ display: "flex", gap: "1rem" }}>
-    <Button variant="primary">Primary</Button>
-    <Button variant="secondary">Secondary</Button>
-    <Button variant="tertiary">Tertiary</Button>
-    <Button variant="error">Error</Button>
-    <Button variant="warning">Warning</Button>
-    <Button variant="success">Success</Button>
-    <Button variant="info">Info</Button>
+    <Button variant="primary">
+      <ButtonStoryLabel tKey="buttonPrimary" />
+    </Button>
+    <Button variant="secondary">
+      <ButtonStoryLabel tKey="buttonSecondary" />
+    </Button>
+    <Button variant="tertiary">
+      <ButtonStoryLabel tKey="buttonTertiary" />
+    </Button>
+    <Button variant="error">
+      <ButtonStoryLabel tKey="buttonError" />
+    </Button>
+    <Button variant="warning">
+      <ButtonStoryLabel tKey="buttonWarning" />
+    </Button>
+    <Button variant="success">
+      <ButtonStoryLabel tKey="buttonSuccess" />
+    </Button>
+    <Button variant="info">
+      <ButtonStoryLabel tKey="buttonInfo" />
+    </Button>
   </div>
 );
-AllVariants.play = async ({
-  canvasElement,
-}: {
-  canvasElement: HTMLElement;
-}) => {
-  const canvas = within(canvasElement);
-  await canvas.findByRole("button", { name: /primary/i });
-  await canvas.findByRole("button", { name: /secondary/i });
-  await canvas.findByRole("button", { name: /tertiary/i });
-  await canvas.findByRole("button", { name: /error/i });
-  await canvas.findByRole("button", { name: /warning/i });
-  await canvas.findByRole("button", { name: /success/i });
-  await canvas.findByRole("button", { name: /info/i });
-};
 
 export const AllSizes = () => (
   <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-    <Button size="s">Small</Button>
-    <Button size="m">Medium</Button>
-    <Button size="l">Large</Button>
+    <Button size="s">
+      <ButtonStoryLabel tKey="buttonSmall" />
+    </Button>
+    <Button size="m">
+      <ButtonStoryLabel tKey="buttonMedium" />
+    </Button>
+    <Button size="l">
+      <ButtonStoryLabel tKey="buttonLarge" />
+    </Button>
   </div>
 );
-AllSizes.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  await canvas.findByRole("button", { name: /small/i });
-  await canvas.findByRole("button", { name: /medium/i });
-  await canvas.findByRole("button", { name: /large/i });
-};

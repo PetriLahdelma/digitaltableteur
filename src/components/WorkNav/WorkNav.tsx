@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 const workPages = [
   { path: "/work/new-things-co", labelKey: "workNavNewThingsCo" },
   { path: "/work/illustrations", labelKey: "workNavIllustrations" },
+  { path: "/work/garage-junction", labelKey: "workNavGarageJunction" },
 ];
 
 const WorkNav: React.FC = () => {

@@ -3,6 +3,7 @@ import styles from "./Badge.module.css";
 import * as FaIcons from "react-icons/fa";
 import Button from "@dt/Button";
 import { IoMdClose } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
 // Dynamically create options and mapping for all icons
 const iconOptions = {
@@ -24,51 +25,64 @@ interface BadgeProps {
   size?: "s" | "m" | "l"; // New size prop
 }
 
-export const Badge: React.FC<BadgeProps> = ({
-  children,
-  design = "primary",
-  state,
-  className = "",
-  removable = false,
-  onRemove,
-  icon,
-  square = false,
-  size = "m", // Default to medium
-}) => {
-  const [visible, setVisible] = useState(true);
-  if (!visible) return null;
-  return (
-    <span
-      className={[
-        styles.badge,
-        styles[design],
-        state ? styles[state] : "",
-        styles[size], // Add size class
-        className,
-        square ? styles.square : "",
-        removable ? styles.removable : "",
-      ]
-        .filter(Boolean)
-        .join(" ")}
-    >
-      {icon && <span className={styles.icon}>{icon}</span>}
-      {children}
-      {removable && (
-        <Button
-          size={size === "s" ? "s" : size === "l" ? "l" : "m"}
-          type="button"
-          icon={IoMdClose ? <IoMdClose /> : null}
-          className={styles.closeButton}
-          aria-label="Remove badge"
-          accessibleName="Remove badge"
-          onClick={() => {
-            setVisible(false);
-            if (onRemove) onRemove();
-          }}
-        ></Button>
-      )}
-    </span>
-  );
-};
+export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
+  (
+    {
+      children,
+      design = "primary",
+      state,
+      removable = false,
+      onRemove,
+      icon,
+      className,
+      square = false,
+      size = "m",
+      ...rest
+    },
+    ref,
+  ) => {
+    const { t } = useTranslation();
+    const [visible, setVisible] = useState(true);
+    if (!visible) return null;
+    return (
+      <span
+        ref={ref}
+        {...rest}
+        className={[
+          styles.badge,
+          styles[design],
+          state ? styles[state] : "",
+          styles[size], // Add size class
+          className,
+          square ? styles.square : "",
+          removable ? styles.removable : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        {icon && <span className="badge__icon">{icon}</span>}
+        <span className="badge__content">
+          {typeof children === "string" ? t(children) : children}
+        </span>
+        {removable && (
+          <Button
+            size={size === "s" ? "s" : size === "l" ? "l" : "m"}
+            type="button"
+            icon={IoMdClose ? <IoMdClose /> : null}
+            className={styles.closeButton}
+            aria-label={t("badgeRemove")}
+            accessibleName={t("badgeRemove")}
+            onClick={() => {
+              setVisible(false);
+              if (onRemove) onRemove();
+            }}
+          ></Button>
+        )}
+      </span>
+    );
+  },
+);
+
+Badge.displayName = "Badge";
 
 export default Badge;
