@@ -3,6 +3,7 @@ import Link from "./Link";
 import { Meta, StoryFn } from "@storybook/react-vite";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { within, userEvent } from "@storybook/testing-library";
+import { useTranslation } from "react-i18next";
 
 export default {
   title: "Components/Link",
@@ -19,15 +20,20 @@ export default {
   },
 } as Meta;
 
+const LinkStory: React.FC<React.ComponentProps<typeof Link>> = (args) => {
+  const { t } = useTranslation();
+  return <Link {...args}>{t(args.children as string)}</Link>;
+};
+
 const Template: StoryFn<typeof Link> = (
   args: React.ComponentProps<typeof Link>,
-) => <Link {...args} />;
+) => <LinkStory {...args} />;
 
 export const Playground = Template.bind({});
 Playground.args = {
   size: "M",
   href: "https://example.com",
-  children: "Playground Link",
+  children: "storyLinkPlayground",
 };
 Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -41,7 +47,7 @@ export const Small = Template.bind({});
 Small.args = {
   size: "S",
   href: "https://example.com",
-  children: "Small Link",
+  children: "storyLinkSmall",
 };
 Small.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -53,7 +59,7 @@ export const Medium = Template.bind({});
 Medium.args = {
   size: "M",
   href: "https://example.com",
-  children: "Medium Link",
+  children: "storyLinkMedium",
 };
 Medium.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -65,7 +71,7 @@ export const Large = Template.bind({});
 Large.args = {
   size: "L",
   href: "https://example.com",
-  children: "Large Link",
+  children: "storyLinkLarge",
 };
 Large.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
