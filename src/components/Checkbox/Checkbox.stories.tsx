@@ -2,6 +2,7 @@ import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
 import { within, userEvent } from "@storybook/testing-library";
 import Checkbox, { CheckboxProps } from "./Checkbox";
+import { useTranslation } from "react-i18next";
 
 export default {
   title: "Components/Checkbox",
@@ -13,13 +14,18 @@ export default {
   },
 } as Meta<CheckboxProps>;
 
+const StoryLabel = ({ tKey }: { tKey: string }) => {
+  const { t } = useTranslation();
+  return <>{t(tKey)}</>;
+};
+
 const Template: StoryFn<CheckboxProps> = (args: CheckboxProps) => (
   <Checkbox {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  label: "Default Checkbox",
+  label: <StoryLabel tKey="storyCheckboxDefault" />,
 };
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -29,7 +35,7 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
 export const Checked = Template.bind({});
 Checked.args = {
-  label: "Checked Checkbox",
+  label: <StoryLabel tKey="storyCheckboxChecked" />,
   checked: true,
 };
 Checked.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -39,7 +45,7 @@ Checked.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
 export const Indeterminate = Template.bind({});
 Indeterminate.args = {
-  label: "Indeterminate Checkbox",
+  label: <StoryLabel tKey="storyCheckboxIndeterminate" />,
   checked: false,
   indeterminate: true,
 };
