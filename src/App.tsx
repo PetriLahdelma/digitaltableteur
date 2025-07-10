@@ -8,6 +8,7 @@ const Home = React.lazy(() => import("./pages/Home"));
 const Work = React.lazy(() => import("./pages/Work"));
 const NewThingsCo = React.lazy(() => import("./pages/work/newThingsCo"));
 const Illustrations = React.lazy(() => import("./pages/work/illustrations"));
+const GarageJunction = React.lazy(() => import("./pages/work/garageJunction"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Blog = React.lazy(() => import("./pages/Blog"));
@@ -108,6 +109,10 @@ function App() {
               />
               <Route path="/work/new-things-co" element={<NewThingsCo />} />
               <Route path="/work/illustrations" element={<Illustrations />} />
+              <Route
+                path="/work/garage-junction"
+                element={<GarageJunction />}
+              />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>

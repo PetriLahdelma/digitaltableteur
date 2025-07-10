@@ -2,6 +2,7 @@ import React from "react";
 import Badge from "./Badge";
 import * as FaIcons from "react-icons/fa";
 import { within, userEvent } from "@storybook/testing-library";
+import { useTranslation } from "react-i18next";
 
 // Dynamically generate all icon options from react-icons/fa
 const iconOptions = {
@@ -65,7 +66,19 @@ export default {
 import { StoryFn } from "@storybook/react-vite";
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
-const Template: StoryFn<BadgeProps> = (args: BadgeProps) => <Badge {...args} />;
+// Template as a component to avoid hook issues
+const BadgeStoryTemplate: React.FC<BadgeProps> = (args) => {
+  const { t } = useTranslation();
+  let content = args.children;
+  if (typeof args.children === "string" && args.children.startsWith("badge")) {
+    content = t(args.children);
+  }
+  return <Badge {...args}>{content}</Badge>;
+};
+
+const Template: StoryFn<BadgeProps> = (args: BadgeProps) => (
+  <BadgeStoryTemplate {...args} />
+);
 
 export const Playground = Template.bind({});
 Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -74,27 +87,30 @@ Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   await userEvent.tab();
 };
 
-export const AllVariants: StoryFn<BadgeProps> = (args) => (
-  <div style={{ display: "flex", gap: "1rem" }}>
-    <Badge design="primary">Primary</Badge>
-    <Badge design="secondary">Secondary</Badge>
-    <Badge design="primary" state="success">
-      Success
-    </Badge>
-    <Badge design="primary" state="info">
-      Info
-    </Badge>
-    <Badge design="primary" state="error">
-      Error
-    </Badge>
-    <Badge design="primary" state="warning">
-      Warning
-    </Badge>
-    <Badge design="primary" state="neutral">
-      Neutral
-    </Badge>
-  </div>
-);
+export const AllVariants: StoryFn<BadgeProps> = (args) => {
+  const { t } = useTranslation();
+  return (
+    <div style={{ display: "flex", gap: "1rem" }}>
+      <Badge design="primary">{t("badgePrimary")}</Badge>
+      <Badge design="secondary">{t("badgeSecondary")}</Badge>
+      <Badge design="primary" state="success">
+        {t("badgeSuccess")}
+      </Badge>
+      <Badge design="primary" state="info">
+        {t("badgeInfo")}
+      </Badge>
+      <Badge design="primary" state="error">
+        {t("badgeError")}
+      </Badge>
+      <Badge design="primary" state="warning">
+        {t("badgeWarning")}
+      </Badge>
+      <Badge design="primary" state="neutral">
+        {t("badgeNeutral")}
+      </Badge>
+    </div>
+  );
+};
 AllVariants.play = async ({
   canvasElement,
 }: {
@@ -113,7 +129,7 @@ AllVariants.play = async ({
 export const Removable = Template.bind({});
 Removable.args = {
   removable: true,
-  children: "Removable Badge",
+  children: "badgeRemovable",
   design: "primary",
   state: undefined,
 };
@@ -122,19 +138,22 @@ Removable.parameters = {
   play: undefined,
 };
 
-export const AllSizes: StoryFn<BadgeProps> = (args) => (
-  <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-    <Badge size="s" design="primary">
-      Small
-    </Badge>
-    <Badge size="m" design="primary">
-      Medium
-    </Badge>
-    <Badge size="l" design="primary">
-      Large
-    </Badge>
-  </div>
-);
+export const AllSizes: StoryFn<BadgeProps> = (args) => {
+  const { t } = useTranslation();
+  return (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+      <Badge size="s" design="primary">
+        {t("badgeSmall")}
+      </Badge>
+      <Badge size="m" design="primary">
+        {t("badgeMedium")}
+      </Badge>
+      <Badge size="l" design="primary">
+        {t("badgeLarge")}
+      </Badge>
+    </div>
+  );
+};
 AllSizes.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByText(/small/i);
