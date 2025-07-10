@@ -1,3 +1,6 @@
+@import url("../styles/variables.css");
+@import url("../styles/fonts.css");
+
 .workPage {
   padding: var(--space-layout-32);
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Grid from "@dt/Grid";
 import styles from "./Home.module.css";
+import "../styles/variables.css";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Link from "@dt/Link";
@@ -73,11 +74,7 @@ const Home = () => {
           </Grid>
         </section>
         <section className={styles.about}>
-          <Title
-            className={`${styles.gradientText} ${styles.homeTitle}`}
-            level={1}
-            size="XL"
-          >
+          <Title className={styles.gradientText} level={1} size="XL">
             {currentText}
           </Title>
           <Grid columns={3} gap="1rem">
