@@ -1,3 +1,6 @@
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
+
 .overlay {
   position: fixed;
   top: 0;

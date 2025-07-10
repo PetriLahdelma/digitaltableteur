@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@dt/Button";
 import { MdArrowBack, MdArrowForward, MdWork } from "react-icons/md";
 import styles from "./worknav.module.css";
-import { useRouter } from "next/router";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const workPages = [
@@ -13,10 +13,9 @@ const workPages = [
 
 const WorkNav: React.FC = () => {
   const { t } = useTranslation();
-  const router = useRouter();
-  const currentPath =
-    router.pathname === "/work/[project]" ? router.asPath : router.pathname;
+  const currentPath = window.location.pathname;
   const currentIndex = workPages.findIndex((p) => p.path === currentPath);
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles.workNavBar}>
@@ -24,7 +23,7 @@ const WorkNav: React.FC = () => {
           variant="tertiary"
           size="m"
           icon={<MdWork />}
-          onClick={() => router.push("/work")}
+          onClick={() => navigate("/work")}
         >
           {t("workNavBackToWork")}
         </Button>
@@ -35,8 +34,7 @@ const WorkNav: React.FC = () => {
             icon={<MdArrowBack />}
             disabled={currentIndex <= 0}
             onClick={() => {
-              if (currentIndex > 0)
-                router.push(workPages[currentIndex - 1].path);
+              if (currentIndex > 0) navigate(workPages[currentIndex - 1].path);
             }}
           >
             {t("workNavPrev")}
@@ -48,7 +46,7 @@ const WorkNav: React.FC = () => {
             disabled={currentIndex === workPages.length - 1}
             onClick={() => {
               if (currentIndex < workPages.length - 1)
-                router.push(workPages[currentIndex + 1].path);
+                navigate(workPages[currentIndex + 1].path);
             }}
           >
             {t("workNavNext")}

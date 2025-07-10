@@ -1,4 +1,6 @@
 /* stylelint-disable order/properties-order */
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
 
 .checkboxContainer {
   display: flex;

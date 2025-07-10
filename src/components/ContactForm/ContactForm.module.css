@@ -1,4 +1,6 @@
-/* stylelint-disable selector-pseudo-class-no-unknown */
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
+
 .contactForm {
   width: 450px;
   margin: 2rem auto;
@@ -33,9 +35,8 @@
   margin-block-end: 0;
 }
 
-.contactForm :global label {
+label {
   font-family: var(--primary-body-font, sans-serif);
   text-align: left;
   justify-content: flex-start;
 }
-/* stylelint-enable selector-pseudo-class-no-unknown */

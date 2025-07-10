@@ -1,3 +1,6 @@
+@import url("../../styles/variables.css");
+@import url("../../styles/fonts.css");
+
 .card {
   display: flex;
   background: var(--color-light-bg, #f9f9f9);
