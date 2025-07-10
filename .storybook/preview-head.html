@@ -3,14 +3,11 @@
     try {
       var theme = localStorage.getItem("storybook-theme") || "light";
       var html = document.documentElement;
-      var body = document.body;
-      if (theme === "dark") {
-        html.classList.add("themeDark");
-        body.style.background = "#000";
-      } else {
-        html.classList.remove("themeDark");
-        body.style.background = "#fff";
-      }
+      html.classList.toggle("themeDark", theme === "dark");
+      var style = document.createElement("style");
+      style.innerHTML =
+        "body{background:" + (theme === "dark" ? "#000" : "#fff") + "}";
+      document.head.appendChild(style);
     } catch (e) {}
   })();
 </script>
