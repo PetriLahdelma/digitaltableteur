@@ -2,6 +2,7 @@ import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
 import { within, userEvent } from "@storybook/testing-library";
 import Label from "./Label";
+import { useTranslation } from "react-i18next";
 
 export default {
   title: "Components/Label",
@@ -15,34 +16,39 @@ export default {
   },
 } as Meta;
 
+const LabelStory: React.FC<React.ComponentProps<typeof Label>> = (args) => {
+  const { t } = useTranslation();
+  return <Label {...args}>{t(args.children as string)}</Label>;
+};
+
 const Template: StoryFn<typeof Label> = (
   args: React.ComponentProps<typeof Label>,
-) => <Label {...args} />;
+) => <LabelStory {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   htmlFor: "input-id",
-  children: "Default Label",
+  children: "storyLabelDefault",
 };
 
 export const WithTooltip = Template.bind({});
 WithTooltip.args = {
   htmlFor: "input-id",
-  children: "Label with Tooltip",
-  title: "This is a tooltip",
+  children: "storyLabelWithTooltip",
+  title: "storyLabelTooltip",
 };
 
 export const Required = Template.bind({});
 Required.args = {
   htmlFor: "input-id",
-  children: "Required Label",
+  children: "storyLabelRequired",
   required: true,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   htmlFor: "input-id",
-  children: "Disabled Label",
+  children: "storyLabelDisabled",
   disabled: true,
 };
 

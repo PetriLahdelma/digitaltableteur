@@ -2,6 +2,7 @@ import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
 import Input from "./Inputs";
 import { within, userEvent } from "@storybook/testing-library";
+import { useTranslation } from "react-i18next";
 
 export default {
   title: "Components/Inputs",
@@ -20,19 +21,29 @@ export default {
   },
 } as Meta;
 
+const InputStory: React.FC<React.ComponentProps<typeof Input>> = (args) => {
+  const { t } = useTranslation();
+  return (
+    <div style={{ maxWidth: "var(--size-width-md)" }}>
+      <Input
+        {...args}
+        label={t(args.label as string)}
+        placeholder={t(args.placeholder as string)}
+        error={args.error ? t(args.error) : undefined}
+      />
+    </div>
+  );
+};
+
 const Template: StoryFn<typeof Input> = (
   args: React.ComponentProps<typeof Input>,
-) => (
-  <div style={{ maxWidth: "var(--size-width-md)" }}>
-    <Input {...args} />
-  </div>
-);
+) => <InputStory {...args} />;
 
 export const TextInput = Template.bind({});
 TextInput.args = {
-  label: "Text Input",
+  label: "storyInputTextLabel",
   type: "text",
-  placeholder: "Enter text",
+  placeholder: "storyInputTextPlaceholder",
 };
 TextInput.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -42,44 +53,44 @@ TextInput.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
 export const NumberInput = Template.bind({});
 NumberInput.args = {
-  label: "Number Input",
+  label: "storyInputNumberLabel",
   type: "number",
-  placeholder: "Enter number",
+  placeholder: "storyInputNumberPlaceholder",
 };
 
 export const EmailInput = Template.bind({});
 EmailInput.args = {
-  label: "Email Input",
+  label: "storyInputEmailLabel",
   type: "email",
-  placeholder: "Enter email",
+  placeholder: "storyInputEmailPlaceholder",
 };
 
 export const PasswordInput = Template.bind({});
 PasswordInput.args = {
-  label: "Password Input",
+  label: "storyInputPasswordLabel",
   type: "password",
-  placeholder: "Enter password",
+  placeholder: "storyInputPasswordPlaceholder",
 };
 
 export const SearchInput = Template.bind({});
 SearchInput.args = {
-  label: "Search Input",
+  label: "storyInputSearchLabel",
   type: "search",
-  placeholder: "Search...",
+  placeholder: "storyInputSearchPlaceholder",
 };
 
 export const InputWithError = Template.bind({});
 InputWithError.args = {
-  label: "Input with Error",
+  label: "storyInputErrorLabel",
   type: "text",
-  placeholder: "Enter text",
-  error: "This field is required",
+  placeholder: "storyInputTextPlaceholder",
+  error: "storyInputErrorText",
 };
 
 export const DisabledInput = Template.bind({});
 DisabledInput.args = {
-  label: "Disabled Input",
+  label: "storyInputDisabledLabel",
   type: "text",
-  placeholder: "This input is disabled",
+  placeholder: "storyInputDisabledPlaceholder",
   disabled: true,
 };
