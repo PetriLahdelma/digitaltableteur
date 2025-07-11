@@ -5,6 +5,7 @@ import Author from "@dt/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Card from "@dt/Card";
 import Text from "@dt/Text";
+import BlogNav from "@dt/BlogNav/BlogNav";
 import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
 
@@ -41,6 +42,7 @@ const PetriLahdelmaBio = () => {
         </Helmet>
       </HelmetProvider>
       <article className={styles.article}>
+        <BlogNav />
         <header>
           <h1>Petri Lahdelma: A Biography</h1>
           <div className={styles.metaRow}>
@@ -67,11 +69,11 @@ const PetriLahdelmaBio = () => {
         <br />
         <p>
           Today he leads a design system team in a global enterprise of more
-          than 300,000 colleagues, balancing enterprise UX with scalable systems
-          thinking. His portfolio ranges from national infrastructure identities
-          like the Liikennevirasto corporate identity to agile startup brands
-          such as New Things Company, and he laid the strategic groundwork for
-          the Helsinki Design System.
+          than 110,000 colleagues worldwide, balancing enterprise UX with
+          scalable systems thinking. His portfolio ranges from national
+          infrastructure identities like the Liikennevirasto corporate identity
+          to agile startup brands such as New Things Company, and he laid the
+          strategic groundwork for the Helsinki Design System.
         </p>
         <br />
         <p>

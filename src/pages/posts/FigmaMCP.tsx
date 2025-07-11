@@ -6,6 +6,8 @@ import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import DTmindmap from "../../assets/images/dt-mindmap.webp";
 import { SocialShare } from "@dt/SocialShare";
 import Card from "@dt/Card";
+import BlogNav from "@dt/BlogNav/BlogNav";
+import "../../i18n"; // Ensure i18n is initialized
 import MCP from "../../assets/images/MCP.webp";
 import Grid from "@dt/Grid";
 import {
@@ -46,6 +48,7 @@ const FigmaMCP = () => {
         </Helmet>
       </HelmetProvider>
       <article className={styles.article}>
+        <BlogNav />
         <header>
           <h1>Rethinking Design-to-Product Workflows with Figma MCP</h1>
           <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
