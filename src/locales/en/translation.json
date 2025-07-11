@@ -240,5 +240,14 @@
   "storyHeading5": "Heading 5",
   "storyHeading6": "Heading 6",
   "storyTitleCustom": "Custom Tag (div) with custom class",
-  "storyTitlePlayground": "Play with the Title component!"
+  "storyTitlePlayground": "Play with the Title component!",
+  "blogNavBackToArticles": "Back to Articles",
+  "blogNavPrev": "Prev",
+  "blogNavNext": "Next",
+  "blogNavPetriLahdelmaBio": "Petri Lahdelma: A Biography",
+  "blogNavDigitalCraftsmanship": "Digital Craftsmanship",
+  "blogNavFigmaMcp": "Figma MCP & Design Systems",
+  "blogNavThoughtsOnFutureBranding": "Thoughts on Future Branding",
+  "blogNavDesigning2025": "Designing in 2025",
+  "blogNavWorkflowTips": "Workflow Tips"
 }
