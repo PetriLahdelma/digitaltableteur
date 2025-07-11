@@ -69,11 +69,11 @@ const PetriLahdelmaBio = () => {
         <br />
         <p>
           Today he leads a design system team in a global enterprise of more
-          than 300,000 colleagues, balancing enterprise UX with scalable systems
-          thinking. His portfolio ranges from national infrastructure identities
-          like the Liikennevirasto corporate identity to agile startup brands
-          such as New Things Company, and he laid the strategic groundwork for
-          the Helsinki Design System.
+          than 110,000 colleagues worldwide, balancing enterprise UX with
+          scalable systems thinking. His portfolio ranges from national
+          infrastructure identities like the Liikennevirasto corporate identity
+          to agile startup brands such as New Things Company, and he laid the
+          strategic groundwork for the Helsinki Design System.
         </p>
         <br />
         <p>
