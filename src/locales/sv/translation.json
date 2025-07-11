@@ -240,5 +240,14 @@
   "storyHeading5": "Rubrik 5",
   "storyHeading6": "Rubrik 6",
   "storyTitleCustom": "Anpassad tagg (div) med anpassad klass",
-  "storyTitlePlayground": "Lek med Titel-komponenten!"
+  "storyTitlePlayground": "Lek med Titel-komponenten!",
+  "blogNavBackToArticles": "Tillbaka till artiklar",
+  "blogNavPrev": "Föregående",
+  "blogNavNext": "Nästa",
+  "blogNavPetriLahdelmaBio": "Petri Lahdelma: En Biografi",
+  "blogNavDigitalCraftsmanship": "Digitalt hantverk",
+  "blogNavFigmaMcp": "Figma MCP & Designs system",
+  "blogNavThoughtsOnFutureBranding": "Framtidens varumärken",
+  "blogNavDesigning2025": "Design år 2025",
+  "blogNavWorkflowTips": "Arbetsflödestips"
 }

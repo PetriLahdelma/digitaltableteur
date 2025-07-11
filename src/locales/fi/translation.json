@@ -240,5 +240,14 @@
   "storyHeading5": "Otsake 5",
   "storyHeading6": "Otsake 6",
   "storyTitleCustom": "Mukautettu tunniste (div) mukautetulla luokalla",
-  "storyTitlePlayground": "Leiki Otsake-komponentilla!"
+  "storyTitlePlayground": "Leiki Otsake-komponentilla!",
+  "blogNavBackToArticles": "Takaisin artikkeleihin",
+  "blogNavPrev": "Edellinen",
+  "blogNavNext": "Seuraava",
+  "blogNavPetriLahdelmaBio": "Petri Lahdelma: Biografia",
+  "blogNavDigitalCraftsmanship": "Digitaalinen käsityötaito",
+  "blogNavFigmaMcp": "Figma MCP & Design-systeemit",
+  "blogNavThoughtsOnFutureBranding": "Tulevaisuuden brändäys",
+  "blogNavDesigning2025": "Suunnittelu 2025",
+  "blogNavWorkflowTips": "Työskentelyvinkit"
 }
