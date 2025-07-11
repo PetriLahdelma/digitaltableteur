@@ -10,7 +10,7 @@ describe("Badge", () => {
   });
 
   it("applies design variant", () => {
-    const { container } = render(<Badge design="success">Success</Badge>);
+    const { container } = render(<Badge state="success">Success</Badge>);
     // Check for CSS module class containing 'success'
     expect((container.firstChild as HTMLElement).className).toMatch(/success/);
   });

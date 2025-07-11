@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Button.module.css";
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?:
     | "primary"
     | "secondary"
@@ -20,10 +20,6 @@ interface ButtonProps {
   accessibleRole?: "button" | "link";
   submits?: boolean;
   tooltip?: string;
-  type?: "button" | "submit" | "reset";
-  // eslint-disable-next-line no-unused-vars
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  className?: string;
   size?: "s" | "m" | "l";
 }
 
@@ -43,6 +39,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   className = "",
   size = "m",
+  ...rest
 }) => {
   const normalizedIcon =
     typeof icon === "function" ? React.createElement(icon) : icon;
@@ -68,6 +65,7 @@ const Button: React.FC<ButtonProps> = ({
       type={submits ? "submit" : type}
       title={tooltip}
       onClick={onClick}
+      {...rest}
     >
       {normalizedIcon && (
         <span className={styles.icon} data-size={size}>

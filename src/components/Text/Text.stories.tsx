@@ -45,7 +45,14 @@ Playground.args = {
 
 Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByText(/play with the text component!/i);
+  // Match both English and Finnish, or use a function matcher
+  await canvas.findByText((content) =>
+    [
+      "Play with the Text component!",
+      "Leiki tekstikomponentilla!",
+      "Lek med Text-komponenten!",
+    ].includes(content),
+  );
 };
 
 export const Default = () => {

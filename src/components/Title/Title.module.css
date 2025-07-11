@@ -6,6 +6,7 @@
   font-size: var(--font-size-title);
   color: var(--color-title);
   margin: 0 0 1rem;
+  font-weight: 500;
 }
 
 .titleS {

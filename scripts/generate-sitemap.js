@@ -11,7 +11,7 @@ function getPageRoutes(dir, prefix = "") {
   for (const entry of entries) {
     if (entry.isDirectory()) {
       routes = routes.concat(
-        getPageRoutes(path.join(dir, entry.name), prefix + "/" + entry.name)
+        getPageRoutes(path.join(dir, entry.name), prefix + "/" + entry.name),
       );
     } else if (
       entry.isFile() &&
