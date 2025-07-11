@@ -7,6 +7,8 @@ import Card from "@dt/Card";
 import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
 import Text from "@dt/Text";
+import BlogNav from "@dt/BlogNav/BlogNav";
+import "../../i18n"; // Ensure i18n is initialized
 
 const Designing2025 = () => {
   const { t } = useTranslation();
@@ -41,6 +43,7 @@ const Designing2025 = () => {
         </Helmet>
       </HelmetProvider>
       <article className={styles.article}>
+        <BlogNav />
         <header>
           <h1>
             Designing in 2025:

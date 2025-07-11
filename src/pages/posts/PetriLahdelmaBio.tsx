@@ -5,6 +5,7 @@ import Author from "@dt/Author";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Card from "@dt/Card";
 import Text from "@dt/Text";
+import BlogNav from "@dt/BlogNav/BlogNav";
 import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
 
@@ -41,6 +42,7 @@ const PetriLahdelmaBio = () => {
         </Helmet>
       </HelmetProvider>
       <article className={styles.article}>
+        <BlogNav />
         <header>
           <h1>Petri Lahdelma: A Biography</h1>
           <div className={styles.metaRow}>

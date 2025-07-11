@@ -8,6 +8,7 @@
   background-color: transparent;
   color: var(--main-body-copy-color);
   padding-inline: var(--space-layout-32);
+  pointer-events: none;
 }
 
 header h2 a {
@@ -37,6 +38,7 @@ header h2 a {
   align-items: center;
   height: 100%;
   flex: 0 0 auto;
+  pointer-events: auto;
 }
 
 .logo {
@@ -64,6 +66,11 @@ header h2 a {
   gap: 16px;
   padding: 0;
   margin: 0;
+  pointer-events: auto;
+}
+
+.nav ul {
+  pointer-events: auto;
 }
 
 .nav a {
@@ -103,6 +110,7 @@ header h2 a {
   flex: 0 0 auto;
   margin-right: 0;
   margin-left: auto;
+  pointer-events: auto;
 }
 
 .themeToggle:hover,
@@ -116,6 +124,7 @@ header h2 a {
   gap: 0.5rem;
   font-size: 1rem;
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
+  pointer-events: auto;
 }
 
 .languageLink {
