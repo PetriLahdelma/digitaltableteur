@@ -8,3 +8,54 @@ body {
   color: var(--main-body-copy-color);
   background-color: var(--main-body-background-color);
 }
+
+/* Global styles extracted from CSS modules */
+h1 {
+  font-family: var(--primary-heading-font);
+  font-size: 8rem;
+  font-weight: 500;
+  margin-block-start: -7.68rem;
+}
+
+@media (width <= 768px) {
+  h1 {
+    font-size: 4rem;
+    margin-block-start: -3.84rem;
+  }
+}
+
+p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  align-items: start;
+}
+
+label {
+  font-family: var(--primary-body-font, sans-serif);
+  text-align: left;
+  justify-content: flex-start;
+}
+
+footer p {
+  font-size: 1rem;
+  font-family: Moderat-Regular, sans-serif;
+  color: var(--inverted-text-color);
+}
+
+h3 + p {
+  margin-block-start: 1rem;
+}
+
+p + :not(p, blockquote) {
+  padding-block-start: 2rem;
+}
+
+caption {
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: 0.9rem;
+  color: var(--primary-text-color);
+  margin-block: 0.5rem 1rem;
+  max-width: 100%;
+  display: flex;
+}

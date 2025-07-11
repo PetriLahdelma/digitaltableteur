@@ -10,12 +10,6 @@
   flex-direction: column;
 }
 
-p {
-  margin: 0;
-  font-size: 1.1rem; /* 14px */
-  line-height: 1.6;
-  align-items: start;
-}
 
 .cookieConsent a {
   color: var(--color-primary);

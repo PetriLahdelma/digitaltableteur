@@ -32,13 +32,6 @@
   margin-top: 1.5rem;
 }
 
-h3 + p {
-  margin-block-start: 1rem;
-}
-
-p + :not(p, blockquote) {
-  padding-block-start: 2rem;
-}
 
 .article blockquote {
   margin-block: 4rem;
@@ -134,21 +127,13 @@ div.authorContainer {
   outline: 3px solid var(--color-primary);
 }
 
-caption {
-  font-family: var(--primary-body-font, sans-serif);
-  font-size: 0.9rem;
-  color: var(--primary-text-color);
-  margin-block: 0.5rem 1rem;
-  max-width: 100%;
-  display: flex;
-}
 
 .boldText {
   font-family: var(--secondary-bold-font);
 }
 
 .article b,
-strong {
+.article strong {
   font-family: TiemposText-Bold, serif;
   font-weight: 600;
 }
