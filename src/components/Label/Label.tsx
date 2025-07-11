@@ -1,14 +1,11 @@
 import React from "react";
 import styles from "./Label.module.css";
 
-interface LabelProps {
+interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   htmlFor: string;
-  children: React.ReactNode;
-  className?: string;
   tooltipText?: string;
   required?: boolean;
   disabled?: boolean;
-  title?: string; // Add title for browser tooltips
 }
 
 const Label: React.FC<LabelProps> = ({
@@ -19,6 +16,7 @@ const Label: React.FC<LabelProps> = ({
   required,
   disabled = false,
   title,
+  ...rest
 }) => {
   return (
     <label
@@ -27,6 +25,7 @@ const Label: React.FC<LabelProps> = ({
         .filter(Boolean)
         .join(" ")}
       title={title || tooltipText} // Use title or fallback to tooltipText
+      {...rest}
     >
       {children}
       {required && <span className={styles.required}>*</span>}

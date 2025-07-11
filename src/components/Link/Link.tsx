@@ -3,19 +3,25 @@ import styles from "./Link.module.css";
 import "../../styles/variables.css";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-interface LinkProps {
-  href: string;
+interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   size?: "S" | "M" | "L";
-  children: React.ReactNode;
-  className?: string;
 }
 
-const Link: React.FC<LinkProps> = ({ href, size = "M", children }) => {
+const Link: React.FC<LinkProps> = ({
+  href = "#",
+  size = "M",
+  children,
+  ...rest
+}) => {
   const isExternal =
     !href.startsWith("/") && !href.includes("digitaltableteur.com");
 
   return (
-    <a href={href} className={`${styles.link} ${styles[`link${size}`]}`}>
+    <a
+      href={href}
+      className={`${styles.link} ${styles[`link${size}`]}`}
+      {...rest}
+    >
       {children}
       {isExternal && (
         <span className={styles.externalIcon}>

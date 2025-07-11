@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
 
-interface TextAreaProps {
+interface TextAreaProps
+  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange"> {
   label: string;
-  placeholder?: string;
   value?: string;
   error?: string;
   onChange?: (value: string) => void;
-  disabled?: boolean;
-  rows?: number;
 }
 
 const TextArea: React.FC<TextAreaProps> = ({
@@ -20,6 +18,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   onChange,
   disabled = false,
   rows = 4,
+  ...rest
 }) => {
   const [textValue, setTextValue] = useState(value);
 
@@ -46,6 +45,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         onChange={handleChange}
         disabled={disabled}
         rows={rows}
+        {...rest}
       />
       {error && <span className={styles["error-message"]}>{error}</span>}
     </div>

@@ -4,14 +4,11 @@ import Label from "@dt/Label";
 import SelectOption from "./SelectOption";
 import styles from "./Select.module.css";
 
-interface SelectProps {
+interface SelectProps
+  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "onChange"> {
   label: string;
-  children?: React.ReactNode;
   options?: { value: string; label: string }[];
-  value?: string;
-  // eslint-disable-next-line no-unused-vars
   onChange?: (value: string) => void;
-  disabled?: boolean;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -21,6 +18,7 @@ const Select: React.FC<SelectProps> = ({
   onChange,
   disabled = false,
   children,
+  ...rest
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (onChange) {
@@ -38,6 +36,7 @@ const Select: React.FC<SelectProps> = ({
           value={value}
           onChange={handleChange}
           disabled={disabled}
+          {...rest}
         >
           {/* Render children if provided, otherwise map options */}
           {children
