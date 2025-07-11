@@ -1,9 +1,8 @@
 import React from "react";
 import styles from "./GroupLabel.module.css";
 
-interface GroupLabelProps {
+interface GroupLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   htmlFor: string;
-  children: React.ReactNode;
   tooltipText?: string;
   required?: boolean;
   disabled?: boolean;
@@ -17,12 +16,14 @@ const GroupLabel: React.FC<GroupLabelProps> = ({
   required,
   disabled = false,
   title,
+  ...rest
 }) => {
   return (
     <label
       htmlFor={htmlFor}
       className={`${styles["groupLabel"]} ${disabled ? styles.disabled : ""}`}
       title={title || tooltipText} // Use title or fallback to tooltipText
+      {...rest}
     >
       {children}
       {required && <span className={styles.required}>*</span>}

@@ -2,13 +2,16 @@ import React, { forwardRef, useEffect } from "react";
 import Label from "@dt/Label";
 import styles from "./Checkbox.module.css";
 
-export interface CheckboxProps {
+export interface CheckboxProps
+  extends Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    "onChange" | "checked"
+  > {
   label?: string;
   showLabel?: boolean;
   checked: boolean;
   indeterminate?: boolean;
-  onChange: (checked: boolean) => void;
-  disabled?: boolean;
+  onCheckedChange: (checked: boolean) => void;
   id?: string;
 }
 
@@ -19,7 +22,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       showLabel = true,
       checked,
       indeterminate,
-      onChange,
+      onCheckedChange,
       disabled = false,
       ...props
     },
@@ -35,7 +38,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const handleClick = () => {
       if (indeterminate && ref && typeof ref !== "function" && ref.current) {
         ref.current.indeterminate = false;
-        onChange(false); // Reset to unchecked when clicked
+        onCheckedChange(false); // Reset to unchecked when clicked
       }
     };
 
@@ -50,8 +53,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           onClick={handleClick}
           onChange={(e) => {
             const isChecked = e.target.checked;
-            if (onChange) {
-              onChange(isChecked);
+            if (onCheckedChange) {
+              onCheckedChange(isChecked);
             }
           }}
           disabled={disabled}
