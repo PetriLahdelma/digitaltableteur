@@ -6,6 +6,7 @@ import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Card from "@dt/Card";
 import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
+import BlogNav from "@dt/BlogNav/BlogNav";
 
 const TemplateArticle = () => {
   const { t } = useTranslation();
@@ -40,6 +41,7 @@ const TemplateArticle = () => {
         </Helmet>
       </HelmetProvider>
       <article className={styles.article}>
+        <BlogNav />
         <header className={styles.header}>
           <h1>Template Article Title</h1>
           <Author name="Digitaltableteur" imageUrl={VaultBoy} size="32px" />
