@@ -14,6 +14,7 @@ import future8 from "../../assets/images/future6.webp";
 import { SocialShare } from "@dt/SocialShare";
 import Card from "@dt/Card";
 import { useTranslation } from "react-i18next";
+import BlogNav from "@dt/BlogNav/BlogNav";
 
 const ThoughtsOnFutureBranding = () => {
   const { t } = useTranslation();
@@ -47,6 +48,7 @@ const ThoughtsOnFutureBranding = () => {
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
         <article className={styles.article}>
+          <BlogNav />
           <header className={styles.header}>
             <h1>Thoughts on Future Branding</h1>
             <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />

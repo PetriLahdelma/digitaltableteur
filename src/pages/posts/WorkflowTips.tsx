@@ -7,6 +7,7 @@ import { SocialShare } from "@dt/SocialShare";
 import Card from "@dt/Card";
 import AI from "../../assets/images/ai.webp";
 import { useTranslation } from "react-i18next";
+import BlogNav from "@dt/BlogNav/BlogNav";
 
 const WorkflowTips = () => {
   const { t } = useTranslation();
@@ -41,6 +42,7 @@ const WorkflowTips = () => {
         </Helmet>
       </HelmetProvider>
       <article className={styles.article}>
+        <BlogNav />
         <header>
           <h1>Workflow Tips</h1>
           <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />

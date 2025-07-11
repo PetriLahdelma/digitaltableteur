@@ -6,6 +6,8 @@ import styles from "../Article.module.css";
 import VaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import Pizza from "../../assets/images/pizza.jpg";
 import Card from "@dt/Card";
+import BlogNav from "@dt/BlogNav/BlogNav";
+import "../../i18n"; // Ensure i18n is initialized
 import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
 
@@ -42,6 +44,7 @@ const DigitalCraftsmanship = () => {
         </Helmet>
       </HelmetProvider>
       <article className={styles.article}>
+        <BlogNav />
         <header>
           <h1>
             Digital Craftsmanship — Thoughts on Maintaining Quality in a
