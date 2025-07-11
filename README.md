@@ -10,7 +10,7 @@
 
 # Digitaltableteur
 
-Digitaltableteur is a React application for a portfolio site. The project has been migrated from Create React App to [Vite](https://vitejs.dev/) for faster builds and a leaner development setup. Below you'll find how to run the project and a quick overview of the folder structure.
+Digitaltableteur is a portfolio site. The project was originally built with React and Vite but now runs on [Next.js](https://nextjs.org/) using the App Router and static export. Below you'll find how to run the project and a quick overview of the folder structure.
 
 ## Getting Started
 
@@ -31,10 +31,10 @@ Set `REACT_APP_GA_ID` to your Google Analytics measurement ID if you want to col
 ### Run the development server
 
 ```bash
-npm start
+npm run dev
 ```
 
-Vite serves the app at `http://localhost:5173` by default and automatically reloads as you edit files.
+Next.js serves the app at `http://localhost:3000` by default and reloads as you edit files.
 
 ### Run Storybook
 
@@ -47,10 +47,10 @@ This will start Storybook at `http://localhost:6006` so you can browse the UI co
 ### Build for production
 
 ```bash
-npm run build
+npm run export
 ```
 
-The optimized output is placed in the `dist` folder.
+The static site is generated in the `out` folder.
 
 ### Lint
 
@@ -99,11 +99,12 @@ branches, otherwise the preview deployment will be rejected.
 ## Folder overview
 
 - **src/** – application source code
-- **public/** – static assets and the HTML template
+- **app/** – Next.js app directory
+- **public/** – static assets
 - **.storybook/** – Storybook configuration files
-- **dist/** – compiled production build (generated after running `npm run build`)
+- **out/** – static export (generated after running `npm run export`)
 - **node_modules/** – project dependencies installed via npm
 
 ## Learn More
 
-This project now uses [Vite](https://vitejs.dev/) for development and builds. You can read the [Vite guide](https://vitejs.dev/guide/) and the [React documentation](https://reactjs.org/) for more details.
+This project now uses [Next.js](https://nextjs.org/) with the App Router. See the [Next.js documentation](https://nextjs.org/docs) for more details.

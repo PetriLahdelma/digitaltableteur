@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { usePathname } from "next/navigation";
+import Link from "@dt/Link";
 import styles from "./Header.module.css";
 import "../../styles/variables.css";
 import "../../styles/fonts.css";
@@ -24,7 +26,7 @@ function getCookie(name: string) {
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const { t, i18n } = useTranslation();
-  const location = useLocation();
+  const pathname = usePathname();
   const languages = [
     { code: "en", label: t("langEN") },
     { code: "fi", label: t("langFI") },
@@ -68,9 +70,7 @@ const Header = () => {
             <li>
               <Link
                 to="/"
-                className={
-                  location.pathname === "/" ? styles.selected : undefined
-                }
+                className={pathname === "/" ? styles.selected : undefined}
               >
                 {t("navHome")}
               </Link>
@@ -81,12 +81,10 @@ const Header = () => {
                 className={
                   styles.navLink +
                   " " +
-                  (location.pathname.startsWith("/work") ? styles.selected : "")
+                  (pathname.startsWith("/work") ? styles.selected : "")
                 }
                 tabIndex={0}
-                aria-current={
-                  location.pathname.startsWith("/work") ? "page" : undefined
-                }
+                aria-current={pathname.startsWith("/work") ? "page" : undefined}
               >
                 {t("navWork")}
               </Link>
@@ -95,9 +93,7 @@ const Header = () => {
               <Link
                 to="/about"
                 className={
-                  location.pathname.startsWith("/about")
-                    ? styles.selected
-                    : undefined
+                  pathname.startsWith("/about") ? styles.selected : undefined
                 }
               >
                 {t("navAbout")}
@@ -107,9 +103,7 @@ const Header = () => {
               <Link
                 to="/blog"
                 className={
-                  location.pathname.startsWith("/blog")
-                    ? styles.selected
-                    : undefined
+                  pathname.startsWith("/blog") ? styles.selected : undefined
                 }
               >
                 {t("navBlog")}
@@ -119,9 +113,7 @@ const Header = () => {
               <Link
                 to="/contact"
                 className={
-                  location.pathname.startsWith("/contact")
-                    ? styles.selected
-                    : undefined
+                  pathname.startsWith("/contact") ? styles.selected : undefined
                 }
               >
                 {t("navContact")}

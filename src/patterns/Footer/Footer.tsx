@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "./Footer.module.css";
 import { FaInstagram, FaFacebook, FaLinkedin, FaMedium } from "react-icons/fa";
