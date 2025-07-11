@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const BASE_URL = "https://digitaltableteur.com";
-const PAGES_DIR = path.join(__dirname, "../src/pages");
+const PAGES_DIR = path.join(__dirname, "../app");
 
 // Recursively scan pages directory for .tsx files (excluding files starting with _ or [)
 function getPageRoutes(dir, prefix = "") {

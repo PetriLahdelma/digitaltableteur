@@ -19,7 +19,7 @@ async function generateAltText(description) {
   return data.choices?.[0]?.message?.content?.trim().replace(/\n/g, " ") || "";
 }
 
-const POSTS_DIR = path.join(__dirname, "../src/pages");
+const POSTS_DIR = path.join(__dirname, "../app");
 const FILE_PATTERN = /<img[^>]*src={(.*?)}[^>]*alt="(.*?)"[^>]*>/g;
 
 async function processFile(filePath) {
