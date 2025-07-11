@@ -10,7 +10,6 @@
   flex-direction: column;
 }
 
-
 .cookieConsent a {
   color: var(--color-primary);
   text-decoration: underline;

@@ -32,7 +32,6 @@
   margin-top: 1.5rem;
 }
 
-
 .article blockquote {
   margin-block: 4rem;
   padding-left: 1rem;
@@ -126,7 +125,6 @@ div.authorContainer {
 .similarCard:focus {
   outline: 3px solid var(--color-primary);
 }
-
 
 .boldText {
   font-family: var(--secondary-bold-font);
