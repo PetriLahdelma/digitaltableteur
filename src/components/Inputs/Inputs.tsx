@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
 
-interface InputProps {
+interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
   label: string;
   type: "text" | "number" | "email" | "password" | "search" | "tel";
-  placeholder?: string;
   value?: string | number;
   error?: string;
   // eslint-disable-next-line no-unused-vars
   onChange?: (value: string | number) => void;
-  disabled?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -21,6 +20,7 @@ const Input: React.FC<InputProps> = ({
   error,
   onChange,
   disabled = false,
+  ...rest
 }) => {
   const [inputValue, setInputValue] = useState(value || "");
   const [phoneError, setPhoneError] = useState("");
@@ -68,6 +68,7 @@ const Input: React.FC<InputProps> = ({
         value={inputValue}
         onChange={handleChange}
         disabled={disabled}
+        {...rest}
       />
       {(error || phoneError) && (
         <span className={styles["errorMessage"]}>{error || phoneError}</span>

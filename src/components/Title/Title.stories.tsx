@@ -78,10 +78,20 @@ Playground.argTypes = {
 
 AllSizes.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByText(/small title/i);
+  const headings = [
+    "Pieni otsikko",
+    "Keskikokoinen otsikko",
+    "Iso otsikko",
+    "Todella iso otsikko",
+  ];
+  for (const heading of headings) {
+    await canvas.findByText(heading);
+  }
+  // Or, if you want to check all at once:
+  // await canvas.findAllByText((content) => headings.includes(content));
 };
 
 AllLevels.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByText(/heading 1/i);
+  await canvas.findByText(/(small title|pieni otsikko)/i);
 };
