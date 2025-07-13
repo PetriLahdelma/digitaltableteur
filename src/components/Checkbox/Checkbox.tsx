@@ -3,7 +3,7 @@ import Label from "@dt/Label";
 import styles from "./Checkbox.module.css";
 
 export interface CheckboxProps {
-  label?: string;
+  label?: React.ReactNode;
   showLabel?: boolean;
   checked: boolean;
   indeterminate?: boolean;

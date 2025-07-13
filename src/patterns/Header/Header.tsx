@@ -17,6 +17,7 @@ function setCookie(name: string, value: string, days = 365) {
   document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
 }
 function getCookie(name: string) {
+  if (typeof document === "undefined" || !document.cookie) return "";
   return document.cookie.split("; ").reduce((r, v) => {
     const parts = v.split("=");
     return parts[0] === name ? decodeURIComponent(parts[1]) : r;
@@ -26,14 +27,18 @@ function getCookie(name: string) {
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const { t, i18n } = useTranslation();
+  if (!i18n.isInitialized) return null;
   const pathname = usePathname();
   const languages = [
     { code: "en", label: t("langEN") },
     { code: "fi", label: t("langFI") },
     { code: "sv", label: t("langSV") },
   ];
+  // SSR safety: fallback to 'en' if i18n.language is undefined
+  const currentlang = i18n.language ? i18n.language.split("-")[0] : "en";
   // On mount, check for cookie and set language if needed
   React.useEffect(() => {
+    if (typeof window === "undefined" || !i18n.language) return;
     const cookieLang = getCookie("i18next");
     if (cookieLang && i18n.language.split("-")[0] !== cookieLang) {
       i18n.changeLanguage(cookieLang);
@@ -47,8 +52,6 @@ const Header = () => {
       toggleTheme();
     }
   }, [theme]);
-  // Normalize language code to base (e.g., 'en-US' -> 'en')
-  const currentlang = i18n.language.split("-")[0];
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
     setCookie("i18next", code);
@@ -62,14 +65,18 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <Link to="/" className={styles.logoLink}>
-          <img src={Logo} alt={t("headerLogoAlt")} className={styles.logo} />
+        <Link href="/" className={styles.logoLink}>
+          <img
+            src={(Logo as any).src || Logo}
+            alt={t("headerLogoAlt")}
+            className={styles.logo}
+          />
         </Link>
         <nav className={styles.navbar}>
           <ul className={styles.nav}>
             <li>
               <Link
-                to="/"
+                href="/"
                 className={pathname === "/" ? styles.selected : undefined}
               >
                 {t("navHome")}
@@ -77,23 +84,28 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/work"
+                href="/work"
                 className={
                   styles.navLink +
                   " " +
-                  (pathname.startsWith("/work") ? styles.selected : "")
+                  (pathname && pathname.startsWith("/work")
+                    ? styles.selected
+                    : "")
                 }
-                tabIndex={0}
-                aria-current={pathname.startsWith("/work") ? "page" : undefined}
+                aria-current={
+                  pathname && pathname.startsWith("/work") ? "page" : undefined
+                }
               >
                 {t("navWork")}
               </Link>
             </li>
             <li>
               <Link
-                to="/about"
+                href="/about"
                 className={
-                  pathname.startsWith("/about") ? styles.selected : undefined
+                  pathname && pathname.startsWith("/about")
+                    ? styles.selected
+                    : undefined
                 }
               >
                 {t("navAbout")}
@@ -101,9 +113,11 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/blog"
+                href="/blog"
                 className={
-                  pathname.startsWith("/blog") ? styles.selected : undefined
+                  pathname && pathname.startsWith("/blog")
+                    ? styles.selected
+                    : undefined
                 }
               >
                 {t("navBlog")}
@@ -111,9 +125,11 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/contact"
+                href="/contact"
                 className={
-                  pathname.startsWith("/contact") ? styles.selected : undefined
+                  pathname && pathname.startsWith("/contact")
+                    ? styles.selected
+                    : undefined
                 }
               >
                 {t("navContact")}

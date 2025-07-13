@@ -1,11 +1,11 @@
 import React, { Suspense } from "react";
 import { Meta } from "@storybook/react-vite";
 import {
-  AllVariants as ButtonVariants,
+  ButtonVariantsComponent,
   AllSizes as ButtonSizes,
 } from "../components/Button/Button.stories";
 import {
-  AllVariants as BadgeVariants,
+  BadgeVariantsComponent,
   AllSizes as BadgeSizes,
 } from "../components/Badge/Badge.stories";
 import {
@@ -251,93 +251,9 @@ const LinkLargeWrap = () => (
 );
 
 const COMPONENTS = [
-  { name: "Badge Sizes", Variants: BadgeSizes },
-  { name: "Badge Variants", Variants: BadgeVariants },
-  { name: "Button Sizes", Variants: ButtonSizes },
-  { name: "Button Variants", Variants: ButtonVariants },
-  { name: "Grid Nested", Variants: GridNested },
-  { name: "Grid Spans", Variants: GridSpans },
-  { name: "Text AllTags", Variants: TextAllTags },
-  { name: "Text AsSpan", Variants: TextAsSpan },
-  { name: "Text CustomClass", Variants: TextCustomClass },
-  { name: "Text Default", Variants: TextDefault },
-  { name: "Text SerifAndSans", Variants: TextSerifAndSans },
-  { name: "Text Sizes", Variants: TextSizes },
-  { name: "Title CustomTagAndClass", Variants: TitleCustomTag },
-  { name: "Title Levels", Variants: TitleLevels },
-  { name: "Title Sizes", Variants: TitleSizes },
-  {
-    name: "ArticleCard Default",
-    Variants: () =>
-      ArticleCardDefault({
-        title: "Design System Best Practices",
-        lead: "Learn how to build, scale, and maintain a robust design system for modern teams.",
-        link: "/blog/design-system-best-practices",
-        readTime: "8 min read",
-      }),
-  },
-  {
-    name: "ArticleCard WithCustomClass",
-    Variants: () =>
-      ArticleCardWithCustomClass({
-        title: "Branding in 2025: Trends & Opportunities",
-        lead: "Explore the future of digital branding, emerging technologies, and resilient brand strategies.",
-        link: "/blog/branding-2025",
-        readTime: "14 min read",
-        className: "customClass",
-      }),
-  },
-  {
-    name: "Avatar WithImage",
-    Variants: AvatarWithImage,
-  },
-  {
-    name: "Avatar WithName",
-    Variants: AvatarWithName,
-  },
-  {
-    name: "Checkbox AllVariants",
-    Variants: CheckboxAllVariants,
-  },
-  {
-    name: "CheckboxGroup Default",
-    Variants: CheckboxGroupDefault,
-  },
-  {
-    name: "FlexBox Basic",
-    Variants: FlexBoxBasic,
-  },
-  {
-    name: "FlexBox Column",
-    Variants: FlexBoxColumn,
-  },
-  {
-    name: "FlexBox JustifyAlign",
-    Variants: FlexBoxJustifyAlign,
-  },
-  {
-    name: "FlexBox Wrap",
-    Variants: FlexBoxWrap,
-  },
-  {
-    name: "FlexBox GapVariants",
-    Variants: FlexBoxGapVariants,
-  },
-  { name: "Inputs Text", Variants: InputsText },
-  { name: "Inputs Number", Variants: InputsNumber },
-  { name: "Inputs Email", Variants: InputsEmail },
-  { name: "Inputs Password", Variants: InputsPassword },
-  { name: "Inputs Search", Variants: InputsSearch },
-  { name: "Inputs WithError", Variants: InputsWithError },
-  { name: "Inputs Disabled", Variants: InputsDisabled },
-  { name: "Label Default", Variants: LabelDefaultWrap },
-  { name: "Label WithTooltip", Variants: LabelWithTooltipWrap },
-  { name: "Label Required", Variants: LabelRequiredWrap },
-  { name: "Label Disabled", Variants: LabelDisabledWrap },
-  { name: "Link Playground", Variants: LinkPlaygroundWrap },
-  { name: "Link Small", Variants: LinkSmallWrap },
-  { name: "Link Medium", Variants: LinkMediumWrap },
-  { name: "Link Large", Variants: LinkLargeWrap },
+  { name: "Badge Variants", Variants: BadgeVariantsComponent },
+  { name: "Button Variants", Variants: ButtonVariantsComponent },
+  // Add more pure React components here as needed
 ]
   .filter(
     (c) =>

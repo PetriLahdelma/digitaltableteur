@@ -10,7 +10,17 @@ import { useTranslation } from "react-i18next";
 import BlogNav from "@dt/BlogNav/BlogNav";
 
 const WorkflowTips = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [currentUrl, setCurrentUrl] = React.useState("");
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
+  if (!i18n.isInitialized) return null;
+
   return (
     <>
       <HelmetProvider>
@@ -48,7 +58,7 @@ const WorkflowTips = () => {
           <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
         </header>
         <img
-          src={AI}
+          src={(AI as any).src || AI}
           alt="A futuristic depiction of artificial intelligence, showcasing advanced technology and creativity."
           className={styles.image}
         />
@@ -219,7 +229,7 @@ const WorkflowTips = () => {
           }}
         />
         <h2>{t("shareHeading")}</h2>
-        <SocialShare url={window.location.href} title="Workflow Tips" />
+        <SocialShare url={currentUrl} title="Workflow Tips" />
         <div className={styles.similar}>
           <h2>Similar Reads</h2>
           <div className={styles["similar-list"]}>

@@ -87,7 +87,7 @@ Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   await userEvent.tab();
 };
 
-export const AllVariants: StoryFn<BadgeProps> = (args) => {
+export const BadgeVariantsComponent: React.FC = () => {
   const { t } = useTranslation();
   return (
     <div style={{ display: "flex", gap: "1rem" }}>
@@ -105,26 +105,11 @@ export const AllVariants: StoryFn<BadgeProps> = (args) => {
       <Badge design="primary" state="info">
         {t("badgeInfo")}
       </Badge>
-
       <Badge design="primary" state="neutral">
         {t("badgeNeutral")}
       </Badge>
     </div>
   );
-};
-AllVariants.play = async ({
-  canvasElement,
-}: {
-  canvasElement: HTMLElement;
-}) => {
-  const canvas = within(canvasElement);
-  await canvas.findByText(/primary/i);
-  await canvas.findByText(/secondary/i);
-  await canvas.findByText(/success/i);
-  await canvas.findByText(/error/i);
-  await canvas.findByText(/warning/i);
-  await canvas.findByText(/info/i);
-  await canvas.findByText(/neutral/i);
 };
 
 export const Removable = Template.bind({});

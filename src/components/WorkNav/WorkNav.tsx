@@ -1,9 +1,9 @@
 import React from "react";
+import styles from "./worknav.module.css";
 import Button from "@dt/Button";
 import { MdArrowBack, MdArrowForward, MdWork } from "react-icons/md";
-import styles from "./worknav.module.css";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
 
 const workPages = [
   { path: "/work/new-things-co", labelKey: "workNavNewThingsCo" },
@@ -13,29 +13,27 @@ const workPages = [
 
 const WorkNav: React.FC = () => {
   const { t } = useTranslation();
-  const currentPath = window.location.pathname;
+  const [currentPath, setCurrentPath] = React.useState("");
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(window.location.pathname);
+    }
+  }, []);
   const currentIndex = workPages.findIndex((p) => p.path === currentPath);
-  const navigate = useNavigate();
   return (
     <>
       <div className={styles.workNavBar}>
-        <Button
-          variant="tertiary"
-          size="m"
-          icon={<MdWork />}
-          onClick={() => navigate("/work")}
-        >
-          {t("workNavBackToWork")}
-        </Button>
+        <Link href="/work" passHref legacyBehavior>
+          <Button variant="tertiary" size="m" icon={<MdWork />}>
+            {t("workNavBackToWork")}
+          </Button>
+        </Link>
         <div className={styles.rightNavGroup}>
           <Button
             variant="tertiary"
             size="m"
             icon={<MdArrowBack />}
             disabled={currentIndex <= 0}
-            onClick={() => {
-              if (currentIndex > 0) navigate(workPages[currentIndex - 1].path);
-            }}
           >
             {t("workNavPrev")}
           </Button>
@@ -44,10 +42,6 @@ const WorkNav: React.FC = () => {
             size="m"
             endIcon={<MdArrowForward />}
             disabled={currentIndex === workPages.length - 1}
-            onClick={() => {
-              if (currentIndex < workPages.length - 1)
-                navigate(workPages[currentIndex + 1].path);
-            }}
           >
             {t("workNavNext")}
           </Button>

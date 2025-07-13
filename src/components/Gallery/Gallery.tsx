@@ -25,15 +25,19 @@ const Gallery: React.FC<GalleryProps> = ({
 
   React.useEffect(() => {
     function handleResize() {
-      const width = window.innerWidth;
-      if (width < 600) setColumns(1);
-      else if (width < 900) setColumns(2);
-      else if (width < 1200) setColumns(3);
-      else setColumns(4);
+      if (typeof window !== "undefined") {
+        const width = window.innerWidth;
+        if (width < 600) setColumns(1);
+        else if (width < 900) setColumns(2);
+        else if (width < 1200) setColumns(3);
+        else setColumns(4);
+      }
     }
     handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   // Split images into columns for masonry effect

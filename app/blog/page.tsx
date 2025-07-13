@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import styles from "./Blog.module.css";
-import { posts } from "../data/posts";
+import styles from "../../src/pages/Blog.module.css";
+import { posts } from "../../src/data/posts";
 import ArticleCard from "@dt/ArticleCard";
 import Title from "@dt/Title";
 import HelsinkiClock from "@dt/HelsinkiClock";

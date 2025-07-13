@@ -92,3 +92,5 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
     </div>
   );
 };
+
+export default SocialShare;

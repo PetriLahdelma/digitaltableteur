@@ -10,6 +10,14 @@ import BlogNav from "@dt/BlogNav/BlogNav";
 
 const TemplateArticle = () => {
   const { t } = useTranslation();
+  const [currentUrl, setCurrentUrl] = React.useState("");
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
   return (
     <>
       <HelmetProvider>
@@ -53,10 +61,7 @@ const TemplateArticle = () => {
         </p>
         <p>Ensure that all media files are properly linked and accessible.</p>
         <h2>{t("shareHeading")}</h2>
-        <SocialShare
-          url={window.location.href}
-          title="Thoughts on Future Branding"
-        />
+        <SocialShare url={currentUrl} title="Thoughts on Future Branding" />
         <div className={styles.similar}>
           <h2>Similar Reads</h2>
           <div className={styles["similarList"]}>

@@ -19,7 +19,15 @@ import {
 import { useTranslation } from "react-i18next";
 
 const FigmaMCP = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [currentUrl, setCurrentUrl] = React.useState("");
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+  if (!i18n.isInitialized) return null;
+
   return (
     <>
       <HelmetProvider>
@@ -54,7 +62,7 @@ const FigmaMCP = () => {
           <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
         </header>
         <img
-          src={MCP}
+          src={(MCP as any).src || MCP}
           alt="MCP features a colorful abstract design with geometric shapes and patterns."
           style={{ marginBlockEnd: "3rem" }}
         />
@@ -100,7 +108,7 @@ const FigmaMCP = () => {
         </p>
         <div>
           <img
-            src={DTmindmap}
+            src={(DTmindmap as any).src || DTmindmap}
             alt="“DTmindmap” visually organizes concepts, showcasing relationships and ideas effectively."
             style={{ width: "100%", height: "auto" }}
           />
@@ -192,7 +200,7 @@ const FigmaMCP = () => {
         />
         <h2>{t("shareHeading")}</h2>
         <SocialShare
-          url={window.location.href}
+          url={currentUrl}
           title="Rethinking Design-to-Product Workflows with Figma MCP"
         />
         <div className={styles.similar}>

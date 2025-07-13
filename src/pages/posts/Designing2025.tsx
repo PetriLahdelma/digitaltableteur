@@ -11,7 +11,15 @@ import BlogNav from "@dt/BlogNav/BlogNav";
 import "../../i18n"; // Ensure i18n is initialized
 
 const Designing2025 = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [currentUrl, setCurrentUrl] = React.useState("");
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+  if (!i18n.isInitialized) return null;
+
   return (
     <>
       <HelmetProvider>
@@ -183,10 +191,7 @@ const Designing2025 = () => {
           }}
         />
         <h2>{t("shareHeading")}</h2>
-        <SocialShare
-          url={window.location.href}
-          title="Designing in 2025: Navigating the AI-Assisted Creative Landscape"
-        />
+        <SocialShare url={currentUrl} title="Designing in 2025" />
         <div className={styles.similar}>
           <h2>Similar Reads</h2>
           <div className={styles["similarList"]}>

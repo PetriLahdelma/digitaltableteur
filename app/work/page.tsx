@@ -1,20 +1,20 @@
+"use client";
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
-import styles from "./Work.module.css";
-import Ufo from "../assets/images/ufo.webp";
-import sausage from "../assets/images/sausage.webp";
-import fur from "../assets/images/fur.webp";
-import blackletter from "../assets/images/blackletter.webp";
+import styles from "../../src/pages/Work.module.css";
+import Ufo from "../../src/assets/images/ufo.webp";
+import sausage from "../../src/assets/images/sausage.webp";
+import fur from "../../src/assets/images/fur.webp";
+import blackletter from "../../src/assets/images/blackletter.webp";
 import Grid from "@dt/Grid";
-import Header from "../patterns/Header/Header";
+import Header from "../../src/patterns/Header/Header";
 
 const Work = () => {
   const { i18n } = useTranslation();
   if (!i18n.isInitialized) return null;
   return (
     <>
-      <Header />
       <HelmetProvider>
         <Helmet>
           <title>Work | Digitaltableteur</title>

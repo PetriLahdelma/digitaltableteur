@@ -220,3 +220,15 @@ export const AllSizes = () => (
     </Button>
   </div>
 );
+
+export const ButtonVariantsComponent: React.FC = () => (
+  <div style={{ display: "flex", gap: "1rem" }}>
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="tertiary">Tertiary</Button>
+    <Button variant="error">Error</Button>
+    <Button variant="warning">Warning</Button>
+    <Button variant="success">Success</Button>
+    <Button variant="info">Info</Button>
+  </div>
+);
