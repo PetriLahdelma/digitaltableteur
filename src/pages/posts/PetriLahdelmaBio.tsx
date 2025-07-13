@@ -11,6 +11,14 @@ import { useTranslation } from "react-i18next";
 
 const PetriLahdelmaBio = () => {
   const { t } = useTranslation();
+  const [currentUrl, setCurrentUrl] = React.useState("");
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
   return (
     <>
       <HelmetProvider>
@@ -99,10 +107,7 @@ const PetriLahdelmaBio = () => {
           }}
         />
         <h2>{t("shareHeading")}</h2>
-        <SocialShare
-          url={window.location.href}
-          title="Petri Lahdelma: A Biography"
-        />
+        <SocialShare url={currentUrl} title="Petri Lahdelma: A Biography" />
         <div className={styles.similar}>
           <h2>Similar Reads</h2>
           <div className={styles["similarList"]}>

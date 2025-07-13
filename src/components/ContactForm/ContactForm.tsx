@@ -40,11 +40,14 @@ const ContactForm = () => {
     setFormData({ ...formData, interest: selectedOptions.join(", ") });
   };
 
-  const SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID || "service_ix55445";
+  const SERVICE_ID =
+    process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID || "service_ix55445";
+
   const TEMPLATE_ID =
-    import.meta.env.VITE_EMAIL_TEMPLATE_ID || "template_bfw826h";
+    process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID || "template_bfw826h";
+
   const PUBLIC_KEY =
-    import.meta.env.VITE_EMAIL_PUBLIC_KEY || "***REMOVED***";
+    process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY || "***REMOVED***";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -189,7 +192,9 @@ const ContactForm = () => {
         title={t("contactSuccessTitle")}
         onClose={() => {
           setIsModalOpen(false);
-          window.location.reload();
+          if (typeof window !== "undefined") {
+            window.location.reload();
+          }
         }}
       >
         {t("contactSuccessMessage")}

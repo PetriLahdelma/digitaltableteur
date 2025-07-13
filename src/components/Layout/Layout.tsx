@@ -15,7 +15,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           e.preventDefault();
           const main = document.getElementById("main");
           if (main) main.focus();
-          window.location.hash = "main";
+          if (typeof window !== "undefined") {
+            window.location.hash = "main";
+          }
         }}
       >
         Skip to main content

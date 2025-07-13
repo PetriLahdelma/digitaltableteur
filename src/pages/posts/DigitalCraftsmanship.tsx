@@ -12,7 +12,14 @@ import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
 
 const DigitalCraftsmanship = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [currentUrl, setCurrentUrl] = React.useState("");
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+  if (!i18n.isInitialized) return null;
   return (
     <>
       <HelmetProvider>
@@ -53,7 +60,7 @@ const DigitalCraftsmanship = () => {
           <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
         </header>
         <img
-          src={Pizza}
+          src={(Pizza as any).src || Pizza}
           width="100%"
           alt="A colorless pizza topped with melted cheese and vibrant toppings."
           className={styles.image}
@@ -142,10 +149,7 @@ const DigitalCraftsmanship = () => {
           }}
         />
         <h2>{t("shareHeading")}</h2>
-        <SocialShare
-          url={window.location.href}
-          title="Maintaining Quality in a Hurry-Up Culture"
-        />
+        <SocialShare url={currentUrl} title="Digital Craftsmanship" />
         <div className={styles.similar}>
           <h2>Similar Reads</h2>
           <div className={styles["similarList"]}>

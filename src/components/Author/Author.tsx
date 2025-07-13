@@ -1,10 +1,11 @@
 import React from "react";
 import Avatar from "@dt/Avatar";
 import styles from "./Author.module.css";
+import type { StaticImageData } from "next/image";
 
 type AuthorProps = {
   name: string;
-  imageUrl: string | { default: string };
+  imageUrl: string | { default: string } | StaticImageData;
   size?: "16px" | "24px" | "32px" | "40px"; // Restrict size to templated values
 };
 

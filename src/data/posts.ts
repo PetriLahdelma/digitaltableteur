@@ -1,9 +1,9 @@
-import ThoughtsOnFutureBranding from "./ThoughtsOnFutureBranding";
-import DigitalCraftsmanship from "./DigitalCraftsmanship";
-import WorkflowTips from "./WorkflowTips";
-import Designing2025 from "./Designing2025";
-import FigmaMCP from "./FigmaMCP";
-import PetriLahdelmaBio from "./PetriLahdelmaBio";
+import ThoughtsOnFutureBranding from "../pages/posts/ThoughtsOnFutureBranding";
+import DigitalCraftsmanship from "../pages/posts/DigitalCraftsmanship";
+import WorkflowTips from "../pages/posts/WorkflowTips";
+import Designing2025 from "../pages/posts/Designing2025";
+import FigmaMCP from "../pages/posts/FigmaMCP";
+import PetriLahdelmaBio from "../pages/posts/PetriLahdelmaBio";
 
 export const posts = [
   {

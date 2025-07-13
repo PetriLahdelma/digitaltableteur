@@ -17,7 +17,17 @@ import { useTranslation } from "react-i18next";
 import BlogNav from "@dt/BlogNav/BlogNav";
 
 const ThoughtsOnFutureBranding = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [currentUrl, setCurrentUrl] = React.useState("");
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
+  if (!i18n.isInitialized) return null;
+
   return (
     <>
       <HelmetProvider>
@@ -54,7 +64,10 @@ const ThoughtsOnFutureBranding = () => {
             <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
           </header>
           <p>
-            <img src={future1} alt="Future Branding Concept" />
+            <img
+              src={(future1 as any).src || future1}
+              alt="Future Branding Concept"
+            />
             <span className={styles.boldText}>
               Traditionally, an identity or brand has been a tool
             </span>
@@ -99,12 +112,18 @@ const ThoughtsOnFutureBranding = () => {
             successful content delivery, way “outside the box,” and soon beyond
             the capability of the human mind.
           </p>
-          <img src={future2} alt="Future Branding Concept" />
+          <img
+            src={(future2 as any).src || future2}
+            alt="Future Branding Concept"
+          />
           <caption style={{ display: "block", textAlign: "center" }}>
             A logotype refers to words or the name of a business that is
             designed or typeset.
           </caption>
-          <img src={future3} alt="Future Branding Concept" />
+          <img
+            src={(future3 as any).src || future3}
+            alt="Future Branding Concept"
+          />
           <caption
             style={{
               display: "block",
@@ -134,7 +153,10 @@ const ThoughtsOnFutureBranding = () => {
             strive to do something more with the vast possibilities at our
             disposal today?
           </p>
-          <img src={future4} alt="A futuristic branding concept" />
+          <img
+            src={(future4 as any).src || future4}
+            alt="A futuristic branding concept"
+          />
           <caption style={{ display: "block", textAlign: "center" }}>
             A philosophical brand that advocates living instinctively,
             responding in the moment, and letting change flow. The brand evokes
@@ -157,12 +179,18 @@ const ThoughtsOnFutureBranding = () => {
             Genesis Beijing is a visual tool that explores each state and
             associated feeling through rich, reactive pattern. By Wolff Olins
           </caption>
-          <img src={future5} alt="A futuristic branding concept" />
+          <img
+            src={(future5 as any).src || future5}
+            alt="A futuristic branding concept"
+          />
           <caption style={{ display: "block", textAlign: "center" }}>
             Identity for Ministry for Foreign Affairs of Finland echoes the
             world events with changing color schemes. By 358
           </caption>
-          <img src={future8} alt="A futuristic branding concept" />
+          <img
+            src={(future8 as any).src || future8}
+            alt="A futuristic branding concept"
+          />
           <caption
             style={{
               display: "block",
@@ -208,7 +236,7 @@ const ThoughtsOnFutureBranding = () => {
             positive, and lasting experience.
           </p>
           <img
-            src={future7}
+            src={(future7 as any).src || future7}
             alt="A futuristic branding concept"
             className={styles.image}
           />
@@ -217,7 +245,7 @@ const ThoughtsOnFutureBranding = () => {
           </caption>
           <img
             style={{ marginTop: "4rem" }}
-            src={future6}
+            src={(future6 as any).src || future6}
             alt="A futuristic branding concept"
             className={styles.image}
           />
@@ -247,10 +275,7 @@ const ThoughtsOnFutureBranding = () => {
             }}
           />
           <h2>{t("shareHeading")}</h2>
-          <SocialShare
-            url={window.location.href}
-            title="Thoughts on Future Branding"
-          />
+          <SocialShare url={currentUrl} title="Thoughts on Future Branding" />
           <div className={styles.similar}>
             <h2>Similar Reads</h2>
             <div className={styles["similarList"]}>

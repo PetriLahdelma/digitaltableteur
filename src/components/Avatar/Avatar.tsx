@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./avatar.module.css";
 
+import type { StaticImageData } from "next/image";
+
 type AvatarProps = {
   name?: string;
-  imageUrl?: string | { default: string };
+  imageUrl?: string | { default: string } | StaticImageData;
   clickable?: boolean;
   destinationUrl?: string;
   size?: string;
@@ -16,11 +18,21 @@ const Avatar: React.FC<AvatarProps> = ({
   destinationUrl,
   size,
 }) => {
-  const resolvedImageUrl =
-    typeof imageUrl === "string" ? imageUrl : imageUrl?.default;
+  let resolvedImageUrl: string | undefined;
+  if (typeof imageUrl === "string") {
+    resolvedImageUrl = imageUrl;
+  } else if (imageUrl && typeof imageUrl === "object" && "src" in imageUrl) {
+    resolvedImageUrl = imageUrl.src;
+  } else if (
+    imageUrl &&
+    typeof imageUrl === "object" &&
+    "default" in imageUrl
+  ) {
+    resolvedImageUrl = imageUrl.default;
+  }
 
   const handleClick = () => {
-    if (clickable && destinationUrl) {
+    if (clickable && destinationUrl && typeof window !== "undefined") {
       window.location.href = destinationUrl;
     }
   };

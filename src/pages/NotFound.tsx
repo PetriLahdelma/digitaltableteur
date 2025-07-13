@@ -8,7 +8,10 @@ const NotFound = () => {
   const { t } = useTranslation();
   return (
     <div className={styles.notFoundPage}>
-      <img src={notFoundImage} alt={t("notFoundAlt")} />
+      <img
+        src={(notFoundImage as any).src || notFoundImage}
+        alt={t("notFoundAlt")}
+      />
       <Button variant="secondary" onClick={() => (window.location.href = "/")}>
         {t("notFoundButton")}
       </Button>

@@ -1,5 +1,3 @@
-@import url("../../styles/variables.css");
-
 .toast {
   position: fixed;
   bottom: var(--space-layout-24);

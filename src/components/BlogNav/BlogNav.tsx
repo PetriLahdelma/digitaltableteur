@@ -1,21 +1,15 @@
 import React from "react";
+import styles from "./BlogNav.module.css";
 import Button from "@dt/Button";
-import { MdArrowBack, MdArrowForward, MdDescription } from "react-icons/md";
-import styles from "./blognav.module.css";
-import { useNavigate } from "react-router-dom";
+import { MdDescription } from "react-icons/md";
 import { useTranslation } from "react-i18next";
-import path from "path";
+import Link from "next/link";
 
 const blogPages = [
-  { path: "/blog/petri-lahdelma-bio", labelKey: "blogNavPetriLahdelmaBio" },
+  { path: "/blog/figma-mcp-design-systems", labelKey: "blogNavFigmaMCP" },
   {
     path: "/blog/digital-craftsmanship",
     labelKey: "blogNavDigitalCraftsmanship",
-  },
-  { path: "/blog/figma-mcp-design-systems", labelKey: "blogNavFigmaMcp" },
-  {
-    path: "/blog/thoughts-on-future-branding",
-    labelKey: "blogNavThoughtsOnFutureBranding",
   },
   { path: "/blog/designing-in-2025", labelKey: "blogNavDesigning2025" },
   { path: "/blog/workflow-tips", labelKey: "blogNavWorkflowTips" },
@@ -23,48 +17,24 @@ const blogPages = [
 
 const BlogNav: React.FC = () => {
   const { t } = useTranslation();
-  const currentPath = window.location.pathname;
+  const [currentPath, setCurrentPath] = React.useState("");
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentPath(window.location.pathname);
+    }
+  }, []);
   const currentIndex = blogPages.findIndex((p) => p.path === currentPath);
-  const navigate = useNavigate();
   return (
-    <>
-      <div className={styles.blogNavBar}>
-        <Button
-          variant="tertiary"
-          size="m"
-          icon={<MdDescription />}
-          onClick={() => navigate("/blog")}
-        >
+    <div className={styles.blogNavBar}>
+      <Link href="/blog" passHref legacyBehavior>
+        <Button variant="tertiary" size="m" icon={<MdDescription />}>
           {t("blogNavBackToArticles")}
         </Button>
-        <div className={styles.rightNavGroup}>
-          <Button
-            variant="tertiary"
-            size="m"
-            icon={<MdArrowBack />}
-            disabled={currentIndex <= 0}
-            onClick={() => {
-              if (currentIndex > 0) navigate(blogPages[currentIndex - 1].path);
-            }}
-          >
-            {t("blogNavPrev")}
-          </Button>
-          <Button
-            variant="tertiary"
-            size="m"
-            endIcon={<MdArrowForward />}
-            disabled={currentIndex === blogPages.length - 1}
-            onClick={() => {
-              if (currentIndex < blogPages.length - 1)
-                navigate(blogPages[currentIndex + 1].path);
-            }}
-          >
-            {t("blogNavNext")}
-          </Button>
-        </div>
+      </Link>
+      <div className={styles.rightNavGroup}>
+        {/* Add next/prev navigation if needed, using Link */}
       </div>
-      <hr className={styles.hrLine} />
-    </>
+    </div>
   );
 };
 
