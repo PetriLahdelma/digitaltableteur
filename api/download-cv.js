@@ -1,7 +1,13 @@
 import { readFileSync } from "fs";
 import path from "path";
+import handleCors from "./cors.js";
 
 export default async function handler(req, res) {
+  // Handle CORS
+  if (handleCors(req, res)) {
+    return;
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
