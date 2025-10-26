@@ -16,13 +16,14 @@
 
 .inputWrapper {
   position: relative;
+  max-width: 220px;
   width: 100%;
 }
 
 .validationIndicator {
   position: absolute;
-  top: 50%;
-  right: 1rem;
+  top: 45%;
+  right: 0.75rem;
   transform: translateY(-50%);
   z-index: 10;
   pointer-events: none;
@@ -68,6 +69,7 @@
   color: var(--color-error) !important;
   font-size: 0.875rem;
   margin-top: 0.25rem;
+  text-align: left;
 }
 
 .modalFooter {
