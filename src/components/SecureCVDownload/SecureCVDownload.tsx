@@ -37,11 +37,14 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
     setError("");
 
     try {
-      const res = await fetch("/api/download-cv", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
-      });
+      const res = await fetch(
+        "https://digitaltableteursecureproxy.vercel.app/api/download-cv",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password }),
+        },
+      );
 
       if (!res.ok) {
         const errorData = await res.json();
