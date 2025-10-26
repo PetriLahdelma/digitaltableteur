@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./Contact.module.css";
 import ContactForm from "@dt/ContactForm";
+import SecureCVDownload from "@dt/SecureCVDownload";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Link from "@dt/Link";
@@ -41,6 +42,12 @@ const Contact = () => {
             mail@digitaltableteur.com
           </Link>
         </Text>
+        <div className={styles.cvDownloadSection}>
+          <SecureCVDownload
+            buttonText="Download CV"
+            buttonVariant="secondary"
+          />
+        </div>
         <ContactForm />
       </div>
     </>

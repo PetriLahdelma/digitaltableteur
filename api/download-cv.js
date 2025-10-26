@@ -1,0 +1,26 @@
+import { readFileSync } from "fs";
+import path from "path";
+
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  const { password } = req.body;
+
+  if (password !== process.env.CV_PASSWORD) {
+    return res.status(403).json({ error: "Invalid password" });
+  }
+
+  try {
+    const filePath = path.join(process.cwd(), "private", "CV.pdf");
+    const file = readFileSync(filePath);
+
+    const filename = "CV.pdf";
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", "attachment; filename=" + filename);
+    res.send(file);
+  } catch (error) {
+    return res.status(500).json({ error: "File not found" });
+  }
+}
