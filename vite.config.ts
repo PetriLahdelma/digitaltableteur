@@ -13,6 +13,11 @@ export default defineConfig(async () => {
             src: "public/404.html",
             dest: "",
           },
+          {
+            src: "public/llms-full.txt",
+            dest: "",
+            rename: "llms.txt",
+          },
         ],
       }),
     ],
