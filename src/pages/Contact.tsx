@@ -43,10 +43,7 @@ const Contact = () => {
           </Link>
         </Text>
         <div className={styles.cvDownloadSection}>
-          <SecureCVDownload
-            buttonText="Download CV"
-            buttonVariant="secondary"
-          />
+          <SecureCVDownload buttonText="Download CV" buttonVariant="primary" />
         </div>
         <ContactForm />
       </div>
