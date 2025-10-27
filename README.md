@@ -43,14 +43,16 @@ npm ci
 
 Copy the environment template and configure your settings:
 
+```bash
 cp .env.example .env
+```
 
 Configure the following environment variables:
 
-EmailJS credentials for contact form functionality
-VITE_GA_ID for Google Analytics tracking
-FIGMA_TOKEN for design asset synchronization
-CV_PASSWORD for secure resume download (production only)
+- EmailJS credentials for contact form functionality
+- VITE_GA_ID for Google Analytics tracking
+- FIGMA_TOKEN for design asset synchronization
+- CV_PASSWORD for secure resume download (production only)
 
 ## ⚒️ Development
 
