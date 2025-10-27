@@ -38,7 +38,7 @@ technical articles, and provides multi-language support across English, Finnish,
 Install dependencies:
 
 ```bash
-npm ci
+npm install
 ```
 
 Copy the environment template and configure your settings:
