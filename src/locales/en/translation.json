@@ -249,5 +249,17 @@
   "blogNavFigmaMcp": "Figma MCP & Design Systems",
   "blogNavThoughtsOnFutureBranding": "Thoughts on Future Branding",
   "blogNavDesigning2025": "Designing in 2025",
-  "blogNavWorkflowTips": "Workflow Tips"
+  "blogNavWorkflowTips": "Workflow Tips",
+  "downloadResumeButton": "Download Resume",
+  "downloadResumeModalTitle": "Restricted Content",
+  "downloadResumeModalDescription": "Please enter a password to download the resume.",
+  "downloadResumePasswordLabel": "The password given to you",
+  "downloadResumePasswordPlaceholder": "Enter password",
+  "downloadResumeCancel": "Cancel",
+  "downloadResumeDownload": "Download",
+  "downloadResumeDownloading": "Downloading...",
+  "downloadResumeErrorInvalidPassword": "Please enter a valid password",
+  "downloadResumeErrorIncorrect": "Incorrect password",
+  "downloadResumeErrorValidation": "Unable to validate password",
+  "downloadResumeErrorGeneric": "Something went wrong. Please try again."
 }
