@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import Modal from "@dt/Modal";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
@@ -23,9 +24,10 @@ export interface SecureCVDownloadProps {
 }
 
 const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
-  buttonText = "Download CV",
+  buttonText,
   buttonVariant = "primary",
 }) => {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -60,11 +62,11 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
       } else {
         setIsValidPassword(false);
         const errorData = await res.json();
-        setError(errorData.error || "Incorrect password");
+        setError(errorData.error || t("downloadResumeErrorIncorrect"));
       }
     } catch (err) {
       setIsValidPassword(false);
-      setError("Unable to validate password");
+      setError(t("downloadResumeErrorValidation"));
     } finally {
       setIsValidating(false);
     }
@@ -87,7 +89,7 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
 
   const handleDownload = async () => {
     if (!password.trim() || !isValidPassword) {
-      setError("Please enter a valid password");
+      setError(t("downloadResumeErrorInvalidPassword"));
       return;
     }
 
@@ -106,7 +108,7 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
 
       if (!res.ok) {
         const errorData = await res.json();
-        setError(errorData.error || "Incorrect password");
+        setError(errorData.error || t("downloadResumeErrorIncorrect"));
         setLoading(false);
         return;
       }
@@ -127,7 +129,7 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
       setIsValidPassword(false);
       setShowModal(false);
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError(t("downloadResumeErrorGeneric"));
     } finally {
       setLoading(false);
     }
@@ -156,13 +158,13 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
   return (
     <>
       <Button variant={buttonVariant} onClick={() => setShowModal(true)}>
-        {buttonText}
+        {buttonText || t("downloadResumeButton")}
       </Button>
 
       <Modal
         variant="info"
         isOpen={showModal}
-        title="Enter Password"
+        title={t("downloadResumeModalTitle")}
         onClose={handleClose}
         showCloseIcon={true}
         footer={
@@ -172,30 +174,32 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
               onClick={handleClose}
               disabled={loading}
             >
-              Cancel
+              {t("downloadResumeCancel")}
             </Button>
             <Button
               variant="primary"
               onClick={handleDownload}
               disabled={loading || !isValidPassword}
             >
-              {loading ? "Downloading..." : "Download"}
+              {loading
+                ? t("downloadResumeDownloading")
+                : t("downloadResumeDownload")}
             </Button>
           </div>
         }
       >
         <div className={styles.modalContent}>
           <Text className={styles.description}>
-            Please enter a password to download the CV.
+            {t("downloadResumeModalDescription")}
           </Text>
           <div className={styles.inputWrapper}>
             <Input
               type="password"
-              label="The password given to you"
+              label={t("downloadResumePasswordLabel")}
               value={password}
               onChange={handlePasswordChange}
               onKeyPress={handleKeyPress}
-              placeholder="Enter password"
+              placeholder={t("downloadResumePasswordPlaceholder")}
               disabled={loading}
               autoFocus
               error={error}
