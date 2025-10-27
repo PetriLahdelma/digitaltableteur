@@ -38,7 +38,7 @@ technical articles, and provides multi-language support across English, Finnish,
 Install dependencies:
 
 ```bash
-npm ci
+npm install
 ```
 
 Copy the environment template and configure your settings:
@@ -116,9 +116,9 @@ npm run lint
 ```
 Runs comprehensive checks including:
 
-ESLint: TypeScript and React best practices
-Prettier: Consistent code formatting
-Stylelint: CSS standards with strict color value enforcement
+- ESLint: TypeScript and React best practices
+- Prettier: Consistent code formatting
+- Stylelint: CSS standards with strict color value enforcement
 
 ### Testing
 
