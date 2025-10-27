@@ -42,10 +42,11 @@ const Contact = () => {
             mail@digitaltableteur.com
           </Link>
         </Text>
-        <div className={styles.cvDownloadSection}>
-          <SecureCVDownload buttonText="Download CV" buttonVariant="primary" />
-        </div>
+
         <ContactForm />
+        <div className={styles.cvDownloadSection}>
+          <SecureCVDownload buttonVariant="primary" />
+        </div>
       </div>
     </>
   );
