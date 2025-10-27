@@ -27,7 +27,7 @@ technical articles, and provides multi-language support across English, Finnish,
 - **SEO Ready**: React Helmet integration with dynamic meta tags and sitemap generation
 
 
-## 🛠 Getting Started
+## 🏁 Getting Started
 
 ### Prerequisites
 - Node.js (recommended: latest LTS version)
@@ -52,7 +52,7 @@ VITE_GA_ID for Google Analytics tracking
 FIGMA_TOKEN for design asset synchronization
 CV_PASSWORD for secure resume download (production only)
 
-## Development
+## ⚒️ Development
 
 Set `REACT_APP_GA_ID` to your Google Analytics measurement ID if you want to collect usage statistics.
 
@@ -130,7 +130,7 @@ Component unit tests
 Integration testing
 Coverage reporting
 
-## Design Asset Management
+## 🎨 Design Asset Management
 
 ### Fetch Figma design
 
@@ -231,7 +231,7 @@ Branch Protection
 - Include Storybook stories for new components
 - Maintain test coverage for critical functionality
 
-## Folder overview
+## 📁 Folder overview
 
 - **src/** – application source code
 - **public/** – static assets and the HTML template
