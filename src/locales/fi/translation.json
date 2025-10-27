@@ -249,5 +249,17 @@
   "blogNavFigmaMcp": "Figma MCP & Design-systeemit",
   "blogNavThoughtsOnFutureBranding": "Tulevaisuuden brändäys",
   "blogNavDesigning2025": "Suunnittelu 2025",
-  "blogNavWorkflowTips": "Työskentelyvinkit"
+  "blogNavWorkflowTips": "Työskentelyvinkit",
+  "downloadResumeButton": "Lataa ansioluettelo",
+  "downloadResumeModalTitle": "Rajoitettu sisältö",
+  "downloadResumeModalDescription": "Anna salasana ladataksesi ansioluettelon.",
+  "downloadResumePasswordLabel": "Sinulle annettu salasana",
+  "downloadResumePasswordPlaceholder": "Syötä salasana",
+  "downloadResumeCancel": "Peruuta",
+  "downloadResumeDownload": "Lataa",
+  "downloadResumeDownloading": "Ladataan...",
+  "downloadResumeErrorInvalidPassword": "Anna kelvollinen salasana",
+  "downloadResumeErrorIncorrect": "Väärä salasana",
+  "downloadResumeErrorValidation": "Salasanan vahvistus epäonnistui",
+  "downloadResumeErrorGeneric": "Jotain meni pieleen. Yritä uudelleen."
 }

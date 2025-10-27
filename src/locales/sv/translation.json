@@ -249,5 +249,17 @@
   "blogNavFigmaMcp": "Figma MCP & Designs system",
   "blogNavThoughtsOnFutureBranding": "Framtidens varumärken",
   "blogNavDesigning2025": "Design år 2025",
-  "blogNavWorkflowTips": "Arbetsflödestips"
+  "blogNavWorkflowTips": "Arbetsflödestips",
+  "downloadResumeButton": "Ladda ner CV",
+  "downloadResumeModalTitle": "Begränsat innehåll",
+  "downloadResumeModalDescription": "Ange lösenord för att ladda ner CV:t.",
+  "downloadResumePasswordLabel": "Lösenordet som gavs till dig",
+  "downloadResumePasswordPlaceholder": "Ange lösenord",
+  "downloadResumeCancel": "Avbryt",
+  "downloadResumeDownload": "Ladda ner",
+  "downloadResumeDownloading": "Laddar ner...",
+  "downloadResumeErrorInvalidPassword": "Ange ett giltigt lösenord",
+  "downloadResumeErrorIncorrect": "Felaktigt lösenord",
+  "downloadResumeErrorValidation": "Kunde inte validera lösenord",
+  "downloadResumeErrorGeneric": "Något gick fel. Försök igen."
 }
