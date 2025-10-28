@@ -15,10 +15,16 @@ export interface CheckboxGroupProps {
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   id = "",
   label,
+  className,
   options = [],
   onChange,
 }) => {
   const [checkedStates, setCheckedStates] = useState(options.map(() => false));
+
+  // Reset states when options change
+  useEffect(() => {
+    setCheckedStates(options.map(() => false));
+  }, [options]);
 
   const masterCheckboxRef = useRef<HTMLInputElement>(null);
 
@@ -58,24 +64,18 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         .filter(Boolean);
       onChange(selectedOptions);
     }
-
-    // Update master checkbox state
-    if (masterCheckboxRef.current) {
-      const allChecked = newCheckedStates.every((state) => state);
-      const noneChecked = newCheckedStates.every((state) => !state);
-      masterCheckboxRef.current.indeterminate = !allChecked && !noneChecked;
-      masterCheckboxRef.current.checked = allChecked;
-    }
   };
 
   return (
-    <div className={styles["checkboxGroup"]}>
+    <div className={`${styles["checkboxGroup"]} ${className || ""}`}>
       <GroupLabel htmlFor={`masterCheckbox-${id}`}>{label}</GroupLabel>
       <Checkbox
         ref={masterCheckboxRef}
         label="All"
         checked={checkedStates.every((state) => state)}
-        onChange={(checked) => handleMasterCheckboxChange(checked)}
+        onCheckedChange={(checked: boolean) =>
+          handleMasterCheckboxChange(checked)
+        }
         id={`masterCheckbox-${id}`}
       />
       <div className={styles.options}>
@@ -86,7 +86,9 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
               key={option.value}
               label={option.label}
               checked={checkedStates[index]}
-              onChange={(checked) => handleCheckboxChange(index, checked)}
+              onCheckedChange={(checked: boolean) =>
+                handleCheckboxChange(index, checked)
+              }
               id={optionId}
             />
           );

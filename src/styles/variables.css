@@ -179,3 +179,43 @@
   --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
 }
+
+/* Hyphenation rules for headings - supports multiple languages */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  hyphens: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Language-specific hyphenation */
+:lang(en) h1,
+:lang(en) h2,
+:lang(en) h3,
+:lang(en) h4,
+:lang(en) h5,
+:lang(en) h6 {
+  hyphenate-limit-chars: 6 3 3;
+}
+
+:lang(fi) h1,
+:lang(fi) h2,
+:lang(fi) h3,
+:lang(fi) h4,
+:lang(fi) h5,
+:lang(fi) h6 {
+  hyphenate-limit-chars: 8 4 4;
+}
+
+:lang(sv) h1,
+:lang(sv) h2,
+:lang(sv) h3,
+:lang(sv) h4,
+:lang(sv) h5,
+:lang(sv) h6 {
+  hyphenate-limit-chars: 7 3 3;
+}
