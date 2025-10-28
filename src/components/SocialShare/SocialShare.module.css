@@ -10,10 +10,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
   text-decoration: none;
+}
+
+.copyButton svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--primary-text-color);
+  margin: 0 auto;
+  padding: 0;
+}
+
+.socialShare a svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .copyButton {
@@ -28,12 +40,4 @@
 
 .copyButton span {
   margin-right: 0;
-}
-
-.copyButton svg {
-  width: 1rem;
-  height: 1rem;
-  fill: var(--primary-text-color);
-  margin: 0 auto;
-  padding: 0;
 }

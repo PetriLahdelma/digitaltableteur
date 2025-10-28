@@ -45,6 +45,15 @@ const Contact = () => {
 
         <ContactForm />
         <div className={styles.cvDownloadSection}>
+          <Title level={2} size="S" className={styles.contactFormTitle}>
+            {t("resumeSectionTitle")}
+          </Title>
+          <Text className={styles.contactInfo}>
+            {t("resumeSectionDescription")}&nbsp;
+            <Link size="S" href="mailto:mail@digitaltableteur.com">
+              mail@digitaltableteur.com
+            </Link>
+          </Text>
           <SecureCVDownload buttonVariant="primary" />
         </div>
       </div>
