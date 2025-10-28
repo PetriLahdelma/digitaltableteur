@@ -77,11 +77,8 @@ const Home = () => {
           <Title className={styles.gradientText} level={1} size="XL">
             {currentText}
           </Title>
-          <Grid columns={3} gap="1rem">
-            <div
-              className={styles["gridItemBlank"]}
-              style={{ gridColumn: "2 / span 2" }}
-            >
+          <Grid columns="repeat(auto-fit, minmax(280px, 1fr))" gap="1rem">
+            <div className={styles["gridItemBlank"]}>
               <p className={styles.lead}>{t("homeAbout")}</p>
             </div>
           </Grid>

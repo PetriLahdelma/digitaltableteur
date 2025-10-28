@@ -18,3 +18,37 @@
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 2rem;
 }
+
+/* Tablet and small desktop */
+@media (width <= 768px) {
+  .blog {
+    padding: 0 3rem 2rem;
+  }
+
+  .blog h1 {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+  }
+
+  .list {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (width <= 480px) {
+  .blog {
+    padding: 0 1rem 2rem;
+  }
+
+  .blog h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

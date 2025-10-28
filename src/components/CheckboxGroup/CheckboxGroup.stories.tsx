@@ -46,5 +46,5 @@ Default.args = {
 };
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByText(/group label/i);
+  await canvas.findByText("Group Label");
 };
