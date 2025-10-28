@@ -173,8 +173,13 @@ header h2 a {
     gap: 8px;
   }
 
+  .nav a {
+    font-size: 1.125rem;
+  }
+
   .themeToggle {
     margin-left: 0;
     margin-top: 8px;
+    transform: translateY(-4px);
   }
 }
