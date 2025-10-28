@@ -72,3 +72,27 @@ footer p {
     margin-right: calc(-1 * (50vw - 50%));
   }
 }
+
+@media (width <= 480px) {
+  .footer {
+    text-align: left;
+    padding-left: var(--space-layout-16);
+    padding-right: var(--space-layout-16);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer > * {
+    width: 100%;
+    max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footerText {
+    align-items: center;
+    width: auto;
+    max-width: none;
+  }
+}
