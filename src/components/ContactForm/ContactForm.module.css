@@ -42,13 +42,17 @@ label {
   justify-content: flex-start;
 }
 
+.submitButton {
+  margin-bottom: 0.5rem;
+}
+
 /* Mobile responsiveness */
 @media (width <= 768px) {
   .contactForm {
     margin: 1rem;
     padding: 1rem;
     max-width: none;
-    width: calc(100% - 2rem);
+    width: calc(100% - 4.5rem);
   }
 }
 
@@ -57,7 +61,7 @@ label {
   .contactForm {
     margin: 0.5rem;
     padding: 0.75rem;
-    width: calc(100% - 1rem);
+    width: calc(100% - 2.5rem);
   }
 
   .privacyPolicy {

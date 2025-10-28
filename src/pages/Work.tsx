@@ -6,6 +6,7 @@ import sausage from "../assets/images/sausage.webp";
 import fur from "../assets/images/fur.webp";
 import blackletter from "../assets/images/blackletter.webp";
 import Grid from "@dt/Grid";
+import FlexBox from "@dt/FlexBox";
 
 const Work = () => {
   return (
@@ -33,7 +34,11 @@ const Work = () => {
         </Helmet>
         <div className={styles["workPage"]}>
           <section className={styles.works}>
-            <Grid columns={3} gap="2rem" className={styles.worksGrid}>
+            <FlexBox
+              gap="2rem"
+              className={styles.worksGrid}
+              style={{ flexWrap: "wrap", flexDirection: "row" }}
+            >
               <a
                 href="work/new-things-co"
                 rel="noopener noreferrer"
@@ -68,7 +73,7 @@ const Work = () => {
                   />
                 </a>
               </div>
-            </Grid>
+            </FlexBox>
           </section>
         </div>
       </HelmetProvider>
