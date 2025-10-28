@@ -76,6 +76,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         <FaWhatsapp role="img" aria-label="WhatsApp icon" />
       </a>
       <Button
+        size="l"
         variant="secondary"
         icon={<FaLink role="img" aria-label="Copy link icon" />}
         className={styles.copyButton}
