@@ -7,8 +7,9 @@ import {
   FaFacebook,
   FaReddit,
   FaWhatsapp,
-  FaLink,
 } from "react-icons/fa";
+import { MdContentCopy } from "react-icons/md";
+
 import Button from "@dt/Button";
 import Toast from "../Toast/Toast";
 import { useTranslation } from "react-i18next";
@@ -78,7 +79,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
       <Button
         size="l"
         variant="secondary"
-        icon={<FaLink role="img" aria-label="Copy link icon" />}
+        icon={<MdContentCopy role="img" aria-label="Copy link icon" />}
         className={styles.copyButton}
         onClick={handleCopy}
         aria-label={t("copyLinkToClipboard")}
