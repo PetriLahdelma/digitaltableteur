@@ -19,6 +19,11 @@ const ContactForm = () => {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorOpen, setIsErrorOpen] = useState(false);
+  const [formErrors, setFormErrors] = useState({
+    email: "",
+    fullName: "",
+    message: "",
+  });
 
   const handleFullNameChange = (value: string | number) => {
     setFormData({ ...formData, fullName: String(value) });
@@ -46,8 +51,44 @@ const ContactForm = () => {
   const PUBLIC_KEY =
     import.meta.env.VITE_EMAIL_PUBLIC_KEY || "***REMOVED***";
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
+  const validateForm = () => {
+    const errors = {
+      email: "",
+      fullName: "",
+      message: "",
+    };
+
+    // Validate required fields
+    if (!formData.fullName.trim()) {
+      errors.fullName = "Full name is required";
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!validateEmail(formData.email)) {
+      errors.email = "Please enter a valid email address";
+    }
+
+    if (!formData.message.trim()) {
+      errors.message = "Message is required";
+    }
+
+    setFormErrors(errors);
+    return !errors.email && !errors.fullName && !errors.message;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate form before submission
+    if (!validateForm()) {
+      return;
+    }
     const now = new Date();
     const time = now.toLocaleString(); // You can customize the format if needed
 
@@ -92,6 +133,11 @@ const ContactForm = () => {
           interest: "",
           message: "",
         });
+        setFormErrors({
+          email: "",
+          fullName: "",
+          message: "",
+        });
       })
       .catch((err) => {
         // eslint-disable-next-line no-console
@@ -110,6 +156,8 @@ const ContactForm = () => {
             placeholder={t("contactFullNamePlaceholder")}
             value={formData.fullName}
             onChange={handleFullNameChange}
+            error={formErrors.fullName}
+            required
           />
         </div>
 
@@ -120,6 +168,8 @@ const ContactForm = () => {
             placeholder={t("contactEmailPlaceholder")}
             value={formData.email}
             onChange={handleEmailChange}
+            error={formErrors.email}
+            required
           />
         </div>
 
@@ -137,6 +187,8 @@ const ContactForm = () => {
           <CheckboxGroup
             className={styles["checkboxGroup"]}
             label={t("contactInterest")}
+            showMasterCheckbox={true}
+            masterLabel={t("contactAll")}
             options={[
               {
                 label: t("contactInterestBrandStrategy"),
@@ -165,6 +217,8 @@ const ContactForm = () => {
             placeholder={t("contactMessagePlaceholder")}
             value={formData.message}
             onChange={handleMessageChange}
+            error={formErrors.message}
+            required
           />
         </div>
 

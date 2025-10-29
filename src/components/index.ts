@@ -18,6 +18,7 @@ export { default as Label } from "./Label/Label";
 export { default as Layout } from "./Layout/Layout";
 export { default as Link } from "./Link/Link";
 export { default as Modal } from "./Modal/Modal";
+export { default as PersonCard } from "./PersonCard/PersonCard";
 export { default as SecureCVDownload } from "./SecureCVDownload/SecureCVDownload";
 export { default as Select } from "./Select/Select";
 export { SocialShare } from "./SocialShare/SocialShare";

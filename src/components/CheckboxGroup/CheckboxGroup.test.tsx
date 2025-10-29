@@ -46,4 +46,34 @@ describe("CheckboxGroup", () => {
     fireEvent.click(screen.getByLabelText("Option 2"));
     expect(onChange).toHaveBeenCalled();
   });
+
+  it("master checkbox shows indeterminate when some options are selected", () => {
+    render(
+      <CheckboxGroup
+        label="Group Label"
+        options={options}
+        onChange={() => {}}
+      />,
+    );
+
+    // Click the first and second option
+    fireEvent.click(screen.getByLabelText("Option 1"));
+    fireEvent.click(screen.getByLabelText("Option 2"));
+
+    const master = screen.getByLabelText("All") as HTMLInputElement;
+    expect(master).toBeInTheDocument();
+    // master should be indeterminate (some selected)
+    expect(master.indeterminate).toBe(true);
+
+    // Now select the third option so all are selected -> master checked
+    fireEvent.click(screen.getByLabelText("Option 3"));
+    expect(master.checked).toBe(true);
+
+    // Uncheck all options -> master unchecked
+    fireEvent.click(screen.getByLabelText("Option 1"));
+    fireEvent.click(screen.getByLabelText("Option 2"));
+    fireEvent.click(screen.getByLabelText("Option 3"));
+    expect(master.checked).toBe(false);
+    expect(master.indeterminate).toBe(false);
+  });
 });
