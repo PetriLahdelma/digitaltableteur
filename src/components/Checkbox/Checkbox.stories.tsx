@@ -19,13 +19,21 @@ const StoryLabel = ({ tKey }: { tKey: string }) => {
   return <>{t(tKey)}</>;
 };
 
-const Template: StoryFn<CheckboxProps> = (args: CheckboxProps) => (
-  <Checkbox {...args} />
-);
+const Template: StoryFn<CheckboxProps> = (args: CheckboxProps) => {
+  // If label is provided as a translation key string, render via StoryLabel
+  const label =
+    typeof args.label === "string" ? (
+      <StoryLabel tKey={args.label} />
+    ) : (
+      args.label
+    );
+
+  return <Checkbox {...args} label={label as any} />;
+};
 
 export const Default = Template.bind({});
 Default.args = {
-  label: <StoryLabel tKey="storyCheckboxDefault" />,
+  label: "Default checkbox",
 };
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -35,7 +43,7 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
 export const Checked = Template.bind({});
 Checked.args = {
-  label: <StoryLabel tKey="storyCheckboxChecked" />,
+  label: "Checked checkbox",
   checked: true,
 };
 Checked.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -45,7 +53,9 @@ Checked.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
 export const Indeterminate = Template.bind({});
 Indeterminate.args = {
-  label: <StoryLabel tKey="storyCheckboxIndeterminate" />,
+  label: "Indeterminate checkbox",
+  // Indeterminate means neither checked nor unchecked visually.
+  // Keep checked false and set indeterminate true so CSS shows the indeterminate variant.
   checked: false,
   indeterminate: true,
 };
@@ -55,5 +65,6 @@ Indeterminate.play = async ({
   canvasElement: HTMLElement;
 }) => {
   const canvas = within(canvasElement);
+  // Just ensure the indeterminate checkbox renders; don't click it here so it stays indeterminate
   await canvas.findByLabelText(/indeterminate checkbox/i);
 };
