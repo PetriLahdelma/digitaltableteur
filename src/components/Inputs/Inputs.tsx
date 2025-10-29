@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
 
@@ -22,9 +22,13 @@ const Input: React.FC<InputProps> = ({
   disabled = false,
   ...rest
 }) => {
-  const [inputValue, setInputValue] = useState(value || "");
+  const [inputValue, setInputValue] = useState<string | number>(value ?? "");
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
+
+  useEffect(() => {
+    setInputValue(value ?? "");
+  }, [value]);
 
   const validatePhoneNumber = (phone: string) => {
     const phoneRegex = /^[0-9+\s]{1}[0-9\s]{0,15}$/;
