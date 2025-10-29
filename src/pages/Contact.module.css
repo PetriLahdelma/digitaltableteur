@@ -75,3 +75,7 @@
   border-radius: 8px;
   background-color: var(--color-background-secondary);
 }
+
+p.resumeInfo {
+  margin-block-end: 1.5rem;
+}
