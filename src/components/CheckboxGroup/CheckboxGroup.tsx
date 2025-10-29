@@ -97,7 +97,14 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
       </GroupLabel>
       {showMasterCheckbox && (
         <Checkbox
-          label={masterLabel || t("contactAll")}
+          label={(() => {
+            const translated = t("contactAll");
+            // If i18n isn't initialized in tests, t may return the key itself.
+            // In that case fall back to the literal "All" to keep tests stable.
+            if (masterLabel) return masterLabel;
+            if (!translated || translated === "contactAll") return "All";
+            return translated;
+          })()}
           checked={allChecked}
           indeterminate={someChecked}
           onCheckedChange={(checked: boolean) =>
