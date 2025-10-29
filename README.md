@@ -10,7 +10,7 @@
 
 # Digitaltableteur
 
-> Quote of the Day: "Craft patiently; the fastest way to build something lasting is to refuse to rush what matters."
+> "Progress favors the maker who refines today instead of waiting for perfection tomorrow."
 
 Digitaltableteur is a modern React TypeScript portfolio website built with Vite, featuring internationalization,
 responsive design, secure content delivery, and a comprehensive design system. The project showcases creative work,
