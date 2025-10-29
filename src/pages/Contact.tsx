@@ -14,6 +14,7 @@ import L from "leaflet";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import FlexBox from "@dt/FlexBox";
 
 const HELSINKI_COORDINATES: [number, number] = [
   60.1810882006689, 24.952352100000002,
@@ -62,9 +63,6 @@ const Contact = () => {
       </HelmetProvider>
       <div className={styles.contact}>
         <Title size="L">{t("contactHeroTitle")}</Title>
-        <Title level={2} size="M" className={styles.contactSectionHeading}>
-          {t("contactSectionHeading")}
-        </Title>
         <section className={styles.officeSection}>
           <div className={styles.officeMap}>
             <div
@@ -89,29 +87,41 @@ const Contact = () => {
                 </Text>
               )}
             </div>
+            <Title level={2} size="M" className={styles.contactSectionHeading}>
+              {t("contactSectionHeading")}
+            </Title>
             <div className={styles.officeAddress}>
-              <Title level={4} size="S" className={styles.officeAddressHeading}>
-                {t("contactAddressLine1")}
-              </Title>
-              <br />
-              <Text className={styles.officeAddressLine}>
-                {t("contactAddressLine2")}
-                <br />
-                {t("contactAddressLine3")}
-                <br />
-                {t("contactAddressLine4")}
-              </Text>
+              <FlexBox direction="row" gap="0.5rem">
+                <Text className={styles.officeAddressLine}>
+                  {t("contactAddressLine2")}
+                  <br />
+                  {t("contactAddressLine3")}
+                  <br />
+                  {t("contactAddressLine4")}
+                </Text>
+              </FlexBox>
             </div>
           </div>
-          <PersonCard
-            imageSrc="/pete.png"
-            imageAlt={t("contactPersonAlt")}
-            name={t("contactPersonName")}
-            title={t("contactPersonTitle")}
-            email="petri.lahdelma@digitaltableteur.com"
-            linkedinUrl="https://www.linkedin.com/in/petrilahdelma/"
-            linkedinLabel={t("contactLinkedInLabel")}
-          />
+          <div className={styles.personCardCenter}>
+            <Title level={2} size="S" className={styles.contactTitle}>
+              {t("contactTitle")}
+            </Title>
+            <PersonCard
+              imageSrc="/pete.png"
+              imageAlt={t("contactPersonAlt")}
+              name={t("contactPersonName")}
+              title={t("contactPersonTitle")}
+              email="petri.lahdelma@digitaltableteur.com"
+              linkedinUrl="https://www.linkedin.com/in/petrilahdelma/"
+              linkedinLabel={t("contactLinkedInLabel")}
+              githubUrl="https://github.com/PetriLahdelma"
+              githubLabel="View GitHub Profile"
+              mediumUrl="https://medium.com/@petrilahdelma"
+              mediumLabel="Read on Medium"
+              dribbbleUrl="https://dribbble.com/digitaltableteur"
+              dribbbleLabel="View Dribbble Profile"
+            />
+          </div>
         </section>
         <Title level={2} size="S" className={styles.contactFormTitle}>
           {t("contactFormTitle")}
