@@ -10,8 +10,10 @@
 
 # Digitaltableteur
 
-Digitaltableteur is a modern React TypeScript portfolio website built with Vite, featuring internationalization, 
-responsive design, secure content delivery, and a comprehensive design system. The project showcases creative work, 
+> Quote of the Day: "Craft patiently; the fastest way to build something lasting is to refuse to rush what matters."
+
+Digitaltableteur is a modern React TypeScript portfolio website built with Vite, featuring internationalization,
+responsive design, secure content delivery, and a comprehensive design system. The project showcases creative work,
 technical articles, and provides multi-language support across English, Finnish, and Swedish.
 
 ## 🚀 Features
@@ -26,10 +28,10 @@ technical articles, and provides multi-language support across English, Finnish,
 - **Accessibility**: WCAG compliant components with proper ARIA support
 - **SEO Ready**: React Helmet integration with dynamic meta tags and sitemap generation
 
-
 ## 🏁 Getting Started
 
 ### Prerequisites
+
 - Node.js (recommended: latest LTS version)
 - npm or yarn package manager
 
@@ -80,7 +82,6 @@ Browse components at http://localhost:6006 for isolated development and testing.
 
 ### 🏗 Build & Deployment
 
-
 ```bash
 npm run build
 ```
@@ -104,7 +105,6 @@ CNAME file configuration for custom domain
 Cache busting with content hashes
 Dotfiles preservation for GitHub Pages compatibility
 
-
 ## 🔧 Development Tools
 
 ### Code Quality
@@ -114,6 +114,7 @@ Run all code quality checks with:
 ```bash
 npm run lint
 ```
+
 Runs comprehensive checks including:
 
 - ESLint: TypeScript and React best practices
@@ -142,6 +143,7 @@ If you need the raw design data, you can download the Figma file as JSON. Set th
 ```bash
 npm run fetch-figma
 ```
+
 Synchronizes design tokens and assets from Figma using the API.
 The file is saved as `figma.json` in the project root.
 
@@ -156,6 +158,7 @@ npm run generate:alt-text   # Generate accessibility descriptions
 ## 🏗 Architecture
 
 Frontend Stack
+
 - React 18: Modern React with concurrent features
 - TypeScript 5.8: Full type safety and developer experience
 - Vite 6.3: Lightning-fast build tooling and HMR
@@ -164,18 +167,21 @@ Frontend Stack
 - Framer Motion: Smooth animations and transitions
 
 Styling & Design
+
 - CSS Modules: Scoped styling with consistent naming
 - Design Tokens: CSS custom properties for theming
 - Responsive Design: Mobile-first with breakpoint system
 - Component Library: Reusable @dt/ components with TypeScript
 
 Backend Services
+
 - Vercel Serverless: API endpoints for secure operations
 - EmailJS: Contact form email delivery
 - GitHub Pages: Static site hosting with custom domain
 - Service Worker: Offline caching with Workbox
 
 Security Features
+
 - Password Protection: Secure CV download with API validation
 - CORS Configuration: Proper cross-origin resource sharing
 - Environment Isolation: Secure credential management
@@ -194,12 +200,14 @@ Translation files are located in locales with namespace organization for maintai
 ## 🔐 Security & Performance
 
 Security Measures
+
 - Password-protected content delivery
 - Environment-based configuration
 - CORS-enabled API endpoints
 - Sanitized user inputs
 
 Performance Optimizations
+
 - Code splitting with dynamic imports
 - Image optimization and lazy loading
 - Service worker caching strategy
@@ -209,11 +217,13 @@ Performance Optimizations
 ## 🚀 CI/CD Pipeline
 
 GitHub Actions
+
 - Automated Testing: ESLint, Stylelint, and Vitest on every PR
 - Preview Deployments: Automatic staging environments for pull requests
 - Production Deployment: Automated builds and cache busting
 
 Branch Protection
+
 - Required status checks for code quality
 - Review requirements for main branch
 - Automated preview environments for collaboration
@@ -227,6 +237,7 @@ Branch Protection
 5. Open a Pull Request
 
 ### Development Guidelines
+
 - Use TypeScript for all new components
 - Follow the existing CSS Modules pattern
 - Add translations for all user-facing text
