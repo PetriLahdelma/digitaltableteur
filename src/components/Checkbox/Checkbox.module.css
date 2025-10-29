@@ -15,15 +15,18 @@
   border-radius: 2px;
   cursor: pointer;
   appearance: none;
+
+  /* don't animate transform to avoid morphing from indeterminate bar */
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-appearance: none;
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -moz-appearance: none;
-  background: var(--color-white);
+  background-color: var(--checkbox-background-color) !important;
   position: relative;
   transition:
-    border-color 0.2s,
-    background 0.2s;
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .checkbox:hover {
@@ -37,22 +40,85 @@
   box-shadow: 0 0 0 2px rgb(0 112 243 / 20%);
 }
 
-.checkbox:checked {
-  background-color: var(--color-primary);
-  border: 1px solid var(--color-primary);
+/* Checkbox checked state with increasing specificity */
+input.checkbox:checked {
+  background-color: var(--color-primary) !important;
+  border: 1px solid var(--color-primary) !important;
 }
 
-.checkbox:checked::after {
+input.checkbox:checked::after {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 12px;
   height: 6px;
-  border-left: 3px solid var(--color-white);
-  border-bottom: 3px solid var(--color-white);
+  border-left: 3px solid var(--checkbox-checkmark-color);
+  border-bottom: 3px solid var(--checkbox-checkmark-color);
   transform: translate(-50%, -60%) rotate(-45deg);
   border-radius: 1px;
+}
+
+/* Higher specificity selectors for checkbox styling */
+.checkboxContainer input.checkbox:checked {
+  background-color: var(--color-primary) !important;
+  border: 1px solid var(--color-primary) !important;
+}
+
+.checkboxContainer input.checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 6px;
+  border-left: 3px solid var(--checkbox-checkmark-color);
+  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  transform: translate(-50%, -60%) rotate(-45deg);
+  border-radius: 1px;
+}
+
+/* Class-based checked state - more reliable than :checked pseudo-class */
+.checkedState {
+  background-color: var(--color-primary) !important;
+  border: 1px solid var(--color-primary) !important;
+  position: relative;
+}
+
+.checkedState::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 6px;
+  border-left: 3px solid var(--checkbox-checkmark-color);
+  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  transform: translate(-50%, -60%) rotate(-45deg);
+  border-radius: 1px;
+  z-index: 1;
+  /* don't animate transform to avoid morphing from indeterminate bar */
+  transition: none;
+}
+
+/* Higher specificity for class-based styling */
+.checkboxContainer .checkedState {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.checkboxContainer .checkedState::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 6px;
+  border-left: 3px solid var(--checkbox-checkmark-color);
+  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  transform: translate(-50%, -60%) rotate(-45deg);
+  border-radius: 1px;
+  z-index: 1;
 }
 
 .checkbox:indeterminate {
@@ -60,15 +126,45 @@
   border: 1px solid var(--color-primary);
 }
 
-.checkbox:indeterminate::after {
+.checkbox:indeterminate::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 12px;
   height: 3px;
-  background-color: var(--color-white);
+  background-color: var(--checkbox-checkmark-color);
   transform: translate(-50%, -50%);
+  transition: none;
+}
+
+/* Explicit class-based indeterminate state with higher specificity to override checked visuals */
+
+.indeterminateState {
+  background-color: var(--color-primary) !important;
+  border: 1px solid var(--color-primary) !important;
+  position: relative;
+}
+
+.indeterminateState::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 3px;
+  background-color: var(--checkbox-checkmark-color) !important;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  /* don't animate transform to avoid morphing from indeterminate bar */
+  transition: none;
+}
+
+/* Ensure indeterminate class higher specificity than checkedState */
+.checkboxContainer .indeterminateState {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
 }
 
 .label {

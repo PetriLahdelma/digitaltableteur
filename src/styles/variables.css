@@ -83,6 +83,10 @@
   --storybook-white: #fff; /* Storybook Helper Color: White Text */
   --storybook-gray: #707070; /* Storybook Helper Color: Gray */
 
+  /* Component-specific colors that should remain consistent across themes */
+  --checkbox-checkmark-color: #fff; /* Always white for checkmarks on blue background */
+  --checkbox-background-color: #fff; /* Always white background for unchecked state */
+
   /* Sizing */
 
   --radius-sm: 2px;
