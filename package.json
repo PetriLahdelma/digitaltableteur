@@ -72,6 +72,9 @@
       "last 1 safari version"
     ]
   },
+  "engines": {
+    "node": ">=20.19.0 <21"
+  },
   "devDependencies": {
     "@storybook/addon-a11y": "^9.0.16",
     "@storybook/addon-docs": "^9.0.16",
