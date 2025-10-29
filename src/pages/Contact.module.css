@@ -216,14 +216,15 @@
   background-color: var(--color-background-secondary);
 }
 
-@media (width <= 1024px) {
+/* stylelint-disable media-feature-range-notation */
+@media (max-width: 1024px) {
   .officeSection {
     max-width: 100%;
     padding-inline: 1rem;
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .contactSectionHeading {
     text-align: center;
   }
@@ -269,7 +270,7 @@
   }
 }
 
-@media (width <= 480px) {
+@media (max-width: 480px) {
   .mapWrapper {
     height: 14rem;
   }
@@ -278,3 +279,4 @@
     margin-block-end: 1.5rem;
   }
 }
+/* stylelint-enable media-feature-range-notation */
