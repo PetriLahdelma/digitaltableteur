@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
 
@@ -21,6 +21,10 @@ const TextArea: React.FC<TextAreaProps> = ({
   ...rest
 }) => {
   const [textValue, setTextValue] = useState(value);
+
+  useEffect(() => {
+    setTextValue(value);
+  }, [value]);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextValue(e.target.value);
