@@ -134,7 +134,7 @@ const Contact = () => {
         </Text>
         <ContactForm />
         <div className={styles.cvDownloadSection}>
-          <Title level={2} size="S" className={styles.contactFormTitle}>
+          <Title level={2} size="S" className={styles.resumeTitle}>
             {t("resumeSectionTitle")}
           </Title>
           <Text className={styles.resumeInfo}>
@@ -143,7 +143,7 @@ const Contact = () => {
               mail@digitaltableteur.com
             </Link>
           </Text>
-          <SecureCVDownload buttonVariant="primary" />
+          <SecureCVDownload buttonVariant="secondary" inverse />
         </div>
       </div>
     </>

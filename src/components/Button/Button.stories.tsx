@@ -207,6 +207,13 @@ export const AllVariants = () => (
   </div>
 );
 
+export const InverseSecondary = Template.bind({});
+InverseSecondary.args = {
+  variant: "secondary",
+  inverse: true,
+  children: <ButtonStoryLabel tKey="buttonSecondary" />,
+};
+
 export const AllSizes = () => (
   <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
     <Button size="s">
