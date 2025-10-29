@@ -23,13 +23,32 @@
 
 .button.secondary {
   background-color: transparent;
-  color: color-mix(in srgb, var(--color-primary) 100%, white 60%);
+  color: var(--color-primary);
   border: 0.125rem solid var(--color-primary);
+}
+
+/* Inverse modifier: swap primary blue text/border to white for contrast on dark backgrounds */
+.button.inverse {
+  color: var(--color-primary);
+}
+
+.button.primary.inverse {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.button.secondary.inverse {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.button.tertiary.inverse {
+  color: var(--color-white);
 }
 
 .button.tertiary {
   background-color: transparent;
-  color: color-mix(in srgb, var(--color-primary) 100%, white 60%);
+  color: var(--color-primary);
   border: none;
 }
 

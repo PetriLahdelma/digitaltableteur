@@ -21,11 +21,14 @@ export interface SecureCVDownloadProps {
     | "warning"
     | "success"
     | "info";
+  /** Make the trigger button use inverse styling (white text/border) */
+  inverse?: boolean;
 }
 
 const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
   buttonText,
   buttonVariant = "primary",
+  inverse = false,
 }) => {
   const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
@@ -157,7 +160,11 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
 
   return (
     <>
-      <Button variant={buttonVariant} onClick={() => setShowModal(true)}>
+      <Button
+        variant={buttonVariant}
+        inverse={inverse}
+        onClick={() => setShowModal(true)}
+      >
         {buttonText || t("downloadResumeButton")}
       </Button>
 
