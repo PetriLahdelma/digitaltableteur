@@ -14,6 +14,126 @@
   color: var(--color-primary);
 }
 
+.contactSectionHeading {
+  margin-block: 2rem 1.5rem;
+  text-align: left;
+  color: var(--color-primary);
+}
+
+.officeSection {
+  display: grid;
+  gap: 2.5rem;
+  margin: 0 auto 3rem;
+  max-width: 960px;
+  text-align: left;
+}
+
+.officeMap {
+  display: grid;
+  gap: 1rem;
+}
+
+.officeSubheading {
+  color: var(--color-primary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mapWrapper {
+  position: relative;
+  width: 100%;
+  height: 18rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--color-light-bg);
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.mapFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1rem;
+  color: var(--color-gray-medium);
+}
+
+.mapDescription {
+  font-size: 0.95rem;
+  color: var(--color-gray-medium);
+}
+
+.officeAddress {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.officeAddressHeading {
+  margin: 0.8rem 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+}
+
+.officeAddressLine {
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.personGrid {
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) 1fr;
+  gap: 2rem;
+  place-items: center start;
+}
+
+.portrait {
+  width: 128px;
+  border-radius: 100rem;
+  object-fit: cover;
+  clip-path: inset(2px round 50%);
+}
+
+.personDetails {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.personName {
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.personTitle {
+  color: var(--color-gray-medium);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.personEmail {
+  text-transform: none;
+}
+
+.linkedinLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.linkedinLink svg {
+  font-size: 1.5rem;
+}
+
 .contact h2 {
   font-family: var(--secondary-heading-font, sans-serif);
   font-size: 1.8rem;
@@ -74,4 +194,63 @@
   border: 1px solid var(--color-border-secondary);
   border-radius: 8px;
   background-color: var(--color-background-secondary);
+}
+
+@media (width <= 1024px) {
+  .officeSection {
+    max-width: 100%;
+    padding-inline: 1rem;
+  }
+}
+
+@media (width <= 768px) {
+  .contactSectionHeading {
+    text-align: center;
+  }
+
+  .officeSection {
+    padding-inline: 0;
+    gap: 2rem;
+  }
+
+  .officeMap {
+    text-align: center;
+  }
+
+  .officeSubheading,
+  .officeAddressHeading {
+    text-align: center;
+  }
+
+  .mapWrapper {
+    height: 16rem;
+  }
+
+  .mapDescription {
+    text-align: center;
+  }
+
+  .officeAddress {
+    justify-items: center;
+  }
+
+  .personGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .portrait {
+    max-width: 240px;
+  }
+
+  .personDetails {
+    justify-items: center;
+  }
+}
+
+@media (width <= 480px) {
+  .mapWrapper {
+    height: 14rem;
+  }
 }
