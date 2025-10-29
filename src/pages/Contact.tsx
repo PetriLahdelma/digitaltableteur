@@ -111,7 +111,7 @@ const Contact = () => {
               imageAlt={t("contactPersonAlt")}
               name={t("contactPersonName")}
               title={t("contactPersonTitle")}
-              email="petri.lahdelma@digitaltableteur.com"
+              email="mail@digitaltableteur.com"
               linkedinUrl="https://www.linkedin.com/in/petrilahdelma/"
               linkedinLabel={t("contactLinkedInLabel")}
               githubUrl="https://github.com/PetriLahdelma"
@@ -139,7 +139,7 @@ const Contact = () => {
           </Title>
           <Text className={styles.resumeInfo}>
             {t("resumeSectionDescription")}&nbsp;
-            <Link size="S" href="mailto:mail@digitaltableteur.com">
+            <Link size="M" href="mailto:mail@digitaltableteur.com">
               mail@digitaltableteur.com
             </Link>
           </Text>
