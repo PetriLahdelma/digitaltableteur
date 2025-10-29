@@ -10,7 +10,11 @@
 
 # Digitaltableteur
 
+<<<<<<< Updated upstream
 > "Progress favors the maker who refines today instead of waiting for perfection tomorrow."
+=======
+> "Iteration beats perfection—ship today, learn tomorrow, refine forever."
+>>>>>>> Stashed changes
 
 Digitaltableteur is a modern React TypeScript portfolio website built with Vite, featuring internationalization,
 responsive design, secure content delivery, and a comprehensive design system. The project showcases creative work,
