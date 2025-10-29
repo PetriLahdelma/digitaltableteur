@@ -137,7 +137,7 @@ const Contact = () => {
           <Title level={2} size="S" className={styles.contactFormTitle}>
             {t("resumeSectionTitle")}
           </Title>
-          <Text className={styles.contactInfo}>
+          <Text className={styles.resumeInfo}>
             {t("resumeSectionDescription")}&nbsp;
             <Link size="S" href="mailto:mail@digitaltableteur.com">
               mail@digitaltableteur.com
