@@ -21,6 +21,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   submits?: boolean;
   tooltip?: string;
   size?: "s" | "m" | "l";
+  /** When true, replaces primary (blue) text/border color with white for supported variants */
+  inverse?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -39,6 +41,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   className = "",
   size = "m",
+  inverse = false,
   ...rest
 }) => {
   const normalizedIcon =
@@ -53,6 +56,7 @@ const Button: React.FC<ButtonProps> = ({
         styles[variant],
         styles[size],
         !children && normalizedIcon ? styles["iconOnly"] : "",
+        inverse ? styles.inverse : "",
         className,
       ]
         .filter(Boolean)

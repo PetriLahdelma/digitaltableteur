@@ -44,8 +44,8 @@
   position: relative;
   width: 100%;
   height: 18rem;
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 0;
   overflow: hidden;
   background-color: var(--color-light-bg);
 }
@@ -178,6 +178,11 @@
   text-decoration: underline;
 }
 
+.resumeInfo a {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
 .privacyPolicy a:hover {
   text-decoration: underline;
 }
@@ -199,7 +204,19 @@
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--color-secondary);
+}
+
+h2.contactFormTitle {
+  color: var(--color-primary);
+}
+
+p.resumeInfo {
+  margin-block-end: 1.5rem;
+  color: var(--color-white);
+}
+
+h2.resumeTitle {
+  color: var(--color-white);
 }
 
 .contactInfo {
@@ -209,11 +226,9 @@
 }
 
 .cvDownloadSection {
-  margin: 2rem 0;
+  margin: 2rem 0 0;
   padding: 1.5rem;
-  border: 1px solid var(--color-border-secondary);
-  border-radius: 8px;
-  background-color: var(--color-background-secondary);
+  background-color: var(--color-primary);
 }
 
 /* stylelint-disable media-feature-range-notation */
@@ -273,10 +288,6 @@
 @media (max-width: 480px) {
   .mapWrapper {
     height: 14rem;
-  }
-
-  p.resumeInfo {
-    margin-block-end: 1.5rem;
   }
 }
 /* stylelint-enable media-feature-range-notation */
