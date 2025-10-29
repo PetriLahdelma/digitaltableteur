@@ -46,6 +46,34 @@ initI18n().then(() => {
   );
 });
 
+// Temporary: unregister any previously installed service workers and clear caches.
+// This helps clients that have an old service worker still active after deploys.
+// It only runs in non-localhost environments to avoid disturbing dev setup.
+if (typeof window !== "undefined" && window.location.hostname !== "localhost") {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .getRegistrations()
+      .then((regs) => {
+        regs.forEach((reg) => {
+          try {
+            reg.unregister();
+          } catch (e) {
+            // swallow errors - best effort unregister
+          }
+        });
+      })
+      .catch(() => undefined);
+  }
+
+  // Also try clearing caches (best-effort). Some browsers may restrict this.
+  if (typeof caches !== "undefined") {
+    caches
+      .keys()
+      .then((names) => Promise.all(names.map((n) => caches.delete(n))))
+      .catch(() => undefined);
+  }
+}
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
