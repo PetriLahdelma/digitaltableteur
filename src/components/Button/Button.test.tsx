@@ -29,4 +29,14 @@ describe("Button", () => {
       /custom-class/,
     );
   });
+
+  it("applies inverse modifier class when inverse prop is true", () => {
+    const { container } = render(
+      <Button variant="secondary" inverse>
+        Inverse
+      </Button>,
+    );
+    const el = container.firstChild as HTMLElement;
+    expect(el.className).toMatch(/inverse/);
+  });
 });
