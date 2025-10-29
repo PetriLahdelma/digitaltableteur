@@ -97,6 +97,7 @@ input.checkbox:checked::after {
   transform: translate(-50%, -60%) rotate(-45deg);
   border-radius: 1px;
   z-index: 1;
+
   /* don't animate transform to avoid morphing from indeterminate bar */
   transition: none;
 }

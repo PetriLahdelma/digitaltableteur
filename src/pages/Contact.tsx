@@ -64,6 +64,20 @@ const Contact = () => {
       <div className={styles.contact}>
         <Title size="L">{t("contactHeroTitle")}</Title>
         <section className={styles.officeSection}>
+          <Title level={2} size="M" className={styles.contactSectionHeading}>
+            {t("contactSectionHeading")}
+          </Title>
+          <div className={styles.officeAddress}>
+            <FlexBox direction="row" gap="0.5rem">
+              <Text className={styles.officeAddressLine}>
+                {t("contactAddressLine2")}
+                <br />
+                {t("contactAddressLine3")}
+                <br />
+                {t("contactAddressLine4")}
+              </Text>
+            </FlexBox>
+          </div>
           <div className={styles.officeMap}>
             <div
               className={styles.mapWrapper}
@@ -86,20 +100,6 @@ const Contact = () => {
                   {t("contactMapFallback")}
                 </Text>
               )}
-            </div>
-            <Title level={2} size="M" className={styles.contactSectionHeading}>
-              {t("contactSectionHeading")}
-            </Title>
-            <div className={styles.officeAddress}>
-              <FlexBox direction="row" gap="0.5rem">
-                <Text className={styles.officeAddressLine}>
-                  {t("contactAddressLine2")}
-                  <br />
-                  {t("contactAddressLine3")}
-                  <br />
-                  {t("contactAddressLine4")}
-                </Text>
-              </FlexBox>
             </div>
           </div>
           <div className={styles.personCardCenter}>
