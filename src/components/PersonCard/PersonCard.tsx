@@ -65,25 +65,19 @@ const PersonCard: React.FC<PersonCardProps> = ({
     <div className={`${styles.personGrid} ${className || ""}`}>
       <img className={styles.portrait} src={imageSrc} alt={imageAlt} />
       <div className={styles.personDetails}>
-        <Title
-          terminals="sans"
-          level={3}
-          size="S"
-          className={styles.personName}
-        >
-          {name}
-        </Title>
-        <Text className={styles.personTitle}>
-          {title}
-          <br />
-          <Link
-            size="S"
-            href={`mailto:${email}`}
-            className={styles.personEmail}
-          >
-            {email}
-          </Link>
-        </Text>
+        <div className={styles.nameTitle}>
+          <Text className={styles.personName}>{name}</Text>
+          <Text className={styles.personTitle}>{title}</Text>
+          <Text>
+            <Link
+              size="S"
+              href={`mailto:${email}`}
+              className={styles.personEmail}
+            >
+              {email}
+            </Link>
+          </Text>
+        </div>
         <div className={styles.socialLinks}>
           {linkedinUrl && (
             <Link

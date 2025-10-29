@@ -74,14 +74,6 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   };
 
   const handleCheckboxChange = (index: number, checked: boolean) => {
-    // debug: log changes coming from children (useful when embedded in contact form)
-    // console.debug can be removed after debugging
-    // eslint-disable-next-line no-console
-    console.debug("CheckboxGroup.handleCheckboxChange", {
-      index,
-      checked,
-      option: options[index],
-    });
     const newCheckedStates = [...checkedStates];
     newCheckedStates[index] = checked;
     setCheckedStates(newCheckedStates);
