@@ -273,4 +273,6 @@
   .mapWrapper {
     height: 14rem;
   }
+p.resumeInfo {
+  margin-block-end: 1.5rem;
 }
