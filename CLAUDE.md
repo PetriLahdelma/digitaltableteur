@@ -51,4 +51,4 @@ When working with this project, please:
 
 ## Workflow requirements
 
-– Update
+– Update CLAUDE.md with everyt git commit
