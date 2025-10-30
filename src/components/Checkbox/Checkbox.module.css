@@ -21,7 +21,7 @@
   -webkit-appearance: none;
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -moz-appearance: none;
-  background-color: var(--checkbox-background-color) !important;
+  background-color: var(--color-light-bg) !important;
   position: relative;
   transition:
     border-color 0.2s ease,
