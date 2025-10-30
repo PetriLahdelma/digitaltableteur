@@ -44,7 +44,7 @@ export default async function handler(request, response) {
   }
 
   const uri = process.env.MONGODB_URI;
-  const dbName = process.env.MONGODB_DB || "digitaltableteur";
+  const dbName = process.env.MONGODB_DB;
 
   if (!uri) {
     response.status(500).json({ error: "Database not configured" });
