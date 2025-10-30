@@ -84,7 +84,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         onClick={handleCopy}
         aria-label={t("copyLinkToClipboard")}
       >
-        <span className={styles.copyButtonText}>
+        <span className={styles.copyButtonText} aria-hidden="true">
           {t("copyLinkToClipboard")}
         </span>
       </Button>
