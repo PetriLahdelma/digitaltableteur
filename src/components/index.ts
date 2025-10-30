@@ -6,6 +6,7 @@ export { default as Button } from "./Button/Button";
 export { default as Card } from "./Card/Card";
 export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
+export { default as ChunkErrorBoundary } from "./ChunkErrorBoundary/ChunkErrorBoundary";
 export { default as ContactForm } from "./ContactForm/ContactForm";
 export { default as CookieConsent } from "./CookieConsent/CookieConsent";
 export { default as FlexBox } from "./FlexBox/FlexBox";

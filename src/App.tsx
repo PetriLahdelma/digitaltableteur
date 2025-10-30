@@ -2,6 +2,7 @@ import React, { Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "@dt/Layout";
 import CookieConsent from "@dt/CookieConsent";
+import ChunkErrorBoundary from "@dt/ChunkErrorBoundary";
 import { useTranslation } from "react-i18next";
 
 const Home = React.lazy(() => import("./pages/Home"));
@@ -49,76 +50,78 @@ function App() {
   }, [i18n]);
 
   return (
-    <Router>
-      <div>
-        <CookieConsent />
-        <Suspense
-          fallback={
-            <div
-              style={{ fontSize: "1rem", fontFamily: "Moderat, sans-serif" }}
-            >
-              Loading...
-            </div>
-          }
-        >
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/work" element={<Work />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route
-                path="/blog/designing-in-2025"
-                element={<Designing2025 />}
-              />
-              <Route path="/blog/workflow-tips" element={<WorkflowTips />} />
-              <Route
-                path="/blog/digital-craftsmanship"
-                element={<DigitalCraftsmanship />}
-              />
-              <Route
-                path="/blog/thoughts-on-future-branding"
-                element={<ThoughtsOnFutureBranding />}
-              />
-              <Route
-                path="/blog/figma-mcp-design-systems"
-                element={<FigmaMCP />}
-              />
-              <Route
-                path="/blog/petri-lahdelma-bio"
-                element={<PetriLahdelmaBio />}
-              />
-              {/* Cookie Policy Full routes for all languages */}
-              <Route
-                path="/cookie-policy-full-en"
-                element={<CookiePolicyFullEN />}
-              />
-              <Route
-                path="/cookie-policy-full-fi"
-                element={<CookiePolicyFullFI />}
-              />
-              <Route
-                path="/cookie-policy-full-sv"
-                element={<CookiePolicyFullSV />}
-              />
-              {/* Optionally, make /cookie-policy-full default to EN */}
-              <Route
-                path="/cookie-policy-full"
-                element={<CookiePolicyFullEN />}
-              />
-              <Route path="/work/new-things-co" element={<NewThingsCo />} />
-              <Route path="/work/illustrations" element={<Illustrations />} />
-              <Route
-                path="/work/garage-junction"
-                element={<GarageJunction />}
-              />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Layout>
-        </Suspense>
-      </div>
-    </Router>
+    <ChunkErrorBoundary>
+      <Router>
+        <div>
+          <CookieConsent />
+          <Suspense
+            fallback={
+              <div
+                style={{ fontSize: "1rem", fontFamily: "Moderat, sans-serif" }}
+              >
+                Loading...
+              </div>
+            }
+          >
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/work" element={<Work />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route
+                  path="/blog/designing-in-2025"
+                  element={<Designing2025 />}
+                />
+                <Route path="/blog/workflow-tips" element={<WorkflowTips />} />
+                <Route
+                  path="/blog/digital-craftsmanship"
+                  element={<DigitalCraftsmanship />}
+                />
+                <Route
+                  path="/blog/thoughts-on-future-branding"
+                  element={<ThoughtsOnFutureBranding />}
+                />
+                <Route
+                  path="/blog/figma-mcp-design-systems"
+                  element={<FigmaMCP />}
+                />
+                <Route
+                  path="/blog/petri-lahdelma-bio"
+                  element={<PetriLahdelmaBio />}
+                />
+                {/* Cookie Policy Full routes for all languages */}
+                <Route
+                  path="/cookie-policy-full-en"
+                  element={<CookiePolicyFullEN />}
+                />
+                <Route
+                  path="/cookie-policy-full-fi"
+                  element={<CookiePolicyFullFI />}
+                />
+                <Route
+                  path="/cookie-policy-full-sv"
+                  element={<CookiePolicyFullSV />}
+                />
+                {/* Optionally, make /cookie-policy-full default to EN */}
+                <Route
+                  path="/cookie-policy-full"
+                  element={<CookiePolicyFullEN />}
+                />
+                <Route path="/work/new-things-co" element={<NewThingsCo />} />
+                <Route path="/work/illustrations" element={<Illustrations />} />
+                <Route
+                  path="/work/garage-junction"
+                  element={<GarageJunction />}
+                />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Layout>
+          </Suspense>
+        </div>
+      </Router>
+    </ChunkErrorBoundary>
   );
 }
 
