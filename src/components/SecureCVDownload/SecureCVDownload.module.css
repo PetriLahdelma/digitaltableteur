@@ -22,9 +22,8 @@
 
 .validationIndicator {
   position: absolute;
-  top: 75%;
+  top: 55%;
   right: 0.75rem;
-  transform: translateY(-50%);
   z-index: 10;
   pointer-events: none;
 }
