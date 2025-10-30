@@ -41,3 +41,24 @@
 .copyButton span {
   margin-right: 0;
 }
+
+.copyButtonText {
+  display: inline;
+}
+
+@media (width < 768px) {
+  .copyButtonText {
+    display: none;
+  }
+
+  .copyButton {
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    width: 1.5rem;
+    height: 1.5rem;
+    min-width: unset !important;
+    min-height: unset !important;
+  }
+}
