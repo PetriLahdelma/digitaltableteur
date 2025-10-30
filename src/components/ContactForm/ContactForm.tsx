@@ -56,7 +56,7 @@ const ContactForm = () => {
   const PUBLIC_KEY =
     import.meta.env.VITE_EMAIL_PUBLIC_KEY ||
     import.meta.env.VITE_APP_EMAIL_PUBLIC_KEY ||
-    "ockSR3pBVF7_k4-Tu";
+    "Iq0v0vFsZbx0HWBvt";
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
