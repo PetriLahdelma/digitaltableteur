@@ -11,9 +11,6 @@ import { useTranslation } from "react-i18next";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import FlexBox from "@dt/FlexBox";
 
 const HELSINKI_COORDINATES: [number, number] = [
@@ -25,9 +22,9 @@ if (typeof window !== "undefined") {
   const iconOptions = L.Icon.Default.prototype.options;
   if (!iconOptions.iconRetinaUrl) {
     L.Icon.Default.mergeOptions({
-      iconRetinaUrl: markerIcon2x,
-      iconUrl: markerIcon,
-      shadowUrl: markerShadow,
+      iconRetinaUrl: "/marker-icon-2x.png",
+      iconUrl: "/marker-icon.png",
+      shadowUrl: "/marker-shadow.png",
     });
   }
 }

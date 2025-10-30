@@ -117,6 +117,16 @@ const ContactForm = () => {
       // Do not show error modal for MongoDB failure
     });
 
+    // Check if EmailJS credentials are available
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      // eslint-disable-next-line no-console
+      console.error(
+        "EmailJS credentials not configured. Please set VITE_EMAIL_* environment variables.",
+      );
+      setIsErrorOpen(true);
+      return;
+    }
+
     // Show modal only after successful EmailJS send
     send(
       SERVICE_ID,
