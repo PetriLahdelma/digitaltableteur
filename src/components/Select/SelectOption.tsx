@@ -6,12 +6,14 @@ export interface SelectOptionProps
   value: string;
   label: string;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 const SelectOption: React.FC<SelectOptionProps> = ({
   value,
   label,
   disabled = false,
+  children,
   ...rest
 }) => {
   return (
@@ -21,7 +23,7 @@ const SelectOption: React.FC<SelectOptionProps> = ({
       className={styles.option}
       {...rest}
     >
-      {label}
+      {children ?? label}
     </option>
   );
 };

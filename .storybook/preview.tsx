@@ -70,7 +70,7 @@ const withI18next = (Story, context) => {
     localStorage.setItem(THEME_KEY, theme);
     localStorage.setItem("theme", theme);
     if (typeof window !== "undefined") {
-      document.body.style.background = theme === "dark" ? "#000" : "#fff";
+      document.body.style.background = theme === "dark" ? "#23272a" : "#fff";
     }
   }, [theme]);
   useEffect(() => {
@@ -98,6 +98,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    a11y: {
+      test: "error",
     },
     // backgrounds: {
     //   default: "light",

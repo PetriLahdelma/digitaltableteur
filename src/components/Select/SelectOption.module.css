@@ -1,20 +1,9 @@
 .option {
   font-size: 1rem;
-  color: var(--primary-text-color);
-  background: var(--color-white, #fff);
-  padding: 0.5em 1em;
-  visibility: hidden;
-  height: 0;
-  margin: 0;
-
-  /* Hide native option visually but keep it accessible for screen readers */
-  appearance: none;
-  border: none;
-  outline: none;
+  color: inherit;
+  background: inherit;
 }
 
 .option:disabled {
-  color: var(--disabled-text-color, #aaa);
-  background: var(--disabled-bg, #f5f5f5);
-  cursor: not-allowed;
+  color: var(--color-muted);
 }
