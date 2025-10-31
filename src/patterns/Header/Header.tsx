@@ -51,7 +51,7 @@ const Header = () => {
 
   React.useLayoutEffect(() => {
     let rafId: number | null = null;
-    
+
     const computeOffset = () => {
       if (typeof window === "undefined") return;
       if (!leftRef.current || !controlsRef.current) {
@@ -78,7 +78,7 @@ const Header = () => {
 
     // Initial computation - immediate, no throttling needed
     computeOffset();
-    
+
     // Throttle window resize events
     window.addEventListener("resize", scheduleCompute);
 
