@@ -78,20 +78,16 @@ Playground.argTypes = {
 
 AllSizes.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const headings = [
-    "Pieni otsikko",
-    "Keskikokoinen otsikko",
-    "Iso otsikko",
-    "Todella iso otsikko",
-  ];
-  for (const heading of headings) {
-    await canvas.findByText(heading);
+  const headings = await canvas.findAllByRole("heading");
+  if (headings.length < 4) {
+    throw new Error("Expected four title sizes to be rendered");
   }
-  // Or, if you want to check all at once:
-  // await canvas.findAllByText((content) => headings.includes(content));
 };
 
 AllLevels.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByText(/(small title|pieni otsikko)/i);
+  const headings = await canvas.findAllByRole("heading");
+  if (headings.length < 6) {
+    throw new Error("Expected six heading levels to be rendered");
+  }
 };

@@ -191,28 +191,15 @@ const Header = () => {
         </nav>
         <div ref={controlsRef} className={styles.controls}>
           <div className={styles.languageSwitcher}>
-            {languages.map((lang, idx) => (
+            {languages.map((lang) => (
               <button
                 key={lang.code}
+                type="button"
                 onClick={() => changeLanguage(lang.code)}
                 disabled={currentlang === lang.code}
-                style={{
-                  cursor: currentlang === lang.code ? "default" : "pointer",
-                  opacity: currentlang === lang.code ? 0.5 : 1,
-                  textDecoration: "none",
-                  borderBottom:
-                    currentlang === lang.code
-                      ? "2px solid"
-                      : "2px solid transparent",
-                  marginRight: idx < languages.length - 1 ? 8 : 0,
-                  transition: "border-color 0.2s",
-                  background: "transparent",
-                  border: "none",
-                  color: "inherit",
-                  font: "inherit",
-                  padding: 0,
-                }}
-                className={styles.languageLink}
+                className={`${styles.languageLink} ${
+                  currentlang === lang.code ? styles.languageLinkActive : ""
+                }`.trim()}
                 aria-label={lang.label}
                 aria-current={currentlang === lang.code ? "true" : undefined}
               >
