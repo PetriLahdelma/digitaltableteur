@@ -5,19 +5,19 @@
   text-align: left;
 }
 
-.hero {
+.what {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  min-height: 98vh;
   padding: 2rem;
   background-color: var(--accent-purple);
   color: var(--color-white);
   text-align: center;
 }
 
-.hero h1 {
+.what h1 {
   font-family: var(--primary-heading-font, "Times New Roman"), serif;
   color: var(--color-white);
   font-size: 8rem;
@@ -26,7 +26,7 @@
   margin: 0 0 1rem;
 }
 
-.hero p {
+.what p {
   font-family: var(--secondary-body-font, "TiemposHeadline-Regular"), serif;
   color: var(--color-white);
   font-size: 2rem;
@@ -36,6 +36,19 @@
 
 .section {
   padding: 4rem 1rem;
+}
+
+.section h1 {
+  font-family: var(--secondary-heading-font);
+  font-size: 3rem;
+  font-weight: var(--secondary-heading-weight, 400);
+  margin-bottom: 1rem;
+}
+
+.who {
+  width: auto;
+  margin: 0 4rem;
+  min-height: 74vh;
 }
 
 .section h2 {
@@ -55,16 +68,16 @@
 
 /* Tablet and small desktop */
 @media (width <= 768px) {
-  .hero {
+  .what {
     min-height: 70vh;
     padding: 1.5rem;
   }
 
-  .hero h1 {
+  .what h1 {
     font-size: 5rem;
   }
 
-  .hero p {
+  .what p {
     font-size: 1.5rem;
     max-width: 35rem;
   }
@@ -85,17 +98,17 @@
 
 /* Mobile */
 @media (width <= 480px) {
-  .hero {
+  .what {
     min-height: 60vh;
     padding: 1rem;
   }
 
-  .hero h1 {
+  .what h1 {
     font-size: 3rem;
     margin: 0 0 0.5rem;
   }
 
-  .hero p {
+  .what p {
     font-size: 1.25rem;
     max-width: 30rem;
   }

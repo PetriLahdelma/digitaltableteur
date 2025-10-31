@@ -21,7 +21,13 @@ const About = () => {
         <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.about}>
-        <section className={styles.hero}>
+        <section className={styles.who}>
+          <Title size="L">
+            …is a small consultancy geared toward digital innovation, software
+            development, and strategic design…
+          </Title>
+        </section>
+        <section className={styles.what}>
           <Title size="L">{t("aboutHeroTitle")}</Title>
           <Text>{t("aboutHeroText")}</Text>
         </section>
