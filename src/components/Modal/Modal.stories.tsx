@@ -105,6 +105,6 @@ export const BusyDialog = Template.bind({});
 BusyDialog.args = {
   variant: "loading",
   title: "storyModalBusyTitle",
-  children: <p>{"storyModalBusyBody"}</p>,
+  children: "storyModalBusyBody",
   showCloseIcon: false,
 };

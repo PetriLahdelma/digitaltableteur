@@ -66,9 +66,13 @@ const PersonCard: React.FC<PersonCardProps> = ({
       <img className={styles.portrait} src={imageSrc} alt={imageAlt} />
       <div className={styles.personDetails}>
         <div className={styles.nameTitle}>
-          <Text className={styles.personName}>{name}</Text>
-          <Text className={styles.personTitle}>{title}</Text>
-          <Text>
+          <Text as="h3" className={styles.personName}>
+            {name}
+          </Text>
+          <Text as="p" className={styles.personTitle}>
+            {title}
+          </Text>
+          <Text as="p">
             <Link
               size="S"
               href={`mailto:${email}`}
@@ -87,6 +91,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label={linkedinLabel || t("contactLinkedInLabel")}
+              title={linkedinLabel || t("contactLinkedInLabel")}
             >
               <FaLinkedin aria-hidden="true" />
             </Link>
@@ -99,6 +104,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label={githubLabel || t("contactGitHubLabel")}
+              title={githubLabel || t("contactGitHubLabel")}
             >
               <FaGithub aria-hidden="true" />
             </Link>
@@ -111,6 +117,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label={facebookLabel || t("contactFacebookLabel")}
+              title={facebookLabel || t("contactFacebookLabel")}
             >
               <FaFacebook aria-hidden="true" />
             </Link>
@@ -123,6 +130,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label={twitterLabel || t("contactTwitterLabel")}
+              title={twitterLabel || t("contactTwitterLabel")}
             >
               <FaTwitter aria-hidden="true" />
             </Link>
@@ -135,6 +143,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label={dribbbleLabel || t("contactDribbbleLabel")}
+              title={dribbbleLabel || t("contactDribbbleLabel")}
             >
               <FaDribbble aria-hidden="true" />
             </Link>
@@ -147,6 +156,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label={mediumLabel || t("contactMediumLabel")}
+              title={mediumLabel || t("contactMediumLabel")}
             >
               <FaMedium aria-hidden="true" />
             </Link>
@@ -159,6 +169,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               rel="noopener noreferrer"
               className={styles.socialLink}
               aria-label={instagramLabel || t("contactInstagramLabel")}
+              title={instagramLabel || t("contactInstagramLabel")}
             >
               <FaInstagram aria-hidden="true" />
             </Link>

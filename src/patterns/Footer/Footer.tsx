@@ -1,6 +1,13 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import { FaInstagram, FaFacebook, FaLinkedin, FaMedium } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  FaMedium,
+  FaGithub,
+  FaDribbble,
+} from "react-icons/fa";
 import Grid from "@dt/Grid";
 import { useTranslation } from "react-i18next";
 
@@ -45,6 +52,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("footerAriaInstagram")}
+          title={t("footerAriaInstagram")}
         >
           {FaInstagram({ size: 24 })}
         </a>
@@ -53,6 +61,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("footerAriaFacebook")}
+          title={t("footerAriaFacebook")}
         >
           {FaFacebook({ size: 24 })}
         </a>
@@ -61,6 +70,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("footerAriaLinkedin")}
+          title={t("footerAriaLinkedin")}
         >
           {FaLinkedin({ size: 24 })}
         </a>
@@ -69,8 +79,27 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("footerAriaMedium")}
+          title={t("footerAriaMedium")}
         >
           {FaMedium({ size: 24 })}
+        </a>
+        <a
+          href="https://github.com/PetriLahdelma"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaGithub")}
+          title={t("footerAriaGithub")}
+        >
+          {FaGithub({ size: 24 })}
+        </a>
+        <a
+          href="https://dribbble.com/digitaltableteur"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaDribbble")}
+          title={t("footerAriaDribbble")}
+        >
+          {FaDribbble({ size: 24 })}
         </a>
       </div>
       <p className={styles["footerText"]}>

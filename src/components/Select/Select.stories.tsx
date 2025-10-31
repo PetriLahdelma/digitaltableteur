@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
 import Select from "./Select";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
+import SelectOption from "./SelectOption";
 
 export default {
   title: "Components/Select",
@@ -57,6 +58,35 @@ Disabled.args = {
   ],
   value: "option1",
   disabled: true,
+};
+
+export const WithCustomChildren: StoryFn<typeof Select> = () => {
+  const { t } = useTranslation();
+  return (
+    <Select label={t("storySelectLabel")} defaultValue="">
+      <SelectOption value="" label="Select..." disabled />
+      <SelectOption value="option1" label={t("storyCheckboxOption1")} />
+      <SelectOption value="option2" label={t("storyCheckboxOption2")} />
+      <SelectOption value="option3" label={t("storyCheckboxOption3")} />
+    </Select>
+  );
+};
+
+export const Controlled: StoryFn<typeof Select> = () => {
+  const { t } = useTranslation();
+  const [current, setCurrent] = useState("option1");
+  return (
+    <Select
+      label={t("storySelectLabel")}
+      value={current}
+      onValueChange={setCurrent}
+      options={[
+        { value: "option1", label: t("storyCheckboxOption1") },
+        { value: "option2", label: t("storyCheckboxOption2") },
+        { value: "option3", label: t("storyCheckboxOption3") },
+      ]}
+    />
+  );
 };
 
 Default.play = async ({ canvasElement }) => {
