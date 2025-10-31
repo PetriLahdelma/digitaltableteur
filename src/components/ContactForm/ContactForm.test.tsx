@@ -1,12 +1,13 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
-import ContactForm from "./ContactForm";
 
 // Mock emailjs send
 vi.mock("@emailjs/browser", () => ({
   send: vi.fn(() => Promise.resolve({ status: 200 })),
 }));
+
+import ContactForm from "./ContactForm";
 
 describe("ContactForm integration", () => {
   let originalFetch: typeof global.fetch;
@@ -16,6 +17,8 @@ describe("ContactForm integration", () => {
     originalFetch = global.fetch;
     // @ts-ignore
     global.fetch = vi.fn(() => Promise.resolve({ ok: true, json: () => ({}) }));
+
+    // Clear all mocks to ensure fresh state
     vi.clearAllMocks();
   });
 

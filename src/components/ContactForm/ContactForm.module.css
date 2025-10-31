@@ -4,8 +4,8 @@
 .contactForm {
   width: 100%;
   max-width: 424px;
-  margin: 2rem auto;
-  padding: 1.5rem;
+  margin: 2rem auto 6rem;
+  padding: 2rem;
   background-color: var(--color-light-bg);
   border: 2px solid var(--color-primary);
   box-shadow: 0 4px 6px rgb(0 0 0 / 10%);

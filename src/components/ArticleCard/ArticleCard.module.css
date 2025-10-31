@@ -29,18 +29,23 @@
 }
 
 .title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   color: var(--primary-text-color, #00f);
+  font-family: var(--primary-heading-font, serif);
   font-size: 1.5rem;
   font-weight: 600;
-  font-family: var(--primary-heading-font, serif);
   line-height: 1.5;
   margin: 0 0 0.5rem;
   max-lines: 2;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* number of lines */
   line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+
+  /* Prevent hyphenation/word breaking */
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .lead {

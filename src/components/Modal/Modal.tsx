@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 import { FaTimes } from "react-icons/fa";
 import styles from "./Modal.module.css";
 import Button from "@dt/Button";
@@ -39,6 +39,8 @@ const Modal: React.FC<ModalProps> = ({
   icon,
   showCloseIcon = true,
 }) => {
+  const titleId = useId();
+
   if (!isOpen) {
     return null;
   }
@@ -62,16 +64,14 @@ const Modal: React.FC<ModalProps> = ({
       className={styles.overlay}
       role="dialog"
       aria-modal="true"
-      {...(title
-        ? { "aria-labelledby": "modal-title" }
-        : { "aria-label": "Dialog" })}
+      {...(title ? { "aria-labelledby": titleId } : { "aria-label": "Dialog" })}
     >
       <div className={`${styles.modal} ${styles[variant]}`}>
         {title && (
           <div className={styles.header}>
             <div className={styles.leftHeader}>
               {icon && <span className={styles.icon}>{icon}</span>}
-              <h2 id="modal-title" className={styles.title}>
+              <h2 id={titleId} className={styles.title}>
                 {title}
               </h2>
             </div>

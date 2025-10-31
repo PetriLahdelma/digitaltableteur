@@ -41,6 +41,12 @@ header h2 a {
   pointer-events: auto;
 }
 
+.left {
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
 .logo {
   width: 15rem;
   height: 15rem;
@@ -62,6 +68,7 @@ header h2 a {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: auto;
 }
 
 .nav {
@@ -109,7 +116,7 @@ header h2 a {
   transition: color 0.2s;
   flex: 0 0 auto;
   margin-right: 0;
-  margin-left: auto;
+  margin-left: 0;
   pointer-events: auto;
 }
 
@@ -124,6 +131,13 @@ header h2 a {
   gap: 0.5rem;
   font-size: 1rem;
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
+  pointer-events: auto;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   pointer-events: auto;
 }
 
