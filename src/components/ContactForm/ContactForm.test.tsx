@@ -1,14 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
-import ContactForm from "./ContactForm";
 
-// Mock emailjs send
-vi.mock("@emailjs/browser", () => ({
-  send: vi.fn(() => Promise.resolve({ status: 200 })),
-}));
-
-// Mock environment variables
+// Mock environment variables BEFORE importing ContactForm
 Object.defineProperty(import.meta, "env", {
   value: {
     VITE_EMAIL_SERVICE_ID: "test_service_id",
@@ -17,6 +11,13 @@ Object.defineProperty(import.meta, "env", {
   },
   writable: true,
 });
+
+// Mock emailjs send
+vi.mock("@emailjs/browser", () => ({
+  send: vi.fn(() => Promise.resolve({ status: 200 })),
+}));
+
+import ContactForm from "./ContactForm";
 
 describe("ContactForm integration", () => {
   let originalFetch: typeof global.fetch;
