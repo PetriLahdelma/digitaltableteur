@@ -61,6 +61,19 @@ const ContactForm = () => {
     import.meta.env.VITE_EMAIL_PUBLIC_KEY ||
     import.meta.env.VITE_APP_EMAIL_PUBLIC_KEY;
 
+  // Debug logging in development
+  if (import.meta.env.DEV) {
+    // eslint-disable-next-line no-console
+    console.log("EmailJS Environment Check:", {
+      VITE_EMAIL_SERVICE_ID: !!import.meta.env.VITE_EMAIL_SERVICE_ID,
+      VITE_EMAIL_TEMPLATE_ID: !!import.meta.env.VITE_EMAIL_TEMPLATE_ID,
+      VITE_EMAIL_PUBLIC_KEY: !!import.meta.env.VITE_EMAIL_PUBLIC_KEY,
+      SERVICE_ID: !!SERVICE_ID,
+      TEMPLATE_ID: !!TEMPLATE_ID,
+      PUBLIC_KEY: !!PUBLIC_KEY,
+    });
+  }
+
   const validateEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
