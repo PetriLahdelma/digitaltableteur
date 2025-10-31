@@ -37,6 +37,8 @@
     "predeploy": "npm run build && cp CNAME dist/CNAME",
     "deploy": "gh-pages -d dist --dotfiles",
     "deploy:with-storybook": "./scripts/deploy-local.sh",
+    "deploy:emergency": "./scripts/emergency-deploy.sh",
+    "cache-bust": "./scripts/cache-bust.sh",
     "dev": "vite",
     "start": "vite",
     "prebuild": "npm run copy-leaflet-icons",
