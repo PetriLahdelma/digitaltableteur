@@ -23,6 +23,7 @@ When working with this project, please:
 - Include Storybook stories for new components
 - Maintain test coverage for critical functionality
 - Use the `@dt/` component library when available
+- Keep Storybook visual regression baselines current and review diffs before merging
 
 ## Architecture Notes
 
@@ -40,6 +41,9 @@ When working with this project, please:
 - Build for production: `npm run build`
 - Run tests: `npm test`
 - Lint code: `npm run lint`
+- Run accessibility checks: `npm run test:a11y`
+- Execute visual regression tests: `npm run test:visual`
+- Update visual baselines after intentional UI changes: `npm run test:visual -- --updateSnapshot`
 
 ## File Structure
 
@@ -52,3 +56,9 @@ When working with this project, please:
 ## Workflow requirements
 
 – Update CLAUDE.md with everyt git commit
+
+## Visual Regression Testing
+
+- Storybook visual regression tests capture per-story screenshots via Playwright and compare them with `pixelmatch` snapshots stored in `__visual__/snapshots/__reference__`.
+- Failing snapshots generate diff assets under `__visual__/diffs/__diff_output__`. Running `npm run test:visual` refreshes the public `visual-diff/report.json` consumed by Storybook.
+- The “Overview / Test Health Overview” story displays current diff thumbnails and shows a placeholder message when no changes are detected.

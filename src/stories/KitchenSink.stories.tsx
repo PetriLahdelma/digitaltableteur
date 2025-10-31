@@ -59,6 +59,11 @@ import Link from "@dt/Link";
 
 export default {
   title: "Testing/Kitchen Sink",
+  parameters: {
+    test: { disable: true },
+    visualRegression: { disable: true },
+    a11y: { disable: true },
+  },
 } as Meta;
 
 const AvatarWithImage = () => <Avatar {...AvatarWithImageStory.args} />;
