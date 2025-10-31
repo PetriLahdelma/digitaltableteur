@@ -254,6 +254,11 @@ Branch Protection
 
 ## 📚 Learn More
 
+### Project Docs
+
+- [Storybook Deployment Guide](docs/STORYBOOK_DEPLOYMENT.md)
+- [EmailJS Setup & Troubleshooting](docs/EMAILJS_SETUP.md)
+
 - [Vite Documentation](https://vitejs.dev/) - Build tool and development server
 - [React Documentation](https://react.dev/) - Frontend framework
 - [React Router](https://reactrouter.com/) - Client-side routing
