@@ -102,6 +102,16 @@ const preview: Preview = {
     a11y: {
       test: "error",
     },
+    options: {
+      storySort: {
+        order: [
+          "Overview",
+          ["Welcome", "Test Health Overview"],
+          "Docs",
+          "Components",
+        ],
+      },
+    },
     // backgrounds: {
     //   default: "light",
     //   values: [
