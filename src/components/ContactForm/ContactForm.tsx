@@ -47,16 +47,13 @@ const ContactForm = () => {
 
   const SERVICE_ID =
     import.meta.env.VITE_EMAIL_SERVICE_ID ||
-    import.meta.env.VITE_APP_EMAIL_SERVICE_ID ||
-    "service_ix55445";
+    import.meta.env.VITE_APP_EMAIL_SERVICE_ID;
   const TEMPLATE_ID =
     import.meta.env.VITE_EMAIL_TEMPLATE_ID ||
-    import.meta.env.VITE_APP_EMAIL_TEMPLATE_ID ||
-    "template_bfw826h";
+    import.meta.env.VITE_APP_EMAIL_TEMPLATE_ID;
   const PUBLIC_KEY =
     import.meta.env.VITE_EMAIL_PUBLIC_KEY ||
-    import.meta.env.VITE_APP_EMAIL_PUBLIC_KEY ||
-    "Iq0v0vFsZbx0HWBvt";
+    import.meta.env.VITE_APP_EMAIL_PUBLIC_KEY;
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -72,17 +69,17 @@ const ContactForm = () => {
 
     // Validate required fields
     if (!formData.fullName.trim()) {
-      errors.fullName = "Full name is required";
+      errors.fullName = t("contactValidationFullNameRequired");
     }
 
     if (!formData.email.trim()) {
-      errors.email = "Email is required";
+      errors.email = t("contactValidationEmailRequired");
     } else if (!validateEmail(formData.email)) {
-      errors.email = "Please enter a valid email address";
+      errors.email = t("contactValidationEmailInvalid");
     }
 
     if (!formData.message.trim()) {
-      errors.message = "Message is required";
+      errors.message = t("contactValidationMessageRequired");
     }
 
     setFormErrors(errors);
@@ -120,9 +117,11 @@ const ContactForm = () => {
     // Check if EmailJS credentials are available
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
       // eslint-disable-next-line no-console
-      console.error(
-        "EmailJS credentials not configured. Please set VITE_EMAIL_* environment variables.",
-      );
+      console.error("EmailJS credentials not configured. Missing:", {
+        SERVICE_ID: !SERVICE_ID,
+        TEMPLATE_ID: !TEMPLATE_ID,
+        PUBLIC_KEY: !PUBLIC_KEY,
+      });
       setIsErrorOpen(true);
       return;
     }

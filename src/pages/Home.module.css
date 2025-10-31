@@ -7,7 +7,21 @@
 }
 
 .hero {
+  position: relative;
   margin-block-end: var(--space-layout-96);
+  min-height: 75vh;
+  overflow: hidden;
+  background-color: var(--main-body-background-color);
+}
+
+.heroGradient {
+  position: absolute;
+  inset: 0;
+  background: var(--home-gradient);
+  background-size: 200% 200%;
+  animation: gradient-move 8s ease-in-out infinite;
+  opacity: 1;
+  z-index: 0;
 }
 
 h1 {
