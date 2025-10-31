@@ -55,7 +55,7 @@ class ChunkErrorBoundary extends Component<Props, State> {
               style={{
                 padding: "0.5rem 1rem",
                 background: "#007bff",
-                color: "white",
+                color: "var(--color-white)",
                 border: "none",
                 borderRadius: "4px",
                 cursor: "pointer",
