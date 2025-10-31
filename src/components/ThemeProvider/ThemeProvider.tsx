@@ -48,7 +48,7 @@ const syncThemeClass = () => {
     const theme = safeGetFromStorage("theme", "light") as "light" | "dark";
     applyThemeToDom(theme);
   }
-}
+};
 syncThemeClass();
 
 type Theme = "light" | "dark";
