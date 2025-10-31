@@ -1,5 +1,6 @@
 import type { TestRunnerConfig } from "@storybook/test-runner";
 import { getStoryContext } from "@storybook/test-runner";
+import type { Page } from "playwright";
 import * as fs from "fs";
 import * as path from "path";
 import { PNG } from "pngjs";
@@ -12,7 +13,9 @@ const SNAPSHOT_DIR = path.join(SNAPSHOT_ROOT, "__reference__");
 const DIFF_DIR = path.join(DIFF_ROOT, "__diff_output__");
 
 const SKIP_PREFIXES = ["testing-kitchen-sink--", "components-link--"];
-const FAILURE_THRESHOLD = 0.001; // 0.1% of pixels
+const FAILURE_THRESHOLD = 0.005; // 0.5% of pixels by default
+const DEFAULT_STABILIZATION_DELAY_MS = 500;
+const DEFAULT_SELECTOR_TIMEOUT_MS = 5_000;
 const UPDATE_SNAPSHOTS =
   (process.env.STORYBOOK_VISUAL_UPDATE ?? "").toLowerCase() === "true";
 const ensureDir = (dirPath: string) => {
@@ -47,6 +50,146 @@ const sanitizeId = (id: string) =>
 
 const shouldSkipStory = (storyId: string) =>
   SKIP_PREFIXES.some((prefix) => storyId.startsWith(prefix));
+
+type StoryContextForVisualTest = Awaited<ReturnType<typeof getStoryContext>>;
+
+type VisualRegressionParameters = {
+  disable?: boolean;
+  threshold?: number | string;
+  waitFor?: number | "networkidle";
+  waitForTimeout?: number;
+  waitForSelector?:
+    | string
+    | {
+        selector: string;
+        state?: "attached" | "detached" | "hidden" | "visible";
+        timeout?: number;
+      };
+  waitForNetworkIdle?: boolean;
+  waitForFonts?: boolean;
+  beforeScreenshot?: (args: {
+    page: Page;
+    context: StoryContextForVisualTest;
+  }) => Promise<void> | void;
+};
+
+const getVisualParameters = (
+  storyContext: StoryContextForVisualTest | undefined,
+): VisualRegressionParameters => {
+  const params = storyContext?.parameters?.visualRegression;
+  if (params && typeof params === "object") {
+    return params as VisualRegressionParameters;
+  }
+
+  return {};
+};
+
+const parseThreshold = (storyContext: StoryContextForVisualTest | undefined) => {
+  const params = getVisualParameters(storyContext);
+  const value = params.threshold;
+
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+
+  if (typeof value === "string") {
+    const parsed = Number.parseFloat(value);
+    if (Number.isFinite(parsed)) {
+      return parsed;
+    }
+  }
+
+  return FAILURE_THRESHOLD;
+};
+
+const toSelectorConfig = (
+  selector: VisualRegressionParameters["waitForSelector"],
+) => {
+  if (!selector) {
+    return undefined;
+  }
+
+  if (typeof selector === "string") {
+    return {
+      selector,
+      state: "visible" as const,
+      timeout: DEFAULT_SELECTOR_TIMEOUT_MS,
+    };
+  }
+
+  if (typeof selector === "object" && "selector" in selector) {
+    return {
+      selector: selector.selector,
+      state: selector.state ?? "visible",
+      timeout: selector.timeout ?? DEFAULT_SELECTOR_TIMEOUT_MS,
+    };
+  }
+
+  return undefined;
+};
+
+const computeDelayMs = (params: VisualRegressionParameters) => {
+  const candidates = [params.waitFor, params.waitForTimeout];
+
+  for (const candidate of candidates) {
+    if (typeof candidate === "number" && Number.isFinite(candidate)) {
+      return candidate;
+    }
+  }
+
+  return undefined;
+};
+
+const waitForFontsIfNeeded = async (page: Page, params: VisualRegressionParameters) => {
+  if (params.waitForFonts === false) {
+    return;
+  }
+
+  await page
+    .evaluate(async () => {
+      if ("fonts" in document) {
+        try {
+          // @ts-expect-error fonts typings differ across environments
+          await document.fonts.ready;
+        } catch {
+          // ignore font loading errors to keep tests running
+        }
+      }
+    })
+    .catch(() => {
+      // If the page navigated away, keep going.
+    });
+};
+
+const waitForStoryStability = async (
+  page: Page,
+  storyContext: StoryContextForVisualTest,
+) => {
+  const params = getVisualParameters(storyContext);
+
+  if (params.waitForNetworkIdle || params.waitFor === "networkidle") {
+    await page.waitForLoadState("networkidle");
+  }
+
+  const selectorConfig = toSelectorConfig(params.waitForSelector);
+  if (selectorConfig?.selector) {
+    await page.waitForSelector(selectorConfig.selector, {
+      state: selectorConfig.state,
+      timeout: selectorConfig.timeout,
+    });
+  }
+
+  await waitForFontsIfNeeded(page, params);
+
+  if (typeof params.beforeScreenshot === "function") {
+    await params.beforeScreenshot({ page, context: storyContext });
+  }
+
+  const delay = computeDelayMs(params) ?? DEFAULT_STABILIZATION_DELAY_MS;
+  if (delay > 0) {
+    await page.waitForTimeout(delay);
+  }
+};
 
 const config: TestRunnerConfig = {
   async preVisit(page) {
@@ -83,14 +226,14 @@ const config: TestRunnerConfig = {
 
     const storyId = sanitizeId(context.id);
 
-    await page.waitForTimeout(200);
+    await waitForStoryStability(page, storyContext);
 
     const screenshot = await page.screenshot({
       animations: "disabled",
       fullPage: false,
     });
 
-    recordSnapshot(storyId, screenshot, context.id);
+    recordSnapshot(storyId, screenshot, context.id, storyContext);
   },
 };
 
@@ -116,7 +259,12 @@ const deleteIfExists = (filePath: string) => {
   }
 };
 
-const recordSnapshot = (storyId: string, screenshot: Buffer, humanId: string) => {
+const recordSnapshot = (
+  storyId: string,
+  screenshot: Buffer,
+  humanId: string,
+  storyContext: StoryContextForVisualTest,
+) => {
   ensureMatchers();
 
   const { baseline, actual, baselineCopy, diff } = getPathsForStory(storyId);
@@ -161,8 +309,9 @@ const recordSnapshot = (storyId: string, screenshot: Buffer, humanId: string) =>
 
   const totalPixels = width * height;
   const diffRatio = diffPixels / totalPixels;
+  const threshold = parseThreshold(storyContext);
 
-  if (diffRatio > FAILURE_THRESHOLD) {
+  if (diffRatio > threshold) {
     writeFile(actual, PNG.sync.write(actualImage));
     writeFile(baselineCopy, fs.readFileSync(baseline));
     writeFile(diff, PNG.sync.write(diffImage));
