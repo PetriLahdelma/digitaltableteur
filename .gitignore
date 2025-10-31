@@ -31,3 +31,5 @@ storybook-static
 
 # MCP config
 mcp.json
+.vercel
+.env*.local
