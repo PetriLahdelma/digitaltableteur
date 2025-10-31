@@ -10,9 +10,11 @@ interface SelectOptionItem {
   disabled?: boolean;
 }
 
-interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+interface SelectProps
+  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "onChange"> {
   label: string;
   options?: SelectOptionItem[];
+  onChange?: (value: string) => void;
   onValueChange?: (value: string) => void;
 }
 
@@ -49,8 +51,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       .join(" ");
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-      onChange?.(event);
-      onValueChange?.(event.target.value);
+      const nextValue = event.target.value;
+      onChange?.(nextValue);
+      onValueChange?.(nextValue);
     };
 
     return (
