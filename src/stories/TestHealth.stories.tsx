@@ -47,7 +47,9 @@ const TestHealthOverview = () => {
     surface: "#f8fafc",
     text: "#111827",
   });
-  const [visualReport, setVisualReport] = useState<VisualDiffReport | null>(null);
+  const [visualReport, setVisualReport] = useState<VisualDiffReport | null>(
+    null,
+  );
   const [visualError, setVisualError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -74,7 +76,10 @@ const TestHealthOverview = () => {
 
     const loadVisualReport = async () => {
       try {
-        const reportUrl = new URL("visual-diff/report.json", document.baseURI).toString();
+        const reportUrl = new URL(
+          "visual-diff/report.json",
+          document.baseURI,
+        ).toString();
         const response = await fetch(reportUrl, { cache: "no-store" });
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
