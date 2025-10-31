@@ -21,6 +21,19 @@ export default defineConfig(async () => {
         ],
       }),
     ],
+    build: {
+      // Enhanced cache busting
+      rollupOptions: {
+        output: {
+          // More aggressive file naming for cache busting
+          chunkFileNames: "assets/[name]-[hash].js",
+          entryFileNames: "assets/[name]-[hash].js",
+          assetFileNames: "assets/[name]-[hash].[ext]",
+        },
+      },
+      // Generate source maps for better debugging
+      sourcemap: false, // Set to true if you need source maps in production
+    },
     resolve: {
       alias: {
         "@dt": resolve(__dirname, "src/components"),
