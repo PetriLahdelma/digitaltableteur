@@ -22,10 +22,7 @@ const About = () => {
       </Helmet>
       <div className={styles.about}>
         <section className={styles.who}>
-          <Title size="L">
-            …is a small consultancy geared toward digital innovation, software
-            development, and strategic design…
-          </Title>
+          <Title size="L">{t("aboutWhoTitle")}</Title>
         </section>
         <section className={styles.what}>
           <Title size="L">{t("aboutHeroTitle")}</Title>
