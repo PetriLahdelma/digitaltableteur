@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2025-03-05T00:00:00.000Z",
+  "vitest": {
+    "totalSuites": 50,
+    "passedSuites": 50,
+    "failedSuites": 0,
+    "totalTests": 185,
+    "passedTests": 185,
+    "failedTests": 0,
+    "durationMs": 2720
+  },
+  "accessibilityPages": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0
+  },
+  "accessibilityStories": {
+    "total": 82,
+    "passed": 82,
+    "failed": 0
+  }
+}
