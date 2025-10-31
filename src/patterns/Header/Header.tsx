@@ -79,7 +79,7 @@ const Header = () => {
       window.removeEventListener("resize", computeOffset);
       resizeObserver?.disconnect();
     };
-  }, [i18n.language]);
+  }, []);
 
   // Normalize language code to base (e.g., 'en-US' -> 'en')
   const currentlang = i18n.language.split("-")[0];
