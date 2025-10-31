@@ -258,9 +258,7 @@ const ContactForm = () => {
             <option value="search-engine">{t("contactHearSearch")}</option>
             <option value="word-of-mouth">{t("contactHearWord")}</option>
             <option value="event">{t("contactHearEvent")}</option>
-            <option value="existing-client">
-              {t("contactHearExisting")}
-            </option>
+            <option value="existing-client">{t("contactHearExisting")}</option>
             <option value="other">{t("contactHearOther")}</option>
           </Select>
         </div>

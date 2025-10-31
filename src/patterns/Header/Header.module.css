@@ -146,7 +146,9 @@ header h2 a {
   text-decoration: none;
   border: 0;
   border-bottom: 2px solid transparent;
-  transition: border-color 0.2s, outline-color 0.2s;
+  transition:
+    border-color 0.2s,
+    outline-color 0.2s;
   padding: 0 2px;
   background: none;
   font: inherit;

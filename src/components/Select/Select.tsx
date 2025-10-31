@@ -35,6 +35,15 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   ) => {
     const generatedId = useId();
     const selectId = id ?? `select-${generatedId}`;
+    if (process.env.NODE_ENV !== "production") {
+      if (value !== undefined && defaultValue !== undefined) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          "Select received both `value` and `defaultValue`. `value` will take precedence to keep the component controlled.",
+        );
+      }
+    }
+
     const combinedSelectClassName = [styles.select, className]
       .filter(Boolean)
       .join(" ");
@@ -54,10 +63,11 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             className={combinedSelectClassName}
             disabled={disabled}
             onChange={handleChange}
-            {...(value !== undefined ? { value } : {})}
-            {...(value === undefined && defaultValue !== undefined
-              ? { defaultValue }
-              : {})}
+            {...(value !== undefined
+              ? { value }
+              : defaultValue !== undefined
+                ? { defaultValue }
+                : {})}
             {...rest}
           >
             {children

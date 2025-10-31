@@ -1,3 +1,4 @@
+/* stylelint-disable scale-unlimited/declaration-strict-value */
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import FlexBox, { FlexBoxProps } from "./FlexBox";
@@ -38,13 +39,13 @@ export default meta;
 type Story = StoryObj<typeof FlexBox>;
 
 const flexPalette = [
-  { background: "#0b3d91", color: "#f9fafb" },
-  { background: "#0f766e", color: "#f9fafb" },
-  { background: "#9d174d", color: "#f9fafb" },
-  { background: "#1d4ed8", color: "#f9fafb" },
-  { background: "#2563eb", color: "#f9fafb" },
-  { background: "#d97706", color: "#1f2933" },
-  { background: "#047857", color: "#f9fafb" },
+  { background: "var(--storybook-blue)", color: "var(--storybook-white)" },
+  { background: "var(--storybook-cyan)", color: "var(--storybook-dark)" },
+  { background: "var(--storybook-pink)", color: "var(--storybook-white)" },
+  { background: "var(--storybook-purple)", color: "var(--storybook-white)" },
+  { background: "var(--storybook-violet)", color: "var(--storybook-dark)" },
+  { background: "var(--color-warning)", color: "var(--color-neutral-text)" },
+  { background: "var(--color-success)", color: "var(--storybook-white)" },
 ];
 
 const swatchFor = (index: number) => flexPalette[index % flexPalette.length];
@@ -61,6 +62,7 @@ const createBlock = (
       key={key}
       style={{
         background,
+        // stylelint-disable-next-line scale-unlimited/declaration-strict-value
         color,
         padding: 16,
         ...extra,
