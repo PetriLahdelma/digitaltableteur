@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
+import { useTranslation } from "react-i18next";
 
 interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
@@ -22,6 +23,7 @@ const Input: React.FC<InputProps> = ({
   disabled = false,
   ...rest
 }) => {
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = useState<string | number>(value ?? "");
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -50,7 +52,7 @@ const Input: React.FC<InputProps> = ({
         setInputValue(e.target.value);
         if (onChange) onChange(e.target.value);
       } else {
-        setPhoneError("Invalid phone number format");
+        setPhoneError(t("inputValidationPhoneInvalid"));
         setInputValue(e.target.value);
         if (onChange) onChange(e.target.value);
       }
@@ -63,7 +65,7 @@ const Input: React.FC<InputProps> = ({
         if (validateEmail(e.target.value)) {
           setEmailError("");
         } else {
-          setEmailError("Please enter a valid email address");
+          setEmailError(t("inputValidationEmailInvalid"));
         }
       } else {
         setEmailError("");
