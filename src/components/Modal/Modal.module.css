@@ -19,8 +19,10 @@
   box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
   width: 90%;
   max-width: var(--size-width-lg);
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .modalContent {
@@ -131,5 +133,34 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Mobile responsive styles */
+@media (width <= 768px) {
+  .success,
+  .error,
+  .info,
+  .loading {
+    max-width: 90vw;
+    width: 90vw;
+  }
+
+  .modal {
+    width: 95%;
+    max-height: 90vh;
+    margin: 1rem;
+  }
+
+  .header {
+    padding: 1.5rem 1rem 0.75rem;
+  }
+
+  .content {
+    padding: 0 1rem 0.75rem;
+  }
+
+  .footer {
+    padding: 0.75rem 1rem 1.5rem;
   }
 }
