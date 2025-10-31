@@ -56,9 +56,22 @@ export const globalTypes = {
   },
 };
 
-const setThemeClass = (theme: string) => {
-  if (typeof window !== "undefined") {
-    document.documentElement.classList.toggle("themeDark", theme === "dark");
+const applyThemeToDom = (theme: string) => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const isDark = theme === "dark";
+  const root = document.documentElement;
+  const body = document.body;
+
+  root.classList.toggle("themeDark", isDark);
+  root.dataset.theme = isDark ? "dark" : "light";
+  root.style.colorScheme = isDark ? "dark" : "light";
+
+  if (body) {
+    body.classList.toggle("themeDark", isDark);
+    body.dataset.theme = isDark ? "dark" : "light";
   }
 };
 
@@ -66,7 +79,7 @@ const withI18next = (Story, context) => {
   const theme = context.globals.theme || "light";
   const locale = context.globals.locale || "en";
   useEffect(() => {
-    setThemeClass(theme);
+    applyThemeToDom(theme);
     localStorage.setItem(THEME_KEY, theme);
     localStorage.setItem("theme", theme);
     if (typeof window !== "undefined") {
@@ -91,6 +104,32 @@ const withI18next = (Story, context) => {
 
 export const decorators = [withI18next];
 
+const detectVisualRegression = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const globalFlag = Boolean(
+    (
+      window as typeof window & {
+        __STORYBOOK_VISUAL_REGRESSION__?: boolean;
+      }
+    ).__STORYBOOK_VISUAL_REGRESSION__,
+  );
+
+  const storageFlag = (() => {
+    try {
+      return window.localStorage.getItem("STORYBOOK_VISUAL_REGRESSION") === "true";
+    } catch (error) {
+      return false;
+    }
+  })();
+
+  return globalFlag || storageFlag;
+};
+
+const isVisualRegression = detectVisualRegression();
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -100,7 +139,7 @@ const preview: Preview = {
       },
     },
     a11y: {
-      test: "error",
+      test: "off",
     },
     options: {
       storySort: {

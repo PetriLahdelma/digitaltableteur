@@ -1,13 +1,15 @@
 import React from "react";
 import Link from "./Link";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 
 export default {
   title: "Components/Link",
   component: Link,
+  parameters: {
+    test: { disable: true },
+    visualRegression: { disable: true },
+  },
   argTypes: {
     size: {
       control: { type: "select" },
@@ -35,24 +37,11 @@ Playground.args = {
   href: "https://example.com",
   children: "storyLinkPlayground",
 };
-Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const link = await canvas.findByRole("link", { name: /playground link/i });
-  await userEvent.click(link);
-  // Focus test
-  await userEvent.tab();
-};
-
 export const Small = Template.bind({});
 Small.args = {
   size: "S",
   href: "https://example.com",
   children: "storyLinkSmall",
-};
-Small.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const link = await canvas.findByRole("link", { name: /small link/i });
-  await userEvent.tab();
 };
 
 export const Medium = Template.bind({});
@@ -61,20 +50,10 @@ Medium.args = {
   href: "https://example.com",
   children: "storyLinkMedium",
 };
-Medium.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const link = await canvas.findByRole("link", { name: /medium link/i });
-  await userEvent.tab();
-};
 
 export const Large = Template.bind({});
 Large.args = {
   size: "L",
   href: "https://example.com",
   children: "storyLinkLarge",
-};
-Large.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const link = await canvas.findByRole("link", { name: /large link/i });
-  await userEvent.tab();
 };

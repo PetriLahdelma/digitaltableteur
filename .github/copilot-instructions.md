@@ -5,6 +5,7 @@
 – Update CLAUDE.md with any changes to development practices or architecture with every git commit
 
 - Update copilot-instructions.md with any changes to development practices or architecture with every git commit
+- Refresh Storybook visual regression assets (`npm run test:visual`) whenever UI changes affect component rendering
 
 ## Project Architecture
 
@@ -62,7 +63,14 @@ npm run cache-bust    # Manual cache busting for deployment
 - **Unit Tests**: Component behavior and props
 - **Accessibility Tests**: Automated a11y checks on all pages and stories
 - **Translation Coverage**: Ensures all user-facing text is internationalized
+- **Visual Regression**: `npm run test:visual` captures Storybook screenshots; update baselines with `npm run test:visual -- --updateSnapshot` when UI changes are intentional
 - **Environment**: Vitest with jsdom for React component testing
+
+## Visual Regression Testing
+
+- Visual tests run via the Storybook test runner using Playwright and `pixelmatch`-based snapshot diffing
+- Diff artifacts land in `__visual__/diffs/__diff_output__` and are published to `public/visual-diff/report.json`
+- The Storybook “Overview / Test Health Overview” story surfaces active visual diffs; when no diffs exist, it renders a placeholder state
 
 ## Deployment & Cache Busting
 

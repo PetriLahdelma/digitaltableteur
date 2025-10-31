@@ -16,6 +16,18 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "@dt/ThemeProvider";
 import Badge from "@dt/Badge";
 
+type VisualDiffEntry = {
+  id: string;
+  actual: string;
+  baseline: string;
+  diff: string;
+};
+
+type VisualDiffReport = {
+  generatedAt: string | null;
+  diffs: VisualDiffEntry[];
+};
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -35,6 +47,8 @@ const TestHealthOverview = () => {
     surface: "#f8fafc",
     text: "#111827",
   });
+  const [visualReport, setVisualReport] = useState<VisualDiffReport | null>(null);
+  const [visualError, setVisualError] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -52,6 +66,38 @@ const TestHealthOverview = () => {
       text: readVar("--primary-text-color", "#111827"),
     });
   }, [theme]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let cancelled = false;
+
+    const loadVisualReport = async () => {
+      try {
+        const reportUrl = new URL("visual-diff/report.json", document.baseURI).toString();
+        const response = await fetch(reportUrl, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const payload = (await response.json()) as VisualDiffReport;
+        if (!cancelled) {
+          setVisualReport(payload);
+          setVisualError(null);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setVisualReport({ generatedAt: null, diffs: [] });
+          setVisualError(error instanceof Error ? error.message : "unknown");
+        }
+      }
+    };
+
+    void loadVisualReport();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const vitestBarData = useMemo(
     () => ({
@@ -151,6 +197,12 @@ const TestHealthOverview = () => {
       timeStyle: "short",
     });
 
+  const visualDiffCount = visualReport?.diffs.length ?? 0;
+  const visualGeneratedAt =
+    visualReport?.generatedAt && !visualError
+      ? formatDate(visualReport.generatedAt)
+      : null;
+
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
@@ -227,6 +279,89 @@ const TestHealthOverview = () => {
           <h3>{t("dashboardStorybookHeading")}</h3>
           <Doughnut data={storiesPieData} options={chartOptions} />
         </article>
+      </section>
+
+      <section className={styles.visualSection}>
+        <header className={styles.visualHeader}>
+          <div>
+            <h2>{t("dashboardVisualHeading")}</h2>
+            <p className={styles.visualSubtitle}>
+              {t("dashboardVisualSubtitle")}
+            </p>
+          </div>
+          <div className={styles.visualMeta}>
+            <Badge
+              design="primary"
+              state={visualDiffCount > 0 ? "warning" : "success"}
+            >
+              {t("dashboardVisualChangeCount", { count: visualDiffCount })}
+            </Badge>
+            {visualGeneratedAt ? (
+              <span className={styles.visualTimestamp}>
+                {t("dashboardVisualLastRun", { date: visualGeneratedAt })}
+              </span>
+            ) : null}
+            {visualError ? (
+              <span className={styles.visualError}>
+                {t("dashboardVisualError")}
+              </span>
+            ) : null}
+          </div>
+        </header>
+
+        {!visualReport ? (
+          <div className={styles.visualPlaceholder}>
+            <h3>{t("dashboardVisualLoadingTitle")}</h3>
+            <p>{t("dashboardVisualLoadingBody")}</p>
+          </div>
+        ) : visualDiffCount === 0 ? (
+          <div className={styles.visualPlaceholder}>
+            <h3>{t("dashboardVisualNoChangesTitle")}</h3>
+            <p>{t("dashboardVisualNoChangesBody")}</p>
+          </div>
+        ) : (
+          <div className={styles.visualGrid}>
+            {visualReport.diffs.map((diff) => (
+              <article key={diff.id} className={styles.diffCard}>
+                <header className={styles.diffHeader}>
+                  <h3>{diff.id}</h3>
+                </header>
+                <div className={styles.diffImages}>
+                  <figure className={styles.diffFigure}>
+                    <img
+                      src={diff.baseline}
+                      alt={t("dashboardVisualBaselineAlt", { story: diff.id })}
+                      loading="lazy"
+                    />
+                    <figcaption className={styles.diffLabel}>
+                      {t("dashboardVisualBaselineLabel")}
+                    </figcaption>
+                  </figure>
+                  <figure className={styles.diffFigure}>
+                    <img
+                      src={diff.actual}
+                      alt={t("dashboardVisualCurrentAlt", { story: diff.id })}
+                      loading="lazy"
+                    />
+                    <figcaption className={styles.diffLabel}>
+                      {t("dashboardVisualCurrentLabel")}
+                    </figcaption>
+                  </figure>
+                  <figure className={styles.diffFigure}>
+                    <img
+                      src={diff.diff}
+                      alt={t("dashboardVisualDiffAlt", { story: diff.id })}
+                      loading="lazy"
+                    />
+                    <figcaption className={styles.diffLabel}>
+                      {t("dashboardVisualDiffLabel")}
+                    </figcaption>
+                  </figure>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
