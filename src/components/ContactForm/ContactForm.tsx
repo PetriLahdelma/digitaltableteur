@@ -123,12 +123,33 @@ const ContactForm = () => {
 
     // Check if EmailJS credentials are available
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      // eslint-disable-next-line no-console
-      console.error("EmailJS credentials not configured. Missing:", {
+      const missingCredentials = {
         SERVICE_ID: !SERVICE_ID,
         TEMPLATE_ID: !TEMPLATE_ID,
         PUBLIC_KEY: !PUBLIC_KEY,
-      });
+      };
+
+      // eslint-disable-next-line no-console
+      console.error(
+        "EmailJS credentials not configured. Missing:",
+        missingCredentials,
+      );
+
+      // In development, provide helpful instructions
+      if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.error(
+          "To fix this error:\n" +
+            "1. Create a .env.local file in your project root\n" +
+            "2. Add the following variables with your EmailJS credentials:\n" +
+            "   VITE_EMAIL_SERVICE_ID=your_service_id\n" +
+            "   VITE_EMAIL_TEMPLATE_ID=your_template_id\n" +
+            "   VITE_EMAIL_PUBLIC_KEY=***REMOVED***\n" +
+            "3. Get these values from https://dashboard.emailjs.com/\n" +
+            "4. Restart your development server",
+        );
+      }
+
       setIsErrorOpen(true);
       return;
     }
