@@ -144,15 +144,32 @@ header h2 a {
 .languageLink {
   cursor: pointer;
   text-decoration: none;
+  border: 0;
   border-bottom: 2px solid transparent;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, outline-color 0.2s;
   padding: 0 2px;
+  background: none;
+  font: inherit;
+  color: inherit;
 }
 
 .languageLink:hover,
-.languageLink:focus {
-  border-bottom: 2px solid var(--color-primary);
-  outline: none;
+.languageLink:focus-visible {
+  border-bottom-color: var(--color-primary);
+}
+
+.languageLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.languageLink:disabled {
+  cursor: default;
+}
+
+.languageLinkActive {
+  border-bottom-color: var(--color-primary);
+  opacity: 0.6;
 }
 
 @media (width <= 900px) {

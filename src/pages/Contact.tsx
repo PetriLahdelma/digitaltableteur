@@ -112,11 +112,11 @@ const Contact = () => {
               linkedinUrl="https://www.linkedin.com/in/petrilahdelma/"
               linkedinLabel={t("contactLinkedInLabel")}
               githubUrl="https://github.com/PetriLahdelma"
-              githubLabel="View GitHub Profile"
+              githubLabel={t("contactGitHubLabel")}
               mediumUrl="https://medium.com/@petrilahdelma"
-              mediumLabel="Read on Medium"
+              mediumLabel={t("contactMediumLabel")}
               dribbbleUrl="https://dribbble.com/digitaltableteur"
-              dribbbleLabel="View Dribbble Profile"
+              dribbbleLabel={t("contactDribbbleLabel")}
             />
           </div>
         </section>

@@ -1,59 +1,87 @@
-import React from "react";
+import React, { useId } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import Label from "@dt/Label";
 import SelectOption from "./SelectOption";
 import styles from "./Select.module.css";
 
-interface SelectProps
-  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "onChange"> {
+interface SelectOptionItem {
+  value: string;
   label: string;
-  options?: { value: string; label: string }[];
-  onChange?: (value: string) => void;
+  disabled?: boolean;
 }
 
-const Select: React.FC<SelectProps> = ({
-  label,
-  options = [],
-  value,
-  onChange,
-  disabled = false,
-  children,
-  ...rest
-}) => {
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (onChange) {
-      onChange(e.target.value);
-    }
-  };
+interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  label: string;
+  options?: SelectOptionItem[];
+  onValueChange?: (value: string) => void;
+}
 
-  return (
-    <div className={styles["select-container"]}>
-      {label && <Label htmlFor={`select-${label}`}>{label}</Label>}
-      <div className={styles["select-wrapper"]}>
-        <select
-          id={`select-${label}`}
-          className={styles.select}
-          value={value}
-          onChange={handleChange}
-          disabled={disabled}
-          {...rest}
-        >
-          {/* Render children if provided, otherwise map options */}
-          {children
-            ? children
-            : options.map((option) => (
-                <SelectOption
-                  key={option.value}
-                  value={option.value}
-                  label={option.label}
-                  disabled={disabled}
-                />
-              ))}
-        </select>
-        {FaChevronDown({ className: styles["chevron-icon"] })}
+const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
+  (
+    {
+      label,
+      id,
+      options = [],
+      children,
+      className,
+      disabled = false,
+      onChange,
+      onValueChange,
+      value,
+      defaultValue,
+      ...rest
+    },
+    ref,
+  ) => {
+    const generatedId = useId();
+    const selectId = id ?? `select-${generatedId}`;
+    const combinedSelectClassName = [styles.select, className]
+      .filter(Boolean)
+      .join(" ");
+
+    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      onChange?.(event);
+      onValueChange?.(event.target.value);
+    };
+
+    return (
+      <div className={styles.container}>
+        {label && <Label htmlFor={selectId}>{label}</Label>}
+        <div className={styles.wrapper}>
+          <select
+            id={selectId}
+            ref={ref}
+            className={combinedSelectClassName}
+            disabled={disabled}
+            onChange={handleChange}
+            {...(value !== undefined ? { value } : {})}
+            {...(value === undefined && defaultValue !== undefined
+              ? { defaultValue }
+              : {})}
+            {...rest}
+          >
+            {children
+              ? children
+              : options.map((option) => (
+                  <SelectOption
+                    key={option.value}
+                    value={option.value}
+                    label={option.label}
+                    disabled={option.disabled}
+                  />
+                ))}
+          </select>
+          <FaChevronDown
+            className={styles.chevronIcon}
+            aria-hidden="true"
+            focusable="false"
+          />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  },
+);
+
+Select.displayName = "Select";
 
 export default Select;
