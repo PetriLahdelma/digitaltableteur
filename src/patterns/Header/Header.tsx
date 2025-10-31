@@ -5,7 +5,7 @@ import "../../styles/variables.css";
 import "../../styles/fonts.css";
 import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
 import { useTheme } from "@dt/ThemeProvider";
-import { WiMoonAltNew } from "react-icons/wi";
+import { IoMoon } from "react-icons/io5";
 import { IoSunnySharp } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 
@@ -25,6 +25,9 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const { t, i18n } = useTranslation();
   const location = useLocation();
+  const leftRef = React.useRef<HTMLDivElement | null>(null);
+  const controlsRef = React.useRef<HTMLDivElement | null>(null);
+  const [navOffset, setNavOffset] = React.useState(0);
   const languages = [
     { code: "en", label: t("langEN") },
     { code: "fi", label: t("langFI") },
@@ -45,6 +48,39 @@ const Header = () => {
       toggleTheme();
     }
   }, [theme]);
+
+  React.useLayoutEffect(() => {
+    const computeOffset = () => {
+      if (typeof window === "undefined") return;
+      if (!leftRef.current || !controlsRef.current) {
+        setNavOffset(0);
+        return;
+      }
+      if (window.innerWidth <= 600) {
+        setNavOffset(0);
+        return;
+      }
+      const leftWidth = leftRef.current.getBoundingClientRect().width;
+      const rightWidth = controlsRef.current.getBoundingClientRect().width;
+      setNavOffset((rightWidth - leftWidth) / 2);
+    };
+
+    computeOffset();
+    window.addEventListener("resize", computeOffset);
+
+    let resizeObserver: ResizeObserver | undefined;
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver(() => computeOffset());
+      if (leftRef.current) resizeObserver.observe(leftRef.current);
+      if (controlsRef.current) resizeObserver.observe(controlsRef.current);
+    }
+
+    return () => {
+      window.removeEventListener("resize", computeOffset);
+      resizeObserver?.disconnect();
+    };
+  }, [i18n.language]);
+
   // Normalize language code to base (e.g., 'en-US' -> 'en')
   const currentlang = i18n.language.split("-")[0];
   const changeLanguage = (code: string) => {
@@ -60,10 +96,18 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <Link to="/" className={styles.logoLink}>
-          <img src={Logo} alt={t("headerLogoAlt")} className={styles.logo} />
-        </Link>
-        <nav className={styles.navbar}>
+        <div ref={leftRef} className={styles.left}>
+          <Link to="/" className={styles.logoLink}>
+            <img src={Logo} alt={t("headerLogoAlt")} className={styles.logo} />
+          </Link>
+        </div>
+        <nav
+          className={styles.navbar}
+          style={{
+            transform:
+              navOffset === 0 ? undefined : `translateX(${navOffset}px)`,
+          }}
+        >
           <ul className={styles.nav}>
             <li>
               <Link
@@ -129,12 +173,13 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+        <div ref={controlsRef} className={styles.controls}>
           <div className={styles.languageSwitcher}>
             {languages.map((lang, idx) => (
-              <span
+              <button
                 key={lang.code}
                 onClick={() => changeLanguage(lang.code)}
+                disabled={currentlang === lang.code}
                 style={{
                   cursor: currentlang === lang.code ? "default" : "pointer",
                   opacity: currentlang === lang.code ? 0.5 : 1,
@@ -145,18 +190,18 @@ const Header = () => {
                       : "2px solid transparent",
                   marginRight: idx < languages.length - 1 ? 8 : 0,
                   transition: "border-color 0.2s",
+                  background: "transparent",
+                  border: "none",
+                  color: "inherit",
+                  font: "inherit",
+                  padding: 0,
                 }}
                 className={styles.languageLink}
-                tabIndex={0}
                 aria-label={lang.label}
                 aria-current={currentlang === lang.code ? "true" : undefined}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && currentlang !== lang.code)
-                    changeLanguage(lang.code);
-                }}
               >
                 {lang.label}
-              </span>
+              </button>
             ))}
           </div>
           <button
@@ -164,7 +209,7 @@ const Header = () => {
             className={styles.themeToggle}
             aria-label={t("toggleDarkMode")}
           >
-            {theme === "dark" ? <WiMoonAltNew /> : <IoSunnySharp />}
+            {theme === "dark" ? <IoMoon /> : <IoSunnySharp />}
           </button>
         </div>
       </div>

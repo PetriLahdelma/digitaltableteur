@@ -1,10 +1,32 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
+// Safe localStorage operations with error handling
+function safeGetFromStorage(key: string, defaultValue: string): string {
+  if (typeof window === "undefined") return defaultValue;
+
+  try {
+    const value = localStorage.getItem(key);
+    return value || defaultValue;
+  } catch (error) {
+    console.warn(`localStorage.getItem failed for key "${key}":`, error);
+    return defaultValue;
+  }
+}
+
+function safeSetToStorage(key: string, value: string): void {
+  if (typeof window === "undefined") return;
+
+  try {
+    localStorage.setItem(key, value);
+  } catch (error) {
+    console.warn(`localStorage.setItem failed for key "${key}":`, error);
+  }
+}
+
 // Synchronously set theme class before React renders
 function syncThemeClass() {
   if (typeof window !== "undefined") {
-    const theme =
-      (localStorage.getItem("theme") as "light" | "dark") || "light";
+    const theme = safeGetFromStorage("theme", "light") as "light" | "dark";
     document.body.classList.toggle("themeDark", theme === "dark");
   }
 }
@@ -29,7 +51,7 @@ export const ThemeProvider: React.FC<{
 }> = ({ children, forcedTheme }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("theme") as Theme) || "light";
+      return safeGetFromStorage("theme", "light") as Theme;
     }
     return "light";
   });
@@ -39,7 +61,7 @@ export const ThemeProvider: React.FC<{
 
   useEffect(() => {
     document.body.classList.toggle("themeDark", effectiveTheme === "dark");
-    localStorage.setItem("theme", effectiveTheme);
+    safeSetToStorage("theme", effectiveTheme);
   }, [effectiveTheme]);
 
   const toggleTheme = () => setTheme((t) => (t === "light" ? "dark" : "light"));
