@@ -6,4 +6,7 @@ afterEach(() => {
   cleanup();
 });
 
-// Optionally, you can add global mocks or setup here
+// Global environment variable mocks for testing
+vi.stubEnv("VITE_EMAIL_SERVICE_ID", "test_service_id");
+vi.stubEnv("VITE_EMAIL_TEMPLATE_ID", "test_template_id");
+vi.stubEnv("VITE_EMAIL_PUBLIC_KEY", "test_public_key");

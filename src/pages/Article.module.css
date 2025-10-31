@@ -15,12 +15,22 @@
   font-family: var(--primary-heading-font, serif);
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+
+  /* Prevent hyphenation/word breaking for main titles */
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .article h2 {
   font-family: var(--secondary-heading-font, sans-serif);
   font-size: 1.75rem;
   margin-top: 2rem;
+
+  /* Prevent hyphenation/word breaking for headings */
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .article h3 {
@@ -30,6 +40,11 @@
   font-weight: 600;
   line-height: 1.4;
   margin-top: 1.5rem;
+
+  /* Prevent hyphenation/word breaking for subheadings */
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 h3 + p {
