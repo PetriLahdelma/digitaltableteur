@@ -43,6 +43,11 @@ Small.args = {
   href: "https://example.com",
   children: "storyLinkSmall",
 };
+Small.parameters = {
+  visualRegression: {
+    threshold: 0.004,
+  },
+};
 
 export const Medium = Template.bind({});
 Medium.args = {
@@ -50,10 +55,20 @@ Medium.args = {
   href: "https://example.com",
   children: "storyLinkMedium",
 };
+Medium.parameters = {
+  visualRegression: {
+    threshold: 0.004,
+  },
+};
 
 export const Large = Template.bind({});
 Large.args = {
   size: "L",
   href: "https://example.com",
   children: "storyLinkLarge",
+};
+Large.parameters = {
+  visualRegression: {
+    threshold: 0.004,
+  },
 };
