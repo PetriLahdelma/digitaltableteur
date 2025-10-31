@@ -7,6 +7,7 @@
   grid-template-columns: minmax(120px, 120px) 1fr;
   gap: 1.5rem;
   place-items: center start;
+  background-color: var(--color-light-bg);
   border: 2px solid var(--color-primary);
   padding: var(--space-layout-16);
 }
@@ -37,8 +38,7 @@
 }
 
 .personTitle {
-  color: var(--color-primary);
-  opacity: 0.6;
+  color: var(--color-gray-dark);
   margin: 0;
 }
 

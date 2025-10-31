@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages with Storybook
 on:
   push:
     branches: [main]
@@ -20,8 +20,13 @@ jobs:
       - run: npm run generate:sitemap
       - run: npm run generate:llms
       - run: npm run build
-      - name: Add CNAME file
-        run: echo "digitaltableteur.com" > ./dist/CNAME
+      - name: Build Storybook
+        run: npm run build-storybook
+      - name: Combine builds and add CNAME
+        run: |
+          mkdir -p ./dist/storybook
+          cp -r ./storybook-static/* ./dist/storybook/
+          echo "digitaltableteur.com" > ./dist/CNAME
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:

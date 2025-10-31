@@ -22,6 +22,7 @@ export { default as Modal } from "./Modal/Modal";
 export { default as PersonCard } from "./PersonCard/PersonCard";
 export { default as SecureCVDownload } from "./SecureCVDownload/SecureCVDownload";
 export { default as Select } from "./Select/Select";
+export { default as SelectOption } from "./Select/SelectOption";
 export { SocialShare } from "./SocialShare/SocialShare";
 export { default as Text } from "./Text/Text";
 export { ThemeProvider, useTheme } from "./ThemeProvider/ThemeProvider";
