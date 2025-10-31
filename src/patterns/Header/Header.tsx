@@ -50,6 +50,8 @@ const Header = () => {
   }, [theme]);
 
   React.useLayoutEffect(() => {
+    let rafId: number | null = null;
+    
     const computeOffset = () => {
       if (typeof window === "undefined") return;
       if (!leftRef.current || !controlsRef.current) {
@@ -65,9 +67,22 @@ const Header = () => {
       setNavOffset((rightWidth - leftWidth) / 2);
     };
 
-    computeOffset();
-    window.addEventListener("resize", computeOffset);
+    // Throttled resize handler using RAF
+    const scheduleCompute = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        computeOffset();
+      });
+    };
 
+    // Initial computation - immediate, no throttling needed
+    computeOffset();
+    
+    // Throttle window resize events
+    window.addEventListener("resize", scheduleCompute);
+
+    // ResizeObserver is already optimized, use direct computation
     let resizeObserver: ResizeObserver | undefined;
     if (typeof ResizeObserver !== "undefined") {
       resizeObserver = new ResizeObserver(() => computeOffset());
@@ -76,7 +91,8 @@ const Header = () => {
     }
 
     return () => {
-      window.removeEventListener("resize", computeOffset);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", scheduleCompute);
       resizeObserver?.disconnect();
     };
   }, []);
