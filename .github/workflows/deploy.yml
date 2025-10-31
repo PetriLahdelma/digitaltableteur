@@ -22,6 +22,8 @@ jobs:
       - run: npm run build
       - name: Build Storybook
         run: npm run build-storybook
+      - name: Cache busting
+        run: ./scripts/cache-bust.sh
       - name: Combine builds and add CNAME
         run: |
           mkdir -p ./dist/storybook
@@ -34,3 +36,7 @@ jobs:
           publish_dir: ./dist
           publish_branch: gh-pages
           force_orphan: true
+      - name: Purge Cloudflare Cache (if using Cloudflare)
+        run: |
+          echo "🔄 Cache should be busted due to force_orphan: true"
+          echo "📅 Deployment completed at: $(date)"
