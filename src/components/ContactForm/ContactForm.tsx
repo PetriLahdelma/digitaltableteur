@@ -6,6 +6,7 @@ import Button from "@dt/Button";
 import CheckboxGroup from "@dt/CheckboxGroup";
 import Modal from "@dt/Modal";
 import TextArea from "@dt/Inputs/TextArea";
+import Select from "@dt/Select";
 import { useTranslation } from "react-i18next";
 
 const ContactForm = () => {
@@ -16,6 +17,7 @@ const ContactForm = () => {
     phone: "",
     interest: "",
     message: "",
+    hearAbout: "",
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorOpen, setIsErrorOpen] = useState(false);
@@ -43,6 +45,10 @@ const ContactForm = () => {
 
   const handleInterestChange = (selectedOptions: string[]) => {
     setFormData({ ...formData, interest: selectedOptions.join(", ") });
+  };
+
+  const handleHearAboutChange = (value: string) => {
+    setFormData({ ...formData, hearAbout: value });
   };
 
   const SERVICE_ID =
@@ -106,6 +112,7 @@ const ContactForm = () => {
         phone: formData.phone,
         interest: formData.interest,
         message: formData.message,
+        hearAbout: formData.hearAbout,
         time,
       }),
     }).catch((err) => {
@@ -136,6 +143,7 @@ const ContactForm = () => {
         phone: formData.phone,
         interest: formData.interest,
         message: formData.message,
+        hearAbout: formData.hearAbout,
         time, // Add the current time for EmailJS {{time}}
       },
       PUBLIC_KEY,
@@ -148,6 +156,7 @@ const ContactForm = () => {
           phone: "",
           interest: "",
           message: "",
+          hearAbout: "",
         });
         setFormErrors({
           email: "",
@@ -236,6 +245,22 @@ const ContactForm = () => {
             error={formErrors.message}
             required
           />
+        </div>
+
+        <div className={styles["formGroup"]}>
+          <Select
+            label={t("contactHearAbout")}
+            value={formData.hearAbout}
+            onValueChange={handleHearAboutChange}
+          >
+            <option value="">{t("contactHearAboutPlaceholder")}</option>
+            <option value="social-media">{t("contactHearSocial")}</option>
+            <option value="search-engine">{t("contactHearSearch")}</option>
+            <option value="word-of-mouth">{t("contactHearWord")}</option>
+            <option value="event">{t("contactHearEvent")}</option>
+            <option value="existing-client">{t("contactHearExisting")}</option>
+            <option value="other">{t("contactHearOther")}</option>
+          </Select>
         </div>
 
         <div className={styles["formGroup"]}>

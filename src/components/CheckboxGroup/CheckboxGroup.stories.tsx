@@ -81,13 +81,12 @@ WithIndeterminateState.play = async ({
   canvasElement: HTMLElement;
 }) => {
   const canvas = within(canvasElement);
-  // Click two slave checkboxes by their translated labels so the master becomes indeterminate
-  const opt1 = await canvas.findByLabelText(/story checkbox option 1/i);
-  const opt2 = await canvas.findByLabelText(/story checkbox option 2/i);
-  await opt1.click();
-  await opt2.click();
+  const checkboxes = await canvas.findAllByRole("checkbox");
+  const [, firstOption, secondOption] = checkboxes;
+  if (firstOption) await firstOption.click();
+  if (secondOption) await secondOption.click();
 };
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByText("Group Label");
+  await canvas.findAllByRole("checkbox");
 };

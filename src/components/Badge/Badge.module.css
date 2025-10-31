@@ -60,13 +60,13 @@
 }
 
 .warning {
-  background: var(--color-warning, #ffb300);
-  color: var(--color-white);
+  background: var(--color-warning-contrast, #8d5a00);
+  color: var(--color-warning-text, #fff);
 }
 
 .neutral {
-  background: var(--color-muted-light);
-  color: var(--color-dark);
+  background: var(--color-neutral-bg, #e2e8f0);
+  color: var(--color-neutral-text, #1a1d26);
 }
 
 .closeButton {
@@ -75,7 +75,7 @@
   margin-inline-start: 0;
   cursor: pointer;
   vertical-align: middle;
-  color: var(--color-white);
+  color: inherit;
   display: inline-block;
   align-items: center;
   gap: 0.25em;

@@ -1,31 +1,35 @@
 @import url("../../styles/variables.css");
-@import url("../../styles/fonts.css");
 
-.selectContainer {
+.container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
-  position: relative;
+  gap: 0.5rem;
+  width: 100%;
 }
 
-.label {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  font-family: Moderat, sans-serif;
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .select {
   width: 100%;
   padding: 0.5rem 2.5rem 0.5rem 0.75rem;
   font-size: 1rem;
+  border-radius: 0;
   border: 1px solid var(--color-primary);
-  background: white;
-  appearance: none; /* Hide native arrow */
+  background: var(--color-white);
+  color: var(--primary-text-color);
+  appearance: none;
+  line-height: 1.5;
+  font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
 }
 
-.select:focus {
-  border: 1px solid var(--color-primary);
-  outline: 1px solid var(--color-primary);
+.select:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .select:disabled {
@@ -34,22 +38,9 @@
   cursor: not-allowed;
 }
 
-.disabled {
-  color: var(--color-muted);
-}
-
-.selectWrapper {
-  position: relative;
-  display: inline-block;
-  width: var(--size-width-md);
-}
-
 .chevronIcon {
   position: absolute;
   right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
   pointer-events: none;
   color: var(--color-primary);
-  z-index: 1;
 }

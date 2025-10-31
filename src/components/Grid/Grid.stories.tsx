@@ -41,6 +41,23 @@ export default {
 import type { ComponentProps } from "react";
 import type { StoryFn } from "@storybook/react-vite";
 
+const swatches = {
+  blue: "#0b3d91",
+  cyan: "#0f766e",
+  pink: "#9d174d",
+  purple: "#5b21b6",
+  neutral: "#f1f5f9",
+};
+
+const lightText = "#f9fafb";
+const darkText = "#1f2933";
+
+const itemStyle = (background: string, color: string) => ({
+  background,
+  color,
+  padding: 16,
+});
+
 const Template: StoryFn<ComponentProps<typeof Grid>> = (
   args: ComponentProps<typeof Grid>,
 ) => (
@@ -53,33 +70,9 @@ const Template: StoryFn<ComponentProps<typeof Grid>> = (
         overflow: "hidden",
       }}
     >
-      <Grid.Item
-        style={{
-          background: "var(--storybook-blue)",
-          color: "var(--storybook-white)",
-          padding: 16,
-        }}
-      >
-        1
-      </Grid.Item>
-      <Grid.Item
-        style={{
-          background: "var(--storybook-cyan)",
-          color: "var(--storybook-white)",
-          padding: 16,
-        }}
-      >
-        2
-      </Grid.Item>
-      <Grid.Item
-        style={{
-          background: "var(--storybook-pink)",
-          color: "var(--storybook-white)",
-          padding: 16,
-        }}
-      >
-        3
-      </Grid.Item>
+      <Grid.Item style={itemStyle(swatches.blue, lightText)}>1</Grid.Item>
+      <Grid.Item style={itemStyle(swatches.cyan, lightText)}>2</Grid.Item>
+      <Grid.Item style={itemStyle(swatches.pink, lightText)}>3</Grid.Item>
     </Grid>
   </div>
 );
@@ -101,42 +94,16 @@ export const Spans = () => (
         overflow: "hidden",
       }}
     >
-      <Grid.Item
-        span={2}
-        style={{
-          background: "var(--storybook-blue)",
-          color: "var(--storybook-white)",
-          padding: 16,
-        }}
-      >
+      <Grid.Item span={2} style={itemStyle(swatches.blue, lightText)}>
         Span 2
       </Grid.Item>
-      <Grid.Item
-        style={{
-          background: "var(--storybook-cyan)",
-          color: "var(--storybook-white)",
-          padding: 16,
-        }}
-      >
+      <Grid.Item style={itemStyle(swatches.neutral, darkText)}>
         Normal
       </Grid.Item>
-      <Grid.Item
-        span={2}
-        style={{
-          background: "var(--storybook-pink)",
-          color: "var(--storybook-white)",
-          padding: 16,
-        }}
-      >
+      <Grid.Item span={2} style={itemStyle(swatches.pink, lightText)}>
         Span 2
       </Grid.Item>
-      <Grid.Item
-        style={{
-          background: "var(--storybook-purple)",
-          color: "var(--storybook-white)",
-          padding: 16,
-        }}
-      >
+      <Grid.Item style={itemStyle(swatches.purple, lightText)}>
         Normal
       </Grid.Item>
     </Grid>
@@ -164,33 +131,9 @@ export const Nested = () => (
         Parent 1
       </Grid.Item>
       <Grid columns={3} gap="0.5rem">
-        <Grid.Item
-          style={{
-            background: "var(--storybook-cyan)",
-            color: "var(--storybook-white)",
-            padding: 12,
-          }}
-        >
-          A
-        </Grid.Item>
-        <Grid.Item
-          style={{
-            background: "var(--storybook-pink)",
-            color: "var(--storybook-white)",
-            padding: 12,
-          }}
-        >
-          B
-        </Grid.Item>
-        <Grid.Item
-          style={{
-            background: "var(--storybook-purple)",
-            color: "var(--storybook-white)",
-            padding: 12,
-          }}
-        >
-          C
-        </Grid.Item>
+        <Grid.Item style={itemStyle(swatches.cyan, lightText)}>A</Grid.Item>
+        <Grid.Item style={itemStyle(swatches.pink, lightText)}>B</Grid.Item>
+        <Grid.Item style={itemStyle(swatches.purple, lightText)}>C</Grid.Item>
       </Grid>
     </Grid>
   </div>
