@@ -97,11 +97,15 @@ export const Spans = () => (
       <Grid.Item span={2} style={itemStyle(swatches.blue, lightText)}>
         Span 2
       </Grid.Item>
-      <Grid.Item style={itemStyle(swatches.neutral, darkText)}>Normal</Grid.Item>
+      <Grid.Item style={itemStyle(swatches.neutral, darkText)}>
+        Normal
+      </Grid.Item>
       <Grid.Item span={2} style={itemStyle(swatches.pink, lightText)}>
         Span 2
       </Grid.Item>
-      <Grid.Item style={itemStyle(swatches.purple, lightText)}>Normal</Grid.Item>
+      <Grid.Item style={itemStyle(swatches.purple, lightText)}>
+        Normal
+      </Grid.Item>
     </Grid>
   </div>
 );
