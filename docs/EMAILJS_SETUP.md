@@ -93,6 +93,13 @@ Your ContactForm sends these variables to EmailJS:
 - Check browser console for the debug logs mentioned in Step 2
 - Verify you're not looking at a deployed version that doesn't have the credentials
 
+You're seeing this error because EmailJS environment variables are not configured:
+
+```
+EmailJS credentials not configured. Missing:
+SERVICE_ID: true, TEMPLATE_ID: true, PUBLIC_KEY: true
+```
+
 ## 🛠️ How to Fix
 
 ### Step 1: Get EmailJS Credentials
