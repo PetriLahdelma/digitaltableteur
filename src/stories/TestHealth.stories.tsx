@@ -196,6 +196,20 @@ const TestHealthOverview = () => {
     [chartPalette],
   );
 
+  const adoptionRateValue = metrics.componentAdoption?.currentRate ?? 0;
+  const adoptionTargetValue =
+    metrics.componentAdoption?.targetRate ?? adoptionRateValue;
+  const designAverageValue = metrics.designToImplementation?.averageDays ?? 0;
+  const designP95Value =
+    metrics.designToImplementation?.p95Days ?? designAverageValue;
+  const designTargetValue =
+    metrics.designToImplementation?.targetDays ?? designAverageValue;
+
+  const adoptionState =
+    adoptionRateValue >= adoptionTargetValue ? "success" : "warning";
+  const designState =
+    designAverageValue <= designTargetValue ? "success" : "warning";
+
   const formatDate = (iso: string) =>
     new Date(iso).toLocaleString(undefined, {
       dateStyle: "medium",
@@ -208,6 +222,21 @@ const TestHealthOverview = () => {
       ? formatDate(visualReport.generatedAt)
       : null;
 
+  const generatedAtDate = metrics.generatedAt
+    ? new Date(metrics.generatedAt)
+    : null;
+  const isStale = generatedAtDate
+    ? Date.now() - generatedAtDate.getTime() > 1000 * 60 * 60 * 24
+    : true;
+  const stalenessLabel = generatedAtDate
+    ? formatDate(metrics.generatedAt)
+    : t("dashboardUnknownTimestamp");
+
+  const notices: string[] = [];
+  if (isStale) {
+    notices.push(t("dashboardDataNoticeStale", { date: stalenessLabel }));
+  }
+
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
@@ -219,6 +248,18 @@ const TestHealthOverview = () => {
       </header>
 
       <section className={styles.summaryGrid}>
+        {notices.length > 0 ? (
+          <aside className={styles.dataNotice} role="status">
+            <h2 className={styles.dataNoticeHeading}>
+              {t("dashboardDataNoticeHeading")}
+            </h2>
+            <ul>
+              {notices.map((notice) => (
+                <li key={notice}>{notice}</li>
+              ))}
+            </ul>
+          </aside>
+        ) : null}
         <article className={styles.summaryCard}>
           <h2>{t("dashboardVitestHeading")}</h2>
           <p>{t("dashboardVitestDescription")}</p>
