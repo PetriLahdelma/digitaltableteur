@@ -59,8 +59,8 @@
 }
 
 .button.warning {
-  background-color: var(--color-warning);
-  color: var(--color-black);
+  background-color: var(--color-warning-contrast);
+  color: var(--color-warning-text);
   border: none;
 }
 
