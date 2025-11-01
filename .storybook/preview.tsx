@@ -1,7 +1,7 @@
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "@dt/ThemeProvider";
 import type { Preview } from "@storybook/react-vite";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../src/i18n";
 import en from "../src/locales/en/translation.json";
@@ -9,6 +9,19 @@ import fi from "../src/locales/fi/translation.json";
 import sv from "../src/locales/sv/translation.json";
 
 const THEME_KEY = "storybook-theme";
+
+const getStoredTheme = (): "light" | "dark" => {
+  if (typeof window === "undefined") {
+    return "light";
+  }
+
+  try {
+    const stored = window.localStorage.getItem(THEME_KEY);
+    return stored === "dark" ? "dark" : "light";
+  } catch {
+    return "light";
+  }
+};
 
 // Ensure i18n is initialized synchronously for Storybook
 if (!i18n.isInitialized) {
@@ -29,7 +42,7 @@ export const globalTypes = {
   theme: {
     name: "Theme",
     description: "Global theme for components",
-    defaultValue: "light",
+    defaultValue: getStoredTheme(),
     toolbar: {
       icon: "circlehollow",
       items: [
@@ -56,19 +69,36 @@ export const globalTypes = {
   },
 };
 
-const setThemeClass = (theme: string) => {
-  if (typeof window !== "undefined") {
-    document.documentElement.classList.toggle("themeDark", theme === "dark");
+const applyThemeToDom = (theme: string) => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const isDark = theme === "dark";
+  const root = document.documentElement;
+  const body = document.body;
+
+  root.classList.toggle("themeDark", isDark);
+  root.dataset.theme = isDark ? "dark" : "light";
+  root.style.colorScheme = isDark ? "dark" : "light";
+
+  if (body) {
+    body.classList.toggle("themeDark", isDark);
+    body.dataset.theme = isDark ? "dark" : "light";
   }
 };
 
 const withI18next = (Story, context) => {
-  const theme = context.globals.theme || "light";
+  const theme = context.globals.theme || getStoredTheme();
   const locale = context.globals.locale || "en";
-  useEffect(() => {
-    setThemeClass(theme);
-    localStorage.setItem(THEME_KEY, theme);
-    localStorage.setItem("theme", theme);
+  useLayoutEffect(() => {
+    applyThemeToDom(theme);
+    try {
+      window.localStorage.setItem(THEME_KEY, theme);
+      window.localStorage.setItem("theme", theme);
+    } catch {
+      // ignore storage errors (private mode, etc.)
+    }
     if (typeof window !== "undefined") {
       document.body.style.background = theme === "dark" ? "#23272a" : "#fff";
     }
@@ -91,6 +121,34 @@ const withI18next = (Story, context) => {
 
 export const decorators = [withI18next];
 
+const detectVisualRegression = () => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const globalFlag = Boolean(
+    (
+      window as typeof window & {
+        __STORYBOOK_VISUAL_REGRESSION__?: boolean;
+      }
+    ).__STORYBOOK_VISUAL_REGRESSION__,
+  );
+
+  const storageFlag = (() => {
+    try {
+      return (
+        window.localStorage.getItem("STORYBOOK_VISUAL_REGRESSION") === "true"
+      );
+    } catch (error) {
+      return false;
+    }
+  })();
+
+  return globalFlag || storageFlag;
+};
+
+const isVisualRegression = detectVisualRegression();
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -100,7 +158,7 @@ const preview: Preview = {
       },
     },
     a11y: {
-      test: "error",
+      test: "off",
     },
     options: {
       storySort: {

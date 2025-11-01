@@ -1,0 +1,37 @@
+{
+  "componentUsage": {
+    "totalViews": 48,
+    "adoptedViews": 37,
+    "targetRate": 0.9
+  },
+  "designCycle": {
+    "targetDays": 5,
+    "records": [
+      {
+        "ticket": "DS-241",
+        "designApproved": "2025-09-01T09:00:00Z",
+        "developmentComplete": "2025-09-05T14:00:00Z"
+      },
+      {
+        "ticket": "DS-242",
+        "designApproved": "2025-09-08T10:15:00Z",
+        "developmentComplete": "2025-09-12T16:45:00Z"
+      },
+      {
+        "ticket": "DS-243",
+        "designApproved": "2025-09-11T08:30:00Z",
+        "developmentComplete": "2025-09-17T12:20:00Z"
+      },
+      {
+        "ticket": "DS-244",
+        "designApproved": "2025-09-18T07:45:00Z",
+        "developmentComplete": "2025-09-21T11:30:00Z"
+      },
+      {
+        "ticket": "DS-245",
+        "designApproved": "2025-09-23T09:10:00Z",
+        "developmentComplete": "2025-09-28T15:40:00Z"
+      }
+    ]
+  }
+}
