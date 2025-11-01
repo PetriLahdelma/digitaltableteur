@@ -52,6 +52,7 @@
     "build-storybook": "storybook build",
     "test:visual": "node scripts/run-visual-tests.mjs",
     "visual:ci": "node scripts/run-visual-tests.mjs --ci",
+    "build:test-metrics": "node scripts/build-test-metrics.mjs",
     "lint": "npx prettier \"src/**/*.{ts,tsx,css}\" --check && npx eslint -c .eslintrc.cjs \"src/**/*.{ts,tsx}\" && npx stylelint \"src/**/*.{css,tsx,html}\"",
     "fetch-figma": "node scripts/fetch-figma.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
