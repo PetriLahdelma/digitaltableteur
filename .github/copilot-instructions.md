@@ -6,6 +6,9 @@
 
 - Update copilot-instructions.md with any changes to development practices or architecture with every git commit
 - Refresh Storybook visual regression assets (`npm run test:visual`) whenever UI changes affect component rendering
+- Ensure all new components have Storybook stories and accessibility tests
+- Follow i18n practices for all user-facing text
+- Do not generate new colour varriables unless spefifically requested to do so
 
 ## Project Architecture
 
@@ -32,9 +35,21 @@ This is a **React TypeScript portfolio website** built with Vite, featuring mult
 ```bash
 npm run dev           # Development server with HMR
 npm run storybook     # Component development and testing
+npm run build         # Production build
+npm run deploy        # Deploy to GitHub Pages
+npm run deeploy-with-storybook  # Deploy with Storybook visual diffs
 npm test              # Run all tests including accessibility
 npm run test:a11y     # Specific accessibility testing
 npm run cache-bust    # Manual cache busting for deployment
+npm run test:visual   # Run visual regression tests
+npm run check-title-case.js  # Ensure proper title casing in headings
+npm run generate-alt-text.js  # Generate alt text for images
+npm run generate-llms-txt.js  # Generate alt text using LLM
+npm run generate-sitemap  # Generate sitemap.xml
+npm run genrate-visual-report  # Generate visual regression report
+npm run lint         # Lint codebase
+npm run format       # Format codebase with Prettier
+npm run eslint-fix   # Auto-fix linting issues
 ```
 
 ### Serverless Functions
