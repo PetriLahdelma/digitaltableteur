@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import type { TestRunnerConfig } from "@storybook/test-runner";
 import { getStoryContext } from "@storybook/test-runner";
 import type { Page } from "playwright";
@@ -6,6 +7,8 @@ import * as path from "path";
 import { PNG } from "pngjs";
 import pixelmatch from "pixelmatch";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "..");
 const SNAPSHOT_ROOT = path.join(ROOT, "__visual__", "snapshots");
 const DIFF_ROOT = path.join(ROOT, "__visual__", "diffs");
@@ -30,9 +33,11 @@ ensureDir(DIFF_DIR);
 let hasExtendedMatchers = false;
 
 const ensureMatchers = () => {
-  const jestExpect = (globalThis as typeof globalThis & {
-    expect?: any;
-  }).expect;
+  const jestExpect = (
+    globalThis as typeof globalThis & {
+      expect?: any;
+    }
+  ).expect;
 
   if (!jestExpect) {
     throw new Error("Storybook test runner expect is not available yet.");
@@ -46,7 +51,10 @@ const ensureMatchers = () => {
 };
 
 const sanitizeId = (id: string) =>
-  id.replace(/[^a-z0-9]+/gi, "-").replace(/(^-|-$)/g, "").toLowerCase();
+  id
+    .replace(/[^a-z0-9]+/gi, "-")
+    .replace(/(^-|-$)/g, "")
+    .toLowerCase();
 
 const shouldSkipStory = (storyId: string) =>
   SKIP_PREFIXES.some((prefix) => storyId.startsWith(prefix));
@@ -84,7 +92,9 @@ const getVisualParameters = (
   return {};
 };
 
-const parseThreshold = (storyContext: StoryContextForVisualTest | undefined) => {
+const parseThreshold = (
+  storyContext: StoryContextForVisualTest | undefined,
+) => {
   const params = getVisualParameters(storyContext);
   const value = params.threshold;
 
@@ -140,7 +150,10 @@ const computeDelayMs = (params: VisualRegressionParameters) => {
   return undefined;
 };
 
-const waitForFontsIfNeeded = async (page: Page, params: VisualRegressionParameters) => {
+const waitForFontsIfNeeded = async (
+  page: Page,
+  params: VisualRegressionParameters,
+) => {
   if (params.waitForFonts === false) {
     return;
   }
