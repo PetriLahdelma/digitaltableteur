@@ -20,4 +20,5 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run lint
       - run: npm test
+      - run: npm run build:test-metrics
       - run: npm run visual:ci
