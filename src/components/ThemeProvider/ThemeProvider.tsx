@@ -23,13 +23,32 @@ function safeSetToStorage(key: string, value: string): void {
   }
 }
 
+const applyThemeToDom = (theme: "light" | "dark") => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const isDark = theme === "dark";
+  const root = document.documentElement;
+  const body = document.body;
+
+  root.classList.toggle("themeDark", isDark);
+  root.dataset.theme = isDark ? "dark" : "light";
+  root.style.colorScheme = isDark ? "dark" : "light";
+
+  if (body) {
+    body.classList.toggle("themeDark", isDark);
+    body.dataset.theme = isDark ? "dark" : "light";
+  }
+};
+
 // Synchronously set theme class before React renders
-function syncThemeClass() {
+const syncThemeClass = () => {
   if (typeof window !== "undefined") {
     const theme = safeGetFromStorage("theme", "light") as "light" | "dark";
-    document.body.classList.toggle("themeDark", theme === "dark");
+    applyThemeToDom(theme);
   }
-}
+};
 syncThemeClass();
 
 type Theme = "light" | "dark";
@@ -60,7 +79,7 @@ export const ThemeProvider: React.FC<{
   const effectiveTheme = forcedTheme || theme;
 
   useEffect(() => {
-    document.body.classList.toggle("themeDark", effectiveTheme === "dark");
+    applyThemeToDom(effectiveTheme);
     safeSetToStorage("theme", effectiveTheme);
   }, [effectiveTheme]);
 

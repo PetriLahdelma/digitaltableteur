@@ -38,14 +38,23 @@ const meta: Meta<typeof FlexBox> = {
 export default meta;
 type Story = StoryObj<typeof FlexBox>;
 
+const swatches = {
+  blue: "#0b3d91",
+  cyan: "#0f766e",
+  pink: "#9d174d",
+  purple: "#5b21b6",
+  neutral: "#f1f5f9",
+} as const;
+
+const lightText = "#f9fafb";
+const darkText = "#1f2933";
+
 const flexPalette = [
-  { background: "var(--storybook-blue)", color: "var(--storybook-white)" },
-  { background: "var(--storybook-cyan)", color: "var(--storybook-dark)" },
-  { background: "var(--storybook-pink)", color: "var(--storybook-white)" },
-  { background: "var(--storybook-purple)", color: "var(--storybook-white)" },
-  { background: "var(--storybook-violet)", color: "var(--storybook-dark)" },
-  { background: "var(--color-warning)", color: "var(--color-neutral-text)" },
-  { background: "var(--color-success)", color: "var(--storybook-white)" },
+  { background: swatches.blue, color: lightText },
+  { background: swatches.cyan, color: lightText },
+  { background: swatches.pink, color: lightText },
+  { background: swatches.purple, color: lightText },
+  { background: swatches.neutral, color: darkText },
 ];
 
 const swatchFor = (index: number) => flexPalette[index % flexPalette.length];

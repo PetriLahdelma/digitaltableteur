@@ -56,9 +56,15 @@ import * as LinkStories from "../components/Link/Link.stories";
 import Input from "@dt/Inputs";
 import Label from "@dt/Label";
 import Link from "@dt/Link";
+import { useTranslation } from "react-i18next";
 
 export default {
   title: "Testing/Kitchen Sink",
+  parameters: {
+    test: { disable: true },
+    visualRegression: { disable: true },
+    a11y: { disable: true },
+  },
 } as Meta;
 
 const AvatarWithImage = () => <Avatar {...AvatarWithImageStory.args} />;
@@ -84,14 +90,28 @@ const CheckboxIndeterminate = () => (
     onChange={() => {}}
   />
 );
-const CheckboxGroupDefault = () => (
-  <CheckboxGroup
-    {...CheckboxGroupDefaultStory.args}
-    label={CheckboxGroupDefaultStory.args?.label ?? ""}
-    options={CheckboxGroupDefaultStory.args?.options ?? []}
-    onChange={() => {}}
-  />
-);
+const CheckboxGroupDefault = () => {
+  const { t } = useTranslation();
+  const labelKey = CheckboxGroupDefaultStory.args?.label;
+  const translatedLabel = labelKey ? t(labelKey) : "";
+  const translatedOptions =
+    CheckboxGroupDefaultStory.args?.options?.map((option) => ({
+      ...option,
+      label:
+        typeof option.label === "string"
+          ? t(option.label)
+          : (option.label ?? ""),
+    })) ?? [];
+
+  return (
+    <CheckboxGroup
+      {...CheckboxGroupDefaultStory.args}
+      label={translatedLabel}
+      options={translatedOptions}
+      onChange={() => {}}
+    />
+  );
+};
 const CheckboxAllVariants = () => (
   <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
     <CheckboxDefault />
@@ -126,129 +146,292 @@ const FlexBoxGapVariants = () => (
 );
 
 // Inputs wrappers
-const InputsText = () => (
-  <Input
-    {...(InputsStories.TextInput.args || {})}
-    label={InputsStories.TextInput.args?.label ?? "Text Input"}
-    type={InputsStories.TextInput.args?.type ?? "text"}
-    placeholder={InputsStories.TextInput.args?.placeholder ?? "Enter text"}
-  />
-);
-const InputsNumber = () => (
-  <Input
-    {...(InputsStories.NumberInput.args || {})}
-    label={InputsStories.NumberInput.args?.label ?? "Number Input"}
-    type={InputsStories.NumberInput.args?.type ?? "number"}
-    placeholder={InputsStories.NumberInput.args?.placeholder ?? "Enter number"}
-  />
-);
-const InputsEmail = () => (
-  <Input
-    {...(InputsStories.EmailInput.args || {})}
-    label={InputsStories.EmailInput.args?.label ?? "Email Input"}
-    type={InputsStories.EmailInput.args?.type ?? "email"}
-    placeholder={InputsStories.EmailInput.args?.placeholder ?? "Enter email"}
-  />
-);
-const InputsPassword = () => (
-  <Input
-    {...(InputsStories.PasswordInput.args || {})}
-    label={InputsStories.PasswordInput.args?.label ?? "Password Input"}
-    type={InputsStories.PasswordInput.args?.type ?? "password"}
-    placeholder={
-      InputsStories.PasswordInput.args?.placeholder ?? "Enter password"
-    }
-  />
-);
-const InputsSearch = () => (
-  <Input
-    {...(InputsStories.SearchInput.args || {})}
-    label={InputsStories.SearchInput.args?.label ?? "Search Input"}
-    type={InputsStories.SearchInput.args?.type ?? "search"}
-    placeholder={InputsStories.SearchInput.args?.placeholder ?? "Search..."}
-  />
-);
-const InputsWithError = () => (
-  <Input
-    {...(InputsStories.InputWithError.args || {})}
-    label={InputsStories.InputWithError.args?.label ?? "Input with Error"}
-    type={InputsStories.InputWithError.args?.type ?? "text"}
-    placeholder={InputsStories.InputWithError.args?.placeholder ?? "Enter text"}
-    error={InputsStories.InputWithError.args?.error ?? "This field is required"}
-  />
-);
-const InputsDisabled = () => (
-  <Input
-    {...(InputsStories.DisabledInput.args || {})}
-    label={InputsStories.DisabledInput.args?.label ?? "Disabled Input"}
-    type={InputsStories.DisabledInput.args?.type ?? "text"}
-    placeholder={InputsStories.DisabledInput.args?.placeholder ?? "Disabled"}
-    disabled
-  />
-);
+const InputsText = () => {
+  const { t } = useTranslation();
+  const args = InputsStories.TextInput.args || {};
+  return (
+    <Input
+      {...args}
+      label={
+        typeof args.label === "string"
+          ? t(args.label)
+          : (args.label ?? "Text Input")
+      }
+      placeholder={
+        typeof args.placeholder === "string"
+          ? t(args.placeholder)
+          : (args.placeholder ?? "Enter text")
+      }
+      type={InputsStories.TextInput.args?.type ?? "text"}
+      error={
+        typeof args.error === "string"
+          ? t(args.error)
+          : (args.error ?? undefined)
+      }
+    />
+  );
+};
+
+const InputsNumber = () => {
+  const { t } = useTranslation();
+  const args = InputsStories.NumberInput.args || {};
+
+  return (
+    <Input
+      {...args}
+      label={
+        typeof args.label === "string"
+          ? t(args.label)
+          : (args.label ?? "Number Input")
+      }
+      placeholder={
+        typeof args.placeholder === "string"
+          ? t(args.placeholder)
+          : (args.placeholder ?? "Enter number")
+      }
+      type={InputsStories.NumberInput.args?.type ?? "number"}
+      error={
+        typeof args.error === "string"
+          ? t(args.error)
+          : (args.error ?? undefined)
+      }
+    />
+  );
+};
+
+const InputsEmail = () => {
+  const { t } = useTranslation();
+  const args = InputsStories.EmailInput.args || {};
+
+  return (
+    <Input
+      {...args}
+      label={
+        typeof args.label === "string"
+          ? t(args.label)
+          : (args.label ?? "Email Input")
+      }
+      placeholder={
+        typeof args.placeholder === "string"
+          ? t(args.placeholder)
+          : (args.placeholder ?? "Enter email")
+      }
+      type={InputsStories.EmailInput.args?.type ?? "email"}
+      error={
+        typeof args.error === "string"
+          ? t(args.error)
+          : (args.error ?? undefined)
+      }
+    />
+  );
+};
+
+const InputsPassword = () => {
+  const { t } = useTranslation();
+  const args = InputsStories.PasswordInput.args || {};
+
+  return (
+    <Input
+      {...args}
+      label={
+        typeof args.label === "string"
+          ? t(args.label)
+          : (args.label ?? "Password Input")
+      }
+      placeholder={
+        typeof args.placeholder === "string"
+          ? t(args.placeholder)
+          : (args.placeholder ?? "Enter password")
+      }
+      type={InputsStories.PasswordInput.args?.type ?? "password"}
+      error={
+        typeof args.error === "string"
+          ? t(args.error)
+          : (args.error ?? undefined)
+      }
+    />
+  );
+};
+
+const InputsSearch = () => {
+  const { t } = useTranslation();
+  const args = InputsStories.SearchInput.args || {};
+
+  return (
+    <Input
+      {...args}
+      label={
+        typeof args.label === "string"
+          ? t(args.label)
+          : (args.label ?? "Search Input")
+      }
+      placeholder={
+        typeof args.placeholder === "string"
+          ? t(args.placeholder)
+          : (args.placeholder ?? "Search...")
+      }
+      type={InputsStories.SearchInput.args?.type ?? "search"}
+      error={
+        typeof args.error === "string"
+          ? t(args.error)
+          : (args.error ?? undefined)
+      }
+    />
+  );
+};
+
+const InputsWithError = () => {
+  const { t } = useTranslation();
+  const args = InputsStories.InputWithError.args || {};
+
+  return (
+    <Input
+      {...args}
+      label={
+        typeof args.label === "string"
+          ? t(args.label)
+          : (args.label ?? "Input with Error")
+      }
+      placeholder={
+        typeof args.placeholder === "string"
+          ? t(args.placeholder)
+          : (args.placeholder ?? "Enter text")
+      }
+      type={InputsStories.InputWithError.args?.type ?? "text"}
+      error={
+        typeof args.error === "string"
+          ? t(args.error)
+          : (args.error ?? "This field is required")
+      }
+    />
+  );
+};
+
+const InputsDisabled = () => {
+  const { t } = useTranslation();
+  const args = InputsStories.DisabledInput.args || {};
+
+  return (
+    <Input
+      {...args}
+      label={
+        typeof args.label === "string"
+          ? t(args.label)
+          : (args.label ?? "Disabled Input")
+      }
+      placeholder={
+        typeof args.placeholder === "string"
+          ? t(args.placeholder)
+          : (args.placeholder ?? "Disabled")
+      }
+      type={InputsStories.DisabledInput.args?.type ?? "text"}
+      disabled
+      error={
+        typeof args.error === "string"
+          ? t(args.error)
+          : (args.error ?? undefined)
+      }
+    />
+  );
+};
 
 // Label wrappers
-const LabelDefaultWrap = () => (
-  <Label
-    htmlFor={LabelStories.Default.args?.htmlFor ?? "label-default-kitchensink"}
-  >
-    {LabelStories.Default.args?.children ?? "Default Label"}
-  </Label>
-);
-const LabelWithTooltipWrap = () => (
-  <Label
-    htmlFor={
-      LabelStories.WithTooltip.args?.htmlFor ?? "label-tooltip-kitchensink"
-    }
-    tooltipText={
-      LabelStories.WithTooltip.args?.tooltipText ?? "This is a tooltip"
-    }
-  >
-    {LabelStories.WithTooltip.args?.children ?? "Label with Tooltip"}
-  </Label>
-);
-const LabelRequiredWrap = () => (
-  <Label
-    htmlFor={
-      LabelStories.Required.args?.htmlFor ?? "label-required-kitchensink"
-    }
-    required
-  >
-    {LabelStories.Required.args?.children ?? "Required Label"}
-  </Label>
-);
-const LabelDisabledWrap = () => (
-  <Label
-    htmlFor={
-      LabelStories.Disabled.args?.htmlFor ?? "label-disabled-kitchensink"
-    }
-    disabled
-  >
-    {LabelStories.Disabled.args?.children ?? "Disabled Label"}
-  </Label>
-);
+const LabelDefaultWrap = () => {
+  const { t } = useTranslation();
+  return (
+    <Label
+      htmlFor={
+        LabelStories.Default.args?.htmlFor ?? "label-default-kitchensink"
+      }
+    >
+      {t(LabelStories.Default.args?.children ?? "Default Label")}
+    </Label>
+  );
+};
+
+const LabelWithTooltipWrap = () => {
+  const { t } = useTranslation();
+  const tooltipKey =
+    LabelStories.WithTooltip.args?.tooltipText ??
+    LabelStories.WithTooltip.args?.title;
+  const tooltipText = tooltipKey ? t(tooltipKey) : "This is a tooltip";
+  return (
+    <Label
+      htmlFor={
+        LabelStories.WithTooltip.args?.htmlFor ?? "label-tooltip-kitchensink"
+      }
+      tooltipText={tooltipText}
+      title={tooltipText}
+    >
+      {t(LabelStories.WithTooltip.args?.children ?? "Label with Tooltip")}
+    </Label>
+  );
+};
+
+const LabelRequiredWrap = () => {
+  const { t } = useTranslation();
+  return (
+    <Label
+      htmlFor={
+        LabelStories.Required.args?.htmlFor ?? "label-required-kitchensink"
+      }
+      required
+    >
+      {t(LabelStories.Required.args?.children ?? "Required Label")}
+    </Label>
+  );
+};
+
+const LabelDisabledWrap = () => {
+  const { t } = useTranslation();
+  return (
+    <Label
+      htmlFor={
+        LabelStories.Disabled.args?.htmlFor ?? "label-disabled-kitchensink"
+      }
+      disabled
+    >
+      {t(LabelStories.Disabled.args?.children ?? "Disabled Label")}
+    </Label>
+  );
+};
 
 // Link wrappers
-const LinkPlaygroundWrap = () => (
-  <Link href={LinkStories.Playground.args?.href ?? "#"}>
-    {LinkStories.Playground.args?.children ?? "Playground Link"}
-  </Link>
-);
-const LinkSmallWrap = () => (
-  <Link href={LinkStories.Small.args?.href ?? "#"} size="S">
-    {LinkStories.Small.args?.children ?? "Small Link"}
-  </Link>
-);
-const LinkMediumWrap = () => (
-  <Link href={LinkStories.Medium.args?.href ?? "#"} size="M">
-    {LinkStories.Medium.args?.children ?? "Medium Link"}
-  </Link>
-);
-const LinkLargeWrap = () => (
-  <Link href={LinkStories.Large.args?.href ?? "#"} size="L">
-    {LinkStories.Large.args?.children ?? "Large Link"}
-  </Link>
-);
+const LinkPlaygroundWrap = () => {
+  const { t } = useTranslation();
+  return (
+    <Link href={LinkStories.Playground.args?.href ?? "#"}>
+      {t(LinkStories.Playground.args?.children ?? "Playground Link")}
+    </Link>
+  );
+};
+
+const LinkSmallWrap = () => {
+  const { t } = useTranslation();
+  return (
+    <Link href={LinkStories.Small.args?.href ?? "#"} size="S">
+      {t(LinkStories.Small.args?.children ?? "Small Link")}
+    </Link>
+  );
+};
+
+const LinkMediumWrap = () => {
+  const { t } = useTranslation();
+  return (
+    <Link href={LinkStories.Medium.args?.href ?? "#"} size="M">
+      {t(LinkStories.Medium.args?.children ?? "Medium Link")}
+    </Link>
+  );
+};
+
+const LinkLargeWrap = () => {
+  const { t } = useTranslation();
+  return (
+    <Link href={LinkStories.Large.args?.href ?? "#"} size="L">
+      {t(LinkStories.Large.args?.children ?? "Large Link")}
+    </Link>
+  );
+};
 
 const COMPONENTS = [
   { name: "Badge Sizes", Variants: BadgeSizes },

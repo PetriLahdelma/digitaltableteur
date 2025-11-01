@@ -1,5 +1,10 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
+import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
-import { resolve } from "path";
+import { dirname, resolve } from "node:path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -12,7 +17,7 @@ const config: StorybookConfig = {
   // Configure base path for subdirectory deployment
   managerHead: (head) => `
     ${head}
-    <base href="${process.env.NODE_ENV === 'production' ? '/storybook/' : '/'}">
+    <base href="${process.env.NODE_ENV === "production" ? "/storybook/" : "/"}">
   `,
   viteFinal: async (config) => {
     config.resolve = config.resolve || {};
@@ -20,12 +25,12 @@ const config: StorybookConfig = {
       ...(config.resolve.alias || {}),
       "@dt": resolve(__dirname, "../src/components"),
     };
-    
+
     // Set base for production builds under /storybook/
-    if (process.env.NODE_ENV === 'production') {
-      config.base = '/storybook/';
+    if (process.env.NODE_ENV === "production") {
+      config.base = "/storybook/";
     }
-    
+
     return config;
   },
 };
