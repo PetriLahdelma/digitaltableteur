@@ -1,9 +1,4 @@
-import OpenAI from "openai";
 import { digitaltableteurContext } from "./donny-context";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 const systemPrompt = [
   "You are Donny, Digitaltableteur's sales & creative assistant. Be accurate, concise, and grounded in the provided context.",
@@ -44,24 +39,50 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4-turbo",
-      temperature: 0.3,
-      messages: [
-        {
-          role: "system",
-          content: systemPrompt,
+    const completionResponse = await fetch(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         },
-        ...messages,
-      ],
-    });
+        body: JSON.stringify({
+          model: "gpt-4-turbo",
+          temperature: 0.3,
+          messages: [
+            {
+              role: "system",
+              content: systemPrompt,
+            },
+            ...messages,
+          ],
+        }),
+      },
+    );
 
-    const reply = completion.choices[0]?.message?.content ?? "";
+    if (!completionResponse.ok) {
+      const errorPayload = await completionResponse.json().catch(() => ({}));
+      throw new Error(
+        `OpenAI request failed with ${completionResponse.status}: ${
+          (errorPayload as { error?: { message?: string } })?.error?.message ??
+          "Unknown error"
+        }`,
+      );
+    }
+
+    const completion = (await completionResponse.json()) as {
+      choices?: Array<{ message?: { content?: string } }>;
+    };
+
+    const reply = completion.choices?.[0]?.message?.content ?? "";
     return res.status(200).json({ reply });
   } catch (error) {
     console.error("OpenAI chat error", error);
-    return res
-      .status(500)
-      .json({ error: "Donny ran into a snag. Please try again soon." });
+    return res.status(500).json({
+      error: "Donny ran into a snag. Please try again soon.",
+      details:
+        error instanceof Error ? error.message : "Unknown server error occurred.",
+    });
   }
 }
