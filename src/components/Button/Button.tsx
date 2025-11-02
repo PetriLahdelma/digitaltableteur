@@ -1,5 +1,9 @@
 import React from "react";
 import styles from "./Button.module.css";
+import {
+  getSemanticIcon,
+  type SemanticStatus,
+} from "../../utils/semanticIcons";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?:
@@ -25,6 +29,14 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   inverse?: boolean;
 }
 
+type ButtonVariant = NonNullable<ButtonProps["variant"]>;
+const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
+  error: "error",
+  warning: "warning",
+  success: "success",
+  info: "info",
+};
+
 const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   disabled = false,
@@ -44,8 +56,15 @@ const Button: React.FC<ButtonProps> = ({
   inverse = false,
   ...rest
 }) => {
+  const resolvedStartIcon =
+    icon ??
+    (VARIANT_TO_STATUS[variant]
+      ? getSemanticIcon(VARIANT_TO_STATUS[variant]!)
+      : undefined);
   const normalizedIcon =
-    typeof icon === "function" ? React.createElement(icon) : icon;
+    typeof resolvedStartIcon === "function"
+      ? React.createElement(resolvedStartIcon)
+      : resolvedStartIcon;
   const normalizedEndIcon =
     typeof endIcon === "function" ? React.createElement(endIcon) : endIcon;
 

@@ -2,6 +2,7 @@ import React, { useId } from "react";
 import { FaTimes } from "react-icons/fa";
 import styles from "./Modal.module.css";
 import Button from "@dt/Button";
+import { getSemanticIcon } from "../../utils/semanticIcons";
 
 export type ModalVariant = "default" | "success" | "error" | "info" | "loading";
 
@@ -28,6 +29,14 @@ export interface ModalProps {
   showCloseIcon?: boolean;
 }
 
+const VARIANT_STATUS_MAP: Partial<
+  Record<ModalVariant, Parameters<typeof getSemanticIcon>[0]>
+> = {
+  success: "success",
+  error: "error",
+  info: "info",
+};
+
 const Modal: React.FC<ModalProps> = ({
   isOpen,
   title,
@@ -44,6 +53,12 @@ const Modal: React.FC<ModalProps> = ({
   if (!isOpen) {
     return null;
   }
+
+  const resolvedHeaderIcon =
+    icon ??
+    (VARIANT_STATUS_MAP[variant]
+      ? getSemanticIcon(VARIANT_STATUS_MAP[variant]!)
+      : null);
 
   const renderFooter = () => {
     if (footer !== undefined) {
@@ -70,7 +85,9 @@ const Modal: React.FC<ModalProps> = ({
         {title && (
           <div className={styles.header}>
             <div className={styles.leftHeader}>
-              {icon && <span className={styles.icon}>{icon}</span>}
+              {resolvedHeaderIcon && (
+                <span className={styles.icon}>{resolvedHeaderIcon}</span>
+              )}
               <h2 id={titleId} className={styles.title}>
                 {title}
               </h2>
