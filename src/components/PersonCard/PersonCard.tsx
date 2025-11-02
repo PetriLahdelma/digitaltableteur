@@ -17,6 +17,8 @@ import { useTranslation } from "react-i18next";
 export interface PersonCardProps {
   imageSrc: string;
   imageAlt: string;
+  imageSrcSet?: string;
+  imageSizes?: string;
   name: string;
   title: string;
   email: string;
@@ -35,11 +37,15 @@ export interface PersonCardProps {
   instagramUrl?: string;
   instagramLabel?: string;
   className?: string;
+  imageLoading?: "lazy" | "eager";
+  imageDecoding?: "auto" | "sync" | "async";
 }
 
 const PersonCard: React.FC<PersonCardProps> = ({
   imageSrc,
   imageAlt,
+  imageSrcSet,
+  imageSizes,
   name,
   title,
   email,
@@ -58,12 +64,24 @@ const PersonCard: React.FC<PersonCardProps> = ({
   instagramUrl,
   instagramLabel,
   className,
+  imageLoading = "lazy",
+  imageDecoding = "async",
 }) => {
   const { t } = useTranslation();
+  const resolvedSizes =
+    imageSizes ?? "(max-width: 768px) 240px, (max-width: 1024px) 180px, 128px";
 
   return (
     <div className={`${styles.personGrid} ${className || ""}`}>
-      <img className={styles.portrait} src={imageSrc} alt={imageAlt} />
+      <img
+        className={styles.portrait}
+        src={imageSrc}
+        srcSet={imageSrcSet ?? `${imageSrc} 1x`}
+        sizes={resolvedSizes}
+        alt={imageAlt}
+        loading={imageLoading}
+        decoding={imageDecoding}
+      />
       <div className={styles.personDetails}>
         <div className={styles.nameTitle}>
           <Text as="h3" className={styles.personName}>

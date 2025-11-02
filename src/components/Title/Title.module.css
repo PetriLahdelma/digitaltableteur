@@ -5,7 +5,8 @@
   font-family: var(--font-title);
   font-size: var(--font-size-title);
   color: var(--color-title);
-  margin: 0 0 1rem;
+  margin-block: 0 var(--space-layout-16, 1rem);
+  margin-inline: 0;
   font-weight: 500;
 
   /* Prevent hyphenation/word breaking for titles */

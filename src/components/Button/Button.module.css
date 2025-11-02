@@ -5,8 +5,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-16);
+  font-size: var(--font-size-button-m);
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition:
@@ -92,7 +93,7 @@
 }
 
 .icon {
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -112,57 +113,60 @@
 }
 
 .endIcon {
-  margin-left: 0.5rem;
+  margin-inline-start: 0.5rem;
 }
 
 .button > :not(:last-child):is(svg, .icon) + .text {
-  margin-left: 0.5rem; /* Add padding between icon and text */
+  margin-inline-start: 0.5rem; /* Add padding between icon and text */
 }
 
 .button > .text + :is(svg, .endIcon) {
-  margin-left: 0.5rem; /* Add padding between text and icon when icon is on the right */
+  margin-inline-start: 0.5rem; /* Add padding between text and icon when icon is on the right */
 }
 
 .button > .text + .icon {
-  margin-left: 0.5rem; /* Add padding between text and icon when icon appears after the text */
+  margin-inline-start: 0.5rem; /* Add padding between text and icon when icon appears after the text */
 }
 
 .button.s {
-  font-size: 0.875rem;
-  padding: var(--space-internal-4) var(--space-internal-12);
-  height: 1.5rem;
+  font-size: var(--font-size-button-s);
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-12);
+  min-block-size: 1.5rem;
 }
 
 .button.m {
-  font-size: 1rem;
-  padding: var(--space-internal-8) var(--space-internal-16);
-  height: 2.5rem;
+  font-size: var(--font-size-button-m);
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-16);
+  min-block-size: 2.5rem;
 }
 
 .button.l {
-  font-size: 1.125rem;
-  padding: var(--space-internal-12) var(--space-internal-24);
-  height: 3rem;
+  font-size: var(--font-size-button-l);
+  padding-block: var(--space-internal-12);
+  padding-inline: var(--space-internal-24);
+  min-block-size: 3rem;
 }
 
 .button.s.iconOnly {
-  width: 1.5rem;
-  height: 1.5rem;
-  min-width: 1.5rem;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  min-inline-size: 1.5rem;
   padding: 0;
 }
 
 .button.m.iconOnly {
-  width: 2.5rem;
-  height: 2.5rem;
-  min-width: 2.5rem;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  min-inline-size: 2.5rem;
   padding: 0;
 }
 
 .button.l.iconOnly {
-  width: 3rem;
-  height: 3rem;
-  min-width: 3rem;
+  inline-size: 3rem;
+  block-size: 3rem;
+  min-inline-size: 3rem;
   padding: 0;
 }
 
