@@ -39,74 +39,82 @@ const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
   info: "info",
 };
 
-const Button: React.FC<ButtonProps> = ({
-  variant = "primary",
-  disabled = false,
-  rounded = false,
-  icon,
-  endIcon,
-  children,
-  accessibleDescription,
-  accessibleName,
-  accessibleNameRef,
-  accessibleRole = "button",
-  submits = false,
-  tooltip,
-  type = "button",
-  onClick,
-  className = "",
-  size = "m",
-  inverse = false,
-  ...rest
-}) => {
-  const resolvedStartIcon =
-    icon ??
-    (VARIANT_TO_STATUS[variant]
-      ? getSemanticIcon(VARIANT_TO_STATUS[variant]!)
-      : undefined);
-  const normalizedIcon =
-    typeof resolvedStartIcon === "function"
-      ? React.createElement(resolvedStartIcon)
-      : resolvedStartIcon;
-  const normalizedEndIcon =
-    typeof endIcon === "function" ? React.createElement(endIcon) : endIcon;
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant = "primary",
+      disabled = false,
+      rounded = false,
+      icon,
+      endIcon,
+      children,
+      accessibleDescription,
+      accessibleName,
+      accessibleNameRef,
+      accessibleRole = "button",
+      submits = false,
+      tooltip,
+      type = "button",
+      onClick,
+      className = "",
+      size = "m",
+      inverse = false,
+      ...rest
+    },
+    ref,
+  ) => {
+    const resolvedStartIcon =
+      icon ??
+      (VARIANT_TO_STATUS[variant]
+        ? getSemanticIcon(VARIANT_TO_STATUS[variant]!)
+        : undefined);
+    const normalizedIcon =
+      typeof resolvedStartIcon === "function"
+        ? React.createElement(resolvedStartIcon)
+        : resolvedStartIcon;
+    const normalizedEndIcon =
+      typeof endIcon === "function" ? React.createElement(endIcon) : endIcon;
 
-  return (
-    <button
-      className={[
-        styles.button,
-        styles[variant],
-        styles[size],
-        !children && normalizedIcon ? styles["iconOnly"] : "",
-        inverse ? styles.inverse : "",
-        rounded ? styles.rounded : "",
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      disabled={disabled}
-      aria-describedby={accessibleDescription}
-      aria-label={accessibleName}
-      aria-labelledby={accessibleNameRef}
-      role={accessibleRole}
-      type={submits ? "submit" : type}
-      title={tooltip}
-      onClick={onClick}
-      {...rest}
-    >
-      {normalizedIcon && (
-        <span className={styles.icon} data-size={size}>
-          {normalizedIcon}
-        </span>
-      )}
-      {children && <span className={styles.text}>{children}</span>}
-      {normalizedEndIcon && (
-        <span className={styles.icon} data-size={size}>
-          {normalizedEndIcon}
-        </span>
-      )}
-    </button>
-  );
-};
+    return (
+      <button
+        ref={ref}
+        className={[
+          styles.button,
+          styles[variant],
+          styles[size],
+          !children && normalizedIcon ? styles["iconOnly"] : "",
+          inverse ? styles.inverse : "",
+          rounded ? styles.rounded : "",
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        disabled={disabled}
+        aria-describedby={accessibleDescription}
+        aria-label={accessibleName}
+        aria-labelledby={accessibleNameRef}
+        role={accessibleRole}
+        type={submits ? "submit" : type}
+        title={tooltip}
+        onClick={onClick}
+        {...rest}
+      >
+        {normalizedIcon && (
+          <span className={styles.icon} data-size={size}>
+            {normalizedIcon}
+          </span>
+        )}
+        {children && <span className={styles.text}>{children}</span>}
+        {normalizedEndIcon && (
+          <span className={styles.icon} data-size={size}>
+            {normalizedEndIcon}
+          </span>
+        )}
+      </button>
+    );
+  },
+);
+
+Button.displayName = "Button";
 
 export default Button;
