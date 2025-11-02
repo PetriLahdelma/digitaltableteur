@@ -16,6 +16,16 @@ export default async function handler(req: any, res: any) {
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
+  let parsedBody: unknown = req.body;
+
+  if (typeof parsedBody === "string") {
+    try {
+      parsedBody = JSON.parse(parsedBody);
+    } catch {
+      return res.status(400).json({ error: "Invalid JSON payload" });
+    }
+  }
+
   if (req.method === "OPTIONS") {
     return res.status(204).end();
   }
@@ -28,7 +38,7 @@ export default async function handler(req: any, res: any) {
     return res.status(500).json({ error: "Missing OpenAI API key" });
   }
 
-  const { messages = [] } = req.body ?? {};
+  const { messages = [] } = (parsedBody as Record<string, unknown>) ?? {};
   if (!Array.isArray(messages)) {
     return res.status(400).json({ error: "messages must be an array" });
   }
