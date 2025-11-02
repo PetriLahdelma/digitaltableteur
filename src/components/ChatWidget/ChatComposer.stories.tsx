@@ -40,7 +40,9 @@ export const Interactive: Story = {
 };
 
 export const SendingState: Story = {
-  render: (args) => <ChatComposer {...args} value="" onValueChange={() => {}} />,
+  render: (args) => (
+    <ChatComposer {...args} value="" onValueChange={() => {}} />
+  ),
   args: {
     isSending: true,
   },
