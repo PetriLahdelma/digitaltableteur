@@ -23,12 +23,15 @@ Object.defineProperty(window, "localStorage", {
 
 // Test component to access theme context
 const TestComponent = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, setTheme } = useTheme();
   return (
     <div>
       <span data-testid="current-theme">{theme}</span>
       <button data-testid="toggle-theme" onClick={toggleTheme}>
         Toggle Theme
+      </button>
+      <button data-testid="set-hcb" onClick={() => setTheme("hcb")}>
+        Set HCB
       </button>
     </div>
   );
@@ -63,7 +66,7 @@ describe("ThemeProvider", () => {
     expect(screen.getByTestId("current-theme")).toHaveTextContent("dark");
   });
 
-  it("toggles theme correctly", () => {
+  it("toggles theme correctly across all variants", () => {
     render(
       <ThemeProvider>
         <TestComponent />
@@ -80,6 +83,12 @@ describe("ThemeProvider", () => {
     });
 
     expect(themeDisplay).toHaveTextContent("dark");
+
+    act(() => {
+      toggleButton.click();
+    });
+
+    expect(themeDisplay).toHaveTextContent("hcb");
 
     act(() => {
       toggleButton.click();
@@ -108,6 +117,16 @@ describe("ThemeProvider", () => {
     expect(document.body).toHaveClass("themeDark");
   });
 
+  it("applies high contrast theme class", () => {
+    render(
+      <ThemeProvider forcedTheme="hcb">
+        <TestComponent />
+      </ThemeProvider>,
+    );
+
+    expect(document.body).toHaveClass("themeHCB");
+  });
+
   it("saves theme to localStorage on change", () => {
     render(
       <ThemeProvider>
@@ -122,5 +141,20 @@ describe("ThemeProvider", () => {
     });
 
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith("theme", "dark");
+  });
+
+  it("allows setting theme explicitly", () => {
+    render(
+      <ThemeProvider>
+        <TestComponent />
+      </ThemeProvider>,
+    );
+
+    const setHcbButton = screen.getByTestId("set-hcb");
+    act(() => {
+      setHcbButton.click();
+    });
+
+    expect(screen.getByTestId("current-theme")).toHaveTextContent("hcb");
   });
 });
