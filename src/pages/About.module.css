@@ -3,13 +3,7 @@
 
 .about {
   text-align: start;
-  scroll-snap-type: y proximity;
-  overflow-y: auto;
-  block-size: 100%;
-  max-block-size: 100svh;
-  scroll-padding-block-start: clamp(3rem, 8vh, 5rem);
-  scroll-behavior: smooth;
-  scrollbar-gutter: stable both-edges;
+  min-block-size: 100%;
 }
 
 .about:focus {
@@ -17,8 +11,8 @@
 }
 
 .about > section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-snap-align: unset;
+  scroll-snap-stop: unset;
 }
 
 .what {
@@ -102,10 +96,6 @@
 }
 
 @media (width <= 768px) {
-  .about {
-    scroll-snap-type: y mandatory;
-  }
-
   .what {
     min-block-size: 70vh;
     padding-block: clamp(2rem, 6vh, 3.5rem);
