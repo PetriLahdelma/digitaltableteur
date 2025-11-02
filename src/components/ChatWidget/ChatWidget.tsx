@@ -280,7 +280,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           />
         </div>
       </div>
-      <ChatToggle ref={toggleButtonRef} isOpen={isOpen} onToggle={handleToggle} />
+      <ChatToggle
+        ref={toggleButtonRef}
+        isOpen={isOpen}
+        onToggle={handleToggle}
+      />
     </>
   );
 };
