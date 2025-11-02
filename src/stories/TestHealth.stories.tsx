@@ -1,20 +1,25 @@
 import React, { useMemo, useState, useEffect } from "react";
 import type { Meta } from "@storybook/react";
+import type { TooltipItem } from "chart.js";
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   BarElement,
   ArcElement,
+  PointElement,
+  LineElement,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
-import { Bar, Doughnut } from "react-chartjs-2";
+import { Bar, Doughnut, Line } from "react-chartjs-2";
 import metrics from "../../docs/test-metrics.json";
 import styles from "./TestHealth.module.css";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@dt/ThemeProvider";
 import Badge from "@dt/Badge";
+import { FaInfoCircle } from "react-icons/fa";
 
 type VisualDiffEntry = {
   id: string;
@@ -28,13 +33,54 @@ type VisualDiffReport = {
   diffs: VisualDiffEntry[];
 };
 
+type AdoptionHistoryEntry = {
+  period: string;
+  rate: number;
+};
+
+const defaultAdoptionHistory: AdoptionHistoryEntry[] = [
+  { period: "Jan", rate: 0.52 },
+  { period: "Feb", rate: 0.58 },
+  { period: "Mar", rate: 0.61 },
+  { period: "Apr", rate: 0.68 },
+  { period: "May", rate: 0.72 },
+  { period: "Jun", rate: 0.77 },
+];
+
+const toPercent = (value: number) => Math.round(value * 1000) / 10;
+
+const formatPercent = (value: number) =>
+  `${value.toLocaleString(undefined, {
+    maximumFractionDigits: value % 1 === 0 ? 0 : 1,
+    minimumFractionDigits: 0,
+  })}%`;
+
+const applyAlpha = (hexColor: string, alpha: number) => {
+  const normalized = hexColor.replace("#", "");
+  const expanded =
+    normalized.length === 3
+      ? normalized
+          .split("")
+          .map((char) => char + char)
+          .join("")
+      : normalized.padStart(6, "0");
+  const numeric = parseInt(expanded, 16);
+  const r = (numeric >> 16) & 255;
+  const g = (numeric >> 8) & 255;
+  const b = numeric & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
   ArcElement,
+  PointElement,
+  LineElement,
   Tooltip,
   Legend,
+  Filler,
 );
 
 const TestHealthOverview = () => {
@@ -104,6 +150,14 @@ const TestHealthOverview = () => {
     };
   }, []);
 
+  const adoptionHistory = useMemo<AdoptionHistoryEntry[]>(
+    () =>
+      Array.isArray(metrics.componentAdoption?.history)
+        ? (metrics.componentAdoption.history as AdoptionHistoryEntry[])
+        : defaultAdoptionHistory,
+    [],
+  );
+
   const vitestBarData = useMemo(
     () => ({
       labels: [
@@ -165,8 +219,107 @@ const TestHealthOverview = () => {
     [chartPalette, t],
   );
 
+  const adoptionTrendData = useMemo(() => {
+    const targetRate =
+      typeof metrics.componentAdoption?.targetRate === "number"
+        ? metrics.componentAdoption.targetRate
+        : (adoptionHistory.at(-1)?.rate ?? 0);
+    const targetPercent = toPercent(targetRate);
+    return {
+      labels: adoptionHistory.map((entry) => entry.period),
+      datasets: [
+        {
+          label: t("dashboardComponentAdoptionHeading"),
+          data: adoptionHistory.map((entry) => toPercent(entry.rate)),
+          borderColor: chartPalette.primary,
+          backgroundColor: applyAlpha(chartPalette.primary, 0.18),
+          fill: true,
+          tension: 0.35,
+          borderWidth: 3,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          pointBackgroundColor: chartPalette.surface,
+          pointBorderColor: chartPalette.primary,
+          pointHoverBackgroundColor: chartPalette.primary,
+          pointHoverBorderColor: chartPalette.surface,
+        },
+        {
+          label: t("dashboardComponentAdoptionTarget", {
+            target: `${targetPercent}%`,
+          }),
+          data: adoptionHistory.map(() => targetPercent),
+          borderColor: chartPalette.warning,
+          borderDash: [6, 6],
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: false,
+        },
+      ],
+    };
+  }, [adoptionHistory, chartPalette, t]);
+
+  const adoptionTrendOptions = useMemo(
+    () => ({
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        intersect: false,
+        mode: "index" as const,
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: chartPalette.text,
+            usePointStyle: true,
+          },
+        },
+        tooltip: {
+          backgroundColor: chartPalette.text,
+          titleColor: chartPalette.surface,
+          bodyColor: chartPalette.surface,
+          callbacks: {
+            label: (context: TooltipItem<"line">) => {
+              const value =
+                typeof context.parsed?.y === "number" ? context.parsed.y : 0;
+              const formatted = Number.isFinite(value)
+                ? formatPercent(value)
+                : "0%";
+              return context.dataset.label
+                ? `${context.dataset.label}: ${formatted}`
+                : formatted;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          ticks: { color: chartPalette.text },
+          grid: { color: "rgba(148, 163, 184, 0.2)" },
+        },
+        y: {
+          ticks: {
+            color: chartPalette.text,
+            callback: (value: string | number) => {
+              const numeric =
+                typeof value === "number" ? value : Number.parseFloat(value);
+              return Number.isFinite(numeric)
+                ? formatPercent(numeric)
+                : `${value}`;
+            },
+          },
+          grid: { color: "rgba(148, 163, 184, 0.2)" },
+          beginAtZero: true,
+          suggestedMax: 100,
+        },
+      },
+    }),
+    [chartPalette],
+  );
+
   const chartOptions = useMemo(
     () => ({
+      responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: "bottom" as const,
@@ -315,15 +468,27 @@ const TestHealthOverview = () => {
       <section className={styles.chartsGrid}>
         <article className={styles.chartCard}>
           <h3>{t("dashboardVitestHeading")}</h3>
-          <Bar data={vitestBarData} options={chartOptions} />
+          <div className={styles.chartCanvas}>
+            <Bar data={vitestBarData} options={chartOptions} />
+          </div>
+        </article>
+        <article className={styles.chartCard}>
+          <h3>{t("dashboardComponentAdoptionHeading")}</h3>
+          <div className={styles.chartCanvas}>
+            <Line data={adoptionTrendData} options={adoptionTrendOptions} />
+          </div>
         </article>
         <article className={styles.chartCard}>
           <h3>{t("dashboardA11yHeading")}</h3>
-          <Doughnut data={a11yPieData} options={chartOptions} />
+          <div className={styles.chartCanvas}>
+            <Doughnut data={a11yPieData} options={chartOptions} />
+          </div>
         </article>
         <article className={styles.chartCard}>
           <h3>{t("dashboardStorybookHeading")}</h3>
-          <Doughnut data={storiesPieData} options={chartOptions} />
+          <div className={styles.chartCanvas}>
+            <Doughnut data={storiesPieData} options={chartOptions} />
+          </div>
         </article>
       </section>
 
@@ -348,9 +513,15 @@ const TestHealthOverview = () => {
               </span>
             ) : null}
             {visualError ? (
-              <span className={styles.visualError}>
+              <Badge
+                design="primary"
+                state="info"
+                size="m"
+                icon={<FaInfoCircle aria-hidden="true" />}
+                title={visualError}
+              >
                 {t("dashboardVisualError")}
-              </span>
+              </Badge>
             ) : null}
           </div>
         </header>

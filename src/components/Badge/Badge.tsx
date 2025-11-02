@@ -23,6 +23,7 @@ interface BadgeProps {
   icon?: React.ReactNode;
   square?: boolean; // New prop for square badge
   size?: "s" | "m" | "l"; // New size prop
+  title?: string; // Optional title prop
 }
 
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
@@ -37,6 +38,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       className,
       square = false,
       size = "m",
+      title,
       ...rest
     },
     ref,
@@ -60,7 +62,11 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
           .filter(Boolean)
           .join(" ")}
       >
-        {icon && <span className="badge__icon">{icon}</span>}
+        {icon && (
+          <span className={styles.icon} aria-hidden={true}>
+            {icon}
+          </span>
+        )}
         <span className="badge__content">
           {typeof children === "string" ? t(children) : children}
         </span>
