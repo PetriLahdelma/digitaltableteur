@@ -1,4 +1,5 @@
 import React from "react";
+import { StoryFn } from "@storybook/react";
 import Badge from "./Badge";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
@@ -63,7 +64,6 @@ export default {
   },
 };
 
-import { StoryFn } from "@storybook/react-vite";
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
 // Template as a component to avoid hook issues

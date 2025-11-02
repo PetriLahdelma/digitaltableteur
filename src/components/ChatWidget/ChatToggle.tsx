@@ -6,10 +6,11 @@ import styles from "./ChatWidget.module.css";
 interface ChatToggleProps {
   isOpen: boolean;
   onToggle: () => void;
+  controlsId?: string;
 }
 
 const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
-  ({ isOpen, onToggle }, ref) => (
+  ({ isOpen, onToggle, controlsId }, ref) => (
     <Button
       type="button"
       rounded
@@ -19,7 +20,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
       onClick={onToggle}
       icon={<IoChatbubbleEllipsesOutline />}
       aria-expanded={isOpen}
-      aria-controls="donny-panel"
+      aria-controls={controlsId}
       aria-label={isOpen ? "Hide chat" : "Chat with Donny"}
       variant="primary"
       size="m"
