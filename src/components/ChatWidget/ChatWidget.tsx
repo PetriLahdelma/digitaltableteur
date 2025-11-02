@@ -1,22 +1,16 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styles from "./ChatWidget.module.css";
-import {
-  IoChatbubbleEllipsesOutline,
-  IoSend,
-  IoChevronDown,
-  IoRefresh,
-} from "react-icons/io5";
-import Button from "@dt/Button";
-import { ChatTextArea } from "../Inputs/TextArea";
-
-type Role = "user" | "assistant";
-
-interface Message {
-  id: string;
-  role: Role;
-  content: string;
-  pending?: boolean;
-}
+import ChatComposer from "./ChatComposer";
+import ChatHeader from "./ChatHeader";
+import ChatMessages from "./ChatMessages";
+import ChatToggle from "./ChatToggle";
+import type { Message } from "./ChatWidget.types";
 
 interface ChatWidgetProps {
   title?: string;
@@ -48,6 +42,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const [isSending, setIsSending] = useState(false);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
+  const focusReturnRef = useRef<number | null>(null);
 
   const apiEndpoint = useMemo(() => {
     if (endpoint) return endpoint;
@@ -87,15 +84,66 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   }, [messages, isOpen]);
 
   useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel) return;
+    if (isOpen) {
+      panel.removeAttribute("inert");
+    } else {
+      panel.setAttribute("inert", "");
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (focusReturnRef.current !== null && typeof window !== "undefined") {
+        cancelAnimationFrame(focusReturnRef.current);
+      }
+    };
+  }, []);
+
+  const closeChat = useCallback(() => {
+    if (!isOpen) return;
+
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = null;
+
+    if (
+      panelRef.current &&
+      document.activeElement instanceof HTMLElement &&
+      panelRef.current.contains(document.activeElement)
+    ) {
+      document.activeElement.blur();
+    }
+
+    setIsOpen(false);
+
+    if (typeof window !== "undefined") {
+      focusReturnRef.current = window.requestAnimationFrame(() => {
+        toggleButtonRef.current?.focus();
+        focusReturnRef.current = null;
+      });
+    } else {
+      toggleButtonRef.current?.focus();
+    }
+  }, [isOpen]);
+
+  const handleToggle = useCallback(() => {
+    if (isOpen) {
+      closeChat();
+      return;
+    }
+    setIsOpen(true);
+  }, [closeChat, isOpen]);
+
+  useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen(false);
-        abortControllerRef.current?.abort();
+        closeChat();
       }
     };
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
-  }, []);
+  }, [closeChat]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -207,95 +255,32 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         <div
           id="donny-panel"
           className={styles.panel}
+          ref={panelRef}
           role="dialog"
           aria-modal="false"
           aria-hidden={!isOpen}
           tabIndex={isOpen ? 0 : -1}
         >
-          <header className={styles.header}>
-            <div className={styles.headerCopy}>
-              <p className={styles.tagline}>DT Donny</p>
-              <h2 className={styles.title}>{title}</h2>
-              <p className={styles.subtitle}>{description}</p>
-            </div>
-            <div className={styles.headerActions}>
-              <Button
-                type="button"
-                onClick={handleReset}
-                disabled={isSending}
-                aria-label="Reset conversation"
-                variant="tertiary"
-                size="s"
-                icon={<IoRefresh />}
-              >
-                Reset
-              </Button>
-              <Button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                aria-label="Minimize chat"
-                variant="tertiary"
-                icon={<IoChevronDown />}
-                size="s"
-              />
-            </div>
-          </header>
-          <div className={styles.messages} ref={scrollerRef}>
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={styles.message}
-                data-role={message.role}
-              >
-                <p>{message.content}</p>
-              </div>
-            ))}
-          </div>
-          <form className={styles.composer} onSubmit={handleSubmit}>
-            <label className={styles.inputLabel} htmlFor="donny-input">
-              Ask Donny a question
-            </label>
-            <div className={styles.inputRow}>
-              <ChatTextArea
-                id="donny-input"
-                className={styles.input}
-                placeholder="Ask about a project, service, or approach…"
-                value={input}
-                onValueChange={setInput}
-                minRows={1}
-                maxRows={6}
-                maxLength={1_000}
-                disabled={isSending}
-                aria-live="polite"
-              />
-              <Button
-                type="submit"
-                className={styles.sendButton}
-                aria-label="Send message"
-                disabled={isSending || !input.trim()}
-                icon={<IoSend />}
-                variant="primary"
-                size="s"
-              />
-            </div>
-          </form>
+          <ChatHeader
+            title={title}
+            description={description}
+            onReset={handleReset}
+            onMinimize={closeChat}
+            isSending={isSending}
+          />
+          <ChatMessages ref={scrollerRef} messages={messages} />
+          <ChatComposer
+            inputId="donny-input"
+            placeholder="Ask about a project, service, or approach…"
+            value={input}
+            onValueChange={setInput}
+            onSubmit={handleSubmit}
+            isSending={isSending}
+            maxLength={1_000}
+          />
         </div>
       </div>
-      <Button
-        type="button"
-        rounded={true}
-        className={styles.toggle}
-        data-open={isOpen}
-        onClick={() => setIsOpen((prev) => !prev)}
-        aria-expanded={isOpen}
-        aria-controls="donny-panel"
-        aria-label={isOpen ? "Hide chat" : "Chat with Donny"}
-        variant="primary"
-        size="m"
-      >
-        <IoChatbubbleEllipsesOutline />
-        <span className={styles.toggleLabel}>Chat</span>
-      </Button>
+      <ChatToggle ref={toggleButtonRef} isOpen={isOpen} onToggle={handleToggle} />
     </>
   );
 };
