@@ -195,7 +195,7 @@
   border: none;
   background: var(--color-primary, #0f62fe);
   color: var(--inverted-text-color, #fff);
-  border-radius: 0.75rem;
+  border-radius: 9999px;
   width: 2.75rem;
   height: 2.75rem;
   display: inline-flex;
@@ -219,7 +219,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.65rem;
   padding: 0.8rem 1.1rem;
   border: none;
   background: var(--color-primary, #0f62fe);
@@ -252,7 +251,21 @@
   line-height: 1;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+}
+
+/* Scoped spacing adjustments for the embedded Button slots */
+.toggle :global([data-button-slot="icon"]) {
+  margin-inline-end: 0;
+}
+
+.toggle :global([data-button-slot="text"]) {
+  margin-inline-start: 0;
+}
+
+.toggle :global([data-button-slot="icon"] svg) {
+  width: 1em;
+  height: 1em;
+  display: block;
 }
 
 @media (width <= 768px) {

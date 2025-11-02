@@ -79,9 +79,9 @@
   border: 1px solid var(--color-border-light, #3a3a3a);
   border-radius: 0.75rem;
   padding: 0.65rem 0.85rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.5;
-  color: var(--color-text, #111);
+  color: var(--color-primary);
   background: transparent;
   resize: vertical;
   min-height: calc(1.5em * 1 + 1.3rem);
@@ -91,7 +91,7 @@
 }
 
 .chatTextArea::placeholder {
-  color: var(--secondary-text-color, #666);
+  color: var(--color-primary);
 }
 
 .chatTextArea:focus {

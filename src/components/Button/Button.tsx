@@ -100,13 +100,25 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         {normalizedIcon && (
-          <span className={styles.icon} data-size={size}>
+          <span
+            className={styles.icon}
+            data-size={size}
+            data-button-slot="icon"
+          >
             {normalizedIcon}
           </span>
         )}
-        {children && <span className={styles.text}>{children}</span>}
+        {children && (
+          <span className={styles.text} data-button-slot="text">
+            {children}
+          </span>
+        )}
         {normalizedEndIcon && (
-          <span className={styles.icon} data-size={size}>
+          <span
+            className={styles.icon}
+            data-size={size}
+            data-button-slot="end-icon"
+          >
             {normalizedEndIcon}
           </span>
         )}
