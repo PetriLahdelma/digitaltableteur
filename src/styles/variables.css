@@ -198,6 +198,63 @@
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
 }
 
+.themeHCB,
+.themeHCB :root {
+  --main-body-background-color: #000;
+  --color-title: #fff;
+  --color-text: #fff;
+  --primary-text-color: #fff;
+  --main-body-copy-color: #fff;
+  --secondary-text-color: #fff;
+  --inverted-text-color: #000;
+  --link-color: #fff;
+  --color-primary: #fff;
+  --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
+  --color-success: #fff;
+  --color-info: #fff;
+  --color-error: #fff;
+  --color-warning: #fff;
+  --color-warning-contrast: #fff;
+  --color-warning-text: #000;
+  --color-neutral-bg: #000;
+  --color-neutral-text: #fff;
+  --color-error-bg: #000;
+  --color-error-text: #fff;
+  --color-react: #fff;
+  --color-header-bg: #000;
+  --home-gradient: linear-gradient(120deg, #000 0%, #868686 50%, #fff 100%);
+  --color-white: #000;
+  --color-black: #fff;
+  --color-dark: #fff;
+  --color-gray-dark: #797979;
+  --color-gray: #aaa;
+  --color-muted: #888;
+  --color-muted-light: #555;
+  --color-border: #333;
+  --color-border-light: #444;
+  --color-disabled-bg: #313131;
+  --color-disabled-bg-light: #7b7b7b;
+  --color-disabled-placeholder: #555;
+  --color-gray-medium: #888;
+  --color-light-bg: #2b2b2b;
+  --accent-pink: #fff;
+  --accent-purple: #fff;
+  --accent-teal: #fff;
+  --accent-violet: #fff;
+  --accent-cyan: #fff;
+  --accent-yellow: #fff;
+  --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
+  --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
+  --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
+  --storybook-purple: #a884d7; /* Storybook Helper Color: Purple (darker for dark mode) */
+  --storybook-violet: #bc9de0; /* Storybook Helper Color: Violet (darker for dark mode) */
+  --storybook-bg: #23272a; /* Storybook Helper Color: Background (dark) */
+  --storybook-dark: #e0e0e0; /* Storybook Helper Color: Light Text for dark mode */
+  --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
+  --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
+  --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+}
+
 /* Hyphenation rules for headings - supports multiple languages */
 h1,
 h2,
