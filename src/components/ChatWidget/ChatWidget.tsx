@@ -192,6 +192,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           className={styles.panel}
           role="dialog"
           aria-modal="false"
+          aria-hidden={!isOpen}
+          tabIndex={isOpen ? 0 : -1}
         >
           <header className={styles.header}>
             <div className={styles.headerCopy}>
