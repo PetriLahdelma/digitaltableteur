@@ -22,25 +22,26 @@ const getNextTheme = (value: Theme): Theme => {
 };
 
 // Safe localStorage operations with error handling
-function safeGetFromStorage(key: string, defaultValue: string): string {
-  if (typeof window === "undefined") return defaultValue;
+function safeGetFromStorage(key: string): string | null {
+  if (typeof window === "undefined") return null;
 
   try {
-    const value = localStorage.getItem(key);
-    return value || defaultValue;
+    return localStorage.getItem(key);
   } catch (error) {
     console.warn(`localStorage.getItem failed for key "${key}":`, error);
-    return defaultValue;
+    return null;
   }
 }
 
-function safeSetToStorage(key: string, value: string): void {
-  if (typeof window === "undefined") return;
+function safeSetToStorage(key: string, value: string): boolean {
+  if (typeof window === "undefined") return false;
 
   try {
     localStorage.setItem(key, value);
+    return true;
   } catch (error) {
     console.warn(`localStorage.setItem failed for key "${key}":`, error);
+    return false;
   }
 }
 
@@ -51,6 +52,31 @@ const setThemeCookie = (theme: Theme) => {
     document.cookie = `dt_theme=${theme}; expires=${expires}; path=/`;
   } catch (error) {
     console.warn("Failed to persist theme cookie:", error);
+  }
+};
+
+const clearThemeCookie = () => {
+  if (typeof document === "undefined") return;
+  try {
+    document.cookie =
+      "dt_theme=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+  } catch (error) {
+    console.warn("Failed to clear theme cookie:", error);
+  }
+};
+
+const getThemeFromCookie = (): Theme | null => {
+  if (typeof document === "undefined") return null;
+  try {
+    const match = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("dt_theme="));
+    if (!match) return null;
+    const value = match.split("=")[1];
+    return isTheme(value) ? value : null;
+  } catch (error) {
+    console.warn("Failed to read theme cookie:", error);
+    return null;
   }
 };
 
@@ -82,8 +108,17 @@ const applyThemeToDom = (theme: Theme) => {
 };
 
 const getStoredTheme = (): Theme => {
-  const stored = safeGetFromStorage("theme", DEFAULT_THEME);
-  return isTheme(stored) ? stored : DEFAULT_THEME;
+  const stored = safeGetFromStorage("theme");
+  if (stored && isTheme(stored)) {
+    return stored;
+  }
+
+  const cookieTheme = getThemeFromCookie();
+  if (cookieTheme) {
+    return cookieTheme;
+  }
+
+  return DEFAULT_THEME;
 };
 
 // Synchronously set theme class before React renders
@@ -124,8 +159,12 @@ export const ThemeProvider: React.FC<{
 
   useEffect(() => {
     applyThemeToDom(effectiveTheme);
-    safeSetToStorage("theme", effectiveTheme);
-    setThemeCookie(effectiveTheme);
+    const storagePersisted = safeSetToStorage("theme", effectiveTheme);
+    if (storagePersisted) {
+      clearThemeCookie();
+    } else {
+      setThemeCookie(effectiveTheme);
+    }
   }, [effectiveTheme]);
 
   const setTheme = useCallback((nextTheme: Theme) => {
