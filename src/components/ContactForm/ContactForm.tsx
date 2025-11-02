@@ -18,6 +18,7 @@ const ContactForm = () => {
     interest: "",
     message: "",
     hearAbout: "",
+    honeypot: "",
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorOpen, setIsErrorOpen] = useState(false);
@@ -51,6 +52,10 @@ const ContactForm = () => {
     setFormData({ ...formData, hearAbout: value });
   };
 
+  const handleHoneypotChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, honeypot: event.target.value });
+  };
+
   const SERVICE_ID =
     import.meta.env.VITE_EMAIL_SERVICE_ID ||
     import.meta.env.VITE_APP_EMAIL_SERVICE_ID;
@@ -60,6 +65,9 @@ const ContactForm = () => {
   const PUBLIC_KEY =
     import.meta.env.VITE_EMAIL_PUBLIC_KEY ||
     import.meta.env.VITE_APP_EMAIL_PUBLIC_KEY;
+  const SPAM_LOG_ENDPOINT =
+    import.meta.env.VITE_CONTACT_SPAM_LOG_ENDPOINT ||
+    import.meta.env.VITE_APP_CONTACT_SPAM_LOG_ENDPOINT;
 
   // Debug logging in development
   if (import.meta.env.DEV) {
@@ -105,8 +113,67 @@ const ContactForm = () => {
     return !errors.email && !errors.fullName && !errors.message;
   };
 
+  const logHoneypotHit = () => {
+    if (!SPAM_LOG_ENDPOINT) {
+      if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.info(
+          "Honeypot triggered but no SPAM log endpoint configured. Set VITE_CONTACT_SPAM_LOG_ENDPOINT to capture these events.",
+        );
+      }
+      return;
+    }
+
+    const payload = {
+      event: "contact-form-honeypot",
+      submittedAt: new Date().toISOString(),
+      honeypotValue: formData.honeypot,
+      path:
+        typeof window !== "undefined" ? window.location.pathname : "unknown",
+      userAgent:
+        typeof navigator !== "undefined" ? navigator.userAgent : "unknown",
+    };
+
+    const body = JSON.stringify(payload);
+    const canUseBeacon =
+      typeof navigator !== "undefined" &&
+      typeof navigator.sendBeacon === "function";
+
+    if (canUseBeacon) {
+      const success = navigator.sendBeacon(
+        SPAM_LOG_ENDPOINT,
+        new Blob([body], { type: "application/json" }),
+      );
+      if (success) {
+        return;
+      }
+    }
+
+    fetch(SPAM_LOG_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+      keepalive: true,
+    }).catch((err) => {
+      if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.error("Failed to log honeypot submission", err);
+      }
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Quietly drop submissions that fill the honeypot field
+    if (formData.honeypot.trim()) {
+      logHoneypotHit();
+      if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.warn("Honeypot triggered, dropping submission.");
+      }
+      return;
+    }
 
     // Validate form before submission
     if (!validateForm()) {
@@ -191,6 +258,7 @@ const ContactForm = () => {
           interest: "",
           message: "",
           hearAbout: "",
+          honeypot: "",
         });
         setFormErrors({
           email: "",
@@ -208,6 +276,19 @@ const ContactForm = () => {
   return (
     <div className={styles["contactForm"]}>
       <form onSubmit={handleSubmit}>
+        <div className={styles["honeypot"]} aria-hidden="true">
+          <label htmlFor="website">{t("contactSpamTrapLabel")}</label>
+          <input
+            id="website"
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={formData.honeypot}
+            onChange={handleHoneypotChange}
+          />
+        </div>
+
         <div className={styles["formGroup"]}>
           <Inputs
             label={t("contactFullName")}

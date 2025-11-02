@@ -7,9 +7,9 @@ import React, {
   useState,
 } from "react";
 
-export type Theme = "light" | "dark" | "hcb";
+export type Theme = "light" | "dark" | "hcb" | "hcw";
 
-const THEME_SEQUENCE: Theme[] = ["light", "dark", "hcb"];
+const THEME_SEQUENCE: Theme[] = ["light", "dark", "hcb", "hcw"];
 const DEFAULT_THEME: Theme = "light";
 
 const isTheme = (value: unknown): value is Theme =>
@@ -60,18 +60,21 @@ const applyThemeToDom = (theme: Theme) => {
   }
 
   const isDark = theme === "dark";
-  const isHighContrast = theme === "hcb";
+  const isHighContrastBlack = theme === "hcb";
+  const isHighContrastWhite = theme === "hcw";
   const root = document.documentElement;
   const body = document.body;
 
   root.classList.toggle("themeDark", isDark);
-  root.classList.toggle("themeHCB", isHighContrast);
+  root.classList.toggle("themeHCB", isHighContrastBlack);
+  root.classList.toggle("themeHCW", isHighContrastWhite);
   root.dataset.theme = theme;
-  root.style.colorScheme = theme === "light" ? "light" : "dark";
+  root.style.colorScheme = isDark || isHighContrastBlack ? "dark" : "light";
 
   if (body) {
     body.classList.toggle("themeDark", isDark);
-    body.classList.toggle("themeHCB", isHighContrast);
+    body.classList.toggle("themeHCB", isHighContrastBlack);
+    body.classList.toggle("themeHCW", isHighContrastWhite);
     body.dataset.theme = theme;
     body.style.backgroundColor =
       theme === "hcb" ? "#000" : theme === "dark" ? "#23272a" : "#fff";
