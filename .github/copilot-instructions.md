@@ -2,8 +2,13 @@
 
 ## Workflow Requirements
 
-– Update CLAUDE.md with any changes to development practices or architecture with every git commit
-
+- Prefer sans-serif fonts for body text and serif fonts for headings
+- Maintain consistent spacing and layout using design tokens defined in `variables.css`
+- Adhere to accessibility standards: semantic HTML, ARIA roles, keyboard navigation
+- Write unit tests for all new components and features
+- Ensure 100% translation coverage for all user-facing text
+- Update DONNY-CHAT.md with any changes to development practices or architecture with every git commit
+  – Update CLAUDE.md with any changes to development practices or architecture with every git commit
 - Update copilot-instructions.md with any changes to development practices or architecture with every git commit
 - Refresh Storybook visual regression assets (`npm run test:visual`) whenever UI changes affect component rendering
 - Ensure all new components have Storybook stories and accessibility tests
