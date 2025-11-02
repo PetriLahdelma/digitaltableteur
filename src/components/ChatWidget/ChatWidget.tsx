@@ -64,9 +64,6 @@ const generateId = () => {
   return `id-${Date.now()}-${Math.random().toString(16).slice(2)}`;
 };
 
-const FALLBACK_ENDPOINT =
-  "https://digitaltableteursecureproxy.vercel.app/api/chat";
-
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   title = "Chat with Donny",
   description = "Brand-specific answers, no fluff.",
@@ -87,13 +84,6 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
     const envEndpoint = import.meta.env.VITE_DONNY_CHAT_ENDPOINT?.trim();
     if (envEndpoint) return envEndpoint;
-
-    if (typeof window !== "undefined") {
-      const { hostname } = window.location;
-      if (hostname.endsWith("digitaltableteur.com")) {
-        return FALLBACK_ENDPOINT;
-      }
-    }
 
     return "/api/chat";
   }, [endpoint]);
@@ -216,49 +206,22 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     abortControllerRef.current = controller;
 
     try {
-      const requestBody = JSON.stringify({
-        messages: [
-          ...messages.map(({ role, content }) => ({ role, content })),
-          { role: userMessage.role, content: userMessage.content },
-        ],
+      const response = await fetch(apiEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: [
+            ...messages.map(({ role, content }) => ({ role, content })),
+            { role: userMessage.role, content: userMessage.content },
+          ],
+        }),
+        signal: controller.signal,
       });
 
-      const attemptFetch = async (targetEndpoint: string) => {
-        const response = await fetch(targetEndpoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: requestBody,
-          signal: controller.signal,
-        });
-
-        if (!response.ok) {
-          const error = new Error(`Request failed with ${response.status}`);
-          (error as Error & { status?: number }).status = response.status;
-          throw error;
-        }
-
-        return response;
-      };
-
-      let activeEndpoint = apiEndpoint;
-      let response: Response;
-
-      try {
-        response = await attemptFetch(activeEndpoint);
-      } catch (primaryError) {
-        const status = (primaryError as Error & { status?: number }).status;
-        const shouldRetry =
-          activeEndpoint !== FALLBACK_ENDPOINT &&
-          (typeof status === "undefined" || status === 404 || status === 405);
-
-        if (!shouldRetry) {
-          throw primaryError;
-        }
-
-        activeEndpoint = FALLBACK_ENDPOINT;
-        response = await attemptFetch(activeEndpoint);
+      if (!response.ok) {
+        throw new Error(`Request failed with ${response.status}`);
       }
 
       const data = await response.json();
