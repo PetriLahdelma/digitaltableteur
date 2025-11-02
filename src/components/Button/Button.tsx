@@ -1,5 +1,9 @@
 import React from "react";
 import styles from "./Button.module.css";
+import {
+  getSemanticIcon,
+  type SemanticStatus,
+} from "../../utils/semanticIcons";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?:
@@ -23,11 +27,22 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "s" | "m" | "l";
   /** When true, replaces primary (blue) text/border color with white for supported variants */
   inverse?: boolean;
+  /** When true, applies rounded corners to the button */
+  rounded?: boolean;
 }
+
+type ButtonVariant = NonNullable<ButtonProps["variant"]>;
+const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
+  error: "error",
+  warning: "warning",
+  success: "success",
+  info: "info",
+};
 
 const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   disabled = false,
+  rounded = false,
   icon,
   endIcon,
   children,
@@ -44,8 +59,15 @@ const Button: React.FC<ButtonProps> = ({
   inverse = false,
   ...rest
 }) => {
+  const resolvedStartIcon =
+    icon ??
+    (VARIANT_TO_STATUS[variant]
+      ? getSemanticIcon(VARIANT_TO_STATUS[variant]!)
+      : undefined);
   const normalizedIcon =
-    typeof icon === "function" ? React.createElement(icon) : icon;
+    typeof resolvedStartIcon === "function"
+      ? React.createElement(resolvedStartIcon)
+      : resolvedStartIcon;
   const normalizedEndIcon =
     typeof endIcon === "function" ? React.createElement(endIcon) : endIcon;
 
@@ -57,6 +79,7 @@ const Button: React.FC<ButtonProps> = ({
         styles[size],
         !children && normalizedIcon ? styles["iconOnly"] : "",
         inverse ? styles.inverse : "",
+        rounded ? styles.rounded : "",
         className,
       ]
         .filter(Boolean)

@@ -4,6 +4,8 @@ import Input from "./Inputs";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 
+import TextArea from "./TextArea";
+
 export default {
   title: "Components/Inputs",
   component: Input,
@@ -93,4 +95,41 @@ DisabledInput.args = {
   type: "text",
   placeholder: "storyInputDisabledPlaceholder",
   disabled: true,
+};
+
+const TextAreaStory: React.FC<React.ComponentProps<typeof TextArea>> = (
+  args,
+) => {
+  const { t } = useTranslation();
+  return (
+    <div style={{ maxWidth: "var(--size-width-md)" }}>
+      <TextArea
+        {...args}
+        label={t(args.label as string)}
+        placeholder={
+          args.placeholder ? t(args.placeholder as string) : undefined
+        }
+        error={args.error ? t(args.error) : undefined}
+      />
+    </div>
+  );
+};
+
+const TextAreaTemplate: StoryFn<typeof TextArea> = (
+  args: React.ComponentProps<typeof TextArea>,
+) => <TextAreaStory {...args} />;
+
+export const DefaultTextArea = TextAreaTemplate.bind({});
+DefaultTextArea.args = {
+  label: "storyTextAreaLabel",
+  placeholder: "storyTextAreaPlaceholder",
+  rows: 4,
+};
+
+export const TextAreaWithError = TextAreaTemplate.bind({});
+TextAreaWithError.args = {
+  label: "storyTextAreaErrorLabel",
+  placeholder: "storyTextAreaPlaceholder",
+  error: "storyTextAreaErrorText",
+  rows: 4,
 };

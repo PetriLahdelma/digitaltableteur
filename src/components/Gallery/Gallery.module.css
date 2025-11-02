@@ -1,14 +1,14 @@
 .gallery {
   display: flex;
-  width: 100%;
-  gap: 32px;
+  inline-size: 100%;
+  gap: clamp(0.5rem, 2vw, 2rem);
   align-items: flex-start;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: clamp(0.5rem, 2vw, 2rem);
   flex: 1 1 0;
   min-width: 0;
 }
@@ -43,18 +43,18 @@
 
 .caption {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset-inline: 0;
+  inset-block-end: 0;
   background: rgb(0 0 0 / 55%);
   color: var(--color-white);
-  font-size: 1rem;
-  padding: 0.75em 1em;
+  font-size: clamp(0.875rem, 0.3vw + 0.85rem, 1rem);
+  padding-block: 0.75em;
+  padding-inline: 1em;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
+  border-end-start-radius: 16px;
+  border-end-end-radius: 16px;
 }
 
 .item:hover .caption,
@@ -91,8 +91,8 @@
   }
 
   .caption {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-end-start-radius: 8px;
+    border-end-end-radius: 8px;
     font-size: 0.95rem;
   }
 }

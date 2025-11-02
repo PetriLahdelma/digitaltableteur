@@ -12,6 +12,9 @@
   font-weight: var(--primary-heading-weight, 300);
   margin-block: 2rem 6rem;
   color: var(--color-primary);
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .contactSectionHeading {

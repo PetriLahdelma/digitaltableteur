@@ -7,6 +7,9 @@ export interface GalleryImage {
   fallback?: string;
   alt: string;
   caption?: string;
+  srcSet?: string;
+  sizes?: string;
+  fallbackSrcSet?: string;
 }
 
 interface GalleryProps {
@@ -14,6 +17,18 @@ interface GalleryProps {
   minColumnWidth?: number;
   gutter?: number;
 }
+
+const computeResponsiveSizes = (columnCount: number, gap: number) => {
+  const safeColumns = Math.max(columnCount, 1);
+  const gapPx = Number.isFinite(gap) ? gap : 0;
+  const sharedGap = Math.max(safeColumns - 1, 0) * gapPx;
+  return [
+    `(max-width: 600px) calc(100vw - ${gapPx}px)`,
+    `(max-width: 900px) calc((100vw - ${gapPx}px) / 2)`,
+    `(max-width: 1200px) calc((100vw - ${gapPx}px) / 3)`,
+    `calc((min(100vw, 1200px) - ${sharedGap}px) / ${safeColumns})`,
+  ].join(", ");
+};
 
 const Gallery: React.FC<GalleryProps> = ({
   images,
@@ -53,40 +68,61 @@ const Gallery: React.FC<GalleryProps> = ({
           key={colIdx}
           style={{ minWidth: 0, flex: 1, gap: gutter }}
         >
-          {col.map((img, idx) => (
-            <motion.figure
-              className={styles.item}
-              key={img.src + idx}
-              tabIndex={0}
-              whileHover={{ scale: 1.03 }}
-              whileFocus={{ scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              {img.fallback ? (
-                <picture>
-                  <source srcSet={img.src} type="image/webp" />
-                  <img
-                    src={img.fallback}
-                    alt={img.alt}
-                    loading="lazy"
-                    className={styles.image}
-                  />
-                </picture>
-              ) : (
+          {col.map((img, idx) => {
+            const responsiveSizes =
+              img.sizes ?? computeResponsiveSizes(columns, gutter);
+            const primarySrcSet = img.srcSet ?? `${img.src} 1x`;
+            const fallbackSrcSet = img.fallbackSrcSet
+              ? img.fallbackSrcSet
+              : img.fallback
+                ? `${img.fallback} 1x`
+                : undefined;
+            const imageNode = img.fallback ? (
+              <picture>
+                <source
+                  srcSet={primarySrcSet}
+                  sizes={responsiveSizes}
+                  type="image/webp"
+                />
                 <img
-                  src={img.src}
+                  src={img.fallback}
+                  srcSet={fallbackSrcSet}
+                  sizes={responsiveSizes}
                   alt={img.alt}
                   loading="lazy"
+                  decoding="async"
                   className={styles.image}
                 />
-              )}
-              {img.caption && (
-                <figcaption className={styles.caption}>
-                  {img.caption}
-                </figcaption>
-              )}
-            </motion.figure>
-          ))}
+              </picture>
+            ) : (
+              <img
+                src={img.src}
+                srcSet={primarySrcSet}
+                sizes={responsiveSizes}
+                alt={img.alt}
+                loading="lazy"
+                decoding="async"
+                className={styles.image}
+              />
+            );
+            return (
+              <motion.figure
+                className={styles.item}
+                key={img.src + idx}
+                tabIndex={0}
+                whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                {imageNode}
+                {img.caption && (
+                  <figcaption className={styles.caption}>
+                    {img.caption}
+                  </figcaption>
+                )}
+              </motion.figure>
+            );
+          })}
         </div>
       ))}
     </div>

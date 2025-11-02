@@ -14,7 +14,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 200px;
+  border: 2px solid transparent;
+  box-sizing: border-box;
 }
 
 .s {
@@ -34,39 +35,74 @@
 .primary {
   background: var(--color-primary);
   color: var(--color-white);
-  border: none;
+  border: 2px solid transparent;
 }
 
 .secondary {
   background: none;
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
-  box-sizing: border-box;
+}
+
+/* Secondary badges with states should maintain no background */
+.secondary.success {
+  background: none;
+  color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.secondary.info {
+  background: none;
+  color: var(--color-info);
+  border-color: var(--color-info);
+}
+
+.secondary.error {
+  background: none;
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.secondary.warning {
+  background: none;
+  color: var(--color-warning-contrast, #8d5a00);
+  border-color: var(--color-warning-contrast, #8d5a00);
+}
+
+.secondary.neutral {
+  background: none;
+  color: var(--color-neutral-text, #1a1d26);
+  border-color: var(--color-neutral-text, #1a1d26);
 }
 
 .success {
   background: var(--color-success);
   color: var(--color-white);
+  border: 2px solid transparent;
 }
 
 .info {
   background: var(--color-info);
   color: var(--color-white);
+  border: 2px solid transparent;
 }
 
 .error {
   background: var(--color-error);
   color: var(--color-white);
+  border: 2px solid transparent;
 }
 
 .warning {
   background: var(--color-warning-contrast, #8d5a00);
   color: var(--color-warning-text, #fff);
+  border: 2px solid transparent;
 }
 
 .neutral {
   background: var(--color-neutral-bg, #e2e8f0);
   color: var(--color-neutral-text, #1a1d26);
+  border: 2px solid transparent;
 }
 
 .closeButton {
@@ -83,9 +119,12 @@
 }
 
 .icon {
-  display: inline-block;
-  margin-right: 0.4em;
-  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline-end: 0.4em;
+  line-height: 0;
+  flex-shrink: 0;
 }
 
 .removable.s {
