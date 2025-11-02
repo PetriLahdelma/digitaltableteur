@@ -156,11 +156,26 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Chat request failed", error);
+      const errorMessage = (() => {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return "No worries, I stopped that request. What else can I help with?";
+        }
+        if (error instanceof TypeError) {
+          return "Looks like we lost the connection. Check your network and try again.";
+        }
+        if (error instanceof Error && /429/.test(error.message)) {
+          return "We just hit a request limit. Give it a moment and we’ll be back.";
+        }
+        if (error instanceof Error && /5\d{2}/.test(error.message)) {
+          return "Donny’s brain is taking a quick nap (server hiccup). Let’s retry soon.";
+        }
+        return "I couldn’t reach our studio brain right now. Please retry in a moment.";
+      })();
+
       const fallback: Message = {
         id: crypto.randomUUID(),
         role: "assistant",
-        content:
-          "I couldn’t reach our studio brain right now. Please retry in a moment.",
+        content: errorMessage,
       };
       setMessages((prev) =>
         prev.map((message) => (message.pending ? fallback : message)),
