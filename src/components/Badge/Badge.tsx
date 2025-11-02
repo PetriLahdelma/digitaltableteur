@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import styles from "./Badge.module.css";
-import * as FaIcons from "react-icons/fa";
 import Button from "@dt/Button";
 import { IoMdClose } from "react-icons/io";
 import { useTranslation } from "react-i18next";
+import {
+  getSemanticIcon,
+  type SemanticStatus,
+} from "../../utils/semanticIcons";
+import * as FaIcons from "react-icons/fa";
 
 // Dynamically create options and mapping for all icons
 const iconOptions = {
@@ -13,10 +17,21 @@ const iconOptions = {
   ),
 };
 
+type BadgeState = "success" | "info" | "error" | "warning" | "neutral";
+
+const STATE_TO_STATUS: Partial<
+  Record<Exclude<BadgeState, "neutral">, SemanticStatus>
+> = {
+  success: "success",
+  info: "info",
+  error: "error",
+  warning: "warning",
+};
+
 interface BadgeProps {
   children: React.ReactNode;
   design?: "primary" | "secondary";
-  state?: "success" | "info" | "error" | "warning" | "neutral";
+  state?: BadgeState;
   className?: string;
   removable?: boolean;
   onRemove?: () => void;
@@ -45,6 +60,10 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   ) => {
     const { t } = useTranslation();
     const [visible, setVisible] = useState(true);
+    const semanticStatus =
+      state && state !== "neutral" ? STATE_TO_STATUS[state] : undefined;
+    const resolvedIcon =
+      icon ?? (semanticStatus ? getSemanticIcon(semanticStatus) : null);
     if (!visible) return null;
     return (
       <span
@@ -62,9 +81,9 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
           .filter(Boolean)
           .join(" ")}
       >
-        {icon && (
+        {resolvedIcon && (
           <span className={styles.icon} aria-hidden={true}>
-            {icon}
+            {resolvedIcon}
           </span>
         )}
         <span className="badge__content">
