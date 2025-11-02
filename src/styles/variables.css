@@ -1,8 +1,6 @@
 :root {
-  ::selection {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
+  --selection-background: var(--color-primary);
+  --selection-color: var(--color-white);
 
   /* Typography tokens */
   --font-title: "TiemposHeadline-Regular", serif;
@@ -139,15 +137,17 @@
   --space-layout-96: 6rem; /* 96px */
 }
 
+::selection {
+  background-color: var(--selection-background);
+  color: var(--selection-color);
+}
+
 /* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
 
 .themeDark,
 .themeDark :root {
-  ::selection {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
-
+  --selection-background: var(--color-primary);
+  --selection-color: var(--color-white);
   --main-body-background-color: #181a1b;
   --color-title: #6fa8ff;
   --color-text: #e0e0e0;
@@ -210,11 +210,6 @@
 
 .themeHCB,
 .themeHCB :root {
-  ::selection {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
-
   --main-body-background-color: #000;
   --color-title: #fff;
   --color-text: #fff;
@@ -268,15 +263,12 @@
   --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
   --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+  --selection-background: #fff;
+  --selection-color: #000;
 }
 
 .themeHCW,
 .themeHCW :root {
-  ::selection {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-  }
-
   --main-body-background-color: #fff;
   --color-title: #000;
   --color-text: #000;
@@ -330,6 +322,8 @@
   --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
   --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+  --selection-background: #000;
+  --selection-color: #fff;
 }
 
 /* Hyphenation rules for headings - supports multiple languages */
