@@ -50,7 +50,7 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
         disabled={isSending || !value.trim()}
         icon={<IoSend />}
         variant="primary"
-        size="s"
+        size="m"
       />
     </div>
   </form>
