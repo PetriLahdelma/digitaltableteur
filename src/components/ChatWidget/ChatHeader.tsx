@@ -1,5 +1,6 @@
 import React from "react";
-import { IoChevronDown, IoRefresh } from "react-icons/io5";
+import { FaChevronDown } from "react-icons/fa";
+import { IoRefresh } from "react-icons/io5";
 import Button from "@dt/Button";
 import styles from "./ChatWidget.module.css";
 
@@ -42,7 +43,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         aria-label="Minimize chat"
         variant="tertiary"
         size="s"
-        icon={<IoChevronDown />}
+        icon={<FaChevronDown />}
       />
     </div>
   </header>

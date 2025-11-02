@@ -31,6 +31,39 @@ const defaultGreeting: Message = {
     "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, services, or anything you see on the site.",
 };
 
+const generateId = () => {
+  if (
+    typeof globalThis !== "undefined" &&
+    globalThis.crypto &&
+    typeof globalThis.crypto.randomUUID === "function"
+  ) {
+    return globalThis.crypto.randomUUID();
+  }
+
+  if (
+    typeof globalThis !== "undefined" &&
+    globalThis.crypto &&
+    typeof globalThis.crypto.getRandomValues === "function"
+  ) {
+    const bytes = new Uint8Array(16);
+    globalThis.crypto.getRandomValues(bytes);
+    bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+
+    const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0"));
+
+    return [
+      hex.slice(0, 4).join(""),
+      hex.slice(4, 6).join(""),
+      hex.slice(6, 8).join(""),
+      hex.slice(8, 10).join(""),
+      hex.slice(10, 16).join(""),
+    ].join("-");
+  }
+
+  return `id-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+};
+
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   title = "Chat with Donny",
   description = "Brand-specific answers, no fluff.",
@@ -153,7 +186,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
 
     const userMessage: Message = {
-      id: crypto.randomUUID(),
+      id: generateId(),
       role: "user",
       content: trimmed,
     };
@@ -192,7 +225,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
       const data = await response.json();
       const assistantReply: Message = {
-        id: crypto.randomUUID(),
+        id: generateId(),
         role: "assistant",
         content:
           typeof data?.reply === "string"
@@ -223,7 +256,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       })();
 
       const fallback: Message = {
-        id: crypto.randomUUID(),
+        id: generateId(),
         role: "assistant",
         content: errorMessage,
       };
