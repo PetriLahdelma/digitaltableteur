@@ -4,9 +4,12 @@
       var theme = localStorage.getItem("storybook-theme") || "light";
       var html = document.documentElement;
       html.classList.toggle("themeDark", theme === "dark");
+      html.classList.toggle("themeHCB", theme === "hcb");
       var style = document.createElement("style");
-      style.innerHTML =
-        "body{background:" + (theme === "dark" ? "#23272a" : "#fff") + "}";
+      var background = "#fff";
+      if (theme === "dark") background = "#23272a";
+      if (theme === "hcb") background = "#000";
+      style.innerHTML = "body{background:" + background + "}";
       document.head.appendChild(style);
     } catch (e) {}
   })();

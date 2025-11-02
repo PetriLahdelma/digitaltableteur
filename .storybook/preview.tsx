@@ -9,15 +9,21 @@ import fi from "../src/locales/fi/translation.json";
 import sv from "../src/locales/sv/translation.json";
 
 const THEME_KEY = "storybook-theme";
+const STORYBOOK_THEMES = ["light", "dark", "hcb"] as const;
+type StorybookTheme = (typeof STORYBOOK_THEMES)[number];
 
-const getStoredTheme = (): "light" | "dark" => {
+const isStorybookTheme = (value: unknown): value is StorybookTheme =>
+  typeof value === "string" &&
+  STORYBOOK_THEMES.includes(value as StorybookTheme);
+
+const getStoredTheme = (): StorybookTheme => {
   if (typeof window === "undefined") {
     return "light";
   }
 
   try {
     const stored = window.localStorage.getItem(THEME_KEY);
-    return stored === "dark" ? "dark" : "light";
+    return isStorybookTheme(stored) ? stored : "light";
   } catch {
     return "light";
   }
@@ -48,6 +54,7 @@ export const globalTypes = {
       items: [
         { value: "light", title: "Light" },
         { value: "dark", title: "Dark" },
+        { value: "hcb", title: "HCB" },
       ],
       showName: true,
       dynamicTitle: true,
@@ -69,27 +76,32 @@ export const globalTypes = {
   },
 };
 
-const applyThemeToDom = (theme: string) => {
+const applyThemeToDom = (theme: StorybookTheme) => {
   if (typeof window === "undefined") {
     return;
   }
 
   const isDark = theme === "dark";
+  const isHcb = theme === "hcb";
   const root = document.documentElement;
   const body = document.body;
 
   root.classList.toggle("themeDark", isDark);
-  root.dataset.theme = isDark ? "dark" : "light";
-  root.style.colorScheme = isDark ? "dark" : "light";
+  root.classList.toggle("themeHCB", isHcb);
+  root.dataset.theme = theme;
+  root.style.colorScheme = theme === "light" ? "light" : "dark";
 
   if (body) {
     body.classList.toggle("themeDark", isDark);
-    body.dataset.theme = isDark ? "dark" : "light";
+    body.classList.toggle("themeHCB", isHcb);
+    body.dataset.theme = theme;
+    body.style.background =
+      theme === "hcb" ? "#000" : theme === "dark" ? "#23272a" : "#fff";
   }
 };
 
 const withI18next = (Story, context) => {
-  const theme = context.globals.theme || getStoredTheme();
+  const theme: StorybookTheme = context.globals.theme || getStoredTheme();
   const locale = context.globals.locale || "en";
   useLayoutEffect(() => {
     applyThemeToDom(theme);
@@ -98,9 +110,6 @@ const withI18next = (Story, context) => {
       window.localStorage.setItem("theme", theme);
     } catch {
       // ignore storage errors (private mode, etc.)
-    }
-    if (typeof window !== "undefined") {
-      document.body.style.background = theme === "dark" ? "#23272a" : "#fff";
     }
   }, [theme]);
   useEffect(() => {

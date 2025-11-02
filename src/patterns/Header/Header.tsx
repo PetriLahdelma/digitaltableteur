@@ -4,9 +4,10 @@ import styles from "./Header.module.css";
 import "../../styles/variables.css";
 import "../../styles/fonts.css";
 import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
-import { useTheme } from "@dt/ThemeProvider";
+import { useTheme, type Theme } from "@dt/ThemeProvider";
 import { IoMoon } from "react-icons/io5";
 import { IoSunnySharp } from "react-icons/io5";
+import { MdOutlineContrast } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
 // Helper to get/set cookie
@@ -21,8 +22,22 @@ function getCookie(name: string) {
   }, "");
 }
 
+const THEME_SEQUENCE: Theme[] = ["light", "dark", "hcb"];
+const isTheme = (value: string): value is Theme =>
+  (THEME_SEQUENCE as readonly string[]).includes(value as Theme);
+const getNextTheme = (value: Theme): Theme => {
+  const index = THEME_SEQUENCE.indexOf(value);
+  return THEME_SEQUENCE[(index + 1) % THEME_SEQUENCE.length];
+};
+
+const themeIcons: Record<Theme, React.ReactNode> = {
+  light: <IoSunnySharp />,
+  dark: <IoMoon />,
+  hcb: <MdOutlineContrast />,
+};
+
 const Header = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const leftRef = React.useRef<HTMLDivElement | null>(null);
@@ -43,11 +58,10 @@ const Header = () => {
   // On mount, check for theme cookie and set theme if needed
   React.useEffect(() => {
     const cookieTheme = getCookie("dt_theme");
-    if (cookieTheme && theme !== cookieTheme) {
-      // Only toggle if the cookie value differs from the current theme
-      toggleTheme();
+    if (cookieTheme && isTheme(cookieTheme) && theme !== cookieTheme) {
+      setTheme(cookieTheme);
     }
-  }, [theme]);
+  }, [setTheme, theme]);
 
   React.useLayoutEffect(() => {
     let rafId: number | null = null;
@@ -105,9 +119,9 @@ const Header = () => {
     localStorage.setItem("i18nextLng", code);
   };
   const changeTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setCookie("dt_theme", newTheme);
-    toggleTheme();
+    const nextTheme = getNextTheme(theme);
+    setCookie("dt_theme", nextTheme);
+    setTheme(nextTheme);
   };
   return (
     <header className={styles.header}>
@@ -212,7 +226,7 @@ const Header = () => {
             className={styles.themeToggle}
             aria-label={t("toggleDarkMode")}
           >
-            {theme === "dark" ? <IoMoon /> : <IoSunnySharp />}
+            {themeIcons[theme]}
           </button>
         </div>
       </div>
