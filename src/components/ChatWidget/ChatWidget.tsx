@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import styles from "./ChatWidget.module.css";
 import {
   IoChatbubbleEllipsesOutline,
@@ -46,6 +52,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const [messages, setMessages] = useState<Message[]>([defaultGreeting]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [history, setHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState<number | null>(null);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -97,8 +105,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     return () => window.removeEventListener("keydown", handleEscape);
   }, []);
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const submitMessage = useCallback(async () => {
     const trimmed = input.trim();
     if (!trimmed || isSending) {
       return;
@@ -119,6 +126,13 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     setMessages((prev) => [...prev, userMessage, pendingMessage]);
     setInput("");
     setIsSending(true);
+    setHistory((prev) => {
+      if (prev.length && prev[prev.length - 1] === trimmed) {
+        return prev;
+      }
+      return [...prev, trimmed];
+    });
+    setHistoryIndex(null);
 
     const controller = new AbortController();
     abortControllerRef.current = controller;
@@ -186,7 +200,95 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       abortControllerRef.current = null;
       setIsSending(false);
     }
+  }, [apiEndpoint, input, isSending, messages]);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    await submitMessage();
   };
+
+  const handleInputChange = useCallback((value: string) => {
+    setInput(value);
+    setHistoryIndex(null);
+  }, []);
+
+  const handleComposerKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.isComposing || event.nativeEvent?.isComposing) {
+        return;
+      }
+
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        void submitMessage();
+        return;
+      }
+
+      if (event.key === "ArrowUp" && !event.shiftKey && history.length) {
+        const target = event.currentTarget;
+        if (target.selectionStart !== 0 || target.selectionEnd !== 0) {
+          return;
+        }
+        event.preventDefault();
+        setHistoryIndex((prevIndex) => {
+          const nextIndex =
+            prevIndex === null
+              ? history.length - 1
+              : Math.max(prevIndex - 1, 0);
+          const nextValue = history[nextIndex] ?? "";
+          setInput(nextValue);
+          const applySelection = () =>
+            target.setSelectionRange(nextValue.length, nextValue.length);
+          if (typeof window !== "undefined") {
+            window.requestAnimationFrame(applySelection);
+          } else {
+            applySelection();
+          }
+          return nextIndex;
+        });
+        return;
+      }
+
+      if (
+        event.key === "ArrowDown" &&
+        !event.shiftKey &&
+        history.length &&
+        historyIndex !== null
+      ) {
+        const target = event.currentTarget;
+        if (
+          target.selectionStart !== target.value.length ||
+          target.selectionEnd !== target.value.length
+        ) {
+          return;
+        }
+        event.preventDefault();
+        const nextIndex = historyIndex + 1;
+        if (nextIndex >= history.length) {
+          setHistoryIndex(null);
+          setInput("");
+          const applySelection = () => target.setSelectionRange(0, 0);
+          if (typeof window !== "undefined") {
+            window.requestAnimationFrame(applySelection);
+          } else {
+            applySelection();
+          }
+        } else {
+          const nextValue = history[nextIndex];
+          setHistoryIndex(nextIndex);
+          setInput(nextValue);
+          const applySelection = () =>
+            target.setSelectionRange(nextValue.length, nextValue.length);
+          if (typeof window !== "undefined") {
+            window.requestAnimationFrame(applySelection);
+          } else {
+            applySelection();
+          }
+        }
+      }
+    },
+    [history, historyIndex, submitMessage],
+  );
 
   const handleReset = () => {
     abortControllerRef.current?.abort();
@@ -194,6 +296,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     setMessages([defaultGreeting]);
     setInput("");
     setIsSending(false);
+    setHistory([]);
+    setHistoryIndex(null);
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {
@@ -261,12 +365,13 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
                 className={styles.input}
                 placeholder="Ask about a project, service, or approach…"
                 value={input}
-                onValueChange={setInput}
+                onValueChange={handleInputChange}
                 minRows={1}
                 maxRows={6}
                 maxLength={1_000}
                 disabled={isSending}
                 aria-live="polite"
+                onKeyDown={handleComposerKeyDown}
               />
               <Button
                 type="submit"
