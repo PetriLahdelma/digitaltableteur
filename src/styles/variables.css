@@ -236,13 +236,70 @@
   --color-disabled-bg-light: #7b7b7b;
   --color-disabled-placeholder: #555;
   --color-gray-medium: #888;
-  --color-light-bg: #2b2b2b;
+  --color-light-bg: #101010;
   --accent-pink: #fff;
   --accent-purple: #fff;
   --accent-teal: #fff;
   --accent-violet: #fff;
   --accent-cyan: #fff;
   --accent-yellow: #fff;
+  --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
+  --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
+  --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
+  --storybook-purple: #a884d7; /* Storybook Helper Color: Purple (darker for dark mode) */
+  --storybook-violet: #bc9de0; /* Storybook Helper Color: Violet (darker for dark mode) */
+  --storybook-bg: #23272a; /* Storybook Helper Color: Background (dark) */
+  --storybook-dark: #e0e0e0; /* Storybook Helper Color: Light Text for dark mode */
+  --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
+  --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
+  --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+}
+
+.themeHCW,
+.themeHCW :root {
+  --main-body-background-color: #fff;
+  --color-title: #000;
+  --color-text: #000;
+  --primary-text-color: #000;
+  --main-body-copy-color: #000;
+  --secondary-text-color: #000;
+  --inverted-text-color: #fff;
+  --link-color: #000;
+  --color-primary: #000;
+  --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
+  --color-success: #000;
+  --color-info: #000;
+  --color-error: #000;
+  --color-warning: #000;
+  --color-warning-contrast: #000;
+  --color-warning-text: #fff;
+  --color-neutral-bg: #fff;
+  --color-neutral-text: #000;
+  --color-error-bg: #fff;
+  --color-error-text: #000;
+  --color-react: #000;
+  --color-header-bg: #fff;
+  --home-gradient: linear-gradient(120deg, #000 0%, #868686 50%, #fff 100%);
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dark: #000;
+  --color-gray-dark: #797979;
+  --color-gray: #aaa;
+  --color-muted: #888;
+  --color-muted-light: #555;
+  --color-border: #333;
+  --color-border-light: #444;
+  --color-disabled-bg: #313131;
+  --color-disabled-bg-light: #7b7b7b;
+  --color-disabled-placeholder: #555;
+  --color-gray-medium: #888;
+  --color-light-bg: #f1f1f1;
+  --accent-pink: #000;
+  --accent-purple: #000;
+  --accent-teal: #000;
+  --accent-violet: #000;
+  --accent-cyan: #000;
+  --accent-yellow: #000;
   --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
   --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
   --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */

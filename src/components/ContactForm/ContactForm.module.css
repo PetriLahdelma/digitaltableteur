@@ -16,6 +16,14 @@
   width: 100%;
 }
 
+.honeypot {
+  position: absolute;
+  left: -100vw;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .privacyPolicy {
   font-family: var(--primary-body-font);
   font-size: 0.875rem;

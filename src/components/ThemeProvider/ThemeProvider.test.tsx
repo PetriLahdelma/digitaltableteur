@@ -33,6 +33,9 @@ const TestComponent = () => {
       <button data-testid="set-hcb" onClick={() => setTheme("hcb")}>
         Set HCB
       </button>
+      <button data-testid="set-hcw" onClick={() => setTheme("hcw")}>
+        Set HCW
+      </button>
     </div>
   );
 };
@@ -94,6 +97,12 @@ describe("ThemeProvider", () => {
       toggleButton.click();
     });
 
+    expect(themeDisplay).toHaveTextContent("hcw");
+
+    act(() => {
+      toggleButton.click();
+    });
+
     expect(themeDisplay).toHaveTextContent("light");
   });
 
@@ -117,7 +126,7 @@ describe("ThemeProvider", () => {
     expect(document.body).toHaveClass("themeDark");
   });
 
-  it("applies high contrast theme class", () => {
+  it("applies high contrast black theme class", () => {
     render(
       <ThemeProvider forcedTheme="hcb">
         <TestComponent />
@@ -125,6 +134,16 @@ describe("ThemeProvider", () => {
     );
 
     expect(document.body).toHaveClass("themeHCB");
+  });
+
+  it("applies high contrast white theme class", () => {
+    render(
+      <ThemeProvider forcedTheme="hcw">
+        <TestComponent />
+      </ThemeProvider>,
+    );
+
+    expect(document.body).toHaveClass("themeHCW");
   });
 
   it("saves theme to localStorage on change", () => {
@@ -156,5 +175,13 @@ describe("ThemeProvider", () => {
     });
 
     expect(screen.getByTestId("current-theme")).toHaveTextContent("hcb");
+
+    const setHcwButton = screen.getByTestId("set-hcw");
+
+    act(() => {
+      setHcwButton.click();
+    });
+
+    expect(screen.getByTestId("current-theme")).toHaveTextContent("hcw");
   });
 });

@@ -7,7 +7,7 @@ import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp
 import { useTheme, type Theme } from "@dt/ThemeProvider";
 import { IoMoon } from "react-icons/io5";
 import { IoSunnySharp } from "react-icons/io5";
-import { MdOutlineContrast } from "react-icons/md";
+import { MdOutlineContrast, MdOutlineInvertColors } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
 // Helper to get/set cookie
@@ -22,7 +22,7 @@ function getCookie(name: string) {
   }, "");
 }
 
-const THEME_SEQUENCE: Theme[] = ["light", "dark", "hcb"];
+const THEME_SEQUENCE: Theme[] = ["light", "dark", "hcb", "hcw"];
 const isTheme = (value: string): value is Theme =>
   (THEME_SEQUENCE as readonly string[]).includes(value as Theme);
 const getNextTheme = (value: Theme): Theme => {
@@ -34,6 +34,7 @@ const themeIcons: Record<Theme, React.ReactNode> = {
   light: <IoSunnySharp />,
   dark: <IoMoon />,
   hcb: <MdOutlineContrast />,
+  hcw: <MdOutlineContrast />,
 };
 
 const Header = () => {
