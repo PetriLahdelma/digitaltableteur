@@ -1,0 +1,124 @@
+import React, { useEffect, useRef, useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import ChatWidget from "./ChatWidget";
+import { ChatTextArea } from "../Inputs/TextArea";
+
+const FAKE_ENDPOINT = "/storybook-fake-chat";
+
+const useMockChat = () => {
+  const callCount = useRef(0);
+  const [isMounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const originalFetch = globalThis.fetch;
+
+    const handler: typeof globalThis.fetch = async (input, init) => {
+      const url = typeof input === "string" ? input : input.toString();
+      if (!url.includes(FAKE_ENDPOINT)) {
+        return originalFetch(input, init);
+      }
+
+      callCount.current += 1;
+      const replyBank = [
+        "Great choice! I’m Donny’s demo brain. Ask me about projects, services, or design nerd-outs.",
+        "Our real assistant riffs on portfolio data, but this preview keeps it short and sweet.",
+        "Curious about tech stack, strategy, or next steps? I’ve got quick answers ready.",
+      ];
+      const reply =
+        replyBank[(callCount.current - 1) % replyBank.length] ?? replyBank[0];
+
+      await new Promise((resolve) => setTimeout(resolve, 450));
+
+      return new Response(JSON.stringify({ reply }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    };
+
+    globalThis.fetch = handler;
+    try {
+      localStorage.removeItem("dt-donny-chat");
+    } catch {
+      /* ignore */
+    }
+
+    return () => {
+      globalThis.fetch = originalFetch;
+      setMounted(false);
+    };
+  }, []);
+
+  return isMounted;
+};
+
+const ChatWidgetStoryDemo = () => {
+  const ready = useMockChat();
+  if (!ready) {
+    return null;
+  }
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        padding: "2rem",
+        background: "var(--main-body-background-color, #f5f5f5)",
+        color: "var(--color-text, #111)",
+      }}
+    >
+      <div style={{ maxWidth: "32rem", marginBottom: "6rem" }}>
+        <h2>Donny Preview</h2>
+        <p style={{ fontSize: "0.95rem", lineHeight: 1.6 }}>
+          Click the chat bubble in the bottom-right corner to open the demo. You
+          can type a prompt and Donny will answer with a prerecorded reply so
+          you can explore the flow without calling the real API.
+        </p>
+      </div>
+      <ChatWidget
+        endpoint={FAKE_ENDPOINT}
+        title="Meet Donny"
+        description="This Storybook preview simulates the chat flow."
+      />
+    </div>
+  );
+};
+
+const meta: Meta<typeof ChatWidget> = {
+  title: "AI/Chat/ChatWidget",
+  component: ChatWidget,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Collapsible assistant widget that anchors bottom-right and remembers the conversation.",
+      },
+    },
+  },
+};
+
+export default meta;
+
+type Story = StoryObj<typeof ChatWidget>;
+
+export const Playground: Story = {
+  render: () => <ChatWidgetStoryDemo />,
+};
+
+export const ChatTextAreaDemo = (): JSX.Element => {
+  const [value, setValue] = React.useState(
+    "Hello from Donny preview!\nAsk me anything about Digitaltableteur.",
+  );
+
+  return (
+    <div style={{ maxWidth: "32rem" }}>
+      <ChatTextArea
+        value={value}
+        onValueChange={setValue}
+        placeholder="Type your message…"
+        minRows={1}
+        maxRows={6}
+      />
+    </div>
+  );
+};

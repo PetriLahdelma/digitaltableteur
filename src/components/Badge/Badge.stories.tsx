@@ -4,6 +4,15 @@ import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 import * as FaIcons from "react-icons/fa";
 
+// Mapping of state to semantic icons
+const STATE_ICON_MAP = {
+  success: "FaCheckCircle",
+  info: "FaInfoCircle",
+  error: "FaExclamationCircle",
+  warning: "FaExclamationTriangle",
+  // neutral: no icon needed
+};
+
 export default {
   title: "Components/Badge",
   component: Badge,
@@ -35,7 +44,7 @@ export default {
     icon: {
       control: { type: "text" },
       description:
-        "Enter a react-icons/fa component name (e.g. FaBeer) to display in the badge",
+        "Enter a react-icons/fa component name (e.g. FaBeer) to display in the badge. Auto-updates based on state when empty.",
     },
     size: {
       control: { type: "select" },
@@ -60,23 +69,29 @@ type BadgeProps = React.ComponentProps<typeof Badge>;
 // Template as a component to avoid hook issues
 const BadgeStoryTemplate: React.FC<BadgeProps> = (args) => {
   const { t } = useTranslation();
-  const { icon, children, ...rest } = args;
+  const { icon, children, state, ...rest } = args;
   let content = children;
   if (typeof children === "string" && children.startsWith("badge")) {
     content = t(children);
   }
-  const iconName = typeof icon === "string" ? icon.trim() : null;
+
+  // Auto-select icon based on state if no icon is explicitly provided
+  const iconName =
+    typeof icon === "string" && icon.trim()
+      ? icon.trim()
+      : state && STATE_ICON_MAP[state as keyof typeof STATE_ICON_MAP];
+
   const iconLibrary = FaIcons as Record<string, React.ComponentType>;
   const IconComponent = iconName ? iconLibrary[iconName] : undefined;
   const resolvedIcon =
-    typeof icon === "string"
+    typeof icon === "string" || !icon
       ? IconComponent
         ? React.createElement(IconComponent)
         : null
       : icon;
 
   return (
-    <Badge {...rest} icon={resolvedIcon}>
+    <Badge {...rest} state={state} icon={resolvedIcon}>
       {content}
     </Badge>
   );
@@ -93,10 +108,10 @@ Playground.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   await userEvent.tab();
 };
 
-export const AllVariants: StoryFn<BadgeProps> = (args) => {
+export const AllVariants: StoryFn<BadgeProps> = (_args: any) => {
   const { t } = useTranslation();
   return (
-    <div style={{ display: "flex", gap: "1rem" }}>
+    <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
       <Badge design="primary">{t("badgePrimary")}</Badge>
       <Badge design="secondary">{t("badgeSecondary")}</Badge>
       <Badge design="primary" state="success">
@@ -115,6 +130,40 @@ export const AllVariants: StoryFn<BadgeProps> = (args) => {
       <Badge design="primary" state="neutral">
         {t("badgeNeutral")}
       </Badge>
+    </div>
+  );
+};
+
+export const SecondaryVariants: StoryFn<BadgeProps> = (_args: any) => {
+  const { t } = useTranslation();
+  return (
+    <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
+      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+        <Badge design="secondary">{t("badgeSecondary")}</Badge>
+        <Badge design="secondary" state="success">
+          {t("badgeSuccess")}
+        </Badge>
+        <Badge design="secondary" state="error">
+          {t("badgeError")}
+        </Badge>
+        <Badge design="secondary" state="warning">
+          {t("badgeWarning")}
+        </Badge>
+        <Badge design="secondary" state="info">
+          {t("badgeInfo")}
+        </Badge>
+        <Badge design="secondary" state="neutral">
+          {t("badgeNeutral")}
+        </Badge>
+      </div>
+      <div
+        style={{
+          fontSize: "0.9rem",
+          color: "var(--secondary-text-color, #666)",
+        }}
+      >
+        Secondary badges have no background, only border and text color changes
+      </div>
     </div>
   );
 };
@@ -150,10 +199,43 @@ WithIcon.args = {
   design: "primary",
   state: "info",
   children: "badgeInfo",
-  icon: "FaInfoCircle",
+  icon: "", // Leave empty to use automatic icon based on state
 };
 
-export const AllSizes: StoryFn<BadgeProps> = (args) => {
+export const AutoSemanticIcons: StoryFn<BadgeProps> = (_args: any) => {
+  const { t } = useTranslation();
+  return (
+    <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <BadgeStoryTemplate design="primary" state="success">
+          Success
+        </BadgeStoryTemplate>
+        <BadgeStoryTemplate design="primary" state="info">
+          Info
+        </BadgeStoryTemplate>
+        <BadgeStoryTemplate design="primary" state="error">
+          Error
+        </BadgeStoryTemplate>
+        <BadgeStoryTemplate design="primary" state="warning">
+          Warning
+        </BadgeStoryTemplate>
+        <BadgeStoryTemplate design="primary" state="neutral">
+          Neutral
+        </BadgeStoryTemplate>
+      </div>
+      <div
+        style={{
+          fontSize: "0.9rem",
+          color: "var(--secondary-text-color, #666)",
+        }}
+      >
+        Icons automatically selected based on state when icon prop is empty
+      </div>
+    </div>
+  );
+};
+
+export const AllSizes: StoryFn<BadgeProps> = (_args: any) => {
   const { t } = useTranslation();
   return (
     <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
