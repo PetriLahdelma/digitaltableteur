@@ -1,13 +1,22 @@
 :root {
+  --selection-background: var(--color-primary);
+  --selection-color: var(--color-white);
+
   /* Typography tokens */
   --font-title: "TiemposHeadline-Regular", serif;
   --font-text: "Moderat", sans-serif;
-  --font-size-title: 2.5rem;
-  --font-size-text: 1.125rem;
-  --font-size-title-s: 1.5rem;
-  --font-size-title-m: 2rem;
-  --font-size-title-l: 3rem;
-  --font-size-title-xl: 5rem;
+  --font-size-text: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+  --font-size-text-s: clamp(0.875rem, 0.4vw + 0.8rem, 1.05rem);
+  --font-size-text-m: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+  --font-size-text-l: clamp(1.125rem, 0.8vw + 1rem, 1.5rem);
+  --font-size-title: clamp(2.25rem, 3.5vw + 1.5rem, 3.75rem);
+  --font-size-title-s: clamp(1.5rem, 2vw + 1.1rem, 2.25rem);
+  --font-size-title-m: clamp(2rem, 2.8vw + 1.3rem, 3rem);
+  --font-size-title-l: clamp(2.75rem, 4vw + 1.75rem, 4.25rem);
+  --font-size-title-xl: clamp(3.5rem, 6vw + 2.5rem, 5.5rem);
+  --font-size-button-s: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);
+  --font-size-button-m: clamp(1rem, 0.35vw + 0.9rem, 1.125rem);
+  --font-size-button-l: clamp(1.125rem, 0.45vw + 1rem, 1.25rem);
   --font-weight-title: 700;
   --font-weight-text: 400;
   --color-title: var(--primary-text-color, #00f);
@@ -128,10 +137,17 @@
   --space-layout-96: 6rem; /* 96px */
 }
 
+::selection {
+  background-color: var(--selection-background);
+  color: var(--selection-color);
+}
+
 /* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
 
 .themeDark,
 .themeDark :root {
+  --selection-background: var(--color-primary);
+  --selection-color: var(--color-white);
   --main-body-background-color: #181a1b;
   --color-title: #6fa8ff;
   --color-text: #e0e0e0;
@@ -190,6 +206,124 @@
   --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
   --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+}
+
+.themeHCB,
+.themeHCB :root {
+  --main-body-background-color: #000;
+  --color-title: #fff;
+  --color-text: #fff;
+  --primary-text-color: #fff;
+  --main-body-copy-color: #fff;
+  --secondary-text-color: #fff;
+  --inverted-text-color: #000;
+  --link-color: #fff;
+  --color-primary: #fff;
+  --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
+  --color-success: #fff;
+  --color-info: #fff;
+  --color-error: #fff;
+  --color-warning: #fff;
+  --color-warning-contrast: #fff;
+  --color-warning-text: #000;
+  --color-neutral-bg: #000;
+  --color-neutral-text: #fff;
+  --color-error-bg: #000;
+  --color-error-text: #fff;
+  --color-react: #fff;
+  --color-header-bg: #000;
+  --home-gradient: linear-gradient(120deg, #000 0%, #868686 50%, #fff 100%);
+  --color-white: #000;
+  --color-black: #fff;
+  --color-dark: #fff;
+  --color-gray-dark: #1f1f1f;
+  --color-gray: #aaa;
+  --color-muted: #888;
+  --color-muted-light: #555;
+  --color-border: #333;
+  --color-border-light: #444;
+  --color-disabled-bg: #313131;
+  --color-disabled-bg-light: #7b7b7b;
+  --color-disabled-placeholder: #555;
+  --color-gray-medium: #888;
+  --color-light-bg: #101010;
+  --accent-pink: #fff;
+  --accent-purple: #fff;
+  --accent-teal: #fff;
+  --accent-violet: #fff;
+  --accent-cyan: #fff;
+  --accent-yellow: #fff;
+  --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
+  --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
+  --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
+  --storybook-purple: #a884d7; /* Storybook Helper Color: Purple (darker for dark mode) */
+  --storybook-violet: #bc9de0; /* Storybook Helper Color: Violet (darker for dark mode) */
+  --storybook-bg: #23272a; /* Storybook Helper Color: Background (dark) */
+  --storybook-dark: #e0e0e0; /* Storybook Helper Color: Light Text for dark mode */
+  --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
+  --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
+  --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+  --selection-background: #fff;
+  --selection-color: #000;
+}
+
+.themeHCW,
+.themeHCW :root {
+  --main-body-background-color: #fff;
+  --color-title: #000;
+  --color-text: #000;
+  --primary-text-color: #000;
+  --main-body-copy-color: #000;
+  --secondary-text-color: #000;
+  --inverted-text-color: #fff;
+  --link-color: #000;
+  --color-primary: #000;
+  --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
+  --color-success: #000;
+  --color-info: #000;
+  --color-error: #000;
+  --color-warning: #000;
+  --color-warning-contrast: #000;
+  --color-warning-text: #fff;
+  --color-neutral-bg: #fff;
+  --color-neutral-text: #000;
+  --color-error-bg: #fff;
+  --color-error-text: #000;
+  --color-react: #000;
+  --color-header-bg: #fff;
+  --home-gradient: linear-gradient(120deg, #000 0%, #868686 50%, #fff 100%);
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dark: #000;
+  --color-gray-dark: #e6e6e6;
+  --color-gray: #aaa;
+  --color-muted: #888;
+  --color-muted-light: #555;
+  --color-border: #333;
+  --color-border-light: #444;
+  --color-disabled-bg: #313131;
+  --color-disabled-bg-light: #7b7b7b;
+  --color-disabled-placeholder: #555;
+  --color-gray-medium: #888;
+  --color-light-bg: #f1f1f1;
+  --accent-pink: #000;
+  --accent-purple: #000;
+  --accent-teal: #000;
+  --accent-violet: #000;
+  --accent-cyan: #000;
+  --accent-yellow: #000;
+  --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
+  --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
+  --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
+  --storybook-purple: #a884d7; /* Storybook Helper Color: Purple (darker for dark mode) */
+  --storybook-violet: #bc9de0; /* Storybook Helper Color: Violet (darker for dark mode) */
+  --storybook-bg: #23272a; /* Storybook Helper Color: Background (dark) */
+  --storybook-dark: #e0e0e0; /* Storybook Helper Color: Light Text for dark mode */
+  --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
+  --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
+  --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+  --selection-background: #000;
+  --selection-color: #fff;
 }
 
 /* Hyphenation rules for headings - supports multiple languages */
