@@ -177,3 +177,7 @@
 .button.l.iconOnly .icon svg {
   font-size: 1.25rem;
 }
+
+.button.rounded {
+  border-radius: 9999px;
+}
