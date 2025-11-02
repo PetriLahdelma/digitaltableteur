@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { fn } from "@storybook/test";
 import ChatComposer from "./ChatComposer";
+
+const noop = () => {};
 
 const meta: Meta<typeof ChatComposer> = {
   title: "AI/Chat/ChatComposer",
@@ -10,7 +11,7 @@ const meta: Meta<typeof ChatComposer> = {
     inputId: "donny-input",
     placeholder: "Ask about a project, service, or approach…",
     isSending: false,
-    onSubmit: fn(),
+    onSubmit: noop,
     maxLength: 1_000,
   },
   parameters: {

@@ -1,7 +1,8 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { fn } from "@storybook/test";
 import ChatHeader from "./ChatHeader";
+
+const noop = () => {};
 
 const meta: Meta<typeof ChatHeader> = {
   title: "AI/Chat/ChatHeader",
@@ -9,8 +10,8 @@ const meta: Meta<typeof ChatHeader> = {
   args: {
     title: "Chat with Donny",
     description: "Brand-specific answers, no fluff.",
-    onReset: fn(),
-    onMinimize: fn(),
+    onReset: noop,
+    onMinimize: noop,
     isSending: false,
   },
 };

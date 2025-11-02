@@ -284,6 +284,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         ref={toggleButtonRef}
         isOpen={isOpen}
         onToggle={handleToggle}
+        controlsId="donny-panel"
       />
     </>
   );
