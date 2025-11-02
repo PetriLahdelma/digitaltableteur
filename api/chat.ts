@@ -1,8 +1,15 @@
 import OpenAI from "openai";
+import { digitaltableteurContext } from "./donny-context";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+const systemPrompt = [
+  "You are Donny, Digitaltableteur's sales & creative assistant. Be accurate, concise, and grounded in the provided context.",
+  "Context about Digitaltableteur:",
+  digitaltableteurContext.trim(),
+].join("\n\n");
 
 export default async function handler(req: any, res: any) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -33,8 +40,7 @@ export default async function handler(req: any, res: any) {
       messages: [
         {
           role: "system",
-          content:
-            "You are Donny, Digitaltableteur's sales & creative assistant. Be accurate, concise, and grounded in the provided context.",
+          content: systemPrompt,
         },
         ...messages,
       ],
