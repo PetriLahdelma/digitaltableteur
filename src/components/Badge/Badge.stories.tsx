@@ -1,16 +1,8 @@
 import React from "react";
 import Badge from "./Badge";
-import * as FaIcons from "react-icons/fa";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
-
-// Dynamically generate all icon options from react-icons/fa
-const iconOptions = {
-  None: null,
-  ...Object.fromEntries(
-    Object.entries(FaIcons).map(([name, Icon]) => [name, <Icon key={name} />]),
-  ),
-};
+import * as FaIcons from "react-icons/fa";
 
 export default {
   title: "Components/Badge",
@@ -41,10 +33,9 @@ export default {
       description: "Callback when badge is removed",
     },
     icon: {
-      control: { type: "select" },
-      options: Object.keys(iconOptions),
-      mapping: iconOptions,
-      description: "React icon to display in the badge",
+      control: { type: "text" },
+      description:
+        "Enter a react-icons/fa component name (e.g. FaBeer) to display in the badge",
     },
     size: {
       control: { type: "select" },
@@ -56,7 +47,7 @@ export default {
     design: "primary",
     state: undefined,
     children: "Badge",
-    icon: null,
+    icon: "",
     removable: false,
     square: false,
     size: "m",
@@ -69,11 +60,26 @@ type BadgeProps = React.ComponentProps<typeof Badge>;
 // Template as a component to avoid hook issues
 const BadgeStoryTemplate: React.FC<BadgeProps> = (args) => {
   const { t } = useTranslation();
-  let content = args.children;
-  if (typeof args.children === "string" && args.children.startsWith("badge")) {
-    content = t(args.children);
+  const { icon, children, ...rest } = args;
+  let content = children;
+  if (typeof children === "string" && children.startsWith("badge")) {
+    content = t(children);
   }
-  return <Badge {...args}>{content}</Badge>;
+  const iconName = typeof icon === "string" ? icon.trim() : null;
+  const iconLibrary = FaIcons as Record<string, React.ComponentType>;
+  const IconComponent = iconName ? iconLibrary[iconName] : undefined;
+  const resolvedIcon =
+    typeof icon === "string"
+      ? IconComponent
+        ? React.createElement(IconComponent)
+        : null
+      : icon;
+
+  return (
+    <Badge {...rest} icon={resolvedIcon}>
+      {content}
+    </Badge>
+  );
 };
 
 const Template: StoryFn<BadgeProps> = (args: BadgeProps) => (
@@ -137,6 +143,14 @@ Removable.args = {
 Removable.parameters = {
   // Prevent the play function from removing the badge before the user sees it
   play: undefined,
+};
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  design: "primary",
+  state: "info",
+  children: "badgeInfo",
+  icon: "FaInfoCircle",
 };
 
 export const AllSizes: StoryFn<BadgeProps> = (args) => {

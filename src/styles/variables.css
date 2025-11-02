@@ -2,12 +2,18 @@
   /* Typography tokens */
   --font-title: "TiemposHeadline-Regular", serif;
   --font-text: "Moderat", sans-serif;
-  --font-size-title: 2.5rem;
-  --font-size-text: 1.125rem;
-  --font-size-title-s: 1.5rem;
-  --font-size-title-m: 2rem;
-  --font-size-title-l: 3rem;
-  --font-size-title-xl: 5rem;
+  --font-size-text: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+  --font-size-text-s: clamp(0.875rem, 0.4vw + 0.8rem, 1.05rem);
+  --font-size-text-m: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+  --font-size-text-l: clamp(1.125rem, 0.8vw + 1rem, 1.5rem);
+  --font-size-title: clamp(2.25rem, 3.5vw + 1.5rem, 3.75rem);
+  --font-size-title-s: clamp(1.5rem, 2vw + 1.1rem, 2.25rem);
+  --font-size-title-m: clamp(2rem, 2.8vw + 1.3rem, 3rem);
+  --font-size-title-l: clamp(2.75rem, 4vw + 1.75rem, 4.25rem);
+  --font-size-title-xl: clamp(3.5rem, 6vw + 2.5rem, 5.5rem);
+  --font-size-button-s: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);
+  --font-size-button-m: clamp(1rem, 0.35vw + 0.9rem, 1.125rem);
+  --font-size-button-l: clamp(1.125rem, 0.45vw + 1rem, 1.25rem);
   --font-weight-title: 700;
   --font-weight-text: 400;
   --color-title: var(--primary-text-color, #00f);

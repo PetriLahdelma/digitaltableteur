@@ -7,6 +7,10 @@ type AvatarProps = {
   clickable?: boolean;
   destinationUrl?: string;
   size?: string;
+  srcSet?: string;
+  sizes?: string;
+  loading?: "lazy" | "eager";
+  decoding?: "auto" | "sync" | "async";
 };
 
 const Avatar: React.FC<AvatarProps> = ({
@@ -15,9 +19,17 @@ const Avatar: React.FC<AvatarProps> = ({
   clickable,
   destinationUrl,
   size,
+  srcSet,
+  sizes,
+  loading = "lazy",
+  decoding = "async",
 }) => {
   const resolvedImageUrl =
     typeof imageUrl === "string" ? imageUrl : imageUrl?.default;
+  const resolvedSrcSet =
+    srcSet ?? (resolvedImageUrl ? `${resolvedImageUrl} 1x` : undefined);
+  const defaultSizes = "(max-width: 600px) 56px, 40px";
+  const resolvedSizes = sizes ?? (size ? `${size}` : defaultSizes);
 
   const handleClick = () => {
     if (clickable && destinationUrl) {
@@ -25,16 +37,20 @@ const Avatar: React.FC<AvatarProps> = ({
     }
   };
 
-  const avatarStyle = size ? { width: size, height: size } : undefined;
+  const avatarStyle = size ? { inlineSize: size, blockSize: size } : undefined;
 
   if (resolvedImageUrl) {
     return (
       <img
         src={resolvedImageUrl}
+        srcSet={resolvedSrcSet}
+        sizes={resolvedSizes}
         alt={name || "Avatar"}
         className={styles.avatarImage}
         onClick={clickable ? handleClick : undefined}
         style={avatarStyle}
+        loading={loading}
+        decoding={decoding}
       />
     );
   }
