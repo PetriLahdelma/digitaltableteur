@@ -253,16 +253,18 @@
   align-items: center;
 }
 
-/* Scoped spacing adjustments for the embedded Button slots */
-.toggle :global([data-button-slot="icon"]) {
-  margin-inline-end: 0;
+/* Scoped spacing adjustments for embedded Button content.
+   Removing :global to satisfy stylelint; relying on internal Button markup class names.
+   Adjust if Button structure changes. */
+.toggle .icon {
+  margin-inline-end: 0.25rem; /* slightly tighter than default */
 }
 
-.toggle :global([data-button-slot="text"]) {
-  margin-inline-start: 0;
+.toggle .text {
+  margin-inline-start: 0; /* neutralize extra margin rule in Button */
 }
 
-.toggle :global([data-button-slot="icon"] svg) {
+.toggle .icon svg {
   width: 1em;
   height: 1em;
   display: block;
