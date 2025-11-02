@@ -27,6 +27,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "s" | "m" | "l";
   /** When true, replaces primary (blue) text/border color with white for supported variants */
   inverse?: boolean;
+  /** When true, applies rounded corners to the button */
+  rounded?: boolean;
 }
 
 type ButtonVariant = NonNullable<ButtonProps["variant"]>;
@@ -40,6 +42,7 @@ const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
 const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   disabled = false,
+  rounded = false,
   icon,
   endIcon,
   children,
@@ -76,6 +79,7 @@ const Button: React.FC<ButtonProps> = ({
         styles[size],
         !children && normalizedIcon ? styles["iconOnly"] : "",
         inverse ? styles.inverse : "",
+        rounded ? styles.rounded : "",
         className,
       ]
         .filter(Boolean)
