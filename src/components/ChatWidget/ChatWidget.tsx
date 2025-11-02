@@ -4,7 +4,9 @@ import {
   IoChatbubbleEllipsesOutline,
   IoSend,
   IoChevronDown,
+  IoRefresh,
 } from "react-icons/io5";
+import Button from "@dt/Button";
 import { ChatTextArea } from "../Inputs/TextArea";
 
 type Role = "user" | "assistant";
@@ -212,28 +214,30 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         >
           <header className={styles.header}>
             <div className={styles.headerCopy}>
-              <p className={styles.tagline}>Donny</p>
+              <p className={styles.tagline}>DT Donny</p>
               <h2 className={styles.title}>{title}</h2>
               <p className={styles.subtitle}>{description}</p>
             </div>
             <div className={styles.headerActions}>
-              <button
+              <Button
                 type="button"
-                className={styles.resetButton}
                 onClick={handleReset}
                 disabled={isSending}
                 aria-label="Reset conversation"
+                variant="tertiary"
+                size="s"
+                icon={<IoRefresh />}
               >
                 Reset
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
-                className={styles.closeButton}
                 onClick={() => setIsOpen(false)}
-                aria-label="Close chat"
-              >
-                <IoChevronDown />
-              </button>
+                aria-label="Minimize chat"
+                variant="tertiary"
+                icon={<IoChevronDown />}
+                size="s"
+              />
             </div>
           </header>
           <div className={styles.messages} ref={scrollerRef}>
@@ -264,30 +268,34 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
                 disabled={isSending}
                 aria-live="polite"
               />
-              <button
+              <Button
                 type="submit"
                 className={styles.sendButton}
                 aria-label="Send message"
                 disabled={isSending || !input.trim()}
-              >
-                <IoSend />
-              </button>
+                icon={<IoSend />}
+                variant="primary"
+                size="s"
+              />
             </div>
           </form>
         </div>
       </div>
-      <button
+      <Button
         type="button"
+        rounded={true}
         className={styles.toggle}
         data-open={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-controls="donny-panel"
         aria-label={isOpen ? "Hide chat" : "Chat with Donny"}
+        variant="primary"
+        size="m"
       >
         <IoChatbubbleEllipsesOutline />
         <span className={styles.toggleLabel}>Chat</span>
-      </button>
+      </Button>
     </>
   );
 };
