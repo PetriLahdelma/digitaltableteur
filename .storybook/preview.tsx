@@ -9,7 +9,7 @@ import fi from "../src/locales/fi/translation.json";
 import sv from "../src/locales/sv/translation.json";
 
 const THEME_KEY = "storybook-theme";
-const STORYBOOK_THEMES = ["light", "dark", "hcb"] as const;
+const STORYBOOK_THEMES = ["light", "dark", "hcb", "hcw"] as const;
 type StorybookTheme = (typeof STORYBOOK_THEMES)[number];
 
 const isStorybookTheme = (value: unknown): value is StorybookTheme =>
@@ -55,6 +55,7 @@ export const globalTypes = {
         { value: "light", title: "Light" },
         { value: "dark", title: "Dark" },
         { value: "hcb", title: "HCB" },
+        { value: "hcw", title: "HCW" },
       ],
       showName: true,
       dynamicTitle: true,
@@ -83,17 +84,21 @@ const applyThemeToDom = (theme: StorybookTheme) => {
 
   const isDark = theme === "dark";
   const isHcb = theme === "hcb";
+  const isHcw = theme === "hcw";
   const root = document.documentElement;
   const body = document.body;
 
   root.classList.toggle("themeDark", isDark);
   root.classList.toggle("themeHCB", isHcb);
+  root.classList.toggle("themeHCW", isHcw);
   root.dataset.theme = theme;
-  root.style.colorScheme = theme === "light" ? "light" : "dark";
+  root.style.colorScheme =
+    theme === "dark" || theme === "hcb" ? "dark" : "light";
 
   if (body) {
     body.classList.toggle("themeDark", isDark);
     body.classList.toggle("themeHCB", isHcb);
+    body.classList.toggle("themeHCW", isHcw);
     body.dataset.theme = theme;
     body.style.background =
       theme === "hcb" ? "#000" : theme === "dark" ? "#23272a" : "#fff";
