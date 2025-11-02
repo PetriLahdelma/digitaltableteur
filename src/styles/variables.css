@@ -1,4 +1,9 @@
 :root {
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
   /* Typography tokens */
   --font-title: "TiemposHeadline-Regular", serif;
   --font-text: "Moderat", sans-serif;
@@ -138,6 +143,11 @@
 
 .themeDark,
 .themeDark :root {
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
   --main-body-background-color: #181a1b;
   --color-title: #6fa8ff;
   --color-text: #e0e0e0;
@@ -200,6 +210,11 @@
 
 .themeHCB,
 .themeHCB :root {
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
   --main-body-background-color: #000;
   --color-title: #fff;
   --color-text: #fff;
@@ -226,7 +241,7 @@
   --color-white: #000;
   --color-black: #fff;
   --color-dark: #fff;
-  --color-gray-dark: #797979;
+  --color-gray-dark: #1f1f1f;
   --color-gray: #aaa;
   --color-muted: #888;
   --color-muted-light: #555;
@@ -257,6 +272,11 @@
 
 .themeHCW,
 .themeHCW :root {
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
   --main-body-background-color: #fff;
   --color-title: #000;
   --color-text: #000;
@@ -283,7 +303,7 @@
   --color-white: #fff;
   --color-black: #000;
   --color-dark: #000;
-  --color-gray-dark: #797979;
+  --color-gray-dark: #e6e6e6;
   --color-gray: #aaa;
   --color-muted: #888;
   --color-muted-light: #555;

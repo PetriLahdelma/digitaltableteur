@@ -3,6 +3,7 @@ import { ThemeProvider } from "@dt/ThemeProvider";
 import type { Preview } from "@storybook/react-vite";
 import React, { useEffect, useLayoutEffect } from "react";
 import { I18nextProvider } from "react-i18next";
+import * as storybookIcons from "@storybook/icons";
 import i18n from "../src/i18n";
 import en from "../src/locales/en/translation.json";
 import fi from "../src/locales/fi/translation.json";
@@ -15,6 +16,53 @@ type StorybookTheme = (typeof STORYBOOK_THEMES)[number];
 const isStorybookTheme = (value: unknown): value is StorybookTheme =>
   typeof value === "string" &&
   STORYBOOK_THEMES.includes(value as StorybookTheme);
+
+const STORYBOOK_TOOLBAR_ICON_SET = new Set(
+  Object.keys(storybookIcons)
+    .filter((key) => key.endsWith("Icon"))
+    .map((key) => key.replace(/Icon$/, "").toLowerCase()),
+);
+
+const STORYBOOK_ICON_SUGGESTIONS = Array.from(STORYBOOK_TOOLBAR_ICON_SET)
+  .sort()
+  .slice(0, 25);
+
+const DEFAULT_TOOLBAR_ICON = "circlehollow";
+const warnedIcons = new Set<string>();
+
+const resolveToolbarIcon = (
+  iconName: string,
+  fallback: string = DEFAULT_TOOLBAR_ICON,
+) => {
+  const normalizedIcon = iconName.toLowerCase();
+  if (STORYBOOK_TOOLBAR_ICON_SET.has(normalizedIcon)) {
+    return normalizedIcon;
+  }
+
+  const normalizedFallback = fallback.toLowerCase();
+  const safeFallback = STORYBOOK_TOOLBAR_ICON_SET.has(normalizedFallback)
+    ? normalizedFallback
+    : DEFAULT_TOOLBAR_ICON;
+
+  if (process.env.NODE_ENV !== "production") {
+    if (!warnedIcons.has(normalizedIcon)) {
+      const suggestions = STORYBOOK_ICON_SUGGESTIONS.join(", ");
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[storybook] Unknown toolbar icon "${iconName}".` +
+          ` Falling back to "${safeFallback}".` +
+          ` Try one of: ${suggestions}${
+            STORYBOOK_TOOLBAR_ICON_SET.size > STORYBOOK_ICON_SUGGESTIONS.length
+              ? ", …"
+              : ""
+          }`,
+      );
+      warnedIcons.add(normalizedIcon);
+    }
+  }
+
+  return safeFallback;
+};
 
 const getStoredTheme = (): StorybookTheme => {
   if (typeof window === "undefined") {
@@ -50,7 +98,7 @@ export const globalTypes = {
     description: "Global theme for components",
     defaultValue: getStoredTheme(),
     toolbar: {
-      icon: "circlehollow",
+      icon: resolveToolbarIcon("circlehollow"),
       items: [
         { value: "light", title: "Light" },
         { value: "dark", title: "Dark" },
@@ -66,7 +114,7 @@ export const globalTypes = {
     description: "Internationalization locale",
     defaultValue: "en",
     toolbar: {
-      icon: "globe",
+      icon: resolveToolbarIcon("globe"),
       items: [
         { value: "en", title: "English" },
         { value: "fi", title: "Suomi" },
