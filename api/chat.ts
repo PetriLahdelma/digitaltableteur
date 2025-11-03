@@ -185,3 +185,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 }
 
 export { allowedOrigins, ChatApiError, resolveModelId, systemPrompt };
+
+export const config = {
+  runtime: "nodejs",
+};
