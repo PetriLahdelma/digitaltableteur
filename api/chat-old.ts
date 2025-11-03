@@ -1,6 +1,6 @@
 import { streamText, convertToCoreMessages } from "ai";
 import { openai } from "@ai-sdk/openai";
-import { digitaltableteurContext } from "./donny-context";
+import { digitaltableteurContext } from "../donny-context";
 
 const systemPrompt = [
   "You are Donny, Digitaltableteur's sales & creative assistant. Be accurate, concise, and grounded in the provided context.",
@@ -8,6 +8,7 @@ const systemPrompt = [
   digitaltableteurContext.trim(),
 ].join("\n\n");
 
+// ✅ Single default export only
 export default async function handler(req: any, res: any) {
   // --- Handle CORS first ---
   const allowedOrigins = [
@@ -16,14 +17,13 @@ export default async function handler(req: any, res: any) {
     "http://localhost:5173",
     "http://localhost:3000",
     "http://localhost:5176",
-    "http://localhost:3001",
   ];
 
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   } else {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", allowedOrigins[0]);
   }
 
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");

@@ -143,7 +143,7 @@ export const Playground: Story = {
   render: () => <ChatWidgetStoryDemo />,
 };
 
-export const ChatTextAreaDemo = (): JSX.Element => {
+export const ChatTextAreaDemo = (): React.ReactElement => {
   const [value, setValue] = React.useState(
     "Hello from Donny preview!\nAsk me anything about Digitaltableteur.",
   );
