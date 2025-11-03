@@ -19,7 +19,7 @@ interface ChatWidgetProps {
   description?: string;
   /**
    * Optional override for the API endpoint.
-   * Defaults to VITE_DONNY_CHAT_ENDPOINT or /api/chat if not provided.
+   * Defaults to VITE_DONNY_CHAT_ENDPOINT, otherwise falls back to the secure proxy or /api/chat.
    */
   endpoint?: string;
 }
@@ -28,6 +28,9 @@ const STORAGE_KEY = "dt-donny-chat-v2";
 const LEGACY_STORAGE_KEY = "dt-donny-chat";
 const GREETING_TEXT =
   "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, services, or anything you see on the site.";
+
+const REMOTE_CHAT_ENDPOINT =
+  "https://digitaltableteursecureproxy.vercel.app/api/chat";
 
 const createGreetingMessage = (): UIMessage => ({
   id: "intro",
@@ -311,6 +314,17 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     if (endpoint) return endpoint;
     const envEndpoint = import.meta.env.VITE_DONNY_CHAT_ENDPOINT?.trim();
     if (envEndpoint) return envEndpoint;
+    if (typeof window !== "undefined") {
+      const host = window.location.hostname.toLowerCase();
+      if (
+        host === "localhost" ||
+        host === "127.0.0.1" ||
+        host === "digitaltableteur.com" ||
+        host === "www.digitaltableteur.com"
+      ) {
+        return REMOTE_CHAT_ENDPOINT;
+      }
+    }
     return "/api/chat";
   }, [endpoint]);
 
