@@ -80,13 +80,14 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const focusReturnRef = useRef<number | null>(null);
 
   const apiEndpoint = useMemo(() => {
+    // Resolution order: explicit prop > build-time env var > default relative
     if (endpoint) return endpoint;
-
     const envEndpoint = import.meta.env.VITE_DONNY_CHAT_ENDPOINT?.trim();
     if (envEndpoint) return envEndpoint;
-
     return "/api/chat";
   }, [endpoint]);
+
+  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
     try {
@@ -221,6 +222,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       });
 
       if (!response.ok) {
+        if ([404, 405].includes(response.status)) {
+          setIsOffline(true);
+        }
         throw new Error(`Request failed with ${response.status}`);
       }
 
@@ -252,6 +256,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         }
         if (error instanceof Error && /5\d{2}/.test(error.message)) {
           return "Donny’s brain is taking a quick nap (server hiccup). Let’s retry soon.";
+        }
+        if (isOffline) {
+          return "Chat is temporarily offline; endpoint configuration pending.";
         }
         return "I couldn’t reach our studio brain right now. Please retry in a moment.";
       })();
@@ -303,13 +310,26 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             isSending={isSending}
           />
           <ChatMessages ref={scrollerRef} messages={messages} />
+          {isOffline && (
+            <div
+              className={styles.offlineNotice}
+              role="status"
+              aria-live="polite"
+            >
+              Chat temporarily offline while we finalize deployment.
+            </div>
+          )}
           <ChatComposer
             inputId="donny-input"
-            placeholder="Ask about a project, service, or approach…"
+            placeholder={
+              isOffline
+                ? "Chat offline – check back soon"
+                : "Ask about a project, service, or approach…"
+            }
             value={input}
             onValueChange={setInput}
             onSubmit={handleSubmit}
-            isSending={isSending}
+            isSending={isSending || isOffline}
             maxLength={1_000}
           />
         </div>
