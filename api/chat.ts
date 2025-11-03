@@ -1,3 +1,6 @@
+import type { IncomingMessage, ServerResponse } from "http";
+import { convertToCoreMessages, streamText } from "ai";
+import { gateway } from "@ai-sdk/gateway";
 import { digitaltableteurContext } from "./donny-context";
 
 const systemPrompt = [
@@ -6,96 +9,135 @@ const systemPrompt = [
   digitaltableteurContext.trim(),
 ].join("\n\n");
 
-export default async function handler(req: any, res: any) {
-  const allowedOrigins = [
-    "https://digitaltableteur.com",
-    "https://www.digitaltableteur.com",
-    "http://localhost:5173",
-    "http://localhost:3000",
-  ];
+type RequestBody = {
+  id?: string;
+  messages?: unknown;
+  data?: unknown;
+  [key: string]: unknown;
+};
 
-  const origin = req.headers?.origin;
-  const isAllowedOrigin = origin && allowedOrigins.includes(origin);
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    isAllowedOrigin ? origin : allowedOrigins[0],
-  );
-  res.setHeader("Vary", "Origin");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+const allowedOrigins = [
+  "https://digitaltableteur.com",
+  "https://www.digitaltableteur.com",
+  "http://localhost:5173",
+  "http://localhost:3000",
+];
 
-  let parsedBody: unknown = req.body;
+const resolveOrigin = (origin: string | undefined) => {
+  if (!origin) return allowedOrigins[0];
+  return allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+};
 
-  if (typeof parsedBody === "string") {
-    try {
-      parsedBody = JSON.parse(parsedBody);
-    } catch {
-      return res.status(400).json({ error: "Invalid JSON payload" });
+const modelId =
+  process.env.AI_GATEWAY_MODEL?.trim() || "openai/gpt-4o-mini-2024-07-18";
+
+async function parseRequestBody(req: IncomingMessage): Promise<RequestBody> {
+  if ((req as { body?: unknown }).body !== undefined) {
+    const existingBody = (req as { body?: unknown }).body;
+    if (typeof existingBody === "string") {
+      try {
+        return JSON.parse(existingBody) as RequestBody;
+      } catch {
+        throw new Error("Invalid JSON payload");
+      }
     }
+    return (existingBody ?? {}) as RequestBody;
   }
 
+  const chunks: Uint8Array[] = [];
+
+  for await (const chunk of req) {
+    chunks.push(
+      typeof chunk === "string" ? Buffer.from(chunk) : Buffer.from(chunk),
+    );
+  }
+
+  if (!chunks.length) return {};
+
+  const raw = Buffer.concat(chunks).toString("utf8");
+  try {
+    return JSON.parse(raw) as RequestBody;
+  } catch {
+    throw new Error("Invalid JSON payload");
+  }
+}
+
+export default async function handler(
+  req: IncomingMessage & { method?: string; headers?: Record<string, string> },
+  res: ServerResponse,
+) {
+  const origin = resolveOrigin(req.headers?.origin);
+  res.setHeader("Access-Control-Allow-Origin", origin);
+  res.setHeader("Vary", "Origin");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Requested-With",
+  );
+
   if (req.method === "OPTIONS") {
-    return res.status(204).end();
+    res.statusCode = 204;
+    res.end();
+    return;
   }
 
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    res.statusCode = 405;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ error: "Method not allowed" }));
+    return;
   }
 
-  if (!process.env.OPENAI_API_KEY) {
-    return res.status(500).json({ error: "Missing OpenAI API key" });
+  let requestBody: RequestBody;
+  try {
+    requestBody = await parseRequestBody(req);
+  } catch (error) {
+    res.statusCode = 400;
+    res.setHeader("Content-Type", "application/json");
+    res.end(
+      JSON.stringify({
+        error: error instanceof Error ? error.message : "Invalid request body",
+      }),
+    );
+    return;
   }
 
-  const { messages = [] } = (parsedBody as Record<string, unknown>) ?? {};
-  if (!Array.isArray(messages)) {
-    return res.status(400).json({ error: "messages must be an array" });
+  const rawMessages = requestBody.messages;
+  if (!Array.isArray(rawMessages)) {
+    res.statusCode = 400;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ error: "messages must be an array" }));
+    return;
   }
 
   try {
-    const completionResponse = await fetch(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: "gpt-4-turbo",
-          temperature: 0.3,
-          messages: [
-            {
-              role: "system",
-              content: systemPrompt,
-            },
-            ...messages,
-          ],
-        }),
-      },
-    );
-
-    if (!completionResponse.ok) {
-      const errorPayload = await completionResponse.json().catch(() => ({}));
-      throw new Error(
-        `OpenAI request failed with ${completionResponse.status}: ${
-          (errorPayload as { error?: { message?: string } })?.error?.message ??
-          "Unknown error"
-        }`,
-      );
-    }
-
-    const completion = (await completionResponse.json()) as {
-      choices?: Array<{ message?: { content?: string } }>;
-    };
-
-    const reply = completion.choices?.[0]?.message?.content ?? "";
-    return res.status(200).json({ reply });
-  } catch (error) {
-    console.error("OpenAI chat error", error);
-    return res.status(500).json({
-      error: "Donny ran into a snag. Please try again soon.",
-      details:
-        error instanceof Error ? error.message : "Unknown server error occurred.",
+    const result = await streamText({
+      model: gateway(modelId),
+      system: systemPrompt,
+      messages: convertToCoreMessages(rawMessages),
+      maxRetries: 1,
+      temperature: 0.3,
     });
+
+    res.setHeader("Cache-Control", "no-store, max-age=0");
+    res.setHeader("Connection", "keep-alive");
+    res.setHeader("Transfer-Encoding", "chunked");
+
+    result.pipeUIMessageStreamToResponse(res);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error("AI Gateway chat error", error);
+    const message =
+      error instanceof Error ? error.message : "Unknown server error occurred.";
+    if (!res.headersSent) {
+      res.statusCode = 500;
+      res.setHeader("Content-Type", "application/json");
+    }
+    res.end(
+      JSON.stringify({
+        error: "Donny ran into a snag. Please try again soon.",
+        details: message,
+      }),
+    );
   }
 }
