@@ -84,7 +84,7 @@ export const POST = async (request: Request) => {
       maxRetries: 1,
     });
 
-    return result.toAIStreamResponse({
+    return result.toUIMessageStreamResponse({
       headers,
     });
   } catch (error) {
