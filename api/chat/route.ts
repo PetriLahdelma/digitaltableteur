@@ -88,8 +88,7 @@ export const POST = async (request: Request) => {
       headers,
     });
   } catch (error) {
-    const status =
-      error instanceof ChatApiError ? error.status : 500;
+    const status = error instanceof ChatApiError ? error.status : 500;
     const message =
       error instanceof ChatApiError
         ? error.message
