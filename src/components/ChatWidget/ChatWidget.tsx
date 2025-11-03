@@ -102,8 +102,7 @@ const toStoredMessages = (messages: UIMessage[]): StoredMessage[] => {
 
   messages
     .filter(
-      (message) =>
-        message.role === "assistant" || message.role === "user",
+      (message) => message.role === "assistant" || message.role === "user",
     )
     .forEach((message) => {
       const text = extractTextFromMessage(message);
@@ -177,7 +176,11 @@ const parseLegacyMessages = (raw: string | null): StoredMessage[] | null => {
     const messages: StoredMessage[] = [];
     parsed.forEach((item) => {
       if (!item || typeof item !== "object") return;
-      const candidate = item as { id?: string; role?: string; content?: string };
+      const candidate = item as {
+        id?: string;
+        role?: string;
+        content?: string;
+      };
       if (
         (candidate.role === "assistant" || candidate.role === "user") &&
         typeof candidate.content === "string"
@@ -262,7 +265,10 @@ const resolveErrorMessage = (error: Error | undefined | null) => {
   if (normalized.includes("failed to fetch")) {
     return "Looks like we lost the connection. Check your network and try again.";
   }
-  if (normalized.includes("authentication") || normalized.includes("unauthorized")) {
+  if (
+    normalized.includes("authentication") ||
+    normalized.includes("unauthorized")
+  ) {
     return "Chat is offline while we finalize our AI Gateway configuration.";
   }
   if (normalized.includes("404") || normalized.includes("not found")) {
@@ -458,7 +464,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             isStreaming={isStreaming}
           />
           {errorMessage && (
-            <div className={styles.statusBanner} role="status" aria-live="polite">
+            <div
+              className={styles.statusBanner}
+              role="status"
+              aria-live="polite"
+            >
               {errorMessage}
             </div>
           )}
