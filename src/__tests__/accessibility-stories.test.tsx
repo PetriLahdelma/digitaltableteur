@@ -1,10 +1,8 @@
-/// <reference types="vite/client" />
 import React from "react";
 import { describe, it, expect, beforeAll, vi } from "vitest";
 import { render } from "@testing-library/react";
 import axe from "axe-core";
 import { composeStories, setProjectAnnotations } from "@storybook/react";
-import type { ComponentType } from "react";
 
 import * as previewAnnotations from "../../.storybook/preview";
 
@@ -43,9 +41,7 @@ beforeAll(() => {
 
 describe("Storybook accessibility", () => {
   for (const [path, moduleExports] of Object.entries(storyModules)) {
-    const composedStories = composeStories(
-      moduleExports as Record<string, unknown>,
-    ) as Record<string, ComponentType>;
+    const composedStories = composeStories(moduleExports as any);
 
     for (const [storyName, Story] of Object.entries(composedStories)) {
       const storyParameters = (Story as any).parameters ?? {};
@@ -54,8 +50,7 @@ describe("Storybook accessibility", () => {
       }
 
       it(`${path} – ${storyName} has no detectable accessibility violations`, async () => {
-        const StoryComponent = Story as ComponentType;
-        const { container } = render(<StoryComponent />);
+        const { container } = render(<Story />);
         await new Promise((resolve) => setTimeout(resolve, 0));
         await runAxe(container);
       });

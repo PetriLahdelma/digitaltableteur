@@ -144,18 +144,6 @@
   border-radius: 1rem 1rem 0;
 }
 
-.statusBanner {
-  margin: 0 1.25rem 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: 0.85rem;
-  background: rgb(255 86 86 / 12%);
-  border: 1px solid rgb(255 86 86 / 24%);
-  color: var(--color-text, #111);
-  font-size: 0.85rem;
-  line-height: 1.4;
-  font-family: Moderat, sans-serif;
-}
-
 .composer {
   display: flex;
   flex-direction: column;
