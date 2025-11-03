@@ -1,65 +1,100 @@
-import { streamText, convertToCoreMessages } from "ai";
-import { openai } from "@ai-sdk/openai";
-import { digitaltableteurContext } from "../donny-context";
+import { convertToCoreMessages, streamText } from "ai";
+import { createOpenAI } from "@ai-sdk/openai";
+import {
+  allowedOrigins,
+  ChatApiError,
+  resolveModelId,
+  systemPrompt,
+} from "../chat";
 
-const systemPrompt = [
-  "You are Donny, Digitaltableteur's sales & creative assistant. Be accurate, concise, and grounded in the provided context.",
-  "Context about Digitaltableteur:",
-  digitaltableteurContext.trim(),
-].join("\n\n");
+type ChatRequestBody = {
+  messages?: unknown;
+};
 
-// ✅ Single default export only
-export default async function handler(req: any, res: any) {
-  // --- Handle CORS first ---
-  const allowedOrigins = [
-    "https://digitaltableteur.com",
-    "https://www.digitaltableteur.com",
-    "http://localhost:5173",
-    "http://localhost:3000",
-    "http://localhost:5176",
-  ];
-
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  } else {
-    res.setHeader("Access-Control-Allow-Origin", allowedOrigins[0]);
+const resolveOrigin = (origin: string | null) => {
+  if (origin && allowedOrigins.includes(origin)) {
+    return origin;
   }
+  return allowedOrigins[0];
+};
 
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+const createCorsHeaders = (origin: string | null) => {
+  const resolved = resolveOrigin(origin);
+  return {
+    "Access-Control-Allow-Origin": resolved,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    Vary: "Origin",
+  } satisfies Record<string, string>;
+};
 
-  if (req.method === "OPTIONS") {
-    return res.status(204).end();
+const readRequestBody = async (request: Request): Promise<ChatRequestBody> => {
+  try {
+    return (await request.json()) as ChatRequestBody;
+  } catch {
+    throw new ChatApiError(400, "Invalid JSON payload");
   }
+};
 
-  // --- Handle allowed POST method ---
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+const jsonResponse = (
+  status: number,
+  headers: Record<string, string>,
+  payload: Record<string, unknown>,
+) =>
+  new Response(JSON.stringify(payload), {
+    status,
+    headers: {
+      ...headers,
+      "Content-Type": "application/json",
+    },
+  });
 
-  if (!process.env.OPENAI_API_KEY) {
-    return res.status(500).json({ error: "Missing OpenAI API key" });
-  }
+export const OPTIONS = async (request: Request) => {
+  const headers = createCorsHeaders(request.headers.get("origin"));
+  return new Response(null, {
+    status: 204,
+    headers,
+  });
+};
 
-  const { messages = [] } = req.body ?? {};
-  if (!Array.isArray(messages)) {
-    return res.status(400).json({ error: "messages must be an array" });
-  }
+export const POST = async (request: Request) => {
+  const headers = createCorsHeaders(request.headers.get("origin"));
 
   try {
+    const apiKey = process.env.OPENAI_API_KEY?.trim();
+    if (!apiKey) {
+      throw new ChatApiError(500, "Missing OpenAI API key");
+    }
+
+    const body = await readRequestBody(request);
+    const messages = body.messages;
+
+    if (!Array.isArray(messages)) {
+      throw new ChatApiError(400, "messages must be an array");
+    }
+
+    const openai = createOpenAI({ apiKey });
+    const modelId = resolveModelId();
+
     const result = await streamText({
-      model: openai("gpt-4-turbo"),
+      model: openai(modelId),
       system: systemPrompt,
       messages: convertToCoreMessages(messages),
       temperature: 0.3,
+      maxRetries: 1,
     });
 
-    return result.toUIMessageStreamResponse();
+    return result.toAIStreamResponse({
+      headers,
+    });
   } catch (error) {
-    console.error("OpenAI chat error", error);
-    return res
-      .status(500)
-      .json({ error: "Donny ran into a snag. Please try again soon." });
+    const status =
+      error instanceof ChatApiError ? error.status : 500;
+    const message =
+      error instanceof ChatApiError
+        ? error.message
+        : "Donny ran into a snag. Please try again soon.";
+
+    return jsonResponse(status, headers, { error: message });
   }
-}
+};
