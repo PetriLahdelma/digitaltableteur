@@ -20,11 +20,17 @@ const getMessageText = (message: UIMessage) => {
       if (part.type === "text" && "text" in part) {
         return typeof part.text === "string" ? part.text : "";
       }
-      if (part.type === "reasoning") {
-        return part.reasoning?.join("\n") ?? "";
+      if (part.type === "reasoning" && "text" in part) {
+        return typeof part.text === "string" ? part.text : "";
       }
-      if (part.type === "tool-result") {
-        return `[${part.toolName ?? "tool"} result available]`;
+      if (part.type === "tool-result" || part.type.startsWith("tool-")) {
+        const toolPart = part as unknown as {
+          type: string;
+          toolName?: string;
+          toolCallId: string;
+        };
+        const label = toolPart.toolName ?? toolPart.toolCallId ?? "tool";
+        return `[${label} result available]`;
       }
       return "";
     })

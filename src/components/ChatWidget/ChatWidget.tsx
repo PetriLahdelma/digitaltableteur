@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
 import ChatComposer from "./ChatComposer";
@@ -84,11 +85,18 @@ const extractTextFromMessage = (message: UIMessage) => {
         const textPart = part as { text?: unknown };
         return typeof textPart.text === "string" ? textPart.text : "";
       }
-      if (part.type === "reasoning") {
-        return part.reasoning?.join("\n") ?? "";
+      if (part.type === "reasoning" && "text" in part) {
+        const textValue = (part as { text?: unknown }).text;
+        return typeof textValue === "string" ? textValue : "";
       }
-      if (part.type === "tool-result") {
-        return `[${part.toolName ?? "tool"} result available]`;
+      if (part.type === "tool-result" || part.type.startsWith("tool-")) {
+        const toolPart = part as unknown as {
+          type: string;
+          toolName?: string;
+          toolCallId: string;
+        };
+        const label = toolPart.toolName ?? toolPart.toolCallId ?? "tool";
+        return `[${label} result available]`;
       }
       return "";
     })
@@ -105,11 +113,15 @@ const toStoredMessages = (messages: UIMessage[]): StoredMessage[] => {
       (message) => message.role === "assistant" || message.role === "user",
     )
     .forEach((message) => {
+      const { role } = message;
+      if (role !== "assistant" && role !== "user") {
+        return;
+      }
       const text = extractTextFromMessage(message);
       if (!text) return;
       unique.set(message.id, {
         id: message.id,
-        role: message.role,
+        role,
         text,
       });
     });
@@ -304,6 +316,12 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   const [initialMessages] = useState<UIMessage[]>(() => loadInitialMessages());
 
+  const transport = useMemo(() => {
+    return new DefaultChatTransport({
+      api: apiEndpoint,
+    });
+  }, [apiEndpoint]);
+
   const {
     messages,
     sendMessage,
@@ -314,8 +332,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     setMessages,
   } = useChat({
     id: "donny-chat",
-    api: apiEndpoint,
     messages: initialMessages,
+    transport,
   });
 
   const isStreaming = status === "submitted" || status === "streaming";

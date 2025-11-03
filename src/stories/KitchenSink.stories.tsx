@@ -73,21 +73,21 @@ const CheckboxDefault = () => (
   <Checkbox
     {...CheckboxDefaultStory.args}
     checked={CheckboxDefaultStory.args?.checked ?? false}
-    onChange={() => {}}
+    onCheckedChange={() => {}}
   />
 );
 const CheckboxChecked = () => (
   <Checkbox
     {...CheckboxCheckedStory.args}
     checked={CheckboxCheckedStory.args?.checked ?? false}
-    onChange={() => {}}
+    onCheckedChange={() => {}}
   />
 );
 const CheckboxIndeterminate = () => (
   <Checkbox
     {...CheckboxIndeterminateStory.args}
     checked={CheckboxIndeterminateStory.args?.checked ?? false}
-    onChange={() => {}}
+    onCheckedChange={() => {}}
   />
 );
 const CheckboxGroupDefault = () => {
@@ -338,13 +338,18 @@ const InputsDisabled = () => {
 // Label wrappers
 const LabelDefaultWrap = () => {
   const { t } = useTranslation();
+  const rawContent = LabelStories.Default.args?.children;
+  const content =
+    typeof rawContent === "string"
+      ? t(rawContent)
+      : (rawContent ?? "Default Label");
   return (
     <Label
       htmlFor={
         LabelStories.Default.args?.htmlFor ?? "label-default-kitchensink"
       }
     >
-      {t(LabelStories.Default.args?.children ?? "Default Label")}
+      {content}
     </Label>
   );
 };
@@ -353,8 +358,15 @@ const LabelWithTooltipWrap = () => {
   const { t } = useTranslation();
   const tooltipKey =
     LabelStories.WithTooltip.args?.tooltipText ??
-    LabelStories.WithTooltip.args?.title;
+    (typeof LabelStories.WithTooltip.args?.title === "string"
+      ? LabelStories.WithTooltip.args?.title
+      : undefined);
   const tooltipText = tooltipKey ? t(tooltipKey) : "This is a tooltip";
+  const rawContent = LabelStories.WithTooltip.args?.children;
+  const content =
+    typeof rawContent === "string"
+      ? t(rawContent)
+      : (rawContent ?? "Label with Tooltip");
   return (
     <Label
       htmlFor={
@@ -363,13 +375,18 @@ const LabelWithTooltipWrap = () => {
       tooltipText={tooltipText}
       title={tooltipText}
     >
-      {t(LabelStories.WithTooltip.args?.children ?? "Label with Tooltip")}
+      {content}
     </Label>
   );
 };
 
 const LabelRequiredWrap = () => {
   const { t } = useTranslation();
+  const rawContent = LabelStories.Required.args?.children;
+  const content =
+    typeof rawContent === "string"
+      ? t(rawContent)
+      : (rawContent ?? "Required Label");
   return (
     <Label
       htmlFor={
@@ -377,13 +394,18 @@ const LabelRequiredWrap = () => {
       }
       required
     >
-      {t(LabelStories.Required.args?.children ?? "Required Label")}
+      {content}
     </Label>
   );
 };
 
 const LabelDisabledWrap = () => {
   const { t } = useTranslation();
+  const rawContent = LabelStories.Disabled.args?.children;
+  const content =
+    typeof rawContent === "string"
+      ? t(rawContent)
+      : (rawContent ?? "Disabled Label");
   return (
     <Label
       htmlFor={
@@ -391,7 +413,7 @@ const LabelDisabledWrap = () => {
       }
       disabled
     >
-      {t(LabelStories.Disabled.args?.children ?? "Disabled Label")}
+      {content}
     </Label>
   );
 };
@@ -399,41 +421,56 @@ const LabelDisabledWrap = () => {
 // Link wrappers
 const LinkPlaygroundWrap = () => {
   const { t } = useTranslation();
-  return (
-    <Link href={LinkStories.Playground.args?.href ?? "#"}>
-      {t(LinkStories.Playground.args?.children ?? "Playground Link")}
-    </Link>
-  );
+  const children = LinkStories.Playground.args?.children;
+  const content =
+    typeof children === "string"
+      ? t(children)
+      : (children ?? "Playground Link");
+  return <Link href={LinkStories.Playground.args?.href ?? "#"}>{content}</Link>;
 };
 
 const LinkSmallWrap = () => {
   const { t } = useTranslation();
+  const children = LinkStories.Small.args?.children;
+  const content =
+    typeof children === "string" ? t(children) : (children ?? "Small Link");
   return (
     <Link href={LinkStories.Small.args?.href ?? "#"} size="S">
-      {t(LinkStories.Small.args?.children ?? "Small Link")}
+      {content}
     </Link>
   );
 };
 
 const LinkMediumWrap = () => {
   const { t } = useTranslation();
+  const children = LinkStories.Medium.args?.children;
+  const content =
+    typeof children === "string" ? t(children) : (children ?? "Medium Link");
   return (
     <Link href={LinkStories.Medium.args?.href ?? "#"} size="M">
-      {t(LinkStories.Medium.args?.children ?? "Medium Link")}
+      {content}
     </Link>
   );
 };
 
 const LinkLargeWrap = () => {
   const { t } = useTranslation();
+  const children = LinkStories.Large.args?.children;
+  const content =
+    typeof children === "string" ? t(children) : (children ?? "Large Link");
   return (
     <Link href={LinkStories.Large.args?.href ?? "#"} size="L">
-      {t(LinkStories.Large.args?.children ?? "Large Link")}
+      {content}
     </Link>
   );
 };
 
-const COMPONENTS = [
+type ComponentVariant = {
+  name: string;
+  Variants: React.ComponentType;
+};
+
+const COMPONENTS: ComponentVariant[] = [
   { name: "Badge Sizes", Variants: BadgeSizes },
   { name: "Badge Variants", Variants: BadgeVariants },
   { name: "Button Sizes", Variants: ButtonSizes },
