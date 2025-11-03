@@ -28,17 +28,55 @@ const useMockChat = () => {
       const reply =
         replyBank[(callCount.current - 1) % replyBank.length] ?? replyBank[0];
 
-      await new Promise((resolve) => setTimeout(resolve, 450));
+      const encoder = new TextEncoder();
+      const stream = new ReadableStream<Uint8Array>({
+        start(controller) {
+          const assistantId = `assistant-${callCount.current}`;
+          const words = reply.split(" ");
+          const chunks = [
+            { delay: 0, data: { type: "text-start", id: assistantId } },
+            ...words.map((word, index) => ({
+              delay: 120 * (index + 1),
+              data: {
+                type: "text-delta",
+                id: assistantId,
+                delta: `${word}${index === words.length - 1 ? "" : " "}`,
+              },
+            })),
+            {
+              delay: 120 * words.length + 80,
+              data: { type: "text-end", id: assistantId },
+            },
+          ];
 
-      return new Response(JSON.stringify({ reply }), {
+          chunks.forEach(({ delay, data }, index) => {
+            setTimeout(() => {
+              controller.enqueue(
+                encoder.encode(`data: ${JSON.stringify(data)}\n\n`),
+              );
+              if (index === chunks.length - 1) {
+                controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+                controller.close();
+              }
+            }, delay);
+          });
+        },
+      });
+
+      return new Response(stream, {
         status: 200,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "text/event-stream",
+          "Cache-Control": "no-cache",
+          Connection: "keep-alive",
+        },
       });
     };
 
     globalThis.fetch = handler;
     try {
       localStorage.removeItem("dt-donny-chat");
+      localStorage.removeItem("dt-donny-chat-v2");
     } catch {
       /* ignore */
     }
@@ -105,7 +143,7 @@ export const Playground: Story = {
   render: () => <ChatWidgetStoryDemo />,
 };
 
-export const ChatTextAreaDemo = (): JSX.Element => {
+export const ChatTextAreaDemo = (): React.ReactElement => {
   const [value, setValue] = React.useState(
     "Hello from Donny preview!\nAsk me anything about Digitaltableteur.",
   );
