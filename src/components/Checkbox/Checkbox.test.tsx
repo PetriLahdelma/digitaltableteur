@@ -9,7 +9,7 @@ describe("Checkbox", () => {
       <Checkbox
         label="Test Checkbox"
         checked={false}
-        onChange={() => {}}
+        onCheckedChange={() => {}}
         disabled={false}
       />,
     );
@@ -17,17 +17,17 @@ describe("Checkbox", () => {
   });
 
   it("calls onChange when clicked", () => {
-    const onChange = vi.fn();
+    const onCheckedChange = vi.fn();
     render(
       <Checkbox
         label="Test Checkbox"
         checked={false}
-        onChange={onChange}
+        onCheckedChange={onCheckedChange}
         disabled={false}
       />,
     );
     fireEvent.click(screen.getByLabelText("Test Checkbox"));
-    expect(onChange).toHaveBeenCalled();
+    expect(onCheckedChange).toHaveBeenCalled();
   });
 
   it("is checked when checked prop is true", () => {
@@ -35,7 +35,7 @@ describe("Checkbox", () => {
       <Checkbox
         label="Checked"
         checked={true}
-        onChange={() => {}}
+        onCheckedChange={() => {}}
         disabled={false}
       />,
     );
@@ -47,7 +47,7 @@ describe("Checkbox", () => {
       <Checkbox
         label="Disabled"
         checked={false}
-        onChange={() => {}}
+        onCheckedChange={() => {}}
         disabled={true}
       />,
     );

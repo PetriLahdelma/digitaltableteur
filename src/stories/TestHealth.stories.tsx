@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import type { TooltipItem } from "chart.js";
 import {
   Chart as ChartJS,
@@ -150,13 +150,14 @@ const TestHealthOverview = () => {
     };
   }, []);
 
-  const adoptionHistory = useMemo<AdoptionHistoryEntry[]>(
-    () =>
-      Array.isArray(metrics.componentAdoption?.history)
-        ? (metrics.componentAdoption.history as AdoptionHistoryEntry[])
-        : defaultAdoptionHistory,
-    [],
-  );
+  // metrics.componentAdoption in test-metrics.json currently has shape { currentRate, targetRate } (no history array)
+  // Use defaultAdoptionHistory when history absent.
+  const adoptionHistory = useMemo<AdoptionHistoryEntry[]>(() => {
+    const raw = (metrics as any)?.componentAdoption?.history;
+    return Array.isArray(raw)
+      ? (raw as AdoptionHistoryEntry[])
+      : defaultAdoptionHistory;
+  }, []);
 
   const vitestBarData = useMemo(
     () => ({
@@ -599,7 +600,6 @@ const meta: Meta<typeof TestHealthOverview> = {
 
 export default meta;
 
-export const Dashboard = {};
-Dashboard.parameters = {
-  a11y: { disable: true },
+export const Dashboard: StoryObj = {
+  parameters: { a11y: { disable: true } },
 };

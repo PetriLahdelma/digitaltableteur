@@ -14,17 +14,21 @@ export default meta;
 
 type Story = StoryObj<typeof ChatToggle>;
 
+const ToggleRender: React.FC<React.ComponentProps<typeof ChatToggle>> = (
+  args,
+) => {
+  const [isOpen, setIsOpen] = useState(args.isOpen);
+  return (
+    <ChatToggle
+      {...args}
+      isOpen={isOpen}
+      onToggle={() => setIsOpen((prev) => !prev)}
+    />
+  );
+};
+
 export const Default: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(args.isOpen);
-    return (
-      <ChatToggle
-        {...args}
-        isOpen={isOpen}
-        onToggle={() => setIsOpen((prev) => !prev)}
-      />
-    );
-  },
+  render: (args) => <ToggleRender {...args} />,
 };
 
 export const Open: Story = {
