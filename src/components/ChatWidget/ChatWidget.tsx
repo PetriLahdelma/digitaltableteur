@@ -5,14 +5,12 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport } from "ai";
-import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
 import ChatComposer from "./ChatComposer";
 import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
 import ChatToggle from "./ChatToggle";
+import type { Message } from "./ChatWidget.types";
 
 interface ChatWidgetProps {
   title?: string;
@@ -24,21 +22,13 @@ interface ChatWidgetProps {
   endpoint?: string;
 }
 
-const STORAGE_KEY = "dt-donny-chat-v2";
-const LEGACY_STORAGE_KEY = "dt-donny-chat";
-const GREETING_TEXT =
-  "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, services, or anything you see on the site.";
+const STORAGE_KEY = "dt-donny-chat";
 
-const createGreetingMessage = (): UIMessage => ({
+const defaultGreeting: Message = {
   id: "intro",
   role: "assistant",
-  parts: [{ type: "text", text: GREETING_TEXT }],
-});
-
-type StoredMessage = {
-  id: string;
-  role: "user" | "assistant";
-  text: string;
+  content:
+    "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, services, or anything you see on the site.",
 };
 
 const generateId = () => {
@@ -74,226 +64,8 @@ const generateId = () => {
   return `id-${Date.now()}-${Math.random().toString(16).slice(2)}`;
 };
 
-const extractTextFromMessage = (message: UIMessage) => {
-  if (!Array.isArray(message.parts) || message.parts.length === 0) {
-    return "";
-  }
-
-  return message.parts
-    .map((part) => {
-      if (part.type === "text") {
-        const textPart = part as { text?: unknown };
-        return typeof textPart.text === "string" ? textPart.text : "";
-      }
-      if (part.type === "reasoning" && "text" in part) {
-        const textValue = (part as { text?: unknown }).text;
-        return typeof textValue === "string" ? textValue : "";
-      }
-      if (part.type === "tool-result" || part.type.startsWith("tool-")) {
-        const toolPart = part as unknown as {
-          type: string;
-          toolName?: string;
-          toolCallId: string;
-        };
-        const label = toolPart.toolName ?? toolPart.toolCallId ?? "tool";
-        return `[${label} result available]`;
-      }
-      return "";
-    })
-    .filter(Boolean)
-    .join("\n\n")
-    .trim();
-};
-
-const toStoredMessages = (messages: UIMessage[]): StoredMessage[] => {
-  const unique = new Map<string, StoredMessage>();
-
-  messages
-    .filter(
-      (message) => message.role === "assistant" || message.role === "user",
-    )
-    .forEach((message) => {
-      const { role } = message;
-      if (role !== "assistant" && role !== "user") {
-        return;
-      }
-      const text = extractTextFromMessage(message);
-      if (!text) return;
-      unique.set(message.id, {
-        id: message.id,
-        role,
-        text,
-      });
-    });
-
-  const ordered: StoredMessage[] = [];
-  messages.forEach((message) => {
-    if (!unique.has(message.id)) return;
-    const existing = unique.get(message.id);
-    if (existing && !ordered.find((entry) => entry.id === existing.id)) {
-      ordered.push(existing);
-    }
-  });
-
-  const sanitized = ordered.filter(
-    (entry) => entry.role === "assistant" || entry.role === "user",
-  );
-
-  if (sanitized.length === 0 || sanitized[0]?.id !== "intro") {
-    sanitized.unshift({ id: "intro", role: "assistant", text: GREETING_TEXT });
-  } else {
-    sanitized[0] = { id: "intro", role: "assistant", text: GREETING_TEXT };
-  }
-
-  return sanitized;
-};
-
-const parseStoredMessages = (raw: string | null): StoredMessage[] | null => {
-  if (!raw) return null;
-  try {
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return null;
-
-    const messages: StoredMessage[] = [];
-    parsed.forEach((item) => {
-      if (!item || typeof item !== "object") return;
-      const candidate = item as Partial<StoredMessage>;
-      if (
-        (candidate.role === "assistant" || candidate.role === "user") &&
-        typeof candidate.text === "string"
-      ) {
-        messages.push({
-          id:
-            typeof candidate.id === "string" && candidate.id
-              ? candidate.id
-              : generateId(),
-          role: candidate.role,
-          text: candidate.text,
-        });
-      }
-    });
-
-    return messages.length ? messages : null;
-  } catch {
-    return null;
-  }
-};
-
-const parseLegacyMessages = (raw: string | null): StoredMessage[] | null => {
-  if (!raw) return null;
-  try {
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return null;
-
-    const messages: StoredMessage[] = [];
-    parsed.forEach((item) => {
-      if (!item || typeof item !== "object") return;
-      const candidate = item as {
-        id?: string;
-        role?: string;
-        content?: string;
-      };
-      if (
-        (candidate.role === "assistant" || candidate.role === "user") &&
-        typeof candidate.content === "string"
-      ) {
-        messages.push({
-          id:
-            typeof candidate.id === "string" && candidate.id
-              ? candidate.id
-              : generateId(),
-          role: candidate.role,
-          text: candidate.content,
-        });
-      }
-    });
-
-    return messages.length ? messages : null;
-  } catch {
-    return null;
-  }
-};
-
-const fromStoredMessages = (entries: StoredMessage[]): UIMessage[] => {
-  const seen = new Set<string>();
-  const ordered: StoredMessage[] = [];
-
-  entries.forEach((entry) => {
-    if (seen.has(entry.id)) return;
-    seen.add(entry.id);
-    ordered.push(entry);
-  });
-
-  const result: UIMessage[] = [];
-  let hasGreeting = false;
-
-  ordered.forEach((entry) => {
-    if (!entry.text.trim()) return;
-    if (entry.id === "intro") {
-      hasGreeting = true;
-      result.push(createGreetingMessage());
-      return;
-    }
-    result.push({
-      id: entry.id || generateId(),
-      role: entry.role,
-      parts: [{ type: "text", text: entry.text }],
-    });
-  });
-
-  if (!hasGreeting) {
-    result.unshift(createGreetingMessage());
-  }
-
-  return result.length ? result : [createGreetingMessage()];
-};
-
-const loadInitialMessages = (): UIMessage[] => {
-  if (typeof window === "undefined") {
-    return [createGreetingMessage()];
-  }
-
-  const storedV2 = parseStoredMessages(localStorage.getItem(STORAGE_KEY));
-  if (storedV2?.length) {
-    return fromStoredMessages(storedV2);
-  }
-
-  const legacy = parseLegacyMessages(localStorage.getItem(LEGACY_STORAGE_KEY));
-  if (legacy?.length) {
-    return fromStoredMessages(legacy);
-  }
-
-  return [createGreetingMessage()];
-};
-
-const resolveErrorMessage = (error: Error | undefined | null) => {
-  if (!error) return null;
-  const message = error.message ?? "";
-  const normalized = message.toLowerCase();
-
-  if (normalized.includes("abort")) {
-    return null;
-  }
-  if (normalized.includes("failed to fetch")) {
-    return "Looks like we lost the connection. Check your network and try again.";
-  }
-  if (
-    normalized.includes("authentication") ||
-    normalized.includes("unauthorized")
-  ) {
-    return "Chat is offline while we finalize our AI Gateway configuration.";
-  }
-  if (normalized.includes("404") || normalized.includes("not found")) {
-    return "Chat endpoint not found right now; we’re updating the deployment.";
-  }
-  if (normalized.includes("429")) {
-    return "We just hit a request limit. Give it a moment and we’ll be back.";
-  }
-  if (normalized.match(/5\d{2}/)) {
-    return "Donny’s brain is taking a quick nap (server hiccup). Let’s retry soon.";
-  }
-  return "I couldn’t reach our studio brain right now. Please retry in a moment.";
-};
+const FALLBACK_ENDPOINT =
+  "https://digitaltableteursecureproxy.vercel.app/api/chat";
 
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   title = "Chat with Donny",
@@ -301,49 +73,58 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   endpoint,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [draft, setDraft] = useState("");
+  const [messages, setMessages] = useState<Message[]>([defaultGreeting]);
+  const [input, setInput] = useState("");
+  const [isSending, setIsSending] = useState(false);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
   const focusReturnRef = useRef<number | null>(null);
 
   const apiEndpoint = useMemo(() => {
     if (endpoint) return endpoint;
+
     const envEndpoint = import.meta.env.VITE_DONNY_CHAT_ENDPOINT?.trim();
     if (envEndpoint) return envEndpoint;
+
+    if (typeof window !== "undefined") {
+      const { hostname } = window.location;
+      if (hostname.endsWith("digitaltableteur.com")) {
+        return FALLBACK_ENDPOINT;
+      }
+    }
+
     return "/api/chat";
   }, [endpoint]);
 
-  const [initialMessages] = useState<UIMessage[]>(() => loadInitialMessages());
+  useEffect(() => {
+    try {
+      const cached = localStorage.getItem(STORAGE_KEY);
+      if (cached) {
+        const parsed = JSON.parse(cached) as Message[];
+        if (Array.isArray(parsed) && parsed.length) {
+          setMessages(parsed);
+        }
+      }
+    } catch {
+      // Ignore hydration errors
+    }
+  }, []);
 
-  const transport = useMemo(() => {
-    return new DefaultChatTransport({
-      api: apiEndpoint,
-    });
-  }, [apiEndpoint]);
-
-  const {
-    messages,
-    sendMessage,
-    stop,
-    status,
-    error,
-    clearError,
-    setMessages,
-  } = useChat({
-    id: "donny-chat",
-    messages: initialMessages,
-    transport,
-  });
-
-  const isStreaming = status === "submitted" || status === "streaming";
-  const errorMessage = resolveErrorMessage(error);
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    } catch {
+      // Ignore persistence errors
+    }
+  }, [messages]);
 
   useEffect(() => {
     if (!isOpen) return;
-    const container = scrollerRef.current;
-    if (!container) return;
-    container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [messages, isOpen]);
 
   useEffect(() => {
@@ -361,26 +142,14 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       if (focusReturnRef.current !== null && typeof window !== "undefined") {
         cancelAnimationFrame(focusReturnRef.current);
       }
-      stop();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const serialized = toStoredMessages(messages);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(serialized));
-      localStorage.removeItem(LEGACY_STORAGE_KEY);
-    } catch {
-      // ignore storage errors
-    }
-  }, [messages]);
 
   const closeChat = useCallback(() => {
     if (!isOpen) return;
 
-    stop();
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = null;
 
     if (
       panelRef.current &&
@@ -400,7 +169,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     } else {
       toggleButtonRef.current?.focus();
     }
-  }, [isOpen, stop]);
+  }, [isOpen]);
 
   const handleToggle = useCallback(() => {
     if (isOpen) {
@@ -420,42 +189,136 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     return () => window.removeEventListener("keydown", handleEscape);
   }, [closeChat]);
 
-  const handleSubmit = useCallback(
-    (event: React.FormEvent) => {
-      event.preventDefault();
-      const trimmed = draft.trim();
-      if (!trimmed || isStreaming) {
-        return;
-      }
-
-      if (error) {
-        clearError();
-      }
-
-      sendMessage({ text: trimmed });
-      setDraft("");
-    },
-    [draft, isStreaming, sendMessage, error, clearError],
-  );
-
-  const handleReset = useCallback(() => {
-    stop();
-    const resetMessages = [createGreetingMessage()];
-    setMessages(resetMessages);
-    setDraft("");
-    clearError();
-
-    if (typeof window !== "undefined") {
-      try {
-        localStorage.setItem(
-          STORAGE_KEY,
-          JSON.stringify(toStoredMessages(resetMessages)),
-        );
-      } catch {
-        // ignore storage errors
-      }
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    const trimmed = input.trim();
+    if (!trimmed || isSending) {
+      return;
     }
-  }, [stop, setMessages, clearError]);
+
+    const userMessage: Message = {
+      id: generateId(),
+      role: "user",
+      content: trimmed,
+    };
+    const pendingMessage: Message = {
+      id: `pending-${Date.now()}`,
+      role: "assistant",
+      content: "Thinking…",
+      pending: true,
+    };
+
+    setMessages((prev) => [...prev, userMessage, pendingMessage]);
+    setInput("");
+    setIsSending(true);
+
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+
+    try {
+      const requestBody = JSON.stringify({
+        messages: [
+          ...messages.map(({ role, content }) => ({ role, content })),
+          { role: userMessage.role, content: userMessage.content },
+        ],
+      });
+
+      const attemptFetch = async (targetEndpoint: string) => {
+        const response = await fetch(targetEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: requestBody,
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          const error = new Error(`Request failed with ${response.status}`);
+          (error as Error & { status?: number }).status = response.status;
+          throw error;
+        }
+
+        return response;
+      };
+
+      let activeEndpoint = apiEndpoint;
+      let response: Response;
+
+      try {
+        response = await attemptFetch(activeEndpoint);
+      } catch (primaryError) {
+        const status = (primaryError as Error & { status?: number }).status;
+        const shouldRetry =
+          activeEndpoint !== FALLBACK_ENDPOINT &&
+          (typeof status === "undefined" || status === 404 || status === 405);
+
+        if (!shouldRetry) {
+          throw primaryError;
+        }
+
+        activeEndpoint = FALLBACK_ENDPOINT;
+        response = await attemptFetch(activeEndpoint);
+      }
+
+      const data = await response.json();
+      const assistantReply: Message = {
+        id: generateId(),
+        role: "assistant",
+        content:
+          typeof data?.reply === "string"
+            ? data.reply
+            : "I’m here, but something went sideways. Could you try again?",
+      };
+
+      setMessages((prev) =>
+        prev.map((message) => (message.pending ? assistantReply : message)),
+      );
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error("Chat request failed", error);
+      const errorMessage = (() => {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return "No worries, I stopped that request. What else can I help with?";
+        }
+        if (error instanceof TypeError) {
+          return "Looks like we lost the connection. Check your network and try again.";
+        }
+        if (error instanceof Error && /429/.test(error.message)) {
+          return "We just hit a request limit. Give it a moment and we’ll be back.";
+        }
+        if (error instanceof Error && /5\d{2}/.test(error.message)) {
+          return "Donny’s brain is taking a quick nap (server hiccup). Let’s retry soon.";
+        }
+        return "I couldn’t reach our studio brain right now. Please retry in a moment.";
+      })();
+
+      const fallback: Message = {
+        id: generateId(),
+        role: "assistant",
+        content: errorMessage,
+      };
+      setMessages((prev) =>
+        prev.map((message) => (message.pending ? fallback : message)),
+      );
+    } finally {
+      abortControllerRef.current = null;
+      setIsSending(false);
+    }
+  };
+
+  const handleReset = () => {
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = null;
+    setMessages([defaultGreeting]);
+    setInput("");
+    setIsSending(false);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // ignore
+    }
+  };
 
   return (
     <>
@@ -474,29 +337,16 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             description={description}
             onReset={handleReset}
             onMinimize={closeChat}
-            isSending={isStreaming}
+            isSending={isSending}
           />
-          <ChatMessages
-            ref={scrollerRef}
-            messages={messages}
-            isStreaming={isStreaming}
-          />
-          {errorMessage && (
-            <div
-              className={styles.statusBanner}
-              role="status"
-              aria-live="polite"
-            >
-              {errorMessage}
-            </div>
-          )}
+          <ChatMessages ref={scrollerRef} messages={messages} />
           <ChatComposer
             inputId="donny-input"
             placeholder="Ask about a project, service, or approach…"
-            value={draft}
-            onValueChange={setDraft}
+            value={input}
+            onValueChange={setInput}
             onSubmit={handleSubmit}
-            isSending={isStreaming}
+            isSending={isSending}
             maxLength={1_000}
           />
         </div>

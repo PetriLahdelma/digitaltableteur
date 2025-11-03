@@ -23,25 +23,21 @@ export default meta;
 
 type Story = StoryObj<typeof ChatComposer>;
 
-const InteractiveRender: React.FC<React.ComponentProps<typeof ChatComposer>> = (
-  args,
-) => {
-  const [value, setValue] = useState("How can Donny help today?");
-  return (
-    <ChatComposer
-      {...args}
-      value={value}
-      onValueChange={setValue}
-      onSubmit={(event) => {
-        event.preventDefault();
-        args.onSubmit?.(event);
-      }}
-    />
-  );
-};
-
 export const Interactive: Story = {
-  render: (args) => <InteractiveRender {...args} />,
+  render: (args) => {
+    const [value, setValue] = useState("How can Donny help today?");
+    return (
+      <ChatComposer
+        {...args}
+        value={value}
+        onValueChange={setValue}
+        onSubmit={(event) => {
+          event.preventDefault();
+          args.onSubmit?.(event);
+        }}
+      />
+    );
+  },
 };
 
 export const SendingState: Story = {

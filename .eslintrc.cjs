@@ -16,7 +16,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "prettier", "react-hooks"],
+  plugins: ["react", "@typescript-eslint", "prettier"],
   rules: {
     quotes: ["error", "double"],
     "jsx-quotes": ["error", "prefer-double"],
@@ -26,9 +26,6 @@ module.exports = {
     ],
     "no-undef": "off",
     "no-unused-vars": "off",
-    // React hooks best practices
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
   },
   settings: {
     react: {

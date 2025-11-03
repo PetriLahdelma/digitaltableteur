@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Grid from "@dt/Grid";
 import styles from "./Home.module.css";
@@ -10,14 +10,11 @@ import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const { t } = useTranslation();
-  const texts = useMemo(
-    () => [
-      t("homeCreativeDevelopment"),
-      t("homeStrategyBranding"),
-      t("homeIllustrationEditorial"),
-    ],
-    [t],
-  );
+  const texts = [
+    t("homeCreativeDevelopment"),
+    t("homeStrategyBranding"),
+    t("homeIllustrationEditorial"),
+  ];
   const [currentText, setCurrentText] = useState(texts[0]);
 
   useEffect(() => {
@@ -30,7 +27,7 @@ const Home = () => {
       });
     }, 3000);
     return () => clearInterval(interval);
-  }, [texts]);
+  }, [t]);
 
   return (
     <>

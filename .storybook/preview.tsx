@@ -1,11 +1,6 @@
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "@dt/ThemeProvider";
 import type { Preview } from "@storybook/react-vite";
-import type {
-  Decorator,
-  StoryContext,
-  StoryFn,
-} from "@storybook/react";
 import React, { useEffect, useLayoutEffect } from "react";
 import { I18nextProvider } from "react-i18next";
 import * as storybookIcons from "@storybook/icons";
@@ -158,13 +153,9 @@ const applyThemeToDom = (theme: StorybookTheme) => {
   }
 };
 
-const withI18next: Decorator = (
-  Story: StoryFn,
-  context: StoryContext,
-) => {
-  const theme: StorybookTheme =
-    (context.globals.theme as StorybookTheme) || getStoredTheme();
-  const locale = (context.globals.locale as string) || "en";
+const withI18next = (Story, context) => {
+  const theme: StorybookTheme = context.globals.theme || getStoredTheme();
+  const locale = context.globals.locale || "en";
   useLayoutEffect(() => {
     applyThemeToDom(theme);
     try {

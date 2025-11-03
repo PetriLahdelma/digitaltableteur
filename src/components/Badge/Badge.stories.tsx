@@ -108,33 +108,31 @@ export const Playground: Story = {
   },
 };
 
-const AllVariantsContent: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-      <Badge design="primary">{t("badgePrimary")}</Badge>
-      <Badge design="secondary">{t("badgeSecondary")}</Badge>
-      <Badge design="primary" state="success">
-        {t("badgeSuccess")}
-      </Badge>
-      <Badge design="primary" state="error">
-        {t("badgeError")}
-      </Badge>
-      <Badge design="primary" state="warning">
-        {t("badgeWarning")}
-      </Badge>
-      <Badge design="primary" state="info">
-        {t("badgeInfo")}
-      </Badge>
-      <Badge design="primary" state="neutral">
-        {t("badgeNeutral")}
-      </Badge>
-    </div>
-  );
-};
-
 export const AllVariants: Story = {
-  render: () => <AllVariantsContent />,
+  render: () => {
+    const { t } = useTranslation();
+    return (
+      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+        <Badge design="primary">{t("badgePrimary")}</Badge>
+        <Badge design="secondary">{t("badgeSecondary")}</Badge>
+        <Badge design="primary" state="success">
+          {t("badgeSuccess")}
+        </Badge>
+        <Badge design="primary" state="error">
+          {t("badgeError")}
+        </Badge>
+        <Badge design="primary" state="warning">
+          {t("badgeWarning")}
+        </Badge>
+        <Badge design="primary" state="info">
+          {t("badgeInfo")}
+        </Badge>
+        <Badge design="primary" state="neutral">
+          {t("badgeNeutral")}
+        </Badge>
+      </div>
+    );
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await canvas.findByText(/primary/i);
@@ -147,42 +145,41 @@ export const AllVariants: Story = {
   },
 };
 
-const SecondaryVariantsContent: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
-      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-        <Badge design="secondary">{t("badgeSecondary")}</Badge>
-        <Badge design="secondary" state="success">
-          {t("badgeSuccess")}
-        </Badge>
-        <Badge design="secondary" state="error">
-          {t("badgeError")}
-        </Badge>
-        <Badge design="secondary" state="warning">
-          {t("badgeWarning")}
-        </Badge>
-        <Badge design="secondary" state="info">
-          {t("badgeInfo")}
-        </Badge>
-        <Badge design="secondary" state="neutral">
-          {t("badgeNeutral")}
-        </Badge>
-      </div>
-      <div
-        style={{
-          fontSize: "0.9rem",
-          color: "var(--secondary-text-color, #666)",
-        }}
-      >
-        Secondary badges have no background, only border and text color changes
-      </div>
-    </div>
-  );
-};
-
 export const SecondaryVariants: Story = {
-  render: () => <SecondaryVariantsContent />,
+  render: () => {
+    const { t } = useTranslation();
+    return (
+      <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+          <Badge design="secondary">{t("badgeSecondary")}</Badge>
+          <Badge design="secondary" state="success">
+            {t("badgeSuccess")}
+          </Badge>
+          <Badge design="secondary" state="error">
+            {t("badgeError")}
+          </Badge>
+          <Badge design="secondary" state="warning">
+            {t("badgeWarning")}
+          </Badge>
+          <Badge design="secondary" state="info">
+            {t("badgeInfo")}
+          </Badge>
+          <Badge design="secondary" state="neutral">
+            {t("badgeNeutral")}
+          </Badge>
+        </div>
+        <div
+          style={{
+            fontSize: "0.9rem",
+            color: "var(--secondary-text-color, #666)",
+          }}
+        >
+          Secondary badges have no background, only border and text color
+          changes
+        </div>
+      </div>
+    );
+  },
 };
 
 export const Removable: Story = {
@@ -205,59 +202,58 @@ export const WithIcon: Story = {
   },
 };
 
-const AutoSemanticIconsContent: React.FC = () => (
-  <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
-    <div style={{ display: "flex", gap: "1rem" }}>
-      <BadgeStoryTemplate design="primary" state="success">
-        Success
-      </BadgeStoryTemplate>
-      <BadgeStoryTemplate design="primary" state="info">
-        Info
-      </BadgeStoryTemplate>
-      <BadgeStoryTemplate design="primary" state="error">
-        Error
-      </BadgeStoryTemplate>
-      <BadgeStoryTemplate design="primary" state="warning">
-        Warning
-      </BadgeStoryTemplate>
-      <BadgeStoryTemplate design="primary" state="neutral">
-        Neutral
-      </BadgeStoryTemplate>
-    </div>
-    <div
-      style={{
-        fontSize: "0.9rem",
-        color: "var(--secondary-text-color, #666)",
-      }}
-    >
-      Icons automatically selected based on state when icon prop is empty
-    </div>
-  </div>
-);
-
 export const AutoSemanticIcons: Story = {
-  render: () => <AutoSemanticIconsContent />,
-};
-
-const AllSizesContent: React.FC = () => {
-  const { t } = useTranslation();
-  return (
-    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-      <Badge size="s" design="primary">
-        {t("badgeSmall")}
-      </Badge>
-      <Badge size="m" design="primary">
-        {t("badgeMedium")}
-      </Badge>
-      <Badge size="l" design="primary">
-        {t("badgeLarge")}
-      </Badge>
-    </div>
-  );
+  render: () => {
+    const { t } = useTranslation();
+    return (
+      <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
+        <div style={{ display: "flex", gap: "1rem" }}>
+          <BadgeStoryTemplate design="primary" state="success">
+            Success
+          </BadgeStoryTemplate>
+          <BadgeStoryTemplate design="primary" state="info">
+            Info
+          </BadgeStoryTemplate>
+          <BadgeStoryTemplate design="primary" state="error">
+            Error
+          </BadgeStoryTemplate>
+          <BadgeStoryTemplate design="primary" state="warning">
+            Warning
+          </BadgeStoryTemplate>
+          <BadgeStoryTemplate design="primary" state="neutral">
+            Neutral
+          </BadgeStoryTemplate>
+        </div>
+        <div
+          style={{
+            fontSize: "0.9rem",
+            color: "var(--secondary-text-color, #666)",
+          }}
+        >
+          Icons automatically selected based on state when icon prop is empty
+        </div>
+      </div>
+    );
+  },
 };
 
 export const AllSizes: Story = {
-  render: () => <AllSizesContent />,
+  render: () => {
+    const { t } = useTranslation();
+    return (
+      <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+        <Badge size="s" design="primary">
+          {t("badgeSmall")}
+        </Badge>
+        <Badge size="m" design="primary">
+          {t("badgeMedium")}
+        </Badge>
+        <Badge size="l" design="primary">
+          {t("badgeLarge")}
+        </Badge>
+      </div>
+    );
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await canvas.findByText(/small/i);
