@@ -1,7 +1,7 @@
 import type { IncomingMessage, ServerResponse } from "http";
 import { convertToCoreMessages, streamText } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
-import { digitaltableteurContext } from "./donny-context";
+import { digitaltableteurContext } from "./donny-context.js";
 
 type VercelRequest = IncomingMessage & {
   method?: string;
