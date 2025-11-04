@@ -264,15 +264,12 @@
   align-items: center;
 }
 
-/* Scoped spacing adjustments for embedded Button content.
-   Removing :global to satisfy stylelint; relying on internal Button markup class names.
-   Adjust if Button structure changes. */
 .toggle .icon {
-  margin-inline-end: 0; /* slightly tighter than default */
+  margin-inline-end: 0;
 }
 
 .toggle .text {
-  margin-inline-start: 0; /* neutralize extra margin rule in Button */
+  margin-inline-start: 0;
 }
 
 .toggle .icon svg {
