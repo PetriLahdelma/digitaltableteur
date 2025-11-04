@@ -35,7 +35,7 @@ const DemoScaffold: React.FC = () => {
       style={{
         minHeight: "100vh",
         background:
-          "linear-gradient(135deg, rgba(98, 0, 255, 0.1), rgba(0, 200, 255, 0.2))",
+          "linear-gradient(135deg, rgb(98 0 255 / 10%), rgb(0 200 255 / 20%))",
         padding: "2rem",
       }}
     >
