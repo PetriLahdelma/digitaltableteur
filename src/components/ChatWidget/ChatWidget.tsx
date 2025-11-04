@@ -13,6 +13,7 @@ import ChatComposer from "./ChatComposer";
 import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
 import ChatToggle from "./ChatToggle";
+import { useTranslation } from "react-i18next";
 
 interface ChatWidgetProps {
   title?: string;
@@ -26,16 +27,18 @@ interface ChatWidgetProps {
 
 const STORAGE_KEY = "dt-donny-chat-v2";
 const LEGACY_STORAGE_KEY = "dt-donny-chat";
-const GREETING_TEXT =
+const DEFAULT_GREETING_TEXT =
   "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, services, or anything you see on the site.";
 
 const REMOTE_CHAT_ENDPOINT =
   "https://digitaltableteursecureproxy.vercel.app/api/chat";
 
-const createGreetingMessage = (): UIMessage => ({
+const createGreetingMessage = (
+  text: string = DEFAULT_GREETING_TEXT,
+): UIMessage => ({
   id: "intro",
   role: "assistant",
-  parts: [{ type: "text", text: GREETING_TEXT }],
+  parts: [{ type: "text", text }],
 });
 
 type StoredMessage = {
@@ -108,7 +111,10 @@ const extractTextFromMessage = (message: UIMessage) => {
     .trim();
 };
 
-const toStoredMessages = (messages: UIMessage[]): StoredMessage[] => {
+const toStoredMessages = (
+  messages: UIMessage[],
+  greetingText: string = DEFAULT_GREETING_TEXT,
+): StoredMessage[] => {
   const unique = new Map<string, StoredMessage>();
 
   messages
@@ -143,9 +149,17 @@ const toStoredMessages = (messages: UIMessage[]): StoredMessage[] => {
   );
 
   if (sanitized.length === 0 || sanitized[0]?.id !== "intro") {
-    sanitized.unshift({ id: "intro", role: "assistant", text: GREETING_TEXT });
+    sanitized.unshift({
+      id: "intro",
+      role: "assistant",
+      text: greetingText,
+    });
   } else {
-    sanitized[0] = { id: "intro", role: "assistant", text: GREETING_TEXT };
+    sanitized[0] = {
+      id: "intro",
+      role: "assistant",
+      text: greetingText,
+    };
   }
 
   return sanitized;
@@ -217,7 +231,10 @@ const parseLegacyMessages = (raw: string | null): StoredMessage[] | null => {
   }
 };
 
-const fromStoredMessages = (entries: StoredMessage[]): UIMessage[] => {
+const fromStoredMessages = (
+  entries: StoredMessage[],
+  greetingText: string = DEFAULT_GREETING_TEXT,
+): UIMessage[] => {
   const seen = new Set<string>();
   const ordered: StoredMessage[] = [];
 
@@ -234,7 +251,7 @@ const fromStoredMessages = (entries: StoredMessage[]): UIMessage[] => {
     if (!entry.text.trim()) return;
     if (entry.id === "intro") {
       hasGreeting = true;
-      result.push(createGreetingMessage());
+      result.push(createGreetingMessage(greetingText));
       return;
     }
     result.push({
@@ -245,64 +262,110 @@ const fromStoredMessages = (entries: StoredMessage[]): UIMessage[] => {
   });
 
   if (!hasGreeting) {
-    result.unshift(createGreetingMessage());
+    result.unshift(createGreetingMessage(greetingText));
   }
 
-  return result.length ? result : [createGreetingMessage()];
+  return result.length ? result : [createGreetingMessage(greetingText)];
 };
 
-const loadInitialMessages = (): UIMessage[] => {
+const loadInitialMessages = (
+  greetingText: string = DEFAULT_GREETING_TEXT,
+): UIMessage[] => {
   if (typeof window === "undefined") {
-    return [createGreetingMessage()];
+    return [createGreetingMessage(greetingText)];
   }
 
   const storedV2 = parseStoredMessages(localStorage.getItem(STORAGE_KEY));
   if (storedV2?.length) {
-    return fromStoredMessages(storedV2);
+    return fromStoredMessages(storedV2, greetingText);
   }
 
   const legacy = parseLegacyMessages(localStorage.getItem(LEGACY_STORAGE_KEY));
   if (legacy?.length) {
-    return fromStoredMessages(legacy);
+    return fromStoredMessages(legacy, greetingText);
   }
 
-  return [createGreetingMessage()];
+  return [createGreetingMessage(greetingText)];
 };
-
-const resolveErrorMessage = (error: Error | undefined | null) => {
-  if (!error) return null;
-  const message = error.message ?? "";
-  const normalized = message.toLowerCase();
-
-  if (normalized.includes("abort")) {
-    return null;
-  }
-  if (normalized.includes("failed to fetch")) {
-    return "Looks like we lost the connection. Check your network and try again.";
-  }
-  if (
-    normalized.includes("authentication") ||
-    normalized.includes("unauthorized")
-  ) {
-    return "Chat is offline while we finalize our AI Gateway configuration.";
-  }
-  if (normalized.includes("404") || normalized.includes("not found")) {
-    return "Chat endpoint not found right now; we’re updating the deployment.";
-  }
-  if (normalized.includes("429")) {
-    return "We just hit a request limit. Give it a moment and we’ll be back.";
-  }
-  if (normalized.match(/5\d{2}/)) {
-    return "Donny’s brain is taking a quick nap (server hiccup). Let’s retry soon.";
-  }
-  return "I couldn’t reach our studio brain right now. Please retry in a moment.";
-};
-
 const ChatWidget: React.FC<ChatWidgetProps> = ({
-  title = "Chat with Donny",
-  description = "Brand-specific answers, no fluff.",
+  title,
+  description,
   endpoint,
 }) => {
+  const { t } = useTranslation();
+  const greetingText = t("chatGreeting", DEFAULT_GREETING_TEXT);
+  const resolvedTitle = title ?? t("chatTitle", "Chat with Donny");
+  const resolvedDescription =
+    description ?? t("chatDescription", "Brand-specific answers, no fluff.");
+  const placeholderText = t(
+    "chatPlaceholder",
+    "Ask about a project, service, or approach…",
+  );
+  const inputLabelText = t("chatInputLabel", "Ask Donny a question");
+  const sendLabelText = t("chatSend", "Send message");
+
+  const errorMessages = useMemo(
+    () => ({
+      network: t(
+        "chatErrorNetwork",
+        "Looks like we lost the connection. Check your network and try again.",
+      ),
+      auth: t(
+        "chatErrorAuth",
+        "Chat is offline while we finalize our AI Gateway configuration.",
+      ),
+      notFound: t(
+        "chatErrorNotFound",
+        "Chat endpoint not found right now; we’re updating the deployment.",
+      ),
+      rateLimit: t(
+        "chatErrorRateLimit",
+        "We just hit a request limit. Give it a moment and we’ll be back.",
+      ),
+      server: t(
+        "chatErrorServer",
+        "Donny’s brain is taking a quick nap (server hiccup). Let’s retry soon.",
+      ),
+      fallback: t(
+        "chatErrorFallback",
+        "I couldn’t reach our studio brain right now. Please retry in a moment.",
+      ),
+    }),
+    [t],
+  );
+
+  const resolveErrorMessage = useCallback(
+    (error: Error | undefined | null) => {
+      if (!error) return null;
+      const message = error.message ?? "";
+      const normalized = message.toLowerCase();
+
+      if (normalized.includes("abort")) {
+        return null;
+      }
+      if (normalized.includes("failed to fetch")) {
+        return errorMessages.network;
+      }
+      if (
+        normalized.includes("authentication") ||
+        normalized.includes("unauthorized")
+      ) {
+        return errorMessages.auth;
+      }
+      if (normalized.includes("404") || normalized.includes("not found")) {
+        return errorMessages.notFound;
+      }
+      if (normalized.includes("429")) {
+        return errorMessages.rateLimit;
+      }
+      if (normalized.match(/5\d{2}/)) {
+        return errorMessages.server;
+      }
+      return errorMessages.fallback;
+    },
+    [errorMessages],
+  );
+
   const [isOpen, setIsOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const scrollerRef = useRef<HTMLDivElement | null>(null);
@@ -328,7 +391,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     return "/api/chat";
   }, [endpoint]);
 
-  const [initialMessages] = useState<UIMessage[]>(() => loadInitialMessages());
+  const [initialMessages] = useState<UIMessage[]>(() =>
+    loadInitialMessages(greetingText),
+  );
 
   const transport = useMemo(() => {
     return new DefaultChatTransport({
@@ -383,13 +448,24 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {
-      const serialized = toStoredMessages(messages);
+      const serialized = toStoredMessages(messages, greetingText);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(serialized));
       localStorage.removeItem(LEGACY_STORAGE_KEY);
     } catch {
       // ignore storage errors
     }
-  }, [messages]);
+  }, [messages, greetingText]);
+
+  useEffect(() => {
+    setMessages((previous) => {
+      if (!previous.length) return previous;
+      const [first, ...rest] = previous;
+      if (!first || first.id !== "intro") return previous;
+      const currentText = extractTextFromMessage(first);
+      if (currentText === greetingText) return previous;
+      return [createGreetingMessage(greetingText), ...rest];
+    });
+  }, [greetingText, setMessages]);
 
   const closeChat = useCallback(() => {
     if (!isOpen) return;
@@ -454,7 +530,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   const handleReset = useCallback(() => {
     stop();
-    const resetMessages = [createGreetingMessage()];
+    const resetMessages = [createGreetingMessage(greetingText)];
     setMessages(resetMessages);
     setDraft("");
     clearError();
@@ -463,13 +539,13 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       try {
         localStorage.setItem(
           STORAGE_KEY,
-          JSON.stringify(toStoredMessages(resetMessages)),
+          JSON.stringify(toStoredMessages(resetMessages, greetingText)),
         );
       } catch {
         // ignore storage errors
       }
     }
-  }, [stop, setMessages, clearError]);
+  }, [stop, setMessages, clearError, greetingText]);
 
   return (
     <>
@@ -484,8 +560,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           tabIndex={isOpen ? 0 : -1}
         >
           <ChatHeader
-            title={title}
-            description={description}
+            title={resolvedTitle}
+            description={resolvedDescription}
             onReset={handleReset}
             onMinimize={closeChat}
             isSending={isStreaming}
@@ -506,7 +582,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           )}
           <ChatComposer
             inputId="donny-input"
-            placeholder="Ask about a project, service, or approach…"
+            placeholder={placeholderText}
+            label={inputLabelText}
+            sendLabel={sendLabelText}
             value={draft}
             onValueChange={setDraft}
             onSubmit={handleSubmit}

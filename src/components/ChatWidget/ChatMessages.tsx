@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
 
@@ -41,6 +42,7 @@ const getMessageText = (message: UIMessage) => {
 
 const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
   ({ messages, isStreaming }, ref) => {
+    const { t } = useTranslation();
     const conversation = messages.filter((message) =>
       isSupportedRole(message.role),
     );
@@ -50,8 +52,13 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
         {conversation.map((message) => {
           const copy = getMessageText(message);
           const isAssistant = message.role === "assistant";
-          const fallback =
-            isAssistant && isStreaming ? "Thinking…" : isAssistant ? "…" : "";
+          const thinking = t("chatThinking", "Thinking…");
+          const ellipsis = t("chatEllipsis", "…");
+          const fallback = isAssistant
+            ? isStreaming
+              ? thinking
+              : ellipsis
+            : "";
 
           return (
             <div
