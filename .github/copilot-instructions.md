@@ -142,3 +142,18 @@ npm run eslint-fix   # Auto-fix linting issues
 - **Asset Optimization**: Leaflet icons copied to public during build
 - **Bundle Analysis**: Vite provides built-in analysis
 - **Cache Strategy**: Aggressive filename hashing + manual cache busting
+
+## Chat Markdown Rendering
+
+The `ChatWidget` uses a `MarkdownMessage` component to render assistant/user replies with GitHub-flavored Markdown. Implementation details:
+
+- Library: `react-markdown` + `remark-gfm`
+- Security: `skipHtml` prevents unsanitized HTML injection; links get `rel="noopener noreferrer"`
+- Styling: Design tokens applied via `MarkdownMessage.module.css` for headings, lists, code blocks, tables
+- Fallback: Streaming replies show translated thinking/ellipsis until first text arrives
+
+When modifying markdown rendering:
+
+- Keep raw HTML disabled unless a sanitization layer (rehype-sanitize) is added
+- Update tests (`MarkdownMessage.test.tsx`) and Storybook (`MarkdownMessage.stories.tsx`)
+- Refresh visual baselines if styling changes (`npm run test:visual`)

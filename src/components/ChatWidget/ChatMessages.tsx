@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
+import MarkdownMessage from "@dt/MarkdownMessage";
 
 interface ChatMessagesProps {
   messages: UIMessage[];
@@ -66,7 +67,11 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
               className={styles.message}
               data-role={message.role}
             >
-              <p>{copy || fallback}</p>
+              <MarkdownMessage
+                content={copy}
+                fallback={fallback}
+                data-role={message.role}
+              />
             </div>
           );
         })}
