@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
 import MarkdownMessage from "@dt/MarkdownMessage";
+import OpenHours from "@dt/OpenHours";
 
 interface ChatMessagesProps {
   messages: UIMessage[];
@@ -60,6 +61,32 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
               ? thinking
               : ellipsis
             : "";
+
+          // Token replacement for dynamic components inside markdown stream
+          const TOKEN = "[[openHours]]";
+          if (copy.includes(TOKEN)) {
+            const segments = copy.split(TOKEN);
+            return (
+              <div
+                key={message.id}
+                className={styles.message}
+                data-role={message.role}
+              >
+                {segments.map((seg, i) => (
+                  <React.Fragment key={i}>
+                    {seg && (
+                      <MarkdownMessage
+                        content={seg}
+                        fallback={fallback}
+                        data-role={message.role}
+                      />
+                    )}
+                    {i < segments.length - 1 && <OpenHours compact />}
+                  </React.Fragment>
+                ))}
+              </div>
+            );
+          }
 
           return (
             <div
