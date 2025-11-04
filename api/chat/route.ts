@@ -1,32 +1,14 @@
 import { convertToCoreMessages, streamText } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
 import {
-  allowedOrigins,
   ChatApiError,
   resolveModelId,
   systemPrompt,
-} from "../chat";
+  createCorsHeaders,
+  validateMessages,
+} from "../chat-shared.ts"; // shared chat utilities
 
-type ChatRequestBody = {
-  messages?: unknown;
-};
-
-const resolveOrigin = (origin: string | null) => {
-  if (origin && allowedOrigins.includes(origin)) {
-    return origin;
-  }
-  return allowedOrigins[0];
-};
-
-const createCorsHeaders = (origin: string | null) => {
-  const resolved = resolveOrigin(origin);
-  return {
-    "Access-Control-Allow-Origin": resolved,
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    Vary: "Origin",
-  } satisfies Record<string, string>;
-};
+type ChatRequestBody = { messages?: unknown };
 
 const readRequestBody = async (request: Request): Promise<ChatRequestBody> => {
   try {
@@ -67,11 +49,10 @@ export const POST = async (request: Request) => {
     }
 
     const body = await readRequestBody(request);
-    const messages = body.messages;
-
-    if (!Array.isArray(messages)) {
-      throw new ChatApiError(400, "messages must be an array");
-    }
+    const messagesUnknown = body.messages;
+    const runValidate: (m: unknown) => asserts m is any[] = validateMessages;
+    runValidate(messagesUnknown);
+    const messages = messagesUnknown as any[];
 
     const openai = createOpenAI({ apiKey });
     const modelId = resolveModelId();
@@ -87,13 +68,19 @@ export const POST = async (request: Request) => {
     return result.toUIMessageStreamResponse({
       headers,
     });
-  } catch (error) {
-    const status = error instanceof ChatApiError ? error.status : 500;
-    const message =
-      error instanceof ChatApiError
-        ? error.message
-        : "Donny ran into a snag. Please try again soon.";
-
-    return jsonResponse(status, headers, { error: message });
+  } catch (caught: unknown) {
+    const error = caught;
+    if (error instanceof ChatApiError) {
+      const typed = error as ChatApiError;
+      return jsonResponse(typed.status, headers, { error: typed.message });
+    }
+    if (error instanceof Error) {
+      console.error("Chat route unexpected error", error.message, error.stack);
+    } else {
+      console.error("Chat route non-error throw", error);
+    }
+    return jsonResponse(500, headers, {
+      error: "Donny ran into a snag. Please try again soon.",
+    });
   }
 };
