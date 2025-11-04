@@ -47,6 +47,20 @@
   max-width: 70%;
 }
 
+.availabilityIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.availabilityIconClosed {
+  color: var(--color-error);
+}
+
+.availabilityIconOpen {
+  color: var(--color-success);
+}
+
 .tagline {
   margin: 0;
   font-size: 0.75rem;

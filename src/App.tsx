@@ -52,30 +52,9 @@ function App() {
   return (
     <ChunkErrorBoundary>
       <Router>
-        <div
-          style={{
-            display: "block",
-            height: "100vh",
-            width: "100vw",
-            position: "relative",
-          }}
-        >
+        <div>
           <CookieConsent />
-          <Suspense
-            fallback={
-              <div
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  fontSize: "1rem",
-                  fontFamily: "Moderat, sans-serif",
-                }}
-              >
-                Loading…
-              </div>
-            }
-          >
+          <Suspense fallback={<div>Loading…</div>}>
             <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
