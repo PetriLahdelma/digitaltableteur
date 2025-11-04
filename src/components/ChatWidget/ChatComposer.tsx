@@ -4,6 +4,7 @@ import { IoSend } from "react-icons/io5";
 import { ChatTextArea } from "../Inputs/TextArea";
 import styles from "./ChatWidget.module.css";
 import { useTranslation } from "react-i18next";
+import Text from "@dt/Text";
 
 interface ChatComposerProps {
   labelId?: string;
@@ -55,6 +56,21 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
           maxLength={maxLength}
           disabled={isSending}
           aria-live="polite"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+              // Trigger submit programmatically while preserving normal Enter behavior for newlines.
+              const form = e.currentTarget.form;
+              if (form) {
+                e.preventDefault();
+                // Construct a synthetic submit event to reuse existing logic.
+                const submitEvent = new Event("submit", {
+                  cancelable: true,
+                  bubbles: true,
+                });
+                form.dispatchEvent(submitEvent);
+              }
+            }
+          }}
         />
         <Button
           type="submit"
@@ -66,6 +82,17 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
           size="m"
         />
       </div>
+      <Text
+        size="S"
+        terminals="sans"
+        className={styles.shortcutHint}
+        aria-live="polite"
+      >
+        {t(
+          "chatShortcutSubmit",
+          "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' on PC to prompt instantly.",
+        )}
+      </Text>
     </form>
   );
 };
