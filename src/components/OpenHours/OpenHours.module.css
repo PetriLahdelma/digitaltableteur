@@ -2,7 +2,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-s);
   padding: var(--space-internal-16);
-  background: var(--color-surface-alt, var(--main-body-background-color));
+  background: var(--color-primary);
   font-family: var(--font-family-sans);
   font-size: var(--font-size-text-s);
   line-height: 1.4;
@@ -13,21 +13,18 @@
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: var(--space-internal-8);
+  color: var(--color-white);
 }
 
 .badge {
   display: inline-block;
   padding: 0 var(--space-internal-8);
-  border-radius: var(--radius-xs);
-  font-size: var(--font-size-text-s);
-  background: var(--color-success);
-  color: var(--color-white);
-  font-weight: 600;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
+  color: var(--color-primary);
 }
 
 .table th,
@@ -38,7 +35,7 @@
 }
 
 .table tbody tr:nth-child(even) td {
-  background: var(--color-light-bg);
+  background: var(--color-white);
 }
 
 .closed {

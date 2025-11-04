@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./OpenHours.module.css";
 import { WEEKLY_HOURS, isCurrentlyOpen } from "../../data/openHours";
 import { useTranslation } from "react-i18next";
+import Badge from "@dt/Badge";
 
 export interface OpenHoursProps {
   compact?: boolean;
@@ -27,11 +28,17 @@ const OpenHours: React.FC<OpenHoursProps> = ({
     >
       <div className={styles.headerRow}>
         <strong>{t("openHours.heading", "Open hours")}</strong>
-        <span className={styles.badge} aria-live="polite">
+        <Badge
+          design="secondary"
+          square="true"
+          size="s"
+          className={styles.badge}
+          aria-live="polite"
+        >
           {open
             ? t("openHours.openNow", "Open now")
             : t("openHours.closedNow", "Closed now")}
-        </span>
+        </Badge>
       </div>
       <table className={styles.table} role="table">
         <thead>
