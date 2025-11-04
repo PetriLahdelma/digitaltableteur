@@ -142,13 +142,14 @@ Extensibility:
 
 The assistant can embed dynamic UI components inside streamed markdown by emitting special bracket tokens. Currently supported:
 
-| Token | Renders |
-| ----- | ------- |
+| Token           | Renders                                                          |
+| --------------- | ---------------------------------------------------------------- |
 | `[[openHours]]` | The `<OpenHours compact />` component with live "open now" badge |
 
 Guidelines:
+
 - Tokens should appear on their own line or surrounded by blank lines for clearer layout, but inline usage is also supported.
 - Multiple occurrences in a single message are allowed.
 - Unknown tokens are left as plain text (future enhancement: whitelist enforcement before rendering).
 
-Model Prompting Tip: Add a system / developer hint instructing the model: *"When the user asks about our availability or operating times, include the token [[openHours]] where the schedule should appear."*
+Model Prompting Tip: Add a system / developer hint instructing the model: _"When the user asks about our availability or operating times, include the token [[openHours]] where the schedule should appear."_
