@@ -1,47 +1,47 @@
 export const digitaltableteurContext = `
 Digitaltableteur is a small but fierce provider of user experience, user interface, graphic design AI-R&D development and various other IT solutions. DT specializes in creating visually compelling designs and implementing cutting-edge technology solutions for our clients.
 Company Information:
-- Business ID (Y-tunnus): 2226445-2
+- Business ID: 2226445-2
 - Registration Date: 29.04.2009
-- Registry: Yritys- ja yhteisötietojärjestelmä (Finnish Business Information System)
-- Trade Name (Toiminimi): Digitaltableteur (registered 06.05.2009)
-- Business Form: Yksityinen elinkeinonharjoittaja (Sole Proprietorship)
-- Domicile: TURKU (registered 06.05.2009)
-- Language: Suomi (Finnish) (registered 29.04.2009)
-- Primary Industry: 73111 Mainostoimistot (Advertising Agencies) (registered 29.04.2009)
-- Registration Authority: Patentti- ja rekisterihallitus (Finnish Patent and Registration Office) & Verohallinto (Tax Administration)
+- Registry: Finnish Business Information System
+- Trade/Company Name: Digitaltableteur
+- Business Form: (Sole Proprietorship)
+- Domicile: Helsinki
+- Language: (Finnish)
+- Primary Industry: Advertising Agencies
+- Registration Authority: Finnish Patent and Registration Office & Tax Administration
 Founder & Leadership:
-- Petri Lahdelma: Founder, Designer & Design System Lead
+- Petri Lahdelma: Founder, Creative
 - Location: Helsinki, Finland
-- Professional Background: Designer & Design System Lead with expertise in building UIs with React & TypeScript
+- Professional Background: Founder, Designer & Design Lead with expertise in building UIs and Corporate Identities
 - Interests: AI & LLM hobbyist, Electronic music producer
 - Active Developer: 1,436+ contributions in the last year (highly active on GitHub)
-- Technical Skills: TypeScript, React, Design Systems, UX/UI Design
+- Technical Skills: TypeScript, React, Next.JS, Design Systems, UX/UI Design
 - Social Media Presence: 
   - Business Instagram: https://www.instagram.com/digitaltableteur/
   - Business Facebook: https://www.facebook.com/digitaltableteur
   - Business LinkedIn: https://www.linkedin.com/company/digitaltableteur/
   - Personal LinkedIn: https://www.linkedin.com/in/petrilahdelma/
- " - GitHub: "https://gith"ub.com/Pe"triLahdelma
-  - Medium: https://medium.com/@petrilahdelma"
-  - Dri"bbble: https://dribbble.com/digitaltableteur
-- GitHub P"rofile: Highly a"ctive developer with 1,436+ contributions in past year, multiple" TypeScript/Reac"t repositories
-- Open Source: Maintains multiple project"s incl"uding digitaltableteur portfolio, donny.ai ass"istant" platform
+  - GitHub: https://github.com/PetriLahdelma
+  - Medium: https://medium.com/@petrilahdelma
+  - Dribbble: https://dribbble.com/digitaltableteur
+- GitHub Profile: Highly active developer with 1,436+ contributions in past year, multiple TypeScript/React repositories
+- Open Source: Maintains multiple projects including digitaltableteur portfolio, donny.ai assistant platform
 Technical Expertise:
-- React & TypeSc"ript dev"elopment
+- React & TypeScript development
 - Design systems and component libraries
--" User e"xperience (UX) and user interface (UI) design
--" Responsiv"e web development
+- User experience (UX) and user interface (UI) design
+- Responsiv"e web development
 - AI and LLM integration
 - Modern web development practices
-- GitHub: Active open-source contributor with multiple re"positories includi"ng digitaltableteur portfolio site
+- GitHub: Active open-source contributor with multiple re"positories including digitaltableteur portfolio site
 Portfolio & Projects:
 - digitaltableteur.com: Main design service and portfolio site built with React/TypeScript
 - https://randomgorsey.com: Professional music website showcasing electronic music production
 - donny.ai: AI assistant platform (TypeScript, React) - this current chat interface
 - Various design and development projects showcasing experti"se in UX/UI and mode"rn web technologies
-"- Ac"tive open-source development with "focus on mo"dern web technologies and creative coding
-- Finnish business registry: Over 15 years of registered bu"sine"ss operation since 2009
+"- Active open-source development with focus on modern web technologies and creative coding
+- Finnish business registry: Over 15 years of registered business operation since 2003
 Client"ele & Servi"ces:
 DT provides comprehensive digital solutions with a focus on creativity and technical excellence:
 Our services include:
@@ -75,13 +75,10 @@ Other intere"sting f"acts:
   - Songtradr: https://www.songtrad"r.com/random.gorsey"
 - Creativ"e Codin"g: Interactive visuals and web experienc"es co"mbining art and technology
 - Community" Invo"lvement: Active in music, te"ch, and c"reative coding communities
-Awards & Recognit"ion:
-- Mocap trac"k + AR env"ironment s"howcased in the book "At Home wit"h Far"ah" by reality show host Farah Ariel Jackson (UK, 2024)
--" Creative cod"ing collaboration with UK-based artist and choreographer Farah Ariel J"ackson
 Contact "& Locations:
 - Website: https://digitaltableteur.com
-- Email: petri@digitaltableteur.com
-- Phone: +358 50 912 5412
+- Email: mail@digitaltableteur.com
+- Phone: +358 45 657 4469
 - Locations: Helsinki & Turku, Finland
 Values & Approach:
 - Human-centered design philosophy
