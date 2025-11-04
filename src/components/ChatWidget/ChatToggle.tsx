@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@dt/Button";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import styles from "./ChatWidget.module.css";
+import { useTranslation } from "react-i18next";
 
 interface ChatToggleProps {
   isOpen: boolean;
@@ -10,24 +11,32 @@ interface ChatToggleProps {
 }
 
 const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
-  ({ isOpen, onToggle, controlsId }, ref) => (
-    <Button
-      type="button"
-      rounded
-      className={styles.toggle}
-      ref={ref}
-      data-open={isOpen}
-      onClick={onToggle}
-      icon={<IoChatbubbleEllipsesOutline />}
-      aria-expanded={isOpen}
-      aria-controls={controlsId}
-      aria-label={isOpen ? "Hide chat" : "Chat with Donny"}
-      variant="primary"
-      size="m"
-    >
-      <span className={styles.toggleLabel}>Chat</span>
-    </Button>
-  ),
+  ({ isOpen, onToggle, controlsId }, ref) => {
+    const { t } = useTranslation();
+    const toggleLabel = t("chatToggleLabel", "Chat");
+    const ariaLabel = isOpen
+      ? t("chatToggleClose", "Hide chat")
+      : t("chatToggleOpen", "Chat with Donny");
+
+    return (
+      <Button
+        type="button"
+        rounded
+        className={styles.toggle}
+        ref={ref}
+        data-open={isOpen}
+        onClick={onToggle}
+        icon={<IoChatbubbleEllipsesOutline />}
+        aria-expanded={isOpen}
+        aria-controls={controlsId}
+        aria-label={ariaLabel}
+        variant="primary"
+        size="m"
+      >
+        <span className={styles.toggleLabel}>{toggleLabel}</span>
+      </Button>
+    );
+  },
 );
 
 ChatToggle.displayName = "ChatToggle";
