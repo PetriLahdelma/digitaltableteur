@@ -17,6 +17,8 @@ interface ChatComposerProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   isSending: boolean;
   maxLength?: number;
+  minRows?: number; // controls initial height
+  maxRows?: number; // controls max auto-grow height
 }
 
 const ChatComposer: React.FC<ChatComposerProps> = ({
@@ -30,11 +32,13 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
   onSubmit,
   isSending,
   maxLength = 1_000,
+  minRows = 1,
+  maxRows = 6,
 }) => {
   const { t } = useTranslation();
   const resolvedPlaceholder =
     placeholder ??
-    t("chatPlaceholder", "Ask about a project, service, or approach…");
+    t("chatPlaceholder", "Ask about a open hours, service, or approach…");
   const resolvedLabel = label ?? t("chatInputLabel", "Ask Donny a question");
   const resolvedSendLabel = sendLabel ?? t("chatSend", "Send message");
 
@@ -51,8 +55,8 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
           placeholder={resolvedPlaceholder}
           value={value}
           onValueChange={onValueChange}
-          minRows={1}
-          maxRows={6}
+          minRows={minRows}
+          maxRows={maxRows}
           maxLength={maxLength}
           disabled={isSending}
           aria-live="polite"
