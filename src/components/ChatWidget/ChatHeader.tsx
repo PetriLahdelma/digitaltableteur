@@ -5,7 +5,7 @@ import Button from "@dt/Button";
 import styles from "./ChatWidget.module.css";
 import Badge from "@dt/Badge";
 
-// Lightweight CalendarX icon (Lucide-style approximation) without extra deps
+// Lightweight calendar icons (Lucide-style approximations) without extra deps
 const CalendarX: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +24,26 @@ const CalendarX: React.FC<{ className?: string }> = ({ className }) => (
     <line x1={3} y1={10} x2={21} y2={10} />
     <line x1={10} y1={14} x2={14} y2={18} />
     <line x1={14} y1={14} x2={10} y2={18} />
+  </svg>
+);
+
+const CalendarCheck: React.FC<{ className?: string }> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    <rect x={3} y={4} width={18} height={18} rx={2} ry={2} />
+    <line x1={16} y1={2} x2={16} y2={6} />
+    <line x1={8} y1={2} x2={8} y2={6} />
+    <line x1={3} y1={10} x2={21} y2={10} />
+    <polyline points="9 14 11 16 15 12" />
   </svg>
 );
 import { useTranslation } from "react-i18next";
@@ -74,9 +94,8 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
 
   const withinHours = useMemo(() => {
     const { hour, weekday } = helsinkiNow;
-    // Weekday check: Monday-Friday
     const isWeekday = /mon|tue|wed|thu|fri/i.test(weekday);
-    return isWeekday && hour >= 9 && hour < 15; // 09:00 inclusive, 15:00 exclusive
+    return isWeekday && hour >= 9 && hour < 15;
   }, [helsinkiNow]);
 
   const availabilityLabel = withinHours
@@ -96,7 +115,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           title={availabilityLabel}
           icon={
             withinHours ? (
-              <CalendarX
+              <CalendarCheck
                 className={`${styles.availabilityIcon} ${styles.availabilityIconOpen}`}
               />
             ) : (
