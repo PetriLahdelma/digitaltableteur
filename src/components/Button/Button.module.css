@@ -100,6 +100,14 @@
   vertical-align: middle;
 }
 
+.button .text {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1; /* avoid extra vertical space from font metrics */
+}
+
+/* (moved tertiary spacing override below generic spacing rules) */
+
 .button.iconOnly .icon {
   display: flex;
   align-items: center;
@@ -126,6 +134,19 @@
 
 .button > .text + .icon {
   margin-inline-start: 0.5rem; /* Add padding between text and icon when icon appears after the text */
+}
+
+/* Tertiary variant: slightly tighter icon-text spacing */
+.button.tertiary .icon[data-button-slot="icon"] {
+  margin-inline-end: var(--space-internal-4);
+}
+
+.button.tertiary > :not(:last-child):is(svg, .icon) + .text {
+  margin-inline-start: var(--space-internal-4);
+}
+
+.button.tertiary > .text + .icon[data-button-slot="end-icon"] {
+  margin-inline-start: var(--space-internal-4);
 }
 
 .button.s {

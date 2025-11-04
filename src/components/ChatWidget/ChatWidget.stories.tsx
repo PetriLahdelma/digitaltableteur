@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import ChatWidget from "./ChatWidget";
 import { ChatTextArea } from "../Inputs/TextArea";
+import Title from "@dt/Title";
+import Text from "@dt/Text";
 
 const FAKE_ENDPOINT = "/storybook-fake-chat";
 
@@ -105,12 +107,14 @@ const ChatWidgetStoryDemo = () => {
       }}
     >
       <div style={{ maxWidth: "32rem", marginBottom: "6rem" }}>
-        <h2>Donny Preview</h2>
-        <p style={{ fontSize: "0.95rem", lineHeight: 1.6 }}>
+        <Text size="M" terminals="sans">
+          Donny Preview
+        </Text>
+        <Text size="S">
           Click the chat bubble in the bottom-right corner to open the demo. You
           can type a prompt and Donny will answer with a prerecorded reply so
           you can explore the flow without calling the real API.
-        </p>
+        </Text>
       </div>
       <ChatWidget
         endpoint={FAKE_ENDPOINT}
