@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
 import MarkdownMessage from "@dt/MarkdownMessage";
-import OpenHours from "@dt/OpenHours";
+import OpenHours from "@dt/OpenHours/OpenHours";
 
 interface ChatMessagesProps {
   messages: UIMessage[];
