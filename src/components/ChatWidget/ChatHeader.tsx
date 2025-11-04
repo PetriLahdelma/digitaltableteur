@@ -40,7 +40,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           disabled={isSending}
           aria-label={resetAriaLabel}
           variant="tertiary"
-          size="s"
+          size="m"
           icon={<IoMdRefresh />}
         >
           {resetLabel}
@@ -50,7 +50,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           onClick={onMinimize}
           aria-label={minimizeAriaLabel}
           variant="tertiary"
-          size="s"
+          size="m"
           icon={<FaChevronDown />}
         />
       </div>
