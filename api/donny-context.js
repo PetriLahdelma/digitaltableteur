@@ -1,6 +1,7 @@
 export const digitaltableteurContext = `
 Digitaltableteur is a small but fierce provider of user experience, user interface, graphic design AI-R&D development and various other IT solutions. DT specializes in creating visually compelling designs and implementing cutting-edge technology solutions for our clients.
 Company Information:
+- Open hours: Monday-Friday, 9.00-17.00
 - Business ID: 2226445-2
 - Registration Date: 29.04.2009
 - Registry: Finnish Business Information System
