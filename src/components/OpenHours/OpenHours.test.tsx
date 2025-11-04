@@ -3,14 +3,15 @@ import React from "react";
 import OpenHours from "./OpenHours";
 import { WEEKLY_HOURS } from "../../data/openHours";
 import { I18nextProvider } from "react-i18next";
-import i18n from "../../i18n";
+import i18n, { initI18n } from "../../i18n";
 
 function withI18n(ui: React.ReactElement) {
   return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
 }
 
 describe("OpenHours", () => {
-  it("renders heading and columns", () => {
+  it("renders heading and columns", async () => {
+    await initI18n();
     render(withI18n(<OpenHours />));
     expect(
       screen.getByText(/Open hours|Aukioloajat|Öppettider/),
@@ -20,9 +21,10 @@ describe("OpenHours", () => {
     expect(screen.getByText(/Closes|Sulkeutuu|Stänger/)).toBeInTheDocument();
   });
 
-  it("shows closed for weekend", () => {
+  it("shows closed for weekend", async () => {
     const saturday = WEEKLY_HOURS.find((d) => d.day === "saturday");
     expect(saturday?.open).toBeNull();
+    await initI18n();
     render(
       withI18n(
         <OpenHours
@@ -31,6 +33,7 @@ describe("OpenHours", () => {
         />,
       ),
     ); // 1 Nov 2025 is Saturday
-    expect(screen.getByText(/Closed|Suljettu|Stängt/)).toBeInTheDocument();
+  const closedEls = screen.getAllByText(/Closed|Suljettu|Stängt/);
+  expect(closedEls.length).toBeGreaterThan(0);
   });
 });

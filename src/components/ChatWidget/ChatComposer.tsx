@@ -61,18 +61,21 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
           disabled={isSending}
           aria-live="polite"
           onKeyDown={(e) => {
-            if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
-              // Trigger submit programmatically while preserving normal Enter behavior for newlines.
-              const form = e.currentTarget.form;
-              if (form) {
-                e.preventDefault();
-                // Construct a synthetic submit event to reuse existing logic.
-                const submitEvent = new Event("submit", {
-                  cancelable: true,
-                  bubbles: true,
-                });
-                form.dispatchEvent(submitEvent);
+            if (e.key === "Enter") {
+              const isShift = e.shiftKey;
+              if (!isShift) {
+                // Send on plain Enter
+                const form = e.currentTarget.form;
+                if (form) {
+                  e.preventDefault();
+                  const submitEvent = new Event("submit", {
+                    cancelable: true,
+                    bubbles: true,
+                  });
+                  form.dispatchEvent(submitEvent);
+                }
               }
+              // If Shift+Enter, allow default (newline) by not preventing.
             }
           }}
         />
@@ -93,8 +96,8 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
         aria-live="polite"
       >
         {t(
-          "chatShortcutSubmit",
-          "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' on PC to prompt instantly.",
+          "chatShortcutHint",
+          "Press Enter to send. Use Shift + Enter for a new line.",
         )}
       </Text>
     </form>
