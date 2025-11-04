@@ -35,3 +35,4 @@ export { ThemeProvider, useTheme } from "./ThemeProvider/ThemeProvider";
 export { default as Title } from "./Title/Title";
 export { default as Toast } from "./Toast/Toast";
 export { default as WorkNav } from "./WorkNav/WorkNav";
+export { default as MarkdownMessage } from "./MarkdownMessage";

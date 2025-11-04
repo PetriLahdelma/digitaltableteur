@@ -4,12 +4,12 @@ The Donny widget streams assistant replies with the [Vercel AI SDK](https://ai-s
 
 ## Environment variables
 
-| Variable | Purpose | Default / Notes |
-| --- | --- | --- |
-| `VITE_DONNY_CHAT_ENDPOINT` | Overrides the client request URL. The production build points to `https://digitaltableteursecureproxy.vercel.app/api/chat`. | `/api/chat` in custom deployments |
-| `OPENAI_CHAT_MODEL` | Optional override for the OpenAI chat model. | `gpt-4o-mini` (derived from `AI_GATEWAY_MODEL` if prefixed with `openai/`) |
-| `AI_GATEWAY_MODEL` | Legacy model hint. If present the `openai/` prefix is stripped and reused. | — |
-| `OPENAI_API_KEY` | Pulled from the `digitaltableteur_secure_proxy` Vercel project via `vercel env pull`. | — |
+| Variable                   | Purpose                                                                                                                     | Default / Notes                                                            |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `VITE_DONNY_CHAT_ENDPOINT` | Overrides the client request URL. The production build points to `https://digitaltableteursecureproxy.vercel.app/api/chat`. | `/api/chat` in custom deployments                                          |
+| `OPENAI_CHAT_MODEL`        | Optional override for the OpenAI chat model.                                                                                | `gpt-4o-mini` (derived from `AI_GATEWAY_MODEL` if prefixed with `openai/`) |
+| `AI_GATEWAY_MODEL`         | Legacy model hint. If present the `openai/` prefix is stripped and reused.                                                  | —                                                                          |
+| `OPENAI_API_KEY`           | Pulled from the `digitaltableteur_secure_proxy` Vercel project via `vercel env pull`.                                       | —                                                                          |
 
 > Run `vercel env pull .env.local` whenever the secure proxy secrets change so local development keeps using the deployed credentials.
 
@@ -36,16 +36,23 @@ const resolveModelId = () => {
   const explicit = process.env.OPENAI_CHAT_MODEL?.trim();
   if (explicit) return explicit;
   const candidate = process.env.AI_GATEWAY_MODEL?.trim();
-  if (candidate?.startsWith("openai/")) return candidate.slice("openai/".length);
+  if (candidate?.startsWith("openai/"))
+    return candidate.slice("openai/".length);
   return candidate || "gpt-4o-mini";
 };
 
 export default async function handler(
-  req: IncomingMessage & { method?: string; body?: unknown; headers?: Record<string, string> },
+  req: IncomingMessage & {
+    method?: string;
+    body?: unknown;
+    headers?: Record<string, string>;
+  },
   res: ServerResponse,
 ) {
   const origin = req.headers?.origin;
-  const corsOrigin = allowedOrigins.includes(origin ?? "") ? origin : allowedOrigins[0];
+  const corsOrigin = allowedOrigins.includes(origin ?? "")
+    ? origin
+    : allowedOrigins[0];
   res.setHeader("Access-Control-Allow-Origin", corsOrigin);
   res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -110,3 +117,23 @@ export default async function handler(
 - The handler returns a [UI message stream](https://ai-sdk.dev/docs/ai-sdk-ui/ui-message-stream) that the `useChat` hook consumes.
 - The widget falls back to `https://digitaltableteursecureproxy.vercel.app/api/chat` when running on `digitaltableteur.com` or `localhost`. Set `VITE_DONNY_CHAT_ENDPOINT` to point elsewhere if you host the API on another origin.
 - Conditioning and retrieval can happen before `streamText` (fetch context, call tools, inject memory, etc.).
+
+## Markdown Rendering
+
+The chat widget now supports GitHub-flavored Markdown (GFM) for assistant and user messages via the `MarkdownMessage` component, powered by `react-markdown` + `remark-gfm`.
+
+Security / sanitization:
+
+- Raw HTML is currently disabled (`skipHtml`).
+- Links receive `rel="noopener noreferrer"`.
+- Code blocks and inline code are styled with design tokens.
+
+Fallback behavior:
+
+- While a streamed assistant reply is still forming, the widget renders a translated fallback (e.g. `chatThinking`).
+- Once any text segment arrives, markdown parsing applies incrementally to the accumulated text.
+
+Extensibility:
+
+- Enable raw HTML or custom components by extending `MarkdownMessage` with rehype plugins when needed.
+- For syntax highlighting, integrate a light-on-weight solution (e.g. refractor or a tokenizing highlighter) inside the code component override.
