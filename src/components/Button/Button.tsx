@@ -4,6 +4,8 @@ import {
   getSemanticIcon,
   type SemanticStatus,
 } from "../../utils/semanticIcons";
+import { FaSearch, FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { IoMdRefresh } from "react-icons/io";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?:
@@ -15,8 +17,9 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "success"
     | "info";
   disabled?: boolean;
-  icon?: React.ReactNode;
-  endIcon?: React.ReactNode;
+  /** Icon can be a React element, component, or a string key (e.g., "IoMdRefresh") */
+  icon?: React.ReactNode | string;
+  endIcon?: React.ReactNode | string;
   children?: React.ReactNode | React.ReactNode[];
   accessibleDescription?: string;
   accessibleName?: string;
@@ -63,17 +66,68 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    // Icon registry for string lookup (extend as needed)
+    const ICON_REGISTRY: Record<
+      string,
+      React.ComponentType | React.ReactElement
+    > = {
+      IoMdRefresh: IoMdRefresh,
+      FaSearch: FaSearch,
+      FaArrowLeft: FaArrowLeft,
+      FaArrowRight: FaArrowRight,
+    };
+
+    const lookupIcon = (candidate: unknown): unknown => {
+      if (typeof candidate === "string") {
+        return ICON_REGISTRY[candidate] ?? undefined;
+      }
+      return candidate;
+    };
+
     const resolvedStartIcon =
-      icon ??
+      lookupIcon(icon) ??
       (VARIANT_TO_STATUS[variant]
         ? getSemanticIcon(VARIANT_TO_STATUS[variant]!)
         : undefined);
-    const normalizedIcon =
-      typeof resolvedStartIcon === "function"
-        ? React.createElement(resolvedStartIcon)
-        : resolvedStartIcon;
-    const normalizedEndIcon =
-      typeof endIcon === "function" ? React.createElement(endIcon) : endIcon;
+
+    const normalizeMaybeIcon = (candidate: unknown): React.ReactNode => {
+      if (!candidate) return undefined;
+      // Accept function components or class components
+      if (typeof candidate === "function") {
+        return React.createElement(candidate as React.ComponentType);
+      }
+      // Accept already constructed elements
+      if (React.isValidElement(candidate)) return candidate;
+      // Accept memo/forwardRef wrapped components provided as objects with $$typeof symbol
+      if (
+        typeof candidate === "object" &&
+        candidate !== null &&
+        // React internals: forwardRef/memo have $$typeof symbol and a 'render' or 'type'
+        // We avoid referencing symbols directly; do a heuristic check.
+        ((candidate as any).type || (candidate as any).render)
+      ) {
+        try {
+          return React.createElement(candidate as React.ComponentType);
+        } catch {
+          // fall through to ignore
+        }
+      }
+      // Primitive allowed but not typical for icons
+      if (typeof candidate === "string" || typeof candidate === "number") {
+        return candidate;
+      }
+      if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
+        console.warn(
+          "[Button] Ignoring invalid icon prop (expected React component or element):",
+          candidate,
+        );
+      }
+      return undefined;
+    };
+
+    const normalizedIcon = normalizeMaybeIcon(resolvedStartIcon);
+    const normalizedEndIcon = normalizeMaybeIcon(lookupIcon(endIcon));
 
     return (
       <button

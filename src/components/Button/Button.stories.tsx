@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa"; // still used for non-string examples if needed
 import Button from "./Button";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
@@ -24,9 +24,13 @@ export default {
       },
     },
     disabled: { control: "boolean" },
+    inverse: { control: "boolean" },
+    rounded: { control: "boolean" },
     tooltip: { control: "text" },
     accessibleName: { control: "text" },
     accessibleDescription: { control: "text" },
+    icon: { control: "text" },
+    endIcon: { control: "text" },
   },
 } as Meta;
 
@@ -43,6 +47,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   variant: "primary",
   children: <ButtonStoryLabel tKey="buttonPrimary" />,
+  icon: "", // user can type e.g. IoMdRefresh
 };
 Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -131,7 +136,7 @@ Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconOnly = Template.bind({});
 IconOnly.args = {
   variant: "primary",
-  icon: FaSearch,
+  icon: "FaSearch",
   tooltip: "Search",
 };
 IconOnly.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -144,7 +149,7 @@ IconOnly.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconLeft = Template.bind({});
 IconLeft.args = {
   variant: "primary",
-  icon: FaArrowLeft,
+  icon: "FaArrowLeft",
   children: <ButtonStoryLabel tKey="buttonLeftIcon" />,
 };
 IconLeft.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -157,7 +162,7 @@ IconLeft.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconRight = Template.bind({});
 IconRight.args = {
   variant: "primary",
-  endIcon: FaArrowRight,
+  endIcon: "FaArrowRight",
   children: <ButtonStoryLabel tKey="buttonRightIcon" />,
 };
 IconRight.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
