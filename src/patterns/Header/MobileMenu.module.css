@@ -1,0 +1,129 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--dt-color-neutral-950) 70%, transparent);
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--dt-spacing-24);
+  z-index: 1000;
+}
+
+.panel {
+  width: min(22rem, 100%);
+  background: var(--dt-color-surface-primary);
+  border-radius: var(--dt-radius-16);
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 35%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--dt-spacing-20);
+  padding: var(--dt-spacing-24);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font: var(--dt-font-subhead-strong);
+  color: var(--dt-color-text-primary);
+  margin: 0;
+}
+
+.closeButton {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--dt-color-text-secondary);
+  padding: var(--dt-spacing-8);
+  border-radius: var(--dt-radius-12);
+  cursor: pointer;
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--dt-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dt-spacing-12);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navLink {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  font: var(--dt-font-body-strong);
+  color: var(--dt-color-text-primary);
+  padding: var(--dt-spacing-12) var(--dt-spacing-16);
+  border-radius: var(--dt-radius-12);
+}
+
+.navLinkActive {
+  background: var(--dt-color-surface-elevated);
+  color: var(--dt-color-accent-primary);
+}
+
+.segment {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dt-spacing-12);
+}
+
+.segmentLabel {
+  font: var(--dt-font-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dt-color-text-secondary);
+}
+
+.languageList {
+  display: flex;
+  gap: var(--dt-spacing-8);
+}
+
+.languageButton {
+  appearance: none;
+  border: 1px solid
+    color-mix(in srgb, var(--dt-color-text-secondary) 24%, transparent);
+  background: transparent;
+  color: var(--dt-color-text-primary);
+  border-radius: var(--dt-radius-10);
+  padding: var(--dt-spacing-8) var(--dt-spacing-12);
+  font: var(--dt-font-body);
+  cursor: pointer;
+}
+
+.languageButtonActive {
+  background: var(--dt-color-accent-soft);
+  border-color: var(--dt-color-accent-primary);
+  color: var(--dt-color-accent-primary);
+}
+
+.themeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dt-spacing-8);
+  width: max-content;
+  padding: var(--dt-spacing-10) var(--dt-spacing-16);
+  border-radius: var(--dt-radius-12);
+  border: none;
+  background: var(--dt-color-surface-elevated);
+  color: var(--dt-color-text-primary);
+  font: var(--dt-font-body-strong);
+  cursor: pointer;
+}
+
+.themeButtonIcon {
+  font-size: 1.25rem;
+}
+
+.hidden {
+  display: none;
+}
