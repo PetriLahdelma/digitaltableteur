@@ -1,8 +1,9 @@
 import React from "react";
 import { FaChevronDown } from "react-icons/fa";
-import { IoRefresh } from "react-icons/io5";
+import { IoMdRefresh } from "react-icons/io";
 import Button from "@dt/Button";
 import styles from "./ChatWidget.module.css";
+import { useTranslation } from "react-i18next";
 
 interface ChatHeaderProps {
   title: string;
@@ -18,35 +19,43 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   onReset,
   onMinimize,
   isSending,
-}) => (
-  <header className={styles.header}>
-    <div className={styles.headerCopy}>
-      <p className={styles.tagline}>DT Donny</p>
-      <h2 className={styles.title}>{title}</h2>
-      <p className={styles.subtitle}>{description}</p>
-    </div>
-    <div className={styles.headerActions}>
-      <Button
-        type="button"
-        onClick={onReset}
-        disabled={isSending}
-        aria-label="Reset conversation"
-        variant="tertiary"
-        size="s"
-        icon={<IoRefresh />}
-      >
-        Reset
-      </Button>
-      <Button
-        type="button"
-        onClick={onMinimize}
-        aria-label="Minimize chat"
-        variant="tertiary"
-        size="s"
-        icon={<FaChevronDown />}
-      />
-    </div>
-  </header>
-);
+}) => {
+  const { t } = useTranslation();
+  const tagline = t("chatTagline", "DT Donny");
+  const resetLabel = t("chatReset", "Reset");
+  const resetAriaLabel = t("chatResetAria", "Reset conversation");
+  const minimizeAriaLabel = t("chatMinimizeAria", "Minimize chat");
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.headerCopy}>
+        <p className={styles.tagline}>{tagline}</p>
+        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.subtitle}>{description}</p>
+      </div>
+      <div className={styles.headerActions}>
+        <Button
+          type="button"
+          onClick={onReset}
+          disabled={isSending}
+          aria-label={resetAriaLabel}
+          variant="tertiary"
+          size="s"
+          icon={<IoMdRefresh />}
+        >
+          {resetLabel}
+        </Button>
+        <Button
+          type="button"
+          onClick={onMinimize}
+          aria-label={minimizeAriaLabel}
+          variant="tertiary"
+          size="s"
+          icon={<FaChevronDown />}
+        />
+      </div>
+    </header>
+  );
+};
 
 export default ChatHeader;
