@@ -33,7 +33,7 @@ describe("OpenHours", () => {
         />,
       ),
     ); // 1 Nov 2025 is Saturday
-  const closedEls = screen.getAllByText(/Closed|Suljettu|Stängt/);
-  expect(closedEls.length).toBeGreaterThan(0);
+    const closedEls = screen.getAllByText(/Closed|Suljettu|Stängt/);
+    expect(closedEls.length).toBeGreaterThan(0);
   });
 });
