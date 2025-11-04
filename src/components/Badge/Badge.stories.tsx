@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import * as FaIcons from "react-icons/fa";
 
 import Badge from "./Badge";
+import Text from "@dt/Text";
 
 const STATE_ICON_MAP = {
   success: "FaCheckCircle",
@@ -169,14 +170,9 @@ const SecondaryVariantsContent: React.FC = () => {
           {t("badgeNeutral")}
         </Badge>
       </div>
-      <div
-        style={{
-          fontSize: "0.9rem",
-          color: "var(--secondary-text-color, #666)",
-        }}
-      >
+      <Text terminals="sans" size="S">
         Secondary badges have no background, only border and text color changes
-      </div>
+      </Text>
     </div>
   );
 };
@@ -224,14 +220,9 @@ const AutoSemanticIconsContent: React.FC = () => (
         Neutral
       </BadgeStoryTemplate>
     </div>
-    <div
-      style={{
-        fontSize: "0.9rem",
-        color: "var(--secondary-text-color, #666)",
-      }}
-    >
+    <Text terminals="sans" size="M">
       Icons automatically selected based on state when icon prop is empty
-    </div>
+    </Text>
   </div>
 );
 
