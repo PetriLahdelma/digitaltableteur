@@ -14,7 +14,7 @@ describe("OpenHours", () => {
     await initI18n();
     render(withI18n(<OpenHours />));
     expect(
-      screen.getByText(/Open hours|Aukioloajat|Öppettider/),
+      screen.getByText(/Open Hours|Open hours|Aukioloajat|Öppettider/),
     ).toBeInTheDocument();
     expect(screen.getByText(/Day|Päivä|Dag/)).toBeInTheDocument();
     expect(screen.getByText(/Opens|Avautuu|Öppnar/)).toBeInTheDocument();

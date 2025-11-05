@@ -60,62 +60,62 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
     );
 
     return (
-    <form className={styles.composer} onSubmit={onSubmit}>
-      <label className={styles.inputLabel} htmlFor={inputId} id={labelId}>
-        {resolvedLabel}
-      </label>
-      <div className={styles.inputRow}>
-        <ChatTextArea
-          id={inputId}
-          aria-labelledby={labelId}
-          className={styles.input}
-          placeholder={resolvedPlaceholder}
-          value={value}
-          onValueChange={onValueChange}
-          minRows={1}
-          maxRows={6}
-          maxLength={maxLength}
-          disabled={isSending}
-          aria-live="polite"
-          ref={textAreaRef}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
-              // Trigger submit programmatically while preserving normal Enter behavior for newlines.
-              const form = e.currentTarget.form;
-              if (form) {
-                e.preventDefault();
-                // Construct a synthetic submit event to reuse existing logic.
-                const submitEvent = new Event("submit", {
-                  cancelable: true,
-                  bubbles: true,
-                });
-                form.dispatchEvent(submitEvent);
+      <form className={styles.composer} onSubmit={onSubmit}>
+        <label className={styles.inputLabel} htmlFor={inputId} id={labelId}>
+          {resolvedLabel}
+        </label>
+        <div className={styles.inputRow}>
+          <ChatTextArea
+            id={inputId}
+            aria-labelledby={labelId}
+            className={styles.input}
+            placeholder={resolvedPlaceholder}
+            value={value}
+            onValueChange={onValueChange}
+            minRows={1}
+            maxRows={6}
+            maxLength={maxLength}
+            disabled={isSending}
+            aria-live="polite"
+            ref={textAreaRef}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                // Trigger submit programmatically while preserving normal Enter behavior for newlines.
+                const form = e.currentTarget.form;
+                if (form) {
+                  e.preventDefault();
+                  // Construct a synthetic submit event to reuse existing logic.
+                  const submitEvent = new Event("submit", {
+                    cancelable: true,
+                    bubbles: true,
+                  });
+                  form.dispatchEvent(submitEvent);
+                }
               }
-            }
-          }}
-        />
-        <Button
-          type="submit"
-          className={styles.sendButton}
-          aria-label={resolvedSendLabel}
-          disabled={isSending || !value.trim()}
-          icon={<IoSend />}
-          variant="primary"
-          size="m"
-        />
-      </div>
-      <Text
-        size="S"
-        terminals="sans"
-        className={styles.shortcutHint}
-        aria-live="polite"
-      >
-        {t(
-          "chatShortcutSubmit",
-          "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' on PC to prompt instantly.",
-        )}
-      </Text>
-    </form>
+            }}
+          />
+          <Button
+            type="submit"
+            className={styles.sendButton}
+            aria-label={resolvedSendLabel}
+            disabled={isSending || !value.trim()}
+            icon={<IoSend />}
+            variant="primary"
+            size="m"
+          />
+        </div>
+        <Text
+          size="S"
+          terminals="sans"
+          className={styles.shortcutHint}
+          aria-live="polite"
+        >
+          {t(
+            "chatShortcutSubmit",
+            "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' on PC to prompt instantly.",
+          )}
+        </Text>
+      </form>
     );
   },
 );
