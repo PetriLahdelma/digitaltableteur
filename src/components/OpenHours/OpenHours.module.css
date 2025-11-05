@@ -21,10 +21,18 @@
   padding: 0 var(--space-internal-8);
 }
 
+.statusIcon {
+  width: 0.85rem;
+  height: 0.85rem;
+  display: inline-block;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
-  color: var(--color-primary);
+
+  /* Default text colour assumes primary background from parent (.root) */
+  color: var(--color-white);
 }
 
 .table th,
@@ -34,8 +42,16 @@
   font-weight: 400;
 }
 
+/* Zebra striping: even rows invert background to white; switch text back to primary for contrast */
 .table tbody tr:nth-child(even) td {
   background: var(--color-white);
+  color: var(--color-primary);
+}
+
+/* Ensure header cells remain white regardless */
+.table thead th {
+  color: var(--color-white);
+  font-weight: 600;
 }
 
 .closed {

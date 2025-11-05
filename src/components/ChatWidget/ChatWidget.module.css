@@ -29,7 +29,7 @@
   flex-direction: column;
   overflow: hidden;
   pointer-events: auto;
-  border-radius: 1.25rem 1.25rem 0;
+  border-radius: 1.25rem;
 }
 
 .header {
@@ -45,6 +45,29 @@
   flex-direction: column;
   gap: 0.25rem;
   max-width: 70%;
+}
+
+/* Availability dot replaces previous badge/icon for space efficiency */
+.availabilityDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 0.22rem;
+}
+
+.availabilityDotOpen {
+  background: var(--color-success);
+}
+
+.availabilityDotClosed {
+  background: var(--color-error);
+}
+
+/* Inline variant for positioning next to tagline text */
+.availabilityDotInline {
+  margin-left: 0.5rem;
+  vertical-align: text-top;
 }
 
 .availabilityIcon {
@@ -202,7 +225,7 @@
   transition:
     border 0.2s ease,
     box-shadow 0.2s ease;
-  min-height: 44px;
+  min-height: 2.75rem;
 }
 
 .input:focus {
@@ -212,7 +235,8 @@
 }
 
 .input::placeholder {
-  color: var(--secondary-text-color, #666);
+  color: var(--primary-text-color);
+  opacity: 0.4;
 }
 
 .sendButton {

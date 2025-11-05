@@ -3,7 +3,6 @@ import { FaChevronDown } from "react-icons/fa";
 import { IoMdRefresh } from "react-icons/io";
 import Button from "@dt/Button";
 import styles from "./ChatWidget.module.css";
-import Badge from "@dt/Badge";
 
 // Lightweight calendar icons (Lucide-style approximations) without extra deps
 const CalendarX: React.FC<{ className?: string }> = ({ className }) => (
@@ -98,35 +97,28 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
     return isWeekday && hour >= 9 && hour < 15;
   }, [helsinkiNow]);
 
-  const availabilityLabel = withinHours
-    ? t("chatAvailabilityOpen", "Available now")
+  const availabilityTooltip = withinHours
+    ? t("chatAvailabilityOpen", "Open")
     : t("chatAvailabilityClosed", "Closed");
 
   return (
     <header className={styles.header}>
       <div className={styles.headerCopy}>
-        <p className={styles.tagline}>{tagline}</p>
+        <p className={styles.tagline}>
+          {tagline}
+          <span
+            className={
+              withinHours
+                ? `${styles.availabilityDot} ${styles.availabilityDotOpen} ${styles.availabilityDotInline}`
+                : `${styles.availabilityDot} ${styles.availabilityDotClosed} ${styles.availabilityDotInline}`
+            }
+            title={availabilityTooltip}
+            aria-label={availabilityTooltip}
+            role="status"
+            data-testid="chat-availability-dot"
+          />
+        </p>
         <h2 className={styles.title}>{title}</h2>
-        <p className={styles.subtitle}>{description}</p>
-        <Badge
-          state={withinHours ? "success" : "error"}
-          design="secondary"
-          size="s"
-          title={availabilityLabel}
-          icon={
-            withinHours ? (
-              <CalendarCheck
-                className={`${styles.availabilityIcon} ${styles.availabilityIconOpen}`}
-              />
-            ) : (
-              <CalendarX
-                className={`${styles.availabilityIcon} ${styles.availabilityIconClosed}`}
-              />
-            )
-          }
-        >
-          {availabilityLabel}
-        </Badge>
       </div>
       <div className={styles.headerActions}>
         <Button
