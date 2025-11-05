@@ -26,6 +26,7 @@ const OpenHours: React.FC<OpenHoursProps> = ({
     <div
       className={compact ? `${styles.root} ${styles.compact}` : styles.root}
       aria-label={t("openHours.heading", "Open hours")}
+      data-testid="open-hours"
     >
       <div className={styles.headerRow}>
         <strong>{t("openHours.heading", "Open hours")}</strong>

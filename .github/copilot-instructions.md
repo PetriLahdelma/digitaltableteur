@@ -157,3 +157,43 @@ When modifying markdown rendering:
 - Keep raw HTML disabled unless a sanitization layer (rehype-sanitize) is added
 - Update tests (`MarkdownMessage.test.tsx`) and Storybook (`MarkdownMessage.stories.tsx`)
 - Refresh visual baselines if styling changes (`npm run test:visual`)
+
+## Chat Dynamic Component Injection (User-Triggered Model)
+
+Dynamic component decisions are centralized in the pure transformer `messageProcessor.ts` which outputs `ProcessedMessage.parts` for `ChatMessages.tsx`. Assistant heuristics are disabled; only preceding USER messages can trigger injections.
+
+Trigger flow:
+
+1. User message scanned for tokens `[[openHours]]`, `[[servicesGrid]]` OR multilingual heuristic keywords (EN/FI/SV for hours & services).
+2. Matching sets pending flags; user tokens are stripped from rendered text.
+3. Next assistant reply consumes flags: tokens + first keyword occurrence removed from assistant text and corresponding components appended (`<OpenHours compact />`, `<ServicesGrid />`).
+4. Flags reset to prevent repeated injections.
+
+Sanitization:
+
+- User: remove explicit tokens only (keywords retained for clarity).
+- Assistant (on injection): remove explicit tokens AND leading keyword (“Open hours”, “Aukioloajat”, “Öppettider”, “Services”, “Palvelut”, “Tjänster”).
+- Assistant without pending flags: tokens/keywords ignored (no component, text preserved except tokens are not expected to appear normally).
+
+Multilingual keyword coverage (user role only): see `messageProcessor.ts` regex definitions for open hours and services.
+
+Extending:
+
+1. Add new token constant + user regex pattern.
+2. Add pending flag & assistant consumption branch.
+3. Render new component in `ChatMessages.tsx` switch.
+4. Unit tests: user token + keyword triggers, assistant sanitization.
+5. Integration tests: component presence only after user trigger.
+6. Visual regression update if layout changes.
+
+Security:
+
+- User cannot force multiple future injections; only immediate next assistant reply uses flags.
+- Whitelist component names; ignore unknown.
+- Token echoing by assistant without user trigger does not inject.
+
+Testing:
+
+- `messageProcessor.test.tsx` covers flags & sanitization (EN/FI/SV).
+- `ChatMessages.*.test.tsx` covers rendering & absence of keywords/tokens in assistant post-injection.
+- Run `npm run test:visual` after changes impacting layout.

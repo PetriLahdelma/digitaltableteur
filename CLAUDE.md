@@ -38,6 +38,45 @@ When working with this project, please:
 
 Assistant and user messages are rendered as GitHub-flavored Markdown using `react-markdown` and `remark-gfm` within a dedicated `MarkdownMessage` component. Raw HTML is skipped for safety; links are annotated with `rel="noopener noreferrer"`. Extend this component to add syntax highlighting or sanitized HTML if future requirements emerge.
 
+### Dynamic Component Injection Architecture
+
+Dynamic parsing lives in the pure transformer `src/components/ChatWidget/messageProcessor.ts` converting raw `UIMessage` objects into `ProcessedMessage` parts consumed by `ChatMessages.tsx`.
+
+Current model: USER-triggered only (assistant heuristics disabled).
+
+Flow:
+
+1. User message scanned for explicit tokens `[[openHours]]`, `[[servicesGrid]]` OR multilingual heuristic keywords (EN/FI/SV for hours/services).
+2. If matched, a pending flag (openHours / services) is set; user text is sanitized (tokens removed, keywords retained for transparency).
+3. The NEXT assistant message consumes pending flags: assistant text is sanitized (token + first matching keyword removed) and the appropriate component(s) appended (`<OpenHours compact />`, `<ServicesGrid />`).
+4. Flags reset after consumption; assistant cannot self-trigger by echoing keywords/tokens.
+
+Assistant sanitization ensures that when a component is injected, duplicate leading semantic phrases (e.g., “Aukioloajat”, “Öppettider”, “Open hours”, “Palvelut”, “Tjänster”, “Services”) and any raw tokens are removed from the assistant's visible text, leaving the component as the singular representation.
+
+Multilingual keyword coverage (user role only now):
+
+- Open hours EN: open hours, business hours, closing time, opening time, hours of operation, operating times
+- Open hours FI: aukioloajat, aukioloaika, sulkemisaika, avaamisaika, tänään auki
+- Open hours SV: öppettider, öppet, stängningstid, öppningstid, dagens öppettider
+- Services EN: services, capabilities, offerings, what do you offer, what services do you provide
+- Services FI: palvelut, palveluja, palveluita, mitä tarjoatte, palvelunne
+- Services SV: tjänster, era tjänster, vad erbjuder ni, erbjudanden
+
+Security:
+
+- User tokens stripped before rendering.
+- Only whitelisted component names rendered.
+- Single assistant reply per trigger prevents replay.
+
+Extending further:
+
+1. Add new token + regex to user trigger block in `messageProcessor.ts`.
+2. Introduce pending flag and consumption logic.
+3. Append component in assistant branch with sanitization.
+4. Update `ChatMessages.tsx` render switch.
+5. Add unit + integration tests; refresh visual baselines if UI shifts.
+6. Provide translations and Storybook story.
+
 ## Common Tasks
 
 - Start dev server: `npm run dev`
