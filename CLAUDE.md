@@ -34,6 +34,10 @@ When working with this project, please:
 - **Testing**: Vitest with coverage reporting
 - **Deployment**: GitHub Pages with Vercel serverless functions
 
+### Chat Markdown Support
+
+Assistant and user messages are rendered as GitHub-flavored Markdown using `react-markdown` and `remark-gfm` within a dedicated `MarkdownMessage` component. Raw HTML is skipped for safety; links are annotated with `rel="noopener noreferrer"`. Extend this component to add syntax highlighting or sanitized HTML if future requirements emerge.
+
 ## Common Tasks
 
 - Start dev server: `npm run dev`

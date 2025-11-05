@@ -2,6 +2,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
+import MarkdownMessage from "@dt/MarkdownMessage";
+import OpenHours from "@dt/OpenHours/OpenHours";
+import ServicesGrid from "@dt/ServicesGrid/ServicesGrid";
 
 interface ChatMessagesProps {
   messages: UIMessage[];
@@ -60,8 +63,6 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
               : ellipsis
             : "";
 
-<<<<<<< Updated upstream
-=======
           // Dynamic component embedding tokens:
           // OpenHours:
           // 1. Explicit token [[openHours]] -> replaced inline.
@@ -80,50 +81,39 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
               lower,
             );
 
-          // Handle OpenHours explicit token (assistant only)
-          if (isAssistant && copy.includes(TOKEN_OPEN_HOURS)) {
+          // Handle OpenHours explicit token
+          if (copy.includes(TOKEN_OPEN_HOURS)) {
             const segments = copy.split(TOKEN_OPEN_HOURS);
             return (
-              <React.Fragment key={message.id}>
+              <div
+                key={message.id}
+                className={styles.message}
+                data-role={message.role}
+              >
                 {segments.map((seg, i) => (
                   <React.Fragment key={i}>
                     {seg && (
-                      <div className={styles.message} data-role={message.role}>
-                        <MarkdownMessage
-                          content={seg}
-                          fallback={fallback}
-                          data-role={message.role}
-                        />
-                      </div>
+                      <MarkdownMessage
+                        content={seg}
+                        fallback={fallback}
+                        data-role={message.role}
+                      />
                     )}
                     {i < segments.length - 1 && (
-                      <div className={styles.fullSpan} data-role={message.role}>
+                      <>
+                        <br />
                         <OpenHours compact />
-                      </div>
+                      </>
                     )}
                   </React.Fragment>
                 ))}
-              </React.Fragment>
+              </div>
             );
-          } else if (isAssistant && mentionsOpenHours) {
-            // Auto-inject component after markdown if not explicitly tokenized (assistant only)
-            return (
-              <React.Fragment key={message.id}>
-                <div className={styles.message} data-role={message.role}>
-                  <MarkdownMessage
-                    content={copy}
-                    fallback={fallback}
-                    data-role={message.role}
-                  />
-                </div>
-                <div className={styles.fullSpan} data-role={message.role}>
-                  <OpenHours compact />
-                </div>
-              </React.Fragment>
-            );
-          } else if (!isAssistant && copy.includes(TOKEN_OPEN_HOURS)) {
-            // User attempted to use [[openHours]] token; render markdown without component (token removed)
-            const sanitized = copy.replaceAll(TOKEN_OPEN_HOURS, "").trim();
+          } else if (
+            (isAssistant || message.role === "user") &&
+            mentionsOpenHours
+          ) {
+            // Auto-inject component after markdown if not explicitly tokenized.
             return (
               <div
                 key={message.id}
@@ -131,10 +121,12 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
                 data-role={message.role}
               >
                 <MarkdownMessage
-                  content={sanitized}
+                  content={copy}
                   fallback={fallback}
                   data-role={message.role}
                 />
+                <br />
+                <OpenHours compact />
               </div>
             );
           }
@@ -196,14 +188,17 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
             );
           }
 
->>>>>>> Stashed changes
           return (
             <div
               key={message.id}
               className={styles.message}
               data-role={message.role}
             >
-              <p>{copy || fallback}</p>
+              <MarkdownMessage
+                content={copy}
+                fallback={fallback}
+                data-role={message.role}
+              />
             </div>
           );
         })}
