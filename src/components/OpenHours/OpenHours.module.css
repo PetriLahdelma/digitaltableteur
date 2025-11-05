@@ -6,6 +6,9 @@
   font-family: var(--font-family-sans);
   font-size: var(--font-size-text-s);
   line-height: 1.4;
+
+  /* Outer breathing room when embedded in chat stream */
+  margin: 1rem 0;
 }
 
 .headerRow {

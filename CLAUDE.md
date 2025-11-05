@@ -40,24 +40,42 @@ Assistant and user messages are rendered as GitHub-flavored Markdown using `reac
 
 ### Dynamic Component Injection Architecture
 
-Dynamic parsing lives in the pure transformer `src/components/ChatWidget/messageProcessor.ts` which converts raw `UIMessage` objects into `ProcessedMessage` parts consumed by `ChatMessages.tsx`.
+Dynamic parsing lives in the pure transformer `src/components/ChatWidget/messageProcessor.ts` converting raw `UIMessage` objects into `ProcessedMessage` parts consumed by `ChatMessages.tsx`.
 
-Supported assistant-only injections:
+Current model: USER-triggered only (assistant heuristics disabled).
 
-- Explicit token `[[openHours]]` – splits text and interleaves `<OpenHours compact />` wherever placed.
-- Heuristic open hours mention – appends `<OpenHours compact />` once if token absent.
-- Explicit token `[[servicesGrid]]` – injects a single `<ServicesGrid />` (first token only) interleaved with surrounding text.
-- Heuristic services mention – appends `<ServicesGrid />` once if no explicit token was used.
+Flow:
 
-User messages: any occurrence of `[[openHours]]` or `[[servicesGrid]]` is stripped; no component injection (prevents privilege escalation).
+1. User message scanned for explicit tokens `[[openHours]]`, `[[servicesGrid]]` OR multilingual heuristic keywords (EN/FI/SV for hours/services).
+2. If matched, a pending flag (openHours / services) is set; user text is sanitized (tokens removed, keywords retained for transparency).
+3. The NEXT assistant message consumes pending flags: assistant text is sanitized (token + first matching keyword removed) and the appropriate component(s) appended (`<OpenHours compact />`, `<ServicesGrid />`).
+4. Flags reset after consumption; assistant cannot self-trigger by echoing keywords/tokens.
 
-Reinstatement note: `[[servicesGrid]]` + heuristic were previously removed but restored to provide contextual summaries of core offerings when the assistant deems it helpful.
+Assistant sanitization ensures that when a component is injected, duplicate leading semantic phrases (e.g., “Aukioloajat”, “Öppettider”, “Open hours”, “Palvelut”, “Tjänster”, “Services”) and any raw tokens are removed from the assistant's visible text, leaving the component as the singular representation.
+
+Multilingual keyword coverage (user role only now):
+
+- Open hours EN: open hours, business hours, closing time, opening time, hours of operation, operating times
+- Open hours FI: aukioloajat, aukioloaika, sulkemisaika, avaamisaika, tänään auki
+- Open hours SV: öppettider, öppet, stängningstid, öppningstid, dagens öppettider
+- Services EN: services, capabilities, offerings, what do you offer, what services do you provide
+- Services FI: palvelut, palveluja, palveluita, mitä tarjoatte, palvelunne
+- Services SV: tjänster, era tjänster, vad erbjuder ni, erbjudanden
+
+Security:
+
+- User tokens stripped before rendering.
+- Only whitelisted component names rendered.
+- Single assistant reply per trigger prevents replay.
 
 Extending further:
-1. Add token & heuristic branch in `messageProcessor.ts` returning `{ kind: "component", name: "YourComponent" }`.
-2. Add render case in `ChatMessages.tsx` switch.
-3. Create unit tests (`messageProcessor.test.tsx`) and integration tests (`ChatMessages.<component>.test.tsx`).
-4. Ensure translations & Storybook story exist; refresh visual baselines if layout changes.
+
+1. Add new token + regex to user trigger block in `messageProcessor.ts`.
+2. Introduce pending flag and consumption logic.
+3. Append component in assistant branch with sanitization.
+4. Update `ChatMessages.tsx` render switch.
+5. Add unit + integration tests; refresh visual baselines if UI shifts.
+6. Provide translations and Storybook story.
 
 ## Common Tasks
 

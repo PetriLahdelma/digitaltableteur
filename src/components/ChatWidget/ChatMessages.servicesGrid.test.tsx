@@ -35,26 +35,87 @@ const renderWithProviders = (messages: any[]) => {
   );
 };
 
-describe("ChatMessages ServicesGrid injection", () => {
-  it("renders ServicesGrid for assistant explicit token", () => {
-    renderWithProviders([assistantMsg("Here they are: [[servicesGrid]]")]);
-    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
-  });
-
-  it("renders ServicesGrid for assistant heuristic mention", () => {
+describe("ChatMessages ServicesGrid injection (user-triggered only)", () => {
+  it("does NOT render when assistant mentions services without prior user trigger", () => {
     renderWithProviders([
       assistantMsg("Can you list your services and capabilities?"),
+    ]);
+    expect(screen.queryByTestId("services-grid")).not.toBeInTheDocument();
+  });
+
+  it("injects after user heuristic query then assistant reply", () => {
+    renderWithProviders([
+      userMsg("What services do you provide?"),
+      assistantMsg("We offer a comprehensive set."),
     ]);
     expect(screen.getByTestId("services-grid")).toBeInTheDocument();
   });
 
-  it("does NOT render ServicesGrid for user explicit token", () => {
+  it("injects after user explicit token then assistant reply (token sanitized in user part)", () => {
+    renderWithProviders([
+      userMsg("Show [[servicesGrid]] now"),
+      assistantMsg("Here is the overview."),
+    ]);
+    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
+  });
+
+  it("does NOT render for user explicit token without assistant follow-up", () => {
     renderWithProviders([userMsg("Show [[servicesGrid]] now")]);
     expect(screen.queryByTestId("services-grid")).not.toBeInTheDocument();
   });
 
-  it("does NOT render ServicesGrid for user heuristic mention", () => {
-    renderWithProviders([userMsg("What services do you provide?")]);
-    expect(screen.queryByTestId("services-grid")).not.toBeInTheDocument();
+  it("injects after Finnish user heuristic then assistant reply", () => {
+    renderWithProviders([
+      userMsg("Voitko kertoa palvelut?"),
+      assistantMsg("Tässä palveluiden yleiskatsaus."),
+    ]);
+    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
+  });
+
+  it("injects after Swedish user heuristic then assistant reply", () => {
+    renderWithProviders([
+      userMsg("Kan du lista era tjänster?"),
+      assistantMsg("Här är en översikt."),
+    ]);
+    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
+  });
+
+  it("sanitizes Swedish keyword + token in assistant when injected", () => {
+    renderWithProviders([
+      userMsg("Visa [[servicesGrid]]"),
+      assistantMsg("Tjänster [[servicesGrid]] listas här."),
+    ]);
+    const comp = screen.getByTestId("services-grid");
+    expect(comp).toBeInTheDocument();
+    const assistantTexts = screen.getAllByText(/./);
+    const joined = assistantTexts.map((n) => n.textContent || "").join(" ");
+    expect(joined).not.toMatch(/\[\[servicesGrid\]\]/);
+    expect(/tjänster/i.test(joined)).toBe(false);
+  });
+
+  it("sanitizes English keyword + token in assistant when injected", () => {
+    renderWithProviders([
+      userMsg("Show [[servicesGrid]]"),
+      assistantMsg("Services [[servicesGrid]] overview."),
+    ]);
+    const comp = screen.getByTestId("services-grid");
+    expect(comp).toBeInTheDocument();
+    const assistantTexts = screen.getAllByText(/./);
+    const joined = assistantTexts.map((n) => n.textContent || "").join(" ");
+    expect(joined).not.toMatch(/\[\[servicesGrid\]\]/);
+    expect(/services/i.test(joined)).toBe(false);
+  });
+
+  it("sanitizes Finnish keyword + token in assistant when injected", () => {
+    renderWithProviders([
+      userMsg("Näytä [[servicesGrid]]"),
+      assistantMsg("Palvelut [[servicesGrid]] näkyvät alla."),
+    ]);
+    const comp = screen.getByTestId("services-grid");
+    expect(comp).toBeInTheDocument();
+    const assistantTexts = screen.getAllByText(/./);
+    const joined = assistantTexts.map((n) => n.textContent || "").join(" ");
+    expect(joined).not.toMatch(/\[\[servicesGrid\]\]/);
+    expect(/palvelut/i.test(joined)).toBe(false);
   });
 });

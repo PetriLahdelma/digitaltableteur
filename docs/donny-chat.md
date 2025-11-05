@@ -138,55 +138,73 @@ Extensibility:
 - Enable raw HTML or custom components by extending `MarkdownMessage` with rehype plugins when needed.
 - For syntax highlighting, integrate a light-on-weight solution (e.g. refractor or a tokenizing highlighter) inside the code component override.
 
-## Dynamic Component Injection Architecture
+## Dynamic Component Injection Architecture (User-Triggered Model)
 
-Dynamic components are no longer injected directly inside the `ChatMessages` component via inline heuristics. Instead, the pure transformer `messageProcessor.ts` produces a normalized array of `ProcessedMessage` objects that drive rendering.
+Dynamic components are injected based solely on preceding USER messages. Assistant self-heuristics have been disabled for tighter control and predictability.
 
-Current transformation rules:
+Current transformation rules (messageProcessor.ts / processConversation):
 
-| Rule | Applies To | Effect |
-| ---- | ---------- | ------ |
-| Explicit token `[[openHours]]` | Assistant messages only | Splits the message into text and `<OpenHours compact />` parts, preserving surrounding text segments |
-| Heuristic open hours mention (regex) | Assistant messages only | Appends a single `<OpenHours compact />` component after the full text when the token is absent |
-| Explicit token `[[servicesGrid]]` | Assistant messages only | Injects a single `<ServicesGrid />` component (first token only) interleaved with surrounding text |
-| Heuristic services mention (regex) | Assistant messages only | Appends a single `<ServicesGrid />` when no explicit servicesGrid token was provided |
-| Any explicit token in user message | User messages | Token is stripped; no component injection (prevents privilege escalation) |
+| Rule                                                                                       | Applies To     | Effect                                                                                                          |
+| ------------------------------------------------------------------------------------------ | -------------- | --------------------------------------------------------------------------------------------------------------- |
+| User message containing `[[openHours]]` token OR open hours heuristic keywords (EN/FI/SV)  | User           | Sets a pendingOpenHours flag; user-facing text is sanitized (token removed).                                    |
+| User message containing `[[servicesGrid]]` token OR services heuristic keywords (EN/FI/SV) | User           | Sets a pendingServices flag; user text sanitized (token removed).                                               |
+| Next assistant message when pendingOpenHours=true                                          | Assistant      | Assistant text sanitized (removes token + leading keyword) and `<OpenHours compact />` appended. Flag reset.    |
+| Next assistant message when pendingServices=true                                           | Assistant      | Assistant text sanitized (removes token + leading keyword) and `<ServicesGrid />` appended. Flag reset.         |
+| Multiple triggers in same user message                                                     | User/Assistant | Both components injected in the immediate subsequent assistant reply, each sanitizing relevant keywords/tokens. |
+| Tokens/keywords in assistant message without pending flag                                  | Assistant      | Ignored entirely; rendered as plain text.                                                                       |
 
-Why the refactor:
+Sanitization details:
 
-1. Separation of concerns – presentation (`ChatMessages`) now renders declarative parts, while parsing / business rules live in a testable pure module.
-2. Deterministic behavior – avoids duplicate or conflicting heuristics; easier to extend with new component types.
-3. Security & policy – user messages cannot coerce privileged UI components (guard enforced centrally).
+- User messages: explicit tokens stripped; keywords retained (for transparency) unless they are part of the token phrase.
+- Assistant messages (when injecting): explicit tokens and the first occurrence of the leading keyword (open hours / aukioloajat / öppettider, services / palvelut / tjänster) are removed so only the component visually represents the concept.
+- Keywords inside assistant text when no injection flag exists are preserved (no surprise deletions).
 
-Extensibility path:
+Heuristic keyword coverage (user role only now):
 
-- Add a new token constant and branch inside `processMessage`; return a `component` part with a unique `name`.
-- Update the renderer switch in `ChatMessages` to handle the new component name.
-- Provide unit tests in `messageProcessor.test.tsx` covering token split, heuristic fallback, and user token stripping.
-- Add integration tests (`ChatMessages.<component>.test.tsx`) for assistant vs user rendering.
-- Maintain translation coverage for any new user-facing labels surfaced by the component.
+- Open hours EN: open hours, business hours, closing time, opening time, hours of operation, operating times
+- Open hours FI: aukioloajat, aukioloaika, sulkemisaika, avaamisaika, tänään auki
+- Open hours SV: öppettider, öppet, stängningstid, öppningstid, dagens öppettider
+- Services EN: services, capabilities, offerings, what do you offer, what services do you provide
+- Services FI: palvelut, palveluja, palveluita, mitä tarjoatte, palvelunne
+- Services SV: tjänster, era tjänster, vad erbjuder ni, erbjudanden
 
-Reinstated behavior:
+Security & policy:
 
-`[[servicesGrid]]` and its heuristic were previously removed to simplify the UI, but have been reintroduced to allow the assistant to surface a concise overview of core service offerings contextually. Injection rules mirror OpenHours: assistant-only, single component per message via either explicit token or heuristic.
+- Users cannot force immediate multi-response injection; only the following single assistant message consumes pending flags.
+- Tokens in user input are never echoed back.
+- Assistant cannot self-inject by echoing tokens or phrasing heuristics—flags must originate from user role.
 
-Prompting guidance (current):
+Extensibility:
 
-- Availability questions: the model may include `[[openHours]]` or rely on heuristic language ("opening hours", "business hours", etc.).
-- Services overview requests: instruct the model to include `[[servicesGrid]]` or mention "services we offer" / "our services" naturally to trigger heuristic injection.
-- Avoid redundant tokens; the processor will ignore additional `[[servicesGrid]]` occurrences after the first.
+1. Add new token + regex to user trigger section in `messageProcessor.ts` (update `USER_*_PATTERN`).
+2. Introduce pending flag logic inside `processConversation`.
+3. Append new component part in assistant branch when flag true; perform token/keyword sanitization.
+4. Update renderer switch in `ChatMessages.tsx`.
+5. Add unit tests (processor) + integration tests (ChatMessages) for user-token, user-keyword, and assistant sanitization scenarios.
+6. Refresh visual baselines if layout shifts: `npm run test:visual -- --updateSnapshot`.
 
-Anti-abuse considerations:
+Testing strategy (updated):
 
-- User-provided tokens are sanitized (removed) before rendering.
-- Only whitelisted component names are rendered; unknown names are ignored silently.
-- Heuristics trigger only for assistant role ensuring users cannot phrase-bomb injections.
+- `messageProcessor.test.tsx` covers user-trigger flagging and assistant sanitization across EN/FI/SV.
+- `ChatMessages.openHours.test.tsx` + `ChatMessages.servicesGrid.test.tsx` ensure components render only after a user trigger and confirm keyword/token removal from assistant output.
+- Visual regression suite ensures UI stability after component insertion changes.
 
-Testing strategy:
+Prompting guidance (model alignment):
 
-- `messageProcessor.test.tsx` validates transformation logic (token splitting, heuristic injection, user stripping) for both OpenHours and ServicesGrid.
-- `ChatMessages.openHours.test.tsx` & `ChatMessages.servicesGrid.test.tsx` validate integration-level rendering (assistant vs user roles).
-- Visual baselines should be refreshed if `<OpenHours />` or `<ServicesGrid />` layout changes: `npm run test:visual -- --updateSnapshot`.
+- Encourage users to ask directly (e.g., “What are your opening hours?” / “Mitkä ovat aukioloajat?” / “Vilka är öppettiderna?” or “List your services”).
+- Avoid instructing the assistant to emit tokens; they are user-facing triggers only.
+
+Anti-abuse controls:
+
+- Only whitelisted component names can appear; dynamic `name` values are ignored.
+- Pending flags consumed immediately—prevents unbounded component repetition.
+- Sanitization removes potentially confusing duplicated semantic prefaces in assistant replies.
+
+Recent change highlight:
+
+- Removed assistant-side heuristics & token parsing.
+- Added assistant sanitization (Finnish/Swedish/English keywords + tokens) upon injection.
+- Updated tests to assert absence of keywords/tokens post-sanitization.
 
 ## Availability Indicator
 
