@@ -29,7 +29,7 @@
   flex-direction: column;
   overflow: hidden;
   pointer-events: auto;
-  border-radius: 1.25rem 1.25rem 0;
+  border-radius: 1.25rem;
 }
 
 .header {
@@ -45,6 +45,43 @@
   flex-direction: column;
   gap: 0.25rem;
   max-width: 70%;
+}
+
+/* Availability dot replaces previous badge/icon for space efficiency */
+.availabilityDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 0.22rem;
+}
+
+.availabilityDotOpen {
+  background: var(--color-success);
+}
+
+.availabilityDotClosed {
+  background: var(--color-error);
+}
+
+/* Inline variant for positioning next to tagline text */
+.availabilityDotInline {
+  margin-left: 0.5rem;
+  vertical-align: text-top;
+}
+
+.availabilityIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.availabilityIconClosed {
+  color: var(--color-error);
+}
+
+.availabilityIconOpen {
+  color: var(--color-success);
 }
 
 .tagline {
@@ -120,7 +157,7 @@
 }
 
 .message {
-  max-width: 80%;
+  max-width: 83%;
   padding: 0.5rem 1rem;
   border-radius: 0.85rem;
   font-size: 0.9rem;
@@ -141,6 +178,15 @@
   background: var(--color-primary, #0f62fe);
   color: var(--inverted-text-color, #fff);
   border-radius: 1rem 1rem 0;
+}
+
+/* Full-span container for components that should stretch across panel width (e.g. OpenHours) */
+.fullSpan {
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .statusBanner {
@@ -188,7 +234,7 @@
   transition:
     border 0.2s ease,
     box-shadow 0.2s ease;
-  min-height: 44px;
+  min-height: 2.75rem;
 }
 
 .input:focus {
@@ -198,7 +244,8 @@
 }
 
 .input::placeholder {
-  color: var(--secondary-text-color, #666);
+  color: var(--primary-text-color);
+  opacity: 0.4;
 }
 
 .sendButton {
@@ -264,15 +311,12 @@
   align-items: center;
 }
 
-/* Scoped spacing adjustments for embedded Button content.
-   Removing :global to satisfy stylelint; relying on internal Button markup class names.
-   Adjust if Button structure changes. */
 .toggle .icon {
-  margin-inline-end: 0.25rem; /* slightly tighter than default */
+  margin-inline-end: 0;
 }
 
 .toggle .text {
-  margin-inline-start: 0; /* neutralize extra margin rule in Button */
+  margin-inline-start: 0;
 }
 
 .toggle .icon svg {

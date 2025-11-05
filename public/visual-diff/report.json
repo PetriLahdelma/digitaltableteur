@@ -1,26 +1,131 @@
 {
   "generatedAt": "2025-11-05T12:02:59.289Z",
   "diffs": [
-    {"id":"components-badge-all-variants","actual":"visual-diff/components-badge-all-variants-actual.png","baseline":"visual-diff/components-badge-all-variants-baseline.png","diff":"visual-diff/components-badge-all-variants-diff.png"},
-    {"id":"components-button-all-variants","actual":"visual-diff/components-button-all-variants-actual.png","baseline":"visual-diff/components-button-all-variants-baseline.png","diff":"visual-diff/components-button-all-variants-diff.png"},
-    {"id":"components-personcard-all-social-media","actual":"visual-diff/components-personcard-all-social-media-actual.png","baseline":"visual-diff/components-personcard-all-social-media-baseline.png","diff":"visual-diff/components-personcard-all-social-media-diff.png"},
-    {"id":"components-personcard-default","actual":"visual-diff/components-personcard-default-actual.png","baseline":"visual-diff/components-personcard-default-baseline.png","diff":"visual-diff/components-personcard-default-diff.png"},
-    {"id":"components-personcard-long-title","actual":"visual-diff/components-personcard-long-title-actual.png","baseline":"visual-diff/components-personcard-long-title-baseline.png","diff":"visual-diff/components-personcard-long-title-diff.png"},
-    {"id":"components-personcard-with-custom-class","actual":"visual-diff/components-personcard-with-custom-class-actual.png","baseline":"visual-diff/components-personcard-with-custom-class-baseline.png","diff":"visual-diff/components-personcard-with-custom-class-diff.png"},
-    {"id":"components-personcard-without-social-media","actual":"visual-diff/components-personcard-without-social-media-actual.png","baseline":"visual-diff/components-personcard-without-social-media-baseline.png","diff":"visual-diff/components-personcard-without-social-media-diff.png"},
-    {"id":"components-text-sizes","actual":"visual-diff/components-text-sizes-actual.png","baseline":"visual-diff/components-text-sizes-baseline.png","diff":"visual-diff/components-text-sizes-diff.png"},
-    {"id":"components-title-all-levels","actual":"visual-diff/components-title-all-levels-actual.png","baseline":"visual-diff/components-title-all-levels-baseline.png","diff":"visual-diff/components-title-all-levels-diff.png"},
-    {"id":"components-title-all-sizes","actual":"visual-diff/components-title-all-sizes-actual.png","baseline":"visual-diff/components-title-all-sizes-baseline.png","diff":"visual-diff/components-title-all-sizes-diff.png"},
-    {"id":"components-title-custom-tag-and-class","actual":"visual-diff/components-title-custom-tag-and-class-actual.png","baseline":"visual-diff/components-title-custom-tag-and-class-baseline.png","diff":"visual-diff/components-title-custom-tag-and-class-diff.png"},
-    {"id":"components-title-playground","actual":"visual-diff/components-title-playground-actual.png","baseline":"visual-diff/components-title-playground-baseline.png","diff":"visual-diff/components-title-playground-diff.png"},
-    {"id":"chat-markdownmessage-default","actual":"visual-diff/chat-markdownmessage-default-actual.png","baseline":"visual-diff/chat-markdownmessage-default-baseline.png","diff":"visual-diff/chat-markdownmessage-default-diff.png"},
-    {"id":"components-servicesgrid-kitchen-sink","actual":"visual-diff/components-servicesgrid-kitchen-sink-actual.png","baseline":"visual-diff/components-servicesgrid-kitchen-sink-baseline.png","diff":"visual-diff/components-servicesgrid-kitchen-sink-diff.png"},
-    {"id":"docs-theming-localization-overview","actual":"visual-diff/docs-theming-localization-overview-actual.png","baseline":"visual-diff/docs-theming-localization-overview-baseline.png","diff":"visual-diff/docs-theming-localization-overview-diff.png"},
-    {"id":"info-openhours-compact","actual":"visual-diff/info-openhours-compact-actual.png","baseline":"visual-diff/info-openhours-compact-baseline.png","diff":"visual-diff/info-openhours-compact-diff.png"},
-    {"id":"info-openhours-default","actual":"visual-diff/info-openhours-default-actual.png","baseline":"visual-diff/info-openhours-default-baseline.png","diff":"visual-diff/info-openhours-default-diff.png"},
-    {"id":"info-openhours-injected-date","actual":"visual-diff/info-openhours-injected-date-actual.png","baseline":"visual-diff/info-openhours-injected-date-baseline.png","diff":"visual-diff/info-openhours-injected-date-diff.png"},
-    {"id":"info-openhours-today-only","actual":"visual-diff/info-openhours-today-only-actual.png","baseline":"visual-diff/info-openhours-today-only-baseline.png","diff":"visual-diff/info-openhours-today-only-diff.png"},
-    {"id":"overview-test-health-overview-dashboard","actual":"visual-diff/overview-test-health-overview-dashboard-actual.png","baseline":"visual-diff/overview-test-health-overview-dashboard-baseline.png","diff":"visual-diff/overview-test-health-overview-dashboard-diff.png"},
-    {"id":"overview-welcome-welcome","actual":"visual-diff/overview-welcome-welcome-actual.png","baseline":"visual-diff/overview-welcome-welcome-baseline.png","diff":"visual-diff/overview-welcome-welcome-diff.png"}
+    {
+      "id": "components-badge-all-variants",
+      "actual": "visual-diff/components-badge-all-variants-actual.png",
+      "baseline": "visual-diff/components-badge-all-variants-baseline.png",
+      "diff": "visual-diff/components-badge-all-variants-diff.png"
+    },
+    {
+      "id": "components-button-all-variants",
+      "actual": "visual-diff/components-button-all-variants-actual.png",
+      "baseline": "visual-diff/components-button-all-variants-baseline.png",
+      "diff": "visual-diff/components-button-all-variants-diff.png"
+    },
+    {
+      "id": "components-personcard-all-social-media",
+      "actual": "visual-diff/components-personcard-all-social-media-actual.png",
+      "baseline": "visual-diff/components-personcard-all-social-media-baseline.png",
+      "diff": "visual-diff/components-personcard-all-social-media-diff.png"
+    },
+    {
+      "id": "components-personcard-default",
+      "actual": "visual-diff/components-personcard-default-actual.png",
+      "baseline": "visual-diff/components-personcard-default-baseline.png",
+      "diff": "visual-diff/components-personcard-default-diff.png"
+    },
+    {
+      "id": "components-personcard-long-title",
+      "actual": "visual-diff/components-personcard-long-title-actual.png",
+      "baseline": "visual-diff/components-personcard-long-title-baseline.png",
+      "diff": "visual-diff/components-personcard-long-title-diff.png"
+    },
+    {
+      "id": "components-personcard-with-custom-class",
+      "actual": "visual-diff/components-personcard-with-custom-class-actual.png",
+      "baseline": "visual-diff/components-personcard-with-custom-class-baseline.png",
+      "diff": "visual-diff/components-personcard-with-custom-class-diff.png"
+    },
+    {
+      "id": "components-personcard-without-social-media",
+      "actual": "visual-diff/components-personcard-without-social-media-actual.png",
+      "baseline": "visual-diff/components-personcard-without-social-media-baseline.png",
+      "diff": "visual-diff/components-personcard-without-social-media-diff.png"
+    },
+    {
+      "id": "components-text-sizes",
+      "actual": "visual-diff/components-text-sizes-actual.png",
+      "baseline": "visual-diff/components-text-sizes-baseline.png",
+      "diff": "visual-diff/components-text-sizes-diff.png"
+    },
+    {
+      "id": "components-title-all-levels",
+      "actual": "visual-diff/components-title-all-levels-actual.png",
+      "baseline": "visual-diff/components-title-all-levels-baseline.png",
+      "diff": "visual-diff/components-title-all-levels-diff.png"
+    },
+    {
+      "id": "components-title-all-sizes",
+      "actual": "visual-diff/components-title-all-sizes-actual.png",
+      "baseline": "visual-diff/components-title-all-sizes-baseline.png",
+      "diff": "visual-diff/components-title-all-sizes-diff.png"
+    },
+    {
+      "id": "components-title-custom-tag-and-class",
+      "actual": "visual-diff/components-title-custom-tag-and-class-actual.png",
+      "baseline": "visual-diff/components-title-custom-tag-and-class-baseline.png",
+      "diff": "visual-diff/components-title-custom-tag-and-class-diff.png"
+    },
+    {
+      "id": "components-title-playground",
+      "actual": "visual-diff/components-title-playground-actual.png",
+      "baseline": "visual-diff/components-title-playground-baseline.png",
+      "diff": "visual-diff/components-title-playground-diff.png"
+    },
+    {
+      "id": "chat-markdownmessage-default",
+      "actual": "visual-diff/chat-markdownmessage-default-actual.png",
+      "baseline": "visual-diff/chat-markdownmessage-default-baseline.png",
+      "diff": "visual-diff/chat-markdownmessage-default-diff.png"
+    },
+    {
+      "id": "components-servicesgrid-kitchen-sink",
+      "actual": "visual-diff/components-servicesgrid-kitchen-sink-actual.png",
+      "baseline": "visual-diff/components-servicesgrid-kitchen-sink-baseline.png",
+      "diff": "visual-diff/components-servicesgrid-kitchen-sink-diff.png"
+    },
+    {
+      "id": "docs-theming-localization-overview",
+      "actual": "visual-diff/docs-theming-localization-overview-actual.png",
+      "baseline": "visual-diff/docs-theming-localization-overview-baseline.png",
+      "diff": "visual-diff/docs-theming-localization-overview-diff.png"
+    },
+    {
+      "id": "info-openhours-compact",
+      "actual": "visual-diff/info-openhours-compact-actual.png",
+      "baseline": "visual-diff/info-openhours-compact-baseline.png",
+      "diff": "visual-diff/info-openhours-compact-diff.png"
+    },
+    {
+      "id": "info-openhours-default",
+      "actual": "visual-diff/info-openhours-default-actual.png",
+      "baseline": "visual-diff/info-openhours-default-baseline.png",
+      "diff": "visual-diff/info-openhours-default-diff.png"
+    },
+    {
+      "id": "info-openhours-injected-date",
+      "actual": "visual-diff/info-openhours-injected-date-actual.png",
+      "baseline": "visual-diff/info-openhours-injected-date-baseline.png",
+      "diff": "visual-diff/info-openhours-injected-date-diff.png"
+    },
+    {
+      "id": "info-openhours-today-only",
+      "actual": "visual-diff/info-openhours-today-only-actual.png",
+      "baseline": "visual-diff/info-openhours-today-only-baseline.png",
+      "diff": "visual-diff/info-openhours-today-only-diff.png"
+    },
+    {
+      "id": "overview-test-health-overview-dashboard",
+      "actual": "visual-diff/overview-test-health-overview-dashboard-actual.png",
+      "baseline": "visual-diff/overview-test-health-overview-dashboard-baseline.png",
+      "diff": "visual-diff/overview-test-health-overview-dashboard-diff.png"
+    },
+    {
+      "id": "overview-welcome-welcome",
+      "actual": "visual-diff/overview-welcome-welcome-actual.png",
+      "baseline": "visual-diff/overview-welcome-welcome-baseline.png",
+      "diff": "visual-diff/overview-welcome-welcome-diff.png"
+    }
   ]
 }

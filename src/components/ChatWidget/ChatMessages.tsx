@@ -2,6 +2,10 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
+import MarkdownMessage from "@dt/MarkdownMessage";
+import OpenHours from "@dt/OpenHours/OpenHours";
+import { processConversation } from "./messageProcessor";
+import ServicesGrid from "@dt/ServicesGrid/ServicesGrid";
 
 interface ChatMessagesProps {
   messages: UIMessage[];
@@ -11,46 +15,18 @@ interface ChatMessagesProps {
 const isSupportedRole = (role: UIMessage["role"]) =>
   role === "assistant" || role === "user";
 
-const getMessageText = (message: UIMessage) => {
-  if (!Array.isArray(message.parts) || message.parts.length === 0) {
-    return "";
-  }
-
-  return message.parts
-    .map((part) => {
-      if (part.type === "text" && "text" in part) {
-        return typeof part.text === "string" ? part.text : "";
-      }
-      if (part.type === "reasoning" && "text" in part) {
-        return typeof part.text === "string" ? part.text : "";
-      }
-      if (part.type === "tool-result" || part.type.startsWith("tool-")) {
-        const toolPart = part as unknown as {
-          type: string;
-          toolName?: string;
-          toolCallId: string;
-        };
-        const label = toolPart.toolName ?? toolPart.toolCallId ?? "tool";
-        return `[${label} result available]`;
-      }
-      return "";
-    })
-    .filter(Boolean)
-    .join("\n\n")
-    .trim();
-};
+// Legacy getMessageText replaced by messageProcessor.extractCopy (kept private there)
 
 const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
   ({ messages, isStreaming }, ref) => {
     const { t } = useTranslation();
-    const conversation = messages.filter((message) =>
-      isSupportedRole(message.role),
+    const processed = processConversation(
+      messages.filter((m) => isSupportedRole(m.role)),
     );
 
     return (
       <div className={styles.messages} ref={ref}>
-        {conversation.map((message) => {
-          const copy = getMessageText(message);
+        {processed.map((message) => {
           const isAssistant = message.role === "assistant";
           const thinking = t("chatThinking", "Thinking…");
           const ellipsis = t("chatEllipsis", "…");
@@ -66,7 +42,35 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
               className={styles.message}
               data-role={message.role}
             >
-              <p>{copy || fallback}</p>
+              {message.parts.map((part, idx) => {
+                if (part.kind === "text") {
+                  return (
+                    <MarkdownMessage
+                      key={idx}
+                      content={part.content}
+                      fallback={fallback}
+                      data-role={message.role}
+                    />
+                  );
+                }
+                if (part.kind === "component" && part.name === "OpenHours") {
+                  return (
+                    <React.Fragment key={idx}>
+                      <br />
+                      <OpenHours compact={part.props?.compact} />
+                    </React.Fragment>
+                  );
+                }
+                if (part.kind === "component" && part.name === "ServicesGrid") {
+                  return (
+                    <React.Fragment key={idx}>
+                      <br />
+                      <ServicesGrid />
+                    </React.Fragment>
+                  );
+                }
+                return null;
+              })}
             </div>
           );
         })}
