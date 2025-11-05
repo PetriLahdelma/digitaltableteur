@@ -37,8 +37,7 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
 }) => {
   const { t } = useTranslation();
   const resolvedPlaceholder =
-    placeholder ??
-    t("chatPlaceholder", "Ask about a open hours, service, or approach…");
+    placeholder ?? t("chatPlaceholder", "Ask me anything…");
   const resolvedLabel = label ?? t("chatInputLabel", "Ask Donny a question");
   const resolvedSendLabel = sendLabel ?? t("chatSend", "Send message");
 

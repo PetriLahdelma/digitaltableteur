@@ -37,3 +37,4 @@ export { default as Toast } from "./Toast/Toast";
 export { default as WorkNav } from "./WorkNav/WorkNav";
 export { default as MarkdownMessage } from "./MarkdownMessage/MarkdownMessage";
 export { default as OpenHours } from "./OpenHours/OpenHours";
+export { default as ServicesGrid } from "./ServicesGrid/ServicesGrid";
