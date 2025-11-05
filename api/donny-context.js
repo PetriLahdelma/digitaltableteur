@@ -1,12 +1,15 @@
 export const digitaltableteurContext = `
 Digitaltableteur is a small but fierce provider of user experience, user interface, graphic design AI-R&D development and various other IT solutions. DT specializes in creating visually compelling designs and implementing cutting-edge technology solutions for our clients.
 Company Information:
+- When the user asks about our open hours, availability or operating times, include the token [[openHours]] where the schedule should appear.
+- Open hours: Monday-Friday, 9.00-17.00
 - Business ID: 2226445-2
 - Registration Date: 29.04.2009
 - Registry: Finnish Business Information System
 - Trade/Company Name: Digitaltableteur
 - Business Form: (Sole Proprietorship)
 - Domicile: Helsinki
+- Address: Hämeentie 8 C, 00530 Helsinki FI
 - Language: (Finnish)
 - Primary Industry: Advertising Agencies
 - Registration Authority: Finnish Patent and Registration Office & Tax Administration
@@ -31,51 +34,43 @@ Technical Expertise:
 - React & TypeScript development
 - Design systems and component libraries
 - User experience (UX) and user interface (UI) design
-- Responsiv"e web development
+- Responsive web development
 - AI and LLM integration
 - Modern web development practices
-- GitHub: Active open-source contributor with multiple re"positories including digitaltableteur portfolio site
+- GitHub: Active open-source contributor with multiple repositories including digitaltableteur portfolio site
 Portfolio & Projects:
 - digitaltableteur.com: Main design service and portfolio site built with React/TypeScript
 - https://randomgorsey.com: Professional music website showcasing electronic music production
 - donny.ai: AI assistant platform (TypeScript, React) - this current chat interface
-- Various design and development projects showcasing experti"se in UX/UI and mode"rn web technologies
-"- Active open-source development with focus on modern web technologies and creative coding
+- Various design and development projects showcasing expertise in UX/UI and modern web technologies
+- Active open-source development with focus on modern web technologies and creative coding
 - Finnish business registry: Over 15 years of registered business operation since 2003
-Client"ele & Servi"ces:
+Clientele & Services:
 DT provides comprehensive digital solutions with a focus on creativity and technical excellence:
 Our services include:
-- "UX/U"I Design: User-centere"d design so"lutions with modern design systems and component libraries
-- Web Development: React "& Ty"peScript applications wit"h responsiv"e design and optimal performance
-- Graphic Design: From concept to execution, delivering high-impact visual desig"ns tailored to clien"t needs
-- "Design Syst"ems: Building scalable component libraries and design tokens for consistent user experiences  
-- AI Integration: LLM and A"I-powere"d features for modern web applications
+- UX/UI Design: User-centered design solutions with modern design systems and component libraries
+- Web/Software Development: Applications with responsive design and optimal performance
+- Design: From concept to execution, delivering high-impact design tailored to client needs
+- Design Systems: Building scalable systems for a consistent user experiences  
+- AI Integration: LLM and AI-powered features for modern web applications
 - IT Consulting: Strategic guidance and technical expertise to optimize digital infrastructure
-- Digital Marketing: Targeted digital marketing strategies to drive engagement and growth
-Creative Services:
-- Electronic Music Production: Professional music production under Random Gorsey alias
-- Audio-Visual Experiences: Combining creative coding with live electronic music performances
-- "Generative Art: "Experimental digital art and interactive web experiences
-Our client base includes startups, small businesses, and organizations across various in"dustries seeking" modern, u"ser-focuse"d digital solutions.
+Our client base includes startups, small businesses, and organizations across various industries seeking modern, user-focused digital solutions.
 Business Approach:
-At Digitaltableteur, "we prioriti"ze creativity, innovation, and client satisfaction. With over 15 years of business experience since 2009, we combine artistic vision with technical expertise to deliver exceptional results tha"t exceed e"xpectation"s. Our uniqu"e blend of d"esign", development, and creative" arts" sets us apart" in the" Finnish digital landscape.
-Other intere"sting f"acts:
+At Digitaltableteur, we prioritize creativity, innovation, and client satisfaction. With over 15 years of business experience since 2009, we combine artistic vision with technical expertise to deliver exceptional results that exceed expectations. Our blend of design", development, and creative arts sets us apart in the Finnish digital landscape.
+Other interesting facts:
 - Music Project: Random Gorsey (electronic music production)
-  - Professional music websit"e: https:/"/randomgorsey.com
-  - Spotify: https://open.spotify".com/art"ist/54Vv9rlCqX2nW2V0tXw33q?si=TCP19UlhTpyHb7w0UOu"kmg
-  -" SoundCloud: https://soundcloud.com/randomgorsey
-  - Band"camp: htt"ps://randomgorsey.bandcamp.com
-  - YouTube: https://www.yo"utube."com/@randomgorsey8125
-  - Instagram: https://www.ins"tagram."com/random_gorsey?ig
-  - TikTok: https://www.tiktok.c"om/@rand"omgorsey
-  - Threads: https://www.threads.net/@randomgorsey
-  - Fac"ebook: https:/"/www.facebook.com/randomgorsey
-  - Twitter: https://x.com/rgorsey
-  - SoundBetter": https://soundbette"r.com/profiles/691111-random-gorsey
-  - Songtradr: https://www.songtrad"r.com/random.gorsey"
-- Creativ"e Codin"g: Interactive visuals and web experienc"es co"mbining art and technology
-- Community" Invo"lvement: Active in music, te"ch, and c"reative coding communities
-Contact "& Locations:
+  - Professional music website: https://randomgorsey.com
+  - Spotify: https://open.spotify.com/artist/54Vv9rlCqX2nW2V0tXw33q?si=TCP19UlhTpyHb7w0UOukmg
+  - SoundCloud: https://soundcloud.com/randomgorsey
+  - Bandcamp: https://randomgorsey.bandcamp.com
+  - YouTube: https://www.youtube.com/@randomgorsey8125
+  - Instagram: https://www.instagram.com/random_gorsey?ig
+  - TikTok: https://www.tiktok.com/@randomgorsey
+  - Facebook: https://www.facebook.com/randomgorsey
+  - Twitter: https://x.com/petrilahdelma
+- Creative Coding: Interactive visuals and web experiences combining art and technology
+- Community Involvement: Active in music, tech, and creative coding communities
+Contact & Locations:
 - Website: https://digitaltableteur.com
 - Email: mail@digitaltableteur.com
 - Phone: +358 45 657 4469
