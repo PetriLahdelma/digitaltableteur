@@ -28,7 +28,7 @@ interface ChatWidgetProps {
 const STORAGE_KEY = "dt-donny-chat-v2";
 const LEGACY_STORAGE_KEY = "dt-donny-chat";
 const DEFAULT_GREETING_TEXT =
-  "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, services, or anything you see on the site.";
+  "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, or anything you notice on the site.";
 
 const REMOTE_CHAT_ENDPOINT =
   "https://digitaltableteursecureproxy.vercel.app/api/chat";

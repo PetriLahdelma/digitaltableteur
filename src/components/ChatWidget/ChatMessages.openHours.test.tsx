@@ -35,26 +35,75 @@ const renderWithProviders = (messages: any[]) => {
   );
 };
 
-describe("ChatMessages OpenHours injection", () => {
-  it("renders OpenHours for assistant heuristic mention", () => {
+describe("ChatMessages OpenHours injection (user-triggered only)", () => {
+  it("does NOT render when assistant mentions hours without prior user trigger", () => {
     renderWithProviders([
       assistantMsg("Can you tell me your open hours and closing time?"),
+    ]);
+    expect(screen.queryByTestId("open-hours")).not.toBeInTheDocument();
+  });
+
+  it("injects after user heuristic query then assistant reply", () => {
+    renderWithProviders([
+      userMsg("What are your open hours today?"),
+      assistantMsg("Our studio operates weekdays."),
     ]);
     expect(screen.getByTestId("open-hours")).toBeInTheDocument();
   });
 
-  it("renders OpenHours for assistant explicit token", () => {
-    renderWithProviders([assistantMsg("Here they are: [[openHours]]")]);
+  it("injects after user explicit token then assistant reply (token sanitized in user part)", () => {
+    renderWithProviders([
+      userMsg("Please show [[openHours]] now"),
+      assistantMsg("Certainly, here they are."),
+    ]);
     expect(screen.getByTestId("open-hours")).toBeInTheDocument();
   });
 
-  it("does NOT render OpenHours for user heuristic mention", () => {
-    renderWithProviders([userMsg("What are your open hours today?")]);
+  it("does NOT render for user explicit token without assistant follow-up", () => {
+    renderWithProviders([userMsg("Please show [[openHours]] now")]);
     expect(screen.queryByTestId("open-hours")).not.toBeInTheDocument();
   });
 
-  it("does NOT render OpenHours for user explicit token", () => {
-    renderWithProviders([userMsg("Please show [[openHours]] now")]);
-    expect(screen.queryByTestId("open-hours")).not.toBeInTheDocument();
+  it("injects after Finnish user heuristic then assistant reply", () => {
+    renderWithProviders([
+      userMsg("Mitkä ovat tämän päivän aukioloajat?"),
+      assistantMsg("Voin kertoa aukioloajat."),
+    ]);
+    expect(screen.getByTestId("open-hours")).toBeInTheDocument();
+  });
+
+  it("injects after Swedish user heuristic then assistant reply", () => {
+    renderWithProviders([
+      userMsg("Vilka är dagens öppettider?"),
+      assistantMsg("Här kommer tiderna."),
+    ]);
+    expect(screen.getByTestId("open-hours")).toBeInTheDocument();
+  });
+
+  it("sanitizes Finnish keyword + token in assistant when injected", () => {
+    renderWithProviders([
+      userMsg("Näytä [[openHours]]"),
+      assistantMsg("Aukioloajat [[openHours]] ovat tässä."),
+    ]);
+    const comp = screen.getByTestId("open-hours");
+    expect(comp).toBeInTheDocument();
+    const assistantTexts = screen.getAllByText(/./); // grab all text nodes
+    const joined = assistantTexts.map((n) => n.textContent || "").join(" ");
+    expect(joined).not.toMatch(/\[\[openHours\]\]/);
+    expect(/aukioloajat/i.test(joined)).toBe(false);
+  });
+
+  it("sanitizes English keyword + token in assistant when injected", () => {
+    renderWithProviders([
+      userMsg("Please show [[openHours]]"),
+      assistantMsg("Open hours [[openHours]] are shown."),
+    ]);
+    const comp = screen.getByTestId("open-hours");
+    expect(comp).toBeInTheDocument();
+    // Find the assistant raw text node (excluding component content)
+    const rawAssistant = screen.getAllByText(/are shown\./i)[0];
+    const raw = rawAssistant.textContent || "";
+    expect(raw).not.toMatch(/\[\[openHours\]\]/);
+    expect(/open\s*hours/i.test(raw)).toBe(false);
   });
 });
