@@ -67,7 +67,7 @@
   /* Increase indentation by additional 1rem */
   padding-inline-start: calc(var(--space-5) + 1rem);
   font-size: 1rem;
-  margin: 1rem 1rem;
+  margin: 1rem;
 }
 
 .root li + li {
