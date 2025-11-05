@@ -116,17 +116,15 @@ export default async function handler(
 
 - The handler returns a [UI message stream](https://ai-sdk.dev/docs/ai-sdk-ui/ui-message-stream) that the `useChat` hook consumes.
 - The widget falls back to `https://digitaltableteursecureproxy.vercel.app/api/chat` when running on `digitaltableteur.com` or `localhost`. Set `VITE_DONNY_CHAT_ENDPOINT` to point elsewhere if you host the API on another origin.
-- Conditioning and retrieval can happen before `streamText` (fetch context, call tools, inject memory, etc.).
-  <<<<<<< Updated upstream
-  =======
+  Conditioning and retrieval can happen before `streamText` (fetch context, call tools, inject memory, etc.).
 
 ## Markdown Rendering
 
-The chat widget now supports GitHub-flavored Markdown (GFM) for assistant and user messages via the `MarkdownMessage` component, powered by `react-markdown` + `remark-gfm`.
+The chat widget supports GitHub-flavored Markdown (GFM) for assistant and user messages via the `MarkdownMessage` component, powered by `react-markdown` + `remark-gfm`.
 
 Security / sanitization:
 
-- Raw HTML is currently disabled (`skipHtml`).
+- Raw HTML is disabled (`skipHtml`).
 - Links receive `rel="noopener noreferrer"`.
 - Code blocks and inline code are styled with design tokens.
 
@@ -261,4 +259,16 @@ Implementation details:
 
 Future enhancements could expose a hoverable popover with next opening time or integrate with the `OpenHours` component inline.
 
-> > > > > > > Stashed changes
+## Focus Behavior
+
+When the chat widget is opened, the textarea in the composer auto-focuses for immediate typing. Implementation notes:
+
+- `ChatComposer` exposes a `focusInput` method via `forwardRef` / `useImperativeHandle`.
+- `ChatWidget` holds a `composerRef` and calls `focusInput` inside a `requestAnimationFrame` after opening to ensure the DOM is laid out.
+- Accessibility: autofocus is intentional and improves efficiency; screen readers announce cursor placement within the composer. Consider a future user setting to disable if requested.
+- Tests: a dedicated focus test asserts the textarea receives focus after toggle (with a `scrollTo` feature guard for jsdom environment).
+
+Fallback / safety:
+
+- If `scrollTo` is unsupported (jsdom), the widget falls back to setting `scrollTop` directly before focusing.
+- Focus method checks instance existence to avoid race condition errors.

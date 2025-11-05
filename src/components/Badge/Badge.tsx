@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { isValidElement, useState } from "react";
 import styles from "./Badge.module.css";
 import Button from "@dt/Button";
 import { IoMdClose } from "react-icons/io";
@@ -62,8 +62,35 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     const [visible, setVisible] = useState(true);
     const semanticStatus =
       state && state !== "neutral" ? STATE_TO_STATUS[state] : undefined;
-    const resolvedIcon =
-      icon ?? (semanticStatus ? getSemanticIcon(semanticStatus) : null);
+    // Normalize incoming icon prop; guard against plain objects or other invalid types.
+    let resolvedIcon: React.ReactNode = icon;
+    if (resolvedIcon == null && semanticStatus) {
+      resolvedIcon = getSemanticIcon(semanticStatus);
+    }
+    // If caller passed a component function/class instead of an element, create it
+    if (resolvedIcon && typeof resolvedIcon === "function") {
+      try {
+        const MaybeComponent = resolvedIcon as React.ComponentType;
+        resolvedIcon = <MaybeComponent />;
+      } catch {
+        resolvedIcon = null;
+      }
+    }
+    // Reject non-element objects (e.g., plain object icon prop)
+    if (
+      resolvedIcon &&
+      typeof resolvedIcon === "object" &&
+      !isValidElement(resolvedIcon)
+    ) {
+      // eslint-disable-next-line no-console
+      if (process.env.NODE_ENV !== "production") {
+        console.warn(
+          "[Badge] Ignoring invalid icon prop (expected React element/component).",
+          resolvedIcon,
+        );
+      }
+      resolvedIcon = null;
+    }
     if (!visible) return null;
     return (
       <span

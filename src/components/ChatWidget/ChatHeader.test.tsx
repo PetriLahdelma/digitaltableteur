@@ -106,7 +106,7 @@ describe("ChatHeader availability dot", () => {
     const dot = await screen.findByTestId("chat-availability-dot");
     // Accept any localized closed tooltip variant
     expect(dot.getAttribute("title")).toMatch(
-      /Closed|Suljettu|Stängt|Outside open hours/i,
+      /Closed|Suljettu|Stängt|Outside business hours/i,
     );
 
     (global as any).Date = RealDate;
