@@ -5,7 +5,7 @@ import ChatHeader from "./ChatHeader";
 const noop = () => {};
 
 const meta: Meta<typeof ChatHeader> = {
-  title: "AI/Chat/ChatHeader",
+  title: "Components/AI/Chat/ChatHeader",
   component: ChatHeader,
   args: {
     title: "Chat with Donny",

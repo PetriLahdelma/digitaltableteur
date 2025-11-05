@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useImperativeHandle, useRef } from "react";
 import Button from "@dt/Button";
 import { IoSend } from "react-icons/io5";
 import { ChatTextArea } from "../Inputs/TextArea";
@@ -19,26 +19,47 @@ interface ChatComposerProps {
   maxLength?: number;
 }
 
-const ChatComposer: React.FC<ChatComposerProps> = ({
-  labelId = "donny-input-label",
-  inputId,
-  placeholder,
-  label,
-  sendLabel,
-  value,
-  onValueChange,
-  onSubmit,
-  isSending,
-  maxLength = 1_000,
-}) => {
-  const { t } = useTranslation();
-  const resolvedPlaceholder =
-    placeholder ??
-    t("chatPlaceholder", "Ask about a project, service, or approach…");
-  const resolvedLabel = label ?? t("chatInputLabel", "Ask Donny a question");
-  const resolvedSendLabel = sendLabel ?? t("chatSend", "Send message");
+export interface ChatComposerHandle {
+  focusInput: () => void;
+}
 
-  return (
+const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
+  (
+    {
+      labelId = "donny-input-label",
+      inputId,
+      placeholder,
+      label,
+      sendLabel,
+      value,
+      onValueChange,
+      onSubmit,
+      isSending,
+      maxLength = 1_000,
+    },
+    ref,
+  ) => {
+    const { t } = useTranslation();
+    const resolvedPlaceholder =
+      placeholder ??
+      t("chatPlaceholder", "Ask about a project, service, or approach…");
+    const resolvedLabel = label ?? t("chatInputLabel", "Ask Donny a question");
+    const resolvedSendLabel = sendLabel ?? t("chatSend", "Send message");
+    const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+    useImperativeHandle(
+      ref,
+      () => ({
+        focusInput: () => {
+          if (textAreaRef.current) {
+            textAreaRef.current.focus();
+          }
+        },
+      }),
+      [],
+    );
+
+    return (
     <form className={styles.composer} onSubmit={onSubmit}>
       <label className={styles.inputLabel} htmlFor={inputId} id={labelId}>
         {resolvedLabel}
@@ -56,6 +77,7 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
           maxLength={maxLength}
           disabled={isSending}
           aria-live="polite"
+          ref={textAreaRef}
           onKeyDown={(e) => {
             if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
               // Trigger submit programmatically while preserving normal Enter behavior for newlines.
@@ -94,7 +116,10 @@ const ChatComposer: React.FC<ChatComposerProps> = ({
         )}
       </Text>
     </form>
-  );
-};
+    );
+  },
+);
+
+ChatComposer.displayName = "ChatComposer";
 
 export default ChatComposer;

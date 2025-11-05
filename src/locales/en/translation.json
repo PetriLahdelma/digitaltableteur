@@ -415,5 +415,12 @@
   "downloadResumeErrorInvalidPassword": "Please enter a valid password",
   "downloadResumeErrorIncorrect": "Incorrect password",
   "downloadResumeErrorValidation": "Unable to validate password",
-  "downloadResumeErrorGeneric": "Something went wrong. Please try again."
+  "downloadResumeErrorGeneric": "Something went wrong. Please try again.",
+  "servicesGrid.itemTitle": "Lorem ipsum",
+  "servicesGrid.ariaLabel": "Service capability",
+  "servicesGrid.titles.design": "Design",
+  "servicesGrid.titles.development": "Development",
+  "servicesGrid.titles.strategy": "Strategy",
+  "servicesGrid.titles.aiInnovation": "AI Innovation",
+  "storybookWipBadge": "WIP"
 }
