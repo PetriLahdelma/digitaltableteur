@@ -3,6 +3,7 @@ import type { UIMessage } from "ai";
 import {
   processMessage,
   TOKEN_OPEN_HOURS,
+  TOKEN_SERVICES_GRID,
   extractCopy,
 } from "./messageProcessor";
 
@@ -12,7 +13,7 @@ const makeMsg = (role: UIMessage["role"], text: string): UIMessage => ({
   parts: [{ type: "text", text }],
 });
 
-describe("messageProcessor | OpenHours", () => {
+describe("messageProcessor | OpenHours + ServicesGrid", () => {
   it("extractCopy returns raw text for basic message", () => {
     const m = makeMsg("assistant", "Hello world");
     expect(extractCopy(m)).toBe("Hello world");
@@ -68,5 +69,47 @@ describe("messageProcessor | OpenHours", () => {
     ).length;
     expect(componentCount).toBe(2);
     expect(processed.parts.length).toBe(5);
+  });
+
+  // ServicesGrid token should interleave only once (dedup subsequent tokens)
+  it("assistant servicesGrid token renders a single ServicesGrid component", () => {
+    const m = makeMsg(
+      "assistant",
+      `Intro ${TOKEN_SERVICES_GRID} middle ${TOKEN_SERVICES_GRID} end`,
+    );
+    const processed = processMessage(m);
+    const servicesParts = processed.parts.filter(
+      (p) => p.kind === "component" && p.name === "ServicesGrid",
+    );
+    expect(servicesParts.length).toBe(1);
+  });
+
+  it("assistant heuristic services mention appends ServicesGrid when no token", () => {
+    const m = makeMsg(
+      "assistant",
+      "Can you outline your services and capabilities?",
+    );
+    const processed = processMessage(m);
+    const last = processed.parts[processed.parts.length - 1];
+    expect(last).toMatchObject({ kind: "component", name: "ServicesGrid" });
+  });
+
+  it("user servicesGrid token is stripped with NO component injection", () => {
+    const m = makeMsg("user", `Show ${TOKEN_SERVICES_GRID} now please`);
+    const processed = processMessage(m);
+    expect(processed.parts).toHaveLength(1);
+    expect(processed.parts[0]).toMatchObject({ kind: "text" });
+    expect((processed.parts[0] as any).content).not.toContain(
+      TOKEN_SERVICES_GRID,
+    );
+  });
+
+  it("user heuristic services mention does not inject ServicesGrid", () => {
+    const m = makeMsg("user", "Tell me about your services and capabilities");
+    const processed = processMessage(m);
+    const hasServices = processed.parts.some(
+      (p) => p.kind === "component" && p.name === "ServicesGrid",
+    );
+    expect(hasServices).toBe(false);
   });
 });
