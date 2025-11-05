@@ -9,12 +9,22 @@ import {
 } from "../../utils/semanticIcons";
 import * as FaIcons from "react-icons/fa";
 
-// Dynamically create options and mapping for all icons
-const iconOptions = {
+// Dynamically create options and mapping for all icons (store component refs, not JSX instances)
+// This prevents passing plain objects or already-instantiated elements that trigger React type warnings.
+const iconOptions: Record<string, React.ComponentType | null> = {
   None: null,
   ...Object.fromEntries(
-    Object.entries(FaIcons).map(([name, Icon]) => [name, <Icon key={name} />]),
+    Object.entries(FaIcons).map(([name, Icon]) => [
+      name,
+      Icon as React.ComponentType,
+    ]),
   ),
+};
+
+export const getIconElement = (name: string): React.ReactNode => {
+  const Icon = iconOptions[name];
+  if (!Icon) return null;
+  return <Icon />;
 };
 
 type BadgeState = "success" | "info" | "error" | "warning" | "neutral";

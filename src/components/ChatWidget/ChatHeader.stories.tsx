@@ -9,7 +9,7 @@ const meta: Meta<typeof ChatHeader> = {
   component: ChatHeader,
   args: {
     title: "Chat with Donny",
-    description: "Brand-specific answers, no fluff.",
+    description: "DT-specific answers, no fluff.",
     onReset: noop,
     onMinimize: noop,
     isSending: false,
