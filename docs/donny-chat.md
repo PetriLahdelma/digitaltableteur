@@ -138,28 +138,55 @@ Extensibility:
 - Enable raw HTML or custom components by extending `MarkdownMessage` with rehype plugins when needed.
 - For syntax highlighting, integrate a light-on-weight solution (e.g. refractor or a tokenizing highlighter) inside the code component override.
 
-## Dynamic Component Tokens
+## Dynamic Component Injection Architecture
 
-The assistant can embed dynamic UI components inside streamed markdown by emitting special bracket tokens. Currently supported:
+Dynamic components are no longer injected directly inside the `ChatMessages` component via inline heuristics. Instead, the pure transformer `messageProcessor.ts` produces a normalized array of `ProcessedMessage` objects that drive rendering.
 
-| Token              | Renders                                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------------------- |
-| `[[openHours]]`    | The `<OpenHours compact />` component with live "open now" badge                               |
-| `[[servicesGrid]]` | The `<ServicesGrid />` 2x2 capability icon grid (Design, Development, Strategy, AI Innovation) |
+Current transformation rules:
 
-Guidelines:
+| Rule | Applies To | Effect |
+| ---- | ---------- | ------ |
+| Explicit token `[[openHours]]` | Assistant messages only | Splits the message into text and `<OpenHours compact />` parts, preserving surrounding text segments |
+| Heuristic open hours mention (regex) | Assistant messages only | Appends a single `<OpenHours compact />` component after the full text when the token is absent |
+| Explicit token `[[servicesGrid]]` | Assistant messages only | Injects a single `<ServicesGrid />` component (first token only) interleaved with surrounding text |
+| Heuristic services mention (regex) | Assistant messages only | Appends a single `<ServicesGrid />` when no explicit servicesGrid token was provided |
+| Any explicit token in user message | User messages | Token is stripped; no component injection (prevents privilege escalation) |
 
-- Tokens should appear on their own line or surrounded by blank lines for clearer layout, but inline usage is also supported.
-- Multiple occurrences in a single message are allowed.
-- Unknown tokens are left as plain text (future enhancement: whitelist enforcement before rendering).
-- Unknown tokens are left as plain text (future enhancement: whitelist enforcement before rendering).
-- `[[servicesGrid]]` renders four localized capability labels: `servicesGrid.titles.design`, `servicesGrid.titles.development`, `servicesGrid.titles.strategy`, and `servicesGrid.titles.aiInnovation`.
-- Deduplication: Only the first `[[servicesGrid]]` token in an assistant message is rendered; subsequent occurrences in the same message are ignored. Heuristic injection will also not fire if an explicit token already rendered in that message.
+Why the refactor:
 
-Model Prompting Tips:
+1. Separation of concerns – presentation (`ChatMessages`) now renders declarative parts, while parsing / business rules live in a testable pure module.
+2. Deterministic behavior – avoids duplicate or conflicting heuristics; easier to extend with new component types.
+3. Security & policy – user messages cannot coerce privileged UI components (guard enforced centrally).
 
-- Availability: _"When the user asks about our availability or operating times, include the token [[openHours]] where the schedule should appear."_
-- Capabilities overview: _"When the user asks about what we offer or our capabilities, you may include [[servicesGrid]] to show a quick capability grid."_
+Extensibility path:
+
+- Add a new token constant and branch inside `processMessage`; return a `component` part with a unique `name`.
+- Update the renderer switch in `ChatMessages` to handle the new component name.
+- Provide unit tests in `messageProcessor.test.tsx` covering token split, heuristic fallback, and user token stripping.
+- Add integration tests (`ChatMessages.<component>.test.tsx`) for assistant vs user rendering.
+- Maintain translation coverage for any new user-facing labels surfaced by the component.
+
+Reinstated behavior:
+
+`[[servicesGrid]]` and its heuristic were previously removed to simplify the UI, but have been reintroduced to allow the assistant to surface a concise overview of core service offerings contextually. Injection rules mirror OpenHours: assistant-only, single component per message via either explicit token or heuristic.
+
+Prompting guidance (current):
+
+- Availability questions: the model may include `[[openHours]]` or rely on heuristic language ("opening hours", "business hours", etc.).
+- Services overview requests: instruct the model to include `[[servicesGrid]]` or mention "services we offer" / "our services" naturally to trigger heuristic injection.
+- Avoid redundant tokens; the processor will ignore additional `[[servicesGrid]]` occurrences after the first.
+
+Anti-abuse considerations:
+
+- User-provided tokens are sanitized (removed) before rendering.
+- Only whitelisted component names are rendered; unknown names are ignored silently.
+- Heuristics trigger only for assistant role ensuring users cannot phrase-bomb injections.
+
+Testing strategy:
+
+- `messageProcessor.test.tsx` validates transformation logic (token splitting, heuristic injection, user stripping) for both OpenHours and ServicesGrid.
+- `ChatMessages.openHours.test.tsx` & `ChatMessages.servicesGrid.test.tsx` validate integration-level rendering (assistant vs user roles).
+- Visual baselines should be refreshed if `<OpenHours />` or `<ServicesGrid />` layout changes: `npm run test:visual -- --updateSnapshot`.
 
 ## Availability Indicator
 
