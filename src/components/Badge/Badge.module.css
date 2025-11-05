@@ -16,6 +16,7 @@
   text-overflow: ellipsis;
   border: 2px solid transparent;
   box-sizing: border-box;
+  width: fit-content;
 }
 
 .s {
