@@ -1,5 +1,11 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  act,
+} from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
@@ -90,7 +96,9 @@ describe("SocialShare", () => {
     renderSocialShare();
 
     const copyButton = screen.getByLabelText("Copy to clipboard");
-    fireEvent.click(copyButton);
+    await act(async () => {
+      fireEvent.click(copyButton);
+    });
 
     expect(mockWriteText).toHaveBeenCalledWith(defaultProps.url);
   });
@@ -100,7 +108,9 @@ describe("SocialShare", () => {
     renderSocialShare();
 
     const copyButton = screen.getByLabelText("Copy to clipboard");
-    fireEvent.click(copyButton);
+    await act(async () => {
+      fireEvent.click(copyButton);
+    });
 
     await waitFor(() => {
       expect(screen.getByText("Link copied!")).toBeInTheDocument();
