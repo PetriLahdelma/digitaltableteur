@@ -36,56 +36,25 @@ const renderWithProviders = (messages: any[]) => {
 };
 
 describe("ChatMessages ServicesGrid injection", () => {
-  it("renders exactly one ServicesGrid when keyword triggers heuristic", () => {
-    renderWithProviders([
-      assistantMsg("Our services include design and development."),
-    ]);
-    const grids = screen.getAllByTestId("services-grid");
-    expect(grids.length).toBe(1);
-    const icons = screen.getAllByTestId("services-grid-icon");
-    expect(icons.length).toBe(4);
+  it("renders ServicesGrid for assistant explicit token", () => {
+    renderWithProviders([assistantMsg("Here they are: [[servicesGrid]]")]);
+    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
   });
 
-  it("renders explicit token without heuristic duplication", () => {
+  it("renders ServicesGrid for assistant heuristic mention", () => {
     renderWithProviders([
-      assistantMsg(
-        "Here is an overview:\n\n[[servicesGrid]]\nWe also do custom work.",
-      ),
+      assistantMsg("Can you list your services and capabilities?"),
     ]);
-    const grids = screen.getAllByTestId("services-grid");
-    expect(grids.length).toBe(1);
+    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
   });
 
-  it("renders multiple tokens if explicitly repeated", () => {
-    renderWithProviders([
-      assistantMsg("[[servicesGrid]] and again [[servicesGrid]]"),
-    ]);
-    const grids = screen.getAllByTestId("services-grid");
-    // Dedup logic now limits to a single ServicesGrid per message even if multiple tokens.
-    expect(grids.length).toBe(1);
+  it("does NOT render ServicesGrid for user explicit token", () => {
+    renderWithProviders([userMsg("Show [[servicesGrid]] now")]);
+    expect(screen.queryByTestId("services-grid")).not.toBeInTheDocument();
   });
 
-  it("does not inject heuristic when token present in same message", () => {
-    renderWithProviders([
-      assistantMsg(
-        "Our services: [[servicesGrid]] design, strategy, and more services.",
-      ),
-    ]);
-    const grids = screen.getAllByTestId("services-grid");
-    expect(grids.length).toBe(1);
-  });
-
-  it("does not render grid for user keyword-only message", () => {
-    renderWithProviders([
-      userMsg("Tell me about your services and capabilities"),
-    ]);
-    const grids = screen.queryAllByTestId("services-grid");
-    expect(grids.length).toBe(0);
-  });
-
-  it("does not render grid for user explicit token message", () => {
-    renderWithProviders([userMsg("[[servicesGrid]] please show services")]);
-    const grids = screen.queryAllByTestId("services-grid");
-    expect(grids.length).toBe(0);
+  it("does NOT render ServicesGrid for user heuristic mention", () => {
+    renderWithProviders([userMsg("What services do you provide?")]);
+    expect(screen.queryByTestId("services-grid")).not.toBeInTheDocument();
   });
 });

@@ -467,10 +467,13 @@ const LinkLargeWrap = () => {
 
 type ComponentVariant = {
   name: string;
-  Variants: React.ComponentType;
+  // Accept Storybook story functions (StoryAnnotations) or plain React components
+  Variants: React.ComponentType<any>;
 };
 
-const COMPONENTS: ComponentVariant[] = [
+// Use loose typing here because Storybook story exports carry StoryAnnotations generic types not assignable directly to React.ComponentType.
+// Rendering is still safe since we invoke them as components.
+const COMPONENTS = [
   { name: "Badge Sizes", Variants: BadgeSizes },
   { name: "Badge Variants", Variants: BadgeVariants },
   { name: "Button Sizes", Variants: ButtonSizes },
@@ -488,24 +491,26 @@ const COMPONENTS: ComponentVariant[] = [
   { name: "Title Sizes", Variants: TitleSizes },
   {
     name: "ArticleCard Default",
-    Variants: () =>
-      ArticleCardDefault({
-        title: "Design System Best Practices",
-        lead: "Learn how to build, scale, and maintain a robust design system for modern teams.",
-        link: "/blog/design-system-best-practices",
-        readTime: "8 min read",
-      }),
+    Variants: () => (
+      <ArticleCardDefault
+        title="Design System Best Practices"
+        lead="Learn how to build, scale, and maintain a robust design system for modern teams."
+        link="/blog/design-system-best-practices"
+        readTime="8 min read"
+      />
+    ),
   },
   {
     name: "ArticleCard WithCustomClass",
-    Variants: () =>
-      ArticleCardWithCustomClass({
-        title: "Branding in 2025: Trends & Opportunities",
-        lead: "Explore the future of digital branding, emerging technologies, and resilient brand strategies.",
-        link: "/blog/branding-2025",
-        readTime: "14 min read",
-        className: "customClass",
-      }),
+    Variants: () => (
+      <ArticleCardWithCustomClass
+        title="Branding in 2025: Trends & Opportunities"
+        lead="Explore the future of digital branding, emerging technologies, and resilient brand strategies."
+        link="/blog/branding-2025"
+        readTime="14 min read"
+        className="customClass"
+      />
+    ),
   },
   {
     name: "Avatar WithImage",
@@ -580,18 +585,19 @@ export const AllComponents = () => (
         alignItems: "start",
       }}
     >
-      {COMPONENTS.map(({ name, Variants }) => (
-        <React.Fragment key={name}>
-          <Label
-            htmlFor={name.toLowerCase().replace(/\s+/g, "-") + "-kitchensink"}
-          >
-            {name}
-          </Label>
-          <div>
-            <Variants />
-          </div>
-        </React.Fragment>
-      ))}
+      {COMPONENTS.map(({ name, Variants }) => {
+        const Render = Variants as any;
+        return (
+          <React.Fragment key={name}>
+            <Label
+              htmlFor={name.toLowerCase().replace(/\s+/g, "-") + "-kitchensink"}
+            >
+              {name}
+            </Label>
+            <div>{typeof Render === "function" ? <Render /> : null}</div>
+          </React.Fragment>
+        );
+      })}
     </div>
   </Suspense>
 );
