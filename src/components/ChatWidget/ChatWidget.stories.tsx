@@ -126,7 +126,7 @@ const ChatWidgetStoryDemo = () => {
 };
 
 const meta: Meta<typeof ChatWidget> = {
-  title: "AI/Chat/ChatWidget",
+  title: "Components/AI/Chat/ChatWidget",
   component: ChatWidget,
   parameters: {
     layout: "fullscreen",

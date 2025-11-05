@@ -24,6 +24,7 @@ When working with this project, please:
 - Maintain test coverage for critical functionality
 - Use the `@dt/` component library when available
 - Keep Storybook visual regression baselines current and review diffs before merging
+- Every Storybook story displays a persistent WIP badge (localized) until the story explicitly opts out via `export const ... = { parameters: { wip: { disabled: true }}}`. Use this to signal audit readiness. Removing the badge should coincide with accessibility + visual + translation verification.
 
 ## Architecture Notes
 

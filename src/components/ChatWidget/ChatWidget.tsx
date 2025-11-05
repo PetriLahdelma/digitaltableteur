@@ -9,7 +9,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
-import ChatComposer from "./ChatComposer";
+import ChatComposer, { ChatComposerHandle } from "./ChatComposer";
 import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
 import ChatToggle from "./ChatToggle";
@@ -492,12 +492,15 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
   }, [isOpen, stop]);
 
+  const composerRef = useRef<ChatComposerHandle | null>(null);
   const handleToggle = useCallback(() => {
     if (isOpen) {
       closeChat();
       return;
     }
     setIsOpen(true);
+    // Defer focus to next animation frame after open state renders composer.
+    requestAnimationFrame(() => composerRef.current?.focusInput());
   }, [closeChat, isOpen]);
 
   useEffect(() => {
@@ -581,6 +584,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             </div>
           )}
           <ChatComposer
+            ref={composerRef}
             inputId="donny-input"
             placeholder={placeholderText}
             label={inputLabelText}

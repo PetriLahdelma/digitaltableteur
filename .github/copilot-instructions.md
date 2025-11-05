@@ -12,6 +12,7 @@
 - Update copilot-instructions.md with any changes to development practices or architecture with every git commit
 - Refresh Storybook visual regression assets (`npm run test:visual`) whenever UI changes affect component rendering
 - Ensure all new components have Storybook stories and accessibility tests
+- Storybook stories display a persistent localized WIP badge until a story explicitly opts out via `parameters: { wip: { disabled: true } }`; remove only after accessibility, visual regression, and translation checks pass
 - Follow i18n practices for all user-facing text
 - Do not generate new colour varriables unless spefifically requested to do so
 
