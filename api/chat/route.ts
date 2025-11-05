@@ -6,7 +6,7 @@ import {
   systemPrompt,
   createCorsHeaders,
   validateMessages,
-} from "../chat-shared.ts"; // shared chat utilities
+} from "../chat-shared"; // shared chat utilities
 
 type ChatRequestBody = { messages?: unknown };
 
