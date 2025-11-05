@@ -180,6 +180,15 @@
   border-radius: 1rem 1rem 0;
 }
 
+/* Full-span container for components that should stretch across panel width (e.g. OpenHours) */
+.fullSpan {
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .statusBanner {
   margin: 0 1.25rem 0.75rem;
   padding: 0.75rem 1rem;
