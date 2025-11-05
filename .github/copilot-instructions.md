@@ -158,26 +158,42 @@ When modifying markdown rendering:
 - Update tests (`MarkdownMessage.test.tsx`) and Storybook (`MarkdownMessage.stories.tsx`)
 - Refresh visual baselines if styling changes (`npm run test:visual`)
 
-## Chat Dynamic Component Injection
+## Chat Dynamic Component Injection (User-Triggered Model)
 
-Inline parsing was refactored out of `ChatMessages` into the pure transformer `messageProcessor.ts` (fully unit tested). Rendering now iterates declarative `ProcessedMessage.parts`.
+Dynamic component decisions are centralized in the pure transformer `messageProcessor.ts` which outputs `ProcessedMessage.parts` for `ChatMessages.tsx`. Assistant heuristics are disabled; only preceding USER messages can trigger injections.
 
-Current assistant-only dynamic components:
+Trigger flow:
 
-- Token `[[openHours]]` -> `<OpenHours compact />` interleaved at token positions.
-- Heuristic open hours mention (regex) -> `<OpenHours compact />` appended if token absent.
-- Token `[[servicesGrid]]` -> single `<ServicesGrid />` injected (first token only) interleaved with surrounding text.
-- Heuristic services mention (regex) -> `<ServicesGrid />` appended if explicit token not present.
+1. User message scanned for tokens `[[openHours]]`, `[[servicesGrid]]` OR multilingual heuristic keywords (EN/FI/SV for hours & services).
+2. Matching sets pending flags; user tokens are stripped from rendered text.
+3. Next assistant reply consumes flags: tokens + first keyword occurrence removed from assistant text and corresponding components appended (`<OpenHours compact />`, `<ServicesGrid />`).
+4. Flags reset to prevent repeated injections.
 
-User role handling:
+Sanitization:
 
-- Any `[[openHours]]` / `[[servicesGrid]]` tokens in user messages are stripped; no injection occurs.
+- User: remove explicit tokens only (keywords retained for clarity).
+- Assistant (on injection): remove explicit tokens AND leading keyword (“Open hours”, “Aukioloajat”, “Öppettider”, “Services”, “Palvelut”, “Tjänster”).
+- Assistant without pending flags: tokens/keywords ignored (no component, text preserved except tokens are not expected to appear normally).
 
-Extending with new components:
-1. Add token & heuristic branch in `messageProcessor.ts` returning `{ kind: "component", name: "YourComponent" }`.
-2. Add render switch case in `ChatMessages.tsx`.
-3. Add unit tests (`messageProcessor.test.tsx`) + integration tests (`ChatMessages.<component>.test.tsx`).
-4. Provide Storybook story & ensure translations for user-facing text.
-5. Refresh visual regression baselines if style/layout changes (`npm run test:visual -- --updateSnapshot`).
+Multilingual keyword coverage (user role only): see `messageProcessor.ts` regex definitions for open hours and services.
 
-Security: Assistant-only injection, centralized stripping of user tokens, whitelist of component names.
+Extending:
+
+1. Add new token constant + user regex pattern.
+2. Add pending flag & assistant consumption branch.
+3. Render new component in `ChatMessages.tsx` switch.
+4. Unit tests: user token + keyword triggers, assistant sanitization.
+5. Integration tests: component presence only after user trigger.
+6. Visual regression update if layout changes.
+
+Security:
+
+- User cannot force multiple future injections; only immediate next assistant reply uses flags.
+- Whitelist component names; ignore unknown.
+- Token echoing by assistant without user trigger does not inject.
+
+Testing:
+
+- `messageProcessor.test.tsx` covers flags & sanitization (EN/FI/SV).
+- `ChatMessages.*.test.tsx` covers rendering & absence of keywords/tokens in assistant post-injection.
+- Run `npm run test:visual` after changes impacting layout.
