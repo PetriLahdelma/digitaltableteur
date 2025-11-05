@@ -11,13 +11,10 @@
   pointer-events: none; /* Prevent interfering with component interactions */
 }
 
-.wipBadgeContainer .badge {
-  pointer-events: auto; /* Allow interactions (e.g., future dismiss) */
-}
-
 /* Ensure it remains visible over story content */
 .wipBadgeContainer .badge {
-  /* Use modern color notation; fallback to simple shadow without alpha to satisfy lint */
-  box-shadow: 0 0 0 1px var(--color-border-light), 0 2px 4px rgb(0 0 0 / 12%);
-  pointer-events: auto; /* Allow future interactions */
+  pointer-events: auto;
+  box-shadow:
+    0 0 0 1px var(--color-border-light),
+    0 2px 4px rgb(0 0 0 / 12%);
 }

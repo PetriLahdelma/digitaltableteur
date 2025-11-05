@@ -422,7 +422,17 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     if (!isOpen) return;
     const container = scrollerRef.current;
     if (!container) return;
-    container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+    // jsdom may not implement scrollTo; feature detect and fallback
+    if (typeof container.scrollTo === "function") {
+      try {
+        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+      } catch {
+        // fallback if options unsupported
+        container.scrollTop = container.scrollHeight;
+      }
+    } else {
+      container.scrollTop = container.scrollHeight;
+    }
   }, [messages, isOpen]);
 
   useEffect(() => {
