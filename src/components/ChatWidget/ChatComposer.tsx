@@ -17,6 +17,8 @@ interface ChatComposerProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   isSending: boolean;
   maxLength?: number;
+  minRows?: number; // controls initial height
+  maxRows?: number; // controls max auto-grow height
 }
 
 export interface ChatComposerHandle {

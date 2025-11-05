@@ -11,6 +11,11 @@
   "chatPlaceholder": "Fråga vad som helst",
   "chatInputLabel": "Ställ en fråga till Donny",
   "chatSend": "Skicka meddelande",
+  "chatAvailabilityOpen": "Tillgänglig nu",
+  "chatAvailabilityClosed": "Utanför öppettider",
+  "chatOpenTooltip": "Öppet",
+  "chatClosedTooltip": "Stängt",
+  "chatShortcutHint": "Tryck Enter för att skicka. Använd Shift + Enter för ny rad.",
   "chatToggleOpen": "Chatta med Donny",
   "chatToggleClose": "Dölj chattfönstret",
   "chatToggleLabel": "Chatt",
@@ -440,6 +445,5 @@
   "servicesGrid.titles.design": "Design",
   "servicesGrid.titles.development": "Development",
   "servicesGrid.titles.strategy": "Strategi",
-  "servicesGrid.titles.aiInnovation": "AI-innovation",
-  "storybookWipBadge": "Pågående"
+  "servicesGrid.titles.aiInnovation": "AI-innovation"
 }
