@@ -297,10 +297,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const resolvedTitle = title ?? t("chatTitle", "Chat with Donny");
   const resolvedDescription =
     description ?? t("chatDescription", "Brand-specific answers, no fluff.");
-  const placeholderText = t(
-    "chatPlaceholder",
-    "Ask about a project, service, or approach…",
-  );
+  const placeholderText = t("chatPlaceholder", "Ask me anything…");
   const inputLabelText = t("chatInputLabel", "Ask Donny a question");
   const sendLabelText = t("chatSend", "Send message");
 
