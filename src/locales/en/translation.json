@@ -7,7 +7,7 @@
   "toggleDarkMode": "Toggle dark mode",
   "chatTitle": "Chat with Donny",
   "chatDescription": "DT-specific answers, no fluff.",
-  "chatGreeting": "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, services, or anything you see on the site.",
+  "chatGreeting": "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, or anything you notice on the site.",
   "chatPlaceholder": "Ask me anything…",
   "chatInputLabel": "Ask Donny a question",
   "chatSend": "Send message",

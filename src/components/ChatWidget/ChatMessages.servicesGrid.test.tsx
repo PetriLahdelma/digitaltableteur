@@ -35,57 +35,87 @@ const renderWithProviders = (messages: any[]) => {
   );
 };
 
-describe("ChatMessages ServicesGrid injection", () => {
-  it("renders exactly one ServicesGrid when keyword triggers heuristic", () => {
+describe("ChatMessages ServicesGrid injection (user-triggered only)", () => {
+  it("does NOT render when assistant mentions services without prior user trigger", () => {
     renderWithProviders([
-      assistantMsg("Our services include design and development."),
+      assistantMsg("Can you list your services and capabilities?"),
     ]);
-    const grids = screen.getAllByTestId("services-grid");
-    expect(grids.length).toBe(1);
-    const icons = screen.getAllByTestId("services-grid-icon");
-    expect(icons.length).toBe(4);
+    expect(screen.queryByTestId("services-grid")).not.toBeInTheDocument();
   });
 
-  it("renders explicit token without heuristic duplication", () => {
+  it("injects after user heuristic query then assistant reply", () => {
     renderWithProviders([
-      assistantMsg(
-        "Here is an overview:\n\n[[servicesGrid]]\nWe also do custom work.",
-      ),
+      userMsg("What services do you provide?"),
+      assistantMsg("We offer a comprehensive set."),
     ]);
-    const grids = screen.getAllByTestId("services-grid");
-    expect(grids.length).toBe(1);
+    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
   });
 
-  it("renders multiple tokens if explicitly repeated", () => {
+  it("injects after user explicit token then assistant reply (token sanitized in user part)", () => {
     renderWithProviders([
-      assistantMsg("[[servicesGrid]] and again [[servicesGrid]]"),
+      userMsg("Show [[servicesGrid]] now"),
+      assistantMsg("Here is the overview."),
     ]);
-    const grids = screen.getAllByTestId("services-grid");
-    // Dedup logic now limits to a single ServicesGrid per message even if multiple tokens.
-    expect(grids.length).toBe(1);
+    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
   });
 
-  it("does not inject heuristic when token present in same message", () => {
-    renderWithProviders([
-      assistantMsg(
-        "Our services: [[servicesGrid]] design, strategy, and more services.",
-      ),
-    ]);
-    const grids = screen.getAllByTestId("services-grid");
-    expect(grids.length).toBe(1);
+  it("does NOT render for user explicit token without assistant follow-up", () => {
+    renderWithProviders([userMsg("Show [[servicesGrid]] now")]);
+    expect(screen.queryByTestId("services-grid")).not.toBeInTheDocument();
   });
 
-  it("does not render grid for user keyword-only message", () => {
+  it("injects after Finnish user heuristic then assistant reply", () => {
     renderWithProviders([
-      userMsg("Tell me about your services and capabilities"),
+      userMsg("Voitko kertoa palvelut?"),
+      assistantMsg("Tässä palveluiden yleiskatsaus."),
     ]);
-    const grids = screen.queryAllByTestId("services-grid");
-    expect(grids.length).toBe(0);
+    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
   });
 
-  it("does not render grid for user explicit token message", () => {
-    renderWithProviders([userMsg("[[servicesGrid]] please show services")]);
-    const grids = screen.queryAllByTestId("services-grid");
-    expect(grids.length).toBe(0);
+  it("injects after Swedish user heuristic then assistant reply", () => {
+    renderWithProviders([
+      userMsg("Kan du lista era tjänster?"),
+      assistantMsg("Här är en översikt."),
+    ]);
+    expect(screen.getByTestId("services-grid")).toBeInTheDocument();
+  });
+
+  it("sanitizes Swedish keyword + token in assistant when injected", () => {
+    renderWithProviders([
+      userMsg("Visa [[servicesGrid]]"),
+      assistantMsg("Tjänster [[servicesGrid]] listas här."),
+    ]);
+    const comp = screen.getByTestId("services-grid");
+    expect(comp).toBeInTheDocument();
+    const assistantTexts = screen.getAllByText(/./);
+    const joined = assistantTexts.map((n) => n.textContent || "").join(" ");
+    expect(joined).not.toMatch(/\[\[servicesGrid\]\]/);
+    expect(/tjänster/i.test(joined)).toBe(false);
+  });
+
+  it("sanitizes English keyword + token in assistant when injected", () => {
+    renderWithProviders([
+      userMsg("Show [[servicesGrid]]"),
+      assistantMsg("Services [[servicesGrid]] overview."),
+    ]);
+    const comp = screen.getByTestId("services-grid");
+    expect(comp).toBeInTheDocument();
+    const assistantTexts = screen.getAllByText(/./);
+    const joined = assistantTexts.map((n) => n.textContent || "").join(" ");
+    expect(joined).not.toMatch(/\[\[servicesGrid\]\]/);
+    expect(/services/i.test(joined)).toBe(false);
+  });
+
+  it("sanitizes Finnish keyword + token in assistant when injected", () => {
+    renderWithProviders([
+      userMsg("Näytä [[servicesGrid]]"),
+      assistantMsg("Palvelut [[servicesGrid]] näkyvät alla."),
+    ]);
+    const comp = screen.getByTestId("services-grid");
+    expect(comp).toBeInTheDocument();
+    const assistantTexts = screen.getAllByText(/./);
+    const joined = assistantTexts.map((n) => n.textContent || "").join(" ");
+    expect(joined).not.toMatch(/\[\[servicesGrid\]\]/);
+    expect(/palvelut/i.test(joined)).toBe(false);
   });
 });

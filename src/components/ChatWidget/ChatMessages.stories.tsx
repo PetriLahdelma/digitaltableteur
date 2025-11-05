@@ -10,7 +10,7 @@ const SAMPLE_MESSAGES: UIMessage[] = [
     parts: [
       {
         type: "text",
-        text: "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, services, or anything you see on the site.",
+        text: "Hi! I’m Donny, the Digitaltableteur studio guide. Feel free to ask about our work or anything you notice on the site.",
       },
     ],
   },
