@@ -85,7 +85,6 @@
   color: inherit;
   border-radius: 999px;
   font-size: 0.75rem;
-  padding: 0.4rem 0.75rem;
   cursor: pointer;
   transition:
     background 0.2s ease,
@@ -142,6 +141,15 @@
   background: var(--color-primary, #0f62fe);
   color: var(--inverted-text-color, #fff);
   border-radius: 1rem 1rem 0;
+}
+
+/* Full-span container for components that should stretch across panel width (e.g. OpenHours) */
+.fullSpan {
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .statusBanner {
@@ -280,6 +288,16 @@
   width: 1em;
   height: 1em;
   display: block;
+}
+
+.shortcutHint {
+  color: var(--color-primary);
+  opacity: 0.3;
+  margin: 0;
+  padding-inline-start: 1rem;
+  font-family: Moderat, sans-serif;
+  font-size: 0.85rem !important;
+  margin-block-end: 0 !important;
 }
 
 @media (width <= 768px) {
