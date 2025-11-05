@@ -9,7 +9,7 @@ export const WEEKLY_HOURS: DayHours[] = [
   { day: "tuesday", open: "09:00", close: "17:00" },
   { day: "wednesday", open: "09:00", close: "17:00" },
   { day: "thursday", open: "09:00", close: "17:00" },
-  { day: "friday", open: "09:00", close: "15:00" },
+  { day: "friday", open: "09:00", close: "17:00" },
   { day: "saturday", open: null, close: null },
   { day: "sunday", open: null, close: null },
 ];

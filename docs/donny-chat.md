@@ -142,14 +142,56 @@ Extensibility:
 
 The assistant can embed dynamic UI components inside streamed markdown by emitting special bracket tokens. Currently supported:
 
-| Token           | Renders                                                          |
-| --------------- | ---------------------------------------------------------------- |
-| `[[openHours]]` | The `<OpenHours compact />` component with live "open now" badge |
+| Token              | Renders                                                                                        |
+| ------------------ | ---------------------------------------------------------------------------------------------- |
+| `[[openHours]]`    | The `<OpenHours compact />` component with live "open now" badge                               |
+| `[[servicesGrid]]` | The `<ServicesGrid />` 2x2 capability icon grid (Design, Development, Strategy, AI Innovation) |
 
 Guidelines:
 
 - Tokens should appear on their own line or surrounded by blank lines for clearer layout, but inline usage is also supported.
 - Multiple occurrences in a single message are allowed.
 - Unknown tokens are left as plain text (future enhancement: whitelist enforcement before rendering).
+- Unknown tokens are left as plain text (future enhancement: whitelist enforcement before rendering).
+- `[[servicesGrid]]` renders four localized capability labels: `servicesGrid.titles.design`, `servicesGrid.titles.development`, `servicesGrid.titles.strategy`, and `servicesGrid.titles.aiInnovation`.
+- Deduplication: Only the first `[[servicesGrid]]` token in an assistant message is rendered; subsequent occurrences in the same message are ignored. Heuristic injection will also not fire if an explicit token already rendered in that message.
 
-Model Prompting Tip: Add a system / developer hint instructing the model: _"When the user asks about our availability or operating times, include the token [[openHours]] where the schedule should appear."_
+Model Prompting Tips:
+
+- Availability: _"When the user asks about our availability or operating times, include the token [[openHours]] where the schedule should appear."_
+- Capabilities overview: _"When the user asks about what we offer or our capabilities, you may include [[servicesGrid]] to show a quick capability grid."_
+
+## Availability Indicator
+
+### High Contrast Styling (Accessibility)
+
+For users on high contrast themes (e.g. `themeHCB` or OS forced colors) the Services Grid icon wrappers now use a transparent background with the icons colored via `var(--color-primary)`. This avoids white-on-white (or similar) collisions where both background and foreground previously resolved to the same forced color.
+
+Updated CSS:
+
+```
+.iconWrapper { background: transparent; color: var(--color-primary); }
+.iconWrapper svg { color: var(--color-primary); }
+```
+
+Impact:
+
+- Preserves sizing, spacing, and layout semantics
+- No new design tokens introduced (compliant with design system policy)
+- Improved legibility in high contrast / forced color modes
+
+Action Items after change:
+
+- Refresh visual regression baselines: `npm run test:visual -- --updateSnapshot`
+- Confirm icon visibility manually in high contrast mode
+
+The chat header shows a minimal 8px circular availability indicator instead of a badge to reduce visual noise while preserving status context.
+
+Implementation details:
+
+- CSS classes: `.availabilityDot`, `.availabilityDotOpen`, `.availabilityDotClosed`.
+- Colours derive from existing success/error tokens; no new colour variables introduced.
+- Tooltip & accessibility: `title` + `aria-label` use `chatOpenTooltip` / `chatClosedTooltip` translation keys per locale.
+- Logic unchanged: Finnish business hours (Europe/Helsinki) Mon–Fri 09:00–15:00 determine open/closed.
+
+Future enhancements could expose a hoverable popover with next opening time or integrate with the `OpenHours` component inline.

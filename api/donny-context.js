@@ -49,16 +49,11 @@ Clientele & Services:
 DT provides comprehensive digital solutions with a focus on creativity and technical excellence:
 Our services include:
 - UX/UI Design: User-centered design solutions with modern design systems and component libraries
-- Web Development: React & TypeScript applications with responsive design and optimal performance
-- Graphic Design: From concept to execution, delivering high-impact visual designs tailored to client needs
-- Design Systems: Building scalable component libraries and design tokens for consistent user experiences  
+- Web/Software Development: Applications with responsive design and optimal performance
+- Design: From concept to execution, delivering high-impact design tailored to client needs
+- Design Systems: Building scalable systems for a consistent user experiences  
 - AI Integration: LLM and AI-powered features for modern web applications
 - IT Consulting: Strategic guidance and technical expertise to optimize digital infrastructure
-- Digital Marketing: Targeted digital marketing strategies to drive engagement and growth
-Creative Services:
-- Electronic Music Production: Professional music production under Random Gorsey alias
-- Audio-Visual Experiences: Combining creative coding with live electronic music performances
-- Generative Art: Experimental digital art and interactive web experiences
 Our client base includes startups, small businesses, and organizations across various industries seeking modern, user-focused digital solutions.
 Business Approach:
 At Digitaltableteur, we prioritize creativity, innovation, and client satisfaction. With over 15 years of business experience since 2009, we combine artistic vision with technical expertise to deliver exceptional results that exceed expectations. Our blend of design", development, and creative arts sets us apart in the Finnish digital landscape.

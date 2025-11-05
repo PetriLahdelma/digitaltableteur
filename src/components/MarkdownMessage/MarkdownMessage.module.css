@@ -1,5 +1,5 @@
 .root {
-  font-family: var(--font-family-sans);
+  font-family: var(--font-size-text);
   font-size: var(--font-size-text);
   line-height: 1.5;
   color: var(--color-text-primary);
@@ -7,13 +7,18 @@
   overflow-wrap: anywhere;
 }
 
+::marker {
+  color: var(--color-primary);
+}
+
 .root p {
   margin: var(--space-2) 0;
+  font-size: 1rem;
 }
 
 .root p strong,
 .root p b {
-  font-family: var(--primary-font);
+  font-family: var(--primary-body-font);
   font-weight: bold;
 }
 
@@ -30,7 +35,7 @@
   background: var(--color-surface-alt);
   padding: 0 var(--space-1);
   border-radius: var(--radius-xs);
-  font-size: 0.875em;
+  font-size: 1rem;
 }
 
 .root pre code {
@@ -59,8 +64,10 @@
 
 .root ul,
 .root ol {
-  padding-inline-start: var(--space-5);
-  margin: var(--space-2) 0;
+  /* Increase indentation by additional 1rem */
+  padding-inline-start: calc(var(--space-5) + 1rem);
+  font-size: 1rem;
+  margin: 1rem 1rem;
 }
 
 .root li + li {
