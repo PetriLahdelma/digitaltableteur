@@ -1,0 +1,145 @@
+.root {
+  /* Force sans-serif across all markdown unless explicitly overridden */
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-text);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+::marker {
+  color: var(--color-primary);
+}
+
+.root p {
+  margin: var(--space-2) 0;
+  font-size: 1rem;
+}
+
+.root p strong,
+.root p b {
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+}
+
+.root p:first-child {
+  margin-top: 0;
+}
+
+.root p:last-child {
+  margin-bottom: 0;
+}
+
+.root code {
+  font-family: var(--font-family-mono, monospace);
+  background: var(--color-surface-alt);
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-xs);
+  font-size: 1rem;
+}
+
+.root pre code {
+  display: block;
+  padding: var(--space-2);
+  overflow-x: auto;
+}
+
+.root pre {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  padding: var(--space-2);
+  margin: var(--space-2) 0;
+}
+
+.root a {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+.root a:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.root ul,
+.root ol {
+  /* Increase indentation by additional 1rem */
+  padding-inline-start: calc(var(--space-5) + 1rem);
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+.root li + li {
+  margin-top: var(--space-1);
+}
+
+.root blockquote {
+  margin: var(--space-2) 0;
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid var(--color-border-strong);
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-xs);
+}
+
+.root h1,
+.root h2,
+.root h3,
+.root h4,
+.root h5,
+.root h6 {
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.root h1 {
+  font-size: var(--font-size-title-l);
+}
+
+.root h2 {
+  font-size: var(--font-size-title-m);
+}
+
+.root h3 {
+  font-size: var(--font-size-title-s);
+}
+
+.root h4 {
+  font-size: var(--font-size-text-l);
+}
+
+.root h5 {
+  font-size: var(--font-size-text);
+}
+
+.root h6 {
+  font-size: var(--font-size-text-s);
+}
+
+.root table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-3) 0;
+}
+
+.root th,
+.root td {
+  border: 1px solid var(--color-border);
+  padding: var(--space-1) var(--space-2);
+  text-align: left;
+  vertical-align: top;
+}
+
+.root th {
+  background: var(--color-surface-alt);
+  font-weight: 600;
+}
+
+.root img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-xs);
+}

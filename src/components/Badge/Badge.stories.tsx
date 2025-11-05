@@ -17,6 +17,9 @@ const STATE_ICON_MAP = {
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
   component: Badge,
+  parameters: {
+    wip: { disabled: true }, // Disable global WIP badge to prevent duplicate 'Badge' text collision in tests
+  },
   argTypes: {
     design: {
       control: { type: "select" },
@@ -104,7 +107,8 @@ export const Playground: Story = {
   render: Template,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await canvas.findByText(/badge/i);
+    // Query more specific text to avoid collision with global WIP badge label when enabled elsewhere
+    await canvas.findByText(/Badge$/i);
     await userEvent.tab();
   },
 };
