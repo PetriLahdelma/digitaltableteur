@@ -10,6 +10,12 @@ The Donny widget streams assistant replies with the [Vercel AI SDK](https://ai-s
 | `OPENAI_CHAT_MODEL`        | Optional override for the OpenAI chat model.                                                                                | `gpt-4o-mini` (derived from `AI_GATEWAY_MODEL` if prefixed with `openai/`) |
 | `AI_GATEWAY_MODEL`         | Legacy model hint. If present the `openai/` prefix is stripped and reused.                                                  | —                                                                          |
 | `OPENAI_API_KEY`           | Pulled from the `digitaltableteur_secure_proxy` Vercel project via `vercel env pull`.                                       | —                                                                          |
+| Variable                   | Purpose                                                                                                                     | Default / Notes                                                            |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `VITE_DONNY_CHAT_ENDPOINT` | Overrides the client request URL. The production build points to `https://digitaltableteursecureproxy.vercel.app/api/chat`. | `/api/chat` in custom deployments                                          |
+| `OPENAI_CHAT_MODEL`        | Optional override for the OpenAI chat model.                                                                                | `gpt-4o-mini` (derived from `AI_GATEWAY_MODEL` if prefixed with `openai/`) |
+| `AI_GATEWAY_MODEL`         | Legacy model hint. If present the `openai/` prefix is stripped and reused.                                                  | —                                                                          |
+| `OPENAI_API_KEY`           | Pulled from the `digitaltableteur_secure_proxy` Vercel project via `vercel env pull`.                                       | —                                                                          |
 
 > Run `vercel env pull .env.local` whenever the secure proxy secrets change so local development keeps using the deployed credentials.
 
@@ -38,6 +44,8 @@ const resolveModelId = () => {
   const candidate = process.env.AI_GATEWAY_MODEL?.trim();
   if (candidate?.startsWith("openai/"))
     return candidate.slice("openai/".length);
+  if (candidate?.startsWith("openai/"))
+    return candidate.slice("openai/".length);
   return candidate || "gpt-4o-mini";
 };
 
@@ -47,9 +55,17 @@ export default async function handler(
     body?: unknown;
     headers?: Record<string, string>;
   },
+  req: IncomingMessage & {
+    method?: string;
+    body?: unknown;
+    headers?: Record<string, string>;
+  },
   res: ServerResponse,
 ) {
   const origin = req.headers?.origin;
+  const corsOrigin = allowedOrigins.includes(origin ?? "")
+    ? origin
+    : allowedOrigins[0];
   const corsOrigin = allowedOrigins.includes(origin ?? "")
     ? origin
     : allowedOrigins[0];

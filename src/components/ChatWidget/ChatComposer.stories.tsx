@@ -9,7 +9,7 @@ const meta: Meta<typeof ChatComposer> = {
   component: ChatComposer,
   args: {
     inputId: "donny-input",
-    placeholder: "Ask about a project, service, or approach…",
+    placeholder: "Ask about open hours, service, or approach…",
     isSending: false,
     onSubmit: noop,
     maxLength: 1_000,

@@ -11,6 +11,11 @@
   "chatPlaceholder": "Kysy mitä vaan…",
   "chatInputLabel": "Esitä kysymys Donnylle",
   "chatSend": "Lähetä viesti",
+  "chatAvailabilityOpen": "Saatavilla nyt",
+  "chatAvailabilityClosed": "Aukioloaikojen ulkopuolella",
+  "chatOpenTooltip": "Auki",
+  "chatClosedTooltip": "Suljettu",
+  "chatShortcutHint": "Paina Enter lähettääksesi. Käytä Shift + Enter rivinvaihtoon.",
   "chatToggleOpen": "Keskustele Donnyn kanssa",
   "chatToggleClose": "Piilota chat-ikkuna",
   "chatToggleLabel": "Chat",
@@ -440,6 +445,5 @@
   "servicesGrid.titles.design": "Design",
   "servicesGrid.titles.development": "Development",
   "servicesGrid.titles.strategy": "Strategia",
-  "servicesGrid.titles.aiInnovation": "AI-innovaatio",
-  "storybookWipBadge": "Kesken"
+  "servicesGrid.titles.aiInnovation": "AI-innovaatio"
 }

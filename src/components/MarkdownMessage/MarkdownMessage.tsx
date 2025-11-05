@@ -2,46 +2,47 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import styles from "./MarkdownMessage.module.css";
-import { useTranslation } from "react-i18next";
 
 export interface MarkdownMessageProps {
   content: string;
   fallback?: string;
-  [dataAttr: string]: unknown; // allow data-role etc. (data-role etc.)
+  "data-role"?: string;
 }
 
+// Basic link transform: open in same tab for accessibility; could be target _blank with rel
 const MarkdownMessage: React.FC<MarkdownMessageProps> = ({
   content,
   fallback,
-  ...rest
+  "data-role": dataRole,
 }) => {
-  const { t } = useTranslation();
-  const trimmed = content?.trim();
-  const toRender =
-    trimmed && trimmed.length > 0
-      ? trimmed
-      : fallback || t("chatThinking", "Thinking…");
+  const safe = content?.trim();
+  const toRender = safe || fallback || "";
 
   return (
     <div
       className={styles.root}
-      {...rest}
-      aria-live={!trimmed ? "polite" : undefined}
+      data-role={dataRole}
+      aria-live={safe ? undefined : "polite"}
     >
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        skipHtml
-        components={{
-          a: ({ node, ...props }) => <a {...props} rel="noopener noreferrer" />,
-          code: ({ className, children, ...props }) => (
-            <code className={className} {...props}>
-              {children}
-            </code>
-          ),
-        }}
-      >
-        {toRender}
-      </ReactMarkdown>
+      {toRender ? (
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          // Disallow raw HTML for safety; can be enabled later with rehype-sanitize
+          skipHtml
+          components={{
+            a: ({ node, ...props }) => (
+              <a {...props} rel="noopener noreferrer" />
+            ),
+            code: ({ className, children, ...props }) => (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            ),
+          }}
+        >
+          {toRender}
+        </ReactMarkdown>
+      ) : null}
     </div>
   );
 };

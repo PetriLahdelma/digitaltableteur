@@ -26,7 +26,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   const resetAriaLabel = t("chatResetAria", "Reset conversation");
   const minimizeAriaLabel = t("chatMinimizeAria", "Minimize chat");
 
-  // Determine Finnish (Europe/Helsinki) business hours: Mon-Fri 09:00-17:00 local time
+  // Finnish (Europe/Helsinki) business hours: Mon–Fri 09:00–17:00 local time (inclusive start, exclusive end)
   const helsinkiNow = useMemo(() => {
     try {
       const fmt = new Intl.DateTimeFormat("en-GB", {
@@ -77,7 +77,6 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           />
         </p>
         <h2 className={styles.title}>{title}</h2>
-        <p className={styles.subtitle}>{description}</p>
       </div>
       <div className={styles.headerActions}>
         <Button
