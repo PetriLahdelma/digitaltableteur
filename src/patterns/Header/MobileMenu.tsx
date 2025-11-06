@@ -1,11 +1,14 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { IoClose } from "react-icons/io5";
 import { IoMoon, IoSunnySharp } from "react-icons/io5";
 import { MdOutlineContrast } from "react-icons/md";
 import { useTheme, type Theme } from "@dt/ThemeProvider";
 import styles from "./MobileMenu.module.css";
+import Title from "@dt/Title";
+import { NavMenuList } from "@dt/index";
+import Label from "@dt/Label";
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -101,127 +104,93 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         aria-modal="true"
         role="dialog"
         aria-label={t("navMenuAccessibleLabel", "Main navigation")}
-        ref={containerRef}
-        tabIndex={-1}
       >
-        <header className={styles.header}>
-          <h2 className={styles.title}>
-            {t("navMenuTitle", "Explore Digitaltableteur")}
-          </h2>
-          <button
-            type="button"
-            className={styles.closeButton}
-            onClick={onClose}
-            aria-label={t("navMenuClose", "Close navigation")}
-          >
-            <IoClose size="1.25rem" />
-          </button>
-        </header>
-        <nav aria-label={t("navMenuLinks", "Primary pages")}>
-          <ul className={styles.nav}>
-            <li>
-              <Link
-                to="/"
-                className={`${styles.navLink} ${
-                  location.pathname === "/" ? styles.navLinkActive : ""
-                }`.trim()}
-                onClick={handleNavigate}
+        <div
+          className={styles.panelContent}
+          ref={containerRef}
+          tabIndex={-1}
+          role="document"
+        >
+          <header className={styles.header}>
+            <Title as="h2" size="S" terminals="sans" className={styles.title}>
+              {t("navMenuTitle", "Menu")}
+            </Title>
+            <button
+              type="button"
+              className={styles.closeButton}
+              onClick={onClose}
+              aria-label={t("navMenuClose", "Close navigation")}
+            >
+              <IoClose size="1.25rem" />
+            </button>
+          </header>
+          <nav aria-label={t("navMenuLinks", "Primary pages")}>
+            <NavMenuList
+              items={[
+                { to: "/", label: t("navHome"), exact: true },
+                { to: "/work", label: t("navWork") },
+                { to: "/about", label: t("navAbout") },
+                { to: "/blog", label: t("navBlog") },
+                { to: "/contact", label: t("navContact") },
+              ]}
+              onNavigate={handleNavigate}
+              listClassName={styles.nav}
+              itemClassName={styles.navLink}
+              activeClassName={styles.navLinkActive}
+            />
+          </nav>
+        </div>
+        <footer className={styles.footer} aria-label={t("navLangSwitch")}>
+          <div className={styles.bottomControlsRow}>
+            <div className={styles.bottomLeftGroup}>
+              <Label
+                htmlFor="mobile-menu-language-list"
+                className={styles.segmentLabel}
               >
-                {t("navHome")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/work"
-                className={`${styles.navLink} ${
-                  location.pathname.startsWith("/work")
-                    ? styles.navLinkActive
-                    : ""
-                }`.trim()}
-                onClick={handleNavigate}
+                {t("navMenuLanguages", "Language")}
+              </Label>
+              <div
+                id="mobile-menu-language-list"
+                className={styles.languageList}
               >
-                {t("navWork")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                className={`${styles.navLink} ${
-                  location.pathname.startsWith("/about")
-                    ? styles.navLinkActive
-                    : ""
-                }`.trim()}
-                onClick={handleNavigate}
+                {languages.map((language) => (
+                  <button
+                    key={language.code}
+                    type="button"
+                    onClick={() => handleLanguageChange(language.code)}
+                    className={`${styles.languageButton} ${
+                      currentLanguage === language.code
+                        ? styles.languageButtonActive
+                        : ""
+                    }`.trim()}
+                    aria-current={
+                      currentLanguage === language.code ? "true" : undefined
+                    }
+                  >
+                    {language.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className={styles.bottomRightGroup}>
+              <Label
+                htmlFor="mobile-menu-theme-button"
+                className={styles.segmentLabel}
               >
-                {t("navAbout")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/blog"
-                className={`${styles.navLink} ${
-                  location.pathname.startsWith("/blog")
-                    ? styles.navLinkActive
-                    : ""
-                }`.trim()}
-                onClick={handleNavigate}
-              >
-                {t("navBlog")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact"
-                className={`${styles.navLink} ${
-                  location.pathname.startsWith("/contact")
-                    ? styles.navLinkActive
-                    : ""
-                }`.trim()}
-                onClick={handleNavigate}
-              >
-                {t("navContact")}
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <section className={styles.segment} aria-label={t("navLangSwitch")}>
-          <span className={styles.segmentLabel}>
-            {t("navMenuLanguages", "Language")}
-          </span>
-          <div className={styles.languageList}>
-            {languages.map((language) => (
+                {t("navMenuTheme", "Theme")}
+              </Label>
               <button
-                key={language.code}
+                id="mobile-menu-theme-button"
                 type="button"
-                onClick={() => handleLanguageChange(language.code)}
-                className={`${styles.languageButton} ${
-                  currentLanguage === language.code
-                    ? styles.languageButtonActive
-                    : ""
-                }`.trim()}
-                aria-current={
-                  currentLanguage === language.code ? "true" : undefined
-                }
+                className={styles.themeIconButton}
+                onClick={handleThemeToggle}
+                aria-label={t("navMenuThemeToggle", "Cycle theme")}
               >
-                {language.label}
+                {themeIcons[theme]}
               </button>
-            ))}
+            </div>
           </div>
-        </section>
-        <section className={styles.segment}>
-          <span className={styles.segmentLabel}>
-            {t("navMenuTheme", "Theme")}
-          </span>
-          <button
-            type="button"
-            className={styles.themeButton}
-            onClick={handleThemeToggle}
-            aria-label={t("toggleDarkMode")}
-          >
-            {themeIcons[theme]}
-            <span>{t("navMenuThemeToggle", "Cycle theme")}</span>
-          </button>
-        </section>
+        </footer>
       </div>
     </div>
   );

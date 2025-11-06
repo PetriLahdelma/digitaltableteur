@@ -2,6 +2,9 @@
 
 ## Workflow Requirements
 
+- Always refer to docs/2026_PRD.md for project requirements
+- Always refer to docs/2026_ROADMAP.txt for planning, checking long-term goals and progress
+- Follow established coding conventions: TypeScript with strict typing, CSS Modules for styling, React functional components with hooks
 - Prefer sans-serif fonts for body text and serif fonts for headings
 - Maintain consistent spacing and layout using design tokens defined in `variables.css`
 - Adhere to accessibility standards: semantic HTML, ARIA roles, keyboard navigation
@@ -112,6 +115,7 @@ npm run eslint-fix   # Auto-fix linting issues
 - `src/components/` - Reusable UI components (exported via `index.ts`)
 - `src/pages/` - Route components with lazy loading
 - `src/patterns/` - Layout patterns (Header, Footer)
+- `src/components/NavMenuList/` - Reusable navigation list abstraction used by `MobileMenu` and future navigational surfaces (encapsulates active route detection, aria-current assignment, styling hooks)
 - `src/locales/` - Translation files per language
 - `api/` - Vercel serverless functions
 - `scripts/` - Build and deployment automation
@@ -145,6 +149,44 @@ npm run eslint-fix   # Auto-fix linting issues
 - **Cache Strategy**: Aggressive filename hashing + manual cache busting
 
 ## Chat Markdown Rendering
+
+## Reusable Navigation List Pattern (NavMenuList)
+
+The project introduces a reusable navigation abstraction `NavMenuList` (`src/components/NavMenuList/`). It centralizes:
+
+- Active state logic (exact vs prefix route matching) with `exact?: boolean` per item
+- Uniform application of `aria-current="page"` for accessibility when active
+- Styling indirection via `listClassName`, `itemClassName`, `activeClassName` props so patterns (e.g., `MobileMenu`, future sidebars) can supply context-specific CSS Modules while keeping logic pure
+- Click handling through a single `onNavigate` callback for analytics, menu dismissal, or focus management
+
+Guidelines:
+
+1. Prefer using `NavMenuList` anywhere a vertical or simple navigation stack is needed instead of rewriting `<ul><li><Link/>` logic.
+2. Keep route fragments stable; rely on `exact: true` only for root or fully qualified paths where a prefix match would cause false positives.
+3. Provide localized `label` strings from i18n; never hard-code user-facing text in stories or patterns outside translation (except Storybook demo stories which may use placeholder labels).
+4. For horizontal header navigation, continue existing pattern until migrated; evaluate visual differences before unifying.
+5. If adding icon support, extend item type with optional `icon: ReactNode`; keep pure rendering (no side effects) and update tests + stories.
+
+Testing Expectations:
+
+- Unit tests must cover: rendering of all items, active state (exact + prefix), aria-current presence, and custom active class override.
+- MobileMenu integration test ensures labels are localized and `aria-current` behavior persists through composition.
+
+Storybook:
+
+- Stories retain WIP badge until a11y + visual + translation checks pass; NavMenuList stories demonstrate default and custom active class usage.
+
+Accessibility:
+
+- `aria-current` only applied to a single matching link; prefix matches should not create multiple active entries; ensure ordering of items prevents ambiguous matches (place longer, more specific prefixes earlier if necessary).
+
+Performance:
+
+- Lightweight functional component; minimal re-renders (depends on parent `items` identity + location changes). Memoization generally not required; optimize only if profiling reveals a hotspot.
+
+Extension Pattern:
+
+When creating variant navigation (e.g., with section dividers), wrap `NavMenuList` and inject extra markup rather than forking core logic.
 
 The `ChatWidget` uses a `MarkdownMessage` component to render assistant/user replies with GitHub-flavored Markdown. Implementation details:
 

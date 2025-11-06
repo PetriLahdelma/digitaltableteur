@@ -5,6 +5,7 @@
   "navBlog": "Blogi",
   "navContact": "Yhteys",
   "toggleDarkMode": "Vaihda tumma/vaalea tila",
+  "navMenuTitle": "Valikko",
   "chatTitle": "Keskustele Donnyn kanssa",
   "chatDescription": "Brändikohtaisia vastauksia ilman turhaa höpinää.",
   "chatGreeting": "Hei! Olen Donny, Digitaltableteur-studion opas. Kysy meistä, palveluistamme tai mistä tahansa mitä sivustolla näet.",
@@ -20,11 +21,7 @@
   "chatToggleClose": "Piilota chat-ikkuna",
   "chatToggleLabel": "Chat",
   "chatTagline": "DT Donny",
-  "chatAvailabilityOpen": "Saatavilla nyt",
-  "chatAvailabilityClosed": "Aukioloaikojen ulkopuolella",
-  "chatOpenTooltip": "Auki",
-  "chatClosedTooltip": "Suljettu",
-  "chatShortcutHint": "Paina Enter lähettääksesi. Käytä Shift + Enter rivinvaihtoon.",
+  "chatShortcutSubmit": "Paina '⌘ + Enter' (Mac) tai 'Ctrl + Enter' lähettääksesi.",
   "chatReset": "Nollaa",
   "chatResetAria": "Nollaa keskustelu",
   "chatMinimizeAria": "Pienennä chat-ikkuna",
@@ -59,6 +56,7 @@
   "contactInterestHelpMeChoose": "Auta valitsemaan",
   "contactMessage": "Viestisi",
   "contactMessagePlaceholder": "Kirjoita viestisi",
+  "storybookWipBadge": "Työn alla",
   "contactHearAbout": "Mistä kuulit Digitaltableteurista?",
   "contactHearAboutPlaceholder": "Valitse vaihtoehto",
   "contactHearSocial": "Sosiaalinen media",
@@ -445,5 +443,8 @@
   "servicesGrid.titles.design": "Design",
   "servicesGrid.titles.development": "Development",
   "servicesGrid.titles.strategy": "Strategia",
-  "servicesGrid.titles.aiInnovation": "AI-innovaatio"
+  "servicesGrid.titles.aiInnovation": "AI-innovaatio",
+  "busyIndicator.loading": "Ladataan",
+  "busyIndicator.loadingPercent": "Ladataan {{percent}}%",
+  "busyIndicator.complete": "Valmis"
 }
