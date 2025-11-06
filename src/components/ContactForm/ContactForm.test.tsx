@@ -25,19 +25,11 @@ describe("ContactForm integration", () => {
   it("submits correct payload to fetch and EmailJS", async () => {
     render(<ContactForm />);
 
-    // Fill basic inputs by label text
-    const nameInput =
-      screen.getByLabelText(/contactFullName|Default/i) ||
-      screen.getByLabelText(/Full name/i);
-    const emailInput =
-      screen.getByLabelText(/contactEmail|Email/i) ||
-      screen.getByLabelText(/Email/i);
-    const phoneInput =
-      screen.getByLabelText(/contactPhone|Phone/i) ||
-      screen.getByLabelText(/Phone/i);
-    const messageInput =
-      screen.getByLabelText(/contactMessage|Message/i) ||
-      screen.getByLabelText(/Message/i);
+    // Fill basic inputs by label text (use visible English translations now that i18n is initialized)
+    const nameInput = screen.getByLabelText(/Full Name/i);
+    const emailInput = screen.getByLabelText(/Email Address/i);
+    const phoneInput = screen.getByLabelText(/Phone Number/i);
+    const messageInput = screen.getByLabelText(/Your Message/i);
 
     // Use direct queries where labels might be translated
     fireEvent.change(nameInput, { target: { value: "Test User" } });
@@ -54,9 +46,7 @@ describe("ContactForm integration", () => {
       fireEvent.click(slave);
     }
 
-    const submit =
-      screen.getByRole("button", { name: /contactSubmit|Submit/i }) ||
-      screen.getByText(/Submit/i);
+    const submit = screen.getByRole("button", { name: /Submit/i });
 
     fireEvent.click(submit);
 

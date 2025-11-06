@@ -5,7 +5,7 @@ import ChatComposer from "./ChatComposer";
 const noop = () => {};
 
 const meta: Meta<typeof ChatComposer> = {
-  title: "AI/Chat/ChatComposer",
+  title: "Components/AI/Chat/ChatComposer",
   component: ChatComposer,
   args: {
     inputId: "donny-input",

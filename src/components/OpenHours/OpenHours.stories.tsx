@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import OpenHours from "./OpenHours";
 
 const meta: Meta<typeof OpenHours> = {
-  title: "Info/OpenHours",
+  title: "Components/AI/Chat/Custom Components/OpenHours",
   component: OpenHours,
   args: {},
 };
