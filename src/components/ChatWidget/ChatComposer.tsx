@@ -114,7 +114,7 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
         >
           {t(
             "chatShortcutSubmit",
-            "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' on PC to prompt instantly.",
+            "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.",
           )}
         </Text>
       </form>

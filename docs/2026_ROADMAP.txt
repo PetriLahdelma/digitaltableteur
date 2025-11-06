@@ -1,0 +1,328 @@
+Executive Summary (shared view)
+
+
+Commercial viability: Solid skills and positioning, but the current site under-leverages proof (case studies, social proof, lead magnets) and organic reach (SEO, programmatic content, partnerships). The SPA delivers “JS required” without server-rendered content, which hurts discoverability and previews. Digitaltableteur
+
+
+Market visibility: You’re present but quiet compared to Finnish leaders (Reaktor, Futurice, Solita, Taiste) who ship case studies, events, and AI POVs frequently. Helsinki Design Week+4Reaktor+4Futurice+4
+
+
+Competitor landscape: The giants lean on thought leadership, measurable outcomes, and community/events; mid-size boutiques (e.g., Taiste) emphasize design-to-dev and DS/ML offerings. Taiste+3Futurice+3Reaktor+3
+
+
+Core gaps: SEO/SSR, proof (metrics + logos), productized offerings, consistent AI story with examples, and a repeatable top-of-funnel engine.
+
+
+
+Persona 1 — Lead Architect (Software/Cyber/Scale)
+Technical & Security Assessment
+
+
+Architecture/hosting: Public repo suggests a React + Vite static deployment (GitHub Pages). Great for speed/cost, but lacks SSR/ISR for SEO and link unfurling. Consider Next.js or Astro with SSR/SSG/ISR and <head> control. GitHub
+
+
+SEO/preview issues: Root returns “Enable JavaScript” when JS is blocked, which also affects crawlers, link previews, and accessibility fallbacks. SSR or a pre-rendered shell fixes this. Digitaltableteur
+
+
+AppSec baseline:
+
+
+Enforce security headers (CSP, HSTS, X-Frame-Options, Referrer-Policy).
+
+
+Use Subresource Integrity for third-party scripts.
+
+
+Least-privilege on GH Pages and workflow tokens; pin Actions.
+
+
+Privacy: explicit analytics consent and DPA with your analytics vendor.
+
+
+
+
+Perf/Resilience:
+
+
+Optimize LCP (critical CSS, image dims, font loading swap, cache headers).
+
+
+Uptime checks + synthetic journeys (e.g., contact form).
+
+
+Backups of site and content (repo + assets).
+
+
+
+
+Future-proofing:
+
+
+Design tokens repo + Storybook for any live component demos you want to expose.
+
+
+Content in MDX + CMS (e.g., Contentlayer/Sanity) to iterate fast without code deploys.
+
+
+API façade for AI demos (rate limiting, logging, key vault).
+
+
+
+
+Architect’s Recommendations (high-impact)
+
+
+Migrate to Next.js (or Astro) with SSR/ISR, preserve Vite-level DX via Turbopack/Vite plugins.
+
+
+Harden security headers and add CI checks (OWASP ZAP baseline in CI).
+
+
+Switch to edge image optimization and implement font subsetting.
+
+
+Add structured data (Organization, Person, Article, Service) for rich results.
+
+
+Stand up a small “AI demo” microservice with audit logs + abuse protection.
+
+
+
+Persona 2 — Lead Strategic Designer (Brand/Comms/UX)
+Brand & Narrative
+
+
+Positioning: “Small but fierce Nordic design consultancy” is clear in social bios, but the website should lead with outcomes (before/after visuals, metrics) and a crisp POV on AI-enhanced design ops/design systems. Instagram+1
+
+
+Proof layer: Competitors drown the web in case studies, events, and whitepapers—this builds trust at enterprise altitude. You’ll win by showing depth in fewer, sharper proofs (e.g., DS adoption uplift, time-to-ship delta). Futurice+2Reaktor+2
+
+
+Content strategy: Your Medium already carries the right tone—fold those essays into the site (canonical links) and serialize them into shorter “Field Notes” + “How We Work” patterns. Medium
+
+
+UX & IA: Make the path to “see work → understand value → book a call” ridiculously obvious; add pricing anchors for productized services.
+
+
+Designer’s Recommendations
+
+
+Homepage rewrite: Above-the-fold value prop + 3 proof tiles (metric, short story, CTA).
+
+
+3 productized offers:
+
+
+“Design System Lift-Off” (4 weeks, fixed scope, fixed price).
+
+
+“AI-Ready Brand Ops” (assets + templates + governance, 3 weeks).
+
+
+“AI UX Sprint” (prototype with evaluation plan, 2 weeks).
+
+
+
+
+Case study template: Problem → Approach → Artifact gallery → Outcome metrics → Stack → Quote.
+
+
+Authority engine: Monthly “AI in Design Systems” brief; quarterly webinar with a friendly competitor or client.
+
+
+Visual system: Modernist, low-ink UI; strong typographic hierarchy; motion sparingly to cue state.
+
+
+
+Persona 3 — CEO of Digitaltableteur (Ops/Finance/Mediation)
+Commercial Viability & Market Visibility
+
+
+Market reality: Finland’s tier-1 consultancies dominate with recognizable brands and event machines; boutiques win by specialization and speed. Your unique wedge: Design Systems + AI-augmented product/design ops for midsize product teams that can’t hire a full in-house DS crew. Reaktor+2Solita+2
+
+
+Go-to-Market: Shift from generic “we can do everything” to packaged outcomes with clear price bands and SLAs.
+
+
+Lead sources to prioritize: LinkedIn content, Medium cross-posts, targeted founder/CTO DMs, Helsinki/Tampere meetups and panels, and “borrowed brand” via joint events with bigger players. Futurice
+
+
+Competitor Snapshot (benchmarks to emulate)
+
+
+Reaktor: category-defining case studies + AI research partnerships → high trust. Reaktor+1
+
+
+Futurice: events and “ways of working” thought leadership → consistent demand gen. Futurice+1
+
+
+Solita: data/AI + complex domains narrative → credibility in regulated markets. Solita
+
+
+Taiste: clear mid-size full-stack offering with DS/AI notes → blueprint for boutique clarity. Taiste
+
+
+
+Gap Analysis (with Benchmarks)
+AreaCurrent StateGap vs. BenchmarkWhat “Good” Looks LikeSEO & DiscoverabilitySPA with JS-dependent renderLacks SSR/metadata richness vs. leadersSSR/ISR, rich schema, fast LCP; article/case pages indexable. Digitaltableteur+1Proof & Social ProofSparse public case metricsCompetitors show outcomes, logos, quotes5 flagship cases with quantified results, 6–8 client logos, 3 quotes. Futurice+1Content & POVOccasional Medium postsCompetitors run event/webinar cadenceMonthly POV, quarterly event, downloadable brief. FuturiceProductizationGeneralist servicesFew fixed-scope offers3 SKUs with price bands and SLAs; frictionless inquiry.AI StoryImplied, not codifiedOthers show concrete AI work/researchPublic AI UX demos + write-ups + safeguards. ExertusPartnershipsAd-hocLarger players collaborate & co-hostCo-branded events, referral agreements. Helsinki Design Week
+
+2026 Roadmap (quarterly, lean but aggressive)
+Q1 2026 — Foundation & Credibility
+
+
+Migrate site to Next.js/SSR with proper schema; add 3 case studies + 6 logos + 3 testimonials.
+
+
+Launch 3 productized offers with landing pages and Calendly-style booking.
+
+
+Publish “AI in Design Systems 2026 Outlook” + 1 AI UX demo (safe, logged sandbox).
+
+
+Q2 2026 — Demand Engine
+
+
+Monthly article cadence (cross-posted), start a quarterly webinar series with guest CTO/Lead Designer.
+
+
+Ship Design System Lift-Off playbook (downloadable PDF) as a lead magnet; email nurture (3-email sequence).
+
+
+Speak at one local event; co-host with a partner. Futurice
+
+
+Q3 2026 — Scale Proof & Ops
+
+
+Add 3 more case studies with before/after metrics.
+
+
+Publish an open token library + Storybook snapshot to demonstrate DS chops.
+
+
+Stand up a customer advisory circle (5 product leads) for feedback and referrals.
+
+
+Q4 2026 — Category Sharpness
+
+
+Release “The AI-Ready DS Benchmark” (survey + report).
+
+
+Package a retainer (“Design System Care & AI Enablement”, 2 price tiers).
+
+
+Evaluate a micro-SaaS (e.g., DS Audit Analyzer that reads repos/storybooks and outputs an audit).
+
+
+KPIs per quarter: 3–5 SQLs, 1–2 wins, 1 flagship case, 1 co-hosted event, traffic +50% QoQ, list growth +25% QoQ, win rate ≥25%.
+
+Future-Oriented AI Improvements (practical + safe)
+
+
+AI-augmented case builder
+
+
+Pipeline that turns Figma + Git logs + ticket data into draft case studies (redacted), you edit, ship.
+
+
+
+
+Interactive AI demos
+
+
+“Pick a component → see DS tokens, accessibility checks, and code in your stack.” Rate-limited, logged, privacy-first.
+
+
+
+
+AI content ops
+
+
+RAG over your past proposals, Slack/Notion notes, and Medium posts to produce outlines; human in the loop to finalize. Medium
+
+
+
+
+Design QA bot
+
+
+Lints screenshots against DS tokens (contrast, spacing, type scale) and opens GitHub issues automatically.
+
+
+
+
+Sales assist
+
+
+Fine-tuned prompt pack to turn discovery notes into a proposal draft with effort ranges and risks; you approve.
+
+
+
+
+
+Market Penetration Strategy (specialize + partner)
+ICP: B2B SaaS/Mid-market product companies (EU/Nordics), 10–60 engineers, 2–6 designers, scaling pains around consistency and velocity.
+Wedge: “Get a production-ready Design System and AI-enabled design ops in 4–8 weeks.”
+Channels (ranked):
+
+
+LinkedIn + Events/Webinars (thought leadership + short talks; borrow bigger brands’ audiences). Futurice
+
+
+Founder/CTO outbound with 3-email sequence tied to your 3 offers.
+
+
+Partner referral (implementation partners who lack DS depth).
+
+
+Medium → Site canonical for SEO flywheel. Medium
+
+
+Offers & Pricing (indicative):
+
+
+DS Lift-Off (4 weeks, fixed scope): €18–25k.
+
+
+AI-Ready Brand Ops (3 weeks): €12–18k.
+
+
+AI UX Sprint (2 weeks): €9–14k.
+
+
+Care Retainer (monthly): €3–7k (bugfixes, token governance, training).
+
+
+Proof & Risk Reversal: “If we don’t hit the agreed adoption KPI by week 8, we’ll extend 2 weeks at no extra cost.”
+
+Final Word from the CEO persona (decision)
+
+
+We move to SSR Next.js, secure the surface, and publish three productized offers with three great case studies by end of Q1 2026.
+
+
+We commit to a monthly AI-in-Design-Systems brief and a quarterly webinar, co-hosted where possible.
+
+
+We build one public AI demo that shows our DS/AI edge safely.
+
+
+We keep focus: Design Systems + AI-enabled design ops for mid-market SaaS. This is our wedge.
+
+
+If you want, I’ll draft:
+
+
+The new homepage hero + IA,
+
+
+A case study template (markdown),
+
+
+A security header set + Next.js migration checklist,
+
+
+And a 3-email outbound sequence tied to the offers.
+
+

@@ -1,0 +1,15 @@
+.overlayRoot {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background, #fff);
+  z-index: 1000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlayRoot {
+    transition: none;
+  }
+}
