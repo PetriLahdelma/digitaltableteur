@@ -5,6 +5,7 @@
   "navBlog": "Blogg",
   "navContact": "Kontakt",
   "toggleDarkMode": "Växla mörkt läge",
+  "navMenuTitle": "Meny",
   "chatTitle": "Chatta med Donny",
   "chatDescription": "Varumärkesspecifika svar utan onödigt fluff.",
   "chatGreeting": "Hej! Jag är Donny, Digitaltableteurs studio-guide. Fråga mig om vårt arbete, våra tjänster eller vad som helst du ser på sidan.",
@@ -20,11 +21,7 @@
   "chatToggleClose": "Dölj chattfönstret",
   "chatToggleLabel": "Chatt",
   "chatTagline": "DT Donny",
-  "chatAvailabilityOpen": "Tillgänglig nu",
-  "chatAvailabilityClosed": "Utanför öppettider",
-  "chatOpenTooltip": "Öppet",
-  "chatClosedTooltip": "Stängt",
-  "chatShortcutHint": "Tryck Enter för att skicka. Använd Shift + Enter för ny rad.",
+  "chatShortcutSubmit": "Tryck '⌘ + Enter' (Mac) eller 'Ctrl + Enter' för att skicka.",
   "chatReset": "Återställ",
   "chatResetAria": "Återställ konversationen",
   "chatMinimizeAria": "Minimera chattfönstret",
@@ -57,6 +54,7 @@
   "contactInterestDesignCreative": "Design och kreativitet",
   "contactInterestDigitalProducts": "Digitala produkter och webbplatser",
   "contactInterestHelpMeChoose": "Hjälp mig välja",
+  "storybookWipBadge": "Pågående arbete",
   "contactMessage": "Ditt meddelande",
   "contactMessagePlaceholder": "Ange ditt meddelande",
   "contactHearAbout": "Hur fick du höra talas om Digitaltableteur?",
@@ -445,5 +443,8 @@
   "servicesGrid.titles.design": "Design",
   "servicesGrid.titles.development": "Development",
   "servicesGrid.titles.strategy": "Strategi",
-  "servicesGrid.titles.aiInnovation": "AI-innovation"
+  "servicesGrid.titles.aiInnovation": "AI-innovation",
+  "busyIndicator.loading": "Laddar",
+  "busyIndicator.loadingPercent": "Laddar {{percent}}%",
+  "busyIndicator.complete": "Klart"
 }

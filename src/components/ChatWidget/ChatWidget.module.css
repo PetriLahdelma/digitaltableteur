@@ -277,7 +277,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.1rem;
   border: none;
   background: var(--color-primary, #0f62fe);
   color: var(--inverted-text-color, #fff);
@@ -290,10 +289,6 @@
     box-shadow 0.2s ease,
     opacity 0.2s ease;
   z-index: 1002;
-}
-
-.toggle svg {
-  font-size: 1.25rem;
 }
 
 .toggle[data-open="true"] {
@@ -309,14 +304,16 @@
   line-height: 1;
   display: inline-flex;
   align-items: center;
+  gap: 0.25rem; /* tighten icon-label spacing */
 }
 
+/* Override default Button internal spacing for chat toggle specifically */
 .toggle .icon {
-  margin-inline-end: 0;
+  margin-inline-end: 0 !important;
 }
 
 .toggle .text {
-  margin-inline-start: 0;
+  margin-inline-start: 0 !important;
 }
 
 .toggle .icon svg {

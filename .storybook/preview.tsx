@@ -2,7 +2,7 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "@dt/ThemeProvider";
 import type { Preview } from "@storybook/react-vite";
 import type { Decorator, StoryContext, StoryFn } from "@storybook/react";
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import Badge from "@dt/Badge";
 import { FaTools } from "react-icons/fa";
 import stylesWip from "../src/stories/WipBadge.module.css";
@@ -179,18 +179,31 @@ const withI18next: Decorator = (Story: StoryFn, context: StoryContext) => {
     <I18nextProvider i18n={i18n}>
       <MemoryRouter>
         <ThemeProvider forcedTheme={theme}>
-          <Story />
+          {Story(context.args, context)}
         </ThemeProvider>
       </MemoryRouter>
     </I18nextProvider>
   );
 };
 
-// WIP badge decorator
+// WIP badge decorator – reactive to language changes so translation appears instantly on first locale selection.
 const withWipBadge: Decorator = (Story, context) => {
   const disabled = Boolean(context.parameters?.wip?.disabled);
-  // Access i18n instance directly to avoid hook usage outside provider
-  const label = i18n.t("storybookWipBadge");
+  const [label, setLabel] = useState(() =>
+    i18n.t("storybookWipBadge", "Work in progress"),
+  );
+
+  useEffect(() => {
+    const update = () =>
+      setLabel(i18n.t("storybookWipBadge", "Work in progress"));
+    i18n.on("languageChanged", update);
+    // Also attempt immediate refresh in case language already changed before mount
+    update();
+    return () => {
+      i18n.off("languageChanged", update);
+    };
+  }, []);
+
   return (
     <div className={stylesWip.wipWrapper}>
       {!disabled && (

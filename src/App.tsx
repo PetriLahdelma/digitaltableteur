@@ -4,6 +4,7 @@ import Layout from "@dt/Layout";
 import CookieConsent from "@dt/CookieConsent";
 import ChunkErrorBoundary from "@dt/ChunkErrorBoundary";
 import { useTranslation } from "react-i18next";
+import { BusyIndicator, AppLoading } from "./components";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Work = React.lazy(() => import("./pages/Work"));
@@ -54,7 +55,7 @@ function App() {
       <Router>
         <div>
           <CookieConsent />
-          <Suspense fallback={<div>Loading…</div>}>
+          <Suspense fallback={<AppLoading />}>
             <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
