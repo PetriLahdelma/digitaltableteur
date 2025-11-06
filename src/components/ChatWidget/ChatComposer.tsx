@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useImperativeHandle, useRef } from "react";
 import Button from "@dt/Button";
 import { IoSend } from "react-icons/io5";
 import { ChatTextArea } from "../Inputs/TextArea";
@@ -21,120 +21,107 @@ interface ChatComposerProps {
   maxRows?: number; // controls max auto-grow height
 }
 
-const ChatComposer: React.FC<ChatComposerProps> = ({
-  labelId = "donny-input-label",
-  inputId,
-  placeholder,
-  label,
-  sendLabel,
-  value,
-  onValueChange,
-  onSubmit,
-  isSending,
-  maxLength = 1_000,
-  minRows = 1,
-  maxRows = 6,
-}) => {
-  const { t } = useTranslation();
-  const resolvedPlaceholder =
-    placeholder ?? t("chatPlaceholder", "Ask me anything…");
-  const resolvedLabel = label ?? t("chatInputLabel", "Ask Donny a question");
-  const resolvedSendLabel = sendLabel ?? t("chatSend", "Send message");
+export interface ChatComposerHandle {
+  focusInput: () => void;
+}
 
-  return (
-    <form className={styles.composer} onSubmit={onSubmit}>
-      <label className={styles.inputLabel} htmlFor={inputId} id={labelId}>
-        {resolvedLabel}
-      </label>
-      <div className={styles.inputRow}>
-        <ChatTextArea
-          id={inputId}
-          aria-labelledby={labelId}
-          className={styles.input}
-          placeholder={resolvedPlaceholder}
-          value={value}
-          onValueChange={onValueChange}
-          minRows={minRows}
-          maxRows={maxRows}
-          maxLength={maxLength}
-          disabled={isSending}
-          aria-live="polite"
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              // Do not submit while streaming/sending
-              if (isSending) {
-                return;
-              }
-              const isShift = e.shiftKey;
-              if (!isShift) {
-                // Send on plain Enter
+const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
+  (
+    {
+      labelId = "donny-input-label",
+      inputId,
+      placeholder,
+      label,
+      sendLabel,
+      value,
+      onValueChange,
+      onSubmit,
+      isSending,
+      maxLength = 1_000,
+    },
+    ref,
+  ) => {
+    const { t } = useTranslation();
+    const resolvedPlaceholder =
+      placeholder ??
+      t("chatPlaceholder", "Ask about a project, service, or approach…");
+    const resolvedLabel = label ?? t("chatInputLabel", "Ask Donny a question");
+    const resolvedSendLabel = sendLabel ?? t("chatSend", "Send message");
+    const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+    useImperativeHandle(
+      ref,
+      () => ({
+        focusInput: () => {
+          if (textAreaRef.current) {
+            textAreaRef.current.focus();
+          }
+        },
+      }),
+      [],
+    );
+
+    return (
+      <form className={styles.composer} onSubmit={onSubmit}>
+        <label className={styles.inputLabel} htmlFor={inputId} id={labelId}>
+          {resolvedLabel}
+        </label>
+        <div className={styles.inputRow}>
+          <ChatTextArea
+            id={inputId}
+            aria-labelledby={labelId}
+            className={styles.input}
+            placeholder={resolvedPlaceholder}
+            value={value}
+            onValueChange={onValueChange}
+            minRows={1}
+            maxRows={6}
+            maxLength={maxLength}
+            disabled={isSending}
+            aria-live="polite"
+            ref={textAreaRef}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                // Trigger submit programmatically while preserving normal Enter behavior for newlines.
                 const form = e.currentTarget.form;
                 if (form) {
                   e.preventDefault();
-                  // Prefer requestSubmit to trigger native submit path (includes validation & submitter context)
-                  // Falls back to synthetic dispatch if not supported.
-                  if (typeof form.requestSubmit === "function") {
-                    // We want to emulate pressing the actual submit button so event.submitter is that button.
-                    const submitButton = form.querySelector<HTMLButtonElement>(
-                      "button[type='submit'],input[type='submit']",
-                    );
-                    if (submitButton) {
-                      // requestSubmit with a specific submitter preserves context in modern browsers.
-                      try {
-                        (
-                          form as HTMLFormElement & {
-                            requestSubmit?: (
-                              submitter?: HTMLElement | null,
-                            ) => void;
-                          }
-                        ).requestSubmit(submitButton);
-                        return;
-                      } catch {
-                        // Fallback to no-arg requestSubmit below.
-                      }
-                    }
-                    try {
-                      (
-                        form as HTMLFormElement & { requestSubmit?: () => void }
-                      ).requestSubmit();
-                      return;
-                    } catch {
-                      // ignore and fallback
-                    }
-                  }
-                  // Legacy fallback: synthetic submit event (no submitter info)
-                  form.dispatchEvent(
-                    new Event("submit", { cancelable: true, bubbles: true }),
-                  );
+                  // Construct a synthetic submit event to reuse existing logic.
+                  const submitEvent = new Event("submit", {
+                    cancelable: true,
+                    bubbles: true,
+                  });
+                  form.dispatchEvent(submitEvent);
                 }
               }
-              // If Shift+Enter, allow default (newline) by not preventing.
-            }
-          }}
-        />
-        <Button
-          type="submit"
-          className={styles.sendButton}
-          aria-label={resolvedSendLabel}
-          disabled={isSending || !value.trim()}
-          icon={<IoSend />}
-          variant="primary"
-          size="m"
-        />
-      </div>
-      <Text
-        size="S"
-        terminals="sans"
-        className={styles.shortcutHint}
-        aria-live="polite"
-      >
-        {t(
-          "chatShortcutHint",
-          "Press Enter to send. Use Shift + Enter for a new line.",
-        )}
-      </Text>
-    </form>
-  );
-};
+            }}
+          />
+          <Button
+            type="submit"
+            className={styles.sendButton}
+            aria-label={resolvedSendLabel}
+            disabled={isSending || !value.trim()}
+            icon={<IoSend />}
+            variant="primary"
+            size="m"
+          />
+        </div>
+        <Text
+          size="S"
+          terminals="sans"
+          className={styles.shortcutHint}
+          aria-live="polite"
+        >
+          {t(
+            "chatShortcutSubmit",
+            "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.",
+          )}
+        </Text>
+      </form>
+    );
+  },
+);
+
+ChatComposer.displayName = "ChatComposer";
 
 export default ChatComposer;

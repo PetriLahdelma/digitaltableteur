@@ -37,7 +37,7 @@ const SAMPLE_MESSAGES: UIMessage[] = [
 ];
 
 const meta: Meta<typeof ChatMessages> = {
-  title: "AI/Chat/ChatMessages",
+  title: "Components/AI/Chat/ChatMessages",
   component: ChatMessages,
   args: {
     messages: SAMPLE_MESSAGES,

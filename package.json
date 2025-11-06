@@ -14,8 +14,6 @@
     "@types/jest": "^27.5.2",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
-    "react-markdown": "^9.0.3",
-    "remark-gfm": "^4.0.0",
     "ai": "^5.0.86",
     "chart.js": "^4.4.9",
     "dotenv": "^16.6.1",
@@ -33,8 +31,10 @@
     "react-i18next": "^15.5.3",
     "react-icons": "^4.10.1",
     "react-leaflet": "^4.2.1",
+    "react-markdown": "^9.0.3",
     "react-router-dom": "^7.6.2",
     "react-stack-grid": "^0.7.1",
+    "remark-gfm": "^4.0.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "web-vitals": "^2.1.4",
@@ -128,6 +128,7 @@
     "stylelint-config-standard": "^38.0.0",
     "stylelint-declaration-strict-value": "^1.10.11",
     "stylelint-order": "^7.0.0",
+    "typescript-language-server": "^5.1.1",
     "vite-plugin-static-copy": "^3.1.0",
     "vitest": "^3.2.4"
   }

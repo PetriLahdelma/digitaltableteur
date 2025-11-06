@@ -26,10 +26,24 @@ describe("ChatComposer keyboard submit", () => {
     return { onSubmit, onValueChange };
   }
 
-  it("submits exactly once on Enter (no Shift)", () => {
+  it("does NOT submit on plain Enter (adds newline instead)", () => {
     const { onSubmit } = setup();
     const textarea = screen.getByLabelText(/Label/i);
     fireEvent.keyDown(textarea, { key: "Enter" });
+    expect(onSubmit).not.toHaveBeenCalled();
+  });
+
+  it("submits exactly once on Cmd+Enter (macOS metaKey)", () => {
+    const { onSubmit } = setup();
+    const textarea = screen.getByLabelText(/Label/i);
+    fireEvent.keyDown(textarea, { key: "Enter", metaKey: true });
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+  });
+
+  it("submits exactly once on Ctrl+Enter (Windows/Linux)", () => {
+    const { onSubmit } = setup();
+    const textarea = screen.getByLabelText(/Label/i);
+    fireEvent.keyDown(textarea, { key: "Enter", ctrlKey: true });
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 

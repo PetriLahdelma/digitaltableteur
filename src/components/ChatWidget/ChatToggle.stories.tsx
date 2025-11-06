@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import ChatToggle from "./ChatToggle";
 
 const meta: Meta<typeof ChatToggle> = {
-  title: "AI/Chat/ChatToggle",
+  title: "Components/AI/Chat/ChatToggle",
   component: ChatToggle,
   args: {
     isOpen: false,

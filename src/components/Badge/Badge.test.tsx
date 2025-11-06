@@ -39,4 +39,13 @@ describe("Badge", () => {
       /custom-class/,
     );
   });
+
+  it("ignores invalid plain object icon prop without crashing", () => {
+    // @ts-expect-error intentionally passing invalid icon type
+    const { container } = render(<Badge icon={{ foo: "bar" }}>Obj Icon</Badge>);
+    // Should still render content
+    expect(screen.getByText(/Obj Icon/)).toBeInTheDocument();
+    // Ensure no nested svg created for invalid icon
+    expect(container.querySelector("svg")).not.toBeInTheDocument();
+  });
 });

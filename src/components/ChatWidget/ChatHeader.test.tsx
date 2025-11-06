@@ -49,4 +49,66 @@ describe("ChatHeader availability dot", () => {
     // Restore Date
     (global as any).Date = RealDate;
   });
+
+  it("shows open at 16:59 Helsinki (just before closing)", async () => {
+    const RealDate = Date;
+    // 16:59 Helsinki time on a Monday. Helsinki is UTC+2 in standard time (November).
+    // So 16:59 Helsinki is 14:59 UTC.
+    (global as any).Date = class extends RealDate {
+      constructor(...args: unknown[]) {
+        if (!args.length) {
+          super("2025-11-03T14:59:00.000Z");
+        } else {
+          // @ts-ignore
+          super(...args);
+        }
+      }
+    } as DateConstructor;
+
+    render(
+      <ChatHeader
+        title="Test"
+        description="Desc"
+        onReset={() => {}}
+        onMinimize={() => {}}
+        isSending={false}
+      />,
+    );
+    const dot = await screen.findByTestId("chat-availability-dot");
+    expect(dot.getAttribute("title")).toMatch(/Open|Available|Auki|Öppet/i);
+
+    (global as any).Date = RealDate;
+  });
+
+  it("shows closed at 17:00 Helsinki (closing time boundary)", async () => {
+    const RealDate = Date;
+    // 17:00 Helsinki => 15:00 UTC
+    (global as any).Date = class extends RealDate {
+      constructor(...args: unknown[]) {
+        if (!args.length) {
+          super("2025-11-03T15:00:00.000Z");
+        } else {
+          // @ts-ignore
+          super(...args);
+        }
+      }
+    } as DateConstructor;
+
+    render(
+      <ChatHeader
+        title="Test"
+        description="Desc"
+        onReset={() => {}}
+        onMinimize={() => {}}
+        isSending={false}
+      />,
+    );
+    const dot = await screen.findByTestId("chat-availability-dot");
+    // Accept any localized closed tooltip variant
+    expect(dot.getAttribute("title")).toMatch(
+      /Closed|Suljettu|Stängt|Outside business hours|Outside open hours/i,
+    );
+
+    (global as any).Date = RealDate;
+  });
 });

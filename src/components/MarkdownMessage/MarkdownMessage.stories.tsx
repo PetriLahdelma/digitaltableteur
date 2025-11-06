@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import MarkdownMessage from "./MarkdownMessage";
 
 const meta: Meta<typeof MarkdownMessage> = {
-  title: "Chat/MarkdownMessage",
+  title: "Components/AI/Chat/MarkdownMessage",
   component: MarkdownMessage,
   args: {
     content:
