@@ -60,7 +60,8 @@ describe("CheckboxGroup", () => {
     fireEvent.click(screen.getByLabelText("Option 1"));
     fireEvent.click(screen.getByLabelText("Option 2"));
 
-    const master = screen.getByLabelText("All") as HTMLInputElement;
+    // Master label is translated ("Select All") when i18n is initialized; fall back to "All" only in legacy/no-i18n cases.
+    const master = screen.getByLabelText(/Select All|All/i) as HTMLInputElement;
     expect(master).toBeInTheDocument();
     // master should be indeterminate (some selected)
     expect(master.indeterminate).toBe(true);

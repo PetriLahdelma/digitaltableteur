@@ -17,6 +17,8 @@ Digitaltableteur is a modern React TypeScript portfolio website built with Vite,
 
 When working with this project, please:
 
+- Always refer to docs/2026_PRD.md for project requirements
+- Always refer to docs/2026_ROADMAP.txt for planning, checking long-term goals and progress
 - Use TypeScript for all new components
 - Follow the existing CSS Modules pattern
 - Add translations for user-facing text in all three languages
@@ -24,12 +26,14 @@ When working with this project, please:
 - Maintain test coverage for critical functionality
 - Use the `@dt/` component library when available
 - Keep Storybook visual regression baselines current and review diffs before merging
+- Every Storybook story displays a persistent WIP badge (localized) until the story explicitly opts out via `export const ... = { parameters: { wip: { disabled: true }}}`. Use this to signal audit readiness. Removing the badge should coincide with accessibility + visual + translation verification.
 
 ## Architecture Notes
 
 - **Frontend**: React 18 + TypeScript + Vite
 - **Styling**: CSS Modules with design tokens
 - **Routing**: React Router with lazy loading
+- **Reusable Navigation**: `NavMenuList` centralizes active state (exact/prefix), applies `aria-current="page"`, and exposes styling hooks (`listClassName`, `itemClassName`, `activeClassName`) for patterns like the mobile menu and future sidebars.
 - **I18n**: i18next with namespace organization
 - **Testing**: Vitest with coverage reporting
 - **Deployment**: GitHub Pages with Vercel serverless functions

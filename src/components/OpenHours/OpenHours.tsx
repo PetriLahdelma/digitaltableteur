@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./OpenHours.module.css";
-import { WEEKLY_HOURS, isCurrentlyOpen } from "../../data/openHours";
+import { WEEKLY_HOURS, isOpenAt } from "../../data/openHours";
 import { useTranslation } from "react-i18next";
 import Badge from "@dt/Badge";
-import { FaRegCalendarTimes } from "react-icons/fa";
+import { FaRegCalendarTimes, FaRegCalendarCheck } from "react-icons/fa";
 
 export interface OpenHoursProps {
   compact?: boolean;
@@ -20,7 +20,7 @@ const OpenHours: React.FC<OpenHoursProps> = ({
 }) => {
   const { t } = useTranslation();
   const todayIndex = date.getDay(); // 0 sunday
-  const open = isCurrentlyOpen(date);
+  const open = isOpenAt(date);
 
   return (
     <div
@@ -32,12 +32,12 @@ const OpenHours: React.FC<OpenHoursProps> = ({
         <strong>{t("openHours.heading", "Open hours")}</strong>
         <Badge
           design="primary"
-          state="error"
-          square={true}
+          state={open ? "success" : "error"}
+          square={false}
           size="s"
           className={styles.badge}
           aria-live="polite"
-          icon={<FaRegCalendarTimes />}
+          icon={open ? <FaRegCalendarCheck /> : <FaRegCalendarTimes />}
         >
           {open
             ? t("openHours.openNow", "Open now")
@@ -62,10 +62,10 @@ const OpenHours: React.FC<OpenHoursProps> = ({
               <tr key={d.day} data-today={isToday || undefined}>
                 <td>{t(`openHours.days.${d.day}`, d.day)}</td>
                 <td className={closed ? styles.closed : undefined}>
-                  {closed ? t("openHours.closed", "Closed") : d.open}
+                  {closed ? t("openHours.closed", "Closed") : `${d.open}:00`}
                 </td>
                 <td className={closed ? styles.closed : undefined}>
-                  {closed ? t("openHours.closed", "Closed") : d.close}
+                  {closed ? t("openHours.closed", "Closed") : `${d.close}:00`}
                 </td>
               </tr>
             );

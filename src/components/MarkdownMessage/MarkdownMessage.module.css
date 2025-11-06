@@ -1,5 +1,6 @@
 .root {
-  font-family: var(--font-size-text);
+  /* Force sans-serif across all markdown unless explicitly overridden */
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-text);
   line-height: 1.5;
   color: var(--color-text-primary);
@@ -18,8 +19,8 @@
 
 .root p strong,
 .root p b {
-  font-family: var(--primary-body-font);
-  font-weight: bold;
+  font-family: var(--font-family-sans);
+  font-weight: 600;
 }
 
 .root p:first-child {
@@ -88,7 +89,7 @@
 .root h4,
 .root h5,
 .root h6 {
-  font-family: var(--font-family-serif);
+  font-family: var(--font-family-sans);
   font-weight: 600;
   line-height: 1.25;
   margin: var(--space-3) 0 var(--space-2);

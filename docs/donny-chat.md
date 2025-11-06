@@ -10,6 +10,12 @@ The Donny widget streams assistant replies with the [Vercel AI SDK](https://ai-s
 | `OPENAI_CHAT_MODEL`        | Optional override for the OpenAI chat model.                                                                                | `gpt-4o-mini` (derived from `AI_GATEWAY_MODEL` if prefixed with `openai/`) |
 | `AI_GATEWAY_MODEL`         | Legacy model hint. If present the `openai/` prefix is stripped and reused.                                                  | —                                                                          |
 | `OPENAI_API_KEY`           | Pulled from the `digitaltableteur_secure_proxy` Vercel project via `vercel env pull`.                                       | —                                                                          |
+| Variable                   | Purpose                                                                                                                     | Default / Notes                                                            |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `VITE_DONNY_CHAT_ENDPOINT` | Overrides the client request URL. The production build points to `https://digitaltableteursecureproxy.vercel.app/api/chat`. | `/api/chat` in custom deployments                                          |
+| `OPENAI_CHAT_MODEL`        | Optional override for the OpenAI chat model.                                                                                | `gpt-4o-mini` (derived from `AI_GATEWAY_MODEL` if prefixed with `openai/`) |
+| `AI_GATEWAY_MODEL`         | Legacy model hint. If present the `openai/` prefix is stripped and reused.                                                  | —                                                                          |
+| `OPENAI_API_KEY`           | Pulled from the `digitaltableteur_secure_proxy` Vercel project via `vercel env pull`.                                       | —                                                                          |
 
 > Run `vercel env pull .env.local` whenever the secure proxy secrets change so local development keeps using the deployed credentials.
 
@@ -38,6 +44,8 @@ const resolveModelId = () => {
   const candidate = process.env.AI_GATEWAY_MODEL?.trim();
   if (candidate?.startsWith("openai/"))
     return candidate.slice("openai/".length);
+  if (candidate?.startsWith("openai/"))
+    return candidate.slice("openai/".length);
   return candidate || "gpt-4o-mini";
 };
 
@@ -47,9 +55,17 @@ export default async function handler(
     body?: unknown;
     headers?: Record<string, string>;
   },
+  req: IncomingMessage & {
+    method?: string;
+    body?: unknown;
+    headers?: Record<string, string>;
+  },
   res: ServerResponse,
 ) {
   const origin = req.headers?.origin;
+  const corsOrigin = allowedOrigins.includes(origin ?? "")
+    ? origin
+    : allowedOrigins[0];
   const corsOrigin = allowedOrigins.includes(origin ?? "")
     ? origin
     : allowedOrigins[0];
@@ -116,15 +132,15 @@ export default async function handler(
 
 - The handler returns a [UI message stream](https://ai-sdk.dev/docs/ai-sdk-ui/ui-message-stream) that the `useChat` hook consumes.
 - The widget falls back to `https://digitaltableteursecureproxy.vercel.app/api/chat` when running on `digitaltableteur.com` or `localhost`. Set `VITE_DONNY_CHAT_ENDPOINT` to point elsewhere if you host the API on another origin.
-- Conditioning and retrieval can happen before `streamText` (fetch context, call tools, inject memory, etc.).
+  Conditioning and retrieval can happen before `streamText` (fetch context, call tools, inject memory, etc.).
 
 ## Markdown Rendering
 
-The chat widget now supports GitHub-flavored Markdown (GFM) for assistant and user messages via the `MarkdownMessage` component, powered by `react-markdown` + `remark-gfm`.
+The chat widget supports GitHub-flavored Markdown (GFM) for assistant and user messages via the `MarkdownMessage` component, powered by `react-markdown` + `remark-gfm`.
 
 Security / sanitization:
 
-- Raw HTML is currently disabled (`skipHtml`).
+- Raw HTML is disabled (`skipHtml`).
 - Links receive `rel="noopener noreferrer"`.
 - Code blocks and inline code are styled with design tokens.
 
@@ -189,6 +205,24 @@ Testing strategy (updated):
 - `ChatMessages.openHours.test.tsx` + `ChatMessages.servicesGrid.test.tsx` ensure components render only after a user trigger and confirm keyword/token removal from assistant output.
 - Visual regression suite ensures UI stability after component insertion changes.
 
+## Storybook WIP Badge Policy
+
+All Storybook stories render with a persistent, localized WIP badge (using the shared `Badge` component) to indicate the story is under active review. This badge remains until you explicitly opt out inside a story definition:
+
+```ts
+export const Example = {
+  parameters: { wip: { disabled: true } },
+};
+```
+
+Removal criteria:
+
+1. Accessibility audit passes (`npm run test:a11y`).
+2. Visual regression baseline is intentional and updated (`npm run test:visual -- --updateSnapshot` if needed).
+3. Translation coverage includes any new user-facing copy for EN/FI/SV.
+
+Workflow note: The WIP badge uses the translation key `storybookWipBadge` so ensure all locales define it.
+
 Prompting guidance (model alignment):
 
 - Encourage users to ask directly (e.g., “What are your opening hours?” / “Mitkä ovat aukioloajat?” / “Vilka är öppettiderna?” or “List your services”).
@@ -237,6 +271,20 @@ Implementation details:
 - CSS classes: `.availabilityDot`, `.availabilityDotOpen`, `.availabilityDotClosed`.
 - Colours derive from existing success/error tokens; no new colour variables introduced.
 - Tooltip & accessibility: `title` + `aria-label` use `chatOpenTooltip` / `chatClosedTooltip` translation keys per locale.
-- Logic unchanged: Finnish business hours (Europe/Helsinki) Mon–Fri 09:00–15:00 determine open/closed.
+- Logic unchanged: Finnish business hours (Europe/Helsinki) Mon–Fri 09:00–17:00 determine open/closed.
 
 Future enhancements could expose a hoverable popover with next opening time or integrate with the `OpenHours` component inline.
+
+## Focus Behavior
+
+When the chat widget is opened, the textarea in the composer auto-focuses for immediate typing. Implementation notes:
+
+- `ChatComposer` exposes a `focusInput` method via `forwardRef` / `useImperativeHandle`.
+- `ChatWidget` holds a `composerRef` and calls `focusInput` inside a `requestAnimationFrame` after opening to ensure the DOM is laid out.
+- Accessibility: autofocus is intentional and improves efficiency; screen readers announce cursor placement within the composer. Consider a future user setting to disable if requested.
+- Tests: a dedicated focus test asserts the textarea receives focus after toggle (with a `scrollTo` feature guard for jsdom environment).
+
+Fallback / safety:
+
+- If `scrollTo` is unsupported (jsdom), the widget falls back to setting `scrollTop` directly before focusing.
+- Focus method checks instance existence to avoid race condition errors.

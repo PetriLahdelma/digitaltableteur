@@ -1,0 +1,177 @@
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem; /* standardized horizontal spacing between animation and label */
+  font-family: var(--primary-body-font);
+  color: var(--color-dark);
+}
+
+.overlay {
+  position: relative;
+  justify-content: center;
+}
+
+/* Base label style */
+.label {
+  line-height: 1;
+}
+
+.s .label {
+  font-size: 0.75rem;
+}
+
+.m .label {
+  font-size: 1rem;
+}
+
+.l .label {
+  font-size: 2rem;
+}
+
+.visual {
+  position: relative;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+}
+
+/* Base dot (shared) */
+.dot {
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+/* Determinate container */
+.progressDots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.progressDots .dot {
+  opacity: 0.35;
+  transition:
+    opacity 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.progressDots .dot.active {
+  opacity: 1;
+  background: var(--color-primary);
+}
+
+/* Exported active class for module mapping (used in TSX) */
+.active {
+  outline: 0; /* noop style to satisfy non-empty rule */
+}
+
+/* Indeterminate spinner */
+.spinner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: spinner-rotate 1.2s linear infinite;
+}
+
+.spinner .dot {
+  animation: dot-bounce 1s ease-in-out infinite;
+}
+
+/* Dot positional layout (shared by spinner & determinate) */
+.dot:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.dot:nth-child(2) {
+  top: 0;
+  right: 0;
+}
+
+.dot:nth-child(3) {
+  bottom: 0;
+  right: 0;
+}
+
+.dot:nth-child(4) {
+  bottom: 0;
+  left: 0;
+}
+
+/* Success state overrides placed after positional rules */
+.progressDots.success .dot {
+  opacity: 1;
+  background: var(--color-success, #2ecc71);
+  animation: success-pulse 0.8s ease-in-out 1;
+}
+
+.spinner .dot:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.spinner .dot:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.spinner .dot:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+.spinner .dot:nth-child(4) {
+  animation-delay: 0s;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dot-bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+
+  .spinner .dot {
+    animation: none;
+  }
+
+  .progressDots .dot {
+    animation: none;
+  }
+}
+
+/* Success pulse */
+
+@keyframes success-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(1.25);
+  }
+
+  70% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

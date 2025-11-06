@@ -9,7 +9,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
-import ChatComposer from "./ChatComposer";
+import ChatComposer, { ChatComposerHandle } from "./ChatComposer";
 import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
 import ChatToggle from "./ChatToggle";
@@ -370,6 +370,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
   const focusReturnRef = useRef<number | null>(null);
 
+  // Determine initial endpoint (static resolution); we may fallback dynamically on certain network errors.
   const apiEndpoint = useMemo(() => {
     if (endpoint) return endpoint;
     const envEndpoint = import.meta.env.VITE_DONNY_CHAT_ENDPOINT?.trim();
@@ -388,15 +389,44 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     return "/api/chat";
   }, [endpoint]);
 
+  // Debug flag (query param ?chatDebug=1 or localStorage flag dtChatDebug). Safe getItem wrapper for Safari private mode quirks.
+  const debugEnabled = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    const qsFlag = /(^|[?&])chatDebug=1(&|$)/.test(window.location.search);
+    let lsFlag = false;
+    try {
+      lsFlag = localStorage.getItem("dtChatDebug") === "1";
+    } catch {
+      // ignore storage read issues
+    }
+    return qsFlag || lsFlag;
+  }, []);
+
+  const isMobileUA = useMemo(() => {
+    if (typeof navigator === "undefined") return false;
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }, []);
+
+  // Active endpoint supports fallback switching when certain recoverable network errors occur on first attempt.
+  const [activeEndpoint, setActiveEndpoint] = useState(apiEndpoint);
+  const [hasRetried, setHasRetried] = useState(false);
+  const lastUserMessageRef = useRef<string | null>(null);
+
+  // Construct transport from activeEndpoint (NOT apiEndpoint directly) so we can swap.
+  const transport = useMemo(() => {
+    if (debugEnabled) {
+      // eslint-disable-next-line no-console
+      console.log("[ChatWidget] Using transport endpoint", activeEndpoint, {
+        initial: apiEndpoint,
+        mobile: isMobileUA,
+      });
+    }
+    return new DefaultChatTransport({ api: activeEndpoint });
+  }, [activeEndpoint, apiEndpoint, debugEnabled, isMobileUA]);
+
   const [initialMessages] = useState<UIMessage[]>(() =>
     loadInitialMessages(greetingText),
   );
-
-  const transport = useMemo(() => {
-    return new DefaultChatTransport({
-      api: apiEndpoint,
-    });
-  }, [apiEndpoint]);
 
   const {
     messages,
@@ -419,7 +449,17 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     if (!isOpen) return;
     const container = scrollerRef.current;
     if (!container) return;
-    container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+    // jsdom may not implement scrollTo; feature detect and fallback
+    if (typeof container.scrollTo === "function") {
+      try {
+        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+      } catch {
+        // fallback if options unsupported
+        container.scrollTop = container.scrollHeight;
+      }
+    } else {
+      container.scrollTop = container.scrollHeight;
+    }
   }, [messages, isOpen]);
 
   useEffect(() => {
@@ -489,12 +529,15 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
   }, [isOpen, stop]);
 
+  const composerRef = useRef<ChatComposerHandle | null>(null);
   const handleToggle = useCallback(() => {
     if (isOpen) {
       closeChat();
       return;
     }
     setIsOpen(true);
+    // Defer focus to next animation frame after open state renders composer.
+    requestAnimationFrame(() => composerRef.current?.focusInput());
   }, [closeChat, isOpen]);
 
   useEffect(() => {
@@ -519,11 +562,74 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         clearError();
       }
 
+      lastUserMessageRef.current = trimmed;
+      if (debugEnabled) {
+        // eslint-disable-next-line no-console
+        console.log("[ChatWidget] Sending user message", {
+          text: trimmed,
+          endpoint: activeEndpoint,
+        });
+      }
       sendMessage({ text: trimmed });
       setDraft("");
     },
-    [draft, isStreaming, sendMessage, error, clearError],
+    [
+      draft,
+      isStreaming,
+      sendMessage,
+      error,
+      clearError,
+      activeEndpoint,
+      debugEnabled,
+    ],
   );
+
+  // Endpoint fallback logic: on certain network errors (failed to fetch / not found) try alternate endpoint once.
+  useEffect(() => {
+    if (!error || hasRetried) return;
+    const message = (error.message || "").toLowerCase();
+    const isRecoverable =
+      message.includes("failed to fetch") ||
+      message.includes("not found") ||
+      message.includes("404");
+    if (!isRecoverable) return;
+    const alternate =
+      activeEndpoint === REMOTE_CHAT_ENDPOINT
+        ? "/api/chat"
+        : REMOTE_CHAT_ENDPOINT;
+    if (alternate === activeEndpoint) return; // no alternate
+    setHasRetried(true);
+    setActiveEndpoint(alternate);
+    if (debugEnabled) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        "[ChatWidget] Recoverable error detected; switching endpoint",
+        {
+          from: activeEndpoint,
+          to: alternate,
+          error: error.message,
+        },
+      );
+    }
+  }, [error, hasRetried, activeEndpoint, debugEnabled]);
+
+  // After switching endpoint, automatically retry last user message if present.
+  useEffect(() => {
+    if (!hasRetried) return;
+    if (!lastUserMessageRef.current) return;
+    // Avoid retry during streaming state; wait until idle.
+    if (status === "streaming" || status === "submitted") return;
+    const text = lastUserMessageRef.current;
+    lastUserMessageRef.current = null; // prevent duplicate resend
+    if (debugEnabled) {
+      // eslint-disable-next-line no-console
+      console.log(
+        "[ChatWidget] Retrying last message after endpoint switch",
+        text,
+      );
+    }
+    sendMessage({ text });
+  }, [hasRetried, status, sendMessage, debugEnabled]);
 
   const handleReset = useCallback(() => {
     stop();
@@ -578,6 +684,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             </div>
           )}
           <ChatComposer
+            ref={composerRef}
             inputId="donny-input"
             placeholder={placeholderText}
             label={inputLabelText}

@@ -1,0 +1,20 @@
+.wipWrapper {
+  position: relative;
+}
+
+.wipBadgeContainer {
+  position: fixed;
+  bottom: var(--space-internal-12);
+  right: var(--space-internal-12);
+  z-index: 999; /* Above story content */
+  display: flex;
+  pointer-events: none; /* Prevent interfering with component interactions */
+}
+
+/* Ensure it remains visible over story content */
+.wipBadgeContainer .badge {
+  pointer-events: auto;
+  box-shadow:
+    0 0 0 1px var(--color-border-light),
+    0 2px 4px rgb(0 0 0 / 12%);
+}

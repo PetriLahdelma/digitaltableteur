@@ -1,4 +1,35 @@
 {
-  "generatedAt": "2025-11-05T11:14:18.308Z",
-  "diffs": []
+  "generatedAt": "2025-11-06T07:30:02.288Z",
+  "diffs": [
+    {
+      "id": "chat-markdownmessage-default",
+      "actual": "visual-diff/chat-markdownmessage-default-actual.png",
+      "baseline": "visual-diff/chat-markdownmessage-default-baseline.png",
+      "diff": "visual-diff/chat-markdownmessage-default-diff.png"
+    },
+    {
+      "id": "info-openhours-compact",
+      "actual": "visual-diff/info-openhours-compact-actual.png",
+      "baseline": "visual-diff/info-openhours-compact-baseline.png",
+      "diff": "visual-diff/info-openhours-compact-diff.png"
+    },
+    {
+      "id": "info-openhours-default",
+      "actual": "visual-diff/info-openhours-default-actual.png",
+      "baseline": "visual-diff/info-openhours-default-baseline.png",
+      "diff": "visual-diff/info-openhours-default-diff.png"
+    },
+    {
+      "id": "info-openhours-injected-date",
+      "actual": "visual-diff/info-openhours-injected-date-actual.png",
+      "baseline": "visual-diff/info-openhours-injected-date-baseline.png",
+      "diff": "visual-diff/info-openhours-injected-date-diff.png"
+    },
+    {
+      "id": "info-openhours-today-only",
+      "actual": "visual-diff/info-openhours-today-only-actual.png",
+      "baseline": "visual-diff/info-openhours-today-only-baseline.png",
+      "diff": "visual-diff/info-openhours-today-only-diff.png"
+    }
+  ]
 }

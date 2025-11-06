@@ -1,9 +1,16 @@
-import { expect, afterEach, vi } from "vitest";
+import { expect, afterEach, beforeAll, vi } from "vitest";
 import "@testing-library/jest-dom";
 import { cleanup } from "@testing-library/react";
+import i18n, { initI18n } from "./src/i18n";
 
 afterEach(() => {
   cleanup();
+});
+
+beforeAll(async () => {
+  if (!i18n.isInitialized) {
+    await initI18n();
+  }
 });
 
 // Global environment variable mocks for testing

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import MobileMenu from "./MobileMenu";
+import Button from "@dt/Button";
 
 const meta: Meta<typeof MobileMenu> = {
   title: "Patterns/Header/MobileMenu",
@@ -39,19 +40,9 @@ const DemoScaffold: React.FC = () => {
         padding: "2rem",
       }}
     >
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        style={{
-          padding: "0.75rem 1.25rem",
-          borderRadius: "0.75rem",
-          border: "none",
-          fontWeight: 600,
-          cursor: "pointer",
-        }}
-      >
+      <Button type="button" onClick={() => setOpen(true)}>
         Open mobile menu
-      </button>
+      </Button>
       <MobileMenu
         isOpen={isOpen}
         onClose={() => setOpen(false)}
