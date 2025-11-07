@@ -261,24 +261,30 @@ Maintenance Notes:
 - Ensure further variant additions documented here + in `.github/copilot-instructions.md` simultaneously.
 - Update visual snapshots after intentional styling changes (`npm run test:visual -- --updateSnapshot`).
 
-### Chat Email Workflow Inline Injection (Nov 2025)
+### Chat Email Workflow Inline Injection & Dual Triggers (Nov 2025)
 
-The guided email composition workflow is now rendered inline within the last assistant message rather than as a separate panel below the transcript. Architectural rationale:
+The workflow renders inline within the last assistant message. Two trigger paths:
 
-1. Conversational Continuity: Keeping form steps attached to the assistant reply preserves context, improving cognitive flow and reducing vertical scroll jumps.
-2. Single Rendering Path: All workflow states (`promptStart`, `collecting*`, `review`, `sending`, `success`, `error`) are conditionally injected inside the final assistant message container through `ChatMessages.renderWorkflow()`.
-3. Decoupled State: Workflow uses a reducer (`emailWorkflowReducer`) with strict transitions; UI rendering purely reflects `emailWorkflow.step`. Side-effects (email send) occur in `ChatWidget` via an effect watching `step === 'sending'`.
-4. Accessibility: Each step wrapper carries `data-step` for targeted testing and possible future focus management. Success block now includes `data-testid="email-workflow-success"` for test stability.
+1. General intent ("send email", "compose email", multilingual variants) → `pendingEmailWorkflowGeneral` → assistant injects `chatEmailSendPhrase`.
+2. Simple keyword (standalone "email" / "sähköposti" / "epost") → `pendingEmailWorkflowSimple` → assistant injects `chatEmailSimplePhrase` and reveals `mail@digitaltableteur.com`.
+
+Architectural rationale:
+
+1. Conversational continuity (context preserved inline)
+2. Unified rendering path for states (`promptStart`, `collecting*`, `review`, `sending`, `success`, `error`)
+3. Deterministic reducer; only side-effect is send on `sending`
+4. Accessibility: step wrappers with `data-step`; success uses `data-testid="email-workflow-success"`
 
 Sanitization & Triggering:
 
-- User trigger phrases still parsed by `messageProcessor.ts`; on detection a pending flag sets workflow state to `promptStart` by dispatching `TRIGGER` from `ChatWidget`.
-- The previous immediate reset logic was preserved; inline injection does not alter trigger lifecycle—if adjustments are needed (e.g., multi-turn pre-compose prompts) extend flag persistence before consumption.
+- `messageProcessor.ts` sets exactly one pending flag per user message; simple keyword regex anchored.
+- Assistant consumes flag, injects phrase, mounts workflow, resets flag.
 
 Testing Adjustments:
 
-- Integration test updated to allow flexible progression (it waits for any workflow step rather than assuming an initial compose button). This prevents fragility when the reducer sequence or initial step evolves.
-- Added a success state test id to reduce reliance on localized copy (which may change without breaking selector stability).
+- General path test waits for any workflow step (robust to sequence tweaks).
+- Simple path test asserts `chatEmailSimplePhrase` presence & success path.
+- Success state test id reduces dependence on localized heading text.
 
 Storybook:
 

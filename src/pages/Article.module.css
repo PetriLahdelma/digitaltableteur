@@ -57,7 +57,7 @@ p + :not(p, blockquote) {
 
 .article blockquote {
   margin-block: 4rem;
-  padding-left: 1rem;
+  padding-inline-start: 1rem;
   border-left: 4px solid var(--primary-text-color);
   font-style: italic;
 }

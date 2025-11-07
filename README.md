@@ -267,11 +267,16 @@ Branch Protection
 
 ## ✉️ Chat Email Workflow
 
-The Chat interface includes a guided, multi-step email composition workflow that can be triggered by the user with natural phrasing (e.g. “help me send an email”) or explicit tokens (future tokens may be added). Once triggered, a finite state machine collects structured contact details and a message, allows review/editing, and then submits via EmailJS.
+The Chat interface includes a guided, multi-step email composition workflow triggered by natural phrasing. Two trigger paths exist:
+
+1. General intent (e.g. “Send email”, “Help me send an email” / FI / SV variants) → assistant injects localized `chatEmailSendPhrase` and invites composition.
+2. Simple keyword (standalone "email" / "sähköposti" / "epost") → assistant injects localized `chatEmailSimplePhrase`, reveals `mail@digitaltableteur.com`, then asks if you want to start composing.
+
+Both converge to the same reducer-driven flow; only initial phrasing differs. The simple path uses an anchored regex so incidental mentions ("I like email workflows") are ignored.
 
 ### Trigger & Detection
 
-Detection occurs in `messageProcessor.ts` which sets a pending workflow flag for the next assistant turn based on regex matching of multilingual trigger phrases. The standard chat message transformation remains pure; workflow activation is an additive flag.
+`messageProcessor.ts` sets one of two pending flags (`pendingEmailWorkflowGeneral` or `pendingEmailWorkflowSimple`) based on multilingual regex matches. `ChatWidget` consumes exactly one flag on the next assistant turn, injects the phrase key (`chatEmailSendPhrase` or `chatEmailSimplePhrase`), mounts workflow UI inline, then resets the flag.
 
 ### State Machine Overview
 
@@ -330,7 +335,7 @@ All user-visible workflow text uses the `emailWorkflow.*` key prefix (e.g. `emai
 ### Testing Expectations
 
 - Reducer unit tests: all major transitions (compose -> fields -> review -> sending -> success/error) including edit & cancel
-- Integration test: full happy path and error retry path with mocked `sendContactEmail`
+- Integration tests: general path (`emailWorkflow.integration.test.tsx`) and simple keyword path (`emailWorkflow.simpleTrigger.test.tsx`)
 - i18n coverage: all `emailWorkflow.*` keys present across locales
 - Visual regression: Storybook snapshots for each state (update intentionally when layout changes)
 - Accessibility tests: no axe violations in workflow stories and pages
@@ -349,7 +354,7 @@ Prefer additive changes over altering existing field semantics to avoid breaking
 
 ### Maintenance
 
-Any architectural or behavioral changes to the workflow MUST be reflected in this README, `.github/copilot-instructions.md`, and `CLAUDE.md` in the same commit. Failure to do so will be flagged during review.
+Any architectural or trigger behavior changes MUST update this README, `.github/copilot-instructions.md`, `CLAUDE.md`, and `docs/donny-chat.md` together.
 
 ## 🛡️ Observability Automation
 
