@@ -27,10 +27,17 @@ const userMsg = (text: string) => ({
   parts: [{ type: "text", text }],
 });
 
-const renderWithProviders = (messages: any[]) => {
+const dummyDispatch = () => {};
+const idleWorkflow = { step: "idle" } as any;
+const renderWithProviders = (messages: any[], workflow: any = idleWorkflow) => {
   return render(
     <I18nextProvider i18n={i18n}>
-      <ChatMessages messages={messages} isStreaming={false} />
+      <ChatMessages
+        messages={messages}
+        isStreaming={false}
+        emailWorkflow={workflow}
+        dispatchEmailWorkflow={dummyDispatch}
+      />
     </I18nextProvider>,
   );
 };

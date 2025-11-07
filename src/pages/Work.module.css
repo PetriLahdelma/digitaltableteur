@@ -13,28 +13,67 @@
 
 .worksGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Stable 3 column layout */
   gap: 2rem;
-  width: 100%;
-  max-width: 1920px; /* Limits to roughly 3 columns at 300px + gaps */
-  margin: 0 auto;
+  inline-size: 100%;
+  max-inline-size: 1920px;
+  margin-block: 0;
+  margin-inline: auto;
+}
+
+.processItem {
+  background: var(--main-body-background-color);
+  border: 1px solid var(--color-border, #232323);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.processItemTitle {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-family: Moderat, sans-serif;
+}
+
+.processItemBody {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--secondary-text-color);
+  font-family: Moderat, sans-serif;
+}
+
+.processItemSpanAll {
+  grid-column: 1 / -1; /* span all three columns */
+}
+
+@media (width <= 932px) {
+  .worksGrid {
+    grid-template-columns: 1fr; /* stack all items */
+  }
+
+  .processItemSpanAll {
+    grid-column: 1; /* no spanning needed in single column */
+  }
 }
 
 /* Mobile responsive grid */
 @media (width <= 932px) {
   .worksGrid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2rem; /* already single column above */
   }
 
   .workItem {
-    width: 100%;
+    inline-size: 100%;
   }
 
   .workImage {
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
+    inline-size: 100%;
+    min-inline-size: 100%;
+    max-inline-size: 100%;
   }
 }
 
@@ -45,7 +84,7 @@
   }
 
   .workItem {
-    width: 100%;
+    inline-size: 100%;
   }
 }
 
@@ -56,8 +95,8 @@
   }
 
   .works img {
-    max-width: 100%;
-    min-width: 100%;
+    max-inline-size: 100%;
+    min-inline-size: 100%;
   }
 }
 
@@ -76,8 +115,8 @@
 }
 
 .workImage {
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -85,13 +124,13 @@
 /* Responsive image sizing */
 @media (width <= 768px) {
   .workImage {
-    width: 100%;
-    min-width: auto;
+    inline-size: 100%;
+    min-inline-size: auto;
   }
 
   .works img {
-    max-width: 100%;
-    min-width: 100%;
+    max-inline-size: 100%;
+    min-inline-size: 100%;
   }
 }
 
@@ -128,6 +167,6 @@
 }
 
 .works img {
-  max-width: 33.3rem;
-  min-width: 20.75rem;
+  max-inline-size: 33.3rem;
+  min-inline-size: 20.75rem;
 }

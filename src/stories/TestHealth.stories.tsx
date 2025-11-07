@@ -20,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "@dt/ThemeProvider";
 import Badge from "@dt/Badge";
 import { FaInfoCircle } from "react-icons/fa";
+import SentrySummaryCard from "@dt/SentrySummaryCard";
 
 type VisualDiffEntry = {
   id: string;
@@ -580,6 +581,34 @@ const TestHealthOverview = () => {
             ))}
           </div>
         )}
+      </section>
+
+      <section className={styles.chartsGrid} aria-label="Sentry Observability">
+        <article className={styles.chartCard}>
+          <SentrySummaryCard
+            dataOverride={{
+              generatedAt: new Date().toISOString(),
+              project: "frontend",
+              filters: { unresolved: true, environment: "production" },
+              count: 1,
+              issues: [
+                {
+                  id: "storybook-1",
+                  title: "TypeError: Cannot read property 'foo' of undefined",
+                  culprit: "TestHealthOverview",
+                  level: "error",
+                  userCount: 3,
+                  status: "unresolved",
+                  isUnhandled: true,
+                  firstSeen: new Date().toISOString(),
+                  lastSeen: new Date().toISOString(),
+                  permalink: "https://sentry.io/issue/storybook-1",
+                  environment: "production",
+                },
+              ],
+            }}
+          />
+        </article>
       </section>
     </div>
   );

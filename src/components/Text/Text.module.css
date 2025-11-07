@@ -27,3 +27,11 @@
 .sans {
   font-family: var(--font-sans, "Moderat", sans-serif);
 }
+
+@supports (font-optical-sizing: auto) {
+  .text,
+  .serif,
+  .sans {
+    font-optical-sizing: auto;
+  }
+}

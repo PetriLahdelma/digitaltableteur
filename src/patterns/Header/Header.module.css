@@ -115,8 +115,7 @@ header h2 a {
   justify-content: center;
   transition: color 0.2s;
   flex: 0 0 auto;
-  margin-right: 0;
-  margin-left: 0;
+  margin-inline: 0;
   pointer-events: auto;
 }
 
@@ -211,7 +210,7 @@ header h2 a {
   }
 
   .themeToggle {
-    margin-left: 0;
+    margin-inline-start: 0; /* single side override retained */
     margin-top: 8px;
     transform: translateY(-4px);
   }

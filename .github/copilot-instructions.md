@@ -13,7 +13,9 @@
 - Update DONNY-CHAT.md with any changes to development practices or architecture with every git commit
   – Update CLAUDE.md with any changes to development practices or architecture with every git commit
 - Update copilot-instructions.md with any changes to development practices or architecture with every git commit
+- Update README.md with any changes to development practices or architecture with every git commit
 - Refresh Storybook visual regression assets (`npm run test:visual`) whenever UI changes affect component rendering
+- Prefer CSS logical properties (`margin-inline`, `padding-inline`, `border-inline-start`) over physical directions; convert remaining legacy physical properties when touched.
 - Ensure all new components have Storybook stories and accessibility tests
 - Storybook stories display a persistent localized WIP badge until a story explicitly opts out via `parameters: { wip: { disabled: true } }`; remove only after accessibility, visual regression, and translation checks pass
 - Follow i18n practices for all user-facing text
@@ -240,3 +242,319 @@ Testing:
 - `messageProcessor.test.tsx` covers flags & sanitization (EN/FI/SV).
 - `ChatMessages.*.test.tsx` covers rendering & absence of keywords/tokens in assistant post-injection.
 - Run `npm run test:visual` after changes impacting layout.
+
+## Progressive Enhancement Pattern (Template)
+
+Apply modern CSS features conditionally:
+
+1. Define baseline (fallback) styles normally.
+2. Add `@supports(feature)` blocks that layer improved visuals/performance.
+3. When a feature replaces a layout property (e.g. gap), provide a `@supports not (feature)` fallback with equivalent spacing (margin shims).
+4. Keep accessibility media queries (`@media (prefers-reduced-motion: reduce)`) separate from `@supports`.
+5. Use modern color syntax (rgb / alpha percentage, color-mix) only inside supported blocks and supply readable fallbacks.
+6. Avoid overusing `will-change`; only inside enhancement blocks when animation or transform present.
+7. Document each new enhancement in this file + `CLAUDE.md` at commit time.
+
+Example:
+
+```
+.panel { box-shadow: none; }
+@supports (backdrop-filter: blur(8px)) {
+  .panel { backdrop-filter: blur(8px); box-shadow: 0 4px 24px rgb(0 0 0 / 30%); }
+}
+```
+
+Spacing:
+
+```
+.stack > * + * { margin-top: 1rem; }
+@supports (gap: 1rem) {
+  .stack { display: flex; flex-direction: column; gap: 1rem; }
+  .stack > * + * { margin-top: 0; }
+}
+```
+
+Navigation with :has():
+
+```
+@supports selector(:has(*)) {
+  .navItem:has(> .navLink[aria-current="page"]) { outline: 2px solid color-mix(in srgb, var(--color-primary) 40%, transparent); }
+}
+```
+
+Future view transitions (commented until adopted):
+
+```
+/* @supports (view-transition-name: route) { .routeRoot { view-transition-name: route; } } */
+```
+
+## Sentry Observability & MCP Integration (Nov 2025)
+
+### Runtime Integration
+
+Sentry initializes in `src/main.tsx` only when `VITE_SENTRY_DSN` exists. Performance tracing via `browserTracingIntegration()`; sampling adjustable with `VITE_SENTRY_TRACES_SAMPLE_RATE`.
+
+### Vite Plugin
+
+`@sentry/vite-plugin` conditionally added in `vite.config.ts` (requires `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT`). Optional `SENTRY_RELEASE` for version grouping.
+
+### MCP Command Script
+
+`scripts/sentry-mcp.js` exposes REST queries:
+
+```
+node scripts/sentry-mcp.js issues [project] [limit] [--unresolved] [--environment=name]
+node scripts/sentry-mcp.js releases [project] [limit]
+```
+
+Flags:
+
+- `--unresolved`: filters with `is:unresolved`
+- `--environment=name`: narrows issues by environment
+
+### Summary Generation
+
+`scripts/generate-sentry-summary.mjs` produces `public/observability/sentry-summary.json` (top 10 issues) for Storybook/dashboard consumption without live API calls at render.
+
+### Dashboard Component
+
+`src/components/SentrySummaryCard/` fetches summary file and renders localized loading, error, empty, and list states; links open issue permalinks in a new tab.
+
+### Translation Keys
+
+Added `observability.sentry.*` set (title, unresolvedHeading, empty, error.fetch, issue.status, issue.user, issue.firstSeen, issue.lastSeen, issue.open, loading). Ensure all three locales updated together.
+
+### Testing
+
+Unit tests mock fetch scenarios (success/empty/error). Visual regression optional if styling changes; run `npm run test:visual` after major UI adjustments.
+
+### Future Enhancements
+
+- Severity/timeframe filters (e.g., `--level=error`)
+- Aggregate metrics (unresolved ratio, average issue age)
+- Release health stats (crash-free sessions) integration
+
+Keep this section and `CLAUDE.md` synchronized whenever observability tooling changes.
+
+### Sentry Stub Mode Badge (Nov 2025)
+
+The `SentrySummaryCard` now renders a localized stub badge (`observability.sentry.stubBadge`) when the summary JSON includes `stub: true`. This visually differentiates fallback placeholder data (e.g., missing credentials, forced stub) from a real issue list. The badge appears in both empty and populated states. Tests cover badge presence. When adding future metadata (e.g., release health), avoid overlapping badge semantics; prefer an adjacent icon or secondary badge.
+
+Progressive enhancement: card container applies elevated backdrop styling with `data-surface="elevated"` only for real summaries (non-stub) to subtly distinguish authenticity. This attribute may be extended for theming or variants.
+
+### TypeScript MCP Automation (Nov 2025)
+
+Introduced `scripts/ts-mcp-automation.mjs` to validate `typescript-language-server` availability via a minimal LSP initialize handshake. Outputs `public/observability/ts-mcp-status.json` with `{ ok, generatedAt }` or stub fields when unavailable. NPM scripts:
+
+```bash
+npm run ts:mcp:status       # Attempt handshake and write status
+npm run ts:mcp:status:stub  # Force stub status
+```
+
+Future expansion ideas:
+
+- Parse and expose server version from initialize result.
+- Surface diagnostics count for a small in-memory file sample.
+- Integrate MCP status into a combined Observability dashboard section.
+
+Keep these instructions and `CLAUDE.md` aligned as MCP automation evolves.
+
+## Design System Card Component (Dec 2025)
+
+The `Card` component (`src/components/Card/`) has been expanded into a reusable design-system primitive inspired by Ant Design while adhering to DT styling tokens and accessibility patterns.
+
+### API Overview
+
+Props:
+
+- `title?: string` Primary heading rendered as `<h3>` (consumer responsible for hierarchy context).
+- `subTitle?: string` Uppercase meta label adjacent to title.
+- `extra?: React.ReactNode` Right-aligned header region (badges, buttons, etc.).
+- `cover?: React.ReactNode` Media slot at top (typically `<img>`). Should include alt text.
+- `actions?: CardAction[]` Footer action buttons (`{ key, label, onClick?, disabled? }`).
+- `loading?: boolean` Displays skeleton placeholder; user-facing text hidden; localized via `card.loading` key.
+- `hoverable?: boolean` Elevation + subtle background shift on pointer hover.
+- `bordered?: boolean` Toggles border presence (fallback shadow retained). Defaults to true.
+- `size?: 'sm' | 'md' | 'lg'` Adjusts internal padding scale.
+- `tabs?: CardTab[]` Optional tablist (`{ key, label, disabled? }`).
+- `activeTabKey?: string` Controlled active tab key.
+- `defaultActiveTabKey?: string` Uncontrolled initial tab key (falls back to first tab when omitted).
+- `onTabChange?: (key: string) => void` Fired after selection (skips disabled tabs).
+- `body?: string` Legacy body text convenience (prefer children for rich content).
+- `children?: React.ReactNode` Body content region below header / tabs.
+- `link?: string` Makes the entire card an anchor; preserves same internal structure. Provide descriptive `linkLabel` for accessibility.
+- `icon?: React.ReactNode` Leading icon before title.
+- `linkLabel?: string` Accessible label for link variant when title insufficient.
+- `className?: string` Style extension hook.
+
+### Accessibility
+
+- Header title marked with `data-card-title` for potential future landmark / outline integration.
+- Tablist uses `role="tablist"` and each tab `role="tab"`, `aria-selected` reflects active state, `disabled` uses native attribute. Only one `aria-selected="true"` permitted.
+- Loading skeleton uses `role="status"`, `aria-busy="true"`, and localized `aria-label` (`card.loading`). Tests assert presence.
+- Action buttons expose keyboard focus with visible outline; disabled actions are inert and have reduced opacity.
+- Link variant sets `aria-label` to `linkLabel || title` to ensure context clarity when title is non-descriptive.
+
+### Styling & Tokens
+
+- CSS Module `Card.module.css` defines base `.card` plus state/variant classes: `.hoverable`, `.bordered`, `.unbordered`, size classes `.sm/.md/.lg`.
+- Spacing leverages `--space-*` tokens; radius via `--radius-*`.
+- Tablist uses gap with fallback margin shim under `@supports not (gap: ...)`.
+- Skeleton animation defined with `@keyframes skeleton-pulse` using gradient shimmer; respects progressive enhancement guidelines.
+- All text uses sans-serif (`var(--font-sans)` or site body font) to maintain typographic consistency.
+
+### Internationalization
+
+- Added `card.loading` key to all three locales for skeleton status.
+- Avoid hard-coded user-visible strings in stories beyond demo labels; production usage must pull from i18n.
+
+### Testing Expectations
+
+- Unit tests cover: header rendering (title/subTitle/icon/extra), link wrapper semantics, actions present & clickable, loading skeleton accessibility attributes, tab switching (uncontrolled) and `aria-selected` correctness.
+- Future tests: controlled tab behavior edge cases (e.g., ignoring internal state), disabled tab non-interaction, keyboard focus traversal.
+- Add an accessibility test ensuring only one active tab and buttons reachable via tab sequence.
+
+### Storybook
+
+- Stories: Default, Hoverable, Loading, WithCover, WithActions, Tabbed. WIP badge remains until a11y + visual + translation checks green.
+- Tabbed story refactored to a component wrapper to avoid hooks inside inline render (lint compliance).
+
+### Extension Guidelines
+
+Prefer composability: for future badges, metrics, or status chips, supply them via `extra` or within `children` rather than forking core Card logic. For upcoming variants (e.g., selectable cards, radio-group cards), layer interactive state with additional props and ARIA without breaking existing API shape.
+
+### Future Enhancements (Proposed)
+
+- Keyboard arrow navigation between tabs (roving tabindex) for improved ergonomics.
+- Optional `headerLevel` prop to customize semantic heading level while keeping style consistent.
+- `actionsPlacement` prop (e.g., "start" | "center" | "end") for layout flexibility.
+- Integrated focus ring theming via data attributes for dark mode or elevated surfaces.
+
+Keep this section synchronized with `CLAUDE.md` whenever the Card API or behavior evolves.
+
+## Chat Guided Email Workflow (Nov 2025)
+
+The Chat interface includes a deterministic, reducer-driven email composition workflow allowing users to author and send a structured message directly within the conversation.
+
+### Trigger Detection
+
+- Implemented in `messageProcessor.ts` via multilingual regex patterns matching user intent (e.g., phrases equivalent to “send email”).
+- Sets a `pendingEmailWorkflow` flag consumed on the next assistant turn; chat rendering remains pure unless flag present.
+
+### State Machine & Types
+
+- Reducer: `src/components/ChatWidget/emailWorkflow/reducer.ts`
+- Types: `src/components/ChatWidget/emailWorkflow/types.ts`
+- Draft shape: `EmailDraft` (fields: `intent`, `fullName`, `email`, `phone?`, `message`).
+
+Primary states:
+
+1. `idle` – No workflow active
+2. `compose` – Capture high-level intent/subject
+3. `fields` – Sequential collection of structured fields (validators applied per step)
+4. `review` – Aggregated draft display with edit options
+5. `sending` – Async submission in progress (aria-busy + status text)
+6. `success` – Confirmation & summary
+7. `error` – Failure with retry/edit controls
+
+Actions are strictly typed; transitions validated to prevent illegal jumps. Edit returns to `fields` preserving previously entered values.
+
+### Components
+
+- `ComposePrompt` – Intent text area
+- `FieldPrompt` – Renders current field input + validation message
+- `ReviewSummary` – Structured summary of draft contents
+- `SendStatus` – Unified sending/success/error presenter
+
+Each component includes:
+
+- `.module.css` using logical properties
+- Storybook stories (with WIP badge until a11y & visual baselines pass)
+- Unit tests (component rendering & accessibility semantics)
+
+### Validation & Service Layer
+
+- `contactValidation.ts` centralizes validators for email format, required fields, optional phone normalization.
+- `contactEmailService.ts` wraps EmailJS send logic; throws `EmailServiceError` with classified codes for user-friendly error messaging.
+
+### Environment Variables
+
+Required for send operations (development & production):
+
+```
+VITE_EMAILJS_SERVICE_ID
+VITE_EMAILJS_TEMPLATE_ID
+VITE_EMAILJS_PUBLIC_KEY
+```
+
+Missing values keep workflow usable (draft creation) but sending transitions to error quickly; error messaging must remain localized.
+
+### Internationalization
+
+All user-facing workflow strings use the `emailWorkflow.` prefix. Adding new workflow text requires updating all three locale files before merging to maintain translation coverage test success.
+
+### Accessibility
+
+- Forms use explicit `<label>` with `htmlFor` and aria-live regions for validation messages as needed.
+- Sending state applies `role="status"` + `aria-busy="true"`.
+- Focus returns appropriately after edits or retry (tests should assert focus strategy where practical).
+
+### Testing Expectations
+
+- Reducer unit tests: cover every transition including error + retry + cancel.
+- Integration test: simulates end-to-end user path (happy + error) with mocked service.
+- i18n coverage: ensures all `emailWorkflow.*` keys present.
+- Visual regression: baseline images for each workflow state story.
+- Accessibility: axe checks free of violations; aria-current not misapplied.
+
+### Extension Guidelines
+
+To add new fields or behaviors:
+
+1. Extend `EmailDraft` type and validators.
+2. Insert ordered step logic in reducer (avoid breaking existing indices).
+3. Localize new strings under `emailWorkflow.fields.<fieldName>`.
+4. Update `ReviewSummary` & tests; refresh visual baselines.
+5. Document changes here + `README.md` + `CLAUDE.md` in the same commit.
+
+Avoid renaming existing keys—additive naming preserves translation history and reduces churn.
+
+## MCP & Observability Automation (Nov 2025)
+
+### TypeScript MCP Status
+
+- Script: `scripts/ts-mcp-automation.mjs` performs a minimal `typescript-language-server` handshake.
+- Output: `public/observability/ts-mcp-status.json` `{ ok, generatedAt }` or stub when unavailable.
+- Commands:
+
+```bash
+npm run ts:mcp:status
+npm run ts:mcp:status:stub
+```
+
+### Sentry Summary
+
+- Script: `scripts/generate-sentry-summary.mjs` OR CLI helper `scripts/sentry-mcp.js`.
+- Output: `public/observability/sentry-summary.json` with unresolved production issues (top 10) or stub badge metadata.
+- Component: `SentrySummaryCard` consumes JSON, applies stub badge when `stub: true`.
+
+### Translation & Schema Discipline
+
+- All Sentry-related strings use `observability.sentry.*` prefix; MCP future keys should adopt `observability.ts.*`.
+- Any schema evolution (adding fields, renaming properties) requires simultaneous updates to: this file, `README.md`, `CLAUDE.md`, relevant tests, and translation files.
+
+### Testing & Visual Regression
+
+- Unit tests must mock fetch scenarios (success, empty, error, stub).
+- Update visual snapshots whenever card rendering changes.
+
+### Extension Strategy
+
+Future observability sources (e.g., release health, diagnostics counts) should follow pattern:
+
+1. Generate JSON artifact via script.
+2. Render with a pure, localized component.
+3. Add i18n keys under logical prefix.
+4. Document in all architecture files.
+
+Maintain backward compatibility—avoid deleting fields without deprecation notice and test updates.

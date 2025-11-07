@@ -34,21 +34,50 @@
   outline-offset: 2px;
 }
 
+/* Fallback hover (legacy browsers without color-mix) */
 .navLink:hover {
-  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  background: rgb(0 0 0 / 6%);
 }
 
+@supports (color: color-mix(in srgb, #000, #fff)) {
+  .navLink:hover {
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+}
+
+/* Active state fallback */
 .navLinkActive {
-  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  background: rgb(0 0 0 / 8%);
   color: var(--color-primary);
   margin-right: var(--space-internal-16, 1rem);
 }
 
+@supports (color: color-mix(in srgb, #000, #fff)) {
+  .navLinkActive {
+    background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  }
+}
+
+/* Border fallback */
 .navLinkActive::after {
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+  border: 1px solid rgb(0 0 0 / 15%);
   border-radius: inherit;
   pointer-events: none;
+}
+
+@supports (color: color-mix(in srgb, #000, #fff)) {
+  .navLinkActive::after {
+    border: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+  }
+}
+
+/* Enhancement: parent-driven active styling using :has() when supported */
+@supports selector(:has(*)) {
+  .navItem:has(> .navLink[aria-current="page"]) {
+    outline: 2px solid color-mix(in srgb, var(--color-primary) 40%, transparent);
+    outline-offset: 2px;
+  }
 }
