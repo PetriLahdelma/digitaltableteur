@@ -434,12 +434,16 @@ Keep this section synchronized with `CLAUDE.md` whenever the Card API or behavio
 
 ## Chat Guided Email Workflow (Nov 2025)
 
-The Chat interface includes a deterministic, reducer-driven email composition workflow allowing users to author and send a structured message directly within the conversation.
+The Chat interface includes a deterministic, reducer-driven email composition workflow allowing users to author and send a structured message directly within the conversation. It supports two trigger categories:
+
+1. General intent phrases ("send email", "compose email", "help me write an email" + FI/SV equivalents) → sets `pendingEmailWorkflowGeneral` and injects localized assistant phrase `chatEmailSendPhrase`.
+2. Simple standalone keyword ("email" / "sähköposti" / "epost" alone) → sets `pendingEmailWorkflowSimple` and injects `chatEmailSimplePhrase`, which reveals the contact address (`mail@digitaltableteur.com`) then invites composition.
+
+The simple keyword regex is anchored to avoid accidental mid-sentence activation.
 
 ### Trigger Detection
 
-- Implemented in `messageProcessor.ts` via multilingual regex patterns matching user intent (e.g., phrases equivalent to “send email”).
-- Sets a `pendingEmailWorkflow` flag consumed on the next assistant turn; chat rendering remains pure unless flag present.
+Implemented in `messageProcessor.ts` via multilingual regex patterns. Exactly one of the two flags can be set per user message. Flags are consumed on the next assistant turn, which injects the localized phrase and mounts the workflow inline, then resets flags.
 
 ### State Machine & Types
 
@@ -447,7 +451,7 @@ The Chat interface includes a deterministic, reducer-driven email composition wo
 - Types: `src/components/ChatWidget/emailWorkflow/types.ts`
 - Draft shape: `EmailDraft` (fields: `intent`, `fullName`, `email`, `phone?`, `message`).
 
-Primary states:
+Primary states (shared for both trigger paths):
 
 1. `idle` – No workflow active
 2. `compose` – Capture high-level intent/subject
@@ -491,7 +495,7 @@ Missing values keep workflow usable (draft creation) but sending transitions to 
 
 ### Internationalization
 
-All user-facing workflow strings use the `emailWorkflow.` prefix. Adding new workflow text requires updating all three locale files before merging to maintain translation coverage test success.
+All workflow strings use the `emailWorkflow.` prefix. Trigger phrase keys (`chatEmailSendPhrase`, `chatEmailSimplePhrase`) must appear in EN, FI, and SV locale files. Translation coverage tests enforce presence.
 
 ### Accessibility
 
@@ -501,8 +505,8 @@ All user-facing workflow strings use the `emailWorkflow.` prefix. Adding new wor
 
 ### Testing Expectations
 
-- Reducer unit tests: cover every transition including error + retry + cancel.
-- Integration test: simulates end-to-end user path (happy + error) with mocked service.
+- Reducer unit tests: every transition including error + retry + cancel.
+- Integration tests: general path (`emailWorkflow.integration.test.tsx`) plus simple keyword path (`emailWorkflow.simpleTrigger.test.tsx`).
 - i18n coverage: ensures all `emailWorkflow.*` keys present.
 - Visual regression: baseline images for each workflow state story.
 - Accessibility: axe checks free of violations; aria-current not misapplied.

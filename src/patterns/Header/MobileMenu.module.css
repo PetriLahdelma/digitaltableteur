@@ -25,6 +25,7 @@
 }
 
 /* Scroll container wrapping all menu content except backdrop */
+
 .panelContent {
   display: flex;
   flex-direction: column;
@@ -45,6 +46,7 @@
 }
 
 /* Sticky header at top of scroll */
+
 .header {
   position: sticky;
   padding: var(--space-internal-24, 1.5rem) var(--space-internal-24, 1.5rem)
@@ -60,6 +62,7 @@
 }
 
 /* Sticky language section at bottom */
+
 .languageSticky {
   position: sticky;
   bottom: 0;
@@ -75,6 +78,7 @@
 }
 
 /* Bottom controls layout: language list left, theme icon button right */
+
 .bottomControlsRow {
   display: flex;
   justify-content: start;
@@ -242,6 +246,7 @@
 }
 
 /* Icon-only theme button */
+
 .themeIconButton {
   display: inline-flex;
   align-items: center;

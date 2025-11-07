@@ -212,12 +212,12 @@
 }
 
 .messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1rem 1.25rem;
   display: flex;
+  padding: 1rem 1.25rem;
+  flex: 1;
   flex-direction: column;
   gap: 0.75rem;
+  overflow-y: auto;
 }
 
 @supports (scroll-behavior: smooth) {
@@ -235,8 +235,8 @@
 }
 
 .message {
-  max-width: 83%;
   padding: 0.5rem 1rem;
+  max-width: 83%;
   border-radius: 0.85rem;
   font-size: 0.9rem;
 
@@ -245,8 +245,10 @@
   .workflowBlock {
     margin-block: var(--space-internal-16);
     padding: var(--space-internal-16);
+
     /* border: 1px solid var(--color-border-muted, rgb(255 255 255 / 30%));
     border-radius: var(--radius-sm, 4px); */
+
     /* background: var(--color-primary-alt, rgb(255 255 255 / 6%)); */
   }
 
