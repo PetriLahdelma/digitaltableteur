@@ -211,6 +211,18 @@ Extensibility:
 6. Refresh visual baselines if layout shifts: `npm run test:visual -- --updateSnapshot`.
 
 Testing strategy (updated):
+## Chat Email Workflow Triggers (Dual Path)
+
+Two trigger modes for the email composition workflow:
+
+| Type | EN Example | FI Example | SV Example | Phrase Key | Behavior |
+| ---- | ---------- | ---------- | ---------- | ---------- | -------- |
+| General intent | "Send email" | "Lähetä sähköposti" | "Skicka epost" | `chatEmailSendPhrase` | Assistant acknowledges & offers to compose |
+| Simple keyword | "email" | "sähköposti" | "epost" | `chatEmailSimplePhrase` | Assistant reveals address then invites composition |
+
+Regex for simple keyword is anchored to avoid accidental mid-sentence activation. Only one flag (`pendingEmailWorkflowGeneral` or `pendingEmailWorkflowSimple`) can be set per user message. Assistant consumes the flag next turn and resets it.
+
+Update this file, README, `CLAUDE.md`, and `.github/copilot-instructions.md` together when altering trigger semantics.
 
 - `messageProcessor.test.tsx` covers user-trigger flagging and assistant sanitization across EN/FI/SV.
 - `ChatMessages.openHours.test.tsx` + `ChatMessages.servicesGrid.test.tsx` ensure components render only after a user trigger and confirm keyword/token removal from assistant output.
