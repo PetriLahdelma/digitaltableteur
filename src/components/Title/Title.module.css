@@ -15,6 +15,13 @@
   overflow-wrap: normal;
 }
 
+/* Enhancement: balance multi-line headings for improved rag */
+@supports (text-wrap: balance) {
+  .title {
+    text-wrap: balance;
+  }
+}
+
 .titleS {
   font-size: var(--font-size-title-s);
 }
@@ -37,4 +44,12 @@
 
 .fontSans {
   font-family: Moderat, var(--font-text, Moderat), sans-serif;
+}
+
+@supports (font-optical-sizing: auto) {
+  .title,
+  .fontSerif,
+  .fontSans {
+    font-optical-sizing: auto;
+  }
 }

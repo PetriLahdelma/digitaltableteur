@@ -6,6 +6,61 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--main-body-copy-color);
   background-color: var(--main-body-background-color);
+  overflow-wrap: anywhere; /* defensive long word wrap */
+}
+
+/* Defensive CSS: global box-sizing and safe defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Media elements constrained to container width */
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form elements inherit fonts for consistency */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Reduce specificity for generic utilities */
+:where(h1, h2, h3, h4, h5, h6) {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Anchor default touch target improvements */
+a {
+  touch-action: manipulation;
+}
+
+/* Remove default margin on lists/paragraphs when desired via utility */
+:where(ul, ol) {
+  padding-left: 1.25rem;
+}
+
+/* Safe focus outline fallback for browsers stripping outlines */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Enhancement: enable variable font optical sizing where supported */
+@supports (font-optical-sizing: auto) {
+  body {
+    font-optical-sizing: auto;
+  }
 }
 
 code {

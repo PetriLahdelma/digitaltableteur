@@ -21,13 +21,38 @@
     "scale-unlimited/declaration-strict-value": [
       ["/color/", "fill", "stroke"],
       {
-        "ignoreKeywords": [
-          "currentColor",
-          "inherit",
-          "transparent"
-        ],
+        "ignoreKeywords": ["currentColor", "inherit", "transparent"],
         "severity": "warning"
       }
+    ],
+    "declaration-block-no-duplicate-properties": [
+      true,
+      { "severity": "error" }
+    ],
+    "declaration-block-no-shorthand-property-overrides": [
+      true,
+      { "severity": "error" }
+    ],
+    "max-nesting-depth": [3, { "severity": "warning" }],
+    "selector-max-id": [0, { "severity": "error" }],
+    "selector-max-universal": [1, { "severity": "warning" }],
+    "selector-max-specificity": ["0,4,0", { "severity": "warning" }],
+    "no-unknown-animations": [true, { "severity": "error" }],
+    "declaration-no-important": [true, { "severity": "warning" }],
+    "property-disallowed-list": [
+      [
+        "margin-left",
+        "margin-right",
+        "padding-left",
+        "padding-right",
+        "border-left",
+        "border-right"
+      ],
+      { "severity": "warning" }
+    ],
+    "rule-empty-line-before": [
+      "always-multi-line",
+      { "ignore": ["first-nested"], "severity": "warning" }
     ]
   }
 }

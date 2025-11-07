@@ -3,18 +3,18 @@
 
 .card {
   display: flex;
+  flex-direction: column;
   background: var(--color-light-bg, #f9f9f9);
   box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
   padding: 1.5rem;
   text-decoration: none;
   color: inherit;
-  justify-content: space-between;
+  justify-content: flex-start; /* allow natural flow; meta pushes down if extra space */
   transition:
     box-shadow 0.2s,
     background 0.2s;
-  flex-direction: column;
   border: 2px solid var(--color-primary);
-  block-size: 200px;
+  min-block-size: 200px; /* allow growth beyond baseline height */
 }
 
 .cardHover {
@@ -38,11 +38,10 @@
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.5;
-  margin: 0 0 0.5rem;
+  margin-block: 0 0.5rem;
+  margin-inline: 0;
   max-lines: 2;
   line-clamp: 2;
-
-  /* Prevent hyphenation/word breaking */
   hyphens: none;
   word-break: normal;
   overflow-wrap: normal;
@@ -52,8 +51,8 @@
   font-family: var(--primary-body-font, sans-serif);
   font-size: 1.1rem;
   color: var(--primary-text-color, #00f);
-  margin-block-end: 1rem;
-  margin: 0 0 1rem;
+  margin-block: 0 1rem;
+  margin-inline: 0;
   max-lines: 2;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines */
@@ -70,7 +69,7 @@
   color: var(--primary-text-color, #00f);
   align-items: center;
   justify-content: space-between;
-  margin-block-start: auto;
+  margin-block-start: auto; /* pushes meta to bottom when card taller than min height */
 }
 
 .meta span {

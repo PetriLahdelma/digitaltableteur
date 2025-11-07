@@ -22,5 +22,5 @@
 .tooltip {
   font-size: 0.875rem; /* 14px */
   color: var(--color-muted);
-  margin-left: 0.5rem; /* 8px */
+  margin-inline-start: 0.5rem; /* 8px logical */
 }

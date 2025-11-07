@@ -6,10 +6,32 @@
   justify-content: center;
   background: var(--color-background, #fff);
   z-index: 1000;
+
+  /* Fallback: instantaneous appearance (no animation properties here) */
+}
+
+/* Enhancement: fade + subtle scale only when browser supports transforms & opacity transition */
+@supports (transform: translateZ(0)) and (transition: opacity 0.3s ease) {
+  .overlayRoot {
+    opacity: 0;
+    transform: translateZ(0) scale(0.985); /* GPU promotion & tiny scale for smoother intro */
+    will-change: opacity, transform;
+    transition:
+      opacity 0.28s ease,
+      transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .overlayRoot[data-state="enter"] {
+    opacity: 1;
+    transform: translateZ(0) scale(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .overlayRoot {
     transition: none;
+    transform: none;
+    will-change: auto;
+    opacity: 1; /* ensure visible if enhancement applied */
   }
 }

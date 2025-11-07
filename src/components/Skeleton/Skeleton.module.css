@@ -12,6 +12,18 @@
   position: relative;
 }
 
+/* Enhancement: smoother perceptual interpolation via Lab color space (supported in modern browsers) */
+@supports (color: lab(0% 0 0)) {
+  .root {
+    background: linear-gradient(
+      90deg,
+      lab(60% -5 5 / 95%) 25%,
+      lab(98% 0 0 / 100%) 37%,
+      lab(60% -5 5 / 95%) 63%
+    );
+  }
+}
+
 .animate {
   animation: shimmer 1.2s ease-in-out infinite;
 }
@@ -53,6 +65,17 @@
     var(--color-primary) 63%
   );
   background-size: 400% 100%;
+}
+
+@supports (color: lab(0% 0 0)) {
+  .text .line {
+    background: linear-gradient(
+      90deg,
+      lab(60% -5 5 / 95%) 25%,
+      lab(98% 0 0 / 100%) 37%,
+      lab(60% -5 5 / 95%) 63%
+    );
+  }
 }
 
 .text.animate .line {

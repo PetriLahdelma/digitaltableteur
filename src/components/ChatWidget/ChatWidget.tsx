@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useRef,
   useState,
+  useReducer,
 } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
@@ -12,6 +13,16 @@ import styles from "./ChatWidget.module.css";
 import ChatComposer, { ChatComposerHandle } from "./ChatComposer";
 import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
+import { processConversationWithFlags } from "./messageProcessor";
+import {
+  emailWorkflowReducer,
+  initialEmailWorkflowState,
+} from "./emailWorkflow/reducer";
+import ComposePrompt from "./emailWorkflow/ComposePrompt";
+import FieldPrompt from "./emailWorkflow/FieldPrompt";
+import ReviewSummary from "./emailWorkflow/ReviewSummary";
+import SendStatus from "./emailWorkflow/SendStatus";
+import { sendContactEmail } from "@dt/ContactForm/contactEmailService";
 import ChatToggle from "./ChatToggle";
 import { useTranslation } from "react-i18next";
 
@@ -294,6 +305,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 }) => {
   const { t } = useTranslation();
   const greetingText = t("chatGreeting", DEFAULT_GREETING_TEXT);
+  const [emailWorkflow, dispatchEmailWorkflow] = useReducer(
+    emailWorkflowReducer,
+    initialEmailWorkflowState,
+  );
   const resolvedTitle = title ?? t("chatTitle", "Chat with Donny");
   const resolvedDescription =
     description ?? t("chatDescription", "Brand-specific answers, no fluff.");
@@ -377,16 +392,20 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     if (envEndpoint) return envEndpoint;
     if (typeof window !== "undefined") {
       const host = window.location.hostname.toLowerCase();
-      if (
+      // Treat private LAN IPs (RFC1918) similarly to localhost for endpoint purposes because vite dev server does not mount /api/chat.
+      const isLocalLike =
         host === "localhost" ||
         host === "127.0.0.1" ||
-        host === "digitaltableteur.com" ||
-        host === "www.digitaltableteur.com"
-      ) {
-        return REMOTE_CHAT_ENDPOINT;
+        /^192\.168\./.test(host) ||
+        /^10\./.test(host) ||
+        /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(host);
+      const isProdDomain =
+        host === "digitaltableteur.com" || host === "www.digitaltableteur.com";
+      if (isLocalLike || isProdDomain) {
+        return REMOTE_CHAT_ENDPOINT; // always use remote serverless function in dev & prod domain
       }
     }
-    return "/api/chat";
+    return REMOTE_CHAT_ENDPOINT; // fallback remote to avoid 404 on arbitrary hosts
   }, [endpoint]);
 
   // Debug flag (query param ?chatDebug=1 or localStorage flag dtChatDebug). Safe getItem wrapper for Safari private mode quirks.
@@ -650,6 +669,80 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     }
   }, [stop, setMessages, clearError, greetingText]);
 
+  // Derive processed parts for trigger detection (non-render injection for now)
+  // Email workflow trigger detection + assistant phrase injection
+  const lastAssistantIndexRef = useRef<number | null>(null);
+  useEffect(() => {
+    const processedResult = processConversationWithFlags(messages as any);
+    const { pendingEmailWorkflowGeneral, pendingEmailWorkflowSimple } =
+      processedResult;
+    const shouldTrigger =
+      (pendingEmailWorkflowGeneral || pendingEmailWorkflowSimple) &&
+      emailWorkflow.step === "idle";
+    if (shouldTrigger) {
+      dispatchEmailWorkflow({ type: "TRIGGER" });
+      // Inject a synthetic assistant message with required phrase OR email info prior to workflow UI.
+      const phraseGeneral = t(
+        "chatEmailSendPhrase",
+        "Sure thing! Let's send an email!",
+      );
+      const phraseSimple = t(
+        "chatEmailSimplePhrase",
+        "Our email is mail@digitaltableteur.com. Would you like to send an email now?",
+      );
+      const synthetic: UIMessage = {
+        id: generateId(),
+        role: "assistant",
+        parts: [
+          {
+            type: "text",
+            text: pendingEmailWorkflowGeneral ? phraseGeneral : phraseSimple,
+          },
+        ],
+      };
+      setMessages((prev) => {
+        const next = [...prev, synthetic];
+        lastAssistantIndexRef.current = next.length - 1; // index of synthetic assistant message
+        return next;
+      });
+    }
+  }, [messages, emailWorkflow.step, t, setMessages]);
+
+  // Handle send side-effects when entering 'sending'
+  useEffect(() => {
+    if (emailWorkflow.step !== "sending" || !("draft" in emailWorkflow)) return;
+    const draft = emailWorkflow.draft;
+    let cancelled = false;
+    (async () => {
+      try {
+        const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID?.trim();
+        const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID?.trim();
+        const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
+        await sendContactEmail({
+          SERVICE_ID,
+          TEMPLATE_ID,
+          PUBLIC_KEY,
+          payload: {
+            name: draft.fullName.trim(),
+            email: draft.email.trim(),
+            phone: draft.phone?.trim() || "",
+            interest: draft.interest,
+            message: draft.message.trim(),
+          },
+        });
+        if (cancelled) return;
+        dispatchEmailWorkflow({ type: "SEND_SUCCESS" });
+      } catch (err: any) {
+        if (cancelled) return;
+        const code = err?.code || err?.message || "unknown";
+        dispatchEmailWorkflow({ type: "SEND_ERROR", errorCode: code });
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [emailWorkflow]);
+
   return (
     <>
       <div className={styles.container} data-open={isOpen}>
@@ -673,6 +766,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             ref={scrollerRef}
             messages={messages}
             isStreaming={isStreaming}
+            emailWorkflow={emailWorkflow}
+            dispatchEmailWorkflow={dispatchEmailWorkflow}
           />
           {errorMessage && (
             <div
