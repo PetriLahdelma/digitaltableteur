@@ -59,19 +59,20 @@ label {
 /* Mobile responsiveness */
 @media (width <= 768px) {
   .contactForm {
-    margin: 1rem;
+    margin: 1rem auto;
     padding: 2rem;
-    max-width: none;
-    width: calc(100% - 4.5rem);
+    max-width: 424px;
+    width: 100%;
   }
 }
 
 /* Extra small screens */
 @media (width <= 480px) {
   .contactForm {
-    margin: 0.5rem;
-    padding: 1.5rem;
-    width: calc(100% - 2.5rem);
+    margin: 0.5rem auto 2.5rem;
+    padding: 1.5rem 1.25rem;
+    width: 100%;
+    max-width: 424px; /* Match resume download modal content comfortable width */
   }
 
   .privacyPolicy {

@@ -271,6 +271,24 @@
 .themeHCW :root {
   --main-body-background-color: #fff;
   --color-title: #000;
+
+  /* High contrast decorative overrides */
+
+  /* High contrast decorative overrides */
+
+  .themeHCB .wipBadgeContainer .badge {
+    /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+    forced-color-adjust: none;
+  }
+
+  .themeHCB .toast {
+    /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+    forced-color-adjust: none;
+  }
+
+  /* View Transition future hook (commented until adopted) */
+
+  /* Future: view-transition-name hook (kept off until adopted) */
   --color-text: #000;
   --primary-text-color: #000;
   --main-body-copy-color: #000;

@@ -75,6 +75,14 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
             role="status"
             data-testid="chat-availability-dot"
           />
+          {!withinHours && (
+            <span
+              className={styles.offlineText}
+              data-testid="chat-offline-text"
+            >
+              {t("chatStudioOffline", "Studio offline")}
+            </span>
+          )}
         </p>
         <h2 className={styles.title}>{title}</h2>
       </div>
@@ -87,8 +95,9 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           variant="tertiary"
           size="m"
           icon={<IoMdRefresh />}
+          className={styles.resetButton}
         >
-          {resetLabel}
+          <span className={styles.resetLabel}>{resetLabel}</span>
         </Button>
         <Button
           type="button"
@@ -97,6 +106,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           variant="tertiary"
           size="m"
           icon={<FaChevronDown />}
+          className={styles.minimizeButton}
         />
       </div>
     </header>

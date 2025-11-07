@@ -74,10 +74,8 @@ p + :not(p, blockquote) {
 }
 
 .metaRow > * {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  margin-block: 0;
+  padding-block: 0;
   line-height: 1.2;
 }
 
@@ -98,9 +96,7 @@ div.authorContainer {
 }
 
 .author > img {
-  margin-block: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+  margin-block: 0;
 }
 
 .article img {

@@ -4,7 +4,7 @@
 .container {
   position: fixed;
   inset: auto 1.5rem 1.5rem auto;
-  z-index: 999;
+  z-index: 1000;
   display: grid;
   place-items: end;
   pointer-events: none;
@@ -32,6 +32,21 @@
   border-radius: 1.25rem;
 }
 
+/* Enhanced backdrop blur where supported (solid fallback above) */
+@supports (backdrop-filter: blur(12px)) {
+  .panel {
+    backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--color-white) 85%, transparent);
+  }
+
+  @supports (background: color-mix(in srgb, white 85%, transparent)) {
+    .panel {
+      /* Progressive enhancement: mix 85% white with transparency for consistent rendering */
+      background: color-mix(in srgb, var(--color-white) 85%, transparent);
+    }
+  }
+}
+
 .header {
   display: flex;
   align-items: start;
@@ -48,6 +63,7 @@
 }
 
 /* Availability dot replaces previous badge/icon for space efficiency */
+
 .availabilityDot {
   width: 9px;
   height: 9px;
@@ -65,8 +81,10 @@
 }
 
 /* Inline variant for positioning next to tagline text */
+
 .availabilityDotInline {
-  margin-left: 0.5rem;
+  /* logical conversion: was margin-left */
+  margin-inline-start: 0.5rem;
   vertical-align: text-top;
 }
 
@@ -94,6 +112,16 @@
   font-weight: 600;
 }
 
+.offlineText {
+  margin-inline-start: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-error);
+  display: inline-block;
+}
+
 .title {
   margin: 0;
   font-size: 1.25rem;
@@ -114,6 +142,14 @@
   gap: 1rem;
 }
 
+@supports not (gap: 1rem) {
+  /* gap fallback using logical property (was margin-left) */
+
+  .headerActions > :not(:first-child) {
+    margin-inline-start: 1rem;
+  }
+}
+
 .resetButton,
 .minimizeButton {
   appearance: none;
@@ -129,6 +165,35 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Prevent multi-line wrapping of reset label; hide text on narrow viewports in favor of icon only */
+
+.resetButton {
+  white-space: nowrap;
+}
+
+@media (width <= 560px) {
+  .resetButton {
+    /* Keep intrinsic padding for hit area while visually hiding text label */
+    position: relative;
+  }
+
+  /* Hide only textual label, preserve icon */
+
+  /* keep for accessibility tree but visually hidden */
+
+  .resetLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 .minimizeButton {
@@ -153,7 +218,20 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  scroll-behavior: smooth;
+}
+
+@supports (scroll-behavior: smooth) {
+  .messages {
+    scroll-behavior: smooth;
+  }
+}
+
+@supports not (gap: 0.75rem) {
+  /* gap fallback: remove universal selector, keep block direction */
+
+  .messages > :not(:first-child) {
+    margin-block-start: 0.75rem;
+  }
 }
 
 .message {
@@ -161,6 +239,46 @@
   padding: 0.5rem 1rem;
   border-radius: 0.85rem;
   font-size: 0.9rem;
+
+  /* Email workflow blocks */
+
+  .workflowBlock {
+    margin-block: var(--space-internal-16);
+    padding: var(--space-internal-16);
+    /* border: 1px solid var(--color-border-muted, rgb(255 255 255 / 30%));
+    border-radius: var(--radius-sm, 4px); */
+    /* background: var(--color-primary-alt, rgb(255 255 255 / 6%)); */
+  }
+
+  .workflowActions {
+    display: flex;
+    gap: var(--space-internal-8);
+    margin-block-start: var(--space-internal-8);
+    flex-wrap: wrap;
+  }
+
+  .editActions {
+    display: flex;
+    gap: var(--space-internal-4);
+    margin-block-start: var(--space-internal-12);
+    flex-wrap: wrap;
+  }
+
+  .summaryList {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: minmax(8rem, 1fr) 2fr;
+    gap: var(--space-internal-4) var(--space-internal-8);
+  }
+
+  .summaryList dt {
+    font-weight: 600;
+  }
+
+  .summaryList dd {
+    margin: 0;
+  }
   line-height: 1.5;
   background: rgb(0 0 0 / 6%);
   color: var(--color-text, #111);
@@ -181,6 +299,7 @@
 }
 
 /* Full-span container for components that should stretch across panel width (e.g. OpenHours) */
+
 .fullSpan {
   width: 100%;
   align-self: stretch;
@@ -206,7 +325,6 @@
   flex-direction: column;
   gap: 0.65rem;
   padding: 0.9rem 1.25rem 1.1rem;
-  background-color: var(--main-body-background-color, #fff);
 }
 
 .inputLabel {
@@ -220,6 +338,7 @@
   display: flex;
   gap: 0.75rem;
   align-items: flex-end;
+  font-family: Moderat, sans-serif;
 }
 
 .input {
@@ -246,6 +365,7 @@
 .input::placeholder {
   color: var(--primary-text-color);
   opacity: 0.4;
+  font-style: italic;
 }
 
 .sendButton {
@@ -307,13 +427,24 @@
   gap: 0.25rem; /* tighten icon-label spacing */
 }
 
-/* Override default Button internal spacing for chat toggle specifically */
-.toggle .icon {
-  margin-inline-end: 0 !important;
+@supports not (gap: 0.25rem) {
+  /* gap fallback using logical property (was margin-left) */
+
+  .toggleLabel > :not(:first-child) {
+    margin-inline-start: 0.25rem;
+  }
 }
 
-.toggle .text {
-  margin-inline-start: 0 !important;
+/* Override default Button internal spacing for chat toggle specifically */
+
+/* Increased specificity via parent state removes need for previous !important overrides */
+
+.toggle[data-open] .icon {
+  margin-inline-end: 0;
+}
+
+.toggle[data-open] .text {
+  margin-inline-start: 0;
 }
 
 .toggle .icon svg {
@@ -328,8 +459,8 @@
   margin: 0;
   padding-inline-start: 1rem;
   font-family: Moderat, sans-serif;
-  font-size: 0.85rem !important;
-  margin-block-end: 0 !important;
+  font-size: 0.85rem;
+  margin-block-end: 0;
 }
 
 @media (width <= 768px) {
@@ -363,7 +494,7 @@
   .panel,
   .sendButton,
   .input {
-    transition-duration: 0.01ms !important;
-    transition-delay: 0ms !important;
+    transition-duration: 0.01ms;
+    transition-delay: 0ms;
   }
 }

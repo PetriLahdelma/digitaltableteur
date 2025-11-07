@@ -77,6 +77,21 @@
   animation: spinner-rotate 1.2s linear infinite;
 }
 
+/* Enhancement: hint upcoming transform & skip rendering cost when offscreen */
+@supports (will-change: transform) {
+  .spinner {
+    will-change: transform; /* allows smoother rotation without layout thrash */
+  }
+}
+
+/* Enhancement: if content-visibility supported, allow root to skip offscreen work */
+@supports (content-visibility: auto) {
+  .root {
+    content-visibility: auto;
+    contain-intrinsic-size: 2rem 2rem; /* reserve space to prevent layout shift */
+  }
+}
+
 .spinner .dot {
   animation: dot-bounce 1s ease-in-out infinite;
 }

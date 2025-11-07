@@ -39,7 +39,7 @@
 }
 
 .copyButton span {
-  margin-right: 0;
+  margin-inline-end: 0;
 }
 
 .copyButtonText {
@@ -52,13 +52,13 @@
   }
 
   .copyButton {
-    border: none !important;
-    background-color: transparent !important;
-    padding: 0 !important;
-    gap: 0 !important;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    gap: 0;
     width: 1.5rem;
     height: 1.5rem;
-    min-width: unset !important;
-    min-height: unset !important;
+    min-width: unset;
+    min-height: unset;
   }
 }

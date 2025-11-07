@@ -74,6 +74,12 @@
   margin-block: 1.5rem;
 }
 
+@supports (accent-color: var(--color-primary)) {
+  .masterCheckbox input[type="checkbox"] {
+    accent-color: var(--color-primary);
+  }
+}
+
 .chatTextArea {
   width: 100%;
   border: 1px solid var(--color-border-light, #3a3a3a);

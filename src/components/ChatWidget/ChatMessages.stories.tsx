@@ -42,6 +42,8 @@ const meta: Meta<typeof ChatMessages> = {
   args: {
     messages: SAMPLE_MESSAGES,
     isStreaming: false,
+    emailWorkflow: { step: "idle" },
+    dispatchEmailWorkflow: () => {},
   },
 };
 
