@@ -81,6 +81,7 @@ header h2 a {
 }
 
 .nav a {
+  position: relative;
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
   font-size: 20px;
   font-weight: 400;
@@ -88,9 +89,8 @@ header h2 a {
   letter-spacing: 0;
   text-decoration: none;
   color: var(--main-body-copy-color);
-  position: relative;
-  padding-bottom: 6px;
   transition: color 0.2s;
+  padding-bottom: 6px;
 }
 
 .nav a:hover,
@@ -103,19 +103,16 @@ header h2 a {
 }
 
 .nav a.selected::after {
-  content: "";
   position: absolute;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   height: 6px;
   background-color: var(--color-primary);
-  -webkit-mask-image: var(--wavy-underline-mask);
+  content: "";
   mask-image: var(--wavy-underline-mask);
-  -webkit-mask-size: 16px 6px;
-  mask-size: 16px 6px;
-  -webkit-mask-repeat: repeat-x;
   mask-repeat: repeat-x;
+  mask-size: 16px 6px;
 }
 
 .themeToggle {
@@ -139,10 +136,10 @@ header h2 a {
 
 .themeToggleIcon {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .themeToggleIconAnimating {
@@ -172,17 +169,18 @@ header h2 a {
 
 .visuallyHidden {
   position: absolute;
+  margin: -1px;
+  padding: 0;
   width: 1px;
   height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
   border: 0;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 .languageLink {
+  position: relative;
   padding: 0 2px;
   border: 0;
   background: none;
@@ -193,26 +191,22 @@ header h2 a {
     border-color 0.2s,
     outline-color 0.2s;
   border-bottom: 2px solid transparent;
-  position: relative;
   padding-bottom: 6px;
 }
 
 .languageLink::after {
-  content: "";
   position: absolute;
-  left: 0;
   right: 0;
   bottom: -2px;
+  left: 0;
   height: 6px;
   background-color: var(--color-primary);
-  opacity: 0;
-  -webkit-mask-image: var(--wavy-underline-mask);
-  mask-image: var(--wavy-underline-mask);
-  -webkit-mask-repeat: repeat-x;
-  mask-repeat: repeat-x;
-  -webkit-mask-size: 16px 6px;
-  mask-size: 16px 6px;
   transition: opacity 0.2s ease;
+  opacity: 0;
+  content: "";
+  mask-image: var(--wavy-underline-mask);
+  mask-repeat: repeat-x;
+  mask-size: 16px 6px;
 }
 
 .languageLink:hover,
