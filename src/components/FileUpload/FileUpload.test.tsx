@@ -3,7 +3,9 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import FileUpload from "./FileUpload";
 
-const renderComponent = (props: Partial<React.ComponentProps<typeof FileUpload>> = {}) =>
+const renderComponent = (
+  props: Partial<React.ComponentProps<typeof FileUpload>> = {},
+) =>
   render(
     <FileUpload
       label="Attachment"
@@ -18,9 +20,7 @@ const renderComponent = (props: Partial<React.ComponentProps<typeof FileUpload>>
 describe("FileUpload", () => {
   it("renders label and helper text", () => {
     renderComponent();
-    expect(
-      screen.getByLabelText(/attachment/i),
-    ).toBeInTheDocument();
+    expect(screen.getByLabelText(/attachment/i)).toBeInTheDocument();
     expect(screen.getByText(/Max 5 MB/i)).toBeInTheDocument();
   });
 

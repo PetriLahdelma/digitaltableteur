@@ -60,9 +60,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     hiddenInputRef.current?.click();
   };
 
-  const handleFileSelection = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleFileSelection = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) {
       handleClear();
