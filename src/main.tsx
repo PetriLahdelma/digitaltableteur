@@ -6,11 +6,27 @@ import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "@dt/ThemeProvider";
 import { HelmetProvider } from "react-helmet-async";
 import { initI18n } from "./i18n";
+import * as Sentry from "@sentry/react";
 
 const redirectPath = sessionStorage.getItem("redirectPath");
 if (redirectPath) {
   history.replaceState(null, "", redirectPath);
   sessionStorage.removeItem("redirectPath");
+}
+
+// Initialize Sentry (only if DSN provided)
+const sentryDsn = import.meta.env.VITE_SENTRY_DSN;
+if (sentryDsn) {
+  Sentry.init({
+    dsn: sentryDsn,
+    environment: import.meta.env.MODE,
+    integrations: [Sentry.browserTracingIntegration()],
+    // Sample a small percentage of traces by default; can tune via env var
+    tracesSampleRate: Number(
+      import.meta.env.VITE_SENTRY_TRACES_SAMPLE_RATE || 0.05,
+    ),
+    release: (window as any).__DT_RELEASE__ || undefined,
+  });
 }
 
 // Use Vite's environment variable style
@@ -39,7 +55,13 @@ initI18n().then(() => {
     <React.StrictMode>
       <HelmetProvider>
         <ThemeProvider>
-          <App />
+          {sentryDsn ? (
+            <Sentry.ErrorBoundary fallback={<p>Something went wrong.</p>}>
+              <App />
+            </Sentry.ErrorBoundary>
+          ) : (
+            <App />
+          )}
         </ThemeProvider>
       </HelmetProvider>
     </React.StrictMode>,
@@ -79,8 +101,11 @@ if (typeof window !== "undefined" && window.location.hostname !== "localhost") {
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
+// Narrow augmentation: avoid overriding built-in Vite typing; extend only when key exists
 declare global {
-  interface ImportMeta {
-    env: Record<string, string>;
+  interface ImportMetaEnv {
+    readonly VITE_GA_ID?: string;
+    readonly VITE_SENTRY_DSN?: string;
+    readonly VITE_SENTRY_TRACES_SAMPLE_RATE?: string;
   }
 }

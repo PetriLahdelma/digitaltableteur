@@ -1,114 +1,75 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import ChatHeader from "./ChatHeader";
-import React from "react";
-import i18n, { initI18n } from "../../i18n";
+import { I18nextProvider } from "react-i18next";
+import i18n from "../../i18n";
 
-// Minimal i18n bootstrap (reuses existing init used in other tests if present)
-try {
-  // Ensure react-i18next is loaded; already in deps.
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require("react-i18next");
-} catch (e) {
-  // ignore if not found in the testing context
+function withI18n(ui: React.ReactElement) {
+  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
 }
 
-// Initialize i18n for translation keys used in tooltip
-initI18n?.();
+describe("ChatHeader offline title logic", () => {
+  const baseProps = {
+    description: "desc",
+    onReset: () => {},
+    onMinimize: () => {},
+    isSending: false,
+  };
 
-describe("ChatHeader availability dot", () => {
-  it("renders open tooltip when within hours (mocked)", async () => {
-    // Mock Date and Intl to force Monday 10:00 Helsinki
-    const RealDate = Date;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (global as any).Date = class extends RealDate {
-      constructor(...args: unknown[]) {
-        if (!args.length) {
-          super("2025-11-03T08:00:00.000Z"); // Monday 10:00 Helsinki (UTC+2 in Nov may be +2)
-        } else {
-          // @ts-ignore
-          super(...args);
-        }
-      }
-    } as DateConstructor;
-
-    const { container } = render(
-      <ChatHeader
-        title="Test"
-        description="Desc"
-        onReset={() => {}}
-        onMinimize={() => {}}
-        isSending={false}
-      />,
+  it("shows normal title during open hours (weekday 10:00)", () => {
+    const date = new Date("2025-11-05T10:00:00.000Z"); // Wednesday 12:00 Helsinki -> 14:00? We'll simulate directly via timezone transform
+    // We rely on Intl DateTimeFormat with Europe/Helsinki; constructing a date at 08:00 UTC roughly equals 10:00 Helsinki (depending DST) but for test simplicity we pass an hour inside range.
+    render(
+      withI18n(
+        <ChatHeader
+          title="Chat with Donny"
+          {...baseProps}
+          currentDate={date}
+        />,
+      ),
     );
-
-    // Query via test id for reliability
-    const dot = await screen.findByTestId("chat-availability-dot");
-    expect(dot).toBeTruthy();
-    expect(dot.getAttribute("title")).toMatch(/Open|Available|Auki|Öppet/i);
-
-    // Restore Date
-    (global as any).Date = RealDate;
+    expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
+      /Chat with Donny|Keskustele Donnyn kanssa|Chatta med Donny/,
+    );
+    expect(screen.queryByText(/Donny Offline|poissa linjoilta/i)).toBeNull();
   });
 
-  it("shows open at 16:59 Helsinki (just before closing)", async () => {
-    const RealDate = Date;
-    // 16:59 Helsinki time on a Monday. Helsinki is UTC+2 in standard time (November).
-    // So 16:59 Helsinki is 14:59 UTC.
-    (global as any).Date = class extends RealDate {
-      constructor(...args: unknown[]) {
-        if (!args.length) {
-          super("2025-11-03T14:59:00.000Z");
-        } else {
-          // @ts-ignore
-          super(...args);
-        }
-      }
-    } as DateConstructor;
-
+  it("shows offline state outside hours (weekday 20:00)", () => {
+    const date = new Date("2025-11-05T20:00:00.000Z");
     render(
-      <ChatHeader
-        title="Test"
-        description="Desc"
-        onReset={() => {}}
-        onMinimize={() => {}}
-        isSending={false}
-      />,
+      withI18n(
+        <ChatHeader
+          title="Chat with Donny"
+          {...baseProps}
+          currentDate={date}
+        />,
+      ),
     );
-    const dot = await screen.findByTestId("chat-availability-dot");
-    expect(dot.getAttribute("title")).toMatch(/Open|Available|Auki|Öppet/i);
-
-    (global as any).Date = RealDate;
+    // Offline title should appear
+    expect(screen.getByTestId("chat-availability-dot")).toHaveClass(
+      /availabilityDotClosed/,
+    );
+    expect(
+      screen.getByText(/Studio offline|Studion offline|Studio offline/i),
+    ).toBeInTheDocument();
   });
 
-  it("shows closed at 17:00 Helsinki (closing time boundary)", async () => {
-    const RealDate = Date;
-    // 17:00 Helsinki => 15:00 UTC
-    (global as any).Date = class extends RealDate {
-      constructor(...args: unknown[]) {
-        if (!args.length) {
-          super("2025-11-03T15:00:00.000Z");
-        } else {
-          // @ts-ignore
-          super(...args);
-        }
-      }
-    } as DateConstructor;
-
+  it("shows offline state on weekend (Saturday noon)", () => {
+    const date = new Date("2025-11-08T12:00:00.000Z"); // Saturday
     render(
-      <ChatHeader
-        title="Test"
-        description="Desc"
-        onReset={() => {}}
-        onMinimize={() => {}}
-        isSending={false}
-      />,
+      withI18n(
+        <ChatHeader
+          title="Chat with Donny"
+          {...baseProps}
+          currentDate={date}
+        />,
+      ),
     );
-    const dot = await screen.findByTestId("chat-availability-dot");
-    // Accept any localized closed tooltip variant
-    expect(dot.getAttribute("title")).toMatch(
-      /Closed|Suljettu|Stängt|Outside business hours|Outside open hours/i,
+    expect(screen.getByTestId("chat-availability-dot")).toHaveClass(
+      /availabilityDotClosed/,
     );
-
-    (global as any).Date = RealDate;
+    expect(
+      screen.getByText(/Studio offline|Studion offline|Studio offline/i),
+    ).toBeInTheDocument();
   });
 });

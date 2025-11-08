@@ -1,11 +1,11 @@
 .wrapper {
   display: flex;
+  padding: clamp(1.5rem, 4vw, 3rem);
   flex-direction: column;
   gap: 2rem;
-  padding: clamp(1.5rem, 4vw, 3rem);
   background: var(--color-light-bg);
-  color: var(--primary-text-color);
   font-family: var(--primary-body-font, "Moderat", sans-serif);
+  color: var(--primary-text-color);
 }
 
 .header {
@@ -21,9 +21,9 @@
 }
 
 .subtitle {
+  max-width: 48rem;
   font-size: 1rem;
   opacity: 0.8;
-  max-width: 48rem;
 }
 
 .updatedAt {
@@ -38,47 +38,47 @@
 }
 
 .dataNotice {
-  grid-column: 1 / -1;
+  display: flex;
+  padding: 1.25rem 1.5rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid
+    color-mix(in srgb, var(--color-warning, #f59e0b) 45%, transparent);
+  border-radius: 12px;
   background: color-mix(
     in srgb,
     var(--color-warning, #f59e0b) 12%,
     transparent
   );
-  border: 1px solid
-    color-mix(in srgb, var(--color-warning, #f59e0b) 45%, transparent);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
   box-shadow: 0 12px 24px rgb(245 158 11 / 12%);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  grid-column: 1 / -1;
 }
 
 .dataNoticeHeading {
+  margin: 0;
   font-family: var(--primary-bold-font, "Moderat-Bold", sans-serif);
   font-size: 1rem;
-  margin: 0;
 }
 
 .dataNotice ul {
-  margin: 0;
-  padding-left: 1.25rem;
   display: flex;
+  margin: 0;
+  padding-inline-start: 1.25rem;
   flex-direction: column;
   gap: 0.35rem;
-  color: var(--color-primary, #0b3d91);
   font-size: 0.95rem;
+  color: var(--color-primary, #0b3d91);
 }
 
 .summaryCard {
-  background: var(--color-white, #fff);
-  border: 1px solid rgb(148 163 184 / 20%);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
   display: flex;
+  padding: 1.5rem;
   flex-direction: column;
   gap: 0.75rem;
+  border: 1px solid rgb(148 163 184 / 20%);
+  border-radius: 12px;
+  background: var(--color-white, #fff);
+  box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
 }
 
 .badgeRow {
@@ -98,14 +98,14 @@
 }
 
 .chartCard {
-  background: var(--color-white, #fff);
-  border: 1px solid rgb(148 163 184 / 20%);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
   display: flex;
+  padding: 1.5rem;
   flex-direction: column;
   gap: 1rem;
+  border: 1px solid rgb(148 163 184 / 20%);
+  border-radius: 12px;
+  background: var(--color-white, #fff);
+  box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
 }
 
 .chartCard h3 {
@@ -113,24 +113,24 @@
 }
 
 .chartCanvas {
-  min-block-size: clamp(16rem, 35vh, 20rem);
   display: flex;
+  min-block-size: clamp(16rem, 35vh, 20rem);
   flex: 1;
 }
 
 .chartCanvas canvas {
-  inline-size: 100% !important;
-  block-size: 100% !important;
+  block-size: 100%;
+  inline-size: 100%;
 }
 
 .visualSection {
   display: flex;
+  padding: 1.5rem;
   flex-direction: column;
   gap: 1.5rem;
-  background: var(--color-white, #fff);
   border: 1px solid rgb(148 163 184 / 20%);
   border-radius: 12px;
-  padding: 1.5rem;
+  background: var(--color-white, #fff);
   box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
 }
 
@@ -141,16 +141,16 @@
 }
 
 .visualSubtitle {
+  max-width: 48rem;
   font-size: 1rem;
   opacity: 0.75;
-  max-width: 48rem;
 }
 
 .visualMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
   align-items: center;
+  gap: 0.75rem;
 }
 
 .visualTimestamp {
@@ -160,23 +160,23 @@
 
 .visualGrid {
   display: grid;
-  gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .diffCard {
   display: flex;
+  padding: 1rem;
   flex-direction: column;
   gap: 1rem;
   border: 1px solid rgb(148 163 184 / 20%);
   border-radius: 12px;
-  padding: 1rem;
   background: var(--color-light-bg-alt, #f8fafc);
 }
 
 .diffHeader h3 {
-  font-size: 1rem;
   font-family: var(--primary-bold-font, "Moderat-Bold", sans-serif);
+  font-size: 1rem;
 }
 
 .diffImages {
@@ -192,8 +192,8 @@
 
 .diffFigure img {
   width: 100%;
-  border-radius: 8px;
   border: 1px solid rgb(148 163 184 / 25%);
+  border-radius: 8px;
   box-shadow: 0 6px 16px rgb(15 23 42 / 8%);
 }
 
@@ -204,21 +204,21 @@
 
 .visualPlaceholder {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  padding: 2rem;
   min-height: 160px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   border: 2px dashed var(--color-primary);
   border-radius: 12px;
   background: transparent;
   text-align: center;
-  padding: 2rem;
 }
 
 .visualPlaceholder h3 {
-  font-size: 1.1rem;
   font-family: var(--primary-bold-font, "Moderat-Bold", sans-serif);
+  font-size: 1.1rem;
 }
 
 .visualPlaceholder p {
