@@ -5,12 +5,8 @@
   display: inline-flex;
   align-items: center;
   font-family: var(--primary-body-font, Moderat, sans-serif);
-  text-decoration: underline;
+  text-decoration: none;
   color: var(--link-color);
-}
-
-.link:hover {
-  text-decoration: underline;
 }
 
 .linkS {

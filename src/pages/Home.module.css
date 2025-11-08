@@ -15,13 +15,59 @@
 }
 
 .heroGradient {
+  display: flex;
   position: absolute;
   inset: 0;
   z-index: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: var(--home-gradient);
   background-size: 200% 200%;
+  text-align: center;
   animation: gradient-move 8s ease-in-out infinite;
   opacity: 1;
+  overflow: hidden;
+}
+
+.heroTitle {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.heroSubtext {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  margin: 1.5rem auto 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.heroCtas {
+  display: flex;
+  z-index: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.heroCtaLink {
+  display: inline-flex;
+  justify-content: center;
+  text-decoration: none;
 }
 
 h1 {
@@ -53,9 +99,9 @@ h1 {
 .cta a {
   border-radius: 0.5rem;
   font-size: 1.5rem;
-  text-decoration: underline;
   color: var(--color-white);
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 .gradientText {
@@ -66,6 +112,61 @@ h1 {
   animation: gradient-move 4s ease-in-out infinite;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@keyframes hero-pill-float {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(0, -20px, 0) rotate(6deg);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+@keyframes hero-eye-cycle {
+  0%,
+  10% {
+    transform: scaleY(1) translateX(-4px);
+  }
+
+  12%,
+  14% {
+    transform: scaleY(0.2) translateX(-4px);
+  }
+
+  20%,
+  45% {
+    transform: scaleY(1) translateX(3px);
+  }
+
+  55%,
+  65% {
+    transform: scaleY(1) translateX(-3px);
+  }
+
+  72%,
+  74% {
+    transform: scaleY(0.25) translateX(-3px);
+  }
+
+  100% {
+    transform: scaleY(1) translateX(-4px);
+  }
+}
+
+@keyframes hero-chatbot-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes gradient-move {
@@ -101,5 +202,14 @@ h1 {
   .cta {
     padding: var(--space-layout-32);
     font-size: var(--font-size-body);
+  }
+
+  .heroCtas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroCtaLink {
+    width: min(280px, 100%);
   }
 }

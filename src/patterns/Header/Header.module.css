@@ -88,6 +88,8 @@ header h2 a {
   letter-spacing: 0;
   text-decoration: none;
   color: var(--main-body-copy-color);
+  position: relative;
+  padding-bottom: 6px;
   transition: color 0.2s;
 }
 
@@ -97,8 +99,23 @@ header h2 a {
 }
 
 .nav a.selected {
-  pointer-events: none;
-  opacity: 0.5;
+  color: var(--color-primary);
+}
+
+.nav a.selected::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6px;
+  background-color: var(--color-primary);
+  -webkit-mask-image: var(--wavy-underline-mask);
+  mask-image: var(--wavy-underline-mask);
+  -webkit-mask-size: 16px 6px;
+  mask-size: 16px 6px;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
 }
 
 .themeToggle {
@@ -117,6 +134,19 @@ header h2 a {
   cursor: pointer;
   pointer-events: auto;
   transition: color 0.2s;
+  transform-origin: center;
+}
+
+.themeToggleIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.themeToggleIconAnimating {
+  animation: theme-toggle-pop 0.45s ease;
 }
 
 .themeToggle:hover,
@@ -140,23 +170,59 @@ header h2 a {
   pointer-events: auto;
 }
 
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .languageLink {
   padding: 0 2px;
   border: 0;
   background: none;
   font: inherit;
-  text-decoration: none;
   color: inherit;
   cursor: pointer;
   transition:
     border-color 0.2s,
     outline-color 0.2s;
   border-bottom: 2px solid transparent;
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.languageLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 6px;
+  background-color: var(--color-primary);
+  opacity: 0;
+  -webkit-mask-image: var(--wavy-underline-mask);
+  mask-image: var(--wavy-underline-mask);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-size: 16px 6px;
+  mask-size: 16px 6px;
+  transition: opacity 0.2s ease;
 }
 
 .languageLink:hover,
 .languageLink:focus-visible {
-  border-bottom-color: var(--color-primary);
+  border-bottom-color: transparent;
+}
+
+.languageLink:hover::after,
+.languageLink:focus-visible::after {
+  opacity: 0.7;
 }
 
 .languageLink:focus-visible {
@@ -170,7 +236,11 @@ header h2 a {
 
 .languageLinkActive {
   opacity: 0.6;
-  border-bottom-color: var(--color-primary);
+  border-bottom-color: transparent;
+}
+
+.languageLinkActive::after {
+  opacity: 0.9;
 }
 
 @media (width <= 900px) {
@@ -213,5 +283,23 @@ header h2 a {
     margin-inline-start: 0; /* single side override retained */
     transform: translateY(-4px);
     margin-top: 8px;
+  }
+}
+
+@keyframes theme-toggle-pop {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  30% {
+    transform: scale(1.25) rotate(15deg);
+  }
+
+  60% {
+    transform: scale(0.9) rotate(-8deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
   }
 }

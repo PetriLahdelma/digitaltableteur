@@ -94,7 +94,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
             <Link
               size="S"
               href={`mailto:${email}`}
-              className={styles.personEmail}
+              className={`${styles.personEmail} wavyUnderline`.trim()}
             >
               {email}
             </Link>
