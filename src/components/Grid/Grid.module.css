@@ -8,6 +8,7 @@
 }
 
 /* Example classes for nested grids */
+
 .nested {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -16,13 +17,14 @@
 
 .gridItem {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
   padding: 1rem; /* Converted 16px to rem */
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
 }
 
 /* Added support for spanning */
+
 .gridItemSpan2 {
   grid-column: span 2;
 }

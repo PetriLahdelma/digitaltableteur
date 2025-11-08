@@ -1,12 +1,12 @@
 .wrapper {
-  max-width: 960px;
+  display: flex;
   margin: 0 auto;
   padding: clamp(1.5rem, 4vw, 3rem);
-  display: flex;
+  max-width: 960px;
   flex-direction: column;
   gap: 2rem;
-  color: var(--primary-text-color);
   font-family: var(--primary-body-font, "Moderat", sans-serif);
+  color: var(--primary-text-color);
 }
 
 .header {
@@ -26,35 +26,35 @@
 }
 
 .section {
-  background: var(--color-white, #fff);
-  border: 1px solid rgb(148 163 184 / 20%);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
   display: flex;
+  padding: 1.5rem;
   flex-direction: column;
   gap: 0.75rem;
+  border: 1px solid rgb(148 163 184 / 20%);
+  border-radius: 12px;
+  background: var(--color-white, #fff);
+  box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
 }
 
 .section ol,
 .section ul {
-  margin: 0;
-  padding-left: 1.25rem;
   display: flex;
+  margin: 0;
+  padding-inline-start: 1.25rem;
   flex-direction: column;
   gap: 0.35rem;
 }
 
 .table {
   width: 100%;
-  border-collapse: collapse;
   font-size: 0.95rem;
+  border-collapse: collapse;
 }
 
 .table th,
 .table td {
-  text-align: left;
   padding: 0.6rem 0.8rem;
+  text-align: left;
   border-bottom: 1px solid rgb(148 163 184 / 20%);
 }
 

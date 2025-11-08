@@ -1,22 +1,22 @@
 .badge {
-  font-family: var(--primary-body-font);
-  padding: var(--space-internal-8) var(--space-internal-16);
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 600;
-  background: var(--color-muted-light);
-  color: var(--color-dark);
-  letter-spacing: 0.02em;
-  vertical-align: middle;
   display: inline-flex;
-  align-items: center;
-  gap: 0.25em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  border: 2px solid transparent;
+  padding: var(--space-internal-8) var(--space-internal-16);
   box-sizing: border-box;
   width: fit-content;
+  align-items: center;
+  gap: 0.25em;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--color-muted-light);
+  font-family: var(--primary-body-font);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-dark);
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 .s {
@@ -25,8 +25,8 @@
 }
 
 .l {
-  font-size: 1.25rem;
   padding: var(--space-internal-12) var(--space-internal-16);
+  font-size: 1.25rem;
 }
 
 .square {
@@ -34,98 +34,99 @@
 }
 
 .primary {
+  border: 2px solid transparent;
   background: var(--color-primary);
   color: var(--color-white);
-  border: 2px solid transparent;
 }
 
 .secondary {
+  border: 2px solid var(--color-primary);
   background: none;
   color: var(--color-primary);
-  border: 2px solid var(--color-primary);
 }
 
 /* Secondary badges with states should maintain no background */
+
 .secondary.success {
+  border-color: var(--color-success);
   background: none;
   color: var(--color-success);
-  border-color: var(--color-success);
 }
 
 .secondary.info {
+  border-color: var(--color-info);
   background: none;
   color: var(--color-info);
-  border-color: var(--color-info);
 }
 
 .secondary.error {
+  border-color: var(--color-error);
   background: none;
   color: var(--color-error);
-  border-color: var(--color-error);
 }
 
 .secondary.warning {
+  border-color: var(--color-warning-contrast, #8d5a00);
   background: none;
   color: var(--color-warning-contrast, #8d5a00);
-  border-color: var(--color-warning-contrast, #8d5a00);
 }
 
 .secondary.neutral {
+  border-color: var(--color-neutral-text, #1a1d26);
   background: none;
   color: var(--color-neutral-text, #1a1d26);
-  border-color: var(--color-neutral-text, #1a1d26);
 }
 
 .success {
+  border: 2px solid transparent;
   background: var(--color-success);
   color: var(--color-white);
-  border: 2px solid transparent;
 }
 
 .info {
+  border: 2px solid transparent;
   background: var(--color-info);
   color: var(--color-white);
-  border: 2px solid transparent;
 }
 
 .error {
+  border: 2px solid transparent;
   background: var(--color-error);
   color: var(--color-white);
-  border: 2px solid transparent;
 }
 
 .warning {
+  border: 2px solid transparent;
   background: var(--color-warning-contrast, #8d5a00);
   color: var(--color-warning-text, #fff);
-  border: 2px solid transparent;
 }
 
 .neutral {
+  border: 2px solid transparent;
   background: var(--color-neutral-bg, #e2e8f0);
   color: var(--color-neutral-text, #1a1d26);
-  border: 2px solid transparent;
 }
 
 .closeButton {
-  background: none;
-  border: none;
-  margin-inline-start: 0;
-  cursor: pointer;
-  vertical-align: middle;
-  color: inherit;
   display: inline-block;
+  margin-inline-start: 0;
+  justify-content: center;
   align-items: center;
   gap: 0.25em;
-  justify-content: center;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  vertical-align: middle;
 }
 
 .icon {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   margin-inline-end: 0.4em;
-  line-height: 0;
   flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
 }
 
 .removable.s {
@@ -141,6 +142,6 @@
 }
 
 .removable.l {
-  font-size: 1.25rem;
   padding: var(--space-internal-12) var(--space-internal-16);
+  font-size: 1.25rem;
 }

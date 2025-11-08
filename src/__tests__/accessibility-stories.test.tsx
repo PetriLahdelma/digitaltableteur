@@ -11,10 +11,15 @@ import * as previewAnnotations from "../../.storybook/preview";
 // Apply global Storybook decorators (ThemeProvider, I18n, etc.)
 setProjectAnnotations(previewAnnotations);
 
+type CSFModule = {
+  default: unknown;
+  [key: string]: unknown;
+};
+
 const storyModules = import.meta.glob(
   ["../components/**/*.stories.@(ts|tsx)", "../stories/**/*.stories.@(ts|tsx)"],
   { eager: true },
-) as Record<string, Record<string, unknown>>;
+) as Record<string, CSFModule>;
 
 const axeOptions = {
   rules: {
@@ -43,9 +48,10 @@ beforeAll(() => {
 
 describe("Storybook accessibility", () => {
   for (const [path, moduleExports] of Object.entries(storyModules)) {
-    const composedStories = composeStories(
-      moduleExports as Record<string, unknown>,
-    ) as Record<string, ComponentType>;
+    const composedStories = composeStories(moduleExports as any) as Record<
+      string,
+      ComponentType
+    >;
 
     for (const [storyName, Story] of Object.entries(composedStories)) {
       const storyParameters = (Story as any).parameters ?? {};

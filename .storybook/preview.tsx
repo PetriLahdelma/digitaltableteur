@@ -226,7 +226,20 @@ const withWipBadge: Decorator = (Story, context) => {
 };
 
 // Order: withI18next first so WIP badge children have translation context
-export const decorators = [withI18next, withWipBadge];
+// Fullscreen safe-area decorator adds padding for stories using layout: 'fullscreen'
+const withFullscreenSafeArea: Decorator = (Story, context) => {
+  const isFullscreen = context.parameters?.layout === "fullscreen";
+  if (!isFullscreen) {
+    return <>{Story(context)}</>;
+  }
+  return (
+    <div className="fullscreenSafeArea" data-safe-area>
+      {Story(context)}
+    </div>
+  );
+};
+
+export const decorators = [withI18next, withFullscreenSafeArea, withWipBadge];
 
 const detectVisualRegression = () => {
   if (typeof window === "undefined") {

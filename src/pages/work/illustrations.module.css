@@ -1,7 +1,7 @@
 .caseStudy {
-  max-width: 900px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
+  max-width: 900px;
   font-family: var(--secondary-body-font, "TiemposText-Regular"), serif;
   font-size: 1rem;
   color: var(--main-body-copy-color);
@@ -15,8 +15,8 @@
 }
 
 .heroText {
-  flex: 1 1 320px;
   min-width: 280px;
+  flex: 1 1 320px;
 }
 
 .heroText h1 {
@@ -34,31 +34,31 @@
 
 .caseBadges {
   display: flex;
+  margin-block-end: 1.5rem;
   flex-wrap: wrap;
   gap: 0.8rem;
-  margin-block-end: 1.5rem;
 }
 
 .heroSummary {
+  margin-block: 4rem;
   font-size: 1.1rem;
   line-height: 1.7;
-  margin-block: 4rem;
 }
 
 .heroImage {
-  flex: 1 1 320px;
-  min-width: 280px;
   display: flex;
-  align-items: flex-end;
+  min-width: 280px;
+  flex: 1 1 320px;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .heroVideo {
+  margin-block-end: 2rem;
   width: 100%;
   height: auto;
   border-radius: 16px;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
-  margin-block-end: 2rem;
 }
 
 .section {
@@ -67,39 +67,37 @@
 
 .gallerySection {
   position: relative;
-  left: 50%;
   right: 50%;
+  left: 50%;
+  margin-inline: -50vw;
+  padding-inline: 32px;
+  box-sizing: border-box;
   width: 100vw;
   max-width: 100vw;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  transform: translateX(-50%);
-  padding-left: 32px;
-  padding-right: 32px;
-  box-sizing: border-box;
   background: var(--gallery-bg, #fff);
+  transform: translateX(-50%);
 }
 
 .galleryGridWrapper {
-  width: 100%;
   margin: 0 auto;
-  max-width: 1920px;
   box-sizing: border-box;
+  width: 100%;
+  max-width: 1920px;
 }
 
 .gallery {
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
-  gap: 32px;
   align-items: flex-start;
+  gap: 32px;
 }
 
 .gallery > * {
   border-radius: 16px;
-  overflow: hidden;
   background: #f7f7fa;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
+  overflow: hidden;
 }
 
 .twoCol {
@@ -109,15 +107,15 @@
 }
 
 .twoCol > div {
-  flex: 1 1 320px;
   min-width: 240px;
+  flex: 1 1 320px;
 }
 
 .projectMeta {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   font-size: 1rem;
+  list-style: none;
 }
 
 .projectMeta li {
@@ -131,27 +129,27 @@
 }
 
 .processStep {
-  flex: 1 1 180px;
-  min-width: 160px;
-  background: color-mix(in srgb, var(--color-gray-dark) 20%, transparent);
-  border-radius: 12px;
   padding: 1.2rem 1rem 1.2rem 1.2rem;
+  min-width: 160px;
+  flex: 1 1 180px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--color-gray-dark) 20%, transparent);
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
 }
 
 .processStep h4 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
   font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
 }
 
 .resultsList {
-  list-style: disc inside;
+  margin: 0;
+  padding-inline-start: 1.2em;
   font-size: 1.1rem;
   line-height: 1.7;
-  margin: 0;
-  padding-left: 1.2em;
+  list-style: disc inside;
 }
 
 @media (width <= 700px) {
@@ -168,14 +166,12 @@
   }
 
   .gallerySection {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-inline: 8px;
   }
 }
 
 @media (width <= 1200px) {
   .gallerySection {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-inline: 16px;
   }
 }
