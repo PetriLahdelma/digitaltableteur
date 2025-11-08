@@ -569,6 +569,20 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     return () => window.removeEventListener("keydown", handleEscape);
   }, [closeChat]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handlePointerDown = (event: PointerEvent) => {
+      const panel = panelRef.current;
+      if (!panel) return;
+      const target = event.target as Node | null;
+      if (target && panel.contains(target)) return;
+      if (target && toggleButtonRef.current?.contains(target)) return;
+      closeChat();
+    };
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [isOpen, closeChat]);
+
   const handleSubmit = useCallback(
     (event: React.FormEvent) => {
       event.preventDefault();

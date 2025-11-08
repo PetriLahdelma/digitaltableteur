@@ -57,7 +57,7 @@
     "test:a11y:pages": "vitest run src/__tests__/accessibility-pages.test.tsx",
     "test:a11y:stories": "vitest run src/__tests__/accessibility-stories.test.tsx",
     "test:a11y": "npm run test:a11y:pages && npm run test:a11y:stories",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "NODE_ENV=development storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test:visual": "node scripts/run-visual-tests.mjs",
     "visual:ci": "node scripts/run-visual-tests.mjs --ci",

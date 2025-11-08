@@ -15,6 +15,7 @@ import { SocialShare } from "@dt/SocialShare";
 import Card from "@dt/Card";
 import { useTranslation } from "react-i18next";
 import BlogNav from "@dt/BlogNav/BlogNav";
+import Text from "@dt/Text";
 
 const ThoughtsOnFutureBranding = () => {
   const { t } = useTranslation();
@@ -51,7 +52,10 @@ const ThoughtsOnFutureBranding = () => {
           <BlogNav />
           <header className={styles.header}>
             <h1>Thoughts on Future Branding</h1>
-            <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+            <div className={styles.metaRow}>
+              <Text className={styles.releaseDate}>June 7, 2018</Text>
+              <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+            </div>
           </header>
           <p>
             <img src={future1} alt="Future Branding Concept" />

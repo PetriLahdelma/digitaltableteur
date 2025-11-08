@@ -1,11 +1,11 @@
 .text {
+  margin-block: 0 var(--space-layout-16, 1rem);
+  margin-inline: 0;
   font-family: var(--font-text);
   font-size: var(--font-size-text);
   font-weight: var(--font-weight-text);
-  color: var(--color-text);
-  margin-block: 0 var(--space-layout-16, 1rem);
-  margin-inline: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .textS {

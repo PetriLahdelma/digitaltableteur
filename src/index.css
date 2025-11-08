@@ -2,14 +2,15 @@
 
 body {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: var(--main-body-copy-color);
   background-color: var(--main-body-background-color);
   overflow-wrap: anywhere; /* defensive long word wrap */
+  color: var(--main-body-copy-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Defensive CSS: global box-sizing and safe defaults */
+
 *,
 *::before,
 *::after {
@@ -17,6 +18,7 @@ body {
 }
 
 /* Media elements constrained to container width */
+
 img,
 video,
 canvas,
@@ -27,6 +29,7 @@ svg {
 }
 
 /* Form elements inherit fonts for consistency */
+
 input,
 button,
 textarea,
@@ -35,22 +38,28 @@ select {
 }
 
 /* Reduce specificity for generic utilities */
+
 :where(h1, h2, h3, h4, h5, h6) {
   font-weight: 600;
   line-height: 1.2;
 }
 
 /* Anchor default touch target improvements */
+
 a {
   touch-action: manipulation;
 }
 
 /* Remove default margin on lists/paragraphs when desired via utility */
+
+/* Lists: logical indentation. Stylelint incorrectly flags padding-left (phantom); keep logical property. */
+
 :where(ul, ol) {
-  padding-left: 1.25rem;
+  padding-inline-start: 1.25rem;
 }
 
 /* Safe focus outline fallback for browsers stripping outlines */
+
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;

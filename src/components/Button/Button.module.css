@@ -3,32 +3,33 @@
 
 .button {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16);
-  font-size: var(--font-size-button-m);
+  justify-content: center;
+  align-items: center;
   border-radius: var(--radius-sm);
+  font-family: var(--primary-body-font, Moderat, sans-serif);
+  font-size: var(--font-size-button-m);
   cursor: pointer;
   transition:
     background-color 0.3s,
     color 0.3s;
-  font-family: var(--primary-body-font, Moderat, sans-serif);
 }
 
 .button.primary {
+  border: none;
   background-color: var(--color-primary);
   color: var(--color-white);
-  border: none;
 }
 
 .button.secondary {
+  border: 0.125rem solid var(--color-primary);
   background-color: transparent;
   color: var(--color-primary);
-  border: 0.125rem solid var(--color-primary);
 }
 
 /* Inverse modifier: swap primary blue text/border to white for contrast on dark backgrounds */
+
 .button.inverse {
   color: var(--color-primary);
 }
@@ -39,8 +40,8 @@
 }
 
 .button.secondary.inverse {
-  color: var(--color-white);
   border-color: var(--color-white);
+  color: var(--color-white);
 }
 
 .button.tertiary.inverse {
@@ -48,33 +49,33 @@
 }
 
 .button.tertiary {
+  border: none;
   background-color: transparent;
   color: var(--color-primary);
-  border: none;
 }
 
 .button.error {
+  border: none;
   background-color: var(--color-error);
   color: var(--color-white);
-  border: none;
 }
 
 .button.warning {
+  border: none;
   background-color: var(--color-warning-contrast);
   color: var(--color-warning-text);
-  border: none;
 }
 
 .button.success {
+  border: none;
   background-color: var(--color-success);
   color: var(--color-white);
-  border: none;
 }
 
 .button.info {
+  border: none;
   background-color: var(--color-info);
   color: var(--color-white);
-  border: none;
 }
 
 .button:disabled {
@@ -85,18 +86,18 @@
 
 .button.iconOnly {
   display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
   line-height: 1;
+  text-align: center;
 }
 
 .icon {
-  margin-inline-end: 0.5rem;
   display: inline-flex;
-  align-items: center;
+  margin-inline-end: 0.5rem;
   justify-content: center;
+  align-items: center;
   vertical-align: middle;
 }
 
@@ -110,9 +111,9 @@
 
 .button.iconOnly .icon {
   display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon svg {
@@ -137,65 +138,68 @@
 }
 
 /* Tertiary variant: slightly tighter icon-text spacing */
+
 .button.tertiary .icon[data-button-slot="icon"] {
   margin-inline-end: var(--space-internal-2); /* tighter spacing */
 }
 
-.button.tertiary > :not(:last-child):is(svg, .icon) + .text {
-  margin-inline-start: var(--space-internal-2); /* tighter spacing */
-}
+/* Simplified selector to reduce specificity */
 
-.button.tertiary > .text + .icon[data-button-slot="end-icon"] {
+.button.tertiary .icon + .text {
   margin-inline-start: var(--space-internal-2); /* tighter spacing */
 }
 
 .button.s {
-  font-size: var(--font-size-button-s);
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-12);
   min-block-size: 1.5rem;
+  font-size: var(--font-size-button-s);
 }
 
 .button.m {
-  font-size: var(--font-size-button-m);
   padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16);
   min-block-size: 2.5rem;
+  font-size: var(--font-size-button-m);
 }
 
 .button.l {
-  font-size: var(--font-size-button-l);
   padding-block: var(--space-internal-12);
   padding-inline: var(--space-internal-24);
   min-block-size: 3rem;
+  font-size: var(--font-size-button-l);
 }
 
 .button.s.iconOnly {
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
-  min-inline-size: 1.5rem;
   padding: 0;
+  block-size: 1.5rem;
+  inline-size: 1.5rem;
+  min-inline-size: 1.5rem;
 }
 
 .button.m.iconOnly {
-  inline-size: 2.5rem;
-  block-size: 2.5rem;
-  min-inline-size: 2.5rem;
   padding: 0;
+  block-size: 2.5rem;
+  inline-size: 2.5rem;
+  min-inline-size: 2.5rem;
 }
 
 .button.l.iconOnly {
-  inline-size: 3rem;
-  block-size: 3rem;
-  min-inline-size: 3rem;
   padding: 0;
+  block-size: 3rem;
+  inline-size: 3rem;
+  min-inline-size: 3rem;
 }
 
-.button.s.iconOnly .icon svg {
+/* Reduced specificity: generic icon svg size */
+
+.button.iconOnly svg {
   font-size: 0.75rem;
 }
 
-.button.l.iconOnly .icon svg {
+/* Reduced specificity: large size icon override */
+
+.button.l.iconOnly svg {
   font-size: 1.25rem;
 }
 

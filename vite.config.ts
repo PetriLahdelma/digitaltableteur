@@ -27,9 +27,11 @@ export default defineConfig(async () => {
           org: process.env.SENTRY_ORG || "digitaltableteur",
           project: process.env.SENTRY_PROJECT || "frontend",
           authToken: process.env.SENTRY_AUTH_TOKEN,
-          include: ["dist"],
-          urlPrefix: "~/", // served root
-          release: process.env.SENTRY_RELEASE, // set in CI
+          // Sentry v4 plugin expects a structured release object, not a raw string.
+          // Provide name only when defined; otherwise omit to let plugin auto-generate.
+          release: process.env.SENTRY_RELEASE
+            ? { name: process.env.SENTRY_RELEASE }
+            : undefined, // set in CI
           sourcemaps: {
             filesToDeleteAfterUpload: ["dist/**/*.js.map"],
           },

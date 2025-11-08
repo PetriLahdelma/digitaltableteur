@@ -2,8 +2,8 @@
 @import url("../styles/fonts.css");
 
 .about {
-  text-align: start;
   min-block-size: 100%;
+  text-align: start;
 }
 
 .about:focus {
@@ -17,89 +17,89 @@
 
 .what {
   display: grid;
-  place-items: center;
-  min-block-size: 98vh;
   padding-block: clamp(2.5rem, 8vh, 5rem);
   padding-inline: clamp(1.5rem, 6vw, 6rem);
-  background-color: var(--accent-purple);
-  color: var(--color-white);
-  text-align: center;
+  min-block-size: 98vh;
+  place-items: center;
   gap: var(--space-layout-16);
+  background-color: var(--accent-purple);
+  text-align: center;
+  color: var(--color-white);
 }
 
 .what h1 {
+  margin-block: 0;
+  margin-inline: 0;
   font-family: var(--primary-heading-font, "Times New Roman"), serif;
-  color: var(--color-white);
   font-size: clamp(3rem, 8vw + 1rem, 8rem);
   font-weight: var(--primary-heading-weight, 300);
   line-height: 1.1;
-  margin-block: 0;
-  margin-inline: 0;
+  color: var(--color-white);
 }
 
 .what p {
-  font-family: var(--secondary-body-font, "TiemposHeadline-Regular"), serif;
-  color: var(--color-white);
-  font-size: clamp(1.25rem, 1.5vw + 1rem, 2rem);
-  max-inline-size: 40rem;
-  line-height: 1.4;
   margin-block: 0;
   margin-inline: auto;
+  max-inline-size: 40rem;
+  font-family: var(--secondary-body-font, "TiemposHeadline-Regular"), serif;
+  font-size: clamp(1.25rem, 1.5vw + 1rem, 2rem);
+  line-height: 1.4;
+  color: var(--color-white);
 }
 
 .section {
+  display: grid;
   padding-block: clamp(3rem, 8vh, 4.5rem);
   padding-inline: clamp(1rem, 5vw, 4rem);
-  display: grid;
-  gap: var(--space-layout-16);
   justify-items: start;
+  gap: var(--space-layout-16);
   text-align: start;
 }
 
 .section h1 {
+  margin-block: 0;
+  margin-inline: 0;
   font-family: var(--secondary-heading-font);
   font-size: clamp(2rem, 3vw + 1.5rem, 3.25rem);
   font-weight: var(--secondary-heading-weight, 400);
-  margin-block: 0;
-  margin-inline: 0;
 }
 
 .who {
-  inline-size: auto;
-  margin-inline: clamp(1rem, 8vw, 4rem);
+  display: grid;
   margin-block: 0;
-  min-block-size: 74vh;
+  margin-inline: clamp(1rem, 8vw, 4rem);
   padding-block: clamp(3rem, 8vh, 4.5rem);
   padding-inline: clamp(1rem, 5vw, 4rem);
-  display: grid;
-  align-content: center;
+  inline-size: auto;
+  min-block-size: 74vh;
   justify-items: start;
+  align-content: center;
   text-align: start;
 }
 
 .section h2 {
+  margin-block: 0;
+  margin-inline: 0;
   font-family: var(--secondary-heading-font, "Moderat"), serif;
   font-size: clamp(2rem, 3vw + 1.5rem, 3.25rem);
   font-weight: var(--secondary-heading-weight, 400);
-  margin-block: 0;
-  margin-inline: 0;
 }
 
 .section p {
-  font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
-  color: var(--color-primary);
-  font-size: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
-  line-height: 1.6;
-  max-inline-size: 50rem;
   margin-block: 0;
   margin-inline: 0;
+  max-inline-size: 50rem;
+  font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
+  font-size: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-primary);
 }
 
 @media (width <= 768px) {
   .what {
-    min-block-size: 70vh;
     padding-block: clamp(2rem, 6vh, 3.5rem);
     padding-inline: clamp(1rem, 8vw, 3rem);
+    min-block-size: 70vh;
   }
 
   .what h1 {
@@ -107,8 +107,8 @@
   }
 
   .what p {
-    font-size: clamp(1.125rem, 1.5vw + 1rem, 1.5rem);
     max-inline-size: 35rem;
+    font-size: clamp(1.125rem, 1.5vw + 1rem, 1.5rem);
   }
 
   .section,
@@ -125,9 +125,9 @@
 
 @media (width <= 480px) {
   .what {
-    min-block-size: 60vh;
     padding-block: clamp(1.5rem, 6vh, 2.5rem);
     padding-inline: clamp(1rem, 6vw, 2rem);
+    min-block-size: 60vh;
   }
 
   .what h1 {
@@ -135,8 +135,8 @@
   }
 
   .what p {
-    font-size: clamp(1rem, 2vw + 0.9rem, 1.25rem);
     max-inline-size: 100%;
+    font-size: clamp(1rem, 2vw + 0.9rem, 1.25rem);
   }
 
   .section,

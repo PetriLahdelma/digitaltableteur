@@ -5,39 +5,39 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  padding-inline: var(--space-layout-32);
   background-color: transparent;
   color: var(--main-body-copy-color);
-  padding-inline: var(--space-layout-32);
   pointer-events: none;
 }
 
 header h2 a {
   font-family: var(--primary-body-font, "Moderat-Bold"), serif;
-  text-transform: uppercase;
-  color: var(--main-body-copy-color);
   font-size: 2.1rem;
   font-weight: 600;
   letter-spacing: 0.08rem;
+  text-transform: uppercase;
   text-decoration: none;
+  color: var(--main-body-copy-color);
 }
 
 .headerInner {
   display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
   margin: 0 auto;
   padding: 14px 0;
   box-sizing: border-box;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row wrap;
   vertical-align: top;
 }
 
 .logoLink {
   display: flex;
-  align-items: center;
   height: 100%;
   flex: 0 0 auto;
+  align-items: center;
   pointer-events: auto;
 }
 
@@ -48,11 +48,11 @@ header h2 a {
 }
 
 .logo {
-  width: 15rem;
-  height: 15rem;
-  max-width: 100%;
-  object-fit: contain;
   display: block;
+  width: 15rem;
+  max-width: 100%;
+  height: 15rem;
+  object-fit: contain;
 }
 
 .nav ul {
@@ -64,30 +64,30 @@ header h2 a {
 }
 
 .navbar {
-  flex: 1 1 auto;
   display: flex;
+  flex: 1 1 auto;
   justify-content: center;
   align-items: center;
   pointer-events: auto;
 }
 
 .nav {
-  list-style: none;
   display: flex;
-  gap: 16px;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  gap: 16px;
   pointer-events: auto;
+  list-style: none;
 }
 
 .nav a {
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
   font-size: 20px;
-  color: var(--main-body-copy-color);
-  text-decoration: none;
   font-weight: 400;
-  letter-spacing: 0;
   line-height: 24px;
+  letter-spacing: 0;
+  text-decoration: none;
+  color: var(--main-body-copy-color);
   transition: color 0.2s;
 }
 
@@ -97,26 +97,26 @@ header h2 a {
 }
 
 .nav a.selected {
-  opacity: 0.5;
   pointer-events: none;
+  opacity: 0.5;
 }
 
 .themeToggle {
-  background: none;
-  border: none;
-  color: var(--color-primary);
-  font-size: 24px;
-  cursor: pointer;
+  display: flex;
+  margin-inline: 0;
   padding: 0;
   width: 24px;
   height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s;
   flex: 0 0 auto;
-  margin-inline: 0;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  font-size: 24px;
+  color: var(--color-primary);
+  cursor: pointer;
   pointer-events: auto;
+  transition: color 0.2s;
 }
 
 .themeToggle:hover,
@@ -128,8 +128,8 @@ header h2 a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1rem;
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
+  font-size: 1rem;
   pointer-events: auto;
 }
 
@@ -141,17 +141,17 @@ header h2 a {
 }
 
 .languageLink {
-  cursor: pointer;
-  text-decoration: none;
+  padding: 0 2px;
   border: 0;
-  border-bottom: 2px solid transparent;
+  background: none;
+  font: inherit;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
   transition:
     border-color 0.2s,
     outline-color 0.2s;
-  padding: 0 2px;
-  background: none;
-  font: inherit;
-  color: inherit;
+  border-bottom: 2px solid transparent;
 }
 
 .languageLink:hover,
@@ -169,14 +169,14 @@ header h2 a {
 }
 
 .languageLinkActive {
-  border-bottom-color: var(--color-primary);
   opacity: 0.6;
+  border-bottom-color: var(--color-primary);
 }
 
 @media (width <= 900px) {
   .headerInner {
-    max-width: 100%;
     padding: 10px 16px;
+    max-width: 100%;
   }
 
   .logo {
@@ -191,10 +191,10 @@ header h2 a {
 
 @media (width <= 600px) {
   .headerInner {
-    flex-direction: column;
-    height: auto;
-    gap: 8px;
     padding: 8px;
+    height: auto;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .navbar {
@@ -211,7 +211,7 @@ header h2 a {
 
   .themeToggle {
     margin-inline-start: 0; /* single side override retained */
-    margin-top: 8px;
     transform: translateY(-4px);
+    margin-top: 8px;
   }
 }

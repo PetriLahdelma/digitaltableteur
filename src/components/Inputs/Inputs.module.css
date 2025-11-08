@@ -3,30 +3,30 @@
 
 .inputContainer {
   display: flex;
+  box-sizing: border-box;
   flex-direction: column;
   margin-bottom: 1rem;
-  box-sizing: border-box;
 }
 
 .label {
-  font-size: 1rem;
-  font-family: Moderat, sans-serif;
-  color: var(--color-primary);
   align-items: flex-start;
+  font-family: Moderat, sans-serif;
+  font-size: 1rem;
+  color: var(--color-primary);
 }
 
 .input {
   margin-block: 0.5rem;
   padding: 0.5rem;
-  font-size: 1rem;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-  font-family: Moderat, sans-serif;
-  transition: border-color 0.3s;
-  min-height: 2.5rem;
   box-sizing: border-box;
   width: 100%;
+  min-height: 2.5rem;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-white);
+  font-family: Moderat, sans-serif;
+  font-size: 1rem;
+  color: var(--color-primary);
+  transition: border-color 0.3s;
 }
 
 .errorMessage {
@@ -43,10 +43,10 @@
 }
 
 .input:focus {
-  border-color: var(--color-primary);
-  border-width: 1px;
-  outline: 2px solid var(--color-primary);
   box-sizing: border-box;
+  border-width: 1px;
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
 }
 
 .error {
@@ -59,9 +59,9 @@
 }
 
 .input:disabled {
-  cursor: not-allowed;
-  background-color: var(--color-disabled-bg-light);
   border-color: var(--color-primary-disabled);
+  background-color: var(--color-disabled-bg-light);
+  cursor: not-allowed;
 }
 
 .input:disabled::placeholder {
@@ -70,8 +70,8 @@
 
 .masterCheckbox {
   display: flex;
-  align-items: flex-start;
   margin-block: 1.5rem;
+  align-items: flex-start;
 }
 
 @supports (accent-color: var(--color-primary)) {
@@ -81,19 +81,19 @@
 }
 
 .chatTextArea {
+  padding: 0.65rem 0.85rem;
   width: 100%;
+  min-height: calc(1.5em * 1 + 1.3rem);
   border: 1px solid var(--color-border-light, #3a3a3a);
   border-radius: 0.75rem;
-  padding: 0.65rem 0.85rem;
+  background: transparent;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--color-primary);
-  background: transparent;
-  resize: vertical;
-  min-height: calc(1.5em * 1 + 1.3rem);
   transition:
     border 0.2s ease,
     box-shadow 0.2s ease;
+  resize: vertical;
 }
 
 .chatTextArea::placeholder {
@@ -101,12 +101,12 @@
 }
 
 .chatTextArea:focus {
-  outline: none;
   border-color: var(--color-primary, #0f62fe);
+  outline: none;
   box-shadow: 0 0 0 4px rgb(15 98 254 / 15%);
 }
 
 .chatTextArea:disabled {
-  opacity: 0.5;
   cursor: not-allowed;
+  opacity: 0.5;
 }
