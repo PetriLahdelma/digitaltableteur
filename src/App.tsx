@@ -15,7 +15,9 @@ const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Blog = React.lazy(() => import("./pages/Blog"));
 const Designing2025 = React.lazy(() => import("./pages/posts/Designing2025"));
-const OneManArmy = React.lazy(() => import("./pages/posts/OneManArmy"));
+const InSearchOfImpact = React.lazy(
+  () => import("./pages/posts/InSearchOfImpact"),
+);
 const WorkflowTips = React.lazy(() => import("./pages/posts/WorkflowTips"));
 const DigitalCraftsmanship = React.lazy(
   () => import("./pages/posts/DigitalCraftsmanship"),
@@ -68,7 +70,10 @@ function App() {
                   path="/blog/designing-in-2025"
                   element={<Designing2025 />}
                 />
-                <Route path="/blog/one-man-army" element={<OneManArmy />} />
+                <Route
+                  path="/blog/in-search-of-impact"
+                  element={<InSearchOfImpact />}
+                />
                 <Route path="/blog/workflow-tips" element={<WorkflowTips />} />
                 <Route
                   path="/blog/digital-craftsmanship"

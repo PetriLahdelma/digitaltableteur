@@ -2,7 +2,7 @@ import ThoughtsOnFutureBranding from "./ThoughtsOnFutureBranding";
 import DigitalCraftsmanship from "./DigitalCraftsmanship";
 import WorkflowTips from "./WorkflowTips";
 import Designing2025 from "./Designing2025";
-import OneManArmy from "./OneManArmy";
+import InSearchOfImpact from "./InSearchOfImpact";
 import FigmaMCP from "./FigmaMCP";
 import PetriLahdelmaBio from "./PetriLahdelmaBio";
 
@@ -44,13 +44,13 @@ export const posts = [
     component: Designing2025,
   },
   {
-    title: "Digitaltableteur Field Notes: One-Man Army",
+    title: "Digitaltableteur Field Notes: In Search of Impact",
     lead: "How a solo studio delivers enterprise-scale outcomes with boutique precision.",
-    link: "/blog/one-man-army",
+    link: "/blog/in-search-of-impact",
     readTime: "4 min read",
     color: "purple",
     date: "11.02.2025",
-    component: OneManArmy,
+    component: InSearchOfImpact,
   },
   {
     title: "MCP, Design Systems, and Generative UI",
