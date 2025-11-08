@@ -92,23 +92,20 @@ describe("ContactForm integration", () => {
       email: defaultFormValues.email,
       phone: defaultFormValues.phone,
       message: defaultFormValues.message,
-      attachmentName: null,
-      attachmentType: null,
-      attachmentSize: null,
-      attachmentData: null,
+      interest: expect.any(String),
+      hearAbout: "",
     });
+    expect(fetchBody).toHaveProperty("time");
 
     expect(sendArgs).toMatchObject({
       name: defaultFormValues.fullName,
       email: defaultFormValues.email,
       phone: defaultFormValues.phone,
       message: defaultFormValues.message,
-      attachmentName: "",
-      attachmentType: "",
-      attachmentSize: "",
-      attachmentData: "",
-      attachmentNotice: "",
+      interest: expect.any(String),
+      hearAbout: "",
     });
+    expect(sendArgs).toHaveProperty("time");
   });
 
   it("allows overriding values via helper to test different payloads", async () => {
@@ -133,6 +130,8 @@ describe("ContactForm integration", () => {
       email: overrides.email,
       phone: overrides.phone,
       message: overrides.message,
+      interest: expect.any(String),
+      hearAbout: "",
     });
   });
 });
