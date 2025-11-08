@@ -88,19 +88,31 @@ const ContactForm = () => {
     : "";
 
   const handleFullNameChange = (value: string | number) => {
-    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "fullName", value: String(value) } });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "fullName", value: String(value) },
+    });
   };
 
   const handleEmailChange = (value: string | number) => {
-    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "email", value: String(value) } });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "email", value: String(value) },
+    });
   };
 
   const handlePhoneChange = (value: string | number) => {
-    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "phone", value: String(value) } });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "phone", value: String(value) },
+    });
   };
 
   const handleMessageChange = (value: string | number) => {
-    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "message", value: String(value) } });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "message", value: String(value) },
+    });
   };
 
   const handleInterestChange = (selectedOptions: string[]) => {
@@ -111,12 +123,13 @@ const ContactForm = () => {
   };
 
   const handleHearAboutChange = (value: string) => {
-    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "hearAbout", value } });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "hearAbout", value },
+    });
   };
 
-  const handleHoneypotChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleHoneypotChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatchForm({
       type: "UPDATE_FIELD",
       payload: { field: "honeypot", value: event.target.value },
@@ -508,11 +521,7 @@ const ContactForm = () => {
             <a href="/privacyPolicy">{t("contactPrivacyPolicy2")}</a>.
           </p>
           <div className={styles["formActions"]}>
-            <Button
-              type="button"
-              variant="tertiary"
-              onClick={handleClearForm}
-            >
+            <Button type="button" variant="tertiary" onClick={handleClearForm}>
               {t("contactClear")}
             </Button>
             <Button

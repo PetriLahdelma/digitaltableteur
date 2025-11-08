@@ -178,7 +178,10 @@ const Home = () => {
         </section>
         <section className={styles.cta}>
           <h2>{t("homeCtaTitle")}</h2>
-          <Link className={`${styles.ctaLink} wavyUnderline`.trim()} href="/contact">
+          <Link
+            className={`${styles.ctaLink} wavyUnderline`.trim()}
+            href="/contact"
+          >
             {t("homeCtaLink")}
           </Link>
         </section>
