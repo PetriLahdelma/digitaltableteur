@@ -3,9 +3,9 @@
   font-family: var(--font-family-sans);
   font-size: var(--font-size-text);
   line-height: 1.5;
+  overflow-wrap: anywhere;
   color: var(--color-text-primary);
   word-wrap: break-word;
-  overflow-wrap: anywhere;
 }
 
 ::marker {
@@ -32,10 +32,10 @@
 }
 
 .root code {
-  font-family: var(--font-family-mono, monospace);
-  background: var(--color-surface-alt);
   padding: 0 var(--space-1);
   border-radius: var(--radius-xs);
+  background: var(--color-surface-alt);
+  font-family: var(--font-family-mono, monospace);
   font-size: 1rem;
 }
 
@@ -46,16 +46,16 @@
 }
 
 .root pre {
-  background: var(--color-surface-alt);
+  margin: var(--space-2) 0;
+  padding: var(--space-2);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-s);
-  padding: var(--space-2);
-  margin: var(--space-2) 0;
+  background: var(--color-surface-alt);
 }
 
 .root a {
-  color: var(--color-link);
   text-decoration: underline;
+  color: var(--color-link);
 }
 
 .root a:focus-visible {
@@ -65,10 +65,11 @@
 
 .root ul,
 .root ol {
+  margin: 1rem;
+
   /* Increase indentation by additional 1rem */
   padding-inline-start: calc(var(--space-5) + 1rem);
   font-size: 1rem;
-  margin: 1rem;
 }
 
 .root li + li {
@@ -78,9 +79,9 @@
 .root blockquote {
   margin: var(--space-2) 0;
   padding: var(--space-2) var(--space-3);
-  border-left: 3px solid var(--color-border-strong);
-  background: var(--color-surface-alt);
+  border-inline-start: 3px solid var(--color-border-strong);
   border-radius: var(--radius-xs);
+  background: var(--color-surface-alt);
 }
 
 .root h1,
@@ -89,10 +90,10 @@
 .root h4,
 .root h5,
 .root h6 {
+  margin: var(--space-3) 0 var(--space-2);
   font-family: var(--font-family-sans);
   font-weight: 600;
   line-height: 1.25;
-  margin: var(--space-3) 0 var(--space-2);
 }
 
 .root h1 {
@@ -120,15 +121,15 @@
 }
 
 .root table {
+  margin: var(--space-3) 0;
   width: 100%;
   border-collapse: collapse;
-  margin: var(--space-3) 0;
 }
 
 .root th,
 .root td {
-  border: 1px solid var(--color-border);
   padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
   text-align: left;
   vertical-align: top;
 }

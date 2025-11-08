@@ -2,49 +2,48 @@
 @import url("../styles/fonts.css");
 
 .article {
-  max-width: 60rem;
   margin: 0 auto;
+  margin-block-start: 0;
   padding: 2rem;
+  max-width: 60rem;
   font-family: var(--secondary-body-font, serif);
   font-size: 1rem;
   line-height: 1.6;
-  margin-block-start: 0;
 }
 
 .article h1 {
-  font-family: var(--primary-heading-font, serif);
   font-size: 2.5rem;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   margin-bottom: 0.5rem;
 
   /* Prevent hyphenation/word breaking for main titles */
-  hyphens: none;
-  word-break: normal;
-  overflow-wrap: normal;
 }
 
 .article h2 {
   font-family: var(--secondary-heading-font, sans-serif);
   font-size: 1.75rem;
-  margin-top: 2rem;
 
   /* Prevent hyphenation/word breaking for headings */
-  hyphens: none;
-  word-break: normal;
   overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  margin-top: 2rem;
 }
 
 .article h3 {
   font-family: var(--secondary-heading-font, sans-serif);
-  color: var(--primary-text-color);
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.4;
-  margin-top: 1.5rem;
 
   /* Prevent hyphenation/word breaking for subheadings */
-  hyphens: none;
-  word-break: normal;
   overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  color: var(--primary-text-color);
+  margin-top: 1.5rem;
 }
 
 h3 + p {
@@ -57,8 +56,10 @@ p + :not(p, blockquote) {
 
 .article blockquote {
   margin-block: 4rem;
-  padding-left: 1rem;
-  border-left: 4px solid var(--primary-text-color);
+  padding-inline-start: 1rem;
+
+  /* Converted from legacy border-left to logical property */
+  border-inline-start: 4px solid var(--primary-text-color);
   font-style: italic;
 }
 
@@ -69,52 +70,48 @@ p + :not(p, blockquote) {
 }
 
 .metaRow p {
-  color: var(--primary-text-color);
   font-size: 1rem;
+  color: var(--primary-text-color);
 }
 
 .metaRow > * {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  margin-block: 0;
+  padding-block: 0;
   line-height: 1.2;
 }
 
 div.authorContainer {
   display: flex;
+  margin: 0;
   align-items: center; /* Align image and text vertically */
   gap: 0.5rem; /* Add spacing between image and text */
-  margin: 0;
 }
 
 .author {
   display: flex;
   flex-direction: row;
   font-family: var(--primary-body-font);
-  font-weight: 500;
   font-size: 1.1rem;
+  font-weight: 500;
   color: var(--color-primary);
 }
 
 .author > img {
-  margin-block: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+  margin-block: 0;
 }
 
 .article img {
-  width: 100%;
-  max-width: 100%;
   display: block;
   margin: 2rem 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .video {
   display: block;
-  max-width: 100%;
-  width: 100%;
   margin: 2rem 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .similar {
@@ -123,26 +120,27 @@ div.authorContainer {
 
 .similarList {
   display: flex;
-  flex-flow: wrap row;
-  gap: 1rem;
   inline-size: 100%;
+  gap: 1rem;
+  flex-flow: row wrap; /* leave after gap (unspecified shorthand) */
 }
 
 .similarCard {
   display: flex;
-  flex-flow: row wrap;
   padding: 1rem;
+  inline-size: 100%;
+  outline: 2px solid var(--color-primary);
+  background-color: var(--color-light-bg);
   text-decoration: none;
   color: inherit;
-  background-color: var(--color-light-bg);
   transition: background-color 0.3s;
-  inline-size: 100%;
+  flex-flow: row wrap; /* unspecified shorthand placed after specified props */
 }
 
 .similarCard:hover {
-  background-color: var(--color-white);
   box-sizing: border-box;
   outline: 2px solid var(--color-primary);
+  background-color: var(--color-white);
 }
 
 .similarCard:focus {
@@ -150,12 +148,12 @@ div.authorContainer {
 }
 
 caption {
+  display: flex;
+  margin-block: 0.5rem 1rem;
+  max-width: 100%;
   font-family: var(--primary-body-font, sans-serif);
   font-size: 0.9rem;
   color: var(--primary-text-color);
-  margin-block: 0.5rem 1rem;
-  max-width: 100%;
-  display: flex;
 }
 
 .boldText {

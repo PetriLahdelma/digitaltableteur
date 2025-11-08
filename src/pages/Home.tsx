@@ -50,30 +50,7 @@ const Home = () => {
       <div className={styles.home}>
         <section className={styles.hero}>
           <Grid columns={1} gap="1rem">
-            <div
-              style={{
-                gridColumn: "1 / span 3",
-                background: "var(--home-gradient)",
-                backgroundSize: "200% 200%",
-                animation: "gradientMove 4s ease-in-out infinite",
-                height: "75vh",
-              }}
-            ></div>
-            <style>
-              {`
-                @keyframes gradientMove {
-                  0% {
-                    background-position: 0% 50%;
-                  }
-                  50% {
-                    background-position: 100% 50%;
-                  }
-                  100% {
-                    background-position: 0% 50%;
-                  }
-                }
-              `}
-            </style>
+            <div className={styles.heroGradient} aria-hidden="true" />
           </Grid>
         </section>
         <section className={styles.about}>
