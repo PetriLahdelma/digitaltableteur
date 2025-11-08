@@ -88,4 +88,23 @@ describe("ContactForm integration", () => {
     // restore fetch
     global.fetch = originalFetch;
   });
+
+  it("clears user input when the clear button is pressed", () => {
+    render(<ContactForm />);
+
+    const nameInput = screen.getByLabelText(/Full Name/i) as HTMLInputElement;
+    const emailInput = screen.getByLabelText(/Email Address/i);
+    const messageInput = screen.getByLabelText(/Your Message/i);
+
+    fireEvent.change(nameInput, { target: { value: "Jane Doe" } });
+    fireEvent.change(emailInput, { target: { value: "jane@example.com" } });
+    fireEvent.change(messageInput, { target: { value: "Hi!" } });
+
+    const clearButton = screen.getByRole("button", { name: /Clear fields/i });
+    fireEvent.click(clearButton);
+
+    expect(nameInput.value).toBe("");
+    expect((emailInput as HTMLInputElement).value).toBe("");
+    expect((messageInput as HTMLInputElement).value).toBe("");
+  });
 });
