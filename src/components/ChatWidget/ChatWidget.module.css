@@ -6,6 +6,7 @@
   position: fixed;
   inset: auto 1.5rem 1.5rem auto;
   z-index: 1000;
+  min-height: 24rem;
   place-items: end;
   pointer-events: none;
   transition:
@@ -22,6 +23,7 @@
   display: flex;
   width: min(32.5rem, 90vw);
   max-width: 32.5rem;
+  min-height: 24rem;
   max-height: min(70vh, 640px);
   flex-direction: column;
   border: 1px solid var(--color-border, #232323);
