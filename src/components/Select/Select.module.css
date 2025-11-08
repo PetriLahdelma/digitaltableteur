@@ -2,29 +2,29 @@
 
 .container {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 0.5rem;
-  width: 100%;
 }
 
 .wrapper {
-  position: relative;
   display: flex;
-  align-items: center;
+  position: relative;
   width: 100%;
+  align-items: center;
 }
 
 .select {
-  width: 100%;
   padding: 0.5rem 2.5rem 0.5rem 0.75rem;
-  font-size: 1rem;
-  border-radius: 0;
+  width: 100%;
   border: 1px solid var(--color-primary);
+  border-radius: 0;
   background: var(--color-white);
+  font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
   color: var(--primary-text-color);
   appearance: none;
-  line-height: 1.5;
-  font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
 }
 
 @supports (accent-color: var(--color-primary)) {
@@ -48,6 +48,6 @@
 .chevronIcon {
   position: absolute;
   right: 1rem;
-  pointer-events: none;
   color: var(--color-primary);
+  pointer-events: none;
 }

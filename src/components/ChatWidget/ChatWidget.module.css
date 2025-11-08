@@ -2,10 +2,10 @@
 @import url("../../styles/fonts.css");
 
 .container {
+  display: grid;
   position: fixed;
   inset: auto 1.5rem 1.5rem auto;
   z-index: 1000;
-  display: grid;
   place-items: end;
   pointer-events: none;
   transition:
@@ -19,24 +19,24 @@
 }
 
 .panel {
+  display: flex;
   width: min(32.5rem, 90vw);
   max-width: 32.5rem;
   max-height: min(70vh, 640px);
-  background-color: var(--main-body-background-color, #fff);
-  border: 1px solid var(--color-border, #232323);
-  box-shadow: 0 25px 60px rgb(0 0 0 / 15%);
-  display: flex;
   flex-direction: column;
-  overflow: hidden;
-  pointer-events: auto;
+  border: 1px solid var(--color-border, #232323);
   border-radius: 1.25rem;
+  background-color: var(--main-body-background-color, #fff);
+  box-shadow: 0 25px 60px rgb(0 0 0 / 15%);
+  pointer-events: auto;
+  overflow: hidden;
 }
 
 /* Enhanced backdrop blur where supported (solid fallback above) */
 @supports (backdrop-filter: blur(12px)) {
   .panel {
-    backdrop-filter: blur(12px);
     background: color-mix(in srgb, var(--color-white) 85%, transparent);
+    backdrop-filter: blur(12px);
   }
 
   @supports (background: color-mix(in srgb, white 85%, transparent)) {
@@ -49,26 +49,26 @@
 
 .header {
   display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 1rem;
   padding: 1rem 1.25rem 0.75rem;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
 }
 
 .headerCopy {
   display: flex;
+  max-width: 70%;
   flex-direction: column;
   gap: 0.25rem;
-  max-width: 70%;
 }
 
 /* Availability dot replaces previous badge/icon for space efficiency */
 
 .availabilityDot {
+  display: inline-block;
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  display: inline-block;
   margin-top: 0.22rem;
 }
 
@@ -104,36 +104,36 @@
 
 .tagline {
   margin: 0;
+  font-family: Moderat, sans-serif;
   font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--secondary-text-color, #555);
-  font-family: Moderat, sans-serif;
-  font-weight: 600;
 }
 
 .offlineText {
+  display: inline-block;
   margin-inline-start: 0.5rem;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-error);
-  display: inline-block;
 }
 
 .title {
   margin: 0;
-  font-size: 1.25rem;
   font-family: Moderat, sans-serif;
+  font-size: 1.25rem;
   color: var(--color-title, #000);
 }
 
 .subtitle {
   margin: 0;
+  font-family: Moderat, sans-serif;
   font-size: 0.875rem;
   color: var(--secondary-text-color, #666);
-  font-family: Moderat, sans-serif;
 }
 
 .headerActions {
@@ -152,19 +152,19 @@
 
 .resetButton,
 .minimizeButton {
-  appearance: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   border: none;
-  background: rgb(0 0 0 / 4%);
-  color: inherit;
   border-radius: 999px;
+  background: rgb(0 0 0 / 4%);
   font-size: 0.75rem;
+  color: inherit;
   cursor: pointer;
   transition:
     background 0.2s ease,
     transform 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  appearance: none;
 }
 
 /* Prevent multi-line wrapping of reset label; hide text on narrow viewports in favor of icon only */
@@ -185,20 +185,20 @@
 
   .resetLabel {
     position: absolute;
+    margin: -1px;
+    padding: 0;
     width: 1px;
     height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
     border: 0;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
   }
 }
 
 .minimizeButton {
-  font-size: 1.1rem;
   padding: 0.4rem;
+  font-size: 1.1rem;
 }
 
 .resetButton:hover,
@@ -207,8 +207,8 @@
 }
 
 .resetButton:disabled {
-  opacity: 0.6;
   cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .messages {
@@ -238,7 +238,11 @@
   padding: 0.5rem 1rem;
   max-width: 83%;
   border-radius: 0.85rem;
+  background: rgb(0 0 0 / 6%);
+  font-family: Moderat, sans-serif;
   font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text, #111);
 
   /* Email workflow blocks */
 
@@ -254,22 +258,22 @@
 
   .workflowActions {
     display: flex;
-    gap: var(--space-internal-8);
     margin-block-start: var(--space-internal-8);
     flex-wrap: wrap;
+    gap: var(--space-internal-8);
   }
 
   .editActions {
     display: flex;
-    gap: var(--space-internal-4);
     margin-block-start: var(--space-internal-12);
     flex-wrap: wrap;
+    gap: var(--space-internal-4);
   }
 
   .summaryList {
+    display: grid;
     margin: 0;
     padding: 0;
-    display: grid;
     grid-template-columns: minmax(8rem, 1fr) 2fr;
     gap: var(--space-internal-4) var(--space-internal-8);
   }
@@ -281,86 +285,82 @@
   .summaryList dd {
     margin: 0;
   }
-  line-height: 1.5;
-  background: rgb(0 0 0 / 6%);
-  color: var(--color-text, #111);
-  font-family: Moderat, sans-serif;
 }
 
 .message[data-role="assistant"] {
   align-self: flex-start;
-  background: rgb(0 0 0 / 4%);
   border-radius: 1rem 1rem 1rem 0;
+  background: rgb(0 0 0 / 4%);
 }
 
 .message[data-role="user"] {
   align-self: flex-end;
+  border-radius: 1rem 1rem 0;
   background: var(--color-primary, #0f62fe);
   color: var(--inverted-text-color, #fff);
-  border-radius: 1rem 1rem 0;
 }
 
 /* Full-span container for components that should stretch across panel width (e.g. OpenHours) */
 
 .fullSpan {
-  width: 100%;
-  align-self: stretch;
   display: flex;
+  width: 100%;
   flex-direction: column;
+  align-self: stretch;
   gap: 0.5rem;
 }
 
 .statusBanner {
   margin: 0 1.25rem 0.75rem;
   padding: 0.75rem 1rem;
+  border: 1px solid rgb(255 86 86 / 24%);
   border-radius: 0.85rem;
   background: rgb(255 86 86 / 12%);
-  border: 1px solid rgb(255 86 86 / 24%);
-  color: var(--color-text, #111);
+  font-family: Moderat, sans-serif;
   font-size: 0.85rem;
   line-height: 1.4;
-  font-family: Moderat, sans-serif;
+  color: var(--color-text, #111);
 }
 
 .composer {
   display: flex;
+  padding: 0.9rem 1.25rem 1.1rem;
   flex-direction: column;
   gap: 0.65rem;
-  padding: 0.9rem 1.25rem 1.1rem;
 }
 
 .inputLabel {
-  font-size: 0.85rem;
-  color: var(--secondary-text-color, #666);
   font-family: Moderat, sans-serif;
+  font-size: 0.85rem;
   font-weight: 600;
+  color: var(--secondary-text-color, #666);
 }
 
 .inputRow {
   display: flex;
-  gap: 0.75rem;
   align-items: flex-end;
+  gap: 0.75rem;
   font-family: Moderat, sans-serif;
 }
 
 .input {
-  flex: 1;
-  resize: none;
-  border: 1px solid var(--color-border-light, #3a3a3a);
   padding: 0.65rem 0.85rem;
+  min-height: 2.75rem;
+  flex: 1;
+  border: 1px solid var(--color-border-light, #3a3a3a);
+  background: transparent;
   font-size: 0.9rem;
   line-height: 1.5;
   color: var(--color-text, #111);
-  background: transparent;
   transition:
     border 0.2s ease,
     box-shadow 0.2s ease;
-  min-height: 2.75rem;
+  resize: none;
 }
 
 .input:focus {
-  outline: none;
   border-color: var(--color-primary, #0f62fe);
+  outline: none;
   box-shadow: 0 0 0 4px rgb(15 98 254 / 15%);
 }
 
@@ -371,62 +371,62 @@
 }
 
 .sendButton {
-  appearance: none;
-  border: none;
-  background: var(--color-primary, #0f62fe);
-  color: var(--inverted-text-color, #fff);
-  border-radius: 9999px;
+  display: inline-flex;
   width: 2.75rem;
   height: 2.75rem;
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 9999px;
+  background: var(--color-primary, #0f62fe);
   font-size: 1.1rem;
+  color: var(--inverted-text-color, #fff);
   cursor: pointer;
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
+  appearance: none;
 }
 
 .sendButton:disabled {
-  opacity: 0.5;
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .toggle {
+  display: inline-flex;
   position: fixed;
   inset: auto 1.5rem 1.5rem auto;
-  display: inline-flex;
-  align-items: center;
+  z-index: 1002;
   justify-content: center;
+  align-items: center;
   border: none;
   background: var(--color-primary, #0f62fe);
-  color: var(--inverted-text-color, #fff);
+  box-shadow: 0 18px 40px rgb(15 98 254 / 30%);
   font-family: inherit;
   font-size: 0.95rem;
+  color: var(--inverted-text-color, #fff);
   cursor: pointer;
-  box-shadow: 0 18px 40px rgb(15 98 254 / 30%);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
     opacity 0.2s ease;
-  z-index: 1002;
 }
 
 .toggle[data-open="true"] {
-  opacity: 0;
   pointer-events: none;
   transform: translateY(20%);
+  opacity: 0;
 }
 
 .toggleLabel {
-  font-family: Moderat, sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  line-height: 1;
   display: inline-flex;
   align-items: center;
   gap: 0.25rem; /* tighten icon-label spacing */
+  font-family: Moderat, sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
 }
 
 @supports not (gap: 0.25rem) {
@@ -450,19 +450,20 @@
 }
 
 .toggle .icon svg {
+  display: block;
   width: 1em;
   height: 1em;
-  display: block;
 }
 
 .shortcutHint {
-  color: var(--color-primary);
-  opacity: 0.3;
   margin: 0;
+  /* stylelint-disable-next-line declaration-no-important */
+  margin-block-end: 0 !important;
   padding-inline-start: 1rem;
   font-family: Moderat, sans-serif;
   font-size: 0.85rem;
-  margin-block-end: 0;
+  color: var(--color-primary);
+  opacity: 0.3;
 }
 
 @media (width <= 768px) {
@@ -475,8 +476,8 @@
   .panel {
     width: 100%;
     max-height: 85vh;
-    border-radius: 1rem 1rem 0 0;
     border-inline: none;
+    border-radius: 1rem 1rem 0 0;
     border-bottom: none;
   }
 

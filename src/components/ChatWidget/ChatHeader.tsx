@@ -11,6 +11,11 @@ interface ChatHeaderProps {
   onReset: () => void;
   onMinimize: () => void;
   isSending: boolean;
+  /**
+   * Optional override for current date/time (used in tests to simulate open/closed hours).
+   * Defaults to new Date() when omitted.
+   */
+  currentDate?: Date;
 }
 
 const ChatHeader: React.FC<ChatHeaderProps> = ({
@@ -19,6 +24,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   onReset,
   onMinimize,
   isSending,
+  currentDate,
 }) => {
   const { t } = useTranslation();
   const tagline = t("chatTagline", "DT Donny");
@@ -36,7 +42,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         hour12: false,
         weekday: "short",
       });
-      const parts = fmt.formatToParts(new Date());
+      const parts = fmt.formatToParts(currentDate || new Date());
       const hour = Number(parts.find((p) => p.type === "hour")?.value || "0");
       const minute = Number(
         parts.find((p) => p.type === "minute")?.value || "0",
@@ -44,10 +50,10 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       const weekday = parts.find((p) => p.type === "weekday")?.value || ""; // e.g., Mon
       return { hour, minute, weekday };
     } catch {
-      const d = new Date();
+      const d = currentDate || new Date();
       return { hour: d.getHours(), minute: d.getMinutes(), weekday: "" };
     }
-  }, []);
+  }, [currentDate]);
 
   const withinHours = useMemo(() => {
     const { hour, weekday } = helsinkiNow;
@@ -59,6 +65,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   const availabilityTooltip = withinHours
     ? t("chatAvailabilityOpen", "Open")
     : t("chatAvailabilityClosed", "Closed");
+
   return (
     <header className={styles.header}>
       <div className={styles.headerCopy}>

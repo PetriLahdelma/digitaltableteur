@@ -17,6 +17,7 @@ import {
   TbCircleNumber4,
 } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
+import Text from "@dt/Text";
 
 const FigmaMCP = () => {
   const { t } = useTranslation();
@@ -51,7 +52,10 @@ const FigmaMCP = () => {
         <BlogNav />
         <header>
           <h1>Rethinking Design-to-Product Workflows with Figma MCP</h1>
-          <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          <div className={styles.metaRow}>
+            <Text className={styles.releaseDate}>June 5, 2025</Text>
+            <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          </div>
         </header>
         <img
           src={MCP}

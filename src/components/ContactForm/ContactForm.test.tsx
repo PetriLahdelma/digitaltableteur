@@ -65,6 +65,10 @@ describe("ContactForm integration", () => {
     expect(fetchBody).toHaveProperty("phone", "123456");
     expect(fetchBody).toHaveProperty("message", "Hello there");
     expect(fetchBody).toHaveProperty("interest");
+    expect(fetchBody).toHaveProperty("attachmentName", null);
+    expect(fetchBody).toHaveProperty("attachmentType", null);
+    expect(fetchBody).toHaveProperty("attachmentSize", null);
+    expect(fetchBody).toHaveProperty("attachmentData", null);
 
     // Check EmailJS send called with similar payload
     const { send } = await import("@emailjs/browser");
@@ -75,6 +79,11 @@ describe("ContactForm integration", () => {
     expect(sendArgs).toHaveProperty("phone", "123456");
     expect(sendArgs).toHaveProperty("message", "Hello there");
     expect(sendArgs).toHaveProperty("interest");
+    expect(sendArgs).toHaveProperty("attachmentName", "");
+    expect(sendArgs).toHaveProperty("attachmentType", "");
+    expect(sendArgs).toHaveProperty("attachmentSize", "");
+    expect(sendArgs).toHaveProperty("attachmentData", "");
+    expect(sendArgs).toHaveProperty("attachmentNotice", "");
 
     // restore fetch
     global.fetch = originalFetch;
