@@ -49,6 +49,7 @@
 .personEmail {
   text-transform: none;
   color: var(--color-primary);
+  text-decoration: none;
 }
 
 .personEmail p {
@@ -67,11 +68,16 @@
   gap: 0.5rem;
   font-weight: 600;
   text-transform: none;
+  text-decoration: none;
 }
 
 .socialLink svg {
   font-size: 1.5rem;
   color: var(--color-primary);
+}
+
+.socialLink::after {
+  display: none;
 }
 
 @media (width <= 768px) {

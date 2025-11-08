@@ -125,7 +125,11 @@ const Contact = () => {
         </Title>
         <Text className={styles.contactInfo}>
           {t("contactInfo")}{" "}
-          <Link size="S" href="mailto:mail@digitaltableteur.com">
+          <Link
+            size="S"
+            href="mailto:mail@digitaltableteur.com"
+            className="wavyUnderline"
+          >
             mail@digitaltableteur.com
           </Link>
         </Text>
@@ -136,7 +140,11 @@ const Contact = () => {
           </Title>
           <Text className={styles.resumeInfo}>
             {t("resumeSectionDescription")}&nbsp;
-            <Link size="M" href="mailto:mail@digitaltableteur.com">
+            <Link
+              size="M"
+              href="mailto:mail@digitaltableteur.com"
+              className="wavyUnderline"
+            >
               mail@digitaltableteur.com
             </Link>
           </Text>
