@@ -63,7 +63,7 @@
   "contactMessagePlaceholder": "Kirjoita viestisi",
   "contactAttachmentLabel": "Liite (valinnainen)",
   "contactAttachmentPlaceholder": "Ei tiedostoa valittu",
-  "contactAttachmentHelper": "Valinnainen. Enintään {{size}}. Alle {{emailLimit}} kokoiset liitteet välitetään vahvistussähköpostissa, suuremmat tallennamme turvallisesti ja käsittelemme jatkossa. Hyväksytyt muodot: {{types}}.",
+  "contactAttachmentHelper": "Valinnainen. Enintään {{size}}. Hyväksytyt muodot: {{types}}.",
   "contactAttachmentUpload": "Valitse tiedosto",
   "contactAttachmentClear": "Poista liite",
   "contactAttachmentTooLarge": "Tiedosto on liian suuri. Enintään {{size}}.",

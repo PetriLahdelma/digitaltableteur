@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2025-11-08T05:08:18.119Z",
+  "generatedAt": "2025-11-08T12:44:13.245Z",
   "vitest": {
     "totalSuites": 92,
     "passedSuites": 92,
     "failedSuites": 0,
-    "totalTests": 340,
-    "passedTests": 340,
+    "totalTests": 341,
+    "passedTests": 341,
     "failedTests": 0,
-    "durationMs": 4137.715087890625
+    "durationMs": 4016.91357421875
   },
   "accessibilityPages": {
     "total": 6,
