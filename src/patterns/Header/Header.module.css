@@ -222,7 +222,7 @@ header h2 a {
 
 .languageLink:hover::after,
 .languageLink:focus-visible::after {
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .languageLink:focus-visible {
@@ -235,7 +235,6 @@ header h2 a {
 }
 
 .languageLinkActive {
-  opacity: 0.6;
   border-bottom-color: transparent;
 }
 
