@@ -10,40 +10,40 @@ import Text from "@dt/Text";
 import BlogNav from "@dt/BlogNav/BlogNav";
 import "../../i18n";
 
-const OneManArmy = () => {
+const InSearchOfImpact = () => {
   const { t } = useTranslation();
 
   const shareUrl =
     typeof window !== "undefined"
       ? window.location.href
-      : "https://digitaltableteur.com/blog/one-man-army";
+      : "https://digitaltableteur.com/blog/in-search-of-impact";
 
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>{t("postOneManArmyMetaTitle")}</title>
+          <title>{t("postInSearchOfImpactMetaTitle")}</title>
           <meta
             name="description"
-            content={t("postOneManArmyMetaDescription")}
+            content={t("postInSearchOfImpactMetaDescription")}
           />
           <meta
             property="og:title"
-            content={t("postOneManArmyMetaTitle") as string}
+            content={t("postInSearchOfImpactMetaTitle") as string}
           />
           <meta
             property="og:description"
-            content={t("postOneManArmyMetaDescription") as string}
+            content={t("postInSearchOfImpactMetaDescription") as string}
           />
           <meta property="og:image" content="/logo512.png" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:title"
-            content={t("postOneManArmyMetaTitle") as string}
+            content={t("postInSearchOfImpactMetaTitle") as string}
           />
           <meta
             name="twitter:description"
-            content={t("postOneManArmyMetaDescription") as string}
+            content={t("postInSearchOfImpactMetaDescription") as string}
           />
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
@@ -51,11 +51,7 @@ const OneManArmy = () => {
       <article className={styles.article}>
         <BlogNav />
         <header>
-          <h1>
-            Digitaltableteur Field Notes:
-            <br />
-            One-Man Army, Enterprise Impact
-          </h1>
+          <h1>In search of impact as a solo entrepreneur</h1>
           <div className={styles.metaRow}>
             <Text className={styles.releaseDate}>February 11, 2025</Text>
             <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
@@ -177,7 +173,8 @@ const OneManArmy = () => {
         <h2>{t("shareHeading")}</h2>
         <SocialShare
           url={shareUrl}
-          title="Digitaltableteur Field Notes: One-Man Army, Enterprise Impact"
+          title="In search of impact as a solo entrepreneur
+"
         />
         <div className={styles.similar}>
           <h2>Similar Reads</h2>
@@ -199,4 +196,4 @@ const OneManArmy = () => {
   );
 };
 
-export default OneManArmy;
+export default InSearchOfImpact;
