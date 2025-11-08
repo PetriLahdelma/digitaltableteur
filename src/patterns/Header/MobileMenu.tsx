@@ -4,19 +4,18 @@ import { useTranslation } from "react-i18next";
 import { IoClose } from "react-icons/io5";
 import { IoMoon, IoSunnySharp } from "react-icons/io5";
 import { MdOutlineContrast } from "react-icons/md";
-import { useTheme, type Theme } from "@dt/ThemeProvider";
+import { type Theme } from "@dt/ThemeProvider";
 import styles from "./MobileMenu.module.css";
 import Title from "@dt/Title";
 import { NavMenuList } from "@dt/index";
 import Label from "@dt/Label";
+import { usePersistentTheme } from "../../hooks/usePersistentTheme";
 
 type MobileMenuProps = {
   isOpen: boolean;
   onClose?: () => void;
   onNavigate?: () => void;
 };
-
-const THEME_SEQUENCE: Theme[] = ["light", "dark", "hcb", "hcw"];
 
 const themeIcons: Record<Theme, React.ReactNode> = {
   light: <IoSunnySharp className={styles.themeButtonIcon} />,
@@ -30,11 +29,6 @@ const setCookie = (name: string, value: string, days = 365) => {
   document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
 };
 
-const getNextTheme = (current: Theme) => {
-  const index = THEME_SEQUENCE.indexOf(current);
-  return THEME_SEQUENCE[(index + 1) % THEME_SEQUENCE.length];
-};
-
 const MobileMenu: React.FC<MobileMenuProps> = ({
   isOpen,
   onClose,
@@ -42,7 +36,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
-  const { theme, setTheme } = useTheme();
+  const { theme, cycleTheme } = usePersistentTheme();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
 
   const languages = React.useMemo(
@@ -64,9 +58,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   };
 
   const handleThemeToggle = () => {
-    const nextTheme = getNextTheme(theme);
-    setCookie("dt_theme", nextTheme);
-    setTheme(nextTheme);
+    cycleTheme();
   };
 
   const handleNavigate = () => {

@@ -4,31 +4,11 @@ import styles from "./Header.module.css";
 import "../../styles/variables.css";
 import "../../styles/fonts.css";
 import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
-import { useTheme, type Theme } from "@dt/ThemeProvider";
-import { IoMoon } from "react-icons/io5";
-import { IoSunnySharp } from "react-icons/io5";
-import { MdOutlineContrast, MdOutlineInvertColors } from "react-icons/md";
+import { type Theme } from "@dt/ThemeProvider";
+import { IoMoon, IoSunnySharp } from "react-icons/io5";
+import { MdOutlineContrast } from "react-icons/md";
 import { useTranslation } from "react-i18next";
-
-// Helper to get/set cookie
-function setCookie(name: string, value: string, days = 365) {
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
-}
-function getCookie(name: string) {
-  return document.cookie.split("; ").reduce((r, v) => {
-    const parts = v.split("=");
-    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-  }, "");
-}
-
-const THEME_SEQUENCE: Theme[] = ["light", "dark", "hcb", "hcw"];
-const isTheme = (value: string): value is Theme =>
-  (THEME_SEQUENCE as readonly string[]).includes(value as Theme);
-const getNextTheme = (value: Theme): Theme => {
-  const index = THEME_SEQUENCE.indexOf(value);
-  return THEME_SEQUENCE[(index + 1) % THEME_SEQUENCE.length];
-};
+import { usePersistentTheme } from "../../hooks/usePersistentTheme";
 
 const themeIcons: Record<Theme, React.ReactNode> = {
   light: <IoSunnySharp />,
@@ -37,18 +17,63 @@ const themeIcons: Record<Theme, React.ReactNode> = {
   hcw: <MdOutlineContrast />,
 };
 
-const Header = () => {
-  const { theme, setTheme } = useTheme();
+type HeaderProps = {
+  navItems?: HeaderNavItem[];
+  onThemeCycle?: (nextTheme: Theme) => void;
+  onLanguageChange?: (code: string) => void;
+};
+
+export type HeaderNavItem = {
+  to: string;
+  label: string;
+  exact?: boolean;
+};
+
+// Helper to get/set language cookie
+function setCookie(name: string, value: string, days = 365) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+}
+
+function getCookie(name: string) {
+  return document.cookie.split("; ").reduce((r, v) => {
+    const parts = v.split("=");
+    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+  }, "");
+}
+
+const Header: React.FC<HeaderProps> = ({
+  navItems,
+  onThemeCycle,
+  onLanguageChange,
+}) => {
+  const { theme, cycleTheme } = usePersistentTheme();
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const leftRef = React.useRef<HTMLDivElement | null>(null);
   const controlsRef = React.useRef<HTMLDivElement | null>(null);
   const [navOffset, setNavOffset] = React.useState(0);
-  const languages = [
-    { code: "en", label: t("langEN") },
-    { code: "fi", label: t("langFI") },
-    { code: "sv", label: t("langSV") },
-  ];
+  const languages = React.useMemo(
+    () => [
+      { code: "en", label: t("langEN") },
+      { code: "fi", label: t("langFI") },
+      { code: "sv", label: t("langSV") },
+    ],
+    [t],
+  );
+
+  const defaultNavItems = React.useMemo<HeaderNavItem[]>(
+    () => [
+      { to: "/", label: t("navHome"), exact: true },
+      { to: "/work", label: t("navWork") },
+      { to: "/about", label: t("navAbout") },
+      { to: "/blog", label: t("navBlog") },
+      { to: "/contact", label: t("navContact") },
+    ],
+    [t],
+  );
+  const resolvedNavItems = navItems ?? defaultNavItems;
+
   // On mount, check for cookie and set language if needed
   React.useEffect(() => {
     const cookieLang = getCookie("i18next");
@@ -56,13 +81,6 @@ const Header = () => {
       i18n.changeLanguage(cookieLang);
     }
   }, [i18n]);
-  // On mount, check for theme cookie and set theme if needed
-  React.useEffect(() => {
-    const cookieTheme = getCookie("dt_theme");
-    if (cookieTheme && isTheme(cookieTheme) && theme !== cookieTheme) {
-      setTheme(cookieTheme);
-    }
-  }, [setTheme, theme]);
 
   React.useLayoutEffect(() => {
     let rafId: number | null = null;
@@ -82,7 +100,6 @@ const Header = () => {
       setNavOffset((rightWidth - leftWidth) / 2);
     };
 
-    // Throttled resize handler using RAF
     const scheduleCompute = () => {
       if (rafId !== null) return;
       rafId = window.requestAnimationFrame(() => {
@@ -91,13 +108,9 @@ const Header = () => {
       });
     };
 
-    // Initial computation - immediate, no throttling needed
     computeOffset();
-
-    // Throttle window resize events
     window.addEventListener("resize", scheduleCompute);
 
-    // ResizeObserver is already optimized, use direct computation
     let resizeObserver: ResizeObserver | undefined;
     if (typeof ResizeObserver !== "undefined") {
       resizeObserver = new ResizeObserver(() => computeOffset());
@@ -112,18 +125,60 @@ const Header = () => {
     };
   }, []);
 
-  // Normalize language code to base (e.g., 'en-US' -> 'en')
   const currentlang = i18n.language.split("-")[0];
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
     setCookie("i18next", code);
     localStorage.setItem("i18nextLng", code);
+    onLanguageChange?.(code);
   };
-  const changeTheme = () => {
-    const nextTheme = getNextTheme(theme);
-    setCookie("dt_theme", nextTheme);
-    setTheme(nextTheme);
+
+  const themeNames = React.useMemo(
+    () => ({
+      light: t("themeNameLight", "Light theme"),
+      dark: t("themeNameDark", "Dark theme"),
+      hcb: t("themeNameHcb", "High contrast (dark)"),
+      hcw: t("themeNameHcw", "High contrast (light)"),
+    }),
+    [t],
+  );
+
+  const [isThemeAnimating, setIsThemeAnimating] = React.useState(false);
+  const animationTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+  React.useEffect(
+    () => () => {
+      if (animationTimeout.current) {
+        clearTimeout(animationTimeout.current);
+      }
+    },
+    [],
+  );
+
+  const [hasMounted, setHasMounted] = React.useState(false);
+  const [themeAnnouncement, setThemeAnnouncement] = React.useState("");
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  React.useEffect(() => {
+    if (!hasMounted) return;
+    const label = themeNames[theme] ?? theme;
+    setThemeAnnouncement(t("headerThemeAnnouncement", { theme: label }));
+  }, [hasMounted, theme, themeNames, t]);
+
+  const handleThemeToggle = () => {
+    if (!isThemeAnimating) {
+      setIsThemeAnimating(true);
+      animationTimeout.current = setTimeout(() => {
+        setIsThemeAnimating(false);
+        animationTimeout.current = null;
+      }, 450);
+    }
+    const nextTheme = cycleTheme();
+    onThemeCycle?.(nextTheme);
   };
+
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
@@ -140,68 +195,22 @@ const Header = () => {
           }}
         >
           <ul className={styles.nav}>
-            <li>
-              <Link
-                to="/"
-                className={
-                  location.pathname === "/" ? styles.selected : undefined
-                }
-              >
-                {t("navHome")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/work"
-                className={
-                  styles.navLink +
-                  " " +
-                  (location.pathname.startsWith("/work") ? styles.selected : "")
-                }
-                tabIndex={0}
-                aria-current={
-                  location.pathname.startsWith("/work") ? "page" : undefined
-                }
-              >
-                {t("navWork")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                className={
-                  location.pathname.startsWith("/about")
-                    ? styles.selected
-                    : undefined
-                }
-              >
-                {t("navAbout")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/blog"
-                className={
-                  location.pathname.startsWith("/blog")
-                    ? styles.selected
-                    : undefined
-                }
-              >
-                {t("navBlog")}
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact"
-                className={
-                  location.pathname.startsWith("/contact")
-                    ? styles.selected
-                    : undefined
-                }
-              >
-                {t("navContact")}
-              </Link>
-            </li>
+            {resolvedNavItems.map((item) => {
+              const isActive = item.exact
+                ? location.pathname === item.to
+                : location.pathname.startsWith(item.to);
+              return (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className={isActive ? styles.selected : undefined}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
         <div ref={controlsRef} className={styles.controls}>
@@ -223,12 +232,24 @@ const Header = () => {
             ))}
           </div>
           <button
-            onClick={changeTheme}
+            onClick={handleThemeToggle}
             className={styles.themeToggle}
             aria-label={t("toggleDarkMode")}
           >
-            {themeIcons[theme]}
+            <span
+              className={`${styles.themeToggleIcon} ${isThemeAnimating ? styles.themeToggleIconAnimating : ""}`.trim()}
+              aria-hidden="true"
+            >
+              {themeIcons[theme]}
+            </span>
           </button>
+          <span
+            className={styles.visuallyHidden}
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {themeAnnouncement}
+          </span>
         </div>
       </div>
     </header>

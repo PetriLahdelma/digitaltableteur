@@ -42,12 +42,30 @@ footer p {
 }
 
 .footer p a {
+  position: relative;
   text-decoration: none;
   color: var(--inverted-text-color);
+  padding-bottom: 6px;
 }
 
-.footer p a:hover {
-  text-decoration: underline;
+.footer p a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  background-color: var(--underline-accent-color, currentcolor);
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  content: "";
+  mask-image: var(--wavy-underline-mask);
+  mask-repeat: repeat-x;
+  mask-size: 16px 6px;
+}
+
+.footer p a:hover::after,
+.footer p a:focus-visible::after {
+  opacity: 0.85;
 }
 
 .footerText {
