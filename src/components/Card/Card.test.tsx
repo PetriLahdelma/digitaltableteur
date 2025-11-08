@@ -1,7 +1,7 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import Card from "./Card";
+import Card, { CardAction, CardTab } from "./Card";
 
 describe("Card", () => {
   it("renders title correctly", () => {
@@ -44,20 +44,48 @@ describe("Card", () => {
     // Note: Card component doesn't use aria-label, just check basic link functionality
   });
 
-  it("applies custom className", () => {
-    render(<Card title="Test Card" className="custom-class" />);
-    // Get the card container by looking for an element with the custom class
-    const cardElement = screen
-      .getByText("Test Card")
-      .closest("div")?.parentElement;
-    expect(cardElement?.className).toContain("custom-class");
+  it("applies custom className (div variant)", () => {
+    const { container } = render(
+      <Card title="Test Card" className="custom-class" />,
+    );
+    const cardElement = container.querySelector(".custom-class");
+    expect(cardElement).toBeInTheDocument();
   });
-  it("applies custom className", () => {
+  it("applies custom className (query selector)", () => {
     const { container } = render(
       <Card title="Test Card" className="custom-class" />,
     );
     // The custom class is applied to the top-level card div
     const cardElement = container.querySelector(".custom-class");
     expect(cardElement).toBeInTheDocument();
+  });
+
+  it("renders actions", () => {
+    const actions: CardAction[] = [
+      { key: "a", label: "First" },
+      { key: "b", label: "Second" },
+    ];
+    render(<Card title="Action Card" actions={actions} />);
+    expect(screen.getByText("First")).toBeInTheDocument();
+    expect(screen.getByText("Second")).toBeInTheDocument();
+  });
+
+  it("renders loading skeleton", () => {
+    render(<Card title="Loading Card" loading body="Hidden" />);
+    const skeleton = screen.getByRole("status", { name: /loading content/i });
+    expect(skeleton).toHaveAttribute("aria-busy", "true");
+  });
+
+  it("renders tabs and switches active (uncontrolled)", () => {
+    const tabs: CardTab[] = [
+      { key: "one", label: "One" },
+      { key: "two", label: "Two" },
+    ];
+    render(<Card title="Tabbed" tabs={tabs} body="Content" />);
+    const tabOne = screen.getByRole("tab", { name: /One/i });
+    const tabTwo = screen.getByRole("tab", { name: /Two/i });
+    expect(tabOne).toHaveAttribute("aria-selected", "true");
+    fireEvent.click(tabTwo);
+    expect(tabTwo).toHaveAttribute("aria-selected", "true");
   });
 });

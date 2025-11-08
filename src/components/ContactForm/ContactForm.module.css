@@ -2,12 +2,12 @@
 @import url("../../styles/fonts.css");
 
 .contactForm {
-  width: 100%;
-  max-width: 424px;
   margin: 2rem auto 6rem;
   padding: 2rem;
-  background-color: var(--color-light-bg);
+  width: 100%;
+  max-width: 424px;
   border: 2px solid var(--color-primary);
+  background-color: var(--color-light-bg);
   box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
@@ -25,16 +25,16 @@
 }
 
 .privacyPolicy {
+  margin-block-end: 1.2rem;
   font-family: var(--primary-body-font);
   font-size: 0.875rem;
-  color: var(--color-primary);
   text-align: center;
-  margin-block-end: 1.2rem;
+  color: var(--color-primary);
 }
 
 .privacyPolicy a {
-  color: var(--color-primary);
   text-decoration: underline;
+  color: var(--color-primary);
 }
 
 .privacyPolicy a:hover {
@@ -46,36 +46,45 @@
 }
 
 label {
+  justify-content: flex-start;
   font-family: var(--primary-body-font, sans-serif);
   text-align: left;
-  justify-content: flex-start;
 }
 
 .submitButton {
-  margin-top: 1rem;
   margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+.attachmentNotice {
+  font-family: var(--primary-body-font);
+  font-size: 0.875rem;
+  color: var(--color-warning, #ff9f0a);
+  margin-bottom: 1rem;
+  margin-top: -0.75rem;
 }
 
 /* Mobile responsiveness */
 @media (width <= 768px) {
   .contactForm {
-    margin: 1rem;
+    margin: 1rem auto;
     padding: 2rem;
-    max-width: none;
-    width: calc(100% - 4.5rem);
+    width: 100%;
+    max-width: 424px;
   }
 }
 
 /* Extra small screens */
 @media (width <= 480px) {
   .contactForm {
-    margin: 0.5rem;
-    padding: 1.5rem;
-    width: calc(100% - 2.5rem);
+    margin: 0.5rem auto 2.5rem;
+    padding: 1.5rem 1.25rem;
+    width: 100%;
+    max-width: 424px; /* Match resume download modal content comfortable width */
   }
 
   .privacyPolicy {
-    font-size: 0.8rem;
     margin-block-end: 1rem;
+    font-size: 0.8rem;
   }
 }

@@ -1,11 +1,12 @@
 .modalContent {
   display: flex;
+  min-height: 140px; /* Reserve consistent space to prevent height jumping */
   flex-direction: column;
   gap: 1rem;
-  min-height: 140px; /* Reserve consistent space to prevent height jumping */
 }
 
 /* Modal title styling class - for reference/future use */
+
 .modalTitle {
   text-transform: none;
 }
@@ -16,8 +17,8 @@
 
 .inputWrapper {
   position: relative;
-  max-width: 220px;
   width: 100%;
+  max-width: 220px;
 }
 
 .validationIndicator {
@@ -29,26 +30,26 @@
 }
 
 .checkmark {
-  color: var(--color-success);
   font-weight: bold;
+  color: var(--color-success);
   animation: checkmark-appear 0.3s ease-in-out;
 }
 
 .spinner {
-  color: var(--color-primary);
   font-size: 1.25rem;
+  color: var(--color-primary);
   animation: spin 1s linear infinite;
 }
 
 @keyframes checkmark-appear {
   0% {
-    opacity: 0;
     transform: scale(0.5);
+    opacity: 0;
   }
 
   100% {
-    opacity: 1;
     transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -63,17 +64,17 @@
 }
 
 .errorText {
-  color: var(--color-error) !important;
+  margin-block-start: 0.25rem;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
   text-align: left;
+  color: var(--color-error);
 }
 
 .modalFooter {
   display: flex;
-  gap: 0.75rem;
   justify-content: flex-end;
   align-items: center;
+  gap: 0.75rem;
 }
 
 @media (width <= 768px) {

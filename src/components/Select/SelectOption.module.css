@@ -1,7 +1,7 @@
 .option {
+  background: inherit;
   font-size: 1rem;
   color: inherit;
-  background: inherit;
 }
 
 .option:disabled {

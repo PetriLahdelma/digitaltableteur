@@ -10,10 +10,19 @@ const USER_OPEN_HOURS_PATTERN =
 const USER_SERVICES_PATTERN =
   /\bservices?\b|\bcapabilities\b|\bofferings?\b|what\s+do\s+you\s+offer|what\s+services\s+do\s+you\s+provide|palvelut|palveluja|palveluita|mitä\s+tarjoatte|palvelunne|tjänster|era\s+tjänster|vad\s+erbjuder\s+ni|erbjudanden/i;
 
+// Email workflow trigger patterns (EN/FI/SV)
+// General send intent: phrases implying composing/sending an email
+const USER_EMAIL_WORKFLOW_GENERAL_PATTERN =
+  /send(?:\s+(?:an|a))?\s+email|compose(?:\s+(?:an|a))?\s+email|help\s+me\s+send\s+an?\s+email|write\s+an?\s+email|skicka\s+epost|skicka\s+email|lähettää\s+sähköpostia|lähetä\s+email|auta\s+minua\s+lähettämään\s+sähköposti|kirjoita\s+sähköposti|maila/i;
+// Simple keyword: user just types 'email' or asks for the company email address;
+// we treat this differently to show the address then offer workflow.
+const USER_EMAIL_WORKFLOW_SIMPLE_PATTERN = /^(?:email|sähköposti|epost)\s*$/i;
+
 export type ProcessedPart =
   | { kind: "text"; content: string }
   | { kind: "component"; name: "OpenHours"; props?: { compact?: boolean } }
   | { kind: "component"; name: "ServicesGrid" };
+// Future: email workflow will introduce a pseudo-component or control parts.
 
 export interface ProcessedMessage {
   id: string;
@@ -68,12 +77,27 @@ export const processMessage = (message: UIMessage): ProcessedMessage => {
 };
 
 // Convenience bulk processor
+// Original array-returning conversation processor (used by ChatMessages rendering)
 export const processConversation = (
   messages: UIMessage[],
 ): ProcessedMessage[] => {
+  const { parts } = processConversationWithFlags(messages);
+  return parts;
+};
+
+// Extended variant exposing pendingEmailWorkflow flag for ChatWidget trigger logic
+export const processConversationWithFlags = (
+  messages: UIMessage[],
+): {
+  parts: ProcessedMessage[];
+  pendingEmailWorkflowGeneral: boolean;
+  pendingEmailWorkflowSimple: boolean;
+} => {
   const processed: ProcessedMessage[] = [];
   let pendingOpenHours = false;
   let pendingServices = false;
+  let pendingEmailWorkflowGeneral = false;
+  let pendingEmailWorkflowSimple = false;
 
   for (const m of messages) {
     if (m.role !== "assistant" && m.role !== "user") continue;
@@ -87,6 +111,10 @@ export const processConversation = (
       pendingServices =
         normalized.includes(TOKEN_SERVICES_GRID) ||
         USER_SERVICES_PATTERN.test(normalized);
+      pendingEmailWorkflowGeneral =
+        USER_EMAIL_WORKFLOW_GENERAL_PATTERN.test(normalized);
+      pendingEmailWorkflowSimple =
+        USER_EMAIL_WORKFLOW_SIMPLE_PATTERN.test(normalized);
       // For user messages we sanitize explicit tokens from displayed copy
       const displayCopy = normalized
         .split(TOKEN_OPEN_HOURS)
@@ -133,12 +161,19 @@ export const processConversation = (
     if (pendingServices) {
       parts.push({ kind: "component", name: "ServicesGrid" });
     }
+    // Note: pendingEmailWorkflow* flags consumed outside rendering layer (ChatWidget)
     processed.push({ id: m.id, role: m.role, parts });
     // Reset after first assistant response
     pendingOpenHours = false;
     pendingServices = false;
+    pendingEmailWorkflowGeneral = false;
+    pendingEmailWorkflowSimple = false;
   }
-  return processed;
+  return {
+    parts: processed,
+    pendingEmailWorkflowGeneral,
+    pendingEmailWorkflowSimple,
+  };
 };
 
 export default processMessage;
