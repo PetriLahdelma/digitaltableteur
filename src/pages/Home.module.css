@@ -99,9 +99,9 @@ h1 {
 .cta a {
   border-radius: 0.5rem;
   font-size: 1.5rem;
+  text-decoration: none;
   color: var(--color-white);
   transition: background-color 0.3s ease;
-  text-decoration: none;
 }
 
 .gradientText {

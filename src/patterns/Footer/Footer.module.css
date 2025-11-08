@@ -42,28 +42,25 @@ footer p {
 }
 
 .footer p a {
-  color: var(--inverted-text-color);
   position: relative;
-  padding-bottom: 6px;
   text-decoration: none;
+  color: var(--inverted-text-color);
+  padding-bottom: 6px;
 }
 
 .footer p a::after {
-  content: "";
   position: absolute;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   height: 6px;
-  background-color: currentColor;
-  opacity: 0;
-  -webkit-mask-image: var(--wavy-underline-mask);
-  mask-image: var(--wavy-underline-mask);
-  -webkit-mask-repeat: repeat-x;
-  mask-repeat: repeat-x;
-  -webkit-mask-size: 16px 6px;
-  mask-size: 16px 6px;
+  background-color: var(--underline-accent-color, currentcolor);
   transition: opacity 0.2s ease;
+  opacity: 0;
+  content: "";
+  mask-image: var(--wavy-underline-mask);
+  mask-repeat: repeat-x;
+  mask-size: 16px 6px;
 }
 
 .footer p a:hover::after,
