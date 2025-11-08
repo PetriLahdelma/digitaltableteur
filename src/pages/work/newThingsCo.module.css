@@ -123,17 +123,16 @@
 }
 
 .processSteps {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
 }
 
 .processStep {
   padding: 1.2rem 1rem 1.2rem 1.2rem;
   min-width: 160px;
-  flex: 1 1 180px;
   border-radius: 12px;
-  background: color-mix(in srgb, var(--color-gray) 20%, transparent);
+  background: color-mix(in srgb, var(--color-gray-dark) 10%, transparent);
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
 }
 
@@ -155,9 +154,13 @@
 @media (width <= 700px) {
   .heroSection,
   .twoCol,
-  .processSteps,
   .gallery {
     flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .processSteps {
+    grid-template-columns: 1fr;
     gap: 1.2rem;
   }
 
