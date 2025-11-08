@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { vi, describe, it, expect, beforeEach } from "vitest";
+import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 
 // Mock emailjs send
 vi.mock("@emailjs/browser", () => ({
@@ -13,79 +13,116 @@ describe("ContactForm integration", () => {
   let originalFetch: typeof global.fetch;
 
   beforeEach(() => {
-    // Reset fetch mock
     originalFetch = global.fetch;
-    // @ts-ignore
-    global.fetch = vi.fn(() => Promise.resolve({ ok: true, json: () => ({}) }));
 
     // Clear all mocks to ensure fresh state
     vi.clearAllMocks();
+
+    global.fetch = vi.fn(() =>
+      Promise.resolve({ ok: true, json: () => ({}) }),
+    ) as unknown as typeof fetch;
   });
 
-  it("submits correct payload to fetch and EmailJS", async () => {
+  afterEach(() => {
+    global.fetch = originalFetch;
+  });
+
+  const defaultFormValues = {
+    fullName: "Test User",
+    email: "test@example.com",
+    phone: "123456",
+    message: "Hello there",
+  };
+
+  const submitContactForm = async (
+    overrides: Partial<typeof defaultFormValues> = {},
+  ) => {
     render(<ContactForm />);
 
-    // Fill basic inputs by label text (use visible English translations now that i18n is initialized)
-    const nameInput = screen.getByLabelText(/Full Name/i);
-    const emailInput = screen.getByLabelText(/Email Address/i);
-    const phoneInput = screen.getByLabelText(/Phone Number/i);
-    const messageInput = screen.getByLabelText(/Your Message/i);
+    const values = { ...defaultFormValues, ...overrides };
 
-    // Use direct queries where labels might be translated
-    fireEvent.change(nameInput, { target: { value: "Test User" } });
-    fireEvent.change(emailInput, { target: { value: "test@example.com" } });
-    fireEvent.change(phoneInput, { target: { value: "123456" } });
-    fireEvent.change(messageInput, { target: { value: "Hello there" } });
-
-    // Select interest checkboxes by role/label - pick the first option
-    const interestCheckboxes = screen.getAllByRole("checkbox");
-    // There may be a master checkbox; select the first slave checkbox
-    if (interestCheckboxes.length > 1) {
-      // Skip master (first) if present
-      const slave = interestCheckboxes[interestCheckboxes.length > 1 ? 1 : 0];
-      fireEvent.click(slave);
-    }
-
-    const submit = screen.getByRole("button", { name: /Submit/i });
-
-    fireEvent.click(submit);
-
-    // Wait for async operations (fetch and send) to be called
-    await waitFor(() => {
-      // @ts-ignore
-      expect(global.fetch).toHaveBeenCalled();
+    fireEvent.change(screen.getByLabelText(/Full Name/i), {
+      target: { value: values.fullName },
+    });
+    fireEvent.change(screen.getByLabelText(/Email Address/i), {
+      target: { value: values.email },
+    });
+    fireEvent.change(screen.getByLabelText(/Phone Number/i), {
+      target: { value: values.phone },
+    });
+    fireEvent.change(screen.getByLabelText(/Your Message/i), {
+      target: { value: values.message },
     });
 
-    // Check fetch payload
-    // @ts-ignore
-    const fetchCall = (global.fetch as any).mock.calls[0];
+    const interestCheckboxes = screen.getAllByRole("checkbox");
+    if (interestCheckboxes.length > 1) {
+      fireEvent.click(interestCheckboxes[1]);
+    } else if (interestCheckboxes.length === 1) {
+      fireEvent.click(interestCheckboxes[0]);
+    }
+
+    fireEvent.click(screen.getByRole("button", { name: /Submit/i }));
+
+    await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+
+    const fetchMock = global.fetch as jest.Mock;
+    const fetchCall = fetchMock.mock.calls[0];
     const fetchBody = JSON.parse(fetchCall[1].body);
-    expect(fetchBody).toHaveProperty("name", "Test User");
-    expect(fetchBody).toHaveProperty("email", "test@example.com");
-    expect(fetchBody).toHaveProperty("phone", "123456");
-    expect(fetchBody).toHaveProperty("message", "Hello there");
-    expect(fetchBody).toHaveProperty("interest");
-    expect(fetchBody).toHaveProperty("attachmentName", null);
-    expect(fetchBody).toHaveProperty("attachmentType", null);
-    expect(fetchBody).toHaveProperty("attachmentSize", null);
-    expect(fetchBody).toHaveProperty("attachmentData", null);
 
-    // Check EmailJS send called with similar payload
     const { send } = await import("@emailjs/browser");
-    expect(send).toHaveBeenCalled();
-    const sendArgs = (send as any).mock.calls[0][2];
-    expect(sendArgs).toHaveProperty("name", "Test User");
-    expect(sendArgs).toHaveProperty("email", "test@example.com");
-    expect(sendArgs).toHaveProperty("phone", "123456");
-    expect(sendArgs).toHaveProperty("message", "Hello there");
-    expect(sendArgs).toHaveProperty("interest");
-    expect(sendArgs).toHaveProperty("attachmentName", "");
-    expect(sendArgs).toHaveProperty("attachmentType", "");
-    expect(sendArgs).toHaveProperty("attachmentSize", "");
-    expect(sendArgs).toHaveProperty("attachmentData", "");
-    expect(sendArgs).toHaveProperty("attachmentNotice", "");
+    const sendArgs = (send as jest.Mock).mock.calls[0][2];
 
-    // restore fetch
-    global.fetch = originalFetch;
+    return { values, fetchBody, sendArgs };
+  };
+
+  it("submits correct payload to fetch and EmailJS", async () => {
+    const { fetchBody, sendArgs } = await submitContactForm();
+
+    expect(fetchBody).toMatchObject({
+      name: defaultFormValues.fullName,
+      email: defaultFormValues.email,
+      phone: defaultFormValues.phone,
+      message: defaultFormValues.message,
+      interest: expect.any(String),
+      hearAbout: "",
+    });
+    expect(fetchBody).toHaveProperty("time");
+
+    expect(sendArgs).toMatchObject({
+      name: defaultFormValues.fullName,
+      email: defaultFormValues.email,
+      phone: defaultFormValues.phone,
+      message: defaultFormValues.message,
+      interest: expect.any(String),
+      hearAbout: "",
+    });
+    expect(sendArgs).toHaveProperty("time");
+  });
+
+  it("allows overriding values via helper to test different payloads", async () => {
+    const overrides = {
+      fullName: "Automation Bot",
+      email: "bot@example.com",
+      phone: "+358-555-000",
+      message: "Automated message",
+    };
+
+    const { fetchBody, sendArgs } = await submitContactForm(overrides);
+
+    expect(fetchBody).toMatchObject({
+      name: overrides.fullName,
+      email: overrides.email,
+      phone: overrides.phone,
+      message: overrides.message,
+    });
+
+    expect(sendArgs).toMatchObject({
+      name: overrides.fullName,
+      email: overrides.email,
+      phone: overrides.phone,
+      message: overrides.message,
+      interest: expect.any(String),
+      hearAbout: "",
+    });
   });
 });

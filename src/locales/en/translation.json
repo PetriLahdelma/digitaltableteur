@@ -64,7 +64,7 @@
   "contactMessagePlaceholder": "Enter your message",
   "contactAttachmentLabel": "Attachment (optional)",
   "contactAttachmentPlaceholder": "No file selected",
-  "contactAttachmentHelper": "Optional. Max {{size}}. Files under {{emailLimit}} are forwarded with the confirmation email; larger ones are stored securely for follow-up. Accepted formats: {{types}}.",
+  "contactAttachmentHelper": "Optional. Max {{size}}. Accepted formats: {{types}}.",
   "contactAttachmentUpload": "Choose file",
   "contactAttachmentClear": "Remove file",
   "contactAttachmentTooLarge": "File is too large. Max {{size}}.",
