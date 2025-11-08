@@ -10,10 +10,16 @@ const isWindows = process.platform === "win32";
 const runnerName = isWindows ? "test-storybook.cmd" : "test-storybook";
 const storybookCliName = isWindows ? "storybook.cmd" : "storybook";
 const runnerPath = path.join(projectRoot, "node_modules", ".bin", runnerName);
-const storybookCliPath = path.join(projectRoot, "node_modules", ".bin", storybookCliName);
+const storybookCliPath = path.join(
+  projectRoot,
+  "node_modules",
+  ".bin",
+  storybookCliName,
+);
 
 const extraArgs = process.argv.slice(2);
-const isUpdateSnapshot = extraArgs.includes("--updateSnapshot") || extraArgs.includes("-u");
+const isUpdateSnapshot =
+  extraArgs.includes("--updateSnapshot") || extraArgs.includes("-u");
 
 const parsePort = (value) => {
   const parsed = Number.parseInt(value ?? "", 10);
@@ -77,7 +83,9 @@ const waitForStorybook = async ({
     await delay(pollMs);
   }
 
-  throw new Error(`Timed out waiting for Storybook to become available at ${url}`);
+  throw new Error(
+    `Timed out waiting for Storybook to become available at ${url}`,
+  );
 };
 
 const startStorybook = async (url, port) => {

@@ -19,6 +19,7 @@ This site showcases all public pages, works, and blog posts in English, Finnish,
 - [Redirecting...](https://digitaltableteur.com/posts/Designing2025)
 - [Redirecting...](https://digitaltableteur.com/posts/DigitalCraftsmanship)
 - [Redirecting...](https://digitaltableteur.com/posts/FigmaMCP)
+- [Redirecting...](https://digitaltableteur.com/posts/InSearchOfImpact)
 - [Redirecting...](https://digitaltableteur.com/posts/PetriLahdelmaBio)
 - [Redirecting...](https://digitaltableteur.com/posts/TemplateArticle)
 - [Redirecting...](https://digitaltableteur.com/posts/ThoughtsOnFutureBranding)
@@ -227,6 +228,20 @@ Title: Redirecting...
 Meta Description: 
 Language: en
 Canonical URL: https://digitaltableteur.com/posts/FigmaMCP
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+
+---
+
+### Page: https://digitaltableteur.com/posts/InSearchOfImpact
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/posts/InSearchOfImpact
 
 ## Headings Structure:
 No headings found
