@@ -45,6 +45,13 @@
   margin-block-end: 0;
 }
 
+.formActions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 label {
   justify-content: flex-start;
   font-family: var(--primary-body-font, sans-serif);
@@ -71,6 +78,10 @@ label {
     padding: 2rem;
     width: 100%;
     max-width: 424px;
+  }
+
+  .formActions {
+    flex-direction: column;
   }
 }
 

@@ -60,4 +60,18 @@ describe("FileUpload", () => {
     expect(handleChange).toHaveBeenLastCalledWith(null);
     expect(screen.getByText(/File too large/i)).toBeInTheDocument();
   });
+
+  it("clicking the text field triggers the hidden file input", () => {
+    const { container } = renderComponent();
+    const fileInput = container.querySelector(
+      "input[type='file']",
+    ) as HTMLInputElement;
+    const textField = screen.getByLabelText(/attachment/i);
+
+    const clickSpy = vi.spyOn(fileInput, "click");
+    fireEvent.click(textField);
+
+    expect(clickSpy).toHaveBeenCalled();
+    clickSpy.mockRestore();
+  });
 });

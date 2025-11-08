@@ -14,29 +14,43 @@ const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
 const EMAIL_ATTACHMENT_LIMIT_BYTES = 35 * 1024;
 const ACCEPTED_ATTACHMENT_TYPES = ".pdf,.png,.jpg,.jpeg";
 
+const getInitialFormState = () => ({
+  fullName: "",
+  email: "",
+  phone: "",
+  interest: "",
+  message: "",
+  hearAbout: "",
+  honeypot: "",
+});
+
+const getInitialErrorState = () => ({
+  email: "",
+  fullName: "",
+  message: "",
+});
+
 const ContactForm = () => {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    interest: "",
-    message: "",
-    hearAbout: "",
-    honeypot: "",
-  });
+  const [formData, setFormData] = useState(getInitialFormState);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorOpen, setIsErrorOpen] = useState(false);
-  const [formErrors, setFormErrors] = useState({
-    email: "",
-    fullName: "",
-    message: "",
-  });
+  const [formErrors, setFormErrors] = useState(getInitialErrorState);
   const [attachmentFile, setAttachmentFile] = useState<File | null>(null);
   const [attachmentDataUrl, setAttachmentDataUrl] = useState<string | null>(
     null,
   );
   const [attachmentError, setAttachmentError] = useState("");
+  const resetFormState = () => {
+    setFormData(getInitialFormState());
+    setAttachmentFile(null);
+    setAttachmentDataUrl(null);
+    setAttachmentError("");
+    setFormErrors(getInitialErrorState());
+  };
+  const handleClearForm = () => {
+    resetFormState();
+  };
   const attachmentSizeValue = (MAX_ATTACHMENT_BYTES / (1024 * 1024)).toFixed(0);
   const emailAttachmentLimitValue = Math.floor(
     EMAIL_ATTACHMENT_LIMIT_BYTES / 1024,
@@ -136,11 +150,7 @@ const ContactForm = () => {
   };
 
   const validateForm = () => {
-    const errors = {
-      email: "",
-      fullName: "",
-      message: "",
-    };
+    const errors = getInitialErrorState();
 
     // Validate required fields
     if (!formData.fullName.trim()) {
@@ -318,23 +328,7 @@ const ContactForm = () => {
     )
       .then(() => {
         setIsModalOpen(true);
-        setFormData({
-          fullName: "",
-          email: "",
-          phone: "",
-          interest: "",
-          message: "",
-          hearAbout: "",
-          honeypot: "",
-        });
-        setAttachmentFile(null);
-        setAttachmentDataUrl(null);
-        setAttachmentError("");
-        setFormErrors({
-          email: "",
-          fullName: "",
-          message: "",
-        });
+        resetFormState();
       })
       .catch((err) => {
         // eslint-disable-next-line no-console
@@ -484,13 +478,22 @@ const ContactForm = () => {
             *{t("contactPrivacyPolicy1")}{" "}
             <a href="/privacyPolicy">{t("contactPrivacyPolicy2")}</a>.
           </p>
-          <Button
-            className={styles["submitButton"]}
-            type="submit"
-            variant="primary"
-          >
-            {t("contactSubmit")}
-          </Button>
+          <div className={styles["formActions"]}>
+            <Button
+              type="button"
+              variant="tertiary"
+              onClick={handleClearForm}
+            >
+              {t("contactClear")}
+            </Button>
+            <Button
+              className={styles["submitButton"]}
+              type="submit"
+              variant="primary"
+            >
+              {t("contactSubmit")}
+            </Button>
+          </div>
         </div>
       </form>
       <Modal
