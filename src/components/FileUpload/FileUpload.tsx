@@ -116,13 +116,14 @@ const FileUpload: React.FC<FileUploadProps> = ({
           aria-describedby={helperTextId}
           disabled={disabled}
           required={required}
+          onClick={handleBrowseClick}
         />
       </div>
       <div className={styles.actions}>
         <Button
           type="button"
           variant="secondary"
-          size="s"
+          size="m"
           onClick={handleBrowseClick}
           disabled={disabled}
         >
