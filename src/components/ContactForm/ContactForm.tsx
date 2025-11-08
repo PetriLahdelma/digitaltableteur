@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { send } from "@emailjs/browser";
 import styles from "./ContactForm.module.css";
 import Inputs from "@dt/Inputs";
@@ -30,9 +30,30 @@ const getInitialErrorState = () => ({
   message: "",
 });
 
+type FormState = ReturnType<typeof getInitialFormState>;
+
+type FormAction =
+  | { type: "UPDATE_FIELD"; payload: { field: keyof FormState; value: string } }
+  | { type: "RESET" };
+
+const formReducer = (state: FormState, action: FormAction): FormState => {
+  switch (action.type) {
+    case "UPDATE_FIELD":
+      return { ...state, [action.payload.field]: action.payload.value };
+    case "RESET":
+      return getInitialFormState();
+    default:
+      return state;
+  }
+};
+
 const ContactForm = () => {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState(getInitialFormState);
+  const [formData, dispatchForm] = useReducer(
+    formReducer,
+    undefined,
+    getInitialFormState,
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorOpen, setIsErrorOpen] = useState(false);
   const [formErrors, setFormErrors] = useState(getInitialErrorState);
@@ -42,7 +63,7 @@ const ContactForm = () => {
   );
   const [attachmentError, setAttachmentError] = useState("");
   const resetFormState = () => {
-    setFormData(getInitialFormState());
+    dispatchForm({ type: "RESET" });
     setAttachmentFile(null);
     setAttachmentDataUrl(null);
     setAttachmentError("");
@@ -67,31 +88,39 @@ const ContactForm = () => {
     : "";
 
   const handleFullNameChange = (value: string | number) => {
-    setFormData({ ...formData, fullName: String(value) });
+    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "fullName", value: String(value) } });
   };
 
   const handleEmailChange = (value: string | number) => {
-    setFormData({ ...formData, email: String(value) });
+    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "email", value: String(value) } });
   };
 
   const handlePhoneChange = (value: string | number) => {
-    setFormData({ ...formData, phone: String(value) });
+    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "phone", value: String(value) } });
   };
 
   const handleMessageChange = (value: string | number) => {
-    setFormData({ ...formData, message: String(value) });
+    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "message", value: String(value) } });
   };
 
   const handleInterestChange = (selectedOptions: string[]) => {
-    setFormData({ ...formData, interest: selectedOptions.join(", ") });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "interest", value: selectedOptions.join(", ") },
+    });
   };
 
   const handleHearAboutChange = (value: string) => {
-    setFormData({ ...formData, hearAbout: value });
+    dispatchForm({ type: "UPDATE_FIELD", payload: { field: "hearAbout", value } });
   };
 
-  const handleHoneypotChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, honeypot: event.target.value });
+  const handleHoneypotChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "honeypot", value: event.target.value },
+    });
   };
 
   const handleAttachmentChange = (file: File | null) => {
