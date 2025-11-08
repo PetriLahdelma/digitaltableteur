@@ -46,8 +46,8 @@ describe("Email workflow simple keyword trigger", () => {
       fireEvent.click(screen.getByRole("button", { name: /next/i }));
     }
 
-    // Email field
-    const emailInput = screen.queryByLabelText(/^email$/i);
+    // Email field (label translated as 'Your email address')
+    const emailInput = screen.queryByLabelText(/email/i);
     if (emailInput) {
       fireEvent.change(emailInput, { target: { value: "simple@example.com" } });
       fireEvent.click(screen.getByRole("button", { name: /next/i }));
@@ -72,6 +72,7 @@ describe("Email workflow simple keyword trigger", () => {
     }
 
     // Review & send
+    // Disambiguate between workflow 'Send email' and composer 'Send message' icon-only button
     const sendBtn = await screen.findByRole("button", { name: /send email/i });
     fireEvent.click(sendBtn);
 
