@@ -393,34 +393,31 @@ h6 {
 
 .wavyUnderline,
 .readMore,
-.privacyPolicy a,
-.privacyPolicy a:hover,
+.link,
 .cookieConsent a,
-.link {
+.privacyPolicy a,
+.privacyPolicy a:hover {
   position: relative;
-  padding-bottom: 6px;
   text-decoration: none;
+  padding-bottom: 6px;
 }
 
 .wavyUnderline::after,
 .readMore::after,
-.privacyPolicy a::after,
-.privacyPolicy a:hover::after,
+.link::after,
 .cookieConsent a::after,
-.link::after {
-  content: "";
+.privacyPolicy a::after,
+.privacyPolicy a:hover::after {
   position: absolute;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   height: 6px;
-  background-color: currentColor;
+  background-color: var(--underline-accent-color, currentcolor);
   opacity: 0.9;
-  -webkit-mask-image: var(--wavy-underline-mask);
+  content: "";
   mask-image: var(--wavy-underline-mask);
-  -webkit-mask-repeat: repeat-x;
   mask-repeat: repeat-x;
-  -webkit-mask-size: 16px 6px;
   mask-size: 16px 6px;
 }
 

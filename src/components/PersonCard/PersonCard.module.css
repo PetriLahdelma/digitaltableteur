@@ -48,8 +48,8 @@
 
 .personEmail {
   text-transform: none;
-  color: var(--color-primary);
   text-decoration: none;
+  color: var(--color-primary);
 }
 
 .personEmail p {
