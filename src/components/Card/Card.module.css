@@ -1,26 +1,26 @@
 @import url("../../styles/variables.css");
 
 .card {
-  position: relative;
   display: flex;
+  position: relative;
+  padding: var(--space-l);
   flex-direction: column;
   gap: var(--space-s);
-  background: var(--color-white);
-  border-radius: var(--radius-l);
-  padding: var(--space-l);
   border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-l);
+  background: var(--color-white);
   box-shadow: 0 2px 6px rgb(0 0 0 / 6%);
+  text-decoration: none;
+  color: inherit;
   transition:
     box-shadow 0.25s ease,
     background 0.25s ease,
     border-color 0.25s ease;
-  text-decoration: none;
-  color: inherit;
 }
 
 .hoverable:hover {
-  box-shadow: 0 6px 18px -2px rgb(0 0 0 / 18%);
   background: var(--color-light-bg, #f9f9f9);
+  box-shadow: 0 6px 18px -2px rgb(0 0 0 / 18%);
   cursor: pointer;
 }
 
@@ -53,8 +53,8 @@
 
 .header {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
+  align-items: flex-start;
   gap: var(--space-m);
 }
 
@@ -94,9 +94,10 @@
 
 .cover {
   margin-block: calc(var(--space-s) * -1) var(--space-s);
-  overflow: hidden;
   border-radius: var(--radius-m);
+  overflow: hidden;
 }
+
 .cover img {
   display: block;
   width: 100%;
@@ -106,8 +107,8 @@
 
 .tabList {
   display: flex;
-  gap: var(--space-xs);
   margin-block: var(--space-xs);
+  gap: var(--space-xs);
 }
 
 @supports not (gap: 0.25rem) {
@@ -117,12 +118,12 @@
 }
 
 .tab {
-  background: none;
+  padding: 0.35rem 0.65rem;
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-xs);
-  padding: 0.35rem 0.65rem;
-  font-size: 0.75rem;
+  background: none;
   font-family: var(--font-sans);
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -137,14 +138,14 @@
 }
 
 .tabActive {
+  border-color: var(--color-primary);
   background: var(--color-primary);
   color: var(--color-white);
-  border-color: var(--color-primary);
 }
 
 .tabDisabled {
-  opacity: 0.5;
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .body {
@@ -161,15 +162,15 @@
 }
 
 .actionBtn {
-  background: rgb(0 0 0 / 6%);
+  padding: 0.45rem 0.85rem;
   border: 1px solid transparent;
   border-radius: var(--radius-s);
-  font-size: 0.75rem;
+  background: rgb(0 0 0 / 6%);
   font-family: var(--font-sans);
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.45rem 0.85rem;
   cursor: pointer;
   transition:
     background 0.2s ease,
@@ -186,8 +187,8 @@
 }
 
 .actionBtn:disabled {
-  opacity: 0.55;
   cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .loading .body {
@@ -196,8 +197,8 @@
 
 .skeleton {
   display: block;
-  inline-size: 100%;
   block-size: 120px;
+  inline-size: 100%;
   border-radius: var(--radius-m);
   background: linear-gradient(
     90deg,

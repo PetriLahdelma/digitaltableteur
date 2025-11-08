@@ -2,70 +2,70 @@
 @import url("../styles/fonts.css");
 
 .home {
-  text-align: left;
   padding-inline: 2rem;
+  text-align: left;
 }
 
 .hero {
   position: relative;
   margin-block-end: var(--space-layout-96);
   min-height: 75vh;
-  overflow: hidden;
   background-color: var(--main-body-background-color);
+  overflow: hidden;
 }
 
 .heroGradient {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background: var(--home-gradient);
   background-size: 200% 200%;
   animation: gradient-move 8s ease-in-out infinite;
   opacity: 1;
-  z-index: 0;
 }
 
 h1 {
+  margin-block-start: -7.68rem;
   font-family: var(--primary-heading-font);
   font-size: 8rem;
   font-weight: 500;
-  margin-block-start: -7.68rem;
 }
 
 .lead {
+  margin-block-end: var(--space-layout-96);
   font-family: var(--primary-body-font);
   font-size: 2.5rem;
   line-height: 1.5;
   color: var(--main-body-copy-color);
-  margin-block-end: var(--space-layout-96);
 }
 
 .cta {
-  margin-block-start: 2rem;
-  background-color: var(--color-primary);
-  color: var(--color-white);
   margin: 0 auto var(--space-layout-32);
-  text-align: center;
+  margin-block-start: 2rem;
   padding: var(--space-layout-64);
+  background-color: var(--color-primary);
   font-family: var(--primary-body-font);
   font-size: var(--font-size-title);
+  text-align: center;
+  color: var(--color-white);
 }
 
 .cta a {
-  color: var(--color-white);
+  border-radius: 0.5rem;
   font-size: 1.5rem;
   text-decoration: underline;
-  border-radius: 0.5rem;
+  color: var(--color-white);
   transition: background-color 0.3s ease;
 }
 
 .gradientText {
   background: var(--home-gradient);
   background-size: 200% 200%;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 8rem;
   color: transparent;
   animation: gradient-move 4s ease-in-out infinite;
-  font-size: 8rem;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @keyframes gradient-move {
@@ -90,8 +90,8 @@ h1 {
 
 @media (width <= 480px) {
   h1 {
-    font-size: 4rem;
     margin-block-start: -3.84rem;
+    font-size: 4rem;
   }
 
   .gradientText {

@@ -2,17 +2,17 @@
 @import url("../../styles/fonts.css");
 
 .title {
-  font-family: var(--font-title);
-  font-size: var(--font-size-title);
-  color: var(--color-title);
   margin-block: 0 var(--space-layout-16, 1rem);
   margin-inline: 0;
+  font-family: var(--font-title);
+  font-size: var(--font-size-title);
   font-weight: 500;
+  overflow-wrap: normal;
+  word-break: normal;
 
   /* Prevent hyphenation/word breaking for titles */
   hyphens: none;
-  word-break: normal;
-  overflow-wrap: normal;
+  color: var(--color-title);
 }
 
 /* Enhancement: balance multi-line headings for improved rag */

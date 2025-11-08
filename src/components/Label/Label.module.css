@@ -2,11 +2,11 @@
 @import url("../../styles/fonts.css");
 
 .label {
-  font-size: 1rem; /* 16px */
-  font-family: Moderat, sans-serif;
   display: flex;
   align-items: center;
   gap: 0.25rem; /* 8px */
+  font-family: Moderat, sans-serif;
+  font-size: 1rem; /* 16px */
   color: var(--color-primary);
 }
 
@@ -20,7 +20,7 @@
 }
 
 .tooltip {
+  margin-inline-start: 0.5rem; /* 8px logical */
   font-size: 0.875rem; /* 14px */
   color: var(--color-muted);
-  margin-inline-start: 0.5rem; /* 8px logical */
 }

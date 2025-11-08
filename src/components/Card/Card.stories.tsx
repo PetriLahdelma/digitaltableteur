@@ -1,29 +1,25 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import Card, { CardAction, CardTab } from "./Card";
+import Card from "./Card";
 
-const meta: Meta<typeof Card> = {
+export default {
   title: "DesignSystem/Card",
   component: Card,
   parameters: { wip: { disabled: false } },
 };
-export default meta;
 
-type Story = StoryObj<typeof Card>;
-
-export const Default: Story = {
+export const Default = {
   args: { title: "Default Card", body: "Body content" },
 };
 
-export const Hoverable: Story = {
+export const Hoverable = {
   args: { title: "Hoverable", body: "Interactive elevation", hoverable: true },
 };
 
-export const Loading: Story = {
+export const Loading = {
   args: { title: "Loading", loading: true, body: "Will be hidden" },
 };
 
-export const WithCover: Story = {
+export const WithCover = {
   args: {
     title: "With Cover",
     cover: <img alt="Placeholder" src="https://via.placeholder.com/600x240" />,
@@ -31,9 +27,9 @@ export const WithCover: Story = {
   },
 };
 
-export const WithActions: Story = {
+export const WithActions = {
   render: () => {
-    const actions: CardAction[] = [
+    const actions = [
       { key: "save", label: "Save" },
       { key: "cancel", label: "Cancel" },
     ];
@@ -41,8 +37,8 @@ export const WithActions: Story = {
   },
 };
 
-const TabbedStoryComponent: React.FC = () => {
-  const tabs: CardTab[] = [
+const TabbedStoryComponent = () => {
+  const tabs = [
     { key: "overview", label: "Overview" },
     { key: "details", label: "Details" },
     { key: "disabled", label: "Disabled", disabled: true },
@@ -59,6 +55,6 @@ const TabbedStoryComponent: React.FC = () => {
   );
 };
 
-export const Tabbed: Story = {
+export const Tabbed = {
   render: () => <TabbedStoryComponent />,
 };

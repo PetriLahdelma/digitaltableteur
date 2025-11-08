@@ -10,6 +10,7 @@ import BlogNav from "@dt/BlogNav/BlogNav";
 import "../../i18n"; // Ensure i18n is initialized
 import { SocialShare } from "@dt/SocialShare";
 import { useTranslation } from "react-i18next";
+import Text from "@dt/Text";
 
 const DigitalCraftsmanship = () => {
   const { t } = useTranslation();
@@ -50,7 +51,10 @@ const DigitalCraftsmanship = () => {
             Digital Craftsmanship — Thoughts on Maintaining Quality in a
             Hurry-Up Culture
           </h1>
-          <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          <div className={styles.metaRow}>
+            <Text className={styles.releaseDate}>June 10, 2025</Text>
+            <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          </div>
         </header>
         <img
           src={Pizza}

@@ -2,11 +2,11 @@
 @import url("../../styles/fonts.css");
 
 .link {
-  color: var(--link-color);
   display: inline-flex;
   align-items: center;
   font-family: var(--primary-body-font, Moderat, sans-serif);
   text-decoration: underline;
+  color: var(--link-color);
 }
 
 .link:hover {
@@ -14,18 +14,18 @@
 }
 
 .linkS {
-  font-size: 1rem;
   gap: 0.3rem;
+  font-size: 1rem;
 }
 
 .linkM {
-  font-size: 1.125rem;
   gap: 0.5rem;
+  font-size: 1.125rem;
 }
 
 .linkL {
-  font-size: 1.5rem;
   gap: 1rem;
+  font-size: 1.5rem;
 }
 
 .icon {
@@ -33,7 +33,7 @@
 }
 
 .link.disabled {
-  pointer-events: none;
   color: var(--color-gray-medium);
+  pointer-events: none;
   opacity: 0.5;
 }

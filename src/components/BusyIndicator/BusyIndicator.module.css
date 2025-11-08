@@ -13,6 +13,7 @@
 }
 
 /* Base label style */
+
 .label {
   line-height: 1;
 }
@@ -30,13 +31,14 @@
 }
 
 .visual {
+  display: inline-block;
   position: relative;
   width: 1.5em;
   height: 1.5em;
-  display: inline-block;
 }
 
 /* Base dot (shared) */
+
 .dot {
   position: absolute;
   width: 0.5em;
@@ -46,6 +48,7 @@
 }
 
 /* Determinate container */
+
 .progressDots {
   position: absolute;
   width: 100%;
@@ -53,23 +56,25 @@
 }
 
 .progressDots .dot {
-  opacity: 0.35;
   transition:
     opacity 0.3s ease,
     background-color 0.3s ease;
+  opacity: 0.35;
 }
 
 .progressDots .dot.active {
-  opacity: 1;
   background: var(--color-primary);
+  opacity: 1;
 }
 
 /* Exported active class for module mapping (used in TSX) */
+
 .active {
   outline: 0; /* noop style to satisfy non-empty rule */
 }
 
 /* Indeterminate spinner */
+
 .spinner {
   position: absolute;
   width: 100%;
@@ -87,8 +92,8 @@
 /* Enhancement: if content-visibility supported, allow root to skip offscreen work */
 @supports (content-visibility: auto) {
   .root {
-    content-visibility: auto;
     contain-intrinsic-size: 2rem 2rem; /* reserve space to prevent layout shift */
+    content-visibility: auto;
   }
 }
 
@@ -97,6 +102,7 @@
 }
 
 /* Dot positional layout (shared by spinner & determinate) */
+
 .dot:nth-child(1) {
   top: 0;
   left: 0;
@@ -108,8 +114,8 @@
 }
 
 .dot:nth-child(3) {
-  bottom: 0;
   right: 0;
+  bottom: 0;
 }
 
 .dot:nth-child(4) {
@@ -118,10 +124,11 @@
 }
 
 /* Success state overrides placed after positional rules */
+
 .progressDots.success .dot {
-  opacity: 1;
   background: var(--color-success, #2ecc71);
   animation: success-pulse 0.8s ease-in-out 1;
+  opacity: 1;
 }
 
 .spinner .dot:nth-child(1) {

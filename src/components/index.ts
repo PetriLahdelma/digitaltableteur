@@ -15,6 +15,7 @@ export { default as ChatComposer } from "./ChatWidget/ChatComposer";
 export { default as ChatToggle } from "./ChatWidget/ChatToggle";
 export { default as CookieConsent } from "./CookieConsent/CookieConsent";
 export { default as FlexBox } from "./FlexBox/FlexBox";
+export { default as FileUpload } from "./FileUpload/FileUpload";
 export { default as Gallery } from "./Gallery/Gallery";
 export { default as Grid } from "./Grid/Grid";
 export { default as GroupLabel } from "./GroupLabel/GroupLabel";

@@ -30,7 +30,7 @@ const CookiePolicyFullEN = () => {
             size="m"
             onClick={() => (window.location.href = "/")}
           >
-            <FaArrowLeft style={{ marginRight: 8 }} />
+            <FaArrowLeft style={{ marginInlineEnd: 8 }} />
             Back
           </Button>
         </div>

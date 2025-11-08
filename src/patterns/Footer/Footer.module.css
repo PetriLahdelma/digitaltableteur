@@ -3,47 +3,47 @@
 
 .footer {
   bottom: 0;
-  width: 100%;
-  background-color: var(--color-primary);
-  text-align: left;
   margin-inline-start: 0;
   padding-inline: var(--space-layout-32);
   box-sizing: border-box;
+  width: 100%;
+  background-color: var(--color-primary);
+  text-align: left;
 }
 
 .socialLinks {
   display: flex;
-  justify-content: center;
   margin-block: var(--space-layout-16);
-  gap: var(--space-internal-16);
   block-size: 1.5rem;
+  justify-content: center;
+  gap: var(--space-internal-16);
 }
 
 .socialLinks a {
-  color: var(--inverted-text-color);
-  text-decoration: none;
   font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--inverted-text-color);
 }
 
 .footer h2 a {
   font-family: var(--primary-body-font, Moderat-Bold), sans-serif;
-  text-transform: uppercase;
-  color: var(--inverted-text-color);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.08rem;
+  text-transform: uppercase;
   text-decoration: none;
+  color: var(--inverted-text-color);
 }
 
 footer p {
-  font-size: 1rem;
   font-family: Moderat-Regular, sans-serif;
+  font-size: 1rem;
   color: var(--inverted-text-color);
 }
 
 .footer p a {
-  color: var(--inverted-text-color);
   text-decoration: none;
+  color: var(--inverted-text-color);
 }
 
 .footer p a:hover {
@@ -52,9 +52,9 @@ footer p {
 
 .footerText {
   display: flex;
+  margin-block-end: 2rem;
   flex-direction: column;
   align-items: center;
-  margin-block-end: 2rem;
 }
 
 .billingDetails {
@@ -77,37 +77,37 @@ footer p {
 
 @media (width <= 768px) {
   .footer {
+    margin-inline: calc(-1 * (50vw - 50%));
     padding-inline: var(--space-layout-32);
     box-sizing: border-box;
     width: 100vw;
-    margin-inline: calc(-1 * (50vw - 50%));
   }
 }
 
 @media (width <= 480px) {
   .footer {
-    text-align: left;
+    display: flex;
+    margin-inline: calc(-1 * (50vw - 50%));
+    padding-inline: var(--space-layout-16);
 
     /* Full viewport width minus inline padding for consistent edge treatment */
     width: 100vw;
-    margin-inline: calc(-1 * (50vw - 50%));
-    padding-inline: var(--space-layout-16);
-    display: flex;
     flex-direction: column;
     align-items: stretch;
+    text-align: left;
   }
 
   .footer > * {
+    margin-inline: 0;
     width: 100%;
     max-width: none;
-    margin-inline: 0;
   }
 
   .footerText {
-    align-items: center; /* center contents horizontally */
-    justify-content: center;
-    text-align: center;
     width: 100%;
+    justify-content: center;
+    align-items: center; /* center contents horizontally */
+    text-align: center;
   }
 
   .footerGrid {
