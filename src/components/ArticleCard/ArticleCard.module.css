@@ -83,6 +83,5 @@
 
 .readMore {
   font-weight: 600;
-  text-decoration: underline;
   color: var(--color-primary, #00f);
 }

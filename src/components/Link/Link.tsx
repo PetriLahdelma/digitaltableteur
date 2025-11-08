@@ -11,6 +11,7 @@ const Link: React.FC<LinkProps> = ({
   href = "#",
   size = "M",
   children,
+  className = "",
   ...rest
 }) => {
   const isExternal =
@@ -58,7 +59,7 @@ const Link: React.FC<LinkProps> = ({
   return (
     <a
       href={href}
-      className={`${styles.link} ${styles[`link${size}`]}`}
+      className={`${styles.link} ${styles[`link${size}`]} wavyUnderline ${className}`.trim()}
       {...rest}
     >
       {children}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { send } from "@emailjs/browser";
 import styles from "./ContactForm.module.css";
 import Inputs from "@dt/Inputs";
@@ -14,29 +14,64 @@ const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
 const EMAIL_ATTACHMENT_LIMIT_BYTES = 35 * 1024;
 const ACCEPTED_ATTACHMENT_TYPES = ".pdf,.png,.jpg,.jpeg";
 
+const getInitialFormState = () => ({
+  fullName: "",
+  email: "",
+  phone: "",
+  interest: "",
+  message: "",
+  hearAbout: "",
+  honeypot: "",
+});
+
+const getInitialErrorState = () => ({
+  email: "",
+  fullName: "",
+  message: "",
+});
+
+type FormState = ReturnType<typeof getInitialFormState>;
+
+type FormAction =
+  | { type: "UPDATE_FIELD"; payload: { field: keyof FormState; value: string } }
+  | { type: "RESET" };
+
+const formReducer = (state: FormState, action: FormAction): FormState => {
+  switch (action.type) {
+    case "UPDATE_FIELD":
+      return { ...state, [action.payload.field]: action.payload.value };
+    case "RESET":
+      return getInitialFormState();
+    default:
+      return state;
+  }
+};
+
 const ContactForm = () => {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    interest: "",
-    message: "",
-    hearAbout: "",
-    honeypot: "",
-  });
+  const [formData, dispatchForm] = useReducer(
+    formReducer,
+    undefined,
+    getInitialFormState,
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isErrorOpen, setIsErrorOpen] = useState(false);
-  const [formErrors, setFormErrors] = useState({
-    email: "",
-    fullName: "",
-    message: "",
-  });
+  const [formErrors, setFormErrors] = useState(getInitialErrorState);
   const [attachmentFile, setAttachmentFile] = useState<File | null>(null);
   const [attachmentDataUrl, setAttachmentDataUrl] = useState<string | null>(
     null,
   );
   const [attachmentError, setAttachmentError] = useState("");
+  const resetFormState = () => {
+    dispatchForm({ type: "RESET" });
+    setAttachmentFile(null);
+    setAttachmentDataUrl(null);
+    setAttachmentError("");
+    setFormErrors(getInitialErrorState());
+  };
+  const handleClearForm = () => {
+    resetFormState();
+  };
   const attachmentSizeValue = (MAX_ATTACHMENT_BYTES / (1024 * 1024)).toFixed(0);
   const emailAttachmentLimitValue = Math.floor(
     EMAIL_ATTACHMENT_LIMIT_BYTES / 1024,
@@ -53,31 +88,52 @@ const ContactForm = () => {
     : "";
 
   const handleFullNameChange = (value: string | number) => {
-    setFormData({ ...formData, fullName: String(value) });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "fullName", value: String(value) },
+    });
   };
 
   const handleEmailChange = (value: string | number) => {
-    setFormData({ ...formData, email: String(value) });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "email", value: String(value) },
+    });
   };
 
   const handlePhoneChange = (value: string | number) => {
-    setFormData({ ...formData, phone: String(value) });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "phone", value: String(value) },
+    });
   };
 
   const handleMessageChange = (value: string | number) => {
-    setFormData({ ...formData, message: String(value) });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "message", value: String(value) },
+    });
   };
 
   const handleInterestChange = (selectedOptions: string[]) => {
-    setFormData({ ...formData, interest: selectedOptions.join(", ") });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "interest", value: selectedOptions.join(", ") },
+    });
   };
 
   const handleHearAboutChange = (value: string) => {
-    setFormData({ ...formData, hearAbout: value });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "hearAbout", value },
+    });
   };
 
   const handleHoneypotChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, honeypot: event.target.value });
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "honeypot", value: event.target.value },
+    });
   };
 
   const handleAttachmentChange = (file: File | null) => {
@@ -136,11 +192,7 @@ const ContactForm = () => {
   };
 
   const validateForm = () => {
-    const errors = {
-      email: "",
-      fullName: "",
-      message: "",
-    };
+    const errors = getInitialErrorState();
 
     // Validate required fields
     if (!formData.fullName.trim()) {
@@ -318,23 +370,7 @@ const ContactForm = () => {
     )
       .then(() => {
         setIsModalOpen(true);
-        setFormData({
-          fullName: "",
-          email: "",
-          phone: "",
-          interest: "",
-          message: "",
-          hearAbout: "",
-          honeypot: "",
-        });
-        setAttachmentFile(null);
-        setAttachmentDataUrl(null);
-        setAttachmentError("");
-        setFormErrors({
-          email: "",
-          fullName: "",
-          message: "",
-        });
+        resetFormState();
       })
       .catch((err) => {
         // eslint-disable-next-line no-console
@@ -484,13 +520,18 @@ const ContactForm = () => {
             *{t("contactPrivacyPolicy1")}{" "}
             <a href="/privacyPolicy">{t("contactPrivacyPolicy2")}</a>.
           </p>
-          <Button
-            className={styles["submitButton"]}
-            type="submit"
-            variant="primary"
-          >
-            {t("contactSubmit")}
-          </Button>
+          <div className={styles["formActions"]}>
+            <Button type="button" variant="tertiary" onClick={handleClearForm}>
+              {t("contactClear")}
+            </Button>
+            <Button
+              className={styles["submitButton"]}
+              type="submit"
+              variant="primary"
+            >
+              {t("contactSubmit")}
+            </Button>
+          </div>
         </div>
       </form>
       <Modal
