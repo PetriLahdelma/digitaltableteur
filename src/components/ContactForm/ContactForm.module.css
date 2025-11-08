@@ -33,12 +33,12 @@
 }
 
 .privacyPolicy a {
-  text-decoration: underline;
+  text-decoration: none;
   color: var(--color-primary);
 }
 
 .privacyPolicy a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .formGroup:last-child {
@@ -47,9 +47,9 @@
 
 .formActions {
   display: flex;
-  gap: 0.75rem;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
 label {
