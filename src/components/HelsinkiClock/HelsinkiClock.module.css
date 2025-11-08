@@ -1,9 +1,9 @@
 .clockContainer {
-  text-align: left;
+  margin-block-end: var(--space-layout-32);
   justify-content: flex-start;
   align-items: start;
-  margin-block-end: var(--space-layout-32);
   font-family: var(--primary-body-font, sans-serif);
+  text-align: left;
 }
 
 .date {

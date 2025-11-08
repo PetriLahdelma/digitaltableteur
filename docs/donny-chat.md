@@ -154,6 +154,17 @@ Extensibility:
 - Enable raw HTML or custom components by extending `MarkdownMessage` with rehype plugins when needed.
 - For syntax highlighting, integrate a light-on-weight solution (e.g. refractor or a tokenizing highlighter) inside the code component override.
 
+## Styling & Layout Notes (Nov 2025 Update)
+
+The chat widget migrated physical directional properties to logical equivalents:
+
+- `margin-left` -> `margin-inline-start`
+- `margin-right` -> `margin-inline-end`
+- `border-left` -> `border-inline-start`
+- Paired zero values consolidated: `margin-inline: 0`
+
+This supports future RTL adaptation and enforces the defensive CSS rule set in the stylelint configuration. Gap fallbacks continue to rely on logical start margins to emulate spacing when `gap` is unsupported.
+
 ## Dynamic Component Injection Architecture (User-Triggered Model)
 
 Dynamic components are injected based solely on preceding USER messages. Assistant self-heuristics have been disabled for tighter control and predictability.
@@ -200,6 +211,19 @@ Extensibility:
 6. Refresh visual baselines if layout shifts: `npm run test:visual -- --updateSnapshot`.
 
 Testing strategy (updated):
+
+## Chat Email Workflow Triggers (Dual Path)
+
+Two trigger modes for the email composition workflow:
+
+| Type           | EN Example   | FI Example          | SV Example     | Phrase Key              | Behavior                                           |
+| -------------- | ------------ | ------------------- | -------------- | ----------------------- | -------------------------------------------------- |
+| General intent | "Send email" | "Lähetä sähköposti" | "Skicka epost" | `chatEmailSendPhrase`   | Assistant acknowledges & offers to compose         |
+| Simple keyword | "email"      | "sähköposti"        | "epost"        | `chatEmailSimplePhrase` | Assistant reveals address then invites composition |
+
+Regex for simple keyword is anchored to avoid accidental mid-sentence activation. Only one flag (`pendingEmailWorkflowGeneral` or `pendingEmailWorkflowSimple`) can be set per user message. Assistant consumes the flag next turn and resets it.
+
+Update this file, README, `CLAUDE.md`, and `.github/copilot-instructions.md` together when altering trigger semantics.
 
 - `messageProcessor.test.tsx` covers user-trigger flagging and assistant sanitization across EN/FI/SV.
 - `ChatMessages.openHours.test.tsx` + `ChatMessages.servicesGrid.test.tsx` ensure components render only after a user trigger and confirm keyword/token removal from assistant output.

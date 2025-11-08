@@ -32,7 +32,7 @@ import {
 import Avatar from "@dt/Avatar";
 import {
   WithImage as AvatarWithImageStory,
-  WithName as AvatarWithNameStory,
+  WithInitials as AvatarWithInitialsStory,
 } from "../components/Avatar/Avatar.stories";
 import {
   Default as CheckboxDefaultStory,
@@ -68,7 +68,7 @@ export default {
 } as Meta;
 
 const AvatarWithImage = () => <Avatar {...AvatarWithImageStory.args} />;
-const AvatarWithName = () => <Avatar {...AvatarWithNameStory.args} />;
+const AvatarWithInitials = () => <Avatar {...AvatarWithInitialsStory.args} />;
 const CheckboxDefault = () => (
   <Checkbox
     {...CheckboxDefaultStory.args}
@@ -517,8 +517,8 @@ const COMPONENTS = [
     Variants: AvatarWithImage,
   },
   {
-    name: "Avatar WithName",
-    Variants: AvatarWithName,
+    name: "Avatar WithInitials",
+    Variants: AvatarWithInitials,
   },
   {
     name: "Checkbox AllVariants",

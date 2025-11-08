@@ -3,8 +3,8 @@
 
 .layout {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
+  flex-direction: column;
 }
 
 .main {
@@ -13,12 +13,12 @@
 
 .skipLink {
   position: absolute;
-  left: 0;
   top: -42px;
+  left: 0;
+  z-index: 100;
+  padding: 0.5rem 1rem;
   background: var(--color-primary);
   color: var(--color-white);
-  padding: 0.5rem 1rem;
-  z-index: 100;
   transition: top 0.3s ease;
 }
 

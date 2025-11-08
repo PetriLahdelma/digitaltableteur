@@ -1,26 +1,26 @@
 .socialShare {
   display: flex;
+  block-size: 2.5rem;
+  align-items: center;
   gap: 1rem;
   margin-top: 1.5rem;
-  align-items: center;
-  block-size: 2.5rem;
 }
 
 .socialShare a {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   background-color: var(--primary-background-color);
-  color: var(--primary-text-color);
   text-decoration: none;
+  color: var(--primary-text-color);
 }
 
 .copyButton svg {
+  margin: 0 auto;
+  padding: 0;
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--primary-text-color);
-  margin: 0 auto;
-  padding: 0;
 }
 
 .socialShare a svg {
@@ -29,17 +29,17 @@
 }
 
 .copyButton {
-  font-weight: 600;
   display: flex;
   align-items: center;
   gap: var(--space-internal-4);
-  cursor: pointer;
-  color: var(--primary-text-color);
+  font-weight: 600;
   text-decoration: none;
+  color: var(--primary-text-color);
+  cursor: pointer;
 }
 
 .copyButton span {
-  margin-right: 0;
+  margin-inline-end: 0;
 }
 
 .copyButtonText {
@@ -52,13 +52,13 @@
   }
 
   .copyButton {
-    border: none !important;
-    background-color: transparent !important;
-    padding: 0 !important;
-    gap: 0 !important;
+    padding: 0;
     width: 1.5rem;
+    min-width: unset;
     height: 1.5rem;
-    min-width: unset !important;
-    min-height: unset !important;
+    min-height: unset;
+    gap: 0;
+    border: none;
+    background-color: transparent;
   }
 }

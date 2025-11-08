@@ -1,12 +1,12 @@
 .wrapper {
+  display: flex;
+  margin: 0 auto;
   padding: clamp(1.5rem, 4vw, 3rem);
   max-width: 960px;
-  margin: 0 auto;
-  display: flex;
   flex-direction: column;
   gap: 2rem;
-  color: var(--primary-text-color);
   font-family: var(--primary-body-font, "Moderat", sans-serif);
+  color: var(--primary-text-color);
 }
 
 .header {
@@ -21,37 +21,37 @@
 }
 
 .subtitle {
+  max-width: 48rem;
   font-size: 1.05rem;
   opacity: 0.85;
-  max-width: 48rem;
 }
 
 .section {
   display: flex;
+  padding: 1.5rem;
   flex-direction: column;
   gap: 0.75rem;
-  background: var(--color-white, #fff);
   border: 1px solid rgb(148 163 184 / 20%);
   border-radius: 12px;
-  padding: 1.5rem;
+  background: var(--color-white, #fff);
   box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
 }
 
 .section ul {
-  margin: 0;
-  padding-left: 1.25rem;
   display: flex;
+  margin: 0;
+  padding-inline-start: 1.25rem;
   flex-direction: column;
   gap: 0.35rem;
 }
 
 .code {
-  background: rgb(15 23 42 / 6%);
-  color: var(--primary-text-color);
   padding: 1rem;
   border-radius: 8px;
+  background: rgb(15 23 42 / 6%);
   font-size: 0.95rem;
   white-space: pre-wrap;
+  color: var(--primary-text-color);
 }
 
 @media (width <= 600px) {

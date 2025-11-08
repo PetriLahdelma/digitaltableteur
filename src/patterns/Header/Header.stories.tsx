@@ -3,6 +3,9 @@ import React from "react";
 import Header from "./Header";
 import { ThemeProvider } from "@dt/ThemeProvider";
 
+// Stable theme list (module scope) prevents unnecessary effect re-runs and satisfies lint dependency check.
+const cycleThemes = ["light", "dark", "hcb", "hcw"] as const;
+
 const meta: Meta<typeof Header> = {
   title: "Patterns/Header",
   component: Header,
@@ -27,14 +30,14 @@ export const Default: Story = {
 };
 
 const ThemeCycleComponent: React.FC = () => {
-  const themes = ["light", "dark", "hcb", "hcw"] as const;
-  const [theme, setTheme] = React.useState<(typeof themes)[number]>("light");
+  const [theme, setTheme] =
+    React.useState<(typeof cycleThemes)[number]>("light");
 
   React.useEffect(() => {
     const interval = setInterval(() => {
       setTheme((prev) => {
-        const idx = themes.indexOf(prev);
-        return themes[(idx + 1) % themes.length];
+        const idx = cycleThemes.indexOf(prev);
+        return cycleThemes[(idx + 1) % cycleThemes.length];
       });
     }, 2000);
     return () => clearInterval(interval);

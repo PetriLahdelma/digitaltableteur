@@ -19,8 +19,8 @@ WithImage.args = {
   name: undefined,
 };
 
-export const WithName = Template.bind({});
-WithName.args = {
+export const WithInitials = Template.bind({});
+WithInitials.args = {
   name: "Petri Lahdelma",
 };
 
@@ -29,7 +29,11 @@ WithImage.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   await canvas.findByRole("img");
 };
 
-WithName.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+WithInitials.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
   const canvas = within(canvasElement);
   // Check for initials "PL" instead of full name
   await canvas.findByText("PL");

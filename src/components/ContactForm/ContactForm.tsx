@@ -7,7 +7,12 @@ import CheckboxGroup from "@dt/CheckboxGroup";
 import Modal from "@dt/Modal";
 import TextArea from "@dt/Inputs/TextArea";
 import Select from "@dt/Select";
+import FileUpload from "@dt/FileUpload";
 import { useTranslation } from "react-i18next";
+
+const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
+const EMAIL_ATTACHMENT_LIMIT_BYTES = 35 * 1024;
+const ACCEPTED_ATTACHMENT_TYPES = ".pdf,.png,.jpg,.jpeg";
 
 const ContactForm = () => {
   const { t } = useTranslation();
@@ -27,6 +32,25 @@ const ContactForm = () => {
     fullName: "",
     message: "",
   });
+  const [attachmentFile, setAttachmentFile] = useState<File | null>(null);
+  const [attachmentDataUrl, setAttachmentDataUrl] = useState<string | null>(
+    null,
+  );
+  const [attachmentError, setAttachmentError] = useState("");
+  const attachmentSizeValue = (MAX_ATTACHMENT_BYTES / (1024 * 1024)).toFixed(0);
+  const emailAttachmentLimitValue = Math.floor(
+    EMAIL_ATTACHMENT_LIMIT_BYTES / 1024,
+  );
+  const isAttachmentTooLargeForEmail =
+    !!attachmentFile && attachmentFile.size > EMAIL_ATTACHMENT_LIMIT_BYTES;
+  const emailAttachmentLimitLabel = t("contactAttachmentEmailLimitLabel", {
+    size: emailAttachmentLimitValue,
+  });
+  const attachmentEmailNotice = isAttachmentTooLargeForEmail
+    ? t("contactAttachmentEmailLimitReached", {
+        size: emailAttachmentLimitLabel,
+      })
+    : "";
 
   const handleFullNameChange = (value: string | number) => {
     setFormData({ ...formData, fullName: String(value) });
@@ -54,6 +78,30 @@ const ContactForm = () => {
 
   const handleHoneypotChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, honeypot: event.target.value });
+  };
+
+  const handleAttachmentChange = (file: File | null) => {
+    setAttachmentError("");
+    setAttachmentFile(file);
+    setAttachmentDataUrl(null);
+    if (!file) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        setAttachmentDataUrl(reader.result);
+      } else {
+        setAttachmentError(t("contactAttachmentReadError"));
+        setAttachmentFile(null);
+      }
+    };
+    reader.onerror = () => {
+      setAttachmentError(t("contactAttachmentReadError"));
+      setAttachmentFile(null);
+    };
+    reader.readAsDataURL(file);
   };
 
   const SERVICE_ID =
@@ -110,7 +158,14 @@ const ContactForm = () => {
     }
 
     setFormErrors(errors);
-    return !errors.email && !errors.fullName && !errors.message;
+    const isFieldValid = !errors.email && !errors.fullName && !errors.message;
+    if (!isFieldValid) {
+      return false;
+    }
+    if (attachmentError) {
+      return false;
+    }
+    return true;
   };
 
   const logHoneypotHit = () => {
@@ -193,6 +248,10 @@ const ContactForm = () => {
         interest: formData.interest,
         message: formData.message,
         hearAbout: formData.hearAbout,
+        attachmentName: attachmentFile?.name ?? null,
+        attachmentType: attachmentFile?.type ?? null,
+        attachmentSize: attachmentFile?.size ?? null,
+        attachmentData: attachmentDataUrl,
         time,
       }),
     }).catch((err) => {
@@ -245,6 +304,14 @@ const ContactForm = () => {
         interest: formData.interest,
         message: formData.message,
         hearAbout: formData.hearAbout,
+        attachmentName: attachmentFile?.name ?? "",
+        attachmentType: attachmentFile?.type ?? "",
+        attachmentSize: attachmentFile?.size ?? "",
+        attachmentData:
+          attachmentDataUrl && !isAttachmentTooLargeForEmail
+            ? attachmentDataUrl
+            : "",
+        attachmentNotice: attachmentEmailNotice,
         time, // Add the current time for EmailJS {{time}}
       },
       PUBLIC_KEY,
@@ -260,6 +327,9 @@ const ContactForm = () => {
           hearAbout: "",
           honeypot: "",
         });
+        setAttachmentFile(null);
+        setAttachmentDataUrl(null);
+        setAttachmentError("");
         setFormErrors({
           email: "",
           fullName: "",
@@ -360,6 +430,37 @@ const ContactForm = () => {
             error={formErrors.message}
             required
           />
+        </div>
+
+        <div className={styles["formGroup"]}>
+          <FileUpload
+            label={t("contactAttachmentLabel")}
+            placeholder={t("contactAttachmentPlaceholder")}
+            helperText={t("contactAttachmentHelper", {
+              size: t("contactAttachmentSizeLabel", {
+                size: attachmentSizeValue,
+              }),
+              emailLimit: emailAttachmentLimitLabel,
+              types: t("contactAttachmentAcceptedTypes"),
+            })}
+            uploadButtonLabel={t("contactAttachmentUpload")}
+            clearButtonLabel={t("contactAttachmentClear")}
+            accept={ACCEPTED_ATTACHMENT_TYPES}
+            maxSizeInBytes={MAX_ATTACHMENT_BYTES}
+            sizeErrorMessage={t("contactAttachmentTooLarge", {
+              size: t("contactAttachmentSizeLabel", {
+                size: attachmentSizeValue,
+              }),
+            })}
+            value={attachmentFile}
+            onFileChange={handleAttachmentChange}
+            error={attachmentError}
+          />
+          {isAttachmentTooLargeForEmail && (
+            <p className={styles["attachmentNotice"]}>
+              {attachmentEmailNotice}
+            </p>
+          )}
         </div>
 
         <div className={styles["formGroup"]}>

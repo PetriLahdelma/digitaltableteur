@@ -2,19 +2,19 @@
 @import url("../styles/fonts.css");
 
 .contact {
-  text-align: center;
   padding: 32px;
+  text-align: center;
 }
 
 .contact h1 {
+  margin-block: 2rem 6rem;
   font-family: var(--primary-heading-font, serif);
   font-size: 5rem;
   font-weight: var(--primary-heading-weight, 300);
-  margin-block: 2rem 6rem;
-  color: var(--color-primary);
-  hyphens: auto;
   overflow-wrap: break-word;
   word-break: normal;
+  hyphens: auto;
+  color: var(--color-primary);
 }
 
 .contactSectionHeading {
@@ -25,9 +25,9 @@
 
 .officeSection {
   display: grid;
-  gap: 2.5rem;
   margin: 0 auto 3rem;
   max-width: 960px;
+  gap: 2.5rem;
   text-align: left;
 }
 
@@ -37,10 +37,10 @@
 }
 
 .officeSubheading {
-  color: var(--color-primary);
   margin: 0;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
 }
 
 .mapWrapper {
@@ -49,8 +49,8 @@
   height: 18rem;
   border: 2px solid var(--color-primary);
   border-radius: 0;
-  overflow: hidden;
   background-color: var(--color-light-bg);
+  overflow: hidden;
 }
 
 .map {
@@ -60,9 +60,9 @@
 
 .mapFallback {
   display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
+  justify-content: center;
+  align-items: center;
   font-size: 1rem;
   color: var(--color-gray-medium);
 }
@@ -79,8 +79,8 @@
 
 .officeAddressHeading {
   margin: 0.8rem 0 0;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-primary);
 }
 
@@ -93,15 +93,15 @@
 .personGrid {
   display: grid;
   grid-template-columns: minmax(200px, 260px) 1fr;
-  gap: 2rem;
   place-items: center start;
+  gap: 2rem;
 }
 
 .portrait {
   width: 128px;
   border-radius: 100rem;
-  object-fit: cover;
   clip-path: inset(2px round 50%);
+  object-fit: cover;
 }
 
 .flexCenter {
@@ -112,34 +112,34 @@
 
 .personCardCenter {
   display: flex;
-  flex-flow: column wrap;
+  margin-block: 3rem;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-block: 3rem;
+  flex-flow: column wrap;
 }
 
 .personDetails {
   display: grid;
-  gap: 0.75rem;
   justify-items: start;
+  gap: 0.75rem;
 }
 
 .personName {
-  color: var(--color-primary);
   margin: 0;
+  color: var(--color-primary);
 }
 
 .personTitle {
-  color: var(--color-gray-medium);
-  font-size: 1rem;
   margin: 0;
+  font-size: 1rem;
+  color: var(--color-gray-medium);
 }
 
 .contactPersonTitle {
-  text-align: center;
-  width: 100%;
   display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .personEmail {
@@ -150,8 +150,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  text-transform: none;
   font-weight: 600;
+  text-transform: none;
 }
 
 .linkedinLink svg {
@@ -161,10 +161,10 @@
 .contact h2 {
   font-family: var(--secondary-heading-font, sans-serif);
   font-size: 1.8rem;
-  text-transform: uppercase;
   font-weight: 600;
-  margin-bottom: 1rem;
+  text-transform: uppercase;
   color: var(--color-secondary);
+  margin-bottom: 1rem;
 }
 
 .formGroup {
@@ -173,18 +173,18 @@
 
 .privacyPolicy {
   font-size: 1.1rem;
-  color: var(--color-gray-medium);
   text-align: center;
+  color: var(--color-gray-medium);
 }
 
 .privacyPolicy a {
-  color: var(--color-primary);
   text-decoration: underline;
+  color: var(--color-primary);
 }
 
 .resumeInfo a {
-  color: var(--color-white);
   text-decoration: underline;
+  color: var(--color-white);
 }
 
 .privacyPolicy a:hover {
@@ -192,11 +192,11 @@
 }
 
 .contactForm p {
+  margin: 0;
   font-family: Moderat, sans-serif;
   font-size: 0.875rem;
-  color: var(--color-gray-medium);
   text-align: center;
-  margin: 0;
+  color: var(--color-gray-medium);
 }
 
 .checkboxGroup {
@@ -205,8 +205,8 @@
 
 .contactFormTitle {
   font-family: var(--secondary-heading-font, sans-serif);
-  text-transform: uppercase;
   font-weight: 600;
+  text-transform: uppercase;
   margin-bottom: 1rem;
 }
 
@@ -224,9 +224,9 @@ h2.resumeTitle {
 }
 
 .contactInfo {
-  color: var(--color-primary);
   margin-block-end: 2rem;
   font-size: 1rem;
+  color: var(--color-primary);
 }
 
 .cvDownloadSection {
@@ -238,8 +238,8 @@ h2.resumeTitle {
 /* stylelint-disable media-feature-range-notation */
 @media (max-width: 1024px) {
   .officeSection {
-    max-width: 100%;
     padding-inline: 1rem;
+    max-width: 100%;
   }
 }
 
