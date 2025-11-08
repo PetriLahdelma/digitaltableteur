@@ -16,3 +16,24 @@
     } catch (e) {}
   })();
 </script>
+
+<style>
+  /* Storybook fullscreen layout safeguard: ensure top chrome perception retained */
+  .fullscreenSafeArea {
+    box-sizing: border-box;
+    padding-top: 3.5rem; /* approximate toolbar height */
+    min-height: 100vh;
+  }
+
+  @media (min-width: 1200px) {
+    .fullscreenSafeArea {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fullscreenSafeArea {
+      scroll-behavior: auto;
+    }
+  }
+</style>

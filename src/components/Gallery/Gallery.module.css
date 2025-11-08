@@ -1,27 +1,27 @@
 .gallery {
   display: flex;
   inline-size: 100%;
-  gap: clamp(0.5rem, 2vw, 2rem);
   align-items: flex-start;
+  gap: clamp(0.5rem, 2vw, 2rem);
 }
 
 .column {
   display: flex;
+  min-width: 0;
+  flex: 1 1 0;
   flex-direction: column;
   gap: clamp(0.5rem, 2vw, 2rem);
-  flex: 1 1 0;
-  min-width: 0;
 }
 
 .item {
   position: relative;
   margin: 0;
   border-radius: 0;
-  overflow: hidden;
+  outline: none;
   background: #f7f7fa;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
   transition: box-shadow 0.2s;
-  outline: none;
+  overflow: hidden;
 }
 
 .item:focus-visible {
@@ -29,9 +29,9 @@
 }
 
 .image {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
   border-radius: 0;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -44,23 +44,23 @@
 .caption {
   position: absolute;
   inset-inline: 0;
-  inset-block-end: 0;
-  background: rgb(0 0 0 / 55%);
-  color: var(--color-white);
-  font-size: clamp(0.875rem, 0.3vw + 0.85rem, 1rem);
   padding-block: 0.75em;
   padding-inline: 1em;
-  opacity: 0;
+  background: rgb(0 0 0 / 55%);
+  font-size: clamp(0.875rem, 0.3vw + 0.85rem, 1rem);
+  color: var(--color-white);
   pointer-events: none;
   transition: opacity 0.2s;
-  border-end-start-radius: 16px;
+  opacity: 0;
   border-end-end-radius: 16px;
+  border-end-start-radius: 16px;
+  inset-block-end: 0;
 }
 
 .item:hover .caption,
 .item:focus .caption {
-  opacity: 1;
   pointer-events: auto;
+  opacity: 1;
 }
 
 @media (width <= 900px) {
@@ -91,8 +91,8 @@
   }
 
   .caption {
-    border-end-start-radius: 8px;
-    border-end-end-radius: 8px;
     font-size: 0.95rem;
+    border-end-end-radius: 8px;
+    border-end-start-radius: 8px;
   }
 }

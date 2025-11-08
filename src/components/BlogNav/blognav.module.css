@@ -1,8 +1,8 @@
 .blogNavBar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 1rem 0;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .hrLine {
+  margin: 1.5rem 0 2rem;
   border: none;
   border-top: 2px solid var(--color-primary);
-  margin: 1.5rem 0 2rem;
 }

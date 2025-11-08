@@ -2,26 +2,26 @@
 @import url("../../styles/fonts.css");
 
 .overlay {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
   width: 100%;
   height: 100%;
-  background-color: rgb(0 0 0 / 50%);
-  display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1000;
+  align-items: center;
+  background-color: rgb(0 0 0 / 50%);
 }
 
 .modal {
-  background-color: var(--color-white);
-  box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
+  display: flex;
   width: 90%;
   max-width: var(--size-width-lg);
   max-height: 90vh;
-  display: flex;
   flex-direction: column;
+  background-color: var(--color-white);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
   overflow-y: auto;
 }
 
@@ -31,8 +31,8 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
   padding: 2rem 1.5rem 1rem;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -43,87 +43,87 @@
 }
 
 .header svg {
-  vertical-align: middle;
-  align-items: center;
   width: 24px;
   height: 24px;
+  align-items: center;
+  vertical-align: middle;
 }
 
 .title {
-  font-family: var(--secondary-heading-font, sans-serif);
-  color: var(--color-primary);
   margin: 0;
+  font-family: var(--secondary-heading-font, sans-serif);
   font-size: 1.25rem;
+  color: var(--color-primary);
 }
 
 .menu {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .closeButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-primary);
-  font-size: 1rem;
   padding: 0;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  color: var(--color-primary);
+  cursor: pointer;
 }
 
 .content {
-  padding: 0 1.5rem 1rem;
-  font-family: var(--primary-body-font, sans-serif);
-  color: var(--color-primary);
   display: flex;
+  padding: 0 1.5rem 1rem;
   align-items: center;
   gap: 0.75rem;
+  font-family: var(--primary-body-font, sans-serif);
+  color: var(--color-primary);
 }
 
 .footer {
-  padding: 1rem 1.5rem 1.5rem;
   display: flex;
+  padding: 1rem 1.5rem 1.5rem;
   justify-content: flex-end;
   gap: 0.5rem;
 }
 
 .success {
-  border-top: 4px solid var(--color-success);
   max-width: 30vw;
+  border-top: 4px solid var(--color-success);
 }
 
 .error {
-  border-top: 4px solid var(--color-error);
   max-width: 30vw;
+  border-top: 4px solid var(--color-error);
 }
 
 .info {
-  border-top: 4px solid var(--color-info);
   max-width: 30vw;
+  border-top: 4px solid var(--color-info);
 }
 
 .loading {
-  border-top: none;
   max-width: 30vw;
+  border-top: none;
 }
 
 .loading .content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-height: 180px;
-  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
+  text-align: center;
 }
 
 .spinner {
-  border: 4px solid var(--color-border-light);
-  border-top: 4px solid var(--color-info);
-  border-radius: 50%;
   width: 24px;
   height: 24px;
+  border: 4px solid var(--color-border-light);
+  border-radius: 50%;
   animation: spin 1s linear infinite;
+  border-top: 4px solid var(--color-info);
 }
 
 @keyframes spin {
@@ -142,14 +142,14 @@
   .error,
   .info,
   .loading {
-    max-width: 90vw;
     width: 90vw;
+    max-width: 90vw;
   }
 
   .modal {
+    margin: 1rem;
     width: 95%;
     max-height: 90vh;
-    margin: 1rem;
   }
 
   .header {

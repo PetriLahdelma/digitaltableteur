@@ -14,6 +14,16 @@
       "env": {
         "TYPESCRIPT_LOG_LEVEL": "error"
       }
+    },
+    "sentry-mcp": {
+      "type": "command",
+      "command": "node",
+      "args": ["scripts/sentry-mcp.js", "issues"],
+      "env": {
+        "SENTRY_AUTH_TOKEN": "<YOUR_SENTRY_TOKEN>",
+        "SENTRY_ORG": "digitaltableteur",
+        "SENTRY_PROJECT": "frontend"
+      }
     }
   }
 }

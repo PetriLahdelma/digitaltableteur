@@ -2,24 +2,24 @@
 @import url("../../styles/fonts.css");
 
 .cookieConsent {
-  background-color: var(--color-gray-light);
-  border-top: 1px solid var(--color-gray);
-  padding: 1rem;
-  font-family: Moderat, sans-serif;
   display: flex;
+  padding: 1rem;
   flex-direction: column;
+  background-color: var(--color-gray-light);
+  font-family: Moderat, sans-serif;
+  border-top: 1px solid var(--color-gray);
 }
 
 p {
   margin: 0;
+  align-items: start;
   font-size: 1.1rem; /* 14px */
   line-height: 1.6;
-  align-items: start;
 }
 
 .cookieConsent a {
-  color: var(--color-primary);
   text-decoration: underline;
+  color: var(--color-primary);
 }
 
 .cookieConsent .footer {

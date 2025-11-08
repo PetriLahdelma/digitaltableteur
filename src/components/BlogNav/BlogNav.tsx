@@ -18,6 +18,10 @@ const blogPages = [
     labelKey: "blogNavThoughtsOnFutureBranding",
   },
   { path: "/blog/designing-in-2025", labelKey: "blogNavDesigning2025" },
+  {
+    path: "/blog/in-search-of-impact",
+    labelKey: "blogNavInSearchOfImpact",
+  },
   { path: "/blog/workflow-tips", labelKey: "blogNavWorkflowTips" },
 ];
 

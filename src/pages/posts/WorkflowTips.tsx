@@ -8,6 +8,7 @@ import Card from "@dt/Card";
 import AI from "../../assets/images/ai.webp";
 import { useTranslation } from "react-i18next";
 import BlogNav from "@dt/BlogNav/BlogNav";
+import Text from "@dt/Text";
 
 const WorkflowTips = () => {
   const { t } = useTranslation();
@@ -45,7 +46,10 @@ const WorkflowTips = () => {
         <BlogNav />
         <header>
           <h1>Workflow Tips</h1>
-          <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          <div className={styles.metaRow}>
+            <Text className={styles.releaseDate}>May 12, 2025</Text>
+            <Author name="Petri Lahdelma" imageUrl={VaultBoy} size="32px" />
+          </div>
         </header>
         <img
           src={AI}

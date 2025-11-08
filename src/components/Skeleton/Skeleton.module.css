@@ -1,5 +1,7 @@
 .root {
   display: block;
+  position: relative;
+  border-radius: 4px;
   background: linear-gradient(
     90deg,
     var(--color-primary) 25%,
@@ -7,9 +9,19 @@
     var(--color-primary) 63%
   );
   background-size: 400% 100%;
-  border-radius: 4px;
   overflow: hidden;
-  position: relative;
+}
+
+/* Enhancement: smoother perceptual interpolation via Lab color space (supported in modern browsers) */
+@supports (color: lab(0% 0 0)) {
+  .root {
+    background: linear-gradient(
+      90deg,
+      lab(60% -5 5 / 95%) 25%,
+      lab(98% 0 0 / 100%) 37%,
+      lab(60% -5 5 / 95%) 63%
+    );
+  }
 }
 
 .animate {
@@ -55,20 +67,31 @@
   background-size: 400% 100%;
 }
 
+@supports (color: lab(0% 0 0)) {
+  .text .line {
+    background: linear-gradient(
+      90deg,
+      lab(60% -5 5 / 95%) 25%,
+      lab(98% 0 0 / 100%) 37%,
+      lab(60% -5 5 / 95%) 63%
+    );
+  }
+}
+
 .text.animate .line {
   animation: shimmer 1.2s ease-in-out infinite;
 }
 
 .circle {
-  border-radius: 50%;
   width: 48px;
   height: 48px;
+  border-radius: 50%;
 }
 
 .avatar {
-  border-radius: 50%;
   width: 64px;
   height: 64px;
+  border-radius: 50%;
 }
 
 .rect {
