@@ -42,12 +42,33 @@ footer p {
 }
 
 .footer p a {
-  text-decoration: none;
   color: var(--inverted-text-color);
+  position: relative;
+  padding-bottom: 6px;
+  text-decoration: none;
 }
 
-.footer p a:hover {
-  text-decoration: underline;
+.footer p a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6px;
+  background-color: currentColor;
+  opacity: 0;
+  -webkit-mask-image: var(--wavy-underline-mask);
+  mask-image: var(--wavy-underline-mask);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-size: 16px 6px;
+  mask-size: 16px 6px;
+  transition: opacity 0.2s ease;
+}
+
+.footer p a:hover::after,
+.footer p a:focus-visible::after {
+  opacity: 0.85;
 }
 
 .footerText {
