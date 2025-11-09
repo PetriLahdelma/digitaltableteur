@@ -187,6 +187,39 @@ Security Features
 - Environment Isolation: Secure credential management
 - Content Security: Sanitized user inputs and XSS protection
 
+## 📱 Component Features
+
+### Native Share Integration
+
+The `SocialShare` component implements progressive enhancement with the Web Share API:
+
+**Native Share Support**
+- Detects Web Share API availability on mobile devices
+- Provides seamless sharing via device native share sheet
+- Falls back gracefully to clipboard copying when unavailable
+
+**Responsive Design**
+- Icon-only mode on mobile devices for compact display
+- Full button text on desktop environments
+- Proper alignment with other social media icons
+
+**Progressive Enhancement**
+- Feature detection for `navigator.share` availability
+- Automatic fallback to clipboard copy functionality
+- Error handling for share failures with retry mechanism
+
+**Accessibility**
+- ARIA labels for both native share and copy actions
+- Keyboard navigation support
+- Screen reader friendly with appropriate role attributes
+
+**Browser Support**
+- Modern mobile browsers: Native share functionality
+- Desktop browsers: Clipboard copy fallback
+- Legacy browsers: Standard clipboard copy behavior
+
+The implementation follows Web Share API best practices with proper error handling and provides a consistent user experience across all device types.
+
 ## 🌐 Internationalization
 
 The site supports three languages with complete translation coverage:

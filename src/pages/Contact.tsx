@@ -117,6 +117,8 @@ const Contact = () => {
               mediumLabel={t("contactMediumLabel")}
               dribbbleUrl="https://dribbble.com/digitaltableteur"
               dribbbleLabel={t("contactDribbbleLabel")}
+              substackLabel={t("contactSubstackLabel")}
+              substackUrl="https://substack.com/@petrilahdelma"
             />
           </div>
         </section>

@@ -8,6 +8,7 @@ import {
   FaGithub,
   FaDribbble,
 } from "react-icons/fa";
+import { SiSubstack } from "react-icons/si";
 import Grid from "@dt/Grid";
 import { useTranslation } from "react-i18next";
 
@@ -89,6 +90,15 @@ const Footer = () => {
           title={t("footerAriaGithub")}
         >
           {FaGithub({ size: 24 })}
+        </a>
+        <a
+          href="https://substack.com/@petrilahdelma?"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaSubstack")}
+          title={t("footerAriaSubstack")}
+        >
+          {SiSubstack({ size: 24 })}
         </a>
         <a
           href="https://dribbble.com/digitaltableteur"

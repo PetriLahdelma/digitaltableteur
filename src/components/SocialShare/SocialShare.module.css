@@ -47,18 +47,21 @@
 }
 
 @media (width < 768px) {
-  .copyButtonText {
-    display: none;
+  .copyButton {
+    display: flex;
+    width: 1.5rem;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    min-height: 1.5rem;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: var(--primary-background-color);
   }
 
-  .copyButton {
-    padding: 0;
+  .copyButton svg {
     width: 1.5rem;
-    min-width: unset;
     height: 1.5rem;
-    min-height: unset;
-    gap: 0;
-    border: none;
-    background-color: transparent;
   }
 }

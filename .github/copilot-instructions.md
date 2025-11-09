@@ -2,6 +2,9 @@
 
 ## Workflow Requirements
 
+– When creating a new component, ensure it has a corresponding Storybook story and unit tests
+
+- When modifying existing components, update Storybook stories and unit tests as needed
 - Always refer to docs/2026_PRD.md for project requirements
 - Always refer to docs/2026_ROADMAP.txt for planning, checking long-term goals and progress
 - Follow established coding conventions: TypeScript with strict typing, CSS Modules for styling, React functional components with hooks
@@ -522,6 +525,106 @@ To add new fields or behaviors:
 5. Document changes here + `README.md` + `CLAUDE.md` in the same commit.
 
 Avoid renaming existing keys—additive naming preserves translation history and reduces churn.
+
+## SocialShare Component with Native Web Share API (Nov 2025)
+
+The `SocialShare` component (`src/components/SocialShare/`) implements progressive enhancement with the Web Share API, providing native mobile sharing experiences while gracefully falling back to clipboard functionality.
+
+### Progressive Enhancement Architecture
+
+**Feature Detection & State Management**
+
+```typescript
+const [supportsNativeShare, setSupportsNativeShare] = useState(false);
+const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  if (typeof window !== "undefined" && "share" in navigator) {
+    setSupportsNativeShare(true);
+  }
+}, []);
+```
+
+**Responsive Behavior Patterns**
+
+- Mobile devices: Icon-only buttons for compact alignment with social media icons
+- Desktop environments: Full button text with proper spacing
+- Feature detection drives conditional rendering between share and copy icons
+
+### Implementation Guidelines
+
+**API Usage**
+
+1. **Native Share Priority**: When Web Share API available, use device native share sheet
+2. **Graceful Fallback**: Share failures automatically fall back to clipboard copy
+3. **Error Handling**: Catch share cancellations and API errors without disrupting UX
+
+**Responsive Design Integration**
+
+- Leverage Button component's `iconOnly` prop for mobile state management
+- Apply CSS logical properties (`margin-inline`) for proper icon alignment
+- Use `window.matchMedia("(width < 768px)")` for consistent breakpoint detection
+
+**Translation Coverage**
+
+Required i18n keys:
+- `share`: Native share action label
+- `copyLinkToClipboard`: Clipboard fallback action label
+
+### Testing Strategy
+
+**Navigator API Mocking**
+
+```javascript
+// Remove navigator.share to test unsupported browsers
+const originalNavigator = global.navigator;
+const mockNavigator = { ...originalNavigator } as any;
+delete mockNavigator.share;
+Object.defineProperty(global, "navigator", {
+  writable: true,
+  value: mockNavigator,
+});
+```
+
+**Test Coverage Requirements**
+
+1. Feature detection for both supported and unsupported browsers
+2. Conditional rendering based on device capabilities and API availability
+3. Fallback behavior when native share fails or is cancelled
+4. Responsive state transitions between mobile and desktop modes
+5. Translation key coverage across all supported languages
+
+### Accessibility Standards
+
+- Proper ARIA labels for both native share and clipboard copy actions
+- Keyboard navigation support maintained across interaction modes
+- Screen reader compatibility with appropriate role attributes
+- Toast notification feedback for clipboard copy operations
+
+### Browser Support Matrix
+
+- **iOS Safari 12+**: Full native share sheet integration
+- **Chrome Android 61+**: Native share functionality
+- **Desktop Browsers**: Clipboard copy fallback only
+- **Legacy Mobile**: Standard clipboard copy behavior
+
+### Extension Guidelines
+
+Future enhancements should follow the progressive enhancement pattern:
+
+1. **Feature Detection**: Check for new APIs before implementing
+2. **Graceful Degradation**: Ensure fallback paths remain functional
+3. **Accessibility**: Maintain keyboard navigation and screen reader support
+4. **Testing**: Update test coverage for new feature branches
+5. **Documentation**: Update this section and corresponding docs
+
+**Web Share API Level 2 Considerations**
+
+- File sharing support for images and documents
+- Share target registration for PWA capabilities
+- Enhanced share data validation and custom error messaging
+
+Keep this section synchronized with `README.md` and `CLAUDE.md` whenever native share functionality evolves.
 
 ## MCP & Observability Automation (Nov 2025)
 

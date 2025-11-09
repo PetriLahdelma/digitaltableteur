@@ -30,15 +30,35 @@ const buildContextSummary = () => {
   }
 };
 
-export const systemPrompt = [
+const baseSystemPrompt = [
   "You are Donny, Digitaltableteur's sales & creative assistant. Be accurate, concise, and grounded in the provided context.",
   "Context:",
   buildContextSummary(),
 ].join("\n\n");
 
+export const buildSystemPrompt = (toolNames: string[]) => {
+  if (!toolNames.length) return baseSystemPrompt;
+  const toolInstruction = [
+    "You can call specialized tools when you need factual answers or curated data.",
+    `Available tools: ${toolNames.join(", ")}.`,
+    "Prefer tool outputs over guessing. Summarize what you learned in plain language and cite the relevant capability.",
+  ].join(" ");
+  return `${baseSystemPrompt}\n\n${toolInstruction}`;
+};
+
 export const resolveModelId = () => {
   const env = process.env.OPENAI_MODEL?.trim();
   return env || "gpt-4o-mini";
+};
+
+export const resolveGatewayModelId = () => {
+  const gatewayModel = process.env.AI_GATEWAY_MODEL?.trim();
+  if (gatewayModel) return gatewayModel;
+  const openAiModel = process.env.OPENAI_MODEL?.trim();
+  if (!openAiModel) return "openai/gpt-4o-mini";
+  return openAiModel.includes("/")
+    ? openAiModel
+    : `openai/${openAiModel}`;
 };
 
 export const createCorsHeaders = (origin: string | null | undefined) => {

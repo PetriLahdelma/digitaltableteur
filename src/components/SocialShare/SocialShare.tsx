@@ -1,5 +1,5 @@
 // components/SocialShare.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SocialShare.module.css";
 import {
   FaTwitter,
@@ -7,6 +7,7 @@ import {
   FaFacebook,
   FaReddit,
   FaWhatsapp,
+  FaShare,
 } from "react-icons/fa";
 import { MdContentCopy } from "react-icons/md";
 
@@ -24,10 +25,48 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
   const [toastOpen, setToastOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [supportsNativeShare, setSupportsNativeShare] = useState(false);
+
+  useEffect(() => {
+    // Check if matchMedia is available (not in JSDOM/test environment)
+    if (typeof window !== "undefined" && window.matchMedia) {
+      const mediaQuery = window.matchMedia("(width < 768px)");
+      setIsMobile(mediaQuery.matches);
+
+      const handleChange = (e: MediaQueryListEvent) => {
+        setIsMobile(e.matches);
+      };
+
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Check if native sharing is supported
+    if (typeof window !== "undefined" && "share" in navigator) {
+      setSupportsNativeShare(true);
+    }
+  }, []);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(url);
     setToastOpen(true);
+  };
+
+  const handleNativeShare = async () => {
+    try {
+      await navigator.share({
+        title,
+        url,
+        text: title,
+      });
+    } catch (error) {
+      // If native share fails or is cancelled, fall back to copy
+      console.log("Native share failed, falling back to copy");
+      handleCopy();
+    }
   };
 
   const handleToastClose = () => {
@@ -76,18 +115,37 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
       >
         <FaWhatsapp role="img" aria-label="WhatsApp icon" />
       </a>
-      <Button
-        size="l"
-        variant="secondary"
-        icon={<MdContentCopy role="img" aria-label="Copy link icon" />}
-        className={styles.copyButton}
-        onClick={handleCopy}
-        aria-label={t("copyLinkToClipboard")}
-      >
-        <span className={styles.copyButtonText} aria-hidden="true">
-          {t("copyLinkToClipboard")}
-        </span>
-      </Button>
+      {supportsNativeShare ? (
+        <Button
+          size={isMobile ? "s" : "l"}
+          variant="secondary"
+          icon={<FaShare role="img" aria-label="Share icon" />}
+          className={styles.copyButton}
+          onClick={handleNativeShare}
+          aria-label={t("share")}
+        >
+          {!isMobile && (
+            <span className={styles.copyButtonText} aria-hidden="true">
+              {t("share")}
+            </span>
+          )}
+        </Button>
+      ) : (
+        <Button
+          size={isMobile ? "s" : "l"}
+          variant="secondary"
+          icon={<MdContentCopy role="img" aria-label="Copy link icon" />}
+          className={styles.copyButton}
+          onClick={handleCopy}
+          aria-label={t("copyLinkToClipboard")}
+        >
+          {!isMobile && (
+            <span className={styles.copyButtonText} aria-hidden="true">
+              {t("copyLinkToClipboard")}
+            </span>
+          )}
+        </Button>
+      )}
       <Toast
         message={t("linkCopied")}
         open={toastOpen}
