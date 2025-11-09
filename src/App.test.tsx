@@ -16,8 +16,8 @@ describe("App", () => {
         <Home />
       </I18nextProvider>,
     );
-    const titleElement = screen.getByText(/Creative & Development/i);
-    expect(titleElement).toBeInTheDocument();
+    const titleElements = screen.getAllByText(/Creative & Development/i);
+    expect(titleElements.length).toBeGreaterThan(0);
   });
 
   it("renders the grid items", () => {
