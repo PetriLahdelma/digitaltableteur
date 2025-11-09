@@ -568,6 +568,7 @@ useEffect(() => {
 **Translation Coverage**
 
 Required i18n keys:
+
 - `share`: Native share action label
 - `copyLinkToClipboard`: Clipboard fallback action label
 

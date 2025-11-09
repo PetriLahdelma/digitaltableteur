@@ -30,6 +30,7 @@ const PetriLahdelmaBio = React.lazy(
   () => import("./pages/posts/PetriLahdelmaBio"),
 );
 const NotFound = React.lazy(() => import("./pages/NotFound"));
+const AiUsage = React.lazy(() => import("./pages/AiUsage"));
 
 const CookiePolicyFullEN = React.lazy(
   () => import("./pages/CookiePolicy-full-en"),
@@ -109,6 +110,7 @@ function App() {
                   path="/cookie-policy-full"
                   element={<CookiePolicyFullEN />}
                 />
+                <Route path="/ai-use" element={<AiUsage />} />
                 <Route path="/work/new-things-co" element={<NewThingsCo />} />
                 <Route path="/work/illustrations" element={<Illustrations />} />
                 <Route
