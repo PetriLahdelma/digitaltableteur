@@ -9,6 +9,8 @@ import Link from "@dt/Link";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 import Button from "@dt/Button";
+import Card from "@dt/Card";
+import { FaPalette, FaChartLine, FaPen } from "react-icons/fa";
 
 const heroContainerVariants = {
   hidden: { opacity: 0 },
@@ -88,6 +90,41 @@ const Home = () => {
     [t],
   );
   const [currentText, setCurrentText] = useState(texts[0]);
+  const highlightCards = useMemo(
+    () => [
+      {
+        key: "creative",
+        title: t("homeCreativeDevelopment"),
+        description: t(
+          "homeCreativeDescription",
+          "Building digital experiences that combine aesthetic excellence with functional innovation",
+        ),
+        variant: "elevated" as const,
+        icon: <FaPalette />,
+      },
+      {
+        key: "strategy",
+        title: t("homeStrategyBranding"),
+        description: t(
+          "homeStrategyDescription",
+          "Strategic thinking meets visual identity to create memorable brand experiences",
+        ),
+        variant: "filled" as const,
+        icon: <FaChartLine />,
+      },
+      {
+        key: "illustration",
+        title: t("homeIllustrationEditorial"),
+        description: t(
+          "homeIllustrationDescription",
+          "Custom illustrations and editorial design that tell compelling visual stories",
+        ),
+        variant: "outlined" as const,
+        icon: <FaPen />,
+      },
+    ],
+    [t],
+  );
 
   useEffect(() => {
     setCurrentText(texts[0]); // Reset on language change
@@ -125,7 +162,10 @@ const Home = () => {
               initial="hidden"
               animate="visible"
             >
-              <motion.div variants={heroTitleVariants}>
+              <motion.div
+                variants={heroTitleVariants}
+                className={styles.heroTitleWrapper}
+              >
                 <Title
                   level={2}
                   size="L"
@@ -165,6 +205,19 @@ const Home = () => {
               </motion.div>
             </motion.div>
           </Grid>
+        </section>
+        <section className={styles.heroHighlights}>
+          <div className={styles.heroHighlightsGrid}>
+            {highlightCards.map((card) => (
+              <Card
+                size="M"
+                key={card.key}
+                title={card.title}
+                description={card.description}
+                variant={card.variant}
+              />
+            ))}
+          </div>
         </section>
         <section className={styles.about}>
           <Title className={styles.gradientText} level={1} size="XL">

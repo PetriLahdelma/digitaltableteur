@@ -12,6 +12,7 @@ import {
   FaMedium,
   FaInstagram,
 } from "react-icons/fa";
+import { SiSubstack } from "react-icons/si";
 import { useTranslation } from "react-i18next";
 
 export interface PersonCardProps {
@@ -36,6 +37,8 @@ export interface PersonCardProps {
   mediumLabel?: string;
   instagramUrl?: string;
   instagramLabel?: string;
+  substackUrl?: string;
+  substackLabel?: string;
   className?: string;
   imageLoading?: "lazy" | "eager";
   imageDecoding?: "auto" | "sync" | "async";
@@ -63,6 +66,8 @@ const PersonCard: React.FC<PersonCardProps> = ({
   mediumLabel,
   instagramUrl,
   instagramLabel,
+  substackUrl,
+  substackLabel,
   className,
   imageLoading = "lazy",
   imageDecoding = "async",
@@ -190,6 +195,19 @@ const PersonCard: React.FC<PersonCardProps> = ({
               title={instagramLabel || t("contactInstagramLabel")}
             >
               <FaInstagram aria-hidden="true" />
+            </Link>
+          )}
+          {substackUrl && (
+            <Link
+              size="S"
+              href={substackUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLink}
+              aria-label={substackLabel || t("contactSubstackLabel")}
+              title={substackLabel || t("contactSubstackLabel")}
+            >
+              <SiSubstack aria-hidden="true" />
             </Link>
           )}
         </div>

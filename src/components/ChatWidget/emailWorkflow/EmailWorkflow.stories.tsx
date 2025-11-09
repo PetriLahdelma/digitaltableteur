@@ -39,7 +39,7 @@ const WorkflowHarness: React.FC<{ state: EmailWorkflowState }> = ({
 };
 
 const meta: Meta<typeof WorkflowHarness> = {
-  title: "Chat/EmailWorkflow",
+  title: "Components/AI/Chat/Custom Components/EmailWorkflow",
   component: WorkflowHarness,
   parameters: {
     wip: { disabled: false },

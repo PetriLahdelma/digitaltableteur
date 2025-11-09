@@ -330,3 +330,86 @@ Future Considerations:
 - Provide explicit environment badge in ChatHeader when using remote vs custom endpoint for transparency during QA.
 - Add health preflight (small HEAD request) before first message to surface endpoint issues earlier.
 - Integrate endpoint choice into observability summary for cross-environment diagnostics.
+
+### SocialShare Component with Native Web Share API (Nov 2025)
+
+The `SocialShare` component implements progressive enhancement with the Web Share API for modern mobile sharing experiences.
+
+**Architecture & Feature Detection**
+
+```typescript
+const [supportsNativeShare, setSupportsNativeShare] = useState(false);
+const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  // Check if native sharing is supported
+  if (typeof window !== "undefined" && "share" in navigator) {
+    setSupportsNativeShare(true);
+  }
+}, []);
+```
+
+- Feature detection via `"share" in navigator` check
+- Mobile detection using `window.matchMedia("(width < 768px)")`
+- State-driven conditional rendering for appropriate UI
+
+**Progressive Enhancement Pattern**
+
+1. **Native Share (Mobile + Support)**: Share icon with device native share sheet
+2. **Clipboard Copy (Fallback)**: Copy icon with clipboard.writeText() API
+3. **Error Handling**: Native share failures gracefully fall back to copy
+
+**Implementation Details**
+
+```typescript
+const handleNativeShare = async () => {
+  try {
+    await navigator.share({ title, url, text: title });
+  } catch (error) {
+    console.log("Native share failed, falling back to copy");
+    handleCopy(); // Graceful fallback
+  }
+};
+```
+
+**Responsive Design Integration**
+
+- Mobile: Icon-only buttons using `Button` component's `iconOnly` mode
+- Desktop: Full button with text labels
+- CSS logical properties for proper alignment with social media icons
+
+**Testing Strategy**
+
+- Mock `navigator.share` presence/absence via Object.defineProperty manipulation
+- Test conditional rendering based on feature availability
+- Validate fallback behavior when native share fails
+- Comprehensive coverage of both mobile and desktop scenarios
+
+**Accessibility Considerations**
+
+- Proper ARIA labels for both share and copy actions
+- Keyboard navigation support maintained
+- Screen reader compatibility with role attributes
+- Toast notifications for copy success feedback
+
+**Browser Support Matrix**
+
+- **iOS Safari 12+**: Native share sheet integration
+- **Chrome Android 61+**: Native share functionality
+- **Desktop Browsers**: Clipboard copy fallback
+- **Legacy Mobile**: Standard clipboard copy behavior
+
+**Internationalization**
+
+Translation keys added for both share actions:
+- `share`: "share" (EN), "jaa" (FI), "dela" (SV)
+- `copyLinkToClipboard`: "Copy to clipboard" across languages
+
+**Future Enhancements**
+
+- Web Share API Level 2: File sharing support for images/documents
+- Share target registration for PWA capabilities
+- Custom share data validation and error messaging
+- Analytics integration for share success/failure tracking
+
+The implementation follows Web Platform best practices with feature detection, graceful degradation, and accessibility compliance across all interaction patterns.
