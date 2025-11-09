@@ -134,6 +134,29 @@ const CookiePolicyFullSV = () => {
           webbläsarens inställningar, men det kan påverka webbplatsens
           funktionalitet.
         </p>
+        <p>
+          Cookies kategoriseras enligt följande: <strong>nödvändiga</strong>{" "}
+          (säkerhet och samtycke), <strong>funktionella</strong> (språk, layout,
+          inbäddningar),
+          <strong>analys</strong> (aggregerad användningsdata) samt{" "}
+          <strong>marknadsföring/gemenskap</strong> (t.ex. Substack och
+          Instagram). Valfria kategorier aktiveras först efter att du godkänt
+          dem. Samtycken loggas i 13 månader enligt EU-regler.
+        </p>
+        <h3>Hantera samtycke</h3>
+        <p>
+          Visa bannern igen genom att rensa posten “cookieConsent” i
+          webbläsarens lagring eller kontakta mail@digitaltableteur.com så
+          återställer vi den. Du kan även hantera cookies via webbläsarens
+          inställningar.
+        </p>
+        <h3>Användning av AI</h3>
+        <p>
+          Vissa texter, prototyper eller tester görs med AI-stöd, men en
+          ansvarig person granskar alltid resultatet och personuppgifter
+          minimeras. Se vår <a href="/ai-use">AI-transparensrapport</a> för fler
+          detaljer.
+        </p>
         <h3>Utövande av rättigheter</h3>
         <p>
           För att använda dina rättigheter, kontakta den personuppgiftsansvariga

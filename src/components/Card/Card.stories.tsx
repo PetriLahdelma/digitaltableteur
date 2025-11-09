@@ -121,7 +121,7 @@ export const WithIconStart = {
     title: "Creative Development",
     icon: <FaPalette />,
     iconProps: { position: "start", size: "md" },
-    body: "Building digital experiences that combine aesthetic excellence with functional innovation.",
+    body: "Digital experiences that combine aesthetic excellence with functional innovation.",
     variant: "elevated",
     hoverable: true,
   },

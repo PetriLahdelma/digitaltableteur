@@ -26,3 +26,21 @@ p {
   gap: 0.5rem;
   margin-top: 1rem;
 }
+
+.footerActions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.leftActions {
+  display: flex;
+  align-items: center;
+}
+
+.rightActions {
+  display: flex;
+  gap: 0.5rem;
+}
