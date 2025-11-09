@@ -120,11 +120,14 @@
   --checkbox-checkmark-color: #fff; /* Always white for checkmarks on blue background */
   --checkbox-background-color: #fff; /* Always white background for unchecked state */
 
-  /* Sizing */
+  /* Border radius */
 
   --radius-sm: 2px;
   --radius-md: 0.25rem;
   --radius-lg: 8px;
+
+  /* Sizing */
+
   --size-width-md: 320px;
   --size-width-lg: 900px;
   --size-width-form: 600px;

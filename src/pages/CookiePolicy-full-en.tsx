@@ -167,12 +167,36 @@ const CookiePolicyFullEN = () => {
           identified based solely on cookies. You can prohibit cookies in your
           browser settings, but this may affect site functionality.
         </p>
+        <p>
+          Cookies are grouped into four categories: <strong>essential</strong>{" "}
+          (security, consent storage), <strong>functional</strong> (language,
+          layout, map embeds), <strong>analytics</strong> (aggregate usage
+          metrics) and <strong>marketing/community</strong> (Substack,
+          Instagram, GitHub previews). Non-essential categories are only
+          activated after you select “Accept all” in the consent modal. Consent
+          logs are retained for 13 months as required by EU law.
+        </p>
         <h3>Google Analytics</h3>
         <p>
           We use Google Analytics to monitor site activity, improve
           functionality, and develop marketing. Data collected cannot be linked
           to individual users. You can change your Google ad settings or disable
           Analytics monitoring with a browser add-on.
+        </p>
+        <h3>Managing consent</h3>
+        <p>
+          You can revisit your choice at any time. Clear the “cookieConsent”
+          entry in your browser storage (or all cookies) to re-open the banner,
+          or email mail@digitaltableteur.com and we will reset it on your
+          behalf.
+        </p>
+        <h3>AI-assisted services</h3>
+        <p>
+          Parts of the site (for example, translated articles, Storybook
+          previews, or prototype copy) are reviewed with AI-assisted tooling.
+          Humans remain accountable for every deliverable and personal data is
+          minimised before any prompt is sent. See our{" "}
+          <a href="/ai-use">AI use & transparency statement</a> for details.
         </p>
         <h3>How to exercise your rights</h3>
         <p>

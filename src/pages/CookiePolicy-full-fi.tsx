@@ -133,6 +133,33 @@ const CookiePolicyFullFI = () => {
           kieltää selaimen asetuksista, mutta tämä voi vaikuttaa sivuston
           toimintaan.
         </p>
+        <p>
+          Evästeet jaetaan neljään kategoriaan: <strong>välttämättömiin</strong>{" "}
+          (turvallisuus, suostumuksen tallennus),{" "}
+          <strong>toiminnallisiin</strong> (kieli, ulkoasu, kartta- ja
+          video-upotukset), <strong>analytiikkaan</strong> (yhdistetty
+          käyttötieto) sekä <strong>markkinointi/yhteisö</strong> -evästeisiin
+          (esim. Substack, Instagram). Valinnaiset kategoriat aktivoidaan vasta,
+          kun valitset “Hyväksy kaikki”. Suostumus kirjataan 13 kuukauden ajaksi
+          EU-sääntelyn mukaisesti.
+        </p>
+        <h3>Suostumuksen hallinta</h3>
+        <p>
+          Saat evästebannerin takaisin näkyviin tyhjentämällä selaimen
+          “cookieConsent”-merkinnän tai pyytämällä meitä nollaamaan valintasi
+          osoitteessa mail@digitaltableteur.com. Voit myös hallita evästeitä
+          selaimesi asetuksissa.
+        </p>
+        <h3>Tekoälyn käyttö</h3>
+        <p>
+          Hyödynnämme tekoälyä mm. sisällön luonnostelussa ja käyttöliittymien
+          testauksessa, mutta ihminen vastaa lopputuloksesta ja henkilökohtaiset
+          tiedot minimoidaan ennen promptien lähettämistä. Lue lisää{" "}
+          <a href="/ai-use">
+            AI:n käyttöä ja läpinäkyvyyttä koskevasta selosteesta
+          </a>
+          .
+        </p>
         <h3>Oikeuksien käyttäminen</h3>
         <p>
           Käyttääksesi oikeuksiasi ota yhteyttä rekisterinpitäjään tai yllä
