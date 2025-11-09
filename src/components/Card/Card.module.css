@@ -18,14 +18,14 @@
   --card-container-elevation-5:
     0 4px 4px rgb(0 0 0 / 30%), 0 8px 12px 6px rgb(0 0 0 / 15%);
   --card-outline-color: var(--color-border-subtle, rgb(15 23 42 / 12%));
-  --card-outline-width: 1px;
+  --card-outline-width: 2px;
 
   /* Content spacing following Material Design specs */
-  --card-header-padding: var(--space-internal-16);
-  --card-content-padding: var(--space-internal-16);
-  --card-footer-padding: var(--space-internal-16);
-  --card-supporting-text-padding: var(--space-internal-16);
-  --card-container-shape: var(--radius-lg, 12px);
+  --card-header-padding: var(--space-internal-24);
+  --card-content-padding: var(--space-internal-24);
+  --card-footer-padding: var(--space-internal-24);
+  --card-supporting-text-padding: var(--space-internal-24);
+  --card-container-shape: 2px;
 
   display: flex;
   position: relative;
@@ -47,7 +47,7 @@
 /* Card Variants */
 
 .outlined {
-  border: var(--card-outline-width) solid var(--card-outline-color);
+  border: var(--card-outline-width) solid var(--color-primary);
   box-shadow: var(--card-container-elevation-0);
 }
 
@@ -178,7 +178,7 @@
 .subTitle {
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-text-subtle);
+  color: var(--color-primary);
 }
 
 .extra {
@@ -222,7 +222,7 @@
 .description {
   margin: 0;
   line-height: 1.5;
-  color: var(--color-text-subtle, rgb(0 0 0 / 65%));
+  color: var(--color-primary, rgb(0 0 0 / 65%));
 }
 
 /* Footer Actions */
@@ -231,13 +231,13 @@
   display: flex;
   justify-content: flex-end;
   gap: var(--space-xs);
-  border-top: 1px solid rgb(0 0 0 / 4%);
+  border-top: 2px solid rgb(0 0 0 / 4%);
   margin-top: var(--space-m);
   padding-top: var(--space-s);
 }
 
 .footer {
-  border-top: 1px solid rgb(0 0 0 / 6%);
+  border-top: 2px solid rgb(0 0 0 / 6%);
   margin-top: var(--space-m);
   padding-top: var(--space-s);
 }
@@ -372,7 +372,7 @@
 /* Border Variants */
 
 .bordered {
-  border: 1px solid var(--color-border-subtle);
+  border: 2px solid var(--color-primary);
 }
 
 .unbordered {

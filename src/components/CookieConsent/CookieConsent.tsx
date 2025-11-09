@@ -31,14 +31,26 @@ const CookieConsent = () => {
       isOpen={isOpen}
       title={t("cookieConsentTitle")}
       footer={
-        <>
-          <Button variant="primary" onClick={handleAcceptAll}>
-            {t("cookieAcceptAll")}
-          </Button>
-          <Button variant="secondary" onClick={handleEssentialOnly}>
-            {t("cookieAcceptEssential")}
-          </Button>
-        </>
+        <div className={styles.footerActions}>
+          <div className={styles.leftActions}>
+            <Button
+              variant="tertiary"
+              onClick={() => {
+                window.location.href = "/ai-use";
+              }}
+            >
+              {t("cookieConsentAiButton")}
+            </Button>
+          </div>
+          <div className={styles.rightActions}>
+            <Button variant="secondary" onClick={handleEssentialOnly}>
+              {t("cookieAcceptEssential")}
+            </Button>
+            <Button variant="primary" onClick={handleAcceptAll}>
+              {t("cookieAcceptAll")}
+            </Button>
+          </div>
+        </div>
       }
     >
       <p>
