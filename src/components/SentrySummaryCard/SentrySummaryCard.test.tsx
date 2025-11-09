@@ -38,7 +38,9 @@ describe("SentrySummaryCard", () => {
       ],
     });
     render(<SentrySummaryCard />);
-    expect(screen.getByText(/Loading Sentry summary/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("status", { name: /Loading content/i }),
+    ).toBeInTheDocument();
     await waitFor(() =>
       expect(screen.getByText(/Sentry Issues/i)).toBeInTheDocument(),
     );

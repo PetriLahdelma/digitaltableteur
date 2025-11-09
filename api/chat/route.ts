@@ -1,14 +1,26 @@
 import { convertToCoreMessages, streamText } from "ai";
-import { createOpenAI } from "@ai-sdk/openai";
+import {
+  createGateway,
+  GatewayAuthenticationError,
+  GatewayInvalidRequestError,
+  GatewayModelNotFoundError,
+  GatewayRateLimitError,
+} from "@ai-sdk/gateway";
 import {
   ChatApiError,
-  resolveModelId,
-  systemPrompt,
+  resolveGatewayModelId,
+  buildSystemPrompt,
   createCorsHeaders,
   validateMessages,
 } from "../chat-shared"; // shared chat utilities
+import { getDonnyTools } from "../donny-tools";
 
 type ChatRequestBody = { messages?: unknown };
+
+const gatewayProvider = createGateway({
+  baseURL: process.env.AI_GATEWAY_URL?.trim(),
+  apiKey: process.env.AI_GATEWAY_API_KEY?.trim(),
+});
 
 const readRequestBody = async (request: Request): Promise<ChatRequestBody> => {
   try {
@@ -43,44 +55,68 @@ export const POST = async (request: Request) => {
   const headers = createCorsHeaders(request.headers.get("origin"));
 
   try {
-    const apiKey = process.env.OPENAI_API_KEY?.trim();
-    if (!apiKey) {
-      throw new ChatApiError(500, "Missing OpenAI API key");
-    }
-
     const body = await readRequestBody(request);
     const messagesUnknown = body.messages;
     const runValidate: (m: unknown) => asserts m is any[] = validateMessages;
     runValidate(messagesUnknown);
     const messages = messagesUnknown as any[];
 
-    const openai = createOpenAI({ apiKey });
-    const modelId = resolveModelId();
+    const tools = await getDonnyTools({
+      enableMcp: true,
+      allowStdio: false,
+    });
+    const system = buildSystemPrompt(Object.keys(tools));
 
     const result = await streamText({
-      model: openai(modelId),
-      system: systemPrompt,
+      model: gatewayProvider(resolveGatewayModelId()),
+      system,
+      tools,
       messages: convertToCoreMessages(messages),
-      temperature: 0.3,
-      maxRetries: 1,
+      temperature: 0.2,
+      maxRetries: 2,
     });
 
     return result.toUIMessageStreamResponse({
       headers,
     });
-  } catch (caught: unknown) {
-    const error = caught;
-    if (error instanceof ChatApiError) {
-      const typed = error as ChatApiError;
-      return jsonResponse(typed.status, headers, { error: typed.message });
-    }
-    if (error instanceof Error) {
-      console.error("Chat route unexpected error", error.message, error.stack);
-    } else {
-      console.error("Chat route non-error throw", error);
-    }
-    return jsonResponse(500, headers, {
-      error: "Donny ran into a snag. Please try again soon.",
+  } catch (error) {
+    const normalized = normalizeError(error);
+    return jsonResponse(normalized.status, headers, {
+      error: normalized.message,
     });
   }
+};
+
+const normalizeError = (caught: unknown): ChatApiError => {
+  if (caught instanceof ChatApiError) return caught;
+  if (GatewayAuthenticationError.isInstance(caught)) {
+    return new ChatApiError(
+      502,
+      "AI Gateway authentication failed. Confirm the API key or OIDC token.",
+    );
+  }
+  if (GatewayRateLimitError.isInstance(caught)) {
+    return new ChatApiError(
+      429,
+      "The AI Gateway rate limit has been reached. Please retry shortly.",
+    );
+  }
+  if (
+    GatewayInvalidRequestError.isInstance(caught) ||
+    GatewayModelNotFoundError.isInstance(caught)
+  ) {
+    return new ChatApiError(
+      400,
+      "The chat request was rejected by the AI Gateway configuration.",
+    );
+  }
+  if (caught instanceof Error) {
+    console.error("Chat route unexpected error", caught.message, caught.stack);
+    return new ChatApiError(
+      500,
+      "Donny ran into a snag. Please try again soon.",
+    );
+  }
+  console.error("Chat route non-error throw", caught);
+  return new ChatApiError(500, "Unknown error");
 };
