@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Card from "@dt/Card";
 import styles from "./SentrySummaryCard.module.css";
 import { useTranslation } from "react-i18next";
 
@@ -84,92 +85,99 @@ const SentrySummaryCard: React.FC<Props> = ({
     };
   }, [dataOverride, forceLoading, forceError]);
 
-  const rootClass = [styles.root, className].filter(Boolean).join(" ");
-
   if (forceLoading) {
     return (
-      <div className={rootClass} aria-busy="true">
-        {t("observability.sentry.loading", "Loading Sentry summary...")}
-      </div>
+      <Card
+        title={t("observability.sentry.title", "Sentry Issues")}
+        loading
+        variant="elevated"
+        className={className}
+      />
     );
   }
 
   if (forceError) {
     return (
-      <div className={rootClass} role="alert">
-        <p className={styles.error}>
+      <Card
+        title={t("observability.sentry.title", "Sentry Issues")}
+        variant="outlined"
+        className={className}
+      >
+        <p className={styles.error} role="alert">
           {t("observability.sentry.error.fetch", "Failed to load Sentry data")}
         </p>
-      </div>
+      </Card>
     );
   }
 
   if (loading) {
     return (
-      <div className={rootClass} aria-busy="true">
-        {t("observability.sentry.loading", "Loading Sentry summary...")}
-      </div>
+      <Card
+        title={t("observability.sentry.title", "Sentry Issues")}
+        loading
+        variant="elevated"
+        className={className}
+      />
     );
   }
 
   if (error) {
     return (
-      <div className={rootClass} role="alert">
-        <p className={styles.error}>
+      <Card
+        title={t("observability.sentry.title", "Sentry Issues")}
+        variant="outlined"
+        className={className}
+      >
+        <p className={styles.error} role="alert">
           {t("observability.sentry.error.fetch", "Failed to load Sentry data")}
         </p>
-      </div>
+      </Card>
     );
   }
 
   if (!data || data.issues.length === 0) {
-    return (
-      <div
-        className={rootClass}
-        data-surface={data?.stub ? undefined : "elevated"}
+    const extraContent = data?.stub ? (
+      <span
+        className={styles.stubBadge}
+        aria-label={t("observability.sentry.stubBadge", "Stub data")}
       >
-        <div className={styles.header}>
-          <div className={styles.titleGroup}>
-            <h3>{t("observability.sentry.title", "Sentry Issues")}</h3>
-            <span className={styles.count}>0</span>
-          </div>
-          {data?.stub && (
-            <span
-              className={styles.stubBadge}
-              aria-label={t("observability.sentry.stubBadge", "Stub data")}
-            >
-              {t("observability.sentry.stubBadge", "Stub data")}
-            </span>
-          )}
-        </div>
-        <p className={styles.empty}>
-          {t("observability.sentry.empty", "No matching issues")}
-        </p>
-      </div>
+        {t("observability.sentry.stubBadge", "Stub data")}
+      </span>
+    ) : (
+      <span className={styles.count}>0</span>
+    );
+
+    return (
+      <Card
+        title={t("observability.sentry.title", "Sentry Issues")}
+        extra={extraContent}
+        variant={data?.stub ? "outlined" : "elevated"}
+        className={className}
+      >
+        <p>{t("observability.sentry.empty", "No matching issues")}</p>
+      </Card>
     );
   }
 
   const issues = data.issues.slice(0, maxIssues);
 
-  return (
-    <div
-      className={rootClass}
-      data-surface={data.stub ? undefined : "elevated"}
+  const extraContent = data?.stub ? (
+    <span
+      className={styles.stubBadge}
+      aria-label={t("observability.sentry.stubBadge", "Stub data")}
     >
-      <div className={styles.header}>
-        <div className={styles.titleGroup}>
-          <h3>{t("observability.sentry.title", "Sentry Issues")}</h3>
-          <span className={styles.count}>{data.count}</span>
-        </div>
-        {data.stub && (
-          <span
-            className={styles.stubBadge}
-            aria-label={t("observability.sentry.stubBadge", "Stub data")}
-          >
-            {t("observability.sentry.stubBadge", "Stub data")}
-          </span>
-        )}
+      {t("observability.sentry.stubBadge", "Stub data")}
+    </span>
+  ) : (
+    <span className={styles.count}>{data?.count}</span>
+  );
+
+  const cardContent =
+    data?.count === 0 || !data ? (
+      <div className={styles.empty}>
+        <p>{t("observability.sentry.empty", "No matching issues")}</p>
       </div>
+    ) : (
       <ul
         className={styles.issuesList}
         aria-label={t("observability.sentry.unresolvedHeading", "Issues")}
@@ -211,7 +219,17 @@ const SentrySummaryCard: React.FC<Props> = ({
           </li>
         ))}
       </ul>
-    </div>
+    );
+
+  return (
+    <Card
+      title={t("observability.sentry.title", "Sentry Issues")}
+      extra={extraContent}
+      variant={data?.stub ? "outlined" : "elevated"}
+      className={className}
+    >
+      {cardContent}
+    </Card>
   );
 };
 

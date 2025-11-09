@@ -230,11 +230,15 @@ const WorkflowTips = () => {
             <Card
               title="Rethinking Design-to-Product Workflows with Figma MCP"
               link="/blog/figma-mcp-design-systems"
+              variant="elevated"
+              hoverable
               className={`${styles["similar-card"]} ${styles.teal}`}
             />
             <Card
               title="Digital Craftsmanship"
               link="/blog/digital-craftsmanship"
+              variant="filled"
+              hoverable
               className={`${styles["similar-card"]} ${styles.purple}`}
             />
           </div>

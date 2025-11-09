@@ -205,13 +205,17 @@ const FigmaMCP = () => {
             <Card
               title="Designing in 2025"
               link="/blog/designing-in-2025"
+              variant="elevated"
+              hoverable
               className={`${styles["similarCard"]} ${styles.teal}`}
-            ></Card>
+            />
             <Card
               title="Digital Craftsmanship"
               link="/blog/digital-craftsmanship"
+              variant="filled"
+              hoverable
               className={`${styles["similarCard"]} ${styles.purple}`}
-            ></Card>
+            />
           </div>
         </div>
       </article>
