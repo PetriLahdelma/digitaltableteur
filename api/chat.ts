@@ -1,7 +1,20 @@
 import type { IncomingMessage, ServerResponse } from "http";
 import { convertToCoreMessages, streamText } from "ai";
-import { createOpenAI } from "@ai-sdk/openai";
-import { digitaltableteurContext } from "./donny-context.js";
+import {
+  createGateway,
+  GatewayAuthenticationError,
+  GatewayInvalidRequestError,
+  GatewayModelNotFoundError,
+  GatewayRateLimitError,
+} from "@ai-sdk/gateway";
+import {
+  ChatApiError,
+  createCorsHeaders,
+  validateMessages,
+  buildSystemPrompt,
+  resolveGatewayModelId,
+} from "./chat-shared";
+import { getDonnyTools } from "./donny-tools";
 
 type VercelRequest = IncomingMessage & {
   method?: string;
@@ -17,49 +30,10 @@ type ChatRequestBody = {
   messages?: unknown;
 };
 
-class ChatApiError extends Error {
-  status: number;
-
-  constructor(status: number, message: string) {
-    super(message);
-    this.status = status;
-    this.name = "ChatApiError";
-  }
-}
-
-const allowedOrigins = [
-  "https://digitaltableteur.com",
-  "https://www.digitaltableteur.com",
-  "http://localhost:5173",
-  "http://localhost:3000",
-  "http://localhost:5176",
-  "http://localhost:3001",
-];
-
-const systemPrompt = [
-  "You are Donny, Digitaltableteur's sales & creative assistant. Be accurate, concise, and grounded in the provided context.",
-  "Context about Digitaltableteur:",
-  digitaltableteurContext.trim(),
-].join("\n\n");
-
-const resolveModelId = () => {
-  const explicitModel = process.env.OPENAI_CHAT_MODEL?.trim();
-  if (explicitModel) return explicitModel;
-
-  const gatewayModel = process.env.AI_GATEWAY_MODEL?.trim();
-  if (gatewayModel?.startsWith("openai/")) {
-    return gatewayModel.slice("openai/".length);
-  }
-
-  return gatewayModel || "gpt-4o-mini";
-};
-
-const resolveOrigin = (origin: unknown) => {
-  if (typeof origin === "string" && allowedOrigins.includes(origin)) {
-    return origin;
-  }
-  return allowedOrigins[0];
-};
+const gatewayProvider = createGateway({
+  baseURL: process.env.AI_GATEWAY_URL?.trim(),
+  apiKey: process.env.AI_GATEWAY_API_KEY?.trim(),
+});
 
 const readJsonBody = async (req: VercelRequest): Promise<ChatRequestBody> => {
   if (req.body !== undefined) {
@@ -117,12 +91,45 @@ const sendJson = (
   res.end(JSON.stringify(payload));
 };
 
+const normalizeError = (caught: unknown): ChatApiError => {
+  if (caught instanceof ChatApiError) return caught;
+  if (GatewayAuthenticationError.isInstance(caught)) {
+    return new ChatApiError(
+      502,
+      "AI Gateway authentication failed. Confirm the API key or OIDC token.",
+    );
+  }
+  if (GatewayRateLimitError.isInstance(caught)) {
+    return new ChatApiError(
+      429,
+      "The AI Gateway rate limit has been reached. Please retry shortly.",
+    );
+  }
+  if (
+    GatewayInvalidRequestError.isInstance(caught) ||
+    GatewayModelNotFoundError.isInstance(caught)
+  ) {
+    return new ChatApiError(
+      400,
+      "The chat request was rejected by the AI Gateway configuration.",
+    );
+  }
+  if (caught instanceof Error) {
+    console.error("Chat handler unexpected error:", caught);
+    return new ChatApiError(
+      500,
+      "Donny ran into a snag. Please try again soon.",
+    );
+  }
+  console.error("Chat handler non-error throw:", caught);
+  return new ChatApiError(500, "Unknown error");
+};
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const origin = resolveOrigin(req.headers?.origin);
-  res.setHeader("Access-Control-Allow-Origin", origin);
-  res.setHeader("Vary", "Origin");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  const corsHeaders = createCorsHeaders(req.headers?.origin || null);
+  Object.entries(corsHeaders).forEach(([key, value]) =>
+    res.setHeader(key, value),
+  );
 
   if (req.method === "OPTIONS") {
     res.statusCode = 204;
@@ -136,27 +143,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const apiKey = process.env.OPENAI_API_KEY?.trim();
-    if (!apiKey) {
-      throw new ChatApiError(500, "Missing OpenAI API key");
-    }
-
     const body = await readJsonBody(req);
-    const messages = body.messages;
+    const payload = body.messages;
+    validateMessages(payload);
+    const messages = payload as any[];
 
-    if (!Array.isArray(messages)) {
-      throw new ChatApiError(400, "messages must be an array");
-    }
-
-    const openai = createOpenAI({ apiKey });
-    const modelId = resolveModelId();
+    const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
+    const system = buildSystemPrompt(Object.keys(tools));
 
     const result = await streamText({
-      model: openai(modelId),
-      system: systemPrompt,
+      model: gatewayProvider(resolveGatewayModelId()),
+      system,
+      tools,
       messages: convertToCoreMessages(messages),
-      temperature: 0.3,
-      maxRetries: 1,
+      temperature: 0.2,
+      maxRetries: 2,
     });
 
     res.setHeader("Cache-Control", "no-store, max-age=0");
@@ -166,25 +167,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     await result.pipeUIMessageStreamToResponse(res);
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("OpenAI chat error", error);
-
-    const status = error instanceof ChatApiError ? error.status : 500;
-    const message =
-      error instanceof ChatApiError
-        ? error.message
-        : "Donny ran into a snag. Please try again soon.";
-
+    const normalized = normalizeError(error);
     if (!res.headersSent) {
-      sendJson(res, status, { error: message });
+      sendJson(res, normalized.status, { error: normalized.message });
       return;
     }
-
     res.end();
   }
 }
-
-export { allowedOrigins, ChatApiError, resolveModelId, systemPrompt };
 
 export const config = {
   runtime: "nodejs",

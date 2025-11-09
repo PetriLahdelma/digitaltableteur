@@ -193,13 +193,17 @@ const Designing2025 = () => {
             <Card
               title="Workflow Tips"
               link="/blog/workflow-tips"
+              variant="outlined"
+              hoverable
               className={`${styles["similarCard"]}`}
-            ></Card>
+            />
             <Card
               title="Digital Craftsmanship"
               link="/blog/digital-craftsmanship"
+              variant="elevated"
+              hoverable
               className={`${styles["similarCard"]}`}
-            ></Card>
+            />
           </div>
         </div>
       </article>
