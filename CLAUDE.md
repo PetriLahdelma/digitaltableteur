@@ -402,6 +402,7 @@ const handleNativeShare = async () => {
 **Internationalization**
 
 Translation keys added for both share actions:
+
 - `share`: "share" (EN), "jaa" (FI), "dela" (SV)
 - `copyLinkToClipboard`: "Copy to clipboard" across languages
 

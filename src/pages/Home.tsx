@@ -97,9 +97,9 @@ const Home = () => {
         title: t("homeCreativeDevelopment"),
         description: t(
           "homeCreativeDescription",
-          "Building digital experiences that combine aesthetic excellence with functional innovation",
+          "Digital experiences combining aesthetic excellence with functional innovation.",
         ),
-        variant: "elevated" as const,
+        variant: "filled" as const,
         icon: <FaPalette />,
       },
       {
@@ -107,7 +107,7 @@ const Home = () => {
         title: t("homeStrategyBranding"),
         description: t(
           "homeStrategyDescription",
-          "Strategic thinking meets visual identity to create memorable brand experiences",
+          "Strategic thinking meets visual identity creating memorable brand experiences.",
         ),
         variant: "filled" as const,
         icon: <FaChartLine />,
@@ -117,9 +117,9 @@ const Home = () => {
         title: t("homeIllustrationEditorial"),
         description: t(
           "homeIllustrationDescription",
-          "Custom illustrations and editorial design that tell compelling visual stories",
+          "Custom illustrations and editorial design that tell compelling visual stories.",
         ),
-        variant: "outlined" as const,
+        variant: "filled" as const,
         icon: <FaPen />,
       },
     ],
@@ -220,9 +220,9 @@ const Home = () => {
           </div>
         </section>
         <section className={styles.about}>
-          <Title className={styles.gradientText} level={1} size="XL">
+          {/* <Title className={styles.gradientText} level={1} size="XL">
             {currentText}
-          </Title>
+          </Title> */}
           <Grid columns="repeat(auto-fit, minmax(280px, 1fr))" gap="1rem">
             <div className={styles["gridItemBlank"]}>
               <p className={styles.lead}>{t("homeAbout")}</p>
