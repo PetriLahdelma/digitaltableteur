@@ -68,9 +68,31 @@ describe("SocialShare", () => {
     expect(screen.getByLabelText("Share on WhatsApp")).toBeInTheDocument();
   });
 
-  it("renders copy link button", () => {
+  it("renders share button when native share is supported", () => {
     renderSocialShare();
+    expect(screen.getByLabelText("share")).toBeInTheDocument();
+  });
+
+  test("renders copy link button when native share is not supported", () => {
+    // Mock navigator to not have share property
+    const originalNavigator = global.navigator;
+    const mockNavigator = { ...originalNavigator } as any;
+    delete mockNavigator.share;
+    Object.defineProperty(global, "navigator", {
+      writable: true,
+      value: mockNavigator,
+    });
+
+    renderSocialShare();
+
+    // When navigator.share is unavailable, button should show copy functionality
     expect(screen.getByLabelText("Copy to clipboard")).toBeInTheDocument();
+
+    // Restore original navigator
+    Object.defineProperty(global, "navigator", {
+      writable: true,
+      value: originalNavigator,
+    });
   });
 
   it("generates correct Twitter share URL", () => {
@@ -91,30 +113,95 @@ describe("SocialShare", () => {
     expect(facebookLink).toHaveAttribute("href", expectedUrl);
   });
 
-  it("copies URL to clipboard when copy button is clicked", async () => {
-    const mockWriteText = vi.spyOn(navigator.clipboard, "writeText");
+  it("calls native share API when share button is clicked", async () => {
+    const mockShare = vi.spyOn(navigator, "share").mockResolvedValue();
     renderSocialShare();
 
-    const copyButton = screen.getByLabelText("Copy to clipboard");
+    const shareButton = screen.getByLabelText("share");
     await act(async () => {
-      fireEvent.click(copyButton);
+      fireEvent.click(shareButton);
     });
 
+    expect(mockShare).toHaveBeenCalledWith({
+      title: defaultProps.title,
+      url: defaultProps.url,
+      text: defaultProps.title,
+    });
+  });
+
+  it("falls back to copy when native share fails", async () => {
+    const mockShare = vi
+      .spyOn(navigator, "share")
+      .mockRejectedValue(new Error("Share failed"));
+    const mockWriteText = vi
+      .spyOn(navigator.clipboard, "writeText")
+      .mockResolvedValue();
+    renderSocialShare();
+
+    const shareButton = screen.getByLabelText("share");
+    await act(async () => {
+      fireEvent.click(shareButton);
+    });
+
+    expect(mockShare).toHaveBeenCalled();
     expect(mockWriteText).toHaveBeenCalledWith(defaultProps.url);
   });
 
-  it("shows toast after copying to clipboard", async () => {
-    vi.spyOn(navigator.clipboard, "writeText").mockResolvedValue();
+  test("copies URL to clipboard when copy button is clicked (no native share)", async () => {
+    // Mock navigator to not have share property
+    const originalNavigator = global.navigator;
+    const mockNavigator = { ...originalNavigator } as any;
+    delete mockNavigator.share;
+    Object.defineProperty(global, "navigator", {
+      writable: true,
+      value: mockNavigator,
+    });
+
+    const mockWriteText = vi
+      .spyOn(navigator.clipboard, "writeText")
+      .mockResolvedValue();
+
     renderSocialShare();
 
     const copyButton = screen.getByLabelText("Copy to clipboard");
     await act(async () => {
       fireEvent.click(copyButton);
     });
+
+    expect(mockWriteText).toHaveBeenCalledWith("https://example.com/test");
+
+    mockWriteText.mockRestore();
+
+    // Restore original navigator
+    Object.defineProperty(global, "navigator", {
+      writable: true,
+      value: originalNavigator,
+    });
+  });
+
+  it("shows toast after copying to clipboard via native share fallback", async () => {
+    // Ensure navigator.share exists and is mockable for this test
+    global.navigator.share = vi
+      .fn()
+      .mockRejectedValue(new Error("Share failed"));
+    const mockWriteText = vi
+      .spyOn(navigator.clipboard, "writeText")
+      .mockResolvedValue();
+
+    renderSocialShare();
+
+    const shareButton = screen.getByLabelText("share");
+    await act(async () => {
+      fireEvent.click(shareButton);
+    });
+
+    expect(mockWriteText).toHaveBeenCalledWith("https://example.com/test");
 
     await waitFor(() => {
       expect(screen.getByText("Link copied!")).toBeInTheDocument();
     });
+
+    mockWriteText.mockRestore();
   });
 
   it("all external links have correct attributes", () => {
