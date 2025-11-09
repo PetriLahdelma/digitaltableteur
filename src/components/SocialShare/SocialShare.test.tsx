@@ -84,7 +84,7 @@ describe("SocialShare", () => {
     });
 
     renderSocialShare();
-    
+
     // When navigator.share is unavailable, button should show copy functionality
     expect(screen.getByLabelText("Copy to clipboard")).toBeInTheDocument();
 
@@ -130,8 +130,12 @@ describe("SocialShare", () => {
   });
 
   it("falls back to copy when native share fails", async () => {
-    const mockShare = vi.spyOn(navigator, "share").mockRejectedValue(new Error("Share failed"));
-    const mockWriteText = vi.spyOn(navigator.clipboard, "writeText").mockResolvedValue();
+    const mockShare = vi
+      .spyOn(navigator, "share")
+      .mockRejectedValue(new Error("Share failed"));
+    const mockWriteText = vi
+      .spyOn(navigator.clipboard, "writeText")
+      .mockResolvedValue();
     renderSocialShare();
 
     const shareButton = screen.getByLabelText("share");
@@ -152,7 +156,7 @@ describe("SocialShare", () => {
       writable: true,
       value: mockNavigator,
     });
-    
+
     const mockWriteText = vi
       .spyOn(navigator.clipboard, "writeText")
       .mockResolvedValue();
@@ -167,7 +171,7 @@ describe("SocialShare", () => {
     expect(mockWriteText).toHaveBeenCalledWith("https://example.com/test");
 
     mockWriteText.mockRestore();
-    
+
     // Restore original navigator
     Object.defineProperty(global, "navigator", {
       writable: true,
@@ -183,7 +187,7 @@ describe("SocialShare", () => {
     const mockWriteText = vi
       .spyOn(navigator.clipboard, "writeText")
       .mockResolvedValue();
-    
+
     renderSocialShare();
 
     const shareButton = screen.getByLabelText("share");
@@ -196,7 +200,7 @@ describe("SocialShare", () => {
     await waitFor(() => {
       expect(screen.getByText("Link copied!")).toBeInTheDocument();
     });
-    
+
     mockWriteText.mockRestore();
   });
 
