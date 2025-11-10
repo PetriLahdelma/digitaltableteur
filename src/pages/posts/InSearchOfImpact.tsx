@@ -166,7 +166,7 @@ const InSearchOfImpact = () => {
         <hr
           style={{
             border: "none",
-            borderTop: "3px solid var(--color-primary)",
+            borderTop: "2px solid var(--color-primary)",
             margin: "3rem 0 1.5rem",
           }}
         />
