@@ -146,7 +146,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const body = await readJsonBody(req);
     const payload: unknown = body.messages;
     validateMessages(payload);
-    const messages: unknown[] = payload as unknown[];
+    const messages: any[] = payload;
 
     const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
     const system = buildSystemPrompt(Object.keys(tools));
