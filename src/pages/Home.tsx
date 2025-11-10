@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { motion, type Transition, type Variants } from "motion/react";
 import Button from "@dt/Button";
 import Card from "@dt/Card";
+import VoidVortex from "@dt/VoidVortex";
 import { FaPalette, FaChartLine, FaPen } from "react-icons/fa";
 
 const heroContainerVariants: Variants = {
@@ -175,6 +176,7 @@ const Home = () => {
               initial="hidden"
               animate="visible"
             >
+              <VoidVortex className={styles.heroVoid} />
               <motion.div
                 variants={heroTitleVariants}
                 className={styles.heroTitleWrapper}
