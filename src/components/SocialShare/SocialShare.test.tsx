@@ -16,6 +16,7 @@ Object.assign(navigator, {
   clipboard: {
     writeText: vi.fn(),
   },
+  share: vi.fn().mockResolvedValue(undefined),
 });
 
 // Mock i18next for testing
@@ -176,6 +177,56 @@ describe("SocialShare", () => {
     Object.defineProperty(global, "navigator", {
       writable: true,
       value: originalNavigator,
+    });
+  });
+
+  it("falls back to document.execCommand when clipboard API is unavailable", async () => {
+    const originalNavigator = global.navigator;
+    const mockNavigator = { ...originalNavigator } as any;
+    delete mockNavigator.share;
+    delete mockNavigator.clipboard;
+    Object.defineProperty(global, "navigator", {
+      writable: true,
+      value: mockNavigator,
+    });
+
+    const originalExecCommand = (document as Document & {
+      execCommand?: (commandId: string) => boolean;
+    }).execCommand;
+    const execMock = vi.fn().mockReturnValue(true);
+    (document as Document & {
+      execCommand?: (commandId: string) => boolean;
+    }).execCommand = execMock;
+
+    renderSocialShare();
+
+    const copyButton = screen.getByLabelText("Copy to clipboard");
+    await act(async () => {
+      fireEvent.click(copyButton);
+    });
+
+    expect(execMock).toHaveBeenCalledWith("copy");
+
+    if (originalExecCommand) {
+      (document as Document & {
+        execCommand?: (commandId: string) => boolean;
+      }).execCommand = originalExecCommand;
+    } else {
+      delete (document as Document & {
+        execCommand?: (commandId: string) => boolean;
+      }).execCommand;
+    }
+
+    Object.defineProperty(global, "navigator", {
+      writable: true,
+      value: originalNavigator,
+    });
+
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: vi.fn(),
+      },
+      share: vi.fn().mockResolvedValue(undefined),
     });
   });
 

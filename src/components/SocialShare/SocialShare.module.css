@@ -56,7 +56,8 @@
     min-height: 1.5rem;
     justify-content: center;
     align-items: center;
-    border: none;
+    /* stylelint-disable-next-line declaration-no-important */
+    border: none !important;
     background-color: var(--primary-background-color);
   }
 
