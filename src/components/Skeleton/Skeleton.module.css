@@ -2,8 +2,10 @@
   display: block;
   position: relative;
   border-radius: 4px;
+
   --skeleton-base: var(--color-primary, #d4d4d4);
   --skeleton-highlight: var(--skeleton-base);
+
   background: linear-gradient(
     90deg,
     var(--skeleton-base) 25%,
