@@ -82,15 +82,12 @@ export const resolveGatewayModelId = () => {
   if (gatewayModel) return gatewayModel;
   const openAiModel = process.env.OPENAI_MODEL?.trim();
   if (!openAiModel) return "openai/gpt-4o-mini";
-  return openAiModel.includes("/")
-    ? openAiModel
-    : `openai/${openAiModel}`;
+  return openAiModel.includes("/") ? openAiModel : `openai/${openAiModel}`;
 };
 
 export const createCorsHeaders = (origin: string | null | undefined) => {
   const chosen =
-    origin &&
-    (allowedOrigins.includes(origin) || isDevOrigin(origin))
+    origin && (allowedOrigins.includes(origin) || isDevOrigin(origin))
       ? origin
       : allowedOrigins[0];
   return {
