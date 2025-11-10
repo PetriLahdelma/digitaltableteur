@@ -189,6 +189,7 @@ const withI18next: Decorator = (Story: StoryFn, context: StoryContext) => {
 // WIP badge decorator – reactive to language changes so translation appears instantly on first locale selection.
 const withWipBadge: Decorator = (Story, context) => {
   const disabled = Boolean(context.parameters?.wip?.disabled);
+  const isDocsView = context.viewMode === "docs";
   const [label, setLabel] = useState(() =>
     i18n.t("storybookWipBadge", "Work in progress"),
   );
@@ -207,7 +208,14 @@ const withWipBadge: Decorator = (Story, context) => {
   return (
     <div className={stylesWip.wipWrapper}>
       {!disabled && (
-        <div className={stylesWip.wipBadgeContainer}>
+        <div
+          className={
+            isDocsView
+              ? stylesWip.wipBadgeDocs
+              : stylesWip.wipBadgeContainer
+          }
+          data-view-mode={context.viewMode}
+        >
           <Badge
             design="secondary"
             state="warning"

@@ -2,24 +2,24 @@
   display: block;
   position: relative;
   border-radius: 4px;
+  --skeleton-base: var(--color-primary, #d4d4d4);
+  --skeleton-highlight: var(--skeleton-base);
   background: linear-gradient(
     90deg,
-    var(--color-primary) 25%,
-    var(--color-white) 37%,
-    var(--color-primary) 63%
+    var(--skeleton-base) 25%,
+    var(--skeleton-highlight) 50%,
+    var(--skeleton-base) 75%
   );
   background-size: 400% 100%;
   overflow: hidden;
 }
 
-/* Enhancement: smoother perceptual interpolation via Lab color space (supported in modern browsers) */
-@supports (color: lab(0% 0 0)) {
+@supports (color: color-mix(in srgb, red, white)) {
   .root {
-    background: linear-gradient(
-      90deg,
-      lab(60% -5 5 / 95%) 25%,
-      lab(98% 0 0 / 100%) 37%,
-      lab(60% -5 5 / 95%) 63%
+    --skeleton-highlight: color-mix(
+      in srgb,
+      var(--skeleton-base) 45%,
+      white 55%
     );
   }
 }
@@ -60,20 +60,20 @@
   border-radius: 4px;
   background: linear-gradient(
     90deg,
-    var(--color-primary) 25%,
-    var(--color-white) 37%,
-    var(--color-primary) 63%
+    var(--skeleton-base) 25%,
+    var(--skeleton-highlight) 50%,
+    var(--skeleton-base) 75%
   );
   background-size: 400% 100%;
 }
 
-@supports (color: lab(0% 0 0)) {
+@supports (color: color-mix(in srgb, red, white)) {
   .text .line {
     background: linear-gradient(
       90deg,
-      lab(60% -5 5 / 95%) 25%,
-      lab(98% 0 0 / 100%) 37%,
-      lab(60% -5 5 / 95%) 63%
+      var(--skeleton-base) 25%,
+      color-mix(in srgb, var(--skeleton-base) 45%, white 55%) 50%,
+      var(--skeleton-base) 75%
     );
   }
 }
