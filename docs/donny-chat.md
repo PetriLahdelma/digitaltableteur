@@ -19,7 +19,7 @@ The Donny widget now streams assistant replies with the [Vercel AI SDK](https://
 
 ```ts
 import type { IncomingMessage, ServerResponse } from "http";
-import { convertToCoreMessages, streamText } from "ai";
+import { convertToModelMessages, streamText } from "ai";
 import {
   createGateway,
   GatewayAuthenticationError,
@@ -62,7 +62,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
       model: gatewayProvider(resolveGatewayModelId()),
       tools,
       system,
-      messages: convertToCoreMessages(body.messages as any[]),
+      messages: convertToModelMessages(body.messages as any[]),
       temperature: 0.2,
       maxRetries: 2,
     });
