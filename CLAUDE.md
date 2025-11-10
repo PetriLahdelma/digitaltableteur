@@ -323,6 +323,7 @@ Testing:
 Operational Notes:
 
 - Remote endpoint is a serverless function with CORS allowlist; ensure the origin (private IP) appears in `allowedOrigins` if stricter enforcement reintroduced. Currently private IP traffic uses remote domain; if blocked, add dynamic origin reflection.
+- When adjusting those headers, follow Vercel’s official guidance on enabling CORS: https://vercel.com/guides/how-to-enable-cors.
 - For offline development or rate-limit isolation, consider a local proxy that mimics response streaming and set env var accordingly.
 
 Future Considerations:
