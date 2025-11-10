@@ -9,11 +9,9 @@ import {
 } from "@ai-sdk/gateway";
 import {
   ChatApiError,
-  createCorsHeaders,
   validateMessages,
   buildSystemPrompt,
   resolveGatewayModelId,
-  allowedOrigins,
 } from "./chat-shared";
 import { getDonnyTools } from "./donny-tools";
 
