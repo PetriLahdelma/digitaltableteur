@@ -30,6 +30,8 @@ type ChatRequestBody = {
   messages?: unknown;
 };
 
+type IncomingUiMessages = Parameters<typeof convertToModelMessages>[0];
+
 const gatewayProvider: ReturnType<typeof createGateway> = createGateway({
   baseURL: process.env.AI_GATEWAY_URL?.trim(),
   apiKey: process.env.AI_GATEWAY_API_KEY?.trim(),
@@ -146,8 +148,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const body = await readJsonBody(req);
     const payload: unknown = body.messages;
     validateMessages(payload);
-    // validateMessages asserts payload is an array, so casting to any[] is safe.
-    const messages = payload as any[];
+    const messages = payload as IncomingUiMessages;
 
     const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
     const system = buildSystemPrompt(Object.keys(tools));
