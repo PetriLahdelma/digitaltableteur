@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://www.digitaltableteur.com"
+          "value": "https://digitaltableteur.com"
         },
         {
           "key": "Access-Control-Allow-Methods",

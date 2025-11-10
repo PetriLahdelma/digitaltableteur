@@ -58,7 +58,10 @@ const ThoughtsOnFutureBranding = () => {
             </div>
           </header>
           <p>
-            <img src={future1} alt="Future Branding Concept" />
+            <img
+              src={future1}
+              alt="Abstract geometric design showcasing modern branding principles and visual identity concepts"
+            />
             <span className={styles.boldText}>
               Traditionally, an identity or brand has been a tool
             </span>
@@ -103,12 +106,18 @@ const ThoughtsOnFutureBranding = () => {
             successful content delivery, way “outside the box,” and soon beyond
             the capability of the human mind.
           </p>
-          <img src={future2} alt="Future Branding Concept" />
+          <img
+            src={future2}
+            alt="Typography design example demonstrating logotype creation and word-based brand identity"
+          />
           <caption style={{ display: "block", textAlign: "center" }}>
             A logotype refers to words or the name of a business that is
             designed or typeset.
           </caption>
-          <img src={future3} alt="Future Branding Concept" />
+          <img
+            src={future3}
+            alt="Symbol and mark design showcasing logomark creation without textual business name elements"
+          />
           <caption
             style={{
               display: "block",
@@ -138,7 +147,10 @@ const ThoughtsOnFutureBranding = () => {
             strive to do something more with the vast possibilities at our
             disposal today?
           </p>
-          <img src={future4} alt="A futuristic branding concept" />
+          <img
+            src={future4}
+            alt="Philosophical brand design by Wolff Olins showcasing Chinese-inspired visual identity and instinctive design approach"
+          />
           <caption style={{ display: "block", textAlign: "center" }}>
             A philosophical brand that advocates living instinctively,
             responding in the moment, and letting change flow. The brand evokes
@@ -161,12 +173,18 @@ const ThoughtsOnFutureBranding = () => {
             Genesis Beijing is a visual tool that explores each state and
             associated feeling through rich, reactive pattern. By Wolff Olins
           </caption>
-          <img src={future5} alt="A futuristic branding concept" />
+          <img
+            src={future5}
+            alt="Dynamic color-changing identity for Finland Ministry of Foreign Affairs by agency 358 reflecting global events"
+          />
           <caption style={{ display: "block", textAlign: "center" }}>
             Identity for Ministry for Foreign Affairs of Finland echoes the
             world events with changing color schemes. By 358
           </caption>
-          <img src={future8} alt="A futuristic branding concept" />
+          <img
+            src={future8}
+            alt="Creative design example demonstrating innovative brand identity and visual communication principles"
+          />
           <caption
             style={{
               display: "block",
@@ -213,7 +231,7 @@ const ThoughtsOnFutureBranding = () => {
           </p>
           <img
             src={future7}
-            alt="A futuristic branding concept"
+            alt="New Things Co identity mutations showcasing adaptive brand design from 2016-2018"
             className={styles.image}
           />
           <caption style={{ display: "block", textAlign: "center" }}>
@@ -222,7 +240,7 @@ const ThoughtsOnFutureBranding = () => {
           <img
             style={{ marginTop: "4rem" }}
             src={future6}
-            alt="A futuristic branding concept"
+            alt="Experimental branding design showcasing innovative visual identity approaches and future design concepts"
             className={styles.image}
           />
           <caption>

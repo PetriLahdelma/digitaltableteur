@@ -28,10 +28,10 @@ p {
 }
 
 .footerActions {
-  width: 100%;
   display: flex;
-  align-items: center;
+  width: 100%;
   justify-content: space-between;
+  align-items: center;
   gap: 1rem;
 }
 
