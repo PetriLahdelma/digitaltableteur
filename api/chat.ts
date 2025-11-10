@@ -85,10 +85,17 @@ const sendJson = (
   res: VercelResponse,
   status: number,
   payload: Record<string, unknown>,
+  corsHeaders?: Record<string, string>,
 ) => {
   if (!res.headersSent) {
     res.statusCode = status;
     res.setHeader("Content-Type", "application/json");
+    // Ensure CORS headers are included in JSON responses
+    if (corsHeaders) {
+      Object.entries(corsHeaders).forEach(([key, value]) =>
+        res.setHeader(key, value),
+      );
+    }
   }
   res.end(JSON.stringify(payload));
 };
@@ -140,7 +147,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   if (req.method !== "POST") {
-    sendJson(res, 405, { error: "Method not allowed" });
+    sendJson(res, 405, { error: "Method not allowed" }, corsHeaders);
     return;
   }
 
@@ -177,7 +184,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch (error) {
     const normalized = normalizeError(error);
     if (!res.headersSent) {
-      sendJson(res, normalized.status, { error: normalized.message });
+      sendJson(
+        res,
+        normalized.status,
+        { error: normalized.message },
+        corsHeaders,
+      );
       return;
     }
     res.end();
