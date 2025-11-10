@@ -98,7 +98,9 @@ export const createCorsHeaders = (origin: string | null | undefined) => {
   } satisfies Record<string, string>;
 };
 
-export const validateMessages = (
+export const validateMessages: (
+  messages: unknown,
+) => asserts messages is any[] = (
   messages: unknown,
 ): asserts messages is any[] => {
   if (!Array.isArray(messages)) {
