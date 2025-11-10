@@ -151,6 +151,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
     const system = buildSystemPrompt(Object.keys(tools));
 
+    const modelId: string = resolveGatewayModelId();
+    const model = gatewayProvider(modelId);
+
     const streamParams: Parameters<typeof streamText>[0] = {
       model,
       system,
