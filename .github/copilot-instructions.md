@@ -69,7 +69,7 @@ npm run eslint-fix   # Auto-fix linting issues
 ### Serverless Functions
 
 - **Location**: `/api/` directory (Vercel functions)
-- **CORS**: All functions use `cors.js` for cross-origin handling
+- **CORS**: All functions use `cors.js` for cross-origin handling; reference Vercel’s guide when adjusting headers: https://vercel.com/guides/how-to-enable-cors
 - **Available APIs**: OpenAI chat, contact form, secure CV download
 - **Security**: Environment variables for API keys and secrets
 
