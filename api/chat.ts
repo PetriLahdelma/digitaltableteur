@@ -13,6 +13,7 @@ import {
   validateMessages,
   buildSystemPrompt,
   resolveGatewayModelId,
+  allowedOrigins,
 } from "./chat-shared";
 import { getDonnyTools } from "./donny-tools";
 
@@ -85,10 +86,17 @@ const sendJson = (
   res: VercelResponse,
   status: number,
   payload: Record<string, unknown>,
+  corsHeaders?: Record<string, string>,
 ) => {
   if (!res.headersSent) {
     res.statusCode = status;
     res.setHeader("Content-Type", "application/json");
+    // Ensure CORS headers are included in JSON responses
+    if (corsHeaders) {
+      Object.entries(corsHeaders).forEach(([key, value]) =>
+        res.setHeader(key, value),
+      );
+    }
   }
   res.end(JSON.stringify(payload));
 };
@@ -128,19 +136,35 @@ const normalizeError = (caught: unknown): ChatApiError => {
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const corsHeaders = createCorsHeaders(req.headers?.origin || null);
-  Object.entries(corsHeaders).forEach(([key, value]) =>
-    res.setHeader(key, value),
+  // Set CORS headers immediately, before any other processing
+  res.setHeader("Access-Control-Allow-Origin", "https://digitaltableteur.com");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, Accept, Origin, X-Requested-With",
   );
+  res.setHeader("Access-Control-Max-Age", "86400");
+  res.setHeader("Vary", "Origin");
 
+  // Handle preflight requests
   if (req.method === "OPTIONS") {
-    res.statusCode = 204;
+    res.statusCode = 200; // Use 200 instead of 204 for better compatibility
     res.end();
     return;
   }
 
+  // Create corsHeaders object for sendJson calls
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": "https://digitaltableteur.com",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers":
+      "Content-Type, Authorization, Accept, Origin, X-Requested-With",
+    "Access-Control-Max-Age": "86400",
+    Vary: "Origin",
+  };
+
   if (req.method !== "POST") {
-    sendJson(res, 405, { error: "Method not allowed" });
+    sendJson(res, 405, { error: "Method not allowed" }, corsHeaders);
     return;
   }
 
@@ -177,7 +201,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch (error) {
     const normalized = normalizeError(error);
     if (!res.headersSent) {
-      sendJson(res, normalized.status, { error: normalized.message });
+      sendJson(
+        res,
+        normalized.status,
+        { error: normalized.message },
+        corsHeaders,
+      );
       return;
     }
     res.end();
