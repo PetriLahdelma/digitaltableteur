@@ -43,7 +43,6 @@
   word-break: normal;
   hyphens: none;
   color: var(--primary-text-color);
-  margin-top: 1.5rem;
 }
 
 h3 + p {
@@ -139,12 +138,11 @@ div.authorContainer {
 
 .similarCard:hover {
   box-sizing: border-box;
-  outline: 2px solid var(--color-primary);
   background-color: var(--color-white);
 }
 
 .similarCard:focus {
-  outline: 3px solid var(--color-primary);
+  outline: 2px solid var(--color-primary);
 }
 
 caption {
