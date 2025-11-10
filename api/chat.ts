@@ -151,8 +151,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
     const system = buildSystemPrompt(Object.keys(tools));
 
+    const modelId: string = resolveGatewayModelId();
+    const model = gatewayProvider(modelId);
+
     const result = await streamText({
-      model: gatewayProvider(resolveGatewayModelId()),
+      model,
       system,
       tools,
       messages: convertToCoreMessages(messages),
