@@ -134,30 +134,63 @@ const normalizeError = (caught: unknown): ChatApiError => {
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Set CORS headers immediately, before any other processing.
+  // Dynamic CORS configuration following Vercel best practices
   // Reference: https://vercel.com/guides/how-to-enable-cors
-  res.setHeader("Access-Control-Allow-Origin", "https://digitaltableteur.com");
+  
+  const origin = req.headers.origin;
+  
+  // Define allowed origins based on environment
+  const isProduction = process.env.NODE_ENV === "production";
+  const allowedOrigins = isProduction
+    ? ["https://digitaltableteur.com", "https://www.digitaltableteur.com"]
+    : [
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:3000",
+      ];
+  
+  // Check if origin is from local development network (192.168.x.x or 10.x.x.x)
+  const isLocalNetwork =
+    !isProduction &&
+    origin &&
+    (origin.startsWith("http://192.168.") ||
+      origin.startsWith("http://10.") ||
+      origin.startsWith("http://172.") ||
+      origin.includes("localhost") ||
+      origin.includes("127.0.0.1"));
+  
+  // Determine allowed origin
+  let allowedOrigin = "https://digitaltableteur.com"; // Default fallback
+  if (origin && (allowedOrigins.includes(origin) || isLocalNetwork)) {
+    allowedOrigin = origin;
+  }
+  
+  // Set CORS headers immediately, before any other processing
+  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Content-Type, Authorization, Accept, Origin, X-Requested-With",
   );
+  res.setHeader("Access-Control-Allow-Credentials", "false");
   res.setHeader("Access-Control-Max-Age", "86400");
   res.setHeader("Vary", "Origin");
 
   // Handle preflight requests
   if (req.method === "OPTIONS") {
-    res.statusCode = 200; // Use 200 instead of 204 for better compatibility
+    res.statusCode = 200;
     res.end();
     return;
   }
 
   // Create corsHeaders object for sendJson calls
   const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://digitaltableteur.com",
+    "Access-Control-Allow-Origin": allowedOrigin,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers":
       "Content-Type, Authorization, Accept, Origin, X-Requested-With",
+    "Access-Control-Allow-Credentials": "false",
     "Access-Control-Max-Age": "86400",
     Vary: "Origin",
   };
@@ -191,6 +224,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const result = await streamText(streamParams);
 
+    // Set streaming headers including CORS headers for cross-origin streaming
+    res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+    res.setHeader("Access-Control-Allow-Credentials", "false");
     res.setHeader("Cache-Control", "no-store, max-age=0");
     res.setHeader("Connection", "keep-alive");
     res.setHeader("Transfer-Encoding", "chunked");
