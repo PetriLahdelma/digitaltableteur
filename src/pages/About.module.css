@@ -16,12 +16,14 @@
 }
 
 .what {
-  display: grid;
+  display: flex;
   padding-block: clamp(2.5rem, 8vh, 5rem);
   padding-inline: clamp(1.5rem, 6vw, 6rem);
-  min-block-size: 98vh;
-  place-items: center;
-  gap: var(--space-layout-16);
+  min-block-size: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-layout-64);
   background-color: var(--accent-purple);
   text-align: center;
   color: var(--color-white);

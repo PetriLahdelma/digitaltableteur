@@ -20,6 +20,53 @@ interface SocialShareProps {
   title: string;
 }
 
+const isClipboardSupported = () =>
+  typeof navigator !== "undefined" &&
+  !!navigator.clipboard &&
+  typeof navigator.clipboard.writeText === "function";
+
+const fallbackCopy = (value: string): boolean => {
+  if (typeof document === "undefined") {
+    return false;
+  }
+
+  try {
+    const tempTextArea = document.createElement("textarea");
+    tempTextArea.value = value;
+    tempTextArea.setAttribute("readonly", "");
+    tempTextArea.style.position = "fixed";
+    tempTextArea.style.top = "-9999px";
+    document.body.appendChild(tempTextArea);
+
+    const selection =
+      typeof window !== "undefined" && window.getSelection
+        ? window.getSelection()
+        : null;
+    const originalRange =
+      selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+
+    tempTextArea.select();
+    tempTextArea.setSelectionRange(0, value.length);
+
+    const success =
+      typeof document.execCommand === "function"
+        ? document.execCommand("copy")
+        : false;
+
+    document.body.removeChild(tempTextArea);
+
+    if (originalRange && selection) {
+      selection.removeAllRanges();
+      selection.addRange(originalRange);
+    }
+
+    return success;
+  } catch (error) {
+    console.warn("Fallback copy failed", error);
+    return false;
+  }
+};
+
 export const SocialShare = ({ url, title }: SocialShareProps) => {
   const { t } = useTranslation();
   const encodedUrl = encodeURIComponent(url);
@@ -50,9 +97,22 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
     }
   }, []);
 
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(url);
-    setToastOpen(true);
+  const handleCopy = async (): Promise<boolean> => {
+    try {
+      if (isClipboardSupported()) {
+        await navigator.clipboard.writeText(url);
+        setToastOpen(true);
+        return true;
+      }
+    } catch (error) {
+      console.warn("Navigator clipboard failed, falling back to execCommand");
+    }
+
+    const fallbackSuccess = fallbackCopy(url);
+    if (fallbackSuccess) {
+      setToastOpen(true);
+    }
+    return fallbackSuccess;
   };
 
   const handleNativeShare = async () => {
@@ -65,7 +125,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
     } catch (error) {
       // If native share fails or is cancelled, fall back to copy
       console.log("Native share failed, falling back to copy");
-      handleCopy();
+      await handleCopy();
     }
   };
 
