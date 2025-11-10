@@ -7,12 +7,12 @@ import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Link from "@dt/Link";
 import { useTranslation } from "react-i18next";
-import { motion } from "motion/react";
+import { motion, type Transition, type Variants } from "motion/react";
 import Button from "@dt/Button";
 import Card from "@dt/Card";
 import { FaPalette, FaChartLine, FaPen } from "react-icons/fa";
 
-const heroContainerVariants = {
+const heroContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -20,7 +20,8 @@ const heroContainerVariants = {
   },
 };
 
-const heroTitleVariants = {
+const heroTitleEase = [0.16, 1, 0.3, 1] as [number, number, number, number];
+const heroTitleVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 96,
@@ -36,11 +37,12 @@ const heroTitleVariants = {
     rotateX: 0,
     skewY: 0,
     filter: "blur(0px)",
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1.2, ease: heroTitleEase },
   },
 };
 
-const heroSubtextVariants = {
+const heroSubtextEase = [0.25, 0.8, 0.25, 1] as [number, number, number, number];
+const heroSubtextVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 48,
@@ -55,12 +57,12 @@ const heroSubtextVariants = {
     transition: {
       duration: 0.95,
       delay: 0.2,
-      ease: [0.25, 0.8, 0.25, 1],
+      ease: heroSubtextEase,
     },
   },
 };
 
-const heroCtaContainerVariants = {
+const heroCtaContainerVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
@@ -69,13 +71,19 @@ const heroCtaContainerVariants = {
   },
 };
 
-const heroCtaItemVariants = {
+const heroCtaSpring: Transition = {
+  type: "spring",
+  stiffness: 240,
+  damping: 24,
+};
+
+const heroCtaItemVariants: Variants = {
   hidden: { opacity: 0, y: 32, scale: 0.94 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { type: "spring", stiffness: 240, damping: 24 },
+    transition: heroCtaSpring,
   },
 };
 

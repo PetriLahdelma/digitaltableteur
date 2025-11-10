@@ -1,4 +1,4 @@
-import { convertToCoreMessages, streamText } from "ai";
+import { convertToModelMessages, streamText } from "ai";
 import {
   createGateway,
   GatewayAuthenticationError,
@@ -71,7 +71,7 @@ export const POST = async (request: Request) => {
       model: gatewayProvider(resolveGatewayModelId()),
       system,
       tools,
-      messages: convertToCoreMessages(messages),
+      messages: convertToModelMessages(messages),
       temperature: 0.2,
       maxRetries: 2,
     });
