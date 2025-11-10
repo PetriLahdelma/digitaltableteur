@@ -146,6 +146,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const body = await readJsonBody(req);
     const payload = body.messages;
     validateMessages(payload);
+    // validateMessages asserts payload is an array, so casting to any[] is safe.
     const messages = payload as any[];
 
     const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
