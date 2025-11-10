@@ -43,9 +43,7 @@ const fallbackCopy = (value: string): boolean => {
         ? window.getSelection()
         : null;
     const originalRange =
-      selection && selection.rangeCount > 0
-        ? selection.getRangeAt(0)
-        : null;
+      selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
 
     tempTextArea.select();
     tempTextArea.setSelectionRange(0, value.length);
