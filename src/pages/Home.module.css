@@ -30,6 +30,12 @@
   overflow: hidden;
 }
 
+.heroVoid {
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  filter: saturate(1.2);
+}
+
 .heroTitleWrapper {
   display: flex;
   position: relative;
