@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2025-11-08T12:44:13.245Z",
+  "generatedAt": "2025-11-10T14:08:58.879Z",
   "vitest": {
     "totalSuites": 92,
     "passedSuites": 92,
     "failedSuites": 0,
-    "totalTests": 341,
-    "passedTests": 341,
+    "totalTests": 377,
+    "passedTests": 377,
     "failedTests": 0,
-    "durationMs": 4016.91357421875
+    "durationMs": 4419.491943359375
   },
   "accessibilityPages": {
     "total": 6,
@@ -15,8 +15,8 @@
     "failed": 0
   },
   "accessibilityStories": {
-    "total": 141,
-    "passed": 141,
+    "total": 171,
+    "passed": 171,
     "failed": 0
   },
   "componentAdoption": {

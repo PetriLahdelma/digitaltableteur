@@ -53,7 +53,7 @@ const WorkflowTips = () => {
         </header>
         <img
           src={AI}
-          alt="A futuristic depiction of artificial intelligence, showcasing advanced technology and creativity."
+          alt="Futuristic robot interacting with humans in a vibrant digital landscape."
           className={styles.image}
         />
         <blockquote>
