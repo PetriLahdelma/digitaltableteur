@@ -41,7 +41,12 @@ const heroTitleVariants: Variants = {
   },
 };
 
-const heroSubtextEase = [0.25, 0.8, 0.25, 1] as [number, number, number, number];
+const heroSubtextEase = [0.25, 0.8, 0.25, 1] as [
+  number,
+  number,
+  number,
+  number,
+];
 const heroSubtextVariants: Variants = {
   hidden: {
     opacity: 0,
