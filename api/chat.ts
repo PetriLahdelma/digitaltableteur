@@ -30,7 +30,7 @@ type ChatRequestBody = {
   messages?: unknown;
 };
 
-const gatewayProvider = createGateway({
+const gatewayProvider: ReturnType<typeof createGateway> = createGateway({
   baseURL: process.env.AI_GATEWAY_URL?.trim(),
   apiKey: process.env.AI_GATEWAY_API_KEY?.trim(),
 });
