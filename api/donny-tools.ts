@@ -246,11 +246,11 @@ const staticTools: ToolMap = {
       additionalProperties: false,
     }),
     outputSchema: jsonSchema({
-  type: "object",
-  required: ["email", "responseHours", "meetingLink"],
-  properties: {
-    email: { type: "string" },
-    phone: { type: ["string", "null"] },
+      type: "object",
+      required: ["email", "responseHours", "meetingLink"],
+      properties: {
+        email: { type: "string" },
+        phone: { type: ["string", "null"] },
         meetingLink: { type: "string" },
         address: { type: "string" },
         responseHours: {
@@ -302,9 +302,7 @@ const buildToolset = async ({
   }
   const combined: ToolMap = { ...staticTools };
   const mcpTools = await loadMcpTools({ allowStdio });
-  return Object.keys(mcpTools).length
-    ? { ...combined, ...mcpTools }
-    : combined;
+  return Object.keys(mcpTools).length ? { ...combined, ...mcpTools } : combined;
 };
 
 type McpConfig = {
@@ -423,9 +421,7 @@ const resolveEnv = (
   if (!env && !headers) return headers;
   const resolvedEntries: Record<string, string> = {};
   Object.entries(env ?? {}).forEach(([key, value]) => {
-    const fallback = (value ?? "").startsWith("<")
-      ? ""
-      : value ?? "";
+    const fallback = (value ?? "").startsWith("<") ? "" : (value ?? "");
     const finalValue = process.env[key]?.trim() || fallback;
     if (finalValue) {
       resolvedEntries[key] = finalValue;
