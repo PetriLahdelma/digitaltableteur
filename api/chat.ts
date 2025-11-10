@@ -146,9 +146,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const body = await readJsonBody(req);
-    const payload: unknown = body.messages;
-    validateMessages(payload);
-    const messages = payload as IncomingUiMessages;
+    const rawPayload: unknown = body.messages;
+    validateMessages(rawPayload);
+    // After validation, we know rawPayload is an array, safe to cast to IncomingUiMessages
+    const messages = rawPayload as IncomingUiMessages;
 
     const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
     const system = buildSystemPrompt(Object.keys(tools));
