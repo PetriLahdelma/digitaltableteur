@@ -190,13 +190,17 @@ describe("SocialShare", () => {
       value: mockNavigator,
     });
 
-    const originalExecCommand = (document as Document & {
-      execCommand?: (commandId: string) => boolean;
-    }).execCommand;
+    const originalExecCommand = (
+      document as Document & {
+        execCommand?: (commandId: string) => boolean;
+      }
+    ).execCommand;
     const execMock = vi.fn().mockReturnValue(true);
-    (document as Document & {
-      execCommand?: (commandId: string) => boolean;
-    }).execCommand = execMock;
+    (
+      document as Document & {
+        execCommand?: (commandId: string) => boolean;
+      }
+    ).execCommand = execMock;
 
     renderSocialShare();
 
@@ -208,13 +212,17 @@ describe("SocialShare", () => {
     expect(execMock).toHaveBeenCalledWith("copy");
 
     if (originalExecCommand) {
-      (document as Document & {
-        execCommand?: (commandId: string) => boolean;
-      }).execCommand = originalExecCommand;
+      (
+        document as Document & {
+          execCommand?: (commandId: string) => boolean;
+        }
+      ).execCommand = originalExecCommand;
     } else {
-      delete (document as Document & {
-        execCommand?: (commandId: string) => boolean;
-      }).execCommand;
+      delete (
+        document as Document & {
+          execCommand?: (commandId: string) => boolean;
+        }
+      ).execCommand;
     }
 
     Object.defineProperty(global, "navigator", {

@@ -10,6 +10,32 @@ export const allowedOrigins = [
   "http://localhost:3001",
 ];
 
+const privateNetworkPattern =
+  /^(19[2]\.168|10\.|172\.(1[6-9]|2[0-9]|3[0-1]))(\.\d{1,3}){2}$/;
+
+const isDevOrigin = (origin: string | null | undefined) => {
+  if (!origin) return false;
+
+  try {
+    const url = new URL(origin);
+    const hostname = url.hostname;
+    if (
+      hostname === "localhost" ||
+      hostname === "127.0.0.1" ||
+      hostname === "[::1]" ||
+      hostname.endsWith(".local")
+    ) {
+      return true;
+    }
+    if (privateNetworkPattern.test(hostname)) {
+      return true;
+    }
+  } catch (error) {
+    console.warn("Failed to parse origin", origin, error);
+  }
+  return false;
+};
+
 export class ChatApiError extends Error {
   status: number;
   constructor(status: number, message: string) {
@@ -63,7 +89,10 @@ export const resolveGatewayModelId = () => {
 
 export const createCorsHeaders = (origin: string | null | undefined) => {
   const chosen =
-    origin && allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+    origin &&
+    (allowedOrigins.includes(origin) || isDevOrigin(origin))
+      ? origin
+      : allowedOrigins[0];
   return {
     "Access-Control-Allow-Origin": chosen,
     "Access-Control-Allow-Methods": "POST, OPTIONS",

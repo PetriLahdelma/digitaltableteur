@@ -246,12 +246,11 @@ const staticTools: ToolMap = {
       additionalProperties: false,
     }),
     outputSchema: jsonSchema({
-      type: "object",
-      required: ["email", "responseHours", "meetingLink"],
-      properties: {
-        email: { type: "string" },
-        phone: { type: "string" },
-        phone: { type: ["string", "null"] },
+  type: "object",
+  required: ["email", "responseHours", "meetingLink"],
+  properties: {
+    email: { type: "string" },
+    phone: { type: ["string", "null"] },
         meetingLink: { type: "string" },
         address: { type: "string" },
         responseHours: {
