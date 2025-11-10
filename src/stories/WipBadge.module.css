@@ -19,3 +19,19 @@
     0 2px 4px rgb(0 0 0 / 12%);
   pointer-events: auto;
 }
+
+.wipBadgeDocs {
+  display: inline-flex;
+  position: sticky;
+  top: var(--space-internal-12);
+  z-index: 5;
+  margin: var(--space-internal-12);
+  max-width: max-content;
+  pointer-events: auto;
+}
+
+.wipBadgeDocs .badge {
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 8%),
+    0 8px 24px rgb(15 23 42 / 12%);
+}

@@ -13,7 +13,7 @@ The Donny widget now streams assistant replies with the [Vercel AI SDK](https://
 | `OPENAI_MODEL`             | Legacy shorthand (e.g. `gpt-4o-mini`). Used only when `AI_GATEWAY_MODEL` omits the provider prefix.                         | —                                                                          |
 
 > Run `vercel env pull .env.local` whenever the secure proxy secrets change so local development keeps using the deployed credentials. MCP servers reuse the same env file via `mcp.json`.
-> CORS automatically trusts private-network dev servers (e.g. `192.168.x.x:5173`, `10.x.x.x`) and `.local` hosts, so you can test on real devices without editing the allowlist.
+> CORS automatically trusts private-network dev servers (e.g. `192.168.x.x:5173`, `10.x.x.x`) and `.local` hosts, so you can test on real devices without editing the allowlist. For future adjustments, follow Vercel’s guide on enabling CORS: https://vercel.com/guides/how-to-enable-cors
 
 ## Vercel serverless handler (Node runtime)
 

@@ -134,7 +134,8 @@ const normalizeError = (caught: unknown): ChatApiError => {
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Set CORS headers immediately, before any other processing
+  // Set CORS headers immediately, before any other processing.
+  // Reference: https://vercel.com/guides/how-to-enable-cors
   res.setHeader("Access-Control-Allow-Origin", "https://digitaltableteur.com");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader(
