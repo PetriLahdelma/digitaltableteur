@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "http";
-import { convertToCoreMessages, streamText } from "ai";
+import { convertToModelMessages, streamText } from "ai";
 import {
   createGateway,
   GatewayAuthenticationError,
@@ -144,9 +144,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const body = await readJsonBody(req);
-    const payload = body.messages;
+    const payload: unknown = body.messages;
     validateMessages(payload);
-    const messages = payload as any[];
+    const messages: any[] = payload;
 
     const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
     const system = buildSystemPrompt(Object.keys(tools));
@@ -154,14 +154,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const modelId: string = resolveGatewayModelId();
     const model = gatewayProvider(modelId);
 
-    const result = await streamText({
+    const streamParams: Parameters<typeof streamText>[0] = {
       model,
       system,
       tools,
-      messages: convertToCoreMessages(messages),
+      messages: convertToModelMessages(messages),
       temperature: 0.2,
       maxRetries: 2,
-    });
+    };
+
+    const result = await streamText(streamParams);
 
     res.setHeader("Cache-Control", "no-store, max-age=0");
     res.setHeader("Connection", "keep-alive");
