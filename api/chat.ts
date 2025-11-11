@@ -13,8 +13,8 @@ import {
   buildSystemPrompt,
   resolveGatewayModelId,
   createCorsHeaders,
-} from "./chat-shared";
-import { getDonnyTools } from "./donny-tools";
+} from "./chat-shared.js";
+import { getDonnyTools } from "./donny-tools.js";
 
 type VercelRequest = IncomingMessage & {
   method?: string;
