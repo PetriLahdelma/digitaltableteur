@@ -204,7 +204,3 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.end();
   }
 }
-
-export const config = {
-  runtime: "nodejs",
-};
