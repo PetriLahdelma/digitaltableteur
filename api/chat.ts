@@ -12,6 +12,7 @@ import {
   validateMessages,
   buildSystemPrompt,
   resolveGatewayModelId,
+  createCorsHeaders,
 } from "./chat-shared";
 import { getDonnyTools } from "./donny-tools";
 
@@ -134,33 +135,23 @@ const normalizeError = (caught: unknown): ChatApiError => {
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Set CORS headers immediately, before any other processing.
-  // Reference: https://vercel.com/guides/how-to-enable-cors
-  res.setHeader("Access-Control-Allow-Origin", "https://digitaltableteur.com");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, Accept, Origin, X-Requested-With",
+  const requestOriginHeader = Array.isArray(req.headers.origin)
+    ? req.headers.origin[0]
+    : req.headers.origin ?? null;
+  const corsHeaders = createCorsHeaders(requestOriginHeader);
+  const allowedOrigin = corsHeaders["Access-Control-Allow-Origin"];
+
+  // Apply CORS headers immediately so both preflight and error paths inherit them.
+  Object.entries(corsHeaders).forEach(([key, value]) =>
+    res.setHeader(key, value),
   );
-  res.setHeader("Access-Control-Max-Age", "86400");
-  res.setHeader("Vary", "Origin");
 
   // Handle preflight requests
   if (req.method === "OPTIONS") {
-    res.statusCode = 200; // Use 200 instead of 204 for better compatibility
+    res.statusCode = 204;
     res.end();
     return;
   }
-
-  // Create corsHeaders object for sendJson calls
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://digitaltableteur.com",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers":
-      "Content-Type, Authorization, Accept, Origin, X-Requested-With",
-    "Access-Control-Max-Age": "86400",
-    Vary: "Origin",
-  };
 
   if (req.method !== "POST") {
     sendJson(res, 405, { error: "Method not allowed" }, corsHeaders);
@@ -191,7 +182,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const result = await streamText(streamParams);
 
-    res.setHeader("Cache-Control", "no-store, max-age=0");
+    // Set streaming headers including CORS headers for cross-origin streaming
+    res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+    res.setHeader("Cache-Control", "no-store, no-transform, max-age=0");
     res.setHeader("Connection", "keep-alive");
     res.setHeader("Transfer-Encoding", "chunked");
     res.setHeader("Content-Type", "text/event-stream");
