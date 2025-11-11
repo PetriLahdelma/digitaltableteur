@@ -1,4 +1,4 @@
-import { createCorsHeaders } from "./chat-shared.js";
+import { createCorsHeaders } from "./chat-shared";
 
 const extractOrigin = (originHeader) => {
   if (Array.isArray(originHeader)) {
