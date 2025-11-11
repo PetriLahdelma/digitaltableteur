@@ -76,8 +76,13 @@ export const POST = async (request: Request) => {
       maxRetries: 2,
     });
 
+    const streamingHeaders = {
+      ...headers,
+      "Cache-Control": "no-store, no-transform, max-age=0",
+    };
+
     return result.toUIMessageStreamResponse({
-      headers,
+      headers: streamingHeaders,
     });
   } catch (error) {
     const normalized = normalizeError(error);

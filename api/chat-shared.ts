@@ -36,6 +36,20 @@ const isDevOrigin = (origin: string | null | undefined) => {
   return false;
 };
 
+export const resolveAllowedOrigin = (
+  origin: string | null | undefined,
+): string => {
+  if (origin && (allowedOrigins.includes(origin) || isDevOrigin(origin))) {
+    return origin;
+  }
+  return allowedOrigins[0];
+};
+
+const ACCESS_CONTROL_ALLOW_METHODS = "POST, OPTIONS";
+const ACCESS_CONTROL_ALLOW_HEADERS =
+  "Content-Type, Authorization, Accept, Origin, X-Requested-With";
+const ACCESS_CONTROL_MAX_AGE = "86400";
+
 export class ChatApiError extends Error {
   status: number;
   constructor(status: number, message: string) {
@@ -86,14 +100,12 @@ export const resolveGatewayModelId = () => {
 };
 
 export const createCorsHeaders = (origin: string | null | undefined) => {
-  const chosen =
-    origin && (allowedOrigins.includes(origin) || isDevOrigin(origin))
-      ? origin
-      : allowedOrigins[0];
+  const chosen = resolveAllowedOrigin(origin);
   return {
     "Access-Control-Allow-Origin": chosen,
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Allow-Methods": ACCESS_CONTROL_ALLOW_METHODS,
+    "Access-Control-Allow-Headers": ACCESS_CONTROL_ALLOW_HEADERS,
+    "Access-Control-Max-Age": ACCESS_CONTROL_MAX_AGE,
     Vary: "Origin",
   } satisfies Record<string, string>;
 };
