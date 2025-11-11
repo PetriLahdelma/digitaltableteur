@@ -141,11 +141,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     "from origin:",
     Array.isArray(req.headers.origin)
       ? req.headers.origin[0]
-      : req.headers.origin ?? null,
+      : (req.headers.origin ?? null),
   );
   const requestOriginHeader = Array.isArray(req.headers.origin)
     ? req.headers.origin[0]
-    : req.headers.origin ?? null;
+    : (req.headers.origin ?? null);
   const corsHeaders = createCorsHeaders(requestOriginHeader);
   const allowedOrigin = corsHeaders["Access-Control-Allow-Origin"];
 
