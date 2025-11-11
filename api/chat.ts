@@ -135,6 +135,14 @@ const normalizeError = (caught: unknown): ChatApiError => {
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  console.log(
+    "Received method:",
+    req.method,
+    "from origin:",
+    Array.isArray(req.headers.origin)
+      ? req.headers.origin[0]
+      : req.headers.origin ?? null,
+  );
   const requestOriginHeader = Array.isArray(req.headers.origin)
     ? req.headers.origin[0]
     : req.headers.origin ?? null;
