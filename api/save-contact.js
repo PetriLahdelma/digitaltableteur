@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb";
-import handleCors from "./cors";
+import handleCors from "./cors.js";
 
 export default async function handler(request, response) {
   if (handleCors(request, response)) {
