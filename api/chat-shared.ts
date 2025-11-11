@@ -4,8 +4,9 @@ import { digitaltableteurContext } from "./donny-context.js";
 export const allowedOrigins = [
   "https://digitaltableteur.com",
   "https://www.digitaltableteur.com",
+  "http://digitaltableteur.com",
+  "http://www.digitaltableteur.com",
   "http://localhost:5173",
-  "http://localhost:5176",
   "http://localhost:3000",
   "http://192.168.1.108:5173",
   "http://localhost:6006",
