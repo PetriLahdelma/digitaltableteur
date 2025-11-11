@@ -67,7 +67,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
       maxRetries: 2,
     });
 
-    res.setHeader("Cache-Control", "no-store, max-age=0");
+    res.setHeader("Cache-Control", "no-store, no-transform, max-age=0");
     res.setHeader("Connection", "keep-alive");
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Transfer-Encoding", "chunked");
