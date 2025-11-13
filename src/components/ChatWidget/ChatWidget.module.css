@@ -361,8 +361,7 @@
 }
 
 .input:focus {
-  border-color: var(--color-primary, #0f62fe);
-  outline: none;
+  outline: var(--color-primary, #0f62fe);
   box-shadow: 0 0 0 4px rgb(15 98 254 / 15%);
 }
 
@@ -413,6 +412,13 @@
     transform 0.2s ease,
     box-shadow 0.2s ease,
     opacity 0.2s ease;
+}
+
+.toggle:focus-visible {
+  border-radius: 9999px;
+  outline: 2px solid currentcolor;
+  outline-offset: 4px;
+  outline-color: color-mix(in srgb, currentcolor 65%, black);
 }
 
 .toggle[data-open="true"] {

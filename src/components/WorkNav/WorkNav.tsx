@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@dt/Button";
-import { MdArrowBack, MdArrowForward, MdWork } from "react-icons/md";
+import Icon from "@dt/Icon";
 import styles from "./worknav.module.css";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -22,7 +22,7 @@ const WorkNav: React.FC = () => {
         <Button
           variant="tertiary"
           size="m"
-          icon={<MdWork />}
+          icon={<Icon name="briefcase" />}
           onClick={() => navigate("/work")}
         >
           {t("workNavBackToWork")}
@@ -31,7 +31,7 @@ const WorkNav: React.FC = () => {
           <Button
             variant="tertiary"
             size="m"
-            icon={<MdArrowBack />}
+            icon={<Icon name="arrow-left" />}
             disabled={currentIndex <= 0}
             onClick={() => {
               if (currentIndex > 0) navigate(workPages[currentIndex - 1].path);
@@ -42,7 +42,7 @@ const WorkNav: React.FC = () => {
           <Button
             variant="tertiary"
             size="m"
-            endIcon={<MdArrowForward />}
+            endIcon={<Icon name="arrow-right" />}
             disabled={currentIndex === workPages.length - 1}
             onClick={() => {
               if (currentIndex < workPages.length - 1)

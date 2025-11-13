@@ -20,6 +20,37 @@ describe("messageProcessor (user-triggered only) | OpenHours + ServicesGrid", ()
     expect(extractCopy(m)).toBe("Hello world");
   });
 
+  it("extractCopy strips tool-result metadata from assistant messages", () => {
+    const message: UIMessage = {
+      id: "tool_meta",
+      role: "assistant",
+      parts: [
+        {
+          type: "tool-result",
+          toolCallId: "call_123",
+          result: { foo: "bar" },
+        } as any,
+        { type: "text", text: "Here is what I found." },
+      ],
+    };
+    expect(extractCopy(message)).toBe("Here is what I found.");
+  });
+
+  it("extractCopy includes textual tool-result payloads when provided", () => {
+    const message: UIMessage = {
+      id: "tool_text",
+      role: "assistant",
+      parts: [
+        {
+          type: "tool-result",
+          toolCallId: "call_token",
+          result: "[[openHours]]",
+        } as any,
+      ],
+    };
+    expect(extractCopy(message)).toBe("[[openHours]]");
+  });
+
   it("assistant message alone does NOT inject components anymore", () => {
     const m = makeMsg("assistant", `Here are details ${TOKEN_OPEN_HOURS}`);
     const processed = processMessage(m);

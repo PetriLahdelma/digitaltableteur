@@ -2,16 +2,16 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
-import * as FaIcons from "react-icons/fa";
 
 import Badge from "./Badge";
+import Icon from "@dt/Icon";
 import Text from "@dt/Text";
 
 const STATE_ICON_MAP = {
-  success: "FaCheckCircle",
-  info: "FaInfoCircle",
-  error: "FaExclamationCircle",
-  warning: "FaExclamationTriangle",
+  success: "check-circle",
+  info: "info",
+  error: "x-circle",
+  warning: "triangle-exclamation",
 };
 
 const meta: Meta<typeof Badge> = {
@@ -85,12 +85,10 @@ const BadgeStoryTemplate: React.FC<BadgeProps> = (args) => {
       ? icon.trim()
       : state && STATE_ICON_MAP[state as keyof typeof STATE_ICON_MAP];
 
-  const iconLibrary = FaIcons as Record<string, React.ComponentType>;
-  const IconComponent = iconName ? iconLibrary[iconName] : undefined;
   const resolvedIcon =
     typeof icon === "string" || !icon
-      ? IconComponent
-        ? React.createElement(IconComponent)
+      ? iconName
+        ? React.createElement(Icon, { name: iconName })
         : null
       : icon;
 

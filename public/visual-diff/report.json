@@ -1,4 +1,287 @@
 {
-  "generatedAt": "2025-11-10T14:08:43.457Z",
-  "diffs": []
+  "generatedAt": "2025-11-13T06:32:10.902Z",
+  "diffs": [
+    {
+      "id": "components-ai-chat-chatmessages-default",
+      "actual": "visual-diff/components-ai-chat-chatmessages-default-actual.png",
+      "baseline": "visual-diff/components-ai-chat-chatmessages-default-baseline.png",
+      "diff": "visual-diff/components-ai-chat-chatmessages-default-diff.png"
+    },
+    {
+      "id": "components-ai-chat-custom-components-openhours-compact",
+      "actual": "visual-diff/components-ai-chat-custom-components-openhours-compact-actual.png",
+      "baseline": "visual-diff/components-ai-chat-custom-components-openhours-compact-baseline.png",
+      "diff": "visual-diff/components-ai-chat-custom-components-openhours-compact-diff.png"
+    },
+    {
+      "id": "components-ai-chat-custom-components-openhours-default",
+      "actual": "visual-diff/components-ai-chat-custom-components-openhours-default-actual.png",
+      "baseline": "visual-diff/components-ai-chat-custom-components-openhours-default-baseline.png",
+      "diff": "visual-diff/components-ai-chat-custom-components-openhours-default-diff.png"
+    },
+    {
+      "id": "components-ai-chat-custom-components-openhours-injected-date",
+      "actual": "visual-diff/components-ai-chat-custom-components-openhours-injected-date-actual.png",
+      "baseline": "visual-diff/components-ai-chat-custom-components-openhours-injected-date-baseline.png",
+      "diff": "visual-diff/components-ai-chat-custom-components-openhours-injected-date-diff.png"
+    },
+    {
+      "id": "components-ai-chat-custom-components-openhours-today-only",
+      "actual": "visual-diff/components-ai-chat-custom-components-openhours-today-only-actual.png",
+      "baseline": "visual-diff/components-ai-chat-custom-components-openhours-today-only-baseline.png",
+      "diff": "visual-diff/components-ai-chat-custom-components-openhours-today-only-diff.png"
+    },
+    {
+      "id": "components-ai-chat-custom-components-servicesgrid-default",
+      "actual": "visual-diff/components-ai-chat-custom-components-servicesgrid-default-actual.png",
+      "baseline": "visual-diff/components-ai-chat-custom-components-servicesgrid-default-baseline.png",
+      "diff": "visual-diff/components-ai-chat-custom-components-servicesgrid-default-diff.png"
+    },
+    {
+      "id": "components-badge-all-sizes",
+      "actual": "visual-diff/components-badge-all-sizes-actual.png",
+      "baseline": "visual-diff/components-badge-all-sizes-baseline.png",
+      "diff": "visual-diff/components-badge-all-sizes-diff.png"
+    },
+    {
+      "id": "components-badge-all-variants",
+      "actual": "visual-diff/components-badge-all-variants-actual.png",
+      "baseline": "visual-diff/components-badge-all-variants-baseline.png",
+      "diff": "visual-diff/components-badge-all-variants-diff.png"
+    },
+    {
+      "id": "components-badge-auto-semantic-icons",
+      "actual": "visual-diff/components-badge-auto-semantic-icons-actual.png",
+      "baseline": "visual-diff/components-badge-auto-semantic-icons-baseline.png",
+      "diff": "visual-diff/components-badge-auto-semantic-icons-diff.png"
+    },
+    {
+      "id": "components-badge-playground",
+      "actual": "visual-diff/components-badge-playground-actual.png",
+      "baseline": "visual-diff/components-badge-playground-baseline.png",
+      "diff": "visual-diff/components-badge-playground-diff.png"
+    },
+    {
+      "id": "components-badge-removable",
+      "actual": "visual-diff/components-badge-removable-actual.png",
+      "baseline": "visual-diff/components-badge-removable-baseline.png",
+      "diff": "visual-diff/components-badge-removable-diff.png"
+    },
+    {
+      "id": "components-badge-secondary-variants",
+      "actual": "visual-diff/components-badge-secondary-variants-actual.png",
+      "baseline": "visual-diff/components-badge-secondary-variants-baseline.png",
+      "diff": "visual-diff/components-badge-secondary-variants-diff.png"
+    },
+    {
+      "id": "components-badge-with-icon",
+      "actual": "visual-diff/components-badge-with-icon-actual.png",
+      "baseline": "visual-diff/components-badge-with-icon-baseline.png",
+      "diff": "visual-diff/components-badge-with-icon-diff.png"
+    },
+    {
+      "id": "components-button-all-variants",
+      "actual": "visual-diff/components-button-all-variants-actual.png",
+      "baseline": "visual-diff/components-button-all-variants-baseline.png",
+      "diff": "visual-diff/components-button-all-variants-diff.png"
+    },
+    {
+      "id": "components-button-error",
+      "actual": "visual-diff/components-button-error-actual.png",
+      "baseline": "visual-diff/components-button-error-baseline.png",
+      "diff": "visual-diff/components-button-error-diff.png"
+    },
+    {
+      "id": "components-button-info",
+      "actual": "visual-diff/components-button-info-actual.png",
+      "baseline": "visual-diff/components-button-info-baseline.png",
+      "diff": "visual-diff/components-button-info-diff.png"
+    },
+    {
+      "id": "components-button-success",
+      "actual": "visual-diff/components-button-success-actual.png",
+      "baseline": "visual-diff/components-button-success-baseline.png",
+      "diff": "visual-diff/components-button-success-diff.png"
+    },
+    {
+      "id": "components-button-warning",
+      "actual": "visual-diff/components-button-warning-actual.png",
+      "baseline": "visual-diff/components-button-warning-baseline.png",
+      "diff": "visual-diff/components-button-warning-diff.png"
+    },
+    {
+      "id": "designsystem-card-as-link",
+      "actual": "visual-diff/designsystem-card-as-link-actual.png",
+      "baseline": "visual-diff/designsystem-card-as-link-baseline.png",
+      "diff": "visual-diff/designsystem-card-as-link-diff.png"
+    },
+    {
+      "id": "designsystem-card-complex-example",
+      "actual": "visual-diff/designsystem-card-complex-example-actual.png",
+      "baseline": "visual-diff/designsystem-card-complex-example-baseline.png",
+      "diff": "visual-diff/designsystem-card-complex-example-diff.png"
+    },
+    {
+      "id": "designsystem-card-event-card",
+      "actual": "visual-diff/designsystem-card-event-card-actual.png",
+      "baseline": "visual-diff/designsystem-card-event-card-baseline.png",
+      "diff": "visual-diff/designsystem-card-event-card-diff.png"
+    },
+    {
+      "id": "designsystem-card-interactive",
+      "actual": "visual-diff/designsystem-card-interactive-actual.png",
+      "baseline": "visual-diff/designsystem-card-interactive-baseline.png",
+      "diff": "visual-diff/designsystem-card-interactive-diff.png"
+    },
+    {
+      "id": "designsystem-card-large-size",
+      "actual": "visual-diff/designsystem-card-large-size-actual.png",
+      "baseline": "visual-diff/designsystem-card-large-size-baseline.png",
+      "diff": "visual-diff/designsystem-card-large-size-diff.png"
+    },
+    {
+      "id": "designsystem-card-playground",
+      "actual": "visual-diff/designsystem-card-playground-actual.png",
+      "baseline": "visual-diff/designsystem-card-playground-baseline.png",
+      "diff": "visual-diff/designsystem-card-playground-diff.png"
+    },
+    {
+      "id": "designsystem-card-profile-card",
+      "actual": "visual-diff/designsystem-card-profile-card-actual.png",
+      "baseline": "visual-diff/designsystem-card-profile-card-baseline.png",
+      "diff": "visual-diff/designsystem-card-profile-card-diff.png"
+    },
+    {
+      "id": "designsystem-card-project-card",
+      "actual": "visual-diff/designsystem-card-project-card-actual.png",
+      "baseline": "visual-diff/designsystem-card-project-card-baseline.png",
+      "diff": "visual-diff/designsystem-card-project-card-diff.png"
+    },
+    {
+      "id": "designsystem-card-service-highlight",
+      "actual": "visual-diff/designsystem-card-service-highlight-actual.png",
+      "baseline": "visual-diff/designsystem-card-service-highlight-baseline.png",
+      "diff": "visual-diff/designsystem-card-service-highlight-diff.png"
+    },
+    {
+      "id": "designsystem-card-size-large",
+      "actual": "visual-diff/designsystem-card-size-large-actual.png",
+      "baseline": "visual-diff/designsystem-card-size-large-baseline.png",
+      "diff": "visual-diff/designsystem-card-size-large-diff.png"
+    },
+    {
+      "id": "designsystem-card-size-medium",
+      "actual": "visual-diff/designsystem-card-size-medium-actual.png",
+      "baseline": "visual-diff/designsystem-card-size-medium-baseline.png",
+      "diff": "visual-diff/designsystem-card-size-medium-diff.png"
+    },
+    {
+      "id": "designsystem-card-size-small",
+      "actual": "visual-diff/designsystem-card-size-small-actual.png",
+      "baseline": "visual-diff/designsystem-card-size-small-baseline.png",
+      "diff": "visual-diff/designsystem-card-size-small-diff.png"
+    },
+    {
+      "id": "designsystem-card-small-size",
+      "actual": "visual-diff/designsystem-card-small-size-actual.png",
+      "baseline": "visual-diff/designsystem-card-small-size-baseline.png",
+      "diff": "visual-diff/designsystem-card-small-size-diff.png"
+    },
+    {
+      "id": "designsystem-card-tabbed",
+      "actual": "visual-diff/designsystem-card-tabbed-actual.png",
+      "baseline": "visual-diff/designsystem-card-tabbed-baseline.png",
+      "diff": "visual-diff/designsystem-card-tabbed-diff.png"
+    },
+    {
+      "id": "designsystem-card-with-actions",
+      "actual": "visual-diff/designsystem-card-with-actions-actual.png",
+      "baseline": "visual-diff/designsystem-card-with-actions-baseline.png",
+      "diff": "visual-diff/designsystem-card-with-actions-diff.png"
+    },
+    {
+      "id": "designsystem-card-with-badge-end",
+      "actual": "visual-diff/designsystem-card-with-badge-end-actual.png",
+      "baseline": "visual-diff/designsystem-card-with-badge-end-baseline.png",
+      "diff": "visual-diff/designsystem-card-with-badge-end-diff.png"
+    },
+    {
+      "id": "designsystem-card-with-custom-badge",
+      "actual": "visual-diff/designsystem-card-with-custom-badge-actual.png",
+      "baseline": "visual-diff/designsystem-card-with-custom-badge-baseline.png",
+      "diff": "visual-diff/designsystem-card-with-custom-badge-diff.png"
+    },
+    {
+      "id": "designsystem-card-with-error-message",
+      "actual": "visual-diff/designsystem-card-with-error-message-actual.png",
+      "baseline": "visual-diff/designsystem-card-with-error-message-baseline.png",
+      "diff": "visual-diff/designsystem-card-with-error-message-diff.png"
+    },
+    {
+      "id": "designsystem-card-with-icon-start",
+      "actual": "visual-diff/designsystem-card-with-icon-start-actual.png",
+      "baseline": "visual-diff/designsystem-card-with-icon-start-baseline.png",
+      "diff": "visual-diff/designsystem-card-with-icon-start-diff.png"
+    },
+    {
+      "id": "designsystem-card-with-icon-top",
+      "actual": "visual-diff/designsystem-card-with-icon-top-actual.png",
+      "baseline": "visual-diff/designsystem-card-with-icon-top-baseline.png",
+      "diff": "visual-diff/designsystem-card-with-icon-top-diff.png"
+    },
+    {
+      "id": "designsystem-card-with-success-message",
+      "actual": "visual-diff/designsystem-card-with-success-message-actual.png",
+      "baseline": "visual-diff/designsystem-card-with-success-message-baseline.png",
+      "diff": "visual-diff/designsystem-card-with-success-message-diff.png"
+    },
+    {
+      "id": "feedback-skeleton-avatar",
+      "actual": "visual-diff/feedback-skeleton-avatar-actual.png",
+      "baseline": "visual-diff/feedback-skeleton-avatar-baseline.png",
+      "diff": "visual-diff/feedback-skeleton-avatar-diff.png"
+    },
+    {
+      "id": "feedback-skeleton-card",
+      "actual": "visual-diff/feedback-skeleton-card-actual.png",
+      "baseline": "visual-diff/feedback-skeleton-card-baseline.png",
+      "diff": "visual-diff/feedback-skeleton-card-diff.png"
+    },
+    {
+      "id": "feedback-skeleton-rect",
+      "actual": "visual-diff/feedback-skeleton-rect-actual.png",
+      "baseline": "visual-diff/feedback-skeleton-rect-baseline.png",
+      "diff": "visual-diff/feedback-skeleton-rect-diff.png"
+    },
+    {
+      "id": "feedback-skeleton-static",
+      "actual": "visual-diff/feedback-skeleton-static-actual.png",
+      "baseline": "visual-diff/feedback-skeleton-static-baseline.png",
+      "diff": "visual-diff/feedback-skeleton-static-diff.png"
+    },
+    {
+      "id": "feedback-skeleton-text",
+      "actual": "visual-diff/feedback-skeleton-text-actual.png",
+      "baseline": "visual-diff/feedback-skeleton-text-baseline.png",
+      "diff": "visual-diff/feedback-skeleton-text-diff.png"
+    },
+    {
+      "id": "overview-test-health-overview-dashboard",
+      "actual": "visual-diff/overview-test-health-overview-dashboard-actual.png",
+      "baseline": "visual-diff/overview-test-health-overview-dashboard-baseline.png",
+      "diff": "visual-diff/overview-test-health-overview-dashboard-diff.png"
+    },
+    {
+      "id": "patterns-footer-default",
+      "actual": "visual-diff/patterns-footer-default-actual.png",
+      "baseline": "visual-diff/patterns-footer-default-baseline.png",
+      "diff": "visual-diff/patterns-footer-default-diff.png"
+    },
+    {
+      "id": "patterns-footer-with-surrounding-content",
+      "actual": "visual-diff/patterns-footer-with-surrounding-content-actual.png",
+      "baseline": "visual-diff/patterns-footer-with-surrounding-content-baseline.png",
+      "diff": "visual-diff/patterns-footer-with-surrounding-content-diff.png"
+    }
+  ]
 }

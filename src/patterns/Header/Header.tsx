@@ -5,16 +5,15 @@ import "../../styles/variables.css";
 import "../../styles/fonts.css";
 import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
 import { type Theme } from "@dt/ThemeProvider";
-import { IoMoon, IoSunnySharp } from "react-icons/io5";
-import { MdOutlineContrast } from "react-icons/md";
+import Icon from "@dt/Icon";
 import { useTranslation } from "react-i18next";
 import { usePersistentTheme } from "../../hooks/usePersistentTheme";
 
 const themeIcons: Record<Theme, React.ReactNode> = {
-  light: <IoSunnySharp />,
-  dark: <IoMoon />,
-  hcb: <MdOutlineContrast />,
-  hcw: <MdOutlineContrast />,
+  light: <Icon name="sun" ariaLabel="Light theme" />,
+  dark: <Icon name="moon" ariaLabel="Dark theme" />,
+  hcb: <Icon name="circle" ariaLabel="High contrast black theme" />,
+  hcw: <Icon name="circle" ariaLabel="High contrast white theme" />,
 };
 
 type HeaderProps = {
@@ -226,6 +225,9 @@ const Header: React.FC<HeaderProps> = ({
                 }`.trim()}
                 aria-label={lang.label}
                 aria-current={currentlang === lang.code ? "true" : undefined}
+                title={t("switchToLanguage", "Switch to {{language}}", {
+                  language: lang.label,
+                })}
               >
                 {lang.label}
               </button>

@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@dt/Button";
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import Icon from "@dt/Icon";
 import styles from "./ChatWidget.module.css";
 import { useTranslation } from "react-i18next";
 
@@ -26,7 +26,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
         ref={ref}
         data-open={isOpen}
         onClick={onToggle}
-        icon={<IoChatbubbleEllipsesOutline />}
+        icon={<Icon name="ChatCircleDots" size="md" aria-hidden="true" />}
         aria-expanded={isOpen}
         aria-controls={controlsId}
         aria-label={ariaLabel}

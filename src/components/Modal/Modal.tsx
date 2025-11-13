@@ -1,5 +1,5 @@
 import React, { useId } from "react";
-import { FaTimes } from "react-icons/fa";
+import Icon from "@dt/Icon";
 import styles from "./Modal.module.css";
 import Button from "@dt/Button";
 import { getSemanticIcon } from "../../utils/semanticIcons";
@@ -98,7 +98,7 @@ const Modal: React.FC<ModalProps> = ({
                 onClick={onClose}
                 aria-label="Close"
               >
-                {FaTimes({})}
+                <Icon name="x" />
               </button>
             )}
           </div>

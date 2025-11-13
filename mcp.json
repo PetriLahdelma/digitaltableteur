@@ -24,6 +24,16 @@
         "SENTRY_ORG": "digitaltableteur",
         "SENTRY_PROJECT": "frontend"
       }
+    },
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "env": {
+        "CONTEXT7_API_KEY": "<YOUR_CONTEXT7_API_KEY>"
+      },
+      "headers": {
+        "Context7-API-Key": "{{CONTEXT7_API_KEY}}"
+      }
     }
   }
 }

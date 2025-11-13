@@ -31,6 +31,30 @@ export interface ProcessedMessage {
 }
 
 // Extract raw textual copy from UIMessage (mirrors previous getMessageText)
+const coerceToDisplayText = (value: unknown): string | null => {
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    return trimmed.length ? trimmed : null;
+  }
+  if (Array.isArray(value)) {
+    const combined = value
+      .map((entry) => coerceToDisplayText(entry))
+      .filter((entry): entry is string => Boolean(entry))
+      .join("\n")
+      .trim();
+    return combined.length ? combined : null;
+  }
+  if (value && typeof value === "object") {
+    const candidate = value as { text?: unknown; content?: unknown };
+    return (
+      coerceToDisplayText(candidate.text) ??
+      coerceToDisplayText(candidate.content) ??
+      null
+    );
+  }
+  return null;
+};
+
 export const extractCopy = (message: UIMessage): string => {
   if (!Array.isArray(message.parts) || message.parts.length === 0) return "";
   return message.parts
@@ -43,11 +67,16 @@ export const extractCopy = (message: UIMessage): string => {
       }
       if (part.type === "tool-result" || part.type.startsWith("tool-")) {
         const toolPart = part as unknown as {
-          toolName?: string;
-          toolCallId: string;
+          text?: unknown;
+          result?: unknown;
+          content?: unknown;
         };
-        const label = toolPart.toolName ?? toolPart.toolCallId ?? "tool";
-        return `[${label} result available]`;
+        return (
+          coerceToDisplayText(toolPart.text) ??
+          coerceToDisplayText(toolPart.result) ??
+          coerceToDisplayText(toolPart.content) ??
+          ""
+        );
       }
       return "";
     })

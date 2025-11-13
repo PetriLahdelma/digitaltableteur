@@ -1,0 +1,34 @@
+/* stylelint-disable rule-empty-line-before */
+.base {
+  display: inline-flex;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes icon-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.spin {
+  animation: icon-spin 1s linear infinite;
+}
+
+.pulse {
+  animation: icon-pulse 1.2s ease-in-out infinite;
+}
+/* stylelint-enable rule-empty-line-before */

@@ -10,12 +10,7 @@ import BlogNav from "@dt/BlogNav/BlogNav";
 import "../../i18n"; // Ensure i18n is initialized
 import MCP from "../../assets/images/MCP.webp";
 import Grid from "@dt/Grid";
-import {
-  TbCircleNumber1,
-  TbCircleNumber2,
-  TbCircleNumber3,
-  TbCircleNumber4,
-} from "react-icons/tb";
+import Icon from "@dt/Icon";
 import { useTranslation } from "react-i18next";
 import Text from "@dt/Text";
 
@@ -59,7 +54,7 @@ const FigmaMCP = () => {
         </header>
         <img
           src={MCP}
-          alt="I'm sorry, but I can't view or describe specific images."
+          alt="Sorry, I can't describe the image named MCP without seeing it."
           style={{ marginBlockEnd: "3rem" }}
         />
         <p>
@@ -105,7 +100,7 @@ const FigmaMCP = () => {
         <div>
           <img
             src={DTmindmap}
-            alt="Visual diagram outlining concepts related to digital transformation strategies."
+            alt="A visual representation of interconnected ideas and concepts."
             style={{ width: "100%", height: "auto" }}
           />
         </div>
@@ -120,25 +115,25 @@ const FigmaMCP = () => {
         <br />
         <Grid columns={4} gap="2rem">
           <div>
-            <TbCircleNumber1 size={32} />
+            <Icon name="NumberCircleOne" size={32} />
             <h3>Figma MCP</h3>
             <p>Define structured, variant-rich component data</p>
           </div>
 
           <div>
-            <TbCircleNumber2 size={32} />
+            <Icon name="NumberCircleTwo" size={32} />
             <h3>Figma API</h3>
             <p>Export that structure as JSON</p>
           </div>
 
           <div>
-            <TbCircleNumber3 size={32} />
+            <Icon name="NumberCircleThree" size={32} />
             <h3>ChatGPT</h3>
             <p>Transform exported JSON into reusable React/TS components</p>
           </div>
 
           <div>
-            <TbCircleNumber4 size={32} />
+            <Icon name="NumberCircleFour" size={32} />
             <h3>GitHub Copilot</h3>
             <p>Assist with logic, styling, and integration in your IDE</p>
           </div>

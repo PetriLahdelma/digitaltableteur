@@ -1,14 +1,6 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import {
-  FaInstagram,
-  FaFacebook,
-  FaLinkedin,
-  FaMedium,
-  FaGithub,
-  FaDribbble,
-} from "react-icons/fa";
-import { SiSubstack } from "react-icons/si";
+import Icon from "@dt/Icon";
 import Grid from "@dt/Grid";
 import { useTranslation } from "react-i18next";
 
@@ -53,7 +45,7 @@ const Footer = () => {
           aria-label={t("footerAriaInstagram")}
           title={t("footerAriaInstagram")}
         >
-          {FaInstagram({ size: 24 })}
+          <Icon name="instagram" size={24} />
         </a>
         <a
           href="https://www.facebook.com/digitaltableteur"
@@ -62,7 +54,7 @@ const Footer = () => {
           aria-label={t("footerAriaFacebook")}
           title={t("footerAriaFacebook")}
         >
-          {FaFacebook({ size: 24 })}
+          <Icon name="facebook" size={24} />
         </a>
         <a
           href="https://www.linkedin.com/company/digitaltableteur/"
@@ -71,7 +63,7 @@ const Footer = () => {
           aria-label={t("footerAriaLinkedin")}
           title={t("footerAriaLinkedin")}
         >
-          {FaLinkedin({ size: 24 })}
+          <Icon name="linkedin-logo" size={24} />
         </a>
         <a
           href="https://medium.com/@petrilahdelma/"
@@ -80,7 +72,7 @@ const Footer = () => {
           aria-label={t("footerAriaMedium")}
           title={t("footerAriaMedium")}
         >
-          {FaMedium({ size: 24 })}
+          <Icon name="article-medium" size={24} />
         </a>
         <a
           href="https://github.com/PetriLahdelma"
@@ -89,7 +81,7 @@ const Footer = () => {
           aria-label={t("footerAriaGithub")}
           title={t("footerAriaGithub")}
         >
-          {FaGithub({ size: 24 })}
+          <Icon name="github" size={24} />
         </a>
         <a
           href="https://substack.com/@petrilahdelma?"
@@ -98,7 +90,7 @@ const Footer = () => {
           aria-label={t("footerAriaSubstack")}
           title={t("footerAriaSubstack")}
         >
-          {SiSubstack({ size: 24 })}
+          <Icon name="bookmark-simple" size={24} />
         </a>
         <a
           href="https://dribbble.com/digitaltableteur"
@@ -107,7 +99,7 @@ const Footer = () => {
           aria-label={t("footerAriaDribbble")}
           title={t("footerAriaDribbble")}
         >
-          {FaDribbble({ size: 24 })}
+          <Icon name="dribbble-logo" size={24} />
         </a>
       </div>
       <p className={styles["footerText"]}>
