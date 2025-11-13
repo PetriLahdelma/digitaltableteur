@@ -1,3 +1,4 @@
+/* stylelint-disable scale-unlimited/declaration-strict-value, color-hex-length */
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Icon from "@dt/Icon";
@@ -69,7 +70,12 @@ describe("Button", () => {
 
   it("syncs primary inverse text color with the nearest background", async () => {
     render(
-      <div style={{ backgroundColor: "#123456" }}>
+      <div
+        style={{
+          /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+          backgroundColor: "#123456",
+        }}
+      >
         <Button variant="primary" inverse>
           Dynamic primary inverse
         </Button>
@@ -87,7 +93,12 @@ describe("Button", () => {
 
   it("preserves caller inline styles when injecting primary inverse color", async () => {
     render(
-      <div style={{ backgroundColor: "#222222" }}>
+      <div
+        style={{
+          /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+          backgroundColor: "#222",
+        }}
+      >
         <Button variant="primary" inverse style={{ opacity: 0.5 }}>
           Styled primary inverse
         </Button>

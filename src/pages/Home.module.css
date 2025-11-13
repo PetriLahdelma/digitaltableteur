@@ -116,9 +116,9 @@ h1 {
 }
 
 .home a:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid currentcolor;
   outline-offset: 4px;
-  outline-color: color-mix(in srgb, currentColor 70%, black);
+  outline-color: color-mix(in srgb, currentcolor 70%, black);
 }
 
 .heroHighlights {
