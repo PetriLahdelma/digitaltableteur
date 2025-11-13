@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import styles from "./CookiePolicy.module.css";
 import Button from "@dt/Button";
-import { FaArrowLeft } from "react-icons/fa";
+import Icon from "@dt/Icon";
 
 const delimiter = " – ";
 
@@ -67,11 +67,11 @@ const AiUsage = () => {
         </Helmet>
       </HelmetProvider>
       <div className={styles.policyPage}>
-        <div
+                <div
           style={{
+            marginBottom: 24,
             display: "flex",
-            alignItems: "center",
-            marginBottom: "1.5rem",
+            justifyContent: "flex-start",
           }}
         >
           <Button
@@ -79,7 +79,9 @@ const AiUsage = () => {
             size="m"
             onClick={() => (window.location.href = "/")}
           >
-            <FaArrowLeft style={{ marginInlineEnd: 8 }} />
+            <span style={{ marginInlineEnd: 8 }}>
+              <Icon name="arrow-left" />
+            </span>
             Back
           </Button>
         </div>

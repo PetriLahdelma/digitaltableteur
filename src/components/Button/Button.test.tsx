@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { IoMdRefresh } from "react-icons/io";
+import Icon from "@dt/Icon";
 import { describe, it, expect, vi } from "vitest";
 import Button from "./Button";
 
@@ -42,7 +42,7 @@ describe("Button", () => {
   });
 
   it("renders a react-icons element passed as icon prop", () => {
-    render(<Button icon={<IoMdRefresh />}>Refresh</Button>);
+    render(<Button icon={<Icon name="arrow-clockwise" />}>Refresh</Button>);
     const textSpan = screen.getByText("Refresh");
     const iconWrapper = textSpan.previousElementSibling as HTMLElement;
     expect(iconWrapper).toBeTruthy();
@@ -60,7 +60,7 @@ describe("Button", () => {
   });
 
   it("renders an icon from a string registry key", () => {
-    render(<Button icon="IoMdRefresh">RefreshStr</Button>);
+    render(<Button icon="arrow-clockwise">RefreshStr</Button>);
     const textSpan = screen.getByText("RefreshStr");
     const iconWrapper = textSpan.previousElementSibling as HTMLElement;
     expect(iconWrapper).toBeTruthy();

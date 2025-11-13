@@ -159,12 +159,16 @@ Recent minor/patch updates applied:
 - Storybook core packages moved from 10.0.2 → 10.0.5 (docs + a11y improvements).
 - @typescript-eslint parser & plugin updated (8.33.x → 8.46.x) for enhanced lint rule parity.
 
-All 312 tests pass post-update; translation and a11y coverage unchanged. Peer dependency warnings from legacy react-stack-grid (React 16 range) tolerated; consider future migration to CSS Grid masonry alternative to remove noise.
+All 312 tests pass post-update; translation and a11y coverage unchanged. 
+
+**Nov 2025 Dependency Cleanup:**
+- Removed unused `react-stack-grid` dependency to eliminate React 16 peer dependency warnings
+- Updated Node.js engine constraint from `>=20.19.0 <21` to `>=20.19.0` to support modern Node.js versions (22.x) in Vercel deployments
+- Clean dependency tree without legacy React version conflicts
 
 Next candidates (deferred):
 
 - Evaluate Vitest 4.x upgrade after Storybook stabilization.
-- Plan replacement for react-stack-grid to drop outdated React peer dependencies.
 - Monitor ESLint 9.x adoption; schedule ruleset review before major jump.
 
 ### Sentry Automation (Nov 2025)
