@@ -10,11 +10,11 @@
   border-radius: var(--radius-sm);
   font-family: var(--primary-body-font, Moderat, sans-serif);
   font-size: var(--font-size-button-m);
+  text-decoration: none;
   cursor: pointer;
   transition:
     background-color 0.3s,
     color 0.3s;
-  text-decoration: none;
 }
 
 .button.primary {

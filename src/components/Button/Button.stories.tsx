@@ -1,3 +1,4 @@
+/* stylelint-disable value-keyword-case, scale-unlimited/declaration-strict-value */
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
 import Button from "./Button";
@@ -244,6 +245,7 @@ export const Inverse = () => {
           gap: "1rem",
           alignItems: "center",
           padding: "2rem",
+          /* stylelint-disable-next-line scale-unlimited/declaration-strict-value, value-keyword-case */
           backgroundColor: surfaceColor,
           borderRadius: "var(--radius-md, 0.5rem)",
           transition: "background-color 0.3s ease",
@@ -274,9 +276,11 @@ export const Inverse = () => {
                 width: "24px",
                 height: "24px",
                 borderRadius: "var(--radius-sm, 0.25rem)",
+                /* stylelint-disable-next-line value-keyword-case */
                 border: isActive
                   ? "2px solid var(--color-primary)"
                   : "1px solid rgba(0, 0, 0, 0.2)",
+                /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
                 backgroundColor: swatch.color,
                 cursor: "pointer",
                 position: "relative",
