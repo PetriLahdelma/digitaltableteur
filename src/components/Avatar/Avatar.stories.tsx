@@ -1,3 +1,4 @@
+/* stylelint-disable value-keyword-case */
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react-vite";
 import Avatar from "./Avatar";
@@ -105,7 +106,9 @@ const EdgeTemplate: StoryFn<EdgeDetectionArgs> = ({
       <div
         style={{
           display: "flex",
+          /* stylelint-disable-next-line value-keyword-case */
           justifyContent,
+          /* stylelint-disable-next-line value-keyword-case */
           alignItems,
           minHeight: `${MIN_BLOCK_SIZE}px`,
           padding: "1.5rem",

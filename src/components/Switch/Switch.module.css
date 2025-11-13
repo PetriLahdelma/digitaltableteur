@@ -23,13 +23,14 @@
   --switch-height: 1.5rem;
   --switch-width: 2.75rem;
   --switch-handle-size: calc(var(--switch-height) - 0.3rem);
-  position: relative;
+
   display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
+  position: relative;
+  padding: 0;
   width: var(--switch-width);
   height: var(--switch-height);
-  padding: 0;
+  justify-content: flex-start;
+  align-items: center;
   border: none;
   border-radius: 999px;
   background-color: var(--switch-track-off, var(--color-border-light, #c5cbd5));
@@ -54,20 +55,20 @@
 }
 
 .handle {
+  display: inline-flex;
   position: absolute;
   top: 0.15rem;
   left: 0.15rem;
   width: var(--switch-handle-size);
   height: var(--switch-handle-size);
+  justify-content: center;
+  align-items: center;
   border-radius: 999px;
   background-color: var(--switch-handle-bg, #fff);
   box-shadow: 0 2px 6px rgb(15 23 42 / 18%);
   transition:
     transform 0.2s ease,
     background-color 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .switch[data-checked="true"] .handle {
@@ -80,9 +81,9 @@
   width: 0.8rem;
   height: 0.8rem;
   border: 2px solid rgb(15 23 42 / 15%);
-  border-top-color: var(--color-primary, #0f62fe);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
+  border-top-color: var(--color-primary, #0f62fe);
 }
 
 .loadingOverlay {
