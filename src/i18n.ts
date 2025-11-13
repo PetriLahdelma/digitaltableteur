@@ -21,3 +21,9 @@ i18n.use(initReactI18next).init({
 });
 
 export default i18n;
+
+// Export a no-op function for backward compatibility with tests
+export const initI18n = async () => {
+  // No-op since i18n is now initialized synchronously
+  return Promise.resolve();
+};
