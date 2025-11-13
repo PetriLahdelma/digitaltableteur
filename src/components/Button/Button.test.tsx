@@ -61,7 +61,7 @@ describe("Button", () => {
   });
 
   it("renders an icon from a string registry key", () => {
-    render(<Button icon="arrow-clockwise">RefreshStr</Button>);
+    render(<Button icon={<Icon name="arrow-clockwise" />}>RefreshStr</Button>);
     const textSpan = screen.getByText("RefreshStr");
     const iconWrapper = textSpan.previousElementSibling as HTMLElement;
     expect(iconWrapper).toBeTruthy();
