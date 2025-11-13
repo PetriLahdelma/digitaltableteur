@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2025-11-12T10:59:21.320Z",
+  "generatedAt": "2025-11-13T08:47:16.927Z",
   "vitest": {
-    "totalSuites": 104,
-    "passedSuites": 104,
+    "totalSuites": 112,
+    "passedSuites": 112,
     "failedSuites": 0,
-    "totalTests": 419,
-    "passedTests": 419,
+    "totalTests": 487,
+    "passedTests": 487,
     "failedTests": 0,
-    "durationMs": 5442.58203125
+    "durationMs": 5895.026123046875
   },
   "accessibilityPages": {
     "total": 6,
@@ -15,48 +15,48 @@
     "failed": 0
   },
   "accessibilityStories": {
-    "total": 176,
-    "passed": 176,
+    "total": 185,
+    "passed": 185,
     "failed": 0
   },
   "coverage": {
     "summary": {
-      "statements": 60.66,
-      "branches": 74.35,
-      "functions": 63.96,
-      "lines": 60.66
+      "statements": 82.24,
+      "branches": 76.62,
+      "functions": 68.69,
+      "lines": 82.24
     },
     "rawTotals": {
       "statements": {
-        "total": 9288,
-        "covered": 5635,
+        "total": 7361,
+        "covered": 6054,
         "skipped": 0,
-        "pct": 60.66
+        "pct": 82.24
       },
       "branches": {
-        "total": 1166,
-        "covered": 867,
+        "total": 1339,
+        "covered": 1026,
         "skipped": 0,
-        "pct": 74.35
+        "pct": 76.62
       },
       "functions": {
-        "total": 247,
-        "covered": 158,
+        "total": 246,
+        "covered": 169,
         "skipped": 0,
-        "pct": 63.96
+        "pct": 68.69
       },
       "lines": {
-        "total": 9288,
-        "covered": 5635,
+        "total": 7361,
+        "covered": 6054,
         "skipped": 0,
-        "pct": 60.66
+        "pct": 82.24
       }
     },
     "thresholds": {
-      "statements": 55,
-      "branches": 70,
-      "functions": 55,
-      "lines": 55
+      "statements": 65,
+      "branches": 75,
+      "functions": 65,
+      "lines": 65
     }
   },
   "componentAdoption": {
