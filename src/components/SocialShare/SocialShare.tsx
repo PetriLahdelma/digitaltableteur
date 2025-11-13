@@ -1,15 +1,7 @@
 // components/SocialShare.tsx
 import React, { useState, useEffect } from "react";
 import styles from "./SocialShare.module.css";
-import {
-  FaTwitter,
-  FaInstagram,
-  FaFacebook,
-  FaReddit,
-  FaWhatsapp,
-  FaShare,
-} from "react-icons/fa";
-import { MdContentCopy } from "react-icons/md";
+import Icon from "@dt/Icon";
 
 import Button from "@dt/Button";
 import Toast from "../Toast/Toast";
@@ -141,7 +133,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label={t("shareOnInstagram")}
       >
-        <FaInstagram role="img" aria-label="Instagram icon" />
+        <Icon name="instagram-logo" ariaLabel="Instagram" size={24} />
       </a>
       <a
         href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
@@ -149,7 +141,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label={t("shareOnTwitter")}
       >
-        <FaTwitter role="img" aria-label="Twitter icon" />
+        <Icon name="x-logo" ariaLabel="Twitter" size={24} />
       </a>
       <a
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
@@ -157,7 +149,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label={t("shareOnFacebook")}
       >
-        <FaFacebook role="img" aria-label="Facebook icon" />
+        <Icon name="facebook-logo" ariaLabel="Facebook" size={24} />
       </a>
       <a
         href={`https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`}
@@ -165,7 +157,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label={t("shareOnReddit")}
       >
-        <FaReddit role="img" aria-label="Reddit icon" />
+        <Icon name="reddit-logo" ariaLabel="Reddit" size={24} />
       </a>
       <a
         href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
@@ -173,13 +165,13 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         rel="noopener noreferrer"
         aria-label={t("shareOnWhatsapp")}
       >
-        <FaWhatsapp role="img" aria-label="WhatsApp icon" />
+        <Icon name="whatsapp-logo" ariaLabel="Whatsapp" size={24} />
       </a>
       {supportsNativeShare ? (
         <Button
           size={isMobile ? "s" : "l"}
           variant="secondary"
-          icon={<FaShare role="img" aria-label="Share icon" />}
+          icon={<Icon name="share-fat" ariaLabel="Share" size={24} />}
           className={styles.copyButton}
           onClick={handleNativeShare}
           aria-label={t("share")}
@@ -194,7 +186,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         <Button
           size={isMobile ? "s" : "l"}
           variant="secondary"
-          icon={<MdContentCopy role="img" aria-label="Copy link icon" />}
+          icon={<Icon name="copy" ariaLabel="Copy link" size={24} />}
           className={styles.copyButton}
           onClick={handleCopy}
           aria-label={t("copyLinkToClipboard")}

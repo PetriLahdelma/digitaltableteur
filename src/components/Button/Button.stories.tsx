@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa"; // still used for non-string examples if needed
 import Button from "./Button";
+import Icon from "@dt/Icon";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 
@@ -43,11 +43,30 @@ const Template: StoryFn = (args: React.ComponentProps<typeof Button>) => (
   <Button {...args} />
 );
 
+const visuallyHiddenStyle: React.CSSProperties = {
+  position: "absolute",
+  width: 1,
+  height: 1,
+  padding: 0,
+  margin: -1,
+  overflow: "hidden",
+  clip: "rect(0, 0, 0, 0)",
+  whiteSpace: "nowrap",
+  border: 0,
+};
+
+const INVERSE_SWATCHES = [
+  { label: "Primary", color: "var(--color-primary)" },
+  { label: "Accent Pink", color: "var(--accent-pink)" },
+  { label: "Error", color: "var(--color-error)" },
+  { label: "Success", color: "var(--color-success)" },
+] as const;
+
 export const Primary = Template.bind({});
 Primary.args = {
   variant: "primary",
   children: <ButtonStoryLabel tKey="buttonPrimary" />,
-  icon: "", // user can type e.g. IoMdRefresh
+  icon: "",
 };
 Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -212,11 +231,66 @@ export const AllVariants = () => (
   </div>
 );
 
-export const InverseSecondary = Template.bind({});
-InverseSecondary.args = {
-  variant: "secondary",
-  inverse: true,
-  children: <ButtonStoryLabel tKey="buttonSecondary" />,
+export const Inverse = () => {
+  const [surfaceColor, setSurfaceColor] = React.useState<string>(
+    INVERSE_SWATCHES[2].color,
+  );
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "1rem",
+          alignItems: "center",
+          padding: "2rem",
+          backgroundColor: surfaceColor,
+          borderRadius: "var(--radius-md, 0.5rem)",
+          transition: "background-color 0.3s ease",
+        }}
+        className="inverse-demo-bg"
+      >
+        <Button variant="primary" size="l" inverse>
+          Inverse primary
+        </Button>
+        <Button variant="secondary" size="l" inverse>
+          Inverse secondary
+        </Button>
+        <Button variant="tertiary" size="l" inverse>
+          Inverse tertiary
+        </Button>
+      </div>
+      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+        {INVERSE_SWATCHES.map((swatch) => {
+          const isActive = surfaceColor === swatch.color;
+          return (
+            <button
+              key={swatch.color}
+              type="button"
+              aria-label={`Set inverse background to ${swatch.label}`}
+              aria-pressed={isActive}
+              onClick={() => setSurfaceColor(swatch.color)}
+              style={{
+                width: "24px",
+                height: "24px",
+                borderRadius: "var(--radius-sm, 0.25rem)",
+                border: isActive
+                  ? "2px solid var(--color-primary)"
+                  : "1px solid rgba(0, 0, 0, 0.2)",
+                backgroundColor: swatch.color,
+                cursor: "pointer",
+                position: "relative",
+                outline: "none",
+                transition: "transform 0.2s ease, border-color 0.2s ease",
+              }}
+            >
+              <span style={visuallyHiddenStyle}>{swatch.label}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 export const AllSizes = () => (

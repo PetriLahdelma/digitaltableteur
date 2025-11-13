@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { IoMdRefresh } from "react-icons/io";
 import { describe, it, expect, vi } from "vitest";
 import Button from "./Button";
@@ -65,5 +65,42 @@ describe("Button", () => {
     const iconWrapper = textSpan.previousElementSibling as HTMLElement;
     expect(iconWrapper).toBeTruthy();
     expect(iconWrapper.getAttribute("data-button-slot")).toBe("icon");
+  });
+
+  it("syncs primary inverse text color with the nearest background", async () => {
+    render(
+      <div style={{ backgroundColor: "#123456" }}>
+        <Button variant="primary" inverse>
+          Dynamic primary inverse
+        </Button>
+      </div>,
+    );
+    const button = screen.getByRole("button", {
+      name: /dynamic primary inverse/i,
+    });
+    await waitFor(() => {
+      expect(button.style.getPropertyValue("--dt-button-inverse-color")).toBe(
+        "rgb(18, 52, 86)",
+      );
+    });
+  });
+
+  it("preserves caller inline styles when injecting primary inverse color", async () => {
+    render(
+      <div style={{ backgroundColor: "#222222" }}>
+        <Button variant="primary" inverse style={{ opacity: 0.5 }}>
+          Styled primary inverse
+        </Button>
+      </div>,
+    );
+    const button = screen.getByRole("button", {
+      name: /styled primary inverse/i,
+    });
+    await waitFor(() => {
+      expect(button.style.getPropertyValue("--dt-button-inverse-color")).toBe(
+        "rgb(34, 34, 34)",
+      );
+    });
+    expect(button.style.opacity).toBe("0.5");
   });
 });

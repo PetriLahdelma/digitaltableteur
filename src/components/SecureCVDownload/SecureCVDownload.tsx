@@ -3,8 +3,7 @@ import { useTranslation } from "react-i18next";
 import Modal from "@dt/Modal";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
-import { FaCheck } from "react-icons/fa";
-import { FaSpinner } from "react-icons/fa";
+import Icon from "@dt/Icon";
 import styles from "./SecureCVDownload.module.css";
 import { Inputs } from "..";
 import Input from "@dt/Inputs";
@@ -213,12 +212,12 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
             />
             {isValidating && (
               <div className={styles.validationIndicator}>
-                <FaSpinner className={styles.spinner} />
+                <Icon name="spinner" className={styles.spinner} />
               </div>
             )}
             {isValidPassword && !isValidating && (
               <div className={styles.validationIndicator}>
-                <FaCheck className={styles.checkmark} />
+                <Icon name="check" className={styles.checkmark} />
               </div>
             )}
           </div>

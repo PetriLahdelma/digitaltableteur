@@ -1,0 +1,33 @@
+# Ignore build artifacts and dependencies from accessibility scanning
+
+node_modules/
+dist/
+storybook-static/
+build/
+coverage/
+.next/
+.cache/
+
+# Ignore false positives for HTML resource references in meta/link tags
+# These are legitimate resource declarations, not navigation links
+index.html
+
+# Ignore test files that contain URLs as props, not actual links
+**/*.test.tsx
+**/*.stories.tsx
+
+# Ignore minified CSS files in build outputs
+**/*.css
+
+# Ignore minified/bundled files
+
+_.min.js
+_.min.css
+_.bundle.js
+_.chunk.js
+
+# Ignore logs and temporary files
+
+_.log
+.DS_Store
+.env_

@@ -419,3 +419,16 @@ The Sentry summary script runs with project + filter options (unresolved product
 ### Maintenance Requirement
 
 Whenever observability schemas evolve (new fields, renamed properties) update README, `.github/copilot-instructions.md`, and `CLAUDE.md` concurrently. Tests must be added or adjusted to cover new states (e.g., stub detection, additional metadata rendering).
+
+## 🤖 MCP Tooling
+
+Donny’s serverless chat handler automatically loads every MCP server declared in `mcp.json`. In addition to the local TypeScript language server and Sentry helper, the repository now includes the hosted [Context7 MCP server](https://github.com/upstash/context7) so assistant prompts can pull the latest framework/library docs without leaving the conversation.
+
+- `mcp.json` → `"context7"` entry points at `https://mcp.context7.com/mcp` and sends the `Context7-API-Key` header (value resolved from `CONTEXT7_API_KEY`). Leave the env unset for anonymous/low-rate usage.
+- A convenience runner is available for local debugging:  
+  `npm run context7:mcp -- [optional flags]`
+  - Append `--remote-check` to ping the hosted Context7 MCP endpoint. The helper automatically injects the `Context7-API-Key` header using `CONTEXT7_API_KEY`.
+- Set `CONTEXT7_API_KEY` in `.env.local` or your shell profile (the secret lives in Vercel’s project envs) to benefit from higher rate limits and private library access. The script automatically injects the key unless you pass `--api-key` manually.
+- The REST API that powers Context7 lives at `https://context7.com/api/v1`; use that base URL whenever you need to inspect account status or manage keys outside the dashboard.
+
+`api/donny-tools.ts` names each tool as `<server>.<toolName>`, so Context7 capabilities appear under the `context7.*` namespace when connected. This keeps downstream prompts explicit and makes it easy to disable the server by removing the config block if needed.

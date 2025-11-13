@@ -11,9 +11,17 @@ The Donny widget now streams assistant replies with the [Vercel AI SDK](https://
 | `AI_GATEWAY_URL`           | Optional override when routing through a private Gateway deployment.                                                        | `https://ai-gateway.vercel.sh/v1/ai`                                       |
 | `AI_GATEWAY_MODEL`         | Preferred Gateway model identifier (`provider/model`).                                                                      | `openai/gpt-4o-mini`                                                       |
 | `OPENAI_MODEL`             | Legacy shorthand (e.g. `gpt-4o-mini`). Used only when `AI_GATEWAY_MODEL` omits the provider prefix.                         | —                                                                          |
+| `CONTEXT7_API_KEY`         | Optional key that unlocks higher rate limits for the Context7 MCP server and grants access to private documentation sets.   | Leave unset for anonymous (low quota) usage – secret lives in Vercel envs and mirrors the `https://context7.com/api/v1` dashboard key; propagated via the `Context7-API-Key` header |
 
 > Run `vercel env pull .env.local` whenever the secure proxy secrets change so local development keeps using the deployed credentials. MCP servers reuse the same env file via `mcp.json`.
 > CORS automatically trusts private-network dev servers (e.g. `192.168.x.x:5173`, `10.x.x.x`) and `.local` hosts, so you can test on real devices without editing the allowlist. For future adjustments, follow Vercel’s guide on enabling CORS: https://vercel.com/guides/how-to-enable-cors
+
+## MCP servers
+
+- `mcp.json` now defines a `"context7"` HTTP server targeting `https://mcp.context7.com/mcp`. The loader propagates `CONTEXT7_API_KEY` (if present) via the `Context7-API-Key` header so Donny can ask Context7 for up-to-date documentation snippets. The corresponding REST dashboard/API base is `https://context7.com/api/v1`.
+- Local debugging shortcut: `npm run context7:mcp -- --remote-check` performs an initialize handshake against the hosted MCP endpoint using the same header so you can verify connectivity.
+- Local debugging shortcut: `npm run context7:mcp -- [extra flags]`. The helper script spawns `@upstash/context7-mcp` via `npx` and automatically injects the API key unless you already passed `--api-key`.
+- Tool names are namespaced as `context7.<tool>` inside `getDonnyTools`, so prompts can opt into the server explicitly (`use context7`) and we can selectively disable it by removing the config block.
 
 ## Vercel serverless handler (Node runtime)
 

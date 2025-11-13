@@ -1,9 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { IoClose } from "react-icons/io5";
-import { IoMoon, IoSunnySharp } from "react-icons/io5";
-import { MdOutlineContrast } from "react-icons/md";
+import Icon from "@dt/Icon";
 import { type Theme } from "@dt/ThemeProvider";
 import styles from "./MobileMenu.module.css";
 import Title from "@dt/Title";
@@ -18,10 +16,10 @@ type MobileMenuProps = {
 };
 
 const themeIcons: Record<Theme, React.ReactNode> = {
-  light: <IoSunnySharp className={styles.themeButtonIcon} />,
-  dark: <IoMoon className={styles.themeButtonIcon} />,
-  hcb: <MdOutlineContrast className={styles.themeButtonIcon} />,
-  hcw: <MdOutlineContrast className={styles.themeButtonIcon} />,
+  light: <Icon name="sun" className={styles.themeButtonIcon} />,
+  dark: <Icon name="moon" className={styles.themeButtonIcon} />,
+  hcb: <Icon name="circle" className={styles.themeButtonIcon} />,
+  hcw: <Icon name="circle" className={styles.themeButtonIcon} />,
 };
 
 const setCookie = (name: string, value: string, days = 365) => {
@@ -113,7 +111,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               onClick={onClose}
               aria-label={t("navMenuClose", "Close navigation")}
             >
-              <IoClose size="1.25rem" />
+              <Icon name="X" size={20} />
             </button>
           </header>
           <nav aria-label={t("navMenuLinks", "Primary pages")}>
