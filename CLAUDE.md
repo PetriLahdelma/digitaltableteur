@@ -199,6 +199,14 @@ Usage Notes:
 
 Next Steps:
 
+### Context7 MCP Integration (Nov 2025)
+
+- `mcp.json` now declares a `context7` HTTP server pointing at `https://mcp.context7.com/mcp`. The configuration forwards the `CONTEXT7_API_KEY` environment variable via the `Context7-API-Key` header so we can keep keys in `.env.local` / CI secrets instead of checking them into the repo. Leaving the variable empty still works (anonymous mode) but enforces stricter rate limits. The REST/dashboard surface Context7 exposes lives at `https://context7.com/api/v1`, so that’s the base URL to poke when you need to inspect quotas or rotate keys.
+- `npm run context7:mcp -- --remote-check` hits the hosted MCP endpoint (using the same header) to verify connectivity; without the flag the helper still launches the local stdio server via `@upstash/context7-mcp`.
+- Donny’s tool loader automatically namespaces remote tools as `context7.<toolName>`, making it obvious when an answer is powered by Context7’s up-to-date documentation. Disable it by removing the config block or unsetting the env var.
+- Local debugging shortcut: `npm run context7:mcp -- [extra flags]`. The wrapper spawns `@upstash/context7-mcp` via `npx`, injects `CONTEXT7_API_KEY` unless you already passed `--api-key`, and streams logs directly to your terminal.
+- Document the requirement for `CONTEXT7_API_KEY` anywhere environment variables are listed (README, copilot-instructions, donny-chat docs) so future contributors know how to opt in.
+
 - Expose stub indicator in `SentrySummaryCard` header (optional badge).
 - Add unit test for stub scenario (pending).
 

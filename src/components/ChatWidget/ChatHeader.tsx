@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
-import { FaChevronDown } from "react-icons/fa";
-import { IoMdRefresh } from "react-icons/io";
+import Icon from "@dt/Icon";
 import Button from "@dt/Button";
 import styles from "./ChatWidget.module.css";
 import { useTranslation } from "react-i18next";
@@ -101,7 +100,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           aria-label={resetAriaLabel}
           variant="tertiary"
           size="m"
-          icon={<IoMdRefresh />}
+          icon={<Icon name="arrows-clockwise" />}
           className={styles.resetButton}
         >
           <span className={styles.resetLabel}>{resetLabel}</span>
@@ -112,7 +111,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           aria-label={minimizeAriaLabel}
           variant="tertiary"
           size="m"
-          icon={<FaChevronDown />}
+          icon={<Icon name="caret-down" />}
           className={styles.minimizeButton}
         />
       </div>

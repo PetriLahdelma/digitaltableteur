@@ -1,0 +1,36 @@
+{
+  "folders": [
+    {
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/storybook-static": true,
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/coverage": true,
+      "**/*.log": true,
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/storybook-static": true,
+      "**/.git": true,
+      "**/coverage": true,
+      "**/*.min.js": true,
+      "**/*.bundle.js": true,
+    },
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-typescript-next",
+      "bradlc.vscode-tailwindcss",
+      "storybook.storybook-vscode",
+    ],
+    "unwantedRecommendations": [],
+  },
+}

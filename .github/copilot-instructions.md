@@ -61,6 +61,7 @@ npm run generate-alt-text.js  # Generate alt text for images
 npm run generate-llms-txt.js  # Generate alt text using LLM
 npm run generate-sitemap  # Generate sitemap.xml
 npm run genrate-visual-report  # Generate visual regression report
+npm run context7:mcp  # Launch the Context7 MCP server locally (respects CONTEXT7_API_KEY); add --remote-check to ping https://mcp.context7.com/mcp
 npm run lint         # Lint codebase
 npm run format       # Format codebase with Prettier
 npm run eslint-fix   # Auto-fix linting issues
@@ -132,6 +133,7 @@ npm run eslint-fix   # Auto-fix linting issues
 - `VITE_GA_ID` - Google Analytics tracking
 - `FIGMA_TOKEN` - Design asset synchronization
 - `EMAILJS_*` - Contact form integration
+- `CONTEXT7_API_KEY` - Optional; unlocks higher rate limits for the Context7 MCP runner (managed in Vercel envs, mirrors the `https://context7.com/api/v1` dashboard key and is sent via the `Context7-API-Key` header)
 
 ### Production Only
 

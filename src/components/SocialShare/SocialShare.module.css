@@ -10,7 +10,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-background-color);
   text-decoration: none;
   color: var(--primary-text-color);
 }

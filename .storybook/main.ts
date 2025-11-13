@@ -26,6 +26,25 @@ const config: StorybookConfig = {
       "@dt": resolve(__dirname, "../src/components"),
     };
 
+    // Ensure HMR is enabled and configured properly
+    config.server = {
+      ...config.server,
+      hmr: {
+        overlay: true,
+      },
+      watch: {
+        // Ensure file watching works properly
+        usePolling: false,
+        interval: 100,
+      },
+    };
+
+    // Add esbuild options to help with HMR
+    config.esbuild = {
+      ...config.esbuild,
+      jsxDev: true,
+    };
+
     // Set base for production builds under /storybook/
     if (process.env.NODE_ENV === "production") {
       config.base = "/storybook/";

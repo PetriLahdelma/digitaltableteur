@@ -1,20 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import {
-  FaPalette,
-  FaChartLine,
-  FaPen,
-  FaGithub,
-  FaExternalLinkAlt,
-  FaStar,
-  FaUser,
-  FaCalendar,
-  FaHeart,
-  FaEye,
-  FaBug,
-  FaCheck,
-  FaExclamationTriangle,
-} from "react-icons/fa";
+import Icon from "@dt/Icon";
 
 export default {
   title: "DesignSystem/Card",
@@ -82,7 +68,7 @@ export const Playground = {
     title: "Card Playground",
     subTitle: "Interactive testing",
     body: "Use the controls panel to explore different Card configurations and features.",
-    icon: <FaPalette />,
+    icon: <Icon name="Palette" />,
     iconProps: { position: "start", size: "md" },
     badge: "Demo",
     badgeProps: { state: "info", position: "end" },
@@ -119,7 +105,7 @@ export const Loading = {
 export const WithIconStart = {
   args: {
     title: "Creative Development",
-    icon: <FaPalette />,
+    icon: <Icon name="Palette" />,
     iconProps: { position: "start", size: "md" },
     body: "Digital experiences that combine aesthetic excellence with functional innovation.",
     variant: "elevated",
@@ -130,7 +116,7 @@ export const WithIconStart = {
 export const WithIconEnd = {
   args: {
     title: "External Link",
-    icon: <FaExternalLinkAlt />,
+    icon: <Icon name="ArrowSquareOut" />,
     iconProps: { position: "end", size: "sm" },
     body: "Card with trailing icon to indicate external navigation.",
     variant: "outlined",
@@ -140,7 +126,7 @@ export const WithIconEnd = {
 export const WithIconTop = {
   args: {
     title: "Strategy & Analytics",
-    icon: <FaChartLine />,
+    icon: <Icon name="ChartLine" />,
     iconProps: { position: "top", size: "lg" },
     body: "Strategic thinking meets data visualization to create meaningful insights.",
     variant: "filled",
@@ -199,7 +185,7 @@ export const WithActions = {
     return (
       <Card
         title="Document Editor"
-        icon={<FaPen />}
+        icon={<Icon name="PenNib" />}
         iconProps={{ position: "start" }}
         body="Card with multiple footer actions for user interactions."
         actions={actions}
@@ -212,7 +198,7 @@ export const WithActions = {
 export const Interactive = {
   args: {
     title: "Interactive Card",
-    icon: <FaGithub />,
+    icon: <Icon name="GithubLogo" />,
     iconProps: { position: "start" },
     subTitle: "Clickable surface",
     description:
@@ -228,7 +214,7 @@ export const Interactive = {
 export const AsLink = {
   args: {
     title: "Portfolio Project",
-    icon: <FaExternalLinkAlt />,
+    icon: <Icon name="ArrowSquareOut" />,
     iconProps: { position: "end", size: "sm" },
     body: "This entire card functions as a clickable link while maintaining semantic structure.",
     link: "https://example.com",
@@ -242,7 +228,7 @@ export const AsLink = {
 export const SmallSize = {
   args: {
     title: "Compact Card",
-    icon: <FaStar />,
+    icon: <Icon name="Star" />,
     iconProps: { position: "start", size: "sm" },
     body: "Reduced padding for dense layouts.",
     size: "S",
@@ -254,7 +240,7 @@ export const LargeSize = {
   args: {
     title: "Spacious Card",
     titleProps: { size: "XL" },
-    icon: <FaHeart />,
+    icon: <Icon name="Heart" />,
     iconProps: { position: "top", size: "lg" },
     body: "Generous spacing for prominent content areas.",
     bodyProps: { size: "L" },
@@ -270,7 +256,7 @@ export const ProfileCard = {
     title: "Sarah Johnson",
     titleProps: { size: "L" },
     subTitle: "Senior Designer",
-    icon: <FaUser />,
+    icon: <Icon name="User" />,
     iconProps: { position: "start" },
     cover: (
       <div
@@ -294,7 +280,7 @@ export const MetricCard = {
     bodyProps: { size: "L" },
     description: "↗ 23% from last week",
     descriptionProps: { size: "S" },
-    icon: <FaEye />,
+    icon: <Icon name="Eye" />,
     iconProps: { position: "end", size: "sm" },
     variant: "outlined",
     size: "S",
@@ -306,7 +292,7 @@ export const EventCard = {
     title: "Design System Workshop",
     titleProps: { size: "L" },
     subTitle: "Online Event",
-    icon: <FaCalendar />,
+    icon: <Icon name="Calendar" />,
     iconProps: { position: "start" },
     body: "Join us for an interactive session on building scalable design systems with modern tools and methodologies.",
     variant: "filled",
@@ -333,7 +319,7 @@ const TabbedStoryComponent = () => {
   return (
     <Card
       title="Tabbed Interface"
-      icon={<FaGithub />}
+      icon={<Icon name="GithubLogo" />}
       iconProps={{ position: "start" }}
       tabs={tabs}
       activeTabKey={active}
@@ -356,7 +342,7 @@ export const ProjectCard = {
   args: {
     title: "Digital Portfolio",
     titleProps: { size: "L" },
-    icon: <FaPalette />,
+    icon: <Icon name="Palette" />,
     iconProps: { position: "start" },
     cover: (
       <img
@@ -377,7 +363,7 @@ export const ServiceHighlight = {
   args: {
     title: "Creative Development",
     titleProps: { size: "L" },
-    icon: <FaPalette />,
+    icon: <Icon name="Palette" />,
     iconProps: { position: "top", size: "lg" },
     description:
       "Building digital experiences that combine aesthetic excellence with functional innovation.",
@@ -404,7 +390,7 @@ export const WithBadgeStart = {
     title: "Critical Issue",
     badge: "3",
     badgeProps: { state: "error", position: "start", size: "s" },
-    icon: <FaBug />,
+    icon: <Icon name="BugBeetle" />,
     iconProps: { position: "end", size: "sm" },
     body: "Badge positioned at the start of the header with an icon at the end.",
     variant: "elevated",
@@ -414,7 +400,7 @@ export const WithBadgeStart = {
 export const WithCustomBadge = {
   args: {
     title: "Premium Service",
-    badge: <FaStar style={{ color: "var(--color-warning, #fbbf24)" }} />,
+    badge: <Icon name="star" color="gold" />,
     body: "Custom React element as badge content.",
     variant: "filled",
   },
@@ -424,7 +410,7 @@ export const WithCustomBadge = {
 export const WithSuccessMessage = {
   args: {
     title: "Form Submitted",
-    icon: <FaCheck />,
+    icon: <Icon name="Check" />,
     iconProps: { position: "start", size: "md" },
     statusMessage: "Your information has been successfully saved.",
     statusMessageProps: { state: "success" },
@@ -436,7 +422,7 @@ export const WithSuccessMessage = {
 export const WithErrorMessage = {
   args: {
     title: "Validation Error",
-    icon: <FaExclamationTriangle />,
+    icon: <Icon name="Warning" />,
     iconProps: { position: "start", size: "md" },
     statusMessage: "Please check the required fields and try again.",
     statusMessageProps: { state: "error" },
@@ -472,7 +458,7 @@ export const SizeMedium = {
   args: {
     title: "Medium Card",
     size: "M",
-    icon: <FaUser />,
+    icon: <Icon name="User" />,
     iconProps: { position: "start" },
     body: "Medium card with 480px max-width for balanced content.",
     variant: "elevated",
@@ -483,7 +469,7 @@ export const SizeLarge = {
   args: {
     title: "Large Card",
     size: "L",
-    icon: <FaChartLine />,
+    icon: <Icon name="ChartLine" />,
     iconProps: { position: "top", size: "lg" },
     body: "Large card with 600px max-width for detailed content and generous spacing.",
     variant: "filled",
@@ -507,7 +493,7 @@ export const ComplexExample = {
   args: {
     title: "Feature Request",
     titleProps: { size: "L" },
-    icon: <FaPalette />,
+    icon: <Icon name="Palette" />,
     iconProps: { position: "start", size: "md" },
     badge: "High Priority",
     badgeProps: { state: "warning", position: "end" },

@@ -102,7 +102,7 @@
 
 .chatTextArea:focus {
   border-color: var(--color-primary, #0f62fe);
-  outline: none;
+  outline: 2px solid transparent; /* Transparent outline for high contrast mode */
   box-shadow: 0 0 0 4px rgb(15 98 254 / 15%);
 }
 

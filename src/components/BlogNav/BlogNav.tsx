@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@dt/Button";
-import { MdArrowBack, MdArrowForward, MdDescription } from "react-icons/md";
+import Icon from "@dt/Icon";
 import styles from "./blognav.module.css";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -36,7 +36,7 @@ const BlogNav: React.FC = () => {
         <Button
           variant="tertiary"
           size="m"
-          icon={<MdDescription />}
+          icon={<Icon name="Article" />}
           onClick={() => navigate("/blog")}
         >
           {t("blogNavBackToArticles")}
@@ -45,7 +45,7 @@ const BlogNav: React.FC = () => {
           <Button
             variant="tertiary"
             size="m"
-            icon={<MdArrowBack />}
+            icon={<Icon name="ArrowLeft" />}
             disabled={currentIndex <= 0}
             onClick={() => {
               if (currentIndex > 0) navigate(blogPages[currentIndex - 1].path);
@@ -56,7 +56,7 @@ const BlogNav: React.FC = () => {
           <Button
             variant="tertiary"
             size="m"
-            endIcon={<MdArrowForward />}
+            endIcon={<Icon name="ArrowRight" />}
             disabled={currentIndex === blogPages.length - 1}
             onClick={() => {
               if (currentIndex < blogPages.length - 1)

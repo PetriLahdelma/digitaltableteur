@@ -1,6 +1,5 @@
 import { spawn } from "child_process";
 import fs from "fs";
-import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -13,6 +12,9 @@ const designSystemPath = path.join(
   "docs",
   "design-system-report.json",
 );
+const coverageDir = path.join(projectRoot, "coverage");
+const vitestReportPath = path.join(coverageDir, "vitest-report.json");
+const coverageSummaryPath = path.join(coverageDir, "coverage-summary.json");
 
 const runCommand = (command, args, options = {}) =>
   new Promise((resolve, reject) => {
@@ -59,20 +61,100 @@ const loadPreviousMetrics = () => {
   return null;
 };
 
-const generateMetrics = async () => {
-  const tempFile = path.join(os.tmpdir(), `vitest-report-${Date.now()}.json`);
+const ensureCoverageArtifacts = async () => {
+  const hasReport = fs.existsSync(vitestReportPath);
+  const hasSummary = fs.existsSync(coverageSummaryPath);
+  if (hasReport && hasSummary) {
+    return;
+  }
 
+  console.log(
+    "[metrics] Coverage artifacts missing; running Vitest with coverage...",
+  );
+  fs.mkdirSync(coverageDir, { recursive: true });
   await runCommand("npx", [
     "vitest",
     "run",
     "--config",
     "vitest.config.mts",
+    "--coverage",
     "--reporter=json",
-    `--outputFile=${tempFile}`,
+    `--outputFile=${vitestReportPath}`,
   ]);
+};
 
-  const report = JSON.parse(fs.readFileSync(tempFile, "utf8"));
-  fs.rmSync(tempFile, { force: true });
+const readCoverageSummary = () => {
+  if (!fs.existsSync(coverageSummaryPath)) {
+    throw new Error(
+      `Coverage summary not found at ${coverageSummaryPath}. Did you run Vitest with coverage?`,
+    );
+  }
+  return JSON.parse(fs.readFileSync(coverageSummaryPath, "utf8"));
+};
+
+const resolveCoverageThresholds = () => {
+  const defaults = {
+    statements: 80,
+    branches: 80,
+    functions: 80,
+    lines: 80,
+  };
+  return Object.fromEntries(
+    Object.entries(defaults).map(([metric, value]) => {
+      const envKey = `COVERAGE_THRESHOLD_${metric.toUpperCase()}`;
+      return [metric, parseNumber(process.env[envKey]) ?? value];
+    }),
+  );
+};
+
+const validateCoverage = (summary, thresholds) => {
+  const totals = summary.total ?? {};
+  const coveragePercentages = {
+    statements: totals.statements?.pct ?? 0,
+    branches: totals.branches?.pct ?? 0,
+    functions: totals.functions?.pct ?? 0,
+    lines: totals.lines?.pct ?? 0,
+  };
+
+  const violations = Object.entries(thresholds)
+    .map(([metric, required]) => ({
+      metric,
+      required,
+      actual: coveragePercentages[metric] ?? 0,
+    }))
+    .filter(({ actual, required }) => actual < required);
+
+  if (violations.length > 0) {
+    const message = violations
+      .map(
+        ({ metric, actual, required }) =>
+          `${metric}: ${actual.toFixed(2)}% < required ${required}%`,
+      )
+      .join("; ");
+    throw new Error(
+      `Coverage below required thresholds. Please add or update tests. Details: ${message}`,
+    );
+  }
+
+  return coveragePercentages;
+};
+
+const generateMetrics = async () => {
+  await ensureCoverageArtifacts();
+
+  if (!fs.existsSync(vitestReportPath)) {
+    throw new Error(
+      `Vitest JSON report not found at ${vitestReportPath}. Coverage run likely failed.`,
+    );
+  }
+
+  const report = JSON.parse(fs.readFileSync(vitestReportPath, "utf8"));
+  const coverageSummary = readCoverageSummary();
+  const coverageThresholds = resolveCoverageThresholds();
+  const coveragePercentages = validateCoverage(
+    coverageSummary,
+    coverageThresholds,
+  );
 
   const vitestSummary = {
     totalSuites: report.numTotalTestSuites ?? 0,
@@ -226,6 +308,16 @@ const generateMetrics = async () => {
     vitest: vitestSummary,
     accessibilityPages,
     accessibilityStories,
+    coverage: {
+      summary: coveragePercentages,
+      rawTotals: {
+        statements: coverageSummary.total?.statements ?? null,
+        branches: coverageSummary.total?.branches ?? null,
+        functions: coverageSummary.total?.functions ?? null,
+        lines: coverageSummary.total?.lines ?? null,
+      },
+      thresholds: coverageThresholds,
+    },
     componentAdoption: {
       currentRate: adoptionRate,
       targetRate: adoptionTarget,

@@ -3,7 +3,7 @@ import styles from "./OpenHours.module.css";
 import { WEEKLY_HOURS, isOpenAt } from "../../data/openHours";
 import { useTranslation } from "react-i18next";
 import Badge from "@dt/Badge";
-import { FaRegCalendarTimes, FaRegCalendarCheck } from "react-icons/fa";
+import Icon from "@dt/Icon";
 
 export interface OpenHoursProps {
   compact?: boolean;
@@ -37,7 +37,9 @@ const OpenHours: React.FC<OpenHoursProps> = ({
           size="s"
           className={styles.badge}
           aria-live="polite"
-          icon={open ? <FaRegCalendarCheck /> : <FaRegCalendarTimes />}
+          icon={
+            open ? <Icon name="calendar-check" /> : <Icon name="calendar-x" />
+          }
         >
           {open
             ? t("openHours.openNow", "Open now")

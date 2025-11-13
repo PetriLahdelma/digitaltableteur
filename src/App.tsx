@@ -4,6 +4,7 @@ import Layout from "@dt/Layout";
 import CookieConsent from "@dt/CookieConsent";
 import ChunkErrorBoundary from "@dt/ChunkErrorBoundary";
 import { useTranslation } from "react-i18next";
+import i18n from "./i18n"; // Import i18n instance directly
 import { BusyIndicator, AppLoading } from "./components";
 
 const Home = React.lazy(() => import("./pages/Home"));
@@ -43,16 +44,20 @@ const CookiePolicyFullSV = React.lazy(
 );
 
 function App() {
-  const { i18n } = useTranslation();
+  useTranslation(); // Keep this for React component updates
   useEffect(() => {
     const storedLang =
       localStorage.getItem("lang") ||
       (typeof window !== "undefined" &&
         document.cookie.match(/i18next=([a-zA-Z-]+)/)?.[1]);
-    if (storedLang && i18n.language !== storedLang) {
+    if (
+      storedLang &&
+      i18n.language !== storedLang &&
+      typeof i18n.changeLanguage === "function"
+    ) {
       i18n.changeLanguage(storedLang);
     }
-  }, [i18n]);
+  }, []);
 
   return (
     <ChunkErrorBoundary>

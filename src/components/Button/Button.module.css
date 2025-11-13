@@ -14,6 +14,7 @@
   transition:
     background-color 0.3s,
     color 0.3s;
+  text-decoration: none;
 }
 
 .button.primary {
@@ -36,7 +37,7 @@
 
 .button.primary.inverse {
   background-color: var(--color-white);
-  color: var(--color-primary);
+  color: var(--dt-button-inverse-color, var(--color-primary));
 }
 
 .button.secondary.inverse {
@@ -95,7 +96,7 @@
 
 .icon {
   display: inline-flex;
-  margin-inline-end: 0.5rem;
+  margin-inline-end: 0;
   justify-content: center;
   align-items: center;
   vertical-align: middle;

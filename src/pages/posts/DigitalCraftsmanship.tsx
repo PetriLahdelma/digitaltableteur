@@ -59,7 +59,7 @@ const DigitalCraftsmanship = () => {
         <img
           src={Pizza}
           width="100%"
-          alt="A delicious pizza topped with cheese, pepperoni, and colorful vegetables."
+          alt="A delicious pizza topped with cheese, pepperoni, and fresh herbs."
           className={styles.image}
         />
         <p>

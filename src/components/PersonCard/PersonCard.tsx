@@ -3,16 +3,7 @@ import styles from "./PersonCard.module.css";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Link from "@dt/Link";
-import {
-  FaLinkedin,
-  FaGithub,
-  FaFacebook,
-  FaTwitter,
-  FaDribbble,
-  FaMedium,
-  FaInstagram,
-} from "react-icons/fa";
-import { SiSubstack } from "react-icons/si";
+import Icon from "@dt/Icon";
 import { useTranslation } from "react-i18next";
 
 export interface PersonCardProps {
@@ -116,7 +107,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={linkedinLabel || t("contactLinkedInLabel")}
               title={linkedinLabel || t("contactLinkedInLabel")}
             >
-              <FaLinkedin aria-hidden="true" />
+              <Icon name="LinkedinLogo" size="md" aria-hidden="true" />
             </Link>
           )}
           {githubUrl && (
@@ -129,7 +120,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={githubLabel || t("contactGitHubLabel")}
               title={githubLabel || t("contactGitHubLabel")}
             >
-              <FaGithub aria-hidden="true" />
+              <Icon name="GithubLogo" size="md" aria-hidden="true" />
             </Link>
           )}
           {facebookUrl && (
@@ -142,7 +133,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={facebookLabel || t("contactFacebookLabel")}
               title={facebookLabel || t("contactFacebookLabel")}
             >
-              <FaFacebook aria-hidden="true" />
+              <Icon name="FacebookLogo" size="md" aria-hidden="true" />
             </Link>
           )}
           {twitterUrl && (
@@ -155,7 +146,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={twitterLabel || t("contactTwitterLabel")}
               title={twitterLabel || t("contactTwitterLabel")}
             >
-              <FaTwitter aria-hidden="true" />
+              <Icon name="Bird" size="md" aria-hidden="true" />
             </Link>
           )}
           {dribbbleUrl && (
@@ -168,7 +159,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={dribbbleLabel || t("contactDribbbleLabel")}
               title={dribbbleLabel || t("contactDribbbleLabel")}
             >
-              <FaDribbble aria-hidden="true" />
+              <Icon name="DribbbleLogo" size="md" aria-hidden="true" />
             </Link>
           )}
           {mediumUrl && (
@@ -181,7 +172,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={mediumLabel || t("contactMediumLabel")}
               title={mediumLabel || t("contactMediumLabel")}
             >
-              <FaMedium aria-hidden="true" />
+              <Icon name="MediumLogo" size="md" aria-hidden="true" />
             </Link>
           )}
           {instagramUrl && (
@@ -194,7 +185,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={instagramLabel || t("contactInstagramLabel")}
               title={instagramLabel || t("contactInstagramLabel")}
             >
-              <FaInstagram aria-hidden="true" />
+              <Icon name="InstagramLogo" size="md" aria-hidden="true" />
             </Link>
           )}
           {substackUrl && (
@@ -207,7 +198,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={substackLabel || t("contactSubstackLabel")}
               title={substackLabel || t("contactSubstackLabel")}
             >
-              <SiSubstack aria-hidden="true" />
+              <Icon name="BookmarkSimple" size="md" aria-hidden="true" />
             </Link>
           )}
         </div>

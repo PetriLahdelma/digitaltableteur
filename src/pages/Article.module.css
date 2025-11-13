@@ -128,7 +128,6 @@ div.authorContainer {
   display: flex;
   padding: 1rem;
   inline-size: 100%;
-  outline: 2px solid var(--color-primary);
   background-color: var(--color-light-bg);
   text-decoration: none;
   color: inherit;
@@ -142,7 +141,7 @@ div.authorContainer {
 }
 
 .similarCard:focus {
-  outline: 3px solid var(--color-primary);
+  outline: 2px solid var(--color-primary);
 }
 
 caption {
