@@ -67,7 +67,7 @@ const AiUsage = () => {
         </Helmet>
       </HelmetProvider>
       <div className={styles.policyPage}>
-                <div
+        <div
           style={{
             marginBottom: 24,
             display: "flex",

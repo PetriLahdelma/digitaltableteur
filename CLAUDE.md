@@ -159,9 +159,10 @@ Recent minor/patch updates applied:
 - Storybook core packages moved from 10.0.2 → 10.0.5 (docs + a11y improvements).
 - @typescript-eslint parser & plugin updated (8.33.x → 8.46.x) for enhanced lint rule parity.
 
-All 312 tests pass post-update; translation and a11y coverage unchanged. 
+All 312 tests pass post-update; translation and a11y coverage unchanged.
 
 **Nov 2025 Dependency Cleanup:**
+
 - Removed unused `react-stack-grid` dependency to eliminate React 16 peer dependency warnings
 - Updated Node.js engine constraint from `>=20.19.0 <21` to `>=20.19.0` to support modern Node.js versions (22.x) in Vercel deployments
 - Clean dependency tree without legacy React version conflicts
