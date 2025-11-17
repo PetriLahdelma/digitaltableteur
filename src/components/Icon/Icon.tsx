@@ -25,9 +25,9 @@ export type IconProps = Omit<React.HTMLAttributes<HTMLElement>, "color"> & {
    */
   weight?: IconWeight;
   /**
-   * Legacy style prop kept for backward compatibility.
+   * Legacy FontAwesome-style weight string kept for backward compatibility.
    */
-  style?: LegacyStyle;
+  legacyStyle?: LegacyStyle;
   size?: NamedSize | number;
   color?: string;
   rotate?: 0 | 90 | 180 | 270;
@@ -125,7 +125,7 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
     {
       name,
       weight,
-      style,
+      legacyStyle,
       size = "md",
       color,
       rotate,
@@ -136,6 +136,7 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
       ariaLabel,
       decorative = !ariaLabel,
       className,
+      style,
       ...rest
     },
     ref,
@@ -147,8 +148,8 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
 
     const resolvedWeight =
       weight ??
-      (style && style in LEGACY_STYLE_TO_WEIGHT
-        ? LEGACY_STYLE_TO_WEIGHT[style as LegacyStyle]
+      (legacyStyle && legacyStyle in LEGACY_STYLE_TO_WEIGHT
+        ? LEGACY_STYLE_TO_WEIGHT[legacyStyle as LegacyStyle]
         : undefined) ??
       "regular";
     const resolvedSize =
@@ -165,9 +166,15 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
       transforms.push("scaleY(-1)");
     }
 
-    const styleOverrides: React.CSSProperties = {
-      transform: transforms.length ? transforms.join(" ") : undefined,
-    };
+    const transformValue =
+      transforms.length > 0 ? transforms.join(" ") : undefined;
+    const mergedStyle =
+      transformValue || style
+        ? {
+            ...style,
+            ...(transformValue ? { transform: transformValue } : {}),
+          }
+        : undefined;
 
     const animationClass = spin
       ? styles.spin
@@ -183,7 +190,7 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
       <span
         ref={ref}
         className={mergedClassName}
-        style={styleOverrides}
+        style={mergedStyle}
         aria-hidden={decorative && !ariaLabel ? true : undefined}
         aria-label={ariaLabel}
         role={!decorative && ariaLabel ? "img" : undefined}

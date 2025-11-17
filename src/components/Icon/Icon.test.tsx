@@ -13,7 +13,14 @@ describe("Icon", () => {
   });
 
   it("maps legacy style and named size to expected dimensions", () => {
-    render(<Icon name="github" style="brands" size="2xl" ariaLabel="GitHub" />);
+    render(
+      <Icon
+        name="github"
+        legacyStyle="brands"
+        size="2xl"
+        ariaLabel="GitHub"
+      />,
+    );
     const icon = screen.getByRole("img", { name: "GitHub" });
     const svg = icon.querySelector("svg");
     expect(svg?.getAttribute("width")).toBe("64");
@@ -52,6 +59,20 @@ describe("Icon", () => {
     expect(wrapper.getAttribute("style")).toContain("rotate(90deg)");
     expect(wrapper.getAttribute("style")).toContain("scaleX(-1)");
     expect(wrapper.className).toContain(styles.spin);
+  });
+
+  it("forwards inline style prop while preserving transforms", () => {
+    const { container } = render(
+      <Icon
+        name="arrow-right"
+        rotate={90}
+        ariaLabel="Arrow"
+        style={{ marginTop: "4px" }}
+      />,
+    );
+    const wrapper = container.querySelector("span")!;
+    expect(wrapper.style.marginTop).toBe("4px");
+    expect(wrapper.getAttribute("style")).toContain("rotate(90deg)");
   });
 
   it("applies pulse animation", () => {
