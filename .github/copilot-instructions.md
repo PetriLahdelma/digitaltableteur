@@ -62,6 +62,8 @@ npm run generate-llms-txt.js  # Generate alt text using LLM
 npm run generate-sitemap  # Generate sitemap.xml
 npm run genrate-visual-report  # Generate visual regression report
 npm run context7:mcp  # Launch the Context7 MCP server locally (respects CONTEXT7_API_KEY); add --remote-check to ping https://mcp.context7.com/mcp
+npm run github:mcp:test  # Test GitHub MCP server configuration and connectivity
+npm run figma:mcp:test   # Test Figma MCP server configuration and connectivity
 npm run lint         # Lint codebase
 npm run format       # Format codebase with Prettier
 npm run eslint-fix   # Auto-fix linting issues
@@ -131,9 +133,10 @@ npm run eslint-fix   # Auto-fix linting issues
 ### Required for Development
 
 - `VITE_GA_ID` - Google Analytics tracking
-- `FIGMA_TOKEN` - Design asset synchronization
+- `FIGMA_TOKEN` - Required for Figma MCP server; Figma Personal Access Token for design file access and analysis
 - `EMAILJS_*` - Contact form integration
 - `CONTEXT7_API_KEY` - Optional; unlocks higher rate limits for the Context7 MCP runner (managed in Vercel envs, mirrors the `https://context7.com/api/v1` dashboard key and is sent via the `Context7-API-Key` header)
+- `GITHUB_MCP_PAT` - Required for GitHub MCP server; GitHub Personal Access Token for repository and API access
 
 ### Production Only
 
@@ -630,6 +633,47 @@ Future enhancements should follow the progressive enhancement pattern:
 Keep this section synchronized with `README.md` and `CLAUDE.md` whenever native share functionality evolves.
 
 ## MCP & Observability Automation (Nov 2025)
+
+### GitHub MCP Server
+
+- Configuration: `mcp.json` → `"github"` entry points at `https://api.githubcopilot.com/mcp/`
+- Authentication: Uses `GITHUB_MCP_PAT` environment variable for Personal Access Token
+- Script: `scripts/test-github-mcp.mjs` tests connectivity, configuration, and authentication
+- Command: `npm run github:mcp:test`
+- Documentation: `docs/GITHUB_MCP_SETUP.md` and `docs/VERCEL_GITHUB_MCP_SETUP.md`
+
+**Environment Setup:**
+- Local: `.env.local` contains `GITHUB_MCP_PAT=github_pat_...`
+- Production: Vercel environment variable `GITHUB_MCP_PAT`
+- Testing: Script automatically loads dotenv for local testing
+
+**Available Capabilities:**
+- Repository operations and file management
+- Issue and pull request management
+- GitHub Actions workflow monitoring
+- Code security analysis and Dependabot alerts
+- Organization and team management
+
+### Figma MCP Server
+
+- Configuration: `mcp.json` → `"figma-developer-mcp"` entry runs as SSE server at `http://localhost:3333/sse`
+- Authentication: Uses `FIGMA_TOKEN` environment variable for Personal Access Token
+- Script: `scripts/test-figma-mcp.mjs` tests connectivity, configuration, and authentication
+- Command: `npm run figma:mcp:test`
+- Documentation: `docs/FIGMA_MCP_SETUP.md`
+- Package: `figma-developer-mcp` - Start server with `npx figma-developer-mcp`
+
+**Environment Setup:**
+- Local: `.env.local` contains `FIGMA_TOKEN=figd_...`
+- Production: Vercel environment variable `FIGMA_TOKEN`
+- Testing: Script automatically loads dotenv for local testing
+
+**Available Capabilities:**
+- Design file analysis and component extraction
+- Asset downloading and design token extraction
+- Design system documentation and consistency checking
+- Design-to-code generation and implementation guidance
+- Collaborative design workflow integration
 
 ### TypeScript MCP Status
 

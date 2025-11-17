@@ -4,7 +4,7 @@
       "type": "sse",
       "url": "http://localhost:3333/sse",
       "env": {
-        "FIGMA_API_KEY": "<YOUR_FIGMA_API_KEY>"
+        "FIGMA_TOKEN": "<YOUR_FIGMA_TOKEN>"
       }
     },
     "ts-language-server": {
@@ -34,6 +34,24 @@
       "headers": {
         "Context7-API-Key": "{{CONTEXT7_API_KEY}}"
       }
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer {{GITHUB_MCP_PAT}}"
+      },
+      "env": {
+        "GITHUB_MCP_PAT": "<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>"
+      }
     }
-  }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "GITHUB_MCP_PAT",
+      "description": "GitHub Personal Access Token for MCP",
+      "password": true
+    }
+  ]
 }
