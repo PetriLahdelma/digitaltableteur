@@ -432,3 +432,43 @@ Donny’s serverless chat handler automatically loads every MCP server declared 
 - The REST API that powers Context7 lives at `https://context7.com/api/v1`; use that base URL whenever you need to inspect account status or manage keys outside the dashboard.
 
 `api/donny-tools.ts` names each tool as `<server>.<toolName>`, so Context7 capabilities appear under the `context7.*` namespace when connected. This keeps downstream prompts explicit and makes it easy to disable the server by removing the config block if needed.
+
+### GitHub MCP Server
+
+The [official GitHub MCP Server](https://github.com/github/github-mcp-server) provides AI tools with direct access to GitHub's platform capabilities.
+
+- `mcp.json` → `"github"` entry points at `https://api.githubcopilot.com/mcp/` and sends the `Authorization: Bearer` header (value resolved from `GITHUB_MCP_PAT`)
+- **Setup Required**: Create a GitHub Personal Access Token at [GitHub Settings](https://github.com/settings/personal-access-tokens/new) and set `GITHUB_MCP_PAT` environment variable
+- **Available Toolsets**: Repository operations, issue management, pull requests, GitHub Actions, code security, and more
+- Test your configuration: `npm run github:mcp:test`
+- Comprehensive setup guide: [docs/GITHUB_MCP_SETUP.md](docs/GITHUB_MCP_SETUP.md)
+
+**Capabilities include:**
+
+- Repository browsing and file operations
+- Issue and pull request management
+- GitHub Actions workflow monitoring
+- Code security analysis and Dependabot alerts
+- Team collaboration and organization management
+
+GitHub capabilities appear under the `github.*` namespace when connected, maintaining the same explicit tool naming pattern.
+
+### Figma MCP Server
+
+The [figma-developer-mcp](https://www.npmjs.com/package/figma-developer-mcp) provides AI tools with direct access to Figma's design platform for design-to-code workflows.
+
+- `mcp.json` → `"figma-developer-mcp"` entry runs as SSE server at `http://localhost:3333/sse`
+- **Setup Required**: Create a Figma Personal Access Token at [Figma Settings](https://www.figma.com/settings) and set `FIGMA_TOKEN` environment variable
+- **Server Management**: Start with `npx figma-developer-mcp` before using MCP features
+- Test your configuration: `npm run figma:mcp:test`
+- Comprehensive setup guide: [docs/FIGMA_MCP_SETUP.md](docs/FIGMA_MCP_SETUP.md)
+
+**Capabilities include:**
+
+- Design file analysis and component extraction
+- Asset downloading and design token extraction
+- Design system documentation and consistency checking
+- Design-to-code generation and implementation guidance
+- Collaborative design workflow integration
+
+Figma capabilities appear under the `figma.*` namespace when connected, enabling AI assistants to interact with your design files and generate implementation code directly from Figma designs.
