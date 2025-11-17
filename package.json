@@ -21,6 +21,7 @@
     "ai": "^5.0.86",
     "chart.js": "^4.4.9",
     "dotenv": "^16.6.1",
+    "figma-developer-mcp": "^0.6.4",
     "i18next": "^25.6.1",
     "jsdom": "^26.1.0",
     "leaflet": "^1.9.4",
@@ -74,6 +75,8 @@
     "context7:mcp": "node scripts/context7-mcp.mjs",
     "ts:mcp:status": "node scripts/ts-mcp-automation.mjs",
     "ts:mcp:status:stub": "node scripts/ts-mcp-automation.mjs --force-stub",
+    "github:mcp:test": "node scripts/test-github-mcp.mjs",
+    "figma:mcp:test": "node scripts/test-figma-mcp.mjs",
     "postbuild": "npm run sentry:summary:auto || npm run sentry:summary:stub"
   },
   "eslintConfig": {
