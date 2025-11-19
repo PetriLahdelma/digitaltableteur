@@ -72,10 +72,6 @@ strong {
   margin-block: 1rem;
 }
 
-.article p:first-of-type {
-  margin-block-start: 0;
-}
-
 .metaRow {
   display: flex;
   align-items: center;
@@ -86,6 +82,10 @@ strong {
   margin-block: 0;
   font-size: 1rem;
   color: var(--primary-text-color);
+}
+
+.article p:first-of-type {
+  margin-block-start: 0;
 }
 
 .metaRow > * {

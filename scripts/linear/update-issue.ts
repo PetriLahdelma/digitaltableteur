@@ -50,15 +50,27 @@ const parseArgs = (): Args => {
   const input = process.argv.slice(2);
   for (let i = 0; i < input.length; i++) {
     const key = input[i];
+    const nextValue = input[i + 1];
+    const ensureValue = () => {
+      if (!nextValue || nextValue.startsWith("-")) {
+        console.error(`Flag ${key} requires a value.`);
+        process.exit(1);
+      }
+    };
     if (key === "--issue" || key === "-i") {
+      ensureValue();
       args.issue = input[++i];
     } else if (key === "--comment" || key === "-c") {
+      ensureValue();
       args.comment = input[++i];
     } else if (key === "--state" || key === "-s") {
+      ensureValue();
       args.state = input[++i];
     } else if (key === "--add-label" || key === "-a") {
+      ensureValue();
       args.addLabels.push(input[++i]);
     } else if (key === "--remove-label" || key === "-r") {
+      ensureValue();
       args.removeLabels.push(input[++i]);
     }
   }
@@ -241,8 +253,8 @@ async function main() {
     } | null;
   }>({
     query: ISSUE_QUERY,
-    variables: { id: args.issue },
-  });
+  variables: { id: issueId },
+});
 
   if (!issueData.issue) {
     console.error(`Issue ${args.issue} not found.`);

@@ -41,7 +41,7 @@ if (!OPENAI_API_KEY) {
 
 const IMG_TAG_REGEX = /<img\b[\s\S]*?>/g;
 const ATTRIBUTE_REGEX =
-  /([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*({[^}]*}|"[^"]*"|'[^']*')/g;
+  /([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*({(?:[^{}]|{[^{}]*})*}|"[^"]*"|'[^']*')/g;
 const PLACEHOLDER_ALT_PATTERNS = [
   /^\s*$/,
   /^\s*[.\-]\s*$/,

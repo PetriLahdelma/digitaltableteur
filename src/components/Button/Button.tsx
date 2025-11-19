@@ -175,10 +175,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         const bg = getElementBackgroundColor(ancestor);
         if (bg) {
           // Use ancestor background as foreground (text) color for inverse primary.
-          buttonRef.current.style.setProperty(
-            "--dt-button-inverse-fg",
-            bg,
-          );
+          buttonRef.current.style.setProperty("--dt-button-inverse-fg", bg);
           return;
         }
         ancestor = ancestor.parentElement;
@@ -234,7 +231,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       if (typeof ref === "function") {
         ref(node);
       } else {
-        (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
+        (ref as React.MutableRefObject<HTMLButtonElement | null>).current =
+          node;
       }
     };
 

@@ -37,6 +37,7 @@
 
 .button.primary.inverse {
   background-color: var(--color-white);
+
   /* Text color adapts to ancestor surface via JS-set CSS variable */
   color: var(--dt-button-inverse-fg, var(--color-primary));
 }
