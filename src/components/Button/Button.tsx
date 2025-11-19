@@ -6,7 +6,7 @@ import {
 } from "../../utils/semanticIcons";
 import Icon from "@dt/Icon";
 
-type BaseButtonProps = {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?:
     | "primary"
     | "secondary"
@@ -16,7 +16,7 @@ type BaseButtonProps = {
     | "success"
     | "info";
   disabled?: boolean;
-  /** Icon can be a React element, component, or a string key (e.g., "IoMdRefresh") */
+  /** Icon can be a React element, component, or a Phosphor icon name string (e.g., "spinner-gap") */
   icon?: React.ReactNode | string;
   endIcon?: React.ReactNode | string;
   children?: React.ReactNode | React.ReactNode[];
@@ -31,33 +31,7 @@ type BaseButtonProps = {
   inverse?: boolean;
   /** When true, applies rounded corners to the button */
   rounded?: boolean;
-  href?: string;
-  target?: React.HTMLAttributeAnchorTarget;
-  rel?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  tabIndex?: number;
-};
-
-type AnchorButtonProps = BaseButtonProps &
-  Omit<
-    React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    keyof BaseButtonProps | "children"
-  > & {
-    href: string;
-  };
-
-type NativeButtonProps = BaseButtonProps &
-  Omit<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    keyof BaseButtonProps | "children" | "href"
-  > & {
-    href?: undefined;
-    target?: undefined;
-    rel?: undefined;
-  };
-
-type ButtonProps = AnchorButtonProps | NativeButtonProps;
+}
 
 type ButtonVariant = NonNullable<ButtonProps["variant"]>;
 const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
@@ -67,66 +41,39 @@ const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
   info: "info",
 };
 
-const ZERO_ALPHA_COMMA_PATTERN = /rgba\([^)]+,\s*0(?:\.0+)?\)$/;
-const ZERO_ALPHA_SLASH_PATTERN = /rgb\([^)]+\/\s*0(?:\.0+)?\)$/;
-
-const isTransparentColor = (candidate: string | null | undefined): boolean => {
-  if (!candidate) return true;
-  const normalized = candidate.replace(/\s+/g, " ").trim().toLowerCase();
+const isTransparentColor = (value?: string | null) => {
+  if (!value) return true;
+  const normalized = value.trim().toLowerCase();
   if (!normalized) return true;
   if (
     normalized === "transparent" ||
-    normalized === "initial" ||
     normalized === "inherit" ||
+    normalized === "initial" ||
     normalized === "unset"
   ) {
     return true;
   }
-  if (ZERO_ALPHA_COMMA_PATTERN.test(normalized)) return true;
-  if (ZERO_ALPHA_SLASH_PATTERN.test(normalized)) return true;
-  return false;
+  if (normalized.startsWith("rgba(")) {
+    const alpha = normalized.split(",").pop()?.replace(")", "").trim();
+    if (alpha === "0" || alpha === "0.0") return true;
+  }
+  return normalized === "rgba(0,0,0,0)";
 };
 
-const findNearestSurfaceColor = (buttonEl: HTMLElement): string | undefined => {
-  if (typeof window === "undefined" || typeof document === "undefined") {
-    return undefined;
+const getElementBackgroundColor = (element: Element | null): string | null => {
+  if (!element || typeof window === "undefined") return null;
+  const styles = window.getComputedStyle(element);
+  const background = styles?.backgroundColor;
+  if (background && !isTransparentColor(background)) {
+    return background;
   }
-  let current: HTMLElement | null = buttonEl.parentElement;
-  while (current) {
-    const color = window.getComputedStyle(current).backgroundColor;
-    if (!isTransparentColor(color)) {
-      return color;
-    }
-    current = current.parentElement;
-  }
-  if (document.body) {
-    const bodyColor = window.getComputedStyle(document.body).backgroundColor;
-    if (!isTransparentColor(bodyColor)) return bodyColor;
-  }
-  if (document.documentElement) {
-    const rootColor = window.getComputedStyle(
-      document.documentElement,
-    ).backgroundColor;
-    if (!isTransparentColor(rootColor)) return rootColor;
-  }
-  return undefined;
+  return null;
 };
 
-const collectAncestorChain = (element: HTMLElement): HTMLElement[] => {
-  const ancestors: HTMLElement[] = [];
-  const seen = new Set<HTMLElement>();
-  let current: HTMLElement | null = element.parentElement;
-  while (current) {
-    if (!seen.has(current)) {
-      ancestors.push(current);
-      seen.add(current);
-    }
-    current = current.parentElement;
-  }
-  return ancestors;
-};
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
 
-const Button = React.forwardRef<HTMLElement, ButtonProps>(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant = "primary",
@@ -146,128 +93,21 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
       className = "",
       size = "m",
       inverse = false,
-      style: styleProp,
-      href,
-      target,
-      rel,
-      tabIndex,
       ...rest
     },
     ref,
   ) => {
-    const internalButtonRef = React.useRef<HTMLElement | null>(null);
-    const [dynamicInverseColor, setDynamicInverseColor] = React.useState<
-      string | undefined
-    >(undefined);
-    const lastAppliedColor = React.useRef<string | undefined>(undefined);
-
-    const setButtonRef = React.useCallback(
-      (node: HTMLElement | null) => {
-        internalButtonRef.current = node;
-        if (typeof ref === "function") {
-          ref(node);
-        } else if (ref) {
-          (ref as React.MutableRefObject<HTMLElement | null>).current = node;
-        }
-      },
-      [ref],
-    );
-
-    const shouldSyncInverseColor =
-      inverse && variant === "primary" && typeof window !== "undefined";
-
-    React.useEffect(() => {
-      if (!shouldSyncInverseColor) {
-        lastAppliedColor.current = undefined;
-        setDynamicInverseColor(undefined);
-        return;
-      }
-      if (typeof window === "undefined" || typeof document === "undefined") {
-        return;
-      }
-      const buttonElement = internalButtonRef.current;
-      if (!buttonElement) return;
-
-      let disposed = false;
-
-      const applyColor = () => {
-        if (disposed) return;
-        const detectedColor = findNearestSurfaceColor(buttonElement);
-        if (detectedColor === lastAppliedColor.current) {
-          return;
-        }
-        lastAppliedColor.current = detectedColor;
-        setDynamicInverseColor(detectedColor);
-      };
-
-      applyColor();
-
-      const cleanupFns: Array<() => void> = [];
-      const ancestors = collectAncestorChain(buttonElement);
-
-      if (typeof MutationObserver !== "undefined") {
-        ancestors.forEach((node) => {
-          const observer = new MutationObserver(applyColor);
-          observer.observe(node, {
-            attributes: true,
-            attributeFilter: ["class", "style"],
-          });
-          cleanupFns.push(() => observer.disconnect());
-        });
-      }
-
-      if (
-        buttonElement.parentElement &&
-        typeof ResizeObserver !== "undefined"
-      ) {
-        const resizeObserver = new ResizeObserver(() => applyColor());
-        resizeObserver.observe(buttonElement.parentElement);
-        cleanupFns.push(() => resizeObserver.disconnect());
-      }
-
-      if (typeof window.matchMedia === "function") {
-        const media = window.matchMedia("(prefers-color-scheme: dark)");
-        const listener = () => applyColor();
-        if (typeof media.addEventListener === "function") {
-          media.addEventListener("change", listener);
-          cleanupFns.push(() => media.removeEventListener("change", listener));
-        } else if (typeof media.addListener === "function") {
-          media.addListener(listener);
-          cleanupFns.push(() => media.removeListener(listener));
-        }
-      }
-
-      const intervalId = window.setInterval(applyColor, 1500);
-      cleanupFns.push(() => window.clearInterval(intervalId));
-
-      return () => {
-        disposed = true;
-        cleanupFns.forEach((cleanup) => cleanup());
-      };
-    }, [shouldSyncInverseColor]);
-
-    const buttonStyle = React.useMemo<React.CSSProperties | undefined>(() => {
-      if (shouldSyncInverseColor && dynamicInverseColor) {
-        return {
-          ...(styleProp ?? {}),
-          "--dt-button-inverse-color": dynamicInverseColor,
-        };
-      }
-      return styleProp;
-    }, [shouldSyncInverseColor, dynamicInverseColor, styleProp]);
-
-    // Icon registry for string lookup (extend as needed)
-    const ICON_REGISTRY: Record<string, () => React.ReactElement> = {
-      IoMdRefresh: () => <Icon name="arrows-clockwise" />,
-      FaSearch: () => <Icon name="magnifying-glass" />,
-      FaArrowLeft: () => <Icon name="arrow-left" />,
-      FaArrowRight: () => <Icon name="arrow-right" />,
-    };
-
     const lookupIcon = (candidate: unknown): unknown => {
       if (typeof candidate === "string") {
-        const iconFactory = ICON_REGISTRY[candidate];
-        return iconFactory ? iconFactory() : undefined;
+        const trimmed = candidate.trim();
+        if (!trimmed) return undefined;
+        return (
+          <Icon
+            name={trimmed}
+            ariaLabel={trimmed}
+            data-button-string-icon={trimmed}
+          />
+        );
       }
       return candidate;
     };
@@ -317,23 +157,111 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
     const normalizedIcon = normalizeMaybeIcon(resolvedStartIcon);
     const normalizedEndIcon = normalizeMaybeIcon(lookupIcon(endIcon));
 
-    const combinedClassName = [
-      styles.button,
-      styles[variant],
-      styles[size],
-      !children && normalizedIcon ? styles["iconOnly"] : "",
-      inverse ? styles.inverse : "",
-      rounded ? styles.rounded : "",
-      className,
-    ]
-      .filter(Boolean)
-      .join(" ");
+    const buttonRef = React.useRef<HTMLButtonElement | null>(null);
 
-    const resolvedRole =
-      accessibleRole ?? (href ? ("link" as const) : ("button" as const));
+    const setInverseColorFromSurface = React.useCallback(() => {
+      if (
+        !inverse ||
+        variant !== "primary" ||
+        typeof window === "undefined" ||
+        !buttonRef.current
+      ) {
+        buttonRef.current?.style.removeProperty("--dt-button-inverse-fg");
+        return;
+      }
 
-    const content = (
-      <>
+      let ancestor: HTMLElement | null = buttonRef.current.parentElement;
+      while (ancestor) {
+        const bg = getElementBackgroundColor(ancestor);
+        if (bg) {
+          // Use ancestor background as foreground (text) color for inverse primary.
+          buttonRef.current.style.setProperty(
+            "--dt-button-inverse-fg",
+            bg,
+          );
+          return;
+        }
+        ancestor = ancestor.parentElement;
+      }
+      buttonRef.current.style.removeProperty("--dt-button-inverse-fg");
+    }, [inverse, variant]);
+
+    useIsomorphicLayoutEffect(() => {
+      setInverseColorFromSurface();
+      if (!inverse || variant !== "primary" || !buttonRef.current) {
+        return;
+      }
+
+      const handleWindowChange = () => {
+        setInverseColorFromSurface();
+      };
+
+      window.addEventListener("resize", handleWindowChange);
+      window.addEventListener("scroll", handleWindowChange, true);
+
+      const resizeObserver =
+        typeof ResizeObserver !== "undefined"
+          ? new ResizeObserver(() => setInverseColorFromSurface())
+          : null;
+      const mutationObserver =
+        typeof MutationObserver !== "undefined"
+          ? new MutationObserver(() => setInverseColorFromSurface())
+          : null;
+
+      const observedNodes: Element[] = [];
+      let ancestor = buttonRef.current.parentElement;
+      while (ancestor) {
+        observedNodes.push(ancestor);
+        mutationObserver?.observe(ancestor, {
+          attributes: true,
+          attributeFilter: ["style", "class"],
+        });
+        resizeObserver?.observe(ancestor);
+        ancestor = ancestor.parentElement;
+      }
+
+      return () => {
+        window.removeEventListener("resize", handleWindowChange);
+        window.removeEventListener("scroll", handleWindowChange, true);
+        mutationObserver?.disconnect();
+        resizeObserver?.disconnect();
+      };
+    }, [inverse, setInverseColorFromSurface, variant]);
+
+    const assignRefs = (node: HTMLButtonElement | null) => {
+      buttonRef.current = node;
+      if (!ref) return;
+      if (typeof ref === "function") {
+        ref(node);
+      } else {
+        (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
+      }
+    };
+
+    return (
+      <button
+        ref={assignRefs}
+        className={[
+          styles.button,
+          styles[variant],
+          styles[size],
+          !children && normalizedIcon ? styles["iconOnly"] : "",
+          inverse ? styles.inverse : "",
+          rounded ? styles.rounded : "",
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        disabled={disabled}
+        aria-describedby={accessibleDescription}
+        aria-label={accessibleName}
+        aria-labelledby={accessibleNameRef}
+        role={accessibleRole}
+        type={submits ? "submit" : type}
+        title={tooltip}
+        onClick={onClick}
+        {...rest}
+      >
         {normalizedIcon && (
           <span
             className={styles.icon}
@@ -357,72 +285,6 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
             {normalizedEndIcon}
           </span>
         )}
-      </>
-    );
-
-    if (href) {
-      const anchorRest = rest as React.AnchorHTMLAttributes<HTMLAnchorElement>;
-      const anchorOnClick = onClick as
-        | React.MouseEventHandler<HTMLAnchorElement>
-        | undefined;
-
-      return (
-        <a
-          ref={setButtonRef as React.Ref<HTMLAnchorElement>}
-          className={combinedClassName}
-          href={disabled ? undefined : href}
-          target={target}
-          rel={rel}
-          aria-disabled={disabled || undefined}
-          aria-describedby={accessibleDescription}
-          aria-label={accessibleName}
-          aria-labelledby={accessibleNameRef}
-          role={resolvedRole}
-          title={tooltip}
-          style={buttonStyle}
-          tabIndex={disabled ? -1 : tabIndex}
-          {...anchorRest}
-          onClick={(event) => {
-            if (disabled) {
-              event.preventDefault();
-              event.stopPropagation();
-              return;
-            }
-            anchorOnClick?.(event);
-          }}
-        >
-          {content}
-        </a>
-      );
-    }
-
-    const buttonRest = rest as React.ButtonHTMLAttributes<HTMLButtonElement>;
-    const buttonOnClick = onClick as
-      | React.MouseEventHandler<HTMLButtonElement>
-      | undefined;
-    const resolvedButtonType = (submits ? "submit" : type) as
-      | "button"
-      | "submit"
-      | "reset"
-      | undefined;
-
-    return (
-      <button
-        ref={setButtonRef as React.Ref<HTMLButtonElement>}
-        className={combinedClassName}
-        disabled={disabled}
-        aria-describedby={accessibleDescription}
-        aria-label={accessibleName}
-        aria-labelledby={accessibleNameRef}
-        role={resolvedRole}
-        type={resolvedButtonType}
-        title={tooltip}
-        onClick={buttonOnClick}
-        style={buttonStyle}
-        tabIndex={tabIndex}
-        {...buttonRest}
-      >
-        {content}
       </button>
     );
   },

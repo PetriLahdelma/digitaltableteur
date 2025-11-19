@@ -8,24 +8,6 @@ import {
   type SemanticStatus,
 } from "../../utils/semanticIcons";
 
-// Legacy icon options for backward compatibility
-const iconOptions: Record<string, React.ComponentType | null> = {
-  None: null,
-  // Add common icon mappings that might be used in stories
-  FaCheck: () => React.createElement(Icon, { name: "check" }),
-  FaInfo: () => React.createElement(Icon, { name: "info" }),
-  FaExclamation: () => React.createElement(Icon, { name: "warning" }),
-  FaTimes: () => React.createElement(Icon, { name: "x" }),
-};
-
-export const getIconElement = (name: string): React.ReactNode => {
-  const IconFactory = iconOptions[name];
-  if (!IconFactory) return null;
-  return typeof IconFactory === "function"
-    ? React.createElement(IconFactory)
-    : null;
-};
-
 type BadgeState = "success" | "info" | "error" | "warning" | "neutral";
 
 const STATE_TO_STATUS: Partial<
@@ -129,7 +111,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
           <Button
             size={size === "s" ? "s" : size === "l" ? "l" : "m"}
             type="button"
-            icon={<Icon name="x" />}
+            icon={<Icon name="x" ariaLabel={t("badgeRemove")} />}
             className={styles.closeButton}
             aria-label={t("badgeRemove")}
             accessibleName={t("badgeRemove")}

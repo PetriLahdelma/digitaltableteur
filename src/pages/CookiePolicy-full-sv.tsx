@@ -30,9 +30,11 @@ const CookiePolicyFullSV = () => {
             size="m"
             onClick={() => (window.location.href = "/")}
           >
-            <span style={{ marginInlineEnd: 8 }}>
-              <Icon name="arrow-left" />
-            </span>
+            <Icon
+              name="arrow-left"
+              ariaLabel="Tillbaka"
+              style={{ marginInlineEnd: 8 }}
+            />
             Tillbaka
           </Button>
         </div>

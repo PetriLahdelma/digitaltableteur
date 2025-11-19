@@ -30,9 +30,11 @@ const CookiePolicyFullEN = () => {
             size="m"
             onClick={() => (window.location.href = "/")}
           >
-            <span style={{ marginInlineEnd: 8 }}>
-              <Icon name="arrow-left" />
-            </span>
+            <Icon
+              name="arrow-left"
+              ariaLabel="Back"
+              style={{ marginInlineEnd: 8 }}
+            />
             Back
           </Button>
         </div>

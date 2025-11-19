@@ -1,6 +1,10 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
+import mdx from "@mdx-js/rollup";
+import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 
 export default defineConfig(async () => {
@@ -8,6 +12,10 @@ export default defineConfig(async () => {
   const enableSentry = Boolean(process.env.VITE_SENTRY_DSN);
   return {
     plugins: [
+      mdx({
+        remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+        providerImportSource: "@mdx-js/react",
+      }),
       react(),
       viteStaticCopy({
         targets: [

@@ -6,7 +6,7 @@ interface ArticleCardProps {
   title: string;
   lead?: string;
   link: string;
-  readTime: string;
+  readTime?: string;
   className?: string;
 }
 
@@ -18,11 +18,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   className = "",
 }) => {
   const { t } = useTranslation();
-  // Support "3 min read" style: split and translate 'read'
   let readTimeDisplay = readTime;
-  const match = readTime.match(/^(\d+)\s*(min)\s*(read)$/i);
-  if (match) {
-    readTimeDisplay = `${match[1]} min ${t("blogRead")}`;
+  if (readTime) {
+    const match = readTime.match(/^(\d+)\s*(min)\s*(read)$/i);
+    if (match) {
+      readTimeDisplay = `${match[1]} min ${t("blogRead")}`;
+    }
   }
   return (
     <a
@@ -34,9 +35,11 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
       onMouseOut={(e) => e.currentTarget.classList.remove(styles.cardHover)}
     >
       <h2 className={styles.title}>{title}</h2>
-      <p className={styles.lead}>{lead}</p>
+      {lead ? <p className={styles.lead}>{lead}</p> : null}
       <div className={styles.meta}>
-        <span className={styles.readTime}>{readTimeDisplay}</span>
+        {readTimeDisplay && (
+          <span className={styles.readTime}>{readTimeDisplay}</span>
+        )}
         <span className={styles.readMore}>{t("blogReadMore")}</span>
       </div>
     </a>

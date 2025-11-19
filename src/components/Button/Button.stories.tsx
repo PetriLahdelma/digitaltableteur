@@ -71,7 +71,7 @@ Primary.args = {
 };
 Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /primary button/i });
+  const button = await canvas.findByRole("button", { name: /primary/i });
   await userEvent.click(button);
   // Focus test
   await userEvent.tab();
@@ -85,7 +85,7 @@ Secondary.args = {
 Secondary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.findByRole("button", {
-    name: /secondary button/i,
+    name: /secondary/i,
   });
   await userEvent.click(button);
   await userEvent.tab();
@@ -99,7 +99,7 @@ Tertiary.args = {
 Tertiary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.findByRole("button", {
-    name: /tertiary button/i,
+    name: /tertiary/i,
   });
   await userEvent.click(button);
   await userEvent.tab();
@@ -112,7 +112,7 @@ Error.args = {
 };
 Error.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /error button/i });
+  const button = await canvas.findByRole("button", { name: /error/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -124,7 +124,7 @@ Warning.args = {
 };
 Warning.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /warning button/i });
+  const button = await canvas.findByRole("button", { name: /warning/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -136,7 +136,7 @@ Success.args = {
 };
 Success.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /success button/i });
+  const button = await canvas.findByRole("button", { name: /success/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -148,7 +148,7 @@ Info.args = {
 };
 Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /info button/i });
+  const button = await canvas.findByRole("button", { name: /info/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -156,7 +156,7 @@ Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconOnly = Template.bind({});
 IconOnly.args = {
   variant: "primary",
-  icon: "FaSearch",
+  icon: "magnifying-glass",
   tooltip: "Search",
 };
 IconOnly.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -169,7 +169,7 @@ IconOnly.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconLeft = Template.bind({});
 IconLeft.args = {
   variant: "primary",
-  icon: "FaArrowLeft",
+  icon: "arrow-left",
   children: <ButtonStoryLabel tKey="buttonLeftIcon" />,
 };
 IconLeft.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -182,7 +182,7 @@ IconLeft.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconRight = Template.bind({});
 IconRight.args = {
   variant: "primary",
-  endIcon: "FaArrowRight",
+  endIcon: "arrow-right",
   children: <ButtonStoryLabel tKey="buttonRightIcon" />,
 };
 IconRight.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -201,7 +201,7 @@ Disabled.args = {
 Disabled.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.findByRole("button", {
-    name: /disabled button/i,
+    name: /disabled/i,
   });
   await userEvent.tab();
 };
@@ -233,66 +233,29 @@ export const AllVariants = () => (
 );
 
 export const Inverse = () => {
-  const [surfaceColor, setSurfaceColor] = React.useState<string>(
-    INVERSE_SWATCHES[2].color,
-  );
-
+  // Static primary surface; show all inverse variants (no swatches).
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <div
-        style={{
-          display: "flex",
-          gap: "1rem",
-          alignItems: "center",
-          padding: "2rem",
-          /* stylelint-disable-next-line scale-unlimited/declaration-strict-value, value-keyword-case */
-          backgroundColor: surfaceColor,
-          borderRadius: "var(--radius-md, 0.5rem)",
-          transition: "background-color 0.3s ease",
-        }}
-        className="inverse-demo-bg"
-      >
-        <Button variant="primary" size="l" inverse>
-          Inverse primary
-        </Button>
-        <Button variant="secondary" size="l" inverse>
-          Inverse secondary
-        </Button>
-        <Button variant="tertiary" size="l" inverse>
-          Inverse tertiary
-        </Button>
-      </div>
-      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-        {INVERSE_SWATCHES.map((swatch) => {
-          const isActive = surfaceColor === swatch.color;
-          return (
-            <button
-              key={swatch.color}
-              type="button"
-              aria-label={`Set inverse background to ${swatch.label}`}
-              aria-pressed={isActive}
-              onClick={() => setSurfaceColor(swatch.color)}
-              style={{
-                width: "24px",
-                height: "24px",
-                borderRadius: "var(--radius-sm, 0.25rem)",
-                /* stylelint-disable-next-line value-keyword-case */
-                border: isActive
-                  ? "2px solid var(--color-primary)"
-                  : "1px solid rgba(0, 0, 0, 0.2)",
-                /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
-                backgroundColor: swatch.color,
-                cursor: "pointer",
-                position: "relative",
-                outline: "none",
-                transition: "transform 0.2s ease, border-color 0.2s ease",
-              }}
-            >
-              <span style={visuallyHiddenStyle}>{swatch.label}</span>
-            </button>
-          );
-        })}
-      </div>
+    <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        alignItems: "center",
+        padding: "2rem",
+        flexWrap: "wrap",
+        /* stylelint-disable-next-line scale-unlimited/declaration-strict-value, value-keyword-case */
+        backgroundColor: "var(--color-primary)",
+        borderRadius: "var(--radius-md, 0.5rem)",
+      }}
+    >
+      <Button variant="primary" size="l" inverse>
+        Inverse primary
+      </Button>
+      <Button variant="secondary" size="l" inverse>
+        Inverse secondary
+      </Button>
+      <Button variant="tertiary" size="l" inverse>
+        Inverse tertiary
+      </Button>
     </div>
   );
 };

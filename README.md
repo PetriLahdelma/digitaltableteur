@@ -152,8 +152,14 @@ The file is saved as `figma.json` in the project root.
 ```bash
 npm run generate:sitemap    # Generate XML sitemap
 npm run generate:llms       # Create LLM-friendly content index
-npm run generate:alt-text   # Generate accessibility descriptions
+npm run generate:alt-text   # Generate accessibility descriptions (requires OPENAI_API_KEY)
 ```
+
+`generate:alt-text` streams local image bytes to the OpenAI Vision API so it can describe the actual artwork; add `OPENAI_API_KEY` (and optionally `OPENAI_ALT_MODEL`) to `.env.local` before running, or append `--force` to regenerate every `<img>` alt attribute.
+
+### Sanity Blog Migration
+
+- See [`docs/SANITY_MIGRATION.md`](docs/SANITY_MIGRATION.md) for the full workflow (React → Sanity via `sanity:parse-posts` / `sanity:convert` / `sanity:upload`, Sanity → MDX via `sanity:sync-from-remote`, redirects generation, cleanup helpers).
 
 ## 🏗 Architecture
 
@@ -472,3 +478,7 @@ The [figma-developer-mcp](https://www.npmjs.com/package/figma-developer-mcp) pro
 - Collaborative design workflow integration
 
 Figma capabilities appear under the `figma.*` namespace when connected, enabling AI assistants to interact with your design files and generate implementation code directly from Figma designs.
+
+### Additional Docs
+
+- [Branch Naming Guidelines](docs/BRANCH_NAMING.md)
