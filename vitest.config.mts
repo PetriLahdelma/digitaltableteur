@@ -1,10 +1,22 @@
 import { defineConfig } from "vitest/config";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
+import react from "@vitejs/plugin-react";
+import mdx from "@mdx-js/rollup";
+import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  plugins: [
+    mdx({
+      remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
+      providerImportSource: "@mdx-js/react",
+    }),
+    react(),
+  ],
   test: {
     environment: "jsdom",
     setupFiles: "./vitest.setup.ts",
