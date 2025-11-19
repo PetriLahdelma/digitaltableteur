@@ -84,6 +84,13 @@ ChartJS.register(
   Filler,
 );
 
+type RunSummaryResponse = {
+  runId: string;
+  timestamp: string;
+  branch?: string;
+  metrics?: typeof metrics;
+};
+
 const TestHealthOverview = () => {
   const { t } = useTranslation();
   const { theme } = useTheme();
@@ -98,6 +105,11 @@ const TestHealthOverview = () => {
     null,
   );
   const [visualError, setVisualError] = useState<string | null>(null);
+  const [remoteMetrics, setRemoteMetrics] = useState<typeof metrics | null>(
+    null,
+  );
+  const [runSummary, setRunSummary] = useState<RunSummaryResponse | null>(null);
+  const [dashboardError, setDashboardError] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -151,15 +163,50 @@ const TestHealthOverview = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const controller = new AbortController();
+
+    const loadRunSummary = async () => {
+      try {
+        const response = await fetch("/api/test-health/runs/latest", {
+          signal: controller.signal,
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const payload = (await response.json()) as RunSummaryResponse;
+        if (payload.metrics) {
+          setRemoteMetrics(payload.metrics);
+        }
+        setRunSummary(payload);
+        setDashboardError(null);
+      } catch (error) {
+        if (!controller.signal.aborted) {
+          setDashboardError(
+            error instanceof Error ? error.message : "Unable to load metrics",
+          );
+        }
+      }
+    };
+
+    void loadRunSummary();
+
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
   // metrics.componentAdoption in test-metrics.json currently has shape { currentRate, targetRate } (no history array)
   // Use defaultAdoptionHistory when history absent.
   const adoptionHistory = useMemo<AdoptionHistoryEntry[]>(() => {
-    const raw = (metrics as any)?.componentAdoption?.history;
+    const raw = (remoteMetrics ?? metrics as any)?.componentAdoption?.history;
     return Array.isArray(raw)
       ? (raw as AdoptionHistoryEntry[])
       : defaultAdoptionHistory;
   }, []);
 
+  const metricsData = remoteMetrics ?? metrics;
   const vitestBarData = useMemo(
     () => ({
       labels: [
@@ -171,9 +218,9 @@ const TestHealthOverview = () => {
         {
           label: t("dashboardTestsLabel"),
           data: [
-            metrics.vitest.totalTests,
-            metrics.vitest.passedTests,
-            metrics.vitest.failedTests,
+            metricsData.vitest.totalTests,
+            metricsData.vitest.passedTests,
+            metricsData.vitest.failedTests,
           ],
           backgroundColor: [
             chartPalette.primary,
@@ -193,8 +240,8 @@ const TestHealthOverview = () => {
       datasets: [
         {
           data: [
-            metrics.accessibilityPages.passed,
-            metrics.accessibilityPages.failed,
+            metricsData.accessibilityPages.passed,
+            metricsData.accessibilityPages.failed,
           ],
           backgroundColor: [chartPalette.success, chartPalette.warning],
           borderWidth: 1,
@@ -210,8 +257,8 @@ const TestHealthOverview = () => {
       datasets: [
         {
           data: [
-            metrics.accessibilityStories.passed,
-            metrics.accessibilityStories.failed,
+            metricsData.accessibilityStories.passed,
+            metricsData.accessibilityStories.failed,
           ],
           backgroundColor: [chartPalette.success, chartPalette.warning],
           borderWidth: 1,
@@ -223,8 +270,8 @@ const TestHealthOverview = () => {
 
   const adoptionTrendData = useMemo(() => {
     const targetRate =
-      typeof metrics.componentAdoption?.targetRate === "number"
-        ? metrics.componentAdoption.targetRate
+      typeof metricsData.componentAdoption?.targetRate === "number"
+        ? metricsData.componentAdoption.targetRate
         : (adoptionHistory.at(-1)?.rate ?? 0);
     const targetPercent = toPercent(targetRate);
     return {
@@ -351,14 +398,15 @@ const TestHealthOverview = () => {
     [chartPalette],
   );
 
-  const adoptionRateValue = metrics.componentAdoption?.currentRate ?? 0;
+  const adoptionRateValue = metricsData.componentAdoption?.currentRate ?? 0;
   const adoptionTargetValue =
-    metrics.componentAdoption?.targetRate ?? adoptionRateValue;
-  const designAverageValue = metrics.designToImplementation?.averageDays ?? 0;
+    metricsData.componentAdoption?.targetRate ?? adoptionRateValue;
+  const designAverageValue =
+    metricsData.designToImplementation?.averageDays ?? 0;
   const designP95Value =
-    metrics.designToImplementation?.p95Days ?? designAverageValue;
+    metricsData.designToImplementation?.p95Days ?? designAverageValue;
   const designTargetValue =
-    metrics.designToImplementation?.targetDays ?? designAverageValue;
+    metricsData.designToImplementation?.targetDays ?? designAverageValue;
 
   const adoptionState =
     adoptionRateValue >= adoptionTargetValue ? "success" : "warning";
@@ -377,19 +425,27 @@ const TestHealthOverview = () => {
       ? formatDate(visualReport.generatedAt)
       : null;
 
-  const generatedAtDate = metrics.generatedAt
-    ? new Date(metrics.generatedAt)
+  const lastUpdatedValue =
+    runSummary?.timestamp ??
+    metricsData.generatedAt ??
+    metrics.generatedAt ??
+    null;
+  const lastUpdatedDate = lastUpdatedValue
+    ? new Date(lastUpdatedValue)
     : null;
-  const isStale = generatedAtDate
-    ? Date.now() - generatedAtDate.getTime() > 1000 * 60 * 60 * 24
+  const isStale = lastUpdatedDate
+    ? Date.now() - lastUpdatedDate.getTime() > 1000 * 60 * 60 * 24
     : true;
-  const stalenessLabel = generatedAtDate
-    ? formatDate(metrics.generatedAt)
+  const stalenessLabel = lastUpdatedDate
+    ? formatDate(lastUpdatedValue ?? "")
     : t("dashboardUnknownTimestamp");
 
   const notices: string[] = [];
   if (isStale) {
     notices.push(t("dashboardDataNoticeStale", { date: stalenessLabel }));
+  }
+  if (dashboardError) {
+    notices.push(`Unable to refresh metrics: ${dashboardError}`);
   }
 
   return (
@@ -398,8 +454,16 @@ const TestHealthOverview = () => {
         <h1>{t("dashboardTitle")}</h1>
         <p className={styles.subtitle}>{t("dashboardSubtitle")}</p>
         <p className={styles.updatedAt}>
-          {t("dashboardLastUpdated", { date: formatDate(metrics.generatedAt) })}
+          {t("dashboardLastUpdated", {
+            date: lastUpdatedDate ? formatDate(lastUpdatedValue ?? "") : stalenessLabel,
+          })}
         </p>
+        {runSummary ? (
+          <p className={styles.updatedAt}>
+            Run {runSummary.runId}
+            {runSummary.branch ? ` · ${runSummary.branch}` : ""}
+          </p>
+        ) : null}
       </header>
 
       <section className={styles.summaryGrid}>
@@ -420,16 +484,16 @@ const TestHealthOverview = () => {
           <p>{t("dashboardVitestDescription")}</p>
           <div className={styles.badgeRow}>
             <Badge design="secondary">
-              {metrics.vitest.totalSuites} {t("dashboardSuites")}
+              {metricsData.vitest.totalSuites} {t("dashboardSuites")}
             </Badge>
             <Badge design="secondary">
-              {metrics.vitest.totalTests} {t("dashboardTotalTests")}
+              {metricsData.vitest.totalTests} {t("dashboardTotalTests")}
             </Badge>
             <Badge design="primary" state="success">
-              {metrics.vitest.passedTests} {t("dashboardPassed")}
+              {metricsData.vitest.passedTests} {t("dashboardPassed")}
             </Badge>
             <Badge design="primary" state="error">
-              {metrics.vitest.failedTests} {t("dashboardFailed")}
+              {metricsData.vitest.failedTests} {t("dashboardFailed")}
             </Badge>
           </div>
         </article>
@@ -439,13 +503,13 @@ const TestHealthOverview = () => {
           <p>{t("dashboardA11yDescription")}</p>
           <div className={styles.badgeRow}>
             <Badge design="secondary">
-              {metrics.accessibilityPages.total} {t("dashboardTotalRoutes")}
+              {metricsData.accessibilityPages.total} {t("dashboardTotalRoutes")}
             </Badge>
             <Badge design="primary" state="success">
-              {metrics.accessibilityPages.passed} {t("dashboardPassed")}
+              {metricsData.accessibilityPages.passed} {t("dashboardPassed")}
             </Badge>
             <Badge design="primary" state="error">
-              {metrics.accessibilityPages.failed} {t("dashboardFailed")}
+              {metricsData.accessibilityPages.failed} {t("dashboardFailed")}
             </Badge>
           </div>
         </article>
@@ -455,13 +519,13 @@ const TestHealthOverview = () => {
           <p>{t("dashboardStoriesDescription")}</p>
           <div className={styles.badgeRow}>
             <Badge design="secondary">
-              {metrics.accessibilityStories.total} {t("dashboardTotalStories")}
+              {metricsData.accessibilityStories.total} {t("dashboardTotalStories")}
             </Badge>
             <Badge design="primary" state="success">
-              {metrics.accessibilityStories.passed} {t("dashboardPassed")}
+              {metricsData.accessibilityStories.passed} {t("dashboardPassed")}
             </Badge>
             <Badge design="primary" state="error">
-              {metrics.accessibilityStories.failed} {t("dashboardFailed")}
+              {metricsData.accessibilityStories.failed} {t("dashboardFailed")}
             </Badge>
           </div>
         </article>
