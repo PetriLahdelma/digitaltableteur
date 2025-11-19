@@ -1,0 +1,113 @@
+@import url("../../styles/variables.css");
+
+.switchWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wrapperLabelTop {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.wrapperLabelLeft {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.switch {
+  --switch-height: 1.5rem;
+  --switch-width: 2.75rem;
+  --switch-handle-size: calc(var(--switch-height) - 0.3rem);
+
+  display: inline-flex;
+  position: relative;
+  padding: 0;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--switch-track-off, var(--color-border-light, #c5cbd5));
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.switch[data-checked="true"] {
+  background-color: var(--switch-track-on, var(--color-primary, #0f62fe));
+}
+
+.switch[data-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.switch:focus-visible {
+  outline: 2px solid var(--color-focus, var(--color-primary, #0f62fe));
+  outline-offset: 2px;
+}
+
+.handle {
+  display: inline-flex;
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: var(--switch-handle-size);
+  height: var(--switch-handle-size);
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  background-color: var(--switch-handle-bg, #fff);
+  box-shadow: 0 2px 6px rgb(15 23 42 / 18%);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.switch[data-checked="true"] .handle {
+  transform: translateX(
+    calc(var(--switch-width) - var(--switch-handle-size) - 0.3rem)
+  );
+}
+
+.spinner {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid rgb(15 23 42 / 15%);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  border-top-color: var(--color-primary, #0f62fe);
+}
+
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: transparent;
+}
+
+.label {
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.wrapperLabelLeft .label {
+  flex: 1;
+}
+
+.wrapperLabelTop .label {
+  width: 100%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

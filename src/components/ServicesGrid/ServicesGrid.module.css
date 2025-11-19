@@ -40,7 +40,7 @@
   align-items: center;
   border-radius: var(--radius-small);
   background: transparent;
-  font-size: clamp(28px, 4vw, 32px);
+  font-size: clamp(1.75rem, 4vw, 2rem); /* 28px -> 1.75rem, 32px -> 2rem */
   color: var(--color-primary);
 }
 
@@ -57,7 +57,7 @@
   justify-content: center;
   align-items: center;
   font-family: var(--font-serif);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-text-s);
   font-weight: 600;
   line-height: 1.2;
   color: var(--color-text);

@@ -1,7 +1,13 @@
 import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { I18nextProvider } from "react-i18next";
+import i18n from "../i18n";
 import ChatWidget from "../components/ChatWidget/ChatWidget";
+
+function withI18n(ui: React.ReactElement) {
+  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
+}
 
 // Stub env vars for EmailJS
 vi.stubGlobal("import.meta", {
@@ -19,7 +25,7 @@ vi.mock("@dt/ContactForm/contactEmailService", () => ({
 
 describe("Email workflow simple keyword trigger", () => {
   it("reveals email address and proceeds to success", async () => {
-    render(<ChatWidget />);
+    render(withI18n(<ChatWidget />));
 
     // Open widget
     fireEvent.click(screen.getByRole("button"));

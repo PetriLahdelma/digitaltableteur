@@ -33,7 +33,7 @@ export const Default: Story = {
 
 export const BlogPost: Story = {
   args: {
-    url: "https://digitaltableteur.com/posts/workflow-tips",
+    url: "https://digitaltableteur.com/blog/workflow-tips",
     title: "Workflow Tips for Developers",
   },
 };

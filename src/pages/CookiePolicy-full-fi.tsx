@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./CookiePolicy.module.css";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
-import { FaArrowLeft } from "react-icons/fa";
+import Icon from "@dt/Icon";
 import Title from "@dt/Title";
 
 const CookiePolicyFullFI = () => {
@@ -30,7 +30,11 @@ const CookiePolicyFullFI = () => {
             size="m"
             onClick={() => (window.location.href = "/")}
           >
-            <FaArrowLeft style={{ marginInlineEnd: 8 }} />
+            <Icon
+              name="arrow-left"
+              ariaLabel="Takaisin"
+              style={{ marginInlineEnd: 8 }}
+            />
             Takaisin
           </Button>
         </div>

@@ -1,4 +1,5 @@
 @import url("./styles/variables.css");
+@import url("./styles/grain.css");
 
 body {
   margin: 0;
@@ -50,6 +51,11 @@ a {
   touch-action: manipulation;
 }
 
+a:focus-visible {
+  outline: 2px solid var(--color-primary, #06f);
+  outline-offset: 2px;
+}
+
 /* Remove default margin on lists/paragraphs when desired via utility */
 
 /* Lists: logical indentation. Stylelint incorrectly flags padding-left (phantom); keep logical property. */
@@ -75,4 +81,18 @@ a {
 code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Visually hidden utility for screen reader only content */
+
+.visuallyHidden {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
 }

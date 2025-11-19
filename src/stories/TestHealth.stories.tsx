@@ -19,8 +19,8 @@ import styles from "./TestHealth.module.css";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@dt/ThemeProvider";
 import Badge from "@dt/Badge";
-import { FaInfoCircle } from "react-icons/fa";
 import SentrySummaryCard from "@dt/SentrySummaryCard";
+import Icon from "@dt/Icon";
 
 type VisualDiffEntry = {
   id: string;
@@ -519,7 +519,7 @@ const TestHealthOverview = () => {
                 design="primary"
                 state="info"
                 size="m"
-                icon={<FaInfoCircle aria-hidden="true" />}
+                icon={<Icon name="info" ariaLabel="Info" />}
                 title={visualError}
               >
                 {t("dashboardVisualError")}

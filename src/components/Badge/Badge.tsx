@@ -1,31 +1,12 @@
 import React, { isValidElement, useState } from "react";
 import styles from "./Badge.module.css";
 import Button from "@dt/Button";
-import { IoMdClose } from "react-icons/io";
+import Icon from "@dt/Icon";
 import { useTranslation } from "react-i18next";
 import {
   getSemanticIcon,
   type SemanticStatus,
 } from "../../utils/semanticIcons";
-import * as FaIcons from "react-icons/fa";
-
-// Dynamically create options and mapping for all icons (store component refs, not JSX instances)
-// This prevents passing plain objects or already-instantiated elements that trigger React type warnings.
-const iconOptions: Record<string, React.ComponentType | null> = {
-  None: null,
-  ...Object.fromEntries(
-    Object.entries(FaIcons).map(([name, Icon]) => [
-      name,
-      Icon as React.ComponentType,
-    ]),
-  ),
-};
-
-export const getIconElement = (name: string): React.ReactNode => {
-  const Icon = iconOptions[name];
-  if (!Icon) return null;
-  return <Icon />;
-};
 
 type BadgeState = "success" | "info" | "error" | "warning" | "neutral";
 
@@ -130,7 +111,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
           <Button
             size={size === "s" ? "s" : size === "l" ? "l" : "m"}
             type="button"
-            icon={IoMdClose ? <IoMdClose /> : null}
+            icon={<Icon name="x" ariaLabel={t("badgeRemove")} />}
             className={styles.closeButton}
             aria-label={t("badgeRemove")}
             accessibleName={t("badgeRemove")}

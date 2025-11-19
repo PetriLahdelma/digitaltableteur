@@ -19,4 +19,5 @@ jobs:
             ${{ runner.os }}-playwright-
       - run: npx playwright install --with-deps chromium
       - run: npm run lint
+      - run: npm run test:coverage
       - run: npm run build:test-metrics

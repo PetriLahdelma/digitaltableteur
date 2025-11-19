@@ -1,0 +1,10 @@
+node_modules/
+dist/
+storybook-static/
+coverage/
+.vercel/
+*.min.js
+*.bundle.js
+build/
+.next/
+.cache/

@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "@dt/ThemeProvider";
 import { HelmetProvider } from "react-helmet-async";
-import { initI18n } from "./i18n";
+import i18n from "./i18n"; // Use default export - already initialized
 import * as Sentry from "@sentry/react";
 
 const redirectPath = sessionStorage.getItem("redirectPath");
@@ -47,26 +47,25 @@ if (gaId) {
   document.head.appendChild(inlineScript);
 }
 
-initI18n().then(() => {
-  const root = ReactDOM.createRoot(
-    document.getElementById("root") as HTMLElement,
-  );
-  root.render(
-    <React.StrictMode>
-      <HelmetProvider>
-        <ThemeProvider>
-          {sentryDsn ? (
-            <Sentry.ErrorBoundary fallback={<p>Something went wrong.</p>}>
-              <App />
-            </Sentry.ErrorBoundary>
-          ) : (
+// i18n is now synchronously initialized, so we can render immediately
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement,
+);
+root.render(
+  <React.StrictMode>
+    <HelmetProvider>
+      <ThemeProvider>
+        {sentryDsn ? (
+          <Sentry.ErrorBoundary fallback={<p>Something went wrong.</p>}>
             <App />
-          )}
-        </ThemeProvider>
-      </HelmetProvider>
-    </React.StrictMode>,
-  );
-});
+          </Sentry.ErrorBoundary>
+        ) : (
+          <App />
+        )}
+      </ThemeProvider>
+    </HelmetProvider>
+  </React.StrictMode>,
+);
 
 // Temporary: unregister any previously installed service workers and clear caches.
 // This helps clients that have an old service worker still active after deploys.

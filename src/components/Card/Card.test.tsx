@@ -1,7 +1,13 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
+import { I18nextProvider } from "react-i18next";
+import i18n from "../../i18n";
 import Card, { CardAction, CardTab } from "./Card";
+
+function withI18n(ui: React.ReactElement) {
+  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
+}
 
 describe("Card", () => {
   it("renders title correctly", () => {
@@ -71,7 +77,7 @@ describe("Card", () => {
   });
 
   it("renders loading skeleton", () => {
-    render(<Card title="Loading Card" loading body="Hidden" />);
+    render(withI18n(<Card title="Loading Card" loading body="Hidden" />));
     const skeleton = screen.getByRole("status", { name: /loading content/i });
     expect(skeleton).toHaveAttribute("aria-busy", "true");
   });
