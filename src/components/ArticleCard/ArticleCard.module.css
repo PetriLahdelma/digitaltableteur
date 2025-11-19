@@ -53,8 +53,8 @@
   margin-inline: 0;
   font-family: var(--primary-body-font, sans-serif);
   font-size: 1.1rem;
-  color: var(--primary-text-color, #00f);
   white-space: pre-line;
+  color: var(--primary-text-color, #00f);
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* number of lines */
   line-clamp: 2;

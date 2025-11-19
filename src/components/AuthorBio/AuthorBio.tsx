@@ -7,9 +7,10 @@ import { getAuthorBySlug } from "../../data/authors";
 type AuthorBioProps = {
   slug: string;
   className?: string;
+  heading?: string;
 };
 
-const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className }) => {
+const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }) => {
   const author = getAuthorBySlug(slug);
 
   if (!author) {
@@ -32,7 +33,7 @@ const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className }) => {
           <Avatar imageUrl={author.imageUrl} name={author.name} size="64px" />
         )}
         <div>
-          <h3 className={styles.name}>{author.name}</h3>
+          <h3 className={styles.name}>{heading ?? author.name}</h3>
         </div>
       </div>
       {leadText && <p className={styles.tagline}>{leadText}</p>}
