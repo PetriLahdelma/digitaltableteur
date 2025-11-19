@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./BusyIndicator.module.css";
 import { useTranslation } from "react-i18next";
+import Icon from "../Icon/Icon";
 
 export interface BusyIndicatorProps {
   /** Visual size token */
@@ -77,11 +78,13 @@ const BusyIndicator: React.FC<BusyIndicatorProps> = ({
             })}
           </span>
         ) : (
-          <span className={styles.spinner}>
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-            <span className={styles.dot} />
+          <span className={styles.iconSpinner}>
+            <Icon
+              name="circle-notch"
+              size={size === "s" ? "sm" : size === "l" ? "xl" : "lg"}
+              spin
+              decorative
+            />
           </span>
         )}
       </span>

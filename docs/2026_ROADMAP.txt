@@ -309,20 +309,3 @@ We build one public AI demo that shows our DS/AI edge safely.
 
 
 We keep focus: Design Systems + AI-enabled design ops for mid-market SaaS. This is our wedge.
-
-
-If you want, I’ll draft:
-
-
-The new homepage hero + IA,
-
-
-A case study template (markdown),
-
-
-A security header set + Next.js migration checklist,
-
-
-And a 3-email outbound sequence tied to the offers.
-
-

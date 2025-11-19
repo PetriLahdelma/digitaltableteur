@@ -28,6 +28,18 @@ describe("Author", () => {
     expect(screen.getByText("By Jane Smith")).toBeInTheDocument();
   });
 
+  it("links to profile when profileUrl is provided", () => {
+    render(
+      <Author
+        name="John Doe"
+        imageUrl="/test-image.jpg"
+        profileUrl="/blog/authors/john-doe"
+      />,
+    );
+    const link = screen.getByRole("link", { name: "By John Doe" });
+    expect(link).toHaveAttribute("href", "/blog/authors/john-doe");
+  });
+
   it("has correct container structure", () => {
     render(<Author name="John Doe" imageUrl="/test-image.jpg" />);
     const container = screen.getByText("By John Doe").closest("div");

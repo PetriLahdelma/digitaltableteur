@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./ServicesGrid.module.css";
 import { useTranslation } from "react-i18next";
-import { FaPalette, FaCode, FaRobot, FaChessKnight } from "react-icons/fa";
+import Icon from "@dt/Icon";
 
 export interface ServicesGridProps {
   className?: string;
 }
 
 // Icon order aligned with titles: Design, Development, Strategy, AI Innovation
-const ICONS = [FaPalette, FaCode, FaChessKnight, FaRobot];
+const ICONS = ["palette", "code", "strategy", "robot"] as const;
 
 const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
         <span className={styles.gridLabel} aria-hidden="true">
           {ariaLabel}
         </span>
-        {ICONS.map((Icon, idx) => (
+        {ICONS.map((iconName, idx) => (
           <div
             key={idx}
             className={styles.item}
@@ -38,7 +38,7 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
               aria-hidden="true"
               data-testid="services-grid-icon"
             >
-              {Icon ? <Icon size={32} /> : <span aria-hidden="true">?</span>}
+              <Icon name={iconName} size={32} ariaLabel={titles[idx]} />
             </div>
             <div className={styles.title}>{titles[idx]}</div>
           </div>

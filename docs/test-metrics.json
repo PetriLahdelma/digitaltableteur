@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2025-11-10T14:08:58.879Z",
+  "generatedAt": "2025-11-19T10:50:29.463Z",
   "vitest": {
-    "totalSuites": 92,
-    "passedSuites": 92,
+    "totalSuites": 112,
+    "passedSuites": 112,
     "failedSuites": 0,
-    "totalTests": 377,
-    "passedTests": 377,
+    "totalTests": 487,
+    "passedTests": 487,
     "failedTests": 0,
-    "durationMs": 4419.491943359375
+    "durationMs": 5895.026123046875
   },
   "accessibilityPages": {
     "total": 6,
@@ -15,9 +15,49 @@
     "failed": 0
   },
   "accessibilityStories": {
-    "total": 171,
-    "passed": 171,
+    "total": 185,
+    "passed": 185,
     "failed": 0
+  },
+  "coverage": {
+    "summary": {
+      "statements": 82.24,
+      "branches": 76.62,
+      "functions": 68.69,
+      "lines": 82.24
+    },
+    "rawTotals": {
+      "statements": {
+        "total": 7361,
+        "covered": 6054,
+        "skipped": 0,
+        "pct": 82.24
+      },
+      "branches": {
+        "total": 1339,
+        "covered": 1026,
+        "skipped": 0,
+        "pct": 76.62
+      },
+      "functions": {
+        "total": 246,
+        "covered": 169,
+        "skipped": 0,
+        "pct": 68.69
+      },
+      "lines": {
+        "total": 7361,
+        "covered": 6054,
+        "skipped": 0,
+        "pct": 82.24
+      }
+    },
+    "thresholds": {
+      "statements": 65,
+      "branches": 75,
+      "functions": 65,
+      "lines": 65
+    }
   },
   "componentAdoption": {
     "currentRate": 0.7708333333333334,

@@ -1,0 +1,49 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/storybook-static": true,
+    "**/.vercel": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/coverage": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/storybook-static": true,
+    "**/.vercel": true,
+    "**/.git": true,
+    "**/coverage": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/storybook-static/**": true,
+    "**/.vercel/**": true,
+    "**/.git/**": true,
+    "**/coverage/**": true
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.exclude": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/storybook-static/**"
+  ],
+  "typescript.preferences.includePackageJsonAutoImports": "off",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  }
+}

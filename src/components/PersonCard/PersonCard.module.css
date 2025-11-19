@@ -6,15 +6,17 @@
   padding-block: var(--space-layout-16);
   padding-inline: var(--space-layout-16);
   inline-size: fit-content;
-  grid-template-columns: minmax(120px, 120px) 1fr;
+  grid-template-columns: minmax(96px, 96px) 1fr;
+  align-items: center;
   gap: var(--space-layout-24, 1.5rem);
   border: 2px solid var(--color-primary);
   background-color: var(--color-light-bg);
 }
 
 .portrait {
-  block-size: clamp(112px, 18vw, 120px);
-  inline-size: clamp(112px, 18vw, 120px);
+  margin-block: auto;
+  block-size: clamp(96px, 18vw, 96px);
+  inline-size: clamp(96px, 18vw, 96px);
   border-radius: 100rem;
   aspect-ratio: 1;
   clip-path: inset(2px round 50%);
@@ -23,6 +25,7 @@
 
 .personDetails {
   display: grid;
+  align-content: center;
 }
 
 .nameTitle {
@@ -72,7 +75,6 @@
 }
 
 .socialLink svg {
-  font-size: 1.5rem;
   color: var(--color-primary);
 }
 

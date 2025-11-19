@@ -4,6 +4,7 @@ import Layout from "@dt/Layout";
 import CookieConsent from "@dt/CookieConsent";
 import ChunkErrorBoundary from "@dt/ChunkErrorBoundary";
 import { useTranslation } from "react-i18next";
+import i18n from "./i18n"; // Import i18n instance directly
 import { BusyIndicator, AppLoading } from "./components";
 
 const Home = React.lazy(() => import("./pages/Home"));
@@ -14,21 +15,8 @@ const GarageJunction = React.lazy(() => import("./pages/work/garageJunction"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Blog = React.lazy(() => import("./pages/Blog"));
-const Designing2025 = React.lazy(() => import("./pages/posts/Designing2025"));
-const InSearchOfImpact = React.lazy(
-  () => import("./pages/posts/InSearchOfImpact"),
-);
-const WorkflowTips = React.lazy(() => import("./pages/posts/WorkflowTips"));
-const DigitalCraftsmanship = React.lazy(
-  () => import("./pages/posts/DigitalCraftsmanship"),
-);
-const ThoughtsOnFutureBranding = React.lazy(
-  () => import("./pages/posts/ThoughtsOnFutureBranding"),
-);
-const FigmaMCP = React.lazy(() => import("./pages/posts/FigmaMCP"));
-const PetriLahdelmaBio = React.lazy(
-  () => import("./pages/posts/PetriLahdelmaBio"),
-);
+const BlogArticle = React.lazy(() => import("./pages/BlogArticle"));
+const AuthorProfile = React.lazy(() => import("./pages/AuthorProfile"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const AiUsage = React.lazy(() => import("./pages/AiUsage"));
 
@@ -43,16 +31,20 @@ const CookiePolicyFullSV = React.lazy(
 );
 
 function App() {
-  const { i18n } = useTranslation();
+  useTranslation(); // Keep this for React component updates
   useEffect(() => {
     const storedLang =
       localStorage.getItem("lang") ||
       (typeof window !== "undefined" &&
         document.cookie.match(/i18next=([a-zA-Z-]+)/)?.[1]);
-    if (storedLang && i18n.language !== storedLang) {
+    if (
+      storedLang &&
+      i18n.language !== storedLang &&
+      typeof i18n.changeLanguage === "function"
+    ) {
       i18n.changeLanguage(storedLang);
     }
-  }, [i18n]);
+  }, []);
 
   return (
     <ChunkErrorBoundary>
@@ -67,31 +59,8 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/blog" element={<Blog />} />
-                <Route
-                  path="/blog/designing-in-2025"
-                  element={<Designing2025 />}
-                />
-                <Route
-                  path="/blog/in-search-of-impact"
-                  element={<InSearchOfImpact />}
-                />
-                <Route path="/blog/workflow-tips" element={<WorkflowTips />} />
-                <Route
-                  path="/blog/digital-craftsmanship"
-                  element={<DigitalCraftsmanship />}
-                />
-                <Route
-                  path="/blog/thoughts-on-future-branding"
-                  element={<ThoughtsOnFutureBranding />}
-                />
-                <Route
-                  path="/blog/figma-mcp-design-systems"
-                  element={<FigmaMCP />}
-                />
-                <Route
-                  path="/blog/petri-lahdelma-bio"
-                  element={<PetriLahdelmaBio />}
-                />
+                <Route path="/blog/:slug" element={<BlogArticle />} />
+                <Route path="/blog/authors/:slug" element={<AuthorProfile />} />
                 {/* Cookie Policy Full routes for all languages */}
                 <Route
                   path="/cookie-policy-full-en"

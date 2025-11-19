@@ -5,8 +5,8 @@ import {
   AllSizes as ButtonSizes,
 } from "../components/Button/Button.stories";
 import {
-  AllVariants as BadgeVariants,
-  AllSizes as BadgeSizes,
+  AllVariants as BadgeVariantsStory,
+  AllSizes as BadgeSizesStory,
 } from "../components/Badge/Badge.stories";
 import {
   Spans as GridSpans,
@@ -33,6 +33,7 @@ import Avatar from "@dt/Avatar";
 import {
   WithImage as AvatarWithImageStory,
   WithInitials as AvatarWithInitialsStory,
+  WithMenu as AvatarWithMenuStory,
 } from "../components/Avatar/Avatar.stories";
 import {
   Default as CheckboxDefaultStory,
@@ -69,6 +70,34 @@ export default {
 
 const AvatarWithImage = () => <Avatar {...AvatarWithImageStory.args} />;
 const AvatarWithInitials = () => <Avatar {...AvatarWithInitialsStory.args} />;
+const AvatarWithMenu = () => <Avatar {...AvatarWithMenuStory.args} />;
+
+const storyToComponent = (storyExport: any): React.FC => {
+  const WrappedComponent: React.FC = () => {
+    if (typeof storyExport === "function") {
+      const StoryComponent = storyExport as React.ComponentType<any>;
+      return <StoryComponent {...((storyExport as any)?.args ?? {})} />;
+    }
+    if (
+      storyExport &&
+      typeof storyExport === "object" &&
+      typeof storyExport.render === "function"
+    ) {
+      const RenderComponent = storyExport.render as React.ComponentType<any>;
+      return <RenderComponent {...(storyExport.args ?? {})} />;
+    }
+    return null;
+  };
+  WrappedComponent.displayName =
+    storyExport?.name ||
+    storyExport?.displayName ||
+    storyExport?.__docgenInfo?.displayName ||
+    "StoryToComponent";
+  return WrappedComponent;
+};
+
+const BadgeVariants = storyToComponent(BadgeVariantsStory);
+const BadgeSizes = storyToComponent(BadgeSizesStory);
 const CheckboxDefault = () => (
   <Checkbox
     {...CheckboxDefaultStory.args}
@@ -480,17 +509,17 @@ const COMPONENTS = [
   { name: "Button Variants", Variants: ButtonVariants },
   { name: "Grid Nested", Variants: GridNested },
   { name: "Grid Spans", Variants: GridSpans },
-  { name: "Text AllTags", Variants: TextAllTags },
-  { name: "Text AsSpan", Variants: TextAsSpan },
-  { name: "Text CustomClass", Variants: TextCustomClass },
+  { name: "Text All Tags", Variants: TextAllTags },
+  { name: "Text as Span", Variants: TextAsSpan },
+  { name: "Text Custom Class", Variants: TextCustomClass },
   { name: "Text Default", Variants: TextDefault },
-  { name: "Text SerifAndSans", Variants: TextSerifAndSans },
+  { name: "Text Serif and Sans", Variants: TextSerifAndSans },
   { name: "Text Sizes", Variants: TextSizes },
-  { name: "Title CustomTagAndClass", Variants: TitleCustomTag },
+  { name: "Title Custom Tag and Class", Variants: TitleCustomTag },
   { name: "Title Levels", Variants: TitleLevels },
   { name: "Title Sizes", Variants: TitleSizes },
   {
-    name: "ArticleCard Default",
+    name: "Article Card Default",
     Variants: () => (
       <ArticleCardDefault
         title="Design System Best Practices"
@@ -501,7 +530,7 @@ const COMPONENTS = [
     ),
   },
   {
-    name: "ArticleCard WithCustomClass",
+    name: "Article Card with Custom Class",
     Variants: () => (
       <ArticleCardWithCustomClass
         title="Branding in 2025: Trends & Opportunities"
@@ -513,15 +542,19 @@ const COMPONENTS = [
     ),
   },
   {
-    name: "Avatar WithImage",
+    name: "Avatar with Image",
     Variants: AvatarWithImage,
   },
   {
-    name: "Avatar WithInitials",
+    name: "Avatar with Initials",
     Variants: AvatarWithInitials,
   },
   {
-    name: "Checkbox AllVariants",
+    name: "Avatar with Menu",
+    Variants: AvatarWithMenu,
+  },
+  {
+    name: "Checkbox all Variants",
     Variants: CheckboxAllVariants,
   },
   {
@@ -537,7 +570,7 @@ const COMPONENTS = [
     Variants: FlexBoxColumn,
   },
   {
-    name: "FlexBox JustifyAlign",
+    name: "FlexBox Justify Align",
     Variants: FlexBoxJustifyAlign,
   },
   {
@@ -545,7 +578,7 @@ const COMPONENTS = [
     Variants: FlexBoxWrap,
   },
   {
-    name: "FlexBox GapVariants",
+    name: "FlexBox Gap Variants",
     Variants: FlexBoxGapVariants,
   },
   { name: "Inputs Text", Variants: InputsText },
@@ -553,10 +586,10 @@ const COMPONENTS = [
   { name: "Inputs Email", Variants: InputsEmail },
   { name: "Inputs Password", Variants: InputsPassword },
   { name: "Inputs Search", Variants: InputsSearch },
-  { name: "Inputs WithError", Variants: InputsWithError },
+  { name: "Inputs with Error", Variants: InputsWithError },
   { name: "Inputs Disabled", Variants: InputsDisabled },
   { name: "Label Default", Variants: LabelDefaultWrap },
-  { name: "Label WithTooltip", Variants: LabelWithTooltipWrap },
+  { name: "Label with Tooltip", Variants: LabelWithTooltipWrap },
   { name: "Label Required", Variants: LabelRequiredWrap },
   { name: "Label Disabled", Variants: LabelDisabledWrap },
   { name: "Link Playground", Variants: LinkPlaygroundWrap },

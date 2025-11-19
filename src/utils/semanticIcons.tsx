@@ -1,25 +1,20 @@
 import React from "react";
-import type { IconType } from "react-icons";
-import {
-  FaCheckCircle,
-  FaInfoCircle,
-  FaExclamationTriangle,
-  FaTimesCircle,
-} from "react-icons/fa";
+import Icon from "@dt/Icon";
 
 export type SemanticStatus = "success" | "info" | "warning" | "error";
 
-const STATUS_ICON_COMPONENTS: Record<SemanticStatus, IconType> = {
-  success: FaCheckCircle,
-  info: FaInfoCircle,
-  warning: FaExclamationTriangle,
-  error: FaTimesCircle,
+const STATUS_ICON_NAMES: Record<SemanticStatus, string> = {
+  success: "check-circle",
+  info: "info",
+  warning: "warning",
+  error: "x-circle",
 };
 
 export const getSemanticIcon = (status: SemanticStatus) => {
-  const IconComponent = STATUS_ICON_COMPONENTS[status];
   return (
-    <IconComponent
+    <Icon
+      name={STATUS_ICON_NAMES[status]}
+      ariaLabel={status}
       aria-hidden="true"
       focusable="false"
       data-semantic-icon={status}

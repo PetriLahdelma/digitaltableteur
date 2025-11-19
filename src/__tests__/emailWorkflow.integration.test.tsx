@@ -1,7 +1,13 @@
 import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { I18nextProvider } from "react-i18next";
+import i18n from "../i18n";
 import ChatWidget from "../components/ChatWidget/ChatWidget";
+
+function withI18n(ui: React.ReactElement) {
+  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
+}
 
 // Mock EmailJS service env credentials
 vi.stubGlobal("import.meta", {
@@ -19,7 +25,7 @@ vi.mock("@dt/ContactForm/contactEmailService", () => ({
 
 describe("Email workflow integration", () => {
   it("walks through compose to success", async () => {
-    render(<ChatWidget />);
+    render(withI18n(<ChatWidget />));
 
     // Open widget
     const toggle = screen.getByRole("button");

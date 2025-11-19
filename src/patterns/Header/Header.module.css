@@ -83,14 +83,14 @@ header h2 a {
 .nav a {
   position: relative;
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
-  font-size: 20px;
+  font-size: 1.25rem; /* 20px -> 1.25rem */
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.5rem; /* 24px -> 1.5rem */
   letter-spacing: 0;
   text-decoration: none;
   color: var(--main-body-copy-color);
   transition: color 0.2s;
-  padding-bottom: 6px;
+  padding-bottom: 0.375rem; /* 6px -> 0.375rem */
 }
 
 .nav a:hover,
@@ -126,7 +126,7 @@ header h2 a {
   align-items: center;
   border: none;
   background: none;
-  font-size: 24px;
+  font-size: 1.5rem; /* 24px -> 1.5rem */
   color: var(--color-primary);
   cursor: pointer;
   pointer-events: auto;
@@ -146,9 +146,17 @@ header h2 a {
   animation: theme-toggle-pop 0.45s ease;
 }
 
-.themeToggle:hover,
-.themeToggle:focus {
+.themeToggle:hover {
   color: var(--color-primary);
+}
+
+.themeToggle:focus {
+  outline: none;
+}
+
+.themeToggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .languageSwitcher {
@@ -248,7 +256,7 @@ header h2 a {
   }
 
   .nav a {
-    font-size: 16px;
+    font-size: 1rem; /* 16px -> 1rem */
   }
 }
 

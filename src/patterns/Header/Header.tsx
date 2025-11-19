@@ -5,16 +5,15 @@ import "../../styles/variables.css";
 import "../../styles/fonts.css";
 import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
 import { type Theme } from "@dt/ThemeProvider";
-import { IoMoon, IoSunnySharp } from "react-icons/io5";
-import { MdOutlineContrast } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import { usePersistentTheme } from "../../hooks/usePersistentTheme";
+import Icon from "@dt/Icon";
 
 const themeIcons: Record<Theme, React.ReactNode> = {
-  light: <IoSunnySharp />,
-  dark: <IoMoon />,
-  hcb: <MdOutlineContrast />,
-  hcw: <MdOutlineContrast />,
+  light: <Icon name="sun" ariaLabel="Light theme" />,
+  dark: <Icon name="moon" ariaLabel="Dark theme" />,
+  hcb: <Icon name="circle-half" ariaLabel="High contrast dark" />,
+  hcw: <Icon name="circle-half" ariaLabel="High contrast light" />,
 };
 
 type HeaderProps = {

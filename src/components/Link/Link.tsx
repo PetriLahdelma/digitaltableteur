@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Link.module.css";
 import "../../styles/variables.css";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import Icon from "@dt/Icon";
 
 interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   size?: "S" | "M" | "L";
@@ -65,7 +65,7 @@ const Link: React.FC<LinkProps> = ({
       {children}
       {isExternal && hasTextContent && (
         <span className={styles.externalIcon}>
-          {FaExternalLinkAlt({ "aria-label": "External link" })}
+          <Icon name="arrow-square-out" ariaLabel="External link" />
         </span>
       )}
     </a>
