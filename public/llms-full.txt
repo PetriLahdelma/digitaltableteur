@@ -7,7 +7,9 @@ This site showcases all public pages, works, and blog posts in English, Finnish,
 ## All Pages
 - [Redirecting...](https://digitaltableteur.com/About)
 - [Redirecting...](https://digitaltableteur.com/AiUsage)
+- [Redirecting...](https://digitaltableteur.com/AuthorProfile)
 - [Redirecting...](https://digitaltableteur.com/Blog)
+- [Redirecting...](https://digitaltableteur.com/BlogArticle)
 - [Redirecting...](https://digitaltableteur.com/Contact)
 - [Redirecting...](https://digitaltableteur.com/CookiePolicy-full-en)
 - [Redirecting...](https://digitaltableteur.com/CookiePolicy-full-fi)
@@ -17,14 +19,6 @@ This site showcases all public pages, works, and blog posts in English, Finnish,
 - [Redirecting...](https://digitaltableteur.com/NotFound)
 - [Redirecting...](https://digitaltableteur.com/UnderDevelopment)
 - [Redirecting...](https://digitaltableteur.com/Work)
-- [Redirecting...](https://digitaltableteur.com/posts/Designing2025)
-- [Redirecting...](https://digitaltableteur.com/posts/DigitalCraftsmanship)
-- [Redirecting...](https://digitaltableteur.com/posts/FigmaMCP)
-- [Redirecting...](https://digitaltableteur.com/posts/InSearchOfImpact)
-- [Redirecting...](https://digitaltableteur.com/posts/PetriLahdelmaBio)
-- [Redirecting...](https://digitaltableteur.com/posts/TemplateArticle)
-- [Redirecting...](https://digitaltableteur.com/posts/ThoughtsOnFutureBranding)
-- [Redirecting...](https://digitaltableteur.com/posts/WorkflowTips)
 - [Redirecting...](https://digitaltableteur.com/work/garageJunction)
 - [Redirecting...](https://digitaltableteur.com/work/illustrations)
 - [Redirecting...](https://digitaltableteur.com/work/newThingsCo)
@@ -53,7 +47,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc3459b8cb8d6b',t:'MTc2MzAxNTI1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f878258aa8da7',t:'MTc2MzU1MzQzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -68,7 +62,22 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc345af9e68d6b',t:'MTc2MzAxNTI1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f8783db718da7',t:'MTc2MzU1MzQzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
+
+---
+
+### Page: https://digitaltableteur.com/AuthorProfile
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/AuthorProfile
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f87852cf08da7',t:'MTc2MzU1MzQzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -83,7 +92,22 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc345c1ac68d6b',t:'MTc2MzAxNTI1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f87863df78da7',t:'MTc2MzU1MzQzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
+
+---
+
+### Page: https://digitaltableteur.com/BlogArticle
+Title: Redirecting...
+Meta Description: 
+Language: en
+Canonical URL: https://digitaltableteur.com/BlogArticle
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+If you are not redirected automatically, click here.
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f87874f358da7',t:'MTc2MzU1MzQ0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -98,7 +122,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc345cfb908d6b',t:'MTc2MzAxNTI1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f8788685c8da7',t:'MTc2MzU1MzQ0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -113,7 +137,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc345dfc848d6b',t:'MTc2MzAxNTI1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f878979b98da7',t:'MTc2MzU1MzQ0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -128,7 +152,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc345f4db18d6b',t:'MTc2MzAxNTI2MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f878a7af08da7',t:'MTc2MzU1MzQ0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -143,7 +167,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34604e788d6b',t:'MTc2MzAxNTI2MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f878bbcb58da7',t:'MTc2MzU1MzQ0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -158,7 +182,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34613f908d6b',t:'MTc2MzAxNTI2MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f878ccdfb8da7',t:'MTc2MzU1MzQ0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -173,7 +197,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc346288cf8d6b',t:'MTc2MzAxNTI2MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f878ddf608da7',t:'MTc2MzU1MzQ0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -188,7 +212,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc3463797f8d6b',t:'MTc2MzAxNTI2MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f878ef8b18da7',t:'MTc2MzU1MzQ0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -203,7 +227,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34646a728d6b',t:'MTc2MzAxNTI2MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f879009f68da7',t:'MTc2MzU1MzQ0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -218,127 +242,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc3465cb998d6b',t:'MTc2MzAxNTI2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/posts/Designing2025
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/posts/Designing2025
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc3466cc8f8d6b',t:'MTc2MzAxNTI2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/posts/DigitalCraftsmanship
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/posts/DigitalCraftsmanship
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc3467bd898d6b',t:'MTc2MzAxNTI2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/posts/FigmaMCP
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/posts/FigmaMCP
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34691e9f8d6b',t:'MTc2MzAxNTI2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/posts/InSearchOfImpact
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/posts/InSearchOfImpact
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc3469ff708d6b',t:'MTc2MzAxNTI2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/posts/PetriLahdelmaBio
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/posts/PetriLahdelmaBio
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc346ae82c8d6b',t:'MTc2MzAxNTI2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/posts/TemplateArticle
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/posts/TemplateArticle
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc346c59848d6b',t:'MTc2MzAxNTI2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/posts/ThoughtsOnFutureBranding
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/posts/ThoughtsOnFutureBranding
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc346d4a2d8d6b',t:'MTc2MzAxNTI2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/posts/WorkflowTips
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/posts/WorkflowTips
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc346e2b108d6b',t:'MTc2MzAxNTI2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f87914b598da7',t:'MTc2MzU1MzQ0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -353,7 +257,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc346f9c458d6b',t:'MTc2MzAxNTI2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f87927ca78da7',t:'MTc2MzU1MzQ0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -368,7 +272,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34708d0c8d6b',t:'MTc2MzAxNTI2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f87938dcc8da7',t:'MTc2MzU1MzQ0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -383,7 +287,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34717e158d6b',t:'MTc2MzAxNTI2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f87948f028da7',t:'MTc2MzU1MzQ0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -398,7 +302,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc3472ef528d6b',t:'MTc2MzAxNTI2Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f8795887b8da7',t:'MTc2MzU1MzQ0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -413,7 +317,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc3473d81b8d6b',t:'MTc2MzAxNTI2Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f8796a9f58da7',t:'MTc2MzU1MzQ0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -428,7 +332,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc3474b8dd8d6b',t:'MTc2MzAxNTI2Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f8797ab388da7',t:'MTc2MzU1MzQ0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -443,7 +347,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34762a198d6b',t:'MTc2MzAxNTI2Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f8798dc9d8da7',t:'MTc2MzU1MzQ0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -458,7 +362,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34770ace8d6b',t:'MTc2MzAxNTI2Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f8799ee2b8da7',t:'MTc2MzU1MzQ0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -473,7 +377,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34780ba18d6b',t:'MTc2MzAxNTI2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f879affb58da7',t:'MTc2MzU1MzQ0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -488,7 +392,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc34796cc78d6b',t:'MTc2MzAxNTI2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f879c19448da7',t:'MTc2MzU1MzQ0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -503,7 +407,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc347a6dae8d6b',t:'MTc2MzAxNTI2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f879d0a5f8da7',t:'MTc2MzU1MzQ0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -518,7 +422,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc347bdedd8d6b',t:'MTc2MzAxNTI2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f879e2bb68da7',t:'MTc2MzU1MzQ0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -533,7 +437,7 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc347ccf818d6b',t:'MTc2MzAxNTI2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f879fad9f8da7',t:'MTc2MzU1MzQ0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---
 
@@ -548,6 +452,6 @@ No headings found
 
 ## Main Content:
 If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dc347db85c8d6b',t:'MTc2MzAxNTI2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0f87a0bef68da7',t:'MTc2MzU1MzQ0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=documen
 
 ---

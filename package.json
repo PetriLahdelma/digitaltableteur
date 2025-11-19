@@ -8,9 +8,16 @@
     "@ai-sdk/mcp": "^0.0.7",
     "@ai-sdk/openai": "^2.0.64",
     "@ai-sdk/react": "^2.0.89",
+    "@babel/parser": "^7.28.5",
+    "@babel/traverse": "^7.28.5",
     "@emailjs/browser": "^4.4.1",
     "@emotion/is-prop-valid": "^1.3.1",
+    "@mdx-js/react": "^3.1.1",
+    "@mdx-js/rollup": "^3.1.1",
     "@phosphor-icons/react": "^2.1.10",
+    "@sanity/block-content-to-markdown": "^1.0.0",
+    "@sanity/client": "^7.13.0",
+    "@sanity/image-url": "^1.2.0",
     "@sentry/react": "^10.23.0",
     "@sentry/vite-plugin": "^4.6.0",
     "@testing-library/dom": "^10.4.0",
@@ -22,6 +29,8 @@
     "chart.js": "^4.4.9",
     "dotenv": "^16.6.1",
     "figma-developer-mcp": "^0.6.4",
+    "gray-matter": "^4.0.3",
+    "he": "^1.2.0",
     "i18next": "^25.6.1",
     "jsdom": "^26.1.0",
     "leaflet": "^1.9.4",
@@ -37,7 +46,10 @@
     "react-leaflet": "^4.2.1",
     "react-markdown": "^9.0.3",
     "react-router-dom": "^7.9.5",
+    "react-stack-grid": "^0.7.1",
+    "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
+    "remark-mdx-frontmatter": "^5.2.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "web-vitals": "^2.1.4",
@@ -77,6 +89,14 @@
     "ts:mcp:status:stub": "node scripts/ts-mcp-automation.mjs --force-stub",
     "github:mcp:test": "node scripts/test-github-mcp.mjs",
     "figma:mcp:test": "node scripts/test-figma-mcp.mjs",
+    "sanity:parse-posts": "node scripts/sanity-migration/parsePosts.js",
+    "sanity:convert": "node scripts/sanity-migration/convertToSanityFormat.js",
+    "sanity:cleanup-legacy": "node scripts/sanity-migration/cleanupLegacyDocuments.js",
+    "sanity:upload": "node scripts/sanity-migration/batchUpload.js",
+    "sanity:sync-from-remote": "node scripts/sanity-migration/syncFromSanity.js",
+    "linear:new": "tsx scripts/linear/create-issue.ts",
+    "linear:update": "tsx scripts/linear/update-issue.ts",
+    "sanity:dev": "cd digitaltableteur-blog && npm run dev",
     "postbuild": "npm run sentry:summary:auto || npm run sentry:summary:stub"
   },
   "eslintConfig": {
@@ -104,7 +124,7 @@
     ]
   },
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=20.19.0 <21"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^10.0.5",

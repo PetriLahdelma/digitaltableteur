@@ -69,6 +69,13 @@ describe("ArticleCard", () => {
     expect(screen.getByText("Quick read")).toBeInTheDocument();
   });
 
+  it("hides read time when not provided", () => {
+    const props = { ...defaultProps };
+    delete props.readTime;
+    render(<ArticleCard {...props} />);
+    expect(screen.queryByText(/read$/i)).not.toBeInTheDocument();
+  });
+
   it("shows read more text", () => {
     render(<ArticleCard {...defaultProps} />);
 

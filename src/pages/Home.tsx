@@ -113,7 +113,7 @@ const Home = () => {
           "Digital experiences combining aesthetic excellence with functional innovation.",
         ),
         variant: "filled" as const,
-        icon: <Icon name="palette" />,
+        icon: <Icon name="palette" ariaLabel={t("homeCreativeDevelopment")} />,
       },
       {
         key: "strategy",
@@ -123,7 +123,9 @@ const Home = () => {
           "Strategic thinking meets visual identity creating memorable brand experiences.",
         ),
         variant: "filled" as const,
-        icon: <Icon name="chart-line-up" />,
+        icon: (
+          <Icon name="chart-line-up" ariaLabel={t("homeStrategyBranding")} />
+        ),
       },
       {
         key: "illustration",
@@ -133,7 +135,7 @@ const Home = () => {
           "Custom illustrations and editorial design that tell compelling visual stories.",
         ),
         variant: "filled" as const,
-        icon: <Icon name="pencil" />,
+        icon: <Icon name="pencil" ariaLabel={t("homeIllustrationEditorial")} />,
       },
     ],
     [t],
@@ -197,22 +199,24 @@ const Home = () => {
                 className={styles.heroCtas}
                 variants={heroCtaContainerVariants}
               >
-                <motion.div
+                <motion.a
+                  href="/contact"
                   className={styles.heroCtaLink}
                   variants={heroCtaItemVariants}
                 >
-                  <Button variant="secondary" inverse size="l" href="/contact">
+                  <Button variant="secondary" inverse size="l">
                     {t("homeHeroContactCta")}
                   </Button>
-                </motion.div>
-                <motion.div
+                </motion.a>
+                <motion.a
+                  href="/about"
                   className={styles.heroCtaLink}
                   variants={heroCtaItemVariants}
                 >
-                  <Button variant="secondary" inverse size="l" href="/about">
+                  <Button variant="secondary" inverse size="l">
                     {t("homeHeroAboutCta")}
                   </Button>
-                </motion.div>
+                </motion.a>
               </motion.div>
             </motion.div>
           </Grid>

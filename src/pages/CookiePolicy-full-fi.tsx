@@ -30,9 +30,11 @@ const CookiePolicyFullFI = () => {
             size="m"
             onClick={() => (window.location.href = "/")}
           >
-            <span style={{ marginInlineEnd: 8 }}>
-              <Icon name="arrow-left" />
-            </span>
+            <Icon
+              name="arrow-left"
+              ariaLabel="Takaisin"
+              style={{ marginInlineEnd: 8 }}
+            />
             Takaisin
           </Button>
         </div>

@@ -18,6 +18,7 @@ export default {
     lead: { control: "text" },
     link: { control: "text" },
     readTime: { control: "text" },
+    publishedAt: { control: "text" },
     className: { control: "text" },
   },
 };

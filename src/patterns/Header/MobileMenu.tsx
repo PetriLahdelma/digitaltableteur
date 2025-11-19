@@ -1,13 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Icon from "@dt/Icon";
 import { type Theme } from "@dt/ThemeProvider";
 import styles from "./MobileMenu.module.css";
 import Title from "@dt/Title";
 import { NavMenuList } from "@dt/index";
 import Label from "@dt/Label";
 import { usePersistentTheme } from "../../hooks/usePersistentTheme";
+import Icon from "@dt/Icon";
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -16,10 +16,34 @@ type MobileMenuProps = {
 };
 
 const themeIcons: Record<Theme, React.ReactNode> = {
-  light: <Icon name="sun" className={styles.themeButtonIcon} />,
-  dark: <Icon name="moon" className={styles.themeButtonIcon} />,
-  hcb: <Icon name="circle" className={styles.themeButtonIcon} />,
-  hcw: <Icon name="circle" className={styles.themeButtonIcon} />,
+  light: (
+    <Icon
+      name="sun"
+      className={styles.themeButtonIcon}
+      ariaLabel="Light theme"
+    />
+  ),
+  dark: (
+    <Icon
+      name="moon"
+      className={styles.themeButtonIcon}
+      ariaLabel="Dark theme"
+    />
+  ),
+  hcb: (
+    <Icon
+      name="circle-half"
+      className={styles.themeButtonIcon}
+      ariaLabel="High contrast dark"
+    />
+  ),
+  hcw: (
+    <Icon
+      name="circle-half"
+      className={styles.themeButtonIcon}
+      ariaLabel="High contrast light"
+    />
+  ),
 };
 
 const setCookie = (name: string, value: string, days = 365) => {
@@ -111,7 +135,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               onClick={onClose}
               aria-label={t("navMenuClose", "Close navigation")}
             >
-              <Icon name="X" size={20} />
+              <Icon name="x" ariaLabel="Close" size={20} />
             </button>
           </header>
           <nav aria-label={t("navMenuLinks", "Primary pages")}>

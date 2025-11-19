@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "@dt/Button";
-import Icon from "@dt/Icon";
 import styles from "./ChatWidget.module.css";
 import { useTranslation } from "react-i18next";
+import Icon from "@dt/Icon";
 
 interface ChatToggleProps {
   isOpen: boolean;
@@ -26,7 +26,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
         ref={ref}
         data-open={isOpen}
         onClick={onToggle}
-        icon={<Icon name="ChatCircleDots" size="md" aria-hidden="true" />}
+        icon={<Icon name="chats-circle" ariaLabel={ariaLabel} />}
         aria-expanded={isOpen}
         aria-controls={controlsId}
         aria-label={ariaLabel}

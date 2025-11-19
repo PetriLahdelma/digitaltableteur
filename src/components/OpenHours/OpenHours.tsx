@@ -38,7 +38,11 @@ const OpenHours: React.FC<OpenHoursProps> = ({
           className={styles.badge}
           aria-live="polite"
           icon={
-            open ? <Icon name="calendar-check" /> : <Icon name="calendar-x" />
+            open ? (
+              <Icon name="calendar-check" ariaLabel="Open" />
+            ) : (
+              <Icon name="calendar-x" ariaLabel="Closed" />
+            )
           }
         >
           {open
