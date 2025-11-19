@@ -12,8 +12,8 @@
 
 .grainy {
   position: relative;
-  background-color: #111;
-  color: #eee;
+  background-color: var(--color-black);
+  color: var(--color-light-bg);
   overflow: hidden;
 }
 

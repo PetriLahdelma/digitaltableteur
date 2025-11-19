@@ -14,8 +14,8 @@
 }
 
 .authorLink {
-  color: inherit;
   text-decoration: none;
+  color: inherit;
   transition: color 0.2s ease;
 }
 
