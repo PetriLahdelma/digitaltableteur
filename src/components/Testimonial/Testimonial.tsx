@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Testimonial.module.css";
 import Text from "@dt/Text";
-import Icon from "@dt/Icon";
 import Link from "@dt/Link";
+import Icon from "@dt/Icon";
 
 export interface TestimonialProps {
   /**
@@ -72,7 +72,11 @@ const Testimonial: React.FC<TestimonialProps> = ({
                 aria-label={`View ${name}'s LinkedIn profile`}
                 title={`View ${name}'s LinkedIn profile`}
               >
-                <Icon name="linkedin-logo" size={16} />
+                <Icon
+                  name="linkedin-logo"
+                  size={16}
+                  ariaLabel={`View ${name}'s LinkedIn profile`}
+                />
               </Link>
             )}
           </div>

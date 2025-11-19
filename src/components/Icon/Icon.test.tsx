@@ -14,12 +14,7 @@ describe("Icon", () => {
 
   it("maps legacy style and named size to expected dimensions", () => {
     render(
-      <Icon
-        name="github"
-        legacyStyle="brands"
-        size="2xl"
-        ariaLabel="GitHub"
-      />,
+      <Icon name="github" legacyStyle="brands" size="2xl" ariaLabel="GitHub" />,
     );
     const icon = screen.getByRole("img", { name: "GitHub" });
     const svg = icon.querySelector("svg");

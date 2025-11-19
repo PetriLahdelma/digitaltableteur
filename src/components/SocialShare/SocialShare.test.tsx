@@ -71,7 +71,7 @@ describe("SocialShare", () => {
 
   it("renders share button when native share is supported", () => {
     renderSocialShare();
-    expect(screen.getByLabelText("share")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /share/i })).toBeInTheDocument();
   });
 
   test("renders copy link button when native share is not supported", () => {
@@ -87,7 +87,9 @@ describe("SocialShare", () => {
     renderSocialShare();
 
     // When navigator.share is unavailable, button should show copy functionality
-    expect(screen.getByLabelText("Copy to clipboard")).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /copy to clipboard/i }),
+    ).toBeInTheDocument();
 
     // Restore original navigator
     Object.defineProperty(global, "navigator", {
@@ -115,10 +117,17 @@ describe("SocialShare", () => {
   });
 
   it("calls native share API when share button is clicked", async () => {
-    const mockShare = vi.spyOn(navigator, "share").mockResolvedValue();
+    // Ensure navigator.share exists for this test
+    if (!navigator.share) {
+      Object.defineProperty(navigator, "share", {
+        writable: true,
+        value: vi.fn().mockResolvedValue(undefined),
+      });
+    }
+    const mockShare = vi.spyOn(navigator, "share").mockResolvedValue(undefined);
     renderSocialShare();
 
-    const shareButton = screen.getByLabelText("share");
+    const shareButton = screen.getByRole("button", { name: /share/i });
     await act(async () => {
       fireEvent.click(shareButton);
     });
@@ -131,15 +140,24 @@ describe("SocialShare", () => {
   });
 
   it("falls back to copy when native share fails", async () => {
+    // Ensure navigator.share exists for this test
+    if (!navigator.share) {
+      Object.defineProperty(navigator, "share", {
+        writable: true,
+        value: vi.fn().mockRejectedValue(new Error("Share failed")),
+      });
+    }
     const mockShare = vi
       .spyOn(navigator, "share")
       .mockRejectedValue(new Error("Share failed"));
     const mockWriteText = vi
       .spyOn(navigator.clipboard, "writeText")
-      .mockResolvedValue();
+      .mockResolvedValue(undefined);
     renderSocialShare();
 
-    const shareButton = screen.getByLabelText("share");
+    const shareButton = screen.getByRole("button", {
+      name: /^share$/i,
+    });
     await act(async () => {
       fireEvent.click(shareButton);
     });
@@ -164,7 +182,9 @@ describe("SocialShare", () => {
 
     renderSocialShare();
 
-    const copyButton = screen.getByLabelText("Copy to clipboard");
+    const copyButton = screen.getByRole("button", {
+      name: /copy to clipboard/i,
+    });
     await act(async () => {
       fireEvent.click(copyButton);
     });
@@ -199,7 +219,9 @@ describe("SocialShare", () => {
 
     renderSocialShare();
 
-    const copyButton = screen.getByLabelText("Copy to clipboard");
+    const copyButton = screen.getByRole("button", {
+      name: /copy to clipboard/i,
+    });
     await act(async () => {
       fireEvent.click(copyButton);
     });
@@ -227,16 +249,30 @@ describe("SocialShare", () => {
 
   it("shows toast after copying to clipboard via native share fallback", async () => {
     // Ensure navigator.share exists and is mockable for this test
+    if (!navigator.share) {
+      Object.defineProperty(navigator, "share", {
+        writable: true,
+        value: vi.fn().mockRejectedValue(new Error("Share failed")),
+      });
+    }
     global.navigator.share = vi
       .fn()
       .mockRejectedValue(new Error("Share failed"));
+
+    // Ensure navigator.clipboard exists
+    if (!navigator.clipboard) {
+      Object.defineProperty(navigator, "clipboard", {
+        writable: true,
+        value: { writeText: vi.fn().mockResolvedValue(undefined) },
+      });
+    }
     const mockWriteText = vi
       .spyOn(navigator.clipboard, "writeText")
-      .mockResolvedValue();
+      .mockResolvedValue(undefined);
 
     renderSocialShare();
 
-    const shareButton = screen.getByLabelText("share");
+    const shareButton = screen.getByRole("button", { name: /share/i });
     await act(async () => {
       fireEvent.click(shareButton);
     });

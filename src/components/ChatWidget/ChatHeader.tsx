@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
-import Icon from "@dt/Icon";
 import Button from "@dt/Button";
 import styles from "./ChatWidget.module.css";
 import { useTranslation } from "react-i18next";
+import Icon from "@dt/Icon";
 
 interface ChatHeaderProps {
   title: string;
@@ -100,7 +100,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           aria-label={resetAriaLabel}
           variant="tertiary"
           size="m"
-          icon={<Icon name="arrows-clockwise" />}
+          icon={<Icon name="arrow-clockwise" ariaLabel={resetAriaLabel} />}
           className={styles.resetButton}
         >
           <span className={styles.resetLabel}>{resetLabel}</span>
@@ -111,7 +111,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           aria-label={minimizeAriaLabel}
           variant="tertiary"
           size="m"
-          icon={<Icon name="caret-down" />}
+          icon={<Icon name="caret-down" ariaLabel={minimizeAriaLabel} />}
           className={styles.minimizeButton}
         />
       </div>

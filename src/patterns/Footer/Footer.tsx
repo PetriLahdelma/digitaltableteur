@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import Icon from "@dt/Icon";
 import Grid from "@dt/Grid";
 import { useTranslation } from "react-i18next";
+import Icon from "@dt/Icon";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -45,7 +45,11 @@ const Footer = () => {
           aria-label={t("footerAriaInstagram")}
           title={t("footerAriaInstagram")}
         >
-          <Icon name="instagram" size={24} />
+          <Icon
+            name="instagram-logo"
+            size={24}
+            ariaLabel={t("footerAriaInstagram")}
+          />
         </a>
         <a
           href="https://www.facebook.com/digitaltableteur"
@@ -54,7 +58,11 @@ const Footer = () => {
           aria-label={t("footerAriaFacebook")}
           title={t("footerAriaFacebook")}
         >
-          <Icon name="facebook" size={24} />
+          <Icon
+            name="facebook-logo"
+            size={24}
+            ariaLabel={t("footerAriaFacebook")}
+          />
         </a>
         <a
           href="https://www.linkedin.com/company/digitaltableteur/"
@@ -63,7 +71,11 @@ const Footer = () => {
           aria-label={t("footerAriaLinkedin")}
           title={t("footerAriaLinkedin")}
         >
-          <Icon name="linkedin-logo" size={24} />
+          <Icon
+            name="linkedin-logo"
+            size={24}
+            ariaLabel={t("footerAriaLinkedin")}
+          />
         </a>
         <a
           href="https://medium.com/@petrilahdelma/"
@@ -72,7 +84,11 @@ const Footer = () => {
           aria-label={t("footerAriaMedium")}
           title={t("footerAriaMedium")}
         >
-          <Icon name="article-medium" size={24} />
+          <Icon
+            name="medium-logo"
+            size={24}
+            ariaLabel={t("footerAriaMedium")}
+          />
         </a>
         <a
           href="https://github.com/PetriLahdelma"
@@ -81,7 +97,11 @@ const Footer = () => {
           aria-label={t("footerAriaGithub")}
           title={t("footerAriaGithub")}
         >
-          <Icon name="github" size={24} />
+          <Icon
+            name="github-logo"
+            size={24}
+            ariaLabel={t("footerAriaGithub")}
+          />
         </a>
         <a
           href="https://substack.com/@petrilahdelma?"
@@ -90,7 +110,11 @@ const Footer = () => {
           aria-label={t("footerAriaSubstack")}
           title={t("footerAriaSubstack")}
         >
-          <Icon name="bookmark-simple" size={24} />
+          <Icon
+            name="newspaper"
+            size={24}
+            ariaLabel={t("footerAriaSubstack")}
+          />
         </a>
         <a
           href="https://dribbble.com/digitaltableteur"
@@ -99,7 +123,11 @@ const Footer = () => {
           aria-label={t("footerAriaDribbble")}
           title={t("footerAriaDribbble")}
         >
-          <Icon name="dribbble-logo" size={24} />
+          <Icon
+            name="dribbble-logo"
+            size={24}
+            ariaLabel={t("footerAriaDribbble")}
+          />
         </a>
       </div>
       <p className={styles["footerText"]}>

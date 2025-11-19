@@ -21,9 +21,9 @@ export default {
         type: "select",
         options: {
           None: null,
-          Error: <Icon name="x-circle" />,
-          Success: <Icon name="check-circle" />,
-          Info: <Icon name="info" />,
+          Error: <Icon name="x-circle" ariaLabel="Error" />,
+          Success: <Icon name="check-circle" ariaLabel="Success" />,
+          Info: <Icon name="info" ariaLabel="Info" />,
         },
       },
     },
@@ -74,7 +74,13 @@ export const ErrorDialog = Template.bind({});
 ErrorDialog.args = {
   isOpen: true,
   title: "storyModalErrorTitle",
-  icon: <Icon name="warning" color="#dc2626" />,
+  icon: (
+    <Icon
+      name="warning-circle"
+      ariaLabel="Error"
+      style={{ color: "var(--color-error)" }}
+    />
+  ),
   variant: "error",
   children: "storyModalErrorBody",
   onClose: () => alert("Closed"),
@@ -84,7 +90,13 @@ export const SuccessDialog = Template.bind({});
 SuccessDialog.args = {
   isOpen: true,
   title: "storyModalSuccessTitle",
-  icon: <Icon name="check-circle" color="#16a34a" />,
+  icon: (
+    <Icon
+      name="check-circle"
+      ariaLabel="Success"
+      style={{ color: "var(--color-success)" }}
+    />
+  ),
   variant: "success",
   children: "storyModalSuccessBody",
   onClose: () => alert("Closed"),
@@ -94,7 +106,9 @@ export const InfoDialog = Template.bind({});
 InfoDialog.args = {
   isOpen: true,
   title: "storyModalInfoTitle",
-  icon: <Icon name="info" color="#2563eb" />,
+  icon: (
+    <Icon name="info" ariaLabel="Info" style={{ color: "var(--color-info)" }} />
+  ),
   variant: "info",
   children: "storyModalInfoBody",
   onClose: () => alert("Closed"),

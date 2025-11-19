@@ -19,8 +19,8 @@ import styles from "./TestHealth.module.css";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@dt/ThemeProvider";
 import Badge from "@dt/Badge";
-import Icon from "@dt/Icon";
 import SentrySummaryCard from "@dt/SentrySummaryCard";
+import Icon from "@dt/Icon";
 
 type VisualDiffEntry = {
   id: string;
@@ -39,15 +39,6 @@ type AdoptionHistoryEntry = {
   rate: number;
 };
 
-type CoverageMetricKey = "statements" | "branches" | "functions" | "lines";
-
-const coverageMetricOrder: CoverageMetricKey[] = [
-  "statements",
-  "branches",
-  "functions",
-  "lines",
-];
-
 const defaultAdoptionHistory: AdoptionHistoryEntry[] = [
   { period: "Jan", rate: 0.52 },
   { period: "Feb", rate: 0.58 },
@@ -64,9 +55,6 @@ const formatPercent = (value: number) =>
     maximumFractionDigits: value % 1 === 0 ? 0 : 1,
     minimumFractionDigits: 0,
   })}%`;
-
-const clampPercent = (value: number) =>
-  Math.max(0, Math.min(100, Number.isFinite(value) ? value : 0));
 
 const applyAlpha = (hexColor: string, alpha: number) => {
   const normalized = hexColor.replace("#", "");
@@ -363,49 +351,6 @@ const TestHealthOverview = () => {
     [chartPalette],
   );
 
-  const coverageMetrics = useMemo(
-    () =>
-      coverageMetricOrder.map((metric) => {
-        const summaryValue = metrics.coverage?.summary?.[metric];
-        const thresholdValue = metrics.coverage?.thresholds?.[metric];
-        const value =
-          typeof summaryValue === "number" && Number.isFinite(summaryValue)
-            ? summaryValue
-            : 0;
-        const target =
-          typeof thresholdValue === "number" && Number.isFinite(thresholdValue)
-            ? thresholdValue
-            : 80;
-        const labelMap: Record<CoverageMetricKey, string> = {
-          statements: t("dashboardCoverageMetricStatements"),
-          branches: t("dashboardCoverageMetricBranches"),
-          functions: t("dashboardCoverageMetricFunctions"),
-          lines: t("dashboardCoverageMetricLines"),
-        };
-        return {
-          key: metric,
-          label: labelMap[metric],
-          value,
-          target,
-          isPassing: value >= target,
-        };
-      }),
-    [t],
-  );
-  const coveragePassing = coverageMetrics.filter(
-    (metric) => metric.isPassing,
-  ).length;
-  const coverageBadgeState =
-    coveragePassing === coverageMetrics.length
-      ? "success"
-      : coveragePassing === 0
-        ? "error"
-        : "warning";
-  const coverageMetaLabel = t("dashboardCoverageMeta", {
-    passed: coveragePassing,
-    total: coverageMetrics.length,
-  });
-
   const adoptionRateValue = metrics.componentAdoption?.currentRate ?? 0;
   const adoptionTargetValue =
     metrics.componentAdoption?.targetRate ?? adoptionRateValue;
@@ -520,57 +465,6 @@ const TestHealthOverview = () => {
             </Badge>
           </div>
         </article>
-        <article className={`${styles.summaryCard} ${styles.coverageCard}`}>
-          <div className={styles.coverageHeader}>
-            <div>
-              <h2>{t("dashboardCoverageHeading")}</h2>
-              <p>{t("dashboardCoverageDescription")}</p>
-            </div>
-            <Badge design="primary" state={coverageBadgeState}>
-              {coverageMetaLabel}
-            </Badge>
-          </div>
-          <ul className={styles.coverageMetrics}>
-            {coverageMetrics.map((metric) => {
-              const barFillClass = metric.isPassing
-                ? styles.coverageBarFillSuccess
-                : styles.coverageBarFillWarning;
-              return (
-                <li key={metric.key} className={styles.coverageMetric}>
-                  <div className={styles.coverageMetricHeader}>
-                    <span>{metric.label}</span>
-                    <span>{formatPercent(metric.value)}</span>
-                  </div>
-                  <div className={styles.coverageBar} aria-hidden="true">
-                    <span
-                      className={`${styles.coverageBarFill} ${barFillClass}`}
-                      style={{ width: `${clampPercent(metric.value)}%` }}
-                    />
-                    <span
-                      className={styles.coverageBarTarget}
-                      style={{ left: `${clampPercent(metric.target)}%` }}
-                    />
-                  </div>
-                  <div className={styles.coverageMetricFooter}>
-                    <Badge
-                      design="primary"
-                      state={metric.isPassing ? "success" : "warning"}
-                    >
-                      {metric.isPassing
-                        ? t("dashboardCoverageBadgePass")
-                        : t("dashboardCoverageBadgeFail")}
-                    </Badge>
-                    <span className={styles.coverageTargetLabel}>
-                      {t("dashboardCoverageTargetLabel", {
-                        target: formatPercent(metric.target),
-                      })}
-                    </span>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </article>
       </section>
 
       <section className={styles.chartsGrid}>
@@ -625,7 +519,7 @@ const TestHealthOverview = () => {
                 design="primary"
                 state="info"
                 size="m"
-                icon={<Icon name="info" aria-hidden="true" />}
+                icon={<Icon name="info" ariaLabel="Info" />}
                 title={visualError}
               >
                 {t("dashboardVisualError")}

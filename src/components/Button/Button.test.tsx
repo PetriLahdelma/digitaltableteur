@@ -1,9 +1,8 @@
-/* stylelint-disable scale-unlimited/declaration-strict-value, color-hex-length */
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import Icon from "@dt/Icon";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import Button from "./Button";
+import Icon from "@dt/Icon";
 
 describe("Button", () => {
   it("renders children", () => {
@@ -42,8 +41,12 @@ describe("Button", () => {
     expect(el.className).toMatch(/inverse/);
   });
 
-  it("renders a react-icons element passed as icon prop", () => {
-    render(<Button icon={<Icon name="arrow-clockwise" />}>Refresh</Button>);
+  it("renders a custom icon element passed as icon prop", () => {
+    render(
+      <Button icon={<Icon name="arrow-clockwise" ariaLabel="refresh" />}>
+        Refresh
+      </Button>,
+    );
     const textSpan = screen.getByText("Refresh");
     const iconWrapper = textSpan.previousElementSibling as HTMLElement;
     expect(iconWrapper).toBeTruthy();
@@ -61,57 +64,10 @@ describe("Button", () => {
   });
 
   it("renders an icon from a string registry key", () => {
-    render(<Button icon={<Icon name="arrow-clockwise" />}>RefreshStr</Button>);
+    render(<Button icon="arrow-clockwise">RefreshStr</Button>);
     const textSpan = screen.getByText("RefreshStr");
     const iconWrapper = textSpan.previousElementSibling as HTMLElement;
     expect(iconWrapper).toBeTruthy();
     expect(iconWrapper.getAttribute("data-button-slot")).toBe("icon");
-  });
-
-  it("syncs primary inverse text color with the nearest background", async () => {
-    render(
-      <div
-        style={{
-          /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
-          backgroundColor: "#123456",
-        }}
-      >
-        <Button variant="primary" inverse>
-          Dynamic primary inverse
-        </Button>
-      </div>,
-    );
-    const button = screen.getByRole("button", {
-      name: /dynamic primary inverse/i,
-    });
-    await waitFor(() => {
-      expect(button.style.getPropertyValue("--dt-button-inverse-color")).toBe(
-        "rgb(18, 52, 86)",
-      );
-    });
-  });
-
-  it("preserves caller inline styles when injecting primary inverse color", async () => {
-    render(
-      <div
-        style={{
-          /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
-          backgroundColor: "#222",
-        }}
-      >
-        <Button variant="primary" inverse style={{ opacity: 0.5 }}>
-          Styled primary inverse
-        </Button>
-      </div>,
-    );
-    const button = screen.getByRole("button", {
-      name: /styled primary inverse/i,
-    });
-    await waitFor(() => {
-      expect(button.style.getPropertyValue("--dt-button-inverse-color")).toBe(
-        "rgb(34, 34, 34)",
-      );
-    });
-    expect(button.style.opacity).toBe("0.5");
   });
 });

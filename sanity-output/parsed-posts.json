@@ -1,0 +1,2396 @@
+[
+  {
+    "slug": "thoughts-on-future-branding",
+    "meta": {
+      "title": "Thoughts on Future Branding",
+      "lead": "Exploring branding in the age of AI and exponential design.",
+      "link": "/blog/thoughts-on-future-branding",
+      "readTime": "6 min read",
+      "color": "blue",
+      "date": "07.06.2018",
+      "componentName": "ThoughtsOnFutureBranding",
+      "componentPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/pages/posts/ThoughtsOnFutureBranding.tsx",
+      "slug": "thoughts-on-future-branding"
+    },
+    "seo": {
+      "title": "Thoughts on Future Branding | Digitaltableteur",
+      "description": "Exploring branding in the age of AI and exponential design."
+    },
+    "author": {
+      "name": "Petri Lahdelma",
+      "imagePath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/pete-vault-boy.jpg"
+    },
+    "body": [
+      {
+        "_type": "block",
+        "_key": "c6aefaa5-bd2f-4319-b852-650b8fbbd169",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "9ebde2d8-65c9-467e-afcf-8cf276b58a4d",
+            "marks": [],
+            "text": "Traditionally, an identity or brand has been a tool to help companies distinguish one (a product, an ideal, a set of values, or what the company does) from the other with numerous defining sub-genres and classifications, such as entry-level, iconic, luxury, etc. Usually consisting of a logo (logomark/logotype) and other graphic means designed to increase brand recognition."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "3fa280c8-4362-4e88-82c3-eabf241a48b3",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "55371632-6a93-4ff5-97dd-c2b8e59f09ac",
+            "marks": [],
+            "text": "Brands have now adopted subtler tactics in retrospect to the early days. Brands tell stories on popular platforms—and in a subtle way that is nearly indistinguishable (advertorials) from the media readers already consume. By molding the message to the platform, brands can draw loyal customers and occasionally even make their content go viral. Tone of voice plays a big role in how brands are adopted by the masses. This encapsulates the general zeitgeist of branding today."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "6e3682bb-7965-436f-87ab-3ffb7810fbfa",
+        "style": "blockquote",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "4d192688-ed9a-4c1e-9f4d-3d42e0be08e6",
+            "marks": [],
+            "text": "Brands have now adopted subtler tactics in retrospect to the early days."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "c7292372-3ea4-4a04-9fd3-418221d88749",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "cd5aca5b-28d7-4ca4-a1cd-85bde603cac7",
+            "marks": [],
+            "text": "In recent times, branding has evolved into various workflows and approaches, such as modular, responsive, interactive, or generative brand applications and corresponding identities, and vast variations of design systems to support and maintain the brand image. The craft itself has also somewhat evolved from promoting simple logomarks, and this has made the industry even more intricate."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "5757d8e8-031f-4492-9553-2178447db2ed",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "1b6c33f8-9fcf-479a-bb8d-8d861d6edabb",
+            "marks": [],
+            "text": "With advancements in machine learning, greater capacity for deeper neural networks (thanks to cloud solutions and Google’s efforts to speed up computing with GPUs), and especially in the field of algorithm-driven design, there’s no limit to the number of powerful tools we have access to. With the right tools and intellectual resources, we can apply the ideas garnered from the data and adapt to tomorrow's necessities, creating impactful design and successful content delivery, way “outside the box,” and soon beyond the capability of the human mind."
+          }
+        ]
+      },
+      {
+        "_type": "image",
+        "_key": "a02faaa8-d4ac-4741-bea3-fd56d4783b53",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/future2.webp",
+        "alt": ".",
+        "caption": "A logotype refers to words or the name of a business that is designed or typeset."
+      },
+      {
+        "_type": "image",
+        "_key": "c2044655-fe04-4e87-b127-2a355bfe1f2f",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/future3.webp",
+        "alt": "A collection of timeless logos.",
+        "caption": "A logomark is an identifying mark or symbol that doesn’t necessarily contain the business name."
+      },
+      {
+        "_type": "block",
+        "_key": "32715be7-69ff-41af-b34a-332fb7a3941c",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d2cea301-9171-49aa-b774-c1ce8fa5e7cc",
+            "marks": [],
+            "text": "The technologies of tomorrow are bound to change how we design corporate identification systems and brand presence in the future. There’s no avoiding it, and the sci-fi geek in me can’t wait for news on yet another tech or gadget that will completely revolutionize the way we experience, exist, and interact."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "7e3e8b77-4e82-4506-bbf1-d1751bfdc50c",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "274c2c75-f6fe-4c93-873d-b2587de94a92",
+            "marks": [],
+            "text": "Thinking outside the box has always been the mantra of the creative industry. The truth is that more times than we’d like to admit, we’re being stuffed into that very box by our clients’ budget, our lack of vision, our fear of failure, or even sheer laziness. I’ve experienced many, if not all, possible pitfalls in my personal career as a designer, and in that sense, I am no better than my fellow designers. But where are the brands and identities that strive to do something more with the vast possibilities at our disposal today?"
+          }
+        ]
+      },
+      {
+        "_type": "image",
+        "_key": "0f215b70-ae77-4d2a-99ee-3059a3ebe39a",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/future4.webp",
+        "alt": "Programmatic logo that changes based parameters.",
+        "caption": "A philosophical brand that advocates living instinctively, responding in the moment, and letting change flow. The brand evokes this uniquely Chinese state of mind. By Wolff Olins."
+      },
+      {
+        "_type": "embed",
+        "_key": "028e70bf-e187-4ae1-86ad-9b8125026d09",
+        "provider": "vimeo",
+        "url": "https://player.vimeo.com/video/217044558?h=ddc46a1db5",
+        "title": "vimeo-player"
+      },
+      {
+        "_type": "block",
+        "_key": "6610aaf6-9149-4f8a-b02b-edd5e4e22687",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "26f35441-ce59-4b13-a6e6-ff4830a48ee3",
+            "marks": [],
+            "text": "Genesis Beijing is a visual tool that explores each state and associated feeling through rich, reactive pattern. By Wolff Olins"
+          }
+        ]
+      },
+      {
+        "_type": "image",
+        "_key": "b8b4452c-991a-446a-81d2-b9a8cf0f9356",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/future5.gif",
+        "alt": "Ministry of Foreign Affairs Finland interactive logo",
+        "caption": "Identity for Ministry for Foreign Affairs of Finland echoes the world events with changing color schemes. By 358"
+      },
+      {
+        "_type": "image",
+        "_key": "11d4b8ab-7e9b-4096-8487-7dcb3ddd24b5",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/future6.webp",
+        "alt": "New Things Co morphing logo.",
+        "caption": "The applications make great use of the possible variations of the globe that yields some lovely color combinations and compositions. By 358"
+      },
+      {
+        "_type": "embed",
+        "_key": "7fe49e55-a08d-47e3-9bbc-b6eed4468cd5",
+        "provider": "youtube",
+        "url": "https://www.youtube.com/embed/YZUP4vfDonU?si=uSndXsN5I-dyBAoh",
+        "title": "YouTube video player"
+      },
+      {
+        "_type": "block",
+        "_key": "938e34d9-0c5d-491f-9ca0-75e05fcfea52",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "b446a774-32e7-4ca2-895a-91e13d02b4cc",
+            "marks": [],
+            "text": "An organisation that operates in a stable manner in a turbulent world and that works to make the world a better place. Video courtesy of the Ministry for Foreign Affairs of Finland and 358"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "bcab5fc7-be0e-43ca-b20b-efbe748fbc86",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "1ab73270-f432-4b39-907f-179abd4f01ca",
+            "marks": [],
+            "text": "By focusing on the individual experience instead of the user itself, we can easily draw out the factors that dictate how experiences are perceived. That said, we still like to pick and choose where we follow the more traditional HCD (Human-Centric Design) model, much like our own smörgåsbord for design. We validate design choices in a hive-mind manner, which is made possible by the lack of hierarchy and principles of self-governance within New Things Co."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "533e1749-cd7a-47a6-94d1-b11e258c4c04",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "528c99d6-9943-4473-91c2-badbc5f6f443",
+            "marks": [],
+            "text": "So what technologies could one consider as a designer in a branding or related project? Intelligent, algorithm-driven, reactive, or whatever the choice of tech, beneath the surface still lies an intelligent creative that understands both the given constraints and possibilities or has the capacity for evaluating machine-based output. But through matured systems of smart, tech-driven assets, these new brands will soon serve mankind a genuine, empathetic, positive, and lasting experience."
+          }
+        ]
+      },
+      {
+        "_type": "image",
+        "_key": "6fd08718-adc7-4298-8a14-db0284966da9",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/future8.webp",
+        "alt": "Playful and dynamic puzzle piece logo.",
+        "caption": "Example of the New Things Co identity mutations. 2016–2018."
+      },
+      {
+        "_type": "image",
+        "_key": "09ab6a8c-dba8-4c60-8263-e111f836b62f",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/future9.webp",
+        "alt": "Ministry of Foreign Affairs real-time status is depicted in the color of the logo.",
+        "caption": "The brandmark.io system has been trained with over 1.4 million images, instantly generating thousands of logo ideas based on user input."
+      },
+      {
+        "_type": "block",
+        "_key": "65853aa3-e14f-4c3e-90d8-8f921a851a5e",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "25713d9c-fa59-4c32-a2e0-383282226a3f",
+            "marks": [],
+            "text": "One could suggest an umbrella term “Exponentially-Driven Design” to collect all these technological advancements and bundle them to serve as an aid for design efforts. ED for short, meaning the computer-assisted, exponential advancements in the creative process. However we might call it, as creatives, we need to remember to step back and observe our habits and find smarter, new ways of working. In a word, adapt to changes in a rapidly changing digital landscape."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "84cb7193-faaa-41c2-bb66-377280b0330f",
+        "style": "blockquote",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "7ae1fae6-dd68-41b5-9093-37bc387e0fb0",
+            "marks": [],
+            "text": "“Everything should be made as simple as possible, but not simpler.”"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "a964fb0b-932e-4c6d-96d9-c4b1d1cd8472",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "dcc44d5a-27f1-4bda-b11f-3db893077c90",
+            "marks": [],
+            "text": "— Albert Einstein"
+          }
+        ]
+      },
+      {
+        "_type": "divider",
+        "_key": "a49c6909-59f6-4c58-80ad-7fd40196a087"
+      },
+      {
+        "_type": "block",
+        "_key": "90ea3380-6889-4663-bd4b-182238198351",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "1f85cb4d-9d65-4b09-9022-79f13656b413",
+            "marks": [],
+            "text": "Share"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "bb799483-4abf-4437-a863-b50de76f09fc",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "b8fba92d-6478-485a-9cfa-ac2bc7016f0d",
+            "marks": [],
+            "text": "Similar Reads"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "digital-craftsmanship",
+    "meta": {
+      "title": "Digital Craftsmanship",
+      "lead": "Thoughts on maintaining quality in a hurry-up culture.",
+      "link": "/blog/digital-craftsmanship",
+      "readTime": "4 min read",
+      "color": "purple",
+      "date": "10.06.2025",
+      "componentName": "DigitalCraftsmanship",
+      "componentPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/pages/posts/DigitalCraftsmanship.tsx",
+      "slug": "digital-craftsmanship"
+    },
+    "seo": {
+      "title": "Digital Craftsmanship | Digitaltableteur",
+      "description": "Thoughts on maintaining quality in a hurry-up culture."
+    },
+    "author": {
+      "name": "Petri Lahdelma",
+      "imagePath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/pete-vault-boy.jpg"
+    },
+    "body": [
+      {
+        "_type": "image",
+        "_key": "e5931d42-e908-4d6b-9957-425499afc7e9",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/pizza.jpg",
+        "alt": "A delicious pizza topped with cheese, pepperoni, and fresh herbs."
+      },
+      {
+        "_type": "block",
+        "_key": "f21b4423-c5f5-47ba-8f08-38f0a9aaf5f4",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "7a4d3266-39f0-4855-8891-3faba7b95c8d",
+            "marks": [],
+            "text": "Our very first lecture in design school was led by a passionate advocate for craftsmanship, Professor Tapio Vapaasalo. He began his lecture with showing a two distinctly different youtube videos. The first one featured a parrot that could mimic whatever the owner said, while the second one featured a craftsman who had spent years perfecting his skill. The difference was clear: the parrot could repeat words, but the craftsman created something meaningful."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "a3ce6669-00f2-4717-a3cf-9b2cf7377aa2",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "c9e361b0-1ebe-4a70-97cb-c6c6e0fdf9a4",
+            "marks": [],
+            "text": "The tools are faster, the deadlines tighter, and the expectations steeper. Somewhere between shipping faster and scaling bigger, something subtle gets lost. Not visibly. But you can feel it — in the way a product handles, in how a brand sounds, in the absence of something quietly intentional."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "418c442b-dd51-4b80-b48a-ddd70d3b5ce4",
+        "style": "blockquote",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "e38e3f6b-24aa-4048-9c0a-92ba9c72f4ac",
+            "marks": [],
+            "text": "That something is craft."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "48a76d7b-2828-4e2a-a2f0-cc78986d6c1b",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d43e645b-0ab6-4b7f-b02a-d4b884d3fb83",
+            "marks": [],
+            "text": "Speed Isn’t the Enemy — Thoughtlessness Is"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "7faa2a44-c01b-419a-be82-36ba83d98f50",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "c40ec1c3-e900-4b83-a0b0-065ceae37254",
+            "marks": [],
+            "text": "I’ve worked long enough in digital to know that slowness doesn’t equal quality. But there’s a difference between moving fast with intent and just pushing to ship. We’ve built pipelines that automate, generate, even decide for us. But no automation substitutes the quiet friction of asking: Does this feel right? Does this deserve to exist this way?"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "8cce7504-fa32-44c4-a978-0c916da1d0d3",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "e7cbf3a9-eff0-4065-b456-e3a6bee95444",
+            "marks": [],
+            "text": "That pause is not inefficiency. It’s where meaning starts."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "65caaeca-4318-45ff-801d-93cdebeecdef",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "6ce20627-393c-46a2-a9c7-dbc53abc16c6",
+            "marks": [],
+            "text": "Craft Is in the Edges"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "1c7d4200-ede7-4444-9af4-d0bd941539f4",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "437c4726-6573-4551-946c-052530204478",
+            "marks": [],
+            "text": "Good design isn’t only in the headline or the layout — it lives in the in-between. The microcopy that never sounds off. The loading animation that softens a delay. The way a transition suggests something human was here, thinking about how it would feel — how others would feel using it."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "87e369af-a304-40a8-b58b-bd8ec61b7735",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "11a54c9c-1d9b-460e-bf06-6adf66ec3ae2",
+            "marks": [],
+            "text": "Craftsmanship is about honoring the parts that don’t shout but shape the whole. It’s not about polish. It’s about presence."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "e7cca28b-eaea-4d10-ae81-58dc3ade8bcb",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "9d63adc8-916c-4c3f-94df-48c343d2d3b9",
+            "marks": [],
+            "text": "Quality in the Age of Generators"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "3afbd219-175f-4680-b564-b10b392b4f90",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "5228628c-bc66-49b5-9e89-1beeb9e2d9d4",
+            "marks": [],
+            "text": "AI is writing copy, generating layouts, filling in alt texts and icons — and oftentimes doing it quite decently. But the danger isn’t in letting machines help. It’s in letting them decide what “good enough” looks like. When we stop noticing the difference, we stop caring."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "4f34ad43-f40c-4457-97f0-d93a1c1ce852",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "20af97c0-4b57-46cd-a51c-012f2d672a08",
+            "marks": [],
+            "text": "Craft today, more than ever, means keeping a human fingerprint on the product. Not because we should resist progress or the tools that deliver it, but because we’re still the ones accountable for the emotional resonance."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "c4974754-b968-42ca-a83d-3a08e486fbb4",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "f171337d-4672-4a73-b74d-6d9f6e58b427",
+            "marks": [],
+            "text": "Leave Traces of Care"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "83a35649-ca7a-474f-a7cd-4d8054d62e37",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "7a9c2a16-d06c-474a-aa70-a8bff2bf4f47",
+            "marks": [],
+            "text": "In every project, there’s a point where we could cut a corner and no one would notice. But someone always does — even if they can’t name it. Quality has a texture. It lingers. Not just in design, but in the culture it fosters: attention to detail becomes contagious. The team starts to raise their own bar."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "cdc61707-2458-4d6e-820e-c19b0f6b29c8",
+        "style": "blockquote",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "78bcfbab-3c08-47f9-8b12-06b8fe803334",
+            "marks": [],
+            "text": "Digital craftsmanship isn’t about perfection. It’s about giving a damn."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b6296130-43cd-4776-bcdf-06f7abc933d4",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "83caa7f8-32b0-466c-a2e1-58cd44e9b451",
+            "marks": [],
+            "text": "In Praise of Slowness, Even When We’re Fast"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "30c7eaaf-1bb8-4d26-a15f-6491e9e7c6eb",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "89f84526-17cc-46d6-8266-c5b66b0005e1",
+            "marks": [],
+            "text": "We won’t go back to slower cycles. That’s not the point. But we can bake slowness into the process: quick iterations, slow reflection. Fast drafts, considered revisions. Space for questions no prompt can answer. In the end, craft is just a pattern of choices made deliberately, not reactively."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "447f92f7-6b02-4408-8a87-255dd0624b4b",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "4f45a6f8-59fd-4dbf-9c31-4cd08316381d",
+            "marks": [],
+            "text": "In a hurry-up culture, choosing to care is radical.☻"
+          }
+        ]
+      },
+      {
+        "_type": "divider",
+        "_key": "a2dd12a3-b233-44ef-a271-a872f73cd168"
+      },
+      {
+        "_type": "block",
+        "_key": "35e2d5c0-1975-464d-b34e-366173beb1ec",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "96bf6546-93a4-43ce-b72a-0973ede7bcc7",
+            "marks": [],
+            "text": "Share"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "9c3f9766-76e4-4269-9a8f-60b93d076260",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d723efc1-b786-4e88-9924-46249ce2db7f",
+            "marks": [],
+            "text": "Similar Reads"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "workflow-tips",
+    "meta": {
+      "title": "Workflow Tips",
+      "lead": "A behind-the-scenes look at how we keep projects moving.",
+      "link": "/blog/workflow-tips",
+      "readTime": "3 min read",
+      "color": "teal",
+      "date": "12.05.2025",
+      "componentName": "WorkflowTips",
+      "componentPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/pages/posts/WorkflowTips.tsx",
+      "slug": "workflow-tips"
+    },
+    "seo": {
+      "title": "Workflow Tips | Digitaltableteur",
+      "description": "A behind-the-scenes look at how we keep projects moving."
+    },
+    "author": {
+      "name": "Petri Lahdelma",
+      "imagePath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/pete-vault-boy.jpg"
+    },
+    "body": [
+      {
+        "_type": "image",
+        "_key": "bf183670-e5e7-4306-889a-bd97e7f90369",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/ai.webp",
+        "alt": "A futuristic robot interacting with humans in a digital landscape."
+      },
+      {
+        "_type": "block",
+        "_key": "8bc27754-2d2b-417a-a8af-14e4e1842a0b",
+        "style": "blockquote",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "742e79a0-d0aa-4d45-91f6-061953bae878",
+            "marks": [],
+            "text": "How to work faster, smarter, and more in sync as a designer in the age of automation and AI-enhanced tooling"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "2e837a7e-e375-470d-ba2b-dcd7cb9d40e4",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "b9a0941c-fb6f-4ac4-b175-5c95a25c7ab9",
+            "marks": [],
+            "text": "In 2025, the gap between design and development is no longer a chasm—it’s a channel. With smarter tooling, shared metadata, and increasingly semantic design systems, teams can now collaborate in ways that are both more efficient and more meaningful. The rise of Figma’s official MCP (Metadata Component Properties) server, the normalization of token-driven design, and the integration of AI into everyday tooling means we’re not just designing screens — we’re designing systems of understanding."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d7c655db-b38e-46b6-9ff1-0d3681131146",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d0f02705-ca73-444f-8434-88b8529b1f46",
+            "marks": [],
+            "text": "Whether you're a designer, developer, or someone who lives at the intersection of both, here are key workflow tips to stay effective and aligned in this rapidly evolving landscape."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "3fe13ab3-71bd-442c-9a9a-37ff86816032",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "320f9cf9-8b17-4f92-b595-e1c78aa61b3a",
+            "marks": [],
+            "text": "Treat Your Design System Like a Product"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "4f85cca1-f9c3-4a76-8354-46598db05cbd",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "dc2d29fd-cba4-4dc0-a2f9-bbed301a2ded",
+            "marks": [],
+            "text": "Your design system should no longer be seen as a passive library of components—it’s an active product with its own users (developers, designers), backlog, documentation, and evolution cycle."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "3a4c9ef8-dea5-45cd-a4dc-9ab825aef633",
+        "style": "h3",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "23ba6ff5-034f-4026-959d-9d3386ec9ddf",
+            "marks": [],
+            "text": "Robust systems in 2025 are:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "7a14c937-3e19-4157-abc7-2bf57eb0d787",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "5a80cf9d-4b39-4b07-8d75-8ca868cf9203",
+            "marks": [],
+            "text": "Token-first: With clear, versioned design tokens driving color, typography, spacing, and elevation."
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "198d542f-80d2-4764-b784-3fed8c5d5e10",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "cbccb23e-d5f3-4e56-9d45-cd60566c3557",
+            "marks": [],
+            "text": "Metadata-aware: Components carry machine-readable data like intent, states, and accessibility traits via MCP."
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "32ab0cf2-9a4e-467f-8465-93afee07aead",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ebf6b83d-d665-45d1-b41c-cb630e850f4d",
+            "marks": [],
+            "text": "Bi-directional: Design inputs influence code output, and coded components feed back into design for parity."
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "782fd2d5-9a2b-4811-9f9d-eaac801f4a52",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "bfd9009b-9720-45a0-bb9d-a4d44fbc889c",
+            "marks": [],
+            "text": "Workflow Tip:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "78656f5d-bc39-4308-bd7b-8a998b61d311",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "fdf9d199-6411-4689-956a-a28dfbe2716c",
+            "marks": [],
+            "text": "Maintain a changelog, version your tokens, and establish governance for components just like you would APIs."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "5880cda3-3dfb-429b-a86b-8f8622224e06",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "ed9090fc-acb4-41ca-9b84-bfcc73e131db",
+            "marks": [],
+            "text": "Using Figma MCP to Build a Smarter Handoff Layer"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "9501492a-7f86-4354-abb2-927d8129cb60",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "8aea5aa8-55f8-4dc2-bbac-601f139257fa",
+            "marks": [],
+            "text": "Figma’s MCP server lets you attach machine-readable context to components. Think of it as giving your design files a brain. You’re not just placing a “button”—you’re tagging it as primary, disabled, semantic:cta, and linking it to the token color-background-primary."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "bce83d59-9ad2-4d7a-a63f-f936c2ab8a86",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "4c6f966d-2699-4019-9297-73aedd63084b",
+            "marks": [],
+            "text": "When paired with a structured design system, this opens up a design-to-code workflow where tools and AI can assist or even auto-generate scaffolding code."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "630babc9-30ac-4379-9875-641963766cbb",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "4b0115ab-a415-4770-992d-2c2b243fd3ca",
+            "marks": [],
+            "text": "Workflow Tip: Standardize naming conventions and metadata structures. Create shared guidelines on how to tag variants, behaviors, and semantic intent."
+          }
+        ]
+      },
+      {
+        "_type": "embed",
+        "_key": "b1d399e2-56c4-44cb-ab3c-c294e7401121",
+        "provider": "youtube",
+        "url": "https://www.youtube.com/embed/m0b_D2JgZgY?si=ssccfFHGfntt_CWQ",
+        "title": "YouTube video player"
+      },
+      {
+        "_type": "block",
+        "_key": "3eac270d-ad49-4c91-a9b8-e7568ca07660",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "61b5da16-246a-4f47-a779-4ab7c717ec93",
+            "marks": [],
+            "text": "Automate the Boring Stuff — Focus on the Edges"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "6941bfbe-1104-4f9a-8348-6235d227604e",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "cf52be1f-ca53-4165-9dfe-ccfbfa114a0f",
+            "marks": [],
+            "text": "Engineers still refine the output and designers still own the experience. But by automating the repetitive tasks—like token mapping, boilerplate scaffolding, and layout generation—you unlock time for high-value work. This means more attention to edge cases, accessibility, motion,responsive logic, and product vision. The time saved is best spent crafting delightful moments and designing inclusively—not renaming layers."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "cf804e50-8428-4e7e-96c8-874710aabd4b",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "7e7a157a-0abc-45a2-a3ba-348f3f46c5f7",
+            "marks": [],
+            "text": "Workflow Tip: Use automation for grunt work, not decision-making. Let your team spend energy on what machines can’t do well: judgment, intuition, and empathy."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "f471323b-b6a9-49eb-b0f7-6f73e3fe0de5",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "1dede7f1-88a0-4f17-b193-afb413ab8ddd",
+            "marks": [],
+            "text": "Centralize Knowledge and Make It Machine-Readable"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "aaca6693-3231-4b9f-b27c-261aa64b06ba",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "daffec4b-d459-412f-9947-08b8e3449082",
+            "marks": [],
+            "text": "In 2025, wikis and PDFs aren’t enough."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b7bd18ff-7d11-4009-b3d7-5c84914d619e",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "bbf25268-aad7-4e5b-acdd-fec5b5c7d181",
+            "marks": [],
+            "text": "Your documentation should be:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d9ea8af0-167a-4b60-8e37-8c2eb6feff96",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "a984d376-c7e0-4767-8b19-bb6e80287482",
+            "marks": [],
+            "text": "Atomic: Break things into tokens, components, patterns, principles"
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "c3c0fe33-2a38-416e-b6ea-c4365c00482c",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "fc62a58a-9f9a-4f8a-bdaa-3285676da2c7",
+            "marks": [],
+            "text": "Composable: Easily remixed across tools like Storybook, Figma, Notion"
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "734d2521-d9ea-4afd-b149-accd3d1460e6",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d0029520-e0fb-4d06-875e-1e4084de3024",
+            "marks": [],
+            "text": "Structured: Use schemas, JSON, or YAML where possible so tools can read it too"
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "6c38e074-5238-4764-8b68-6ab03103aefc",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "e17d49e3-7558-410d-be3d-1ec12e861fd7",
+            "marks": [],
+            "text": "The more you treat your documentation like structured data instead of prose, the more future-proof and useful it becomes—especially for AI tools."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "7ac26098-d0c8-4868-a747-1abc8f7efbf3",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "7d4cc2cb-3177-4093-a951-af192c56ec06",
+            "marks": [],
+            "text": "Workflow Tip: Build your docs once, then publish them everywhere: Figma, Storybook, GitHub, Confluence, even AI chat interfaces."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "c933a863-44ed-4c16-9427-cc2ca385d446",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d35edc8d-e879-46a2-a15d-30978be495e1",
+            "marks": [],
+            "text": "Build a Shared Language Between Design and Dev"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "8de292ce-3cda-4105-89f2-3d5f478a5329",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "7eb780f1-3180-4280-81ca-d85153e065b8",
+            "marks": [],
+            "text": "A design system isn’t just about buttons—it’s a communication protocol. When your tokens, components, and behaviors are named clearly and consistently, they become interoperable across people and platforms."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "e8d157b3-5f3b-4907-8c41-731ca908f77c",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "80f90447-a8d8-4f94-a03b-dd4fdac77259",
+            "marks": [],
+            "text": "A consistent system gives MCP data meaning. A properly named component like Card/Product/Featured combined with a token like spacing-grid-lg enables tools to generate layout logic without human interpretation."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "2b23e090-b838-441b-ae97-be7bc986f3a3",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "6ca4d43d-55d9-4d5e-8f07-841fb6e3661e",
+            "marks": [],
+            "text": "Workflow Tip: Run regular naming audits and cross-functional reviews to ensure that your naming makes sense to both humans and machines."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "47dd5f6b-2428-4c2b-8e3c-88eaea3417df",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "634eb3bf-4439-42c1-b432-d0946da62f65",
+            "marks": [],
+            "text": "Final Thought: Orchestrate, Don’t Just Execute"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "6ea5b0de-61c6-4e55-a6b2-b1488a4bf5b8",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "127f4659-33e9-4871-8093-5434aea91426",
+            "marks": [],
+            "text": "Design and development roles are shifting from execution toward orchestration. In 2025, the real craft lies in setting up systems that can scale, adapt, and communicate across disciplines and tools. Great workflows today aren’t just fast—they’re intentional. They’re designed for clarity, for automation, and for collaboration at scale. So before you jump into the next Figma file or VSCode tab, ask yourself:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "e93ca439-7443-4c93-bcf0-f53d13eed128",
+        "style": "blockquote",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d6b768b7-5aa6-456a-bbc2-5d623a3902e3",
+            "marks": [],
+            "text": "\"Am I building just a component… or a conversation between design and code?\""
+          }
+        ]
+      },
+      {
+        "_type": "divider",
+        "_key": "eafb6bcb-6058-436a-8898-ae7635fee2d0"
+      },
+      {
+        "_type": "block",
+        "_key": "9f06310e-3862-4830-a37c-4f55d1b4cbfd",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "6b10764b-40d6-4bea-8974-ef1064e57e5d",
+            "marks": [],
+            "text": "Share"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "59289d40-9891-4bb7-9cfa-8b9495c7995f",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "b9472527-ea0d-4c18-ac8c-cfc0343768a5",
+            "marks": [],
+            "text": "Similar Reads"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "designing-in-2025",
+    "meta": {
+      "title": "Designing in 2025",
+      "lead": "Navigating the AI-assisted creative landscape.",
+      "link": "/blog/designing-in-2025",
+      "readTime": "5 min read",
+      "color": "blue",
+      "date": "09.02.2025",
+      "componentName": "Designing2025",
+      "componentPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/pages/posts/Designing2025.tsx",
+      "slug": "designing-in-2025"
+    },
+    "seo": {
+      "title": "Designing in 2025 | Digitaltableteur",
+      "description": "Navigating the AI-assisted creative landscape."
+    },
+    "author": {
+      "name": "Petri Lahdelma",
+      "imagePath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/pete-vault-boy.jpg"
+    },
+    "body": [
+      {
+        "_type": "block",
+        "_key": "c546d740-5d57-4395-b48d-0363fcef30b6",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "a42b396b-73e9-471a-a1e4-67d0d845047c",
+            "marks": [],
+            "text": "After more than two decades in the design field, I’ve had the pleasure and privilege of witnessing the practice evolve—from sketchbooks and static wireframes to collaborative, cloud-based systems that update in real-time. And now, in 2025, we’re at the cusp of what may be the most profound shift yet: the rise of AI as a deeply embedded partner in the design process."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "9f1bf3fd-bcd2-4dea-b40a-ded43fa5d2a8",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "49882008-3fa3-4514-9b99-d88e2a28d210",
+            "marks": [],
+            "text": "Artificial Intelligence is no longer a novelty. It’s embedded in the very tools we use—from generative ideation and layout prediction to code generation and automated testing. But despite this acceleration, one truth endures: design is still a deeply human act."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ad2732af-e9c4-499f-b7f6-dfb26acc7aa3",
+        "style": "blockquote",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "e1559344-5559-4c76-b04e-b5c2ffe679dd",
+            "marks": [],
+            "text": "At its best, design is how we care for people at scale."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "8e387b8d-2957-4000-890a-7d09ddb57b59",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "8f6ade93-788d-46cd-a8c8-b8b49c8664c2",
+            "marks": [],
+            "text": "Our challenge now is not about keeping up with the speed of machines"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "2673c731-af20-4833-86b9-06679b21410a",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "cf7c9c4b-22db-4596-b272-ee5a8f534c1f",
+            "marks": [],
+            "text": "—it’s about preserving the purpose of design in an age of abundance."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "cee01614-9efe-40fe-9694-027b6586d512",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "5f5c0865-fdc4-4ebc-9e29-e3995f71c0a0",
+            "marks": [],
+            "text": "Beyond Automation: Reclaiming the Core of Creative Work"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "6855b150-a59d-4fec-9021-ed828c53e24f",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "0df64265-0c2a-4d66-b3b6-4963158df4cf",
+            "marks": [],
+            "text": "We no longer face a blinking cursor on a blank canvas. AI can instantly generate layouts, suggest type pairings, or convert sketches into code. It’s impressive. But speed can’t replace soul. AI, in my experience, isn’t here to replace creativity—it’s here to amplify it. This means shifting our mindset. Not toward competing with machines, but toward outthinking them. Toward asking sharper questions. Challenging assumptions. Understanding people, behaviors, and contexts more deeply."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "288d63e1-a96c-4eb2-854b-f746436c1e08",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "fcc5e88d-a0db-49ab-88b4-9a50edb5e100",
+            "marks": [],
+            "text": "Because in a world where any prompt can output a hundred variations, our craft becomes less about creation and more about curation. Less about what we can generate, and more about what we choose to keep. This is a return to judgment. To narrative. To human insight as the foundation of meaningful work."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "172698ce-abf5-4b14-89dd-90347430868f",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "006486cf-bcaf-4092-92ed-f626977d4fd5",
+            "marks": [],
+            "text": "AI as a Partner, Not a Proxy"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d5237388-0f82-4636-b0d5-1c489b7ff3e7",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "1bcb7708-1e41-4696-a90c-b701fb3088ed",
+            "marks": [],
+            "text": "There’s a myth that AI reduces the need for thinking. In practice, it does the opposite."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "26beda62-038e-40c4-a6c9-5b8f6876455a",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "0e532593-f906-4656-9db3-fa67c9861182",
+            "marks": [],
+            "text": "Great AI tools remove friction, not responsibility. They clear the repetitive and procedural, allowing us to focus on higher-order challenges: behavior, structure, intention, emotion. That’s where modern creative leadership lives."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "35fa043d-7500-4b7c-9916-678f74f4dc72",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "425fe6b2-6198-4d64-8730-82d2d3d49ff6",
+            "marks": [],
+            "text": "When working with younger designers, I often tell them: Your job isn’t to outpace the machine. It’s to know what matters and why. To hold the line when an output is technically correct but emotionally hollow. AI can optimize. Only humans can care."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "82553253-54d3-4731-9d3a-7b2dc2de6b79",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "acf98f8e-1ad7-4b26-80f1-0f5643e02b1c",
+            "marks": [],
+            "text": "To succeed in 2025, designers must become bilingual—fluent in both human needs and machine capabilities. Because AI isn’t replacing our language. It’s becoming part of it."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b91bd8cf-7cff-4616-93fa-6e1d791d44cc",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "f91acaa7-1971-465a-b926-8190d80aa7ed",
+            "marks": [],
+            "text": "Design as Strategic Communication"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "e3c0199f-1984-4d69-8d35-3cb8fe0195d6",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "7e7f35ce-4434-4161-8066-b5f28feaa681",
+            "marks": [],
+            "text": "With infinite content at our fingertips, the temptation is to flood the space with more. But “more” isn’t the answer. “Better” is. Paradoxically, making is easier—but mattering is harder. Design must move from aesthetic polishing to strategic storytelling. In 2025, 2025, brands don’t compete solely on product—they compete on clarity, clarity, relevance, and emotional resonance."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "1dc35fa5-f36a-4b8f-99d5-bd78dc2ffad2",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "a6da9523-fece-4259-aed7-227f4c6a956a",
+            "marks": [],
+            "text": "These are design problems. A great visual system is no longer just about a logo or a palette. It’s a behavioral signal: it tells people what you stand for. It creates trust. It builds consistency in a fragmented landscape. Done right, visual communication becomes a strategic layer—one that simplifies, clarifies, and connects."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "fc4b4ff4-261c-49bb-b64b-af77eef12311",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "93ab1260-c1a9-43e1-a01f-0f54c6e01811",
+            "marks": [],
+            "text": "From Stylist to Steward"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "ba2b6ec3-40cb-4581-88d2-f47c18e4f17a",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "8ff7aa6d-ed88-406c-9120-58988c8c43c7",
+            "marks": [],
+            "text": "One of the most significant shifts in the past decade is the evolution of our role. We’re no longer just stylists brought in at the end to \"make it pretty.\" We’re stewards of systems. Authors of intent. Designers of participation. With AI in the mix, our responsibilities expand even further. We must now act as ethical gatekeepers:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "1ac926f6-6a89-4192-9bfe-59a88406271e",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "77b8523c-4b03-440e-ae66-e0db5214b4d0",
+            "marks": [],
+            "text": "What data trained this model?"
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "8bbadf80-7646-4e45-bafa-2520d946449b",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "6d2188d0-0a9c-406b-a181-5c280d81f3fe",
+            "marks": [],
+            "text": "Who benefits from this feature—and who’s left out?"
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "3a4e302a-910f-4c9a-9428-35a993eb9bf8",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "bdfd9676-4fcb-4fc4-8fb9-99924c3ffd8f",
+            "marks": [],
+            "text": "Are we reinforcing bias, or challenging it?"
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "e8fcecd8-0bab-47c6-9e62-4a7d8e94ba12",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "0e7e2f39-acf6-4c65-9589-eba93043d377",
+            "marks": [],
+            "text": "These aren’t edge cases. They are the new core of responsible design."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "8e8a4e1a-055f-415d-9988-b7f21f975090",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "87f19000-4c5d-4222-9aaf-9e887706bb35",
+            "marks": [],
+            "text": "A Return to Purpose"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "f47e8f19-5c0f-4644-9b51-712e9832c187",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "5eec0938-f37c-4b68-b38d-ceed044ca017",
+            "marks": [],
+            "text": "Yes, tools will continue to evolve. But our greatest assets remain unchanged: empathy, curiosity, judgment, courage. These qualities don’t show up in any plugin. They’re not automatable. They’re earned—in practice, in conversation, in critique."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "92c1d22b-2c2b-4a8d-abb6-0c5b7909d9ee",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "5c4deefd-9a89-4f1d-9c43-b8ac55ec6534",
+            "marks": [],
+            "text": "As AI shifts how we design, it’s up to us to preserve why we design. Because the goal isn’t just to make things—it’s to make things matter. And in 2025, that principle has never been more vital. ☻"
+          }
+        ]
+      },
+      {
+        "_type": "divider",
+        "_key": "34b0df45-503f-4066-a258-e02b9ae1f561"
+      },
+      {
+        "_type": "block",
+        "_key": "0272ac61-d89a-4d74-a647-55f246601b56",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "07fb0369-454d-4977-bcdf-d5b6499d359f",
+            "marks": [],
+            "text": "Share"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "8c4a45f8-8d1b-4a97-a697-1f7ff6dedc82",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "f247f247-4d16-496a-b85b-4555fd3de559",
+            "marks": [],
+            "text": "Similar Reads"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "in-search-of-impact",
+    "meta": {
+      "title": "Digitaltableteur Field Notes: In Search of Impact",
+      "lead": "How a solo studio delivers enterprise-scale outcomes with boutique precision.",
+      "link": "/blog/in-search-of-impact",
+      "readTime": "4 min read",
+      "color": "purple",
+      "date": "11.02.2025",
+      "componentName": "InSearchOfImpact",
+      "componentPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/pages/posts/InSearchOfImpact.tsx",
+      "slug": "in-search-of-impact"
+    },
+    "seo": {
+      "title": "Digitaltableteur Field Notes: In Search of Impact | Digitaltableteur",
+      "description": "How a solo studio delivers enterprise-scale outcomes with boutique precision."
+    },
+    "author": {
+      "name": "Petri Lahdelma",
+      "imagePath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/pete-vault-boy.jpg"
+    },
+    "body": [
+      {
+        "_type": "block",
+        "_key": "0b4d1b57-603f-4fbc-998a-3a60e3d61cc8",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "79f404fc-cb66-49f0-9ab1-847d51a39086",
+            "marks": [],
+            "text": "Digitaltableteur is intentionally small—a one-person studio that blends strategy, design, and engineering without handing anything off. The “one-man army” model isn’t a constraint. It is the way the studio keeps every brief close to the craft, every sprint accountable, and every launch personal."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "deb71970-5ea4-4272-81b0-a80cf256fc1e",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "7d21e54d-899b-4879-8b09-59e5751c12ce",
+            "marks": [],
+            "text": "When there is no internal bureaucracy, decisions aren’t diluted. The same person who listens to the client writes the narrative, designs the system, tunes the motion, and ships the code. That directness creates momentum the moment a project starts."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "aca45aa1-a1f1-49e8-bada-e2857015af1e",
+        "style": "blockquote",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "a62c3014-a7b0-4821-ad0c-6923d16b3268",
+            "marks": [],
+            "text": "Being small means every detail is on purpose—and every outcome has a name attached to it."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "f77c64ec-fb23-469a-8759-63a572a3bf7f",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "b9e0c71f-cad9-4f6d-a28e-32b16ee0ec66",
+            "marks": [],
+            "text": "Why Stay Solo When the Work Is Big?"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "c9ae16aa-c5d2-467d-9c41-caad46253de8",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "6339d993-002a-458f-9c9c-ab3d9b1bd32a",
+            "marks": [],
+            "text": "Most organizations swell with specialists. Digitaltableteur takes the opposite approach: keep the core tiny, then assemble collaborators only when the mission absolutely demands it. That preserves clarity of vision while still tapping world-class talent for illustration, research, or implementation scale."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "87c43682-9ba1-41df-90c8-467010c6f160",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "a12c5af8-82d5-46ee-be61-4b338c5ffa03",
+            "marks": [],
+            "text": "The benefits show up immediately:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "cf8ec6fa-735c-4ade-af34-b7be5cb7bd94",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d91396dc-cff4-484f-8944-67bccdc9b0a3",
+            "marks": [],
+            "text": "Single accountability: One owner for discovery, design systems, and deployment means no context gaps."
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "fb7c7873-a9d5-46b6-a207-5735053fcfcf",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "e10485da-6104-472c-884a-364356417bb0",
+            "marks": [],
+            "text": "Systemized craft: Tokens, typography, and code all live in the same stack, so nothing gets “polished later.”"
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "541b3a0e-1b55-4395-a9ee-f0e94e97fc1c",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "c29845c0-8d7a-4bfe-b666-d3a3bce9e58f",
+            "marks": [],
+            "text": "Client proximity: Conversations happen with the person doing the work, not layers of account management."
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "59a2519e-8e67-4432-ae7e-481129a44f47",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "6231066f-28b2-494a-924a-6b32a73f2725",
+            "marks": [],
+            "text": "The Operating Rhythm"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "2bed3f18-60cb-4444-b917-6d808b71de39",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "6ca6510f-e4ae-410e-be31-b1f5ac4241a2",
+            "marks": [],
+            "text": "Every engagement follows a tight cadence that keeps intent at the center:"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "10c63f37-7667-4c1d-849f-bdfdd166c14e",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "4c7fbb2d-7248-41ff-a86c-1ed890e760fa",
+            "marks": [],
+            "text": "First discovery: Define the shift we want in user behavior or business outcomes before drawing a single frame."
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "a1612158-77e2-4b69-80cd-5250d151de18",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "c6c18c34-b48e-4cde-a801-739a4017749e",
+            "marks": [],
+            "text": "Concept sprints: Explore typography, motion, and interaction in rapid cycles to establish the tone."
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "a21e1e3a-f6cf-4279-ba0b-a253db1101fd",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "66d32532-39bc-467f-8bb4-266fd18368da",
+            "marks": [],
+            "text": "Integrated build: Storybook, production, and content operate from the same design system, removing translation debt."
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "ad4ffbbb-34f5-4583-a73a-4c28caa0687a",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "c3b1151d-0ad4-4828-9998-428da86d8699",
+            "marks": [],
+            "text": "Observation loops: Post-launch analytics feed straight into new experiments—no quarterly waiting room."
+          }
+        ],
+        "listItem": "bullet",
+        "level": 1
+      },
+      {
+        "_type": "block",
+        "_key": "cffb044a-8cb2-41c5-a430-599adb59aca2",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "08b0e317-79c5-44d1-b539-11b0eb47dccb",
+            "marks": [],
+            "text": "Who It Serves Best"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "6cd4a507-7759-4d62-852a-67e0c9416635",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "c76723aa-0468-4dd8-8d58-d3e190abd7ce",
+            "marks": [],
+            "text": "The model shines when a company needs something flagship—a marketing hero, product prototype, or design system that feels authored instead of assembled. Leaders who want rapid decisions, strong opinions, and a single point of contact tend to thrive in this partnership."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "96adf414-9730-4c83-b6b3-7cb3b35ecd23",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d7047ad9-08b3-4a8e-908d-b048ca9815c1",
+            "marks": [],
+            "text": "It’s also ideal when experimentation matters. Kinetic typography, editorial layouts, intent-driven flows, or AI-native features can be explored without scary timelines because every experiment is owned end to end."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "3c3af866-b8d3-4afc-b3ab-67757af46a2a",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "1364a850-e256-481e-8873-590817866e0b",
+            "marks": [],
+            "text": "Collaboration Without Bureaucracy"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "94c42a06-3b8f-43df-9db6-e7401de86e1d",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "64dbc6ce-8d35-4616-bd28-0431afef550e",
+            "marks": [],
+            "text": "“Solo” doesn’t mean isolation. Digitaltableteur pulls in trusted collaborators—writers, illustrators, ML specialists—whenever the work calls for it. The difference is orchestration. There is still one person ensuring the grid, palette, and budgets stay cohesive across every contribution."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "77d3ac11-f9e1-481e-978b-0836c51bb18e",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "98ba53b2-dbaf-4706-9d4d-db6450b8a38c",
+            "marks": [],
+            "text": "A Studio Built on Care, Not Headcount"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "bfb2904c-5cba-454a-946f-997933b539b4",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "3ff12815-a60d-4722-a28d-eae9009422cd",
+            "marks": [],
+            "text": "Growth here doesn’t mean adding layers. It means amplifying the impact of a focused practice through reusable systems, intent-driven tooling, and shared research notes. The promise stays the same: enterprise thinking, boutique-level craft, and the accountability that only comes from putting your name on every release."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "25a85165-e27d-4488-88da-bdc00e01bd21",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "6ef88654-c682-4b30-bac2-5b56b8510a31",
+            "marks": [],
+            "text": "The future of Digitaltableteur isn’t about becoming bigger. It’s about staying sharp, staying curious, and delivering work that feels like it could only have come from one studio—because it did."
+          }
+        ]
+      },
+      {
+        "_type": "divider",
+        "_key": "57a9eac5-f0a5-4b50-a7ce-f9bbc5425e54"
+      },
+      {
+        "_type": "block",
+        "_key": "d2a4fdf0-0607-4f96-8bde-d553803c409e",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "9bdeccc7-3799-40f3-8fec-a4e41a7f7bf1",
+            "marks": [],
+            "text": "Share"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "07ec6a33-d675-4475-b4f6-b7dbfc1c925f",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "04a2bbb4-f90d-4e94-8dfc-586def96fa10",
+            "marks": [],
+            "text": "Similar Reads"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "figma-mcp-design-systems",
+    "meta": {
+      "title": "MCP, Design Systems, and Generative UI",
+      "lead": "How Figma's MCP server speeds up design-to-code workflows.",
+      "link": "/blog/figma-mcp-design-systems",
+      "readTime": "4 min read",
+      "color": "pink",
+      "date": "05.06.2025",
+      "componentName": "FigmaMCP",
+      "componentPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/pages/posts/FigmaMCP.tsx",
+      "slug": "figma-mcp-design-systems"
+    },
+    "seo": {
+      "title": "Figma MCP, Design Systems, and Generative UI | Digitaltableteur",
+      "description": "How Figma's MCP server speeds up design-to-code workflows."
+    },
+    "author": {
+      "name": "Petri Lahdelma",
+      "imagePath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/pete-vault-boy.jpg"
+    },
+    "body": [
+      {
+        "_type": "image",
+        "_key": "713f7392-b32e-4f80-a31d-94f38c5ec560",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/MCP.webp",
+        "alt": "I'm sorry, but I can't view or describe specific images."
+      },
+      {
+        "_type": "block",
+        "_key": "07cd0180-361b-4f8d-9bdc-3d1d4d845500",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "448e28d2-d72e-4f3d-ae8c-dae98ac33845",
+            "marks": [],
+            "text": "Recently, I experimented with Figma’s official MCP (Model Context Protocol) server in tandem with the dt design system, and the results were eye-opening. By enriching the components with machine-readable metadata directly within Figma, I unlocked a new layer of semantic clarity — not just for designers, but for tooling and automation as well. This integration allowed me to embed context such as intent, behavior, and variant logic directly into each component."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "230778c5-f718-4ee3-bae9-8a53ebbcca40",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "215c49c6-b711-49e3-a9c1-5555da2612cb",
+            "marks": [],
+            "text": "When combined with a well-structured design system, this metadata forms a bridge between design and development that’s both expressive and efficient. It fundamentally shifts how we think about handoff: instead of static specs, we’re enabling a pipeline where components carry the instructions needed to generate real code or configure runtime behavior. This shift opens the door to smarter tooling, automatic documentation, and even generative UI workflows — all grounded in the source of truth that lives inside the design system."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "e6745a34-f42d-4ec2-b247-781e7e39d95c",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "1d9f9592-3a55-4dfc-a3fe-fda0a33a00ca",
+            "marks": [],
+            "text": "The Problem with the Current Workflow"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "8f6e1f5e-4571-467e-9dc5-2b45521b168f",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "0e366dc7-49f1-45cc-bf0d-0a02d88893d6",
+            "marks": [],
+            "text": "Even with well-documented systems, the handoff from designer to developer often involves a layer of translation—interpreting visual intent, cross-referencing token usage, and validating component variants. It’s a process that still relies heavily on human interpretation and manual alignment. Small details, like the exact padding on a card or the semantic use of a color token, can easily slip through the cracks, leading to inconsistencies in implementation. These discrepancies not only require back-and-forth to resolve but can also erode trust in the system itself. As a result, iteration slows down, and teams spend more time fixing gaps than pushing the experience forward."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "4fc59808-bb93-49bc-8195-d8481fbdebc8",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "987406c4-af2d-4799-891b-853a4ef0178e",
+            "marks": [],
+            "text": "What MCP Changes"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "f6199f28-b5de-4db7-9cce-ce6e0f07d151",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "3f0d1897-a12f-4da9-b83c-6cc88dfef94a",
+            "marks": [],
+            "text": "MCP exposes design file data directly to code assistants. Instead of referencing screenshots or static specs, the assistant consumes real components, variants, and tokens right from Figma."
+          }
+        ]
+      },
+      {
+        "_type": "image",
+        "_key": "76d2a87b-aa89-4e79-ae09-9d1c749a01ea",
+        "assetPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/dt-mindmap.webp",
+        "alt": "Visual diagram outlining concepts related to digital transformation strategies."
+      },
+      {
+        "_type": "block",
+        "_key": "c854c8ac-402f-4b7e-adad-c5d4b56b1333",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "8b89e32f-a11c-44fb-9cc0-b49ffc13a359",
+            "marks": [],
+            "text": "This means the AI can generate code that’s not just visually accurate, but also semantically aligned with the design system’s intent. It understands how components relate to each other, what variants are available, and how tokens should be applied."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "eca9a885-52aa-48e7-bba2-ad8dbcb3c4dd",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "00f6f7f2-3ba3-443c-a746-817b487ca1f1",
+            "marks": [],
+            "text": "In the trials I dropped a component URL into the editor and watched as it generated a nearly complete web component. Minor styling fixes aside, it was surprisingly production ready."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "c1aa8c34-cd12-436e-8ddf-57548d003048",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "15586879-2770-4a9c-9a7f-9f162282d1d9",
+            "marks": [],
+            "text": "Design Systems as the Enabler"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "e34fc812-1057-438e-88a1-9646621b5cf1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "3e52a297-b7e3-4630-92b9-bae6107131d2",
+            "marks": [],
+            "text": "A consistent design system gives the MCP data meaning. Clear token names and predictable component structure help AI tools map design choices to code without guesswork."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "cf843d4e-2cc9-42aa-83a0-e4d1daa0d4c9",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "345db2b7-c8de-4983-9af7-c6f0db6c0240",
+            "marks": [],
+            "text": "Generative UI with Natural Language"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "f2b54666-3821-4b4a-a34f-dba80ce37c21",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "947e34f7-8dd4-46c9-8fec-4d69a0728253",
+            "marks": [],
+            "text": "I took it a step further by connecting the output to a local tool that generates layouts from text prompts. Typing “Build a login form” or “Create a three column feature grid” produces a quick preview that respects my components and styling conventions."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "05637cf9-e4e0-4485-90b6-7dd11853e00f",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "b922d3ab-83d5-4cc9-ae7c-e20eb86f5b73",
+            "marks": [],
+            "text": "This Isn’t About Replacing Roles"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "4167c965-6b9e-47fc-ae57-dee02bd59b58",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "c631d666-b214-4a20-b5c8-1b811c3c00f8",
+            "marks": [],
+            "text": "Engineering still plays a critical role in refining the output, ensuring performance, scalability, and maintainability, while design continues to shape and own the overall user experience. But what’s changing is the nature of that collaboration. By automating the repetitive and predictable parts of the workflow — the boilerplate code, standard layout scaffolding, and component wiring — we’re reclaiming valuable time and cognitive energy. This gives teams space to focus on what actually matters: the edge cases that define polish, the accessibility nuances that ensure inclusivity, and the product vision that ties everything together into something coherent and meaningful. Rather than getting bogged down in tactical execution, both designers and developers can engage more deeply in strategic problem-solving, exploring interactions, flows, and ideas that elevate the product beyond the expected."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "221cb641-2a56-4d9e-83f9-8e6228bf8802",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d1e4452f-d898-42ca-8c0b-cc30a6316c76",
+            "marks": [],
+            "text": "Where We’re Headed"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "29ee863e-0684-469f-b8f5-76a3b3749f52",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "b014d9c2-85a3-44ae-bc3a-0662ff9f11b0",
+            "marks": [],
+            "text": "At least my personal goal is to make this workflow approachable for bigger teams. With stable tools and repeatable patterns, the gap between idea and implementation keeps shrinking. It’s an exciting time to rethink how we collaborate—and MCP's are a big part of that conversation.☻"
+          }
+        ]
+      },
+      {
+        "_type": "divider",
+        "_key": "1d0870bf-819e-475a-be79-b15ed4d5e8fc"
+      },
+      {
+        "_type": "block",
+        "_key": "1bb4260d-3faa-44cf-abe9-dc580317a9d0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "dffcd8f7-bf5c-4f76-9797-dab74d038b7e",
+            "marks": [],
+            "text": "Share"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b233d6b1-8b83-4e59-824e-76682b758fe0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "a976a8fa-6ff5-4faf-828a-3ed1878a270d",
+            "marks": [],
+            "text": "Similar Reads"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "petri-lahdelma-bio",
+    "meta": {
+      "title": "Petri Lahdelma: A Biography",
+      "lead": "From Varissuo to leading global design systems.",
+      "link": "/blog/petri-lahdelma-bio",
+      "readTime": "3 min read",
+      "color": "blue",
+      "date": "15.06.2025",
+      "componentName": "PetriLahdelmaBio",
+      "componentPath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/pages/posts/PetriLahdelmaBio.tsx",
+      "slug": "petri-lahdelma-bio"
+    },
+    "seo": {
+      "title": "Petri Lahdelma: A Biography | Digitaltableteur",
+      "description": "From Varissuo to leading global design systems."
+    },
+    "author": {
+      "name": "Petri Lahdelma",
+      "imagePath": "/Users/petrilahdelma/SAPDevelop/digitaltableteur/src/assets/images/pete-vault-boy.jpg"
+    },
+    "body": [
+      {
+        "_type": "block",
+        "_key": "28f129c6-20e5-4432-9a79-57f94ee7e20c",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "7c545362-1484-4770-b1d9-96c079850602",
+            "marks": [],
+            "text": "Petri Lahdelma is a Finnish designer, systems thinker, and advocate for professional ethics in design. Raised in Varissuo, a suburb of Turku, his passion for visual culture came from a painter father and a supportive mother. That early spark carried him to the UK for a BA in Graphic Design at the University of Cumbria, and later to Aalto University in Helsinki for a master's degree."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "c5b8e801-ae2d-439a-9490-62cdc75fb648",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "3a64b835-4c02-4cfe-9474-8cf03061fcb3",
+            "marks": [],
+            "text": "Among the mentors who shaped his craft were Rhiannon Robinson, who sharpened his critical eye, and Tapio Vapaasalo, who instilled a love for craftsmanship and form. After a junior stint at Werklig, Petri spent two decades moving through agencies, startups, and entrepreneurial ventures, always refusing to stand still."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "e1c89a5c-42a9-4384-8548-34c78c7b48f4",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "50347254-be4b-4d54-b091-0346f13af85a",
+            "marks": [],
+            "text": "Today he leads a design system team in a global enterprise of more than 110,000 colleagues worldwide, balancing enterprise UX with scalable systems thinking. His portfolio ranges from national infrastructure identities like the Liikennevirasto corporate identity to agile startup brands such as New Things Company, and he laid the strategic groundwork for the Helsinki Design System."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "62436d67-2094-45ce-af0e-5089177da5ab",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "64d75bb9-bed4-43a6-ab17-d45aeda3b065",
+            "marks": [],
+            "text": "Throughout his career Petri has founded and led design guilds and special interest programs, shaping team culture as much as the work itself. He belongs to AIGA, IxDA, and ISTD. While he rarely speaks publicly—a regret of his own—his influence lives in the systems, standards, and ethics he brings to every project."
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "855cc36f-bd68-4097-91c9-af39a2ec8b71",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "cec2734a-6cd3-41a8-bf41-02ea8b5a2e73",
+            "marks": [],
+            "text": "He believes clarity matters more than decoration, that form follows function, and that users seldom say what they really need. Guided by curiosity and care rather than fleeting trends, colleagues know him as a thoughtful, kind collaborator who insists on doing things the right way."
+          }
+        ]
+      },
+      {
+        "_type": "divider",
+        "_key": "aead044a-5ba5-42dd-9204-06f6f72388ef"
+      },
+      {
+        "_type": "block",
+        "_key": "b3af8e98-e721-4bfd-8bc6-2a003f53caf2",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "0390625e-5df8-41db-bbc4-ce031932f1f1",
+            "marks": [],
+            "text": "Share"
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "352c257f-64cf-4d61-8301-36b501f2c04f",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "583518fd-7769-4a94-8393-1675f5610338",
+            "marks": [],
+            "text": "Similar Reads"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -150,7 +150,7 @@ const Contact = () => {
               mail@digitaltableteur.com
             </Link>
           </Text>
-          <SecureCVDownload buttonVariant="secondary" inverse />
+          <SecureCVDownload buttonVariant="primary" inverse />
         </div>
       </div>
     </>

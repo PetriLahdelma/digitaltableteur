@@ -68,7 +68,7 @@ export const Playground = {
     title: "Card Playground",
     subTitle: "Interactive testing",
     body: "Use the controls panel to explore different Card configurations and features.",
-    icon: <Icon name="Palette" />,
+    icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "start", size: "md" },
     badge: "Demo",
     badgeProps: { state: "info", position: "end" },
@@ -105,7 +105,7 @@ export const Loading = {
 export const WithIconStart = {
   args: {
     title: "Creative Development",
-    icon: <Icon name="Palette" />,
+    icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "start", size: "md" },
     body: "Digital experiences that combine aesthetic excellence with functional innovation.",
     variant: "elevated",
@@ -116,7 +116,7 @@ export const WithIconStart = {
 export const WithIconEnd = {
   args: {
     title: "External Link",
-    icon: <Icon name="ArrowSquareOut" />,
+    icon: <Icon name="arrow-square-out" ariaLabel="arrow-square-out" />,
     iconProps: { position: "end", size: "sm" },
     body: "Card with trailing icon to indicate external navigation.",
     variant: "outlined",
@@ -126,7 +126,7 @@ export const WithIconEnd = {
 export const WithIconTop = {
   args: {
     title: "Strategy & Analytics",
-    icon: <Icon name="ChartLine" />,
+    icon: <Icon name="chart-line-up" ariaLabel="chart-line-up" />,
     iconProps: { position: "top", size: "lg" },
     body: "Strategic thinking meets data visualization to create meaningful insights.",
     variant: "filled",
@@ -185,7 +185,7 @@ export const WithActions = {
     return (
       <Card
         title="Document Editor"
-        icon={<Icon name="PenNib" />}
+        icon={<Icon name="pencil" ariaLabel="pencil" />}
         iconProps={{ position: "start" }}
         body="Card with multiple footer actions for user interactions."
         actions={actions}
@@ -198,7 +198,7 @@ export const WithActions = {
 export const Interactive = {
   args: {
     title: "Interactive Card",
-    icon: <Icon name="GithubLogo" />,
+    icon: <Icon name="github-logo" ariaLabel="github-logo" />,
     iconProps: { position: "start" },
     subTitle: "Clickable surface",
     description:
@@ -214,7 +214,7 @@ export const Interactive = {
 export const AsLink = {
   args: {
     title: "Portfolio Project",
-    icon: <Icon name="ArrowSquareOut" />,
+    icon: <Icon name="arrow-square-out" ariaLabel="arrow-square-out" />,
     iconProps: { position: "end", size: "sm" },
     body: "This entire card functions as a clickable link while maintaining semantic structure.",
     link: "https://example.com",
@@ -228,7 +228,7 @@ export const AsLink = {
 export const SmallSize = {
   args: {
     title: "Compact Card",
-    icon: <Icon name="Star" />,
+    icon: <Icon name="star" ariaLabel="star" />,
     iconProps: { position: "start", size: "sm" },
     body: "Reduced padding for dense layouts.",
     size: "S",
@@ -240,7 +240,7 @@ export const LargeSize = {
   args: {
     title: "Spacious Card",
     titleProps: { size: "XL" },
-    icon: <Icon name="Heart" />,
+    icon: <Icon name="heart" ariaLabel="heart" />,
     iconProps: { position: "top", size: "lg" },
     body: "Generous spacing for prominent content areas.",
     bodyProps: { size: "L" },
@@ -256,7 +256,7 @@ export const ProfileCard = {
     title: "Sarah Johnson",
     titleProps: { size: "L" },
     subTitle: "Senior Designer",
-    icon: <Icon name="User" />,
+    icon: <Icon name="user" ariaLabel="user" />,
     iconProps: { position: "start" },
     cover: (
       <div
@@ -280,7 +280,7 @@ export const MetricCard = {
     bodyProps: { size: "L" },
     description: "↗ 23% from last week",
     descriptionProps: { size: "S" },
-    icon: <Icon name="Eye" />,
+    icon: <Icon name="eye" ariaLabel="eye" />,
     iconProps: { position: "end", size: "sm" },
     variant: "outlined",
     size: "S",
@@ -292,7 +292,7 @@ export const EventCard = {
     title: "Design System Workshop",
     titleProps: { size: "L" },
     subTitle: "Online Event",
-    icon: <Icon name="Calendar" />,
+    icon: <Icon name="calendar" ariaLabel="calendar" />,
     iconProps: { position: "start" },
     body: "Join us for an interactive session on building scalable design systems with modern tools and methodologies.",
     variant: "filled",
@@ -319,7 +319,7 @@ const TabbedStoryComponent = () => {
   return (
     <Card
       title="Tabbed Interface"
-      icon={<Icon name="GithubLogo" />}
+      icon={<Icon name="github-logo" ariaLabel="github-logo" />}
       iconProps={{ position: "start" }}
       tabs={tabs}
       activeTabKey={active}
@@ -342,7 +342,7 @@ export const ProjectCard = {
   args: {
     title: "Digital Portfolio",
     titleProps: { size: "L" },
-    icon: <Icon name="Palette" />,
+    icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "start" },
     cover: (
       <img
@@ -363,7 +363,7 @@ export const ServiceHighlight = {
   args: {
     title: "Creative Development",
     titleProps: { size: "L" },
-    icon: <Icon name="Palette" />,
+    icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "top", size: "lg" },
     description:
       "Building digital experiences that combine aesthetic excellence with functional innovation.",
@@ -390,7 +390,7 @@ export const WithBadgeStart = {
     title: "Critical Issue",
     badge: "3",
     badgeProps: { state: "error", position: "start", size: "s" },
-    icon: <Icon name="BugBeetle" />,
+    icon: <Icon name="bug" ariaLabel="bug" />,
     iconProps: { position: "end", size: "sm" },
     body: "Badge positioned at the start of the header with an icon at the end.",
     variant: "elevated",
@@ -400,7 +400,13 @@ export const WithBadgeStart = {
 export const WithCustomBadge = {
   args: {
     title: "Premium Service",
-    badge: <Icon name="star" color="gold" />,
+    badge: (
+      <Icon
+        name="star"
+        ariaLabel="star"
+        style={{ color: "var(--color-warning, #fbbf24)" }}
+      />
+    ),
     body: "Custom React element as badge content.",
     variant: "filled",
   },
@@ -410,7 +416,7 @@ export const WithCustomBadge = {
 export const WithSuccessMessage = {
   args: {
     title: "Form Submitted",
-    icon: <Icon name="Check" />,
+    icon: <Icon name="check" ariaLabel="check" />,
     iconProps: { position: "start", size: "md" },
     statusMessage: "Your information has been successfully saved.",
     statusMessageProps: { state: "success" },
@@ -422,7 +428,7 @@ export const WithSuccessMessage = {
 export const WithErrorMessage = {
   args: {
     title: "Validation Error",
-    icon: <Icon name="Warning" />,
+    icon: <Icon name="warning" ariaLabel="warning" />,
     iconProps: { position: "start", size: "md" },
     statusMessage: "Please check the required fields and try again.",
     statusMessageProps: { state: "error" },
@@ -458,7 +464,7 @@ export const SizeMedium = {
   args: {
     title: "Medium Card",
     size: "M",
-    icon: <Icon name="User" />,
+    icon: <Icon name="user" ariaLabel="user" />,
     iconProps: { position: "start" },
     body: "Medium card with 480px max-width for balanced content.",
     variant: "elevated",
@@ -469,7 +475,7 @@ export const SizeLarge = {
   args: {
     title: "Large Card",
     size: "L",
-    icon: <Icon name="ChartLine" />,
+    icon: <Icon name="chart-line-up" ariaLabel="chart-line-up" />,
     iconProps: { position: "top", size: "lg" },
     body: "Large card with 600px max-width for detailed content and generous spacing.",
     variant: "filled",
@@ -493,7 +499,7 @@ export const ComplexExample = {
   args: {
     title: "Feature Request",
     titleProps: { size: "L" },
-    icon: <Icon name="Palette" />,
+    icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "start", size: "md" },
     badge: "High Priority",
     badgeProps: { state: "warning", position: "end" },

@@ -1,29 +1,15 @@
 import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import styles from "./Blog.module.css";
-import { posts } from "./posts";
 import ArticleCard from "@dt/ArticleCard";
 import Title from "@dt/Title";
 import HelsinkiClock from "@dt/HelsinkiClock";
 import { useTranslation } from "react-i18next";
-
-interface Post {
-  title: string;
-  lead: string;
-  link: string;
-  readTime: string;
-  color: string;
-  date: string;
-  component: React.FC;
-}
+import { getBlogPosts } from "../data/blogPosts";
 
 const Blog = () => {
   const { t } = useTranslation();
-  const sortedPosts = posts.sort((a: Post, b: Post) => {
-    const dateA = new Date(a.date.split(".").reverse().join("-"));
-    const dateB = new Date(b.date.split(".").reverse().join("-"));
-    return dateB.getTime() - dateA.getTime();
-  });
+  const posts = getBlogPosts();
 
   return (
     <HelmetProvider>
@@ -48,13 +34,13 @@ const Blog = () => {
         <Title size="L">{t("blogArticlesTitle")}</Title>
         <HelsinkiClock />
         <div className={styles.list}>
-          {sortedPosts.map((post: Post) => (
+          {posts.map((post) => (
             <ArticleCard
-              key={post.link}
+              key={post.slug}
               title={post.title}
-              lead={post.lead}
-              link={post.link}
-              readTime={post.readTime}
+              lead={post.excerpt ?? ""}
+              link={`/blog/${post.slug}`}
+              readTime={post.readTime ?? undefined}
               className={styles.card}
             />
           ))}

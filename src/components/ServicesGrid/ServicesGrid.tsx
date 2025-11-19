@@ -8,7 +8,7 @@ export interface ServicesGridProps {
 }
 
 // Icon order aligned with titles: Design, Development, Strategy, AI Innovation
-const ICON_NAMES = ["palette", "code", "target", "robot"] as const;
+const ICONS = ["palette", "code", "strategy", "robot"] as const;
 
 const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
   const { t } = useTranslation();
@@ -26,7 +26,7 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
         <span className={styles.gridLabel} aria-hidden="true">
           {ariaLabel}
         </span>
-        {ICON_NAMES.map((iconName, idx) => (
+        {ICONS.map((iconName, idx) => (
           <div
             key={idx}
             className={styles.item}
@@ -38,7 +38,7 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
               aria-hidden="true"
               data-testid="services-grid-icon"
             >
-              <Icon name={iconName} size={32} />
+              <Icon name={iconName} size={32} ariaLabel={titles[idx]} />
             </div>
             <div className={styles.title}>{titles[idx]}</div>
           </div>

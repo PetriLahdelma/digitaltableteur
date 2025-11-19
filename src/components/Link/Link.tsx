@@ -65,7 +65,7 @@ const Link: React.FC<LinkProps> = ({
       {children}
       {isExternal && hasTextContent && (
         <span className={styles.externalIcon}>
-          <Icon name="arrow-square-out" aria-label="External link" />
+          <Icon name="arrow-square-out" ariaLabel="External link" />
         </span>
       )}
     </a>

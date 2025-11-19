@@ -2,16 +2,16 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
+import Icon from "@dt/Icon";
 
 import Badge from "./Badge";
-import Icon from "@dt/Icon";
 import Text from "@dt/Text";
 
-const STATE_ICON_MAP = {
+const STATE_ICON_MAP: Record<string, string> = {
   success: "check-circle",
   info: "info",
-  error: "x-circle",
-  warning: "triangle-exclamation",
+  error: "warning-circle",
+  warning: "warning",
 };
 
 const meta: Meta<typeof Badge> = {
@@ -45,10 +45,10 @@ const meta: Meta<typeof Badge> = {
       action: "removed",
       description: "Callback when badge is removed",
     },
-    icon: {
+    iconName: {
       control: { type: "text" },
       description:
-        "Enter a react-icons/fa component name (e.g. FaBeer) to display in the badge. Auto-updates based on state when empty.",
+        "Enter a Phosphor icon name (e.g. palette) to display inside the badge. Defaults to a semantic icon when empty.",
     },
     size: {
       control: { type: "select" },
@@ -60,7 +60,7 @@ const meta: Meta<typeof Badge> = {
     design: "primary",
     state: undefined,
     children: "Badge",
-    icon: "",
+    iconName: "",
     removable: false,
     square: false,
     size: "m",
@@ -72,25 +72,24 @@ export default meta;
 type Story = StoryObj<typeof Badge>;
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
-const BadgeStoryTemplate: React.FC<BadgeProps> = (args) => {
+const BadgeStoryTemplate: React.FC<BadgeProps & { iconName?: string }> = (
+  args,
+) => {
   const { t } = useTranslation();
-  const { icon, children, state, ...rest } = args;
+  const { iconName, children, state, ...rest } = args;
   let content = children;
   if (typeof children === "string" && children.startsWith("badge")) {
     content = t(children);
   }
 
-  const iconName =
-    typeof icon === "string" && icon.trim()
-      ? icon.trim()
-      : state && STATE_ICON_MAP[state as keyof typeof STATE_ICON_MAP];
+  const resolvedName =
+    iconName && iconName.trim()
+      ? iconName.trim()
+      : state && STATE_ICON_MAP[state];
 
-  const resolvedIcon =
-    typeof icon === "string" || !icon
-      ? iconName
-        ? React.createElement(Icon, { name: iconName })
-        : null
-      : icon;
+  const resolvedIcon = resolvedName ? (
+    <Icon name={resolvedName} ariaLabel={resolvedName} />
+  ) : undefined;
 
   return (
     <Badge {...rest} state={state} icon={resolvedIcon}>
@@ -99,7 +98,9 @@ const BadgeStoryTemplate: React.FC<BadgeProps> = (args) => {
   );
 };
 
-const Template = (args: BadgeProps) => <BadgeStoryTemplate {...args} />;
+const Template = (args: BadgeProps & { iconName?: string }) => (
+  <BadgeStoryTemplate {...args} />
+);
 
 export const Playground: Story = {
   render: Template,
@@ -199,7 +200,7 @@ export const WithIcon: Story = {
     design: "primary",
     state: "info",
     children: "badgeInfo",
-    icon: "",
+    iconName: "info",
   },
 };
 

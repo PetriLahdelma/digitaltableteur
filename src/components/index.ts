@@ -1,5 +1,6 @@
 export { default as ArticleCard } from "./ArticleCard/ArticleCard";
 export { default as Author } from "./Author/Author";
+export { default as AuthorBio } from "./AuthorBio/AuthorBio";
 export { default as Avatar } from "./Avatar/Avatar";
 export { default as Badge } from "./Badge/Badge";
 export { default as Button } from "./Button/Button";
