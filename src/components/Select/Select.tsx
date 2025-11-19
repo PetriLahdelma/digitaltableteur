@@ -1,8 +1,8 @@
 import React, { useId } from "react";
-import { FaChevronDown } from "react-icons/fa";
 import Label from "@dt/Label";
 import SelectOption from "./SelectOption";
 import styles from "./Select.module.css";
+import Icon from "@dt/Icon";
 
 interface SelectOptionItem {
   value: string;
@@ -84,10 +84,10 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                   />
                 ))}
           </select>
-          <FaChevronDown
+          <Icon
+            name="caret-down"
             className={styles.chevronIcon}
-            aria-hidden="true"
-            focusable="false"
+            ariaLabel="Toggle options"
           />
         </div>
       </div>

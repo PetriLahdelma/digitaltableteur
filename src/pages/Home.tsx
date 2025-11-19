@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { motion, type Transition, type Variants } from "motion/react";
 import Button from "@dt/Button";
 import Card from "@dt/Card";
-import { FaPalette, FaChartLine, FaPen } from "react-icons/fa";
+import Icon from "@dt/Icon";
 
 const heroContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -113,7 +113,7 @@ const Home = () => {
           "Digital experiences combining aesthetic excellence with functional innovation.",
         ),
         variant: "filled" as const,
-        icon: <FaPalette />,
+        icon: <Icon name="palette" ariaLabel={t("homeCreativeDevelopment")} />,
       },
       {
         key: "strategy",
@@ -123,7 +123,9 @@ const Home = () => {
           "Strategic thinking meets visual identity creating memorable brand experiences.",
         ),
         variant: "filled" as const,
-        icon: <FaChartLine />,
+        icon: (
+          <Icon name="chart-line-up" ariaLabel={t("homeStrategyBranding")} />
+        ),
       },
       {
         key: "illustration",
@@ -133,7 +135,7 @@ const Home = () => {
           "Custom illustrations and editorial design that tell compelling visual stories.",
         ),
         variant: "filled" as const,
-        icon: <FaPen />,
+        icon: <Icon name="pencil" ariaLabel={t("homeIllustrationEditorial")} />,
       },
     ],
     [t],

@@ -3,8 +3,7 @@ import { Meta, StoryFn } from "@storybook/react-vite";
 import Modal, { ModalProps } from "./Modal";
 import Button from "@dt/Button";
 import { useTranslation } from "react-i18next";
-import { FaInfoCircle, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
-import { MdOutlineError } from "react-icons/md";
+import Icon from "@dt/Icon";
 
 export default {
   title: "Components/Modal",
@@ -22,9 +21,9 @@ export default {
         type: "select",
         options: {
           None: null,
-          Error: FaTimesCircle({}),
-          Success: FaCheckCircle({}),
-          Info: FaInfoCircle({}),
+          Error: <Icon name="x-circle" ariaLabel="Error" />,
+          Success: <Icon name="check-circle" ariaLabel="Success" />,
+          Info: <Icon name="info" ariaLabel="Info" />,
         },
       },
     },
@@ -75,7 +74,13 @@ export const ErrorDialog = Template.bind({});
 ErrorDialog.args = {
   isOpen: true,
   title: "storyModalErrorTitle",
-  icon: MdOutlineError({ style: { color: "var(--color-error)" } }),
+  icon: (
+    <Icon
+      name="warning-circle"
+      ariaLabel="Error"
+      style={{ color: "var(--color-error)" }}
+    />
+  ),
   variant: "error",
   children: "storyModalErrorBody",
   onClose: () => alert("Closed"),
@@ -85,7 +90,13 @@ export const SuccessDialog = Template.bind({});
 SuccessDialog.args = {
   isOpen: true,
   title: "storyModalSuccessTitle",
-  icon: FaCheckCircle({ style: { color: "var(--color-success)" } }),
+  icon: (
+    <Icon
+      name="check-circle"
+      ariaLabel="Success"
+      style={{ color: "var(--color-success)" }}
+    />
+  ),
   variant: "success",
   children: "storyModalSuccessBody",
   onClose: () => alert("Closed"),
@@ -95,7 +106,9 @@ export const InfoDialog = Template.bind({});
 InfoDialog.args = {
   isOpen: true,
   title: "storyModalInfoTitle",
-  icon: FaInfoCircle({ style: { color: "var(--color-info)" } }), // Updated icon format with style prop
+  icon: (
+    <Icon name="info" ariaLabel="Info" style={{ color: "var(--color-info)" }} />
+  ),
   variant: "info",
   children: "storyModalInfoBody",
   onClose: () => alert("Closed"),

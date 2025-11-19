@@ -1,7 +1,8 @@
+/* stylelint-disable value-keyword-case, scale-unlimited/declaration-strict-value */
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import { FaSearch, FaArrowRight, FaArrowLeft } from "react-icons/fa"; // still used for non-string examples if needed
 import Button from "./Button";
+import Icon from "@dt/Icon";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 
@@ -43,15 +44,34 @@ const Template: StoryFn = (args: React.ComponentProps<typeof Button>) => (
   <Button {...args} />
 );
 
+const visuallyHiddenStyle: React.CSSProperties = {
+  position: "absolute",
+  width: 1,
+  height: 1,
+  padding: 0,
+  margin: -1,
+  overflow: "hidden",
+  clip: "rect(0, 0, 0, 0)",
+  whiteSpace: "nowrap",
+  border: 0,
+};
+
+const INVERSE_SWATCHES = [
+  { label: "Primary", color: "var(--color-primary)" },
+  { label: "Accent Pink", color: "var(--accent-pink)" },
+  { label: "Error", color: "var(--color-error)" },
+  { label: "Success", color: "var(--color-success)" },
+] as const;
+
 export const Primary = Template.bind({});
 Primary.args = {
   variant: "primary",
   children: <ButtonStoryLabel tKey="buttonPrimary" />,
-  icon: "", // user can type e.g. IoMdRefresh
+  icon: "",
 };
 Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /primary button/i });
+  const button = await canvas.findByRole("button", { name: /primary/i });
   await userEvent.click(button);
   // Focus test
   await userEvent.tab();
@@ -65,7 +85,7 @@ Secondary.args = {
 Secondary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.findByRole("button", {
-    name: /secondary button/i,
+    name: /secondary/i,
   });
   await userEvent.click(button);
   await userEvent.tab();
@@ -79,7 +99,7 @@ Tertiary.args = {
 Tertiary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.findByRole("button", {
-    name: /tertiary button/i,
+    name: /tertiary/i,
   });
   await userEvent.click(button);
   await userEvent.tab();
@@ -92,7 +112,7 @@ Error.args = {
 };
 Error.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /error button/i });
+  const button = await canvas.findByRole("button", { name: /error/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -104,7 +124,7 @@ Warning.args = {
 };
 Warning.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /warning button/i });
+  const button = await canvas.findByRole("button", { name: /warning/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -116,7 +136,7 @@ Success.args = {
 };
 Success.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /success button/i });
+  const button = await canvas.findByRole("button", { name: /success/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -128,7 +148,7 @@ Info.args = {
 };
 Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /info button/i });
+  const button = await canvas.findByRole("button", { name: /info/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -136,7 +156,7 @@ Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconOnly = Template.bind({});
 IconOnly.args = {
   variant: "primary",
-  icon: "FaSearch",
+  icon: "magnifying-glass",
   tooltip: "Search",
 };
 IconOnly.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -149,7 +169,7 @@ IconOnly.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconLeft = Template.bind({});
 IconLeft.args = {
   variant: "primary",
-  icon: "FaArrowLeft",
+  icon: "arrow-left",
   children: <ButtonStoryLabel tKey="buttonLeftIcon" />,
 };
 IconLeft.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -162,7 +182,7 @@ IconLeft.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const IconRight = Template.bind({});
 IconRight.args = {
   variant: "primary",
-  endIcon: "FaArrowRight",
+  endIcon: "arrow-right",
   children: <ButtonStoryLabel tKey="buttonRightIcon" />,
 };
 IconRight.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -181,7 +201,7 @@ Disabled.args = {
 Disabled.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const button = await canvas.findByRole("button", {
-    name: /disabled button/i,
+    name: /disabled/i,
   });
   await userEvent.tab();
 };
@@ -212,11 +232,32 @@ export const AllVariants = () => (
   </div>
 );
 
-export const InverseSecondary = Template.bind({});
-InverseSecondary.args = {
-  variant: "secondary",
-  inverse: true,
-  children: <ButtonStoryLabel tKey="buttonSecondary" />,
+export const Inverse = () => {
+  // Static primary surface; show all inverse variants (no swatches).
+  return (
+    <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        alignItems: "center",
+        padding: "2rem",
+        flexWrap: "wrap",
+        /* stylelint-disable-next-line scale-unlimited/declaration-strict-value, value-keyword-case */
+        backgroundColor: "var(--color-primary)",
+        borderRadius: "var(--radius-md, 0.5rem)",
+      }}
+    >
+      <Button variant="primary" size="l" inverse>
+        Inverse primary
+      </Button>
+      <Button variant="secondary" size="l" inverse>
+        Inverse secondary
+      </Button>
+      <Button variant="tertiary" size="l" inverse>
+        Inverse tertiary
+      </Button>
+    </div>
+  );
 };
 
 export const AllSizes = () => (

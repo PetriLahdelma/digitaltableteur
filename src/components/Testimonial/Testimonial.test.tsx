@@ -33,9 +33,9 @@ describe("Testimonial", () => {
     };
     render(<Testimonial {...propsWithLinkedIn} />);
 
-    const linkedinLink = screen.getByLabelText(
-      "View John Doe's LinkedIn profile",
-    );
+    const linkedinLink = screen.getByRole("link", {
+      name: /view john doe's linkedin profile/i,
+    });
     expect(linkedinLink).toBeInTheDocument();
     expect(linkedinLink).toHaveAttribute(
       "href",

@@ -4,8 +4,7 @@ import {
   getSemanticIcon,
   type SemanticStatus,
 } from "../../utils/semanticIcons";
-import { FaSearch, FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { IoMdRefresh } from "react-icons/io";
+import Icon from "@dt/Icon";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?:
@@ -17,7 +16,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "success"
     | "info";
   disabled?: boolean;
-  /** Icon can be a React element, component, or a string key (e.g., "IoMdRefresh") */
+  /** Icon can be a React element, component, or a Phosphor icon name string (e.g., "spinner-gap") */
   icon?: React.ReactNode | string;
   endIcon?: React.ReactNode | string;
   children?: React.ReactNode | React.ReactNode[];
@@ -41,6 +40,38 @@ const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
   success: "success",
   info: "info",
 };
+
+const isTransparentColor = (value?: string | null) => {
+  if (!value) return true;
+  const normalized = value.trim().toLowerCase();
+  if (!normalized) return true;
+  if (
+    normalized === "transparent" ||
+    normalized === "inherit" ||
+    normalized === "initial" ||
+    normalized === "unset"
+  ) {
+    return true;
+  }
+  if (normalized.startsWith("rgba(")) {
+    const alpha = normalized.split(",").pop()?.replace(")", "").trim();
+    if (alpha === "0" || alpha === "0.0") return true;
+  }
+  return normalized === "rgba(0,0,0,0)";
+};
+
+const getElementBackgroundColor = (element: Element | null): string | null => {
+  if (!element || typeof window === "undefined") return null;
+  const styles = window.getComputedStyle(element);
+  const background = styles?.backgroundColor;
+  if (background && !isTransparentColor(background)) {
+    return background;
+  }
+  return null;
+};
+
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -66,20 +97,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    // Icon registry for string lookup (extend as needed)
-    const ICON_REGISTRY: Record<
-      string,
-      React.ComponentType | React.ReactElement
-    > = {
-      IoMdRefresh: IoMdRefresh,
-      FaSearch: FaSearch,
-      FaArrowLeft: FaArrowLeft,
-      FaArrowRight: FaArrowRight,
-    };
-
     const lookupIcon = (candidate: unknown): unknown => {
       if (typeof candidate === "string") {
-        return ICON_REGISTRY[candidate] ?? undefined;
+        const trimmed = candidate.trim();
+        if (!trimmed) return undefined;
+        return (
+          <Icon
+            name={trimmed}
+            ariaLabel={trimmed}
+            data-button-string-icon={trimmed}
+          />
+        );
       }
       return candidate;
     };
@@ -129,9 +157,88 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const normalizedIcon = normalizeMaybeIcon(resolvedStartIcon);
     const normalizedEndIcon = normalizeMaybeIcon(lookupIcon(endIcon));
 
+    const buttonRef = React.useRef<HTMLButtonElement | null>(null);
+
+    const setInverseColorFromSurface = React.useCallback(() => {
+      if (
+        !inverse ||
+        variant !== "primary" ||
+        typeof window === "undefined" ||
+        !buttonRef.current
+      ) {
+        buttonRef.current?.style.removeProperty("--dt-button-inverse-fg");
+        return;
+      }
+
+      let ancestor: HTMLElement | null = buttonRef.current.parentElement;
+      while (ancestor) {
+        const bg = getElementBackgroundColor(ancestor);
+        if (bg) {
+          // Use ancestor background as foreground (text) color for inverse primary.
+          buttonRef.current.style.setProperty("--dt-button-inverse-fg", bg);
+          return;
+        }
+        ancestor = ancestor.parentElement;
+      }
+      buttonRef.current.style.removeProperty("--dt-button-inverse-fg");
+    }, [inverse, variant]);
+
+    useIsomorphicLayoutEffect(() => {
+      setInverseColorFromSurface();
+      if (!inverse || variant !== "primary" || !buttonRef.current) {
+        return;
+      }
+
+      const handleWindowChange = () => {
+        setInverseColorFromSurface();
+      };
+
+      window.addEventListener("resize", handleWindowChange);
+      window.addEventListener("scroll", handleWindowChange, true);
+
+      const resizeObserver =
+        typeof ResizeObserver !== "undefined"
+          ? new ResizeObserver(() => setInverseColorFromSurface())
+          : null;
+      const mutationObserver =
+        typeof MutationObserver !== "undefined"
+          ? new MutationObserver(() => setInverseColorFromSurface())
+          : null;
+
+      const observedNodes: Element[] = [];
+      let ancestor = buttonRef.current.parentElement;
+      while (ancestor) {
+        observedNodes.push(ancestor);
+        mutationObserver?.observe(ancestor, {
+          attributes: true,
+          attributeFilter: ["style", "class"],
+        });
+        resizeObserver?.observe(ancestor);
+        ancestor = ancestor.parentElement;
+      }
+
+      return () => {
+        window.removeEventListener("resize", handleWindowChange);
+        window.removeEventListener("scroll", handleWindowChange, true);
+        mutationObserver?.disconnect();
+        resizeObserver?.disconnect();
+      };
+    }, [inverse, setInverseColorFromSurface, variant]);
+
+    const assignRefs = (node: HTMLButtonElement | null) => {
+      buttonRef.current = node;
+      if (!ref) return;
+      if (typeof ref === "function") {
+        ref(node);
+      } else {
+        (ref as React.MutableRefObject<HTMLButtonElement | null>).current =
+          node;
+      }
+    };
+
     return (
       <button
-        ref={ref}
+        ref={assignRefs}
         className={[
           styles.button,
           styles[variant],

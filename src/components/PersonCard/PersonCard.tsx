@@ -3,17 +3,8 @@ import styles from "./PersonCard.module.css";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Link from "@dt/Link";
-import {
-  FaLinkedin,
-  FaGithub,
-  FaFacebook,
-  FaTwitter,
-  FaDribbble,
-  FaMedium,
-  FaInstagram,
-} from "react-icons/fa";
-import { SiSubstack } from "react-icons/si";
 import { useTranslation } from "react-i18next";
+import Icon from "@dt/Icon";
 
 export interface PersonCardProps {
   imageSrc: string;
@@ -74,7 +65,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
 }) => {
   const { t } = useTranslation();
   const resolvedSizes =
-    imageSizes ?? "(max-width: 768px) 240px, (max-width: 1024px) 180px, 128px";
+    imageSizes ?? "(max-width: 768px) 240px, (max-width: 1024px) 180px, 96px";
 
   return (
     <div className={`${styles.personGrid} ${className || ""}`}>
@@ -116,7 +107,10 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={linkedinLabel || t("contactLinkedInLabel")}
               title={linkedinLabel || t("contactLinkedInLabel")}
             >
-              <FaLinkedin aria-hidden="true" />
+              <Icon
+                name="linkedin-logo"
+                ariaLabel={linkedinLabel || t("contactLinkedInLabel")}
+              />
             </Link>
           )}
           {githubUrl && (
@@ -129,7 +123,10 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={githubLabel || t("contactGitHubLabel")}
               title={githubLabel || t("contactGitHubLabel")}
             >
-              <FaGithub aria-hidden="true" />
+              <Icon
+                name="github-logo"
+                ariaLabel={githubLabel || t("contactGitHubLabel")}
+              />
             </Link>
           )}
           {facebookUrl && (
@@ -142,7 +139,10 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={facebookLabel || t("contactFacebookLabel")}
               title={facebookLabel || t("contactFacebookLabel")}
             >
-              <FaFacebook aria-hidden="true" />
+              <Icon
+                name="facebook-logo"
+                ariaLabel={facebookLabel || t("contactFacebookLabel")}
+              />
             </Link>
           )}
           {twitterUrl && (
@@ -155,7 +155,10 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={twitterLabel || t("contactTwitterLabel")}
               title={twitterLabel || t("contactTwitterLabel")}
             >
-              <FaTwitter aria-hidden="true" />
+              <Icon
+                name="twitter-logo"
+                ariaLabel={twitterLabel || t("contactTwitterLabel")}
+              />
             </Link>
           )}
           {dribbbleUrl && (
@@ -168,7 +171,10 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={dribbbleLabel || t("contactDribbbleLabel")}
               title={dribbbleLabel || t("contactDribbbleLabel")}
             >
-              <FaDribbble aria-hidden="true" />
+              <Icon
+                name="dribbble-logo"
+                ariaLabel={dribbbleLabel || t("contactDribbbleLabel")}
+              />
             </Link>
           )}
           {mediumUrl && (
@@ -181,7 +187,10 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={mediumLabel || t("contactMediumLabel")}
               title={mediumLabel || t("contactMediumLabel")}
             >
-              <FaMedium aria-hidden="true" />
+              <Icon
+                name="medium-logo"
+                ariaLabel={mediumLabel || t("contactMediumLabel")}
+              />
             </Link>
           )}
           {instagramUrl && (
@@ -194,7 +203,10 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={instagramLabel || t("contactInstagramLabel")}
               title={instagramLabel || t("contactInstagramLabel")}
             >
-              <FaInstagram aria-hidden="true" />
+              <Icon
+                name="instagram-logo"
+                ariaLabel={instagramLabel || t("contactInstagramLabel")}
+              />
             </Link>
           )}
           {substackUrl && (
@@ -207,7 +219,10 @@ const PersonCard: React.FC<PersonCardProps> = ({
               aria-label={substackLabel || t("contactSubstackLabel")}
               title={substackLabel || t("contactSubstackLabel")}
             >
-              <SiSubstack aria-hidden="true" />
+              <Icon
+                name="newspaper-clipping"
+                ariaLabel={substackLabel || t("contactSubstackLabel")}
+              />
             </Link>
           )}
         </div>

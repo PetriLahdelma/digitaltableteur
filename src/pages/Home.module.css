@@ -115,6 +115,12 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
+.home a:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 4px;
+  outline-color: color-mix(in srgb, currentcolor 70%, black);
+}
+
 .heroHighlights {
   margin: 0 auto var(--space-layout-64);
   padding-inline: var(--space-layout-32);
@@ -177,7 +183,7 @@ h1 {
 
   .cta {
     padding: var(--space-layout-32);
-    font-size: var(--font-size-body);
+    font-size: var(--font-size-text);
   }
 
   .heroCtas {

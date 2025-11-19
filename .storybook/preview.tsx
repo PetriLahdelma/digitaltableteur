@@ -4,7 +4,7 @@ import type { Preview } from "@storybook/react-vite";
 import type { Decorator, StoryContext, StoryFn } from "@storybook/react";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import Badge from "@dt/Badge";
-import { FaTools } from "react-icons/fa";
+import Icon from "@dt/Icon";
 import stylesWip from "../src/stories/WipBadge.module.css";
 import { I18nextProvider } from "react-i18next";
 import * as storybookIcons from "@storybook/icons";
@@ -210,9 +210,7 @@ const withWipBadge: Decorator = (Story, context) => {
       {!disabled && (
         <div
           className={
-            isDocsView
-              ? stylesWip.wipBadgeDocs
-              : stylesWip.wipBadgeContainer
+            isDocsView ? stylesWip.wipBadgeDocs : stylesWip.wipBadgeContainer
           }
           data-view-mode={context.viewMode}
         >
@@ -222,7 +220,7 @@ const withWipBadge: Decorator = (Story, context) => {
             size="s"
             className="badge"
             title={label}
-            icon={<FaTools />}
+            icon={<Icon name="wrench" />}
           >
             {label}
           </Badge>

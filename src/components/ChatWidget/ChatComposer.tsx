@@ -1,10 +1,10 @@
 import React, { useImperativeHandle, useRef } from "react";
 import Button from "@dt/Button";
-import { IoSend } from "react-icons/io5";
 import { ChatTextArea } from "../Inputs/TextArea";
 import styles from "./ChatWidget.module.css";
 import { useTranslation } from "react-i18next";
 import Text from "@dt/Text";
+import Icon from "@dt/Icon";
 
 interface ChatComposerProps {
   labelId?: string;
@@ -101,7 +101,9 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
             className={styles.sendButton}
             aria-label={resolvedSendLabel}
             disabled={isSending || !value.trim()}
-            icon={<IoSend />}
+            icon={
+              <Icon name="paper-plane-tilt" ariaLabel={resolvedSendLabel} />
+            }
             variant="primary"
             size="m"
           />

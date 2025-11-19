@@ -1,10 +1,10 @@
 import React from "react";
 import Button from "@dt/Button";
-import { MdArrowBack, MdArrowForward, MdDescription } from "react-icons/md";
 import styles from "./blognav.module.css";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import path from "path";
+import Icon from "@dt/Icon";
 
 const blogPages = [
   { path: "/blog/petri-lahdelma-bio", labelKey: "blogNavPetriLahdelmaBio" },
@@ -29,6 +29,7 @@ const BlogNav: React.FC = () => {
   const { t } = useTranslation();
   const currentPath = window.location.pathname;
   const currentIndex = blogPages.findIndex((p) => p.path === currentPath);
+  const isArticleRoute = currentIndex >= 0;
   const navigate = useNavigate();
   return (
     <>
@@ -36,7 +37,12 @@ const BlogNav: React.FC = () => {
         <Button
           variant="tertiary"
           size="m"
-          icon={<MdDescription />}
+          icon={
+            <Icon
+              name="text-align-left"
+              ariaLabel={t("blogNavBackToArticles")}
+            />
+          }
           onClick={() => navigate("/blog")}
         >
           {t("blogNavBackToArticles")}
@@ -45,9 +51,10 @@ const BlogNav: React.FC = () => {
           <Button
             variant="tertiary"
             size="m"
-            icon={<MdArrowBack />}
-            disabled={currentIndex <= 0}
+            icon={<Icon name="arrow-left" ariaLabel={t("blogNavPrev")} />}
+            disabled={!isArticleRoute || currentIndex <= 0}
             onClick={() => {
+              if (!isArticleRoute) return;
               if (currentIndex > 0) navigate(blogPages[currentIndex - 1].path);
             }}
           >
@@ -56,9 +63,10 @@ const BlogNav: React.FC = () => {
           <Button
             variant="tertiary"
             size="m"
-            endIcon={<MdArrowForward />}
-            disabled={currentIndex === blogPages.length - 1}
+            endIcon={<Icon name="arrow-right" ariaLabel={t("blogNavNext")} />}
+            disabled={!isArticleRoute || currentIndex === blogPages.length - 1}
             onClick={() => {
+              if (!isArticleRoute) return;
               if (currentIndex < blogPages.length - 1)
                 navigate(blogPages[currentIndex + 1].path);
             }}

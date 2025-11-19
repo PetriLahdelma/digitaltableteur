@@ -36,10 +36,16 @@ const Skeleton: React.FC<SkeletonProps> = ({
     .filter(Boolean)
     .join(" ");
 
+  const style: React.CSSProperties = {
+    width: typeof width === "number" ? `${width}px` : width,
+    height: typeof height === "number" ? `${height}px` : height,
+  };
+
   if (variant === "text") {
     return (
       <span
         className={rootClass}
+        style={width ? { width: style.width } : {}}
         role="status"
         aria-label={label}
         aria-live="polite"
@@ -50,11 +56,6 @@ const Skeleton: React.FC<SkeletonProps> = ({
       </span>
     );
   }
-
-  const style: React.CSSProperties = {
-    width: typeof width === "number" ? `${width}px"` : width,
-    height: typeof height === "number" ? `${height}px"` : height,
-  };
 
   return (
     <span

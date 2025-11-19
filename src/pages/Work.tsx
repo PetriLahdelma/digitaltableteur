@@ -43,22 +43,30 @@ const Work = () => {
                 href="work/new-things-co"
                 rel="noopener noreferrer"
                 className={styles.workItem}
+                aria-label="View New Things Co project details"
               >
                 <img
                   src="/images/portfolio/new_things_co/new_things_co_item.webp"
-                  alt="New Things Co project link."
+                  alt="New Things Co project preview"
                 />
+                <span className="visuallyHidden">
+                  View New Things Co project
+                </span>
               </a>
               <div className={styles.workItem}>
                 <a
                   href="work/illustrations"
                   rel="noopener noreferrer"
                   className={styles.workItem}
+                  aria-label="View Illustrations project details"
                 >
                   <img
                     src="/images/portfolio/illustrations/ice-cream.webp"
-                    alt="Illustrations project link"
+                    alt="Illustrations project preview"
                   />
+                  <span className="visuallyHidden">
+                    View Illustrations project
+                  </span>
                 </a>
               </div>
               <div className={styles.workItem}>
@@ -66,11 +74,15 @@ const Work = () => {
                   href="work/garage-junction"
                   rel="noopener noreferrer"
                   className={styles.workItem}
+                  aria-label="View Garage Junction project details"
                 >
                   <img
                     src="/images/portfolio/garage_junction/check_pattern@2x.webp"
-                    alt="Garage Junction project link"
+                    alt="Garage Junction project preview"
                   />
+                  <span className="visuallyHidden">
+                    View Garage Junction project
+                  </span>
                 </a>
               </div>
             </FlexBox>

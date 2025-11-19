@@ -159,12 +159,17 @@ Recent minor/patch updates applied:
 - Storybook core packages moved from 10.0.2 → 10.0.5 (docs + a11y improvements).
 - @typescript-eslint parser & plugin updated (8.33.x → 8.46.x) for enhanced lint rule parity.
 
-All 312 tests pass post-update; translation and a11y coverage unchanged. Peer dependency warnings from legacy react-stack-grid (React 16 range) tolerated; consider future migration to CSS Grid masonry alternative to remove noise.
+All 312 tests pass post-update; translation and a11y coverage unchanged.
+
+**Nov 2025 Dependency Cleanup:**
+
+- Removed unused `react-stack-grid` dependency to eliminate React 16 peer dependency warnings
+- Updated Node.js engine constraint from `>=20.19.0 <21` to `>=20.19.0` to support modern Node.js versions (22.x) in Vercel deployments
+- Clean dependency tree without legacy React version conflicts
 
 Next candidates (deferred):
 
 - Evaluate Vitest 4.x upgrade after Storybook stabilization.
-- Plan replacement for react-stack-grid to drop outdated React peer dependencies.
 - Monitor ESLint 9.x adoption; schedule ruleset review before major jump.
 
 ### Sentry Automation (Nov 2025)
@@ -198,6 +203,14 @@ Usage Notes:
 3. Adjust environment filtering via `--environment=staging` flag appended to npm scripts if multi-env branching required.
 
 Next Steps:
+
+### Context7 MCP Integration (Nov 2025)
+
+- `mcp.json` now declares a `context7` HTTP server pointing at `https://mcp.context7.com/mcp`. The configuration forwards the `CONTEXT7_API_KEY` environment variable via the `Context7-API-Key` header so we can keep keys in `.env.local` / CI secrets instead of checking them into the repo. Leaving the variable empty still works (anonymous mode) but enforces stricter rate limits. The REST/dashboard surface Context7 exposes lives at `https://context7.com/api/v1`, so that’s the base URL to poke when you need to inspect quotas or rotate keys.
+- `npm run context7:mcp -- --remote-check` hits the hosted MCP endpoint (using the same header) to verify connectivity; without the flag the helper still launches the local stdio server via `@upstash/context7-mcp`.
+- Donny’s tool loader automatically namespaces remote tools as `context7.<toolName>`, making it obvious when an answer is powered by Context7’s up-to-date documentation. Disable it by removing the config block or unsetting the env var.
+- Local debugging shortcut: `npm run context7:mcp -- [extra flags]`. The wrapper spawns `@upstash/context7-mcp` via `npx`, injects `CONTEXT7_API_KEY` unless you already passed `--api-key`, and streams logs directly to your terminal.
+- Document the requirement for `CONTEXT7_API_KEY` anywhere environment variables are listed (README, copilot-instructions, donny-chat docs) so future contributors know how to opt in.
 
 - Expose stub indicator in `SentrySummaryCard` header (optional badge).
 - Add unit test for stub scenario (pending).
