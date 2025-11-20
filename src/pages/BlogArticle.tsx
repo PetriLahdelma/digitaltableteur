@@ -11,6 +11,7 @@ import { SocialShare } from "@dt/SocialShare";
 import styles from "./Article.module.css";
 import { getBlogPostBySlug, getBlogPosts } from "../data/blogPosts";
 import VaultBoy from "../assets/images/pete-vault-boy.jpg";
+import PageLayout from "../patterns/PageLayout/PageLayout";
 
 type EmbedProps = {
   provider?: string;
@@ -120,59 +121,67 @@ const BlogArticle: React.FC = () => {
       </Helmet>
       <article className={styles.article}>
         <BlogNav />
-        <header>
-          <h1>{title}</h1>
-          <div className={styles.metaRow}>
-            <Text className={styles.releaseDate}>
-              {formatDate(publishedAt)}
-            </Text>
-            <Text className={styles.releaseDate}>{readTime}</Text>
-            <Author
-              name={authorName ?? "Digitaltableteur"}
-              imageUrl={VaultBoy}
-              size="32px"
-              profileUrl={authorProfileUrl}
-            />
-          </div>
-        </header>
-        {mainImageUrl && (
-          <figure className={styles.heroImage}>
-            <img
-              src={mainImageUrl}
-              alt={mainImageAlt || title}
-              loading="lazy"
-            />
-            {mainImageCaption && <figcaption>{mainImageCaption}</figcaption>}
-          </figure>
-        )}
-        <MDXProvider components={mdxComponents}>
-          <Component />
-        </MDXProvider>
-        <hr
-          style={{
-            border: "none",
-            borderTop: "2px solid var(--color-primary)",
-            margin: "3rem 0 1.5rem",
-          }}
-        />
-        <h2>Share</h2>
-        <SocialShare url={shareUrl} title={title} />
-        {similar.length > 0 && (
-          <div className={styles.similar}>
-            <h2>Similar Reads</h2>
-            <div className={styles.similarList}>
-              {similar.map((entry) => (
-                <Card
-                  key={entry.slug}
-                  title={entry.title}
-                  link={`/blog/${entry.slug}`}
-                  variant="outlined"
-                  hoverable
-                  className={`${styles.similarCard}`}
-                />
-              ))}
+        <PageLayout maxWidth="md" spacing="comfortable" as="section">
+          <header>
+            <h1>{title}</h1>
+            <div className={styles.metaRow}>
+              <Text className={styles.releaseDate}>
+                {formatDate(publishedAt)}
+              </Text>
+              <Author
+                name={authorName ?? "Digitaltableteur"}
+                imageUrl={VaultBoy}
+                size="32px"
+                profileUrl={authorProfileUrl}
+              />
+              <Text className={styles.readTime}>{readTime}</Text>
             </div>
-          </div>
+          </header>
+        </PageLayout>
+        {mainImageUrl && (
+          <PageLayout maxWidth="md" spacing="default" as="section">
+            <figure className={styles.heroImage}>
+              <img
+                src={mainImageUrl}
+                alt={mainImageAlt || title}
+                loading="lazy"
+              />
+              {mainImageCaption && <figcaption>{mainImageCaption}</figcaption>}
+            </figure>
+          </PageLayout>
+        )}
+        <PageLayout maxWidth="md" spacing="comfortable" as="section">
+          <MDXProvider components={mdxComponents}>
+            <Component />
+          </MDXProvider>
+          <hr
+            style={{
+              border: "none",
+              borderTop: "2px solid var(--color-primary)",
+              margin: "3rem 0 1.5rem",
+            }}
+          />
+          <h2>Share</h2>
+          <SocialShare url={shareUrl} title={title} />
+        </PageLayout>
+        {similar.length > 0 && (
+          <PageLayout maxWidth="md" spacing="comfortable" as="section">
+            <div className={styles.similar}>
+              <h2>Similar Reads</h2>
+              <div className={styles.similarList}>
+                {similar.map((entry) => (
+                  <Card
+                    key={entry.slug}
+                    title={entry.title}
+                    link={`/blog/${entry.slug}`}
+                    variant="outlined"
+                    hoverable
+                    className={`${styles.similarCard}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </PageLayout>
         )}
       </article>
     </HelmetProvider>

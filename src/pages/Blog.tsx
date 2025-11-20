@@ -32,11 +32,7 @@ const Blog = () => {
         <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.blog}>
-        <PageLayout
-          maxWidth="lg"
-          spacing="comfortable"
-          as="section"
-        >
+        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
           <HelsinkiClock />
           <Title size="L">{t("blogArticlesTitle")}</Title>
           <div className={styles.list}>

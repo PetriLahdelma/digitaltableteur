@@ -5,7 +5,7 @@
   margin: 0 auto;
   margin-block-start: 0;
   padding: 2rem;
-  max-width: 60rem;
+  max-width: 100%;
   font-family: var(--secondary-body-font, serif);
   font-size: 1rem;
   line-height: 1.6;
@@ -96,6 +96,14 @@ strong {
 
 .releaseDate {
   margin-block: 0;
+  margin-inline-end: 1rem;
+  font-size: 1rem;
+  color: var(--primary-text-color);
+}
+
+.readTime {
+  margin-block: 0;
+  margin-inline-start: auto;
   font-size: 1rem;
   color: var(--primary-text-color);
 }
@@ -127,7 +135,6 @@ div.authorContainer {
 .heroImage img {
   width: 100%;
   max-width: 100%;
-  border-radius: 0.5rem;
 }
 
 .heroImage figcaption {

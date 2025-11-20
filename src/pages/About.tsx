@@ -27,11 +27,7 @@ const About = () => {
         role="region"
         aria-label={t("aboutMetaTitle")}
       >
-        <PageLayout
-          maxWidth="xl"
-          spacing="comfortable"
-          as="section"
-        >
+        <PageLayout maxWidth="xl" spacing="comfortable" as="section">
           <section className={styles.who}>
             <Title size="L" level={2}>
               {t("aboutWhoTitle")}
@@ -53,11 +49,7 @@ const About = () => {
           </section>
         </PageLayout>
 
-        <PageLayout
-          maxWidth="lg"
-          spacing="spacious"
-          as="section"
-        >
+        <PageLayout maxWidth="lg" spacing="spacious" as="section">
           <section className={styles.section}>
             <Title size="M" level={2}>
               {t("aboutDesignTitle")}
@@ -66,11 +58,7 @@ const About = () => {
           </section>
         </PageLayout>
 
-        <PageLayout
-          maxWidth="md"
-          spacing="comfortable"
-          as="section"
-        >
+        <PageLayout maxWidth="md" spacing="comfortable" as="section">
           <section className={styles.section}>
             <Title size="M" level={2}>
               {t("aboutDevelopmentTitle")}
@@ -79,11 +67,7 @@ const About = () => {
           </section>
         </PageLayout>
 
-        <PageLayout
-          maxWidth="lg"
-          spacing="comfortable"
-          as="section"
-        >
+        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
           <section className={styles.section}>
             <Title size="M" level={2}>
               {t("aboutCollaborationTitle")}
