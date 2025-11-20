@@ -12,6 +12,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import FlexBox from "@dt/FlexBox";
+import PageLayout from "../patterns/PageLayout/PageLayout";
 
 const HELSINKI_COORDINATES: [number, number] = [
   60.1810882006689, 24.952352100000002,
@@ -59,12 +60,23 @@ const Contact = () => {
         </Helmet>
       </HelmetProvider>
       <div className={styles.contact}>
-        <Title size="L">{t("contactHeroTitle")}</Title>
-        <section className={styles.officeSection}>
-          <Title level={2} size="M" className={styles.contactSectionHeading}>
-            {t("contactSectionHeading")}
-          </Title>
-          <div className={styles.officeAddress}>
+        <PageLayout
+          maxWidth="lg"
+          spacing="spacious"
+          as="section"
+        >
+          <Title size="L">{t("contactHeroTitle")}</Title>
+        </PageLayout>
+        <PageLayout
+          maxWidth="md"
+          spacing="comfortable"
+          as="section"
+        >
+          <section className={styles.officeSection}>
+            <Title level={2} size="M" className={styles.contactSectionHeading}>
+              {t("contactSectionHeading")}
+            </Title>
+            <div className={styles.officeAddress}>
             <FlexBox direction="row" gap="0.5rem">
               <Text className={styles.officeAddressLine}>
                 {t("contactAddressLine2")}
@@ -122,36 +134,49 @@ const Contact = () => {
             />
           </div>
         </section>
-        <Title level={2} size="S" className={styles.contactFormTitle}>
-          {t("contactFormTitle")}
-        </Title>
-        <Text className={styles.contactInfo}>
-          {t("contactInfo")}{" "}
-          <Link
-            size="S"
-            href="mailto:mail@digitaltableteur.com"
-            className="wavyUnderline"
-          >
-            mail@digitaltableteur.com
-          </Link>
-        </Text>
-        <ContactForm />
-        <div className={styles.cvDownloadSection}>
-          <Title level={2} size="S" className={styles.resumeTitle}>
-            {t("resumeSectionTitle")}
+        </PageLayout>
+        <PageLayout
+          maxWidth="sm"
+          spacing="comfortable"
+          as="section"
+        >
+          <Title level={2} size="S" className={styles.contactFormTitle}>
+            {t("contactFormTitle")}
           </Title>
-          <Text className={styles.resumeInfo}>
-            {t("resumeSectionDescription")}&nbsp;
+          <Text className={styles.contactInfo}>
+            {t("contactInfo")}{" "}
             <Link
-              size="M"
+              size="S"
               href="mailto:mail@digitaltableteur.com"
               className="wavyUnderline"
             >
               mail@digitaltableteur.com
             </Link>
           </Text>
-          <SecureCVDownload buttonVariant="primary" inverse />
-        </div>
+          <ContactForm />
+        </PageLayout>
+        <PageLayout
+          maxWidth="sm"
+          spacing="spacious"
+          as="section"
+        >
+          <div className={styles.cvDownloadSection}>
+            <Title level={2} size="S" className={styles.resumeTitle}>
+              {t("resumeSectionTitle")}
+            </Title>
+            <Text className={styles.resumeInfo}>
+              {t("resumeSectionDescription")}&nbsp;
+              <Link
+                size="M"
+                href="mailto:mail@digitaltableteur.com"
+                className="wavyUnderline"
+              >
+                mail@digitaltableteur.com
+              </Link>
+            </Text>
+            <SecureCVDownload buttonVariant="primary" inverse />
+          </div>
+        </PageLayout>
       </div>
     </>
   );
