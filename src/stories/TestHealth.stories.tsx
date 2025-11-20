@@ -204,7 +204,7 @@ const TestHealthOverview = () => {
     return Array.isArray(raw)
       ? (raw as AdoptionHistoryEntry[])
       : defaultAdoptionHistory;
-  }, []);
+  }, [remoteMetrics]);
 
   const metricsData = remoteMetrics ?? metrics;
   const vitestBarData = useMemo(
@@ -213,14 +213,15 @@ const TestHealthOverview = () => {
         t("dashboardTotalTests"),
         t("dashboardPassed"),
         t("dashboardFailed"),
+        t("dashboardSkipped"),
       ],
       datasets: [
         {
-          label: t("dashboardTestsLabel"),
           data: [
-            metricsData.vitest.totalTests,
-            metricsData.vitest.passedTests,
-            metricsData.vitest.failedTests,
+            metricsData.vitest.numTotalTests,
+            metricsData.vitest.numPassedTests,
+            metricsData.vitest.numFailedTests,
+            metricsData.vitest.numPendingTests,
           ],
           backgroundColor: [
             chartPalette.primary,
@@ -231,7 +232,7 @@ const TestHealthOverview = () => {
         },
       ],
     }),
-    [chartPalette, t],
+    [chartPalette, t, metricsData.vitest],
   );
 
   const a11yPieData = useMemo(
@@ -248,7 +249,7 @@ const TestHealthOverview = () => {
         },
       ],
     }),
-    [chartPalette, t],
+    [chartPalette, t, metricsData.accessibilityPages],
   );
 
   const storiesPieData = useMemo(
@@ -265,7 +266,7 @@ const TestHealthOverview = () => {
         },
       ],
     }),
-    [chartPalette, t],
+    [chartPalette, t, metricsData.accessibilityStories],
   );
 
   const adoptionTrendData = useMemo(() => {
@@ -305,7 +306,12 @@ const TestHealthOverview = () => {
         },
       ],
     };
-  }, [adoptionHistory, chartPalette, t]);
+  }, [
+    adoptionHistory,
+    chartPalette,
+    t,
+    metricsData.componentAdoption?.targetRate,
+  ]);
 
   const adoptionTrendOptions = useMemo(
     () => ({
