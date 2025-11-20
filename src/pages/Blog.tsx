@@ -6,6 +6,7 @@ import Title from "@dt/Title";
 import HelsinkiClock from "@dt/HelsinkiClock";
 import { useTranslation } from "react-i18next";
 import { getBlogPosts } from "../data/blogPosts";
+import PageLayout from "../patterns/PageLayout/PageLayout";
 
 const Blog = () => {
   const { t } = useTranslation();
@@ -31,20 +32,26 @@ const Blog = () => {
         <meta name="twitter:image" content="/logo512.png" />
       </Helmet>
       <div className={styles.blog}>
-        <Title size="L">{t("blogArticlesTitle")}</Title>
-        <HelsinkiClock />
-        <div className={styles.list}>
-          {posts.map((post) => (
-            <ArticleCard
-              key={post.slug}
-              title={post.title}
-              lead={post.excerpt ?? ""}
-              link={`/blog/${post.slug}`}
-              readTime={post.readTime ?? undefined}
-              className={styles.card}
-            />
-          ))}
-        </div>
+        <PageLayout
+          maxWidth="lg"
+          spacing="comfortable"
+          as="section"
+        >
+          <HelsinkiClock />
+          <Title size="L">{t("blogArticlesTitle")}</Title>
+          <div className={styles.list}>
+            {posts.map((post) => (
+              <ArticleCard
+                key={post.slug}
+                title={post.title}
+                lead={post.excerpt ?? ""}
+                link={`/blog/${post.slug}`}
+                readTime={post.readTime ?? undefined}
+                className={styles.card}
+              />
+            ))}
+          </div>
+        </PageLayout>
       </div>
     </HelmetProvider>
   );
