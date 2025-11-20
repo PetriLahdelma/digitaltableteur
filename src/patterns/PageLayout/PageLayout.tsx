@@ -102,8 +102,12 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     .filter(Boolean)
     .join(" ");
 
-  const gridStyle =
-    grid && columns ? { gridTemplateColumns: `repeat(${columns}, 1fr)` } : {};
+  const gridStyle = (() => {
+    if (!grid || columns == null) return {};
+    const n = Math.max(1, Math.floor(Number(columns)));
+    if (!Number.isFinite(n)) return {};
+    return { gridTemplateColumns: `repeat(${n}, 1fr)` } as React.CSSProperties;
+  })();
 
   return (
     <Component
