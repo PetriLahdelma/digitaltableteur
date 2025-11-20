@@ -60,9 +60,60 @@ npm run linear:update -- --issue DIG-123 \
   --comment "PR opened, ready for stakeholder QA."
 ```
 
-- `--state` accepts any state available to the issue’s team (case-insensitive).
+- `--state` accepts any state available to the issue's team (case-insensitive).
 - `--add-label` / `--remove-label` accept comma-separated names or repeated flags; labels must already exist in Linear (the script validates them).
 - `--comment` posts a new Linear comment alongside the state/label change.
+
+### Automated ticket creation (MCP + GitHub integrated)
+
+Use the smart automation that analyzes your git state and creates appropriately labeled tickets:
+
+```bash
+npm run linear:auto "Your task description here"
+```
+
+This command will:
+1. **Auto-increment issue number** - Finds the latest DIG-XX issue and creates DIG-XX+1
+2. **Analyze git diff** - Detects changed files and determines appropriate labels
+3. **Detect git status** - Determines initial state:
+   - No changes = `Todo`
+   - Local changes (staged/unstaged) = `In Progress`
+   - Pushed with PR = `Done`
+4. **Auto-assign to Petri Lahdelma** - Uses configured assignee email
+5. **Link to GitHub PR** - Automatically detects and links PR if pushed
+6. **Smart labeling** - Uses component detection and domain classification
+7. **Track from start** - Follows git status throughout the lifecycle
+
+**Example workflow:**
+
+```bash
+# Start new feature
+git checkout -b DT-136-feat-new-component
+
+# Make changes, then create ticket
+npm run linear:auto "Add new Button component with accessibility support"
+# Creates DIG-15 in "In Progress" state (has local changes)
+
+# Push changes
+git push origin DT-136-feat-new-component
+
+# Create PR
+gh pr create --title "Feat: New Button component" --body "Implements DIG-15"
+
+# Update ticket with PR link (automatic if using GitHub CLI)
+npm run linear:auto --issue=DIG-15 --update
+# Updates DIG-15 to "Done" state and links PR
+```
+
+**Options:**
+- `--update` - Update existing issue instead of creating new one
+- `--issue=DIG-XX` - Specify issue to update (required with --update)
+
+The automation script integrates with:
+- **Git** - Analyzes branch, diff, and remote status
+- **GitHub CLI** - Detects PRs automatically via `gh pr view`
+- **Linear API** - Creates and updates issues with proper metadata
+- **MCP** - Future: Will integrate with local context for smarter labeling
 
 ## 4. Helper Responsibilities
 

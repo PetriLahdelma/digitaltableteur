@@ -40,7 +40,7 @@ const DemoContent = ({ gridColumn }: { gridColumn?: string }) => (
     style={{
       padding: "1.5rem",
       background: "var(--color-primary)",
-      color: "white",
+      color: "var(--inverted-text-color)",
       borderRadius: "8px",
       gridColumn,
       minHeight: "100px",

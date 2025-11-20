@@ -52,6 +52,7 @@
       var(--grid-columns-desktop),
       1fr
     ); /* 12 cols */
+
     gap: var(--grid-gap-desktop); /* 32px */
   }
 }
