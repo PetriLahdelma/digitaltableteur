@@ -199,10 +199,10 @@ Implement a comprehensive layout and grid system to drive UX consistency across 
     "documented",
   ];
 
-  console.log("\n→ Creating Linear issue for Layout & Grid System");
-  console.log(`• Title: ${title}`);
-  console.log("• Priority: P1");
-  console.log(`• Labels: ${labelNames.join(", ")}`);
+  console.log("\nCreating Linear issue for Layout & Grid System");
+  console.log(`Title: ${title}`);
+  console.log("Priority: P1");
+  console.log(`Labels: ${labelNames.join(", ")}`);
 
   try {
     const result = await createLinearIssue({
