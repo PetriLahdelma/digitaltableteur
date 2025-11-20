@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2025-11-19T10:50:29.463Z",
+  "generatedAt": "2025-11-20T18:37:48.960Z",
   "vitest": {
     "totalSuites": 112,
     "passedSuites": 112,
     "failedSuites": 0,
-    "totalTests": 487,
-    "passedTests": 487,
+    "totalTests": 490,
+    "passedTests": 490,
     "failedTests": 0,
-    "durationMs": 5895.026123046875
+    "durationMs": 6436.6455078125
   },
   "accessibilityPages": {
     "total": 6,
@@ -15,41 +15,41 @@
     "failed": 0
   },
   "accessibilityStories": {
-    "total": 185,
-    "passed": 185,
+    "total": 187,
+    "passed": 187,
     "failed": 0
   },
   "coverage": {
     "summary": {
-      "statements": 82.24,
-      "branches": 76.62,
-      "functions": 68.69,
-      "lines": 82.24
+      "statements": 79.94,
+      "branches": 75.93,
+      "functions": 70.56,
+      "lines": 79.94
     },
     "rawTotals": {
       "statements": {
-        "total": 7361,
-        "covered": 6054,
+        "total": 7603,
+        "covered": 6078,
         "skipped": 0,
-        "pct": 82.24
+        "pct": 79.94
       },
       "branches": {
-        "total": 1339,
-        "covered": 1026,
+        "total": 1384,
+        "covered": 1051,
         "skipped": 0,
-        "pct": 76.62
+        "pct": 75.93
       },
       "functions": {
-        "total": 246,
-        "covered": 169,
+        "total": 248,
+        "covered": 175,
         "skipped": 0,
-        "pct": 68.69
+        "pct": 70.56
       },
       "lines": {
-        "total": 7361,
-        "covered": 6054,
+        "total": 7603,
+        "covered": 6078,
         "skipped": 0,
-        "pct": 82.24
+        "pct": 79.94
       }
     },
     "thresholds": {
