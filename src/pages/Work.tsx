@@ -7,6 +7,7 @@ import fur from "../assets/images/fur.webp";
 import blackletter from "../assets/images/blackletter.webp";
 import Grid from "@dt/Grid";
 import FlexBox from "@dt/FlexBox";
+import PageLayout from "../patterns/PageLayout/PageLayout";
 
 const Work = () => {
   return (
@@ -33,12 +34,17 @@ const Work = () => {
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
         <div className={styles["workPage"]}>
-          <section className={styles.works}>
-            <FlexBox
-              gap="2rem"
-              className={styles.worksGrid}
-              style={{ flexWrap: "wrap", flexDirection: "row" }}
-            >
+          <PageLayout
+            maxWidth="xl"
+            spacing="comfortable"
+            as="section"
+          >
+            <section className={styles.works}>
+              <FlexBox
+                gap="2rem"
+                className={styles.worksGrid}
+                style={{ flexWrap: "wrap", flexDirection: "row" }}
+              >
               <a
                 href="work/new-things-co"
                 rel="noopener noreferrer"
@@ -85,8 +91,9 @@ const Work = () => {
                   </span>
                 </a>
               </div>
-            </FlexBox>
-          </section>
+              </FlexBox>
+            </section>
+          </PageLayout>
         </div>
       </HelmetProvider>
     </>

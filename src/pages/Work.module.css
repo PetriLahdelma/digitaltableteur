@@ -2,7 +2,7 @@
 @import url("../styles/fonts.css");
 
 .workPage {
-  padding: var(--space-layout-32);
+  /* PageLayout handles padding */
 }
 
 .workPageContent {
