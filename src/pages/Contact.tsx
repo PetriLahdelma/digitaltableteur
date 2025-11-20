@@ -60,86 +60,74 @@ const Contact = () => {
         </Helmet>
       </HelmetProvider>
       <div className={styles.contact}>
-        <PageLayout
-          maxWidth="lg"
-          spacing="spacious"
-          as="section"
-        >
+        <PageLayout maxWidth="lg" spacing="spacious" as="section">
           <Title size="L">{t("contactHeroTitle")}</Title>
         </PageLayout>
-        <PageLayout
-          maxWidth="md"
-          spacing="comfortable"
-          as="section"
-        >
+        <PageLayout maxWidth="md" spacing="comfortable" as="section">
           <section className={styles.officeSection}>
             <Title level={2} size="M" className={styles.contactSectionHeading}>
               {t("contactSectionHeading")}
             </Title>
             <div className={styles.officeAddress}>
-            <FlexBox direction="row" gap="0.5rem">
-              <Text className={styles.officeAddressLine}>
-                {t("contactAddressLine2")}
-                <br />
-                {t("contactAddressLine3")}
-                <br />
-                {t("contactAddressLine4")}
-              </Text>
-            </FlexBox>
-          </div>
-          <div className={styles.officeMap}>
-            <div
-              className={styles.mapWrapper}
-              aria-label={t("contactMapDescription")}
-            >
-              {isClient ? (
-                <MapContainer
-                  center={HELSINKI_COORDINATES}
-                  zoom={20}
-                  scrollWheelZoom={false}
-                  className={styles.map}
-                >
-                  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                  <Marker position={HELSINKI_COORDINATES}>
-                    <Popup>{t("contactHelsinkiOffice")}</Popup>
-                  </Marker>
-                </MapContainer>
-              ) : (
-                <Text className={styles.mapFallback}>
-                  {t("contactMapFallback")}
+              <FlexBox direction="row" gap="0.5rem">
+                <Text className={styles.officeAddressLine}>
+                  {t("contactAddressLine2")}
+                  <br />
+                  {t("contactAddressLine3")}
+                  <br />
+                  {t("contactAddressLine4")}
                 </Text>
-              )}
+              </FlexBox>
             </div>
-          </div>
-          <div className={styles.personCardCenter}>
-            <Title level={2} size="S" className={styles.contactTitle}>
-              {t("contactTitle")}
-            </Title>
-            <PersonCard
-              imageSrc="/pete.png"
-              imageAlt={t("contactPersonAlt")}
-              name={t("contactPersonName")}
-              title={t("contactPersonTitle")}
-              email="mail@digitaltableteur.com"
-              linkedinUrl="https://www.linkedin.com/in/petrilahdelma/"
-              linkedinLabel={t("contactLinkedInLabel")}
-              githubUrl="https://github.com/PetriLahdelma"
-              githubLabel={t("contactGitHubLabel")}
-              mediumUrl="https://medium.com/@petrilahdelma"
-              mediumLabel={t("contactMediumLabel")}
-              dribbbleUrl="https://dribbble.com/digitaltableteur"
-              dribbbleLabel={t("contactDribbbleLabel")}
-              substackLabel={t("contactSubstackLabel")}
-              substackUrl="https://substack.com/@petrilahdelma"
-            />
-          </div>
-        </section>
+            <div className={styles.officeMap}>
+              <div
+                className={styles.mapWrapper}
+                aria-label={t("contactMapDescription")}
+              >
+                {isClient ? (
+                  <MapContainer
+                    center={HELSINKI_COORDINATES}
+                    zoom={20}
+                    scrollWheelZoom={false}
+                    className={styles.map}
+                  >
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                    <Marker position={HELSINKI_COORDINATES}>
+                      <Popup>{t("contactHelsinkiOffice")}</Popup>
+                    </Marker>
+                  </MapContainer>
+                ) : (
+                  <Text className={styles.mapFallback}>
+                    {t("contactMapFallback")}
+                  </Text>
+                )}
+              </div>
+            </div>
+            <div className={styles.personCardCenter}>
+              <Title level={2} size="S" className={styles.contactTitle}>
+                {t("contactTitle")}
+              </Title>
+              <PersonCard
+                imageSrc="/pete.png"
+                imageAlt={t("contactPersonAlt")}
+                name={t("contactPersonName")}
+                title={t("contactPersonTitle")}
+                email="mail@digitaltableteur.com"
+                linkedinUrl="https://www.linkedin.com/in/petrilahdelma/"
+                linkedinLabel={t("contactLinkedInLabel")}
+                githubUrl="https://github.com/PetriLahdelma"
+                githubLabel={t("contactGitHubLabel")}
+                mediumUrl="https://medium.com/@petrilahdelma"
+                mediumLabel={t("contactMediumLabel")}
+                dribbbleUrl="https://dribbble.com/digitaltableteur"
+                dribbbleLabel={t("contactDribbbleLabel")}
+                substackLabel={t("contactSubstackLabel")}
+                substackUrl="https://substack.com/@petrilahdelma"
+              />
+            </div>
+          </section>
         </PageLayout>
-        <PageLayout
-          maxWidth="sm"
-          spacing="comfortable"
-          as="section"
-        >
+        <PageLayout maxWidth="sm" spacing="comfortable" as="section">
           <Title level={2} size="S" className={styles.contactFormTitle}>
             {t("contactFormTitle")}
           </Title>
@@ -155,11 +143,7 @@ const Contact = () => {
           </Text>
           <ContactForm />
         </PageLayout>
-        <PageLayout
-          maxWidth="sm"
-          spacing="spacious"
-          as="section"
-        >
+        <PageLayout maxWidth="sm" spacing="spacious" as="section">
           <div className={styles.cvDownloadSection}>
             <Title level={2} size="S" className={styles.resumeTitle}>
               {t("resumeSectionTitle")}
