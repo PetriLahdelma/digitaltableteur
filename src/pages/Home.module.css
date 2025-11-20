@@ -56,11 +56,25 @@
   position: relative;
   z-index: 1;
   margin: 1.5rem auto 0;
+  padding-inline: var(--space-layout-24);
+  max-width: 800px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: var(--color-white);
+}
+
+@media (width >= 768px) {
+  .heroSubtext {
+    padding-inline: var(--space-layout-48);
+  }
+}
+
+@media (width >= 1024px) {
+  .heroSubtext {
+    padding-inline: var(--space-layout-64);
+  }
 }
 
 .heroCtas {
@@ -87,11 +101,23 @@ h1 {
 
 .lead {
   margin-block-end: var(--space-layout-96);
-  margin-inline: 6vw;
+  padding-inline: var(--space-layout-32);
   font-family: var(--primary-body-font);
   font-size: 2.5rem;
   line-height: 1.3;
   color: var(--main-body-copy-color);
+}
+
+@media (width >= 768px) {
+  .lead {
+    padding-inline: var(--space-layout-48);
+  }
+}
+
+@media (width >= 1024px) {
+  .lead {
+    padding-inline: var(--space-layout-64);
+  }
 }
 
 .cta {

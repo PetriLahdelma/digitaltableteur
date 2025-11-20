@@ -170,7 +170,12 @@ const Home = () => {
         </Helmet>
       </HelmetProvider>
       <div className={styles.home}>
-        <PageLayout maxWidth="full" withMargins={false} spacing="compact" as="section">
+        <PageLayout
+          maxWidth="full"
+          withMargins={false}
+          spacing="compact"
+          as="section"
+        >
           <section className={styles.hero}>
             <Grid columns={1} gap="1rem">
               <motion.div
@@ -179,88 +184,92 @@ const Home = () => {
                 initial="hidden"
                 animate="visible"
               >
-              <motion.div
-                variants={heroTitleVariants}
-                className={styles.heroTitleWrapper}
-              >
-                <Title
-                  level={2}
-                  size="L"
-                  terminals="sans"
-                  className={styles.heroTitle}
+                <motion.div
+                  variants={heroTitleVariants}
+                  className={styles.heroTitleWrapper}
                 >
-                  {t("homeHeroGradientTitle")}
-                </Title>
-              </motion.div>
-              <motion.div variants={heroSubtextVariants}>
-                <Text size="M" terminals="sans" className={styles.heroSubtext}>
-                  {t("homeHeroGradientSubtext")}
-                </Text>
-              </motion.div>
-              <motion.div
-                className={styles.heroCtas}
-                variants={heroCtaContainerVariants}
-              >
-                <motion.a
-                  href="/contact"
-                  className={styles.heroCtaLink}
-                  variants={heroCtaItemVariants}
+                  <Title
+                    level={2}
+                    size="L"
+                    terminals="sans"
+                    className={styles.heroTitle}
+                  >
+                    {t("homeHeroGradientTitle")}
+                  </Title>
+                </motion.div>
+                <motion.div variants={heroSubtextVariants}>
+                  <Text
+                    size="M"
+                    terminals="sans"
+                    className={styles.heroSubtext}
+                  >
+                    {t("homeHeroGradientSubtext")}
+                  </Text>
+                </motion.div>
+                <motion.div
+                  className={styles.heroCtas}
+                  variants={heroCtaContainerVariants}
                 >
-                  <Button variant="secondary" inverse size="l">
-                    {t("homeHeroContactCta")}
-                  </Button>
-                </motion.a>
-                <motion.a
-                  href="/about"
-                  className={styles.heroCtaLink}
-                  variants={heroCtaItemVariants}
-                >
-                  <Button variant="secondary" inverse size="l">
-                    {t("homeHeroAboutCta")}
-                  </Button>
-                </motion.a>
+                  <motion.a
+                    href="/contact"
+                    className={styles.heroCtaLink}
+                    variants={heroCtaItemVariants}
+                  >
+                    <Button variant="secondary" inverse size="l">
+                      {t("homeHeroContactCta")}
+                    </Button>
+                  </motion.a>
+                  <motion.a
+                    href="/about"
+                    className={styles.heroCtaLink}
+                    variants={heroCtaItemVariants}
+                  >
+                    <Button variant="secondary" inverse size="l">
+                      {t("homeHeroAboutCta")}
+                    </Button>
+                  </motion.a>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </Grid>
-        </section>
+            </Grid>
+          </section>
         </PageLayout>
         <PageLayout maxWidth="lg" spacing="comfortable" as="section">
           <section className={styles.heroHighlights}>
-          <div className={styles.heroHighlightsGrid}>
-            {highlightCards.map((card) => (
-              <Card
-                size="M"
-                key={card.key}
-                title={card.title}
-                description={card.description}
-                variant={card.variant}
-              />
-            ))}
-          </div>
-        </section>
+            <div className={styles.heroHighlightsGrid}>
+              {highlightCards.map((card) => (
+                <Card
+                  size="M"
+                  key={card.key}
+                  title={card.title}
+                  description={card.description}
+                  variant={card.variant}
+                />
+              ))}
+            </div>
+          </section>
         </PageLayout>
         <PageLayout maxWidth="lg" spacing="default" as="section">
           <section className={styles.about}>
-          {/* <Title className={styles.gradientText} level={1} size="XL">
+            {/* <Title className={styles.gradientText} level={1} size="XL">
             {currentText}
           </Title> */}
-          <Grid columns="repeat(auto-fit, minmax(280px, 1fr))" gap="1rem">
-            <div className={styles["gridItemBlank"]}>
-              <p className={styles.lead}>{t("homeAbout")}</p>
-            </div>
-          </Grid>
-        </section>
+            <Grid columns="repeat(auto-fit, minmax(280px, 1fr))" gap="1rem">
+              <div className={styles["gridItemBlank"]}>
+                <p className={styles.lead}>{t("homeAbout")}</p>
+              </div>
+            </Grid>
+          </section>
         </PageLayout>
         <PageLayout maxWidth="lg" spacing="comfortable" as="section">
           <section className={styles.cta}>
-          <h2>{t("homeCtaTitle")}</h2>
-          <Link
-            className={`${styles.ctaLink} wavyUnderline`.trim()}
-            href="/contact"
-          >
-            {t("homeCtaLink")}
-          </Link>
-        </section>
+            <h2>{t("homeCtaTitle")}</h2>
+            <Link
+              className={`${styles.ctaLink} wavyUnderline`.trim()}
+              href="/contact"
+            >
+              {t("homeCtaLink")}
+            </Link>
+          </section>
         </PageLayout>
       </div>
     </>
