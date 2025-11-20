@@ -74,16 +74,8 @@ const parseArgs = (): Args => {
       args.removeLabels.push(input[++i]);
     }
   }
-  args.addLabels = uniqueLabelNames(
-    args.addLabels
-      .join(",")
-      .split(","),
-  );
-  args.removeLabels = uniqueLabelNames(
-    args.removeLabels
-      .join(",")
-      .split(","),
-  );
+  args.addLabels = uniqueLabelNames(args.addLabels.join(",").split(","));
+  args.removeLabels = uniqueLabelNames(args.removeLabels.join(",").split(","));
   return args;
 };
 
@@ -112,6 +104,11 @@ const ISSUE_QUERY = `
       identifier
       title
       url
+      assignee {
+        id
+        name
+        email
+      }
       state {
         id
         name
@@ -253,8 +250,8 @@ async function main() {
     } | null;
   }>({
     query: ISSUE_QUERY,
-  variables: { id: issueId },
-});
+    variables: { id: issueId },
+  });
 
   if (!issueData.issue) {
     console.error(`Issue ${args.issue} not found.`);
@@ -276,7 +273,9 @@ async function main() {
       process.exit(1);
     }
     addLabelIds.push(
-      ...args.addLabels.map((label) => map[label.toLowerCase()]).filter(Boolean),
+      ...args.addLabels
+        .map((label) => map[label.toLowerCase()])
+        .filter(Boolean),
     );
   }
 
@@ -335,14 +334,10 @@ async function main() {
       },
     });
     if (addLabelIds.length) {
-      updates.push(
-        `labels added → ${args.addLabels.join(", ")}`,
-      );
+      updates.push(`labels added → ${args.addLabels.join(", ")}`);
     }
     if (removeLabelIds.length) {
-      updates.push(
-        `labels removed → ${args.removeLabels.join(", ")}`,
-      );
+      updates.push(`labels removed → ${args.removeLabels.join(", ")}`);
     }
   }
 
