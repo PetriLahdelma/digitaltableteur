@@ -11,6 +11,7 @@ import { motion, type Transition, type Variants } from "motion/react";
 import Button from "@dt/Button";
 import Card from "@dt/Card";
 import Icon from "@dt/Icon";
+import PageLayout from "../patterns/PageLayout/PageLayout";
 
 const heroContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -169,14 +170,15 @@ const Home = () => {
         </Helmet>
       </HelmetProvider>
       <div className={styles.home}>
-        <section className={styles.hero}>
-          <Grid columns={1} gap="1rem">
-            <motion.div
-              className={styles.heroGradient}
-              variants={heroContainerVariants}
-              initial="hidden"
-              animate="visible"
-            >
+        <PageLayout maxWidth="full" withMargins={false} spacing="compact" as="section">
+          <section className={styles.hero}>
+            <Grid columns={1} gap="1rem">
+              <motion.div
+                className={styles.heroGradient}
+                variants={heroContainerVariants}
+                initial="hidden"
+                animate="visible"
+              >
               <motion.div
                 variants={heroTitleVariants}
                 className={styles.heroTitleWrapper}
@@ -221,7 +223,9 @@ const Home = () => {
             </motion.div>
           </Grid>
         </section>
-        <section className={styles.heroHighlights}>
+        </PageLayout>
+        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
+          <section className={styles.heroHighlights}>
           <div className={styles.heroHighlightsGrid}>
             {highlightCards.map((card) => (
               <Card
@@ -234,7 +238,9 @@ const Home = () => {
             ))}
           </div>
         </section>
-        <section className={styles.about}>
+        </PageLayout>
+        <PageLayout maxWidth="lg" spacing="default" as="section">
+          <section className={styles.about}>
           {/* <Title className={styles.gradientText} level={1} size="XL">
             {currentText}
           </Title> */}
@@ -244,7 +250,9 @@ const Home = () => {
             </div>
           </Grid>
         </section>
-        <section className={styles.cta}>
+        </PageLayout>
+        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
+          <section className={styles.cta}>
           <h2>{t("homeCtaTitle")}</h2>
           <Link
             className={`${styles.ctaLink} wavyUnderline`.trim()}
@@ -253,6 +261,7 @@ const Home = () => {
             {t("homeCtaLink")}
           </Link>
         </section>
+        </PageLayout>
       </div>
     </>
   );
