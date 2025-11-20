@@ -200,7 +200,7 @@ const TestHealthOverview = () => {
   // metrics.componentAdoption in test-metrics.json currently has shape { currentRate, targetRate } (no history array)
   // Use defaultAdoptionHistory when history absent.
   const adoptionHistory = useMemo<AdoptionHistoryEntry[]>(() => {
-    const raw = (remoteMetrics ?? metrics as any)?.componentAdoption?.history;
+    const raw = (remoteMetrics ?? (metrics as any))?.componentAdoption?.history;
     return Array.isArray(raw)
       ? (raw as AdoptionHistoryEntry[])
       : defaultAdoptionHistory;
@@ -430,9 +430,7 @@ const TestHealthOverview = () => {
     metricsData.generatedAt ??
     metrics.generatedAt ??
     null;
-  const lastUpdatedDate = lastUpdatedValue
-    ? new Date(lastUpdatedValue)
-    : null;
+  const lastUpdatedDate = lastUpdatedValue ? new Date(lastUpdatedValue) : null;
   const isStale = lastUpdatedDate
     ? Date.now() - lastUpdatedDate.getTime() > 1000 * 60 * 60 * 24
     : true;
@@ -455,7 +453,9 @@ const TestHealthOverview = () => {
         <p className={styles.subtitle}>{t("dashboardSubtitle")}</p>
         <p className={styles.updatedAt}>
           {t("dashboardLastUpdated", {
-            date: lastUpdatedDate ? formatDate(lastUpdatedValue ?? "") : stalenessLabel,
+            date: lastUpdatedDate
+              ? formatDate(lastUpdatedValue ?? "")
+              : stalenessLabel,
           })}
         </p>
         {runSummary ? (
@@ -519,7 +519,8 @@ const TestHealthOverview = () => {
           <p>{t("dashboardStoriesDescription")}</p>
           <div className={styles.badgeRow}>
             <Badge design="secondary">
-              {metricsData.accessibilityStories.total} {t("dashboardTotalStories")}
+              {metricsData.accessibilityStories.total}{" "}
+              {t("dashboardTotalStories")}
             </Badge>
             <Badge design="primary" state="success">
               {metricsData.accessibilityStories.passed} {t("dashboardPassed")}
