@@ -1,7 +1,7 @@
 .caseStudy {
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
-  max-width: 900px;
+  max-width: 100%;
   font-family: var(--secondary-body-font, "TiemposText-Regular"), serif;
   font-size: 1rem;
   color: var(--main-body-copy-color);
@@ -149,7 +149,12 @@
   padding-inline-start: 1.2em;
   font-size: 1.1rem;
   line-height: 1.7;
-  list-style: disc inside;
+  list-style: none;
+}
+
+.resultsList li::before {
+  margin-inline: -1.2em 0.5em;
+  content: "—";
 }
 
 @media (width <= 700px) {

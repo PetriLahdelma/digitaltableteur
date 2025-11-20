@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
+import PageLayout from "../patterns/PageLayout/PageLayout";
 import styles from "./Article.module.css";
 import { getAuthorBySlug } from "../data/authors";
 
@@ -45,10 +46,12 @@ const AuthorProfile: React.FC = () => {
         )}
       </Helmet>
       <article className={styles.article}>
-        <header>
-          <h1>About the author</h1>
-        </header>
-        <AuthorBio slug={author.slug} />
+        <PageLayout maxWidth="md" spacing="comfortable" as="section">
+          <header>
+            <h1>About the author</h1>
+          </header>
+          <AuthorBio slug={author.slug} />
+        </PageLayout>
       </article>
     </HelmetProvider>
   );
