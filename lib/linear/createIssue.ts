@@ -11,6 +11,8 @@ export interface LinearIssueInput {
   labelNames?: string[];
   assigneeId?: string;
   assigneeEmail?: string;
+  stateId?: string;
+  stateName?: string;
 }
 
 export interface LinearIssueResult {
@@ -115,9 +117,7 @@ async function lookupLabelIds(
     found[node.name.toLowerCase()] = node.id;
   });
 
-  const missing = labelNames.filter(
-    (name) => !found[name.toLowerCase()],
-  );
+  const missing = labelNames.filter((name) => !found[name.toLowerCase()]);
 
   return { found, missing };
 }
@@ -146,6 +146,40 @@ async function lookupAssigneeId(
   }>(query, { email: assignee.email }, apiKey);
 
   return data.users.nodes[0]?.id;
+}
+
+async function lookupStateId(
+  state: { id?: string; name?: string },
+  teamId: string,
+  apiKey: string,
+): Promise<string | undefined> {
+  if (state.id) return state.id;
+  if (!state.name) return undefined;
+
+  const query = `
+    query WorkflowStates($teamId: String!) {
+      workflowStates(filter: { team: { id: { eq: $teamId } } }) {
+        nodes {
+          id
+          name
+          type
+        }
+      }
+    }
+  `;
+
+  const data = await requestLinear<{
+    workflowStates: {
+      nodes: Array<{ id: string; name: string; type: string }>;
+    };
+  }>(query, { teamId }, apiKey);
+
+  const normalizedName = state.name.toLowerCase();
+  const matchingState = data.workflowStates.nodes.find(
+    (node) => node.name.toLowerCase() === normalizedName,
+  );
+
+  return matchingState?.id;
 }
 
 function getEnv(key: string): string | undefined {
@@ -186,9 +220,7 @@ export async function createLinearIssue(
 
   const uniqueLabelNames = Array.from(
     new Set(
-      (input.labelNames ?? [])
-        .map((label) => label.trim())
-        .filter(Boolean),
+      (input.labelNames ?? []).map((label) => label.trim()).filter(Boolean),
     ),
   );
 
@@ -210,6 +242,15 @@ export async function createLinearIssue(
       id: input.assigneeId,
       email: input.assigneeEmail,
     },
+    apiKey,
+  );
+
+  const stateId = await lookupStateId(
+    {
+      id: input.stateId,
+      name: input.stateName,
+    },
+    teamId,
     apiKey,
   );
 
@@ -238,6 +279,7 @@ export async function createLinearIssue(
   if (projectId) issueInput.projectId = projectId;
   if (labelIds.length) issueInput.labelIds = labelIds;
   if (assigneeId) issueInput.assigneeId = assigneeId;
+  if (stateId) issueInput.stateId = stateId;
 
   const data = await requestLinear<IssueCreateResponse>(
     mutation,
