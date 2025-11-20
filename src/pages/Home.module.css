@@ -2,13 +2,11 @@
 @import url("../styles/fonts.css");
 
 .home {
-  padding-inline: 2rem;
   text-align: left;
 }
 
 .hero {
   position: relative;
-  margin-block-end: var(--space-layout-96);
   min-height: 75vh;
   background-color: var(--main-body-background-color);
   overflow: hidden;
@@ -97,8 +95,6 @@ h1 {
 }
 
 .cta {
-  margin: 0 auto var(--space-layout-32);
-  margin-block-start: 2rem;
   padding: var(--space-layout-64);
   background-color: var(--color-primary);
   font-family: var(--primary-body-font);
@@ -122,8 +118,7 @@ h1 {
 }
 
 .heroHighlights {
-  margin: 0 auto var(--space-layout-64);
-  padding-inline: var(--space-layout-32);
+  margin-inline: auto;
   max-width: 1200px;
 }
 
@@ -160,10 +155,6 @@ h1 {
 @media (width <= 768px) {
   .lead {
     font-size: 1.5rem;
-  }
-
-  .heroHighlights {
-    padding-inline: var(--space-layout-16);
   }
 }
 
