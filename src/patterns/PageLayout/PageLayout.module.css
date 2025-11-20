@@ -48,7 +48,10 @@
 
 @media (width >= 1024px) {
   .grid {
-    grid-template-columns: repeat(var(--grid-columns-desktop), 1fr); /* 12 cols */
+    grid-template-columns: repeat(
+      var(--grid-columns-desktop),
+      1fr
+    ); /* 12 cols */
     gap: var(--grid-gap-desktop); /* 32px */
   }
 }

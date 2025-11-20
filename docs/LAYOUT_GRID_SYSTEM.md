@@ -9,21 +9,18 @@ The Digitaltableteur layout system provides a comprehensive, responsive framewor
 ### Breakpoints
 
 ```css
---breakpoint-mobile: 480px
---breakpoint-tablet: 768px
---breakpoint-desktop: 1024px
---breakpoint-wide: 1440px
---breakpoint-ultra: 1920px
+--breakpoint-mobile: 480px --breakpoint-tablet: 768px
+  --breakpoint-desktop: 1024px --breakpoint-wide: 1440px
+  --breakpoint-ultra: 1920px;
 ```
 
 ### Container Max-Widths
 
 ```css
---container-sm: 640px   /* Small content blocks, forms */
---container-md: 960px   /* Standard content width */
---container-lg: 1200px  /* Wide content areas */
---container-xl: 1440px  /* Extra wide layouts */
---container-full: 100%  /* Full bleed sections */
+--container-sm: 640px /* Small content blocks, forms */ --container-md: 960px
+  /* Standard content width */ --container-lg: 1200px /* Wide content areas */
+  --container-xl: 1440px /* Extra wide layouts */ --container-full: 100%
+  /* Full bleed sections */;
 ```
 
 ### Grid System
@@ -35,13 +32,8 @@ The grid automatically adapts across breakpoints:
 - **Desktop (≥1024px)**: 12 columns, 32px gap
 
 ```css
---grid-columns-mobile: 4
---grid-columns-tablet: 8
---grid-columns-desktop: 12
-
---grid-gap-mobile: 16px
---grid-gap-tablet: 24px
---grid-gap-desktop: 32px
+--grid-columns-mobile: 4 --grid-columns-tablet: 8 --grid-columns-desktop: 12
+  --grid-gap-mobile: 16px --grid-gap-tablet: 24px --grid-gap-desktop: 32px;
 ```
 
 ### Page Margins
@@ -49,10 +41,8 @@ The grid automatically adapts across breakpoints:
 Responsive edge spacing for consistent breathing room:
 
 ```css
---page-margin-mobile: 16px
---page-margin-tablet: 32px
---page-margin-desktop: 48px
---page-margin-wide: 64px
+--page-margin-mobile: 16px --page-margin-tablet: 32px
+  --page-margin-desktop: 48px --page-margin-wide: 64px;
 ```
 
 ## Typography
@@ -62,11 +52,10 @@ Responsive edge spacing for consistent breathing room:
 Optimized for readability across content types:
 
 ```css
---line-height-tight: 1.2      /* Large headings */
---line-height-snug: 1.375     /* Medium headings */
---line-height-normal: 1.5     /* Body text and UI */
---line-height-relaxed: 1.625  /* Long-form content */
---line-height-loose: 1.75     /* Maximum readability */
+--line-height-tight: 1.2 /* Large headings */ --line-height-snug: 1.375
+  /* Medium headings */ --line-height-normal: 1.5 /* Body text and UI */
+  --line-height-relaxed: 1.625 /* Long-form content */ --line-height-loose: 1.75
+  /* Maximum readability */;
 ```
 
 ### Application
@@ -82,7 +71,7 @@ Optimized for readability across content types:
 All margin and padding values use the spacing system to maintain consistent vertical rhythm:
 
 ```css
---rhythm-base: 0.5rem  /* 8px base unit */
+--rhythm-base: 0.5rem /* 8px base unit */;
 ```
 
 ## PageLayout Component
@@ -95,22 +84,22 @@ import PageLayout from "@dt/PageLayout";
 <PageLayout maxWidth="lg" spacing="comfortable">
   <h1>Page Title</h1>
   <p>Content goes here...</p>
-</PageLayout>
+</PageLayout>;
 ```
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `maxWidth` | `'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'lg'` | Maximum width constraint |
-| `spacing` | `'compact' \| 'default' \| 'comfortable' \| 'spacious'` | `'default'` | Vertical spacing |
-| `grid` | `boolean` | `false` | Enable 12-column grid |
-| `columns` | `number` | `undefined` | Custom column count (overrides responsive) |
-| `withMargins` | `boolean` | `true` | Apply page margins |
-| `as` | `'div' \| 'main' \| 'section' \| 'article'` | `'div'` | Semantic HTML element |
-| `className` | `string` | `''` | Additional CSS class |
-| `role` | `string` | `undefined` | ARIA role |
-| `ariaLabel` | `string` | `undefined` | ARIA label |
+| Prop          | Type                                                    | Default     | Description                                |
+| ------------- | ------------------------------------------------------- | ----------- | ------------------------------------------ |
+| `maxWidth`    | `'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'`                | `'lg'`      | Maximum width constraint                   |
+| `spacing`     | `'compact' \| 'default' \| 'comfortable' \| 'spacious'` | `'default'` | Vertical spacing                           |
+| `grid`        | `boolean`                                               | `false`     | Enable 12-column grid                      |
+| `columns`     | `number`                                                | `undefined` | Custom column count (overrides responsive) |
+| `withMargins` | `boolean`                                               | `true`      | Apply page margins                         |
+| `as`          | `'div' \| 'main' \| 'section' \| 'article'`             | `'div'`     | Semantic HTML element                      |
+| `className`   | `string`                                                | `''`        | Additional CSS class                       |
+| `role`        | `string`                                                | `undefined` | ARIA role                                  |
+| `ariaLabel`   | `string`                                                | `undefined` | ARIA label                                 |
 
 ### Grid Examples
 
@@ -118,12 +107,8 @@ import PageLayout from "@dt/PageLayout";
 
 ```tsx
 <PageLayout grid maxWidth="lg">
-  <div style={{ gridColumn: 'span 6' }}>
-    Left column content
-  </div>
-  <div style={{ gridColumn: 'span 6' }}>
-    Right column content
-  </div>
+  <div style={{ gridColumn: "span 6" }}>Left column content</div>
+  <div style={{ gridColumn: "span 6" }}>Right column content</div>
 </PageLayout>
 ```
 
@@ -131,12 +116,8 @@ import PageLayout from "@dt/PageLayout";
 
 ```tsx
 <PageLayout grid maxWidth="xl">
-  <main style={{ gridColumn: 'span 8' }}>
-    Main content
-  </main>
-  <aside style={{ gridColumn: 'span 4' }}>
-    Sidebar
-  </aside>
+  <main style={{ gridColumn: "span 8" }}>Main content</main>
+  <aside style={{ gridColumn: "span 4" }}>Sidebar</aside>
 </PageLayout>
 ```
 
@@ -145,18 +126,16 @@ import PageLayout from "@dt/PageLayout";
 ```tsx
 <PageLayout grid maxWidth="xl" spacing="comfortable">
   {/* Full-width header */}
-  <header style={{ gridColumn: 'span 12' }}>
-    Hero section
-  </header>
-  
+  <header style={{ gridColumn: "span 12" }}>Hero section</header>
+
   {/* Three equal columns */}
-  <div style={{ gridColumn: 'span 4' }}>Feature 1</div>
-  <div style={{ gridColumn: 'span 4' }}>Feature 2</div>
-  <div style={{ gridColumn: 'span 4' }}>Feature 3</div>
-  
+  <div style={{ gridColumn: "span 4" }}>Feature 1</div>
+  <div style={{ gridColumn: "span 4" }}>Feature 2</div>
+  <div style={{ gridColumn: "span 4" }}>Feature 3</div>
+
   {/* Two unequal columns */}
-  <article style={{ gridColumn: 'span 8' }}>Article</article>
-  <aside style={{ gridColumn: 'span 4' }}>Related</aside>
+  <article style={{ gridColumn: "span 8" }}>Article</article>
+  <aside style={{ gridColumn: "span 4" }}>Related</aside>
 </PageLayout>
 ```
 
@@ -167,15 +146,9 @@ import PageLayout from "@dt/PageLayout";
 Use for padding, gaps within components:
 
 ```css
---space-internal-0: 0
---space-internal-2: 2px
---space-internal-4: 4px
---space-internal-6: 6px
---space-internal-8: 8px
---space-internal-12: 12px
---space-internal-16: 16px
---space-internal-24: 24px
---space-internal-32: 32px
+--space-internal-0: 0 --space-internal-2: 2px --space-internal-4: 4px
+  --space-internal-6: 6px --space-internal-8: 8px --space-internal-12: 12px
+  --space-internal-16: 16px --space-internal-24: 24px --space-internal-32: 32px;
 ```
 
 ### Layout (Outer) Spacing
@@ -183,18 +156,10 @@ Use for padding, gaps within components:
 Use for margins, section spacing, grid gaps:
 
 ```css
---space-layout-0: 0
---space-layout-4: 4px
---space-layout-6: 6px
---space-layout-8: 8px
---space-layout-16: 16px
---space-layout-24: 24px
---space-layout-32: 32px
---space-layout-40: 40px
---space-layout-48: 48px
---space-layout-64: 64px
---space-layout-80: 80px
---space-layout-96: 96px
+--space-layout-0: 0 --space-layout-4: 4px --space-layout-6: 6px
+  --space-layout-8: 8px --space-layout-16: 16px --space-layout-24: 24px
+  --space-layout-32: 32px --space-layout-40: 40px --space-layout-48: 48px
+  --space-layout-64: 64px --space-layout-80: 80px --space-layout-96: 96px;
 ```
 
 ## Best Practices
@@ -248,18 +213,22 @@ Fallbacks are provided for older browsers.
 ### Converting Existing Layouts
 
 **Before:**
+
 ```tsx
-<div style={{ 
-  maxWidth: '1200px', 
-  margin: '0 auto', 
-  padding: '0 2rem' 
-}}>
+<div
+  style={{
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "0 2rem",
+  }}
+>
   <h1>Title</h1>
   <p>Content</p>
 </div>
 ```
 
 **After:**
+
 ```tsx
 <PageLayout maxWidth="lg" spacing="default">
   <h1>Title</h1>
@@ -270,22 +239,26 @@ Fallbacks are provided for older browsers.
 ### Converting Custom Grids
 
 **Before:**
+
 ```tsx
-<div style={{
-  display: 'grid',
-  gridTemplateColumns: 'repeat(12, 1fr)',
-  gap: '2rem'
-}}>
-  <div style={{ gridColumn: 'span 6' }}>Left</div>
-  <div style={{ gridColumn: 'span 6' }}>Right</div>
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(12, 1fr)",
+    gap: "2rem",
+  }}
+>
+  <div style={{ gridColumn: "span 6" }}>Left</div>
+  <div style={{ gridColumn: "span 6" }}>Right</div>
 </div>
 ```
 
 **After:**
+
 ```tsx
 <PageLayout grid maxWidth="xl">
-  <div style={{ gridColumn: 'span 6' }}>Left</div>
-  <div style={{ gridColumn: 'span 6' }}>Right</div>
+  <div style={{ gridColumn: "span 6" }}>Left</div>
+  <div style={{ gridColumn: "span 6" }}>Right</div>
 </PageLayout>
 ```
 
