@@ -80,9 +80,16 @@ blockquote {
 
 /* Code blocks */
 
-pre,
-code {
+/* Block code: preserve readability */
+
+pre {
   line-height: var(--line-height-normal); /* 1.5 */
+}
+
+/* Inline code: inherit to avoid disrupting text rhythm */
+
+code {
+  line-height: inherit;
 }
 
 /* Small text */

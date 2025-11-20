@@ -4,20 +4,20 @@ Digitaltableteur now includes a scripted Linear workflow that standardizes ticke
 
 ## 1. Architecture Overview
 
-| Concern | Implementation |
-| --- | --- |
-| API layer | `lib/linear/createIssue.ts` — GraphQL client with env validation, label/assignee lookups, and rate-limit handling |
+| Concern        | Implementation                                                                                                                                                 |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| API layer      | `lib/linear/createIssue.ts` — GraphQL client with env validation, label/assignee lookups, and rate-limit handling                                              |
 | Smart metadata | `lib/linear/classify.ts` (domain + auto labels), `lib/linear/componentDetection.ts` (component heuristics), `lib/linear/textImprover.ts` (description rewrite) |
-| Trigger | `scripts/linear/create-issue.ts` executed via `npm run linear:new` (readline-based CLI, ready for future Slack/voice triggers) |
-| Documentation | This file + env references |
-| Labs Setup | `docs/RD_LABS_GUIDE.md` describes the R&D/Labs team workflow |
+| Trigger        | `scripts/linear/create-issue.ts` executed via `npm run linear:new` (readline-based CLI, ready for future Slack/voice triggers)                                 |
+| Documentation  | This file + env references                                                                                                                                     |
+| Labs Setup     | `docs/RD_LABS_GUIDE.md` describes the R&D/Labs team workflow                                                                                                   |
 
 Key automation stages:
 
 1. **Q&A intake** — prompt for type, title, description, priority, component, labels, assignee.
 2. **Classification** — heuristics decide between `design-system` vs `app` and attach labels (`design-system`, `ds-triage`, `ui-app-bug`, etc.). Uncertain calls require confirmation.
 3. **Component detection** — scans `/src/components/**` for referenced component names and proposes labels like `comp:Button`. If multiple matches exist the CLI asks which ones apply.
-4. **Text rewrite** — description is reorganized into *Problem / Actual / Expected / Steps / Acceptance Criteria* plus the reporter’s raw content.
+4. **Text rewrite** — description is reorganized into _Problem / Actual / Expected / Steps / Acceptance Criteria_ plus the reporter’s raw content.
 5. **Confirmation & submission** — user must confirm `Confirm issue creation with: title=X priority=Y labels=Z?` before the script calls Linear’s `issueCreate` mutation.
 
 ## 2. Environment Setup
@@ -73,6 +73,7 @@ npm run linear:auto "Your task description here"
 ```
 
 This command will:
+
 1. **Auto-increment issue number** - Finds the latest DIG-XX issue and creates DIG-XX+1
 2. **Analyze git diff** - Detects changed files and determines appropriate labels
 3. **Detect git status** - Determines initial state:
@@ -106,10 +107,12 @@ npm run linear:auto --issue=DIG-15 --update
 ```
 
 **Options:**
+
 - `--update` - Update existing issue instead of creating new one
 - `--issue=DIG-XX` - Specify issue to update (required with --update)
 
 The automation script integrates with:
+
 - **Git** - Analyzes branch, diff, and remote status
 - **GitHub CLI** - Detects PRs automatically via `gh pr view`
 - **Linear API** - Creates and updates issues with proper metadata
@@ -165,6 +168,7 @@ This transcript shows the auto-added labels (`ui-app-bug`, `comp:HeroCTA`) along
 ---
 
 Need updates or want to experiment? Extend the helpers under `lib/linear/*`, keep heuristics deterministic, and refresh this doc with behavioral changes.
+
 - Workspace Labels:
   - Content: `ai-app`, `browser-extension`, `mcp`, `figma-plugin`, `design-tool`, `automation`
   - Value: `R&D`, `Experiment`, `Adoption-candidate`
