@@ -260,7 +260,7 @@ const Home = () => {
             </Grid>
           </section>
         </PageLayout>
-        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
+        <PageLayout maxWidth="full" spacing="comfortable" as="section">
           <section className={styles.cta}>
             <h2>{t("homeCtaTitle")}</h2>
             <Link

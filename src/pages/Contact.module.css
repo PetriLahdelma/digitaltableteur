@@ -6,7 +6,7 @@
 }
 
 .contact h1 {
-  margin-block: 2rem 6rem;
+  margin-block: 2rem;
   font-family: var(--primary-heading-font, serif);
   font-size: 5rem;
   font-weight: var(--primary-heading-weight, 300);
@@ -90,6 +90,7 @@
 .officeAddressLine {
   font-family: var(--primary-body-font, sans-serif);
   font-size: 1rem;
+  text-align: left;
   color: var(--color-primary);
 }
 
@@ -201,6 +202,8 @@
 }
 
 .contactFormTitle {
+  margin-inline: auto;
+  max-width: 520px;
   font-family: var(--secondary-heading-font, sans-serif);
   font-weight: 600;
   text-transform: uppercase;
@@ -222,6 +225,8 @@ h2.resumeTitle {
 
 .contactInfo {
   margin-block-end: 2rem;
+  margin-inline: auto;
+  max-width: 424px;
   font-size: 1rem;
   color: var(--color-primary);
 }
