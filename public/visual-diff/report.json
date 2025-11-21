@@ -1,23 +1,4 @@
 {
-  "generatedAt": "2025-11-20T18:37:38.532Z",
-  "diffs": [
-    {
-      "id": "components-ai-chat-custom-components-openhours-today-only",
-      "actual": "visual-diff/components-ai-chat-custom-components-openhours-today-only-actual.png",
-      "baseline": "visual-diff/components-ai-chat-custom-components-openhours-today-only-baseline.png",
-      "diff": "visual-diff/components-ai-chat-custom-components-openhours-today-only-diff.png"
-    },
-    {
-      "id": "components-button-all-variants",
-      "actual": "visual-diff/components-button-all-variants-actual.png",
-      "baseline": "visual-diff/components-button-all-variants-baseline.png",
-      "diff": "visual-diff/components-button-all-variants-diff.png"
-    },
-    {
-      "id": "overview-test-health-overview-dashboard",
-      "actual": "visual-diff/overview-test-health-overview-dashboard-actual.png",
-      "baseline": "visual-diff/overview-test-health-overview-dashboard-baseline.png",
-      "diff": "visual-diff/overview-test-health-overview-dashboard-diff.png"
-    }
-  ]
+  "generatedAt": "2025-11-21T08:53:04.654Z",
+  "diffs": []
 }

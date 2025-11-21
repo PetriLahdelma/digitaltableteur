@@ -100,7 +100,7 @@ h1 {
 }
 
 .lead {
-  margin-block-end: var(--space-layout-96);
+  margin-block-end: var(--space-layout-0);
   padding-inline: var(--space-layout-32);
   font-family: var(--primary-body-font);
   font-size: 2.5rem;
