@@ -9,7 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={styles.layout}>
       <Button
-        variant="secondary"
+        variant="primary"
         accessibleRole="link"
         className={styles.skipLink}
         onClick={(e) => {

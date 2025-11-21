@@ -33,12 +33,17 @@ Founder & Leadership:
 - Open Source: Maintains multiple projects including digitaltableteur portfolio, donny.ai assistant platform
 Technical Expertise:
 - React & TypeScript development
+- HTML & CSS3
+- Next.JS framework
+- Frontend architecture and performance optimization
+- UI component development
 - Design systems and component libraries
 - User experience (UX) and user interface (UI) design
 - Responsive web development
 - AI and LLM integration
 - Modern web development practices
-- GitHub: Active open-source contributor with multiple repositories including digitaltableteur portfolio site
+GitHub: 
+- Active open-source contributor with multiple repositories including digitaltableteur portfolio site
 Portfolio & Projects:
 - digitaltableteur.com: Main design service and portfolio site built with React/TypeScript
 - https://randomgorsey.com: Professional music website showcasing electronic music production
@@ -75,7 +80,7 @@ Contact & Locations:
 - Website: https://digitaltableteur.com
 - Email: mail@digitaltableteur.com
 - Phone: +358 45 657 4469
-- Locations: Helsinki & Turku, Finland
+- Locations: Helsinki, Finland
 Values & Approach:
 - Human-centered design philosophy
 - Emphasis on storytelling, emotion, and band experience

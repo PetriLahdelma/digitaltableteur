@@ -19,11 +19,12 @@
   padding: 0.5rem 1rem;
   background: var(--color-primary);
   color: var(--color-white);
-  transition: top 0.3s ease;
+  transition: top left 0.3s ease;
 }
 
 .skipLink:focus {
-  top: 0;
+  top: 12px;
+  left: 12px;
 }
 
 @media (width <= 768px) {

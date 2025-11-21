@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { type Theme } from "@dt/ThemeProvider";
 import styles from "./MobileMenu.module.css";
@@ -13,6 +13,7 @@ type MobileMenuProps = {
   isOpen: boolean;
   onClose?: () => void;
   onNavigate?: () => void;
+  id?: string;
 };
 
 const themeIcons: Record<Theme, React.ReactNode> = {
@@ -55,11 +56,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   isOpen,
   onClose,
   onNavigate,
+  id,
 }) => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const { theme, cycleTheme } = usePersistentTheme();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const panelId = id ?? "mobile-menu";
 
   const languages = React.useMemo(
     () => [
@@ -112,12 +115,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   }
 
   return (
-    <div className={styles.backdrop} role="presentation">
+    <div className={styles.backdrop} role="presentation" onClick={onClose}>
       <div
         className={styles.panel}
+        id={panelId}
         aria-modal="true"
         role="dialog"
         aria-label={t("navMenuAccessibleLabel", "Main navigation")}
+        onClick={(event) => event.stopPropagation()}
       >
         <div
           className={styles.panelContent}
@@ -135,7 +140,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               onClick={onClose}
               aria-label={t("navMenuClose", "Close navigation")}
             >
-              <Icon name="x" ariaLabel="Close" size={20} />
+              <Icon name="x" ariaLabel="Close" size="lg" />
             </button>
           </header>
           <nav aria-label={t("navMenuLinks", "Primary pages")}>
@@ -203,6 +208,22 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                 {themeIcons[theme]}
               </button>
             </div>
+          </div>
+          <div className={styles.footerLinks}>
+            <Link
+              to="/cookie-policy-full"
+              className={styles.footerLink}
+              onClick={handleNavigate}
+            >
+              {t("navMenuCookiePolicy")}
+            </Link>
+            <Link
+              to="/ai-use"
+              className={styles.footerLink}
+              onClick={handleNavigate}
+            >
+              {t("navMenuAiUsage")}
+            </Link>
           </div>
         </footer>
       </div>
