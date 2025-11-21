@@ -12,7 +12,7 @@ All scripts live under `scripts/sanity-migration/` and are exposed via npm comma
 | `npm run sanity:convert` | Normalizes the parsed content into Sanity-compatible documents (slug objects, ISO dates, SEO fields) and writes both JSON + NDJSON payloads to `sanity-output/`. |
 | `npm run sanity:cleanup-legacy` | Deletes any `blog.*` documents from the dataset to avoid conflicts with the new `post.*` IDs. |
 | `npm run sanity:upload` | Uploads `sanity-output/sanity-documents.json` into the configured Sanity dataset. Handles image asset uploads, deduplicates by file path, provisions author documents, and preserves legacy URLs via `createOrReplace`. |
-| `npm run sanity:sync-from-remote` | Pulls the latest Sanity `post` documents, converts Portable Text → MDX (`content/posts/<slug>.mdx`), generates `public/_redirects`, and archives any local posts that no longer exist upstream. |
+| `npm run sanity:sync-from-remote` | Pulls the latest Sanity `post` documents, converts Portable Text → MDX (`content/posts/<slug>.mdx`), generates `public/_redirects`, and archives any local posts that no longer exist upstream. Supports optional `--slug=<post-slug>` parameter to export a single post. |
 
 Dependencies added:
 
@@ -60,6 +60,16 @@ Dependencies added:
    - Writes `content/posts/<slug>.mdx` with YAML frontmatter (title, slug, readTime, dates, SEO, legacy URL).
    - Generates `public/_redirects` (legacy URL → `/blog/<slug>` 301).
    - Moves any `content/posts/*.mdx` files that are no longer in Sanity into `content/archive/posts/`.
+
+   **Single Post Export** (added Nov 2025):
+   ```bash
+   npm run sanity:sync-from-remote -- --slug=your-post-slug
+   ```
+   - Exports only the specified post without processing the entire dataset.
+   - Useful for rapid iteration when editing a single article in Sanity.
+   - **Does not archive other posts** (leaves existing posts untouched).
+   - Skips author syncing and redirect generation (since those are full-dataset operations).
+   - Example: `npm run sanity:sync-from-remote -- --slug=figma-mcp-design-systems`
 
 ## Schema Considerations
 

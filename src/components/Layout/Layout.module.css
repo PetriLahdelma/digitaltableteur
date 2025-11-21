@@ -25,3 +25,9 @@
 .skipLink:focus {
   top: 0;
 }
+
+@media (width <= 768px) {
+  .skipLink {
+    top: -3.3rem;
+  }
+}

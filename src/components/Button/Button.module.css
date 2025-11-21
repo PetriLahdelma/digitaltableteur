@@ -11,10 +11,13 @@
   font-family: var(--primary-body-font, Moderat, sans-serif);
   font-size: var(--font-size-button-m);
   text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   cursor: pointer;
   transition:
     background-color 0.3s,
     color 0.3s;
+  overflow: hidden;
 }
 
 .button.primary {
@@ -208,4 +211,14 @@
 
 .button.rounded {
   border-radius: 9999px;
+}
+
+@media (width <= 768px) {
+  .button.s {
+    padding-block: var(--space-internal-16);
+  }
+
+  .button.m {
+    padding-block: var(--space-internal-16);
+  }
 }

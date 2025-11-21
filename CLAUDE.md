@@ -15,6 +15,27 @@ Digitaltableteur is a modern React TypeScript portfolio website built with Vite,
 
 ## Development Guidelines
 
+### ⚠️ CRITICAL: Component Creation Rules
+
+**BEFORE creating ANY new component, ALWAYS refer to `docs/LLM_COMPONENT_GENERATION_RULES.md`**
+
+This comprehensive guide (10 sections, 12,000+ words) covers:
+
+- Core architecture & design system patterns
+- CSS Modules & styling requirements (logical properties, design tokens, theme support)
+- Component API design & props patterns
+- Internationalization (i18n) for 3 languages
+- React best practices & performance optimization
+- Accessibility (a11y) requirements & testing
+- Testing strategy (Vitest, axe-core, >80% coverage)
+- Code quality & linting (ESLint, Stylelint, Prettier)
+- Storybook & documentation standards
+- Complete pre-commit checklist
+
+**Following these rules ensures consistency, accessibility, and quality across all components.**
+
+---
+
 When working with this project, please:
 
 - Maintain test coverage for critical functionality
@@ -130,6 +151,115 @@ Extending further:
 - Run accessibility checks: `npm run test:a11y`
 - Execute visual regression tests: `npm run test:visual`
 - Update visual baselines after intentional UI changes: `npm run test:visual -- --updateSnapshot`
+
+## Linear Issue Automation (Nov 2025)
+
+Automated Linear issue management via TypeScript scripts in `scripts/linear/`. Core functionality in `lib/linear/createIssue.ts`.
+
+### Creating Issues (For LLMs)
+
+**Critical Decision Point:** When user requests ticket creation:
+
+- "Create a ticket" → `stateName: "In Progress"` + `assigneeEmail: "petri@digitaltableteur.com"`
+- "Create a todo" → omit `stateName` or use `"Todo"`
+
+**Template for Programmatic Creation:**
+
+```typescript
+import {
+  createLinearIssue,
+  validateLinearEnv,
+} from "../../lib/linear/createIssue";
+
+validateLinearEnv();
+const result = await createLinearIssue({
+  title: "Short descriptive title (<80 chars)",
+  description:
+    "Markdown description with context, acceptance criteria, branch name",
+  priority: 1, // 0=P1, 1=P2, 2=P3, 3=P4
+  labelNames: ["design-system", "Improvement"], // See docs/LINEAR_LABELS.md
+  assigneeEmail: "petri@digitaltableteur.com",
+  stateName: "In Progress", // NEW: auto-resolve workflow state
+});
+console.log(`Created ${result.identifier}: ${result.url}`);
+```
+
+### Quick Commands
+
+**Check issue status:**
+
+```bash
+npx tsx scripts/linear/check-issue.ts DIG-16
+```
+
+**Update issue state:**
+
+```bash
+npx tsx scripts/linear/update-issue.ts --issue DIG-16 --state "Done"
+```
+
+**Add labels:**
+
+```bash
+npx tsx scripts/linear/update-issue.ts --issue DIG-16 --add-label "Bug,ui-app-bug"
+```
+
+### Label Selection Guide
+
+Refer to `docs/LINEAR_LABELS.md` for full list. Common choices:
+
+- Component/design system work: `design-system`
+- Feature enhancements: `Improvement`
+- Bugs: `Bug` or `ui-app-bug`
+- Infrastructure/tooling: `automation`, `observability`, `linear`
+
+### State Support (Added Nov 2025)
+
+The `createLinearIssue()` function now accepts `stateName` (e.g., "In Progress", "Todo", "Done") or `stateId`. State is auto-resolved against team workflow states. This eliminates the need for separate update calls after creation.
+
+**Before (two-step):**
+
+```typescript
+const issue = await createLinearIssue({
+  title,
+  description,
+  priority,
+  labelNames,
+  assigneeEmail,
+});
+await updateIssue(issue.id, { stateId: "..." }); // Manual follow-up
+```
+
+**After (atomic):**
+
+```typescript
+const issue = await createLinearIssue({
+  title,
+  description,
+  priority,
+  labelNames,
+  assigneeEmail,
+  stateName: "In Progress", // One call, correct state immediately
+});
+```
+
+### Environment Requirements
+
+`.env.local` must contain:
+
+```bash
+LINEAR_API_KEY=lin_api_...
+LINEAR_TEAM_ID=...
+LINEAR_PROJECT_ID=...  # Optional
+```
+
+### LLM Best Practices
+
+1. **Assignee Default**: Always set `assigneeEmail: "petri@digitaltableteur.com"` unless specified otherwise.
+2. **State Inference**: "ticket" = in progress, "todo" = backlog/todo.
+3. **Priority Mapping**: Critical=P1(0), Important=P2(1), Standard=P3(2), Low=P4(3).
+4. **Description Format**: Include goals, acceptance criteria, branch name, related docs.
+5. **Label Validation**: Check `docs/LINEAR_LABELS.md` before using; script warns if labels missing.
 
 ## File Structure
 

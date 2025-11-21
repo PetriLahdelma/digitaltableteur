@@ -18,8 +18,6 @@
 
 .what {
   display: flex;
-  padding-block: clamp(2.5rem, 8vh, 5rem);
-  padding-inline: clamp(1.5rem, 6vw, 6rem);
   min-block-size: 100vh;
   flex-direction: column;
   justify-content: center;
@@ -52,8 +50,6 @@
 
 .section {
   display: grid;
-  padding-block: clamp(3rem, 8vh, 4.5rem);
-  padding-inline: clamp(1rem, 5vw, 4rem);
   justify-items: start;
   gap: var(--space-layout-16);
   text-align: start;
@@ -69,10 +65,6 @@
 
 .who {
   display: grid;
-  margin-block: 0;
-  margin-inline: clamp(1rem, 8vw, 4rem);
-  padding-block: clamp(3rem, 8vh, 4.5rem);
-  padding-inline: clamp(1rem, 5vw, 4rem);
   inline-size: auto;
   min-block-size: 74vh;
   justify-items: start;

@@ -1,5 +1,26 @@
 # Copilot Instructions for Digitaltableteur
 
+## ⚠️ CRITICAL: Component Creation Rules
+
+**BEFORE creating ANY new component, ALWAYS refer to `docs/LLM_COMPONENT_GENERATION_RULES.md`**
+
+This comprehensive 10-section guide (12,000+ words) is the authoritative reference for:
+
+1. **Core Architecture & Philosophy** - Design system first, component structure, TypeScript strictness
+2. **Styling & CSS Architecture** - CSS Modules, logical properties, design tokens, theme support
+3. **Component API Design & Props** - Interface patterns, composition, validation, polymorphic components
+4. **Internationalization (i18n)** - 3-language support (EN/FI/SV), translation keys, coverage requirements
+5. **React Best Practices & Performance** - Minimal state, useEffect discipline, memoization strategy
+6. **Accessibility (a11y) Requirements** - Semantic HTML, ARIA, keyboard navigation, screen reader support
+7. **Testing & Quality Assurance** - Vitest + Testing Library, >80% coverage, accessibility testing
+8. **Code Quality & Linting** - ESLint, Stylelint, TypeScript, Prettier configuration
+9. **Storybook & Documentation** - Story structure, WIP badge system, visual regression
+10. **Final Checklist & Template** - Complete pre-commit validation, component generation prompt
+
+**Following these rules ensures every component is consistent, accessible, performant, and production-ready.**
+
+---
+
 ## Workflow Requirements
 
 – When creating a new component, ensure it has a corresponding Storybook story and unit tests
@@ -150,6 +171,159 @@ npm run eslint-fix   # Auto-fix linting issues
 - **Imports**: Prefer `@dt/` alias over relative paths
 - **Exports**: Default exports for components, named exports for utilities
 - **Error Boundaries**: Use `ChunkErrorBoundary` for lazy-loaded components
+
+## Linear Issue Management & Automation (Nov 2025)
+
+### Overview
+
+Linear issues are managed through TypeScript automation scripts located in `scripts/linear/` and library functions in `lib/linear/`. All scripts require `LINEAR_API_KEY` and `LINEAR_TEAM_ID` environment variables in `.env.local`.
+
+### Core Library (`lib/linear/createIssue.ts`)
+
+Provides `createLinearIssue()` function with support for:
+
+- **Title & Description**: Required fields
+- **Priority**: 0-3 (P1-P4), where 0=Urgent, 1=High, 2=Medium, 3=Low
+- **Labels**: Resolved by name (see `docs/LINEAR_LABELS.md` for available labels)
+- **Assignee**: By email (`assigneeEmail`) or ID (`assigneeId`)
+- **State**: By name (`stateName`) or ID (`stateId`) - e.g., "In Progress", "Todo", "Done"
+- **Project**: Optional `projectId` (defaults to `LINEAR_PROJECT_ID` env var)
+
+**State Support (Added Nov 2025):**
+
+```typescript
+await createLinearIssue({
+  title: "Implement feature X",
+  description: "Detailed description...",
+  priority: 1, // P2 (High)
+  labelNames: ["design-system", "Improvement"],
+  assigneeEmail: "petri@digitaltableteur.com",
+  stateName: "In Progress", // New: auto-resolve workflow state
+});
+```
+
+### Available Scripts
+
+#### Create Issue (Interactive)
+
+```bash
+npx tsx scripts/linear/create-issue.ts
+```
+
+Interactive CLI wizard that prompts for all fields with validation.
+
+#### Create Issue (Programmatic)
+
+For automated issue creation, create a dedicated script:
+
+```typescript
+import {
+  createLinearIssue,
+  validateLinearEnv,
+} from "../../lib/linear/createIssue";
+
+validateLinearEnv();
+
+const result = await createLinearIssue({
+  title: "Your issue title",
+  description: "Detailed description with markdown support",
+  priority: 1,
+  labelNames: ["design-system"],
+  assigneeEmail: "petri@digitaltableteur.com",
+  stateName: "In Progress",
+});
+
+console.log(`Created: ${result.identifier} - ${result.url}`);
+```
+
+#### Update Issue
+
+```bash
+npx tsx scripts/linear/update-issue.ts --issue DIG-16 --state "Done"
+npx tsx scripts/linear/update-issue.ts --issue DIG-16 --add-label "ui-app-bug"
+npx tsx scripts/linear/update-issue.ts --issue DIG-16 --comment "Completed implementation"
+```
+
+Flags:
+
+- `--issue` / `-i`: Issue identifier (e.g., DIG-16)
+- `--state` / `-s`: Change workflow state
+- `--comment` / `-c`: Add comment
+- `--add-label` / `-a`: Add label (repeatable or comma-separated)
+- `--remove-label` / `-r`: Remove label (repeatable or comma-separated)
+
+#### Check Issue Details
+
+```bash
+npx tsx scripts/linear/check-issue.ts DIG-16
+```
+
+Displays current issue state, assignee, priority, labels, and URL.
+
+### Best Practices for LLMs
+
+**When User Requests Ticket Creation:**
+
+1. **Clarify Intent**: If user says "create a ticket", assume they want `stateName: "In Progress"`. If they say "create a todo", use `stateName: "Todo"` or omit state.
+
+2. **Always Set Assignee**: Use `assigneeEmail: "petri@digitaltableteur.com"` by default (project owner).
+
+3. **Choose Appropriate Labels**: Refer to `docs/LINEAR_LABELS.md`:
+   - Component work: `design-system`
+   - Improvements/enhancements: `Improvement`
+   - Bugs: `Bug` or `ui-app-bug`
+   - Infrastructure: `automation`, `observability`
+
+4. **Priority Guidelines**:
+   - Critical bugs or blockers: P1 (priority: 0)
+   - Important features/tasks: P2 (priority: 1)
+   - Standard work: P3 (priority: 2)
+   - Nice-to-haves: P4 (priority: 3)
+
+5. **Description Format**: Use markdown with:
+   - Clear problem statement or goal
+   - Acceptance criteria or implementation steps
+   - Branch name if applicable
+   - Links to related resources
+
+**Example Workflow:**
+
+```typescript
+// User: "Create a ticket for implementing X on all pages"
+// LLM should create a script or directly call:
+
+const result = await createLinearIssue({
+  title: "Implement X component across all pages",
+  description: `## Goal\n\nSystematically implement X...\n\n## Pages\n- [ ] Home\n- [ ] About\n\n## Branch\n\`DT-XXX-feat-implement-x\``,
+  priority: 1, // P2 - important feature work
+  labelNames: ["design-system", "Improvement"],
+  assigneeEmail: "petri@digitaltableteur.com",
+  stateName: "In Progress", // User said "ticket" not "todo"
+});
+```
+
+### Troubleshooting
+
+- **"labels not found"**: Check spelling against `docs/LINEAR_LABELS.md` (case-insensitive)
+- **"Argument Validation Error"**: Usually caused by invalid `projectId` - omit it to use env default
+- **Assignee not set**: Verify email matches Linear workspace user exactly
+- **State not applied**: Check workflow state names with `scripts/linear/update-issue.ts --issue <any-issue> --state "<state-name>"`
+
+### Environment Setup
+
+Required in `.env.local`:
+
+```bash
+LINEAR_API_KEY=lin_api_...
+LINEAR_TEAM_ID=...
+LINEAR_PROJECT_ID=...  # Optional, defaults to team's default project
+```
+
+### Related Documentation
+
+- Available labels: `docs/LINEAR_LABELS.md`
+- Linear API docs: `docs/LINEAR_AUTOMATION.md`
+- Label seeding: `scripts/linear/seed-labels.ts`
 
 ## Performance Considerations
 
@@ -643,11 +817,13 @@ Keep this section synchronized with `README.md` and `CLAUDE.md` whenever native 
 - Documentation: `docs/GITHUB_MCP_SETUP.md` and `docs/VERCEL_GITHUB_MCP_SETUP.md`
 
 **Environment Setup:**
+
 - Local: `.env.local` contains `GITHUB_MCP_PAT=github_pat_...`
 - Production: Vercel environment variable `GITHUB_MCP_PAT`
 - Testing: Script automatically loads dotenv for local testing
 
 **Available Capabilities:**
+
 - Repository operations and file management
 - Issue and pull request management
 - GitHub Actions workflow monitoring
@@ -664,11 +840,13 @@ Keep this section synchronized with `README.md` and `CLAUDE.md` whenever native 
 - Package: `figma-developer-mcp` - Start server with `npx figma-developer-mcp`
 
 **Environment Setup:**
+
 - Local: `.env.local` contains `FIGMA_TOKEN=figd_...`
 - Production: Vercel environment variable `FIGMA_TOKEN`
 - Testing: Script automatically loads dotenv for local testing
 
 **Available Capabilities:**
+
 - Design file analysis and component extraction
 - Asset downloading and design token extraction
 - Design system documentation and consistency checking
