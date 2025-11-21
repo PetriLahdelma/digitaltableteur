@@ -7,6 +7,7 @@ import fur from "../assets/images/fur.webp";
 import blackletter from "../assets/images/blackletter.webp";
 import Grid from "@dt/Grid";
 import FlexBox from "@dt/FlexBox";
+import PageLayout from "../patterns/PageLayout/PageLayout";
 
 const Work = () => {
   return (
@@ -33,32 +34,46 @@ const Work = () => {
           <meta name="twitter:image" content="/logo512.png" />
         </Helmet>
         <div className={styles["workPage"]}>
-          <section className={styles.works}>
-            <FlexBox
-              gap="2rem"
-              className={styles.worksGrid}
-              style={{ flexWrap: "wrap", flexDirection: "row" }}
-            >
-              <a
-                href="work/new-things-co"
-                rel="noopener noreferrer"
-                className={styles.workItem}
-                aria-label="View New Things Co project details"
+          <PageLayout maxWidth="full" spacing="comfortable" as="section">
+            <section className={styles.works}>
+              <FlexBox
+                gap="2rem"
+                className={styles.worksGrid}
+                style={{
+                  flexWrap: "wrap",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
               >
-                <img
-                  src="/images/portfolio/new_things_co/new_things_co_item.webp"
-                  alt="New Things Co project preview"
-                />
-                <span className="visuallyHidden">
-                  View New Things Co project
-                </span>
-              </a>
-              <div className={styles.workItem}>
+                <a
+                  href="work/new-things-co"
+                  rel="noopener noreferrer"
+                  className={styles.workItem}
+                  aria-label="View New Things Co project details"
+                  style={{
+                    flex: "1 1 300px",
+                    maxWidth: "400px",
+                    minWidth: "260px",
+                  }}
+                >
+                  <img
+                    src="/images/portfolio/new_things_co/new_things_co_item.webp"
+                    alt="New Things Co project preview"
+                  />
+                  <span className="visuallyHidden">
+                    View New Things Co project
+                  </span>
+                </a>
                 <a
                   href="work/illustrations"
                   rel="noopener noreferrer"
                   className={styles.workItem}
                   aria-label="View Illustrations project details"
+                  style={{
+                    flex: "1 1 300px",
+                    maxWidth: "400px",
+                    minWidth: "260px",
+                  }}
                 >
                   <img
                     src="/images/portfolio/illustrations/ice-cream.webp"
@@ -68,13 +83,16 @@ const Work = () => {
                     View Illustrations project
                   </span>
                 </a>
-              </div>
-              <div className={styles.workItem}>
                 <a
                   href="work/garage-junction"
                   rel="noopener noreferrer"
                   className={styles.workItem}
                   aria-label="View Garage Junction project details"
+                  style={{
+                    flex: "1 1 300px",
+                    maxWidth: "400px",
+                    minWidth: "260px",
+                  }}
                 >
                   <img
                     src="/images/portfolio/garage_junction/check_pattern@2x.webp"
@@ -84,9 +102,9 @@ const Work = () => {
                     View Garage Junction project
                   </span>
                 </a>
-              </div>
-            </FlexBox>
-          </section>
+              </FlexBox>
+            </section>
+          </PageLayout>
         </div>
       </HelmetProvider>
     </>

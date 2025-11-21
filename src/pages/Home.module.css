@@ -2,13 +2,11 @@
 @import url("../styles/fonts.css");
 
 .home {
-  padding-inline: 2rem;
   text-align: left;
 }
 
 .hero {
   position: relative;
-  margin-block-end: var(--space-layout-96);
   min-height: 75vh;
   background-color: var(--main-body-background-color);
   overflow: hidden;
@@ -58,11 +56,25 @@
   position: relative;
   z-index: 1;
   margin: 1.5rem auto 0;
+  padding-inline: var(--space-layout-24);
+  max-width: 800px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: var(--color-white);
+}
+
+@media (width >= 768px) {
+  .heroSubtext {
+    padding-inline: var(--space-layout-48);
+  }
+}
+
+@media (width >= 1024px) {
+  .heroSubtext {
+    padding-inline: var(--space-layout-64);
+  }
 }
 
 .heroCtas {
@@ -88,17 +100,27 @@ h1 {
 }
 
 .lead {
-  margin-block-end: var(--space-layout-96);
-  margin-inline: 6vw;
+  margin-block-end: var(--space-layout-0);
+  padding-inline: var(--space-layout-32);
   font-family: var(--primary-body-font);
   font-size: 2.5rem;
   line-height: 1.3;
   color: var(--main-body-copy-color);
 }
 
+@media (width >= 768px) {
+  .lead {
+    padding-inline: var(--space-layout-48);
+  }
+}
+
+@media (width >= 1024px) {
+  .lead {
+    padding-inline: var(--space-layout-64);
+  }
+}
+
 .cta {
-  margin: 0 auto var(--space-layout-32);
-  margin-block-start: 2rem;
   padding: var(--space-layout-64);
   background-color: var(--color-primary);
   font-family: var(--primary-body-font);
@@ -122,8 +144,7 @@ h1 {
 }
 
 .heroHighlights {
-  margin: 0 auto var(--space-layout-64);
-  padding-inline: var(--space-layout-32);
+  margin-inline: auto;
   max-width: 1200px;
 }
 
@@ -160,10 +181,6 @@ h1 {
 @media (width <= 768px) {
   .lead {
     font-size: 1.5rem;
-  }
-
-  .heroHighlights {
-    padding-inline: var(--space-layout-16);
   }
 }
 

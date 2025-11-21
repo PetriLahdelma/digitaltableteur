@@ -5,7 +5,7 @@
   margin: 0 auto;
   margin-block-start: 0;
   padding: 2rem;
-  max-width: 60rem;
+  max-width: 100%;
   font-family: var(--secondary-body-font, serif);
   font-size: 1rem;
   line-height: 1.6;
@@ -49,7 +49,7 @@ h3 + p {
   margin-block-start: 1rem;
 }
 
-p + :not(p, blockquote) {
+p + :not(p, ul, ol, blockquote) {
   padding-block-start: 2rem;
 }
 
@@ -69,7 +69,41 @@ strong {
 }
 
 .article p {
-  margin-block: 1rem;
+  margin-block: 1.25rem;
+  max-width: 65ch;
+  line-height: 1.75;
+}
+
+.article ul,
+.article ol {
+  margin-block: 1.5rem;
+  padding-inline-start: 1.5rem;
+  max-width: 65ch;
+  line-height: 1.75;
+}
+
+.article li {
+  margin-block: 0.75rem;
+  padding-inline-start: 0.5rem;
+}
+
+.article li::marker {
+  color: var(--color-primary);
+}
+
+.article ul li {
+  list-style-type: disc;
+}
+
+.article ol li {
+  list-style-type: decimal;
+}
+
+/* Nested lists */
+
+.article ul ul,
+.article ol ul {
+  margin-block: 0.5rem;
 }
 
 .metaRow {
@@ -84,6 +118,10 @@ strong {
   color: var(--primary-text-color);
 }
 
+.article li > p {
+  margin-block: 0.5rem;
+}
+
 .article p:first-of-type {
   margin-block-start: 0;
 }
@@ -96,6 +134,14 @@ strong {
 
 .releaseDate {
   margin-block: 0;
+  margin-inline-end: 1rem;
+  font-size: 1rem;
+  color: var(--primary-text-color);
+}
+
+.readTime {
+  margin-block: 0;
+  margin-inline-start: auto;
   font-size: 1rem;
   color: var(--primary-text-color);
 }
@@ -127,7 +173,6 @@ div.authorContainer {
 .heroImage img {
   width: 100%;
   max-width: 100%;
-  border-radius: 0.5rem;
 }
 
 .heroImage figcaption {

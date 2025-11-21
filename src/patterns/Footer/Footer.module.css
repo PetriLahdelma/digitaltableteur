@@ -129,6 +129,7 @@ footer p {
   }
 
   .footerText {
+    margin-block-start: var(--space-layout-4);
     width: 100%;
     justify-content: center;
     align-items: center; /* center contents horizontally */
@@ -141,6 +142,6 @@ footer p {
   }
 
   .socialLinks {
-    padding-block-start: 1rem;
+    margin-block: var(--space-layout-16);
   }
 }

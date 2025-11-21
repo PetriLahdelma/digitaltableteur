@@ -2,7 +2,7 @@
 @import url("../styles/fonts.css");
 
 .blog {
-  padding: 0 6rem 2rem;
+  /* PageLayout handles padding */
 }
 
 .blog h1 {
@@ -21,10 +21,6 @@
 
 /* Tablet and small desktop */
 @media (width <= 768px) {
-  .blog {
-    padding: 0 3rem 2rem;
-  }
-
   .blog h1 {
     font-size: 4rem;
     margin-bottom: 3rem;
@@ -38,10 +34,6 @@
 
 /* Mobile */
 @media (width <= 480px) {
-  .blog {
-    padding: 0 1rem 2rem;
-  }
-
   .blog h1 {
     font-size: 3rem;
     margin-bottom: 2rem;
