@@ -11,7 +11,7 @@
   pointer-events: none;
 }
 
-header h2 a {
+.header h2 a {
   font-family: var(--primary-body-font, "Moderat-Bold"), serif;
   font-size: 2.1rem;
   font-weight: 600;
@@ -29,7 +29,7 @@ header h2 a {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   vertical-align: top;
 }
 
@@ -53,6 +53,14 @@ header h2 a {
   max-width: 100%;
   height: 15rem;
   object-fit: contain;
+}
+
+.logoMobile {
+  display: block;
+  width: 48px;
+  max-width: 100%;
+  height: 48px;
+  fill: var(--color-primary);
 }
 
 .nav ul {
@@ -168,10 +176,37 @@ header h2 a {
   pointer-events: auto;
 }
 
+.mobileMenuButton {
+  display: none;
+  padding: 0.5rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--main-body-copy-color);
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 2;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.mobileMenuButton:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.mobileMenuButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 .controls {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   pointer-events: auto;
 }
 
@@ -244,7 +279,7 @@ header h2 a {
   opacity: 0.9;
 }
 
-@media (width <= 900px) {
+@media (width <= 1100px) {
   .headerInner {
     padding: 10px 16px;
     max-width: 100%;
@@ -253,6 +288,19 @@ header h2 a {
   .logo {
     width: 48px;
     height: 48px;
+  }
+
+  .navbar,
+  .controls {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
   }
 
   .nav a {
@@ -264,8 +312,8 @@ header h2 a {
   .headerInner {
     padding: 8px;
     height: auto;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    gap: 12px;
   }
 
   .navbar {
@@ -284,6 +332,11 @@ header h2 a {
     margin-inline-start: 0; /* single side override retained */
     transform: translateY(-4px);
     margin-top: 8px;
+  }
+  /* Ensure mobile trigger remains visible on the smallest viewports */
+  .mobileMenuButton {
+    display: inline-flex;
+    margin-left: auto;
   }
 }
 
