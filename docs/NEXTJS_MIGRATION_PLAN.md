@@ -46,6 +46,7 @@ digitaltableteur/
 ### Routing Strategy
 
 **Phase 1-7:** Use Vercel rewrites to route specific paths to Next.js
+
 ```json
 {
   "rewrites": [
@@ -55,6 +56,7 @@ digitaltableteur/
 ```
 
 **Phase 8 (Final Cutover):** Default to Next.js, fallback to Vite
+
 ```json
 {
   "rewrites": [
@@ -81,6 +83,7 @@ cd nextjs-app && rm -rf .git
 ### Step 1.2: Setup Workspace
 
 **Root `package.json`:**
+
 ```json
 {
   "name": "digitaltableteur-monorepo",
@@ -114,6 +117,7 @@ ln -s ../src/data data
 ### Step 1.4: Install Dependencies
 
 **`nextjs-app/package.json` additions:**
+
 ```json
 {
   "dependencies": {
@@ -133,16 +137,17 @@ ln -s ../src/data data
 ### Step 2.1: Port ThemeProvider to Next.js
 
 **`nextjs-app/providers/ThemeProvider.tsx`:**
-```tsx
-'use client';
 
-import { useEffect } from 'react';
-import { ThemeProvider as SharedThemeProvider } from '../../shared/components/ThemeProvider';
+```tsx
+"use client";
+
+import { useEffect } from "react";
+import { ThemeProvider as SharedThemeProvider } from "../../shared/components/ThemeProvider";
 
 export function NextThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Prevent flash of unstyled content
-    document.documentElement.classList.add('theme-hydrated');
+    document.documentElement.classList.add("theme-hydrated");
   }, []);
 
   return <SharedThemeProvider>{children}</SharedThemeProvider>;
@@ -152,23 +157,26 @@ export function NextThemeProvider({ children }: { children: React.ReactNode }) {
 ### Step 2.2: Root Layout Configuration
 
 **`nextjs-app/app/layout.tsx`:**
+
 ```tsx
-import { NextThemeProvider } from '../providers/ThemeProvider';
-import '../../shared/styles/variables.css';
-import '../../shared/styles/index.css';
+import { NextThemeProvider } from "../providers/ThemeProvider";
+import "../../shared/styles/variables.css";
+import "../../shared/styles/index.css";
 
 export const metadata = {
-  title: 'Digitaltableteur',
-  description: 'Design Systems & AI-Powered DesignOps',
+  title: "Digitaltableteur",
+  description: "Design Systems & AI-Powered DesignOps",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <NextThemeProvider>
-          {children}
-        </NextThemeProvider>
+        <NextThemeProvider>{children}</NextThemeProvider>
       </body>
     </html>
   );
@@ -180,6 +188,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 **Critical:** Theme state must persist across Vite ↔ Next.js navigation.
 
 **Validation:**
+
 1. Set theme in Vite app → Cookie written
 2. Navigate to Next.js route → Cookie read, theme applied
 3. Change theme in Next.js → Cookie updated
@@ -194,15 +203,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ### Step 3.1: i18next Configuration
 
 **`nextjs-app/i18n/config.ts`:**
+
 ```typescript
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
 // Import shared translations
-import enTranslation from '../../shared/locales/en/translation.json';
-import fiTranslation from '../../shared/locales/fi/translation.json';
-import svTranslation from '../../shared/locales/sv/translation.json';
+import enTranslation from "../../shared/locales/en/translation.json";
+import fiTranslation from "../../shared/locales/fi/translation.json";
+import svTranslation from "../../shared/locales/sv/translation.json";
 
 if (!i18n.isInitialized) {
   i18n
@@ -214,11 +224,11 @@ if (!i18n.isInitialized) {
         fi: { translation: fiTranslation },
         sv: { translation: svTranslation },
       },
-      fallbackLng: 'en',
-      supportedLngs: ['en', 'fi', 'sv'],
+      fallbackLng: "en",
+      supportedLngs: ["en", "fi", "sv"],
       detection: {
-        order: ['cookie', 'localStorage', 'navigator'],
-        caches: ['cookie', 'localStorage'],
+        order: ["cookie", "localStorage", "navigator"],
+        caches: ["cookie", "localStorage"],
       },
       react: {
         useSuspense: false, // Critical for Next.js App Router
@@ -232,11 +242,12 @@ export default i18n;
 ### Step 3.2: I18n Provider
 
 **`nextjs-app/providers/I18nProvider.tsx`:**
-```tsx
-'use client';
 
-import { I18nextProvider } from 'react-i18next';
-import i18n from '../i18n/config';
+```tsx
+"use client";
+
+import { I18nextProvider } from "react-i18next";
+import i18n from "../i18n/config";
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
@@ -244,17 +255,17 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 ```
 
 Update `layout.tsx` to wrap children:
+
 ```tsx
 <NextThemeProvider>
-  <I18nProvider>
-    {children}
-  </I18nProvider>
+  <I18nProvider>{children}</I18nProvider>
 </NextThemeProvider>
 ```
 
 ### Step 3.3: Language Cookie Persistence
 
 **Validation:**
+
 1. Change language in Vite app → Cookie written (`i18next=fi`)
 2. Navigate to Next.js route → Cookie read, language applied
 3. Change language in Next.js → Cookie updated
@@ -273,17 +284,18 @@ Update `layout.tsx` to wrap children:
 **After - Create Pure Component:**
 
 **`shared/components/pages/AboutPage/AboutPage.tsx`:**
+
 ```tsx
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import styles from './AboutPage.module.css';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import styles from "./AboutPage.module.css";
 
 export function AboutPage() {
   const { t } = useTranslation();
-  
+
   return (
     <div className={styles.about}>
-      <h1>{t('aboutTitle')}</h1>
+      <h1>{t("aboutTitle")}</h1>
       {/* All existing JSX logic */}
     </div>
   );
@@ -291,34 +303,37 @@ export function AboutPage() {
 ```
 
 **`shared/components/pages/AboutPage/AboutPage.module.css`:**
+
 ```css
 /* Move styles from src/pages/About.module.css */
 ```
 
 **`shared/components/pages/AboutPage/index.ts`:**
+
 ```tsx
-export { AboutPage } from './AboutPage';
+export { AboutPage } from "./AboutPage";
 ```
 
 ### Step 4.2: Update Vite Wrapper
 
 **`src/pages/About.tsx` (now a wrapper):**
+
 ```tsx
-import React from 'react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
-import { AboutPage } from '../../../shared/components/pages/AboutPage';
+import React from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import { AboutPage } from "../../../shared/components/pages/AboutPage";
 
 export default function About() {
   const { t } = useTranslation();
-  
+
   return (
     <>
       <HelmetProvider>
         <Helmet>
-          <title>{t('aboutMetaTitle')}</title>
-          <meta name="description" content={t('aboutMetaDescription')} />
-          <meta property="og:title" content={t('aboutMetaTitle')} />
+          <title>{t("aboutMetaTitle")}</title>
+          <meta name="description" content={t("aboutMetaDescription")} />
+          <meta property="og:title" content={t("aboutMetaTitle")} />
           <meta property="og:image" content="/logo512.png" />
         </Helmet>
       </HelmetProvider>
@@ -331,25 +346,27 @@ export default function About() {
 ### Step 4.3: Create Next.js Route
 
 **`nextjs-app/app/about/page.tsx`:**
+
 ```tsx
-import { Metadata } from 'next';
-import { AboutPage } from '../../../shared/components/pages/AboutPage';
+import { Metadata } from "next";
+import { AboutPage } from "../../../shared/components/pages/AboutPage";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'About | Digitaltableteur',
-    description: 'Learn about Digitaltableteur design studio specializing in Design Systems and AI-powered DesignOps',
+    title: "About | Digitaltableteur",
+    description:
+      "Learn about Digitaltableteur design studio specializing in Design Systems and AI-powered DesignOps",
     openGraph: {
-      title: 'About | Digitaltableteur',
-      description: 'Learn about Digitaltableteur design studio',
-      images: ['/logo512.png'],
-      type: 'website',
+      title: "About | Digitaltableteur",
+      description: "Learn about Digitaltableteur design studio",
+      images: ["/logo512.png"],
+      type: "website",
     },
     twitter: {
-      card: 'summary_large_image',
-      title: 'About | Digitaltableteur',
-      description: 'Learn about Digitaltableteur design studio',
-      images: ['/logo512.png'],
+      card: "summary_large_image",
+      title: "About | Digitaltableteur",
+      description: "Learn about Digitaltableteur design studio",
+      images: ["/logo512.png"],
     },
   };
 }
@@ -374,6 +391,7 @@ npm run dev:next
 ```
 
 **Validation Checklist:**
+
 - [ ] Visual appearance identical
 - [ ] Theme switcher works
 - [ ] Language switcher works
@@ -389,6 +407,7 @@ npm run dev:next
 ### Step 5.1: Vercel Deployment Setup
 
 **Deploy Next.js app to Vercel:**
+
 ```bash
 cd nextjs-app
 vercel --prod
@@ -398,6 +417,7 @@ vercel --prod
 ### Step 5.2: Configure Rewrites
 
 **`vercel.json` (root):**
+
 ```json
 {
   "rewrites": [
@@ -423,6 +443,7 @@ npm run deploy:vite
 ```
 
 **Test:**
+
 - Visit `https://digitaltableteur.com/about`
 - Should serve Next.js version
 - Check network tab for proxy headers
@@ -435,16 +456,19 @@ npm run deploy:vite
 ### Pre-Migration Checklist (Per Route)
 
 **1. Visual Regression Testing**
+
 ```bash
 npx playwright test --project=chromium --grep="about page"
 ```
 
 **2. Accessibility Testing**
+
 ```bash
 npm run test:a11y -- --grep="About"
 ```
 
 **3. SEO Metadata Validation**
+
 ```bash
 # Check server-rendered metadata
 curl -s https://digitaltableteur.com/about | grep -A 5 '<head>'
@@ -454,6 +478,7 @@ curl -s https://digitaltableteur.com/about | grep 'og:'
 ```
 
 **4. Lighthouse Audit**
+
 ```bash
 npx lighthouse https://digitaltableteur.com/about \
   --only-categories=seo,performance,accessibility \
@@ -462,6 +487,7 @@ npx lighthouse https://digitaltableteur.com/about \
 ```
 
 **5. Theme Persistence**
+
 - Set theme to "dark" in header
 - Navigate to Next.js route
 - Verify theme is "dark"
@@ -470,6 +496,7 @@ npx lighthouse https://digitaltableteur.com/about \
 - Verify theme is "hcb"
 
 **6. i18n Persistence**
+
 - Set language to "fi"
 - Navigate to Next.js route
 - Verify UI displays Finnish
@@ -477,11 +504,13 @@ npx lighthouse https://digitaltableteur.com/about \
 - Verify UI still Finnish
 
 **7. CSS Modules**
+
 - Inspect element styles
 - Verify scoped class names (e.g., `AboutPage_about_xyz123`)
 - Check for style conflicts/missing styles
 
 **8. Component Props**
+
 - If route uses shared components with props
 - Verify all props work identically in Next.js
 - Test edge cases (empty states, loading states)
@@ -492,22 +521,23 @@ npx lighthouse https://digitaltableteur.com/about \
 
 ### Migration Priority Order
 
-| Week | Routes | Complexity | Dependencies | Risk |
-|------|--------|------------|--------------|------|
-| **5** | `/about`, `/ai-use` | Low (static) | None | Low |
-| **6** | `/cookie-policy-full-en`, `/cookie-policy-full-fi`, `/cookie-policy-full-sv` | Low (static) | None | Low |
-| **7** | `/contact` | Medium (form) | EmailJS API | Medium |
-| **8** | `/work/new-things-co`, `/work/illustrations`, `/work/garage-junction` | Medium (static) | None | Low |
-| **9** | `/blog`, `/blog/[slug]` | High (dynamic) | Sanity CMS | High |
-| **10** | `/blog/authors/[slug]` | High (dynamic) | Sanity CMS | Medium |
-| **11** | `/work` | High (portfolio) | Work data | Medium |
-| **12** | `/` (Homepage) | Critical | All components | High |
+| Week   | Routes                                                                       | Complexity       | Dependencies   | Risk   |
+| ------ | ---------------------------------------------------------------------------- | ---------------- | -------------- | ------ |
+| **5**  | `/about`, `/ai-use`                                                          | Low (static)     | None           | Low    |
+| **6**  | `/cookie-policy-full-en`, `/cookie-policy-full-fi`, `/cookie-policy-full-sv` | Low (static)     | None           | Low    |
+| **7**  | `/contact`                                                                   | Medium (form)    | EmailJS API    | Medium |
+| **8**  | `/work/new-things-co`, `/work/illustrations`, `/work/garage-junction`        | Medium (static)  | None           | Low    |
+| **9**  | `/blog`, `/blog/[slug]`                                                      | High (dynamic)   | Sanity CMS     | High   |
+| **10** | `/blog/authors/[slug]`                                                       | High (dynamic)   | Sanity CMS     | Medium |
+| **11** | `/work`                                                                      | High (portfolio) | Work data      | Medium |
+| **12** | `/` (Homepage)                                                               | Critical         | All components | High   |
 
 ### Per-Route Migration Steps
 
 **For each route:**
 
 1. **Extract to Shared Component**
+
    ```bash
    # Create shared/components/pages/[RouteName]/
    mkdir -p shared/components/pages/[RouteName]
@@ -516,12 +546,14 @@ npx lighthouse https://digitaltableteur.com/about \
    ```
 
 2. **Create Vite Wrapper**
+
    ```tsx
    // Keep Helmet metadata
    // Import and render shared component
    ```
 
 3. **Create Next.js Route**
+
    ```tsx
    // app/[route]/page.tsx
    // Add generateMetadata()
@@ -529,6 +561,7 @@ npx lighthouse https://digitaltableteur.com/about \
    ```
 
 4. **Test Locally**
+
    ```bash
    npm run dev:vite  # Terminal 1
    npm run dev:next  # Terminal 2
@@ -541,11 +574,13 @@ npx lighthouse https://digitaltableteur.com/about \
    - Fix before proceeding
 
 6. **Deploy Next.js Route**
+
    ```bash
    cd nextjs-app && vercel --prod
    ```
 
 7. **Update Routing Configuration**
+
    ```json
    // Add to vercel.json rewrites
    { "source": "/[route]", "destination": "https://..../[route]" }
@@ -572,6 +607,7 @@ npx lighthouse https://digitaltableteur.com/about \
 ### Step 8.1: Switch Default Routing
 
 **`vercel.json` (final configuration):**
+
 ```json
 {
   "rewrites": [
@@ -591,6 +627,7 @@ npx lighthouse https://digitaltableteur.com/about \
 ### Step 8.2: Monitor Cutover
 
 **First 24 hours:**
+
 - [ ] Monitor Sentry error rates
 - [ ] Check Vercel logs for 5xx errors
 - [ ] Validate analytics tracking
@@ -599,6 +636,7 @@ npx lighthouse https://digitaltableteur.com/about \
 - [ ] Check social media preview cards
 
 **First week:**
+
 - [ ] Compare SEO metrics (Search Console)
 - [ ] Monitor organic traffic trends
 - [ ] Check Core Web Vitals (CrUX)
@@ -623,6 +661,7 @@ rm -rf src/pages  # Keep src/components (now symlinked)
 ```
 
 **Keep Vite infrastructure until:**
+
 - Next.js proven stable for 1+ month
 - All critical business metrics stable/improved
 - Team comfortable with Next.js DX
@@ -698,12 +737,13 @@ git push
 **Issue:** Webpack (Next.js) vs Vite resolve CSS differently
 
 **Solution:**
+
 ```tsx
 // ✅ Works in both
-import styles from './Component.module.css';
+import styles from "./Component.module.css";
 
 // ❌ Avoid absolute paths
-import styles from '@/styles/Component.module.css';
+import styles from "@/styles/Component.module.css";
 ```
 
 ### 2. Environment Variables
@@ -713,21 +753,24 @@ import styles from '@/styles/Component.module.css';
 **Solution:** Create adapter layer
 
 **`shared/config/env.ts`:**
+
 ```typescript
 export const ENV = {
-  SENTRY_DSN: 
-    typeof window === 'undefined' 
-      ? process.env.NEXT_PUBLIC_SENTRY_DSN 
+  SENTRY_DSN:
+    typeof window === "undefined"
+      ? process.env.NEXT_PUBLIC_SENTRY_DSN
       : import.meta.env?.VITE_SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN,
-  
+
   EMAILJS_SERVICE_ID:
-    typeof window === 'undefined'
+    typeof window === "undefined"
       ? process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-      : import.meta.env?.VITE_EMAILJS_SERVICE_ID || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      : import.meta.env?.VITE_EMAILJS_SERVICE_ID ||
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
 };
 ```
 
 **Update `.env.local` for Next.js:**
+
 ```bash
 # Duplicate all VITE_* vars with NEXT_PUBLIC_* prefix
 NEXT_PUBLIC_SENTRY_DSN=...
@@ -739,14 +782,16 @@ NEXT_PUBLIC_EMAILJS_SERVICE_ID=...
 **Issue:** `React.lazy()` syntax differs
 
 **Vite:**
+
 ```tsx
-const Component = React.lazy(() => import('./Component'));
+const Component = React.lazy(() => import("./Component"));
 ```
 
 **Next.js:**
+
 ```tsx
-import dynamic from 'next/dynamic';
-const Component = dynamic(() => import('./Component'), { ssr: false });
+import dynamic from "next/dynamic";
+const Component = dynamic(() => import("./Component"), { ssr: false });
 ```
 
 **Solution:** Use Next.js syntax in Next.js routes, keep React.lazy in Vite.
@@ -762,17 +807,19 @@ const Component = dynamic(() => import('./Component'), { ssr: false });
 **Issue:** Different router APIs
 
 **Vite (React Router):**
+
 ```tsx
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 const navigate = useNavigate();
-navigate('/about');
+navigate("/about");
 ```
 
 **Next.js:**
+
 ```tsx
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 const router = useRouter();
-router.push('/about');
+router.push("/about");
 ```
 
 **Solution:** Keep navigation in route-specific code, not shared components. Use `<Link>` from respective frameworks.
@@ -782,6 +829,7 @@ router.push('/about');
 **Issue:** Theme/language applied client-side causes mismatch
 
 **Solution:** Use `suppressHydrationWarning` on `<html>` tag
+
 ```tsx
 <html lang="en" suppressHydrationWarning>
 ```
@@ -798,25 +846,26 @@ router.push('/about');
 
 ### Track Before/After Migration
 
-| Metric | Vite Baseline | Next.js Target | Measurement Tool |
-|--------|---------------|----------------|------------------|
-| **SEO** |
-| Lighthouse SEO Score | ~70 | 95+ | Lighthouse CI |
-| Crawlable Pages | 0% | 100% | Google Search Console |
-| Social Share Previews | ❌ | ✅ | Facebook Debugger |
-| **Performance** |
-| LCP (Largest Contentful Paint) | 2.5s | <1.8s | Chrome DevTools |
-| FCP (First Contentful Paint) | 1.8s | <1.2s | Chrome DevTools |
-| TTI (Time to Interactive) | 3.2s | <2.5s | Lighthouse |
-| **Business** |
-| Organic Traffic | Baseline | +50% QoQ | Google Analytics |
-| Bounce Rate | Baseline | -15% | Google Analytics |
-| Avg Session Duration | Baseline | +20% | Google Analytics |
-| Qualified Leads | 3-5/quarter | 15-20/year | CRM |
+| Metric                         | Vite Baseline | Next.js Target | Measurement Tool      |
+| ------------------------------ | ------------- | -------------- | --------------------- |
+| **SEO**                        |
+| Lighthouse SEO Score           | ~70           | 95+            | Lighthouse CI         |
+| Crawlable Pages                | 0%            | 100%           | Google Search Console |
+| Social Share Previews          | ❌            | ✅             | Facebook Debugger     |
+| **Performance**                |
+| LCP (Largest Contentful Paint) | 2.5s          | <1.8s          | Chrome DevTools       |
+| FCP (First Contentful Paint)   | 1.8s          | <1.2s          | Chrome DevTools       |
+| TTI (Time to Interactive)      | 3.2s          | <2.5s          | Lighthouse            |
+| **Business**                   |
+| Organic Traffic                | Baseline      | +50% QoQ       | Google Analytics      |
+| Bounce Rate                    | Baseline      | -15%           | Google Analytics      |
+| Avg Session Duration           | Baseline      | +20%           | Google Analytics      |
+| Qualified Leads                | 3-5/quarter   | 15-20/year     | CRM                   |
 
 ### Monitoring Dashboard
 
 Create Vercel Analytics dashboard tracking:
+
 - Page load times (per route)
 - Error rates (4xx, 5xx)
 - Cache hit rates
@@ -826,12 +875,12 @@ Create Vercel Analytics dashboard tracking:
 
 ## Team Responsibilities
 
-| Role | Responsibilities |
-|------|------------------|
-| **Lead Developer** | - Execute migration phases<br>- Code reviews<br>- Testing oversight |
-| **Designer** | - Visual regression validation<br>- Theme consistency checks<br>- Component prop validation |
-| **SEO/Marketing** | - Metadata validation<br>- Social preview testing<br>- Analytics monitoring |
-| **Stakeholder** | - Approve cutover timing<br>- Review success metrics<br>- Rollback authorization |
+| Role               | Responsibilities                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| **Lead Developer** | - Execute migration phases<br>- Code reviews<br>- Testing oversight                         |
+| **Designer**       | - Visual regression validation<br>- Theme consistency checks<br>- Component prop validation |
+| **SEO/Marketing**  | - Metadata validation<br>- Social preview testing<br>- Analytics monitoring                 |
+| **Stakeholder**    | - Approve cutover timing<br>- Review success metrics<br>- Rollback authorization            |
 
 ---
 
@@ -840,6 +889,7 @@ Create Vercel Analytics dashboard tracking:
 ### Weekly Status Updates
 
 **Every Friday:** Post to team channel:
+
 ```
 📊 Next.js Migration Update - Week X
 
@@ -934,33 +984,36 @@ npx lighthouse "$NEXT_BASE$ROUTE" --quiet --only-categories=accessibility
 
 ## Appendix B: Risk Assessment
 
-| Risk | Impact | Probability | Mitigation |
-|------|--------|-------------|------------|
-| **Theme not persisting across apps** | High | Medium | Extensive cookie testing; fallback to localStorage |
-| **i18n mismatch** | High | Low | Shared translation files; validation tests |
-| **CSS conflicts** | Medium | Medium | Scoped modules; visual regression tests |
-| **Performance regression** | High | Low | Lighthouse CI; rollback if scores drop |
-| **SEO metadata missing** | Critical | Low | Automated tests; manual preview checks |
-| **Vercel routing errors** | Critical | Medium | Staging environment testing; instant rollback |
-| **Component prop regressions** | High | Low | Comprehensive unit tests; PropTypes validation |
-| **Asset loading failures** | Medium | Low | Test asset paths in both environments |
+| Risk                                 | Impact   | Probability | Mitigation                                         |
+| ------------------------------------ | -------- | ----------- | -------------------------------------------------- |
+| **Theme not persisting across apps** | High     | Medium      | Extensive cookie testing; fallback to localStorage |
+| **i18n mismatch**                    | High     | Low         | Shared translation files; validation tests         |
+| **CSS conflicts**                    | Medium   | Medium      | Scoped modules; visual regression tests            |
+| **Performance regression**           | High     | Low         | Lighthouse CI; rollback if scores drop             |
+| **SEO metadata missing**             | Critical | Low         | Automated tests; manual preview checks             |
+| **Vercel routing errors**            | Critical | Medium      | Staging environment testing; instant rollback      |
+| **Component prop regressions**       | High     | Low         | Comprehensive unit tests; PropTypes validation     |
+| **Asset loading failures**           | Medium   | Low         | Test asset paths in both environments              |
 
 ---
 
 ## Appendix C: Reference Links
 
 ### Documentation
+
 - [Next.js 15 App Router](https://nextjs.org/docs/app)
 - [Next.js Metadata API](https://nextjs.org/docs/app/building-your-application/optimizing/metadata)
 - [Vercel Rewrites](https://vercel.com/docs/projects/project-configuration#rewrites)
 - [i18next React](https://react.i18next.com/)
 
 ### Tools
+
 - [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci)
 - [Playwright](https://playwright.dev/)
 - [Next.js Bundle Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
 
 ### Internal Docs
+
 - `docs/LLM_COMPONENT_GENERATION_RULES.md` - Component standards
 - `docs/2026_PRD.md` - Migration objectives
 - `docs/LAYOUT_GRID_SYSTEM.md` - Design system reference
@@ -969,8 +1022,8 @@ npx lighthouse "$NEXT_BASE$ROUTE" --quiet --only-categories=accessibility
 
 ## Changelog
 
-| Date | Change | Author |
-|------|--------|--------|
+| Date       | Change               | Author         |
+| ---------- | -------------------- | -------------- |
 | 2025-11-21 | Initial plan created | Migration Team |
 
 ---
