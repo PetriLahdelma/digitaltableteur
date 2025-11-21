@@ -62,6 +62,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   const location = useLocation();
   const { theme, cycleTheme } = usePersistentTheme();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const panelRef = React.useRef<HTMLDivElement | null>(null);
+  const closeButtonRef = React.useRef<HTMLButtonElement | null>(null);
   const panelId = id ?? "mobile-menu";
 
   const languages = React.useMemo(
@@ -100,8 +102,22 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       }
     };
 
-    const node = containerRef.current;
-    node?.focus();
+    const focusable =
+      panelRef.current?.querySelector<HTMLElement>(
+        [
+          "button:not([disabled])",
+          '[href]:not([tabindex="-1"])',
+          'input:not([disabled]):not([tabindex="-1"])',
+          'select:not([disabled]):not([tabindex="-1"])',
+          'textarea:not([disabled]):not([tabindex="-1"])',
+          '[tabindex]:not([tabindex="-1"])',
+        ].join(","),
+      ) ?? null;
+
+    focusable?.focus();
+    if (!focusable) {
+      containerRef.current?.focus();
+    }
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
@@ -110,12 +126,49 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     };
   }, [isOpen, onClose]);
 
+  const handleTrapFocus = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "Tab") return;
+    const focusableElements = panelRef.current?.querySelectorAll<HTMLElement>(
+      [
+        "button:not([disabled])",
+        '[href]:not([tabindex="-1"])',
+        'input:not([disabled]):not([tabindex="-1"])',
+        'select:not([disabled]):not([tabindex="-1"])',
+        'textarea:not([disabled]):not([tabindex="-1"])',
+        '[tabindex]:not([tabindex="-1"])',
+      ].join(","),
+    );
+
+    if (!focusableElements || focusableElements.length === 0) {
+      return;
+    }
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    } else if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    }
+  };
+
   if (!isOpen) {
     return null;
   }
 
   return (
-    <div className={styles.backdrop} role="presentation" onClick={onClose}>
+    <div
+      className={styles.backdrop}
+      role="presentation"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) {
+          onClose?.();
+        }
+      }}
+    >
       <div
         className={styles.panel}
         id={panelId}
@@ -123,6 +176,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         role="dialog"
         aria-label={t("navMenuAccessibleLabel", "Main navigation")}
         onClick={(event) => event.stopPropagation()}
+        onKeyDown={handleTrapFocus}
+        ref={panelRef}
       >
         <div
           className={styles.panelContent}
@@ -138,6 +193,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               type="button"
               className={styles.closeButton}
               onClick={onClose}
+              ref={closeButtonRef}
               aria-label={t("navMenuClose", "Close navigation")}
             >
               <Icon name="x" ariaLabel="Close" size="lg" />
