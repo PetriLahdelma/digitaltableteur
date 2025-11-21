@@ -225,6 +225,13 @@ function buildRedirects(posts) {
 async function main() {
   try {
     assertEnv();
+    
+    // Support single post export via --slug argument
+    const targetSlug = process.argv.find(arg => arg.startsWith('--slug='))?.split('=')[1];
+    if (targetSlug) {
+      console.log(`[sanity-sync] Syncing single post with slug: ${targetSlug}`);
+    }
+    
     const client = createClient({
       projectId: process.env.SANITY_PROJECT_ID,
       dataset: process.env.SANITY_DATASET,
@@ -233,8 +240,10 @@ async function main() {
       useCdn: false,
     });
     const builder = imageUrlBuilder(client);
-    const posts = await client.fetch(
-      `*[_type == "post"]{
+    
+    // Build query with optional slug filter
+    const query = targetSlug
+      ? `*[_type == "post" && slug.current == "${targetSlug}"]{
         _id,
         title,
         slug,
@@ -250,8 +259,26 @@ async function main() {
           caption,
           asset
         }
-      }`,
-    );
+      }`
+      : `*[_type == "post"]{
+        _id,
+        title,
+        slug,
+        "readTime": coalesce(readTime, readtime),
+        excerpt,
+        publishedAt,
+        body,
+        legacy,
+        seo,
+        author->{name, slug},
+        mainImage{
+          alt,
+          caption,
+          asset
+        }
+      }`;
+    
+    const posts = await client.fetch(query);
     const authors = await client.fetch(
       `*[_type == "author"]{
         _id,
@@ -264,7 +291,11 @@ async function main() {
       }`,
     );
     if (!posts.length) {
-      console.log("[sanity-sync] No posts found in Sanity dataset.");
+      if (targetSlug) {
+        console.log(`[sanity-sync] No post found with slug: ${targetSlug}`);
+      } else {
+        console.log("[sanity-sync] No posts found in Sanity dataset.");
+      }
       return;
     }
 
@@ -293,9 +324,14 @@ async function main() {
       }
     });
 
-    pruneOrphans(writtenSlugs);
+    // Only prune orphans when syncing all posts (not when targeting a single post)
+    if (!targetSlug) {
+      pruneOrphans(writtenSlugs);
+    }
+    
+    // Skip author sync when targeting a single post
     let writtenAuthors = 0;
-    if (authors.length) {
+    if (!targetSlug && authors.length) {
       authors.forEach((author) => {
         const filePath = writeAuthorFile(author, builder);
         if (filePath) {
@@ -306,7 +342,12 @@ async function main() {
         }
       });
     }
-    buildRedirects(posts);
+    
+    // Only build redirects when syncing all posts
+    if (!targetSlug) {
+      buildRedirects(posts);
+    }
+    
     console.log(
       `[sanity-sync] Synced ${writtenSlugs.size} posts and ${writtenAuthors} authors from Sanity.`,
     );

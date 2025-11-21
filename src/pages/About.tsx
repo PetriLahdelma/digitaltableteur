@@ -4,6 +4,7 @@ import styles from "./About.module.css";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import { useTranslation } from "react-i18next";
+import PageLayout from "../patterns/PageLayout/PageLayout";
 
 const About = () => {
   const { t } = useTranslation();
@@ -26,38 +27,54 @@ const About = () => {
         role="region"
         aria-label={t("aboutMetaTitle")}
       >
-        <section className={styles.who}>
-          <Title size="L" level={2}>
-            {t("aboutWhoTitle")}
-          </Title>
-        </section>
-        <section className={styles.what}>
-          <Title size="L" level={1}>
-            {t("aboutHeroTitle")}
-          </Title>
-          <Text size="L">{t("aboutHeroText")}</Text>
-        </section>
+        <PageLayout maxWidth="xl" spacing="comfortable" as="section">
+          <section className={styles.who}>
+            <Title size="L" level={2}>
+              {t("aboutWhoTitle")}
+            </Title>
+          </section>
+        </PageLayout>
 
-        <section className={styles.section}>
-          <Title size="M" level={2}>
-            {t("aboutDesignTitle")}
-          </Title>
-          <Text>{t("aboutDesignText")}</Text>
-        </section>
+        <PageLayout
+          maxWidth="full"
+          withMargins={false}
+          spacing="compact"
+          as="section"
+        >
+          <section className={styles.what}>
+            <Title size="L" level={1}>
+              {t("aboutHeroTitle")}
+            </Title>
+            <Text size="L">{t("aboutHeroText")}</Text>
+          </section>
+        </PageLayout>
 
-        <section className={styles.section}>
-          <Title size="M" level={2}>
-            {t("aboutDevelopmentTitle")}
-          </Title>
-          <Text>{t("aboutDevelopmentText")}</Text>
-        </section>
+        <PageLayout maxWidth="sm" spacing="spacious" as="section">
+          <section className={styles.section}>
+            <Title size="M" level={2}>
+              {t("aboutDesignTitle")}
+            </Title>
+            <Text>{t("aboutDesignText")}</Text>
+          </section>
+        </PageLayout>
 
-        <section className={styles.section}>
-          <Title size="M" level={2}>
-            {t("aboutCollaborationTitle")}
-          </Title>
-          <Text>{t("aboutCollaborationText")}</Text>
-        </section>
+        <PageLayout maxWidth="sm" spacing="comfortable" as="section">
+          <section className={styles.section}>
+            <Title size="M" level={2}>
+              {t("aboutDevelopmentTitle")}
+            </Title>
+            <Text>{t("aboutDevelopmentText")}</Text>
+          </section>
+        </PageLayout>
+
+        <PageLayout maxWidth="sm" spacing="comfortable" as="section">
+          <section className={styles.section}>
+            <Title size="M" level={2}>
+              {t("aboutCollaborationTitle")}
+            </Title>
+            <Text>{t("aboutCollaborationText")}</Text>
+          </section>
+        </PageLayout>
       </div>
     </HelmetProvider>
   );
