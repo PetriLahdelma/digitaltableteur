@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { type Theme } from "@dt/ThemeProvider";
 import styles from "./MobileMenu.module.css";
@@ -13,6 +13,7 @@ type MobileMenuProps = {
   isOpen: boolean;
   onClose?: () => void;
   onNavigate?: () => void;
+  id?: string;
 };
 
 const themeIcons: Record<Theme, React.ReactNode> = {
@@ -55,11 +56,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   isOpen,
   onClose,
   onNavigate,
+  id,
 }) => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const { theme, cycleTheme } = usePersistentTheme();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const panelRef = React.useRef<HTMLDivElement | null>(null);
+  const closeButtonRef = React.useRef<HTMLButtonElement | null>(null);
+  const panelId = id ?? "mobile-menu";
 
   const languages = React.useMemo(
     () => [
@@ -97,8 +102,22 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       }
     };
 
-    const node = containerRef.current;
-    node?.focus();
+    const focusable =
+      panelRef.current?.querySelector<HTMLElement>(
+        [
+          "button:not([disabled])",
+          "[href]:not([tabindex='-1'])",
+          "input:not([disabled]):not([tabindex='-1'])",
+          "select:not([disabled]):not([tabindex='-1'])",
+          "textarea:not([disabled]):not([tabindex='-1'])",
+          "[tabindex]:not([tabindex='-1'])",
+        ].join(","),
+      ) ?? null;
+
+    focusable?.focus();
+    if (!focusable) {
+      containerRef.current?.focus();
+    }
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
@@ -107,17 +126,58 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     };
   }, [isOpen, onClose]);
 
+  const handleTrapFocus = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "Tab") return;
+    const focusableElements = panelRef.current?.querySelectorAll<HTMLElement>(
+      [
+        "button:not([disabled])",
+        "[href]:not([tabindex='-1'])",
+        "input:not([disabled]):not([tabindex='-1'])",
+        "select:not([disabled]):not([tabindex='-1'])",
+        "textarea:not([disabled]):not([tabindex='-1'])",
+        "[tabindex]:not([tabindex='-1'])",
+      ].join(","),
+    );
+
+    if (!focusableElements || focusableElements.length === 0) {
+      return;
+    }
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    } else if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    }
+  };
+
   if (!isOpen) {
     return null;
   }
 
   return (
-    <div className={styles.backdrop} role="presentation">
+    <div
+      className={styles.backdrop}
+      role="presentation"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) {
+          onClose?.();
+        }
+      }}
+    >
       <div
         className={styles.panel}
+        id={panelId}
         aria-modal="true"
         role="dialog"
         aria-label={t("navMenuAccessibleLabel", "Main navigation")}
+        onClick={(event) => event.stopPropagation()}
+        onKeyDown={handleTrapFocus}
+        ref={panelRef}
       >
         <div
           className={styles.panelContent}
@@ -133,9 +193,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               type="button"
               className={styles.closeButton}
               onClick={onClose}
+              ref={closeButtonRef}
               aria-label={t("navMenuClose", "Close navigation")}
             >
-              <Icon name="x" ariaLabel="Close" size={20} />
+              <Icon name="x" ariaLabel="Close" size="lg" />
             </button>
           </header>
           <nav aria-label={t("navMenuLinks", "Primary pages")}>
@@ -203,6 +264,22 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                 {themeIcons[theme]}
               </button>
             </div>
+          </div>
+          <div className={styles.footerLinks}>
+            <Link
+              to="/cookie-policy-full"
+              className={styles.footerLink}
+              onClick={handleNavigate}
+            >
+              {t("navMenuCookiePolicy")}
+            </Link>
+            <Link
+              to="/ai-use"
+              className={styles.footerLink}
+              onClick={handleNavigate}
+            >
+              {t("navMenuAiUsage")}
+            </Link>
           </div>
         </footer>
       </div>

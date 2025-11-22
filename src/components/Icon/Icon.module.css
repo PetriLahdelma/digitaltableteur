@@ -5,6 +5,41 @@
   vertical-align: middle;
 }
 
+.size2xs {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.sizeXs {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.sizeSm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sizeMd {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.sizeLg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.sizeXl {
+  width: 3rem;
+  height: 3rem;
+}
+
+.size2xl {
+  width: 4rem;
+  height: 4rem;
+}
+
 @keyframes icon-spin {
   0% {
     transform: rotate(0deg);
