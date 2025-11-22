@@ -182,22 +182,19 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
         ? styles.pulse
         : undefined;
 
-    const getSizeClassName = (sizeStr: string): string | undefined => {
-      const sizeMap: Record<NamedSize, string> = {
-        "2xs": "size2xs",
-        xs: "sizeXs",
-        sm: "sizeSm",
-        md: "sizeMd",
-        lg: "sizeLg",
-        xl: "sizeXl",
-        "2xl": "size2xl",
-      };
-      return sizeMap[sizeStr as NamedSize];
+    const sizeClassMap: Record<NamedSize, string> = {
+      "2xs": styles.size2xs,
+      xs: styles.sizeXs,
+      sm: styles.sizeSm,
+      md: styles.sizeMd,
+      lg: styles.sizeLg,
+      xl: styles.sizeXl,
+      "2xl": styles.size2xl,
     };
 
     const sizeClass =
       typeof size === "string"
-        ? styles[getSizeClassName(size) as keyof typeof styles]
+        ? (sizeClassMap[size as NamedSize] ?? sizeClassMap.md)
         : undefined;
 
     const mergedClassName = [styles.base, sizeClass, animationClass, className]
