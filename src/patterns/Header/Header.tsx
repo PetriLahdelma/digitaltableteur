@@ -4,10 +4,14 @@ import styles from "./Header.module.css";
 import "../../styles/variables.css";
 import "../../styles/fonts.css";
 import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
+import LogoOutline from "../../../public/dt-outline.svg";
 import { type Theme } from "@dt/ThemeProvider";
 import { useTranslation } from "react-i18next";
 import { usePersistentTheme } from "../../hooks/usePersistentTheme";
 import Icon from "@dt/Icon";
+import MobileMenu from "./MobileMenu";
+
+const MOBILE_MENU_ID = "dt-mobile-menu";
 
 const themeIcons: Record<Theme, React.ReactNode> = {
   light: <Icon name="sun" ariaLabel="Light theme" />,
@@ -52,6 +56,7 @@ const Header: React.FC<HeaderProps> = ({
   const leftRef = React.useRef<HTMLDivElement | null>(null);
   const controlsRef = React.useRef<HTMLDivElement | null>(null);
   const [navOffset, setNavOffset] = React.useState(0);
+  const [isMobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const languages = React.useMemo(
     () => [
       { code: "en", label: t("langEN") },
@@ -90,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({
         setNavOffset(0);
         return;
       }
-      if (window.innerWidth <= 600) {
+      if (window.innerWidth <= 1100) {
         setNavOffset(0);
         return;
       }
@@ -157,9 +162,22 @@ const Header: React.FC<HeaderProps> = ({
 
   const [hasMounted, setHasMounted] = React.useState(false);
   const [themeAnnouncement, setThemeAnnouncement] = React.useState("");
+  const [isMobile, setIsMobile] = React.useState(false);
+
   React.useEffect(() => {
     setHasMounted(true);
+
+    // Check if viewport is mobile/tablet
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 1100);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
   React.useEffect(() => {
     if (!hasMounted) return;
     const label = themeNames[theme] ?? theme;
@@ -178,12 +196,48 @@ const Header: React.FC<HeaderProps> = ({
     onThemeCycle?.(nextTheme);
   };
 
+  const handleOpenMobileMenu = () => setMobileMenuOpen(true);
+  const handleCloseMobileMenu = () => setMobileMenuOpen(false);
+
+  React.useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  React.useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = previousOverflow;
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <div ref={leftRef} className={styles.left}>
           <Link to="/" className={styles.logoLink}>
-            <img src={Logo} alt={t("headerLogoAlt")} className={styles.logo} />
+            {isMobile ? (
+              <svg
+                className={styles.logoMobile}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 128 128"
+                aria-label={t("headerLogoAlt")}
+              >
+                <path d="M105.7,76.3c-1.6,0-3.2.7-4.3,2.5-5.3,8.4-7.8,11.5-10.9,11.5s-2.5-5.7-2.5-10.1v-30.2h9.8c6.5,0,6.5-11.4,0-11.4h-9.8v-4.9c0-4.1-2.4-6.1-4.9-6.1s-4.9,2-4.9,6.1v4.9h-21.2v-6.5c0-3.3-2.4-4.9-4.9-4.9s-4.9,1.6-4.9,4.9v6.5h-8.2c-6.5,0-6.5,11.4,0,11.4h8.2v28.9c0,.3,0,.7-.2,1-1.9,5-7.8,10.2-13.6,10.2s-6.2-2.9-6.2-6.3,2.5-6.6,6.2-9.2c2.4-1.7,4.8-2.9,7.3-3.6,5.6-2.7,2.8-10.2-2.2-10.2-.9,0-1.8.2-2.7.7-2.7,1.4-5.8,2.4-8.6,4.4-6.7,4.8-10.6,9.4-10.6,17.9s8,16.8,16.7,16.8,10.8-2.5,15.1-6.2c1.5,4.1,4.6,6.3,10.7,6.3s13.7-7.7,18.8-15.1c.2,7.7,1.8,15.1,12.3,15.1s11.6-2.7,20.1-16.3c2.6-4.2-1-8.2-4.7-8.2ZM79.2,69.1c0,.3,0,.6-.2.9-.4.6-1.8,2.9-6.6,10.4-3.1,4.8-6.9,10.9-12.7,10.9s-1.7-.3-2.3-.9c-1.3-1.3-1.3-3.8-1.3-6.9,0-.5,0-.9,0-1.4v-32.1c0-.6.4-1,1-1h21.2c.6,0,1,.4,1,1v19.1Z" />
+              </svg>
+            ) : (
+              <img
+                src={Logo}
+                alt={t("headerLogoAlt")}
+                className={styles.logo}
+              />
+            )}
           </Link>
         </div>
         <nav
@@ -250,7 +304,24 @@ const Header: React.FC<HeaderProps> = ({
             {themeAnnouncement}
           </span>
         </div>
+        <button
+          type="button"
+          className={styles.mobileMenuButton}
+          onClick={handleOpenMobileMenu}
+          aria-label={t("navMenuOpen", "Open navigation")}
+          aria-haspopup="dialog"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls={MOBILE_MENU_ID}
+        >
+          <Icon name="list" aria-hidden="true" />
+        </button>
       </div>
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={handleCloseMobileMenu}
+        onNavigate={handleCloseMobileMenu}
+        id={MOBILE_MENU_ID}
+      />
     </header>
   );
 };
