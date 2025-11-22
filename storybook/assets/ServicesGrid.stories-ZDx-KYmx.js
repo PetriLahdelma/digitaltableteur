@@ -1,0 +1,3 @@
+import{j as t}from"./iframe-C1Cq5wbO.js";import{S as r}from"./ServicesGrid-CEEu-S--.js";import"./preload-helper-D1UD9lgW.js";const i={title:"Components/AI/Chat/Custom Components/ServicesGrid",component:r,parameters:{layout:"centered"}},e={render:()=>t.jsxDEV(r,{},void 0,!1,{fileName:"/home/runner/work/digitaltableteur/digitaltableteur/src/components/ServicesGrid/ServicesGrid.stories.tsx",lineNumber:15,columnNumber:17},void 0)};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:`{
+  render: () => <ServicesGrid />
+}`,...e.parameters?.docs?.source}}};const n=["Default"];export{e as Default,n as __namedExportsOrder,i as default};

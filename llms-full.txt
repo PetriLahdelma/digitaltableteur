@@ -1,0 +1,429 @@
+# Digitaltableteur
+
+> Digitaltableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.
+
+This site showcases all public pages, works, and blog posts in English, Finnish, and Swedish.
+
+## All Pages
+- [Just a moment...](https://digitaltableteur.com/About)
+- [Just a moment...](https://digitaltableteur.com/AiUsage)
+- [Just a moment...](https://digitaltableteur.com/AuthorProfile)
+- [Just a moment...](https://digitaltableteur.com/Blog)
+- [Just a moment...](https://digitaltableteur.com/BlogArticle)
+- [Just a moment...](https://digitaltableteur.com/Contact)
+- [Just a moment...](https://digitaltableteur.com/CookiePolicy-full-en)
+- [Just a moment...](https://digitaltableteur.com/CookiePolicy-full-fi)
+- [Just a moment...](https://digitaltableteur.com/CookiePolicy-full-sv)
+- [Just a moment...](https://digitaltableteur.com/CookiePolicy)
+- [Just a moment...](https://digitaltableteur.com/Home)
+- [Just a moment...](https://digitaltableteur.com/NotFound)
+- [Just a moment...](https://digitaltableteur.com/UnderDevelopment)
+- [Just a moment...](https://digitaltableteur.com/Work)
+- [Just a moment...](https://digitaltableteur.com/work/garageJunction)
+- [Just a moment...](https://digitaltableteur.com/work/illustrations)
+- [Just a moment...](https://digitaltableteur.com/work/newThingsCo)
+- [Just a moment...](https://digitaltableteur.com/cookie-policy-full)
+- [Just a moment...](https://digitaltableteur.com/cookie-policy-full-fi)
+- [Just a moment...](https://digitaltableteur.com/cookie-policy-full-sv)
+- [Just a moment...](https://digitaltableteur.com/blog/designing-in-2025)
+- [Just a moment...](https://digitaltableteur.com/blog/workflow-tips)
+- [Just a moment...](https://digitaltableteur.com/blog/digital-craftsmanship)
+- [Just a moment...](https://digitaltableteur.com/blog/thoughts-on-future-branding)
+- [Just a moment...](https://digitaltableteur.com/blog/figma-mcp-design-systems)
+- [Just a moment...](https://digitaltableteur.com/blog/petri-lahdelma-bio)
+- [Just a moment...](https://digitaltableteur.com/work/new-things-co)
+- [Just a moment...](https://digitaltableteur.com/garage-junction)
+
+---
+
+### Page: https://digitaltableteur.com/About
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/About
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b6253b14f167',cH: 'KykylipnhXGHzNptwbaCIt0xzBsk91i9qd2xnQU8Na0-1763775550-1.2.1.1-0SEf_pKbvzHHRgx1pRpOLpPHXUsUP6hls3vD54VsqWKIFTlYvSaf_qU4VOebxJKo',cUPMDTk:"\/About?__cf_chl_tk=6GS6DZ8zATaugz9Ff0j_DNGZHyg8OGpD0CSjIJwRJUE-1763775550-1.0.1.1-7R06UoUrTKAyymfFUVU5pMp4XpzIvpnmNC7h.sOcRgw",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '0',fa:"\/About?
+
+---
+
+### Page: https://digitaltableteur.com/AiUsage
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/AiUsage
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b625feb550d9',cH: 'a3EEswY76UV95UYnVrbPocbc9Le2ASK7sWE_GXqdAnw-1763775550-1.2.1.1-4LeGeCF_J3QHCQo8U2dY.myofgybguN4kr3ET9Bve6UtLDZWvTRbByn.qHaszFar',cUPMDTk:"\/AiUsage?__cf_chl_tk=ADBfLySn9TxjGjaB43WqXvWW6BkSopL.ewIcufmW2L8-1763775550-1.0.1.1-ZWbgXv8vqyhIoST3F.hbqqTWX.5y4oolFA9xuM9AG9U",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '0',fa:"\/AiUs
+
+---
+
+### Page: https://digitaltableteur.com/AuthorProfile
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/AuthorProfile
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b6265fa622e7',cH: 'g85nRcV8wjNAy4hq19Pp.wZxRKEhpAVCCcyRRt8cDP8-1763775550-1.2.1.1-dGpdIhZ3exBx1g4HvJFiNznUNhInBHavUFdb2c_p7WafcaXiGnCU9qzUB5Rpiu.f',cUPMDTk:"\/AuthorProfile?__cf_chl_tk=n2LqPIzSv1sNVVakl3olnOlQlH3U3OUss9tHYxuJuLA-1763775550-1.0.1.1-v9GfJLrggdbT0HYmaP5NOK741zfjKz9t9lW.75S0iWw",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '0',fa:"
+
+---
+
+### Page: https://digitaltableteur.com/Blog
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/Blog
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b626aef7f15d',cH: 'YJctKFXP6D9ssyGpfTps8rai38TPi6fZXRO.sMGUNhs-1763775550-1.2.1.1-UnQCREi3AOmZAmFipUkWRsW4DLkAxYPP54xhwGaxFrnkhlOepQ2as6oemfMAtXhK',cUPMDTk:"\/Blog?__cf_chl_tk=aBwOz9CEb1KjE0KWlhI9gks62I7NaBo1ionEZChgzXM-1763775550-1.0.1.1-HU1abpLvBoqo3kETQFpDeXrYAZG6gVuCCXmn5CF_PQQ",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '0',fa:"\/Blog?__
+
+---
+
+### Page: https://digitaltableteur.com/BlogArticle
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/BlogArticle
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b626fbb4fc38',cH: 'pSz8zo1R4RcArkr0JXmM9svedvdmfZrPXIb5L7XupFA-1763775550-1.2.1.1-_XNOzJ.x3K17xvmRzITKCznbk0wFiTVvDrvtWfOUv6zzM1_jqGjEwA1li2WGREVc',cUPMDTk:"\/BlogArticle?__cf_chl_tk=p1lUUh4RaxYdr3ZB4oh7i0FYlwayEL2cPkEH9uyohI0-1763775550-1.0.1.1-Q5BuK9U.BOklYuDXN5dXWBkNVcdADWLDK9XAnE69gwc",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '0',fa:"\/
+
+---
+
+### Page: https://digitaltableteur.com/Contact
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/Contact
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b6274e48edc5',cH: 'kXUu0Hj.l5s_Pn9a7ub135kDwzuMTmcoIgyay4HSSEA-1763775550-1.2.1.1-Xk.MVvKud13BHUx78rq4BdBC3zztib3wNS0l5676gnYkMFyimnfFo0YlvfNUL_qi',cUPMDTk:"\/Contact?__cf_chl_tk=5H.cu3F6DL9.vsPlLmhvJeQcwwPxuD.udQy8ekVVRXg-1763775550-1.0.1.1-nTLKoayjUo0CkUGcI9TlR_6O7QYeq4UkIpfQpUVfuew",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '0',fa:"\/Cont
+
+---
+
+### Page: https://digitaltableteur.com/CookiePolicy-full-en
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/CookiePolicy-full-en
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b6279fe7620f',cH: 'xWpxfxk.DL.mgL5SJL1syfPqN9FH8qWyhWJocVstNAU-1763775550-1.2.1.1-OKiucmcyN8hFxmAQ_dLi.nQ5NNkfPN2eRvC78kc67BXOweeWUz8yaeV2w4E1n431',cUPMDTk:"\/CookiePolicy-full-en?__cf_chl_tk=pNg34i.CuXwRNUiL14a3dKmp3Hn4ucFMAmNGLhHTW6I-1763775550-1.0.1.1-KamJByqjc.mqr9WaZADwliGHyIWY_ZUCYSsjUBr8juo",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '
+
+---
+
+### Page: https://digitaltableteur.com/CookiePolicy-full-fi
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/CookiePolicy-full-fi
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b627ee2f1247',cH: 'V36EeQRYd9_n_8qGJ3WzO3ZNsH2bAKPneJshy8fi6DQ-1763775550-1.2.1.1-iKq.Xl4Na4Vt6XsneXz78hL.OZOU6xtW7tvb54cp2SLMZl1VUqftc9GXp.6jYfw6',cUPMDTk:"\/CookiePolicy-full-fi?__cf_chl_tk=hpwMKtBcEalb0KWmok4QfG.BImoU0mw78j7KyvAGK8w-1763775550-1.0.1.1-_6StDsVakPg52UezSqiD.GXye2raoOzSZQei0r_nySs",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '
+
+---
+
+### Page: https://digitaltableteur.com/CookiePolicy-full-sv
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/CookiePolicy-full-sv
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b6286881eabc',cH: '2xSccIYCoYA8gWLQySMeIb7AfHsx9R43Aesy39yKXRM-1763775550-1.2.1.1-ZobL09RfBG5q_.1X6gK7UKGnH3JGAs3QzCEEt6Y9xTeimSKfS9APlZ5w9L3S5T3J',cUPMDTk:"\/CookiePolicy-full-sv?__cf_chl_tk=yBRLkm7CbQaMg6Wib.BS68Vu3WS1l2tbLqZCP9iXnl8-1763775550-1.0.1.1-Agh4Ize2IkHBvp0MLLeS_MevGyPrzLBcxHLN0qraRXo",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '
+
+---
+
+### Page: https://digitaltableteur.com/CookiePolicy
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/CookiePolicy
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b6290df78b88',cH: 'TXd.MUn5uH9U1H5YwVBZ.k6k1cGYWMU4vG7rrJ.yUF0-1763775550-1.2.1.1-Jea_2x34LY4MO0qzi6cXLCXq89vFW8P3Ijl4S9hiKOY5AsHD6Gc4IILxJQb5Ft_K',cUPMDTk:"\/CookiePolicy?__cf_chl_tk=JUFjqJYNoI.6vukriGVffmpUjzqkozm11x8UMQgBDtI-1763775550-1.0.1.1-9aleP5OALhey3g6hebflpRy0QGsO451HGkP2NSAc2FA",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '0',fa:"\
+
+---
+
+### Page: https://digitaltableteur.com/Home
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/Home
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62959f0e806',cH: 'Pez531X0HSZwcztLL3ViaucnAOUug5b9uPmpf31JwVA-1763775550-1.2.1.1-1m8UMHiFK9wYCAIi_sNwF8uMT8D.1Ug3Glb2x51pbyLv..5wHohQww87H326qmaQ',cUPMDTk:"\/Home?__cf_chl_tk=agc_9XmhY4LNmcfqhw.ufKGVurUqNdwZ_ggnhiLYmzg-1763775550-1.0.1.1-VhTZ8QgsVs3eYcyyuUyWiKtRN6giVA_A.hBgt3OU6pc",cFPWv: 'b',cITimeS: '1763775550',cTplC:0,cTplV:5,cTplB: '0',fa:"\/Home?__
+
+---
+
+### Page: https://digitaltableteur.com/NotFound
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/NotFound
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b6299a4c72e8',cH: 'lLDoM6C15ctIEaCwP5F3dQS1PTykZKhMS5GMQLvoDw8-1763775551-1.2.1.1-TN_hs_rm1LabkbWVomp_aaE9Q2ou4rQ6z_hnUvnAStDjjdlq_5_wed5CcuicHccQ',cUPMDTk:"\/NotFound?__cf_chl_tk=8wGanQ1.KeGUo_tBVWMGQMmVyEwgrUntXRcLzF6olEY-1763775551-1.0.1.1-JkJWa1XwrJOwo8iyBv7Nqu1VVNoRfWBbfh7o0ZYFeH0",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '0',fa:"\/Not
+
+---
+
+### Page: https://digitaltableteur.com/UnderDevelopment
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/UnderDevelopment
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b629fb18e894',cH: 'OijZLNjBiZ2CZgbzGZcuI965VxvngDG0WEwCbleVG94-1763775551-1.2.1.1-KwDFoy_rk6NwfK1XTUsZ.znXuv4He8gGSlxeZYrUJyw.HIQavG5WCKZdzl7O7KGr',cUPMDTk:"\/UnderDevelopment?__cf_chl_tk=m2TXqXoO_9YZATUNjfbT4NV1G6bQrx.dKyMo5Z329PE-1763775551-1.0.1.1-NLks2ZySf69Zm2hdlLbHRmnsZ4WSAIk2KxV1vTSUIY8",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '0',f
+
+---
+
+### Page: https://digitaltableteur.com/Work
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/Work
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62a6c36ff5d',cH: 'aLyjUY74tkpBWbQMZVsZwhMAHVOSf.0U59UDro2ZUB4-1763775551-1.2.1.1-ro9jMDb0bbn45yv5uGC2DKL4S_KJJzETum2bvyiKbxAubseR99QALoYf2E5rAB4L',cUPMDTk:"\/Work?__cf_chl_tk=C7sxHnMAmCj6J6w7.ERWZTCGF6z0ltXqGD37VzcIVas-1763775551-1.0.1.1-UqkHG71_gdjyOGeI.K4h2yWR7Hw6UsaptNmJPlwCh4Q",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '0',fa:"\/Work?__
+
+---
+
+### Page: https://digitaltableteur.com/work/garageJunction
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/work/garageJunction
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62abc527a5f',cH: 'f_rKK51YOOMYBrdjKFwByxF7FPymv89YzBwkROFkjAA-1763775551-1.2.1.1-6h_EUkCdADns1vKhvmbI8gIiUvooEy._LPnr.kcBv.mUiP9v.iByRDrRLXVSJn6w',cUPMDTk:"\/work\/garageJunction?__cf_chl_tk=8Ee24JX3v99zMSlEgFBWbeSKpRtZ_1zgkDzjzMM_dxk-1763775551-1.0.1.1-B2zwJaIOTTzf7R1Pe5qddseF8mM48NyiYGkAckSqayU",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '
+
+---
+
+### Page: https://digitaltableteur.com/work/illustrations
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/work/illustrations
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62b0c69f4eb',cH: 'R6_u7woOEWsGB0rs1FnhryIHHGNzLP8p_CRexDN4o0o-1763775551-1.2.1.1-jM8DGAm6GZus1jJjB8cpBKgRopFPPo5Z6808D5kxyTAEObp_ELJkw.EiYRlM2.Le',cUPMDTk:"\/work\/illustrations?__cf_chl_tk=hNb82tomiACOqODd7sxKAPo1HkOLcfmKWLbAkT3qF.Y-1763775551-1.0.1.1-cBYwm_5i0TE_nx7hoAtdNd4KdM5PV7K9GuWyz97uPG4",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '0
+
+---
+
+### Page: https://digitaltableteur.com/work/newThingsCo
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/work/newThingsCo
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62b3c152304',cH: 'Ggu8lmz6l7KeoH2m8QeuuGVv2UdtJawEQ1MaZ671aE0-1763775551-1.2.1.1-W0dVzVAdDPx_6YVhdx6LdKklzOxxjJy4zCAldqRwiwpzkN_Y13n4JYmTs0jJBqH4',cUPMDTk:"\/work\/newThingsCo?__cf_chl_tk=fsAkdhEchu5BfRyRdVTJGhoOgk_4v9ME2y.NDabL0SY-1763775551-1.0.1.1-GqQooQX.17PvSTYQ5jazV5pQS0TBYZmj4JkalBEab1g",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '0',
+
+---
+
+### Page: https://digitaltableteur.com/cookie-policy-full
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/cookie-policy-full
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62b9c600f96',cH: 'k0W17aCPr38.wF_aKo69GzU1cpVWMPutJJdII_4E4dM-1763775551-1.2.1.1-7TduDrQIHpIV4GB1eBVLgITIvGP4QWJMgdVdMaZJlbCzgZ_3R3yIqgiTqMr06MYo',cUPMDTk:"\/cookie-policy-full?__cf_chl_tk=1YYdnFMfNZ6.YPXsnytfGFGPydo3.IOXfGD1ek9CAzc-1763775551-1.0.1.1-llbGrKbuTU8Z7NKKeRRkmEQKLeg9k6vFeF1NUGDUEmk",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '0'
+
+---
+
+### Page: https://digitaltableteur.com/cookie-policy-full-fi
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/cookie-policy-full-fi
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62bee1111fd',cH: 'bbYC8B6NIkiZm6tyt5STFu1STyFsrPnDE58AMVrHKZM-1763775551-1.2.1.1-g6FYz7OogvJwuLYyHkwyFsd3uTff47CQUChGZCzQ2PM8HDd2pIQJ0__vxcK8dlSm',cUPMDTk:"\/cookie-policy-full-fi?__cf_chl_tk=tsq9xkILTDY2Yrx0b0l9aNAkQU3wA2ZNTfSnCUXPsio-1763775551-1.0.1.1-nhHeE7oHZ58v9jCbcjfk_70_9YXXQBk9a6fIi4RpfRA",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: 
+
+---
+
+### Page: https://digitaltableteur.com/cookie-policy-full-sv
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/cookie-policy-full-sv
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62c3bef6196',cH: '8t1yJwQcNbftKQ0SydCbsz5iDN9YEJkAxMo9G2.qd3U-1763775551-1.2.1.1-u2cWHxJIccqDArU6ZHDHElXjCGKI5MEGcrBwEtJRDeHmUPShSq0TSht5OFNkFklu',cUPMDTk:"\/cookie-policy-full-sv?__cf_chl_tk=A0yvi3OG7CAk.vTbdaW0x5f4AV2NPw9NtBmS7hlrafY-1763775551-1.0.1.1-sqScYciVQqVQ3K87mTpp3DkOyOGM6T5G61tpAUTuYpw",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: 
+
+---
+
+### Page: https://digitaltableteur.com/blog/designing-in-2025
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/blog/designing-in-2025
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62c9df91aeb',cH: 'zyAJyE1.Jn6uyICpHEe0Em58.uTbM7jbNGtQFuZCr0g-1763775551-1.2.1.1-0ap50n7dlbIF6g.Co9hnYBjkKR1rqSMmIc1JHvV8Zcze8W5xUcJzQfEh4ncxYyxV',cUPMDTk:"\/blog\/designing-in-2025?__cf_chl_tk=RX32VX95aGLUX6.l33BqD8nZpg0f6spkIqYJAVS2des-1763775551-1.0.1.1-XlaG5DkbjMtrI0b0eLBRlDSnNQ.JW1CBMQIzv1UeQq8",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB
+
+---
+
+### Page: https://digitaltableteur.com/blog/workflow-tips
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/blog/workflow-tips
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62d0a4dc9c1',cH: 'e6TAaYKm5zBC2o1cn3ghY5IedzHzUTAqaQJF3vZxEDE-1763775551-1.2.1.1-TzfYsuvub2vwwgvyixnIp6P_CifKguHPNax2UprVJmkXcll5r2G17g.A3Hmgmzx_',cUPMDTk:"\/blog\/workflow-tips?__cf_chl_tk=jEEn5I8j3LBWyJD_kI0YoJL1WT6u4D.4z4mIxFu.Pgg-1763775551-1.0.1.1-Z8ZVTxNzxVZmE6EuCopZv9BlkGYWpPngTWImBomIEdg",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '0
+
+---
+
+### Page: https://digitaltableteur.com/blog/digital-craftsmanship
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/blog/digital-craftsmanship
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62d3d9ab474',cH: 'iXhV2Ql6jdAu5zTuGJ.GbXYQmmKw0NJpT2SLEibUprY-1763775551-1.2.1.1-OT93WRDJVVtJIG4I3tI9ULapgcIX8RCjGET_.5XQgLFtNOpVjf.o7Q7F8ihUyLJ8',cUPMDTk:"\/blog\/digital-craftsmanship?__cf_chl_tk=Cz4A1AeG.kmf06pZE3TFKt3s1sSTLw2yRMCmolANnNw-1763775551-1.0.1.1-Ccj.EazyLSeChFY9vmJoLWj_ryFsHB_tY3ZHR5NIS6w",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,c
+
+---
+
+### Page: https://digitaltableteur.com/blog/thoughts-on-future-branding
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/blog/thoughts-on-future-branding
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62d7fbd706b',cH: 'MIfVBdsex1kfFgMY0PFEeNQlequuHervr2B36o2nQtM-1763775551-1.2.1.1-bJqO2NCxijIMe.uciTuUA0dTQRe4mpJkyE4T26bGeals02hcgTLK2LCXCLQLPWUS',cUPMDTk:"\/blog\/thoughts-on-future-branding?__cf_chl_tk=A19MMyYWr1AhflEauDRUfTGvuQCuVg6QjD0IRwDp.qs-1763775551-1.0.1.1-nN6S3xbtQJbo2Dy._aSIDalKB9eVlyenW3jM_kXXwUE",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTp
+
+---
+
+### Page: https://digitaltableteur.com/blog/figma-mcp-design-systems
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/blog/figma-mcp-design-systems
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62dde3f1125',cH: 'gYmcOTPSoh.lVvY8YFIRVs47m3zPSZnHhIzjh9osnuM-1763775551-1.2.1.1-CER6CH1Zb6kPfQjScTRqoO4kPcCn1XEAtM7K4gFwUXgcwf1t0gZikYq6O4laYjsB',cUPMDTk:"\/blog\/figma-mcp-design-systems?__cf_chl_tk=RpmCG1Zi9w219aomucYGUVwlDG0GGbNcHwG_5Q1cYNY-1763775551-1.0.1.1-52nPMtahAs4rzQu4B30WdL49YdjcvaTcgeFknjTS2lE",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:
+
+---
+
+### Page: https://digitaltableteur.com/blog/petri-lahdelma-bio
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/blog/petri-lahdelma-bio
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62e7d711b3c',cH: 'La5pJDDlZhUsEuiB6_hfzI5kNLrgnoYaaFoCEwPHw_k-1763775551-1.2.1.1-GXdq8Rivy20BDXnbL6dkVSOeXvQevOrQ7UOy.o0uRa4pBWGo6_tbuYwnRj7NEVIa',cUPMDTk:"\/blog\/petri-lahdelma-bio?__cf_chl_tk=3WS4GRtdKbg6cUG9tqdEQmq.2.4STvVU8zog_143nBk-1763775551-1.0.1.1-6INHdBYZMWtiFI_B3DpZrZ2T8BnJ6CpD_k048HDFcBQ",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTpl
+
+---
+
+### Page: https://digitaltableteur.com/work/new-things-co
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/work/new-things-co
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62eca0c61a9',cH: 'D1V3ant_4qSJpPUaQdQgqJRD731B0KgHGZCnYiOMGUk-1763775551-1.2.1.1-ys8uLLrco9NoASRI1Gao9wKqabd4hRzQTUkaNAu726P1OeUCaNWhp.HXmjv4wwrR',cUPMDTk:"\/work\/new-things-co?__cf_chl_tk=lrxEMj.B.jrpGKAMzCM.mMgLr_3XEPe3UBEUu6TkodA-1763775551-1.0.1.1-EDF5LwNgOTnDF425xGyI3VeOwCB.qzmjPuolGZg9aUQ",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '0
+
+---
+
+### Page: https://digitaltableteur.com/garage-junction
+Title: Just a moment...
+Meta Description: 
+Language: en-US
+Canonical URL: https://digitaltableteur.com/garage-junction
+
+## Headings Structure:
+No headings found
+
+## Main Content:
+Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'digitaltableteur.com',cType: 'managed',cRay: '9a24b62f2c0261ab',cH: 'y2DN9TYPNHrZd007fXs2Cee3I..cJ2XASm0.EUaHvVs-1763775551-1.2.1.1-zYVhqF.UNUC5fARFh1PfVBXO2soPmBMJbe6KcRTaIqgAeU49oxf3X_4O7VcpfdrU',cUPMDTk:"\/garage-junction?__cf_chl_tk=HfURGlZgy1AQ.rEFzxK7BNIjD8.R5Xoibh84KB8.y7M-1763775551-1.0.1.1-hBOLhPpWSqX4VTusBCGk1.gbycENsMBlGhHkXC3vHYs",cFPWv: 'b',cITimeS: '1763775551',cTplC:0,cTplV:5,cTplB: '0',fa
+
+---

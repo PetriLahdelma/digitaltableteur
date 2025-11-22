@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2025-11-22T01:39:25.118Z",
+  "project": "unknown",
+  "filters": {
+    "unresolved": true,
+    "environment": "production"
+  },
+  "count": 0,
+  "issues": [],
+  "stub": true,
+  "reason": "missing-auth-or-org"
+}

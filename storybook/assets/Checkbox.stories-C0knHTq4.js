@@ -1,0 +1,13 @@
+import{j as s,u as b}from"./iframe-C1Cq5wbO.js";import{w as n,u as d}from"./index-DwU8chDC.js";import{C as c}from"./Checkbox-DSJJ-5Vz.js";import"./preload-helper-D1UD9lgW.js";import"./index-DrFu-skq.js";import"./Label-BdMwFsVh.js";const y={title:"Components/Checkbox",component:c,argTypes:{label:{control:"text"},checked:{control:"boolean"},indeterminate:{control:"boolean"}}},m=({tKey:e})=>{const{t:a}=b();return s.jsxDEV(s.Fragment,{children:a(e)},void 0,!1,{fileName:"/home/runner/work/digitaltableteur/digitaltableteur/src/components/Checkbox/Checkbox.stories.tsx",lineNumber:29,columnNumber:10},void 0)},l=e=>{const a=typeof e.label=="string"?s.jsxDEV(m,{tKey:e.label},void 0,!1,{fileName:"/home/runner/work/digitaltableteur/digitaltableteur/src/components/Checkbox/Checkbox.stories.tsx",lineNumber:33,columnNumber:50},void 0):e.label;return s.jsxDEV(c,{...e,label:a},void 0,!1,{fileName:"/home/runner/work/digitaltableteur/digitaltableteur/src/components/Checkbox/Checkbox.stories.tsx",lineNumber:34,columnNumber:10},void 0)},r=l.bind({});r.args={label:"Default checkbox"};r.play=async({canvasElement:e})=>{const i=await n(e).findByLabelText(/default checkbox/i);await d.click(i)};const t=l.bind({});t.args={label:"Checked checkbox",checked:!0};t.play=async({canvasElement:e})=>{await n(e).findByLabelText(/checked checkbox/i)};const o=l.bind({});o.args={label:"Indeterminate checkbox",checked:!1,indeterminate:!0};o.play=async({canvasElement:e})=>{await n(e).findByLabelText(/indeterminate checkbox/i)};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`(args: CheckboxProps) => {
+  // If label is provided as a translation key string, render via StoryLabel
+  const label = typeof args.label === "string" ? <StoryLabel tKey={args.label} /> : args.label;
+  return <Checkbox {...args} label={label as any} />;
+}`,...r.parameters?.docs?.source}}};t.parameters={...t.parameters,docs:{...t.parameters?.docs,source:{originalSource:`(args: CheckboxProps) => {
+  // If label is provided as a translation key string, render via StoryLabel
+  const label = typeof args.label === "string" ? <StoryLabel tKey={args.label} /> : args.label;
+  return <Checkbox {...args} label={label as any} />;
+}`,...t.parameters?.docs?.source}}};o.parameters={...o.parameters,docs:{...o.parameters?.docs,source:{originalSource:`(args: CheckboxProps) => {
+  // If label is provided as a translation key string, render via StoryLabel
+  const label = typeof args.label === "string" ? <StoryLabel tKey={args.label} /> : args.label;
+  return <Checkbox {...args} label={label as any} />;
+}`,...o.parameters?.docs?.source}}};const f=["Default","Checked","Indeterminate"];export{t as Checked,r as Default,o as Indeterminate,f as __namedExportsOrder,y as default};
