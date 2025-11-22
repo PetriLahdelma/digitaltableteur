@@ -106,11 +106,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       panelRef.current?.querySelector<HTMLElement>(
         [
           "button:not([disabled])",
-          '[href]:not([tabindex="-1"])',
-          'input:not([disabled]):not([tabindex="-1"])',
-          'select:not([disabled]):not([tabindex="-1"])',
-          'textarea:not([disabled]):not([tabindex="-1"])',
-          '[tabindex]:not([tabindex="-1"])',
+          "[href]:not([tabindex='-1'])",
+          "input:not([disabled]):not([tabindex='-1'])",
+          "select:not([disabled]):not([tabindex='-1'])",
+          "textarea:not([disabled]):not([tabindex='-1'])",
+          "[tabindex]:not([tabindex='-1'])",
         ].join(","),
       ) ?? null;
 
@@ -131,11 +131,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     const focusableElements = panelRef.current?.querySelectorAll<HTMLElement>(
       [
         "button:not([disabled])",
-        '[href]:not([tabindex="-1"])',
-        'input:not([disabled]):not([tabindex="-1"])',
-        'select:not([disabled]):not([tabindex="-1"])',
-        'textarea:not([disabled]):not([tabindex="-1"])',
-        '[tabindex]:not([tabindex="-1"])',
+        "[href]:not([tabindex='-1'])",
+        "input:not([disabled]):not([tabindex='-1'])",
+        "select:not([disabled]):not([tabindex='-1'])",
+        "textarea:not([disabled]):not([tabindex='-1'])",
+        "[tabindex]:not([tabindex='-1'])",
       ].join(","),
     );
 
