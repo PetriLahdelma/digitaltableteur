@@ -203,6 +203,20 @@ const Header: React.FC<HeaderProps> = ({
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
+  React.useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = previousOverflow;
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>

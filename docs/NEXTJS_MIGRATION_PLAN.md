@@ -755,17 +755,15 @@ import styles from "@/styles/Component.module.css";
 **`shared/config/env.ts`:**
 
 ```typescript
-export const ENV = {
-  SENTRY_DSN:
-    typeof window === "undefined"
-      ? process.env.NEXT_PUBLIC_SENTRY_DSN
-      : import.meta.env?.VITE_SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN,
+const isVite =
+  typeof import.meta !== "undefined" && typeof import.meta.env !== "undefined";
 
+const env = isVite ? import.meta.env : process.env;
+
+export const ENV = {
+  SENTRY_DSN: env?.VITE_SENTRY_DSN ?? env?.NEXT_PUBLIC_SENTRY_DSN,
   EMAILJS_SERVICE_ID:
-    typeof window === "undefined"
-      ? process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-      : import.meta.env?.VITE_EMAILJS_SERVICE_ID ||
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+    env?.VITE_EMAILJS_SERVICE_ID ?? env?.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
 };
 ```
 
