@@ -6,6 +6,8 @@
   "navContact": "Yhteys",
   "toggleDarkMode": "Vaihda tumma/vaalea tila",
   "navMenuTitle": "Valikko",
+  "navMenuCookiePolicy": "Evästekäytäntö",
+  "navMenuAiUsage": "AI:n käyttö",
   "chatTitle": "Keskustele Donnyn kanssa",
   "chatTitleOffline": "Donny poissa linjoilta",
   "chatDescription": "Brändikohtaisia vastauksia ilman turhaa höpinää.",

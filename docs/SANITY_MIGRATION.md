@@ -6,12 +6,12 @@ This repo now ships with a full pipeline for exporting the legacy React/TSX blog
 
 All scripts live under `scripts/sanity-migration/` and are exposed via npm commands:
 
-| Command | Purpose |
-| --- | --- |
-| `npm run sanity:parse-posts` | Parses `src/pages/posts/**/*.tsx`, extracts metadata (titles, dates, authors, slugs) plus body content converted into a Portable Text-like structure. Output: `sanity-output/parsed-posts.json`. |
-| `npm run sanity:convert` | Normalizes the parsed content into Sanity-compatible documents (slug objects, ISO dates, SEO fields) and writes both JSON + NDJSON payloads to `sanity-output/`. |
-| `npm run sanity:cleanup-legacy` | Deletes any `blog.*` documents from the dataset to avoid conflicts with the new `post.*` IDs. |
-| `npm run sanity:upload` | Uploads `sanity-output/sanity-documents.json` into the configured Sanity dataset. Handles image asset uploads, deduplicates by file path, provisions author documents, and preserves legacy URLs via `createOrReplace`. |
+| Command                           | Purpose                                                                                                                                                                                                                                                                   |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run sanity:parse-posts`      | Parses `src/pages/posts/**/*.tsx`, extracts metadata (titles, dates, authors, slugs) plus body content converted into a Portable Text-like structure. Output: `sanity-output/parsed-posts.json`.                                                                          |
+| `npm run sanity:convert`          | Normalizes the parsed content into Sanity-compatible documents (slug objects, ISO dates, SEO fields) and writes both JSON + NDJSON payloads to `sanity-output/`.                                                                                                          |
+| `npm run sanity:cleanup-legacy`   | Deletes any `blog.*` documents from the dataset to avoid conflicts with the new `post.*` IDs.                                                                                                                                                                             |
+| `npm run sanity:upload`           | Uploads `sanity-output/sanity-documents.json` into the configured Sanity dataset. Handles image asset uploads, deduplicates by file path, provisions author documents, and preserves legacy URLs via `createOrReplace`.                                                   |
 | `npm run sanity:sync-from-remote` | Pulls the latest Sanity `post` documents, converts Portable Text → MDX (`content/posts/<slug>.mdx`), generates `public/_redirects`, and archives any local posts that no longer exist upstream. Supports optional `--slug=<post-slug>` parameter to export a single post. |
 
 Dependencies added:
@@ -22,17 +22,21 @@ Dependencies added:
 ## Running the Migration
 
 1. **Parse React posts into structured JSON**
+
    ```bash
    npm run sanity:parse-posts
    ```
+
    - Reads `src/pages/posts/index.ts` to capture metadata and component file paths.
    - Parses each article’s JSX tree (skipping layout components) to produce normalized Portable Text blocks, embed objects, and image placeholders (`assetPath` values point at the local image files).
    - Output saved to `sanity-output/parsed-posts.json`.
 
 2. **Convert structured data into Sanity documents**
+
    ```bash
    npm run sanity:convert
    ```
+
    - Generates ISO `publishedAt` timestamps from the existing `date` strings.
    - Preserves slugs (strip `/blog/` prefix) and legacy URLs.
    - Copies SEO data from the translation keys (`post*MetaTitle` / `MetaDescription`).
@@ -45,6 +49,7 @@ Dependencies added:
    export SANITY_TOKEN=<api-token>
    npm run sanity:upload
    ```
+
    - Uploads any referenced images via `client.assets.upload`.
    - Replaces placeholder blocks (`assetPath`) with proper Sanity asset references.
    - Uses `client.createOrReplace` so reruns remain idempotent.
@@ -52,9 +57,11 @@ Dependencies added:
 > Alternatively, you can import `sanity-output/sanity-documents.ndjson` manually via `sanity dataset import ...`, but the provided upload script handles asset references and author documents automatically.
 
 4. **Sync authored content back into the repo (MDX)**
+
    ```bash
    npm run sanity:sync-from-remote
    ```
+
    - Fetches every `post` document via the Sanity API.
    - Converts Portable Text blocks (images, embeds, dividers, headings) into Markdown/MDX using `@portabletext/to-markdown`.
    - Writes `content/posts/<slug>.mdx` with YAML frontmatter (title, slug, readTime, dates, SEO, legacy URL).
@@ -62,9 +69,11 @@ Dependencies added:
    - Moves any `content/posts/*.mdx` files that are no longer in Sanity into `content/archive/posts/`.
 
    **Single Post Export** (added Nov 2025):
+
    ```bash
    npm run sanity:sync-from-remote -- --slug=your-post-slug
    ```
+
    - Exports only the specified post without processing the entire dataset.
    - Useful for rapid iteration when editing a single article in Sanity.
    - **Does not archive other posts** (leaves existing posts untouched).

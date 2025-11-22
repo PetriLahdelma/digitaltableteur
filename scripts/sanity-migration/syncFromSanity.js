@@ -157,9 +157,7 @@ function writeAuthorFile(author, urlBuilder) {
   ensureDir(AUTHORS_DIR);
   const slug = author.slug?.current || slugify(author.name || "");
   if (!slug) {
-    console.warn(
-      `[sanity-sync] Skipping author without slug (${author._id}).`,
-    );
+    console.warn(`[sanity-sync] Skipping author without slug (${author._id}).`);
     return null;
   }
   const imageUrl = author.image?.asset
@@ -225,13 +223,15 @@ function buildRedirects(posts) {
 async function main() {
   try {
     assertEnv();
-    
+
     // Support single post export via --slug argument
-    const targetSlug = process.argv.find(arg => arg.startsWith('--slug='))?.split('=')[1];
+    const targetSlug = process.argv
+      .find((arg) => arg.startsWith("--slug="))
+      ?.split("=")[1];
     if (targetSlug) {
       console.log(`[sanity-sync] Syncing single post with slug: ${targetSlug}`);
     }
-    
+
     const client = createClient({
       projectId: process.env.SANITY_PROJECT_ID,
       dataset: process.env.SANITY_DATASET,
@@ -240,7 +240,7 @@ async function main() {
       useCdn: false,
     });
     const builder = imageUrlBuilder(client);
-    
+
     // Build query with optional slug filter
     const query = targetSlug
       ? `*[_type == "post" && slug.current == "${targetSlug}"]{
@@ -277,7 +277,7 @@ async function main() {
           asset
         }
       }`;
-    
+
     const posts = await client.fetch(query);
     const authors = await client.fetch(
       `*[_type == "author"]{
@@ -328,7 +328,7 @@ async function main() {
     if (!targetSlug) {
       pruneOrphans(writtenSlugs);
     }
-    
+
     // Skip author sync when targeting a single post
     let writtenAuthors = 0;
     if (!targetSlug && authors.length) {
@@ -342,12 +342,12 @@ async function main() {
         }
       });
     }
-    
+
     // Only build redirects when syncing all posts
     if (!targetSlug) {
       buildRedirects(posts);
     }
-    
+
     console.log(
       `[sanity-sync] Synced ${writtenSlugs.size} posts and ${writtenAuthors} authors from Sanity.`,
     );
