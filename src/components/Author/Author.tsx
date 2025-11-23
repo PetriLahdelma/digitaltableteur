@@ -1,18 +1,18 @@
 import React from "react";
-import Avatar from "@dt/Avatar";
+import Avatar, { type AvatarSize } from "@dt/Avatar";
 import styles from "./Author.module.css";
 
 type AuthorProps = {
   name: string;
   imageUrl: string | { default: string };
-  size?: "16px" | "24px" | "32px" | "40px"; // Restrict size to templated values
+  size?: AvatarSize;
   profileUrl?: string;
 };
 
 const Author: React.FC<AuthorProps> = ({
   name,
   imageUrl,
-  size = "24px",
+  size = "2.5rem",
   profileUrl,
 }) => (
   <div className={styles.authorContainer}>

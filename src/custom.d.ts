@@ -26,7 +26,13 @@ declare module "*.gif" {
   const src: string;
   export default src;
 }
+declare module "leaflet/dist/leaflet.css";
 declare module "*.avif" {
   const src: string;
   export default src;
+}
+declare module "*.mdx" {
+  export const frontmatter: any;
+  const Component: React.ComponentType;
+  export default Component;
 }

@@ -21,9 +21,44 @@ type BlogModule = {
   frontmatter?: BlogFrontmatter;
 };
 
-const modules = import.meta.glob<BlogModule>("../../content/posts/*.mdx", {
+import * as postDesigningIn2025 from "../../content/posts/designing-in-2025.mdx";
+import * as postDesignSystemAI from "../../content/posts/design-system-meets-ai-building-the-self-evolving-component-library-pt-1.mdx";
+import * as postDesignSystemAI2 from "../../content/posts/design-system-meets-ai-building-the-self-evolving-component-library-pt-2.mdx";
+import * as postDigitalCraftsmanship from "../../content/posts/digital-craftsmanship.mdx";
+import * as postFigmaMcp from "../../content/posts/figma-mcp-design-systems.mdx";
+import * as postInSearchOfImpact from "../../content/posts/in-search-of-impact.mdx";
+import * as postPetriBio from "../../content/posts/petri-lahdelma-bio.mdx";
+import * as postFutureBranding from "../../content/posts/thoughts-on-future-branding.mdx";
+import * as postWorkflowTips from "../../content/posts/workflow-tips.mdx";
+
+const globFn =
+  typeof import.meta !== "undefined" && (import.meta as any).glob
+    ? ((import.meta as any).glob as <T>(
+        pattern: string,
+        opts: any,
+      ) => Record<string, T>)
+    : undefined;
+
+const modules = globFn?.<BlogModule>("../../content/posts/*.mdx", {
   eager: true,
-});
+}) || {
+  "../../content/posts/designing-in-2025.mdx":
+    postDesigningIn2025 as BlogModule,
+  "../../content/posts/design-system-meets-ai-building-the-self-evolving-component-library-pt-1.mdx":
+    postDesignSystemAI as BlogModule,
+  "../../content/posts/design-system-meets-ai-building-the-self-evolving-component-library-pt-2.mdx":
+    postDesignSystemAI2 as BlogModule,
+  "../../content/posts/digital-craftsmanship.mdx":
+    postDigitalCraftsmanship as BlogModule,
+  "../../content/posts/figma-mcp-design-systems.mdx":
+    postFigmaMcp as BlogModule,
+  "../../content/posts/in-search-of-impact.mdx":
+    postInSearchOfImpact as BlogModule,
+  "../../content/posts/petri-lahdelma-bio.mdx": postPetriBio as BlogModule,
+  "../../content/posts/thoughts-on-future-branding.mdx":
+    postFutureBranding as BlogModule,
+  "../../content/posts/workflow-tips.mdx": postWorkflowTips as BlogModule,
+};
 
 const normalizeSlug = (frontmatter: BlogFrontmatter, filePath: string) => {
   if (frontmatter.slug) return frontmatter.slug;

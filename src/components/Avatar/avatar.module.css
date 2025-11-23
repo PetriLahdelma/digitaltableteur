@@ -1,14 +1,14 @@
 .avatarImage {
-  block-size: 40px;
-  inline-size: 40px;
+  block-size: var(--avatar-size, 2.5rem);
+  inline-size: var(--avatar-size, 2.5rem);
   border-radius: 50%;
   object-fit: cover;
 }
 
 .avatarText {
   display: flex;
-  block-size: 40px;
-  inline-size: 40px;
+  block-size: var(--avatar-size, 2.5rem);
+  inline-size: var(--avatar-size, 2.5rem);
   justify-content: center;
   align-items: center;
   border-radius: 50%;

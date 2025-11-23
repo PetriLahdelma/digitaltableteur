@@ -1,3 +1,5 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
 .root {
   /* Force sans-serif across all markdown unless explicitly overridden */
   font-family: var(--font-family-sans);
@@ -8,7 +10,7 @@
   word-wrap: break-word;
 }
 
-::marker {
+.root :global(::marker) {
   color: var(--color-primary);
 }
 

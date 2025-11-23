@@ -81,7 +81,8 @@ describe("BlogNav", () => {
   });
 
   it("disables next button when on last article", () => {
-    window.location.pathname = "/blog/workflow-tips"; // Last article
+    window.location.pathname =
+      "/blog/design-system-meets-ai-building-the-self-evolving-component-library-pt-2"; // Last article
     renderWithRouter();
     const nextButton = screen.getByRole("button", { name: /next/i });
     expect(nextButton).toBeDisabled();

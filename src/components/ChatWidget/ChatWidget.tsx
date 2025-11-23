@@ -1,3 +1,5 @@
+"use client";
+
 import React, {
   useCallback,
   useEffect,
@@ -281,22 +283,30 @@ const fromStoredMessages = (
 
 const loadInitialMessages = (
   greetingText: string = DEFAULT_GREETING_TEXT,
-): UIMessage[] => {
-  if (typeof window === "undefined") {
-    return [createGreetingMessage(greetingText)];
+): UIMessage[] => [createGreetingMessage(greetingText)];
+
+const loadStoredMessages = (
+  greetingText: string = DEFAULT_GREETING_TEXT,
+): UIMessage[] | null => {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const storedV2 = parseStoredMessages(localStorage.getItem(STORAGE_KEY));
+    if (storedV2?.length) {
+      return fromStoredMessages(storedV2, greetingText);
+    }
+
+    const legacy = parseLegacyMessages(
+      localStorage.getItem(LEGACY_STORAGE_KEY),
+    );
+    if (legacy?.length) {
+      return fromStoredMessages(legacy, greetingText);
+    }
+  } catch {
+    // ignore storage errors and fall back to greeting
   }
 
-  const storedV2 = parseStoredMessages(localStorage.getItem(STORAGE_KEY));
-  if (storedV2?.length) {
-    return fromStoredMessages(storedV2, greetingText);
-  }
-
-  const legacy = parseLegacyMessages(localStorage.getItem(LEGACY_STORAGE_KEY));
-  if (legacy?.length) {
-    return fromStoredMessages(legacy, greetingText);
-  }
-
-  return [createGreetingMessage(greetingText)];
+  return null;
 };
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   title,
@@ -388,7 +398,10 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   // Determine initial endpoint (static resolution); we may fallback dynamically on certain network errors.
   const apiEndpoint = useMemo(() => {
     if (endpoint) return endpoint;
-    const envEndpoint = import.meta.env.VITE_DONNY_CHAT_ENDPOINT?.trim();
+    const envEndpoint =
+      (typeof import.meta !== "undefined" &&
+        (import.meta as any).env?.VITE_DONNY_CHAT_ENDPOINT?.trim?.()) ||
+      process.env.NEXT_PUBLIC_DONNY_CHAT_ENDPOINT?.trim?.();
     if (envEndpoint) return envEndpoint;
     if (typeof window !== "undefined") {
       const host = window.location.hostname.toLowerCase();
@@ -463,6 +476,20 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   const isStreaming = status === "submitted" || status === "streaming";
   const errorMessage = resolveErrorMessage(error);
+
+  useEffect(() => {
+    const hydrated = loadStoredMessages(greetingText);
+    if (!hydrated) return;
+    setMessages((current) => {
+      if (
+        current.length &&
+        JSON.stringify(current) === JSON.stringify(hydrated)
+      ) {
+        return current;
+      }
+      return hydrated;
+    });
+  }, [greetingText, setMessages]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -729,9 +756,19 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     let cancelled = false;
     (async () => {
       try {
-        const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID?.trim();
-        const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID?.trim();
-        const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY?.trim();
+        const env =
+          typeof import.meta !== "undefined"
+            ? (import.meta as any).env
+            : undefined;
+        const SERVICE_ID =
+          env?.VITE_EMAILJS_SERVICE_ID?.trim?.() ||
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID?.trim?.();
+        const TEMPLATE_ID =
+          env?.VITE_EMAILJS_TEMPLATE_ID?.trim?.() ||
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID?.trim?.();
+        const PUBLIC_KEY =
+          env?.VITE_EMAILJS_PUBLIC_KEY?.trim?.() ||
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY?.trim?.();
         await sendContactEmail({
           SERVICE_ID,
           TEMPLATE_ID,

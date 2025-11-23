@@ -23,12 +23,24 @@ const blogPages = [
     labelKey: "blogNavInSearchOfImpact",
   },
   { path: "/blog/workflow-tips", labelKey: "blogNavWorkflowTips" },
+  {
+    path: "/blog/design-system-meets-ai-building-the-self-evolving-component-library-pt-1",
+    labelKey: "blogNavDesignSystemAiPt1",
+  },
+  {
+    path: "/blog/design-system-meets-ai-building-the-self-evolving-component-library-pt-2",
+    labelKey: "blogNavDesignSystemAiPt2",
+  },
 ];
+
+const normalizePath = (value: string) => value.replace(/\/+$/, "") || "/";
 
 const BlogNav: React.FC = () => {
   const { t } = useTranslation();
-  const currentPath = window.location.pathname;
-  const currentIndex = blogPages.findIndex((p) => p.path === currentPath);
+  const currentPath = normalizePath(window.location.pathname);
+  const currentIndex = blogPages.findIndex(
+    (p) => normalizePath(p.path) === currentPath,
+  );
   const isArticleRoute = currentIndex >= 0;
   const navigate = useNavigate();
   return (

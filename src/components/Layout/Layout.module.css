@@ -1,5 +1,4 @@
-@import url("../../styles/variables.css");
-@import url("../../styles/fonts.css");
+/* stylelint-disable rule-empty-line-before */
 
 .layout {
   display: flex;
@@ -9,6 +8,12 @@
 
 .main {
   flex: 1;
+}
+
+/* Main is not an interactive element; focus is only set programmatically for skip link scroll target */
+/* stylelint-disable-next-line a11y/no-outline-none */
+.main:focus {
+  outline: none;
 }
 
 .skipLink {

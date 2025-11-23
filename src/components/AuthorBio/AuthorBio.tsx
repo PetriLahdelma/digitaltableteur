@@ -30,7 +30,7 @@ const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }) => {
     <section className={rootClassName} aria-label={`About ${author.name}`}>
       <div className={styles.header}>
         {author.imageUrl && (
-          <Avatar imageUrl={author.imageUrl} name={author.name} size="64px" />
+          <Avatar imageUrl={author.imageUrl} name={author.name} size="4rem" />
         )}
         <div>
           <h3 className={styles.name}>{heading ?? author.name}</h3>

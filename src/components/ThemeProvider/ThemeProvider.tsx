@@ -102,8 +102,6 @@ const applyThemeToDom = (theme: Theme) => {
     body.classList.toggle("themeHCB", isHighContrastBlack);
     body.classList.toggle("themeHCW", isHighContrastWhite);
     body.dataset.theme = theme;
-    body.style.backgroundColor =
-      theme === "hcb" ? "#000" : theme === "dark" ? "#23272a" : "#fff";
   }
 };
 
@@ -147,15 +145,19 @@ export const ThemeProvider: React.FC<{
   children: React.ReactNode;
   forcedTheme?: Theme;
 }> = ({ children, forcedTheme }) => {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      return getStoredTheme();
-    }
-    return DEFAULT_THEME;
-  });
+  const [theme, setThemeState] = useState<Theme>(DEFAULT_THEME);
 
   // If forcedTheme is provided, always use it
   const effectiveTheme = forcedTheme || theme;
+
+  // Intentionally run once on mount to read stored theme, regardless of initial state.
+  useEffect(() => {
+    // Sync state with storage on mount
+    const stored = getStoredTheme();
+    if (stored !== theme) {
+      setThemeState(stored);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     applyThemeToDom(effectiveTheme);

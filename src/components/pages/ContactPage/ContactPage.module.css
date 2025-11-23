@@ -1,0 +1,216 @@
+.contact {
+  text-align: center;
+}
+
+.contact h1 {
+  margin-block: 2rem;
+  font-family: var(--primary-heading-font, serif);
+  font-size: 5rem;
+  font-weight: var(--primary-heading-weight, 300);
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+  color: var(--color-primary);
+}
+
+.contactSectionHeading {
+  margin-block: 2rem 1.5rem;
+  text-align: left;
+  color: var(--color-primary);
+}
+
+.officeSection {
+  display: grid;
+  margin: 0 auto 3rem;
+  max-width: 960px;
+  gap: 2.5rem;
+  text-align: left;
+}
+
+.officeSection a {
+  color: var(--color-primary);
+}
+
+.officeMap {
+  display: grid;
+  gap: 1rem;
+}
+
+.officeSubheading {
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.mapWrapper {
+  position: relative;
+  width: 100%;
+  height: 18rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 0;
+  background-color: var(--color-light-bg);
+  overflow: hidden;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.mapFallback {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--color-gray-medium);
+}
+
+.mapDescription {
+  font-size: 0.95rem;
+  color: var(--color-gray-medium);
+}
+
+.officeAddress {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.officeAddressHeading {
+  margin: 0.8rem 0 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.officeAddressLine {
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: 1rem;
+  text-align: left;
+  color: var(--color-primary);
+}
+
+.personGrid {
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) 1fr;
+  place-items: center start;
+  gap: 2rem;
+}
+
+.portrait {
+  width: 128px;
+  border-radius: 100rem;
+  clip-path: inset(2px round 50%);
+  object-fit: cover;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personCardCenter {
+  display: flex;
+  margin-block: 3rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+.personDetails {
+  display: grid;
+  justify-items: start;
+  gap: 0.75rem;
+}
+
+.nameTitle {
+  margin-block: 0;
+}
+
+.personName {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.personTitle {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-gray-medium);
+}
+
+.contactPersonTitle {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.personEmail {
+  text-transform: none;
+}
+
+.linkedinLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.linkedinLink svg {
+  font-size: 1.5rem;
+}
+
+.contact h2 {
+  font-family: var(--secondary-heading-font, sans-serif);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.privacyPolicy {
+  font-size: 1.1rem;
+  text-align: center;
+  color: var(--color-gray-medium);
+}
+
+.privacyPolicy a {
+  color: var(--color-primary);
+}
+
+.contactForm p {
+  margin: 0;
+  font-family: Moderat, sans-serif;
+  font-size: 0.875rem;
+  text-align: center;
+  color: var(--color-gray-medium);
+}
+
+.checkboxGroup {
+  margin-block-start: 1rem;
+}
+
+.cvDownloadSection {
+  padding: var(--space-layout-96);
+  background-color: var(--color-primary);
+}
+
+h2.resumeTitle {
+  color: var(--color-white);
+}
+
+.resumeInfo {
+  color: var(--color-white);
+}
+
+.resumeInfo a {
+  color: var(--color-white);
+}
