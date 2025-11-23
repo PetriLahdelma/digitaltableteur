@@ -39,26 +39,16 @@ function getTranslatedDate(t: any, date: Date, lng: string) {
 
 const HelsinkiClock: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const [helsinki, setHelsinki] = useState(() => {
-    const now = new Date();
-    return {
-      date: now,
-      time: now.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-        timeZone: "Europe/Helsinki",
-      }),
-    };
-  });
+  const [helsinki, setHelsinki] = useState<{ date: Date; time: string } | null>(
+    null,
+  );
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const tick = () => {
       const now = new Date();
       setHelsinki({
         date: now,
-        time: now.toLocaleTimeString("en-US", {
+        time: now.toLocaleTimeString("en-GB", {
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
@@ -66,7 +56,10 @@ const HelsinkiClock: React.FC = () => {
           timeZone: "Europe/Helsinki",
         }),
       });
-    }, 1000);
+    };
+
+    tick();
+    const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -78,10 +71,13 @@ const HelsinkiClock: React.FC = () => {
   return (
     <div className={styles.clockContainer}>
       <div className={styles.date}>
-        {getTranslatedDate(t, helsinki.date, i18n.language)}
+        {helsinki
+          ? getTranslatedDate(t, helsinki.date, i18n.language)
+          : "\u2007"}
       </div>
       <div className={styles.time}>
-        {t(helsinkiKey)} (GMT+2), {helsinki.time}
+        {t(helsinkiKey)} (GMT+2)
+        {helsinki ? `, ${helsinki.time}` : ""}
       </div>
     </div>
   );

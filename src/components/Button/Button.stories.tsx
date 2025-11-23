@@ -273,3 +273,27 @@ export const AllSizes = () => (
     </Button>
   </div>
 );
+
+export const AsLink = () => (
+  <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
+    <div style={{ display: "flex", gap: "1rem" }}>
+      <Button href="/about" variant="primary">
+        Internal Link
+      </Button>
+      <Button href="https://example.com" variant="secondary" target="_blank">
+        External Link
+      </Button>
+      <Button href="/contact" variant="tertiary" icon="arrow-right">
+        Link with Icon
+      </Button>
+    </div>
+    <div style={{ display: "flex", gap: "1rem" }}>
+      <Button href="/disabled" variant="primary" disabled>
+        Disabled Link
+      </Button>
+      <Button href="/rounded" variant="secondary" rounded>
+        Rounded Link
+      </Button>
+    </div>
+  </div>
+);

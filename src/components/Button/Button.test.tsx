@@ -70,4 +70,55 @@ describe("Button", () => {
     expect(iconWrapper).toBeTruthy();
     expect(iconWrapper.getAttribute("data-button-slot")).toBe("icon");
   });
+
+  it("renders as an anchor when href prop is provided", () => {
+    render(<Button href="/test-path">Link Button</Button>);
+    const link = screen.getByText("Link Button").closest("a");
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", "/test-path");
+  });
+
+  it("applies rel='noopener noreferrer' automatically when target='_blank'", () => {
+    render(
+      <Button href="https://example.com" target="_blank">
+        External Link
+      </Button>,
+    );
+    const link = screen.getByText("External Link").closest("a");
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
+  it("preserves custom rel when provided with target='_blank'", () => {
+    render(
+      <Button href="https://example.com" target="_blank" rel="custom">
+        Custom Rel
+      </Button>,
+    );
+    const link = screen.getByText("Custom Rel").closest("a");
+    expect(link).toHaveAttribute("rel", "custom");
+  });
+
+  it("applies aria-disabled to links when disabled prop is true", () => {
+    render(
+      <Button href="/disabled-link" disabled>
+        Disabled Link
+      </Button>,
+    );
+    const link = screen.getByText("Disabled Link").closest("a");
+    expect(link).toHaveAttribute("aria-disabled", "true");
+  });
+
+  it("renders link with icon and maintains visual structure", () => {
+    render(
+      <Button href="/icon-link" icon="arrow-right">
+        Icon Link
+      </Button>,
+    );
+    const link = screen.getByText("Icon Link").closest("a");
+    expect(link).toBeInTheDocument();
+    const textSpan = screen.getByText("Icon Link");
+    const iconWrapper = textSpan.previousElementSibling as HTMLElement;
+    expect(iconWrapper.getAttribute("data-button-slot")).toBe("icon");
+  });
 });

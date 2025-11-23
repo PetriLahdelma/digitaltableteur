@@ -16,7 +16,6 @@ export const getSemanticIcon = (status: SemanticStatus) => {
       name={STATUS_ICON_NAMES[status]}
       ariaLabel={status}
       aria-hidden="true"
-      focusable="false"
       data-semantic-icon={status}
     />
   );

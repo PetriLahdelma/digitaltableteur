@@ -32,6 +32,8 @@ export type HeaderNavItem = {
   exact?: boolean;
 };
 
+const logoSrc = typeof Logo === "string" ? Logo : ((Logo as any).src ?? "");
+
 // Helper to get/set language cookie
 function setCookie(name: string, value: string, days = 365) {
   const expires = new Date(Date.now() + days * 864e5).toUTCString();
@@ -233,7 +235,7 @@ const Header: React.FC<HeaderProps> = ({
               </svg>
             ) : (
               <img
-                src={Logo}
+                src={logoSrc}
                 alt={t("headerLogoAlt")}
                 className={styles.logo}
               />

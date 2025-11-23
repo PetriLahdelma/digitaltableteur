@@ -9,12 +9,31 @@ export type AvatarMenuItem = {
   onSelect?: () => void;
 };
 
+export type AvatarSize =
+  | "2rem"
+  | "2.5rem"
+  | "3rem"
+  | "4rem"
+  | "5rem"
+  | "6rem"
+  | "7rem"
+  | "8rem"
+  | "32px"
+  | "40px"
+  | "48px"
+  | "64px"
+  | "80px"
+  | "96px"
+  | "112px"
+  | "128px"
+  | string;
+
 type AvatarProps = {
   name?: string;
   imageUrl?: string | { default: string };
   clickable?: boolean;
   destinationUrl?: string;
-  size?: string;
+  size?: AvatarSize;
   srcSet?: string;
   sizes?: string;
   loading?: "lazy" | "eager";
@@ -176,7 +195,8 @@ const Avatar: React.FC<AvatarProps> = ({
     }
   };
 
-  const avatarStyle = size ? { inlineSize: size, blockSize: size } : undefined;
+  const resolvedSize = size ?? "2.5rem";
+  const avatarStyle = { "--avatar-size": resolvedSize } as React.CSSProperties;
   const avatarMenuLabel = menuLabel ?? (name ? `${name} menu` : "Avatar menu");
 
   const renderMenuItems = () => {

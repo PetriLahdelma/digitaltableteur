@@ -1,8 +1,12 @@
 {
   "homepage": "https://digitaltableteur.com",
-  "name": "digitaltableteur",
+  "name": "digitaltableteur-monorepo",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    ".",
+    "nextjs-app"
+  ],
   "dependencies": {
     "@ai-sdk/gateway": "^2.0.7",
     "@ai-sdk/mcp": "^0.0.7",
@@ -58,6 +62,12 @@
     "xml2js": "^0.6.2"
   },
   "scripts": {
+    "dev:vite": "vite",
+    "dev:next": "cd nextjs-app && npm run dev",
+    "build:vite": "vite build",
+    "build:next": "cd nextjs-app && npm run build",
+    "deploy:vite": "npm run build:vite && gh-pages -d dist",
+    "deploy:hybrid": "./scripts/deploy-hybrid.sh",
     "predeploy": "npm run build && cp CNAME dist/CNAME",
     "deploy": "gh-pages -d dist --dotfiles",
     "deploy:with-storybook": "./scripts/deploy-local.sh",
@@ -87,6 +97,7 @@
     "sentry:summary:auto": "node scripts/sentry-automation.mjs --unresolved --environment=production",
     "sentry:summary:stub": "node scripts/sentry-automation.mjs --force-stub --unresolved",
     "context7:mcp": "node scripts/context7-mcp.mjs",
+    "sync:blog-metadata": "tsx scripts/update-post-metadata.ts",
     "ts:mcp:status": "node scripts/ts-mcp-automation.mjs",
     "ts:mcp:status:stub": "node scripts/ts-mcp-automation.mjs --force-stub",
     "github:mcp:test": "node scripts/test-github-mcp.mjs",

@@ -44,6 +44,14 @@
       "env": {
         "GITHUB_MCP_PAT": "<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>"
       }
+    },
+    "next-devtools": {
+      "type": "command",
+      "command": "npx",
+      "args": ["-y", "next-devtools-mcp@latest"],
+      "env": {
+        "NEXT_TELEMETRY_DISABLED": "1"
+      }
     }
   },
   "inputs": [

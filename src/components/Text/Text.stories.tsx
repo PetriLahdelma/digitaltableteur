@@ -22,6 +22,11 @@ export default {
       options: ["sans", "serif"],
       description: "Font family (sans or serif)",
     },
+    lineHeight: {
+      control: { type: "select" },
+      options: ["tight", "snug", "normal", "relaxed", "loose"],
+      description: "Line height variant",
+    },
     className: { control: "text", description: "Custom class name" },
     children: { control: "text", description: "Text content" },
   },
@@ -101,5 +106,77 @@ export const SerifAndSans = () => {
       <Text terminals="sans">{t("storyTextSans")}</Text>
       <Text terminals="serif">{t("storyTextSerif")}</Text>
     </>
+  );
+};
+
+export const LineHeights = () => {
+  const { t } = useTranslation();
+  const sampleText =
+    t("storyTextLineHeight") ||
+    "This is a longer sample text that demonstrates the effect of different line heights. Line height affects readability and visual density. Proper line height creates comfortable reading rhythm and improves text comprehension.";
+
+  return (
+    <div style={{ display: "grid", gap: "2rem" }}>
+      <div>
+        <h3
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "1rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTextLineHeightTight") || "Tight (1.2)"}
+        </h3>
+        <Text lineHeight="tight">{sampleText}</Text>
+      </div>
+      <div>
+        <h3
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "1rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTextLineHeightSnug") || "Snug (1.375)"}
+        </h3>
+        <Text lineHeight="snug">{sampleText}</Text>
+      </div>
+      <div>
+        <h3
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "1rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTextLineHeightNormal") || "Normal (1.5)"}
+        </h3>
+        <Text lineHeight="normal">{sampleText}</Text>
+      </div>
+      <div>
+        <h3
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "1rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTextLineHeightRelaxed") || "Relaxed (1.625)"}
+        </h3>
+        <Text lineHeight="relaxed">{sampleText}</Text>
+      </div>
+      <div>
+        <h3
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "1rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTextLineHeightLoose") || "Loose (1.75)"}
+        </h3>
+        <Text lineHeight="loose">{sampleText}</Text>
+      </div>
+    </div>
   );
 };

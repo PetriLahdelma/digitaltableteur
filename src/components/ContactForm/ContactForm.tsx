@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { send } from "@emailjs/browser";
 import styles from "./ContactForm.module.css";
 import Inputs from "@dt/Inputs";
@@ -160,31 +160,48 @@ const ContactForm = () => {
     reader.readAsDataURL(file);
   };
 
-  const SERVICE_ID =
-    import.meta.env.VITE_EMAIL_SERVICE_ID ||
-    import.meta.env.VITE_APP_EMAIL_SERVICE_ID;
-  const TEMPLATE_ID =
-    import.meta.env.VITE_EMAIL_TEMPLATE_ID ||
-    import.meta.env.VITE_APP_EMAIL_TEMPLATE_ID;
-  const PUBLIC_KEY =
-    import.meta.env.VITE_EMAIL_PUBLIC_KEY ||
-    import.meta.env.VITE_APP_EMAIL_PUBLIC_KEY;
-  const SPAM_LOG_ENDPOINT =
-    import.meta.env.VITE_CONTACT_SPAM_LOG_ENDPOINT ||
-    import.meta.env.VITE_APP_CONTACT_SPAM_LOG_ENDPOINT;
+  const env =
+    typeof import.meta !== "undefined" ? (import.meta as any).env : undefined;
 
-  // Debug logging in development
-  if (import.meta.env.DEV) {
-    // eslint-disable-next-line no-console
-    console.log("EmailJS Environment Check:", {
-      VITE_EMAIL_SERVICE_ID: !!import.meta.env.VITE_EMAIL_SERVICE_ID,
-      VITE_EMAIL_TEMPLATE_ID: !!import.meta.env.VITE_EMAIL_TEMPLATE_ID,
-      VITE_EMAIL_PUBLIC_KEY: !!import.meta.env.VITE_EMAIL_PUBLIC_KEY,
-      SERVICE_ID: !!SERVICE_ID,
-      TEMPLATE_ID: !!TEMPLATE_ID,
-      PUBLIC_KEY: !!PUBLIC_KEY,
-    });
-  }
+  const SERVICE_ID =
+    env?.VITE_EMAIL_SERVICE_ID ||
+    env?.VITE_APP_EMAIL_SERVICE_ID ||
+    process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID ||
+    process.env.NEXT_PUBLIC_APP_EMAIL_SERVICE_ID;
+  const TEMPLATE_ID =
+    env?.VITE_EMAIL_TEMPLATE_ID ||
+    env?.VITE_APP_EMAIL_TEMPLATE_ID ||
+    process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID ||
+    process.env.NEXT_PUBLIC_APP_EMAIL_TEMPLATE_ID;
+  const PUBLIC_KEY =
+    env?.VITE_EMAIL_PUBLIC_KEY ||
+    env?.VITE_APP_EMAIL_PUBLIC_KEY ||
+    process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY ||
+    process.env.NEXT_PUBLIC_APP_EMAIL_PUBLIC_KEY;
+  const spamLogEndpoint = process.env.NEXT_PUBLIC_APP_CONTACT_SPAM_LOG_ENDPOINT;
+
+  // Debug logging in development - only once on mount
+  useEffect(() => {
+    const isDev = env?.DEV ?? process.env.NODE_ENV !== "production";
+    if (isDev) {
+      // eslint-disable-next-line no-console
+      console.log("EmailJS Environment Check:", {
+        VITE_EMAIL_SERVICE_ID:
+          !!env?.VITE_EMAIL_SERVICE_ID ||
+          !!process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
+        VITE_EMAIL_TEMPLATE_ID:
+          !!env?.VITE_EMAIL_TEMPLATE_ID ||
+          !!process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+        VITE_EMAIL_PUBLIC_KEY:
+          !!env?.VITE_EMAIL_PUBLIC_KEY ||
+          !!process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
+        SERVICE_ID: !!SERVICE_ID,
+        TEMPLATE_ID: !!TEMPLATE_ID,
+        PUBLIC_KEY: !!PUBLIC_KEY,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Empty dependency array = run once on mount
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -222,7 +239,7 @@ const ContactForm = () => {
 
   const logHoneypotHit = () => {
     if (!SPAM_LOG_ENDPOINT) {
-      if (import.meta.env.DEV) {
+      if (isDev) {
         // eslint-disable-next-line no-console
         console.info(
           "Honeypot triggered but no SPAM log endpoint configured. Set VITE_CONTACT_SPAM_LOG_ENDPOINT to capture these events.",
@@ -262,7 +279,7 @@ const ContactForm = () => {
       body,
       keepalive: true,
     }).catch((err) => {
-      if (import.meta.env.DEV) {
+      if (isDev) {
         // eslint-disable-next-line no-console
         console.error("Failed to log honeypot submission", err);
       }
@@ -275,7 +292,7 @@ const ContactForm = () => {
     // Quietly drop submissions that fill the honeypot field
     if (formData.honeypot.trim()) {
       logHoneypotHit();
-      if (import.meta.env.DEV) {
+      if (isDev) {
         // eslint-disable-next-line no-console
         console.warn("Honeypot triggered, dropping submission.");
       }
@@ -327,7 +344,7 @@ const ContactForm = () => {
       );
 
       // In development, provide helpful instructions
-      if (import.meta.env.DEV) {
+      if (isDev) {
         // eslint-disable-next-line no-console
         console.error(
           "To fix this error:\n" +
@@ -336,6 +353,9 @@ const ContactForm = () => {
             "   VITE_EMAIL_SERVICE_ID=your_service_id\n" +
             "   VITE_EMAIL_TEMPLATE_ID=your_template_id\n" +
             "   VITE_EMAIL_PUBLIC_KEY=your_public_key\n" +
+            "   NEXT_PUBLIC_EMAIL_SERVICE_ID=your_service_id (for Next.js)\n" +
+            "   NEXT_PUBLIC_EMAIL_TEMPLATE_ID=your_template_id (for Next.js)\n" +
+            "   NEXT_PUBLIC_EMAIL_PUBLIC_KEY=your_public_key (for Next.js)\n" +
             "3. Get these values from https://dashboard.emailjs.com/\n" +
             "4. Restart your development server",
         );

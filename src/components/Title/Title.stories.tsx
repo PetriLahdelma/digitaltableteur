@@ -73,7 +73,83 @@ Playground.argTypes = {
     options: ["serif", "sans"],
     defaultValue: "serif",
   },
+  lineHeight: {
+    control: { type: "select" },
+    options: ["tight", "snug", "normal", "relaxed", "loose"],
+    description: "Line height variant",
+  },
   as: { control: "text" },
+};
+
+export const LineHeights = () => {
+  const { t } = useTranslation();
+  const sampleTitle =
+    t("storyTitleLineHeight") || "Typography Line Height Demonstration";
+
+  return (
+    <div style={{ display: "grid", gap: "2rem" }}>
+      <div>
+        <p
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "0.875rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTitleLineHeightTight") || "Tight (1.2) - Large headings"}
+        </p>
+        <Title lineHeight="tight">{sampleTitle}</Title>
+      </div>
+      <div>
+        <p
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "0.875rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTitleLineHeightSnug") || "Snug (1.375) - Medium headings"}
+        </p>
+        <Title lineHeight="snug">{sampleTitle}</Title>
+      </div>
+      <div>
+        <p
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "0.875rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTitleLineHeightNormal") || "Normal (1.5) - Body text"}
+        </p>
+        <Title lineHeight="normal">{sampleTitle}</Title>
+      </div>
+      <div>
+        <p
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "0.875rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTitleLineHeightRelaxed") || "Relaxed (1.625) - Long-form"}
+        </p>
+        <Title lineHeight="relaxed">{sampleTitle}</Title>
+      </div>
+      <div>
+        <p
+          style={{
+            marginBottom: "0.5rem",
+            fontSize: "0.875rem",
+            fontWeight: "600",
+          }}
+        >
+          {t("storyTitleLineHeightLoose") || "Loose (1.75) - Max readability"}
+        </p>
+        <Title lineHeight="loose">{sampleTitle}</Title>
+      </div>
+    </div>
+  );
 };
 
 AllSizes.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
