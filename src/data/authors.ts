@@ -5,9 +5,21 @@ export type AuthorEntry = {
   bio?: string;
 };
 
-const modules = import.meta.glob<AuthorEntry>("../../content/authors/*.json", {
+import petriAuthor from "../../content/authors/petri-lahdelma.json";
+
+const globFn =
+  typeof import.meta !== "undefined" && (import.meta as any).glob
+    ? ((import.meta as any).glob as <T>(
+        pattern: string,
+        opts: any,
+      ) => Record<string, T>)
+    : undefined;
+
+const modules = globFn?.<AuthorEntry>("../../content/authors/*.json", {
   eager: true,
-});
+}) || {
+  "../../content/authors/petri-lahdelma.json": petriAuthor as AuthorEntry,
+};
 
 const normalizeSlug = (entry: AuthorEntry, filePath: string) => {
   if (entry.slug) return entry.slug;

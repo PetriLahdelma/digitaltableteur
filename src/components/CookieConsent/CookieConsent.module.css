@@ -1,5 +1,4 @@
-@import url("../../styles/variables.css");
-@import url("../../styles/fonts.css");
+/* stylelint-disable selector-pseudo-class-no-unknown */
 
 .cookieConsent {
   display: flex;
@@ -10,7 +9,7 @@
   border-top: 1px solid var(--color-gray);
 }
 
-p {
+.cookieConsent :global(p) {
   margin: 0;
   align-items: start;
   font-size: 1.1rem; /* 14px */

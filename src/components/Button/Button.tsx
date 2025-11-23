@@ -6,7 +6,7 @@ import {
 } from "../../utils/semanticIcons";
 import Icon from "@dt/Icon";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface BaseButtonProps {
   variant?:
     | "primary"
     | "secondary"
@@ -24,7 +24,6 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   accessibleName?: string;
   accessibleNameRef?: string;
   accessibleRole?: "button" | "link";
-  submits?: boolean;
   tooltip?: string;
   size?: "s" | "m" | "l";
   /** When true, replaces primary (blue) text/border color with white for supported variants */
@@ -32,6 +31,26 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** When true, applies rounded corners to the button */
   rounded?: boolean;
 }
+
+interface ButtonAsButton
+  extends BaseButtonProps,
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseButtonProps> {
+  /** When true, button type becomes "submit" */
+  submits?: boolean;
+  href?: never;
+  target?: never;
+  rel?: never;
+}
+
+interface ButtonAsLink
+  extends BaseButtonProps,
+    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseButtonProps> {
+  /** URL to navigate to. When provided, renders as an anchor element */
+  href: string;
+  submits?: never;
+}
+
+type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 type ButtonVariant = NonNullable<ButtonProps["variant"]>;
 const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
@@ -73,7 +92,10 @@ const getElementBackgroundColor = (element: Element | null): string | null => {
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps
+>(
   (
     {
       variant = "primary",
@@ -85,11 +107,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       accessibleDescription,
       accessibleName,
       accessibleNameRef,
-      accessibleRole = "button",
-      submits = false,
+      accessibleRole,
       tooltip,
-      type = "button",
-      onClick,
       className = "",
       size = "m",
       inverse = false,
@@ -97,6 +116,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    const isLink = "href" in rest && rest.href !== undefined;
+    const submits = "submits" in rest ? rest.submits : false;
+    const type = "type" in rest ? rest.type : "button";
+    const onClick = "onClick" in rest ? rest.onClick : undefined;
     const lookupIcon = (candidate: unknown): unknown => {
       if (typeof candidate === "string") {
         const trimmed = candidate.trim();
@@ -157,7 +180,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const normalizedIcon = normalizeMaybeIcon(resolvedStartIcon);
     const normalizedEndIcon = normalizeMaybeIcon(lookupIcon(endIcon));
 
-    const buttonRef = React.useRef<HTMLButtonElement | null>(null);
+    const buttonRef = React.useRef<
+      HTMLButtonElement | HTMLAnchorElement | null
+    >(null);
 
     const setInverseColorFromSurface = React.useCallback(() => {
       if (
@@ -225,41 +250,41 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       };
     }, [inverse, setInverseColorFromSurface, variant]);
 
-    const assignRefs = (node: HTMLButtonElement | null) => {
+    const assignRefs = (node: HTMLButtonElement | HTMLAnchorElement | null) => {
       buttonRef.current = node;
       if (!ref) return;
       if (typeof ref === "function") {
         ref(node);
       } else {
-        (ref as React.MutableRefObject<HTMLButtonElement | null>).current =
-          node;
+        (
+          ref as React.MutableRefObject<
+            HTMLButtonElement | HTMLAnchorElement | null
+          >
+        ).current = node;
       }
     };
 
-    return (
-      <button
-        ref={assignRefs}
-        className={[
-          styles.button,
-          styles[variant],
-          styles[size],
-          !children && normalizedIcon ? styles["iconOnly"] : "",
-          inverse ? styles.inverse : "",
-          rounded ? styles.rounded : "",
-          className,
-        ]
-          .filter(Boolean)
-          .join(" ")}
-        disabled={disabled}
-        aria-describedby={accessibleDescription}
-        aria-label={accessibleName}
-        aria-labelledby={accessibleNameRef}
-        role={accessibleRole}
-        type={submits ? "submit" : type}
-        title={tooltip}
-        onClick={onClick}
-        {...rest}
-      >
+    const commonProps = {
+      className: [
+        styles.button,
+        styles[variant],
+        styles[size],
+        !children && normalizedIcon ? styles["iconOnly"] : "",
+        inverse ? styles.inverse : "",
+        rounded ? styles.rounded : "",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" "),
+      "aria-describedby": accessibleDescription,
+      "aria-label": accessibleName,
+      "aria-labelledby": accessibleNameRef,
+      role: accessibleRole,
+      title: tooltip,
+    };
+
+    const content = (
+      <>
         {normalizedIcon && (
           <span
             className={styles.icon}
@@ -283,6 +308,47 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             {normalizedEndIcon}
           </span>
         )}
+      </>
+    );
+
+    if (isLink) {
+      const { href, target, rel, ...linkRest } = rest as ButtonAsLink;
+      return (
+        <a
+          ref={assignRefs as React.Ref<HTMLAnchorElement>}
+          href={href}
+          target={target}
+          rel={rel || (target === "_blank" ? "noopener noreferrer" : undefined)}
+          onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}
+          aria-disabled={disabled}
+          {...commonProps}
+          {...linkRest}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    const {
+      submits: _submits,
+      type: _type,
+      ...buttonRest
+    } = rest as ButtonAsButton;
+
+    return (
+      <button
+        ref={assignRefs as React.Ref<HTMLButtonElement>}
+        disabled={disabled}
+        type={
+          submits
+            ? "submit"
+            : (_type as "button" | "submit" | "reset" | undefined) || "button"
+        }
+        onClick={onClick as React.MouseEventHandler<HTMLButtonElement>}
+        {...commonProps}
+        {...buttonRest}
+      >
+        {content}
       </button>
     );
   },

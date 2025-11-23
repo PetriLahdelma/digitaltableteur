@@ -20,7 +20,11 @@ const Footer = () => {
             <br />
             {t("footerAddress2")}
             <br />
-            <a href="mailto:mail@digitaltableteur.com">
+            <a
+              href="mailto:mail@digitaltableteur.com"
+              aria-label={t("footerAriaEmail")}
+              title={t("footerAriaEmail")}
+            >
               mail@digitaltableteur.com
             </a>
           </p>

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../patterns/Header/Header";
 import Footer from "../../patterns/Footer/Footer";
-import Button from "@dt/Button";
+import Button from "../../Components/Button";
 import ChatWidget from "../ChatWidget/ChatWidget";
 import styles from "./Layout.module.css";
 

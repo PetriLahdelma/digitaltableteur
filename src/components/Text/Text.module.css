@@ -1,3 +1,5 @@
+/* stylelint-disable rule-empty-line-before */
+
 .text {
   margin-block: 0 var(--space-layout-16, 1rem);
   margin-inline: 0;
@@ -26,6 +28,27 @@
 
 .sans {
   font-family: var(--font-sans, "Moderat", sans-serif);
+}
+
+/* Line height utility classes */
+.lineHeightTight {
+  line-height: var(--line-height-tight);
+}
+
+.lineHeightSnug {
+  line-height: var(--line-height-snug);
+}
+
+.lineHeightNormal {
+  line-height: var(--line-height-normal);
+}
+
+.lineHeightRelaxed {
+  line-height: var(--line-height-relaxed);
+}
+
+.lineHeightLoose {
+  line-height: var(--line-height-loose);
 }
 
 @supports (font-optical-sizing: auto) {
