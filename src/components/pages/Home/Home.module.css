@@ -64,6 +64,10 @@
   color: var(--color-white);
 }
 
+.heroSubtext p {
+  color: var(--color-white);
+}
+
 @media (min-width: 768px) {
   .heroSubtext {
     padding-inline: var(--space-layout-48);

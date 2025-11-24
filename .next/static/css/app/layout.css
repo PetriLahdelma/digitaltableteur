@@ -1,0 +1,4414 @@
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/styles/variables.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+:where(:root, .themeDark, .themeHCB, .themeHCW)
+  :is(
+    a[href],
+    button:not(:disabled),
+    [role="button"],
+    input[type="button"]:not(:disabled),
+    input[type="submit"]:not(:disabled),
+    input[type="reset"]:not(:disabled),
+    summary,
+    .interactive,
+    .clickable
+  ):hover {
+  cursor: var(--cursor-circle);
+}
+
+:root {
+  --cursor-circle:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='14' stroke='none' fill='%2300f' stroke-width='2'/%3E%3C/svg%3E")
+      16 16,
+    pointer;
+  --selection-background: var(--color-primary);
+  --selection-color: var(--color-white);
+
+  /* Typography tokens */
+  --font-title: "TiemposHeadline-Regular", serif;
+  --font-text: "Moderat", sans-serif;
+  --font-size-text: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+  --font-size-text-xxs: clamp(0.625rem, 0.3vw + 0.6rem, 0.875rem);
+  --font-size-text-xs: clamp(0.75rem, 0.4vw + 0.7rem, 0.9375rem);
+  --font-size-text-s: clamp(0.875rem, 0.5vw + 0.8rem, 1.125rem);
+  --font-size-text-m: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+  --font-size-text-l: clamp(1.125rem, 0.8vw + 1rem, 1.5rem);
+  --font-size-text-xl: clamp(1.25rem, 1vw + 1.1rem, 1.75rem);
+  --font-size-text-xxl: clamp(1.5rem, 1.5vw + 1.2rem, 2.25rem);
+  --font-size-title: clamp(2.25rem, 3.5vw + 1.5rem, 3.75rem);
+  --font-size-title-xxs: clamp(0.875rem, 1vw + 0.7rem, 1.25rem);
+  --font-size-title-xs: clamp(1.125rem, 1.5vw + 0.9rem, 1.75rem);
+  --font-size-title-s: clamp(1.5rem, 2vw + 1.1rem, 2.25rem);
+  --font-size-title-m: clamp(2rem, 2.8vw + 1.3rem, 3rem);
+  --font-size-title-l: clamp(2.75rem, 4vw + 1.75rem, 4.25rem);
+  --font-size-title-xl: clamp(3.5rem, 6vw + 2.5rem, 5.5rem);
+  --font-size-title-xxl: clamp(4.5rem, 8vw + 3rem, 7rem);
+  --font-size-button-s: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);
+  --font-size-button-m: clamp(1rem, 0.35vw + 0.9rem, 1.125rem);
+  --font-size-button-l: clamp(1.125rem, 0.45vw + 1rem, 1.25rem);
+
+  /* Line heights for optimal readability */
+  --line-height-tight: 1.2; /* For large headings */
+  --line-height-snug: 1.375; /* For medium headings */
+  --line-height-normal: 1.5; /* For body text and UI */
+  --line-height-relaxed: 1.625; /* For long-form content */
+  --line-height-loose: 1.75; /* For maximum readability */
+  --font-weight-title: 700;
+  --font-weight-text: 400;
+  --color-title: var(--primary-text-color, #00f);
+  --color-text: var(--primary-text-color, #00f);
+  --primary-body-font: "Moderat-Regular", sans-serif;
+  --secondary-body-font: "TiemposText-Regular", serif;
+  --primary-bold-font: "Moderat-Bold", sans-serif;
+  --secondary-bold-font: "TiemposHeadline-Semibold", serif;
+  --primary-heading-font: "TiemposHeadline-Regular", serif;
+  --secondary-heading-font: "Moderat", sans-serif;
+
+  /* Text colors */
+  --main-body-copy-color: #00f;
+  --primary-text-color: #00f;
+  --secondary-text-color: #00f;
+  --inverted-text-color: #fff;
+  --link-color: #00f;
+
+  /* Accent colors */
+  --accent-pink: #f205c5;
+  --accent-purple: #812eff;
+  --accent-teal: #85b5bd;
+  --accent-violet: #bc6dff;
+  --accent-cyan: #71efff;
+  --accent-yellow: #f2e274;
+
+  /* Greyscale palette */
+  --color-black: #000;
+  --color-white: #fff;
+  --color-dark: #222;
+  --color-gray-dark: #333;
+  --color-gray: #5e5e5e;
+  --color-muted: #6c757d;
+  --color-muted-light: #4949a7;
+  --color-border: #c0c0c0;
+  --color-border-light: #ccc;
+  --color-disabled-bg: #e0e0e0;
+  --color-disabled-bg-light: #d8d8d8;
+  --color-disabled-placeholder: #858585;
+  --color-gray-medium: #666;
+  --color-light-bg: #f9f9f9;
+
+  /* Functional colors */
+  --main-body-background-color: #fff;
+  --color-primary: #00f;
+  --color-primary-disabled: #0000ff50;
+  --color-success: #068338;
+  --color-info: #0c7a8b;
+  --color-error: #dc3545;
+  --color-warning: #ffc107;
+  --color-warning-contrast: #8d5a00;
+  --color-warning-text: #fff;
+  --color-neutral-bg: #e2e8f0;
+  --color-neutral-text: #1a1d26;
+  --color-error-bg: #dfbdbc;
+  --color-error-text: #d9534f;
+
+  /* Other colors */
+  --color-react: #61dafb;
+  --color-header-bg: #282c34;
+  --home-gradient: linear-gradient(
+    120deg,
+    #007cf0 0%,
+    #ff0080 50%,
+    #fff200 100%
+  );
+  --wavy-underline-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+
+  /* Storybook Helper Colors */
+  --storybook-blue: #00f; /* Storybook Helper Color: Blue */
+  --storybook-cyan: #71efff; /* Storybook Helper Color: Cyan */
+  --storybook-pink: #f0f; /* Storybook Helper Color: Pink */
+  --storybook-purple: #812eff; /* Storybook Helper Color: Purple */
+  --storybook-violet: #bc6dff; /* Storybook Helper Color: Violet */
+  --storybook-bg: #f9f9f9; /* Storybook Helper Color: Background */
+  --storybook-dark: #222; /* Storybook Helper Color: Dark Text */
+  --storybook-yellow: #ff0; /* Storybook Helper Color: Yellow */
+  --storybook-white: #fff; /* Storybook Helper Color: White Text */
+  --storybook-gray: #707070; /* Storybook Helper Color: Gray */
+
+  /* Component-specific colors that should remain consistent across themes */
+  --checkbox-checkmark-color: #fff; /* Always white for checkmarks on blue background */
+  --checkbox-background-color: #fff; /* Always white background for unchecked state */
+
+  /* Border radius */
+
+  --radius-sm: 2px;
+  --radius-md: 0.25rem;
+  --radius-lg: 8px;
+
+  /* Sizing */
+
+  --size-width-md: 320px;
+  --size-width-lg: 900px;
+  --size-width-form: 600px;
+
+  /* Layout & Grid System */
+
+  /* Breakpoints (for reference in media queries) */
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide: 1440px;
+  --breakpoint-ultra: 1920px;
+
+  /* Container max-widths */
+  --container-sm: 640px; /* Small content blocks */
+  --container-md: 960px; /* Standard content width */
+  --container-lg: 1200px; /* Wide content areas */
+  --container-xl: 1440px; /* Extra wide layouts */
+  --container-full: 100%; /* Full bleed sections */
+
+  /* Grid system */
+  --grid-columns-mobile: 4; /* 4 columns on mobile */
+  --grid-columns-tablet: 8; /* 8 columns on tablet */
+  --grid-columns-desktop: 12; /* 12 columns on desktop */
+  --grid-gap-mobile: var(--space-layout-16); /* 16px on mobile */
+  --grid-gap-tablet: var(--space-layout-24); /* 24px on tablet */
+  --grid-gap-desktop: var(--space-layout-32); /* 32px on desktop */
+
+  /* Page margins (edge spacing) */
+  --page-margin-mobile: var(--space-layout-16); /* 16px */
+  --page-margin-tablet: var(--space-layout-32); /* 32px */
+  --page-margin-desktop: var(--space-layout-48); /* 48px */
+  --page-margin-wide: var(--space-layout-64); /* 64px */
+
+  /* Vertical rhythm multiplier (used for consistent spacing) */
+  --rhythm-base: 0.5rem; /* 8px base rhythm unit */
+
+  /* Spacing system */
+
+  /* Internal (component) spacing tokens: for padding, gaps, etc. */
+  --space-internal-0: 0; /* 0px */
+  --space-internal-2: 0.125rem; /* 2px */
+  --space-internal-4: 0.25rem; /* 4px */
+  --space-internal-6: 0.375rem; /* 6px */
+  --space-internal-8: 0.5rem; /* 8px */
+  --space-internal-12: 0.75rem; /* 12px */
+  --space-internal-16: 1rem; /* 16px */
+  --space-internal-24: 1.5rem; /* 24px */
+  --space-internal-32: 2rem; /* 32px */
+
+  /* Layout (outer) spacing tokens: for margins, grid gaps, section spacing, etc. */
+  --space-layout-0: 0; /* 0px */
+  --space-layout-4: 0.25rem; /* 4px */
+  --space-layout-6: 0.375rem; /* 6px */
+  --space-layout-8: 0.5rem; /* 8px */
+  --space-layout-16: 1rem; /* 16px */
+  --space-layout-24: 1.5rem; /* 24px */
+  --space-layout-32: 2rem; /* 32px */
+  --space-layout-40: 2.5rem; /* 40px */
+  --space-layout-48: 3rem; /* 48px */
+  --space-layout-64: 4rem; /* 64px */
+  --space-layout-80: 5rem; /* 80px */
+  --space-layout-96: 6rem; /* 96px */
+}
+
+::selection {
+  background-color: var(--selection-background);
+  color: var(--selection-color);
+}
+
+/* All rem values are divisible by 2 and map to even pixel values for rhythm and scale. */
+
+.themeDark,
+.themeDark :root {
+  --selection-background: var(--color-primary);
+  --selection-color: var(--color-white);
+  --main-body-background-color: #181a1b;
+  --color-title: #6fa8ff;
+  --color-text: #e0e0e0;
+  --primary-text-color: #6fa8ff;
+  --main-body-copy-color: #6fa8ff;
+  --secondary-text-color: #aaa;
+  --inverted-text-color: #181a1b;
+  --link-color: #71efff;
+  --color-primary: #6fa8ff;
+  --color-primary-disabled: #6fa8ff50;
+  --color-success: #4fd18b;
+  --color-info: #71efff;
+  --color-error: #ff6b6b;
+  --color-warning: #ffb366;
+  --color-warning-contrast: #ffb366;
+  --color-warning-text: #181a1b;
+  --color-neutral-bg: #3b3f5c;
+  --color-neutral-text: #f5f7ff;
+  --color-error-bg: #2d2323;
+  --color-error-text: #ffb3b3;
+  --color-react: #61dafb;
+  --color-header-bg: #181a1b;
+  --home-gradient: linear-gradient(
+    120deg,
+    #007cf0 0%,
+    #ff0080 50%,
+    #fff200 100%
+  );
+  --color-white: #181a1b;
+  --color-black: #fff;
+  --color-dark: #e0e0e0;
+  --color-gray-dark: #bbb;
+  --color-gray: #aaa;
+  --color-muted: #888;
+  --color-muted-light: #555;
+  --color-border: #333;
+  --color-border-light: #444;
+  --color-disabled-bg: #23272a;
+  --color-disabled-bg-light: #23272a;
+  --color-disabled-placeholder: #555;
+  --color-gray-medium: #888;
+  --color-light-bg: #23272a;
+  --accent-pink: #f205c5;
+  --accent-purple: #812eff;
+  --accent-teal: #85b5bd;
+  --accent-violet: #bc6dff;
+  --accent-cyan: #71efff;
+  --accent-yellow: #f2e274;
+  --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
+  --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
+  --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
+  --storybook-purple: #a884d7; /* Storybook Helper Color: Purple (darker for dark mode) */
+  --storybook-violet: #bc9de0; /* Storybook Helper Color: Violet (darker for dark mode) */
+  --storybook-bg: #23272a; /* Storybook Helper Color: Background (dark) */
+  --storybook-dark: #e0e0e0; /* Storybook Helper Color: Light Text for dark mode */
+  --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
+  --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
+  --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+  --cursor-circle:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='14' stroke='none' fill='%236fa8ff' stroke-width='2'/%3E%3C/svg%3E")
+      16 16,
+    pointer;
+}
+
+.themeHCB,
+.themeHCB :root {
+  --main-body-background-color: #000;
+  --color-title: #fff;
+  --color-text: #fff;
+  --primary-text-color: #fff;
+  --main-body-copy-color: #fff;
+  --secondary-text-color: #fff;
+  --inverted-text-color: #000;
+  --link-color: #fff;
+  --color-primary: #fff;
+  --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
+  --color-success: #fff;
+  --color-info: #fff;
+  --color-error: #fff;
+  --color-warning: #fff;
+  --color-warning-contrast: #fff;
+  --color-warning-text: #000;
+  --color-neutral-bg: #000;
+  --color-neutral-text: #fff;
+  --color-error-bg: #000;
+  --color-error-text: #fff;
+  --color-react: #fff;
+  --color-header-bg: #000;
+  --home-gradient: linear-gradient(120deg, #000 0%, #868686 50%, #fff 100%);
+  --color-white: #000;
+  --color-black: #fff;
+  --color-dark: #fff;
+  --color-gray-dark: #1f1f1f;
+  --color-gray: #aaa;
+  --color-muted: #888;
+  --color-muted-light: #555;
+  --color-border: #333;
+  --color-border-light: #444;
+  --color-disabled-bg: #313131;
+  --color-disabled-bg-light: #7b7b7b;
+  --color-disabled-placeholder: #555;
+  --color-gray-medium: #888;
+  --color-light-bg: #101010;
+  --accent-pink: #fff;
+  --accent-purple: #fff;
+  --accent-teal: #fff;
+  --accent-violet: #fff;
+  --accent-cyan: #fff;
+  --accent-yellow: #fff;
+  --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
+  --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
+  --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
+  --storybook-purple: #a884d7; /* Storybook Helper Color: Purple (darker for dark mode) */
+  --storybook-violet: #bc9de0; /* Storybook Helper Color: Violet (darker for dark mode) */
+  --storybook-bg: #23272a; /* Storybook Helper Color: Background (dark) */
+  --storybook-dark: #e0e0e0; /* Storybook Helper Color: Light Text for dark mode */
+  --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
+  --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
+  --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+  --selection-background: #fff;
+  --selection-color: #000;
+  --cursor-circle:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='14' stroke='%23000000' fill='%23ffffff' stroke-width='2'/%3E%3C/svg%3E")
+      16 16,
+    pointer;
+}
+
+.themeHCW,
+.themeHCW :root {
+  --main-body-background-color: #fff;
+  --color-title: #000;
+  --cursor-circle:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='14' stroke='%23ffffff' fill='%23000000' stroke-width='2'/%3E%3C/svg%3E")
+      16 16,
+    pointer;
+
+  /* High contrast decorative overrides */
+
+  /* High contrast decorative overrides */
+
+  /* Reduced selector specificity by removing descendant chain; rely on contextual class hooks */
+
+  .themeHCB .badge {
+    /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+    forced-color-adjust: none;
+  }
+
+  .themeHCB .toast {
+    /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+    forced-color-adjust: none;
+  }
+
+  /* View Transition future hook (commented until adopted) */
+
+  /* Future: view-transition-name hook (kept off until adopted) */
+  --color-text: #000;
+  --primary-text-color: #000;
+  --main-body-copy-color: #000;
+  --secondary-text-color: #000;
+  --inverted-text-color: #fff;
+  --link-color: #000;
+  --color-primary: #000;
+  --color-primary-disabled: color-mix(in srgb, #fff 60%, #000);
+  --color-success: #000;
+  --color-info: #000;
+  --color-error: #000;
+  --color-warning: #000;
+  --color-warning-contrast: #000;
+  --color-warning-text: #fff;
+  --color-neutral-bg: #fff;
+  --color-neutral-text: #000;
+  --color-error-bg: #fff;
+  --color-error-text: #000;
+  --color-react: #000;
+  --color-header-bg: #fff;
+  --home-gradient: linear-gradient(120deg, #000 0%, #868686 50%, #fff 100%);
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dark: #000;
+  --color-gray-dark: #e6e6e6;
+  --color-gray: #aaa;
+  --color-muted: #888;
+  --color-muted-light: #555;
+  --color-border: #333;
+  --color-border-light: #444;
+  --color-disabled-bg: #313131;
+  --color-disabled-bg-light: #7b7b7b;
+  --color-disabled-placeholder: #555;
+  --color-gray-medium: #888;
+  --color-light-bg: #f1f1f1;
+  --accent-pink: #000;
+  --accent-purple: #000;
+  --accent-teal: #000;
+  --accent-violet: #000;
+  --accent-cyan: #000;
+  --accent-yellow: #000;
+  --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
+  --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
+  --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
+  --storybook-purple: #a884d7; /* Storybook Helper Color: Purple (darker for dark mode) */
+  --storybook-violet: #bc9de0; /* Storybook Helper Color: Violet (darker for dark mode) */
+  --storybook-bg: #23272a; /* Storybook Helper Color: Background (dark) */
+  --storybook-dark: #e0e0e0; /* Storybook Helper Color: Light Text for dark mode */
+  --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
+  --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
+  --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+  --selection-background: #000;
+  --selection-color: #fff;
+}
+
+/* Hyphenation rules for headings - supports multiple languages */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  word-wrap: break-word;
+}
+
+.wavyUnderline,
+.readMore,
+.link,
+.cookieConsent a,
+.privacyPolicy a,
+.privacyPolicy a:hover {
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 6px;
+}
+
+.wavyUnderline::after,
+.readMore::after,
+.link::after,
+.cookieConsent a::after,
+.privacyPolicy a::after,
+.privacyPolicy a:hover::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  background-color: var(--underline-accent-color, currentcolor);
+  opacity: 0.9;
+  content: "";
+  -webkit-mask-image: var(--wavy-underline-mask);
+          mask-image: var(--wavy-underline-mask);
+  -webkit-mask-repeat: repeat-x;
+          mask-repeat: repeat-x;
+  -webkit-mask-size: 16px 6px;
+          mask-size: 16px 6px;
+}
+
+/* Language-specific hyphenation */
+
+:lang(en) h1,
+:lang(en) h2,
+:lang(en) h3,
+:lang(en) h4,
+:lang(en) h5,
+:lang(en) h6 {
+  hyphenate-limit-chars: 6 3 3;
+}
+
+:lang(fi) h1,
+:lang(fi) h2,
+:lang(fi) h3,
+:lang(fi) h4,
+:lang(fi) h5,
+:lang(fi) h6 {
+  hyphenate-limit-chars: 8 4 4;
+}
+
+:lang(sv) h1,
+:lang(sv) h2,
+:lang(sv) h3,
+:lang(sv) h4,
+:lang(sv) h5,
+:lang(sv) h6 {
+  hyphenate-limit-chars: 7 3 3;
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/styles/fonts.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+  font-family: Moderat-Regular;
+  font-weight: normal;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/Moderat-Regular.74a99cc3.woff) format("woff"),
+    url(/_next/static/media/Moderat-Regular.4bd03ad0.ttf) format("truetype"),
+    url(/_next/static/media/Moderat-Regular.4f111602.otf) format("opentype"),
+    url(/_next/static/media/Moderat-Regular.4511efae.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-family: Moderat-Bold;
+  font-weight: bold;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/Moderat-Bold.bdf0fb86.woff) format("woff"),
+    url(/_next/static/media/Moderat-Bold.94c4c65e.ttf) format("truetype"),
+    url(/_next/static/media/Moderat-Bold.da27c59d.otf) format("opentype"),
+    url(/_next/static/media/Moderat-Bold.044ebc26.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-family: TiemposText-Regular;
+  font-weight: normal;
+  font-display: swap;
+  font-style: normal;
+  src: url(/_next/static/media/TiemposText-Regular.fcda245c.otf) format("opentype");
+}
+
+@font-face {
+  font-family: TiemposText-Bold;
+  font-weight: bold;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/TiemposText-Bold.a114660e.otf) format("opentype"),
+    url(/_next/static/media/TiemposText-BoldItalic.e7ed9d48.otf) format("opentype");
+}
+
+@font-face {
+  font-family: TiemposText-Medium;
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/TiemposText-Medium.4023e619.otf) format("opentype"),
+    url("/_next/static/media/TiemposText-Medium Italic.d4d02117.otf") format("opentype");
+}
+
+@font-face {
+  font-family: TiemposText-Semibold;
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/TiemposText-Semibold.4f16b823.otf) format("opentype"),
+    url(/_next/static/media/TiemposText-SemiboldItalic.6c1ee590.otf) format("opentype");
+}
+
+@font-face {
+  font-family: TiemposHeadline-Light;
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/TiemposHeadline-Light.bf30c816.woff) format("woff"),
+    url(/_next/static/media/TiemposHeadline-Light.63b81e76.ttf) format("truetype"),
+    url(/_next/static/media/TiemposHeadline-Light.4c0a54e1.otf) format("opentype"),
+    url(/_next/static/media/TiemposHeadline-Light.ba441221.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-family: TiemposHeadline-Black;
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/TiemposHeadline-Black.30eb4e13.otf) format("opentype"),
+    url(/_next/static/media/TiemposHeadline-BlackItalic.9bd027ed.otf) format("opentype");
+}
+
+@font-face {
+  font-family: TiemposHeadline-Bold;
+  font-weight: bold;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/TiemposHeadline-Bold.2ac3dac2.otf) format("opentype"),
+    url(/_next/static/media/TiemposHeadline-BoldItalic.fbd076ce.otf) format("opentype");
+}
+
+@font-face {
+  font-family: TiemposHeadline-Medium;
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/TiemposHeadline-Medium.47c39c64.otf) format("opentype"),
+    url(/_next/static/media/TiemposHeadline-MediumItalic.c8d16f85.otf) format("opentype");
+}
+
+@font-face {
+  font-family: TiemposHeadline-Regular;
+  font-weight: normal;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/TiemposHeadline-Regular.321aaf71.otf) format("opentype"),
+    url(/_next/static/media/TiemposHeadline-RegularItalic.649666e3.otf) format("opentype");
+}
+
+@font-face {
+  font-family: TiemposHeadline-Semibold;
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+  src:
+    url(/_next/static/media/TiemposHeadline-Semibold.84bfb8d7.otf) format("opentype"),
+    url(/_next/static/media/TiemposHeadline-SemiboldItalic.b156fd57.otf) format("opentype");
+}
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/styles/typography.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+/* Typography System - Line Heights & Vertical Rhythm */
+
+/*
+  Improved line-height for better readability:
+  - Headings: 1.2-1.375 (tight to snug)
+  - Body text: 1.5-1.625 (normal to relaxed)
+  - Long-form content: 1.625-1.75 (relaxed to loose)
+*/
+
+/* Base body text */
+
+body {
+  line-height: var(--line-height-normal); /* 1.5 */
+}
+
+/* Headings - tighter line-height for impact */
+
+h1 {
+  -webkit-margin-after: var(--space-layout-24);
+          margin-block-end: var(--space-layout-24);
+  line-height: var(--line-height-tight); /* 1.2 */
+}
+
+h2 {
+  -webkit-margin-after: var(--space-layout-24);
+          margin-block-end: var(--space-layout-24);
+  line-height: var(--line-height-snug); /* 1.375 */
+}
+
+h3 {
+  -webkit-margin-after: var(--space-layout-16);
+          margin-block-end: var(--space-layout-16);
+  line-height: var(--line-height-snug); /* 1.375 */
+}
+
+h4,
+h5,
+h6 {
+  -webkit-margin-after: var(--space-layout-16);
+          margin-block-end: var(--space-layout-16);
+  line-height: var(--line-height-normal); /* 1.5 */
+}
+
+/* Paragraphs - relaxed for readability */
+
+p {
+  -webkit-margin-after: var(--space-layout-16);
+          margin-block-end: var(--space-layout-16);
+  line-height: var(--line-height-relaxed); /* 1.625 */
+}
+
+/* Long-form content articles */
+
+article p,
+.article p,
+.content p,
+.prose p {
+  -webkit-margin-after: var(--space-layout-24);
+          margin-block-end: var(--space-layout-24);
+  line-height: var(--line-height-loose); /* 1.75 */
+}
+
+/* Lists */
+
+ul,
+ol {
+  -webkit-margin-after: var(--space-layout-16);
+          margin-block-end: var(--space-layout-16);
+  -webkit-padding-start: var(--space-layout-32);
+          padding-inline-start: var(--space-layout-32);
+  line-height: var(--line-height-relaxed); /* 1.625 */
+}
+
+li {
+  -webkit-margin-after: var(--space-internal-8);
+          margin-block-end: var(--space-internal-8);
+}
+
+/* Blockquotes */
+
+blockquote {
+  margin-block: var(--space-layout-32);
+  margin-inline: var(--space-layout-24);
+  -webkit-padding-start: var(--space-layout-24);
+          padding-inline-start: var(--space-layout-24);
+  -webkit-border-start: 4px solid var(--color-primary);
+          border-inline-start: 4px solid var(--color-primary);
+  line-height: var(--line-height-relaxed); /* 1.625 */
+  font-style: italic;
+}
+
+/* Code blocks */
+
+/* Block code: preserve readability */
+
+pre {
+  line-height: var(--line-height-normal); /* 1.5 */
+}
+
+/* Inline code: inherit to avoid disrupting text rhythm */
+
+code {
+  line-height: inherit;
+}
+
+/* Small text */
+
+small,
+.textSmall {
+  line-height: var(--line-height-normal); /* 1.5 */
+}
+
+/* Captions & meta text */
+
+figcaption,
+.caption,
+.meta {
+  font-size: 0.875rem; /* 14px - scalable fallback */
+  line-height: var(--line-height-normal); /* 1.5 */
+}
+
+/* Buttons & UI elements - tighter spacing */
+
+button,
+.button,
+input,
+select,
+textarea {
+  line-height: var(--line-height-normal); /* 1.5 */
+}
+
+/* Vertical rhythm utilities */
+
+.rhythmTight {
+  line-height: var(--line-height-tight);
+}
+
+.rhythmSnug {
+  line-height: var(--line-height-snug);
+}
+
+.rhythmNormal {
+  line-height: var(--line-height-normal);
+}
+
+.rhythmRelaxed {
+  line-height: var(--line-height-relaxed);
+}
+
+.rhythmLoose {
+  line-height: var(--line-height-loose);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    -webkit-margin-after: var(--space-layout-16);
+            margin-block-end: var(--space-layout-16);
+  }
+
+  h2 {
+    -webkit-margin-after: var(--space-layout-16);
+            margin-block-end: var(--space-layout-16);
+  }
+
+  article p,
+  .article p,
+  .content p,
+  .prose p {
+    -webkit-margin-after: var(--space-layout-16);
+            margin-block-end: var(--space-layout-16);
+  }
+
+  blockquote {
+    margin-block: var(--space-layout-24);
+    margin-inline: var(--space-layout-16);
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/styles/grain.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * Animated grain/static overlay utility.
+ *
+ * Usage:
+ *   <div class="grainy">
+ *     <!-- content -->
+ *   </div>
+ *
+ * The pseudo-element renders a layered gradient noise texture and jitters it
+ * slightly to mimic film grain without external assets.
+ */
+
+.grainy {
+  position: relative;
+  background-color: var(--color-black);
+  color: var(--color-light-bg);
+  overflow: hidden;
+}
+
+.grainy::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgb(255 255 255 / 8%) 1px, transparent 1px),
+    radial-gradient(circle, rgb(255 255 255 / 4%) 1px, transparent 1px);
+  background-size:
+    3px 3px,
+    5px 5px;
+  pointer-events: none;
+  animation: grain-noise 1.5s steps(6) infinite;
+  opacity: 0.25;
+  content: "";
+  mix-blend-mode: screen;
+}
+
+@keyframes grain-noise {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-2%, 1%);
+  }
+
+  50% {
+    transform: translate(1%, -1%);
+  }
+
+  75% {
+    transform: translate(-1%, -2%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/*!***********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/index.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  background-color: var(--main-body-background-color);
+  overflow-wrap: anywhere; /* defensive long word wrap */
+  color: var(--main-body-copy-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Defensive CSS: global box-sizing and safe defaults */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Media elements constrained to container width */
+
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form elements inherit fonts for consistency */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Reduce specificity for generic utilities */
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Anchor default touch target improvements */
+
+a {
+  touch-action: manipulation;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary, #06f);
+  outline-offset: 2px;
+}
+
+/* Remove default margin on lists/paragraphs when desired via utility */
+
+/* Lists: logical indentation. Stylelint incorrectly flags padding-left (phantom); keep logical property. */
+
+:where(ul, ol) {
+  -webkit-padding-start: 1.25rem;
+          padding-inline-start: 1.25rem;
+}
+
+/* Safe focus outline fallback for browsers stripping outlines */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Enhancement: enable variable font optical sizing where supported */
+@supports (font-optical-sizing: auto) {
+  body {
+    font-optical-sizing: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Visually hidden utility for screen reader only content */
+
+.visuallyHidden {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./app/globals.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+
+
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Modal/Modal.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+.Modal_overlay__2Sh3U {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0 0 0 / 50%);
+}
+
+.Modal_modal__JNobJ {
+  display: flex;
+  width: 90%;
+  max-width: var(--size-width-lg);
+  max-height: 90vh;
+  flex-direction: column;
+  background-color: var(--color-white);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
+  overflow-y: auto;
+}
+
+.Modal_modalContent__HnkSt {
+  -webkit-padding-before: 1.5rem;
+          padding-block-start: 1.5rem;
+}
+
+.Modal_header__Pfr2K {
+  display: flex;
+  padding: 2rem 1.5rem 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Modal_leftHeader__P7gUN {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.Modal_header__Pfr2K svg {
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.Modal_title__a7vfd {
+  margin: 0;
+  font-family: var(--secondary-heading-font, sans-serif);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.Modal_menu__4aaXs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Modal_closeButton__7VSKG {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.Modal_content__PAI6v {
+  display: flex;
+  padding: 0 1.5rem 1rem;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-text);
+  color: var(--color-primary);
+}
+
+.Modal_footer__V3Emu {
+  display: flex;
+  padding: 1rem 1.5rem 1.5rem;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.Modal_success__o9wp2 {
+  max-width: 30vw;
+  border-top: 4px solid var(--color-success);
+}
+
+.Modal_error__gu80t {
+  max-width: 30vw;
+  border-top: 4px solid var(--color-error);
+}
+
+.Modal_warning__XleZ6 {
+  max-width: 30vw;
+  border-top: 4px solid var(--color-warning);
+}
+
+.Modal_info__GYN_E {
+  max-width: 30vw;
+  border-top: 4px solid var(--color-info);
+}
+
+.Modal_loading__IC8Dq {
+  max-width: 30vw;
+  border-top: none;
+}
+
+.Modal_loading__IC8Dq .Modal_content__PAI6v {
+  display: flex;
+  min-height: 180px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.Modal_spinner__rA2JC {
+  width: 24px;
+  height: 24px;
+  border: 4px solid var(--color-border-light);
+  border-radius: 50%;
+  animation: Modal_spin__ilpr3 1s linear infinite;
+  border-top: 4px solid var(--color-info);
+}
+
+@keyframes Modal_spin__ilpr3 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .Modal_success__o9wp2,
+  .Modal_error__gu80t,
+  .Modal_warning__XleZ6,
+  .Modal_info__GYN_E,
+  .Modal_loading__IC8Dq {
+    width: 90vw;
+    max-width: 90vw;
+  }
+
+  .Modal_modal__JNobJ {
+    margin: 1rem;
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .Modal_header__Pfr2K {
+    padding: 1.5rem 1rem 0.75rem;
+  }
+
+  .Modal_content__PAI6v {
+    padding: 0 1rem 0.75rem;
+  }
+
+  .Modal_footer__V3Emu {
+    padding: 0.75rem 1rem 1.5rem;
+  }
+}
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Button/Button.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.Button_button__exqP_ {
+  display: inline-flex;
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-16);
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  font-family: var(--primary-body-font);
+  font-size: var(--font-size-button-m);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  overflow: hidden;
+}
+
+.Button_button__exqP_.Button_primary__DEC_1 {
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.Button_button__exqP_.Button_secondary__9ex2D {
+  border: 0.125rem solid var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+/* Inverse modifier: swap primary blue text/border to white for contrast on dark backgrounds */
+
+.Button_button__exqP_.Button_inverse__VEgpA {
+  color: var(--color-primary);
+}
+
+.Button_button__exqP_.Button_primary__DEC_1.Button_inverse__VEgpA {
+  background-color: var(--color-white);
+
+  /* Text color adapts to ancestor surface via JS-set CSS variable */
+  color: var(--dt-button-inverse-fg, var(--color-primary));
+}
+
+.Button_button__exqP_.Button_secondary__9ex2D.Button_inverse__VEgpA {
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.Button_button__exqP_.Button_tertiary__ze_KB.Button_inverse__VEgpA {
+  color: var(--color-white);
+}
+
+.Button_button__exqP_.Button_tertiary__ze_KB {
+  border: none;
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.Button_button__exqP_.Button_error__FOVy3 {
+  border: none;
+  background-color: var(--color-error);
+  color: var(--color-white);
+}
+
+.Button_button__exqP_.Button_warning__aThTQ {
+  border: none;
+  background-color: var(--color-warning-contrast);
+  color: var(--color-warning-text);
+}
+
+.Button_button__exqP_.Button_success__4NeIT {
+  border: none;
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+.Button_button__exqP_.Button_info__bChu8 {
+  border: none;
+  background-color: var(--color-info);
+  color: var(--color-white);
+}
+
+.Button_button__exqP_:disabled {
+  background-color: var(--color-disabled-bg);
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+
+.Button_button__exqP_.Button_iconOnly__bB_7A {
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  text-align: center;
+}
+
+.Button_icon__r3wfm {
+  display: inline-flex;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.Button_button__exqP_ .Button_text__bvVGC {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1; /* avoid extra vertical space from font metrics */
+}
+
+/* (moved tertiary spacing override below generic spacing rules) */
+
+.Button_button__exqP_.Button_iconOnly__bB_7A .Button_icon__r3wfm {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.Button_icon__r3wfm svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Button_endIcon__chsgC {
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem;
+}
+
+/* Use data attribute selectors for reliable cross-module spacing */
+
+.Button_button__exqP_ [data-button-slot="icon"] + [data-button-slot="text"],
+.Button_button__exqP_ > :not(:last-child):is(svg, .Button_icon__r3wfm) + .Button_text__bvVGC {
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem; /* Add padding between icon and text */
+}
+
+.Button_button__exqP_ [data-button-slot="text"] + [data-button-slot="end-icon"],
+.Button_button__exqP_ > .Button_text__bvVGC + :is(svg, .Button_endIcon__chsgC) {
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem; /* Add padding between text and icon when icon is on the right */
+}
+
+.Button_button__exqP_ > .Button_text__bvVGC + .Button_icon__r3wfm {
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem; /* Add padding between text and icon when icon appears after the text */
+}
+
+/* Tertiary variant: slightly tighter icon-text spacing */
+
+.Button_button__exqP_.Button_tertiary__ze_KB [data-button-slot="icon"] {
+  -webkit-margin-end: var(--space-internal-2);
+          margin-inline-end: var(--space-internal-2); /* tighter spacing */
+}
+
+.Button_button__exqP_.Button_tertiary__ze_KB [data-button-slot="text"] {
+  -webkit-margin-start: var(--space-internal-2);
+          margin-inline-start: var(--space-internal-2); /* tighter spacing */
+}
+
+.Button_button__exqP_.Button_s__BsaXy {
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-12);
+  min-block-size: 1.5rem;
+  font-size: var(--font-size-button-s);
+}
+
+.Button_button__exqP_.Button_m__vVyTh {
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-16);
+  min-block-size: 2.5rem;
+  font-size: var(--font-size-button-m);
+}
+
+.Button_button__exqP_.Button_l__39vN_ {
+  padding-block: var(--space-internal-12);
+  padding-inline: var(--space-internal-24);
+  min-block-size: 3rem;
+  font-size: var(--font-size-button-l);
+}
+
+.Button_button__exqP_.Button_s__BsaXy.Button_iconOnly__bB_7A {
+  padding: 0;
+  block-size: 1.5rem;
+  inline-size: 1.5rem;
+  min-inline-size: 1.5rem;
+}
+
+.Button_button__exqP_.Button_m__vVyTh.Button_iconOnly__bB_7A {
+  padding: 0;
+  block-size: 2.5rem;
+  inline-size: 2.5rem;
+  min-inline-size: 2.5rem;
+}
+
+.Button_button__exqP_.Button_l__39vN_.Button_iconOnly__bB_7A {
+  padding: 0;
+  block-size: 3rem;
+  inline-size: 3rem;
+  min-inline-size: 3rem;
+}
+
+/* Reduced specificity: generic icon svg size */
+
+.Button_button__exqP_.Button_iconOnly__bB_7A svg {
+  font-size: 0.75rem;
+}
+
+/* Reduced specificity: large size icon override */
+
+.Button_button__exqP_.Button_l__39vN_.Button_iconOnly__bB_7A svg {
+  font-size: 1.25rem;
+}
+
+.Button_button__exqP_.Button_rounded__FkQOJ {
+  border-radius: 9999px;
+}
+
+@media (max-width: 768px) {
+  .Button_button__exqP_.Button_s__BsaXy {
+    padding-block: var(--space-internal-16);
+  }
+
+  .Button_button__exqP_.Button_m__vVyTh {
+    padding-block: var(--space-internal-16);
+  }
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Icon/Icon.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/* stylelint-disable rule-empty-line-before */
+.Icon_base__PcV20 {
+  display: inline-flex;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.Icon_size2xs__AEJHJ {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.Icon_sizeXs__Hc0xD {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.Icon_sizeSm__9NMOJ {
+  width: 1rem;
+  height: 1rem;
+}
+
+.Icon_sizeMd__mQm_A {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.Icon_sizeLg__T7y0H {
+  width: 2rem;
+  height: 2rem;
+}
+
+.Icon_sizeXl__MWfeK {
+  width: 3rem;
+  height: 3rem;
+}
+
+.Icon_size2xl__hH_DA {
+  width: 4rem;
+  height: 4rem;
+}
+
+@keyframes Icon_icon-spin__DzvMR {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes Icon_icon-pulse__Yirla {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.Icon_spin__gfXKt > svg {
+  animation: Icon_icon-spin__DzvMR 1s linear infinite;
+}
+
+.Icon_pulse___9gCg > svg {
+  animation: Icon_icon-pulse__Yirla 1.2s ease-in-out infinite;
+}
+/* stylelint-enable rule-empty-line-before */
+
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Title/Title.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/* stylelint-disable rule-empty-line-before */
+
+.Title_title__rZh60 {
+  margin-block: 0 var(--space-layout-16, 1rem);
+  margin-inline: 0;
+  font-family: var(--font-title);
+  font-size: var(--font-size-title);
+  font-weight: 500;
+  overflow-wrap: normal;
+  word-break: normal;
+
+  /* Prevent hyphenation/word breaking for titles */
+  -webkit-hyphens: none;
+          hyphens: none;
+  color: var(--color-title);
+}
+
+/* Enhancement: balance multi-line headings for improved rag */
+@supports (text-wrap: balance) {
+  .Title_title__rZh60 {
+    text-wrap: balance;
+  }
+}
+
+.Title_titleXXS__uz_o_ {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-title-xxs);
+}
+
+.Title_titleXS__imKrZ {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-title-xs);
+}
+
+.Title_titleS__fIymN {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-title-s);
+}
+
+.Title_titleM__y7bbh {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-title-m);
+}
+
+.Title_titleL__dQGJX {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-title-l);
+}
+
+.Title_titleXL__J0aFy {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-title-xl);
+}
+
+.Title_titleXXL__Q_1wI {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-title-xxl);
+}
+
+.Title_fontSerif__CG2rs {
+  font-family: var(--font-title, "TiemposHeadline-Regular"), serif;
+}
+
+.Title_fontSans__Gsek7 {
+  font-family: var(--font-text);
+}
+
+/* Line height utility classes */
+.Title_lineHeightTight__RDUW4 {
+  line-height: var(--line-height-tight);
+}
+
+.Title_lineHeightSnug__mzc9v {
+  line-height: var(--line-height-snug);
+}
+
+.Title_lineHeightNormal__bhf1o {
+  line-height: var(--line-height-normal);
+}
+
+.Title_lineHeightRelaxed__UWZR8 {
+  line-height: var(--line-height-relaxed);
+}
+
+.Title_lineHeightLoose__NMx0G {
+  line-height: var(--line-height-loose);
+}
+
+@supports (font-optical-sizing: auto) {
+  .Title_title__rZh60,
+  .Title_fontSerif__CG2rs,
+  .Title_fontSans__Gsek7 {
+    font-optical-sizing: auto;
+  }
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Link/Link.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.Link_link__15_Y0 {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-text);
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.Link_linkS__n_Ngu {
+  gap: 0.3rem;
+  font-size: 1rem;
+}
+
+.Link_linkM__uGf0e {
+  gap: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.Link_linkL__qd8Zz {
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.Link_icon__O5gQv {
+  font-size: 0.75em; /* 12px */
+}
+
+.Link_link__15_Y0.Link_disabled__ha58W {
+  color: var(--color-gray-medium);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/CookieConsent/CookieConsent.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+.CookieConsent_cookieConsent__dXrYq {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  background-color: var(--color-gray-light);
+  font-family: Moderat, sans-serif;
+  border-top: 1px solid var(--color-gray);
+}
+
+.CookieConsent_cookieConsent__dXrYq p {
+  margin: 0;
+  align-items: start;
+  font-size: 1.1rem; /* 14px */
+  line-height: 1.6;
+}
+
+.CookieConsent_cookieConsent__dXrYq a {
+  color: var(--color-primary);
+}
+
+.CookieConsent_cookieConsent__dXrYq .CookieConsent_footer__Cl8aO {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.CookieConsent_footerActions__zwBWU {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.CookieConsent_leftActions__LwWfT {
+  display: flex;
+  align-items: center;
+}
+
+.CookieConsent_rightActions__OSISQ {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .CookieConsent_footerActions__zwBWU {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .CookieConsent_leftActions__LwWfT {
+    justify-content: center;
+  }
+
+  .CookieConsent_rightActions__OSISQ {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .CookieConsent_rightActions__OSISQ > button {
+    width: 100%;
+  }
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/ChatWidget/ChatWidget.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.ChatWidget_container__ucXL_ {
+  display: grid;
+  position: fixed;
+  inset: auto 1.5rem 1.5rem auto;
+  z-index: 1000;
+  min-height: 24rem;
+  place-items: end;
+  pointer-events: none;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.ChatWidget_container__ucXL_[data-open="false"] {
+  transform: translateY(10%) scale(0.98);
+  opacity: 0;
+}
+
+.ChatWidget_panel__79v4O {
+  display: flex;
+  width: min(32.5rem, 90vw);
+  max-width: 32.5rem;
+  min-height: 24rem;
+  max-height: min(70vh, 640px);
+  flex-direction: column;
+  border: 1px solid var(--color-border, #232323);
+  border-radius: 1.25rem;
+  background-color: var(--main-body-background-color, #fff);
+  box-shadow: 0 25px 60px rgb(0 0 0 / 15%);
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+/* Enhanced backdrop blur where supported (solid fallback above) */
+@supports ((-webkit-backdrop-filter: blur(12px)) or (backdrop-filter: blur(12px))) {
+  .ChatWidget_panel__79v4O {
+    background: color-mix(in srgb, var(--color-white) 85%, transparent);
+    -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+  }
+
+  @supports (background: color-mix(in srgb, white 85%, transparent)) {
+    .ChatWidget_panel__79v4O {
+      /* Progressive enhancement: mix 85% white with transparency for consistent rendering */
+      background: color-mix(in srgb, var(--color-white) 85%, transparent);
+    }
+  }
+}
+
+.ChatWidget_header__YmODJ {
+  display: flex;
+  padding: 1rem 1.25rem 0.75rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.ChatWidget_headerCopy__4taRv {
+  display: flex;
+  max-width: 70%;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Availability dot replaces previous badge/icon for space efficiency */
+
+.ChatWidget_availabilityDot__Y8j87 {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-top: 0.22rem;
+}
+
+.ChatWidget_availabilityDotOpen__6xMxU {
+  background: var(--color-success);
+}
+
+.ChatWidget_availabilityDotClosed__8oush {
+  background: var(--color-error);
+}
+
+/* Inline variant for positioning next to tagline text */
+
+.ChatWidget_availabilityDotInline__qdiZR {
+  /* logical conversion: was margin-left */
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem;
+  vertical-align: text-top;
+}
+
+.ChatWidget_availabilityIcon__wuf_v {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.ChatWidget_availabilityIconClosed__XBazS {
+  color: var(--color-error);
+}
+
+.ChatWidget_availabilityIconOpen__lj4ze {
+  color: var(--color-success);
+}
+
+/* stylelint-disable declaration-no-important -- Overriding Text component styles */
+.ChatWidget_header__YmODJ .ChatWidget_tagline___WqIH {
+  margin: 0 !important;
+  font-family: Moderat, var(--font-sans), sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  font-optical-sizing: auto;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary-text-color) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ChatWidget_header__YmODJ .ChatWidget_tagline___WqIH,
+.ChatWidget_header__YmODJ .ChatWidget_tagline___WqIH * {
+  font-family: Moderat, sans-serif !important;
+}
+/* stylelint-enable declaration-no-important */
+
+/* stylelint-disable declaration-no-important -- Overriding Text component styles */
+.ChatWidget_offlineText__lc8__ {
+  display: inline-block;
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem;
+  font-family: Moderat, var(--font-sans), sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  font-optical-sizing: auto;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-error);
+  -webkit-font-smoothing: antialiased;
+}
+/* stylelint-enable declaration-no-important */
+
+/* stylelint-disable declaration-no-important -- Overriding Title component styles */
+.ChatWidget_header__YmODJ .ChatWidget_title__IVJ36 {
+  margin: 0 !important;
+  font-family: Moderat, var(--font-sans), sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  font-optical-sizing: auto;
+  color: var(--color-title) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ChatWidget_header__YmODJ .ChatWidget_title__IVJ36,
+.ChatWidget_header__YmODJ .ChatWidget_title__IVJ36 * {
+  font-family: Moderat, sans-serif !important;
+}
+/* stylelint-enable declaration-no-important */
+
+.ChatWidget_subtitle__6IsD2 {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--secondary-text-color);
+}
+
+.ChatWidget_headerActions__gNmTN {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@supports not (gap: 1rem) {
+  /* gap fallback using logical property (was margin-left) */
+
+  .ChatWidget_headerActions__gNmTN > :not(:first-child) {
+    -webkit-margin-start: 1rem;
+            margin-inline-start: 1rem;
+  }
+}
+
+/* Button component handles all visual styling - only layout overrides here */
+
+.ChatWidget_resetButton__djS4y {
+  /* Prevent multi-line wrapping of reset label */
+  white-space: nowrap;
+}
+
+/* Hide text label on narrow viewports, preserve icon for accessibility */
+
+@media (max-width: 560px) {
+  .ChatWidget_resetButton__djS4y [data-button-slot="text"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+}
+
+.ChatWidget_messages__4S8ly {
+  display: flex;
+  padding: 1rem 1.25rem;
+  flex: 1 1;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+}
+
+@supports (scroll-behavior: smooth) {
+  .ChatWidget_messages__4S8ly {
+    scroll-behavior: smooth;
+  }
+}
+
+@supports not (gap: 0.75rem) {
+  /* gap fallback: remove universal selector, keep block direction */
+
+  .ChatWidget_messages__4S8ly > :not(:first-child) {
+    -webkit-margin-before: 0.75rem;
+            margin-block-start: 0.75rem;
+  }
+}
+
+.ChatWidget_message__ddoA8 {
+  padding: 0.5rem 1rem;
+  max-width: 83%;
+  border-radius: 0.85rem;
+  background: rgb(0 0 0 / 6%);
+  font-family: Moderat, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text, #111);
+
+  /* Email workflow blocks */
+
+  .ChatWidget_workflowBlock__1DaI8 {
+    margin-block: var(--space-internal-16);
+    padding: var(--space-internal-16);
+
+    /* border: 1px solid var(--color-border-muted, rgb(255 255 255 / 30%));
+    border-radius: var(--radius-sm, 4px); */
+
+    /* background: var(--color-primary-alt, rgb(255 255 255 / 6%)); */
+  }
+
+  .ChatWidget_workflowActions__jqzNZ {
+    display: flex;
+    -webkit-margin-before: var(--space-internal-8);
+            margin-block-start: var(--space-internal-8);
+    flex-wrap: wrap;
+    gap: var(--space-internal-8);
+  }
+
+  .ChatWidget_editActions__emDz_ {
+    display: flex;
+    -webkit-margin-before: var(--space-internal-12);
+            margin-block-start: var(--space-internal-12);
+    flex-wrap: wrap;
+    gap: var(--space-internal-4);
+  }
+
+  .ChatWidget_summaryList__3f6hO {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: minmax(8rem, 1fr) 2fr;
+    grid-gap: var(--space-internal-4) var(--space-internal-8);
+    gap: var(--space-internal-4) var(--space-internal-8);
+  }
+
+  .ChatWidget_summaryList__3f6hO dt {
+    font-weight: 600;
+  }
+
+  .ChatWidget_summaryList__3f6hO dd {
+    margin: 0;
+  }
+}
+
+.ChatWidget_message__ddoA8[data-role="assistant"] {
+  align-self: flex-start;
+  border-radius: 1rem 1rem 1rem 0;
+  background: rgb(0 0 0 / 4%);
+}
+
+.ChatWidget_message__ddoA8[data-role="user"] {
+  align-self: flex-end;
+  border-radius: 1rem 1rem 0;
+  background: var(--color-primary, #0f62fe);
+  color: var(--inverted-text-color, #fff);
+}
+
+/* Full-span container for components that should stretch across panel width (e.g. OpenHours) */
+
+.ChatWidget_fullSpan__DYR2P {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-self: stretch;
+  gap: 0.5rem;
+}
+
+.ChatWidget_statusBanner__Jyt7g {
+  margin: 0 1.25rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgb(255 86 86 / 24%);
+  border-radius: 0.85rem;
+  background: rgb(255 86 86 / 12%);
+  font-family: Moderat, sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--color-text, #111);
+}
+
+.ChatWidget_composer__na6mP {
+  display: flex;
+  padding: 0.9rem 1.25rem 1.1rem;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ChatWidget_inputLabel__bZZSB {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--secondary-text-color);
+}
+
+.ChatWidget_inputRow___3prt {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+}
+
+.ChatWidget_input__sv7DY {
+  padding: 0.76rem 0.85rem;
+  min-height: 3rem;
+  flex: 1 1;
+  border: 1px solid var(--color-border-light);
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+  resize: none;
+}
+
+.ChatWidget_input__sv7DY:focus {
+  outline: var(--color-primary);
+  box-shadow: 0 0 0 4px rgb(15 98 254 / 15%);
+}
+
+.ChatWidget_input__sv7DY::placeholder {
+  font-family: var(--font-sans);
+  color: var(--primary-text-color);
+  opacity: 0.4;
+  font-style: italic;
+}
+
+.ChatWidget_sendButton__OmHrO {
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  /* stylelint-disable-next-line declaration-no-important -- Override Button component styles */
+  border-radius: 50% !important;
+  background: var(--color-primary);
+  font-size: 1.1rem;
+  color: var(--inverted-text-color);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.ChatWidget_sendButton__OmHrO:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ChatWidget_toggle__q0UAM {
+  display: inline-flex;
+  position: fixed;
+  inset: auto 1.5rem 1.5rem auto;
+  z-index: 1002;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: var(--color-primary, #0f62fe);
+  box-shadow: 0 18px 40px rgb(15 98 254 / 30%);
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--inverted-text-color, #fff);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.ChatWidget_toggle__q0UAM:focus-visible {
+  border-radius: 9999px;
+  outline: 2px solid currentcolor;
+  outline-offset: 4px;
+  outline-color: color-mix(in srgb, currentcolor 65%, black);
+}
+
+.ChatWidget_toggle__q0UAM[data-open="true"] {
+  pointer-events: none;
+  transform: translateY(20%);
+  opacity: 0;
+}
+
+.ChatWidget_toggleLabel__lQ4z2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem; /* tighten icon-label spacing */
+  font-family: Moderat, sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+@supports not (gap: 0.25rem) {
+  /* gap fallback using logical property (was margin-left) */
+
+  .ChatWidget_toggleLabel__lQ4z2 > :not(:first-child) {
+    -webkit-margin-start: 0.25rem;
+            margin-inline-start: 0.25rem;
+  }
+}
+
+/* Override default Button internal spacing for chat toggle specifically */
+
+/* Increased specificity via parent state removes need for previous !important overrides */
+
+.ChatWidget_toggle__q0UAM[data-open] .ChatWidget_icon__BdMtF {
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+}
+
+.ChatWidget_toggle__q0UAM[data-open] .ChatWidget_text__IQeFG {
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+}
+
+.ChatWidget_toggle__q0UAM .ChatWidget_icon__BdMtF svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.ChatWidget_shortcutHint__EZ2Hh {
+  margin: 0;
+  /* stylelint-disable-next-line declaration-no-important -- Ensure spacing consistency */
+  -webkit-margin-after: 0 !important;
+          margin-block-end: 0 !important;
+  -webkit-padding-start: 1rem;
+          padding-inline-start: 1rem;
+  font-family: Moderat, sans-serif;
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+  .ChatWidget_container__ucXL_ {
+    inset: auto 0 0;
+    width: 100%;
+    place-items: center;
+  }
+
+  .ChatWidget_panel__79v4O {
+    width: 100%;
+    max-height: 85vh;
+    border-inline: none;
+    border-radius: 1rem 1rem 0 0;
+    border-bottom: none;
+  }
+
+  .ChatWidget_messages__4S8ly {
+    padding-inline: 1rem;
+  }
+
+  .ChatWidget_toggle__q0UAM {
+    inset: auto 1rem 1rem auto;
+    padding-inline: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ChatWidget_container__ucXL_,
+  .ChatWidget_toggle__q0UAM,
+  .ChatWidget_panel__79v4O,
+  .ChatWidget_sendButton__OmHrO,
+  .ChatWidget_input__sv7DY {
+    transition-duration: 0.01ms;
+    transition-delay: 0ms;
+  }
+}
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Inputs/Inputs.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.Inputs_inputContainer__aKaEe {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.Inputs_label__Gl2jm {
+  align-items: flex-start;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.Inputs_input__hSW43 {
+  margin-block: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.5rem;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-white);
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--color-primary);
+  transition: border-color 0.3s;
+}
+
+.Inputs_errorMessage__O2BZr {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--color-error);
+  margin-top: 0.5rem;
+}
+
+.Inputs_input__hSW43::placeholder {
+  color: var(--color-primary);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.Inputs_input__hSW43:focus {
+  box-sizing: border-box;
+  border-width: 1px;
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+}
+
+.Inputs_error__kz_sd {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.Inputs_input__hSW43.Inputs_error__kz_sd::placeholder {
+  color: var(--color-error); /* Error color for placeholder */
+}
+
+.Inputs_input__hSW43:disabled {
+  border-color: var(--color-primary-disabled);
+  background-color: var(--color-disabled-bg-light);
+  cursor: not-allowed;
+}
+
+.Inputs_input__hSW43:disabled::placeholder {
+  color: var(--color-disabled-placeholder);
+}
+
+.Inputs_masterCheckbox__Jb0i_ {
+  display: flex;
+  margin-block: 1.5rem;
+  align-items: flex-start;
+}
+
+@supports (accent-color: var(--color-primary)) {
+  .Inputs_masterCheckbox__Jb0i_ input[type="checkbox"] {
+    accent-color: var(--color-primary);
+  }
+}
+
+.Inputs_chatTextArea__bd5fI {
+  padding: 0.76rem 0.85rem;
+  width: 100%;
+  min-height: 3rem;
+  border: 1px solid var(--color-border-light, #3a3a3a);
+  border-radius: 0.75rem;
+  background: transparent;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-primary);
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+  resize: vertical;
+}
+
+.Inputs_chatTextArea__bd5fI::placeholder {
+  font-family: var(--font-text);
+  color: var(--color-primary);
+  opacity: 0.4;
+  font-style: italic;
+}
+
+.Inputs_chatTextArea__bd5fI:focus {
+  border-color: var(--color-primary, #0f62fe);
+  outline: 2px solid transparent; /* Transparent outline for high contrast mode */
+  box-shadow: 0 0 0 4px rgb(15 98 254 / 15%);
+}
+
+.Inputs_chatTextArea__bd5fI:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Label/Label.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+.Label_label__hT6eV {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* 8px */
+  font-family: var(--font-text);
+  font-size: 1rem; /* 16px */
+  color: var(--color-primary);
+}
+
+.Label_label__hT6eV.Label_disabled___nQIp {
+  color: var(--color-muted-light);
+  cursor: not-allowed;
+}
+
+.Label_required__Nc3mZ {
+  color: var(--color-error);
+}
+
+.Label_tooltip___ZGdL {
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem; /* 8px logical */
+  font-size: 0.875rem; /* 14px */
+  color: var(--color-muted);
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/HelperText/HelperText.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.HelperText_helperText__7Xc8q {
+  -webkit-margin-before: 0.5rem;
+          margin-block-start: 0.5rem;
+  font-family: var(--primary-body-font, Moderat, sans-serif);
+  font-size: 0.875rem;
+  color: var(--color-primary);
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Text/Text.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/* stylelint-disable rule-empty-line-before */
+
+.Text_text__6vd08 {
+  margin-block: 0 var(--space-layout-16, 1rem);
+  margin-inline: 0;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-text);
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.Text_textXXS__02aav {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-text-xxs);
+}
+
+.Text_textXS__cYXlV {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-text-xs);
+}
+
+.Text_textS__pNwq2 {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-text-s);
+}
+
+.Text_textM__oWnwB {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-text-m);
+}
+
+.Text_textL__lcnFg {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-text-l);
+}
+
+.Text_textXL__Qmm7R {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-text-xl);
+}
+
+.Text_textXXL__Ba7Fp {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  font-size: var(--font-size-text-xxl);
+}
+
+.Text_serif__Tde6Z {
+  font-family: var(--font-serif, "Tiempos-Text", serif);
+}
+
+.Text_sans__fSFJe {
+  font-family: var(--font-text);
+}
+
+/* Line height utility classes */
+.Text_lineHeightTight___fXMY {
+  line-height: var(--line-height-tight);
+}
+
+.Text_lineHeightSnug__0HgAd {
+  line-height: var(--line-height-snug);
+}
+
+.Text_lineHeightNormal__FkEX6 {
+  line-height: var(--line-height-normal);
+}
+
+.Text_lineHeightRelaxed__M2Zcb {
+  line-height: var(--line-height-relaxed);
+}
+
+.Text_lineHeightLoose__hkcLA {
+  line-height: var(--line-height-loose);
+}
+
+@supports (font-optical-sizing: auto) {
+  .Text_text__6vd08,
+  .Text_serif__Tde6Z,
+  .Text_sans__fSFJe {
+    font-optical-sizing: auto;
+  }
+}
+
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/MarkdownMessage/MarkdownMessage.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+.MarkdownMessage_root__8TLKF {
+  /* Force sans-serif across all markdown unless explicitly overridden */
+  font-family: var(--font-text);
+  font-size: var(--font-size-text);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  color: var(--color-text-primary);
+  word-wrap: break-word;
+}
+
+.MarkdownMessage_root__8TLKF ::marker {
+  color: var(--color-primary);
+}
+
+.MarkdownMessage_root__8TLKF p {
+  margin: var(--space-2) 0;
+  font-size: 1rem;
+}
+
+.MarkdownMessage_root__8TLKF p strong,
+.MarkdownMessage_root__8TLKF p b {
+  font-family: var(--font-text);
+  font-weight: 600;
+}
+
+.MarkdownMessage_root__8TLKF p:first-child {
+  margin-top: 0;
+}
+
+.MarkdownMessage_root__8TLKF p:last-child {
+  margin-bottom: 0;
+}
+
+.MarkdownMessage_root__8TLKF code {
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-xs);
+  background: var(--color-surface-alt);
+  font-family: var(--font-family-mono, monospace);
+  font-size: 1rem;
+}
+
+.MarkdownMessage_root__8TLKF pre code {
+  display: block;
+  padding: var(--space-2);
+  overflow-x: auto;
+}
+
+.MarkdownMessage_root__8TLKF pre {
+  margin: var(--space-2) 0;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  background: var(--color-surface-alt);
+}
+
+.MarkdownMessage_root__8TLKF a {
+  text-decoration: underline;
+  color: var(--color-link);
+}
+
+.MarkdownMessage_root__8TLKF a:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.MarkdownMessage_root__8TLKF ul,
+.MarkdownMessage_root__8TLKF ol {
+  margin: 1rem;
+
+  /* Increase indentation by additional 1rem */
+  -webkit-padding-start: calc(var(--space-5) + 1rem);
+          padding-inline-start: calc(var(--space-5) + 1rem);
+  font-size: 1rem;
+}
+
+.MarkdownMessage_root__8TLKF li + li {
+  margin-top: var(--space-1);
+}
+
+.MarkdownMessage_root__8TLKF blockquote {
+  margin: var(--space-2) 0;
+  padding: var(--space-2) var(--space-3);
+  -webkit-border-start: 3px solid var(--color-border-strong);
+          border-inline-start: 3px solid var(--color-border-strong);
+  border-radius: var(--radius-xs);
+  background: var(--color-surface-alt);
+}
+
+.MarkdownMessage_root__8TLKF h1,
+.MarkdownMessage_root__8TLKF h2,
+.MarkdownMessage_root__8TLKF h3,
+.MarkdownMessage_root__8TLKF h4,
+.MarkdownMessage_root__8TLKF h5,
+.MarkdownMessage_root__8TLKF h6 {
+  margin: var(--space-3) 0 var(--space-2);
+  font-family: var(--font-text);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.MarkdownMessage_root__8TLKF h1 {
+  font-size: var(--font-size-title-l);
+}
+
+.MarkdownMessage_root__8TLKF h2 {
+  font-size: var(--font-size-title-m);
+}
+
+.MarkdownMessage_root__8TLKF h3 {
+  font-size: var(--font-size-title-s);
+}
+
+.MarkdownMessage_root__8TLKF h4 {
+  font-size: var(--font-size-text-l);
+}
+
+.MarkdownMessage_root__8TLKF h5 {
+  font-size: var(--font-size-text);
+}
+
+.MarkdownMessage_root__8TLKF h6 {
+  font-size: var(--font-size-text-s);
+}
+
+.MarkdownMessage_root__8TLKF table {
+  margin: var(--space-3) 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.MarkdownMessage_root__8TLKF th,
+.MarkdownMessage_root__8TLKF td {
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.MarkdownMessage_root__8TLKF th {
+  background: var(--color-surface-alt);
+  font-weight: 600;
+}
+
+.MarkdownMessage_root__8TLKF img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-xs);
+}
+
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/OpenHours/OpenHours.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+.OpenHours_root__BIxAW {
+  /* Outer breathing room when embedded in chat stream */
+  margin: 1rem 0;
+  padding: var(--space-internal-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  background: var(--color-primary);
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-s);
+  line-height: 1.4;
+}
+
+.OpenHours_headerRow__sND__ {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-white);
+  margin-bottom: var(--space-internal-8);
+}
+
+.OpenHours_badge__ZZduc {
+  display: inline-block;
+  padding: 0 var(--space-internal-8);
+}
+
+.OpenHours_statusIcon__dNX_7 {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.OpenHours_table__UdusC {
+  width: 100%;
+  font-family: var(--font-text);
+
+  /* Default text colour assumes primary background from parent (.root) */
+  color: var(--color-white);
+  border-collapse: collapse;
+}
+
+.OpenHours_root__BIxAW strong {
+  font-family: var(--font-text);
+  font-weight: 600;
+}
+
+.OpenHours_table__UdusC th,
+.OpenHours_table__UdusC td {
+  padding: var(--space-internal-4) var(--space-internal-8);
+  font-weight: 400;
+  text-align: left;
+}
+
+/* Zebra striping: even rows invert background to white; switch text back to primary for contrast */
+
+.OpenHours_table__UdusC tbody tr:nth-child(even) td {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+/* Ensure header cells remain white regardless */
+
+.OpenHours_table__UdusC thead th {
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.OpenHours_closed__VNFKs {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.OpenHours_compact__BWXeN .OpenHours_table__UdusC tbody tr td:nth-child(2),
+.OpenHours_compact__BWXeN .OpenHours_table__UdusC tbody tr td:nth-child(3) {
+  white-space: nowrap;
+}
+
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Badge/Badge.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+.Badge_badge__ohf_O {
+  display: inline-flex;
+  padding: var(--space-internal-8) var(--space-internal-16);
+  box-sizing: border-box;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  gap: 0.25em;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--color-muted-light);
+  font-family: var(--primary-body-font);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-dark);
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.Badge_s__DsfCi {
+  padding: var(--space-internal-4) var(--space-internal-12);
+  font-size: 0.75rem;
+}
+
+.Badge_l__5AErE {
+  padding: var(--space-internal-12) var(--space-internal-16);
+  font-size: 1.25rem;
+}
+
+.Badge_square__88cYS {
+  border-radius: 0;
+}
+
+.Badge_primary__yoa9J {
+  border: 2px solid transparent;
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.Badge_secondary__zJoou {
+  border: 2px solid var(--color-primary);
+  background: none;
+  color: var(--color-primary);
+}
+
+/* Secondary badges with states should maintain no background */
+
+.Badge_secondary__zJoou.Badge_success__gnZnb {
+  border-color: var(--color-success);
+  background: none;
+  color: var(--color-success);
+}
+
+.Badge_secondary__zJoou.Badge_info__wRRMx {
+  border-color: var(--color-info);
+  background: none;
+  color: var(--color-info);
+}
+
+.Badge_secondary__zJoou.Badge_error__u4__0 {
+  border-color: var(--color-error);
+  background: none;
+  color: var(--color-error);
+}
+
+.Badge_secondary__zJoou.Badge_warning__q6Yuv {
+  border-color: var(--color-warning-contrast);
+  background: none;
+  color: var(--color-warning-contrast);
+}
+
+.Badge_secondary__zJoou.Badge_neutral__s3boZ {
+  border-color: var(--color-neutral-text);
+  background: none;
+  color: var(--color-neutral-text);
+}
+
+.Badge_success__gnZnb {
+  border: 2px solid transparent;
+  background: var(--color-success);
+  color: var(--color-white);
+}
+
+.Badge_info__wRRMx {
+  border: 2px solid transparent;
+  background: var(--color-info);
+  color: var(--color-white);
+}
+
+.Badge_error__u4__0 {
+  border: 2px solid transparent;
+  background: var(--color-error);
+  color: var(--color-white);
+}
+
+.Badge_warning__q6Yuv {
+  border: 2px solid transparent;
+  background: var(--color-warning-contrast);
+  color: var(--color-warning-text);
+}
+
+.Badge_neutral__s3boZ {
+  border: 2px solid transparent;
+  background: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+}
+
+.Badge_closeButton__GdsmC {
+  display: inline-block;
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25em;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.Badge_icon__SHz0H {
+  display: inline-flex;
+  -webkit-margin-end: 0.4em;
+          margin-inline-end: 0.4em;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
+
+.Badge_removable__ZZ_9Q.Badge_s__DsfCi {
+  padding: var(--space-internal-2) var(--space-internal-12);
+  -webkit-padding-end: var(--space-internal-2);
+          padding-inline-end: var(--space-internal-2);
+  font-size: 0.75rem;
+}
+
+.Badge_removable__ZZ_9Q.Badge_m__aWm6G {
+  padding: var(--space-internal-6) var(--space-internal-16);
+  -webkit-padding-end: var(--space-internal-4);
+          padding-inline-end: var(--space-internal-4);
+  font-size: 1rem;
+}
+
+.Badge_removable__ZZ_9Q.Badge_l__5AErE {
+  padding: var(--space-internal-12) var(--space-internal-16);
+  font-size: 1.25rem;
+}
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/ServicesGrid/ServicesGrid.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
+.ServicesGrid_root__d7Vz8 {
+  display: grid;
+  padding: var(--space-4);
+  box-sizing: border-box;
+  height: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--space-4);
+  gap: var(--space-4);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
+}
+
+.ServicesGrid_fillVertical__sxpOn {
+  display: flex;
+  height: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.ServicesGrid_item__Wz64c {
+  display: flex;
+  position: relative;
+  padding: var(--space-3) var(--space-2);
+  min-height: 110px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; /* 1rem gap between icon and title */
+  border-radius: var(--radius-small);
+  background: var(--color-elevation-1);
+  text-align: center;
+}
+
+.ServicesGrid_iconWrapper__Lfj6z {
+  display: flex;
+  width: clamp(48px, 6vw, 56px);
+  height: clamp(48px, 6vw, 56px);
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-small);
+  background: transparent;
+  font-size: clamp(1.75rem, 4vw, 2rem); /* 28px -> 1.75rem, 32px -> 2rem */
+  color: var(--color-primary);
+}
+
+.ServicesGrid_iconWrapper__Lfj6z svg {
+  display: block;
+  width: 70%;
+  height: 70%;
+  color: var(--color-primary);
+}
+
+.ServicesGrid_title__tOFXa {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-serif);
+  font-size: var(--font-size-text-s);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.ServicesGrid_item__Wz64c:focus-within,
+.ServicesGrid_item__Wz64c:focus {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.ServicesGrid_gridLabel__mBCzN {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/ChatWidget/AIProcessingState.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * AIProcessingState - Cognitive processing indicator
+ *
+ * Animated gradient effect indicating LLM thinking state.
+ * Uses CSS custom properties for theme integration and
+ * logical properties for RTL support.
+ */
+
+.AIProcessingState_container__uLeCf {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/**
+ * Animated gradient text effect
+ *
+ * Creates a flowing shimmer effect using background-clip: text.
+ * The gradient animates horizontally to indicate ongoing processing.
+ */
+
+.AIProcessingState_text__sxIo0 {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    rgb(var(--color-text-rgb, 17, 17, 17), 0.4) 0%,
+    var(--color-primary, #0070f3) 50%,
+    rgb(var(--color-text-rgb, 17, 17, 17), 0.4) 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  animation: AIProcessingState_flow__r8P3_ 2s linear infinite;
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/**
+ * Gradient flow animation
+ *
+ * Smoothly moves the gradient from right to left,
+ * creating a shimmer effect that indicates processing.
+ */
+@keyframes AIProcessingState_flow__r8P3_ {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes AIProcessingState_pulse__6TAPm {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/**
+ * Intensity variants
+ *
+ * Control visual prominence of the animation:
+ * - subtle: Gentle, non-intrusive (default for background processing)
+ * - moderate: Balanced visibility (standard AI responses)
+ * - prominent: High visibility (important or lengthy operations)
+ */
+
+/**
+ * Dark mode adjustments
+ *
+ * When dark mode is active via data-theme attribute,
+ * adjust gradient colors for better contrast.
+ */
+
+[data-theme="dark"] .AIProcessingState_text__sxIo0 {
+  background: linear-gradient(
+    90deg,
+    var(--secondary-text-color) 0%,
+    var(--color-primary) 50%,
+    var(--secondary-text-color) 100%
+  );
+  background-size: 200% 100%;
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.AIProcessingState_container__uLeCf.AIProcessingState_intensitySubtle__WZV3l .AIProcessingState_text__sxIo0 {
+  animation-duration: 2s;
+}
+
+.AIProcessingState_container__uLeCf.AIProcessingState_intensityModerate__QeMMi .AIProcessingState_text__sxIo0 {
+  animation-duration: 1.5s;
+}
+
+.AIProcessingState_container__uLeCf.AIProcessingState_intensityProminent__Rqbgv .AIProcessingState_text__sxIo0 {
+  font-weight: 500;
+  animation-duration: 1s;
+}
+
+/**
+ * Reduced motion support
+ *
+ * For users who prefer reduced motion, we disable the animation
+ * and use a static, semi-transparent text instead.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .AIProcessingState_text__sxIo0 {
+    background: var(--secondary-text-color);
+    animation: none;
+    opacity: 0.8;
+    /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .AIProcessingState_container__uLeCf.AIProcessingState_intensityProminent__Rqbgv .AIProcessingState_text__sxIo0 {
+    opacity: 1;
+  }
+}
+
+/**
+ * Fallback for browsers without background-clip support
+ *
+ * Provides a simple color without gradient for older browsers.
+ */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .AIProcessingState_text__sxIo0 {
+    color: var(--secondary-text-color);
+    animation: AIProcessingState_pulse__6TAPm 2s infinite ease-in-out;
+  }
+}
+
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Checkbox/Checkbox.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/* stylelint-disable order/properties-order */
+
+.Checkbox_checkboxContainer__RXkZ7 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Checkbox_checkbox__EPbUu {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--color-primary);
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: var(--color-light-bg);
+  position: relative;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Enhancement: native theming via accent-color where supported */
+@supports (accent-color: var(--color-primary)) {
+  .Checkbox_checkbox__EPbUu {
+    accent-color: var(--color-primary);
+    background-color: var(--color-light-bg); /* preserve initial base */
+  }
+
+  /* Remove custom pseudo checkmark when accent-color available for checked state */
+
+  input.Checkbox_checkbox__EPbUu:checked::after,
+  .Checkbox_checkboxContainer__RXkZ7 input.Checkbox_checkbox__EPbUu:checked::after,
+  .Checkbox_checkedState__tSxXC::after,
+  .Checkbox_checkboxContainer__RXkZ7 .Checkbox_checkedState__tSxXC::after {
+    content: none;
+  }
+
+  /* Use an outline focus style harmonized with accent-color */
+
+  .Checkbox_checkbox__EPbUu:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+}
+
+.Checkbox_checkbox__EPbUu:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgb(0 112 243 / 10%);
+}
+
+.Checkbox_checkbox__EPbUu:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgb(0 112 243 / 20%);
+}
+
+/* Checkbox checked state with increasing specificity */
+
+input.Checkbox_checkbox__EPbUu:checked {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+input.Checkbox_checkbox__EPbUu:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 6px;
+  -webkit-border-start: 3px solid var(--checkbox-checkmark-color);
+          border-inline-start: 3px solid var(--checkbox-checkmark-color);
+  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  transform: translate(-50%, -60%) rotate(-45deg);
+  border-radius: 1px;
+}
+
+/* Higher specificity selectors for checkbox styling */
+
+.Checkbox_checkboxContainer__RXkZ7 input.Checkbox_checkbox__EPbUu:checked {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.Checkbox_checkboxContainer__RXkZ7 input.Checkbox_checkbox__EPbUu:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 6px;
+  -webkit-border-start: 3px solid var(--checkbox-checkmark-color);
+          border-inline-start: 3px solid var(--checkbox-checkmark-color);
+  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  transform: translate(-50%, -60%) rotate(-45deg);
+  border-radius: 1px;
+}
+
+/* Class-based checked state - more reliable than :checked pseudo-class */
+
+.Checkbox_checkedState__tSxXC {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  position: relative;
+}
+
+.Checkbox_checkedState__tSxXC::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 6px;
+  -webkit-border-start: 3px solid var(--checkbox-checkmark-color);
+          border-inline-start: 3px solid var(--checkbox-checkmark-color);
+  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  transform: translate(-50%, -60%) rotate(-45deg);
+  border-radius: 1px;
+  z-index: 1;
+
+  /* don't animate transform to avoid morphing from indeterminate bar */
+  transition: none;
+}
+
+/* Higher specificity for class-based styling */
+
+.Checkbox_checkboxContainer__RXkZ7 .Checkbox_checkedState__tSxXC {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.Checkbox_checkboxContainer__RXkZ7 .Checkbox_checkedState__tSxXC::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 6px;
+  -webkit-border-start: 3px solid var(--checkbox-checkmark-color);
+          border-inline-start: 3px solid var(--checkbox-checkmark-color);
+  border-bottom: 3px solid var(--checkbox-checkmark-color);
+  transform: translate(-50%, -60%) rotate(-45deg);
+  border-radius: 1px;
+  z-index: 1;
+}
+
+.Checkbox_checkbox__EPbUu:indeterminate {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.Checkbox_checkbox__EPbUu:indeterminate::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 3px;
+  background-color: var(--checkbox-checkmark-color);
+  transform: translate(-50%, -50%);
+  transition: none;
+}
+
+/* Explicit class-based indeterminate state with higher specificity to override checked visuals */
+
+.Checkbox_indeterminateState__7yLtI {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  position: relative;
+}
+
+.Checkbox_indeterminateState__7yLtI::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 3px;
+  background-color: var(--checkbox-checkmark-color);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  /* don't animate transform to avoid morphing from indeterminate bar */
+  transition: none;
+}
+
+/* Ensure indeterminate class higher specificity than checkedState */
+
+.Checkbox_checkboxContainer__RXkZ7 .Checkbox_indeterminateState__7yLtI {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.Checkbox_label__md7CY {
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+/* Disabled state */
+
+.Checkbox_checkbox__EPbUu:disabled {
+  border-color: var(--color-muted-light);
+  background-color: var(--color-muted-light);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.Checkbox_checkbox__EPbUu:disabled:hover {
+  box-shadow: none;
+  border-color: var(--color-muted-light);
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/GroupLabel/GroupLabel.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.GroupLabel_groupLabel__uMcHQ {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+  font-family: Moderat, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/CheckboxGroup/CheckboxGroup.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+.CheckboxGroup_checkboxGroup__4aWK9 {
+  display: flex;
+  margin-block: 1rem;
+  width: auto;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@supports ((width: -moz-fit-content) or (width: fit-content)) {
+  .CheckboxGroup_checkboxGroup__4aWK9 {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+
+.CheckboxGroup_options__XBmcP {
+  display: flex;
+  -webkit-margin-start: 1.5rem;
+          margin-inline-start: 1.5rem;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.CheckboxGroup_checkbox__JWDeE {
+  width: 24px;
+  height: 24px;
+}
+
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/patterns/Footer/Footer.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+.Footer_footer__AcTDq {
+  bottom: 0;
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+  padding-inline: var(--space-layout-32);
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--color-primary);
+  text-align: left;
+}
+
+.Footer_socialLinks__h06Yz {
+  display: flex;
+  margin-block: var(--space-layout-16);
+  block-size: 1.5rem;
+  justify-content: center;
+  gap: var(--space-internal-16);
+}
+
+.Footer_socialLinks__h06Yz a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--inverted-text-color);
+}
+
+.Footer_footer__AcTDq h2 a {
+  font-family: var(--primary-body-font, Moderat-Bold), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--inverted-text-color);
+}
+
+.Footer_footer__AcTDq p {
+  font-family: Moderat-Regular, sans-serif;
+  font-size: 1rem;
+  color: var(--inverted-text-color);
+}
+
+.Footer_footer__AcTDq p a {
+  position: relative;
+  text-decoration: none;
+  color: var(--inverted-text-color);
+  padding-bottom: 6px;
+}
+
+.Footer_footer__AcTDq p a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  background-color: var(--underline-accent-color, currentcolor);
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  content: "";
+  -webkit-mask-image: var(--wavy-underline-mask);
+          mask-image: var(--wavy-underline-mask);
+  -webkit-mask-repeat: repeat-x;
+          mask-repeat: repeat-x;
+  -webkit-mask-size: 16px 6px;
+          mask-size: 16px 6px;
+}
+
+.Footer_footer__AcTDq p a:hover::after,
+.Footer_footer__AcTDq p a:focus-visible::after {
+  opacity: 0.85;
+}
+
+.Footer_footer__AcTDq a:focus-visible {
+  border-radius: 0.375rem;
+  outline: 2px solid currentcolor;
+  outline-offset: 4px;
+  outline-color: color-mix(in srgb, currentcolor 70%, black);
+}
+
+.Footer_footerText__y_INf {
+  display: flex;
+  -webkit-margin-after: 2rem;
+          margin-block-end: 2rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Footer_billingDetails__Ob_YO {
+  font-weight: 600;
+}
+
+/* Company info block should span available width minus footer inline padding */
+
+.Footer_companyInfo__MI7PL {
+  width: calc(100% - var(--space-layout-32));
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 480px) {
+  .Footer_companyInfo__MI7PL {
+    width: calc(100% - var(--space-layout-16));
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .Footer_footer__AcTDq {
+    margin-inline: calc(-1 * (50vw - 50%));
+    padding-inline: var(--space-layout-32);
+    box-sizing: border-box;
+    width: 100vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .Footer_footer__AcTDq {
+    display: flex;
+    margin-inline: calc(-1 * (50vw - 50%));
+    padding-inline: var(--space-layout-16);
+
+    /* Full viewport width minus inline padding for consistent edge treatment */
+    width: 100vw;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+  }
+
+  .Footer_footer__AcTDq > * {
+    margin-inline: 0;
+    width: 100%;
+    max-width: none;
+  }
+
+  .Footer_footerText__y_INf {
+    -webkit-margin-before: var(--space-layout-4);
+            margin-block-start: var(--space-layout-4);
+    width: 100%;
+    justify-content: center;
+    align-items: center; /* center contents horizontally */
+    text-align: center;
+  }
+
+  .Footer_footerGrid__i80Jq {
+    grid-template-columns: 1fr;
+    gap: var(--space-layout-16);
+  }
+
+  .Footer_socialLinks__h06Yz {
+    margin-block: var(--space-layout-16);
+  }
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Grid/Grid.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.Grid_grid__vWN5w {
+  display: grid;
+  width: 100%;
+  grid-auto-rows: minmax(6.25rem, auto); /* Converted 100px to rem */
+}
+
+/* Example classes for nested grids */
+
+.Grid_nested__CjXoc {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  gap: 1rem;
+}
+
+.Grid_gridItem__oxM_d {
+  display: flex;
+  padding: 1rem; /* Converted 16px to rem */
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+/* Added support for spanning */
+
+.Grid_gridItemSpan2__o62VE {
+  grid-column: span 2;
+}
+
+.Grid_gridItemSpan3__RDPc_ {
+  grid-column: span 3;
+}
+
+.Grid_gridItemSpan4__11LmH {
+  grid-column: span 4;
+}
+
+.Grid_gridItemSpan5__kg6lZ {
+  grid-column: span 5;
+}
+
+.Grid_gridRowSpan2__nB_VJ {
+  grid-row: span 2;
+}
+
+.Grid_gridRowSpan3__tD0Av {
+  grid-row: span 3;
+}
+
+.Grid_gridRowSpan4__9WeRh {
+  grid-row: span 4;
+}
+
+.Grid_gridRowSpan5__bUZG3 {
+  grid-row: span 5;
+}
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Layout/Layout.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/* stylelint-disable rule-empty-line-before */
+
+.Layout_layout__fvRCC {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Layout_main__RIY09 {
+  flex: 1 1;
+}
+
+/* Main is not an interactive element; focus is only set programmatically for skip link scroll target */
+/* stylelint-disable-next-line a11y/no-outline-none */
+.Layout_main__RIY09:focus {
+  outline: none;
+}
+
+.Layout_skipLink__kXEyq {
+  position: absolute;
+  top: -42px;
+  left: 0;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: var(--color-white);
+  transition:
+    top 0.3s ease,
+    left 0.3s ease;
+}
+
+.Layout_skipLink__kXEyq:focus {
+  top: 12px;
+  left: 12px;
+}
+
+@media (max-width: 768px) {
+  .Layout_skipLink__kXEyq {
+    top: -3.3rem;
+  }
+}
+
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/patterns/Header/Header.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+.Header_header__gOZEs {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 4000;
+  padding-inline: var(--space-layout-32);
+  background-color: transparent;
+  color: var(--main-body-copy-color);
+  pointer-events: none;
+}
+
+.Header_headerInner__ctesn {
+  display: flex;
+  margin: 0 auto;
+  padding: 14px 0;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+  vertical-align: top;
+}
+
+.Header_logoLink__2ObBX {
+  display: flex;
+  height: 100%;
+  flex: 0 0 auto;
+  align-items: center;
+  color: var(--color-primary);
+  pointer-events: auto;
+}
+
+.Header_left__Ugd__ {
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.Header_logo__YpZZl {
+  display: block;
+  width: 15rem;
+  max-width: 100%;
+  height: 15rem;
+  object-fit: contain;
+}
+
+.Header_logoMobile__6DtD5 {
+  display: block;
+  width: 56px;
+  max-width: 100%;
+  height: 56px;
+}
+
+.Header_nav__DndUs ul {
+  pointer-events: auto;
+}
+
+.Header_header__gOZEs nav ul {
+  -webkit-padding-start: var(--space-layout-0);
+          padding-inline-start: var(--space-layout-0);
+}
+
+.Header_navbar__9owrE {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.Header_nav__DndUs {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 16px;
+  pointer-events: auto;
+  list-style: none;
+}
+
+.Header_nav__DndUs li {
+  position: relative;
+}
+
+.Header_navLinkWrapper__LKKzi {
+  display: inline-block;
+  position: relative;
+}
+
+.Header_navLinkBlur__2e2b_ {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--main-body-copy-color);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.Header_navLinkWrapper__LKKzi:hover .Header_navLinkBlur__2e2b_,
+.Header_navLinkWrapper__LKKzi:focus-within .Header_navLinkBlur__2e2b_ {
+  opacity: 0.3;
+}
+
+.Header_nav__DndUs a {
+  position: relative;
+  font-family: var(--primary-body-font, "Moderat-Regular"), serif;
+  font-size: 1.25rem; /* 20px -> 1.25rem */
+  font-weight: 400;
+  line-height: 1.5rem; /* 24px -> 1.5rem */
+  letter-spacing: 0;
+  text-decoration: none;
+  color: var(--main-body-copy-color);
+  transition: color 0.2s;
+  padding-bottom: 0.375rem; /* 6px -> 0.375rem */
+}
+
+.Header_header__gOZEs h2 a {
+  font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+  font-size: 2.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--main-body-copy-color);
+}
+
+.Header_nav__DndUs a:hover,
+.Header_nav__DndUs a:focus {
+  color: var(--color-primary);
+}
+
+.Header_nav__DndUs a.Header_selected__dYlRY {
+  color: var(--color-primary);
+}
+
+.Header_nav__DndUs a.Header_selected__dYlRY::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  background-color: var(--color-primary);
+  content: "";
+  -webkit-mask-image: var(--wavy-underline-mask);
+          mask-image: var(--wavy-underline-mask);
+  -webkit-mask-repeat: repeat-x;
+          mask-repeat: repeat-x;
+  -webkit-mask-size: 16px 6px;
+          mask-size: 16px 6px;
+}
+
+.Header_themeToggleWrapper__yPKyp {
+  display: inline-block;
+  position: relative;
+}
+
+.Header_themeToggleBlur__HhcvS {
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  background: var(--color-primary);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.Header_themeToggleWrapper__yPKyp:hover .Header_themeToggleBlur__HhcvS,
+.Header_themeToggleWrapper__yPKyp:focus-within .Header_themeToggleBlur__HhcvS {
+  opacity: 0.15;
+}
+
+.Header_themeToggle__bPzRy {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  margin-inline: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  font-size: 1.5rem; /* 24px -> 1.5rem */
+  color: var(--color-primary);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: color 0.2s;
+  transform-origin: center;
+}
+
+.Header_themeToggleIcon__I6dOg {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header_themeToggleIconAnimating__6J9XH {
+  animation: Header_theme-toggle-pop__ukcO_ 0.45s ease;
+}
+
+.Header_themeToggle__bPzRy:hover {
+  color: var(--color-primary);
+}
+
+.Header_themeToggle__bPzRy:focus {
+  outline: none;
+}
+
+.Header_themeToggle__bPzRy:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.Header_languageSwitcher__H68Op {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--primary-body-font, "Moderat-Regular"), serif;
+  font-size: 1rem;
+  pointer-events: auto;
+}
+
+.Header_mobileMenuButton__dy3g0 {
+  display: none;
+  position: relative;
+  z-index: 2;
+  padding: 0.5rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--main-body-copy-color);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.Header_mobileMenuButton__dy3g0:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.Header_mobileMenuButton__dy3g0:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.Header_controls__PuDov {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  pointer-events: auto;
+}
+
+.Header_visuallyHidden__gMqHj {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.Header_languageLinkWrapper__l_Y4_ {
+  display: inline-block;
+  position: relative;
+}
+
+.Header_languageLinkBlur__lXmC0 {
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  background: var(--main-body-copy-color);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.Header_languageLinkWrapper__l_Y4_:hover .Header_languageLinkBlur__lXmC0,
+.Header_languageLinkWrapper__l_Y4_:focus-within .Header_languageLinkBlur__lXmC0 {
+  opacity: 0.1;
+}
+
+.Header_languageLink__XYwlv {
+  position: relative;
+  padding: 0 2px;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    outline-color 0.2s;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 6px;
+}
+
+.Header_languageLink__XYwlv::after {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  height: 6px;
+  background-color: var(--color-primary);
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  content: "";
+  -webkit-mask-image: var(--wavy-underline-mask);
+          mask-image: var(--wavy-underline-mask);
+  -webkit-mask-repeat: repeat-x;
+          mask-repeat: repeat-x;
+  -webkit-mask-size: 16px 6px;
+          mask-size: 16px 6px;
+}
+
+.Header_languageLink__XYwlv:hover,
+.Header_languageLink__XYwlv:focus-visible {
+  border-bottom-color: transparent;
+}
+
+.Header_languageLink__XYwlv:hover::after,
+.Header_languageLink__XYwlv:focus-visible::after {
+  opacity: 1;
+}
+
+.Header_languageLink__XYwlv:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.Header_languageLink__XYwlv:disabled {
+  cursor: default;
+}
+
+.Header_languageLinkActive__JOF4o {
+  border-bottom-color: transparent;
+}
+
+.Header_languageLinkActive__JOF4o::after {
+  opacity: 0.9;
+}
+
+@media (max-width: 1100px) {
+  .Header_headerInner__ctesn {
+    padding: 10px 16px;
+    max-width: 100%;
+  }
+
+  .Header_logo__YpZZl {
+    width: 48px;
+    height: 48px;
+  }
+
+  .Header_navbar__9owrE,
+  .Header_controls__PuDov {
+    display: none;
+  }
+
+  .Header_mobileMenuButton__dy3g0 {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Header_nav__DndUs a {
+    font-size: 1rem; /* 16px -> 1rem */
+  }
+}
+
+@media (max-width: 600px) {
+  .Header_headerInner__ctesn {
+    padding: 8px;
+    height: auto;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .Header_navbar__9owrE {
+    justify-content: center;
+  }
+
+  .Header_nav__DndUs {
+    gap: 8px;
+  }
+
+  .Header_nav__DndUs a {
+    font-size: 1.125rem;
+  }
+
+  .Header_themeToggle__bPzRy {
+    -webkit-margin-start: 0;
+            margin-inline-start: 0; /* single side override retained */
+    transform: translateY(-4px);
+    margin-top: 8px;
+  }
+
+  /* Ensure mobile trigger remains visible on the smallest viewports */
+
+  .Header_mobileMenuButton__dy3g0 {
+    display: inline-flex;
+    -webkit-margin-start: auto;
+            margin-inline-start: auto;
+  }
+}
+
+@keyframes Header_theme-toggle-pop__ukcO_ {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  30% {
+    transform: scale(1.25) rotate(15deg);
+  }
+
+  60% {
+    transform: scale(0.9) rotate(-8deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/patterns/Header/MobileMenu.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+.MobileMenu_backdrop__6rAr5 {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  padding: var(--space-layout-24, 1.5rem);
+  justify-content: flex-end;
+  align-items: stretch;
+  background: color-mix(in srgb, var(--color-dark, #000) 70%, transparent);
+  pointer-events: auto;
+  animation: MobileMenu_backdrop-fade__DxfIL 240ms ease-out;
+}
+
+.MobileMenu_panel__W7YCb {
+  display: flex;
+  z-index: 1;
+  padding: 0;
+  width: min(22rem, 100%);
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  background: var(--main-body-background-color, #fff);
+  box-shadow:
+    0 1.5rem 3rem -0.5rem rgb(0 0 0 / 35%),
+    0 0 0 1px color-mix(in srgb, var(--color-border, #c0c0c0) 40%, transparent);
+  animation: MobileMenu_panel-slide-in__073Jc 300ms cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
+  transform: translateX(1.25rem);
+  opacity: 0;
+}
+
+/* Scroll container wrapping all menu content except backdrop */
+
+.MobileMenu_panelContent__0c8BC {
+  display: flex;
+  max-height: 100%;
+  flex-direction: column;
+  gap: var(--space-internal-24, 1.5rem);
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.MobileMenu_panelContent__0c8BC:focus-visible {
+  outline: none;
+}
+
+.MobileMenu_panelContent__0c8BC nav {
+  padding: var(--space-internal-24, 1.5rem) var(--space-internal-24, 1.5rem)
+    var(--space-internal-32, 2rem);
+}
+
+/* Sticky header at top of scroll */
+
+.MobileMenu_header__Aft2e {
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: var(--space-internal-24, 1.5rem) var(--space-internal-24, 1.5rem)
+    var(--space-internal-32, 2rem);
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--radius-lg);
+  background: var(--main-body-background-color, #fff);
+  padding-bottom: var(--space-internal-8, 0.5rem);
+}
+
+/* Sticky language section at bottom */
+
+.MobileMenu_languageSticky__eFGh2 {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--main-body-background-color) 92%, transparent) 0%,
+    var(--main-body-background-color) 40%
+  );
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  margin-top: auto; /* push to bottom within flex column */
+  padding-top: var(--space-internal-16, 1rem);
+}
+
+/* Bottom controls layout: language list left, theme icon button right */
+
+.MobileMenu_bottomControlsRow__NEtsl {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.MobileMenu_bottomLeftGroup__pgDTQ {
+  display: flex;
+  padding: var(--space-layout-20, 1.25rem);
+  width: -moz-fit-content;
+  width: fit-content;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: var(--space-internal-12, 0.5rem);
+}
+
+.MobileMenu_bottomRightGroup__CcHWQ {
+  display: flex;
+  padding: var(--space-layout-20, 1.25rem);
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-internal-12, 0.5rem);
+}
+
+.MobileMenu_title__R92pM {
+  margin: 0;
+  font-family: var(--primary-heading-font, serif);
+  font-size: var(--font-size-title-s, 1.5rem);
+  font-weight: var(--font-weight-title, 700);
+  line-height: 1.1;
+  color: var(--primary-text-color, #00f);
+}
+
+.MobileMenu_closeButton__UMLdH {
+  padding: var(--space-internal-12, 0.75rem);
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.MobileMenu_closeButton__UMLdH:hover {
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+}
+
+.MobileMenu_closeButton__UMLdH:active {
+  border: 2px solid var(--color-primary);
+}
+
+.MobileMenu_closeButton__UMLdH:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.MobileMenu_nav__XYetY {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  gap: var(--space-internal-8, 0.5rem);
+  list-style: none;
+}
+
+.MobileMenu_navLink__EhH1p {
+  display: block;
+  position: relative;
+  padding: var(--space-internal-12, 0.75rem) var(--space-internal-16, 1rem);
+  box-sizing: border-box;
+  width: 100%;
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: var(--font-size-text-m, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--primary-text-color, #00f);
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+  overflow: hidden;
+}
+
+.MobileMenu_navLink__EhH1p:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.MobileMenu_navLink__EhH1p:hover {
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+
+.MobileMenu_navLinkActive__Fj2Py {
+  border: 2px solid var(--color-primary);
+
+  /* Add right-side margin so active background has symmetric horizontal spacing.
+     Matches the existing horizontal padding token (16). */
+}
+
+.MobileMenu_navLinkActive__Fj2Py::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+}
+
+.MobileMenu_footer__4608n {
+  height: 18rem;
+}
+
+.MobileMenu_footerLinks__mhKKi {
+  display: flex;
+  padding: var(--space-layout-20, 1.25rem);
+  flex-direction: column;
+  gap: var(--space-internal-12, 0.75rem);
+}
+
+.MobileMenu_footerLink__6XW1T {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: var(--font-size-text-s, 0.875rem);
+  -webkit-text-decoration: underline wavy;
+          text-decoration: underline wavy;
+  color: var(--color-primary);
+  transition: color 160ms ease;
+  text-underline-offset: 0.2em;
+}
+
+.MobileMenu_footerLink__6XW1T:hover {
+  color: var(--color-primary);
+}
+
+.MobileMenu_footerLink__6XW1T:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.MobileMenu_segment__ZfJms {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dt-spacing-12);
+}
+
+.MobileMenu_segmentLabel__mN8z8 {
+  padding-block: 1rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: var(--primary-bold-font, sans-serif);
+  color: var(--secondary-text-color, #5e5e5e);
+}
+
+.MobileMenu_languageList__Ai70i {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  flex-wrap: nowrap;
+  gap: var(--space-layout-8, 0.5rem);
+}
+
+.MobileMenu_languageButton__LMsno {
+  padding: var(--space-internal-8, 0.5rem) var(--space-internal-12, 0.75rem);
+  width: 3rem;
+  border: 0 none;
+  background: transparent;
+  font-family: var(--primary-body-font, sans-serif);
+  font-size: var(--font-size-text-s, 0.875rem);
+  color: var(--primary-text-color, #00f);
+  cursor: pointer;
+  transition:
+    background-color 140ms ease,
+    color 140ms ease,
+    border-color 140ms ease;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.MobileMenu_languageButton__LMsno:hover {
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+.MobileMenu_languageButton__LMsno:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.MobileMenu_languageButtonActive___RpJZ {
+  border: 2px solid var(--color-primary);
+
+  /* Add right-side margin so active background has symmetric horizontal spacing.
+     Matches the existing horizontal padding token (16). */
+  color: var(--color-primary);
+}
+
+/* Icon-only theme button */
+
+.MobileMenu_themeIconButton__322H7 {
+  display: inline-flex;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--color-primary);
+  background-color: transparent;
+  font-size: 1.25rem;
+  color: var(--primary-text-color, #00f);
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.MobileMenu_themeIconButton__322H7:hover {
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+}
+
+.MobileMenu_themeIconButton__322H7:active {
+  border: 2px solid var(--color-primary);
+}
+
+.MobileMenu_themeIconButton__322H7:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.MobileMenu_themeButtonIcon__kmR3U {
+  font-size: 1.25rem;
+}
+
+.MobileMenu_hidden__4XsZc {
+  display: none;
+}
+
+@keyframes MobileMenu_backdrop-fade__DxfIL {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes MobileMenu_panel-slide-in__073Jc {
+  0% {
+    transform: translateX(1.25rem);
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .MobileMenu_backdrop__6rAr5 {
+    animation: none;
+  }
+
+  .MobileMenu_panel__W7YCb {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .MobileMenu_closeButton__UMLdH,
+  .MobileMenu_navLink__EhH1p,
+  .MobileMenu_languageButton__LMsno,
+  .MobileMenu_themeButton__MMHZb {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .MobileMenu_panel__W7YCb {
+    width: 100%;
+  }
+
+  .MobileMenu_bottomControlsRow__NEtsl {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--space-internal-20, 1.25rem);
+  }
+
+  .MobileMenu_bottomRightGroup__CcHWQ {
+    padding-top: 0;
+  }
+}
+
