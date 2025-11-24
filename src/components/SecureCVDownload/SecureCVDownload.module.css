@@ -17,50 +17,25 @@
 
 .inputWrapper {
   position: relative;
-  width: 100%;
-  max-width: 220px;
+  inline-size: 100%;
+  max-inline-size: 220px;
 }
 
 .validationIndicator {
   position: absolute;
-  top: 50%;
-  right: 0.75rem;
   z-index: 10;
   pointer-events: none;
+  transform: translateY(-50%);
+  inset-block-start: 50%;
+  inset-inline-end: 0.75rem;
 }
 
-.checkmark {
-  font-weight: bold;
-  color: var(--color-success);
-  animation: checkmark-appear 0.3s ease-in-out;
+.inlineBusy {
+  gap: var(--space-layout-4, 4px);
 }
 
-.spinner {
-  font-size: 1.25rem;
-  color: var(--color-primary);
-  animation: spin 1s linear infinite;
-}
-
-@keyframes checkmark-appear {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+.inlineSuccess {
+  color: var(--color-success-text, var(--color-success));
 }
 
 .errorText {

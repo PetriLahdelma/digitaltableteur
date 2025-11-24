@@ -3,6 +3,7 @@
 import React from "react";
 
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
+import Title from "@dt/Title";
 
 import { getAuthorBySlug } from "../../../data/authors";
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
@@ -30,7 +31,7 @@ export function AuthorPage({ slug }: { slug: string }) {
     <article className={styles.article}>
       <PageLayout maxWidth="md" spacing="comfortable" as="section">
         <header>
-          <h1>{metaTitle}</h1>
+          <Title level={1}>{metaTitle}</Title>
           <p className={styles.releaseDate}>{metaDescription}</p>
         </header>
         <AuthorBio slug={author.slug} />

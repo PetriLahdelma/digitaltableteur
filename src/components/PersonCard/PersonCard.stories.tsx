@@ -4,6 +4,78 @@ import PersonCard from "./PersonCard";
 import { PersonCardProps } from "./PersonCard";
 import peteVaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import { within, userEvent } from "@storybook/testing-library";
+import Icon from "@dt/Icon";
+import ComplianceCard from "@dt/ComplianceCard";
+import type { ComplianceRule } from "@dt/ComplianceCard";
+
+const personCardComplianceRules: ComplianceRule[] = [
+  {
+    id: "file-structure",
+    rule: "Complete file structure",
+    status: "pass",
+    details: "All 5 files present",
+  },
+  {
+    id: "typescript-strict",
+    rule: "TypeScript strict",
+    status: "pass",
+    details: "Proper typing with PersonCardProps",
+  },
+  {
+    id: "translation-support",
+    rule: "Translation support",
+    status: "pass",
+    details: "Props for social labels",
+  },
+  {
+    id: "css-modules",
+    rule: "CSS Modules",
+    status: "pass",
+    details: "No inline styles",
+  },
+  {
+    id: "design-tokens",
+    rule: "Design tokens",
+    status: "pass",
+    details: "Replaced --primary-font with var(--font-text)",
+  },
+  {
+    id: "logical-properties",
+    rule: "Logical properties",
+    status: "pass",
+    details: "Uses gap for layout",
+  },
+  {
+    id: "theme-support",
+    rule: "Theme support",
+    status: "pass",
+    details: "CSS custom properties",
+  },
+  {
+    id: "composition",
+    rule: "Component composition",
+    status: "pass",
+    details: "Flexible social links, custom theme",
+  },
+  {
+    id: "accessibility",
+    rule: "Accessibility",
+    status: "pass",
+    details: "Alt text, link labels, semantic markup",
+  },
+  {
+    id: "storybook-stories",
+    rule: "Storybook stories",
+    status: "pass",
+    details: "Multiple variants with ComplianceCard",
+  },
+  {
+    id: "tests",
+    rule: "Tests",
+    status: "pass",
+    details: "Test file exists",
+  },
+];
 
 export default {
   title: "Components/PersonCard",
@@ -53,6 +125,16 @@ export default {
   },
 } as Meta<typeof PersonCard>;
 
+export const Z_PersonCardCompliance: StoryFn = () => (
+  <ComplianceCard
+    title="Compliance: 11/11"
+    titleIcon={
+      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+    }
+    rules={personCardComplianceRules}
+  />
+);
+
 const Template: StoryFn<PersonCardProps> = (args: PersonCardProps) => (
   <PersonCard {...args} />
 );
@@ -69,6 +151,11 @@ WithoutSocialMedia.args = {
   dribbbleUrl: undefined,
   mediumUrl: undefined,
   instagramUrl: undefined,
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  loading: true,
 };
 
 export const AllSocialMedia = Template.bind({});

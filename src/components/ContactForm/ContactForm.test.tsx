@@ -17,6 +17,8 @@ function withI18n(ui: React.ReactElement) {
 
 describe("ContactForm integration", () => {
   let originalFetch: typeof global.fetch;
+  const originalEnv = { ...process.env };
+  const originalImportEnv = { ...(import.meta as any).env };
 
   beforeEach(() => {
     originalFetch = global.fetch;
@@ -31,6 +33,8 @@ describe("ContactForm integration", () => {
 
   afterEach(() => {
     global.fetch = originalFetch;
+    Object.assign(process.env, originalEnv);
+    (import.meta as any).env = { ...originalImportEnv };
   });
 
   const defaultFormValues = {
@@ -149,5 +153,141 @@ describe("ContactForm integration", () => {
     expect(nameInput.value).toBe("");
     expect((emailInput as HTMLInputElement).value).toBe("");
     expect((messageInput as HTMLInputElement).value).toBe("");
+  });
+
+  it("shows validation errors for required fields", async () => {
+    render(withI18n(<ContactForm />));
+
+    fireEvent.click(screen.getByRole("button", { name: /Submit/i }));
+
+    // Validation should prevent submission when required fields are empty.
+    await waitFor(() => {
+      expect(global.fetch).not.toHaveBeenCalled();
+    });
+  });
+
+  it("shows validation error for invalid email", async () => {
+    render(withI18n(<ContactForm />));
+
+    fireEvent.change(screen.getByLabelText(/Full Name/i), {
+      target: { value: "Jane" },
+    });
+    fireEvent.change(screen.getByLabelText(/Email Address/i), {
+      target: { value: "not-an-email" },
+    });
+    fireEvent.change(screen.getByLabelText(/Your Message/i), {
+      target: { value: "Hello" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Submit/i }));
+
+    expect(
+      await screen.findByText(/Please enter a valid email address/i),
+    ).toBeInTheDocument();
+  });
+
+  it("handles attachment read error gracefully", async () => {
+    const originalFileReader = global.FileReader;
+    class ErrorFileReader {
+      onload: (() => void) | null = null;
+      onerror: (() => void) | null = null;
+      readAsDataURL() {
+        this.onerror?.();
+      }
+    }
+    // @ts-expect-error override
+    global.FileReader = ErrorFileReader;
+
+    render(withI18n(<ContactForm />));
+    const badFile = new File(["fail"], "bad.bin", { type: "application/bin" });
+    const fileInput = document.querySelector(
+      "input[type='file']",
+    ) as HTMLInputElement;
+    fireEvent.change(fileInput, { target: { files: [badFile] } });
+
+    expect(
+      await screen.findByText(/We couldn't read that file/i),
+    ).toBeInTheDocument();
+    global.FileReader = originalFileReader;
+  });
+
+  it("drops honeypot submissions and logs via beacon when configured", async () => {
+    const sendBeacon = vi.fn(() => true);
+    Object.defineProperty(navigator, "sendBeacon", {
+      value: sendBeacon,
+      configurable: true,
+    });
+    process.env.NEXT_PUBLIC_APP_CONTACT_SPAM_LOG_ENDPOINT =
+      "https://spam.test/honeypot";
+
+    render(withI18n(<ContactForm />));
+    fireEvent.change(screen.getByLabelText(/please leave this field blank/i), {
+      target: { value: "bot payload" },
+    });
+
+    const form = screen
+      .getByRole("button", { name: /Submit/i })
+      .closest("form") as HTMLFormElement;
+    fireEvent.submit(form);
+
+    await waitFor(() => {
+      expect(sendBeacon).toHaveBeenCalledWith(
+        "https://spam.test/honeypot",
+        expect.any(Blob),
+      );
+    });
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  it("shows email attachment limit notice for large files", async () => {
+    const onload = vi.fn();
+    const originalFileReader = global.FileReader;
+    class MockFileReader {
+      result: string | ArrayBuffer | null = null;
+      onload: (() => void) | null = onload;
+      onerror: (() => void) | null = null;
+      readAsDataURL() {
+        this.result = "data:mock/base64";
+        this.onload?.();
+      }
+    }
+    // @ts-expect-error override for test
+    global.FileReader = MockFileReader;
+
+    render(withI18n(<ContactForm />));
+
+    const largeFile = new File(["x".repeat(50_000)], "large.pdf", {
+      type: "application/pdf",
+    });
+    const fileInput = document.querySelector(
+      "input[type='file']",
+    ) as HTMLInputElement;
+    fireEvent.change(fileInput, { target: { files: [largeFile] } });
+
+    expect(await screen.findByText(/files over/i)).toBeInTheDocument();
+    global.FileReader = originalFileReader;
+  });
+
+  it("shows error modal when EmailJS send fails", async () => {
+    const { send } = await import("@emailjs/browser");
+    (send as unknown as vi.Mock).mockRejectedValueOnce(new Error("fail"));
+
+    render(withI18n(<ContactForm />));
+
+    fireEvent.change(screen.getByLabelText(/Full Name/i), {
+      target: { value: "Jane Doe" },
+    });
+    fireEvent.change(screen.getByLabelText(/Email Address/i), {
+      target: { value: "jane@example.com" },
+    });
+    fireEvent.change(screen.getByLabelText(/Your Message/i), {
+      target: { value: "Hello" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Submit/i }));
+
+    await waitFor(() =>
+      expect(screen.getByText(/Failed to send message/i)).toBeInTheDocument(),
+    );
   });
 });

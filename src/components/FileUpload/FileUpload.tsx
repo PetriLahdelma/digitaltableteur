@@ -2,6 +2,7 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import styles from "./FileUpload.module.css";
 import Inputs from "@dt/Inputs";
 import Button from "@dt/Button";
+import HelperText from "@dt/HelperText";
 
 export interface FileUploadProps {
   label: string;
@@ -141,11 +142,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
           </Button>
         ) : null}
       </div>
-      {helperText && (
-        <p className={styles.helperText} id={helperTextId}>
-          {helperText}
-        </p>
-      )}
+      {helperText && <HelperText id={helperTextId}>{helperText}</HelperText>}
     </div>
   );
 };

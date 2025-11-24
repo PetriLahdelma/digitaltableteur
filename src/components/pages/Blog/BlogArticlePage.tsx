@@ -131,7 +131,7 @@ export function BlogArticlePage({
       {nav}
       <PageLayout maxWidth="md" spacing="comfortable" as="section">
         <header>
-          <h1>{title}</h1>
+          <Title level={1}>{title}</Title>
           <div className={styles.metaRow}>
             <Text className={styles.releaseDate}>
               {formatDate(publishedAt, i18n.language)}
@@ -177,7 +177,7 @@ export function BlogArticlePage({
       {similar.length > 0 && (
         <PageLayout maxWidth="md" spacing="comfortable" as="section">
           <div className={styles.similar}>
-            <h2>Similar Reads</h2>
+            <Title level={2}>Similar Reads</Title>
             <div className={styles.similarList}>
               {similar.map((entry) => (
                 <Card

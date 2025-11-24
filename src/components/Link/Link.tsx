@@ -56,6 +56,9 @@ const Link: React.FC<LinkProps> = ({
     return false;
   }, [children]);
 
+  // Map link size to icon size
+  const iconSize = size === "S" ? 20 : size === "L" ? 32 : 24;
+
   return (
     <a
       href={href}
@@ -65,7 +68,11 @@ const Link: React.FC<LinkProps> = ({
       {children}
       {isExternal && hasTextContent && (
         <span className={styles.externalIcon}>
-          <Icon name="arrow-square-out" ariaLabel="External link" />
+          <Icon
+            name="arrow-square-out"
+            size={iconSize}
+            ariaLabel="External link"
+          />
         </span>
       )}
     </a>

@@ -1,4 +1,5 @@
-import React, { Component, ReactNode } from "react";
+import React, { Component } from "react";
+import Title from "@dt/Title";
 
 interface Props {
   children: ReactNode;
@@ -48,7 +49,7 @@ class ChunkErrorBoundary extends Component<Props, State> {
               fontFamily: "Moderat, sans-serif",
             }}
           >
-            <h2>Loading Error</h2>
+            <Title level={2}>Loading Error</Title>
             <p>The page is being updated. Refreshing automatically...</p>
             <button
               onClick={() => window.location.reload()}

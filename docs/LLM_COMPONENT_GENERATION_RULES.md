@@ -2,8 +2,8 @@
 
 > Comprehensive guidelines for AI-assisted React component generation following project conventions, design system patterns, and accessibility standards.
 
-**Last Updated:** November 20, 2025  
-**Version:** 1.0.0
+**Last Updated:** November 23, 2025  
+**Version:** 2.0.0 (Next.js Migration)
 
 ---
 
@@ -30,9 +30,16 @@
 
 - Use design tokens from `variables.css` for spacing, colors, typography
 - Check `docs/2026_PRD.md` for feature requirements
-- Review existing components in `src/components/` for similar patterns
+- Review existing components in `shared/components/` (cross-platform) or `src/components/` (Vite-only)
 - Never hardcode values that should be tokens (colors, spacing, font sizes)
 - Token adoption is mandatory - no exceptions
+
+**Next.js Migration Context (November 2025):**
+
+- **Primary platform:** Next.js 15.5.6 App Router (`nextjs-app/`)
+- **Legacy platform:** Vite-based SPA (maintained for Storybook/testing)
+- **Shared components:** Located in `shared/components/` - accessible to both platforms via symlinks
+- **Platform-specific code:** Use `nextjs-app/app/` for Next.js routes, `src/` for Vite-only code
 
 **Example:**
 
@@ -50,6 +57,48 @@
 }
 ```
 
+### Rule 1.1.1 - Component Reuse (CRITICAL)
+
+**ALWAYS reuse existing components instead of creating raw HTML elements:**
+
+- **Typography Components:**
+  - ❌ NEVER use raw `<h1>`, `<h2>`, `<h3>`, etc.
+  - ✅ ALWAYS use `<Title level={1}>`, `<Title level={2}>`, etc.
+  - ❌ NEVER use raw `<p>` tags
+  - ✅ ALWAYS use `<Text as="p">` or `<Text as="span">`
+- **Other Existing Components:**
+  - Check `src/components/index.ts` and `shared/components/` for available components
+  - Use `Icon` component instead of raw SVG or emoji
+  - Use `Button` component instead of raw `<button>` for styled buttons
+  - Use `Card` component for card layouts
+  - Prefer composition of existing components over creating new patterns
+
+**Example:**
+
+```tsx
+/* ❌ BAD - Raw HTML elements */
+<div>
+  <h2 className={styles.title}>Title</h2>
+  <p className={styles.text}>Body text</p>
+  <button className={styles.button}>Click</button>
+</div>
+
+/* ✅ GOOD - Reusing design system components */
+<Card>
+  <Title level={2} terminals="sans">Title</Title>
+  <Text as="p" terminals="sans">Body text</Text>
+  <Button variant="primary">Click</Button>
+</Card>
+```
+
+**Benefits of component reuse:**
+
+- Consistent typography and styling across the app
+- Automatic theme support (Light, Dark, HC modes)
+- Built-in accessibility features
+- Reduces CSS duplication
+- Ensures design token compliance
+
 ### Rule 1.2 - Component Structure (Non-Negotiable)
 
 **Every component MUST include ALL these files:**
@@ -63,6 +112,15 @@ ComponentName/
 └── index.ts                   # Re-export: export { default } from './ComponentName'
 ```
 
+**Component Location Strategy:**
+
+- **Shared components** (usable in both Next.js and Vite): Place in `shared/components/`
+- **Vite-only components** (legacy): Keep in `src/components/`
+- **Next.js pages/routes**: Place in `nextjs-app/app/[route]/page.tsx`
+- **Next.js-specific utilities**: Place in `nextjs-app/components/` or `nextjs-app/lib/`
+
+**Default: Always use `shared/components/` for new UI components unless there's a platform-specific reason.**
+
 **Never create standalone files. Always create the complete folder structure.**
 
 ### Rule 1.3 - TypeScript Strictness
@@ -73,6 +131,25 @@ ComponentName/
 - Use `React.ReactNode` for children
 - Complex types go in separate interfaces
 - Props should be explicitly typed, not inferred
+
+### Rule 1.4 - Design System Usage Rules
+
+This clarifies how to correctly implement components and styles from the digitaltableteur design system.
+
+**Component Architecture & Styling**
+
+- **Design System First:** Always use existing components from the your-design-system package. Do not rebuild them.
+- **Layout Primitives:** Always use layout components from digitaltableteur (e.g., Grid, FlexBox, PageLayout). Do not use raw divs with custom flexbox CSS.
+- **Styling with Tokens:** Only use classes that are configured in our design system. Prefer our custom theme utilities (e.g., `color-primary`) over introducing new colors.
+- **Icons:** Use the `Icon` component from digitaltableteur, passing the appropriate icon name. Do not import raw SVGs or use system emojis.
+- **Props:** Component props must be defined with a TypeScript interface. When in doubt, use the TypeScript language server MCP as a source of knowledge on TypeScript patterns.
+
+**What to Avoid**
+
+- **No Hardcoded Values:** Do not use hardcoded strings (use translation keys), URLs (use config files), or styling values (use tokens).
+- **No Inconsistent Naming:** Follow the project's naming conventions.
+- **No Ignoring Errors:** Do not ignore TypeScript errors.
+- **No Unnecessary DOM:** Avoid unnecessary div wrappers.
 
 ---
 
@@ -128,6 +205,9 @@ ComponentName/
 - Text: `var(--color-text/title)`, `var(--inverted-text-color)`
 - Backgrounds: `var(--main-body-background-color)`, `var(--color-light-bg)`
 - **Never create new color variables unless specifically requested**
+- **CRITICAL:** Never use fallback values in var() - e.g., `var(--color-primary, #00f)` is FORBIDDEN
+- Always trust tokens exist: `var(--color-primary)` not `var(--color-primary, blue)`
+- If a token is missing, add it to `variables.css`, don't work around it with fallbacks
 
 **Layout:**
 
@@ -646,10 +726,81 @@ const Component = () => {
 3. Suspense for async boundaries
 4. Error boundaries for graceful failures
 
+**Next.js App Router: Client vs Server Components**
+
+**Use Server Components (default - NO `"use client"`):**
+
+- Static content rendering
+- Data fetching with async/await
+- Accessing backend resources directly
+- SEO-critical content
+- Reducing client-side JavaScript
+
+**Use Client Components (add `"use client"` directive):**
+
+- React hooks (useState, useEffect, useContext, etc.)
+- Event handlers (onClick, onChange, onSubmit)
+- Browser APIs (window, document, localStorage)
+- Third-party libraries requiring browser context
+- Interactive UI (forms, modals, dropdowns)
+- Real-time features (WebSockets, timers)
+
+**Client Component Example:**
+
+```typescript
+"use client";
+
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import styles from "./Component.module.css";
+
+interface ComponentProps {
+  initialValue?: string;
+}
+
+const Component: React.FC<ComponentProps> = ({ initialValue = "" }) => {
+  const { t } = useTranslation();
+  const [value, setValue] = useState(initialValue);
+
+  return (
+    <div className={styles.component}>
+      <button onClick={() => setValue("clicked")}>
+        {t("component.action")}
+      </button>
+    </div>
+  );
+};
+
+Component.displayName = "Component";
+export default Component;
+```
+
+**Server Component Example (for page routes):**
+
+```typescript
+import type { Metadata } from "next";
+import { ComponentFromShared } from "../../shared/components/Component/Component";
+
+export const metadata: Metadata = {
+  title: "Page Title",
+  description: "Page description for SEO",
+};
+
+export default function Page() {
+  return <ComponentFromShared />;
+}
+```
+
+**Shared Components Strategy:**
+
+- Components in `shared/` should be platform-agnostic
+- Add `"use client"` if component uses hooks/events (required for Next.js)
+- Ensure compatibility with both Vite (react-router) and Next.js patterns
+
 **Component composition:**
 
 ```typescript
-const Component = React.FC<Props> = ({ children, ...props }) => {
+const Component: React.FC<Props> = ({ children, ...props }) => {
   // Keep render logic simple
   // Extract complex logic to hooks
   // Use early returns for conditional rendering
@@ -1538,6 +1689,12 @@ npm run test:visual        # Run visual regression tests
 7. Keyboard navigation works ✅
 8. Translation coverage 100% ✅
 
+**Development Servers:**
+
+- **Vite (Storybook/Legacy):** `npm run dev` (port 5173)
+- **Next.js:** `npm run dev:next` from root OR `cd nextjs-app && npm run dev` (port 3000+)
+- **Storybook:** `npm run storybook` (port 6006)
+
 **ONLY commit when all checks pass.**
 
 ### Rule 10.3 - Example Generation Prompt
@@ -1589,7 +1746,61 @@ These rules ensure every generated component:
 
 ---
 
-**Last Updated:** November 20, 2025  
+## ARCHIVED: Vite-Specific Guidance (Pre-November 2025)
+
+> **⚠️ DEPRECATED:** This section documents legacy Vite-specific patterns maintained for Storybook and testing infrastructure. New development should follow Next.js patterns above.
+
+### Vite Configuration & Build
+
+**Vite config location:** `vite.config.ts` (root)
+
+**Key Vite features still in use:**
+
+- React Fast Refresh for Storybook
+- MDX support for blog posts
+- Static file copying (404.html, robots.txt, etc.)
+- Sentry Vite plugin for error tracking
+- CSS Modules support
+
+**Vite-specific imports:**
+
+```typescript
+// Vite handles these automatically
+import Component from "@dt/Component"; // Alias defined in vite.config.ts
+import styles from "./Component.module.css";
+import icon from "./icon.svg?url"; // Vite asset handling
+```
+
+**Deployment (Legacy):**
+
+- `npm run build` - Vite production build
+- `npm run deploy` - Deploy to GitHub Pages
+- `npm run cache-bust` - Manual cache invalidation
+
+**Route handling (Legacy):**
+
+- React Router v6 (`src/App.tsx`)
+- Lazy-loaded route components
+- `ChunkErrorBoundary` for code-splitting errors
+
+### When to Use Vite vs Next.js
+
+**Use Vite for:**
+
+- Storybook development (runs on Vite)
+- Component testing (Vitest)
+- Maintaining legacy `src/` codebase
+
+**Use Next.js for:**
+
+- All new pages and routes
+- Production deployment
+- SEO-critical content
+- Server-side rendering needs
+
+---
+
+**Last Updated:** November 23, 2025  
 **Maintained by:** Petri Lahdelma  
 **Project:** Digitaltableteur
 

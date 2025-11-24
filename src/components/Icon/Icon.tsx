@@ -168,18 +168,20 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
 
     const transformValue =
       transforms.length > 0 ? transforms.join(" ") : undefined;
-    const mergedStyle =
-      transformValue || style
-        ? {
-            ...style,
-            ...(transformValue ? { transform: transformValue } : {}),
-          }
-        : undefined;
 
     const animationClass = spin
       ? styles.spin
       : pulse
         ? styles.pulse
+        : undefined;
+
+    // Build inline styles for SVG - combine transform and any user style
+    const svgStyle =
+      transformValue || style
+        ? {
+            ...style,
+            ...(transformValue ? { transform: transformValue } : {}),
+          }
         : undefined;
 
     const sizeClassMap: Record<NamedSize, string> = {
@@ -205,7 +207,6 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
       <span
         ref={ref}
         className={mergedClassName}
-        style={mergedStyle}
         aria-hidden={decorative && !ariaLabel ? true : undefined}
         aria-label={ariaLabel}
         role={!decorative && ariaLabel ? "img" : undefined}
@@ -219,6 +220,7 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
           mirrored={mirrored}
           aria-hidden="true"
           focusable="false"
+          style={svgStyle}
         />
       </span>
     );

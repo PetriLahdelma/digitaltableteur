@@ -36,7 +36,7 @@ export function CookiePolicyFullSvPage({
       ) : null}
 
       <Title>Sekretesspolicy</Title>
-      <h2>Avtalsregister – Integritetspolicy</h2>
+      <Title level={2}>Avtalsregister – Integritetspolicy</Title>
       <p>
         <strong>Datum för skapande:</strong> 7.7.2025
       </p>
@@ -125,7 +125,7 @@ export function CookiePolicyFullSvPage({
         <strong>Lagringstid:</strong> 10 år efter avtalets slut.
       </p>
       <br />
-      <h3>Cookies (Kakor)</h3>
+      <Title level={3}>Cookies (Kakor)</Title>
       <p>
         Vi använder cookies för att förbättra och anpassa användarupplevelsen
         samt analysera webbplatsens användning. Data som samlas in kan användas
@@ -143,19 +143,19 @@ export function CookiePolicyFullSvPage({
         Instagram). Valfria kategorier aktiveras först efter att du godkänt dem.
         Samtycken loggas i 13 månader enligt EU-regler.
       </p>
-      <h3>Hantera samtycke</h3>
+      <Title level={3}>Hantera samtycke</Title>
       <p>
         Visa bannern igen genom att rensa posten “cookieConsent” i webbläsarens
         lagring eller kontakta mail@digitaltableteur.com så återställer vi den.
         Du kan även hantera cookies via webbläsarens inställningar.
       </p>
-      <h3>Användning av AI</h3>
+      <Title level={3}>Användning av AI</Title>
       <p>
         Vissa texter, prototyper eller tester görs med AI-stöd, men en ansvarig
         person granskar alltid resultatet och personuppgifter minimeras. Se vår
         <a href="/ai-use">AI-transparensrapport</a> för fler detaljer.
       </p>
-      <h3>Utövande av rättigheter</h3>
+      <Title level={3}>Utövande av rättigheter</Title>
       <p>
         För att använda dina rättigheter, kontakta den personuppgiftsansvariga
         eller ovanstående kontaktperson. Du kan lämna in klagomål till

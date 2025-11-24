@@ -8,6 +8,7 @@ import Modal from "@dt/Modal";
 import TextArea from "@dt/Inputs/TextArea";
 import Select from "@dt/Select";
 import FileUpload from "@dt/FileUpload";
+import BusyIndicator from "@dt/BusyIndicator";
 import { useTranslation } from "react-i18next";
 
 const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
@@ -62,6 +63,7 @@ const ContactForm = () => {
     null,
   );
   const [attachmentError, setAttachmentError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const resetFormState = () => {
     dispatchForm({ type: "RESET" });
     setAttachmentFile(null);
@@ -179,10 +181,11 @@ const ContactForm = () => {
     process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY ||
     process.env.NEXT_PUBLIC_APP_EMAIL_PUBLIC_KEY;
   const spamLogEndpoint = process.env.NEXT_PUBLIC_APP_CONTACT_SPAM_LOG_ENDPOINT;
+  const SPAM_LOG_ENDPOINT = spamLogEndpoint;
+  const isDev = env?.DEV ?? process.env.NODE_ENV !== "production";
 
   // Debug logging in development - only once on mount
   useEffect(() => {
-    const isDev = env?.DEV ?? process.env.NODE_ENV !== "production";
     if (isDev) {
       // eslint-disable-next-line no-console
       console.log("EmailJS Environment Check:", {
@@ -286,8 +289,10 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
     // Quietly drop submissions that fill the honeypot field
     if (formData.honeypot.trim()) {
@@ -296,38 +301,45 @@ const ContactForm = () => {
         // eslint-disable-next-line no-console
         console.warn("Honeypot triggered, dropping submission.");
       }
+      setIsSubmitting(false);
       return;
     }
 
     // Validate form before submission
     if (!validateForm()) {
+      setIsSubmitting(false);
       return;
     }
     const now = new Date();
     const time = now.toLocaleString(); // You can customize the format if needed
 
     // Always try to store in MongoDB and handle response
-    fetch("https://digitaltableteursecureproxy.vercel.app/api/save-contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        interest: formData.interest,
-        message: formData.message,
-        hearAbout: formData.hearAbout,
-        attachmentName: attachmentFile?.name ?? null,
-        attachmentType: attachmentFile?.type ?? null,
-        attachmentSize: attachmentFile?.size ?? null,
-        attachmentData: attachmentDataUrl,
-        time,
-      }),
-    }).catch((err) => {
+    try {
+      await fetch(
+        "https://digitaltableteursecureproxy.vercel.app/api/save-contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            interest: formData.interest,
+            message: formData.message,
+            hearAbout: formData.hearAbout,
+            attachmentName: attachmentFile?.name ?? null,
+            attachmentType: attachmentFile?.type ?? null,
+            attachmentSize: attachmentFile?.size ?? null,
+            attachmentData: attachmentDataUrl,
+            time,
+          }),
+        },
+      );
+    } catch (err) {
       // eslint-disable-next-line no-console
       console.error("Failed to save to MongoDB", err);
       // Do not show error modal for MongoDB failure
-    });
+    }
 
     // Check if EmailJS credentials are available
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
@@ -362,41 +374,43 @@ const ContactForm = () => {
       }
 
       setIsErrorOpen(true);
+      setIsSubmitting(false);
       return;
     }
 
     // Show modal only after successful EmailJS send
-    send(
-      SERVICE_ID,
-      TEMPLATE_ID,
-      {
-        name: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-        interest: formData.interest,
-        message: formData.message,
-        hearAbout: formData.hearAbout,
-        attachmentName: attachmentFile?.name ?? "",
-        attachmentType: attachmentFile?.type ?? "",
-        attachmentSize: attachmentFile?.size ?? "",
-        attachmentData:
-          attachmentDataUrl && !isAttachmentTooLargeForEmail
-            ? attachmentDataUrl
-            : "",
-        attachmentNotice: attachmentEmailNotice,
-        time, // Add the current time for EmailJS {{time}}
-      },
-      PUBLIC_KEY,
-    )
-      .then(() => {
-        setIsModalOpen(true);
-        resetFormState();
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.error("Failed to send message via EmailJS", err);
-        setIsErrorOpen(true);
-      });
+    try {
+      await send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          interest: formData.interest,
+          message: formData.message,
+          hearAbout: formData.hearAbout,
+          attachmentName: attachmentFile?.name ?? "",
+          attachmentType: attachmentFile?.type ?? "",
+          attachmentSize: attachmentFile?.size ?? "",
+          attachmentData:
+            attachmentDataUrl && !isAttachmentTooLargeForEmail
+              ? attachmentDataUrl
+              : "",
+          attachmentNotice: attachmentEmailNotice,
+          time, // Add the current time for EmailJS {{time}}
+        },
+        PUBLIC_KEY,
+      );
+      setIsModalOpen(true);
+      resetFormState();
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error("Failed to send message via EmailJS", err);
+      setIsErrorOpen(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -541,16 +555,30 @@ const ContactForm = () => {
             <a href="/privacyPolicy">{t("contactPrivacyPolicy2")}</a>.
           </p>
           <div className={styles["formActions"]}>
-            <Button type="button" variant="tertiary" onClick={handleClearForm}>
+            <Button
+              type="button"
+              variant="tertiary"
+              onClick={handleClearForm}
+              disabled={isSubmitting}
+            >
               {t("contactClear")}
             </Button>
             <Button
               className={styles["submitButton"]}
               type="submit"
               variant="primary"
+              disabled={isSubmitting}
             >
-              {t("contactSubmit")}
+              {isSubmitting ? t("busyIndicator.loading") : t("contactSubmit")}
             </Button>
+            {isSubmitting ? (
+              <BusyIndicator
+                variant="inline"
+                size="s"
+                label={t("busyIndicator.loading")}
+                className={styles["busyInline"]}
+              />
+            ) : null}
           </div>
         </div>
       </form>

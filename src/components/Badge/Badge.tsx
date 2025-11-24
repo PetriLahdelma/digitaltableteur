@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import {
   getSemanticIcon,
   type SemanticStatus,
+  STATUS_ICON_NAMES,
 } from "../../utils/semanticIcons";
 
 type BadgeState = "success" | "info" | "error" | "warning" | "neutral";
@@ -17,6 +18,15 @@ const STATE_TO_STATUS: Partial<
   info: "info",
   error: "error",
   warning: "warning",
+};
+
+// Icon colors for primary badges (need high contrast)
+const PRIMARY_ICON_COLORS: Record<BadgeState, string> = {
+  success: "var(--color-white)",
+  info: "var(--color-white)",
+  error: "var(--color-white)",
+  warning: "var(--color-white)",
+  neutral: "var(--color-black)",
 };
 
 interface BadgeProps {
@@ -55,8 +65,16 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       state && state !== "neutral" ? STATE_TO_STATUS[state] : undefined;
     // Normalize incoming icon prop; guard against plain objects or other invalid types.
     let resolvedIcon: React.ReactNode = icon;
-    if (resolvedIcon == null && semanticStatus) {
-      resolvedIcon = getSemanticIcon(semanticStatus);
+    if (resolvedIcon == null && state && semanticStatus) {
+      // For primary badges, use manual icon with proper contrast color
+      if (design === "primary") {
+        const iconName = STATUS_ICON_NAMES[semanticStatus];
+        const iconColor = PRIMARY_ICON_COLORS[state];
+        resolvedIcon = <Icon name={iconName} color={iconColor} />;
+      } else {
+        // For secondary badges, use semantic icon with semantic colors
+        resolvedIcon = getSemanticIcon(semanticStatus);
+      }
     }
     // If caller passed a component function/class instead of an element, create it
     if (resolvedIcon && typeof resolvedIcon === "function") {

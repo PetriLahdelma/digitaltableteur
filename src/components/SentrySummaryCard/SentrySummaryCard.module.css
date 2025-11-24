@@ -44,7 +44,7 @@
   display: flex;
   align-items: baseline;
   gap: var(--space-xs);
-  font-family: var(--primary-body-font, var(--font-sans), sans-serif);
+  font-family: var(--font-text);
 }
 
 .stubBadge {
@@ -53,7 +53,7 @@
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-xs);
   background: var(--color-neutral-bg, #e2e8f0);
-  font-family: var(--font-sans);
+  font-family: var(--font-text);
   font-size: var(--font-size-2xs);
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -70,7 +70,7 @@
   align-items: center;
   border-radius: var(--radius-s);
   background: var(--color-primary);
-  font-family: var(--font-sans);
+  font-family: var(--font-text);
   font-size: var(--font-size-m);
   font-weight: 600;
   line-height: 1.1;
@@ -110,7 +110,7 @@
 
 .issueTitle {
   margin: 0;
-  font-family: var(--primary-body-font, var(--font-sans), sans-serif);
+  font-family: var(--font-text);
   font-size: var(--font-size-s);
   font-weight: 600;
   line-height: 1.3;

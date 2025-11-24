@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useTheme } from "../../../shared/components/ThemeProvider";
 
 interface LogoProps {
   variant?: "filled" | "outline";
@@ -7,16 +8,70 @@ interface LogoProps {
 }
 
 const Logo = ({ variant = "filled", className, onClick }: LogoProps) => {
+  const { theme } = useTheme();
+
+  // Map theme to logo filename
+  const getLogoPath = () => {
+    switch (theme) {
+      case "dark":
+        return "/dt-outline-dark@2x.webp";
+      case "hcb":
+        return "/dt-outline-HCB@2x.webp";
+      case "hcw":
+        return "/dt-outline-HCW@2x.webp";
+      case "light":
+      default:
+        return "/dt-outline@2x.webp";
+    }
+  };
+
   if (variant === "outline") {
+    const logoPath = getLogoPath();
+    const shouldApplyBlur = theme !== "hcb" && theme !== "hcw";
+
     return (
-      <img
-        src="/dt-outline@2x.webp"
-        alt="Digitaltableteur logo"
-        width={128}
-        height={128}
+      <div
+        style={{
+          position: "relative",
+          display: "inline-block",
+          width: "100%",
+          height: "100%",
+        }}
         className={className}
-        onClick={onClick}
-      />
+      >
+        {shouldApplyBlur && (
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              backgroundImage: `url(${logoPath})`,
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              filter: "blur(10px)",
+              zIndex: 1,
+            }}
+          />
+        )}
+        <img
+          src={logoPath}
+          alt="Digitaltableteur logo"
+          width="128"
+          height="128"
+          onClick={onClick}
+          style={{
+            position: "relative",
+            zIndex: 2,
+            mixBlendMode: shouldApplyBlur ? "difference" : "normal",
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+          }}
+        />
+      </div>
     );
   }
 

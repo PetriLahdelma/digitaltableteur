@@ -1,8 +1,11 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
+import { axe, toHaveNoViolations } from "jest-axe";
 import Button from "./Button";
 import Icon from "@dt/Icon";
+
+expect.extend(toHaveNoViolations);
 
 describe("Button", () => {
   it("renders children", () => {
@@ -120,5 +123,31 @@ describe("Button", () => {
     const textSpan = screen.getByText("Icon Link");
     const iconWrapper = textSpan.previousElementSibling as HTMLElement;
     expect(iconWrapper.getAttribute("data-button-slot")).toBe("icon");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Button>Accessible Button</Button>);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("has no accessibility violations with icon", async () => {
+    const { container } = render(
+      <Button icon="check" variant="primary">
+        Icon Button
+      </Button>,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("has no accessibility violations as link", async () => {
+    const { container } = render(
+      <Button href="/test" variant="secondary">
+        Link Button
+      </Button>,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

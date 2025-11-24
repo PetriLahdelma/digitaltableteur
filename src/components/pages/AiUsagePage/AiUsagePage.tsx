@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
+import Title from "@dt/Title";
 import styles from "./AiUsagePage.module.css";
 
 const delimiter = " – ";
@@ -81,11 +82,11 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
         </div>
       ) : null}
 
-      <h1>{t("aiPolicyHeading")}</h1>
+      <Title level={1}>{t("aiPolicyHeading")}</Title>
       <p>{t("aiPolicyIntro")}</p>
 
       <section>
-        <h2>{t("aiPolicyUseCasesTitle")}</h2>
+        <Title level={2}>{t("aiPolicyUseCasesTitle")}</Title>
         <ul>
           {useCases.map((key) => {
             const content = t(key);
@@ -99,12 +100,12 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <h2>{t("aiPolicyDataTitle")}</h2>
+        <Title level={2}>{t("aiPolicyDataTitle")}</Title>
         <p>{t("aiPolicyDataBody")}</p>
       </section>
 
       <section>
-        <h2>{t("aiPolicySafeguardsTitle")}</h2>
+        <Title level={2}>{t("aiPolicySafeguardsTitle")}</Title>
         <ul>
           {safeguards.map((key) => {
             const content = t(key);
@@ -118,7 +119,7 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <h2>{t("aiPolicyRightsTitle")}</h2>
+        <Title level={2}>{t("aiPolicyRightsTitle")}</Title>
         <ul>
           {rights.map((key) => {
             const content = t(key);

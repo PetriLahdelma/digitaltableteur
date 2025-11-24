@@ -168,7 +168,7 @@ export function ContactPage() {
           <Text className={styles.contactInfo}>
             {t("contactInfo")}{" "}
             <Link
-              size="S"
+              size="M"
               href="mailto:mail@digitaltableteur.com"
               className="wavyUnderline"
             >
@@ -186,7 +186,7 @@ export function ContactPage() {
           <Text className={styles.resumeInfo}>
             {t("resumeSectionDescription")}&nbsp;
             <Link
-              size="L"
+              size="m"
               href="mailto:mail@digitaltableteur.com"
               className="wavyUnderline"
             >

@@ -7,12 +7,14 @@ import React, {
 } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
+import HelperText from "@dt/HelperText";
 
 interface TextAreaProps
   extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "onChange"> {
   label: string;
   value?: string;
   error?: string;
+  helperText?: string;
   onChange?: (value: string) => void;
 }
 
@@ -21,6 +23,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   placeholder,
   value = "",
   error,
+  helperText,
   onChange,
   disabled = false,
   rows = 4,
@@ -58,6 +61,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         {...rest}
       />
       {error && <span className={styles["error-message"]}>{error}</span>}
+      {helperText && !error && <HelperText>{helperText}</HelperText>}
     </div>
   );
 };

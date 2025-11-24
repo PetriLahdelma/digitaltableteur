@@ -1,13 +1,14 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./avatar.module.css";
 
-export type AvatarMenuItem = {
+export interface AvatarMenuItem {
   label: string;
   icon?: React.ReactNode;
   id?: string;
   href?: string;
   onSelect?: () => void;
-};
+}
 
 export type AvatarSize =
   | "2rem"
@@ -18,17 +19,19 @@ export type AvatarSize =
   | "6rem"
   | "7rem"
   | "8rem"
-  | "32px"
-  | "40px"
-  | "48px"
-  | "64px"
-  | "80px"
-  | "96px"
-  | "112px"
-  | "128px"
   | string;
 
-type AvatarProps = {
+/**
+ * Avatar component displays user profile images or initials with optional dropdown menu.
+ *
+ * @example
+ * ```tsx
+ * <Avatar name="John Doe" imageUrl="/avatar.jpg" />
+ * <Avatar name="Jane Smith" variant="initials" />
+ * <Avatar name="Admin" menuItems={[{ label: "Profile" }, { label: "Sign out" }]} />
+ * ```
+ */
+export interface AvatarProps {
   name?: string;
   imageUrl?: string | { default: string };
   clickable?: boolean;
@@ -46,7 +49,7 @@ type AvatarProps = {
   variant?: "image" | "initials";
   /** Optional token that forces menu placement recalculation when changed */
   placementRefreshKey?: number;
-};
+}
 
 type MenuPlacement = {
   horizontal: "left" | "right";
@@ -68,6 +71,7 @@ const Avatar: React.FC<AvatarProps> = ({
   variant = "image",
   placementRefreshKey = 0,
 }) => {
+  const { t } = useTranslation();
   const menuEnabled = Boolean(menuItems?.length);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const wrapperRef = React.useRef<HTMLDivElement | null>(null);
@@ -197,7 +201,9 @@ const Avatar: React.FC<AvatarProps> = ({
 
   const resolvedSize = size ?? "2.5rem";
   const avatarStyle = { "--avatar-size": resolvedSize } as React.CSSProperties;
-  const avatarMenuLabel = menuLabel ?? (name ? `${name} menu` : "Avatar menu");
+  const avatarMenuLabel =
+    menuLabel ??
+    (name ? t("avatar.menuLabel", { name }) : t("avatar.menuLabelGeneric"));
 
   const renderMenuItems = () => {
     if (!menuItems) return null;
@@ -268,7 +274,7 @@ const Avatar: React.FC<AvatarProps> = ({
         src={resolvedImageUrl}
         srcSet={resolvedSrcSet}
         sizes={resolvedSizes}
-        alt={name || "Avatar"}
+        alt={name || t("avatar.altTextGeneric")}
         className={styles.avatarImage}
         onClick={clickable && !menuEnabled ? handleClick : undefined}
         style={avatarStyle}
@@ -299,7 +305,7 @@ const Avatar: React.FC<AvatarProps> = ({
         src={resolvedImageUrl}
         srcSet={resolvedSrcSet}
         sizes={resolvedSizes}
-        alt={name || "Avatar"}
+        alt={name || t("avatar.altTextGeneric")}
         className={styles.avatarImage}
         onClick={clickable ? handleClick : undefined}
         style={avatarStyle}
@@ -347,5 +353,7 @@ const Avatar: React.FC<AvatarProps> = ({
 
   return textElement;
 };
+
+Avatar.displayName = "Avatar";
 
 export default Avatar;
