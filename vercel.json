@@ -18,11 +18,5 @@
         { "key": "Access-Control-Allow-Credentials", "value": "true" }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "https://digitaltableteur-next.vercel.app/$1"
-    }
   ]
 }

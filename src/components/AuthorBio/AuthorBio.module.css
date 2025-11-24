@@ -3,8 +3,8 @@
 
   margin-block-start: 2rem;
   padding: var(--author-bio-padding);
-  border: 2px solid var(--color-primary, rgb(25 25 25 / 12%));
-  background: var(--color-white, #fff);
+  border: 2px solid var(--color-primary);
+  background: var(--main-body-background-color);
   box-shadow: 0 8px 30px rgb(0 0 0 / 4%);
 }
 
@@ -22,18 +22,16 @@
 
 .name {
   margin: 0.25rem 0 0;
-  font-family: var(--secondary-heading-font, sans-serif);
   font-size: 1.5rem;
-  color: var(--primary-text-color, #191919);
+  color: var(--color-text);
 }
 
 .tagline {
   position: relative;
   margin: 0 0 1.5rem;
-  font-family: var(--primary-body-font);
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--primary-text-color, #191919);
+  color: var(--color-text);
   padding-bottom: 2rem;
 }
 
@@ -48,9 +46,10 @@
 }
 
 .bioContent {
+  font-family: var(--font-text);
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--primary-text-color, #191919);
+  color: var(--color-text);
 }
 
 .bioContent p {

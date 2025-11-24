@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./PersonCard.module.css";
-import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Link from "@dt/Link";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
+import Skeleton from "@dt/Skeleton";
 
 export interface PersonCardProps {
   imageSrc: string;
@@ -33,6 +33,8 @@ export interface PersonCardProps {
   className?: string;
   imageLoading?: "lazy" | "eager";
   imageDecoding?: "auto" | "sync" | "async";
+  /** Show skeleton placeholders while content is loading */
+  loading?: boolean;
 }
 
 const PersonCard: React.FC<PersonCardProps> = ({
@@ -62,13 +64,76 @@ const PersonCard: React.FC<PersonCardProps> = ({
   className,
   imageLoading = "lazy",
   imageDecoding = "async",
+  loading = false,
 }) => {
   const { t } = useTranslation();
   const resolvedSizes =
     imageSizes ?? "(max-width: 768px) 240px, (max-width: 1024px) 180px, 96px";
 
+  const containerClassName = [styles.personGrid, className]
+    .filter(Boolean)
+    .join(" ");
+
+  if (loading) {
+    return (
+      <div className={containerClassName} aria-busy="true" role="status">
+        <Skeleton
+          variant="avatar"
+          className={styles.portraitSkeleton}
+          label={t("personCard.loadingAvatar")}
+        />
+        <div className={styles.personDetails}>
+          <Skeleton
+            variant="text"
+            lines={1}
+            width="72%"
+            className={styles.nameSkeleton}
+            label={t("personCard.loadingName")}
+          />
+          <Skeleton
+            variant="text"
+            lines={1}
+            width="56%"
+            className={styles.titleSkeleton}
+            label={t("personCard.loadingTitle")}
+          />
+          <Skeleton
+            variant="text"
+            lines={1}
+            width="48%"
+            className={styles.contactSkeleton}
+            label={t("personCard.loadingContact")}
+          />
+          <div className={styles.socialSkeletonRow}>
+            <Skeleton
+              variant="circle"
+              width={28}
+              height={28}
+              className={styles.socialSkeleton}
+              label={t("personCard.loadingSocial")}
+            />
+            <Skeleton
+              variant="circle"
+              width={28}
+              height={28}
+              className={styles.socialSkeleton}
+              label={t("personCard.loadingSocial")}
+            />
+            <Skeleton
+              variant="circle"
+              width={28}
+              height={28}
+              className={styles.socialSkeleton}
+              label={t("personCard.loadingSocial")}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className={`${styles.personGrid} ${className || ""}`}>
+    <div className={containerClassName}>
       <img
         className={styles.portrait}
         src={imageSrc}
@@ -88,7 +153,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
           </Text>
           <Text as="p">
             <Link
-              size="S"
+              size="M"
               href={`mailto:${email}`}
               className={`${styles.personEmail} wavyUnderline`.trim()}
             >

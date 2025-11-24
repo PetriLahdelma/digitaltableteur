@@ -1,6 +1,7 @@
 import React, { useId } from "react";
 import Label from "@dt/Label";
 import SelectOption from "./SelectOption";
+import HelperText from "@dt/HelperText";
 import styles from "./Select.module.css";
 import Icon from "@dt/Icon";
 
@@ -14,6 +15,7 @@ interface SelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "onChange"> {
   label: string;
   options?: SelectOptionItem[];
+  helperText?: string;
   onChange?: (value: string) => void;
   onValueChange?: (value: string) => void;
 }
@@ -24,6 +26,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       label,
       id,
       options = [],
+      helperText,
       children,
       className,
       disabled = false,
@@ -90,6 +93,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             ariaLabel="Toggle options"
           />
         </div>
+        {helperText && <HelperText>{helperText}</HelperText>}
       </div>
     );
   },

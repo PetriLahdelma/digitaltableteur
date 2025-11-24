@@ -2,6 +2,78 @@ import React from "react";
 import Title from "./Title";
 import { within } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
+import ComplianceCard from "@dt/ComplianceCard";
+import type { ComplianceRule } from "@dt/ComplianceCard";
+import Icon from "@dt/Icon";
+
+const titleComplianceRules: ComplianceRule[] = [
+  {
+    id: "css-modules",
+    rule: "CSS Modules only (no inline styles)",
+    status: "pass",
+    details: "All styles via CSS Modules",
+  },
+  {
+    id: "design-tokens",
+    rule: "Design tokens for spacing/colors/typography",
+    status: "pass",
+    details: "Uses CSS custom properties",
+  },
+  {
+    id: "logical-properties",
+    rule: "Logical CSS properties",
+    status: "pass",
+    details: "Uses logical spacing",
+  },
+  {
+    id: "semantic-html",
+    rule: "Semantic HTML (h1-h6 or custom)",
+    status: "pass",
+    details: "Polymorphic as prop",
+  },
+  {
+    id: "typescript-strict",
+    rule: "TypeScript strict mode",
+    status: "pass",
+    details: "Proper typing with TitleProps",
+  },
+  {
+    id: "accessibility",
+    rule: "Accessibility (proper heading levels)",
+    status: "pass",
+    details: "Semantic heading hierarchy",
+  },
+  {
+    id: "translation-support",
+    rule: "i18n for title text",
+    status: "pass",
+    details: "Stories use translation keys",
+  },
+  {
+    id: "tests",
+    rule: "Unit tests with .play functions",
+    status: "pass",
+    details: "Test file with interactions",
+  },
+  {
+    id: "storybook-stories",
+    rule: "Storybook stories",
+    status: "pass",
+    details: "Multiple size and level variants",
+  },
+  {
+    id: "font-tokens",
+    rule: "Font token compliance (--font-text/--font-title)",
+    status: "pass",
+    details: "Uses design system fonts",
+  },
+  {
+    id: "no-hardcoded",
+    rule: "No hardcoded values",
+    status: "pass",
+    details: "All values from tokens",
+  },
+];
 
 export default {
   title: "Components/Title",
@@ -167,3 +239,13 @@ AllLevels.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     throw new Error("Expected six heading levels to be rendered");
   }
 };
+
+export const Z_TitleCompliance: React.FC = () => (
+  <ComplianceCard
+    title="Compliance: 11/11"
+    titleIcon={
+      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+    }
+    rules={titleComplianceRules}
+  />
+);

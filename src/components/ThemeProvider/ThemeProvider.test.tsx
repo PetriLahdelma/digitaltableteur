@@ -36,6 +36,12 @@ const TestComponent = () => {
       <button data-testid="set-hcw" onClick={() => setTheme("hcw")}>
         Set HCW
       </button>
+      <button
+        data-testid="set-invalid"
+        onClick={() => setTheme("invalid" as any)}
+      >
+        Set Invalid
+      </button>
     </div>
   );
 };
@@ -183,5 +189,17 @@ describe("ThemeProvider", () => {
     });
 
     expect(screen.getByTestId("current-theme")).toHaveTextContent("hcw");
+  });
+
+  it("falls back to default when setTheme receives invalid value", () => {
+    render(
+      <ThemeProvider>
+        <TestComponent />
+      </ThemeProvider>,
+    );
+
+    const invalidButton = screen.getByTestId("set-invalid");
+    act(() => invalidButton.click());
+    expect(screen.getByTestId("current-theme")).toHaveTextContent("light");
   });
 });

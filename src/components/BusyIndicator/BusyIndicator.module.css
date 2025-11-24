@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem; /* standardized horizontal spacing between animation and label */
-  font-family: var(--primary-body-font);
+  font-family: var(--font-text);
   color: var(--color-dark);
 }
 

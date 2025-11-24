@@ -18,13 +18,6 @@
   gap: 0.5rem;
 }
 
-.helperText {
-  margin-block-start: 0.35rem;
-  font-family: var(--primary-body-font, Moderat, sans-serif);
-  font-size: 0.875rem;
-  color: var(--color-primary);
-}
-
 @media (width <= 480px) {
   .actions {
     flex-direction: column;

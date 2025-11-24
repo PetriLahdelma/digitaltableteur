@@ -4,6 +4,20 @@ import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import Avatar from "./Avatar";
 
+// Mock react-i18next
+vi.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key: string, params?: Record<string, unknown>) => {
+      if (key === "avatar.menuLabel" && params?.name) {
+        return `${params.name} menu`;
+      }
+      if (key === "avatar.menuLabelGeneric") return "Avatar menu";
+      if (key === "avatar.altTextGeneric") return "Avatar";
+      return key;
+    },
+  }),
+}));
+
 const createDomRect = (rect: Partial<DOMRect>): DOMRect => {
   const left = rect.left ?? rect.x ?? 0;
   const top = rect.top ?? rect.y ?? 0;

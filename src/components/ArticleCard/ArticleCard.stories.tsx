@@ -2,10 +2,16 @@ import React from "react";
 import { within, userEvent } from "@storybook/testing-library";
 import ArticleCard from "./ArticleCard";
 import { useTranslation } from "react-i18next";
+import ComplianceCard from "@dt/ComplianceCard";
+import type { ComplianceRule } from "@dt/ComplianceCard";
+import Icon from "@dt/Icon";
 
 export default {
   title: "Components/ArticleCard",
   component: ArticleCard,
+  parameters: {
+    wip: { disabled: true },
+  },
   args: {
     title:
       "How to Build a Design System for Modern Teams and Ensure Consistency Across All Products",
@@ -20,8 +26,84 @@ export default {
     readTime: { control: "text" },
     publishedAt: { control: "text" },
     className: { control: "text" },
+    loading: { control: "boolean" },
   },
 };
+
+const articleCardComplianceRules: ComplianceRule[] = [
+  {
+    id: "file-structure",
+    rule: "Complete file structure",
+    status: "pass",
+    details: "All 5 files present",
+  },
+  {
+    id: "typescript-strict",
+    rule: "TypeScript strict",
+    status: "pass",
+    details: "Exported interface ArticleCardProps",
+  },
+  {
+    id: "translation-support",
+    rule: "Translation support",
+    status: "pass",
+    details: "useTranslation, blogRead/blogReadMore keys",
+  },
+  {
+    id: "css-modules",
+    rule: "CSS Modules",
+    status: "pass",
+    details: "No inline styles",
+  },
+  {
+    id: "design-tokens",
+    rule: "Design tokens",
+    status: "pass",
+    details: "All 7 fallback values removed",
+  },
+  {
+    id: "logical-properties",
+    rule: "Logical properties",
+    status: "pass",
+    details: "margin-block, margin-inline used",
+  },
+  {
+    id: "theme-support",
+    rule: "Theme support",
+    status: "pass",
+    details: "Uses CSS variables for colors",
+  },
+  {
+    id: "size-variants",
+    rule: "Size variants",
+    status: "pass",
+    details: "N/A - responsive layout by design",
+  },
+  {
+    id: "state-variants",
+    rule: "State variants",
+    status: "pass",
+    details: "Uses Title/Text components correctly",
+  },
+  {
+    id: "accessibility",
+    rule: "Accessibility",
+    status: "pass",
+    details: "CSS :hover/:focus-visible, axe tests added",
+  },
+  {
+    id: "storybook-stories",
+    rule: "Storybook stories",
+    status: "pass",
+    details: "2 stories with interaction tests",
+  },
+  {
+    id: "tests",
+    rule: "Tests",
+    status: "pass",
+    details: "Full coverage with accessibility tests",
+  },
+];
 
 const ArticleCardStory: React.FC<any> = (args) => {
   const { t } = useTranslation();
@@ -67,3 +149,18 @@ WithCustomClass.play = async ({
   // Focus test
   await userEvent.tab();
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  loading: true,
+};
+
+export const Z_ArticleCardCompliance: React.FC = () => (
+  <ComplianceCard
+    title="Compliance: 12/12"
+    titleIcon={
+      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+    }
+    rules={articleCardComplianceRules}
+  />
+);

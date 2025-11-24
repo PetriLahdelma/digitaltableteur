@@ -6,6 +6,8 @@ import Icon from "@dt/Icon";
 
 import Badge from "./Badge";
 import Text from "@dt/Text";
+import ComplianceCard from "@dt/ComplianceCard";
+import type { ComplianceRule } from "@dt/ComplianceCard";
 
 const STATE_ICON_MAP: Record<string, string> = {
   success: "check-circle",
@@ -101,6 +103,81 @@ const BadgeStoryTemplate: React.FC<BadgeProps & { iconName?: string }> = (
 const Template = (args: BadgeProps & { iconName?: string }) => (
   <BadgeStoryTemplate {...args} />
 );
+
+const badgeComplianceRules: ComplianceRule[] = [
+  {
+    id: "file-structure",
+    rule: "Complete file structure",
+    status: "pass",
+    details: "All 5 files present",
+  },
+  {
+    id: "typescript-strict",
+    rule: "TypeScript strict",
+    status: "pass",
+    details: "Exported interface, forwardRef",
+  },
+  {
+    id: "translation-support",
+    rule: "Translation support",
+    status: "pass",
+    details: "useTranslation, all keys present",
+  },
+  {
+    id: "css-modules",
+    rule: "CSS Modules",
+    status: "pass",
+    details: "No inline styles",
+  },
+  {
+    id: "design-tokens",
+    rule: "Design tokens",
+    status: "pass",
+    details: "Now 100% - no hardcoded fallbacks",
+  },
+  {
+    id: "logical-properties",
+    rule: "Logical properties",
+    status: "pass",
+    details: "No physical directions found",
+  },
+  {
+    id: "theme-support",
+    rule: "Theme support",
+    status: "pass",
+    details: "Uses token variables",
+  },
+  {
+    id: "size-variants",
+    rule: "Size variants",
+    status: "pass",
+    details: "s/m/l implemented",
+  },
+  {
+    id: "state-variants",
+    rule: "State variants",
+    status: "pass",
+    details: "success/info/error/warning/neutral",
+  },
+  {
+    id: "accessibility",
+    rule: "Accessibility",
+    status: "pass",
+    details: "aria-label on close button",
+  },
+  {
+    id: "storybook-stories",
+    rule: "Storybook stories",
+    status: "pass",
+    details: "File exists",
+  },
+  {
+    id: "tests",
+    rule: "Tests",
+    status: "pass",
+    details: "File exists",
+  },
+];
 
 export const Playground: Story = {
   render: Template,
@@ -258,4 +335,16 @@ export const AllSizes: Story = {
     await canvas.findByText(/medium/i);
     await canvas.findByText(/large/i);
   },
+};
+
+export const Z_BadgeCompliance: Story = {
+  render: () => (
+    <ComplianceCard
+      title="Compliance: 12/12"
+      titleIcon={
+        <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+      }
+      rules={badgeComplianceRules}
+    />
+  ),
 };

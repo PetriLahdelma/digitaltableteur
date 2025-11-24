@@ -854,3 +854,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 };
 
 export default ChatWidget;
+// Expose helpers for testing edge cases without mounting the full widget.
+export {
+  generateId,
+  toStoredMessages,
+  parseStoredMessages,
+  parseLegacyMessages,
+  fromStoredMessages,
+};

@@ -52,7 +52,7 @@
   align-items: center;
   border: none;
   background: transparent;
-  font-family: var(--font-sans, var(--primary-body-font));
+  font-family: var(--font-text);
   font-weight: 500;
   line-height: 1.2;
   cursor: pointer;

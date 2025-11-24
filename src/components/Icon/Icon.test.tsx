@@ -51,8 +51,9 @@ describe("Icon", () => {
       />,
     );
     const wrapper = container.querySelector("span")!;
-    expect(wrapper.getAttribute("style")).toContain("rotate(90deg)");
-    expect(wrapper.getAttribute("style")).toContain("scaleX(-1)");
+    const svg = container.querySelector("svg")!;
+    expect(svg.getAttribute("style")).toContain("rotate(90deg)");
+    expect(svg.getAttribute("style")).toContain("scaleX(-1)");
     expect(wrapper.className).toContain(styles.spin);
   });
 
@@ -65,9 +66,9 @@ describe("Icon", () => {
         style={{ marginTop: "4px" }}
       />,
     );
-    const wrapper = container.querySelector("span")!;
-    expect(wrapper.style.marginTop).toBe("4px");
-    expect(wrapper.getAttribute("style")).toContain("rotate(90deg)");
+    const svg = container.querySelector("svg")!;
+    expect(svg.getAttribute("style")).toContain("margin-top: 4px");
+    expect(svg.getAttribute("style")).toContain("rotate(90deg)");
   });
 
   it("applies pulse animation", () => {

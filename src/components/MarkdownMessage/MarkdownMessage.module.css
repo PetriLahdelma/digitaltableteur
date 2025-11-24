@@ -2,7 +2,7 @@
 
 .root {
   /* Force sans-serif across all markdown unless explicitly overridden */
-  font-family: var(--font-family-sans);
+  font-family: var(--font-text);
   font-size: var(--font-size-text);
   line-height: 1.5;
   overflow-wrap: anywhere;
@@ -21,7 +21,7 @@
 
 .root p strong,
 .root p b {
-  font-family: var(--font-family-sans);
+  font-family: var(--font-text);
   font-weight: 600;
 }
 
@@ -93,7 +93,7 @@
 .root h5,
 .root h6 {
   margin: var(--space-3) 0 var(--space-2);
-  font-family: var(--font-family-sans);
+  font-family: var(--font-text);
   font-weight: 600;
   line-height: 1.25;
 }

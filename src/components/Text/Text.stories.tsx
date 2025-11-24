@@ -2,6 +2,81 @@ import React from "react";
 import Text from "./Text";
 import { within } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
+import Icon from "@dt/Icon";
+import ComplianceCard from "@dt/ComplianceCard";
+import Title from "@dt/Title";
+import type { ComplianceRule } from "@dt/ComplianceCard";
+import type { Meta, StoryFn } from "@storybook/react-vite";
+import styles from "./Text.stories.module.css";
+
+const textComplianceRules: ComplianceRule[] = [
+  {
+    id: "file-structure",
+    rule: "Complete file structure",
+    status: "pass",
+    details: "All 5 files present",
+  },
+  {
+    id: "typescript-strict",
+    rule: "TypeScript strict",
+    status: "pass",
+    details: "Proper typing with TextProps",
+  },
+  {
+    id: "translation-support",
+    rule: "Translation support",
+    status: "pass",
+    details: "Content as children prop",
+  },
+  {
+    id: "css-modules",
+    rule: "CSS Modules",
+    status: "pass",
+    details: "Removed inline styles, using module classes",
+  },
+  {
+    id: "design-tokens",
+    rule: "Design tokens",
+    status: "pass",
+    details: "Replaced Moderat with var(--font-text)",
+  },
+  {
+    id: "logical-properties",
+    rule: "Logical properties",
+    status: "pass",
+    details: "Uses margin-block and margin-inline",
+  },
+  {
+    id: "theme-support",
+    rule: "Theme support",
+    status: "pass",
+    details: "CSS custom properties throughout",
+  },
+  {
+    id: "composition",
+    rule: "Component composition",
+    status: "pass",
+    details: "Polymorphic as prop, size/lineHeight variants",
+  },
+  {
+    id: "accessibility",
+    rule: "Accessibility",
+    status: "pass",
+    details: "Semantic HTML with flexible tag",
+  },
+  {
+    id: "storybook-stories",
+    rule: "Storybook stories",
+    status: "pass",
+    details: "Multiple variants with ComplianceCard",
+  },
+  {
+    id: "tests",
+    rule: "Tests",
+    status: "pass",
+    details: "Test file exists",
+  },
+];
 
 export default {
   title: "Components/Text",
@@ -30,7 +105,17 @@ export default {
     className: { control: "text", description: "Custom class name" },
     children: { control: "text", description: "Text content" },
   },
-};
+} as Meta;
+
+export const Z_TextCompliance: StoryFn = () => (
+  <ComplianceCard
+    title="Compliance: 11/11"
+    titleIcon={
+      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+    }
+    rules={textComplianceRules}
+  />
+);
 
 const TextStory: React.FC<any> = (args) => {
   const { t } = useTranslation();
@@ -116,65 +201,35 @@ export const LineHeights = () => {
     "This is a longer sample text that demonstrates the effect of different line heights. Line height affects readability and visual density. Proper line height creates comfortable reading rhythm and improves text comprehension.";
 
   return (
-    <div style={{ display: "grid", gap: "2rem" }}>
-      <div>
-        <h3
-          style={{
-            marginBottom: "0.5rem",
-            fontSize: "1rem",
-            fontWeight: "600",
-          }}
-        >
+    <div className={styles.container}>
+      <div className={styles.section}>
+        <Title level={3} className={styles.sectionTitle}>
           {t("storyTextLineHeightTight") || "Tight (1.2)"}
-        </h3>
+        </Title>
         <Text lineHeight="tight">{sampleText}</Text>
       </div>
-      <div>
-        <h3
-          style={{
-            marginBottom: "0.5rem",
-            fontSize: "1rem",
-            fontWeight: "600",
-          }}
-        >
+      <div className={styles.section}>
+        <Title level={3} className={styles.sectionTitle}>
           {t("storyTextLineHeightSnug") || "Snug (1.375)"}
-        </h3>
+        </Title>
         <Text lineHeight="snug">{sampleText}</Text>
       </div>
-      <div>
-        <h3
-          style={{
-            marginBottom: "0.5rem",
-            fontSize: "1rem",
-            fontWeight: "600",
-          }}
-        >
+      <div className={styles.section}>
+        <Title level={3} className={styles.sectionTitle}>
           {t("storyTextLineHeightNormal") || "Normal (1.5)"}
-        </h3>
+        </Title>
         <Text lineHeight="normal">{sampleText}</Text>
       </div>
-      <div>
-        <h3
-          style={{
-            marginBottom: "0.5rem",
-            fontSize: "1rem",
-            fontWeight: "600",
-          }}
-        >
+      <div className={styles.section}>
+        <Title level={3} className={styles.sectionTitle}>
           {t("storyTextLineHeightRelaxed") || "Relaxed (1.625)"}
-        </h3>
+        </Title>
         <Text lineHeight="relaxed">{sampleText}</Text>
       </div>
-      <div>
-        <h3
-          style={{
-            marginBottom: "0.5rem",
-            fontSize: "1rem",
-            fontWeight: "600",
-          }}
-        >
+      <div className={styles.section}>
+        <Title level={3} className={styles.sectionTitle}>
           {t("storyTextLineHeightLoose") || "Loose (1.75)"}
-        </h3>
+        </Title>
         <Text lineHeight="loose">{sampleText}</Text>
       </div>
     </div>

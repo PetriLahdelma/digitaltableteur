@@ -36,7 +36,7 @@ export function CookiePolicyFullEnPage({
       ) : null}
 
       <Title>Privacy Policy</Title>
-      <h2>Contract Register – Privacy Policy</h2>
+      <Title level={2}>Contract Register – Privacy Policy</Title>
       <p>
         <strong>Creation date:</strong> 7.7.2025
       </p>
@@ -147,7 +147,7 @@ export function CookiePolicyFullEnPage({
           system is protected by a firewall.
         </li>
       </ul>
-      <h3>Rights of the data subject</h3>
+      <Title level={3}>Rights of the data subject</Title>
       <ul>
         <li>Right to information on processing</li>
         <li>Right of access</li>
@@ -158,7 +158,7 @@ export function CookiePolicyFullEnPage({
         <li>Right to object</li>
         <li>Right not to be subject to automated decisions</li>
       </ul>
-      <h3>Cookies</h3>
+      <Title level={3}>Cookies</Title>
       <p>
         We use cookies to improve and personalise your experience, and to
         analyse and improve our site. Data collected with cookies may be used
@@ -175,20 +175,20 @@ export function CookiePolicyFullEnPage({
         select “Accept all” in the consent modal. Consent logs are retained for
         13 months as required by EU law.
       </p>
-      <h3>Google Analytics</h3>
+      <Title level={3}>Google Analytics</Title>
       <p>
         We use Google Analytics to monitor site activity, improve functionality,
         and develop marketing. Data collected cannot be linked to individual
         users. You can change your Google ad settings or disable Analytics
         monitoring with a browser add-on.
       </p>
-      <h3>Managing consent</h3>
+      <Title level={3}>Managing consent</Title>
       <p>
         You can revisit your choice at any time. Clear the “cookieConsent” entry
         in your browser storage (or all cookies) to re-open the banner, or email
         mail@digitaltableteur.com and we will reset it on your behalf.
       </p>
-      <h3>AI-assisted services</h3>
+      <Title level={3}>AI-assisted services</Title>
       <p>
         Parts of the site (for example, translated articles, Storybook previews,
         or prototype copy) are reviewed with AI-assisted tooling. Humans remain
@@ -196,7 +196,7 @@ export function CookiePolicyFullEnPage({
         any prompt is sent. See our{" "}
         <a href="/ai-use">AI use & transparency statement</a> for details.
       </p>
-      <h3>How to exercise your rights</h3>
+      <Title level={3}>How to exercise your rights</Title>
       <p>
         To access, rectify, or erase your data, or to object to processing,
         contact the data controller or the contact person above. You have the

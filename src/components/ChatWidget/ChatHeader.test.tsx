@@ -1,8 +1,13 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, it, expect, vi } from "vitest";
+import { axe, toHaveNoViolations } from "jest-axe";
 import ChatHeader from "./ChatHeader";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
+
+expect.extend(toHaveNoViolations);
 
 function withI18n(ui: React.ReactElement) {
   return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
@@ -71,5 +76,100 @@ describe("ChatHeader offline title logic", () => {
     expect(
       screen.getByText(/Studio offline|Studion offline|Studio offline/i),
     ).toBeInTheDocument();
+  });
+});
+
+describe("ChatHeader accessibility", () => {
+  const baseProps = {
+    title: "Chat with Donny",
+    description: "DT-specific answers, no fluff.",
+    onReset: () => {},
+    onMinimize: () => {},
+    isSending: false,
+  };
+
+  it("has no accessibility violations in default state", async () => {
+    const { container } = render(withI18n(<ChatHeader {...baseProps} />));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("has no accessibility violations when sending", async () => {
+    const { container } = render(
+      withI18n(<ChatHeader {...baseProps} isSending={true} />),
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("has no accessibility violations during offline hours", async () => {
+    const offlineDate = new Date("2025-11-08T12:00:00.000Z"); // Saturday
+    const { container } = render(
+      withI18n(<ChatHeader {...baseProps} currentDate={offlineDate} />),
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("has proper ARIA labels on buttons", () => {
+    render(withI18n(<ChatHeader {...baseProps} />));
+
+    expect(
+      screen.getByRole("button", { name: /reset conversation/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /minimize chat/i }),
+    ).toBeInTheDocument();
+  });
+});
+
+describe("ChatHeader button interactions", () => {
+  const baseProps = {
+    title: "Chat with Donny",
+    description: "DT-specific answers, no fluff.",
+    onReset: vi.fn(),
+    onMinimize: vi.fn(),
+    isSending: false,
+  };
+
+  it("calls onReset when reset button clicked", async () => {
+    const onReset = vi.fn();
+    render(withI18n(<ChatHeader {...baseProps} onReset={onReset} />));
+
+    const resetButton = screen.getByRole("button", { name: /reset/i });
+    await userEvent.click(resetButton);
+
+    expect(onReset).toHaveBeenCalledTimes(1);
+  });
+
+  it("calls onMinimize when minimize button clicked", async () => {
+    const onMinimize = vi.fn();
+    render(withI18n(<ChatHeader {...baseProps} onMinimize={onMinimize} />));
+
+    const minimizeButton = screen.getByRole("button", { name: /minimize/i });
+    await userEvent.click(minimizeButton);
+
+    expect(onMinimize).toHaveBeenCalledTimes(1);
+  });
+
+  it("disables reset button when isSending is true", () => {
+    render(withI18n(<ChatHeader {...baseProps} isSending={true} />));
+
+    const resetButton = screen.getByRole("button", { name: /reset/i });
+    expect(resetButton).toBeDisabled();
+  });
+
+  it("does not disable minimize button when isSending", () => {
+    render(withI18n(<ChatHeader {...baseProps} isSending={true} />));
+
+    const minimizeButton = screen.getByRole("button", { name: /minimize/i });
+    expect(minimizeButton).not.toBeDisabled();
+  });
+
+  it("reset button has visible text label on desktop", () => {
+    render(withI18n(<ChatHeader {...baseProps} />));
+
+    const resetButton = screen.getByRole("button", { name: /reset/i });
+    expect(resetButton).toHaveTextContent(/reset/i);
   });
 });

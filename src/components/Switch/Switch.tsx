@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Switch.module.css";
 import Label from "@dt/Label";
+import HelperText from "@dt/HelperText";
 
 export interface SwitchProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> {
@@ -9,6 +10,7 @@ export interface SwitchProps
   loading?: boolean;
   label?: React.ReactNode;
   labelPlacement?: "right" | "left" | "top";
+  helperText?: string;
 }
 
 const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
@@ -20,6 +22,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
       loading = false,
       label,
       labelPlacement = "right",
+      helperText,
       className = "",
       onClick,
       id,
@@ -64,40 +67,47 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
     );
 
     return (
-      <span className={wrapperClassNames}>
-        {shouldRenderLabelBefore ? renderLabel() : null}
-        <button
-          {...rest}
-          id={switchId}
-          ref={ref}
-          type="button"
-          role="switch"
-          aria-checked={checked}
-          aria-busy={loading || undefined}
-          aria-labelledby={label && labelId ? labelId : rest["aria-labelledby"]}
-          aria-label={
-            label
-              ? undefined
-              : (rest["aria-label"] ??
-                (typeof label === "string" ? label : undefined))
-          }
-          className={[styles.switch, className].filter(Boolean).join(" ")}
-          data-checked={checked}
-          data-loading={loading}
-          data-disabled={isDisabled}
-          disabled={disabled}
-          onClick={(event) => {
-            onClick?.(event);
-            if (event.defaultPrevented) return;
-            toggle(event);
-          }}
-        >
-          <span className={styles.handle} aria-hidden="true">
-            {loading && <span className={styles.spinner} aria-hidden="true" />}
-          </span>
-        </button>
-        {shouldRenderLabelAfter ? renderLabel() : null}
-      </span>
+      <>
+        <span className={wrapperClassNames}>
+          {shouldRenderLabelBefore ? renderLabel() : null}
+          <button
+            {...rest}
+            id={switchId}
+            ref={ref}
+            type="button"
+            role="switch"
+            aria-checked={checked}
+            aria-busy={loading || undefined}
+            aria-labelledby={
+              label && labelId ? labelId : rest["aria-labelledby"]
+            }
+            aria-label={
+              label
+                ? undefined
+                : (rest["aria-label"] ??
+                  (typeof label === "string" ? label : undefined))
+            }
+            className={[styles.switch, className].filter(Boolean).join(" ")}
+            data-checked={checked}
+            data-loading={loading}
+            data-disabled={isDisabled}
+            disabled={disabled}
+            onClick={(event) => {
+              onClick?.(event);
+              if (event.defaultPrevented) return;
+              toggle(event);
+            }}
+          >
+            <span className={styles.handle} aria-hidden="true">
+              {loading && (
+                <span className={styles.spinner} aria-hidden="true" />
+              )}
+            </span>
+          </button>
+          {shouldRenderLabelAfter ? renderLabel() : null}
+        </span>
+        {helperText && <HelperText>{helperText}</HelperText>}
+      </>
     );
   },
 );

@@ -1,7 +1,10 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { vi } from "vitest";
+import { vi, describe, it, expect } from "vitest";
+import { axe, toHaveNoViolations } from "jest-axe";
 import ChatComposer from "./ChatComposer";
+
+expect.extend(toHaveNoViolations);
 
 // Minimal stub Button dependency is imported via alias in actual component; rely on existing implementation.
 
@@ -60,5 +63,55 @@ describe("ChatComposer keyboard submit", () => {
     const textarea = screen.getByLabelText(/Label/i);
     fireEvent.keyDown(textarea, { key: "Enter" });
     expect(onSubmit).not.toHaveBeenCalled();
+  });
+});
+
+describe("ChatComposer accessibility", () => {
+  it("has no accessibility violations in default state", async () => {
+    const onSubmit = vi.fn();
+    const onValueChange = vi.fn();
+    const { container } = render(
+      <ChatComposer
+        inputId="chat-input"
+        value="Test message"
+        onValueChange={onValueChange}
+        onSubmit={onSubmit}
+        isSending={false}
+      />,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("has no accessibility violations when sending", async () => {
+    const onSubmit = vi.fn();
+    const onValueChange = vi.fn();
+    const { container } = render(
+      <ChatComposer
+        inputId="chat-input"
+        value="Sending..."
+        onValueChange={onValueChange}
+        onSubmit={onSubmit}
+        isSending={true}
+      />,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it("has no accessibility violations with empty value", async () => {
+    const onSubmit = vi.fn();
+    const onValueChange = vi.fn();
+    const { container } = render(
+      <ChatComposer
+        inputId="chat-input"
+        value=""
+        onValueChange={onValueChange}
+        onSubmit={onSubmit}
+        isSending={false}
+      />,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

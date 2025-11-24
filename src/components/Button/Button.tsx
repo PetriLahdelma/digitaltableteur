@@ -6,7 +6,11 @@ import {
 } from "../../utils/semanticIcons";
 import Icon from "@dt/Icon";
 
+/**
+ * Base properties shared by button and link variants.
+ */
 interface BaseButtonProps {
+  /** Visual style variant of the button */
   variant?:
     | "primary"
     | "secondary"
@@ -15,16 +19,25 @@ interface BaseButtonProps {
     | "warning"
     | "success"
     | "info";
+  /** Disables interaction and applies disabled styling */
   disabled?: boolean;
   /** Icon can be a React element, component, or a Phosphor icon name string (e.g., "spinner-gap") */
   icon?: React.ReactNode | string;
+  /** Icon displayed at the end of the button content */
   endIcon?: React.ReactNode | string;
+  /** Button label content */
   children?: React.ReactNode | React.ReactNode[];
+  /** ARIA description for additional context */
   accessibleDescription?: string;
+  /** ARIA label for accessible name override */
   accessibleName?: string;
+  /** ID reference for aria-labelledby */
   accessibleNameRef?: string;
+  /** ARIA role override (defaults to semantic element role) */
   accessibleRole?: "button" | "link";
+  /** Tooltip text displayed on hover */
   tooltip?: string;
+  /** Button size variant */
   size?: "s" | "m" | "l";
   /** When true, replaces primary (blue) text/border color with white for supported variants */
   inverse?: boolean;
@@ -32,6 +45,9 @@ interface BaseButtonProps {
   rounded?: boolean;
 }
 
+/**
+ * Button rendered as a native `<button>` element.
+ */
 interface ButtonAsButton
   extends BaseButtonProps,
     Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseButtonProps> {
@@ -42,6 +58,9 @@ interface ButtonAsButton
   rel?: never;
 }
 
+/**
+ * Button rendered as an `<a>` element for navigation.
+ */
 interface ButtonAsLink
   extends BaseButtonProps,
     Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseButtonProps> {
@@ -50,7 +69,25 @@ interface ButtonAsLink
   submits?: never;
 }
 
-type ButtonProps = ButtonAsButton | ButtonAsLink;
+/**
+ * Button component with polymorphic rendering (button or link).
+ *
+ * @example
+ * ```tsx
+ * // Primary button
+ * <Button variant="primary" onClick={handleClick}>Submit</Button>
+ *
+ * // Secondary button with icon
+ * <Button variant="secondary" icon="arrow-left">Back</Button>
+ *
+ * // Button as link
+ * <Button href="/about" variant="tertiary">Learn More</Button>
+ *
+ * // Inverse button on dark background
+ * <Button variant="primary" inverse>Contrast Button</Button>
+ * ```
+ */
+export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 type ButtonVariant = NonNullable<ButtonProps["variant"]>;
 const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
@@ -120,6 +157,28 @@ const Button = React.forwardRef<
     const submits = "submits" in rest ? rest.submits : false;
     const type = "type" in rest ? rest.type : "button";
     const onClick = "onClick" in rest ? rest.onClick : undefined;
+
+    // Determine icon color based on variant
+    const getIconColor = (): string | undefined => {
+      // Primary, error, success, info buttons use white icons
+      if (
+        variant === "primary" ||
+        variant === "error" ||
+        variant === "success" ||
+        variant === "info"
+      ) {
+        return "var(--color-white)";
+      }
+      // Warning uses specific contrast color
+      if (variant === "warning") {
+        return "var(--color-warning-text)";
+      }
+      // Secondary and tertiary inherit color from button text
+      return undefined;
+    };
+
+    const iconColor = getIconColor();
+
     const lookupIcon = (candidate: unknown): unknown => {
       if (typeof candidate === "string") {
         const trimmed = candidate.trim();
@@ -128,6 +187,7 @@ const Button = React.forwardRef<
           <Icon
             name={trimmed}
             ariaLabel={trimmed}
+            color={iconColor}
             data-button-string-icon={trimmed}
           />
         );
@@ -147,8 +207,16 @@ const Button = React.forwardRef<
       if (typeof candidate === "function") {
         return React.createElement(candidate as React.ComponentType);
       }
-      // Accept already constructed elements
-      if (React.isValidElement(candidate)) return candidate;
+      // Accept already constructed elements - clone with color if it's an Icon
+      if (React.isValidElement(candidate)) {
+        // If the element accepts a color prop and we have an icon color, clone with color
+        if (iconColor && "color" in (candidate.props || {})) {
+          return React.cloneElement(candidate as React.ReactElement<any>, {
+            color: iconColor,
+          });
+        }
+        return candidate;
+      }
       // Accept memo/forwardRef wrapped components provided as objects with $$typeof symbol
       if (
         typeof candidate === "object" &&

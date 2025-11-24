@@ -4,6 +4,77 @@ import Modal, { ModalProps } from "./Modal";
 import Button from "@dt/Button";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
+import ComplianceCard from "@dt/ComplianceCard";
+import type { ComplianceRule } from "@dt/ComplianceCard";
+
+const modalComplianceRules: ComplianceRule[] = [
+  {
+    id: "file-structure",
+    rule: "Complete file structure",
+    status: "pass",
+    details: "All 5 files present",
+  },
+  {
+    id: "typescript-strict",
+    rule: "TypeScript strict",
+    status: "pass",
+    details: "Proper typing with ModalProps",
+  },
+  {
+    id: "translation-support",
+    rule: "Translation support",
+    status: "pass",
+    details: "Stories use translation keys",
+  },
+  {
+    id: "css-modules",
+    rule: "CSS Modules",
+    status: "pass",
+    details: "No inline styles",
+  },
+  {
+    id: "design-tokens",
+    rule: "Design tokens",
+    status: "pass",
+    details: "Replaced --primary-body-font with var(--font-text)",
+  },
+  {
+    id: "logical-properties",
+    rule: "Logical properties",
+    status: "pass",
+    details: "Uses gap for spacing",
+  },
+  {
+    id: "theme-support",
+    rule: "Theme support",
+    status: "pass",
+    details: "CSS custom properties",
+  },
+  {
+    id: "composition",
+    rule: "Component composition",
+    status: "pass",
+    details: "Flexible children, variant system",
+  },
+  {
+    id: "accessibility",
+    rule: "Accessibility",
+    status: "pass",
+    details: "Focus trap, ESC close, ARIA roles",
+  },
+  {
+    id: "storybook-stories",
+    rule: "Storybook stories",
+    status: "pass",
+    details: "Multiple variants with ComplianceCard",
+  },
+  {
+    id: "tests",
+    rule: "Tests",
+    status: "pass",
+    details: "Test file exists",
+  },
+];
 
 export default {
   title: "Components/Modal",
@@ -13,24 +84,24 @@ export default {
     variant: {
       control: {
         type: "select",
-        options: ["default", "success", "error", "loading", "info"],
-      },
-    },
-    icon: {
-      control: {
-        type: "select",
-        options: {
-          None: null,
-          Error: <Icon name="x-circle" ariaLabel="Error" />,
-          Success: <Icon name="check-circle" ariaLabel="Success" />,
-          Info: <Icon name="info" ariaLabel="Info" />,
-        },
+        options: ["default", "success", "error", "warning", "info", "loading"],
       },
     },
     children: { control: "text" },
+    showCloseIcon: { control: "boolean" },
     onClose: { action: "closed" },
   },
 } as Meta;
+
+export const Z_ModalCompliance: StoryFn = () => (
+  <ComplianceCard
+    title="Compliance: 11/11"
+    titleIcon={
+      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+    }
+    rules={modalComplianceRules}
+  />
+);
 
 const Template: StoryFn<ModalProps> = (args: ModalProps) => {
   const [open, setOpen] = useState(true);
@@ -42,7 +113,6 @@ const Template: StoryFn<ModalProps> = (args: ModalProps) => {
         {...args}
         isOpen={open}
         onClose={() => setOpen(false)}
-        icon={args.icon}
         title={t(args.title as string)}
         /* eslint-disable react/no-children-prop */
         children={
@@ -56,10 +126,11 @@ const Template: StoryFn<ModalProps> = (args: ModalProps) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  title: "storyModalDefault",
-  variant: "default",
-  icon: null,
-  showCloseIcon: true,
+  title: "storyModalTitle",
+  children: "storyModalBody",
+};
+Default.parameters = {
+  wip: { disabled: true },
 };
 
 export const Loading = Template.bind({});
@@ -74,44 +145,32 @@ export const ErrorDialog = Template.bind({});
 ErrorDialog.args = {
   isOpen: true,
   title: "storyModalErrorTitle",
-  icon: (
-    <Icon
-      name="warning-circle"
-      ariaLabel="Error"
-      style={{ color: "var(--color-error)" }}
-    />
-  ),
   variant: "error",
   children: "storyModalErrorBody",
-  onClose: () => alert("Closed"),
 };
 
 export const SuccessDialog = Template.bind({});
 SuccessDialog.args = {
   isOpen: true,
   title: "storyModalSuccessTitle",
-  icon: (
-    <Icon
-      name="check-circle"
-      ariaLabel="Success"
-      style={{ color: "var(--color-success)" }}
-    />
-  ),
   variant: "success",
   children: "storyModalSuccessBody",
-  onClose: () => alert("Closed"),
+};
+
+export const WarningDialog = Template.bind({});
+WarningDialog.args = {
+  isOpen: true,
+  title: "storyModalWarningTitle",
+  variant: "warning",
+  children: "storyModalWarningBody",
 };
 
 export const InfoDialog = Template.bind({});
 InfoDialog.args = {
   isOpen: true,
   title: "storyModalInfoTitle",
-  icon: (
-    <Icon name="info" ariaLabel="Info" style={{ color: "var(--color-info)" }} />
-  ),
   variant: "info",
   children: "storyModalInfoBody",
-  onClose: () => alert("Closed"),
 };
 
 export const BusyDialog = Template.bind({});
@@ -119,5 +178,11 @@ BusyDialog.args = {
   variant: "loading",
   title: "storyModalBusyTitle",
   children: "storyModalBusyBody",
+  showCloseIcon: false,
+};
+
+export const SpinnerOnly = Template.bind({});
+SpinnerOnly.args = {
+  variant: "loading",
   showCloseIcon: false,
 };

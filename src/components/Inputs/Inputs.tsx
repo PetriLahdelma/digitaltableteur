@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
+import HelperText from "@dt/HelperText";
 import { useTranslation } from "react-i18next";
 
 interface InputProps
@@ -9,6 +10,7 @@ interface InputProps
   type: "text" | "number" | "email" | "password" | "search" | "tel";
   value?: string | number;
   error?: string;
+  helperText?: string;
   // eslint-disable-next-line no-unused-vars
   onChange?: (value: string | number) => void;
 }
@@ -19,6 +21,7 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   value,
   error,
+  helperText,
   onChange,
   disabled = false,
   ...rest
@@ -101,6 +104,9 @@ const Input: React.FC<InputProps> = ({
         <span className={styles["errorMessage"]}>
           {error || phoneError || emailError}
         </span>
+      )}
+      {helperText && !error && !phoneError && !emailError && (
+        <HelperText>{helperText}</HelperText>
       )}
     </div>
   );

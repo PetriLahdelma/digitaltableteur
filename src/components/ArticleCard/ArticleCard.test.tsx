@@ -1,7 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
+import { axe, toHaveNoViolations } from "jest-axe";
 import ArticleCard from "./ArticleCard";
+
+expect.extend(toHaveNoViolations);
 
 // Mock translations
 vi.mock("react-i18next", () => ({
@@ -82,6 +85,14 @@ describe("ArticleCard", () => {
     expect(screen.getByText("Read more")).toBeInTheDocument();
   });
 
+  it("renders skeletons when loading", () => {
+    render(<ArticleCard {...defaultProps} loading />);
+    expect(
+      screen.getByRole("status", { name: /articleCard.loadingTitle/ }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("link")).not.toBeInTheDocument();
+  });
+
   it("applies custom className when provided", () => {
     const props = { ...defaultProps, className: "custom-class" };
     render(<ArticleCard {...props} />);
@@ -95,5 +106,25 @@ describe("ArticleCard", () => {
     render(<ArticleCard {...props} />);
 
     expect(screen.getByText("3 min read")).toBeInTheDocument();
+  });
+
+  describe("Accessibility", () => {
+    it("has no accessibility violations", async () => {
+      const { container } = render(<ArticleCard {...defaultProps} />);
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
+    });
+
+    it("has proper link semantics", () => {
+      render(<ArticleCard {...defaultProps} />);
+      const link = screen.getByRole("link");
+      expect(link).toHaveAttribute("href", "/test-article");
+    });
+
+    it("has proper heading hierarchy", () => {
+      render(<ArticleCard {...defaultProps} />);
+      const heading = screen.getByRole("heading", { level: 2 });
+      expect(heading).toBeInTheDocument();
+    });
   });
 });

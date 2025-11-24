@@ -1,12 +1,30 @@
 import React, { useImperativeHandle, useRef } from "react";
 import Button from "@dt/Button";
 import { ChatTextArea } from "../Inputs/TextArea";
+import Label from "@dt/Label";
+import HelperText from "../HelperText";
 import styles from "./ChatWidget.module.css";
 import { useTranslation } from "react-i18next";
-import Text from "@dt/Text";
 import Icon from "@dt/Icon";
 
-interface ChatComposerProps {
+/**
+ * Props for the ChatComposer component.
+ *
+ * @interface ChatComposerProps
+ * @property {string} [labelId] - Optional ID for the label element (default: "donny-input-label")
+ * @property {string} inputId - Required ID for the input element
+ * @property {string} [placeholder] - Optional placeholder text for the textarea
+ * @property {string} [label] - Optional label text
+ * @property {string} [sendLabel] - Optional accessible label for the send button
+ * @property {string} value - Current value of the textarea (controlled)
+ * @property {function} onValueChange - Callback fired when textarea value changes
+ * @property {function} onSubmit - Callback fired when form is submitted
+ * @property {boolean} isSending - Whether a message is currently being sent (disables input)
+ * @property {number} [maxLength] - Maximum character length (default: 1000)
+ * @property {number} [minRows] - Minimum number of visible rows (controls initial height)
+ * @property {number} [maxRows] - Maximum number of visible rows (controls max auto-grow height)
+ */
+export interface ChatComposerProps {
   labelId?: string;
   inputId: string;
   placeholder?: string;
@@ -21,6 +39,12 @@ interface ChatComposerProps {
   maxRows?: number; // controls max auto-grow height
 }
 
+/**
+ * Imperative handle interface for ChatComposer component.
+ *
+ * @interface ChatComposerHandle
+ * @property {function} focusInput - Focuses the textarea input programmatically
+ */
 export interface ChatComposerHandle {
   focusInput: () => void;
 }
@@ -63,9 +87,9 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
 
     return (
       <form className={styles.composer} onSubmit={onSubmit}>
-        <label className={styles.inputLabel} htmlFor={inputId} id={labelId}>
+        <Label htmlFor={inputId} id={labelId}>
           {resolvedLabel}
-        </label>
+        </Label>
         <div className={styles.inputRow}>
           <ChatTextArea
             id={inputId}
@@ -101,24 +125,17 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
             className={styles.sendButton}
             aria-label={resolvedSendLabel}
             disabled={isSending || !value.trim()}
-            icon={
-              <Icon name="paper-plane-tilt" ariaLabel={resolvedSendLabel} />
-            }
+            icon={<Icon name="paper-plane-tilt" />}
             variant="primary"
             size="m"
           />
         </div>
-        <Text
-          size="S"
-          terminals="sans"
-          className={styles.shortcutHint}
-          aria-live="polite"
-        >
+        <HelperText className={styles.shortcutHint}>
           {t(
             "chatShortcutSubmit",
             "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.",
           )}
-        </Text>
+        </HelperText>
       </form>
     );
   },

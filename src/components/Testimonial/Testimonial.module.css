@@ -13,7 +13,7 @@
 }
 
 .quote {
-  font-family: var(--primary-body-font, Moderat, sans-serif);
+  font-family: var(--font-text);
   line-height: 1.6;
   color: var(--color-text);
   font-style: italic;
@@ -47,7 +47,7 @@
 }
 
 .name {
-  font-family: var(--primary-body-font, Moderat, sans-serif);
+  font-family: var(--font-text);
   font-weight: 600;
   color: var(--color-text);
   font-style: normal;
@@ -66,7 +66,7 @@
 }
 
 .titleCompany {
-  font-family: var(--primary-body-font, Moderat, sans-serif);
+  font-family: var(--font-text);
   line-height: 1.4;
   color: var(--color-gray-medium);
 }

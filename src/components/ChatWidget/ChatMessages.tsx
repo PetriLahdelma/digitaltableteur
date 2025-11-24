@@ -2,20 +2,27 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import type { UIMessage } from "ai";
 import styles from "./ChatWidget.module.css";
-import MarkdownMessage from "@dt/MarkdownMessage";
-import OpenHours from "@dt/OpenHours/OpenHours";
 import { processConversation } from "./messageProcessor";
-import ServicesGrid from "@dt/ServicesGrid/ServicesGrid";
+import ChatMessageBubble from "./ChatMessageBubble";
 import ComposePrompt from "./emailWorkflow/ComposePrompt";
 import FieldPrompt from "./emailWorkflow/FieldPrompt";
 import ReviewSummary from "./emailWorkflow/ReviewSummary";
 import SendStatus from "./emailWorkflow/SendStatus";
 import { EmailWorkflowState, EmailWorkflowAction } from "./emailWorkflow/types";
 
-interface ChatMessagesProps {
+/**
+ * Props for the ChatMessages component.
+ *
+ * @interface ChatMessagesProps
+ * @property {UIMessage[]} messages - Array of chat messages to display
+ * @property {boolean} isStreaming - Whether the assistant is currently streaming a response
+ * @property {EmailWorkflowState} [emailWorkflow] - Optional email workflow state for inline email composition
+ * @property {function} [dispatchEmailWorkflow] - Optional dispatcher for email workflow actions
+ */
+export interface ChatMessagesProps {
   messages: UIMessage[];
   isStreaming: boolean;
-  emailWorkflow?: EmailWorkflowState; // made optional for backward stories/tests
+  emailWorkflow?: EmailWorkflowState;
   dispatchEmailWorkflow?: (action: EmailWorkflowAction) => void;
 }
 
@@ -85,55 +92,30 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
       return null;
     };
 
+    // Empty state when no messages
+    if (processed.length === 0) {
+      return (
+        <div className={styles.messages} ref={ref}>
+          <div className={styles.emptyState}>
+            <p className={styles.emptyStateText}>{t("chatMessages.empty")}</p>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className={styles.messages} ref={ref}>
         {processed.map((message, msgIndex) => {
-          const isAssistant = message.role === "assistant";
-          const thinking = t("chatThinking", "Thinking…");
-          const ellipsis = t("chatEllipsis", "…");
-          const fallback = isAssistant
-            ? isStreaming
-              ? thinking
-              : ellipsis
-            : "";
+          const workflowUI =
+            msgIndex === lastAssistantIndex ? renderWorkflow() : null;
 
           return (
-            <div
+            <ChatMessageBubble
               key={message.id}
-              className={styles.message}
-              data-role={message.role}
-            >
-              {message.parts.map((part, idx) => {
-                if (part.kind === "text") {
-                  return (
-                    <MarkdownMessage
-                      key={idx}
-                      content={part.content}
-                      fallback={fallback}
-                      data-role={message.role}
-                    />
-                  );
-                }
-                if (part.kind === "component" && part.name === "OpenHours") {
-                  return (
-                    <React.Fragment key={idx}>
-                      <br />
-                      <OpenHours compact={part.props?.compact} />
-                    </React.Fragment>
-                  );
-                }
-                if (part.kind === "component" && part.name === "ServicesGrid") {
-                  return (
-                    <React.Fragment key={idx}>
-                      <br />
-                      <ServicesGrid />
-                    </React.Fragment>
-                  );
-                }
-                return null;
-              })}
-              {msgIndex === lastAssistantIndex && renderWorkflow()}
-            </div>
+              message={message}
+              isStreaming={isStreaming}
+              workflowUI={workflowUI}
+            />
           );
         })}
       </div>

@@ -101,38 +101,62 @@
   color: var(--color-success);
 }
 
-.tagline {
-  margin: 0;
-  font-family: Moderat, sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
+/* stylelint-disable declaration-no-important -- Overriding Text component styles */
+.header .tagline {
+  margin: 0 !important;
+  font-family: Moderat, var(--font-sans), sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  font-optical-sizing: auto;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--secondary-text-color, #555);
+  color: var(--secondary-text-color) !important;
+  -webkit-font-smoothing: antialiased;
 }
 
+.header .tagline,
+.header .tagline * {
+  font-family: Moderat, sans-serif !important;
+}
+/* stylelint-enable declaration-no-important */
+
+/* stylelint-disable declaration-no-important -- Overriding Text component styles */
 .offlineText {
   display: inline-block;
   margin-inline-start: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-family: Moderat, var(--font-sans), sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  font-optical-sizing: auto;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-error);
+  -webkit-font-smoothing: antialiased;
+}
+/* stylelint-enable declaration-no-important */
+
+/* stylelint-disable declaration-no-important -- Overriding Title component styles */
+.header .title {
+  margin: 0 !important;
+  font-family: Moderat, var(--font-sans), sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  font-optical-sizing: auto;
+  color: var(--color-title) !important;
+  -webkit-font-smoothing: antialiased;
 }
 
-.title {
-  margin: 0;
-  font-family: Moderat, sans-serif;
-  font-size: 1.25rem;
-  color: var(--color-title, #000);
+.header .title,
+.header .title * {
+  font-family: Moderat, sans-serif !important;
 }
+/* stylelint-enable declaration-no-important */
 
 .subtitle {
   margin: 0;
-  font-family: Moderat, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.875rem;
-  color: var(--secondary-text-color, #666);
+  color: var(--secondary-text-color);
 }
 
 .headerActions {
@@ -149,65 +173,26 @@
   }
 }
 
-.resetButton,
-.minimizeButton {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 999px;
-  background: rgb(0 0 0 / 4%);
-  font-size: 0.75rem;
-  color: inherit;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-  appearance: none;
-}
-
-/* Prevent multi-line wrapping of reset label; hide text on narrow viewports in favor of icon only */
+/* Button component handles all visual styling - only layout overrides here */
 
 .resetButton {
+  /* Prevent multi-line wrapping of reset label */
   white-space: nowrap;
 }
 
+/* Hide text label on narrow viewports, preserve icon for accessibility */
+
 @media (width <= 560px) {
-  .resetButton {
-    /* Keep intrinsic padding for hit area while visually hiding text label */
-    position: relative;
-  }
-
-  /* Hide only textual label, preserve icon */
-
-  /* keep for accessibility tree but visually hidden */
-
-  .resetLabel {
+  .resetButton [data-button-slot="text"] {
     position: absolute;
-    margin: -1px;
-    padding: 0;
     width: 1px;
     height: 1px;
+    padding: 0;
     border: 0;
     white-space: nowrap;
-    clip: rect(0 0 0 0);
     overflow: hidden;
+    clip: rect(0, 0, 0, 0);
   }
-}
-
-.minimizeButton {
-  padding: 0.4rem;
-  font-size: 1.1rem;
-}
-
-.resetButton:hover,
-.minimizeButton:hover {
-  background: rgb(0 0 0 / 7%);
-}
-
-.resetButton:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
 }
 
 .messages {
@@ -329,28 +314,28 @@
 }
 
 .inputLabel {
-  font-family: Moderat, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--secondary-text-color, #666);
+  color: var(--secondary-text-color);
 }
 
 .inputRow {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 0.75rem;
-  font-family: Moderat, sans-serif;
+  font-family: var(--font-sans);
 }
 
 .input {
-  padding: 0.65rem 0.85rem;
-  min-height: 2.75rem;
+  padding: 0.76rem 0.85rem;
+  min-height: 3rem;
   flex: 1;
-  border: 1px solid var(--color-border-light, #3a3a3a);
+  border: 1px solid var(--color-border-light);
   background: transparent;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.5;
-  color: var(--color-text, #111);
+  color: var(--color-text);
   transition:
     border 0.2s ease,
     box-shadow 0.2s ease;
@@ -358,11 +343,12 @@
 }
 
 .input:focus {
-  outline: var(--color-primary, #0f62fe);
+  outline: var(--color-primary);
   box-shadow: 0 0 0 4px rgb(15 98 254 / 15%);
 }
 
 .input::placeholder {
+  font-family: var(--font-sans);
   color: var(--primary-text-color);
   opacity: 0.4;
   font-style: italic;
@@ -370,15 +356,16 @@
 
 .sendButton {
   display: inline-flex;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3rem;
+  height: 3rem;
   justify-content: center;
   align-items: center;
   border: none;
-  border-radius: 9999px;
-  background: var(--color-primary, #0f62fe);
+  /* stylelint-disable-next-line declaration-no-important -- Override Button component styles */
+  border-radius: 50% !important;
+  background: var(--color-primary);
   font-size: 1.1rem;
-  color: var(--inverted-text-color, #fff);
+  color: var(--inverted-text-color);
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -462,7 +449,7 @@
 
 .shortcutHint {
   margin: 0;
-  /* stylelint-disable-next-line declaration-no-important */
+  /* stylelint-disable-next-line declaration-no-important -- Ensure spacing consistency */
   margin-block-end: 0 !important;
   padding-inline-start: 1rem;
   font-family: Moderat, sans-serif;

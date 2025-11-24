@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prebuild": "rm -rf ./shared ./src ./public ./content && ln -s ../shared ./shared && ln -s ../public ./public && ln -s ../content ./content"
+    "prebuild": "rm -rf ./shared ./src ./public ./content ./digitaltableteur-blog && cp -r ../shared ./shared && cp -r ../src ./src && cp -r ../public ./public && cp -r ../content ./content && cp -r ../digitaltableteur-blog ./digitaltableteur-blog"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -35,9 +35,5 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "15.5.6",
     "typescript": "^5.9.3"
-  },
-  "overrides": {
-    "@types/react": "$devDependencies/@types/react",
-    "@types/react-dom": "$devDependencies/@types/react-dom"
   }
 }

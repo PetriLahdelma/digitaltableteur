@@ -1,7 +1,7 @@
 .link {
   display: inline-flex;
   align-items: center;
-  font-family: var(--primary-body-font, Moderat, sans-serif);
+  font-family: var(--font-text);
   text-decoration: none;
   color: var(--link-color);
 }

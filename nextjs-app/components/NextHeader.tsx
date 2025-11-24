@@ -158,13 +158,16 @@ export function NextHeader() {
               const active = isActive(item.href, item.exact);
               return (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={active ? styles.selected : undefined}
-                    aria-current={active ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
+                  <div className={styles.navLinkWrapper}>
+                    <div className={styles.navLinkBlur} aria-hidden="true" />
+                    <Link
+                      href={item.href}
+                      className={active ? styles.selected : undefined}
+                      aria-current={active ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
                 </li>
               );
             })}
@@ -173,30 +176,35 @@ export function NextHeader() {
         <div ref={controlsRef} className={styles.controls}>
           <div className={styles.languageSwitcher}>
             {languages.map((lang) => (
-              <button
-                key={lang.code}
-                type="button"
-                onClick={() => changeLanguage(lang.code)}
-                disabled={currentLang === lang.code}
-                className={`${styles.languageLink} ${
-                  currentLang === lang.code ? styles.languageLinkActive : ""
-                }`.trim()}
-                aria-label={lang.label}
-                aria-current={currentLang === lang.code ? "true" : undefined}
-              >
-                {lang.label}
-              </button>
+              <div key={lang.code} className={styles.languageLinkWrapper}>
+                <div className={styles.languageLinkBlur} aria-hidden="true" />
+                <button
+                  type="button"
+                  onClick={() => changeLanguage(lang.code)}
+                  disabled={currentLang === lang.code}
+                  className={`${styles.languageLink} ${
+                    currentLang === lang.code ? styles.languageLinkActive : ""
+                  }`.trim()}
+                  aria-label={lang.label}
+                  aria-current={currentLang === lang.code ? "true" : undefined}
+                >
+                  {lang.label}
+                </button>
+              </div>
             ))}
           </div>
-          <button
-            onClick={() => cycleTheme()}
-            className={styles.themeToggle}
-            aria-label={t("toggleDarkMode")}
-          >
-            <span className={styles.themeToggleIcon} aria-hidden="true">
-              {themeIcons[theme]}
-            </span>
-          </button>
+          <div className={styles.themeToggleWrapper}>
+            <div className={styles.themeToggleBlur} aria-hidden="true" />
+            <button
+              onClick={() => cycleTheme()}
+              className={styles.themeToggle}
+              aria-label={t("toggleDarkMode")}
+            >
+              <span className={styles.themeToggleIcon} aria-hidden="true">
+                {themeIcons[theme]}
+              </span>
+            </button>
+          </div>
         </div>
         <button
           type="button"
