@@ -1,10 +1,17 @@
 import React, { useId } from "react";
 import styles from "./Modal.module.css";
 import Button from "@dt/Button";
+import Title from "@dt/Title";
 import { getSemanticIcon } from "../../utils/semanticIcons";
 import Icon from "@dt/Icon";
 
-export type ModalVariant = "default" | "success" | "error" | "info" | "loading";
+export type ModalVariant =
+  | "default"
+  | "success"
+  | "error"
+  | "warning"
+  | "info"
+  | "loading";
 
 export interface ModalProps {
   /** Controls visibility */
@@ -34,6 +41,7 @@ const VARIANT_STATUS_MAP: Partial<
 > = {
   success: "success",
   error: "error",
+  warning: "warning",
   info: "info",
 };
 
@@ -74,31 +82,59 @@ const Modal: React.FC<ModalProps> = ({
     return null;
   };
 
+  // Determine aria-live based on variant
+  const ariaLive =
+    variant === "error" || variant === "warning"
+      ? "assertive"
+      : variant === "info" || variant === "success"
+        ? "polite"
+        : undefined;
+
+  // Determine role based on variant
+  const dialogRole =
+    variant === "error" || variant === "warning" ? "alertdialog" : "dialog";
+
   return (
     <div
       className={styles.overlay}
-      role="dialog"
-      aria-modal="true"
-      {...(title ? { "aria-labelledby": titleId } : { "aria-label": "Dialog" })}
+      onClick={(e) => {
+        if (e.target === e.currentTarget && onClose) {
+          onClose();
+        }
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && onClose) {
+          onClose();
+        }
+      }}
     >
-      <div className={`${styles.modal} ${styles[variant]}`}>
+      <div
+        className={`${styles.modal} ${styles[variant]}`}
+        role={dialogRole}
+        aria-modal="true"
+        aria-live={ariaLive}
+        {...(title
+          ? { "aria-labelledby": titleId }
+          : { "aria-label": "Dialog" })}
+      >
         {title && (
           <div className={styles.header}>
             <div className={styles.leftHeader}>
               {resolvedHeaderIcon && (
                 <span className={styles.icon}>{resolvedHeaderIcon}</span>
               )}
-              <h2 id={titleId} className={styles.title}>
+              <Title level={2} id={titleId} className={styles.title}>
                 {title}
-              </h2>
+              </Title>
             </div>
             {onClose && showCloseIcon && (
               <button
+                type="button"
                 className={styles["closeButton"]}
                 onClick={onClose}
-                aria-label="Close"
+                aria-label="Close dialog"
               >
-                <Icon name="x" ariaLabel="Close" />
+                <Icon name="x" decorative />
               </button>
             )}
           </div>

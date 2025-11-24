@@ -7,7 +7,7 @@
 
 .label {
   align-items: flex-start;
-  font-family: Moderat, sans-serif;
+  font-family: var(--font-text);
   font-size: 1rem;
   color: var(--color-primary);
 }
@@ -20,14 +20,14 @@
   min-height: 2.5rem;
   border: 1px solid var(--color-primary);
   background-color: var(--color-white);
-  font-family: Moderat, sans-serif;
+  font-family: var(--font-text);
   font-size: 1rem;
   color: var(--color-primary);
   transition: border-color 0.3s;
 }
 
 .errorMessage {
-  font-family: Moderat, sans-serif;
+  font-family: var(--font-text);
   font-size: 1rem;
   color: var(--color-error);
   margin-top: 0.5rem;
@@ -78,12 +78,13 @@
 }
 
 .chatTextArea {
-  padding: 0.65rem 0.85rem;
+  padding: 0.76rem 0.85rem;
   width: 100%;
-  min-height: calc(1.5em * 1 + 1.3rem);
+  min-height: 3rem;
   border: 1px solid var(--color-border-light, #3a3a3a);
   border-radius: 0.75rem;
   background: transparent;
+  font-family: var(--font-text);
   font-size: 1rem;
   line-height: 1.5;
   color: var(--color-primary);
@@ -94,7 +95,10 @@
 }
 
 .chatTextArea::placeholder {
+  font-family: var(--font-text);
   color: var(--color-primary);
+  opacity: 0.4;
+  font-style: italic;
 }
 
 .chatTextArea:focus {

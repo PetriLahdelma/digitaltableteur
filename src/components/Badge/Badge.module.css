@@ -66,15 +66,15 @@
 }
 
 .secondary.warning {
-  border-color: var(--color-warning-contrast, #8d5a00);
+  border-color: var(--color-warning-contrast);
   background: none;
-  color: var(--color-warning-contrast, #8d5a00);
+  color: var(--color-warning-contrast);
 }
 
 .secondary.neutral {
-  border-color: var(--color-neutral-text, #1a1d26);
+  border-color: var(--color-neutral-text);
   background: none;
-  color: var(--color-neutral-text, #1a1d26);
+  color: var(--color-neutral-text);
 }
 
 .success {
@@ -97,14 +97,14 @@
 
 .warning {
   border: 2px solid transparent;
-  background: var(--color-warning-contrast, #8d5a00);
-  color: var(--color-warning-text, #fff);
+  background: var(--color-warning-contrast);
+  color: var(--color-warning-text);
 }
 
 .neutral {
   border: 2px solid transparent;
-  background: var(--color-neutral-bg, #e2e8f0);
-  color: var(--color-neutral-text, #1a1d26);
+  background: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
 }
 
 .closeButton {

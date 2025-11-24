@@ -1,0 +1,30 @@
+import type { Metadata } from "next";
+
+import { AboutPage } from "@/shared/components/pages/AboutPage";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const title = "About | Digitaltableteur";
+  const description =
+    "Learn about Digitaltableteur design studio specializing in Design Systems and AI-powered DesignOps";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: ["/logo512.png"],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/logo512.png"],
+    },
+  };
+}
+
+export default function About() {
+  return <AboutPage />;
+}

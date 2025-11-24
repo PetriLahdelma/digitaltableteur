@@ -39,7 +39,22 @@
   "chatEmailSimplePhrase": "Vår e-post är mail@digitaltableteur.com. Vill du skicka ett meddelande nu?",
   "chatThinking": "Tänker…",
   "chatEllipsis": "…",
+  "chatMessages.empty": "Inga meddelanden än. Starta en konversation!",
   "card.loading": "Laddar innehåll",
+  "chat.ai.thinking": "Tänker…",
+  "chat.ai.generating": "Genererar…",
+  "chat.ai.analyzing": "Analyserar…",
+  "authorBio": {
+    "ariaLabel": "Om {{name}}"
+  },
+  "avatar": {
+    "menuLabel": "{{name}} meny",
+    "menuLabelGeneric": "Avatar meny",
+    "altTextGeneric": "Avatar"
+  },
+  "complianceCard": {
+    "lastReviewed": "Senast granskad: {{date}}"
+  },
   "footerAddress1": "Hämeentie 8",
   "footerAddress2": "00530 Helsingfors",
   "footerBillingTitle": "Faktureringsuppgifter",
@@ -348,6 +363,13 @@
   "badgeRemovable": "Borttagbart märke",
   "badgeSmall": "Liten",
   "badgeMedium": "Mellan",
+  "complianceCard.columnRule": "Regel",
+  "complianceCard.columnStatus": "Status",
+  "complianceCard.columnDetails": "Detaljer",
+  "complianceCard.status.pass": "Godkänd",
+  "complianceCard.status.warning": "Varning",
+  "complianceCard.status.fail": "Underkänd",
+  "complianceCard.resizeHandle": "Ändra tabellstorlek",
   "badgeLarge": "Stor",
   "dashboardTitle": "Kvalitetsöversikt",
   "dashboardSubtitle": "Översikt över automatiserade tester, tillgänglighet och Storybook-status.",
@@ -499,6 +521,8 @@
   "storyModalSuccessBody": "Din åtgärd lyckades!",
   "storyModalInfoTitle": "Information",
   "storyModalInfoBody": "Här är viktig information.",
+  "storyModalWarningTitle": "Varning",
+  "storyModalWarningBody": "Vänligen granska denna varning noggrant.",
   "storyModalBusyTitle": "Upptagen",
   "storyModalBusyBody": "Laddar, vänligen vänta...",
   "storySelectLabel": "Välj ett alternativ",
@@ -585,5 +609,58 @@
   "observability.sentry.issue.firstSeen": "Först",
   "observability.sentry.issue.lastSeen": "Senast",
   "observability.sentry.issue.open": "Öppna",
-  "observability.sentry.loading": "Laddar Sentry-sammanfattning..."
+  "observability.sentry.loading": "Laddar Sentry-sammanfattning...",
+  "transformingActionInput": {
+    "trigger": "Förvandla till input",
+    "label": "Avsikt",
+    "helper": "Beskriv vad du vill göra. Skicka med Enter.",
+    "placeholder": "Skriv din avsikt…",
+    "cancel": "Avbryt",
+    "submit": "Skicka",
+    "submitDescription": "Skicka sparad avsikt",
+    "identity": "Adaptiv yta",
+    "state": {
+      "button": "Knappläge",
+      "input": "Inmatningsläge"
+    }
+  },
+  "adaptiveLoadingButton": {
+    "loading": "Arbetar…",
+    "idle": "Fortsätt",
+    "progress": "{{percent}}% klart",
+    "busyDescription": "Åtgärden pågår"
+  },
+  "mcpActionButton": {
+    "label": "Kör MCP-åtgärd",
+    "actionDescription": "Kör valt MCP-verktyg",
+    "status": {
+      "idle": "Redo",
+      "loading": "Anropar…",
+      "success": "Klar",
+      "error": "Misslyckades"
+    }
+  },
+  "macWindowFrame": {
+    "title": "Tidiga LLM:er i bruk",
+    "action": "Spela upp",
+    "bodyLabel": "Fönsterinnehåll"
+  },
+  "downloadResumeValid": "Lösenordet godkändes",
+  "articleCard": {
+    "loadingTitle": "Laddar artikelrubrik",
+    "loadingLead": "Laddar sammanfattning",
+    "loadingMeta": "Laddar artikelmetadata"
+  },
+  "personCard": {
+    "loadingAvatar": "Laddar profilbild",
+    "loadingName": "Laddar namn",
+    "loadingTitle": "Laddar roll",
+    "loadingContact": "Laddar kontakt",
+    "loadingSocial": "Laddar sociala länkar"
+  },
+  "gradientDots": {
+    "title": "Punktgradient",
+    "subtitle": "Animerat bakgrundslager som använder design-tokens",
+    "description": "Använd som ett icke-interaktivt lager bakom hero- eller featuresektioner för subtil rörelse."
+  }
 }

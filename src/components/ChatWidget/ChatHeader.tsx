@@ -1,10 +1,23 @@
 import React, { useMemo } from "react";
 import Button from "@dt/Button";
+import Title from "@dt/Title";
+import Text from "@dt/Text";
 import styles from "./ChatWidget.module.css";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 
-interface ChatHeaderProps {
+/**
+ * Props for the ChatHeader component.
+ *
+ * @interface ChatHeaderProps
+ * @property {string} title - Main heading displayed in the chat header
+ * @property {string} description - Descriptive text shown below the title
+ * @property {function} onReset - Callback fired when the reset button is clicked
+ * @property {function} onMinimize - Callback fired when the minimize button is clicked
+ * @property {boolean} isSending - Whether a message is currently being sent (disables reset button)
+ * @property {Date} [currentDate] - Optional override for current date/time (used in tests to simulate open/closed hours). Defaults to new Date() when omitted.
+ */
+export interface ChatHeaderProps {
   title: string;
   description: string;
   onReset: () => void;
@@ -68,7 +81,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   return (
     <header className={styles.header}>
       <div className={styles.headerCopy}>
-        <p className={styles.tagline}>
+        <Text as="p" terminals="sans" className={styles.tagline}>
           {tagline}
           <span
             className={
@@ -89,8 +102,10 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
               {t("chatStudioOffline", "Studio offline")}
             </span>
           )}
-        </p>
-        <h2 className={styles.title}>{title}</h2>
+        </Text>
+        <Title level={2} terminals="sans" size="S" className={styles.title}>
+          {title}
+        </Title>
       </div>
       <div className={styles.headerActions}>
         <Button
@@ -103,7 +118,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           icon={<Icon name="arrow-clockwise" ariaLabel={resetAriaLabel} />}
           className={styles.resetButton}
         >
-          <span className={styles.resetLabel}>{resetLabel}</span>
+          {resetLabel}
         </Button>
         <Button
           type="button"

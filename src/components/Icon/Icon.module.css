@@ -59,11 +59,11 @@
   }
 }
 
-.spin {
+.spin > svg {
   animation: icon-spin 1s linear infinite;
 }
 
-.pulse {
+.pulse > svg {
   animation: icon-pulse 1.2s ease-in-out infinite;
 }
 /* stylelint-enable rule-empty-line-before */

@@ -73,7 +73,7 @@
   padding: 0 1.5rem 1rem;
   align-items: center;
   gap: 0.75rem;
-  font-family: var(--primary-body-font, sans-serif);
+  font-family: var(--font-text);
   color: var(--color-primary);
 }
 
@@ -92,6 +92,11 @@
 .error {
   max-width: 30vw;
   border-top: 4px solid var(--color-error);
+}
+
+.warning {
+  max-width: 30vw;
+  border-top: 4px solid var(--color-warning);
 }
 
 .info {
@@ -137,6 +142,7 @@
 @media (width <= 768px) {
   .success,
   .error,
+  .warning,
   .info,
   .loading {
     width: 90vw;

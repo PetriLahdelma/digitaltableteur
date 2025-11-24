@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
+import Title from "@dt/Title";
 import styles from "../ChatWidget.module.css";
 import { EmailWorkflowAction, EmailDraft } from "./types";
 
@@ -12,9 +13,9 @@ interface ReviewSummaryProps {
 const ReviewSummary: React.FC<ReviewSummaryProps> = ({ draft, dispatch }) => {
   const { t } = useTranslation();
   return (
-    <div className={styles.workflowBlock} data-step="review">
-      <h4>{t("emailWorkflow.review.title")}</h4>
-      <dl className={styles.summaryList}>
+    <div className={styles.summary}>
+      <Title level={4}>{t("emailWorkflow.review.title")}</Title>
+      <dl className={styles.fields}>
         <dt>{t("emailWorkflow.field.fullName")}</dt>
         <dd>{draft.fullName || "—"}</dd>
         <dt>{t("emailWorkflow.field.email")}</dt>

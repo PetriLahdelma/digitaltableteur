@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-sm);
-  font-family: var(--primary-body-font, Moderat, sans-serif);
+  font-family: var(--primary-body-font);
   font-size: var(--font-size-button-m);
   text-decoration: none;
   text-overflow: ellipsis;
@@ -128,10 +128,14 @@
   margin-inline-start: 0.5rem;
 }
 
+/* Use data attribute selectors for reliable cross-module spacing */
+
+.button [data-button-slot="icon"] + [data-button-slot="text"],
 .button > :not(:last-child):is(svg, .icon) + .text {
   margin-inline-start: 0.5rem; /* Add padding between icon and text */
 }
 
+.button [data-button-slot="text"] + [data-button-slot="end-icon"],
 .button > .text + :is(svg, .endIcon) {
   margin-inline-start: 0.5rem; /* Add padding between text and icon when icon is on the right */
 }
@@ -142,13 +146,11 @@
 
 /* Tertiary variant: slightly tighter icon-text spacing */
 
-.button.tertiary .icon[data-button-slot="icon"] {
+.button.tertiary [data-button-slot="icon"] {
   margin-inline-end: var(--space-internal-2); /* tighter spacing */
 }
 
-/* Simplified selector to reduce specificity */
-
-.button.tertiary .icon + .text {
+.button.tertiary [data-button-slot="text"] {
   margin-inline-start: var(--space-internal-2); /* tighter spacing */
 }
 

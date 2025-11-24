@@ -36,7 +36,7 @@ export function CookiePolicyFullFiPage({
       ) : null}
 
       <Title>Tietosuojakäytäntö</Title>
-      <h2>Sopimusrekisteri – Tietosuojaseloste</h2>
+      <Title level={2}>Sopimusrekisteri – Tietosuojaseloste</Title>
       <p>
         <strong>Laatimispäivä:</strong> 7.7.2025
       </p>
@@ -123,7 +123,7 @@ export function CookiePolicyFullFiPage({
         <strong>Säilytysaika:</strong> 10 vuotta sopimuksen päättymisestä.
       </p>
       <br />
-      <h3>Evästeet</h3>
+      <Title level={3}>Evästeet</Title>
       <p>
         Käytämme evästeitä parantaaksemme ja personoidaksemme käyttökokemusta
         sekä analysoidaksemme sivuston käyttöä. Evästeillä kerättyjä tietoja
@@ -142,14 +142,14 @@ export function CookiePolicyFullFiPage({
         “Hyväksy kaikki”. Suostumus kirjataan 13 kuukauden ajaksi EU-sääntelyn
         mukaisesti.
       </p>
-      <h3>Suostumuksen hallinta</h3>
+      <Title level={3}>Suostumuksen hallinta</Title>
       <p>
         Saat evästebannerin takaisin näkyviin tyhjentämällä selaimen
         “cookieConsent”-merkinnän tai pyytämällä meitä nollaamaan valintasi
         osoitteessa mail@digitaltableteur.com. Voit myös hallita evästeitä
         selaimesi asetuksissa.
       </p>
-      <h3>Tekoälyn käyttö</h3>
+      <Title level={3}>Tekoälyn käyttö</Title>
       <p>
         Hyödynnämme tekoälyä mm. sisällön luonnostelussa ja käyttöliittymien
         testauksessa, mutta ihminen vastaa lopputuloksesta ja henkilökohtaiset
@@ -159,7 +159,7 @@ export function CookiePolicyFullFiPage({
         </a>
         .
       </p>
-      <h3>Oikeuksien käyttäminen</h3>
+      <Title level={3}>Oikeuksien käyttäminen</Title>
       <p>
         Käyttääksesi oikeuksiasi ota yhteyttä rekisterinpitäjään tai yllä
         mainittuun yhteyshenkilöön. Voit tehdä valituksen

@@ -1,6 +1,78 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import Switch, { type SwitchProps } from "./Switch";
+import Icon from "@dt/Icon";
+import ComplianceCard from "@dt/ComplianceCard";
+import type { ComplianceRule } from "@dt/ComplianceCard";
+
+const switchComplianceRules: ComplianceRule[] = [
+  {
+    id: "file-structure",
+    rule: "Complete file structure",
+    status: "pass",
+    details: "All 5 files present",
+  },
+  {
+    id: "typescript-strict",
+    rule: "TypeScript strict",
+    status: "pass",
+    details: "Proper typing with SwitchProps",
+  },
+  {
+    id: "translation-support",
+    rule: "Translation support",
+    status: "pass",
+    details: "Label and helperText props",
+  },
+  {
+    id: "css-modules",
+    rule: "CSS Modules",
+    status: "pass",
+    details: "No inline styles",
+  },
+  {
+    id: "design-tokens",
+    rule: "Design tokens",
+    status: "pass",
+    details: "Uses CSS custom properties",
+  },
+  {
+    id: "logical-properties",
+    rule: "Logical properties",
+    status: "pass",
+    details: "Uses gap for layout",
+  },
+  {
+    id: "theme-support",
+    rule: "Theme support",
+    status: "pass",
+    details: "CSS custom properties for colors",
+  },
+  {
+    id: "composition",
+    rule: "Component composition",
+    status: "pass",
+    details: "Flexible label placement, loading state",
+  },
+  {
+    id: "accessibility",
+    rule: "Accessibility",
+    status: "pass",
+    details: "role=switch, aria-checked, keyboard support",
+  },
+  {
+    id: "storybook-stories",
+    rule: "Storybook stories",
+    status: "pass",
+    details: "Multiple variants with ComplianceCard",
+  },
+  {
+    id: "tests",
+    rule: "Tests",
+    status: "pass",
+    details: "Test file exists",
+  },
+];
 
 const meta: Meta<typeof Switch> = {
   title: "Components/Switch",
@@ -10,6 +82,7 @@ const meta: Meta<typeof Switch> = {
     loading: { control: "boolean" },
     disabled: { control: "boolean" },
     label: { control: "text" },
+    helperText: { control: "text" },
     labelPlacement: {
       control: { type: "select" },
       options: ["right", "left", "top"],
@@ -27,6 +100,18 @@ const meta: Meta<typeof Switch> = {
 export default meta;
 
 type Story = StoryObj<typeof Switch>;
+
+export const Z_SwitchCompliance: Story = {
+  render: () => (
+    <ComplianceCard
+      title="Compliance: 11/11"
+      titleIcon={
+        <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+      }
+      rules={switchComplianceRules}
+    />
+  ),
+};
 
 const ControlledTemplate = (args: SwitchProps) => {
   const [checked, setChecked] = React.useState<boolean>(args.checked ?? false);
@@ -75,6 +160,15 @@ export const LabelOnLeft: Story = {
   args: {
     labelPlacement: "left",
     label: "Make this project public",
+  },
+  render: (args) => <ControlledTemplate {...args} />,
+};
+
+export const WithHelperText: Story = {
+  name: "With Helper Text",
+  args: {
+    label: "Enable email notifications",
+    helperText: "You'll receive updates about your account activity",
   },
   render: (args) => <ControlledTemplate {...args} />,
 };

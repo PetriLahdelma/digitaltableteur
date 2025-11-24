@@ -1,0 +1,103 @@
+.container {
+  display: grid;
+  gap: var(--space-layout-12, 12px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l, 12px);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--main-body-background-color) 90%, transparent),
+      color-mix(in srgb, var(--color-primary) 8%, transparent)
+    ),
+    var(--main-body-background-color);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 12%);
+  overflow: hidden;
+}
+
+.comfortable {
+  padding-block: var(--space-layout-16);
+  padding-inline: var(--space-layout-16);
+}
+
+.compact {
+  padding-block: var(--space-layout-12, 12px);
+  padding-inline: var(--space-layout-12, 12px);
+}
+
+.header {
+  display: grid;
+  padding-block-end: var(--space-layout-8, 8px);
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-layout-12, 12px);
+  border-block-end: 1px solid var(--color-border);
+}
+
+.controls {
+  display: inline-flex;
+  gap: var(--space-layout-8, 8px);
+}
+
+.dot {
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, #000 10%, transparent);
+}
+
+.close {
+  background: #ff5f57;
+}
+
+.minimize {
+  background: #febc2e;
+}
+
+.maximize {
+  background: #28c840;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.action {
+  justify-self: end;
+}
+
+.actionPlaceholder {
+  width: 4rem;
+  height: 1px;
+}
+
+.body {
+  padding-block: var(--space-layout-16);
+  padding-inline: var(--space-layout-16);
+  border-radius: var(--radius-m, 8px);
+  background: color-mix(in srgb, var(--color-light-bg) 90%, transparent);
+}
+
+.content {
+  white-space: pre-wrap;
+  color: var(--color-text);
+}
+
+@media (width >= 1024px) {
+  .comfortable {
+    padding-block: var(--space-layout-24);
+    padding-inline: var(--space-layout-24);
+  }
+
+  .body {
+    padding-block: var(--space-layout-20, 20px);
+    padding-inline: var(--space-layout-20, 20px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    transition: none;
+  }
+}

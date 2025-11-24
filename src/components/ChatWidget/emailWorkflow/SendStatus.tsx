@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
+import Title from "@dt/Title";
 import styles from "../ChatWidget.module.css";
 import { EmailWorkflowAction } from "./types";
 
@@ -31,7 +32,7 @@ const SendStatus: React.FC<SendStatusProps> = ({
         data-step={step}
         data-testid="email-workflow-success"
       >
-        <h4>{t("emailWorkflow.success.title")}</h4>
+        <Title level={4}>{t("emailWorkflow.success.title")}</Title>
         <p>{t("emailWorkflow.success.body")}</p>
         <Button variant="primary" onClick={() => dispatch({ type: "CANCEL" })}>
           {t("emailWorkflow.done")}
@@ -41,15 +42,20 @@ const SendStatus: React.FC<SendStatusProps> = ({
   }
   return (
     <div className={styles.workflowBlock} data-step={step}>
-      <h4>{t("emailWorkflow.error.title")}</h4>
-      <p>{t("emailWorkflow.error.body")}</p>
-      {errorCode && <small>{errorCode}</small>}
+      <Title level={4}>{t("emailWorkflow.error.title")}</Title>
+      <p>
+        {errorCode
+          ? t(`emailWorkflow.error.${errorCode}`, {
+              defaultValue: t("emailWorkflow.error.unknown"),
+            })
+          : t("emailWorkflow.error.unknown")}
+      </p>
       <div className={styles.workflowActions}>
         <Button
           variant="primary"
-          onClick={() => dispatch({ type: "SEND_REQUEST" })}
+          onClick={() => dispatch({ type: "EDIT", field: "message" })}
         >
-          {t("emailWorkflow.error.retry")}
+          {t("emailWorkflow.error.edit")}
         </Button>
         <Button
           variant="secondary"

@@ -45,6 +45,124 @@ When working with this project, please:
 
 ## Architecture Notes
 
+### AIProcessingState Component (Nov 24, 2025)
+
+Created a cognitive processing indicator component for LLM interactions, distinct from traditional skeleton loaders.
+
+**Design Philosophy**:
+
+- **NOT a skeleton loader** - Skeleton implies known structure being filled in
+- **Cognitive processing feedback** - Indicates mental work and uncertainty
+- **Progress without prediction** - Shows activity without promising specific output
+- **Presence/aliveness** - Maintains connection during AI thinking
+
+**Key Distinctions**:
+
+| Pattern           | Purpose                      | Use Case                            |
+| ----------------- | ---------------------------- | ----------------------------------- |
+| Skeleton Loader   | Known structure being filled | Predictable content (cards, images) |
+| AIProcessingState | Cognitive processing         | Uncertain output (LLM responses)    |
+
+**Implementation**:
+
+- Animated gradient using `background-clip: text`
+- Three modes: `thinking`, `generating`, `analyzing`
+- Three intensities: `subtle`, `moderate`, `prominent`
+- Full i18n support (EN/FI/SV)
+- Progressive enhancement with reduced motion support
+- ARIA-compliant (`role="status"`, `aria-live="polite"`)
+
+**Vercel AI SDK Integration** (Fully Compatible):
+
+- ✅ @ai-sdk/react v2.0.89+
+- ✅ Works with `useChat`, `useCompletion`, `useAssistant` hooks
+- ✅ Maps to SDK status states: `submitted` → `thinking`, `streaming` → `generating`
+- ✅ Supports all major providers (OpenAI, Anthropic, Google, Mistral)
+- ✅ Streaming response compatible
+
+```tsx
+const { status } = useChat();
+
+{
+  status === "submitted" && <AIProcessingState mode="thinking" />;
+}
+{
+  status === "streaming" && <AIProcessingState mode="generating" />;
+}
+```
+
+**Usage**:
+
+```tsx
+<AIProcessingState mode="thinking" intensity="subtle" />
+<AIProcessingState mode="generating" customMessage="Processing..." />
+```
+
+**Test Results**: 17/17 tests passing ✅
+
+- All modes and intensities tested
+- Full accessibility compliance (jest-axe)
+- i18n integration verified
+
+**When to Use**:
+
+- ✅ LLM processing with unknown output shape
+- ✅ AI generating content without predictable structure
+- ❌ Loading known structure → Use Skeleton components
+- ❌ Static loading states → Use standard indicators
+
+**Storybook Location**: `Components/AI/Chat/AIProcessingState`
+
+**Documentation**:
+
+- Component guide: `docs/AI_PROCESSING_STATE_COMPONENT.md`
+- Vercel AI SDK integration: `docs/AI_PROCESSING_STATE_VERCEL_SDK.md`
+
+### ChatMessageBubble Component Extraction (Dec 26, 2025)
+
+Successfully extracted message bubble rendering logic from `ChatMessages` into dedicated `ChatMessageBubble` component to improve architecture and follow single responsibility principle.
+
+**Why Extraction Was Needed**:
+
+- ChatMessages was doing too much: managing list iteration, rendering individual bubbles, handling markdown/component parts, workflow injection, streaming states
+- Violated single responsibility principle
+- Made testing and maintenance more difficult
+
+**Solution & Benefits**:
+
+- Created ChatMessageBubble component to handle individual message rendering
+- Better testability: Can test messages in isolation (11 focused tests)
+- Improved reusability: Message bubbles can be used in other contexts
+- Clearer separation of concerns: Container (ChatMessages) vs presentation (ChatMessageBubble)
+- Easier styling and theming
+- Follows Rule 1.1.1 (Component Reuse) from LLM_COMPONENT_GENERATION_RULES.md
+
+**Component Hierarchy**:
+
+```
+ChatMessages (container)
+  └─ ChatMessageBubble (individual message)
+       ├─ MarkdownMessage (text content)
+       ├─ OpenHours (dynamic component)
+       ├─ ServicesGrid (dynamic component)
+       └─ workflowUI (email workflow)
+```
+
+**Files Created**:
+
+- `ChatMessageBubble.tsx` (74 lines) - Handles single message rendering
+- `ChatMessageBubble.test.tsx` (213 lines) - 11/11 tests passing
+- `ChatMessageBubble.stories.tsx` (128 lines) - 6 story variants
+
+**Test Results**:
+
+- ChatMessageBubble: 11/11 tests passing ✅
+- ChatMessages: 9/9 tests passing ✅
+- Full ChatWidget suite: 88/88 tests passing ✅
+- Storybook builds successfully ✅
+
+**Documentation**: See `docs/CHAT_MESSAGE_BUBBLE_EXTRACTION.md` for complete details.
+
 ### Logical Properties & Defensive CSS (Nov 2025)
 
 We migrated remaining physical directional properties (margin-left/right, padding-left/right, border-left) to logical equivalents to improve:

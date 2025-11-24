@@ -39,7 +39,22 @@
   "chatEmailSimplePhrase": "Our email is mail@digitaltableteur.com. Would you like to send an email now?",
   "chatThinking": "Thinking…",
   "chatEllipsis": "…",
+  "chatMessages.empty": "No messages yet. Start a conversation!",
   "card.loading": "Loading content",
+  "chat.ai.thinking": "Thinking…",
+  "chat.ai.generating": "Generating…",
+  "chat.ai.analyzing": "Analyzing…",
+  "authorBio": {
+    "ariaLabel": "About {{name}}"
+  },
+  "avatar": {
+    "menuLabel": "{{name}} menu",
+    "menuLabelGeneric": "Avatar menu",
+    "altTextGeneric": "Avatar"
+  },
+  "complianceCard": {
+    "lastReviewed": "Last reviewed: {{date}}"
+  },
   "footerAddress1": "Hämeentie 8",
   "footerAddress2": "00530 Helsinki",
   "footerBillingTitle": "Billing details",
@@ -348,6 +363,13 @@
   "badgeRemovable": "Removable Badge",
   "badgeSmall": "Small",
   "badgeMedium": "Medium",
+  "complianceCard.columnRule": "Rule",
+  "complianceCard.columnStatus": "Status",
+  "complianceCard.columnDetails": "Details",
+  "complianceCard.status.pass": "Pass",
+  "complianceCard.status.warning": "Warning",
+  "complianceCard.status.fail": "Fail",
+  "complianceCard.resizeHandle": "Resize table",
   "badgeLarge": "Large",
   "dashboardTitle": "Quality Dashboard",
   "dashboardSubtitle": "Realtime snapshot of automated testing, accessibility coverage, and Storybook health.",
@@ -499,6 +521,8 @@
   "storyModalSuccessBody": "Your operation was successful!",
   "storyModalInfoTitle": "Information",
   "storyModalInfoBody": "Here is some important information.",
+  "storyModalWarningTitle": "Warning",
+  "storyModalWarningBody": "Please review this warning carefully.",
   "storyModalBusyTitle": "Busy",
   "storyModalBusyBody": "Loading, please wait...",
   "storySelectLabel": "Select an option",
@@ -585,5 +609,58 @@
   "observability.sentry.issue.firstSeen": "First",
   "observability.sentry.issue.lastSeen": "Last",
   "observability.sentry.issue.open": "Open",
-  "observability.sentry.loading": "Loading Sentry summary..."
+  "observability.sentry.loading": "Loading Sentry summary...",
+  "transformingActionInput": {
+    "trigger": "Transform to input",
+    "label": "Intent",
+    "helper": "Describe what you want to do. Press Enter to submit.",
+    "placeholder": "Type your intent…",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "submitDescription": "Send the captured intent",
+    "identity": "Adaptive surface",
+    "state": {
+      "button": "Button state",
+      "input": "Input state"
+    }
+  },
+  "adaptiveLoadingButton": {
+    "loading": "Working…",
+    "idle": "Continue",
+    "progress": "{{percent}}% complete",
+    "busyDescription": "Action is running"
+  },
+  "mcpActionButton": {
+    "label": "Run MCP action",
+    "actionDescription": "Executes the selected MCP tool",
+    "status": {
+      "idle": "Ready",
+      "loading": "Invoking…",
+      "success": "Completed",
+      "error": "Failed to run"
+    }
+  },
+  "macWindowFrame": {
+    "title": "Using Early LLMs",
+    "action": "Replay",
+    "bodyLabel": "Window content"
+  },
+  "downloadResumeValid": "Valid password",
+  "articleCard": {
+    "loadingTitle": "Loading article title",
+    "loadingLead": "Loading summary",
+    "loadingMeta": "Loading article metadata"
+  },
+  "personCard": {
+    "loadingAvatar": "Loading profile image",
+    "loadingName": "Loading name",
+    "loadingTitle": "Loading role",
+    "loadingContact": "Loading contact",
+    "loadingSocial": "Loading social links"
+  },
+  "gradientDots": {
+    "title": "Gradient dots",
+    "subtitle": "Animated background container using design tokens",
+    "description": "Use as a non-interactive layer behind hero or feature content to add subtle motion."
+  }
 }

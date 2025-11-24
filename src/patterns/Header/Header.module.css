@@ -75,6 +75,31 @@
   list-style: none;
 }
 
+.nav li {
+  position: relative;
+}
+
+.navLinkWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.navLinkBlur {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--main-body-copy-color);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.navLinkWrapper:hover .navLinkBlur,
+.navLinkWrapper:focus-within .navLinkBlur {
+  opacity: 0.3;
+}
+
 .nav a {
   position: relative;
   font-family: var(--primary-body-font, "Moderat-Regular"), serif;
@@ -120,8 +145,31 @@
   mask-size: 16px 6px;
 }
 
+.themeToggleWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.themeToggleBlur {
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  background: var(--color-primary);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.themeToggleWrapper:hover .themeToggleBlur,
+.themeToggleWrapper:focus-within .themeToggleBlur {
+  opacity: 0.15;
+}
+
 .themeToggle {
   display: flex;
+  position: relative;
+  z-index: 1;
   margin-inline: 0;
   padding: 0;
   width: 24px;
@@ -217,6 +265,27 @@
   white-space: nowrap;
   clip: rect(0 0 0 0);
   overflow: hidden;
+}
+
+.languageLinkWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.languageLinkBlur {
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  background: var(--main-body-copy-color);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.languageLinkWrapper:hover .languageLinkBlur,
+.languageLinkWrapper:focus-within .languageLinkBlur {
+  opacity: 0.1;
 }
 
 .languageLink {

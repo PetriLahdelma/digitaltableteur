@@ -99,11 +99,38 @@ export const ColorShowcase: Story = {
 };
 
 export const Transformations: Story = {
+  parameters: {
+    wip: { disabled: true }, // Disable WIP badge to prevent overlap
+  },
   render: () => (
-    <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
-      <Icon name="arrow-right" rotate={90} ariaLabel="Arrow down" />
-      <Icon name="arrow-right" flip="horizontal" ariaLabel="Arrow left" />
-      <Icon name="arrows-rotate" pulse ariaLabel="Refreshing" />
+    <div
+      style={{
+        display: "flex",
+        gap: "1.5rem",
+        alignItems: "center",
+        paddingBlockEnd: "3rem",
+      }}
+    >
+      <Icon
+        name="arrow-up"
+        pulse
+        color="var(--color-primary)"
+        ariaLabel="Arrow down"
+      />
+      <Icon
+        name="arrow-right"
+        flip="horizontal"
+        pulse
+        color="var(--color-primary)"
+        ariaLabel="Arrow left"
+      />
+      <Icon
+        name="arrows-rotate"
+        rotate={180}
+        spin
+        color="var(--color-primary)"
+        ariaLabel="Refreshing"
+      />
     </div>
   ),
 };

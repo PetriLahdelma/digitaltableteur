@@ -17,6 +17,14 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  webpack: (config) => {
+    // Legacy Vite pages moved to shared/vite-pages to prevent routing conflicts
+    config.watchOptions = {
+      ...config.watchOptions,
+      ignored: ["**/shared/vite-pages/**", "**/node_modules/**"],
+    };
+    return config;
+  },
 };
 
 const withMdx = withMDX({

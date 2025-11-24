@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Title.module.css";
 import "../../styles/variables.css";
 
-type TitleSize = "S" | "M" | "L" | "XL";
+type TitleSize = "XXS" | "XS" | "S" | "M" | "L" | "XL" | "XXL";
 type TitleTerminals = "sans" | "serif";
 type LineHeight = "tight" | "snug" | "normal" | "relaxed" | "loose";
 
@@ -14,13 +14,16 @@ type TitleProps = {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   terminals?: TitleTerminals;
   lineHeight?: LineHeight;
-};
+} & React.HTMLAttributes<HTMLHeadingElement>;
 
 const sizeClassMap: Record<TitleSize, string> = {
+  XXS: styles["titleXXS"] || "",
+  XS: styles["titleXS"] || "",
   S: styles["titleS"] || "",
   M: styles["titleM"] || "",
   L: styles["titleL"] || "",
   XL: styles["titleXL"] || "",
+  XXL: styles["titleXXL"] || "",
 };
 
 const terminalsClassMap: Record<TitleTerminals, string> = {
@@ -44,6 +47,7 @@ const Title: React.FC<TitleProps> = ({
   level,
   terminals = "serif",
   lineHeight,
+  ...rest
 }) => {
   const Tag =
     as || (level ? (`h${level}` as keyof React.JSX.IntrinsicElements) : "h1");
@@ -55,6 +59,7 @@ const Title: React.FC<TitleProps> = ({
   return (
     <Tag
       className={`${styles.title} ${sizeClass} ${terminalsClass} ${lineHeightClass} ${className}`.trim()}
+      {...rest}
     >
       {children}
     </Tag>

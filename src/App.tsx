@@ -7,27 +7,31 @@ import { useTranslation } from "react-i18next";
 import i18n from "./i18n"; // Import i18n instance directly
 import { BusyIndicator, AppLoading } from "./components";
 
-const Home = React.lazy(() => import("./pages/Home"));
-const Work = React.lazy(() => import("./pages/Work"));
-const NewThingsCo = React.lazy(() => import("./pages/work/newThingsCo"));
-const Illustrations = React.lazy(() => import("./pages/work/illustrations"));
-const GarageJunction = React.lazy(() => import("./pages/work/garageJunction"));
-const About = React.lazy(() => import("./pages/About"));
-const Contact = React.lazy(() => import("./pages/Contact"));
-const Blog = React.lazy(() => import("./pages/Blog"));
-const BlogArticle = React.lazy(() => import("./pages/BlogArticle"));
-const AuthorProfile = React.lazy(() => import("./pages/AuthorProfile"));
-const NotFound = React.lazy(() => import("./pages/NotFound"));
-const AiUsage = React.lazy(() => import("./pages/AiUsage"));
+const Home = React.lazy(() => import("./vite-pages/Home"));
+const Work = React.lazy(() => import("./vite-pages/Work"));
+const NewThingsCo = React.lazy(() => import("./vite-pages/work/newThingsCo"));
+const Illustrations = React.lazy(
+  () => import("./vite-pages/work/illustrations"),
+);
+const GarageJunction = React.lazy(
+  () => import("./vite-pages/work/garageJunction"),
+);
+const About = React.lazy(() => import("./vite-pages/About"));
+const Contact = React.lazy(() => import("./vite-pages/Contact"));
+const Blog = React.lazy(() => import("./vite-pages/Blog"));
+const BlogArticle = React.lazy(() => import("./vite-pages/BlogArticle"));
+const AuthorProfile = React.lazy(() => import("./vite-pages/AuthorProfile"));
+const NotFound = React.lazy(() => import("./vite-pages/NotFound"));
+const AiUsage = React.lazy(() => import("./vite-pages/AiUsage"));
 
 const CookiePolicyFullEN = React.lazy(
-  () => import("./pages/CookiePolicy-full-en"),
+  () => import("./vite-pages/CookiePolicy-full-en"),
 );
 const CookiePolicyFullFI = React.lazy(
-  () => import("./pages/CookiePolicy-full-fi"),
+  () => import("./vite-pages/CookiePolicy-full-fi"),
 );
 const CookiePolicyFullSV = React.lazy(
-  () => import("./pages/CookiePolicy-full-sv"),
+  () => import("./vite-pages/CookiePolicy-full-sv"),
 );
 
 function App() {

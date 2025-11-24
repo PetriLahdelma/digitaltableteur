@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Text.module.css";
 import "../../styles/variables.css";
 
-type TextSize = "S" | "M" | "L";
+type TextSize = "XXS" | "XS" | "S" | "M" | "L" | "XL" | "XXL";
 type LineHeight = "tight" | "snug" | "normal" | "relaxed" | "loose";
 
 type TextProps = {
@@ -15,9 +15,13 @@ type TextProps = {
 };
 
 const sizeClassMap: Record<TextSize, string> = {
+  XXS: styles["textXXS"] || "",
+  XS: styles["textXS"] || "",
   S: styles["textS"] || "",
   M: styles["textM"] || "",
   L: styles["textL"] || "",
+  XL: styles["textXL"] || "",
+  XXL: styles["textXXL"] || "",
 };
 
 const lineHeightClassMap: Record<LineHeight, string> = {

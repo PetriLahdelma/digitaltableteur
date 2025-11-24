@@ -39,7 +39,22 @@
   "chatEmailSimplePhrase": "Sähköpostimme on mail@digitaltableteur.com. Haluatko lähettää sähköpostin nyt?",
   "chatThinking": "Ajattelee…",
   "chatEllipsis": "…",
+  "chatMessages.empty": "Ei vielä viestejä. Aloita keskustelu!",
   "card.loading": "Ladataan sisältöä",
+  "chat.ai.thinking": "Ajattelee…",
+  "chat.ai.generating": "Luodaan…",
+  "chat.ai.analyzing": "Analysoidaan…",
+  "authorBio": {
+    "ariaLabel": "Tietoa käyttäjästä {{name}}"
+  },
+  "avatar": {
+    "menuLabel": "{{name}} valikko",
+    "menuLabelGeneric": "Profiilikuva valikko",
+    "altTextGeneric": "Profiilikuva"
+  },
+  "complianceCard": {
+    "lastReviewed": "Tarkistettu viimeksi: {{date}}"
+  },
   "footerAddress1": "Hämeentie 8",
   "footerAddress2": "00530 Helsinki",
   "footerBillingTitle": "Laskutustiedot",
@@ -348,6 +363,13 @@
   "badgeRemovable": "Poistettava tunniste",
   "badgeSmall": "Pieni",
   "badgeMedium": "Keskikokoinen",
+  "complianceCard.columnRule": "Sääntö",
+  "complianceCard.columnStatus": "Tila",
+  "complianceCard.columnDetails": "Yksityiskohdat",
+  "complianceCard.status.pass": "Hyväksytty",
+  "complianceCard.status.warning": "Varoitus",
+  "complianceCard.status.fail": "Hylätty",
+  "complianceCard.resizeHandle": "Muuta taulukon kokoa",
   "badgeLarge": "Suuri",
   "dashboardTitle": "Laatutaulu",
   "dashboardSubtitle": "Yhteenveto automatisoiduista testeistä, saavutettavuudesta ja Storybookin tilasta.",
@@ -499,6 +521,8 @@
   "storyModalSuccessBody": "Toiminta onnistui!",
   "storyModalInfoTitle": "Informaatio",
   "storyModalInfoBody": "Tässä on joitakin tärkeitä tietoja.",
+  "storyModalWarningTitle": "Varoitus",
+  "storyModalWarningBody": "Ole hyvä ja tarkista tämä varoitus huolellisesti.",
   "storyModalBusyTitle": "Varattu",
   "storyModalBusyBody": "Ladataan. Odota, ole hyvä...",
   "storySelectLabel": "Valitse vaihtoehto",
@@ -585,5 +609,58 @@
   "observability.sentry.issue.firstSeen": "Ensimmäinen",
   "observability.sentry.issue.lastSeen": "Viimeinen",
   "observability.sentry.issue.open": "Avaa",
-  "observability.sentry.loading": "Ladataan Sentry-yhteenvetoa..."
+  "observability.sentry.loading": "Ladataan Sentry-yhteenvetoa...",
+  "transformingActionInput": {
+    "trigger": "Muuta syötteeksi",
+    "label": "Aikomus",
+    "helper": "Kuvaile mitä haluat tehdä. Lähetä Enterillä.",
+    "placeholder": "Kirjoita aikomus…",
+    "cancel": "Peruuta",
+    "submit": "Lähetä",
+    "submitDescription": "Lähetä tallennettu aikomus",
+    "identity": "Mukautuva pinta",
+    "state": {
+      "button": "Painiketila",
+      "input": "Syötetila"
+    }
+  },
+  "adaptiveLoadingButton": {
+    "loading": "Työstetään…",
+    "idle": "Jatka",
+    "progress": "{{percent}}% valmis",
+    "busyDescription": "Toiminto käynnissä"
+  },
+  "mcpActionButton": {
+    "label": "Suorita MCP-toiminto",
+    "actionDescription": "Suorittaa valitun MCP-työkalun",
+    "status": {
+      "idle": "Valmis",
+      "loading": "Käynnissä…",
+      "success": "Valmis",
+      "error": "Suoritus epäonnistui"
+    }
+  },
+  "macWindowFrame": {
+    "title": "Varhaiset LLM:t käytössä",
+    "action": "Toista",
+    "bodyLabel": "Ikkunan sisältö"
+  },
+  "downloadResumeValid": "Salasana kelpaa",
+  "articleCard": {
+    "loadingTitle": "Ladataan artikkelin otsikkoa",
+    "loadingLead": "Ladataan yhteenvetoa",
+    "loadingMeta": "Ladataan artikkelin tietoja"
+  },
+  "personCard": {
+    "loadingAvatar": "Ladataan profiilikuvaa",
+    "loadingName": "Ladataan nimeä",
+    "loadingTitle": "Ladataan roolia",
+    "loadingContact": "Ladataan yhteystietoa",
+    "loadingSocial": "Ladataan some-linkkejä"
+  },
+  "gradientDots": {
+    "title": "Pistemäinen gradientti",
+    "subtitle": "Animoitu taustakerros, joka käyttää design-tokeneita",
+    "description": "Käytä hero- tai feature-osioiden taustalla lisäämään hillittyä liikettä ilman vuorovaikutusta."
+  }
 }

@@ -162,9 +162,7 @@ function main() {
   try {
     ensureDir(OUTPUT_DIR);
 
-    const files = fs
-      .readdirSync(POSTS_DIR)
-      .filter((f) => f.endsWith(".mdx"));
+    const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".mdx"));
 
     const documents = files.map((file) =>
       convertMDXToSanity(path.join(POSTS_DIR, file)),
@@ -179,7 +177,7 @@ function main() {
     console.log(`✓ Converted ${documents.length} MDX posts to Sanity format`);
     console.log(`✓ Output: ${OUTPUT_NDJSON}`);
     console.log(
-      `\nNext: cd digitaltableteur-blog && npx sanity dataset import ../sanity-output/mdx-posts.ndjson production --replace`,
+      "\nNext: cd digitaltableteur-blog && npx sanity dataset import ../sanity-output/mdx-posts.ndjson production --replace",
     );
   } catch (error) {
     console.error("Error:", error.message);
