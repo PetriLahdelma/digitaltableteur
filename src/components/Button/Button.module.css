@@ -212,6 +212,45 @@
   border-radius: 9999px;
 }
 
+.button.splitMain {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+  margin-inline-end: -1px; /* collapse adjoining border */
+}
+
+.button.splitToggle {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  padding-inline: var(--space-internal-12);
+  min-inline-size: 2.75rem;
+}
+
+.button.splitSecondaryMain,
+.button.splitSecondaryToggle {
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  box-shadow: none;
+}
+
+.button.splitTertiaryMain,
+.button.splitTertiaryToggle {
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  box-shadow: none;
+  margin-inline-end: 0;
+}
+
+.button.splitSecondaryMain,
+.button.splitSecondaryToggle {
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  box-shadow: none;
+  margin-inline-end: 0;
+}
+
 @media (width <= 768px) {
   .button.s {
     padding-block: var(--space-internal-16);

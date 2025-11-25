@@ -44,9 +44,7 @@ const InteractiveRender: React.FC<React.ComponentProps<typeof ChatComposer>> = (
 
 export const Interactive: Story = {
   render: (args) => <InteractiveRender {...args} />,
-  parameters: {
-    wip: { disabled: true },
-  },
+  parameters: {},
 };
 
 export const SendingState: Story = {

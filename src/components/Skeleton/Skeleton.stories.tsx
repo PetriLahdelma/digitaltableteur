@@ -77,7 +77,7 @@ const skeletonComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof Skeleton> = {
   title: "Feedback/Skeleton",
   component: Skeleton,
-  parameters: { wip: { disabled: false } },
+  parameters: {},
 };
 export default meta;
 

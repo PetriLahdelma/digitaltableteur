@@ -89,6 +89,8 @@
   border-radius: var(--radius-8);
   background: var(--color-neutral-bg);
   transition: background 0.2s;
+  min-width: 0; /* Allow flex items to shrink below content size */
+  overflow: hidden; /* Contain overflowing content */
 }
 
 .ruleCard:hover {
@@ -101,16 +103,24 @@
   align-items: center;
   gap: var(--space-internal-8);
   font-weight: 600;
+  min-width: 0; /* Allow flex item to shrink */
 }
 
 .ruleLabel {
   flex: 1;
   font-weight: 600;
+  min-width: 0; /* Allow text to shrink */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .ruleDetails {
   line-height: 1.4;
   color: color-mix(in srgb, var(--color-text) 80%, transparent);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .resizeHandle {

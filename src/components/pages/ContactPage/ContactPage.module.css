@@ -210,11 +210,11 @@
 }
 
 h2.resumeTitle {
-  color: var(--color-white);
+  color: var(--color-white) !important;
 }
 
 .resumeInfo {
-  color: var(--color-white);
+  color: var(--color-white) !important;
 }
 
 .resumeInfo a {

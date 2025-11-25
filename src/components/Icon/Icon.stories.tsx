@@ -99,8 +99,7 @@ export const ColorShowcase: Story = {
 };
 
 export const Transformations: Story = {
-  parameters: {
-    wip: { disabled: true }, // Disable WIP badge to prevent overlap
+  parameters: {// Disable WIP badge to prevent overlap
   },
   render: () => (
     <div

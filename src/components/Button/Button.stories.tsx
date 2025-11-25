@@ -10,9 +10,7 @@ import { useTranslation } from "react-i18next";
 export default {
   title: "Components/Button",
   component: Button,
-  parameters: {
-    wip: { disabled: true },
-  },
+  parameters: {},
   argTypes: {
     variant: {
       control: {

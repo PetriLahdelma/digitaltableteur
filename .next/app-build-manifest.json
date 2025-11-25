@@ -12,6 +12,11 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
+    "/api/chat/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/chat/route.js"
+    ],
     "/work/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -36,10 +41,28 @@
       "static/css/app/contact/page.css",
       "static/chunks/app/contact/page.js"
     ],
-    "/api/chat/route": [
+    "/api/save-contact/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/chat/route.js"
+      "static/chunks/app/api/save-contact/route.js"
+    ],
+    "/work/new-things-co/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/work/new-things-co/page.css",
+      "static/chunks/app/work/new-things-co/page.js"
+    ],
+    "/work/illustrations/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/work/illustrations/page.css",
+      "static/chunks/app/work/illustrations/page.js"
+    ],
+    "/work/garage-junction/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/work/garage-junction/page.css",
+      "static/chunks/app/work/garage-junction/page.js"
     ]
   }
 }

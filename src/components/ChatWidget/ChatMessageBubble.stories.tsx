@@ -71,9 +71,7 @@ export const AssistantMessage: Story = {
   args: {
     message: assistantMessage,
   },
-  parameters: {
-    wip: { disabled: true },
-  },
+  parameters: {},
 };
 
 export const UserMessage: Story = {

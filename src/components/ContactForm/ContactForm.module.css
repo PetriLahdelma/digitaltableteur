@@ -49,14 +49,15 @@
   gap: 0.75rem;
 }
 
-.busyInline {
-  align-self: center;
-}
-
 .formGroup label {
   justify-content: flex-start;
   font-family: var(--font-text);
   text-align: left;
+}
+
+.resetButton {
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
 }
 
 .submitButton {

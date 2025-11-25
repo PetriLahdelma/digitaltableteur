@@ -10,8 +10,7 @@ const meta: Meta<typeof Header> = {
   title: "Patterns/Header",
   component: Header,
   parameters: {
-    layout: "fullscreen",
-    wip: { disabled: false }, // Keep WIP badge until visual + a11y verified
+    layout: "fullscreen",// Keep WIP badge until visual + a11y verified
   },
   decorators: [
     (Story) => (

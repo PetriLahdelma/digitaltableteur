@@ -19,9 +19,6 @@ const STATE_ICON_MAP: Record<string, string> = {
 const meta: Meta<typeof Badge> = {
   title: "Components/Badge",
   component: Badge,
-  parameters: {
-    wip: { disabled: true }, // Disable global WIP badge to prevent duplicate 'Badge' text collision in tests
-  },
   argTypes: {
     design: {
       control: { type: "select" },

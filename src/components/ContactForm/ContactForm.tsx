@@ -8,7 +8,7 @@ import Modal from "@dt/Modal";
 import TextArea from "@dt/Inputs/TextArea";
 import Select from "@dt/Select";
 import FileUpload from "@dt/FileUpload";
-import BusyIndicator from "@dt/BusyIndicator";
+import AdaptiveLoadingButton from "@dt/AdaptiveLoadingButton";
 import { useTranslation } from "react-i18next";
 
 const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
@@ -553,6 +553,7 @@ const ContactForm = () => {
           </p>
           <div className={styles["formActions"]}>
             <Button
+              className={styles["submitButton"]}
               type="button"
               variant="tertiary"
               onClick={handleClearForm}
@@ -560,22 +561,16 @@ const ContactForm = () => {
             >
               {t("contactClear")}
             </Button>
-            <Button
+            <AdaptiveLoadingButton
               className={styles["submitButton"]}
               type="submit"
               variant="primary"
+              loading={isSubmitting}
+              loadingLabelKey="busyIndicator.loading"
               disabled={isSubmitting}
             >
-              {isSubmitting ? t("busyIndicator.loading") : t("contactSubmit")}
-            </Button>
-            {isSubmitting ? (
-              <BusyIndicator
-                variant="inline"
-                size="s"
-                label={t("busyIndicator.loading")}
-                className={styles["busyInline"]}
-              />
-            ) : null}
+              {t("contactSubmit")}
+            </AdaptiveLoadingButton>
           </div>
         </div>
       </form>

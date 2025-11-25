@@ -10,6 +10,7 @@ type TextProps = {
   as?: keyof React.JSX.IntrinsicElements;
   className?: string;
   terminals?: "serif" | "sans";
+  monospace?: boolean;
   size?: TextSize;
   lineHeight?: LineHeight;
 };
@@ -37,18 +38,20 @@ const Text: React.FC<TextProps> = ({
   as = "p",
   className = "",
   terminals = "sans",
+  monospace = false,
   size = "M",
   lineHeight,
 }) => {
   const Tag = as;
   const terminalClass = terminals === "serif" ? styles.serif : styles.sans;
+  const monoClass = monospace ? styles.monospace : "";
   const sizeClass = sizeClassMap[size] || "";
   const lineHeightClass = lineHeight
     ? lineHeightClassMap[lineHeight] || ""
     : "";
   return (
     <Tag
-      className={`${styles.text} ${terminalClass} ${sizeClass} ${lineHeightClass} ${className}`.trim()}
+      className={`${styles.text} ${terminalClass} ${monoClass} ${sizeClass} ${lineHeightClass} ${className}`.trim()}
     >
       {children}
     </Tag>

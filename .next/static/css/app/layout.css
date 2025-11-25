@@ -27,6 +27,7 @@
   /* Typography tokens */
   --font-title: "TiemposHeadline-Regular", serif;
   --font-text: "Moderat", sans-serif;
+  --font-mono: "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace;
   --font-size-text: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
   --font-size-text-xxs: clamp(0.625rem, 0.3vw + 0.6rem, 0.875rem);
   --font-size-text-xs: clamp(0.75rem, 0.4vw + 0.7rem, 0.9375rem);
@@ -1021,7 +1022,7 @@ code {
 
 .Modal_header__Pfr2K {
   display: flex;
-  padding: 2rem 1.5rem 1rem;
+  padding: 1.5rem 1.5rem 1rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -1029,7 +1030,13 @@ code {
 .Modal_leftHeader__P7gUN {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 0.5rem;
+}
+
+.Modal_icon__P_tMJ {
+  display: inline-flex;
+  align-items: center;
 }
 
 .Modal_header__Pfr2K svg {
@@ -1046,6 +1053,11 @@ code {
   color: var(--color-primary);
 }
 
+.Modal_header__Pfr2K .Modal_title__a7vfd {
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+}
+
 .Modal_menu__4aaXs {
   display: flex;
   align-items: center;
@@ -1053,6 +1065,9 @@ code {
 }
 
 .Modal_closeButton__7VSKG {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   border: none;
   background: none;
@@ -1385,6 +1400,48 @@ code {
   border-radius: 9999px;
 }
 
+.Button_button__exqP_.Button_splitMain__yJQuY {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+  -webkit-margin-end: -1px;
+          margin-inline-end: -1px; /* collapse adjoining border */
+}
+
+.Button_button__exqP_.Button_splitToggle__RLFmt {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+  padding-inline: var(--space-internal-12);
+  min-inline-size: 2.75rem;
+}
+
+.Button_button__exqP_.Button_splitSecondaryMain__fYoZz,
+.Button_button__exqP_.Button_splitSecondaryToggle__DEzLM {
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  box-shadow: none;
+}
+
+.Button_button__exqP_.Button_splitTertiaryMain__eQmr_,
+.Button_button__exqP_.Button_splitTertiaryToggle__H2AT_ {
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  box-shadow: none;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+}
+
+.Button_button__exqP_.Button_splitSecondaryMain__fYoZz,
+.Button_button__exqP_.Button_splitSecondaryToggle__DEzLM {
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  box-shadow: none;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+}
+
 @media (max-width: 768px) {
   .Button_button__exqP_.Button_s__BsaXy {
     padding-block: var(--space-internal-16);
@@ -1467,6 +1524,151 @@ code {
   animation: Icon_icon-pulse__Yirla 1.2s ease-in-out infinite;
 }
 /* stylelint-enable rule-empty-line-before */
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Button/SplitButton.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+.SplitButton_splitWrapper__no5Z2 {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  inline-size: auto;
+  font-family: var(
+    --font-text,
+    "Moderat",
+    system-ui,
+    -apple-system,
+    sans-serif
+  );
+}
+
+.SplitButton_splitWrapper__no5Z2[data-variant="secondary"] {
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm, 0.25rem);
+  background: var(--color-white);
+}
+
+.SplitButton_splitWrapper__no5Z2[data-variant="tertiary"] {
+  border: none;
+  border-radius: var(--radius-sm, 0.25rem);
+}
+
+.SplitButton_menu__GFTK3 {
+  position: absolute;
+  top: calc(100% + var(--space-internal-8));
+  inset-inline-start: 0;
+  z-index: 20;
+  min-inline-size: 12rem;
+  inline-size: max(12rem, 100%);
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-4);
+  margin: 0;
+  border-radius: var(--radius-md, 0.5rem);
+  background: var(--color-white);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
+  list-style: none;
+}
+
+.SplitButton_menu__GFTK3[data-align="end"] {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+}
+
+.SplitButton_menuItemWrapper__7K9HH {
+  position: relative;
+}
+
+.SplitButton_subMenu__bg_5r {
+  position: absolute;
+  top: calc(-0.55 * var(--space-internal-6, 0.25rem));
+  inset-inline-start: 100%;
+  -webkit-margin-start: var(--space-internal-4);
+          margin-inline-start: var(--space-internal-4);
+  min-inline-size: 12rem;
+  inline-size: max(12rem, 100%);
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-4);
+  list-style: none;
+  border-radius: var(--radius-md, 0.5rem);
+  background: var(--color-white);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
+}
+
+.SplitButton_menuItem__0ppyj {
+  display: flex;
+  gap: var(--space-internal-8);
+  align-items: center;
+  inline-size: 100%;
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+  min-block-size: 2.5rem;
+  border: none;
+  background: none;
+  font: inherit;
+  color: var(--color-dark, #1f2933);
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--radius-sm, 0.25rem);
+}
+
+.SplitButton_menuItem__0ppyj:hover,
+.SplitButton_menuItem__0ppyj:focus-visible {
+  outline: none;
+  background: color-mix(
+    in srgb,
+    var(--color-neutral-bg) 35%,
+    var(--color-white) 65%
+  );
+  box-shadow: none;
+  position: relative;
+  z-index: 1;
+}
+
+.SplitButton_menuItem__0ppyj:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+  z-index: 2;
+}
+
+.SplitButton_menuItem__0ppyj:disabled {
+  color: var(--color-muted, #8c8c8c);
+  cursor: not-allowed;
+  background: transparent;
+  box-shadow: none;
+}
+
+.SplitButton_menuIcon__Q4bC8 {
+  display: inline-flex;
+  padding-top: 0.125rem;
+  color: var(--color-primary);
+}
+
+.SplitButton_menuText__4qYp7 {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-4);
+  font-family: var(--font-text, "Moderat", system-ui, sans-serif);
+}
+
+.SplitButton_menuDescription__uxYiP {
+  font-size: var(--font-size-text-s, 0.875rem);
+  color: var(--color-muted, #6b7280);
+  line-height: 1.4;
+}
+
+.SplitButton_caret__kIlYR {
+  display: inline-flex;
+  color: currentColor;
+}
+
+.SplitButton_trailing__cTOWA {
+  display: inline-flex;
+  align-items: center;
+  -webkit-margin-start: auto;
+          margin-inline-start: auto;
+}
 
 /*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./src/components/Title/Title.module.css ***!
@@ -2399,6 +2601,12 @@ code {
 
 .Text_sans__fSFJe {
   font-family: var(--font-text);
+}
+
+.Text_monospace__tgYMl {
+  font-family: var(--font-mono, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+  font-feature-settings: "calt";
+  font-variant-ligatures: contextual;
 }
 
 /* Line height utility classes */

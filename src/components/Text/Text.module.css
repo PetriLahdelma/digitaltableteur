@@ -53,6 +53,11 @@
   font-family: var(--font-text);
 }
 
+.monospace {
+  font-family: var(--font-mono, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+  font-variant-ligatures: contextual;
+}
+
 /* Line height utility classes */
 .lineHeightTight {
   line-height: var(--line-height-tight);

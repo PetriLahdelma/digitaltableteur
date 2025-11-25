@@ -23,9 +23,7 @@ const navMenuListComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof NavMenuList> = {
   title: "Patterns/Header/MobileMenu/NavMenuList",
   component: NavMenuList,
-  parameters: {
-    wip: { disabled: false },
-  },
+  parameters: {},
   decorators: [
     (Story) => {
       // If a parent preview already provides a router, don't nest another

@@ -22,9 +22,7 @@ const sentrySummaryCardComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof SentrySummaryCard> = {
   title: "Observability/SentrySummaryCard",
   component: SentrySummaryCard,
-  parameters: {
-    wip: { disabled: false },
-  },
+  parameters: {},
 };
 export default meta;
 

@@ -475,6 +475,18 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const isStreaming = status === "submitted" || status === "streaming";
   const errorMessage = resolveErrorMessage(error);
 
+  // Debug: Log status changes
+  useEffect(() => {
+    if (debugEnabled) {
+      // eslint-disable-next-line no-console
+      console.log("[ChatWidget] Status changed:", status, {
+        messageCount: messages.length,
+        hasError: !!error,
+        isStreaming,
+      });
+    }
+  }, [status, messages.length, error, isStreaming, debugEnabled]);
+
   useEffect(() => {
     const hydrated = loadStoredMessages(greetingText);
     if (!hydrated) return;
@@ -626,6 +638,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
         console.log("[ChatWidget] Sending user message", {
           text: trimmed,
           endpoint: activeEndpoint,
+          currentMessages: messages.length,
         });
       }
       sendMessage({ text: trimmed });
@@ -639,6 +652,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       clearError,
       activeEndpoint,
       debugEnabled,
+      messages.length,
     ],
   );
 
@@ -652,9 +666,9 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       message.includes("404");
     if (!isRecoverable) return;
     const alternate =
-      activeEndpoint === REMOTE_CHAT_ENDPOINT
+      activeEndpoint === DEFAULT_REMOTE_CHAT_ENDPOINT
         ? "/api/chat"
-        : REMOTE_CHAT_ENDPOINT;
+        : DEFAULT_REMOTE_CHAT_ENDPOINT;
     if (alternate === activeEndpoint) return; // no alternate
     setHasRetried(true);
     setActiveEndpoint(alternate);
