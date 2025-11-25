@@ -10,9 +10,7 @@ const meta: Meta<typeof AuthorBio> = {
   title: "Components/AuthorBio",
   component: AuthorBio,
   parameters: {
-    layout: "centered",
-    wip: { disabled: true },
-  },
+    layout: "centered",},
 };
 
 export default meta;

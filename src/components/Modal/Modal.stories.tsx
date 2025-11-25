@@ -129,9 +129,7 @@ Default.args = {
   title: "storyModalTitle",
   children: "storyModalBody",
 };
-Default.parameters = {
-  wip: { disabled: true },
-};
+Default.parameters = {};
 
 export const Loading = Template.bind({});
 Loading.args = {

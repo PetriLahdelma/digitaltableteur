@@ -158,9 +158,7 @@ const meta: Meta<typeof ChatMessages> = {
   args: {
     messages: SAMPLE_MESSAGES,
   },
-  parameters: {
-    wip: { disabled: true },
-  },
+  parameters: {},
 };
 
 export default meta;

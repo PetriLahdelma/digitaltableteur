@@ -7,8 +7,7 @@ const meta: Meta<typeof Footer> = {
   title: "Patterns/Footer",
   component: Footer,
   parameters: {
-    layout: "fullscreen",
-    wip: { disabled: false }, // Keep WIP badge until visual + a11y verified
+    layout: "fullscreen",// Keep WIP badge until visual + a11y verified
   },
   decorators: [
     (Story) => (

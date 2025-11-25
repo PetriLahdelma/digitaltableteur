@@ -108,7 +108,7 @@ const Template: StoryFn<CheckboxGroupProps> = (args: CheckboxGroupProps) => (
 
 export const Z_CheckboxGroupCompliance: StoryFn = () => (
   <ComplianceCard
-    title="Compliance: 11/11"
+    title="CheckboxGroup Compliance: 11/11"
     titleIcon={
       <Icon name="check-fat" color="var(--color-success)" weight="fill" />
     }
@@ -128,9 +128,7 @@ Default.args = {
     { label: "storyCheckboxOption5", value: "option5" },
   ],
 };
-Default.parameters = {
-  wip: { disabled: true },
-};
+Default.parameters = {};
 
 export const WithoutMasterCheckbox = Template.bind({});
 WithoutMasterCheckbox.args = {

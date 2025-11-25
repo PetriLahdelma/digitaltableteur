@@ -96,7 +96,7 @@ export function NextMobileMenu({
     >
       <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
         <div className={styles.panelContent} tabIndex={-1}>
-          <div className={styles.header}>
+          <div className={styles.header} suppressHydrationWarning>
             <Title size="S" level={2} className={styles.title}>
               {t("navMenuTitle")}
             </Title>
@@ -113,7 +113,7 @@ export function NextMobileMenu({
             </button>
           </div>
 
-          <nav aria-label="Mobile navigation">
+          <nav aria-label="Mobile navigation" suppressHydrationWarning>
             <ul className={styles.nav}>
               {navItems.map((item) => {
                 const active = item.exact
@@ -128,6 +128,7 @@ export function NextMobileMenu({
                         onNavigate?.();
                         onClose?.();
                       }}
+                      suppressHydrationWarning
                     >
                       {item.label}
                     </Link>
@@ -137,7 +138,7 @@ export function NextMobileMenu({
             </ul>
           </nav>
 
-          <div className={styles.section}>
+          <div className={styles.section} suppressHydrationWarning>
             <Label size="s">{t("toggleDarkMode")}</Label>
             <button
               type="button"
@@ -151,7 +152,7 @@ export function NextMobileMenu({
             </button>
           </div>
 
-          <div className={styles.section}>
+          <div className={styles.section} suppressHydrationWarning>
             <Label size="s">{t("navLanguageSelector", "Language")}</Label>
             <div className={styles.nav}>
               {languages.map((lang) => (

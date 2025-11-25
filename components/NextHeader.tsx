@@ -42,6 +42,10 @@ export function NextHeader() {
   const controlsRef = React.useRef<HTMLDivElement | null>(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
+  const [isThemeAnimating, setIsThemeAnimating] = React.useState(false);
+  const animationTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
 
   const navItems = React.useMemo(
     () => navItemsBase.map((item) => ({ ...item, label: t(item.labelKey) })),
@@ -129,6 +133,26 @@ export function NextHeader() {
     return () => window.removeEventListener("resize", handleResize);
   }, [i18n]);
 
+  React.useEffect(
+    () => () => {
+      if (animationTimeout.current) {
+        clearTimeout(animationTimeout.current);
+      }
+    },
+    [],
+  );
+
+  const handleThemeToggle = () => {
+    if (!isThemeAnimating) {
+      setIsThemeAnimating(true);
+      animationTimeout.current = setTimeout(() => {
+        setIsThemeAnimating(false);
+        animationTimeout.current = null;
+      }, 450);
+    }
+    cycleTheme();
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
@@ -152,6 +176,7 @@ export function NextHeader() {
               navOffset === 0 ? undefined : `translateX(${navOffset}px)`,
           }}
           aria-label={t("navMenuTitle", "Main navigation")}
+          suppressHydrationWarning
         >
           <ul className={styles.nav}>
             {navItems.map((item) => {
@@ -164,6 +189,7 @@ export function NextHeader() {
                       href={item.href}
                       className={active ? styles.selected : undefined}
                       aria-current={active ? "page" : undefined}
+                      suppressHydrationWarning
                     >
                       {item.label}
                     </Link>
@@ -174,7 +200,7 @@ export function NextHeader() {
           </ul>
         </nav>
         <div ref={controlsRef} className={styles.controls}>
-          <div className={styles.languageSwitcher}>
+          <div className={styles.languageSwitcher} suppressHydrationWarning>
             {languages.map((lang) => (
               <div key={lang.code} className={styles.languageLinkWrapper}>
                 <div className={styles.languageLinkBlur} aria-hidden="true" />
@@ -196,11 +222,14 @@ export function NextHeader() {
           <div className={styles.themeToggleWrapper}>
             <div className={styles.themeToggleBlur} aria-hidden="true" />
             <button
-              onClick={() => cycleTheme()}
+              onClick={handleThemeToggle}
               className={styles.themeToggle}
               aria-label={t("toggleDarkMode")}
             >
-              <span className={styles.themeToggleIcon} aria-hidden="true">
+              <span
+                className={`${styles.themeToggleIcon} ${isThemeAnimating ? styles.themeToggleIconAnimating : ""}`.trim()}
+                aria-hidden="true"
+              >
                 {themeIcons[theme]}
               </span>
             </button>

@@ -6,8 +6,7 @@ const meta: Meta<typeof PageLayout> = {
   title: "Patterns/PageLayout",
   component: PageLayout,
   parameters: {
-    layout: "fullscreen",
-    wip: { disabled: false }, // Keep WIP badge until a11y + visual verified
+    layout: "fullscreen",// Keep WIP badge until a11y + visual verified
   },
   argTypes: {
     maxWidth: {

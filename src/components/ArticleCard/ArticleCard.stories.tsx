@@ -9,9 +9,7 @@ import Icon from "@dt/Icon";
 export default {
   title: "Components/ArticleCard",
   component: ArticleCard,
-  parameters: {
-    wip: { disabled: true },
-  },
+  parameters: {},
   args: {
     title:
       "How to Build a Design System for Modern Teams and Ensure Consistency Across All Products",
