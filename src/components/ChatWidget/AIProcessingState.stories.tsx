@@ -39,9 +39,7 @@ const meta = {
   title: "Components/AI/Chat/AIProcessingState",
   component: AIProcessingState,
   parameters: {
-    layout: "centered",
-    wip: { disabled: true },
-    docs: {
+    layout: "centered",docs: {
       description: {
         component:
           "Cognitive processing indicator for LLM interactions. Shows animated gradient during AI thinking/generating/analyzing states.",
@@ -86,9 +84,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {},
-  parameters: {
-    wip: { disabled: true },
-  },
+  parameters: {},
 };
 
 /**

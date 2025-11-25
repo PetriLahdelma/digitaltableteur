@@ -8,9 +8,7 @@ const meta = {
   title: "Utility/ComplianceCard",
   component: ComplianceCard,
   parameters: {
-    layout: "padded",
-    wip: { disabled: true },
-    controls: { disable: true },
+    layout: "padded",controls: { disable: true },
   },
   tags: ["autodocs"],
 } satisfies Meta<typeof ComplianceCard>;

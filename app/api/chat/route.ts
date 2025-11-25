@@ -59,11 +59,18 @@ const normalizeError = (caught: unknown): ChatApiError => {
 };
 
 export async function POST(request: NextRequest) {
+  console.log("[chat] ===== POST HANDLER CALLED =====");
+  console.log("[chat] AI_GATEWAY_URL:", process.env.AI_GATEWAY_URL ? "SET" : "NOT SET");
+  console.log("[chat] AI_GATEWAY_API_KEY:", process.env.AI_GATEWAY_API_KEY ? "SET (length: " + process.env.AI_GATEWAY_API_KEY?.length + ")" : "NOT SET");
   const requestOrigin = request.headers.get("origin");
   const corsHeaders = createCorsHeaders(requestOrigin);
 
   try {
     const body = await request.json();
+    console.log(
+      "[chat] Received request body:",
+      JSON.stringify(body).slice(0, 200),
+    );
     const rawPayload: unknown = body.messages;
     validateMessages(rawPayload);
     const messages = (rawPayload as IncomingUiMessages).map((message) => {
@@ -73,11 +80,17 @@ export async function POST(request: NextRequest) {
       return { ...message, content };
     });
 
-    const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
+    // Disable MCP/stdio tools in the serverless runtime to avoid spawn/network flakiness
+    const tools = await getDonnyTools({ enableMcp: false, allowStdio: false });
     const system = buildSystemPrompt(Object.keys(tools));
 
     const modelId: string = resolveGatewayModelId();
     const model = gatewayProvider(modelId);
+
+    console.log("[chat] Model ID:", modelId);
+    console.log("[chat] System prompt length:", system.length);
+    console.log("[chat] Tools count:", Object.keys(tools).length);
+    console.log("[chat] Messages count:", messages.length);
 
     const streamParams: Parameters<typeof streamText>[0] = {
       model,
@@ -88,15 +101,26 @@ export async function POST(request: NextRequest) {
       maxRetries: 2,
     };
 
+    console.log("[chat] About to call streamText with model:", modelId);
     const result = await streamText(streamParams);
+    console.log("[chat] streamText completed");
 
-    // Create streaming response with CORS headers
-    return result.toTextStreamResponse({
-      headers: {
-        ...corsHeaders,
-        "Cache-Control": "no-store, no-transform, max-age=0",
-      },
-    });
+    console.log("[chat] Stream created, result type:", typeof result);
+    console.log(
+      "[chat] Has toAIStreamResponse:",
+      typeof (result as any).toAIStreamResponse === "function",
+    );
+    
+    // Log if there's a textStream to consume
+    console.log("[chat] Has textStream:", !!result.textStream);
+
+    const responseHeaders = {
+      ...corsHeaders,
+      "Cache-Control": "no-store, no-transform, max-age=0",
+    };
+
+    // Use toUIMessageStreamResponse for @ai-sdk/react useChat hook
+    return result.toUIMessageStreamResponse({ headers: responseHeaders });
   } catch (error) {
     const normalized = normalizeError(error);
     return NextResponse.json(

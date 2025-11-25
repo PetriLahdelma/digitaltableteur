@@ -1,0 +1,175 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+.wrapper {
+  margin: 0;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-layout-12, 0.75rem);
+  padding: var(--space-layout-8, 0.5rem) var(--space-layout-12, 0.75rem);
+  background: var(--color-neutral-bg, rgba(0, 0, 0, 0.35));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-m, 12px) var(--radius-m, 12px) 0 0;
+  color: var(--color-text, #e5e7eb);
+}
+
+.language {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: var(--font-size-text-xxs, 0.75rem);
+  color: var(--color-muted, #9ca3af);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-layout-8, 0.5rem);
+}
+
+.copyStatus {
+  min-width: 5ch;
+  font-size: var(--font-size-text-xxs, 0.75rem);
+  color: var(--color-muted, #9ca3af);
+}
+
+.pre {
+  /* Base (VS light by Andrew Lock) */
+  --code-bg: #ffffff;
+  --code-border: #d3d3d3;
+  --code-text: #000000;
+  --code-line-number: #6b7280;
+  --code-token-keyword: #0000ff;
+  --code-token-string: #a31515;
+  --code-token-number: #098658;
+  --code-token-comment: #008000;
+
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 0 0 var(--radius-m, 12px) var(--radius-m, 12px);
+  padding: var(--space-layout-16) var(--space-layout-20);
+  margin: 0;
+  overflow: auto;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-text-s, 0.9375rem);
+  line-height: 1.6;
+  color: var(--code-text);
+}
+
+:global(.themeDark) .pre {
+  /* VS Code Dark+ (tabuckner) */
+  --code-bg: #1e1e1e;
+  --code-border: #2d2d2d;
+  --code-text: #d4d4d4;
+  --code-line-number: #858585;
+  --code-token-keyword: #c586c0;
+  --code-token-string: #ce9178;
+  --code-token-number: #b5cea8;
+  --code-token-comment: #6a9955;
+}
+
+:global(.themeHCB) .pre {
+  /* Gruvbox Dark (Azat S.) */
+  --code-bg: #282828;
+  --code-border: #3c3836;
+  --code-text: #ebdbb2;
+  --code-line-number: #7c6f64;
+  --code-token-keyword: #fe8019;
+  --code-token-string: #b8bb26;
+  --code-token-number: #d3869b;
+  --code-token-comment: #928374;
+}
+
+:global(.themeHCW) .pre {
+  /* High-contrast white: reuse VS light */
+  --code-bg: #ffffff;
+  --code-border: #d3d3d3;
+  --code-text: #000000;
+  --code-line-number: #4b5563;
+  --code-token-keyword: #0000ff;
+  --code-token-string: #a31515;
+  --code-token-number: #098658;
+  --code-token-comment: #004b00;
+}
+
+.pre::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.pre::-webkit-scrollbar-thumb {
+  background: var(--color-border, #2d2f45);
+  border-radius: 8px;
+}
+
+.pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.code {
+  display: block;
+  min-width: 100%;
+}
+
+.line {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-layout-12, 0.75rem);
+  align-items: start;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.lineNumber {
+  color: var(--code-line-number);
+  text-align: right;
+  min-width: 2ch;
+  user-select: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.codeText {
+  color: var(--code-text);
+}
+
+.tokenKeyword {
+  color: var(--code-token-keyword);
+  font-weight: 600;
+}
+
+:global(.token.keyword),
+:global([data-token="keyword"]) {
+  color: var(--code-token-keyword);
+  font-weight: 600;
+}
+
+.tokenString {
+  color: var(--code-token-string);
+}
+
+:global(.token.string),
+:global([data-token="string"]) {
+  color: var(--code-token-string);
+}
+
+.tokenNumber {
+  color: var(--code-token-number);
+}
+
+:global(.token.number),
+:global([data-token="number"]) {
+  color: var(--code-token-number);
+}
+
+.tokenComment {
+  color: var(--code-token-comment);
+  font-style: italic;
+}
+
+:global(.token.comment),
+:global([data-token="comment"]) {
+  color: var(--code-token-comment);
+  font-style: italic;
+}

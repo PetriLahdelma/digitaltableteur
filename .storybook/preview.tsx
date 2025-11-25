@@ -2,10 +2,7 @@ import { MemoryRouter } from "react-router-dom";
 import { ThemeProvider } from "@dt/ThemeProvider";
 import type { Preview } from "@storybook/react-vite";
 import type { Decorator, StoryContext, StoryFn } from "@storybook/react";
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import Badge from "@dt/Badge";
-import Icon from "@dt/Icon";
-import stylesWip from "../src/stories/WipBadge.module.css";
+import React, { useEffect, useLayoutEffect } from "react";
 import { I18nextProvider } from "react-i18next";
 import * as storybookIcons from "@storybook/icons";
 import i18n from "../src/i18n";
@@ -186,51 +183,6 @@ const withI18next: Decorator = (Story: StoryFn, context: StoryContext) => {
   );
 };
 
-// WIP badge decorator – reactive to language changes so translation appears instantly on first locale selection.
-const withWipBadge: Decorator = (Story, context) => {
-  const disabled = Boolean(context.parameters?.wip?.disabled);
-  const isDocsView = context.viewMode === "docs";
-  const [label, setLabel] = useState(() =>
-    i18n.t("storybookWipBadge", "Work in progress"),
-  );
-
-  useEffect(() => {
-    const update = () =>
-      setLabel(i18n.t("storybookWipBadge", "Work in progress"));
-    i18n.on("languageChanged", update);
-    // Also attempt immediate refresh in case language already changed before mount
-    update();
-    return () => {
-      i18n.off("languageChanged", update);
-    };
-  }, []);
-
-  return (
-    <div className={stylesWip.wipWrapper}>
-      {!disabled && (
-        <div
-          className={
-            isDocsView ? stylesWip.wipBadgeDocs : stylesWip.wipBadgeContainer
-          }
-          data-view-mode={context.viewMode}
-        >
-          <Badge
-            design="secondary"
-            state="warning"
-            size="s"
-            className="badge"
-            title={label}
-            icon={<Icon name="wrench" />}
-          >
-            {label}
-          </Badge>
-        </div>
-      )}
-      {Story(context)}
-    </div>
-  );
-};
-
 // Order: withI18next first so WIP badge children have translation context
 // Fullscreen safe-area decorator adds padding for stories using layout: 'fullscreen'
 const withFullscreenSafeArea: Decorator = (Story, context) => {
@@ -245,7 +197,7 @@ const withFullscreenSafeArea: Decorator = (Story, context) => {
   );
 };
 
-export const decorators = [withI18next, withFullscreenSafeArea, withWipBadge];
+export const decorators = [withI18next, withFullscreenSafeArea];
 
 const detectVisualRegression = () => {
   if (typeof window === "undefined") {

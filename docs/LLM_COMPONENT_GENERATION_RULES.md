@@ -138,10 +138,11 @@ This clarifies how to correctly implement components and styles from the digital
 
 **Component Architecture & Styling**
 
+- **Mobile First:** Always consider mobile use first. This consideration saves a lot of hassle later on.
 - **Design System First:** Always use existing components from the your-design-system package. Do not rebuild them.
 - **Layout Primitives:** Always use layout components from digitaltableteur (e.g., Grid, FlexBox, PageLayout). Do not use raw divs with custom flexbox CSS.
 - **Styling with Tokens:** Only use classes that are configured in our design system. Prefer our custom theme utilities (e.g., `color-primary`) over introducing new colors.
-- **Icons:** Use the `Icon` component from digitaltableteur, passing the appropriate icon name. Do not import raw SVGs or use system emojis.
+- **Icons:** Use the `Icon` component from digitaltableteur, passing the appropriate icon name. Do not import raw SVGs or use system emojis. Digitaltableteur Icon component uses Phosphor icons.
 - **Props:** Component props must be defined with a TypeScript interface. When in doubt, use the TypeScript language server MCP as a source of knowledge on TypeScript patterns.
 
 **What to Avoid**
@@ -1628,6 +1629,8 @@ npm run test:visual        # Run visual regression tests
 ## SECTION 10: Final Checklist & Component Generation Template
 
 ### Rule 10.1 - Component Generation Checklist
+
+**When in doubt:** Refer to https://ant.design/components/ and https://carbondesignsystem.com/components for best practises, guidance and inspiration.
 
 **When generating a new component, ALWAYS create:**
 

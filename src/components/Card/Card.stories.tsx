@@ -5,7 +5,7 @@ import Icon from "@dt/Icon";
 export default {
   title: "DesignSystem/Card",
   component: Card,
-  parameters: { wip: { disabled: false } },
+  parameters: {},
   argTypes: {
     size: {
       control: { type: "select" },

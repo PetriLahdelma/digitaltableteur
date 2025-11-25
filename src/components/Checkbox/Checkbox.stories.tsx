@@ -108,9 +108,7 @@ Default.args = {
   id: "newsletter",
   label: "storyCheckboxLabel",
 };
-Default.parameters = {
-  wip: { disabled: true },
-};
+Default.parameters = {};
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   const checkbox = await canvas.findByLabelText(/default checkbox/i);

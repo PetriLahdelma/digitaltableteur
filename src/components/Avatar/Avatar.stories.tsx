@@ -11,9 +11,7 @@ import PropTypes from "prop-types";
 export default {
   title: "Components/Avatar",
   component: Avatar,
-  parameters: {
-    wip: { disabled: true },
-  },
+  parameters: {},
   argTypes: {
     variant: {
       control: { type: "inline-radio" },

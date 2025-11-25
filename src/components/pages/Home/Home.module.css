@@ -61,15 +61,16 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: var(--color-white);
+  /* Force white text; avoid reliance on theme vars to prevent unintended overrides */
+  color: #fff !important;
 }
 
 .heroSubtext p {
-  color: var(--color-white) !important;
+  color: #fff !important;
 }
 
 .heroSubtext * {
-  color: var(--color-white) !important;
+  color: #fff !important;
 }
 
 @media (min-width: 768px) {

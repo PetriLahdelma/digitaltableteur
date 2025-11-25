@@ -112,9 +112,7 @@ Default.args = {
   htmlFor: "field",
   children: "storyLabelDefault",
 };
-Default.parameters = {
-  wip: { disabled: true },
-};
+Default.parameters = {};
 
 export const WithTooltip = Template.bind({});
 WithTooltip.args = {

@@ -2,7 +2,7 @@
 
 ## ⚠️ CRITICAL: Component Creation Rules
 
-**BEFORE creating ANY new component, ALWAYS refer to `docs/LLM_COMPONENT_GENERATION_RULES.md`**
+**BEFORE creating ANY new component, ALWAYS refer to `docs/LLM_COMPONENT_GENERATION_RULES.md` and `docs/LLM-CRITICAL-REASONING-AND-PLANNING-INSTRUCTIONS.md`**
 
 This comprehensive 10-section guide (12,000+ words) is the authoritative reference for:
 
@@ -583,7 +583,7 @@ Props:
 - Spacing leverages `--space-*` tokens; radius via `--radius-*`.
 - Tablist uses gap with fallback margin shim under `@supports not (gap: ...)`.
 - Skeleton animation defined with `@keyframes skeleton-pulse` using gradient shimmer; respects progressive enhancement guidelines.
-- All text uses sans-serif (`var(--font-sans)` or site body font) to maintain typographic consistency.
+- All text uses either the Title.tsx or Text.tsx component to maintain typographic consistency. You may also use these components within `children` for body content or create a new type of text component if needed, in which case let the user know that you have created it and ensure it follows the design system.
 
 ### Internationalization
 

@@ -22,7 +22,7 @@ const busyIndicatorComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof BusyIndicator> = {
   title: "Feedback/BusyIndicator",
   component: BusyIndicator,
-  parameters: { wip: { disabled: false } },
+  parameters: {},
 };
 export default meta;
 

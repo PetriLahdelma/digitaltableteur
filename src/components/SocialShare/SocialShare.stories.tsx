@@ -78,9 +78,7 @@ const meta = {
   title: "Components/SocialShare",
   component: SocialShare,
   parameters: {
-    layout: "centered",
-    wip: { disabled: false },
-  },
+    layout: "centered",},
   tags: ["autodocs"],
   argTypes: {
     url: {

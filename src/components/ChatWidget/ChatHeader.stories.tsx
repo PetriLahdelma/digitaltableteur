@@ -23,9 +23,7 @@ export default meta;
 type Story = StoryObj<typeof ChatHeader>;
 
 export const Default: Story = {
-  parameters: {
-    wip: { disabled: true },
-  },
+  parameters: {},
 };
 
 export const Sending: Story = {
