@@ -33,3 +33,7 @@ storybook-static
 mcp.json
 .vercel
 .env*.local
+
+# Next.js build output
+.next/
+.next/cache/

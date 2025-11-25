@@ -2084,7 +2084,11 @@ h6 {
 }
 
 .Home_heroSubtext__Y1lRb p {
-  color: var(--color-white);
+  color: var(--color-white) !important;
+}
+
+.Home_heroSubtext__Y1lRb * {
+  color: var(--color-white) !important;
 }
 
 @media (min-width: 768px) {

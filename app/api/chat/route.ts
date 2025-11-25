@@ -66,7 +66,12 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const rawPayload: unknown = body.messages;
     validateMessages(rawPayload);
-    const messages = rawPayload as IncomingUiMessages;
+    const messages = (rawPayload as IncomingUiMessages).map((message) => {
+      const content =
+        (message as any).content ??
+        (Array.isArray((message as any).parts) ? (message as any).parts : []);
+      return { ...message, content };
+    });
 
     const tools = await getDonnyTools({ enableMcp: true, allowStdio: true });
     const system = buildSystemPrompt(Object.keys(tools));
@@ -104,8 +109,8 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function OPTIONS() {
-  const corsHeaders = createCorsHeaders(null);
+export async function OPTIONS(request: NextRequest) {
+  const corsHeaders = createCorsHeaders(request.headers.get("origin"));
   return new NextResponse(null, {
     status: 204,
     headers: corsHeaders,
