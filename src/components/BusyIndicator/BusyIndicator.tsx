@@ -56,27 +56,57 @@ const BusyIndicator: React.FC<BusyIndicatorProps> = ({
       }
     : { "aria-live": "polite" };
 
+  // Calculate color based on progress for determinate state
+  const progressColor = determinate
+    ? pct === 100
+      ? "var(--color-success)"
+      : `color-mix(in srgb, var(--color-primary) ${100 - (pct ?? 0)}%, var(--color-success) ${pct ?? 0}%)`
+    : "var(--color-primary)";
+
+  // SVG circle progress calculation
+  const radius = 20;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = determinate
+    ? circumference - ((pct ?? 0) / 100) * circumference
+    : 0;
+
   return (
     <span className={cl} role={role} {...progressProps}>
       <span className={styles.visual} aria-hidden="true">
         {determinate ? (
-          <span
-            className={`${styles.progressDots} ${pct === 100 ? styles.success : ""}`}
+          <svg
+            className={styles.progressCircle}
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            {[0, 1, 2, 3].map((i) => {
-              // Activate dots progressively at 25%, 50%, 75%, 100%
-              const threshold = (i + 1) * 25;
-              const active =
-                (pct ?? 0) >= threshold || (pct === 100 && i === 3);
-              return (
-                <span
-                  key={i}
-                  data-active={active ? "true" : "false"}
-                  className={`${styles.dot} ${active ? styles.active : ""}`}
-                />
-              );
-            })}
-          </span>
+            <circle
+              className={styles.circleBackground}
+              cx="24"
+              cy="24"
+              r={radius}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              opacity="0.2"
+            />
+            <circle
+              className={styles.circleProgress}
+              cx="24"
+              cy="24"
+              r={radius}
+              fill="none"
+              stroke={progressColor}
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+              style={{
+                transform: "rotate(-90deg)",
+                transformOrigin: "center",
+                transition: "stroke-dashoffset 0.3s ease, stroke 0.3s ease",
+              }}
+            />
+          </svg>
         ) : (
           <span className={styles.iconSpinner}>
             <Icon

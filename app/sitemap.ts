@@ -4,7 +4,7 @@ import { posts } from "./blog/postMetadata";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://digitaltableteur.com";
+  "https://www.digitaltableteur.com";
 
 const toUrl = (path: string) => `${baseUrl}${path.startsWith("/") ? path : `/${path}`}`;
 
