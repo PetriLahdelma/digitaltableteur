@@ -1,10 +1,6 @@
 // This file has been automatically migrated to valid ESM format by Storybook.
-import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
-import { dirname, resolve } from "node:path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { fileURLToPath } from "node:url";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -20,10 +16,32 @@ const config: StorybookConfig = {
     <base href="${process.env.NODE_ENV === "production" ? "/storybook/" : "/"}">
   `,
   viteFinal: async (config) => {
+    const componentsPath = fileURLToPath(new URL("../src/components", import.meta.url));
+
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
-      "@dt": resolve(__dirname, "../src/components"),
+      "@dt": componentsPath,
+    };
+
+    const optimizeIncludes = [
+      "chart.js",
+      "react-chartjs-2",
+      "@storybook/testing-library",
+    ];
+
+    config.optimizeDeps = {
+      ...(config.optimizeDeps || {}),
+      include: Array.from(
+        new Set([...(config.optimizeDeps?.include || []), ...optimizeIncludes]),
+      ),
+    };
+
+    config.ssr = {
+      ...(config.ssr || {}),
+      noExternal: Array.from(
+        new Set([...(config.ssr?.noExternal || []), ...optimizeIncludes]),
+      ),
     };
 
     // Ensure HMR is enabled and configured properly

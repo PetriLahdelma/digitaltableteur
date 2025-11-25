@@ -16,4 +16,15 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
+
+  vite: {
+    optimizeDeps: {
+      exclude: ["@dt/*"],
+    },
+    server: {
+      fs: {
+        allow: [".", "./digitaltableteur-blog"],
+      },
+    },
+  },
 });

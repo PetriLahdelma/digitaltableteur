@@ -43,8 +43,8 @@ const LEGACY_STORAGE_KEY = "dt-donny-chat";
 const DEFAULT_GREETING_TEXT =
   "Hi! I’m Donny, the Digitaltableteur studio guide. Ask me about our work, or anything you notice on the site.";
 
-const REMOTE_CHAT_ENDPOINT =
-  "https://digitaltableteursecureproxy.vercel.app/api/chat";
+const DEFAULT_REMOTE_CHAT_ENDPOINT =
+  "https://www.digitaltableteur.com/api/chat";
 
 const createGreetingMessage = (
   text: string = DEFAULT_GREETING_TEXT,
@@ -404,21 +404,19 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       process.env.NEXT_PUBLIC_DONNY_CHAT_ENDPOINT?.trim?.();
     if (envEndpoint) return envEndpoint;
     if (typeof window !== "undefined") {
-      const host = window.location.hostname.toLowerCase();
-      // Treat private LAN IPs (RFC1918) similarly to localhost for endpoint purposes because vite dev server does not mount /api/chat.
+      const { hostname, origin } = window.location;
       const isLocalLike =
-        host === "localhost" ||
-        host === "127.0.0.1" ||
-        /^192\.168\./.test(host) ||
-        /^10\./.test(host) ||
-        /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(host);
-      const isProdDomain =
-        host === "digitaltableteur.com" || host === "www.digitaltableteur.com";
-      if (isLocalLike || isProdDomain) {
-        return REMOTE_CHAT_ENDPOINT; // always use remote serverless function in dev & prod domain
+        hostname === "localhost" ||
+        hostname === "127.0.0.1" ||
+        /^192\.168\./.test(hostname) ||
+        /^10\./.test(hostname) ||
+        /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname);
+      // Prefer same-origin API when running Next dev/preview/prod; fall back to remote default for Vite/Storybook.
+      if (isLocalLike || hostname.endsWith("digitaltableteur.com")) {
+        return `${origin}/api/chat`;
       }
     }
-    return REMOTE_CHAT_ENDPOINT; // fallback remote to avoid 404 on arbitrary hosts
+    return DEFAULT_REMOTE_CHAT_ENDPOINT; // safe fallback (public domain)
   }, [endpoint]);
 
   // Debug flag (query param ?chatDebug=1 or localStorage flag dtChatDebug). Safe getItem wrapper for Safari private mode quirks.

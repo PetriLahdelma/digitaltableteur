@@ -315,26 +315,23 @@ const ContactForm = () => {
 
     // Always try to store in MongoDB and handle response
     try {
-      await fetch(
-        "https://digitaltableteursecureproxy.vercel.app/api/save-contact",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.fullName,
-            email: formData.email,
-            phone: formData.phone,
-            interest: formData.interest,
-            message: formData.message,
-            hearAbout: formData.hearAbout,
-            attachmentName: attachmentFile?.name ?? null,
-            attachmentType: attachmentFile?.type ?? null,
-            attachmentSize: attachmentFile?.size ?? null,
-            attachmentData: attachmentDataUrl,
-            time,
-          }),
-        },
-      );
+      await fetch("/api/save-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          interest: formData.interest,
+          message: formData.message,
+          hearAbout: formData.hearAbout,
+          attachmentName: attachmentFile?.name ?? null,
+          attachmentType: attachmentFile?.type ?? null,
+          attachmentSize: attachmentFile?.size ?? null,
+          attachmentData: attachmentDataUrl,
+          time,
+        }),
+      });
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error("Failed to save to MongoDB", err);

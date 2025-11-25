@@ -1,0 +1,86 @@
+---
+title: "Using Multiple MCPs Together"
+slug: "using-multiple-mcps-together"
+readTime: "3 min read"
+excerpt: "Learn to Boost Productivity and Find Solutions Faster"
+authorName: "Petri Lahdelma"
+authorSlug: "petri-lahdelma"
+---
+
+## Boost Productivity and Find Solutions Faster
+
+#### _How combining model‐context protocols and multiple AI tools accelerates problem solving_
+
+In recent years we’ve seen rapid evolution in how generative AI is applied — from single large language models responding to prompts, to sophisticated systems that connect models with tools, data sources and workflows. One of the emerging foundations for this is the Model Context Protocol (MCP) — an open standard for how models access external context (for example documents, photos, custom tools). [Intentface+2Intentface+2](https://www.intentface.com/articles?utm_source=chatgpt.com)
+
+But what happens when you don’t just use _one_ MCP or one model, but multiple? In this article we’ll explore how layering together multiple MCP‐driven contexts (models, tools, data sources) can lead to faster insights, better productivity and more resilient AI‐powered solutions.
+
+### What is an MCP, and why multiple?
+
+The article “Thoughts on the Model Context Protocol” defines MCP as a way to standardize how AI applications connect to custom data sources (like files, photos) and tools (functions that fetch info from third-party systems). [Intentface+1](https://www.intentface.com/articles?utm_source=chatgpt.com) The key insight: by enabling any model to call tools and use external context, we elevate models from static “chatbots” into integrated problem-solvers.
+
+Using _multiple_ MCPs expands the capabilities further:
+
+* **Diversify sources**: Different context sources (document corpora, third-party APIs, visual/image data) give the model richer knowledge to draw from.
+* **Fail‐safe layering**: If one context fails (e.g., outdated data, limited tool), a second model with a different context can take over or cross‐validate.
+* **Parallel problem solving**: Multiple models (or MCP stacks) can each “attack” a problem from different angles (e.g., technical, business, UX) and then combine results.
+* **Tool specialization**: One MCP might give access to a financial tool, another to a design tool, another to real‐time monitoring. Routing a query through the appropriate chain speeds up resolution.
+
+In short: multiple MCPs mean you’re not relying on “one brain” but a network of brains with different context, tools and skills.
+
+### The productivity boost: how it manifests
+
+**Faster triage and resolution**  
+When a user asks a complex question—say, “why did our system latency spike yesterday and what should we do?”—you can route it through:
+
+  * Model A: Internal log data and monitoring context
+  * Model B: Recent change-deployment data and error reports
+  * Model C: Business context (customer impact, SLAs)
+
+Each returns a hypothesis, then a meta-model combines results, identifies overlapping findings and suggests prioritized actions. Because each MCP is tailored, the result is faster and more precise than a single generic model.
+
+**Better decision support**  
+Multiple MCPs allow you to integrate data from siloed domains—engineering, customer support, finance—into a consolidated view. By letting a specialized MCP handle each domain, you reduce misunderstanding and improve accuracy.
+
+**Continuous learning & evolution**  
+As new tools or context sources are added (for example a new monitoring system or a new dataset), you can spin up a new MCP rather than retraining a monolithic system. This modularity encourages experimentation, rapid improvement, and adaptation to evolving workflows (a point emphasised by Intentface in articles on agile GenAI adoption). [Intentface+1](https://www.intentface.com/articles/optimizing-current-business-vs-unlocking-new-business-opportunities-using-gen-ai?utm_source=chatgpt.com)
+
+**Resilient error‐handling**  
+If one model/context path fails, another can pick up the slack. For example, if the monitoring logs are temporarily inaccessible, the business-context MCP might still propose actions based on recent incident patterns. The system gracefully fails over.
+
+### Practical implementation: a step-by-step approach
+
+Here’s how a team might implement multiple MCPs in a productivity-oriented system:
+
+**Step 1: Define domains & contexts**  
+List the key domains you need (engineering logs, customer support tickets, business KPIs). For each domain, define tools/data sources that the model must access.  
+**Step 2: Create specialized MCP endpoints**  
+For each domain build an MCP interface: the model, the context sources, the tools it can call. Ensure the MCP can be called with a standardized input and returns structured results.  
+**Step 3: Build a coordinator / meta-model**  
+This is a lightweight agent or workflow that accepts the user query, determines which MCPs to call (or calls them in parallel), then merges and ranks the results.  
+**Step 4: Optimize routing & context size**  
+Avoid overwhelming models by providing only relevant context to each MCP; prune unnecessary information. Use routing logic: “If query mentions latency + dashboards → call the engineering MCP.”  
+**Step 5: Feedback & learning loop**  
+Capture which MCP results were used, success metrics (time saved, accuracy) and feed this back to tune prompts, routing and tool selection.
+
+### Potential pitfalls & how to avoid them
+
+* **Fragmentation of context**: Too many MCPs can lead to inconsistent answers if the models don’t share a coherent “world view.”  
+_Solution_: Ensure a high-level shared context or meta-MCP that maintains global state.
+* **Latency overhead**: Calling multiple MCPs in series can slow responses.  
+_Solution_: Use parallel calls, cache results, early-terminate when high‐confidence answers are found.
+* **Complex routing**: Deciding which MCP(s) to call adds complexity.  
+_Solution_: Start simple (maybe two MCPs) and measure ROI before scaling.
+* **Prompt and tool drift**: Without governance, each MCP may drift in style, accuracy, or bias.  
+_Solution_: Regularly review prompts, output logs, and consistency across MCPs (a point raised by Intentface about transparency and tool-calling). [Intentface](https://www.intentface.com/articles/agents-workflows-and-tools-navigating-through-the-hype?utm_source=chatgpt.com)
+
+### Why this matters for modern teams
+
+As discovery and solution speed become competitive advantages, teams that can harness multiple context‐enabled models will move faster. Instead of waiting for one model to “learn everything,” you build a modular, scalable architecture of many models each tailored to their context—and orchestrated to deliver insight. Businesses that adopt this pattern can unlock the latent value in siloed data, custom tools and specialist workflows.
+
+### Key takeaways
+
+* Multiple MCPs = multiple specialized context paths = faster, more accurate solutions.
+* The meta-layer (agent, workflow or coordinator) is less important than the quality of the models, context and tools behind each MCP (as Intentface emphasises). [Intentface](https://www.intentface.com/articles/agents-workflows-and-tools-navigating-through-the-hype?utm_source=chatgpt.com)
+* Start small, govern carefully, measure ROI, and scale incrementally.
+* When done right, you turn generative AI from “one-size-fits-all” into a **team of AI experts** each focused on their domain—and collaborating for your productivity.
