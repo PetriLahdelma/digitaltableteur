@@ -4,6 +4,8 @@ import React from "react";
 
 import PageLayout from "../../../../patterns/PageLayout/PageLayout";
 import styles from "./workIndex.module.css";
+import Image from "next/image";
+import Link from "next/link";
 
 export function WorkIndexPage({ nav }: { nav?: React.ReactNode }) {
   return (
@@ -12,39 +14,39 @@ export function WorkIndexPage({ nav }: { nav?: React.ReactNode }) {
       <PageLayout maxWidth="full" spacing="comfortable" as="section">
         <section className={styles.works}>
           <div className={styles.worksGrid}>
-            <a
+            <Link
               href="/work/new-things-co"
               rel="noopener noreferrer"
               className={styles.workItem}
               aria-label="View New Things Co project details"
             >
-              <img
+              <Image
                 src="/images/portfolio/new_things_co/new_things_co_item.webp"
                 alt="New Things Co project preview"
                 className={styles.workImage}
               />
               <span className="visuallyHidden">View New Things Co project</span>
-            </a>
-            <a
+            </Link>
+            <Link
               href="/work/illustrations"
               rel="noopener noreferrer"
               className={styles.workItem}
               aria-label="View Illustrations project details"
             >
-              <img
+              <Image
                 src="/images/portfolio/illustrations/ice-cream.webp"
                 alt="Illustrations project preview"
                 className={styles.workImage}
               />
               <span className="visuallyHidden">View Illustrations project</span>
-            </a>
-            <a
+            </Link>
+            <Link
               href="/work/garage-junction"
               rel="noopener noreferrer"
               className={styles.workItem}
               aria-label="View Garage Junction project details"
             >
-              <img
+              <Image
                 src="/images/portfolio/garage_junction/check_pattern@2x.webp"
                 alt="Garage Junction project preview"
                 className={styles.workImage}
@@ -52,7 +54,7 @@ export function WorkIndexPage({ nav }: { nav?: React.ReactNode }) {
               <span className="visuallyHidden">
                 View Garage Junction project
               </span>
-            </a>
+            </Link>
           </div>
         </section>
       </PageLayout>

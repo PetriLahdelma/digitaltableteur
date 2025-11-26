@@ -4,12 +4,12 @@
   box-sizing: border-box;
   width: fit-content;
   align-items: center;
-  gap: 0.25em;
+  gap: var(--space-internal-4);
   border: 2px solid transparent;
-  border-radius: 999px;
+  border-radius: var(--radius-full, 999px);
   background: var(--color-muted-light);
-  font-family: var(--primary-body-font);
-  font-size: 1rem;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-m);
   font-weight: 600;
   letter-spacing: 0.02em;
   text-overflow: ellipsis;
@@ -21,12 +21,12 @@
 
 .s {
   padding: var(--space-internal-4) var(--space-internal-12);
-  font-size: 0.75rem;
+  font-size: var(--font-size-text-s);
 }
 
 .l {
   padding: var(--space-internal-12) var(--space-internal-16);
-  font-size: 1.25rem;
+  font-size: var(--font-size-text-l);
 }
 
 .square {
@@ -112,7 +112,7 @@
   margin-inline-start: 0;
   justify-content: center;
   align-items: center;
-  gap: 0.25em;
+  gap: var(--space-internal-4);
   border: none;
   background: none;
   color: inherit;
@@ -122,7 +122,7 @@
 
 .icon {
   display: inline-flex;
-  margin-inline-end: 0.4em;
+  margin-inline-end: var(--space-internal-4);
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
@@ -132,16 +132,70 @@
 .removable.s {
   padding: var(--space-internal-2) var(--space-internal-12);
   padding-inline-end: var(--space-internal-2);
-  font-size: 0.75rem;
+  font-size: var(--font-size-text-s);
 }
 
 .removable.m {
   padding: var(--space-internal-6) var(--space-internal-16);
   padding-inline-end: var(--space-internal-4);
-  font-size: 1rem;
+  font-size: var(--font-size-text-m);
 }
 
 .removable.l {
   padding: var(--space-internal-12) var(--space-internal-16);
-  font-size: 1.25rem;
+  font-size: var(--font-size-text-l);
+}
+
+/* Wrapper container for badges that wrap other content (count/dot mode) */
+.wrapper {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Count badge styles */
+.count {
+  min-width: var(--space-layout-16); /* 16px minimum for single digit */
+  height: var(--space-layout-16);
+  padding: var(--space-internal-6) var(--space-internal-6);
+  font-size: var(--font-size-text-xxs);
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Position count badge when wrapping */
+.wrapper .count {
+  position: absolute;
+  top: 0;
+  right: -0.5rem;
+  transform: translate(50%, -50%);
+  z-index: 1;
+}
+
+.countText {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Dot mode styles */
+.dot {
+  width: var(--space-layout-8);
+  height: var(--space-layout-8);
+  min-width: var(--space-layout-8);
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  vertical-align: middle;
+}
+
+/* Position dot badge when wrapping */
+.wrapper .dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  z-index: 1;
 }

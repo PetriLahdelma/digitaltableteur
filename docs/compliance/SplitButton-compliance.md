@@ -14,12 +14,14 @@
 The SplitButton is a **functionally ambitious** component with nested menu support and decent keyboard navigation, but suffers from **incomplete implementation**, **poor developer experience**, and **missing i18n compliance**. It works, but feels half-baked and would require significant polish before production use.
 
 ### Critical Issues (Must Fix)
+
 1. 🔴 **Zero i18n coverage** - All user-facing text hardcoded
 2. 🔴 **Incomplete testing** - Only 2 basic tests, no a11y tests
 3. 🔴 **No focus trap** - Nested submenus break keyboard navigation flow
 4. 🟡 **Inconsistent state management** - Mix of refs, state, callbacks creates bugs
 
 ### Strengths
+
 - ✅ Nested menu support (rare in design systems)
 - ✅ Keyboard navigation basics (arrow keys, Home/End)
 - ✅ Proper ARIA attributes (menu, menuitem, haspopup)
@@ -34,11 +36,13 @@ The SplitButton is a **functionally ambitious** component with nested menu suppo
 **Score: 0/10**
 
 **Issues:**
+
 ```tsx
-toggleLabel = "More options"  // ❌ Hardcoded English
+toggleLabel = "More options"; // ❌ Hardcoded English
 ```
 
 **Missing translation keys:**
+
 - `splitButton.toggleLabel` (default: "More options")
 - `splitButton.openSubmenu` (currently hardcoded in Icon: "Open submenu")
 - No translation coverage in `en/fi/sv` locale files
@@ -46,6 +50,7 @@ toggleLabel = "More options"  // ❌ Hardcoded English
 **Impact:** Component is **unusable in non-English contexts**. Violates project's tri-lingual requirement.
 
 **Fix Required:**
+
 ```tsx
 import { useTranslation } from "react-i18next";
 
@@ -55,12 +60,13 @@ const SplitButton: React.FC<SplitButtonProps> = ({
 }) => {
   const { t } = useTranslation();
   const resolvedToggleLabel = toggleLabel ?? t("splitButton.toggleLabel");
-  
+
   // Usage:
   aria-label={resolvedToggleLabel}
 ```
 
 **Add to all locale files:**
+
 ```json
 {
   "splitButton": {
@@ -77,6 +83,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
 **Score: 2/10**
 
 **Current State:**
+
 - ✅ 2 basic tests (menu open, keyboard nav)
 - ❌ No accessibility tests (axe-core)
 - ❌ No nested menu tests
@@ -86,24 +93,25 @@ const SplitButton: React.FC<SplitButtonProps> = ({
 - ❌ No edge case coverage (empty options, single option)
 
 **Missing Test Cases:**
+
 ```tsx
 describe("SplitButton Accessibility", () => {
   it("has no axe violations", async () => {
     // Missing!
   });
-  
+
   it("traps focus within open menu", () => {
     // Missing!
   });
-  
+
   it("closes submenu on Escape", () => {
     // Missing!
   });
-  
+
   it("skips disabled options during keyboard nav", () => {
     // Missing!
   });
-  
+
   it("focuses first enabled item on open", () => {
     // Partially tested, but not verified
   });
@@ -113,11 +121,11 @@ describe("SplitButton Edge Cases", () => {
   it("handles empty options array gracefully", () => {
     // Missing!
   });
-  
+
   it("prevents toggle click when no options", () => {
     // Missing!
   });
-  
+
   it("renders all variants correctly", () => {
     // Missing!
   });
@@ -127,11 +135,11 @@ describe("SplitButton Nested Menus", () => {
   it("opens submenu on ArrowRight", () => {
     // Missing!
   });
-  
+
   it("closes submenu on ArrowLeft", () => {
     // Missing!
   });
-  
+
   it("allows keyboard nav within submenu", () => {
     // Missing!
   });
@@ -147,6 +155,7 @@ describe("SplitButton Nested Menus", () => {
 **Score: 6/10**
 
 **Strengths:**
+
 - ✅ `role="menu"` and `role="menuitem"`
 - ✅ `aria-haspopup`, `aria-expanded`, `aria-controls`
 - ✅ `tabIndex` management for roving focus
@@ -155,6 +164,7 @@ describe("SplitButton Nested Menus", () => {
 **Critical Issues:**
 
 #### 3.1 Focus Trap Broken in Nested Menus
+
 ```tsx
 // Current: Focus can escape submenu without closing
 .menuItem:hover,
@@ -166,6 +176,7 @@ describe("SplitButton Nested Menus", () => {
 **Problem:** When submenu is open, `Tab` key escapes entire menu instead of cycling within submenu items.
 
 **Fix:** Implement proper focus trap:
+
 ```tsx
 const handleMenuKeyDown = (event: KeyboardEvent) => {
   if (event.key === "Tab") {
@@ -176,6 +187,7 @@ const handleMenuKeyDown = (event: KeyboardEvent) => {
 ```
 
 #### 3.2 Missing ARIA for Submenus
+
 ```tsx
 // Current:
 <button role="menuitem">
@@ -183,19 +195,21 @@ const handleMenuKeyDown = (event: KeyboardEvent) => {
 </button>
 
 // Should be:
-<button 
-  role="menuitem" 
+<button
+  role="menuitem"
   aria-haspopup="menu"
   aria-expanded={openSubIndex === index}
 >
 ```
 
 #### 3.3 No Screen Reader Announcements
+
 - When submenu opens: No announcement
 - When disabled option is focused: No feedback
 - When menu closes: No announcement
 
 **Fix:** Add `aria-live` region:
+
 ```tsx
 <div role="status" aria-live="polite" className="sr-only">
   {statusMessage}
@@ -211,6 +225,7 @@ const handleMenuKeyDown = (event: KeyboardEvent) => {
 **Pain Points:**
 
 #### 4.1 Confusing API
+
 ```tsx
 export interface SplitButtonProps
   extends Pick<ButtonProps, "variant" | "size" | ...> {
@@ -222,6 +237,7 @@ export interface SplitButtonProps
 **Problem:** Props like `inverse`, `rounded`, `tooltip` are passed through but **their effect on SplitButton is unclear**. No documentation.
 
 **Fix:** Add JSDoc:
+
 ```tsx
 /**
  * Visual variant inherited from Button component.
@@ -237,6 +253,7 @@ inverse?: boolean;
 ```
 
 #### 4.2 Inconsistent Icon Handling
+
 ```tsx
 icon?: React.ReactNode | string;
 trailingIcon?: React.ReactNode | string;
@@ -250,16 +267,18 @@ if (isStringIcon(icon)) {
 **Problem:** When icon is a string like "cloud-arrow-up", it becomes `ariaLabel="cloud-arrow-up"` which is poor a11y. Should be `ariaLabel=""` (decorative) or derived from option.label.
 
 **Fix:**
+
 ```tsx
-<Icon 
-  name={icon} 
-  ariaLabel=""  // Decorative, label is in text
-  className={styles.menuIcon} 
+<Icon
+  name={icon}
+  ariaLabel="" // Decorative, label is in text
+  className={styles.menuIcon}
   weight="regular"
 />
 ```
 
 #### 4.3 No TypeScript Discrimination for Nested Options
+
 ```tsx
 // Current: Any option can have children
 SplitButtonOption = {
@@ -289,6 +308,7 @@ type SplitButtonOption = LeafOption | ParentOption;
 **Score: 7/10**
 
 **Strengths:**
+
 - ✅ CSS Modules with logical properties
 - ✅ Design tokens for spacing/radius
 - ✅ No inline styles
@@ -297,6 +317,7 @@ type SplitButtonOption = LeafOption | ParentOption;
 **Issues:**
 
 #### 5.1 Magic Numbers
+
 ```css
 .menu {
   top: calc(100% + var(--space-internal-8));
@@ -310,6 +331,7 @@ type SplitButtonOption = LeafOption | ParentOption;
 ```
 
 **Fix:** Use semantic tokens:
+
 ```css
 .menu {
   top: calc(100% + var(--space-dropdown-offset, 0.5rem));
@@ -317,6 +339,7 @@ type SplitButtonOption = LeafOption | ParentOption;
 ```
 
 #### 5.2 Hardcoded Colors
+
 ```css
 .menu {
   box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
@@ -334,6 +357,7 @@ type SplitButtonOption = LeafOption | ParentOption;
 ```
 
 #### 5.3 No Dark Mode Support
+
 ```css
 .menu {
   background: var(--color-white);
@@ -342,6 +366,7 @@ type SplitButtonOption = LeafOption | ParentOption;
 ```
 
 **Fix:**
+
 ```css
 .menu {
   background: var(--color-surface-elevated, var(--color-white));
@@ -356,6 +381,7 @@ type SplitButtonOption = LeafOption | ParentOption;
 **Score: 7/10**
 
 **Strengths:**
+
 - ✅ `useCallback` for closeMenu
 - ✅ Conditional rendering (menu only when open)
 - ✅ `requestAnimationFrame` for focus timing
@@ -363,6 +389,7 @@ type SplitButtonOption = LeafOption | ParentOption;
 **Issues:**
 
 #### 6.1 Unnecessary Re-renders
+
 ```tsx
 const [focusedIndex, setFocusedIndex] = React.useState(-1);
 // This triggers re-render on every arrow key press
@@ -372,6 +399,7 @@ const focusedIndexRef = useRef(-1);
 ```
 
 #### 6.2 Effect Dependencies
+
 ```tsx
 React.useEffect(() => {
   // Runs on every focusOnOpen change, even when menu closed
@@ -381,6 +409,7 @@ React.useEffect(() => {
 ```
 
 **Fix:**
+
 ```tsx
 React.useEffect(() => {
   if (!open || !focusOnOpen) return;
@@ -397,6 +426,7 @@ React.useEffect(() => {
 **Limitations:**
 
 #### 7.1 No Render Prop Support
+
 ```tsx
 // Can't customize menu item rendering
 // Stuck with: icon + label + trailingIcon
@@ -406,6 +436,7 @@ renderMenuItem?: (option: SplitButtonOption) => React.ReactNode;
 ```
 
 #### 7.2 Fixed Menu Position
+
 ```tsx
 .menu {
   top: calc(100% + var(--space-internal-8));
@@ -414,6 +445,7 @@ renderMenuItem?: (option: SplitButtonOption) => React.ReactNode;
 ```
 
 **Fix:** Add collision detection:
+
 ```tsx
 placement?: "bottom" | "top" | "auto";
 
@@ -429,6 +461,7 @@ useEffect(() => {
 ```
 
 #### 7.3 No Portal Support
+
 ```tsx
 // Menu always rendered inline
 // Problem: Can be clipped by overflow:hidden ancestors
@@ -450,11 +483,13 @@ renderInPortal?: boolean;
 **Score: 6/10**
 
 **Strengths:**
+
 - ✅ 5 stories (Default, Secondary, Nested, Disabled, Tertiary)
 - ✅ Controls for variants/size
 - ✅ Nested menu example
 
 **Missing:**
+
 - ❌ No "Kitchen Sink" story showing all features
 - ❌ No interactive docs explaining when to use vs Button
 - ❌ No examples with long option lists (scrolling)
@@ -462,6 +497,7 @@ renderInPortal?: boolean;
 - ❌ No WIP badge disabled (still shows "Work in Progress")
 
 **Add:**
+
 ```tsx
 export const KitchenSink: Story = {
   args: {
@@ -470,18 +506,15 @@ export const KitchenSink: Story = {
       { label: "With icon", icon: "check" },
       { label: "With trailing", trailingIcon: "arrow-right" },
       { label: "Disabled", disabled: true },
-      { 
+      {
         label: "Nested",
-        children: [
-          { label: "Child 1" },
-          { label: "Child 2", disabled: true }
-        ]
-      }
-    ]
+        children: [{ label: "Child 1" }, { label: "Child 2", disabled: true }],
+      },
+    ],
   },
   parameters: {
     wip: { disabled: true }, // Only after all fixes
-  }
+  },
 };
 ```
 
@@ -492,6 +525,7 @@ export const KitchenSink: Story = {
 **Score: 7/10**
 
 **Strengths:**
+
 - ✅ TypeScript with proper types
 - ✅ ESLint compliant
 - ✅ Functional component with hooks
@@ -500,6 +534,7 @@ export const KitchenSink: Story = {
 **Issues:**
 
 #### 9.1 Complex State Logic
+
 ```tsx
 // 8 useState calls + 4 useRef calls = cognitive overload
 const [open, setOpen] = React.useState(false);
@@ -509,6 +544,7 @@ const [focusOnOpen, setFocusOnOpen] = React.useState(false);
 ```
 
 **Fix:** Use `useReducer`:
+
 ```tsx
 type State = {
   open: boolean;
@@ -521,6 +557,7 @@ const [state, dispatch] = useReducer(menuReducer, initialState);
 ```
 
 #### 9.2 Inconsistent Prop Spreading
+
 ```tsx
 // Sometimes manually listing Button props:
 <Button
@@ -529,11 +566,11 @@ const [state, dispatch] = useReducer(menuReducer, initialState);
   inverse={inverse}
   rounded={rounded}
   // ...
-/>
+/>;
 
 // Should use rest spread:
 const { label, options, onPrimaryClick, ...buttonProps } = props;
-<Button {...buttonProps} />
+<Button {...buttonProps} />;
 ```
 
 ---
@@ -576,18 +613,21 @@ export interface SplitButtonProps {
 ## Recommendations
 
 ### Immediate (Pre-Production)
+
 1. **Add i18n support** (2-3 hours)
 2. **Write accessibility tests** (4-5 hours)
 3. **Fix focus trap in nested menus** (3-4 hours)
 4. **Add error handling** (2 hours)
 
 ### Short-term (Next Sprint)
+
 1. **Refactor state to useReducer** (3-4 hours)
 2. **Add portal rendering option** (4-5 hours)
 3. **Implement collision detection** (3-4 hours)
 4. **Add loading states** (2-3 hours)
 
 ### Long-term (Design System Maturity)
+
 1. **Extract menu logic to useMenu hook** (6-8 hours)
 2. **Create Menu, MenuItem, SubMenu primitives** (8-10 hours)
 3. **Add render prop API** (4-5 hours)
@@ -597,17 +637,17 @@ export interface SplitButtonProps {
 
 ## Comparison with Industry Standards
 
-| Feature | SplitButton | Ant Design | MUI | Chakra UI |
-|---------|------------|------------|-----|-----------|
-| Nested Menus | ✅ | ✅ | ✅ | ✅ |
-| i18n Support | ❌ | ✅ | ✅ | ✅ |
-| Portal Rendering | ❌ | ✅ | ✅ | ✅ |
-| Collision Detection | ❌ | ✅ | ✅ | ✅ |
-| Loading States | ❌ | ✅ | ✅ | ✅ |
-| Keyboard Nav | 🟡 | ✅ | ✅ | ✅ |
-| Screen Reader | 🟡 | ✅ | ✅ | ✅ |
-| Test Coverage | ❌ | ✅ | ✅ | ✅ |
-| Dark Mode | ❌ | ✅ | ✅ | ✅ |
+| Feature             | SplitButton | Ant Design | MUI | Chakra UI |
+| ------------------- | ----------- | ---------- | --- | --------- |
+| Nested Menus        | ✅          | ✅         | ✅  | ✅        |
+| i18n Support        | ❌          | ✅         | ✅  | ✅        |
+| Portal Rendering    | ❌          | ✅         | ✅  | ✅        |
+| Collision Detection | ❌          | ✅         | ✅  | ✅        |
+| Loading States      | ❌          | ✅         | ✅  | ✅        |
+| Keyboard Nav        | 🟡          | ✅         | ✅  | ✅        |
+| Screen Reader       | 🟡          | ✅         | ✅  | ✅        |
+| Test Coverage       | ❌          | ✅         | ✅  | ✅        |
+| Dark Mode           | ❌          | ✅         | ✅  | ✅        |
 
 **Verdict:** SplitButton is **1-2 generations behind** mature design systems.
 
@@ -615,19 +655,19 @@ export interface SplitButtonProps {
 
 ## Final Grade Breakdown
 
-| Category | Weight | Score | Weighted |
-|----------|--------|-------|----------|
-| i18n | 15% | 0/10 | 0 |
-| Testing | 15% | 2/10 | 3 |
-| Accessibility | 15% | 6/10 | 9 |
-| DX | 15% | 5/10 | 7.5 |
-| CSS | 10% | 7/10 | 7 |
-| Performance | 5% | 7/10 | 3.5 |
-| Extensibility | 10% | 5/10 | 5 |
-| Storybook | 5% | 6/10 | 3 |
-| Code Quality | 5% | 7/10 | 3.5 |
-| Prod Ready | 5% | 4/10 | 2 |
-| **Total** | **100%** | | **43.5/100** |
+| Category      | Weight   | Score | Weighted     |
+| ------------- | -------- | ----- | ------------ |
+| i18n          | 15%      | 0/10  | 0            |
+| Testing       | 15%      | 2/10  | 3            |
+| Accessibility | 15%      | 6/10  | 9            |
+| DX            | 15%      | 5/10  | 7.5          |
+| CSS           | 10%      | 7/10  | 7            |
+| Performance   | 5%       | 7/10  | 3.5          |
+| Extensibility | 10%      | 5/10  | 5            |
+| Storybook     | 5%       | 6/10  | 3            |
+| Code Quality  | 5%       | 7/10  | 3.5          |
+| Prod Ready    | 5%       | 4/10  | 2            |
+| **Total**     | **100%** |       | **43.5/100** |
 
 **Adjusted for Ambition:** +26.5 points (nested menus, keyboard nav)  
 **Final Grade: 70/100 (C+)**
@@ -639,6 +679,7 @@ export interface SplitButtonProps {
 This component is **too ambitious for its implementation maturity**. You've built a Ferrari chassis but forgot the steering wheel (i18n), airbags (testing), and fuel tank (error handling).
 
 **Recommendation:** Either:
+
 1. **Simplify** - Remove nested menus, focus on perfecting basic split button
 2. **Invest** - Dedicate 20-30 hours to bring it to production quality
 3. **Replace** - Use a battle-tested library (Radix UI, Headless UI)

@@ -66,6 +66,9 @@
   - ✅ ALWAYS use `<Title level={1}>`, `<Title level={2}>`, etc.
   - ❌ NEVER use raw `<p>` tags
   - ✅ ALWAYS use `<Text as="p">` or `<Text as="span">`
+  - ❌ NEVER use raw `<img>`.
+  - ✅ ALWAYS use `NextJS <Image>` with appropriate settings.
+
 - **Other Existing Components:**
   - Check `src/components/index.ts` and `shared/components/` for available components
   - Use `Icon` component instead of raw SVG or emoji

@@ -53,6 +53,17 @@
   overflow: hidden;
 }
 
+.mapWrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--color-primary);
+  mix-blend-mode: color;
+  opacity: 0.8;
+  z-index: 9999;
+}
+
 .map {
   width: 100%;
   height: 100%;

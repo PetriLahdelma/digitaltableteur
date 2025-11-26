@@ -13,7 +13,7 @@ export default {
     type: {
       control: {
         type: "select",
-        options: ["text", "number", "email", "password", "search", "select"],
+        options: ["text", "number", "email", "password", "search", "tel"],
       },
     },
     label: { control: "text" },
@@ -79,6 +79,22 @@ SearchInput.args = {
   label: "storyInputSearchLabel",
   type: "search",
   placeholder: "storyInputSearchPlaceholder",
+};
+
+export const PhoneInput = Template.bind({});
+PhoneInput.args = {
+  label: "storyInputPhoneLabel",
+  type: "tel",
+  placeholder: "storyInputPhonePlaceholder",
+};
+PhoneInput.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const input = await canvas.findByLabelText(/phone input/i);
+  await userEvent.type(input, "+358456574469");
 };
 
 export const InputWithError = Template.bind({});

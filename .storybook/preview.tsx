@@ -10,6 +10,9 @@ import en from "../src/locales/en/translation.json";
 import fi from "../src/locales/fi/translation.json";
 import sv from "../src/locales/sv/translation.json";
 
+// Import global styles - CRITICAL for design tokens and component styling
+import "../src/index.css";
+
 const THEME_KEY = "storybook-theme";
 const STORYBOOK_THEMES = ["light", "dark", "hcb", "hcw"] as const;
 type StorybookTheme = (typeof STORYBOOK_THEMES)[number];

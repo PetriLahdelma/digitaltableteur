@@ -9,21 +9,7 @@
 }
 
 .header {
-  display: flex;
   margin-block: 0 1rem;
-  align-items: center;
-  gap: 1rem;
-}
-
-.header img,
-.article img {
-  margin-block: 1rem 0.5rem;
-}
-
-.name {
-  margin: 0.25rem 0 0;
-  font-size: 1.5rem;
-  color: var(--color-text);
 }
 
 .tagline {
