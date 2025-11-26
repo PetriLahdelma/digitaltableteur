@@ -1,6 +1,7 @@
 .contactForm {
-  margin: 2rem auto;
-  padding: 2rem;
+  margin-block: var(--space-layout-32);
+  margin-inline: auto;
+  padding: var(--space-layout-32);
   width: 100%;
   max-width: 424px;
   border: 2px solid var(--color-primary);
@@ -9,7 +10,7 @@
 }
 
 .formGroup {
-  margin-block: 0.5rem;
+  margin-block: var(--space-layout-8);
   width: 100%;
 }
 
@@ -21,10 +22,15 @@
   overflow: hidden;
 }
 
-.privacyPolicy {
-  margin-block-end: 1.2rem;
+.honeypotLabel {
   font-family: var(--font-text);
-  font-size: 0.875rem;
+  font-size: var(--font-size-text-s);
+}
+
+.privacyPolicy {
+  margin-block-end: var(--space-layout-16);
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-s);
   text-align: center;
   color: var(--color-primary);
 }
@@ -46,7 +52,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.75rem;
+  gap: var(--space-layout-16);
 }
 
 .formGroup label {
@@ -56,28 +62,29 @@
 }
 
 .resetButton {
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
+  margin-block-start: var(--space-layout-16);
+  margin-block-end: var(--space-layout-8);
 }
 
 .submitButton {
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
+  margin-block-start: var(--space-layout-16);
+  margin-block-end: var(--space-layout-8);
 }
 
 .attachmentNotice {
   font-family: var(--font-text);
-  font-size: 0.875rem;
-  color: var(--color-warning, #ff9f0a);
-  margin-bottom: 1rem;
-  margin-top: -0.75rem;
+  font-size: var(--font-size-text-s);
+  color: var(--color-warning);
+  margin-block-start: calc(var(--space-layout-16) * -1);
+  margin-block-end: var(--space-layout-16);
 }
 
 /* Mobile responsiveness */
 @media (width <= 768px) {
   .contactForm {
-    margin: 1rem auto;
-    padding: 2rem;
+    margin-block: var(--space-layout-16);
+    margin-inline: auto;
+    padding: var(--space-layout-32);
     width: 100%;
     max-width: 424px;
   }
@@ -90,14 +97,17 @@
 /* Extra small screens */
 @media (width <= 480px) {
   .contactForm {
-    margin: 0.5rem auto 2.5rem;
-    padding: 1.5rem 1.25rem;
+    margin-block-start: var(--space-layout-8);
+    margin-block-end: var(--space-layout-48);
+    margin-inline: auto;
+    padding-block: var(--space-layout-24);
+    padding-inline: var(--space-layout-16);
     width: 100%;
     max-width: 424px; /* Match resume download modal content comfortable width */
   }
 
   .privacyPolicy {
-    margin-block-end: 1rem;
+    margin-block-end: var(--space-layout-16);
     font-size: 0.8rem;
   }
 }

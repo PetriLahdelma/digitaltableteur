@@ -1,20 +1,28 @@
 .button {
   display: inline-flex;
+  position: relative;
   padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16);
-  justify-content: center;
+  box-sizing: border-box;
   align-items: center;
-  border-radius: var(--radius-sm);
-  font-family: var(--primary-body-font);
+  justify-content: center;
+  font-family: var(--font-text);
   font-size: var(--font-size-button-m);
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
   text-decoration: none;
-  text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  outline: none;
   transition:
-    background-color 0.3s,
-    color 0.3s;
-  overflow: hidden;
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out,
+    border 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
 }
 
 .button.primary {
@@ -85,6 +93,24 @@
   background-color: var(--color-disabled-bg);
   color: var(--color-muted);
   cursor: not-allowed;
+}
+
+.button.loading {
+  position: relative;
+  cursor: wait;
+  pointer-events: none;
+  animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 .button.iconOnly {

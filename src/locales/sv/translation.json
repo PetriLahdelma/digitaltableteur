@@ -44,13 +44,28 @@
   "chat.ai.thinking": "Tänker…",
   "chat.ai.generating": "Genererar…",
   "chat.ai.analyzing": "Analyserar…",
+  "author": {
+    "byline": "Av {{name}}"
+  },
   "authorBio": {
     "ariaLabel": "Om {{name}}"
   },
   "avatar": {
     "menuLabel": "{{name}} meny",
     "menuLabelGeneric": "Avatar meny",
-    "altTextGeneric": "Avatar"
+    "altTextGeneric": "Avatar",
+    "menuOpened": "Menyn öppnad",
+    "menuClosed": "Menyn stängd",
+    "menuActions": {
+      "profile": "Profil",
+      "settings": "Inställningar",
+      "signOut": "Logga ut",
+      "account": "Konto",
+      "preferences": "Preferenser"
+    }
+  },
+  "splitButton": {
+    "moreOptions": "Fler alternativ"
   },
   "complianceCard": {
     "lastReviewed": "Senast granskad: {{date}}"
@@ -371,6 +386,17 @@
   "complianceCard.status.fail": "Underkänd",
   "complianceCard.resizeHandle": "Ändra tabellstorlek",
   "badgeLarge": "Stor",
+  "badge": {
+    "countLabel": "{{count}} objekt",
+    "dotIndicator": "Statusindikator",
+    "state": {
+      "success": "Lyckades",
+      "info": "Information",
+      "error": "Fel",
+      "warning": "Varning",
+      "neutral": "Neutral"
+    }
+  },
   "dashboardTitle": "Kvalitetsöversikt",
   "dashboardSubtitle": "Översikt över automatiserade tester, tillgänglighet och Storybook-status.",
   "dashboardLastUpdated": "Senast uppdaterad {{date}}",
@@ -494,6 +520,8 @@
   "storyInputPasswordPlaceholder": "Ange lösenord",
   "storyInputSearchLabel": "Sökfält",
   "storyInputSearchPlaceholder": "Sök...",
+  "storyInputPhoneLabel": "Telefonnummer",
+  "storyInputPhonePlaceholder": "+358 45 123 4567",
   "storyInputErrorLabel": "Fält med fel",
   "storyInputErrorText": "Detta fält är obligatoriskt",
   "storyInputDisabledLabel": "Inaktiverat fält",

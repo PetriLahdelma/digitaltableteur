@@ -1,33 +1,13 @@
 /*!**********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/styles/variables.css ***!
   \**********************************************************************************************************************************************************************************************************************************************************************/
-:where(:root, .themeDark, .themeHCB, .themeHCW)
-  :is(
-    a[href],
-    button:not(:disabled),
-    [role="button"],
-    input[type="button"]:not(:disabled),
-    input[type="submit"]:not(:disabled),
-    input[type="reset"]:not(:disabled),
-    summary,
-    .interactive,
-    .clickable
-  ):hover {
-  cursor: var(--cursor-circle);
-}
-
 :root {
-  --cursor-circle:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='14' stroke='none' fill='%2300f' stroke-width='2'/%3E%3C/svg%3E")
-      16 16,
-    pointer;
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
 
   /* Typography tokens */
   --font-title: "TiemposHeadline-Regular", serif;
   --font-text: "Moderat", sans-serif;
-  --font-mono: "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace;
   --font-size-text: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
   --font-size-text-xxs: clamp(0.625rem, 0.3vw + 0.6rem, 0.875rem);
   --font-size-text-xs: clamp(0.75rem, 0.4vw + 0.7rem, 0.9375rem);
@@ -143,6 +123,20 @@
   --radius-sm: 2px;
   --radius-md: 0.25rem;
   --radius-lg: 8px;
+
+  /* Shadows & Elevation */
+  --shadow-sm: 0 2px 4px rgb(0 0 0 / 8%);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 10%);
+  --shadow-lg: 0 8px 18px rgb(0 0 0 / 12%);
+  --shadow-xl: 0 12px 24px rgb(0 0 0 / 15%);
+  --shadow-dropdown: var(--shadow-lg);
+  --shadow-menu: var(--shadow-lg);
+  --shadow-focus: 0 0 0 2px var(--color-primary);
+
+  /* Menu & Dropdown */
+  --menu-min-width: 12rem;
+  --menu-submenu-offset-vertical: -0.25rem; /* -4px adjusted for padding alignment */
+  --menu-submenu-offset-horizontal: var(--space-internal-4);
 
   /* Sizing */
 
@@ -1181,21 +1175,31 @@ code {
   \***********************************************************************************************************************************************************************************************************************************************************************************/
 .Button_button__exqP_ {
   display: inline-flex;
+  position: relative;
   padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16);
-  justify-content: center;
+  box-sizing: border-box;
   align-items: center;
-  border-radius: var(--radius-sm);
-  font-family: var(--primary-body-font);
+  justify-content: center;
+  font-family: var(--font-text);
   font-size: var(--font-size-button-m);
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
   text-decoration: none;
-  text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  outline: none;
   transition:
-    background-color 0.3s,
-    color 0.3s;
-  overflow: hidden;
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out,
+    border 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
 }
 
 .Button_button__exqP_.Button_primary__DEC_1 {
@@ -1266,6 +1270,24 @@ code {
   background-color: var(--color-disabled-bg);
   color: var(--color-muted);
   cursor: not-allowed;
+}
+
+.Button_button__exqP_.Button_loading__U3vY1 {
+  position: relative;
+  cursor: wait;
+  pointer-events: none;
+  animation: Button_loading-pulse__ux3dB 1.5s ease-in-out infinite;
+}
+
+@keyframes Button_loading-pulse__ux3dB {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 .Button_button__exqP_.Button_iconOnly__bB_7A {
@@ -1559,14 +1581,14 @@ code {
   top: calc(100% + var(--space-internal-8));
   inset-inline-start: 0;
   z-index: 20;
-  min-inline-size: 12rem;
-  inline-size: max(12rem, 100%);
+  min-inline-size: var(--menu-min-width);
+  inline-size: max(var(--menu-min-width), 100%);
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-4);
   margin: 0;
   border-radius: var(--radius-md, 0.5rem);
   background: var(--color-white);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
+  box-shadow: var(--shadow-menu);
   list-style: none;
 }
 
@@ -1581,18 +1603,18 @@ code {
 
 .SplitButton_subMenu__bg_5r {
   position: absolute;
-  top: calc(-0.55 * var(--space-internal-6, 0.25rem));
+  top: var(--menu-submenu-offset-vertical);
   inset-inline-start: 100%;
-  -webkit-margin-start: var(--space-internal-4);
-          margin-inline-start: var(--space-internal-4);
-  min-inline-size: 12rem;
-  inline-size: max(12rem, 100%);
+  -webkit-margin-start: var(--menu-submenu-offset-horizontal);
+          margin-inline-start: var(--menu-submenu-offset-horizontal);
+  min-inline-size: var(--menu-min-width);
+  inline-size: max(var(--menu-min-width), 100%);
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-4);
   list-style: none;
   border-radius: var(--radius-md, 0.5rem);
   background: var(--color-white);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
+  box-shadow: var(--shadow-menu);
 }
 
 .SplitButton_menuItem__0ppyj {
@@ -1627,7 +1649,7 @@ code {
 
 .SplitButton_menuItem__0ppyj:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-primary);
+  box-shadow: var(--shadow-focus);
   z-index: 2;
 }
 
@@ -2881,12 +2903,12 @@ code {
   width: -moz-fit-content;
   width: fit-content;
   align-items: center;
-  gap: 0.25em;
+  gap: var(--space-internal-4);
   border: 2px solid transparent;
-  border-radius: 999px;
+  border-radius: var(--radius-full, 999px);
   background: var(--color-muted-light);
-  font-family: var(--primary-body-font);
-  font-size: 1rem;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-m);
   font-weight: 600;
   letter-spacing: 0.02em;
   text-overflow: ellipsis;
@@ -2898,12 +2920,12 @@ code {
 
 .Badge_s__DsfCi {
   padding: var(--space-internal-4) var(--space-internal-12);
-  font-size: 0.75rem;
+  font-size: var(--font-size-text-s);
 }
 
 .Badge_l__5AErE {
   padding: var(--space-internal-12) var(--space-internal-16);
-  font-size: 1.25rem;
+  font-size: var(--font-size-text-l);
 }
 
 .Badge_square__88cYS {
@@ -2990,7 +3012,7 @@ code {
           margin-inline-start: 0;
   justify-content: center;
   align-items: center;
-  gap: 0.25em;
+  gap: var(--space-internal-4);
   border: none;
   background: none;
   color: inherit;
@@ -3000,8 +3022,8 @@ code {
 
 .Badge_icon__SHz0H {
   display: inline-flex;
-  -webkit-margin-end: 0.4em;
-          margin-inline-end: 0.4em;
+  -webkit-margin-end: var(--space-internal-4);
+          margin-inline-end: var(--space-internal-4);
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
@@ -3012,19 +3034,73 @@ code {
   padding: var(--space-internal-2) var(--space-internal-12);
   -webkit-padding-end: var(--space-internal-2);
           padding-inline-end: var(--space-internal-2);
-  font-size: 0.75rem;
+  font-size: var(--font-size-text-s);
 }
 
 .Badge_removable__ZZ_9Q.Badge_m__aWm6G {
   padding: var(--space-internal-6) var(--space-internal-16);
   -webkit-padding-end: var(--space-internal-4);
           padding-inline-end: var(--space-internal-4);
-  font-size: 1rem;
+  font-size: var(--font-size-text-m);
 }
 
 .Badge_removable__ZZ_9Q.Badge_l__5AErE {
   padding: var(--space-internal-12) var(--space-internal-16);
-  font-size: 1.25rem;
+  font-size: var(--font-size-text-l);
+}
+
+/* Wrapper container for badges that wrap other content (count/dot mode) */
+.Badge_wrapper___3Tt_ {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Count badge styles */
+.Badge_count__JuWwb {
+  min-width: var(--space-layout-16); /* 16px minimum for single digit */
+  height: var(--space-layout-16);
+  padding: var(--space-internal-6) var(--space-internal-6);
+  font-size: var(--font-size-text-xxs);
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Position count badge when wrapping */
+.Badge_wrapper___3Tt_ .Badge_count__JuWwb {
+  position: absolute;
+  top: 0;
+  right: -0.5rem;
+  transform: translate(50%, -50%);
+  z-index: 1;
+}
+
+.Badge_countText__Yz5bk {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Dot mode styles */
+.Badge_dot__zbt5N {
+  width: var(--space-layout-8);
+  height: var(--space-layout-8);
+  min-width: var(--space-layout-8);
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  vertical-align: middle;
+}
+
+/* Position dot badge when wrapping */
+.Badge_wrapper___3Tt_ .Badge_dot__zbt5N {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  z-index: 1;
 }
 
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\

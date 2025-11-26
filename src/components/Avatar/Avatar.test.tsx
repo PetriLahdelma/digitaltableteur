@@ -304,3 +304,346 @@ describe("Avatar Component", () => {
     }
   });
 });
+
+describe("Theme Support", () => {
+  it("renders correctly in Light theme (default)", () => {
+    render(<Avatar name="Test User" />);
+    const avatar = screen.getByText("TU");
+    expect(avatar).toHaveClass("avatarText");
+  });
+
+  it("renders correctly in Dark theme", () => {
+    document.body.className = "themeDark";
+    render(<Avatar name="Test User" menuItems={[{ label: "Profile" }]} />);
+    const trigger = screen.getByRole("button");
+    expect(trigger).toBeInTheDocument();
+    document.body.className = "";
+  });
+
+  it("renders correctly in High Contrast White theme", () => {
+    document.body.className = "themeHCW";
+    render(<Avatar name="Test User" menuItems={[{ label: "Profile" }]} />);
+    const trigger = screen.getByRole("button");
+    expect(trigger).toBeInTheDocument();
+    document.body.className = "";
+  });
+
+  it("renders correctly in High Contrast Black theme", () => {
+    document.body.className = "themeHCB";
+    render(<Avatar name="Test User" menuItems={[{ label: "Profile" }]} />);
+    const trigger = screen.getByRole("button");
+    expect(trigger).toBeInTheDocument();
+    document.body.className = "";
+  });
+});
+
+describe("Focus Trap", () => {
+  it("traps focus within menu with Tab key", async () => {
+    render(
+      <Avatar
+        name="Test User"
+        menuItems={[
+          { label: "Profile" },
+          { label: "Settings" },
+          { label: "Sign out" },
+        ]}
+      />,
+    );
+
+    const trigger = screen.getByRole("button");
+    await userEvent.click(trigger);
+
+    const menuItems = screen.getAllByRole("menuitem");
+    expect(menuItems).toHaveLength(3);
+
+    // Focus should start on first item
+    await waitFor(() => {
+      expect(menuItems[0]).toHaveFocus();
+    });
+
+    // Tab should move to second item
+    await userEvent.tab();
+    expect(menuItems[1]).toHaveFocus();
+
+    // Tab should move to third item
+    await userEvent.tab();
+    expect(menuItems[2]).toHaveFocus();
+
+    // Tab from last item should cycle back to first
+    await userEvent.tab();
+    expect(menuItems[0]).toHaveFocus();
+  });
+
+  it("traps focus backwards with Shift+Tab", async () => {
+    render(
+      <Avatar
+        name="Test User"
+        menuItems={[
+          { label: "Profile" },
+          { label: "Settings" },
+          { label: "Sign out" },
+        ]}
+      />,
+    );
+
+    const trigger = screen.getByRole("button");
+    await userEvent.click(trigger);
+
+    const menuItems = screen.getAllByRole("menuitem");
+
+    // Wait for first item to be focused
+    await waitFor(() => {
+      expect(menuItems[0]).toHaveFocus();
+    });
+
+    // Shift+Tab from first item should cycle to last
+    await userEvent.tab({ shift: true });
+    expect(menuItems[2]).toHaveFocus();
+
+    // Shift+Tab should move to second item
+    await userEvent.tab({ shift: true });
+    expect(menuItems[1]).toHaveFocus();
+  });
+
+  it("returns focus to trigger button when menu closes", async () => {
+    render(
+      <Avatar
+        name="Test User"
+        menuItems={[{ label: "Profile" }, { label: "Settings" }]}
+      />,
+    );
+
+    const trigger = screen.getByRole("button");
+    await userEvent.click(trigger);
+
+    const menu = await screen.findByRole("menu");
+    expect(menu).toBeInTheDocument();
+
+    // Close menu with Escape
+    await userEvent.keyboard("{Escape}");
+
+    // Focus should return to trigger
+    await waitFor(() => {
+      expect(trigger).toHaveFocus();
+    });
+  });
+});
+
+describe("Keyboard Activation", () => {
+  it("activates menu item with Enter key", async () => {
+    const handleSelect = vi.fn();
+    render(
+      <Avatar
+        name="Test User"
+        menuItems={[{ label: "Profile", onSelect: handleSelect }]}
+      />,
+    );
+
+    const trigger = screen.getByRole("button");
+    await userEvent.click(trigger);
+
+    const menuItem = await screen.findByRole("menuitem", { name: "Profile" });
+    menuItem.focus();
+
+    await userEvent.keyboard("{Enter}");
+
+    expect(handleSelect).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+  });
+
+  it("activates menu item with Space key", async () => {
+    const handleSelect = vi.fn();
+    render(
+      <Avatar
+        name="Test User"
+        menuItems={[{ label: "Settings", onSelect: handleSelect }]}
+      />,
+    );
+
+    const trigger = screen.getByRole("button");
+    await userEvent.click(trigger);
+
+    const menuItem = await screen.findByRole("menuitem", { name: "Settings" });
+    menuItem.focus();
+
+    await userEvent.keyboard(" ");
+
+    expect(handleSelect).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+  });
+
+  it("prevents default behavior for Space key to avoid scrolling", async () => {
+    const handleSelect = vi.fn();
+    render(
+      <Avatar
+        name="Test User"
+        menuItems={[{ label: "Profile", onSelect: handleSelect }]}
+      />,
+    );
+
+    const trigger = screen.getByRole("button");
+    await userEvent.click(trigger);
+
+    const menuItem = await screen.findByRole("menuitem", { name: "Profile" });
+
+    const spaceEvent = new KeyboardEvent("keydown", {
+      key: " ",
+      bubbles: true,
+      cancelable: true,
+    });
+    const preventDefaultSpy = vi.spyOn(spaceEvent, "preventDefault");
+
+    menuItem.dispatchEvent(spaceEvent);
+
+    expect(preventDefaultSpy).toHaveBeenCalled();
+  });
+});
+
+describe("Error Handling", () => {
+  it("handles errors in menu item onSelect callback", async () => {
+    const consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
+    const handleSelect = vi.fn(() => {
+      throw new Error("Test error");
+    });
+
+    render(
+      <Avatar
+        name="Test User"
+        menuItems={[{ label: "Profile", onSelect: handleSelect }]}
+      />,
+    );
+
+    const trigger = screen.getByRole("button");
+    await userEvent.click(trigger);
+
+    const menuItem = await screen.findByRole("menuitem", { name: "Profile" });
+    await userEvent.click(menuItem);
+
+    expect(handleSelect).toHaveBeenCalled();
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      "Avatar menu item onSelect error:",
+      expect.any(Error),
+    );
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+
+    consoleErrorSpy.mockRestore();
+  });
+
+  it("still closes menu even when onSelect throws error", async () => {
+    const consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
+    const handleSelect = vi.fn(() => {
+      throw new Error("Test error");
+    });
+
+    render(
+      <Avatar
+        name="Test User"
+        menuItems={[{ label: "Profile", onSelect: handleSelect }]}
+      />,
+    );
+
+    const trigger = screen.getByRole("button");
+    await userEvent.click(trigger);
+
+    await screen.findByRole("menu");
+
+    const menuItem = screen.getByRole("menuitem", { name: "Profile" });
+    await userEvent.click(menuItem);
+
+    await waitFor(() => {
+      expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    });
+
+    consoleErrorSpy.mockRestore();
+  });
+});
+
+describe("Screen Reader Support", () => {
+  it("includes aria-hidden on decorative icons", async () => {
+    const icon = <span data-testid="test-icon">🔧</span>;
+    render(
+      <Avatar name="Test User" menuItems={[{ label: "Settings", icon }]} />,
+    );
+
+    const trigger = screen.getByRole("button");
+    await userEvent.click(trigger);
+
+    const iconElement = screen.getByTestId("test-icon").parentElement;
+    expect(iconElement).toHaveAttribute("aria-hidden", "true");
+  });
+
+  it("announces menu state changes with aria-live region", async () => {
+    render(<Avatar name="Test User" menuItems={[{ label: "Profile" }]} />);
+
+    const trigger = screen.getByRole("button");
+
+    // Initially no announcement
+    const liveRegions = screen.queryAllByRole("status");
+    expect(liveRegions.length).toBeGreaterThanOrEqual(0);
+
+    // Open menu
+    await userEvent.click(trigger);
+
+    // Should announce menu opened
+    await waitFor(() => {
+      const liveRegion = screen.getByRole("status");
+      expect(liveRegion).toHaveTextContent("avatar.menuOpened");
+    });
+
+    // Close menu
+    await userEvent.keyboard("{Escape}");
+
+    // Should announce menu closed
+    await waitFor(() => {
+      const liveRegion = screen.getByRole("status");
+      expect(liveRegion).toHaveTextContent("avatar.menuClosed");
+    });
+  });
+});
+
+describe("Ref Forwarding", () => {
+  it("forwards ref to trigger button for programmatic control", async () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    render(
+      <Avatar name="Test User" menuItems={[{ label: "Profile" }]} ref={ref} />,
+    );
+
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+    expect(ref.current).toHaveAttribute("type", "button");
+    expect(ref.current).toHaveAttribute("aria-haspopup", "menu");
+  });
+
+  it("allows programmatic focus via ref", async () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    render(
+      <Avatar name="Test User" menuItems={[{ label: "Profile" }]} ref={ref} />,
+    );
+
+    act(() => {
+      ref.current?.focus();
+    });
+
+    expect(ref.current).toHaveFocus();
+  });
+
+  it("supports callback ref pattern", () => {
+    let buttonRef: HTMLButtonElement | null = null;
+    const callbackRef = (node: HTMLButtonElement | null) => {
+      buttonRef = node;
+    };
+
+    render(
+      <Avatar
+        name="Test User"
+        menuItems={[{ label: "Profile" }]}
+        ref={callbackRef}
+      />,
+    );
+
+    expect(buttonRef).toBeInstanceOf(HTMLButtonElement);
+  });
+});

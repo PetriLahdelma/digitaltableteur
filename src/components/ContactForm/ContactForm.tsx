@@ -9,6 +9,7 @@ import TextArea from "@dt/Inputs/TextArea";
 import Select from "@dt/Select";
 import FileUpload from "@dt/FileUpload";
 import AdaptiveLoadingButton from "@dt/AdaptiveLoadingButton";
+import Text from "@dt/Text";
 import { useTranslation } from "react-i18next";
 
 const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
@@ -165,24 +166,27 @@ const ContactForm = () => {
   const env =
     typeof import.meta !== "undefined" ? (import.meta as any).env : undefined;
 
+  const processEnv: Record<string, string | undefined> =
+    typeof process !== "undefined" ? process.env : {};
+
   const SERVICE_ID =
     env?.VITE_EMAIL_SERVICE_ID ||
     env?.VITE_APP_EMAIL_SERVICE_ID ||
-    process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID ||
-    process.env.NEXT_PUBLIC_APP_EMAIL_SERVICE_ID;
+    processEnv.NEXT_PUBLIC_EMAIL_SERVICE_ID ||
+    processEnv.NEXT_PUBLIC_APP_EMAIL_SERVICE_ID;
   const TEMPLATE_ID =
     env?.VITE_EMAIL_TEMPLATE_ID ||
     env?.VITE_APP_EMAIL_TEMPLATE_ID ||
-    process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID ||
-    process.env.NEXT_PUBLIC_APP_EMAIL_TEMPLATE_ID;
+    processEnv.NEXT_PUBLIC_EMAIL_TEMPLATE_ID ||
+    processEnv.NEXT_PUBLIC_APP_EMAIL_TEMPLATE_ID;
   const PUBLIC_KEY =
     env?.VITE_EMAIL_PUBLIC_KEY ||
     env?.VITE_APP_EMAIL_PUBLIC_KEY ||
-    process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY ||
-    process.env.NEXT_PUBLIC_APP_EMAIL_PUBLIC_KEY;
-  const spamLogEndpoint = process.env.NEXT_PUBLIC_APP_CONTACT_SPAM_LOG_ENDPOINT;
+    processEnv.NEXT_PUBLIC_EMAIL_PUBLIC_KEY ||
+    processEnv.NEXT_PUBLIC_APP_EMAIL_PUBLIC_KEY;
+  const spamLogEndpoint = processEnv.NEXT_PUBLIC_APP_CONTACT_SPAM_LOG_ENDPOINT;
   const SPAM_LOG_ENDPOINT = spamLogEndpoint;
-  const isDev = env?.DEV ?? process.env.NODE_ENV !== "production";
+  const isDev = env?.DEV ?? processEnv.NODE_ENV !== "production";
 
   // Debug logging in development - only once on mount
   useEffect(() => {
@@ -191,13 +195,13 @@ const ContactForm = () => {
       console.log("EmailJS Environment Check:", {
         VITE_EMAIL_SERVICE_ID:
           !!env?.VITE_EMAIL_SERVICE_ID ||
-          !!process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID,
+          !!processEnv.NEXT_PUBLIC_EMAIL_SERVICE_ID,
         VITE_EMAIL_TEMPLATE_ID:
           !!env?.VITE_EMAIL_TEMPLATE_ID ||
-          !!process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
+          !!processEnv.NEXT_PUBLIC_EMAIL_TEMPLATE_ID,
         VITE_EMAIL_PUBLIC_KEY:
           !!env?.VITE_EMAIL_PUBLIC_KEY ||
-          !!process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
+          !!processEnv.NEXT_PUBLIC_EMAIL_PUBLIC_KEY,
         SERVICE_ID: !!SERVICE_ID,
         TEMPLATE_ID: !!TEMPLATE_ID,
         PUBLIC_KEY: !!PUBLIC_KEY,
@@ -414,7 +418,9 @@ const ContactForm = () => {
     <div className={styles["contactForm"]}>
       <form onSubmit={handleSubmit}>
         <div className={styles["honeypot"]} aria-hidden="true">
-          <label htmlFor="website">{t("contactSpamTrapLabel")}</label>
+          <label htmlFor="website" className={styles["honeypotLabel"]}>
+            {t("contactSpamTrapLabel")}
+          </label>
           <input
             id="website"
             type="text"
@@ -524,9 +530,9 @@ const ContactForm = () => {
             error={attachmentError}
           />
           {isAttachmentTooLargeForEmail && (
-            <p className={styles["attachmentNotice"]}>
+            <Text as="p" className={styles["attachmentNotice"]}>
               {attachmentEmailNotice}
-            </p>
+            </Text>
           )}
         </div>
 
@@ -547,13 +553,13 @@ const ContactForm = () => {
         </div>
 
         <div className={styles["formGroup"]}>
-          <p className={styles["privacyPolicy"]}>
+          <Text as="p" className={styles["privacyPolicy"]}>
             *{t("contactPrivacyPolicy1")}{" "}
             <a href="/privacyPolicy">{t("contactPrivacyPolicy2")}</a>.
-          </p>
+          </Text>
           <div className={styles["formActions"]}>
             <Button
-              className={styles["submitButton"]}
+              className={styles["resetButton"]}
               type="button"
               variant="tertiary"
               onClick={handleClearForm}
@@ -598,5 +604,7 @@ const ContactForm = () => {
     </div>
   );
 };
+
+ContactForm.displayName = "ContactForm";
 
 export default ContactForm;

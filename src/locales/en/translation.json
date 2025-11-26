@@ -44,13 +44,28 @@
   "chat.ai.thinking": "Thinking…",
   "chat.ai.generating": "Generating…",
   "chat.ai.analyzing": "Analyzing…",
+  "author": {
+    "byline": "By {{name}}"
+  },
   "authorBio": {
     "ariaLabel": "About {{name}}"
   },
   "avatar": {
     "menuLabel": "{{name}} menu",
     "menuLabelGeneric": "Avatar menu",
-    "altTextGeneric": "Avatar"
+    "altTextGeneric": "Avatar",
+    "menuOpened": "Menu opened",
+    "menuClosed": "Menu closed",
+    "menuActions": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "signOut": "Sign out",
+      "account": "Account",
+      "preferences": "Preferences"
+    }
+  },
+  "splitButton": {
+    "moreOptions": "More options"
   },
   "complianceCard": {
     "lastReviewed": "Last reviewed: {{date}}"
@@ -371,6 +386,17 @@
   "complianceCard.status.fail": "Fail",
   "complianceCard.resizeHandle": "Resize table",
   "badgeLarge": "Large",
+  "badge": {
+    "countLabel": "{{count}} items",
+    "dotIndicator": "Status indicator",
+    "state": {
+      "success": "Success",
+      "info": "Information",
+      "error": "Error",
+      "warning": "Warning",
+      "neutral": "Neutral"
+    }
+  },
   "dashboardTitle": "Quality Dashboard",
   "dashboardSubtitle": "Realtime snapshot of automated testing, accessibility coverage, and Storybook health.",
   "dashboardLastUpdated": "Last updated {{date}}",
@@ -494,6 +520,8 @@
   "storyInputPasswordPlaceholder": "Enter password",
   "storyInputSearchLabel": "Search Input",
   "storyInputSearchPlaceholder": "Search...",
+  "storyInputPhoneLabel": "Phone Input",
+  "storyInputPhonePlaceholder": "+358 45 123 4567",
   "storyInputErrorLabel": "Input with Error",
   "storyInputErrorText": "This field is required",
   "storyInputDisabledLabel": "Disabled Input",

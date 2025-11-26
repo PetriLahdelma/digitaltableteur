@@ -3,7 +3,8 @@
 import React, { useMemo } from "react";
 import styles from "./CodeSnippet.module.css";
 import Text from "@dt/Text";
-import Button from "@dt/Button";
+import SplitButton from "@dt/SplitButton";
+import Toast from "@dt/Toast";
 import Prism from "prismjs";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-javascript";
@@ -43,7 +44,11 @@ const prismLanguageMap: Record<SupportedLanguage, string> = {
   markdown: "markup",
 };
 
-const renderLines = (code: string, language: SupportedLanguage, showLineNumbers: boolean) => {
+const renderLines = (
+  code: string,
+  language: SupportedLanguage,
+  showLineNumbers: boolean,
+) => {
   const prismLang = prismLanguageMap[language] || "markup";
   const grammar = Prism.languages[prismLang] || Prism.languages.markup;
   const highlighted = Prism.highlight(code, grammar, prismLang);
@@ -66,7 +71,11 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
   allowCopy = true,
   "aria-label": ariaLabel,
 }) => {
-  const [copyState, setCopyState] = React.useState<"idle" | "copied" | "error">("idle");
+  const [copyState, setCopyState] = React.useState<"idle" | "copied" | "error">(
+    "idle",
+  );
+  const [toastOpen, setToastOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
 
   const stripComments = (value: string) =>
     value
@@ -82,9 +91,15 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
       const toCopy = variant === "no-comments" ? stripComments(code) : code;
       await navigator.clipboard.writeText(toCopy);
       setCopyState("copied");
+      setToastMessage(
+        variant === "no-comments" ? "Copied without comments" : "Copied",
+      );
+      setToastOpen(true);
       setTimeout(() => setCopyState("idle"), 1500);
     } catch {
       setCopyState("error");
+      setToastMessage("Copy failed");
+      setToastOpen(true);
       setTimeout(() => setCopyState("idle"), 2000);
     }
   };
@@ -102,38 +117,18 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
         </Text>
         {allowCopy && (
           <div className={styles.actions}>
-            <Button
-              size="s"
+            <SplitButton
+              size="m"
               variant="secondary"
-              inverse
-              type="button"
-              onClick={() => void copyToClipboard("raw")}
-            >
-              Copy
-            </Button>
-            <Button
-              size="s"
-              variant="secondary"
-              inverse
-              type="button"
-              onClick={() => void copyToClipboard("no-comments")}
-            >
-              Copy w/o comments
-            </Button>
-            <Text
-              as="span"
-              size="XXS"
-              monospace
-              className={styles.copyStatus}
-              role="status"
-              aria-live="polite"
-            >
-              {copyState === "copied"
-                ? "Copied"
-                : copyState === "error"
-                  ? "Copy failed"
-                  : ""}
-            </Text>
+              label="Copy"
+              onPrimaryClick={() => void copyToClipboard("raw")}
+              options={[
+                {
+                  label: "Copy w/o comments",
+                  onSelect: () => void copyToClipboard("no-comments"),
+                },
+              ]}
+            />
           </div>
         )}
       </div>
@@ -147,6 +142,11 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
           dangerouslySetInnerHTML={{ __html: rendered }}
         />
       </pre>
+      <Toast
+        message={toastMessage}
+        open={toastOpen}
+        onClose={() => setToastOpen(false)}
+      />
     </figure>
   );
 };

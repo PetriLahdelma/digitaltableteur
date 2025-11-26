@@ -1,9 +1,5 @@
 {
-  "/page": "app/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/work/new-things-co/page": "app/work/new-things-co/page.js",
-  "/work/illustrations/page": "app/work/illustrations/page.js",
-  "/work/garage-junction/page": "app/work/garage-junction/page.js",
-  "/work/page": "app/work/page.js",
-  "/about/page": "app/about/page.js"
+  "/blog/page": "app/blog/page.js",
+  "/blog/[slug]/page": "app/blog/[slug]/page.js",
+  "/contact/page": "app/contact/page.js"
 }

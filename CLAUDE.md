@@ -593,6 +593,7 @@ Operational Notes:
 **Critical Fix**: ChatWidget was not displaying AI responses despite successful API calls.
 
 **Root Cause**:
+
 - Server was using `result.toAIStreamResponse()` which returns plain text streaming
 - Client's `@ai-sdk/react` `useChat` hook with `DefaultChatTransport` expects UI message stream format
 - Mismatch caused responses to stream but not render in the UI
@@ -609,20 +610,24 @@ return result.toUIMessageStreamResponse({ headers: responseHeaders });
 ```
 
 **Why This Matters**:
+
 - `.toAIStreamResponse()` → Plain text chunks (content-type: text/plain)
 - `.toUIMessageStreamResponse()` → Structured UI messages with `parts` array
 - `@ai-sdk/react` hooks require the UI message format to properly parse and display streaming responses
 
 **Reference**:
+
 - AI SDK v5 documentation: https://ai-sdk.dev/docs/getting-started/nextjs-app-router
 - The Next.js App Router guide explicitly shows using `.toUIMessageStreamResponse()` for `useChat` integration
 
 **Testing**:
+
 - curl still works (returns plain text for debugging)
 - Browser ChatWidget now properly streams and displays AI responses
 - Status transitions work correctly: `submitted` → `streaming` → `idle`
 
 **Related Components**:
+
 - `src/components/ChatWidget/ChatWidget.tsx` - Uses `useChat` hook with `DefaultChatTransport`
 - `app/api/chat/route.ts` - Server-side streaming endpoint
 - `@ai-sdk/react` v2.0.101 + `ai` v5.0.101 - Requires matching response format
