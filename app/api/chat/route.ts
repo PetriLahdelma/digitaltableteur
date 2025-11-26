@@ -60,8 +60,16 @@ const normalizeError = (caught: unknown): ChatApiError => {
 
 export async function POST(request: NextRequest) {
   console.log("[chat] ===== POST HANDLER CALLED =====");
-  console.log("[chat] AI_GATEWAY_URL:", process.env.AI_GATEWAY_URL ? "SET" : "NOT SET");
-  console.log("[chat] AI_GATEWAY_API_KEY:", process.env.AI_GATEWAY_API_KEY ? "SET (length: " + process.env.AI_GATEWAY_API_KEY?.length + ")" : "NOT SET");
+  console.log(
+    "[chat] AI_GATEWAY_URL:",
+    process.env.AI_GATEWAY_URL ? "SET" : "NOT SET",
+  );
+  console.log(
+    "[chat] AI_GATEWAY_API_KEY:",
+    process.env.AI_GATEWAY_API_KEY
+      ? "SET (length: " + process.env.AI_GATEWAY_API_KEY?.length + ")"
+      : "NOT SET",
+  );
   const requestOrigin = request.headers.get("origin");
   const corsHeaders = createCorsHeaders(requestOrigin);
 
@@ -110,7 +118,7 @@ export async function POST(request: NextRequest) {
       "[chat] Has toAIStreamResponse:",
       typeof (result as any).toAIStreamResponse === "function",
     );
-    
+
     // Log if there's a textStream to consume
     console.log("[chat] Has textStream:", !!result.textStream);
 

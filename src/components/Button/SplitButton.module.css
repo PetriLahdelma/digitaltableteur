@@ -29,14 +29,14 @@
   top: calc(100% + var(--space-internal-8));
   inset-inline-start: 0;
   z-index: 20;
-  min-inline-size: 12rem;
-  inline-size: max(12rem, 100%);
+  min-inline-size: var(--menu-min-width);
+  inline-size: max(var(--menu-min-width), 100%);
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-4);
   margin: 0;
   border-radius: var(--radius-md, 0.5rem);
   background: var(--color-white);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
+  box-shadow: var(--shadow-menu);
   list-style: none;
 }
 
@@ -51,17 +51,17 @@
 
 .subMenu {
   position: absolute;
-  top: calc(-0.55 * var(--space-internal-6, 0.25rem));
+  top: var(--menu-submenu-offset-vertical);
   inset-inline-start: 100%;
-  margin-inline-start: var(--space-internal-4);
-  min-inline-size: 12rem;
-  inline-size: max(12rem, 100%);
+  margin-inline-start: var(--menu-submenu-offset-horizontal);
+  min-inline-size: var(--menu-min-width);
+  inline-size: max(var(--menu-min-width), 100%);
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-4);
   list-style: none;
   border-radius: var(--radius-md, 0.5rem);
   background: var(--color-white);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
+  box-shadow: var(--shadow-menu);
 }
 
 .menuItem {
@@ -96,7 +96,7 @@
 
 .menuItem:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-primary);
+  box-shadow: var(--shadow-focus);
   z-index: 2;
 }
 

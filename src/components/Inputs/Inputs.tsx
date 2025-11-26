@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
@@ -31,13 +31,48 @@ const Input: React.FC<InputProps> = ({
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
 
+  const formatPhoneNumber = useCallback((raw: string) => {
+    const trimmed = raw.trim();
+    const hasPlus = trimmed.startsWith("+");
+    const digits = trimmed.replace(/\D/g, "").slice(0, 15);
+
+    if (!digits) {
+      return hasPlus ? "+" : "";
+    }
+
+    const segments: string[] = [];
+    const country = digits.slice(0, 3);
+    const rest = digits.slice(3);
+
+    if (country) segments.push(country);
+    if (rest) {
+      const groups = [
+        rest.slice(0, 2),
+        rest.slice(2, 5),
+        rest.slice(5, 9),
+        rest.slice(9, 13),
+        rest.slice(13, 15),
+      ].filter(Boolean);
+      segments.push(...groups);
+    }
+
+    const formatted = segments.join(" ").trim();
+    return hasPlus ? `+${formatted}` : formatted;
+  }, []);
+
   useEffect(() => {
+    if (type === "tel") {
+      setInputValue(formatPhoneNumber(String(value ?? "")));
+      setPhoneError("");
+      return;
+    }
     setInputValue(value ?? "");
-  }, [value]);
+  }, [formatPhoneNumber, type, value]);
 
   const validatePhoneNumber = (phone: string) => {
-    const phoneRegex = /^[0-9+\s]{1}[0-9\s]{0,15}$/;
-    return phoneRegex.test(phone);
+    const digits = phone.replace(/\D/g, "");
+    if (!digits) return true;
+    return digits.length >= 4 && digits.length <= 15;
   };
 
   const validateEmail = (email: string) => {
@@ -50,14 +85,17 @@ const Input: React.FC<InputProps> = ({
     newValue = type === "number" ? +e.target.value : e.target.value;
 
     if (type === "tel") {
-      if (validatePhoneNumber(e.target.value)) {
-        setPhoneError("");
-        setInputValue(e.target.value);
-        if (onChange) onChange(e.target.value);
-      } else {
+      const formatted = formatPhoneNumber(e.target.value);
+      const digits = formatted.replace(/\D/g, "");
+      const hasInvalidChars = /[^\d+\s()-]/.test(e.target.value);
+
+      setInputValue(formatted);
+      if (onChange) onChange(formatted);
+
+      if (hasInvalidChars || (digits && !validatePhoneNumber(formatted))) {
         setPhoneError(t("inputValidationPhoneInvalid"));
-        setInputValue(e.target.value);
-        if (onChange) onChange(e.target.value);
+      } else {
+        setPhoneError("");
       }
     } else if (type === "email") {
       setInputValue(e.target.value);

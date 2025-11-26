@@ -22,6 +22,7 @@ interface BaseButtonProps {
   /** Disables interaction and applies disabled styling */
   disabled?: boolean;
   /** Icon can be a React element, component, or a Phosphor icon name string (e.g., "spinner-gap") */
+  loading?: boolean;
   icon?: React.ReactNode | string;
   /** Icon displayed at the end of the button content */
   endIcon?: React.ReactNode | string;
@@ -137,6 +138,7 @@ const Button = React.forwardRef<
     {
       variant = "primary",
       disabled = false,
+      loading = false,
       rounded = false,
       icon,
       endIcon,
@@ -340,6 +342,7 @@ const Button = React.forwardRef<
         !children && normalizedIcon ? styles["iconOnly"] : "",
         inverse ? styles.inverse : "",
         rounded ? styles.rounded : "",
+        loading ? styles.loading : "",
         className,
       ]
         .filter(Boolean)
@@ -406,7 +409,7 @@ const Button = React.forwardRef<
     return (
       <button
         ref={assignRefs as React.Ref<HTMLButtonElement>}
-        disabled={disabled}
+        disabled={disabled || loading}
         type={
           submits
             ? "submit"

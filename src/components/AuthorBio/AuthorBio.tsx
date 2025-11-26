@@ -1,9 +1,8 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { useTranslation } from "react-i18next";
-import Avatar from "@dt/Avatar";
+import Author from "@dt/Author";
 import Text from "@dt/Text";
-import Title from "@dt/Title";
 import styles from "./AuthorBio.module.css";
 import { getAuthorBySlug } from "../../data/authors";
 
@@ -48,14 +47,11 @@ const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }) => {
       aria-label={t("authorBio.ariaLabel", { name: author.name })}
     >
       <div className={styles.header}>
-        {author.imageUrl && (
-          <Avatar imageUrl={author.imageUrl} name={author.name} size="4rem" />
-        )}
-        <div>
-          <Title level={3} terminals="sans" className={styles.name}>
-            {heading ?? author.name}
-          </Title>
-        </div>
+        <Author
+          name={heading ?? author.name}
+          imageUrl={author.imageUrl ?? ""}
+          size="4rem"
+        />
       </div>
       {leadText && (
         <Text terminals="sans" className={styles.tagline}>
@@ -63,7 +59,9 @@ const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }) => {
         </Text>
       )}
       {remainder && (
-        <ReactMarkdown className={styles.bioContent}>{remainder}</ReactMarkdown>
+        <div className={styles.bioContent}>
+          <ReactMarkdown>{remainder}</ReactMarkdown>
+        </div>
       )}
     </section>
   );

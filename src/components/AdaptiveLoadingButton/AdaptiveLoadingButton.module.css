@@ -1,33 +1,39 @@
-.button {
-  display: inline-flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-layout-8, 8px);
+.loading {
+  cursor: wait !important;
+  pointer-events: auto !important;
+}
+
+.loading * {
+  cursor: wait !important;
 }
 
 .loadingContent {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-layout-8, 8px);
+  gap: var(--space-layout-8);
 }
 
 .spinner {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid color-mix(in srgb, var(--color-primary) 24%, transparent);
-  border-radius: 999px;
+  inline-size: 1rem;
+  block-size: 1rem;
+  border: 2px solid color-mix(in srgb, currentColor 24%, transparent);
+  border-start-start-radius: 999px;
+  border-start-end-radius: 999px;
+  border-end-start-radius: 999px;
+  border-end-end-radius: 999px;
   animation: spin 1s linear infinite;
-  border-inline-start-color: var(--color-primary);
+  border-inline-start-color: currentColor;
 }
 
 .loadingLabel {
-  font-weight: 600;
+  font-weight: 500;
+  color: inherit;
 }
 
 .progress {
-  color: var(--color-text-subtle, var(--color-text));
+  color: inherit;
   font-variant-numeric: tabular-nums;
+  opacity: 0.8;
 }
 
 @media (prefers-reduced-motion: reduce) {

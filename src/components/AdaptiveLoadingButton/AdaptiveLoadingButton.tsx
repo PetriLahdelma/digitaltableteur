@@ -83,14 +83,14 @@ const AdaptiveLoadingButton = React.forwardRef<
       <Button
         ref={ref}
         {...rest}
-        disabled={disabled || loading}
+        disabled={disabled}
         aria-busy={loading}
         accessibleDescription={
           loading
             ? t("adaptiveLoadingButton.busyDescription")
             : rest.accessibleDescription
         }
-        className={`${styles.button} ${className}`.trim()}
+        className={`${loading ? styles.loading : ""} ${className}`.trim()}
       >
         {content}
       </Button>

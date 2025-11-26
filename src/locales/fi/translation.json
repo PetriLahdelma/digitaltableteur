@@ -44,13 +44,28 @@
   "chat.ai.thinking": "Ajattelee…",
   "chat.ai.generating": "Luodaan…",
   "chat.ai.analyzing": "Analysoidaan…",
+  "author": {
+    "byline": "Kirjoittaja: {{name}}"
+  },
   "authorBio": {
     "ariaLabel": "Tietoa käyttäjästä {{name}}"
   },
   "avatar": {
     "menuLabel": "{{name}} valikko",
     "menuLabelGeneric": "Profiilikuva valikko",
-    "altTextGeneric": "Profiilikuva"
+    "altTextGeneric": "Profiilikuva",
+    "menuOpened": "Valikko avattu",
+    "menuClosed": "Valikko suljettu",
+    "menuActions": {
+      "profile": "Profiili",
+      "settings": "Asetukset",
+      "signOut": "Kirjaudu ulos",
+      "account": "Tili",
+      "preferences": "Valinnat"
+    }
+  },
+  "splitButton": {
+    "moreOptions": "Lisävaihtoehdot"
   },
   "complianceCard": {
     "lastReviewed": "Tarkistettu viimeksi: {{date}}"
@@ -371,6 +386,17 @@
   "complianceCard.status.fail": "Hylätty",
   "complianceCard.resizeHandle": "Muuta taulukon kokoa",
   "badgeLarge": "Suuri",
+  "badge": {
+    "countLabel": "{{count}} kohdetta",
+    "dotIndicator": "Tilanilmaisin",
+    "state": {
+      "success": "Onnistui",
+      "info": "Tietoa",
+      "error": "Virhe",
+      "warning": "Varoitus",
+      "neutral": "Neutraali"
+    }
+  },
   "dashboardTitle": "Laatutaulu",
   "dashboardSubtitle": "Yhteenveto automatisoiduista testeistä, saavutettavuudesta ja Storybookin tilasta.",
   "dashboardLastUpdated": "Päivitetty {{date}}",
@@ -494,6 +520,8 @@
   "storyInputPasswordPlaceholder": "Syötä salasanasi",
   "storyInputSearchLabel": "Hakusyöttökenttä",
   "storyInputSearchPlaceholder": "Hae...",
+  "storyInputPhoneLabel": "Puhelinnumero",
+  "storyInputPhonePlaceholder": "+358 45 123 4567",
   "storyInputErrorLabel": "Virheellinen syöttökenttä",
   "storyInputErrorText": "Tämä kenttä on pakollinen.",
   "storyInputDisabledLabel": "Poistettu käytöstä -kenttä",

@@ -425,6 +425,96 @@ Testing:
 - `ChatMessages.*.test.tsx` covers rendering & absence of keywords/tokens in assistant post-injection.
 - Run `npm run test:visual` after changes impacting layout.
 
+## Enhanced Collision Detection for Menus (Nov 2025)
+
+Both `Avatar` and `SplitButton` components implement sophisticated collision detection algorithms following industry standards from Material UI, Headless UI, Reka UI, and jQuery UI.
+
+### Implementation Features
+
+**Industry Standard Compliance:**
+
+1. **Viewport Margins** (12px buffer from screen edges)
+   - Prevents menus from touching screen boundaries
+   - Material UI uses 16px, we use 12px for tighter layouts
+   - Applied to all four directions (top, right, bottom, left)
+
+2. **Smart Flipping**
+   - Automatically flips menu position when insufficient space
+   - Priority order: preferred → opposite → larger space
+   - Vertical: bottom (preferred) → top → larger space
+   - Horizontal: right (preferred) → left → larger space
+
+3. **Nudging/Fitting**
+   - When neither direction has full space, chooses side with more room
+   - Menu becomes scrollable or partially visible on optimal side
+   - Prevents unnecessary flipping that would worsen visibility
+
+**Technical Implementation:**
+
+```typescript
+const viewportMargin = 12; // Buffer from edges
+const gutter = 8; // Trigger-to-menu spacing
+
+// Calculate space with margins
+const spaceLeft = wrapperRect.left - viewportMargin;
+const spaceRight = viewportWidth - wrapperRect.right - viewportMargin;
+
+// Smart placement with fallback chain
+if (hasRoomInPreferredDirection) {
+  placement = "preferred"; // e.g., bottom for vertical
+} else if (hasRoomInOppositeDirection) {
+  placement = "opposite"; // e.g., top for vertical
+} else {
+  // Nudge: choose direction with more space
+  placement = largerSpace > smallerSpace ? "preferred" : "opposite";
+}
+```
+
+**CSS Implementation:**
+
+```css
+/* Avatar & SplitButton use data attributes for positioning */
+.menu[data-placement="top"] {
+  top: auto;
+  bottom: calc(100% + 0.5rem);
+}
+
+.menu[data-placement="bottom"] {
+  top: calc(100% + 0.5rem);
+  bottom: auto;
+}
+```
+
+**Testing Requirements:**
+
+Edge cases to verify:
+
+- Small viewports (mobile screens)
+- Near corners (trigger at screen edges)
+- Partial overlaps (nudging behavior)
+- Nested menus (SplitButton sub-menus)
+- Scrolled containers
+- Window resize events
+
+### Comparison to Industry Standards
+
+| Feature              | Material UI | Reka UI      | Our Implementation |
+| -------------------- | ----------- | ------------ | ------------------ |
+| Viewport Margins     | 16px        | Configurable | 12px               |
+| Flipping             | ✅          | ✅           | ✅                 |
+| Nudging              | ✅          | ✅           | ✅                 |
+| Collision Boundaries | ✅          | ✅           | Planned            |
+| Real-time Resize     | ✅          | ✅           | ✅                 |
+
+**Future Enhancements:**
+
+- Collision boundaries (respect parent containers)
+- Configurable viewport margins
+- Prefer direction prop hints
+- Scroll detection for positioned containers
+
+Keep synchronized with `README.md` and `CLAUDE.md` when collision detection evolves.
+
 ## Progressive Enhancement Pattern (Template)
 
 Apply modern CSS features conditionally:

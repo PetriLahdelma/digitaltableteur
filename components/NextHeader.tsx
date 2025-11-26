@@ -119,19 +119,11 @@ export function NextHeader() {
   }, [pathname]);
 
   React.useEffect(() => {
-    const cookieLang = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("i18next="))
-      ?.split("=")[1];
-    if (cookieLang && i18n.language.split("-")[0] !== cookieLang) {
-      i18n.changeLanguage(cookieLang);
-    }
-
     const handleResize = () => setIsMobile(window.innerWidth <= 1100);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [i18n]);
+  }, []);
 
   React.useEffect(
     () => () => {
