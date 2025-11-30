@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Learn how Digitaltableteur uses cookies for essential functionality, analytics, and marketing.",
 };
 
+export const revalidate = 86400;
+
 export default function CookiePolicy() {
   return <CookiePolicyPage />;
 }

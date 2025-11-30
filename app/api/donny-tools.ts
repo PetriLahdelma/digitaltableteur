@@ -3,7 +3,7 @@ import { jsonSchema, tool } from "@ai-sdk/provider-utils";
 import type { experimental_MCPClient } from "@ai-sdk/mcp";
 import { experimental_createMCPClient } from "@ai-sdk/mcp";
 import { Experimental_StdioMCPTransport } from "@ai-sdk/mcp/mcp-stdio";
-import { WEEKLY_HOURS, isOpenAt } from "../../src/data/openHours";
+import { WEEKLY_HOURS, isOpenAt } from "../../shared/data/openHours";
 
 type ToolMap = Record<string, Tool>;
 
@@ -111,8 +111,7 @@ const staticTools: ToolMap = {
         isOpen: { type: "boolean" },
         message: { type: "string" },
         todaysHours: {
-          type: "object",
-          nullable: true,
+          type: ["object", "null"],
           properties: {
             day: { type: "string" },
             open: { type: ["string", "null"] },

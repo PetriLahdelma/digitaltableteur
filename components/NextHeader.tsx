@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import Icon from "@dt/Icon";
 import { usePersistentTheme } from "@/shared/hooks/usePersistentTheme";
+import { useToast } from "@/providers/ToastProvider";
 import styles from "@/shared/patterns/Header/Header.module.css";
 import mobileStyles from "@/shared/patterns/Header/MobileMenu.module.css";
 import { NextMobileMenu } from "./NextMobileMenu";
@@ -36,6 +37,11 @@ export function NextHeader() {
   const pathname = usePathname();
   const { t, i18n } = useTranslation();
   const { theme, cycleTheme } = usePersistentTheme();
+  const { showToast } = useToast();
+
+  React.useEffect(() => {
+    console.log("NextHeader mounted, showToast:", showToast);
+  }, [showToast]);
 
   const [navOffset, setNavOffset] = React.useState(0);
   const leftRef = React.useRef<HTMLDivElement | null>(null);
@@ -63,9 +69,14 @@ export function NextHeader() {
 
   const currentLang = i18n.language.split("-")[0];
   const changeLanguage = (code: string) => {
+    console.log("changeLanguage called with:", code);
     i18n.changeLanguage(code);
     setCookie("i18next", code);
     localStorage.setItem("i18nextLng", code);
+
+    const langLabel =
+      languages.find((lang) => lang.code === code)?.label || code;
+    showToast?.(t("languageChanged", { language: langLabel }), 3000);
   };
 
   const isActive = (href: string, exact?: boolean) =>
@@ -135,6 +146,7 @@ export function NextHeader() {
   );
 
   const handleThemeToggle = () => {
+    console.log("handleThemeToggle called");
     if (!isThemeAnimating) {
       setIsThemeAnimating(true);
       animationTimeout.current = setTimeout(() => {
@@ -142,7 +154,16 @@ export function NextHeader() {
         animationTimeout.current = null;
       }, 450);
     }
-    cycleTheme();
+    const nextTheme = cycleTheme();
+
+    const themeNames: Record<string, string> = {
+      light: t("themeNameLight", "Light theme"),
+      dark: t("themeNameDark", "Dark theme"),
+      hcb: t("themeNameHcb", "High contrast (dark)"),
+      hcw: t("themeNameHcw", "High contrast (light)"),
+    };
+    const label = themeNames[nextTheme] ?? nextTheme;
+    showToast?.(t("themeChanged", { theme: label }), 3000);
   };
 
   return (
@@ -176,7 +197,6 @@ export function NextHeader() {
               return (
                 <li key={item.href}>
                   <div className={styles.navLinkWrapper}>
-                    <div className={styles.navLinkBlur} aria-hidden="true" />
                     <Link
                       href={item.href}
                       className={active ? styles.selected : undefined}
@@ -195,7 +215,6 @@ export function NextHeader() {
           <div className={styles.languageSwitcher} suppressHydrationWarning>
             {languages.map((lang) => (
               <div key={lang.code} className={styles.languageLinkWrapper}>
-                <div className={styles.languageLinkBlur} aria-hidden="true" />
                 <button
                   type="button"
                   onClick={() => changeLanguage(lang.code)}
@@ -212,7 +231,6 @@ export function NextHeader() {
             ))}
           </div>
           <div className={styles.themeToggleWrapper}>
-            <div className={styles.themeToggleBlur} aria-hidden="true" />
             <button
               onClick={handleThemeToggle}
               className={styles.themeToggle}

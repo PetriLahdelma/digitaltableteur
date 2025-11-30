@@ -1631,9 +1631,54 @@ npm run test:visual        # Run visual regression tests
 
 ## SECTION 10: Final Checklist & Component Generation Template
 
+### ⚠️ CRITICAL: MANDATORY TESTING REQUIREMENT
+
+**BEFORE declaring any component work complete, you MUST:**
+
+1. **Verify File Location:**
+   - Confirm whether component is in `src/components/` or `shared/components/`
+   - Check which location Storybook actually imports from
+   - NEVER assume file locations - always verify with `file_search` or `list_dir`
+
+2. **Test in Storybook:**
+   - Open Storybook in browser: `http://localhost:6006`
+   - Navigate to the component's stories
+   - Verify ALL stories render without errors
+   - Check browser console for import errors, runtime errors, or warnings
+   - Test interactive stories (play functions) work correctly
+
+3. **Run Component Tests:**
+   - Execute unit tests: `npm test -- ComponentName` (in vite-app directory)
+   - Verify all tests pass (100% pass rate required)
+   - Check test coverage meets >80% threshold
+   - Run accessibility tests if applicable
+
+4. **Check for Errors:**
+   - Run `get_errors` tool on component directory
+   - Fix any TypeScript, ESLint, or Stylelint errors
+   - Address any legitimate warnings (document suppression reasons)
+
+**❌ UNACCEPTABLE WORKFLOW:**
+
+- Editing files without verifying which location is active
+- Declaring completion without testing in Storybook
+- Ignoring import errors or runtime failures
+- Breaking existing functionality
+
+**✅ ACCEPTABLE WORKFLOW:**
+
+1. Identify correct file location
+2. Make changes carefully
+3. Test immediately in Storybook
+4. Run unit tests
+5. Fix any errors before moving on
+6. Only then declare completion
+
+---
+
 ### Rule 10.1 - Component Generation Checklist
 
-**When in doubt:** Refer to https://ant.design/components/ and https://carbondesignsystem.com/components for best practises, guidance and inspiration.
+**When in doubt:** Refer to 'https://ant.design/components/', 'https://tailwindcss.com/plus/ui-blocks' and 'https://carbondesignsystem.com/components' for best practises, guidance and inspiration.
 
 **When generating a new component, ALWAYS create:**
 

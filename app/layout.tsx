@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
+import {
+  getOrganizationSchema,
+  getWebSiteSchema,
+  stringifyJsonLd,
+} from "./lib/structuredData";
 import { I18nProvider } from "../providers/I18nProvider";
 import { NextThemeProvider } from "../providers/ThemeProvider";
+import { ToastProvider } from "../providers/ToastProvider";
 import { NextLayout } from "../components/NextLayout";
 import "./globals.css";
 
@@ -14,21 +20,47 @@ export const metadata: Metadata = {
   title: "Digitaltableteur",
   description: "Design Systems & AI-Powered DesignOps",
   metadataBase: new URL(siteUrl),
+  verification: {
+    google: "ZWNygD_tzG8nCWZFlCNWKGCbTkDMFthbvF8L4zltpwE",
+  },
+  authors: [
+    {
+      name: "Petri Lahdelma",
+      url: `${siteUrl}/about`,
+    },
+  ],
+  creator: "Petri Lahdelma",
+  publisher: "Digitaltableteur",
   alternates: {
     canonical: "/",
-    sitemap: `${siteUrl}/sitemap.xml`,
+    languages: {
+      en: "/",
+      fi: "/",
+      sv: "/",
+    },
   },
   openGraph: {
     type: "website",
     url: siteUrl,
     title: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
-    description: "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
+    description:
+      "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
     siteName: "Digitaltableteur",
+    images: [
+      {
+        url: `${siteUrl}/logo512.png`,
+        width: 512,
+        height: 512,
+        alt: "Digitaltableteur Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
-    description: "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
+    description:
+      "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
+    images: [`${siteUrl}/logo512.png`],
   },
   robots: {
     index: true,
@@ -69,10 +101,27 @@ export default function RootLayout({
             />
           </>
         ) : null}
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: stringifyJsonLd(getOrganizationSchema()),
+          }}
+        />
+        <Script
+          id="schema-website"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: stringifyJsonLd(
+              getWebSiteSchema({ potentialActions: false }),
+            ),
+          }}
+        />
         <NextThemeProvider>
           <I18nProvider>
-            {/* @ts-expect-error -- React version mismatch workaround */}
-            <NextLayout>{children}</NextLayout>
+            <ToastProvider>
+              <NextLayout>{children}</NextLayout>
+            </ToastProvider>
           </I18nProvider>
         </NextThemeProvider>
       </body>

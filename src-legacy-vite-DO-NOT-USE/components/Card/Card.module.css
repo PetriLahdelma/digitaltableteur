@@ -1,0 +1,131 @@
+/* Card Component Styles */
+
+.card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--main-body-background-color);
+  color: var(--color-primary);
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Size Variants */
+
+.sizeS {
+  max-width: 20rem; /* 320px */
+}
+
+.sizeM {
+  max-width: 30rem; /* 480px */
+}
+
+.sizeL {
+  max-width: 37.5rem; /* 600px */
+}
+
+.sizefull {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-internal-12);
+  padding: var(--space-internal-24) var(--space-internal-16);
+}
+
+.headerActions {
+  margin-inline-start: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-layout-16);
+}
+
+.content {
+  padding: var(--space-internal-24) var(--space-internal-8);
+}
+
+.footer {
+  padding: var(--space-internal-24);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  flex: 1;
+}
+
+/* Content */
+
+.content {
+  padding: var(--space-internal-16);
+  flex: 1;
+}
+
+.cardText {
+  margin: 0;
+}
+
+/* Footer */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-internal-8);
+  padding: var(--space-internal-16);
+}
+
+.footerLeading {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.footerTrailing {
+  display: flex;
+  gap: var(--space-layout-16);
+}
+
+.footerTrailing > *:last-child {
+  padding-inline-start: var(--space-layout-16);
+}
+
+.footerSplit {
+}
+
+.footerTrailingContainer {
+  display: flex;
+  gap: var(--space-layout-16);
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+/* Responsive Adjustments */
+
+@media (width >= 768px) {
+  .header {
+    padding: var(--space-internal-24);
+  }
+
+  .content {
+    padding: var(--space-internal-24);
+  }
+
+  .footer {
+    padding: var(--space-internal-24);
+  }
+}

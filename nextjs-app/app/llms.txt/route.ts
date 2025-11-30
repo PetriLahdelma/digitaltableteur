@@ -6,7 +6,7 @@ const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://digitaltableteur.com";
 
-const staticPages = [
+const staticPages: Array<{ path: string; title: string; meta?: string }> = [
   { path: "/", title: "Home" },
   { path: "/about", title: "About" },
   { path: "/ai-use", title: "AI Usage" },

@@ -1,33 +1,27 @@
 "use client";
 
+import { useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
+import { posts } from "./postMetadata";
 
-const normalizePath = (path: string) => (path === "/" ? path : path.replace(/\/+$/, ""));
-
-const blogPages = [
-  { path: "/blog/petri-lahdelma-bio", label: "Petri Lahdelma Bio" },
-  { path: "/blog/digital-craftsmanship", label: "Digital Craftsmanship" },
-  { path: "/blog/figma-mcp-design-systems", label: "Figma MCP" },
-  { path: "/blog/thoughts-on-future-branding", label: "Future Branding" },
-  { path: "/blog/designing-in-2025", label: "Designing in 2025" },
-  { path: "/blog/in-search-of-impact", label: "In Search of Impact" },
-  { path: "/blog/workflow-tips", label: "Workflow Tips" },
-  {
-    path: "/blog/design-system-meets-ai-building-the-self-evolving-component-library-pt-1",
-    label: "Design System meets AI Pt 1",
-  },
-  {
-    path: "/blog/design-system-meets-ai-building-the-self-evolving-component-library-pt-2",
-    label: "Design System meets AI Pt 2",
-  },
-];
+const normalizePath = (path: string) =>
+  path === "/" ? path : path.replace(/\/+$/, "");
 
 export function NextBlogNav() {
   const pathname = usePathname();
   const router = useRouter();
+
+  // Generate blog pages from actual blog post metadata
+  const blogPages = useMemo(() => {
+    return posts.map((post) => ({
+      path: `/blog/${post.slug}`,
+      label: post.title,
+    }));
+  }, []);
+
   const currentIndex = blogPages.findIndex(
     (p) => normalizePath(p.path) === normalizePath(pathname || ""),
   );
@@ -47,40 +41,52 @@ export function NextBlogNav() {
         <Button
           variant="tertiary"
           size="m"
-          icon={<Icon name="text-align-left" ariaLabel="Back to articles" />}
+          icon={<Icon name="text-align-left" ariaLabel="Articles" />}
           onClick={() => router.push("/blog")}
         >
-          Back to articles
+          Articles
         </Button>
         <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
           <Button
             variant="tertiary"
             size="m"
-            icon={<Icon name="arrow-left" ariaLabel="Previous" />}
+            icon={<Icon name="arrow-left" ariaLabel="Previous article" />}
             disabled={!isArticleRoute || currentIndex <= 0}
             onClick={() => {
               if (!isArticleRoute) return;
-              if (currentIndex > 0) router.push(blogPages[currentIndex - 1].path);
+              if (currentIndex > 0)
+                router.push(blogPages[currentIndex - 1].path);
             }}
+            className="nav-button-prev"
           >
-            Previous
+            <span className="nav-button-text">Previous</span>
           </Button>
           <Button
             variant="tertiary"
             size="m"
-            endIcon={<Icon name="arrow-right" ariaLabel="Next" />}
+            endIcon={<Icon name="arrow-right" ariaLabel="Next article" />}
             disabled={!isArticleRoute || currentIndex === blogPages.length - 1}
             onClick={() => {
               if (!isArticleRoute) return;
               if (currentIndex < blogPages.length - 1)
                 router.push(blogPages[currentIndex + 1].path);
             }}
+            className="nav-button-next"
           >
-            Next
+            <span className="nav-button-text">Next</span>
           </Button>
         </div>
       </div>
-      <hr style={{ margin: 0, borderColor: "var(--color-border, #ccc)" }} />
+      <style jsx>{`
+        :global(.nav-button-text) {
+          display: none;
+        }
+        @media (min-width: 768px) {
+          :global(.nav-button-text) {
+            display: inline;
+          }
+        }
+      `}</style>
     </div>
   );
 }

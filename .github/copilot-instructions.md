@@ -1,5 +1,25 @@
 # Copilot Instructions for Digitaltableteur
 
+## 📚 Documentation Hierarchy
+
+This project uses a **hierarchical documentation system** optimized for different AI assistants:
+
+- **`CLAUDE.md`** → Comprehensive authority document for Claude Code (200-400 lines, immutable system rules)
+- **`AGENTS.md`** → Lightweight quick reference for generic AI agents (100-200 lines, JIT indexing)
+- **`.github/copilot-instructions.md`** → This file, optimized for GitHub Copilot
+
+**Subdirectories** contain specialized documentation that extends root guidance:
+
+- `app/CLAUDE.md` + `app/AGENTS.md` → Next.js App Router patterns
+- `shared/components/CLAUDE.md` + `shared/components/AGENTS.md` → Design system rules
+- `api-legacy-vercel-functions/AGENTS.md` → Serverless function patterns
+- `docs/AGENTS.md` → Documentation navigation guide
+- `scripts/AGENTS.md` → Automation patterns
+
+**When working in a specific directory, read its CLAUDE.md/AGENTS.md for context-specific guidance.**
+
+---
+
 ## ⚠️ CRITICAL: Component Creation Rules
 
 **BEFORE creating ANY new component, ALWAYS refer to `docs/LLM_COMPONENT_GENERATION_RULES.md` and `docs/LLM-CRITICAL-REASONING-AND-PLANNING-INSTRUCTIONS.md`**
