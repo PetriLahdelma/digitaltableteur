@@ -43,7 +43,8 @@ const securityHeaders = [
   },
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=()",
+    value:
+      "camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=()",
   },
   {
     key: "Cross-Origin-Opener-Policy",
@@ -61,6 +62,7 @@ const nextConfig: NextConfig = {
   },
   outputFileTracingRoot: __dirname,
   pageExtensions: ["ts", "tsx", "md", "mdx"],
+  transpilePackages: ["react-phone-number-input", "libphonenumber-js"],
   eslint: {
     ignoreDuringBuilds: true,
   },

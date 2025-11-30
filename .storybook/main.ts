@@ -1,9 +1,11 @@
-// This file has been automatically migrated to valid ESM format by Storybook.
 import type { StorybookConfig } from "@storybook/react-vite";
 import { fileURLToPath } from "node:url";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: [
+    "../nextjs-app/shared/components/**/*.mdx",
+    "../nextjs-app/shared/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+  ],
   addons: ["@storybook/addon-docs", "@storybook/addon-a11y"],
   framework: {
     name: "@storybook/react-vite",
@@ -16,7 +18,9 @@ const config: StorybookConfig = {
     <base href="${process.env.NODE_ENV === "production" ? "/storybook/" : "/"}">
   `,
   viteFinal: async (config) => {
-    const componentsPath = fileURLToPath(new URL("../src/components", import.meta.url));
+    const componentsPath = fileURLToPath(
+      new URL("../nextjs-app/shared/components", import.meta.url),
+    );
 
     config.resolve = config.resolve || {};
     config.resolve.alias = {

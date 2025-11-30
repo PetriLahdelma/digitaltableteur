@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,17 +16,13 @@
     "baseUrl": ".",
     "plugins": [
       {
-      "name": "next"
-    }
-  ],
-  "paths": {
-    "@/*": [
-      "./*"
+        "name": "next"
+      }
     ],
-    "@dt/*": [
-      "./shared/components/*"
-    ]
-  }
+    "paths": {
+      "@/*": ["./*"],
+      "@dt/*": ["./shared/components/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
@@ -40,7 +32,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules", "src", "vite-app", "shared_backup_20251123"]
 }

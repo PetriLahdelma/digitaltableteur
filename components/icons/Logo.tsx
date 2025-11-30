@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useTheme } from "@/shared/components/ThemeProvider";
+import Image from "next/image";
+import styles from "./Logo.module.css";
 
 interface LogoProps {
   variant?: "filled" | "outline";
@@ -30,46 +32,20 @@ const Logo = ({ variant = "filled", className, onClick }: LogoProps) => {
     const shouldApplyBlur = theme !== "hcb" && theme !== "hcw";
 
     return (
-      <div
-        style={{
-          position: "relative",
-          display: "inline-block",
-          width: "100%",
-          height: "100%",
-        }}
-        className={className}
-      >
+      <div className={`${styles.logoWrapper} ${className || ""}`}>
         {shouldApplyBlur && (
           <div
-            style={{
-              position: "absolute",
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0,
-              backgroundImage: `url(${logoPath})`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              filter: "blur(10px)",
-              zIndex: 1,
-            }}
+            className={styles.logoBlur}
+            style={{ backgroundImage: `url(${logoPath})` }}
           />
         )}
-        <img
+        <Image
           src={logoPath}
           alt="Digitaltableteur logo"
-          width="128"
-          height="128"
+          width={256}
+          height={256}
           onClick={onClick}
-          style={{
-            position: "relative",
-            zIndex: 2,
-            mixBlendMode: shouldApplyBlur ? "difference" : "normal",
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-          }}
+          className={`${styles.logoImage} ${shouldApplyBlur ? styles.logoImageBlend : styles.logoImageNormal}`}
         />
       </div>
     );

@@ -9,7 +9,7 @@ export default defineConfig({
   basePath: "/studio",
 
   projectId: "ai4cwr0g",
-  dataset: "production",
+  dataset: "digitaltableteur-blog",
 
   plugins: [structureTool(), visionTool()],
 

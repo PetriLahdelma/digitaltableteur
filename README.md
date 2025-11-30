@@ -12,126 +12,296 @@
 
 > "Iteration beats perfection—ship today, learn tomorrow, refine forever."
 
-Digitaltableteur is a modern React TypeScript portfolio website built with Vite, featuring internationalization,
-responsive design, secure content delivery, and a comprehensive design system. The project showcases creative work,
-technical articles, and provides multi-language support across English, Finnish, and Swedish.
+Digitaltableteur is a hybrid monorepo portfolio website featuring both Next.js 15 (production) and Vite (legacy) applications. Built with React 18 and TypeScript 5.8, it showcases a comprehensive design system, multi-language support (EN/FI/SV), AI-powered chat interface, and enterprise-grade tooling including Sentry observability, Linear issue management, and MCP (Model Context Protocol) integrations.
 
 ## 🚀 Features
 
-- **Multi-language Support**: Complete i18n implementation with English, Finnish, and Swedish translations
-- **Responsive Design**: Mobile-first approach with adaptive layouts for all device sizes
-- **Secure CV Download**: Password-protected resume download with real-time validation
-- **Design System**: Comprehensive component library with consistent styling and theming
-- **Blog Platform**: Dynamic article system with lazy loading and SEO optimization
-- **Contact Integration**: EmailJS-powered contact form with validation
-- **Performance Optimized**: Vite build system with code splitting and asset optimization
-- **Accessibility**: WCAG compliant components with proper ARIA support
-- **SEO Ready**: React Helmet integration with dynamic meta tags and sitemap generation
+### Core Architecture
+
+- **Hybrid Monorepo**: Next.js 15 App Router (production) + Vite 6.3 (legacy) in parallel migration
+- **AI Documentation System**: Hierarchical CLAUDE.md/AGENTS.md structure optimized for AI assistants
+- **Design System**: 50+ components with CSS Modules, design tokens, Storybook, and visual regression testing
+- **Type Safety**: TypeScript 5.8 strict mode with comprehensive interfaces and JSDoc documentation
+
+### User Experience
+
+- **Multi-language Support**: Complete i18n with English, Finnish, and Swedish (100% translation coverage)
+- **AI Chat Interface**: OpenAI-powered chat with guided email workflow, dynamic component injection, markdown rendering
+- **Responsive Design**: Mobile-first with progressive enhancement (backdrop-filter, gap, :has() selector)
+- **Progressive Web App**: Service worker caching, offline support, native share API integration
+- **Accessibility**: WCAG AA compliant with axe-core testing, semantic HTML, ARIA attributes, keyboard navigation
+
+### Content & Media
+
+- **Blog Platform**: Sanity CMS integration with MDX, syntax highlighting, reading time estimates
+- **Secure CV Download**: Password-protected with API validation and rate limiting
+- **Image Optimization**: Next.js Image component, lazy loading, responsive srcset generation
+- **Contact Integration**: EmailJS with guided multi-step workflow, validation, and accessibility
+
+### Developer Experience
+
+- **Storybook 10**: Component development with WIP badge system, visual regression testing
+- **Testing**: Vitest + Testing Library (>80% coverage target), accessibility tests, E2E with Playwright
+- **MCP Integrations**: GitHub, Figma, Context7, TypeScript LSP, Sentry for AI-assisted development
+- **Linear Automation**: Programmatic issue creation/update, label management, state workflows
+- **Sentry Observability**: Error tracking, performance monitoring, release health, MCP query interface
+
+### Performance & SEO
+
+- **Code Splitting**: Dynamic imports with React.lazy() (Vite) and next/dynamic (Next.js)
+- **Bundle Optimization**: Tree shaking, minification, aggressive cache busting with content hashes
+- **SEO**: Dynamic metadata with generateMetadata(), sitemap.xml, robots.txt, structured data
+- **Analytics**: Google Analytics 4 integration with privacy controls
 
 ## 🏁 Getting Started
 
 ### Prerequisites
 
-- Node.js (recommended: latest LTS version)
-- npm or yarn package manager
+- Node.js 18+ (LTS recommended)
+- npm 9+ or compatible package manager
 
 ### Installation
 
-Install dependencies:
-
 ```bash
+# Clone repository
+git clone https://github.com/PetriLahdelma/digitaltableteur.git
+cd digitaltableteur
+
+# Install dependencies
 npm install
+
+# Copy environment template
+cp .env.example .env.local
 ```
 
-Copy the environment template and configure your settings:
+### Environment Configuration
+
+Required for development:
 
 ```bash
-cp .env.example .env
+# Analytics
+VITE_GA_ID=G-XXXXXXXXXX                      # Google Analytics 4
+
+# Email Services
+VITE_EMAILJS_SERVICE_ID=service_xxx
+VITE_EMAILJS_TEMPLATE_ID=template_xxx
+VITE_EMAILJS_PUBLIC_KEY=xxx
+
+# MCP Servers (optional for enhanced AI features)
+FIGMA_TOKEN=figd_xxx                         # Figma design access
+GITHUB_MCP_PAT=github_pat_xxx               # GitHub operations
+CONTEXT7_API_KEY=xxx                         # Context7 documentation access
+
+# Linear Issue Management (optional)
+LINEAR_API_KEY=lin_api_xxx
+LINEAR_TEAM_ID=xxx
+LINEAR_PROJECT_ID=xxx
 ```
 
-Configure the following environment variables:
+Production only:
 
-- EmailJS credentials for contact form functionality
-- VITE_GA_ID for Google Analytics tracking
-- FIGMA_TOKEN for design asset synchronization
-- CV_PASSWORD for secure resume download (production only)
+```bash
+CV_PASSWORD=xxx                              # Secure resume download
+OPENAI_API_KEY=sk-xxx                        # AI chat functionality
+SENTRY_DSN=https://xxx@xxx.ingest.sentry.io/xxx
+SENTRY_AUTH_TOKEN=xxx                        # Source map upload
+```
+
+See `.env.example` for complete list with descriptions.
 
 ## ⚒️ Development
 
-Set `REACT_APP_GA_ID` to your Google Analytics measurement ID if you want to collect usage statistics.
-
-### Start the development server
+### Development Servers
 
 ```bash
-npm start
+# Vite dev server (legacy app)
+npm run dev                    # http://localhost:5173
+
+# Next.js dev server (production app)
+npm run dev:next               # http://localhost:3000
+
+# Storybook component development
+npm run storybook              # http://localhost:6012
 ```
+
+### Code Quality & Testing
 
 ```bash
-npm run dev
+# Type checking
+npm run typecheck              # TypeScript validation across project
+
+# Linting
+npm run lint                   # ESLint + Stylelint
+npm run lint:fix               # Auto-fix linting issues
+
+# Testing
+npm test                       # Run all tests (Vitest)
+npm run test:watch             # Watch mode
+npm run test:coverage          # Coverage report (>80% target)
+npm run test:a11y              # Accessibility tests (axe-core)
+npm run test:visual            # Visual regression (Playwright + Storybook)
+
+# Pre-commit validation (run before PR)
+npm run typecheck && npm run lint && npm test && npm run build
 ```
 
-The application will be available at http://localhost:5173 with hot module replacement.
-
-### Run Storybook
+### MCP & Automation
 
 ```bash
-npm run storybook
+# GitHub MCP Server
+npm run github:mcp:test        # Test connectivity and authentication
+
+# Figma MCP Server
+npm run figma:mcp:test         # Test connectivity and authentication
+
+# Context7 MCP Server
+npm run context7:mcp           # Launch locally (respects CONTEXT7_API_KEY)
+npm run context7:mcp -- --remote-check  # Test remote endpoint
+
+# TypeScript LSP Status
+npm run ts:mcp:status          # Validate TypeScript language server
+npm run ts:mcp:status:stub     # Generate stub status
+
+# Linear Issue Management
+npx tsx scripts/linear/create-issue.ts              # Interactive issue creation
+npx tsx scripts/linear/update-issue.ts --issue DIG-16 --state "Done"
+npx tsx scripts/linear/check-issue.ts DIG-16        # Display issue details
+
+# Sentry Observability
+node scripts/sentry-mcp.js issues digitaltableteur 10 --unresolved
+npm run generate-sentry-summary                      # Generate dashboard data
 ```
 
-Browse components at http://localhost:6006 for isolated development and testing.
+## 🏗 Build & Deployment
 
-### 🏗 Build & Deployment
+### Build Commands
 
 ```bash
-npm run build
+# Vite production build
+npm run build                  # Output: dist/
+
+# Next.js production build
+npm run build:next             # Output: .next/
+
+# Storybook static build
+npm run build-storybook        # Output: storybook-static/
 ```
-
-Generates optimized assets in the dist directory with:
-
-Tree-shaken JavaScript bundles
-Minified CSS with vendor prefixes
-Compressed images and fonts
-Service worker for offline caching
 
 ### Deployment
 
 ```bash
-npm run deploy
+# Vite to GitHub Pages
+npm run deploy                 # Build + gh-pages deployment
+
+# Vite + Storybook visual diffs
+npm run deploy-with-storybook  # Deploy with visual regression report
+
+# Manual cache busting
+npm run cache-bust             # Add version metadata + .nojekyll
+
+# Vercel (production - automatic on push to main)
+vercel --prod
 ```
 
-Automatically builds and deploys to GitHub Pages with:
+**Hybrid Deployment Strategy**:
 
-CNAME file configuration for custom domain
-Cache busting with content hashes
-Dotfiles preservation for GitHub Pages compatibility
+- **Vite App**: GitHub Pages (`https://digitaltableteur.com`)
+- **Next.js App**: Vercel (`https://nextjs-app.vercel.app`)
+- **Serverless Functions**: Vercel (`/api/*` routes)
+- **Routing**: Vercel rewrites route specific paths to Next.js (see `vercel.json`)
 
-## 🔧 Development Tools
+### Build Optimizations
 
-### Code Quality
+**Vite Build**:
 
-Run all code quality checks with:
+- Tree-shaken JavaScript bundles with content hashes
+- Minified CSS with vendor prefixes and logical properties
+- Compressed images and fonts
+- Service worker for offline caching (Workbox)
+- Aggressive cache busting with filename hashing
+
+**Next.js Build**:
+
+- Server-side rendering (SSR) for SEO
+- Static generation for blog posts
+- Image optimization with Next.js Image component
+- API routes as Vercel serverless functions
+- Automatic code splitting per route
+
+## 🤖 AI Documentation System
+
+### Hierarchical Structure
+
+The project uses a **hierarchical CLAUDE.md/AGENTS.md system** optimized for AI assistants:
+
+```
+Root Documentation (Universal Rules)
+├── CLAUDE.md (380 lines)          # Comprehensive authority for Claude Code
+├── AGENTS.md (150 lines)          # Quick reference for generic agents
+└── .github/copilot-instructions.md  # GitHub Copilot specific
+
+Subdirectory Documentation (Specific Context)
+├── app/CLAUDE.md + AGENTS.md      # Next.js App Router patterns
+├── shared/components/CLAUDE.md + AGENTS.md  # Component library rules
+├── api-legacy-vercel-functions/AGENTS.md    # Serverless patterns
+├── docs/AGENTS.md                 # Documentation navigation
+└── scripts/AGENTS.md              # Automation patterns
+
+Claude Code Configuration
+├── .claude/settings.json          # Hooks (auto-format, safety checks)
+└── .claude/commands/              # Custom slash commands
+    ├── review.md                  # Comprehensive code review
+    ├── fix-issue.md               # GitHub issue workflow
+    ├── create-component.md        # Component generation
+    └── create-linear-issue.md     # Issue creation
+```
+
+### Key Features
+
+**CLAUDE.md** (Claude Code Authority)
+
+- 200-400 lines per file
+- Treated as immutable system rules
+- Read hierarchically (up from CWD + discovers subdirectories)
+- Comprehensive patterns with file examples
+
+**AGENTS.md** (Generic AI Quick Reference)
+
+- 100-200 lines per file
+- JIT (Just-In-Time) indexing with search commands
+- Minimal duplication, maximum efficiency
+- Copy-paste ready commands
+
+**Claude Code Enhancements**
+
+- **Hooks**: Auto-format (Prettier), dangerous command blocking
+- **Custom Commands**: `/review`, `/fix-issue`, `/create-component`, `/create-linear-issue`
+- **Token Efficiency**: 60-80% reduction per query vs monolithic docs
+
+### Usage
+
+**Claude Code** (automatic):
+
+```
+/review                         # Comprehensive code review
+/fix-issue 123                  # Analyze and fix GitHub issue
+/create-component Button        # Generate component (5 files)
+/create-linear-issue Implement X  # Create Linear issue
+```
+
+**Generic AI Agents** (manual reference):
 
 ```bash
-npm run lint
+cat AGENTS.md                           # Root rules
+cat app/AGENTS.md                       # Next.js patterns
+cat shared/components/AGENTS.md         # Component rules
 ```
 
-Runs comprehensive checks including:
+**Documentation**:
 
-- ESLint: TypeScript and React best practices
-- Prettier: Consistent code formatting
-- Stylelint: CSS standards with strict color value enforcement
-
-### Testing
-
-```bash
-npm test
-```
-
-Executes Vitest test suite with:
-
-Component unit tests
-Integration testing
-Coverage reporting
+- [Migration Guide](AI-DOCUMENTATION-MIGRATION-GUIDE.md)
+- [System Summary](AI-DOCUMENTATION-SYSTEM-SUMMARY.md)
+- [Visual Tree](AI-DOCUMENTATION-TREE.txt)
 
 ## 🎨 Design Asset Management
 
@@ -163,35 +333,97 @@ npm run generate:alt-text   # Generate accessibility descriptions (requires OPEN
 
 ## 🏗 Architecture
 
-Frontend Stack
+### Hybrid Monorepo Structure
 
-- React 18: Modern React with concurrent features
-- TypeScript 5.8: Full type safety and developer experience
-- Vite 6.3: Lightning-fast build tooling and HMR
-- React Router 7: Client-side routing with lazy loading
-- i18next: Internationalization with namespace support
-- Framer Motion: Smooth animations and transitions
+```
+digitaltableteur/
+├── app/                       # Next.js 15 App Router (production)
+│   ├── layout.tsx             # Root layout with providers
+│   ├── page.tsx               # Home page (server component)
+│   ├── about/page.tsx         # Route pages
+│   ├── blog/[slug]/page.tsx   # Dynamic routes
+│   └── api/*/route.ts         # API routes (Vercel functions)
+│
+├── src/                       # Vite app (legacy, being phased out)
+│   ├── App.tsx                # React Router configuration
+│   ├── pages/                 # Route components (to be migrated)
+│   └── components/            # Component library
+│
+├── shared/                    # Symlinked shared code
+│   ├── components/            # Design system (from src/components)
+│   ├── hooks/                 # Custom React hooks
+│   ├── styles/                # Design tokens & global styles
+│   └── locales/               # i18n translation files
+│
+├── api-legacy-vercel-functions/  # Serverless functions
+│   ├── cors.js                # CORS middleware
+│   ├── openai-chat.js         # AI chat endpoint
+│   ├── save-contact.js        # Contact form handler
+│   └── download-cv.js         # Secure CV download
+│
+├── scripts/                   # Automation & tooling
+│   ├── linear/                # Issue management
+│   ├── sentry-mcp.js          # Observability queries
+│   └── generate-*.js          # Code generation
+│
+├── docs/                      # Documentation
+│   ├── LLM_COMPONENT_GENERATION_RULES.md (12,000+ words)
+│   ├── NEXTJS_MIGRATION_PLAN.md
+│   ├── LINEAR_AUTOMATION.md
+│   └── *_MCP_SETUP.md         # MCP integration guides
+│
+└── .claude/                   # Claude Code configuration
+    ├── settings.json          # Hooks (auto-format, safety)
+    └── commands/              # Custom slash commands
+```
 
-Styling & Design
+### Technology Stack
 
-- CSS Modules: Scoped styling with consistent naming
-- Design Tokens: CSS custom properties for theming
+**Frontend**
+
+- React 18: Concurrent features, Suspense, automatic batching
+- TypeScript 5.8: Strict mode, decorators, import attributes
+- Next.js 15.5.6: App Router, Server Components, Streaming SSR
+- Vite 6.3: Lightning-fast HMR, optimized production builds
+- React Router 7: Client-side routing with lazy loading (Vite app)
+
+**Styling & Design**
+
+- CSS Modules: Scoped styling with consistent naming conventions
+- Design Tokens: CSS custom properties in `src/styles/variables.css`
+- Progressive Enhancement: `@supports` queries for modern features
+- Logical Properties: `margin-inline`, `padding-block` (RTL-ready)
 - Responsive Design: Mobile-first with breakpoint system
-- Component Library: Reusable @dt/ components with TypeScript
 
-Backend Services
+**State & Data**
 
-- Vercel Serverless: API endpoints for secure operations
+- React Hooks: useState, useEffect, useContext, custom hooks
+- i18next: Internationalization with React bindings
 - EmailJS: Contact form email delivery
+- OpenAI API: GPT-4 chat with function calling
+
+**Backend Services**
+
+- Vercel Serverless: Node.js functions with CORS middleware
 - GitHub Pages: Static site hosting with custom domain
-- Service Worker: Offline caching with Workbox
+- Sanity CMS: Headless blog content management
+- Sentry: Error tracking and performance monitoring
 
-Security Features
+**Developer Tools**
 
-- Password Protection: Secure CV download with API validation
-- CORS Configuration: Proper cross-origin resource sharing
-- Environment Isolation: Secure credential management
-- Content Security: Sanitized user inputs and XSS protection
+- Storybook 10: Component development and documentation
+- Vitest: Unit testing with jsdom environment
+- Testing Library: User-centric testing utilities
+- Playwright: Visual regression testing via Storybook
+- ESLint + Stylelint: Code quality enforcement
+- Prettier: Consistent code formatting
+
+**AI & Automation**
+
+- MCP (Model Context Protocol): GitHub, Figma, Context7, TypeScript LSP
+- Linear API: Programmatic issue management
+- Sentry REST API: Observability queries and dashboards
+- Claude Code: Custom commands and hooks for AI pair programming
 
 ## 📱 Component Features
 
@@ -231,62 +463,259 @@ The `SocialShare` component implements progressive enhancement with the Web Shar
 
 The implementation follows Web Share API best practices with proper error handling and provides a consistent user experience across all device types.
 
+## ⚙️ Testing & Quality
+
+### Testing Stack
+
+```bash
+npm test                         # Run all tests
+npm run test:watch               # Watch mode
+npm run test:coverage            # Generate coverage reports
+npm run test:a11y                # Accessibility testing
+npm run test:visual              # Visual regression tests
+npm run test:visual:update       # Update visual baselines
+```
+
+**Test Suite Coverage**:
+
+- **Unit Tests**: Component behavior, props, state management (>80% coverage requirement)
+- **Integration Tests**: Chat workflows, email forms, navigation patterns
+- **Accessibility Tests**: axe-core on all pages and Storybook stories
+- **Visual Regression**: Playwright screenshots via Storybook test-runner
+- **Translation Coverage**: Ensures all i18n keys exist in EN/FI/SV
+
+**Testing Libraries**:
+
+- Vitest + jsdom: Fast unit testing with React support
+- Testing Library: User-centric component testing
+- axe-core: Automated accessibility auditing
+- Playwright: Visual regression and E2E capabilities
+
+### Code Quality
+
+```bash
+npm run lint                     # ESLint + Stylelint
+npm run lint:fix                 # Auto-fix linting issues
+npm run format                   # Prettier formatting
+npm run typecheck                # TypeScript validation
+```
+
+**Quality Standards**:
+
+- ESLint: TypeScript strict mode, React best practices, a11y rules
+- Stylelint: CSS Modules standards, logical properties enforcement
+- Prettier: 2-space indentation, single quotes, trailing commas
+- TypeScript: No implicit any, strict null checks, unused variables blocked
+
+### Observability
+
+**Sentry Integration**:
+
+```bash
+npm run sentry:issues            # Query unresolved issues
+npm run sentry:releases          # List recent releases
+npm run generate:sentry-summary  # Generate JSON summary
+```
+
+**MCP Testing**:
+
+```bash
+npm run github:mcp:test          # Test GitHub MCP connectivity
+npm run figma:mcp:test           # Test Figma MCP connectivity
+npm run ts:mcp:status            # Validate TypeScript LSP
+```
+
+### Component Development
+
+**Storybook**:
+
+```bash
+npm run storybook                # Launch Storybook dev server
+npm run build-storybook          # Build static Storybook
+npm run storybook:deploy         # Deploy to GitHub Pages
+```
+
+**WIP Badge System**:
+
+- All stories display a localized "Work in Progress" badge by default
+- Badge removed via `parameters: { wip: { disabled: true } }` after passing:
+  - ✅ Accessibility tests (axe-core violations = 0)
+  - ✅ Visual regression (no unexpected diffs)
+  - ✅ Translation coverage (all keys in EN/FI/SV)
+
 ## 🌐 Internationalization
 
 The site supports three languages with complete translation coverage:
 
-- English (EN): Primary language with full content
-- Finnish (FI): Native language support
-- Swedish (SV): Regional language support
+- **English (EN)**: Primary language with full content
+- **Finnish (FI)**: Native language support
+- **Swedish (SV)**: Regional language support
 
-Translation files are located in locales with namespace organization for maintainability.
+**Structure**:
+
+- Translation files: `shared/locales/{en,fi,sv}/translation.json`
+- Namespace organization for maintainability
+- 100% coverage requirement enforced by tests
+
+**Usage**:
+
+- Always wrap user-facing text with `useTranslation()` hook
+- Use nested object notation like `"navigation.home"` for organization
+- Update all three locale files simultaneously before merging
 
 ## 🔐 Security & Performance
 
-Security Measures
+**Security Measures**:
 
 - Password-protected content delivery
-- Environment-based configuration
-- CORS-enabled API endpoints
-- Sanitized user inputs
+- Environment-based configuration with `.env.local` (gitignored)
+- CORS-enabled API endpoints with strict origin validation
+- Sanitized user inputs and XSS protection
+- No secrets in version control (see `.gitignore`)
 
-Performance Optimizations
+**Performance Optimizations**:
 
-- Code splitting with dynamic imports
+- Code splitting with dynamic imports and React.lazy()
 - Image optimization and lazy loading
-- Service worker caching strategy
+- Service worker caching strategy (Vite app)
 - Bundle analysis and tree shaking
-- Compressed asset delivery
+- Compressed asset delivery with Brotli/Gzip
+- Aggressive filename hashing for cache busting
+
+## 🚀 Build & Deployment
+
+### Production Builds
+
+**Next.js App**:
+
+```bash
+npm run build:next               # Build Next.js app (production)
+npm run start                    # Start Next.js production server
+npm run preview:next             # Local production preview
+```
+
+**Vite App** (legacy):
+
+```bash
+npm run build                    # Vite production build
+npm run preview                  # Preview Vite production build
+npm run cache-bust               # Manual cache busting
+```
+
+### Deployment Strategy
+
+**Hybrid Deployment**:
+
+- **Vercel**: Hosts Next.js app + serverless API functions
+  - Automatic deployments from `main` branch
+  - Environment variables managed in Vercel dashboard
+  - Edge functions for auth, API routes, webhooks
+
+- **GitHub Pages**: Hosts legacy Vite app + Storybook
+  - Manual deployment via `npm run deploy`
+  - Custom domain: `digitaltableteur.com`
+  - Aggressive cache busting with hashed filenames
+
+**Deployment Commands**:
+
+```bash
+npm run deploy                   # Deploy Vite app to GitHub Pages
+npm run deploy-with-storybook    # Deploy with visual diff report
+npm run storybook:deploy         # Deploy Storybook standalone
+npm run generate:sitemap         # Generate sitemap.xml
+```
+
+### Cache Strategy
+
+**Vite Build**:
+
+- Automatic filename hashing for JS/CSS assets
+- Manual cache-bust script adds version metadata
+- `.nojekyll` file prevents GitHub Pages Jekyll processing
+
+**Next.js Build**:
+
+- Built-in asset hashing and optimization
+- `Cache-Control` headers configured via `next.config.ts`
+- Vercel CDN handles cache invalidation
+
+### Environment Variables
+
+**Production (Vercel)**:
+
+- All secrets stored in Vercel project settings
+- Separate preview/production environments
+- Automatic NEXT*PUBLIC* prefix for client-side vars
+
+**Production (GitHub Pages)**:
+
+- Public environment variables in GitHub Secrets
+- Deploy workflow injects variables at build time
+- No server-side secrets (static hosting only)
 
 ## 🚀 CI/CD Pipeline
 
-GitHub Actions
+**GitHub Actions**:
 
-- Automated Testing: ESLint, Stylelint, and Vitest on every PR
-- Preview Deployments: Automatic staging environments for pull requests
-- Production Deployment: Automated builds and cache busting
+- **Automated Testing**: ESLint, Stylelint, and Vitest on every PR
+- **Preview Deployments**: Automatic staging environments for pull requests
+- **Production Deployment**: Automated builds and cache busting
 
-Branch Protection
+**Branch Protection**:
 
 - Required status checks for code quality
-- Review requirements for main branch
-- Automated preview environments for collaboration
+- 1 approval required for `main` branch
+- Squash commits on merge
+- Delete branch after merge
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: git checkout -b feature/amazing-feature
-3. Commit changes: git commit -m 'Add amazing feature'
-4. Push to branch: git push origin feature/amazing-feature
-5. Open a Pull Request
-
 ### Development Guidelines
 
-- Use TypeScript for all new components
-- Follow the existing CSS Modules pattern
-- Add translations for all user-facing text
-- Include Storybook stories for new components
-- Maintain test coverage for critical functionality
+- **TypeScript**: Use strict typing for all new components and functions
+- **CSS Modules**: Follow existing pattern with design tokens (never inline styles)
+- **Internationalization**: Add translations for all user-facing text (EN/FI/SV)
+- **Component Creation**: Always read `docs/LLM_COMPONENT_GENERATION_RULES.md` first
+- **Storybook**: Include `.stories.tsx` for every component
+- **Testing**: Maintain >80% test coverage, include accessibility tests
+- **Documentation**: Update CLAUDE.md, AGENTS.md, README.md, and copilot-instructions.md together
+
+### Workflow
+
+1. **Fork** the repository
+2. **Create Branch**: Follow naming convention from `docs/BRANCH_NAMING.md`
+   ```bash
+   git checkout -b DT-XXX-feat-description
+   ```
+3. **Develop**: Make changes following conventions above
+4. **Quality Checks**:
+   ```bash
+   npm run typecheck && npm run lint && npm test && npm run build
+   ```
+5. **Commit**: Use Conventional Commits format
+   ```bash
+   git commit -m "feat: add amazing feature"
+   ```
+6. **Push**: Push to your branch
+   ```bash
+   git push origin DT-XXX-feat-description
+   ```
+7. **Pull Request**: Open PR with detailed description
+8. **Review**: Address feedback and ensure CI passes
+9. **Merge**: Squash commits on merge, delete branch after
+
+### Pre-commit Checklist
+
+Before creating a PR:
+
+- ✅ All tests passing (`npm test`)
+- ✅ No TypeScript errors (`npm run typecheck`)
+- ✅ No linting issues (`npm run lint`)
+- ✅ Production build succeeds (`npm run build`)
+- ✅ Translation coverage complete (EN/FI/SV)
+- ✅ Storybook stories added for new components
+- ✅ Visual baselines updated if UI changed (`npm run test:visual:update`)
+- ✅ Documentation updated (README, CLAUDE.md, AGENTS.md)
 
 ## 📁 Folder overview
 
@@ -298,16 +727,72 @@ Branch Protection
 
 ## 📚 Learn More
 
-### Project Docs
+### Project Documentation
 
-- [Storybook Deployment Guide](docs/STORYBOOK_DEPLOYMENT.md)
-- [EmailJS Setup & Troubleshooting](docs/EMAILJS_SETUP.md)
+**AI Documentation System**:
 
-- [Vite Documentation](https://vitejs.dev/) - Build tool and development server
-- [React Documentation](https://react.dev/) - Frontend framework
-- [React Router](https://reactrouter.com/) - Client-side routing
-- [i18next](https://www.i18next.com/) - Internationalization framework
-- [Storybook](https://storybook.js.org/) - Component development environment
+- [Migration Guide](AI-DOCUMENTATION-MIGRATION-GUIDE.md) - Complete guide to CLAUDE.md/AGENTS.md hierarchy
+- [System Summary](AI-DOCUMENTATION-SYSTEM-SUMMARY.md) - Statistics and file overview
+- [Visual Tree](AI-DOCUMENTATION-TREE.txt) - ASCII diagram of documentation structure
+- [Root CLAUDE.md](CLAUDE.md) - Comprehensive authority for Claude Code
+- [Root AGENTS.md](AGENTS.md) - Quick reference for generic AI agents
+
+**Critical References**:
+
+- [Component Generation Rules](docs/LLM_COMPONENT_GENERATION_RULES.md) - 12,000+ word authority on component creation
+- [Critical Reasoning & Planning](docs/LLM-CRITICAL-REASONING-AND-PLANNING-INSTRUCTIONS.md) - Planning workflows
+- [Next.js Migration Plan](docs/NEXTJS_MIGRATION_PLAN.md) - Vite → Next.js migration strategy
+- [Linear Automation](docs/LINEAR_AUTOMATION.md) - Issue management workflows
+- [GitHub MCP Setup](docs/GITHUB_MCP_SETUP.md) - GitHub MCP server configuration
+- [Figma MCP Setup](docs/FIGMA_MCP_SETUP.md) - Figma MCP server configuration
+
+**Setup & Guides**:
+
+- [Storybook Deployment](docs/STORYBOOK_DEPLOYMENT.md) - Visual regression setup
+- [EmailJS Setup](docs/EMAILJS_SETUP.md) - Contact form configuration
+- [Branch Naming](docs/BRANCH_NAMING.md) - Branch naming conventions
+- [Sanity Migration](docs/SANITY_MIGRATION.md) - Blog migration workflow
+
+### Technology Documentation
+
+**Frontend**:
+
+- [React 18](https://react.dev/) - UI framework
+- [Next.js 15](https://nextjs.org/) - React framework with App Router
+- [Vite](https://vitejs.dev/) - Build tool and development server
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [React Router](https://reactrouter.com/) - Client-side routing (Vite app)
+
+**Styling & Design**:
+
+- [CSS Modules](https://github.com/css-modules/css-modules) - Scoped CSS
+- [Storybook](https://storybook.js.org/) - Component development
+- [Figma](https://www.figma.com/) - Design files and tokens
+
+**Internationalization**:
+
+- [i18next](https://www.i18next.com/) - i18n framework
+- [react-i18next](https://react.i18next.com/) - React bindings
+
+**Testing & Quality**:
+
+- [Vitest](https://vitest.dev/) - Unit testing
+- [Testing Library](https://testing-library.com/) - Component testing
+- [Playwright](https://playwright.dev/) - Visual regression
+- [axe-core](https://github.com/dequelabs/axe-core) - Accessibility testing
+
+**Backend & Deployment**:
+
+- [Vercel](https://vercel.com/docs) - Next.js hosting + serverless
+- [GitHub Pages](https://pages.github.com/) - Static site hosting
+- [Sanity](https://www.sanity.io/docs) - Headless CMS
+- [Sentry](https://docs.sentry.io/) - Error tracking
+
+**Automation & AI**:
+
+- [Linear API](https://developers.linear.app/) - Issue management
+- [MCP](https://modelcontextprotocol.io/) - Model Context Protocol
+- [Claude Code](https://claude.ai/) - AI pair programming
 
 ## ✉️ Chat Email Workflow
 

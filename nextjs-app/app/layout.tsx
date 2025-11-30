@@ -15,19 +15,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
-    sitemap: `${siteUrl}/sitemap.xml`,
   },
   openGraph: {
     type: "website",
     url: siteUrl,
     title: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
-    description: "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
+    description:
+      "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
     siteName: "Digitaltableteur",
   },
   twitter: {
     card: "summary_large_image",
     title: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
-    description: "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
+    description:
+      "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
   },
   robots: {
     index: true,
@@ -49,7 +50,6 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <NextThemeProvider>
           <I18nProvider>
-            {/* @ts-expect-error -- React version mismatch workaround */}
             <NextLayout>{children}</NextLayout>
           </I18nProvider>
         </NextThemeProvider>

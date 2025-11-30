@@ -1,0 +1,158 @@
+import React from "react";
+import styles from "./Footer.module.css";
+import Grid from "@dt/Grid";
+import { useTranslation } from "react-i18next";
+import Icon from "@dt/Icon";
+import Link from "@dt/Link";
+
+const Footer = () => {
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className={styles.footer}>
+      <Grid columns={3} className={styles.footerGrid}>
+        <div className={styles.companyInfo}>
+          <h2>
+            <Link href="/" terminals="sans">
+              Digitaltableteur
+            </Link>
+          </h2>
+          <p>
+            {t("footerAddress1")}
+            <br />
+            {t("footerAddress2")}
+            <br />
+            <Link
+              href="mailto:mail@digitaltableteur.com"
+              aria-label={t("footerAriaEmail")}
+              title={t("footerAriaEmail")}
+              terminals="sans"
+            >
+              mail@digitaltableteur.com
+            </Link>
+          </p>
+          <p className={styles.billingDetails}>{t("footerBillingTitle")}</p>
+          <p>
+            {t("footerBillingName")}
+            <br />
+            {t("footerBillingAddress")}
+            <br />
+            {t("footerBillingZip")}
+            <br />
+            {t("footerBillingVat")}
+          </p>
+        </div>
+      </Grid>
+      <div className={styles.footerLinksRow}>
+        <Link href="/privacy-policy" terminals="sans" size="S">
+          {t("footerPrivacyPolicy", "Privacy Policy")}
+        </Link>
+        <Link href="/ai-use" terminals="sans" size="S">
+          {t("footerAiUse", "AI Usage")}
+        </Link>
+        <Link href="/accessibility" terminals="sans" size="S">
+          {t("footerAccessibility", "Accessibility Statement")}
+        </Link>
+      </div>
+      <div className={styles["socialLinks"]}>
+        <a
+          href="https://www.instagram.com/digitaltableteur/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaInstagram")}
+          title={t("footerAriaInstagram")}
+        >
+          <Icon
+            name="instagram-logo"
+            size={24}
+            ariaLabel={t("footerAriaInstagram")}
+          />
+        </a>
+        <a
+          href="https://www.facebook.com/digitaltableteur"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaFacebook")}
+          title={t("footerAriaFacebook")}
+        >
+          <Icon
+            name="facebook-logo"
+            size={24}
+            ariaLabel={t("footerAriaFacebook")}
+          />
+        </a>
+        <a
+          href="https://www.linkedin.com/company/digitaltableteur/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaLinkedin")}
+          title={t("footerAriaLinkedin")}
+        >
+          <Icon
+            name="linkedin-logo"
+            size={24}
+            ariaLabel={t("footerAriaLinkedin")}
+          />
+        </a>
+        <a
+          href="https://medium.com/@petrilahdelma/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaMedium")}
+          title={t("footerAriaMedium")}
+        >
+          <Icon
+            name="medium-logo"
+            size={24}
+            ariaLabel={t("footerAriaMedium")}
+          />
+        </a>
+        <a
+          href="https://github.com/PetriLahdelma"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaGithub")}
+          title={t("footerAriaGithub")}
+        >
+          <Icon
+            name="github-logo"
+            size={24}
+            ariaLabel={t("footerAriaGithub")}
+          />
+        </a>
+        <a
+          href="https://substack.com/@petrilahdelma?"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaSubstack")}
+          title={t("footerAriaSubstack")}
+        >
+          <Icon
+            name="newspaper"
+            size={24}
+            ariaLabel={t("footerAriaSubstack")}
+          />
+        </a>
+        <a
+          href="https://dribbble.com/digitaltableteur"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaDribbble")}
+          title={t("footerAriaDribbble")}
+        >
+          <Icon
+            name="dribbble-logo"
+            size={24}
+            ariaLabel={t("footerAriaDribbble")}
+          />
+        </a>
+      </div>
+      <p className={styles["footerText"]}>
+        &copy; {currentYear} Digitaltableteur. {t("footerCopyright")}
+      </p>
+    </footer>
+  );
+};
+
+export default Footer;

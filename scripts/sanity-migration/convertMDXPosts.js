@@ -177,7 +177,7 @@ function main() {
     console.log(`✓ Converted ${documents.length} MDX posts to Sanity format`);
     console.log(`✓ Output: ${OUTPUT_NDJSON}`);
     console.log(
-      "\nNext: cd digitaltableteur-blog && npx sanity dataset import ../sanity-output/mdx-posts.ndjson production --replace",
+      "\nNext: cd digitaltableteur-blog && npx sanity dataset import ../sanity-output/mdx-posts.ndjson digitaltableteur-blog --replace",
     );
   } catch (error) {
     console.error("Error:", error.message);
