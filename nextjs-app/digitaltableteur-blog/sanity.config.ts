@@ -8,7 +8,7 @@ export default defineConfig({
   title: 'digitaltableteur',
 
   projectId: 'ai4cwr0g',
-  dataset: 'production',
+  dataset: 'digitaltableteur-blog',
 
   plugins: [structureTool(), visionTool()],
 

@@ -138,39 +138,82 @@ export function NextMobileMenu({
             </ul>
           </nav>
 
-          <div className={styles.section} suppressHydrationWarning>
-            <Label size="s">{t("toggleDarkMode")}</Label>
-            <button
-              type="button"
-              className={styles.navLink}
-              onClick={() => cycleTheme()}
-            >
-              <span className={styles.themeButtonIconWrapper}>
-                {themeIcons[theme]}
-              </span>
-              {t("toggleDarkMode")}
-            </button>
-          </div>
-
-          <div className={styles.section} suppressHydrationWarning>
-            <Label size="s">{t("navLanguageSelector", "Language")}</Label>
-            <div className={styles.nav}>
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  type="button"
-                  className={`${styles.navLink} ${currentLang === lang.code ? styles.navLinkActive : ""}`}
-                  onClick={() => {
-                    i18n.changeLanguage(lang.code);
-                    setCookie("i18next", lang.code);
-                    localStorage.setItem("i18nextLng", lang.code);
-                    onNavigate?.();
-                  }}
-                  aria-current={currentLang === lang.code ? "true" : undefined}
+          <div className={styles.languageSticky} suppressHydrationWarning>
+            <div className={styles.bottomControlsRow}>
+              <div className={styles.bottomLeftGroup}>
+                <Label
+                  htmlFor="mobile-menu-language-list"
+                  className={styles.segmentLabel}
                 >
-                  {lang.label}
+                  {t("navMenuLanguages", "Language")}
+                </Label>
+                <div
+                  id="mobile-menu-language-list"
+                  className={styles.languageList}
+                >
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      type="button"
+                      onClick={() => {
+                        i18n.changeLanguage(lang.code);
+                        setCookie("i18next", lang.code);
+                        localStorage.setItem("i18nextLng", lang.code);
+                        onNavigate?.();
+                      }}
+                      className={`${styles.languageButton} ${
+                        currentLang === lang.code
+                          ? styles.languageButtonActive
+                          : ""
+                      }`.trim()}
+                      aria-current={
+                        currentLang === lang.code ? "true" : undefined
+                      }
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.bottomRightGroup}>
+                <Label
+                  htmlFor="mobile-menu-theme-button"
+                  className={styles.segmentLabel}
+                >
+                  {t("navMenuTheme", "Theme")}
+                </Label>
+                <button
+                  id="mobile-menu-theme-button"
+                  type="button"
+                  className={styles.themeIconButton}
+                  onClick={() => cycleTheme()}
+                  aria-label={t("navMenuThemeToggle", "Cycle theme")}
+                >
+                  {themeIcons[theme]}
                 </button>
-              ))}
+              </div>
+            </div>
+            <div className={styles.footerLinks}>
+              <Link
+                href="/cookie-policy-full"
+                className={styles.footerLink}
+                onClick={() => {
+                  onNavigate?.();
+                  onClose?.();
+                }}
+              >
+                {t("navMenuCookiePolicy")}
+              </Link>
+              <Link
+                href="/ai-use"
+                className={styles.footerLink}
+                onClick={() => {
+                  onNavigate?.();
+                  onClose?.();
+                }}
+              >
+                {t("navMenuAiUsage")}
+              </Link>
             </div>
           </div>
         </div>

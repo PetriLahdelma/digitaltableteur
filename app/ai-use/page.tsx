@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { AiUsageContent } from "./AiUsageContent";
+import { AiUsagePage } from "@/shared/components/pages/AiUsagePage";
 
 export const metadata: Metadata = {
   title: "AI use and transparency",
@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     "Read how Digitaltableteur uses AI-assisted tools, the safeguards we apply, and your rights under EU law.",
 };
 
-export default function AiUsePage() {
-  return <AiUsageContent />;
+// Cache this marketing page for an hour
+export const revalidate = 3600;
+
+export default function AiUse() {
+  return <AiUsagePage />;
 }

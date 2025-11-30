@@ -24,10 +24,18 @@ type Props = {
 
 const themeIcons: Record<string, React.ReactNode> = {
   light: (
-    <Icon name="sun" className={styles.themeButtonIcon} ariaLabel="Light theme" />
+    <Icon
+      name="sun"
+      className={styles.themeButtonIcon}
+      ariaLabel="Light theme"
+    />
   ),
   dark: (
-    <Icon name="moon" className={styles.themeButtonIcon} ariaLabel="Dark theme" />
+    <Icon
+      name="moon"
+      className={styles.themeButtonIcon}
+      ariaLabel="Dark theme"
+    />
   ),
   hcb: (
     <Icon
@@ -62,6 +70,8 @@ export function NextMobileMenu({
   const { theme, cycleTheme } = usePersistentTheme();
   const pathname = usePathname();
   const currentLang = i18n.language.split("-")[0];
+  const panelRef = React.useRef<HTMLDivElement | null>(null);
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
     if (!isOpen) return;
@@ -70,18 +80,82 @@ export function NextMobileMenu({
       if (event.key === "Escape") onClose?.();
     };
     document.addEventListener("keydown", handleKeyDown);
+
+    const focusable =
+      panelRef.current?.querySelector<HTMLElement>(
+        [
+          "button:not([disabled])",
+          "[href]:not([tabindex='-1'])",
+          "input:not([disabled]):not([tabindex='-1'])",
+          "select:not([disabled]):not([tabindex='-1'])",
+          "textarea:not([disabled]):not([tabindex='-1'])",
+          "[tabindex]:not([tabindex='-1'])",
+        ].join(","),
+      ) ?? null;
+
+    focusable?.focus();
+    if (!focusable) {
+      containerRef.current?.focus();
+    }
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       previous?.focus();
     };
   }, [isOpen, onClose]);
 
+  const handleTrapFocus = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "Tab") return;
+
+    const focusableElements = panelRef.current?.querySelectorAll<HTMLElement>(
+      [
+        "button:not([disabled])",
+        "[href]:not([tabindex='-1'])",
+        "input:not([disabled]):not([tabindex='-1'])",
+        "select:not([disabled]):not([tabindex='-1'])",
+        "textarea:not([disabled]):not([tabindex='-1'])",
+        "[tabindex]:not([tabindex='-1'])",
+      ].join(","),
+    );
+
+    if (!focusableElements || focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    } else if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    }
+  };
+
+  const accessibleLabel = t("navMenuAccessibleLabel", "Main navigation");
+
   if (!isOpen) return null;
 
   return (
-    <div className={styles.backdrop} role="dialog" aria-modal="true" id={id} onClick={() => onClose?.()}>
-      <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.panelContent} tabIndex={-1}>
+    <div
+      className={styles.backdrop}
+      role="dialog"
+      aria-modal="true"
+      aria-label={accessibleLabel}
+      id={id}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) {
+          onClose?.();
+        }
+      }}
+    >
+      <div
+        className={styles.panel}
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={handleTrapFocus}
+        ref={panelRef}
+      >
+        <div className={styles.panelContent} tabIndex={-1} ref={containerRef}>
           <div className={styles.header}>
             <Title size="S" level={2} className={styles.title}>
               {t("navMenuTitle")}
@@ -92,14 +166,19 @@ export function NextMobileMenu({
               onClick={() => onClose?.()}
               aria-label={t("navMenuClose", "Close navigation")}
             >
-              <Icon name="x" ariaLabel={t("navMenuClose", "Close navigation")} />
+              <Icon
+                name="x"
+                ariaLabel={t("navMenuClose", "Close navigation")}
+              />
             </button>
           </div>
 
           <nav aria-label="Mobile navigation">
             <ul className={styles.nav}>
               {navItems.map((item) => {
-                const active = item.exact ? pathname === item.href : pathname.startsWith(item.href);
+                const active = item.exact
+                  ? pathname === item.href
+                  : pathname.startsWith(item.href);
                 return (
                   <li key={item.href}>
                     <Link
@@ -118,33 +197,82 @@ export function NextMobileMenu({
             </ul>
           </nav>
 
-          <div className={styles.section}>
-            <Label size="s">{t("toggleDarkMode")}</Label>
-            <button type="button" className={styles.navLink} onClick={() => cycleTheme()}>
-              <span className={styles.themeButtonIconWrapper}>{themeIcons[theme]}</span>
-              {t("toggleDarkMode")}
-            </button>
-          </div>
-
-          <div className={styles.section}>
-            <Label size="s">{t("navLanguageSelector", "Language")}</Label>
-            <div className={styles.nav}>
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  type="button"
-                  className={`${styles.navLink} ${currentLang === lang.code ? styles.navLinkActive : ""}`}
-                  onClick={() => {
-                    i18n.changeLanguage(lang.code);
-                    setCookie("i18next", lang.code);
-                    localStorage.setItem("i18nextLng", lang.code);
-                    onNavigate?.();
-                  }}
-                  aria-current={currentLang === lang.code ? "true" : undefined}
+          <div className={styles.languageSticky}>
+            <div className={styles.bottomControlsRow}>
+              <div className={styles.bottomLeftGroup}>
+                <Label
+                  htmlFor="mobile-menu-language-list"
+                  className={styles.segmentLabel}
                 >
-                  {lang.label}
+                  {t("navMenuLanguages", "Language")}
+                </Label>
+                <div
+                  id="mobile-menu-language-list"
+                  className={styles.languageList}
+                >
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      type="button"
+                      onClick={() => {
+                        i18n.changeLanguage(lang.code);
+                        setCookie("i18next", lang.code);
+                        localStorage.setItem("i18nextLng", lang.code);
+                        onNavigate?.();
+                      }}
+                      className={`${styles.languageButton} ${
+                        currentLang === lang.code
+                          ? styles.languageButtonActive
+                          : ""
+                      }`.trim()}
+                      aria-current={
+                        currentLang === lang.code ? "true" : undefined
+                      }
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.bottomRightGroup}>
+                <Label
+                  htmlFor="mobile-menu-theme-button"
+                  className={styles.segmentLabel}
+                >
+                  {t("navMenuTheme", "Theme")}
+                </Label>
+                <button
+                  id="mobile-menu-theme-button"
+                  type="button"
+                  className={styles.themeIconButton}
+                  onClick={() => cycleTheme()}
+                  aria-label={t("navMenuThemeToggle", "Cycle theme")}
+                >
+                  {themeIcons[theme]}
                 </button>
-              ))}
+              </div>
+            </div>
+            <div className={styles.footerLinks}>
+              <Link
+                href="/cookie-policy-full"
+                className={styles.footerLink}
+                onClick={() => {
+                  onNavigate?.();
+                  onClose?.();
+                }}
+              >
+                {t("navMenuCookiePolicy")}
+              </Link>
+              <Link
+                href="/ai-use"
+                className={styles.footerLink}
+                onClick={() => {
+                  onNavigate?.();
+                  onClose?.();
+                }}
+              >
+                {t("navMenuAiUsage")}
+              </Link>
             </div>
           </div>
         </div>

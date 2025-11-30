@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '📝 Editing: $CLAUDE_FILE_PATHS'"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ \"$CLAUDE_TOOL_INPUT\" == *\"rm -rf\"* ]] || [[ \"$CLAUDE_TOOL_INPUT\" == *\"--force\"* ]]; then echo '⚠️  BLOCKED: Potentially dangerous command' && exit 2; fi"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ \"$CLAUDE_FILE_PATHS\" =~ \\.(ts|tsx|js|jsx|mjs|cjs)$ ]]; then prettier --write \"$CLAUDE_FILE_PATHS\" 2>/dev/null || true; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ \"$CLAUDE_FILE_PATHS\" =~ \\.(css|scss)$ ]]; then prettier --write \"$CLAUDE_FILE_PATHS\" 2>/dev/null || true; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

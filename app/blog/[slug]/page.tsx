@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 
 import { getPostMetaBySlug } from "../postMetadata";
+import { getArticleSchema, stringifyJsonLd } from "@/app/lib/structuredData";
 import ClientArticle from "./ClientArticle";
 
 type Params = { slug: string };
@@ -8,9 +10,14 @@ type Params = { slug: string };
 export const dynamic = "force-dynamic";
 
 const siteBase =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://digitaltableteur.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://digitaltableteur.com";
 
-export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostMetaBySlug(slug);
 
@@ -49,7 +56,41 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   };
 }
 
-export default async function BlogArticle({ params }: { params: Promise<Params> }) {
+export default async function BlogArticle({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
   const { slug } = await params;
-  return <ClientArticle slug={slug} />;
+  const post = getPostMetaBySlug(slug);
+
+  return (
+    <>
+      {post && (
+        <Script
+          id="schema-article"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: stringifyJsonLd(
+              getArticleSchema({
+                title: post.title,
+                description: post.excerpt ?? "",
+                publishedAt: post.publishedAt || new Date().toISOString(),
+                modifiedAt: post.modifiedAt ?? undefined,
+                slug: post.slug,
+                author: post.authorName ?? "Petri Lahdelma",
+                authorUrl: post.authorSlug
+                  ? `${siteBase}/blog/authors/${post.authorSlug}`
+                  : undefined,
+                mainImageUrl: post.mainImageUrl ?? undefined,
+                mainImageAlt: post.mainImageAlt ?? undefined,
+                tags: post.tags ?? [],
+              }),
+            ),
+          }}
+        />
+      )}
+      <ClientArticle slug={slug} />
+    </>
+  );
 }

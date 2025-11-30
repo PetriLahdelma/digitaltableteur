@@ -1,0 +1,39 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.fontSans {
+  font-family: var(--font-text);
+}
+
+.fontSerif {
+  font-family: var(--primary-heading-font, serif);
+}
+
+.linkS {
+  gap: 0.3rem;
+  font-size: 1rem;
+}
+
+.linkM {
+  gap: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.linkL {
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.icon {
+  font-size: 0.75em; /* 12px */
+}
+
+.link.disabled {
+  color: var(--color-gray-medium);
+  pointer-events: none;
+  opacity: 0.5;
+}
