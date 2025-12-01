@@ -5,7 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 
-const normalizePath = (path: string) => (path === "/" ? path : path.replace(/\/+$/, ""));
+const normalizePath = (path: string) =>
+  path === "/" ? path : path.replace(/\/+$/, "");
 
 const blogPages = [
   { path: "/blog/petri-lahdelma-bio", label: "Petri Lahdelma Bio" },
@@ -60,7 +61,8 @@ export function NextBlogNav() {
             disabled={!isArticleRoute || currentIndex <= 0}
             onClick={() => {
               if (!isArticleRoute) return;
-              if (currentIndex > 0) router.push(blogPages[currentIndex - 1].path);
+              if (currentIndex > 0)
+                router.push(blogPages[currentIndex - 1].path);
             }}
           >
             Previous
@@ -80,7 +82,6 @@ export function NextBlogNav() {
           </Button>
         </div>
       </div>
-      <hr style={{ margin: 0, borderColor: "var(--color-border, #ccc)" }} />
     </div>
   );
 }

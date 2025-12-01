@@ -4,8 +4,11 @@
   padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16);
   box-sizing: border-box;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  outline: none;
   font-family: var(--font-text);
   font-size: var(--font-size-button-m);
   font-weight: 500;
@@ -14,15 +17,12 @@
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  user-select: none;
-  border: 1px solid transparent;
-  border-radius: var(--radius-md);
-  outline: none;
   transition:
     background-color 0.3s ease-in-out,
     color 0.3s ease-in-out,
     border 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
+  user-select: none;
 }
 
 .button.primary {
@@ -254,42 +254,42 @@
 }
 
 .button.splitMain {
-  border-start-end-radius: 0;
-  border-end-end-radius: 0;
   margin-inline-end: -1px; /* collapse adjoining border */
+  border-end-end-radius: 0;
+  border-start-end-radius: 0;
 }
 
 .button.splitToggle {
-  border-start-start-radius: 0;
-  border-end-start-radius: 0;
   padding-inline: var(--space-internal-12);
   min-inline-size: 2.75rem;
+  border-end-start-radius: 0;
+  border-start-start-radius: 0;
 }
 
 .button.splitSecondaryMain,
 .button.splitSecondaryToggle {
   border: none;
   background: transparent;
-  color: var(--color-primary);
   box-shadow: none;
+  color: var(--color-primary);
 }
 
 .button.splitTertiaryMain,
 .button.splitTertiaryToggle {
+  margin-inline-end: 0;
   border: none;
   background: transparent;
-  color: var(--color-primary);
   box-shadow: none;
-  margin-inline-end: 0;
+  color: var(--color-primary);
 }
 
 .button.splitSecondaryMain,
 .button.splitSecondaryToggle {
+  margin-inline-end: 0;
   border: none;
   background: transparent;
-  color: var(--color-primary);
   box-shadow: none;
-  margin-inline-end: 0;
+  color: var(--color-primary);
 }
 
 @media (width <= 768px) {

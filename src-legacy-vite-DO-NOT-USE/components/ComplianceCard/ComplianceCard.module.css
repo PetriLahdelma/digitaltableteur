@@ -82,6 +82,7 @@
 .ruleCard {
   display: flex;
   padding: var(--space-internal-12);
+  min-width: 0; /* Allow flex items to shrink below content size */
   flex-direction: column;
   gap: var(--space-internal-8);
   border: 1px solid
@@ -89,7 +90,6 @@
   border-radius: var(--radius-8);
   background: var(--color-neutral-bg);
   transition: background 0.2s;
-  min-width: 0; /* Allow flex items to shrink below content size */
   overflow: hidden; /* Contain overflowing content */
 }
 
@@ -99,28 +99,28 @@
 
 .ruleHeader {
   display: flex;
+  min-width: 0; /* Allow flex item to shrink */
   justify-content: space-between;
   align-items: center;
   gap: var(--space-internal-8);
   font-weight: 600;
-  min-width: 0; /* Allow flex item to shrink */
 }
 
 .ruleLabel {
+  min-width: 0; /* Allow text to shrink */
   flex: 1;
   font-weight: 600;
-  min-width: 0; /* Allow text to shrink */
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .ruleDetails {
   line-height: 1.4;
-  color: color-mix(in srgb, var(--color-text) 80%, transparent);
   overflow-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
+  color: color-mix(in srgb, var(--color-text) 80%, transparent);
 }
 
 .resizeHandle {
@@ -147,6 +147,7 @@
 }
 
 /* stylelint-disable selector-pseudo-class-no-unknown -- Intentional :global escape for Card integration */
+
 .fitContent :global(.actions),
 .fitContent :global(.footer) {
   border-top: none !important;

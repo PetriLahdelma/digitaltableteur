@@ -421,7 +421,7 @@ h5,
 h6 {
   overflow-wrap: break-word;
   hyphens: auto;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .wavyUnderline,

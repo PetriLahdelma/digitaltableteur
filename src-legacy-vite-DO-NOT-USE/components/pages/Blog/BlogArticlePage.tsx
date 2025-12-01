@@ -163,13 +163,6 @@ export function BlogArticlePage({
         <MDXProvider components={mdxComponents}>
           <Component />
         </MDXProvider>
-        <hr
-          style={{
-            border: "none",
-            borderTop: "2px solid var(--color-primary)",
-            margin: "3rem 0 1.5rem",
-          }}
-        />
         <Title level={2} size="M">
           Share
         </Title>

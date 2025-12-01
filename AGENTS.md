@@ -67,10 +67,14 @@ npm run deploy             # Deploy to GitHub Pages
   - Design system, reusable components
 - **Serverless Functions**: `api-legacy-vercel-functions/` → [see api-legacy-vercel-functions/AGENTS.md](api-legacy-vercel-functions/AGENTS.md)
   - Vercel functions with CORS middleware
+- **Akaunting Integration**: `akaunting/` → [see akaunting/AGENTS.md](akaunting/AGENTS.md)
+  - Self-hosted accounting with Docker + MCP tools
 - **Documentation**: `docs/` → [see docs/AGENTS.md](docs/AGENTS.md)
   - Critical reference docs (component rules, migration plans, MCP setup)
 - **Automation Scripts**: `scripts/` → [see scripts/AGENTS.md](scripts/AGENTS.md)
   - Linear, Sentry MCP, visual regression, deployment
+- **Tool Libraries**: `lib/` → Reusable utilities
+  - `akaunting-tools.mjs` - Accounting API wrapper
 
 ### Quick Find Commands
 

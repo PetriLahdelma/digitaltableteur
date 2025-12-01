@@ -34,6 +34,14 @@ mcp.json
 .vercel
 .env*.local
 
+# Akaunting
+akaunting/.env
+akaunting/.env.local
+akaunting/*.sql
+akaunting/*.sql.gz
+akaunting/backups/
+akaunting/logs/
+
 # Next.js build output
 .next/
 .next/cache/

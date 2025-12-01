@@ -56,8 +56,8 @@
   margin: 0;
   font-family: var(--secondary-heading-font, sans-serif);
   font-size: 1.25rem;
-  color: var(--color-primary);
   font-weight: 600;
+  color: var(--color-primary);
 }
 
 .header .title {
@@ -72,9 +72,9 @@
 
 .closeButton {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 0;
+  justify-content: center;
+  align-items: center;
   border: none;
   background: none;
   font-size: 1rem;

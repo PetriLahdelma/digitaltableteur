@@ -26,24 +26,24 @@
 }
 
 .sizefull {
-  max-width: 100%;
   width: 100%;
+  max-width: 100%;
 }
 
 /* Header */
 
 .header {
   display: flex;
+  padding: var(--space-internal-24) var(--space-internal-16);
   align-items: center;
   gap: var(--space-internal-12);
-  padding: var(--space-internal-24) var(--space-internal-16);
 }
 
 .headerActions {
-  margin-inline-start: auto;
   display: inline-flex;
-  align-items: center;
+  margin-inline-start: auto;
   justify-content: flex-end;
+  align-items: center;
   gap: var(--space-layout-16);
 }
 
@@ -57,9 +57,9 @@
 
 .icon {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -82,10 +82,10 @@
 
 .footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-internal-8);
   padding: var(--space-internal-16);
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-internal-8);
 }
 
 .footerLeading {
@@ -107,11 +107,11 @@
 
 .footerTrailingContainer {
   display: flex;
-  gap: var(--space-layout-16);
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
   flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-layout-16);
 }
 
 /* Responsive Adjustments */

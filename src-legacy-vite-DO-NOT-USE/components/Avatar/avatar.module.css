@@ -19,9 +19,9 @@
   inline-size: var(--avatar-size, 2.5rem);
   min-block-size: var(--avatar-size, 2.5rem);
   min-inline-size: var(--avatar-size, 2.5rem);
+  flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
-  flex-shrink: 0;
 }
 
 .avatarText {

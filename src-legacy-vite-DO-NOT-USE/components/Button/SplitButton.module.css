@@ -1,9 +1,9 @@
 .splitWrapper {
-  position: relative;
   display: inline-flex;
+  position: relative;
+  inline-size: auto;
   align-items: stretch;
   gap: 0;
-  inline-size: auto;
   font-family: var(
     --font-text,
     "Moderat",
@@ -27,22 +27,21 @@
 .menu {
   position: absolute;
   top: calc(100% + var(--space-internal-8));
-  inset-inline-start: 0;
   z-index: 20;
-  min-inline-size: var(--menu-min-width);
-  inline-size: max(var(--menu-min-width), 100%);
+  margin: 0;
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-4);
-  margin: 0;
+  inline-size: max(var(--menu-min-width), 100%);
+  min-inline-size: var(--menu-min-width);
   border-radius: var(--radius-md, 0.5rem);
   background: var(--color-white);
   box-shadow: var(--shadow-menu);
+  inset-inline-start: 0;
   list-style: none;
 }
 
 .menu[data-align="end"] {
-  inset-inline-start: auto;
-  inset-inline-end: 0;
+  inset-inline: auto 0;
 }
 
 .menuItemWrapper {
@@ -52,37 +51,39 @@
 .subMenu {
   position: absolute;
   top: var(--menu-submenu-offset-vertical);
-  inset-inline-start: 100%;
   margin-inline-start: var(--menu-submenu-offset-horizontal);
-  min-inline-size: var(--menu-min-width);
-  inline-size: max(var(--menu-min-width), 100%);
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-4);
-  list-style: none;
+  inline-size: max(var(--menu-min-width), 100%);
+  min-inline-size: var(--menu-min-width);
   border-radius: var(--radius-md, 0.5rem);
   background: var(--color-white);
   box-shadow: var(--shadow-menu);
+  inset-inline-start: 100%;
+  list-style: none;
 }
 
 .menuItem {
   display: flex;
-  gap: var(--space-internal-8);
-  align-items: center;
-  inline-size: 100%;
   padding-block: 0.5rem;
   padding-inline: 0.75rem;
+  inline-size: 100%;
   min-block-size: 2.5rem;
+  align-items: center;
+  gap: var(--space-internal-8);
   border: none;
+  border-radius: var(--radius-sm, 0.25rem);
   background: none;
   font: inherit;
-  color: var(--color-dark, #1f2933);
   text-align: left;
+  color: var(--color-dark, #1f2933);
   cursor: pointer;
-  border-radius: var(--radius-sm, 0.25rem);
 }
 
 .menuItem:hover,
 .menuItem:focus-visible {
+  position: relative;
+  z-index: 1;
   outline: none;
   background: color-mix(
     in srgb,
@@ -90,32 +91,30 @@
     var(--color-white) 65%
   );
   box-shadow: none;
-  position: relative;
-  z-index: 1;
 }
 
 .menuItem:focus-visible {
+  z-index: 2;
   outline: none;
   box-shadow: var(--shadow-focus);
-  z-index: 2;
 }
 
 .menuItem:disabled {
-  color: var(--color-muted, #8c8c8c);
-  cursor: not-allowed;
   background: transparent;
   box-shadow: none;
+  color: var(--color-muted, #8c8c8c);
+  cursor: not-allowed;
 }
 
 .menuIcon {
   display: inline-flex;
-  padding-top: 0.125rem;
   color: var(--color-primary);
+  padding-top: 0.125rem;
 }
 
 .menuText {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: var(--space-internal-4);
   font-family: var(--font-text, "Moderat", system-ui, sans-serif);
@@ -123,17 +122,17 @@
 
 .menuDescription {
   font-size: var(--font-size-text-s, 0.875rem);
-  color: var(--color-muted, #6b7280);
   line-height: 1.4;
+  color: var(--color-muted, #6b7280);
 }
 
 .caret {
   display: inline-flex;
-  color: currentColor;
+  color: currentcolor;
 }
 
 .trailing {
   display: inline-flex;
-  align-items: center;
   margin-inline-start: auto;
+  align-items: center;
 }

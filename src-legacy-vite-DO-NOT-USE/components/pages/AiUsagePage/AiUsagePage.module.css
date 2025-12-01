@@ -21,7 +21,7 @@
 
 .emailLink {
   text-decoration: underline wavy;
+  color: var(--color-primary);
   text-decoration-color: var(--color-primary);
   text-underline-offset: 0.2em;
-  color: var(--color-primary);
 }

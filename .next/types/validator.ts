@@ -182,6 +182,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/work/helsinki-design-system/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/work/helsinki-design-system">> = Specific
+  const handler = {} as typeof import("../../app/work/helsinki-design-system/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/work/illustrations/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/work/illustrations">> = Specific

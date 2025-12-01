@@ -85,17 +85,17 @@
 
 .footerLinksRow {
   display: flex;
-  justify-content: flex-start;
+  margin-block: var(--space-layout-12);
   flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: var(--space-layout-12);
-  margin-block: var(--space-layout-12);
 }
 
 .footerLinksRow a {
-  color: var(--inverted-text-color);
-  text-decoration: none;
   position: relative;
+  text-decoration: none;
+  color: var(--inverted-text-color);
   padding-bottom: 6px;
 }
 

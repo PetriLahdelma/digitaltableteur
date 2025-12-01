@@ -102,15 +102,16 @@
 }
 
 /* stylelint-disable declaration-no-important -- Overriding Text component styles */
+
 .header .tagline {
   margin: 0 !important;
   font-family: Moderat, var(--font-sans), sans-serif !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
-  font-optical-sizing: auto;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--secondary-text-color) !important;
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -121,28 +122,30 @@
 /* stylelint-enable declaration-no-important */
 
 /* stylelint-disable declaration-no-important -- Overriding Text component styles */
+
 .offlineText {
   display: inline-block;
   margin-inline-start: 0.5rem;
   font-family: Moderat, var(--font-sans), sans-serif !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
-  font-optical-sizing: auto;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-error);
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }
 /* stylelint-enable declaration-no-important */
 
 /* stylelint-disable declaration-no-important -- Overriding Title component styles */
+
 .header .title {
   margin: 0 !important;
   font-family: Moderat, var(--font-sans), sans-serif !important;
   font-size: 1.25rem !important;
   font-weight: 700 !important;
-  font-optical-sizing: auto;
   color: var(--color-title) !important;
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -185,13 +188,13 @@
 @media (width <= 560px) {
   .resetButton [data-button-slot="text"] {
     position: absolute;
+    padding: 0;
     width: 1px;
     height: 1px;
-    padding: 0;
     border: 0;
     white-space: nowrap;
-    overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    overflow: hidden;
   }
 }
 
@@ -393,11 +396,11 @@
   font-size: 0.95rem;
   color: var(--inverted-text-color, #fff);
   cursor: pointer;
+  pointer-events: auto;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
     opacity 0.2s ease;
-  pointer-events: auto;
 }
 
 .toggle:focus-visible {
