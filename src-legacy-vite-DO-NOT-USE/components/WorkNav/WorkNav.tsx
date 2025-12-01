@@ -53,7 +53,6 @@ const WorkNav: React.FC = () => {
           </Button>
         </div>
       </div>
-      <hr className={styles.hrLine} />
     </>
   );
 };

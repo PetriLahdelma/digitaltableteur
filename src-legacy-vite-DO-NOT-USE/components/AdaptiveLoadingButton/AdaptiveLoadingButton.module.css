@@ -14,15 +14,15 @@
 }
 
 .spinner {
-  inline-size: 1rem;
   block-size: 1rem;
-  border: 2px solid color-mix(in srgb, currentColor 24%, transparent);
-  border-start-start-radius: 999px;
-  border-start-end-radius: 999px;
-  border-end-start-radius: 999px;
-  border-end-end-radius: 999px;
+  inline-size: 1rem;
+  border: 2px solid color-mix(in srgb, currentcolor 24%, transparent);
   animation: spin 1s linear infinite;
-  border-inline-start-color: currentColor;
+  border-end-end-radius: 999px;
+  border-end-start-radius: 999px;
+  border-inline-start-color: currentcolor;
+  border-start-end-radius: 999px;
+  border-start-start-radius: 999px;
 }
 
 .loadingLabel {
@@ -32,8 +32,8 @@
 
 .progress {
   color: inherit;
-  font-variant-numeric: tabular-nums;
   opacity: 0.8;
+  font-variant-numeric: tabular-nums;
 }
 
 @media (prefers-reduced-motion: reduce) {

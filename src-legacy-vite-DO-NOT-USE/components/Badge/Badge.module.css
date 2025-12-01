@@ -147,17 +147,19 @@
 }
 
 /* Wrapper container for badges that wrap other content (count/dot mode) */
+
 .wrapper {
-  position: relative;
   display: inline-block;
+  position: relative;
   vertical-align: middle;
 }
 
 /* Count badge styles */
+
 .count {
+  padding: var(--space-internal-6) var(--space-internal-6);
   min-width: var(--space-layout-16); /* 16px minimum for single digit */
   height: var(--space-layout-16);
-  padding: var(--space-internal-6) var(--space-internal-6);
   font-size: var(--font-size-text-xxs);
   font-weight: 600;
   text-align: center;
@@ -165,37 +167,40 @@
 }
 
 /* Position count badge when wrapping */
+
 .wrapper .count {
   position: absolute;
   top: 0;
   right: -0.5rem;
-  transform: translate(50%, -50%);
   z-index: 1;
+  transform: translate(50%, -50%);
 }
 
 .countText {
   display: inline-flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   line-height: 1;
 }
 
 /* Dot mode styles */
+
 .dot {
-  width: var(--space-layout-8);
-  height: var(--space-layout-8);
-  min-width: var(--space-layout-8);
   padding: 0;
-  border-radius: 50%;
+  width: var(--space-layout-8);
+  min-width: var(--space-layout-8);
+  height: var(--space-layout-8);
   border: none;
+  border-radius: 50%;
   vertical-align: middle;
 }
 
 /* Position dot badge when wrapping */
+
 .wrapper .dot {
   position: absolute;
   top: 0;
   right: 0;
-  transform: translate(50%, -50%);
   z-index: 1;
+  transform: translate(50%, -50%);
 }

@@ -6,20 +6,20 @@
 
 .toolbar {
   display: flex;
+  padding: var(--space-layout-8, 0.5rem) var(--space-layout-12, 0.75rem);
   justify-content: space-between;
   align-items: center;
   gap: var(--space-layout-12, 0.75rem);
-  padding: var(--space-layout-8, 0.5rem) var(--space-layout-12, 0.75rem);
-  background: var(--color-neutral-bg, rgba(0, 0, 0, 0.35));
-  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+  border: 1px solid var(--color-border, rgb(255 255 255 / 8%));
   border-radius: var(--radius-m, 12px) var(--radius-m, 12px) 0 0;
+  background: var(--color-neutral-bg, rgb(0 0 0 / 35%));
   color: var(--color-text, #e5e7eb);
 }
 
 .language {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   font-size: var(--font-size-text-xxs, 0.75rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-muted, #9ca3af);
 }
 
@@ -37,25 +37,25 @@
 
 .pre {
   /* Base (VS light by Andrew Lock) */
-  --code-bg: #ffffff;
+  --code-bg: #fff;
   --code-border: #d3d3d3;
-  --code-text: #000000;
+  --code-text: #000;
   --code-line-number: #6b7280;
-  --code-token-keyword: #0000ff;
+  --code-token-keyword: #00f;
   --code-token-string: #a31515;
   --code-token-number: #098658;
   --code-token-comment: #008000;
 
-  background: var(--code-bg);
+  margin: 0;
+  padding: var(--space-layout-16) var(--space-layout-20);
   border: 1px solid var(--code-border);
   border-radius: 0 0 var(--radius-m, 12px) var(--radius-m, 12px);
-  padding: var(--space-layout-16) var(--space-layout-20);
-  margin: 0;
-  overflow: auto;
+  background: var(--code-bg);
   font-family: var(--font-mono);
   font-size: var(--font-size-text-s, 0.9375rem);
   line-height: 1.6;
   color: var(--code-text);
+  overflow: auto;
 }
 
 :global(.themeDark) .pre {
@@ -84,24 +84,24 @@
 
 :global(.themeHCW) .pre {
   /* High-contrast white: reuse VS light */
-  --code-bg: #ffffff;
+  --code-bg: #fff;
   --code-border: #d3d3d3;
-  --code-text: #000000;
+  --code-text: #000;
   --code-line-number: #4b5563;
-  --code-token-keyword: #0000ff;
+  --code-token-keyword: #00f;
   --code-token-string: #a31515;
   --code-token-number: #098658;
   --code-token-comment: #004b00;
 }
 
 .pre::-webkit-scrollbar {
-  height: 8px;
   width: 8px;
+  height: 8px;
 }
 
 .pre::-webkit-scrollbar-thumb {
-  background: var(--color-border, #2d2f45);
   border-radius: 8px;
+  background: var(--color-border, #2d2f45);
 }
 
 .pre::-webkit-scrollbar-track {
@@ -116,18 +116,18 @@
 .line {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: var(--space-layout-12, 0.75rem);
   align-items: start;
+  gap: var(--space-layout-12, 0.75rem);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
 .lineNumber {
-  color: var(--code-line-number);
-  text-align: right;
   min-width: 2ch;
-  user-select: none;
+  text-align: right;
+  color: var(--code-line-number);
   font-variant-numeric: tabular-nums;
+  user-select: none;
 }
 
 .codeText {
@@ -135,14 +135,14 @@
 }
 
 .tokenKeyword {
-  color: var(--code-token-keyword);
   font-weight: 600;
+  color: var(--code-token-keyword);
 }
 
 :global(.token.keyword),
 :global([data-token="keyword"]) {
-  color: var(--code-token-keyword);
   font-weight: 600;
+  color: var(--code-token-keyword);
 }
 
 .tokenString {

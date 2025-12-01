@@ -42,6 +42,9 @@ async function sendEmailViaResend(payload: {
   message: string;
   hearAbout?: string | null;
   time?: string | null;
+  attachmentName?: string | null;
+  attachmentType?: string | null;
+  attachmentData?: string | null;
 }) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const TO = process.env.CONTACT_EMAIL_TO || "mail@digitaltableteur.com";
@@ -66,6 +69,17 @@ async function sendEmailViaResend(payload: {
     payload.message,
   ].filter(Boolean);
 
+  const attachments = [];
+  if (payload.attachmentData && payload.attachmentName) {
+    const parts = payload.attachmentData.split(",");
+    const base64Content = parts.length > 1 ? parts[1] : parts[0];
+    attachments.push({
+      filename: payload.attachmentName,
+      content: base64Content,
+      contentType: payload.attachmentType || undefined,
+    });
+  }
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -77,6 +91,7 @@ async function sendEmailViaResend(payload: {
       to: [TO],
       subject,
       text: textLines.join("\n"),
+      ...(attachments.length ? { attachments } : {}),
     }),
   });
 

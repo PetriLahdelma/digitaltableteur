@@ -1,0 +1,789 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Akaunting Accounting API",
+    "version": "3.0.0",
+    "description": "Self-hosted accounting software API for invoicing, expense tracking, and financial management",
+    "contact": {
+      "name": "Akaunting Support",
+      "url": "https://akaunting.com/support"
+    },
+    "license": {
+      "name": "GPL-3.0",
+      "url": "https://github.com/akaunting/akaunting/blob/master/LICENSE"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1",
+      "description": "Local development server"
+    },
+    {
+      "url": "https://accounting.digitaltableteur.eu/api/v1",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "API token from Akaunting Settings → Developer → API"
+      }
+    },
+    "schemas": {
+      "Invoice": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "company_id": { "type": "integer" },
+          "invoice_number": { "type": "string" },
+          "order_number": { "type": "string", "nullable": true },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "sent",
+              "viewed",
+              "approved",
+              "partial",
+              "paid",
+              "cancelled"
+            ]
+          },
+          "invoiced_at": { "type": "string", "format": "date" },
+          "due_at": { "type": "string", "format": "date" },
+          "amount": { "type": "number", "format": "double" },
+          "currency_code": { "type": "string" },
+          "currency_rate": { "type": "number", "format": "double" },
+          "contact_id": { "type": "integer" },
+          "contact_name": { "type": "string" },
+          "contact_email": { "type": "string", "format": "email" },
+          "contact_tax_number": { "type": "string", "nullable": true },
+          "contact_phone": { "type": "string", "nullable": true },
+          "contact_address": { "type": "string", "nullable": true },
+          "notes": { "type": "string", "nullable": true },
+          "footer": { "type": "string", "nullable": true },
+          "items": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/InvoiceItem" }
+          }
+        },
+        "required": [
+          "invoiced_at",
+          "due_at",
+          "amount",
+          "currency_code",
+          "contact_id"
+        ]
+      },
+      "InvoiceItem": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "description": { "type": "string", "nullable": true },
+          "quantity": { "type": "number", "format": "double" },
+          "price": { "type": "number", "format": "double" },
+          "tax": { "type": "number", "format": "double" },
+          "tax_id": { "type": "integer", "nullable": true },
+          "total": { "type": "number", "format": "double" }
+        },
+        "required": ["name", "quantity", "price"]
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "company_id": { "type": "integer" },
+          "type": { "type": "string", "enum": ["customer", "vendor"] },
+          "name": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "tax_number": { "type": "string", "nullable": true },
+          "phone": { "type": "string", "nullable": true },
+          "address": { "type": "string", "nullable": true },
+          "city": { "type": "string", "nullable": true },
+          "zip_code": { "type": "string", "nullable": true },
+          "state": { "type": "string", "nullable": true },
+          "country": { "type": "string", "nullable": true },
+          "website": { "type": "string", "format": "uri", "nullable": true },
+          "currency_code": { "type": "string" },
+          "enabled": { "type": "boolean" },
+          "reference": { "type": "string", "nullable": true }
+        },
+        "required": ["type", "name", "email", "currency_code"]
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "company_id": { "type": "integer" },
+          "type": { "type": "string", "enum": ["income", "expense"] },
+          "paid_at": { "type": "string", "format": "date" },
+          "amount": { "type": "number", "format": "double" },
+          "currency_code": { "type": "string" },
+          "currency_rate": { "type": "number", "format": "double" },
+          "account_id": { "type": "integer" },
+          "document_id": { "type": "integer", "nullable": true },
+          "contact_id": { "type": "integer", "nullable": true },
+          "description": { "type": "string" },
+          "category_id": { "type": "integer" },
+          "payment_method": { "type": "string" },
+          "reference": { "type": "string", "nullable": true },
+          "reconciled": { "type": "boolean" }
+        },
+        "required": [
+          "type",
+          "paid_at",
+          "amount",
+          "currency_code",
+          "account_id",
+          "category_id",
+          "description",
+          "payment_method"
+        ]
+      },
+      "Item": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "company_id": { "type": "integer" },
+          "name": { "type": "string" },
+          "description": { "type": "string", "nullable": true },
+          "sale_price": { "type": "number", "format": "double" },
+          "purchase_price": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "quantity": { "type": "integer", "nullable": true },
+          "tax_id": { "type": "integer", "nullable": true },
+          "category_id": { "type": "integer", "nullable": true },
+          "enabled": { "type": "boolean" }
+        },
+        "required": ["name", "sale_price"]
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "company_id": { "type": "integer" },
+          "name": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["income", "expense", "item", "other"]
+          },
+          "color": { "type": "string" },
+          "enabled": { "type": "boolean" }
+        },
+        "required": ["name", "type"]
+      },
+      "Report": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "data": { "type": "object" }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" },
+          "errors": { "type": "object" }
+        }
+      }
+    },
+    "responses": {
+      "UnauthorizedError": {
+        "description": "Authentication credentials missing or invalid",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      },
+      "NotFoundError": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      },
+      "ValidationError": {
+        "description": "Validation failed",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/invoices": {
+      "get": {
+        "operationId": "listInvoices",
+        "summary": "List all invoices",
+        "description": "Retrieve a paginated list of invoices",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": { "type": "integer", "default": 1 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "default": 15 }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "sent",
+                "viewed",
+                "approved",
+                "partial",
+                "paid",
+                "cancelled"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of invoices",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Invoice" }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "current_page": { "type": "integer" },
+                        "total": { "type": "integer" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" }
+        }
+      },
+      "post": {
+        "operationId": "createInvoice",
+        "summary": "Create a new invoice",
+        "description": "Create a new invoice with line items",
+        "tags": ["Invoices"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Invoice" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Invoice created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Invoice" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" },
+          "422": { "$ref": "#/components/responses/ValidationError" }
+        }
+      }
+    },
+    "/invoices/{id}": {
+      "get": {
+        "operationId": "getInvoice",
+        "summary": "Get invoice by ID",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Invoice" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" },
+          "404": { "$ref": "#/components/responses/NotFoundError" }
+        }
+      },
+      "put": {
+        "operationId": "updateInvoice",
+        "summary": "Update an invoice",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Invoice" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Invoice updated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Invoice" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" },
+          "404": { "$ref": "#/components/responses/NotFoundError" },
+          "422": { "$ref": "#/components/responses/ValidationError" }
+        }
+      },
+      "delete": {
+        "operationId": "deleteInvoice",
+        "summary": "Delete an invoice",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Invoice deleted" },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" },
+          "404": { "$ref": "#/components/responses/NotFoundError" }
+        }
+      }
+    },
+    "/contacts": {
+      "get": {
+        "operationId": "listContacts",
+        "summary": "List all contacts",
+        "tags": ["Contacts"],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["customer", "vendor"] }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of contacts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Contact" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" }
+        }
+      },
+      "post": {
+        "operationId": "createContact",
+        "summary": "Create a new contact",
+        "tags": ["Contacts"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Contact" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Contact created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Contact" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" },
+          "422": { "$ref": "#/components/responses/ValidationError" }
+        }
+      }
+    },
+    "/contacts/{id}": {
+      "get": {
+        "operationId": "getContact",
+        "summary": "Get contact by ID",
+        "tags": ["Contacts"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Contact" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" },
+          "404": { "$ref": "#/components/responses/NotFoundError" }
+        }
+      }
+    },
+    "/transactions": {
+      "get": {
+        "operationId": "listTransactions",
+        "summary": "List all transactions",
+        "tags": ["Transactions"],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["income", "expense"] }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of transactions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Transaction" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" }
+        }
+      },
+      "post": {
+        "operationId": "createTransaction",
+        "summary": "Create a new transaction",
+        "description": "Create income or expense transaction",
+        "tags": ["Transactions"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Transaction" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Transaction created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Transaction" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" },
+          "422": { "$ref": "#/components/responses/ValidationError" }
+        }
+      }
+    },
+    "/items": {
+      "get": {
+        "operationId": "listItems",
+        "summary": "List all items",
+        "tags": ["Items"],
+        "responses": {
+          "200": {
+            "description": "List of items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Item" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" }
+        }
+      },
+      "post": {
+        "operationId": "createItem",
+        "summary": "Create a new item",
+        "tags": ["Items"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Item" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Item created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Item" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" },
+          "422": { "$ref": "#/components/responses/ValidationError" }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "operationId": "listCategories",
+        "summary": "List all categories",
+        "tags": ["Categories"],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["income", "expense", "item", "other"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Category" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" }
+        }
+      },
+      "post": {
+        "operationId": "createCategory",
+        "summary": "Create a new category",
+        "tags": ["Categories"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Category" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Category created",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Category" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" },
+          "422": { "$ref": "#/components/responses/ValidationError" }
+        }
+      }
+    },
+    "/reports/profit-loss": {
+      "get": {
+        "operationId": "getProfitLoss",
+        "summary": "Get profit & loss report",
+        "tags": ["Reports"],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "integer" }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Profit & loss report",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Report" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" }
+        }
+      }
+    },
+    "/reports/income-summary": {
+      "get": {
+        "operationId": "getIncomeSummary",
+        "summary": "Get income summary report",
+        "tags": ["Reports"],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "integer" }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Income summary",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Report" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" }
+        }
+      }
+    },
+    "/reports/expense-summary": {
+      "get": {
+        "operationId": "getExpenseSummary",
+        "summary": "Get expense summary report",
+        "tags": ["Reports"],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "integer" }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expense summary",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Report" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/UnauthorizedError" }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Invoices",
+      "description": "Invoice management"
+    },
+    {
+      "name": "Contacts",
+      "description": "Customer and vendor management"
+    },
+    {
+      "name": "Transactions",
+      "description": "Income and expense transactions"
+    },
+    {
+      "name": "Items",
+      "description": "Products and services"
+    },
+    {
+      "name": "Categories",
+      "description": "Transaction categories"
+    },
+    {
+      "name": "Reports",
+      "description": "Financial reports"
+    }
+  ]
+}

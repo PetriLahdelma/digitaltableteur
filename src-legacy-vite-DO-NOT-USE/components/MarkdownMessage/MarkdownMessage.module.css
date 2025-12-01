@@ -7,7 +7,7 @@
   line-height: 1.5;
   overflow-wrap: anywhere;
   color: var(--color-text-primary);
-  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .root :global(::marker) {

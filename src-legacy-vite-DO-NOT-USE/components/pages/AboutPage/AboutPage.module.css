@@ -84,10 +84,10 @@
 
 .manifesto {
   display: grid;
-  gap: var(--space-layout-20);
   padding: clamp(2rem, 6vw, 4rem);
-  background: transparent;
+  gap: var(--space-layout-20);
   border-block-start: none;
+  background: transparent;
 }
 
 .manifestoTitle {
@@ -96,8 +96,8 @@
 }
 
 .manifestoLine {
-  margin: 0;
   display: flex;
+  margin: 0;
   flex-wrap: wrap;
   gap: 0.45rem;
   font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
@@ -108,8 +108,8 @@
 
 .manifestoWord {
   display: inline-flex;
-  align-items: center;
   padding: 0.15rem 0.35rem;
+  align-items: center;
   border-radius: var(--radius-sm, 6px);
   transition:
     background-color 220ms ease,
@@ -119,14 +119,14 @@
 
 .manifestoWordActive {
   background: var(--color-primary);
-  color: var(--color-white);
   box-shadow: none;
+  color: var(--color-white);
 }
 
 .manifestoSeparator {
   display: inline-flex;
-  align-items: center;
   padding: 0 0.35rem;
+  align-items: center;
   font-weight: 600;
   color: var(--color-primary);
 }

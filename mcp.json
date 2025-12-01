@@ -1,5 +1,9 @@
 {
   "mcpServers": {
+    "figma-desktop": {
+      "type": "http",
+      "url": "http://127.0.0.1:3845/mcp"
+    },
     "figma-developer-mcp": {
       "type": "sse",
       "url": "http://localhost:3333/sse",
@@ -10,7 +14,10 @@
     "ts-language-server": {
       "type": "command",
       "command": "npx",
-      "args": ["typescript-language-server", "--stdio"],
+      "args": [
+        "typescript-language-server",
+        "--stdio"
+      ],
       "env": {
         "TYPESCRIPT_LOG_LEVEL": "error"
       }
@@ -18,7 +25,10 @@
     "sentry-mcp": {
       "type": "command",
       "command": "node",
-      "args": ["scripts/sentry-mcp.js", "issues"],
+      "args": [
+        "scripts/sentry-mcp.js",
+        "issues"
+      ],
       "env": {
         "SENTRY_AUTH_TOKEN": "<YOUR_SENTRY_TOKEN>",
         "SENTRY_ORG": "digitaltableteur",
@@ -48,9 +58,34 @@
     "next-devtools": {
       "type": "command",
       "command": "npx",
-      "args": ["-y", "next-devtools-mcp@latest"],
+      "args": [
+        "-y",
+        "next-devtools-mcp@latest"
+      ],
       "env": {
         "NEXT_TELEMETRY_DISABLED": "1"
+      }
+    },
+    "akaunting": {
+      "type": "http",
+      "baseUrl": "http://localhost:8080/api",
+      "auth": {
+        "type": "basic",
+        "username": "{{AKAUNTING_API_USERNAME}}",
+        "password": "{{AKAUNTING_API_PASSWORD}}"
+      },
+      "headers": {
+        "X-Company": "1"
+      },
+      "description": "Akaunting Accounting Software API",
+      "endpoints": {
+        "invoices": "/invoices",
+        "contacts": "/contacts",
+        "items": "/items",
+        "transactions": "/transactions",
+        "reports": "/reports",
+        "categories": "/categories",
+        "expenses": "/expenses"
       }
     }
   },
@@ -59,6 +94,18 @@
       "type": "promptString",
       "id": "GITHUB_MCP_PAT",
       "description": "GitHub Personal Access Token for MCP",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "AKAUNTING_API_USERNAME",
+      "description": "Akaunting API Username (email)",
+      "password": false
+    },
+    {
+      "type": "promptString",
+      "id": "AKAUNTING_API_PASSWORD",
+      "description": "Akaunting API Password",
       "password": true
     }
   ]

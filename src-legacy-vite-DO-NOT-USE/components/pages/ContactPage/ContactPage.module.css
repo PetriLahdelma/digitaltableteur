@@ -54,14 +54,14 @@
 }
 
 .mapWrapper::after {
-  content: "";
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  background: var(--color-primary);
-  mix-blend-mode: color;
-  opacity: 0.8;
   z-index: 9999;
+  background: var(--color-primary);
+  pointer-events: none;
+  opacity: 0.8;
+  content: "";
+  mix-blend-mode: color;
 }
 
 .map {
@@ -232,7 +232,7 @@ h2.resumeTitle {
   color: var(--color-white);
 }
 
-@media (max-width: 767px) {
+@media (width <= 767px) {
   .cvDownloadSection {
     padding: 3rem;
   }
@@ -242,7 +242,7 @@ h2.resumeTitle {
   }
 
   .contact > *:has(.contactInfo) {
-    padding-inline: 0;
     padding-block-end: 0;
+    padding-inline: 0;
   }
 }
