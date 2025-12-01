@@ -159,7 +159,6 @@ export function NextMobileMenu({
                         i18n.changeLanguage(lang.code);
                         setCookie("i18next", lang.code);
                         localStorage.setItem("i18nextLng", lang.code);
-                        onNavigate?.();
                       }}
                       className={`${styles.languageButton} ${
                         currentLang === lang.code
@@ -195,7 +194,7 @@ export function NextMobileMenu({
             </div>
             <div className={styles.footerLinks}>
               <Link
-                href="/cookie-policy-full"
+                href="/privacy-policy"
                 className={styles.footerLink}
                 onClick={() => {
                   onNavigate?.();
@@ -213,6 +212,16 @@ export function NextMobileMenu({
                 }}
               >
                 {t("navMenuAiUsage")}
+              </Link>
+              <Link
+                href="/accessibility"
+                className={styles.footerLink}
+                onClick={() => {
+                  onNavigate?.();
+                  onClose?.();
+                }}
+              >
+                {t("navMenuAccessibility")}
               </Link>
             </div>
           </div>

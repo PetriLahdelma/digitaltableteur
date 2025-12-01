@@ -19,8 +19,8 @@
 }
 
 .s .label {
-  font-size: 0.85rem;
   gap: 0.5rem;
+  font-size: 0.85rem;
 }
 
 .m .label {
@@ -40,6 +40,7 @@
 }
 
 /* SVG progress circle sizing */
+
 .progressCircle {
   width: 1.5rem;
   height: auto;

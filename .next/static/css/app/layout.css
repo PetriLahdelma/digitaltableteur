@@ -404,7 +404,6 @@ h6 {
   overflow-wrap: break-word;
   -webkit-hyphens: auto;
           hyphens: auto;
-  word-wrap: break-word;
 }
 
 .wavyUnderline,
@@ -940,7 +939,8 @@ code {
   height: 1px;
   border: 0;
   white-space: nowrap;
-  clip: rect(0, 0, 0, 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
   overflow: hidden;
 }
 
@@ -965,17 +965,17 @@ code {
 
 .Footer_footerLinksRow__zc_cS {
   display: flex;
-  justify-content: flex-start;
+  margin-block: var(--space-layout-12);
   flex-direction: column;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: var(--space-layout-12);
-  margin-block: var(--space-layout-12);
 }
 
 .Footer_footerLinksRow__zc_cS a {
-  color: var(--inverted-text-color);
-  text-decoration: none;
   position: relative;
+  text-decoration: none;
+  color: var(--inverted-text-color);
   padding-bottom: 6px;
 }
 
@@ -995,11 +995,6 @@ code {
           mask-repeat: repeat-x;
   -webkit-mask-size: 16px 6px;
           mask-size: 16px 6px;
-}
-
-.Footer_footerLinksRow__zc_cS a:hover::after,
-.Footer_footerLinksRow__zc_cS a:focus-visible::after {
-  opacity: 0.85;
 }
 
 .Footer_socialLinks__FtVAB {
@@ -1579,7 +1574,8 @@ code {
   height: 1px;
   border: 0;
   white-space: nowrap;
-  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
   overflow: hidden;
 }
 
@@ -2111,12 +2107,18 @@ code {
 }
 
 .MobileMenu_languageButton__6WEFu {
-  padding: var(--space-internal-8, 0.5rem) var(--space-internal-12, 0.75rem);
-  width: 3rem;
+  display: inline-flex;
+  padding: var(--space-internal-8, 0.5rem) var(--space-internal-4, 0.25rem);
+  width: 2.5rem;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
   border: 0 none;
   background: transparent;
   font-family: var(--primary-body-font, sans-serif);
   font-size: var(--font-size-text-s, 0.875rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: var(--primary-text-color, #00f);
   cursor: pointer;
   transition:
@@ -2126,6 +2128,7 @@ code {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  overflow: hidden;
 }
 
 .MobileMenu_languageButton__6WEFu:hover {
@@ -2250,25 +2253,22 @@ code {
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/icons/Logo.module.css ***!
   \****************************************************************************************************************************************************************************************************************************************************************************/
 .Logo_logoWrapper__8n7_j {
-  position: relative;
   display: inline-block;
+  position: relative;
   width: 256px;
   height: 256px;
 }
 
 .Logo_logoBlur___7bXy {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: blur(10px);
+  inset: 0;
   z-index: 1;
   width: 256px;
   height: 256px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: blur(10px);
 }
 
 .Logo_logoImage__e7S53 {

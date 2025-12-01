@@ -62,21 +62,18 @@
 }
 
 .resetButton {
-  margin-block-start: var(--space-layout-16);
-  margin-block-end: var(--space-layout-8);
+  margin-block: var(--space-layout-16) var(--space-layout-8);
 }
 
 .submitButton {
-  margin-block-start: var(--space-layout-16);
-  margin-block-end: var(--space-layout-8);
+  margin-block: var(--space-layout-16) var(--space-layout-8);
 }
 
 .attachmentNotice {
+  margin-block: calc(var(--space-layout-16) * -1) var(--space-layout-16);
   font-family: var(--font-text);
   font-size: var(--font-size-text-s);
   color: var(--color-warning);
-  margin-block-start: calc(var(--space-layout-16) * -1);
-  margin-block-end: var(--space-layout-16);
 }
 
 /* Mobile responsiveness */
@@ -97,8 +94,7 @@
 /* Extra small screens */
 @media (width <= 480px) {
   .contactForm {
-    margin-block-start: var(--space-layout-8);
-    margin-block-end: var(--space-layout-48);
+    margin-block: var(--space-layout-8) var(--space-layout-48);
     margin-inline: auto;
     padding-block: var(--space-layout-24);
     padding-inline: var(--space-layout-16);

@@ -42,7 +42,8 @@ export function NextWorkNav() {
             icon={<Icon name="arrow-left" ariaLabel="Previous" />}
             disabled={currentIndex <= 0}
             onClick={() => {
-              if (currentIndex > 0) router.push(workPages[currentIndex - 1].path);
+              if (currentIndex > 0)
+                router.push(workPages[currentIndex - 1].path);
             }}
           >
             Previous
@@ -53,14 +54,14 @@ export function NextWorkNav() {
             endIcon={<Icon name="arrow-right" ariaLabel="Next" />}
             disabled={currentIndex === workPages.length - 1}
             onClick={() => {
-              if (currentIndex < workPages.length - 1) router.push(workPages[currentIndex + 1].path);
+              if (currentIndex < workPages.length - 1)
+                router.push(workPages[currentIndex + 1].path);
             }}
           >
             Next
           </Button>
         </div>
       </div>
-      <hr style={{ margin: 0, borderColor: "var(--color-border, #ccc)" }} />
     </div>
   );
 }

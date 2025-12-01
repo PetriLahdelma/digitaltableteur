@@ -1,3 +1,7 @@
 {
-  "/contact/page": "app/contact/page.js"
+  "/work/helsinki-design-system/page": "app/work/helsinki-design-system/page.js",
+  "/page": "app/page.js",
+  "/accessibility/page": "app/accessibility/page.js",
+  "/privacy-policy/page": "app/privacy-policy/page.js",
+  "/ai-use/page": "app/ai-use/page.js"
 }

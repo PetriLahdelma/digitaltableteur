@@ -10,14 +10,14 @@
   font-family: var(--font-text);
   font-size: 0.938rem;
   color: var(--color-white);
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
   transform: translateX(-50%) translateY(100px);
   opacity: 0;
-  transition: all 0.3s ease-in-out;
-  pointer-events: none;
 }
 
 .toast.show {
+  pointer-events: auto;
   transform: translateX(-50%) translateY(0);
   opacity: 1;
-  pointer-events: auto;
 }

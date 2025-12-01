@@ -9,11 +9,11 @@
 
 .list {
   display: inline-flex;
-  gap: 0.25rem;
-  padding: 0;
   margin: 0;
-  list-style: none;
+  padding: 0;
   align-items: center;
+  gap: 0.25rem;
+  list-style: none;
 }
 
 .item {
@@ -23,13 +23,13 @@
 }
 
 .separator {
-  color: var(--color-border, #cbd5e1);
   font-size: 0.9rem;
+  color: var(--color-border, #cbd5e1);
 }
 
 .link {
-  color: var(--link-color, #0f62fe);
   text-decoration: none;
+  color: var(--link-color, #0f62fe);
 }
 
 .link:hover,
@@ -38,6 +38,6 @@
 }
 
 .current {
-  color: var(--primary-text-color, #0f172a);
   font-weight: 600;
+  color: var(--primary-text-color, #0f172a);
 }

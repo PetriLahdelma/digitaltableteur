@@ -1,8 +1,8 @@
 .authorContainer {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 0.5rem;
-  flex-shrink: 0;
 }
 
 .authorContainer img {
@@ -30,7 +30,7 @@
 }
 
 .authorLink:focus-visible {
+  border-radius: 2px;
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-  border-radius: 2px;
 }
