@@ -1,0 +1,57 @@
+
+> nextjs-app@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.6
+   - Environments: .env.local, .env.production
+   - Experiments (use with caution):
+     ✓ externalDir
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 11.2s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/24) ...
+   Generating static pages (6/24) 
+   Generating static pages (12/24) 
+   Generating static pages (18/24) 
+ ✓ Generating static pages (24/24)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS  Revalidate  Expire
+┌ ○ /                                    2.41 kB         1.4 MB          1h      1y
+├ ○ /_not-found                            156 B         104 kB
+├ ○ /about                               4.09 kB         110 kB          1h      1y
+├ ○ /accessibility                       2.94 kB        1.36 MB          1h      1y
+├ ○ /ai-use                              3.01 kB        1.36 MB          1h      1y
+├ ƒ /api/chat                              156 B         104 kB
+├ ƒ /api/contact                           156 B         104 kB
+├ ƒ /api/download-cv                       156 B         104 kB
+├ ƒ /api/save-contact                      156 B         104 kB
+├ ƒ /api/test-health/runs                  156 B         104 kB
+├ ƒ /api/test-health/runs/latest           156 B         104 kB
+├ ○ /blog                                  438 B        1.43 MB         10m      1y
+├ ƒ /blog/[slug]                         6.33 kB        1.44 MB
+├ ƒ /blog/authors/[slug]                   534 B        1.43 MB
+├ ○ /contact                             65.7 kB        1.42 MB
+├ ○ /llms.txt                              156 B         104 kB
+├ ○ /privacy-policy                         3 kB        1.36 MB          1h      1y
+├ ○ /robots.txt                            156 B         104 kB
+├ ○ /sitemap.xml                           156 B         104 kB
+├ ƒ /studio/[[...tool]]                  1.61 MB        1.75 MB
+├ ○ /work                                  488 B         104 kB          1h      1y
+├ ○ /work/garage-junction                 6.9 kB        1.37 MB
+├ ○ /work/helsinki-design-system           14 kB        1.39 MB
+├ ○ /work/illustrations                  5.69 kB        1.37 MB
+└ ○ /work/new-things-co                  8.16 kB        1.41 MB
++ First Load JS shared by all             104 kB
+  ├ chunks/1255-50287a8709ebcc63.js        46 kB
+  ├ chunks/4bd1b696-cdc9ca4cdd6886b1.js  54.3 kB
+  └ other shared chunks (total)          3.35 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

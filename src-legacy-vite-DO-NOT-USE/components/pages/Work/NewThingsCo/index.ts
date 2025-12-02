@@ -1,1 +1,0 @@
-export { NewThingsCoPage } from "./NewThingsCoPage";

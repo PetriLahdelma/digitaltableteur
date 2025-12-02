@@ -35,7 +35,8 @@
     "akaunting:mcp:setup": "node scripts/akaunting-mcp-setup.mjs",
     "akaunting:mcp:test": "node scripts/test-akaunting-mcp.mjs",
     "akaunting:tools:test": "node lib/akaunting-tools.mjs test",
-    "akaunting:dashboard": "node lib/akaunting-tools.mjs dashboard"
+    "akaunting:dashboard": "node lib/akaunting-tools.mjs dashboard",
+    "akaunting:finnish-setup": "node scripts/akaunting-finnish-setup.mjs"
   },
   "dependencies": {
     "@ai-sdk/mcp": "^0.0.10",

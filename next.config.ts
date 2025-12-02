@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import path from "path";
 
 const csp = [
   "default-src 'self'",
@@ -78,6 +79,12 @@ const nextConfig: NextConfig = {
     ];
   },
   webpack: (config) => {
+    // Add path alias for @dt
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@dt": path.resolve(__dirname, "nextjs-app/shared/components"),
+    };
+
     // Legacy Vite pages moved to shared/vite-pages to prevent routing conflicts
     config.watchOptions = {
       ...config.watchOptions,

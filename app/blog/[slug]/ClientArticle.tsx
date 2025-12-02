@@ -1,6 +1,6 @@
 "use client";
 
-import { BlogArticlePage } from "@/shared/components/pages/Blog";
+import { BlogArticlePage } from "@/nextjs-app/shared/components/pages/Blog";
 import { NextBlogNav } from "../NextBlogNav";
 
 export default function ClientArticle({ slug }: { slug: string }) {

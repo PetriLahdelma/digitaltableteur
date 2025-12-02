@@ -1,7 +1,8 @@
 {
-  "/work/helsinki-design-system/page": "app/work/helsinki-design-system/page.js",
   "/page": "app/page.js",
-  "/accessibility/page": "app/accessibility/page.js",
-  "/privacy-policy/page": "app/privacy-policy/page.js",
-  "/ai-use/page": "app/ai-use/page.js"
+  "/work/new-things-co/page": "app/work/new-things-co/page.js",
+  "/work/garage-junction/page": "app/work/garage-junction/page.js",
+  "/work/illustrations/page": "app/work/illustrations/page.js",
+  "/work/helsinki-design-system/page": "app/work/helsinki-design-system/page.js",
+  "/work/page": "app/work/page.js"
 }
