@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { AiUsagePage } from "@/shared/components/pages/AiUsagePage";
+import { AiUsagePage } from "@/nextjs-app/shared/components/pages/AiUsagePage";
 
 export function AiUsageContent() {
   const router = useRouter();

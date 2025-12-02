@@ -9,7 +9,8 @@ import {
 import { I18nProvider } from "../providers/I18nProvider";
 import { NextThemeProvider } from "../providers/ThemeProvider";
 import { ToastProvider } from "../providers/ToastProvider";
-import { NextLayout } from "../components/NextLayout";
+import { CookieConsentProvider } from "../nextjs-app/shared/lib/cookieConsent";
+import { NextLayout } from "@dt/NextLayout";
 import "./globals.css";
 
 const siteUrl =
@@ -120,7 +121,9 @@ export default function RootLayout({
         <NextThemeProvider>
           <I18nProvider>
             <ToastProvider>
-              <NextLayout>{children}</NextLayout>
+              <CookieConsentProvider autoShow={true}>
+                <NextLayout>{children}</NextLayout>
+              </CookieConsentProvider>
             </ToastProvider>
           </I18nProvider>
         </NextThemeProvider>

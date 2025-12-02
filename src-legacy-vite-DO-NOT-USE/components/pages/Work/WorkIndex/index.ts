@@ -1,1 +1,0 @@
-export { WorkIndexPage } from "./WorkIndexPage";

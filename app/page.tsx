@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { HomePage } from "@/shared/components/pages/Home/HomePage";
+import { HomePage } from "@/nextjs-app/shared/components/pages/Home/HomePage";
 
 export const metadata: Metadata = {
   title: "Digitaltableteur | Design Systems & AI-Powered DesignOps",

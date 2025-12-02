@@ -2249,17 +2249,17 @@ code {
   }
 }
 
-/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/icons/Logo.module.css ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************/
-.Logo_logoWrapper__8n7_j {
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./nextjs-app/shared/components/icons/Logo.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+.Logo_logoWrapper__c7LXq {
   display: inline-block;
   position: relative;
   width: 256px;
   height: 256px;
 }
 
-.Logo_logoBlur___7bXy {
+.Logo_logoBlur__uaIs3 {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -2271,7 +2271,7 @@ code {
   filter: blur(10px);
 }
 
-.Logo_logoImage__e7S53 {
+.Logo_logoImage__yec2U {
   position: relative;
   z-index: 2;
   width: 256px;
@@ -2279,11 +2279,11 @@ code {
   object-fit: contain;
 }
 
-.Logo_logoImageBlend__Aj7_F {
+.Logo_logoImageBlend__5WevP {
   mix-blend-mode: difference;
 }
 
-.Logo_logoImageNormal__MDyVq {
+.Logo_logoImageNormal__x2rJz {
   mix-blend-mode: normal;
 }
 
