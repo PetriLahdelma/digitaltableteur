@@ -12,13 +12,13 @@ export default defineConfig({
       "shared/components/**/*.test.{ts,tsx}",
       "app/**/*.test.{ts,tsx}",
       "components/**/*.test.{ts,tsx}",
+      "nextjs-app/shared/components/**/*.test.{ts,tsx}",
     ],
     exclude: [
       "**/node_modules/**",
       "**/dist/**",
       "src-legacy-vite-DO-NOT-USE/**",
       "vite-app/**",
-      "nextjs-app/**",
     ],
     coverage: {
       provider: "v8",
@@ -28,6 +28,7 @@ export default defineConfig({
         "shared/components/**/*.{ts,tsx}",
         "app/**/*.{ts,tsx}",
         "components/**/*.{ts,tsx}",
+        "nextjs-app/shared/components/**/*.{ts,tsx}",
       ],
       exclude: [
         "**/*.stories.{ts,tsx}",
@@ -35,13 +36,12 @@ export default defineConfig({
         "**/index.{ts,tsx}",
         "src-legacy-vite-DO-NOT-USE/**",
         "vite-app/**",
-        "nextjs-app/**",
       ],
     },
   },
   resolve: {
     alias: {
-      "@dt": resolve(__dirname, "shared/components"),
+      "@dt": resolve(__dirname, "nextjs-app/shared/components"),
       "@": resolve(__dirname, "."),
     },
   },

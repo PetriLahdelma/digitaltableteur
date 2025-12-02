@@ -1,1 +1,0 @@
-export { IllustrationsPage } from "./IllustrationsPage";

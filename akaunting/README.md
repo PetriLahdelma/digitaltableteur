@@ -37,23 +37,22 @@ This will:
 3. Give it a name (e.g., "VS Code MCP")
 4. Enable required modules:
    - ✅ invoices
-   - ✅ contacts
-   - ✅ items
-   - ✅ transactions
-   - ✅ reports
-   - ✅ categories
-   - ✅ expenses
-5. Copy the generated API token
 
-### 4. Configure Environment
+### 3. Configure API Access
 
-Add your API key to `akaunting/.env`:
+**Important**: Self-hosted Akaunting uses **Basic Authentication** with your admin credentials. The API Key app is only available in Akaunting Cloud (paid).
+
+After completing the setup wizard, add your admin credentials to `akaunting/.env`:
 
 ```bash
-AKAUNTING_API_KEY=your_generated_api_key_here
+AKAUNTING_API_USERNAME=admin@digitaltableteur.com
+AKAUNTING_API_PASSWORD=your_admin_password
+AKAUNTING_COMPANY_ID=1
 ```
 
-### 5. Configure MCP Integration
+**Optional**: Create a dedicated API user in Akaunting (Settings → Users) with limited permissions for better security.
+
+### 4. Configure MCP Integration
 
 Run the MCP setup script:
 
@@ -149,10 +148,11 @@ docker run --rm \
 ## Security Best Practices
 
 1. **Change default passwords** in `akaunting/.env`
-2. **Use strong API keys** - regenerate if compromised
+2. **Use strong admin passwords** - API uses your admin credentials
 3. **Keep `.env` private** - never commit to git (already in `.gitignore`)
-4. **Update regularly**: `docker compose pull && docker compose up -d`
-5. **Use HTTPS in production** with reverse proxy (Caddy/Nginx)
+4. **Create dedicated API user** with limited permissions for MCP access
+5. **Update regularly**: `docker compose pull && docker compose up -d`
+6. **Use HTTPS in production** with reverse proxy (Caddy/Nginx)
 
 ## Production Deployment
 
@@ -205,8 +205,14 @@ docker compose logs db
 
 ### API returns 401 Unauthorized
 
-1. Verify API key in `.env` matches Akaunting dashboard
-2. Check API token hasn't expired in Settings → Developer
+1. Verify username/password in `.env` match your admin credentials
+2. Test authentication with curl:
+   ```bash
+   curl -u "admin@digitaltableteur.com:password" \
+     -H "X-Company: 1" \
+     http://localhost:8080/api/companies
+   ```
+3. Ensure `X-Company: 1` header is included in requests
 
 ### Container won't start
 
@@ -221,9 +227,14 @@ docker compose logs -f app
 ### List invoices
 
 ```typescript
-const invoices = await fetch("http://localhost:8080/api/v1/invoices", {
+const authToken = Buffer.from(
+  `${AKAUNTING_API_USERNAME}:${AKAUNTING_API_PASSWORD}`,
+).toString("base64");
+
+const invoices = await fetch("http://localhost:8080/api/invoices", {
   headers: {
-    Authorization: `Bearer ${AKAUNTING_API_KEY}`,
+    Authorization: `Basic ${authToken}`,
+    "X-Company": "1",
   },
 });
 ```
@@ -231,10 +242,15 @@ const invoices = await fetch("http://localhost:8080/api/v1/invoices", {
 ### Create customer
 
 ```typescript
-await fetch("http://localhost:8080/api/v1/contacts", {
+const authToken = Buffer.from(
+  `${AKAUNTING_API_USERNAME}:${AKAUNTING_API_PASSWORD}`,
+).toString("base64");
+
+await fetch("http://localhost:8080/api/contacts", {
   method: "POST",
   headers: {
-    Authorization: `Bearer ${AKAUNTING_API_KEY}`,
+    Authorization: `Basic ${authToken}`,
+    "X-Company": "1",
     "Content-Type": "application/json",
   },
   body: JSON.stringify({

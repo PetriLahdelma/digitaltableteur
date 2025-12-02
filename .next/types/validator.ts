@@ -110,42 +110,6 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
-// Validate ../../app/cookie-policy-full-en/page.tsx
-{
-  type __IsExpected<Specific extends AppPageConfig<"/cookie-policy-full-en">> = Specific
-  const handler = {} as typeof import("../../app/cookie-policy-full-en/page.js")
-  type __Check = __IsExpected<typeof handler>
-  // @ts-ignore
-  type __Unused = __Check
-}
-
-// Validate ../../app/cookie-policy-full-fi/page.tsx
-{
-  type __IsExpected<Specific extends AppPageConfig<"/cookie-policy-full-fi">> = Specific
-  const handler = {} as typeof import("../../app/cookie-policy-full-fi/page.js")
-  type __Check = __IsExpected<typeof handler>
-  // @ts-ignore
-  type __Unused = __Check
-}
-
-// Validate ../../app/cookie-policy-full-sv/page.tsx
-{
-  type __IsExpected<Specific extends AppPageConfig<"/cookie-policy-full-sv">> = Specific
-  const handler = {} as typeof import("../../app/cookie-policy-full-sv/page.js")
-  type __Check = __IsExpected<typeof handler>
-  // @ts-ignore
-  type __Unused = __Check
-}
-
-// Validate ../../app/cookie-policy/page.tsx
-{
-  type __IsExpected<Specific extends AppPageConfig<"/cookie-policy">> = Specific
-  const handler = {} as typeof import("../../app/cookie-policy/page.js")
-  type __Check = __IsExpected<typeof handler>
-  // @ts-ignore
-  type __Unused = __Check
-}
-
 // Validate ../../app/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/">> = Specific

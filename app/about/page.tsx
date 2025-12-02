@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
-import { AboutPage } from "@/shared/components/pages/AboutPage";
+import { AboutPage } from "@/nextjs-app/shared/components/pages/AboutPage";
 import { getPersonSchema, stringifyJsonLd } from "@/app/lib/structuredData";
 
 export async function generateMetadata(): Promise<Metadata> {

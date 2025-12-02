@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from "react";
-import Toast from "../shared/components/Toast/Toast";
+import Toast from "../nextjs-app/shared/components/Toast/Toast";
 
 interface ToastContextType {
   showToast: (message: string, duration?: number) => void;

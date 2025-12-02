@@ -14,10 +14,7 @@
     "ts-language-server": {
       "type": "command",
       "command": "npx",
-      "args": [
-        "typescript-language-server",
-        "--stdio"
-      ],
+      "args": ["typescript-language-server", "--stdio"],
       "env": {
         "TYPESCRIPT_LOG_LEVEL": "error"
       }
@@ -25,10 +22,7 @@
     "sentry-mcp": {
       "type": "command",
       "command": "node",
-      "args": [
-        "scripts/sentry-mcp.js",
-        "issues"
-      ],
+      "args": ["scripts/sentry-mcp.js", "issues"],
       "env": {
         "SENTRY_AUTH_TOKEN": "<YOUR_SENTRY_TOKEN>",
         "SENTRY_ORG": "digitaltableteur",
@@ -58,10 +52,7 @@
     "next-devtools": {
       "type": "command",
       "command": "npx",
-      "args": [
-        "-y",
-        "next-devtools-mcp@latest"
-      ],
+      "args": ["-y", "next-devtools-mcp@latest"],
       "env": {
         "NEXT_TELEMETRY_DISABLED": "1"
       }

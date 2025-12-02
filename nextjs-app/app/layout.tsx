@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-import { I18nProvider } from "../providers/I18nProvider";
+import { I18nProvider } from "../../providers/I18nProvider";
 import { NextThemeProvider } from "../providers/ThemeProvider";
-import { NextLayout } from "../components/NextLayout";
+import { CookieConsentProvider } from "../shared/lib/cookieConsent";
+import { NextLayout } from "../shared/components/NextLayout";
 import "./globals.css";
 
 const siteUrl =
@@ -50,7 +51,9 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <NextThemeProvider>
           <I18nProvider>
-            <NextLayout>{children}</NextLayout>
+            <CookieConsentProvider>
+              <NextLayout>{children}</NextLayout>
+            </CookieConsentProvider>
           </I18nProvider>
         </NextThemeProvider>
       </body>

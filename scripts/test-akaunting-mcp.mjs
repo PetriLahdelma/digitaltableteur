@@ -40,7 +40,9 @@ async function testConnection(baseUrl, username, password, companyId) {
 
   if (!username || !password) {
     console.error("\n❌ API credentials not configured");
-    console.error("   Please set AKAUNTING_API_USERNAME and AKAUNTING_API_PASSWORD in akaunting/.env");
+    console.error(
+      "   Please set AKAUNTING_API_USERNAME and AKAUNTING_API_PASSWORD in akaunting/.env",
+    );
     return false;
   }
 
@@ -129,7 +131,12 @@ async function main() {
   const password = env.AKAUNTING_API_PASSWORD;
   const companyId = env.AKAUNTING_COMPANY_ID || "1";
 
-  const connected = await testConnection(baseUrl, username, password, companyId);
+  const connected = await testConnection(
+    baseUrl,
+    username,
+    password,
+    companyId,
+  );
 
   if (connected) {
     const authToken = Buffer.from(`${username}:${password}`).toString("base64");
