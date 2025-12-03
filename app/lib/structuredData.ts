@@ -8,6 +8,8 @@
  * @see https://developers.google.com/search/docs/appearance/structured-data
  */
 
+import { sanitizeJsonLd } from './sanitize';
+
 const SITE_URL = "https://www.digitaltableteur.com";
 
 export interface OrganizationSchemaOptions {
@@ -308,8 +310,15 @@ export function getCreativeWorkSchema(
 }
 
 /**
- * Utility to safely stringify JSON-LD for Script components
+ * Safely stringify JSON-LD for script tag injection
+ * Uses DOMPurify for defense-in-depth XSS protection
  */
-export function stringifyJsonLd(data: Record<string, unknown>): string {
-  return JSON.stringify(data, null, 0);
+export function stringifyJsonLd(obj: Record<string, unknown>): string {
+  const jsonString = JSON.stringify(obj)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026");
+  
+  // Additional sanitization layer with DOMPurify
+  return sanitizeJsonLd(jsonString);
 }

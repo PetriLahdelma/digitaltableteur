@@ -19,6 +19,29 @@ interface DeleteDataRequest {
   confirmationToken?: string;
 }
 
+// Rate limiting to prevent enumeration attacks
+// Security audit recommendation: 3 requests per hour per email
+const GDPR_RATE_LIMIT_WINDOW_MS = 3_600_000; // 1 hour
+const GDPR_RATE_LIMIT_MAX = 3; // requests per window per email
+const gdprBuckets = new Map<string, { count: number; windowStart: number }>();
+
+function isGdprRateLimited(email: string): boolean {
+  const now = Date.now();
+  const bucket = gdprBuckets.get(email);
+  
+  if (!bucket || now - bucket.windowStart > GDPR_RATE_LIMIT_WINDOW_MS) {
+    gdprBuckets.set(email, { count: 1, windowStart: now });
+    return false;
+  }
+  
+  if (bucket.count >= GDPR_RATE_LIMIT_MAX) {
+    return true;
+  }
+  
+  bucket.count += 1;
+  return false;
+}
+
 /**
  * POST /api/gdpr/delete-data
  * Request deletion of user data from the database
@@ -46,6 +69,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "Invalid email address" },
         { status: 400 },
+      );
+    }
+
+    // Rate limiting to prevent enumeration attacks
+    if (isGdprRateLimited(email)) {
+      SecurityLogger.logDataDeletion(
+        ip,
+        userAgent,
+        email,
+        false,
+        "Rate limit exceeded",
+      );
+      return NextResponse.json(
+        { error: "Too many deletion requests for this email. Please try again in 1 hour." },
+        { status: 429, headers: { "Retry-After": "3600" } },
       );
     }
 
