@@ -66,6 +66,7 @@
     "gray-matter": "^4.0.3",
     "i18next": "^25.6.1",
     "i18next-browser-languagedetector": "^7.2.0",
+    "isomorphic-dompurify": "^2.30.0",
     "libphonenumber-js": "^1.12.29",
     "mongo-sanitize": "^1.1.0",
     "mongodb": "^7.0.0",
