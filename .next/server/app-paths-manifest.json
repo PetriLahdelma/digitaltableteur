@@ -1,8 +1,3 @@
 {
-  "/page": "app/page.js",
-  "/work/new-things-co/page": "app/work/new-things-co/page.js",
-  "/work/garage-junction/page": "app/work/garage-junction/page.js",
-  "/work/illustrations/page": "app/work/illustrations/page.js",
-  "/work/helsinki-design-system/page": "app/work/helsinki-design-system/page.js",
-  "/work/page": "app/work/page.js"
+  "/work/helsinki-design-system/page": "app/work/helsinki-design-system/page.js"
 }

@@ -1,0 +1,110 @@
+# Dependabot configuration for automated dependency scanning
+# See: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
+
+version: 2
+updates:
+  # Main package.json (root)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "PetriLahdelma"
+    labels:
+      - "dependencies"
+      - "security"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    # Group non-security updates to reduce PR noise
+    groups:
+      development-dependencies:
+        patterns:
+          - "@types/*"
+          - "eslint*"
+          - "prettier"
+          - "@testing-library/*"
+          - "vitest*"
+        update-types:
+          - "minor"
+          - "patch"
+      production-dependencies:
+        patterns:
+          - "react*"
+          - "next*"
+          - "@vercel/*"
+        update-types:
+          - "patch"
+    # Security updates always get individual PRs
+    versioning-strategy: "increase"
+
+  # Next.js app package.json
+  - package-ecosystem: "npm"
+    directory: "/nextjs-app"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "PetriLahdelma"
+    labels:
+      - "dependencies"
+      - "nextjs"
+      - "security"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+
+  # Vite app package.json
+  - package-ecosystem: "npm"
+    directory: "/vite-app"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "PetriLahdelma"
+    labels:
+      - "dependencies"
+      - "vite-legacy"
+      - "security"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+
+  # Sanity blog package.json
+  - package-ecosystem: "npm"
+    directory: "/digitaltableteur-blog"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "PetriLahdelma"
+    labels:
+      - "dependencies"
+      - "sanity"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    reviewers:
+      - "PetriLahdelma"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"
