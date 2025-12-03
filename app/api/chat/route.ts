@@ -15,6 +15,7 @@ import {
   createCorsHeaders,
 } from "../chat-shared";
 import { getDonnyTools } from "../donny-tools";
+import { checkPromptInjection, sanitizeAiOutput, stripSecretsFromResponse } from "../../lib/promptGuardrails";
 
 // IncomingUiMessages type - represents UI messages array before conversion
 type IncomingUiMessages = Parameters<typeof convertToModelMessages>[0];
@@ -87,6 +88,32 @@ export async function POST(request: NextRequest) {
         (Array.isArray((message as any).parts) ? (message as any).parts : []);
       return { ...message, content };
     });
+
+    // Security: Check for prompt injection attempts
+    const lastMessage = messages[messages.length - 1];
+    const lastContent = typeof lastMessage?.content === "string" 
+      ? lastMessage.content 
+      : Array.isArray(lastMessage?.content) 
+        ? lastMessage.content.map(p => typeof p === "string" ? p : p.text || "").join(" ")
+        : "";
+    
+    const ipAddress = request.headers.get("x-forwarded-for")?.split(",")[0] || 
+                     request.headers.get("x-real-ip") || 
+                     "unknown";
+    
+    const guardrailCheck = checkPromptInjection(lastContent, ipAddress);
+    
+    if (guardrailCheck.isBlocked) {
+      console.warn("[chat] Prompt injection blocked:", guardrailCheck.reason);
+      return NextResponse.json(
+        { error: guardrailCheck.reason || "Your message could not be processed." },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+    
+    if (guardrailCheck.suspicionLevel !== "none") {
+      console.warn("[chat] Suspicious prompt detected (level: ", guardrailCheck.suspicionLevel, ")");
+    }
 
     // Disable MCP/stdio tools in the serverless runtime to avoid spawn/network flakiness
     const tools = await getDonnyTools({ enableMcp: false, allowStdio: false });

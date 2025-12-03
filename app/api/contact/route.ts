@@ -4,8 +4,9 @@ import { getDatabase } from "../../lib/mongodb";
 import { z } from "zod";
 
 // Simple in-memory rate limiter (best-effort; serverless cold starts reset this)
-const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
-const RATE_LIMIT_MAX = 5; // requests per window per IP
+// Security audit recommendation: 3 submissions per 15 minutes to prevent spam amplification
+const RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
+const RATE_LIMIT_MAX = 3; // requests per window per IP
 const buckets = new Map<string, { count: number; windowStart: number }>();
 
 const contactSchema = z.object({
@@ -110,8 +111,8 @@ export async function POST(req: NextRequest) {
 
   if (rateLimit(ip)) {
     return NextResponse.json(
-      { error: "Too many requests" },
-      { status: 429, headers: { "Retry-After": "60" } },
+      { error: "Too many contact form submissions. Please try again in 15 minutes." },
+      { status: 429, headers: { "Retry-After": "900" } },
     );
   }
 
