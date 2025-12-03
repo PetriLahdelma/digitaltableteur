@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { MongoClient } from "mongodb";
+import sanitize from "mongo-sanitize";
+import { getDatabase } from "../../lib/mongodb";
 import { z } from "zod";
 
 // Simple in-memory rate limiter (best-effort; serverless cold starts reset this)
@@ -126,29 +127,35 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: message }, { status: 400 });
   }
 
-  const uri = process.env.MONGODB_URI;
-  const dbName = process.env.MONGODB_DB;
-  if (!uri) {
-    return NextResponse.json(
-      { error: "Database not configured" },
-      { status: 500 },
-    );
-  }
+  // Sanitize all inputs to prevent NoSQL injection
+  const sanitizedParsed = {
+    name: sanitize(parsed.name),
+    email: sanitize(parsed.email),
+    phone: parsed.phone ? sanitize(parsed.phone) : null,
+    interest: parsed.interest ? sanitize(parsed.interest) : null,
+    message: sanitize(parsed.message),
+    hearAbout: parsed.hearAbout ? sanitize(parsed.hearAbout) : null,
+    time: parsed.time ? sanitize(parsed.time) : null,
+    attachmentName: parsed.attachmentName,
+    attachmentType: parsed.attachmentType,
+    attachmentData: parsed.attachmentData,
+  };
 
-  const client = new MongoClient(uri);
   try {
     // Send email first; if this fails, return 500 so the client shows an error.
-    await sendEmailViaResend(parsed);
+    await sendEmailViaResend(sanitizedParsed);
 
-    await client.connect();
-    const db = client.db(dbName);
-    const contacts = db.collection("contacts");
-    await contacts.insertOne({
-      ...parsed,
-      source: "contact-form",
+    // Store in MongoDB
+    const db = await getDatabase();
+    const collection = db.collection("contacts");
+
+    await collection.insertOne({
+      ...sanitizedParsed,
+      submittedFrom: ip,
+      userAgent: req.headers.get("user-agent") || "unknown",
       createdAt: new Date(),
-      ip,
     });
+
     return NextResponse.json({ status: "ok" }, { status: 200 });
   } catch (err: any) {
     // eslint-disable-next-line no-console
@@ -157,8 +164,6 @@ export async function POST(req: NextRequest) {
       { error: "Failed to process contact form" },
       { status: 500 },
     );
-  } finally {
-    await client.close();
   }
 }
 

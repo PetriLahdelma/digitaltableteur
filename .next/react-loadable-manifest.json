@@ -12,18 +12,5 @@
       "static/css/_app-pages-browser_nextjs-app_shared_components_CookieConsent_CookieConsent_tsx.css",
       "static/chunks/_app-pages-browser_nextjs-app_shared_components_CookieConsent_CookieConsent_tsx.js"
     ]
-  },
-  "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx -> leaflet": {
-    "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx -> leaflet",
-    "files": [
-      "static/chunks/_app-pages-browser_node_modules_leaflet_dist_leaflet-src_js.js"
-    ]
-  },
-  "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx -> leaflet/dist/leaflet.css": {
-    "id": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx -> leaflet/dist/leaflet.css",
-    "files": [
-      "static/css/_app-pages-browser_node_modules_leaflet_dist_leaflet_css.css",
-      "static/chunks/_app-pages-browser_node_modules_leaflet_dist_leaflet_css.js"
-    ]
   }
 }
