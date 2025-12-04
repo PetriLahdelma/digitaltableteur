@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { WorkIndexPage } from "../../shared/components/pages/Work/WorkIndex";
+import { WorkIndexPage } from "@dt-pages/Work/WorkIndex";
 
 export const metadata: Metadata = {
   title: "Work | Digitaltableteur",

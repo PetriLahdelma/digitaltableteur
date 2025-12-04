@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { CookiePolicyFullEnPage } from "../../shared/components/pages/CookiePolicy";
+import { CookiePolicyFullEnPage } from "@dt-pages/CookiePolicy";
 
 export function CookiePolicyFullEnContent() {
   const router = useRouter();
