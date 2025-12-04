@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { AboutPage } from "../../shared/components/pages/AboutPage";
+import { AboutPage } from "@dt-pages/AboutPage";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = "About | Digitaltableteur";

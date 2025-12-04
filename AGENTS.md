@@ -13,6 +13,7 @@
 ```bash
 npm install                # Install dependencies
 npm run dev                # Start Vite dev server (legacy)
+npm run build              # Ensures blog manifest is generated pre-build
 npm test                   # Run all tests
 npm run typecheck          # TypeScript validation across project
 npm run lint               # ESLint + Stylelint
@@ -116,7 +117,13 @@ Before creating a PR, ensure:
 
 ```bash
 npm run typecheck && npm run lint && npm test && npm run build
+# Note: build triggers blog manifest generation for article routing
 ```
+
+## Sanity + Blog Manifest
+
+- After publishing articles via `npm run sanity:publish` (or the `scripts/publish-from-sanity.sh`), the blog manifest is refreshed automatically.
+- If needed, regenerate manually with `node scripts/generate-blog-manifest.mjs`.
 
 All checks must pass + manual testing complete.
 

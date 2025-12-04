@@ -1,5 +1,8 @@
 {
-  "/about/page": "app/about/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/page": "app/page.js",
+  "/work/page": "app/work/page.js",
   "/work/helsinki-design-system/page": "app/work/helsinki-design-system/page.js",
-  "/page": "app/page.js"
+  "/about/page": "app/about/page.js",
+  "/contact/page": "app/contact/page.js"
 }

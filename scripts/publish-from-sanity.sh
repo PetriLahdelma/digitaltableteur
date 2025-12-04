@@ -36,3 +36,8 @@ fi
 
 echo ""
 echo "💡 Tip: If you see stale content, restart the dev server with 'npm run dev'"
+
+echo "Sanity publish completed. Refreshing Next.js blog manifest..."
+node scripts/generate-blog-manifest.mjs || {
+  echo "Warning: blog manifest generation failed; articles may not appear until fixed." >&2
+}

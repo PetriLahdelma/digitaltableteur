@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { BlogPage } from "../../shared/components/pages/Blog";
+import { BlogPage } from "@dt-pages/Blog";
 
 export const metadata: Metadata = {
   title: "Blog | Digitaltableteur",

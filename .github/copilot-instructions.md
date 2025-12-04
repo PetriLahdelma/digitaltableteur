@@ -89,8 +89,8 @@ This is a **React TypeScript portfolio website** built with Vite, featuring mult
 
 ```bash
 npm run dev           # Development server with HMR
+npm run build         # Production build (auto-generates blog manifest pre-step)
 npm run storybook     # Component development and testing
-npm run build         # Production build
 npm run deploy        # Deploy to GitHub Pages
 npm run deeploy-with-storybook  # Deploy with Storybook visual diffs
 npm test              # Run all tests including accessibility
@@ -155,9 +155,18 @@ npm run eslint-fix   # Auto-fix linting issues
 
 ### Build Process
 
-1. `npm run build` - Vite build with hash-based filenames
+1. `npm run build` - Vite build with hash-based filenames (pre-step generates blog manifest)
 2. `npm run cache-bust` - Adds version metadata and .nojekyll
 3. `npm run deploy` - Deploys to GitHub Pages with CNAME preservation
+
+## Sanity Article Workflow (Dec 2025)
+
+- Blog article discovery uses a build-time manifest at `nextjs-app/shared/data/blogManifest.ts`.
+- The manifest is auto-generated:
+  - Before dev and build via `predev`/`prebuild` scripts.
+  - After running `scripts/publish-from-sanity.sh` for single or bulk publishes.
+- If articles don’t appear, run `node scripts/generate-blog-manifest.mjs` manually or restart dev.
+- Keep MDX sources under `content/posts/` for inclusion.
 
 ## File Organization
 
@@ -170,6 +179,7 @@ npm run eslint-fix   # Auto-fix linting issues
 - `scripts/` - Build and deployment automation
 
 Important path rule:
+
 - Always create files under `nextjs-app/shared/components/<ComponentName>/` and export via `index.ts` for `@dt/<ComponentName>`.
 
 ## Environment Variables
