@@ -1,6 +1,6 @@
 /**
  * Prompt Injection Guardrails
- * 
+ *
  * Protects AI chat endpoints from prompt extraction attacks and malicious queries.
  * Implements multi-layered defense:
  * - Keyword filtering for sensitive terms
@@ -9,28 +9,64 @@
  * - Sentry logging for security monitoring
  */
 
-import * as Sentry from '@sentry/nextjs';
-import { sanitizeAiOutput as sanitizeHTML } from './sanitize';
+import * as Sentry from "@sentry/nextjs";
+import { sanitizeAiOutput as sanitizeHTML } from "./sanitize";
 
 // ===== TYPES =====
 
 // Suspicious keywords that indicate prompt extraction attempts
 const SENSITIVE_KEYWORDS = [
   // Environment & secrets
-  "env", "environment", "variable", "key", "token", "secret", "password", 
-  "api_key", "apikey", "api-key", "credential", "auth",
-  
+  "env",
+  "environment",
+  "variable",
+  "key",
+  "token",
+  "secret",
+  "password",
+  "api_key",
+  "apikey",
+  "api-key",
+  "credential",
+  "auth",
+
   // System instructions
-  "system", "instruction", "prompt", "directive", "rule", "guidelines",
-  "previous", "ignore", "disregard", "forget", "override",
-  
+  "system",
+  "instruction",
+  "prompt",
+  "directive",
+  "rule",
+  "guidelines",
+  "previous",
+  "ignore",
+  "disregard",
+  "forget",
+  "override",
+
   // Data exfiltration
-  "log", "logs", "debug", "console", "output", "dump", "export",
-  "database", "db", "mongo", "sql", "query",
-  
+  "log",
+  "logs",
+  "debug",
+  "console",
+  "output",
+  "dump",
+  "export",
+  "database",
+  "db",
+  "mongo",
+  "sql",
+  "query",
+
   // Process/server probing
-  "process", "runtime", "server", "config", "configuration",
-  "settings", "admin", "root", "sudo",
+  "process",
+  "runtime",
+  "server",
+  "config",
+  "configuration",
+  "settings",
+  "admin",
+  "root",
+  "sudo",
 ];
 
 // Patterns that strongly indicate extraction attempts
@@ -50,7 +86,10 @@ const EXTRACTION_PATTERNS = [
 ];
 
 // Rate limiting for suspicious prompts
-const suspiciousPromptBuckets = new Map<string, { count: number; windowStart: number }>();
+const suspiciousPromptBuckets = new Map<
+  string,
+  { count: number; windowStart: number }
+>();
 const SUSPICIOUS_WINDOW_MS = 300_000; // 5 minutes
 const SUSPICIOUS_MAX_ATTEMPTS = 3; // attempts per window per IP
 
@@ -65,7 +104,7 @@ export interface GuardrailCheckResult {
  */
 export function checkPromptInjection(
   prompt: string,
-  ipAddress?: string
+  ipAddress?: string,
 ): GuardrailCheckResult {
   const lowerPrompt = prompt.toLowerCase();
   const trimmedPrompt = prompt.trim();
@@ -89,7 +128,8 @@ export function checkPromptInjection(
 
       return {
         isBlocked: true,
-        reason: "Your message contains language that looks like a system command. Please rephrase your question.",
+        reason:
+          "Your message contains language that looks like a system command. Please rephrase your question.",
         suspicionLevel: "high",
       };
     }
@@ -97,7 +137,7 @@ export function checkPromptInjection(
 
   // Check for multiple sensitive keywords (medium severity)
   const foundKeywords = SENSITIVE_KEYWORDS.filter((keyword) =>
-    lowerPrompt.includes(keyword)
+    lowerPrompt.includes(keyword),
   );
 
   if (foundKeywords.length >= 3) {
@@ -131,9 +171,13 @@ export function checkPromptInjection(
   }
 
   // Check for single high-risk keyword combinations
-  const hasEnvKeyword = lowerPrompt.includes("env") || lowerPrompt.includes("environment");
-  const hasSecretKeyword = lowerPrompt.includes("key") || lowerPrompt.includes("token") || lowerPrompt.includes("secret");
-  
+  const hasEnvKeyword =
+    lowerPrompt.includes("env") || lowerPrompt.includes("environment");
+  const hasSecretKeyword =
+    lowerPrompt.includes("key") ||
+    lowerPrompt.includes("token") ||
+    lowerPrompt.includes("secret");
+
   if (hasEnvKeyword && hasSecretKeyword) {
     logSecurityEvent({
       type: "prompt_injection_suspicious",
@@ -167,13 +211,16 @@ export function sanitizeAiOutput(output: string): string {
 export function stripSecretsFromResponse(response: string): string {
   // Remove anything that looks like environment variables
   let cleaned = response.replace(/[A-Z_]{3,}=[^\s\n]*/g, "[REDACTED]");
-  
+
   // Remove anything that looks like API keys
   cleaned = cleaned.replace(/\b[a-zA-Z0-9_-]{32,}\b/g, "[REDACTED]");
-  
+
   // Remove potential tokens
-  cleaned = cleaned.replace(/\b(sk|pk|tok|api|key)[-_][a-zA-Z0-9_-]{20,}\b/gi, "[REDACTED]");
-  
+  cleaned = cleaned.replace(
+    /\b(sk|pk|tok|api|key)[-_][a-zA-Z0-9_-]{20,}\b/gi,
+    "[REDACTED]",
+  );
+
   return cleaned;
 }
 
@@ -181,7 +228,7 @@ export function stripSecretsFromResponse(response: string): string {
 function trackSuspiciousPrompt(ipAddress: string) {
   const now = Date.now();
   const bucket = suspiciousPromptBuckets.get(ipAddress);
-  
+
   if (!bucket || now - bucket.windowStart > SUSPICIOUS_WINDOW_MS) {
     suspiciousPromptBuckets.set(ipAddress, { count: 1, windowStart: now });
   } else {
@@ -192,11 +239,11 @@ function trackSuspiciousPrompt(ipAddress: string) {
 function isSuspiciousRateLimited(ipAddress: string): boolean {
   const now = Date.now();
   const bucket = suspiciousPromptBuckets.get(ipAddress);
-  
+
   if (!bucket || now - bucket.windowStart > SUSPICIOUS_WINDOW_MS) {
     return false;
   }
-  
+
   return bucket.count >= SUSPICIOUS_MAX_ATTEMPTS;
 }
 
@@ -211,7 +258,7 @@ function logSecurityEvent(event: {
   keywords?: string[];
 }) {
   console.warn("[SECURITY]", event);
-  
+
   Sentry.captureMessage(`Prompt injection attempt: ${event.reason}`, {
     level: event.severity === "high" ? "warning" : "info",
     tags: {

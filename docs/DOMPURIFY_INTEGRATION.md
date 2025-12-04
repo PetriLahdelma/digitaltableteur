@@ -11,6 +11,7 @@
 Integrated industry-standard HTML sanitization library (DOMPurify) to provide defense-in-depth XSS protection across all user-facing content rendering paths. This addresses the 5 `dangerouslySetInnerHTML` usage points identified in the comprehensive security audit.
 
 **Security Impact**:
+
 - ✅ **XSS Prevention**: Blocks script injection in HTML content
 - ✅ **Event Handler Removal**: Strips `onclick`, `onerror`, etc.
 - ✅ **Protocol Filtering**: Removes `javascript:` and malicious data URIs
@@ -54,14 +55,16 @@ Integrated industry-standard HTML sanitization library (DOMPurify) to provide de
 **Use Case**: User-generated or AI-generated HTML content
 
 **Configuration**:
+
 - **Allowed Tags**: Semantic HTML (p, h1-h6, strong, em, a, ul, ol, li, etc.)
 - **Allowed Attributes**: Safe attributes only (href, title, alt, src, class, id)
 - **URI Filtering**: Only `https://`, `http://`, `mailto:`, `tel:` protocols
 - **Forbidden**: `script`, `iframe`, `object`, `embed`, event handlers
 
 **Example**:
+
 ```typescript
-import { sanitizeHTML } from '@/app/lib/sanitize';
+import { sanitizeHTML } from "@/app/lib/sanitize";
 
 const dirty = '<p>Hello</p><script>alert("XSS")</script>';
 const clean = sanitizeHTML(dirty);
@@ -73,14 +76,16 @@ const clean = sanitizeHTML(dirty);
 **Use Case**: Schema.org structured data for SEO
 
 **Protection**:
+
 - Validates JSON syntax
 - Removes embedded HTML tags
 - Prevents script injection in JSON-LD blocks
 - Returns `{}` for invalid JSON
 
 **Example**:
+
 ```typescript
-import { sanitizeJsonLd } from '@/app/lib/sanitize';
+import { sanitizeJsonLd } from "@/app/lib/sanitize";
 
 const schema = '{"@context":"https://schema.org","@type":"Organization"}';
 const clean = sanitizeJsonLd(schema);
@@ -94,13 +99,15 @@ const clean = sanitizeJsonLd(schema);
 **Use Case**: Chat responses, AI-generated descriptions
 
 **Features**:
+
 - Two-pass sanitization (regex + DOMPurify)
 - Removes script tags, event handlers, `javascript:` protocol
 - More permissive than `sanitizeHTML()` (allows basic formatting)
 
 **Example**:
+
 ```typescript
-import { sanitizeAiOutput } from '@/app/lib/sanitize';
+import { sanitizeAiOutput } from "@/app/lib/sanitize";
 
 const aiResponse = '<p>Answer</p><script>alert("XSS")</script>';
 const clean = sanitizeAiOutput(aiResponse);
@@ -114,13 +121,15 @@ const clean = sanitizeAiOutput(aiResponse);
 **Use Case**: CMS content, blog articles from Sanity
 
 **Configuration**:
+
 - Most permissive preset
 - Allows formatting, images, tables, semantic HTML
 - Still blocks scripts, event handlers, dangerous protocols
 
 **Example**:
+
 ```typescript
-import { sanitizeRichText } from '@/app/lib/sanitize';
+import { sanitizeRichText } from "@/app/lib/sanitize";
 
 const blogContent = `
   <h2>Title</h2>
@@ -140,8 +149,9 @@ const clean = sanitizeRichText(blogContent);
 **Function**: Escapes HTML entities (`<`, `>`, `&`, `"`, `'`)
 
 **Example**:
+
 ```typescript
-import { escapeHTML } from '@/app/lib/sanitize';
+import { escapeHTML } from "@/app/lib/sanitize";
 
 const code = '<script>alert("XSS")</script>';
 const escaped = escapeHTML(code);
@@ -159,6 +169,7 @@ npm test -- app/lib/sanitize.test.ts
 ```
 
 **Test Categories**:
+
 1. **Script Tag Removal** (5 tests)
    - `<script>` tags stripped
    - Event handlers removed (`onclick`, `onerror`)
@@ -188,13 +199,13 @@ npm test -- app/lib/sanitize.test.ts
 
 ### Attack Vectors Tested
 
-| Attack Type | Example | Status |
-|------------|---------|--------|
-| Script Injection | `<script>alert("XSS")</script>` | ✅ Blocked |
-| Event Handlers | `<button onclick="alert('XSS')">` | ✅ Blocked |
-| JavaScript Protocol | `<a href="javascript:alert('XSS')">` | ✅ Blocked |
-| Inline Scripts | `<img onerror="alert('XSS')">` | ✅ Blocked |
-| Embedded HTML in JSON | `{"name":"<script>..."}` | ✅ Blocked |
+| Attack Type           | Example                              | Status     |
+| --------------------- | ------------------------------------ | ---------- |
+| Script Injection      | `<script>alert("XSS")</script>`      | ✅ Blocked |
+| Event Handlers        | `<button onclick="alert('XSS')">`    | ✅ Blocked |
+| JavaScript Protocol   | `<a href="javascript:alert('XSS')">` | ✅ Blocked |
+| Inline Scripts        | `<img onerror="alert('XSS')">`       | ✅ Blocked |
+| Embedded HTML in JSON | `{"name":"<script>..."}`             | ✅ Blocked |
 
 ---
 
@@ -223,8 +234,10 @@ npm test -- app/lib/sanitize.test.ts
      ```
    - After:
      ```tsx
-     import { sanitizeRichText } from '@/app/lib/sanitize';
-     <div dangerouslySetInnerHTML={{ __html: sanitizeRichText(contentHTML) }} />
+     import { sanitizeRichText } from "@/app/lib/sanitize";
+     <div
+       dangerouslySetInnerHTML={{ __html: sanitizeRichText(contentHTML) }}
+     />;
      ```
 
 4. **Contact Form Submissions**
@@ -241,16 +254,19 @@ npm test -- app/lib/sanitize.test.ts
 ## Performance Considerations
 
 ### Bundle Size
+
 - `isomorphic-dompurify`: ~45KB minified
 - Works in both Node.js and browser environments
 - Tree-shakeable (only imported functions bundled)
 
 ### Runtime Performance
+
 - DOMPurify: ~0.1-0.5ms per sanitization call (tested on M1 Mac)
 - Negligible impact on page load times
 - Sanitization happens once per content render
 
 ### Caching Strategy
+
 - Sanitize once at render time
 - Results cached by React/Next.js
 - No need for manual memoization
@@ -292,17 +308,21 @@ npm test -- app/lib/sanitize.test.ts
 ## Maintenance & Updates
 
 ### Version Pinning
+
 Currently using loose version:
+
 ```json
 "isomorphic-dompurify": "^2.18.1"
 ```
 
 **Recommendation**: Pin to exact version after testing:
+
 ```json
 "isomorphic-dompurify": "2.18.1"
 ```
 
 ### Update Process
+
 1. Check [DOMPurify releases](https://github.com/cure53/DOMPurify/releases)
 2. Review changelog for security fixes
 3. Update package: `npm install isomorphic-dompurify@latest`
@@ -311,6 +331,7 @@ Currently using loose version:
 6. Deploy with confidence
 
 ### Monitoring
+
 - Monitor [CVE database](https://cve.mitre.org/) for DOMPurify vulnerabilities
 - Subscribe to GitHub security advisories
 - Run `npm audit` weekly
@@ -320,6 +341,7 @@ Currently using loose version:
 ## Migration Checklist
 
 ### ✅ Phase 1: Core Integration (Completed)
+
 - [x] Install `isomorphic-dompurify`
 - [x] Create `app/lib/sanitize.ts` with 5 functions
 - [x] Write comprehensive test suite (17 tests)
@@ -329,12 +351,14 @@ Currently using loose version:
 - [x] Verify production build
 
 ### 🔄 Phase 2: Full Adoption (Recommended)
+
 - [ ] Update `app/blog/[slug]/ClientArticle.tsx` to use `sanitizeRichText()`
 - [ ] Update `app/api/contact/route.ts` to sanitize message content
 - [ ] Add sanitization to any future user input endpoints
 - [ ] Document usage in component creation guidelines
 
 ### 📋 Phase 3: Audit & Documentation
+
 - [ ] Run security audit to verify all `dangerouslySetInnerHTML` usage is protected
 - [ ] Update `docs/COMPREHENSIVE_SECURITY_AUDIT_2025-12-03.md`
 - [ ] Add DOMPurify to `docs/EMERGENCY_SECRET_ROTATION.md` (no secrets, but document version)
@@ -351,6 +375,7 @@ Currently using loose version:
 **Cause**: Too restrictive `ALLOWED_TAGS` configuration
 
 **Solution**:
+
 1. Check which tags are needed: `console.log(sanitizeHTML('<your-html>'))`
 2. Add missing tags to `ALLOWED_TAGS` array in `app/lib/sanitize.ts`
 3. Test with `npm test -- app/lib/sanitize.test.ts`
@@ -360,6 +385,7 @@ Currently using loose version:
 **Symptom**: `Cannot find module 'isomorphic-dompurify'`
 
 **Solution**:
+
 ```bash
 npm install --save-dev @types/dompurify
 ```
@@ -371,6 +397,7 @@ npm install --save-dev @types/dompurify
 **Cause**: Missing dependency or incorrect import path
 
 **Solution**:
+
 1. Verify package installed: `npm ls isomorphic-dompurify`
 2. Check import paths use `@/app/lib/sanitize` alias
 3. Clear build cache: `rm -rf .next && npm run build`
@@ -388,12 +415,12 @@ npm install --save-dev @types/dompurify
 
 ## Security Score Impact
 
-| Metric | Before | After | Change |
-|--------|--------|-------|--------|
-| XSS Protection | 80% | **95%** | +15% |
-| dangerouslySetInnerHTML Risk | High | **Low** | Mitigated |
-| AI Output Safety | Medium | **High** | Improved |
-| Overall Security Score | 8.5/10 | **9.0/10** | +0.5 |
+| Metric                       | Before | After      | Change    |
+| ---------------------------- | ------ | ---------- | --------- |
+| XSS Protection               | 80%    | **95%**    | +15%      |
+| dangerouslySetInnerHTML Risk | High   | **Low**    | Mitigated |
+| AI Output Safety             | Medium | **High**   | Improved  |
+| Overall Security Score       | 8.5/10 | **9.0/10** | +0.5      |
 
 ---
 

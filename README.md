@@ -340,9 +340,20 @@ npm run generate:alt-text   # Generate accessibility descriptions (requires OPEN
 
 `generate:alt-text` streams local image bytes to the OpenAI Vision API so it can describe the actual artwork; add `OPENAI_API_KEY` (and optionally `OPENAI_ALT_MODEL`) to `.env.local` before running, or append `--force` to regenerate every `<img>` alt attribute.
 
-### Sanity Blog Migration
+### Sanity Blog Publishing
 
-- See [`docs/SANITY_MIGRATION.md`](docs/SANITY_MIGRATION.md) for the full workflow (React → Sanity via `sanity:parse-posts` / `sanity:convert` / `sanity:upload`, Sanity → MDX via `sanity:sync-from-remote`, redirects generation, cleanup helpers).
+**Quick Publish Workflow:**
+
+```bash
+# Publish single article from Sanity
+npm run sanity:publish-single <article-slug>
+
+# Publish all articles
+npm run sanity:publish
+```
+
+- See [`docs/SANITY_PUBLISHING_AUTOMATION.md`](docs/SANITY_PUBLISHING_AUTOMATION.md) for the complete automated publishing workflow
+- See [`docs/SANITY_MIGRATION.md`](docs/SANITY_MIGRATION.md) for the full migration workflow (React → Sanity via `sanity:parse-posts` / `sanity:convert` / `sanity:upload`, Sanity → MDX via `sanity:sync-from-remote`, redirects generation, cleanup helpers)
 
 ## 🏗 Architecture
 
@@ -755,7 +766,8 @@ Before creating a PR:
 - [Component Generation Rules](docs/LLM_COMPONENT_GENERATION_RULES.md) - 12,000+ word authority on component creation
 - [Critical Reasoning & Planning](docs/LLM-CRITICAL-REASONING-AND-PLANNING-INSTRUCTIONS.md) - Planning workflows
 - [Next.js Migration Plan](docs/NEXTJS_MIGRATION_PLAN.md) - Vite → Next.js migration strategy
-- [Linear Automation](docs/LINEAR_AUTOMATION.md) - Issue management workflows
+- [Linear Automation](docs/LINEAR_AUTOMATION.md) - CLI scripts, AI-enhanced issue intake, MCP integration
+- [Linear VS Code Integration](docs/LINEAR_VSCODE_INTEGRATION.md) - Extension setup, hybrid workflows, keyboard shortcuts
 - [GitHub MCP Setup](docs/GITHUB_MCP_SETUP.md) - GitHub MCP server configuration
 - [Figma MCP Setup](docs/FIGMA_MCP_SETUP.md) - Figma MCP server configuration
 

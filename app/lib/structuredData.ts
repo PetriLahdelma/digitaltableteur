@@ -8,7 +8,7 @@
  * @see https://developers.google.com/search/docs/appearance/structured-data
  */
 
-import { sanitizeJsonLd } from './sanitize';
+import { sanitizeJsonLd } from "./sanitize";
 
 const SITE_URL = "https://www.digitaltableteur.com";
 
@@ -318,7 +318,7 @@ export function stringifyJsonLd(obj: Record<string, unknown>): string {
     .replace(/</g, "\\u003c")
     .replace(/>/g, "\\u003e")
     .replace(/&/g, "\\u0026");
-  
+
   // Additional sanitization layer with DOMPurify
   return sanitizeJsonLd(jsonString);
 }
