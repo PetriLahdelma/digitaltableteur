@@ -8,7 +8,7 @@ import path from "path";
 // Environment-aware CSP
 // Development: Permissive (allows Next.js HMR, React devtools)
 // Production: Strict (blocks 80% of XSS/injection attacks)
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 
 const csp = isDev
   ? [
@@ -24,14 +24,15 @@ const csp = isDev
       "object-src 'none'",
     ].join("; ")
   : [
-      // Production CSP - strict security
+      // Production CSP - strict security with Next.js inline script hashes
       "default-src 'self'",
-      "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com",
+      // Allow Next.js inline scripts via hashes + trusted external scripts
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://api.resend.com wss:",
-      "frame-src 'none'",
+      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://vercel.live https://api.resend.com wss:",
+      "frame-src https://vercel.live",
       "media-src 'self' https: data:",
       "object-src 'none'",
       "base-uri 'self'",

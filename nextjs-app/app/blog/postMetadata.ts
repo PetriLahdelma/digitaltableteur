@@ -17,6 +17,15 @@ export type BlogPostMeta = {
 
 export const posts: BlogPostMeta[] = [
   {
+    title: "The Evolutionary Difference Between Constructive and Constrictive Criticism",
+    slug: "the-evolutionary-difference-between-constructive-and-constrictive-criticism",
+    excerpt: "The Evolutionary Difference Between Constructive and Constrictive Criticism",
+    readTime: "5 min read",
+    publishedAt: "2025-12-03T07:45:00.000Z",
+    authorName: "Petri Lahdelma",
+    authorSlug: "petri-lahdelma",
+  },
+  {
     title: "Branding Design Systems",
     slug: "branding-design-systems-essay",
     excerpt: "Branding a design system transforms it from invisible infrastructure into a living language that communicates values, builds trust, and makes every interaction feel intentional, human, and unmistakably coherent.",
@@ -28,7 +37,7 @@ export const posts: BlogPostMeta[] = [
   {
     title: "Design System Meets AI: Building the Self-Evolving Component Library Pt 2",
     slug: "design-system-meets-ai-building-the-self-evolving-component-library-pt-2",
-    excerpt: "Part 2 of a 5-part series exploring how design systems transform in the age of AI.",
+    excerpt: "A 5-part series exploring how design systems transform in the age of AI.",
     readTime: "4 min read",
     publishedAt: "2025-11-23T04:38:00.000Z",
     authorName: "Petri Lahdelma",
@@ -37,17 +46,17 @@ export const posts: BlogPostMeta[] = [
   {
     title: "Design System Meets AI: Building the Self-Evolving Component Library Pt 1",
     slug: "design-system-meets-ai-building-the-self-evolving-component-library-pt-1",
-    excerpt: "Part 1 of a 5-part series exploring how design systems transform in the age of AI.",
+    excerpt: "A 5-part series exploring how design systems transform in the age of AI.",
     readTime: "4 min read",
     publishedAt: "2025-11-20T22:08:00.000Z",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
   },
   {
-    title: "Petri Lahdelma: A Biography",
+    title: "A Biography",
     slug: "petri-lahdelma-bio",
-    excerpt: "From Varissuo to leading global design systems.",
-    readTime: "2 min read",
+    excerpt: "From a small suburb to leading global design systems.",
+    readTime: "3 min read",
     publishedAt: "2025-06-15T00:00:00.000Z",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
@@ -60,6 +69,7 @@ export const posts: BlogPostMeta[] = [
     publishedAt: "2025-06-10T00:00:00.000Z",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
+    mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/46eb4a68c7bd8e08f23cb83b8ebba0a73925ed34-1440x962.jpg?w=1600",
   },
   {
     title: "MCP, Design Systems, and Generative UI",
@@ -69,6 +79,7 @@ export const posts: BlogPostMeta[] = [
     publishedAt: "2025-06-05T00:00:00.000Z",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
+    mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/f89b3b77b080fe3d371cd0153eeb30d49429aaeb-1536x1024.webp?w=1600",
   },
   {
     title: "Workflow Tips",
@@ -78,6 +89,7 @@ export const posts: BlogPostMeta[] = [
     publishedAt: "2025-05-12T00:00:00.000Z",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
+    mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/ff2754d3228646d629b688b6ab7406838576d841-1536x1024.webp?w=1600",
   },
   {
     title: "Digitaltableteur Field Notes: In Search of Impact",
@@ -87,12 +99,13 @@ export const posts: BlogPostMeta[] = [
     publishedAt: "2025-02-11T00:00:00.000Z",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
+    mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/2c4621941096cd03ba2299862b591692feaf5854-1024x1024.png?w=1600",
   },
   {
     title: "Designing in 2025",
     slug: "designing-in-2025",
     excerpt: "Navigating the AI-assisted creative landscape.",
-    readTime: "3 min read",
+    readTime: "5 min read",
     publishedAt: "2025-02-09T00:00:00.000Z",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
@@ -101,10 +114,11 @@ export const posts: BlogPostMeta[] = [
     title: "Thoughts on Future Branding",
     slug: "thoughts-on-future-branding",
     excerpt: "Exploring branding in the age of AI and exponential design.",
-    readTime: "4 min read",
+    readTime: "6 min read",
     publishedAt: "2018-06-07T00:00:00.000Z",
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
+    mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/9460b2174dd7707b21408f68dfb03bcf63050d53-794x450.png?w=1600",
   }
 ];
 

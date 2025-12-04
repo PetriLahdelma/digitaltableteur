@@ -9,6 +9,7 @@
 ## 🚨 When to Use This Playbook
 
 Execute this procedure immediately if:
+
 - API key exposed in public repository
 - Suspicious authentication attempts detected
 - Sentry alerts for unauthorized access
@@ -20,16 +21,16 @@ Execute this procedure immediately if:
 
 ## 📋 Services Requiring Key Rotation
 
-| Service | Priority | Rotation Time | Downtime Risk |
-|---------|----------|---------------|---------------|
-| OpenAI API | CRITICAL | 2 minutes | 100% (chat offline) |
-| MongoDB Atlas | CRITICAL | 5 minutes | 100% (DB offline) |
-| Vercel Deploy Token | HIGH | 1 minute | 0% (only affects CI) |
-| Sentry DSN/Auth | HIGH | 2 minutes | 0% (monitoring only) |
-| Linear API Key | MEDIUM | 1 minute | 0% (automation only) |
-| Sanity Token | MEDIUM | 2 minutes | 50% (CMS write access) |
-| Figma Token | LOW | 1 minute | 0% (MCP tools only) |
-| GitHub MCP PAT | LOW | 1 minute | 0% (MCP tools only) |
+| Service             | Priority | Rotation Time | Downtime Risk          |
+| ------------------- | -------- | ------------- | ---------------------- |
+| OpenAI API          | CRITICAL | 2 minutes     | 100% (chat offline)    |
+| MongoDB Atlas       | CRITICAL | 5 minutes     | 100% (DB offline)      |
+| Vercel Deploy Token | HIGH     | 1 minute      | 0% (only affects CI)   |
+| Sentry DSN/Auth     | HIGH     | 2 minutes     | 0% (monitoring only)   |
+| Linear API Key      | MEDIUM   | 1 minute      | 0% (automation only)   |
+| Sanity Token        | MEDIUM   | 2 minutes     | 50% (CMS write access) |
+| Figma Token         | LOW      | 1 minute      | 0% (MCP tools only)    |
+| GitHub MCP PAT      | LOW      | 1 minute      | 0% (MCP tools only)    |
 
 **Total Estimated Time**: 15-20 minutes  
 **Expected Downtime**: 2-5 minutes (chat + DB reconnection)
@@ -119,7 +120,7 @@ curl -X POST https://digitaltableteur.com/api/chat \
 # Configuration:
 # - Username: digitaltableteur_app_YYYYMMDD
 # - Password: Generate strong 24-char password
-# - Database User Privileges: 
+# - Database User Privileges:
 #   ✅ Built-in Role: readWrite on database "digitaltableteur"
 #   ❌ Remove: Atlas admin, clusterMonitor, dbAdmin
 # - Restrict Access to Specific Clusters: Production cluster only
@@ -303,7 +304,7 @@ npm run github:mcp:test
 
 # Configuration:
 # - Name: digitaltableteur-deploy-YYYYMMDD
-# - Scopes: 
+# - Scopes:
 #   ✅ project:releases
 #   ✅ org:read
 #   ❌ Remove: admin/delete scopes
@@ -400,21 +401,21 @@ Alert: 1 week before
 
 ### Rotation Log
 
-| Date | Keys Rotated | Reason | Incident? | Downtime |
-|------|-------------|--------|-----------|----------|
-| 2025-12-03 | All (initial hardening) | Security audit | No | 0 min |
-| YYYY-MM-DD |  |  |  |  |
+| Date       | Keys Rotated            | Reason         | Incident? | Downtime |
+| ---------- | ----------------------- | -------------- | --------- | -------- |
+| 2025-12-03 | All (initial hardening) | Security audit | No        | 0 min    |
+| YYYY-MM-DD |                         |                |           |          |
 
 ---
 
 ## 🆘 Emergency Contacts
 
-| Role | Contact | Availability |
-|------|---------|--------------|
-| Owner | mail@digitaltableteur.com | 24/7 |
-| Security Incident | [SECURITY] mail@digitaltableteur.com | 24/7 |
-| Vercel Support | https://vercel.com/support | Business hours |
-| MongoDB Support | https://cloud.mongodb.com/support | 24/7 |
+| Role              | Contact                              | Availability   |
+| ----------------- | ------------------------------------ | -------------- |
+| Owner             | mail@digitaltableteur.com            | 24/7           |
+| Security Incident | [SECURITY] mail@digitaltableteur.com | 24/7           |
+| Vercel Support    | https://vercel.com/support           | Business hours |
+| MongoDB Support   | https://cloud.mongodb.com/support    | 24/7           |
 
 ---
 
@@ -442,4 +443,3 @@ Alert: 1 week before
 **Last Updated**: December 3, 2025  
 **Next Rotation Due**: March 3, 2026  
 **Responsible**: Petri Lahdelma
-

@@ -2,8 +2,8 @@
 
 import React from "react";
 import { useTranslation } from "react-i18next";
-import Button from "../nextjs-app/shared/components/Button/Button";
-import Icon from "../nextjs-app/shared/components/Icon/Icon";
+import Button from "@dt/Button";
+import Icon from "@dt/Icon";
 import styles from "./not-found.module.css";
 
 export default function NotFound() {
