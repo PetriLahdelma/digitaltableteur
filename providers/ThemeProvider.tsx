@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { ThemeProvider as SharedThemeProvider } from "@/nextjs-app/shared/components/ThemeProvider";
+import { ThemeProvider as SharedThemeProvider } from "@dt/ThemeProvider";
 
 export function NextThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
