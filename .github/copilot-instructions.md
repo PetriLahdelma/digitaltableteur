@@ -169,6 +169,9 @@ npm run eslint-fix   # Auto-fix linting issues
 - `api/` - Vercel serverless functions
 - `scripts/` - Build and deployment automation
 
+Important path rule:
+- Always create files under `nextjs-app/shared/components/<ComponentName>/` and export via `index.ts` for `@dt/<ComponentName>`.
+
 ## Environment Variables
 
 ### Required for Development

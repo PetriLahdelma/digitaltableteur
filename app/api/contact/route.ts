@@ -111,7 +111,10 @@ export async function POST(req: NextRequest) {
 
   if (rateLimit(ip)) {
     return NextResponse.json(
-      { error: "Too many contact form submissions. Please try again in 15 minutes." },
+      {
+        error:
+          "Too many contact form submissions. Please try again in 15 minutes.",
+      },
       { status: 429, headers: { "Retry-After": "900" } },
     );
   }

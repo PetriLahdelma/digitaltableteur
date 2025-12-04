@@ -32,6 +32,10 @@ npm run deploy             # Deploy to GitHub Pages
 - Prettier formatting (auto on save)
 - ESLint + Stylelint enforcement
 
+### Component Location
+
+- Always create files under `nextjs-app/shared/components/<ComponentName>/` and export via `index.ts` for `@dt/<ComponentName>`.
+
 ### Commit Format
 
 - Conventional Commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`

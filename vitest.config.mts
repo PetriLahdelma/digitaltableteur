@@ -13,6 +13,7 @@ export default defineConfig({
       "app/**/*.test.{ts,tsx}",
       "components/**/*.test.{ts,tsx}",
       "nextjs-app/shared/components/**/*.test.{ts,tsx}",
+      "nextjs-app/shared/patterns/**/*.test.{ts,tsx}",
     ],
     exclude: [
       "**/node_modules/**",
@@ -29,6 +30,7 @@ export default defineConfig({
         "app/**/*.{ts,tsx}",
         "components/**/*.{ts,tsx}",
         "nextjs-app/shared/components/**/*.{ts,tsx}",
+        "nextjs-app/shared/patterns/**/*.{ts,tsx}",
       ],
       exclude: [
         "**/*.stories.{ts,tsx}",

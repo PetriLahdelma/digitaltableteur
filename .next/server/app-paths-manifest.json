@@ -1,6 +1,5 @@
 {
-  "/api/chat/route": "app/api/chat/route.js",
-  "/api/contact/route": "app/api/contact/route.js",
+  "/about/page": "app/about/page.js",
   "/work/helsinki-design-system/page": "app/work/helsinki-design-system/page.js",
-  "/contact/page": "app/contact/page.js"
+  "/page": "app/page.js"
 }

@@ -28,16 +28,16 @@ const gdprBuckets = new Map<string, { count: number; windowStart: number }>();
 function isGdprRateLimited(email: string): boolean {
   const now = Date.now();
   const bucket = gdprBuckets.get(email);
-  
+
   if (!bucket || now - bucket.windowStart > GDPR_RATE_LIMIT_WINDOW_MS) {
     gdprBuckets.set(email, { count: 1, windowStart: now });
     return false;
   }
-  
+
   if (bucket.count >= GDPR_RATE_LIMIT_MAX) {
     return true;
   }
-  
+
   bucket.count += 1;
   return false;
 }
@@ -82,7 +82,10 @@ export async function POST(request: NextRequest) {
         "Rate limit exceeded",
       );
       return NextResponse.json(
-        { error: "Too many deletion requests for this email. Please try again in 1 hour." },
+        {
+          error:
+            "Too many deletion requests for this email. Please try again in 1 hour.",
+        },
         { status: 429, headers: { "Retry-After": "3600" } },
       );
     }
