@@ -15,6 +15,29 @@ export interface LinearIssueInput {
   stateName?: string;
 }
 
+export interface LabelInput {
+  name: string;
+  description?: string;
+  color?: string;
+  teamId?: string;
+}
+
+export interface CustomerInput {
+  name: string;
+  externalId?: string;
+  domains?: string[];
+  attributes?: Record<string, unknown>;
+}
+
+export interface ProjectFromTemplateInput {
+  name: string;
+  templateId: string;
+  teamId?: string;
+  leadId?: string;
+  targetDate?: string;
+  description?: string;
+}
+
 export interface LinearIssueResult {
   id: string;
   identifier: string;
@@ -292,4 +315,176 @@ export async function createLinearIssue(
   }
 
   return data.issueCreate.issue;
+}
+
+export async function createLabelWithDescription(
+  input: LabelInput,
+): Promise<{ id: string; name: string }> {
+  const apiKey = getEnv("LINEAR_API_KEY");
+  if (!apiKey) {
+    throw new LinearError("LINEAR_API_KEY is required.");
+  }
+
+  const mutation = `
+    mutation CreateLabel($input: IssueLabelCreateInput!) {
+      issueLabelCreate(input: $input) {
+        success
+        issueLabel {
+          id
+          name
+          description
+        }
+      }
+    }
+  `;
+
+  const labelInput: Record<string, unknown> = {
+    name: input.name,
+  };
+
+  if (input.description) labelInput.description = input.description;
+  if (input.color) labelInput.color = input.color.replace("#", "");
+  if (input.teamId) labelInput.teamId = input.teamId;
+
+  const data = await requestLinear<{
+    issueLabelCreate: {
+      success: boolean;
+      issueLabel: { id: string; name: string } | null;
+    };
+  }>(mutation, { input: labelInput }, apiKey);
+
+  if (!data.issueLabelCreate?.success || !data.issueLabelCreate.issueLabel) {
+    throw new LinearError("Failed to create label.");
+  }
+
+  return data.issueLabelCreate.issueLabel;
+}
+
+export async function createProjectFromTemplate(
+  input: ProjectFromTemplateInput,
+): Promise<{ id: string; name: string; url: string }> {
+  const apiKey = getEnv("LINEAR_API_KEY");
+  const envTeamId = getEnv("LINEAR_TEAM_ID");
+  if (!apiKey) {
+    throw new LinearError("LINEAR_API_KEY is required.");
+  }
+
+  const teamId = input.teamId ?? envTeamId;
+  if (!teamId) {
+    throw new LinearError(
+      "teamId is required (via input or LINEAR_TEAM_ID env var).",
+    );
+  }
+
+  const mutation = `
+    mutation CreateProject($input: ProjectCreateInput!) {
+      projectCreate(input: $input) {
+        success
+        project {
+          id
+          name
+          url
+        }
+      }
+    }
+  `;
+
+  const projectInput: Record<string, unknown> = {
+    name: input.name,
+    teamIds: [teamId],
+    templateId: input.templateId,
+  };
+
+  if (input.leadId) projectInput.leadId = input.leadId;
+  if (input.targetDate) projectInput.targetDate = input.targetDate;
+  if (input.description) projectInput.description = input.description;
+
+  const data = await requestLinear<{
+    projectCreate: {
+      success: boolean;
+      project: { id: string; name: string; url: string } | null;
+    };
+  }>(mutation, { input: projectInput }, apiKey);
+
+  if (!data.projectCreate?.success || !data.projectCreate.project) {
+    throw new LinearError("Failed to create project from template.");
+  }
+
+  return data.projectCreate.project;
+}
+
+export async function subscribeToIssue(
+  issueId: string,
+  userEmail: string,
+): Promise<boolean> {
+  const apiKey = getEnv("LINEAR_API_KEY");
+  if (!apiKey) {
+    throw new LinearError("LINEAR_API_KEY is required.");
+  }
+
+  const mutation = `
+    mutation Subscribe($issueId: String!, $userEmail: String!) {
+      issueSubscribe(issueId: $issueId, userEmail: $userEmail) {
+        success
+      }
+    }
+  `;
+
+  const data = await requestLinear<{
+    issueSubscribe: { success: boolean };
+  }>(mutation, { issueId, userEmail }, apiKey);
+
+  return data.issueSubscribe.success;
+}
+
+export async function semanticSearch(
+  query: string,
+  types?: string[],
+): Promise<
+  Array<{ id: string; identifier?: string; title: string; type: string }>
+> {
+  const apiKey = getEnv("LINEAR_API_KEY");
+  if (!apiKey) {
+    throw new LinearError("LINEAR_API_KEY is required.");
+  }
+
+  const gql = `
+    query SemanticSearch($query: String!, $types: [String!]) {
+      semanticSearch(query: $query, types: $types) {
+        nodes {
+          ... on Issue {
+            id
+            identifier
+            title
+          }
+          ... on Project {
+            id
+            name
+          }
+          ... on Document {
+            id
+            title
+          }
+        }
+      }
+    }
+  `;
+
+  const data = await requestLinear<{
+    semanticSearch: {
+      nodes: Array<{
+        id: string;
+        identifier?: string;
+        title?: string;
+        name?: string;
+      }>;
+    };
+  }>(gql, { query, types }, apiKey);
+
+  return data.semanticSearch.nodes.map((node) => ({
+    id: node.id,
+    identifier: node.identifier,
+    title: node.title || node.name || "Untitled",
+    type: node.identifier ? "Issue" : node.title ? "Document" : "Project",
+  }));
 }
