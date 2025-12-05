@@ -52,6 +52,7 @@
     "akaunting:tools:test": "node lib/akaunting-tools.mjs test",
     "akaunting:dashboard": "node lib/akaunting-tools.mjs dashboard",
     "akaunting:finnish-setup": "node scripts/akaunting-finnish-setup.mjs",
+    "docker:mcp:test": "node scripts/test-docker-mcp.mjs",
     "precommit:guard": "bash scripts/precommit-guard.sh"
   },
   "dependencies": {
@@ -100,6 +101,7 @@
   "devDependencies": {
     "@storybook/addon-a11y": "^10.0.8",
     "@storybook/addon-docs": "^10.0.8",
+    "@storybook/addon-mcp": "^0.1.5",
     "@storybook/icons": "^1.6.0",
     "@storybook/react-vite": "^10.0.8",
     "@storybook/test-runner": "^0.24.2",

@@ -39,8 +39,39 @@
   - Authentication, available capabilities
 
 - **`FIGMA_MCP_SETUP.md`**
-  - Figma MCP server setup
+  - Figma MCP server setup (3 methods: Remote, Desktop, Developer)
   - Design file access, token generation
+
+- **`SENTRY_MCP_SETUP.md`**
+  - Sentry MCP server configuration
+  - Error monitoring, Seer AI integration, 16+ tools
+
+- **`VERCEL_MCP_SETUP.md`**
+  - Vercel MCP server setup (general + project-specific)
+  - Deployment management, build logs, 10+ tools
+
+- **`SANITY_MCP_SETUP.md`**
+  - Sanity MCP server configuration
+  - Content management, GROQ, semantic search, 40+ tools
+
+- **`DOCKER_MCP_SETUP.md`**
+  - Docker MCP server setup (local command-based)
+  - Container management, logs, compose, 30+ tools
+  - Akaunting-specific examples
+
+- **`CONTEXT7_MCP_SETUP.md`** (Planned)
+  - Context7 MCP server configuration
+  - Library documentation lookup, 2 tools (resolve-library-id, get-library-docs)
+  - External framework/library documentation
+
+- **`STORYBOOK_MCP_ADDON.md`** (Planned)
+  - Storybook MCP addon configuration
+  - Dev tools (story URLs, UI instructions) + Docs tools (component manifest, documentation)
+  - Internal component documentation and visual verification
+
+- **`AKAUNTING_MCP_SETUP.md`**
+  - Akaunting MCP server configuration
+  - Accounting API tools and workflows
 
 ### Automation
 
