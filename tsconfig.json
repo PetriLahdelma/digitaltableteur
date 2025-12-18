@@ -38,8 +38,8 @@
     "src",
     "vite-app",
     "shared_backup_20251123",
-    "app",
+    "app/**",
     "api-legacy-vercel-functions",
-    "providers"
+    "providers/**"
   ]
 }
