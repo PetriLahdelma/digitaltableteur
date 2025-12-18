@@ -109,24 +109,18 @@ const nextConfig: NextConfig = {
     const appRoot = path.resolve(__dirname, ".");
 
     const existingAlias = config.resolve.alias;
-    if (Array.isArray(existingAlias)) {
-      config.resolve.alias = [
-        ...existingAlias,
-        { name: "@", alias: appRoot },
-        { name: "@dt", alias: nextjsSharedComponents },
-        {
-          name: "@dt-pages",
-          alias: path.join(nextjsSharedComponents, "pages"),
-        },
-      ];
-    } else {
-      config.resolve.alias = {
-        ...(existingAlias ?? {}),
-        "@": appRoot,
-        "@dt": nextjsSharedComponents,
-        "@dt-pages": path.join(nextjsSharedComponents, "pages"),
-      };
-    }
+    const normalizedAlias: Record<string, string | false> = Array.isArray(
+      existingAlias,
+    )
+      ? Object.fromEntries(existingAlias.map((entry) => [entry.name, entry.alias]))
+      : (existingAlias ?? {});
+
+    config.resolve.alias = {
+      ...normalizedAlias,
+      "@": appRoot,
+      "@dt": nextjsSharedComponents,
+      "@dt-pages": path.join(nextjsSharedComponents, "pages"),
+    };
 
     // Legacy Vite pages moved to shared/vite-pages to prevent routing conflicts
     config.watchOptions = {
