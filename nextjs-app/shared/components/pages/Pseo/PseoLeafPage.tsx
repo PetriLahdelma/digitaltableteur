@@ -91,7 +91,7 @@ export function PseoLeafPageView({
   const related = mergeRelated(page, relatedPages, copy?.related);
 
   return (
-    <PageLayout as="main" maxWidth="lg" spacing="comfortable">
+    <PageLayout as="main" maxWidth="md" spacing="comfortable">
       <div className={styles.root}>
         <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
           <Link href="/pseo">PSEO</Link>
@@ -131,7 +131,10 @@ export function PseoLeafPageView({
         </div>
 
         <section className={styles.section} aria-label="Introduction">
-          <MarkdownMessage content={copy?.introMarkdown ?? defaultIntro(page)} />
+          <MarkdownMessage
+            content={copy?.introMarkdown ?? defaultIntro(page)}
+            renderWithDesignSystem
+          />
         </section>
 
         <aside className={styles.toc} aria-label="Table of contents">
@@ -155,7 +158,7 @@ export function PseoLeafPageView({
             <Title terminals="sans" level={2} size="S">
               {section.title}
             </Title>
-            <MarkdownMessage content={section.bodyMarkdown} />
+            <MarkdownMessage content={section.bodyMarkdown} renderWithDesignSystem />
           </section>
         ))}
 
@@ -179,7 +182,10 @@ export function PseoLeafPageView({
                   {item.page.title}
                 </Title>
                 <div className={styles.relatedReason}>
-                  <MarkdownMessage content={item.reasonMarkdown} />
+                  <MarkdownMessage
+                    content={item.reasonMarkdown}
+                    renderWithDesignSystem
+                  />
                 </div>
               </Link>
             ))}

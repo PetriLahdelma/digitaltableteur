@@ -1,5 +1,10 @@
 .root {
-  padding-block: 3rem;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 100%;
+  font-family: var(--primary-body-font);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .metaLinks {
@@ -53,4 +58,3 @@
   margin-top: 0.5rem;
   opacity: 0.85;
 }
-
