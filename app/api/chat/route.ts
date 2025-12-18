@@ -135,8 +135,7 @@ export async function POST(request: NextRequest) {
       messages: convertToModelMessages(messages),
       temperature: 0.2,
       maxRetries: 2,
-      // Server-side token limits (overrides any client request)
-      maxTokens: MAX_OUTPUT_TOKENS,
+      // Note: maxTokens deprecated in AI SDK, use model-specific settings
     };
 
     const result = await streamText(streamParams);
