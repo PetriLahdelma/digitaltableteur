@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { HelsinkiDesignSystemPage } from "../../../nextjs-app/shared/components/pages/Work/HelsinkiDesignSystem";
+import { HelsinkiDesignSystemPage } from "@dt-pages/Work/HelsinkiDesignSystem";
 import { NextWorkNav } from "../NextWorkNav";
 
 export const metadata: Metadata = {
