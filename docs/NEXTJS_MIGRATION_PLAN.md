@@ -838,6 +838,14 @@ router.push("/about");
 
 **Solution:** Avoid Next.js middleware for i18n. Use client-side detection (existing pattern).
 
+### 8. MDX / Sanity-to-MDX Workflow (Blog)
+
+- Next is configured with `@next/mdx` + `@mdx-js/loader`, `remark-frontmatter`, `remark-mdx-frontmatter`, and `remark-gfm` in `nextjs-app/next.config.ts` (pageExtensions include md/mdx).
+- Shared loader `src/data/blogPosts.ts` now falls back to explicit MDX imports when `import.meta.glob` is unavailable (Next). **When adding a new post, also add an explicit import to that fallback map** until we introduce an automated manifest step.
+- Blog/article rendering in Next currently uses client wrappers (`app/blog/[slug]/ClientArticle.tsx`, `ClientAuthor.tsx`) to dodge server MDX typing issues; metadata for posts is basic. Improve later by revisiting server MDX once types are stable.
+- Rewrites for `/blog`, `/blog/:slug`, `/blog/authors/:slug` point to the placeholder Next URL—replace with the real deployment URL before shipping.
+- Automation: run `npm run sync:blog-metadata` after adding/updating MDX posts (from Sanity export or manual edits). The script reads `content/posts/*.mdx` frontmatter and regenerates `nextjs-app/app/blog/postMetadata.ts` (slug/title/description/publishedAt/image) so `generateMetadata` stays in sync without loading MDX on the server.
+
 ---
 
 ## Success Metrics

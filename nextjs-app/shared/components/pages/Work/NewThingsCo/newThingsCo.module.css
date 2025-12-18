@@ -1,0 +1,131 @@
+/* stylelint-disable order/properties-order, property-disallowed-list, color-function-notation, color-function-alias-notation, alpha-value-notation */
+
+.caseStudy {
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  max-width: 100%;
+  font-family: var(--secondary-body-font, "TiemposText-Regular"), serif;
+  font-size: 1rem;
+  color: var(--main-body-copy-color);
+}
+
+.caseHeroSection {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.heroText {
+  min-width: 280px;
+  flex: 1 1 320px;
+}
+
+.heroText h1 {
+  font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.heroText h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+.caseBadges {
+  display: flex;
+  margin-block-end: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.heroSummary {
+  margin-block: 4rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.heroImage {
+  display: flex;
+  min-width: 280px;
+  flex: 1 1 320px;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.heroVideo {
+  margin-block-end: 2rem;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+.section {
+  display: grid;
+  gap: 1rem;
+}
+
+.twoCol {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: start;
+}
+
+.projectMeta {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 1rem;
+}
+
+.projectMeta li {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.processSteps {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.processStep {
+  padding: 1rem;
+  border: 1px solid var(--color-border, #ccc);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.processStep h4 {
+  font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.resultsList {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.caseBadgeGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+@media (width <= 768px) {
+  .caseStudy {
+    padding-inline: 1rem;
+  }
+
+  .heroText h1 {
+    font-size: 2.25rem;
+  }
+}

@@ -1,16 +1,28 @@
 # Linear Automation & AI Issue Intake
 
-Digitaltableteur now includes a scripted Linear workflow that standardizes ticket intake, enriches issue metadata with AI-style heuristics, and protects against misfiled work. This document captures the architecture, configuration, and usage notes so future contributors can extend the automation.
+Digitaltableteur includes a comprehensive Linear workflow combining scripted automation, VS Code extension integration, and future MCP server capabilities. This document covers the CLI scripts and automation architecture.
+
+> **💡 For VS Code Extension Integration:** See [LINEAR_VSCODE_INTEGRATION.md](./LINEAR_VSCODE_INTEGRATION.md) for hybrid workflow patterns, keyboard shortcuts, and extension-script integration strategies.
 
 ## 1. Architecture Overview
 
-| Concern        | Implementation                                                                                                                                                 |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| API layer      | `lib/linear/createIssue.ts` — GraphQL client with env validation, label/assignee lookups, and rate-limit handling                                              |
-| Smart metadata | `lib/linear/classify.ts` (domain + auto labels), `lib/linear/componentDetection.ts` (component heuristics), `lib/linear/textImprover.ts` (description rewrite) |
-| Trigger        | `scripts/linear/create-issue.ts` executed via `npm run linear:new` (readline-based CLI, ready for future Slack/voice triggers)                                 |
-| Documentation  | This file + env references                                                                                                                                     |
-| Labs Setup     | `docs/RD_LABS_GUIDE.md` describes the R&D/Labs team workflow                                                                                                   |
+| Concern             | Implementation                                                                                                                                                 |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| API layer           | `lib/linear/createIssue.ts` — GraphQL client with env validation, label/assignee lookups, rate-limit handling, and new API features (Dec 2025)                 |
+| Smart metadata      | `lib/linear/classify.ts` (domain + auto labels), `lib/linear/componentDetection.ts` (component heuristics), `lib/linear/textImprover.ts` (description rewrite) |
+| CLI Triggers        | `scripts/linear/*.ts` executed via `npm run linear:*` commands                                                                                                 |
+| VS Code Integration | Official Linear extension (see LINEAR_VSCODE_INTEGRATION.md)                                                                                                   |
+| MCP Server          | Planned Linear GraphQL MCP server for AI assistant integration                                                                                                 |
+| Documentation       | This file + LINEAR_VSCODE_INTEGRATION.md + LINEAR_LABELS.md                                                                                                    |
+
+**New Features (Dec 2025):**
+
+- Label descriptions for better triage intelligence
+- State history tracking for audit trails
+- Semantic search across issues, projects, and documents
+- Project creation from templates
+- Issue subscriptions via email
+- Customer data type definitions (for future CRM integration)
 
 Key automation stages:
 
@@ -35,6 +47,8 @@ LINEAR_WEBHOOK_SECRET=""              # reserved for future inbound sync
 
 ## 3. CLI Usage
 
+### Creating new issues
+
 ```bash
 npm run linear:new
 ```
@@ -47,6 +61,122 @@ Flow:
 4. On success the script prints the new issue identifier + URL.
 
 The CLI loads `.env.local`, validates config, and exits with helpful errors if anything is missing. Failures returned by Linear (validation, rate limits, missing labels) are surfaced clearly.
+
+### Checking issue details (with state history)
+
+View comprehensive issue information including state transition history:
+
+```bash
+npm run linear:check DIG-123
+```
+
+Output includes:
+
+- Issue identifier, title, URL
+- Current state and priority
+- Assignee details
+- Applied labels
+- **State history** - Complete audit trail of state transitions with timestamps and actors
+
+Example output:
+
+```
+📋 Issue: DIG-123
+   Title: Add semantic search to Linear scripts
+   URL: https://linear.app/digitaltableteur/issue/DIG-123
+   State: Done
+   Priority: P2
+   Assignee: Petri Lahdelma (petri@digitaltableteur.com)
+   Labels: automation, linear, ai
+
+📊 State History:
+   Created → Todo (Dec 1, by Petri)
+   Todo → In Progress (Dec 2, by Petri)
+   In Progress → In Review (Dec 4, by Petri)
+   In Review → Done (Dec 5, by Petri)
+```
+
+### Semantic search (NEW - Dec 2025)
+
+Search across issues, projects, and documents using natural language:
+
+```bash
+npm run linear:search "button accessibility bugs"
+```
+
+Features:
+
+- **Semantic matching** - Finds relevant results even without exact keyword matches
+- **Multi-type search** - Returns issues, projects, and documents in one query
+- **AI-powered** - Uses Linear's semantic search API for intelligent results
+
+Example output:
+
+```
+🔍 Searching for: "button accessibility bugs"
+
+Found 5 result(s):
+
+1. [Issue] Button component missing ARIA labels
+   ID: DIG-98
+   Linear ID: abc123...
+
+2. [Issue] Accessibility audit for design system
+   ID: DIG-112
+   Linear ID: def456...
+
+3. [Document] Accessibility Guidelines
+   Linear ID: ghi789...
+```
+
+### Subscribing to issues (NEW - Dec 2025)
+
+Subscribe users to issues for automatic notifications:
+
+```bash
+npm run linear:subscribe --issue <issueId> --email petri@digitaltableteur.com
+```
+
+Use cases:
+
+- Auto-subscribe stakeholders to critical issues
+- Add team members to ongoing discussions
+- Ensure accountability on specific tickets
+
+### Creating projects from templates (NEW - Dec 2025)
+
+Quickly spin up new projects using pre-defined templates:
+
+```bash
+npm run linear:project
+```
+
+Interactive prompts:
+
+- Project name
+- Template ID
+- Team ID (optional, uses default)
+- Lead ID (optional)
+- Target date (optional, YYYY-MM-DD)
+- Description (optional)
+
+Example:
+
+```bash
+npm run linear:project
+# Prompts:
+# Project name: Q1 2026 Design System Audit
+# Template ID: template_abc123
+# Team ID: (uses default LINEAR_TEAM_ID)
+# Lead ID: user_xyz789
+# Target date: 2026-03-31
+# Description: Comprehensive accessibility and performance audit
+
+✅ Project created successfully!
+   ID: proj_def456
+   Name: Q1 2026 Design System Audit
+   URL: https://linear.app/digitaltableteur/project/proj_def456
+```
 
 ### Updating existing issues
 
@@ -125,17 +255,79 @@ The automation script integrates with:
   - Converts friendly data into GraphQL `IssueCreateInput`.
   - Looks up label IDs and assignee IDs/emails via secondary queries.
   - Surfaces rate limit errors with retry guidance.
+  - **NEW:** `createLabelWithDescription` - Create labels with descriptions for better triage intelligence
+  - **NEW:** `createProjectFromTemplate` - Instantiate projects from templates via API
+  - **NEW:** `subscribeToIssue` - Subscribe users to issues via email
+  - **NEW:** `semanticSearch` - Natural language search across issues, projects, and documents
 - `lib/linear/classify.ts`
   - Keyword heuristics assign domain and record confidence; low-confidence paths ask the user.
   - `deriveLabels` merges manual + auto labels and returns what was added implicitly.
 - `lib/linear/componentDetection.ts`
   - Recursively indexes `/src/components/**` directories/files.
-  - Matches CamelCase/kebab tokens found in the user’s answers.
+  - Matches CamelCase/kebab tokens found in the user's answers.
   - Produces labels shaped as `comp:<ComponentName>`.
 - `lib/linear/textImprover.ts`
   - Splits reporter text into sentences, categorizes them (problem/expected/actual/steps).
   - Generates deterministic acceptance criteria per issue type.
-  - Appends the “User’s Raw Input” block to preserve original wording.
+  - Appends the "User's Raw Input" block to preserve original wording.
+
+## 5. API Updates (Dec 2025)
+
+Based on Linear's changelog (Sept-Dec 2025), the following API features have been added to our scripts:
+
+### ✅ Implemented
+
+1. **Label Descriptions** (Oct 9, 2025)
+   - Labels now support optional `description` field
+   - Used by: `seed-labels.ts`, `createLabelWithDescription()`
+   - Improves Product Intelligence triage suggestions
+
+2. **State History** (Nov 2025)
+   - `Issue.stateHistory` field exposes complete audit trail
+   - Used by: `check-issue.ts`
+   - Shows all state transitions with timestamps and actors
+
+3. **Semantic Search** (Sept 2025)
+   - `semanticSearch` query searches across multiple types
+   - Used by: `semantic-search.ts`
+   - Enables natural language queries
+
+4. **Project Templates** (Oct 2025)
+   - `projectCreate` mutation accepts `templateId`
+   - Used by: `create-project-from-template.ts`
+   - Rapid project instantiation
+
+5. **Issue Subscriptions** (Sept 2025)
+   - `issueSubscribe` mutation accepts `userEmail` parameter
+   - Used by: `subscribe-issue.ts`
+   - Email-based subscription management
+
+### 🔄 Prepared (Types Added, Not Actively Used)
+
+6. **Customer Data Types**
+   - `CustomerInput` interface defined
+   - Ready for future CRM integration (Salesforce, Zendesk, Intercom)
+   - No active scripts yet
+
+### 📋 Future Enhancements
+
+7. **Date Mentions** (Oct 2025)
+   - Parser for `@tomorrow`, `@next Monday` in descriptions
+   - Could be added to `create-issue.ts` preprocessing
+
+8. **Form Templates** (Nov 2025)
+   - Structured issue intake with form fields
+   - Primarily UI feature, not CLI-focused
+
+9. **Initiatives** (Sept 2025)
+   - Higher-level planning objects above projects
+   - Could add `create-initiative.ts` script
+
+10. **SLAs** (Oct 2025)
+    - Service level agreements (Business plan only)
+    - Monitoring script possible if needed
+
+## 6. Trigger Expansion & Future Hooks
 
 ## 5. Trigger Expansion & Future Hooks
 
@@ -165,9 +357,184 @@ Confirm issue creation with: title="Home hero CTA renders wrong gradient" priori
 
 This transcript shows the auto-added labels (`ui-app-bug`, `comp:HeroCTA`) alongside user labels and the final confirmation step.
 
+## 7. MCP Server Integration (Planned)
+
+### Linear MCP Server Configuration
+
+Future MCP integration will enable AI assistants (GitHub Copilot, Claude, etc.) to interact with Linear issues via natural language commands.
+
+**Proposed `mcp.json` Configuration:**
+
+```jsonc
+{
+  "mcpServers": {
+    "linear": {
+      "type": "http",
+      "url": "https://api.linear.app/graphql",
+      "headers": {
+        "Authorization": "Bearer {{LINEAR_API_KEY}}",
+        "Content-Type": "application/json",
+      },
+      "env": {
+        "LINEAR_API_KEY": "<YOUR_LINEAR_API_KEY>",
+        "LINEAR_TEAM_ID": "team_xxx",
+      },
+      "tools": [
+        "create_issue",
+        "update_issue",
+        "list_my_issues",
+        "search_issues",
+        "add_comment",
+        "get_issue_by_id",
+        "set_issue_status",
+      ],
+      "description": "Linear issue management with AI-enhanced labeling",
+    },
+  },
+}
+```
+
+### MCP Tool Definitions
+
+**Available MCP Tools:**
+
+| Tool               | Input                                       | Output                       | Example                      |
+| ------------------ | ------------------------------------------- | ---------------------------- | ---------------------------- |
+| `create_issue`     | `{ title, description, priority, labels? }` | `{ id, identifier, url }`    | AI creates issue from chat   |
+| `update_issue`     | `{ id, state?, labels?, comment? }`         | `{ success, updatedFields }` | AI updates status/labels     |
+| `list_my_issues`   | `{ state?, limit? }`                        | `Issue[]`                    | AI shows your open issues    |
+| `search_issues`    | `{ query, labels?, limit? }`                | `Issue[]`                    | AI finds related issues      |
+| `add_comment`      | `{ id, body }`                              | `{ commentId, url }`         | AI adds implementation notes |
+| `get_issue_by_id`  | `{ identifier }`                            | `Issue`                      | AI retrieves full details    |
+| `set_issue_status` | `{ id, status }`                            | `{ success, previousState }` | AI changes workflow state    |
+
+### AI Assistant Workflow Examples
+
+**Example 1: Natural Language Issue Creation**
+
+```
+User in Copilot Chat:
+"Create a ticket to add keyboard navigation to the Modal component"
+
+AI with MCP:
+1. Calls: create_issue({
+     title: "Add keyboard navigation to Modal component",
+     description: "Implement accessible keyboard controls...",
+     priority: 2,
+     labels: ["a11y", "design-system", "comp:Modal"]
+   })
+2. Receives: { id: "...", identifier: "DIG-44", url: "..." }
+3. Responds: "✅ Created DIG-44. Would you like me to create a branch?"
+```
+
+**Example 2: Contextual Issue Search**
+
+```
+User in Copilot Chat:
+"Show me all open accessibility issues related to buttons"
+
+AI with MCP:
+1. Calls: search_issues({
+     query: "button accessibility",
+     labels: ["a11y", "comp:Button"],
+     state: "In Progress,Todo"
+   })
+2. Receives: [DIG-30, DIG-35, DIG-40]
+3. Responds: "Found 3 issues: [formatted list with links]"
+```
+
+**Example 3: Auto-Update from Code Changes**
+
+```
+User in Copilot Chat:
+"I just finished implementing the dark mode toggle"
+
+AI with MCP:
+1. Analyzes context (branch name: DT-143-feat-dark-mode)
+2. Calls: search_issues({ query: "DIG-43" })
+3. Calls: update_issue({
+     id: "DIG-43",
+     state: "Done",
+     comment: "Implementation complete per user confirmation"
+   })
+4. Responds: "✅ Updated DIG-43 to Done. Would you like me to create a PR?"
+```
+
+### Integration with Existing Scripts
+
+MCP server will complement (not replace) existing scripts:
+
+| Use Case            | Best Tool                       | Reason                          |
+| ------------------- | ------------------------------- | ------------------------------- |
+| AI chat requests    | MCP                             | Natural language, context-aware |
+| Batch operations    | Scripts                         | Faster, programmable, testable  |
+| Manual creation     | VS Code Extension               | Interactive, visual feedback    |
+| Git-driven workflow | Scripts (`npm run linear:auto`) | Branch detection, PR linking    |
+| Quick updates       | VS Code Extension               | Keyboard shortcuts, status bar  |
+
+### Three-Way Sync Architecture
+
+```
+┌─────────────────┐
+│  VS Code Ext    │ ← Visual, interactive, status bar
+│  (UI Layer)     │
+└────────┬────────┘
+         │
+         ├─── Shared LINEAR_API_KEY ───┐
+         │                              │
+┌────────▼────────┐           ┌────────▼────────┐
+│  CLI Scripts    │           │   MCP Server    │
+│  (Automation)   │           │   (AI Layer)    │
+└────────┬────────┘           └────────┬────────┘
+         │                              │
+         └──────────┬───────────────────┘
+                    │
+         ┌──────────▼──────────┐
+         │  Linear GraphQL API │
+         └─────────────────────┘
+```
+
+**Benefits:**
+
+- Single API key configuration
+- Consistent labeling across all tools
+- Context issue synced everywhere
+- No tool lock-in (use what fits the task)
+
+### Security Considerations
+
+**API Key Management:**
+
+- Store in `.env.local` (gitignored)
+- Share same key across tools
+- Use `read` + `write` scopes only
+- Rotate periodically (see `docs/EMERGENCY_SECRET_ROTATION.md`)
+
+**MCP-Specific Security:**
+
+- Validate AI-generated labels against allowed list
+- Require confirmation for destructive operations
+- Rate limit MCP tool calls (prevent AI loops)
+- Log all MCP mutations for audit trail
+
+### Future Enhancements
+
+- [ ] Implement Linear MCP server
+- [ ] Add AI-powered component detection via codebase analysis
+- [ ] Auto-link related issues from AI conversation context
+- [ ] Generate acceptance criteria from natural language descriptions
+- [ ] Integrate with GitHub MCP for cross-tool workflows
+- [ ] Voice-triggered issue creation via MCP + Whisper
+
 ---
 
 Need updates or want to experiment? Extend the helpers under `lib/linear/*`, keep heuristics deterministic, and refresh this doc with behavioral changes.
+
+**Related Documentation:**
+
+- [LINEAR_VSCODE_INTEGRATION.md](./LINEAR_VSCODE_INTEGRATION.md) - VS Code extension patterns and shortcuts
+- [LINEAR_LABELS.md](./LINEAR_LABELS.md) - Available labels and usage guidelines
+- [RD_LABS_GUIDE.md](./RD_LABS_GUIDE.md) - R&D team workflow
 
 - Workspace Labels:
   - Content: `ai-app`, `browser-extension`, `mcp`, `figma-plugin`, `design-tool`, `automation`

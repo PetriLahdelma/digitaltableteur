@@ -1,0 +1,23 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem; /* 8px */
+  font-family: var(--font-text);
+  font-size: 1rem; /* 16px */
+  color: var(--color-primary);
+}
+
+.label.disabled {
+  color: var(--color-muted-light);
+  cursor: not-allowed;
+}
+
+.required {
+  color: var(--color-error);
+}
+
+.tooltip {
+  margin-inline-start: 0.5rem; /* 8px logical */
+  font-size: 0.875rem; /* 14px */
+  color: var(--color-muted);
+}

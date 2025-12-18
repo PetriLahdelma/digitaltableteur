@@ -105,17 +105,19 @@ function slugify(value) {
 
 function buildMarkdown(body, urlBuilder) {
   if (!Array.isArray(body)) return "";
-  return blocksToMarkdown(body, {
+  let markdown = blocksToMarkdown(body, {
     serializers: {
       types: {
         image: ({ node }) => {
           if (!node?.asset?._ref) return "";
           const url = urlBuilder.image(node).width(1600).url();
           const alt = node.alt ? node.alt.replace(/]/g, "\\]") : "";
-          const caption = node.caption
-            ? `\n<figcaption>${node.caption}</figcaption>`
-            : "";
-          return `![${alt}](${url})${caption}`;
+          // Wrap image and figcaption in figure tags to prevent hydration errors
+          // MDX auto-wraps content in <p> tags, but <figcaption> cannot be a child of <p>
+          if (node.caption) {
+            return `<figure>\n\n![${alt}](${url})\n\n<figcaption>${node.caption}</figcaption>\n\n</figure>`;
+          }
+          return `![${alt}](${url})`;
         },
         embed: ({ node }) => {
           if (!node?.url) return "";
@@ -126,6 +128,24 @@ function buildMarkdown(body, urlBuilder) {
       },
     },
   }).trim();
+
+  // Fix malformed HTML tags and attributes in multiple passes
+  // Pass 1: Fix missing space after tag name (e.g., <iframewidth -> <iframe width)
+  markdown = markdown.replace(
+    /<(iframe|div|span|img|video|audio|embed)([a-z]+=")/gi,
+    "<$1 $2",
+  );
+
+  // Pass 2: Fix missing spaces between attributes ending with " and next attribute
+  markdown = markdown.replace(/(="[^"]*")([a-z]+=")/gi, "$1 $2");
+
+  // Pass 3: Fix missing spaces between attributes ending with " and next attribute (catch stragglers)
+  markdown = markdown.replace(/(")(\w+=")/g, "$1 $2");
+
+  // Pass 4: Fix boolean attributes without spaces (e.g., allowFullScreen immediately after ")
+  markdown = markdown.replace(/(")(allow[A-Z]\w+)/g, "$1 $2");
+
+  return markdown;
 }
 
 function writePostFile(post, markdown) {

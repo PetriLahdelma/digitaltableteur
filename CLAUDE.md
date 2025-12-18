@@ -1,561 +1,364 @@
-# Claude AI Assistant
+# Digitaltableteur - Claude Code System Instructions
 
-This file serves as a reference for Claude AI interactions with the Digitaltableteur project.
+## Project Identity
 
-## Project Context
+**Type**: Hybrid monorepo with parallel Vite (legacy) + Next.js 15 App Router (production)  
+**Stack**: React 18, TypeScript 5.8, Next.js 15.5.6, Vite 6.3, Storybook 10.0.8  
+**Architecture**: Component-driven design system with CSS Modules, i18next (EN/FI/SV), Vercel serverless  
+**Migration Status**: Mid-transition from Vite → Next.js (see `docs/NEXTJS_MIGRATION_PLAN.md`)
 
-Digitaltableteur is a modern React TypeScript portfolio website built with Vite, featuring:
-
-- Multi-language support (EN/FI/SV)
-- Responsive design with CSS Modules
-- Component library with Storybook
-- Secure CV download functionality
-- Blog platform with SEO optimization
-- Contact form integration
-
-## Development Guidelines
-
-### ⚠️ CRITICAL: Component Creation Rules
-
-**BEFORE creating ANY new component, ALWAYS refer to `docs/LLM_COMPONENT_GENERATION_RULES.md`**
-
-This comprehensive guide (10 sections, 12,000+ words) covers:
-
-- Core architecture & design system patterns
-- CSS Modules & styling requirements (logical properties, design tokens, theme support)
-- Component API design & props patterns
-- Internationalization (i18n) for 3 languages
-- React best practices & performance optimization
-- Accessibility (a11y) requirements & testing
-- Testing strategy (Vitest, axe-core, >80% coverage)
-- Code quality & linting (ESLint, Stylelint, Prettier)
-- Storybook & documentation standards
-- Complete pre-commit checklist
-
-**Following these rules ensures consistency, accessibility, and quality across all components.**
+This CLAUDE.md is the **authoritative source** for development guidelines. Subdirectories contain specialized CLAUDE.md files that extend these rules.
 
 ---
 
-When working with this project, please:
+## ⚠️ CRITICAL: Component Creation Rules
 
-- Maintain test coverage for critical functionality
-- Use the `@dt/` component library when available
-- Keep Storybook visual regression baselines current and review diffs before merging
-- Every Storybook story displays a persistent WIP badge (localized) until the story explicitly opts out via `export const ... = { parameters: { wip: { disabled: true }}}`. Use this to signal audit readiness. Removing the badge should coincide with accessibility + visual + translation verification.
+**BEFORE creating ANY new component, ALWAYS refer to:**
 
-## Architecture Notes
+- **`docs/LLM_COMPONENT_GENERATION_RULES.md`** (12,000+ words, 10 sections)
+- **`docs/LLM-CRITICAL-REASONING-AND-PLANNING-INSTRUCTIONS.md`**
 
-### Logical Properties & Defensive CSS (Nov 2025)
+These documents are the **constitution** for component development. They cover:
 
-We migrated remaining physical directional properties (margin-left/right, padding-left/right, border-left) to logical equivalents to improve:
+1. Core architecture & design system philosophy
+2. CSS Modules & styling (logical properties, design tokens, theme support)
+3. Component API design & props patterns
+4. Internationalization (i18n) - 3-language support (EN/FI/SV)
+5. React best practices & performance
+6. Accessibility (a11y) requirements & testing
+7. Testing strategy (Vitest, axe-core, >80% coverage)
+8. Code quality & linting (ESLint, Stylelint, Prettier)
+9. Storybook & documentation (WIP badge system, visual regression)
+10. Final checklist & template
 
-3. Reduction of duplication (single `margin-inline` or `padding-inline`).
+**Following these rules ensures consistency, accessibility, and production-readiness.**
 
-Key patterns applied:
+---
 
-- Spacing fallbacks: use `margin-inline-start` within gap fallbacks; when both start/end are zero replace with `margin-inline: 0`.
-- Borders: `border-inline-start` for blockquote and checkbox checkmark drawing.
-- Wide layout compensation: replaced paired `margin-left/right` calc offsets with single `margin-inline`.
+## Universal Development Rules
 
-Checkbox checkmark shape retained using logical border; geometry unaffected.
+### Code Quality (MUST)
 
-- Audit any remaining physical properties in page-specific styles (work subpages, legacy modules) as they evolve.
-- Add automated lint autofix suggestions to CONTRIBUTING / instructions.
+- **MUST** write TypeScript in strict mode (no `any` without justification)
+- **MUST** include tests for all new components (unit + accessibility)
+- **MUST** run pre-commit validation: `npm run typecheck && npm test && npm run lint`
+- **MUST NOT** commit secrets, API keys, or tokens (use `.env.local`)
+- **MUST** use CSS Modules (never inline styles except dynamic `backgroundImage`)
+- **MUST** ensure 100% translation coverage (EN/FI/SV)
+- **MUST** update Storybook stories for component changes
 
-### Sentry Observability (Nov 2025)
+### Best Practices (SHOULD)
 
-Added Sentry integration for error + performance tracing:
+- **SHOULD** use functional components with hooks (no class components)
+- **SHOULD** prefer CSS logical properties (`margin-inline`, `padding-block`)
+- **SHOULD** keep functions under 50 lines (extract complex logic)
+- **SHOULD** use design tokens from `src/styles/variables.css`
+- **SHOULD** lazy-load routes with `React.lazy()` (Vite) or `dynamic()` (Next.js)
+- **SHOULD** update visual regression baselines when UI changes: `npm run test:visual -- --updateSnapshot`
 
-- Vite plugin (`@sentry/vite-plugin`) conditionally enabled when DSN present; source maps generated & uploaded.
-- Environment / release: `environment` derives from `import.meta.env.MODE`; optional `release` can be injected via `SENTRY_RELEASE` in CI and echoed to window global `__DT_RELEASE__` if needed before bootstrap.
-- Performance sampling: default `tracesSampleRate` 0.05, adjustable via `VITE_SENTRY_TRACES_SAMPLE_RATE`.
-- Error boundary wraps `<App />` only when Sentry enabled to avoid extra react tree depth locally.
-- Required build-time env vars for plugin: `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` (defaults provided for org/project) handled via process environment (not exposed to browser).
+### Anti-Patterns (MUST NOT)
 
-Operational Notes:
+- **MUST NOT** use `@ts-ignore` (fix types properly)
+- **MUST NOT** bypass ESLint errors (fix or add justification comment)
+- **MUST NOT** hardcode colors (use CSS custom properties)
+- **MUST NOT** create standalone component files (always use folder structure: `ComponentName/ComponentName.tsx`, `.module.css`, `.stories.tsx`, `.test.tsx`, `index.ts`)
+- **MUST NOT** generate new color variables unless explicitly requested
+- **MUST NOT** remove WIP badge from Storybook stories without a11y + visual + translation verification
 
-1. Set `VITE_SENTRY_DSN` in `.env` for production; omit in local dev to skip overhead.
-2. CI should export `SENTRY_RELEASE=$(git rev-parse --short HEAD)` before build for release grouping.
-3. Source map upload deletes maps afterward (configured) to keep public bundle lean; disable deletion for debugging by removing `filesToDeleteAfterUpload`.
-4. Adjust sampling in high-volume scenarios to manage quota.
-5. Future MCP server can expose Sentry issue queries; plan: add command server to `mcp.json` that shells out to a small node script using Sentry REST API.
+---
 
-Testing:
+## Core Commands
 
-- Verify initialization by forcing an error (e.g., temporary throw in a component) and confirming event in Sentry dashboard.
-- Performance traces appear when navigation + React render spans occur (instrumentation via `browserTracingIntegration()`).
-
-Internationalization:
-
-Security:
-
-- Do not commit auth token; rely on CI secret injection. DSN safe for client exposure.
-
-- Replace static fallback boundary text with localized variant and add test ensuring translation keys present.
-
-- **Reusable Navigation**: `NavMenuList` centralizes active state (exact/prefix), applies `aria-current="page"`, and exposes styling hooks (`listClassName`, `itemClassName`, `activeClassName`) for patterns like the mobile menu and future sidebars.
-- **I18n**: i18next with namespace organization
-- **Testing**: Vitest with coverage reporting
-- **Deployment**: GitHub Pages with Vercel serverless functions
-
-### Chat Markdown Support
-
-Assistant and user messages are rendered as GitHub-flavored Markdown using `react-markdown` and `remark-gfm` within a dedicated `MarkdownMessage` component. Raw HTML is skipped for safety; links are annotated with `rel="noopener noreferrer"`. Extend this component to add syntax highlighting or sanitized HTML if future requirements emerge.
-
-### Dynamic Component Injection Architecture
-
-Dynamic parsing lives in the pure transformer `src/components/ChatWidget/messageProcessor.ts` converting raw `UIMessage` objects into `ProcessedMessage` parts consumed by `ChatMessages.tsx`.
-
-Current model: USER-triggered only (assistant heuristics disabled).
-
-Flow:
-
-1. User message scanned for explicit tokens `[[openHours]]`, `[[servicesGrid]]` OR multilingual heuristic keywords (EN/FI/SV for hours/services).
-2. If matched, a pending flag (openHours / services) is set; user text is sanitized (tokens removed, keywords retained for transparency).
-3. The NEXT assistant message consumes pending flags: assistant text is sanitized (token + first matching keyword removed) and the appropriate component(s) appended (`<OpenHours compact />`, `<ServicesGrid />`).
-4. Flags reset after consumption; assistant cannot self-trigger by echoing keywords/tokens.
-
-Assistant sanitization ensures that when a component is injected, duplicate leading semantic phrases (e.g., “Aukioloajat”, “Öppettider”, “Open hours”, “Palvelut”, “Tjänster”, “Services”) and any raw tokens are removed from the assistant's visible text, leaving the component as the singular representation.
-
-Multilingual keyword coverage (user role only now):
-
-- Open hours EN: open hours, business hours, closing time, opening time, hours of operation, operating times
-- Open hours FI: aukioloajat, aukioloaika, sulkemisaika, avaamisaika, tänään auki
-- Open hours SV: öppettider, öppet, stängningstid, öppningstid, dagens öppettider
-- Services EN: services, capabilities, offerings, what do you offer, what services do you provide
-- Services FI: palvelut, palveluja, palveluita, mitä tarjoatte, palvelunne
-- Services SV: tjänster, era tjänster, vad erbjuder ni, erbjudanden
-
-Security:
-
-- User tokens stripped before rendering.
-- Only whitelisted component names rendered.
-- Single assistant reply per trigger prevents replay.
-
-Extending further:
-
-1. Add new token + regex to user trigger block in `messageProcessor.ts`.
-2. Introduce pending flag and consumption logic.
-3. Append component in assistant branch with sanitization.
-4. Update `ChatMessages.tsx` render switch.
-5. Add unit + integration tests; refresh visual baselines if UI shifts.
-6. Provide translations and Storybook story.
-
-## Common Tasks
-
-- Start dev server: `npm run dev`
-- Run Storybook: `npm run storybook`
-- Build for production: `npm run build`
-- Run tests: `npm test`
-- Lint code: `npm run lint`
-- Run accessibility checks: `npm run test:a11y`
-- Execute visual regression tests: `npm run test:visual`
-- Update visual baselines after intentional UI changes: `npm run test:visual -- --updateSnapshot`
-
-## Linear Issue Automation (Nov 2025)
-
-Automated Linear issue management via TypeScript scripts in `scripts/linear/`. Core functionality in `lib/linear/createIssue.ts`.
-
-### Creating Issues (For LLMs)
-
-**Critical Decision Point:** When user requests ticket creation:
-
-- "Create a ticket" → `stateName: "In Progress"` + `assigneeEmail: "petri@digitaltableteur.com"`
-- "Create a todo" → omit `stateName` or use `"Todo"`
-
-**Template for Programmatic Creation:**
-
-```typescript
-import {
-  createLinearIssue,
-  validateLinearEnv,
-} from "../../lib/linear/createIssue";
-
-validateLinearEnv();
-const result = await createLinearIssue({
-  title: "Short descriptive title (<80 chars)",
-  description:
-    "Markdown description with context, acceptance criteria, branch name",
-  priority: 1, // 0=P1, 1=P2, 2=P3, 3=P4
-  labelNames: ["design-system", "Improvement"], // See docs/LINEAR_LABELS.md
-  assigneeEmail: "petri@digitaltableteur.com",
-  stateName: "In Progress", // NEW: auto-resolve workflow state
-});
-console.log(`Created ${result.identifier}: ${result.url}`);
-```
-
-### Quick Commands
-
-**Check issue status:**
+### Development
 
 ```bash
-npx tsx scripts/linear/check-issue.ts DIG-16
+npm run dev                # Start Vite dev server (legacy)
+npm run storybook          # Component development at http://localhost:6012
+npm test                   # Run all tests
+npm run test:watch         # Watch mode
+npm run test:visual        # Visual regression (Playwright + Storybook)
+npm run test:a11y          # Accessibility tests (axe-core)
+npm run typecheck          # TypeScript validation
+npm run lint               # ESLint + Stylelint
+npm run lint:fix           # Auto-fix linting issues
 ```
 
-**Update issue state:**
+### Build & Deployment
 
 ```bash
-npx tsx scripts/linear/update-issue.ts --issue DIG-16 --state "Done"
+npm run build              # Vite production build
+npm run deploy             # Deploy to GitHub Pages
+npm run deploy-with-storybook  # Deploy + Storybook visual diffs
+npm run cache-bust         # Manual cache busting for deployment
 ```
 
-**Add labels:**
+### Automation & MCP
 
 ```bash
-npx tsx scripts/linear/update-issue.ts --issue DIG-16 --add-label "Bug,ui-app-bug"
+npm run github:mcp:test    # Test GitHub MCP server connectivity
+npm run figma:mcp:test     # Test Figma MCP server connectivity
+npm run ts:mcp:status      # Validate TypeScript LSP availability
+npm run context7:mcp       # Launch Context7 MCP server (respects CONTEXT7_API_KEY)
+npx tsx scripts/linear/create-issue.ts  # Interactive Linear issue creation
+npx tsx scripts/sentry-mcp.js issues    # Query Sentry issues via MCP
+npm run generate-sentry-summary         # Generate Sentry summary JSON
 ```
 
-### Label Selection Guide
-
-Refer to `docs/LINEAR_LABELS.md` for full list. Common choices:
-
-- Component/design system work: `design-system`
-- Feature enhancements: `Improvement`
-- Bugs: `Bug` or `ui-app-bug`
-- Infrastructure/tooling: `automation`, `observability`, `linear`
-
-### State Support (Added Nov 2025)
-
-The `createLinearIssue()` function now accepts `stateName` (e.g., "In Progress", "Todo", "Done") or `stateId`. State is auto-resolved against team workflow states. This eliminates the need for separate update calls after creation.
-
-**Before (two-step):**
-
-```typescript
-const issue = await createLinearIssue({
-  title,
-  description,
-  priority,
-  labelNames,
-  assigneeEmail,
-});
-await updateIssue(issue.id, { stateId: "..." }); // Manual follow-up
-```
-
-**After (atomic):**
-
-```typescript
-const issue = await createLinearIssue({
-  title,
-  description,
-  priority,
-  labelNames,
-  assigneeEmail,
-  stateName: "In Progress", // One call, correct state immediately
-});
-```
-
-### Environment Requirements
-
-`.env.local` must contain:
+### Quality Gates (run before PR)
 
 ```bash
-LINEAR_API_KEY=lin_api_...
-LINEAR_TEAM_ID=...
-LINEAR_PROJECT_ID=...  # Optional
+npm run typecheck && npm run lint && npm test && npm run build
 ```
 
-### LLM Best Practices
+---
 
-1. **Assignee Default**: Always set `assigneeEmail: "petri@digitaltableteur.com"` unless specified otherwise.
-2. **State Inference**: "ticket" = in progress, "todo" = backlog/todo.
-3. **Priority Mapping**: Critical=P1(0), Important=P2(1), Standard=P3(2), Low=P4(3).
-4. **Description Format**: Include goals, acceptance criteria, branch name, related docs.
-5. **Label Validation**: Check `docs/LINEAR_LABELS.md` before using; script warns if labels missing.
+## Project Structure
 
-## File Structure
+### Applications
 
-- `src/components/` - Reusable UI components
-- `src/pages/` - Route components
-- `src/locales/` - Translation files
-- `src/styles/` - Global styles and variables
-- `public/` - Static assets
+- **`app/`** → Next.js 15 App Router (production) ([see app/CLAUDE.md](app/CLAUDE.md))
+  - Routes: App Router with server components
+  - Layouts: `layout.tsx`, `page.tsx`
+  - API routes: `app/api/*/route.ts`
+  - Metadata: `generateMetadata()` for SEO
 
-## Workflow requirements
+- **`src/`** → Vite app (legacy, being phased out)
+  - Routes: React Router 7 in `src/App.tsx`
+  - Pages: `src/pages/**/*.tsx` (to be migrated)
+  - Entry: `src/main.tsx`
 
-– Update CLAUDE.md with everyt git commit
+### Shared Components
 
-## Visual Regression Testing
+- **`shared/components/`** → Design system ([see shared/components/CLAUDE.md](shared/components/CLAUDE.md))
+  - Structure: `ComponentName/ComponentName.tsx`, `.module.css`, `.stories.tsx`, `.test.tsx`, `index.ts`
+  - Patterns: Functional components, CSS Modules, design tokens
+  - Testing: Vitest + Testing Library, axe-core
+  - Storybook: WIP badge system, visual regression
 
-- Storybook visual regression tests capture per-story screenshots via Playwright and compare them with `pixelmatch` snapshots stored in `__visual__/snapshots/__reference__`.
-- Failing snapshots generate diff assets under `__visual__/diffs/__diff_output__`. Running `npm run test:visual` refreshes the public `visual-diff/report.json` consumed by Storybook.
-- The “Overview / Test Health Overview” story displays current diff thumbnails and shows a placeholder message when no changes are detected.
+### Infrastructure
 
-### Dependency Maintenance (Nov 2025)
+- **`api-legacy-vercel-functions/`** → Serverless functions ([see api-legacy-vercel-functions/AGENTS.md](api-legacy-vercel-functions/AGENTS.md))
+  - Pattern: `functionName.js` with `cors.js` middleware
+  - Env vars: OpenAI, EmailJS, CV password
+  - Security: CORS, rate limiting, input validation
 
-Recent minor/patch updates applied:
+- **`scripts/`** → Automation ([see scripts/AGENTS.md](scripts/AGENTS.md))
+  - Linear: Issue creation/update, label management
+  - Sentry: MCP queries, summary generation
+  - Visual regression: Storybook test runner
+  - Deployment: Cache busting, sitemap generation
 
-- @ai-sdk/gateway / @ai-sdk/openai / @ai-sdk/react bumped within 2.0.x for incremental fixes.
-- i18next and react-i18next updated (same major) for improved async loading stability.
-- react-router-dom advanced to 7.9.x (internal perf + bug fixes; no API changes affecting current usage).
-- Storybook core packages moved from 10.0.2 → 10.0.5 (docs + a11y improvements).
-- @typescript-eslint parser & plugin updated (8.33.x → 8.46.x) for enhanced lint rule parity.
+- **`.storybook/`** → Component development
+  - Config: `main.ts`, `preview.tsx`
+  - Addons: Docs, a11y
+  - Visual regression: `__visual__/snapshots/`, `__visual__/diffs/`
 
-All 312 tests pass post-update; translation and a11y coverage unchanged.
+### Documentation
 
-**Nov 2025 Dependency Cleanup:**
+- **`docs/`** → Critical reference ([see docs/AGENTS.md](docs/AGENTS.md))
+  - Component rules: `LLM_COMPONENT_GENERATION_RULES.md`
+  - Planning: `LLM-CRITICAL-REASONING-AND-PLANNING-INSTRUCTIONS.md`
+  - Migration: `NEXTJS_MIGRATION_PLAN.md`
+  - MCP: `GITHUB_MCP_SETUP.md`, `FIGMA_MCP_SETUP.md`
+  - Linear: `LINEAR_AUTOMATION.md`, `LINEAR_LABELS.md`
 
-- Removed unused `react-stack-grid` dependency to eliminate React 16 peer dependency warnings
-- Updated Node.js engine constraint from `>=20.19.0 <21` to `>=20.19.0` to support modern Node.js versions (22.x) in Vercel deployments
-- Clean dependency tree without legacy React version conflicts
+### Testing
 
-Next candidates (deferred):
+- Unit tests: Colocated with source (`ComponentName.test.tsx`)
+- Integration: `src/__tests__/`
+- E2E: Playwright via Storybook test runner
+- Accessibility: `src/__tests__/accessibility-pages.test.tsx`
 
-- Evaluate Vitest 4.x upgrade after Storybook stabilization.
-- Monitor ESLint 9.x adoption; schedule ruleset review before major jump.
+---
 
-### Sentry Automation (Nov 2025)
+## Quick Find Commands
 
-Automated summary generation introduced:
+### Code Navigation
 
-Scripts:
+```bash
+# Find a component
+rg -n "export (function|const|default) .*" shared/components/
 
-- `scripts/sentry-automation.mjs` orchestrates env validation, optional project discovery (`list-projects` via MCP), real summary fetch, and stub fallback.
-- Falls back to a stub JSON (`stub: true`, reason field) when auth/project unavailable or fetch fails.
+# Find component usage
+rg -n "<ComponentName" app/ shared/ src/
 
-NPM Commands:
+# Find Next.js route
+find app -name "page.tsx" -o -name "route.ts"
 
-- `npm run sentry:summary:auto` – Attempt real summary (unresolved + production environment) then write JSON.
-- `npm run sentry:summary:stub` – Force stub summary generation regardless of env state.
-- `npm run generate:sentry-summary` – Legacy direct summary script for deterministic runs.
-- `postbuild` hook triggers `sentry:summary:auto` with fallback to stub to avoid failing CI builds.
+# Find API endpoint
+rg -n "export async function (GET|POST)" app/api/ api-legacy-vercel-functions/
 
-JSON Output Location:
+# Find hook usage
+rg -n "use[A-Z]" shared/ src/
 
-- `public/observability/sentry-summary.json`
-
-Stub Detection:
-
-- Consumer components (e.g., `SentrySummaryCard`) can optionally inspect `data.stub` to differentiate real vs placeholder data in future enhancements (not yet implemented in component logic).
-
-Usage Notes:
-
-1. Ensure `.env.local` contains `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, and `SENTRY_PROJECT` (or allow automation to discover project if absent).
-2. For local testing without credentials: run stub script to keep dashboard functional.
-3. Adjust environment filtering via `--environment=staging` flag appended to npm scripts if multi-env branching required.
-
-Next Steps:
-
-### Context7 MCP Integration (Nov 2025)
-
-- `mcp.json` now declares a `context7` HTTP server pointing at `https://mcp.context7.com/mcp`. The configuration forwards the `CONTEXT7_API_KEY` environment variable via the `Context7-API-Key` header so we can keep keys in `.env.local` / CI secrets instead of checking them into the repo. Leaving the variable empty still works (anonymous mode) but enforces stricter rate limits. The REST/dashboard surface Context7 exposes lives at `https://context7.com/api/v1`, so that’s the base URL to poke when you need to inspect quotas or rotate keys.
-- `npm run context7:mcp -- --remote-check` hits the hosted MCP endpoint (using the same header) to verify connectivity; without the flag the helper still launches the local stdio server via `@upstash/context7-mcp`.
-- Donny’s tool loader automatically namespaces remote tools as `context7.<toolName>`, making it obvious when an answer is powered by Context7’s up-to-date documentation. Disable it by removing the config block or unsetting the env var.
-- Local debugging shortcut: `npm run context7:mcp -- [extra flags]`. The wrapper spawns `@upstash/context7-mcp` via `npx`, injects `CONTEXT7_API_KEY` unless you already passed `--api-key`, and streams logs directly to your terminal.
-- Document the requirement for `CONTEXT7_API_KEY` anywhere environment variables are listed (README, copilot-instructions, donny-chat docs) so future contributors know how to opt in.
-
-- Expose stub indicator in `SentrySummaryCard` header (optional badge).
-- Add unit test for stub scenario (pending).
-
-### Design System Card Component (Dec 2025)
-
-The `Card` component has evolved into a central design-system primitive mirroring a refined subset of Ant Design functionality while remaining lightweight and token-driven.
-
-API Summary:
-
-- Title / SubTitle / Extra regions form the header (`<h3>` semantic for title; consumer manages overall document outline).
-- Optional `cover` slot renders media at top (image/figure) with enforced block formatting and radius.
-- `actions` footer renders mapped buttons with consistent uppercase microcopy styling.
-- `tabs` provide contextual segmentation; uncontrolled (`defaultActiveTabKey`) or controlled (`activeTabKey` + `onTabChange`). Disabled tabs inert.
-- `hoverable` adds elevation + subtle background shift for interactive affordance.
-- `bordered` toggles visible border (default true) while base shadow remains subtle.
-- `size` adjusts internal padding scale (`sm`, `md`, `lg`).
-- `loading` triggers skeleton placeholder (gradient shimmer, respects reduced motion if future enhancement added) and hides body content. Skeleton uses `role="status"`, `aria-busy="true"`, and localized label (`card.loading`).
-- Link variant wraps card in anchor (`link` + optional `linkLabel` for improved accessibility when title insufficient).
-- Icon slot precedes title for compact visual identity.
-
-Accessibility:
-
-- Tablist uses `role="tablist"`; each tab has `role="tab"`, `aria-selected`, native `disabled`. Only one `aria-selected="true"` enforced; tests will guard this.
-- Action buttons keyboard reachable; visible focus ring via outline.
-- Skeleton announced via `aria-label`; future enhancement may add reduced motion fallback (document in instructions when done).
-- Entire clickable card anchor variant sets `aria-label` fallback to `title` ensuring context clarity.
-
-Styling:
-
-- CSS Module variants: `.hoverable`, `.bordered`, `.unbordered`, size classes `.sm/.md/.lg`.
-- Logical properties used for spacing; gap fallbacks with `@supports not (gap: ...)` margin shim.
-- Skeleton animation defined with `@keyframes skeleton-pulse`; design tokens drive color/space/radius.
-- Sans-serif typography maintained (project guidance: sans for body; heading uses same sans for consistency inside Card).
-
-Internationalization:
-
-- Added `card.loading` translation key (EN/FI/SV) for skeleton status; no other dynamic strings presently.
-- Story labels remain demo-only; production usage retrieves copy from i18n where appropriate.
-
-Testing Status:
-
-- Unit tests cover: actions rendering + click, loading skeleton presence with proper aria, tab switching (uncontrolled), link variant semantics, header composition.
-- Pending: Controlled tab edge-case test, single-active-tab a11y test, keyboard navigation refinements (roving tabindex pattern future), visual regression baseline inclusion.
-
-Storybook:
-
-- Stories: Default, Hoverable, Loading, WithCover, WithActions, Tabbed. All retain WIP badge until a11y + visual + translation checks pass.
-- Tabbed story refactored to extracted component to satisfy hooks-in-render lint rule.
-
-Future Enhancements:
-
-- Keyboard arrow navigation between tabs (ARIA Authoring Practices alignment).
-- Optional `headerLevel` prop to allow semantic variation without styling divergence.
-- `actionsPlacement` variants (start/center/end) and possible inline overflow handling (responsive wrap).
-- Selectable / radio-group card pattern layering selection state + ARIA.
-
-Maintenance Notes:
-
-- Avoid adding new color variables; rely on existing tokens.
-- Ensure further variant additions documented here + in `.github/copilot-instructions.md` simultaneously.
-- Update visual snapshots after intentional styling changes (`npm run test:visual -- --updateSnapshot`).
-
-### Chat Email Workflow Inline Injection & Dual Triggers (Nov 2025)
-
-The workflow renders inline within the last assistant message. Two trigger paths:
-
-1. General intent ("send email", "compose email", multilingual variants) → `pendingEmailWorkflowGeneral` → assistant injects `chatEmailSendPhrase`.
-2. Simple keyword (standalone "email" / "sähköposti" / "epost") → `pendingEmailWorkflowSimple` → assistant injects `chatEmailSimplePhrase` and reveals `mail@digitaltableteur.com`.
-
-Architectural rationale:
-
-1. Conversational continuity (context preserved inline)
-2. Unified rendering path for states (`promptStart`, `collecting*`, `review`, `sending`, `success`, `error`)
-3. Deterministic reducer; only side-effect is send on `sending`
-4. Accessibility: step wrappers with `data-step`; success uses `data-testid="email-workflow-success"`
-
-Sanitization & Triggering:
-
-- `messageProcessor.ts` sets exactly one pending flag per user message; simple keyword regex anchored.
-- Assistant consumes flag, injects phrase, mounts workflow, resets flag.
-
-Testing Adjustments:
-
-- General path test waits for any workflow step (robust to sequence tweaks).
-- Simple path test asserts `chatEmailSimplePhrase` presence & success path.
-- Success state test id reduces dependence on localized heading text.
-
-Storybook:
-
-- Email workflow stories remain separate for isolated visual regression of each state but production path only shows inline injection.
-- WIP badge policy unchanged; remove badge once a11y, translations, and visual baselines validated.
-
-Extending:
-
-- To add fields: extend `EmailDraft`, insert new `collectingField` step in ordered sequence within reducer, update stories, add translations under `emailWorkflow.field.<fieldName>`, and adjust integration test harness (search for data-step selectors).
-- Avoid renaming existing translation keys; additive changes simplify coverage maintenance.
-
-### Endpoint Resolution Logic Update (Nov 2025)
-
-The chat widget now treats private network IP hosts (RFC1918 ranges) the same as `localhost` and production domains when selecting the chat endpoint. Motivation: Vite dev server does not expose `/api/chat` locally, causing 404s when accessed via LAN IP (e.g., `192.168.x.x:5173`).
-
-Implementation Details:
-
-```ts
-const isLocalLike =
-  host === "localhost" ||
-  host === "127.0.0.1" ||
-  /^192\.168\./.test(host) ||
-  /^10\./.test(host) ||
-  /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(host);
-const isProdDomain =
-  host === "digitaltableteur.com" || host === "www.digitaltableteur.com";
-if (isLocalLike || isProdDomain) endpoint = REMOTE_CHAT_ENDPOINT;
+# Find translation keys
+rg -n "t\(\"" shared/ app/ src/ | grep -v ".test.tsx"
 ```
 
-Fallback now always returns the remote endpoint to avoid undefined behavior on arbitrary hosts (e.g., custom tunnel URLs). If a fully local mock is desired, set `VITE_DONNY_CHAT_ENDPOINT` to a local adapter service in `.env.local`.
+### Dependency Analysis
 
-Testing:
+```bash
+# Check package dependencies
+npm why <package-name>
 
-- Added `ChatWidget.endpoint.test.tsx` ensuring component mounts under `localhost` and `192.168.x.x` without throwing (smoke). Future enhancement: expose the resolved endpoint via a data attribute or debug prop for direct assertion.
+# Find unused dependencies
+npx depcheck
 
-Operational Notes:
-
-- Remote endpoint is a serverless function with dynamic CORS allowlist; environment-aware origin detection allows development IPs (192.168.x.x, 10.x.x.x, 172.x.x.x) and localhost variants during development, while restricting to digitaltableteur.com domains in production.
-- Streaming responses include CORS headers on the initial response for proper cross-origin AI SDK streaming compatibility.
-- When adjusting those headers, follow Vercel's official guidance on enabling CORS: https://vercel.com/guides/how-to-enable-cors.
-- For offline development or rate-limit isolation, consider a local proxy that mimics response streaming and set env var accordingly.
-
-Future Considerations:
-
-- Provide explicit environment badge in ChatHeader when using remote vs custom endpoint for transparency during QA.
-- Add health preflight (small HEAD request) before first message to surface endpoint issues earlier.
-- Integrate endpoint choice into observability summary for cross-environment diagnostics.
-
-### SocialShare Component with Native Web Share API (Nov 2025)
-
-The `SocialShare` component implements progressive enhancement with the Web Share API for modern mobile sharing experiences.
-
-**Architecture & Feature Detection**
-
-```typescript
-const [supportsNativeShare, setSupportsNativeShare] = useState(false);
-const [isMobile, setIsMobile] = useState(false);
-
-useEffect(() => {
-  // Check if native sharing is supported
-  if (typeof window !== "undefined" && "share" in navigator) {
-    setSupportsNativeShare(true);
-  }
-}, []);
+# Analyze bundle size
+npm run build && du -sh dist/assets/*.js
 ```
 
-- Feature detection via `"share" in navigator` check
-- Mobile detection using `window.matchMedia("(width < 768px)")`
-- State-driven conditional rendering for appropriate UI
+### Testing & Quality
 
-**Progressive Enhancement Pattern**
+```bash
+# Run specific test
+npm test -- ComponentName.test.tsx
 
-1. **Native Share (Mobile + Support)**: Share icon with device native share sheet
-2. **Clipboard Copy (Fallback)**: Copy icon with clipboard.writeText() API
-3. **Error Handling**: Native share failures gracefully fall back to copy
+# Check coverage
+npm run test:coverage
 
-**Implementation Details**
+# Find missing tests
+./check_missing_tests.sh
 
-```typescript
-const handleNativeShare = async () => {
-  try {
-    await navigator.share({ title, url, text: title });
-  } catch (error) {
-    console.log("Native share failed, falling back to copy");
-    handleCopy(); // Graceful fallback
-  }
-};
+# Run accessibility tests
+npm run test:a11y
 ```
 
-**Responsive Design Integration**
+---
 
-- Mobile: Icon-only buttons using `Button` component's `iconOnly` mode
-- Desktop: Full button with text labels
-- CSS logical properties for proper alignment with social media icons
+## Security & Secrets
 
-**Testing Strategy**
+### Secrets Management
 
-- Mock `navigator.share` presence/absence via Object.defineProperty manipulation
-- Test conditional rendering based on feature availability
-- Validate fallback behavior when native share fails
-- Comprehensive coverage of both mobile and desktop scenarios
+- **NEVER** commit tokens, API keys, or credentials
+- Use `.env.local` for local secrets (already in `.gitignore`)
+- Use Vercel environment variables for production
+- PII must be redacted in logs
 
-**Accessibility Considerations**
+### Required Environment Variables
 
-- Proper ARIA labels for both share and copy actions
-- Keyboard navigation support maintained
-- Screen reader compatibility with role attributes
-- Toast notifications for copy success feedback
+**Development:**
 
-**Browser Support Matrix**
+- `VITE_GA_ID` → Google Analytics tracking
+- `FIGMA_TOKEN` → Figma MCP server (design file access)
+- `EMAILJS_*` → Contact form integration
+- `GITHUB_MCP_PAT` → GitHub MCP server (repo access)
+- `CONTEXT7_API_KEY` → Optional (higher rate limits for Context7 MCP)
 
-- **iOS Safari 12+**: Native share sheet integration
-- **Chrome Android 61+**: Native share functionality
-- **Desktop Browsers**: Clipboard copy fallback
-- **Legacy Mobile**: Standard clipboard copy behavior
+**Production Only:**
 
-**Internationalization**
+- `CV_PASSWORD` → Secure resume download
+- `OPENAI_API_KEY` → AI chat functionality
+- `SENTRY_DSN`, `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT` → Error tracking
 
-Translation keys added for both share actions:
+### Safe Operations
 
-- `share`: "share" (EN), "jaa" (FI), "dela" (SV)
-- `copyLinkToClipboard`: "Copy to clipboard" across languages
+- Review generated bash commands before execution
+- Confirm before: `git push --force`, `rm -rf`, database drops
+- Use staging environment for risky operations
 
-**Future Enhancements**
+---
 
-- Web Share API Level 2: File sharing support for images/documents
-- Share target registration for PWA capabilities
-- Custom share data validation and error messaging
-- Analytics integration for share success/failure tracking
+## Git Workflow
 
-The implementation follows Web Platform best practices with feature detection, graceful degradation, and accessibility compliance across all interaction patterns.
+- Branch from `main` for features: `DT-XXX-feat-description` (see `docs/BRANCH_NAMING.md`)
+- Use Conventional Commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`
+- PRs require: passing tests, type checks, lint, and 1 approval
+- Squash commits on merge
+- Delete branches after merge
+
+---
+
+## Testing Strategy
+
+### Unit Tests
+
+- **All business logic** (aim for >80% coverage)
+- Colocated with source (`ComponentName.test.tsx`)
+- Framework: Vitest + Testing Library
+- Run: `npm test`
+
+### Integration Tests
+
+- API endpoints and database operations
+- Location: `src/__tests__/`
+- Run: `npm test`
+
+### E2E Tests
+
+- Critical user paths
+- Framework: Playwright via Storybook test runner
+- Run: `npm run test:visual`
+
+### Accessibility Tests
+
+- All components and pages
+- Framework: axe-core
+- Location: `src/__tests__/accessibility-pages.test.tsx`
+- Run: `npm run test:a11y`
+
+### Visual Regression
+
+- Storybook story screenshots
+- Baseline: `__visual__/snapshots/`
+- Diffs: `__visual__/diffs/__diff_output__`
+- Report: `public/visual-diff/report.json`
+- Update: `npm run test:visual -- --updateSnapshot`
+
+---
+
+## Available Tools
+
+You have access to:
+
+- Standard bash tools (`rg`, `git`, `node`, `npm`, etc.)
+- GitHub CLI (`gh`) for issues, PRs, releases
+- TypeScript LSP (`typescript-language-server`) via MCP
+- Context7 MCP for web search and documentation
+- GitHub MCP for repository operations
+- Figma MCP for design file access
+
+### Tool Permissions
+
+- ✅ Read any file
+- ✅ Write code files
+- ✅ Run tests, linters, type checkers
+- ✅ Create/update Linear issues
+- ✅ Query Sentry errors
+- ❌ Edit `.env` files (ask first)
+- ❌ Force push (ask first)
+- ❌ Delete databases (ask first)
+- ❌ Run migrations in production (ask first)
+
+---
+
+## Specialized Context
+
+When working in specific directories, refer to their CLAUDE.md:
+
+- **Next.js development**: [app/CLAUDE.md](app/CLAUDE.md)
+- **Component library**: [shared/components/CLAUDE.md](shared/components/CLAUDE.md)
+- **Serverless functions**: [api-legacy-vercel-functions/AGENTS.md](api-legacy-vercel-functions/AGENTS.md)
+- **Documentation**: [docs/AGENTS.md](docs/AGENTS.md)
+- **Automation**: [scripts/AGENTS.md](scripts/AGENTS.md)
+
+These files provide detailed, context-specific guidance that extends this root document.
+
+---
+
+## Maintenance Instructions
+
+When you make changes affecting development practices:
+
+1. Update this `CLAUDE.md`
+2. Update subdirectory `CLAUDE.md` if specific to that area
+3. Update `.github/copilot-instructions.md` for GitHub Copilot
+4. Update `README.md` for public documentation
+5. Run `npm test` to verify nothing breaks
+6. Commit all changes together
+
+**Keep documentation synchronized across files.**
+
+---
+
+**End of Root CLAUDE.md** — For detailed context, see subdirectory CLAUDE.md files linked above.
