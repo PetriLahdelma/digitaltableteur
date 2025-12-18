@@ -14,6 +14,8 @@ const outFile = path.join(
 
 async function main() {
   try {
+    await fs.mkdir(path.dirname(outFile), { recursive: true });
+
     const files = await fs.readdir(postsDir);
     const mdxFiles = files.filter(
       (f) => f.endsWith(".mdx") || f.endsWith(".md"),
@@ -73,6 +75,7 @@ ${entryLines.join(",\n")}
     console.error("Failed to generate blog manifest:", err);
     // Write an empty manifest to keep builds working
     const fallback = `export const blogManifest = [] as const;`;
+    await fs.mkdir(path.dirname(outFile), { recursive: true });
     await fs.writeFile(outFile, fallback, "utf8");
     process.exitCode = 0;
   }
