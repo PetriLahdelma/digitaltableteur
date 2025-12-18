@@ -5,13 +5,13 @@ import type { Decorator, StoryContext, StoryFn } from "@storybook/react";
 import React, { useEffect, useLayoutEffect } from "react";
 import { I18nextProvider } from "react-i18next";
 import * as storybookIcons from "@storybook/icons";
-import i18n from "../nextjs-app/shared/i18n";
-import en from "../nextjs-app/shared/locales/en/translation.json";
-import fi from "../nextjs-app/shared/locales/fi/translation.json";
-import sv from "../nextjs-app/shared/locales/sv/translation.json";
+import i18n from "@dt/../i18n";
+import en from "@dt/../locales/en/translation.json";
+import fi from "@dt/../locales/fi/translation.json";
+import sv from "@dt/../locales/sv/translation.json";
 
 // Import global styles - CRITICAL for design tokens and component styling
-import "../nextjs-app/shared/index.css";
+import "@dt/../index.css";
 
 const THEME_KEY = "storybook-theme";
 const STORYBOOK_THEMES = ["light", "dark", "hcb", "hcw"] as const;
