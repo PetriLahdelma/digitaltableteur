@@ -153,8 +153,9 @@ const staticTools: ToolMap = {
       const weekday =
         parts.find((part) => part.type === "weekday")?.value?.toLowerCase() ??
         "";
-      const todaysConfig = WEEKLY_HOURS.find((day: { day: string; open: string | null; close: string | null }) =>
-        weekday.startsWith(day.day),
+      const todaysConfig = WEEKLY_HOURS.find(
+        (day: { day: string; open: string | null; close: string | null }) =>
+          weekday.startsWith(day.day),
       ) ?? {
         day: weekday || "today",
         open: null,

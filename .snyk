@@ -4,85 +4,85 @@ version: v1.25.0
 # Ignore dev-only MCP server vulnerabilities (not in production)
 ignore:
   # Neon MCP Server - Development only, not deployed
-  'SNYK-JS-LODASH-567746':
-    - '@neondatabase/mcp-server-neon > oauth2-server > lodash':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-LODASH-1018905':
-    - '@neondatabase/mcp-server-neon > oauth2-server > lodash':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-LODASH-1040724':
-    - '@neondatabase/mcp-server-neon > oauth2-server > lodash':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-AXIOS-12613773':
-    - '@neondatabase/mcp-server-neon > axios':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-BODYPARSER-14105059':
-    - '@neondatabase/mcp-server-neon > body-parser':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-MODELCONTEXTPROTOCOLSDK-14171914':
-    - '@neondatabase/mcp-server-neon > @modelcontextprotocol/sdk':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-NEXT-12265451':
-    - '@neondatabase/mcp-server-neon > next':
-        reason: 'Dev-only MCP server, separate from production Next.js'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-NEXT-12299318':
-    - '@neondatabase/mcp-server-neon > next':
-        reason: 'Dev-only MCP server, separate from production Next.js'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-NEXT-12301496':
-    - '@neondatabase/mcp-server-neon > next':
-        reason: 'Dev-only MCP server, separate from production Next.js'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-NEXT-14173355':
-    - '@neondatabase/mcp-server-neon > next':
-        reason: 'Dev-only MCP server, separate from production Next.js'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-NEXT-14400636':
-    - '@neondatabase/mcp-server-neon > next':
-        reason: 'Dev-only MCP server, separate from production Next.js'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-NEXT-14400644':
-    - '@neondatabase/mcp-server-neon > next':
-        reason: 'Dev-only MCP server, separate from production Next.js'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-OAUTH2SERVER-1255585':
-    - '@neondatabase/mcp-server-neon > oauth2-server':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-OAUTH2SERVER-3009137':
-    - '@neondatabase/mcp-server-neon > oauth2-server':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-ONHEADERS-10773729':
-    - '@neondatabase/mcp-server-neon > morgan > on-headers':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
-  
-  'SNYK-JS-PRISMJS-9055448':
-    - '@neondatabase/mcp-server-neon > react-syntax-highlighter > refractor > prismjs':
-        reason: 'Dev-only MCP server, not in production bundle'
-        expires: '2026-03-18T00:00:00.000Z'
+  "SNYK-JS-LODASH-567746":
+    - "@neondatabase/mcp-server-neon > oauth2-server > lodash":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-LODASH-1018905":
+    - "@neondatabase/mcp-server-neon > oauth2-server > lodash":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-LODASH-1040724":
+    - "@neondatabase/mcp-server-neon > oauth2-server > lodash":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-AXIOS-12613773":
+    - "@neondatabase/mcp-server-neon > axios":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-BODYPARSER-14105059":
+    - "@neondatabase/mcp-server-neon > body-parser":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-MODELCONTEXTPROTOCOLSDK-14171914":
+    - "@neondatabase/mcp-server-neon > @modelcontextprotocol/sdk":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-NEXT-12265451":
+    - "@neondatabase/mcp-server-neon > next":
+        reason: "Dev-only MCP server, separate from production Next.js"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-NEXT-12299318":
+    - "@neondatabase/mcp-server-neon > next":
+        reason: "Dev-only MCP server, separate from production Next.js"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-NEXT-12301496":
+    - "@neondatabase/mcp-server-neon > next":
+        reason: "Dev-only MCP server, separate from production Next.js"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-NEXT-14173355":
+    - "@neondatabase/mcp-server-neon > next":
+        reason: "Dev-only MCP server, separate from production Next.js"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-NEXT-14400636":
+    - "@neondatabase/mcp-server-neon > next":
+        reason: "Dev-only MCP server, separate from production Next.js"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-NEXT-14400644":
+    - "@neondatabase/mcp-server-neon > next":
+        reason: "Dev-only MCP server, separate from production Next.js"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-OAUTH2SERVER-1255585":
+    - "@neondatabase/mcp-server-neon > oauth2-server":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-OAUTH2SERVER-3009137":
+    - "@neondatabase/mcp-server-neon > oauth2-server":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-ONHEADERS-10773729":
+    - "@neondatabase/mcp-server-neon > morgan > on-headers":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
+
+  "SNYK-JS-PRISMJS-9055448":
+    - "@neondatabase/mcp-server-neon > react-syntax-highlighter > refractor > prismjs":
+        reason: "Dev-only MCP server, not in production bundle"
+        expires: "2026-03-18T00:00:00.000Z"
 
 # Patch directives
 patch: {}
