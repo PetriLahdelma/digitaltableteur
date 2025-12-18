@@ -70,26 +70,11 @@ const normalizeError = (caught: unknown): ChatApiError => {
 };
 
 export async function POST(request: NextRequest) {
-  console.log("[chat] ===== POST HANDLER CALLED =====");
-  console.log(
-    "[chat] AI_GATEWAY_URL:",
-    process.env.AI_GATEWAY_URL ? "SET" : "NOT SET",
-  );
-  console.log(
-    "[chat] AI_GATEWAY_API_KEY:",
-    process.env.AI_GATEWAY_API_KEY
-      ? "SET (length: " + process.env.AI_GATEWAY_API_KEY?.length + ")"
-      : "NOT SET",
-  );
   const requestOrigin = request.headers.get("origin");
   const corsHeaders = createCorsHeaders(requestOrigin);
 
   try {
     const body = await request.json();
-    console.log(
-      "[chat] Received request body:",
-      JSON.stringify(body).slice(0, 200),
-    );
     const rawPayload: unknown = body.messages;
     validateMessages(rawPayload);
     const messages = (rawPayload as IncomingUiMessages).map((message) => {
@@ -143,11 +128,6 @@ export async function POST(request: NextRequest) {
     const modelId: string = resolveGatewayModelId();
     const model = gatewayProvider(modelId);
 
-    console.log("[chat] Model ID:", modelId);
-    console.log("[chat] System prompt length:", system.length);
-    console.log("[chat] Tools count:", Object.keys(tools).length);
-    console.log("[chat] Messages count:", messages.length);
-
     const streamParams: Parameters<typeof streamText>[0] = {
       model,
       system,
@@ -159,22 +139,12 @@ export async function POST(request: NextRequest) {
       maxTokens: MAX_OUTPUT_TOKENS,
     };
 
-    console.log("[chat] About to call streamText with model:", modelId);
-    console.log("[chat] Server-enforced maxTokens:", MAX_OUTPUT_TOKENS);
-
     const result = await streamText(streamParams);
-    console.log("[chat] streamText completed");
 
     // Monitor token usage for cost control
     try {
       const usage = await result.usage;
       const totalTokens = usage.totalTokens || 0;
-
-      console.log("[chat] Token usage:", {
-        prompt: usage.promptTokens,
-        completion: usage.completionTokens,
-        total: totalTokens,
-      });
 
       // Alert on high token usage
       if (totalTokens > TOKEN_USAGE_WARNING_THRESHOLD) {
@@ -186,8 +156,8 @@ export async function POST(request: NextRequest) {
           },
           extra: {
             totalTokens,
-            promptTokens: usage.promptTokens,
-            completionTokens: usage.completionTokens,
+            promptTokens: usage.inputTokens,
+            completionTokens: usage.outputTokens,
             ipAddress,
             maxTokensLimit: MAX_TOKENS,
           },
@@ -213,15 +183,6 @@ export async function POST(request: NextRequest) {
     } catch (usageError) {
       console.warn("[chat] Could not retrieve token usage:", usageError);
     }
-
-    console.log("[chat] Stream created, result type:", typeof result);
-    console.log(
-      "[chat] Has toAIStreamResponse:",
-      typeof (result as any).toAIStreamResponse === "function",
-    );
-
-    // Log if there's a textStream to consume
-    console.log("[chat] Has textStream:", !!result.textStream);
 
     const responseHeaders = {
       ...corsHeaders,
