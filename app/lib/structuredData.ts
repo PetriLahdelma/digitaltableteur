@@ -193,6 +193,42 @@ export interface BreadcrumbItem {
   url: string;
 }
 
+export interface WebPageSchemaOptions {
+  name: string;
+  description: string;
+  url: string;
+  keywords?: string[];
+  inLanguage?: string;
+  dateModified?: string;
+}
+
+/**
+ * WebPage schema for landing pages and non-blog content
+ * Improves understanding for both search engines and LLMs.
+ */
+export function getWebPageSchema(
+  options: WebPageSchemaOptions,
+): Record<string, unknown> {
+  const { name, description, url, keywords = [], inLanguage = "en", dateModified } =
+    options;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    description,
+    url: url.startsWith("http") ? url : `${SITE_URL}${url}`,
+    inLanguage,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Digitaltableteur",
+      url: SITE_URL,
+    },
+    ...(dateModified && { dateModified }),
+    ...(keywords.length > 0 && { keywords: keywords.join(", ") }),
+  };
+}
+
 /**
  * BreadcrumbList schema for navigation hierarchy
  * Helps search engines understand site structure
@@ -313,7 +349,7 @@ export function getCreativeWorkSchema(
  * Safely stringify JSON-LD for script tag injection
  * Uses DOMPurify for defense-in-depth XSS protection
  */
-export function stringifyJsonLd(obj: Record<string, unknown>): string {
+export function stringifyJsonLd(obj: unknown): string {
   const jsonString = JSON.stringify(obj)
     .replace(/</g, "\\u003c")
     .replace(/>/g, "\\u003e")
