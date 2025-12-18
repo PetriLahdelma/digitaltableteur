@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { posts } from "./blog/postMetadata";
+import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -48,5 +49,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...workRoutes, ...blogRoutes];
+  const pseoCatalog = getPseoCatalog();
+  const pseoLeafPages = getPseoLeafPages();
+
+  const pseoIndexRoutes: MetadataRoute.Sitemap = ["/pseo"].map((path) => ({
+    url: toUrl(path),
+    lastModified: today,
+    changeFrequency: "weekly",
+    priority: 0.5,
+  }));
+
+  const pseoPillarRoutes: MetadataRoute.Sitemap = [
+    ...pseoCatalog.services.map((s) => `/pseo/services/${s.slug}`),
+    ...pseoCatalog.stacks.map((s) => `/pseo/stacks/${s.slug}`),
+    ...pseoCatalog.audiences.map((a) => `/pseo/audiences/${a.slug}`),
+  ].map((path) => ({
+    url: toUrl(path),
+    lastModified: today,
+    changeFrequency: "monthly",
+    priority: 0.4,
+  }));
+
+  const pseoLeafRoutes: MetadataRoute.Sitemap = pseoLeafPages.map((page) => ({
+    url: toUrl(`/pseo/${page.slug}`),
+    lastModified: today,
+    changeFrequency: "monthly",
+    priority: 0.35,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...workRoutes,
+    ...blogRoutes,
+    ...pseoIndexRoutes,
+    ...pseoPillarRoutes,
+    ...pseoLeafRoutes,
+  ];
 }

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prebuild": "rm -rf ./shared ./src ./public ./content ./digitaltableteur-blog && cp -r ../shared ./shared && cp -r ../src ./src && cp -r ../public ./public && cp -r ../content ./content && cp -r ../digitaltableteur-blog ./digitaltableteur-blog"
+    "prebuild": "rm -rf ./shared ./src ./public ./content ./digitaltableteur-blog && cp -r ../shared ./shared && cp -r ../src ./src && cp -r ../public ./public && cp -r ../content ./content && cp -r ../digitaltableteur-blog ./digitaltableteur-blog && node ../scripts/ensure-no-static-sitemap.mjs",
+    "postbuild": "node ../scripts/ensure-no-static-sitemap.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
