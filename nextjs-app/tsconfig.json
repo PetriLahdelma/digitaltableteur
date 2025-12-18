@@ -29,6 +29,9 @@
     ],
     "@dt/*": [
       "./shared/components/*"
+    ],
+    "@dt-pages/*": [
+      "./shared/components/pages/*"
     ]
   }
   },
