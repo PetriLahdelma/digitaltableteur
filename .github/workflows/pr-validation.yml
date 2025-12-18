@@ -23,6 +23,8 @@ jobs:
           pwd
           ls -la nextjs-app/shared/components/ | head -20
           find nextjs-app/shared -name "*.stories.tsx" | head -5
+      - name: Build Storybook for tests
+        run: npm run storybook:build
       - run: npm run lint
       - run: npm run test:coverage
       - run: npm run build:test-metrics
