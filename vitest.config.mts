@@ -10,9 +10,21 @@ const dirname =
     ? __dirname
     : path.dirname(fileURLToPath(import.meta.url));
 
+const isVercel =
+  process.env.VERCEL === "1" ||
+  process.env.VERCEL === "true" ||
+  process.env.NOW_REGION !== undefined;
+const shouldSkipStorybookTests =
+  process.env.SKIP_STORYBOOK_TESTS === "1" ||
+  process.env.SKIP_STORYBOOK_TESTS === "true";
+const shouldEnableStorybookBrowserTests =
+  process.env.DISABLE_STORYBOOK_BROWSER_TESTS !== "1" &&
+  process.env.DISABLE_STORYBOOK_BROWSER_TESTS !== "true";
+
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react()],
+  // Avoid React Refresh preamble errors in Vitest/Storybook plugin environments.
+  plugins: [react({ fastRefresh: false })],
   optimizeDeps: {
     include: [
       "@testing-library/jest-dom",
@@ -56,7 +68,7 @@ export default defineConfig({
         "vite-app/**",
       ],
     },
-    projects: process.env.SKIP_STORYBOOK_TESTS
+    projects: shouldSkipStorybookTests
       ? undefined
       : [
           {
@@ -75,14 +87,18 @@ export default defineConfig({
             test: {
               name: "storybook",
               browser: {
-                enabled: true,
-                headless: true,
-                provider: playwright({}),
-                instances: [
-                  {
-                    browser: "chromium",
-                  },
-                ],
+                enabled: shouldEnableStorybookBrowserTests,
+                ...(shouldEnableStorybookBrowserTests
+                  ? {
+                      headless: true,
+                      provider: playwright({}),
+                      instances: [
+                        {
+                          browser: "chromium",
+                        },
+                      ],
+                    }
+                  : {}),
               },
               setupFiles: [".storybook/vitest.setup.ts"],
               // Prevent import.meta.env cloning issues
@@ -94,8 +110,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@dt": resolve(__dirname, "nextjs-app/shared/components"),
-      "@": resolve(__dirname, "."),
+      "@dt": resolve(dirname, "nextjs-app/shared/components"),
+      "@": resolve(dirname, "."),
     },
   },
 });
