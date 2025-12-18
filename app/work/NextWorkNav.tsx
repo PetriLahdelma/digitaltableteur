@@ -2,8 +2,8 @@
 
 import { usePathname, useRouter } from "next/navigation";
 
-import Button from "@dt/Button";
-import Icon from "@dt/Icon";
+import Button from "../../nextjs-app/shared/components/Button";
+import Icon from "../../nextjs-app/shared/components/Icon";
 
 const workPages = [
   { path: "/work/helsinki-design-system", label: "Helsinki Design System" },

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { NewThingsCoPage } from "@/nextjs-app/shared/components/pages/Work/NewThingsCo";
+import { NewThingsCoPage } from "../../../nextjs-app/shared/components/pages/Work/NewThingsCo";
 import { NextWorkNav } from "../NextWorkNav";
 
 export const metadata: Metadata = {
