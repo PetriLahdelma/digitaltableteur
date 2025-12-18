@@ -5,6 +5,7 @@ import {
   getBreadcrumbSchema,
   getWebSiteSchema,
   getArticleSchema,
+  getWebPageSchema,
 } from "./structuredData";
 
 describe("structuredData", () => {
@@ -93,6 +94,28 @@ describe("structuredData", () => {
         searchUrl: "/search?q={search_term_string}",
       }) as any;
       expect(schema.potentialAction).toBeDefined();
+    });
+  });
+
+  describe("getWebPageSchema", () => {
+    it("returns valid WebPage schema", () => {
+      const schema = getWebPageSchema({
+        name: "Test Page",
+        description: "Test description",
+        url: "/test",
+      });
+      expect(schema["@type"]).toBe("WebPage");
+      expect(schema.name).toBe("Test Page");
+    });
+
+    it("includes keywords when provided", () => {
+      const schema = getWebPageSchema({
+        name: "Test Page",
+        description: "Test description",
+        url: "/test",
+        keywords: ["a", "b"],
+      }) as any;
+      expect(schema.keywords).toContain("a");
     });
   });
 
