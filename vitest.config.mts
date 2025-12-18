@@ -56,38 +56,43 @@ export default defineConfig({
         "vite-app/**",
       ],
     },
-    projects: [
-      {
-        extends: true,
-        plugins: [
-          // The plugin will run tests for the stories defined in your Storybook config
-          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-          storybookTest({
-            configDir: path.join(dirname, ".storybook"),
-            // Disable tags to avoid import.meta.env issues in browser mode
-            tags: {
-              skip: [],
-            },
-          }),
-        ],
-        test: {
-          name: "storybook",
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({}),
-            instances: [
-              {
-                browser: "chromium",
-              },
+    projects: process.env.SKIP_STORYBOOK_TESTS
+      ? undefined
+      : [
+          {
+            extends: true,
+            plugins: [
+              // The plugin will run tests for the stories defined in your Storybook config
+              // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
+              storybookTest({
+                configDir: path.join(dirname, ".storybook"),
+                // Disable tags to avoid import.meta.env issues in browser mode
+                tags: {
+                  skip: [],
+                },
+                // Ensure Storybook uses its own stories config, not vitest include patterns
+                storiesGlob: undefined,
+              }),
             ],
+            test: {
+              name: "storybook",
+              browser: {
+                enabled: true,
+                headless: true,
+                provider: playwright({}),
+                instances: [
+                  {
+                    browser: "chromium",
+                  },
+                ],
+              },
+              setupFiles: [".storybook/vitest.setup.ts"],
+              // Prevent import.meta.env cloning issues
+              isolate: false,
+              // Don't specify include here - let Storybook plugin handle story discovery
+            },
           },
-          setupFiles: [".storybook/vitest.setup.ts"],
-          // Prevent import.meta.env cloning issues
-          isolate: false,
-        },
-      },
-    ],
+        ],
   },
   resolve: {
     alias: {

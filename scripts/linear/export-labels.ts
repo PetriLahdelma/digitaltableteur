@@ -66,7 +66,14 @@ function normalizeColor(color: string) {
   return color.startsWith("#") ? color : `#${color}`;
 }
 
-function buildTable(labels: Array<{ id: string; name: string; color: string; description?: string }>) {
+function buildTable(
+  labels: Array<{
+    id: string;
+    name: string;
+    color: string;
+    description?: string;
+  }>,
+) {
   return [
     "| Name | ID | Color | Description |",
     "| --- | --- | --- | --- |",

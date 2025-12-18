@@ -51,7 +51,7 @@ npx snyk monitor
 
 The security workflow (`.github/workflows/security-scanning.yml`) automatically:
 
-- ✅ Runs on every push to main/develop/DT-* branches
+- ✅ Runs on every push to main/develop/DT-\* branches
 - ✅ Runs on all pull requests
 - ✅ Runs weekly on Mondays at 3 AM UTC
 - ✅ Uploads results to GitHub Security tab (SARIF format)
@@ -97,12 +97,13 @@ To ignore a vulnerability:
 3. Snyk will respect the policy on next scan
 
 Example:
+
 ```yaml
 ignore:
-  'SNYK-JS-PACKAGE-ID':
-    - 'package > dependency':
-        reason: 'Dev-only, not in production'
-        expires: '2026-03-18T00:00:00.000Z'
+  "SNYK-JS-PACKAGE-ID":
+    - "package > dependency":
+        reason: "Dev-only, not in production"
+        expires: "2026-03-18T00:00:00.000Z"
 ```
 
 ## Best Practices

@@ -14,6 +14,7 @@
     "lint:css": "stylelint \"**/*.css\"",
     "lint:all": "npm run lint && npm run lint:css",
     "test": "vitest run",
+    "test:ci": "SKIP_STORYBOOK_TESTS=1 vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:visual": "node scripts/run-visual-tests.mjs",
