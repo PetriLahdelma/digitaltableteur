@@ -83,7 +83,18 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --severity-threshold=high --all-projects --sarif-file-output=snyk.sarif
+          # Run full scan across all manifests. (No SARIF output here because it can produce
+          # multiple SARIF runs, which GitHub code scanning no longer accepts in one upload.)
+          args: --severity-threshold=high --all-projects
+
+      - name: Generate Snyk SARIF (single run for upload)
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          # Generate SARIF for the main project only to ensure we upload a single run.
+          args: --severity-threshold=high --sarif-file-output=snyk.sarif
 
       - name: Upload Snyk report
         uses: github/codeql-action/upload-sarif@v4
