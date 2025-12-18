@@ -1,0 +1,215 @@
+/* TeamBlock - Reusable team member display component */
+
+/* Container styles applied via inline style (background, padding) */
+
+.sectionTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-end: var(--space-layout-l, 4rem);
+  text-align: center;
+}
+
+.description {
+  margin-block-end: var(--space-layout-m, 3rem);
+  text-align: center;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+/* Grid layouts */
+.grid2Col,
+.grid3Col,
+.grid4Col,
+.grid5Col,
+.grid6Col {
+  display: grid;
+  gap: var(--space-layout-m, 3rem);
+}
+
+/* 2-column grid */
+.grid2Col {
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 640px) {
+  .grid2Col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3-column grid */
+.grid3Col {
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 640px) {
+  .grid3Col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1024px) {
+  .grid3Col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 4-column grid */
+.grid4Col {
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 640px) {
+  .grid4Col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1024px) {
+  .grid4Col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 5-column grid */
+.grid5Col {
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 640px) {
+  .grid5Col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 768px) {
+  .grid5Col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 1024px) {
+  .grid5Col {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* 6-column grid */
+.grid6Col {
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 640px) {
+  .grid6Col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 768px) {
+  .grid6Col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 1024px) {
+  .grid6Col {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Fallback for browsers without gap support */
+@supports not (gap: 3rem) {
+  .grid2Col > .col:not(:last-child),
+  .grid3Col > .col:not(:last-child),
+  .grid4Col > .col:not(:last-child),
+  .grid5Col > .col:not(:last-child),
+  .grid6Col > .col:not(:last-child) {
+    margin-block-end: var(--space-layout-m, 3rem);
+  }
+}
+
+/* Column/member card styles */
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Link variant hover effect */
+.memberLink {
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.memberLink:hover {
+  transform: translateY(-4px);
+  opacity: 0.9;
+}
+
+.memberLink:focus-visible {
+  outline: 2px solid var(--color-primary, #0066ff);
+  outline-offset: 4px;
+  border-radius: var(--radius-m, 8px);
+}
+
+/* Team member image */
+.teamImage {
+  border-radius: var(--radius-m, 8px);
+  object-fit: cover;
+  display: block;
+}
+
+/* Round image variant */
+.roundImage {
+  border-radius: 50%;
+}
+
+/* Member name */
+.memberName {
+  font-weight: 600;
+  text-align: center;
+  margin-block-end: 0.25rem;
+  margin-block-start: 1rem;
+}
+
+/* Member title/role */
+.memberTitle {
+  text-align: center;
+  color: var(--color-text-secondary, #666);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .memberLink {
+    transition-duration: 0.01ms !important;
+  }
+
+  .memberLink:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .memberName {
+    font-weight: 700;
+  }
+
+  .memberLink:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* Progressive enhancement for modern browsers */
+@supports (display: grid) and (gap: 1rem) {
+  .grid2Col,
+  .grid3Col,
+  .grid4Col,
+  .grid5Col,
+  .grid6Col {
+    gap: var(--space-layout-m, 3rem);
+  }
+}

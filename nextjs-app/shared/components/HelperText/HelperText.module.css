@@ -1,0 +1,31 @@
+.helperText {
+  display: flex;
+  margin-block-start: 0.5rem;
+  align-items: flex-start;
+  gap: 0.375rem;
+  font-family: var(--primary-body-font, Moderat, sans-serif);
+  font-size: 0.875rem;
+  color: var(--color-primary);
+}
+
+.icon {
+  display: inline-flex;
+  margin-block-start: 0.125rem;
+  flex-shrink: 0;
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.warning {
+  color: var(--color-warning);
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.info {
+  color: var(--color-info);
+}

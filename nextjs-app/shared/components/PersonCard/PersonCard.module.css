@@ -1,0 +1,137 @@
+.personGrid {
+  display: grid;
+  padding-block: var(--space-layout-16);
+  padding-inline: var(--space-layout-16);
+  inline-size: fit-content;
+  grid-template-columns: minmax(96px, 96px) 1fr;
+  align-items: center;
+  gap: var(--space-layout-24, 1.5rem);
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-light-bg);
+}
+
+.portrait {
+  margin-block: auto;
+  block-size: clamp(96px, 18vw, 96px);
+  inline-size: clamp(96px, 18vw, 96px);
+  border-radius: 100rem;
+  aspect-ratio: 1;
+  clip-path: inset(2px round 50%);
+  object-fit: cover;
+}
+
+.personDetails {
+  display: grid;
+  justify-items: start;
+  text-align: left;
+}
+
+.portraitSkeleton {
+  block-size: clamp(96px, 18vw, 96px);
+  inline-size: clamp(96px, 18vw, 96px);
+}
+
+.nameSkeleton,
+.titleSkeleton,
+.contactSkeleton {
+  inline-size: 100%;
+}
+
+.socialSkeletonRow {
+  display: flex;
+  margin-block-start: var(--space-layout-8, 8px);
+  gap: var(--space-layout-8, 8px);
+}
+
+.socialSkeleton {
+  block-size: 28px;
+  inline-size: 28px;
+}
+
+.nameTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 0.8;
+}
+
+.nameTitle > * {
+  margin-block-end: 0 !important;
+}
+
+.personName {
+  margin-block: 0 !important;
+  margin-inline: 0;
+  gap: 0;
+  color: var(--color-primary);
+}
+
+.personTitle {
+  margin-block: 0 !important;
+  margin-inline: 0;
+  gap: 0;
+  color: var(--color-primary);
+}
+
+.personEmail {
+  text-transform: none;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.personEmail p {
+  margin-block-end: 0;
+}
+
+.socialLinks {
+  display: flex;
+  margin-block-start: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.socialLink svg {
+  color: var(--color-primary);
+}
+
+.socialLink::after {
+  display: none;
+}
+
+/* stylelint-disable selector-pseudo-class-no-unknown, selector-class-pattern -- Intentional :global escape for Storybook demos */
+
+.personGrid:global(.custom-person-card) {
+  background-color: var(--color-muted);
+}
+
+.personGrid:global(.custom-person-card) .nameTitle > * {
+  font-family: var(--font-text);
+  color: var(--color-white);
+}
+/* stylelint-enable selector-pseudo-class-no-unknown, selector-class-pattern */
+
+@media (width <= 768px) {
+  .personGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .portrait {
+    max-block-size: 240px;
+    max-inline-size: 240px;
+  }
+
+  .personDetails {
+    justify-items: left;
+  }
+}

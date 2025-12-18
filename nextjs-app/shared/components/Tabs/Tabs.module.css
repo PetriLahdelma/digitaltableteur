@@ -1,0 +1,195 @@
+/* Tabs Container */
+
+.tabs {
+  display: flex;
+  position: relative;
+  gap: 0;
+  border-radius: var(--radius-m);
+  background: transparent;
+}
+
+/* Tab Variants */
+
+.default {
+  border: 1px solid var(--color-border, rgb(0 0 0 / 10%));
+  background: var(--color-light-bg, #f9f9f9);
+}
+
+.pills {
+  padding: var(--space-internal-4);
+  gap: var(--space-internal-4);
+  border-radius: var(--radius-l);
+  background: var(--color-light-bg, #f9f9f9);
+}
+
+.underline {
+  gap: var(--space-internal-8);
+  border-bottom: 1px solid var(--color-border, rgb(0 0 0 / 10%));
+}
+
+/* Tab Sizes */
+
+.s {
+  font-size: var(--font-size-button-s);
+}
+
+.m {
+  font-size: var(--font-size-button-m);
+}
+
+.l {
+  font-size: var(--font-size-button-l);
+}
+
+/* Individual Tab Base Styles */
+
+.tab {
+  display: flex;
+  position: relative;
+  padding: var(--space-internal-8) var(--space-internal-16);
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  font-family: var(--font-text);
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tab:focus-visible {
+  z-index: 1;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Base variant styles - must come before specific variants */
+
+.default .tab {
+  border-inline-end: 1px solid var(--color-border, rgb(0 0 0 / 10%));
+  color: var(--color-text, var(--primary-text-color));
+}
+
+.pills .tab {
+  border-radius: var(--radius-s);
+  color: var(--color-text, var(--primary-text-color));
+}
+
+.underline .tab {
+  color: var(--color-text-subtle, rgb(0 0 0 / 65%));
+  border-bottom: 2px solid transparent;
+}
+
+/* Special modifier states */
+
+.default .tab:last-child {
+  border-inline-end: none;
+}
+
+/* Hover states */
+
+.default .tab:hover:not(:disabled) {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+.pills .tab:hover:not(:disabled) {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+.underline .tab:hover:not(:disabled) {
+  color: var(--color-primary);
+  border-bottom-color: color-mix(
+    in srgb,
+    var(--color-primary) 30%,
+    transparent
+  );
+}
+
+/* Active states */
+
+.default .tabActive {
+  background: var(--color-primary);
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.pills .tabActive {
+  background: var(--color-primary);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.underline .tabActive {
+  font-weight: 600;
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.underline .tabIndicator {
+  position: absolute;
+  inset: auto 0 -2px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-primary);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.underline .tabActive .tabIndicator {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Disabled state */
+
+.tabDisabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.tabDisabled:hover {
+  background: transparent;
+  color: inherit;
+  border-bottom-color: transparent;
+}
+
+/* Tab label */
+
+.tabLabel {
+  display: block;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive adjustments */
+@media (width <= 768px) {
+  .tab {
+    padding: var(--space-internal-6) var(--space-internal-12);
+    font-size: 0.9em;
+  }
+
+  .s .tab {
+    padding: var(--space-internal-4) var(--space-internal-8);
+    font-size: 0.8em;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .tabIndicator {
+    transition: none;
+  }
+}

@@ -1,0 +1,143 @@
+/**
+ * AIProcessingState - Cognitive processing indicator
+ *
+ * Animated gradient effect indicating LLM thinking state.
+ * Uses CSS custom properties for theme integration and
+ * logical properties for RTL support.
+ */
+
+.container {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/**
+ * Animated gradient text effect
+ *
+ * Creates a flowing shimmer effect using background-clip: text.
+ * The gradient animates horizontally to indicate ongoing processing.
+ */
+
+.text {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    rgb(var(--color-text-rgb, 17, 17, 17), 0.4) 0%,
+    var(--color-primary, #0070f3) 50%,
+    rgb(var(--color-text-rgb, 17, 17, 17), 0.4) 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  animation: flow 2s linear infinite;
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/**
+ * Gradient flow animation
+ *
+ * Smoothly moves the gradient from right to left,
+ * creating a shimmer effect that indicates processing.
+ */
+@keyframes flow {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/**
+ * Intensity variants
+ *
+ * Control visual prominence of the animation:
+ * - subtle: Gentle, non-intrusive (default for background processing)
+ * - moderate: Balanced visibility (standard AI responses)
+ * - prominent: High visibility (important or lengthy operations)
+ */
+
+/**
+ * Dark mode adjustments
+ *
+ * When dark mode is active via data-theme attribute,
+ * adjust gradient colors for better contrast.
+ */
+
+[data-theme="dark"] .text {
+  background: linear-gradient(
+    90deg,
+    var(--secondary-text-color) 0%,
+    var(--color-primary) 50%,
+    var(--secondary-text-color) 100%
+  );
+  background-size: 200% 100%;
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container.intensitySubtle .text {
+  animation-duration: 2s;
+}
+
+.container.intensityModerate .text {
+  animation-duration: 1.5s;
+}
+
+.container.intensityProminent .text {
+  font-weight: 500;
+  animation-duration: 1s;
+}
+
+/**
+ * Reduced motion support
+ *
+ * For users who prefer reduced motion, we disable the animation
+ * and use a static, semi-transparent text instead.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .text {
+    background: var(--secondary-text-color);
+    animation: none;
+    opacity: 0.8;
+    /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .container.intensityProminent .text {
+    opacity: 1;
+  }
+}
+
+/**
+ * Fallback for browsers without background-clip support
+ *
+ * Provides a simple color without gradient for older browsers.
+ */
+@supports not (background-clip: text) {
+  .text {
+    color: var(--secondary-text-color);
+    animation: pulse 2s infinite ease-in-out;
+  }
+}

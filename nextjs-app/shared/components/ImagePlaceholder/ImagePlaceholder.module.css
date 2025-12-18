@@ -1,0 +1,134 @@
+.figure {
+  margin: 0;
+  padding: 0;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-m, 8px);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      currentColor 10px,
+      currentColor 11px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      currentColor 10px,
+      currentColor 11px
+    );
+  pointer-events: none;
+}
+
+/* Variant styles */
+.light {
+  background-color: var(--color-light-bg, #f5f5f5);
+  color: var(--color-text-secondary, #666);
+}
+
+.medium {
+  background-color: var(--color-medium-bg, #e0e0e0);
+  color: var(--color-text-primary, #333);
+}
+
+.dark {
+  background-color: var(--color-dark-bg, #333);
+  color: var(--color-text-inverse, #fff);
+}
+
+.gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-light-bg, #f5f5f5) 0%,
+    var(--color-medium-bg, #e0e0e0) 100%
+  );
+  color: var(--color-text-secondary, #666);
+}
+
+/* Content layout */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-layout-16, 1rem);
+  position: relative;
+  z-index: 1;
+  padding: var(--space-layout-24, 1.5rem);
+}
+
+.icon {
+  opacity: 0.4;
+  width: 40%;
+  height: 40%;
+}
+
+.text {
+  font-size: var(--font-size-body-m, 1rem);
+  font-weight: 500;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.dimensions {
+  font-size: var(--font-size-body-s, 0.875rem);
+  font-weight: 400;
+  text-align: center;
+  opacity: 0.5;
+  font-family: var(--font-family-mono, "SF Mono", Consolas, monospace);
+}
+
+.caption {
+  margin-block-start: 1rem;
+  font-size: var(--font-size-body-xs, 0.75rem);
+  font-style: italic;
+  text-align: center;
+  color: var(--color-text-secondary, #666);
+}
+
+/* Responsive adjustments */
+@media (width < 768px) {
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .text {
+    font-size: var(--font-size-body-s, 0.875rem);
+  }
+
+  .dimensions {
+    font-size: var(--font-size-body-xs, 0.75rem);
+  }
+}
+
+/* Hover effect */
+.placeholder:hover {
+  opacity: 0.9;
+}
+
+.placeholder:hover::before {
+  opacity: 0.15;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .placeholder {
+    transition: none;
+  }
+}

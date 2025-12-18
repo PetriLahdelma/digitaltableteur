@@ -1,0 +1,93 @@
+.card {
+  display: flex;
+  padding-block: 1.5rem;
+  padding-inline: 1.5rem;
+  min-block-size: 200px;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 2px solid var(--color-primary);
+  background: var(--color-light-bg);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    box-shadow 0.2s,
+    background 0.2s;
+}
+
+.card:hover {
+  background: var(--color-white);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+  filter: brightness(120%);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
+}
+
+.title {
+  display: -webkit-box;
+  margin-block: 0 0.5rem;
+  margin-inline: 0;
+  font-size: 1.5rem; /* 24px computed */
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  color: var(--color-text);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  max-lines: 2;
+  overflow: hidden;
+}
+
+.lead {
+  display: -webkit-box;
+  margin-block: 0 1rem;
+  margin-inline: 0;
+  font-size: 1.1rem;
+  white-space: pre-line;
+  color: var(--color-text);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  max-lines: 2;
+  overflow: hidden;
+}
+
+.meta {
+  display: flex;
+  margin-block-start: auto;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.readTime {
+  font-weight: 500;
+}
+
+.readMore {
+  font-weight: 500;
+  text-decoration: underline wavy;
+  color: var(--color-primary);
+  text-decoration-color: var(--color-primary);
+  text-underline-offset: 0.2em;
+}
+
+.loading {
+  pointer-events: none;
+}
+
+.titleSkeleton {
+  inline-size: 100%;
+}
+
+.leadSkeleton {
+  inline-size: 100%;
+}
