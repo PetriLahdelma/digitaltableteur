@@ -72,7 +72,12 @@ async function getComponentLabels() {
   const labels: Array<{ id: string; name: string; color: string }> = [];
   let after: string | null = null;
   do {
-    const data = await fetchLinear<{
+    const data: {
+      issueLabels: {
+        nodes: Array<{ id: string; name: string; color: string }>;
+        pageInfo: { hasNextPage: boolean; endCursor: string | null };
+      };
+    } = await fetchLinear<{
       issueLabels: {
         nodes: Array<{ id: string; name: string; color: string }>;
         pageInfo: { hasNextPage: boolean; endCursor: string | null };

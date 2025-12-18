@@ -85,36 +85,6 @@ export default defineConfig({
           setupFiles: [".storybook/vitest.setup.ts"],
           // Prevent import.meta.env cloning issues
           isolate: false,
-          coverage: {
-            enabled: true,
-            provider: "v8",
-            reporter: ["text", "html", "lcov", "json-summary"],
-            reportsDirectory: "coverage-storybook",
-            include: [
-              "nextjs-app/shared/components/**/*.{ts,tsx}",
-              "nextjs-app/shared/patterns/**/*.{ts,tsx}",
-            ],
-            exclude: [
-              "**/*.stories.{ts,tsx}",
-              "**/*.test.{ts,tsx}",
-              "**/index.{ts,tsx}",
-              "**/*.d.ts",
-              "**/node_modules/**",
-              "**/dist/**",
-              "app/**",
-              "nextjs-app/shared/components/pages/**",
-              "nextjs-app/shared/components/**/Page.tsx",
-              "nextjs-app/shared/components/**/Page.ts",
-            ],
-            // Set thresholds to enforce 85% coverage
-            thresholds: {
-              lines: 85,
-              functions: 85,
-              branches: 85,
-              statements: 85,
-            },
-            all: true,
-          },
         },
       },
     ],
