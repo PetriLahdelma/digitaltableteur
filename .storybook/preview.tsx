@@ -1,5 +1,5 @@
 import { MemoryRouter } from "react-router-dom";
-import { ThemeProvider } from "@dt/ThemeProvider";
+import { ThemeProvider } from "@dt/ThemeProvider/ThemeProvider";
 import type { Preview } from "@storybook/react-vite";
 import type { Decorator, StoryContext, StoryFn } from "@storybook/react";
 import React, { useEffect, useLayoutEffect } from "react";
