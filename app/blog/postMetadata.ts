@@ -19,6 +19,15 @@ export type BlogPostMeta = {
 
 export const posts: BlogPostMeta[] = [
   {
+    title: "The Evolutionary Difference Between Constructive and Constrictive Criticism",
+    slug: "the-evolutionary-difference-between-constructive-and-constrictive-criticism",
+    excerpt: "The Evolutionary Difference Between Constructive and Constrictive Criticism",
+    readTime: "5 min read",
+    publishedAt: "2025-12-03T07:45:00.000Z",
+    authorName: "Petri Lahdelma",
+    authorSlug: "petri-lahdelma",
+  },
+  {
     title: "Branding Design Systems",
     slug: "branding-design-systems-essay",
     excerpt:

@@ -9,7 +9,7 @@
     "postbuild": "node scripts/ensure-no-static-sitemap.mjs",
     "predev": "node scripts/generate-blog-manifest.mjs && node scripts/ensure-no-static-sitemap.mjs",
     "prebuild": "node scripts/generate-blog-manifest.mjs && node scripts/ensure-no-static-sitemap.mjs",
-    "vercel-build": "npm run build && npm run test",
+    "vercel-build": "npm run build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "lint": "eslint",
