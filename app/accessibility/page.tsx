@@ -1,4 +1,4 @@
-import { AccessibilityPage } from "../../nextjs-app/shared/components/pages/AccessibilityPage";
+import { AccessibilityPage } from "@dt-pages/AccessibilityPage";
 
 export const revalidate = 3600;
 
