@@ -1,14 +1,19 @@
-// This file has been automatically migrated to valid ESM format by Storybook.
-import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
-import { dirname, resolve } from "node:path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { fileURLToPath } from "node:url";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  addons: ["@storybook/addon-docs", "@storybook/addon-a11y"],
+  stories: [
+    "../nextjs-app/shared/components/**/*.mdx",
+    "../nextjs-app/shared/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../nextjs-app/shared/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../nextjs-app/shared/patterns/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+  ],
+  addons: [
+    "@storybook/addon-docs",
+    "@storybook/addon-a11y",
+    "@storybook/addon-mcp",
+    "@storybook/addon-vitest",
+  ],
   framework: {
     name: "@storybook/react-vite",
     options: {},
@@ -20,10 +25,69 @@ const config: StorybookConfig = {
     <base href="${process.env.NODE_ENV === "production" ? "/storybook/" : "/"}">
   `,
   viteFinal: async (config) => {
+    const componentsPath = fileURLToPath(
+      new URL("../nextjs-app/shared/components", import.meta.url),
+    );
+    const sharedComponentsPath = componentsPath;
+    const patternsPath = fileURLToPath(
+      new URL("../nextjs-app/shared/patterns", import.meta.url),
+    );
+
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
-      "@dt": resolve(__dirname, "../src/components"),
+      "@dt": componentsPath,
+      "@dt/shared": sharedComponentsPath,
+      "@dt/patterns": patternsPath,
+    };
+
+    // Define process.env for Next.js Image component
+    config.define = {
+      ...(config.define || {}),
+      "process.env": JSON.stringify(process.env),
+      "process.env.NODE_ENV": JSON.stringify(
+        process.env.NODE_ENV || "development",
+      ),
+    };
+
+    const optimizeIncludes = [
+      "chart.js",
+      "react-chartjs-2",
+      "@storybook/testing-library",
+    ];
+
+    config.optimizeDeps = {
+      ...(config.optimizeDeps || {}),
+      include: Array.from(
+        new Set([...(config.optimizeDeps?.include || []), ...optimizeIncludes]),
+      ),
+    };
+
+    // Safely merge optimizeIncludes into ssr.noExternal
+    const existingNoExternal = config.ssr?.noExternal;
+    let mergedNoExternal: typeof existingNoExternal | string[];
+
+    if (Array.isArray(existingNoExternal)) {
+      mergedNoExternal = Array.from(
+        new Set([
+          ...(existingNoExternal as (string | RegExp)[]),
+          ...optimizeIncludes,
+        ]),
+      );
+    } else if (
+      existingNoExternal === true ||
+      existingNoExternal instanceof RegExp ||
+      typeof existingNoExternal === "string"
+    ) {
+      // Preserve non-array forms (true, RegExp, string)
+      mergedNoExternal = existingNoExternal;
+    } else {
+      mergedNoExternal = optimizeIncludes;
+    }
+
+    config.ssr = {
+      ...(config.ssr || {}),
+      noExternal: mergedNoExternal as any,
     };
 
     // Ensure HMR is enabled and configured properly

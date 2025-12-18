@@ -1,8 +1,19 @@
 {
   "mcpServers": {
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp",
+      "description": "Figma Remote MCP Server - OAuth-based, no desktop app required (link-based access)"
+    },
+    "figma-desktop": {
+      "type": "http",
+      "url": "http://127.0.0.1:3845/mcp",
+      "description": "Figma Desktop MCP Server - Runs locally via Figma desktop app (selection-based access)"
+    },
     "figma-developer-mcp": {
       "type": "sse",
       "url": "http://localhost:3333/sse",
+      "description": "Figma Developer MCP Server - SSE server via npm package (token-based access)",
       "env": {
         "FIGMA_TOKEN": "<YOUR_FIGMA_TOKEN>"
       }
@@ -15,10 +26,26 @@
         "TYPESCRIPT_LOG_LEVEL": "error"
       }
     },
-    "sentry-mcp": {
+    "sentry": {
+      "type": "http",
+      "url": "https://mcp.sentry.dev/mcp",
+      "description": "Sentry Remote MCP Server - OAuth-based, 16+ tools for issues, error searching, Seer AI, releases, DSNs (RECOMMENDED)"
+    },
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com",
+      "description": "Vercel Remote MCP Server - OAuth-based, 10+ tools for deployments, projects, build logs, domains (RECOMMENDED)"
+    },
+    "vercel-digitaltableteur": {
+      "type": "http",
+      "url": "https://mcp.vercel.com/team_xAQPZijqEITmCiXPLv47MSw0/prj_4ae9xxLxjt3bk5zvzBUhSXRRPaGw",
+      "description": "Vercel Project-Specific MCP - Automatic context for digitaltableteur_next project (enhanced performance, no need to specify project/team in prompts)"
+    },
+    "sentry-rest-api": {
       "type": "command",
       "command": "node",
       "args": ["scripts/sentry-mcp.js", "issues"],
+      "description": "Legacy REST API wrapper - Use for CI/CD summaries only, prefer 'sentry' for interactive debugging",
       "env": {
         "SENTRY_AUTH_TOKEN": "<YOUR_SENTRY_TOKEN>",
         "SENTRY_ORG": "digitaltableteur",
@@ -28,12 +55,14 @@
     "context7": {
       "type": "http",
       "url": "https://mcp.context7.com/mcp",
+      "tools": ["get-library-docs", "resolve-library-id"],
       "env": {
         "CONTEXT7_API_KEY": "<YOUR_CONTEXT7_API_KEY>"
       },
       "headers": {
         "Context7-API-Key": "{{CONTEXT7_API_KEY}}"
-      }
+      },
+      "description": "Context7 MCP Server - 2 tools: resolve-library-id (find library IDs), get-library-docs (fetch docs with topic/page pagination)"
     },
     "github": {
       "type": "http",
@@ -44,6 +73,47 @@
       "env": {
         "GITHUB_MCP_PAT": "<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>"
       }
+    },
+    "next-devtools": {
+      "type": "command",
+      "command": "npx",
+      "args": ["-y", "next-devtools-mcp@latest"],
+      "env": {
+        "NEXT_TELEMETRY_DISABLED": "1"
+      }
+    },
+    "akaunting": {
+      "type": "http",
+      "baseUrl": "http://localhost:8080/api",
+      "auth": {
+        "type": "basic",
+        "username": "{{AKAUNTING_API_USERNAME}}",
+        "password": "{{AKAUNTING_API_PASSWORD}}"
+      },
+      "headers": {
+        "X-Company": "1"
+      },
+      "description": "Akaunting Accounting Software API",
+      "endpoints": {
+        "invoices": "/invoices",
+        "contacts": "/contacts",
+        "items": "/items",
+        "transactions": "/transactions",
+        "reports": "/reports",
+        "categories": "/categories",
+        "expenses": "/expenses"
+      }
+    },
+    "sanity": {
+      "type": "http",
+      "url": "https://mcp.sanity.io",
+      "description": "Sanity CMS MCP Server - 40+ tools for document operations, GROQ queries, semantic search, translations, version management, and content workflows",
+      "env": {
+        "SANITY_TOKEN": "<YOUR_SANITY_API_TOKEN_OPTIONAL>"
+      },
+      "headers": {
+        "Authorization": "Bearer {{SANITY_TOKEN}}"
+      }
     }
   },
   "inputs": [
@@ -51,6 +121,24 @@
       "type": "promptString",
       "id": "GITHUB_MCP_PAT",
       "description": "GitHub Personal Access Token for MCP",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "AKAUNTING_API_USERNAME",
+      "description": "Akaunting API Username (email)",
+      "password": false
+    },
+    {
+      "type": "promptString",
+      "id": "AKAUNTING_API_PASSWORD",
+      "description": "Akaunting API Password",
+      "password": true
+    },
+    {
+      "type": "promptString",
+      "id": "SANITY_TOKEN",
+      "description": "Sanity API Token (optional - uses OAuth by default, provide token to skip OAuth)",
       "password": true
     }
   ]

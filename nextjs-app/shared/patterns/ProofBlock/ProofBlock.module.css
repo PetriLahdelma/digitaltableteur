@@ -1,0 +1,43 @@
+.metricsBand {
+}
+.metricsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-4);
+}
+.metricsTitle {
+}
+.metricsSubtitle {
+  color: var(--color-text-secondary);
+}
+.metricsCaption {
+  max-inline-size: 32rem;
+  color: var(--color-text-secondary);
+}
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.metricsGridTight {
+  gap: var(--space-3);
+}
+.metricCard {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+.metricCardDark {
+  background: var(--color-surface-elevated);
+  color: var(--color-text-on-surface);
+}
+.metricValue {
+  font-weight: 700;
+}
+.metricLabel {
+  font-weight: 600;
+}
+.metricDetail {
+  color: var(--color-text-secondary);
+}

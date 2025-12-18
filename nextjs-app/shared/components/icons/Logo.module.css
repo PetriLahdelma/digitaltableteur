@@ -1,0 +1,34 @@
+.logoWrapper {
+  display: inline-block;
+  position: relative;
+  width: 256px;
+  height: 256px;
+}
+
+.logoBlur {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 256px;
+  height: 256px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: blur(10px);
+}
+
+.logoImage {
+  position: relative;
+  z-index: 2;
+  width: 256px;
+  height: 256px;
+  object-fit: contain;
+}
+
+.logoImageBlend {
+  mix-blend-mode: difference;
+}
+
+.logoImageNormal {
+  mix-blend-mode: normal;
+}

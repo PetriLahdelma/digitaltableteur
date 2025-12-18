@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+  app:
+    image: akaunting/akaunting:latest
+    container_name: akaunting-app
+    ports:
+      - "8080:80"
+    environment:
+      # Generate key with: docker run --rm akaunting/akaunting php artisan key:generate --show
+      - APP_KEY=${AKAUNTING_APP_KEY:-base64:REPLACE_WITH_GENERATED_KEY}
+      - APP_URL=${AKAUNTING_APP_URL:-http://localhost:8080}
+      - DB_HOST=db
+      - DB_DATABASE=akaunting
+      - DB_USERNAME=akaunting
+      - DB_PASSWORD=${AKAUNTING_DB_PASSWORD:-akaunting}
+      - LOCALE=en-GB
+      - TZ=Europe/Helsinki
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - akaunting-app:/var/www/html
+      - akaunting-uploads:/var/www/html/storage/app/uploads
+    restart: unless-stopped
+    networks:
+      - akaunting-network
+
+  db:
+    image: mariadb:10.11
+    container_name: akaunting-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=${AKAUNTING_DB_ROOT_PASSWORD:-root}
+      - MYSQL_DATABASE=akaunting
+      - MYSQL_USER=akaunting
+      - MYSQL_PASSWORD=${AKAUNTING_DB_PASSWORD:-akaunting}
+    volumes:
+      - akaunting-db:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - akaunting-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+volumes:
+  akaunting-app:
+    driver: local
+  akaunting-uploads:
+    driver: local
+  akaunting-db:
+    driver: local
+
+networks:
+  akaunting-network:
+    driver: bridge

@@ -1,0 +1,26 @@
+.notFoundPage {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  background-image: url("/404.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.notFoundPage > :first-child {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+/* Responsive adjustments */
+@media (width <= 768px) {
+  .notFoundPage {
+    background-size: contain;
+  }
+}
