@@ -161,7 +161,7 @@ const staticTools: ToolMap = {
         open: pad(todaysConfig.open),
         close: pad(todaysConfig.close),
       };
-      const weeklyHours = WEEKLY_HOURS.map((day: { day: string; open: string | null; close: string | null }) => ({
+      const weeklyHours = WEEKLY_HOURS.map((day) => ({
         day: day.day,
         open: pad(day.open),
         close: pad(day.close),
