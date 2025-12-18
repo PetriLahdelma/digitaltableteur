@@ -2,8 +2,8 @@ import React from "react";
 import type {
   IconProps as PhosphorIconProps,
   IconWeight,
-} from "@phosphor-icons/react";
-import * as PhosphorIcons from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
+import * as PhosphorIcons from "@phosphor-icons/react/ssr";
 import styles from "./Icon.module.css";
 
 type NamedSize = "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
