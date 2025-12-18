@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
-import { PseoIndexPage } from "../../nextjs-app/shared/components/pages/Pseo/PseoIndexPage";
+import { PseoIndexPage } from "@dt-pages/Pseo/PseoIndexPage";
 
 export const metadata: Metadata = {
   title: "Programmatic Guides | Digitaltableteur",
