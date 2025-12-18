@@ -41,6 +41,7 @@
     "app/**",
     "api-legacy-vercel-functions",
     "providers/**",
-    "nextjs-app"
+    "nextjs-app/app",
+    "nextjs-app/providers"
   ]
 }
