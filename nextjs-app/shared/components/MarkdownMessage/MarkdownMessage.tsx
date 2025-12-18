@@ -3,8 +3,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import styles from "./MarkdownMessage.module.css";
 import Text from "@dt/Text";
-import Title from "@dt/Title";
-import Link from "@dt/Link";
 import type { TextProps } from "@dt/Text";
 import Title from "@dt/Title";
 import Link from "@dt/Link";
