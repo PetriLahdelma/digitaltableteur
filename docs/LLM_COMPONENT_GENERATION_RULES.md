@@ -829,7 +829,7 @@ Component.displayName = "Component";
 
 ### Rule 6.1 - Semantic HTML First
 
-**ALWAYS use semantic HTML elements:**
+**ALWAYS use semantic HTML elements to ensure proper document structure, accessibility, and SEO:**
 
 ```tsx
 /* ❌ BAD */
@@ -849,13 +849,184 @@ Component.displayName = "Component";
 
 **Semantic elements to prefer:**
 
-- `<button>` over `<div onClick>`
-- `<nav>` for navigation
-- `<main>` for main content
-- `<article>` for independent content
-- `<section>` for thematic grouping
+- `<button>` over `<div onClick>` - for interactive actions
+- `<nav>` for navigation landmarks
+- `<main>` for primary page content (one per page)
+- `<article>` for independent, self-contained content
+- `<section>` for thematic grouping of related content
 - `<header>`, `<footer>` for structural headers/footers
-- `<h1>`-`<h6>` for headings (maintain hierarchy)
+- `<h1>`-`<h6>` for headings (maintain hierarchy, only one `<h1>` per page)
+- `<aside>` for tangentially related content (sidebars, callouts)
+- `<figure>` and `<figcaption>` for images with captions
+- `<time>` for dates and times with `datetime` attribute
+- `<address>` for contact information
+
+**Five Real-World Examples:**
+
+**Example 1: Hero Section**
+
+```tsx
+/* ❌ BAD - Generic divs everywhere */
+<div className={styles.hero}>
+  <div className={styles.heroContent}>
+    <div className={styles.title}>Welcome</div>
+    <div className={styles.description}>Learn more about us</div>
+    <div className={styles.cta} onClick={handleClick}>Get Started</div>
+  </div>
+</div>
+
+/* ✅ GOOD - Semantic structure */
+<section className={styles.hero} aria-labelledby="hero-title">
+  <header className={styles.heroContent}>
+    <h1 id="hero-title" className={styles.title}>Welcome</h1>
+    <p className={styles.description}>Learn more about us</p>
+    <Button variant="primary" onClick={handleClick}>Get Started</Button>
+  </header>
+</section>
+```
+
+**Example 2: Blog Post Card**
+
+```tsx
+/* ❌ BAD - Flat div structure */
+<div className={styles.card}>
+  <div className={styles.image}>
+    <img src={post.image} alt={post.title} />
+  </div>
+  <div className={styles.title}>{post.title}</div>
+  <div className={styles.date}>{post.publishedAt}</div>
+  <div className={styles.excerpt}>{post.excerpt}</div>
+  <div className={styles.link} onClick={handleRead}>Read More</div>
+</div>
+
+/* ✅ GOOD - Article with proper semantics */
+<article className={styles.card}>
+  <figure className={styles.imageWrapper}>
+    <Image src={post.image} alt={post.title} width={400} height={300} />
+  </figure>
+  <header>
+    <h2 className={styles.title}>{post.title}</h2>
+    <time dateTime={post.publishedAt} className={styles.date}>
+      {formatDate(post.publishedAt)}
+    </time>
+  </header>
+  <p className={styles.excerpt}>{post.excerpt}</p>
+  <footer>
+    <Button variant="tertiary" href={`/blog/${post.slug}`}>
+      Read More
+    </Button>
+  </footer>
+</article>
+```
+
+**Example 3: Navigation Menu**
+
+```tsx
+/* ❌ BAD - Div-based navigation */
+<div className={styles.menu}>
+  <div className={styles.menuItem} onClick={goHome}>Home</div>
+  <div className={styles.menuItem} onClick={goAbout}>About</div>
+  <div className={styles.menuItem} onClick={goContact}>Contact</div>
+</div>
+
+/* ✅ GOOD - Semantic nav with list structure */
+<nav aria-label="Main navigation">
+  <ul className={styles.menu}>
+    <li>
+      <a href="/" className={styles.menuItem} aria-current={isHome ? "page" : undefined}>
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="/about" className={styles.menuItem} aria-current={isAbout ? "page" : undefined}>
+        About
+      </a>
+    </li>
+    <li>
+      <a href="/contact" className={styles.menuItem} aria-current={isContact ? "page" : undefined}>
+        Contact
+      </a>
+    </li>
+  </ul>
+</nav>
+```
+
+**Example 4: Form with Validation**
+
+```tsx
+/* ❌ BAD - Non-semantic form structure */
+<div className={styles.form}>
+  <div className={styles.field}>
+    <div className={styles.label}>Email</div>
+    <div className={styles.input} contentEditable />
+    <div className={styles.error}>{error}</div>
+  </div>
+  <div className={styles.submit} onClick={handleSubmit}>Submit</div>
+</div>
+
+/* ✅ GOOD - Semantic form elements */
+<form className={styles.form} onSubmit={handleSubmit}>
+  <fieldset className={styles.field}>
+    <label htmlFor="email-input" className={styles.label}>
+      Email
+    </label>
+    <input
+      id="email-input"
+      type="email"
+      className={styles.input}
+      aria-invalid={!!error}
+      aria-describedby={error ? "email-error" : undefined}
+      required
+    />
+    {error && (
+      <p id="email-error" className={styles.error} role="alert">
+        {error}
+      </p>
+    )}
+  </fieldset>
+  <Button type="submit" variant="primary">Submit</Button>
+</form>
+```
+
+**Example 5: Sidebar with Related Content**
+
+```tsx
+/* ❌ BAD - Generic container */
+<div className={styles.sidebar}>
+  <div className={styles.title}>Related Articles</div>
+  <div className={styles.list}>
+    <div className={styles.item}>Article 1</div>
+    <div className={styles.item}>Article 2</div>
+  </div>
+</div>
+
+/* ✅ GOOD - Semantic aside with proper structure */
+<aside className={styles.sidebar} aria-labelledby="related-title">
+  <h2 id="related-title" className={styles.title}>Related Articles</h2>
+  <nav aria-label="Related articles">
+    <ul className={styles.list}>
+      <li>
+        <a href="/article-1" className={styles.item}>
+          Understanding React Hooks
+        </a>
+      </li>
+      <li>
+        <a href="/article-2" className={styles.item}>
+          TypeScript Best Practices
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+```
+
+**Benefits of Semantic HTML:**
+
+1. **Accessibility** - Screen readers understand document structure and landmarks
+2. **SEO** - Search engines better understand content hierarchy and relationships
+3. **Maintainability** - Code intent is clear without reading implementation
+4. **Browser Features** - Native keyboard navigation, form validation, etc.
+5. **Performance** - Less CSS needed for styling when using appropriate elements
 
 ### Rule 6.2 - ARIA Attributes (When Needed)
 

@@ -14,6 +14,7 @@ export default defineConfig({
   plugins: [structureTool(), visionTool()],
 
   schema: {
-    types: schemaTypes,
+    // Type assertion due to duplicate @sanity/types in node_modules (root vs digitaltableteur-blog)
+    types: schemaTypes as any,
   },
 });

@@ -17,7 +17,7 @@ class ResizeObserverMock {
   disconnect = vi.fn();
 }
 
-global.ResizeObserver = ResizeObserverMock as any;
+globalThis.ResizeObserver = ResizeObserverMock as any;
 
 // Mock IntersectionObserver
 class IntersectionObserverMock {
@@ -26,7 +26,7 @@ class IntersectionObserverMock {
   disconnect = vi.fn();
 }
 
-global.IntersectionObserver = IntersectionObserverMock as any;
+globalThis.IntersectionObserver = IntersectionObserverMock as any;
 
 // Mock window.matchMedia
 Object.defineProperty(window, "matchMedia", {
@@ -44,7 +44,7 @@ Object.defineProperty(window, "matchMedia", {
 });
 
 // Mock console methods to reduce noise in tests
-global.console = {
+globalThis.console = {
   ...console,
   warn: vi.fn(),
   error: vi.fn(),

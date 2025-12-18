@@ -1,0 +1,55 @@
+# Neon Performance Analyzer - GitHub Copilot Agent
+# https://github.com/github/awesome-copilot/blob/main/agents/neon-optimization-analyzer.agent.md
+
+name: neon-performance-analyzer
+description: |
+  Identify and fix slow Postgres queries automatically using Neon branching.
+
+  This agent helps you:
+  - Analyze query execution plans
+  - Test optimizations in isolated branches
+  - Provide before/after performance metrics
+  - Generate actionable code fixes
+  - Suggest index improvements
+
+capabilities:
+  - query_analysis
+  - execution_plan_review
+  - index_optimization
+  - performance_testing
+  - code_generation
+
+workflow: 1. Identify slow queries from logs or profiling
+  2. Create performance test branch
+  3. Analyze EXPLAIN plans
+  4. Apply optimizations (indexes, query rewrites)
+  5. Compare performance metrics
+  6. Generate optimized code
+
+usage_examples:
+  - "Why is this query slow?"
+  - "Analyze performance of user search queries"
+  - "Optimize the dashboard loading time"
+  - "Find missing indexes in my schema"
+  - "Compare query performance before and after"
+  - "Generate indexes for common query patterns"
+
+integration:
+  mcp_server: "@neondatabase/mcp-server-neon"
+  required_env:
+    - NEON_API_KEY
+    - NEON_PROJECT_ID
+
+metrics_tracked:
+  - Query execution time
+  - Rows scanned vs returned
+  - Index usage
+  - Sequential scan detection
+  - Cache hit ratio
+
+best_practices:
+  - Test optimizations in branches
+  - Measure before and after
+  - Consider data distribution
+  - Monitor production metrics
+  - Document index rationale
