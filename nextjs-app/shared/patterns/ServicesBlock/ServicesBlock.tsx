@@ -1,0 +1,175 @@
+"use client";
+
+import React from "react";
+import PageLayout from "../PageLayout/PageLayout";
+import Title from "@dt/Title";
+import Text from "@dt/Text";
+import List from "@dt/List";
+import styles from "./ServicesBlock.module.css";
+
+export interface ServiceItem {
+  /** Service name or description */
+  label: string;
+}
+
+export interface ToolIcon {
+  /** Unique identifier */
+  key: string;
+  /** Icon component */
+  icon: React.ReactNode;
+  /** Accessible label for icon */
+  ariaLabel: string;
+}
+
+export interface ServicesBlockProps {
+  /** List of services provided */
+  services?: ServiceItem[];
+  /** Project duration or timeline */
+  duration?: string;
+  /** Tools/technologies used (icon objects) */
+  tools?: ToolIcon[];
+  /** Overview title (defaults to "Overview") */
+  overviewTitle?: string;
+  /** Overview content (can be string or React node for rich content) */
+  overview: React.ReactNode;
+  /** Optional title for services section (defaults to "Services") */
+  servicesTitle?: string;
+  /** Optional title for duration section (defaults to "Duration") */
+  durationTitle?: string;
+  /** Optional title for tools section (defaults to "Tools") */
+  toolsTitle?: string;
+  /** Maximum content width */
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "full";
+  /** Vertical spacing */
+  spacing?: "compact" | "default" | "comfortable" | "spacious";
+  /** Custom CSS class for styling extensions */
+  className?: string;
+  /** Semantic HTML element to render as */
+  as?: "section" | "article" | "div";
+  /** ARIA label for section */
+  ariaLabel?: string;
+}
+
+const ServicesBlock: React.FC<ServicesBlockProps> = ({
+  services = [],
+  duration,
+  tools = [],
+  overview,
+  overviewTitle = "Overview",
+  servicesTitle = "Services",
+  durationTitle = "Duration",
+  toolsTitle = "Tools",
+  maxWidth = "md",
+  spacing = "comfortable",
+  className,
+  as = "section",
+  ariaLabel,
+}) => {
+  const hasServices = services.length > 0;
+  const hasDuration = Boolean(duration);
+  const hasTools = tools.length > 0;
+  const hasMetadata = hasServices || hasDuration || hasTools;
+
+  const rootClassName = className
+    ? `${styles.servicesBlock} ${className}`
+    : styles.servicesBlock;
+
+  // Fallback ARIA label: default to overviewTitle when none provided
+  const computedAriaLabel = ariaLabel || overviewTitle;
+
+  return (
+    <PageLayout
+      maxWidth={maxWidth}
+      spacing={spacing}
+      as={as}
+      className={rootClassName}
+      ariaLabel={computedAriaLabel}
+    >
+      <div className={styles.grid}>
+        {hasMetadata && (
+          <div className={styles.metadata}>
+            {hasServices && (
+              <div className={styles.section}>
+                <Title
+                  terminals="sans"
+                  size="XS"
+                  level={3}
+                  className={styles.sectionTitle}
+                >
+                  {servicesTitle}
+                </Title>
+                <List
+                  items={services.map((s) => s.label)}
+                  size="S"
+                  terminals="sans"
+                />
+              </div>
+            )}
+
+            {hasDuration && (
+              <div className={styles.section}>
+                <Title
+                  terminals="sans"
+                  size="XS"
+                  level={3}
+                  className={styles.sectionTitle}
+                >
+                  {durationTitle}
+                </Title>
+                <Text size="S">{duration}</Text>
+              </div>
+            )}
+
+            {hasTools && (
+              <div className={styles.section}>
+                <Title
+                  terminals="sans"
+                  size="XS"
+                  level={3}
+                  className={styles.sectionTitle}
+                >
+                  {toolsTitle}
+                </Title>
+                <div
+                  className={styles.toolsIcons}
+                  role="list"
+                  aria-label={toolsTitle}
+                >
+                  {tools.map((tool) => (
+                    <div
+                      key={tool.key}
+                      role="listitem"
+                      aria-label={tool.ariaLabel}
+                    >
+                      {tool.icon}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        <div className={styles.overview}>
+          <Title
+            terminals="sans"
+            size="XS"
+            level={3}
+            className={styles.sectionTitle}
+          >
+            {overviewTitle}
+          </Title>
+          {typeof overview === "string" ? (
+            <Text size="S">{overview}</Text>
+          ) : (
+            <div className={styles.overviewContent}>{overview}</div>
+          )}
+        </div>
+      </div>
+    </PageLayout>
+  );
+};
+
+ServicesBlock.displayName = "ServicesBlock";
+
+export default ServicesBlock;

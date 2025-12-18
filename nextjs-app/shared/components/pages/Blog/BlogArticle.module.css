@@ -1,0 +1,213 @@
+/* stylelint-disable no-descending-specificity, order/properties-order, declaration-no-important */
+
+.article {
+  margin: 0 auto;
+  margin-block-start: 0;
+  padding: 2rem;
+  max-width: 100%;
+  font-family: var(--secondary-body-font, serif);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.article h1 {
+  font-size: 2.5rem;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  margin-bottom: 0.5rem;
+}
+
+.article h2 {
+  font-family: var(--secondary-heading-font, sans-serif);
+  font-size: 1.75rem;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  margin-top: 2rem;
+}
+
+.article h3 {
+  font-family: var(--secondary-heading-font, sans-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  color: var(--primary-text-color);
+}
+
+.article h3 + p {
+  margin-block-start: 1rem;
+}
+
+.article blockquote {
+  margin-block: 4rem;
+  padding-inline-start: 1rem;
+  border-inline-start: 4px solid var(--primary-text-color);
+  font-style: italic;
+}
+
+.article b,
+.article strong {
+  font-family: TiemposText-Bold, serif;
+  font-weight: 600;
+}
+
+.article p {
+  margin-block: 1.25rem;
+  line-height: 1.75;
+}
+
+.article ul,
+.article ol {
+  margin-block: 1.5rem;
+  padding-inline-start: 1.5rem;
+  line-height: 1.75;
+}
+
+.article li {
+  margin-block: 0.75rem;
+  padding-inline-start: 0.5rem;
+}
+
+.article li::marker {
+  color: var(--color-primary);
+}
+
+.article ul li {
+  list-style-type: disc;
+}
+
+.article ol li {
+  list-style-type: decimal;
+}
+
+.article ul ul,
+.article ol ul {
+  margin-block: 0.5rem;
+}
+
+.metaRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block-start: 1rem !important;
+}
+
+@media (width < 48rem) {
+  .metaRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .metaLeft {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.metaLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.metaRow p {
+  margin-block: 0;
+  font-size: 1rem;
+  color: var(--primary-text-color);
+}
+
+.article li > p {
+  margin-block: 0.5rem;
+}
+
+.article hr {
+  margin: 0;
+  border: none;
+  border-top: 2px solid var(--color-primary);
+}
+
+.article img:not([class*="avatar"]) {
+  border-radius: 8px;
+}
+
+.article img + figcaption {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-gray-medium);
+  text-align: center;
+}
+
+.article figure {
+  margin: 0;
+  padding: 0;
+}
+
+.article figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-gray-medium);
+}
+
+.heroImage {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.similar {
+  display: grid;
+  gap: 1rem;
+}
+
+.similarList {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.similarCard {
+  height: 100%;
+}
+
+/* Similar Reads are card links; remove global wavy underline styling */
+.similarList :global(.wavyUnderline) {
+  padding-bottom: 0;
+}
+
+.similarList :global(.wavyUnderline::after) {
+  display: none;
+  content: none;
+}
+
+.embedWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.embedWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.embedLink a {
+  color: var(--color-primary);
+}
+
+.readTime {
+  color: var(--color-gray-medium);
+}
+
+.releaseDate {
+  color: var(--color-gray-medium);
+}

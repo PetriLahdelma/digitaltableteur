@@ -1,0 +1,56 @@
+/**
+ * Animated grain/static overlay utility.
+ *
+ * Usage:
+ *   <div class="grainy">
+ *     <!-- content -->
+ *   </div>
+ *
+ * The pseudo-element renders a layered gradient noise texture and jitters it
+ * slightly to mimic film grain without external assets.
+ */
+
+.grainy {
+  position: relative;
+  background-color: var(--color-black);
+  color: var(--color-light-bg);
+  overflow: hidden;
+}
+
+.grainy::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgb(255 255 255 / 8%) 1px, transparent 1px),
+    radial-gradient(circle, rgb(255 255 255 / 4%) 1px, transparent 1px);
+  background-size:
+    3px 3px,
+    5px 5px;
+  pointer-events: none;
+  animation: grain-noise 1.5s steps(6) infinite;
+  opacity: 0.25;
+  content: "";
+  mix-blend-mode: screen;
+}
+
+@keyframes grain-noise {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-2%, 1%);
+  }
+
+  50% {
+    transform: translate(1%, -1%);
+  }
+
+  75% {
+    transform: translate(-1%, -2%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}

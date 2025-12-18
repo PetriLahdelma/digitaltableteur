@@ -1,0 +1,1 @@
+export { AccessibilityPage } from "./AccessibilityPage";

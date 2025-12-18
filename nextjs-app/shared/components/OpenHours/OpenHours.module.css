@@ -1,0 +1,75 @@
+.root {
+  /* Outer breathing room when embedded in chat stream */
+  margin: 1rem 0;
+  padding: var(--space-internal-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+  background: var(--color-primary);
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-s);
+  line-height: 1.4;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-white);
+  margin-bottom: var(--space-internal-8);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0 var(--space-internal-8);
+}
+
+.statusIcon {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.table {
+  width: 100%;
+  font-family: var(--font-text);
+
+  /* Default text colour assumes primary background from parent (.root) */
+  color: var(--color-white);
+  border-collapse: collapse;
+}
+
+.root strong {
+  font-family: var(--font-text);
+  font-weight: 600;
+}
+
+.table th,
+.table td {
+  padding: var(--space-internal-4) var(--space-internal-8);
+  font-weight: 400;
+  text-align: left;
+}
+
+/* Zebra striping: even rows invert background to white; switch text back to primary for contrast */
+
+.table tbody tr:nth-child(even) td {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+/* Ensure header cells remain white regardless */
+
+.table thead th {
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.closed {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.compact .table tbody tr td:nth-child(2),
+.compact .table tbody tr td:nth-child(3) {
+  white-space: nowrap;
+}

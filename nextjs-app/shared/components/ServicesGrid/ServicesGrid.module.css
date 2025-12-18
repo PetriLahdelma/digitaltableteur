@@ -1,0 +1,82 @@
+.root {
+  display: grid;
+  padding: var(--space-4);
+  box-sizing: border-box;
+  height: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
+}
+
+.fillVertical {
+  display: flex;
+  height: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.item {
+  display: flex;
+  position: relative;
+  padding: var(--space-3) var(--space-2);
+  min-height: 110px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; /* 1rem gap between icon and title */
+  border-radius: var(--radius-small);
+  background: var(--color-elevation-1);
+  text-align: center;
+}
+
+.iconWrapper {
+  display: flex;
+  width: clamp(48px, 6vw, 56px);
+  height: clamp(48px, 6vw, 56px);
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-small);
+  background: transparent;
+  font-size: clamp(1.75rem, 4vw, 2rem); /* 28px -> 1.75rem, 32px -> 2rem */
+  color: var(--color-primary);
+}
+
+.iconWrapper svg {
+  display: block;
+  width: 70%;
+  height: 70%;
+  color: var(--color-primary);
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-serif);
+  font-size: var(--font-size-text-s);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.item:focus-within,
+.item:focus {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.gridLabel {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
