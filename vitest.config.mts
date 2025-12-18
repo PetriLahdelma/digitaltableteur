@@ -70,8 +70,6 @@ export default defineConfig({
                 tags: {
                   skip: [],
                 },
-                // Ensure Storybook uses its own stories config, not vitest include patterns
-                storiesGlob: undefined,
               }),
             ],
             test: {
