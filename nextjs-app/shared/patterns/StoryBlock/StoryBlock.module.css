@@ -1,0 +1,75 @@
+/* StoryBlock Component Styles */
+
+.storyBlock {
+  position: relative;
+}
+
+/* Grid layouts */
+.grid1Col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.grid2Col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (width >= 768px) {
+  .grid2Col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Column styling */
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography */
+.subtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: 600;
+  margin-block-end: 0;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: 600;
+}
+
+.paragraph {
+  margin-block-end: 0;
+}
+
+/* Figure styling */
+.figure {
+  margin: 0;
+  padding: 0;
+}
+
+.figure figcaption {
+  margin-block-start: 1rem;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .storyBlock * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .storyBlock {
+    border: 1px solid currentColor;
+  }
+}

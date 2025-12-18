@@ -1,0 +1,96 @@
+.canvas {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 640px;
+  border: 2px solid var(--color-border, #1f2937);
+  border-radius: var(--radius-md, 12px);
+  background: linear-gradient(180deg, #f7f0d8 0%, #d8c69f 100%);
+  aspect-ratio: 16 / 9;
+  image-rendering: pixelated;
+  overflow: hidden;
+}
+
+.ground {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 32px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #c77b2b 0,
+      #c77b2b 12px,
+      #b66b1d 12px,
+      #b66b1d 24px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgb(0 0 0 / 6%) 0,
+      rgb(0 0 0 / 6%) 4px,
+      transparent 4px,
+      transparent 8px
+    );
+}
+
+.sprite {
+  position: absolute;
+  bottom: 32px;
+  width: var(--frame-width);
+  height: var(--frame-height);
+  background-size: var(--sheet-width) var(--sheet-height);
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  transform-origin: center bottom;
+}
+
+.hud {
+  display: grid;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  left: 16px;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  font-family: var(--font-mono, "DM Mono", monospace);
+  font-size: 12px;
+  color: var(--color-dark);
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgb(255 255 255 / 60%);
+}
+
+.hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.key {
+  display: inline-flex;
+  padding: 3px 6px;
+  min-width: 22px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(0 0 0 / 20%);
+  border-radius: 6px;
+  background: rgb(255 255 255 / 80%);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 12%);
+}
+
+.controlButton {
+  display: inline-flex;
+  padding: 4px 8px;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgb(0 0 0 / 18%);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 85%);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.controlButton:hover {
+  background: rgb(255 255 255);
+}

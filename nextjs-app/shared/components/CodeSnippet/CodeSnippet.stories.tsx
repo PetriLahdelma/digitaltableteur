@@ -1,0 +1,159 @@
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+
+import CodeSnippet from "@dt/CodeSnippet";
+import Text from "@dt/Text";
+import { within, userEvent } from "@storybook/testing-library";
+
+const sampleTs = `import { createGatewayProvider } from "@ai-sdk/gateway";
+
+const provider = createGatewayProvider({
+  baseURL: process.env.AI_GATEWAY_URL,
+  apiKey: process.env.AI_GATEWAY_API_KEY,
+});
+
+export async function ask(question: string) {
+  const model = provider("openai/gpt-4o-mini");
+  const result = await model.doStuff({ prompt: question });
+  return result.text;
+}`;
+
+const longMultiLineCode = `import React, { useState, useEffect } from "react";
+import { Button } from "@dt/Button";
+import { Card } from "@dt/Card";
+
+// This is a longer example to demonstrate show more/less
+export function DemoComponent({ title, description }: DemoProps) {
+  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
+  
+  useEffect(() => {
+    console.log("Component mounted");
+    return () => console.log("Component unmounted");
+  }, []);
+  
+  const handleClick = async () => {
+    setLoading(true);
+    await someAsyncOperation();
+    setCount(prev => prev + 1);
+    setLoading(false);
+  };
+  
+  return (
+    <Card title={title}>
+      <p>{description}</p>
+      <Button onClick={handleClick} loading={loading}>
+        Count: {count}
+      </Button>
+    </Card>
+  );
+}`;
+
+const meta: Meta<typeof CodeSnippet> = {
+  title: "Components/CodeSnippet",
+  component: CodeSnippet,
+  tags: ["autodocs"],
+  args: {
+    code: sampleTs,
+    language: "typescript",
+    showLineNumbers: true,
+    allowCopy: true,
+    variant: "multi",
+  },
+};
+
+export default meta;
+
+type Story = StoryObj<typeof CodeSnippet>;
+
+export const Inline: Story = {
+  args: {
+    variant: "inline",
+    code: "npm install @digitaltableteur/components",
+    language: "bash",
+    showLineNumbers: false,
+  },
+  render: (args) => (
+    <Text>
+      To install the package, run <CodeSnippet {...args} /> in your terminal.
+    </Text>
+  ),
+};
+
+export const Single: Story = {
+  args: {
+    variant: "single",
+    code: "npm install @digitaltableteur/components --save",
+    language: "bash",
+    showLineNumbers: false,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const copyButton = canvas.getByRole("button", { name: /copy/i });
+    await userEvent.click(copyButton);
+  },
+};
+
+export const Multi: Story = {
+  args: {
+    variant: "multi",
+    language: "typescript",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const copyButton = canvas.getByRole("button", { name: /copy/i });
+    await userEvent.click(copyButton);
+  },
+};
+
+export const Typescript: Story = {
+  args: {
+    variant: "multi",
+    language: "typescript",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const copyButton = canvas.getByRole("button", { name: /copy/i });
+    await userEvent.click(copyButton);
+  },
+};
+
+export const Python: Story = {
+  args: {
+    variant: "multi",
+    language: "python",
+    code: `def greet(name: str) -> str:
+    return f"Hello, {name}"
+
+print(greet("world"))`,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const copyButton = canvas.getByRole("button", { name: /copy/i });
+    await userEvent.click(copyButton);
+  },
+};
+
+export const WithMaxLines: Story = {
+  args: {
+    variant: "multi",
+    code: longMultiLineCode,
+    language: "typescript",
+    maxLines: 10,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const showMoreButton = canvas.queryByRole("button", { name: /show more/i });
+    if (showMoreButton) {
+      await userEvent.click(showMoreButton);
+    }
+  },
+};
+
+export const Minimal: Story = {
+  args: {
+    variant: "multi",
+    showLineNumbers: false,
+    code: "console.log('Hello');",
+  },
+};

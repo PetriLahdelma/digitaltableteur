@@ -1,0 +1,1 @@
+export { WorkIndexPage } from "./WorkIndexPage";

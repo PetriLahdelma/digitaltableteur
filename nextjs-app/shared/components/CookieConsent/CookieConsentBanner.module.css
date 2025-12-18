@@ -1,0 +1,101 @@
+/* Compact Cookie Consent Banner - Footer fixed position */
+
+.banner {
+  position: fixed;
+  margin-inline-start: 2rem;
+  margin-block-end: 2rem;
+  padding: 1.5rem 1.5rem;
+  inset-inline: 0;
+  inset-block-end: 0;
+  max-width: 46rem;
+  z-index: 9998; /* Below modal (9999) but above everything else */
+  background-color: var(--color-white);
+  border-block-start: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 -2px 8px rgb(0 0 0 / 10%);
+}
+
+.container {
+  display: flex;
+  gap: var(--space-m);
+  align-items: center;
+  max-inline-size: 1200px;
+  margin-inline: auto;
+  padding-block: var(--space-m);
+  padding-inline: var(--space-l);
+}
+
+.expandButton {
+  display: flex;
+  flex-shrink: 0;
+  padding: var(--space-xs);
+  border: none;
+  background: transparent;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: var(--radius-sm);
+}
+
+.expandButton:hover {
+  background-color: var(--color-primary-light);
+}
+
+.expandButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.expandButton svg {
+  display: block;
+  inline-size: 24px;
+  block-size: 24px;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-layout-16);
+  align-items: center;
+  margin-inline-start: auto;
+}
+
+/* Responsive adjustments */
+@media (width <= 768px) {
+  .container {
+    flex-wrap: wrap;
+    padding-block: var(--space-s);
+    padding-inline: var(--space-m);
+  }
+
+  .title {
+    font-size: var(--font-size-body-l);
+  }
+
+  .actions {
+    inline-size: 100%;
+    margin-inline-start: 0;
+    justify-content: stretch;
+  }
+
+  .actions button {
+    flex: 1;
+  }
+}
+
+@media (width <= 480px) {
+  .container {
+    gap: var(--space-s);
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .actions button {
+    inline-size: 100%;
+  }
+}

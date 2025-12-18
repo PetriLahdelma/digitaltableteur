@@ -1,0 +1,111 @@
+/* Component wrapper - inherits PageLayout spacing */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-layout-m, 2rem);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-layout-l, 3rem);
+  }
+}
+
+.metadata {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-s, 1.5rem);
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-component-s, 0.75rem);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-component-xs, 0.5rem);
+}
+
+.sectionTitle {
+  font-weight: 600;
+  margin-block-end: 0;
+}
+
+.toolsIcons {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-component-m, 1rem);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.toolsIcons > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text, #333);
+  transition: color 0.2s ease;
+}
+
+.toolsIcons > div:hover {
+  color: var(--color-primary, #0066cc);
+}
+
+.overviewContent {
+  line-height: var(--line-height-relaxed, 1.6);
+  color: var(--color-text, #333);
+}
+
+/* Progressive enhancement for gap */
+@supports not (gap: 1rem) {
+  .grid > * + * {
+    margin-block-start: var(--space-layout-m, 2rem);
+  }
+
+  @media (min-width: 768px) {
+    .grid > * + * {
+      margin-block-start: 0;
+      margin-inline-start: var(--space-layout-l, 3rem);
+    }
+  }
+
+  .metadata > * + * {
+    margin-block-start: var(--space-layout-s, 1.5rem);
+  }
+
+  .overview > * + * {
+    margin-block-start: var(--space-component-s, 0.75rem);
+  }
+
+  .section > * + * {
+    margin-block-start: var(--space-component-xs, 0.5rem);
+  }
+
+  .toolsIcons > * + * {
+    margin-inline-start: var(--space-component-m, 1rem);
+  }
+}
+
+/* Accessibility: Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .toolsIcons > div {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .sectionTitle {
+    font-weight: 700;
+  }
+
+  .toolsIcons > div:hover {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}

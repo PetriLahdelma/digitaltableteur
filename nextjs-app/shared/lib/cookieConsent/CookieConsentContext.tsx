@@ -1,0 +1,215 @@
+"use client";
+
+/**
+ * Cookie Consent Context Provider
+ * Global state management for cookie consent inspired by HDS pattern
+ */
+
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
+import { useTranslation } from "react-i18next";
+import type {
+  CookieConsentContextValue,
+  CookieConsentProviderProps,
+  CategoryConsent,
+  CookieCategory,
+  ConsentChangeEvent,
+} from "./types";
+import {
+  loadConsentState,
+  saveConsentState,
+  clearConsentState,
+  stateToConsents,
+  hasGivenConsent,
+  DEFAULT_CONSENTS,
+  clearMinimizedState,
+} from "./storage";
+
+const CookieConsentContext = createContext<CookieConsentContextValue | null>(
+  null,
+);
+
+/**
+ * Hook to access cookie consent context
+ * @throws Error if used outside provider
+ */
+export function useCookieConsent(): CookieConsentContextValue {
+  const context = useContext(CookieConsentContext);
+  if (!context) {
+    throw new Error(
+      "useCookieConsent must be used within CookieConsentProvider",
+    );
+  }
+  return context;
+}
+
+/**
+ * Provider component that manages consent state
+ */
+export function CookieConsentProvider({
+  children,
+  onChange,
+  autoShow = true,
+}: CookieConsentProviderProps) {
+  const { i18n } = useTranslation();
+  const [isReady, setIsReady] = useState(false);
+  const [isBannerOpen, setIsBannerOpen] = useState(false);
+  const [consents, setConsents] = useState<CategoryConsent[]>([]);
+
+  // Load initial state from localStorage
+  useEffect(() => {
+    const state = loadConsentState();
+    const initialConsents = stateToConsents(state);
+    setConsents(initialConsents);
+    setIsReady(true);
+
+    // Auto-show banner if no consent given yet
+    const hasConsent = hasGivenConsent();
+    console.log("[CookieConsent] Context initialized:", {
+      state,
+      hasConsent,
+      autoShow,
+      willShowBanner: autoShow && !hasConsent,
+      storageKey: "dt-cookie-consent",
+      storageValue:
+        typeof window !== "undefined"
+          ? localStorage.getItem("dt-cookie-consent")
+          : null,
+    });
+
+    if (autoShow && !hasConsent) {
+      setIsBannerOpen(true);
+      console.log("[CookieConsent] Banner opened - first visit detected");
+    }
+  }, [autoShow]);
+
+  /**
+   * Emit consent change event
+   */
+  const emitChange = useCallback(
+    (type: ConsentChangeEvent["type"], categories: CategoryConsent[]) => {
+      const event: ConsentChangeEvent = {
+        type,
+        categories,
+        timestamp: new Date().toISOString(),
+      };
+      onChange?.(event);
+    },
+    [onChange],
+  );
+
+  /**
+   * Update consents and save to storage
+   */
+  const updateConsents = useCallback(
+    (
+      categories: Record<CookieCategory, boolean>,
+      eventType: ConsentChangeEvent["type"],
+    ) => {
+      saveConsentState(categories, i18n.language);
+      clearMinimizedState(); // Clear minimized state when consent is given
+      const newConsents = stateToConsents(loadConsentState());
+      setConsents(newConsents);
+      emitChange(eventType, newConsents);
+      setIsBannerOpen(false);
+    },
+    [i18n.language, emitChange],
+  );
+
+  /**
+   * Accept all categories
+   */
+  const acceptAll = useCallback(() => {
+    const allAccepted: Record<CookieCategory, boolean> = {
+      essential: true,
+      analytics: true,
+      marketing: true,
+      functional: true,
+    };
+    updateConsents(allAccepted, "accept-all");
+  }, [updateConsents]);
+
+  /**
+   * Accept only essential (reject all optional)
+   */
+  const acceptEssentialOnly = useCallback(() => {
+    updateConsents(DEFAULT_CONSENTS, "accept-required");
+  }, [updateConsents]);
+
+  /**
+   * Set specific category consents (custom selection)
+   */
+  const setConsentCategories = useCallback(
+    (categories: Partial<Record<CookieCategory, boolean>>) => {
+      const state = loadConsentState();
+      const currentCategories = state?.categories || DEFAULT_CONSENTS;
+      const newCategories = {
+        ...currentCategories,
+        ...categories,
+        essential: true, // Always force essential to true
+      };
+      updateConsents(newCategories, "custom");
+    },
+    [updateConsents],
+  );
+
+  /**
+   * Revoke all consents (clear storage)
+   */
+  const revokeAll = useCallback(() => {
+    clearConsentState();
+    const resetConsents = stateToConsents(null);
+    setConsents(resetConsents);
+    emitChange("revoke", resetConsents);
+    setIsBannerOpen(true); // Re-open banner after revoke
+  }, [emitChange]);
+
+  /**
+   * Check if specific category is consented
+   */
+  const hasConsent = useCallback(
+    (category: CookieCategory): boolean => {
+      const consent = consents.find((c) => c.category === category);
+      return consent?.consented ?? false;
+    },
+    [consents],
+  );
+
+  /**
+   * Open banner modal
+   */
+  const openBanner = useCallback(() => {
+    setIsBannerOpen(true);
+  }, []);
+
+  /**
+   * Close banner modal
+   */
+  const closeBanner = useCallback(() => {
+    setIsBannerOpen(false);
+  }, []);
+
+  const value: CookieConsentContextValue = {
+    isReady,
+    consents,
+    hasConsent,
+    acceptAll,
+    acceptEssentialOnly,
+    setConsents: setConsentCategories,
+    revokeAll,
+    openBanner,
+    closeBanner,
+    isBannerOpen,
+  };
+
+  return (
+    <CookieConsentContext.Provider value={value}>
+      {children}
+    </CookieConsentContext.Provider>
+  );
+}
