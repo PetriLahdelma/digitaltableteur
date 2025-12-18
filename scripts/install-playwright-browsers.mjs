@@ -4,8 +4,15 @@ const isVercel =
   process.env.VERCEL === "1" ||
   process.env.VERCEL === "true" ||
   process.env.NOW_REGION !== undefined;
+const isCI = process.env.CI === "1" || process.env.CI === "true";
+const shouldInstall =
+  process.env.INSTALL_PLAYWRIGHT_BROWSERS === "1" ||
+  process.env.INSTALL_PLAYWRIGHT_BROWSERS === "true";
 
-if (!isVercel) {
+// Never download Playwright browsers in Vercel deploy pipelines.
+// If you need them (e.g. visual regression runs), set INSTALL_PLAYWRIGHT_BROWSERS=1
+// explicitly in the environment where tests are executed.
+if (isVercel || isCI || !shouldInstall) {
   process.exit(0);
 }
 
@@ -16,11 +23,9 @@ if (
   process.exit(0);
 }
 
-// Vitest's Playwright provider needs Playwright browsers present on Vercel.
 // Install only Chromium to keep the download smaller.
 const result = spawnSync("npx", ["playwright", "install", "chromium"], {
   stdio: "inherit",
 });
 
 process.exit(result.status ?? 1);
-

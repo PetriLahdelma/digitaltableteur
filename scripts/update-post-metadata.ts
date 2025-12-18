@@ -8,6 +8,7 @@ type Frontmatter = {
   excerpt?: string;
   readTime?: string;
   publishedAt?: string;
+  modifiedAt?: string;
   seoTitle?: string;
   seoDescription?: string;
   legacyUrl?: string;
@@ -16,6 +17,7 @@ type Frontmatter = {
   mainImageUrl?: string;
   mainImageAlt?: string;
   mainImageCaption?: string;
+  tags?: string[];
 };
 
 type PostMeta = Required<Pick<Frontmatter, "title" | "slug">> &
@@ -23,7 +25,12 @@ type PostMeta = Required<Pick<Frontmatter, "title" | "slug">> &
 
 const ROOT = process.cwd();
 const POSTS_DIR = path.join(ROOT, "content", "posts");
-const OUTPUT = path.join(ROOT, "nextjs-app", "app", "blog", "postMetadata.ts");
+const OUTPUTS = [
+  // Next.js App Router (production)
+  path.join(ROOT, "app", "blog", "postMetadata.ts"),
+  // Legacy Next.js folder (still referenced by some tooling/docs)
+  path.join(ROOT, "nextjs-app", "app", "blog", "postMetadata.ts"),
+];
 
 const readFrontmatter = (filePath: string): PostMeta => {
   const raw = fs.readFileSync(filePath, "utf8");
@@ -36,6 +43,7 @@ const readFrontmatter = (filePath: string): PostMeta => {
     excerpt: fm.excerpt,
     readTime: fm.readTime,
     publishedAt: fm.publishedAt,
+    modifiedAt: fm.modifiedAt,
     seoTitle: fm.seoTitle,
     seoDescription: fm.seoDescription,
     legacyUrl: fm.legacyUrl,
@@ -44,6 +52,7 @@ const readFrontmatter = (filePath: string): PostMeta => {
     mainImageUrl: fm.mainImageUrl,
     mainImageAlt: fm.mainImageAlt,
     mainImageCaption: fm.mainImageCaption,
+    tags: fm.tags,
   };
 };
 
@@ -76,6 +85,7 @@ export type BlogPostMeta = {
   excerpt?: string;
   readTime?: string;
   publishedAt?: string;
+  modifiedAt?: string;
   seoTitle?: string;
   seoDescription?: string;
   legacyUrl?: string;
@@ -84,6 +94,7 @@ export type BlogPostMeta = {
   mainImageUrl?: string;
   mainImageAlt?: string;
   mainImageCaption?: string;
+  tags?: string[];
 };
 
 export const posts: BlogPostMeta[] = [
@@ -94,8 +105,12 @@ export const getPostMetaBySlug = (slug?: string | null) =>
   slug ? posts.find((post) => post.slug === slug) : undefined;
 `;
 
-  fs.writeFileSync(OUTPUT, fileContent, "utf8");
-  console.log(`Wrote ${posts.length} posts to ${path.relative(ROOT, OUTPUT)}`);
+  for (const outputPath of OUTPUTS) {
+    fs.writeFileSync(outputPath, fileContent, "utf8");
+    console.log(
+      `Wrote ${posts.length} posts to ${path.relative(ROOT, outputPath)}`,
+    );
+  }
 };
 
 generate();
