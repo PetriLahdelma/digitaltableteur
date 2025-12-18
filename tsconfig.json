@@ -33,5 +33,13 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "src", "vite-app", "shared_backup_20251123"]
+  "exclude": [
+    "node_modules",
+    "src",
+    "vite-app",
+    "shared_backup_20251123",
+    "app",
+    "api-legacy-vercel-functions",
+    "providers"
+  ]
 }
