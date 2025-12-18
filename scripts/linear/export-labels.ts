@@ -41,7 +41,7 @@ async function fetchLabels() {
   }> = [];
   let after: string | null = null;
   do {
-    const res = await fetch("https://api.linear.app/graphql", {
+    const res: Response = await fetch("https://api.linear.app/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,13 +49,13 @@ async function fetchLabels() {
       },
       body: JSON.stringify({ query, variables: { first: 250, after } }),
     });
-    const json = await res.json();
+    const json: any = await res.json();
     if (!res.ok || json.errors) {
       throw new Error(
         `Failed to fetch labels: ${JSON.stringify(json.errors ?? json, null, 2)}`,
       );
     }
-    const payload = json.data.issueLabels;
+    const payload: any = json.data.issueLabels;
     labels.push(...payload.nodes);
     after = payload.pageInfo.hasNextPage ? payload.pageInfo.endCursor : null;
   } while (after);
