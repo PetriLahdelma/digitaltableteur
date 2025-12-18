@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 /**
- * Fetches the Next.js sitemap (app/sitemap.ts) and writes it to nextjs-app/public/sitemap.xml.
- * Keeps the legacy Vite sitemap script intact.
+ * Fetches the Next.js sitemap (app/sitemap.ts) and writes it to a non-conflicting
+ * file under nextjs-app/public/.
+ *
+ * IMPORTANT:
+ * - Do NOT write to `public/sitemap.xml` because it can shadow Next.js MetadataRoute
+ *   (`app/sitemap.ts`) and cause stale/partial sitemaps in production.
  */
 import fs from "fs";
 import path from "path";
@@ -12,7 +16,7 @@ const BASE =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://digitaltableteur.com";
 const TARGET = url.resolve(BASE, "/sitemap.xml");
-const OUTPUT = path.join(process.cwd(), "nextjs-app/public/sitemap.xml");
+const OUTPUT = path.join(process.cwd(), "nextjs-app/public/sitemap-next.xml");
 
 function fetchToString(target) {
   return new Promise((resolve, reject) => {

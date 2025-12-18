@@ -71,15 +71,15 @@ const SENSITIVE_KEYWORDS = [
 
 // Patterns that strongly indicate extraction attempts
 const EXTRACTION_PATTERNS = [
-  /ignore\s+(previous|all|your)\s+(instruction|prompt|rule|directive)/i,
-  /what\s+(are|were)\s+your\s+(instruction|prompt|rule|directive|guideline)/i,
-  /show\s+(me\s+)?(your|the)\s+(instruction|prompt|system|rule|log)/i,
+  /ignore\s+(previous|all|your)\s+(instruction|prompt|rule|directive)s?/i,
+  /what\s+(are|were)\s+your\s+(instruction|prompt|rule|directive|guideline|system)s?\s*(instruction|prompt|rule|directive|guideline)?s?/i,
+  /show\s+(me\s+)?(your|the)\s+(instruction|prompt|system|rule|log)s?/i,
   /tell\s+me\s+(about\s+)?(your|the)\s+(instruction|prompt|system|configuration)/i,
-  /output\s+(your|the)\s+(environment|variable|key|token|secret|config)/i,
-  /repeat\s+(your|the)\s+(instruction|prompt|system|rule)/i,
+  /output\s+(your|the)\s+(environment|variable|key|token|secret|config)s?/i,
+  /repeat\s+(your|the)\s+(instruction|prompt|system|rule)s?/i,
   /summarize\s+(your|the)\s+(instruction|prompt|system)/i,
-  /list\s+(your|all)\s+(environment|variable|key|setting|config)/i,
-  /display\s+(your|the)\s+(environment|variable|key|secret|log)/i,
+  /list\s+(your|all)\s+(environment|variable|key|setting|config)s?/i,
+  /display\s+(your|the)\s+(environment|variable|key|secret|log)s?/i,
   /(env|environment)\s*(variable|var)s?.*=/i,
   /console\.(log|debug|error|warn)/i,
   /process\.env/i,
@@ -212,8 +212,17 @@ export function stripSecretsFromResponse(response: string): string {
   // Remove anything that looks like environment variables
   let cleaned = response.replace(/[A-Z_]{3,}=[^\s\n]*/g, "[REDACTED]");
 
-  // Remove anything that looks like API keys
+  // Remove anything that looks like API keys (32+ chars)
   cleaned = cleaned.replace(/\b[a-zA-Z0-9_-]{32,}\b/g, "[REDACTED]");
+
+  // Remove shorter secret-like strings (15+ chars with underscores/hyphens)
+  cleaned = cleaned.replace(/\b[a-zA-Z0-9_-]{15,}\b/g, (match) => {
+    // Only redact if it contains both letters, numbers, and special chars
+    if (/[a-zA-Z]/.test(match) && /[0-9]/.test(match) && /[_-]/.test(match)) {
+      return "[REDACTED]";
+    }
+    return match;
+  });
 
   // Remove potential tokens
   cleaned = cleaned.replace(
