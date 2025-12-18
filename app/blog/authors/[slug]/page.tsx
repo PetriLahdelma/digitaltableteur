@@ -16,19 +16,7 @@ export async function generateMetadata({
   const author = getAuthorBySlug(slug);
   if (!author) return {};
 
-  // Convert imageUrl to string for metadata
-  const imageUrlString =
-    typeof author.imageUrl === "string"
-      ? author.imageUrl
-      : author.imageUrl &&
-          typeof author.imageUrl === "object" &&
-          "default" in author.imageUrl
-        ? author.imageUrl.default
-        : author.imageUrl &&
-            typeof author.imageUrl === "object" &&
-            "src" in author.imageUrl
-          ? author.imageUrl.src
-          : "/logo512.png";
+  const imageUrlString = author.imageUrl ?? "/logo512.png";
 
   const title = `${author.name} | Digitaltableteur`;
   const description =

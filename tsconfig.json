@@ -38,10 +38,22 @@
     "src",
     "vite-app",
     "shared_backup_20251123",
-    "app/**",
+    "app",
     "api-legacy-vercel-functions",
     "providers/**",
     "nextjs-app/app",
-    "nextjs-app/providers"
+    "nextjs-app/providers",
+    "digitaltableteur-blog",
+    "nextjs-app/digitaltableteur-blog",
+    "nextjs-app/src",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.tsx",
+    ".storybook",
+    "storybook-static",
+    "coverage",
+    "dist",
+    "__visual__"
   ]
 }
