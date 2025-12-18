@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { posts } from "../blog/postMetadata";
+import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -25,8 +26,32 @@ const staticPages: Array<{ path: string; title: string; meta?: string }> = [
 export const dynamic = "force-static";
 
 export async function GET() {
+  const pseoCatalog = getPseoCatalog();
+  const pseoLeafPages = getPseoLeafPages();
+
   const keyPages = [
     ...staticPages,
+    { path: "/pseo", title: "Programmatic Guides" },
+    ...pseoCatalog.services.map((item) => ({
+      path: `/pseo/services/${item.slug}`,
+      title: `PSEO Service: ${item.name}`,
+      meta: item.shortDescription,
+    })),
+    ...pseoCatalog.stacks.map((item) => ({
+      path: `/pseo/stacks/${item.slug}`,
+      title: `PSEO Stack: ${item.name}`,
+      meta: item.shortDescription,
+    })),
+    ...pseoCatalog.audiences.map((item) => ({
+      path: `/pseo/audiences/${item.slug}`,
+      title: `PSEO Audience: ${item.name}`,
+      meta: item.shortDescription,
+    })),
+    ...pseoLeafPages.map((page) => ({
+      path: `/pseo/${page.slug}`,
+      title: page.title,
+      meta: page.description,
+    })),
     ...posts.map((post) => ({
       path: `/blog/${post.slug}`,
       title: post.title,
