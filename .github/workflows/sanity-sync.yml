@@ -33,7 +33,7 @@ jobs:
           SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: sync blog posts from Sanity"
           branch: ${{ github.ref }}
