@@ -46,7 +46,8 @@ The publishing process handles:
 2. **Metadata Generation** (`scripts/update-post-metadata.ts`)
    - Scans all MDX files in `content/posts/`
    - Extracts frontmatter (title, slug, publishedAt, etc.)
-   - Generates `nextjs-app/app/blog/postMetadata.ts`
+   - Generates `app/blog/postMetadata.ts` (production Next.js App Router)
+   - Also updates `nextjs-app/app/blog/postMetadata.ts` (legacy/compat)
 
 3. **Routing Setup** (automatic via Next.js)
    - MDX files are automatically imported via `import.meta.glob` in `nextjs-app/shared/data/blogPosts.ts`
@@ -92,7 +93,7 @@ Option A: **Manual Trigger**
 
 ```bash
 npm run sanity:publish           # Sync all articles
-git add content/posts nextjs-app/app/blog/postMetadata.ts
+git add content/posts app/blog/postMetadata.ts nextjs-app/app/blog/postMetadata.ts
 git commit -m "feat: publish new article(s)"
 git push
 ```
@@ -108,7 +109,7 @@ Option B: **Webhook Automation** (Advanced)
 ### Article Not Appearing
 
 1. Check MDX file exists: `ls -lh content/posts/<slug>.mdx`
-2. Verify metadata generated: `grep "<slug>" nextjs-app/app/blog/postMetadata.ts`
+2. Verify metadata generated: `grep "<slug>" app/blog/postMetadata.ts`
 3. Check browser console for import errors
 4. Restart dev server: `npm run dev`
 
@@ -137,7 +138,8 @@ npx tsx scripts/update-post-metadata.ts
 | File                                  | Purpose                | Auto-Updated |
 | ------------------------------------- | ---------------------- | ------------ |
 | `content/posts/*.mdx`                 | Article content        | ✅ Yes       |
-| `nextjs-app/app/blog/postMetadata.ts` | Blog routing metadata  | ✅ Yes       |
+| `app/blog/postMetadata.ts`            | Blog routing metadata  | ✅ Yes       |
+| `nextjs-app/app/blog/postMetadata.ts` | Legacy blog metadata   | ✅ Yes       |
 | `nextjs-app/shared/data/blogPosts.ts` | MDX imports (fallback) | ❌ Manual    |
 
 ## Environment Variables

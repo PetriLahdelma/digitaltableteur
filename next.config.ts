@@ -19,7 +19,8 @@ const csp = isDev
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
       "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://api.resend.com wss: ws:",
-      "frame-src 'self'",
+      // Allow embedding trusted media providers in MDX (e.g. YouTube) during local dev.
+      "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com https://player.vimeo.com",
       "media-src 'self' https: data:",
       "object-src 'none'",
     ].join("; ")
@@ -32,7 +33,8 @@ const csp = isDev
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
       "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://vercel.live https://api.resend.com wss:",
-      "frame-src https://vercel.live",
+      // Allow Vercel preview tooling + trusted embedded media providers (MDX embeds).
+      "frame-src 'self' https://vercel.live https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com https://player.vimeo.com",
       "media-src 'self' https: data:",
       "object-src 'none'",
       "base-uri 'self'",

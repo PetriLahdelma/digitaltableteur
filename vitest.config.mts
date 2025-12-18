@@ -14,7 +14,13 @@ const isVercel =
   process.env.VERCEL === "1" ||
   process.env.VERCEL === "true" ||
   process.env.NOW_REGION !== undefined;
+const isCI = process.env.CI === "1" || process.env.CI === "true";
 const shouldSkipStorybookTests =
+  // Vercel deploy builds shouldn't run Storybook/Vitest addon projects.
+  // They rely on Storybook config + (optionally) Playwright browsers, and are
+  // both slow and flaky in that environment.
+  isVercel ||
+  isCI ||
   process.env.SKIP_STORYBOOK_TESTS === "1" ||
   process.env.SKIP_STORYBOOK_TESTS === "true";
 const shouldEnableStorybookBrowserTests =
