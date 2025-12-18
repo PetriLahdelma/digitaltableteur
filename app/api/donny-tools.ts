@@ -7,7 +7,7 @@ import {
   WEEKLY_HOURS,
   isOpenAt,
   type DayHours,
-} from "../../nextjs-app/shared/data/openHours";
+} from "@/nextjs-app/shared/data/openHours";
 
 // ToolSet type matches ai package's expected tool shape
 type ToolMap = Record<string, Tool<any, any>>;

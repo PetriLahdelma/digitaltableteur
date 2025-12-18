@@ -1,10 +1,10 @@
-import Link from "next/link";
-
 import type { PseoCatalogItem, PseoLeafPage } from "@/lib/pseo/types";
 
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
+import Card from "@dt/Card";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
+import { PseoPillarMetaBadgeLinks } from "./PseoPillarMetaBadgeLinks";
 import styles from "./PseoPillarPage.module.css";
 
 export type PseoPillarKind = "services" | "stacks" | "audiences";
@@ -26,6 +26,17 @@ export function PseoPillarPage({
   leafPages: PseoLeafPage[];
   siblingItems: PseoCatalogItem[];
 }) {
+  const metaLinks = [
+    { href: "/pseo", label: "All guides" },
+    ...siblingItems
+      .filter((sibling) => sibling.slug !== item.slug)
+      .slice(0, 6)
+      .map((sibling) => ({
+        href: `/pseo/${kind}/${sibling.slug}`,
+        label: `${kindTitle[kind]}: ${sibling.name}`,
+      })),
+  ];
+
   return (
     <PageLayout as="main" maxWidth="lg" spacing="comfortable">
       <div className={styles.root}>
@@ -36,43 +47,35 @@ export function PseoPillarPage({
           {item.shortDescription}
         </Text>
 
-        <div className={styles.metaLinks} aria-label="Explore related pillars">
-          <Link href="/pseo" className={styles.metaLink}>
-            All guides
-          </Link>
-          {siblingItems
-            .filter((sibling) => sibling.slug !== item.slug)
-            .slice(0, 6)
-            .map((sibling) => (
-              <Link
-                key={sibling.slug}
-                href={`/pseo/${kind}/${sibling.slug}`}
-                className={styles.metaLink}
-              >
-                {kindTitle[kind]}: {sibling.name}
-              </Link>
-            ))}
-        </div>
+        <PseoPillarMetaBadgeLinks
+          links={metaLinks}
+          className={styles.metaLinks}
+          linkClassName={styles.metaLink}
+        />
 
         <section aria-label="Guides" className={styles.list}>
           {leafPages.map((page) => (
-            <Link
+            <Card
               key={page.slug}
-              href={`/pseo/${page.slug}`}
-              className={styles.itemLink}
-            >
-              <Title
-                terminals="sans"
-                level={2}
-                size="XS"
-                className={styles.itemTitle}
-              >
-                {page.title}
-              </Title>
-              <Text terminals="sans" className={styles.itemDescription}>
-                {page.description}
-              </Text>
-            </Link>
+              className={styles.card}
+              link={`/pseo/${page.slug}`}
+              linkLabel={`Open ${page.title}`}
+              hoverable
+              size="full"
+              title={page.title}
+              titleProps={{
+                terminals: "sans",
+                level: 3,
+                size: "S",
+                as: "h3",
+              }}
+              description={page.description}
+              descriptionProps={{
+                size: "S",
+                as: "p",
+                className: styles.cardDescription,
+              }}
+            />
           ))}
         </section>
       </div>

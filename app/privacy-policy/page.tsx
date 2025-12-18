@@ -1,4 +1,4 @@
-import { PrivacyPolicyPage } from "../../nextjs-app/shared/components/pages/PrivacyPolicyPage";
+import { PrivacyPolicyPage } from "@dt-pages/PrivacyPolicyPage";
 
 // Cache for an hour; content is static
 export const revalidate = 3600;
