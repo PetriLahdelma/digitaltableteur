@@ -1,0 +1,55 @@
+.grid {
+  display: grid;
+  width: 100%;
+  grid-auto-rows: minmax(6.25rem, auto); /* Converted 100px to rem */
+}
+
+/* Example classes for nested grids */
+
+.nested {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.gridItem {
+  display: flex;
+  padding: 1rem; /* Converted 16px to rem */
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+/* Added support for spanning */
+
+.gridItemSpan2 {
+  grid-column: span 2;
+}
+
+.gridItemSpan3 {
+  grid-column: span 3;
+}
+
+.gridItemSpan4 {
+  grid-column: span 4;
+}
+
+.gridItemSpan5 {
+  grid-column: span 5;
+}
+
+.gridRowSpan2 {
+  grid-row: span 2;
+}
+
+.gridRowSpan3 {
+  grid-row: span 3;
+}
+
+.gridRowSpan4 {
+  grid-row: span 4;
+}
+
+.gridRowSpan5 {
+  grid-row: span 5;
+}

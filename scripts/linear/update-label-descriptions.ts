@@ -72,11 +72,19 @@ async function fetchLinear<T>(body: object): Promise<T> {
 }
 
 async function getAllLabels() {
-  const labels: Array<{ id: string; name: string; description?: string | null }> =
-    [];
+  const labels: Array<{
+    id: string;
+    name: string;
+    description?: string | null;
+  }> = [];
   let after: string | null = null;
   do {
-    const data = await fetchLinear<{
+    const data: {
+      issueLabels: {
+        nodes: Array<{ id: string; name: string; description?: string | null }>;
+        pageInfo: { hasNextPage: boolean; endCursor: string | null };
+      };
+    } = await fetchLinear<{
       issueLabels: {
         nodes: Array<{ id: string; name: string; description?: string | null }>;
         pageInfo: { hasNextPage: boolean; endCursor: string | null };

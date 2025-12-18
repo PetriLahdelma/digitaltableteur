@@ -98,6 +98,14 @@ async function main() {
       state: { id: string; name: string };
       priority: number;
       labels: { nodes: Array<{ name: string }> };
+      stateHistory: {
+        nodes: Array<{
+          fromState: { name: string } | null;
+          toState: { name: string };
+          createdAt: string;
+          actor: { name: string } | null;
+        }>;
+      };
     };
   }>({
     query: `
@@ -122,6 +130,20 @@ async function main() {
               name
             }
           }
+          stateHistory {
+            nodes {
+              fromState {
+                name
+              }
+              toState {
+                name
+              }
+              createdAt
+              actor {
+                name
+              }
+            }
+          }
         }
       }
     `,
@@ -140,6 +162,17 @@ async function main() {
   console.log(
     `   Labels: ${issue.labels.nodes.map((l) => l.name).join(", ") || "None"}`,
   );
+
+  if (issue.stateHistory.nodes.length > 0) {
+    console.log(`\n📊 State History:`);
+    issue.stateHistory.nodes.forEach((history) => {
+      const from = history.fromState?.name || "Created";
+      const to = history.toState.name;
+      const date = new Date(history.createdAt).toLocaleDateString();
+      const actor = history.actor?.name || "System";
+      console.log(`   ${from} → ${to} (${date}, by ${actor})`);
+    });
+  }
 }
 
 main().catch((error) => {

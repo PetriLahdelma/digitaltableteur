@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Rotating Checker Cube</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #fff; /* Page background */
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      // --- Scene setup ---
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000,
+      );
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      // Make canvas background white
+      renderer.setClearColor(0xffffff, 1);
+
+      document.body.appendChild(renderer.domElement);
+
+      // --- Create 3x3 checkerboard texture ---
+      function createCheckerTexture() {
+        const size = 300;
+        const squares = 3;
+        const squareSize = size / squares;
+
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+
+        const blue = "#0079ce";
+        const orange = "#ff5400";
+
+        for (let y = 0; y < squares; y++) {
+          for (let x = 0; x < squares; x++) {
+            ctx.fillStyle = (x + y) % 2 === 0 ? blue : orange;
+            ctx.fillRect(
+              x * squareSize,
+              y * squareSize,
+              squareSize,
+              squareSize,
+            );
+          }
+        }
+
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.magFilter = THREE.NearestFilter;
+        texture.minFilter = THREE.NearestFilter;
+        return texture;
+      }
+
+      const checkerTex = createCheckerTexture();
+
+      // --- Cube ---
+      const geometry = new THREE.BoxGeometry(2, 2, 2);
+      const material = new THREE.MeshBasicMaterial({ map: checkerTex });
+      const cube = new THREE.Mesh(geometry, [
+        material,
+        material,
+        material,
+        material,
+        material,
+        material,
+      ]);
+      scene.add(cube);
+
+      // --- Camera ---
+      camera.position.z = 4;
+
+      // --- Seamless Loop (4 seconds for full rotation) ---
+      const loopDuration = 4; // seconds
+
+      function animate(time) {
+        const t = (time * 0.001) % loopDuration; // seconds
+        const progress = t / loopDuration; // 0 → 1
+
+        // Perfect 360° loop
+        cube.rotation.y = progress * Math.PI * 2;
+        cube.rotation.x = progress * Math.PI * 2 * 0.5; // optional tilt
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+
+      // --- Resize handling ---
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    </script>
+  </body>
+</html>

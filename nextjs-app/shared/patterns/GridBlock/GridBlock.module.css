@@ -1,0 +1,95 @@
+.grid1Col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-layout-32, 2rem);
+}
+
+.grid2Col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-layout-32, 2rem);
+}
+
+.noGap {
+  gap: 0;
+}
+
+.smallGap {
+  gap: var(--space-layout-16, 1rem);
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.innerPadding {
+  padding: var(--space-layout-32, 2rem);
+}
+
+.caption {
+  display: none;
+}
+
+/* Ensure padding on desktop when noGap is used */
+.noGap .innerPadding {
+  padding: var(--space-layout-24, 1.5rem);
+}
+
+/* Fallback for older browsers without gap support */
+@supports not (gap: 1rem) {
+  .grid1Col > .col + .col {
+    margin-block-start: var(--space-layout-32, 2rem);
+  }
+
+  .grid2Col > .col + .col {
+    margin-inline-start: var(--space-layout-32, 2rem);
+  }
+
+  .noGap > .col + .col {
+    margin: 0;
+  }
+
+  .smallGap > .col + .col {
+    margin-inline-start: var(--space-layout-16, 1rem);
+  }
+}
+
+/* Responsive breakpoints */
+/* Tablet and Mobile: stack to single column with vertical spacing */
+@media (width < 1024px) {
+  .grid2Col {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+
+  .grid2Col.responsiveGap {
+    gap: 2rem;
+    row-gap: 2rem;
+  }
+
+  .grid2Col .col + .col {
+    margin-inline-start: 0;
+    margin-block-start: 2rem;
+  }
+
+  .grid2Col.responsiveGap .col + .col {
+    margin-inline-start: 0;
+    margin-block-start: 1rem;
+  }
+
+  .innerPadding {
+    padding: 0;
+  }
+
+  .noGap .innerPadding {
+    padding: 0;
+  }
+
+  .caption {
+    display: block;
+  }
+}

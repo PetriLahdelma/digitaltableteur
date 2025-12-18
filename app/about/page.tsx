@@ -1,0 +1,52 @@
+import type { Metadata } from "next";
+import Script from "next/script";
+
+import { AboutPage } from "../../nextjs-app/shared/components/pages/AboutPage";
+import { getPersonSchema, stringifyJsonLd } from "@/app/lib/structuredData";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const title = "About | Digitaltableteur";
+  const description =
+    "Meet Petri Lahdelma, Design Systems Specialist and DesignOps Engineer. Expert in React, TypeScript, Figma, and AI-powered design workflows. Based in Finland.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [
+        {
+          url: "/logo512.png",
+          width: 512,
+          height: 512,
+          alt: "Digitaltableteur Logo",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/logo512.png"],
+    },
+  };
+}
+
+export const revalidate = 3600;
+
+export default function About() {
+  return (
+    <>
+      <Script
+        id="schema-person"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: stringifyJsonLd(getPersonSchema()),
+        }}
+      />
+      <AboutPage />
+    </>
+  );
+}

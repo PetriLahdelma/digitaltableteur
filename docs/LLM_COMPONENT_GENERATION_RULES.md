@@ -2,8 +2,8 @@
 
 > Comprehensive guidelines for AI-assisted React component generation following project conventions, design system patterns, and accessibility standards.
 
-**Last Updated:** November 20, 2025  
-**Version:** 1.0.0
+**Last Updated:** November 23, 2025  
+**Version:** 2.0.0 (Next.js Migration)
 
 ---
 
@@ -30,9 +30,16 @@
 
 - Use design tokens from `variables.css` for spacing, colors, typography
 - Check `docs/2026_PRD.md` for feature requirements
-- Review existing components in `src/components/` for similar patterns
+- Review existing components in `shared/components/` (cross-platform) or `src/components/` (Vite-only)
 - Never hardcode values that should be tokens (colors, spacing, font sizes)
 - Token adoption is mandatory - no exceptions
+
+**Next.js Migration Context (November 2025):**
+
+- **Primary platform:** Next.js 15.5.6 App Router (`nextjs-app/`)
+- **Legacy platform:** Vite-based SPA (maintained for Storybook/testing)
+- **Shared components:** Located in `shared/components/` - accessible to both platforms via symlinks
+- **Platform-specific code:** Use `nextjs-app/app/` for Next.js routes, `src/` for Vite-only code
 
 **Example:**
 
@@ -50,6 +57,51 @@
 }
 ```
 
+### Rule 1.1.1 - Component Reuse (CRITICAL)
+
+**ALWAYS reuse existing components instead of creating raw HTML elements:**
+
+- **Typography Components:**
+  - ❌ NEVER use raw `<h1>`, `<h2>`, `<h3>`, etc.
+  - ✅ ALWAYS use `<Title level={1}>`, `<Title level={2}>`, etc.
+  - ❌ NEVER use raw `<p>` tags
+  - ✅ ALWAYS use `<Text as="p">` or `<Text as="span">`
+  - ❌ NEVER use raw `<img>`.
+  - ✅ ALWAYS use `NextJS <Image>` with appropriate settings.
+
+- **Other Existing Components:**
+  - Check `src/components/index.ts` and `shared/components/` for available components
+  - Use `Icon` component instead of raw SVG or emoji
+  - Use `Button` component instead of raw `<button>` for styled buttons
+  - Use `Card` component for card layouts
+  - Prefer composition of existing components over creating new patterns
+
+**Example:**
+
+```tsx
+/* ❌ BAD - Raw HTML elements */
+<div>
+  <h2 className={styles.title}>Title</h2>
+  <p className={styles.text}>Body text</p>
+  <button className={styles.button}>Click</button>
+</div>
+
+/* ✅ GOOD - Reusing design system components */
+<Card>
+  <Title level={2} terminals="sans">Title</Title>
+  <Text as="p" terminals="sans">Body text</Text>
+  <Button variant="primary">Click</Button>
+</Card>
+```
+
+**Benefits of component reuse:**
+
+- Consistent typography and styling across the app
+- Automatic theme support (Light, Dark, HC modes)
+- Built-in accessibility features
+- Reduces CSS duplication
+- Ensures design token compliance
+
 ### Rule 1.2 - Component Structure (Non-Negotiable)
 
 **Every component MUST include ALL these files:**
@@ -63,6 +115,15 @@ ComponentName/
 └── index.ts                   # Re-export: export { default } from './ComponentName'
 ```
 
+**Component Location Strategy:**
+
+- **Shared components** (usable in both Next.js and Vite): Place in `shared/components/`
+- **Vite-only components** (legacy): Keep in `src/components/`
+- **Next.js pages/routes**: Place in `nextjs-app/app/[route]/page.tsx`
+- **Next.js-specific utilities**: Place in `nextjs-app/components/` or `nextjs-app/lib/`
+
+**Default: Always use `shared/components/` for new UI components unless there's a platform-specific reason.**
+
 **Never create standalone files. Always create the complete folder structure.**
 
 ### Rule 1.3 - TypeScript Strictness
@@ -73,6 +134,26 @@ ComponentName/
 - Use `React.ReactNode` for children
 - Complex types go in separate interfaces
 - Props should be explicitly typed, not inferred
+
+### Rule 1.4 - Design System Usage Rules
+
+This clarifies how to correctly implement components and styles from the digitaltableteur design system.
+
+**Component Architecture & Styling**
+
+- **Mobile First:** Always consider mobile use first. This consideration saves a lot of hassle later on.
+- **Design System First:** Always use existing components from the your-design-system package. Do not rebuild them.
+- **Layout Primitives:** Always use layout components from digitaltableteur (e.g., Grid, FlexBox, PageLayout). Do not use raw divs with custom flexbox CSS.
+- **Styling with Tokens:** Only use classes that are configured in our design system. Prefer our custom theme utilities (e.g., `color-primary`) over introducing new colors.
+- **Icons:** Use the `Icon` component from digitaltableteur, passing the appropriate icon name. Do not import raw SVGs or use system emojis. Digitaltableteur Icon component uses Phosphor icons.
+- **Props:** Component props must be defined with a TypeScript interface. When in doubt, use the TypeScript language server MCP as a source of knowledge on TypeScript patterns.
+
+**What to Avoid**
+
+- **No Hardcoded Values:** Do not use hardcoded strings (use translation keys), URLs (use config files), or styling values (use tokens).
+- **No Inconsistent Naming:** Follow the project's naming conventions.
+- **No Ignoring Errors:** Do not ignore TypeScript errors.
+- **No Unnecessary DOM:** Avoid unnecessary div wrappers.
 
 ---
 
@@ -128,6 +209,9 @@ ComponentName/
 - Text: `var(--color-text/title)`, `var(--inverted-text-color)`
 - Backgrounds: `var(--main-body-background-color)`, `var(--color-light-bg)`
 - **Never create new color variables unless specifically requested**
+- **CRITICAL:** Never use fallback values in var() - e.g., `var(--color-primary, #00f)` is FORBIDDEN
+- Always trust tokens exist: `var(--color-primary)` not `var(--color-primary, blue)`
+- If a token is missing, add it to `variables.css`, don't work around it with fallbacks
 
 **Layout:**
 
@@ -646,10 +730,81 @@ const Component = () => {
 3. Suspense for async boundaries
 4. Error boundaries for graceful failures
 
+**Next.js App Router: Client vs Server Components**
+
+**Use Server Components (default - NO `"use client"`):**
+
+- Static content rendering
+- Data fetching with async/await
+- Accessing backend resources directly
+- SEO-critical content
+- Reducing client-side JavaScript
+
+**Use Client Components (add `"use client"` directive):**
+
+- React hooks (useState, useEffect, useContext, etc.)
+- Event handlers (onClick, onChange, onSubmit)
+- Browser APIs (window, document, localStorage)
+- Third-party libraries requiring browser context
+- Interactive UI (forms, modals, dropdowns)
+- Real-time features (WebSockets, timers)
+
+**Client Component Example:**
+
+```typescript
+"use client";
+
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import styles from "./Component.module.css";
+
+interface ComponentProps {
+  initialValue?: string;
+}
+
+const Component: React.FC<ComponentProps> = ({ initialValue = "" }) => {
+  const { t } = useTranslation();
+  const [value, setValue] = useState(initialValue);
+
+  return (
+    <div className={styles.component}>
+      <button onClick={() => setValue("clicked")}>
+        {t("component.action")}
+      </button>
+    </div>
+  );
+};
+
+Component.displayName = "Component";
+export default Component;
+```
+
+**Server Component Example (for page routes):**
+
+```typescript
+import type { Metadata } from "next";
+import { ComponentFromShared } from "../../shared/components/Component/Component";
+
+export const metadata: Metadata = {
+  title: "Page Title",
+  description: "Page description for SEO",
+};
+
+export default function Page() {
+  return <ComponentFromShared />;
+}
+```
+
+**Shared Components Strategy:**
+
+- Components in `shared/` should be platform-agnostic
+- Add `"use client"` if component uses hooks/events (required for Next.js)
+- Ensure compatibility with both Vite (react-router) and Next.js patterns
+
 **Component composition:**
 
 ```typescript
-const Component = React.FC<Props> = ({ children, ...props }) => {
+const Component: React.FC<Props> = ({ children, ...props }) => {
   // Keep render logic simple
   // Extract complex logic to hooks
   // Use early returns for conditional rendering
@@ -674,7 +829,7 @@ Component.displayName = "Component";
 
 ### Rule 6.1 - Semantic HTML First
 
-**ALWAYS use semantic HTML elements:**
+**ALWAYS use semantic HTML elements to ensure proper document structure, accessibility, and SEO:**
 
 ```tsx
 /* ❌ BAD */
@@ -694,13 +849,184 @@ Component.displayName = "Component";
 
 **Semantic elements to prefer:**
 
-- `<button>` over `<div onClick>`
-- `<nav>` for navigation
-- `<main>` for main content
-- `<article>` for independent content
-- `<section>` for thematic grouping
+- `<button>` over `<div onClick>` - for interactive actions
+- `<nav>` for navigation landmarks
+- `<main>` for primary page content (one per page)
+- `<article>` for independent, self-contained content
+- `<section>` for thematic grouping of related content
 - `<header>`, `<footer>` for structural headers/footers
-- `<h1>`-`<h6>` for headings (maintain hierarchy)
+- `<h1>`-`<h6>` for headings (maintain hierarchy, only one `<h1>` per page)
+- `<aside>` for tangentially related content (sidebars, callouts)
+- `<figure>` and `<figcaption>` for images with captions
+- `<time>` for dates and times with `datetime` attribute
+- `<address>` for contact information
+
+**Five Real-World Examples:**
+
+**Example 1: Hero Section**
+
+```tsx
+/* ❌ BAD - Generic divs everywhere */
+<div className={styles.hero}>
+  <div className={styles.heroContent}>
+    <div className={styles.title}>Welcome</div>
+    <div className={styles.description}>Learn more about us</div>
+    <div className={styles.cta} onClick={handleClick}>Get Started</div>
+  </div>
+</div>
+
+/* ✅ GOOD - Semantic structure */
+<section className={styles.hero} aria-labelledby="hero-title">
+  <header className={styles.heroContent}>
+    <h1 id="hero-title" className={styles.title}>Welcome</h1>
+    <p className={styles.description}>Learn more about us</p>
+    <Button variant="primary" onClick={handleClick}>Get Started</Button>
+  </header>
+</section>
+```
+
+**Example 2: Blog Post Card**
+
+```tsx
+/* ❌ BAD - Flat div structure */
+<div className={styles.card}>
+  <div className={styles.image}>
+    <img src={post.image} alt={post.title} />
+  </div>
+  <div className={styles.title}>{post.title}</div>
+  <div className={styles.date}>{post.publishedAt}</div>
+  <div className={styles.excerpt}>{post.excerpt}</div>
+  <div className={styles.link} onClick={handleRead}>Read More</div>
+</div>
+
+/* ✅ GOOD - Article with proper semantics */
+<article className={styles.card}>
+  <figure className={styles.imageWrapper}>
+    <Image src={post.image} alt={post.title} width={400} height={300} />
+  </figure>
+  <header>
+    <h2 className={styles.title}>{post.title}</h2>
+    <time dateTime={post.publishedAt} className={styles.date}>
+      {formatDate(post.publishedAt)}
+    </time>
+  </header>
+  <p className={styles.excerpt}>{post.excerpt}</p>
+  <footer>
+    <Button variant="tertiary" href={`/blog/${post.slug}`}>
+      Read More
+    </Button>
+  </footer>
+</article>
+```
+
+**Example 3: Navigation Menu**
+
+```tsx
+/* ❌ BAD - Div-based navigation */
+<div className={styles.menu}>
+  <div className={styles.menuItem} onClick={goHome}>Home</div>
+  <div className={styles.menuItem} onClick={goAbout}>About</div>
+  <div className={styles.menuItem} onClick={goContact}>Contact</div>
+</div>
+
+/* ✅ GOOD - Semantic nav with list structure */
+<nav aria-label="Main navigation">
+  <ul className={styles.menu}>
+    <li>
+      <a href="/" className={styles.menuItem} aria-current={isHome ? "page" : undefined}>
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="/about" className={styles.menuItem} aria-current={isAbout ? "page" : undefined}>
+        About
+      </a>
+    </li>
+    <li>
+      <a href="/contact" className={styles.menuItem} aria-current={isContact ? "page" : undefined}>
+        Contact
+      </a>
+    </li>
+  </ul>
+</nav>
+```
+
+**Example 4: Form with Validation**
+
+```tsx
+/* ❌ BAD - Non-semantic form structure */
+<div className={styles.form}>
+  <div className={styles.field}>
+    <div className={styles.label}>Email</div>
+    <div className={styles.input} contentEditable />
+    <div className={styles.error}>{error}</div>
+  </div>
+  <div className={styles.submit} onClick={handleSubmit}>Submit</div>
+</div>
+
+/* ✅ GOOD - Semantic form elements */
+<form className={styles.form} onSubmit={handleSubmit}>
+  <fieldset className={styles.field}>
+    <label htmlFor="email-input" className={styles.label}>
+      Email
+    </label>
+    <input
+      id="email-input"
+      type="email"
+      className={styles.input}
+      aria-invalid={!!error}
+      aria-describedby={error ? "email-error" : undefined}
+      required
+    />
+    {error && (
+      <p id="email-error" className={styles.error} role="alert">
+        {error}
+      </p>
+    )}
+  </fieldset>
+  <Button type="submit" variant="primary">Submit</Button>
+</form>
+```
+
+**Example 5: Sidebar with Related Content**
+
+```tsx
+/* ❌ BAD - Generic container */
+<div className={styles.sidebar}>
+  <div className={styles.title}>Related Articles</div>
+  <div className={styles.list}>
+    <div className={styles.item}>Article 1</div>
+    <div className={styles.item}>Article 2</div>
+  </div>
+</div>
+
+/* ✅ GOOD - Semantic aside with proper structure */
+<aside className={styles.sidebar} aria-labelledby="related-title">
+  <h2 id="related-title" className={styles.title}>Related Articles</h2>
+  <nav aria-label="Related articles">
+    <ul className={styles.list}>
+      <li>
+        <a href="/article-1" className={styles.item}>
+          Understanding React Hooks
+        </a>
+      </li>
+      <li>
+        <a href="/article-2" className={styles.item}>
+          TypeScript Best Practices
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+```
+
+**Benefits of Semantic HTML:**
+
+1. **Accessibility** - Screen readers understand document structure and landmarks
+2. **SEO** - Search engines better understand content hierarchy and relationships
+3. **Maintainability** - Code intent is clear without reading implementation
+4. **Browser Features** - Native keyboard navigation, form validation, etc.
+5. **Performance** - Less CSS needed for styling when using appropriate elements
 
 ### Rule 6.2 - ARIA Attributes (When Needed)
 
@@ -1476,7 +1802,54 @@ npm run test:visual        # Run visual regression tests
 
 ## SECTION 10: Final Checklist & Component Generation Template
 
+### ⚠️ CRITICAL: MANDATORY TESTING REQUIREMENT
+
+**BEFORE declaring any component work complete, you MUST:**
+
+1. **Verify File Location:**
+   - Confirm whether component is in `src/components/` or `shared/components/`
+   - Check which location Storybook actually imports from
+   - NEVER assume file locations - always verify with `file_search` or `list_dir`
+
+2. **Test in Storybook:**
+   - Open Storybook in browser: `http://localhost:6006`
+   - Navigate to the component's stories
+   - Verify ALL stories render without errors
+   - Check browser console for import errors, runtime errors, or warnings
+   - Test interactive stories (play functions) work correctly
+
+3. **Run Component Tests:**
+   - Execute unit tests: `npm test -- ComponentName` (in vite-app directory)
+   - Verify all tests pass (100% pass rate required)
+   - Check test coverage meets >80% threshold
+   - Run accessibility tests if applicable
+
+4. **Check for Errors:**
+   - Run `get_errors` tool on component directory
+   - Fix any TypeScript, ESLint, or Stylelint errors
+   - Address any legitimate warnings (document suppression reasons)
+
+**❌ UNACCEPTABLE WORKFLOW:**
+
+- Editing files without verifying which location is active
+- Declaring completion without testing in Storybook
+- Ignoring import errors or runtime failures
+- Breaking existing functionality
+
+**✅ ACCEPTABLE WORKFLOW:**
+
+1. Identify correct file location
+2. Make changes carefully
+3. Test immediately in Storybook
+4. Run unit tests
+5. Fix any errors before moving on
+6. Only then declare completion
+
+---
+
 ### Rule 10.1 - Component Generation Checklist
+
+**When in doubt:** Refer to 'https://ant.design/components/', 'https://tailwindcss.com/plus/ui-blocks' and 'https://carbondesignsystem.com/components' for best practises, guidance and inspiration.
 
 **When generating a new component, ALWAYS create:**
 
@@ -1538,6 +1911,12 @@ npm run test:visual        # Run visual regression tests
 7. Keyboard navigation works ✅
 8. Translation coverage 100% ✅
 
+**Development Servers:**
+
+- **Vite (Storybook/Legacy):** `npm run dev` (port 5173)
+- **Next.js:** `npm run dev:next` from root OR `cd nextjs-app && npm run dev` (port 3000+)
+- **Storybook:** `npm run storybook` (port 6006)
+
 **ONLY commit when all checks pass.**
 
 ### Rule 10.3 - Example Generation Prompt
@@ -1589,7 +1968,61 @@ These rules ensure every generated component:
 
 ---
 
-**Last Updated:** November 20, 2025  
+## ARCHIVED: Vite-Specific Guidance (Pre-November 2025)
+
+> **⚠️ DEPRECATED:** This section documents legacy Vite-specific patterns maintained for Storybook and testing infrastructure. New development should follow Next.js patterns above.
+
+### Vite Configuration & Build
+
+**Vite config location:** `vite.config.ts` (root)
+
+**Key Vite features still in use:**
+
+- React Fast Refresh for Storybook
+- MDX support for blog posts
+- Static file copying (404.html, robots.txt, etc.)
+- Sentry Vite plugin for error tracking
+- CSS Modules support
+
+**Vite-specific imports:**
+
+```typescript
+// Vite handles these automatically
+import Component from "@dt/Component"; // Alias defined in vite.config.ts
+import styles from "./Component.module.css";
+import icon from "./icon.svg?url"; // Vite asset handling
+```
+
+**Deployment (Legacy):**
+
+- `npm run build` - Vite production build
+- `npm run deploy` - Deploy to GitHub Pages
+- `npm run cache-bust` - Manual cache invalidation
+
+**Route handling (Legacy):**
+
+- React Router v6 (`src/App.tsx`)
+- Lazy-loaded route components
+- `ChunkErrorBoundary` for code-splitting errors
+
+### When to Use Vite vs Next.js
+
+**Use Vite for:**
+
+- Storybook development (runs on Vite)
+- Component testing (Vitest)
+- Maintaining legacy `src/` codebase
+
+**Use Next.js for:**
+
+- All new pages and routes
+- Production deployment
+- SEO-critical content
+- Server-side rendering needs
+
+---
+
+**Last Updated:** November 23, 2025  
 **Maintained by:** Petri Lahdelma  
 **Project:** Digitaltableteur
 

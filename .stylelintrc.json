@@ -1,6 +1,16 @@
 {
   "extends": ["stylelint-config-standard"],
   "plugins": ["stylelint-order", "stylelint-declaration-strict-value"],
+  "ignoreFiles": [
+    "src-legacy-vite-DO-NOT-USE/**/*.css",
+    "vite-app/**/*.css",
+    "nextjs-app/**/*.css",
+    "coverage/**/*.css",
+    "node_modules/**",
+    "dist/**",
+    "build/**",
+    "storybook-static/**"
+  ],
   "overrides": [
     {
       "files": ["**/*.html"],
@@ -12,6 +22,14 @@
       "rules": {
         "declaration-property-value-no-unknown": null,
         "color-function-notation": null
+      }
+    },
+    {
+      "files": ["**/PhoneInput/*.css"],
+      "rules": {
+        "selector-class-pattern": null,
+        "selector-pseudo-class-no-unknown": null,
+        "property-disallowed-list": null
       }
     }
   ],

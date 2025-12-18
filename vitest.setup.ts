@@ -1,36 +1,32 @@
 import { expect, afterEach, vi } from "vitest";
 import "@testing-library/jest-dom";
 import { cleanup } from "@testing-library/react";
+import { toHaveNoViolations } from "jest-axe";
+
+// Extend Vitest matchers with jest-axe
+expect.extend(toHaveNoViolations);
 
 afterEach(() => {
   cleanup();
 });
 
-// Mock environment variables that components might read
-Object.defineProperty(import.meta, "env", {
-  value: {
-    VITE_GA_ID: "test-ga-id",
-    VITE_SENTRY_DSN: "",
-    MODE: "test",
-    DEV: false,
-    PROD: false,
-  },
-  writable: true,
-});
-
 // Mock ResizeObserver
-global.ResizeObserver = vi.fn().mockImplementation(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-}));
+class ResizeObserverMock {
+  observe = vi.fn();
+  unobserve = vi.fn();
+  disconnect = vi.fn();
+}
+
+globalThis.ResizeObserver = ResizeObserverMock as any;
 
 // Mock IntersectionObserver
-global.IntersectionObserver = vi.fn().mockImplementation(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-}));
+class IntersectionObserverMock {
+  observe = vi.fn();
+  unobserve = vi.fn();
+  disconnect = vi.fn();
+}
+
+globalThis.IntersectionObserver = IntersectionObserverMock as any;
 
 // Mock window.matchMedia
 Object.defineProperty(window, "matchMedia", {
@@ -48,21 +44,14 @@ Object.defineProperty(window, "matchMedia", {
 });
 
 // Mock console methods to reduce noise in tests
-global.console = {
+globalThis.console = {
   ...console,
   warn: vi.fn(),
   error: vi.fn(),
 };
-
-// Global environment variable mocks for testing
-vi.stubEnv("VITE_EMAIL_SERVICE_ID", "test_service_id");
-vi.stubEnv("VITE_EMAIL_TEMPLATE_ID", "test_template_id");
-vi.stubEnv("VITE_EMAIL_PUBLIC_KEY", "test_public_key");
 
 // Mock navigator.share for Web Share API testing
 Object.defineProperty(navigator, "share", {
   writable: true,
   value: vi.fn().mockImplementation(() => Promise.resolve()),
 });
-
-// i18n is now initialized synchronously when imported, no setup needed

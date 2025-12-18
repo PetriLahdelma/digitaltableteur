@@ -1,0 +1,103 @@
+.phone-input-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.phone-input {
+  display: flex;
+  margin-block: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 0;
+  background-color: var(--color-white);
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--color-primary);
+  transition: border-color 0.3s;
+}
+
+.phone-input:focus-within {
+  box-sizing: border-box;
+  border-width: 1px;
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+}
+
+.phone-input.error {
+  border-color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.phone-input.error:focus-within {
+  border-color: var(--color-error);
+  outline: 2px solid var(--color-error);
+  outline-offset: 0;
+}
+
+.errorMessage {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--color-error);
+  margin-top: 0.5rem;
+}
+
+/* Override library styles to match design system */
+
+.phone-input :global(.PhoneInputInput) {
+  padding: 0;
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.phone-input :global(.PhoneInputInput)::placeholder {
+  color: var(--color-primary);
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.phone-input :global(.PhoneInputCountry) {
+  display: flex;
+  margin-inline-end: 0.5rem;
+  padding-inline: 0.25rem 0.5rem;
+  align-items: center;
+  border-inline-end: 1px solid var(--color-primary);
+}
+
+.phone-input :global(.PhoneInputCountryIcon) {
+  width: 24px;
+  height: 18px;
+  box-shadow: 0 0 2px rgb(0 0 0 / 10%);
+  margin-right: 0.5rem;
+}
+
+.phone-input :global(.PhoneInputCountrySelect) {
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  appearance: none;
+}
+
+.phone-input :global(.PhoneInputCountrySelect):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.phone-input :global(.PhoneInputCountrySelectArrow) {
+  display: none;
+}

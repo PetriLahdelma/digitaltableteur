@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
 /.pnp
 .pnp.js
 
@@ -33,3 +33,19 @@ storybook-static
 mcp.json
 .vercel
 .env*.local
+
+# Akaunting
+akaunting/.env
+akaunting/.env.local
+akaunting/*.sql
+akaunting/*.sql.gz
+akaunting/backups/
+akaunting/logs/
+
+# Next.js build output
+.next/
+.next/cache/
+
+# Prevent generated static sitemap from shadowing Next.js `app/sitemap.ts`
+public/sitemap.xml
+nextjs-app/public/sitemap.xml
