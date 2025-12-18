@@ -1,11 +1,14 @@
-import Link from "next/link";
-
 import type { PseoCatalog, PseoLeafPage } from "@/lib/pseo/types";
 
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
+import Card from "@dt/Card";
+import NextLink from "next/link";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "./PseoIndexPage.module.css";
+
+const titleCase = (text: string) =>
+  text.replace(/\b\w/g, (match) => match.toUpperCase());
 
 export function PseoIndexPage({
   catalog,
@@ -30,25 +33,29 @@ export function PseoIndexPage({
           <Title terminals="sans" level={2} size="S">
             Services
           </Title>
-          <div className={styles.grid}>
+          <div className={`${styles.grid} ${styles.gridTwo}`.trim()}>
             {catalog.services.map((service) => (
-              <Link
+              <Card
                 key={service.slug}
-                href={`/pseo/services/${service.slug}`}
-                className={styles.cardLink}
-              >
-                <Title
-                  terminals="sans"
-                  level={3}
-                  size="XS"
-                  className={styles.cardTitle}
-                >
-                  {service.name}
-                </Title>
-                <Text terminals="sans" className={styles.cardDescription}>
-                  {service.shortDescription}
-                </Text>
-              </Link>
+                className={styles.card}
+                link={`/pseo/services/${service.slug}`}
+                linkLabel={`Open ${titleCase(service.name)}`}
+                hoverable
+                size="full"
+                title={titleCase(service.name)}
+                titleProps={{
+                  terminals: "sans",
+                  level: 3,
+                  size: "S",
+                  as: "h3",
+                }}
+                description={service.shortDescription}
+                descriptionProps={{
+                  size: "S",
+                  as: "p",
+                  className: styles.cardBody,
+                }}
+              />
             ))}
           </div>
         </section>
@@ -57,25 +64,29 @@ export function PseoIndexPage({
           <Title terminals="sans" level={2} size="S">
             Stacks
           </Title>
-          <div className={styles.grid}>
+          <div className={`${styles.grid} ${styles.gridTwo}`.trim()}>
             {catalog.stacks.map((stack) => (
-              <Link
+              <Card
                 key={stack.slug}
-                href={`/pseo/stacks/${stack.slug}`}
-                className={styles.cardLink}
-              >
-                <Title
-                  terminals="sans"
-                  level={3}
-                  size="XS"
-                  className={styles.cardTitle}
-                >
-                  {stack.name}
-                </Title>
-                <Text terminals="sans" className={styles.cardDescription}>
-                  {stack.shortDescription}
-                </Text>
-              </Link>
+                className={styles.card}
+                link={`/pseo/stacks/${stack.slug}`}
+                linkLabel={`Open ${titleCase(stack.name)}`}
+                hoverable
+                size="full"
+                title={titleCase(stack.name)}
+                titleProps={{
+                  terminals: "sans",
+                  level: 3,
+                  size: "S",
+                  as: "h3",
+                }}
+                description={stack.shortDescription}
+                descriptionProps={{
+                  size: "S",
+                  as: "p",
+                  className: styles.cardBody,
+                }}
+              />
             ))}
           </div>
         </section>
@@ -84,25 +95,29 @@ export function PseoIndexPage({
           <Title terminals="sans" level={2} size="S">
             Audiences
           </Title>
-          <div className={styles.grid}>
+          <div className={`${styles.grid} ${styles.gridThree}`.trim()}>
             {catalog.audiences.map((audience) => (
-              <Link
+              <Card
                 key={audience.slug}
-                href={`/pseo/audiences/${audience.slug}`}
-                className={styles.cardLink}
-              >
-                <Title
-                  terminals="sans"
-                  level={3}
-                  size="XS"
-                  className={styles.cardTitle}
-                >
-                  {audience.name}
-                </Title>
-                <Text terminals="sans" className={styles.cardDescription}>
-                  {audience.shortDescription}
-                </Text>
-              </Link>
+                className={styles.card}
+                link={`/pseo/audiences/${audience.slug}`}
+                linkLabel={`Open ${titleCase(audience.name)}`}
+                hoverable
+                size="full"
+                title={titleCase(audience.name)}
+                titleProps={{
+                  terminals: "sans",
+                  level: 3,
+                  size: "S",
+                  as: "h3",
+                }}
+                description={audience.shortDescription}
+                descriptionProps={{
+                  size: "S",
+                  as: "p",
+                  className: styles.cardBody,
+                }}
+              />
             ))}
           </div>
         </section>
@@ -117,7 +132,7 @@ export function PseoIndexPage({
           <ul className={styles.smallList}>
             {samplePages.map((page) => (
               <li key={page.slug}>
-                <Link href={`/pseo/${page.slug}`}>{page.title}</Link>
+                <NextLink href={`/pseo/${page.slug}`}>{page.title}</NextLink>
               </li>
             ))}
           </ul>
