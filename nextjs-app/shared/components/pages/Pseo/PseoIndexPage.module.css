@@ -1,5 +1,10 @@
 .root {
-  padding-block: 3rem;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 100%;
+  font-family: var(--primary-body-font);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .lead {
@@ -13,36 +18,53 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 1rem;
 }
 
-.cardLink {
-  display: block;
-  padding: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.02);
+.gridTwo {
+  /* Cap at 2 cards/row on desktop (and above) */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.cardLink:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.04);
+.gridThree {
+  /* Up to 3 cards/row on desktop; keep it readable below that */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.cardTitle {
+@media (max-width: 640px) {
+  .gridTwo,
+  .gridThree {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gridThree {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  height: 100%;
+  max-width: 100%;
+}
+
+:global(.wavyUnderline).card {
+  padding-bottom: 0;
+}
+
+:global(.wavyUnderline).card::after {
+  display: none;
+  content: none;
+}
+
+.cardBody {
   margin: 0;
-}
-
-.cardDescription {
-  margin-top: 0.5rem;
-  opacity: 0.85;
 }
 
 .smallList {
   margin-top: 1rem;
   padding-left: 1.25rem;
 }
-

@@ -160,6 +160,11 @@ export function PseoLeafPageView({
               renderWithDesignSystem
               designSystemTextSize="S"
             />
+            <MarkdownMessage
+              content={section.bodyMarkdown}
+              renderWithDesignSystem
+              designSystemTextSize="S"
+            />
           </section>
         ))}
 

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Title from "@dt/Title";
@@ -223,8 +225,8 @@ const Card: React.FC<CardProps> = ({
 
   const isInteractive = interactive || Boolean(onClick);
 
-  const hasHeader = Boolean(title || subTitle || extra || icon || badge);
-  const hasBodyContent = Boolean(body || description || children);
+  const hasHeader = Boolean(title || subTitle || description || extra || icon || badge);
+  const hasBodyContent = Boolean(body || children);
   const hasFooter = Boolean(footer || (actions && actions.length > 0));
 
   // Create badge element if badge prop exists
@@ -304,6 +306,17 @@ const Card: React.FC<CardProps> = ({
               {subTitle}
             </Text>
           )}
+          {description && (
+            <Text
+              size={descriptionProps.size || "S"}
+              as={descriptionProps.as || "p"}
+              className={[styles.description, descriptionProps.className]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              {description}
+            </Text>
+          )}
         </div>
         {badgeProps.position === "start" && badgeElement}
       </div>
@@ -350,17 +363,6 @@ const Card: React.FC<CardProps> = ({
             .join(" ")}
         >
           {body}
-        </Text>
-      )}
-      {description && (
-        <Text
-          size={descriptionProps.size || "S"}
-          as={descriptionProps.as || "p"}
-          className={[styles.description, descriptionProps.className]
-            .filter(Boolean)
-            .join(" ")}
-        >
-          {description}
         </Text>
       )}
       {children}
