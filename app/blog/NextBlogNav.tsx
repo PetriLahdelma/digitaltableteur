@@ -3,9 +3,11 @@
 import { useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-import Button from "../../nextjs-app/shared/components/Button";
-import Icon from "../../nextjs-app/shared/components/Icon";
+import Button from "@dt/Button";
+import Icon from "@dt/Icon";
 import { posts } from "./postMetadata";
+
+import styles from "./NextBlogNav.module.css";
 
 const normalizePath = (path: string) =>
   path === "/" ? path : path.replace(/\/+$/, "");
@@ -28,16 +30,8 @@ export function NextBlogNav() {
   const isArticleRoute = currentIndex >= 0;
 
   return (
-    <div style={{ display: "grid", gap: "0.75rem", marginBottom: "1.25rem" }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "0.75rem",
-          flexWrap: "wrap",
-        }}
-      >
+    <div className={styles.wrapper}>
+      <div className={styles.row}>
         <Button
           variant="tertiary"
           size="m"
@@ -46,7 +40,7 @@ export function NextBlogNav() {
         >
           Articles
         </Button>
-        <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+        <div className={styles.navButtons}>
           <Button
             variant="tertiary"
             size="m"
@@ -57,9 +51,9 @@ export function NextBlogNav() {
               if (currentIndex > 0)
                 router.push(blogPages[currentIndex - 1].path);
             }}
-            className="nav-button-prev"
+            className={styles.navButton}
           >
-            <span className="nav-button-text">Previous</span>
+            <span className={styles.navButtonText}>Previous</span>
           </Button>
           <Button
             variant="tertiary"
@@ -71,22 +65,12 @@ export function NextBlogNav() {
               if (currentIndex < blogPages.length - 1)
                 router.push(blogPages[currentIndex + 1].path);
             }}
-            className="nav-button-next"
+            className={styles.navButton}
           >
-            <span className="nav-button-text">Next</span>
+            <span className={styles.navButtonText}>Next</span>
           </Button>
         </div>
       </div>
-      <style jsx>{`
-        :global(.nav-button-text) {
-          display: none;
-        }
-        @media (min-width: 768px) {
-          :global(.nav-button-text) {
-            display: inline;
-          }
-        }
-      `}</style>
     </div>
   );
 }

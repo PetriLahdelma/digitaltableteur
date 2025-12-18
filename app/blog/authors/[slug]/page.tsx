@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { getAuthorBySlug } from "../../../../nextjs-app/shared/data/authors";
+import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
 import ClientAuthor from "./ClientAuthor";
 
 type Params = { slug: string };

@@ -2,8 +2,10 @@
 
 import { usePathname, useRouter } from "next/navigation";
 
-import Button from "../../nextjs-app/shared/components/Button";
-import Icon from "../../nextjs-app/shared/components/Icon";
+import Button from "@dt/Button";
+import Icon from "@dt/Icon";
+
+import styles from "./NextWorkNav.module.css";
 
 const workPages = [
   { path: "/work/helsinki-design-system", label: "Helsinki Design System" },
@@ -18,16 +20,8 @@ export function NextWorkNav() {
   const currentIndex = workPages.findIndex((p) => p.path === pathname);
 
   return (
-    <div style={{ display: "grid", gap: "0.75rem", marginBottom: "1.25rem" }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "0.75rem",
-          flexWrap: "wrap",
-        }}
-      >
+    <div className={styles.wrapper}>
+      <div className={styles.row}>
         <Button
           variant="tertiary"
           size="m"
@@ -36,7 +30,7 @@ export function NextWorkNav() {
         >
           Back to work
         </Button>
-        <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+        <div className={styles.navButtons}>
           <Button
             variant="tertiary"
             size="m"
