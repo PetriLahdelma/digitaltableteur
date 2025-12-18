@@ -112,8 +112,7 @@ const staticTools: ToolMap = {
         isOpen: { type: "boolean" },
         message: { type: "string" },
         todaysHours: {
-          type: "object",
-          nullable: true,
+          type: ["object", "null"],
           properties: {
             day: { type: "string" },
             open: { type: ["string", "null"] },
@@ -150,7 +149,7 @@ const staticTools: ToolMap = {
       const weekday =
         parts.find((part) => part.type === "weekday")?.value?.toLowerCase() ??
         "";
-      const todaysConfig = WEEKLY_HOURS.find((day) =>
+      const todaysConfig = WEEKLY_HOURS.find((day: { day: string; open: string | null; close: string | null }) =>
         weekday.startsWith(day.day),
       ) ?? {
         day: weekday || "today",
@@ -162,7 +161,7 @@ const staticTools: ToolMap = {
         open: pad(todaysConfig.open),
         close: pad(todaysConfig.close),
       };
-      const weeklyHours = WEEKLY_HOURS.map((day) => ({
+      const weeklyHours = WEEKLY_HOURS.map((day: { day: string; open: string | null; close: string | null }) => ({
         day: day.day,
         open: pad(day.open),
         close: pad(day.close),

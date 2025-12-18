@@ -3,7 +3,11 @@ import { jsonSchema, tool } from "@ai-sdk/provider-utils";
 import type { experimental_MCPClient } from "@ai-sdk/mcp";
 import { experimental_createMCPClient } from "@ai-sdk/mcp";
 import { Experimental_StdioMCPTransport } from "@ai-sdk/mcp/mcp-stdio";
-import { WEEKLY_HOURS, isOpenAt } from "../../nextjs-app/shared/data/openHours";
+import {
+  WEEKLY_HOURS,
+  isOpenAt,
+  type DayHours,
+} from "../../nextjs-app/shared/data/openHours";
 
 // ToolSet type matches ai package's expected tool shape
 type ToolMap = Record<string, Tool<any, any>>;
@@ -149,7 +153,7 @@ const staticTools: ToolMap = {
       const weekday =
         parts.find((part) => part.type === "weekday")?.value?.toLowerCase() ??
         "";
-      const todaysConfig = WEEKLY_HOURS.find((day) =>
+      const todaysConfig = WEEKLY_HOURS.find((day: DayHours) =>
         weekday.startsWith(day.day),
       ) ?? {
         day: weekday || "today",
@@ -161,7 +165,7 @@ const staticTools: ToolMap = {
         open: pad(todaysConfig.open),
         close: pad(todaysConfig.close),
       };
-      const weeklyHours = WEEKLY_HOURS.map((day) => ({
+      const weeklyHours = WEEKLY_HOURS.map((day: DayHours) => ({
         day: day.day,
         open: pad(day.open),
         close: pad(day.close),
