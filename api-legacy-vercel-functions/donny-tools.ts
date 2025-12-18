@@ -3,9 +3,10 @@ import { jsonSchema, tool } from "@ai-sdk/provider-utils";
 import type { experimental_MCPClient } from "@ai-sdk/mcp";
 import { experimental_createMCPClient } from "@ai-sdk/mcp";
 import { Experimental_StdioMCPTransport } from "@ai-sdk/mcp/mcp-stdio";
-import { WEEKLY_HOURS, isOpenAt } from "../src/data/openHours.js";
+import { WEEKLY_HOURS, isOpenAt } from "../nextjs-app/shared/data/openHours";
 
-type ToolMap = Record<string, Tool>;
+// ToolSet type matches ai package's expected tool shape
+type ToolMap = Record<string, Tool<any, any>>;
 
 const HELSINKI_TZ = "Europe/Helsinki";
 

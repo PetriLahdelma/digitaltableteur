@@ -6,6 +6,7 @@ import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 
 const workPages = [
+  { path: "/work/helsinki-design-system", label: "Helsinki Design System" },
   { path: "/work/new-things-co", label: "New Things Co" },
   { path: "/work/illustrations", label: "Illustrations" },
   { path: "/work/garage-junction", label: "Garage Junction" },

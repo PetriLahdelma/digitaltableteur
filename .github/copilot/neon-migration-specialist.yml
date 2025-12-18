@@ -1,0 +1,44 @@
+# Neon Migration Specialist - GitHub Copilot Agent
+# https://github.com/github/awesome-copilot/blob/main/agents/neon-migration-specialist.agent.md
+
+name: neon-migration-specialist
+description: |
+  Safe Postgres migrations with zero downtime using Neon database branching.
+
+  This agent helps you:
+  - Test schema changes in isolated database branches
+  - Validate migrations before applying to production
+  - Support for Prisma, Drizzle, and other ORMs
+  - Automated rollback on migration failures
+
+capabilities:
+  - database_migrations
+  - schema_validation
+  - branch_management
+  - orm_support
+
+workflow: 1. Create isolated database branch
+  2. Apply migration to branch
+  3. Run tests and validation
+  4. Apply to production if successful
+  5. Automatic rollback on failure
+
+usage_examples:
+  - "Create a migration to add user_roles table"
+  - "Test this schema change safely before production"
+  - "Migrate from SQLite to Postgres with Neon"
+  - "Add indexes to improve query performance"
+  - "Create a database branch for this feature"
+
+integration:
+  mcp_server: "@neondatabase/mcp-server-neon"
+  required_env:
+    - NEON_API_KEY
+    - NEON_PROJECT_ID
+
+best_practices:
+  - Always test migrations in branches first
+  - Use transactions for data migrations
+  - Keep migrations small and focused
+  - Document breaking changes
+  - Test rollback procedures
