@@ -1,6 +1,6 @@
 "use client";
 
-import { BlogArticlePage } from "../../../nextjs-app/shared/components/pages/Blog";
+import { BlogArticlePage } from "@dt-pages/Blog";
 import { NextBlogNav } from "../NextBlogNav";
 
 export default function ClientArticle({ slug }: { slug: string }) {
@@ -8,7 +8,9 @@ export default function ClientArticle({ slug }: { slug: string }) {
     <BlogArticlePage
       slug={slug}
       nav={<NextBlogNav />}
-      shareBaseUrl={process.env.NEXT_PUBLIC_SITE_URL || "https://digitaltableteur.com"}
+      shareBaseUrl={
+        process.env.NEXT_PUBLIC_SITE_URL || "https://digitaltableteur.com"
+      }
     />
   );
 }

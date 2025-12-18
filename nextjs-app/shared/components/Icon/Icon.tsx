@@ -2,7 +2,7 @@ import React from "react";
 import type {
   IconProps as PhosphorIconProps,
   IconWeight,
-} from "@phosphor-icons/react/ssr";
+} from "@phosphor-icons/react";
 import * as PhosphorIcons from "@phosphor-icons/react/ssr";
 import styles from "./Icon.module.css";
 

@@ -2,10 +2,13 @@ import Link from "next/link";
 
 import type { PseoLeafPage, PseoPageCopy, PseoRelatedLinkCopy } from "@/lib/pseo/types";
 
+import Card from "@dt/Card";
+import Button from "@dt/Button";
 import MarkdownMessage from "@dt/MarkdownMessage";
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
+import { PseoClusterBadges } from "./PseoClusterBadges";
 import styles from "./PseoLeafPage.module.css";
 
 type RelatedViewModel = {
@@ -112,28 +115,22 @@ export function PseoLeafPageView({
           {page.description}
         </Text>
 
-        <div className={styles.pillRow} aria-label="Explore this cluster">
-          <Link
-            href={`/pseo/services/${page.service.slug}`}
-            className={styles.pill}
-          >
-            Service: {page.service.name}
-          </Link>
-          <Link href={`/pseo/stacks/${page.stack.slug}`} className={styles.pill}>
-            Stack: {page.stack.name}
-          </Link>
-          <Link
-            href={`/pseo/audiences/${page.audience.slug}`}
-            className={styles.pill}
-          >
-            Audience: {page.audience.name}
-          </Link>
-        </div>
+        <PseoClusterBadges
+          className={styles.badgeRow}
+          linkClassName={styles.badgeLink}
+          serviceHref={`/pseo/services/${page.service.slug}`}
+          serviceName={page.service.name}
+          stackHref={`/pseo/stacks/${page.stack.slug}`}
+          stackName={page.stack.name}
+          audienceHref={`/pseo/audiences/${page.audience.slug}`}
+          audienceName={page.audience.name}
+        />
 
         <section className={styles.section} aria-label="Introduction">
           <MarkdownMessage
             content={copy?.introMarkdown ?? defaultIntro(page)}
             renderWithDesignSystem
+            designSystemTextSize="S"
           />
         </section>
 
@@ -158,7 +155,16 @@ export function PseoLeafPageView({
             <Title terminals="sans" level={2} size="S">
               {section.title}
             </Title>
-            <MarkdownMessage content={section.bodyMarkdown} renderWithDesignSystem />
+            <MarkdownMessage
+              content={section.bodyMarkdown}
+              renderWithDesignSystem
+              designSystemTextSize="S"
+            />
+            <MarkdownMessage
+              content={section.bodyMarkdown}
+              renderWithDesignSystem
+              designSystemTextSize="S"
+            />
           </section>
         ))}
 
@@ -168,26 +174,29 @@ export function PseoLeafPageView({
           </Title>
           <div className={styles.relatedGrid}>
             {related.map((item) => (
-              <Link
+              <Card
                 key={item.page.slug}
-                href={`/pseo/${item.page.slug}`}
                 className={styles.relatedCard}
+                link={`/pseo/${item.page.slug}`}
+                linkLabel={`Open ${item.page.title}`}
+                hoverable
+                size="full"
+                title={item.page.title}
+                titleProps={{
+                  terminals: "sans",
+                  level: 3,
+                  size: "S",
+                  as: "h3",
+                }}
               >
-                <Title
-                  terminals="sans"
-                  level={3}
-                  size="XS"
-                  className={styles.relatedTitle}
-                >
-                  {item.page.title}
-                </Title>
                 <div className={styles.relatedReason}>
                   <MarkdownMessage
                     content={item.reasonMarkdown}
                     renderWithDesignSystem
+                    designSystemTextSize="S"
                   />
                 </div>
-              </Link>
+              </Card>
             ))}
           </div>
         </section>
@@ -201,18 +210,12 @@ export function PseoLeafPageView({
             send a message and describe your current stack and constraints.
           </Text>
           <div className={styles.ctaActions}>
-            <Link
-              href="/contact"
-              className={`${styles.ctaLink} ${styles.ctaLinkPrimary}`}
-            >
+            <Button href="/contact" variant="primary" size="l">
               Contact
-            </Link>
-            <Link
-              href="/work"
-              className={`${styles.ctaLink} ${styles.ctaLinkSecondary}`}
-            >
+            </Button>
+            <Button href="/work" variant="secondary" size="l">
               See work
-            </Link>
+            </Button>
           </div>
         </section>
       </div>

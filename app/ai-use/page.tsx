@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { AiUsagePage } from "../../nextjs-app/shared/components/pages/AiUsagePage";
+import { AiUsagePage } from "@dt-pages/AiUsagePage";
 
 export const metadata: Metadata = {
   title: "AI use and transparency",

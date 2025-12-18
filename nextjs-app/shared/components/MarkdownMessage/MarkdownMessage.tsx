@@ -5,6 +5,11 @@ import styles from "./MarkdownMessage.module.css";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import Link from "@dt/Link";
+import type { TextProps } from "@dt/Text";
+import Title from "@dt/Title";
+import Link from "@dt/Link";
+
+type DesignSystemTextSize = NonNullable<TextProps["size"]>;
 
 export interface MarkdownMessageProps {
   content: string;
@@ -15,6 +20,11 @@ export interface MarkdownMessageProps {
    * Useful for long-form content pages to ensure consistent styling.
    */
   renderWithDesignSystem?: boolean;
+  /**
+   * When `renderWithDesignSystem` is enabled, use this as the base size for
+   * paragraph and inline emphasis text (e.g. `p`, `strong`, `em`).
+   */
+  designSystemTextSize?: DesignSystemTextSize;
 }
 
 // Basic link transform: open in same tab for accessibility; could be target _blank with rel
@@ -23,9 +33,13 @@ const MarkdownMessage: React.FC<MarkdownMessageProps> = ({
   fallback,
   "data-role": dataRole,
   renderWithDesignSystem = false,
+  designSystemTextSize = "M",
 }) => {
   const safe = content?.trim();
   const toRender = safe || fallback || "";
+
+  const resolvedDesignSystemTextSize: DesignSystemTextSize =
+    designSystemTextSize || "M";
 
   return (
     <div
@@ -39,7 +53,7 @@ const MarkdownMessage: React.FC<MarkdownMessageProps> = ({
           // Disallow raw HTML for safety; can be enabled later with rehype-sanitize
           skipHtml
           components={{
-            a: ({ node, href, children, ...props }) =>
+            a: ({ href, children, ...props }) =>
               renderWithDesignSystem ? (
                 <Link href={href ?? "#"} {...props}>
                   {children}
@@ -50,7 +64,11 @@ const MarkdownMessage: React.FC<MarkdownMessageProps> = ({
             code: ({ children, ...props }) => <code {...props}>{children}</code>,
             p: ({ node, children, ...props }) =>
               renderWithDesignSystem ? (
-                <Text terminals="sans" {...props}>
+                <Text
+                  terminals="sans"
+                  size={resolvedDesignSystemTextSize}
+                  {...props}
+                >
                   {children}
                 </Text>
               ) : (
@@ -82,7 +100,12 @@ const MarkdownMessage: React.FC<MarkdownMessageProps> = ({
               ),
             strong: ({ node, children, ...props }) =>
               renderWithDesignSystem ? (
-                <Text as="strong" terminals="sans" {...props}>
+                <Text
+                  as="strong"
+                  terminals="sans"
+                  size={resolvedDesignSystemTextSize}
+                  {...props}
+                >
                   {children}
                 </Text>
               ) : (
@@ -90,7 +113,12 @@ const MarkdownMessage: React.FC<MarkdownMessageProps> = ({
               ),
             em: ({ node, children, ...props }) =>
               renderWithDesignSystem ? (
-                <Text as="em" terminals="sans" {...props}>
+                <Text
+                  as="em"
+                  terminals="sans"
+                  size={resolvedDesignSystemTextSize}
+                  {...props}
+                >
                   {children}
                 </Text>
               ) : (

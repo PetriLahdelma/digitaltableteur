@@ -1,6 +1,6 @@
 "use client";
 
-import { ContactPage } from "../../nextjs-app/shared/components/pages/ContactPage";
+import { ContactPage } from "@dt-pages/ContactPage";
 
 export function ContactContent() {
   return <ContactPage />;
