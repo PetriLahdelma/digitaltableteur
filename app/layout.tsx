@@ -10,7 +10,7 @@ import { I18nProvider } from "../providers/I18nProvider";
 import { NextThemeProvider } from "../providers/ThemeProvider";
 import { ToastProvider } from "../providers/ToastProvider";
 import { CookieConsentProvider } from "../nextjs-app/shared/lib/cookieConsent";
-import { NextLayout } from "@dt/NextLayout";
+import { NextLayout } from "../nextjs-app/shared/components/NextLayout";
 import "./globals.css";
 
 const siteUrl =
