@@ -45,3 +45,6 @@ akaunting/logs/
 # Next.js build output
 .next/
 .next/cache/
+
+# Prevent generated static sitemap from shadowing Next.js `app/sitemap.ts`
+public/sitemap.xml
