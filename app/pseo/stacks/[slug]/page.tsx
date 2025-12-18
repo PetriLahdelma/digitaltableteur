@@ -6,7 +6,7 @@ import {
   getPseoLeafPages,
   getPseoStackBySlug,
 } from "@/lib/pseo/catalog";
-import { PseoPillarPage } from "@/nextjs-app/shared/components/pages/Pseo/PseoPillarPage";
+import { PseoPillarPage } from "../../../../nextjs-app/shared/components/pages/Pseo/PseoPillarPage";
 
 type Params = { slug: string };
 

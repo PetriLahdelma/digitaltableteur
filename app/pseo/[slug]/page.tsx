@@ -14,7 +14,7 @@ import {
   getWebPageSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
-import { PseoLeafPageView } from "@/nextjs-app/shared/components/pages/Pseo/PseoLeafPage";
+import { PseoLeafPageView } from "../../../nextjs-app/shared/components/pages/Pseo/PseoLeafPage";
 
 type Params = { slug: string };
 

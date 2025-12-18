@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { IllustrationsPage } from "@/nextjs-app/shared/components/pages/Work/Illustrations";
+import { IllustrationsPage } from "../../../nextjs-app/shared/components/pages/Work/Illustrations";
 import { NextWorkNav } from "../NextWorkNav";
 
 export const metadata: Metadata = {
