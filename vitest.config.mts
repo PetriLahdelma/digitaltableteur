@@ -84,11 +84,7 @@ export default defineConfig({
           },
           setupFiles: [".storybook/vitest.setup.ts"],
           // Prevent import.meta.env cloning issues
-          poolOptions: {
-            threads: {
-              isolate: false,
-            },
-          },
+          isolate: false,
           coverage: {
             enabled: true,
             provider: "v8",
