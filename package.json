@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postinstall": "node scripts/install-playwright-browsers.mjs",
     "postbuild": "node scripts/ensure-no-static-sitemap.mjs",
     "predev": "node scripts/generate-blog-manifest.mjs && node scripts/ensure-no-static-sitemap.mjs",
     "prebuild": "node scripts/generate-blog-manifest.mjs && node scripts/ensure-no-static-sitemap.mjs",
