@@ -114,6 +114,12 @@
       "headers": {
         "Authorization": "Bearer {{SANITY_TOKEN}}"
       }
+    },
+    "docker": {
+      "type": "command",
+      "command": "npx",
+      "args": ["@docker/mcp-server"],
+      "description": "Docker MCP Server - 30+ tools for container, image, network, volume, and compose management"
     }
   },
   "inputs": [
