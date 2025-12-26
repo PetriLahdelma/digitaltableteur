@@ -14,7 +14,7 @@
     "sanity:cleanup-legacy": "node scripts/sanity-migration/cleanupLegacyDocuments.js",
     "sanity:upload": "node scripts/sanity-migration/batchUpload.js",
     "sanity:sync-from-remote": "node scripts/sanity-migration/syncFromSanity.js",
-    "test:coverage": "npm ci --prefix vite-app && npm --prefix vite-app run test:coverage",
+    "test:coverage": "npm install --prefix vite-app && npm --prefix vite-app run test:coverage",
     "build:test-metrics": "npm --prefix vite-app run build:test-metrics"
   },
   "dependencies": {
