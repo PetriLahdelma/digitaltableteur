@@ -8,6 +8,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const repoRoot = resolve(__dirname, "..");
 
 export default defineConfig({
   plugins: [
@@ -19,20 +20,20 @@ export default defineConfig({
   ],
   test: {
     environment: "jsdom",
-    setupFiles: "./vitest.setup.ts",
+    setupFiles: resolve(__dirname, "vitest.setup.ts"),
     globals: true,
-    include: ["src/**/*.test.tsx"],
+    include: ["../src/**/*.test.tsx"],
     coverage: {
       provider: "v8",
       reporter: ["text", "lcov", "json-summary"],
-      reportsDirectory: "coverage",
-      include: ["src/**/*.{ts,tsx}"],
+      reportsDirectory: resolve(repoRoot, "coverage"),
+      include: ["../src/**/*.{ts,tsx}"],
       exclude: [
-        "src/**/*.stories.{ts,tsx}",
-        "src/**/*.test.{ts,tsx}",
-        "src/main.tsx",
-        "src/setupTests.ts",
-        "src/reportWebVitals.ts",
+        "../src/**/*.stories.{ts,tsx}",
+        "../src/**/*.test.{ts,tsx}",
+        "../src/main.tsx",
+        "../src/setupTests.ts",
+        "../src/reportWebVitals.ts",
       ],
       thresholds: {
         statements: 85,
@@ -44,7 +45,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@dt": resolve(__dirname, "src/components"),
+      "@dt": resolve(repoRoot, "src/components"),
     },
   },
 });

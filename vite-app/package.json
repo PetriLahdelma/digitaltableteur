@@ -79,7 +79,7 @@
     "build": "vite build",
     "copy-leaflet-icons": "cp node_modules/leaflet/dist/images/marker-*.png public/",
     "test": "vitest run --config vitest.config.mts",
-    "test:coverage": "node -e \"require('fs').mkdirSync('coverage',{recursive:true})\" && vitest run --config vitest.config.mts --coverage --reporter=json --outputFile ./coverage/vitest-report.json",
+    "test:coverage": "node -e \"require('fs').mkdirSync('../coverage',{recursive:true})\" && vitest run --config vitest.config.mts --coverage --reporter=json --outputFile ../coverage/vitest-report.json",
     "test:a11y:pages": "vitest run src/__tests__/accessibility-pages.test.tsx",
     "test:a11y:stories": "vitest run src/__tests__/accessibility-stories.test.tsx",
     "test:a11y": "npm run test:a11y:pages && npm run test:a11y:stories",
@@ -87,7 +87,7 @@
     "build-storybook": "storybook build",
     "test:visual": "node scripts/run-visual-tests.mjs",
     "visual:ci": "node scripts/run-visual-tests.mjs --ci",
-    "build:test-metrics": "node scripts/build-test-metrics.mjs",
+    "build:test-metrics": "node ../scripts/build-test-metrics.mjs",
     "lint": "npx prettier \"src/**/*.{ts,tsx,css}\" --check && npx eslint -c .eslintrc.cjs \"src/**/*.{ts,tsx}\" && npx stylelint \"src/**/*.{css,tsx,html}\"",
     "fetch-figma": "node scripts/fetch-figma.js",
     "generate:sitemap": "node scripts/generate-sitemap.js",
@@ -160,8 +160,8 @@
     "@typescript-eslint/parser": "^8.46.3",
     "@upstash/context7-mcp": "^1.0.26",
     "@vitejs/plugin-react": "^4.6.0",
-    "@vitest/coverage-v8": "^3.2.4",
-    "@vitest/ui": "^3.2.4",
+    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/ui": "^4.0.16",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.1",
@@ -183,6 +183,6 @@
     "stylelint-order": "^7.0.0",
     "typescript-language-server": "^5.1.1",
     "vite-plugin-static-copy": "^3.1.0",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.16"
   }
 }

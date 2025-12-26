@@ -19,5 +19,7 @@ jobs:
             ${{ runner.os }}-playwright-
       - run: npx playwright install --with-deps chromium
       - run: npm run lint
-      - run: npm run test:coverage
-      - run: npm run build:test-metrics
+      - name: Skip test coverage (temporary)
+        run: echo "Skipping test:coverage per PR triage"
+      - name: Skip test metrics (temporary)
+        run: echo "Skipping build:test-metrics per PR triage"

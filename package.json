@@ -13,7 +13,9 @@
     "sanity:convert": "node scripts/sanity-migration/convertToSanityFormat.js",
     "sanity:cleanup-legacy": "node scripts/sanity-migration/cleanupLegacyDocuments.js",
     "sanity:upload": "node scripts/sanity-migration/batchUpload.js",
-    "sanity:sync-from-remote": "node scripts/sanity-migration/syncFromSanity.js"
+    "sanity:sync-from-remote": "node scripts/sanity-migration/syncFromSanity.js",
+    "test:coverage": "npm install --prefix vite-app --include=dev && npm --prefix vite-app run test:coverage",
+    "build:test-metrics": "npm --prefix vite-app run build:test-metrics"
   },
   "dependencies": {
     "@ai-sdk/mcp": "^0.0.10",
@@ -36,7 +38,7 @@
     "i18next-browser-languagedetector": "^7.2.0",
     "leaflet": "^1.9.4",
     "mongodb": "^7.0.0",
-    "next": "15.5.6",
+    "next": "15.5.9",
     "next-sanity": "^11.6.8",
     "node-fetch": "^3.3.2",
     "pg": "^8.16.3",
