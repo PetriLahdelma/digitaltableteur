@@ -23,7 +23,9 @@ type EmbedProps = {
   title?: string;
 };
 
-const Embed: React.FC<EmbedProps> = ({ provider = "embed", url, title }) => {
+type AuthorBioProps = React.ComponentProps<typeof AuthorBio>;
+
+const Embed = ({ provider = "embed", url, title }: EmbedProps) => {
   if (!url) return null;
   const iframeProviders = new Set(["youtube", "vimeo"]);
   if (iframeProviders.has(provider.toLowerCase())) {
@@ -47,23 +49,26 @@ const Embed: React.FC<EmbedProps> = ({ provider = "embed", url, title }) => {
   );
 };
 
+const MdxAuthorBio = (props: AuthorBioProps) => {
+  return <AuthorBio {...props} />;
+};
+
 // Custom img wrapper to prevent p > img nesting
-const MdxImage: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = (
-  props,
-) => {
+const MdxImage = (props: React.ComponentPropsWithoutRef<"img">) => {
   return <img {...props} />;
 };
 
 // Custom figcaption wrapper
-const MdxFigcaption: React.FC<React.HTMLAttributes<HTMLElement>> = ({
+const MdxFigcaption = ({
   children,
-}) => {
-  return <figcaption>{children}</figcaption>;
+  ...props
+}: React.ComponentPropsWithoutRef<"figcaption">) => {
+  return <figcaption {...props}>{children}</figcaption>;
 };
 
 const mdxComponents = {
   Embed,
-  AuthorBio,
+  AuthorBio: MdxAuthorBio,
   img: MdxImage,
   figcaption: MdxFigcaption,
 };
