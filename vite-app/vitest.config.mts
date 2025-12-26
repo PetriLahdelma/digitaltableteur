@@ -8,8 +8,10 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const repoRoot = resolve(__dirname, "..");
 
 export default defineConfig({
+  root: repoRoot,
   plugins: [
     mdx({
       remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
@@ -19,13 +21,13 @@ export default defineConfig({
   ],
   test: {
     environment: "jsdom",
-    setupFiles: "./vitest.setup.ts",
+    setupFiles: resolve(__dirname, "vitest.setup.ts"),
     globals: true,
     include: ["src/**/*.test.tsx"],
     coverage: {
       provider: "v8",
       reporter: ["text", "lcov", "json-summary"],
-      reportsDirectory: "coverage",
+      reportsDirectory: resolve(repoRoot, "coverage"),
       include: ["src/**/*.{ts,tsx}"],
       exclude: [
         "src/**/*.stories.{ts,tsx}",
@@ -44,7 +46,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@dt": resolve(__dirname, "src/components"),
+      "@dt": resolve(repoRoot, "src/components"),
     },
   },
 });
