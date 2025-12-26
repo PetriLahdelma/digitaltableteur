@@ -18,7 +18,7 @@
     "test": "vitest run",
     "test:ci": "SKIP_STORYBOOK_TESTS=1 vitest run",
     "test:watch": "vitest",
-    "test:coverage": "npm install --prefix vite-app && npm --prefix vite-app run test:coverage",
+    "test:coverage": "npm install --prefix vite-app --include=dev && npm --prefix vite-app run test:coverage",
     "build:test-metrics": "npm --prefix vite-app run build:test-metrics",
     "test:visual": "node scripts/run-visual-tests.mjs",
     "test:visual:update": "npm run test:visual -- --updateSnapshot",
