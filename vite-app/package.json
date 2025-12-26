@@ -185,7 +185,7 @@
     "prettier": "^3.6.2",
     "prop-types": "^15.8.1",
     "stylelint": "^16.20.0",
-    "stylelint-config-standard": "^38.0.0",
+    "stylelint-config-standard": "^39.0.1",
     "stylelint-declaration-strict-value": "^1.10.11",
     "stylelint-order": "^7.0.0",
     "typescript-language-server": "^5.1.1",
