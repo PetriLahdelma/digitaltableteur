@@ -109,7 +109,7 @@
     "@storybook/addon-a11y": "^10.1.10",
     "@storybook/addon-docs": "^10.1.10",
     "@storybook/addon-mcp": "^0.1.6",
-    "@storybook/icons": "^1.6.0",
+    "@storybook/icons": "^2.0.1",
     "@storybook/react-vite": "^10.1.10",
     "@storybook/test-runner": "^0.24.2",
     "@storybook/testing-library": "^0.2.2",
