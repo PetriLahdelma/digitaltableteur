@@ -8,8 +8,10 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const repoRoot = resolve(__dirname, "..");
 
 export default defineConfig({
+  root: repoRoot,
   plugins: [
     mdx({
       remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
@@ -19,13 +21,22 @@ export default defineConfig({
   ],
   test: {
     environment: "jsdom",
-    setupFiles: "./vitest.setup.ts",
+    setupFiles: resolve(__dirname, "vitest.setup.ts"),
     globals: true,
     include: ["src/**/*.test.tsx"],
+    deps: {
+      inline: [
+        "react",
+        "react-dom",
+        "@testing-library/react",
+        "@testing-library/user-event",
+        "@testing-library/dom",
+      ],
+    },
     coverage: {
       provider: "v8",
       reporter: ["text", "lcov", "json-summary"],
-      reportsDirectory: "coverage",
+      reportsDirectory: resolve(repoRoot, "coverage"),
       include: ["src/**/*.{ts,tsx}"],
       exclude: [
         "src/**/*.stories.{ts,tsx}",
@@ -44,7 +55,38 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@dt": resolve(__dirname, "src/components"),
+      "@dt": resolve(repoRoot, "src/components"),
+      "@vitest/coverage-v8": resolve(
+        repoRoot,
+        "node_modules/@vitest/coverage-v8",
+      ),
+      react: resolve(repoRoot, "node_modules/react"),
+      "react-dom": resolve(repoRoot, "node_modules/react-dom"),
+      "react-dom/client": resolve(repoRoot, "node_modules/react-dom/client"),
+      "react/jsx-runtime": resolve(repoRoot, "node_modules/react/jsx-runtime"),
+      "@testing-library/react": resolve(
+        repoRoot,
+        "node_modules/@testing-library/react",
+      ),
+      "@testing-library/user-event": resolve(
+        repoRoot,
+        "node_modules/@testing-library/user-event",
+      ),
+      "@testing-library/dom": resolve(
+        repoRoot,
+        "node_modules/@testing-library/dom",
+      ),
+      "@testing-library/jest-dom": resolve(
+        repoRoot,
+        "node_modules/@testing-library/jest-dom",
+      ),
+      "jest-axe": resolve(repoRoot, "node_modules/jest-axe"),
+    },
+    dedupe: ["react", "react-dom"],
+  },
+  server: {
+    fs: {
+      allow: [repoRoot],
     },
   },
 });
