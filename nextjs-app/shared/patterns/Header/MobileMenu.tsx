@@ -75,7 +75,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     [t],
   );
 
-  const currentLanguage = i18n.language.split("-")[0];
+  const currentLanguage = (
+    i18n?.resolvedLanguage ||
+    i18n?.language ||
+    "en"
+  ).split("-")[0];
 
   const handleLanguageChange = (code: string) => {
     i18n.changeLanguage(code);

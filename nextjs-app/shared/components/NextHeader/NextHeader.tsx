@@ -63,9 +63,11 @@ export function NextHeader() {
     [t],
   );
 
-  const currentLang = (i18n.resolvedLanguage || i18n.language || "en").split(
-    "-",
-  )[0];
+  const currentLang = (
+    i18n?.resolvedLanguage ||
+    i18n?.language ||
+    "en"
+  ).split("-")[0];
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
     setCookie("i18next", code);
