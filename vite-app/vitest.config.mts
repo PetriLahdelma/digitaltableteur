@@ -57,7 +57,7 @@ export default defineConfig({
     alias: {
       "@dt": resolve(repoRoot, "src/components"),
       "@vitest/coverage-v8": resolve(
-        __dirname,
+        repoRoot,
         "node_modules/@vitest/coverage-v8",
       ),
       react: resolve(repoRoot, "node_modules/react"),
@@ -65,22 +65,22 @@ export default defineConfig({
       "react-dom/client": resolve(repoRoot, "node_modules/react-dom/client"),
       "react/jsx-runtime": resolve(repoRoot, "node_modules/react/jsx-runtime"),
       "@testing-library/react": resolve(
-        __dirname,
+        repoRoot,
         "node_modules/@testing-library/react",
       ),
       "@testing-library/user-event": resolve(
-        __dirname,
+        repoRoot,
         "node_modules/@testing-library/user-event",
       ),
       "@testing-library/dom": resolve(
-        __dirname,
+        repoRoot,
         "node_modules/@testing-library/dom",
       ),
       "@testing-library/jest-dom": resolve(
-        __dirname,
+        repoRoot,
         "node_modules/@testing-library/jest-dom",
       ),
-      "jest-axe": resolve(__dirname, "node_modules/jest-axe"),
+      "jest-axe": resolve(repoRoot, "node_modules/jest-axe"),
     },
     dedupe: ["react", "react-dom"],
   },
