@@ -79,14 +79,19 @@ const Header: React.FC<HeaderProps> = ({
     [t],
   );
   const resolvedNavItems = navItems ?? defaultNavItems;
+  const currentlang = (
+    i18n?.resolvedLanguage ||
+    i18n?.language ||
+    "en"
+  ).split("-")[0];
 
   // On mount, check for cookie and set language if needed
   React.useEffect(() => {
     const cookieLang = getCookie("i18next");
-    if (cookieLang && i18n.language.split("-")[0] !== cookieLang) {
+    if (cookieLang && currentlang !== cookieLang) {
       i18n.changeLanguage(cookieLang);
     }
-  }, [i18n]);
+  }, [i18n, currentlang]);
 
   React.useLayoutEffect(() => {
     let rafId: number | null = null;
@@ -131,7 +136,6 @@ const Header: React.FC<HeaderProps> = ({
     };
   }, []);
 
-  const currentlang = i18n.language.split("-")[0];
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
     setCookie("i18next", code);

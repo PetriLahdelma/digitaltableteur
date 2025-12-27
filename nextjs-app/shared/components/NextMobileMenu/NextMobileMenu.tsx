@@ -69,7 +69,11 @@ export function NextMobileMenu({
   const { t, i18n } = useTranslation();
   const { theme, cycleTheme } = usePersistentTheme();
   const pathname = usePathname();
-  const currentLang = i18n.language.split("-")[0];
+  const currentLang = (
+    i18n?.resolvedLanguage ||
+    i18n?.language ||
+    "en"
+  ).split("-")[0];
 
   React.useEffect(() => {
     if (!isOpen) return;
