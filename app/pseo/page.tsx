@@ -4,10 +4,27 @@ import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 import { PseoIndexPage } from "@dt-pages/Pseo/PseoIndexPage";
 
 export const metadata: Metadata = {
-  title: "Programmatic Guides | Digitaltableteur",
+  title: "Design System Guides | Digitaltableteur",
   description:
-    "A programmatic library of design system and DesignOps guides with clear structure and internal linking.",
+    "Comprehensive library of design system and DesignOps guides. Structured content covering services, technology stacks, and audience-specific implementation strategies.",
+  openGraph: {
+    title: "Design System Guides | Digitaltableteur",
+    description:
+      "Comprehensive library of design system and DesignOps guides. Structured content covering services, technology stacks, and audience-specific implementation strategies.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Design System Guides | Digitaltableteur",
+    description:
+      "Comprehensive library of design system and DesignOps guides. Structured content covering services, technology stacks, and audience-specific implementation strategies.",
+  },
+  alternates: {
+    canonical: "/pseo",
+  },
 };
+
+export const revalidate = 3600;
 
 export default function PseoIndexRoute() {
   const catalog = getPseoCatalog();

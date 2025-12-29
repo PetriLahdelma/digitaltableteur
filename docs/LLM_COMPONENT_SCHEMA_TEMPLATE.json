@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "1.0",
+  "template": true,
+  "templateName": "DesignSystemComponentSchema",
+  "component": {
+    "name": "ComponentName",
+    "type": "component",
+    "description": "One-line summary of what this component is and why it exists.",
+    "source": "path/to/component",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "root container",
+    "parts": [
+      {
+        "id": "primary",
+        "label": "primary part",
+        "role": "button",
+        "description": "Main interactive element."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "div",
+    "primaryInteractive": "button",
+    "contentRegion": "region"
+  },
+  "layout": {
+    "direction": "vertical | horizontal | grid",
+    "width": "fills parent | intrinsic | fixed",
+    "height": "content-driven | fixed",
+    "sizeRules": {
+      "minHeight": "token or rem value",
+      "minWidth": "token or rem value",
+      "maxWidth": "token or % value"
+    },
+    "spacing": {
+      "padding": "token",
+      "gap": "token",
+      "itemSeparator": "border or spacing rule"
+    },
+    "constraints": [
+      "Example: One row has min height of 3rem.",
+      "Example: Long text wraps and does not overflow."
+    ]
+  },
+  "visualStyle": {
+    "surface": "flat | raised | inset",
+    "elevation": "token",
+    "border": "token or stroke definition",
+    "radius": "token",
+    "backgrounds": {
+      "default": "token",
+      "hover": "token",
+      "active": "token",
+      "disabled": "token"
+    },
+    "typography": {
+      "fontFamily": "token",
+      "fontSize": "token",
+      "fontWeight": "token",
+      "lineHeight": "token"
+    },
+    "color": {
+      "text": "token",
+      "icon": "token",
+      "border": "token"
+    },
+    "iconMotion": "Describe icon transitions (if any)."
+  },
+  "tokens": {
+    "base": {
+      "color": ["token.color.*"],
+      "typography": ["token.type.*"],
+      "spacing": ["token.space.*"],
+      "radii": ["token.radius.*"],
+      "elevation": ["token.elevation.*"],
+      "motion": ["token.motion.*"]
+    },
+    "brand": {
+      "color": ["brand.*"],
+      "typography": ["brand.type.*"]
+    },
+    "mode": {
+      "light": ["mode.light.*"],
+      "dark": ["mode.dark.*"]
+    },
+    "contextual": {
+      "accessibility": ["context.a11y.*"],
+      "emotion": ["context.emotion.*"],
+      "seasonal": ["context.seasonal.*"]
+    }
+  },
+  "behavior": {
+    "map": "Describe behavior in plain language.",
+    "stateModel": "controlled | uncontrolled | hybrid",
+    "rendering": "Always renders content | Conditional rendering",
+    "defaultState": "Describe the default state."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "onClick",
+        "effect": "Describe state change or side effect."
+      }
+    ],
+    "feedback": {
+      "hover": "Describe hover feedback.",
+      "focus": "Describe focus feedback.",
+      "active": "Describe active feedback.",
+      "disabled": "Describe disabled feedback."
+    }
+  },
+  "states": {
+    "default": "Base state",
+    "hover": "Pointer hover",
+    "focus": "Keyboard focus",
+    "active": "Pressed or engaged",
+    "disabled": "Non-interactive",
+    "loading": "Optional"
+  },
+  "transitions": [
+    {
+      "from": "default",
+      "to": "hover",
+      "trigger": "pointer enter",
+      "motionTokens": ["token.motion.duration.fast", "token.motion.ease.standard"]
+    }
+  ],
+  "constraints": {
+    "layout": ["Example: fixed height in compact mode."],
+    "content": ["Example: label text must be <= 2 lines."],
+    "nesting": [
+      "Example: Card cannot contain another Card.",
+      "Example: Button cannot contain form elements."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "none",
+      "primary": "button"
+    },
+    "aria": {
+      "label": "Required when label is not visible.",
+      "controls": "ID reference when expanding/collapsing content."
+    },
+    "keyboard": "Describe key interactions (Enter/Space/Arrow keys).",
+    "focus": "Visible focus ring with sufficient contrast.",
+    "contrast": "Meets WCAG AA minimum contrast."
+  },
+  "responsiveness": {
+    "rules": "Describe how layout adapts to screen size.",
+    "breakpoints": ["mobile", "tablet", "desktop"]
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "variant",
+      "userBehavior",
+      "screenSize",
+      "accessibilityPreferences",
+      "platformPatterns",
+      "brandMood",
+      "interactionDensity",
+      "contentType"
+    ],
+    "rules": [
+      {
+        "if": { "variant": "primary" },
+        "then": { "tokens": { "color": "brand.accent" } }
+      },
+      {
+        "if": { "variant": "destructive" },
+        "then": { "tokens": { "color": "semantic.error" } }
+      },
+      {
+        "if": { "mode": "dark" },
+        "then": { "tokens": { "surface": "neutral.surfaceElevated" } }
+      },
+      {
+        "if": { "layout": "compact" },
+        "then": { "tokens": { "spacing": "space.-4" } }
+      },
+      {
+        "if": { "accessibility": "dyslexic" },
+        "then": { "tokens": { "fontWeight": "semibold" } }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Provide stable IDs and concise labels.",
+    "Avoid nesting disallowed components."
+  ]
+}

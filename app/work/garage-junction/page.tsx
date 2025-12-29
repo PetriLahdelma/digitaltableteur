@@ -4,9 +4,27 @@ import { GarageJunctionPage } from "@dt-pages/Work/GarageJunction";
 import { NextWorkNav } from "../NextWorkNav";
 
 export const metadata: Metadata = {
-  title: "Garage Junction Case Study",
-  description: "Branding, event identity, and promotion for Garage Junction at Merikerho.",
+  title: "Garage Junction Case Study | Digitaltableteur",
+  description:
+    "Complete branding, event identity design, and promotional campaign for Garage Junction music events at Merikerho, Helsinki. Event design and marketing execution.",
+  openGraph: {
+    title: "Garage Junction Case Study | Digitaltableteur",
+    description:
+      "Complete branding, event identity design, and promotional campaign for Garage Junction music events at Merikerho, Helsinki. Event design and marketing execution.",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Garage Junction Case Study | Digitaltableteur",
+    description:
+      "Complete branding, event identity design, and promotional campaign for Garage Junction music events at Merikerho, Helsinki. Event design and marketing execution.",
+  },
+  alternates: {
+    canonical: "/work/garage-junction",
+  },
 };
+
+export const revalidate = 3600;
 
 export default function GarageJunction() {
   return <GarageJunctionPage nav={<NextWorkNav />} />;

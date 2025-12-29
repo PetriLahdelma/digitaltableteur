@@ -27,10 +27,23 @@ export async function generateMetadata({
   const service = getPseoServiceBySlug(slug);
   if (!service) return {};
   const url = `${siteBase}/pseo/services/${service.slug}`;
+  const title = `${service.name} Guides | Digitaltableteur`;
+  const description = service.shortDescription;
   return {
-    title: `${service.name} Guides | Digitaltableteur`,
-    description: service.shortDescription,
+    title,
+    description,
     alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

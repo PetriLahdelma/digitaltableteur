@@ -3,9 +3,24 @@ import type { Metadata } from "next";
 import { AiUsagePage } from "@dt-pages/AiUsagePage";
 
 export const metadata: Metadata = {
-  title: "AI use and transparency",
+  title: "AI Use & Transparency | Digitaltableteur",
   description:
-    "Read how Digitaltableteur uses AI-assisted tools, the safeguards we apply, and your rights under EU law.",
+    "Discover how Digitaltableteur uses AI-assisted tools responsibly, the safeguards we apply, and your rights under GDPR and EU law. Committed to ethical AI practices.",
+  openGraph: {
+    title: "AI Use & Transparency | Digitaltableteur",
+    description:
+      "Discover how Digitaltableteur uses AI-assisted tools responsibly, the safeguards we apply, and your rights under GDPR and EU law. Committed to ethical AI practices.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Use & Transparency | Digitaltableteur",
+    description:
+      "Discover how Digitaltableteur uses AI-assisted tools responsibly, the safeguards we apply, and your rights under GDPR and EU law. Committed to ethical AI practices.",
+  },
+  alternates: {
+    canonical: "/ai-use",
+  },
 };
 
 // Cache this marketing page for an hour

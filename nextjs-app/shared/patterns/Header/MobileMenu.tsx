@@ -242,7 +242,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                         : ""
                     }`.trim()}
                     aria-current={
-                      currentLanguage === language.code ? "true" : undefined
+                      currentLanguage === language.code ? "page" : undefined
                     }
                   >
                     {language.label}

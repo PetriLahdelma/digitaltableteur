@@ -27,10 +27,23 @@ export async function generateMetadata({
   const stack = getPseoStackBySlug(slug);
   if (!stack) return {};
   const url = `${siteBase}/pseo/stacks/${stack.slug}`;
+  const title = `${stack.name} Design System Guides | Digitaltableteur`;
+  const description = stack.shortDescription;
   return {
-    title: `${stack.name} Design System Guides | Digitaltableteur`,
-    description: stack.shortDescription,
+    title,
+    description,
     alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

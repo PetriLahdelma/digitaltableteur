@@ -52,6 +52,7 @@ const config: StorybookConfig = {
 
     const optimizeIncludes = [
       "chart.js",
+      "mermaid",
       "react-chartjs-2",
       "@storybook/testing-library",
     ];

@@ -221,7 +221,7 @@ export function NextHeader() {
                     currentLang === lang.code ? styles.languageLinkActive : ""
                   }`.trim()}
                   aria-label={lang.label}
-                  aria-current={currentLang === lang.code ? "true" : undefined}
+                  aria-current={currentLang === lang.code ? "page" : undefined}
                 >
                   {lang.label}
                 </button>
