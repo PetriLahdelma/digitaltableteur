@@ -90,6 +90,23 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-NJ654G92');
           `}
         </Script>
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="iO1vJe+oY/MXihktNC/upw"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-09HMKEXGPX"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-config" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-09HMKEXGPX');
+          `}
+        </Script>
       </head>
       <body suppressHydrationWarning>
         <noscript>
