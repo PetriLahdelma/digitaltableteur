@@ -134,7 +134,7 @@ export function IllustrationsPage({ nav }: { nav?: React.ReactNode }) {
               />
               <img
                 src="/images/portfolio/illustrations/gallery/nitor_gods_of_atk.jpg"
-                alt="Shadow from Donald Duck illustration"
+                alt="Fantasy illustration of warrior characters in Norse mythology style"
                 style={{
                   width: "100%",
                   height: "auto",

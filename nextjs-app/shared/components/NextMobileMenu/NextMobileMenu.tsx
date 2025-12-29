@@ -170,7 +170,7 @@ export function NextMobileMenu({
                           : ""
                       }`.trim()}
                       aria-current={
-                        currentLang === lang.code ? "true" : undefined
+                        currentLang === lang.code ? "page" : undefined
                       }
                     >
                       {lang.label}

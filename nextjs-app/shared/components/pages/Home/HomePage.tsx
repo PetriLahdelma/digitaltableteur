@@ -202,7 +202,7 @@ export function HomePage() {
                 className={styles.heroTitleWrapper}
               >
                 <Title
-                  level={2}
+                  level={1}
                   size="L"
                   terminals="sans"
                   className={styles.heroTitle}
