@@ -1,12 +1,42 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Source,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import React from "react";
 import Accordion from "./Accordion";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
+import schema from "./schema.json";
 
 const meta: Meta<typeof Accordion> = {
   title: "Components/Accordion",
   component: Accordion,
   tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <Source language="json" code={JSON.stringify(schema, null, 2)} />
+        </>
+      ),
+    },
+  },
 };
 
 export default meta;

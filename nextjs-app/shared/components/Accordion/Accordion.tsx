@@ -35,6 +35,7 @@ const Accordion: React.FC<AccordionProps> = ({ items, defaultOpenId }) => {
           >
             <button
               type="button"
+              id={`trigger-${item.id}`}
               className={styles.trigger}
               aria-expanded={open}
               aria-controls={`panel-${item.id}`}

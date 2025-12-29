@@ -29,10 +29,23 @@ export async function generateMetadata({
   const audience = getPseoAudienceBySlug(slug);
   if (!audience) return {};
   const url = `${siteBase}/pseo/audiences/${audience.slug}`;
+  const title = `${audience.name} Guides | Digitaltableteur`;
+  const description = audience.shortDescription;
   return {
-    title: `${audience.name} Guides | Digitaltableteur`,
-    description: audience.shortDescription,
+    title,
+    description,
     alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 
