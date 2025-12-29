@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LLM Component Schema Guide</title>
+    <style>
+      :root {
+        --blue: #00f;
+        --white: #fff;
+        --text: #111;
+        --muted: #4a4a4a;
+        --border: #d9d9d9;
+        --bg: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:focus {
+        text-decoration: underline;
+      }
+
+      .page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 48px 64px 72px;
+      }
+
+      header h1 {
+        font-size: 2.6rem;
+        line-height: 1.1;
+        margin: 0 0 8px;
+      }
+
+      header p {
+        margin: 0 0 8px;
+        max-width: 70ch;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 1rem;
+        margin-top: 8px;
+      }
+
+      .toc {
+        border: 1px solid var(--blue);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin: 32px 0 40px;
+        background: #f7f8ff;
+      }
+
+      .toc h2 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+      }
+
+      .toc ol {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .section {
+        margin: 48px 0;
+      }
+
+      h2 {
+        font-size: 1.7rem;
+        margin: 0 0 12px;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        margin: 24px 0 8px;
+      }
+
+      p {
+        max-width: 76ch;
+      }
+
+      ul,
+      ol {
+        padding-left: 20px;
+        max-width: 76ch;
+      }
+
+      .callout {
+        border-left: 4px solid var(--blue);
+        padding: 12px 16px;
+        background: #f5f6ff;
+        margin: 16px 0;
+      }
+
+      .code {
+        background: #f5f5f5;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+        overflow-x: auto;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 0.9rem;
+        white-space: pre-wrap;
+      }
+
+      .file-path {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 0.95rem;
+        background: #f3f3f3;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+
+      .diagram {
+        border: 1px solid var(--blue);
+        border-radius: 12px;
+        padding: 16px;
+        margin: 16px 0 24px;
+        background: #f9f9ff;
+      }
+
+      .diagram figcaption {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--blue);
+      }
+
+      .mermaid {
+        background: var(--white);
+        padding: 8px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 0.95rem;
+      }
+
+      table th,
+      table td {
+        border: 1px solid var(--border);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table th {
+        background: #f4f4f4;
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        margin-top: 56px;
+        padding-top: 16px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media print {
+        .page {
+          padding: 0;
+        }
+
+        a {
+          text-decoration: none;
+        }
+
+        .toc {
+          break-after: page;
+        }
+
+        .section {
+          break-inside: avoid;
+        }
+
+        .diagram {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>LLM Component Schema Guide</h1>
+        <p>
+          This guide explains how to author and apply LLM Component Schemas to
+          make design system components programmable, controllable, and AI-readable.
+          Tokens are the DNA. Schema is the skeleton. Generative rules are the brain.
+        </p>
+        <p class="subtitle">
+          Public distribution edition. Designed for fast scanning, deep reference,
+          and accessible reading.
+        </p>
+      </header>
+
+      <nav class="toc" aria-label="Table of contents" role="doc-toc">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#why-schema">Why schema exists</a></li>
+          <li><a href="#file-locations">Template locations</a></li>
+          <li><a href="#choose-template">Choosing the right template</a></li>
+          <li><a href="#schema-anatomy">Schema anatomy (blueprint)</a></li>
+          <li><a href="#ai-stack">AI design system stack</a></li>
+          <li><a href="#token-layers">Token layers (Atomic DNA)</a></li>
+          <li><a href="#behavior">Behavior and interaction</a></li>
+          <li><a href="#states">States, transitions, constraints</a></li>
+          <li><a href="#accessibility">Accessibility mapping</a></li>
+          <li><a href="#generative">Generative rules</a></li>
+          <li><a href="#tailwind">Tailwind-specific schema entries</a></li>
+          <li><a href="#implementation">Implementation steps</a></li>
+          <li><a href="#storybook">Storybook integration</a></li>
+          <li><a href="#validation">Validation checklist</a></li>
+        </ol>
+      </nav>
+
+      <section class="section" id="why-schema">
+        <h2>Why schema exists</h2>
+        <p>
+          Without schema, AI can only render pixels. With schema, AI can reason
+          about behavior, constraints, and intent. A schema defines the component
+          as a system of meaning, not just a visual output.
+        </p>
+        <ul>
+          <li>Schema defines intent and structure, not just appearance.</li>
+          <li>It standardizes behavior across variants and contexts.</li>
+          <li>It provides a single source of truth for constraints.</li>
+          <li>It enables automated validation and consistency checks.</li>
+        </ul>
+      </section>
+
+      <section class="section" id="file-locations">
+        <h2>Template locations</h2>
+        <p>Use the templates located in:</p>
+        <ul>
+          <li><span class="file-path">docs/LLM_COMPONENT_SCHEMA_TEMPLATE/LLM_COMPONENT_SCHEMA_TEMPLATE.json</span></li>
+          <li><span class="file-path">docs/LLM_COMPONENT_SCHEMA_TEMPLATE/LLM_COMPONENT_SCHEMA_TEMPLATE_TAILWINDCSS.json</span></li>
+        </ul>
+        <p>
+          Each component should include a <span class="file-path">schema.json</span>
+          file inside its component folder, for example:
+        </p>
+        <pre class="code">nextjs-app/shared/components/Accordion/schema.json</pre>
+      </section>
+
+      <section class="section" id="choose-template">
+        <h2>Choosing the right template</h2>
+        <p>
+          Choose the base template for token-driven or CSS-module components.
+          Choose the Tailwind template when Tailwind utility classes define the
+          visual system and state logic.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Template</th>
+              <th>Use when</th>
+              <th>Key additions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Base</td>
+              <td>Styles are token-driven, CSS modules, or inline styles.</td>
+              <td>Token mapping, behavior, constraints.</td>
+            </tr>
+            <tr>
+              <td>Tailwind</td>
+              <td>Tailwind utilities encode spacing, color, states, and layout.</td>
+              <td>Class maps, variant sources, safelist, class constraints.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" id="schema-anatomy">
+        <h2>Schema anatomy (blueprint)</h2>
+        <p>
+          The schema is organized into predictable sections so AI can understand
+          anatomy, layout, visual rules, behavior, and constraints.
+        </p>
+        <figure class="diagram" role="figure">
+          <figcaption>Schema Blueprint</figcaption>
+          <pre class="mermaid">
+graph TD
+  root[Component Schema] --> anatomy[Anatomy]
+  root --> layout[Layout Logic]
+  root --> visual[Visual Style]
+  root --> behavior[Behavior Map]
+  root --> interaction[Interaction Logic]
+  root --> states[States + Transitions]
+  root --> accessibility[Accessibility Rules]
+  root --> constraints[Constraints + Nesting]
+  root --> tokens[Token Layers]
+  root --> rules[Generative Rules]
+          </pre>
+        </figure>
+        <div class="callout">
+          A component is not a rectangle. It is an object with semantic roles,
+          size rules, spacing constraints, interaction feedback, and behavior.
+        </div>
+      </section>
+
+      <section class="section" id="ai-stack">
+        <h2>AI design system stack</h2>
+        <p>
+          Tokens define what is possible. Schema defines what is allowed. Rules
+          define how components adapt to context. The interpreter enforces it.
+        </p>
+        <figure class="diagram" role="figure">
+          <figcaption>AI Design System Stack</figcaption>
+          <pre class="mermaid">
+flowchart LR
+  tokens[Token Layers\nBase / Brand / Mode / Context] --> schema[Schema Library\nComponents / Patterns / Layouts]
+  schema --> rules[Generative Rules Engine]
+  rules --> interpreter[AI Interpreter]
+  interpreter --> ui[UI Output]
+  interpreter --> validate[Validation\nConstraints + Accessibility]
+  context[Context Signals\nUser / Device / Intent] --> rules
+  schema --> validate
+          </pre>
+        </figure>
+      </section>
+
+      <section class="section" id="token-layers">
+        <h2>Token layers (Atomic DNA)</h2>
+        <p>
+          Tokens are layered so AI can reason about intent and context.
+          Base tokens define primitives, brand tokens define voice, mode tokens
+          define theme, and contextual tokens adapt to needs such as accessibility.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Purpose</th>
+              <th>Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Base</td>
+              <td>Raw primitives and scale</td>
+              <td>token.color.gray.900, token.space.16</td>
+            </tr>
+            <tr>
+              <td>Brand</td>
+              <td>Identity and voice</td>
+              <td>brand.accent, brand.display</td>
+            </tr>
+            <tr>
+              <td>Mode</td>
+              <td>Theme-specific overrides</td>
+              <td>mode.dark.surface, mode.light.text</td>
+            </tr>
+            <tr>
+              <td>Contextual</td>
+              <td>Emotion, season, accessibility</td>
+              <td>context.a11y.highContrast, context.emotion.calm</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" id="behavior">
+        <h2>Behavior and interaction</h2>
+        <p>
+          Behavior explains what the component does by default. Interaction logic
+          describes triggers and feedback in every state.
+        </p>
+        <pre class="code">"behavior": {
+  "map": "Clicking a trigger opens a panel and closes others.",
+  "stateModel": "uncontrolled",
+  "rendering": "Panels render only when open.",
+  "defaultState": "all closed"
+},
+"interaction": {
+  "logic": [
+    { "trigger": "onClick", "effect": "toggle panel" }
+  ],
+  "feedback": {
+    "hover": "highlight trigger",
+    "focus": "focus ring",
+    "active": "press feedback"
+  }
+}</pre>
+      </section>
+
+      <section class="section" id="states">
+        <h2>States, transitions, constraints</h2>
+        <p>
+          States describe a finite set of conditions. Transitions explain how the
+          component moves between those states. Constraints define what is allowed.
+        </p>
+        <figure class="diagram" role="figure">
+          <figcaption>State Transitions</figcaption>
+          <pre class="mermaid">
+stateDiagram-v2
+  [*] --> Idle
+  Idle --> Hovered: pointer_enter
+  Hovered --> Idle: pointer_leave
+  Idle --> Active: pointer_down
+  Active --> Idle: pointer_up
+  Idle --> Disabled: disabled_true
+  Disabled --> Idle: disabled_false
+          </pre>
+        </figure>
+        <pre class="code">"constraints": {
+  "layout": ["Fixed height in compact mode."],
+  "content": ["Label must be <= 2 lines."],
+  "nesting": [
+    "Card cannot contain another Card.",
+    "Button cannot contain form elements."
+  ]
+}</pre>
+      </section>
+
+      <section class="section" id="accessibility">
+        <h2>Accessibility mapping</h2>
+        <p>
+          Accessibility rules make semantics explicit and enforceable. Use roles,
+          aria relationships, and keyboard behavior to define expected interaction.
+        </p>
+        <pre class="code">"accessibility": {
+  "roles": {
+    "container": "div",
+    "primary": "button",
+    "panel": "region"
+  },
+  "aria": {
+    "expanded": "true when open",
+    "controls": "panel-id",
+    "labelledBy": "trigger-id"
+  },
+  "keyboard": "Enter/Space toggles panel"
+}</pre>
+      </section>
+
+      <section class="section" id="generative">
+        <h2>Generative rules</h2>
+        <p>
+          Generative rules transform context into token overrides. They are the
+          bridge between intent and appearance.
+        </p>
+        <figure class="diagram" role="figure">
+          <figcaption>Generative Rule Pipeline</figcaption>
+          <pre class="mermaid">
+flowchart TD
+  context[Context Inputs] --> match[Rule Matching]
+  match --> tokens[Token Overrides]
+  tokens --> render[Render Output]
+  render --> validate[Validate Constraints + A11y]
+  validate --> output[Final UI]
+          </pre>
+        </figure>
+        <pre class="code">"generativeRules": {
+  "contextInputs": ["variant", "mode", "density"],
+  "rules": [
+    { "if": { "variant": "primary" }, "then": { "tokens": { "color": "brand.accent" } } },
+    { "if": { "variant": "destructive" }, "then": { "tokens": { "color": "semantic.error" } } },
+    { "if": { "mode": "dark" }, "then": { "tokens": { "surface": "neutral.surfaceElevated" } } }
+  ]
+}</pre>
+      </section>
+
+      <section class="section" id="tailwind">
+        <h2>Tailwind-specific schema entries</h2>
+        <p>
+          The Tailwind template adds structured class maps so AI understands how
+          utility classes encode layout, states, and variants.
+        </p>
+        <ul>
+          <li><strong>layout.classMap</strong> encodes base layout utilities.</li>
+          <li><strong>visualStyle.classMap</strong> maps surface, radius, and typography utilities.</li>
+          <li><strong>interaction.classMap</strong> lists state and attribute variants.</li>
+          <li><strong>states.classMap</strong> documents class expectations by state.</li>
+          <li><strong>tailwind.classComposition</strong> defines how variants are assembled.</li>
+          <li><strong>tailwind.safelist</strong> ensures dynamic classes are preserved.</li>
+        </ul>
+        <pre class="code">"interaction": {
+  "classMap": {
+    "hover": ["hover:bg-surface-hover"],
+    "focus": ["focus-visible:ring-2", "focus-visible:ring-brand-500"],
+    "dataState": ["data-[state=open]:bg-surface-2"]
+  }
+},
+"tailwind": {
+  "variantSources": ["hover", "focus-visible", "data-[state=open]"]
+}</pre>
+      </section>
+
+      <section class="section" id="implementation">
+        <h2>Implementation steps</h2>
+        <ol>
+          <li>Copy the correct template into the component folder as <span class="file-path">schema.json</span>.</li>
+          <li>Fill in component metadata, anatomy, layout, visual style, and tokens.</li>
+          <li>Define behavior, interactions, states, and constraints.</li>
+          <li>Add accessibility roles and keyboard interactions.</li>
+          <li>Include generative rules for context-driven overrides.</li>
+          <li>For Tailwind: define class maps and variant sources explicitly.</li>
+        </ol>
+      </section>
+
+      <section class="section" id="storybook">
+        <h2>Storybook integration</h2>
+        <p>
+          Import the schema into the component story and expose it via Storybook
+          parameters. This allows humans and LLMs to verify the schema at the
+          documentation layer.
+        </p>
+        <pre class="code">import schema from "./schema.json";
+
+const meta = {
+  title: "Components/MyComponent",
+  component: MyComponent,
+  tags: ["autodocs"],
+  parameters: {
+    llm: { schema }
+  }
+};</pre>
+      </section>
+
+      <section class="section" id="validation">
+        <h2>Validation checklist</h2>
+        <ul>
+          <li>Schema uses required sections with meaningful content.</li>
+          <li>Behavior and interaction maps match actual component behavior.</li>
+          <li>Constraints align with real layout limitations.</li>
+          <li>Accessibility roles and keyboard rules are accurate.</li>
+          <li>Generative rules map to tokens or Tailwind classes correctly.</li>
+          <li>Storybook exposes schema for review and auditing.</li>
+        </ul>
+      </section>
+
+      <footer>
+        LLM Component Schema Guide. MIT Distribution License. Copyright
+        Petri Lahdelma Digitaltableteur. digitaltableteur.com
+      </footer>
+    </main>
+  </body>
+</html>

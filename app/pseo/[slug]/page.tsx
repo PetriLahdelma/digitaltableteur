@@ -36,17 +36,24 @@ export async function generateMetadata({
   if (!page) return {};
 
   const url = `${siteBase}/pseo/${page.slug}`;
+  const title = `${page.title} | Digitaltableteur`;
+  const description = page.description;
   return {
-    title: `${page.title} | Digitaltableteur`,
-    description: page.description,
+    title,
+    description,
     alternates: {
       canonical: url,
     },
     openGraph: {
       type: "website",
-      title: page.title,
-      description: page.description,
+      title,
+      description,
       url,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
   };
 }

@@ -284,7 +284,7 @@ const Header: React.FC<HeaderProps> = ({
                   currentlang === lang.code ? styles.languageLinkActive : ""
                 }`.trim()}
                 aria-label={lang.label}
-                aria-current={currentlang === lang.code ? "true" : undefined}
+                aria-current={currentlang === lang.code ? "page" : undefined}
               >
                 {lang.label}
               </button>

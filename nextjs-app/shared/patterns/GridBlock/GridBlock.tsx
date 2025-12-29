@@ -116,11 +116,14 @@ export default function GridBlock({
             }
 
             if (cell.type === "image" && cell.src) {
+              // Require alt text for all images - empty string is only valid for decorative images
+              const altText = cell.alt ?? "";
+
               return (
                 <figure key={index} className={styles.col}>
                   <Image
                     src={cell.src}
-                    alt={cell.alt || ""}
+                    alt={altText}
                     layout="responsive"
                     width={cell.width || 1184}
                     height={cell.height || 500}

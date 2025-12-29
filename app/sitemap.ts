@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/work",
     "/studio",
+    "/privacy-policy",
+    "/accessibility",
     "/cookie-policy",
     "/cookie-policy-full-en",
     "/cookie-policy-full-fi",
@@ -35,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/work/new-things-co",
     "/work/illustrations",
     "/work/garage-junction",
+    "/work/helsinki-design-system",
   ].map((path) => ({
     url: toUrl(path),
     lastModified: today,

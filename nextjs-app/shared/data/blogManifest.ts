@@ -6,11 +6,12 @@ import Post2, { frontmatter as Post2Frontmatter } from "../../../content/posts/d
 import Post3, { frontmatter as Post3Frontmatter } from "../../../content/posts/designing-in-2025.mdx"
 import Post4, { frontmatter as Post4Frontmatter } from "../../../content/posts/digital-craftsmanship.mdx"
 import Post5, { frontmatter as Post5Frontmatter } from "../../../content/posts/figma-mcp-design-systems.mdx"
-import Post6, { frontmatter as Post6Frontmatter } from "../../../content/posts/in-search-of-impact.mdx"
-import Post7, { frontmatter as Post7Frontmatter } from "../../../content/posts/petri-lahdelma-bio.mdx"
-import Post8, { frontmatter as Post8Frontmatter } from "../../../content/posts/the-evolutionary-difference-between-constructive-and-constrictive-criticism.mdx"
-import Post9, { frontmatter as Post9Frontmatter } from "../../../content/posts/thoughts-on-future-branding.mdx"
-import Post10, { frontmatter as Post10Frontmatter } from "../../../content/posts/workflow-tips.mdx"
+import Post6, { frontmatter as Post6Frontmatter } from "../../../content/posts/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work.mdx"
+import Post7, { frontmatter as Post7Frontmatter } from "../../../content/posts/in-search-of-impact.mdx"
+import Post8, { frontmatter as Post8Frontmatter } from "../../../content/posts/petri-lahdelma-bio.mdx"
+import Post9, { frontmatter as Post9Frontmatter } from "../../../content/posts/the-evolutionary-difference-between-constructive-and-constrictive-criticism.mdx"
+import Post10, { frontmatter as Post10Frontmatter } from "../../../content/posts/thoughts-on-future-branding.mdx"
+import Post11, { frontmatter as Post11Frontmatter } from "../../../content/posts/workflow-tips.mdx"
 
 export type BlogManifestEntry = {
   slug: string;
@@ -38,9 +39,10 @@ export const blogManifest: BlogManifestEntry[] = [
   { slug: "designing-in-2025", Component: Post3 as unknown as import("react").ComponentType, frontmatter: Post3Frontmatter },
   { slug: "digital-craftsmanship", Component: Post4 as unknown as import("react").ComponentType, frontmatter: Post4Frontmatter },
   { slug: "figma-mcp-design-systems", Component: Post5 as unknown as import("react").ComponentType, frontmatter: Post5Frontmatter },
-  { slug: "in-search-of-impact", Component: Post6 as unknown as import("react").ComponentType, frontmatter: Post6Frontmatter },
-  { slug: "petri-lahdelma-bio", Component: Post7 as unknown as import("react").ComponentType, frontmatter: Post7Frontmatter },
-  { slug: "the-evolutionary-difference-between-constructive-and-constrictive-criticism", Component: Post8 as unknown as import("react").ComponentType, frontmatter: Post8Frontmatter },
-  { slug: "thoughts-on-future-branding", Component: Post9 as unknown as import("react").ComponentType, frontmatter: Post9Frontmatter },
-  { slug: "workflow-tips", Component: Post10 as unknown as import("react").ComponentType, frontmatter: Post10Frontmatter }
+  { slug: "from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work", Component: Post6 as unknown as import("react").ComponentType, frontmatter: Post6Frontmatter },
+  { slug: "in-search-of-impact", Component: Post7 as unknown as import("react").ComponentType, frontmatter: Post7Frontmatter },
+  { slug: "petri-lahdelma-bio", Component: Post8 as unknown as import("react").ComponentType, frontmatter: Post8Frontmatter },
+  { slug: "the-evolutionary-difference-between-constructive-and-constrictive-criticism", Component: Post9 as unknown as import("react").ComponentType, frontmatter: Post9Frontmatter },
+  { slug: "thoughts-on-future-branding", Component: Post10 as unknown as import("react").ComponentType, frontmatter: Post10Frontmatter },
+  { slug: "workflow-tips", Component: Post11 as unknown as import("react").ComponentType, frontmatter: Post11Frontmatter }
 ];

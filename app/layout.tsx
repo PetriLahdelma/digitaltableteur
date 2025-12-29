@@ -11,6 +11,7 @@ import { NextThemeProvider } from "../providers/ThemeProvider";
 import { ToastProvider } from "../providers/ToastProvider";
 import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
 import { NextLayout } from "@dt/NextLayout";
+import { HtmlLangSync } from "./components/HtmlLangSync";
 import "./globals.css";
 
 const siteUrl =
@@ -156,6 +157,7 @@ export default function RootLayout({
         />
         <NextThemeProvider>
           <I18nProvider>
+            <HtmlLangSync />
             <ToastProvider>
               <CookieConsentProvider autoShow={true}>
                 <NextLayout>{children}</NextLayout>

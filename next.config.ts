@@ -107,6 +107,7 @@ const nextConfig: NextConfig = {
       "nextjs-app/shared/components",
     );
     const appRoot = path.resolve(__dirname, ".");
+    const rootNodeModules = path.resolve(__dirname, "node_modules");
 
     const existingAlias = config.resolve.alias;
     const normalizedAlias: Record<string, string | false> = Array.isArray(
@@ -120,6 +121,12 @@ const nextConfig: NextConfig = {
       "@": appRoot,
       "@dt": nextjsSharedComponents,
       "@dt-pages": path.join(nextjsSharedComponents, "pages"),
+      i18next: path.join(rootNodeModules, "i18next"),
+      "react-i18next": path.join(rootNodeModules, "react-i18next"),
+      "i18next-browser-languagedetector": path.join(
+        rootNodeModules,
+        "i18next-browser-languagedetector",
+      ),
     };
 
     // Legacy Vite pages moved to shared/vite-pages to prevent routing conflicts
