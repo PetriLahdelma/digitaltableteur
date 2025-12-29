@@ -124,6 +124,11 @@ function buildMarkdown(body, urlBuilder) {
           const provider = node.provider || "embed";
           return `\n<Embed provider="${provider}" url="${node.url}" />\n`;
         },
+        code: ({ node }) => {
+          if (!node?.code) return "";
+          const language = node.language ? node.language : "";
+          return `\n\`\`\`${language}\n${node.code}\n\`\`\`\n`;
+        },
         divider: () => "\n---\n",
       },
     },

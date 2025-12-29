@@ -184,8 +184,8 @@
   color: var(--code-token-keyword);
 }
 
-:global(.token.keyword),
-:global([data-token="keyword"]) {
+.code :global(.token.keyword),
+.code :global([data-token="keyword"]) {
   font-weight: 600;
   color: var(--code-token-keyword);
 }
@@ -194,8 +194,8 @@
   color: var(--code-token-string);
 }
 
-:global(.token.string),
-:global([data-token="string"]) {
+.code :global(.token.string),
+.code :global([data-token="string"]) {
   color: var(--code-token-string);
 }
 
@@ -203,8 +203,8 @@
   color: var(--code-token-number);
 }
 
-:global(.token.number),
-:global([data-token="number"]) {
+.code :global(.token.number),
+.code :global([data-token="number"]) {
   color: var(--code-token-number);
 }
 
@@ -213,8 +213,8 @@
   font-style: italic;
 }
 
-:global(.token.comment),
-:global([data-token="comment"]) {
+.code :global(.token.comment),
+.code :global([data-token="comment"]) {
   color: var(--code-token-comment);
   font-style: italic;
 }
