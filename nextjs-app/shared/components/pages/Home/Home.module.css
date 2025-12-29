@@ -111,6 +111,13 @@
   font-weight: 500;
 }
 
+.home h1.heroTitle {
+  margin-block-start: 0;
+  font-family: var(--font-title);
+  font-size: var(--font-size-title-l);
+  line-height: var(--line-height-snug);
+}
+
 .lead {
   margin-block-start: 3.5rem;
 }

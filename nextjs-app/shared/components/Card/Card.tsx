@@ -429,7 +429,6 @@ const Card: React.FC<CardProps> = ({
       role={isInteractive ? "button" : undefined}
       onClick={onClick}
       onKeyDown={handleKeyDown}
-      aria-pressed={undefined}
     >
       {innerContent}
     </div>

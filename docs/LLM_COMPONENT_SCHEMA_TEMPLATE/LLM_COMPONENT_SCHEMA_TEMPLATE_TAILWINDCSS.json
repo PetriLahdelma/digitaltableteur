@@ -1,0 +1,323 @@
+{
+  "schemaVersion": "1.0",
+  "template": true,
+  "templateName": "DesignSystemComponentSchemaTailwind",
+  "stylingSystem": "tailwind",
+  "component": {
+    "name": "ComponentName",
+    "type": "component",
+    "description": "One-line summary of what this component is and why it exists.",
+    "source": "path/to/component",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "root container",
+    "parts": [
+      {
+        "id": "primary",
+        "label": "primary part",
+        "role": "button",
+        "description": "Main interactive element."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "div",
+    "primaryInteractive": "button",
+    "contentRegion": "region"
+  },
+  "layout": {
+    "direction": "vertical | horizontal | grid",
+    "width": "fills parent | intrinsic | fixed",
+    "height": "content-driven | fixed",
+    "sizeRules": {
+      "minHeight": "token or rem value",
+      "minWidth": "token or rem value",
+      "maxWidth": "token or % value"
+    },
+    "spacing": {
+      "padding": "token",
+      "gap": "token",
+      "itemSeparator": "border or spacing rule"
+    },
+    "constraints": [
+      "Example: One row has min height of 3rem.",
+      "Example: Long text wraps and does not overflow."
+    ],
+    "classMap": {
+      "base": ["flex", "items-center"],
+      "spacing": ["gap-2", "px-4", "py-2"],
+      "sizing": ["min-h-10", "w-full"]
+    }
+  },
+  "visualStyle": {
+    "surface": "flat | raised | inset",
+    "elevation": "token",
+    "border": "token or stroke definition",
+    "radius": "token",
+    "backgrounds": {
+      "default": "token",
+      "hover": "token",
+      "active": "token",
+      "disabled": "token"
+    },
+    "typography": {
+      "fontFamily": "token",
+      "fontSize": "token",
+      "fontWeight": "token",
+      "lineHeight": "token"
+    },
+    "color": {
+      "text": "token",
+      "icon": "token",
+      "border": "token"
+    },
+    "iconMotion": "Describe icon transitions (if any).",
+    "classMap": {
+      "surface": ["bg-surface", "border", "shadow-sm"],
+      "radius": ["rounded-md"],
+      "typography": ["text-sm", "font-medium", "leading-tight"],
+      "color": ["text-foreground"]
+    }
+  },
+  "tokens": {
+    "base": {
+      "color": ["token.color.*"],
+      "typography": ["token.type.*"],
+      "spacing": ["token.space.*"],
+      "radii": ["token.radius.*"],
+      "elevation": ["token.elevation.*"],
+      "motion": ["token.motion.*"]
+    },
+    "brand": {
+      "color": ["brand.*"],
+      "typography": ["brand.type.*"]
+    },
+    "mode": {
+      "light": ["mode.light.*"],
+      "dark": ["mode.dark.*"]
+    },
+    "contextual": {
+      "accessibility": ["context.a11y.*"],
+      "emotion": ["context.emotion.*"],
+      "seasonal": ["context.seasonal.*"]
+    },
+    "tailwind": {
+      "themeMapping": {
+        "colors": [
+          "brand.primary -> text-brand-600",
+          "surface.default -> bg-surface",
+          "border.default -> border-border"
+        ],
+        "spacing": ["space.4 -> p-4", "space.2 -> gap-2"],
+        "radii": ["radius.md -> rounded-md"],
+        "elevation": ["elevation.sm -> shadow-sm"],
+        "typography": [
+          "type.body -> text-sm font-normal",
+          "type.button -> text-sm font-semibold"
+        ]
+      },
+      "utilities": {
+        "layout": ["flex", "items-center", "gap-2"],
+        "typography": ["text-sm", "font-medium", "leading-tight"],
+        "surface": ["bg-surface", "border", "shadow-sm"],
+        "motion": ["transition-colors", "duration-150", "ease-out"]
+      }
+    }
+  },
+  "behavior": {
+    "map": "Describe behavior in plain language.",
+    "stateModel": "controlled | uncontrolled | hybrid",
+    "rendering": "Always renders content | Conditional rendering",
+    "defaultState": "Describe the default state."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "onClick",
+        "effect": "Describe state change or side effect."
+      }
+    ],
+    "feedback": {
+      "hover": "Describe hover feedback.",
+      "focus": "Describe focus feedback.",
+      "active": "Describe active feedback.",
+      "disabled": "Describe disabled feedback."
+    },
+    "classMap": {
+      "hover": ["hover:bg-surface-hover"],
+      "focus": ["focus-visible:ring-2", "focus-visible:ring-brand-500"],
+      "active": ["active:translate-y-px"],
+      "disabled": ["disabled:opacity-50", "disabled:pointer-events-none"],
+      "dataState": ["data-[state=open]:bg-surface-2"],
+      "ariaState": ["aria-expanded:font-semibold"],
+      "groupPeer": ["group-hover:underline", "peer-checked:bg-brand-600"]
+    }
+  },
+  "states": {
+    "default": "Base state",
+    "hover": "Pointer hover",
+    "focus": "Keyboard focus",
+    "active": "Pressed or engaged",
+    "disabled": "Non-interactive",
+    "loading": "Optional",
+    "classMap": {
+      "default": ["text-foreground", "bg-surface"],
+      "hover": ["bg-surface-hover"],
+      "focus": ["ring-2", "ring-brand-500"],
+      "active": ["bg-surface-active"],
+      "disabled": ["opacity-50", "pointer-events-none"]
+    }
+  },
+  "transitions": [
+    {
+      "from": "default",
+      "to": "hover",
+      "trigger": "pointer enter",
+      "motionTokens": ["token.motion.duration.fast", "token.motion.ease.standard"],
+      "classMap": ["transition-colors", "duration-150", "ease-out"]
+    }
+  ],
+  "constraints": {
+    "layout": ["Example: fixed height in compact mode."],
+    "content": ["Example: label text must be <= 2 lines."],
+    "nesting": [
+      "Example: Card cannot contain another Card.",
+      "Example: Button cannot contain form elements."
+    ],
+    "classConstraints": [
+      "Avoid conflicting utilities in the same axis.",
+      "Prefer theme tokens over arbitrary values.",
+      "Document any arbitrary values and their rationale."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "none",
+      "primary": "button"
+    },
+    "aria": {
+      "label": "Required when label is not visible.",
+      "controls": "ID reference when expanding/collapsing content."
+    },
+    "keyboard": "Describe key interactions (Enter/Space/Arrow keys).",
+    "focus": "Visible focus ring with sufficient contrast.",
+    "contrast": "Meets WCAG AA minimum contrast."
+  },
+  "responsiveness": {
+    "rules": "Describe how layout adapts to screen size.",
+    "breakpoints": ["mobile", "tablet", "desktop"],
+    "classMap": {
+      "sm": ["sm:grid-cols-2", "sm:gap-4"],
+      "md": ["md:grid-cols-3", "md:px-6"],
+      "lg": ["lg:max-w-5xl"]
+    }
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "variant",
+      "userBehavior",
+      "screenSize",
+      "accessibilityPreferences",
+      "platformPatterns",
+      "brandMood",
+      "interactionDensity",
+      "contentType"
+    ],
+    "rules": [
+      {
+        "if": { "variant": "primary" },
+        "then": {
+          "tokens": { "color": "brand.accent" },
+          "classes": ["bg-brand-600", "text-white"]
+        }
+      },
+      {
+        "if": { "variant": "destructive" },
+        "then": {
+          "tokens": { "color": "semantic.error" },
+          "classes": ["bg-red-600", "text-white"]
+        }
+      },
+      {
+        "if": { "mode": "dark" },
+        "then": {
+          "tokens": { "surface": "neutral.surfaceElevated" },
+          "classes": ["dark:bg-slate-900", "dark:text-slate-100"]
+        }
+      },
+      {
+        "if": { "layout": "compact" },
+        "then": {
+          "tokens": { "spacing": "space.-4" },
+          "classes": ["px-2", "py-1"]
+        }
+      },
+      {
+        "if": { "accessibility": "dyslexic" },
+        "then": {
+          "tokens": { "fontWeight": "semibold" },
+          "classes": ["font-semibold"]
+        }
+      }
+    ]
+  },
+  "tailwind": {
+    "version": "3.x or 4.x",
+    "configPath": "tailwind.config.ts",
+    "prefix": "none | tw-",
+    "strategy": "utility-first with class composition",
+    "classComposition": {
+      "base": ["inline-flex", "items-center", "gap-2"],
+      "layout": ["w-full", "min-h-10"],
+      "typography": ["text-sm", "font-medium", "leading-tight"],
+      "surface": ["bg-surface", "border", "rounded-md", "shadow-sm"],
+      "variants": {
+        "size": {
+          "sm": ["text-xs", "px-2", "py-1"],
+          "md": ["text-sm", "px-3", "py-2"],
+          "lg": ["text-base", "px-4", "py-3"]
+        },
+        "intent": {
+          "primary": ["bg-brand-600", "text-white"],
+          "secondary": ["bg-surface", "text-foreground"],
+          "destructive": ["bg-red-600", "text-white"]
+        }
+      },
+      "states": {
+        "hover": ["hover:bg-surface-hover"],
+        "focus": ["focus-visible:ring-2", "focus-visible:ring-brand-500"],
+        "active": ["active:translate-y-px"],
+        "disabled": ["disabled:opacity-50", "disabled:pointer-events-none"]
+      },
+      "responsive": {
+        "sm": ["sm:px-4", "sm:py-2"],
+        "md": ["md:px-6", "md:py-3"],
+        "lg": ["lg:max-w-5xl"]
+      }
+    },
+    "variantSources": [
+      "hover",
+      "focus-visible",
+      "active",
+      "disabled",
+      "group-hover",
+      "peer-checked",
+      "data-[state=open]",
+      "aria-expanded"
+    ],
+    "arbitraryValues": {
+      "allowed": true,
+      "rules": [
+        "Prefer theme tokens when possible.",
+        "Use CSS variables for dynamic values.",
+        "Document any arbitrary values and their rationale."
+      ]
+    },
+    "safelist": ["data-[state=open]:*", "aria-expanded:*", "group-hover:*"]
+  },
+  "usageNotes": [
+    "Provide stable IDs and concise labels.",
+    "Avoid nesting disallowed components."
+  ]
+}

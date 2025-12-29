@@ -116,6 +116,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@dt": resolve(dirname, "nextjs-app/shared/components"),
+      "@dt-pages": resolve(dirname, "nextjs-app/shared/components/pages"),
       "@": resolve(dirname, "."),
     },
   },

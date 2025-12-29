@@ -299,14 +299,14 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         images={[
           {
             src: "/images/portfolio/helsinki-design-system/journey-map.png",
-            alt: "Helsinki Design System journey map",
+            alt: "Workshop participants creating user personas with sticky notes on a wall",
             width: 738,
             height: 506,
             caption: "Persona Creation Illustration",
           },
           {
             src: "/images/portfolio/helsinki-design-system/prototype-detail.png",
-            alt: "Helsinki Design System prototype detail",
+            alt: "Design team collaborating on user journey mapping during a workshop session",
             width: 738,
             height: 506,
             caption: "Journey Mapping at a Design System Workshop.",
@@ -362,7 +362,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         images={{
           src: "/images/portfolio/helsinki-design-system/component-structure.png",
-          alt: "Helsinki Design System journey map",
+          alt: "Flowchart diagram showing the component contribution process and approval workflow",
           width: 3934,
           height: 1816,
           caption: "Contribution Flowchart",
@@ -411,7 +411,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         images={{
           src: "/images/portfolio/helsinki-design-system/wireframes.png",
-          alt: "Helsinki Design System journey map",
+          alt: "Low-fidelity wireframes showing frontpage layout and information architecture",
           width: 1204,
           height: 538,
           caption: "Early Frontpage and Information Architecture Wireframes",
@@ -486,7 +486,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           <Image
             key="inline-image"
             src="/images/portfolio/helsinki-design-system/hds-structure.png"
-            alt="Helsinki Design System journey map"
+            alt="Diagram showing HDS development deliverables structure including code, design, and documentation layers"
             layout="responsive"
             width={677}
             height={282}
@@ -535,7 +535,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         images={{
           src: "/images/portfolio/helsinki-design-system/components-page.png",
-          alt: "Helsinki Design System journey map",
+          alt: "Screenshot of the Helsinki Design System components documentation page showing component library and guidelines",
           width: 1184,
           height: 500,
           caption: "The Helsinki Design System Components Page",

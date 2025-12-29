@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Accordion",
+    "type": "interaction",
+    "description": "Stacked disclosure list where only one panel is open at a time.",
+    "source": "nextjs-app/shared/components/Accordion/Accordion.tsx"
+  },
+  "anatomy": {
+    "container": "accordion",
+    "item": "accordion item",
+    "trigger": "button with title text",
+    "icon": "caret-right icon",
+    "panel": "content region"
+  },
+  "semanticRole": {
+    "container": "div",
+    "trigger": "button",
+    "panel": "region"
+  },
+  "layout": {
+    "direction": "vertical stack",
+    "width": "fills parent width",
+    "height": "content-driven; no fixed min-height",
+    "spacing": {
+      "triggerPadding": "var(--space-internal-12) var(--space-internal-16)",
+      "panelPadding": "var(--space-internal-12) var(--space-internal-16)",
+      "itemSeparator": "border-top 1px solid var(--color-primary)",
+      "iconMarginInlineStart": "var(--space-internal-12)"
+    }
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "border": "1px solid var(--color-primary)",
+    "radius": "var(--radius-md)",
+    "backgrounds": {
+      "trigger": "transparent",
+      "panel": "var(--color-light-bg)"
+    },
+    "typography": {
+      "fontFamily": "var(--font-text)",
+      "fontSize": "1rem",
+      "color": "var(--color-primary)"
+    },
+    "iconMotion": "rotate 90deg on open; transition 0.2s ease"
+  },
+  "behavior": {
+    "interaction": "Clicking a trigger toggles its panel. Opening one item closes any other open item.",
+    "defaultOpen": "defaultOpenId opens the matching item on initial render.",
+    "stateModel": "uncontrolled; internal openId state",
+    "rendering": "Panels render only when open (unmounted when closed).",
+    "animation": "Icon rotates on open; no panel height animation."
+  },
+  "accessibility": {
+    "trigger": {
+      "ariaExpanded": "true when open",
+      "ariaControls": "panel-id"
+    },
+    "panel": {
+      "role": "region",
+      "ariaLabelledBy": "trigger-id"
+    },
+    "keyboard": "native button behavior (Enter/Space toggles)"
+  },
+  "states": {
+    "default": "all items closed unless defaultOpenId matches",
+    "open": "single open item at a time",
+    "disabled": "not supported (no disabled prop or styles)"
+  },
+  "responsiveness": {
+    "rules": "Responsive by container width; text wraps; no fixed breakpoints."
+  },
+  "usageNotes": [
+    "Provide unique, stable item ids.",
+    "Provide concise titles; content can be any React node."
+  ]
+}
