@@ -121,6 +121,16 @@ export const posts: BlogPostMeta[] = [
     authorName: "Petri Lahdelma",
     authorSlug: "petri-lahdelma",
     mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/9460b2174dd7707b21408f68dfb03bcf63050d53-794x450.png?w=1600",
+  },
+  {
+    title: "From Tokens to Thinking Systems: Making AI-Native Design Systems Actually Work",
+    slug: "from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work",
+    excerpt: "A practical blueprint for AI-native design systems that LLMs can actually execute: tokens, schema, and generative rules as explicit contracts.",
+    readTime: "5 min read",
+    publishedAt: "2025-12-29T00:00:00.000Z",
+    authorName: "Petri Lahdelma",
+    authorSlug: "petri-lahdelma",
+    mainImageUrl: "https://cdn.sanity.io/images/ai4cwr0g/digitaltableteur-blog/f81efc0c95f2db9229aeb594ecae55ab9c749834-416x195.png?w=1600",
   }
 ];
 
