@@ -160,7 +160,7 @@
     "@storybook/test-runner": "^0.24.1",
     "@storybook/testing-library": "^0.2.2",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.1",
     "@types/leaflet": "^1.9.21",
     "@types/node": "^20.19.24",
     "@typescript-eslint/eslint-plugin": "^8.50.1",
