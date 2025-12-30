@@ -200,7 +200,7 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
       )}
       <Toast
         message={t("linkCopied")}
-        open={toastOpen}
+        isOpen={toastOpen}
         onClose={handleToastClose}
       />
     </div>

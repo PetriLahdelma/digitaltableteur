@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./Tabs.module.css";
-import { warnPropRename } from "../../utils/deprecationWarning";
 import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
 export interface TabItem {
@@ -11,10 +10,10 @@ export interface TabItem {
 }
 
 export interface TabsProps {
-  // NEW PROPS (v1.1.0)
-  /** Active tab shorthand (v1.1.0+) */
+  // v2.0.0 PROPS
+  /** Active tab shorthand */
   activeTab?: string;
-  /** Default active tab shorthand (v1.1.0+) */
+  /** Default active tab shorthand */
   defaultActiveTab?: string;
   /** Size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats */
   size?: SizeUnified;
@@ -24,55 +23,30 @@ export interface TabsProps {
   onTabChange?: (key: string) => void;
   className?: string;
   variant?: "default" | "pills" | "underline";
-
-  // DEPRECATED PROPS
-  /** @deprecated Use activeTab instead. Will be removed in v2.0.0 */
-  activeTabKey?: string;
-  /** @deprecated Use defaultActiveTab instead. Will be removed in v2.0.0 */
-  defaultActiveTabKey?: string;
 }
 
 const Tabs: React.FC<TabsProps> = ({
-  // New props (v1.1.0)
   activeTab,
   defaultActiveTab,
   size = "md",
-  // Deprecated props
-  activeTabKey,
-  defaultActiveTabKey,
-  // Other props
   tabs,
   onTabChange,
   className = "",
   variant = "default",
 }) => {
   const { t } = useTranslation();
-
-  // Deprecation warnings (development only)
-  if (process.env.NODE_ENV !== "production") {
-    if (activeTabKey !== undefined && activeTab === undefined) {
-      warnPropRename("Tabs", "activeTabKey", "activeTab");
-    }
-    if (defaultActiveTabKey !== undefined && defaultActiveTab === undefined) {
-      warnPropRename("Tabs", "defaultActiveTabKey", "defaultActiveTab");
-    }
-  }
-
-  // Resolve effective values (new props take precedence)
-  const effectiveActiveTabKey = activeTab ?? activeTabKey;
-  const effectiveDefaultActiveTabKey = defaultActiveTab ?? defaultActiveTabKey;
   const normalizedSize = normalizeSizeProp(size);
 
   // Tab state (uncontrolled fallback)
   const [internalTab, setInternalTab] = React.useState(
-    effectiveDefaultActiveTabKey || tabs[0]?.key || "",
+    defaultActiveTab || tabs[0]?.key || "",
   );
 
-  const effectiveActiveTab = effectiveActiveTabKey ?? internalTab;
+  const effectiveActiveTab = activeTab ?? internalTab;
 
   const handleTabClick = (key: string, disabled?: boolean) => {
     if (disabled) return;
-    if (!effectiveActiveTabKey) setInternalTab(key);
+    if (!activeTab) setInternalTab(key);
     onTabChange?.(key);
   };
 

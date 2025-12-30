@@ -168,7 +168,7 @@ const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
       </Button>
 
       <Modal
-        variant="info"
+        severity="info"
         isOpen={showModal}
         title={t("downloadResumeModalTitle")}
         onClose={handleClose}

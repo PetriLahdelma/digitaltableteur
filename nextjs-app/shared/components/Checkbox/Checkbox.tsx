@@ -1,7 +1,6 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import Label from "@dt/Label";
 import styles from "./Checkbox.module.css";
-import { warnPropRename } from "../../utils/deprecationWarning";
 import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
 export interface CheckboxProps
@@ -12,7 +11,7 @@ export interface CheckboxProps
   label?: string;
   showLabel?: boolean;
 
-  // NEW PROPS (v1.1.0)
+  // v2.0.0 PROPS
   /** Checked state (controlled) */
   isChecked?: boolean;
   /** Indeterminate state */
@@ -26,12 +25,6 @@ export interface CheckboxProps
   /** Checked change handler */
   onCheckedChange?: (checked: boolean) => void;
 
-  // DEPRECATED PROPS
-  /** @deprecated Use isChecked instead. Will be removed in v2.0.0 */
-  checked?: boolean;
-  /** @deprecated Use isIndeterminate instead. Will be removed in v2.0.0 */
-  indeterminate?: boolean;
-
   id?: string;
 }
 
@@ -40,44 +33,22 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     {
       label,
       showLabel = true,
-      // New props (v1.1.0)
       isChecked,
       isIndeterminate,
-      isDisabled,
+      isDisabled = false,
       defaultChecked,
       size = "md",
       onCheckedChange,
-      // Deprecated props
-      checked,
-      indeterminate,
-      disabled = false,
       ...props
     },
     ref,
   ) => {
-    // Deprecation warnings (development only)
-    if (process.env.NODE_ENV !== "production") {
-      if (checked !== undefined && isChecked === undefined) {
-        warnPropRename("Checkbox", "checked", "isChecked");
-      }
-      if (indeterminate !== undefined && isIndeterminate === undefined) {
-        warnPropRename("Checkbox", "indeterminate", "isIndeterminate");
-      }
-      if (disabled !== false && isDisabled === undefined) {
-        warnPropRename("Checkbox", "disabled", "isDisabled");
-      }
-    }
-
-    // Resolve effective values (new props take precedence)
-    const effectiveChecked = isChecked ?? checked;
-    const effectiveIndeterminate = isIndeterminate ?? indeterminate;
-    const effectiveDisabled = isDisabled ?? disabled;
     const normalizedSize = normalizeSizeProp(size);
 
     // Uncontrolled state management
     const [internalChecked, setInternalChecked] = useState(defaultChecked ?? false);
-    const isControlled = effectiveChecked !== undefined;
-    const actualChecked = isControlled ? effectiveChecked : internalChecked;
+    const isControlled = isChecked !== undefined;
+    const actualChecked = isControlled ? isChecked : internalChecked;
     // local ref so component always has access to the input element even when no ref
     // is forwarded from the parent
     const innerRef = useRef<HTMLInputElement | null>(null);
@@ -104,10 +75,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       if (!element) return;
 
       // Set indeterminate property (native property, not an attribute)
-      element.indeterminate = !!effectiveIndeterminate;
+      element.indeterminate = !!isIndeterminate;
 
       // Update visual state classes - CSS handles all styling
-      if (effectiveIndeterminate) {
+      if (isIndeterminate) {
         element.classList.remove(styles.checkedState);
         element.classList.add(styles.indeterminateState);
       } else if (actualChecked) {
@@ -117,11 +88,11 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         element.classList.remove(styles.indeterminateState);
         element.classList.remove(styles.checkedState);
       }
-    }, [actualChecked, effectiveIndeterminate, props.id]);
+    }, [actualChecked, isIndeterminate, props.id]);
 
     const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
       const element = innerRef.current;
-      if (effectiveIndeterminate && element) {
+      if (isIndeterminate && element) {
         // Clear indeterminate and notify parent. Do NOT prevent default so the
         // browser can toggle the native checked state and the change event will
         // fire and keep everything consistent.
@@ -167,12 +138,12 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               onCheckedChange(isChecked);
             }
           }}
-          disabled={effectiveDisabled}
+          disabled={isDisabled}
           {...props}
         />
         <Label
           htmlFor={props.id || "checkbox"}
-          disabled={effectiveDisabled}
+          disabled={isDisabled}
           className={styles.label}
         >
           {showLabel && label}

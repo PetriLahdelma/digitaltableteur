@@ -504,14 +504,14 @@ const ContactForm = () => {
       </form>
       <Toast
         message={t("contactSuccessMessage")}
-        open={isToastOpen}
+        isOpen={isToastOpen}
         duration={5000}
         onClose={() => setIsToastOpen(false)}
       />
       <Modal
         className={styles["errorModal"]}
         isOpen={isErrorOpen}
-        variant="error"
+        severity="error"
         title={t("contactErrorTitle")}
         onClose={() => setIsErrorOpen(false)}
       >

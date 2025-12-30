@@ -180,7 +180,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
         />
         <Toast
           message={toastMessage}
-          open={toastOpen}
+          isOpen={toastOpen}
           onClose={() => setToastOpen(false)}
         />
       </>
@@ -251,7 +251,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
       )}
       <Toast
         message={toastMessage}
-        open={toastOpen}
+        isOpen={toastOpen}
         onClose={() => setToastOpen(false)}
       />
     </figure>
