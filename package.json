@@ -75,7 +75,7 @@
     "@sanity/vision": "^4.22.0",
     "@sentry/nextjs": "^10.31.0",
     "@storybook/addon-vitest": "^10.1.10",
-    "@swc/helpers": "^0.5.17",
+    "@swc/helpers": "^0.5.18",
     "@vitest/browser-playwright": "^4.0.16",
     "ai": "^5.0.115",
     "dotenv": "^17.2.3",
