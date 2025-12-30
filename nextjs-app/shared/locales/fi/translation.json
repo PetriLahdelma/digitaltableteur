@@ -886,5 +886,18 @@
     "loadingTitle": "Ladataan roolia",
     "loadingContact": "Ladataan yhteystietoa",
     "loadingSocial": "Ladataan some-linkkejä"
-  }
+  },
+  "storyListItem1": "Ensimmäinen kohta",
+  "storyListItem2": "Toinen kohta",
+  "storyListItem3": "Kolmas kohta",
+  "storyListItem4": "Neljäs kohta",
+  "storyListBold": "Lihavoitu teksti",
+  "storyListItalic": "Kursivoitu teksti",
+  "storyListText": "ja lisäsisältöä",
+  "storyListWithIcon": "Listakohta ikonilla",
+  "storyListLongText": "Tämä on pidempi listakohta, joka demonstroi erilaisten rivikorkeuksien vaikutusta tekstin luettavuuteen ja visuaaliseen tiheyteen.",
+  "storyPhoneInputLabel": "Puhelinnumero",
+  "storyPhoneInputPlaceholder": "Syötä puhelinnumerosi",
+  "storyPhoneInputHelperText": "Sisällytä maakoodi (esim. +358 Suomelle)",
+  "storyPhoneInputError": "Virheellinen puhelinnumeron muoto"
 }

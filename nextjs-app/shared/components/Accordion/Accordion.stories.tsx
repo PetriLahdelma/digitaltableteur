@@ -4,7 +4,6 @@ import {
   Description,
   Heading,
   Primary,
-  Source,
   Stories,
   Subtitle,
   Title,
@@ -12,7 +11,9 @@ import {
 import React from "react";
 import Accordion from "./Accordion";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
+import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
+import styles from "../shared-stories.module.css";
 
 const meta: Meta<typeof Accordion> = {
   title: "Components/Accordion",
@@ -31,8 +32,21 @@ const meta: Meta<typeof Accordion> = {
           <Description />
           <Controls />
           <Stories />
-          <Heading>LLM Schema</Heading>
-          <Source language="json" code={JSON.stringify(schema, null, 2)} />
+          <details className={styles.schemaDetails}>
+            <summary className={styles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={styles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
         </>
       ),
     },

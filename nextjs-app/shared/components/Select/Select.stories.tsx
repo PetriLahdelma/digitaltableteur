@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import Select from "@dt/Select";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
@@ -7,7 +16,10 @@ import SelectOption from "./SelectOption";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
+import CodeSnippet from "@dt/CodeSnippet";
 import styles from "./Select.stories.module.css";
+import sharedStyles from "../shared-stories.module.css";
+import schema from "./schema.json";
 
 const selectComplianceRules: ComplianceRule[] = [
   {
@@ -81,11 +93,170 @@ const selectComplianceRules: ComplianceRule[] = [
 export default {
   title: "Components/Select",
   component: Select,
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <details className={sharedStyles.schemaDetails}>
+            <summary className={sharedStyles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={sharedStyles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
+        </>
+      ),
+    },
+  },
   argTypes: {
-    label: { control: "text" },
-    options: { control: "object" },
-    value: { control: "text" },
-    disabled: { control: "boolean" },
+    // Content
+    label: {
+      control: "text",
+      description: "Label text displayed above the select dropdown",
+      table: {
+        category: "Content",
+        type: { summary: "string" },
+      },
+    },
+    options: {
+      control: "object",
+      description:
+        "Array of option objects with value, label, and optional isDisabled",
+      table: {
+        category: "Content",
+        type: { summary: "SelectOptionItem[]" },
+      },
+    },
+    helperText: {
+      control: "text",
+      description: "Helper text displayed below the select (hidden if error is set)",
+      table: {
+        category: "Content",
+        type: { summary: "string" },
+      },
+    },
+    children: {
+      control: false,
+      description: "Custom SelectOption children (overrides options prop)",
+      table: {
+        category: "Content",
+        type: { summary: "ReactNode" },
+      },
+    },
+
+    // Appearance
+    size: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
+      description: "Size variant (v1.1.0+)",
+      table: {
+        category: "Appearance",
+        type: { summary: "SizeUnified" },
+        defaultValue: { summary: "md" },
+      },
+    },
+    error: {
+      control: "text",
+      description:
+        "Error message to display (changes border color and shows error HelperText)",
+      table: {
+        category: "Appearance",
+        type: { summary: "string" },
+      },
+    },
+
+    // State
+    isDisabled: {
+      control: "boolean",
+      description: "Disables the select (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+    value: {
+      control: "text",
+      description: "Controlled value (requires onValueChange)",
+      table: {
+        category: "State",
+        type: { summary: "string" },
+      },
+    },
+    defaultValue: {
+      control: "text",
+      description: "Initial value for uncontrolled component",
+      table: {
+        category: "State",
+        type: { summary: "string" },
+      },
+    },
+
+    // Behavior
+    onValueChange: {
+      action: "valueChanged",
+      description: "Value change handler (v1.1.0+)",
+      table: {
+        category: "Behavior",
+        type: { summary: "(value: string) => void" },
+      },
+    },
+
+    // Accessibility
+    id: {
+      control: "text",
+      description: "Custom ID for the select element",
+      table: {
+        category: "Accessibility",
+        type: { summary: "string" },
+      },
+    },
+
+    // Advanced
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: {
+        category: "Advanced",
+        type: { summary: "string" },
+      },
+    },
+
+    // Deprecated
+    disabled: {
+      control: "boolean",
+      description: "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "boolean" },
+      },
+    },
+    onChange: {
+      action: "changed",
+      description:
+        "⚠️ Deprecated: Use onValueChange instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "(value: string) => void" },
+      },
+    },
   },
 } as Meta;
 
@@ -170,6 +341,66 @@ export const Controlled: StoryFn<typeof Select> = () => {
       ]}
     />
   );
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  label: "storySelectLabel",
+  options: [
+    { value: "option1", label: "storyCheckboxOption1" },
+    { value: "option2", label: "storyCheckboxOption2" },
+    { value: "option3", label: "storyCheckboxOption3" },
+  ],
+  value: "option1",
+  error: "This field is required",
+};
+
+export const SizeSmall = Template.bind({});
+SizeSmall.args = {
+  label: "storySelectLabel",
+  options: [
+    { value: "option1", label: "storyCheckboxOption1" },
+    { value: "option2", label: "storyCheckboxOption2" },
+    { value: "option3", label: "storyCheckboxOption3" },
+  ],
+  value: "option1",
+  size: "sm",
+};
+
+export const SizeMedium = Template.bind({});
+SizeMedium.args = {
+  label: "storySelectLabel",
+  options: [
+    { value: "option1", label: "storyCheckboxOption1" },
+    { value: "option2", label: "storyCheckboxOption2" },
+    { value: "option3", label: "storyCheckboxOption3" },
+  ],
+  value: "option1",
+  size: "md",
+};
+
+export const SizeLarge = Template.bind({});
+SizeLarge.args = {
+  label: "storySelectLabel",
+  options: [
+    { value: "option1", label: "storyCheckboxOption1" },
+    { value: "option2", label: "storyCheckboxOption2" },
+    { value: "option3", label: "storyCheckboxOption3" },
+  ],
+  value: "option1",
+  size: "lg",
+};
+
+export const WithHelperText = Template.bind({});
+WithHelperText.args = {
+  label: "storySelectLabel",
+  options: [
+    { value: "option1", label: "storyCheckboxOption1" },
+    { value: "option2", label: "storyCheckboxOption2" },
+    { value: "option3", label: "storyCheckboxOption3" },
+  ],
+  value: "option1",
+  helperText: "Choose one option from the list",
 };
 
 Default.play = async ({ canvasElement }) => {

@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "HelperText",
+    "type": "display",
+    "description": "Supplementary text for form inputs with optional semantic state icons.",
+    "source": "nextjs-app/shared/components/HelperText/HelperText.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "helper text paragraph",
+    "parts": [
+      {
+        "id": "icon",
+        "label": "state icon",
+        "role": "presentation",
+        "description": "Optional semantic icon (error, warning, success, info)."
+      },
+      {
+        "id": "text",
+        "label": "helper text content",
+        "role": "text",
+        "description": "Guidance, validation, or informational text."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "p",
+    "icon": "span (Phosphor icon)",
+    "text": "text content"
+  },
+  "layout": {
+    "direction": "horizontal (icon + text)",
+    "width": "fills parent",
+    "height": "content-driven",
+    "spacing": {
+      "iconGap": "0.5rem (between icon and text)"
+    }
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "backgrounds": { "default": "transparent" },
+    "typography": {
+      "fontSize": "0.875rem",
+      "lineHeight": "1.4"
+    },
+    "color": {
+      "default": "var(--color-text-secondary)",
+      "error": "var(--color-semantic-error)",
+      "warning": "var(--color-semantic-warning)",
+      "success": "var(--color-semantic-success)",
+      "info": "var(--color-semantic-info)"
+    }
+  },
+  "tokens": {
+    "base": {
+      "color": [
+        "color.text.secondary",
+        "color.semantic.error",
+        "color.semantic.warning",
+        "color.semantic.success",
+        "color.semantic.info"
+      ],
+      "typography": ["font.text"]
+    }
+  },
+  "behavior": {
+    "map": "Displays supplementary text below form inputs. Optional semantic state (error, warning, success, info) adds color and icon. Supports aria-describedby via id prop.",
+    "stateModel": "stateless",
+    "rendering": "Always renders text. Icon renders if state prop provided.",
+    "defaultState": "Neutral text (no state, no icon)."
+  },
+  "interaction": {
+    "logic": [],
+    "feedback": {
+      "hover": "None",
+      "focus": "None",
+      "active": "None",
+      "disabled": "None"
+    }
+  },
+  "states": {
+    "default": "Neutral text (no icon).",
+    "error": "Red text, error icon (WarningCircle).",
+    "warning": "Yellow text, warning icon (Warning).",
+    "success": "Green text, success icon (CheckCircle).",
+    "info": "Blue text, info icon (Info)."
+  },
+  "constraints": {
+    "layout": ["Icon always 16px."],
+    "content": ["Text wraps if constrained."],
+    "nesting": ["Typically used with Inputs, Select, TextArea, FileUpload."]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "p",
+      "icon": "presentation (aria-hidden via icon weight)"
+    },
+    "aria": {
+      "id": "Optional ID for aria-describedby association with input."
+    },
+    "keyboard": "Non-interactive (no keyboard support needed).",
+    "focus": "Non-focusable.",
+    "contrast": "All states meet WCAG AA (4.5:1)."
+  },
+  "responsiveness": {
+    "rules": "Text wraps on narrow screens.",
+    "breakpoints": []
+  },
+  "generativeRules": {
+    "contextInputs": ["state"],
+    "rules": [
+      {
+        "if": { "state": "error" },
+        "then": { "color": "var(--color-semantic-error)", "icon": "WarningCircle" }
+      },
+      {
+        "if": { "state": "warning" },
+        "then": { "color": "var(--color-semantic-warning)", "icon": "Warning" }
+      },
+      {
+        "if": { "state": "success" },
+        "then": { "color": "var(--color-semantic-success)", "icon": "CheckCircle" }
+      },
+      {
+        "if": { "state": "info" },
+        "then": { "color": "var(--color-semantic-info)", "icon": "Info" }
+      },
+      {
+        "if": { "state": "undefined" },
+        "then": { "color": "var(--color-text-secondary)", "icon": "none" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Use with form inputs via aria-describedby for accessibility.",
+    "State prop adds semantic color and icon (error, warning, success, info).",
+    "Supports React.forwardRef for ref forwarding.",
+    "Icons from Phosphor Icons library (CheckCircle, Warning, WarningCircle, Info).",
+    "Neutral state (no state prop) renders plain text with secondary color.",
+    "id prop enables aria-describedby association with input elements."
+  ]
+}

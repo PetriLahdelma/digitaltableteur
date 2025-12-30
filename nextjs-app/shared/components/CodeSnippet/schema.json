@@ -1,0 +1,297 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "CodeSnippet",
+    "type": "display",
+    "description": "Syntax-highlighted code display with copy functionality, line numbers, and language detection.",
+    "source": "nextjs-app/shared/components/CodeSnippet/CodeSnippet.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "code snippet wrapper",
+    "parts": [
+      {
+        "id": "toolbar",
+        "label": "toolbar",
+        "role": "group",
+        "description": "Top bar showing language label and copy buttons (single/multi variants only)."
+      },
+      {
+        "id": "languageLabel",
+        "label": "language label",
+        "role": "text",
+        "description": "Displays programming language name."
+      },
+      {
+        "id": "copyButton",
+        "label": "copy button",
+        "role": "button",
+        "description": "Copies code to clipboard (single variant: Button, multi variant: SplitButton with copy options)."
+      },
+      {
+        "id": "codeBlock",
+        "label": "code block",
+        "role": "region",
+        "description": "Pre-formatted code with syntax highlighting."
+      },
+      {
+        "id": "lineNumbers",
+        "label": "line numbers",
+        "role": "presentation",
+        "description": "Optional line number column (aria-hidden)."
+      },
+      {
+        "id": "expandControl",
+        "label": "expand/collapse control",
+        "role": "button",
+        "description": "Show more/less button when maxLines exceeded."
+      },
+      {
+        "id": "toast",
+        "label": "toast notification",
+        "role": "status",
+        "description": "Success/error feedback for copy action."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "figure (single/multi) | code (inline)",
+    "toolbar": "div",
+    "codeBlock": "pre (single/multi) | code (inline)",
+    "copyButton": "button (Button or SplitButton component)",
+    "expandControl": "button (Button component)"
+  },
+  "layout": {
+    "direction": "vertical stack (toolbar → code → expandControl)",
+    "width": "fills parent container",
+    "height": "content-driven (constrained by maxLines if set)",
+    "spacing": {
+      "toolbarPadding": "0.5rem 1rem",
+      "codePadding": "1rem",
+      "lineNumberMargin": "0 1rem 0 0"
+    },
+    "constraints": [
+      "Inline variant renders as inline code (no toolbar, no line numbers).",
+      "Single/multi variants render as block-level figures.",
+      "MaxLines truncates content with expand control."
+    ]
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "elevation": "none",
+    "border": "1px solid var(--color-border) (single/multi only)",
+    "radius": "var(--radius-md)",
+    "backgrounds": {
+      "toolbar": "var(--color-surface-elevated)",
+      "code": "var(--color-code-bg)",
+      "inline": "var(--color-code-inline-bg)"
+    },
+    "typography": {
+      "fontFamily": "var(--font-mono)",
+      "fontSize": {
+        "inline": "0.875rem",
+        "block": "0.875rem"
+      },
+      "lineHeight": "1.6"
+    },
+    "color": {
+      "text": "var(--color-code-text)",
+      "lineNumbers": "var(--color-text-secondary)",
+      "languageLabel": "var(--color-text-secondary)"
+    },
+    "iconMotion": "None"
+  },
+  "tokens": {
+    "base": {
+      "color": [
+        "color.border",
+        "color.surface.elevated",
+        "color.code.bg",
+        "color.code.inline.bg",
+        "color.code.text",
+        "color.text.secondary"
+      ],
+      "typography": ["font.mono"],
+      "spacing": ["space.internal.8", "space.internal.16"],
+      "radii": ["radius.md"]
+    },
+    "mode": {
+      "light": ["mode.light.code.bg", "mode.light.code.text"],
+      "dark": ["mode.dark.code.bg", "mode.dark.code.text"]
+    }
+  },
+  "behavior": {
+    "map": "Displays syntax-highlighted code using Prism.js. Supports 10 languages (JavaScript, TypeScript, HTML, XML, Python, Go, Rust, JSON, Bash, Markdown). Three variants: inline (clickable code), single (copy button), multi (split button with copy options). Optional line numbers. Copy button copies raw code or code without comments (multi variant). Toast notification confirms copy success/error. Expand control shows hidden lines when maxLines exceeded.",
+    "stateModel": "stateless (except copyState and isExpanded)",
+    "rendering": "Inline variant renders as <code>. Single/multi variants render as <figure> with <pre><code>. Line numbers render if showLineNumbers=true and variant != inline. Expand control renders if maxLines exceeded.",
+    "defaultState": "Code displayed with syntax highlighting. Copy idle. Not expanded."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "Copy button click (single variant)",
+        "effect": "Copies raw code to clipboard. Shows toast. Sets copyState to 'copied'."
+      },
+      {
+        "trigger": "Copy button click (multi variant primary)",
+        "effect": "Copies raw code to clipboard. Shows toast."
+      },
+      {
+        "trigger": "Copy w/o comments (multi variant option)",
+        "effect": "Strips comments from code, copies to clipboard. Shows toast."
+      },
+      {
+        "trigger": "Inline code click (if allowCopy=true)",
+        "effect": "Copies code to clipboard. Shows toast."
+      },
+      {
+        "trigger": "Expand control click",
+        "effect": "Toggles isExpanded state. Shows full code or truncated code."
+      },
+      {
+        "trigger": "Inline code Enter/Space (if allowCopy=true)",
+        "effect": "Copies code to clipboard."
+      }
+    ],
+    "feedback": {
+      "hover": "Inline code: cursor pointer if allowCopy=true. Buttons: inherited from Button component.",
+      "focus": "Inline code: focus ring if allowCopy=true. Buttons: inherited from Button component.",
+      "active": "Toast notification with success/error message.",
+      "disabled": "allowCopy=false disables copy functionality."
+    }
+  },
+  "states": {
+    "default": "Code displayed, copy idle, not expanded.",
+    "copied": "Code copied to clipboard, toast shows success message.",
+    "error": "Copy failed, toast shows error message.",
+    "expanded": "Full code visible (if maxLines exceeded).",
+    "collapsed": "Truncated code visible (if maxLines exceeded and not expanded)."
+  },
+  "transitions": [
+    {
+      "from": "default",
+      "to": "copied",
+      "trigger": "Copy button click (success)",
+      "motionTokens": ["toast fade-in: 200ms", "auto-dismiss: 1500ms"]
+    },
+    {
+      "from": "copied",
+      "to": "default",
+      "trigger": "Timer expires (1500ms)",
+      "motionTokens": ["toast fade-out: 200ms"]
+    },
+    {
+      "from": "default",
+      "to": "error",
+      "trigger": "Copy button click (failure)",
+      "motionTokens": ["toast fade-in: 200ms", "auto-dismiss: 2000ms"]
+    },
+    {
+      "from": "collapsed",
+      "to": "expanded",
+      "trigger": "Show more button click",
+      "motionTokens": ["code reveal: instant (no animation)"]
+    },
+    {
+      "from": "expanded",
+      "to": "collapsed",
+      "trigger": "Show less button click",
+      "motionTokens": ["code truncate: instant (no animation)"]
+    }
+  ],
+  "constraints": {
+    "layout": [
+      "Inline variant cannot have line numbers or toolbar.",
+      "MaxLines only applies to multi variant.",
+      "Line numbers auto-hidden on inline variant."
+    ],
+    "content": [
+      "Code prop required.",
+      "Language must be one of 10 supported languages.",
+      "MaxLines must be positive integer if provided."
+    ],
+    "nesting": [
+      "Inline variant can be nested in text content (inline-level).",
+      "Single/multi variants are block-level (cannot nest in inline content)."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "figure (single/multi) | code (inline)",
+      "codeBlock": "region (single/multi) | none (inline)",
+      "toolbar": "group",
+      "toast": "status"
+    },
+    "aria": {
+      "codeBlock": "aria-label=\"Code snippet in {language}\" or custom via aria-label prop.",
+      "inlineCode": "aria-label=\"Copy code: {code}\" if allowCopy=true.",
+      "expandControl": "aria-expanded=true|false, aria-controls={codeRef.id}.",
+      "toast": "aria-live=polite (status role)."
+    },
+    "keyboard": "Inline code: Enter/Space to copy (if allowCopy=true). Buttons: inherited from Button component.",
+    "focus": "Inline code: tabIndex=0 if allowCopy=true. Buttons: focusable.",
+    "contrast": "Code text meets WCAG AA (4.5:1 minimum). Syntax highlighting maintains sufficient contrast."
+  },
+  "responsiveness": {
+    "rules": "Code wraps on narrow screens. Toolbar stacks if insufficient width. Line numbers remain visible on all screen sizes (if enabled).",
+    "breakpoints": ["mobile: < 600px", "tablet: 600-1024px", "desktop: > 1024px"]
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "variant",
+      "language",
+      "showLineNumbers",
+      "allowCopy",
+      "maxLines"
+    ],
+    "rules": [
+      {
+        "if": { "variant": "inline" },
+        "then": {
+          "element": "code",
+          "toolbar": "none",
+          "lineNumbers": "none",
+          "copyOnClick": "allowCopy"
+        }
+      },
+      {
+        "if": { "variant": "single" },
+        "then": {
+          "element": "figure",
+          "toolbar": "visible",
+          "copyButton": "Button (Copy)"
+        }
+      },
+      {
+        "if": { "variant": "multi" },
+        "then": {
+          "element": "figure",
+          "toolbar": "visible",
+          "copyButton": "SplitButton (Copy | Copy w/o comments)"
+        }
+      },
+      {
+        "if": { "showLineNumbers": true, "variant": "inline" },
+        "then": { "lineNumbers": "none (overridden)" }
+      },
+      {
+        "if": { "maxLines": "present", "linesCount": "> maxLines", "variant": "multi" },
+        "then": { "expandControl": "visible" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Use inline variant for short code snippets within text (e.g., variable names, function calls).",
+    "Use single variant for simple code blocks with copy functionality.",
+    "Use multi variant for longer code blocks with copy options (raw or without comments).",
+    "Supported languages: javascript, typescript, html, xml, python, go, rust, json, bash, markdown.",
+    "Line numbers enabled by default (can disable via showLineNumbers=false).",
+    "Copy functionality enabled by default (can disable via allowCopy=false).",
+    "MaxLines truncates content and adds Show more/less button (multi variant only).",
+    "Toast auto-dismisses after 1500ms (copied) or 2000ms (error).",
+    "Prism.js used for syntax highlighting (loaded at component level).",
+    "Inline variant clickable if allowCopy=true (role=button, tabIndex=0).",
+    "Comment stripping regex removes line comments (//) and block comments (/* */).",
+    "aria-label can be customized via aria-label prop."
+  ]
+}

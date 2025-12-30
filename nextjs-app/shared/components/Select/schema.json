@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Select",
+    "type": "input",
+    "description": "Dropdown select input with label, helper text, and chevron icon.",
+    "source": "nextjs-app/shared/components/Select/Select.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {"container": "select container", "parts": [{"id": "label", "label": "select label", "role": "label", "description": "Label for select (Label component)."}, {"id": "wrapper", "label": "select wrapper", "role": "group", "description": "Wraps select + chevron icon."}, {"id": "select", "label": "select element", "role": "combobox", "description": "Native select element."}, {"id": "chevronIcon", "label": "chevron down icon", "role": "presentation", "description": "Caret-down icon (Icon component)."}, {"id": "helperText", "label": "helper text", "role": "text", "description": "Guidance text (HelperText component)."}]},
+  "semanticRole": {"container": "div", "label": "label (Label component)", "wrapper": "div", "select": "select", "chevronIcon": "svg (Icon component)", "helperText": "p (HelperText component)"},
+  "layout": {"direction": "vertical (label → wrapper → helperText)", "width": "fills parent", "height": "content-driven", "spacing": {"labelMargin": "0.5rem (bottom)", "helperTextMargin": "0.5rem (top)"}},
+  "visualStyle": {"surface": "flat", "border": "1px solid var(--color-border)", "radius": "var(--radius-md)", "backgrounds": {"default": "var(--color-surface)"}, "typography": {"fontFamily": "var(--font-text)", "fontSize": "1rem"}, "color": {"text": "var(--color-text-primary)", "border": "var(--color-border)", "chevron": "var(--color-text-secondary)"}},
+  "tokens": {"base": {"color": ["color.surface", "color.border", "color.text.primary", "color.text.secondary"], "typography": ["font.text"], "spacing": ["space.internal.8"], "radii": ["radius.md"]}},
+  "behavior": {"map": "Native select dropdown with custom styling. Options provided via options prop (SelectOptionItem[]) or children (SelectOption components). Label optional. Helper text optional. Controlled/uncontrolled via value/defaultValue. onChange and onValueChange callbacks.", "stateModel": "controlled or uncontrolled (value or defaultValue)", "rendering": "Always renders wrapper and select. Label renders if label prop provided. Options render from options prop or children. Helper text renders if helperText provided.", "defaultState": "No option selected."},
+  "interaction": {"logic": [{"trigger": "Option selection", "effect": "Calls onChange(value) and onValueChange(value)."}], "feedback": {"hover": "Border color change.", "focus": "Focus ring.", "disabled": "Reduced opacity, no interaction."}},
+  "states": {"default": "No option selected.", "selected": "Option selected.", "disabled": "No interaction."},
+  "constraints": {"layout": ["Chevron icon positioned absolute trailing edge."], "content": ["Options array or children required."], "nesting": ["Should be used in forms.", "Contains SelectOption components (if using children)."]},
+  "accessibility": {"roles": {"label": "label", "select": "combobox", "chevronIcon": "presentation (aria-label='Toggle options')"}, "aria": {"label": "Associated via htmlFor={selectId}."}, "keyboard": "Arrow keys navigate options, Enter/Space selects.", "focus": "Visible focus ring.", "contrast": "Text meets WCAG AA."},
+  "responsiveness": {"rules": "Select fills parent width.", "breakpoints": []},
+  "generativeRules": {"contextInputs": ["value", "defaultValue", "disabled", "options"], "rules": [{"if": {"value": "present"}, "then": {"mode": "controlled"}}, {"if": {"value": "undefined", "defaultValue": "present"}, "then": {"mode": "uncontrolled"}}, {"if": {"value": "present", "defaultValue": "present"}, "then": {"warning": "value takes precedence"}}, {"if": {"disabled": true}, "then": {"interactive": false}}]},
+  "usageNotes": ["Supports controlled (value prop) or uncontrolled (defaultValue prop) mode.", "Options via options prop (SelectOptionItem[]) or children (SelectOption components).", "onChange and onValueChange both called on selection (provide same value).", "useId generates unique select ID if not provided.", "Console warning if both value and defaultValue provided.", "Chevron icon aria-label='Toggle options'.", "React.forwardRef for ref forwarding to select element.", "Native select element (no custom dropdown rendering)."]
+}

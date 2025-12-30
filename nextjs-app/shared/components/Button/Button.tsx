@@ -7,26 +7,49 @@ import {
   type SemanticStatus,
 } from "../../utils/semanticIcons";
 import Icon from "@dt/Icon";
+import { warnPropRename } from "../../utils/deprecationWarning";
+import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
+
+/**
+ * Semantic severity for status buttons
+ */
+export type ButtonSeverity = "error" | "warning" | "success" | "info";
+
+/**
+ * Visual style variant
+ */
+export type ButtonVariantVisual = "primary" | "secondary" | "tertiary";
+
+/**
+ * Legacy size format
+ */
+type ButtonSizeLegacy = "s" | "m" | "l";
 
 /**
  * Base properties shared by button and link variants.
  */
 interface BaseButtonProps {
+  // NEW PROPS (v1.1.0)
+  /** Disables the button (v1.1.0+) */
+  isDisabled?: boolean;
+  /** Shows loading state with pulsing animation (v1.1.0+) */
+  isLoading?: boolean;
+  /** Button size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats */
+  size?: SizeUnified | ButtonSizeLegacy;
+  /** Replaces primary text/border color with white for dark backgrounds (v1.1.0+) */
+  isInverse?: boolean;
+  /** Applies rounded corners to the button (v1.1.0+) */
+  isRounded?: boolean;
+  /** Semantic severity for status-based styling (v1.1.0+) */
+  severity?: ButtonSeverity;
+
+  // EXISTING PROPS (updated descriptions)
   /** Visual style variant of the button */
   variant?:
-    | "primary"
-    | "secondary"
-    | "tertiary"
+    | ButtonVariantVisual
     | "secondaryError"
     | "tertiaryError"
-    | "error"
-    | "warning"
-    | "success"
-    | "info";
-  /** Disables interaction and applies disabled styling */
-  disabled?: boolean;
-  /** Shows loading state with pulsing animation and disables interaction */
-  loading?: boolean;
+    | ButtonSeverity;
   /** Icon can be a React element, component, or a Phosphor icon name string (e.g., "spinner-gap") */
   icon?: React.ReactNode | string;
   /** Icon displayed at the end of the button content */
@@ -43,11 +66,15 @@ interface BaseButtonProps {
   accessibleRole?: "button" | "link";
   /** Tooltip text displayed on hover */
   tooltip?: string;
-  /** Button size variant */
-  size?: "s" | "m" | "l";
-  /** When true, replaces primary (blue) text/border color with white for supported variants */
+
+  // DEPRECATED PROPS
+  /** @deprecated Use isDisabled instead. Will be removed in v2.0.0 */
+  disabled?: boolean;
+  /** @deprecated Use isLoading instead. Will be removed in v2.0.0 */
+  loading?: boolean;
+  /** @deprecated Use isInverse instead. Will be removed in v2.0.0 */
   inverse?: boolean;
-  /** When true, applies rounded corners to the button */
+  /** @deprecated Use isRounded instead. Will be removed in v2.0.0 */
   rounded?: boolean;
 }
 
@@ -144,9 +171,18 @@ const Button = React.forwardRef<
   (
     {
       variant = "primary",
+      severity,
+      // New props (v1.1.0)
+      isDisabled,
+      isLoading,
+      isInverse,
+      isRounded,
+      // Deprecated props
       disabled = false,
       loading = false,
       rounded = false,
+      inverse = false,
+      // Other props
       icon,
       endIcon,
       children,
@@ -156,12 +192,35 @@ const Button = React.forwardRef<
       accessibleRole,
       tooltip,
       className = "",
-      size = "m",
-      inverse = false,
+      size = "md",
       ...rest
     },
     ref,
   ) => {
+    // Deprecation warnings (development only)
+    if (process.env.NODE_ENV !== "production") {
+      if (disabled !== false && isDisabled === undefined) {
+        warnPropRename("Button", "disabled", "isDisabled");
+      }
+      if (loading !== false && isLoading === undefined) {
+        warnPropRename("Button", "loading", "isLoading");
+      }
+      if (inverse !== false && isInverse === undefined) {
+        warnPropRename("Button", "inverse", "isInverse");
+      }
+      if (rounded !== false && isRounded === undefined) {
+        warnPropRename("Button", "rounded", "isRounded");
+      }
+    }
+
+    // Resolve effective values (new props take precedence)
+    const effectiveDisabled = isDisabled ?? disabled;
+    const effectiveLoading = isLoading ?? loading;
+    const effectiveInverse = isInverse ?? inverse;
+    const effectiveRounded = isRounded ?? rounded;
+
+    // Normalize size (supports both legacy s/m/l and modern sm/md/lg)
+    const normalizedSize = size === "s" ? "sm" : size === "m" ? "md" : size === "l" ? "lg" : normalizeSizeProp(size as SizeUnified);
     const isLink = "href" in rest && rest.href !== undefined;
     const submits = "submits" in rest ? rest.submits : false;
     const type = "type" in rest ? rest.type : "button";
@@ -264,7 +323,7 @@ const Button = React.forwardRef<
 
     const setInverseColorFromSurface = React.useCallback(() => {
       if (
-        !inverse ||
+        !effectiveInverse ||
         variant !== "primary" ||
         typeof window === "undefined" ||
         !buttonRef.current
@@ -284,11 +343,11 @@ const Button = React.forwardRef<
         ancestor = ancestor.parentElement;
       }
       buttonRef.current.style.removeProperty("--dt-button-inverse-fg");
-    }, [inverse, variant]);
+    }, [effectiveInverse, variant]);
 
     useIsomorphicLayoutEffect(() => {
       setInverseColorFromSurface();
-      if (!inverse || variant !== "primary" || !buttonRef.current) {
+      if (!effectiveInverse || variant !== "primary" || !buttonRef.current) {
         return;
       }
 
@@ -326,7 +385,7 @@ const Button = React.forwardRef<
         mutationObserver?.disconnect();
         resizeObserver?.disconnect();
       };
-    }, [inverse, setInverseColorFromSurface, variant]);
+    }, [effectiveInverse, setInverseColorFromSurface, variant]);
 
     const assignRefs = (node: HTMLButtonElement | HTMLAnchorElement | null) => {
       buttonRef.current = node;
@@ -346,11 +405,11 @@ const Button = React.forwardRef<
       className: [
         styles.button,
         styles[variant],
-        styles[size],
+        styles[normalizedSize],
         !children && normalizedIcon ? styles["iconOnly"] : "",
-        inverse ? styles.inverse : "",
-        rounded ? styles.rounded : "",
-        loading ? styles.loading : "",
+        effectiveInverse ? styles.inverse : "",
+        effectiveRounded ? styles.rounded : "",
+        effectiveLoading ? styles.loading : "",
         className,
       ]
         .filter(Boolean)
@@ -367,7 +426,7 @@ const Button = React.forwardRef<
         {normalizedIcon && (
           <span
             className={styles.icon}
-            data-size={size}
+            data-size={normalizedSize}
             data-button-slot="icon"
           >
             {normalizedIcon}
@@ -381,7 +440,7 @@ const Button = React.forwardRef<
         {normalizedEndIcon && (
           <span
             className={styles.icon}
-            data-size={size}
+            data-size={normalizedSize}
             data-button-slot="end-icon"
           >
             {normalizedEndIcon}
@@ -399,7 +458,7 @@ const Button = React.forwardRef<
           target={target}
           rel={rel || (target === "_blank" ? "noopener noreferrer" : undefined)}
           onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}
-          aria-disabled={disabled}
+          aria-disabled={effectiveDisabled}
           {...commonProps}
           {...linkRest}
         >
@@ -417,7 +476,7 @@ const Button = React.forwardRef<
     return (
       <button
         ref={assignRefs as React.Ref<HTMLButtonElement>}
-        disabled={disabled || loading}
+        disabled={effectiveDisabled || effectiveLoading}
         type={
           submits
             ? "submit"

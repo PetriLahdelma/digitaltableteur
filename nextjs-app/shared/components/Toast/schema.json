@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Toast",
+    "type": "feedback",
+    "description": "Temporary notification message with auto-dismiss functionality.",
+    "source": "nextjs-app/shared/components/Toast/Toast.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {"container": "toast notification", "parts": [{"id": "message", "label": "notification message", "role": "status", "description": "Text content of notification."}]},
+  "semanticRole": {"container": "div[role=status][aria-live=polite]"},
+  "layout": {"direction": "inline", "width": "intrinsic (max-content)", "height": "intrinsic", "positioning": "fixed bottom-right (via CSS)"},
+  "visualStyle": {"surface": "elevated", "elevation": "var(--elevation-2)", "border": "none", "radius": "var(--radius-md)", "backgrounds": {"default": "var(--color-surface-elevated)"}, "typography": {"fontSize": "0.875rem", "lineHeight": "1.4"}, "color": {"text": "var(--color-text-primary)"}},
+  "tokens": {"base": {"color": ["color.surface.elevated", "color.text.primary"], "typography": ["font.text"], "spacing": ["space.internal.12"], "radii": ["radius.md"], "elevation": ["elevation.2"]}},
+  "behavior": {"map": "Temporary notification that auto-dismisses after duration (default 3000ms). Controlled via open prop. Calls onClose when duration expires. Renders nothing if open=false.", "stateModel": "controlled (open prop)", "rendering": "Renders if open=true. Returns null if open=false.", "defaultState": "Hidden (open=false)."},
+  "interaction": {"logic": [{"trigger": "open=true", "effect": "Toast appears, timer starts."}, {"trigger": "Timer expires (duration ms)", "effect": "Calls onClose (parent sets open=false)."}], "feedback": {"visible": "Toast visible at bottom-right.", "dismissed": "Toast hidden (via parent setting open=false)."}},
+  "states": {"hidden": "open=false, returns null.", "visible": "open=true, timer running.", "dismissed": "Timer expired, onClose called (parent should set open=false)."},
+  "constraints": {"layout": ["Toast positioned fixed bottom-right (via CSS).", "Multiple toasts not managed (single instance)."], "content": ["message prop required."], "nesting": ["Should not nest toasts inside toasts."]},
+  "accessibility": {"roles": {"container": "status"}, "aria": {"live": "aria-live=polite (non-interrupting announcements)."}, "keyboard": "Non-interactive (no dismiss button).", "focus": "Non-focusable.", "contrast": "Message text meets WCAG AA."},
+  "responsiveness": {"rules": "Toast positioned fixed bottom-right on all screen sizes.", "breakpoints": []},
+  "generativeRules": {"contextInputs": ["open", "duration"], "rules": [{"if": {"open": false}, "then": {"render": "null"}}, {"if": {"open": true}, "then": {"render": "toast", "timer": "setTimeout(onClose, duration)"}}, {"if": {"duration": "custom"}, "then": {"timer": "setTimeout(onClose, custom duration)"}}]},
+  "usageNotes": ["Controlled component (open prop).", "Auto-dismisses after duration (default 3000ms).", "onClose called when timer expires (parent should set open=false).", "role=status with aria-live=polite for screen reader announcements.", "Positioned fixed bottom-right via CSS (not configurable).", "No dismiss button (auto-dismiss only).", "Use for success/error/info notifications (e.g., 'Copied to clipboard', 'Failed to save').", "useEffect clears timer on unmount or when open changes.", "Single toast instance (no queue management).", "message prop required (string content)."]
+}

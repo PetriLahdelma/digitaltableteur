@@ -892,5 +892,18 @@
     "loadingTitle": "Laddar roll",
     "loadingContact": "Laddar kontakt",
     "loadingSocial": "Laddar sociala länkar"
-  }
+  },
+  "storyListItem1": "Första punkten",
+  "storyListItem2": "Andra punkten",
+  "storyListItem3": "Tredje punkten",
+  "storyListItem4": "Fjärde punkten",
+  "storyListBold": "Fetstil text",
+  "storyListItalic": "Kursiv text",
+  "storyListText": "med extra innehåll",
+  "storyListWithIcon": "Listpunkt med ikon",
+  "storyListLongText": "Detta är en längre listpunkt som demonstrerar effekten av olika radhöjder på textläsbarhet och visuell täthet.",
+  "storyPhoneInputLabel": "Telefonnummer",
+  "storyPhoneInputPlaceholder": "Ange ditt telefonnummer",
+  "storyPhoneInputHelperText": "Inkludera landskod (t.ex. +46 för Sverige)",
+  "storyPhoneInputError": "Ogiltigt telefonnummerformat"
 }

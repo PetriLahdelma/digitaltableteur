@@ -1,0 +1,287 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Checkbox",
+    "type": "input",
+    "description": "Binary input control for toggling between checked, unchecked, and indeterminate states.",
+    "source": "nextjs-app/shared/components/Checkbox/Checkbox.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "checkbox wrapper",
+    "parts": [
+      {
+        "id": "input",
+        "label": "native checkbox input",
+        "role": "checkbox",
+        "description": "Native HTML checkbox with custom visual styling."
+      },
+      {
+        "id": "checkmark",
+        "label": "visual checkmark",
+        "role": "presentation",
+        "description": "CSS pseudo-element (::after) rendering checkmark when checked."
+      },
+      {
+        "id": "indeterminateMark",
+        "label": "visual indeterminate bar",
+        "role": "presentation",
+        "description": "CSS pseudo-element (::before) rendering horizontal bar when indeterminate."
+      },
+      {
+        "id": "label",
+        "label": "label text",
+        "role": "label",
+        "description": "Text label associated with checkbox via htmlFor attribute."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "div",
+    "input": "input[type=checkbox]",
+    "label": "label (Label component)"
+  },
+  "layout": {
+    "direction": "horizontal (input + label)",
+    "width": "intrinsic (checkbox 24px, label auto)",
+    "height": "intrinsic (checkbox 24px)",
+    "sizeRules": {
+      "checkbox": "24px × 24px (fixed)",
+      "checkmark": "12px × 6px (L-shaped, rotated -45deg)",
+      "indeterminateMark": "12px × 3px (horizontal bar)"
+    },
+    "spacing": {
+      "gap": "0.5rem (between checkbox and label)",
+      "checkmarkOffset": "transform: translate(-50%, -60%)",
+      "indeterminateOffset": "transform: translate(-50%, -50%)"
+    },
+    "constraints": [
+      "Checkbox fixed at 24px × 24px.",
+      "Label text wraps if exceeds available width.",
+      "Checkmark centered within checkbox via absolute positioning."
+    ]
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "elevation": "none",
+    "border": "1px solid var(--color-primary)",
+    "radius": "2px",
+    "backgrounds": {
+      "default": "var(--color-light-bg)",
+      "hover": "var(--color-light-bg)",
+      "checked": "var(--color-primary)",
+      "indeterminate": "var(--color-primary)",
+      "disabled": "var(--color-muted-light)"
+    },
+    "typography": {
+      "fontFamily": "inherited from Label",
+      "fontSize": "1rem",
+      "fontWeight": "400 (regular)",
+      "lineHeight": "1.5"
+    },
+    "color": {
+      "border": "var(--color-primary)",
+      "label": "var(--color-primary)",
+      "checkmark": "var(--checkbox-checkmark-color)",
+      "indeterminateMark": "var(--checkbox-checkmark-color)",
+      "disabledBorder": "var(--color-muted-light)"
+    },
+    "iconMotion": "No animation. Checkmark/indeterminate mark appears instantly (transition: none)."
+  },
+  "tokens": {
+    "base": {
+      "color": [
+        "color.primary",
+        "color.light-bg",
+        "color.muted-light",
+        "checkbox.checkmark-color"
+      ],
+      "typography": [
+        "font.text",
+        "font.weight.regular"
+      ],
+      "spacing": [
+        "space.internal.8"
+      ],
+      "radii": ["radius.xs (2px)"]
+    },
+    "mode": {
+      "light": ["mode.light.checkbox.bg", "mode.light.checkbox.border"],
+      "dark": ["mode.dark.checkbox.bg", "mode.dark.checkbox.border"]
+    }
+  },
+  "behavior": {
+    "map": "Controlled component. Parent manages checked state via checked prop and onCheckedChange callback. Indeterminate state represents partial selection (e.g., parent checkbox when some children are checked). Clicking indeterminate checkbox sets it to checked. Disabled state prevents interaction.",
+    "stateModel": "controlled (checked prop + onCheckedChange callback)",
+    "rendering": "Always renders input and label. Checkmark or indeterminate mark rendered via CSS pseudo-elements based on state classes.",
+    "defaultState": "Unchecked (checked=false, indeterminate=false)."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "Click (unchecked → checked)",
+        "effect": "Calls onCheckedChange(true). Parent updates checked prop."
+      },
+      {
+        "trigger": "Click (checked → unchecked)",
+        "effect": "Calls onCheckedChange(false). Parent updates checked prop."
+      },
+      {
+        "trigger": "Click (indeterminate → checked)",
+        "effect": "Clears indeterminate flag, calls onCheckedChange(true)."
+      },
+      {
+        "trigger": "Space key",
+        "effect": "Toggles checked state (native browser behavior)."
+      }
+    ],
+    "feedback": {
+      "hover": "Blue glow box-shadow (0 0 0 2px rgb(0 112 243 / 10%)).",
+      "focus": "Blue outline box-shadow (0 0 0 2px rgb(0 112 243 / 20%)).",
+      "active": "No additional active state (handled by browser).",
+      "disabled": "Reduced opacity (0.6), muted background/border, cursor: not-allowed."
+    }
+  },
+  "states": {
+    "default": "Unchecked, light background, primary border.",
+    "checked": "Primary background, white checkmark (L-shaped, rotated -45deg).",
+    "indeterminate": "Primary background, white horizontal bar (12px × 3px).",
+    "hover": "Blue glow shadow on default/checked/indeterminate states.",
+    "focus": "Stronger blue outline shadow.",
+    "disabled": "Muted background/border, reduced opacity, no hover effects."
+  },
+  "transitions": [
+    {
+      "from": "default",
+      "to": "hover",
+      "trigger": "pointer enter",
+      "motionTokens": ["duration: 0.2s", "easing: ease"]
+    },
+    {
+      "from": "hover",
+      "to": "default",
+      "trigger": "pointer leave",
+      "motionTokens": ["duration: 0.2s", "easing: ease"]
+    },
+    {
+      "from": "default",
+      "to": "checked",
+      "trigger": "click or space key",
+      "motionTokens": ["duration: 0.2s (border/background)", "checkmark: no transition"]
+    },
+    {
+      "from": "checked",
+      "to": "default",
+      "trigger": "click or space key",
+      "motionTokens": ["duration: 0.2s (border/background)", "checkmark: no transition"]
+    },
+    {
+      "from": "indeterminate",
+      "to": "checked",
+      "trigger": "click",
+      "motionTokens": ["duration: 0.2s (border/background)", "mark: no transition"]
+    },
+    {
+      "from": "any",
+      "to": "focus",
+      "trigger": "keyboard focus (Tab)",
+      "motionTokens": ["duration: 0.2s", "easing: ease"]
+    }
+  ],
+  "constraints": {
+    "layout": [
+      "Checkbox fixed at 24px × 24px (not scalable).",
+      "Label text wraps if constrained by container width.",
+      "Checkmark/indeterminate mark centered via absolute positioning."
+    ],
+    "content": [
+      "Label text should be concise (1-2 lines ideal).",
+      "Indeterminate state typically controlled by parent logic (e.g., parent checkbox)."
+    ],
+    "nesting": [
+      "Checkbox should not contain interactive elements (label is plain text).",
+      "Checkbox can be nested in forms, fieldsets, or form groups."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "input": "checkbox (native HTML role)",
+      "label": "label (native HTML element)"
+    },
+    "aria": {
+      "label": "Associated via htmlFor attribute linking label to input id.",
+      "checked": "aria-checked managed natively by browser (true | false | mixed).",
+      "describedby": "Optional aria-describedby for additional help text.",
+      "required": "Optional required attribute for form validation."
+    },
+    "keyboard": "Space toggles checked state. Tab/Shift+Tab moves focus. Enter submits form if inside form.",
+    "focus": "Visible focus ring (blue outline shadow) with sufficient contrast (WCAG AA).",
+    "contrast": "Border/label text meets WCAG AA (4.5:1 minimum). Checkmark has high contrast against primary background."
+  },
+  "responsiveness": {
+    "rules": "Checkbox size fixed at 24px. Label text wraps on narrow screens. No breakpoint-specific behavior.",
+    "breakpoints": ["mobile: < 600px (label may wrap)", "tablet: 600-1024px", "desktop: > 1024px"]
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "checked",
+      "indeterminate",
+      "disabled",
+      "showLabel"
+    ],
+    "rules": [
+      {
+        "if": { "checked": true, "indeterminate": false },
+        "then": {
+          "background": "var(--color-primary)",
+          "border": "1px solid var(--color-primary)",
+          "mark": "checkmark (::after)"
+        }
+      },
+      {
+        "if": { "indeterminate": true },
+        "then": {
+          "background": "var(--color-primary)",
+          "border": "1px solid var(--color-primary)",
+          "mark": "horizontal bar (::before)"
+        }
+      },
+      {
+        "if": { "checked": false, "indeterminate": false },
+        "then": {
+          "background": "var(--color-light-bg)",
+          "border": "1px solid var(--color-primary)",
+          "mark": "none"
+        }
+      },
+      {
+        "if": { "disabled": true },
+        "then": {
+          "background": "var(--color-muted-light)",
+          "border": "1px solid var(--color-muted-light)",
+          "opacity": "0.6",
+          "cursor": "not-allowed",
+          "interactive": "false"
+        }
+      },
+      {
+        "if": { "showLabel": false },
+        "then": { "label": "visually hidden but accessible to screen readers" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Always provide a label prop for accessibility (use showLabel=false to visually hide).",
+    "Use indeterminate state for parent checkboxes representing partial child selection.",
+    "Checkbox is controlled: parent must manage checked state via onCheckedChange.",
+    "Clicking indeterminate checkbox sets it to checked (clears indeterminate flag).",
+    "Disabled state prevents all interaction (no hover, no clicks, no keyboard).",
+    "ID prop should be unique per form to ensure label association.",
+    "Checkmark and indeterminate mark rendered via CSS (::after and ::before pseudo-elements).",
+    "Component uses forwardRef for parent access to input element.",
+    "useEffect manages indeterminate property (DOM property, not attribute).",
+    "Visual state classes (checkedState, indeterminateState) applied via useEffect for reliability.",
+    "Progressive enhancement: uses accent-color where supported, falls back to custom checkmark.",
+    "onChange event fires after onClick when transitioning from indeterminate to checked."
+  ]
+}

@@ -1,11 +1,23 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import Checkbox, { CheckboxProps } from "@dt/Checkbox";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
+import styles from "../shared-stories.module.css";
 
 const checkboxComplianceRules: ComplianceRule[] = [
   {
@@ -79,10 +91,150 @@ const checkboxComplianceRules: ComplianceRule[] = [
 export default {
   title: "Components/Checkbox",
   component: Checkbox,
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <details className={styles.schemaDetails}>
+            <summary className={styles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={styles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
+        </>
+      ),
+    },
+  },
   argTypes: {
-    label: { control: "text" },
-    checked: { control: "boolean" },
-    indeterminate: { control: "boolean" },
+    // Content
+    label: {
+      control: "text",
+      description: "Label text displayed next to the checkbox",
+      table: {
+        category: "Content",
+        type: { summary: "string" },
+      },
+    },
+    showLabel: {
+      control: "boolean",
+      description: "Whether to show the label text",
+      table: {
+        category: "Content",
+        type: { summary: "boolean" },
+        defaultValue: { summary: "true" },
+      },
+    },
+
+    // State (v1.1.0)
+    isChecked: {
+      control: "boolean",
+      description: "Checked state (controlled) (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+    isIndeterminate: {
+      control: "boolean",
+      description: "Indeterminate state (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+    isDisabled: {
+      control: "boolean",
+      description: "Disables the checkbox (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+    defaultChecked: {
+      control: "boolean",
+      description: "Initial checked state for uncontrolled component (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+
+    // Appearance
+    size: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
+      description: "Size variant (v1.1.0+)",
+      table: {
+        category: "Appearance",
+        type: { summary: "SizeUnified" },
+        defaultValue: { summary: "md" },
+      },
+    },
+
+    // Behavior
+    onCheckedChange: {
+      action: "checkedChanged",
+      description: "Checked change handler (v1.1.0+)",
+      table: {
+        category: "Behavior",
+        type: { summary: "(checked: boolean) => void" },
+      },
+    },
+
+    // Accessibility
+    id: {
+      control: "text",
+      description: "Custom ID for the checkbox element",
+      table: {
+        category: "Accessibility",
+        type: { summary: "string" },
+      },
+    },
+
+    // Deprecated
+    checked: {
+      control: "boolean",
+      description: "⚠️ Deprecated: Use isChecked instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "boolean" },
+      },
+    },
+    indeterminate: {
+      control: "boolean",
+      description: "⚠️ Deprecated: Use isIndeterminate instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "boolean" },
+      },
+    },
+    disabled: {
+      control: "boolean",
+      description: "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "boolean" },
+      },
+    },
   },
 } as Meta<CheckboxProps>;
 
@@ -179,6 +331,36 @@ export const AllStates: StoryFn = () => (
       disabled={true}
       onCheckedChange={() => {}}
     />
+  </div>
+);
+
+// v1.1.0 Showcase Stories
+export const SizeSmall = Template.bind({});
+SizeSmall.args = {
+  label: "Small checkbox",
+  isChecked: true,
+  size: "sm",
+};
+
+export const SizeMedium = Template.bind({});
+SizeMedium.args = {
+  label: "Medium checkbox (default)",
+  isChecked: true,
+  size: "md",
+};
+
+export const SizeLarge = Template.bind({});
+SizeLarge.args = {
+  label: "Large checkbox",
+  isChecked: true,
+  size: "lg",
+};
+
+export const AllSizes: StoryFn = () => (
+  <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <Checkbox label="Small (sm)" isChecked={true} size="sm" />
+    <Checkbox label="Medium (md)" isChecked={true} size="md" />
+    <Checkbox label="Large (lg)" isChecked={true} size="lg" />
   </div>
 );
 

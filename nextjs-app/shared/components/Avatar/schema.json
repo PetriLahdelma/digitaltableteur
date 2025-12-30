@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Avatar",
+    "type": "display",
+    "description": "Displays user profile images or initials with optional dropdown menu for user actions.",
+    "source": "nextjs-app/shared/components/Avatar/Avatar.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "avatar wrapper (div or button wrapper)",
+    "parts": [
+      {
+        "id": "image",
+        "label": "profile image",
+        "role": "img",
+        "description": "User profile photo with lazy loading support."
+      },
+      {
+        "id": "initials",
+        "label": "text initials",
+        "role": "presentation",
+        "description": "Fallback text showing user initials when no image provided."
+      },
+      {
+        "id": "menuTrigger",
+        "label": "menu button",
+        "role": "button",
+        "description": "Interactive button triggering dropdown menu."
+      },
+      {
+        "id": "menu",
+        "label": "dropdown menu",
+        "role": "menu",
+        "description": "Contextual menu with user actions (Profile, Sign out, etc.)."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "div | button",
+    "image": "img",
+    "initials": "div",
+    "menuTrigger": "button",
+    "menu": "ul[role=menu]",
+    "menuItem": "button[role=menuitem] | a[role=menuitem]"
+  },
+  "layout": {
+    "direction": "vertical (for menu placement)",
+    "width": "intrinsic (controlled by size prop)",
+    "height": "intrinsic (circular, aspect-ratio 1:1)",
+    "sizeRules": {
+      "minHeight": "2rem (smallest variant)",
+      "minWidth": "2rem (smallest variant)",
+      "maxWidth": "8rem (largest variant)"
+    },
+    "spacing": {
+      "padding": "0 (image fills container)",
+      "menuGap": "0.5rem (between trigger and menu)",
+      "menuItemPadding": "var(--space-internal-12)"
+    },
+    "constraints": [
+      "Avatar is always circular (border-radius: 50%).",
+      "Menu placement adapts based on viewport space (collision detection).",
+      "Initials text is centered and scales with avatar size."
+    ]
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "elevation": "none (avatar itself); menu has elevation-1",
+    "border": "1px solid var(--color-border, transparent)",
+    "radius": "50% (circular)",
+    "backgrounds": {
+      "default": "transparent (image) | var(--color-neutral-300) (initials)",
+      "hover": "no hover state on avatar image",
+      "active": "no active state",
+      "disabled": "not applicable"
+    },
+    "typography": {
+      "fontFamily": "var(--font-text)",
+      "fontSize": "calc(var(--avatar-size) * 0.4) (scales with size)",
+      "fontWeight": "600 (semibold for initials)",
+      "lineHeight": "1"
+    },
+    "color": {
+      "text": "var(--color-text-primary) (initials)",
+      "icon": "var(--color-icon-primary)",
+      "border": "var(--color-border)"
+    },
+    "iconMotion": "No icon transitions on avatar itself. Menu icon rotates 180deg on open."
+  },
+  "tokens": {
+    "base": {
+      "color": ["color.text.primary", "color.border", "color.neutral.300"],
+      "typography": ["font.text", "font.weight.semibold"],
+      "spacing": ["space.internal.12"],
+      "radii": ["radius.circle (50%)"],
+      "elevation": ["elevation.1 (menu)"]
+    },
+    "mode": {
+      "light": ["mode.light.surface", "mode.light.text"],
+      "dark": ["mode.dark.surface", "mode.dark.text"]
+    }
+  },
+  "behavior": {
+    "map": "Avatar displays user image or initials. When menuItems provided, clicking opens dropdown menu. Menu auto-positions based on viewport space. Focus returns to trigger on menu close.",
+    "stateModel": "uncontrolled (menu open state managed internally)",
+    "rendering": "Image loads lazily by default. Menu renders conditionally when open.",
+    "defaultState": "Image variant preferred; falls back to initials if no image. Menu closed by default."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "onClick (menuEnabled)",
+        "effect": "Opens menu, focuses first menu item, announces 'menu opened' to screen readers."
+      },
+      {
+        "trigger": "onClick (clickable without menu)",
+        "effect": "Navigates to destinationUrl if provided."
+      },
+      {
+        "trigger": "Escape key",
+        "effect": "Closes menu, returns focus to trigger."
+      },
+      {
+        "trigger": "Click outside",
+        "effect": "Closes menu."
+      },
+      {
+        "trigger": "ArrowDown / ArrowUp",
+        "effect": "Navigate between menu items (WAI-ARIA menu pattern)."
+      }
+    ],
+    "feedback": {
+      "hover": "No visual hover state on avatar itself. Menu items show hover background.",
+      "focus": "Focus ring on menu trigger button. Focus indicator on menu items.",
+      "active": "No active state on avatar. Menu items show active state.",
+      "disabled": "Not applicable."
+    }
+  },
+  "states": {
+    "default": "Avatar displays image or initials. Menu closed.",
+    "menuOpen": "Dropdown menu visible with focus trap.",
+    "loading": "Image loading (native img lazy loading)",
+    "imageError": "Falls back to initials if image fails to load.",
+    "noImage": "Displays initials (variant='initials' or no imageUrl)"
+  },
+  "transitions": [
+    {
+      "from": "default",
+      "to": "menuOpen",
+      "trigger": "click on menu trigger",
+      "motionTokens": ["menu appears instantly", "no transition animation"]
+    },
+    {
+      "from": "menuOpen",
+      "to": "default",
+      "trigger": "escape key or click outside",
+      "motionTokens": ["menu disappears instantly"]
+    }
+  },
+  "constraints": {
+    "layout": [
+      "Avatar maintains 1:1 aspect ratio (always circular).",
+      "Size controlled via CSS custom property --avatar-size.",
+      "Menu width is intrinsic to content (no fixed width)."
+    ],
+    "content": [
+      "Initials extracted from name prop (first letter of each word).",
+      "Image alt text uses name prop or i18n fallback 'avatar.altTextGeneric'.",
+      "Menu requires at least one menu item to render."
+    ],
+    "nesting": [
+      "Avatar cannot contain other Avatars.",
+      "Menu items can contain icons but not complex components."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "none (div) or button (when menu enabled)",
+      "menu": "menu",
+      "menuItem": "menuitem"
+    },
+    "aria": {
+      "label": "Menu trigger uses aria-label with user name: 'avatar.menuLabel' ('{{name}} menu').",
+      "haspopup": "aria-haspopup='menu' on trigger button.",
+      "expanded": "aria-expanded={isMenuOpen} on trigger.",
+      "controls": "aria-controls={menuId} linking trigger to menu.",
+      "labelledby": "Menu has aria-label={menuLabel}.",
+      "live": "aria-live='polite' status region announces menu state changes."
+    },
+    "keyboard": "Menu follows WAI-ARIA menu pattern: ArrowUp/ArrowDown navigate, Enter/Space activate, Escape closes. Tab trapped within open menu.",
+    "focus": "Focus trap active when menu open. Focus returns to trigger on close. First menu item auto-focused on open.",
+    "contrast": "Initials text meets WCAG AA contrast. Menu items meet contrast requirements."
+  },
+  "responsiveness": {
+    "rules": "Menu placement adapts to viewport: prefers right/bottom, flips to left/top if insufficient space. Collision detection with 12px viewport margin.",
+    "breakpoints": ["none (viewport-based collision detection instead)"]
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "size",
+      "variant",
+      "menuEnabled",
+      "imageUrl",
+      "screenSize",
+      "accessibilityPreferences"
+    ],
+    "rules": [
+      {
+        "if": { "variant": "image", "imageUrl": "present" },
+        "then": { "render": "img element with lazy loading" }
+      },
+      {
+        "if": { "variant": "initials" },
+        "then": { "render": "div with extracted initials text" }
+      },
+      {
+        "if": { "menuEnabled": true },
+        "then": { "render": "button wrapper with menu pattern" }
+      },
+      {
+        "if": { "size": "2rem" },
+        "then": { "fontSize": "0.8rem (40% of size)" }
+      },
+      {
+        "if": { "size": "8rem" },
+        "then": { "fontSize": "3.2rem (40% of size)" }
+      },
+      {
+        "if": { "accessibility": "high-contrast" },
+        "then": { "border": "2px solid", "initials": "bold" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Provide name prop for initials fallback and accessible alt text.",
+    "Use menuItems for user account menus (Profile, Settings, Sign out).",
+    "Image lazy loads by default; set loading='eager' for above-fold avatars.",
+    "Menu auto-positions to avoid viewport overflow.",
+    "Supports Next.js StaticImageData for optimized images."
+  ]
+}

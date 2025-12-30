@@ -902,5 +902,18 @@
     "loadingTitle": "Loading role",
     "loadingContact": "Loading contact",
     "loadingSocial": "Loading social links"
-  }
+  },
+  "storyListItem1": "First list item",
+  "storyListItem2": "Second list item",
+  "storyListItem3": "Third list item",
+  "storyListItem4": "Fourth list item",
+  "storyListBold": "Bold text",
+  "storyListItalic": "Italic text",
+  "storyListText": "with additional content",
+  "storyListWithIcon": "List item with icon",
+  "storyListLongText": "This is a longer list item that demonstrates the effect of different line heights on text readability and visual density.",
+  "storyPhoneInputLabel": "Phone Number",
+  "storyPhoneInputPlaceholder": "Enter your phone number",
+  "storyPhoneInputHelperText": "Include country code (e.g., +358 for Finland)",
+  "storyPhoneInputError": "Invalid phone number format"
 }

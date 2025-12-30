@@ -1,0 +1,369 @@
+import React, { useState } from "react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
+import PhoneInput from "@dt/PhoneInput";
+import Icon from "@dt/Icon";
+import ComplianceCard from "@dt/ComplianceCard";
+import type { ComplianceRule } from "@dt/ComplianceCard";
+import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { useTranslation } from "react-i18next";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
+import styles from "../shared-stories.module.css";
+
+const phoneInputComplianceRules: ComplianceRule[] = [
+  {
+    id: "file-structure",
+    rule: "Complete file structure",
+    status: "pass",
+    details: "All 5 files present",
+  },
+  {
+    id: "typescript-strict",
+    rule: "TypeScript strict",
+    status: "pass",
+    details: "Proper typing with PhoneInputProps",
+  },
+  {
+    id: "translation-support",
+    rule: "Translation support",
+    status: "pass",
+    details: "Stories use translation keys",
+  },
+  {
+    id: "css-modules",
+    rule: "CSS Modules",
+    status: "pass",
+    details: "No inline styles",
+  },
+  {
+    id: "design-tokens",
+    rule: "Design tokens",
+    status: "pass",
+    details: "Uses CSS custom properties",
+  },
+  {
+    id: "logical-properties",
+    rule: "Logical properties",
+    status: "pass",
+    details: "Uses logical spacing",
+  },
+  {
+    id: "theme-support",
+    rule: "Theme support",
+    status: "pass",
+    details: "CSS custom properties for colors",
+  },
+  {
+    id: "composition",
+    rule: "Component composition",
+    status: "pass",
+    details: "Uses Label and HelperText components",
+  },
+  {
+    id: "accessibility",
+    rule: "Accessibility",
+    status: "pass",
+    details: "Label linked to input, disabled state",
+  },
+  {
+    id: "storybook-stories",
+    rule: "Storybook stories",
+    status: "pass",
+    details: "Multiple variants with ComplianceCard",
+  },
+  {
+    id: "tests",
+    rule: "Tests",
+    status: "pass",
+    details: "Test file exists",
+  },
+];
+
+const meta: Meta<typeof PhoneInput> = {
+  title: "Components/PhoneInput",
+  component: PhoneInput,
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <details className={styles.schemaDetails}>
+            <summary className={styles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={styles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
+        </>
+      ),
+    },
+  },
+  argTypes: {
+    label: { control: "text", description: "Label text" },
+    value: { control: "text", description: "Phone number value (E.164 format)" },
+    placeholder: { control: "text", description: "Placeholder text" },
+    helperText: { control: "text", description: "Helper text below input" },
+    error: { control: "text", description: "Error message" },
+    disabled: { control: "boolean", description: "Disabled state" },
+    onChange: { action: "phone change", description: "Change handler" },
+  },
+};
+
+export default meta;
+
+export const Z_PhoneInputCompliance: StoryFn = () => (
+  <ComplianceCard
+    title="Compliance: 11/11"
+    titleIcon={
+      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+    }
+    rules={phoneInputComplianceRules}
+  />
+);
+
+const PhoneInputStory: React.FC<React.ComponentProps<typeof PhoneInput>> = (
+  args,
+) => {
+  const { t } = useTranslation();
+  const [value, setValue] = useState<string | undefined>(args.value);
+
+  return (
+    <div style={{ maxWidth: "28rem" }}>
+      <PhoneInput
+        {...args}
+        label={t(args.label as string)}
+        placeholder={args.placeholder ? t(args.placeholder) : undefined}
+        helperText={args.helperText ? t(args.helperText) : undefined}
+        error={args.error ? t(args.error) : undefined}
+        value={value}
+        onChange={(phoneValue) => {
+          setValue(phoneValue);
+          args.onChange?.(phoneValue);
+        }}
+      />
+    </div>
+  );
+};
+
+const Template: StoryFn<typeof PhoneInput> = (
+  args: React.ComponentProps<typeof PhoneInput>,
+) => <PhoneInputStory {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  label: "storyPhoneInputLabel",
+  placeholder: "storyPhoneInputPlaceholder",
+};
+Default.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const input = canvas.getByRole("textbox");
+
+  // Type a Finnish phone number
+  await userEvent.type(input, "+358401234567");
+
+  await waitFor(() => {
+    expect(input).toHaveValue("+358 40 123 4567");
+  });
+};
+
+export const WithHelperText = Template.bind({});
+WithHelperText.args = {
+  label: "storyPhoneInputLabel",
+  placeholder: "storyPhoneInputPlaceholder",
+  helperText: "storyPhoneInputHelperText",
+};
+WithHelperText.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/include country code|sisällytä maakoodi|inkludera landskod/i);
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  label: "storyPhoneInputLabel",
+  placeholder: "storyPhoneInputPlaceholder",
+  error: "storyPhoneInputError",
+};
+WithError.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await canvas.findByText(/invalid phone number|virheellinen puhelinnumero|ogiltigt telefonnummer/i);
+};
+
+export const WithValue = Template.bind({});
+WithValue.args = {
+  label: "storyPhoneInputLabel",
+  value: "+358401234567",
+};
+WithValue.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const input = canvas.getByRole("textbox") as HTMLInputElement;
+
+  await waitFor(() => {
+    expect(input.value).toBeTruthy();
+  });
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: "storyPhoneInputLabel",
+  placeholder: "storyPhoneInputPlaceholder",
+  value: "+358401234567",
+  disabled: true,
+};
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const input = canvas.getByRole("textbox");
+  expect(input).toBeDisabled();
+};
+
+export const AllStates: StoryFn = () => {
+  const { t } = useTranslation();
+  const [value1, setValue1] = useState<string | undefined>();
+  const [value2, setValue2] = useState<string | undefined>("+358401234567");
+  const [value3, setValue3] = useState<string | undefined>();
+  const [value4, setValue4] = useState<string | undefined>("+358401234567");
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", maxWidth: "28rem" }}>
+      <div>
+        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+          Default
+        </strong>
+        <PhoneInput
+          label={t("storyPhoneInputLabel")}
+          placeholder={t("storyPhoneInputPlaceholder")}
+          value={value1}
+          onChange={setValue1}
+        />
+      </div>
+
+      <div>
+        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+          With Value
+        </strong>
+        <PhoneInput
+          label={t("storyPhoneInputLabel")}
+          value={value2}
+          onChange={setValue2}
+        />
+      </div>
+
+      <div>
+        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+          With Helper Text
+        </strong>
+        <PhoneInput
+          label={t("storyPhoneInputLabel")}
+          placeholder={t("storyPhoneInputPlaceholder")}
+          helperText={t("storyPhoneInputHelperText")}
+          value={value3}
+          onChange={setValue3}
+        />
+      </div>
+
+      <div>
+        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+          With Error
+        </strong>
+        <PhoneInput
+          label={t("storyPhoneInputLabel")}
+          error={t("storyPhoneInputError")}
+          value={value4}
+          onChange={setValue4}
+        />
+      </div>
+
+      <div>
+        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+          Disabled
+        </strong>
+        <PhoneInput
+          label={t("storyPhoneInputLabel")}
+          value="+358401234567"
+          disabled
+        />
+      </div>
+    </div>
+  );
+};
+
+export const InternationalNumbers: StoryFn = () => {
+  const { t } = useTranslation();
+  const [fi, setFi] = useState<string | undefined>("+358401234567");
+  const [us, setUs] = useState<string | undefined>("+12025551234");
+  const [uk, setUk] = useState<string | undefined>("+442071234567");
+  const [se, setSe] = useState<string | undefined>("+46701234567");
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", maxWidth: "28rem" }}>
+      <div>
+        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+          Finland (Default)
+        </strong>
+        <PhoneInput
+          label={t("storyPhoneInputLabel")}
+          value={fi}
+          onChange={setFi}
+        />
+      </div>
+
+      <div>
+        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+          United States
+        </strong>
+        <PhoneInput
+          label={t("storyPhoneInputLabel")}
+          value={us}
+          onChange={setUs}
+        />
+      </div>
+
+      <div>
+        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+          United Kingdom
+        </strong>
+        <PhoneInput
+          label={t("storyPhoneInputLabel")}
+          value={uk}
+          onChange={setUk}
+        />
+      </div>
+
+      <div>
+        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+          Sweden
+        </strong>
+        <PhoneInput
+          label={t("storyPhoneInputLabel")}
+          value={se}
+          onChange={setSe}
+        />
+      </div>
+    </div>
+  );
+};

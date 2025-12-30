@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Link",
+    "type": "navigation",
+    "description": "Hyperlink with external link indicator and size variants.",
+    "source": "nextjs-app/shared/components/Link/Link.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "anchor element",
+    "parts": [
+      {"id": "text", "label": "link text", "role": "text", "description": "Link content (children)."},
+      {"id": "externalIcon", "label": "external icon", "role": "presentation", "description": "Arrow-square-out icon for external links."}
+    ]
+  },
+  "semanticRole": {"container": "a", "externalIcon": "span (Icon component)"},
+  "layout": {"direction": "horizontal (text + icon)", "width": "intrinsic", "height": "intrinsic", "spacing": {"iconMargin": "0.25rem (left)"}},
+  "visualStyle": {
+    "surface": "flat",
+    "typography": {"sizes": {"S": "0.875rem", "M": "1rem", "L": "1.25rem"}},
+    "color": {"text": "var(--color-link)", "hover": "var(--color-link-hover)"}
+  },
+  "tokens": {"base": {"color": ["color.link", "color.link.hover"], "typography": ["font.text"]}},
+  "behavior": {
+    "map": "Standard hyperlink. Detects external links (not starting with / and not containing digitaltableteur.com) and appends arrow-square-out icon. Size variants: S, M, L.",
+    "stateModel": "stateless",
+    "rendering": "Always renders link. External icon renders if isExternal=true and hasTextContent=true.",
+    "defaultState": "Medium size, wavy underline."
+  },
+  "interaction": {"logic": [{"trigger": "Click", "effect": "Navigates to href."}], "feedback": {"hover": "Color change, wavy underline animation."}},
+  "states": {"default": "Link text with wavy underline.", "external": "Link text + arrow-square-out icon."},
+  "constraints": {"layout": ["External icon only shown if link has text content."], "content": ["href required."]},
+  "accessibility": {"roles": {"container": "link", "externalIcon": "presentation (aria-label='External link')"}, "aria": {}, "keyboard": "Enter activates link.", "focus": "Visible focus ring.", "contrast": "Text meets WCAG AA."},
+  "responsiveness": {"rules": "Link text wraps on narrow screens.", "breakpoints": []},
+  "generativeRules": {
+    "contextInputs": ["href", "size", "hasTextContent"],
+    "rules": [
+      {"if": {"href": "!startsWith('/') && !includes('digitaltableteur.com')"}, "then": {"externalIcon": "visible"}},
+      {"if": {"size": "S"}, "then": {"fontSize": "0.875rem", "iconSize": "20px"}},
+      {"if": {"size": "M"}, "then": {"fontSize": "1rem", "iconSize": "24px"}},
+      {"if": {"size": "L"}, "then": {"fontSize": "1.25rem", "iconSize": "32px"}},
+      {"if": {"hasTextContent": false}, "then": {"externalIcon": "hidden"}}
+    ]
+  },
+  "usageNotes": [
+    "External links auto-detected (not starting with / and not containing digitaltableteur.com).",
+    "External icon only shown if link has text content.",
+    "Size variants: S (0.875rem, icon 20px), M (1rem, icon 24px), L (1.25rem, icon 32px).",
+    "Wavy underline CSS class applied (wavyUnderline).",
+    "Icon component used for arrow-square-out icon.",
+    "hasTextContent computed via useMemo (checks children recursively).",
+    "Supports all native anchor attributes via rest props."
+  ]
+}

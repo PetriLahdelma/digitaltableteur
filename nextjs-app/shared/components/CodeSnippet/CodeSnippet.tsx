@@ -19,6 +19,8 @@ import "prismjs/components/prism-markup";
 export type SupportedLanguage =
   | "javascript"
   | "typescript"
+  | "html"
+  | "xml"
   | "python"
   | "go"
   | "rust"
@@ -42,6 +44,8 @@ export interface CodeSnippetProps {
 const prismLanguageMap: Record<SupportedLanguage, string> = {
   javascript: "javascript",
   typescript: "typescript",
+  html: "markup",
+  xml: "markup",
   python: "python",
   go: "go",
   rust: "rust",

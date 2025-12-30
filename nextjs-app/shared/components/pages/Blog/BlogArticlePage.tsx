@@ -84,8 +84,8 @@ const languageAliases: Record<string, SupportedLanguage> = {
   rust: "rust",
   md: "markdown",
   markdown: "markdown",
-  html: "markdown",
-  xml: "markdown",
+  html: "html",
+  xml: "xml",
 };
 
 const normalizeLanguage = (className?: string): SupportedLanguage => {
@@ -95,6 +95,9 @@ const normalizeLanguage = (className?: string): SupportedLanguage => {
   return languageAliases[raw] ?? "markdown";
 };
 
+type WithChildrenProps = { children?: React.ReactNode };
+type CodeElementProps = { children?: React.ReactNode; className?: string };
+
 const getTextContent = (value: React.ReactNode): string => {
   if (typeof value === "string" || typeof value === "number") {
     return String(value);
@@ -102,7 +105,7 @@ const getTextContent = (value: React.ReactNode): string => {
   if (Array.isArray(value)) {
     return value.map(getTextContent).join("");
   }
-  if (React.isValidElement(value)) {
+  if (React.isValidElement<WithChildrenProps>(value)) {
     return getTextContent(value.props.children);
   }
   return "";
@@ -137,8 +140,10 @@ const MdxPre = ({
   ...props
 }: React.ComponentPropsWithoutRef<"pre">) => {
   const childArray = React.Children.toArray(children);
-  const codeChild = childArray.find((child) => React.isValidElement(child));
-  if (!codeChild || !React.isValidElement(codeChild)) {
+  const codeChild = childArray.find((child) =>
+    React.isValidElement<CodeElementProps>(child),
+  );
+  if (!codeChild || !React.isValidElement<CodeElementProps>(codeChild)) {
     return <pre {...props}>{children}</pre>;
   }
   const className =
