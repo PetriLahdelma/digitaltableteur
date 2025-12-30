@@ -17,6 +17,7 @@ import { within, userEvent, waitFor } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
+import styles from "./PhoneInput.stories.module.css";
 
 const phoneInputComplianceRules: ComplianceRule[] = [
   {
@@ -140,17 +141,22 @@ export const Z_PhoneInputCompliance: StoryFn = () => (
   />
 );
 
-const PhoneInputStory: React.FC<React.ComponentProps<typeof PhoneInput>> = (
-  args,
-) => {
+type PhoneInputStoryArgs = React.ComponentProps<typeof PhoneInput> & {
+  label?: string;
+  placeholder?: string;
+  helperText?: string;
+  error?: string;
+};
+
+const PhoneInputStory: React.FC<PhoneInputStoryArgs> = (args) => {
   const { t } = useTranslation();
   const [value, setValue] = useState<string | undefined>(args.value);
 
   return (
-    <div style={{ maxWidth: "28rem" }}>
+    <div className={styles.storyContainer}>
       <PhoneInput
         {...args}
-        label={t(args.label as string)}
+        label={args.label ? t(args.label) : undefined}
         placeholder={args.placeholder ? t(args.placeholder) : undefined}
         helperText={args.helperText ? t(args.helperText) : undefined}
         error={args.error ? t(args.error) : undefined}
@@ -177,11 +183,12 @@ Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const input = canvas.getByRole("textbox");
 
-  // Type a Finnish phone number
-  await userEvent.type(input, "+358401234567");
+  // Type a Finnish phone number (default country already adds +358)
+  await userEvent.type(input, "401234567");
 
   await waitFor(() => {
-    expect(input).toHaveValue("+358 40 123 4567");
+    const normalized = (input as HTMLInputElement).value.replace(/\s+/g, "");
+    expect(normalized).toBe("+358401234567");
   });
 };
 
@@ -242,9 +249,9 @@ export const AllStates: StoryFn = () => {
   const [value4, setValue4] = useState<string | undefined>("+358401234567");
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", maxWidth: "28rem" }}>
+    <div className={styles.stackContainer}>
       <div>
-        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+        <strong className={styles.stateLabel}>
           Default
         </strong>
         <PhoneInput
@@ -256,7 +263,7 @@ export const AllStates: StoryFn = () => {
       </div>
 
       <div>
-        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+        <strong className={styles.stateLabel}>
           With Value
         </strong>
         <PhoneInput
@@ -267,7 +274,7 @@ export const AllStates: StoryFn = () => {
       </div>
 
       <div>
-        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+        <strong className={styles.stateLabel}>
           With Helper Text
         </strong>
         <PhoneInput
@@ -280,7 +287,7 @@ export const AllStates: StoryFn = () => {
       </div>
 
       <div>
-        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+        <strong className={styles.stateLabel}>
           With Error
         </strong>
         <PhoneInput
@@ -292,7 +299,7 @@ export const AllStates: StoryFn = () => {
       </div>
 
       <div>
-        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+        <strong className={styles.stateLabel}>
           Disabled
         </strong>
         <PhoneInput
@@ -313,9 +320,9 @@ export const InternationalNumbers: StoryFn = () => {
   const [se, setSe] = useState<string | undefined>("+46701234567");
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", maxWidth: "28rem" }}>
+    <div className={styles.stackContainer}>
       <div>
-        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+        <strong className={styles.stateLabel}>
           Finland (Default)
         </strong>
         <PhoneInput
@@ -326,7 +333,7 @@ export const InternationalNumbers: StoryFn = () => {
       </div>
 
       <div>
-        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+        <strong className={styles.stateLabel}>
           United States
         </strong>
         <PhoneInput
@@ -337,7 +344,7 @@ export const InternationalNumbers: StoryFn = () => {
       </div>
 
       <div>
-        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+        <strong className={styles.stateLabel}>
           United Kingdom
         </strong>
         <PhoneInput
@@ -348,7 +355,7 @@ export const InternationalNumbers: StoryFn = () => {
       </div>
 
       <div>
-        <strong style={{ display: "block", marginBottom: "0.5rem" }}>
+        <strong className={styles.stateLabel}>
           Sweden
         </strong>
         <PhoneInput

@@ -16,6 +16,7 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
+import styles from "./Tabs.stories.module.css";
 
 // expect is available globally in Storybook browser tests
 declare const expect: (typeof import("vitest"))["expect"];
@@ -342,7 +343,7 @@ export const ControlledTabs: StoryFn = () => {
   const [activeTab, setActiveTab] = React.useState("tab1");
   return (
     <div>
-      <p style={{ marginBottom: "1rem" }}>
+      <p className={styles.demoText}>
         Active tab (v1.1.0): <strong>{activeTab}</strong>
       </p>
       <Tabs

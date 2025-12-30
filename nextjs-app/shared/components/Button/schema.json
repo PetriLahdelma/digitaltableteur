@@ -209,7 +209,7 @@
       "trigger": "loading prop set to false",
       "motionTokens": ["spinner fade-out: 200ms"]
     }
-  },
+  ],
   "constraints": {
     "layout": [
       "Text does not wrap (truncate with ellipsis if needed).",

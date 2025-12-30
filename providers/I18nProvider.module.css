@@ -1,11 +1,11 @@
 .loadingRoot {
-  min-height: 100vh;
   display: grid;
-  place-items: center;
   padding: var(--space-layout-32);
+  min-height: 100vh;
+  place-items: center;
   background: var(--main-body-background-color);
-  color: var(--main-body-copy-color);
   font-family: var(--font-text);
+  color: var(--main-body-copy-color);
 }
 
 .loadingCard {
@@ -17,10 +17,10 @@
 .loadingSpinner {
   width: 1.25rem;
   height: 1.25rem;
-  border-radius: 999px;
   border: 2px solid var(--color-border-light);
+  border-radius: 999px;
+  animation: i18n-spin 0.8s linear infinite;
   border-top-color: var(--color-primary);
-  animation: i18nSpin 0.8s linear infinite;
 }
 
 .loadingText {
@@ -28,7 +28,7 @@
   line-height: var(--line-height-normal);
 }
 
-@keyframes i18nSpin {
+@keyframes i18n-spin {
   to {
     transform: rotate(360deg);
   }
