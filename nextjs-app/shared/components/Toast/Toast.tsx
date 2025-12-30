@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import styles from "./Toast.module.css";
-import { warnPropRename } from "../../utils/deprecationWarning";
 import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
 export type ToastSeverity = "success" | "error" | "warning" | "info";
@@ -13,59 +12,42 @@ export type ToastPosition =
   | "bottom-right";
 
 export interface ToastProps {
-  // NEW PROPS (v1.1.0)
-  /** Controls visibility (v1.1.0+) */
+  // v2.0.0 PROPS
+  /** Controls visibility */
   isOpen?: boolean;
-  /** Semantic severity level (v1.1.0+) */
+  /** Semantic severity level */
   severity?: ToastSeverity;
-  /** Position on screen (v1.1.0+) */
+  /** Position on screen */
   position?: ToastPosition;
-  /** Size variant (v1.1.0+) */
+  /** Size variant */
   size?: SizeUnified;
 
   // EXISTING PROPS
   message: string;
   duration?: number;
   onClose?: () => void;
-
-  // DEPRECATED PROPS
-  /** @deprecated Use isOpen instead. Will be removed in v2.0.0 */
-  open?: boolean;
 }
 
 const Toast: React.FC<ToastProps> = ({
-  // New props (v1.1.0)
   isOpen,
   severity,
   position = "bottom-center",
   size = "md",
-  // Deprecated props
-  open,
-  // Other props
   message,
   duration = 3000,
   onClose,
 }) => {
-  // Deprecation warnings (development only)
-  if (process.env.NODE_ENV !== "production") {
-    if (open !== undefined && isOpen === undefined) {
-      warnPropRename("Toast", "open", "isOpen");
-    }
-  }
-
-  // Resolve effective values (new props take precedence)
-  const effectiveIsOpen = isOpen ?? open;
   const normalizedSize = normalizeSizeProp(size);
 
   useEffect(() => {
-    if (!effectiveIsOpen) return;
+    if (!isOpen) return;
     const timer = setTimeout(() => {
       onClose?.();
     }, duration);
     return () => clearTimeout(timer);
-  }, [effectiveIsOpen, duration, onClose]);
+  }, [isOpen, duration, onClose]);
 
-  if (!effectiveIsOpen) return null;
+  if (!isOpen) return null;
 
   // Determine aria-live based on severity
   const ariaLive = severity === "error" || severity === "warning" ? "assertive" : "polite";

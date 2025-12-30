@@ -218,36 +218,11 @@ const meta: Meta<typeof Switch> = {
       },
     },
 
-    // Deprecated
-    checked: {
-      control: "boolean",
-      description: "⚠️ Deprecated: Use isChecked instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
-    },
-    loading: {
-      control: "boolean",
-      description: "⚠️ Deprecated: Use isLoading instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
-    },
-    disabled: {
-      control: "boolean",
-      description: "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
-    },
   },
   args: {
-    checked: false,
-    loading: false,
-    disabled: false,
+    isChecked: false,
+    isLoading: false,
+    isDisabled: false,
     label: "Enable notifications",
     labelPlacement: "right",
   },
@@ -273,16 +248,16 @@ export const Z_SwitchCompliance: Story = {
 };
 
 const ControlledTemplate = (args: SwitchProps) => {
-  const [checked, setChecked] = React.useState<boolean>(args.checked ?? false);
+  const [checked, setChecked] = React.useState<boolean>(args.isChecked ?? false);
 
   React.useEffect(() => {
-    setChecked(args.checked ?? false);
-  }, [args.checked]);
+    setChecked(args.isChecked ?? false);
+  }, [args.isChecked]);
 
   return (
     <Switch
       {...args}
-      checked={checked}
+      isChecked={checked}
       onCheckedChange={(next) => {
         setChecked(next);
         args.onCheckedChange?.(next);
@@ -311,8 +286,8 @@ export const Default: Story = {
 export const Loading: Story = {
   name: "Loading",
   args: {
-    loading: true,
-    checked: true,
+    isLoading: true,
+    isChecked: true,
   },
   render: (args) => <ControlledTemplate {...args} />,
 };

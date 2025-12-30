@@ -210,31 +210,6 @@ export default {
       },
     },
 
-    // Deprecated
-    checked: {
-      control: "boolean",
-      description: "⚠️ Deprecated: Use isChecked instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
-    },
-    indeterminate: {
-      control: "boolean",
-      description: "⚠️ Deprecated: Use isIndeterminate instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
-    },
-    disabled: {
-      control: "boolean",
-      description: "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
-    },
   },
 } as Meta<CheckboxProps>;
 
@@ -270,7 +245,7 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 export const Checked = Template.bind({});
 Checked.args = {
   label: "Checked checkbox",
-  checked: true,
+  isChecked: true,
 };
 Checked.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -282,8 +257,8 @@ Indeterminate.args = {
   label: "Indeterminate checkbox",
   // Indeterminate means neither checked nor unchecked visually.
   // Keep checked false and set indeterminate true so CSS shows the indeterminate variant.
-  checked: false,
-  indeterminate: true,
+  isChecked: false,
+  isIndeterminate: true,
 };
 Indeterminate.play = async ({
   canvasElement,
@@ -298,37 +273,37 @@ Indeterminate.play = async ({
 export const Disabled = Template.bind({});
 Disabled.args = {
   label: "Disabled checkbox",
-  checked: false,
-  disabled: true,
+  isChecked: false,
+  isDisabled: true,
 };
 
 export const DisabledChecked = Template.bind({});
 DisabledChecked.args = {
   label: "Disabled checked",
-  checked: true,
-  disabled: true,
+  isChecked: true,
+  isDisabled: true,
 };
 
 export const AllStates: StoryFn = () => (
   <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-    <Checkbox label="Unchecked" checked={false} onCheckedChange={() => {}} />
-    <Checkbox label="Checked" checked={true} onCheckedChange={() => {}} />
+    <Checkbox label="Unchecked" isChecked={false} onCheckedChange={() => {}} />
+    <Checkbox label="Checked" isChecked={true} onCheckedChange={() => {}} />
     <Checkbox
       label="Indeterminate"
-      checked={false}
-      indeterminate={true}
+      isChecked={false}
+      isIndeterminate={true}
       onCheckedChange={() => {}}
     />
     <Checkbox
       label="Disabled unchecked"
-      checked={false}
-      disabled={true}
+      isChecked={false}
+      isDisabled={true}
       onCheckedChange={() => {}}
     />
     <Checkbox
       label="Disabled checked"
-      checked={true}
-      disabled={true}
+      isChecked={true}
+      isDisabled={true}
       onCheckedChange={() => {}}
     />
   </div>

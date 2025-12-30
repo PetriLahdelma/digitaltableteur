@@ -266,17 +266,6 @@ export default {
       },
     },
 
-    // Deprecated
-    variant: {
-      control: { type: "select" },
-      options: ["default", "success", "error", "warning", "info", "loading"],
-      description:
-        "⚠️ Deprecated: Use severity (for success/error/warning/info) or isLoading (for loading state). Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "ModalVariant" },
-      },
-    },
   },
 } as Meta;
 
@@ -334,7 +323,7 @@ Default.play = async ({ canvasElement }) => {
 
 export const Loading = Template.bind({});
 Loading.args = {
-  variant: "loading",
+  isLoading: true,
   title: "storyModalLoading",
   children: <p>{"storyModalPleaseWait"}</p>,
   showCloseIcon: false,
@@ -344,7 +333,7 @@ export const ErrorDialog = Template.bind({});
 ErrorDialog.args = {
   isOpen: true,
   title: "storyModalErrorTitle",
-  variant: "error",
+  severity: "error",
   children: "storyModalErrorBody",
 };
 
@@ -352,7 +341,7 @@ export const SuccessDialog = Template.bind({});
 SuccessDialog.args = {
   isOpen: true,
   title: "storyModalSuccessTitle",
-  variant: "success",
+  severity: "success",
   children: "storyModalSuccessBody",
 };
 
@@ -360,7 +349,7 @@ export const WarningDialog = Template.bind({});
 WarningDialog.args = {
   isOpen: true,
   title: "storyModalWarningTitle",
-  variant: "warning",
+  severity: "warning",
   children: "storyModalWarningBody",
 };
 
@@ -368,13 +357,13 @@ export const InfoDialog = Template.bind({});
 InfoDialog.args = {
   isOpen: true,
   title: "storyModalInfoTitle",
-  variant: "info",
+  severity: "info",
   children: "storyModalInfoBody",
 };
 
 export const BusyDialog = Template.bind({});
 BusyDialog.args = {
-  variant: "loading",
+  isLoading: true,
   title: "storyModalBusyTitle",
   children: "storyModalBusyBody",
   showCloseIcon: false,
@@ -382,7 +371,7 @@ BusyDialog.args = {
 
 export const SpinnerOnly = Template.bind({});
 SpinnerOnly.args = {
-  variant: "loading",
+  isLoading: true,
   showCloseIcon: false,
 };
 

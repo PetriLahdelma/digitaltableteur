@@ -204,15 +204,6 @@ const meta: Meta<typeof Toast> = {
       },
     },
 
-    // Deprecated
-    open: {
-      control: "boolean",
-      description: "⚠️ Deprecated: Use isOpen instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
-    },
   },
 };
 export default meta;
@@ -235,7 +226,7 @@ const Template: StoryFn<ToastProps> = () => {
       <Button onClick={() => setOpen(true)}>Show Toast</Button>
       <Toast
         message="Toast notification!"
-        open={open}
+        isOpen={open}
         onClose={() => setOpen(false)}
       />
     </>
@@ -261,7 +252,7 @@ export const LongDuration = () => {
       <Button onClick={() => setOpen(true)}>Show Long Toast</Button>
       <Toast
         message="This toast will stay for 6 seconds"
-        open={open}
+        isOpen={open}
         duration={6000}
         onClose={() => setOpen(false)}
       />

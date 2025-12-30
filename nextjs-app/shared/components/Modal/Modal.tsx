@@ -4,24 +4,15 @@ import Button from "@dt/Button";
 import Title from "@dt/Title";
 import { getSemanticIcon } from "../../utils/semanticIcons";
 import Icon from "@dt/Icon";
-import { warnPropRename } from "../../utils/deprecationWarning";
 import { normalizeTitleSize, type TitleSizeUnified } from "../../utils/sizeNormalization";
-
-export type ModalVariant =
-  | "default"
-  | "success"
-  | "error"
-  | "warning"
-  | "info"
-  | "loading";
 
 export type ModalSeverity = "success" | "error" | "warning" | "info";
 
 export interface ModalProps {
-  // NEW PROPS (v1.1.0)
-  /** Semantic severity level (v1.1.0+) */
+  // v2.0.0 PROPS
+  /** Semantic severity level */
   severity?: ModalSeverity;
-  /** Shows loading state with spinner (v1.1.0+) */
+  /** Shows loading state with spinner */
   isLoading?: boolean;
   /** Title size - supports both modern (sm/md/lg) and legacy (S/M/L) formats */
   titleSize?: TitleSizeUnified;
@@ -51,14 +42,11 @@ export interface ModalProps {
   closeIconName?: string;
   /** Custom close button aria-label */
   closeButtonLabel?: string;
-
-  // DEPRECATED PROPS
-  /** @deprecated Use severity or isLoading instead. Will be removed in v2.0.0 */
-  variant?: ModalVariant;
 }
 
-const VARIANT_STATUS_MAP: Partial<
-  Record<ModalVariant, Parameters<typeof getSemanticIcon>[0]>
+const SEVERITY_STATUS_MAP: Record<
+  ModalSeverity,
+  Parameters<typeof getSemanticIcon>[0]
 > = {
   success: "success",
   error: "error",
@@ -67,13 +55,9 @@ const VARIANT_STATUS_MAP: Partial<
 };
 
 const Modal: React.FC<ModalProps> = ({
-  // New props (v1.1.0)
   severity,
-  isLoading,
+  isLoading = false,
   titleSize = "M",
-  // Deprecated props
-  variant = "default",
-  // Other props
   isOpen,
   title,
   titleTerminals = "serif",
@@ -86,22 +70,7 @@ const Modal: React.FC<ModalProps> = ({
   closeIconName = "x",
   closeButtonLabel = "Close dialog",
 }) => {
-  // Deprecation warnings (development only)
-  if (process.env.NODE_ENV !== "production") {
-    if (variant !== "default" && !severity && !isLoading) {
-      warnPropRename(
-        "Modal",
-        "variant",
-        "severity (for success/error/warning/info) or isLoading (for loading state)"
-      );
-    }
-  }
-
-  // Resolve effective values (new props take precedence)
-  const effectiveSeverity = severity ?? (variant !== "default" && variant !== "loading" ? variant as ModalSeverity : undefined);
-  const effectiveIsLoading = isLoading ?? (variant === "loading");
   const normalizedTitleSize = normalizeTitleSize(titleSize);
-  const effectiveVariant = effectiveIsLoading ? "loading" : effectiveSeverity || "default";
 
   const titleId = useId();
 
@@ -111,15 +80,13 @@ const Modal: React.FC<ModalProps> = ({
 
   const resolvedHeaderIcon =
     icon ??
-    (VARIANT_STATUS_MAP[effectiveVariant]
-      ? getSemanticIcon(VARIANT_STATUS_MAP[effectiveVariant]!)
-      : null);
+    (severity ? getSemanticIcon(SEVERITY_STATUS_MAP[severity]) : null);
 
   const renderFooter = () => {
     if (footer !== undefined) {
       return footer;
     }
-    if (!effectiveIsLoading) {
+    if (!isLoading) {
       return (
         <Button onClick={onClose} variant="primary">
           OK
@@ -131,15 +98,18 @@ const Modal: React.FC<ModalProps> = ({
 
   // Determine aria-live based on severity
   const ariaLive =
-    effectiveSeverity === "error" || effectiveSeverity === "warning"
+    severity === "error" || severity === "warning"
       ? "assertive"
-      : effectiveSeverity === "info" || effectiveSeverity === "success"
+      : severity === "info" || severity === "success"
         ? "polite"
         : undefined;
 
   // Determine role based on severity
   const dialogRole =
-    effectiveSeverity === "error" || effectiveSeverity === "warning" ? "alertdialog" : "dialog";
+    severity === "error" || severity === "warning" ? "alertdialog" : "dialog";
+
+  // Determine effective variant for CSS class
+  const effectiveVariant = isLoading ? "loading" : severity || "default";
 
   return (
     <div
@@ -193,10 +163,10 @@ const Modal: React.FC<ModalProps> = ({
           </div>
         )}
         <div className={styles.content}>
-          {effectiveIsLoading && <div className={styles.spinner} />}
+          {isLoading && <div className={styles.spinner} />}
           {children}
         </div>
-        {(footer !== undefined || !effectiveIsLoading) && (
+        {(footer !== undefined || !isLoading) && (
           <div className={styles.footer}>{renderFooter()}</div>
         )}
       </div>
