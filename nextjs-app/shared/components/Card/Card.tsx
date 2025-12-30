@@ -187,10 +187,10 @@ const Card: React.FC<CardProps> = ({
   const tabSection = tabItems && tabItems.length > 0 && (
     <Tabs
       tabs={tabItems}
-      activeTabKey={effectiveActiveTab}
+      activeTab={effectiveActiveTab}
       onTabChange={handleTabClick}
       variant="underline"
-      size={size === "L" ? "l" : size === "S" ? "s" : "m"}
+      size={size === "full" ? "M" : size}
       className={styles.cardTabs}
     />
   );

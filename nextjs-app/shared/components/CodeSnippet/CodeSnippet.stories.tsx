@@ -1,9 +1,18 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import CodeSnippet from "@dt/CodeSnippet";
 import Text from "@dt/Text";
 import { within, userEvent } from "@storybook/testing-library";
+import schema from "./schema.json";
 
 const sampleTs = `import { createGatewayProvider } from "@ai-sdk/gateway";
 
@@ -53,6 +62,32 @@ const meta: Meta<typeof CodeSnippet> = {
   title: "Components/CodeSnippet",
   component: CodeSnippet,
   tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
+  },
   args: {
     code: sampleTs,
     language: "typescript",

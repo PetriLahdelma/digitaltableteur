@@ -1,10 +1,21 @@
 import React from "react";
 import Link from "@dt/Link";
 import { Meta, StoryFn } from "@storybook/react-vite";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import { useTranslation } from "react-i18next";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
 
 const linkComplianceRules: ComplianceRule[] = [
   {
@@ -78,9 +89,34 @@ const linkComplianceRules: ComplianceRule[] = [
 export default {
   title: "Components/Link",
   component: Link,
+  tags: ["autodocs"],
   parameters: {
     test: { disable: true },
     visualRegression: { disable: true },
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
   },
   argTypes: {
     size: {

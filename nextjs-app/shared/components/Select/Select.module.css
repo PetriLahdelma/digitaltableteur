@@ -25,6 +25,36 @@
   appearance: none;
 }
 
+/* Size variants (v1.1.0) */
+.select--sm {
+  padding: 0.375rem 2.25rem 0.375rem 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.25;
+}
+
+.select--md {
+  /* Default size - matches base .select styles */
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.select--lg {
+  padding: 0.625rem 2.75rem 0.625rem 0.875rem;
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+/* Error state (v1.1.0) */
+.select.error {
+  border-color: var(--color-error);
+}
+
+.select.error:focus-visible {
+  outline: 2px solid var(--color-error);
+  outline-offset: 2px;
+}
+
 @supports (accent-color: var(--color-primary)) {
   .select:focus-visible {
     outline: 2px solid var(--color-primary);

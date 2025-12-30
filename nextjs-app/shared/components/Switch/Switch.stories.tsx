@@ -1,10 +1,22 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import Switch, { type SwitchProps } from "@dt/Switch";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
+import styles from "./Switch.stories.module.css";
 
 const switchComplianceRules: ComplianceRule[] = [
   {
@@ -79,21 +91,132 @@ const meta: Meta<typeof Switch> = {
   title: "Components/Switch",
   component: Switch,
   tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
+  },
   argTypes: {
-    checked: { control: "boolean" },
-    loading: { control: "boolean" },
-    disabled: { control: "boolean" },
-    label: { control: "text" },
-    helperText: { control: "text" },
+    // Content
+    label: {
+      control: "text",
+      description: "Label text displayed next to the switch",
+      table: {
+        category: "Content",
+        type: { summary: "React.ReactNode" },
+      },
+    },
+    helperText: {
+      control: "text",
+      description: "Helper text displayed below the switch",
+      table: {
+        category: "Content",
+        type: { summary: "string" },
+      },
+    },
+
+    // State (v2.0.0)
+    isChecked: {
+      control: "boolean",
+      description: "Checked state (controlled) (v2.0.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+    isDisabled: {
+      control: "boolean",
+      description: "Disables the switch (v2.0.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+    isLoading: {
+      control: "boolean",
+      description: "Shows loading state with spinner (v2.0.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+    defaultChecked: {
+      control: "boolean",
+      description: "Initial checked state for uncontrolled component (v2.0.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+
+    // Appearance
+    size: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
+      description: "Size variant (v2.0.0+)",
+      table: {
+        category: "Appearance",
+        type: { summary: "SizeUnified" },
+        defaultValue: { summary: "md" },
+      },
+    },
     labelPlacement: {
       control: { type: "select" },
       options: ["right", "left", "top"],
+      description: "Label position relative to switch",
+      table: {
+        category: "Appearance",
+        type: { summary: '"right" | "left" | "top"' },
+        defaultValue: { summary: "right" },
+      },
     },
+
+    // Behavior
+    onCheckedChange: {
+      action: "checkedChanged",
+      description: "Checked change handler (v2.0.0+)",
+      table: {
+        category: "Behavior",
+        type: { summary: "(checked: boolean) => void" },
+      },
+    },
+
+    // Accessibility
+    id: {
+      control: "text",
+      description: "Custom ID for the switch element",
+      table: {
+        category: "Accessibility",
+        type: { summary: "string" },
+      },
+    },
+
   },
   args: {
-    checked: false,
-    loading: false,
-    disabled: false,
+    isChecked: false,
+    isLoading: false,
+    isDisabled: false,
     label: "Enable notifications",
     labelPlacement: "right",
   },
@@ -104,9 +227,6 @@ export default meta;
 type Story = StoryObj<typeof Switch>;
 
 export const Z_SwitchCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
   render: () => (
     <ComplianceCard
       title="Compliance: 11/11"
@@ -117,18 +237,21 @@ export const Z_SwitchCompliance: Story = {
     />
   ),
 };
+Z_SwitchCompliance.parameters = {
+  docs: { disable: true },
+};
 
 const ControlledTemplate = (args: SwitchProps) => {
-  const [checked, setChecked] = React.useState<boolean>(args.checked ?? false);
+  const [checked, setChecked] = React.useState<boolean>(args.isChecked ?? false);
 
   React.useEffect(() => {
-    setChecked(args.checked ?? false);
-  }, [args.checked]);
+    setChecked(args.isChecked ?? false);
+  }, [args.isChecked]);
 
   return (
     <Switch
       {...args}
-      checked={checked}
+      isChecked={checked}
       onCheckedChange={(next) => {
         setChecked(next);
         args.onCheckedChange?.(next);
@@ -157,8 +280,8 @@ export const Default: Story = {
 export const Loading: Story = {
   name: "Loading",
   args: {
-    loading: true,
-    checked: true,
+    isLoading: true,
+    isChecked: true,
   },
   render: (args) => <ControlledTemplate {...args} />,
 };
@@ -204,4 +327,46 @@ export const WithHelperText: Story = {
     await userEvent.click(switchElement);
     await waitFor(() => switchElement.getAttribute("aria-checked") === "true");
   },
+};
+
+// v2.0.0 Showcase Stories
+export const SizeSmall: Story = {
+  name: "Size Small (v2.0.0)",
+  args: {
+    label: "Small switch",
+    isChecked: true,
+    size: "sm",
+  },
+  render: (args) => <ControlledTemplate {...args} />,
+};
+
+export const SizeMedium: Story = {
+  name: "Size Medium (v2.0.0)",
+  args: {
+    label: "Medium switch (default)",
+    isChecked: true,
+    size: "md",
+  },
+  render: (args) => <ControlledTemplate {...args} />,
+};
+
+export const SizeLarge: Story = {
+  name: "Size Large (v2.0.0)",
+  args: {
+    label: "Large switch",
+    isChecked: true,
+    size: "lg",
+  },
+  render: (args) => <ControlledTemplate {...args} />,
+};
+
+export const AllSizes: Story = {
+  name: "All Sizes (v2.0.0)",
+  render: () => (
+    <div className={styles.sizesContainer}>
+      <Switch label="Small (sm)" isChecked={true} size="sm" />
+      <Switch label="Medium (md)" isChecked={true} size="md" />
+      <Switch label="Large (lg)" isChecked={true} size="lg" />
+    </div>
+  ),
 };

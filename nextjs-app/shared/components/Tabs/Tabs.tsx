@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./Tabs.module.css";
+import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
 export interface TabItem {
   key: string;
@@ -9,36 +10,43 @@ export interface TabItem {
 }
 
 export interface TabsProps {
+  // v2.0.0 PROPS
+  /** Active tab shorthand */
+  activeTab?: string;
+  /** Default active tab shorthand */
+  defaultActiveTab?: string;
+  /** Size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats */
+  size?: SizeUnified;
+
+  // EXISTING PROPS
   tabs: TabItem[];
-  activeTabKey?: string;
-  defaultActiveTabKey?: string;
   onTabChange?: (key: string) => void;
   className?: string;
   variant?: "default" | "pills" | "underline";
-  size?: "s" | "m" | "l";
 }
 
 const Tabs: React.FC<TabsProps> = ({
+  activeTab,
+  defaultActiveTab,
+  size = "md",
   tabs,
-  activeTabKey,
-  defaultActiveTabKey,
   onTabChange,
   className = "",
   variant = "default",
-  size = "m",
 }) => {
   const { t } = useTranslation();
+  const normalizedSize = normalizeSizeProp(size);
 
   // Tab state (uncontrolled fallback)
   const [internalTab, setInternalTab] = React.useState(
-    defaultActiveTabKey || tabs[0]?.key || "",
+    defaultActiveTab || tabs[0]?.key || "",
   );
 
-  const effectiveActiveTab = activeTabKey ?? internalTab;
+  const effectiveActiveTab = activeTab ?? internalTab;
 
   const handleTabClick = (key: string, disabled?: boolean) => {
     if (disabled) return;
-    if (!activeTabKey) setInternalTab(key);
+    if (!activeTab) setInternalTab(key);
     onTabChange?.(key);
   };
 
@@ -96,7 +104,12 @@ const Tabs: React.FC<TabsProps> = ({
 
   return (
     <div
-      className={[styles.tabs, styles[variant], styles[size], className]
+      className={[
+        styles.tabs,
+        styles[variant],
+        styles[`tabs--${normalizedSize}`],
+        className,
+      ]
         .filter(Boolean)
         .join(" ")}
       role="tablist"

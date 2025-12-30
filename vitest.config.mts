@@ -41,13 +41,6 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./vitest.setup.ts",
     globals: true,
-    include: [
-      "shared/components/**/*.test.{ts,tsx}",
-      "app/**/*.test.{ts,tsx}",
-      "components/**/*.test.{ts,tsx}",
-      "nextjs-app/shared/components/**/*.test.{ts,tsx}",
-      "nextjs-app/shared/patterns/**/*.test.{ts,tsx}",
-    ],
     exclude: [
       "**/node_modules/**",
       "**/dist/**",
@@ -64,6 +57,7 @@ export default defineConfig({
         "components/**/*.{ts,tsx}",
         "nextjs-app/shared/components/**/*.{ts,tsx}",
         "nextjs-app/shared/patterns/**/*.{ts,tsx}",
+        "nextjs-app/shared/utils/**/*.{ts,tsx}",
       ],
       exclude: [
         "**/*.stories.{ts,tsx}",

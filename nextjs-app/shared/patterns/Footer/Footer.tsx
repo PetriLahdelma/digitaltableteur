@@ -91,7 +91,7 @@ const Footer = () => {
           />
         </a>
         <a
-          href="https://medium.com/@petrilahdelma/"
+          href="https://medium.com/digitaltableteur"
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("footerAriaMedium")}
@@ -102,6 +102,15 @@ const Footer = () => {
             size={24}
             ariaLabel={t("footerAriaMedium")}
           />
+        </a>
+        <a
+          href="https://x.com/dtdoesdesign"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("footerAriaX")}
+          title={t("footerAriaX")}
+        >
+          <Icon name="x-twitter" size={24} ariaLabel={t("footerAriaX")} />
         </a>
         <a
           href="https://github.com/PetriLahdelma"

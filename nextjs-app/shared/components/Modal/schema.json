@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Modal",
+    "type": "overlay",
+    "description": "Dialog overlay with header, content, footer, and variant-based styling (default, success, error, warning, info, loading).",
+    "source": "nextjs-app/shared/components/Modal/Modal.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "modal overlay",
+    "parts": [
+      {"id": "overlay", "label": "modal overlay", "role": "presentation", "description": "Semi-transparent backdrop covering viewport."},
+      {"id": "dialog", "label": "dialog box", "role": "dialog | alertdialog", "description": "Main modal container."},
+      {"id": "header", "label": "dialog header", "role": "group", "description": "Title, optional icon, and close button."},
+      {"id": "icon", "label": "variant icon", "role": "presentation", "description": "Semantic icon (success, error, warning, info)."},
+      {"id": "title", "label": "dialog title", "role": "heading", "description": "Title text (Title component)."},
+      {"id": "closeButton", "label": "close button", "role": "button", "description": "Icon button to close modal."},
+      {"id": "content", "label": "dialog content", "role": "region", "description": "Main content area (children)."},
+      {"id": "spinner", "label": "loading spinner", "role": "presentation", "description": "Shown when variant=loading."},
+      {"id": "footer", "label": "dialog footer", "role": "group", "description": "Action buttons or custom footer content."}
+    ]
+  },
+  "semanticRole": {"overlay": "div", "dialog": "div[role=dialog | alertdialog]", "header": "div", "title": "h2 (Title component)", "closeButton": "button", "content": "div", "footer": "div"},
+  "layout": {"direction": "vertical (header → content → footer)", "width": "max-content (constrained by viewport)", "height": "content-driven", "spacing": {"headerPadding": "1.5rem", "contentPadding": "1.5rem", "footerPadding": "1.5rem"}},
+  "visualStyle": {"surface": "elevated", "elevation": "var(--elevation-2)", "border": "none", "radius": "var(--radius-lg)", "backgrounds": {"overlay": "rgba(0, 0, 0, 0.5)", "dialog": "var(--color-surface)"}, "typography": {"title": "inherited from Title component"}, "color": {"title": "var(--color-text-primary)"}},
+  "tokens": {"base": {"color": ["color.surface", "color.text.primary"], "spacing": ["space.internal.24"], "radii": ["radius.lg"], "elevation": ["elevation.2"]}},
+  "behavior": {"map": "Modal dialog with overlay. Six variants: default, success, error, warning, info, loading. Semantic variants (error, warning) use alertdialog role and assertive aria-live. Info/success use polite aria-live. Loading variant shows spinner. Default footer: OK button (unless custom footer or loading variant). Closes on Escape or overlay click (if onClose provided). Close button optional (showCloseIcon prop).", "stateModel": "controlled (isOpen prop)", "rendering": "Renders if isOpen=true. Header renders if title provided. Icon renders if variant has semantic icon or icon prop provided. Footer renders unless variant=loading and no custom footer. Spinner renders if variant=loading.", "defaultState": "Closed (isOpen=false)."},
+  "interaction": {"logic": [{"trigger": "Overlay click", "effect": "Calls onClose (if provided)."}, {"trigger": "Escape key", "effect": "Calls onClose (if provided)."}, {"trigger": "Close button click", "effect": "Calls onClose."}, {"trigger": "OK button click (default footer)", "effect": "Calls onClose."}], "feedback": {"hover": "Close button hover state.", "focus": "Close button focus ring."}},
+  "states": {"default": "Default dialog (no icon).", "success": "Green icon (CheckCircle), polite aria-live.", "error": "Red icon (WarningCircle), alertdialog role, assertive aria-live.", "warning": "Yellow icon (Warning), alertdialog role, assertive aria-live.", "info": "Blue icon (Info), polite aria-live.", "loading": "Spinner shown, no footer (unless custom)."},
+  "constraints": {"layout": ["Modal centered in viewport.", "Overlay covers full viewport."], "content": ["Title optional but recommended for accessibility."], "nesting": ["Should not nest modals inside modals."]},
+  "accessibility": {"roles": {"dialog": "dialog (default, success, info, loading) | alertdialog (error, warning)", "overlay": "presentation", "content": "region"}, "aria": {"labelledby": "aria-labelledby={titleId} (if title provided).", "label": "aria-label='Dialog' (if no title).", "modal": "aria-modal=true.", "live": "aria-live=assertive (error, warning) | polite (info, success) | undefined (default, loading)."}, "keyboard": "Escape closes dialog. Focus trapped within dialog (implicit).", "focus": "Focus should move to dialog on open (not implemented).", "contrast": "Title and content meet WCAG AA."},
+  "responsiveness": {"rules": "Modal scales to fit viewport on small screens.", "breakpoints": []},
+  "generativeRules": {"contextInputs": ["variant", "isOpen", "title", "icon", "showCloseIcon", "footer", "onClose"], "rules": [{"if": {"variant": "error"}, "then": {"role": "alertdialog", "aria-live": "assertive", "icon": "WarningCircle (red)"}}, {"if": {"variant": "warning"}, "then": {"role": "alertdialog", "aria-live": "assertive", "icon": "Warning (yellow)"}}, {"if": {"variant": "success"}, "then": {"role": "dialog", "aria-live": "polite", "icon": "CheckCircle (green)"}}, {"if": {"variant": "info"}, "then": {"role": "dialog", "aria-live": "polite", "icon": "Info (blue)"}}, {"if": {"variant": "loading"}, "then": {"spinner": "visible", "footer": "hidden (unless custom footer)"}}, {"if": {"isOpen": false}, "then": {"render": "null"}}, {"if": {"footer": "undefined", "variant": "!loading"}, "then": {"footer": "OK button"}}, {"if": {"showCloseIcon": false}, "then": {"closeButton": "hidden"}}]},
+  "usageNotes": ["Controlled component (isOpen prop).", "Variants: default, success, error, warning, info, loading.", "Semantic variants auto-inject icons (can override with icon prop).", "Error/warning use alertdialog role and assertive aria-live.", "Default footer: OK button (unless loading variant or custom footer).", "Close on Escape or overlay click (if onClose provided).", "useId generates unique title ID for aria-labelledby.", "Title size/terminals customizable (titleSize, titleTerminals props).", "Close button icon customizable (closeIconName prop, default: 'x').", "Close button label customizable (closeButtonLabel prop, default: 'Close dialog').", "Loading spinner CSS animation (no icon).", "Modal should trap focus (not fully implemented)."]
+}

@@ -32,6 +32,15 @@ const config: StorybookConfig = {
     const patternsPath = fileURLToPath(
       new URL("../nextjs-app/shared/patterns", import.meta.url),
     );
+    const reactPath = fileURLToPath(
+      new URL("../node_modules/react", import.meta.url),
+    );
+    const reactDomPath = fileURLToPath(
+      new URL("../node_modules/react-dom", import.meta.url),
+    );
+    const reactJsxRuntimePath = fileURLToPath(
+      new URL("../node_modules/react/jsx-runtime", import.meta.url),
+    );
 
     config.resolve = config.resolve || {};
     config.resolve.alias = {
@@ -39,7 +48,18 @@ const config: StorybookConfig = {
       "@dt": componentsPath,
       "@dt/shared": sharedComponentsPath,
       "@dt/patterns": patternsPath,
+      react: reactPath,
+      "react-dom": reactDomPath,
+      "react/jsx-runtime": reactJsxRuntimePath,
     };
+    config.resolve.dedupe = Array.from(
+      new Set([
+        ...(config.resolve.dedupe || []),
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+      ]),
+    );
 
     // Define process.env for Next.js Image component
     config.define = {

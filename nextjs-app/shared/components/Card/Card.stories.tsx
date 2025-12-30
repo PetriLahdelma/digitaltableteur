@@ -1,14 +1,51 @@
 import React from "react";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import Card from "@dt/Card";
 import Icon from "@dt/Icon";
 import ImagePlaceholder, {
   ImagePlaceholderPresets,
 } from "@dt/ImagePlaceholder";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
 
 const CardStoryMeta = {
   title: "Components/Card",
   component: Card,
-  parameters: {},
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
+  },
   argTypes: {
     size: {
       control: { type: "select" },
