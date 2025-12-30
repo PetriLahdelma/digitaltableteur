@@ -157,7 +157,7 @@
       "trigger": "escape key or click outside",
       "motionTokens": ["menu disappears instantly"]
     }
-  },
+  ],
   "constraints": {
     "layout": [
       "Avatar maintains 1:1 aspect ratio (always circular).",

@@ -16,6 +16,7 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
+import styles from "./Switch.stories.module.css";
 
 const switchComplianceRules: ComplianceRule[] = [
   {
@@ -135,10 +136,10 @@ const meta: Meta<typeof Switch> = {
       },
     },
 
-    // State (v1.1.0)
+    // State (v2.0.0)
     isChecked: {
       control: "boolean",
-      description: "Checked state (controlled) (v1.1.0+)",
+      description: "Checked state (controlled) (v2.0.0+)",
       table: {
         category: "State",
         type: { summary: "boolean" },
@@ -146,7 +147,7 @@ const meta: Meta<typeof Switch> = {
     },
     isDisabled: {
       control: "boolean",
-      description: "Disables the switch (v1.1.0+)",
+      description: "Disables the switch (v2.0.0+)",
       table: {
         category: "State",
         type: { summary: "boolean" },
@@ -154,7 +155,7 @@ const meta: Meta<typeof Switch> = {
     },
     isLoading: {
       control: "boolean",
-      description: "Shows loading state with spinner (v1.1.0+)",
+      description: "Shows loading state with spinner (v2.0.0+)",
       table: {
         category: "State",
         type: { summary: "boolean" },
@@ -162,7 +163,7 @@ const meta: Meta<typeof Switch> = {
     },
     defaultChecked: {
       control: "boolean",
-      description: "Initial checked state for uncontrolled component (v1.1.0+)",
+      description: "Initial checked state for uncontrolled component (v2.0.0+)",
       table: {
         category: "State",
         type: { summary: "boolean" },
@@ -173,7 +174,7 @@ const meta: Meta<typeof Switch> = {
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
-      description: "Size variant (v1.1.0+)",
+      description: "Size variant (v2.0.0+)",
       table: {
         category: "Appearance",
         type: { summary: "SizeUnified" },
@@ -194,7 +195,7 @@ const meta: Meta<typeof Switch> = {
     // Behavior
     onCheckedChange: {
       action: "checkedChanged",
-      description: "Checked change handler (v1.1.0+)",
+      description: "Checked change handler (v2.0.0+)",
       table: {
         category: "Behavior",
         type: { summary: "(checked: boolean) => void" },
@@ -328,9 +329,9 @@ export const WithHelperText: Story = {
   },
 };
 
-// v1.1.0 Showcase Stories
+// v2.0.0 Showcase Stories
 export const SizeSmall: Story = {
-  name: "Size Small (v1.1.0)",
+  name: "Size Small (v2.0.0)",
   args: {
     label: "Small switch",
     isChecked: true,
@@ -340,7 +341,7 @@ export const SizeSmall: Story = {
 };
 
 export const SizeMedium: Story = {
-  name: "Size Medium (v1.1.0)",
+  name: "Size Medium (v2.0.0)",
   args: {
     label: "Medium switch (default)",
     isChecked: true,
@@ -350,7 +351,7 @@ export const SizeMedium: Story = {
 };
 
 export const SizeLarge: Story = {
-  name: "Size Large (v1.1.0)",
+  name: "Size Large (v2.0.0)",
   args: {
     label: "Large switch",
     isChecked: true,
@@ -360,9 +361,9 @@ export const SizeLarge: Story = {
 };
 
 export const AllSizes: Story = {
-  name: "All Sizes (v1.1.0)",
+  name: "All Sizes (v2.0.0)",
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+    <div className={styles.sizesContainer}>
       <Switch label="Small (sm)" isChecked={true} size="sm" />
       <Switch label="Medium (md)" isChecked={true} size="md" />
       <Switch label="Large (lg)" isChecked={true} size="lg" />

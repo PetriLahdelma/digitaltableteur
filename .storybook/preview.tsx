@@ -1,8 +1,10 @@
-import { MemoryRouter } from "react-router-dom";
+import * as ReactRouterDom from "react-router-dom";
 import { ThemeProvider } from "@dt/ThemeProvider";
 import type { Preview } from "@storybook/react-vite";
 import type { Decorator, StoryContext, StoryFn } from "@storybook/react";
 import React, { useEffect, useLayoutEffect } from "react";
+
+const { MemoryRouter } = ReactRouterDom;
 import { I18nextProvider } from "react-i18next";
 import * as storybookIcons from "@storybook/icons";
 import i18n from "@dt/../i18n";

@@ -48,7 +48,6 @@ const meta = {
       },
     },
   },
-  tags: ["autodocs"],
   argTypes: {
     mode: {
       control: "select",

@@ -374,16 +374,19 @@ SpinnerOnly.args = {
 // v1.1.0 Showcase Stories
 export const SeveritySuccess: StoryFn = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Success Modal (v1.1.0)</Button>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenSuccessV110")}
+      </Button>
       <Modal
         isOpen={open}
         onClose={() => setOpen(false)}
-        title="Operation Successful"
+        title={t("storyModalSuccessTitle")}
         severity="success"
       >
-        Your changes have been saved successfully.
+        {t("storyModalSuccessBody")}
       </Modal>
     </>
   );
@@ -391,16 +394,19 @@ export const SeveritySuccess: StoryFn = () => {
 
 export const SeverityError: StoryFn = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Error Modal (v1.1.0)</Button>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenErrorV110")}
+      </Button>
       <Modal
         isOpen={open}
         onClose={() => setOpen(false)}
-        title="Error Occurred"
+        title={t("storyModalErrorTitle")}
         severity="error"
       >
-        Unable to complete the operation. Please try again.
+        {t("storyModalErrorBody")}
       </Modal>
     </>
   );
@@ -408,16 +414,19 @@ export const SeverityError: StoryFn = () => {
 
 export const SeverityWarning: StoryFn = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Warning Modal (v1.1.0)</Button>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenWarningV110")}
+      </Button>
       <Modal
         isOpen={open}
         onClose={() => setOpen(false)}
-        title="Warning"
+        title={t("storyModalWarningTitle")}
         severity="warning"
       >
-        This action cannot be undone. Are you sure you want to proceed?
+        {t("storyModalWarningBody")}
       </Modal>
     </>
   );
@@ -425,16 +434,19 @@ export const SeverityWarning: StoryFn = () => {
 
 export const SeverityInfo: StoryFn = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Info Modal (v1.1.0)</Button>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenInfoV110")}
+      </Button>
       <Modal
         isOpen={open}
         onClose={() => setOpen(false)}
-        title="Information"
+        title={t("storyModalInfoTitle")}
         severity="info"
       >
-        Here's some important information you should know.
+        {t("storyModalInfoBody")}
       </Modal>
     </>
   );
@@ -442,16 +454,19 @@ export const SeverityInfo: StoryFn = () => {
 
 export const LoadingState: StoryFn = () => {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Loading Modal (v1.1.0)</Button>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenLoadingV110")}
+      </Button>
       <Modal
         isOpen={open}
-        title="Processing"
+        title={t("storyModalLoading")}
         isLoading={true}
         showCloseIcon={false}
       >
-        Please wait while we process your request...
+        {t("storyModalPleaseWait")}
       </Modal>
     </>
   );

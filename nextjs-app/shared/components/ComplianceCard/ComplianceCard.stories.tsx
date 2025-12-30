@@ -8,7 +8,8 @@ const meta = {
   title: "Utility/ComplianceCard",
   component: ComplianceCard,
   parameters: {
-    layout: "padded",controls: { disable: true },
+    layout: "padded",
+    controls: { disable: true },
   },
   tags: ["autodocs"],
 } satisfies Meta<typeof ComplianceCard>;
@@ -94,6 +95,7 @@ const badgeComplianceRules: ComplianceRule[] = [
 export const Z_BadgeCompliance: Story = {
   parameters: {
     docs: { disable: true },
+    controls: { disable: true },
   },
   args: {
     title: "Compliance: 12/12",
@@ -101,9 +103,6 @@ export const Z_BadgeCompliance: Story = {
       <Icon name="check-fat" color="var(--color-success)" weight="fill" />
     ),
     rules: badgeComplianceRules,
-  },
-  parameters: {
-    controls: { disable: true },
   },
 };
 
@@ -143,6 +142,7 @@ const mixedComplianceRules: ComplianceRule[] = [
 export const Z_MixedCompliance: Story = {
   parameters: {
     docs: { disable: true },
+    controls: { disable: true },
   },
   args: {
     title: "Compliance: 2/5",
@@ -155,14 +155,12 @@ export const Z_MixedCompliance: Story = {
     ),
     rules: mixedComplianceRules,
   },
-  parameters: {
-    controls: { disable: true },
-  },
 };
 
 export const Z_FailedCompliance: Story = {
   parameters: {
     docs: { disable: true },
+    controls: { disable: true },
   },
   args: {
     title: "Compliance: 0/3",
@@ -189,8 +187,5 @@ export const Z_FailedCompliance: Story = {
         details: "No i18n integration",
       },
     ],
-  },
-  parameters: {
-    controls: { disable: true },
   },
 };

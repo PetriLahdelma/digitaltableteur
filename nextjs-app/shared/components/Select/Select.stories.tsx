@@ -269,12 +269,18 @@ const SelectStory: React.FC<React.ComponentProps<typeof Select>> = (args) => {
     ...o,
     label: t(o.label as string),
   }));
+  const translatedError = args.error ? t(args.error as string) : undefined;
+  const translatedHelperText = args.helperText
+    ? t(args.helperText as string)
+    : undefined;
   return (
     <div className={styles.container}>
       <Select
         {...args}
         label={t(args.label as string)}
         options={translatedOptions}
+        error={translatedError}
+        helperText={translatedHelperText}
       />
     </div>
   );
@@ -345,7 +351,7 @@ WithError.args = {
     { value: "option3", label: "storyCheckboxOption3" },
   ],
   value: "option1",
-  error: "This field is required",
+  error: "storySelectErrorRequired",
 };
 
 export const SizeSmall = Template.bind({});
@@ -393,7 +399,7 @@ WithHelperText.args = {
     { value: "option3", label: "storyCheckboxOption3" },
   ],
   value: "option1",
-  helperText: "Choose one option from the list",
+  helperText: "storySelectHelperText",
 };
 
 Default.play = async ({ canvasElement }) => {
