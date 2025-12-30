@@ -16,7 +16,6 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./SplitButton.schema.json";
-import styles from "../shared-stories.module.css";
 
 // expect is available globally in Storybook browser tests
 declare const expect: (typeof import("vitest"))["expect"];
@@ -39,21 +38,15 @@ const meta: Meta<typeof SplitButton> = {
           <Description />
           <Controls />
           <Stories />
-          <details className={styles.schemaDetails}>
-            <summary className={styles.schemaSummary}>
-              <Heading>LLM Schema</Heading>
-            </summary>
-            <div className={styles.schemaContent}>
-              <CodeSnippet
-                code={JSON.stringify(schema, null, 2)}
-                language="json"
-                variant="multi"
-                maxLines={20}
-                showLineNumbers={true}
-                allowCopy={true}
-              />
-            </div>
-          </details>
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
         </>
       ),
     },

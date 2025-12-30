@@ -65,6 +65,7 @@ export default defineConfig({
         "components/**/*.{ts,tsx}",
         "nextjs-app/shared/components/**/*.{ts,tsx}",
         "nextjs-app/shared/patterns/**/*.{ts,tsx}",
+        "nextjs-app/shared/utils/**/*.{ts,tsx}",
       ],
       exclude: [
         "**/*.stories.{ts,tsx}",

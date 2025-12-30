@@ -130,3 +130,17 @@
   cursor: not-allowed;
   opacity: 0.5;
 }
+
+/* Smooth animated textarea (v2.0.0) */
+.animatedTextarea {
+  resize: none;
+  overflow-y: hidden;
+  transition: height 180ms ease;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animatedTextarea {
+    transition: none;
+  }
+}
