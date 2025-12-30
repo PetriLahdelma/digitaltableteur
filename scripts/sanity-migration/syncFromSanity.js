@@ -103,6 +103,19 @@ function slugify(value) {
     .slice(0, 80);
 }
 
+function buildCodeFence(code, language) {
+  const matches = code.match(/`+/g) || [];
+  const longest = matches.reduce(
+    (max, run) => Math.max(max, run.length),
+    0,
+  );
+  const fence = "`".repeat(Math.max(3, longest + 1));
+  const safeLanguage = typeof language === "string"
+    ? language.replace(/`/g, "").trim()
+    : "";
+  return `\n${fence}${safeLanguage}\n${code}\n${fence}\n`;
+}
+
 function buildMarkdown(body, urlBuilder) {
   if (!Array.isArray(body)) return "";
   let markdown = blocksToMarkdown(body, {
@@ -123,6 +136,11 @@ function buildMarkdown(body, urlBuilder) {
           if (!node?.url) return "";
           const provider = node.provider || "embed";
           return `\n<Embed provider="${provider}" url="${node.url}" />\n`;
+        },
+        code: ({ node }) => {
+          if (!node?.code) return "";
+          const language = node.language ? node.language : "";
+          return buildCodeFence(node.code, language);
         },
         divider: () => "\n---\n",
       },

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "ImagePlaceholder",
+    "type": "display",
+    "description": "Placeholder for images in Storybook stories with customizable dimensions, variants, and captions.",
+    "source": "nextjs-app/shared/components/ImagePlaceholder/ImagePlaceholder.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "figure",
+    "parts": [
+      {
+        "id": "placeholder",
+        "label": "placeholder box",
+        "role": "img",
+        "description": "Styled div with background color/gradient and content."
+      },
+      {
+        "id": "icon",
+        "label": "image icon",
+        "role": "presentation",
+        "description": "Optional SVG icon (picture frame)."
+      },
+      {
+        "id": "text",
+        "label": "custom text",
+        "role": "text",
+        "description": "Optional custom text label."
+      },
+      {
+        "id": "dimensions",
+        "label": "dimensions label",
+        "role": "text",
+        "description": "Width × height display (e.g., '800 × 600')."
+      },
+      {
+        "id": "caption",
+        "label": "caption",
+        "role": "text",
+        "description": "Optional figcaption below placeholder."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "figure",
+    "placeholder": "div[role=img]",
+    "icon": "svg (aria-hidden=true)",
+    "caption": "figcaption"
+  },
+  "layout": {
+    "direction": "vertical (placeholder → caption)",
+    "width": "100% (maintains aspect ratio)",
+    "height": "auto (aspect ratio-driven)",
+    "spacing": {
+      "captionMargin": "0.5rem (top)"
+    }
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "backgrounds": {
+      "light": "var(--color-light-bg)",
+      "medium": "var(--color-surface-elevated)",
+      "dark": "var(--color-dark-bg)",
+      "gradient": "linear-gradient"
+    },
+    "typography": {
+      "dimensions": "0.875rem, monospace",
+      "caption": "0.875rem, italic"
+    },
+    "color": {
+      "icon": "currentColor",
+      "text": "var(--color-text-primary)"
+    }
+  },
+  "tokens": {
+    "base": {
+      "color": ["color.light-bg", "color.surface.elevated", "color.dark-bg", "color.text.primary"],
+      "typography": ["font.mono", "font.text"]
+    }
+  },
+  "behavior": {
+    "map": "Visual placeholder for Storybook stories. Displays dimensions, optional icon, and custom text. Four variant backgrounds: light, medium, dark, gradient. Caption optional.",
+    "stateModel": "stateless",
+    "rendering": "Always renders placeholder. Icon renders if showIcon=true. Text renders if text prop provided. Dimensions render if showDimensions=true and no text. Caption renders if caption prop provided.",
+    "defaultState": "Gradient variant with icon and dimensions."
+  },
+  "interaction": {
+    "logic": [],
+    "feedback": {}
+  },
+  "states": {
+    "default": "Gradient background, icon, dimensions."
+  },
+  "constraints": {
+    "layout": ["Aspect ratio preserved via CSS aspectRatio property."],
+    "content": ["Width and height required."],
+    "nesting": ["Should not be nested in interactive elements."]
+  },
+  "accessibility": {
+    "roles": {
+      "placeholder": "img",
+      "icon": "presentation (aria-hidden=true)",
+      "caption": "figcaption"
+    },
+    "aria": {
+      "placeholder": "aria-label={alt}"
+    },
+    "keyboard": "Non-interactive.",
+    "focus": "Non-focusable.",
+    "contrast": "Text meets WCAG AA."
+  },
+  "responsiveness": {
+    "rules": "Placeholder scales proportionally while maintaining aspect ratio.",
+    "breakpoints": []
+  },
+  "generativeRules": {
+    "contextInputs": ["variant", "showIcon", "showDimensions", "text", "caption"],
+    "rules": [
+      {
+        "if": { "variant": "light" },
+        "then": { "background": "var(--color-light-bg)" }
+      },
+      {
+        "if": { "variant": "medium" },
+        "then": { "background": "var(--color-surface-elevated)" }
+      },
+      {
+        "if": { "variant": "dark" },
+        "then": { "background": "var(--color-dark-bg)" }
+      },
+      {
+        "if": { "variant": "gradient" },
+        "then": { "background": "linear-gradient(...)" }
+      },
+      {
+        "if": { "showIcon": false },
+        "then": { "icon": "hidden" }
+      },
+      {
+        "if": { "text": "present" },
+        "then": { "dimensions": "hidden", "text": "visible" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Use in Storybook stories to replace real images during development.",
+    "Presets available: landscape, portrait, square, wireframe, component, detail, structure, cardCover.",
+    "Aspect ratio maintained via CSS aspectRatio property (modern browsers).",
+    "Icon is optional (showIcon prop, default true).",
+    "Dimensions auto-hide if custom text provided.",
+    "Caption optional (figcaption element).",
+    "Four variants: light, medium, dark, gradient (default: gradient).",
+    "width and height props required for aspect ratio calculation."
+  ]
+}

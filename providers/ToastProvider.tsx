@@ -47,7 +47,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
       {children}
       <Toast
         message={message}
-        open={isOpen}
+        isOpen={isOpen}
         duration={duration}
         onClose={handleClose}
       />

@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "FileUpload",
+    "type": "input",
+    "description": "File upload input with browse button, file size validation, and clear functionality.",
+    "source": "nextjs-app/shared/components/FileUpload/FileUpload.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "file upload wrapper",
+    "parts": [
+      {
+        "id": "hiddenInput",
+        "label": "hidden file input",
+        "role": "file input",
+        "description": "Native file input (visually hidden, triggered by browse button)."
+      },
+      {
+        "id": "displayField",
+        "label": "display field",
+        "role": "text input",
+        "description": "Read-only text input showing selected file name and size."
+      },
+      {
+        "id": "browseButton",
+        "label": "browse button",
+        "role": "button",
+        "description": "Triggers file picker dialog."
+      },
+      {
+        "id": "clearButton",
+        "label": "clear button",
+        "role": "button",
+        "description": "Removes selected file (optional, shown only if file selected and clearButtonLabel provided)."
+      },
+      {
+        "id": "helperText",
+        "label": "helper text",
+        "role": "text",
+        "description": "Guidance or error message below input."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "div",
+    "hiddenInput": "input[type=file]",
+    "displayField": "input[type=text] (Inputs component)",
+    "browseButton": "button (Button component)",
+    "clearButton": "button (Button component)",
+    "helperText": "p (HelperText component)"
+  },
+  "layout": {
+    "direction": "vertical stack (label → display field + buttons → helper text)",
+    "width": "fills parent container",
+    "height": "content-driven",
+    "spacing": {
+      "fieldButtonGap": "0.5rem",
+      "helperTextMargin": "0.5rem (top)"
+    }
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "border": "inherited from Inputs component",
+    "radius": "inherited from Inputs and Button components",
+    "backgrounds": {
+      "displayField": "var(--color-surface)",
+      "buttons": "inherited from Button component"
+    },
+    "typography": {
+      "displayField": "inherited from Inputs component"
+    }
+  },
+  "tokens": {
+    "base": {
+      "color": ["color.surface", "color.border"],
+      "spacing": ["space.internal.8"]
+    }
+  },
+  "behavior": {
+    "map": "Provides file upload functionality with visual feedback. Browse button triggers native file picker. Selected file displays as \"filename (size)\" in read-only input. Size validation rejects files exceeding maxSizeInBytes. Clear button removes selection. Controlled component (value prop + onFileChange callback).",
+    "stateModel": "controlled (value prop + onFileChange callback)",
+    "rendering": "Always renders hidden input, display field, and browse button. Clear button renders if file selected and clearButtonLabel provided. Helper text renders if helperText or error present.",
+    "defaultState": "No file selected."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "Browse button click",
+        "effect": "Opens native file picker dialog."
+      },
+      {
+        "trigger": "File selection (valid size)",
+        "effect": "Updates display field, calls onFileChange with File object."
+      },
+      {
+        "trigger": "File selection (exceeds maxSizeInBytes)",
+        "effect": "Shows error message, clears selection, calls onFileChange(null)."
+      },
+      {
+        "trigger": "Clear button click",
+        "effect": "Clears file selection, resets input, calls onFileChange(null)."
+      },
+      {
+        "trigger": "Display field click",
+        "effect": "Triggers browse button (opens file picker)."
+      }
+    ],
+    "feedback": {
+      "hover": "Browse/clear buttons show hover state.",
+      "focus": "Buttons focusable via keyboard.",
+      "active": "File name and size appear in display field.",
+      "disabled": "All interactions disabled when disabled=true."
+    }
+  },
+  "states": {
+    "default": "No file selected, browse button enabled.",
+    "fileSelected": "File name and size displayed, clear button visible.",
+    "sizeError": "File rejected (too large), error message shown.",
+    "disabled": "All interactions disabled."
+  },
+  "constraints": {
+    "layout": [
+      "Display field always read-only.",
+      "Hidden input has tabIndex=-1, aria-hidden=true."
+    ],
+    "content": [
+      "File size formatted as KB (< 1024 KB) or MB (>= 1024 KB).",
+      "Size error message customizable via sizeErrorMessage prop."
+    ],
+    "nesting": [
+      "Should be used in forms.",
+      "Contains Inputs, Button, and HelperText components."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "hiddenInput": "file input (aria-hidden=true)",
+      "displayField": "textbox (read-only)",
+      "browseButton": "button",
+      "clearButton": "button",
+      "helperText": "text"
+    },
+    "aria": {
+      "displayField": "aria-describedby={helperTextId} (if helperText provided).",
+      "hiddenInput": "aria-hidden=true, tabIndex=-1.",
+      "required": "Optional required attribute for form validation."
+    },
+    "keyboard": "Tab to browse/clear buttons, Enter/Space to activate.",
+    "focus": "Buttons have visible focus indicators.",
+    "contrast": "All text meets WCAG AA."
+  },
+  "responsiveness": {
+    "rules": "Buttons stack vertically on narrow screens. Display field fills available width.",
+    "breakpoints": ["mobile: < 600px", "tablet: 600-1024px", "desktop: > 1024px"]
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "value",
+      "maxSizeInBytes",
+      "clearButtonLabel",
+      "disabled"
+    ],
+    "rules": [
+      {
+        "if": { "value": "null" },
+        "then": { "displayField.value": "", "clearButton": "hidden" }
+      },
+      {
+        "if": { "value": "File object" },
+        "then": { "displayField.value": "filename (size)", "clearButton": "visible if clearButtonLabel" }
+      },
+      {
+        "if": { "fileSize": "> maxSizeInBytes" },
+        "then": { "error": "sizeErrorMessage", "value": "null" }
+      },
+      {
+        "if": { "disabled": true },
+        "then": { "interactive": "false", "buttons": "disabled" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Use accept prop to restrict file types (e.g., accept=\"image/*,.pdf\").",
+    "File size validation runs client-side (maxSizeInBytes prop).",
+    "Size error message auto-displays when file exceeds limit.",
+    "Controlled component: parent manages value via onFileChange callback.",
+    "Display field is read-only (prevents manual text input).",
+    "Clicking display field triggers file picker (same as browse button).",
+    "Clear button only appears if clearButtonLabel provided AND file selected.",
+    "File size formatted: 0 KB for empty files, rounded up to 1 KB minimum.",
+    "Helper text shown below field (normal or error state).",
+    "useId generates unique ID for aria-describedby association."
+  ]
+}

@@ -1,43 +1,278 @@
 /* stylelint-disable value-keyword-case, scale-unlimited/declaration-strict-value */
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary as PrimaryBlock,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 import ComplianceCard, { type ComplianceRule } from "@dt/ComplianceCard";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
 
 export default {
   title: "Components/Button",
   component: Button,
   tags: ["autodocs"],
-  parameters: {},
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <PrimaryBlock />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
+  },
   argTypes: {
-    variant: {
-      control: {
-        type: "select",
-        options: [
-          "primary",
-          "secondary",
-          "tertiary",
-          "secondaryError",
-          "tertiaryError",
-          "error",
-          "warning",
-          "success",
-          "info",
-        ],
+    // Content
+    children: {
+      control: "text",
+      description: "Button label content",
+      table: {
+        category: "Content",
+        type: { summary: "ReactNode" },
       },
     },
-    disabled: { control: "boolean" },
-    loading: { control: "boolean" },
-    inverse: { control: "boolean" },
-    rounded: { control: "boolean" },
-    tooltip: { control: "text" },
-    accessibleName: { control: "text" },
-    accessibleDescription: { control: "text" },
-    icon: { control: "text" },
-    endIcon: { control: "text" },
+    icon: {
+      control: "text",
+      description:
+        "Icon at the start - can be React element, component, or Phosphor icon name (e.g., 'arrow-left')",
+      table: {
+        category: "Content",
+        type: { summary: "ReactNode | string" },
+      },
+    },
+    endIcon: {
+      control: "text",
+      description: "Icon displayed at the end of the button content",
+      table: {
+        category: "Content",
+        type: { summary: "ReactNode | string" },
+      },
+    },
+
+    // Appearance
+    variant: {
+      control: { type: "select" },
+      options: [
+        "primary",
+        "secondary",
+        "tertiary",
+        "secondaryError",
+        "tertiaryError",
+        "error",
+        "warning",
+        "success",
+        "info",
+      ],
+      description: "Visual style variant of the button",
+      table: {
+        category: "Appearance",
+        type: { summary: "ButtonVariantVisual | ButtonSeverity" },
+        defaultValue: { summary: "primary" },
+      },
+    },
+    severity: {
+      control: { type: "select" },
+      options: ["error", "warning", "success", "info"],
+      description: "Semantic severity for status-based styling (v1.1.0+)",
+      table: {
+        category: "Appearance",
+        type: { summary: "ButtonSeverity" },
+      },
+    },
+    size: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "s", "m", "l"],
+      description:
+        "Button size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats",
+      table: {
+        category: "Appearance",
+        type: { summary: "SizeUnified | ButtonSizeLegacy" },
+        defaultValue: { summary: "md" },
+      },
+    },
+    isInverse: {
+      control: "boolean",
+      description:
+        "Replaces primary text/border color with white for dark backgrounds (v1.1.0+)",
+      table: {
+        category: "Appearance",
+        type: { summary: "boolean" },
+      },
+    },
+    isRounded: {
+      control: "boolean",
+      description: "Applies rounded corners to the button (v1.1.0+)",
+      table: {
+        category: "Appearance",
+        type: { summary: "boolean" },
+      },
+    },
+
+    // State
+    isDisabled: {
+      control: "boolean",
+      description: "Disables the button (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+    isLoading: {
+      control: "boolean",
+      description: "Shows loading state with pulsing animation (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+
+    // Behavior
+    onClick: {
+      action: "clicked",
+      description: "Click event handler",
+      table: {
+        category: "Behavior",
+        type: { summary: "(event: MouseEvent) => void" },
+      },
+    },
+    href: {
+      control: "text",
+      description: "URL to navigate to - when provided, renders as an anchor element",
+      table: {
+        category: "Behavior",
+        type: { summary: "string" },
+      },
+    },
+    submits: {
+      control: "boolean",
+      description: "When true, button type becomes 'submit'",
+      table: {
+        category: "Behavior",
+        type: { summary: "boolean" },
+      },
+    },
+    target: {
+      control: "text",
+      description: "Link target (only for href buttons)",
+      table: {
+        category: "Behavior",
+        type: { summary: "string" },
+      },
+    },
+
+    // Accessibility
+    accessibleName: {
+      control: "text",
+      description: "ARIA label for accessible name override",
+      table: {
+        category: "Accessibility",
+        type: { summary: "string" },
+      },
+    },
+    accessibleDescription: {
+      control: "text",
+      description: "ARIA description for additional context",
+      table: {
+        category: "Accessibility",
+        type: { summary: "string" },
+      },
+    },
+    accessibleNameRef: {
+      control: "text",
+      description: "ID reference for aria-labelledby",
+      table: {
+        category: "Accessibility",
+        type: { summary: "string" },
+      },
+    },
+    accessibleRole: {
+      control: { type: "select" },
+      options: ["button", "link"],
+      description: "ARIA role override",
+      table: {
+        category: "Accessibility",
+        type: { summary: "button | link" },
+      },
+    },
+    tooltip: {
+      control: "text",
+      description: "Tooltip text displayed on hover",
+      table: {
+        category: "Accessibility",
+        type: { summary: "string" },
+      },
+    },
+
+    // Advanced
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: {
+        category: "Advanced",
+        type: { summary: "string" },
+      },
+    },
+
+    // Deprecated
+    disabled: {
+      control: "boolean",
+      description: "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "boolean" },
+      },
+    },
+    loading: {
+      control: "boolean",
+      description: "⚠️ Deprecated: Use isLoading instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "boolean" },
+      },
+    },
+    inverse: {
+      control: "boolean",
+      description: "⚠️ Deprecated: Use isInverse instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "boolean" },
+      },
+    },
+    rounded: {
+      control: "boolean",
+      description: "⚠️ Deprecated: Use isRounded instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "boolean" },
+      },
+    },
   },
 } as Meta;
 

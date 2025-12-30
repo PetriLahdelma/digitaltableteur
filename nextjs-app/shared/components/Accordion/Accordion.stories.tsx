@@ -4,7 +4,6 @@ import {
   Description,
   Heading,
   Primary,
-  Source,
   Stories,
   Subtitle,
   Title,
@@ -12,6 +11,7 @@ import {
 import React from "react";
 import Accordion from "./Accordion";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
+import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const meta: Meta<typeof Accordion> = {
@@ -32,7 +32,14 @@ const meta: Meta<typeof Accordion> = {
           <Controls />
           <Stories />
           <Heading>LLM Schema</Heading>
-          <Source language="json" code={JSON.stringify(schema, null, 2)} />
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
         </>
       ),
     },

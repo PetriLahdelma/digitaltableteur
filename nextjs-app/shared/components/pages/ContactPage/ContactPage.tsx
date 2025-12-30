@@ -153,7 +153,7 @@ export function ContactPage() {
             linkedinLabel={t("contactLinkedInLabel")}
             githubUrl="https://github.com/PetriLahdelma"
             githubLabel={t("contactGitHubLabel")}
-            mediumUrl="https://medium.com/@petrilahdelma"
+            mediumUrl="https://medium.com/digitaltableteur"
             mediumLabel={t("contactMediumLabel")}
             dribbbleUrl="https://dribbble.com/digitaltableteur"
             dribbbleLabel={t("contactDribbbleLabel")}

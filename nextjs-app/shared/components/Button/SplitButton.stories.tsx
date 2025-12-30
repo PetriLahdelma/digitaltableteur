@@ -1,10 +1,21 @@
 import React from "react";
 import { type Meta, type StoryObj, type StoryFn } from "@storybook/react-vite";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import { SplitButton } from "@dt/Button";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./SplitButton.schema.json";
 
 // expect is available globally in Storybook browser tests
 declare const expect: (typeof import("vitest"))["expect"];
@@ -15,6 +26,30 @@ const meta: Meta<typeof SplitButton> = {
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
   },
   argTypes: {
     variant: {

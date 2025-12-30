@@ -1,11 +1,22 @@
 /* stylelint-disable value-keyword-case */
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react-vite";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import Avatar from "@dt/Avatar";
 import peteVaultBoy from "../../assets/images/pete-vault-boy.jpg";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
 import Icon from "@dt/Icon";
 import ComplianceCard, { type ComplianceRule } from "@dt/ComplianceCard";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
 import PropTypes from "prop-types";
 
 // expect is available globally in Storybook browser tests
@@ -15,7 +26,32 @@ export default {
   title: "Components/Avatar",
   component: Avatar,
   tags: ["autodocs"],
-  parameters: {},
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
+  },
   argTypes: {
     variant: {
       control: { type: "inline-radio" },

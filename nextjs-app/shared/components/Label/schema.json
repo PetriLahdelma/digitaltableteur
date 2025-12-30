@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Label",
+    "type": "display",
+    "description": "Form label with optional required indicator, tooltip, and disabled state.",
+    "source": "nextjs-app/shared/components/Label/Label.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "label element",
+    "parts": [
+      {
+        "id": "text",
+        "label": "label text",
+        "role": "text",
+        "description": "Label content (children)."
+      },
+      {
+        "id": "requiredIndicator",
+        "label": "required asterisk",
+        "role": "presentation",
+        "description": "Red asterisk (*) shown if required=true."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "label",
+    "text": "text content",
+    "requiredIndicator": "span"
+  },
+  "layout": {
+    "direction": "horizontal (text + asterisk)",
+    "width": "intrinsic",
+    "height": "intrinsic",
+    "spacing": {
+      "asteriskMargin": "0.25rem (left)"
+    }
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "typography": {
+      "fontSize": "0.875rem",
+      "fontWeight": "500 (medium)"
+    },
+    "color": {
+      "default": "var(--color-text-primary)",
+      "disabled": "var(--color-text-disabled)",
+      "requiredIndicator": "var(--color-semantic-error)"
+    }
+  },
+  "tokens": {
+    "base": {
+      "color": ["color.text.primary", "color.text.disabled", "color.semantic.error"],
+      "typography": ["font.text"]
+    }
+  },
+  "behavior": {
+    "map": "Associates with form input via htmlFor attribute. Shows required asterisk if required=true. Supports title/tooltipText for hover tooltip. Disabled state reduces opacity.",
+    "stateModel": "stateless",
+    "rendering": "Always renders text. Required indicator renders if required=true.",
+    "defaultState": "Default text, no asterisk, not disabled."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "Label click",
+        "effect": "Focuses associated input (via htmlFor)."
+      }
+    ],
+    "feedback": {
+      "hover": "Cursor pointer, shows title/tooltipText tooltip.",
+      "disabled": "Reduced opacity, cursor default."
+    }
+  },
+  "states": {
+    "default": "Normal text.",
+    "required": "Red asterisk appended.",
+    "disabled": "Reduced opacity, cursor default."
+  },
+  "constraints": {
+    "layout": ["Asterisk always trailing label text."],
+    "content": ["htmlFor required for association."],
+    "nesting": ["Used with Inputs, Select, Checkbox, Switch, etc."]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "label"
+    },
+    "aria": {
+      "htmlFor": "Associates label with input element."
+    },
+    "keyboard": "Clicking label focuses associated input.",
+    "focus": "Non-focusable (focuses associated input).",
+    "contrast": "Text meets WCAG AA."
+  },
+  "responsiveness": {
+    "rules": "Label text wraps if constrained.",
+    "breakpoints": []
+  },
+  "generativeRules": {
+    "contextInputs": ["required", "disabled", "tooltipText"],
+    "rules": [
+      {
+        "if": { "required": true },
+        "then": { "requiredIndicator": "visible (red asterisk)" }
+      },
+      {
+        "if": { "disabled": true },
+        "then": { "color": "var(--color-text-disabled)", "cursor": "default" }
+      },
+      {
+        "if": { "tooltipText": "present" },
+        "then": { "title": "tooltipText or title prop" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "htmlFor prop required (associates with input ID).",
+    "Required indicator (red asterisk) shown if required=true.",
+    "Tooltip via title or tooltipText prop (title takes precedence).",
+    "Disabled state applies disabled CSS class (reduced opacity).",
+    "Supports className for additional styling.",
+    "Rest props spread to label element (supports all native label attributes)."
+  ]
+}

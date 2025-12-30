@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "CheckboxGroup",
+    "type": "input",
+    "description": "Group of related checkboxes with optional master checkbox for select-all functionality.",
+    "source": "nextjs-app/shared/components/CheckboxGroup/CheckboxGroup.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "checkbox group wrapper",
+    "parts": [
+      {
+        "id": "groupLabel",
+        "label": "group label",
+        "role": "label",
+        "description": "Label for the entire checkbox group."
+      },
+      {
+        "id": "masterCheckbox",
+        "label": "master checkbox",
+        "role": "checkbox",
+        "description": "Optional select-all/none checkbox with indeterminate state."
+      },
+      {
+        "id": "optionsContainer",
+        "label": "options container",
+        "role": "group",
+        "description": "Container for individual checkbox options."
+      },
+      {
+        "id": "optionCheckboxes",
+        "label": "option checkboxes",
+        "role": "checkbox",
+        "description": "Individual checkboxes for each option."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "div",
+    "groupLabel": "label (GroupLabel component)",
+    "masterCheckbox": "input[type=checkbox] (Checkbox component)",
+    "optionsContainer": "div",
+    "optionCheckboxes": "input[type=checkbox] (Checkbox component)"
+  },
+  "layout": {
+    "direction": "vertical stack (group label → master checkbox → options)",
+    "width": "fills parent container",
+    "height": "content-driven",
+    "spacing": {
+      "gap": "0.5rem (between checkboxes)",
+      "groupLabelMargin": "0.5rem (below group label)",
+      "masterCheckboxMargin": "0.5rem (below master checkbox)"
+    },
+    "constraints": [
+      "Group label always visible.",
+      "Master checkbox optional (showMasterCheckbox prop).",
+      "Options stack vertically with consistent spacing."
+    ]
+  },
+  "visualStyle": {
+    "surface": "flat",
+    "elevation": "none",
+    "border": "inherited from Checkbox component",
+    "radius": "inherited from Checkbox component",
+    "backgrounds": {
+      "default": "transparent",
+      "checkboxes": "inherited from Checkbox component"
+    },
+    "typography": {
+      "groupLabel": "inherited from GroupLabel component",
+      "checkboxLabels": "inherited from Checkbox component"
+    },
+    "color": {
+      "groupLabel": "var(--color-primary)",
+      "checkboxes": "var(--color-primary)"
+    },
+    "iconMotion": "None"
+  },
+  "tokens": {
+    "base": {
+      "color": ["color.primary"],
+      "spacing": ["space.internal.8"]
+    }
+  },
+  "behavior": {
+    "map": "Groups related checkboxes under a common label. Optional master checkbox controls all child checkboxes: when clicked, selects or deselects all. Master checkbox shows indeterminate state when some (but not all) children are selected. Supports initial selection via defaultSelected prop. Calls onChange with array of selected option values.",
+    "stateModel": "uncontrolled (internal checkedStates state)",
+    "rendering": "Always renders group label. Master checkbox renders if showMasterCheckbox=true. Individual option checkboxes render from options array.",
+    "defaultState": "All unchecked unless defaultSelected provides initial values."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "Master checkbox click (unchecked → checked)",
+        "effect": "Selects all option checkboxes. Calls onChange with all option values."
+      },
+      {
+        "trigger": "Master checkbox click (checked → unchecked)",
+        "effect": "Deselects all option checkboxes. Calls onChange with empty array."
+      },
+      {
+        "trigger": "Master checkbox click (indeterminate → checked)",
+        "effect": "Selects all option checkboxes."
+      },
+      {
+        "trigger": "Option checkbox toggle",
+        "effect": "Updates checkedStates array. Calls onChange with array of selected values. Updates master checkbox state (checked/indeterminate/unchecked)."
+      }
+    ],
+    "feedback": {
+      "hover": "Inherited from Checkbox component.",
+      "focus": "Inherited from Checkbox component.",
+      "active": "Inherited from Checkbox component.",
+      "disabled": "Not supported (no disabled prop)."
+    }
+  },
+  "states": {
+    "default": "No options selected (master unchecked).",
+    "allSelected": "All options selected (master checked).",
+    "someSelected": "Some options selected (master indeterminate).",
+    "noneSelected": "No options selected (master unchecked)."
+  },
+  "transitions": [
+    {
+      "from": "default",
+      "to": "allSelected",
+      "trigger": "Master checkbox click",
+      "motionTokens": ["inherited from Checkbox component"]
+    },
+    {
+      "from": "allSelected",
+      "to": "noneSelected",
+      "trigger": "Master checkbox click",
+      "motionTokens": ["inherited from Checkbox component"]
+    },
+    {
+      "from": "someSelected",
+      "to": "allSelected",
+      "trigger": "Master checkbox click (indeterminate → checked)",
+      "motionTokens": ["inherited from Checkbox component"]
+    }
+  ],
+  "constraints": {
+    "layout": [
+      "Group label required.",
+      "Options array required (min 1 option).",
+      "Master checkbox optional (controlled by showMasterCheckbox)."
+    ],
+    "content": [
+      "Options array must have unique values.",
+      "Each option must have label and value properties.",
+      "Master label defaults to i18n 'All' if not provided."
+    ],
+    "nesting": [
+      "Contains Checkbox components (cannot nest CheckboxGroup inside itself).",
+      "Should be nested in forms or fieldsets."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "div",
+      "groupLabel": "label",
+      "masterCheckbox": "checkbox",
+      "optionCheckboxes": "checkbox"
+    },
+    "aria": {
+      "groupLabel": "Associated via htmlFor attribute to master checkbox or group container.",
+      "masterCheckbox": "aria-checked=true|false|mixed (indeterminate).",
+      "optionCheckboxes": "Each has unique ID for label association."
+    },
+    "keyboard": "Space toggles checkboxes. Tab/Shift+Tab navigates between checkboxes.",
+    "focus": "Visible focus ring on each checkbox (inherited from Checkbox component).",
+    "contrast": "All text meets WCAG AA (4.5:1 minimum)."
+  },
+  "responsiveness": {
+    "rules": "Checkboxes stack vertically on all screen sizes. Labels wrap if constrained.",
+    "breakpoints": ["mobile: < 600px", "tablet: 600-1024px", "desktop: > 1024px"]
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "options",
+      "showMasterCheckbox",
+      "defaultSelected"
+    ],
+    "rules": [
+      {
+        "if": { "showMasterCheckbox": true },
+        "then": { "render": "master checkbox with indeterminate state support" }
+      },
+      {
+        "if": { "showMasterCheckbox": false },
+        "then": { "render": "only option checkboxes (no master)" }
+      },
+      {
+        "if": { "allChecked": true },
+        "then": { "masterCheckbox.checked": true, "masterCheckbox.indeterminate": false }
+      },
+      {
+        "if": { "someChecked": true },
+        "then": { "masterCheckbox.checked": false, "masterCheckbox.indeterminate": true }
+      },
+      {
+        "if": { "noneChecked": true },
+        "then": { "masterCheckbox.checked": false, "masterCheckbox.indeterminate": false }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Provide unique, stable option values for consistent state management.",
+    "Use defaultSelected for initial selection (uncontrolled component).",
+    "onChange receives array of selected option values.",
+    "Master checkbox automatically calculates checked/indeterminate state based on child checkboxes.",
+    "Master label defaults to i18n 'All' but can be customized via masterLabel prop.",
+    "Options array changes reset state (unless only labels change).",
+    "Component uses useEffect to avoid resetting state when only labels change (checks option values).",
+    "Group label is required for accessibility.",
+    "Master checkbox ID format: masterCheckbox-{id}.",
+    "Option checkbox ID format: {id}-option-{value}."
+  ]
+}

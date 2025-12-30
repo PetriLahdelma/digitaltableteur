@@ -27,7 +27,7 @@
   border-bottom: 1px solid var(--color-border, rgb(0 0 0 / 10%));
 }
 
-/* Tab Sizes */
+/* Tab Sizes (legacy uppercase - kept for backwards compatibility) */
 
 .s {
   font-size: var(--font-size-button-s);
@@ -39,6 +39,19 @@
 
 .l {
   font-size: var(--font-size-button-l);
+}
+
+/* Size variants (v1.1.0 - modern lowercase) */
+.tabs--sm {
+  font-size: 0.875rem;
+}
+
+.tabs--md {
+  font-size: 1rem;
+}
+
+.tabs--lg {
+  font-size: 1.125rem;
 }
 
 /* Individual Tab Base Styles */

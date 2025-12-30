@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Switch.module.css";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
+import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
 export interface SwitchProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> {
-  checked: boolean;
+  // v2.0.0 PROPS
+  /** Checked state (controlled) */
+  isChecked?: boolean;
+  /** Disables the switch */
+  isDisabled?: boolean;
+  /** Shows loading state with spinner */
+  isLoading?: boolean;
+  /** Initial checked state for uncontrolled component */
+  defaultChecked?: boolean;
+  /** Size variant */
+  size?: SizeUnified;
+  /** Checked change handler */
   onCheckedChange?: (checked: boolean) => void;
-  loading?: boolean;
+
+  // EXISTING PROPS
   label?: React.ReactNode;
   labelPlacement?: "right" | "left" | "top";
   helperText?: string;
@@ -16,10 +29,12 @@ export interface SwitchProps
 const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
   (
     {
-      checked,
+      isChecked,
+      isDisabled = false,
+      isLoading = false,
+      defaultChecked,
+      size = "md",
       onCheckedChange,
-      disabled = false,
-      loading = false,
       label,
       labelPlacement = "right",
       helperText,
@@ -30,17 +45,31 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
     },
     ref,
   ) => {
-    const isDisabled = disabled || loading;
+    const normalizedSize = normalizeSizeProp(size);
+
+    // Uncontrolled state management
+    const [internalChecked, setInternalChecked] = useState(defaultChecked ?? false);
+    const isControlled = isChecked !== undefined;
+    const actualChecked = isControlled ? isChecked : internalChecked;
+
+    const effectiveIsDisabled = isDisabled || isLoading;
     const generatedId = React.useId();
     const switchId = id ?? generatedId;
     const labelId = label ? `${switchId}-label` : undefined;
 
     const toggle = (event: React.MouseEvent<HTMLButtonElement>) => {
-      if (isDisabled) {
+      if (effectiveIsDisabled) {
         event.preventDefault();
         return;
       }
-      onCheckedChange?.(!checked);
+      const newChecked = !actualChecked;
+
+      // Update internal state for uncontrolled mode
+      if (!isControlled) {
+        setInternalChecked(newChecked);
+      }
+
+      onCheckedChange?.(newChecked);
     };
 
     const wrapperClassNames = [
@@ -60,7 +89,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
         id={labelId}
         htmlFor={switchId}
         className={styles.label}
-        disabled={isDisabled}
+        disabled={effectiveIsDisabled}
       >
         {label}
       </Label>
@@ -76,8 +105,8 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
             ref={ref}
             type="button"
             role="switch"
-            aria-checked={checked}
-            aria-busy={loading || undefined}
+            aria-checked={actualChecked}
+            aria-busy={isLoading || undefined}
             aria-labelledby={
               label && labelId ? labelId : rest["aria-labelledby"]
             }
@@ -87,11 +116,17 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
                 : (rest["aria-label"] ??
                   (typeof label === "string" ? label : undefined))
             }
-            className={[styles.switch, className].filter(Boolean).join(" ")}
-            data-checked={checked}
-            data-loading={loading}
-            data-disabled={isDisabled}
-            disabled={disabled}
+            className={[
+              styles.switch,
+              styles[`switch--${normalizedSize}`],
+              className,
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            data-checked={actualChecked}
+            data-loading={isLoading}
+            data-disabled={effectiveIsDisabled}
+            disabled={isDisabled}
             onClick={(event) => {
               onClick?.(event);
               if (event.defaultPrevented) return;
@@ -99,7 +134,7 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
             }}
           >
             <span className={styles.handle} aria-hidden="true">
-              {loading && (
+              {isLoading && (
                 <span className={styles.spinner} aria-hidden="true" />
               )}
             </span>
