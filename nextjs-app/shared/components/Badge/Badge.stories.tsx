@@ -1,5 +1,14 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
@@ -8,6 +17,9 @@ import Badge from "@dt/Badge";
 import Text from "@dt/Text";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
+import styles from "../shared-stories.module.css";
 
 const STATE_ICON_MAP: Record<string, string> = {
   success: "check-circle",
@@ -22,6 +34,36 @@ const meta: Meta<typeof Badge> = {
   tags: ["autodocs"],
   parameters: {
     // Disable global WIP badge to prevent duplicate 'Badge' text collision in tests
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <details className={styles.schemaDetails}>
+            <summary className={styles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={styles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
+        </>
+      ),
+    },
   },
   argTypes: {
     design: {

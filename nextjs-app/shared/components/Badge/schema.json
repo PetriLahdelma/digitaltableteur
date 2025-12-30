@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Badge",
+    "type": "display",
+    "description": "Compact label displaying status, category, or metadata with optional remove functionality.",
+    "source": "nextjs-app/shared/components/Badge/Badge.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "badge",
+    "parts": [
+      {
+        "id": "icon",
+        "label": "status icon",
+        "role": "presentation",
+        "description": "Optional semantic icon indicating state (success, error, warning, info)."
+      },
+      {
+        "id": "label",
+        "label": "badge text",
+        "role": "text",
+        "description": "Main badge content (text or React nodes)."
+      },
+      {
+        "id": "removeButton",
+        "label": "remove button",
+        "role": "button",
+        "description": "Optional close/remove button for dismissible badges."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "span",
+    "icon": "span (decorative via Icon component)",
+    "label": "text node",
+    "removeButton": "button"
+  },
+  "layout": {
+    "direction": "horizontal (icon + text + remove button)",
+    "width": "intrinsic to content",
+    "height": "content-driven (min-height varies by size)",
+    "sizeRules": {
+      "s": "min-height: 1.25rem, padding: 0.125rem 0.5rem",
+      "m": "min-height: 1.5rem, padding: 0.25rem 0.625rem",
+      "l": "min-height: 2rem, padding: 0.375rem 0.75rem"
+    },
+    "spacing": {
+      "padding": "size-dependent (see sizeRules)",
+      "gap": "0.25rem (between icon, text, button)",
+      "iconMargin": "0 (gap handles spacing)"
+    },
+    "constraints": [
+      "Badge text does not wrap (white-space: nowrap).",
+      "Square variant has equal width and height.",
+      "Remove button is always trailing."
+    ]
+  },
+  "visualStyle": {
+    "surface": "flat (primary) | outlined (secondary)",
+    "elevation": "none",
+    "border": "none (primary) | 1px solid (secondary)",
+    "radius": "var(--radius-sm) | 50% (square variant can override)",
+    "backgrounds": {
+      "default": {
+        "primary": "state-specific solid color (success green, error red, etc.)",
+        "secondary": "transparent with state-specific border"
+      },
+      "hover": "no hover state (not interactive except remove button)",
+      "active": "no active state",
+      "disabled": "not applicable"
+    },
+    "typography": {
+      "fontFamily": "var(--font-text)",
+      "fontSize": {
+        "s": "0.75rem",
+        "m": "0.875rem",
+        "l": "1rem"
+      },
+      "fontWeight": "500 (medium)",
+      "lineHeight": "1.2"
+    },
+    "color": {
+      "text": {
+        "primary": "var(--color-white) for colored states, var(--color-black) for neutral",
+        "secondary": "state-specific text color (matches border)"
+      },
+      "icon": {
+        "primary": "var(--color-white) for high contrast",
+        "secondary": "semantic color matching state"
+      },
+      "border": "state-specific (secondary design only)"
+    },
+    "iconMotion": "No transitions. Remove button has hover/active states."
+  },
+  "tokens": {
+    "base": {
+      "color": [
+        "color.semantic.success",
+        "color.semantic.error",
+        "color.semantic.warning",
+        "color.semantic.info",
+        "color.neutral.500",
+        "color.white",
+        "color.black"
+      ],
+      "typography": ["font.text", "font.weight.medium"],
+      "spacing": ["space.internal.2", "space.internal.4", "space.internal.8"],
+      "radii": ["radius.sm", "radius.circle"]
+    },
+    "brand": {
+      "color": ["brand.primary", "brand.secondary"]
+    },
+    "mode": {
+      "light": ["mode.light.semantic.*"],
+      "dark": ["mode.dark.semantic.*"]
+    },
+    "contextual": {
+      "emotion": [
+        "context.emotion.success",
+        "context.emotion.error",
+        "context.emotion.warning",
+        "context.emotion.info"
+      ]
+    }
+  },
+  "behavior": {
+    "map": "Badge displays static status or category label. If removable=true, clicking remove button calls onRemove callback and animates badge removal. Semantic icons auto-inject based on state prop.",
+    "stateModel": "controlled (visibility via parent state after onRemove)",
+    "rendering": "Badge always renders unless visibility controlled by parent. Remove button renders conditionally when removable=true.",
+    "defaultState": "Visible with neutral state (no icon) unless state prop specifies semantic state."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "onClick (remove button)",
+        "effect": "Calls onRemove callback. Parent controls visibility state."
+      }
+    ],
+    "feedback": {
+      "hover": "Remove button shows hover state (background darken). Badge itself not interactive.",
+      "focus": "Remove button shows focus ring.",
+      "active": "Remove button shows active state (background darker).",
+      "disabled": "Not applicable (no disabled state)"
+    }
+  },
+  "states": {
+    "default": "Badge displayed with neutral or specified state styling.",
+    "success": "Green background (primary) or border (secondary) with checkmark icon.",
+    "error": "Red background/border with X circle icon.",
+    "warning": "Yellow/orange background/border with warning triangle icon.",
+    "info": "Blue background/border with info circle icon.",
+    "neutral": "Gray background/border, no icon.",
+    "removable": "Remove button (X) appears on trailing edge."
+  },
+  "transitions": [
+    {
+      "from": "default",
+      "to": "removed",
+      "trigger": "remove button click + onRemove callback",
+      "motionTokens": ["parent controls removal animation"]
+    }
+  ],
+  "constraints": {
+    "layout": [
+      "Text content must not wrap (truncate with ellipsis if needed).",
+      "Square variant enforces width === height.",
+      "Remove button always trails content."
+    ],
+    "content": [
+      "Children should be concise (5-15 characters recommended).",
+      "Icon is auto-injected for semantic states unless custom icon provided.",
+      "Remove button has i18n accessible label."
+    ],
+    "nesting": [
+      "Badge cannot contain other Badges.",
+      "Badge children should be text or simple inline elements.",
+      "Complex components (buttons, inputs) should not be nested."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "none (span)",
+      "removeButton": "button"
+    },
+    "aria": {
+      "label": "Remove button has aria-label from i18n: t('badge.remove', { label }).",
+      "live": "If badge removal affects page content, parent should use aria-live region."
+    },
+    "keyboard": "Remove button is keyboard accessible (Tab, Enter/Space to activate).",
+    "focus": "Remove button has visible focus indicator.",
+    "contrast": {
+      "primary": "White text on colored background meets WCAG AA.",
+      "secondary": "Colored text on white background meets WCAG AA."
+    }
+  },
+  "responsiveness": {
+    "rules": "Badge size is intrinsic. Text does not wrap. On small screens, parent layout should handle wrapping or scrolling multiple badges.",
+    "breakpoints": ["none (intrinsic sizing)"]
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "design",
+      "state",
+      "size",
+      "square",
+      "removable",
+      "accessibilityPreferences"
+    ],
+    "rules": [
+      {
+        "if": { "design": "primary", "state": "success" },
+        "then": {
+          "background": "var(--color-semantic-success)",
+          "color": "var(--color-white)",
+          "icon": "checkmark"
+        }
+      },
+      {
+        "if": { "design": "primary", "state": "error" },
+        "then": {
+          "background": "var(--color-semantic-error)",
+          "color": "var(--color-white)",
+          "icon": "x-circle"
+        }
+      },
+      {
+        "if": { "design": "secondary", "state": "warning" },
+        "then": {
+          "background": "transparent",
+          "border": "1px solid var(--color-semantic-warning)",
+          "color": "var(--color-semantic-warning)",
+          "icon": "warning"
+        }
+      },
+      {
+        "if": { "design": "primary", "state": "neutral" },
+        "then": {
+          "background": "var(--color-neutral-500)",
+          "color": "var(--color-black)",
+          "icon": "none"
+        }
+      },
+      {
+        "if": { "square": true },
+        "then": {
+          "width": "size-dependent (1.25rem, 1.5rem, 2rem)",
+          "height": "matches width",
+          "borderRadius": "var(--radius-sm)"
+        }
+      },
+      {
+        "if": { "removable": true },
+        "then": { "render": "trailing close button" }
+      },
+      {
+        "if": { "size": "s" },
+        "then": { "padding": "0.125rem 0.5rem", "fontSize": "0.75rem" }
+      },
+      {
+        "if": { "size": "l" },
+        "then": { "padding": "0.375rem 0.75rem", "fontSize": "1rem" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Use primary design for prominent status indicators.",
+    "Use secondary design for subtle categorization.",
+    "State prop auto-injects semantic icon (success, error, warning, info).",
+    "For custom icons, pass icon prop (overrides semantic icon).",
+    "Remove button requires onRemove callback; parent manages visibility.",
+    "Keep badge text concise (5-15 characters ideal).",
+    "Square variant useful for icon-only badges or counts."
+  ]
+}

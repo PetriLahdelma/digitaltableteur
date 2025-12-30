@@ -1,13 +1,25 @@
 import React from "react";
 import Text from "@dt/Text";
 import { within } from "@storybook/testing-library";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title as DocTitle,
+} from "@storybook/addon-docs/blocks";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import Title from "@dt/Title";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import type { Meta, StoryFn } from "@storybook/react-vite";
+import CodeSnippet from "@dt/CodeSnippet";
 import styles from "./Text.stories.module.css";
+import sharedStyles from "../shared-stories.module.css";
+import schema from "./schema.json";
 
 const textComplianceRules: ComplianceRule[] = [
   {
@@ -81,6 +93,39 @@ const textComplianceRules: ComplianceRule[] = [
 export default {
   title: "Components/Text",
   component: Text,
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <DocTitle />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <details className={sharedStyles.schemaDetails}>
+            <summary className={sharedStyles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={sharedStyles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
+        </>
+      ),
+    },
+  },
   argTypes: {
     as: {
       control: { type: "select" },

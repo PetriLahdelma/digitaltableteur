@@ -47,6 +47,7 @@ export default defineConfig({
       "components/**/*.test.{ts,tsx}",
       "nextjs-app/shared/components/**/*.test.{ts,tsx}",
       "nextjs-app/shared/patterns/**/*.test.{ts,tsx}",
+      "nextjs-app/shared/utils/**/*.test.{ts,tsx}",
     ],
     exclude: [
       "**/node_modules/**",

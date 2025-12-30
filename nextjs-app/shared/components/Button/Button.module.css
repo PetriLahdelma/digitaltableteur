@@ -205,6 +205,28 @@
   font-size: var(--font-size-button-l);
 }
 
+/* Modern size variants (v1.1.0) - aliases for legacy sizes */
+.button.sm {
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-12);
+  min-block-size: 1.5rem;
+  font-size: var(--font-size-button-s);
+}
+
+.button.md {
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-16);
+  min-block-size: 2.5rem;
+  font-size: var(--font-size-button-m);
+}
+
+.button.lg {
+  padding-block: var(--space-internal-12);
+  padding-inline: var(--space-internal-24);
+  min-block-size: 3rem;
+  font-size: var(--font-size-button-l);
+}
+
 .button.s.iconOnly {
   padding: 0;
   block-size: 1.5rem;
@@ -220,6 +242,28 @@
 }
 
 .button.l.iconOnly {
+  padding: 0;
+  block-size: 3rem;
+  inline-size: 3rem;
+  min-inline-size: 3rem;
+}
+
+/* Modern size iconOnly variants (v1.1.0) */
+.button.sm.iconOnly {
+  padding: 0;
+  block-size: 1.5rem;
+  inline-size: 1.5rem;
+  min-inline-size: 1.5rem;
+}
+
+.button.md.iconOnly {
+  padding: 0;
+  block-size: 2.5rem;
+  inline-size: 2.5rem;
+  min-inline-size: 2.5rem;
+}
+
+.button.lg.iconOnly {
   padding: 0;
   block-size: 3rem;
   inline-size: 3rem;

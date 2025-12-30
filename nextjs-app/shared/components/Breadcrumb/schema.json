@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Breadcrumb",
+    "type": "navigation",
+    "description": "Hierarchical navigation trail showing user's location within site structure.",
+    "source": "nextjs-app/shared/components/Breadcrumb/Breadcrumb.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "breadcrumb navigation",
+    "parts": [
+      {
+        "id": "list",
+        "label": "ordered list",
+        "role": "list",
+        "description": "Semantic list of breadcrumb items."
+      },
+      {
+        "id": "item",
+        "label": "breadcrumb item",
+        "role": "listitem",
+        "description": "Individual breadcrumb representing a page or section."
+      },
+      {
+        "id": "link",
+        "label": "navigation link",
+        "role": "link",
+        "description": "Clickable link to parent page."
+      },
+      {
+        "id": "current",
+        "label": "current page",
+        "role": "text",
+        "description": "Non-clickable text showing current location."
+      },
+      {
+        "id": "separator",
+        "label": "separator",
+        "role": "presentation",
+        "description": "Visual separator between breadcrumb items (/)."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "nav",
+    "list": "ol",
+    "item": "li",
+    "link": "a (Link component from Next.js)",
+    "current": "span",
+    "separator": "span"
+  },
+  "layout": {
+    "direction": "horizontal (left-to-right)",
+    "width": "fills available width, wraps if needed",
+    "height": "content-driven (single line preferred)",
+    "spacing": {
+      "itemGap": "0.5rem (between items)",
+      "separatorMargin": "0 0.25rem (around separator)",
+      "verticalPadding": "0.5rem (top/bottom)"
+    },
+    "constraints": [
+      "Breadcrumbs wrap to multiple lines if container width insufficient.",
+      "Last item (current page) never has href and is not clickable.",
+      "Separator does not appear after last item."
+    ]
+  },
+  "visualStyle": {
+    "surface": "transparent",
+    "elevation": "none",
+    "border": "none",
+    "radius": "not applicable",
+    "backgrounds": {
+      "default": "transparent",
+      "hover": "transparent (links inherit hover from Link component)",
+      "active": "transparent",
+      "disabled": "not applicable"
+    },
+    "typography": {
+      "fontFamily": "var(--font-text)",
+      "fontSize": "0.875rem (S size via Link component)",
+      "fontWeight": "400 (regular for links), 600 (semibold for current)",
+      "lineHeight": "1.5"
+    },
+    "color": {
+      "text": "var(--color-text-secondary) (links), var(--color-text-primary) (current)",
+      "separator": "var(--color-text-tertiary)",
+      "linkHover": "var(--color-text-primary)"
+    },
+    "iconMotion": "No icons. Separator is static text."
+  },
+  "tokens": {
+    "base": {
+      "color": [
+        "color.text.primary",
+        "color.text.secondary",
+        "color.text.tertiary"
+      ],
+      "typography": ["font.text", "font.weight.regular", "font.weight.semibold"],
+      "spacing": ["space.internal.4", "space.internal.8"]
+    },
+    "mode": {
+      "light": ["mode.light.text.*"],
+      "dark": ["mode.dark.text.*"]
+    }
+  },
+  "behavior": {
+    "map": "Breadcrumb displays hierarchical trail. Links navigate to parent pages. Current page is non-interactive text. Automatically hides if items array is empty.",
+    "stateModel": "stateless (controlled by items prop)",
+    "rendering": "Returns null if items array is empty. Renders all items with separators between.",
+    "defaultState": "Displays all provided items with visual hierarchy (links vs current)."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "onClick (link)",
+        "effect": "Navigates to parent page via Next.js Link (client-side navigation)."
+      }
+    ],
+    "feedback": {
+      "hover": "Links inherit hover state from Link component (color change, underline).",
+      "focus": "Links show focus ring (inherited from Link component).",
+      "active": "Links show active state (darker color).",
+      "disabled": "Not applicable (current page is non-clickable span)."
+    }
+  },
+  "states": {
+    "default": "All breadcrumb items displayed.",
+    "link": "Clickable breadcrumb items with href.",
+    "current": "Last item, non-clickable, visually distinguished (semibold).",
+    "empty": "Component returns null (no items to display)."
+  },
+  "transitions": [],
+  "constraints": {
+    "layout": [
+      "Breadcrumbs wrap if container width insufficient.",
+      "Minimum of 1 item required (otherwise component returns null).",
+      "Separator always between items, never trailing."
+    ],
+    "content": [
+      "Items array defines breadcrumb trail order.",
+      "Last item automatically treated as current page (no href).",
+      "Label text should be concise (15-30 characters per item ideal)."
+    ],
+    "nesting": [
+      "Breadcrumb items should contain plain text, not complex components.",
+      "Links use Next.js Link component for optimized navigation."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "navigation",
+      "list": "list (ol)",
+      "item": "listitem",
+      "link": "link",
+      "current": "none (span)"
+    },
+    "aria": {
+      "label": "nav has aria-label='Breadcrumb' (default, customizable via prop).",
+      "current": "Last item could use aria-current='page' but currently omitted (implicit via styling)."
+    },
+    "keyboard": "Standard link keyboard navigation (Tab to focus, Enter to activate).",
+    "focus": "Links show visible focus indicator (inherited from Link component).",
+    "contrast": "Text meets WCAG AA contrast ratio (4.5:1 minimum)."
+  },
+  "responsiveness": {
+    "rules": "Breadcrumbs wrap to multiple lines on narrow screens. Consider truncating middle items with ellipsis on very small screens (not currently implemented).",
+    "breakpoints": ["none (wrapping behavior only)"]
+  },
+  "generativeRules": {
+    "contextInputs": ["items", "screenSize", "accessibilityPreferences"],
+    "rules": [
+      {
+        "if": { "items": "length === 0" },
+        "then": { "render": "null (component hidden)" }
+      },
+      {
+        "if": { "item": "isLast" },
+        "then": {
+          "render": "span (non-clickable)",
+          "fontWeight": "600",
+          "color": "var(--color-text-primary)"
+        }
+      },
+      {
+        "if": { "item": "hasHref && !isLast" },
+        "then": { "render": "Link component" }
+      },
+      {
+        "if": { "screenSize": "mobile" },
+        "then": { "consider": "truncating middle items with ellipsis (future enhancement)" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Provide items array with { label, href? } objects.",
+    "Last item automatically becomes current page (no href needed).",
+    "Use concise labels (15-30 chars) for better mobile experience.",
+    "Component auto-hides if items array is empty.",
+    "Customize aria-label via 'aria-label' prop for i18n support.",
+    "Links use Next.js Link for client-side navigation (no full page reload).",
+    "Consider max 4-5 breadcrumb items for optimal UX."
+  ]
+}

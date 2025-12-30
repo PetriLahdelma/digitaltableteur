@@ -6,7 +6,15 @@
       "Bash(git log:*)",
       "Bash(gh issue list:*)",
       "Bash(find:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(wc:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(npm run:*)",
+      "Bash(npx vitest:*)",
+      "Bash(SKIP_STORYBOOK_TESTS=1 npm test:*)",
+      "Bash(ls:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

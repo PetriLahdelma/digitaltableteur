@@ -100,6 +100,19 @@ function buildFrontmatter(post, existing = {}) {
   return `${lines.join("\n")}\n`;
 }
 
+function buildCodeFence(code, language) {
+  const matches = code.match(/`+/g) || [];
+  const longest = matches.reduce(
+    (max, run) => Math.max(max, run.length),
+    0,
+  );
+  const fence = "`".repeat(Math.max(3, longest + 1));
+  const safeLanguage = typeof language === "string"
+    ? language.replace(/`/g, "").trim()
+    : "";
+  return `\n${fence}${safeLanguage}\n${code}\n${fence}\n`;
+}
+
 function buildMarkdown(body, urlBuilder) {
   if (!Array.isArray(body)) return "";
   let markdown = blocksToMarkdown(body, {
@@ -122,7 +135,7 @@ function buildMarkdown(body, urlBuilder) {
         code: ({ node }) => {
           if (!node?.code) return "";
           const language = node.language ? node.language : "";
-          return `\n\`\`\`${language}\n${node.code}\n\`\`\`\n`;
+          return buildCodeFence(node.code, language);
         },
         divider: () => "\n---\n",
       },

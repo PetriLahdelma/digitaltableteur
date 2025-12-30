@@ -1,14 +1,59 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import Input from "@dt/Inputs";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
+import styles from "../shared-stories.module.css";
 
 import TextArea from "@dt/Inputs/TextArea";
 
 export default {
   title: "Components/Inputs",
   component: Input,
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <details className={styles.schemaDetails}>
+            <summary className={styles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={styles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
+        </>
+      ),
+    },
+  },
   argTypes: {
     type: {
       control: {

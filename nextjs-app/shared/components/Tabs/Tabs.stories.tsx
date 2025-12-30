@@ -1,10 +1,22 @@
 import React from "react";
 import type { Meta, StoryFn } from "@storybook/react-vite";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import Tabs, { TabsProps } from "@dt/Tabs";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
+import styles from "../shared-stories.module.css";
 
 // expect is available globally in Storybook browser tests
 declare const expect: (typeof import("vitest"))["expect"];
@@ -82,14 +94,125 @@ const meta: Meta<typeof Tabs> = {
   title: "Components/Tabs",
   component: Tabs,
   tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <details className={styles.schemaDetails}>
+            <summary className={styles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={styles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
+        </>
+      ),
+    },
+  },
   argTypes: {
+    // Content
+    tabs: {
+      control: "object",
+      description: "Array of tab items with key, label, and optional disabled state",
+      table: {
+        category: "Content",
+        type: { summary: "TabItem[]" },
+      },
+    },
+
+    // State (v1.1.0)
+    activeTab: {
+      control: "text",
+      description: "Active tab shorthand (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "string" },
+      },
+    },
+    defaultActiveTab: {
+      control: "text",
+      description: "Default active tab shorthand (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "string" },
+      },
+    },
+
+    // Appearance
     variant: {
       control: { type: "select" },
       options: ["default", "pills", "underline"],
+      description: "Visual style variant",
+      table: {
+        category: "Appearance",
+        type: { summary: '"default" | "pills" | "underline"' },
+        defaultValue: { summary: "default" },
+      },
     },
     size: {
       control: { type: "select" },
-      options: ["s", "m", "l"],
+      options: ["sm", "md", "lg", "s", "m", "l"],
+      description: "Size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats",
+      table: {
+        category: "Appearance",
+        type: { summary: "SizeUnified" },
+        defaultValue: { summary: "md" },
+      },
+    },
+
+    // Behavior
+    onTabChange: {
+      action: "tabChanged",
+      description: "Tab change handler",
+      table: {
+        category: "Behavior",
+        type: { summary: "(key: string) => void" },
+      },
+    },
+
+    // Advanced
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: {
+        category: "Advanced",
+        type: { summary: "string" },
+      },
+    },
+
+    // Deprecated
+    activeTabKey: {
+      control: "text",
+      description: "⚠️ Deprecated: Use activeTab instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "string" },
+      },
+    },
+    defaultActiveTabKey: {
+      control: "text",
+      description: "⚠️ Deprecated: Use defaultActiveTab instead. Will be removed in v2.0.0",
+      table: {
+        category: "Deprecated",
+        type: { summary: "string" },
+      },
     },
   },
 };
@@ -183,4 +306,58 @@ WithDisabled.play = async ({ canvasElement }) => {
   // Click active tab
   await userEvent.click(tabs[2]);
   await waitFor(() => expect(tabs[2]).toHaveAttribute("aria-selected", "true"));
+};
+
+// v1.1.0 Showcase Stories
+export const SizeSmall = Template.bind({});
+SizeSmall.args = {
+  tabs: [
+    { key: "tab1", label: "Small Tab 1" },
+    { key: "tab2", label: "Small Tab 2" },
+    { key: "tab3", label: "Small Tab 3" },
+  ],
+  size: "sm",
+  variant: "default",
+};
+
+export const SizeMedium = Template.bind({});
+SizeMedium.args = {
+  tabs: [
+    { key: "tab1", label: "Medium Tab 1" },
+    { key: "tab2", label: "Medium Tab 2" },
+    { key: "tab3", label: "Medium Tab 3" },
+  ],
+  size: "md",
+  variant: "default",
+};
+
+export const SizeLarge = Template.bind({});
+SizeLarge.args = {
+  tabs: [
+    { key: "tab1", label: "Large Tab 1" },
+    { key: "tab2", label: "Large Tab 2" },
+    { key: "tab3", label: "Large Tab 3" },
+  ],
+  size: "lg",
+  variant: "default",
+};
+
+export const ControlledTabs: StoryFn = () => {
+  const [activeTab, setActiveTab] = React.useState("tab1");
+  return (
+    <div>
+      <p style={{ marginBottom: "1rem" }}>
+        Active tab (v1.1.0): <strong>{activeTab}</strong>
+      </p>
+      <Tabs
+        tabs={[
+          { key: "tab1", label: "First" },
+          { key: "tab2", label: "Second" },
+          { key: "tab3", label: "Third" },
+        ]}
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+      />
+    </div>
+  );
 };

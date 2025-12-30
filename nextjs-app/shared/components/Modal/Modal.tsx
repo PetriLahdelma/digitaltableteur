@@ -4,6 +4,8 @@ import Button from "@dt/Button";
 import Title from "@dt/Title";
 import { getSemanticIcon } from "../../utils/semanticIcons";
 import Icon from "@dt/Icon";
+import { warnPropRename } from "../../utils/deprecationWarning";
+import { normalizeTitleSize, type TitleSizeUnified } from "../../utils/sizeNormalization";
 
 export type ModalVariant =
   | "default"
@@ -13,17 +15,24 @@ export type ModalVariant =
   | "info"
   | "loading";
 
+export type ModalSeverity = "success" | "error" | "warning" | "info";
+
 export interface ModalProps {
+  // NEW PROPS (v1.1.0)
+  /** Semantic severity level (v1.1.0+) */
+  severity?: ModalSeverity;
+  /** Shows loading state with spinner (v1.1.0+) */
+  isLoading?: boolean;
+  /** Title size - supports both modern (sm/md/lg) and legacy (S/M/L) formats */
+  titleSize?: TitleSizeUnified;
+
+  // EXISTING PROPS
   /** Controls visibility */
   isOpen: boolean;
   /** Title shown in header */
   title?: string;
-  /** Title size */
-  titleSize?: "S" | "M" | "L";
   /** Title terminals (sans or serif) */
   titleTerminals?: "sans" | "serif";
-  /** Dialog variant styling */
-  variant?: ModalVariant;
   /** Optional contextual menu or extra controls */
   menu?: React.ReactNode;
   /** Modal content */
@@ -42,6 +51,10 @@ export interface ModalProps {
   closeIconName?: string;
   /** Custom close button aria-label */
   closeButtonLabel?: string;
+
+  // DEPRECATED PROPS
+  /** @deprecated Use severity or isLoading instead. Will be removed in v2.0.0 */
+  variant?: ModalVariant;
 }
 
 const VARIANT_STATUS_MAP: Partial<
@@ -54,11 +67,16 @@ const VARIANT_STATUS_MAP: Partial<
 };
 
 const Modal: React.FC<ModalProps> = ({
+  // New props (v1.1.0)
+  severity,
+  isLoading,
+  titleSize = "M",
+  // Deprecated props
+  variant = "default",
+  // Other props
   isOpen,
   title,
-  titleSize = "M",
   titleTerminals = "serif",
-  variant = "default",
   menu,
   children,
   footer,
@@ -68,6 +86,23 @@ const Modal: React.FC<ModalProps> = ({
   closeIconName = "x",
   closeButtonLabel = "Close dialog",
 }) => {
+  // Deprecation warnings (development only)
+  if (process.env.NODE_ENV !== "production") {
+    if (variant !== "default" && !severity && !isLoading) {
+      warnPropRename(
+        "Modal",
+        "variant",
+        "severity (for success/error/warning/info) or isLoading (for loading state)"
+      );
+    }
+  }
+
+  // Resolve effective values (new props take precedence)
+  const effectiveSeverity = severity ?? (variant !== "default" && variant !== "loading" ? variant as ModalSeverity : undefined);
+  const effectiveIsLoading = isLoading ?? (variant === "loading");
+  const normalizedTitleSize = normalizeTitleSize(titleSize);
+  const effectiveVariant = effectiveIsLoading ? "loading" : effectiveSeverity || "default";
+
   const titleId = useId();
 
   if (!isOpen) {
@@ -76,15 +111,15 @@ const Modal: React.FC<ModalProps> = ({
 
   const resolvedHeaderIcon =
     icon ??
-    (VARIANT_STATUS_MAP[variant]
-      ? getSemanticIcon(VARIANT_STATUS_MAP[variant]!)
+    (VARIANT_STATUS_MAP[effectiveVariant]
+      ? getSemanticIcon(VARIANT_STATUS_MAP[effectiveVariant]!)
       : null);
 
   const renderFooter = () => {
     if (footer !== undefined) {
       return footer;
     }
-    if (variant !== "loading") {
+    if (!effectiveIsLoading) {
       return (
         <Button onClick={onClose} variant="primary">
           OK
@@ -94,17 +129,17 @@ const Modal: React.FC<ModalProps> = ({
     return null;
   };
 
-  // Determine aria-live based on variant
+  // Determine aria-live based on severity
   const ariaLive =
-    variant === "error" || variant === "warning"
+    effectiveSeverity === "error" || effectiveSeverity === "warning"
       ? "assertive"
-      : variant === "info" || variant === "success"
+      : effectiveSeverity === "info" || effectiveSeverity === "success"
         ? "polite"
         : undefined;
 
-  // Determine role based on variant
+  // Determine role based on severity
   const dialogRole =
-    variant === "error" || variant === "warning" ? "alertdialog" : "dialog";
+    effectiveSeverity === "error" || effectiveSeverity === "warning" ? "alertdialog" : "dialog";
 
   return (
     <div
@@ -121,7 +156,7 @@ const Modal: React.FC<ModalProps> = ({
       }}
     >
       <div
-        className={`${styles.modal} ${styles[variant]}`}
+        className={`${styles.modal} ${styles[effectiveVariant]}`}
         role={dialogRole}
         aria-modal="true"
         aria-live={ariaLive}
@@ -137,7 +172,7 @@ const Modal: React.FC<ModalProps> = ({
               )}
               <Title
                 level={2}
-                size={titleSize}
+                size={normalizedTitleSize}
                 id={titleId}
                 className={styles.title}
                 terminals={titleTerminals}
@@ -158,10 +193,10 @@ const Modal: React.FC<ModalProps> = ({
           </div>
         )}
         <div className={styles.content}>
-          {variant === "loading" && <div className={styles.spinner} />}
+          {effectiveIsLoading && <div className={styles.spinner} />}
           {children}
         </div>
-        {(footer !== undefined || variant !== "loading") && (
+        {(footer !== undefined || !effectiveIsLoading) && (
           <div className={styles.footer}>{renderFooter()}</div>
         )}
       </div>

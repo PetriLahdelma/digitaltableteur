@@ -1,10 +1,22 @@
 import React from "react";
 import Title from "@dt/Title";
 import { within } from "@storybook/testing-library";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title as DocTitle,
+} from "@storybook/addon-docs/blocks";
 import { useTranslation } from "react-i18next";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
+import styles from "../shared-stories.module.css";
 
 const titleComplianceRules: ComplianceRule[] = [
   {
@@ -78,6 +90,39 @@ const titleComplianceRules: ComplianceRule[] = [
 export default {
   title: "Components/Title",
   component: Title,
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <DocTitle />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <details className={styles.schemaDetails}>
+            <summary className={styles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={styles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
+        </>
+      ),
+    },
+  },
 };
 
 export const AllSizes = () => {

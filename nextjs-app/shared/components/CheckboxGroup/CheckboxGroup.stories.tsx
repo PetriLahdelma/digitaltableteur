@@ -2,10 +2,22 @@ import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
 import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import CheckboxGroup, { CheckboxGroupProps } from "@dt/CheckboxGroup";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
+import styles from "../shared-stories.module.css";
 
 const checkboxGroupComplianceRules: ComplianceRule[] = [
   {
@@ -79,6 +91,39 @@ const checkboxGroupComplianceRules: ComplianceRule[] = [
 export default {
   title: "Components/CheckboxGroup",
   component: CheckboxGroup,
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <details className={styles.schemaDetails}>
+            <summary className={styles.schemaSummary}>
+              <Heading>LLM Schema</Heading>
+            </summary>
+            <div className={styles.schemaContent}>
+              <CodeSnippet
+                code={JSON.stringify(schema, null, 2)}
+                language="json"
+                variant="multi"
+                maxLines={20}
+                showLineNumbers={true}
+                allowCopy={true}
+              />
+            </div>
+          </details>
+        </>
+      ),
+    },
+  },
   argTypes: {
     label: { control: "text" },
     options: { control: "object" },

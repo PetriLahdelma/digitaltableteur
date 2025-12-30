@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "List",
+    "type": "display",
+    "description": "Ordered or unordered list with size, line height, spacing, and list style customization.",
+    "source": "nextjs-app/shared/components/List/List.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "list element (ul or ol)",
+    "parts": [{"id": "items", "label": "list items", "role": "listitem", "description": "Individual list items rendered from items array."}]
+  },
+  "semanticRole": {"container": "ul | ol", "items": "li"},
+  "layout": {"direction": "vertical stack", "width": "fills parent", "height": "content-driven", "spacing": {"compact": "0.25rem", "normal": "0.5rem", "relaxed": "1rem"}},
+  "visualStyle": {
+    "surface": "flat",
+    "typography": {
+      "sizes": {"XXS": "0.625rem", "XS": "0.75rem", "S": "0.875rem", "M": "1rem", "L": "1.25rem", "XL": "1.5rem", "XXL": "2rem"},
+      "lineHeights": {"tight": "1.2", "snug": "1.4", "normal": "1.6", "relaxed": "1.8", "loose": "2.0"}
+    },
+    "color": {"text": "var(--color-text-primary)"}
+  },
+  "tokens": {"base": {"color": ["color.text.primary"], "typography": ["font.text", "font.headings"], "spacing": ["space.internal.4", "space.internal.8", "space.internal.16"]}},
+  "behavior": {
+    "map": "Renders list from items array. Supports ul (unordered) or ol (ordered) via as prop. Customizable size, line height, spacing, listStyleType, and terminals (serif/sans).",
+    "stateModel": "stateless",
+    "rendering": "Renders list items from items array (React.ReactNode[]).",
+    "defaultState": "ul, medium size, normal spacing, sans-serif."
+  },
+  "interaction": {"logic": [], "feedback": {}},
+  "states": {"default": "Rendered list with configured styles."},
+  "constraints": {"layout": ["Items stack vertically."], "content": ["items array required (min 1 item)."]},
+  "accessibility": {"roles": {"container": "list (ul/ol)", "items": "listitem"}, "aria": {"role": "Optional role prop for custom role."}, "keyboard": "Non-interactive (unless list items contain interactive elements).", "focus": "Non-focusable (unless list items contain focusable elements).", "contrast": "Text meets WCAG AA."},
+  "responsiveness": {"rules": "List items wrap text if constrained.", "breakpoints": []},
+  "generativeRules": {
+    "contextInputs": ["as", "size", "lineHeight", "spacing", "terminals", "listStyleType"],
+    "rules": [
+      {"if": {"as": "ul"}, "then": {"element": "ul"}},
+      {"if": {"as": "ol"}, "then": {"element": "ol"}},
+      {"if": {"terminals": "serif"}, "then": {"fontFamily": "var(--font-headings)"}},
+      {"if": {"terminals": "sans"}, "then": {"fontFamily": "var(--font-text)"}},
+      {"if": {"spacing": "compact"}, "then": {"gap": "0.25rem"}},
+      {"if": {"spacing": "normal"}, "then": {"gap": "0.5rem"}},
+      {"if": {"spacing": "relaxed"}, "then": {"gap": "1rem"}}
+    ]
+  },
+  "usageNotes": [
+    "items prop required (array of React.ReactNode).",
+    "as prop: 'ul' (default) or 'ol'.",
+    "Size variants: XXS, XS, S, M (default), L, XL, XXL.",
+    "Line height variants: tight, snug, normal, relaxed, loose.",
+    "Spacing variants: compact, normal (default), relaxed.",
+    "listStyleType: disc, circle, square, decimal, lower-alpha, upper-alpha, lower-roman, upper-roman, none.",
+    "terminals: serif or sans (default).",
+    "Supports custom role prop for ARIA roles.",
+    "Items indexed by array index (key={index})."
+  ]
+}
