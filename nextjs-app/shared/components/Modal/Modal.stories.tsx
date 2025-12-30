@@ -18,7 +18,6 @@ import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-import styles from "../shared-stories.module.css";
 
 const modalComplianceRules: ComplianceRule[] = [
   {
@@ -106,21 +105,15 @@ export default {
           <Description />
           <Controls />
           <Stories />
-          <details className={styles.schemaDetails}>
-            <summary className={styles.schemaSummary}>
-              <Heading>LLM Schema</Heading>
-            </summary>
-            <div className={styles.schemaContent}>
-              <CodeSnippet
-                code={JSON.stringify(schema, null, 2)}
-                language="json"
-                variant="multi"
-                maxLines={20}
-                showLineNumbers={true}
-                allowCopy={true}
-              />
-            </div>
-          </details>
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
         </>
       ),
     },
@@ -278,6 +271,9 @@ export const Z_ModalCompliance: StoryFn = () => (
     rules={modalComplianceRules}
   />
 );
+Z_ModalCompliance.parameters = {
+  docs: { disable: true },
+};
 
 const Template: StoryFn<ModalProps> = (args: ModalProps) => {
   const [open, setOpen] = useState(true);

@@ -147,7 +147,7 @@
   "homeHeroGradientTitleOptions": [
     "Suunnittelemme älykkyyttä, emme koristeita.",
     "Järjestelmät ajattelevat, design kehittyy.",
-    "Ihmisen maku. Koneen tarkkuus. Todellinen vaikutus.",
+    "Ihmisen tyylitaju. Koneen tarkkuus. Todellinen vaikutus.",
     "AI-vetoista designia mallipohjien jälkeiseen maailmaan.",
     "Pikseleistä ennustaviin järjestelmiin.",
     "Design, joka oppii, skaalautuu ja voittaa monimutkaisuuden.",
@@ -179,6 +179,7 @@
   "footerAriaFacebook": "Facebook",
   "footerAriaLinkedin": "LinkedIn",
   "footerAriaMedium": "Medium",
+  "footerAriaX": "X",
   "footerAriaGithub": "GitHub",
   "footerAriaSubstack": "Substack",
   "footerAriaDribbble": "Dribbble",
