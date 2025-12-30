@@ -96,7 +96,7 @@ export default {
     twitterLabel: "Follow on Twitter",
     dribbbleUrl: "",
     dribbbleLabel: "View Dribbble Profile",
-    mediumUrl: "https://medium.com/@petrilahdelma",
+    mediumUrl: "https://medium.com/digitaltableteur",
     mediumLabel: "Read on Medium",
     instagramUrl: "",
     instagramLabel: "Follow on Instagram",
@@ -165,7 +165,7 @@ AllSocialMedia.args = {
   facebookUrl: "https://facebook.com/petrilahdelma",
   twitterUrl: "https://twitter.com/petrilahdelma",
   dribbbleUrl: "https://dribbble.com/petrilahdelma",
-  mediumUrl: "https://medium.com/@petrilahdelma",
+  mediumUrl: "https://medium.com/digitaltableteur",
   instagramUrl: "https://instagram.com/petrilahdelma",
 };
 

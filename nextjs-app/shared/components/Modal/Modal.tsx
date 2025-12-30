@@ -4,26 +4,26 @@ import Button from "@dt/Button";
 import Title from "@dt/Title";
 import { getSemanticIcon } from "../../utils/semanticIcons";
 import Icon from "@dt/Icon";
+import { normalizeTitleSize, type TitleSizeUnified } from "../../utils/sizeNormalization";
 
-export type ModalVariant =
-  | "default"
-  | "success"
-  | "error"
-  | "warning"
-  | "info"
-  | "loading";
+export type ModalSeverity = "success" | "error" | "warning" | "info";
 
 export interface ModalProps {
+  // v2.0.0 PROPS
+  /** Semantic severity level */
+  severity?: ModalSeverity;
+  /** Shows loading state with spinner */
+  isLoading?: boolean;
+  /** Title size - supports both modern (sm/md/lg) and legacy (S/M/L) formats */
+  titleSize?: TitleSizeUnified;
+
+  // EXISTING PROPS
   /** Controls visibility */
   isOpen: boolean;
   /** Title shown in header */
   title?: string;
-  /** Title size */
-  titleSize?: "S" | "M" | "L";
   /** Title terminals (sans or serif) */
   titleTerminals?: "sans" | "serif";
-  /** Dialog variant styling */
-  variant?: ModalVariant;
   /** Optional contextual menu or extra controls */
   menu?: React.ReactNode;
   /** Modal content */
@@ -44,8 +44,9 @@ export interface ModalProps {
   closeButtonLabel?: string;
 }
 
-const VARIANT_STATUS_MAP: Partial<
-  Record<ModalVariant, Parameters<typeof getSemanticIcon>[0]>
+const SEVERITY_STATUS_MAP: Record<
+  ModalSeverity,
+  Parameters<typeof getSemanticIcon>[0]
 > = {
   success: "success",
   error: "error",
@@ -54,11 +55,12 @@ const VARIANT_STATUS_MAP: Partial<
 };
 
 const Modal: React.FC<ModalProps> = ({
+  severity,
+  isLoading = false,
+  titleSize = "M",
   isOpen,
   title,
-  titleSize = "M",
   titleTerminals = "serif",
-  variant = "default",
   menu,
   children,
   footer,
@@ -68,6 +70,8 @@ const Modal: React.FC<ModalProps> = ({
   closeIconName = "x",
   closeButtonLabel = "Close dialog",
 }) => {
+  const normalizedTitleSize = normalizeTitleSize(titleSize);
+
   const titleId = useId();
 
   if (!isOpen) {
@@ -76,15 +80,13 @@ const Modal: React.FC<ModalProps> = ({
 
   const resolvedHeaderIcon =
     icon ??
-    (VARIANT_STATUS_MAP[variant]
-      ? getSemanticIcon(VARIANT_STATUS_MAP[variant]!)
-      : null);
+    (severity ? getSemanticIcon(SEVERITY_STATUS_MAP[severity]) : null);
 
   const renderFooter = () => {
     if (footer !== undefined) {
       return footer;
     }
-    if (variant !== "loading") {
+    if (!isLoading) {
       return (
         <Button onClick={onClose} variant="primary">
           OK
@@ -94,17 +96,20 @@ const Modal: React.FC<ModalProps> = ({
     return null;
   };
 
-  // Determine aria-live based on variant
+  // Determine aria-live based on severity
   const ariaLive =
-    variant === "error" || variant === "warning"
+    severity === "error" || severity === "warning"
       ? "assertive"
-      : variant === "info" || variant === "success"
+      : severity === "info" || severity === "success"
         ? "polite"
         : undefined;
 
-  // Determine role based on variant
+  // Determine role based on severity
   const dialogRole =
-    variant === "error" || variant === "warning" ? "alertdialog" : "dialog";
+    severity === "error" || severity === "warning" ? "alertdialog" : "dialog";
+
+  // Determine effective variant for CSS class
+  const effectiveVariant = isLoading ? "loading" : severity || "default";
 
   return (
     <div
@@ -121,7 +126,7 @@ const Modal: React.FC<ModalProps> = ({
       }}
     >
       <div
-        className={`${styles.modal} ${styles[variant]}`}
+        className={`${styles.modal} ${styles[effectiveVariant]}`}
         role={dialogRole}
         aria-modal="true"
         aria-live={ariaLive}
@@ -137,7 +142,7 @@ const Modal: React.FC<ModalProps> = ({
               )}
               <Title
                 level={2}
-                size={titleSize}
+                size={normalizedTitleSize}
                 id={titleId}
                 className={styles.title}
                 terminals={titleTerminals}
@@ -158,10 +163,10 @@ const Modal: React.FC<ModalProps> = ({
           </div>
         )}
         <div className={styles.content}>
-          {variant === "loading" && <div className={styles.spinner} />}
+          {isLoading && <div className={styles.spinner} />}
           {children}
         </div>
-        {(footer !== undefined || variant !== "loading") && (
+        {(footer !== undefined || !isLoading) && (
           <div className={styles.footer}>{renderFooter()}</div>
         )}
       </div>

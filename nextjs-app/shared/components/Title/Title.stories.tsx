@@ -1,10 +1,21 @@
 import React from "react";
 import Title from "@dt/Title";
 import { within } from "@storybook/testing-library";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title as DocTitle,
+} from "@storybook/addon-docs/blocks";
 import { useTranslation } from "react-i18next";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
 
 const titleComplianceRules: ComplianceRule[] = [
   {
@@ -78,6 +89,33 @@ const titleComplianceRules: ComplianceRule[] = [
 export default {
   title: "Components/Title",
   component: Title,
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <DocTitle />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
+  },
 };
 
 export const AllSizes = () => {

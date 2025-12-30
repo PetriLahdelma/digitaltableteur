@@ -7,15 +7,31 @@ import {
   parsePhoneNumber,
   formatIncompletePhoneNumber,
 } from "libphonenumber-js";
+import { warnPropRename } from "../../utils/deprecationWarning";
+import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
 interface InputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "size"> {
   label: string;
   type: "text" | "number" | "email" | "password" | "search" | "tel";
+
+  // NEW PROPS (v1.1.0)
+  /** Size variant for input */
+  size?: SizeUnified;
+  /** Disables the input */
+  isDisabled?: boolean;
+  /** Value change handler (recommended) */
+  onValueChange?: (value: string | number) => void;
+  /** Initial value for uncontrolled component */
+  defaultValue?: string | number;
+
+  // EXISTING PROPS
   value?: string | number;
   error?: string;
   helperText?: string;
-  // eslint-disable-next-line no-unused-vars
+
+  // DEPRECATED PROPS
+  /** @deprecated Use onValueChange instead. Will be removed in v2.0.0 */
   onChange?: (value: string | number) => void;
 }
 
@@ -24,14 +40,38 @@ const Input: React.FC<InputProps> = ({
   type,
   placeholder,
   value,
+  defaultValue,
   error,
   helperText,
+  // New props (v1.1.0)
+  size = "md",
+  isDisabled,
+  onValueChange,
+  // Deprecated props
   onChange,
   disabled = false,
   ...rest
 }) => {
   const { t } = useTranslation();
-  const [inputValue, setInputValue] = useState<string | number>(value ?? "");
+
+  // Deprecation warnings (development only)
+  if (process.env.NODE_ENV !== "production") {
+    if (onChange && !onValueChange) {
+      warnPropRename("Input", "onChange", "onValueChange");
+    }
+    if (disabled !== false && isDisabled === undefined) {
+      warnPropRename("Input", "disabled", "isDisabled");
+    }
+  }
+
+  // Resolve effective values
+  const effectiveDisabled = isDisabled ?? disabled;
+  const effectiveOnChange = onValueChange ?? onChange;
+  const normalizedSize = normalizeSizeProp(size);
+
+  const [inputValue, setInputValue] = useState<string | number>(
+    value ?? defaultValue ?? ""
+  );
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
 
@@ -61,7 +101,7 @@ const Input: React.FC<InputProps> = ({
     if (type === "tel") {
       const formatted = formatIncompletePhoneNumber(e.target.value);
       setInputValue(formatted);
-      if (onChange) onChange(formatted);
+      if (effectiveOnChange) effectiveOnChange(formatted);
 
       if (formatted && !validatePhoneNumber(formatted)) {
         setPhoneError(t("inputValidationPhoneInvalid"));
@@ -70,7 +110,7 @@ const Input: React.FC<InputProps> = ({
       }
     } else if (type === "email") {
       setInputValue(e.target.value);
-      if (onChange) onChange(e.target.value);
+      if (effectiveOnChange) effectiveOnChange(e.target.value);
 
       // Validate email format if field is not empty
       if (e.target.value.trim() !== "") {
@@ -84,7 +124,7 @@ const Input: React.FC<InputProps> = ({
       }
     } else {
       setInputValue(newValue);
-      if (onChange) onChange(newValue);
+      if (effectiveOnChange) effectiveOnChange(newValue);
     }
   };
 
@@ -94,19 +134,19 @@ const Input: React.FC<InputProps> = ({
         htmlFor={label}
         required={!!error || !!phoneError || !!emailError}
         tooltipText={error || phoneError || emailError}
-        disabled={disabled}
+        disabled={effectiveDisabled}
       >
         {label}
       </Label>
       <input
         id={label}
         name={label.replace(/\s+/g, "-").toLowerCase()}
-        className={`${styles.input} ${error || phoneError || emailError ? styles.error : ""}`}
+        className={`${styles.input} ${styles[`input--${normalizedSize}`]} ${error || phoneError || emailError ? styles.error : ""}`}
         type={type}
         placeholder={placeholder}
         value={inputValue}
         onChange={handleChange}
-        disabled={disabled}
+        disabled={effectiveDisabled}
         {...rest}
       />
       {(error || phoneError || emailError) && (

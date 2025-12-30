@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj, StoryFn } from "@storybook/react";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import Modal from "@dt/Modal";
 import Button from "@dt/Button";
 import { within, userEvent, waitFor } from "@storybook/testing-library";
@@ -7,6 +16,8 @@ import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
 
 const modalComplianceRules: ComplianceRule[] = [
   {
@@ -80,17 +91,174 @@ const modalComplianceRules: ComplianceRule[] = [
 export default {
   title: "Components/Modal",
   component: Modal,
+  tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
+  },
   argTypes: {
-    title: { control: "text" },
-    variant: {
-      control: {
-        type: "select",
-        options: ["default", "success", "error", "warning", "info", "loading"],
+    // Content
+    title: {
+      control: "text",
+      description: "Title shown in the modal header",
+      table: {
+        category: "Content",
+        type: { summary: "string" },
       },
     },
-    children: { control: "text" },
-    showCloseIcon: { control: "boolean" },
-    onClose: { action: "closed" },
+    children: {
+      control: "text",
+      description: "Modal content",
+      table: {
+        category: "Content",
+        type: { summary: "React.ReactNode" },
+      },
+    },
+    footer: {
+      control: false,
+      description: "Footer content (e.g., action buttons)",
+      table: {
+        category: "Content",
+        type: { summary: "React.ReactNode" },
+      },
+    },
+    icon: {
+      control: false,
+      description: "Optional icon displayed in the header",
+      table: {
+        category: "Content",
+        type: { summary: "React.ReactNode" },
+      },
+    },
+    menu: {
+      control: false,
+      description: "Optional contextual menu or extra controls",
+      table: {
+        category: "Content",
+        type: { summary: "React.ReactNode" },
+      },
+    },
+
+    // State (v1.1.0)
+    isOpen: {
+      control: "boolean",
+      description: "Controls modal visibility",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+    severity: {
+      control: { type: "select" },
+      options: ["success", "error", "warning", "info"],
+      description: "Semantic severity level (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "ModalSeverity" },
+      },
+    },
+    isLoading: {
+      control: "boolean",
+      description: "Shows loading state with spinner (v1.1.0+)",
+      table: {
+        category: "State",
+        type: { summary: "boolean" },
+      },
+    },
+
+    // Appearance
+    titleSize: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "S", "M", "L"],
+      description: "Title size - supports both modern (sm/md/lg) and legacy (S/M/L) formats",
+      table: {
+        category: "Appearance",
+        type: { summary: "TitleSizeUnified" },
+        defaultValue: { summary: "M" },
+      },
+    },
+    titleTerminals: {
+      control: { type: "select" },
+      options: ["sans", "serif"],
+      description: "Title font terminals (sans or serif)",
+      table: {
+        category: "Appearance",
+        type: { summary: '"sans" | "serif"' },
+        defaultValue: { summary: "serif" },
+      },
+    },
+    showCloseIcon: {
+      control: "boolean",
+      description: "Show close icon button in header",
+      table: {
+        category: "Appearance",
+        type: { summary: "boolean" },
+        defaultValue: { summary: "true" },
+      },
+    },
+    closeIconName: {
+      control: "text",
+      description: "Custom close icon name",
+      table: {
+        category: "Appearance",
+        type: { summary: "string" },
+        defaultValue: { summary: "x" },
+      },
+    },
+
+    // Behavior
+    onClose: {
+      action: "closed",
+      description: "Close callback",
+      table: {
+        category: "Behavior",
+        type: { summary: "() => void" },
+      },
+    },
+
+    // Accessibility
+    closeButtonLabel: {
+      control: "text",
+      description: "Custom close button aria-label",
+      table: {
+        category: "Accessibility",
+        type: { summary: "string" },
+        defaultValue: { summary: "Close dialog" },
+      },
+    },
+
+    // Advanced
+    className: {
+      control: "text",
+      description: "Additional CSS classes",
+      table: {
+        category: "Advanced",
+        type: { summary: "string" },
+      },
+    },
+
   },
 } as Meta;
 
@@ -103,6 +271,9 @@ export const Z_ModalCompliance: StoryFn = () => (
     rules={modalComplianceRules}
   />
 );
+Z_ModalCompliance.parameters = {
+  docs: { disable: true },
+};
 
 const Template: StoryFn<ModalProps> = (args: ModalProps) => {
   const [open, setOpen] = useState(true);
@@ -148,7 +319,7 @@ Default.play = async ({ canvasElement }) => {
 
 export const Loading = Template.bind({});
 Loading.args = {
-  variant: "loading",
+  isLoading: true,
   title: "storyModalLoading",
   children: <p>{"storyModalPleaseWait"}</p>,
   showCloseIcon: false,
@@ -158,7 +329,7 @@ export const ErrorDialog = Template.bind({});
 ErrorDialog.args = {
   isOpen: true,
   title: "storyModalErrorTitle",
-  variant: "error",
+  severity: "error",
   children: "storyModalErrorBody",
 };
 
@@ -166,7 +337,7 @@ export const SuccessDialog = Template.bind({});
 SuccessDialog.args = {
   isOpen: true,
   title: "storyModalSuccessTitle",
-  variant: "success",
+  severity: "success",
   children: "storyModalSuccessBody",
 };
 
@@ -174,7 +345,7 @@ export const WarningDialog = Template.bind({});
 WarningDialog.args = {
   isOpen: true,
   title: "storyModalWarningTitle",
-  variant: "warning",
+  severity: "warning",
   children: "storyModalWarningBody",
 };
 
@@ -182,13 +353,13 @@ export const InfoDialog = Template.bind({});
 InfoDialog.args = {
   isOpen: true,
   title: "storyModalInfoTitle",
-  variant: "info",
+  severity: "info",
   children: "storyModalInfoBody",
 };
 
 export const BusyDialog = Template.bind({});
 BusyDialog.args = {
-  variant: "loading",
+  isLoading: true,
   title: "storyModalBusyTitle",
   children: "storyModalBusyBody",
   showCloseIcon: false,
@@ -196,6 +367,107 @@ BusyDialog.args = {
 
 export const SpinnerOnly = Template.bind({});
 SpinnerOnly.args = {
-  variant: "loading",
+  isLoading: true,
   showCloseIcon: false,
+};
+
+// v1.1.0 Showcase Stories
+export const SeveritySuccess: StoryFn = () => {
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenSuccessV110")}
+      </Button>
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        title={t("storyModalSuccessTitle")}
+        severity="success"
+      >
+        {t("storyModalSuccessBody")}
+      </Modal>
+    </>
+  );
+};
+
+export const SeverityError: StoryFn = () => {
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenErrorV110")}
+      </Button>
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        title={t("storyModalErrorTitle")}
+        severity="error"
+      >
+        {t("storyModalErrorBody")}
+      </Modal>
+    </>
+  );
+};
+
+export const SeverityWarning: StoryFn = () => {
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenWarningV110")}
+      </Button>
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        title={t("storyModalWarningTitle")}
+        severity="warning"
+      >
+        {t("storyModalWarningBody")}
+      </Modal>
+    </>
+  );
+};
+
+export const SeverityInfo: StoryFn = () => {
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenInfoV110")}
+      </Button>
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        title={t("storyModalInfoTitle")}
+        severity="info"
+      >
+        {t("storyModalInfoBody")}
+      </Modal>
+    </>
+  );
+};
+
+export const LoadingState: StoryFn = () => {
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>
+        {t("storyModalOpenLoadingV110")}
+      </Button>
+      <Modal
+        isOpen={open}
+        title={t("storyModalLoading")}
+        isLoading={true}
+        showCloseIcon={false}
+      >
+        {t("storyModalPleaseWait")}
+      </Modal>
+    </>
+  );
 };

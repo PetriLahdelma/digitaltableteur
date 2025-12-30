@@ -1,0 +1,370 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Card",
+    "type": "container",
+    "description": "Flexible container component for grouping related content with optional header, footer, tabs, actions, and media.",
+    "source": "nextjs-app/shared/components/Card/Card.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "card",
+    "parts": [
+      {
+        "id": "cover",
+        "label": "media cover",
+        "role": "presentation",
+        "description": "Optional top media content (images, videos)."
+      },
+      {
+        "id": "header",
+        "label": "card header",
+        "role": "group",
+        "description": "Contains title, subtitle, description, badge, icon, and extra content."
+      },
+      {
+        "id": "tabs",
+        "label": "tab navigation",
+        "role": "tablist",
+        "description": "Optional tab navigation within card."
+      },
+      {
+        "id": "body",
+        "label": "card content",
+        "role": "region",
+        "description": "Main content area (children or legacy body prop)."
+      },
+      {
+        "id": "footer",
+        "label": "card footer",
+        "role": "group",
+        "description": "Action buttons or custom footer content."
+      },
+      {
+        "id": "statusMessage",
+        "label": "status message",
+        "role": "status",
+        "description": "Success/error/warning/info message below header."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "article | div (interactive cards may use button role)",
+    "header": "div",
+    "title": "h2 | h3 | h4 (configurable via titleProps.level)",
+    "body": "div",
+    "footer": "div",
+    "tabs": "Tabs component (role=tablist)",
+    "actions": "button (via Button component)"
+  },
+  "layout": {
+    "direction": "vertical stack (cover → header → tabs → body → footer)",
+    "width": "fills parent container",
+    "height": "content-driven (no fixed height)",
+    "sizeRules": {
+      "S": "padding: 0.75rem",
+      "M": "padding: 1.5rem",
+      "L": "padding: 2rem",
+      "full": "padding: 0 (no padding)"
+    },
+    "spacing": {
+      "padding": "size-dependent (see sizeRules)",
+      "headerGap": "0.5rem (between title, subtitle, description)",
+      "bodyMargin": "1rem (top margin separating from header)",
+      "footerMargin": "1.5rem (top margin separating from body)"
+    },
+    "constraints": [
+      "Cover image spans full card width (no padding).",
+      "Header content wraps on small screens.",
+      "Extra content aligns to header trailing edge.",
+      "Footer actions wrap if insufficient width."
+    ]
+  },
+  "visualStyle": {
+    "surface": "flat (outlined) | raised (elevated) | filled",
+    "elevation": {
+      "outlined": "none",
+      "elevated": "var(--elevation-1)",
+      "filled": "none"
+    },
+    "border": {
+      "outlined": "1px solid var(--color-border)",
+      "elevated": "none",
+      "filled": "none"
+    },
+    "radius": "var(--radius-lg)",
+    "backgrounds": {
+      "outlined": "var(--color-surface)",
+      "elevated": "var(--color-surface)",
+      "filled": "var(--color-surface-elevated)",
+      "hover": "var(--color-surface-hover) (when hoverable=true)",
+      "active": "var(--color-surface-active) (when interactive)",
+      "disabled": "not applicable"
+    },
+    "typography": {
+      "title": {
+        "fontFamily": "var(--font-headings)",
+        "fontSize": "titleProps.size (S: 1rem, M: 1.25rem, L: 1.5rem)",
+        "fontWeight": "600 (semibold)",
+        "lineHeight": "1.2"
+      },
+      "subtitle": {
+        "fontFamily": "var(--font-text)",
+        "fontSize": "subTitleProps.size (S: 0.875rem, M: 1rem)",
+        "fontWeight": "500 (medium)",
+        "lineHeight": "1.4"
+      },
+      "body": {
+        "fontFamily": "var(--font-text)",
+        "fontSize": "bodyProps.size (S: 0.875rem, M: 1rem)",
+        "fontWeight": "400 (regular)",
+        "lineHeight": "1.6"
+      }
+    },
+    "color": {
+      "title": "var(--color-text-primary)",
+      "subtitle": "var(--color-text-secondary)",
+      "description": "var(--color-text-secondary)",
+      "body": "var(--color-text-primary)",
+      "border": "var(--color-border)"
+    },
+    "iconMotion": "No icon transitions. Tabs have underline animation."
+  },
+  "tokens": {
+    "base": {
+      "color": [
+        "color.text.primary",
+        "color.text.secondary",
+        "color.surface",
+        "color.surface.elevated",
+        "color.surface.hover",
+        "color.border"
+      ],
+      "typography": [
+        "font.headings",
+        "font.text",
+        "font.weight.regular",
+        "font.weight.medium",
+        "font.weight.semibold"
+      ],
+      "spacing": [
+        "space.internal.12",
+        "space.internal.16",
+        "space.internal.24",
+        "space.internal.32"
+      ],
+      "radii": ["radius.lg"],
+      "elevation": ["elevation.1", "elevation.2 (hover on elevated)"]
+    },
+    "mode": {
+      "light": ["mode.light.surface", "mode.light.text"],
+      "dark": ["mode.dark.surface", "mode.dark.text"]
+    }
+  },
+  "behavior": {
+    "map": "Card groups related content. Optional header with title/subtitle/description. Optional cover media. Optional tab navigation. Footer with action buttons. Loading skeleton state. Hoverable adds elevation on hover. Interactive/link makes entire card clickable.",
+    "stateModel": "stateless (controlled by props: loading, activeTabKey)",
+    "rendering": "Header renders if title, subtitle, description, badge, icon, or extra provided. Footer renders if actions or custom footer provided. Tabs render if tabs prop provided.",
+    "defaultState": "Outlined variant, medium size, no cover, no tabs, no actions, not loading."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "onClick (interactive or link)",
+        "effect": "Navigates to link URL or calls onClick callback."
+      },
+      {
+        "trigger": "Tab change",
+        "effect": "Calls onTabChange with new tab key."
+      },
+      {
+        "trigger": "Action button click",
+        "effect": "Calls action.onClick with action key."
+      }
+    ],
+    "feedback": {
+      "hover": "Elevation increase (hoverable=true). Cursor pointer (interactive/link).",
+      "focus": "Focus ring on interactive cards or action buttons.",
+      "active": "Background darken (interactive cards).",
+      "disabled": "Action buttons can be individually disabled."
+    }
+  },
+  "states": {
+    "default": "Card displays content with configured styling.",
+    "loading": "Skeleton placeholders replace title, subtitle, body.",
+    "hoverable": "Elevation increases on hover.",
+    "interactive": "Entire card clickable, cursor pointer.",
+    "withTabs": "Tabs navigation visible, body shows active tab content.",
+    "withActions": "Footer with action buttons rendered."
+  },
+  "transitions": [
+    {
+      "from": "default",
+      "to": "hover",
+      "trigger": "pointer enter (hoverable=true)",
+      "motionTokens": ["duration: 200ms", "easing: ease-out", "elevation increase"]
+    },
+    {
+      "from": "hover",
+      "to": "default",
+      "trigger": "pointer leave",
+      "motionTokens": ["duration: 200ms", "easing: ease-out"]
+    },
+    {
+      "from": "loading",
+      "to": "default",
+      "trigger": "loading prop set to false",
+      "motionTokens": ["skeleton fade-out: 300ms", "content fade-in: 300ms"]
+    }
+  ],
+  "constraints": {
+    "layout": [
+      "Cover image spans full card width (ignores padding).",
+      "Header extra content aligns to trailing edge.",
+      "Footer actions wrap if insufficient width.",
+      "Tabs span full card width."
+    ],
+    "content": [
+      "Title should be concise (1-2 lines ideal).",
+      "Body content can be any React nodes.",
+      "Actions array max 2-3 buttons for optimal UX.",
+      "Tabs max 4-5 for optimal mobile experience."
+    ],
+    "nesting": [
+      "Card can contain other Cards (nested cards pattern).",
+      "Card should not be nested inside interactive elements (buttons, links).",
+      "Footer actions use Button component (already accessible)."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "article (semantic content) | div (generic container) | button (interactive)",
+      "header": "group",
+      "body": "region (if complex) | div",
+      "footer": "group"
+    },
+    "aria": {
+      "label": "linkLabel prop provides accessible name for link cards.",
+      "labelledby": "Title can be referenced by body content if needed.",
+      "live": "Status message uses aria-live for dynamic updates.",
+      "busy": "aria-busy=true during loading state."
+    },
+    "keyboard": "Interactive cards: Tab to focus, Enter to activate. Action buttons: Tab to focus, Enter/Space to activate. Tabs: Arrow keys navigate.",
+    "focus": "Interactive cards show focus ring. Action buttons have focus indicators.",
+    "contrast": "All text meets WCAG AA contrast (4.5:1 minimum). Status messages use semantic colors with sufficient contrast."
+  },
+  "responsiveness": {
+    "rules": "Card width fills parent. Header content wraps on small screens. Extra content moves below title on very small screens. Footer actions stack vertically on mobile.",
+    "breakpoints": ["mobile: < 600px (action buttons stack)", "tablet: 600-1024px", "desktop: > 1024px"]
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "variant",
+      "size",
+      "bordered",
+      "hoverable",
+      "loading",
+      "interactive",
+      "link",
+      "tabs",
+      "actions",
+      "cover",
+      "icon",
+      "badge"
+    ],
+    "rules": [
+      {
+        "if": { "variant": "outlined" },
+        "then": {
+          "background": "var(--color-surface)",
+          "border": "1px solid var(--color-border)",
+          "elevation": "none"
+        }
+      },
+      {
+        "if": { "variant": "elevated" },
+        "then": {
+          "background": "var(--color-surface)",
+          "border": "none",
+          "elevation": "var(--elevation-1)"
+        }
+      },
+      {
+        "if": { "variant": "filled" },
+        "then": {
+          "background": "var(--color-surface-elevated)",
+          "border": "none",
+          "elevation": "none"
+        }
+      },
+      {
+        "if": { "hoverable": true },
+        "then": { "hover": "elevation increase by 1 level" }
+      },
+      {
+        "if": { "loading": true },
+        "then": { "render": "skeleton placeholders", "interactive": "disabled" }
+      },
+      {
+        "if": { "link": "present" },
+        "then": { "wrapper": "a element", "cursor": "pointer" }
+      },
+      {
+        "if": { "interactive": true },
+        "then": { "cursor": "pointer", "hover": "background darken" }
+      },
+      {
+        "if": { "size": "S" },
+        "then": { "padding": "0.75rem" }
+      },
+      {
+        "if": { "size": "L" },
+        "then": { "padding": "2rem" }
+      },
+      {
+        "if": { "size": "full" },
+        "then": { "padding": "0" }
+      },
+      {
+        "if": { "bordered": false },
+        "then": { "border": "none" }
+      },
+      {
+        "if": { "tabs": "present" },
+        "then": { "render": "Tabs component below header" }
+      },
+      {
+        "if": { "actions": "present" },
+        "then": { "render": "footer with Button components" }
+      },
+      {
+        "if": { "cover": "present" },
+        "then": { "render": "media at top, full-width" }
+      },
+      {
+        "if": { "icon": "present", "iconProps.position": "start" },
+        "then": { "render": "icon leading header content" }
+      },
+      {
+        "if": { "icon": "present", "iconProps.position": "top" },
+        "then": { "render": "icon above title, centered" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Use outlined variant for default cards, elevated for prominent cards, filled for subtle cards.",
+    "Set hoverable=true for gallery/list items to indicate interactivity.",
+    "Use link prop for entire-card navigation, onClick for custom interactions.",
+    "Loading state shows skeleton placeholders (title, subtitle, body).",
+    "Tabs prop enables in-card navigation (integrates Tabs component).",
+    "Actions array creates footer with Button components.",
+    "Cover prop for hero images/videos at card top.",
+    "Icon can be positioned: start (leading), end (trailing), top (centered above title).",
+    "Badge displays in header (position: start or end via badgeProps).",
+    "Status message shows success/error/warning/info below header.",
+    "Size prop controls padding: S (compact), M (default), L (spacious), full (no padding).",
+    "TitleProps, subTitleProps, descriptionProps, bodyProps allow granular typography control.",
+    "Extra prop for header trailing content (buttons, badges, metadata).",
+    "Footer prop for custom footer content (overrides actions)."
+  ]
+}

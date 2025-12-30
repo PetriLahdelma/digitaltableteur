@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import Author from "@dt/Author";
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
 import Card from "@dt/Card";
+import CodeSnippet, { type SupportedLanguage } from "@dt/CodeSnippet";
 import { SocialShare } from "@dt/SocialShare";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
@@ -66,11 +67,107 @@ const MdxFigcaption = ({
   return <figcaption {...props}>{children}</figcaption>;
 };
 
+const languageAliases: Record<string, SupportedLanguage> = {
+  js: "javascript",
+  javascript: "javascript",
+  ts: "typescript",
+  tsx: "typescript",
+  typescript: "typescript",
+  json: "json",
+  bash: "bash",
+  sh: "bash",
+  shell: "bash",
+  py: "python",
+  python: "python",
+  go: "go",
+  rs: "rust",
+  rust: "rust",
+  md: "markdown",
+  markdown: "markdown",
+  html: "html",
+  xml: "xml",
+};
+
+const normalizeLanguage = (className?: string): SupportedLanguage => {
+  if (!className) return "markdown";
+  const match = className.match(/language-([\w-]+)/i);
+  const raw = (match?.[1] || className).toLowerCase();
+  return languageAliases[raw] ?? "markdown";
+};
+
+type WithChildrenProps = { children?: React.ReactNode };
+type CodeElementProps = { children?: React.ReactNode; className?: string };
+
+const getTextContent = (value: React.ReactNode): string => {
+  if (typeof value === "string" || typeof value === "number") {
+    return String(value);
+  }
+  if (Array.isArray(value)) {
+    return value.map(getTextContent).join("");
+  }
+  if (React.isValidElement<WithChildrenProps>(value)) {
+    return getTextContent(value.props.children);
+  }
+  return "";
+};
+
+const MdxCode = ({
+  className,
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<"code">) => {
+  if (className?.includes("language-")) {
+    return (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
+  }
+  const code = getTextContent(children);
+  return (
+    <CodeSnippet
+      code={code}
+      language="markdown"
+      variant="inline"
+      allowCopy={false}
+    />
+  );
+};
+
+// Render fenced code blocks with CodeSnippet for consistent styling.
+const MdxPre = ({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<"pre">) => {
+  const childArray = React.Children.toArray(children);
+  const codeChild = childArray.find((child) =>
+    React.isValidElement<CodeElementProps>(child),
+  );
+  if (!codeChild || !React.isValidElement<CodeElementProps>(codeChild)) {
+    return <pre {...props}>{children}</pre>;
+  }
+  const className =
+    typeof codeChild.props.className === "string"
+      ? codeChild.props.className
+      : undefined;
+  const code = getTextContent(codeChild.props.children);
+  return (
+    <CodeSnippet
+      code={code}
+      language={normalizeLanguage(className)}
+      variant="multi"
+      showLineNumbers={false}
+    />
+  );
+};
+
 const mdxComponents = {
   Embed,
   AuthorBio: MdxAuthorBio,
   img: MdxImage,
   figcaption: MdxFigcaption,
+  pre: MdxPre,
+  code: MdxCode,
 };
 
 const formatDate = (iso?: string, locale?: string) => {

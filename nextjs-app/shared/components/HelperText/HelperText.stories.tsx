@@ -1,11 +1,48 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import {
+  Controls,
+  Description,
+  Heading,
+  Primary,
+  Stories,
+  Subtitle,
+  Title,
+} from "@storybook/addon-docs/blocks";
 import HelperText from "@dt/HelperText";
+import CodeSnippet from "@dt/CodeSnippet";
+import schema from "./schema.json";
 
 const meta: Meta<typeof HelperText> = {
   title: "Components/HelperText",
   component: HelperText,
   tags: ["autodocs"],
+  parameters: {
+    llm: {
+      schema,
+    },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Title />
+          <Subtitle />
+          <Description />
+          <Controls />
+          <Stories />
+          <Heading>LLM Schema</Heading>
+          <CodeSnippet
+            code={JSON.stringify(schema, null, 2)}
+            language="json"
+            variant="multi"
+            maxLines={20}
+            showLineNumbers={true}
+            allowCopy={true}
+          />
+        </>
+      ),
+    },
+  },
   argTypes: {
     state: {
       control: "select",

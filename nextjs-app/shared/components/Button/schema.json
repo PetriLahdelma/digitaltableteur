@@ -1,0 +1,363 @@
+{
+  "schemaVersion": "1.0",
+  "component": {
+    "name": "Button",
+    "type": "interaction",
+    "description": "Polymorphic button component rendered as native button or anchor element with multiple style variants and states.",
+    "source": "nextjs-app/shared/components/Button/Button.tsx",
+    "owners": ["design", "engineering"]
+  },
+  "anatomy": {
+    "container": "button or anchor element",
+    "parts": [
+      {
+        "id": "icon",
+        "label": "leading icon",
+        "role": "presentation",
+        "description": "Optional icon displayed before button text."
+      },
+      {
+        "id": "label",
+        "label": "button text",
+        "role": "text",
+        "description": "Button label content."
+      },
+      {
+        "id": "endIcon",
+        "label": "trailing icon",
+        "role": "presentation",
+        "description": "Optional icon displayed after button text."
+      },
+      {
+        "id": "loadingIndicator",
+        "label": "loading spinner",
+        "role": "status",
+        "description": "Animated spinner shown during loading state."
+      }
+    ]
+  },
+  "semanticRole": {
+    "container": "button | a",
+    "icon": "span (decorative)",
+    "label": "text node | span",
+    "loadingIndicator": "span[aria-busy=true]"
+  },
+  "layout": {
+    "direction": "horizontal (icon + label + endIcon)",
+    "width": "intrinsic to content",
+    "height": "size-dependent (s: 2rem, m: 2.5rem, l: 3rem)",
+    "sizeRules": {
+      "s": "height: 2rem, padding: 0.5rem 1rem, fontSize: 0.875rem",
+      "m": "height: 2.5rem, padding: 0.625rem 1.25rem, fontSize: 1rem",
+      "l": "height: 3rem, padding: 0.75rem 1.5rem, fontSize: 1.125rem"
+    },
+    "spacing": {
+      "padding": "size-dependent (see sizeRules)",
+      "gap": "0.5rem (between icon and label)",
+      "iconPadding": "reduced when icon-only (no label)"
+    },
+    "constraints": [
+      "Icon-only buttons have equal width and height (square).",
+      "Loading state preserves button dimensions (no layout shift).",
+      "Text does not wrap (white-space: nowrap)."
+    ]
+  },
+  "visualStyle": {
+    "surface": "flat (tertiary) | raised (primary, secondary)",
+    "elevation": "none (all variants except shadow on hover for primary)",
+    "border": "none (primary, tertiary) | 1px solid (secondary)",
+    "radius": "var(--radius-md) | var(--radius-full) (rounded prop)",
+    "backgrounds": {
+      "primary": {
+        "default": "var(--color-primary)",
+        "hover": "var(--color-primary-hover)",
+        "active": "var(--color-primary-active)",
+        "disabled": "var(--color-neutral-300)"
+      },
+      "secondary": {
+        "default": "transparent",
+        "hover": "var(--color-primary-alpha-10)",
+        "active": "var(--color-primary-alpha-20)",
+        "disabled": "transparent"
+      },
+      "tertiary": {
+        "default": "transparent",
+        "hover": "var(--color-primary-alpha-5)",
+        "active": "var(--color-primary-alpha-10)",
+        "disabled": "transparent"
+      },
+      "error": {
+        "default": "var(--color-semantic-error)",
+        "hover": "var(--color-semantic-error-hover)",
+        "active": "var(--color-semantic-error-active)",
+        "disabled": "var(--color-neutral-300)"
+      }
+    },
+    "typography": {
+      "fontFamily": "var(--font-text)",
+      "fontSize": "size-dependent (s: 0.875rem, m: 1rem, l: 1.125rem)",
+      "fontWeight": "600 (semibold)",
+      "lineHeight": "1.2"
+    },
+    "color": {
+      "text": {
+        "primary": "var(--color-white)",
+        "secondary": "var(--color-primary)",
+        "tertiary": "var(--color-primary)",
+        "inverse": "var(--color-white) (overrides primary/secondary text)"
+      },
+      "icon": "matches text color",
+      "border": {
+        "secondary": "var(--color-primary)",
+        "secondaryError": "var(--color-semantic-error)"
+      }
+    },
+    "iconMotion": "Loading spinner rotates continuously. Icon scale on hover: 1.05 (subtle)."
+  },
+  "tokens": {
+    "base": {
+      "color": [
+        "color.primary",
+        "color.primary.hover",
+        "color.primary.active",
+        "color.semantic.error",
+        "color.semantic.warning",
+        "color.semantic.success",
+        "color.semantic.info",
+        "color.neutral.300",
+        "color.white"
+      ],
+      "typography": ["font.text", "font.weight.semibold"],
+      "spacing": ["space.internal.8", "space.internal.12", "space.internal.16"],
+      "radii": ["radius.md", "radius.full"],
+      "elevation": ["elevation.1 (hover shadow)"]
+    },
+    "brand": {
+      "color": ["brand.primary", "brand.accent"]
+    },
+    "mode": {
+      "light": ["mode.light.primary", "mode.light.surface"],
+      "dark": ["mode.dark.primary", "mode.dark.surface"]
+    },
+    "contextual": {
+      "emotion": [
+        "context.emotion.error",
+        "context.emotion.warning",
+        "context.emotion.success",
+        "context.emotion.info"
+      ]
+    }
+  },
+  "behavior": {
+    "map": "Button triggers actions (onClick) or navigates (href). Loading state disables interaction and shows spinner. Disabled state prevents interaction. Icon variants (icon-only, icon+text) supported. Semantic icons auto-inject for error/warning/success/info variants.",
+    "stateModel": "stateless (controlled by props: disabled, loading)",
+    "rendering": "Renders as <button> when onClick or submits=true. Renders as <a> when href provided. Loading spinner replaces icon during loading state.",
+    "defaultState": "Primary variant, medium size, no icon, not loading, not disabled."
+  },
+  "interaction": {
+    "logic": [
+      {
+        "trigger": "onClick",
+        "effect": "Calls onClick callback. Prevented when disabled or loading."
+      },
+      {
+        "trigger": "Enter/Space key",
+        "effect": "Activates button (native behavior)."
+      },
+      {
+        "trigger": "Click (href variant)",
+        "effect": "Navigates to URL (anchor element)."
+      }
+    ],
+    "feedback": {
+      "hover": "Background darkens, subtle shadow on primary. Icon scales 1.05x.",
+      "focus": "Visible focus ring with brand color.",
+      "active": "Background further darkens, pressed appearance.",
+      "disabled": "Reduced opacity (0.5), no pointer events, grayscale filter."
+    }
+  },
+  "states": {
+    "default": "Idle, ready for interaction.",
+    "hover": "Pointer over button, visual feedback active.",
+    "focus": "Keyboard focus, focus ring visible.",
+    "active": "Pressed/clicked, momentary pressed state.",
+    "loading": "Spinner replaces icon, button disabled, no pointer events.",
+    "disabled": "Non-interactive, reduced opacity, no hover effects."
+  },
+  "transitions": [
+    {
+      "from": "default",
+      "to": "hover",
+      "trigger": "pointer enter",
+      "motionTokens": ["duration: 150ms", "easing: ease-out"]
+    },
+    {
+      "from": "hover",
+      "to": "default",
+      "trigger": "pointer leave",
+      "motionTokens": ["duration: 150ms", "easing: ease-out"]
+    },
+    {
+      "from": "default",
+      "to": "loading",
+      "trigger": "loading prop set to true",
+      "motionTokens": ["spinner fade-in: 200ms"]
+    },
+    {
+      "from": "loading",
+      "to": "default",
+      "trigger": "loading prop set to false",
+      "motionTokens": ["spinner fade-out: 200ms"]
+    }
+  ],
+  "constraints": {
+    "layout": [
+      "Text does not wrap (truncate with ellipsis if needed).",
+      "Loading state preserves button dimensions.",
+      "Icon-only buttons are square (width === height)."
+    ],
+    "content": [
+      "Label should be concise (1-3 words ideal).",
+      "Icons can be React element, component, or Phosphor icon name string.",
+      "Semantic variants (error, warning, success, info) auto-inject icons."
+    ],
+    "nesting": [
+      "Button cannot contain other interactive elements (buttons, links, inputs).",
+      "Button should not contain complex components, only text and icons."
+    ]
+  },
+  "accessibility": {
+    "roles": {
+      "container": "button | link (native semantic elements)",
+      "icon": "presentation (decorative)",
+      "loadingIndicator": "status (aria-busy)"
+    },
+    "aria": {
+      "label": "Use accessibleName prop to override visible label.",
+      "describedby": "Use accessibleDescription for additional context.",
+      "labelledby": "Use accessibleNameRef to reference external label.",
+      "disabled": "aria-disabled=true when disabled prop set.",
+      "busy": "aria-busy=true during loading state."
+    },
+    "keyboard": "Native button keyboard support (Enter/Space). Tab to focus. Disabled when loading or disabled.",
+    "focus": "Visible focus ring with sufficient contrast (2px solid brand color).",
+    "contrast": {
+      "primary": "White text on brand background (contrast ratio > 4.5:1).",
+      "secondary": "Brand text on white background (contrast ratio > 4.5:1).",
+      "tertiary": "Brand text on transparent background (contrast ratio > 4.5:1)."
+    }
+  },
+  "responsiveness": {
+    "rules": "Button size is intrinsic. On small screens, consider full-width buttons or reduced padding. Inverse prop useful for buttons on dark backgrounds.",
+    "breakpoints": ["none (size prop controls dimensions)"]
+  },
+  "generativeRules": {
+    "contextInputs": [
+      "variant",
+      "size",
+      "disabled",
+      "loading",
+      "inverse",
+      "rounded",
+      "icon",
+      "endIcon",
+      "href",
+      "submits"
+    ],
+    "rules": [
+      {
+        "if": { "variant": "primary" },
+        "then": {
+          "background": "var(--color-primary)",
+          "color": "var(--color-white)",
+          "border": "none"
+        }
+      },
+      {
+        "if": { "variant": "secondary" },
+        "then": {
+          "background": "transparent",
+          "color": "var(--color-primary)",
+          "border": "1px solid var(--color-primary)"
+        }
+      },
+      {
+        "if": { "variant": "tertiary" },
+        "then": { "background": "transparent", "color": "var(--color-primary)", "border": "none" }
+      },
+      {
+        "if": { "variant": "error" },
+        "then": {
+          "background": "var(--color-semantic-error)",
+          "color": "var(--color-white)",
+          "icon": "x-circle"
+        }
+      },
+      {
+        "if": { "variant": "warning" },
+        "then": {
+          "background": "var(--color-semantic-warning)",
+          "color": "var(--color-black)",
+          "icon": "warning"
+        }
+      },
+      {
+        "if": { "variant": "success" },
+        "then": {
+          "background": "var(--color-semantic-success)",
+          "color": "var(--color-white)",
+          "icon": "check-circle"
+        }
+      },
+      {
+        "if": { "inverse": true },
+        "then": { "color": "var(--color-white)", "border": "1px solid var(--color-white)" }
+      },
+      {
+        "if": { "rounded": true },
+        "then": { "borderRadius": "var(--radius-full)" }
+      },
+      {
+        "if": { "loading": true },
+        "then": { "icon": "spinner (animated)", "disabled": true }
+      },
+      {
+        "if": { "disabled": true },
+        "then": { "opacity": "0.5", "pointerEvents": "none", "filter": "grayscale(1)" }
+      },
+      {
+        "if": { "href": "present" },
+        "then": { "element": "a", "role": "link" }
+      },
+      {
+        "if": { "submits": true },
+        "then": { "element": "button", "type": "submit" }
+      },
+      {
+        "if": { "icon": "present", "children": "empty" },
+        "then": { "width": "matches height (square)", "padding": "reduced" }
+      },
+      {
+        "if": { "size": "s" },
+        "then": { "height": "2rem", "padding": "0.5rem 1rem", "fontSize": "0.875rem" }
+      },
+      {
+        "if": { "size": "l" },
+        "then": { "height": "3rem", "padding": "0.75rem 1.5rem", "fontSize": "1.125rem" }
+      }
+    ]
+  },
+  "usageNotes": [
+    "Use primary for main CTAs, secondary for secondary actions, tertiary for low-emphasis actions.",
+    "Set href to render as anchor element for navigation.",
+    "Set submits=true for form submission buttons.",
+    "Use inverse prop for buttons on dark backgrounds (white text/border).",
+    "Icons auto-inject for semantic variants (error, warning, success, info).",
+    "Loading state automatically disables button and shows spinner.",
+    "Disabled state prevents all interaction (no onClick, no navigation).",
+    "Rounded prop applies pill-shaped border radius.",
+    "Icon-only buttons automatically become square (width = height).",
+    "Use accessibleName for screen reader labels when icon-only.",
+    "Size prop controls height, padding, and font size (s, m, l)."
+  ]
+}

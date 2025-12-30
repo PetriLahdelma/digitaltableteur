@@ -21,6 +21,22 @@
     box-shadow 0.2s ease;
 }
 
+/* Size variants (v1.1.0) */
+.checkbox--sm {
+  width: 18px;
+  height: 18px;
+}
+
+.checkbox--md {
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox--lg {
+  width: 30px;
+  height: 30px;
+}
+
 /* Enhancement: native theming via accent-color where supported */
 @supports (accent-color: var(--color-primary)) {
   .checkbox {

@@ -27,7 +27,7 @@ Founder & Leadership:
   - Business LinkedIn: https://www.linkedin.com/company/digitaltableteur/
   - Personal LinkedIn: https://www.linkedin.com/in/petrilahdelma/
   - GitHub: https://github.com/PetriLahdelma
-  - Medium: https://medium.com/@petrilahdelma
+  - Medium: https://medium.com/digitaltableteur
   - Dribbble: https://dribbble.com/digitaltableteur
 - GitHub Profile: Highly active developer with 1,436+ contributions in past year, multiple TypeScript/React repositories
 - Open Source: Maintains multiple projects including digitaltableteur portfolio, donny.ai assistant platform
