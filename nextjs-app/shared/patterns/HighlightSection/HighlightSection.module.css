@@ -42,7 +42,8 @@
 }
 
 .pattern .backgroundPattern {
-  background-image: repeating-linear-gradient(
+  background-image:
+    repeating-linear-gradient(
       0deg,
       var(--color-primary) 0px,
       transparent 1px,
@@ -139,11 +140,25 @@
   color: var(--color-text);
 }
 
-/* CTA wrapper */
-.ctaWrapper {
+/* CTA layout */
+.ctaRow {
   display: flex;
   align-items: center;
+  gap: var(--space-layout-16);
+  flex-wrap: wrap;
+  inline-size: 100%;
   margin-block-start: var(--space-layout-16);
+}
+
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-layout-16);
+  flex-wrap: wrap;
+}
+
+.ctaTrailing {
+  margin-inline-start: auto;
 }
 
 /* Responsive breakpoints - mobile-first */
@@ -203,53 +218,61 @@
 }
 
 /* Theme support - Dark mode */
-.themeDark .backgroundBase {
-  background-color: var(--color-light-bg);
+:global(.themeDark) .backgroundBase {
+  background-color: #0b0d12;
 }
 
-.themeDark .gradient .backgroundBase {
-  background: linear-gradient(135deg, #1a2332 0%, #2a3342 100%);
+:global(.themeDark) .gradient .backgroundBase {
+  background: linear-gradient(135deg, #0b0d12 0%, #1a1f2b 100%);
 }
 
-.themeDark .pattern .backgroundBase,
-.themeDark .dots .backgroundBase {
-  background-color: #1a2332;
+:global(.themeDark) .pattern .backgroundBase,
+:global(.themeDark) .dots .backgroundBase {
+  background-color: #0b0d12;
 }
 
-.themeDark .solid .backgroundBase {
-  background-color: var(--color-light-bg);
+:global(.themeDark) .solid .backgroundBase {
+  background-color: #0b0d12;
+}
+
+:global(.themeDark) .backgroundPattern {
+  opacity: 0.12;
 }
 
 /* Theme support - High Contrast White */
-.themeHCW .backgroundBase {
+:global(.themeHCW) .backgroundBase {
   background-color: var(--main-body-background-color);
 }
 
-.themeHCW .gradient .backgroundBase,
-.themeHCW .pattern .backgroundBase,
-.themeHCW .dots .backgroundBase,
-.themeHCW .solid .backgroundBase {
+:global(.themeHCW) .gradient .backgroundBase,
+:global(.themeHCW) .pattern .backgroundBase,
+:global(.themeHCW) .dots .backgroundBase,
+:global(.themeHCW) .solid .backgroundBase {
   background-color: var(--main-body-background-color);
 }
 
-.themeHCW .border {
+:global(.themeHCW) .border {
   border-width: 2px;
 }
 
 /* Theme support - High Contrast Black */
-.themeHCB .backgroundBase {
-  background-color: var(--main-body-background-color);
+:global(.themeHCB) .backgroundBase {
+  background-color: #000;
 }
 
-.themeHCB .gradient .backgroundBase,
-.themeHCB .pattern .backgroundBase,
-.themeHCB .dots .backgroundBase,
-.themeHCB .solid .backgroundBase {
-  background-color: var(--main-body-background-color);
+:global(.themeHCB) .gradient .backgroundBase,
+:global(.themeHCB) .pattern .backgroundBase,
+:global(.themeHCB) .dots .backgroundBase,
+:global(.themeHCB) .solid .backgroundBase {
+  background-color: #000;
 }
 
-.themeHCB .border {
+:global(.themeHCB) .border {
   border-width: 2px;
+}
+
+:global(.themeHCB) .backgroundPattern {
+  opacity: 0.08;
 }
 
 /* Print styles */

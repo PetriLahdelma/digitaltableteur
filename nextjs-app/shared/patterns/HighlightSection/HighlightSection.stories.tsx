@@ -40,7 +40,8 @@ const meta: Meta<typeof HighlightSection> = {
     },
     cta: {
       control: "object",
-      description: "Call-to-action button configuration",
+      description:
+        "Call-to-action configuration (single object or array up to 3; third aligns to the far edge)",
     },
     className: {
       control: "text",
@@ -61,14 +62,15 @@ type Story = StoryObj<typeof HighlightSection>;
  */
 export const Default: Story = {
   args: {
-    title: "Download my component schema template for GenAI Design System creation",
+    title:
+      "Download my component schema template for GenAI Design System creation",
     description:
       "Supercharge your AI driven design system and guide it to deliver everything up-to-spec. Ensure all new components are following the same prop structure, naming and brand.",
     cta: {
       label: "Download Schema",
       onClick: () => alert("Download initiated!"),
     },
-    variant: "pattern",
+    variant: "dots",
     size: "comfortable",
   },
 };
@@ -90,6 +92,21 @@ export const SolidVariant: Story = {
   args: {
     ...Default.args,
     variant: "solid",
+  },
+};
+
+/**
+ * Multiple CTA buttons (third aligns to the far edge)
+ */
+export const MultipleCTA: Story = {
+  name: "Multiple CTA's",
+  args: {
+    ...Default.args,
+    cta: [
+      { label: "Download Schema", onClick: () => alert("Download started") },
+      { label: "View Docs", href: "https://digitaltableteur.com" },
+      { label: "Contact", href: "/contact" },
+    ],
   },
 };
 

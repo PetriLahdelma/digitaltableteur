@@ -214,7 +214,7 @@
 /* Section accent backgrounds */
 .sectionAccentPink {
   background-color: var(--accent-pink);
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 .sectionAccentPurple {
@@ -239,7 +239,7 @@
 
 .sectionAccentViolet {
   background-color: var(--accent-violet);
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 .ctaTitle {

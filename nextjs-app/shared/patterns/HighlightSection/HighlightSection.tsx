@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
 import Button from "@dt/Button";
+import type { ButtonProps } from "@dt/Button";
 import styles from "./HighlightSection.module.css";
 
 /**
@@ -33,6 +34,12 @@ export interface HighlightSectionCTA {
   href?: string;
   /** Target attribute for link */
   target?: "_blank" | "_self" | "_parent" | "_top";
+  /** Rel attribute for link */
+  rel?: string;
+  /** Button style variant */
+  variant?: ButtonProps["variant"];
+  /** Button size variant */
+  size?: ButtonProps["size"];
 }
 
 /**
@@ -45,8 +52,8 @@ export interface HighlightSectionProps {
   overline?: string;
   /** Supporting description text */
   description: string;
-  /** CTA button configuration */
-  cta?: HighlightSectionCTA;
+  /** CTA button configuration (up to 3 items) */
+  cta?: HighlightSectionCTA | HighlightSectionCTA[];
   /** Background variant */
   variant?: HighlightSectionVariant;
   /** Section size (affects padding and spacing) */
@@ -65,10 +72,11 @@ export interface HighlightSectionProps {
  * <HighlightSection
  *   title="Download my component schema template for GenAI Design System creation"
  *   description="Supercharge your AI driven design system..."
- *   cta={{
- *     label: "Download Schema",
- *     onClick: handleDownload
- *   }}
+ *   cta={[
+ *     { label: "Download Schema", onClick: handleDownload },
+ *     { label: "View Docs", href: "/docs" },
+ *     { label: "Contact", href: "/contact" }
+ *   ]}
  *   variant="pattern"
  * />
  * ```
@@ -77,6 +85,7 @@ export interface HighlightSectionProps {
  * - Uses design system Title, Text, and Button components
  * - Supports four background variants: gradient, pattern, dots, solid
  * - Three size options for flexible layouts
+ * - CTA supports up to three buttons (third aligns to the far edge)
  * - Fully responsive with mobile-first approach
  * - Theme-aware styling (Light, Dark, HCW, HCB)
  * - Internationalization ready
@@ -92,6 +101,10 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
   ariaLabel,
 }) => {
   const { t } = useTranslation();
+  const ctaItems = Array.isArray(cta) ? cta : cta ? [cta] : [];
+  const cappedCtas = ctaItems.slice(0, 3);
+  const primaryCtas = cappedCtas.slice(0, 2);
+  const trailingCta = cappedCtas[2];
 
   const sectionClasses = [
     styles.section,
@@ -144,22 +157,62 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
           >
             {description}
           </Text>
-          {cta && (
-            <div className={styles.ctaWrapper}>
-              {cta.href ? (
-                <Button
-                  variant="primary"
-                  size="lg"
-                  onClick={cta.onClick}
-                  href={cta.href}
-                  target={cta.target}
-                >
-                  {cta.label}
-                </Button>
-              ) : (
-                <Button variant="primary" size="lg" onClick={cta.onClick}>
-                  {cta.label}
-                </Button>
+          {ctaItems.length > 0 && (
+            <div className={styles.ctaRow}>
+              <div className={styles.ctaGroup}>
+                {primaryCtas.map((item, index) => {
+                  const variantFallback =
+                    index === 0 ? "primary" : "secondary";
+                  const sizeValue = item.size ?? "lg";
+                  const variantValue = item.variant ?? variantFallback;
+
+                  return item.href ? (
+                    <Button
+                      key={index}
+                      variant={variantValue}
+                      size={sizeValue}
+                      onClick={item.onClick}
+                      href={item.href}
+                      target={item.target}
+                      rel={item.rel}
+                    >
+                      {item.label}
+                    </Button>
+                  ) : (
+                    <Button
+                      key={index}
+                      variant={variantValue}
+                      size={sizeValue}
+                      onClick={item.onClick}
+                    >
+                      {item.label}
+                    </Button>
+                  );
+                })}
+              </div>
+              {trailingCta && (
+                <div className={styles.ctaTrailing}>
+                  {trailingCta.href ? (
+                    <Button
+                      variant={trailingCta.variant ?? "tertiary"}
+                      size={trailingCta.size ?? "lg"}
+                      onClick={trailingCta.onClick}
+                      href={trailingCta.href}
+                      target={trailingCta.target}
+                      rel={trailingCta.rel}
+                    >
+                      {trailingCta.label}
+                    </Button>
+                  ) : (
+                    <Button
+                      variant={trailingCta.variant ?? "tertiary"}
+                      size={trailingCta.size ?? "lg"}
+                      onClick={trailingCta.onClick}
+                    >
+                      {trailingCta.label}
+                    </Button>
+                  )}
+                </div>
               )}
             </div>
           )}
