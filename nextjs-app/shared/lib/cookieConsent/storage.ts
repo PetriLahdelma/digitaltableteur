@@ -55,6 +55,11 @@ export function loadConsentState(): ConsentState | null {
     return parsed;
   } catch (error) {
     console.error("Failed to load cookie consent:", error);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // ignore storage cleanup errors
+    }
     return null;
   }
 }
@@ -156,6 +161,11 @@ export function loadMinimizedState(): boolean {
     return JSON.parse(stored) as boolean;
   } catch (error) {
     console.error("Failed to load minimized state:", error);
+    try {
+      localStorage.removeItem(MINIMIZED_KEY);
+    } catch {
+      // ignore storage cleanup errors
+    }
     return false;
   }
 }

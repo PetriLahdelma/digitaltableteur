@@ -155,6 +155,8 @@ export function ContactPage() {
             githubLabel={t("contactGitHubLabel")}
             mediumUrl="https://medium.com/digitaltableteur"
             mediumLabel={t("contactMediumLabel")}
+            twitterUrl="https://x.com/dtdoesdesign"
+            twitterLabel={t("footerAriaX")}
             dribbbleUrl="https://dribbble.com/digitaltableteur"
             dribbbleLabel={t("contactDribbbleLabel")}
             substackLabel={t("contactSubstackLabel")}
