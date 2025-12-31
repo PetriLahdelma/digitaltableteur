@@ -1,0 +1,307 @@
+/* HighlightSection Component Styles */
+
+.section {
+  position: relative;
+  inline-size: 100%;
+  block-size: auto;
+  --highlight-bg: var(--color-light-bg);
+  --highlight-gradient-start: #ddf;
+  --highlight-gradient-end: #eef;
+  --highlight-pattern-opacity: 0.2;
+  --highlight-border-width: 2px;
+}
+
+/* Background layers */
+.background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.backgroundBase {
+  position: absolute;
+  inset: 0;
+  background-color: var(--highlight-bg);
+}
+
+/* Gradient variant */
+.gradient .backgroundBase {
+  background: linear-gradient(
+    135deg,
+    var(--highlight-gradient-start) 0%,
+    var(--highlight-gradient-end) 100%
+  );
+}
+
+/* Pattern variant */
+.pattern .backgroundBase {
+  background-color: var(--highlight-gradient-start);
+}
+
+.dots .backgroundBase {
+  background-color: var(--highlight-gradient-start);
+}
+
+.backgroundPattern {
+  position: absolute;
+  inset: 0;
+  background-position: top left;
+  background-repeat: repeat;
+  opacity: var(--highlight-pattern-opacity);
+}
+
+.pattern .backgroundPattern {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      var(--color-primary) 0px,
+      transparent 1px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--color-primary) 0px,
+      transparent 1px,
+      transparent 8px
+    );
+  background-size: 8px 8px;
+}
+
+.dots .backgroundPattern {
+  background-image: radial-gradient(
+    circle,
+    var(--color-primary) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+}
+
+/* Solid variant */
+.solid .backgroundBase {
+  background-color: var(--color-light-bg);
+}
+
+/* Border decoration */
+.border {
+  position: absolute;
+  inset: 0;
+  border: var(--highlight-border-width) solid var(--color-primary);
+  pointer-events: none;
+}
+
+/* Container for content */
+.container {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: var(--container-lg);
+  margin-inline: auto;
+}
+
+/* Content wrapper */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-layout-32);
+  padding-block: var(--space-layout-56, 3.5rem);
+  padding-inline: var(--space-layout-40);
+}
+
+/* Size variants */
+.compact .content {
+  gap: var(--space-layout-24);
+  padding-block: var(--space-layout-32);
+  padding-inline: var(--space-layout-16);
+}
+
+.comfortable .content {
+  gap: var(--space-layout-32);
+  padding-block: var(--space-layout-56, 3.5rem);
+  padding-inline: var(--space-layout-40);
+}
+
+.spacious .content {
+  gap: var(--space-layout-48);
+  padding-block: var(--space-layout-64);
+  padding-inline: var(--space-layout-32);
+}
+
+/* Overline text */
+.overline {
+  display: block;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* Title */
+.title {
+  max-inline-size: 820px;
+  color: var(--color-title);
+  margin-block-start: 0;
+}
+
+/* Description */
+.description {
+  max-inline-size: 760px;
+  color: var(--color-text);
+}
+
+/* CTA layout */
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-layout-16);
+  flex-wrap: wrap;
+  inline-size: 100%;
+  margin-block-start: var(--space-layout-16);
+}
+
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-layout-16);
+  flex-wrap: wrap;
+}
+
+.ctaTrailing {
+  margin-inline-start: auto;
+}
+
+/* Responsive breakpoints - mobile-first */
+
+/* Tablet (768px+) */
+@media (width >= 768px) {
+  .content {
+    padding-block: var(--space-layout-56, 3.5rem);
+    padding-inline: var(--space-layout-40);
+  }
+
+  .compact .content {
+    padding-block: var(--space-layout-40);
+    padding-inline: var(--space-layout-24);
+  }
+
+  .spacious .content {
+    padding-block: var(--space-layout-80);
+    padding-inline: var(--space-layout-48);
+  }
+
+  .title {
+    max-inline-size: 900px;
+  }
+
+  .description {
+    max-inline-size: 800px;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (width >= 1024px) {
+  .content {
+    gap: var(--space-layout-40);
+    padding-block: var(--space-layout-64);
+    padding-inline: var(--space-layout-48);
+  }
+
+  .compact .content {
+    gap: var(--space-layout-32);
+    padding-block: var(--space-layout-48);
+    padding-inline: var(--space-layout-32);
+  }
+
+  .spacious .content {
+    gap: var(--space-layout-64);
+    padding-block: var(--space-layout-96);
+    padding-inline: var(--space-layout-64);
+  }
+}
+
+/* Wide screens (1440px+) */
+@media (width >= 1440px) {
+  .spacious .content {
+    padding-inline: var(--space-layout-80);
+  }
+}
+
+/* Theme support - Dark mode */
+:global(.themeDark) .backgroundBase {
+  --highlight-bg: #0b0d12;
+  --highlight-gradient-start: #0b0d12;
+  --highlight-gradient-end: #1a1f2b;
+}
+
+:global(.themeDark) .gradient .backgroundBase {
+  background: linear-gradient(
+    135deg,
+    var(--highlight-gradient-start) 0%,
+    var(--highlight-gradient-end) 100%
+  );
+}
+
+:global(.themeDark) .pattern .backgroundBase,
+:global(.themeDark) .dots .backgroundBase {
+  background-color: var(--highlight-bg);
+}
+
+:global(.themeDark) .solid .backgroundBase {
+  background-color: var(--highlight-bg);
+}
+
+:global(.themeDark) .backgroundPattern {
+  --highlight-pattern-opacity: 0.12;
+}
+
+/* Theme support - High Contrast White */
+:global(.themeHCW) .backgroundBase {
+  --highlight-bg: var(--main-body-background-color);
+  --highlight-gradient-start: var(--main-body-background-color);
+  --highlight-gradient-end: var(--main-body-background-color);
+}
+
+:global(.themeHCW) .gradient .backgroundBase,
+:global(.themeHCW) .pattern .backgroundBase,
+:global(.themeHCW) .dots .backgroundBase,
+:global(.themeHCW) .solid .backgroundBase {
+  background-color: var(--highlight-bg);
+}
+
+:global(.themeHCW) .border {
+  --highlight-border-width: 2px;
+}
+
+/* Theme support - High Contrast Black */
+:global(.themeHCB) .backgroundBase {
+  --highlight-bg: #000;
+  --highlight-gradient-start: #000;
+  --highlight-gradient-end: #000;
+}
+
+:global(.themeHCB) .gradient .backgroundBase,
+:global(.themeHCB) .pattern .backgroundBase,
+:global(.themeHCB) .dots .backgroundBase,
+:global(.themeHCB) .solid .backgroundBase {
+  background-color: var(--highlight-bg);
+}
+
+:global(.themeHCB) .border {
+  --highlight-border-width: 2px;
+}
+
+:global(.themeHCB) .backgroundPattern {
+  --highlight-pattern-opacity: 0.08;
+}
+
+/* Print styles */
+@media print {
+  .background,
+  .border {
+    display: none;
+  }
+
+  .section {
+    border: 1px solid var(--color-black);
+  }
+}

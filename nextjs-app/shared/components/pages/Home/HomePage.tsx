@@ -10,6 +10,7 @@ import Link from "@dt/Link";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import { useTranslation } from "react-i18next";
+import HighlightSection from "../../../patterns/HighlightSection";
 
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
 import styles from "./Home.module.css";
@@ -280,7 +281,32 @@ export function HomePage() {
           </Title>
         </section>
       </PageLayout>
-
+      <PageLayout maxWidth="full" spacing="comfortable" as="section">
+        <HighlightSection
+          cta={[
+            {
+              label: "Download Schema",
+              onClick: () => {
+                window.open(
+                  "https://petrilahdelma.gumroad.com/l/mcqoq",
+                  "_blank",
+                  "noopener,noreferrer",
+                );
+              },
+            },
+            {
+              label: "Read Article",
+              href: "https://medium.com/digitaltableteur/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work-46a51931e8e0",
+              target: "_blank",
+              rel: "noopener noreferrer",
+            },
+          ]}
+          description="Keep your AI-generated components consistent, predictable, and on-brand. This schema enforces shared prop structures, naming conventions, and design standards across your entire system."
+          size="comfortable"
+          title="Component Schema Template for GenAI Design Systems"
+          variant="dots"
+        />
+      </PageLayout>
       <PageLayout maxWidth="full" spacing="comfortable" as="section">
         <section className={styles.cta}>
           <Title

@@ -48,10 +48,11 @@
 .toolbar {
   display: flex;
   padding: 1rem;
+  text-transform: capitalize;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-layout-12, 0.75rem);
-  border: 1px solid var(--color-primary, rgb(255 255 255 / 8%));
+  border: 2px solid var(--color-primary, rgb(255 255 255 / 8%));
   border-radius: var(--radius-m, 12px) var(--radius-m, 12px) 0 0;
   background: var(--color-neutral-bg, rgb(0 0 0 / 35%));
   color: var(--color-text, #e5e7eb);
@@ -77,19 +78,35 @@
 }
 
 .pre {
-  /* Base (VS light by Andrew Lock) */
-  --code-bg: var(--color-white);
-  --code-border: var(--color-primary);
-  --code-text: #000;
-  --code-line-number: #6b7280;
-  --code-token-keyword: #00f;
-  --code-token-string: #a31515;
-  --code-token-number: #098658;
+  /* VS theme by Andrew Lock (prism-vs) */
+  --code-bg: #ffffff;
+  --code-border: #00f;
+  --code-text: #393a34;
+  --code-line-number: #2b91af;
   --code-token-comment: #008000;
+  --code-token-string: #a31515;
+  --code-token-number: #36acaa;
+  --code-token-keyword: #0000ff;
+  --code-token-function: var(--code-text);
+  --code-token-class-name: #2b91af;
+  --code-token-tag: #800000;
+  --code-token-selector: #800000;
+  --code-token-attr-name: #ff0000;
+  --code-token-property: var(--code-token-attr-name);
+  --code-token-attr-value: var(--code-token-keyword);
+  --code-token-operator: var(--code-text);
+  --code-token-punctuation: var(--code-text);
+  --code-token-variable: var(--code-token-number);
+  --code-token-constant: var(--code-token-number);
+  --code-token-boolean: var(--code-token-number);
+  --code-token-inserted: var(--code-token-number);
+  --code-token-deleted: #9a050f;
+  --code-token-important: #ee9900;
 
   margin: 0;
   padding: 1rem;
-  border: 1px solid var(--code-border);
+  border: 2px solid var(--code-border);
+  border-top: none;
   border-radius: 0 0 var(--radius-m, 12px) var(--radius-m, 12px);
   background: var(--code-bg);
   font-family: var(--font-mono);
@@ -180,14 +197,17 @@
 }
 
 .tokenKeyword {
-  font-weight: 600;
   color: var(--code-token-keyword);
 }
 
 .code :global(.token.keyword),
+.code :global(.token.atrule),
 .code :global([data-token="keyword"]) {
-  font-weight: 600;
   color: var(--code-token-keyword);
+}
+
+.code :global(.token.attr-value) {
+  color: var(--code-token-attr-value);
 }
 
 .tokenString {
@@ -204,6 +224,11 @@
 }
 
 .code :global(.token.number),
+.code :global(.token.boolean),
+.code :global(.token.constant),
+.code :global(.token.symbol),
+.code :global(.token.variable),
+.code :global(.token.inserted),
 .code :global([data-token="number"]) {
   color: var(--code-token-number);
 }
@@ -214,16 +239,65 @@
 }
 
 .code :global(.token.comment),
+.code :global(.token.prolog),
+.code :global(.token.doctype),
+.code :global(.token.cdata),
 .code :global([data-token="comment"]) {
   color: var(--code-token-comment);
   font-style: italic;
+}
+
+.code :global(.token.punctuation),
+.code :global(.token.operator) {
+  color: var(--code-token-operator);
+}
+
+.code :global(.token.function) {
+  color: var(--code-token-function);
+}
+
+.code :global(.token.class-name) {
+  color: var(--code-token-class-name);
+}
+
+.code :global(.token.tag),
+.code :global(.token.selector) {
+  color: var(--code-token-tag);
+}
+
+.code :global(.token.attr-name),
+.code :global(.token.property),
+.code :global(.token.regex),
+.code :global(.token.entity) {
+  color: var(--code-token-attr-name);
+}
+
+.code :global(.token.deleted) {
+  color: var(--code-token-deleted);
+}
+
+.code :global(.token.important) {
+  color: var(--code-token-important);
+  font-weight: bold;
+}
+
+.code :global(.token.bold) {
+  font-weight: bold;
+}
+
+.code :global(.token.italic) {
+  font-style: italic;
+}
+
+.code :global(.token.namespace) {
+  opacity: 0.7;
 }
 
 /* Expand control for multi-line with maxLines */
 .expandControl {
   padding: var(--space-layout-12, 0.75rem);
   text-align: center;
-  border: 1px solid var(--color-border, rgb(255 255 255 / 8%));
+  border: 2px solid var(--color-primary);
   border-top: none;
   border-radius: 0 0 var(--radius-m, 12px) var(--radius-m, 12px);
   background: var(--color-neutral-bg, rgb(0 0 0 / 35%));
