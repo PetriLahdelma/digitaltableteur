@@ -197,9 +197,49 @@
   color: transparent;
   animation: gradient-move 4s ease-in-out infinite;
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
   margin: 0 auto var(--space-layout-16);
+}
+
+/* Display typography utility */
+.displayText {
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-tight);
+  font-family: var(--font-title);
+  font-weight: var(--font-weight-title);
+}
+
+/* Section accent backgrounds */
+.sectionAccentPink {
+  background-color: var(--accent-pink);
+  color: var(--color-black);
+}
+
+.sectionAccentPurple {
+  background-color: var(--accent-purple);
+  color: var(--color-white);
+}
+
+.sectionAccentCyan {
+  background-color: var(--accent-cyan);
+  color: var(--color-black);
+}
+
+.sectionAccentTeal {
+  background-color: var(--accent-teal);
+  color: var(--color-black);
+}
+
+.sectionAccentYellow {
+  background-color: var(--accent-yellow);
+  color: var(--color-black);
+}
+
+.sectionAccentViolet {
+  background-color: var(--accent-violet);
+  color: var(--color-black);
 }
 
 .ctaTitle {

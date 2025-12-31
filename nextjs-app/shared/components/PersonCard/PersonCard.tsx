@@ -221,7 +221,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               title={twitterLabel || t("contactTwitterLabel")}
             >
               <Icon
-                name="twitter-logo"
+                name="x-twitter"
                 ariaLabel={twitterLabel || t("contactTwitterLabel")}
               />
             </Link>

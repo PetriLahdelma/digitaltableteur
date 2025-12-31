@@ -913,5 +913,8 @@
   "storyPhoneInputLabel": "Telefonnummer",
   "storyPhoneInputPlaceholder": "Ange ditt telefonnummer",
   "storyPhoneInputHelperText": "Inkludera landskod (t.ex. +46 för Sverige)",
-  "storyPhoneInputError": "Ogiltigt telefonnummerformat"
+  "storyPhoneInputError": "Ogiltigt telefonnummerformat",
+  "createSection": {
+    "ariaLabel": "Handlingsuppmaning sektion"
+  }
 }

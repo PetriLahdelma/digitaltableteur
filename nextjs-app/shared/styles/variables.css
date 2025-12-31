@@ -14,6 +14,7 @@
   --font-size-title-m: clamp(2rem, 2.8vw + 1.3rem, 3rem);
   --font-size-title-l: clamp(2.75rem, 4vw + 1.75rem, 4.25rem);
   --font-size-title-xl: clamp(3.5rem, 6vw + 2.5rem, 5.5rem);
+  --font-size-display: clamp(5rem, 10vw + 3rem, 8rem); /* Display typography: 80px-128px */
   --font-size-button-s: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);
   --font-size-button-m: clamp(1rem, 0.35vw + 0.9rem, 1.125rem);
   --font-size-button-l: clamp(1.125rem, 0.45vw + 1rem, 1.25rem);
@@ -309,6 +310,23 @@
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
   --selection-background: #fff;
   --selection-color: #000;
+}
+
+/* Utility classes for gradient text effects */
+.gradientTextUtility {
+  background: var(--home-gradient);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-move 4s ease-in-out infinite;
+}
+
+/* Outline text utility */
+.outlineText {
+  -webkit-text-stroke: 2px var(--color-primary);
+  -webkit-text-fill-color: transparent;
+  font-weight: var(--font-weight-title);
 }
 
 .themeHCW,

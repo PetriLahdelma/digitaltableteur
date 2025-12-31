@@ -1,7 +1,7 @@
 .personGrid {
   display: grid;
-  padding-block: var(--space-layout-16);
-  padding-inline: var(--space-layout-16);
+  padding-block: var(--space-layout-32);
+  padding-inline: var(--space-layout-40);
   inline-size: fit-content;
   grid-template-columns: minmax(96px, 96px) 1fr;
   align-items: center;
