@@ -30,7 +30,7 @@ const meta: Meta<typeof HighlightSection> = {
     },
     variant: {
       control: "select",
-      options: ["gradient", "pattern", "solid"],
+      options: ["gradient", "pattern", "dots", "solid"],
       description: "Background style variant",
     },
     size: {
@@ -90,6 +90,16 @@ export const SolidVariant: Story = {
   args: {
     ...Default.args,
     variant: "solid",
+  },
+};
+
+/**
+ * Dots background variant
+ */
+export const DotsVariant: Story = {
+  args: {
+    ...Default.args,
+    variant: "dots",
   },
 };
 

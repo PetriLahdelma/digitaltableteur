@@ -10,9 +10,11 @@ import Link from "@dt/Link";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import { useTranslation } from "react-i18next";
+import HighlightSection from "../../../patterns/HighlightSection";
 
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
 import styles from "./Home.module.css";
+import { P } from "storybook/internal/components";
 
 const heroContainerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -301,6 +303,18 @@ export function HomePage() {
             </Link>
           </div>
         </section>
+      </PageLayout>
+      <PageLayout maxWidth="full" spacing="comfortable" as="section">
+        <HighlightSection
+          cta={{
+            label: "Download Schema",
+            onClick: () => {},
+          }}
+          description="Supercharge your AI driven design system and guide it to always deliver everything up-to-spec. Ensure all new components are following the same prop structure, naming and brand guidelines."
+          size="comfortable"
+          title="Download my component schema template for GenAI Design System creation"
+          variant="dots"
+        />
       </PageLayout>
     </div>
   );

@@ -106,6 +106,7 @@
   margin: 0;
   padding: 1rem;
   border: 2px solid var(--code-border);
+  border-top: none;
   border-radius: 0 0 var(--radius-m, 12px) var(--radius-m, 12px);
   background: var(--code-bg);
   font-family: var(--font-mono);
