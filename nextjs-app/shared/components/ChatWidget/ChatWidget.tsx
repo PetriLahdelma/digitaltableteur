@@ -290,16 +290,22 @@ const loadStoredMessages = (
   if (typeof window === "undefined") return null;
 
   try {
-    const storedV2 = parseStoredMessages(localStorage.getItem(STORAGE_KEY));
+    const storedRaw = localStorage.getItem(STORAGE_KEY);
+    const storedV2 = parseStoredMessages(storedRaw);
     if (storedV2?.length) {
       return fromStoredMessages(storedV2, greetingText);
     }
+    if (storedRaw) {
+      localStorage.removeItem(STORAGE_KEY);
+    }
 
-    const legacy = parseLegacyMessages(
-      localStorage.getItem(LEGACY_STORAGE_KEY),
-    );
+    const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
+    const legacy = parseLegacyMessages(legacyRaw);
     if (legacy?.length) {
       return fromStoredMessages(legacy, greetingText);
+    }
+    if (legacyRaw) {
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
     }
   } catch {
     // ignore storage errors and fall back to greeting

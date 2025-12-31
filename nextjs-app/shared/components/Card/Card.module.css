@@ -1,97 +1,192 @@
-/* Material Design 3 Card Tokens */
+/* Enhanced UI Design System Card Tokens */
 
 .card {
+  /* Color System */
   --card-container-color: var(--color-white);
-  --card-container-surface-tint-layer-color: transparent;
-  --card-container-shadow-color: rgb(0 0 0 / 30%);
-  --card-container-elevation-0: none;
-  --card-container-elevation-1:
-    0 1px 2px rgb(0 0 0 / 30%), 0 1px 3px 1px rgb(0 0 0 / 15%);
-  --card-container-elevation-2:
-    0 1px 2px rgb(0 0 0 / 30%), 0 2px 6px 2px rgb(0 0 0 / 15%);
-  --card-container-elevation-3:
-    0 1px 3px rgb(0 0 0 / 30%), 0 4px 8px 3px rgb(0 0 0 / 15%);
-  --card-container-elevation-4:
-    0 2px 3px rgb(0 0 0 / 30%), 0 6px 10px 4px rgb(0 0 0 / 15%);
-  --card-container-elevation-5:
-    0 4px 4px rgb(0 0 0 / 30%), 0 8px 12px 6px rgb(0 0 0 / 15%);
-  --card-outline-color: var(--color-border-subtle, rgb(15 23 42 / 12%));
+  --card-container-surface-tint: transparent;
+  --card-outline-color: var(--color-primary);
   --card-outline-width: 2px;
+  --card-filled-bg: var(--color-light-bg, #f9f9f9);
 
-  /* Content spacing following Material Design specs */
-  --card-header-padding: var(--space-internal-24);
-  --card-content-padding: var(--space-internal-24);
-  --card-footer-padding: var(--space-internal-24);
-  --card-supporting-text-padding: var(--space-internal-24);
-  --card-container-shape: 2px;
+  /* Sophisticated Shadow System (layered depth) */
+  --card-shadow-sm:
+    0 1px 2px 0 rgb(0 0 0 / 0.05),
+    0 1px 3px 0 rgb(0 0 0 / 0.1);
+  --card-shadow-md:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -1px rgb(0 0 0 / 0.06);
+  --card-shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -2px rgb(0 0 0 / 0.05);
+  --card-shadow-xl:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 10px 10px -5px rgb(0 0 0 / 0.04);
+  --card-shadow-2xl:
+    0 25px 50px -12px rgb(0 0 0 / 0.25);
 
+  /* Gradient Overlay (for hover effects) */
+  --card-gradient-subtle: linear-gradient(
+    135deg,
+    rgb(0 102 255 / 0.03) 0%,
+    transparent 50%
+  );
+
+  /* Content spacing with 8px grid system */
+  --card-header-padding: var(--space-internal-24, 1.5rem);
+  --card-content-padding: var(--space-internal-24, 1.5rem);
+  --card-footer-padding: var(--space-internal-24, 1.5rem);
+  --card-container-shape: 12px; /* Larger radius for modern feel */
+
+  /* Layout Structure */
   display: flex;
   position: relative;
   min-width: 0;
   max-width: 37.5rem; /* Default 600px max width for readability */
   flex-direction: column;
+
+  /* Visual Design */
   border-radius: var(--card-container-shape);
   background-color: var(--card-container-color);
+
+  /* Typography & Content */
   text-decoration: none;
   overflow-wrap: break-word;
   color: inherit;
+
+  /* Smooth Transitions with Elastic Easing */
   transition:
-    box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Spring bounce */
+
+  /* Accessibility */
+  overflow: hidden; /* Prevent content overflow beyond border-radius */
 }
 
-/* Card Variants */
+/* Card Variants - Enhanced Visual Hierarchy */
 
 .outlined {
-  border: var(--card-outline-width) solid var(--color-primary);
-  box-shadow: var(--card-container-elevation-0);
+  border: var(--card-outline-width) solid var(--card-outline-color);
+  box-shadow: none;
+  background-color: var(--card-container-color);
+}
+
+.outlined::before {
+  /* Subtle gradient overlay for depth */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--card-gradient-subtle);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.outlined.hoverable:hover::before {
+  opacity: 1;
 }
 
 .filled {
   border: none;
-  background-color: var(--color-light-bg, #f9f9f9);
-  box-shadow: var(--card-container-elevation-0);
+  background-color: var(--card-filled-bg);
+  box-shadow: var(--card-shadow-sm);
+  position: relative;
+}
+
+.filled::after {
+  /* Inner glow effect */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.05);
+  pointer-events: none;
 }
 
 .elevated {
   border: none;
   background-color: var(--card-container-color);
-  box-shadow: var(--card-container-elevation-1);
+  box-shadow: var(--card-shadow-md);
+  position: relative;
 }
 
-/* Hover States */
+.elevated::before {
+  /* Colored top border accent */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--home-gradient, var(--color-primary));
+  border-radius: var(--card-container-shape) var(--card-container-shape) 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.elevated.hoverable:hover::before {
+  opacity: 1;
+}
+
+/* Hover States - Enhanced Micro-interactions */
 
 .hoverable:hover {
   cursor: pointer;
 }
 
 .outlined.hoverable:hover {
-  box-shadow: var(--card-container-elevation-1);
+  /* Lift effect with subtle shadow */
+  box-shadow: var(--card-shadow-lg);
+  transform: translateY(-4px) scale(1.01);
+  border-color: var(--accent-purple, var(--color-primary));
 }
 
 .filled.hoverable:hover {
-  box-shadow: var(--card-container-elevation-1);
+  /* Elevation increase */
+  box-shadow: var(--card-shadow-md);
+  transform: translateY(-2px);
+  background-color: var(--color-white);
 }
 
 .elevated.hoverable:hover {
-  box-shadow: var(--card-container-elevation-2);
+  /* Dramatic lift with larger shadow */
+  box-shadow: var(--card-shadow-xl);
+  transform: translateY(-6px) scale(1.01);
 }
 
-/* Card Layout Structure */
+/* Active State (pressed) */
+.hoverable:active {
+  transform: translateY(-1px) scale(0.99);
+  transition-duration: 0.1s;
+}
+
+/* Card Layout Structure - Improved Spacing Rhythm */
 
 .cardHeader {
   padding: var(--card-header-padding);
+  /* Subtle bottom border for header separation */
+  border-bottom: 1px solid rgb(0 0 0 / 0.05);
+}
+
+/* Header without content below doesn't need border */
+.cardHeader:last-child {
+  border-bottom: none;
 }
 
 .cardContent {
   padding: var(--card-content-padding);
   flex: 1;
+  /* Optimal line height for readability */
+  line-height: var(--line-height-relaxed, 1.625);
 }
 
 .cardFooter {
   padding: var(--card-footer-padding);
+  /* Top border for footer separation */
+  border-top: 1px solid rgb(0 0 0 / 0.05);
+  background: rgb(0 0 0 / 0.01); /* Subtle background differentiation */
 }
 
 .cardActions {
@@ -177,6 +272,9 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-primary);
+  font-weight: 600; /* Semibold for emphasis */
+  font-size: 0.75rem; /* Smaller, compact size */
+  margin-bottom: 0.5rem; /* Spacing before title */
 }
 
 .extra {
@@ -255,22 +353,23 @@
   display: block;
   block-size: 120px;
   inline-size: 100%;
-  border-radius: var(--radius-m);
+  border-radius: 8px;
+  /* Modern gradient shimmer effect */
   background: linear-gradient(
     90deg,
-    rgb(0 0 0 / 8%),
-    rgb(0 0 0 / 3%),
-    rgb(0 0 0 / 8%)
+    rgb(0 0 0 / 0.04) 0%,
+    rgb(0 0 0 / 0.08) 40%,
+    rgb(0 0 0 / 0.04) 80%,
+    rgb(0 0 0 / 0.04) 100%
   );
   background-size: 200% 100%;
-  animation: skeleton-pulse 1.4s ease-in-out infinite;
+  animation: skeleton-shimmer 1.8s ease-in-out infinite;
 }
 
-@keyframes skeleton-pulse {
+@keyframes skeleton-shimmer {
   0% {
     background-position: 200% 0;
   }
-
   100% {
     background-position: -200% 0;
   }
@@ -292,11 +391,15 @@
   transform: translateY(1px);
 }
 
-/* Focus States */
+/* Focus States - Enhanced Accessibility */
 
 .card:focus-visible {
   outline: 3px solid var(--color-primary);
-  outline-offset: 2px;
+  outline-offset: 4px; /* Larger offset for better visibility */
+  /* Subtle glow effect */
+  box-shadow:
+    var(--card-shadow-lg),
+    0 0 0 4px rgb(0 102 204 / 0.1);
 }
 
 /* Size Variants */
@@ -376,6 +479,35 @@
 .unbordered {
   border: none;
   box-shadow: none;
+}
+
+/* Advanced Variant: Glassmorphism (Frosted Glass Effect) */
+/* Usage: Add custom className "glass" to Card component */
+.card.glass {
+  background: rgb(255 255 255 / 0.7);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 0.3);
+  box-shadow:
+    var(--card-shadow-md),
+    inset 0 1px 1px rgb(255 255 255 / 0.5);
+}
+
+.card.glass:hover {
+  background: rgb(255 255 255 / 0.85);
+  border-color: rgb(255 255 255 / 0.5);
+  box-shadow: var(--card-shadow-xl);
+}
+
+/* Dark variant for glassmorphism */
+[data-theme="dark"] .card.glass {
+  background: rgb(0 0 0 / 0.4);
+  border-color: rgb(255 255 255 / 0.1);
+}
+
+[data-theme="dark"] .card.glass:hover {
+  background: rgb(0 0 0 / 0.5);
+  border-color: rgb(255 255 255 / 0.2);
 }
 
 /* Responsive Design */
