@@ -10,7 +10,11 @@ import styles from "./HighlightSection.module.css";
 /**
  * Background variant for the section
  */
-export type HighlightSectionVariant = "gradient" | "pattern" | "solid";
+export type HighlightSectionVariant =
+  | "gradient"
+  | "pattern"
+  | "dots"
+  | "solid";
 
 /**
  * Size variants for spacing
@@ -71,7 +75,7 @@ export interface HighlightSectionProps {
  *
  * @remarks
  * - Uses design system Title, Text, and Button components
- * - Supports three background variants: gradient, pattern, solid
+ * - Supports four background variants: gradient, pattern, dots, solid
  * - Three size options for flexible layouts
  * - Fully responsive with mobile-first approach
  * - Theme-aware styling (Light, Dark, HCW, HCB)
@@ -105,7 +109,9 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
     >
       <div className={styles.background} aria-hidden="true">
         <div className={styles.backgroundBase} />
-        {variant === "pattern" && <div className={styles.backgroundPattern} />}
+        {(variant === "pattern" || variant === "dots") && (
+          <div className={styles.backgroundPattern} />
+        )}
       </div>
       <div className={styles.border} aria-hidden="true" />
       <div className={styles.container}>
@@ -140,15 +146,21 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
           </Text>
           {cta && (
             <div className={styles.ctaWrapper}>
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={cta.onClick}
-                href={cta.href}
-                target={cta.target}
-              >
-                {cta.label}
-              </Button>
+              {cta.href ? (
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={cta.onClick}
+                  href={cta.href}
+                  target={cta.target}
+                >
+                  {cta.label}
+                </Button>
+              ) : (
+                <Button variant="primary" size="lg" onClick={cta.onClick}>
+                  {cta.label}
+                </Button>
+              )}
             </div>
           )}
         </div>

@@ -29,9 +29,19 @@
   background-color: #ddf;
 }
 
+.dots .backgroundBase {
+  background-color: #ddf;
+}
+
 .backgroundPattern {
   position: absolute;
   inset: 0;
+  background-position: top left;
+  background-repeat: repeat;
+  opacity: 0.2;
+}
+
+.pattern .backgroundPattern {
   background-image: repeating-linear-gradient(
       0deg,
       var(--color-primary) 0px,
@@ -45,9 +55,15 @@
       transparent 8px
     );
   background-size: 8px 8px;
-  background-position: top left;
-  background-repeat: repeat;
-  opacity: 0.2;
+}
+
+.dots .backgroundPattern {
+  background-image: radial-gradient(
+    circle,
+    var(--color-primary) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
 }
 
 /* Solid variant */
@@ -195,7 +211,8 @@
   background: linear-gradient(135deg, #1a2332 0%, #2a3342 100%);
 }
 
-.themeDark .pattern .backgroundBase {
+.themeDark .pattern .backgroundBase,
+.themeDark .dots .backgroundBase {
   background-color: #1a2332;
 }
 
@@ -210,6 +227,7 @@
 
 .themeHCW .gradient .backgroundBase,
 .themeHCW .pattern .backgroundBase,
+.themeHCW .dots .backgroundBase,
 .themeHCW .solid .backgroundBase {
   background-color: var(--main-body-background-color);
 }
@@ -225,6 +243,7 @@
 
 .themeHCB .gradient .backgroundBase,
 .themeHCB .pattern .backgroundBase,
+.themeHCB .dots .backgroundBase,
 .themeHCB .solid .backgroundBase {
   background-color: var(--main-body-background-color);
 }
