@@ -923,5 +923,8 @@
   "storyPhoneInputLabel": "Phone Number",
   "storyPhoneInputPlaceholder": "Enter your phone number",
   "storyPhoneInputHelperText": "Include country code (e.g., +358 for Finland)",
-  "storyPhoneInputError": "Invalid phone number format"
+  "storyPhoneInputError": "Invalid phone number format",
+  "createSection": {
+    "ariaLabel": "Call to action section"
+  }
 }

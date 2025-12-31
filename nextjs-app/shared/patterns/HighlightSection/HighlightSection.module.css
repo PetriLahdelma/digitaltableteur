@@ -1,0 +1,246 @@
+/* HighlightSection Component Styles */
+
+.section {
+  position: relative;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+/* Background layers */
+.background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.backgroundBase {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-light-bg);
+}
+
+/* Gradient variant */
+.gradient .backgroundBase {
+  background: linear-gradient(135deg, #ddf 0%, #eef 100%);
+}
+
+/* Pattern variant */
+.pattern .backgroundBase {
+  background-color: #ddf;
+}
+
+.backgroundPattern {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+      0deg,
+      var(--color-primary) 0px,
+      transparent 1px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--color-primary) 0px,
+      transparent 1px,
+      transparent 8px
+    );
+  background-size: 8px 8px;
+  background-position: top left;
+  background-repeat: repeat;
+  opacity: 0.2;
+}
+
+/* Solid variant */
+.solid .backgroundBase {
+  background-color: var(--color-light-bg);
+}
+
+/* Border decoration */
+.border {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-primary);
+  pointer-events: none;
+}
+
+/* Container for content */
+.container {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  max-inline-size: var(--container-lg);
+  margin-inline: auto;
+}
+
+/* Content wrapper */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-layout-32);
+  padding-block: var(--space-layout-56, 3.5rem);
+  padding-inline: var(--space-layout-40);
+}
+
+/* Size variants */
+.compact .content {
+  gap: var(--space-layout-24);
+  padding-block: var(--space-layout-32);
+  padding-inline: var(--space-layout-16);
+}
+
+.comfortable .content {
+  gap: var(--space-layout-32);
+  padding-block: var(--space-layout-56, 3.5rem);
+  padding-inline: var(--space-layout-40);
+}
+
+.spacious .content {
+  gap: var(--space-layout-48);
+  padding-block: var(--space-layout-64);
+  padding-inline: var(--space-layout-32);
+}
+
+/* Overline text */
+.overline {
+  display: block;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* Title */
+.title {
+  max-inline-size: 820px;
+  color: var(--color-title);
+  margin-block-start: 0;
+}
+
+/* Description */
+.description {
+  max-inline-size: 760px;
+  color: var(--color-text);
+}
+
+/* CTA wrapper */
+.ctaWrapper {
+  display: flex;
+  align-items: center;
+  margin-block-start: var(--space-layout-16);
+}
+
+/* Responsive breakpoints - mobile-first */
+
+/* Tablet (768px+) */
+@media (width >= 768px) {
+  .content {
+    padding-block: var(--space-layout-56, 3.5rem);
+    padding-inline: var(--space-layout-40);
+  }
+
+  .compact .content {
+    padding-block: var(--space-layout-40);
+    padding-inline: var(--space-layout-24);
+  }
+
+  .spacious .content {
+    padding-block: var(--space-layout-80);
+    padding-inline: var(--space-layout-48);
+  }
+
+  .title {
+    max-inline-size: 900px;
+  }
+
+  .description {
+    max-inline-size: 800px;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (width >= 1024px) {
+  .content {
+    gap: var(--space-layout-40);
+    padding-block: var(--space-layout-64);
+    padding-inline: var(--space-layout-48);
+  }
+
+  .compact .content {
+    gap: var(--space-layout-32);
+    padding-block: var(--space-layout-48);
+    padding-inline: var(--space-layout-32);
+  }
+
+  .spacious .content {
+    gap: var(--space-layout-64);
+    padding-block: var(--space-layout-96);
+    padding-inline: var(--space-layout-64);
+  }
+}
+
+/* Wide screens (1440px+) */
+@media (width >= 1440px) {
+  .spacious .content {
+    padding-inline: var(--space-layout-80);
+  }
+}
+
+/* Theme support - Dark mode */
+.themeDark .backgroundBase {
+  background-color: var(--color-light-bg);
+}
+
+.themeDark .gradient .backgroundBase {
+  background: linear-gradient(135deg, #1a2332 0%, #2a3342 100%);
+}
+
+.themeDark .pattern .backgroundBase {
+  background-color: #1a2332;
+}
+
+.themeDark .solid .backgroundBase {
+  background-color: var(--color-light-bg);
+}
+
+/* Theme support - High Contrast White */
+.themeHCW .backgroundBase {
+  background-color: var(--main-body-background-color);
+}
+
+.themeHCW .gradient .backgroundBase,
+.themeHCW .pattern .backgroundBase,
+.themeHCW .solid .backgroundBase {
+  background-color: var(--main-body-background-color);
+}
+
+.themeHCW .border {
+  border-width: 2px;
+}
+
+/* Theme support - High Contrast Black */
+.themeHCB .backgroundBase {
+  background-color: var(--main-body-background-color);
+}
+
+.themeHCB .gradient .backgroundBase,
+.themeHCB .pattern .backgroundBase,
+.themeHCB .solid .backgroundBase {
+  background-color: var(--main-body-background-color);
+}
+
+.themeHCB .border {
+  border-width: 2px;
+}
+
+/* Print styles */
+@media print {
+  .background,
+  .border {
+    display: none;
+  }
+
+  .section {
+    border: 1px solid var(--color-black);
+  }
+}
