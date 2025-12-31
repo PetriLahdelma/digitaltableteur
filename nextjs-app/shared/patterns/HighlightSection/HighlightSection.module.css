@@ -4,6 +4,11 @@
   position: relative;
   inline-size: 100%;
   block-size: auto;
+  --highlight-bg: var(--color-light-bg);
+  --highlight-gradient-start: #ddf;
+  --highlight-gradient-end: #eef;
+  --highlight-pattern-opacity: 0.2;
+  --highlight-border-width: 2px;
 }
 
 /* Background layers */
@@ -16,21 +21,25 @@
 .backgroundBase {
   position: absolute;
   inset: 0;
-  background-color: var(--color-light-bg);
+  background-color: var(--highlight-bg);
 }
 
 /* Gradient variant */
 .gradient .backgroundBase {
-  background: linear-gradient(135deg, #ddf 0%, #eef 100%);
+  background: linear-gradient(
+    135deg,
+    var(--highlight-gradient-start) 0%,
+    var(--highlight-gradient-end) 100%
+  );
 }
 
 /* Pattern variant */
 .pattern .backgroundBase {
-  background-color: #ddf;
+  background-color: var(--highlight-gradient-start);
 }
 
 .dots .backgroundBase {
-  background-color: #ddf;
+  background-color: var(--highlight-gradient-start);
 }
 
 .backgroundPattern {
@@ -38,7 +47,7 @@
   inset: 0;
   background-position: top left;
   background-repeat: repeat;
-  opacity: 0.2;
+  opacity: var(--highlight-pattern-opacity);
 }
 
 .pattern .backgroundPattern {
@@ -76,7 +85,7 @@
 .border {
   position: absolute;
   inset: 0;
-  border: 2px solid var(--color-primary);
+  border: var(--highlight-border-width) solid var(--color-primary);
   pointer-events: none;
 }
 
@@ -219,60 +228,70 @@
 
 /* Theme support - Dark mode */
 :global(.themeDark) .backgroundBase {
-  background-color: #0b0d12;
+  --highlight-bg: #0b0d12;
+  --highlight-gradient-start: #0b0d12;
+  --highlight-gradient-end: #1a1f2b;
 }
 
 :global(.themeDark) .gradient .backgroundBase {
-  background: linear-gradient(135deg, #0b0d12 0%, #1a1f2b 100%);
+  background: linear-gradient(
+    135deg,
+    var(--highlight-gradient-start) 0%,
+    var(--highlight-gradient-end) 100%
+  );
 }
 
 :global(.themeDark) .pattern .backgroundBase,
 :global(.themeDark) .dots .backgroundBase {
-  background-color: #0b0d12;
+  background-color: var(--highlight-bg);
 }
 
 :global(.themeDark) .solid .backgroundBase {
-  background-color: #0b0d12;
+  background-color: var(--highlight-bg);
 }
 
 :global(.themeDark) .backgroundPattern {
-  opacity: 0.12;
+  --highlight-pattern-opacity: 0.12;
 }
 
 /* Theme support - High Contrast White */
 :global(.themeHCW) .backgroundBase {
-  background-color: var(--main-body-background-color);
+  --highlight-bg: var(--main-body-background-color);
+  --highlight-gradient-start: var(--main-body-background-color);
+  --highlight-gradient-end: var(--main-body-background-color);
 }
 
 :global(.themeHCW) .gradient .backgroundBase,
 :global(.themeHCW) .pattern .backgroundBase,
 :global(.themeHCW) .dots .backgroundBase,
 :global(.themeHCW) .solid .backgroundBase {
-  background-color: var(--main-body-background-color);
+  background-color: var(--highlight-bg);
 }
 
 :global(.themeHCW) .border {
-  border-width: 2px;
+  --highlight-border-width: 2px;
 }
 
 /* Theme support - High Contrast Black */
 :global(.themeHCB) .backgroundBase {
-  background-color: #000;
+  --highlight-bg: #000;
+  --highlight-gradient-start: #000;
+  --highlight-gradient-end: #000;
 }
 
 :global(.themeHCB) .gradient .backgroundBase,
 :global(.themeHCB) .pattern .backgroundBase,
 :global(.themeHCB) .dots .backgroundBase,
 :global(.themeHCB) .solid .backgroundBase {
-  background-color: #000;
+  background-color: var(--highlight-bg);
 }
 
 :global(.themeHCB) .border {
-  border-width: 2px;
+  --highlight-border-width: 2px;
 }
 
 :global(.themeHCB) .backgroundPattern {
-  opacity: 0.08;
+  --highlight-pattern-opacity: 0.08;
 }
 
 /* Print styles */
