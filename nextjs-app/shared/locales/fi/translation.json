@@ -907,5 +907,8 @@
   "storyPhoneInputLabel": "Puhelinnumero",
   "storyPhoneInputPlaceholder": "Syötä puhelinnumerosi",
   "storyPhoneInputHelperText": "Sisällytä maakoodi (esim. +358 Suomelle)",
-  "storyPhoneInputError": "Virheellinen puhelinnumeron muoto"
+  "storyPhoneInputError": "Virheellinen puhelinnumeron muoto",
+  "createSection": {
+    "ariaLabel": "Toimintakehotusosio"
+  }
 }

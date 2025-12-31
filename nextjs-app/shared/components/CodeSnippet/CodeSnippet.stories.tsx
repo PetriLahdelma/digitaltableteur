@@ -11,7 +11,6 @@ import {
 } from "@storybook/addon-docs/blocks";
 import CodeSnippet from "@dt/CodeSnippet";
 import Text from "@dt/Text";
-import { within, userEvent } from "@storybook/testing-library";
 import schema from "./schema.json";
 
 const sampleTs = `import { createGatewayProvider } from "@ai-sdk/gateway";
@@ -122,11 +121,6 @@ export const Single: Story = {
     language: "bash",
     showLineNumbers: false,
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const copyButton = canvas.getByRole("button", { name: /copy/i });
-    await userEvent.click(copyButton);
-  },
 };
 
 export const Multi: Story = {
@@ -134,22 +128,12 @@ export const Multi: Story = {
     variant: "multi",
     language: "typescript",
   },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const copyButton = canvas.getByRole("button", { name: /copy/i });
-    await userEvent.click(copyButton);
-  },
 };
 
 export const Typescript: Story = {
   args: {
     variant: "multi",
     language: "typescript",
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const copyButton = canvas.getByRole("button", { name: /copy/i });
-    await userEvent.click(copyButton);
   },
 };
 
@@ -161,11 +145,6 @@ export const Python: Story = {
     return f"Hello, {name}"
 
 print(greet("world"))`,
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const copyButton = canvas.getByRole("button", { name: /copy/i });
-    await userEvent.click(copyButton);
   },
 };
 
