@@ -144,7 +144,7 @@
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
     "stylelint-declaration-strict-value": "^1.10.11",
-    "stylelint-order": "^7.0.0",
+    "stylelint-order": "^7.0.1",
     "typescript": "^5.9.3",
     "vite": "^6.4.1",
     "vitest": "^4.0.16",
