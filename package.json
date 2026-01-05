@@ -74,7 +74,7 @@
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.22.0",
     "@sentry/nextjs": "^10.31.0",
-    "@storybook/addon-vitest": "^10.1.10",
+    "@storybook/addon-vitest": "^10.1.11",
     "@swc/helpers": "^0.5.18",
     "@vitest/browser-playwright": "^4.0.16",
     "ai": "^5.0.115",
