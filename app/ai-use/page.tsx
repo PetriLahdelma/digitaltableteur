@@ -11,12 +11,22 @@ export const metadata: Metadata = {
     description:
       "Discover how Digitaltableteur uses AI-assisted tools responsibly, the safeguards we apply, and your rights under GDPR and EU law. Committed to ethical AI practices.",
     type: "website",
+    siteName: "Digitaltableteur",
+    images: [
+      {
+        url: "/logo512.png",
+        width: 512,
+        height: 512,
+        alt: "Digitaltableteur Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Use & Transparency | Digitaltableteur",
     description:
       "Discover how Digitaltableteur uses AI-assisted tools responsibly, the safeguards we apply, and your rights under GDPR and EU law. Committed to ethical AI practices.",
+    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/ai-use",
