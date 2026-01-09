@@ -12,12 +12,22 @@ export const metadata: Metadata = {
     description:
       "Enterprise design system for the City of Helsinki: comprehensive user research, design process, component library development, and measurable impact across multivendor digital services. WCAG AA accessible.",
     type: "article",
+    siteName: "Digitaltableteur",
+    images: [
+      {
+        url: "/logo512.png",
+        width: 512,
+        height: 512,
+        alt: "Digitaltableteur Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Helsinki Design System Case Study | Digitaltableteur",
     description:
       "Enterprise design system for the City of Helsinki: comprehensive user research, design process, component library development, and measurable impact across multivendor digital services. WCAG AA accessible.",
+    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/work/helsinki-design-system",

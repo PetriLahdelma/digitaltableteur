@@ -11,12 +11,25 @@ export const metadata: Metadata = {
     description:
       "Digitaltableteur privacy policy. Learn how we collect, use, and protect your personal data in compliance with GDPR and EU privacy regulations.",
     type: "website",
+    siteName: "Digitaltableteur",
+    images: [
+      {
+        url: "/logo512.png",
+        width: 512,
+        height: 512,
+        alt: "Digitaltableteur Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy | Digitaltableteur",
     description:
       "Digitaltableteur privacy policy. Learn how we collect, use, and protect your personal data in compliance with GDPR and EU privacy regulations.",
+    images: ["/logo512.png"],
+  },
+  alternates: {
+    canonical: "/privacy-policy",
   },
   robots: {
     index: false,
