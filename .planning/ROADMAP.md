@@ -1,14 +1,21 @@
 # Roadmap: Security Hardening
 
+## Completed Milestones
+
+- ✅ [v1.0 Security Hardening](milestones/v1.0-security-ROADMAP.md) (Phases 1-5) — SHIPPED 2026-01-13
+
 ## Overview
 
 Systematic security hardening of the digitaltableteur portfolio site. Starting with auditing legacy routes to understand the full scope of vulnerabilities, then fixing timing attacks and adding rate limiting to authentication endpoints, hardening CORS configuration, and finally adding security tests to prevent regressions.
 
-## Domain Expertise
+## Milestones
 
-None
+- ✅ **v1.0 Security Hardening** — Phases 1-5 (shipped 2026-01-13)
 
 ## Phases
+
+<details>
+<summary>✅ v1.0 Security Hardening (Phases 1-5) — SHIPPED 2026-01-13</summary>
 
 **Phase Numbering:**
 - Integer phases (1, 2, 3): Planned milestone work
@@ -20,62 +27,39 @@ None
 - [x] **Phase 4: CORS Hardening** - Restrict wildcard CORS to specific trusted domains ✓
 - [x] **Phase 5: Security Testing** - Add tests for rate limiting and timing-safe operations ✓
 
-## Phase Details
-
 ### Phase 1: Legacy Route Audit
 **Goal**: Map all API routes in `nextjs-app/app/api/` and document which lack security features
-**Depends on**: Nothing (first phase)
-**Research**: Unlikely (internal codebase analysis)
-**Plans**: TBD
-
-Plans:
-- [x] 01-01: Audit legacy routes and document vulnerabilities ✓
+**Plans**: 1/1 complete
 
 ### Phase 2: Timing Attack Fixes
 **Goal**: Replace direct string equality with `crypto.timingSafeEqual` in password checks
-**Depends on**: Phase 1 (need to know which routes are vulnerable)
-**Research**: Unlikely (established pattern using Node.js crypto)
-**Plans**: TBD
-
-Plans:
-- [x] 02-01: Implement constant-time comparison in vulnerable routes ✓
+**Plans**: 1/1 complete
 
 ### Phase 3: Rate Limiting
 **Goal**: Add rate limiting to all authentication endpoints to prevent brute force attacks
-**Depends on**: Phase 2
-**Research**: Unlikely (existing rate limiting patterns in `app/api/`)
-**Plans**: 1
-
-Plans:
-- [x] 03-01: Add rate limiting to save-contact endpoint ✓
+**Plans**: 1/1 complete
 
 ### Phase 4: CORS Hardening
 **Goal**: Replace wildcard CORS (`*`) with specific trusted domain origins
-**Depends on**: Phase 3
-**Research**: Unlikely (standard Next.js CORS configuration)
-**Plans**: 1
-
-Plans:
-- [x] 04-01: Configure CORS for specific allowed origins ✓
+**Plans**: 1/1 complete
 
 ### Phase 5: Security Testing
 **Goal**: Add automated tests for rate limiting behavior and timing-safe password comparison
-**Depends on**: Phase 4 (all security features implemented)
-**Research**: Unlikely (existing Vitest patterns in codebase)
-**Plans**: TBD
+**Plans**: 1/1 complete
 
-Plans:
-- [x] 05-01: Create security test suite ✓
+</details>
 
 ## Progress
 
 **Execution Order:**
 Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
-| Phase | Plans Complete | Status | Completed |
-|-------|----------------|--------|-----------|
-| 1. Legacy Route Audit | 1/1 | Complete | 2026-01-13 |
-| 2. Timing Attack Fixes | 1/1 | Complete | 2026-01-13 |
-| 3. Rate Limiting | 1/1 | Complete | 2026-01-13 |
-| 4. CORS Hardening | 1/1 | Complete | 2026-01-13 |
-| 5. Security Testing | 1/1 | Complete | 2026-01-13 |
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|----------------|--------|-----------|
+| 1. Legacy Route Audit | v1.0 | 1/1 | Complete | 2026-01-13 |
+| 2. Timing Attack Fixes | v1.0 | 1/1 | Complete | 2026-01-13 |
+| 3. Rate Limiting | v1.0 | 1/1 | Complete | 2026-01-13 |
+| 4. CORS Hardening | v1.0 | 1/1 | Complete | 2026-01-13 |
+| 5. Security Testing | v1.0 | 1/1 | Complete | 2026-01-13 |
+
+**Total: 5/5 phases complete (100%)**

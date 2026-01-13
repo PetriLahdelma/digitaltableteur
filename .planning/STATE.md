@@ -2,17 +2,17 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-01-13)
+See: .planning/PROJECT.md (updated 2026-01-13 after v1.0 milestone)
 
 **Core value:** Eliminate vulnerabilities — No timing attacks, brute force protection, and security correctness across all API endpoints.
-**Current focus:** Milestone Complete — All 5 phases finished
+**Current focus:** v1.0 shipped — milestone complete
 
 ## Current Position
 
 Phase: 5 of 5 (Security Testing)
 Plan: 1 of 1 in current phase
-Status: Milestone complete
-Last activity: 2026-01-13 — Completed 05-01-PLAN.md
+Status: v1.0 milestone shipped
+Last activity: 2026-01-13 — v1.0 milestone complete
 
 Progress: ██████████ 100%
 
@@ -33,29 +33,16 @@ Progress: ██████████ 100%
 | 4. CORS Hardening | 1/1 | 3 min | 3 min |
 | 5. Security Testing | 1/1 | 4 min | 4 min |
 
-**Recent Trend:**
-- All 5 plans: 01-01 (8 min), 02-01 (3 min), 03-01 (1 min), 04-01 (3 min), 05-01 (4 min)
-- Trend: Stable (~4 min average)
+**Milestone v1.0 Summary:**
+- All 5 phases complete
+- 52 security tests added
+- All security requirements validated
 
 ## Accumulated Context
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
-
-| Phase | Decision | Rationale |
-|-------|----------|-----------|
-| 1 | Remove legacy routes (nextjs-app/app/api/) | Not deployed to production, production routes secured |
-| 1 | Phases 2-4 → verification tasks | Production routes already have security features |
-| 2 | Remove legacy routes rather than patch | Not deployed to production |
-| 2 | Use same constantTimeCompare pattern | Consistency with download-cv endpoint |
-| 3 | 3 req/15min rate limit | Matches contact route, prevents spam amplification |
-| 3 | In-memory rate limiting | Traffic doesn't justify Redis complexity |
-| 4 | Use createCorsHeaders pattern | Consistent with chat-shared.ts, single source of truth |
-| 4 | Validate origin for all responses | Security best practice, CDN caching support via Vary header |
-| 5 | Test functions directly, not HTTP endpoints | Faster, more focused security tests |
-| 5 | Use vi.useFakeTimers() for rate limit tests | Test window expiry without 15-minute waits |
+See PROJECT.md Key Decisions table for full list.
 
 ### Deferred Issues
 
@@ -63,10 +50,10 @@ None.
 
 ### Blockers/Concerns
 
-None - Milestone complete. All security hardening work finished.
+None — v1.0 milestone shipped successfully.
 
 ## Session Continuity
 
 Last session: 2026-01-13
-Stopped at: Completed 05-01-PLAN.md (Milestone complete)
+Stopped at: v1.0 milestone complete
 Resume file: None

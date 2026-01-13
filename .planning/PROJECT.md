@@ -8,27 +8,33 @@ Security hardening initiative for the digitaltableteur portfolio site. This proj
 
 **Eliminate vulnerabilities** — No timing attacks, brute force protection, and security correctness across all API endpoints. Users must trust their data is handled securely.
 
+## Current State (v1.0 Shipped)
+
+All security hardening work complete:
+- Legacy vulnerable routes removed (10 files, 1218 lines)
+- Timing-safe comparison implemented across all secret/token checks
+- Rate limiting on all authentication endpoints
+- Origin-validated CORS on all API routes
+- 52 security tests for regression prevention
+
 ## Requirements
 
 ### Validated
 
-- ✓ Rate limiting on production routes — existing (`app/api/contact/`, `app/api/download-cv/`)
-- ✓ Constant-time password comparison — existing (`app/api/download-cv/route.ts`)
-- ✓ SecurityLogger audit trails — existing (`app/lib/security-logger.ts`)
-- ✓ Input sanitization — existing (mongo-sanitize, isomorphic-dompurify)
-- ✓ Zod validation at API boundaries — existing (`app/api/chat-shared.ts`)
-- ✓ Sentry error tracking — existing (`@sentry/nextjs`)
-- ✓ Content Security Policy headers — existing (`next.config.ts`)
+- ✓ Rate limiting on production routes — v1.0
+- ✓ Constant-time password comparison — v1.0
+- ✓ SecurityLogger audit trails — existing
+- ✓ Input sanitization — existing
+- ✓ Zod validation at API boundaries — existing
+- ✓ Sentry error tracking — existing
+- ✓ Content Security Policy headers — existing
+- ✓ Remove vulnerable legacy routes — v1.0
+- ✓ Restrict CORS to known domains — v1.0
+- ✓ Security tests for rate limiting and timing-safe operations — v1.0
 
 ### Active
 
-- [ ] Remove or secure legacy `nextjs-app/app/api/` routes with timing attack vulnerabilities
-- [ ] Add constant-time comparison to any remaining vulnerable password checks
-- [ ] Add rate limiting to all authentication endpoints
-- [ ] Restrict CORS from wildcard (*) to specific trusted domains
-- [ ] Add SecurityLogger to routes missing audit trails
-- [ ] Consolidate duplicate API implementations (single source of truth)
-- [ ] Add security tests for rate limiting and timing-safe operations
+None — all security requirements validated in v1.0
 
 ### Out of Scope
 
@@ -39,23 +45,17 @@ Security hardening initiative for the digitaltableteur portfolio site. This proj
 
 ## Context
 
-**Current State (from codebase mapping):**
-- Hybrid monorepo mid-migration from Vite → Next.js 15
-- Production routes in `app/api/` have proper security
-- Legacy routes in `nextjs-app/app/api/` lack security features
-- Both `app/` and `nextjs-app/app/` contain parallel implementations with different security postures
+**Shipped v1.0 Security Hardening:**
+- 5 phases, 5 plans, ~13 tasks completed
+- 52 security tests added
+- All timing attack vectors eliminated
+- All authentication endpoints rate-limited
+- All CORS configurations hardened
 
-**Specific Vulnerabilities Identified:**
-1. `nextjs-app/app/api/download-cv/route.ts` — Direct string equality for password (timing attack)
-2. `nextjs-app/app/api/download-cv/route.ts` — No rate limiting (brute force)
-3. `nextjs-app/app/api/save-contact/route.ts` — No SecurityLogger
-4. Multiple routes — CORS set to `*` allowing any origin
-
-**Why This Matters:**
-- Timing attacks can leak password information through response time analysis
-- Missing rate limiting allows unlimited brute force attempts
-- Wildcard CORS exposes APIs to cross-origin abuse
-- Missing logging prevents security incident investigation
+**Codebase:**
+- Hybrid monorepo (Vite legacy + Next.js 15 production)
+- Production routes in `app/api/` - fully secured
+- Legacy routes in `nextjs-app/app/api/` - removed
 
 ## Constraints
 
@@ -67,9 +67,11 @@ Security hardening initiative for the digitaltableteur portfolio site. This proj
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Remove legacy routes | Production uses `app/api/`, legacy routes are unused but vulnerable | — Pending |
-| Restrict CORS to known domains | Wildcard CORS is unnecessary security risk | — Pending |
-| Keep in-memory rate limiting | Traffic doesn't justify Redis complexity | — Pending |
+| Remove legacy routes | Not deployed to production, eliminates vulnerabilities | ✓ Good |
+| Restrict CORS to known domains | Wildcard CORS is unnecessary security risk | ✓ Good |
+| Keep in-memory rate limiting | Traffic doesn't justify Redis complexity | ✓ Good |
+| Centralized CORS via chat-shared.ts | Single source of truth | ✓ Good |
+| Test functions directly | Faster, more focused security tests | ✓ Good |
 
 ---
-*Last updated: 2026-01-13 after initialization*
+*Last updated: 2026-01-13 after v1.0 milestone*
