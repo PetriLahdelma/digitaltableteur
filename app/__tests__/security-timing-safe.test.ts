@@ -18,15 +18,17 @@ import { timingSafeEqual } from "crypto";
 
 /**
  * Constant-time password comparison to prevent timing attacks.
+ * Pads both strings to the same length to avoid leaking length information.
  * Mirrors the exact implementation from download-cv/route.ts
  */
 function constantTimeCompare(a: string, b: string): boolean {
-  if (a.length !== b.length) return false;
+  const maxLen = Math.max(a.length, b.length, 1);
+  const bufA = Buffer.alloc(maxLen);
+  const bufB = Buffer.alloc(maxLen);
+  Buffer.from(a, "utf8").copy(bufA);
+  Buffer.from(b, "utf8").copy(bufB);
 
-  const bufA = Buffer.from(a, "utf8");
-  const bufB = Buffer.from(b, "utf8");
-
-  return timingSafeEqual(bufA, bufB);
+  return timingSafeEqual(bufA, bufB) && a.length === b.length;
 }
 
 describe("Security: Timing-Safe Password Comparison", () => {

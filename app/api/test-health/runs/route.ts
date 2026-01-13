@@ -32,13 +32,15 @@ const HEALTH_TOKEN = process.env.HEALTH_DASHBOARD_TOKEN;
 
 /**
  * Constant-time string comparison to prevent timing attacks.
- * Attackers cannot use response time analysis to progressively guess tokens.
+ * Pads both strings to the same length to avoid leaking length information.
  */
 function constantTimeCompare(a: string, b: string): boolean {
-  if (a.length !== b.length) return false;
-  const bufA = Buffer.from(a, "utf8");
-  const bufB = Buffer.from(b, "utf8");
-  return timingSafeEqual(bufA, bufB);
+  const maxLen = Math.max(a.length, b.length, 1);
+  const bufA = Buffer.alloc(maxLen);
+  const bufB = Buffer.alloc(maxLen);
+  Buffer.from(a, "utf8").copy(bufA);
+  Buffer.from(b, "utf8").copy(bufB);
+  return timingSafeEqual(bufA, bufB) && a.length === b.length;
 }
 
 const defaultCoverageSummary = defaultMetrics.coverage?.summary ?? {
@@ -154,14 +156,14 @@ export async function POST(request: NextRequest) {
   } catch {
     return NextResponse.json(
       { error: "Invalid JSON payload" },
-      { status: 400 },
+      { status: 400, headers: corsHeaders },
     );
   }
 
   if (!payload || typeof payload !== "object") {
     return NextResponse.json(
       { error: "Missing JSON payload" },
-      { status: 400 },
+      { status: 400, headers: corsHeaders },
     );
   }
 

@@ -99,10 +99,9 @@
 ## Test Coverage Gaps
 
 **API route security features:**
-- What's not tested: Rate limiting, constant-time comparison in `app/api/download-cv/route.ts`
-- Risk: Security regressions could go unnoticed
-- Priority: High
-- Difficulty to test: Need to mock time and multiple request sequences
+- ✅ **Now tested:** Rate limiting and constant-time comparison tests added in `app/__tests__/security-rate-limiting.test.ts` (15 test cases) and `app/__tests__/security-timing-safe.test.ts` (9 test cases)
+- Covers: Window expiry, independent buckets, IPv6, rapid requests, special characters, whitespace handling
+- Uses fake timers for deterministic time-based testing
 
 **Complex hook interactions:**
 - What's not tested: Multiple useEffect hooks in ChatWidget (localStorage, greeting, focus)

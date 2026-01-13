@@ -17,8 +17,11 @@ export const allowedOrigins = [
 // - 10.0.0.0/8: 10.x.x.x
 // - 172.16.0.0/12: 172.16.x.x - 172.31.x.x
 // - 192.168.0.0/16: 192.168.x.x
-const privateNetworkPattern =
-  /^(10(\.\d{1,3}){3}|172\.(1[6-9]|2[0-9]|3[0-1])(\.\d{1,3}){2}|192\.168(\.\d{1,3}){2})$/;
+// Valid octet: 0-255 -> (25[0-5]|2[0-4]\d|[01]?\d\d?)
+const octet = "(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)";
+const privateNetworkPattern = new RegExp(
+  `^(10(\\.${octet}){3}|172\\.(1[6-9]|2[0-9]|3[0-1])(\\.${octet}){2}|192\\.168(\\.${octet}){2})$`,
+);
 
 const isDevOrigin = (origin: string | null | undefined) => {
   if (!origin) return false;
@@ -52,7 +55,7 @@ export const resolveAllowedOrigin = (
   return allowedOrigins[0];
 };
 
-const ACCESS_CONTROL_ALLOW_METHODS = "POST, OPTIONS";
+const ACCESS_CONTROL_ALLOW_METHODS = "GET, POST, OPTIONS";
 const ACCESS_CONTROL_ALLOW_HEADERS =
   "Content-Type, Authorization, Accept, Origin, X-Requested-With";
 const ACCESS_CONTROL_MAX_AGE = "86400";
@@ -117,12 +120,24 @@ export const createCorsHeaders = (origin: string | null | undefined) => {
   } satisfies Record<string, string>;
 };
 
-export const validateMessages: (
+/**
+ * Validates that messages is an array of message objects.
+ * Each message must have a content property (string or array).
+ * Uses Record<string, unknown>[] to remain compatible with downstream casts.
+ */
+export function validateMessages(
   messages: unknown,
-) => asserts messages is any[] = (
-  messages: unknown,
-): asserts messages is any[] => {
+): asserts messages is Record<string, unknown>[] {
   if (!Array.isArray(messages)) {
     throw new ChatApiError(400, "messages must be an array");
   }
-};
+  for (const msg of messages) {
+    if (typeof msg !== "object" || msg === null) {
+      throw new ChatApiError(400, "Invalid message format");
+    }
+    const content = (msg as Record<string, unknown>).content;
+    if (typeof content !== "string" && !Array.isArray(content)) {
+      throw new ChatApiError(400, "Invalid message format");
+    }
+  }
+}
