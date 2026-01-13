@@ -13,8 +13,12 @@ export const allowedOrigins = [
   "http://192.168.1.108:6006",
 ];
 
+// Private network IP patterns (RFC 1918):
+// - 10.0.0.0/8: 10.x.x.x
+// - 172.16.0.0/12: 172.16.x.x - 172.31.x.x
+// - 192.168.0.0/16: 192.168.x.x
 const privateNetworkPattern =
-  /^(19[2]\.168|10\.|172\.(1[6-9]|2[0-9]|3[0-1]))(\.\d{1,3}){2}$/;
+  /^(10(\.\d{1,3}){3}|172\.(1[6-9]|2[0-9]|3[0-1])(\.\d{1,3}){2}|192\.168(\.\d{1,3}){2})$/;
 
 const isDevOrigin = (origin: string | null | undefined) => {
   if (!origin) return false;
