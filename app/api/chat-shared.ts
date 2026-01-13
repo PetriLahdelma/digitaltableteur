@@ -122,7 +122,7 @@ export const createCorsHeaders = (origin: string | null | undefined) => {
 
 /**
  * Validates that messages is an array of message objects.
- * Each message must have a content property (string or array).
+ * Each message must have either content (string/array) or parts (array).
  * Uses Record<string, unknown>[] to remain compatible with downstream casts.
  */
 export function validateMessages(
@@ -135,8 +135,11 @@ export function validateMessages(
     if (typeof msg !== "object" || msg === null) {
       throw new ChatApiError(400, "Invalid message format");
     }
-    const content = (msg as Record<string, unknown>).content;
-    if (typeof content !== "string" && !Array.isArray(content)) {
+    const record = msg as Record<string, unknown>;
+    const hasContent =
+      typeof record.content === "string" || Array.isArray(record.content);
+    const hasParts = Array.isArray(record.parts);
+    if (!hasContent && !hasParts) {
       throw new ChatApiError(400, "Invalid message format");
     }
   }
