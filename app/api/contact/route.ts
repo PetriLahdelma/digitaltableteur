@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import sanitize from "mongo-sanitize";
 import { getDatabase } from "../../lib/mongodb";
 import { z } from "zod";
+import { createCorsHeaders } from "../chat-shared";
 
 // Simple in-memory rate limiter (best-effort; serverless cold starts reset this)
 // Security audit recommendation: 3 submissions per 15 minutes to prevent spam amplification
@@ -171,13 +172,10 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function OPTIONS() {
+export async function OPTIONS(request: Request) {
+  const corsHeaders = createCorsHeaders(request.headers.get("origin"));
   return new NextResponse(null, {
     status: 204,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
+    headers: corsHeaders,
   });
 }
