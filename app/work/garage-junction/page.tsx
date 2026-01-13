@@ -12,12 +12,22 @@ export const metadata: Metadata = {
     description:
       "Complete branding, event identity design, and promotional campaign for Garage Junction music events at Merikerho, Helsinki. Event design and marketing execution.",
     type: "article",
+    siteName: "Digitaltableteur",
+    images: [
+      {
+        url: "/logo512.png",
+        width: 512,
+        height: 512,
+        alt: "Digitaltableteur Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Garage Junction Case Study | Digitaltableteur",
     description:
       "Complete branding, event identity design, and promotional campaign for Garage Junction music events at Merikerho, Helsinki. Event design and marketing execution.",
+    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/work/garage-junction",

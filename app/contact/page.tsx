@@ -10,12 +10,22 @@ export const metadata: Metadata = {
     description:
       "Get in touch with Digitaltableteur for design systems consulting, AI-powered DesignOps solutions, component library development, and design automation projects.",
     type: "website",
+    siteName: "Digitaltableteur",
+    images: [
+      {
+        url: "/logo512.png",
+        width: 512,
+        height: 512,
+        alt: "Digitaltableteur Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact | Digitaltableteur",
     description:
       "Get in touch with Digitaltableteur for design systems consulting, AI-powered DesignOps solutions, component library development, and design automation projects.",
+    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/contact",
