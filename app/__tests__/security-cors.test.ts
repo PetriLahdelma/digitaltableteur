@@ -172,7 +172,7 @@ describe("Security: CORS Origin Validation", () => {
       expect(headers["Access-Control-Allow-Origin"]).toBe(
         "https://digitaltableteur.com",
       );
-      expect(headers["Access-Control-Allow-Methods"]).toBe("POST, OPTIONS");
+      expect(headers["Access-Control-Allow-Methods"]).toBe("GET, POST, OPTIONS");
       expect(headers["Access-Control-Allow-Headers"]).toContain("Content-Type");
       expect(headers["Access-Control-Max-Age"]).toBe("86400");
       expect(headers["Vary"]).toBe("Origin");
@@ -205,7 +205,7 @@ describe("Security: CORS Origin Validation", () => {
     it("includes correct methods", () => {
       const headers = createCorsHeaders("https://digitaltableteur.com");
 
-      expect(headers["Access-Control-Allow-Methods"]).toBe("POST, OPTIONS");
+      expect(headers["Access-Control-Allow-Methods"]).toBe("GET, POST, OPTIONS");
     });
 
     it("includes correct max-age (24 hours)", () => {
