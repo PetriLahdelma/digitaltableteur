@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { randomUUID } from "node:crypto";
+import { randomUUID, timingSafeEqual } from "node:crypto";
 import { saveRun, type RunRecord } from "../db";
 // Import default metrics from the root docs directory
 import defaultMetrics from "@/docs/test-metrics.json";
@@ -28,6 +28,17 @@ type VitestReport = {
 };
 
 const HEALTH_TOKEN = process.env.HEALTH_DASHBOARD_TOKEN;
+
+/**
+ * Constant-time string comparison to prevent timing attacks.
+ * Attackers cannot use response time analysis to progressively guess tokens.
+ */
+function constantTimeCompare(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  const bufA = Buffer.from(a, "utf8");
+  const bufB = Buffer.from(b, "utf8");
+  return timingSafeEqual(bufA, bufB);
+}
 
 const defaultCoverageSummary = defaultMetrics.coverage?.summary ?? {
   statements: 0,
@@ -131,7 +142,7 @@ export async function OPTIONS() {
 // POST handler for submitting test runs
 export async function POST(request: NextRequest) {
   const providedToken = request.headers.get("x-health-token");
-  if (!HEALTH_TOKEN || providedToken !== HEALTH_TOKEN) {
+  if (!HEALTH_TOKEN || !providedToken || !constantTimeCompare(providedToken, HEALTH_TOKEN)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
