@@ -14,7 +14,7 @@ None
 - Integer phases (1, 2, 3): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 1: Legacy Route Audit** - Identify all vulnerable legacy routes and document findings
+- [x] **Phase 1: Legacy Route Audit** - Identify all vulnerable legacy routes and document findings ✓
 - [ ] **Phase 2: Timing Attack Fixes** - Add constant-time password comparison to vulnerable endpoints
 - [ ] **Phase 3: Rate Limiting** - Add brute force protection to authentication endpoints
 - [ ] **Phase 4: CORS Hardening** - Restrict wildcard CORS to specific trusted domains
@@ -29,7 +29,7 @@ None
 **Plans**: TBD
 
 Plans:
-- [ ] 01-01: Audit legacy routes and document vulnerabilities
+- [x] 01-01: Audit legacy routes and document vulnerabilities ✓
 
 ### Phase 2: Timing Attack Fixes
 **Goal**: Replace direct string equality with `crypto.timingSafeEqual` in password checks
@@ -74,7 +74,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Legacy Route Audit | 0/1 | Not started | - |
+| 1. Legacy Route Audit | 1/1 | Complete | 2026-01-13 |
 | 2. Timing Attack Fixes | 0/1 | Not started | - |
 | 3. Rate Limiting | 0/1 | Not started | - |
 | 4. CORS Hardening | 0/1 | Not started | - |
