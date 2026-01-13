@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-01-13)
 
 **Core value:** Eliminate vulnerabilities — No timing attacks, brute force protection, and security correctness across all API endpoints.
-**Current focus:** Phase 3 — Rate Limiting (Complete)
+**Current focus:** Phase 4 — CORS Hardening (Complete)
 
 ## Current Position
 
-Phase: 3 of 5 (Rate Limiting)
+Phase: 4 of 5 (CORS Hardening)
 Plan: 1 of 1 in current phase
 Status: Phase complete
-Last activity: 2026-01-13 — Completed 03-01-PLAN.md
+Last activity: 2026-01-13 — Completed 04-01-PLAN.md
 
-Progress: ██████░░░░ 60%
+Progress: ████████░░ 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: 4 min
-- Total execution time: 0.20 hours
+- Total execution time: 0.25 hours
 
 **By Phase:**
 
@@ -30,10 +30,11 @@ Progress: ██████░░░░ 60%
 | 1. Legacy Route Audit | 1/1 | 8 min | 8 min |
 | 2. Timing Attack Fixes | 1/1 | 3 min | 3 min |
 | 3. Rate Limiting | 1/1 | 1 min | 1 min |
+| 4. CORS Hardening | 1/1 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (8 min), 02-01 (3 min), 03-01 (1 min)
-- Trend: Accelerating
+- Last 5 plans: 01-01 (8 min), 02-01 (3 min), 03-01 (1 min), 04-01 (3 min)
+- Trend: Stable (~3 min average)
 
 ## Accumulated Context
 
@@ -50,6 +51,8 @@ Recent decisions affecting current work:
 | 2 | Use same constantTimeCompare pattern | Consistency with download-cv endpoint |
 | 3 | 3 req/15min rate limit | Matches contact route, prevents spam amplification |
 | 3 | In-memory rate limiting | Traffic doesn't justify Redis complexity |
+| 4 | Use createCorsHeaders pattern | Consistent with chat-shared.ts, single source of truth |
+| 4 | Validate origin for all responses | Security best practice, CDN caching support via Vary header |
 
 ### Deferred Issues
 
@@ -62,5 +65,5 @@ None - Production gap (save-contact rate limiting) resolved in Phase 3.
 ## Session Continuity
 
 Last session: 2026-01-13
-Stopped at: Completed 03-01-PLAN.md (Phase 3 complete)
+Stopped at: Completed 04-01-PLAN.md (Phase 4 complete)
 Resume file: None
