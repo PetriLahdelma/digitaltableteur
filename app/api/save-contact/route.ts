@@ -7,9 +7,39 @@ import {
   getUserAgent,
 } from "../../lib/security-logger";
 
+// Simple in-memory rate limiter (best-effort; serverless cold starts reset this)
+// Security audit recommendation: 3 submissions per 15 minutes to prevent spam amplification
+const RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
+const RATE_LIMIT_MAX = 3; // requests per window per IP
+const buckets = new Map<string, { count: number; windowStart: number }>();
+
+function rateLimit(key: string): boolean {
+  const now = Date.now();
+  const bucket = buckets.get(key);
+  if (!bucket || now - bucket.windowStart > RATE_LIMIT_WINDOW_MS) {
+    buckets.set(key, { count: 1, windowStart: now });
+    return false;
+  }
+  if (bucket.count >= RATE_LIMIT_MAX) return true;
+  bucket.count += 1;
+  return false;
+}
+
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request);
   const userAgent = getUserAgent(request);
+
+  // Rate limit check FIRST - before any expensive operations (JSON parsing, DB calls)
+  if (rateLimit(ip)) {
+    SecurityLogger.logRateLimitExceeded(ip, userAgent, "/api/save-contact");
+    return NextResponse.json(
+      {
+        error:
+          "Too many contact form submissions. Please try again in 15 minutes.",
+      },
+      { status: 429, headers: { "Retry-After": "900" } },
+    );
+  }
 
   try {
     const body = await request.json();
