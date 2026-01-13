@@ -14,11 +14,11 @@ const csp = isDev
   ? [
       // Development CSP - allows Next.js dev features
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.ahrefs.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://api.resend.com wss: ws:",
+      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://api.resend.com https://*.google-analytics.com https://analytics.ahrefs.com wss: ws:",
       // Allow embedding trusted media providers in MDX (e.g. YouTube) during local dev.
       "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com https://player.vimeo.com",
       "media-src 'self' https: data:",
@@ -28,11 +28,11 @@ const csp = isDev
       // Production CSP - strict security with Next.js inline script hashes
       "default-src 'self'",
       // Allow Next.js inline scripts via hashes + trusted external scripts
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.ahrefs.com https://vercel.live",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://vercel.live https://api.resend.com wss:",
+      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://vercel.live https://api.resend.com https://*.google-analytics.com https://analytics.ahrefs.com wss:",
       // Allow Vercel preview tooling + trusted embedded media providers (MDX embeds).
       "frame-src 'self' https://vercel.live https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com https://player.vimeo.com",
       "media-src 'self' https: data:",

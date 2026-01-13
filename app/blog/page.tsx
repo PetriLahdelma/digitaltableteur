@@ -11,12 +11,22 @@ export const metadata: Metadata = {
     description:
       "Articles on design systems, component architecture, AI-powered workflows, and modern DesignOps practices. Expert insights on React, TypeScript, and Figma integration.",
     type: "website",
+    siteName: "Digitaltableteur",
+    images: [
+      {
+        url: "/logo512.png",
+        width: 512,
+        height: 512,
+        alt: "Digitaltableteur Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Blog | Digitaltableteur",
     description:
       "Articles on design systems, component architecture, AI-powered workflows, and modern DesignOps practices. Expert insights on React, TypeScript, and Figma integration.",
+    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/blog",

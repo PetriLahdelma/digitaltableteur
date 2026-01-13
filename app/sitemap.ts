@@ -12,6 +12,9 @@ const toUrl = (path: string) => `${baseUrl}${path.startsWith("/") ? path : `/${p
 export default function sitemap(): MetadataRoute.Sitemap {
   const today = new Date();
 
+  // Exclude noindex pages from sitemap:
+  // - /privacy-policy (noindex)
+  // - /cookie-policy* pages (legal pages, typically noindex)
   const staticRoutes: MetadataRoute.Sitemap = [
     "/",
     "/about",
@@ -19,12 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/work",
     "/studio",
-    "/privacy-policy",
     "/accessibility",
-    "/cookie-policy",
-    "/cookie-policy-full-en",
-    "/cookie-policy-full-fi",
-    "/cookie-policy-full-sv",
     "/blog",
   ].map((path) => ({
     url: toUrl(path),
