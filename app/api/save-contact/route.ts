@@ -6,6 +6,7 @@ import {
   getClientIp,
   getUserAgent,
 } from "../../lib/security-logger";
+import { createCorsHeaders } from "../chat-shared";
 
 // Simple in-memory rate limiter (best-effort; serverless cold starts reset this)
 // Security audit recommendation: 3 submissions per 15 minutes to prevent spam amplification
@@ -123,13 +124,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function OPTIONS() {
+export async function OPTIONS(request: Request) {
+  const corsHeaders = createCorsHeaders(request.headers.get("origin"));
   return new NextResponse(null, {
     status: 204,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
+    headers: corsHeaders,
   });
 }
