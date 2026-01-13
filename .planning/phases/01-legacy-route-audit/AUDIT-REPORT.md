@@ -234,11 +234,126 @@ async redirects() {
 
 ---
 
-## Next Steps
+## Route Usage Analysis
 
-1. **Determine if legacy routes are deployed** (Task 2)
-2. Based on deployment status, select remediation option
-3. Execute selected remediation in Phases 2-5 or update roadmap scope
+### Deployment Configuration
+
+**Finding: `nextjs-app/app/api/` routes are NOT deployed to production.**
+
+Evidence from build.log:
+```
+> nextjs-app@0.1.0 build
+> next build
+
+Route (app)                                 Size  First Load JS
+├ ƒ /api/chat                              156 B         104 kB
+├ ƒ /api/contact                           156 B         104 kB
+├ ƒ /api/download-cv                       156 B         104 kB
+├ ƒ /api/save-contact                      156 B         104 kB
+├ ƒ /api/test-health/runs                  156 B         104 kB
+├ ƒ /api/test-health/runs/latest           156 B         104 kB
+```
+
+The build uses `next.config.ts` at the project root, which maps the `app/` directory (NOT `nextjs-app/app/`). The Vercel project at root (`.vercel/project.json`) deploys from the root directory.
+
+### Codebase References
+
+**Search result: No direct references to `nextjs-app/app/api` paths found in the codebase.**
+
+```bash
+grep -r "nextjs-app/app/api" --include="*.ts" --include="*.tsx" --include="*.json" .
+# No results
+```
+
+### Production vs Legacy Route Comparison
+
+| Route | Production (`app/api/`) | Legacy (`nextjs-app/app/api/`) | Status |
+|-------|-------------------------|--------------------------------|--------|
+| `/api/download-cv` | **SECURED** (timingSafeEqual, rate limit, logging) | VULNERABLE | **Use production** |
+| `/api/contact` | **SECURED** (Zod, rate limit, mongo-sanitize) | N/A | **Use production** |
+| `/api/save-contact` | PARTIAL (sanitize, logging, no rate limit) | VULNERABLE | Production route exists at different path |
+| `/api/chat` | SECURED (CORS allowlist) | SECURED (same chat-shared.ts) | Both similar |
+| `/api/test-health/runs` | SECURED (in root app/) | VULNERABLE (timing attack) | **Use production** |
+| `/api/test-health/runs/latest` | SECURED | OK (no auth) | Both similar |
+
+### Vercel Deployment Structure
+
+- **Root `.vercel/project.json`**: `digitaltableteur_next` project
+- **`nextjs-app/.vercel/project.json`**: Separate project (likely development/staging)
+- **Production deployment**: Uses root `next.config.ts` → routes from `app/api/`
+
+---
+
+## Recommended Remediation Strategy
+
+### **RECOMMENDATION: Option A - Remove Legacy Routes**
+
+**Rationale:**
+1. Legacy routes in `nextjs-app/app/api/` are **NOT deployed to production**
+2. Production routes in `app/api/` already have security hardening
+3. No codebase references to `nextjs-app/app/api/` paths
+4. Removing legacy routes eliminates maintenance burden and confusion
+
+**Implementation Plan:**
+
+```bash
+# Remove legacy API routes
+rm -rf nextjs-app/app/api/
+```
+
+**Risk Assessment:**
+- **Production impact**: NONE (routes not deployed)
+- **Development impact**: LOW (development uses root `app/api/`)
+- **Backward compatibility**: N/A (routes not in use)
+
+**Alternative Consideration:**
+
+If `nextjs-app/` is used as a separate development/staging environment, consider:
+- Symlinking `nextjs-app/app/api/` to `app/api/` for consistency
+- Or applying hardening to match production
+
+---
+
+## Phase 2-5 Impact Assessment
+
+### Impact Based on Removal Strategy
+
+If legacy routes are removed (Option A):
+
+| Phase | Original Scope | New Scope | Change |
+|-------|---------------|-----------|--------|
+| **Phase 2: Timing Attack Fixes** | Fix `nextjs-app/app/api/download-cv` and `test-health/runs` | No action needed - routes removed | **SKIP or VERIFY** |
+| **Phase 3: Rate Limiting** | Add rate limiting to legacy routes | No action needed - routes removed | **SKIP or VERIFY** |
+| **Phase 4: CORS Hardening** | Restrict CORS on legacy routes | No action needed - routes removed | **SKIP or VERIFY** |
+| **Phase 5: Security Testing** | Test legacy route security | Test production routes only | **REDUCED SCOPE** |
+
+### Recommended Roadmap Update
+
+**Phase 1**: Complete (this audit)
+**Phase 2**: VERIFY - Confirm production routes have timing-safe comparison (they do)
+**Phase 3**: VERIFY - Confirm production routes have rate limiting (partial - `/api/save-contact` needs rate limiting)
+**Phase 4**: VERIFY - Confirm production CORS configuration (vercel.json restricts to specific domain)
+**Phase 5**: UPDATE - Test production routes only, add tests for any gaps found
+
+### Production Route Gaps Identified
+
+While production routes are secured, this audit identified one gap:
+
+| Route | Gap | Severity |
+|-------|-----|----------|
+| `app/api/save-contact/route.ts` | Missing rate limiting | **HIGH** |
+
+The production `/api/contact` route has rate limiting (lines 6-10), but `/api/save-contact` does not. This should be addressed if `/api/save-contact` is actively used.
+
+---
+
+## Conclusion
+
+1. **Legacy routes (`nextjs-app/app/api/`) are NOT deployed and should be removed**
+2. **Production routes (`app/api/`) are secured with timing-safe comparison, rate limiting, and logging**
+3. **Phases 2-4 can be simplified to verification tasks rather than implementation**
+4. **One gap found**: `/api/save-contact` in production lacks rate limiting
+5. **Phase 5 should focus on testing production route security and adding rate limiting to save-contact**
 
 ---
 
