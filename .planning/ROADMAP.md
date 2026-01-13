@@ -17,7 +17,7 @@ None
 - [x] **Phase 1: Legacy Route Audit** - Identify all vulnerable legacy routes and document findings ✓
 - [x] **Phase 2: Timing Attack Fixes** - Add constant-time password comparison to vulnerable endpoints ✓
 - [x] **Phase 3: Rate Limiting** - Add brute force protection to authentication endpoints ✓
-- [ ] **Phase 4: CORS Hardening** - Restrict wildcard CORS to specific trusted domains
+- [x] **Phase 4: CORS Hardening** - Restrict wildcard CORS to specific trusted domains ✓
 - [ ] **Phase 5: Security Testing** - Add tests for rate limiting and timing-safe operations
 
 ## Phase Details
@@ -53,10 +53,10 @@ Plans:
 **Goal**: Replace wildcard CORS (`*`) with specific trusted domain origins
 **Depends on**: Phase 3
 **Research**: Unlikely (standard Next.js CORS configuration)
-**Plans**: TBD
+**Plans**: 1
 
 Plans:
-- [ ] 04-01: Configure CORS for specific allowed origins
+- [x] 04-01: Configure CORS for specific allowed origins ✓
 
 ### Phase 5: Security Testing
 **Goal**: Add automated tests for rate limiting behavior and timing-safe password comparison
@@ -77,5 +77,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Legacy Route Audit | 1/1 | Complete | 2026-01-13 |
 | 2. Timing Attack Fixes | 1/1 | Complete | 2026-01-13 |
 | 3. Rate Limiting | 1/1 | Complete | 2026-01-13 |
-| 4. CORS Hardening | 0/1 | Not started | - |
+| 4. CORS Hardening | 1/1 | Complete | 2026-01-13 |
 | 5. Security Testing | 0/1 | Not started | - |
