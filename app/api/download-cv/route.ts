@@ -7,6 +7,7 @@ import {
   getClientIp,
   getUserAgent,
 } from "../../lib/security-logger";
+import { createCorsHeaders } from "../chat-shared";
 
 /**
  * Rate limiting for CV password attempts
@@ -17,15 +18,17 @@ const MAX_AUTH_ATTEMPTS = 5;
 const AUTH_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 
 /**
- * Constant-time password comparison to prevent timing attacks
+ * Constant-time password comparison to prevent timing attacks.
+ * Pads both strings to the same length to avoid leaking length information.
  */
 function constantTimeCompare(a: string, b: string): boolean {
-  if (a.length !== b.length) return false;
+  const maxLen = Math.max(a.length, b.length, 1);
+  const bufA = Buffer.alloc(maxLen);
+  const bufB = Buffer.alloc(maxLen);
+  Buffer.from(a, "utf8").copy(bufA);
+  Buffer.from(b, "utf8").copy(bufB);
 
-  const bufA = Buffer.from(a, "utf8");
-  const bufB = Buffer.from(b, "utf8");
-
-  return timingSafeEqual(bufA, bufB);
+  return timingSafeEqual(bufA, bufB) && a.length === b.length;
 }
 
 /**
@@ -143,13 +146,10 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function OPTIONS() {
+export async function OPTIONS(request: Request) {
+  const corsHeaders = createCorsHeaders(request.headers.get("origin"));
   return new NextResponse(null, {
     status: 204,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
+    headers: corsHeaders,
   });
 }

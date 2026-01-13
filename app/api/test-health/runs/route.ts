@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { randomUUID } from "node:crypto";
+import { randomUUID, timingSafeEqual } from "node:crypto";
 import { saveRun, type RunRecord } from "../db";
 // Import default metrics from the root docs directory
 import defaultMetrics from "@/docs/test-metrics.json";
+import { createCorsHeaders } from "../../chat-shared";
 
 type VitestReport = {
   runId?: string;
@@ -28,6 +29,19 @@ type VitestReport = {
 };
 
 const HEALTH_TOKEN = process.env.HEALTH_DASHBOARD_TOKEN;
+
+/**
+ * Constant-time string comparison to prevent timing attacks.
+ * Pads both strings to the same length to avoid leaking length information.
+ */
+function constantTimeCompare(a: string, b: string): boolean {
+  const maxLen = Math.max(a.length, b.length, 1);
+  const bufA = Buffer.alloc(maxLen);
+  const bufB = Buffer.alloc(maxLen);
+  Buffer.from(a, "utf8").copy(bufA);
+  Buffer.from(b, "utf8").copy(bufB);
+  return timingSafeEqual(bufA, bufB) && a.length === b.length;
+}
 
 const defaultCoverageSummary = defaultMetrics.coverage?.summary ?? {
   statements: 0,
@@ -115,24 +129,25 @@ const buildMetrics = (payload: VitestReport) => {
 };
 
 // OPTIONS handler for CORS preflight
-export async function OPTIONS() {
+export async function OPTIONS(request: Request) {
+  const corsHeaders = createCorsHeaders(request.headers.get("origin"));
   return new NextResponse(null, {
     status: 204,
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      ...corsHeaders,
       "Access-Control-Allow-Headers":
         "Content-Type, X-Health-Token, X-CI-Branch",
-      "Access-Control-Max-Age": "86400",
     },
   });
 }
 
 // POST handler for submitting test runs
 export async function POST(request: NextRequest) {
+  const corsHeaders = createCorsHeaders(request.headers.get("origin"));
+
   const providedToken = request.headers.get("x-health-token");
-  if (!HEALTH_TOKEN || providedToken !== HEALTH_TOKEN) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!HEALTH_TOKEN || !providedToken || !constantTimeCompare(providedToken, HEALTH_TOKEN)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401, headers: corsHeaders });
   }
 
   let payload: VitestReport;
@@ -141,14 +156,14 @@ export async function POST(request: NextRequest) {
   } catch {
     return NextResponse.json(
       { error: "Invalid JSON payload" },
-      { status: 400 },
+      { status: 400, headers: corsHeaders },
     );
   }
 
   if (!payload || typeof payload !== "object") {
     return NextResponse.json(
       { error: "Missing JSON payload" },
-      { status: 400 },
+      { status: 400, headers: corsHeaders },
     );
   }
 
@@ -181,9 +196,7 @@ export async function POST(request: NextRequest) {
     { status: "ok", runId },
     {
       status: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
+      headers: corsHeaders,
     },
   );
 }

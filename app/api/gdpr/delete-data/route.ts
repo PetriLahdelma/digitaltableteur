@@ -12,6 +12,7 @@ import {
   getClientIp,
   getUserAgent,
 } from "../../../lib/security-logger";
+import { createCorsHeaders } from "../../chat-shared";
 
 interface DeleteDataRequest {
   email: string;
@@ -229,13 +230,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function OPTIONS() {
+export async function OPTIONS(request: Request) {
+  const corsHeaders = createCorsHeaders(request.headers.get("origin"));
   return new NextResponse(null, {
     status: 204,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
+    headers: corsHeaders,
   });
 }
