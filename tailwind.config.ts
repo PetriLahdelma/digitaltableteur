@@ -13,7 +13,7 @@ import type { Config } from "tailwindcss";
  */
 const config: Config = {
   // Enable dark mode via class (supports our 4-theme system)
-  darkMode: ["class"],
+  darkMode: "class",
 
   // Content paths for tree-shaking unused styles
   content: [
