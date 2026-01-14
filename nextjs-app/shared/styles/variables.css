@@ -110,6 +110,11 @@
   --checkbox-checkmark-color: #fff; /* Always white for checkmarks on blue background */
   --checkbox-background-color: #fff; /* Always white background for unchecked state */
 
+  /* Focus ring tokens for accessibility */
+  --focus-ring-color: var(--color-primary);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+
   /* Border radius */
 
   --radius-sm: 2px;
@@ -252,6 +257,11 @@
   --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
   --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+
+  /* Focus ring tokens for dark theme */
+  --focus-ring-color: var(--color-primary);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
 }
 
 .themeHCB,
@@ -311,6 +321,11 @@
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
   --selection-background: #fff;
   --selection-color: #000;
+
+  /* Focus ring tokens for high contrast black - maximum visibility */
+  --focus-ring-color: #fff;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 3px;
 }
 
 /* Utility classes for gradient text effects */
@@ -407,6 +422,11 @@
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
   --selection-background: #000;
   --selection-color: #fff;
+
+  /* Focus ring tokens for high contrast white - maximum visibility */
+  --focus-ring-color: #000;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 3px;
 }
 
 /* Hyphenation rules for headings - supports multiple languages */
