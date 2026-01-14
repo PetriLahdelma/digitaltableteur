@@ -7,31 +7,7 @@
 
 ## Critical / Blocking
 
-### 1. Production Build Blocked by Sanity React 19 Peer Dependency
-
-**Status:** BLOCKING
-**Severity:** Critical
-**Component:** Build System / Sanity CMS
-
-**Description:**
-Production `npm run build` fails due to peer dependency conflict between Sanity CMS packages and React 19. Sanity v3.x packages (like `@sanity/image-url`, `next-sanity`) expect React 16-18 as peer dependencies.
-
-**Error:**
-```
-npm ERR! ERESOLVE unable to resolve dependency tree
-npm ERR! peer react@"^16.8 || ^17 || ^18" from @sanity/image-url@x.x.x
-```
-
-**Workarounds:**
-1. Use `npm install --legacy-peer-deps` (already in place)
-2. Pin React to 18.x temporarily (not recommended for Next.js 15+)
-3. Wait for Sanity team to release React 19 compatible versions
-
-**Tracking:**
-- Sanity GitHub Issue: TBD
-- Internal: Phase 12 blocker
-
-**Resolution ETA:** Dependent on Sanity team release (expected Q1 2026)
+*No critical blocking issues at this time.*
 
 ---
 
@@ -152,6 +128,17 @@ Clean up in future maintenance sprint. No functional impact.
 ---
 
 ## Resolved in This Phase
+
+### Fixed: Sanity/React 19 useEffectEvent Build Error
+
+**Status:** RESOLVED (commit c20bca9bb)
+**Description:** Production build failed with "useEffectEvent is not exported from react" when Sanity v5 packages tried to import the hook during webpack compilation.
+**Resolution:**
+1. Upgraded sanity from 4.22.0 to 5.3.1
+2. Created React wrapper (lib/react-with-use-effect-event.js) that re-exports React plus useEffectEvent ponyfill
+3. Added webpack NormalModuleReplacementPlugin to redirect React imports from Sanity packages to the wrapper
+
+---
 
 ### Fixed: TypeScript MdxImage Props Mismatch
 

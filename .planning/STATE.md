@@ -136,9 +136,9 @@ All 12 phases of the Digitaltableteur Redesign have been successfully executed.
 
 ## Blockers
 
-**Pre-existing issue (not from Phase 01):**
-- Production build blocked by Sanity/React 19 compatibility issue (`useEffectEvent` not exported)
-- This affects `npm run build` but dev server works fine
+**✅ No blocking issues!**
+
+*Previously blocked by Sanity/React 19 `useEffectEvent` issue - RESOLVED (commit c20bca9bb)*
 
 ---
 
