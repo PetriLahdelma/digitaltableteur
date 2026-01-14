@@ -13,8 +13,48 @@
   cursor: pointer;
   transition:
     background-color 0.3s,
-    color 0.3s;
+    color 0.3s,
+    outline-color 0.15s;
   overflow: hidden;
+}
+
+/* Focus states for accessibility (WCAG 2.4.7 Focus Visible) */
+.button:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+/* Ensure focus ring is visible on all variants */
+.button.primary:focus-visible,
+.button.secondary:focus-visible,
+.button.tertiary:focus-visible,
+.button.error:focus-visible,
+.button.warning:focus-visible,
+.button.success:focus-visible,
+.button.info:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+/* Inverse variants need contrasting focus ring */
+.button.inverse:focus-visible {
+  outline-color: var(--color-white);
+}
+
+/* Windows High Contrast Mode support */
+@media (forced-colors: active) {
+  .button:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    forced-color-adjust: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
 }
 
 .button.primary {
