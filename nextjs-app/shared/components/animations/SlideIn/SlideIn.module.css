@@ -1,0 +1,7 @@
+.slideIn {
+  overflow: hidden;
+}
+
+.slideIn > * {
+  will-change: transform, opacity;
+}
