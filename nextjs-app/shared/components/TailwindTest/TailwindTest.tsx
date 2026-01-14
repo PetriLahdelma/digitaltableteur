@@ -37,8 +37,13 @@ import {
   Divider,
   IconButton,
   Prose,
+  FormField,
+  FormGroup,
+  TextInput,
+  TextArea,
+  CheckboxField,
 } from "@/nextjs-app/shared/components/ui";
-import { ArrowRight, Heart, Share, Star } from "@phosphor-icons/react";
+import { ArrowRight, Heart, Share, Star, MagnifyingGlass, EnvelopeSimple } from "@phosphor-icons/react";
 
 /**
  * Temporary test component to verify Tailwind CSS + shadcn/ui integration.
@@ -383,6 +388,71 @@ export default function TailwindTest() {
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
             <strong className="font-heading">UI Components:</strong> Button (studio variants), TextLink, Tag, Divider, IconButton, VisuallyHidden, Prose
+          </p>
+        </div>
+      </div>
+
+      {/* Form Components Demo - Phase 05-2 */}
+      <div className="mt-8 pt-8 border-t border-border">
+        <h3 className="font-heading text-title-m font-bold mb-6">
+          Form Components
+        </h3>
+
+        <Stack gap="lg">
+          {/* TextInput variants */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">TextInput:</p>
+            <Stack gap="md">
+              <FormField label="Search" helperText="Type to search...">
+                <TextInput
+                  placeholder="Search..."
+                  startIcon={<MagnifyingGlass className="h-5 w-5" />}
+                  clearable
+                />
+              </FormField>
+              <FormField label="Email" required error="Please enter a valid email">
+                <TextInput
+                  type="email"
+                  placeholder="you@example.com"
+                  startIcon={<EnvelopeSimple className="h-5 w-5" />}
+                  error
+                />
+              </FormField>
+            </Stack>
+          </div>
+
+          {/* TextArea */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">TextArea:</p>
+            <FormField label="Message" helperText="Max 280 characters">
+              <TextArea
+                placeholder="Write your message..."
+                showCount
+                maxLength={280}
+              />
+            </FormField>
+          </div>
+
+          {/* CheckboxField */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">CheckboxField:</p>
+            <FormGroup>
+              <CheckboxField
+                label="Accept terms and conditions"
+                description="By checking this box, you agree to our Terms of Service"
+                required
+              />
+              <CheckboxField
+                label="Subscribe to newsletter"
+                description="Receive updates about new features and tips"
+              />
+            </FormGroup>
+          </div>
+        </Stack>
+
+        <div className="mt-6 p-4 bg-muted/50 rounded-sm">
+          <p className="font-body text-text-s">
+            <strong className="font-heading">Form Stack:</strong> FormField, FormGroup, TextInput, TextArea, CheckboxField
           </p>
         </div>
       </div>
