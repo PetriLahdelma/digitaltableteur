@@ -1,7 +1,7 @@
 # Project State
 
 > **Session**: 2026-01-14
-> **Current Phase**: 08 (Portfolio & Projects)
+> **Current Phase**: 09 (About & Contact Pages)
 > **Status**: Complete
 
 ---
@@ -18,7 +18,7 @@
 | 06 | Interactive Components | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 07 | Homepage Redesign | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 08 | Portfolio & Projects | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
-| 09 | About & Contact Pages | In Progress | 0/2 | 2026-01-14 | — |
+| 09 | About & Contact Pages | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 10 | Blog Redesign | Not Started | 0/0 | — | — |
 | 11 | Theme & Accessibility Polish | Not Started | 0/0 | — | — |
 | 12 | Performance & Launch Prep | Not Started | 0/0 | — | — |
@@ -27,16 +27,16 @@
 
 ## Current Focus
 
-**Phase 09: About & Contact Pages** 🔄 IN PROGRESS
+**Phase 09: About & Contact Pages** ✅ COMPLETE
 
 Goal: Redesign about page and contact form with new design system.
 
 ### Plans
 - **09-1**: About Page Redesign (8 tasks) — ✅ Complete
-- **09-2**: Contact Page Redesign (10 tasks) — 📋 Planned
+- **09-2**: Contact Page Redesign (10 tasks) — ✅ Complete
 
 ### Next Actions
-1. `/gsd:execute-plan .planning/phases/09-about-contact/09-2-PLAN.md` — Execute Contact Page Redesign
+1. `/gsd:plan-phase 10` — Plan Blog Redesign phase
 
 ---
 
@@ -159,6 +159,7 @@ Goal: Redesign about page and contact form with new design system.
 | 2026-01-14 | React-based text splitting | Avoids SplitText premium plugin dependency |
 | 2026-01-14 | Tailwind-first layout primitives | New components use `cn()` for class merging, complement existing CSS Modules |
 | 2026-01-14 | Polymorphic components | Container, Stack, Center support `as` prop for semantic HTML |
+| 2026-01-14 | Phosphor Icons for social | Consistent with SiteFooter, better than deprecated lucide brand icons |
 
 ---
 
@@ -209,7 +210,18 @@ Goal: Redesign about page and contact form with new design system.
   - Composed AboutPageContent with all sections
   - Added i18n translations for EN/FI/SV (24 new keys)
   - Refactored AboutPage to use new patterns
+- **Executed Phase 09-2** — 10 commits, all tasks complete
+  - Created ContactHero pattern with TextReveal animation
+  - Created EnhancedPersonCard with 3 layout variants (horizontal/vertical/compact)
+  - Created MapSection pattern (preserved React StrictMode cleanup logic)
+  - Created LocationCard component (3 variants: default/bordered/elevated)
+  - Created EnhancedContactForm (preserved ALL validation and API contract)
+  - Created CVDownloadSection pattern (preserved SecureCVDownload functionality)
+  - Created ContactFormSuccess component with animated icon
+  - Composed ContactPageContent with all sections
+  - Added i18n translations for EN/FI/SV (6 new keys)
+  - Refactored ContactPage to use new patterns
 
 ---
 
-*Last updated: 2026-01-14 (Phase 09-1 complete, 09-2 planned)*
+*Last updated: 2026-01-14 (Phase 09 complete)*
