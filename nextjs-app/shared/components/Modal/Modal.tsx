@@ -1,4 +1,5 @@
-import React, { useId } from "react";
+import React, { useEffect, useId, useRef } from "react";
+import { createPortal } from "react-dom";
 import styles from "./Modal.module.css";
 import Button from "@dt/Button";
 import Title from "@dt/Title";
@@ -71,8 +72,50 @@ const Modal: React.FC<ModalProps> = ({
   closeButtonLabel = "Close dialog",
 }) => {
   const normalizedTitleSize = normalizeTitleSize(titleSize);
-
   const titleId = useId();
+  const previousActiveElement = useRef<HTMLElement | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // Apply inert attribute to main content when modal is open
+  // This prevents focus from escaping the modal to background content
+  useEffect(() => {
+    if (!isOpen || typeof document === "undefined") return;
+
+    // Store the currently focused element to restore focus on close
+    previousActiveElement.current = document.activeElement as HTMLElement;
+
+    // Find the main content container (try common IDs)
+    const mainContent =
+      document.getElementById("main-content") ||
+      document.getElementById("__next") ||
+      document.querySelector("main") ||
+      document.body.firstElementChild;
+
+    if (mainContent && mainContent !== document.body) {
+      // Set inert on main content to prevent focus escape
+      mainContent.setAttribute("inert", "");
+    }
+
+    // Focus the modal or first focusable element
+    const focusFirst = () => {
+      if (!modalRef.current) return;
+      const focusable = modalRef.current.querySelector<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      focusable?.focus();
+    };
+
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(focusFirst);
+
+    return () => {
+      if (mainContent && mainContent !== document.body) {
+        mainContent.removeAttribute("inert");
+      }
+      // Restore focus to previously focused element
+      previousActiveElement.current?.focus();
+    };
+  }, [isOpen]);
 
   if (!isOpen) {
     return null;
@@ -111,7 +154,8 @@ const Modal: React.FC<ModalProps> = ({
   // Determine effective variant for CSS class
   const effectiveVariant = isLoading ? "loading" : severity || "default";
 
-  return (
+  // Use portal to render outside main content for proper inert handling
+  const modalContent = (
     <div
       className={styles.overlay}
       onClick={(e) => {
@@ -126,6 +170,7 @@ const Modal: React.FC<ModalProps> = ({
       }}
     >
       <div
+        ref={modalRef}
         className={`${styles.modal} ${styles[effectiveVariant]}`}
         role={dialogRole}
         aria-modal="true"
@@ -172,6 +217,13 @@ const Modal: React.FC<ModalProps> = ({
       </div>
     </div>
   );
+
+  // Use portal if available (client-side), otherwise render directly
+  if (typeof document !== "undefined") {
+    return createPortal(modalContent, document.body);
+  }
+
+  return modalContent;
 };
 
 export default Modal;
