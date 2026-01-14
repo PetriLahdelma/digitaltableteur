@@ -6,6 +6,13 @@ export { IconButton, type IconButtonProps } from "../IconButton";
 export { VisuallyHidden, type VisuallyHiddenProps } from "../VisuallyHidden";
 export { Prose, type ProseProps } from "../Prose";
 
+// Form components
+export { FormField, type FormFieldProps } from "../FormField";
+export { FormGroup, type FormGroupProps } from "../FormGroup";
+export { TextInput, type TextInputProps } from "../TextInput";
+export { TextArea, type TextAreaProps } from "../TextArea";
+export { CheckboxField, type CheckboxFieldProps } from "../CheckboxField";
+
 // Re-export shadcn/ui components for convenience
 export { Button, buttonVariants } from "@/components/ui/button";
 export { Input } from "@/components/ui/input";
