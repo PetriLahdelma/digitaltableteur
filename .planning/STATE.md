@@ -32,11 +32,11 @@
 Goal: Redesign about page and contact form with new design system.
 
 ### Plans
-- **09-1**: About Page Redesign (8 tasks) — 📋 Planned
+- **09-1**: About Page Redesign (8 tasks) — ✅ Complete
 - **09-2**: Contact Page Redesign (10 tasks) — 📋 Planned
 
 ### Next Actions
-1. `/gsd:execute-plan .planning/phases/09-about-contact/09-1-PLAN.md` — Execute About Page Redesign
+1. `/gsd:execute-plan .planning/phases/09-about-contact/09-2-PLAN.md` — Execute Contact Page Redesign
 
 ---
 
@@ -200,7 +200,16 @@ Goal: Redesign about page and contact form with new design system.
 - **Planned Phase 09** — Created 2 execution plans for About & Contact Pages
   - 09-1: About Page Redesign (8 tasks)
   - 09-2: Contact Page Redesign (10 tasks)
+- **Executed Phase 09-1** — 8 commits, all tasks complete
+  - Created AboutHero pattern with TextReveal animation
+  - Created ValueCard component (3 variants: default/bordered/elevated)
+  - Created ValuesSection pattern with responsive grid
+  - Created ManifestoSection with cycling highlight effect
+  - Created SkillsGrid component with tooltips
+  - Composed AboutPageContent with all sections
+  - Added i18n translations for EN/FI/SV (24 new keys)
+  - Refactored AboutPage to use new patterns
 
 ---
 
-*Last updated: 2026-01-14 (Phase 09 planned)*
+*Last updated: 2026-01-14 (Phase 09-1 complete, 09-2 planned)*
