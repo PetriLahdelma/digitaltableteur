@@ -27,6 +27,9 @@
     "lighthouse:a11y": "lighthouse http://localhost:3000 --only-categories=accessibility --output html --output-path ./lighthouse-a11y-report.html --view",
     "lighthouse:full": "lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html --view",
     "lighthouse:a11y:ci": "lighthouse http://localhost:3000 --only-categories=accessibility --output json --output-path ./lighthouse-a11y-report.json",
+    "lighthouse:ci": "lhci autorun",
+    "lighthouse:ci:collect": "lhci collect",
+    "lighthouse:ci:assert": "lhci assert",
     "storybook": "storybook dev -p 6010",
     "storybook:build": "storybook build -o storybook-static",
     "security:audit": "npm audit --audit-level=moderate",
@@ -125,6 +128,7 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
     "@next/bundle-analyzer": "^16.1.1",
     "@storybook/addon-a11y": "^10.1.10",
     "@storybook/addon-docs": "^10.1.10",
