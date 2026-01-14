@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useCallback } from "react";
-import { ChevronDown, Mouse } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
 import { cn } from "@/lib/utils";
@@ -113,7 +113,12 @@ export function ScrollIndicator({
           </svg>
         );
       case "mouse":
-        return <Mouse {...iconProps} />;
+        return (
+          <svg {...iconProps} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <rect x="6" y="3" width="12" height="18" rx="6" />
+            <line x1="12" y1="7" x2="12" y2="11" />
+          </svg>
+        );
       case "chevron":
       default:
         return <ChevronDown {...iconProps} />;
