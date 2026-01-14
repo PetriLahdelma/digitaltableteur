@@ -66,7 +66,18 @@ const MdxAuthorBio = (props: React.ComponentProps<typeof AuthorBio>) => {
 
 // MdxImage wrapper - uses optimized Next.js Image component
 const MdxImageWrapper = (props: React.ComponentPropsWithoutRef<"img">) => {
-  return <MdxImage {...props} />;
+  // Extract and convert props to MdxImageProps format
+  const { src, alt, width, height, title, className } = props;
+  return (
+    <MdxImage
+      src={typeof src === "string" ? src : undefined}
+      alt={alt}
+      width={typeof width === "number" ? width : undefined}
+      height={typeof height === "number" ? height : undefined}
+      title={title}
+      className={className}
+    />
+  );
 };
 
 const MdxFigcaption = ({

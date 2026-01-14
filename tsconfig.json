@@ -57,6 +57,7 @@
     "storybook-static",
     "coverage",
     "dist",
-    "__visual__"
+    "__visual__",
+    "e2e"
   ]
 }
