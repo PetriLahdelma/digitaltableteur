@@ -9,6 +9,18 @@
   aspect-ratio: 16 / 9;
   image-rendering: pixelated;
   overflow: hidden;
+  /* Focus indicator for keyboard accessibility */
+  outline: none;
+}
+
+.canvas:focus {
+  outline: 3px solid var(--color-focus, #3b82f6);
+  outline-offset: 2px;
+}
+
+.canvas:focus-visible {
+  outline: 3px solid var(--color-focus, #3b82f6);
+  outline-offset: 2px;
 }
 
 .ground {
