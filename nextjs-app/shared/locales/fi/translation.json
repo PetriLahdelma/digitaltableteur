@@ -923,5 +923,15 @@
   "storyPhoneInputError": "Virheellinen puhelinnumeron muoto",
   "createSection": {
     "ariaLabel": "Toimintakehotusosio"
-  }
+  },
+  "projectBackToWork": "Takaisin töihin",
+  "projectPrevious": "Edellinen projekti",
+  "projectNext": "Seuraava projekti",
+  "projectNavLabel": "Projektinavigointi",
+  "projectRelatedTitle": "Aiheeseen liittyvät projektit",
+  "projectServicesTitle": "Palvelut",
+  "projectDurationLabel": "Kesto",
+  "projectToolsLabel": "Työkalut",
+  "projectOverviewLabel": "Yleiskatsaus",
+  "projectScrollToTop": "Vieritä ylös"
 }
