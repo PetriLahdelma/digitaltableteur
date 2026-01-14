@@ -434,6 +434,48 @@
   --focus-ring-offset: 3px;
 }
 
+/* ==========================================================================
+   Prefers-Contrast Support
+   Increases contrast when user has "Increase Contrast" enabled in OS settings
+   ========================================================================== */
+
+@media (prefers-contrast: more) {
+  :root {
+    /* Boost text contrast for light mode */
+    --color-text: #000;
+    --primary-text-color: #000;
+    --secondary-text-color: #1a1a1a;
+    --main-body-copy-color: #000;
+
+    /* Ensure borders are more visible */
+    --color-border: #000;
+    --color-border-light: #333;
+
+    /* Stronger focus ring */
+    --focus-ring-width: 3px;
+    --focus-ring-color: #000;
+  }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    /* Boost text contrast for dark mode */
+    --color-text: #fff;
+    --primary-text-color: #fff;
+    --secondary-text-color: #e0e0e0;
+    --main-body-copy-color: #fff;
+    --main-body-background-color: #000;
+
+    /* Ensure borders are more visible in dark */
+    --color-border: #fff;
+    --color-border-light: #ccc;
+
+    /* Stronger focus ring */
+    --focus-ring-width: 3px;
+    --focus-ring-color: #fff;
+  }
+}
+
 /* Hyphenation rules for headings - supports multiple languages */
 
 h1,
