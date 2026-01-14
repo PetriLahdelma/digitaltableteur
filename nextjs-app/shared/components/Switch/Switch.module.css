@@ -64,8 +64,16 @@
 }
 
 .switch:focus-visible {
-  outline: 2px solid var(--color-focus, var(--color-primary, #0f62fe));
-  outline-offset: 2px;
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .switch:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
 }
 
 .handle {
