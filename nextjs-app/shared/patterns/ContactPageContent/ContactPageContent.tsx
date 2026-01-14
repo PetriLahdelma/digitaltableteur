@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
@@ -7,8 +8,17 @@ import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { ContactHero } from "../ContactHero";
-import { MapSection } from "../MapSection";
 import { CVDownloadSection } from "../CVDownloadSection";
+
+// Dynamic import for MapSection - Leaflet is heavy (~150KB) and requires client-side only
+const MapSection = dynamic(() => import("../MapSection").then(mod => mod.MapSection), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-full bg-muted text-muted-foreground font-body text-sm">
+      Loading map...
+    </div>
+  ),
+});
 import { LocationCard } from "../../components/LocationCard";
 import { EnhancedPersonCard } from "../../components/EnhancedPersonCard";
 import { EnhancedContactForm } from "../../components/EnhancedContactForm";
