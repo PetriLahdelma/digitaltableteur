@@ -115,6 +115,11 @@
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
 
+  /* Component overlay tokens */
+  --modal-overlay-bg: rgb(0 0 0 / 50%);
+  --modal-shadow: 0 4px 8px rgb(0 0 0 / 20%);
+  --gallery-caption-bg: rgb(0 0 0 / 55%);
+
   /* Border radius */
 
   --radius-sm: 2px;
