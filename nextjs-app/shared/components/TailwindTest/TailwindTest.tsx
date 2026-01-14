@@ -99,6 +99,43 @@ export default function TailwindTest() {
           + shadcn/ui components.
         </p>
       </div>
+
+      {/* Typography Demo - Phase 02 */}
+      <div className="mt-8 pt-8 border-t border-border">
+        <h3 className="font-heading text-title-m font-bold mb-6">
+          Typography System (Syne + Satoshi)
+        </h3>
+
+        <div className="space-y-4">
+          <p className="font-heading text-display font-bold leading-tight">
+            Display — Syne Bold
+          </p>
+          <p className="font-heading text-title-xl font-semibold">
+            Heading XL — Syne Semibold
+          </p>
+          <p className="font-heading text-title-l font-medium">
+            Heading L — Syne Medium
+          </p>
+          <p className="font-heading text-title-m">
+            Heading M — Syne Regular
+          </p>
+          <p className="font-body text-text-l">
+            Body Large — Satoshi for body text and UI elements
+          </p>
+          <p className="font-body text-text-m">
+            Body Medium — Clean and readable at any size
+          </p>
+          <p className="font-body text-text-s text-muted-foreground">
+            Body Small — Muted for secondary content
+          </p>
+        </div>
+
+        <div className="mt-6 p-4 bg-muted/50 rounded-sm">
+          <p className="font-body text-text-s">
+            <strong className="font-heading">Font Stack:</strong> Syne (heading/display) + Satoshi (body/text)
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
