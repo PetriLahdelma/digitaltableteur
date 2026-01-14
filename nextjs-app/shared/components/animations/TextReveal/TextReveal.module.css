@@ -1,0 +1,14 @@
+.textReveal {
+  overflow: hidden;
+}
+
+.inline {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.line {
+  display: block;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
