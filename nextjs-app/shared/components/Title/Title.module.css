@@ -50,11 +50,11 @@
 }
 
 .fontSerif {
-  font-family: var(--font-title, "TiemposHeadline-Regular"), serif;
+  font-family: var(--font-heading), system-ui, sans-serif;
 }
 
 .fontSans {
-  font-family: var(--font-text);
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 /* Line height utility classes */
