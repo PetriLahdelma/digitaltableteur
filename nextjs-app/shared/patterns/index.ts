@@ -15,8 +15,15 @@ export { default as ServicesBlock, type ServicesBlockProps } from "./ServicesBlo
 export { default as StoryBlock, type StoryBlockProps } from "./StoryBlock";
 export { default as TeamBlock, type TeamBlockProps } from "./TeamBlock";
 
+// Services section
+export { ServicesSection, type ServicesSectionProps, type ServiceItem } from "./ServicesSection";
+
+// Work/Portfolio preview
+export { WorkPreviewSection, type WorkPreviewSectionProps, type ProjectItem } from "./WorkPreviewSection";
+
 // Highlight/CTA sections
 export { default as HighlightSection, type HighlightSectionProps } from "./HighlightSection";
+export { CTASection, type CTASectionProps, type ActionItem } from "./CTASection";
 
 // Navigation
 export { SiteHeader, type SiteHeaderProps, type NavItem } from "./SiteHeader";
