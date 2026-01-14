@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { motion, type Transition, type Variants } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  type Transition,
+  type Variants,
+} from "motion/react";
 
 import Button from "@dt/Button";
 import Card from "@dt/Card";
@@ -192,12 +197,14 @@ export function HomePage() {
       >
         <section className={styles.hero}>
           <Grid columns={1} gap="1rem">
-            <motion.div
-              className={styles.heroGradient}
-              variants={heroContainerVariants}
-              initial="hidden"
-              animate="visible"
-            >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key="hero-container"
+                className={styles.heroGradient}
+                variants={heroContainerVariants}
+                initial="hidden"
+                animate="visible"
+              >
               <motion.div
                 variants={heroTitleVariants}
                 className={styles.heroTitleWrapper}
@@ -233,7 +240,8 @@ export function HomePage() {
                   </Button>
                 </motion.div>
               </motion.div>
-            </motion.div>
+              </motion.div>
+            </AnimatePresence>
           </Grid>
         </section>
       </PageLayout>
