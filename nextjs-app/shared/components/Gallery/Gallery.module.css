@@ -18,14 +18,23 @@
   margin: 0;
   border-radius: 0;
   outline: none;
-  background: #f7f7fa;
+  background: var(--color-light-bg, #f7f7fa);
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 3%);
   transition: box-shadow 0.2s;
   overflow: hidden;
 }
 
 .item:focus-visible {
-  box-shadow: 0 0 0 3px var(--color-primary, #0070f3);
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .item:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
 }
 
 .image {
@@ -46,9 +55,9 @@
   inset-inline: 0;
   padding-block: 0.75em;
   padding-inline: 1em;
-  background: rgb(0 0 0 / 55%);
+  background: var(--gallery-caption-bg, rgb(0 0 0 / 55%));
   font-size: clamp(0.875rem, 0.3vw + 0.85rem, 1rem);
-  color: var(--color-white);
+  color: var(--inverted-text-color, #fff);
   pointer-events: none;
   transition: opacity 0.2s;
   opacity: 0;
