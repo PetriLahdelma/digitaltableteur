@@ -1,8 +1,8 @@
 # Project State
 
 > **Session**: 2026-01-14
-> **Current Phase**: 09 (About & Contact Pages)
-> **Status**: Complete
+> **Current Phase**: 10 (Blog Redesign)
+> **Status**: In Progress
 
 ---
 
@@ -19,7 +19,7 @@
 | 07 | Homepage Redesign | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 08 | Portfolio & Projects | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 09 | About & Contact Pages | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
-| 10 | Blog Redesign | Not Started | 0/0 | — | — |
+| 10 | Blog Redesign | In Progress | 1/2 | 2026-01-14 | — |
 | 11 | Theme & Accessibility Polish | Not Started | 0/0 | — | — |
 | 12 | Performance & Launch Prep | Not Started | 0/0 | — | — |
 
@@ -27,16 +27,16 @@
 
 ## Current Focus
 
-**Phase 09: About & Contact Pages** ✅ COMPLETE
+**Phase 10: Blog Redesign** 🔄 IN PROGRESS
 
-Goal: Redesign about page and contact form with new design system.
+Goal: Redesign blog listing and article pages.
 
 ### Plans
-- **09-1**: About Page Redesign (8 tasks) — ✅ Complete
-- **09-2**: Contact Page Redesign (10 tasks) — ✅ Complete
+- **10-1**: Blog Index Redesign (10 tasks) — ✅ Complete
+- **10-2**: Blog Article Template (12 tasks) — 📋 Planned
 
 ### Next Actions
-1. `/gsd:plan-phase 10` — Plan Blog Redesign phase
+1. `/gsd:execute-plan 10-2` — Execute Blog Article Template plan
 
 ---
 
@@ -224,4 +224,23 @@ Goal: Redesign about page and contact form with new design system.
 
 ---
 
-*Last updated: 2026-01-14 (Phase 09 complete)*
+---
+
+- **Planned Phase 10** — Created 2 execution plans for Blog Redesign
+  - 10-1: Blog Index Redesign (10 tasks)
+  - 10-2: Blog Article Template (12 tasks)
+- **Executed Phase 10-1** — 10 commits, all tasks complete
+  - Created BlogHero pattern with TextReveal animation
+  - Created EnhancedArticleCard with 3 variants (default/featured/compact)
+  - Created BlogGrid with FadeIn animations and empty state
+  - Created BlogCategoryFilter with 3 variants (pills/underline/minimal)
+  - Created useBlogFilter hook with URL sync
+  - Created Pagination component with keyboard navigation
+  - Composed BlogIndexContent pattern
+  - Added i18n translations for EN/FI/SV (10 new keys)
+  - Refactored BlogPage to use new patterns
+  - Added tags support to BlogPostEntry type
+
+---
+
+*Last updated: 2026-01-14 (Phase 10-1 complete)*
