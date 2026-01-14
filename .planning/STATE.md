@@ -17,7 +17,7 @@
 | 05 | Core UI Components | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 06 | Interactive Components | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 07 | Homepage Redesign | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
-| 08 | Portfolio & Projects | Not Started | 0/0 | — | — |
+| 08 | Portfolio & Projects | In Progress | 2/1 | 2026-01-14 | — |
 | 09 | About & Contact Pages | Not Started | 0/0 | — | — |
 | 10 | Blog Redesign | Not Started | 0/0 | — | — |
 | 11 | Theme & Accessibility Polish | Not Started | 0/0 | — | — |
@@ -27,16 +27,16 @@
 
 ## Current Focus
 
-**Phase 07: Homepage Redesign** ✅ COMPLETE
+**Phase 08: Portfolio & Projects** 🔄 IN PROGRESS
 
-Goal: Redesign homepage with Hero → Services → Work → Contact flow.
+Goal: Redesign work listing and project detail pages.
 
 ### Plans
-- **07-1**: Hero Section Redesign (8 tasks) — ✅ Complete
-- **07-2**: Services, Work & CTA Sections (10 tasks) — ✅ Complete
+- **08-1**: Work Index Page Redesign (10 tasks) — ✅ Complete
+- **08-2**: Project Detail Template (12 tasks) — 📋 Planned
 
 ### Next Actions
-1. `/gsd:plan-phase 08` — Plan Portfolio & Projects phase
+1. `/gsd:execute-plan .planning/phases/08-portfolio-projects/08-2-PLAN.md` — Execute Project Detail Template
 
 ---
 
@@ -170,4 +170,19 @@ Goal: Redesign homepage with Hero → Services → Work → Contact flow.
 
 ---
 
-*Last updated: 2026-01-14 (Phase 07 complete)*
+- **Planned Phase 08** — Created 2 execution plans for Portfolio & Projects
+  - 08-1: Work Index Page Redesign (10 tasks)
+  - 08-2: Project Detail Template (12 tasks)
+- **Executed Phase 08-1** — 9 commits, all tasks complete
+  - Created WorkHero pattern with TextReveal animation
+  - Created centralized project data structure with utilities
+  - Created CategoryFilter component (3 variants: pills, underline, minimal)
+  - Created EnhancedProjectCard with video thumbnail support
+  - Created WorkGrid with staggered animations
+  - Composed WorkIndexPage with category filtering
+  - Added i18n translations for EN/FI/SV
+  - Updated barrel exports and page metadata
+
+---
+
+*Last updated: 2026-01-14 (Phase 08-1 complete)*
