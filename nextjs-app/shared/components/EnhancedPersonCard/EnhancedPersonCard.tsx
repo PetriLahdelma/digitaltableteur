@@ -5,36 +5,26 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { FadeIn } from "../animations/FadeIn";
 import {
-  Linkedin,
-  Github,
-  Twitter,
-  Facebook,
-  Instagram,
-  Mail,
-} from "lucide-react";
+  LinkedinLogo,
+  GithubLogo,
+  XLogo,
+  FacebookLogo,
+  InstagramLogo,
+  DribbbleLogo,
+  MediumLogo,
+  Newspaper,
+} from "@phosphor-icons/react";
 
-// Social platform icons mapping
+// Social platform icons mapping using Phosphor Icons
 const SocialIcons = {
-  linkedin: Linkedin,
-  github: Github,
-  twitter: Twitter,
-  facebook: Facebook,
-  instagram: Instagram,
-  dribbble: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-      <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12c6.627 0 12-5.373 12-12S18.627 0 12 0zm9.885 11.441c-2.575-.422-4.943-.445-7.103-.073-.244-.563-.497-1.125-.767-1.68 2.31-1 4.165-2.358 5.548-4.082a9.863 9.863 0 012.322 5.835zm-3.842-7.282c-1.205 1.554-2.868 2.783-4.986 3.68a46.287 46.287 0 00-3.488-5.438A9.894 9.894 0 0112 2.087c2.275 0 4.368.779 6.043 2.072zM7.527 3.166a44.59 44.59 0 013.537 5.381c-2.43.715-5.331 1.082-8.684 1.105a9.931 9.931 0 015.147-6.486zM2.087 12l.013-.256c3.849-.005 7.169-.448 9.95-1.322.233.475.456.952.67 1.432-3.38 1.057-6.165 3.222-8.337 6.48A9.865 9.865 0 012.087 12zm3.829 7.81c1.969-3.088 4.482-5.098 7.598-6.027a39.137 39.137 0 012.043 7.46 9.87 9.87 0 01-9.641-1.433zm11.586.43a41.098 41.098 0 00-1.92-6.897c1.876-.265 3.94-.196 6.199.196a9.923 9.923 0 01-4.279 6.701z"/>
-    </svg>
-  ),
-  medium: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-    </svg>
-  ),
-  substack: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-      <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
-    </svg>
-  ),
+  linkedin: LinkedinLogo,
+  github: GithubLogo,
+  twitter: XLogo,
+  facebook: FacebookLogo,
+  instagram: InstagramLogo,
+  dribbble: DribbbleLogo,
+  medium: MediumLogo,
+  substack: Newspaper,
 } as const;
 
 export interface EnhancedPersonCardProps {

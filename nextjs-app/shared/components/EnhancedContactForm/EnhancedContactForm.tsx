@@ -29,7 +29,7 @@ import { FormGroup } from "../FormGroup";
 import { FadeIn } from "../animations/FadeIn";
 import PhoneInput from "@dt/PhoneInput";
 import FileUpload from "@dt/FileUpload";
-import { Loader2 } from "lucide-react";
+import { Loader } from "lucide-react";
 
 // === PRESERVED CONSTANTS (CRITICAL - DO NOT CHANGE) ===
 const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024; // 2MB upload cap
@@ -575,7 +575,7 @@ export function EnhancedContactForm({
             disabled={isSubmitting || !isFormValid}
             className="flex-1"
           >
-            {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {isSubmitting && <Loader className="mr-2 h-4 w-4 animate-spin" />}
             {t("contactSubmit")}
           </Button>
         </div>
