@@ -19,7 +19,7 @@
 | 07 | Homepage Redesign | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 08 | Portfolio & Projects | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 09 | About & Contact Pages | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
-| 10 | Blog Redesign | In Progress | 1/2 | 2026-01-14 | — |
+| 10 | Blog Redesign | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 11 | Theme & Accessibility Polish | Not Started | 0/0 | — | — |
 | 12 | Performance & Launch Prep | Not Started | 0/0 | — | — |
 
@@ -27,16 +27,17 @@
 
 ## Current Focus
 
-**Phase 10: Blog Redesign** 🔄 IN PROGRESS
+**Phase 10: Blog Redesign** ✅ COMPLETE
 
 Goal: Redesign blog listing and article pages.
 
 ### Plans
 - **10-1**: Blog Index Redesign (10 tasks) — ✅ Complete
-- **10-2**: Blog Article Template (12 tasks) — 📋 Planned
+- **10-2**: Blog Article Template (12 tasks) — ✅ Complete
 
 ### Next Actions
-1. `/gsd:execute-plan 10-2` — Execute Blog Article Template plan
+1. `/gsd:plan-phase 11` — Plan Theme & Accessibility Polish phase
+2. `/gsd:plan-phase 12` — Plan Performance & Launch Prep phase
 
 ---
 
@@ -243,4 +244,21 @@ Goal: Redesign blog listing and article pages.
 
 ---
 
-*Last updated: 2026-01-14 (Phase 10-1 complete)*
+- **Executed Phase 10-2** — 12 commits, all tasks complete
+  - Created ArticleHero pattern with TextReveal animation
+  - Created ArticleContent component (preserves MDX mappings)
+  - Created TableOfContents component with IntersectionObserver
+  - Created useTableOfContents hook for heading extraction/tracking
+  - Created EnhancedAuthorCard with 3 variants (card/inline/minimal)
+  - Created RelatedPosts pattern (tag-based recommendations)
+  - Created ArticleShareSection (X, LinkedIn, Facebook, copy link)
+  - Created ReadingProgress component (fixed progress bar)
+  - Created ArticleLayout pattern (two-column with sticky sidebar)
+  - Composed ArticlePageTemplate (preserves ALL MDX component mappings)
+  - Added i18n translations for EN/FI/SV (10 new keys)
+  - Updated BlogArticlePage to use new template
+  - Fixed icon imports: lucide-react → @phosphor-icons/react
+
+---
+
+*Last updated: 2026-01-14 (Phase 10 complete)*
