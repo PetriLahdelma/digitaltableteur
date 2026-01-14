@@ -23,6 +23,14 @@ import {
   TextReveal,
   Parallax,
 } from "@/nextjs-app/shared/components/animations";
+import {
+  Container,
+  Section,
+  Stack,
+  Spacer,
+  Center,
+  AspectRatio,
+} from "@/nextjs-app/shared/components/Layout";
 
 /**
  * Temporary test component to verify Tailwind CSS + shadcn/ui integration.
@@ -227,6 +235,57 @@ export default function TailwindTest() {
           </p>
           <p className="font-body text-text-s text-muted-foreground mt-2">
             All animations respect prefers-reduced-motion for accessibility.
+          </p>
+        </div>
+      </div>
+
+      {/* Layout Demo - Phase 04 */}
+      <div className="mt-8 pt-8 border-t border-border">
+        <h3 className="font-heading text-title-m font-bold mb-6">
+          Layout Primitives
+        </h3>
+
+        <Stack gap="lg">
+          {/* Container demo */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-2">Container (md):</p>
+            <Container size="md" className="bg-primary/10 p-4 rounded">
+              <p className="font-body text-text-m text-center">Centered content with max-width</p>
+            </Container>
+          </div>
+
+          {/* Stack demo */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-2">Stack (horizontal, gap-md):</p>
+            <Stack direction="horizontal" gap="md">
+              <div className="bg-primary/20 p-3 rounded">Item 1</div>
+              <div className="bg-primary/20 p-3 rounded">Item 2</div>
+              <div className="bg-primary/20 p-3 rounded">Item 3</div>
+            </Stack>
+          </div>
+
+          {/* Center demo */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-2">Center:</p>
+            <Center className="h-24 bg-primary/10 rounded">
+              <p className="font-body text-text-m">Centered content</p>
+            </Center>
+          </div>
+
+          {/* AspectRatio demo */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-2">AspectRatio (16:9):</p>
+            <AspectRatio ratio="16:9" className="bg-primary/20 rounded max-w-sm">
+              <Center className="h-full">
+                <p className="font-body text-text-m">16:9 Container</p>
+              </Center>
+            </AspectRatio>
+          </div>
+        </Stack>
+
+        <div className="mt-6 p-4 bg-muted/50 rounded-sm">
+          <p className="font-body text-text-s">
+            <strong className="font-heading">Layout Stack:</strong> Container, Section, Stack, Spacer, Center, AspectRatio + existing Grid/FlexBox
           </p>
         </div>
       </div>

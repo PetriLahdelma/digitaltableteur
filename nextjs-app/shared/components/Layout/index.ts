@@ -10,5 +10,7 @@ export { AspectRatio, type AspectRatioProps } from "../AspectRatio";
 export { Center, type CenterProps } from "../Center";
 
 // Re-export existing layout components
-export { default as Grid, GridItem } from "../Grid";
-export { default as FlexBox, type FlexBoxProps } from "../FlexBox";
+export { default as Grid } from "../Grid";
+export { GridItem } from "../Grid/Grid";
+export { default as FlexBox } from "../FlexBox";
+export type { FlexBoxProps } from "../FlexBox/FlexBox";
