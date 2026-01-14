@@ -1,17 +1,11 @@
 "use client";
 
 import React from "react";
-import PageLayout from "../../../../patterns/PageLayout/PageLayout";
-import Title from "@dt/Title";
 import Text from "@dt/Text";
-import Hero from "../../../../patterns/Hero";
-import ServicesBlock from "../../../../patterns/ServicesBlock";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import TeamBlock from "../../../../patterns/TeamBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
-import WorkNav from "@dt/WorkNav";
-import styles from "./helsinkiDesignSystem.module.css";
 import Image from "next/image";
 import {
   SiSlack,
@@ -21,61 +15,105 @@ import {
   SiSketch,
 } from "react-icons/si";
 
-export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
-  return (
-    <main className={styles.caseStudy}>
-      {nav ?? <WorkNav />}
-      <Hero
-        variant="stacked"
-        title="Helsinki Design System"
-        description="Design system for the City of Helsinki: research, process, components, and impact across multivendor services."
-        imageSrc="/images/portfolio/helsinki-design-system/helsinki_hero.png"
-        imageAlt="Helsinki Design System"
-        imageWidth={1200}
-        imageHeight={600}
-        maxWidth="lg"
-        spacing="comfortable"
-        align="center"
-        background="transparent"
-      />
+// New patterns from Phase 08-2
+import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
+import { ProjectHero } from "../../../../patterns/ProjectHero";
+import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
+import { RelatedProjects } from "../../../../patterns/RelatedProjects";
+import { ProjectNav } from "../../../ProjectNav";
+import { getProjectBySlug } from "../../../../data/projects";
 
-      <ServicesBlock
-        maxWidth="md"
-        spacing="comfortable"
+export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
+  const project = getProjectBySlug("helsinki-design-system");
+
+  if (!project) {
+    return <div>Project not found</div>;
+  }
+
+  return (
+    <ProjectDetailLayout
+      nav={nav ?? <ProjectNav currentSlug={project.slug} />}
+      hero={
+        <ProjectHero
+          title={project.title}
+          description="Design system for the City of Helsinki: research, process, components, and impact across multivendor services."
+          image={{
+            src: "/images/portfolio/helsinki-design-system/helsinki_hero.png",
+            alt: "Helsinki Design System",
+            width: 1200,
+            height: 600,
+          }}
+          category={project.category.replace("-", " ")}
+          tags={project.tags}
+          variant="contained"
+          showScrollIndicator={true}
+        />
+      }
+      relatedProjects={<RelatedProjects currentSlug={project.slug} maxItems={3} />}
+    >
+      {/* Project metadata */}
+      <ProjectMetaSection
         services={[
-          { label: "UX Design" },
-          { label: "UI Design" },
-          { label: "Service Design" },
-          { label: "Design System" },
-          { label: "Frontend development" },
-          { label: "Documentation" },
+          "UX Design",
+          "UI Design",
+          "Service Design",
+          "Design System",
+          "Frontend development",
+          "Documentation",
         ]}
         duration="January 2020–March 2022"
         tools={[
           {
             key: "slack",
             icon: <SiSlack size={24} />,
-            ariaLabel: "Slack",
+            name: "Slack",
           },
           {
             key: "figma",
             icon: <SiFigma size={24} />,
-            ariaLabel: "Figma",
+            name: "Figma",
           },
           {
             key: "sketch",
             icon: <SiSketch size={24} />,
-            ariaLabel: "Sketch",
+            name: "Sketch",
           },
           {
             key: "illustrator",
             icon: <SiAdobeillustrator size={24} />,
-            ariaLabel: "Illustrator",
+            name: "Illustrator",
           },
           {
             key: "photoshop",
             icon: <SiAdobephotoshop size={24} />,
-            ariaLabel: "Photoshop",
+            name: "Photoshop",
+          },
+        ]}
+        team={[
+          {
+            name: "Laura Karhu",
+            role: "Project Lead (PM/PO)",
+            image: "/images/portfolio/helsinki-design-system/team/laura.png",
+          },
+          {
+            name: "Petri Lahdelma",
+            role: "Senior UX Designer",
+            image: "/images/portfolio/helsinki-design-system/team/petri.png",
+          },
+          {
+            name: "Roni Helppi",
+            role: "UX Designer",
+            image: "/images/portfolio/helsinki-design-system/team/roni.png",
+          },
+          {
+            name: "Mika Nevalainen",
+            role: "Senior Software Developer",
+            image: "/images/portfolio/helsinki-design-system/team/mika.png",
+          },
+          {
+            name: "Ville Miekk'oja",
+            role: "Freelance Consultant",
+            image: "/images/portfolio/helsinki-design-system/team/ville.png",
           },
         ]}
         overview={
@@ -94,8 +132,10 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             experience.
           </Text>
         }
+        background="muted"
       />
 
+      {/* Process phases */}
       <ProcessBlock
         phases={[
           {
@@ -148,52 +188,13 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           },
         ]}
         sectionTitle="Process"
-        backgroundColor="light"
+        backgroundColor="transparent"
         maxWidth="lg"
         spacing="comfortable"
         columns={4}
       />
 
-      <TeamBlock
-        members={[
-          {
-            name: "Laura Karhu",
-            title: "Project Lead (PM/PO)",
-            image: "/images/portfolio/helsinki-design-system/team/laura.png",
-            imageAlt: "Laura Karhu",
-          },
-          {
-            name: "Petri Lahdelma",
-            title: "Senior UX Designer",
-            image: "/images/portfolio/helsinki-design-system/team/petri.png",
-            imageAlt: "Petri Lahdelma",
-          },
-          {
-            name: "Roni Helppi",
-            title: "UX Designer",
-            image: "/images/portfolio/helsinki-design-system/team/roni.png",
-            imageAlt: "Roni Helppi",
-          },
-          {
-            name: "Mika Nevalainen",
-            title: "Senior Software Developer",
-            image: "/images/portfolio/helsinki-design-system/team/mika.png",
-            imageAlt: "Mika Nevalainen",
-          },
-          {
-            name: "Ville Miekk'oja",
-            title: "Freelance Consultant",
-            image: "/images/portfolio/helsinki-design-system/team/ville.png",
-            imageAlt: "Ville Miekk'oja",
-          },
-        ]}
-        sectionTitle="Team"
-        columns={5}
-        backgroundColor="transparent"
-        maxWidth="lg"
-        spacing="comfortable"
-      />
-
+      {/* Discovery Process: Research and Analysis */}
       <StoryBlock
         subtitle="Discovery Process"
         title="Research and Analysis"
@@ -256,6 +257,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         spacing="comfortable"
       />
 
+      {/* Discovery Process: Personas and Journey Mapping */}
       <StoryBlock
         subtitle="Discovery Process"
         title="Personas and Journey Mapping"
@@ -318,6 +320,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         spacing="comfortable"
       />
 
+      {/* Discovery Process: Ideation and Concept Development */}
       <StoryBlock
         subtitle="Discovery Process"
         title="Ideation and Concept Development"
@@ -373,6 +376,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         spacing="comfortable"
       />
 
+      {/* Design Process: Low-Fidelity Wireframing */}
       <StoryBlock
         subtitle="Design Process"
         title="Low-Fidelity Wireframing"
@@ -423,6 +427,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         spacing="comfortable"
       />
 
+      {/* Design Process: Iterative Prototyping and User Testing */}
       <StoryBlock
         subtitle="Design Process"
         title="Iterative Prototyping and User Testing"
@@ -447,6 +452,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         spacing="comfortable"
       />
 
+      {/* Design Process: Continuous Delivery & Design Deliverables */}
       <StoryBlock
         subtitle="Design Process"
         title="Continuous Delivery & Design Deliverables"
@@ -487,7 +493,6 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             key="inline-image"
             src="/images/portfolio/helsinki-design-system/hds-structure.png"
             alt="Diagram showing HDS development deliverables structure including code, design, and documentation layers"
-            layout="responsive"
             width={677}
             height={282}
             style={{
@@ -547,6 +552,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         spacing="comfortable"
       />
 
+      {/* Implementation showcase grid */}
       <GridBlock
         columns={2}
         gap="none"
@@ -610,9 +616,11 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           },
         ]}
       />
+
+      {/* Conclusion */}
       <StoryBlock
         subtitle="Design Process"
-        title="Conlusion"
+        title="Conclusion"
         content={[
           <Text key="1" size="S">
             <span style={{ fontWeight: 600 }}>The Helsinki Design System </span>
@@ -623,7 +631,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             foundation that is both accessible and scalable. The system enables
             teams throughout the city to build services that are consistent,
             intuitive, and aligned with Helsinki's values of equality,
-            transparency, and inclusion ⏺
+            transparency, and inclusion.
           </Text>,
         ]}
         imageLayout="none"
@@ -631,6 +639,6 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         maxWidth="md"
         spacing="comfortable"
       />
-    </main>
+    </ProjectDetailLayout>
   );
 }
