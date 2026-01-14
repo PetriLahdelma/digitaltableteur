@@ -38,14 +38,22 @@ const config: Config = {
     extend: {
       // Typography - reference existing CSS custom properties
       fontFamily: {
-        title: "var(--font-title)",
-        text: "var(--font-text)",
-        sans: "var(--font-text)",
-        serif: "var(--font-title)",
-        "body-primary": "var(--primary-body-font)",
-        "body-secondary": "var(--secondary-body-font)",
-        "heading-primary": "var(--primary-heading-font)",
-        "heading-secondary": "var(--secondary-heading-font)",
+        // Primary fonts (new system - Syne + Satoshi)
+        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+
+        // Semantic aliases
+        display: ["var(--font-heading)", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+
+        // Legacy compatibility (maps old tokens to new fonts)
+        title: ["var(--font-heading)", "system-ui", "sans-serif"],
+        text: ["var(--font-body)", "system-ui", "sans-serif"],
+        serif: ["var(--font-heading)", "system-ui", "sans-serif"],
+        "body-primary": ["var(--font-body)", "system-ui", "sans-serif"],
+        "body-secondary": ["var(--font-heading)", "system-ui", "sans-serif"],
+        "heading-primary": ["var(--font-heading)", "system-ui", "sans-serif"],
+        "heading-secondary": ["var(--font-body)", "system-ui", "sans-serif"],
       },
 
       fontSize: {
