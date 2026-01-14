@@ -979,5 +979,17 @@
   "blogPrevPage": "Föregående",
   "blogNextPage": "Nästa",
   "blogPage": "Sida",
-  "scrollToContent": "Rulla"
+  "scrollToContent": "Rulla",
+  "blogReadMore": "Läs artikel",
+  "articleTOCTitle": "Innehållsförteckning",
+  "articleShareTitle": "Dela denna artikel",
+  "articleAboutAuthor": "Om författaren",
+  "articleRelatedTitle": "Relaterade artiklar",
+  "articleCopyLink": "Kopiera länk",
+  "articleLinkCopied": "Länk kopierad!",
+  "articleReadingProgress": "{{percent}}% läst",
+  "articleMinutesLeft": "{{minutes}} min kvar",
+  "shareTwitter": "Dela på Twitter",
+  "shareLinkedIn": "Dela på LinkedIn",
+  "shareFacebook": "Dela på Facebook"
 }

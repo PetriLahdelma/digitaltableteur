@@ -973,5 +973,17 @@
   "blogPrevPage": "Edellinen",
   "blogNextPage": "Seuraava",
   "blogPage": "Sivu",
-  "scrollToContent": "Vieritä"
+  "scrollToContent": "Vieritä",
+  "blogReadMore": "Lue artikkeli",
+  "articleTOCTitle": "Sisällysluettelo",
+  "articleShareTitle": "Jaa tämä artikkeli",
+  "articleAboutAuthor": "Kirjoittajasta",
+  "articleRelatedTitle": "Aiheeseen liittyvät artikkelit",
+  "articleCopyLink": "Kopioi linkki",
+  "articleLinkCopied": "Linkki kopioitu!",
+  "articleReadingProgress": "{{percent}}% luettu",
+  "articleMinutesLeft": "{{minutes}} min jäljellä",
+  "shareTwitter": "Jaa Twitterissä",
+  "shareLinkedIn": "Jaa LinkedInissä",
+  "shareFacebook": "Jaa Facebookissa"
 }
