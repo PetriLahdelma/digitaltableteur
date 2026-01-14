@@ -52,6 +52,7 @@
     "sanity:publish-single": "bash scripts/publish-from-sanity.sh",
     "validate:mdx": "node scripts/validate-mdx-html.cjs",
     "validate:translations": "node scripts/validate-translations.mjs",
+    "verify:pages": "node scripts/verify-pages-render.mjs",
     "akaunting:install": "cd akaunting && ./setup.sh",
     "akaunting:start": "cd akaunting && docker compose up -d",
     "akaunting:stop": "cd akaunting && docker compose stop",
