@@ -97,3 +97,67 @@ code {
   clip-path: inset(50%);
   overflow: hidden;
 }
+
+/* Layout Utilities - Phase 04 */
+@layer utilities {
+  /* Full bleed - break out of container */
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  /* Prose width for readable content */
+  .prose-width {
+    max-width: 65ch;
+  }
+
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Grid utilities for asymmetric layouts */
+  .grid-asymmetric-2-1 {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .grid-asymmetric-1-2 {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .grid-asymmetric-3-1 {
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .grid-sidebar-left {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .grid-sidebar-right {
+    grid-template-columns: 1fr 280px;
+  }
+
+  /* Responsive grid column spans */
+  .col-span-full {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Responsive asymmetric grids */
+@media (max-width: 768px) {
+  .grid-asymmetric-2-1,
+  .grid-asymmetric-1-2,
+  .grid-asymmetric-3-1,
+  .grid-sidebar-left,
+  .grid-sidebar-right {
+    grid-template-columns: 1fr;
+  }
+}
