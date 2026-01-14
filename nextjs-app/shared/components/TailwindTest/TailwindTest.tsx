@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -17,6 +18,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/ui/tabs";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 import {
   FadeIn,
   SlideIn,
@@ -43,13 +55,18 @@ import {
   TextArea,
   CheckboxField,
 } from "@/nextjs-app/shared/components/ui";
-import { ArrowRight, Heart, Share, Star, MagnifyingGlass, EnvelopeSimple } from "@phosphor-icons/react";
+import { useToast } from "@/nextjs-app/shared/components/interactive";
+import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
+import { ArrowRight, Heart, Share, Star, MagnifyingGlass, EnvelopeSimple, Image as ImageIcon } from "@phosphor-icons/react";
 
 /**
  * Temporary test component to verify Tailwind CSS + shadcn/ui integration.
  * DELETE THIS after Phase 01 is verified working.
  */
 export default function TailwindTest() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const { toast } = useToast();
+
   return (
     <div className="p-8 bg-background border border-border rounded-lg max-w-2xl mx-auto my-8">
       <h2 className="font-serif text-2xl text-foreground mb-4">
@@ -456,6 +473,179 @@ export default function TailwindTest() {
           </p>
         </div>
       </div>
+
+      {/* Interactive Components Demo - Phase 06 */}
+      <div className="mt-8 pt-8 border-t border-border">
+        <h3 className="font-heading text-title-m font-bold mb-6">
+          Interactive Components
+        </h3>
+
+        <Stack gap="lg">
+          {/* Dialog with size variants */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Dialog Size Variants:</p>
+            <Stack direction="horizontal" gap="sm" wrap>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="sm">Small Dialog</Button>
+                </DialogTrigger>
+                <DialogContent size="sm">
+                  <DialogHeader>
+                    <DialogTitle>Small Dialog</DialogTitle>
+                    <DialogDescription>
+                      A compact dialog for simple confirmations.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="sm">Large Dialog</Button>
+                </DialogTrigger>
+                <DialogContent size="lg">
+                  <DialogHeader>
+                    <DialogTitle>Large Dialog</DialogTitle>
+                    <DialogDescription>
+                      A larger dialog for more content or complex forms.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="sm">Warning Dialog</Button>
+                </DialogTrigger>
+                <DialogContent severity="warning">
+                  <DialogHeader>
+                    <DialogTitle>Warning</DialogTitle>
+                    <DialogDescription>
+                      This dialog has a warning severity border.
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </Stack>
+          </div>
+
+          {/* Accordion Variants */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Accordion Card Variant:</p>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="card-1" variant="card">
+                <AccordionTrigger variant="card">Card Style Item 1</AccordionTrigger>
+                <AccordionContent variant="card">
+                  Accordion items with the card variant have a filled background and rounded borders.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="card-2" variant="card">
+                <AccordionTrigger variant="card">Card Style Item 2</AccordionTrigger>
+                <AccordionContent variant="card">
+                  Each item is visually separated for a modern card-based UI.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* Tabs Variants */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Tabs Variants:</p>
+            <Stack gap="md">
+              <div>
+                <p className="font-body text-text-xs text-muted-foreground mb-2">Underline:</p>
+                <Tabs defaultValue="tab1">
+                  <TabsList variant="underline">
+                    <TabsTrigger value="tab1" variant="underline">Overview</TabsTrigger>
+                    <TabsTrigger value="tab2" variant="underline">Details</TabsTrigger>
+                    <TabsTrigger value="tab3" variant="underline">Settings</TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
+              <div>
+                <p className="font-body text-text-xs text-muted-foreground mb-2">Pills:</p>
+                <Tabs defaultValue="tab1">
+                  <TabsList variant="pills">
+                    <TabsTrigger value="tab1" variant="pills">All</TabsTrigger>
+                    <TabsTrigger value="tab2" variant="pills">Active</TabsTrigger>
+                    <TabsTrigger value="tab3" variant="pills">Archived</TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
+            </Stack>
+          </div>
+
+          {/* Tooltip */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Tooltip:</p>
+            <Stack direction="horizontal" gap="md">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="outline">Hover for tooltip</Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>This is a helpful tooltip!</p>
+                </TooltipContent>
+              </Tooltip>
+            </Stack>
+          </div>
+
+          {/* Toast */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Toast Notifications:</p>
+            <Stack direction="horizontal" gap="sm" wrap>
+              <Button
+                variant="outline"
+                onClick={() => toast("This is a success message!", { severity: "success" })}
+              >
+                Success Toast
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => toast("Something went wrong.", { severity: "error" })}
+              >
+                Error Toast
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => toast("Please check your input.", { severity: "warning" })}
+              >
+                Warning Toast
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => toast("Here is some information.", { severity: "info" })}
+              >
+                Info Toast
+              </Button>
+            </Stack>
+          </div>
+
+          {/* Lightbox */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Lightbox:</p>
+            <Button variant="outline" onClick={() => setLightboxOpen(true)}>
+              <ImageIcon className="mr-2 h-4 w-4" />
+              Open Lightbox Demo
+            </Button>
+          </div>
+        </Stack>
+
+        <div className="mt-6 p-4 bg-muted/50 rounded-sm">
+          <p className="font-body text-text-s">
+            <strong className="font-heading">Interactive Stack:</strong> Dialog (size/severity), Accordion (variants), Tabs (variants), Tooltip, Toast, Lightbox
+          </p>
+        </div>
+      </div>
+
+      {/* Lightbox component */}
+      <Lightbox
+        open={lightboxOpen}
+        onOpenChange={setLightboxOpen}
+        images={[
+          { src: "https://picsum.photos/800/600?random=1", alt: "Demo image 1", caption: "First random image from Picsum" },
+          { src: "https://picsum.photos/800/600?random=2", alt: "Demo image 2", caption: "Second random image from Picsum" },
+          { src: "https://picsum.photos/800/600?random=3", alt: "Demo image 3", caption: "Third random image from Picsum" },
+        ]}
+      />
     </div>
   );
 }
