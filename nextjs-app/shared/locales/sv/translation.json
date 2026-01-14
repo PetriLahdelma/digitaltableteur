@@ -969,5 +969,15 @@
   "projectDurationLabel": "Varaktighet",
   "projectToolsLabel": "Verktyg",
   "projectOverviewLabel": "Översikt",
-  "projectScrollToTop": "Rulla uppåt"
+  "projectScrollToTop": "Rulla uppåt",
+  "blogHeroTitle": "Blogg",
+  "blogHeroSubtitle": "Tankar om design, utveckling och allt däremellan",
+  "blogAllPosts": "Alla artiklar",
+  "blogNoPostsFound": "Inga artiklar hittades",
+  "blogFilterByTag": "Filtrera efter ämne",
+  "blogPublished": "Publicerad",
+  "blogPrevPage": "Föregående",
+  "blogNextPage": "Nästa",
+  "blogPage": "Sida",
+  "scrollToContent": "Rulla"
 }

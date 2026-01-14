@@ -963,5 +963,15 @@
   "projectDurationLabel": "Kesto",
   "projectToolsLabel": "Työkalut",
   "projectOverviewLabel": "Yleiskatsaus",
-  "projectScrollToTop": "Vieritä ylös"
+  "projectScrollToTop": "Vieritä ylös",
+  "blogHeroTitle": "Blogi",
+  "blogHeroSubtitle": "Ajatuksia suunnittelusta, kehityksestä ja kaikesta siltä väliltä",
+  "blogAllPosts": "Kaikki artikkelit",
+  "blogNoPostsFound": "Artikkeleita ei löytynyt",
+  "blogFilterByTag": "Suodata aiheen mukaan",
+  "blogPublished": "Julkaistu",
+  "blogPrevPage": "Edellinen",
+  "blogNextPage": "Seuraava",
+  "blogPage": "Sivu",
+  "scrollToContent": "Vieritä"
 }

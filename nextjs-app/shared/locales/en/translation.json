@@ -979,5 +979,15 @@
   "projectDurationLabel": "Duration",
   "projectToolsLabel": "Tools",
   "projectOverviewLabel": "Overview",
-  "projectScrollToTop": "Scroll to top"
+  "projectScrollToTop": "Scroll to top",
+  "blogHeroTitle": "Blog",
+  "blogHeroSubtitle": "Thoughts on design, development, and everything in between",
+  "blogAllPosts": "All Posts",
+  "blogNoPostsFound": "No articles found",
+  "blogFilterByTag": "Filter by topic",
+  "blogPublished": "Published",
+  "blogPrevPage": "Previous",
+  "blogNextPage": "Next",
+  "blogPage": "Page",
+  "scrollToContent": "Scroll"
 }
