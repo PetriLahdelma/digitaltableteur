@@ -22,6 +22,14 @@ export { ServicesSection, type ServicesSectionProps, type ServiceItem } from "./
 export { WorkPreviewSection, type WorkPreviewSectionProps, type ProjectItem } from "./WorkPreviewSection";
 export { WorkHero, type WorkHeroProps } from "./WorkHero";
 
+// Project detail patterns
+export { ProjectDetailLayout, type ProjectDetailLayoutProps } from "./ProjectDetailLayout";
+export { ProjectHero, type ProjectHeroProps, type ProjectHeroImage } from "./ProjectHero";
+export { ProjectMetaSection, type ProjectMetaSectionProps, type ToolItem, type TeamMember, type ClientInfo } from "./ProjectMetaSection";
+export { ProjectDetailTemplate, type ProjectDetailTemplateProps } from "./ProjectDetailTemplate";
+export { ContentSection, type ContentSectionProps, type ContentImage } from "./ContentSection";
+export { RelatedProjects, type RelatedProjectsProps } from "./RelatedProjects";
+
 // Highlight/CTA sections
 export { default as HighlightSection, type HighlightSectionProps } from "./HighlightSection";
 export { CTASection, type CTASectionProps, type ActionItem } from "./CTASection";

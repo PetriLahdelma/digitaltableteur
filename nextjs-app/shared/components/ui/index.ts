@@ -10,6 +10,8 @@ export { Prose, type ProseProps } from "../Prose";
 export { CategoryFilter, type CategoryFilterProps } from "../CategoryFilter";
 export { EnhancedProjectCard, type EnhancedProjectCardProps } from "../EnhancedProjectCard";
 export { WorkGrid, type WorkGridProps } from "../WorkGrid";
+export { ProjectGallery, type ProjectGalleryProps, type GalleryImage } from "../ProjectGallery";
+export { ProjectNav, type ProjectNavProps } from "../ProjectNav";
 
 // Form components
 export { FormField, type FormFieldProps } from "../FormField";
