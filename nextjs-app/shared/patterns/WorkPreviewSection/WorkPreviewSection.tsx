@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
@@ -182,7 +182,7 @@ export function WorkPreviewSection({
               )}
             >
               {t("homeWorkViewAll", "View all work")}
-              <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="size-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           )}
         </FadeIn>
@@ -204,7 +204,7 @@ export function WorkPreviewSection({
               )}
             >
               {t("homeWorkViewAll", "View all work")}
-              <ArrowRight className="size-4" />
+              <ChevronRight className="size-4" />
             </Link>
           </FadeIn>
         )}

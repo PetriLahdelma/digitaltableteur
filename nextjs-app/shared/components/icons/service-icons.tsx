@@ -1,10 +1,10 @@
 import {
-  LayoutGrid,
+  ChevronRight,
   Code,
-  Compass,
-  PenTool,
+  ChevronUp,
+  Check,
   Sparkles,
-  Layers,
+  ChevronDown,
 } from "lucide-react";
 
 /**
@@ -13,22 +13,22 @@ import {
  */
 
 /** UX & Interfaces - Layout/grid icon */
-export const UxInterfacesIcon = LayoutGrid;
+export const UxInterfacesIcon = ChevronRight;
 
 /** Creative & Development - Code icon */
 export const CreativeDevelopmentIcon = Code;
 
-/** Branding & Strategy - Compass/direction icon */
-export const BrandingStrategyIcon = Compass;
+/** Branding & Strategy - Direction icon */
+export const BrandingStrategyIcon = ChevronUp;
 
-/** Editorial & Illustration - Pen tool icon */
-export const EditorialIllustrationIcon = PenTool;
+/** Editorial & Illustration - Check icon */
+export const EditorialIllustrationIcon = Check;
 
 /** AI Solutions & Integration - Sparkles/magic icon */
 export const AiSolutionsIcon = Sparkles;
 
 /** Design Systems - Layers/components icon */
-export const DesignSystemsIcon = Layers;
+export const DesignSystemsIcon = ChevronDown;
 
 /**
  * All service icons as an array for iteration

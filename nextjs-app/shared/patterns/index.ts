@@ -34,6 +34,12 @@ export { RelatedProjects, type RelatedProjectsProps } from "./RelatedProjects";
 export { default as HighlightSection, type HighlightSectionProps } from "./HighlightSection";
 export { CTASection, type CTASectionProps, type ActionItem } from "./CTASection";
 
+// About page patterns
+export { AboutHero, type AboutHeroProps } from "./AboutHero";
+export { ValuesSection, type ValuesSectionProps, type ValueItem } from "./ValuesSection";
+export { ManifestoSection, type ManifestoSectionProps, type ManifestoToken } from "./ManifestoSection";
+export { AboutPageContent, type AboutPageContentProps } from "./AboutPageContent";
+
 // Navigation
 export { SiteHeader, type SiteHeaderProps, type NavItem } from "./SiteHeader";
 export { MobileDrawer } from "./SiteHeader";
