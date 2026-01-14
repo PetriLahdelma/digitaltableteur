@@ -3,7 +3,14 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
-import { Palette, Code2, Users, Sparkles, Brain, Layers } from "lucide-react";
+import {
+  Check,
+  Code,
+  ChevronRight,
+  Sparkles,
+  ChevronUp,
+  ChevronDown,
+} from "lucide-react";
 
 import { AboutHero } from "../AboutHero";
 import { ContentSection } from "../ContentSection";
@@ -28,27 +35,27 @@ export function AboutPageContent({
   const values: ValueItem[] = useMemo(
     () => [
       {
-        icon: <Palette className="w-6 h-6" />,
+        icon: <Check className="w-6 h-6" />,
         title: t("aboutValueDesignTitle"),
         description: t("aboutValueDesignDescription"),
       },
       {
-        icon: <Code2 className="w-6 h-6" />,
+        icon: <Code className="w-6 h-6" />,
         title: t("aboutValueDevelopmentTitle"),
         description: t("aboutValueDevelopmentDescription"),
       },
       {
-        icon: <Users className="w-6 h-6" />,
+        icon: <ChevronRight className="w-6 h-6" />,
         title: t("aboutValueCollaborationTitle"),
         description: t("aboutValueCollaborationDescription"),
       },
       {
-        icon: <Brain className="w-6 h-6" />,
+        icon: <ChevronUp className="w-6 h-6" />,
         title: t("aboutValueAITitle"),
         description: t("aboutValueAIDescription"),
       },
       {
-        icon: <Layers className="w-6 h-6" />,
+        icon: <ChevronDown className="w-6 h-6" />,
         title: t("aboutValueSystemsTitle"),
         description: t("aboutValueSystemsDescription"),
       },

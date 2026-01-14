@@ -44,11 +44,18 @@ export function AboutHero({
       background="default"
       className={cn(
         "relative min-h-[80vh] flex items-center justify-center",
-        backgroundClasses[background],
+        !isImageBackground && backgroundClasses[background],
         className
       )}
-      style={isImageBackground ? { backgroundImage: `url(${backgroundImage})` } : undefined}
     >
+      {/* Background image layer */}
+      {isImageBackground && (
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+      )}
+
       {/* Overlay for image background */}
       {isImageBackground && (
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
