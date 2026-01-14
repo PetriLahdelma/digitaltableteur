@@ -2,7 +2,7 @@
 
 > **Session**: 2026-01-14
 > **Current Phase**: 07 (Homepage Redesign)
-> **Status**: In Progress (Plan 1/2 complete)
+> **Status**: Complete
 
 ---
 
@@ -16,7 +16,7 @@
 | 04 | Layout System | Complete | 1/1 | 2026-01-14 | 2026-01-14 |
 | 05 | Core UI Components | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 06 | Interactive Components | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
-| 07 | Homepage Redesign | In Progress | 1/2 | 2026-01-14 | — |
+| 07 | Homepage Redesign | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 08 | Portfolio & Projects | Not Started | 0/0 | — | — |
 | 09 | About & Contact Pages | Not Started | 0/0 | — | — |
 | 10 | Blog Redesign | Not Started | 0/0 | — | — |
@@ -27,16 +27,16 @@
 
 ## Current Focus
 
-**Phase 07: Homepage Redesign** 🚧 IN PROGRESS
+**Phase 07: Homepage Redesign** ✅ COMPLETE
 
 Goal: Redesign homepage with Hero → Services → Work → Contact flow.
 
 ### Plans
 - **07-1**: Hero Section Redesign (8 tasks) — ✅ Complete
-- **07-2**: Services, Work & CTA Sections (10 tasks) — Ready
+- **07-2**: Services, Work & CTA Sections (10 tasks) — ✅ Complete
 
 ### Next Actions
-1. `/gsd:execute-plan 07-2` — Execute Services & Work Sections
+1. `/gsd:plan-phase 08` — Plan Portfolio & Projects phase
 
 ---
 
@@ -119,6 +119,16 @@ Goal: Redesign homepage with Hero → Services → Work → Contact flow.
   - Composed HomeHero section using all components
   - Added i18n translations for EN/FI/SV
   - Created patterns barrel export
+- **Executed Phase 07-2** — 10 commits, all tasks complete
+  - Created ServiceCard component with 4 variants (default, bordered, elevated, minimal)
+  - Created ServicesSection pattern with responsive grid and staggered animations
+  - Created service icons re-exports from lucide-react
+  - Created ProjectCard component with hover effects and aspect ratio options
+  - Created WorkPreviewSection pattern with 3 layout options (grid, asymmetric, featured)
+  - Created CTASection pattern with 4 background variants
+  - Composed full HomePage with all new sections
+  - Added i18n translation keys for EN/FI/SV
+  - Updated patterns barrel export
 
 ---
 
@@ -160,4 +170,4 @@ Goal: Redesign homepage with Hero → Services → Work → Contact flow.
 
 ---
 
-*Last updated: 2026-01-14 (Phase 07-1 complete)*
+*Last updated: 2026-01-14 (Phase 07 complete)*
