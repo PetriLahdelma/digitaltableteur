@@ -1,6 +1,6 @@
 import {
-  Layout,
-  Code2,
+  LayoutGrid,
+  Code,
   Compass,
   PenTool,
   Sparkles,
@@ -13,10 +13,10 @@ import {
  */
 
 /** UX & Interfaces - Layout/grid icon */
-export const UxInterfacesIcon = Layout;
+export const UxInterfacesIcon = LayoutGrid;
 
 /** Creative & Development - Code icon */
-export const CreativeDevelopmentIcon = Code2;
+export const CreativeDevelopmentIcon = Code;
 
 /** Branding & Strategy - Compass/direction icon */
 export const BrandingStrategyIcon = Compass;
