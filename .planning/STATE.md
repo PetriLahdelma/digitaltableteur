@@ -14,7 +14,7 @@
 | 02 | Typography & Font System | Complete | 1/1 | 2026-01-14 | 2026-01-14 |
 | 03 | Animation Infrastructure | Complete | 1/1 | 2026-01-14 | 2026-01-14 |
 | 04 | Layout System | Complete | 1/1 | 2026-01-14 | 2026-01-14 |
-| 05 | Core UI Components | Not Started | 0/0 | — | — |
+| 05 | Core UI Components | Planned | 0/2 | — | — |
 | 06 | Interactive Components | Not Started | 0/0 | — | — |
 | 07 | Homepage Redesign | Not Started | 0/0 | — | — |
 | 08 | Portfolio & Projects | Not Started | 0/0 | — | — |
@@ -31,9 +31,13 @@
 
 Goal: Build core UI component library with Tailwind.
 
+### Plans Created
+- **05-1**: UI Components Enhancement (10 tasks) — Button, TextLink, Tag, Divider, IconButton, VisuallyHidden, Prose
+- **05-2**: Form Components Enhancement (8 tasks) — FormField, TextInput, TextArea, FormGroup, CheckboxField
+
 ### Next Actions
-1. `/gsd:plan-phase 05` — Create detailed execution plan for Phase 05
-2. Or `/gsd:research-phase 05` — Research component patterns first
+1. `/gsd:execute-plan 05-1` — Execute UI Components plan
+2. Then `/gsd:execute-plan 05-2` — Execute Form Components plan
 
 ---
 
@@ -72,6 +76,9 @@ Goal: Build core UI component library with Tailwind.
   - Added Tailwind layout utilities (full-bleed, prose-width, asymmetric grids, sidebars)
   - Extended Layout barrel export to include all layout components
   - Added layout demo to TailwindTest
+- **Planned Phase 05** — Created 2 execution plans
+  - 05-1: UI Components Enhancement (10 tasks)
+  - 05-2: Form Components Enhancement (8 tasks)
 
 ---
 
@@ -113,4 +120,4 @@ Goal: Build core UI component library with Tailwind.
 
 ---
 
-*Last updated: 2026-01-14 (Phase 04 complete)*
+*Last updated: 2026-01-14 (Phase 05 planned)*
