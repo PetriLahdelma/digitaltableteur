@@ -6,6 +6,74 @@
 
 ---
 
+## Typography System
+
+### Font Stack
+
+| Role | Font | Source | Variable |
+|------|------|--------|----------|
+| Heading/Display | Syne | Google Fonts | `--font-heading` |
+| Body/Text | Satoshi | Fontshare | `--font-body` |
+
+### Font Loading
+
+Fonts are configured via `next/font` in `app/fonts.ts`:
+- **Syne**: Variable font (400-800), imported from Google Fonts
+- **Satoshi**: Variable font (300-900), self-hosted from `app/fonts/`
+
+CSS variables `--font-heading` and `--font-body` are applied to `<html>` via `fontVariables` class.
+
+### Tailwind Utilities
+
+| Utility | Font | Usage |
+|---------|------|-------|
+| `font-heading` | Syne | Display text, headings |
+| `font-body` | Satoshi | Body text, UI elements |
+| `font-display` | Syne | Alias for heading |
+| `font-sans` | Satoshi | Alias for body |
+| `font-title` | Syne | Legacy compatibility |
+| `font-text` | Satoshi | Legacy compatibility |
+
+### Typography Components
+
+| Component | Purpose | Default Font | Location |
+|-----------|---------|--------------|----------|
+| `<Display>` | Hero text (80-128px) | Syne | `nextjs-app/shared/components/Display/` |
+| `<Heading>` | Section headings | Syne | `nextjs-app/shared/components/Heading/` |
+| `<Title>` | Legacy heading | Syne (serif) / Satoshi (sans) | `nextjs-app/shared/components/Title/` |
+| `<Text>` | Body text | Satoshi (sans) / Syne (serif) | `nextjs-app/shared/components/Text/` |
+
+### Size Scale
+
+| Token | CSS Variable | Responsive Range |
+|-------|--------------|------------------|
+| `display` | `--font-size-display` | 80px - 128px |
+| `title-xl` | `--font-size-title-xl` | 56px - 88px |
+| `title-l` | `--font-size-title-l` | 44px - 68px |
+| `title-m` | `--font-size-title-m` | 32px - 48px |
+| `title-s` | `--font-size-title-s` | 24px - 36px |
+| `text-l` | `--font-size-text-l` | 18px - 24px |
+| `text-m` | `--font-size-text-m` | 16px - 20px |
+| `text-s` | `--font-size-text-s` | 12px - 17px |
+
+### Usage Examples
+
+```tsx
+// Tailwind utilities (new components)
+<h1 className="font-heading text-display font-bold">Hero Title</h1>
+<p className="font-body text-text-m">Body paragraph text</p>
+
+// New components
+<Display>Hero Title</Display>
+<Heading level={2} size="lg">Section Title</Heading>
+
+// Legacy components (still supported)
+<Title level={1} terminals="serif">Heading</Title>
+<Text terminals="sans">Body text</Text>
+```
+
+---
+
 ## Code Style
 
 ### ESLint Configuration
