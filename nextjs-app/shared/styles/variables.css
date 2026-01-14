@@ -2,9 +2,9 @@
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
 
-  /* Typography tokens */
-  --font-title: "TiemposHeadline-Regular", serif;
-  --font-text: "Moderat", sans-serif;
+  /* Typography tokens - updated for Syne + Satoshi (next/font provides --font-heading, --font-body) */
+  --font-title: var(--font-heading), system-ui, sans-serif;
+  --font-text: var(--font-body), system-ui, sans-serif;
   --font-size-text: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
   --font-size-text-s: clamp(0.75rem, 0.4vw + 0.8rem, 1.05rem);
   --font-size-text-m: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
@@ -29,12 +29,13 @@
   --font-weight-text: 400;
   --color-title: var(--primary-text-color, #00f);
   --color-text: var(--primary-text-color, #00f);
-  --primary-body-font: "Moderat-Regular", sans-serif;
-  --secondary-body-font: "TiemposText-Regular", serif;
-  --primary-bold-font: "Moderat-Bold", sans-serif;
-  --secondary-bold-font: "TiemposHeadline-Semibold", serif;
-  --primary-heading-font: "TiemposHeadline-Regular", serif;
-  --secondary-heading-font: "Moderat", sans-serif;
+  /* Font family aliases - mapped to new typography system */
+  --primary-body-font: var(--font-body), system-ui, sans-serif;
+  --secondary-body-font: var(--font-heading), system-ui, sans-serif;
+  --primary-bold-font: var(--font-body), system-ui, sans-serif;
+  --secondary-bold-font: var(--font-heading), system-ui, sans-serif;
+  --primary-heading-font: var(--font-heading), system-ui, sans-serif;
+  --secondary-heading-font: var(--font-body), system-ui, sans-serif;
 
   /* Text colors */
   --main-body-copy-color: #00f;
