@@ -17,6 +17,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  FadeIn,
+  SlideIn,
+  TextReveal,
+  Parallax,
+} from "@/nextjs-app/shared/components/animations";
 
 /**
  * Temporary test component to verify Tailwind CSS + shadcn/ui integration.
@@ -133,6 +139,94 @@ export default function TailwindTest() {
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
             <strong className="font-heading">Font Stack:</strong> Syne (heading/display) + Satoshi (body/text)
+          </p>
+        </div>
+      </div>
+
+      {/* Animation Demo - Phase 03 */}
+      <div className="mt-8 pt-8 border-t border-border">
+        <h3 className="font-heading text-title-m font-bold mb-6">
+          Animation Primitives (GSAP + Lenis)
+        </h3>
+
+        {/* FadeIn Demo */}
+        <div className="space-y-4 mb-8">
+          <FadeIn direction="up" delay={0}>
+            <div className="p-4 bg-muted rounded-sm">
+              <p className="font-body text-text-m">
+                <strong>FadeIn Up</strong> — Fades in from below on scroll
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn direction="left" delay={0.1}>
+            <div className="p-4 bg-muted rounded-sm">
+              <p className="font-body text-text-m">
+                <strong>FadeIn Left</strong> — Fades in from the left
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn direction="right" delay={0.2}>
+            <div className="p-4 bg-muted rounded-sm">
+              <p className="font-body text-text-m">
+                <strong>FadeIn Right</strong> — Fades in from the right
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* SlideIn Demo */}
+        <div className="mb-8">
+          <p className="font-body text-text-s text-muted-foreground mb-2">
+            SlideIn with stagger effect:
+          </p>
+          <SlideIn direction="left" stagger={0.15}>
+            <div className="p-3 bg-primary/10 rounded-sm mb-2">
+              <p className="font-body text-text-m">SlideIn Item 1</p>
+            </div>
+            <div className="p-3 bg-primary/10 rounded-sm mb-2">
+              <p className="font-body text-text-m">SlideIn Item 2</p>
+            </div>
+            <div className="p-3 bg-primary/10 rounded-sm">
+              <p className="font-body text-text-m">SlideIn Item 3</p>
+            </div>
+          </SlideIn>
+        </div>
+
+        {/* TextReveal Demo */}
+        <div className="mb-8 space-y-4">
+          <TextReveal
+            as="h4"
+            type="words"
+            animation="slide"
+            className="font-heading text-title-l font-bold"
+          >
+            Kinetic Typography Demo
+          </TextReveal>
+
+          <TextReveal as="p" type="chars" animation="wave" stagger={0.01}>
+            Each character animates individually with a wave effect.
+          </TextReveal>
+        </div>
+
+        {/* Parallax Demo */}
+        <div className="mb-8 h-32 bg-muted/30 rounded-sm overflow-hidden">
+          <Parallax speed={-0.2}>
+            <div className="p-6 text-center">
+              <p className="font-body text-text-l">
+                This content moves slower than scroll (parallax effect)
+              </p>
+            </div>
+          </Parallax>
+        </div>
+
+        <div className="mt-6 p-4 bg-muted/50 rounded-sm">
+          <p className="font-body text-text-s">
+            <strong className="font-heading">Animation Stack:</strong> GSAP (animations) + Lenis (smooth scroll) + ScrollTrigger (scroll-driven)
+          </p>
+          <p className="font-body text-text-s text-muted-foreground mt-2">
+            All animations respect prefers-reduced-motion for accessibility.
           </p>
         </div>
       </div>
