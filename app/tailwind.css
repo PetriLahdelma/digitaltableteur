@@ -2,9 +2,22 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/*
+ * Custom theme variants for Digitaltableteur's 4-theme system
+ * - dark: Standard dark theme (maps to .themeDark)
+ * - hcb: High Contrast Black theme (maps to .themeHCB)
+ * - hcw: High Contrast White theme (maps to .themeHCW)
+ */
+@custom-variant dark (&:is(.dark *, .themeDark *));
+@custom-variant hcb (&:is(.themeHCB *));
+@custom-variant hcw (&:is(.themeHCW *));
 
+/*
+ * Tailwind theme tokens for shadcn/ui components
+ * These map Tailwind utility classes to CSS custom properties
+ */
 @theme inline {
+  /* Border radius tokens */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -12,6 +25,8 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  /* shadcn/ui color tokens */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -43,77 +58,212 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography tokens - mapped to existing CSS variables */
+  --font-title: var(--font-title);
+  --font-text: var(--font-text);
+  --font-sans: var(--font-text);
+  --font-serif: var(--font-title);
+  --font-body-primary: var(--primary-body-font);
+  --font-body-secondary: var(--secondary-body-font);
+  --font-heading-primary: var(--primary-heading-font);
+  --font-heading-secondary: var(--secondary-heading-font);
+
+  /* Spacing tokens - internal (component) spacing */
+  --spacing-internal-0: var(--space-internal-0);
+  --spacing-internal-2: var(--space-internal-2);
+  --spacing-internal-4: var(--space-internal-4);
+  --spacing-internal-6: var(--space-internal-6);
+  --spacing-internal-8: var(--space-internal-8);
+  --spacing-internal-12: var(--space-internal-12);
+  --spacing-internal-16: var(--space-internal-16);
+  --spacing-internal-24: var(--space-internal-24);
+  --spacing-internal-32: var(--space-internal-32);
+
+  /* Spacing tokens - layout (outer) spacing */
+  --spacing-layout-0: var(--space-layout-0);
+  --spacing-layout-4: var(--space-layout-4);
+  --spacing-layout-6: var(--space-layout-6);
+  --spacing-layout-8: var(--space-layout-8);
+  --spacing-layout-16: var(--space-layout-16);
+  --spacing-layout-24: var(--space-layout-24);
+  --spacing-layout-32: var(--space-layout-32);
+  --spacing-layout-40: var(--space-layout-40);
+  --spacing-layout-48: var(--space-layout-48);
+  --spacing-layout-64: var(--space-layout-64);
+  --spacing-layout-80: var(--space-layout-80);
+  --spacing-layout-96: var(--space-layout-96);
+
+  /* Container tokens */
+  --container-sm: var(--container-sm);
+  --container-md: var(--container-md);
+  --container-lg: var(--container-lg);
+  --container-xl: var(--container-xl);
 }
 
+/*
+ * shadcn/ui CSS variables mapped to Digitaltableteur design tokens
+ * These bridge shadcn component styling to our existing theme system
+ */
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  /* shadcn/ui semantic colors mapped to our design tokens */
+  --background: var(--main-body-background-color, #fff);
+  --foreground: var(--primary-text-color, #00f);
+  --card: var(--main-body-background-color, #fff);
+  --card-foreground: var(--primary-text-color, #00f);
+  --popover: var(--main-body-background-color, #fff);
+  --popover-foreground: var(--primary-text-color, #00f);
+  --primary: var(--color-primary, #00f);
+  --primary-foreground: var(--inverted-text-color, #fff);
+  --secondary: var(--color-muted, #6c757d);
+  --secondary-foreground: var(--primary-text-color, #00f);
+  --muted: var(--color-muted, #6c757d);
+  --muted-foreground: var(--secondary-text-color, #00f);
+  --accent: var(--accent-purple, #812eff);
+  --accent-foreground: var(--inverted-text-color, #fff);
+  --destructive: var(--color-error, #dc3545);
+  --border: var(--color-border, #c0c0c0);
+  --input: var(--color-border, #c0c0c0);
+  --ring: var(--color-primary, #00f);
+
+  /* Chart colors */
+  --chart-1: var(--accent-pink, #f205c5);
+  --chart-2: var(--accent-teal, #85b5bd);
+  --chart-3: var(--accent-purple, #812eff);
+  --chart-4: var(--accent-yellow, #f2e274);
+  --chart-5: var(--accent-cyan, #71efff);
+
+  /* Sidebar colors (mapped to main theme) */
+  --sidebar: var(--main-body-background-color, #fff);
+  --sidebar-foreground: var(--primary-text-color, #00f);
+  --sidebar-primary: var(--color-primary, #00f);
+  --sidebar-primary-foreground: var(--inverted-text-color, #fff);
+  --sidebar-accent: var(--accent-purple, #812eff);
+  --sidebar-accent-foreground: var(--inverted-text-color, #fff);
+  --sidebar-border: var(--color-border, #c0c0c0);
+  --sidebar-ring: var(--color-primary, #00f);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+/*
+ * Dark theme (.themeDark or .dark)
+ * Maps shadcn/ui variables to our dark theme design tokens
+ */
+.dark,
+.themeDark {
+  --background: var(--main-body-background-color, #181a1b);
+  --foreground: var(--primary-text-color, #6fa8ff);
+  --card: var(--main-body-background-color, #181a1b);
+  --card-foreground: var(--primary-text-color, #6fa8ff);
+  --popover: var(--color-light-bg, #23272a);
+  --popover-foreground: var(--primary-text-color, #6fa8ff);
+  --primary: var(--color-primary, #6fa8ff);
+  --primary-foreground: var(--inverted-text-color, #181a1b);
+  --secondary: var(--color-muted, #888);
+  --secondary-foreground: var(--primary-text-color, #6fa8ff);
+  --muted: var(--color-muted, #888);
+  --muted-foreground: var(--secondary-text-color, #aaa);
+  --accent: var(--accent-purple, #812eff);
+  --accent-foreground: var(--inverted-text-color, #181a1b);
+  --destructive: var(--color-error, #ff6b6b);
+  --border: var(--color-border, #333);
+  --input: var(--color-border-light, #444);
+  --ring: var(--color-primary, #6fa8ff);
+  --chart-1: var(--accent-pink, #f205c5);
+  --chart-2: var(--accent-cyan, #71efff);
+  --chart-3: var(--accent-yellow, #f2e274);
+  --chart-4: var(--accent-violet, #bc6dff);
+  --chart-5: var(--accent-teal, #85b5bd);
+  --sidebar: var(--color-light-bg, #23272a);
+  --sidebar-foreground: var(--primary-text-color, #6fa8ff);
+  --sidebar-primary: var(--color-primary, #6fa8ff);
+  --sidebar-primary-foreground: var(--inverted-text-color, #181a1b);
+  --sidebar-accent: var(--accent-purple, #812eff);
+  --sidebar-accent-foreground: var(--inverted-text-color, #181a1b);
+  --sidebar-border: var(--color-border, #333);
+  --sidebar-ring: var(--color-primary, #6fa8ff);
 }
 
+/*
+ * High Contrast Black theme (.themeHCB)
+ * Maximum contrast with black background
+ */
+.themeHCB {
+  --background: #000;
+  --foreground: #fff;
+  --card: #000;
+  --card-foreground: #fff;
+  --popover: #000;
+  --popover-foreground: #fff;
+  --primary: #fff;
+  --primary-foreground: #000;
+  --secondary: #333;
+  --secondary-foreground: #fff;
+  --muted: #333;
+  --muted-foreground: #ccc;
+  --accent: #fff;
+  --accent-foreground: #000;
+  --destructive: #fff;
+  --border: #fff;
+  --input: #333;
+  --ring: #fff;
+  --chart-1: #fff;
+  --chart-2: #ccc;
+  --chart-3: #999;
+  --chart-4: #666;
+  --chart-5: #333;
+  --sidebar: #000;
+  --sidebar-foreground: #fff;
+  --sidebar-primary: #fff;
+  --sidebar-primary-foreground: #000;
+  --sidebar-accent: #fff;
+  --sidebar-accent-foreground: #000;
+  --sidebar-border: #fff;
+  --sidebar-ring: #fff;
+}
+
+/*
+ * High Contrast White theme (.themeHCW)
+ * Maximum contrast with white background
+ */
+.themeHCW {
+  --background: #fff;
+  --foreground: #000;
+  --card: #fff;
+  --card-foreground: #000;
+  --popover: #fff;
+  --popover-foreground: #000;
+  --primary: #000;
+  --primary-foreground: #fff;
+  --secondary: #ccc;
+  --secondary-foreground: #000;
+  --muted: #ccc;
+  --muted-foreground: #333;
+  --accent: #000;
+  --accent-foreground: #fff;
+  --destructive: #000;
+  --border: #000;
+  --input: #ccc;
+  --ring: #000;
+  --chart-1: #000;
+  --chart-2: #333;
+  --chart-3: #666;
+  --chart-4: #999;
+  --chart-5: #ccc;
+  --sidebar: #fff;
+  --sidebar-foreground: #000;
+  --sidebar-primary: #000;
+  --sidebar-primary-foreground: #fff;
+  --sidebar-accent: #000;
+  --sidebar-accent-foreground: #fff;
+  --sidebar-border: #000;
+  --sidebar-ring: #000;
+}
+
+/*
+ * Base layer styles for shadcn/ui components
+ */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -122,3 +272,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+/*
+ * Hybrid approach note:
+ * - CSS Modules continue to work as-is for existing components
+ * - New components can use Tailwind utilities + shadcn/ui primitives
+ * - All utilities reference CSS custom properties for consistency
+ */
