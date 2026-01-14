@@ -939,5 +939,15 @@
   "storyPhoneInputError": "Invalid phone number format",
   "createSection": {
     "ariaLabel": "Call to action section"
-  }
+  },
+  "projectBackToWork": "Back to work",
+  "projectPrevious": "Previous project",
+  "projectNext": "Next project",
+  "projectNavLabel": "Project navigation",
+  "projectRelatedTitle": "Related Projects",
+  "projectServicesTitle": "Services",
+  "projectDurationLabel": "Duration",
+  "projectToolsLabel": "Tools",
+  "projectOverviewLabel": "Overview",
+  "projectScrollToTop": "Scroll to top"
 }

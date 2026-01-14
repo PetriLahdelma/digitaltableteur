@@ -929,5 +929,15 @@
   "storyPhoneInputError": "Ogiltigt telefonnummerformat",
   "createSection": {
     "ariaLabel": "Handlingsuppmaning sektion"
-  }
+  },
+  "projectBackToWork": "Tillbaka till arbete",
+  "projectPrevious": "Föregående projekt",
+  "projectNext": "Nästa projekt",
+  "projectNavLabel": "Projektnavigering",
+  "projectRelatedTitle": "Relaterade projekt",
+  "projectServicesTitle": "Tjänster",
+  "projectDurationLabel": "Varaktighet",
+  "projectToolsLabel": "Verktyg",
+  "projectOverviewLabel": "Översikt",
+  "projectScrollToTop": "Rulla uppåt"
 }
