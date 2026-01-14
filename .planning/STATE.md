@@ -1,7 +1,7 @@
 # Project State
 
 > **Session**: 2026-01-14
-> **Current Phase**: 07 (Homepage Redesign)
+> **Current Phase**: 08 (Portfolio & Projects)
 > **Status**: Complete
 
 ---
@@ -17,7 +17,7 @@
 | 05 | Core UI Components | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 06 | Interactive Components | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 07 | Homepage Redesign | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
-| 08 | Portfolio & Projects | In Progress | 2/1 | 2026-01-14 | — |
+| 08 | Portfolio & Projects | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 09 | About & Contact Pages | Not Started | 0/0 | — | — |
 | 10 | Blog Redesign | Not Started | 0/0 | — | — |
 | 11 | Theme & Accessibility Polish | Not Started | 0/0 | — | — |
@@ -27,16 +27,12 @@
 
 ## Current Focus
 
-**Phase 08: Portfolio & Projects** 🔄 IN PROGRESS
+**Phase 09: About & Contact Pages** — Not Started
 
-Goal: Redesign work listing and project detail pages.
-
-### Plans
-- **08-1**: Work Index Page Redesign (10 tasks) — ✅ Complete
-- **08-2**: Project Detail Template (12 tasks) — 📋 Planned
+Goal: Redesign about page and contact form with new design system.
 
 ### Next Actions
-1. `/gsd:execute-plan .planning/phases/08-portfolio-projects/08-2-PLAN.md` — Execute Project Detail Template
+1. `/gsd:plan-phase 09` — Create execution plan for Phase 09
 
 ---
 
@@ -182,7 +178,19 @@ Goal: Redesign work listing and project detail pages.
   - Composed WorkIndexPage with category filtering
   - Added i18n translations for EN/FI/SV
   - Updated barrel exports and page metadata
+- **Executed Phase 08-2** — 12 commits, all tasks complete
+  - Created ProjectDetailLayout pattern (scroll progress, sticky nav)
+  - Created ProjectHero pattern (3 variants, TextReveal animations)
+  - Created ProjectGallery component (lightbox integration)
+  - Created ProjectMetaSection pattern (services, tools, team, overview)
+  - Created ProjectNav component (prev/next navigation)
+  - Created RelatedProjects pattern (same-category filtering)
+  - Created ContentSection pattern (StoryBlock replacement)
+  - Created ProjectDetailTemplate (composed pattern)
+  - Refactored HelsinkiDesignSystemPage to use new template
+  - Added i18n translations for EN/FI/SV
+  - Updated barrel exports
 
 ---
 
-*Last updated: 2026-01-14 (Phase 08-1 complete)*
+*Last updated: 2026-01-14 (Phase 08 complete)*
