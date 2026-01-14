@@ -86,6 +86,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
+        {/*
+         * Font Loading Strategy:
+         * - next/font handles font preloading and optimization automatically
+         * - Syne (Google Fonts): Subset to latin, display: swap
+         * - Satoshi (local): Variable font with display: swap
+         * - Both fonts use CSS custom properties: --font-heading, --font-body
+         *
+         * No manual preload needed - next/font injects optimal preload tags
+         */}
         <Script id="gtm-base" strategy="beforeInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
