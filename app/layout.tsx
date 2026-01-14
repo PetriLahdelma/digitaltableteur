@@ -95,7 +95,12 @@ export default function RootLayout({
          *
          * No manual preload needed - next/font injects optimal preload tags
          */}
-        <Script id="gtm-base" strategy="beforeInteractive">
+        {/* Preconnect to external domains for faster resource loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        {/* GTM uses afterInteractive to avoid blocking LCP */}
+        <Script id="gtm-base" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
