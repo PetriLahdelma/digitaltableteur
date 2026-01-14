@@ -21,6 +21,9 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/hooks/*": ["./hooks/*"],
       "@dt/*": ["./nextjs-app/shared/components/*"],
       "@dt-pages/*": ["./nextjs-app/shared/components/pages/*"]
     }
