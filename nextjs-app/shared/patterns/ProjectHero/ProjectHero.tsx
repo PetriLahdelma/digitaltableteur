@@ -7,7 +7,7 @@ import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { TextReveal } from "../../components/animations/TextReveal";
 import { FadeIn } from "../../components/animations/FadeIn";
-import { ScrollIndicator } from "../../components/animations/ScrollIndicator";
+import { ScrollIndicator } from "../../components/ScrollIndicator";
 
 export interface ProjectHeroImage {
   src: string;

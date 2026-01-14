@@ -48,7 +48,7 @@ const columnClasses: Record<NonNullable<ProjectGalleryProps["columns"]>, string>
   4: "grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-4",
 };
 
-const aspectClasses: Record<Exclude<ProjectGalleryProps["aspectRatio"], "mixed">, string> = {
+const aspectClasses: Record<"square" | "video", string> = {
   square: "aspect-square",
   video: "aspect-video",
 };
