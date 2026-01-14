@@ -1,1 +1,5 @@
+/* Tailwind CSS 4.x + shadcn/ui */
+@import "./tailwind.css";
+
+/* Existing CSS Modules and design system */
 @import url("../nextjs-app/shared/index.css");
