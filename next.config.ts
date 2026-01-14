@@ -5,6 +5,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import path from "path";
+import webpack from "webpack";
 
 // Bundle analyzer configuration
 const withBundleAnalyzer = bundleAnalyzer({
@@ -164,6 +165,26 @@ const nextConfig: NextConfig = {
       ...config.watchOptions,
       ignored: ["**/shared/vite-pages/**", "**/node_modules/**"],
     };
+
+    // Redirect React imports from Sanity packages to a wrapper that includes useEffectEvent
+    // This fixes the "useEffectEvent is not exported from react" build error
+    const reactWrapper = path.resolve(__dirname, "lib/react-with-use-effect-event.js");
+    config.plugins.push(
+      new webpack.NormalModuleReplacementPlugin(
+        /^react$/,
+        (resource: { context?: string; request?: string }) => {
+          // Only apply to Sanity-related packages
+          if (
+            resource.context?.includes("node_modules/sanity") ||
+            resource.context?.includes("node_modules/@sanity") ||
+            resource.context?.includes("node_modules/next-sanity")
+          ) {
+            resource.request = reactWrapper;
+          }
+        },
+      ),
+    );
+
     return config;
   },
 };

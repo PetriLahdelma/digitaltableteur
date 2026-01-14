@@ -89,7 +89,7 @@
     "@sanity/block-content-to-markdown": "^1.0.1",
     "@sanity/client": "^7.13.2",
     "@sanity/image-url": "^1.2.0",
-    "@sanity/vision": "^4.22.0",
+    "@sanity/vision": "^5.3.1",
     "@sentry/nextjs": "^10.31.0",
     "@storybook/addon-vitest": "^10.1.11",
     "@swc/helpers": "^0.5.18",
@@ -124,7 +124,7 @@
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.2.0",
-    "sanity": "^4.22.0",
+    "sanity": "^5.3.1",
     "simple-icons": "^16.3.0",
     "styled-components": "^6.1.19",
     "tailwind-merge": "^3.4.0"
