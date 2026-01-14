@@ -20,6 +20,7 @@ export { ServicesSection, type ServicesSectionProps, type ServiceItem } from "./
 
 // Work/Portfolio preview
 export { WorkPreviewSection, type WorkPreviewSectionProps, type ProjectItem } from "./WorkPreviewSection";
+export { WorkHero, type WorkHeroProps } from "./WorkHero";
 
 // Highlight/CTA sections
 export { default as HighlightSection, type HighlightSectionProps } from "./HighlightSection";

@@ -6,6 +6,11 @@ export { IconButton, type IconButtonProps } from "../IconButton";
 export { VisuallyHidden, type VisuallyHiddenProps } from "../VisuallyHidden";
 export { Prose, type ProseProps } from "../Prose";
 
+// Work/Portfolio components
+export { CategoryFilter, type CategoryFilterProps } from "../CategoryFilter";
+export { EnhancedProjectCard, type EnhancedProjectCardProps } from "../EnhancedProjectCard";
+export { WorkGrid, type WorkGridProps } from "../WorkGrid";
+
 // Form components
 export { FormField, type FormFieldProps } from "../FormField";
 export { FormGroup, type FormGroupProps } from "../FormGroup";
