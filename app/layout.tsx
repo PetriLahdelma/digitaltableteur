@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
+import { fontVariables } from "./fonts";
 import {
   getOrganizationSchema,
   getWebSiteSchema,
@@ -80,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
         <Script id="gtm-base" strategy="beforeInteractive">
           {`
