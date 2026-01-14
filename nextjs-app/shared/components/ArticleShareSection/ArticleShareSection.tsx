@@ -1,0 +1,164 @@
+"use client";
+
+import { useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { Twitter, Linkedin, Facebook, Link2, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+export interface ArticleShareSectionProps {
+  /** Article URL to share */
+  url: string;
+  /** Article title for share text */
+  title: string;
+  /** Layout direction */
+  layout?: "horizontal" | "vertical";
+  /** Show section title */
+  showTitle?: boolean;
+  /** Custom className */
+  className?: string;
+}
+
+/**
+ * ArticleShareSection - Social sharing buttons for articles
+ */
+export function ArticleShareSection({
+  url,
+  title,
+  layout = "horizontal",
+  showTitle = true,
+  className,
+}: ArticleShareSectionProps) {
+  const { t } = useTranslation();
+  const [copied, setCopied] = useState(false);
+
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
+
+  const shareLinks = {
+    twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+    linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+  };
+
+  const copyToClipboard = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback for older browsers
+      const textArea = document.createElement("textarea");
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }, [url]);
+
+  const isVertical = layout === "vertical";
+
+  const buttonBaseClass = cn(
+    "inline-flex items-center justify-center",
+    "w-10 h-10 rounded-full",
+    "border border-border",
+    "text-muted-foreground",
+    "transition-colors duration-200",
+    "hover:bg-foreground hover:text-background hover:border-foreground",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+  );
+
+  return (
+    <div
+      className={cn(
+        isVertical ? "flex flex-col items-start gap-4" : "space-y-4",
+        className
+      )}
+    >
+      {/* Title */}
+      {showTitle && (
+        <h3
+          className={cn(
+            "font-body text-sm font-medium",
+            "text-muted-foreground uppercase tracking-wider"
+          )}
+        >
+          {t("articleShareTitle", "Share this article")}
+        </h3>
+      )}
+
+      {/* Buttons */}
+      <div
+        className={cn(
+          "flex gap-3",
+          isVertical && "flex-col"
+        )}
+      >
+        {/* Twitter */}
+        <a
+          href={shareLinks.twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonBaseClass}
+          aria-label={t("shareTwitter", "Share on Twitter")}
+        >
+          <Twitter className="w-4 h-4" aria-hidden="true" />
+        </a>
+
+        {/* LinkedIn */}
+        <a
+          href={shareLinks.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonBaseClass}
+          aria-label={t("shareLinkedIn", "Share on LinkedIn")}
+        >
+          <Linkedin className="w-4 h-4" aria-hidden="true" />
+        </a>
+
+        {/* Facebook */}
+        <a
+          href={shareLinks.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonBaseClass}
+          aria-label={t("shareFacebook", "Share on Facebook")}
+        >
+          <Facebook className="w-4 h-4" aria-hidden="true" />
+        </a>
+
+        {/* Copy link */}
+        <button
+          type="button"
+          onClick={copyToClipboard}
+          className={cn(
+            buttonBaseClass,
+            copied && "bg-green-500 text-white border-green-500"
+          )}
+          aria-label={
+            copied
+              ? t("articleLinkCopied", "Link copied!")
+              : t("articleCopyLink", "Copy link")
+          }
+        >
+          {copied ? (
+            <Check className="w-4 h-4" aria-hidden="true" />
+          ) : (
+            <Link2 className="w-4 h-4" aria-hidden="true" />
+          )}
+        </button>
+      </div>
+
+      {/* Copy feedback (visual) */}
+      {copied && (
+        <span className="text-sm font-body text-green-600 dark:text-green-400">
+          {t("articleLinkCopied", "Link copied!")}
+        </span>
+      )}
+    </div>
+  );
+}
+
+ArticleShareSection.displayName = "ArticleShareSection";
