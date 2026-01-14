@@ -17,6 +17,7 @@ import type { BlogPostEntry } from "../../data/blogPosts";
 // MDX component imports preserved from original
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
 import CodeSnippet, { type SupportedLanguage } from "@dt/CodeSnippet";
+import { MdxImage } from "../../components/MdxImage";
 import React from "react";
 
 // ============================================
@@ -63,8 +64,9 @@ const MdxAuthorBio = (props: React.ComponentProps<typeof AuthorBio>) => {
   return <AuthorBio {...props} />;
 };
 
-const MdxImage = (props: React.ComponentPropsWithoutRef<"img">) => {
-  return <img {...props} className="rounded-lg" />;
+// MdxImage wrapper - uses optimized Next.js Image component
+const MdxImageWrapper = (props: React.ComponentPropsWithoutRef<"img">) => {
+  return <MdxImage {...props} />;
 };
 
 const MdxFigcaption = ({
@@ -178,7 +180,7 @@ const MdxPre = ({
 const mdxComponents = {
   Embed,
   AuthorBio: MdxAuthorBio,
-  img: MdxImage,
+  img: MdxImageWrapper,
   figcaption: MdxFigcaption,
   pre: MdxPre,
   code: MdxCode,
