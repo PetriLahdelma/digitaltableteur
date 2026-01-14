@@ -53,3 +53,7 @@ export { SiteFooter, type SiteFooterProps } from "./SiteFooter";
 
 // Navigation barrel (for detailed imports)
 export * from "./navigation";
+
+// Blog patterns
+export { BlogHero, type BlogHeroProps } from "./BlogHero";
+export { BlogIndexContent, type BlogIndexContentProps } from "./BlogIndexContent";
