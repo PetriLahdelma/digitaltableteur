@@ -55,3 +55,9 @@ export { default as Toast } from "./Toast/Toast";
 export { default as TransformingActionInput } from "./TransformingActionInput/TransformingActionInput";
 export { ValueCard, type ValueCardProps } from "./ValueCard";
 export { default as WorkNav } from "./WorkNav/WorkNav";
+
+// Blog components (Phase 10)
+export { EnhancedArticleCard, type EnhancedArticleCardProps } from "./EnhancedArticleCard";
+export { BlogGrid, type BlogGridProps } from "./BlogGrid";
+export { BlogCategoryFilter, type BlogCategoryFilterProps } from "./BlogCategoryFilter";
+export { Pagination, type PaginationProps } from "./Pagination";
