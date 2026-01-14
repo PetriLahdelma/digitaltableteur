@@ -1,8 +1,8 @@
 # Project State
 
 > **Session**: 2026-01-14
-> **Current Phase**: 04 (Layout System)
-> **Status**: Complete
+> **Current Phase**: 05 (Core UI Components)
+> **Status**: In Progress (05-1 complete, 05-2 pending)
 
 ---
 
@@ -14,7 +14,7 @@
 | 02 | Typography & Font System | Complete | 1/1 | 2026-01-14 | 2026-01-14 |
 | 03 | Animation Infrastructure | Complete | 1/1 | 2026-01-14 | 2026-01-14 |
 | 04 | Layout System | Complete | 1/1 | 2026-01-14 | 2026-01-14 |
-| 05 | Core UI Components | Planned | 0/2 | — | — |
+| 05 | Core UI Components | In Progress | 1/2 | 2026-01-14 | — |
 | 06 | Interactive Components | Not Started | 0/0 | — | — |
 | 07 | Homepage Redesign | Not Started | 0/0 | — | — |
 | 08 | Portfolio & Projects | Not Started | 0/0 | — | — |
@@ -31,13 +31,12 @@
 
 Goal: Build core UI component library with Tailwind.
 
-### Plans Created
-- **05-1**: UI Components Enhancement (10 tasks) — Button, TextLink, Tag, Divider, IconButton, VisuallyHidden, Prose
-- **05-2**: Form Components Enhancement (8 tasks) — FormField, TextInput, TextArea, FormGroup, CheckboxField
+### Plans
+- **05-1**: UI Components Enhancement ✅ COMPLETE (10 tasks)
+- **05-2**: Form Components Enhancement (8 tasks) — pending
 
 ### Next Actions
-1. `/gsd:execute-plan 05-1` — Execute UI Components plan
-2. Then `/gsd:execute-plan 05-2` — Execute Form Components plan
+1. `/gsd:execute-plan 05-2` — Execute Form Components plan
 
 ---
 
@@ -79,6 +78,11 @@ Goal: Build core UI component library with Tailwind.
 - **Planned Phase 05** — Created 2 execution plans
   - 05-1: UI Components Enhancement (10 tasks)
   - 05-2: Form Components Enhancement (8 tasks)
+- **Executed Phase 05-1** — 9 commits, all tasks complete
+  - Extended shadcn/ui Button with studio variants (primary, inverse, minimal, xl)
+  - Created 6 Tailwind-first UI components: TextLink, Tag, Divider, IconButton, VisuallyHidden, Prose
+  - Created UI barrel export at `nextjs-app/shared/components/ui/index.ts`
+  - Added Phase 05 UI Components demo to TailwindTest
 
 ---
 
@@ -120,4 +124,4 @@ Goal: Build core UI component library with Tailwind.
 
 ---
 
-*Last updated: 2026-01-14 (Phase 05 planned)*
+*Last updated: 2026-01-14 (Phase 05-1 complete)*
