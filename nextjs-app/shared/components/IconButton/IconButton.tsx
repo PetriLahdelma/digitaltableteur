@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 export interface IconButtonProps {
+  /** Pass a rendered icon element (e.g., <Heart />) */
   icon: ReactNode;
   label: string; // Required for accessibility
   variant?: "default" | "ghost" | "outline";

@@ -31,6 +31,14 @@ import {
   Center,
   AspectRatio,
 } from "@/nextjs-app/shared/components/Layout";
+import {
+  TextLink,
+  Tag,
+  Divider,
+  IconButton,
+  Prose,
+} from "@/nextjs-app/shared/components/ui";
+import { ArrowRight, Heart, Share, Star } from "@phosphor-icons/react";
 
 /**
  * Temporary test component to verify Tailwind CSS + shadcn/ui integration.
@@ -286,6 +294,95 @@ export default function TailwindTest() {
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
             <strong className="font-heading">Layout Stack:</strong> Container, Section, Stack, Spacer, Center, AspectRatio + existing Grid/FlexBox
+          </p>
+        </div>
+      </div>
+
+      {/* UI Components Demo - Phase 05 */}
+      <div className="mt-8 pt-8 border-t border-border">
+        <h3 className="font-heading text-title-m font-bold mb-6">
+          UI Components (Tailwind-first)
+        </h3>
+
+        <Stack gap="lg">
+          {/* Studio Button Variants */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Button Studio Variants:</p>
+            <Stack direction="horizontal" gap="sm" wrap>
+              <Button variant="primary">Primary</Button>
+              <Button variant="inverse">Inverse</Button>
+              <Button variant="minimal">Minimal</Button>
+              <Button variant="primary" size="xl">XL Size</Button>
+            </Stack>
+          </div>
+
+          {/* TextLink Variants */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">TextLink Variants:</p>
+            <Stack direction="horizontal" gap="md" wrap>
+              <TextLink href="/about">Default Link</TextLink>
+              <TextLink href="/work" variant="muted">Muted Link</TextLink>
+              <TextLink href="/contact" variant="accent">Accent Link</TextLink>
+              <TextLink href="https://example.com" external>
+                External Link <ArrowRight className="inline" weight="bold" />
+              </TextLink>
+            </Stack>
+          </div>
+
+          {/* Tag Variants */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Tag Variants:</p>
+            <Stack direction="horizontal" gap="sm" wrap>
+              <Tag>Default</Tag>
+              <Tag variant="secondary">Secondary</Tag>
+              <Tag variant="outline">Outline</Tag>
+              <Tag variant="success">Success</Tag>
+              <Tag variant="warning">Warning</Tag>
+              <Tag variant="error">Error</Tag>
+              <Tag variant="info">Info</Tag>
+              <Tag size="lg">Large Tag</Tag>
+            </Stack>
+          </div>
+
+          {/* Divider */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Divider:</p>
+            <p className="font-body text-text-m mb-2">Content above divider</p>
+            <Divider />
+            <p className="font-body text-text-m mt-2">Content below divider</p>
+            <div className="flex items-center gap-4 mt-4 h-8">
+              <span className="font-body text-text-m">Left</span>
+              <Divider orientation="vertical" />
+              <span className="font-body text-text-m">Right</span>
+            </div>
+          </div>
+
+          {/* IconButton */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">IconButton:</p>
+            <Stack direction="horizontal" gap="sm">
+              <IconButton icon={<Heart className="h-5 w-5" />} label="Like" />
+              <IconButton icon={<Share className="h-5 w-5" />} label="Share" variant="outline" />
+              <IconButton icon={<Star className="h-5 w-5" />} label="Favorite" variant="ghost" />
+              <IconButton icon={<ArrowRight className="h-6 w-6" />} label="Next" size="lg" />
+            </Stack>
+          </div>
+
+          {/* Prose */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">Prose (Rich Text):</p>
+            <Prose size="sm">
+              <p>
+                The <strong>Prose</strong> component wraps rich text content with proper typography styles.
+                It handles headings, paragraphs, lists, and code blocks automatically.
+              </p>
+            </Prose>
+          </div>
+        </Stack>
+
+        <div className="mt-6 p-4 bg-muted/50 rounded-sm">
+          <p className="font-body text-text-s">
+            <strong className="font-heading">UI Components:</strong> Button (studio variants), TextLink, Tag, Divider, IconButton, VisuallyHidden, Prose
           </p>
         </div>
       </div>
