@@ -1,182 +1,227 @@
-# Codebase Structure
+# Structure
 
-**Analysis Date:** 2026-01-13
+> Directory layout and module organization for Digitaltableteur.
 
-## Directory Layout
-
-```
-digitaltableteur/
-├── app/                          # Next.js 15 App Router (PRODUCTION)
-├── nextjs-app/                   # Next.js workspace + shared design system
-│   ├── app/                      # Workspace app (symlinks to ../app)
-│   └── shared/                   # Design system (components, patterns, utils)
-├── providers/                    # App providers (I18n, Theme, Toast)
-├── api-legacy-vercel-functions/  # DEPRECATED: Legacy Vercel functions
-├── vite-app/                     # DEPRECATED: Legacy Vite app
-├── src/                          # DEPRECATED: Legacy source files
-├── digitaltableteur-blog/        # Sanity CMS workspace
-├── content/                      # Static content (blog posts, authors)
-├── scripts/                      # Automation & build scripts (48+)
-├── docs/                         # Documentation (79+ files)
-├── .storybook/                   # Storybook configuration
-├── public/                       # Static assets
-├── lib/                          # Root utilities (akaunting, pseo)
-├── .planning/                    # Project planning documents
-└── .claude/                      # Claude Code context files
-```
-
-## Directory Purposes
-
-**app/**
-- Purpose: Production Next.js 15 App Router application
-- Contains: Routes, API endpoints, lib utilities
-- Key files: `layout.tsx` (root), `page.tsx` (home), `api/*/route.ts`
-- Subdirectories: `blog/`, `contact/`, `about/`, `work/`, `pseo/`, `api/`, `lib/`
-
-**nextjs-app/shared/components/**
-- Purpose: Design system component library (74+ components)
-- Contains: Reusable UI components with CSS Modules
-- Key files: Each component in `ComponentName/ComponentName.tsx`
-- Subdirectories: `Button/`, `Card/`, `Accordion/`, `ContactForm/`, `pages/`
-
-**nextjs-app/shared/patterns/**
-- Purpose: Composite layout patterns
-- Contains: `Hero/`, `Footer/`, `Header/`, `PageLayout/`, `GridBlock/`, `StoryBlock/`
-- Key files: Pattern main files and related sub-components
-
-**providers/**
-- Purpose: React context providers for cross-cutting concerns
-- Contains: `I18nProvider.tsx`, `ThemeProvider.tsx`, `ToastProvider.tsx`
-- Key files: Each provider wraps application for global state
-
-**app/api/**
-- Purpose: Server-side API route handlers
-- Contains: `chat/`, `contact/`, `download-cv/`, `gdpr/`, `save-contact/`, `test-health/`
-- Key files: `route.ts` in each directory
-
-**app/lib/**
-- Purpose: API-specific utilities and services
-- Contains: `mongodb.ts`, `promptGuardrails.ts`, `sanitize.ts`, `security-logger.ts`, `structuredData.ts`, `metadata.ts`
-- Key files: Each utility module
-
-**scripts/**
-- Purpose: Automation, build, and deployment scripts
-- Contains: `linear/`, `sanity-migration/`, `pseo/`, plus standalone scripts
-- Key files: `generate-blog-manifest.mjs`, `run-visual-tests.mjs`, `generate-sitemap-next.mjs`
-
-**docs/**
-- Purpose: Development documentation and guidelines
-- Contains: Architecture docs, API docs, LLM instructions, migration plans
-- Key files: `LLM_COMPONENT_GENERATION_RULES.md`, `NEXTJS_MIGRATION_PLAN.md`, `LINEAR_AUTOMATION.md`
-
-## Key File Locations
-
-**Entry Points:**
-- `app/layout.tsx` - Root layout with providers, metadata, analytics
-- `app/page.tsx` - Home page (imports from `@dt-pages/Home/HomePage`)
-- `app/api/chat/route.ts` - AI chat endpoint
-
-**Configuration:**
-- `next.config.ts` - Next.js configuration
-- `tsconfig.json` - TypeScript with path aliases
-- `sanity.config.ts` - Sanity CMS configuration
-- `vitest.config.mts` - Test runner configuration
-- `.storybook/main.ts` - Storybook configuration
-
-**Core Logic:**
-- `app/api/chat/route.ts` - AI chat streaming endpoint
-- `app/api/donny-tools.ts` - AI tool definitions
-- `app/lib/promptGuardrails.ts` - Security checks for AI
-- `app/lib/mongodb.ts` - Database connection
-
-**Testing:**
-- `nextjs-app/shared/components/*/ComponentName.test.tsx` - Component unit tests
-- `app/__tests__/accessibility-pages.test.tsx` - Page accessibility tests
-- `vitest.setup.ts` - Global test setup
-
-**Documentation:**
-- `CLAUDE.md` - Root development guidelines
-- `docs/LLM_COMPONENT_GENERATION_RULES.md` - Component creation rules
-- `docs/NEXTJS_MIGRATION_PLAN.md` - Migration documentation
-
-## Naming Conventions
-
-**Files:**
-- `ComponentName.tsx` - React components (PascalCase)
-- `ComponentName.module.css` - CSS Modules
-- `ComponentName.test.tsx` - Test files
-- `ComponentName.stories.tsx` - Storybook stories
-- `utility-name.ts` - Utility modules (kebab-case)
-- `page.tsx` / `layout.tsx` / `route.ts` - Next.js conventions
-
-**Directories:**
-- `ComponentName/` - Component folders (PascalCase)
-- `feature-name/` - Feature directories (kebab-case)
-- `[slug]/` - Dynamic routes (Next.js bracket syntax)
-
-**Special Patterns:**
-- `index.ts` - Barrel exports for component folders
-- `ClientComponent.tsx` - Client components in server component pages
-- `*.schema.json` - Figma design integration files
-
-## Where to Add New Code
-
-**New Component:**
-- Primary: `nextjs-app/shared/components/ComponentName/`
-- Files: `ComponentName.tsx`, `.module.css`, `.test.tsx`, `.stories.tsx`, `index.ts`
-- Tests: Colocated in same folder
-
-**New Page:**
-- Primary: `app/route-name/page.tsx`
-- Client parts: `app/route-name/ClientContent.tsx`
-- Shared component: `nextjs-app/shared/components/pages/PageName/`
-
-**New API Endpoint:**
-- Primary: `app/api/endpoint-name/route.ts`
-- Shared utilities: `app/lib/`
-- Tests: Colocated or `app/__tests__/`
-
-**New Pattern:**
-- Primary: `nextjs-app/shared/patterns/PatternName/`
-- Structure: Same as components
-
-**New Script:**
-- Primary: `scripts/script-name.mjs` or `scripts/category/script-name.ts`
-- Types: Linear (`scripts/linear/`), Sanity (`scripts/sanity-migration/`)
-
-**Utilities:**
-- App-specific: `app/lib/`
-- Shared helpers: `nextjs-app/shared/utils/`
-- Root utilities: `lib/`
-
-## Special Directories
-
-**.planning/**
-- Purpose: Project planning and codebase documentation
-- Source: Generated by GSD workflows
-- Committed: Yes
-
-**__visual__/**
-- Purpose: Visual regression test snapshots
-- Source: Generated by Storybook test runner
-- Committed: Yes (baselines)
-
-**coverage/**
-- Purpose: Test coverage reports
-- Source: Generated by Vitest
-- Committed: No (gitignored)
-
-**dist/**
-- Purpose: Vite build output (legacy)
-- Source: `npm run build` in vite-app
-- Committed: No (gitignored in production)
-
-**storybook-static/**
-- Purpose: Built Storybook documentation
-- Source: `npm run build-storybook`
-- Committed: No (deployed separately)
+**Last Updated**: 2026-01-14
 
 ---
 
-*Structure analysis: 2026-01-13*
-*Update when directory structure changes*
+## Root Directory
+
+```
+digitaltableteur/
+│
+├── app/                           # Next.js 15 App Router (production)
+├── nextjs-app/shared/             # Shared design system
+├── providers/                     # React Context providers
+├── api-legacy-vercel-functions/   # Legacy serverless functions
+├── digitaltableteur-blog/         # Sanity CMS studio
+├── scripts/                       # Automation scripts (40+)
+├── docs/                          # Documentation (69+ files)
+├── .storybook/                    # Storybook configuration
+├── akaunting/                     # Self-hosted accounting (Docker)
+├── content/                       # Static markdown/MDX
+├── sanity-output/                 # Cached Sanity exports
+└── vite-app/                      # Legacy Vite (being sunset)
+```
+
+---
+
+## Next.js Routes (`app/`)
+
+```
+app/
+├── page.tsx                   # Home (/)
+├── layout.tsx                 # Root layout (providers, metadata)
+├── globals.css                # Global CSS
+│
+├── about/page.tsx             # /about
+├── blog/                      # /blog routes
+│   ├── page.tsx               # Blog listing
+│   └── [slug]/page.tsx        # Dynamic blog article
+├── contact/page.tsx           # /contact form
+├── work/                      # Portfolio pages
+│   ├── page.tsx               # /work (index)
+│   └── [project]/page.tsx     # Individual projects
+│
+├── api/                       # API route handlers
+│   ├── chat/route.ts          # AI chat streaming
+│   ├── contact/route.ts       # Contact form submission
+│   ├── download-cv/route.ts   # Resume download (auth)
+│   ├── gdpr/delete-data/route.ts  # GDPR deletion
+│   ├── save-contact/route.ts  # Legacy contact save
+│   ├── llms.txt/route.ts      # AI crawler info
+│   └── test-health/           # Health check endpoints
+│
+├── lib/                       # App-specific utilities
+│   ├── structuredData.ts      # JSON-LD schema
+│   ├── mongodb.ts             # MongoDB connection
+│   └── promptGuardrails.ts    # AI safety checks
+│
+├── components/                # Next.js-specific components
+│   ├── NextLayout.tsx
+│   ├── NextHeader.tsx
+│   └── HtmlLangSync.tsx
+│
+├── blog/postMetadata.ts       # Blog metadata manager
+├── sitemap.ts                 # Dynamic sitemap
+└── robots.ts                  # Dynamic robots.txt
+```
+
+---
+
+## Shared Design System (`nextjs-app/shared/`)
+
+```
+nextjs-app/shared/
+├── components/                # 77+ UI components
+│   ├── Button/
+│   ├── Card/
+│   ├── Title/
+│   ├── Text/
+│   ├── Input/
+│   ├── ContactForm/
+│   ├── Gallery/
+│   ├── Accordion/
+│   ├── Tabs/
+│   ├── Modal/
+│   ├── Toast/
+│   ├── CookieConsent/
+│   └── ... (70+ more)
+│
+├── patterns/                  # 11 layout patterns
+│   ├── Grid/
+│   ├── FlexBox/
+│   ├── Hero/
+│   ├── Sidebar/
+│   └── ...
+│
+├── hooks/                     # Custom React hooks
+│   └── usePersistentTheme.ts
+│
+├── styles/                    # Design tokens
+│   ├── variables.css          # CSS custom properties
+│   ├── fonts.css              # Font imports
+│   ├── typography.css         # Text scale
+│   └── grain.css              # Visual texture
+│
+├── locales/                   # Translations
+│   ├── en/translation.json    # English
+│   ├── fi/translation.json    # Finnish
+│   └── sv/translation.json    # Swedish
+│
+├── types/                     # Shared TypeScript interfaces
+├── utils/                     # Utilities (sanitize, dates)
+├── lib/                       # Cookie consent, helpers
+├── data/                      # Static data (mock, fixtures)
+├── assets/                    # Icons, images, SVGs
+└── stories/                   # Storybook stories
+```
+
+---
+
+## Component Structure (Mandatory)
+
+Every component MUST follow this structure:
+
+```
+ComponentName/
+├── ComponentName.tsx          # Main component (default export)
+├── ComponentName.module.css   # CSS Modules styling
+├── ComponentName.stories.tsx  # Storybook stories
+├── ComponentName.test.tsx     # Unit tests
+├── index.ts                   # Barrel export
+└── [optional files]
+    ├── ComponentName.a11y.test.tsx      # A11y tests
+    ├── ComponentName.behavior.test.tsx  # Behavioral tests
+    └── schema.json                      # LLM generation schema
+```
+
+---
+
+## Providers (`providers/`)
+
+```
+providers/
+├── I18nProvider.tsx           # i18next configuration
+├── NextThemeProvider.tsx      # Dark/light mode
+├── ToastProvider.tsx          # Notifications
+└── CookieConsentProvider.tsx  # GDPR cookie banner
+```
+
+---
+
+## Scripts (`scripts/`)
+
+```
+scripts/
+├── sanity-migration/          # Blog migration tools
+├── linear/                    # Linear issue integration
+├── fetch-figma.js             # Figma component fetch
+├── generate-blog-manifest.mjs # Blog metadata generation
+└── [40+ other automation scripts]
+```
+
+---
+
+## Documentation (`docs/`)
+
+```
+docs/
+├── LLM_COMPONENT_GENERATION_RULES.md     # Component bible
+├── LLM-CRITICAL-REASONING-AND-PLANNING-INSTRUCTIONS.md
+├── NEXTJS_MIGRATION_PLAN.md              # Migration guide
+├── COMPREHENSIVE_SECURITY_AUDIT_*.md     # Security audits
+├── ACCESSIBILITY_AND_ISSUES_REPORT.md
+└── [69+ documentation files]
+```
+
+---
+
+## Configuration Files
+
+| File | Purpose |
+|------|---------|
+| `next.config.ts` | Next.js settings (MDX, CSP, aliases) |
+| `tsconfig.json` | TypeScript (strict mode, path aliases) |
+| `.eslintrc.cjs` | ESLint rules |
+| `.stylelintrc.json` | CSS linting (design tokens) |
+| `vitest.config.mts` | Test runner |
+| `playwright.config.ts` | E2E tests |
+| `sanity.config.ts` | Sanity CMS client |
+| `sentry.*.config.ts` | Error tracking (3 files) |
+| `mcp.json` | MCP server configuration |
+
+---
+
+## Path Aliases
+
+| Alias | Path | Usage |
+|-------|------|-------|
+| `@dt/*` | `./nextjs-app/shared/components/*` | Components |
+| `@dt-pages/*` | `./nextjs-app/shared/components/pages/*` | Page components |
+| `@/*` | Root directory | General imports |
+
+---
+
+## Legacy Code Locations
+
+```
+# Being phased out (do not add new code here)
+├── vite-app/                    # Old Vite app
+├── api-legacy-vercel-functions/ # Old API routes
+├── nextjs-app/shared/vite-pages/ # Legacy Vite routes
+└── src/                         # Symlink for compatibility
+```
+
+---
+
+## Entry Points
+
+| Entry | File | Purpose |
+|-------|------|---------|
+| Web App | `app/layout.tsx` | Root layout with providers |
+| Home Page | `app/page.tsx` | Hero, services, testimonials |
+| Storybook | `.storybook/main.ts` | Component library |
+| API | `app/api/**/*.ts` | Serverless endpoints |
+| CMS Studio | `digitaltableteur-blog/` | Sanity editing |
