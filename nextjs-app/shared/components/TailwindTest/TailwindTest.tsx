@@ -58,6 +58,7 @@ import {
 import { useToast } from "@/nextjs-app/shared/components/interactive";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
 import { ArrowRight, Heart, Share, Star, MagnifyingGlass, EnvelopeSimple, Image as ImageIcon } from "@phosphor-icons/react";
+import { NavLink, SkipLink } from "@/nextjs-app/shared/patterns/navigation";
 
 /**
  * Temporary test component to verify Tailwind CSS + shadcn/ui integration.
@@ -632,6 +633,61 @@ export default function TailwindTest() {
         <div className="mt-6 p-4 bg-muted/50 rounded-sm">
           <p className="font-body text-text-s">
             <strong className="font-heading">Interactive Stack:</strong> Dialog (size/severity), Accordion (variants), Tabs (variants), Tooltip, Toast, Lightbox
+          </p>
+        </div>
+      </div>
+
+      {/* Navigation Components Demo - Phase 06-2 */}
+      <div className="mt-8 pt-8 border-t border-border">
+        <h3 className="font-heading text-title-m font-bold mb-6">
+          Navigation Components
+        </h3>
+
+        <Stack gap="lg">
+          {/* NavLink */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">NavLink (active state detection):</p>
+            <Stack direction="horizontal" gap="md" wrap>
+              <NavLink href="/" exact>Home</NavLink>
+              <NavLink href="/work">Work</NavLink>
+              <NavLink href="/about">About</NavLink>
+              <NavLink href="/blog">Blog</NavLink>
+              <NavLink href="/contact">Contact</NavLink>
+              <NavLink href="/dev/tailwind-test">Test Page (active)</NavLink>
+            </Stack>
+          </div>
+
+          {/* SkipLink demo note */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">SkipLink (accessibility):</p>
+            <p className="font-body text-text-m">
+              Press <kbd className="px-2 py-0.5 bg-muted border border-border rounded text-text-s font-mono">Tab</kbd> at the top of the page to see the skip link.
+            </p>
+            <p className="font-body text-text-s text-muted-foreground mt-2">
+              The SkipLink is hidden by default and becomes visible when focused, allowing keyboard users to bypass navigation.
+            </p>
+          </div>
+
+          {/* SiteHeader/SiteFooter note */}
+          <div className="bg-muted/30 p-4 rounded-sm">
+            <p className="font-body text-text-s text-muted-foreground mb-3">SiteHeader & SiteFooter:</p>
+            <p className="font-body text-text-m">
+              Look at the header and footer of this page. They are now using the new Tailwind-first navigation components with:
+            </p>
+            <ul className="font-body text-text-s text-muted-foreground mt-2 list-disc list-inside space-y-1">
+              <li>Sticky header with backdrop blur</li>
+              <li>Desktop navigation with NavLink active states</li>
+              <li>Language switcher (EN/FI/SV)</li>
+              <li>Theme toggle with animation</li>
+              <li>Mobile drawer with GSAP slide-in animation</li>
+              <li>Footer with social links and legal pages</li>
+            </ul>
+          </div>
+        </Stack>
+
+        <div className="mt-6 p-4 bg-muted/50 rounded-sm">
+          <p className="font-body text-text-s">
+            <strong className="font-heading">Navigation Stack:</strong> SiteHeader, SiteFooter, MobileDrawer, NavLink, SkipLink, useNavigation
           </p>
         </div>
       </div>
