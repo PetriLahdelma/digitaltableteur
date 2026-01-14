@@ -1,8 +1,8 @@
 # Project State
 
 > **Session**: 2026-01-14
-> **Current Phase**: 06 (Interactive Components)
-> **Status**: Complete (Plan 2/2 complete)
+> **Current Phase**: 07 (Homepage Redesign)
+> **Status**: In Progress (Plan 1/2 complete)
 
 ---
 
@@ -16,7 +16,7 @@
 | 04 | Layout System | Complete | 1/1 | 2026-01-14 | 2026-01-14 |
 | 05 | Core UI Components | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
 | 06 | Interactive Components | Complete | 2/2 | 2026-01-14 | 2026-01-14 |
-| 07 | Homepage Redesign | Not Started | 0/0 | — | — |
+| 07 | Homepage Redesign | In Progress | 1/2 | 2026-01-14 | — |
 | 08 | Portfolio & Projects | Not Started | 0/0 | — | — |
 | 09 | About & Contact Pages | Not Started | 0/0 | — | — |
 | 10 | Blog Redesign | Not Started | 0/0 | — | — |
@@ -27,17 +27,16 @@
 
 ## Current Focus
 
-**Phase 06: Interactive Components** ✅ COMPLETE
+**Phase 07: Homepage Redesign** 🚧 IN PROGRESS
 
-Goal: Build complex interactive components with animation.
+Goal: Redesign homepage with Hero → Services → Work → Contact flow.
 
 ### Plans
-- **06-1**: Interactive Components Enhancement (10 tasks) — ✅ Complete
-- **06-2**: Navigation Components Enhancement (10 tasks) — ✅ Complete
+- **07-1**: Hero Section Redesign (8 tasks) — ✅ Complete
+- **07-2**: Services, Work & CTA Sections (10 tasks) — Ready
 
 ### Next Actions
-1. `/gsd:plan-phase 07` — Plan Homepage Redesign
-2. `/gsd:execute-plan 07` — Execute Homepage Redesign
+1. `/gsd:execute-plan 07-2` — Execute Services & Work Sections
 
 ---
 
@@ -111,6 +110,15 @@ Goal: Build complex interactive components with animation.
   - Created navigation barrel export at `patterns/navigation/`
   - Updated NextLayout to use new navigation components
   - Added navigation demo to TailwindTest
+- **Planned Phase 07** — Created 2 execution plans for Homepage Redesign
+- **Executed Phase 07-1** — 8 commits, all tasks complete
+  - Created HeroSection pattern (viewport height, background variants)
+  - Created KineticTitle with 4 animation presets (fade, slide, wave, scramble)
+  - Created ScrollIndicator with bouncing animation and smooth scroll
+  - Created HeroBackground with gradient and noise variants
+  - Composed HomeHero section using all components
+  - Added i18n translations for EN/FI/SV
+  - Created patterns barrel export
 
 ---
 
@@ -152,4 +160,4 @@ Goal: Build complex interactive components with animation.
 
 ---
 
-*Last updated: 2026-01-14 (Phase 06-2 complete)*
+*Last updated: 2026-01-14 (Phase 07-1 complete)*
