@@ -1,9 +1,15 @@
 import withMDX from "@next/mdx";
+import bundleAnalyzer from "@next/bundle-analyzer";
 import type { NextConfig } from "next";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import path from "path";
+
+// Bundle analyzer configuration
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 // Environment-aware CSP
 // Development: Permissive (allows Next.js HMR, React devtools)
@@ -145,4 +151,5 @@ const withMdx = withMDX({
   },
 });
 
-export default withMdx(nextConfig);
+// Compose plugins: withMdx -> withBundleAnalyzer
+export default withBundleAnalyzer(withMdx(nextConfig));

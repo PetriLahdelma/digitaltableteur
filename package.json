@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "analyze": "ANALYZE=true next build",
     "postinstall": "node scripts/install-playwright-browsers.mjs",
     "postbuild": "node scripts/ensure-no-static-sitemap.mjs",
     "predev": "node scripts/generate-blog-manifest.mjs && node scripts/ensure-no-static-sitemap.mjs",
@@ -124,6 +125,7 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.1.1",
     "@storybook/addon-a11y": "^10.1.10",
     "@storybook/addon-docs": "^10.1.10",
     "@storybook/addon-mcp": "^0.1.6",
