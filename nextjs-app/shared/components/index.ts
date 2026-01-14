@@ -61,3 +61,10 @@ export { EnhancedArticleCard, type EnhancedArticleCardProps } from "./EnhancedAr
 export { BlogGrid, type BlogGridProps } from "./BlogGrid";
 export { BlogCategoryFilter, type BlogCategoryFilterProps } from "./BlogCategoryFilter";
 export { Pagination, type PaginationProps } from "./Pagination";
+
+// Article components (Phase 10-2)
+export { ArticleContent, type ArticleContentProps } from "./ArticleContent";
+export { TableOfContents, type TableOfContentsProps, type TOCItem } from "./TableOfContents";
+export { EnhancedAuthorCard, type EnhancedAuthorCardProps, type AuthorSocial } from "./EnhancedAuthorCard";
+export { ArticleShareSection, type ArticleShareSectionProps } from "./ArticleShareSection";
+export { ReadingProgress, type ReadingProgressProps } from "./ReadingProgress";

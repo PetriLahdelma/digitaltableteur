@@ -57,3 +57,9 @@ export * from "./navigation";
 // Blog patterns
 export { BlogHero, type BlogHeroProps } from "./BlogHero";
 export { BlogIndexContent, type BlogIndexContentProps } from "./BlogIndexContent";
+
+// Article patterns
+export { ArticleHero, type ArticleHeroProps } from "./ArticleHero";
+export { ArticleLayout, type ArticleLayoutProps } from "./ArticleLayout";
+export { ArticlePageTemplate, type ArticlePageTemplateProps } from "./ArticlePageTemplate";
+export { RelatedPosts, type RelatedPostsProps } from "./RelatedPosts";

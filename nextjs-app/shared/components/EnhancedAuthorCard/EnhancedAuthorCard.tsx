@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import NextLink from "next/link";
 import { useTranslation } from "react-i18next";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 export interface AuthorSocial {
@@ -73,9 +73,9 @@ export function EnhancedAuthorCard({
 
     if (profileUrl) {
       return (
-        <Link href={profileUrl} className="hover:opacity-80 transition-opacity">
+        <NextLink href={profileUrl} className="hover:opacity-80 transition-opacity">
           {content}
-        </Link>
+        </NextLink>
       );
     }
 
@@ -107,12 +107,12 @@ export function EnhancedAuthorCard({
         <div className="flex-1 min-w-0">
           {/* Name */}
           {profileUrl ? (
-            <Link
+            <NextLink
               href={profileUrl}
               className="font-display font-semibold text-lg text-foreground hover:text-primary transition-colors"
             >
               {name}
-            </Link>
+            </NextLink>
           ) : (
             <span className="font-display font-semibold text-lg text-foreground">
               {name}
@@ -128,13 +128,13 @@ export function EnhancedAuthorCard({
 
           {/* More link */}
           {showMoreLink && profileUrl && (
-            <Link
+            <NextLink
               href={profileUrl}
               className="inline-flex items-center gap-1 mt-2 text-sm font-body text-primary hover:underline"
             >
               {t("articleAboutAuthor", "View profile")}
-              <ArrowRight className="w-3 h-3" />
-            </Link>
+              <ArrowRight size={12} />
+            </NextLink>
           )}
         </div>
       </div>
@@ -169,12 +169,12 @@ export function EnhancedAuthorCard({
             {t("articleAboutAuthor", "About the author")}
           </p>
           {profileUrl ? (
-            <Link
+            <NextLink
               href={profileUrl}
               className="font-display font-semibold text-xl text-foreground hover:text-primary transition-colors"
             >
               {name}
-            </Link>
+            </NextLink>
           ) : (
             <span className="font-display font-semibold text-xl text-foreground">
               {name}
@@ -209,7 +209,7 @@ export function EnhancedAuthorCard({
 
       {/* More link */}
       {showMoreLink && profileUrl && (
-        <Link
+        <NextLink
           href={profileUrl}
           className={cn(
             "inline-flex items-center gap-2",
@@ -221,8 +221,8 @@ export function EnhancedAuthorCard({
           )}
         >
           {t("blogReadMore", "View all posts")}
-          <ArrowRight className="w-4 h-4" />
-        </Link>
+          <ArrowRight size={16} />
+        </NextLink>
       )}
     </div>
   );

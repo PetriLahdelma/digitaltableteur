@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { Twitter, Linkedin, Facebook, Link2, Check } from "lucide-react";
+import { XLogo, LinkedinLogo, FacebookLogo, Link, Check } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 export interface ArticleShareSectionProps {
@@ -96,15 +96,15 @@ export function ArticleShareSection({
           isVertical && "flex-col"
         )}
       >
-        {/* Twitter */}
+        {/* Twitter/X */}
         <a
           href={shareLinks.twitter}
           target="_blank"
           rel="noopener noreferrer"
           className={buttonBaseClass}
-          aria-label={t("shareTwitter", "Share on Twitter")}
+          aria-label={t("shareTwitter", "Share on X")}
         >
-          <Twitter className="w-4 h-4" aria-hidden="true" />
+          <XLogo size={16} aria-hidden="true" />
         </a>
 
         {/* LinkedIn */}
@@ -115,7 +115,7 @@ export function ArticleShareSection({
           className={buttonBaseClass}
           aria-label={t("shareLinkedIn", "Share on LinkedIn")}
         >
-          <Linkedin className="w-4 h-4" aria-hidden="true" />
+          <LinkedinLogo size={16} aria-hidden="true" />
         </a>
 
         {/* Facebook */}
@@ -126,7 +126,7 @@ export function ArticleShareSection({
           className={buttonBaseClass}
           aria-label={t("shareFacebook", "Share on Facebook")}
         >
-          <Facebook className="w-4 h-4" aria-hidden="true" />
+          <FacebookLogo size={16} aria-hidden="true" />
         </a>
 
         {/* Copy link */}
@@ -144,9 +144,9 @@ export function ArticleShareSection({
           }
         >
           {copied ? (
-            <Check className="w-4 h-4" aria-hidden="true" />
+            <Check size={16} aria-hidden="true" />
           ) : (
-            <Link2 className="w-4 h-4" aria-hidden="true" />
+            <Link size={16} aria-hidden="true" />
           )}
         </button>
       </div>
