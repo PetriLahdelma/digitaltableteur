@@ -1,456 +1,224 @@
-# Conventions
+# Coding Conventions
 
-> Code style, naming patterns, and development practices for Digitaltableteur.
+**Analysis Date:** 2026-01-16
 
-**Last Updated**: 2026-01-14
+## Naming Patterns
 
----
+**Files:**
+- PascalCase for components: `Button.tsx`, `ContactForm.tsx`
+- camelCase for utilities: `sanitize.ts`, `mongodb.ts`
+- kebab-case for routes: `download-cv/route.ts`
+- `.module.css` suffix for CSS Modules
+- `.test.tsx` suffix for tests (colocated)
+- `.stories.tsx` suffix for Storybook
 
-## Typography System
+**Functions:**
+- camelCase for all functions: `handleSubmit`, `validateInput`
+- `handle` prefix for event handlers: `handleClick`, `handleChange`
+- `use` prefix for hooks: `usePersistentTheme`, `useTranslation`
 
-### Font Stack
+**Variables:**
+- camelCase for variables: `isLoading`, `userData`
+- UPPER_SNAKE_CASE for constants: `MAX_RETRIES`, `API_BASE_URL`
+- No underscore prefix for private members
 
-| Role | Font | Source | Variable |
-|------|------|--------|----------|
-| Heading/Display | Syne | Google Fonts | `--font-heading` |
-| Body/Text | Satoshi | Fontshare | `--font-body` |
-
-### Font Loading
-
-Fonts are configured via `next/font` in `app/fonts.ts`:
-- **Syne**: Variable font (400-800), imported from Google Fonts
-- **Satoshi**: Variable font (300-900), self-hosted from `app/fonts/`
-
-CSS variables `--font-heading` and `--font-body` are applied to `<html>` via `fontVariables` class.
-
-### Tailwind Utilities
-
-| Utility | Font | Usage |
-|---------|------|-------|
-| `font-heading` | Syne | Display text, headings |
-| `font-body` | Satoshi | Body text, UI elements |
-| `font-display` | Syne | Alias for heading |
-| `font-sans` | Satoshi | Alias for body |
-| `font-title` | Syne | Legacy compatibility |
-| `font-text` | Satoshi | Legacy compatibility |
-
-### Typography Components
-
-| Component | Purpose | Default Font | Location |
-|-----------|---------|--------------|----------|
-| `<Display>` | Hero text (80-128px) | Syne | `nextjs-app/shared/components/Display/` |
-| `<Heading>` | Section headings | Syne | `nextjs-app/shared/components/Heading/` |
-| `<Title>` | Legacy heading | Syne (serif) / Satoshi (sans) | `nextjs-app/shared/components/Title/` |
-| `<Text>` | Body text | Satoshi (sans) / Syne (serif) | `nextjs-app/shared/components/Text/` |
-
-### Size Scale
-
-| Token | CSS Variable | Responsive Range |
-|-------|--------------|------------------|
-| `display` | `--font-size-display` | 80px - 128px |
-| `title-xl` | `--font-size-title-xl` | 56px - 88px |
-| `title-l` | `--font-size-title-l` | 44px - 68px |
-| `title-m` | `--font-size-title-m` | 32px - 48px |
-| `title-s` | `--font-size-title-s` | 24px - 36px |
-| `text-l` | `--font-size-text-l` | 18px - 24px |
-| `text-m` | `--font-size-text-m` | 16px - 20px |
-| `text-s` | `--font-size-text-s` | 12px - 17px |
-
-### Usage Examples
-
-```tsx
-// Tailwind utilities (new components)
-<h1 className="font-heading text-display font-bold">Hero Title</h1>
-<p className="font-body text-text-m">Body paragraph text</p>
-
-// New components
-<Display>Hero Title</Display>
-<Heading level={2} size="lg">Section Title</Heading>
-
-// Legacy components (still supported)
-<Title level={1} terminals="serif">Heading</Title>
-<Text terminals="sans">Body text</Text>
-```
-
----
+**Types:**
+- PascalCase for interfaces: `ButtonProps`, `ContactFormData`
+- PascalCase for type aliases: `ButtonVariant`, `TextSize`
+- No `I` prefix for interfaces (use `ButtonProps` not `IButtonProps`)
 
 ## Code Style
 
-### ESLint Configuration
+**Formatting:**
+- Prettier with `.prettierrc`
+- Double quotes for strings
+- 2 space indentation
+- No trailing semicolons optional
 
-**Files**: `.eslintrc.cjs`, `eslint.config.mjs`
+**Linting:**
+- ESLint with `.eslintrc.cjs`
+- Extends: eslint:recommended, plugin:react/recommended
+- Rules: `quotes: ["error", "double"]`, `jsx-quotes: ["error", "prefer-double"]`
+- Run: `npm run lint`
 
-| Rule | Setting |
-|------|---------|
-| Quotes | Double quotes (`"string"`) |
-| Semicolons | None (Prettier handles) |
-| React Hooks | Enforced (rules-of-hooks: error) |
-| Unused vars | TypeScript handles (disabled in ESLint) |
+**CSS:**
+- Stylelint with `.stylelintrc.json`
+- CSS logical properties enforced (`padding-inline` not `padding-left`)
+- Class names: camelCase (`selector-class-pattern: "^[a-z][a-zA-Z0-9]*$"`)
+- Design tokens required for colors, spacing, fonts
 
-**Plugins**: eslint:recommended, react/recommended, prettier/recommended, @typescript-eslint
+## Import Organization
 
-### Prettier
+**Order:**
+1. React imports (`import React from "react"`)
+2. External packages (`import { useTranslation } from "react-i18next"`)
+3. Internal modules (`import { Button } from "@dt/Button"`)
+4. Relative imports (`import styles from "./Component.module.css"`)
+5. Type imports (`import type { ButtonProps } from "./Button"`)
 
-**File**: `.prettierrc`
+**Grouping:**
+- Blank line between groups
+- Alphabetical within groups (optional)
 
-```json
-{
-  "singleQuote": false,
-  "jsxSingleQuote": false
+**Path Aliases:**
+- `@/*` - Root directory
+- `@dt/*` - `nextjs-app/shared/components/*`
+- `@dt-pages/*` - `nextjs-app/shared/components/pages/*`
+
+## Error Handling
+
+**Patterns:**
+- try/catch at API boundaries
+- Zod schemas for validation
+- Generic error messages to clients (no internal details)
+
+**Error Types:**
+- Throw on invalid input, missing data
+- Return structured error responses from API
+- Log errors to Sentry in production
+
+**Example:**
+```typescript
+try {
+  const data = schema.parse(await req.json());
+  // ... process data
+} catch (error) {
+  if (error instanceof z.ZodError) {
+    return NextResponse.json({ error: "Invalid input" }, { status: 400 });
+  }
+  console.error("Unexpected error:", error);
+  return NextResponse.json({ error: "Internal error" }, { status: 500 });
 }
 ```
 
-### Stylelint (CSS)
+## Logging
 
-**File**: `.stylelintrc.json`
+**Framework:**
+- Sentry for production errors (`@sentry/nextjs`)
+- console.log/warn/error for development
 
-| Rule | Setting |
-|------|---------|
-| Class naming | camelCase (`^[a-z][a-zA-Z0-9]*$`) |
-| ID selectors | Forbidden (`selector-max-id: 0`) |
-| Nesting | Max 3 levels (warning) |
-| Colors | Must use CSS variables |
-| Physical properties | Discouraged (use logical) |
+**Patterns:**
+- Log at API boundaries
+- Include context (userId, action) when relevant
+- No console.log in committed production code (use Sentry)
 
----
+## Comments
 
-## Naming Conventions
+**When to Comment:**
+- Explain "why" not "what"
+- Document business logic and edge cases
+- Avoid obvious comments
 
-### Files
+**JSDoc:**
+- Required for exported functions
+- Include @param, @returns descriptions
+- Example:
+```typescript
+/**
+ * Sanitizes user input for MongoDB storage
+ * @param input - Raw user input string
+ * @returns Sanitized string safe for database
+ */
+export function sanitize(input: string): string { ... }
+```
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Components | PascalCase folder + file | `Button/Button.tsx` |
-| Hooks | camelCase with `use` prefix | `usePersistentTheme.ts` |
-| Tests | `.test.tsx` suffix | `Button.test.tsx` |
-| Stories | `.stories.tsx` suffix | `Button.stories.tsx` |
-| Styles | `.module.css` suffix | `Button.module.css` |
-| Exports | `index.ts` | Barrel exports |
+**TODO Comments:**
+- Format: `// TODO: description`
+- Link to issue if available: `// TODO: Fix race condition (#123)`
 
-### Code
+## Function Design
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Components | PascalCase | `ContactForm` |
-| Functions | camelCase | `handleSubmit` |
-| Variables | camelCase | `isLoading` |
-| Constants | SCREAMING_SNAKE | `MAX_RETRIES` |
-| Types | PascalCase | `ButtonProps` |
-| CSS classes | camelCase | `.buttonPrimary` |
+**Size:**
+- Keep under 50 lines
+- Extract helpers for complex logic
 
----
+**Parameters:**
+- Max 3 parameters
+- Use options object for 4+ parameters
+- Destructure in parameter list
 
-## Component Structure
+**Return Values:**
+- Explicit returns
+- Return early for guard clauses
+- Use Result type for expected failures
 
-### Mandatory Folder Structure
+## Module Design
 
-Every UI component MUST have:
+**Exports:**
+- Named exports preferred
+- Default export for React components
+- Barrel exports via `index.ts`
 
+**Component Structure:**
 ```
 ComponentName/
 ├── ComponentName.tsx          # Main component
-├── ComponentName.module.css   # CSS Modules
+├── ComponentName.module.css   # Styles
 ├── ComponentName.stories.tsx  # Storybook
-├── ComponentName.test.tsx     # Unit tests
+├── ComponentName.test.tsx     # Tests
 └── index.ts                   # Barrel export
 ```
 
-### Optional Files
-
-```
-├── ComponentName.a11y.test.tsx      # Accessibility tests
-├── ComponentName.behavior.test.tsx  # Behavioral tests
-├── SubComponent.tsx                 # Variants
-└── schema.json                      # LLM generation schema
-```
-
-### Barrel Export Pattern
-
+**Barrel Pattern:**
 ```typescript
-// Button/index.ts
+// index.ts
 export { default } from "./Button";
-export type { ButtonProps } from "./Button";
-export { default as SplitButton } from "./SplitButton";
+export type { ButtonProps, ButtonVariant } from "./Button";
 ```
 
----
+## CSS Conventions
 
-## CSS Approach
+**CSS Modules Only:**
+- `import styles from "./Component.module.css"`
+- `className={styles.className}`
+- No inline styles except dynamic `backgroundImage`
 
-### Hybrid Styling (CSS Modules + Tailwind + shadcn/ui)
+**Design Tokens:**
+- Colors: `var(--color-primary)`, `var(--color-text)`
+- Spacing: `var(--space-internal-16)`, `var(--space-layout-24)`
+- Fonts: `var(--font-sans)`, `var(--font-heading)`
 
-**Migration Status** (as of Phase 01):
-- **Existing Components**: CSS Modules (77+ components)
-- **New Components**: Tailwind CSS utilities + shadcn/ui primitives
-- **Design Tokens**: CSS custom properties (source of truth in `variables.css`)
+**Logical Properties:**
+- ✅ `padding-inline`, `margin-block`
+- ❌ `padding-left`, `margin-top`
 
-#### Component Library Stack
+**Property Order (enforced by stylelint):**
+1. Display & positioning
+2. Spacing (margin, padding)
+3. Size (width, height)
+4. Flexbox/Grid
+5. Border & outline
+6. Background & shadows
+7. Typography
+8. Animations
 
-| Layer | Technology | Purpose |
-|-------|------------|---------|
-| Primitives | shadcn/ui + Radix UI | Accessible, unstyled base components |
-| Styling | Tailwind CSS 4.x | Utility-first CSS |
-| Tokens | CSS custom properties | Design system values |
-| Legacy | CSS Modules | Existing components |
+## Component Reuse
 
-#### When to Use What
+**Required Components:**
+- `<Title level={n}>` instead of `<h1>`, `<h2>`, etc.
+- `<Text as="p">` instead of `<p>`
+- `<Button>` instead of `<button>`
+- `<Card>` for card layouts
+- `<Icon>` instead of raw SVG
 
-| Scenario | Approach |
-|----------|----------|
-| Existing component modification | CSS Modules (match existing style) |
-| New accessible primitive | shadcn/ui component |
-| New component styling | Tailwind CSS utilities |
-| Design token values | Always use CSS variables via Tailwind |
-| Complex animations | CSS Modules or GSAP (Phase 03) |
-
-#### shadcn/ui Components Available
-
-- `Button` - Primary, secondary, outline, ghost, destructive variants
-- `Dialog` - Accessible modal with focus trap
-- `DropdownMenu` - Accessible dropdown
-- `Tooltip` - Accessible tooltip
-- `Tabs` - Accessible tab interface
-- `Accordion` - Accessible accordion
-- `Input` - Styled text input
-- `Textarea` - Styled textarea
-- `Select` - Accessible select dropdown
-- `Checkbox` - Accessible checkbox
-- `Switch` - Accessible toggle switch
-- `Label` - Form label with accessibility
-
-#### Example: New Component with shadcn/ui
-
+**Example:**
 ```tsx
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-
-export function MyComponent() {
-  return (
-    <div className="p-8 bg-background">
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button>Open</Button>
-        </DialogTrigger>
-        <DialogContent>
-          <p className="text-foreground">Content here</p>
-        </DialogContent>
-      </Dialog>
-    </div>
-  );
-}
-```
-
-#### Theme-Aware Utilities
-
-- `dark:` - Dark theme variant (via Tailwind)
-- `hcb:` - High Contrast Black variant (custom)
-- `hcw:` - High Contrast White variant (custom)
-
-```tsx
-<div className="bg-background dark:bg-background hcb:bg-black hcw:bg-white">
-  Theme-aware background
+// ❌ BAD
+<div>
+  <h2>Title</h2>
+  <p>Body text</p>
+  <button>Click</button>
 </div>
+
+// ✅ GOOD
+<Card>
+  <Title level={2}>Title</Title>
+  <Text as="p">Body text</Text>
+  <Button variant="primary">Click</Button>
+</Card>
 ```
-
-### CSS Modules (Existing Components)
-
-For existing components, continue using CSS Modules:
-
-- **No inline styles** (except `backgroundImage`)
-- All styles in `.module.css` files
-
-```typescript
-import styles from "./Button.module.css";
-
-<button className={styles.button} />
-```
-
-### Design Tokens
-
-Use CSS custom properties from `variables.css`:
-
-```css
-/* GOOD */
-.button {
-  padding-inline: var(--space-internal-16);
-  color: var(--color-primary);
-  font-family: var(--font-text);
-}
-
-/* BAD */
-.button {
-  padding-left: 16px;
-  color: #007bff;
-  font-family: Arial;
-}
-```
-
-### Logical Properties (Required)
-
-| Physical (Avoid) | Logical (Use) |
-|------------------|---------------|
-| `margin-left/right` | `margin-inline` |
-| `padding-top/bottom` | `padding-block` |
-| `left/right` | `inset-inline` |
-| `top/bottom` | `inset-block` |
 
 ---
 
-## TypeScript Practices
-
-### Strict Mode
-
-- `strict: true` in `tsconfig.json`
-- No `any` without justification
-- All props typed via interfaces
-
-### Type Organization
-
-```typescript
-// Props interface with JSDoc
-export interface ButtonProps {
-  /** Visual style variant */
-  variant?: "primary" | "secondary" | "tertiary";
-
-  /** Button label content */
-  children?: React.ReactNode;
-
-  /** Shows loading state */
-  isLoading?: boolean;
-}
-
-// Union types for variants
-export type ButtonSeverity = "error" | "warning" | "success" | "info";
-```
-
-### Exclusions
-
-Test and story files excluded from type checking in `tsconfig.json`.
-
----
-
-## Import Patterns
-
-### Path Aliases
-
-```typescript
-// Components
-import Button from "@dt/Button";
-import { SplitButton } from "@dt/Button";
-import type { ButtonProps } from "@dt/Button";
-
-// Page components
-import AboutPage from "@dt-pages/AboutPage";
-```
-
-### Import Order
-
-1. React/vendor libraries
-2. Local components (`@dt/*`)
-3. Utilities and hooks
-4. Styles (last)
-
----
-
-## Comment Style
-
-### JSDoc for Props
-
-```typescript
-export interface CardProps {
-  /** Card title displayed in header */
-  title?: string;
-
-  /** Elevation on hover interaction */
-  hoverable?: boolean;
-}
-```
-
-### Function Documentation
-
-```typescript
-/**
- * Normalizes size prop from multiple formats
- * @param size - Size value (sm/md/lg or s/m/l)
- * @returns Normalized size string
- */
-function normalizeSizeProp(size: unknown): SizeUnified
-```
-
-### Inline Comments
-
-- **Minimal** - code should be self-documenting
-- **Explain WHY**, not what
-- Used only for non-obvious logic
-
----
-
-## Git Conventions
-
-### Branch Naming
-
-```
-DT-XXX-feat-description    # Feature
-DT-XXX-fix-description     # Bug fix
-DT-XXX-docs-description    # Documentation
-```
-
-### Commit Format (Conventional Commits)
-
-```
-feat: add user authentication
-fix: resolve login redirect issue
-docs: update API documentation
-refactor: simplify form validation
-test: add accessibility tests for Modal
-```
-
-### PR Requirements
-
-- All tests passing
-- Type checks passing
-- Lint clean
-- 1 approval required
-- Squash on merge
-
----
-
-## Deprecated Patterns
-
-### Props (Planned for v2.0.0 removal)
-
-```typescript
-/** @deprecated Use isDisabled instead */
-disabled?: boolean;
-
-/** @deprecated Use isLoading instead */
-isSubmitting?: boolean;
-
-/** @deprecated Use isInverse instead */
-inverse?: boolean;
-```
-
-### Code Locations
-
-| Location | Status |
-|----------|--------|
-| `vite-app/` | Legacy, being phased out |
-| `api-legacy-vercel-functions/` | Use `app/api/` instead |
-| Physical CSS properties | Use logical properties |
-
----
-
-## Quality Gates
-
-### Pre-commit (Required)
-
-```bash
-npm run typecheck && npm test && npm run lint
-```
-
-### CI/CD Checks
-
-- TypeScript validation
-- ESLint + Stylelint
-- Vitest tests
-- Coverage threshold (>80%)
+*Convention analysis: 2026-01-16*
+*Update when patterns change*

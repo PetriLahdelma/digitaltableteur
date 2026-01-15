@@ -1,297 +1,275 @@
-# Testing
+# Testing Patterns
 
-> Test structure, coverage, and practices for Digitaltableteur.
-
-**Last Updated**: 2026-01-14
-
----
+**Analysis Date:** 2026-01-16
 
 ## Test Framework
 
-### Primary: Vitest 4.0.16
+**Runner:**
+- Vitest 4.0.16
+- Config: `vitest.config.mts`
 
-**Configuration**: `vitest.config.mts`
+**Assertion Library:**
+- Vitest built-in expect
+- Matchers: toBe, toEqual, toThrow, toMatchObject
+- Extended with jest-dom matchers
 
-| Setting | Value |
-|---------|-------|
-| Environment | jsdom |
-| Globals | `true` (describe, it, expect) |
-| Coverage | v8 provider |
-| Setup | `vitest.setup.ts` |
-
----
-
-## Test Types
-
-### 1. Unit Tests
-
-**Pattern**: `ComponentName.test.tsx`
-**Framework**: Vitest + Testing Library
-
-```typescript
-import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
-import Button from "@dt/Button";
-
-describe("Button", () => {
-  it("renders children", () => {
-    render(<Button>Click me</Button>);
-    expect(screen.getByText("Click me")).toBeInTheDocument();
-  });
-
-  it("calls onClick when clicked", () => {
-    const onClick = vi.fn();
-    render(<Button onClick={onClick}>Click</Button>);
-    fireEvent.click(screen.getByText("Click"));
-    expect(onClick).toHaveBeenCalled();
-  });
-});
+**Run Commands:**
+```bash
+npm test                      # Run all tests
+npm run test:watch            # Watch mode
+npm test -- path/to/file      # Single file
+npm run test:coverage         # Coverage report
+npm run test:ci               # CI mode (skip Storybook)
 ```
 
-### 2. Accessibility Tests
+## Test File Organization
 
-**Pattern**: `ComponentName.a11y.test.tsx`
-**Framework**: jest-axe + vitest-axe
+**Location:**
+- Colocated with source: `ComponentName.test.tsx` alongside `ComponentName.tsx`
+- No separate `__tests__/` directory
 
-```typescript
-import { axe } from "jest-axe";
+**Naming:**
+- Unit tests: `ComponentName.test.tsx`
+- Accessibility tests: `ComponentName.a11y.test.tsx`
+- Behavior tests: `ComponentName.behavior.test.tsx`
 
-it("has no accessibility violations", async () => {
-  const { container } = render(<Button>Accessible</Button>);
-  const results = await axe(container);
-  expect(results).toHaveNoViolations();
-});
+**Structure:**
 ```
-
-### 3. Behavioral Tests
-
-**Pattern**: `ComponentName.behavior.test.tsx`
-
-Tests specific workflows:
-- State transitions
-- User interaction flows
-- Complex prop combinations
-
-### 4. Visual Regression Tests
-
-**Framework**: Playwright + pixelmatch
-**Command**: `npm run test:visual`
-
-| Location | Purpose |
-|----------|---------|
-| `__visual__/snapshots/` | Baseline images |
-| `__visual__/diffs/` | Failed comparisons |
-
-### 5. Storybook Tests
-
-**Framework**: @storybook/addon-vitest
-
-- Runs stories as tests automatically
-- Validates component rendering
-- Skip in CI: `SKIP_STORYBOOK_TESTS=1`
-
----
+ComponentName/
+├── ComponentName.tsx
+├── ComponentName.test.tsx           # Unit tests
+├── ComponentName.a11y.test.tsx      # Accessibility tests
+└── ComponentName.module.css
+```
 
 ## Test Structure
 
-### Colocated Tests (Same Folder)
-
-```
-Button/
-├── Button.tsx
-├── Button.test.tsx          # Unit tests
-├── Button.a11y.test.tsx     # A11y tests (optional)
-├── Button.stories.tsx
-└── Button.module.css
-```
-
-### Hook Tests
-
+**Suite Organization:**
 ```typescript
-import { renderHook, act } from "@testing-library/react";
-import { usePersistentTheme } from "./usePersistentTheme";
+import { describe, it, expect, vi } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { axe, toHaveNoViolations } from "jest-axe";
 
-describe("usePersistentTheme", () => {
-  it("reads theme from cookie", () => {
-    document.cookie = "dt_theme=dark";
-    const { result } = renderHook(() => usePersistentTheme());
-    expect(result.current.theme).toBe("dark");
+expect.extend(toHaveNoViolations);
+
+describe("ComponentName", () => {
+  describe("functionName", () => {
+    it("should handle valid input", () => {
+      // arrange
+      const props = { value: "test" };
+
+      // act
+      render(<Component {...props} />);
+
+      // assert
+      expect(screen.getByText("test")).toBeInTheDocument();
+    });
+
+    it("should handle error case", () => {
+      expect(() => functionName(null)).toThrow("Invalid input");
+    });
   });
 });
 ```
 
----
+**Patterns:**
+- Use `beforeEach` for per-test setup
+- Use `afterEach` to restore mocks: `vi.restoreAllMocks()`
+- Arrange/Act/Assert pattern
+- One focus per test (multiple expects OK)
 
-## Coverage
+## Mocking
 
-### Configuration
+**Framework:**
+- Vitest built-in mocking (`vi`)
+- Module mocking via `vi.mock()`
 
-**Provider**: v8
-**Target**: >80%
-
-### Include Paths
-
-- `shared/components/**/*.{ts,tsx}`
-- `app/**/*.{ts,tsx}`
-- `nextjs-app/shared/components/**/*.{ts,tsx}`
-- `nextjs-app/shared/patterns/**/*.{ts,tsx}`
-- `nextjs-app/shared/utils/**/*.{ts,tsx}`
-
-### Exclude
-
-- `**/*.stories.{ts,tsx}`
-- `**/*.test.{ts,tsx}`
-- `**/index.{ts,tsx}`
-- Legacy folders
-
-### Reports
-
-- `coverage/` directory
-- Formats: text, lcov, json-summary
-
----
-
-## Testing Utilities
-
-### Testing Library Methods
-
-| Method | Purpose |
-|--------|---------|
-| `render()` | Render component |
-| `screen.getByRole()` | Query by semantic role |
-| `screen.getByText()` | Query by text |
-| `screen.getByTestId()` | Query by data-testid |
-| `fireEvent.click()` | Simulate click |
-| `within()` | Scope queries |
-
-### Vitest Utilities
-
-| Utility | Purpose |
-|---------|---------|
-| `vi.fn()` | Mock function |
-| `vi.spyOn()` | Spy on function |
-| `beforeEach()` | Setup before test |
-| `afterEach()` | Cleanup after test |
-
-### Global Mocks
-
-**File**: `vitest.setup.ts`
-
+**Patterns:**
 ```typescript
-// ResizeObserver
-globalThis.ResizeObserver = ResizeObserverMock;
+import { vi } from "vitest";
 
-// IntersectionObserver
-globalThis.IntersectionObserver = IntersectionObserverMock;
+// Mock module
+vi.mock("./external", () => ({
+  externalFunction: vi.fn()
+}));
 
-// window.matchMedia
-Object.defineProperty(window, "matchMedia", {
-  value: vi.fn().mockImplementation(...)
-});
+describe("test suite", () => {
+  it("mocks function", () => {
+    const mockFn = vi.mocked(externalFunction);
+    mockFn.mockReturnValue("mocked result");
 
-// navigator.share
-Object.defineProperty(navigator, "share", {
-  value: vi.fn().mockImplementation(() => Promise.resolve())
+    // test code
+
+    expect(mockFn).toHaveBeenCalledWith("expected arg");
+  });
 });
 ```
 
----
+**What to Mock:**
+- External APIs, fetch calls
+- File system operations
+- Database connections
+- Browser APIs (window, document)
 
-## i18n in Tests
+**What NOT to Mock:**
+- Internal pure functions
+- Simple utilities
+- TypeScript types
 
+## Fixtures and Factories
+
+**Test Data:**
 ```typescript
-import { I18nextProvider } from "react-i18next";
-import i18n from "../../i18n";
-
-function withI18n(ui: React.ReactElement) {
-  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
+// Factory function
+function createTestProps(overrides?: Partial<Props>): Props {
+  return {
+    id: "test-id",
+    name: "Test Name",
+    ...overrides
+  };
 }
 
 // Usage
-render(withI18n(<Card title="Test" />));
+it("renders with custom name", () => {
+  const props = createTestProps({ name: "Custom" });
+  render(<Component {...props} />);
+});
 ```
 
----
+**Location:**
+- Factory functions: Define in test file near usage
+- Shared fixtures: `tests/fixtures/` (if needed)
 
-## Test Commands
+## Coverage
+
+**Requirements:**
+- Target: >80% line coverage
+- All components must have unit + accessibility tests
+
+**Configuration:**
+- Provider: v8
+- Reporters: text, lcov, json-summary
+- Excludes: story files, test files, index files
+
+**View Coverage:**
+```bash
+npm run test:coverage
+open coverage/index.html
+```
+
+## Test Types
+
+**Unit Tests:**
+- Scope: Single function/component in isolation
+- Mocking: Mock all external dependencies
+- Speed: <100ms per test
+- Location: `ComponentName.test.tsx`
+
+**Accessibility Tests:**
+- Scope: WCAG 2.1 AA compliance
+- Tools: jest-axe, axe-core
+- Checks: Automated violations, ARIA attributes, focus management
+- Location: `ComponentName.a11y.test.tsx`
+
+**Visual Regression:**
+- Framework: Playwright + pixelmatch
+- Command: `npm run test:visual`
+- Snapshots: `__visual__/snapshots/`
+- Update: `npm run test:visual:update`
+
+**E2E Tests:**
+- Framework: Playwright
+- Location: `e2e/`
+- Scope: Full user flows
+
+## Common Patterns
+
+**Async Testing:**
+```typescript
+it("should handle async operation", async () => {
+  const result = await asyncFunction();
+  expect(result).toBe("expected");
+});
+```
+
+**Error Testing:**
+```typescript
+// Sync error
+it("should throw on invalid input", () => {
+  expect(() => functionCall()).toThrow("error message");
+});
+
+// Async error
+it("should reject on failure", async () => {
+  await expect(asyncCall()).rejects.toThrow("error message");
+});
+```
+
+**Accessibility Testing:**
+```typescript
+import { axe, toHaveNoViolations } from "jest-axe";
+
+expect.extend(toHaveNoViolations);
+
+describe("Accessibility", () => {
+  it("has no axe violations", async () => {
+    const { container } = render(<Component />);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+});
+```
+
+**Component Rendering:**
+```typescript
+import { render, screen } from "@testing-library/react";
+
+it("renders children", () => {
+  render(<Button>Click me</Button>);
+  expect(screen.getByText("Click me")).toBeInTheDocument();
+});
+```
+
+**User Interactions:**
+```typescript
+import { fireEvent, screen } from "@testing-library/react";
+
+it("calls onClick when clicked", () => {
+  const onClick = vi.fn();
+  render(<Button onClick={onClick}>Click</Button>);
+  fireEvent.click(screen.getByText("Click"));
+  expect(onClick).toHaveBeenCalled();
+});
+```
+
+## Setup & Mocks
+
+**Global Setup:** `vitest.setup.ts`
+
+Mocked APIs:
+- `ResizeObserver` - Class-based mock
+- `IntersectionObserver` - Class-based mock
+- `window.matchMedia` - vi.fn() with proper API
+- `navigator.share` - Promise resolver
+- `console` - Silenced (warn, error)
+
+**Test Environment:**
+```typescript
+// vitest.setup.ts
+import "@testing-library/jest-dom";
+import { expect } from "vitest";
+import * as matchers from "@testing-library/jest-dom/matchers";
+
+expect.extend(matchers);
+```
+
+## Pre-commit Quality Gates
 
 ```bash
-# Run all tests
-npm test
-
-# Watch mode
-npm run test:watch
-
-# Coverage report
-npm run test:coverage
-
-# CI mode (skip Storybook)
-npm run test:ci
-
-# Visual regression
-npm run test:visual
-
-# Update visual snapshots
-npm run test:visual:update
-
-# Accessibility focused
-npm run test:a11y
-
-# Lighthouse audit
-npm run lighthouse:a11y:ci
+npm run typecheck && npm run lint && npm test && npm run build
 ```
 
 ---
 
-## CI Integration
-
-### GitHub Actions
-
-**File**: `.github/workflows/pr-validation.yml`
-
-```yaml
-steps:
-  - run: npm ci
-  - run: npm run typecheck
-  - run: npm run lint
-  - run: npm test
-```
-
-### Environment Variables
-
-| Variable | Effect |
-|----------|--------|
-| `CI=true` | Enables CI mode |
-| `SKIP_STORYBOOK_TESTS=1` | Skip Storybook tests |
-| `VERCEL=1` | Vercel environment detection |
-
----
-
-## Best Practices
-
-### Do
-
-- Test user interactions over implementation
-- Use semantic queries (getByRole, getByText)
-- Test accessibility with axe
-- Mock external dependencies
-- Clean up after each test
-
-### Don't
-
-- Test implementation details
-- Use brittle selectors
-- Skip accessibility tests
-- Leave console.log in tests
-- Couple tests to each other
-
----
-
-## Test Quality Checklist
-
-- [ ] All components have unit tests
-- [ ] Accessibility tests for interactive components
-- [ ] Visual regression for key UI
-- [ ] Coverage >80%
-- [ ] Tests pass in CI
-- [ ] No flaky tests
+*Testing analysis: 2026-01-16*
+*Update when test patterns change*

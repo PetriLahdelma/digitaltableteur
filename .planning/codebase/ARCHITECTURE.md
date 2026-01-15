@@ -1,191 +1,166 @@
 # Architecture
 
-> System design, patterns, and data flow for Digitaltableteur.
+**Analysis Date:** 2026-01-16
 
-**Last Updated**: 2026-01-14
+## Pattern Overview
 
----
+**Overall:** Hybrid Monorepo with Next.js 15 Full-Stack Architecture
 
-## System Design
+**Key Characteristics:**
+- Server-first architecture (React Server Components by default)
+- Component-driven design system with CSS Modules
+- Serverless API routes with validation and rate limiting
+- Multi-language support (EN/FI/SV) via i18next
 
-### Hybrid Monorepo (Next.js + Vite Legacy)
+## Layers
 
-The codebase is a **mid-transition monorepo** bridging two build systems:
+**Entry Points & Routing (App Router):**
+- Purpose: Handle HTTP requests and render pages
+- Contains: Server components, dynamic routes, metadata
+- Location: `app/` directory
+- Key files: `app/layout.tsx`, `app/page.tsx`, `app/[route]/page.tsx`
 
-| System | Status | Purpose |
-|--------|--------|---------|
-| Next.js 15 | **Production** | App Router, SSR/SSG |
-| Vite | Legacy | Being phased out |
-| Sanity Studio | Active | Headless CMS |
+**API Layer (Route Handlers):**
+- Purpose: Handle backend operations
+- Contains: POST/GET handlers with validation, rate limiting, security
+- Location: `app/api/[feature]/route.ts`
+- Key files: `app/api/chat/route.ts`, `app/api/contact/route.ts`, `app/api/gdpr/delete-data/route.ts`
 
-```
-Root package.json (monorepo orchestrator)
-├─ Next.js app (app/, nextjs-app/)
-├─ Vite app (legacy, vite-app/)
-└─ Sanity Blog (digitaltableteur-blog/)
-```
+**Shared Component System (Design System):**
+- Purpose: Reusable UI components
+- Contains: 80+ components with CSS Modules, tests, stories
+- Location: `nextjs-app/shared/components/`
+- Key files: `Button/`, `Card/`, `Title/`, `Text/`, `Modal/`
 
----
+**Patterns (Layout Compositions):**
+- Purpose: Complex layouts combining components
+- Contains: Headers, footers, heroes, content sections
+- Location: `nextjs-app/shared/patterns/`
+- Key files: `SiteHeader/`, `SiteFooter/`, `Hero/`, `ContentSection/`
 
-## Design Patterns
+**Provider Layer (Global State):**
+- Purpose: React context for global state
+- Contains: Theme, i18n, animations, toast notifications
+- Location: `providers/`
+- Key files: `ThemeProvider.tsx`, `I18nProvider.tsx`, `ToastProvider.tsx`
 
-### 1. Component-Driven Design System
+**Data Layer (Storage):**
+- Purpose: Persistent data storage
+- Contains: MongoDB connection, Sanity CMS client
+- Location: `app/lib/mongodb.ts`, `nextjs-app/sanity.config.ts`
 
-- **77 reusable UI components** in `nextjs-app/shared/components/`
-- **Atomic design**: Base components → Composite components
-- **CSS Modules only**: No inline styles
-- **Folder-per-component**: Strict structure
-
-### 2. React Server Components (RSC)
-
-- **Default**: Server Components (zero JS overhead)
-- **Client Components**: Isolated with `"use client"` directive
-- **Streaming**: Progressive rendering with Suspense
-
-### 3. Provider Pattern
-
-```
-<NextThemeProvider>
-  <I18nProvider>
-    <ToastProvider>
-      <CookieConsentProvider>
-        {children}
-      </CookieConsentProvider>
-    </ToastProvider>
-  </I18nProvider>
-</NextThemeProvider>
-```
-
----
+**Utilities:**
+- Purpose: Shared helpers and hooks
+- Contains: Sanitization, validation, custom hooks
+- Location: `app/lib/`, `nextjs-app/shared/hooks/`, `lib/`
 
 ## Data Flow
 
-```
-┌─────────────────────────────────────────────────────────┐
-│              Request Flow (Server → Client)              │
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│  User Request (Next.js Route)                          │
-│         ↓                                              │
-│  Server Component (RSC)                                │
-│         ├─ Fetch from MongoDB (contacts, GDPR)        │
-│         ├─ Fetch from Sanity (blog posts)             │
-│         ├─ Generate metadata (SEO, JSON-LD)           │
-│         └─ Render static HTML                         │
-│         ↓                                              │
-│  Stream Response to Client                             │
-│         ├─ Minimal hydration                          │
-│         └─ Provider rehydration (i18n, theme)         │
-│         ↓                                              │
-│  Client Components (Interactive)                       │
-│         ├─ Forms (contact, file upload)               │
-│         ├─ Chat widget (streaming AI)                 │
-│         └─ Galleries, accordions, tabs                │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
+**Server-Side Rendering (SSR/ISR):**
 
-### Data Sources
+1. Browser request to Next.js route
+2. App Router matches `app/[route]/page.tsx`
+3. Server Component renders (RSC)
+4. Fetches data from Sanity/MongoDB if needed
+5. Generates metadata and structured data
+6. Returns HTML with ISR caching (revalidate: 3600)
 
-| Source | Purpose | Access Pattern |
-|--------|---------|----------------|
-| Sanity CMS | Blog, portfolio | SDK pull |
-| MongoDB | Contacts, GDPR | Server-side |
-| Environment | Config, API keys | Build-time |
+**API Route Handler:**
 
----
+1. Client sends POST/GET to `/api/[feature]/route.ts`
+2. CORS headers validation (`createCorsHeaders`)
+3. Rate limiting check (in-memory buckets)
+4. Zod schema validation
+5. Input sanitization (mongo-sanitize, DOMPurify)
+6. Business logic execution
+7. NextResponse.json() return
 
-## State Management
+**Static Content (Blog/Portfolio):**
 
-**Approach**: React Context + Hooks (no Redux/Zustand)
+1. MDX files in `content/posts/`
+2. Prebuild: `scripts/generate-blog-manifest.mjs`
+3. Updates `nextjs-app/shared/data/blogManifest.ts`
+4. `app/blog/page.tsx` reads manifest
+5. Dynamic routes load MDX content
 
-| Context | Purpose |
-|---------|---------|
-| `NextThemeProvider` | Dark/light mode |
-| `I18nProvider` | Language (EN/FI/SV) |
-| `ToastProvider` | Notifications |
-| `CookieConsentProvider` | GDPR cookies |
+**State Management:**
+- Server: Stateless API routes
+- Client: React Context (Theme, i18n) + useState/useEffect
+- Persistent: MongoDB for form submissions, Sanity for content
 
-**Local State**: `useState()` in client components
+## Key Abstractions
 
----
+**Page Template Pattern:**
+- Purpose: Separate Next.js route from component composition
+- Examples: `app/about/page.tsx` imports `AboutPageContent` from shared components
+- Pattern: Route handles metadata, component handles rendering
 
-## Rendering Strategy
+**Component Structure:**
+- Purpose: Consistent file organization
+- Pattern: `ComponentName/ComponentName.tsx`, `.module.css`, `.stories.tsx`, `.test.tsx`, `index.ts`
+- Examples: `Button/`, `Card/`, `Modal/`
 
-| Strategy | Usage | Implementation |
-|----------|-------|----------------|
-| **SSR** | Default | React Server Components |
-| **ISR** | Blog, portfolio | `revalidatePath()` |
-| **CSR** | Chat, forms | `"use client"` |
-| **Dynamic** | Always fresh | `dynamic = "force-dynamic"` |
+**API Route Pattern:**
+- Purpose: Secure, validated endpoints
+- Pattern: Rate limiting → CORS → Validation → Sanitization → Logic → Response
+- Examples: `app/api/contact/route.ts`, `app/api/chat/route.ts`
 
----
+**Provider Chain:**
+- Purpose: Global state composition
+- Pattern: Nested providers in `app/layout.tsx`
+- Order: Theme → i18n → Animation → Toast → Layout
 
-## API Architecture
+## Entry Points
 
-### REST + Streaming (Vercel Edge/Serverless)
+**Web Application:**
+- Location: `app/layout.tsx` (root layout)
+- Triggers: HTTP requests to any route
+- Responsibilities: Initialize providers, set metadata, wrap children
 
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/api/chat` | POST | AI chat (streaming) |
-| `/api/contact` | POST | Form submission |
-| `/api/download-cv` | GET | Resume (auth) |
-| `/api/gdpr/delete-data` | POST | Data deletion |
-| `/api/llms.txt` | GET | AI crawler info |
+**API Routes:**
+- Location: `app/api/[feature]/route.ts`
+- Triggers: fetch() calls from client or external services
+- Responsibilities: Validate, process, respond
 
-### API Security
+**Storybook:**
+- Location: `.storybook/main.ts`
+- Triggers: `npm run storybook`
+- Responsibilities: Component development environment
 
-- CORS headers per endpoint
-- Rate limiting (3 req/15min per IP)
-- Prompt injection guards
-- MongoDB query sanitization
-- CSP headers (strict in production)
+## Error Handling
 
----
+**Strategy:** Throw at source, catch at boundaries, log to Sentry
 
-## Security Architecture
+**Patterns:**
+- API routes: try/catch with generic error responses
+- Components: Error boundaries for graceful degradation
+- Validation: Zod schemas with detailed error messages
+- Logging: Sentry integration for production errors
 
-### Defense Layers
+## Cross-Cutting Concerns
 
-1. **Input**: Validation (Zod), sanitization (mongo-sanitize, DOMPurify)
-2. **Transport**: HTTPS, strict CSP, CORS whitelist
-3. **Storage**: MongoDB TLS, no secrets in code
-4. **Output**: HTML entity escaping, JSON-LD sanitization
+**Logging:**
+- Sentry for error tracking (`@sentry/nextjs`)
+- Console logging in development
+- Security logger for audit events (`app/lib/security-logger.ts`)
 
-### Headers
+**Validation:**
+- Zod schemas at API boundaries
+- mongo-sanitize for NoSQL injection prevention
+- DOMPurify for XSS prevention
+- Prompt injection guards for AI chat
 
-- HSTS (2 years, preload)
-- X-Content-Type-Options: nosniff
-- X-Frame-Options: SAMEORIGIN
-- Referrer-Policy: strict-origin-when-cross-origin
+**Authentication:**
+- Password protection for CV download
+- Rate limiting per IP address
+- CORS origin validation
 
----
-
-## Performance Optimizations
-
-| Technique | Implementation |
-|-----------|----------------|
-| Server Components | Zero JS by default |
-| Image optimization | Next.js Image |
-| Code splitting | Dynamic imports |
-| CSS Modules | No runtime overhead |
-| Font optimization | Preload critical fonts |
+**Internationalization:**
+- i18next + react-i18next
+- Languages: EN, FI, SV
+- Translation files: `nextjs-app/shared/locales/{lang}/translation.json`
 
 ---
 
-## Monitoring
-
-| Service | Purpose |
-|---------|---------|
-| Sentry | Error tracking (10% traces, 100% errors) |
-| Vercel Analytics | Performance metrics |
-| Google Analytics | User behavior |
-
----
-
-## Deployment
-
-- **Platform**: Vercel
-- **Strategy**: Serverless functions
-- **Regions**: Auto-scaled
-- **Rollback**: Instant via Vercel dashboard
+*Architecture analysis: 2026-01-16*
+*Update when major patterns change*

@@ -1,320 +1,191 @@
-# Integrations
+# External Integrations
+
+**Analysis Date:** 2026-01-16
+
+## APIs & External Services
+
+**AI & Language Models:**
+- AI Gateway - `app/api/chat/route.ts`
+  - SDK/Client: Vercel AI SDK (`ai` v5.0.115)
+  - Auth: `AI_GATEWAY_URL`, `AI_GATEWAY_API_KEY` env vars
+  - Features: Streaming responses, rate limiting, prompt injection guards
+  - Max: 4000 tokens/request, 1500 tokens output
+
+**Email:**
+- Resend API - `app/api/contact/route.ts`
+  - Endpoint: `https://api.resend.com/emails`
+  - Auth: `RESEND_API_KEY` env var
+  - Purpose: Contact form submissions
+
+## Data Storage
+
+**Databases:**
+- MongoDB - `app/lib/mongodb.ts`
+  - Connection: `MONGODB_URI` env var
+  - Database: `MONGODB_DB` env var
+  - Client: `mongodb` v7.0.0
+  - Features: Connection pooling (10 max, 2 min), TLS, timeout handling
+  - Collections: `contacts` (form submissions)
+
+**Content Management:**
+- Sanity CMS - `digitaltableteur-blog/`, `nextjs-app/sanity.config.ts`
+  - Project ID: `ai4cwr0g`
+  - Dataset: `digitaltableteur-blog`
+  - Client: `@sanity/client` v7.13.2, `next-sanity` v11.6.12
+  - Auth: `SANITY_TOKEN` env var
+  - Purpose: Blog posts, portfolio content
+
+**Caching:**
+- None currently (all database queries direct)
+
+## Authentication & Identity
+
+**Auth Provider:**
+- Custom password protection - `app/api/download-cv/route.ts`
+  - Implementation: Constant-time password comparison
+  - Token storage: In-memory rate limiting
+  - Purpose: Secure CV download
+
+**OAuth Integrations:**
+- None currently
+
+## Monitoring & Observability
+
+**Error Tracking:**
+- Sentry - `@sentry/nextjs` v10.31.0
+  - DSN: `NEXT_PUBLIC_SENTRY_DSN` env var
+  - Org: `digitaltableteur`
+  - Project: `frontend`
+  - Features: Error tracking, session replay, performance
+
+**Analytics:**
+- Google Analytics 4 - `app/layout.tsx`
+  - Measurement ID: `G-09HMKEXGPX`
+  - Tracking ID: `NEXT_PUBLIC_GA_ID` env var
+
+- Ahrefs Analytics - `next.config.ts` CSP
+  - Endpoint: `https://analytics.ahrefs.com`
+  - Purpose: SEO insights
+
+**Logs:**
+- Vercel logs - stdout/stderr
+- Sentry for production errors
+
+## CI/CD & Deployment
+
+**Hosting:**
+- Vercel - `next.config.ts`, `package.json`
+  - Deployment: Automatic on main branch push
+  - Environment vars: Configured in Vercel dashboard
+  - Serverless: Next.js API routes
+
+**CI Pipeline:**
+- GitHub Actions (implied by `.github/` directory)
+  - Tests: `npm test`
+  - Type checking: `npm run typecheck`
+  - Linting: `npm run lint`
+
+## Environment Configuration
+
+**Development:**
+- Required env vars:
+  - `MONGODB_URI` - Database connection
+  - `AI_GATEWAY_URL` - AI chat endpoint
+  - `SANITY_TOKEN` - CMS access
+  - `RESEND_API_KEY` - Email service
+- Secrets location: `.env.local` (gitignored)
+- Template: `.env.example`
+
+**Production:**
+- Secrets management: Vercel environment variables
+- Database: MongoDB Atlas
+- CMS: Sanity.io cloud
 
-> APIs, databases, and external services for Digitaltableteur.
+## Webhooks & Callbacks
 
-**Last Updated**: 2026-01-14
+**Incoming:**
+- None currently
 
----
+**Outgoing:**
+- None currently
 
-## AI/LLM Services
-
-### Vercel AI SDK (Primary)
-
-**Package**: `ai` 5.0.115
-
-| Feature | Implementation |
-|---------|----------------|
-| Streaming | `@ai-sdk/react` useChat hook |
-| Models | OpenAI (gpt-4o-mini) |
-| Gateway | AI Gateway support |
-| Tools | Custom tool calling |
-| Safety | Prompt injection guards |
-
-**Environment Variables**:
-```bash
-OPENAI_API_KEY=           # Direct OpenAI
-OPENAI_MODEL=             # Model selection
-AI_GATEWAY_URL=           # Gateway base URL
-AI_GATEWAY_API_KEY=       # Gateway auth
-AI_GATEWAY_MODEL=         # Gateway model
-```
-
----
-
-## Database
-
-### MongoDB (Primary)
-
-**Package**: `mongodb` 7.0.0
-
-| Setting | Value |
-|---------|-------|
-| Connection | TLS enforced |
-| Pool Size | 10 max, 2 min |
-| Timeouts | 5s selection, 45s socket |
-| Sanitization | mongo-sanitize |
-
-**Environment Variables**:
-```bash
-MONGODB_URI=              # Connection string (TLS)
-MONGODB_DB=               # Database name
-```
-
-**Collections**:
-- `contacts` - Contact form submissions
-- `gdpr_requests` - Data deletion requests
-- `chat_history` - AI chat logs
-
-### PostgreSQL (Secondary)
-
-**Package**: `pg` 8.16.3
-
-Used for health checks and specific test scenarios.
-
-```bash
-TEST_HEALTH_DATABASE_URL= # Test connection
-```
-
----
-
-## Email Services
-
-### Resend (Primary)
-
-**Endpoint**: https://api.resend.com/emails
-
-| Feature | Value |
-|---------|-------|
-| Attachments | Supported |
-| Rate Limit | API-based |
-| Templates | None (custom HTML) |
-
-**Environment Variables**:
-```bash
-RESEND_API_KEY=           # API authentication
-CONTACT_EMAIL_FROM=       # Sender address
-CONTACT_EMAIL_TO=         # Recipient address
-```
-
-### EmailJS (Legacy)
-
-**Package**: `@emailjs/browser` 4.4.1
-
-Client-side email (being phased out).
-
-```bash
-NEXT_PUBLIC_EMAIL_SERVICE_ID=
-NEXT_PUBLIC_EMAIL_TEMPLATE_ID=
-NEXT_PUBLIC_EMAIL_PUBLIC_KEY=
-```
-
----
-
-## CMS
-
-### Sanity
-
-**Package**: `sanity` 4.22.0
-
-| Setting | Value |
-|---------|-------|
-| Project ID | ai4cwr0g |
-| Dataset | digitaltableteur-blog |
-| Studio | `/studio` route |
-
-**Packages**:
-- `next-sanity` - Next.js integration
-- `@sanity/client` - API client
-- `@sanity/image-url` - Image CDN
-
-**Environment Variables**:
-```bash
-SANITY_PROJECT_ID=
-SANITY_DATASET=
-SANITY_TOKEN=             # Optional (OAuth fallback)
-```
-
-**Content Types**:
-- Blog posts
-- Portfolio projects
-- Author profiles
-
----
-
-## Error Tracking
-
-### Sentry
-
-**Package**: `@sentry/nextjs` 10.31.0
-
-| Config File | Purpose |
-|-------------|---------|
-| `sentry.client.config.ts` | Browser SDK |
-| `sentry.server.config.ts` | Server SDK |
-| `sentry.edge.config.ts` | Edge SDK |
-
-**Settings**:
-- Traces: 10% sample rate
-- Replays: 100% on error
-- Environment-aware logging
-
-**Environment Variables**:
-```bash
-SENTRY_DSN=
-SENTRY_ENVIRONMENT=
-```
-
----
-
-## Analytics
-
-### Google Analytics
-
-**Environment Variable**:
-```bash
-NEXT_PUBLIC_GA_ID=        # GA4 measurement ID
-```
-
-### Vercel Analytics
-
-Built-in with Vercel hosting.
-
----
-
-## Hosting
-
-### Vercel
-
-| Feature | Status |
-|---------|--------|
-| Serverless | Enabled |
-| Edge | Supported |
-| Analytics | Enabled |
-| ISR | Configured |
-
-**Configuration**: `vercel.json`
-
-- CORS headers
-- Build command
-- Output settings
-
----
-
-## Project Management
-
-### Linear
-
-**Environment Variables**:
-```bash
-LINEAR_API_KEY=           # API auth (lin_api_xxx)
-LINEAR_TEAM_ID=           # Team identifier
-LINEAR_PROJECT_ID=        # Default project
-```
-
-**Usage**: Issue creation via `lib/linear/createIssue.ts`
-
----
-
-## Design Tools
-
-### Figma
-
-**MCP Servers** (3 variants):
-1. `figma` - OAuth remote
-2. `figma-desktop` - Local HTTP
-3. `figma-developer-mcp` - SSE (token-based)
-
-```bash
-FIGMA_TOKEN=              # API access
-```
-
----
-
-## Accounting
-
-### Akaunting (Self-hosted)
-
-**Deployment**: Docker Compose in `/akaunting`
-
-| Setting | Value |
-|---------|-------|
-| URL | http://localhost:8080/api |
-| Auth | Basic auth |
-| Company | X-Company: 1 |
-
-**Endpoints**:
-- invoices, contacts, items
-- transactions, reports
-- categories, expenses
-
-```bash
-AKAUNTING_API_USERNAME=
-AKAUNTING_API_PASSWORD=
-```
-
----
-
-## MCP Servers
+## MCP Server Integrations
 
 Configured in `mcp.json`:
 
-| Server | Purpose |
-|--------|---------|
-| figma (3 variants) | Design access |
-| ts-language-server | TypeScript LSP |
-| sentry | Error tracking |
-| vercel | Deployments |
-| context7 | Documentation |
-| github | Repository ops |
-| next-devtools | Next.js diagnostics |
-| akaunting | Accounting API |
-| sanity | CMS operations |
-| docker | Container management |
+**Figma:**
+- Remote: `https://mcp.figma.com/mcp` (OAuth)
+- Desktop: `http://127.0.0.1:3845/mcp` (local)
+- Auth: `FIGMA_TOKEN` env var
+- Purpose: Design file access, component extraction
+
+**GitHub:**
+- Purpose: Repository operations, issues, PRs
+- Auth: `GITHUB_MCP_PAT` env var
+
+**TypeScript:**
+- Purpose: Language server for LSP features
+
+**Sentry:**
+- Purpose: Error tracking, releases
+- Auth: `SENTRY_AUTH_TOKEN` env var
+
+**Context7:**
+- Purpose: Documentation search
+- Auth: `CONTEXT7_API_KEY` env var
+
+**Sanity:**
+- Purpose: CMS operations, GROQ queries
+
+**Akaunting:**
+- Purpose: Accounting API (self-hosted Docker)
+- Location: `akaunting/docker-compose.yml`
+
+## Project Management
+
+**Linear API:**
+- Endpoint: `https://api.linear.app/graphql`
+- Client: `nextjs-app/lib/linear/createIssue.ts`
+- Auth: `LINEAR_API_KEY` env var
+- Team: `LINEAR_TEAM_ID` env var
+- Purpose: Issue creation, component documentation
+
+## Third-Party UI Libraries
+
+**Radix UI:**
+- `@radix-ui/react-accordion`
+- `@radix-ui/react-dialog`
+- `@radix-ui/react-dropdown-menu`
+- `@radix-ui/react-tabs`
+- `@radix-ui/react-checkbox`
+- `@radix-ui/react-select`
+
+**Icon Libraries:**
+- `@phosphor-icons/react`
+- `lucide-react`
+- `react-icons`
+- `simple-icons`
+
+**Animation:**
+- `framer-motion`
+- `gsap` + `@gsap/react`
+- `lenis` (smooth scroll)
+
+## Security Configuration
+
+**Content Security Policy:** `next.config.ts`
+- Allowed: Google Analytics, Ahrefs, Vercel, OpenAI, Resend
+- Media: YouTube, Vimeo embeds
+- Dev: Permissive for HMR
+- Prod: Strict blocking
+
+**Security Headers:**
+- HSTS (2 years, preload)
+- X-Frame-Options: SAMEORIGIN
+- X-Content-Type-Options: nosniff
+- Permissions-Policy: Camera/mic/geo disabled
 
 ---
 
-## Authentication
-
-### CV Download
-
-Password-protected endpoint.
-
-```bash
-CV_PASSWORD=              # Access password
-```
-
-### API Keys
-
-| Service | Variable |
-|---------|----------|
-| OpenAI | `OPENAI_API_KEY` |
-| Sentry | `SENTRY_DSN` |
-| Sanity | `SANITY_TOKEN` |
-| Linear | `LINEAR_API_KEY` |
-| Figma | `FIGMA_TOKEN` |
-| GitHub | `GITHUB_MCP_PAT` |
-
----
-
-## Security Practices
-
-### Input Validation
-
-- `mongo-sanitize` for MongoDB
-- `isomorphic-dompurify` for HTML
-- `libphonenumber-js` for phones
-- Zod for form validation
-
-### Rate Limiting
-
-- `/api/chat`: 3 req/15min per IP
-- `/api/contact`: 3 req/15min per IP
-- `/api/gdpr/delete-data`: 3 req/hour per email
-
-### CORS
-
-**Production**: Strict whitelist
-- digitaltableteur.com
-- *.digitaltableteur.com
-
-**Development**: Permissive (localhost)
-
----
-
-## Environment Files
-
-| File | Purpose |
-|------|---------|
-| `.env.local` | Local development (gitignored) |
-| `.env.example` | Template with placeholders |
-| Vercel Dashboard | Production secrets |
+*Integration audit: 2026-01-16*
+*Update when adding/removing external services*
