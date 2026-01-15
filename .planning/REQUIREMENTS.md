@@ -67,35 +67,35 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CONT-01 | TBD | Pending |
-| CONT-02 | TBD | Pending |
-| CONT-03 | TBD | Pending |
-| CONT-04 | TBD | Pending |
-| CONT-05 | TBD | Pending |
-| CONT-06 | TBD | Pending |
-| CONT-07 | TBD | Pending |
-| IMG-01 | TBD | Pending |
-| IMG-02 | TBD | Pending |
-| IMG-03 | TBD | Pending |
-| IMG-04 | TBD | Pending |
-| IMG-05 | TBD | Pending |
-| IMG-06 | TBD | Pending |
-| IMG-07 | TBD | Pending |
-| IMG-08 | TBD | Pending |
-| META-01 | TBD | Pending |
-| META-02 | TBD | Pending |
-| META-03 | TBD | Pending |
-| VERF-01 | TBD | Pending |
-| VERF-02 | TBD | Pending |
-| VERF-03 | TBD | Pending |
-| OUTC-01 | TBD | Pending |
-| OUTC-02 | TBD | Pending |
+| IMG-01 | Phase 1 | Pending |
+| IMG-02 | Phase 1 | Pending |
+| CONT-01 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| CONT-06 | Phase 2 | Pending |
+| IMG-03 | Phase 3 | Pending |
+| IMG-04 | Phase 3 | Pending |
+| IMG-05 | Phase 3 | Pending |
+| IMG-06 | Phase 3 | Pending |
+| IMG-07 | Phase 3 | Pending |
+| IMG-08 | Phase 3 | Pending |
+| CONT-05 | Phase 4 | Pending |
+| CONT-07 | Phase 4 | Pending |
+| META-01 | Phase 5 | Pending |
+| META-02 | Phase 5 | Pending |
+| META-03 | Phase 5 | Pending |
+| VERF-01 | Phase 6 | Pending |
+| VERF-02 | Phase 6 | Pending |
+| VERF-03 | Phase 6 | Pending |
+| OUTC-01 | Phase 6 | Pending |
+| OUTC-02 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 23 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 23
+- Mapped to phases: 23
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-01-16*
-*Last updated: 2026-01-16 after initial definition*
+*Last updated: 2026-01-16 — Roadmap traceability added*

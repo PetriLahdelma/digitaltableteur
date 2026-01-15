@@ -1,240 +1,113 @@
-# Digitaltableteur Redesign — Roadmap
-
-> **Milestone**: v2.0 Full Site Redesign
-> **Status**: In Progress
-> **Created**: 2026-01-14
-
----
+# Roadmap: SAP Build Apps Portfolio Page
 
 ## Overview
 
-Transform Digitaltableteur from a portfolio site into a world-class studio presence with bold typography, kinetic animations, and a cohesive design system. This roadmap covers the complete frontend redesign while preserving existing functionality.
-
-**Vision**: Studio aesthetic inspired by It's Nice That and Primary.studio — bold typography, generous whitespace, structured grids, distinctive palettes, subtle textures, and purposeful animation.
-
----
+Update the SAP Build Apps case study with accurate, fact-checked content and real source images. Six phases take us from processing raw images through content fixes, image integration, new sections, metadata updates, and final verification — resulting in a portfolio piece that accurately represents nearly 4 years of design system leadership.
 
 ## Phases
 
-### Phase 01: Foundation & Tailwind Setup
-**Goal**: Establish Tailwind CSS infrastructure alongside existing CSS Modules for gradual migration.
+**Phase Numbering:**
+- Integer phases (1, 2, 3): Planned milestone work
+- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-**Scope**:
-- Install and configure Tailwind CSS 4.x
-- Set up Tailwind design tokens matching existing CSS variables
-- Create theme configuration for 4 themes (light, dark, HC white, HC black)
-- Configure PostCSS pipeline for hybrid CSS Modules + Tailwind
-- Update build configuration
+- [ ] **Phase 1: Image Processing** — Convert source images to web-optimized WebP at correct sizes
+- [ ] **Phase 2: Content Accuracy** — Fix inaccurate claims (team size, duration, 60% metric)
+- [ ] **Phase 3: Image Integration** — Replace placeholders, add new images with proper captions
+- [ ] **Phase 4: Data Components** — Add Tables & Data Visualization section
+- [ ] **Phase 5: Metadata & SEO** — Update projects.ts, page SEO, OpenGraph
+- [ ] **Phase 6: Verification & Outcomes** — Verify claims, NDA review, outcomes section
 
-**Research Required**: Tailwind 4.x migration patterns, CSS Modules coexistence
+## Phase Details
 
----
+### Phase 1: Image Processing
+**Goal**: Source images converted to web-optimized formats at correct dimensions
+**Depends on**: Nothing (first phase)
+**Requirements**: IMG-01, IMG-02
+**Success Criteria** (what must be TRUE):
+  1. All source PNGs converted to WebP format
+  2. Grid images sized at 738x506px
+  3. Hero/single images sized at 1200x600px
+  4. Processed images stored in public/images/portfolio/sap-build-apps/
+**Research**: Unlikely (standard image processing with sharp)
+**Plans**: TBD
 
-### Phase 02: Typography & Font System
-**Goal**: Implement new font pairing and typography scale.
+### Phase 2: Content Accuracy
+**Goal**: All inaccurate claims corrected in the page content
+**Depends on**: Phase 1 (images available for references)
+**Requirements**: CONT-01, CONT-02, CONT-03, CONT-04, CONT-06
+**Success Criteria** (what must be TRUE):
+  1. Team size shows "serving 300+ developers and designers"
+  2. 60% development time claim removed entirely
+  3. Duration shows "March 2022 – February 2026" (nearly 4 years)
+  4. Role attribution clarifies "led small DS team"
+  5. Hero description accurately frames the work
+**Research**: Unlikely (content defined in PROJECT.md)
+**Plans**: TBD
 
-**Scope**:
-- Research and select new font pairing (replace TiemposHeadline + Moderat)
-- Create typography scale in Tailwind config
-- Build type primitives (Heading, Text, Display components)
-- Implement responsive typography
-- Test across all themes
+### Phase 3: Image Integration
+**Goal**: Processed images integrated into the page with proper metadata
+**Depends on**: Phase 1 (processed images), Phase 2 (content context)
+**Requirements**: IMG-03, IMG-04, IMG-05, IMG-06, IMG-07, IMG-08
+**Success Criteria** (what must be TRUE):
+  1. Placeholder images replaced with real source images
+  2. Typography image appears in design tokens section
+  3. Button construction image appears in components section
+  4. Table component image added to page
+  5. Data visualization image added to page
+  6. All alt text and captions accurate and descriptive
+**Research**: Unlikely (React component updates using existing patterns)
+**Plans**: TBD
 
-**Research Required**: Font pairing options, variable font optimization
+### Phase 4: Data Components
+**Goal**: New section for Data Components (Tables & Data Visualization) added
+**Depends on**: Phase 3 (images for section available)
+**Requirements**: CONT-05, CONT-07
+**Success Criteria** (what must be TRUE):
+  1. Data Components section exists in page structure
+  2. Tables subsection explains the table component work
+  3. Data visualization subsection added with content
+  4. Story blocks throughout page are factually accurate
+**Research**: Unlikely (following existing StoryBlock patterns)
+**Plans**: TBD
 
----
+### Phase 5: Metadata & SEO
+**Goal**: All metadata reflects accurate content
+**Depends on**: Phase 2 (content finalized), Phase 4 (all sections complete)
+**Requirements**: META-01, META-02, META-03
+**Success Criteria** (what must be TRUE):
+  1. projects.ts entry has accurate description matching page content
+  2. Page SEO metadata (title, description) updated
+  3. OpenGraph image and description set correctly
+  4. Duration consistent across projects.ts, page component, and metadata
+**Research**: Unlikely (standard Next.js metadata patterns)
+**Plans**: TBD
 
-### Phase 03: Animation Infrastructure
-**Goal**: Set up professional animation toolkit for kinetic experience.
+### Phase 6: Verification & Outcomes
+**Goal**: All claims verified, outcomes section accurate
+**Depends on**: All previous phases (final verification pass)
+**Requirements**: VERF-01, VERF-02, VERF-03, OUTC-01, OUTC-02
+**Success Criteria** (what must be TRUE):
+  1. IDC MarketScape claim verified with source or removed
+  2. Joule AI reference verified with source or removed
+  3. All content passes NDA compliance review
+  4. Impact metrics show verified data (100+ components, 300+ served, WCAG 2.1)
+  5. Outcomes visual uses real source images
+**Research**: Unlikely (verification of existing claims)
+**Plans**: TBD
 
-**Scope**:
-- Install and configure GSAP (ScrollTrigger, SplitText)
-- Install and configure Lenis for smooth scroll
-- Create animation primitives (fade, slide, scale)
-- Build scroll-driven animation hooks
-- Set up animation context/provider
-- Integrate Three.js for 3D elements (optional, can defer)
+## Progress
 
-**Research Required**: GSAP licensing for commercial use, Lenis + Next.js patterns
+**Execution Order:**
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
----
-
-### Phase 04: Layout System
-**Goal**: Build responsive grid and layout primitives.
-
-**Scope**:
-- Create grid system with Tailwind (12-column, asymmetric options)
-- Build Container component with breakpoint variants
-- Create Section component for page structure
-- Build spacing utilities
-- Implement responsive patterns
-
-**Research Required**: None
-
----
-
-### Phase 05: Core UI Components
-**Goal**: Rebuild essential UI components with Tailwind and new design language.
-
-**Scope**:
-- Button (variants: primary, secondary, ghost, outline)
-- Card (variants: default, elevated, bordered)
-- Icon (SVG system, size variants)
-- Link (inline, standalone)
-- Badge / Tag
-- Input, Textarea, Select (form primitives)
-- Divider, Spacer
-
-**Research Required**: None
-
----
-
-### Phase 06: Interactive Components
-**Goal**: Build complex interactive components with animation.
-
-**Scope**:
-- Modal / Dialog
-- Accordion
-- Tabs
-- Tooltip
-- Navigation (Header, Mobile Menu, Footer)
-- Image Gallery / Lightbox
-- Toast notifications (update existing)
-
-**Research Required**: None
-
----
-
-### Phase 07: Homepage Redesign
-**Goal**: Redesign homepage with Hero → Services → Work → Contact flow.
-
-**Scope**:
-- Hero section (kinetic typography, scroll CTA)
-- Services section (Design & Development above the fold)
-- Work preview (portfolio highlights with hover effects)
-- Contact CTA section
-- Scroll-driven animations throughout
-- Mobile responsive design
-
-**Research Required**: None
-
----
-
-### Phase 08: Portfolio & Projects
-**Goal**: Redesign work listing and project detail pages.
-
-**Scope**:
-- Work index page (grid layout, filters)
-- Project detail template (case study format)
-- Project gallery component
-- Next/Previous project navigation
-- Related projects section
-- Sanity CMS integration (restyle, preserve schema)
-
-**Research Required**: None
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Image Processing | 0/TBD | Not started | - |
+| 2. Content Accuracy | 0/TBD | Not started | - |
+| 3. Image Integration | 0/TBD | Not started | - |
+| 4. Data Components | 0/TBD | Not started | - |
+| 5. Metadata & SEO | 0/TBD | Not started | - |
+| 6. Verification & Outcomes | 0/TBD | Not started | - |
 
 ---
-
-### Phase 09: About & Contact Pages
-**Goal**: Redesign About and Contact pages.
-
-**Scope**:
-- About page (studio story, team, values)
-- Contact page (form, location, social links)
-- Update contact form with new design
-- Integrate maps or location visual (if desired)
-- Thank you / confirmation states
-
-**Research Required**: None
-
----
-
-### Phase 10: Blog Redesign
-**Goal**: Redesign blog listing and article pages.
-
-**Scope**:
-- Blog index (article grid, categories, pagination)
-- Article template (rich text, images, code blocks)
-- Author component
-- Share functionality
-- Related posts
-- Sanity CMS integration (restyle, preserve schema)
-
-**Research Required**: None
-
----
-
-### Phase 11: Theme & Accessibility Polish
-**Goal**: Ensure all 4 themes work correctly and meet WCAG standards.
-
-**Scope**:
-- Verify all components in 4 themes
-- Run axe-core accessibility tests
-- Test keyboard navigation throughout
-- Ensure proper focus states
-- Fix any color contrast issues
-- Screen reader testing
-
-**Research Required**: None
-
----
-
-### Phase 12: Performance & Launch Prep
-**Goal**: Optimize performance and prepare for launch.
-
-**Scope**:
-- Lighthouse performance audit (target: ≥80)
-- Bundle size optimization
-- Image optimization
-- Font loading optimization
-- i18n coverage verification (EN/FI/SV)
-- Visual regression test baseline
-- Deploy to staging for final QA
-
-**Research Required**: None
-
----
-
-## Phase Dependencies
-
-```
-01 Foundation ─────┐
-                   ├─→ 04 Layout ─────┐
-02 Typography ─────┤                  │
-                   │                  ├─→ 07 Homepage ─→ 08 Portfolio ─→ 09 About/Contact
-03 Animation ──────┘                  │                                         │
-                                      │                                         ↓
-                   05 Core UI ────────┼─────────────────────────────────→ 10 Blog
-                                      │
-                   06 Interactive ────┘
-
-                   11 Theme/A11y ──────────────────────────────────────→ 12 Launch
-```
-
----
-
-## Success Criteria
-
-From PROJECT.md:
-
-- [ ] Visual design matches studio aesthetic (subjective review)
-- [ ] All pages redesigned and functional
-- [ ] 4 themes working correctly
-- [ ] Animation system smooth (60fps)
-- [ ] WCAG AA compliance
-- [ ] Lighthouse performance ≥80
-- [ ] i18n coverage 100%
-- [ ] All existing functionality preserved
-
----
-
-## Notes
-
-- **AI Chat Widget**: Preserve current implementation (out of scope)
-- **CMS Schema**: No changes to Sanity schemas — restyle only
-- **Backend**: No new backend functionality — frontend redesign only
-- **Migration Strategy**: Hybrid CSS Modules + Tailwind during transition
-
----
-
-*Last updated: 2026-01-14*
+*Roadmap created: 2026-01-16*
