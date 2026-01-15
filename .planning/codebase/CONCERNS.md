@@ -1,275 +1,151 @@
-# Concerns
+# Codebase Concerns
 
-> Technical debt, risks, and known issues for Digitaltableteur.
+**Analysis Date:** 2026-01-16
 
-**Last Updated**: 2026-01-14
+## Tech Debt
 
----
+**In-Memory Rate Limiting (Serverless Risk):**
+- Issue: Rate limiters stored in `Map<>` reset on serverless cold start
+- Files:
+  - `app/api/contact/route.ts:11`
+  - `app/api/gdpr/delete-data/route.ts:27`
+  - `app/api/save-contact/route.ts:15`
+  - `app/api/download-cv/route.ts:16`
+- Why: Quick implementation during MVP
+- Impact: Attackers can bypass rate limits by triggering cold starts
+- Fix approach: Use Redis or persistent store for rate limiting
 
-## Executive Summary
+**GradientDots Component Unimplemented:**
+- Issue: Component only renders placeholder text
+- File: `nextjs-app/shared/components/GradientDots/GradientDots.tsx`
+- Why: TODO left during rapid development
+- Impact: Feature incomplete if referenced in production
+- Fix approach: Implement actual gradient dots visualization or remove component
 
-| Category | Count | Severity | Status |
-|----------|-------|----------|--------|
-| TypeScript Errors | 537 | HIGH | Open |
-| NPM Vulnerabilities | 10 | HIGH | Open |
-| Console Statements | 27 | MEDIUM | Open |
-| Incomplete Components | 1 | MEDIUM | Open |
-| Deprecated Props | 6+ | MEDIUM | Planned |
-| dangerouslySetInnerHTML | 5 | LOW | Mitigated |
-| @ts-expect-error | 8+ | LOW | Intentional |
+## Known Bugs
 
-**Overall Health**: 9.2/10 (Excellent security, concerning type safety)
+**No Critical Bugs Detected**
+- Codebase appears stable based on analysis
+- No TODO/FIXME comments found in app/ directory
 
----
+## Security Considerations
 
-## Critical Issues
+**Untyped Error Handling:**
+- Risk: Type safety bypassed in catch blocks
+- File: `app/api/contact/route.ts:177` - `catch (err: any)`
+- Current mitigation: Generic error messages returned
+- Recommendations: Use proper error typing, create custom error classes
 
-### 1. TypeScript Compilation Errors (537 Total)
+**Missing Environment Variable Validation:**
+- Risk: Silent failures if env vars not set
+- Files:
+  - `app/api/download-cv/route.ts:96` - `CV_PASSWORD || ""`
+  - `app/api/test-health/runs/route.ts:31` - `HEALTH_DASHBOARD_TOKEN` unchecked
+  - `app/api/test-health/db.ts:3` - `TEST_HEALTH_DATABASE_URL` unchecked
+- Current mitigation: None
+- Recommendations: Add startup validation for required env vars
 
-**Severity**: HIGH
-**Impact**: Build risk, type safety compromised
-**Effort**: 20-30 hours
+**Database Error Message Leakage:**
+- Risk: Internal error details exposed to client
+- File: `app/api/save-contact/route.ts:110` - Returns `err.message` directly
+- Current mitigation: Partial generic wrapping
+- Recommendations: Always return generic messages, log details server-side
 
-#### Key Problem Areas
+## Performance Bottlenecks
 
-| File | Errors | Issue |
-|------|--------|-------|
-| `app/blog/[slug]/page.tsx` | 3 | Missing BlogPostMeta properties |
-| `translation-coverage.test.tsx` | 4 | Type guards missing |
-| `emailWorkflow/reducer.test.ts` | 4-6 | State type mismatch |
-| `NextMobileMenu.tsx` | 2 | Label props missing |
-| `app/layout.tsx` | 2 | Invalid metadata |
+**No Significant Bottlenecks Detected**
+- Server components used by default (good)
+- ISR caching configured (revalidate: 3600)
+- CSS Modules for efficient styling
 
-#### Priority Fix
+## Fragile Areas
 
-```typescript
-// app/blog/[slug]/page.tsx - Add missing properties
-interface BlogPostMeta {
-  slug: string;
-  title: string;
-  modifiedAt?: string;  // Add this
-  tags?: string[];      // Add this
-}
-```
+**Provider Chain Order:**
+- Why fragile: Providers must wrap in specific order for context to work
+- File: `app/layout.tsx`
+- Common failures: Wrong order breaks theme/i18n/animation
+- Safe modification: Document order, add integration tests
+- Test coverage: Limited
 
----
+**Components with DOM Access:**
+- Why fragile: Direct window/document access can cause hydration issues
+- Files:
+  - `nextjs-app/shared/components/Tabs/Tabs.tsx`
+  - `nextjs-app/shared/components/ThemeProvider/ThemeProvider.tsx`
+  - `nextjs-app/shared/components/WorkNav/WorkNav.tsx`
+  - `nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx`
+- Safe modification: Use `typeof window !== 'undefined'` checks
+- Test coverage: Has tests but verify SSR compatibility
 
-### 2. NPM Vulnerabilities (10 Total)
+## Scaling Limits
 
-**Severity**: HIGH (8 high, 2 moderate)
+**Vercel Serverless:**
+- Current capacity: Standard tier limits
+- Limit: 10s function timeout (Hobby), 60s (Pro)
+- Symptoms at limit: 504 gateway timeouts
+- Scaling path: Upgrade to Pro, add edge caching
 
-| Package | Advisory | Risk | Fix |
-|---------|----------|------|-----|
-| esbuild ≤0.24.2 | GHSA-67mh-4wv8-2f99 | Dev server exposure | `npm audit fix` |
-| glob 10.2.0-10.4.5 | GHSA-5j98-mcp5-4vw2 | Command injection | Breaking change |
-| undici ≤5.28.5 | GHSA-c76h-2ccp-4975 | Random values | `npm audit fix` |
+**MongoDB Connection Pooling:**
+- Current capacity: 10 max, 2 min connections
+- File: `app/lib/mongodb.ts`
+- Limit: Connection exhaustion under high load
+- Scaling path: Increase pool size, add read replicas
 
-**Recommended Action**:
-```bash
-npm audit fix              # Safe fixes
-npm audit fix --force --dry-run  # Review breaking
-npm run build && npm test  # Verify
-```
+## Dependencies at Risk
 
----
+**No Critical Dependency Risks Detected**
+- All major dependencies are actively maintained
+- Next.js 15.5.9 (latest)
+- React 19.2.3 (latest)
+- TypeScript 5.9.3 (latest)
 
-## High Priority Issues
+## Missing Critical Features
 
-### 3. Console Statements in Production (27)
+**No TLS Enforcement in MongoDB:**
+- Problem: TLS warning logged but connection proceeds
+- File: `app/lib/mongodb.ts:75-79`
+- Current workaround: Warning logged
+- Blocks: Security compliance
+- Implementation complexity: Low (add validation)
 
-**Severity**: MEDIUM
-**Impact**: Information leakage
+## Test Coverage Gaps
 
-**Worst Offender**: `app/api/chat/route.ts` (9 logs)
+**Large Components Without Full Coverage:**
+- What's not tested: Full test verification needed for large components
+- Files:
+  - `nextjs-app/shared/components/ChatWidget/ChatWidget.tsx` (836 lines)
+  - `nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx` (602 lines)
+- Risk: Complex logic may break unnoticed
+- Priority: Medium
+- Difficulty to test: Medium (mock AI responses, form submissions)
 
-```typescript
-// Problem: Leaks AI internals
-console.log("[chat] Model ID:", modelId);
-console.log("[chat] System prompt length:", system.length);
+**Component-to-Test Ratio:**
+- Total components: 349 .tsx files
+- Test files: 143 .test.tsx files
+- Barrel exports: 148 index.ts files
+- Gap: ~200 components may lack dedicated tests
 
-// Fix: Conditional logging
-const DEBUG = process.env.NODE_ENV === "development";
-if (DEBUG) console.log("[chat] ...");
-```
+## Summary by Severity
 
-**Other Locations**:
-- `providers/I18nProvider.tsx`: 2 error logs
-- `providers/ToastProvider.tsx`: 3 logs
-- `api-legacy-vercel-functions/`: Multiple logs
+### Critical
+1. In-memory rate limiting in serverless (bypass risk)
+2. GradientDots component unimplemented
 
----
+### High
+1. Missing env var validation (silent failures)
+2. Untyped error catch blocks
+3. Database error messages to client
 
-### 4. Incomplete Component
+### Medium
+1. Console logging in production code
+2. Large components need test verification
+3. Provider chain order undocumented
 
-**File**: `GradientDots/GradientDots.tsx`
-
-```typescript
-// TODO: Implement GradientDots component
-const GradientDots: React.FC<GradientDotsProps> = ({ className }) => {
-  return <div className={className} />;  // Stub only
-};
-```
-
-**Status**: Non-functional stub
-**Effort**: 2-4 hours
-
----
-
-## Medium Priority Issues
-
-### 5. Deprecated Props (Planned v2.0.0 Removal)
-
-**Components Affected**: Button, Select, Inputs
-
-| Deprecated | Replacement |
-|------------|-------------|
-| `disabled` | `isDisabled` |
-| `isSubmitting` | `isLoading` |
-| `inverse` | `isInverse` |
-| `rounded` | `isRounded` |
-| `onChange` | `onValueChange` |
-
-**Status**: Working but marked for removal
-
----
-
-### 6. TypeScript Suppressions (8+)
-
-**Intentional** (OK):
-- Test error boundary testing
-- Governance annotations
-
-**Needs Review**:
-```typescript
-// Checkbox.tsx:68
-// @ts-ignore - assign to forwarded ref object
-```
-
-Should be `@ts-expect-error` with documentation.
+### Low
+1. Some components missing barrel exports
+2. Generic Tool types in donny-tools.ts
 
 ---
 
-## Low Priority Issues
-
-### 7. dangerouslySetInnerHTML (5 Occurrences)
-
-**Status**: MITIGATED with DOMPurify
-
-| Location | Content |
-|----------|---------|
-| `app/about/page.tsx` | Sanity content |
-| `app/blog/[slug]/page.tsx` | Blog markdown |
-| `app/layout.tsx` (3x) | JSON-LD data |
-
-**Protection**: `sanitizeHTML()`, `sanitizeJsonLd()`, `sanitizeRichText()`
-**Test Coverage**: 17/17 passing
-
----
-
-### 8. Storybook Type Errors (~20)
-
-**Impact**: Development experience only
-
-- Avatar story image types
-- Button governance metadata
-- Chat widget story props
-
-**Effort**: 3-5 hours
-
----
-
-## Migration Status
-
-### Vite → Next.js
-
-**Status**: PLANNING phase
-
-| Current | Target |
-|---------|--------|
-| Vite (root) | Next.js 15 |
-| 100% production | Incremental migration |
-
-**Risks**:
-- CSS Module path differences
-- Environment variable naming (`VITE_*` → `NEXT_PUBLIC_*`)
-- Router API incompatibility
-- Hydration mismatches
-
-**Documentation**: `docs/NEXTJS_MIGRATION_PLAN.md`
-
----
-
-## Security Assessment
-
-### Recent Hardening (December 2025)
-
-| Feature | Status |
-|---------|--------|
-| DOMPurify | Implemented |
-| OpenAI cost limits | Implemented |
-| Prompt injection guards | Implemented |
-| Rate limiting | Implemented |
-| CORS hardening | Implemented |
-| CSP headers | Implemented |
-| MongoDB sanitization | Implemented |
-| GDPR automation | Implemented |
-| Sentry alerts | Implemented |
-
-**Security Score**: 9.2/10
-
----
-
-## Recommended Action Plan
-
-### Week 1: Critical (8-16h)
-
-1. **TypeScript errors** (Blog, Email, Label)
-   - Fix BlogPostMeta interface
-   - Fix email workflow state
-   - Fix Label props
-   - **Effort**: 6-8h
-
-2. **npm audit fixes**
-   - Safe fixes first
-   - Test breaking changes
-   - **Effort**: 2-3h
-
-3. **Remove console.log**
-   - Conditional debug logging
-   - **Effort**: 1-2h
-
-### Week 2: High (6-12h)
-
-1. Translation coverage types (2h)
-2. Email workflow reducer (2-3h)
-3. Layout metadata (1h)
-
-### Future: Planned
-
-1. GradientDots implementation
-2. Next.js migration (80-120h)
-3. Deprecation cleanup (v2.0.0)
-
----
-
-## Monitoring Commands
-
-```bash
-# Check status
-npm run typecheck          # TS errors
-npm audit                  # Vulnerabilities
-npm run lint               # Linting issues
-npm test                   # Failing tests
-
-# Pre-commit guard
-npm run precommit:guard
-```
-
----
-
-## Reference Documents
-
-- `docs/COMPREHENSIVE_SECURITY_AUDIT_2025-12-03.md`
-- `docs/ACCESSIBILITY_AND_ISSUES_REPORT.md`
-- `docs/ISSUES_FIXED_2025-11-29.md`
-- `docs/NEXTJS_MIGRATION_PLAN.md`
+*Concerns audit: 2026-01-16*
+*Update as issues are fixed or new ones discovered*
