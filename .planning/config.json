@@ -1,29 +1,26 @@
 {
-  "project": {
-    "name": "Digitaltableteur Redesign",
-    "type": "brownfield",
-    "initialized": "2026-01-14"
+  "mode": "yolo",
+  "depth": "comprehensive",
+  "parallelization": {
+    "enabled": true,
+    "plan_level": true,
+    "task_level": false,
+    "skip_checkpoints": true,
+    "max_concurrent_agents": 3,
+    "min_plans_for_parallel": 2
   },
-  "workflow": {
-    "mode": "yolo",
-    "depth": "comprehensive",
-    "parallelization": false
+  "gates": {
+    "confirm_project": false,
+    "confirm_phases": false,
+    "confirm_roadmap": false,
+    "confirm_breakdown": false,
+    "confirm_plan": false,
+    "execute_next_plan": false,
+    "issues_review": false,
+    "confirm_transition": false
   },
-  "phases": {
-    "minPerMilestone": 8,
-    "maxPerMilestone": 12,
-    "plansPerPhase": {
-      "min": 5,
-      "max": 10
-    },
-    "tasksPerPlan": {
-      "min": 2,
-      "max": 3
-    }
-  },
-  "preferences": {
-    "autoCommit": true,
-    "confirmBeforeExecute": false,
-    "verboseOutput": false
+  "safety": {
+    "always_confirm_destructive": true,
+    "always_confirm_external_services": true
   }
 }
