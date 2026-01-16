@@ -83,18 +83,36 @@ export function Designerman({
     img.onload = () => setSheetSize({ w: img.width, h: img.height });
   }, [spriteSheet]);
 
+  // Focus state tracking for keyboard accessibility
+  // State setter used in event handlers; value reserved for future visual feedback
+  const [, setIsFocused] = React.useState(false);
+
   React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Only respond to keyboard when focused (accessibility best practice)
       pressed.current.add(e.key.toLowerCase());
+      // Prevent scrolling when using arrow keys within the game
+      if (
+        ["arrowup", "arrowdown", "arrowleft", "arrowright", " "].includes(
+          e.key.toLowerCase()
+        )
+      ) {
+        e.preventDefault();
+      }
     };
     const handleKeyUp = (e: KeyboardEvent) => {
       pressed.current.delete(e.key.toLowerCase());
     };
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
+
+    // Attach to container element (not window) for proper focus handling
+    container.addEventListener("keydown", handleKeyDown);
+    container.addEventListener("keyup", handleKeyUp);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
+      container.removeEventListener("keydown", handleKeyDown);
+      container.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
 
@@ -209,8 +227,14 @@ export function Designerman({
       ref={containerRef}
       className={styles.canvas}
       role="application"
-      aria-label="Designerman interactive sprite"
+      aria-label="Designerman interactive sprite game. Use arrow keys to move, Space to jump, J to punch, K to blast, L to block."
       tabIndex={0}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => {
+        setIsFocused(false);
+        // Clear pressed keys when focus is lost
+        pressed.current.clear();
+      }}
     >
       <div className={styles.hud} aria-hidden>
         <div className={styles.hint}>

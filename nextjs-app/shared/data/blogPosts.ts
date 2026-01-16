@@ -15,6 +15,8 @@ type BlogFrontmatter = {
   mainImageUrl?: string;
   mainImageAlt?: string;
   mainImageCaption?: string;
+  tags?: string[];
+  modifiedAt?: string;
 };
 
 type BlogModule = {
@@ -65,6 +67,8 @@ export type BlogPostEntry = {
   mainImageUrl?: string;
   mainImageAlt?: string;
   mainImageCaption?: string;
+  tags?: string[];
+  modifiedAt?: string;
   Component: ComponentType;
 };
 
@@ -86,6 +90,8 @@ const entries: BlogPostEntry[] = Object.entries(modules)
       mainImageUrl: frontmatter.mainImageUrl,
       mainImageAlt: frontmatter.mainImageAlt,
       mainImageCaption: frontmatter.mainImageCaption,
+      tags: frontmatter.tags,
+      modifiedAt: frontmatter.modifiedAt,
       Component: mod.default,
     };
   })

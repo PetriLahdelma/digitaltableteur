@@ -1,0 +1,19 @@
+.stage {
+  position: relative;
+  min-block-size: calc(var(--space-layout-96) * 4);
+  padding-block: var(--space-layout-32);
+  padding-inline: var(--space-layout-24);
+  overflow: hidden;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  background-color: var(--main-body-background-color);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-layout-8);
+  max-inline-size: calc(var(--space-layout-96) * 4);
+}

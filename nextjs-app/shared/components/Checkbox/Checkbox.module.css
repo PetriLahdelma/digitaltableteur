@@ -55,22 +55,38 @@
 
   /* Use an outline focus style harmonized with accent-color */
 
-  .checkbox:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+  .checkbox:focus,
+  .checkbox:focus-visible {
+    outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+    outline-offset: var(--focus-ring-offset, 2px);
     box-shadow: none;
   }
 }
 
 .checkbox:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgb(0 112 243 / 10%);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
 .checkbox:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgb(0 112 243 / 20%);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+/* Focus-visible state for keyboard navigation - critical for a11y */
+.checkbox:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+  box-shadow: none; /* Use outline instead of box-shadow */
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .checkbox:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
 }
 
 /* Checkbox checked state with increasing specificity */

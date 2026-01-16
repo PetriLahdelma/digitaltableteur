@@ -9,18 +9,18 @@
 /* Background Variants */
 .background-light {
   background: var(--color-background-light, #fff);
-  color: var(--color-primary, #00f);
+  color: var(--color-primary, #041B23);
 }
 
 .background-dark {
-  background: var(--color-primary, #00f);
+  background: var(--color-primary, #041B23);
   color: var(--color-text-inverse, #fff);
 }
 
 .background-gradient {
   background: linear-gradient(
     135deg,
-    var(--color-primary, #00f) 0%,
+    var(--color-primary, #041B23) 0%,
     var(--color-primary-dark, #0046b8) 100%
   );
   color: var(--color-white, #fff);
@@ -28,13 +28,13 @@
 
 .background-transparent {
   background: transparent;
-  color: var(--color-primary, #00f);
+  color: var(--color-primary, #041B23);
 }
 
 .background-transparent .heroTitle,
 .background-transparent .heroSubtitle,
 .background-transparent .heroDescription {
-  color: var(--color-primary, #00f);
+  color: var(--color-primary, #041B23);
 }
 
 .background-image {
@@ -287,7 +287,7 @@
 /* Dark Mode Adjustments */
 @media (prefers-color-scheme: dark) {
   .background-light {
-    background: var(--color-primary, #00f);
+    background: var(--color-primary, #041B23);
     color: var(--color-white, #fff);
   }
 }

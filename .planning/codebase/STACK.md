@@ -1,100 +1,98 @@
 # Technology Stack
 
-**Analysis Date:** 2026-01-13
+**Analysis Date:** 2026-01-16
 
 ## Languages
 
 **Primary:**
-- TypeScript 5.9.3 - All application code (`package.json`, `tsconfig.json`)
-- JavaScript ES2017+ - Build scripts, Node.js runtime
+- TypeScript 5.9.3 - All application code (strict mode enabled)
 
 **Secondary:**
-- CSS Modules - Component styling (`*.module.css`)
-- Markdown/MDX - Blog content (`digitaltableteur-blog/`, via `@next/mdx`)
-- Shell - Deployment and utility scripts (`scripts/`)
+- JavaScript - Build scripts, config files (`scripts/`, `next.config.ts`)
+- CSS - Styling via CSS Modules and design tokens
 
 ## Runtime
 
 **Environment:**
-- Node.js 20.19.0 (≥20.19.0 <21) - `.nvmrc`, `package.json` engines
-- Edge Runtime - Vercel serverless, Next.js server components
-- Browser - React 19 client runtime
+- Node.js 20.19.0 - `.nvmrc`
+- React 19.2.3 - Browser runtime
+- Next.js 15.5.9 App Router - Server components and API routes
 
 **Package Manager:**
-- npm with workspaces
-- Workspaces: root (`.`) and `nextjs-app`
+- npm - `package.json` (monorepo root)
 - Lockfile: `package-lock.json` present
+
+**Workspaces:**
+- Main app: `/package.json`
+- NextJS shared: `nextjs-app/` (components, blog CMS)
+- Sanity CMS: `digitaltableteur-blog/` (Sanity studio)
+- Akaunting: `akaunting/` (Docker-based accounting)
 
 ## Frameworks
 
 **Core:**
-- Next.js 15.5.9 - Primary web framework (`next.config.ts`)
-- React 19.2.3 - UI framework
-- Vite 6.4.1 - Legacy app build (`vite-app/vite.config.ts`)
+- Next.js 15.5.9 - Web framework with App Router (`app/`, `next.config.ts`)
+- React 19.2.3 - UI framework with React Server Components
 
 **Testing:**
-- Vitest 4.0.16 - Unit testing with `@vitest/coverage-v8`
-- Testing Library - React component testing (`@testing-library/react`, `@testing-library/jest-dom`)
-- Playwright 1.57.0 - E2E via Storybook test runner
+- Vitest 4.0.16 - Unit & component testing (`vitest.config.mts`)
+- Playwright 1.57.0 - Visual regression & E2E (`@vitest/browser-playwright`)
+- React Testing Library 16.3.1 - Component testing
 - jest-axe 10.0.0 - Accessibility testing
 
 **Build/Dev:**
-- TypeScript - `tsc` for type checking
-- ESLint 9.39.2 - Code linting
-- Stylelint 16.26.1 - CSS linting
-- Prettier - Code formatting
-- Storybook 10.1.10 - Component development (port 6010)
+- Storybook 10.1.10 - Component development (`.storybook/main.ts`)
+- PostCSS 8.5.6 - CSS processing
+- Tailwind CSS 4.1.18 - Utility CSS (`tailwind.config.ts`)
 
 ## Key Dependencies
 
 **Critical:**
-- `ai` 5.0.115 + `@ai-sdk/react` 2.0.117 - Vercel AI SDK for chat functionality
-- `@ai-sdk/openai` 2.0.64 + `@ai-sdk/gateway` 2.0.7 - OpenAI/multi-model integration
-- `sanity` 4.22.0 + `next-sanity` 11.6.12 - CMS integration
-- `mongodb` 7.0.0 - NoSQL database client (`app/lib/mongodb.ts`)
-- `pg` 8.16.3 - PostgreSQL database (`app/api/test-health/db.ts`)
+- ai 5.0.115 - Vercel AI SDK for LLM integration (`app/api/chat/route.ts`)
+- mongodb 7.0.0 - Database client (`app/lib/mongodb.ts`)
+- sanity 5.3.1 - CMS client (`digitaltableteur-blog/`, `@sanity/client@7.13.2`)
+- i18next 25.7.3 - Internationalization (EN/FI/SV)
+- framer-motion 12.23.26 - Animation library
 
 **Infrastructure:**
-- `i18next` 25.7.3 + `react-i18next` 15.7.4 - Internationalization (EN/FI/SV)
-- `@sentry/nextjs` 10.31.0 - Error tracking and monitoring
-- `zod` - Schema validation
-- `mongo-sanitize` 1.1.0 - NoSQL injection prevention
-- `isomorphic-dompurify` 2.35.0 - HTML sanitization
+- @sentry/nextjs 10.31.0 - Error tracking
+- next-sanity 11.6.12 - Sanity integration for Next.js
+- zod - Schema validation (API routes)
+- mongo-sanitize 1.1.0 - NoSQL injection prevention
+- isomorphic-dompurify 2.35.0 - XSS prevention
 
-**UI:**
-- `@phosphor-icons/react` 2.1.10 - Icon library
-- `framer-motion` 12.23.26 - Animations
-- `styled-components` 6.1.19 - CSS-in-JS (legacy)
-- `leaflet` 1.9.4 + `react-leaflet` 5.0.0 - Maps
-- `chart.js` 4.5.1 + `react-chartjs-2` 5.3.1 - Charts
+**UI Components:**
+- Radix UI - Headless components (6 packages: accordion, dialog, dropdown, tabs, checkbox, select)
+- @phosphor-icons/react 2.1.10 - Icon library
+- lucide-react 0.562.0 - Icon library
 
 ## Configuration
 
 **Environment:**
-- `.env.local` - Local development secrets (gitignored)
+- `.env.local` - Local secrets (gitignored)
 - `.env.example` - Template for required variables
-- Key vars: `MONGODB_URI`, `OPENAI_API_KEY`, `SANITY_PROJECT_ID`, `SENTRY_DSN`
+- Required: `MONGODB_URI`, `AI_GATEWAY_URL`, `SANITY_TOKEN`, `RESEND_API_KEY`
 
 **Build:**
-- `next.config.ts` - Next.js configuration with MDX, security headers
-- `tsconfig.json` - TypeScript with path aliases (`@/*`, `@dt/*`, `@dt-pages/*`)
-- `sanity.config.ts` - Sanity CMS (Project: ai4cwr0g)
+- `tsconfig.json` - TypeScript compiler options (strict mode)
+- `next.config.ts` - Next.js configuration (image optimization, security headers)
 - `vitest.config.mts` - Test runner configuration
 - `.storybook/main.ts` - Storybook configuration
+- `mcp.json` - Model Context Protocol servers
 
 ## Platform Requirements
 
 **Development:**
 - macOS/Linux/Windows (any platform with Node.js 20+)
-- Optional: Docker for Akaunting accounting system
+- No Docker required for development
 
 **Production:**
-- Vercel - Next.js optimized deployment
-- MongoDB Atlas - Database
-- Sanity.io - CMS hosting
-- Sentry.io - Error tracking
+- Vercel serverless deployment
+- MongoDB Atlas (or compatible) for database
+- Sanity.io for CMS
+- Sentry for error monitoring
 
 ---
 
-*Stack analysis: 2026-01-13*
+*Stack analysis: 2026-01-16*
 *Update after major dependency changes*

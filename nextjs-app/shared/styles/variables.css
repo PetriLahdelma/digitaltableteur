@@ -2,9 +2,9 @@
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
 
-  /* Typography tokens */
-  --font-title: "TiemposHeadline-Regular", serif;
-  --font-text: "Moderat", sans-serif;
+  /* Typography tokens - updated for Syne + Satoshi (next/font provides --font-heading, --font-body) */
+  --font-title: var(--font-heading), system-ui, sans-serif;
+  --font-text: var(--font-body), system-ui, sans-serif;
   --font-size-text: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
   --font-size-text-s: clamp(0.75rem, 0.4vw + 0.8rem, 1.05rem);
   --font-size-text-m: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
@@ -15,6 +15,16 @@
   --font-size-title-l: clamp(2.75rem, 4vw + 1.75rem, 4.25rem);
   --font-size-title-xl: clamp(3.5rem, 6vw + 2.5rem, 5.5rem);
   --font-size-display: clamp(5rem, 10vw + 3rem, 8rem); /* Display typography: 80px-128px */
+  --font-size-display-xl: clamp(6rem, 14vw + 3rem, 12rem); /* Hero display: 96px-192px */
+
+  /* Letter spacing tokens for display typography */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
   --font-size-button-s: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);
   --font-size-button-m: clamp(1rem, 0.35vw + 0.9rem, 1.125rem);
   --font-size-button-l: clamp(1.125rem, 0.45vw + 1rem, 1.25rem);
@@ -27,21 +37,22 @@
   --line-height-loose: 1.75; /* For maximum readability */
   --font-weight-title: 700;
   --font-weight-text: 400;
-  --color-title: var(--primary-text-color, #00f);
-  --color-text: var(--primary-text-color, #00f);
-  --primary-body-font: "Moderat-Regular", sans-serif;
-  --secondary-body-font: "TiemposText-Regular", serif;
-  --primary-bold-font: "Moderat-Bold", sans-serif;
-  --secondary-bold-font: "TiemposHeadline-Semibold", serif;
-  --primary-heading-font: "TiemposHeadline-Regular", serif;
-  --secondary-heading-font: "Moderat", sans-serif;
+  --color-title: var(--primary-text-color, #041B23);
+  --color-text: var(--primary-text-color, #041B23);
+  /* Font family aliases - mapped to new typography system */
+  --primary-body-font: var(--font-body), system-ui, sans-serif;
+  --secondary-body-font: var(--font-heading), system-ui, sans-serif;
+  --primary-bold-font: var(--font-body), system-ui, sans-serif;
+  --secondary-bold-font: var(--font-heading), system-ui, sans-serif;
+  --primary-heading-font: var(--font-heading), system-ui, sans-serif;
+  --secondary-heading-font: var(--font-body), system-ui, sans-serif;
 
   /* Text colors */
-  --main-body-copy-color: #00f;
-  --primary-text-color: #00f;
-  --secondary-text-color: #00f;
+  --main-body-copy-color: #041B23;
+  --primary-text-color: #041B23;
+  --secondary-text-color: #041B23;
   --inverted-text-color: #fff;
-  --link-color: #00f;
+  --link-color: #041B23;
 
   /* Accent colors */
   --accent-pink: #f205c5;
@@ -69,7 +80,7 @@
 
   /* Functional colors */
   --main-body-background-color: #fff;
-  --color-primary: #00f;
+  --color-primary: #041B23;
   --color-primary-disabled: #0000ff50;
   --color-success: #068338;
   --color-info: #0c7a8b;
@@ -94,7 +105,7 @@
   --wavy-underline-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
 
   /* Storybook Helper Colors */
-  --storybook-blue: #00f; /* Storybook Helper Color: Blue */
+  --storybook-blue: #041B23; /* Storybook Helper Color: Blue */
   --storybook-cyan: #71efff; /* Storybook Helper Color: Cyan */
   --storybook-pink: #f0f; /* Storybook Helper Color: Pink */
   --storybook-purple: #812eff; /* Storybook Helper Color: Purple */
@@ -108,6 +119,16 @@
   /* Component-specific colors that should remain consistent across themes */
   --checkbox-checkmark-color: #fff; /* Always white for checkmarks on blue background */
   --checkbox-background-color: #fff; /* Always white background for unchecked state */
+
+  /* Focus ring tokens for accessibility */
+  --focus-ring-color: var(--color-primary);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+
+  /* Component overlay tokens */
+  --modal-overlay-bg: rgb(0 0 0 / 50%);
+  --modal-shadow: 0 4px 8px rgb(0 0 0 / 20%);
+  --gallery-caption-bg: rgb(0 0 0 / 55%);
 
   /* Border radius */
 
@@ -154,6 +175,35 @@
   /* Vertical rhythm multiplier (used for consistent spacing) */
   --rhythm-base: 0.5rem; /* 8px base rhythm unit */
 
+  /* Animation & Motion Tokens - Premium studio-level motion */
+
+  /* Easing curves - refined motion feel */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1); /* Smooth deceleration - primary for entrances */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1); /* Medium deceleration - for reveals */
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1); /* Light deceleration - for subtle moves */
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1); /* Symmetric ease - for transitions */
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1); /* Strong symmetric - for dramatic reveals */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* Slight overshoot - for playful elements */
+
+  /* Duration tokens - purposeful timing */
+  --duration-instant: 100ms; /* Micro-interactions (hover states, toggles) */
+  --duration-fast: 200ms; /* Quick feedback (button clicks, tooltips) */
+  --duration-normal: 350ms; /* Standard transitions (menu, modals) */
+  --duration-slow: 500ms; /* Deliberate reveals (page sections, cards) */
+  --duration-slower: 800ms; /* Dramatic entrances (hero content, titles) */
+  --duration-slowest: 1200ms; /* Grand reveals (page transitions, complex sequences) */
+
+  /* Stagger timing for sequential animations */
+  --stagger-fast: 0.03s; /* Tight groupings (characters, small items) */
+  --stagger-normal: 0.08s; /* Standard spacing (words, list items) */
+  --stagger-slow: 0.15s; /* Deliberate spacing (cards, major sections) */
+
+  /* Distance tokens for movement animations */
+  --motion-distance-sm: 12px; /* Subtle movement */
+  --motion-distance-md: 24px; /* Standard movement */
+  --motion-distance-lg: 48px; /* Prominent movement */
+  --motion-distance-xl: 80px; /* Dramatic movement */
+
   /* Spacing system */
 
   /* Internal (component) spacing tokens: for padding, gaps, etc. */
@@ -180,6 +230,8 @@
   --space-layout-64: 4rem; /* 64px */
   --space-layout-80: 5rem; /* 80px */
   --space-layout-96: 6rem; /* 96px */
+  --space-layout-120: 7.5rem; /* 120px */
+  --space-layout-160: 10rem; /* 160px */
 }
 
 ::selection {
@@ -251,6 +303,11 @@
   --storybook-yellow: #feeb6e; /* Storybook Helper Color: Yellow */
   --storybook-white: #181a1b; /* Storybook Helper Color: Dark Text for dark mode */
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
+
+  /* Focus ring tokens for dark theme */
+  --focus-ring-color: var(--color-primary);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
 }
 
 .themeHCB,
@@ -310,6 +367,11 @@
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
   --selection-background: #fff;
   --selection-color: #000;
+
+  /* Focus ring tokens for high contrast black - maximum visibility */
+  --focus-ring-color: #fff;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 3px;
 }
 
 /* Utility classes for gradient text effects */
@@ -406,6 +468,53 @@
   --storybook-gray: #c4c4c4; /* Storybook Helper Color: Gray */
   --selection-background: #000;
   --selection-color: #fff;
+
+  /* Focus ring tokens for high contrast white - maximum visibility */
+  --focus-ring-color: #000;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 3px;
+}
+
+/* ==========================================================================
+   Prefers-Contrast Support
+   Increases contrast when user has "Increase Contrast" enabled in OS settings
+   ========================================================================== */
+
+@media (prefers-contrast: more) {
+  :root {
+    /* Boost text contrast for light mode */
+    --color-text: #000;
+    --primary-text-color: #000;
+    --secondary-text-color: #1a1a1a;
+    --main-body-copy-color: #000;
+
+    /* Ensure borders are more visible */
+    --color-border: #000;
+    --color-border-light: #333;
+
+    /* Stronger focus ring */
+    --focus-ring-width: 3px;
+    --focus-ring-color: #000;
+  }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root {
+    /* Boost text contrast for dark mode */
+    --color-text: #fff;
+    --primary-text-color: #fff;
+    --secondary-text-color: #e0e0e0;
+    --main-body-copy-color: #fff;
+    --main-body-background-color: #000;
+
+    /* Ensure borders are more visible in dark */
+    --color-border: #fff;
+    --color-border-light: #ccc;
+
+    /* Stronger focus ring */
+    --focus-ring-width: 3px;
+    --focus-ring-color: #fff;
+  }
 }
 
 /* Hyphenation rules for headings - supports multiple languages */

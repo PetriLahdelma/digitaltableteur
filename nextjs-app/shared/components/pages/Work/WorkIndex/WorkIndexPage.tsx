@@ -1,88 +1,79 @@
-import React from "react";
+"use client";
 
-import PageLayout from "../../../../patterns/PageLayout/PageLayout";
-import styles from "./workIndex.module.css";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { Container } from "../../../../components/Container";
+import { Section } from "../../../../components/Section";
+import { WorkHero } from "../../../../patterns/WorkHero";
+import { CategoryFilter } from "../../../../components/CategoryFilter";
+import { WorkGrid } from "../../../../components/WorkGrid";
+import { FadeIn } from "../../../../components/animations/FadeIn";
+import {
+  projects,
+  categories,
+  filterProjects,
+  type ProjectCategory,
+} from "../../../../data/projects";
 
-export function WorkIndexPage({ nav }: { nav?: React.ReactNode }) {
+export interface WorkIndexPageProps {
+  /** Optional navigation component (e.g., NextWorkNav) */
+  nav?: React.ReactNode;
+}
+
+export function WorkIndexPage({ nav }: WorkIndexPageProps) {
+  const { t } = useTranslation();
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
+
+  // Filter projects based on active category
+  const filteredProjects = useMemo(() => {
+    return filterProjects(projects, activeCategory);
+  }, [activeCategory]);
+
+  // Map categories to include translated labels
+  const translatedCategories = useMemo(() => {
+    return categories.map((cat) => ({
+      value: cat.value,
+      label: t(cat.labelKey, cat.labelKey),
+    }));
+  }, [t]);
+
+  // Handle category change
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category as ProjectCategory);
+  };
+
   return (
-    <div className={styles.workPageContent}>
+    <main className="min-h-screen">
+      {/* Navigation (if provided) */}
       {nav}
-      <PageLayout maxWidth="full" spacing="comfortable" as="section">
-        <section className={styles.works}>
-          <div className={styles.worksGrid}>
-            <Link
-              href="/work/helsinki-design-system"
-              rel="noopener noreferrer"
-              className={styles.workItem}
-              aria-label="View Helsinki Design System project details"
-            >
-              <Image
-                src="/images/portfolio/helsinki-design-system/HDS_logo.png"
-                alt="Helsinki Design System project"
-                className={styles.workImage}
-                width={500}
-                height={500}
-              />
-              <span className="visuallyHidden">
-                View Helsinki Design System project
-              </span>
-            </Link>
-            <Link
-              href="/work/new-things-co"
-              rel="noopener noreferrer"
-              className={styles.workItem}
-              aria-label="View New Things Co project details"
-            >
-              <Image
-                src="/images/portfolio/new_things_co/new_things_co_item.webp"
-                alt="New Things Co project preview"
-                className={styles.workImage}
-                width={500}
-                height={500}
-              />
-              <span className="visuallyHidden">View New Things Co project</span>
-            </Link>
-            <Link
-              href="/work/garage-junction"
-              rel="noopener noreferrer"
-              className={styles.workItem}
-              aria-label="View Garage Junction project details"
-            >
-              <video
-                src="/images/portfolio/garage_junction/GJ_loop.mov"
-                className={styles.workImage}
-                width={500}
-                height={500}
-                autoPlay
-                loop
-                muted
-                playsInline
-                aria-label="Garage Junction project preview"
-              />
-              <span className="visuallyHidden">
-                View Garage Junction project
-              </span>
-            </Link>
-            <Link
-              href="/work/illustrations"
-              rel="noopener noreferrer"
-              className={styles.workItem}
-              aria-label="View Illustrations project details"
-            >
-              <Image
-                src="/images/portfolio/illustrations/ice-cream_square.webp"
-                alt="Illustrations project preview"
-                className={styles.workImage}
-                width={500}
-                height={500}
-              />
-              <span className="visuallyHidden">View Illustrations project</span>
-            </Link>
-          </div>
-        </section>
-      </PageLayout>
-    </div>
+
+      {/* Hero Section */}
+      <WorkHero />
+
+      {/* Projects Section */}
+      <Section spacing="lg" background="default">
+        <Container size="lg">
+          {/* Filter Bar with entrance animation */}
+          <FadeIn delay={0.3} direction="up" distance={20} className="mb-12 tablet:mb-16">
+            <CategoryFilter
+              categories={translatedCategories}
+              activeCategory={activeCategory}
+              onCategoryChange={handleCategoryChange}
+              variant="pills"
+              size="md"
+            />
+          </FadeIn>
+
+          {/* Project Grid - removed project count for cleaner design */}
+          <WorkGrid
+            projects={filteredProjects}
+            columns={4}
+            animateItems={true}
+            aspectRatio="square"
+            showCategory={true}
+          />
+        </Container>
+      </Section>
+    </main>
   );
 }

@@ -21,6 +21,9 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/hooks/*": ["./hooks/*"],
       "@dt/*": ["./nextjs-app/shared/components/*"],
       "@dt-pages/*": ["./nextjs-app/shared/components/pages/*"]
     }
@@ -54,6 +57,7 @@
     "storybook-static",
     "coverage",
     "dist",
-    "__visual__"
+    "__visual__",
+    "e2e"
   ]
 }

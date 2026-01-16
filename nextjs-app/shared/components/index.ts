@@ -44,6 +44,7 @@ export { default as Select } from "./Select/Select";
 export { default as SelectOption } from "./Select/SelectOption";
 export { default as ServicesGrid } from "./ServicesGrid/ServicesGrid";
 export { default as Skeleton } from "./Skeleton/Skeleton";
+export { SkillsGrid, type SkillsGridProps, type Skill } from "./SkillsGrid";
 export { default as Switch } from "./Switch/Switch";
 export { SocialShare } from "./SocialShare/SocialShare";
 export { default as Testimonial } from "./Testimonial/Testimonial";
@@ -52,4 +53,18 @@ export { ThemeProvider, useTheme } from "./ThemeProvider/ThemeProvider";
 export { default as Title } from "./Title/Title";
 export { default as Toast } from "./Toast/Toast";
 export { default as TransformingActionInput } from "./TransformingActionInput/TransformingActionInput";
+export { ValueCard, type ValueCardProps } from "./ValueCard";
 export { default as WorkNav } from "./WorkNav/WorkNav";
+
+// Blog components (Phase 10)
+export { EnhancedArticleCard, type EnhancedArticleCardProps } from "./EnhancedArticleCard";
+export { BlogGrid, type BlogGridProps } from "./BlogGrid";
+export { BlogCategoryFilter, type BlogCategoryFilterProps } from "./BlogCategoryFilter";
+export { Pagination, type PaginationProps } from "./Pagination";
+
+// Article components (Phase 10-2)
+export { ArticleContent, type ArticleContentProps } from "./ArticleContent";
+export { TableOfContents, type TableOfContentsProps, type TOCItem } from "./TableOfContents";
+export { EnhancedAuthorCard, type EnhancedAuthorCardProps, type AuthorSocial } from "./EnhancedAuthorCard";
+export { ArticleShareSection, type ArticleShareSectionProps } from "./ArticleShareSection";
+export { ReadingProgress, type ReadingProgressProps } from "./ReadingProgress";

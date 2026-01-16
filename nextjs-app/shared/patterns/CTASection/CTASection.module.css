@@ -1,0 +1,32 @@
+/* CTASection button styles with theme support */
+
+.primaryButton {
+  background-color: #fff;
+  color: #041B23;
+}
+
+.primaryButton:hover {
+  background-color: rgb(255 255 255 / 90%);
+}
+
+/* Dark theme */
+:global(.themeDark) .primaryButton,
+:global(.dark) .primaryButton {
+  background-color: #041B23;
+  color: #fff;
+}
+
+:global(.themeDark) .primaryButton:hover,
+:global(.dark) .primaryButton:hover {
+  background-color: #0a2530;
+}
+
+/* High Contrast Black */
+:global(.themeHCB) .primaryButton {
+  background-color: #041B23;
+  color: #fff;
+}
+
+:global(.themeHCB) .primaryButton:hover {
+  background-color: #0a2530;
+}
