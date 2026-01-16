@@ -94,7 +94,7 @@
     "@storybook/addon-vitest": "^10.1.11",
     "@swc/helpers": "^0.5.18",
     "@vitest/browser-playwright": "^4.0.16",
-    "ai": "^5.0.115",
+    "ai": "^6.0.39",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.2.3",
