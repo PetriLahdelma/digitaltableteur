@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useCallback, useState } from "react";
-import { cn } from "@/lib/utils";
 import { X, CaretLeft, CaretRight } from "@phosphor-icons/react";
 import {
   Dialog,

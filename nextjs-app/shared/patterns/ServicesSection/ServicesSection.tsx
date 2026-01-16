@@ -1,7 +1,6 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { useTranslation } from "react-i18next";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
@@ -45,8 +44,6 @@ export function ServicesSection({
   className,
   id = "services",
 }: ServicesSectionProps) {
-  const { t } = useTranslation();
-
   // Grid column classes - using standard Tailwind breakpoints (md: 768px, lg: 1024px)
   const gridClasses = cn(
     "grid gap-8 lg:gap-10",

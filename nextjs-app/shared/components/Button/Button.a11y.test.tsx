@@ -156,7 +156,6 @@ describe("Button Accessibility", () => {
     });
 
     it("does not respond to keyboard when disabled", async () => {
-      const user = userEvent.setup();
       const onClick = vi.fn();
       render(
         <Button onClick={onClick} isDisabled>
@@ -170,7 +169,6 @@ describe("Button Accessibility", () => {
     });
 
     it("does not respond to keyboard when loading", async () => {
-      const user = userEvent.setup();
       const onClick = vi.fn();
       render(
         <Button onClick={onClick} isLoading>

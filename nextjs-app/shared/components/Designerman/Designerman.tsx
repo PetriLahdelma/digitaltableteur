@@ -84,7 +84,8 @@ export function Designerman({
   }, [spriteSheet]);
 
   // Focus state tracking for keyboard accessibility
-  const [isFocused, setIsFocused] = React.useState(false);
+  // State setter used in event handlers; value reserved for future visual feedback
+  const [, setIsFocused] = React.useState(false);
 
   React.useEffect(() => {
     const container = containerRef.current;
