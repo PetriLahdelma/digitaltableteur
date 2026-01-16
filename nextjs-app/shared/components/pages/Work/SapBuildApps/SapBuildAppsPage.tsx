@@ -297,24 +297,29 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         spacing="comfortable"
       />
 
-      {/* Story Block 5: Enterprise Integration */}
+      {/* Story Block 5: Data Components */}
       <StoryBlock
-        subtitle="Enterprise Ready"
-        title="SAP Ecosystem Integration"
+        subtitle="Data Components"
+        title="Tables & Data Visualization"
         content={[
           <Text key="1" size="S">
             <span style={{ fontWeight: 600 }}>
-              Enterprise applications are data-heavy.
+              I led the design and specification of a comprehensive table component
             </span>{" "}
-            The design system supported robust table components with sorting,
-            filtering, pagination, and row selection. Data visualization
-            components were optimized for integration with SAP S/4HANA,
-            SuccessFactors, and third-party data sources via REST and OData.
+            supporting sorting, filtering, pagination, row selection, and column
+            configuration. Optimized for large enterprise datasets with thousands
+            of rows, the table includes full keyboard navigation and screen reader
+            support — built for seamless integration with SAP data sources including
+            S/4HANA and OData services.
           </Text>,
           <Text key="2" size="S">
-            Each component was built for large datasets while maintaining
-            performance and accessibility, supporting the real-time data flows
-            common in enterprise low-code applications deployed on SAP BTP.
+            <span style={{ fontWeight: 600 }}>
+              Data visualization components for analytics dashboards
+            </span>{" "}
+            included bar, line, pie, donut, and area chart variants. All charts
+            were designed to be responsive and accessible with proper color contrast
+            and pattern alternatives for colorblind users, consistent with SAP
+            Horizon theme tokens.
           </Text>,
         ]}
         images={[
@@ -334,6 +339,32 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           },
         ]}
         imageLayout="grid"
+        backgroundColor="light"
+        maxWidth="md"
+        spacing="comfortable"
+      />
+
+      {/* Story Block 6: Enterprise Integration */}
+      <StoryBlock
+        subtitle="Enterprise Ready"
+        title="SAP BTP Integration"
+        content={[
+          <Text key="1" size="S">
+            <span style={{ fontWeight: 600 }}>
+              Deployment on SAP Business Technology Platform (BTP)
+            </span>{" "}
+            required components optimized for enterprise-grade performance. The
+            design system integrated with SAP backend services including S/4HANA,
+            SuccessFactors, and third-party systems via REST and OData, supporting
+            real-time data flows common in low-code applications.
+          </Text>,
+          <Text key="2" size="S">
+            Each component was built to handle large datasets while maintaining
+            performance and accessibility, ensuring consistent user experiences
+            across the diverse applications built with SAP Build Apps.
+          </Text>,
+        ]}
+        imageLayout="none"
         backgroundColor="transparent"
         maxWidth="md"
         spacing="comfortable"
