@@ -13,9 +13,9 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **CONT-02**: Remove 60% development time reduction claim ✓
 - [x] **CONT-03**: Correct duration to March 2022 – February 2026 ✓
 - [x] **CONT-04**: Clarify role attribution — led small DS team, system served 300+ ✓
-- [ ] **CONT-05**: Add Data Components section (Tables & Data Visualization)
+- [x] **CONT-05**: Add Data Components section (Tables & Data Visualization) ✓
 - [x] **CONT-06**: Update hero description with accurate framing ✓
-- [ ] **CONT-07**: Update story block text for accuracy throughout
+- [x] **CONT-07**: Update story block text for accuracy throughout ✓
 
 ### Images
 
@@ -80,8 +80,8 @@ Which phases cover which requirements. Updated by create-roadmap.
 | IMG-06 | Phase 3 | Complete |
 | IMG-07 | Phase 3 | Complete |
 | IMG-08 | Phase 3 | Complete |
-| CONT-05 | Phase 4 | Pending |
-| CONT-07 | Phase 4 | Pending |
+| CONT-05 | Phase 4 | Complete |
+| CONT-07 | Phase 4 | Complete |
 | META-01 | Phase 5 | Pending |
 | META-02 | Phase 5 | Pending |
 | META-03 | Phase 5 | Pending |
@@ -98,4 +98,4 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 ---
 *Requirements defined: 2026-01-16*
-*Last updated: 2026-01-16 — Phase 3 requirements complete*
+*Last updated: 2026-01-16 — Phase 4 requirements complete*
