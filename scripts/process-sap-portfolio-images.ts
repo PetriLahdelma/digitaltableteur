@@ -10,14 +10,9 @@
  * Usage: npx tsx scripts/process-sap-portfolio-images.ts
  */
 
-import * as sharpModule from "sharp";
+import sharp from "sharp";
 import * as fs from "node:fs";
 import * as path from "node:path";
-
-// Handle both CommonJS and ESM imports
-const sharp =
-  (sharpModule as unknown as { default: typeof sharpModule }).default ||
-  sharpModule;
 
 // Image dimension presets
 const DIMENSIONS = {
