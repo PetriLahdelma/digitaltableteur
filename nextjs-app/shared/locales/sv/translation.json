@@ -1074,6 +1074,16 @@
     "phonePlaceholder": "+46 70 123 45 67",
     "twitterLabel": "Twitter/X",
     "twitterPlaceholder": "@användarnamn",
+    "linkedinLabel": "LinkedIn",
+    "linkedinPlaceholder": "LinkedIn-användarnamn",
+    "githubLabel": "GitHub",
+    "githubPlaceholder": "GitHub-användarnamn",
+    "blueskyLabel": "Bluesky",
+    "blueskyPlaceholder": "@handle.bsky.social",
+    "instagramLabel": "Instagram",
+    "instagramPlaceholder": "@användarnamn",
+    "tiktokLabel": "TikTok",
+    "tiktokPlaceholder": "@användarnamn",
     "clearField": "Rensa fält",
     "previewLabel": "Förhandsgranskning",
     "switchToLight": "Byt till ljust läge",
@@ -1100,6 +1110,11 @@
     "iosMailStep1": "Öppna Inställningar > Mail > Signatur",
     "iosMailStep2": "Tryck på \"Alla konton\" eller välj specifikt konto",
     "iosMailStep3": "Ta bort befintlig text och klistra in din signatur",
-    "iosMailStep4": "Observera: iOS kan förenkla formateringen"
+    "iosMailStep4": "Observera: iOS kan förenkla formateringen",
+    "imageTipsTitle": "Bildtips",
+    "imageTip1": "Bilder lagras externt för bästa kompatibilitet mellan e-postklienter",
+    "imageTip2": "Vissa mottagare kan behöva klicka på \"Visa bilder\" för att se logotypen",
+    "imageTip3": "Gmail kan automatiskt flytta bilder till egen hosting — detta är normalt",
+    "imageTip4": "Outlook-användare: Om layouten bryts, prova att klistra in som \"Behåll källformatering\""
   }
 }

@@ -374,6 +374,24 @@
   margin-block-end: 0;
 }
 
+.tipsList {
+  margin: 0;
+  padding-inline-start: var(--space-internal-24);
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  color: #374151;
+  line-height: 1.6;
+  list-style-type: disc;
+}
+
+.tipsList li {
+  margin-block-end: var(--space-internal-8);
+}
+
+.tipsList li:last-child {
+  margin-block-end: 0;
+}
+
 /* Responsive adjustments */
 @media (max-width: 480px) {
   .container {

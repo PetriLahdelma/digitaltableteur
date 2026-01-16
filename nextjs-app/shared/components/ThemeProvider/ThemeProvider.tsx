@@ -149,14 +149,6 @@ const getStoredTheme = (): Theme => {
   return getSystemTheme();
 };
 
-// Synchronously set theme class before React renders
-const syncThemeClass = () => {
-  if (typeof window !== "undefined") {
-    applyThemeToDom(getStoredTheme());
-  }
-};
-syncThemeClass();
-
 interface ThemeContextProps {
   theme: Theme;
   toggleTheme: () => void;
@@ -189,13 +181,14 @@ export const ThemeProvider: React.FC<{
     "light"
   );
   const [isExplicitChoice, setIsExplicitChoice] = useState<boolean>(false);
+  const [mounted, setMounted] = useState(false);
 
   // If forcedTheme is provided, always use it
   const effectiveTheme = forcedTheme || theme;
 
-  // Intentionally run once on mount to read stored theme, regardless of initial state.
+  // Sync state with storage on mount
   useEffect(() => {
-    // Sync state with storage on mount
+    setMounted(true);
     const stored = getStoredTheme();
     if (stored !== theme) {
       setThemeState(stored);
@@ -236,6 +229,7 @@ export const ThemeProvider: React.FC<{
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
     applyThemeToDom(effectiveTheme);
     const storagePersisted = safeSetToStorage("theme", effectiveTheme);
     if (storagePersisted) {
@@ -243,7 +237,7 @@ export const ThemeProvider: React.FC<{
     } else {
       setThemeCookie(effectiveTheme);
     }
-  }, [effectiveTheme]);
+  }, [effectiveTheme, mounted]);
 
   const setTheme = useCallback((nextTheme: Theme) => {
     setThemeState(isTheme(nextTheme) ? nextTheme : DEFAULT_THEME);
