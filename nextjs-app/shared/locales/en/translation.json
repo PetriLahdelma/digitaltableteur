@@ -1064,6 +1064,16 @@
     "phonePlaceholder": "+358 45 123 4567",
     "twitterLabel": "Twitter/X",
     "twitterPlaceholder": "@username",
+    "linkedinLabel": "LinkedIn",
+    "linkedinPlaceholder": "LinkedIn username",
+    "githubLabel": "GitHub",
+    "githubPlaceholder": "GitHub username",
+    "blueskyLabel": "Bluesky",
+    "blueskyPlaceholder": "@handle.bsky.social",
+    "instagramLabel": "Instagram",
+    "instagramPlaceholder": "@username",
+    "tiktokLabel": "TikTok",
+    "tiktokPlaceholder": "@username",
     "clearField": "Clear field",
     "previewLabel": "Preview",
     "switchToLight": "Switch to light mode",
@@ -1090,6 +1100,11 @@
     "iosMailStep1": "Open Settings > Mail > Signature",
     "iosMailStep2": "Tap \"All Accounts\" or select specific account",
     "iosMailStep3": "Delete existing text and paste your signature",
-    "iosMailStep4": "Note: iOS may simplify formatting"
+    "iosMailStep4": "Note: iOS may simplify formatting",
+    "imageTipsTitle": "Image Tips",
+    "imageTip1": "Images are hosted externally for best compatibility across email clients",
+    "imageTip2": "Some recipients may need to click \"Show images\" to see the logo",
+    "imageTip3": "Gmail may re-host images automatically — this is normal",
+    "imageTip4": "Outlook users: If layout breaks, try pasting as \"Keep Source Formatting\""
   }
 }
