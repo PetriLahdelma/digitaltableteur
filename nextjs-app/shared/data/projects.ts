@@ -24,6 +24,8 @@ export interface Project {
   thumbnail: string;
   /** Video thumbnail path (for hover autoplay) */
   thumbnailVideo?: string;
+  /** Autoplay video thumbnail continuously (not just on hover) */
+  autoPlayVideo?: boolean;
   /** Primary category */
   category: Exclude<ProjectCategory, "all">;
   /** Tags for filtering and display */
@@ -60,7 +62,7 @@ export const projects: Project[] = [
     id: "new-things-co",
     slug: "new-things-co",
     title: "New Things Co",
-    description: "Brand identity and digital presence for an innovation consultancy focused on sustainable business transformation.",
+    description: "Brand identity and digital presence for a digital transformation consultancy based in Helsinki.",
     thumbnail: "/images/portfolio/new_things_co/new_things_co_item.webp",
     category: "branding",
     tags: ["Branding", "Web Design", "Identity"],
@@ -71,9 +73,10 @@ export const projects: Project[] = [
     id: "garage-junction",
     slug: "garage-junction",
     title: "Garage Junction",
-    description: "Interactive web experience and visual identity for a creative coworking space in Helsinki.",
+    description: "Web and social assets for a creative underground music outing.",
     thumbnail: "/images/portfolio/garage_junction/GJ_loop.mov",
     thumbnailVideo: "/images/portfolio/garage_junction/GJ_loop.mov",
+    autoPlayVideo: true,
     category: "ux-design",
     tags: ["Web Design", "Animation", "Branding"],
     featured: false,
@@ -89,6 +92,17 @@ export const projects: Project[] = [
     tags: ["Illustration", "Character Design", "Editorial"],
     featured: false,
     order: 4,
+  },
+  {
+    id: "sap-build-apps-design-system",
+    slug: "sap-build-apps",
+    title: "SAP Build Apps Design System",
+    description: "Led the design system for SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.",
+    thumbnail: "/images/portfolio/sap-build-apps/thumbnail.webp",
+    category: "design-systems",
+    tags: ["Design Systems", "Enterprise", "Low-Code Platform", "SAP BTP"],
+    featured: true,
+    order: 1,
   },
 ];
 
