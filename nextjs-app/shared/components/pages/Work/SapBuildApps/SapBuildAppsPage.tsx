@@ -85,12 +85,11 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         overview={
           <Text size="S">
-            <span style={{ fontWeight: 600 }}>SAP Build Apps</span> is SAP's
+            <span style={{ fontWeight: 600 }}>SAP Build Apps</span> is SAP&apos;s
             flagship low-code platform, evolved from AppGyver following its 2021
-            acquisition. Recognized as a leader in the 2025 IDC MarketScape for
-            Business Automation Platforms, it enables business users and
-            developers to create enterprise-grade applications with drag-and-drop
-            UI, 400+ formula functions, and deep SAP BTP integration.
+            acquisition. It enables business users and developers to create
+            enterprise-grade applications with drag-and-drop UI, 400+ formula
+            functions, and deep SAP BTP integration.
             <br /> <br />
             <span style={{ fontWeight: 600 }}>The challenge:</span> Create a
             unified design language that bridges the gap between design and
@@ -378,19 +377,19 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="1" size="S">
             <span style={{ fontWeight: 600 }}>
-              Over four years, the design system reduced component development
-              time by 60%
+              Over nearly four years, the design system transformed how the team
+              builds UI
             </span>{" "}
-            and significantly improved design-to-development handoff. New team
-            members could onboard in days instead of weeks thanks to
-            comprehensive documentation and Storybook integration.
+            — from fragmented component recreation to a unified library with 100+
+            production-ready components. Design-to-development handoff improved
+            through 1:1 Figma-to-code parity and comprehensive Storybook
+            documentation.
           </Text>,
           <Text key="2" size="S">
-            The unified system continues to evolve with SAP Build Apps as it
-            integrates new capabilities like Joule AI assistance and MCP server
-            support. The Design System Guild maintains regular releases with
-            clear versioning, serving a platform recognized as an IDC
-            MarketScape Leader for Business Automation in 2025.
+            The unified system continues to evolve with SAP Build Apps. The
+            design system serves as the foundation for the platform&apos;s UI,
+            maintained through a structured component lifecycle and regular
+            releases.
           </Text>,
         ]}
         imageLayout="none"
