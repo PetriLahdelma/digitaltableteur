@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "SAP Build Apps Design System | Digitaltableteur",
   description:
-    "Led the design system for SAP Build Apps — SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications. March 2022 – February 2026.",
+    "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and ReactTS components serving 300+ developers and designers.",
   openGraph: {
     title: "SAP Build Apps Design System | Digitaltableteur",
     description:
-      "Led the design system for SAP Build Apps — SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications. March 2022 – February 2026.",
+      "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and ReactTS components serving 300+ developers and designers.",
     type: "article",
     siteName: "Digitaltableteur",
     images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SAP Build Apps Design System | Digitaltableteur",
     description:
-      "Led the design system for SAP Build Apps — SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications. March 2022 – February 2026.",
+      "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and ReactTS components serving 300+ developers and designers.",
     images: ["/images/portfolio/sap-build-apps/hero-background.webp"],
   },
   alternates: {
