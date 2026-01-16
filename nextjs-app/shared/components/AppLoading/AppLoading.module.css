@@ -5,7 +5,7 @@
   z-index: 1000;
   justify-content: center;
   align-items: center;
-  background: var(--color-background, #fff);
+  background: var(--main-body-background-color, #fff);
 
   /* Fallback: instantaneous appearance (no animation properties here) */
 }
