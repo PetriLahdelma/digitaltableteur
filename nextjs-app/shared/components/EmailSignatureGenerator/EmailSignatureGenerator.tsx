@@ -78,6 +78,13 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
   const generateSignatureHTML = useCallback((): string => {
     const { name, title, phone, twitter, linkedin, github, bluesky, instagram, tiktok } = formData;
 
+    const linkedinLabel = t("emailSig.linkedinLabel", { defaultValue: "LinkedIn" });
+    const githubLabel = t("emailSig.githubLabel", { defaultValue: "GitHub" });
+    const twitterLabel = t("emailSig.twitterLabel", { defaultValue: "X" });
+    const blueskyLabel = t("emailSig.blueskyLabel", { defaultValue: "Bluesky" });
+    const instagramLabel = t("emailSig.instagramLabel", { defaultValue: "Instagram" });
+    const tiktokLabel = t("emailSig.tiktokLabel", { defaultValue: "TikTok" });
+
     const contactParts: string[] = [];
     if (phone) {
       contactParts.push(
@@ -87,39 +94,37 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
     if (linkedin) {
       const username = linkedin.startsWith("@") ? linkedin.slice(1) : linkedin;
       contactParts.push(
-        `<a href="https://linkedin.com/in/${username}" style="color: #6b7280; text-decoration: none;">LinkedIn</a>`
+        `<a href="https://linkedin.com/in/${username}" style="color: #6b7280; text-decoration: none;">${linkedinLabel}</a>`
       );
     }
     if (github) {
       const username = github.startsWith("@") ? github.slice(1) : github;
       contactParts.push(
-        `<a href="https://github.com/${username}" style="color: #6b7280; text-decoration: none;">GitHub</a>`
+        `<a href="https://github.com/${username}" style="color: #6b7280; text-decoration: none;">${githubLabel}</a>`
       );
     }
     if (twitter) {
-      const handle = twitter.startsWith("@") ? twitter : `@${twitter}`;
       const username = twitter.startsWith("@") ? twitter.slice(1) : twitter;
       contactParts.push(
-        `<a href="https://x.com/${username}" style="color: #6b7280; text-decoration: none;">${handle}</a>`
+        `<a href="https://x.com/${username}" style="color: #6b7280; text-decoration: none;">${twitterLabel}</a>`
       );
     }
     if (bluesky) {
-      const handle = bluesky.startsWith("@") ? bluesky : `@${bluesky}`;
       const username = bluesky.startsWith("@") ? bluesky.slice(1) : bluesky;
       contactParts.push(
-        `<a href="https://bsky.app/profile/${username}" style="color: #6b7280; text-decoration: none;">${handle}</a>`
+        `<a href="https://bsky.app/profile/${username}" style="color: #6b7280; text-decoration: none;">${blueskyLabel}</a>`
       );
     }
     if (instagram) {
       const username = instagram.startsWith("@") ? instagram.slice(1) : instagram;
       contactParts.push(
-        `<a href="https://instagram.com/${username}" style="color: #6b7280; text-decoration: none;">Instagram</a>`
+        `<a href="https://instagram.com/${username}" style="color: #6b7280; text-decoration: none;">${instagramLabel}</a>`
       );
     }
     if (tiktok) {
       const username = tiktok.startsWith("@") ? tiktok.slice(1) : tiktok;
       contactParts.push(
-        `<a href="https://tiktok.com/@${username}" style="color: #6b7280; text-decoration: none;">TikTok</a>`
+        `<a href="https://tiktok.com/@${username}" style="color: #6b7280; text-decoration: none;">${tiktokLabel}</a>`
       );
     }
 
@@ -133,7 +138,7 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
   </tr>
   <tr>
     <td>
-      <strong style="font-size: 16px; color: #111827;">${name || "Your Name"}</strong>
+      <strong style="font-size: 16px; color: #111827;">${name || t("emailSig.yourName", { defaultValue: "Your Name" })}</strong>
     </td>
   </tr>
   <tr>
@@ -151,7 +156,7 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
       : ""
   }
 </table>`;
-  }, [formData, companyName, companyUrl, logoUrlFull]);
+  }, [formData, companyName, companyUrl, logoUrlFull, t]);
 
   const handleCopySignature = useCallback(async () => {
     const html = generateSignatureHTML();
@@ -200,7 +205,7 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           rel="noopener noreferrer"
           className={styles.contactLink}
         >
-          LinkedIn
+          {t("emailSig.linkedinLabel", { defaultValue: "LinkedIn" })}
         </a>
       );
     }
@@ -214,12 +219,11 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           rel="noopener noreferrer"
           className={styles.contactLink}
         >
-          GitHub
+          {t("emailSig.githubLabel", { defaultValue: "GitHub" })}
         </a>
       );
     }
     if (twitter) {
-      const handle = twitter.startsWith("@") ? twitter : `@${twitter}`;
       const username = twitter.startsWith("@") ? twitter.slice(1) : twitter;
       contactParts.push(
         <a
@@ -229,12 +233,11 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           rel="noopener noreferrer"
           className={styles.contactLink}
         >
-          {handle}
+          {t("emailSig.twitterLabel", { defaultValue: "X" })}
         </a>
       );
     }
     if (bluesky) {
-      const handle = bluesky.startsWith("@") ? bluesky : `@${bluesky}`;
       const username = bluesky.startsWith("@") ? bluesky.slice(1) : bluesky;
       contactParts.push(
         <a
@@ -244,7 +247,7 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           rel="noopener noreferrer"
           className={styles.contactLink}
         >
-          {handle}
+          {t("emailSig.blueskyLabel", { defaultValue: "Bluesky" })}
         </a>
       );
     }
@@ -258,7 +261,7 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           rel="noopener noreferrer"
           className={styles.contactLink}
         >
-          Instagram
+          {t("emailSig.instagramLabel", { defaultValue: "Instagram" })}
         </a>
       );
     }
@@ -272,7 +275,7 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           rel="noopener noreferrer"
           className={styles.contactLink}
         >
-          TikTok
+          {t("emailSig.tiktokLabel", { defaultValue: "TikTok" })}
         </a>
       );
     }
@@ -735,6 +738,38 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
                 })}
               </li>
             </ol>
+          </div>
+
+          <div className={styles.instructionBlock}>
+            <Title level={3} size="S" terminals="sans">
+              {t("emailSig.imageTipsTitle", { defaultValue: "Image Tips" })}
+            </Title>
+            <ul className={styles.tipsList}>
+              <li>
+                {t("emailSig.imageTip1", {
+                  defaultValue:
+                    "Images are hosted externally for best compatibility across email clients",
+                })}
+              </li>
+              <li>
+                {t("emailSig.imageTip2", {
+                  defaultValue:
+                    "Some recipients may need to click \"Show images\" to see the logo",
+                })}
+              </li>
+              <li>
+                {t("emailSig.imageTip3", {
+                  defaultValue:
+                    "Gmail may re-host images automatically — this is normal",
+                })}
+              </li>
+              <li>
+                {t("emailSig.imageTip4", {
+                  defaultValue:
+                    "Outlook users: If layout breaks, try pasting as \"Keep Source Formatting\"",
+                })}
+              </li>
+            </ul>
           </div>
         </div>
       </Modal>
