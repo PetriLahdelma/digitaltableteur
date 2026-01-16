@@ -3,7 +3,6 @@ import Button from "@dt/Button";
 import styles from "./blognav.module.css";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import path from "path";
 import Icon from "@dt/Icon";
 
 const blogPages = [
@@ -57,7 +56,9 @@ const BlogNav: React.FC = () => {
           }
           onClick={() => navigate("/blog")}
         >
-          {t("blogNavBackToArticles")}
+          <span className={styles.buttonLabel}>
+            {t("blogNavBackToArticles")}
+          </span>
         </Button>
         <div className={styles.rightNavGroup}>
           <Button
@@ -70,7 +71,7 @@ const BlogNav: React.FC = () => {
               if (currentIndex > 0) navigate(blogPages[currentIndex - 1].path);
             }}
           >
-            {t("blogNavPrev")}
+            <span className={styles.buttonLabel}>{t("blogNavPrev")}</span>
           </Button>
           <Button
             variant="tertiary"
@@ -83,7 +84,7 @@ const BlogNav: React.FC = () => {
                 navigate(blogPages[currentIndex + 1].path);
             }}
           >
-            {t("blogNavNext")}
+            <span className={styles.buttonLabel}>{t("blogNavNext")}</span>
           </Button>
         </div>
       </div>

@@ -38,7 +38,7 @@ export function NextBlogNav() {
           icon={<Icon name="text-align-left" ariaLabel="Articles" />}
           onClick={() => router.push("/blog")}
         >
-          Articles
+          <span className={styles.buttonLabel}>Articles</span>
         </Button>
         <div className={styles.navButtons}>
           <Button
@@ -52,7 +52,7 @@ export function NextBlogNav() {
                 router.push(blogPages[currentIndex - 1].path);
             }}
           >
-            Previous
+            <span className={styles.buttonLabel}>Previous</span>
           </Button>
           <Button
             variant="tertiary"
@@ -65,7 +65,7 @@ export function NextBlogNav() {
                 router.push(blogPages[currentIndex + 1].path);
             }}
           >
-            Next
+            <span className={styles.buttonLabel}>Next</span>
           </Button>
         </div>
       </div>
