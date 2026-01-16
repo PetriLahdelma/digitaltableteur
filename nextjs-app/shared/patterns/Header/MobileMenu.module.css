@@ -70,12 +70,7 @@
   position: sticky;
   bottom: 0;
   z-index: 2;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--main-body-background-color) 92%, transparent) 0%,
-    var(--main-body-background-color) 40%
-  );
-  backdrop-filter: blur(2px);
+  background: var(--main-body-background-color, #fff);
   margin-top: auto; /* push to bottom within flex column */
   padding-top: var(--space-internal-16, 1rem);
 }
@@ -196,6 +191,7 @@
 
 .footer {
   height: 18rem;
+  background: var(--main-body-background-color, #fff);
 }
 
 .footerLinks {

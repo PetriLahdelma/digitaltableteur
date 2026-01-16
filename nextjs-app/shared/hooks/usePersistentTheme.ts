@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme, type Theme } from "@dt/ThemeProvider";
+import { useTheme, type Theme } from "../../../providers/ThemeProvider";
 
 const THEME_SEQUENCE: Theme[] = ["light", "dark", "hcb", "hcw"];
 
