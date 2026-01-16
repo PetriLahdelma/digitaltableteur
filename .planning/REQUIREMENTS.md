@@ -19,8 +19,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Images
 
-- [ ] **IMG-01**: Process source images to WebP format
-- [ ] **IMG-02**: Resize images to spec (738x506 grid, 1200x600 hero/single)
+- [x] **IMG-01**: Process source images to WebP format ✓
+- [x] **IMG-02**: Resize images to spec (738x506 grid, 1200x600 hero/single) ✓
 - [ ] **IMG-03**: Replace existing placeholder images with real source files
 - [ ] **IMG-04**: Add typography image (`AppGyver_DS_Type_size.png`)
 - [ ] **IMG-05**: Add button construction image (`Button construction.png`)
@@ -67,8 +67,8 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| IMG-01 | Phase 1 | Pending |
-| IMG-02 | Phase 1 | Pending |
+| IMG-01 | Phase 1 | Complete |
+| IMG-02 | Phase 1 | Complete |
 | CONT-01 | Phase 2 | Pending |
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
@@ -98,4 +98,4 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 ---
 *Requirements defined: 2026-01-16*
-*Last updated: 2026-01-16 — Roadmap traceability added*
+*Last updated: 2026-01-16 — Phase 1 requirements complete*
