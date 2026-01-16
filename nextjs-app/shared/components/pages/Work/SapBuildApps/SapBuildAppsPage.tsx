@@ -30,7 +30,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description="A comprehensive design system powering SAP Build Apps — SAP's flagship low-code platform (formerly AppGyver). Serving 300+ developers and designers who build consistent, accessible enterprise applications with a unified component library spanning Figma and ReactTS."
           image={{
-            src: "/images/portfolio/sap-build-apps/hero.png",
+            src: "/images/portfolio/sap-build-apps/hero-background.webp",
             alt: "SAP Build Apps design system component library overview",
             width: 1200,
             height: 600,
@@ -194,11 +194,11 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/sap-build-apps/component-lifecycle.png",
-          alt: "Centralized design system guild component lifecycle and workflow diagram",
-          width: 1200,
-          height: 600,
-          caption: "The component lifecycle ensures quality and consistency",
+          src: "/images/portfolio/sap-build-apps/lifecycle-and-workflow.webp",
+          alt: "Design system component lifecycle workflow from proposal to release",
+          width: 738,
+          height: 506,
+          caption: "Component lifecycle: proposal - design - development - documentation - release",
         }}
         imageLayout="single"
         backgroundColor="light"
@@ -228,18 +228,18 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         images={[
           {
-            src: "/images/portfolio/sap-build-apps/color-system.png",
-            alt: "Design system color palette and token structure",
+            src: "/images/portfolio/sap-build-apps/colors.webp",
+            alt: "SAP Horizon semantic color tokens for light and dark themes",
             width: 738,
             height: 506,
             caption: "Semantic color tokens based on SAP Horizon theme",
           },
           {
-            src: "/images/portfolio/sap-build-apps/icons.png",
-            alt: "Icon system and visual language",
+            src: "/images/portfolio/sap-build-apps/iconography.webp",
+            alt: "Icon library with consistent visual language",
             width: 738,
             height: 506,
-            caption: "Consistent iconography across the platform",
+            caption: "Unified iconography across the platform",
           },
         ]}
         imageLayout="grid"
@@ -269,11 +269,11 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/sap-build-apps/button-variants.png",
-          alt: "Button component variants and states",
-          width: 1200,
-          height: 600,
-          caption: "Complete button system with all variants and states",
+          src: "/images/portfolio/sap-build-apps/buttons.webp",
+          alt: "Button component variants showing primary, secondary, ghost, and destructive states",
+          width: 738,
+          height: 506,
+          caption: "Button system with all variants and interaction states",
         }}
         imageLayout="single"
         backgroundColor="light"
