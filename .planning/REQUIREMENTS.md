@@ -36,14 +36,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Verification
 
-- [ ] **VERF-01**: Verify or remove IDC MarketScape claim
-- [ ] **VERF-02**: Verify or remove Joule AI reference
-- [ ] **VERF-03**: Final NDA compliance review on all content
+- [x] **VERF-01**: Verify or remove IDC MarketScape claim ✓
+- [x] **VERF-02**: Verify or remove Joule AI reference ✓
+- [x] **VERF-03**: Final NDA compliance review on all content ✓
 
 ### Outcomes
 
-- [ ] **OUTC-01**: Update impact metrics grid with verified data (100+ components, 300+ served, WCAG 2.1)
-- [ ] **OUTC-02**: Create or update outcomes visual using source images
+- [x] **OUTC-01**: Update impact metrics grid with verified data (100+ components, 300+ served, WCAG 2.1) ✓
+- [x] **OUTC-02**: Create or update outcomes visual using source images ✓
 
 ## v2 Requirements
 
@@ -85,11 +85,11 @@ Which phases cover which requirements. Updated by create-roadmap.
 | META-01 | Phase 5 | Complete |
 | META-02 | Phase 5 | Complete |
 | META-03 | Phase 5 | Complete |
-| VERF-01 | Phase 6 | Pending |
-| VERF-02 | Phase 6 | Pending |
-| VERF-03 | Phase 6 | Pending |
-| OUTC-01 | Phase 6 | Pending |
-| OUTC-02 | Phase 6 | Pending |
+| VERF-01 | Phase 6 | Complete |
+| VERF-02 | Phase 6 | Complete |
+| VERF-03 | Phase 6 | Complete |
+| OUTC-01 | Phase 6 | Complete |
+| OUTC-02 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total
@@ -98,4 +98,4 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 ---
 *Requirements defined: 2026-01-16*
-*Last updated: 2026-01-16 — Phase 5 requirements complete*
+*Last updated: 2026-01-16 — All requirements complete (v1.0 milestone)*

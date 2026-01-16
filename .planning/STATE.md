@@ -62,6 +62,7 @@ All decisions from project execution:
 | hero-background.webp for OG image | 05-01 | Portfolio hero better than generic logo for social sharing |
 | Duration in SEO description | 05-01 | Completeness matches hero content |
 | All verification passed | 06-01 | No additional changes needed |
+| thumbnail.webp from product icon | 06-01 | Created for portfolio grid (gap closure) |
 
 ### Pending Todos
 
