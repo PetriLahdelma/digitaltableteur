@@ -4,9 +4,9 @@ import { type ReactNode } from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
-import { Container } from "../../components/Container";
-import { Section } from "../../components/Section";
+import PageLayout from "../PageLayout";
 import { FadeIn } from "../../components/animations/FadeIn";
+import styles from "./ProjectMetaSection.module.css";
 
 export interface ToolItem {
   /** Tool icon */
@@ -48,6 +48,8 @@ export interface ProjectMetaSectionProps {
   overview?: ReactNode;
   /** Background variant */
   background?: "default" | "muted" | "accent";
+  /** Max width constraint for the section */
+  maxWidth?: "sm" | "md" | "lg" | "xl" | "full";
   /** Custom className */
   className?: string;
 }
@@ -66,17 +68,21 @@ export function ProjectMetaSection({
   client,
   overview,
   background = "default",
+  maxWidth = "md",
   className,
 }: ProjectMetaSectionProps) {
   const { t } = useTranslation();
 
   return (
-    <Section
-      spacing="lg"
-      background="default"
+    <section
       className={cn(backgroundClasses[background], className)}
+      aria-label={t("projectDetailsSection", "Project Details")}
     >
-      <Container size="md">
+      <PageLayout
+        maxWidth={maxWidth}
+        spacing="comfortable"
+        as="div"
+      >
         <div className="grid grid-cols-1 desktop:grid-cols-12 gap-8 desktop:gap-12">
           {/* Left column: Services, Duration, Tools */}
           <div className="desktop:col-span-4 space-y-8">
@@ -140,7 +146,7 @@ export function ProjectMetaSection({
               <FadeIn direction="up" delay={0.3} distance={20}>
                 <div>
                   <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-2">
-                    Client
+                    {t("projectClientLabel", "Client")}
                   </h3>
                   {client.logo ? (
                     <div className="relative h-10 w-auto">
@@ -182,41 +188,49 @@ export function ProjectMetaSection({
           <FadeIn direction="up" delay={0.4} distance={30}>
             <div className="mt-12 pt-8 border-t border-border">
               <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-6">
-                Team
+                {t("projectTeamLabel", "Team")}
               </h3>
-              <div className="grid grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-5 gap-6">
+              <ul
+                role="list"
+                aria-label={t("projectTeamMembers", "Team members")}
+                className="grid grid-cols-2 md:grid-cols-4 gap-6"
+              >
                 {team.map((member) => (
-                  <div key={member.name} className="text-center">
+                  <li key={member.name} className="text-center">
                     {member.image ? (
                       <div className="relative w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden bg-muted">
                         <Image
                           src={member.image}
-                          alt={member.name}
+                          alt={`${member.name}, ${member.role}`}
                           fill
                           className="object-cover"
                         />
                       </div>
                     ) : (
-                      <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-muted flex items-center justify-center">
-                        <span className="text-2xl font-medium text-muted-foreground">
+                      <div
+                        className="w-20 h-20 mx-auto mb-3 rounded-full bg-muted flex items-center justify-center"
+                        role="img"
+                        aria-label={`${member.name}, ${member.role}`}
+                      >
+                        <span className="text-2xl font-medium text-muted-foreground" aria-hidden="true">
                           {member.name.charAt(0)}
                         </span>
                       </div>
                     )}
-                    <p className="font-body font-medium text-sm text-foreground">
+                    <p className={cn("font-body font-medium text-sm text-foreground", styles.teamMemberName)}>
                       {member.name}
                     </p>
-                    <p className="font-body text-xs text-muted-foreground">
+                    <p className={cn("font-body text-xs text-muted-foreground", styles.teamMemberRole)}>
                       {member.role}
                     </p>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </FadeIn>
         )}
-      </Container>
-    </Section>
+      </PageLayout>
+    </section>
   );
 }
 

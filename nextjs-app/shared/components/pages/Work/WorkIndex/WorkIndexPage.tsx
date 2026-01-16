@@ -53,8 +53,8 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
       {/* Projects Section */}
       <Section spacing="lg" background="default">
         <Container size="lg">
-          {/* Filter Bar */}
-          <FadeIn delay={0.4} className="mb-10">
+          {/* Filter Bar with entrance animation */}
+          <FadeIn delay={0.3} direction="up" distance={20} className="mb-12 tablet:mb-16">
             <CategoryFilter
               categories={translatedCategories}
               activeCategory={activeCategory}
@@ -64,21 +64,12 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
             />
           </FadeIn>
 
-          {/* Project Count */}
-          <FadeIn delay={0.5} className="mb-8">
-            <p className="font-body text-sm text-muted-foreground">
-              {t("workProjectCount", "{{count}} projects", {
-                count: filteredProjects.length,
-              })}
-            </p>
-          </FadeIn>
-
-          {/* Project Grid */}
+          {/* Project Grid - removed project count for cleaner design */}
           <WorkGrid
             projects={filteredProjects}
-            columns={3}
+            columns={4}
             animateItems={true}
-            aspectRatio="video"
+            aspectRatio="square"
             showCategory={true}
           />
         </Container>

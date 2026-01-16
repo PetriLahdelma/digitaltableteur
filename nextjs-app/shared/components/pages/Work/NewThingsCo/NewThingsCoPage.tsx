@@ -7,15 +7,20 @@ import FlexBox from "@dt/FlexBox";
 import Gallery from "@dt/Gallery";
 import Grid from "@dt/Grid";
 import PageLayout from "../../../../patterns/PageLayout/PageLayout";
+import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import Title from "@dt/Title";
 import WorkNav from "@dt/WorkNav";
 import styles from "./newThingsCo.module.css";
 
 export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
   return (
-    <main className={styles.caseStudy}>
-      {nav ?? <WorkNav />}
-      <PageLayout maxWidth="lg" spacing="comfortable" as="section">
+    <ProjectDetailLayout
+      nav={nav ?? <WorkNav />}
+      hero={<></>}
+      showScrollProgress={false}
+    >
+      <main className={styles.caseStudy}>
+        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
         <section className={styles.caseHeroSection}>
           <div className={styles.heroText}>
             <PageLayout maxWidth="lg" spacing="comfortable" as="section">
@@ -406,6 +411,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
           </ul>
         </section>
       </PageLayout>
-    </main>
+      </main>
+    </ProjectDetailLayout>
   );
 }

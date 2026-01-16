@@ -13,6 +13,7 @@ export function BlogPage() {
       showPagination
       gridLayout="standard"
       postsPerPage={9}
+      hideImages
     />
   );
 }

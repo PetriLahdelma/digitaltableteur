@@ -90,7 +90,7 @@ export function ArticleHero({
       )}
 
       <Container
-        size={isMinimal ? "md" : "lg"}
+        size="md"
         className={cn(
           "relative z-10",
           isFullWidth
@@ -98,7 +98,7 @@ export function ArticleHero({
             : "py-12 tablet:py-16 desktop:py-20"
         )}
       >
-        <div className="space-y-6 max-w-3xl">
+        <div className="space-y-6">
           {/* Tags */}
           {tags && tags.length > 0 && !isMinimal && (
             <FadeIn direction="up" delay={0} distance={20}>
@@ -219,7 +219,7 @@ export function ArticleHero({
 
       {/* Contained image (not for full-width or minimal) */}
       {!isFullWidth && !isMinimal && image && (
-        <Container size="lg" className="pb-8">
+        <Container size="md" className="pb-8">
           <FadeIn direction="up" delay={0.4} distance={40}>
             <figure className="relative overflow-hidden rounded-lg bg-muted">
               <div className="relative aspect-video">

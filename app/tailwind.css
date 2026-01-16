@@ -99,6 +99,12 @@
   --container-md: var(--container-md);
   --container-lg: var(--container-lg);
   --container-xl: var(--container-xl);
+
+  /* Max-width tokens for Tailwind v4 utilities */
+  --max-width-container-sm: var(--container-sm);
+  --max-width-container-md: var(--container-md);
+  --max-width-container-lg: var(--container-lg);
+  --max-width-container-xl: var(--container-xl);
 }
 
 /*
@@ -110,23 +116,23 @@
 
   /* shadcn/ui semantic colors mapped to our design tokens */
   --background: var(--main-body-background-color, #fff);
-  --foreground: var(--primary-text-color, #00f);
+  --foreground: var(--primary-text-color, #041B23);
   --card: var(--main-body-background-color, #fff);
-  --card-foreground: var(--primary-text-color, #00f);
+  --card-foreground: var(--primary-text-color, #041B23);
   --popover: var(--main-body-background-color, #fff);
-  --popover-foreground: var(--primary-text-color, #00f);
-  --primary: var(--color-primary, #00f);
+  --popover-foreground: var(--primary-text-color, #041B23);
+  --primary: var(--color-primary, #041B23);
   --primary-foreground: var(--inverted-text-color, #fff);
   --secondary: var(--color-muted, #6c757d);
-  --secondary-foreground: var(--primary-text-color, #00f);
+  --secondary-foreground: var(--primary-text-color, #041B23);
   --muted: var(--color-muted, #6c757d);
-  --muted-foreground: var(--secondary-text-color, #00f);
+  --muted-foreground: var(--secondary-text-color, #041B23);
   --accent: var(--accent-purple, #812eff);
   --accent-foreground: var(--inverted-text-color, #fff);
   --destructive: var(--color-error, #dc3545);
   --border: var(--color-border, #c0c0c0);
   --input: var(--color-border, #c0c0c0);
-  --ring: var(--color-primary, #00f);
+  --ring: var(--color-primary, #041B23);
 
   /* Chart colors */
   --chart-1: var(--accent-pink, #f205c5);
@@ -137,13 +143,13 @@
 
   /* Sidebar colors (mapped to main theme) */
   --sidebar: var(--main-body-background-color, #fff);
-  --sidebar-foreground: var(--primary-text-color, #00f);
-  --sidebar-primary: var(--color-primary, #00f);
+  --sidebar-foreground: var(--primary-text-color, #041B23);
+  --sidebar-primary: var(--color-primary, #041B23);
   --sidebar-primary-foreground: var(--inverted-text-color, #fff);
   --sidebar-accent: var(--accent-purple, #812eff);
   --sidebar-accent-foreground: var(--inverted-text-color, #fff);
   --sidebar-border: var(--color-border, #c0c0c0);
-  --sidebar-ring: var(--color-primary, #00f);
+  --sidebar-ring: var(--color-primary, #041B23);
 }
 
 /*

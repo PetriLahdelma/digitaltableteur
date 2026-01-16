@@ -1,0 +1,112 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
+/* Honeypot - hidden from users */
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Field groups */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
+/* Expandable sections spacing */
+.expandable {
+  margin-block-start: var(--space-layout-8);
+}
+
+/* File upload wrapper */
+.fileUploadWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-8);
+}
+
+.attachmentNotice {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* Privacy policy text */
+.privacy {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.privacyLink {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity var(--duration-fast) var(--ease-out-cubic);
+}
+
+.privacyLink:hover {
+  opacity: 0.7;
+}
+
+/* Submit button - full width, bold */
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-internal-8);
+  width: 100%;
+  padding: var(--space-internal-16) var(--space-internal-32);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--inverted-text-color);
+  background-color: var(--color-primary);
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    opacity var(--duration-fast) var(--ease-out-cubic);
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--color-dark);
+}
+
+.submitButton:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

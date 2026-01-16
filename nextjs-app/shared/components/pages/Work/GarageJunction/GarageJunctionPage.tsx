@@ -7,15 +7,20 @@ import FlexBox from "@dt/FlexBox";
 import Gallery from "@dt/Gallery";
 import Grid from "@dt/Grid";
 import PageLayout from "../../../../patterns/PageLayout/PageLayout";
+import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import Title from "@dt/Title";
 import WorkNav from "@dt/WorkNav";
 import styles from "./garageJunction.module.css";
 
 export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
   return (
-    <main className={styles.caseStudy}>
-      {nav ?? <WorkNav />}
-      <PageLayout maxWidth="lg" spacing="comfortable" as="section">
+    <ProjectDetailLayout
+      nav={nav ?? <WorkNav />}
+      hero={<></>}
+      showScrollProgress={false}
+    >
+      <main className={styles.caseStudy}>
+        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
         <section className={styles.caseHeroSection}>
           <div className={styles.heroText}>
             <Title level={1}>Garage Junction</Title>
@@ -244,6 +249,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
           </ul>
         </section>
       </PageLayout>
-    </main>
+      </main>
+    </ProjectDetailLayout>
   );
 }

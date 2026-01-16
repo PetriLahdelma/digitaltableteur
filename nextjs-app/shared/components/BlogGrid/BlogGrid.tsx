@@ -21,6 +21,8 @@ export interface BlogGridProps {
     md?: 2 | 3;
     lg?: 2 | 3 | 4;
   };
+  /** Hide images in article cards */
+  hideImages?: boolean;
   /** Custom className */
   className?: string;
 }
@@ -30,6 +32,7 @@ export function BlogGrid({
   featuredSlug,
   layout = "standard",
   columns = { sm: 1, md: 2, lg: 3 },
+  hideImages = false,
   className,
 }: BlogGridProps) {
   const { t } = useTranslation();
@@ -104,7 +107,7 @@ export function BlogGrid({
       {/* Featured article */}
       {showFeatured && featuredArticle && (
         <FadeIn direction="up" delay={0} distance={30}>
-          <EnhancedArticleCard {...featuredArticle} variant="featured" />
+          <EnhancedArticleCard {...featuredArticle} variant="featured" hideImage={hideImages} />
         </FadeIn>
       )}
 
@@ -117,7 +120,7 @@ export function BlogGrid({
             delay={showFeatured ? 0.1 + index * 0.05 : index * 0.05}
             distance={30}
           >
-            <EnhancedArticleCard {...article} variant="default" />
+            <EnhancedArticleCard {...article} variant="default" hideImage={hideImages} />
           </FadeIn>
         ))}
       </div>

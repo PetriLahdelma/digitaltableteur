@@ -7,6 +7,7 @@ import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { ProjectCard } from "../../components/ProjectCard";
+import { EnhancedProjectCard } from "../../components/EnhancedProjectCard";
 import { cn } from "@/lib/utils";
 
 export interface ProjectItem {
@@ -102,54 +103,22 @@ export function WorkPreviewSection({
   };
 
   const renderFeatured = () => {
-    const [first, second, ...rest] = projects;
     return (
-      <div className="space-y-6">
-        {/* Top row - 2 large */}
-        <div className="grid grid-cols-1 tablet:grid-cols-2 gap-6">
-          {first && (
-            <FadeIn direction="up">
-              <ProjectCard
-                title={first.title}
-                slug={first.slug}
-                thumbnail={first.thumbnail}
-                category={first.category}
-                tags={first.tags}
-                aspectRatio="landscape"
-              />
-            </FadeIn>
-          )}
-          {second && (
-            <FadeIn direction="up" delay={0.1}>
-              <ProjectCard
-                title={second.title}
-                slug={second.slug}
-                thumbnail={second.thumbnail}
-                category={second.category}
-                tags={second.tags}
-                aspectRatio="landscape"
-              />
-            </FadeIn>
-          )}
-        </div>
-        {/* Bottom row - smaller */}
-        {rest.length > 0 && (
-          <div className="grid grid-cols-1 tablet:grid-cols-3 gap-6">
-            {rest.slice(0, 3).map((project, index) => (
-              <FadeIn key={project.slug} delay={(index + 2) * 0.1} direction="up">
-                <ProjectCard
-                  title={project.title}
-                  slug={project.slug}
-                  thumbnail={project.thumbnail}
-                  category={project.category}
-                  tags={project.tags}
-                  aspectRatio="video"
-                  titlePosition="below"
-                />
-              </FadeIn>
-            ))}
-          </div>
-        )}
+      <div className="grid grid-cols-1 tablet:grid-cols-3 gap-6">
+        {projects.slice(0, 3).map((project, index) => (
+          <FadeIn key={project.slug} delay={index * 0.1} direction="up">
+            <EnhancedProjectCard
+              title={project.title}
+              slug={project.slug}
+              thumbnail={project.thumbnail}
+              category={project.category}
+              tags={project.tags}
+              aspectRatio="landscape"
+              showCategory={true}
+              showDescription={false}
+            />
+          </FadeIn>
+        ))}
       </div>
     );
   };

@@ -98,7 +98,7 @@ export const projects: Project[] = [
     slug: "sap-build-apps",
     title: "SAP Build Apps Design System",
     description: "Led the design system for SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.",
-    thumbnail: "/images/portfolio/sap-build-apps/thumbnail.webp",
+    thumbnail: "/images/portfolio/sap-build-apps/Build Product Icon_1000px.png",
     category: "design-systems",
     tags: ["Design Systems", "Enterprise", "Low-Code Platform", "SAP BTP"],
     featured: true,

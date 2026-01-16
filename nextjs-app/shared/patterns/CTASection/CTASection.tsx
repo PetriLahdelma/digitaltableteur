@@ -6,6 +6,7 @@ import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { cn } from "@/lib/utils";
+import styles from "./CTASection.module.css";
 
 export interface ActionItem {
   /** Button label */
@@ -14,6 +15,8 @@ export interface ActionItem {
   href?: string;
   /** Click handler */
   onClick?: () => void;
+  /** Optional button className overrides */
+  className?: string;
 }
 
 export interface CTASectionProps {
@@ -36,9 +39,9 @@ export interface CTASectionProps {
 }
 
 const backgroundClasses: Record<NonNullable<CTASectionProps["background"]>, string> = {
-  primary: "bg-primary text-primary-foreground",
-  gradient: "bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground",
-  dark: "bg-zinc-900 text-white",
+  primary: "bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground",
+  gradient: "bg-gradient-to-br from-primary via-[#4400ff] to-[#0066ff] text-primary-foreground",
+  dark: "bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white",
   muted: "bg-muted text-foreground",
 };
 
@@ -63,15 +66,21 @@ export function CTASection({
         ? "default"
         : "outline";
 
+    const buttonClassName = cn(
+      // Primary button with theme-aware colors via CSS module
+      isDark && variant === "default" && styles.primaryButton,
+      // Outline variant - same across all dark themes
+      isDark && variant === "outline" && "border-white bg-transparent text-white hover:bg-white/10",
+      action.className
+    );
+
     if (action.href) {
       return (
         <Button
           variant={buttonVariant}
           size="lg"
           asChild
-          className={cn(
-            isDark && variant === "outline" && "border-white/30 text-white hover:bg-white/10"
-          )}
+          className={buttonClassName}
         >
           <Link href={action.href}>{action.label}</Link>
         </Button>
@@ -83,9 +92,7 @@ export function CTASection({
         variant={buttonVariant}
         size="lg"
         onClick={action.onClick}
-        className={cn(
-          isDark && variant === "outline" && "border-white/30 text-white hover:bg-white/10"
-        )}
+        className={buttonClassName}
       >
         {action.label}
       </Button>
@@ -96,26 +103,28 @@ export function CTASection({
     <Section
       id={id}
       className={cn(
-        "py-20 desktop:py-28",
+        "py-24 desktop:py-32 relative overflow-hidden",
         backgroundClasses[background],
         className
       )}
       aria-labelledby={`${id}-title`}
     >
-      <Container size="md">
+      {/* Subtle texture overlay for premium feel */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-30 pointer-events-none mix-blend-overlay" />
+      <Container size="md" className="relative z-10">
         <FadeIn direction="up">
           <div
             className={cn(
-              "flex flex-col gap-6",
+              "flex flex-col gap-8",
               align === "center" ? "items-center text-center" : "items-start text-left"
             )}
           >
             <h2
               id={`${id}-title`}
               className={cn(
-                "font-display font-bold",
-                "text-3xl tablet:text-4xl desktop:text-5xl",
-                align === "center" && "max-w-3xl"
+                "font-display font-bold tracking-tight",
+                "text-4xl tablet:text-5xl desktop:text-6xl",
+                align === "center" && "max-w-4xl"
               )}
             >
               {title}
@@ -124,9 +133,9 @@ export function CTASection({
             {description && (
               <p
                 className={cn(
-                  "font-body text-lg",
+                  "font-body text-xl desktop:text-2xl leading-relaxed",
                   isDark ? "text-white/80" : "text-muted-foreground",
-                  align === "center" && "max-w-xl"
+                  align === "center" && "max-w-2xl"
                 )}
               >
                 {description}

@@ -1,0 +1,22 @@
+<svg width="395" height="323" viewBox="0 0 395 323" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+  .logo-rect { fill: currentColor; transition: opacity 0.3s ease; }
+  .logo-rect-1 { transition-delay: 0s; }
+  .logo-rect-2 { transition-delay: 0.15s; }
+  .logo-rect-3 { transition-delay: 0.3s; }
+</style>
+<g clip-path="url(#clip0_112_4)">
+<rect class="logo-rect logo-rect-1" x="190.742" width="39.0494" height="142.681" fill="currentColor"/>
+<rect class="logo-rect logo-rect-2" x="190.742" y="180.228" width="39.0494" height="142.681" fill="currentColor"/>
+<rect class="logo-rect logo-rect-3" x="267.338" y="181.73" width="39.0494" height="127.662" transform="rotate(-90 267.338 181.73)" fill="currentColor"/>
+<rect y="37.5475" width="39.0494" height="246.312" fill="currentColor"/>
+<rect x="115.646" y="76.597" width="39.0494" height="168.213" fill="currentColor"/>
+<path d="M39.0493 76.597L39.0493 37.5475L118.65 37.5475L154.696 76.5969L39.0493 76.597Z" fill="currentColor"/>
+<path d="M39.0493 244.81L39.0493 283.859L118.65 283.859L154.696 244.81L39.0493 244.81Z" fill="currentColor"/>
+</g>
+<defs>
+<clipPath id="clip0_112_4">
+<rect width="395" height="322.909" fill="white"/>
+</clipPath>
+</defs>
+</svg>

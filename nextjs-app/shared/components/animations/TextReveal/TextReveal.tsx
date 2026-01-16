@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, type ElementType } from "react";
+import { Fragment, useRef, useMemo, type ElementType } from "react";
 import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
 import styles from "./TextReveal.module.css";
@@ -107,16 +107,21 @@ export function TextReveal({
 
   return (
     <Component ref={ref} className={`${styles.textReveal} ${className}`.trim()}>
-      {elements.map((el, index) => (
-        <span
-          key={el.key}
-          data-reveal-item
-          className={type === "lines" ? styles.line : styles.inline}
-        >
-          {el.content}
-          {type === "words" && index < elements.length - 1 ? " " : ""}
-        </span>
-      ))}
+      {elements.map((el, index) => {
+        const needsSpace = type === "words" && index < elements.length - 1;
+
+        return (
+          <Fragment key={el.key}>
+            <span
+              data-reveal-item
+              className={type === "lines" ? styles.line : styles.inline}
+            >
+              {el.content}
+            </span>
+            {needsSpace ? " " : null}
+          </Fragment>
+        );
+      })}
     </Component>
   );
 }

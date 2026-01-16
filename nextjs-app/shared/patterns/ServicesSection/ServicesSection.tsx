@@ -36,12 +36,6 @@ export interface ServicesSectionProps {
   id?: string;
 }
 
-const columnClasses: Record<NonNullable<ServicesSectionProps["columns"]>, string> = {
-  2: "grid-cols-1 tablet:grid-cols-2",
-  3: "grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3",
-  4: "grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-4",
-};
-
 export function ServicesSection({
   title,
   description,
@@ -53,26 +47,34 @@ export function ServicesSection({
 }: ServicesSectionProps) {
   const { t } = useTranslation();
 
+  // Grid column classes - using standard Tailwind breakpoints (md: 768px, lg: 1024px)
+  const gridClasses = cn(
+    "grid gap-8 lg:gap-10",
+    columns === 2 && "grid-cols-1 md:grid-cols-2",
+    columns === 3 && "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+    columns === 4 && "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+  );
+
   return (
     <Section
       id={id}
-      className={cn("py-20 desktop:py-28", className)}
+      className={cn("py-24 desktop:py-32", className)}
       aria-labelledby={title ? `${id}-title` : undefined}
     >
       <Container size="lg">
         {/* Section Header */}
         {(title || description) && (
-          <FadeIn className="text-center mb-12 desktop:mb-16">
+          <FadeIn className="text-center mb-16 desktop:mb-20">
             {title && (
               <h2
                 id={`${id}-title`}
-                className="font-display font-bold text-3xl tablet:text-4xl desktop:text-5xl text-foreground mb-4"
+                className="font-display font-bold text-4xl tablet:text-5xl desktop:text-6xl text-foreground mb-6 tracking-tight"
               >
                 {title}
               </h2>
             )}
             {description && (
-              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="font-body text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 {description}
               </p>
             )}
@@ -80,13 +82,14 @@ export function ServicesSection({
         )}
 
         {/* Services Grid */}
-        <div className={cn("grid gap-6", columnClasses[columns])}>
+        <div className={gridClasses}>
           {services.map((service, index) => (
             <FadeIn
               key={service.title}
               delay={index * 0.1}
               direction="up"
               distance={30}
+              className="h-full"
             >
               <ServiceCard
                 icon={service.icon}

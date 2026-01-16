@@ -79,26 +79,25 @@ export function SiteFooter({ className }: SiteFooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-4">
-              <span className="font-heading text-title-m font-bold">
+            <p className="font-heading text-text-m font-semibold mb-3">
+              {t("footerAddressTitle")}
+            </p>
+            <address className="font-body text-text-m text-muted-foreground not-italic leading-relaxed">
+              <Link href="/" className="font-medium text-foreground hover:underline">
                 Digitaltableteur
-              </span>
-            </Link>
-            <div className="space-y-4 font-body text-text-m text-muted-foreground">
-              <div>
-                <p className="font-medium text-foreground mb-1">
-                  {t("footerAddressTitle")}
-                </p>
-                <p>{t("footerAddress1")}</p>
-                <p>{t("footerAddress2")}</p>
-                <a
-                  href="mailto:mail@digitaltableteur.com"
-                  className="text-foreground hover:underline"
-                >
-                  mail@digitaltableteur.com
-                </a>
-              </div>
-            </div>
+              </Link>
+              <br />
+              {t("footerAddress1")}
+              <br />
+              {t("footerAddress2")}
+              <br />
+              <a
+                href="mailto:mail@digitaltableteur.com"
+                className="text-foreground hover:underline"
+              >
+                mail@digitaltableteur.com
+              </a>
+            </address>
           </div>
 
           {/* Billing Info */}
@@ -106,12 +105,15 @@ export function SiteFooter({ className }: SiteFooterProps) {
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerBillingTitle")}
             </p>
-            <div className="font-body text-text-s text-muted-foreground space-y-1">
-              <p>{t("footerBillingName")}</p>
-              <p>{t("footerBillingAddress")}</p>
-              <p>{t("footerBillingZip")}</p>
-              <p>{t("footerBillingVat")}</p>
-            </div>
+            <address className="font-body text-text-s text-muted-foreground not-italic leading-relaxed">
+              <span className="font-medium text-foreground">{t("footerBillingName")}</span>
+              <br />
+              {t("footerBillingAddress")}
+              <br />
+              {t("footerBillingZip")}
+              <br />
+              {t("footerBillingVat")}
+            </address>
           </div>
 
           {/* Legal Links */}

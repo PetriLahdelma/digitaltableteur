@@ -20,28 +20,28 @@ import {
   DesignSystemsIcon,
 } from "../../icons/service-icons";
 
-// Sample featured projects (replace with actual data from CMS)
+// Featured projects for homepage
 const FEATURED_PROJECTS: ProjectItem[] = [
   {
-    title: "Design System for SaaS Platform",
-    slug: "design-system-saas",
-    thumbnail: "/images/work/project-1.jpg",
+    title: "Helsinki Design System",
+    slug: "helsinki-design-system",
+    thumbnail: "/images/portfolio/helsinki-design-system/HDS_logo.png",
     category: "Design Systems",
-    tags: ["React", "Figma", "Tokens"],
+    tags: ["Design System", "Accessibility", "React"],
   },
   {
-    title: "AI-Powered Analytics Dashboard",
-    slug: "analytics-dashboard",
-    thumbnail: "/images/work/project-2.jpg",
-    category: "Product Design",
-    tags: ["AI/ML", "Data Viz", "UX"],
+    title: "SAP Build Apps Design System",
+    slug: "sap-build-apps",
+    thumbnail: "/images/portfolio/sap-build-apps/Build Product Icon_1000px.png",
+    category: "Design Systems",
+    tags: ["Enterprise", "Low-Code", "SAP BTP"],
   },
   {
-    title: "Brand Identity Refresh",
-    slug: "brand-identity",
-    thumbnail: "/images/work/project-3.jpg",
+    title: "New Things Co",
+    slug: "new-things-co",
+    thumbnail: "/images/portfolio/new_things_co/new_things_co_item.webp",
     category: "Branding",
-    tags: ["Identity", "Strategy"],
+    tags: ["Branding", "Web Design", "Identity"],
   },
 ];
 
@@ -103,7 +103,7 @@ export function HomePage() {
       <HighlightSection
         cta={[
           {
-            label: "Download Schema",
+            label: t("homeHighlightCtaDownload", "Download Schema"),
             onClick: () => {
               window.open(
                 "https://petrilahdelma.gumroad.com/l/mcqoq",
@@ -113,15 +113,21 @@ export function HomePage() {
             },
           },
           {
-            label: "Read Article",
+            label: t("homeHighlightCtaArticle", "Read Article"),
             href: "https://medium.com/digitaltableteur/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work-46a51931e8e0",
             target: "_blank",
             rel: "noopener noreferrer",
           },
         ]}
-        description="Keep your AI-generated components consistent, predictable, and on-brand. This schema enforces shared prop structures, naming conventions, and design standards across your entire system."
+        description={t(
+          "homeHighlightDescription",
+          "Keep your AI-generated components consistent, predictable, and on-brand. This schema enforces shared prop structures, naming conventions, and design standards across your entire system."
+        )}
         size="comfortable"
-        title="Component Schema Template for GenAI Design Systems"
+        title={t(
+          "homeHighlightTitle",
+          "Component Schema Template for GenAI Design Systems"
+        )}
         variant="dots"
       />
 

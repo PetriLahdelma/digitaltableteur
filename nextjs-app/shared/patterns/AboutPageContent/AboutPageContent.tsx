@@ -65,7 +65,7 @@ export function AboutPageContent({
         description: t("aboutValueCraftDescription"),
       },
     ],
-    [t, i18n.language]
+    [t, i18n.language],
   );
 
   // Manifesto tokens (intro + highlightable phrases)
@@ -84,7 +84,7 @@ export function AboutPageContent({
       { text: t("aboutManifestoPhrase10"), highlightable: true },
       { text: t("aboutManifestoPhrase11"), highlightable: true },
     ],
-    [t, i18n.language]
+    [t, i18n.language],
   );
 
   return (
@@ -95,18 +95,6 @@ export function AboutPageContent({
         subtitle={t("aboutHeroSubtitle")}
         background="gradient"
         showScrollIndicator
-      />
-
-      {/* Story/Intro Section */}
-      <ContentSection
-        subtitle={t("aboutWhoSubtitle")}
-        title={t("aboutWhoTitle")}
-        content={
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            {t("aboutWhoText")}
-          </p>
-        }
-        background="default"
       />
 
       {/* Values/Expertise Section */}
@@ -128,6 +116,7 @@ export function AboutPageContent({
           </p>
         }
         background="default"
+        centered
       />
 
       {/* What I Do - Development */}
@@ -140,6 +129,7 @@ export function AboutPageContent({
           </p>
         }
         background="default"
+        centered
       />
 
       {/* What I Do - Collaboration */}
@@ -152,6 +142,7 @@ export function AboutPageContent({
           </p>
         }
         background="default"
+        centered
       />
 
       {/* Manifesto Section */}

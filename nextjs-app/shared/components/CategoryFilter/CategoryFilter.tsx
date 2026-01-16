@@ -44,8 +44,8 @@ export function CategoryFilter({
       aria-label="Filter projects by category"
       className={cn(
         "flex flex-wrap gap-2",
-        "overflow-x-auto scrollbar-hide",
-        "-mx-4 px-4 tablet:mx-0 tablet:px-0", // Allow horizontal scroll on mobile
+        "overflow-x-auto overflow-y-visible scrollbar-hide",
+        "-mx-4 px-4 py-1 tablet:mx-0 tablet:px-0", // py-1 prevents focus ring clipping
         className
       )}
     >
@@ -118,8 +118,8 @@ export function CategoryFilter({
       aria-label="Filter projects by category"
       className={cn(
         "flex flex-wrap gap-4",
-        "overflow-x-auto scrollbar-hide",
-        "-mx-4 px-4 tablet:mx-0 tablet:px-0",
+        "overflow-x-auto overflow-y-visible scrollbar-hide",
+        "-mx-4 px-4 py-1 tablet:mx-0 tablet:px-0",
         className
       )}
     >

@@ -22,14 +22,16 @@ export interface ContentSectionProps {
   subtitle?: string;
   /** Section title */
   title: string;
-  /** Rich text content */
-  content: ReactNode;
+  /** Rich text content (optional) */
+  content?: ReactNode;
   /** Single image or array of images */
   images?: ContentImage | ContentImage[];
   /** Image layout */
   imageLayout?: "none" | "single" | "grid" | "side-by-side";
   /** Background variant */
   background?: "default" | "muted" | "accent";
+  /** Center align text */
+  centered?: boolean;
   /** Custom className */
   className?: string;
 }
@@ -47,6 +49,7 @@ export function ContentSection({
   images,
   imageLayout = "none",
   background = "default",
+  centered = false,
   className,
 }: ContentSectionProps) {
   // Normalize images to array
@@ -69,7 +72,7 @@ export function ContentSection({
       className={cn(backgroundClasses[background], className)}
     >
       <Container size="md">
-        <div className="space-y-6">
+        <div className={cn("space-y-6", centered && "text-center")}>
           {/* Subtitle */}
           {subtitle && (
             <FadeIn direction="up" delay={0} distance={15}>
@@ -87,11 +90,13 @@ export function ContentSection({
           </FadeIn>
 
           {/* Content */}
-          <FadeIn direction="up" delay={0.2} distance={25}>
-            <div className="prose prose-neutral dark:prose-invert max-w-none font-body">
-              {content}
-            </div>
-          </FadeIn>
+          {content && (
+            <FadeIn direction="up" delay={0.2} distance={25}>
+              <div className={cn("prose prose-neutral dark:prose-invert max-w-none font-body", centered && "mx-auto")}>
+                {content}
+              </div>
+            </FadeIn>
+          )}
 
           {/* Images */}
           {effectiveLayout !== "none" && imageArray.length > 0 && (

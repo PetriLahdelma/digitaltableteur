@@ -1,9 +1,9 @@
 "use client";
 
-import { ContactPageContent } from "../../../patterns/ContactPageContent";
+import { ContactPageContentEditorial } from "../../../patterns/ContactPageContentEditorial";
 
 export function ContactPage() {
-  return <ContactPageContent showMap showCVDownload />;
+  return <ContactPageContentEditorial />;
 }
 
 ContactPage.displayName = "ContactPage";

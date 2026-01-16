@@ -22,17 +22,17 @@ export interface ServiceCardProps {
 }
 
 const variantClasses: Record<NonNullable<ServiceCardProps["variant"]>, string> = {
-  default: "bg-card border border-border",
-  bordered: "bg-transparent border-2 border-border",
-  elevated: "bg-card shadow-lg border border-border/50",
-  minimal: "bg-transparent",
+  default: "bg-card border-2 border-border",
+  bordered: "bg-transparent border-2 border-foreground/10",
+  elevated: "bg-card shadow-2xl border-0",
+  minimal: "bg-transparent border-b-2 border-border/30 rounded-none pb-8",
 };
 
 const hoverVariantClasses: Record<NonNullable<ServiceCardProps["variant"]>, string> = {
-  default: "hover:border-primary/50 hover:shadow-md",
-  bordered: "hover:border-primary hover:bg-primary/5",
-  elevated: "hover:shadow-xl hover:-translate-y-1",
-  minimal: "hover:bg-muted/50",
+  default: "hover:border-primary hover:shadow-lg",
+  bordered: "hover:border-foreground/40 hover:bg-primary/5 hover:scale-[1.02]",
+  elevated: "hover:shadow-3xl hover:-translate-y-2",
+  minimal: "hover:border-foreground",
 };
 
 export function ServiceCard({
@@ -49,19 +49,22 @@ export function ServiceCard({
       {icon && (
         <div
           className={cn(
-            "flex-shrink-0 text-primary",
-            iconPosition === "top" ? "mb-4" : "mr-4",
-            "[&>svg]:size-8 [&>svg]:stroke-[1.5]"
+            "flex-shrink-0 text-primary transition-all duration-500 ease-out",
+            iconPosition === "top" ? "mb-6" : "mr-6",
+            "[&>svg]:size-10 lg:[&>svg]:size-12 [&>svg]:stroke-[1.25]",
+            // Premium hover: subtle scale + lift + enhanced color vibrancy
+            "group-hover:scale-105 group-hover:-translate-y-0.5",
+            "group-hover:text-primary/90 group-hover:drop-shadow-sm"
           )}
         >
           {icon}
         </div>
       )}
       <div className="flex-1">
-        <h3 className="font-display font-semibold text-lg text-foreground mb-2">
+        <h3 className="font-display font-bold text-xl text-foreground mb-3">
           {title}
         </h3>
-        <p className="font-body text-sm text-muted-foreground leading-relaxed">
+        <p className="font-body text-base text-muted-foreground leading-relaxed">
           {description}
         </p>
       </div>
@@ -69,7 +72,7 @@ export function ServiceCard({
   );
 
   const baseClasses = cn(
-    "group flex rounded-lg p-6 transition-all duration-300",
+    "group flex h-full rounded-lg p-8 lg:p-10 transition-all duration-500",
     iconPosition === "top" ? "flex-col" : "flex-row items-start",
     variantClasses[variant],
     hoverVariantClasses[variant],
