@@ -507,3 +507,17 @@
     transition-delay: 0ms;
   }
 }
+
+/* Slide chat to the left when mobile menu is open */
+@media (width <= 1024px) {
+  :global(body[data-mobile-menu-open="true"]) .container,
+  :global(body[data-mobile-menu-open="true"]) .toggle {
+    transform: translateX(-277px);
+    transition: transform 0.3s cubic-bezier(0.16, 0.84, 0.44, 1);
+  }
+
+  /* Ensure closed chat panel doesn't have conflicting transforms */
+  :global(body[data-mobile-menu-open="true"]) .container[data-open="false"] {
+    transform: translateX(-277px) translateY(10%) scale(0.98);
+  }
+}
