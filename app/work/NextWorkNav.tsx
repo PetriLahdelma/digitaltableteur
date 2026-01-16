@@ -4,16 +4,14 @@ import { usePathname, useRouter } from "next/navigation";
 
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
+import { sortedProjects } from "@/nextjs-app/shared/data/projects";
 
 import styles from "./NextWorkNav.module.css";
 
-const workPages = [
-  { path: "/work/helsinki-design-system", label: "Helsinki Design System" },
-  { path: "/work/new-things-co", label: "New Things Co" },
-  { path: "/work/illustrations", label: "Illustrations" },
-  { path: "/work/garage-junction", label: "Garage Junction" },
-  { path: "/work/sap-build-apps", label: "SAP Build Apps" },
-];
+const workPages = sortedProjects.map((p) => ({
+  path: `/work/${p.slug}`,
+  label: p.title,
+}));
 
 export function NextWorkNav() {
   const pathname = usePathname();
@@ -29,7 +27,7 @@ export function NextWorkNav() {
           icon={<Icon name="briefcase" ariaLabel="Back to work" />}
           onClick={() => router.push("/work")}
         >
-          Back to work
+          <span className={styles.buttonLabel}>Back to work</span>
         </Button>
         <div className={styles.navButtons}>
           <Button
@@ -42,7 +40,7 @@ export function NextWorkNav() {
                 router.push(workPages[currentIndex - 1].path);
             }}
           >
-            Previous
+            <span className={styles.buttonLabel}>Previous</span>
           </Button>
           <Button
             variant="tertiary"
@@ -54,7 +52,7 @@ export function NextWorkNav() {
                 router.push(workPages[currentIndex + 1].path);
             }}
           >
-            Next
+            <span className={styles.buttonLabel}>Next</span>
           </Button>
         </div>
       </div>
