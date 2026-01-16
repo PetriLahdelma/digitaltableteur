@@ -117,7 +117,7 @@
     "prismjs": "^1.30.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "react-i18next": "^15.7.4",
+    "react-i18next": "^16.5.3",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
     "react-phone-number-input": "^3.4.14",
