@@ -317,7 +317,23 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             common in enterprise low-code applications deployed on SAP BTP.
           </Text>,
         ]}
-        imageLayout="none"
+        images={[
+          {
+            src: "/images/portfolio/sap-build-apps/table-component.webp",
+            alt: "Table component with sorting, filtering, pagination, and row selection features",
+            width: 738,
+            height: 506,
+            caption: "Data table component for enterprise data display",
+          },
+          {
+            src: "/images/portfolio/sap-build-apps/data-visualization.webp",
+            alt: "Data visualization charts and graphs for analytics dashboards",
+            width: 738,
+            height: 506,
+            caption: "Data visualization components for analytics integration",
+          },
+        ]}
+        imageLayout="grid"
         backgroundColor="transparent"
         maxWidth="md"
         spacing="comfortable"
