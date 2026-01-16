@@ -37,6 +37,8 @@
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   overscroll-behavior: contain;
+  background: var(--main-body-background-color, #fff);
+  border-radius: var(--radius-lg);
 }
 
 .panelContent:focus-visible {
@@ -46,6 +48,7 @@
 .panelContent nav {
   padding: var(--space-internal-24, 1.5rem) var(--space-internal-24, 1.5rem)
     var(--space-internal-32, 2rem);
+  background: var(--main-body-background-color, #fff);
 }
 
 /* Sticky header at top of scroll */
@@ -70,12 +73,7 @@
   position: sticky;
   bottom: 0;
   z-index: 2;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--main-body-background-color) 92%, transparent) 0%,
-    var(--main-body-background-color) 40%
-  );
-  backdrop-filter: blur(2px);
+  background: var(--main-body-background-color, #fff);
   margin-top: auto; /* push to bottom within flex column */
   padding-top: var(--space-internal-16, 1rem);
 }
@@ -196,6 +194,7 @@
 
 .footer {
   height: 18rem;
+  background: var(--main-body-background-color, #fff);
 }
 
 .footerLinks {

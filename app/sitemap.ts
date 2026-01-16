@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { posts } from "./blog/postMetadata";
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
+import type { PseoCatalogItem, PseoLeafPage } from "@/lib/pseo/types";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -14,14 +15,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Exclude noindex pages from sitemap:
   // - /privacy-policy (noindex)
-  // - /cookie-policy* pages (legal pages, typically noindex)
+  // - /studio (noindex - Sanity CMS admin)
   const staticRoutes: MetadataRoute.Sitemap = [
     "/",
     "/about",
     "/ai-use",
     "/contact",
     "/work",
-    "/studio",
     "/accessibility",
     "/blog",
   ].map((path) => ({
@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/work/illustrations",
     "/work/garage-junction",
     "/work/helsinki-design-system",
+    "/work/sap-build-apps",
   ].map((path) => ({
     url: toUrl(path),
     lastModified: today,
@@ -61,9 +62,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const pseoPillarRoutes: MetadataRoute.Sitemap = [
-    ...pseoCatalog.services.map((s) => `/pseo/services/${s.slug}`),
-    ...pseoCatalog.stacks.map((s) => `/pseo/stacks/${s.slug}`),
-    ...pseoCatalog.audiences.map((a) => `/pseo/audiences/${a.slug}`),
+    ...pseoCatalog.services.map((s: PseoCatalogItem) => `/pseo/services/${s.slug}`),
+    ...pseoCatalog.stacks.map((s: PseoCatalogItem) => `/pseo/stacks/${s.slug}`),
+    ...pseoCatalog.audiences.map((a: PseoCatalogItem) => `/pseo/audiences/${a.slug}`),
   ].map((path) => ({
     url: toUrl(path),
     lastModified: today,
@@ -71,17 +72,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.4,
   }));
 
-  const pseoLeafRoutes: MetadataRoute.Sitemap = pseoLeafPages.map((page) => ({
+  const pseoLeafRoutes: MetadataRoute.Sitemap = pseoLeafPages.map((page: PseoLeafPage) => ({
     url: toUrl(`/pseo/${page.slug}`),
     lastModified: today,
     changeFrequency: "monthly",
     priority: 0.35,
   }));
 
+  const toolsRoutes: MetadataRoute.Sitemap = ["/tools/email-signature"].map(
+    (path) => ({
+      url: toUrl(path),
+      lastModified: today,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    })
+  );
+
   return [
     ...staticRoutes,
     ...workRoutes,
     ...blogRoutes,
+    ...toolsRoutes,
     ...pseoIndexRoutes,
     ...pseoPillarRoutes,
     ...pseoLeafRoutes,

@@ -4,11 +4,11 @@ import { ContactContent } from "./ContactContent";
 export const metadata: Metadata = {
   title: "Contact | Digitaltableteur",
   description:
-    "Get in touch with Digitaltableteur for design systems consulting, AI-powered DesignOps solutions, component library development, and design automation projects.",
+    "Contact Digitaltableteur for design systems consulting, AI-powered DesignOps, component libraries, and design automation projects.",
   openGraph: {
     title: "Contact | Digitaltableteur",
     description:
-      "Get in touch with Digitaltableteur for design systems consulting, AI-powered DesignOps solutions, component library development, and design automation projects.",
+      "Contact Digitaltableteur for design systems consulting, AI-powered DesignOps, component libraries, and design automation projects.",
     type: "website",
     siteName: "Digitaltableteur",
     images: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact | Digitaltableteur",
     description:
-      "Get in touch with Digitaltableteur for design systems consulting, AI-powered DesignOps solutions, component library development, and design automation projects.",
+      "Contact Digitaltableteur for design systems consulting, AI-powered DesignOps, component libraries, and design automation projects.",
     images: ["/logo512.png"],
   },
   alternates: {

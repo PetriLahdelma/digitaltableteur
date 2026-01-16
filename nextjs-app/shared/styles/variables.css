@@ -66,6 +66,10 @@
   --accent-cyan: #71efff;
   --accent-yellow: #f2e274;
 
+  /* Logo background and color - chartreuse/lime for brand identity */
+  --logo-background: #dfff00;
+  --logo-color: #000; /* Black logo on light themes */
+
   /* Greyscale palette */
   --color-black: #000;
   --color-white: #fff;
@@ -298,6 +302,8 @@
   --accent-violet: #bc6dff;
   --accent-cyan: #71efff;
   --accent-yellow: #f2e274;
+  --logo-background: #812eff; /* Purple for dark mode */
+  --logo-color: #fff; /* White logo on dark themes */
   --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
   --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
   --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
@@ -361,6 +367,8 @@
   --accent-violet: #fff;
   --accent-cyan: #fff;
   --accent-yellow: #fff;
+  --logo-background: #fff; /* White background for high contrast black */
+  --logo-color: #000; /* Black logo for high contrast black */
   --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
   --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
   --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
@@ -462,6 +470,8 @@
   --accent-violet: #000;
   --accent-cyan: #000;
   --accent-yellow: #000;
+  --logo-background: #000; /* Black background for high contrast white */
+  --logo-color: #fff; /* White logo for high contrast white */
   --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
   --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
   --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
