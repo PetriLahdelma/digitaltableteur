@@ -4,8 +4,9 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://www.digitaltableteur.com";
 
-// Default Open Graph image - reuses existing logo
-const DEFAULT_OG_IMAGE = `${siteUrl}/logo512.png`;
+// Default Open Graph image - now uses auto-generated OG images (1200x630)
+// Individual routes have their own opengraph-image.tsx files
+const DEFAULT_OG_IMAGE = `${siteUrl}/opengraph-image`;
 
 export interface GenerateMetadataParams {
   title: string;
@@ -59,8 +60,8 @@ export function generatePageMetadata({
       images: [
         {
           url: ogImage,
-          width: 512,
-          height: 512,
+          width: 1200,
+          height: 630,
           alt: title,
         },
       ],
