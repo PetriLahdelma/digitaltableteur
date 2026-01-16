@@ -99,7 +99,7 @@ export function SiteHeader({
         >
           <div
             className="flex items-center justify-center rounded-full transition-transform group-hover:scale-110"
-            style={{ backgroundColor: "#DFFF00", width: 40, height: 40 }}
+            style={{ backgroundColor: "var(--logo-background)", color: "var(--logo-color)", width: 40, height: 40 }}
           >
             <svg
               width="24"
