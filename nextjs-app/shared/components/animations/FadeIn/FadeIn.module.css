@@ -1,0 +1,3 @@
+.fadeIn {
+  will-change: opacity, transform;
+}

@@ -1,0 +1,116 @@
+/**
+ * Utilities CSS
+ * Global utility classes for common styling patterns
+ *
+ * @file utilities.css
+ * @description Focus ring utilities and other accessibility helpers
+ */
+
+/* ==========================================================================
+   Focus Ring Utilities
+   ========================================================================== */
+
+/**
+ * Standard focus ring for interactive elements
+ * Uses CSS outline (not box-shadow) for better accessibility
+ * Adapts automatically to theme via CSS custom properties
+ *
+ * Usage: Apply to buttons, links, form inputs, etc.
+ */
+.focus-ring:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+/**
+ * Focus ring without offset - for elements where offset looks awkward
+ * (e.g., text inputs that already have a border)
+ */
+.focus-ring-inset:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: 0;
+}
+
+/**
+ * Focus ring inside the element - useful for elements with overflow:hidden
+ */
+.focus-ring-inner:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: calc(-1 * var(--focus-ring-width, 2px));
+}
+
+/* ==========================================================================
+   Windows High Contrast Mode Support
+   ========================================================================== */
+
+/**
+ * Forced colors mode (Windows High Contrast)
+ * Uses system colors for maximum compatibility
+ */
+@media (forced-colors: active) {
+  .focus-ring:focus-visible,
+  .focus-ring-inset:focus-visible,
+  .focus-ring-inner:focus-visible {
+    /* Use system highlight color in forced colors mode */
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  /* Ensure focus ring is always visible */
+  .focus-ring:focus-visible,
+  .focus-ring-inset:focus-visible,
+  .focus-ring-inner:focus-visible {
+    forced-color-adjust: none;
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion Support
+   ========================================================================== */
+
+/**
+ * Skip focus ring transitions for users who prefer reduced motion
+ */
+@media (prefers-reduced-motion: reduce) {
+  .focus-ring:focus-visible,
+  .focus-ring-inset:focus-visible,
+  .focus-ring-inner:focus-visible {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Visually Hidden (Screen Reader Only)
+   ========================================================================== */
+
+/**
+ * Hide content visually but keep it accessible to screen readers
+ * Use for skip links, form labels, etc.
+ */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/**
+ * Show visually hidden content when focused (for skip links)
+ */
+.visually-hidden-focusable:focus,
+.visually-hidden-focusable:focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
+}

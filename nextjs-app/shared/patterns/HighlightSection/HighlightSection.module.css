@@ -81,12 +81,9 @@
   background-color: var(--color-light-bg);
 }
 
-/* Border decoration */
+/* Border decoration - removed for cleaner look */
 .border {
-  position: absolute;
-  inset: 0;
-  border: var(--highlight-border-width) solid var(--color-primary);
-  pointer-events: none;
+  display: none;
 }
 
 /* Container for content */
@@ -141,6 +138,9 @@
   max-inline-size: 820px;
   color: var(--color-title);
   margin-block-start: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 /* Description */

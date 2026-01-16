@@ -6,15 +6,20 @@ import Badge from "@dt/Badge";
 import FlexBox from "@dt/FlexBox";
 import Grid from "@dt/Grid";
 import PageLayout from "../../../../patterns/PageLayout/PageLayout";
+import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import Title from "@dt/Title";
 import WorkNav from "@dt/WorkNav";
 import styles from "./illustrations.module.css";
 
 export function IllustrationsPage({ nav }: { nav?: React.ReactNode }) {
   return (
-    <main className={styles.caseStudy}>
-      {nav ?? <WorkNav />}
-      <PageLayout maxWidth="lg" spacing="comfortable" as="section">
+    <ProjectDetailLayout
+      nav={nav ?? <WorkNav />}
+      hero={<></>}
+      showScrollProgress={false}
+    >
+      <main className={styles.caseStudy}>
+        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
         <section className={styles.caseHeroSection}>
           <div className={styles.heroText}>
             <Title level={1}>Illustrations</Title>
@@ -154,6 +159,7 @@ export function IllustrationsPage({ nav }: { nav?: React.ReactNode }) {
           </div>
         </section>
       </PageLayout>
-    </main>
+      </main>
+    </ProjectDetailLayout>
   );
 }

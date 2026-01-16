@@ -1,1 +1,163 @@
-@import url("../nextjs-app/shared/index.css");
+/*
+ * CSS Import Order (required for valid CSS):
+ * All @import statements must come first, before any rules.
+ * 1. Design system CSS (variables, fonts, typography, grain)
+ * 2. Tailwind CSS (expands to rules, must be last @import)
+ */
+
+/* Design system CSS custom properties and styles */
+@import url("../nextjs-app/shared/styles/variables.css");
+@import url("../nextjs-app/shared/styles/fonts.css");
+@import url("../nextjs-app/shared/styles/typography.css");
+@import url("../nextjs-app/shared/styles/grain.css");
+
+/* Tailwind CSS 4.x + shadcn/ui (expands to rules - must be last import) */
+@import "./tailwind.css";
+
+/* Base styles (inlined from shared/index.css to avoid @import after rules) */
+body {
+  margin: 0;
+  background-color: var(--main-body-background-color);
+  overflow-wrap: anywhere;
+  color: var(--main-body-copy-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a {
+  touch-action: manipulation;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary, #06f);
+  outline-offset: 2px;
+}
+
+:where(ul, ol) {
+  padding-inline-start: 1.25rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@supports (font-optical-sizing: auto) {
+  body {
+    font-optical-sizing: auto;
+  }
+}
+
+@media (width <= 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+code {
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.visuallyHidden {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+/* Layout Utilities - Phase 04 */
+@layer utilities {
+  /* Full bleed - break out of container */
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  /* Prose width for readable content */
+  .prose-width {
+    max-width: 65ch;
+  }
+
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Grid utilities for asymmetric layouts */
+  .grid-asymmetric-2-1 {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .grid-asymmetric-1-2 {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .grid-asymmetric-3-1 {
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .grid-sidebar-left {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .grid-sidebar-right {
+    grid-template-columns: 1fr 280px;
+  }
+
+  /* Responsive grid column spans */
+  .col-span-full {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Responsive asymmetric grids */
+@media (max-width: 768px) {
+  .grid-asymmetric-2-1,
+  .grid-asymmetric-1-2,
+  .grid-asymmetric-3-1,
+  .grid-sidebar-left,
+  .grid-sidebar-right {
+    grid-template-columns: 1fr;
+  }
+}

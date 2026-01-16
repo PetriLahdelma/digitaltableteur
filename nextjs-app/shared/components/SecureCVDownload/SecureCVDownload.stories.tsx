@@ -116,21 +116,19 @@ const Template: StoryFn<SecureCVDownloadProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {};
-Default.play = async ({ canvasElement }) => {
+Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
 
   // Click the download button to open modal
   const downloadButton = canvas.getByRole("button", { name: /download/i });
   await userEvent.click(downloadButton);
 
-  // Wait for modal to appear
-  await waitFor(() => {
-    const dialog = canvas.queryByRole("dialog");
-    return dialog !== null;
-  });
+  // Wait for modal to appear (modal renders in portal, so check document.body)
+  const body = within(document.body);
+  await waitFor(() => body.getByRole("dialog"), { timeout: 3000 });
 
-  // Find password input and type into it
-  const passwordInput = canvas.getByLabelText(/password/i);
+  // Find password input and type into it (also in portal)
+  const passwordInput = body.getByLabelText(/password/i);
   await userEvent.type(passwordInput, "testpassword");
 };
 
@@ -138,7 +136,7 @@ export const CustomText = Template.bind({});
 CustomText.args = {
   buttonText: "Download My CV",
 };
-CustomText.play = async ({ canvasElement }) => {
+CustomText.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
 
   // Click the custom text button
@@ -147,11 +145,9 @@ CustomText.play = async ({ canvasElement }) => {
   });
   await userEvent.click(downloadButton);
 
-  // Wait for modal
-  await waitFor(() => {
-    const dialog = canvas.queryByRole("dialog");
-    return dialog !== null;
-  });
+  // Wait for modal (modal renders in portal, so check document.body)
+  const body = within(document.body);
+  await waitFor(() => body.getByRole("dialog"), { timeout: 3000 });
 };
 
 export const Secondary = Template.bind({});

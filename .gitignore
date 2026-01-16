@@ -49,3 +49,14 @@ akaunting/logs/
 # Prevent generated static sitemap from shadowing Next.js `app/sitemap.ts`
 public/sitemap.xml
 nextjs-app/public/sitemap.xml
+
+# Lighthouse CI
+.lighthouseci/
+lighthouse-*.html
+lighthouse-*.json
+
+# IDE Local History (VS Code)
+.history/
+
+# Backup files
+*.bkup

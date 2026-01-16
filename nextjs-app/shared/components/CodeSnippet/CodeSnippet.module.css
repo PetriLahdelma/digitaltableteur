@@ -80,7 +80,7 @@
 .pre {
   /* VS theme by Andrew Lock (prism-vs) */
   --code-bg: #ffffff;
-  --code-border: #00f;
+  --code-border: #041B23;
   --code-text: #393a34;
   --code-line-number: #2b91af;
   --code-token-comment: #008000;
@@ -150,7 +150,7 @@
   --code-border: #d3d3d3;
   --code-text: #000;
   --code-line-number: #4b5563;
-  --code-token-keyword: #00f;
+  --code-token-keyword: #041B23;
   --code-token-string: #a31515;
   --code-token-number: #098658;
   --code-token-comment: #004b00;

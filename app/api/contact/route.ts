@@ -17,6 +17,9 @@ const contactSchema = z.object({
   interest: z.string().max(500).optional().nullable(),
   message: z.string().min(5).max(5000),
   hearAbout: z.string().max(200).optional().nullable(),
+  budget: z.string().max(100).optional().nullable(),
+  timeline: z.string().max(100).optional().nullable(),
+  inspiration: z.string().max(2000).optional().nullable(),
   attachmentName: z.string().max(255).optional().nullable(),
   attachmentType: z.string().max(255).optional().nullable(),
   attachmentSize: z.number().int().nonnegative().optional().nullable(),
@@ -44,6 +47,9 @@ async function sendEmailViaResend(payload: {
   interest?: string | null;
   message: string;
   hearAbout?: string | null;
+  budget?: string | null;
+  timeline?: string | null;
+  inspiration?: string | null;
   time?: string | null;
   attachmentName?: string | null;
   attachmentType?: string | null;
@@ -64,9 +70,12 @@ async function sendEmailViaResend(payload: {
     `Name: ${payload.name}`,
     `Email: ${payload.email}`,
     payload.phone ? `Phone: ${payload.phone}` : null,
-    payload.interest ? `Interest: ${payload.interest}` : null,
-    payload.hearAbout ? `Hear about: ${payload.hearAbout}` : null,
-    payload.time ? `Time: ${payload.time}` : null,
+    payload.interest ? `Project type: ${payload.interest}` : null,
+    payload.budget ? `Budget: ${payload.budget}` : null,
+    payload.timeline ? `Timeline: ${payload.timeline}` : null,
+    payload.hearAbout ? `How they found us: ${payload.hearAbout}` : null,
+    payload.inspiration ? `Inspiration/References: ${payload.inspiration}` : null,
+    payload.time ? `Submitted: ${payload.time}` : null,
     "",
     "Message:",
     payload.message,
@@ -140,6 +149,9 @@ export async function POST(req: NextRequest) {
     interest: parsed.interest ? sanitize(parsed.interest) : null,
     message: sanitize(parsed.message),
     hearAbout: parsed.hearAbout ? sanitize(parsed.hearAbout) : null,
+    budget: parsed.budget ? sanitize(parsed.budget) : null,
+    timeline: parsed.timeline ? sanitize(parsed.timeline) : null,
+    inspiration: parsed.inspiration ? sanitize(parsed.inspiration) : null,
     time: parsed.time ? sanitize(parsed.time) : null,
     attachmentName: parsed.attachmentName,
     attachmentType: parsed.attachmentType,

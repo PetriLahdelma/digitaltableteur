@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
+import { fontVariables } from "./fonts";
 import {
   getOrganizationSchema,
   getWebSiteSchema,
@@ -9,7 +10,10 @@ import {
 import { I18nProvider } from "../providers/I18nProvider";
 import { NextThemeProvider } from "../providers/ThemeProvider";
 import { ToastProvider } from "../providers/ToastProvider";
+import { AnimationProvider } from "../providers/AnimationProvider";
+import { SmoothScrollProvider } from "../providers/SmoothScrollProvider";
 import { CookieConsentProvider } from "@/nextjs-app/shared/lib/cookieConsent";
+import { ToasterProvider } from "@/nextjs-app/shared/components/interactive";
 import { NextLayout } from "@dt/NextLayout";
 import { HtmlLangSync } from "./components/HtmlLangSync";
 import "./globals.css";
@@ -80,9 +84,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={fontVariables} suppressHydrationWarning>
       <head>
-        <Script id="gtm-base" strategy="beforeInteractive">
+        {/*
+         * Font Loading Strategy:
+         * - next/font handles font preloading and optimization automatically
+         * - Syne (Google Fonts): Subset to latin, display: swap
+         * - Satoshi (local): Variable font with display: swap
+         * - Both fonts use CSS custom properties: --font-heading, --font-body
+         *
+         * No manual preload needed - next/font injects optimal preload tags
+         */}
+        {/* Preconnect to external domains for faster resource loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        {/* GTM uses afterInteractive to avoid blocking LCP */}
+        <Script id="gtm-base" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -158,11 +176,17 @@ export default function RootLayout({
         <NextThemeProvider>
           <I18nProvider>
             <HtmlLangSync />
-            <ToastProvider>
-              <CookieConsentProvider autoShow={true}>
-                <NextLayout>{children}</NextLayout>
-              </CookieConsentProvider>
-            </ToastProvider>
+            <AnimationProvider>
+              <SmoothScrollProvider>
+                <ToastProvider>
+                  <ToasterProvider position="bottom-right">
+                    <CookieConsentProvider autoShow={true}>
+                      <NextLayout>{children}</NextLayout>
+                    </CookieConsentProvider>
+                  </ToasterProvider>
+                </ToastProvider>
+              </SmoothScrollProvider>
+            </AnimationProvider>
           </I18nProvider>
         </NextThemeProvider>
       </body>

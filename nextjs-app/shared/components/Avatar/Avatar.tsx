@@ -232,6 +232,41 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
           return;
         }
 
+        // Home key: jump to first item
+        if (event.key === "Home") {
+          event.preventDefault();
+          firstElement?.focus();
+          return;
+        }
+
+        // End key: jump to last item
+        if (event.key === "End") {
+          event.preventDefault();
+          lastElement?.focus();
+          return;
+        }
+
+        // Type-ahead: focus item starting with typed character
+        if (event.key.length === 1 && /[a-zA-Z]/.test(event.key)) {
+          const char = event.key.toLowerCase();
+          const elements = Array.from(focusableElements) as HTMLElement[];
+          const startIndex = currentIndex >= 0 ? currentIndex + 1 : 0;
+
+          // Search from current position to end, then wrap to beginning
+          const searchOrder = [
+            ...elements.slice(startIndex),
+            ...elements.slice(0, startIndex),
+          ];
+
+          for (const el of searchOrder) {
+            const text = el.textContent?.trim().toLowerCase();
+            if (text && text.startsWith(char)) {
+              el.focus();
+              return;
+            }
+          }
+        }
+
         // Tab/Shift+Tab focus trap
         if (event.key === "Tab") {
           if (event.shiftKey) {
