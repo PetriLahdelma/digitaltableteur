@@ -2,6 +2,10 @@
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
 
+  /* Fallback font variables for Storybook (next/font sets these in Next.js) */
+  --font-heading: "TiemposHeadline-Regular", Georgia, serif;
+  --font-body: "Moderat-Regular", system-ui, sans-serif;
+
   /* Typography tokens - updated for Syne + Satoshi (next/font provides --font-heading, --font-body) */
   --font-title: var(--font-heading), system-ui, sans-serif;
   --font-text: var(--font-body), system-ui, sans-serif;
