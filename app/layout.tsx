@@ -54,10 +54,10 @@ export const metadata: Metadata = {
     siteName: "Digitaltableteur",
     images: [
       {
-        url: `${siteUrl}/logo512.png`,
-        width: 512,
-        height: 512,
-        alt: "Digitaltableteur Logo",
+        url: `${siteUrl}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
       },
     ],
   },
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
     description:
       "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
-    images: [`${siteUrl}/logo512.png`],
+    images: [`${siteUrl}/twitter-image`],
   },
   robots: {
     index: true,
