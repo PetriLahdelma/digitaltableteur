@@ -67,7 +67,7 @@ export const projects: Project[] = [
     category: "branding",
     tags: ["Branding", "Web Design", "Identity"],
     featured: true,
-    order: 2,
+    order: 3,
   },
   {
     id: "garage-junction",
@@ -80,7 +80,7 @@ export const projects: Project[] = [
     category: "ux-design",
     tags: ["Web Design", "Animation", "Branding"],
     featured: false,
-    order: 3,
+    order: 4,
   },
   {
     id: "illustrations",
@@ -91,7 +91,7 @@ export const projects: Project[] = [
     category: "illustration",
     tags: ["Illustration", "Character Design", "Editorial"],
     featured: false,
-    order: 4,
+    order: 5,
   },
   {
     id: "sap-build-apps-design-system",
@@ -102,9 +102,23 @@ export const projects: Project[] = [
     category: "design-systems",
     tags: ["Design Systems", "Enterprise", "Low-Code Platform", "SAP BTP"],
     featured: true,
-    order: 1,
+    order: 2,
   },
 ];
+
+/**
+ * Sort comparator for projects - uses order, then id as tiebreaker for stability
+ */
+export function compareProjects(a: Project, b: Project): number {
+  const orderDiff = (a.order ?? 99) - (b.order ?? 99);
+  if (orderDiff !== 0) return orderDiff;
+  return a.id.localeCompare(b.id);
+}
+
+/**
+ * Pre-sorted projects array - use this for consistent ordering everywhere
+ */
+export const sortedProjects: Project[] = [...projects].sort(compareProjects);
 
 /**
  * Category filter options
@@ -125,11 +139,11 @@ export function filterProjects(
   category: ProjectCategory
 ): Project[] {
   if (category === "all") {
-    return projectList.sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+    return [...projectList].sort(compareProjects);
   }
-  return projectList
+  return [...projectList]
     .filter((project) => project.category === category)
-    .sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+    .sort(compareProjects);
 }
 
 /**
@@ -161,9 +175,9 @@ export function getRelatedProjects(
  * Get featured projects
  */
 export function getFeaturedProjects(maxItems: number = 4): Project[] {
-  return projects
+  return [...projects]
     .filter((project) => project.featured)
-    .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
+    .sort(compareProjects)
     .slice(0, maxItems);
 }
 
@@ -174,9 +188,6 @@ export function getProjectNavigation(currentSlug: string): {
   previous: Project | null;
   next: Project | null;
 } {
-  const sortedProjects = projects.sort(
-    (a, b) => (a.order ?? 99) - (b.order ?? 99)
-  );
   const currentIndex = sortedProjects.findIndex((p) => p.slug === currentSlug);
 
   return {

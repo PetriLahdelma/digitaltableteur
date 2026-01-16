@@ -11,6 +11,16 @@
   gap: 0.5rem;
 }
 
+.buttonLabel {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .buttonLabel {
+    display: inline;
+  }
+}
+
 .hrLine {
   margin: 1.5rem 0 2rem;
   border: none;
