@@ -241,6 +241,13 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             height: 506,
             caption: "Unified iconography across the platform",
           },
+          {
+            src: "/images/portfolio/sap-build-apps/typography.webp",
+            alt: "Typography scale showing font families, sizes, and weights for enterprise readability",
+            width: 738,
+            height: 506,
+            caption: "Modular typography scale optimized for enterprise applications",
+          },
         ]}
         imageLayout="grid"
         backgroundColor="transparent"
@@ -268,14 +275,23 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             covering form controls, data display, navigation, and feedback patterns.
           </Text>,
         ]}
-        images={{
-          src: "/images/portfolio/sap-build-apps/buttons.webp",
-          alt: "Button component variants showing primary, secondary, ghost, and destructive states",
-          width: 738,
-          height: 506,
-          caption: "Button system with all variants and interaction states",
-        }}
-        imageLayout="single"
+        images={[
+          {
+            src: "/images/portfolio/sap-build-apps/buttons.webp",
+            alt: "Button component variants showing primary, secondary, ghost, and destructive states",
+            width: 738,
+            height: 506,
+            caption: "Button system with all variants and interaction states",
+          },
+          {
+            src: "/images/portfolio/sap-build-apps/button-construction.webp",
+            alt: "Button component anatomy showing padding, icon placement, and text alignment",
+            width: 738,
+            height: 506,
+            caption: "Button construction guidelines for consistent implementation",
+          },
+        ]}
+        imageLayout="grid"
         backgroundColor="light"
         maxWidth="md"
         spacing="comfortable"
