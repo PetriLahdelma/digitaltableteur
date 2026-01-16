@@ -50,8 +50,15 @@ export function ArticleLayout({
         <ReadingProgress targetRef={contentRef} />
       )}
 
-      {/* Navigation */}
-      {nav && <div className="relative z-10">{nav}</div>}
+      {/* Navigation - sticky below header with yellow background */}
+      {nav && (
+        <div
+          className="sticky top-20 z-30 border-b border-border flex items-center"
+          style={{ backgroundColor: "#DFFF00" }}
+        >
+          {nav}
+        </div>
+      )}
 
       {/* Hero */}
       <header>{hero}</header>
