@@ -80,15 +80,16 @@ export function SiteHeader({
   };
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 w-full transition-all duration-300",
-        isScrolled
-          ? "border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
-          : "border-b border-transparent bg-transparent",
-        className,
-      )}
-    >
+    <>
+      <header
+        className={cn(
+          "sticky top-0 z-40 w-full transition-all duration-300",
+          isScrolled
+            ? "border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+            : "border-b border-transparent bg-transparent",
+          className,
+        )}
+      >
       <Container size="lg" className="flex h-20 items-center justify-between">
         {/* Logo */}
         <Link
@@ -99,7 +100,7 @@ export function SiteHeader({
         >
           <div
             className="flex items-center justify-center rounded-full transition-transform group-hover:scale-110"
-            style={{ backgroundColor: "#DFFF00", width: 40, height: 40 }}
+            style={{ backgroundColor: "var(--logo-background)", color: "var(--logo-color)", width: 40, height: 40 }}
           >
             <svg
               width="24"
@@ -241,8 +242,9 @@ export function SiteHeader({
           />
         </div>
       </Container>
+      </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer - outside header to avoid inheriting transparent background */}
       <MobileDrawer
         isOpen={isMobileMenuOpen}
         onClose={closeMobileMenu}
@@ -252,6 +254,6 @@ export function SiteHeader({
         onThemeToggle={handleThemeToggle}
         theme={theme}
       />
-    </header>
+    </>
   );
 }
