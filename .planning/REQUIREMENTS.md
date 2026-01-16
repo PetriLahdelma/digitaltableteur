@@ -30,9 +30,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Metadata
 
-- [ ] **META-01**: Update `projects.ts` entry with accurate description
-- [ ] **META-02**: Update page SEO metadata (title, description, OpenGraph)
-- [ ] **META-03**: Ensure duration is consistent across all locations
+- [x] **META-01**: Update `projects.ts` entry with accurate description ✓
+- [x] **META-02**: Update page SEO metadata (title, description, OpenGraph) ✓
+- [x] **META-03**: Ensure duration is consistent across all locations ✓
 
 ### Verification
 
@@ -82,9 +82,9 @@ Which phases cover which requirements. Updated by create-roadmap.
 | IMG-08 | Phase 3 | Complete |
 | CONT-05 | Phase 4 | Complete |
 | CONT-07 | Phase 4 | Complete |
-| META-01 | Phase 5 | Pending |
-| META-02 | Phase 5 | Pending |
-| META-03 | Phase 5 | Pending |
+| META-01 | Phase 5 | Complete |
+| META-02 | Phase 5 | Complete |
+| META-03 | Phase 5 | Complete |
 | VERF-01 | Phase 6 | Pending |
 | VERF-02 | Phase 6 | Pending |
 | VERF-03 | Phase 6 | Pending |
@@ -98,4 +98,4 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 ---
 *Requirements defined: 2026-01-16*
-*Last updated: 2026-01-16 — Phase 4 requirements complete*
+*Last updated: 2026-01-16 — Phase 5 requirements complete*
