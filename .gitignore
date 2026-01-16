@@ -54,3 +54,9 @@ nextjs-app/public/sitemap.xml
 .lighthouseci/
 lighthouse-*.html
 lighthouse-*.json
+
+# IDE Local History (VS Code)
+.history/
+
+# Backup files
+*.bkup

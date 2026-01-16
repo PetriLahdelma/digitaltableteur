@@ -2,7 +2,6 @@
 
 import { useRef, type ReactNode } from "react";
 import { MDXProvider } from "@mdx-js/react";
-import { cn } from "@/lib/utils";
 import { ArticleLayout } from "../ArticleLayout";
 import { ArticleHero } from "../ArticleHero";
 import { RelatedPosts } from "../RelatedPosts";
@@ -238,7 +237,6 @@ export function ArticlePageTemplate({
   const {
     slug,
     title,
-    excerpt,
     publishedAt,
     readTime,
     legacyUrl,

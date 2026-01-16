@@ -22,7 +22,6 @@ import {
   Tabs,
   TabsList,
   TabsTrigger,
-  TabsContent,
 } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -37,9 +36,7 @@ import {
 } from "@/nextjs-app/shared/components/animations";
 import {
   Container,
-  Section,
   Stack,
-  Spacer,
   Center,
   AspectRatio,
 } from "@/nextjs-app/shared/components/Layout";
@@ -58,7 +55,7 @@ import {
 import { useToast } from "@/nextjs-app/shared/components/interactive";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
 import { ArrowRight, Heart, Share, Star, MagnifyingGlass, EnvelopeSimple, Image as ImageIcon } from "@phosphor-icons/react";
-import { NavLink, SkipLink } from "@/nextjs-app/shared/patterns/navigation";
+import { NavLink } from "@/nextjs-app/shared/patterns/navigation";
 
 /**
  * Temporary test component to verify Tailwind CSS + shadcn/ui integration.

@@ -2,7 +2,6 @@
 
 import React from "react";
 import styles from "./LinkedInQuoteCard.module.css";
-import Text from "@dt/Text";
 import Link from "@dt/Link";
 import Icon from "@dt/Icon";
 
