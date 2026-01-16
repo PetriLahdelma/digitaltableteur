@@ -19,9 +19,11 @@ const meta: Meta<typeof EmailSignatureGenerator> = {
   decorators: [
     (Story) => (
       <div>
-        <Badge severity="warning" size="sm" style={{ marginBottom: "1rem" }}>
-          Work in progress
-        </Badge>
+        <div style={{ marginBottom: "1rem" }}>
+          <Badge state="warning" size="s">
+            Work in progress
+          </Badge>
+        </div>
         <Story />
       </div>
     ),
@@ -34,7 +36,11 @@ type Story = StoryObj<typeof EmailSignatureGenerator>;
 /**
  * Default email signature generator with Digitaltableteur branding.
  */
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    logoUrl: "https://digitaltableteur.com/round.png",
+  },
+};
 
 /**
  * Email signature generator with custom company branding.
