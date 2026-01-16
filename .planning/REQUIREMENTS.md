@@ -21,12 +21,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **IMG-01**: Process source images to WebP format ✓
 - [x] **IMG-02**: Resize images to spec (738x506 grid, 1200x600 hero/single) ✓
-- [ ] **IMG-03**: Replace existing placeholder images with real source files
-- [ ] **IMG-04**: Add typography image (`AppGyver_DS_Type_size.png`)
-- [ ] **IMG-05**: Add button construction image (`Button construction.png`)
-- [ ] **IMG-06**: Add table component image (`Table (APPGYVER-1145).png`)
-- [ ] **IMG-07**: Add data visualization image (`Datavisualization (APPGYVER-1141).png`)
-- [ ] **IMG-08**: Update all alt text and captions for accuracy
+- [x] **IMG-03**: Replace existing placeholder images with real source files ✓
+- [x] **IMG-04**: Add typography image (`AppGyver_DS_Type_size.png`) ✓
+- [x] **IMG-05**: Add button construction image (`Button construction.png`) ✓
+- [x] **IMG-06**: Add table component image (`Table (APPGYVER-1145).png`) ✓
+- [x] **IMG-07**: Add data visualization image (`Datavisualization (APPGYVER-1141).png`) ✓
+- [x] **IMG-08**: Update all alt text and captions for accuracy ✓
 
 ### Metadata
 
@@ -74,12 +74,12 @@ Which phases cover which requirements. Updated by create-roadmap.
 | CONT-03 | Phase 2 | Complete |
 | CONT-04 | Phase 2 | Complete |
 | CONT-06 | Phase 2 | Complete |
-| IMG-03 | Phase 3 | Pending |
-| IMG-04 | Phase 3 | Pending |
-| IMG-05 | Phase 3 | Pending |
-| IMG-06 | Phase 3 | Pending |
-| IMG-07 | Phase 3 | Pending |
-| IMG-08 | Phase 3 | Pending |
+| IMG-03 | Phase 3 | Complete |
+| IMG-04 | Phase 3 | Complete |
+| IMG-05 | Phase 3 | Complete |
+| IMG-06 | Phase 3 | Complete |
+| IMG-07 | Phase 3 | Complete |
+| IMG-08 | Phase 3 | Complete |
 | CONT-05 | Phase 4 | Pending |
 | CONT-07 | Phase 4 | Pending |
 | META-01 | Phase 5 | Pending |
@@ -98,4 +98,4 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 ---
 *Requirements defined: 2026-01-16*
-*Last updated: 2026-01-16 — Phase 2 requirements complete*
+*Last updated: 2026-01-16 — Phase 3 requirements complete*
