@@ -85,8 +85,8 @@ const ICON_ALIASES: Record<string, string> = {
   x: "X",
 };
 
-const toPascalCase = (value: string) =>
-  value
+const toPascalCase = (value: string | undefined) =>
+  (value ?? "")
     .split(/[\s_-]+/)
     .filter(Boolean)
     .map((segment) => segment[0].toUpperCase() + segment.slice(1))

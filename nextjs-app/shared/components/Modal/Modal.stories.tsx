@@ -302,18 +302,19 @@ Default.args = {
   children: "storyModalBody",
 };
 Default.parameters = {};
-Default.play = async ({ canvasElement }) => {
+Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
 
   // Open modal - use more specific button selector
   const openButton = canvas.getByRole("button", { name: /open/i });
   await userEvent.click(openButton);
 
-  // Wait for modal to appear
-  await waitFor(() => canvas.getByRole("dialog"));
+  // Wait for modal to appear (modal renders in portal, so check document.body)
+  const body = within(document.body);
+  await waitFor(() => body.getByRole("dialog"), { timeout: 3000 });
 
-  // Close modal via close button
-  const closeButton = canvas.getByLabelText(/close/i);
+  // Close modal via close button (also in portal)
+  const closeButton = body.getByLabelText(/close/i);
   await userEvent.click(closeButton);
 };
 

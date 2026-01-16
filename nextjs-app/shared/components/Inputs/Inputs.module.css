@@ -58,11 +58,22 @@
   font-style: italic;
 }
 
-.input:focus {
+.input:focus,
+.input:focus-visible {
   box-sizing: border-box;
   border-width: 1px;
   border-color: var(--color-primary);
-  outline: 2px solid var(--color-primary);
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .input:focus,
+  .input:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
 }
 
 .error {
@@ -120,10 +131,21 @@
   font-style: italic;
 }
 
-.chatTextArea:focus {
+.chatTextArea:focus,
+.chatTextArea:focus-visible {
   border-color: var(--color-primary, #0f62fe);
-  outline: 2px solid transparent; /* Transparent outline for high contrast mode */
-  box-shadow: 0 0 0 4px rgb(15 98 254 / 15%);
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+  box-shadow: none; /* Use outline instead of box-shadow for better a11y */
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .chatTextArea:focus,
+  .chatTextArea:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
 }
 
 .chatTextArea:disabled {

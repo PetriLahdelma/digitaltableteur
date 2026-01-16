@@ -40,6 +40,20 @@ interface BadgeProps {
   square?: boolean; // New prop for square badge
   size?: "s" | "m" | "l"; // New size prop
   title?: string; // Optional title prop
+  /**
+   * ARIA role for accessibility.
+   * - undefined (default): No role, suitable for static decorative badges
+   * - "status": Use for dynamic content that updates (e.g., notification counts)
+   *   Screen readers will announce changes with aria-live="polite"
+   *
+   * @example
+   * // Static badge (no announcements)
+   * <Badge state="success">Completed</Badge>
+   *
+   * // Dynamic badge (announces updates)
+   * <Badge role="status" state="info">{unreadCount} new</Badge>
+   */
+  role?: "status";
 }
 
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
@@ -55,6 +69,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       square = false,
       size = "m",
       title,
+      role,
       ...rest
     },
     ref,
@@ -104,6 +119,8 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     return (
       <span
         ref={ref}
+        role={role}
+        aria-live={role === "status" ? "polite" : undefined}
         {...rest}
         className={[
           styles.badge,

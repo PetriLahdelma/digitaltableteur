@@ -25,6 +25,7 @@ const config: StorybookConfig = {
     <base href="${process.env.NODE_ENV === "production" ? "/storybook/" : "/"}">
   `,
   viteFinal: async (config) => {
+    const rootPath = fileURLToPath(new URL("..", import.meta.url));
     const componentsPath = fileURLToPath(
       new URL("../nextjs-app/shared/components", import.meta.url),
     );
@@ -45,6 +46,7 @@ const config: StorybookConfig = {
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
+      "@": rootPath,
       "@dt": componentsPath,
       "@dt/shared": sharedComponentsPath,
       "@dt/patterns": patternsPath,

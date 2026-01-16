@@ -1,333 +1,156 @@
 "use client";
 
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { motion, type Transition, type Variants } from "motion/react";
-
-import Button from "@dt/Button";
-import Card from "@dt/Card";
-import Grid from "@dt/Grid";
-import Link from "@dt/Link";
-import Text from "@dt/Text";
-import Title from "@dt/Title";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+
+// Patterns
+import { HomeHero } from "../../../patterns/HomeHero";
+import { ServicesSection, type ServiceItem } from "../../../patterns/ServicesSection";
+import { WorkPreviewSection, type ProjectItem } from "../../../patterns/WorkPreviewSection";
+import { CTASection } from "../../../patterns/CTASection";
 import HighlightSection from "../../../patterns/HighlightSection";
 
-import PageLayout from "../../../patterns/PageLayout/PageLayout";
-import styles from "./Home.module.css";
+// Service icons
+import {
+  UxInterfacesIcon,
+  CreativeDevelopmentIcon,
+  BrandingStrategyIcon,
+  EditorialIllustrationIcon,
+  AiSolutionsIcon,
+  DesignSystemsIcon,
+} from "../../icons/service-icons";
 
-const heroContainerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { delayChildren: 0.15, staggerChildren: 0.25 },
+// Featured projects for homepage
+const FEATURED_PROJECTS: ProjectItem[] = [
+  {
+    title: "Helsinki Design System",
+    slug: "helsinki-design-system",
+    thumbnail: "/images/portfolio/helsinki-design-system/HDS_logo.png",
+    category: "Design Systems",
+    tags: ["Design System", "Accessibility", "React"],
   },
-};
-
-const heroTitleEase = [0.16, 1, 0.3, 1] as [number, number, number, number];
-const heroTitleVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 96,
-    scale: 0.9,
-    rotateX: 0,
-    skewY: 0,
-    filter: "blur(18px)",
+  {
+    title: "SAP Build Apps Design System",
+    slug: "sap-build-apps",
+    thumbnail: "/images/portfolio/sap-build-apps/Build Product Icon_1000px.png",
+    category: "Design Systems",
+    tags: ["Enterprise", "Low-Code", "SAP BTP"],
   },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    rotateX: 0,
-    skewY: 0,
-    filter: "blur(0px)",
-    transition: { duration: 1.2, ease: heroTitleEase },
+  {
+    title: "New Things Co",
+    slug: "new-things-co",
+    thumbnail: "/images/portfolio/new_things_co/new_things_co_item.webp",
+    category: "Branding",
+    tags: ["Branding", "Web Design", "Identity"],
   },
-};
-
-const heroSubtextEase = [0.25, 0.8, 0.25, 1] as [
-  number,
-  number,
-  number,
-  number,
 ];
-const heroSubtextVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 48,
-    scaleX: 0.7,
-    filter: "blur(12px)",
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scaleX: 1,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.95,
-      delay: 0.2,
-      ease: heroSubtextEase,
-    },
-  },
-};
-
-const heroCtaContainerVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { delayChildren: 0.35, staggerChildren: 0.12 },
-  },
-};
-
-const heroCtaSpring: Transition = {
-  type: "spring",
-  stiffness: 240,
-  damping: 24,
-};
-
-const heroCtaItemVariants: Variants = {
-  hidden: { opacity: 0, y: 32, scale: 0.94 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: heroCtaSpring,
-  },
-};
 
 export function HomePage() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const getHeroTitleOptions = useCallback(() => {
-    const options = t("homeHeroGradientTitleOptions", { returnObjects: true });
-
-    if (Array.isArray(options)) {
-      return options.filter(
-        (option): option is string =>
-          typeof option === "string" && option.trim().length > 0,
-      );
-    }
-
-    return [] as string[];
-  }, [i18n.language, t]);
-
-  const pickHeroTitle = useCallback(() => {
-    const options = getHeroTitleOptions();
-
-    if (options.length === 0) {
-      return t("homeHeroGradientTitle");
-    }
-
-    const randomIndex = Math.floor(Math.random() * options.length);
-    return options[randomIndex];
-  }, [getHeroTitleOptions, t]);
-
-  const [heroTitle, setHeroTitle] = useState<string>(() => {
-    const options = t("homeHeroGradientTitleOptions", { returnObjects: true });
-    if (Array.isArray(options) && options.length > 0) {
-      const validOptions = options.filter(
-        (option): option is string =>
-          typeof option === "string" && option.trim().length > 0,
-      );
-      if (validOptions.length > 0) {
-        return validOptions[Math.floor(Math.random() * validOptions.length)];
-      }
-    }
-    return t("homeHeroGradientTitle");
-  });
-
-  useEffect(() => {
-    // Re-pick on language change
-    setHeroTitle(pickHeroTitle());
-  }, [i18n.language, pickHeroTitle]);
-  const highlightCards = useMemo(
+  // Services data with icons
+  const services: ServiceItem[] = useMemo(
     () => [
       {
-        key: "ux-interfaces",
+        icon: <UxInterfacesIcon />,
         title: t("homeUxInterfacesTitle"),
         description: t("homeUxInterfacesDescription"),
-        variant: "outlined" as const,
       },
       {
-        key: "creative",
+        icon: <CreativeDevelopmentIcon />,
         title: t("homeCreativeDevelopment"),
         description: t("homeCreativeDescription"),
-        variant: "outlined" as const,
       },
       {
-        key: "strategy",
+        icon: <BrandingStrategyIcon />,
         title: t("homeStrategyBranding"),
         description: t("homeStrategyDescription"),
-        variant: "outlined" as const,
       },
       {
-        key: "illustration",
+        icon: <EditorialIllustrationIcon />,
         title: t("homeIllustrationEditorial"),
         description: t("homeIllustrationDescription"),
-        variant: "outlined" as const,
       },
       {
-        key: "ai",
+        icon: <AiSolutionsIcon />,
         title: t("homeAiSolutionsTitle"),
         description: t("homeAiSolutionsDescription"),
-        variant: "outlined" as const,
       },
       {
-        key: "design systems",
+        icon: <DesignSystemsIcon />,
         title: t("homeDesignSystemsTitle"),
         description: t("homeDesignSystemsDescription"),
-        variant: "outlined" as const,
       },
     ],
-    [t],
+    [t]
   );
 
   return (
-    <div className={styles.home}>
-      <PageLayout
-        maxWidth="full"
-        withMargins={false}
-        spacing="compact"
-        as="section"
-      >
-        <section className={styles.hero}>
-          <Grid columns={1} gap="1rem">
-            <motion.div
-              className={styles.heroGradient}
-              variants={heroContainerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.div
-                variants={heroTitleVariants}
-                className={styles.heroTitleWrapper}
-              >
-                <Title
-                  level={1}
-                  size="L"
-                  terminals="sans"
-                  className={styles.heroTitle}
-                >
-                  {heroTitle}
-                </Title>
-              </motion.div>
-              <motion.div variants={heroSubtextVariants}>
-                <Text size="M" terminals="sans" className={styles.heroSubtext}>
-                  {t("homeHeroGradientSubtext")}
-                </Text>
-              </motion.div>
-              <motion.div
-                className={styles.heroCtas}
-                variants={heroCtaContainerVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                <motion.div variants={heroCtaItemVariants}>
-                  <Button size="l" variant="secondary" inverse href="/contact">
-                    {t("homeHeroCallToAction")}
-                  </Button>
-                </motion.div>
-                <motion.div variants={heroCtaItemVariants}>
-                  <Button size="l" variant="secondary" inverse href="/about">
-                    {t("homeHeroAboutCta")}
-                  </Button>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-          </Grid>
-        </section>
-      </PageLayout>
+    <div>
+      {/* Hero Section */}
+      <HomeHero scrollTargetId="services" />
 
-      <PageLayout maxWidth="lg" spacing="comfortable" withMargins as="section">
-        <section className={styles.heroHighlights}>
-          <Title
-            level={2}
-            size="S"
-            terminals="sans"
-            className={styles.sectionTitle}
-          >
-            {t("homeExpertiseTitle")}
-          </Title>
-          <Grid
-            className={styles.heroHighlightsGrid}
-            columns="repeat(auto-fit, minmax(280px, 1fr))"
-            gap="1.5rem"
-          >
-            {highlightCards.map((item) => (
-              <Card
-                key={item.key}
-                title={item.title}
-                size="M"
-                titleProps={{
-                  size: "S",
-                  className: styles.cardTitle,
-                }}
-                className={styles.card}
-              >
-                <Text terminals="sans" size="M">
-                  {item.description}
-                </Text>
-              </Card>
-            ))}
-          </Grid>
-          <Title
-            terminals="sans"
-            level={2}
-            size="S"
-            lineHeight="snug"
-            className={styles.lead}
-          >
-            {t("homeAbout")}
-          </Title>
-        </section>
-      </PageLayout>
-      <PageLayout maxWidth="full" spacing="comfortable" as="section">
-        <HighlightSection
-          cta={[
-            {
-              label: "Download Schema",
-              onClick: () => {
-                window.open(
-                  "https://petrilahdelma.gumroad.com/l/mcqoq",
-                  "_blank",
-                  "noopener,noreferrer",
-                );
-              },
+      {/* Services Section */}
+      <ServicesSection
+        id="services"
+        title={t("homeExpertiseTitle", "What we do")}
+        services={services}
+        columns={3}
+        cardVariant="bordered"
+      />
+
+      {/* Highlight Section (GenAI Schema) */}
+      <HighlightSection
+        cta={[
+          {
+            label: t("homeHighlightCtaDownload", "Download Schema"),
+            onClick: () => {
+              window.open(
+                "https://petrilahdelma.gumroad.com/l/mcqoq",
+                "_blank",
+                "noopener,noreferrer"
+              );
             },
-            {
-              label: "Read Article",
-              href: "https://medium.com/digitaltableteur/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work-46a51931e8e0",
-              target: "_blank",
-              rel: "noopener noreferrer",
-            },
-          ]}
-          description="Keep your AI-generated components consistent, predictable, and on-brand. This schema enforces shared prop structures, naming conventions, and design standards across your entire system."
-          size="comfortable"
-          title="Component Schema Template for GenAI Design Systems"
-          variant="dots"
-        />
-      </PageLayout>
-      <PageLayout maxWidth="full" spacing="comfortable" as="section">
-        <section className={styles.cta}>
-          <Title
-            level={2}
-            terminals="sans"
-            size="L"
-            className={styles.ctaTitle}
-          >
-            {t("homeCtaTitle")}
-          </Title>
-          <div className={styles.heroCtas}>
-            <Link
-              href="/contact"
-              className={styles.heroCtaLink}
-              aria-label={t("homeHeroCallToAction")}
-            >
-              {t("homeCtaLink")}
-            </Link>
-          </div>
-        </section>
-      </PageLayout>
+          },
+          {
+            label: t("homeHighlightCtaArticle", "Read Article"),
+            href: "https://medium.com/digitaltableteur/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work-46a51931e8e0",
+            target: "_blank",
+            rel: "noopener noreferrer",
+          },
+        ]}
+        description={t(
+          "homeHighlightDescription",
+          "Keep your AI-generated components consistent, predictable, and on-brand. This schema enforces shared prop structures, naming conventions, and design standards across your entire system."
+        )}
+        size="comfortable"
+        title={t(
+          "homeHighlightTitle",
+          "Component Schema Template for GenAI Design Systems"
+        )}
+        variant="dots"
+      />
+
+      {/* Work Preview Section */}
+      <WorkPreviewSection
+        id="work"
+        title={t("homeSelectedWork", "Selected work")}
+        projects={FEATURED_PROJECTS}
+        layout="featured"
+        showViewAll
+      />
+
+      {/* Contact CTA Section */}
+      <CTASection
+        id="contact-cta"
+        title={t("homeCtaTitle", "Ready to create something extraordinary?")}
+        primaryAction={{
+          label: t("homeCtaLink", "Let's talk"),
+          href: "/contact",
+        }}
+        background="primary"
+        align="center"
+      />
     </div>
   );
 }

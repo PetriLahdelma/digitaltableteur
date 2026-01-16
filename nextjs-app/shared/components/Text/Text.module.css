@@ -39,11 +39,11 @@
 }
 
 .serif {
-  font-family: var(--font-serif, "Tiempos-Text", serif);
+  font-family: var(--font-heading), system-ui, sans-serif;
 }
 
 .sans {
-  font-family: var(--font-text);
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 /* Line height utility classes */

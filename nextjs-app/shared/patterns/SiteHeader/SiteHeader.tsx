@@ -1,0 +1,257 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+import { cn } from "@/lib/utils";
+import { NavLink } from "@/nextjs-app/shared/components/NavLink";
+import { Container } from "@/nextjs-app/shared/components/Container";
+import { useNavigation } from "@/nextjs-app/shared/hooks/useNavigation";
+import { usePersistentTheme } from "@/nextjs-app/shared/hooks/usePersistentTheme";
+import { IconButton } from "@/nextjs-app/shared/components/IconButton";
+import { List, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
+import { MobileDrawer } from "./MobileDrawer";
+import type { Theme } from "@dt/ThemeProvider";
+
+export interface NavItem {
+  href: string;
+  label: string;
+  exact?: boolean;
+}
+
+export interface SiteHeaderProps {
+  navItems?: NavItem[];
+  className?: string;
+}
+
+const defaultNavItems: NavItem[] = [
+  { href: "/", label: "navHome", exact: true },
+  { href: "/work", label: "navWork" },
+  { href: "/about", label: "navAbout" },
+  { href: "/blog", label: "navBlog" },
+  { href: "/contact", label: "navContact" },
+];
+
+const themeIcons: Record<Theme, typeof Sun> = {
+  light: Sun,
+  dark: Moon,
+  hcb: CircleHalf,
+  hcw: CircleHalf,
+};
+
+export function SiteHeader({
+  navItems = defaultNavItems,
+  className,
+}: SiteHeaderProps) {
+  const { t, i18n } = useTranslation();
+  const { theme, cycleTheme } = usePersistentTheme();
+  const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useNavigation();
+  const [isThemeAnimating, setIsThemeAnimating] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const currentLang = i18n?.resolvedLanguage?.split("-")[0] ?? "en";
+  const ThemeIcon = themeIcons[theme];
+
+  const handleThemeToggle = () => {
+    if (!isThemeAnimating) {
+      setIsThemeAnimating(true);
+      setTimeout(() => setIsThemeAnimating(false), 450);
+    }
+    cycleTheme();
+  };
+
+  const handleLanguageChange = (code: string) => {
+    i18n.changeLanguage(code);
+    document.cookie = `i18next=${code}; path=/; max-age=31536000`;
+    localStorage.setItem("i18nextLng", code);
+  };
+
+  return (
+    <header
+      className={cn(
+        "sticky top-0 z-40 w-full transition-all duration-300",
+        isScrolled
+          ? "border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          : "border-b border-transparent bg-transparent",
+        className,
+      )}
+    >
+      <Container size="lg" className="flex h-20 items-center justify-between">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 group"
+          onMouseEnter={() => setIsLogoHovered(true)}
+          onMouseLeave={() => setIsLogoHovered(false)}
+        >
+          <div
+            className="flex items-center justify-center rounded-full transition-transform group-hover:scale-110"
+            style={{ backgroundColor: "#DFFF00", width: 40, height: 40 }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 395 323"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              aria-label={t("headerLogoAlt", "Digitaltableteur logo")}
+              role="img"
+            >
+            <style>{`
+              @keyframes pulse-1 {
+                0%, 33%, 100% { opacity: 1; }
+                5%, 28% { opacity: 0.5; }
+              }
+              @keyframes pulse-2 {
+                0%, 5%, 66%, 100% { opacity: 1; }
+                33%, 61% { opacity: 0.5; }
+              }
+              @keyframes pulse-3 {
+                0%, 61%, 100% { opacity: 1; }
+                66%, 95% { opacity: 0.5; }
+              }
+            `}</style>
+            <g clipPath="url(#clip0_header)">
+              <rect
+                x="190.742"
+                width="39.0494"
+                height="142.681"
+                fill="currentColor"
+                style={{
+                  transition: "opacity 0.3s ease",
+                  animation: isLogoHovered ? "pulse-1 0.9s ease-in-out infinite" : "none",
+                }}
+              />
+              <rect
+                x="190.742"
+                y="180.228"
+                width="39.0494"
+                height="142.681"
+                fill="currentColor"
+                style={{
+                  transition: "opacity 0.3s ease",
+                  animation: isLogoHovered ? "pulse-2 0.9s ease-in-out infinite" : "none",
+                }}
+              />
+              <rect
+                x="267.338"
+                y="181.73"
+                width="39.0494"
+                height="127.662"
+                transform="rotate(-90 267.338 181.73)"
+                fill="currentColor"
+                style={{
+                  transition: "opacity 0.3s ease",
+                  animation: isLogoHovered ? "pulse-3 0.9s ease-in-out infinite" : "none",
+                }}
+              />
+              <rect y="37.5475" width="39.0494" height="246.312" fill="currentColor"/>
+              <rect x="115.646" y="76.597" width="39.0494" height="168.213" fill="currentColor"/>
+              <path d="M39.0493 76.597L39.0493 37.5475L118.65 37.5475L154.696 76.5969L39.0493 76.597Z" fill="currentColor"/>
+              <path d="M39.0493 244.81L39.0493 283.859L118.65 283.859L154.696 244.81L39.0493 244.81Z" fill="currentColor"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_header">
+                <rect width="395" height="322.909" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+          </div>
+          <span className="font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary">
+            Digitaltableteur
+          </span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav
+          className="hidden lg:flex items-center gap-6"
+          aria-label={t("navMenuAccessibleLabel")}
+        >
+          {navItems.map((item) => (
+            <NavLink
+              key={item.href}
+              href={item.href}
+              exact={item.exact}
+              className="text-base font-semibold tracking-wide hover:text-primary transition-colors"
+            >
+              {t(item.label)}
+            </NavLink>
+          ))}
+        </nav>
+
+        {/* Controls */}
+        <div className="flex items-center gap-2">
+          {/* Language Switcher - Desktop */}
+          <div className="hidden lg:flex items-center gap-1 border-l border-border/40 ml-4 pl-4">
+            {["en", "fi", "sv"].map((code) => (
+              <button
+                key={code}
+                onClick={() => handleLanguageChange(code)}
+                disabled={currentLang === code}
+                className={cn(
+                  "px-2.5 py-1.5 text-sm font-heading font-bold uppercase tracking-widest transition-all cursor-pointer rounded-sm",
+                  currentLang === code
+                    ? "text-foreground bg-foreground/5"
+                    : "text-muted-foreground hover:text-foreground hover:bg-foreground/5",
+                )}
+              >
+                {code}
+              </button>
+            ))}
+          </div>
+
+          {/* Theme Toggle */}
+          <IconButton
+            icon={
+              <ThemeIcon
+                weight="bold"
+                className={cn(
+                  "size-5 transition-transform",
+                  isThemeAnimating && "animate-spin",
+                )}
+              />
+            }
+            label={t("toggleDarkMode")}
+            onClick={handleThemeToggle}
+            variant="ghost"
+            className="cursor-pointer"
+          />
+
+          {/* Mobile Menu Button */}
+          <IconButton
+            icon={<List weight="bold" className="size-5" />}
+            label={t("navMenuOpen")}
+            onClick={openMobileMenu}
+            className="lg:hidden"
+            variant="ghost"
+          />
+        </div>
+      </Container>
+
+      {/* Mobile Drawer */}
+      <MobileDrawer
+        isOpen={isMobileMenuOpen}
+        onClose={closeMobileMenu}
+        navItems={navItems}
+        currentLang={currentLang}
+        onLanguageChange={handleLanguageChange}
+        onThemeToggle={handleThemeToggle}
+        theme={theme}
+      />
+    </header>
+  );
+}

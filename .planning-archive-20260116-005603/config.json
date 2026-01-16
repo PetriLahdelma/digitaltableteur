@@ -1,0 +1,29 @@
+{
+  "project": {
+    "name": "Digitaltableteur Redesign",
+    "type": "brownfield",
+    "initialized": "2026-01-14"
+  },
+  "workflow": {
+    "mode": "yolo",
+    "depth": "comprehensive",
+    "parallelization": false
+  },
+  "phases": {
+    "minPerMilestone": 8,
+    "maxPerMilestone": 12,
+    "plansPerPhase": {
+      "min": 5,
+      "max": 10
+    },
+    "tasksPerPlan": {
+      "min": 2,
+      "max": 3
+    }
+  },
+  "preferences": {
+    "autoCommit": true,
+    "confirmBeforeExecute": false,
+    "verboseOutput": false
+  }
+}

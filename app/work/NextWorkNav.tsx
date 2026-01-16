@@ -12,6 +12,7 @@ const workPages = [
   { path: "/work/new-things-co", label: "New Things Co" },
   { path: "/work/illustrations", label: "Illustrations" },
   { path: "/work/garage-junction", label: "Garage Junction" },
+  { path: "/work/sap-build-apps", label: "SAP Build Apps" },
 ];
 
 export function NextWorkNav() {
