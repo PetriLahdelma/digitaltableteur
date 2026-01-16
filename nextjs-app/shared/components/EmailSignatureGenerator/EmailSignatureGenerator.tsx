@@ -80,6 +80,8 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
 
     const linkedinLabel = t("emailSig.linkedinLabel", { defaultValue: "LinkedIn" });
     const githubLabel = t("emailSig.githubLabel", { defaultValue: "GitHub" });
+    const twitterLabel = t("emailSig.twitterLabel", { defaultValue: "X" });
+    const blueskyLabel = t("emailSig.blueskyLabel", { defaultValue: "Bluesky" });
     const instagramLabel = t("emailSig.instagramLabel", { defaultValue: "Instagram" });
     const tiktokLabel = t("emailSig.tiktokLabel", { defaultValue: "TikTok" });
 
@@ -102,17 +104,15 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
       );
     }
     if (twitter) {
-      const handle = twitter.startsWith("@") ? twitter : `@${twitter}`;
       const username = twitter.startsWith("@") ? twitter.slice(1) : twitter;
       contactParts.push(
-        `<a href="https://x.com/${username}" style="color: #6b7280; text-decoration: none;">${handle}</a>`
+        `<a href="https://x.com/${username}" style="color: #6b7280; text-decoration: none;">${twitterLabel}</a>`
       );
     }
     if (bluesky) {
-      const handle = bluesky.startsWith("@") ? bluesky : `@${bluesky}`;
       const username = bluesky.startsWith("@") ? bluesky.slice(1) : bluesky;
       contactParts.push(
-        `<a href="https://bsky.app/profile/${username}" style="color: #6b7280; text-decoration: none;">${handle}</a>`
+        `<a href="https://bsky.app/profile/${username}" style="color: #6b7280; text-decoration: none;">${blueskyLabel}</a>`
       );
     }
     if (instagram) {
@@ -224,7 +224,6 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
       );
     }
     if (twitter) {
-      const handle = twitter.startsWith("@") ? twitter : `@${twitter}`;
       const username = twitter.startsWith("@") ? twitter.slice(1) : twitter;
       contactParts.push(
         <a
@@ -234,12 +233,11 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           rel="noopener noreferrer"
           className={styles.contactLink}
         >
-          {handle}
+          {t("emailSig.twitterLabel", { defaultValue: "X" })}
         </a>
       );
     }
     if (bluesky) {
-      const handle = bluesky.startsWith("@") ? bluesky : `@${bluesky}`;
       const username = bluesky.startsWith("@") ? bluesky.slice(1) : bluesky;
       contactParts.push(
         <a
@@ -249,7 +247,7 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           rel="noopener noreferrer"
           className={styles.contactLink}
         >
-          {handle}
+          {t("emailSig.blueskyLabel", { defaultValue: "Bluesky" })}
         </a>
       );
     }
