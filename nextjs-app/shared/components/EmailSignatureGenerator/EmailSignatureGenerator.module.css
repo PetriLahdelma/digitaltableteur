@@ -1,0 +1,432 @@
+/* EmailSignatureGenerator.module.css */
+
+/* Container with warm beige background and fade-up animation */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-block: var(--space-layout-48);
+  padding-inline: var(--space-layout-24);
+  background-color: #f5f0eb;
+  animation: fadeUp 0.6s var(--ease-out-expo) forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content {
+  width: 100%;
+  max-width: 720px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-block-end: var(--space-layout-32);
+}
+
+.title {
+  margin-block-end: var(--space-internal-8);
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* Form Grid - 2 columns */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-internal-16);
+  margin-block-end: var(--space-layout-24);
+}
+
+@media (max-width: 600px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding-block: var(--space-internal-16);
+  padding-inline: var(--space-internal-24);
+  padding-inline-end: var(--space-internal-48);
+  font-family: var(--font-text);
+  font-size: 1rem;
+  color: #1a1a1a;
+  background-color: #fff;
+  border: none;
+  border-radius: 100px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
+  transition:
+    box-shadow var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:hover {
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+}
+
+.input:focus {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
+.clearButton {
+  position: absolute;
+  inset-inline-end: var(--space-internal-16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: #9ca3af;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.clearButton:hover {
+  color: #374151;
+  background-color: #e5e7eb;
+}
+
+.clearButton:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
+/* Preview Section */
+.previewSection {
+  margin-block-end: var(--space-layout-24);
+}
+
+.previewCard {
+  position: relative;
+  padding: var(--space-internal-24);
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
+}
+
+/* Signature Preview */
+.signaturePreview {
+  padding: var(--space-internal-16);
+  border-radius: 12px;
+  transition:
+    background-color var(--duration-normal) ease,
+    color var(--duration-normal) ease;
+}
+
+.signaturePreview.dark {
+  background-color: #1f2937;
+}
+
+.logoLink {
+  display: inline-block;
+  margin-block-end: var(--space-internal-12);
+}
+
+.logo {
+  display: block;
+  border-radius: 8px;
+}
+
+.signatureName {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+.signaturePreview.dark .signatureName {
+  color: #f9fafb;
+}
+
+.signatureTitle {
+  font-family: var(--font-text);
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.4;
+  margin-block-start: 2px;
+}
+
+.signaturePreview.dark .signatureTitle {
+  color: #9ca3af;
+}
+
+.signatureContact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-internal-8);
+  margin-block-start: var(--space-internal-8);
+  font-family: var(--font-text);
+  font-size: 0.875rem;
+}
+
+.contactLink {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+.contactLink:hover {
+  color: #374151;
+}
+
+.signaturePreview.dark .contactLink {
+  color: #9ca3af;
+}
+
+.signaturePreview.dark .contactLink:hover {
+  color: #d1d5db;
+}
+
+.bullet {
+  color: #d1d5db;
+}
+
+.signaturePreview.dark .bullet {
+  color: #6b7280;
+}
+
+/* Theme Toggle Group - Segmented control */
+.themeToggleGroup {
+  position: absolute;
+  inset-block-start: var(--space-internal-16);
+  inset-inline-end: var(--space-internal-16);
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+}
+
+.themeToggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: #9ca3af;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.themeToggleButton:hover {
+  color: #6b7280;
+}
+
+.themeToggleButton.active {
+  color: #1a1a1a;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+}
+
+.themeToggleButton:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
+
+/* Actions */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-internal-16);
+}
+
+@media (max-width: 480px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+.copyButton {
+  background-color: #1a1a1a !important;
+  color: #fff !important;
+  border-radius: 100px !important;
+  padding-block: var(--space-internal-16) !important;
+  font-weight: 500 !important;
+}
+
+.copyButton:hover {
+  background-color: #333 !important;
+}
+
+.importButton {
+  background-color: transparent !important;
+  color: #1a1a1a !important;
+  border: 1px solid #9ca3af !important;
+  border-radius: 100px !important;
+  padding-block: var(--space-internal-16) !important;
+  font-weight: 500 !important;
+}
+
+.importButton:hover {
+  background-color: #f9fafb !important;
+  border-color: #9ca3af !important;
+}
+
+/* Back to site link */
+.backLink {
+  margin-block-start: var(--space-layout-48);
+  text-align: center;
+}
+
+.backLinkAnchor {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-8);
+  font-family: var(--font-text);
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+.backLinkAnchor:hover {
+  color: #1a1a1a;
+}
+
+.backLinkAnchor:focus-visible {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+:global(.themeDark) .backLinkAnchor {
+  color: #9ca3af;
+}
+
+:global(.themeDark) .backLinkAnchor:hover {
+  color: #f9fafb;
+}
+
+/* Modal Content */
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-32);
+}
+
+.instructionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-12);
+}
+
+.instructionList {
+  margin: 0;
+  padding-inline-start: var(--space-internal-24);
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.instructionList li {
+  margin-block-end: var(--space-internal-8);
+}
+
+.instructionList li:last-child {
+  margin-block-end: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .container {
+    padding-block: var(--space-layout-32);
+    padding-inline: var(--space-layout-16);
+  }
+
+  .header {
+    margin-block-end: var(--space-layout-24);
+  }
+
+  .input {
+    padding-block: var(--space-internal-14);
+    padding-inline: var(--space-internal-20);
+  }
+}
+
+/* Dark theme container override */
+:global(.themeDark) .container {
+  background-color: #1a1a1a;
+}
+
+:global(.themeDark) .title {
+  color: #f9fafb;
+}
+
+:global(.themeDark) .input {
+  background-color: #2d2d2d;
+  color: #f9fafb;
+}
+
+:global(.themeDark) .input::placeholder {
+  color: #6b7280;
+}
+
+:global(.themeDark) .previewCard {
+  background-color: #2d2d2d;
+}
+
+:global(.themeDark) .themeToggleGroup {
+  background-color: #374151;
+}
+
+:global(.themeDark) .themeToggleButton.active {
+  background-color: #4b5563;
+  color: #f9fafb;
+}
+
+:global(.themeDark) .importButton {
+  border-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+:global(.themeDark) .importButton:hover {
+  background-color: #2d2d2d !important;
+}
