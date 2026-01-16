@@ -88,7 +88,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@sanity/block-content-to-markdown": "^1.0.1",
     "@sanity/client": "^7.13.2",
-    "@sanity/image-url": "^1.2.0",
+    "@sanity/image-url": "^2.0.2",
     "@sanity/vision": "^5.3.1",
     "@sentry/nextjs": "^10.31.0",
     "@storybook/addon-vitest": "^10.1.11",
