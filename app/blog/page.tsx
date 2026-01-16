@@ -5,11 +5,11 @@ import { BlogPage } from "@dt-pages/Blog";
 export const metadata: Metadata = {
   title: "Blog | Digitaltableteur",
   description:
-    "Articles on design systems, component architecture, AI-powered workflows, and modern DesignOps practices. Expert insights on React, TypeScript, and Figma integration.",
+    "Articles on design systems, component architecture, AI-powered workflows, and DesignOps. Expert insights on React, TypeScript, and Figma.",
   openGraph: {
     title: "Blog | Digitaltableteur",
     description:
-      "Articles on design systems, component architecture, AI-powered workflows, and modern DesignOps practices. Expert insights on React, TypeScript, and Figma integration.",
+      "Articles on design systems, component architecture, AI-powered workflows, and DesignOps. Expert insights on React, TypeScript, and Figma.",
     type: "website",
     siteName: "Digitaltableteur",
     images: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog | Digitaltableteur",
     description:
-      "Articles on design systems, component architecture, AI-powered workflows, and modern DesignOps practices. Expert insights on React, TypeScript, and Figma integration.",
+      "Articles on design systems, component architecture, AI-powered workflows, and DesignOps. Expert insights on React, TypeScript, and Figma.",
     images: ["/logo512.png"],
   },
   alternates: {
