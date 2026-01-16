@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { NavLink } from "@/nextjs-app/shared/components/NavLink";
+import { Container } from "@/nextjs-app/shared/components/Container";
 import { useNavigation } from "@/nextjs-app/shared/hooks/useNavigation";
 import { usePersistentTheme } from "@/nextjs-app/shared/hooks/usePersistentTheme";
 import { IconButton } from "@/nextjs-app/shared/components/IconButton";
@@ -46,6 +47,20 @@ export function SiteHeader({
   const { theme, cycleTheme } = usePersistentTheme();
   const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useNavigation();
   const [isThemeAnimating, setIsThemeAnimating] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const currentLang = i18n?.resolvedLanguage?.split("-")[0] ?? "en";
   const ThemeIcon = themeIcons[theme];
@@ -67,14 +82,96 @@ export function SiteHeader({
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
-        className
+        "sticky top-0 z-40 w-full transition-all duration-300",
+        isScrolled
+          ? "border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          : "border-b border-transparent bg-transparent",
+        className,
       )}
     >
-      <div className="container flex h-16 items-center justify-between">
+      <Container size="lg" className="flex h-20 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="font-heading text-title-s font-bold">
+        <Link
+          href="/"
+          className="flex items-center gap-3 group"
+          onMouseEnter={() => setIsLogoHovered(true)}
+          onMouseLeave={() => setIsLogoHovered(false)}
+        >
+          <div
+            className="flex items-center justify-center rounded-full transition-transform group-hover:scale-110"
+            style={{ backgroundColor: "#DFFF00", width: 40, height: 40 }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 395 323"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              aria-label={t("headerLogoAlt", "Digitaltableteur logo")}
+              role="img"
+            >
+            <style>{`
+              @keyframes pulse-1 {
+                0%, 33%, 100% { opacity: 1; }
+                5%, 28% { opacity: 0.5; }
+              }
+              @keyframes pulse-2 {
+                0%, 5%, 66%, 100% { opacity: 1; }
+                33%, 61% { opacity: 0.5; }
+              }
+              @keyframes pulse-3 {
+                0%, 61%, 100% { opacity: 1; }
+                66%, 95% { opacity: 0.5; }
+              }
+            `}</style>
+            <g clipPath="url(#clip0_header)">
+              <rect
+                x="190.742"
+                width="39.0494"
+                height="142.681"
+                fill="currentColor"
+                style={{
+                  transition: "opacity 0.3s ease",
+                  animation: isLogoHovered ? "pulse-1 0.9s ease-in-out infinite" : "none",
+                }}
+              />
+              <rect
+                x="190.742"
+                y="180.228"
+                width="39.0494"
+                height="142.681"
+                fill="currentColor"
+                style={{
+                  transition: "opacity 0.3s ease",
+                  animation: isLogoHovered ? "pulse-2 0.9s ease-in-out infinite" : "none",
+                }}
+              />
+              <rect
+                x="267.338"
+                y="181.73"
+                width="39.0494"
+                height="127.662"
+                transform="rotate(-90 267.338 181.73)"
+                fill="currentColor"
+                style={{
+                  transition: "opacity 0.3s ease",
+                  animation: isLogoHovered ? "pulse-3 0.9s ease-in-out infinite" : "none",
+                }}
+              />
+              <rect y="37.5475" width="39.0494" height="246.312" fill="currentColor"/>
+              <rect x="115.646" y="76.597" width="39.0494" height="168.213" fill="currentColor"/>
+              <path d="M39.0493 76.597L39.0493 37.5475L118.65 37.5475L154.696 76.5969L39.0493 76.597Z" fill="currentColor"/>
+              <path d="M39.0493 244.81L39.0493 283.859L118.65 283.859L154.696 244.81L39.0493 244.81Z" fill="currentColor"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_header">
+                <rect width="395" height="322.909" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+          </div>
+          <span className="font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary">
             Digitaltableteur
           </span>
         </Link>
@@ -89,7 +186,7 @@ export function SiteHeader({
               key={item.href}
               href={item.href}
               exact={item.exact}
-              className="text-text-m font-medium"
+              className="text-base font-semibold tracking-wide hover:text-primary transition-colors"
             >
               {t(item.label)}
             </NavLink>
@@ -99,17 +196,17 @@ export function SiteHeader({
         {/* Controls */}
         <div className="flex items-center gap-2">
           {/* Language Switcher - Desktop */}
-          <div className="hidden lg:flex items-center gap-1 mr-2">
+          <div className="hidden lg:flex items-center gap-1 border-l border-border/40 ml-4 pl-4">
             {["en", "fi", "sv"].map((code) => (
               <button
                 key={code}
                 onClick={() => handleLanguageChange(code)}
                 disabled={currentLang === code}
                 className={cn(
-                  "px-2 py-1 text-text-s font-body uppercase transition-colors",
+                  "px-2.5 py-1.5 text-sm font-heading font-bold uppercase tracking-widest transition-all cursor-pointer rounded-sm",
                   currentLang === code
-                    ? "text-foreground font-medium"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-foreground bg-foreground/5"
+                    : "text-muted-foreground hover:text-foreground hover:bg-foreground/5",
                 )}
               >
                 {code}
@@ -124,13 +221,14 @@ export function SiteHeader({
                 weight="bold"
                 className={cn(
                   "size-5 transition-transform",
-                  isThemeAnimating && "animate-spin"
+                  isThemeAnimating && "animate-spin",
                 )}
               />
             }
             label={t("toggleDarkMode")}
             onClick={handleThemeToggle}
             variant="ghost"
+            className="cursor-pointer"
           />
 
           {/* Mobile Menu Button */}
@@ -142,7 +240,7 @@ export function SiteHeader({
             variant="ghost"
           />
         </div>
-      </div>
+      </Container>
 
       {/* Mobile Drawer */}
       <MobileDrawer

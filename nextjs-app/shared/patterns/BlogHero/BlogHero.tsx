@@ -57,8 +57,8 @@ export function BlogHero({
         className
       )}
     >
-      <Container size="lg" className={isFullHeight ? "py-24" : undefined}>
-        <div className="max-w-3xl">
+      <Container size="md" className={isFullHeight ? "py-24" : undefined}>
+        <div>
           {/* Title with TextReveal animation */}
           <TextReveal
             type="words"
@@ -82,7 +82,7 @@ export function BlogHero({
               className={cn(
                 "font-body text-lg tablet:text-xl",
                 "text-muted-foreground",
-                "max-w-2xl leading-relaxed"
+                "leading-relaxed"
               )}
             >
               {displaySubtitle}

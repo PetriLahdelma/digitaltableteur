@@ -28,6 +28,8 @@ export interface BlogIndexContentProps {
   showPagination?: boolean;
   /** Grid layout */
   gridLayout?: "standard" | "featured-first";
+  /** Hide images in article cards */
+  hideImages?: boolean;
   /** Custom className */
   className?: string;
 }
@@ -71,6 +73,7 @@ function BlogIndexContentInner({
   filterVariant = "pills",
   showPagination = true,
   gridLayout = "standard",
+  hideImages = false,
   className,
 }: BlogIndexContentProps) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -127,7 +130,7 @@ function BlogIndexContentInner({
 
       {/* Content */}
       <Section id="blog-content" spacing="lg" background="default">
-        <Container size="lg">
+        <Container size="md">
           {/* Filter */}
           {showFilter && allTags.length > 0 && (
             <div className="mb-8">
@@ -147,6 +150,7 @@ function BlogIndexContentInner({
             articles={cardProps}
             layout={gridLayout}
             featuredSlug={filteredPosts[0]?.slug}
+            hideImages={hideImages}
           />
 
           {/* Pagination */}

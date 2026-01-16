@@ -29,8 +29,6 @@ export type BlogManifestEntry = {
     mainImageUrl?: string;
     mainImageAlt?: string;
     mainImageCaption?: string;
-    tags?: string[];
-    modifiedAt?: string;
   };
 };
 

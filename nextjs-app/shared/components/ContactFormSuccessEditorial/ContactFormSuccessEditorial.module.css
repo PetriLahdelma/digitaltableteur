@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-layout-48) 0;
+}
+
+/* Title - confident, typography-driven */
+.title {
+  margin: 0 0 var(--space-layout-16) 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw + 1rem, 2.5rem);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
+}
+
+/* Message - softer, secondary */
+.message {
+  margin: 0 0 var(--space-layout-24) 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text);
+  color: var(--color-muted);
+  line-height: var(--line-height-normal);
+}
+
+/* Send another - subtle text link */
+.sendAnother {
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--duration-fast) var(--ease-out-cubic);
+}
+
+.sendAnother:hover {
+  color: var(--color-primary);
+}
+
+.sendAnother:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
+}

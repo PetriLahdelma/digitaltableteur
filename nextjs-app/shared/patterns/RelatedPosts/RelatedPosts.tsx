@@ -141,6 +141,7 @@ export function RelatedPosts({
                   readTime={post.readTime}
                   tags={post.tags}
                   variant="default"
+                  hideImage
                 />
               </FadeIn>
             );

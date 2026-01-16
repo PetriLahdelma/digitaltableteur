@@ -32,6 +32,8 @@ export interface EnhancedArticleCardProps {
   tags?: string[];
   /** Card variant */
   variant?: "default" | "featured" | "compact";
+  /** Hide featured image */
+  hideImage?: boolean;
   /** Custom className */
   className?: string;
 }
@@ -58,6 +60,7 @@ export function EnhancedArticleCard({
   readTime,
   tags,
   variant = "default",
+  hideImage = false,
   className,
 }: EnhancedArticleCardProps) {
   const { i18n, t } = useTranslation();
@@ -65,6 +68,7 @@ export function EnhancedArticleCard({
 
   const isFeatured = variant === "featured";
   const isCompact = variant === "compact";
+  const showImage = image && !hideImage;
 
   const formattedDate = publishedAt
     ? formatDate(publishedAt, i18n.language)
@@ -87,7 +91,7 @@ export function EnhancedArticleCard({
         )}
       >
         {/* Compact image */}
-        {image && (
+        {showImage && (
           <div className="relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden bg-muted">
             <Image
               src={image.src}
@@ -134,7 +138,7 @@ export function EnhancedArticleCard({
       )}
     >
       {/* Image container */}
-      {image && (
+      {showImage && (
         <div
           className={cn(
             "relative overflow-hidden bg-muted",
@@ -192,7 +196,7 @@ export function EnhancedArticleCard({
         )}
       >
         {/* Tags (if no image) */}
-        {!image && tags && tags.length > 0 && (
+        {!showImage && tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-3">
             {tags.slice(0, 2).map((tag) => (
               <span

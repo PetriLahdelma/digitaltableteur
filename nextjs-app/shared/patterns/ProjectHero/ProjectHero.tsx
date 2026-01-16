@@ -86,13 +86,13 @@ export function ProjectHero({
               {/* Meta (category, date) */}
               {(category || date) && (
                 <FadeIn direction="up" delay={0} distance={20}>
-                  <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-3 text-sm text-foreground/60">
                     {category && (
                       <span className="font-medium uppercase tracking-wider text-xs">
                         {category}
                       </span>
                     )}
-                    {category && date && <span className="text-border">|</span>}
+                    {category && date && <span className="text-foreground/40">|</span>}
                     {date && <span>{date}</span>}
                   </div>
                 </FadeIn>
@@ -136,7 +136,7 @@ export function ProjectHero({
                     {tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-full"
+                        className="px-2.5 py-1 text-xs font-body text-foreground/80 bg-foreground/8 rounded-full"
                       >
                         {tag}
                       </span>
@@ -169,7 +169,7 @@ export function ProjectHero({
                 <div
                   className={cn(
                     "flex flex-wrap items-center gap-3 text-sm",
-                    isFullWidth ? "text-white/80" : "text-muted-foreground"
+                    isFullWidth ? "text-white/80" : "text-foreground/60"
                   )}
                 >
                   {category && (
@@ -178,7 +178,7 @@ export function ProjectHero({
                     </span>
                   )}
                   {category && date && (
-                    <span className={isFullWidth ? "text-white/50" : "text-border"}>|</span>
+                    <span className={isFullWidth ? "text-white/50" : "text-foreground/40"}>|</span>
                   )}
                   {date && <span>{date}</span>}
                 </div>
@@ -226,10 +226,10 @@ export function ProjectHero({
                     <span
                       key={tag}
                       className={cn(
-                        "px-3 py-1 text-xs font-medium rounded-full",
+                        "px-2.5 py-1 text-xs font-body rounded-full",
                         isFullWidth
                           ? "bg-white/10 text-white/90"
-                          : "bg-muted text-muted-foreground"
+                          : "text-foreground/80 bg-foreground/8"
                       )}
                     >
                       {tag}
@@ -242,13 +242,12 @@ export function ProjectHero({
             {/* Contained image (not for full-width) */}
             {!isFullWidth && (
               <FadeIn direction="up" delay={0.5} distance={40}>
-                <div className="relative aspect-video overflow-hidden rounded-lg bg-muted mt-8">
+                <div className="relative aspect-video overflow-hidden rounded-lg mt-8">
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    width={image.width}
-                    height={image.height}
-                    className="object-cover w-full h-full"
+                    fill
+                    className="object-cover"
                     priority
                   />
                 </div>

@@ -69,9 +69,9 @@ export function ProjectDetailLayout({
         ref={mainRef}
         className={cn("min-h-screen", className)}
       >
-        {/* Navigation */}
+        {/* Navigation - sticky below header */}
         {nav && (
-          <div className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border/50">
+          <div className="sticky top-20 z-30 border-b border-border flex items-center" style={{ backgroundColor: '#DFFF00' }}>
             {nav}
           </div>
         )}

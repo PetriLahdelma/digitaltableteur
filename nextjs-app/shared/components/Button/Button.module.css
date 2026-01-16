@@ -139,6 +139,11 @@
   cursor: not-allowed;
 }
 
+.button.tertiary:disabled {
+  background-color: transparent;
+  opacity: 0.5;
+}
+
 .button.loading {
   position: relative;
   cursor: wait;

@@ -58,7 +58,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           "UI Design",
           "Service Design",
           "Design System",
-          "Frontend development",
+          "Frontend Development",
           "Documentation",
         ]}
         duration="January 2020–March 2022"

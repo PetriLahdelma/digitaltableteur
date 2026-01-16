@@ -51,9 +51,8 @@ export function NextBlogNav() {
               if (currentIndex > 0)
                 router.push(blogPages[currentIndex - 1].path);
             }}
-            className={styles.navButton}
           >
-            <span className={styles.navButtonText}>Previous</span>
+            Previous
           </Button>
           <Button
             variant="tertiary"
@@ -65,9 +64,8 @@ export function NextBlogNav() {
               if (currentIndex < blogPages.length - 1)
                 router.push(blogPages[currentIndex + 1].path);
             }}
-            className={styles.navButton}
           >
-            <span className={styles.navButtonText}>Next</span>
+            Next
           </Button>
         </div>
       </div>

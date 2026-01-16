@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { HeroSection } from "../HeroSection";
 import { HeroBackground } from "../../components/HeroBackground";
@@ -25,6 +26,31 @@ export function HomeHero({
 }: HomeHeroProps) {
   const { t } = useTranslation();
 
+  // Get the array of title options from translations
+  const titleOptions = t("homeHeroGradientTitleOptions", {
+    returnObjects: true,
+    defaultValue: [],
+  }) as string[];
+
+  // Use state to handle client-side random selection (avoids hydration mismatch)
+  const [randomIndex, setRandomIndex] = useState(0);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // Only run on client to avoid hydration mismatch
+    setRandomIndex(Math.floor(Math.random() * titleOptions.length));
+    setIsClient(true);
+  }, [titleOptions.length]);
+
+  // Select the hero title - use random option if available, otherwise fallback
+  const heroTitle = useMemo(() => {
+    if (isClient && titleOptions.length > 0) {
+      return titleOptions[randomIndex];
+    }
+    // Fallback for SSR or if no options available
+    return t("homeHeroTitle", "Design systems that scale with your ambition");
+  }, [isClient, titleOptions, randomIndex, t]);
+
   return (
     <HeroSection
       minHeight="screen"
@@ -46,20 +72,22 @@ export function HomeHero({
           justify="center"
           className="min-h-[60vh]"
         >
-          {/* Main headline with kinetic animation */}
+          {/* Main headline with kinetic animation - bold, premium typography */}
+          {/* Key forces remount when title changes to ensure animation plays correctly */}
           <KineticTitle
+            key={heroTitle}
             animation="wave"
             splitBy="words"
             as="h1"
             className={cn(
-              "text-4xl tablet:text-5xl desktop:text-6xl xl:text-7xl",
-              "text-foreground max-w-4xl"
+              "text-5xl tablet:text-6xl desktop:text-7xl xl:text-8xl 2xl:text-9xl",
+              "text-foreground max-w-5xl tracking-tight leading-[0.95]"
             )}
-            stagger={0.08}
-            duration={0.9}
+            stagger={0.06}
+            duration={1}
             triggerOnScroll={false}
           >
-            {t("homeHeroTitle", "Design systems that scale with your ambition")}
+            {heroTitle}
           </KineticTitle>
 
           {/* Subtitle with text reveal */}
@@ -68,15 +96,15 @@ export function HomeHero({
             type="words"
             as="p"
             className={cn(
-              "text-lg tablet:text-xl desktop:text-2xl",
-              "text-muted-foreground max-w-2xl font-body"
+              "text-xl tablet:text-2xl desktop:text-3xl",
+              "text-foreground/70 max-w-3xl font-body leading-relaxed"
             )}
             delay={0.5}
             stagger={0.03}
           >
             {t(
               "homeHeroSubtext",
-              "We craft AI-native design operations and component libraries for teams building the next generation of digital products."
+              "From concept to code, we craft human-centered GenAI experiences."
             )}
           </TextReveal>
 

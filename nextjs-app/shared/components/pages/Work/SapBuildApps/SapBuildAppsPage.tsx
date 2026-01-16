@@ -30,7 +30,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description="A comprehensive design system powering SAP Build Apps — SAP's flagship low-code platform (formerly AppGyver). Serving 300+ developers and designers who build consistent, accessible enterprise applications with a unified component library spanning Figma and ReactTS."
           image={{
-            src: "/images/portfolio/sap-build-apps/hero-background.webp",
+            src: "/images/portfolio/sap-build-apps/storybook_front.png",
             alt: "SAP Build Apps design system component library overview",
             width: 1200,
             height: 600,
@@ -79,8 +79,23 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         team={[
           {
             name: "Petri Lahdelma",
-            role: "Lead UX Designer / Design System Architect",
-            image: "/images/portfolio/sap-build-apps/team/petri.png",
+            role: "Design System Lead",
+            image: "/images/portfolio/helsinki-design-system/team/petri.png",
+          },
+          {
+            name: "Hristo Meshinski",
+            role: "Lead Developer",
+            image: "/images/portfolio/sap-build-apps/team/hristo.png?v=2",
+          },
+          {
+            name: "Pekka Turtola",
+            role: "Senior Developer",
+            image: "/images/portfolio/sap-build-apps/team/pekka.png?v=2",
+          },
+          {
+            name: "Vili Karilas",
+            role: "Developer",
+            image: "/images/portfolio/sap-build-apps/team/vili.png?v=2",
           },
         ]}
         overview={
@@ -99,6 +114,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           </Text>
         }
         background="muted"
+        maxWidth="md"
       />
 
       {/* Process phases */}
@@ -180,9 +196,9 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="1" size="S">
             <span style={{ fontWeight: 600 }}>
-              I established a Design System Guild
-            </span>{" "}
-            — a cross-functional team responsible for maintaining and evolving
+              We established the Design System Guild
+            </span>
+            , a cross-functional team responsible for maintaining and evolving
             the design system. This included designers, developers, and product
             managers who met bi-weekly to review proposals and prioritize work.
           </Text>,
@@ -193,7 +209,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/sap-build-apps/lifecycle-and-workflow.webp",
+          src: "/images/portfolio/sap-build-apps/workflow.png",
           alt: "Design system component lifecycle workflow from proposal to release",
           width: 738,
           height: 506,
@@ -227,21 +243,28 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         images={[
           {
-            src: "/images/portfolio/sap-build-apps/colors.webp",
+            src: "/images/portfolio/sap-build-apps/colors.png",
             alt: "SAP Horizon semantic color tokens for light and dark themes",
             width: 738,
             height: 506,
             caption: "Semantic color tokens based on SAP Horizon theme",
           },
           {
-            src: "/images/portfolio/sap-build-apps/iconography.webp",
+            src: "/images/portfolio/sap-build-apps/icons.png",
             alt: "Icon library with consistent visual language",
             width: 738,
             height: 506,
             caption: "Unified iconography across the platform",
           },
           {
-            src: "/images/portfolio/sap-build-apps/typography.webp",
+            src: "/images/portfolio/sap-build-apps/icon-search-function.webp",
+            alt: "Icon component implementation with search and customization",
+            width: 738,
+            height: 506,
+            caption: "Icon component with search functionality",
+          },
+          {
+            src: "/images/portfolio/sap-build-apps/font.png?v=2",
             alt: "Typography scale showing font families, sizes, and weights for enterprise readability",
             width: 738,
             height: 506,
@@ -276,18 +299,32 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         images={[
           {
-            src: "/images/portfolio/sap-build-apps/buttons.webp",
-            alt: "Button component variants showing primary, secondary, ghost, and destructive states",
-            width: 738,
+            src: "/images/portfolio/sap-build-apps/buttons_hires.png",
+            alt: "Button component variants showing primary, secondary, ghost, and destructive states with all interaction states",
+            width: 1476,
             height: 506,
             caption: "Button system with all variants and interaction states",
           },
           {
-            src: "/images/portfolio/sap-build-apps/button-construction.webp",
-            alt: "Button component anatomy showing padding, icon placement, and text alignment",
+            src: "/images/portfolio/sap-build-apps/message_popover.png?v=2",
+            alt: "Message popover component with semantic variants for error, warning, success, and info states",
             width: 738,
             height: 506,
-            caption: "Button construction guidelines for consistent implementation",
+            caption: "Semantic message variants with form integration",
+          },
+          {
+            src: "/images/portfolio/sap-build-apps/table.png",
+            alt: "Table component with sorting, filtering, and data management features",
+            width: 738,
+            height: 506,
+            caption: "Table component with hundreds of features and addons",
+          },
+          {
+            src: "/images/portfolio/sap-build-apps/chat_bubble.png",
+            alt: "Chat bubble component for conversational AI interfaces",
+            width: 738,
+            height: 506,
+            caption: "Chat bubble component for AI-powered interactions",
           },
         ]}
         imageLayout="grid"
@@ -323,7 +360,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         images={[
           {
-            src: "/images/portfolio/sap-build-apps/table-component.webp",
+            src: "/images/portfolio/sap-build-apps/table.png",
             alt: "Table component with sorting, filtering, pagination, and row selection features",
             width: 738,
             height: 506,

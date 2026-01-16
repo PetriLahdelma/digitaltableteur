@@ -1,10 +1,10 @@
 import {
-  ChevronRight,
+  Layers,
   Code,
-  ChevronUp,
-  Check,
+  Crosshair,
+  PenTool,
   Sparkles,
-  ChevronDown,
+  LayoutGrid,
 } from "lucide-react";
 
 /**
@@ -12,23 +12,23 @@ import {
  * Re-exports lucide-react icons with consistent naming.
  */
 
-/** UX & Interfaces - Layout/grid icon */
-export const UxInterfacesIcon = ChevronRight;
+/** UX & Interfaces - Layers icon representing interface layers */
+export const UxInterfacesIcon = Layers;
 
 /** Creative & Development - Code icon */
 export const CreativeDevelopmentIcon = Code;
 
-/** Branding & Strategy - Direction icon */
-export const BrandingStrategyIcon = ChevronUp;
+/** Branding & Strategy - Crosshair icon representing strategic precision/focus */
+export const BrandingStrategyIcon = Crosshair;
 
-/** Editorial & Illustration - Check icon */
-export const EditorialIllustrationIcon = Check;
+/** Editorial & Illustration - PenTool icon representing creative illustration */
+export const EditorialIllustrationIcon = PenTool;
 
-/** AI Solutions & Integration - Sparkles/magic icon */
+/** AI Solutions & Integration - Sparkles/magic icon (keeping this one) */
 export const AiSolutionsIcon = Sparkles;
 
-/** Design Systems - Layers/components icon */
-export const DesignSystemsIcon = ChevronDown;
+/** Design Systems - LayoutGrid icon representing modular component systems */
+export const DesignSystemsIcon = LayoutGrid;
 
 /**
  * All service icons as an array for iteration
