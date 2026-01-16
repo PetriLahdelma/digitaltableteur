@@ -15,6 +15,11 @@ interface SignatureData {
   title: string;
   phone: string;
   twitter: string;
+  linkedin: string;
+  github: string;
+  bluesky: string;
+  instagram: string;
+  tiktok: string;
 }
 
 interface EmailSignatureGeneratorProps {
@@ -41,6 +46,11 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
     title: "",
     phone: "",
     twitter: "",
+    linkedin: "",
+    github: "",
+    bluesky: "",
+    instagram: "",
+    tiktok: "",
   });
 
   const [previewDarkMode, setPreviewDarkMode] = useState(false);
@@ -66,7 +76,7 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
   }, []);
 
   const generateSignatureHTML = useCallback((): string => {
-    const { name, title, phone, twitter } = formData;
+    const { name, title, phone, twitter, linkedin, github, bluesky, instagram, tiktok } = formData;
 
     const contactParts: string[] = [];
     if (phone) {
@@ -74,11 +84,42 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
         `<a href="tel:${phone.replace(/\s/g, "")}" style="color: #6b7280; text-decoration: none;">${phone}</a>`
       );
     }
+    if (linkedin) {
+      const username = linkedin.startsWith("@") ? linkedin.slice(1) : linkedin;
+      contactParts.push(
+        `<a href="https://linkedin.com/in/${username}" style="color: #6b7280; text-decoration: none;">LinkedIn</a>`
+      );
+    }
+    if (github) {
+      const username = github.startsWith("@") ? github.slice(1) : github;
+      contactParts.push(
+        `<a href="https://github.com/${username}" style="color: #6b7280; text-decoration: none;">GitHub</a>`
+      );
+    }
     if (twitter) {
       const handle = twitter.startsWith("@") ? twitter : `@${twitter}`;
       const username = twitter.startsWith("@") ? twitter.slice(1) : twitter;
       contactParts.push(
         `<a href="https://x.com/${username}" style="color: #6b7280; text-decoration: none;">${handle}</a>`
+      );
+    }
+    if (bluesky) {
+      const handle = bluesky.startsWith("@") ? bluesky : `@${bluesky}`;
+      const username = bluesky.startsWith("@") ? bluesky.slice(1) : bluesky;
+      contactParts.push(
+        `<a href="https://bsky.app/profile/${username}" style="color: #6b7280; text-decoration: none;">${handle}</a>`
+      );
+    }
+    if (instagram) {
+      const username = instagram.startsWith("@") ? instagram.slice(1) : instagram;
+      contactParts.push(
+        `<a href="https://instagram.com/${username}" style="color: #6b7280; text-decoration: none;">Instagram</a>`
+      );
+    }
+    if (tiktok) {
+      const username = tiktok.startsWith("@") ? tiktok.slice(1) : tiktok;
+      contactParts.push(
+        `<a href="https://tiktok.com/@${username}" style="color: #6b7280; text-decoration: none;">TikTok</a>`
       );
     }
 
@@ -135,7 +176,7 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
   }, [generateSignatureHTML, t]);
 
   const renderPreview = () => {
-    const { name, title, phone, twitter } = formData;
+    const { name, title, phone, twitter, linkedin, github, bluesky, instagram, tiktok } = formData;
 
     const contactParts: React.ReactNode[] = [];
     if (phone) {
@@ -146,6 +187,34 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           className={styles.contactLink}
         >
           {phone}
+        </a>
+      );
+    }
+    if (linkedin) {
+      const username = linkedin.startsWith("@") ? linkedin.slice(1) : linkedin;
+      contactParts.push(
+        <a
+          key="linkedin"
+          href={`https://linkedin.com/in/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.contactLink}
+        >
+          LinkedIn
+        </a>
+      );
+    }
+    if (github) {
+      const username = github.startsWith("@") ? github.slice(1) : github;
+      contactParts.push(
+        <a
+          key="github"
+          href={`https://github.com/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.contactLink}
+        >
+          GitHub
         </a>
       );
     }
@@ -161,6 +230,49 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           className={styles.contactLink}
         >
           {handle}
+        </a>
+      );
+    }
+    if (bluesky) {
+      const handle = bluesky.startsWith("@") ? bluesky : `@${bluesky}`;
+      const username = bluesky.startsWith("@") ? bluesky.slice(1) : bluesky;
+      contactParts.push(
+        <a
+          key="bluesky"
+          href={`https://bsky.app/profile/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.contactLink}
+        >
+          {handle}
+        </a>
+      );
+    }
+    if (instagram) {
+      const username = instagram.startsWith("@") ? instagram.slice(1) : instagram;
+      contactParts.push(
+        <a
+          key="instagram"
+          href={`https://instagram.com/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.contactLink}
+        >
+          Instagram
+        </a>
+      );
+    }
+    if (tiktok) {
+      const username = tiktok.startsWith("@") ? tiktok.slice(1) : tiktok;
+      contactParts.push(
+        <a
+          key="tiktok"
+          href={`https://tiktok.com/@${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.contactLink}
+        >
+          TikTok
         </a>
       );
     }
@@ -302,12 +414,66 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
           <div className={styles.inputGroup}>
             <div className={styles.inputWrapper}>
               <input
+                id="linkedin"
+                type="text"
+                value={formData.linkedin}
+                onChange={handleInputChange("linkedin")}
+                placeholder={t("emailSig.linkedinPlaceholder", {
+                  defaultValue: "LinkedIn username",
+                })}
+                className={styles.input}
+              />
+              {formData.linkedin && (
+                <button
+                  type="button"
+                  onClick={() => handleClearField("linkedin")}
+                  className={styles.clearButton}
+                  aria-label={t("emailSig.clearField", {
+                    defaultValue: "Clear field",
+                  })}
+                >
+                  <Icon name="x" size={16} decorative />
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.inputGroup}>
+            <div className={styles.inputWrapper}>
+              <input
+                id="github"
+                type="text"
+                value={formData.github}
+                onChange={handleInputChange("github")}
+                placeholder={t("emailSig.githubPlaceholder", {
+                  defaultValue: "GitHub username",
+                })}
+                className={styles.input}
+              />
+              {formData.github && (
+                <button
+                  type="button"
+                  onClick={() => handleClearField("github")}
+                  className={styles.clearButton}
+                  aria-label={t("emailSig.clearField", {
+                    defaultValue: "Clear field",
+                  })}
+                >
+                  <Icon name="x" size={16} decorative />
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.inputGroup}>
+            <div className={styles.inputWrapper}>
+              <input
                 id="twitter"
                 type="text"
                 value={formData.twitter}
                 onChange={handleInputChange("twitter")}
                 placeholder={t("emailSig.twitterPlaceholder", {
-                  defaultValue: "@ Twitter handle",
+                  defaultValue: "@ Twitter/X handle",
                 })}
                 className={styles.input}
               />
@@ -315,6 +481,87 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
                 <button
                   type="button"
                   onClick={() => handleClearField("twitter")}
+                  className={styles.clearButton}
+                  aria-label={t("emailSig.clearField", {
+                    defaultValue: "Clear field",
+                  })}
+                >
+                  <Icon name="x" size={16} decorative />
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.inputGroup}>
+            <div className={styles.inputWrapper}>
+              <input
+                id="bluesky"
+                type="text"
+                value={formData.bluesky}
+                onChange={handleInputChange("bluesky")}
+                placeholder={t("emailSig.blueskyPlaceholder", {
+                  defaultValue: "@ Bluesky handle",
+                })}
+                className={styles.input}
+              />
+              {formData.bluesky && (
+                <button
+                  type="button"
+                  onClick={() => handleClearField("bluesky")}
+                  className={styles.clearButton}
+                  aria-label={t("emailSig.clearField", {
+                    defaultValue: "Clear field",
+                  })}
+                >
+                  <Icon name="x" size={16} decorative />
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.inputGroup}>
+            <div className={styles.inputWrapper}>
+              <input
+                id="instagram"
+                type="text"
+                value={formData.instagram}
+                onChange={handleInputChange("instagram")}
+                placeholder={t("emailSig.instagramPlaceholder", {
+                  defaultValue: "@ Instagram handle",
+                })}
+                className={styles.input}
+              />
+              {formData.instagram && (
+                <button
+                  type="button"
+                  onClick={() => handleClearField("instagram")}
+                  className={styles.clearButton}
+                  aria-label={t("emailSig.clearField", {
+                    defaultValue: "Clear field",
+                  })}
+                >
+                  <Icon name="x" size={16} decorative />
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.inputGroup}>
+            <div className={styles.inputWrapper}>
+              <input
+                id="tiktok"
+                type="text"
+                value={formData.tiktok}
+                onChange={handleInputChange("tiktok")}
+                placeholder={t("emailSig.tiktokPlaceholder", {
+                  defaultValue: "@ TikTok handle",
+                })}
+                className={styles.input}
+              />
+              {formData.tiktok && (
+                <button
+                  type="button"
+                  onClick={() => handleClearField("tiktok")}
                   className={styles.clearButton}
                   aria-label={t("emailSig.clearField", {
                     defaultValue: "Clear field",
