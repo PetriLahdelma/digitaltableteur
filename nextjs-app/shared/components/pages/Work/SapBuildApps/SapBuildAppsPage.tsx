@@ -163,9 +163,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="2" size="S">
             The existing design files were scattered and lacked clear
             documentation, making onboarding new team members a time-consuming
-            process. With Gartner predicting 70% of enterprise applications will
-            use low-code by 2025, the platform needed a robust design foundation
-            to scale.
+            process. As enterprise adoption of low-code platforms accelerated,
+            the platform needed a robust design foundation to scale.
           </Text>,
         ]}
         imageLayout="none"
