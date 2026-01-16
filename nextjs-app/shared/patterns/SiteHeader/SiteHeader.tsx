@@ -8,6 +8,7 @@ import { NavLink } from "@/nextjs-app/shared/components/NavLink";
 import { Container } from "@/nextjs-app/shared/components/Container";
 import { useNavigation } from "@/nextjs-app/shared/hooks/useNavigation";
 import { usePersistentTheme } from "@/nextjs-app/shared/hooks/usePersistentTheme";
+import { useToast } from "@/providers/ToastProvider";
 import { IconButton } from "@/nextjs-app/shared/components/IconButton";
 import { List, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import { MobileDrawer } from "./MobileDrawer";
@@ -39,12 +40,26 @@ const themeIcons: Record<Theme, typeof Sun> = {
   hcw: CircleHalf,
 };
 
+const languages = [
+  { code: "en", labelKey: "langEN" },
+  { code: "fi", labelKey: "langFI" },
+  { code: "sv", labelKey: "langSV" },
+];
+
+const themeNames: Record<Theme, string> = {
+  light: "themeNameLight",
+  dark: "themeNameDark",
+  hcb: "themeNameHcb",
+  hcw: "themeNameHcw",
+};
+
 export function SiteHeader({
   navItems = defaultNavItems,
   className,
 }: SiteHeaderProps) {
   const { t, i18n } = useTranslation();
   const { theme, cycleTheme } = usePersistentTheme();
+  const { showToast } = useToast();
   const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useNavigation();
   const [isThemeAnimating, setIsThemeAnimating] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -70,13 +85,19 @@ export function SiteHeader({
       setIsThemeAnimating(true);
       setTimeout(() => setIsThemeAnimating(false), 450);
     }
-    cycleTheme();
+    const nextTheme = cycleTheme() as Theme;
+    const label = t(themeNames[nextTheme], nextTheme);
+    showToast(t("themeChanged", { theme: label }), 3000);
   };
 
   const handleLanguageChange = (code: string) => {
     i18n.changeLanguage(code);
     document.cookie = `i18next=${code}; path=/; max-age=31536000`;
     localStorage.setItem("i18nextLng", code);
+
+    const langLabel = languages.find((lang) => lang.code === code);
+    const label = langLabel ? t(langLabel.labelKey) : code;
+    showToast(t("languageChanged", { language: label }), 3000);
   };
 
   return (
