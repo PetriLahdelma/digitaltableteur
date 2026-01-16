@@ -9,12 +9,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Content
 
-- [ ] **CONT-01**: Fix team size claim — "serving 300+ developers and designers"
-- [ ] **CONT-02**: Remove 60% development time reduction claim
-- [ ] **CONT-03**: Correct duration to March 2022 – February 2026
-- [ ] **CONT-04**: Clarify role attribution — led small DS team, system served 300+
+- [x] **CONT-01**: Fix team size claim — "serving 300+ developers and designers" ✓
+- [x] **CONT-02**: Remove 60% development time reduction claim ✓
+- [x] **CONT-03**: Correct duration to March 2022 – February 2026 ✓
+- [x] **CONT-04**: Clarify role attribution — led small DS team, system served 300+ ✓
 - [ ] **CONT-05**: Add Data Components section (Tables & Data Visualization)
-- [ ] **CONT-06**: Update hero description with accurate framing
+- [x] **CONT-06**: Update hero description with accurate framing ✓
 - [ ] **CONT-07**: Update story block text for accuracy throughout
 
 ### Images
@@ -69,11 +69,11 @@ Which phases cover which requirements. Updated by create-roadmap.
 |-------------|-------|--------|
 | IMG-01 | Phase 1 | Complete |
 | IMG-02 | Phase 1 | Complete |
-| CONT-01 | Phase 2 | Pending |
-| CONT-02 | Phase 2 | Pending |
-| CONT-03 | Phase 2 | Pending |
-| CONT-04 | Phase 2 | Pending |
-| CONT-06 | Phase 2 | Pending |
+| CONT-01 | Phase 2 | Complete |
+| CONT-02 | Phase 2 | Complete |
+| CONT-03 | Phase 2 | Complete |
+| CONT-04 | Phase 2 | Complete |
+| CONT-06 | Phase 2 | Complete |
 | IMG-03 | Phase 3 | Pending |
 | IMG-04 | Phase 3 | Pending |
 | IMG-05 | Phase 3 | Pending |
@@ -98,4 +98,4 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 ---
 *Requirements defined: 2026-01-16*
-*Last updated: 2026-01-16 — Phase 1 requirements complete*
+*Last updated: 2026-01-16 — Phase 2 requirements complete*
