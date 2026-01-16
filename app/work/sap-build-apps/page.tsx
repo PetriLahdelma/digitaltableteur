@@ -6,11 +6,11 @@ import { NextWorkNav } from "../NextWorkNav";
 export const metadata: Metadata = {
   title: "SAP Build Apps Design System | Digitaltableteur",
   description:
-    "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and ReactTS components serving 300+ developers and designers.",
+    "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and React/TypeScript components serving 300+ developers and designers.",
   openGraph: {
     title: "SAP Build Apps Design System | Digitaltableteur",
     description:
-      "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and ReactTS components serving 300+ developers and designers.",
+      "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and React/TypeScript components serving 300+ developers and designers.",
     type: "article",
     siteName: "Digitaltableteur",
     images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SAP Build Apps Design System | Digitaltableteur",
     description:
-      "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and ReactTS components serving 300+ developers and designers.",
+      "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and React/TypeScript components serving 300+ developers and designers.",
     images: ["/images/portfolio/sap-build-apps/hero-background.webp"],
   },
   alternates: {
