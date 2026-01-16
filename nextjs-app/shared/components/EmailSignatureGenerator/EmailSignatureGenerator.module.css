@@ -80,11 +80,12 @@
   font-size: 1rem;
   color: #1a1a1a;
   background-color: #fff;
-  border: none;
+  border: 1px solid #e5e7eb;
   border-radius: 100px;
   box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
   transition:
     box-shadow var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
     background-color var(--duration-fast) ease;
 }
 
@@ -93,6 +94,7 @@
 }
 
 .input:hover {
+  border-color: #d1d5db;
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
 }
 
@@ -393,7 +395,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .container {
     padding-block: var(--space-layout-32);
     padding-inline: var(--space-layout-16);
@@ -403,9 +405,20 @@
     margin-block-end: var(--space-layout-24);
   }
 
+  .formGrid {
+    gap: var(--space-internal-12);
+  }
+
   .input {
-    padding-block: var(--space-internal-14);
-    padding-inline: var(--space-internal-20);
+    padding-block: var(--space-internal-16);
+    padding-inline: var(--space-internal-16);
+    padding-inline-end: var(--space-internal-40);
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+
+  .clearButton {
+    inset-inline-end: var(--space-internal-12);
   }
 }
 
@@ -420,7 +433,12 @@
 
 :global(.themeDark) .input {
   background-color: #2d2d2d;
+  border-color: #4b5563;
   color: #f9fafb;
+}
+
+:global(.themeDark) .input:hover {
+  border-color: #6b7280;
 }
 
 :global(.themeDark) .input::placeholder {
