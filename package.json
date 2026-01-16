@@ -130,6 +130,11 @@
     "styled-components": "^6.1.19",
     "tailwind-merge": "^3.4.0"
   },
+  "overrides": {
+    "undici": "^7.18.2",
+    "@pnpm/npm-conf": "^3.0.2",
+    "path-to-regexp": "^8.2.0"
+  },
   "devDependencies": {
     "@lhci/cli": "^0.15.1",
     "@next/bundle-analyzer": "^16.1.1",
