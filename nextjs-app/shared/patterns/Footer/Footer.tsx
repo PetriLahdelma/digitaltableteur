@@ -48,6 +48,12 @@ const Footer = () => {
             <br />
             <a href="/accessibility">{t("footerAccessibility")}</a>
           </p>
+          <p className={styles.billingDetails}>{t("footerResourcesTitle")}</p>
+          <p>
+            <a href="/pseo">{t("footerGuides")}</a>
+            <br />
+            <a href="/tools/email-signature">{t("footerTools")}</a>
+          </p>
         </div>
       </Grid>
       <div className={styles["socialLinks"]}>
