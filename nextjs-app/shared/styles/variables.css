@@ -243,6 +243,7 @@
 
 .themeDark,
 .themeDark :root {
+  color-scheme: dark;
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
   --main-body-background-color: #181a1b;
@@ -312,6 +313,7 @@
 
 .themeHCB,
 .themeHCB :root {
+  color-scheme: dark;
   --main-body-background-color: #000;
   --color-title: #fff;
   --color-text: #fff;

@@ -1064,6 +1064,16 @@
     "phonePlaceholder": "+358 45 123 4567",
     "twitterLabel": "Twitter/X",
     "twitterPlaceholder": "@käyttäjänimi",
+    "linkedinLabel": "LinkedIn",
+    "linkedinPlaceholder": "LinkedIn-käyttäjänimi",
+    "githubLabel": "GitHub",
+    "githubPlaceholder": "GitHub-käyttäjänimi",
+    "blueskyLabel": "Bluesky",
+    "blueskyPlaceholder": "@kahva.bsky.social",
+    "instagramLabel": "Instagram",
+    "instagramPlaceholder": "@käyttäjänimi",
+    "tiktokLabel": "TikTok",
+    "tiktokPlaceholder": "@käyttäjänimi",
     "clearField": "Tyhjennä kenttä",
     "previewLabel": "Esikatselu",
     "switchToLight": "Vaihda vaaleaan tilaan",
@@ -1090,6 +1100,11 @@
     "iosMailStep1": "Avaa Asetukset > Mail > Allekirjoitus",
     "iosMailStep2": "Napauta \"Kaikki tilit\" tai valitse tietty tili",
     "iosMailStep3": "Poista olemassa oleva teksti ja liitä allekirjoituksesi",
-    "iosMailStep4": "Huom: iOS saattaa yksinkertaistaa muotoilua"
+    "iosMailStep4": "Huom: iOS saattaa yksinkertaistaa muotoilua",
+    "imageTipsTitle": "Kuvavinkit",
+    "imageTip1": "Kuvat isännöidään ulkoisesti parhaan yhteensopivuuden varmistamiseksi eri sähköpostiohjelmissa",
+    "imageTip2": "Joidenkin vastaanottajien on ehkä napsautettava \"Näytä kuvat\" nähdäkseen logon",
+    "imageTip3": "Gmail saattaa isännöidä kuvia uudelleen automaattisesti — tämä on normaalia",
+    "imageTip4": "Outlook-käyttäjät: Jos asettelu hajoaa, kokeile liittää \"Säilytä lähdemuotoilu\""
   }
 }

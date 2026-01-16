@@ -112,6 +112,7 @@
     "mongodb": "^7.0.0",
     "next": "15.5.9",
     "next-sanity": "^11.6.12",
+    "next-themes": "^0.4.6",
     "node-fetch": "^3.3.2",
     "pg": "^8.16.3",
     "prismjs": "^1.30.0",

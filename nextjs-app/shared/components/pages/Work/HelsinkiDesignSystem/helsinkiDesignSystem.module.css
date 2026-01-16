@@ -1,7 +1,7 @@
 .caseStudy {
   padding: 2.5rem 1.5rem 1.5rem;
   min-height: 100vh;
-  background: var(--color-background);
+  background: var(--main-body-background-color);
 }
 
 /* Hero Section */
