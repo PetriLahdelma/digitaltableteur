@@ -7,7 +7,6 @@ import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
-import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
@@ -30,10 +29,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description={project.description}
           image={{
-            src: "/images/portfolio/vertaaux/hero.png",
-            alt: "VertaaUX brand mark",
-            width: 1020,
-            height: 1018,
+            src: "/images/portfolio/vertaaux/computer-mockup-on-colorful-background.jpeg",
+            alt: "VertaaUX product interface on colorful gradient background",
+            width: 6126,
+            height: 4595,
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
@@ -45,41 +44,46 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
       relatedProjects={<RelatedProjects currentSlug={project.slug} maxItems={3} />}
       className={styles.page}
     >
-      <ProjectMetaSection
-        services={[
-          "Product Strategy",
-          "UX Intelligence",
-          "Accessibility",
-          "Brand Identity",
-        ]}
-        duration="2025-Present"
-        tools={[
-          { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },
-          {
-            key: "illustrator",
-            icon: <SiAdobeillustrator size={24} />,
-            name: "Illustrator",
-          },
-        ]}
-        client={{
-          name: "VertaaUX",
-          logo: "/images/portfolio/vertaaux/logo.png",
-        }}
-        overview={
-          <Text size="S">
-            VertaaUX.ai is a real-time, predictive UX intelligence engine. The
-            product delivers a one-click UX audit with instant insights on
-            usability, clarity, accessibility, and conversion performance.
-            <br />
-            <br />
-            The audit runs in under 1.5 seconds and produces a prioritized UX
-            report that teams can act on without deep UX or accessibility
-            expertise.
-          </Text>
-        }
-        background="muted"
-        maxWidth="md"
-      />
+      {/* Project Meta - Custom 2-column layout */}
+      <section className={styles.metaSection}>
+        <div className={styles.metaGrid}>
+          <div className={styles.metaLeft}>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Services</h3>
+              <p className={styles.metaText}>
+                Product Strategy, UX Intelligence, Accessibility and Brand Identity
+              </p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Duration</h3>
+              <p className={styles.metaText}>2025–Present</p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Tools used</h3>
+              <div className={styles.metaTools}>
+                <SiFigma size={24} title="Figma" />
+                <SiAdobeillustrator size={24} title="Illustrator" />
+              </div>
+            </div>
+          </div>
+          <div className={styles.metaRight}>
+            <h3 className={styles.metaLabel}>Overview</h3>
+            <p className={styles.metaOverview}>
+              <strong>VertaaUX.ai</strong> is a real-time, predictive UX intelligence
+              engine. The product delivers a one-click UX audit with instant insights
+              on usability, clarity, accessibility, and conversion performance. The
+              audit runs in under 1.5 seconds and produces a prioritized UX report
+              that teams can act on without deep UX or accessibility expertise.
+            </p>
+            <p className={styles.metaOverview}>
+              <strong>The goal:</strong> Establish a UX Score the industry can
+              adopt, similar to PageSpeed for performance or Lighthouse for
+              accessibility, making professional-grade UX insights accessible
+              to every team.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Process methodology phases - styled for AI startup feel */}
       <div className={styles.processSection}>
@@ -193,8 +197,8 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             that would typically require hours of manual review.
           </Text>,
           <Text key="p2" size="S">
-            By simulating user behavior across key dimensions — usability,
-            clarity, accessibility, and conversion — the engine produces a
+            By simulating user behavior across key dimensions (usability,
+            clarity, accessibility, and conversion), the engine produces a
             precise, prioritized UX score that teams can act on immediately.
           </Text>,
         ]}
@@ -226,7 +230,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             expertise.
           </Text>,
           <Text key="p2" size="S">
-            The goal is to establish a UX Score the industry can adopt — similar
+            The goal is to establish a UX Score the industry can adopt, similar
             to PageSpeed for performance or Lighthouse for accessibility. The
             visual language reflects this ambition with a clean, data-driven
             aesthetic.
@@ -269,32 +273,28 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.brandSection}
       />
 
-      {/* Product mockups */}
-      <GridBlock
-        columns={2}
-        gap="medium"
+      {/* Product mockup */}
+      <StoryBlock
+        subtitle="Product"
+        title="Dashboard Experience"
+        content={[
+          <Text key="p1" size="S">
+            The interface prioritizes clarity and speed, presenting complex UX
+            data in an instantly scannable format that teams can act on.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/vertaaux/macbook-pro-gradient.jpeg",
+          alt: "VertaaUX product on colorful gradient background",
+          width: 738,
+          height: 506,
+          caption: "Product presentation mockup",
+        }}
+        imageLayout="single"
         backgroundColor="light"
         maxWidth="lg"
         spacing="comfortable"
-        className={styles.imageGrid}
-        cells={[
-          {
-            type: "image",
-            src: "/images/portfolio/vertaaux/macbook-pro-clay-dark.png",
-            alt: "VertaaUX dashboard on MacBook Pro mockup",
-            width: 738,
-            height: 506,
-            caption: "Dashboard interface design",
-          },
-          {
-            type: "image",
-            src: "/images/portfolio/vertaaux/macbook-pro-gradient.jpeg",
-            alt: "VertaaUX product on colorful gradient background",
-            width: 738,
-            height: 506,
-            caption: "Product presentation mockup",
-          },
-        ]}
+        className={styles.storySection}
       />
 
       {/* Results & Impact - outcomes section */}
@@ -313,7 +313,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p2" size="S">
             With audit speeds under 1.5 seconds and coverage across usability,
             clarity, accessibility, and conversion metrics, the platform aims to
-            democratize UX expertise — making professional-grade insights
+            democratize UX expertise, making professional-grade insights
             accessible to teams without dedicated UX specialists.
           </Text>,
         ]}
