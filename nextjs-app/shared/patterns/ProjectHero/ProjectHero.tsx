@@ -37,6 +37,8 @@ export interface ProjectHeroProps {
   tags?: string[];
   /** Project date/duration */
   date?: string;
+  /** Live project URL */
+  liveUrl?: string;
   /** Hero layout variant */
   variant?: "full-width" | "contained" | "split";
   /** Show scroll indicator */
@@ -53,6 +55,7 @@ export function ProjectHero({
   category,
   tags,
   date,
+  liveUrl,
   variant = "contained",
   showScrollIndicator = true,
   className,
@@ -177,6 +180,36 @@ export function ProjectHero({
                   </div>
                 </FadeIn>
               )}
+
+              {/* Live URL */}
+              {liveUrl && (
+                <FadeIn direction="up" delay={0.5} distance={20}>
+                  <a
+                    href={liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors pt-2"
+                  >
+                    Visit Live Site
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                </FadeIn>
+              )}
             </div>
 
             {/* Image/Video */}
@@ -296,6 +329,41 @@ export function ProjectHero({
                     </span>
                   ))}
                 </div>
+              </FadeIn>
+            )}
+
+            {/* Live URL */}
+            {liveUrl && (
+              <FadeIn direction="up" delay={0.5} distance={20}>
+                <a
+                  href={liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "inline-flex items-center gap-2 text-sm font-medium transition-colors pt-2",
+                    isFullWidth
+                      ? "text-white hover:text-white/80"
+                      : "text-primary hover:text-primary/80",
+                  )}
+                >
+                  Visit Live Site
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </a>
               </FadeIn>
             )}
 
