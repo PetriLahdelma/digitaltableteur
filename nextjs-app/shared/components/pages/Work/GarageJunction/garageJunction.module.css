@@ -160,7 +160,6 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   height: 120px;
-  border-radius: var(--radius-lg);
   overflow: hidden;
   margin-block-start: var(--space-layout-24);
 }
