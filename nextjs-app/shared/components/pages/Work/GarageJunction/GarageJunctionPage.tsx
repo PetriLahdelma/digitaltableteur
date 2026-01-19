@@ -230,14 +230,21 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             High contrast colors optimized for club environments and social media.
           </Text>
           <div className={styles.colorComposition}>
-            <div className={styles.colorBlack} />
+            <div className={styles.colorBlack}>
+              <span className={styles.colorLabel}>#000</span>
+            </div>
             <div className={styles.colorRed}>
               <span className={styles.colorLabel}>Red #eb1400</span>
             </div>
             <div className={styles.colorBlue}>
               <span className={styles.colorLabel}>Blue #007acf</span>
             </div>
-            <div className={styles.colorWhite} />
+            <div className={styles.colorOrange}>
+              <span className={styles.colorLabel}>Orange #ff5501</span>
+            </div>
+            <div className={styles.colorWhite}>
+              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>#ffffff</span>
+            </div>
           </div>
         </div>
       </section>
