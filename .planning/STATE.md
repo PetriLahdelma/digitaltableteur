@@ -4,63 +4,58 @@
 
 See: .planning/PROJECT.md (updated 2026-01-19)
 
-**Core value:** Tell true stories with unique compositions — each project deserves accurate representation with its own layout personality.
-**Current focus:** v1.1 Portfolio Expansion — Defining requirements
+**Core value:** Tell true stories with unique compositions. Each project deserves accurate representation with its own layout personality.
+**Current focus:** Phase 7 — VertaaUX
 
 ## Current Position
 
-Phase: Not started (run /gsd:create-roadmap)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-01-19 — Milestone v1.1 started
+Phase: 7 of 9 (VertaaUX)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-01-19 — Roadmap created for v1.1 milestone
 
-Progress: ░░░░░░░░░░ 0%
+Progress: ██████░░░░ 67% (v1.0 complete, v1.1 starting)
 
-## Milestone Summary
+## Performance Metrics
 
-**v1.1 Portfolio Expansion** — In Progress
+**Velocity:**
+- Total plans completed: 6 (v1.0)
+- Average duration: —
+- Total execution time: —
 
-Target features:
-- [ ] VertaaUX Portfolio Page
-- [ ] Finnish Transport Agency Portfolio Page
-- [ ] Raw View Portfolio Page
-- [ ] Tulli Portfolio Page
-- [ ] Intrum Portfolio Page
-- [ ] Layout system extension (as needed)
+**By Phase:**
 
-Workflow: On-demand visual verification per section.
+| Phase | Plans | Total | Avg/Plan |
+|-------|-------|-------|----------|
+| 1-6 (v1.0) | 6 | — | — |
 
-## Previous Milestone
-
-**v1.0 SAP Build Apps Portfolio** — SHIPPED 2026-01-16
-
-See: `.planning/MILESTONES.md` for details.
+**Recent Trend:**
+- Last 5 plans: —
+- Trend: —
 
 ## Accumulated Context
 
 ### Decisions
 
-None yet for v1.1.
+Decisions are logged in PROJECT.md Key Decisions table.
+Recent decisions affecting current work:
+
+- v1.0: Use existing layout patterns (ProjectDetailLayout, StoryBlock, GridBlock, ProcessBlock)
+- v1.0: WebP format at quality 80 for images
+- v1.0: Hero image dimensions 1200x600, grid 738x506
+- v1.1: On-demand visual verification (keep context tight)
+- v1.1: Unique layouts per project (avoid cookie-cutter feel)
 
 ### Pending Todos
 
-None — run `/gsd:define-requirements` or `/gsd:create-roadmap` to plan.
+None yet.
 
 ### Blockers/Concerns
 
-None identified.
+None yet.
 
 ## Session Continuity
 
 Last session: 2026-01-19
-Stopped at: Milestone v1.1 initialized
+Stopped at: Roadmap creation complete
 Resume file: None
-
-## Next Steps
-
-1. `/gsd:define-requirements` — scope what "done" looks like for each project
-2. `/gsd:create-roadmap` — plan phases for execution
-3. `/gsd:plan-phase` — create detailed plans per phase
-
----
-*State updated: 2026-01-19 after v1.1 milestone start*
