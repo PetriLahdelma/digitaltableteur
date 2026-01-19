@@ -90,6 +90,12 @@
   margin-block: var(--space-layout-64);
 }
 
+/* Ensure grid images have equal height */
+.storySection figure img {
+  height: 320px;
+  object-fit: cover;
+}
+
 /* Brand identity section with generous spacing */
 .brandSection {
   margin-block: var(--space-layout-80);
@@ -175,7 +181,8 @@
 
 .appImage {
   width: 100%;
-  height: auto;
+  height: 280px;
+  object-fit: cover;
   border-radius: var(--radius-md);
   background-color: var(--color-surface-secondary);
 }
