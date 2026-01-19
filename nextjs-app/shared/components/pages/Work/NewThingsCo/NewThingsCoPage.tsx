@@ -447,7 +447,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.resultValue}>2017</span>
               <span className={styles.resultLabel}>Brand Launch</span>
               <span className={styles.resultDetail}>
-                Successful market entry in Finnish IT sector
+                Successful market entry in the Finnish IT sector
               </span>
             </div>
           </div>
