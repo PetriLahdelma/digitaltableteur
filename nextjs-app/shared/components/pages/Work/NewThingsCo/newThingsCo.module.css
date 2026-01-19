@@ -72,13 +72,13 @@
   color: var(--color-text);
 }
 
-/* Process section with NTC green accent */
+/* Process section with NTC brand blue accent */
 .processSection {
   margin-block: var(--space-layout-80);
   padding-block: var(--space-layout-48);
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, #00c853 8%, var(--color-surface)) 0%,
+    color-mix(in srgb, #7f96B2 10%, var(--color-surface)) 0%,
     transparent 100%
   );
   margin-inline: calc(-1 * var(--space-layout-24));
@@ -194,13 +194,13 @@
   padding-block-start: var(--space-layout-48);
 }
 
-/* Results section with NTC green accent */
+/* Results section with NTC brand blue */
 .resultsSection {
   margin-block: var(--space-layout-80);
   margin-inline: calc(-1 * var(--space-layout-24));
   padding-inline: var(--space-layout-24);
   padding-block: var(--space-layout-64);
-  background: linear-gradient(135deg, #00c853 0%, #00a844 100%);
+  background: linear-gradient(135deg, #7f96B2 0%, #6a829e 100%);
   color: white;
 }
 
