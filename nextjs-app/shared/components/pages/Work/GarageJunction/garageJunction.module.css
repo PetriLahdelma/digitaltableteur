@@ -173,6 +173,11 @@
   justify-content: center;
 }
 
+.colorBlack .colorLabel {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+}
+
 .colorRed {
   grid-row: 1;
   grid-column: 2 / 5;
