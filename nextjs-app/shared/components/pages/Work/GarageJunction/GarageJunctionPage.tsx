@@ -229,22 +229,15 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
           <Text size="S">
             High contrast colors optimized for club environments and social media.
           </Text>
-          <div className={styles.colorStrip}>
-            <div className={styles.colorSwatch} style={{ backgroundColor: "#ff5501" }}>
-              <span>#ff5501</span>
+          <div className={styles.colorComposition}>
+            <div className={styles.colorBlack} />
+            <div className={styles.colorRed}>
+              <span className={styles.colorLabel}>Red #eb1400</span>
             </div>
-            <div className={styles.colorSwatch} style={{ backgroundColor: "#007acf" }}>
-              <span>#007acf</span>
+            <div className={styles.colorBlue}>
+              <span className={styles.colorLabel}>Blue #007acf</span>
             </div>
-            <div className={styles.colorSwatch} style={{ backgroundColor: "#eb1400" }}>
-              <span>#eb1400</span>
-            </div>
-            <div className={styles.colorSwatch} style={{ backgroundColor: "#000000" }}>
-              <span>#000000</span>
-            </div>
-            <div className={styles.colorSwatch} style={{ backgroundColor: "#ffffff" }}>
-              <span style={{ color: "#000000", textShadow: "none" }}>#ffffff</span>
-            </div>
+            <div className={styles.colorWhite} />
           </div>
         </div>
       </section>
