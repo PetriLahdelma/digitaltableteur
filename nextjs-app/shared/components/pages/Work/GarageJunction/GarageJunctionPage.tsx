@@ -231,7 +231,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
           </Text>
           <div className={styles.colorComposition}>
             <div className={styles.colorBlack}>
-              <span className={styles.colorLabel}>#000</span>
+              <span className={styles.colorLabel}>Black #000</span>
             </div>
             <div className={styles.colorRed}>
               <span className={styles.colorLabel}>Red #eb1400</span>
@@ -243,7 +243,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.colorLabel}>Orange #ff5501</span>
             </div>
             <div className={styles.colorWhite}>
-              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>#ffffff</span>
+              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>White #ffffff</span>
             </div>
           </div>
         </div>
