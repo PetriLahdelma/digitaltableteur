@@ -1,17 +1,19 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Text from "@dt/Text";
+import Title from "@dt/Title";
+import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
-import ProcessBlock from "../../../../patterns/ProcessBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
-import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
 import { SiAdobeillustrator, SiAdobeindesign } from "react-icons/si";
+import { ColorPalette } from "../../../FinnishTransportAgency/ColorPalette";
 
 import styles from "./finnishTransportAgency.module.css";
 
@@ -30,138 +32,217 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description={project.description}
           image={{
-            src: "/images/portfolio/finnish-transport-agency/hero.png",
-            alt: "Finnish Transport Agency identity presentation",
-            width: 1343,
-            height: 729,
+            src: "/images/portfolio/finnish-transport-agency/logo-hero.webp",
+            alt: "Liikennevirasto logo — cascading wordmark in four signature blues",
+            width: 1240,
+            height: 877,
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
           variant="contained"
           showScrollIndicator={true}
+          className={styles.hero}
         />
       }
       relatedProjects={<RelatedProjects currentSlug={project.slug} maxItems={3} />}
       className={styles.page}
     >
-      <ProjectMetaSection
-        services={[
-          "Brand Identity",
-          "Logo System",
-          "Visual Guidelines",
-          "Multilingual Applications",
-        ]}
-        tools={[
-          {
-            key: "illustrator",
-            icon: <SiAdobeillustrator size={24} />,
-            name: "Illustrator",
-          },
-          {
-            key: "indesign",
-            icon: <SiAdobeindesign size={24} />,
-            name: "InDesign",
-          },
-        ]}
-        client={{
-          name: "Finnish Transport Agency",
-          logo: "/images/portfolio/finnish-transport-agency/logo.jpg",
-        }}
-        overview={
-          <Text size="S">
-            The Finnish Transport Agency (Liikennevirasto) combined the Maritime
-            Administration, the Finnish Rail Administration, and the Road
-            Administration into a single authority responsible for national
-            travel and logistics.
-            <br />
-            <br />
-            The identity system needed to unify this new organization with a
-            visual language that works across print, signage, and digital
-            services, while supporting Finnish, Swedish, and English
-            communications.
-          </Text>
-        }
-        background="muted"
-        maxWidth="md"
-      />
+      {/* Project Meta - Custom 2-column layout */}
+      <section className={styles.metaSection}>
+        <div className={styles.metaGrid}>
+          <div className={styles.metaLeft}>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Services</h3>
+              <p className={styles.metaText}>
+                Brand Identity, Logo System, Visual Guidelines and Multilingual Design
+              </p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Duration</h3>
+              <p className={styles.metaText}>2009–2010</p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Tools used</h3>
+              <div className={styles.metaTools}>
+                <SiAdobeillustrator size={24} title="Illustrator" />
+                <SiAdobeindesign size={24} title="InDesign" />
+              </div>
+            </div>
+          </div>
+          <div className={styles.metaRight}>
+            <h3 className={styles.metaLabel}>Overview</h3>
+            <p className={styles.metaOverview}>
+              <strong>When Finland merged</strong> its Maritime Administration, Rail
+              Administration, and Road Administration into a single transport agency,
+              the new organization needed an identity that could unify three distinct
+              cultures while serving citizens in Finnish, Swedish, and English.
+            </p>
+            <p className={styles.metaOverview}>
+              <strong>The goal:</strong> Create a cohesive visual identity system
+              that signals a fresh start for the merged organization, works across
+              three official languages, and scales from business cards to highway
+              signage.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <ProcessBlock
-        sectionTitle="Design Methodology"
-        phases={[
-          {
-            title: "Discovery & Audit",
-            activities: [
-              "Identity analysis of three merging agencies",
-              "Visual asset inventory",
-              "Stakeholder expectations",
-              "Usage pattern review",
-            ],
-          },
-          {
-            title: "Concept Development",
-            activities: [
-              "Musical score/partiture metaphor",
-              "Conductor positioning concept",
-              "Moving word parts exploration",
-              "New era signaling",
-            ],
-          },
-          {
-            title: "Identity System",
-            activities: [
-              "Trilingual logo variants",
-              "Language descriptor lockups",
-              "Four-color primary palette",
-              "Felbridge Pro typography",
-            ],
-          },
-          {
-            title: "Guidelines & Rollout",
-            activities: [
-              "Five usage rules documented",
-              "Protection zones defined",
-              "Business card applications",
-              "National signage preparation",
-            ],
-          },
-        ]}
-        columns={4}
-        backgroundColor="transparent"
-        maxWidth="lg"
-        spacing="comfortable"
-        className={styles.processSection}
-      />
+      {/* Team Section */}
+      <section className={styles.teamSection}>
+        <div className={styles.teamContent}>
+          <h3 className={styles.metaLabel}>Team</h3>
+          <div className={styles.teamGrid}>
+            <div className={styles.teamMember}>
+              <Image
+                src="/images/portfolio/helsinki-design-system/team/petri.png"
+                alt="Petri Lahdelma"
+                width={80}
+                height={80}
+                className={styles.teamAvatar}
+              />
+              <span className={styles.teamName}>Petri Lahdelma</span>
+              <span className={styles.teamRole}>Designer</span>
+            </div>
+            <div className={styles.teamMember}>
+              <div className={styles.teamAvatarPlaceholder}>A</div>
+              <span className={styles.teamName}>Antti Kivinen</span>
+              <span className={styles.teamRole}>Designer</span>
+            </div>
+            <div className={styles.teamMember}>
+              <div className={styles.teamAvatarPlaceholder}>Y</div>
+              <span className={styles.teamName}>Yosi Bercovich</span>
+              <span className={styles.teamRole}>Designer</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Design Process */}
+      <div className={styles.processSection}>
+        <ProcessBlock
+          phases={[
+            {
+              title: "Discovery & Research",
+              activities: [
+                "Stakeholder interviews",
+                "Legacy brand audit",
+                "Competitor analysis",
+                "Multilingual requirements",
+              ],
+            },
+            {
+              title: "Concept Development",
+              activities: [
+                "Name exploration",
+                "Visual metaphors",
+                "Wordmark sketches",
+                "Color studies",
+              ],
+            },
+            {
+              title: "Identity Design",
+              activities: [
+                "Logo refinement",
+                "Typography selection",
+                "Color system",
+                "Language lockups",
+              ],
+            },
+            {
+              title: "Guidelines & Rollout",
+              activities: [
+                "Brand guidelines",
+                "Stationery design",
+                "Signage templates",
+                "Asset delivery",
+              ],
+            },
+          ]}
+          sectionTitle="Process"
+          backgroundColor="transparent"
+          maxWidth="lg"
+          spacing="comfortable"
+          columns={4}
+        />
+      </div>
+
+      {/* The Concept */}
       <StoryBlock
-        subtitle="Identity System"
-        title="A Consistent Visual Language"
+        subtitle="Concept"
+        title="The Conductor of Finland's Transport"
         content={[
           <Text key="p1" size="S">
-            The logotype interprets a musical score, positioning the agency as
-            the conductor of Finland's transport system. The moving word parts
-            form a unique, recognizable wordmark that signals a new era for the
+            The logo structure is a graphic interpretation of a polyphonic musical
+            score—positioning Liikennevirasto as the conductor orchestrating
+            Finland's roads, rails, and waterways. The cascading word parts create
+            a unique, human-friendly wordmark that signals a fresh start for the
             merged organization.
           </Text>,
           <Text key="p2" size="S">
-            Bilingual and English logo variants are locked to their language
-            descriptors, with strict protection zones around the mark to keep
-            applications clear and consistent across services and documents.
+            Unlike traditional government marks, the moving letters invite a second
+            look. Staff and citizens get a memorable symbol that challenges
+            expectations of what a transport agency can be.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Language Versions */}
+      <StoryBlock
+        subtitle="Multilingual"
+        title="Language Lockups"
+        content={[
+          <Text key="p1" size="S">
+            The identity supports three official languages: Finnish (Liikennevirasto),
+            Swedish (Trafikverket), and English (Finnish Transport Agency). Each
+            lockup maintains the cascading wordmark with language descriptors in
+            horizontal or vertical arrangements.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/finnish-transport-agency/language-lockups.webp",
+          alt: "Four logo lockups showing Swedish and English variants in horizontal and vertical layouts",
+          width: 1754,
+          height: 1241,
+          caption: "Language variants with locked descriptors for official documents",
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Protection Zones */}
+      <StoryBlock
+        subtitle="Construction"
+        title="Minimum Clear Space"
+        content={[
+          <Text key="p1" size="S">
+            The protection zone is defined by the height of the lowercase "i"
+            as the base unit (x). A minimum of 5x clear space above and x on
+            each side ensures the mark breathes across all applications—from
+            business cards to highway signage.
           </Text>,
         ]}
         images={[
           {
-            src: "/images/portfolio/finnish-transport-agency/cards.jpg",
-            alt: "Finnish Transport Agency business card applications",
-            width: 1200,
-            height: 801,
-            caption: "Business card and identity applications.",
+            src: "/images/portfolio/finnish-transport-agency/safe-area.png",
+            alt: "Logo construction showing clear space measurements with 5x above and x on sides",
+            width: 1080,
+            height: 1283,
+            caption: "Clear space defined by x-height of lowercase i",
           },
           {
-            src: "/images/portfolio/finnish-transport-agency/folders.jpg",
-            alt: "Finnish Transport Agency folder and stationery applications",
-            width: 1200,
-            height: 801,
-            caption: "Stationery applications across formats.",
+            src: "/images/portfolio/finnish-transport-agency/safe-area2.png",
+            alt: "Protection zone grid applied to Swedish and English language variants",
+            width: 1587,
+            height: 1123,
+            caption: "Clear space applied to language lockups",
           },
         ]}
         imageLayout="grid"
@@ -171,23 +252,24 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
+      {/* Logo Usage Rules */}
       <StoryBlock
         subtitle="Guidelines"
-        title="Color and Typography Rules"
+        title="Usage Rules"
         content={[
           <Text key="p1" size="S">
-            The palette is built from four primary colors supported by neutral
-            grays and accent tones. Typography guidance clarifies text setting
-            rules so long-form documents, signage, and digital interfaces remain
-            readable across languages.
+            Five basic rules govern logo usage: always use official files, never
+            modify element relationships, never alter colors, respect protection
+            zones, and avoid adding effects like drop shadows or gradients. The
+            guidelines show approved applications on various backgrounds.
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/finnish-transport-agency/website.png",
-          alt: "Finnish Transport Agency website layout",
-          width: 1024,
-          height: 2025,
-          caption: "Web layout explorations for public-facing services.",
+          src: "/images/portfolio/finnish-transport-agency/logo-usage-rules.webp",
+          alt: "Logo usage examples showing correct and incorrect applications with checkmarks and X marks",
+          width: 1754,
+          height: 1241,
+          caption: "Approved usage on white, tinted, and photographic backgrounds",
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -196,54 +278,178 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
+      {/* Color System */}
+      <section className={styles.colorSection}>
+        <div className={styles.colorContent}>
+          <Title level={3} terminals="sans">Color System</Title>
+          <Text size="S" className={styles.colorIntro}>
+            Four primary blues form the wordmark, supported by warm grays and
+            accent colors. The palette was specified for Pantone (print), CMYK
+            (process), and RGB (screen) to ensure consistency across all media.
+          </Text>
+          <ColorPalette showProportions={true} />
+        </div>
+      </section>
+
+      {/* Typography */}
+      <section className={styles.typographySection}>
+        <div className={styles.typographyContent}>
+          <Title level={3} terminals="sans">Typography</Title>
+          <Text size="S" className={styles.typographyIntro}>
+            The identity uses Agfa Monotype Felbridge Pro, designed by Robin
+            Nicholas in 2003 specifically for electronic display. Its letter
+            shapes reproduce clearly at low resolutions while maintaining elegance
+            in print.
+          </Text>
+          <div className={styles.typographyWaterfall}>
+            <div className={styles.waterfallItem}>
+              <span className={styles.waterfallLabel}>Header</span>
+              <span className={styles.waterfallHeader}>
+                Moving Finland Forward
+              </span>
+            </div>
+            <div className={styles.waterfallItem}>
+              <span className={styles.waterfallLabel}>Subhead</span>
+              <span className={styles.waterfallSubhead}>
+                Connecting roads, rails, and waterways across the nation
+              </span>
+            </div>
+            <div className={styles.waterfallItem}>
+              <span className={styles.waterfallLabel}>Body</span>
+              <span className={styles.waterfallBody}>
+                The Finnish Transport Agency oversees the planning, construction,
+                and maintenance of transport infrastructure. Our mission is to
+                ensure safe, efficient, and sustainable mobility for all.
+              </span>
+            </div>
+            <div className={styles.waterfallItem}>
+              <span className={styles.waterfallLabel}>Caption</span>
+              <span className={styles.waterfallCaption}>
+                Photography: Maritime Administration Archives, 2009
+              </span>
+            </div>
+          </div>
+          <Text size="S" className={styles.typographyNote}>
+            Specimen rendered in Felbridge Pro, designed by Robin Nicholas for Agfa Monotype.
+          </Text>
+        </div>
+      </section>
+
+      {/* Stamp Logos */}
+      <StoryBlock
+        subtitle="Official Seals"
+        title="Stamp Logos"
+        content={[
+          <Text key="p1" size="S">
+            For official documents and certificates, circular stamp variations
+            combine the wordmark with trilingual descriptors. Different center
+            treatments (open, filled, arrow, striped) allow hierarchical
+            distinction between document types.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/finnish-transport-agency/stamp-logos.webp",
+          alt: "Five circular stamp logo variations for official documents",
+          width: 2481,
+          height: 1754,
+          caption: "Stamp variations for certificates, approvals, and official seals",
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Applications Grid */}
+      <section className={styles.applicationsSection}>
+        <div className={styles.applicationsHeader}>
+          <Title level={3} terminals="sans">Applications</Title>
+        </div>
+        <div className={styles.applicationsGrid}>
+          <figure className={styles.appItem}>
+            <Image
+              src="/images/portfolio/finnish-transport-agency/letterhead.webp"
+              alt="Official letterhead with logo and structured layout"
+              width={1241}
+              height={1754}
+              className={styles.appImage}
+            />
+            <figcaption className={styles.appCaption}>
+              Letterhead with Swedish co-branding
+            </figcaption>
+          </figure>
+          <figure className={styles.appItem}>
+            <Image
+              src="/images/portfolio/finnish-transport-agency/security-pass.webp"
+              alt="Employee security pass with angular blue geometric shapes"
+              width={505}
+              height={322}
+              className={styles.appImage}
+            />
+            <figcaption className={styles.appCaption}>
+              Security pass with geometric accents
+            </figcaption>
+          </figure>
+          <figure className={styles.appItem}>
+            <Image
+              src="/images/portfolio/finnish-transport-agency/rail-poster.webp"
+              alt="Trilingual rail replacement bus information poster"
+              width={2953}
+              height={4134}
+              className={styles.appImage}
+            />
+            <figcaption className={styles.appCaption}>
+              Rail service poster with VR co-branding
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* Maritime Connection */}
       <GridBlock
         columns={2}
         gap="medium"
         backgroundColor="transparent"
         maxWidth="lg"
         spacing="comfortable"
-        className={styles.imageGrid}
+        className={styles.maritimeGrid}
         cells={[
           {
-            type: "text",
-            innerPadding: true,
-            content: (
-              <Text size="S">
-                The guidelines emphasize using official logo files, preserving
-                proportions, keeping colors unchanged, and avoiding extra
-                effects. The result is a system that scales across national
-                infrastructure touchpoints without diluting the brand.
-              </Text>
-            ),
+            type: "image",
+            src: "/images/portfolio/finnish-transport-agency/080628_Porkkalan_majakka11.jpg",
+            alt: "Porkkala lighthouse on rocky Finnish coastline",
+            width: 1200,
+            height: 800,
+            caption: "Porkkala lighthouse — one of many coastal assets",
           },
           {
             type: "image",
-            src: "/images/portfolio/finnish-transport-agency/typography.jpg",
-            alt: "Finnish Transport Agency typography sample",
-            width: 650,
-            height: 433,
-            caption: "Typography and system detail studies.",
+            src: "/images/portfolio/finnish-transport-agency/lighthouse-publication.webp",
+            alt: "Finnish List of Lights 2010 publication cover and back",
+            width: 2481,
+            height: 1754,
+            caption: "Finnish List of Lights 2010",
           },
         ]}
       />
 
+      {/* Outcome */}
       <StoryBlock
-        subtitle="Outcomes"
-        title="Unified National Identity"
+        subtitle="Outcome"
+        title="One Voice for Three Modes"
         content={[
           <Text key="p1" size="S">
-            The identity system successfully unified three previously separate
-            government agencies under one cohesive visual language. The musical
-            score concept—positioning the agency as conductor of Finland's
-            transport—gave staff and citizens a clear, memorable symbol of the
-            new organization.
+            The identity unified three historically separate agencies under a
+            single visual language. The musical score concept gave staff across
+            road, rail, and maritime divisions a shared symbol—one that
+            communicates movement, coordination, and national reach.
           </Text>,
           <Text key="p2" size="S">
-            Trilingual support ensures accessibility across Finnish, Swedish,
-            and English communications, while strict protection zones and usage
-            rules maintain consistency from business cards to highway signage.
-            The Felbridge Pro typography balances screen readability with print
-            elegance across all applications.
+            Trilingual support (Finnish, Swedish, English) ensures accessibility
+            for all citizens, while strict construction rules maintain consistency
+            from business cards to highway signs. The system scaled successfully
+            across print, digital, environmental, and publication applications.
           </Text>,
         ]}
         imageLayout="none"
@@ -252,6 +458,57 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         spacing="comfortable"
         className={styles.outcomesSection}
       />
+
+      {/* Key Results */}
+      <section className={styles.resultsSection}>
+        <div className={styles.resultsContent}>
+          <Title level={3} terminals="sans">Key Results</Title>
+          <div className={styles.resultsGrid}>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>3</span>
+              <span className={styles.resultLabel}>Agencies Unified</span>
+              <span className={styles.resultDetail}>
+                Road, Rail, and Maritime administrations merged under one identity
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>650</span>
+              <span className={styles.resultLabel}>Employees</span>
+              <span className={styles.resultDetail}>
+                Staff from three distinct cultures united
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>€2.1B</span>
+              <span className={styles.resultLabel}>Annual Budget</span>
+              <span className={styles.resultDetail}>
+                Infrastructure investment managed under the new brand
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>78,000 km</span>
+              <span className={styles.resultLabel}>Road Network</span>
+              <span className={styles.resultDetail}>
+                Highways maintained with consistent signage
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>6,000 km</span>
+              <span className={styles.resultLabel}>Rail Network</span>
+              <span className={styles.resultDetail}>
+                Railways branded with the new identity
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>16,000 km</span>
+              <span className={styles.resultLabel}>Waterways</span>
+              <span className={styles.resultDetail}>
+                Coastal and inland fairways under one mark
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
     </ProjectDetailLayout>
   );
 }
