@@ -2,23 +2,35 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-01-16)
+See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Tell the true story — accurately represent the design system work without overclaiming or violating NDA constraints.
-**Current focus:** Phase 6 — Verification & Outcomes (complete)
+**Current focus:** v1.0 SHIPPED — Ready for next milestone
 
 ## Current Position
 
-Phase: 6 of 6 (Verification & Outcomes)
-Plan: 1 of 1 complete
-Status: PROJECT COMPLETE
-Last activity: 2026-01-16 — Completed 06-01-PLAN.md
+Phase: — of — (v1.0 complete)
+Plan: —
+Status: MILESTONE COMPLETE
+Last activity: 2026-01-19 — v1.0 milestone archived
 
 Progress: ██████████ 100%
 
+## Milestone Summary
+
+**v1.0 SAP Build Apps Portfolio** — SHIPPED 2026-01-16
+
+- 6 phases, 6 plans completed
+- 23/23 requirements satisfied
+- 32 WebP images optimized
+- All content verified NDA-compliant
+
+See: `.planning/MILESTONES.md` for full details
+See: `.planning/milestones/v1.0-*.md` for archived artifacts
+
 ## Performance Metrics
 
-**Velocity:**
+**v1.0 Velocity:**
 - Total plans completed: 6
 - Average duration: 4.7 min
 - Total execution time: 28 min
@@ -34,64 +46,32 @@ Progress: ██████████ 100%
 | 05-metadata-seo | 1 | 6 min | 6 min |
 | 06-verification-outcomes | 1 | 5 min | 5 min |
 
-**Recent Trend:**
-- All 6 plans: 2 min, 4 min, 4 min, 7 min, 6 min, 5 min
-- Trend: Stable execution, content-heavy phases slightly longer
-
 ## Accumulated Context
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-All decisions from project execution:
-
-| Decision | Phase | Rationale |
-|----------|-------|-----------|
-| Used sharp from Next.js | 01-01 | No new dependency needed |
-| WebP quality 80 | 01-01 | Good size/quality balance |
-| Kept original PNGs | 01-01 | Phase 3 will update refs |
-| Kebab-case naming | 01-01 | Consistent web convention |
-| 300+ developers and designers | 02-01 | Accurate team count including both roles |
-| Removed IDC claim | 02-01 | Pending Phase 6 verification |
-| Removed 60% metric | 02-01 | Unverifiable claim |
-| "Serving" not "enabling" | 02-01 | More accurate framing |
-| Team photo remains PNG | 03-01 | Not part of phase scope |
-| Grid layout for image sections | 03-01 | Richer visual content |
-| Removed Gartner 70% statistic | 04-01 | Outdated year prediction, replaced with general statement |
-| Enterprise Ready section text-only | 04-01 | Images moved to Data Components for cleaner separation |
-| hero-background.webp for OG image | 05-01 | Portfolio hero better than generic logo for social sharing |
-| Duration in SEO description | 05-01 | Completeness matches hero content |
-| All verification passed | 06-01 | No additional changes needed |
-| thumbnail.webp from product icon | 06-01 | Created for portfolio grid (gap closure) |
+All v1.0 decisions logged in PROJECT.md Key Decisions table with outcomes marked.
 
 ### Pending Todos
 
-None - project complete.
+None — v1.0 complete. Next milestone requires `/gsd:discuss-milestone` then `/gsd:new-milestone`.
 
 ### Blockers/Concerns
 
-None - all phases completed successfully.
+None — v1.0 shipped successfully.
 
 ## Session Continuity
 
-Last session: 2026-01-16T02:19:00Z
-Stopped at: PROJECT COMPLETE - All 6 phases executed
+Last session: 2026-01-19
+Stopped at: v1.0 MILESTONE COMPLETE
 Resume file: None
 
-## Project Completion Summary
+## Next Steps
 
-The SAP Build Apps portfolio page update project is complete:
+1. `/gsd:discuss-milestone` — thinking partner, gather context for next work
+2. `/gsd:new-milestone` — update PROJECT.md with new goals
+3. `/gsd:define-requirements` — scope what to build
+4. `/gsd:create-roadmap` — plan how to build it
 
-- **Phase 1:** Image processing - 16 WebP images generated
-- **Phase 2:** Content accuracy - Claims corrected, 60% metric removed
-- **Phase 3:** Image integration - WebP references updated in page
-- **Phase 4:** Data Components - New section with tables/data viz content
-- **Phase 5:** Metadata & SEO - Title, description, OG image configured
-- **Phase 6:** Verification - All content verified accurate and NDA-compliant
-
-All verified facts:
-- Duration: March 2022 - February 2026 (nearly 4 years)
-- Components: 100+
-- Served: 300+ developers and designers
-- Compliance: WCAG 2.1 AA
-- Design-to-code parity: 1:1 Figma-to-ReactTS mapping
+---
+*State updated: 2026-01-19 after v1.0 milestone completion*

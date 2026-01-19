@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Update the SAP Build Apps case study page with accurate, fact-checked content and real source images. This is a portfolio piece showcasing nearly 4 years of design system leadership at SAP, properly attributing the work and avoiding unverifiable claims.
+A portfolio case study page showcasing nearly 4 years of design system leadership at SAP Build Apps (March 2022 – February 2026). The page accurately represents the work — 100+ components serving 300+ developers and designers — with optimized imagery, verified facts, and NDA-compliant content.
 
 ## Core Value
 
@@ -12,18 +12,18 @@ Update the SAP Build Apps case study page with accurate, fact-checked content an
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Fix inaccurate claims (team size, remove 60% metric, correct duration) — v1.0
+- ✓ Update hero description and metadata with accurate framing — v1.0
+- ✓ Add missing Data Components section (Tables & Data Visualization) — v1.0
+- ✓ Process and add source images from Portfolio content folder — v1.0
+- ✓ Update image captions and alt text for accuracy — v1.0
+- ✓ Clarify role attribution (led small DS team, system served 300+ people) — v1.0
+- ✓ Remove or verify IDC MarketScape and Joule AI references — v1.0
+- ✓ Ensure all content is NDA-compliant — v1.0
 
 ### Active
 
-- [ ] Fix inaccurate claims (team size, remove 60% metric, correct duration)
-- [ ] Update hero description and metadata with accurate framing
-- [ ] Add missing Data Components section (Tables & Data Visualization)
-- [ ] Process and add source images from Portfolio content folder
-- [ ] Update image captions and alt text for accuracy
-- [ ] Clarify role attribution (led small DS team, system served 300+ people)
-- [ ] Remove or verify IDC MarketScape and Joule AI references
-- [ ] Ensure all content is NDA-compliant
+(None — v1.0 complete)
 
 ### Out of Scope
 
@@ -34,50 +34,38 @@ Update the SAP Build Apps case study page with accurate, fact-checked content an
 
 ## Context
 
-**Existing codebase:** This is a brownfield project. The portfolio site already exists with:
+**Current codebase state:** Shipped v1.0 with:
 - Page route: `app/work/sap-build-apps/page.tsx`
-- Page component: `nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx`
-- Project data: `nextjs-app/shared/data/projects.ts`
-- Existing images in `public/images/portfolio/sap-build-apps/`
+- Page component: `nextjs-app/shared/components/pages/Work/SapBuildApps/SapBuildAppsPage.tsx` (~500 LOC)
+- 32 WebP images in `public/images/portfolio/sap-build-apps/`
+- Full SEO metadata with OpenGraph and Twitter cards
 
-**Source content:**
-- JSON spec: `/Users/petrilahdelma/Documents/_WORK/Portfolio content/website-json/sap-build-apps-design-system.json`
-- Source images: `/Users/petrilahdelma/Documents/_WORK/Portfolio content/Projects/SAP-Build-Apps-Design-System/assets/`
-- Documentation images: `.../assets/documentation/`
-
-**Key facts (verified by user):**
+**Key verified facts:**
 - Duration: March 2022 – February 2026 (nearly 4 years)
 - Role: Design System Lead
-- Team: Small team (user + a few people) building the DS
 - Served: 300+ developers and designers worldwide
-- Components: 100+ (confident)
-- User contributed: UI design, user research, team leadership, direct code contributions, all tokens
-
-**Claims to remove/modify:**
-- "200+ developers" → "serving 300+ developers and designers"
-- "60% reduction in development time" → remove (unverifiable)
-- Duration in JSON was wrong (said 2021-2023) → use March 2022 – February 2026
-
-**NDA considerations:**
-- Can show design artifacts (tokens, components, workflows)
-- Need accurate technical terminology
-- Proper attribution (user's role vs team contributions)
-
-## Constraints
-
-- **Tech stack**: Next.js 15, React, TypeScript, CSS Modules — existing patterns only
-- **Images**: Must process source PNGs to web-optimized formats (WebP preferred)
-- **Image dimensions**: Follow existing pattern (738x506 for grid, 1200x600 for hero/single)
-- **Translations**: EN/FI/SV coverage if any translatable strings added
-- **Accessibility**: Alt text required for all images
+- Components: 100+ production-ready
+- Compliance: WCAG 2.1 AA
+- Design-to-code: 1:1 Figma-to-ReactTS parity
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Use existing layout patterns | No need to create new components, faster execution | — Pending |
-| Remove 60% claim | Cannot verify, better to understate than overclaim | — Pending |
-| Reframe team size | Accurate: small DS team serving 300+ | — Pending |
+| Use existing layout patterns | No need to create new components, faster execution | ✓ Good |
+| Remove 60% claim | Cannot verify, better to understate than overclaim | ✓ Good |
+| Reframe team size | Accurate: small DS team serving 300+ | ✓ Good |
+| Sharp from Next.js dependency | No new install needed | ✓ Good |
+| WebP quality 80 | Good size/quality balance, 88% reduction | ✓ Good |
+| Hero image for OpenGraph | Better social preview than generic logo | ✓ Good |
+| Removed Gartner 70% statistic | Outdated year prediction | ✓ Good |
+
+## Constraints
+
+- **Tech stack**: Next.js 15, React, TypeScript, CSS Modules — existing patterns only
+- **Images**: Processed source PNGs to WebP format
+- **Image dimensions**: 738x506 for grid, 1200x600 for hero/single
+- **Accessibility**: Alt text required for all images (9 images with descriptive alt text)
 
 ---
-*Last updated: 2026-01-16 after initialization*
+*Last updated: 2026-01-19 after v1.0 milestone*
