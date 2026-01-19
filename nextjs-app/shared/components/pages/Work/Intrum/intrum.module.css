@@ -1,0 +1,11 @@
+.page {
+  background-color: var(--main-body-background-color);
+}
+
+.storySection {
+  margin-block: var(--space-layout-64);
+}
+
+.imageGrid {
+  margin-block: var(--space-layout-64);
+}

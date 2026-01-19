@@ -1,53 +1,51 @@
-# Requirements: SAP Build Apps Portfolio Page
+# Requirements: Portfolio Case Studies v1.1
 
-**Defined:** 2026-01-16
-**Core Value:** Tell the true story — accurately represent the design system work without overclaiming or violating NDA constraints.
+**Defined:** 2026-01-19
+**Core Value:** Tell true stories with unique compositions. Each project deserves accurate representation with its own layout personality — not cookie-cutter templates.
 
 ## v1 Requirements
 
-Requirements for initial release. Each maps to roadmap phases.
+Requirements for v1.1 Portfolio Expansion. Each maps to roadmap phases.
 
-### Content
+### Case Studies
 
-- [x] **CONT-01**: Fix team size claim — "serving 300+ developers and designers" ✓
-- [x] **CONT-02**: Remove 60% development time reduction claim ✓
-- [x] **CONT-03**: Correct duration to March 2022 – February 2026 ✓
-- [x] **CONT-04**: Clarify role attribution — led small DS team, system served 300+ ✓
-- [x] **CONT-05**: Add Data Components section (Tables & Data Visualization) ✓
-- [x] **CONT-06**: Update hero description with accurate framing ✓
-- [x] **CONT-07**: Update story block text for accuracy throughout ✓
+- [ ] **CASE-01**: VertaaUX case study page with hero, narrative, gallery, process, and unique layout
+- [ ] **CASE-02**: Finnish Transport Agency case study page with hero, narrative, gallery, process, and unique layout
+- [ ] **CASE-03**: Raw View case study page with hero, narrative, gallery, process, and unique layout
 
-### Images
+### Content Structure
 
-- [x] **IMG-01**: Process source images to WebP format ✓
-- [x] **IMG-02**: Resize images to spec (738x506 grid, 1200x600 hero/single) ✓
-- [x] **IMG-03**: Replace existing placeholder images with real source files ✓
-- [x] **IMG-04**: Add typography image (`AppGyver_DS_Type_size.png`) ✓
-- [x] **IMG-05**: Add button construction image (`Button construction.png`) ✓
-- [x] **IMG-06**: Add table component image (`Table (APPGYVER-1145).png`) ✓
-- [x] **IMG-07**: Add data visualization image (`Datavisualization (APPGYVER-1141).png`) ✓
-- [x] **IMG-08**: Update all alt text and captions for accuracy ✓
+Per case study page requirements:
 
-### Metadata
+- [ ] **CONT-01**: Hero section with project image, title, duration, and role
+- [ ] **CONT-02**: Story narrative sections (context, challenge, solution)
+- [ ] **CONT-03**: Image gallery with optimized WebP images (738x506 grid, 1200x600 hero)
+- [ ] **CONT-04**: Process documentation section (methodology, tools)
+- [ ] **CONT-05**: Custom sections as needed (flexible layout blocks like HDS or KnobSmith examples)
 
-- [x] **META-01**: Update `projects.ts` entry with accurate description ✓
-- [x] **META-02**: Update page SEO metadata (title, description, OpenGraph) ✓
-- [x] **META-03**: Ensure duration is consistent across all locations ✓
+### Quality Standards
 
-### Verification
-
-- [x] **VERF-01**: Verify or remove IDC MarketScape claim ✓
-- [x] **VERF-02**: Verify or remove Joule AI reference ✓
-- [x] **VERF-03**: Final NDA compliance review on all content ✓
-
-### Outcomes
-
-- [x] **OUTC-01**: Update impact metrics grid with verified data (100+ components, 300+ served, WCAG 2.1) ✓
-- [x] **OUTC-02**: Create or update outcomes visual using source images ✓
+- [ ] **QUAL-01**: Each page has unique layout composition (not cookie-cutter)
+- [ ] **QUAL-02**: All content verified from user-provided facts only (no invented claims)
+- [ ] **QUAL-03**: NDA-compliant (no confidential client information exposed)
+- [ ] **QUAL-04**: Full SEO metadata (OpenGraph, Twitter cards, meta descriptions)
 
 ## v2 Requirements
 
-(None — this is a focused content update)
+Deferred to v1.2 milestone. Tracked but not in current roadmap.
+
+### Case Studies
+
+- **CASE-04**: Tulli (Finnish Customs) case study page with hero, narrative, gallery, process, and unique layout
+- **CASE-05**: Intrum case study page with hero, narrative, gallery, process, and unique layout
+
+### Enhancements
+
+- **ENH-01**: Donny Chat Portfolio CTA integration
+- **ENH-02**: Scroll-triggered animations for case study pages
+- **ENH-03**: Performance optimization (Core Web Vitals)
+- **ENH-04**: Mobile experience improvements
+- **ENH-05**: Accessibility audit (WCAG compliance)
 
 ## Out of Scope
 
@@ -55,11 +53,11 @@ Explicitly excluded. Documented to prevent scope creep.
 
 | Feature | Reason |
 |---------|--------|
-| Redesigning page layout | Using existing ProjectDetailLayout pattern |
-| New component patterns | Using existing StoryBlock, GridBlock, ProcessBlock |
-| Creating new images from scratch | Only processing existing source files |
-| Other portfolio pages | SAP Build Apps only |
-| Translations (EN/FI/SV) | No new translatable strings being added |
+| New layout block types (timeline, comparison, quote) | Existing blocks (Story, Grid, Process) sufficient for v1.1 |
+| Video embeds | Storage/bandwidth complexity, not needed for current projects |
+| Interactive demos | High complexity, not core to portfolio storytelling |
+| Client login/protected content | No NDA content requires protection mechanism |
+| Comments/feedback system | Portfolio is presentation-only |
 
 ## Traceability
 
@@ -67,35 +65,24 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| IMG-01 | Phase 1 | Complete |
-| IMG-02 | Phase 1 | Complete |
-| CONT-01 | Phase 2 | Complete |
-| CONT-02 | Phase 2 | Complete |
-| CONT-03 | Phase 2 | Complete |
-| CONT-04 | Phase 2 | Complete |
-| CONT-06 | Phase 2 | Complete |
-| IMG-03 | Phase 3 | Complete |
-| IMG-04 | Phase 3 | Complete |
-| IMG-05 | Phase 3 | Complete |
-| IMG-06 | Phase 3 | Complete |
-| IMG-07 | Phase 3 | Complete |
-| IMG-08 | Phase 3 | Complete |
-| CONT-05 | Phase 4 | Complete |
-| CONT-07 | Phase 4 | Complete |
-| META-01 | Phase 5 | Complete |
-| META-02 | Phase 5 | Complete |
-| META-03 | Phase 5 | Complete |
-| VERF-01 | Phase 6 | Complete |
-| VERF-02 | Phase 6 | Complete |
-| VERF-03 | Phase 6 | Complete |
-| OUTC-01 | Phase 6 | Complete |
-| OUTC-02 | Phase 6 | Complete |
+| CASE-01 | Phase 7 | Pending |
+| CASE-02 | Phase 8 | Pending |
+| CASE-03 | Phase 9 | Pending |
+| CONT-01 | Phase 7, 8, 9 | Pending |
+| CONT-02 | Phase 7, 8, 9 | Pending |
+| CONT-03 | Phase 7, 8, 9 | Pending |
+| CONT-04 | Phase 7, 8, 9 | Pending |
+| CONT-05 | Phase 7, 8, 9 | Pending |
+| QUAL-01 | Phase 7, 8, 9 | Pending |
+| QUAL-02 | Phase 7, 8, 9 | Pending |
+| QUAL-03 | Phase 7, 8, 9 | Pending |
+| QUAL-04 | Phase 7, 8, 9 | Pending |
 
 **Coverage:**
-- v1 requirements: 23 total
-- Mapped to phases: 23
-- Unmapped: 0 ✓
+- v1 requirements: 12 total
+- Mapped to phases: 12 ✓
+- Unmapped: 0
 
 ---
-*Requirements defined: 2026-01-16*
-*Last updated: 2026-01-16 — All requirements complete (v1.0 milestone)*
+*Requirements defined: 2026-01-19*
+*Last updated: 2026-01-19 after roadmap creation*

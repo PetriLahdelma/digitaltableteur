@@ -1,0 +1,181 @@
+"use client";
+
+import React from "react";
+import Text from "@dt/Text";
+import StoryBlock from "../../../../patterns/StoryBlock";
+import GridBlock from "../../../../patterns/GridBlock";
+import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
+import { ProjectHero } from "../../../../patterns/ProjectHero";
+import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
+import { RelatedProjects } from "../../../../patterns/RelatedProjects";
+import { ProjectNav } from "../../../ProjectNav";
+import { getProjectBySlug } from "../../../../data/projects";
+import {
+  SiAdobeillustrator,
+  SiAdobeindesign,
+  SiAdobephotoshop,
+} from "react-icons/si";
+
+import styles from "./rawView.module.css";
+
+export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
+  const project = getProjectBySlug("raw-view");
+
+  if (!project) {
+    return <div>Project not found</div>;
+  }
+
+  return (
+    <ProjectDetailLayout
+      nav={nav ?? <ProjectNav currentSlug={project.slug} />}
+      hero={
+        <ProjectHero
+          title={project.title}
+          description={project.description}
+          image={{
+            src: "/images/portfolio/raw-view/hero.jpg",
+            alt: "Raw View editorial spread preview",
+            width: 2362,
+            height: 1577,
+          }}
+          category={project.category.replace("-", " ")}
+          tags={project.tags}
+          variant="contained"
+          showScrollIndicator={true}
+        />
+      }
+      relatedProjects={<RelatedProjects currentSlug={project.slug} maxItems={3} />}
+      className={styles.page}
+    >
+      <ProjectMetaSection
+        services={["Editorial Design", "Art Direction", "Publication Design", "Print Production"]}
+        tools={[
+          {
+            key: "indesign",
+            icon: <SiAdobeindesign size={24} />,
+            name: "InDesign",
+          },
+          {
+            key: "illustrator",
+            icon: <SiAdobeillustrator size={24} />,
+            name: "Illustrator",
+          },
+          {
+            key: "photoshop",
+            icon: <SiAdobephotoshop size={24} />,
+            name: "Photoshop",
+          },
+        ]}
+        client={{ name: "Raw View" }}
+        overview={
+          <Text size="S">
+            Raw View marks a new beginning for the former Photo Raw magazine. The
+            relaunch shifted the publication into a bookazine format, expanded the
+            page count to 160 pages, and introduced both English and Finnish
+            editions alongside a new e-magazine and website.
+            <br />
+            <br />
+            The editorial direction focuses on documentary photography that
+            tackles complex social subjects. The visual system needed to be clear
+            and dynamic so long-form photo essays remain immersive, while still
+            supporting a non-commercial publication that keeps print culture
+            alive.
+          </Text>
+        }
+        background="muted"
+        maxWidth="md"
+      />
+
+      <StoryBlock
+        subtitle="Relaunch"
+        title="A Bookazine for a New Era"
+        content={[
+          <Text key="p1" size="S">
+            The relaunch from Photo Raw to Raw View was designed to signal a
+            fresh start. Moving to a bookazine format allowed the team to deepen
+            the storytelling with 160-page issues and a more book-like presence
+            in print.
+          </Text>,
+          <Text key="p2" size="S">
+            Each issue is published in both English and Finnish, with the print
+            edition complemented by an e-magazine and website for wider reach.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/raw-view/book-cover.jpg",
+          alt: "Raw View bookazine cover study",
+          width: 2953,
+          height: 2902,
+          caption: "Cover study for the expanded bookazine format.",
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      <StoryBlock
+        subtitle="Editorial Vision"
+        title="Documentary Photography First"
+        content={[
+          <Text key="p1" size="S">
+            Raw View champions carefully crafted documentary projects that take
+            an artistic approach to societal subjects. The goal is to inspire,
+            stimulate, and entertain while staying grounded in journalistic
+            integrity.
+          </Text>,
+          <Text key="p2" size="S">
+            The magazine is intentionally non-commercial, supporting the
+            photography community and preserving the tactile experience of
+            print through thoughtful material and layout choices.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/raw-view/spread.jpg",
+          alt: "Raw View interior spread",
+          width: 3543,
+          height: 971,
+          caption: "Interior spread pacing long-form visual narratives.",
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      <GridBlock
+        columns={2}
+        gap="medium"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.imageGrid}
+        cells={[
+          {
+            type: "text",
+            innerPadding: true,
+            content: (
+              <Text size="S">
+                The relaunch brought new contributors and an expanded editorial
+                team, including international advisors and two photo editors.
+                The visual appearance was shaped to feel clear, dynamic, and
+                exciting while respecting the documentary voice of the
+                publication.
+              </Text>
+            ),
+          },
+          {
+            type: "image",
+            src: "/images/portfolio/raw-view/hero.jpg",
+            alt: "Raw View editorial spread",
+            width: 2362,
+            height: 1577,
+            caption: "Visual system balancing clarity and editorial depth.",
+          },
+        ]}
+      />
+    </ProjectDetailLayout>
+  );
+}

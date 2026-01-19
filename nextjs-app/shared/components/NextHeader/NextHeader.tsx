@@ -39,9 +39,6 @@ export function NextHeader() {
   const { theme, cycleTheme } = usePersistentTheme();
   const { showToast } = useToast();
 
-  const [navOffset, setNavOffset] = React.useState(0);
-  const leftRef = React.useRef<HTMLDivElement | null>(null);
-  const controlsRef = React.useRef<HTMLDivElement | null>(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
   const [isThemeAnimating, setIsThemeAnimating] = React.useState(false);
@@ -80,49 +77,6 @@ export function NextHeader() {
 
   const isActive = (href: string, exact?: boolean) =>
     exact ? pathname === href : pathname.startsWith(href);
-
-  React.useLayoutEffect(() => {
-    let rafId: number | null = null;
-
-    const computeOffset = () => {
-      if (typeof window === "undefined") return;
-      if (!leftRef.current || !controlsRef.current) {
-        setNavOffset(0);
-        return;
-      }
-      if (window.innerWidth <= 1100) {
-        setNavOffset(0);
-        return;
-      }
-      const leftWidth = leftRef.current.getBoundingClientRect().width;
-      const rightWidth = controlsRef.current.getBoundingClientRect().width;
-      setNavOffset((rightWidth - leftWidth) / 2);
-    };
-
-    const scheduleCompute = () => {
-      if (rafId !== null) return;
-      rafId = window.requestAnimationFrame(() => {
-        rafId = null;
-        computeOffset();
-      });
-    };
-
-    computeOffset();
-    window.addEventListener("resize", scheduleCompute);
-
-    let resizeObserver: ResizeObserver | undefined;
-    if (typeof ResizeObserver !== "undefined") {
-      resizeObserver = new ResizeObserver(() => computeOffset());
-      if (leftRef.current) resizeObserver.observe(leftRef.current);
-      if (controlsRef.current) resizeObserver.observe(controlsRef.current);
-    }
-
-    return () => {
-      if (rafId !== null) window.cancelAnimationFrame(rafId);
-      window.removeEventListener("resize", scheduleCompute);
-      resizeObserver?.disconnect();
-    };
-  }, []);
 
   React.useEffect(() => {
     setMobileMenuOpen(false);
@@ -167,7 +121,7 @@ export function NextHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <div ref={leftRef} className={styles.left}>
+        <div className={styles.left}>
           <Link
             href="/"
             className={styles.logoLink}
@@ -182,10 +136,6 @@ export function NextHeader() {
         </div>
         <nav
           className={styles.navbar}
-          style={{
-            transform:
-              navOffset === 0 ? undefined : `translateX(${navOffset}px)`,
-          }}
           aria-label={t("navMenuTitle", "Main navigation")}
           suppressHydrationWarning
         >
@@ -209,7 +159,7 @@ export function NextHeader() {
             })}
           </ul>
         </nav>
-        <div ref={controlsRef} className={styles.controls}>
+        <div className={styles.controls}>
           <div className={styles.languageSwitcher} suppressHydrationWarning>
             {languages.map((lang) => (
               <div key={lang.code} className={styles.languageLinkWrapper}>

@@ -2,96 +2,62 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-01-16)
+See: .planning/PROJECT.md (updated 2026-01-19)
 
-**Core value:** Tell the true story — accurately represent the design system work without overclaiming or violating NDA constraints.
-**Current focus:** Phase 6 — Verification & Outcomes (complete)
+**Core value:** Tell true stories with unique compositions. Each project deserves accurate representation with its own layout personality.
+**Current focus:** Phase 8 — Finnish Transport Agency (complete)
 
 ## Current Position
 
-Phase: 6 of 6 (Verification & Outcomes)
-Plan: 1 of 1 complete
-Status: PROJECT COMPLETE
-Last activity: 2026-01-16 — Completed 06-01-PLAN.md
+Phase: 8 of 9 (Finnish Transport Agency)
+Plan: 2 of 2 complete
+Status: Phase complete
+Last activity: 2026-01-19 — Completed 08-02-PLAN.md (unique styling)
 
-Progress: ██████████ 100%
+Progress: █████████░ 85% (v1.0 complete, Phase 7+8 complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 4.7 min
-- Total execution time: 28 min
+- Total plans completed: 11 (v1.0: 6, v1.1: 5)
+- Average duration: —
+- Total execution time: —
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-image-processing | 1 | 2 min | 2 min |
-| 02-content-accuracy | 1 | 4 min | 4 min |
-| 03-image-integration | 1 | 4 min | 4 min |
-| 04-data-components | 1 | 7 min | 7 min |
-| 05-metadata-seo | 1 | 6 min | 6 min |
-| 06-verification-outcomes | 1 | 5 min | 5 min |
-
-**Recent Trend:**
-- All 6 plans: 2 min, 4 min, 4 min, 7 min, 6 min, 5 min
-- Trend: Stable execution, content-heavy phases slightly longer
+| 1-6 (v1.0) | 6 | — | — |
+| 7 (v1.1) | 2 | — | — |
+| 8 (v1.1) | 2 | ~20min | ~10min |
 
 ## Accumulated Context
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-All decisions from project execution:
-
-| Decision | Phase | Rationale |
-|----------|-------|-----------|
-| Used sharp from Next.js | 01-01 | No new dependency needed |
-| WebP quality 80 | 01-01 | Good size/quality balance |
-| Kept original PNGs | 01-01 | Phase 3 will update refs |
-| Kebab-case naming | 01-01 | Consistent web convention |
-| 300+ developers and designers | 02-01 | Accurate team count including both roles |
-| Removed IDC claim | 02-01 | Pending Phase 6 verification |
-| Removed 60% metric | 02-01 | Unverifiable claim |
-| "Serving" not "enabling" | 02-01 | More accurate framing |
-| Team photo remains PNG | 03-01 | Not part of phase scope |
-| Grid layout for image sections | 03-01 | Richer visual content |
-| Removed Gartner 70% statistic | 04-01 | Outdated year prediction, replaced with general statement |
-| Enterprise Ready section text-only | 04-01 | Images moved to Data Components for cleaner separation |
-| hero-background.webp for OG image | 05-01 | Portfolio hero better than generic logo for social sharing |
-| Duration in SEO description | 05-01 | Completeness matches hero content |
-| All verification passed | 06-01 | No additional changes needed |
-| thumbnail.webp from product icon | 06-01 | Created for portfolio grid (gap closure) |
+- v1.0: Use existing layout patterns (ProjectDetailLayout, StoryBlock, GridBlock, ProcessBlock)
+- v1.0: WebP format at quality 80 for images
+- v1.0: Hero image dimensions 1200x600, grid 738x506
+- v1.1: On-demand visual verification (keep context tight)
+- v1.1: Unique layouts per project (avoid cookie-cutter feel)
+- **07-02: Removed FadeIn from ProjectHero images** - fixes above-the-fold display issues
+- **07-02: Use explicit width/height on Next.js Image** - more reliable than fill prop
+- **08-01: ProcessBlock uses phases/activities API** - not steps/description (plan had incorrect API)
+- **08-01: StoryBlock imageLayout="none"** - for text-only outcomes sections
+- **08-02: Full-bleed sections via negative margin + padding** - extends sections edge-to-edge
+- **08-02: Typography specimens with actual fonts** - loaded Felbridge Pro via @font-face
+- **08-02: Results grid with glassmorphism** - backdrop-filter blur for modern effect
 
 ### Pending Todos
 
-None - project complete.
+None.
 
 ### Blockers/Concerns
 
-None - all phases completed successfully.
+None.
 
 ## Session Continuity
 
-Last session: 2026-01-16T02:19:00Z
-Stopped at: PROJECT COMPLETE - All 6 phases executed
+Last session: 2026-01-19
+Stopped at: Completed 08-02-PLAN.md (Finnish Transport Agency styling)
 Resume file: None
-
-## Project Completion Summary
-
-The SAP Build Apps portfolio page update project is complete:
-
-- **Phase 1:** Image processing - 16 WebP images generated
-- **Phase 2:** Content accuracy - Claims corrected, 60% metric removed
-- **Phase 3:** Image integration - WebP references updated in page
-- **Phase 4:** Data Components - New section with tables/data viz content
-- **Phase 5:** Metadata & SEO - Title, description, OG image configured
-- **Phase 6:** Verification - All content verified accurate and NDA-compliant
-
-All verified facts:
-- Duration: March 2022 - February 2026 (nearly 4 years)
-- Components: 100+
-- Served: 300+ developers and designers
-- Compliance: WCAG 2.1 AA
-- Design-to-code parity: 1:1 Figma-to-ReactTS mapping

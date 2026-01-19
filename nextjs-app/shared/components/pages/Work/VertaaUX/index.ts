@@ -1,0 +1,1 @@
+export { VertaaUXPage } from "./VertaaUXPage";
