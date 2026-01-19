@@ -234,16 +234,16 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.colorLabel}>Black #000</span>
             </div>
             <div className={styles.colorRed}>
-              <span className={styles.colorLabel}>Red #eb1400</span>
+              <span className={styles.colorLabel}>Metro Red #FF0000</span>
             </div>
             <div className={styles.colorBlue}>
-              <span className={styles.colorLabel}>Blue #007acf</span>
-            </div>
-            <div className={styles.colorOrange}>
-              <span className={styles.colorLabel}>Orange #ff5501</span>
+              <span className={styles.colorLabel}>Garage Blue #1976D2</span>
             </div>
             <div className={styles.colorWhite}>
-              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>White #ffffff</span>
+              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>Pure White #FFFFFF</span>
+            </div>
+            <div className={styles.colorOrange}>
+              <span className={styles.colorLabel}>Junction Orange #F57C00</span>
             </div>
           </div>
         </div>
@@ -312,33 +312,35 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
               className={styles.appImage}
             />
             <figcaption className={styles.appCaption}>
-              A3 event poster
+              Mobile teaser for Instagram
             </figcaption>
           </figure>
-          <figure className={styles.appItem}>
-            <Image
-              src="/images/portfolio/garage_junction/gallery/application@2x.webp"
-              alt="Garage Junction brand application mockup"
-              width={1200}
-              height={800}
-              className={styles.appImage}
-            />
-            <figcaption className={styles.appCaption}>
-              Brand application mockup
-            </figcaption>
-          </figure>
-          <figure className={styles.appItem}>
-            <Image
-              src="/images/portfolio/garage_junction/gallery/colors@2x.webp"
-              alt="Garage Junction color system documentation"
-              width={1200}
-              height={600}
-              className={styles.appImage}
-            />
-            <figcaption className={styles.appCaption}>
-              Color system documentation
-            </figcaption>
-          </figure>
+          <div className={styles.appStack}>
+            <figure className={styles.appItem}>
+              <Image
+                src="/images/portfolio/garage_junction/gallery/application@2x.webp"
+                alt="Garage Junction brand application mockup"
+                width={1200}
+                height={800}
+                className={styles.appImage}
+              />
+              <figcaption className={styles.appCaption}>
+                Brand application mockup
+              </figcaption>
+            </figure>
+            <figure className={styles.appItem}>
+              <Image
+                src="/images/portfolio/garage_junction/gallery/colors@2x.webp"
+                alt="Garage Junction color system documentation"
+                width={1200}
+                height={600}
+                className={styles.appImage}
+              />
+              <figcaption className={styles.appCaption}>
+                Color system documentation
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 

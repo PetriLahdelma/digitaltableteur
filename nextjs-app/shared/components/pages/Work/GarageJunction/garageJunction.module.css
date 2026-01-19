@@ -181,7 +181,7 @@
 .colorRed {
   grid-row: 1;
   grid-column: 2 / 5;
-  background-color: #eb1400;
+  background-color: #FF0000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,16 +190,7 @@
 .colorBlue {
   grid-row: 2;
   grid-column: 2;
-  background-color: #007acf;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.colorOrange {
-  grid-row: 2;
-  grid-column: 3;
-  background-color: #ff5501;
+  background-color: #1976D2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,9 +198,18 @@
 
 .colorWhite {
   grid-row: 2;
-  grid-column: 4;
-  background-color: #ffffff;
+  grid-column: 3;
+  background-color: #FFFFFF;
   border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.colorOrange {
+  grid-row: 2;
+  grid-column: 4;
+  background-color: #F57C00;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,10 +241,16 @@
 
 .applicationsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 2fr;
   gap: var(--space-layout-24);
   max-width: var(--container-xl);
   margin-inline: auto;
+}
+
+.appStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
 }
 
 .appItem {
@@ -356,6 +362,10 @@
 
   .applicationsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .appStack {
+    flex-direction: column;
   }
 
   .resultsGrid {
