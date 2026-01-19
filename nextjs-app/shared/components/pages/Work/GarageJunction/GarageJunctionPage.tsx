@@ -233,17 +233,17 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.colorSwatch} style={{ backgroundColor: "#FF6B35" }}>
               <span>#FF6B35</span>
             </div>
+            <div className={styles.colorSwatch} style={{ backgroundColor: "#0099FF" }}>
+              <span>#0099FF</span>
+            </div>
+            <div className={styles.colorSwatch} style={{ backgroundColor: "#E53935" }}>
+              <span>#E53935</span>
+            </div>
             <div className={styles.colorSwatch} style={{ backgroundColor: "#1A1A1A" }}>
               <span>#1A1A1A</span>
             </div>
             <div className={styles.colorSwatch} style={{ backgroundColor: "#FFFFFF" }}>
               <span style={{ color: "#1A1A1A", textShadow: "none" }}>#FFFFFF</span>
-            </div>
-            <div className={styles.colorSwatch} style={{ backgroundColor: "#333333" }}>
-              <span>#333333</span>
-            </div>
-            <div className={styles.colorSwatch} style={{ backgroundColor: "#E65A2B" }}>
-              <span>#E65A2B</span>
             </div>
           </div>
         </div>
