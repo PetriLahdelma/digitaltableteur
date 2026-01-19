@@ -28,7 +28,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
       hero={
         <ProjectHero
           title={project.title}
-          description="A comprehensive design system powering SAP Build Apps — SAP's flagship low-code platform (formerly AppGyver). Serving 300+ developers and designers who build consistent, accessible enterprise applications with a unified component library spanning Figma and ReactTS."
+          description="A comprehensive design system powering SAP Build Apps, SAP's flagship low-code platform (formerly AppGyver). Serving 300+ developers and designers who build consistent, accessible enterprise applications with a unified component library spanning Figma and ReactTS."
           image={{
             src: "/images/portfolio/sap-build-apps/storybook_front.png",
             alt: "SAP Build Apps design system component library overview",
@@ -230,7 +230,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             <span style={{ fontWeight: 600 }}>
               The foundation of the system was built on design tokens
             </span>{" "}
-            — a shared language between design and code. Colors, spacing,
+            as a shared language between design and code. Colors, spacing,
             typography, and other visual properties were defined once and
             consumed by both Figma and ReactTS, ensuring seamless integration
             with SAP BTP and compatibility with SAP's enterprise ecosystem.
@@ -287,12 +287,12 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
               Core components were designed with accessibility-first principles.
             </span>{" "}
             Each component included comprehensive states, variants, and detailed
-            documentation of behavior patterns — all WCAG 2.1 AA compliant with
+            documentation of behavior patterns, all WCAG 2.1 AA compliant with
             keyboard navigation and screen reader support.
           </Text>,
           <Text key="2" size="S">
             The button system alone covered primary, secondary, ghost, and
-            destructive variants — each with hover, active, focus, and disabled
+            destructive variants, each with hover, active, focus, and disabled
             states across multiple sizes. The library grew to 100+ components
             covering form controls, data display, navigation, and feedback patterns.
           </Text>,
@@ -345,7 +345,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             supporting sorting, filtering, pagination, row selection, and column
             configuration. Optimized for large enterprise datasets with thousands
             of rows, the table includes full keyboard navigation and screen reader
-            support — built for seamless integration with SAP data sources including
+            support, built for seamless integration with SAP data sources including
             S/4HANA and OData services.
           </Text>,
           <Text key="2" size="S">
@@ -479,7 +479,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
               Over nearly four years, the design system transformed how the team
               builds UI
             </span>{" "}
-            — from fragmented component recreation to a unified library with 100+
+            from fragmented component recreation to a unified library with 100+
             production-ready components. Design-to-development handoff improved
             through 1:1 Figma-to-code parity and comprehensive Storybook
             documentation.

@@ -138,7 +138,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
                 <p>
                   The vision was to create an inclusive platform that captured
                   the raw energy and diversity of Helsinki’s nightlife with a UK
-                  twist. The brand identity needed to reflect this spirit—bold,
+                  twist. The brand identity needed to reflect this spirit: bold,
                   memorable, and flexible for both digital and print promotion.
                 </p>
                 <br />

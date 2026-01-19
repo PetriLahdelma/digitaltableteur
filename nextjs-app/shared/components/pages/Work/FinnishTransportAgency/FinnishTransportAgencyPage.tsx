@@ -33,7 +33,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           description={project.description}
           image={{
             src: "/images/portfolio/finnish-transport-agency/logo-hero.webp",
-            alt: "Liikennevirasto logo — cascading wordmark in four signature blues",
+            alt: "Liikennevirasto logo with cascading wordmark in four signature blues",
             width: 1240,
             height: 877,
           }}
@@ -173,7 +173,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="S">
             The logo structure is a graphic interpretation of a polyphonic musical
-            score—positioning Liikennevirasto as the conductor orchestrating
+            score, positioning Liikennevirasto as the conductor orchestrating
             Finland's roads, rails, and waterways. The cascading word parts create
             a unique, human-friendly wordmark that signals a fresh start for the
             merged organization.
@@ -225,7 +225,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="S">
             The protection zone is defined by the height of the lowercase "i"
             as the base unit (x). A minimum of 5x clear space above and x on
-            each side ensures the mark breathes across all applications—from
+            each side ensures the mark breathes across all applications, from
             business cards to highway signage.
           </Text>,
         ]}
@@ -421,7 +421,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
             alt: "Porkkala lighthouse on rocky Finnish coastline",
             width: 1200,
             height: 800,
-            caption: "Porkkala lighthouse — one of many coastal assets",
+            caption: "Porkkala lighthouse, one of many coastal assets",
           },
           {
             type: "image",
@@ -442,7 +442,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="S">
             The identity unified three historically separate agencies under a
             single visual language. The musical score concept gave staff across
-            road, rail, and maritime divisions a shared symbol—one that
+            road, rail, and maritime divisions a shared symbol, one that
             communicates movement, coordination, and national reach.
           </Text>,
           <Text key="p2" size="S">
