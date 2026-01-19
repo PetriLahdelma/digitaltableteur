@@ -90,8 +90,8 @@
   margin-block: var(--space-layout-64);
 }
 
-/* Ensure grid images have equal height (override inline styles) */
-.storySection figure img {
+/* Equal height for 2-column grid images only */
+.printSection figure img {
   height: 320px !important;
   object-fit: cover !important;
 }

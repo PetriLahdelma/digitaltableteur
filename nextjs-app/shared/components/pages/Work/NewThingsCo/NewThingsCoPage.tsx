@@ -268,7 +268,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         backgroundColor="light"
         maxWidth="lg"
         spacing="comfortable"
-        className={styles.storySection}
+        className={styles.printSection}
       />
 
       {/* Digital Presence */}
