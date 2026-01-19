@@ -47,17 +47,32 @@ export function FadeIn({
         ...(direction === "right" && { x: -actualDistance }),
       };
 
-      gsap.from(ref.current, {
-        ...from,
-        delay,
-        duration: actualDuration,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ref.current,
-          start: threshold,
-          toggleActions: "play none none none",
-        },
-      });
+      // Check if element is already in view (above the fold)
+      const rect = ref.current.getBoundingClientRect();
+      const isAboveFold = rect.top < window.innerHeight;
+
+      if (isAboveFold) {
+        // Play immediately for above-the-fold elements
+        gsap.from(ref.current, {
+          ...from,
+          delay,
+          duration: actualDuration,
+          ease: "power2.out",
+        });
+      } else {
+        // Use ScrollTrigger for below-the-fold elements
+        gsap.from(ref.current, {
+          ...from,
+          delay,
+          duration: actualDuration,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: threshold,
+            toggleActions: "play none none none",
+          },
+        });
+      }
     },
     { scope: ref, dependencies: [motionPreference] }
   );

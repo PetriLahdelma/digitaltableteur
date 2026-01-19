@@ -1,10 +1,24 @@
+/*
+ * Font Variable Strategy:
+ * - In Next.js: --font-heading and --font-body are set by next/font via classes on <html>
+ * - In Storybook: fallbacks are provided via @layer with lower priority
+ * 
+ * IMPORTANT: Do NOT define --font-heading or --font-body directly in :root here,
+ * as it would conflict with next/font's class-based variable injection and cause
+ * font flickering on client-side navigation.
+ */
+
+/* Storybook fallback layer (lowest priority, overridden by next/font classes) */
+@layer storybook-fallbacks {
+  :root {
+    --font-heading: "TiemposHeadline-Regular", Georgia, serif;
+    --font-body: "Moderat-Regular", system-ui, sans-serif;
+  }
+}
+
 :root {
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
-
-  /* Fallback font variables for Storybook (next/font sets these in Next.js) */
-  --font-heading: "TiemposHeadline-Regular", Georgia, serif;
-  --font-body: "Moderat-Regular", system-ui, sans-serif;
 
   /* Typography tokens - updated for Syne + Satoshi (next/font provides --font-heading, --font-body) */
   --font-title: var(--font-heading), system-ui, sans-serif;
@@ -18,8 +32,16 @@
   --font-size-title-m: clamp(2rem, 2.8vw + 1.3rem, 3rem);
   --font-size-title-l: clamp(2.75rem, 4vw + 1.75rem, 4.25rem);
   --font-size-title-xl: clamp(3.5rem, 6vw + 2.5rem, 5.5rem);
-  --font-size-display: clamp(5rem, 10vw + 3rem, 8rem); /* Display typography: 80px-128px */
-  --font-size-display-xl: clamp(6rem, 14vw + 3rem, 12rem); /* Hero display: 96px-192px */
+  --font-size-display: clamp(
+    5rem,
+    10vw + 3rem,
+    8rem
+  ); /* Display typography: 80px-128px */
+  --font-size-display-xl: clamp(
+    6rem,
+    14vw + 3rem,
+    12rem
+  ); /* Hero display: 96px-192px */
 
   /* Letter spacing tokens for display typography */
   --tracking-tighter: -0.05em;
@@ -41,8 +63,8 @@
   --line-height-loose: 1.75; /* For maximum readability */
   --font-weight-title: 700;
   --font-weight-text: 400;
-  --color-title: var(--primary-text-color, #041B23);
-  --color-text: var(--primary-text-color, #041B23);
+  --color-title: var(--primary-text-color, #041b23);
+  --color-text: var(--primary-text-color, #041b23);
   /* Font family aliases - mapped to new typography system */
   --primary-body-font: var(--font-body), system-ui, sans-serif;
   --secondary-body-font: var(--font-heading), system-ui, sans-serif;
@@ -52,11 +74,11 @@
   --secondary-heading-font: var(--font-body), system-ui, sans-serif;
 
   /* Text colors */
-  --main-body-copy-color: #041B23;
-  --primary-text-color: #041B23;
-  --secondary-text-color: #041B23;
+  --main-body-copy-color: #041b23;
+  --primary-text-color: #041b23;
+  --secondary-text-color: #041b23;
   --inverted-text-color: #fff;
-  --link-color: #041B23;
+  --link-color: #041b23;
 
   /* Accent colors */
   --accent-pink: #f205c5;
@@ -88,7 +110,7 @@
 
   /* Functional colors */
   --main-body-background-color: #fff;
-  --color-primary: #041B23;
+  --color-primary: #041b23;
   --color-primary-disabled: #0000ff50;
   --color-success: #068338;
   --color-info: #0c7a8b;
@@ -113,7 +135,7 @@
   --wavy-underline-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
 
   /* Storybook Helper Colors */
-  --storybook-blue: #041B23; /* Storybook Helper Color: Blue */
+  --storybook-blue: #041b23; /* Storybook Helper Color: Blue */
   --storybook-cyan: #71efff; /* Storybook Helper Color: Cyan */
   --storybook-pink: #f0f; /* Storybook Helper Color: Pink */
   --storybook-purple: #812eff; /* Storybook Helper Color: Purple */
@@ -186,12 +208,42 @@
   /* Animation & Motion Tokens - Premium studio-level motion */
 
   /* Easing curves - refined motion feel */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1); /* Smooth deceleration - primary for entrances */
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1); /* Medium deceleration - for reveals */
-  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1); /* Light deceleration - for subtle moves */
-  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1); /* Symmetric ease - for transitions */
-  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1); /* Strong symmetric - for dramatic reveals */
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* Slight overshoot - for playful elements */
+  --ease-out-expo: cubic-bezier(
+    0.16,
+    1,
+    0.3,
+    1
+  ); /* Smooth deceleration - primary for entrances */
+  --ease-out-quart: cubic-bezier(
+    0.25,
+    1,
+    0.5,
+    1
+  ); /* Medium deceleration - for reveals */
+  --ease-out-cubic: cubic-bezier(
+    0.33,
+    1,
+    0.68,
+    1
+  ); /* Light deceleration - for subtle moves */
+  --ease-in-out-quart: cubic-bezier(
+    0.76,
+    0,
+    0.24,
+    1
+  ); /* Symmetric ease - for transitions */
+  --ease-in-out-expo: cubic-bezier(
+    0.87,
+    0,
+    0.13,
+    1
+  ); /* Strong symmetric - for dramatic reveals */
+  --ease-spring: cubic-bezier(
+    0.34,
+    1.56,
+    0.64,
+    1
+  ); /* Slight overshoot - for playful elements */
 
   /* Duration tokens - purposeful timing */
   --duration-instant: 100ms; /* Micro-interactions (hover states, toggles) */

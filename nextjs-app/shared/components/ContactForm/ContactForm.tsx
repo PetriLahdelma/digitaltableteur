@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useReducer, useState } from "react";
 import styles from "./ContactForm.module.css";
 import Inputs from "@dt/Inputs";
 import Button from "@dt/Button";
@@ -12,10 +12,13 @@ import AdaptiveLoadingButton from "@dt/AdaptiveLoadingButton";
 import Text from "@dt/Text";
 import PhoneInput from "@dt/PhoneInput";
 import { useTranslation } from "react-i18next";
-
-const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024; // 2MB upload cap
-const EMAIL_ATTACHMENT_LIMIT_BYTES = 2 * 1024 * 1024; // 2MB email attach cap
-const ACCEPTED_ATTACHMENT_TYPES = ".pdf,.png,.jpg,.jpeg";
+import {
+  CONTACT_ACCEPTED_ATTACHMENT_TYPES,
+  CONTACT_ATTACHMENT_MAX_BYTES,
+  CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES,
+  reportContactHoneypot,
+  validateContactEmail,
+} from "../contactFormUtils";
 
 const getInitialFormState = () => ({
   fullName: "",
@@ -67,17 +70,11 @@ const ContactForm = () => {
   const [attachmentError, setAttachmentError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Email validation helper
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-  };
-
   // Check if form is valid for submission
   const isFormValid =
     formData.fullName.trim() !== "" &&
     formData.email.trim() !== "" &&
-    validateEmail(formData.email) &&
+    validateContactEmail(formData.email) &&
     formData.message.trim() !== "" &&
     !attachmentError;
 
@@ -91,13 +88,13 @@ const ContactForm = () => {
   const handleClearForm = () => {
     resetFormState();
   };
-  const attachmentSizeValue = (MAX_ATTACHMENT_BYTES / (1024 * 1024)).toFixed(0);
+  const attachmentSizeValue = (CONTACT_ATTACHMENT_MAX_BYTES / (1024 * 1024)).toFixed(0);
   const emailAttachmentLimitValue = (
-    EMAIL_ATTACHMENT_LIMIT_BYTES /
+    CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES /
     (1024 * 1024)
   ).toFixed(1);
   const isAttachmentTooLargeForEmail =
-    !!attachmentFile && attachmentFile.size > EMAIL_ATTACHMENT_LIMIT_BYTES;
+    !!attachmentFile && attachmentFile.size > CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES;
   const emailAttachmentLimitLabel = t("contactAttachmentEmailLimitLabel", {
     size: emailAttachmentLimitValue,
   });
@@ -180,13 +177,6 @@ const ContactForm = () => {
     reader.readAsDataURL(file);
   };
 
-  const SPAM_LOG_ENDPOINT =
-    typeof process !== "undefined"
-      ? process.env.NEXT_PUBLIC_APP_CONTACT_SPAM_LOG_ENDPOINT
-      : undefined;
-  const isDev =
-    typeof process !== "undefined" ? process.env.NODE_ENV !== "production" : false;
-
   const validateForm = () => {
     const errors = getInitialErrorState();
 
@@ -197,7 +187,7 @@ const ContactForm = () => {
 
     if (!formData.email.trim()) {
       errors.email = t("contactValidationEmailRequired");
-    } else if (!validateEmail(formData.email)) {
+    } else if (!validateContactEmail(formData.email)) {
       errors.email = t("contactValidationEmailInvalid");
     }
 
@@ -216,55 +206,6 @@ const ContactForm = () => {
     return true;
   };
 
-  const logHoneypotHit = () => {
-    if (!SPAM_LOG_ENDPOINT) {
-      if (isDev) {
-        // eslint-disable-next-line no-console
-        console.info(
-          "Honeypot triggered but no SPAM log endpoint configured. Set VITE_CONTACT_SPAM_LOG_ENDPOINT to capture these events.",
-        );
-      }
-      return;
-    }
-
-    const payload = {
-      event: "contact-form-honeypot",
-      submittedAt: new Date().toISOString(),
-      honeypotValue: formData.honeypot,
-      path:
-        typeof window !== "undefined" ? window.location.pathname : "unknown",
-      userAgent:
-        typeof navigator !== "undefined" ? navigator.userAgent : "unknown",
-    };
-
-    const body = JSON.stringify(payload);
-    const canUseBeacon =
-      typeof navigator !== "undefined" &&
-      typeof navigator.sendBeacon === "function";
-
-    if (canUseBeacon) {
-      const success = navigator.sendBeacon(
-        SPAM_LOG_ENDPOINT,
-        new Blob([body], { type: "application/json" }),
-      );
-      if (success) {
-        return;
-      }
-    }
-
-    fetch(SPAM_LOG_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body,
-      keepalive: true,
-    }).catch((err) => {
-      if (isDev) {
-        // eslint-disable-next-line no-console
-        console.error("Failed to log honeypot submission", err);
-      }
-    });
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
@@ -272,11 +213,7 @@ const ContactForm = () => {
 
     // Quietly drop submissions that fill the honeypot field
     if (formData.honeypot.trim()) {
-      logHoneypotHit();
-      if (isDev) {
-        // eslint-disable-next-line no-console
-        console.warn("Honeypot triggered, dropping submission.");
-      }
+      reportContactHoneypot(formData.honeypot);
       setIsSubmitting(false);
       return;
     }
@@ -430,8 +367,8 @@ const ContactForm = () => {
             })}
             uploadButtonLabel={t("contactAttachmentUpload")}
             clearButtonLabel={t("contactAttachmentClear")}
-            accept={ACCEPTED_ATTACHMENT_TYPES}
-            maxSizeInBytes={MAX_ATTACHMENT_BYTES}
+            accept={CONTACT_ACCEPTED_ATTACHMENT_TYPES}
+            maxSizeInBytes={CONTACT_ATTACHMENT_MAX_BYTES}
             sizeErrorMessage={t("contactAttachmentTooLarge", {
               size: t("contactAttachmentSizeLabel", {
                 size: attachmentSizeValue,

@@ -1,0 +1,1 @@
+export { IntrumPage } from "./IntrumPage";

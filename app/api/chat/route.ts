@@ -135,6 +135,7 @@ export async function POST(request: NextRequest) {
       messages: convertToModelMessages(messages),
       temperature: 0.2,
       maxRetries: 2,
+      maxOutputTokens: MAX_OUTPUT_TOKENS,
       // Note: maxTokens deprecated in AI SDK, use model-specific settings
     };
 

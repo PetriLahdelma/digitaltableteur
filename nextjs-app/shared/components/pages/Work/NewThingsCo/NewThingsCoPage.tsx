@@ -1,417 +1,458 @@
 "use client";
 
 import React from "react";
-
-import Badge from "@dt/Badge";
-import FlexBox from "@dt/FlexBox";
-import Gallery from "@dt/Gallery";
-import Grid from "@dt/Grid";
-import PageLayout from "../../../../patterns/PageLayout/PageLayout";
-import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
+import Image from "next/image";
+import Text from "@dt/Text";
 import Title from "@dt/Title";
-import WorkNav from "@dt/WorkNav";
+import Gallery from "@dt/Gallery";
+import ProcessBlock from "../../../../patterns/ProcessBlock";
+import StoryBlock from "../../../../patterns/StoryBlock";
+import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
+import { ProjectHero } from "../../../../patterns/ProjectHero";
+import { RelatedProjects } from "../../../../patterns/RelatedProjects";
+import { ProjectNav } from "../../../ProjectNav";
+import { getProjectBySlug } from "../../../../data/projects";
+import { SiFigma, SiAdobeillustrator, SiReact } from "react-icons/si";
+
 import styles from "./newThingsCo.module.css";
 
 export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
+  const project = getProjectBySlug("new-things-co");
+
+  if (!project) {
+    return <div>Project not found</div>;
+  }
+
   return (
     <ProjectDetailLayout
-      nav={nav ?? <WorkNav />}
-      hero={<></>}
-      showScrollProgress={false}
+      nav={nav ?? <ProjectNav currentSlug={project.slug} />}
+      hero={
+        <ProjectHero
+          title={project.title}
+          description="Complete brand identity and design system for a Helsinki-based software consultancy. From strategic positioning and visual identity to digital presence and internal culture assets."
+          image={{
+            src: "/images/portfolio/new_things_co/gallery/logo@2x.webp",
+            alt: "New Things Co logo wordmark on white background",
+            width: 1200,
+            height: 600,
+          }}
+          category={project.category.replace("-", " ")}
+          tags={project.tags}
+          variant="contained"
+          showScrollIndicator={true}
+          className={styles.hero}
+        />
+      }
+      relatedProjects={<RelatedProjects currentSlug={project.slug} maxItems={3} />}
+      className={styles.page}
     >
-      <main className={styles.caseStudy}>
-        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
-        <section className={styles.caseHeroSection}>
-          <div className={styles.heroText}>
-            <PageLayout maxWidth="lg" spacing="comfortable" as="section">
-              <Title level={1}>New Things Co</Title>
-              <FlexBox className={styles.caseBadges} gap={8}>
-                <Badge size="s" design="secondary">
-                  Branding
-                </Badge>
-                <Badge size="s" design="secondary">
-                  Design System
-                </Badge>
-                <Badge size="s" design="secondary">
-                  Web Design
-                </Badge>
-              </FlexBox>
-            </PageLayout>
-            <Grid columns={3} gap="2rem" style={{ marginBottom: "2rem" }}>
-              <img
-                src="/images/portfolio/new_things_co/gallery/logo@2x.webp"
-                alt="New Things Co logo"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 3",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/concept.webp"
-                alt="New Things Co logo concept in use"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 3",
-                }}
-              />
-              <div
-                style={{
-                  gridColumn: "1 / span 3",
-                  marginBottom: "-0.5rem",
-                }}
-              >
-                <video
-                  aria-label="New Things Co animated HQ infoscreens"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  poster="/images/portfolio/new_things_co/gallery/animated_hq.png"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: 0,
-                  }}
-                  onEnded={(e) => {
-                    const vid = e.target as HTMLVideoElement;
-                    vid.currentTime = 0;
-                    vid.play().catch(() => {});
-                  }}
-                >
-                  <source
-                    src="/images/portfolio/new_things_co/gallery/animated_hq.webm"
-                    type="video/webm"
-                  />
-                  <source
-                    src="/images/portfolio/new_things_co/gallery/animated_hq.mp4"
-                    type="video/mp4"
-                  />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <img
-                src="/images/portfolio/new_things_co/gallery/colors@2x.webp"
-                alt="New Things Co identity colors"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 3",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/typography@2x.webp"
-                alt="New Things Co typography"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 3",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/NewThingsCo_Business-Card_recycled2.webp"
-                alt="New Things Co business card"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 3",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/Bizcard_top_recycled.webp"
-                alt="New Things Co business card front"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "2 / span 1",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/Bizcard_top_recycled_back.webp"
-                alt="New Things Co business card back"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "3 / span 1",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/NTC_Letterhead-and-envelope.webp"
-                alt="New Things Co letterhead and envelope"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "2 / span 2",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/site@2x.webp"
-                alt="New Things Co website"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 3",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/presentation_template@2x.webp"
-                alt="New Things Co presentation template Title Slide"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 1",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/presentation_template2@2x.webp"
-                alt="New Things Co peresentation template People Slide"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "2 / span 1",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/presentation_template3@2x.webp"
-                alt="New Things Co presentation template Timeline Slide"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "3 / span 1",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/ntc_t_shirts.webp"
-                alt="New Things Co t-shirts and gym shirt"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 2",
-                }}
-              />
-              <img
-                src="/images/portfolio/new_things_co/gallery/ntc_sweatshirt.webp"
-                alt="New Things Co Sweatshirt"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "3 / span 1",
-                }}
-              />
-            </Grid>
-            <PageLayout maxWidth="md" spacing="comfortable" as="section">
-              <div className={styles.heroSummary}>
-                <p>
-                  DT was first approached by New Things Co in September 2017, by
-                  Sami, Jukkis and Kimmo. Back then the company was still called
-                  Lab of New.
-                </p>
-                <br />
-                <p>
-                  They sought to establish a cohesive brand identity that
-                  resonated with their innovative approach to software
-                  development consulting. Their existing identity and online
-                  presence lacked a unified visual language, making it
-                  challenging to communicate their values and expertise
-                  effectively.
-                </p>
-                <br />
-                <p>
-                  The task was the complete rebranding of the company name and
-                  aesthetic. Starting from the strategic pillars, purpose, core
-                  values following following visual identity, down to the most
-                  minute details, applications and all the various other bits
-                  and bobs for eg. marketing, events, recruitment and cultural
-                  purposes.
-                </p>
-                <br />
-                <p>
-                  Both print and online assets were conceptualized, designed and
-                  delivered during a 16 month period. DT also prepared Figma
-                  based Brand Identity Guidelines and a Design System in React
-                  TS. Most of the ground work was put in the strategic
-                  positioning and differentiation from the competition.
-                </p>
-              </div>
-            </PageLayout>
-          </div>
-          <div className={styles.heroVideo}>
-            <video
-              aria-label="New Things Co Identity Guidelines Video"
-              autoPlay
-              loop
-              muted
-              playsInline
-              poster="/images/portfolio/new_things_co/gallery/ntc_guidelines_poster.png"
-              style={{
-                width: "100%",
-                height: "auto",
-                borderRadius: 0,
-              }}
-            >
-              <source
-                src="/images/portfolio/new_things_co/gallery/ntc_guidelines_short.webm"
-                type="video/webm"
-              />
-              <source
-                src="/images/portfolio/new_things_co/gallery/ntc_guidelines_short.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </section>
-      </PageLayout>
-
-      <PageLayout maxWidth="md" spacing="comfortable" as="section">
-        <section className={styles.section}>
-          <Title size="M" level={3} terminals="sans">
-            Project Overview
-          </Title>
-          <div className={styles.twoCol}>
-            <div>
-              <p>
-                New Things Co needed a new identity and digital presence to
-                reflect their growth and vision. We collaborated closely to
-                define their brand strategy, visual language, and digital
-                experience.
+      {/* Project Meta - Custom 2-column layout */}
+      <section className={styles.metaSection}>
+        <div className={styles.metaGrid}>
+          <div className={styles.metaLeft}>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Services</h3>
+              <p className={styles.metaText}>
+                Brand Strategy, Visual Identity, Design System and Digital Presence
               </p>
             </div>
-            <div>
-              <ul className={styles.projectMeta}>
-                <li>
-                  <strong>Client:</strong> New Things Co
-                </li>
-                <li>
-                  <strong>Year:</strong> 2017
-                </li>
-                <li>
-                  <strong>Services:</strong> Branding, Design System, Web Design
-                </li>
-              </ul>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Duration</h3>
+              <p className={styles.metaText}>2017–2018</p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Tools used</h3>
+              <div className={styles.metaTools}>
+                <SiFigma size={24} title="Figma" />
+                <SiAdobeillustrator size={24} title="Illustrator" />
+                <SiReact size={24} title="React" />
+              </div>
             </div>
           </div>
-        </section>
-      </PageLayout>
-
-      <PageLayout maxWidth="md" spacing="comfortable" as="section">
-        <section className={styles.section}>
-          <Title size="M" level={3} terminals="sans">
-            Process
-          </Title>
-          <div className={styles.processSteps}>
-            <div className={styles.processStep}>
-              <Title level={4}>01. Discovery</Title>
-              <p>
-                Workshops and interviews to understand the brand, users, and
-                goals.
-              </p>
-            </div>
-            <div className={styles.processStep}>
-              <Title level={4}>02. Strategy</Title>
-              <p>Brand positioning, messaging, and visual direction.</p>
-            </div>
-            <div className={styles.processStep}>
-              <Title level={4}>03. Design</Title>
-              <p>Identity, design system, and website design.</p>
-            </div>
-            <div className={styles.processStep}>
-              <Title level={4}>04. Delivery</Title>
-              <p>Final assets, documentation, and launch support.</p>
-            </div>
+          <div className={styles.metaRight}>
+            <h3 className={styles.metaLabel}>Overview</h3>
+            <p className={styles.metaOverview}>
+              <strong>New Things Co</strong> (originally Lab of New) approached us
+              in September 2017 seeking to establish a cohesive brand identity that
+              reflected their innovative approach to software development. The
+              company was founded by Reaktor alumni and owned jointly with Talented.
+            </p>
+            <p className={styles.metaOverview}>
+              <strong>The challenge:</strong> Create a complete rebrand from
+              strategic pillars and core values through visual identity, down to
+              the most minute details for marketing, events, recruitment, and
+              company culture.
+            </p>
           </div>
-        </section>
-      </PageLayout>
+        </div>
+      </section>
 
-      <PageLayout maxWidth="xl" spacing="default" as="section">
-        <section className={styles.section}>
+      {/* Design Process */}
+      <div className={styles.processSection}>
+        <ProcessBlock
+          phases={[
+            {
+              title: "Discovery",
+              activities: [
+                "Stakeholder workshops",
+                "Brand positioning",
+                "Competitive analysis",
+                "Values definition",
+              ],
+            },
+            {
+              title: "Strategy",
+              activities: [
+                "Name development",
+                "Brand architecture",
+                "Messaging framework",
+                "Target audiences",
+              ],
+            },
+            {
+              title: "Identity Design",
+              activities: [
+                "Logo system",
+                "Color palette",
+                "Typography",
+                "Visual language",
+              ],
+            },
+            {
+              title: "Delivery",
+              activities: [
+                "Brand guidelines",
+                "Design system (React)",
+                "Asset library",
+                "Launch support",
+              ],
+            },
+          ]}
+          sectionTitle="Process"
+          backgroundColor="transparent"
+          maxWidth="lg"
+          spacing="comfortable"
+          columns={4}
+        />
+      </div>
+
+      {/* The Challenge */}
+      <StoryBlock
+        subtitle="The Challenge"
+        title="From Lab of New to New Things Co"
+        content={[
+          <Text key="p1" size="S">
+            The existing identity lacked a unified visual language, making it
+            challenging to communicate their values and expertise effectively.
+            Their online presence needed a complete overhaul to match their
+            ambition and culture.
+          </Text>,
+          <Text key="p2" size="S">
+            The task was comprehensive: rename the company, establish strategic
+            pillars and purpose, create the complete visual identity, and deliver
+            all assets needed for marketing, events, recruitment, and internal
+            culture over a 16-month period.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Brand Identity */}
+      <StoryBlock
+        subtitle="Brand Identity"
+        title="A Fresh Start for Innovation"
+        content={[
+          <Text key="p1" size="S">
+            <span style={{ fontWeight: 600 }}>
+              The name "New Things Co" captured their experimental spirit
+            </span>{" "}
+            while being memorable and approachable. The visual identity uses bold
+            typography and a vibrant green palette that signals energy and growth.
+          </Text>,
+          <Text key="p2" size="S">
+            The logo system was designed for flexibility across digital and print
+            applications, from business cards to office signage and social media
+            profiles.
+          </Text>,
+        ]}
+        images={[
+          {
+            src: "/images/portfolio/new_things_co/gallery/concept.webp",
+            alt: "New Things Co logo concept showing the mark in various applications",
+            width: 1200,
+            height: 800,
+            caption: "Logo concept exploration",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/colors@2x.webp",
+            alt: "New Things Co brand color palette with primary green and supporting colors",
+            width: 1200,
+            height: 800,
+            caption: "Brand color system",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/typography@2x.webp",
+            alt: "New Things Co typography system showing headline and body fonts",
+            width: 1200,
+            height: 800,
+            caption: "Typography scale",
+          },
+        ]}
+        imageLayout="grid"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.brandSection}
+      />
+
+      {/* Video Section - Brand Guidelines */}
+      <section className={styles.videoSection}>
+        <div className={styles.videoContainer}>
+          <video
+            aria-label="New Things Co Brand Guidelines video walkthrough"
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/images/portfolio/new_things_co/gallery/ntc_guidelines_poster.png"
+          >
+            <source
+              src="/images/portfolio/new_things_co/gallery/ntc_guidelines_short.webm"
+              type="video/webm"
+            />
+            <source
+              src="/images/portfolio/new_things_co/gallery/ntc_guidelines_short.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+          <p className={styles.videoCaption}>
+            Brand guidelines delivered in Figma with comprehensive documentation
+          </p>
+        </div>
+      </section>
+
+      {/* Stationery and Print */}
+      <StoryBlock
+        subtitle="Print Collateral"
+        title="Business Cards & Stationery"
+        content={[
+          <Text key="p1" size="S">
+            The stationery system uses recycled paper stock to align with the
+            company&apos;s environmental values. Business cards feature a bold,
+            minimal design with the logo on one side and contact details on
+            the other.
+          </Text>,
+        ]}
+        images={[
+          {
+            src: "/images/portfolio/new_things_co/gallery/NewThingsCo_Business-Card_recycled2.webp",
+            alt: "New Things Co business cards on recycled paper stock",
+            width: 1200,
+            height: 800,
+            caption: "Business cards on recycled paper",
+          },
+          {
+            src: "/images/portfolio/new_things_co/gallery/NTC_Letterhead-and-envelope.webp",
+            alt: "New Things Co letterhead and envelope design",
+            width: 1200,
+            height: 800,
+            caption: "Letterhead and envelope",
+          },
+        ]}
+        imageLayout="grid"
+        backgroundColor="light"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.printSection}
+      />
+
+      {/* Digital Presence */}
+      <StoryBlock
+        subtitle="Digital Presence"
+        title="Website & Social Media"
+        content={[
+          <Text key="p1" size="S">
+            The website design reflects the brand&apos;s personality: bold,
+            direct, and human. Social media templates ensure consistent
+            presentation across platforms for recruitment, events, and company
+            updates.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/new_things_co/gallery/site@2x.webp",
+          alt: "New Things Co website homepage design",
+          width: 1200,
+          height: 800,
+          caption: "Website homepage with bold typography",
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Applications Section */}
+      <section className={styles.applicationsSection}>
+        <div className={styles.applicationsHeader}>
+          <Title level={3} terminals="sans">Applications</Title>
+        </div>
+        <div className={styles.applicationsGrid}>
+          <figure className={styles.appItem}>
+            <Image
+              src="/images/portfolio/new_things_co/gallery/presentation_template@2x.webp"
+              alt="New Things Co presentation template title slide"
+              width={1200}
+              height={675}
+              className={styles.appImage}
+            />
+            <figcaption className={styles.appCaption}>
+              Presentation title slide
+            </figcaption>
+          </figure>
+          <figure className={styles.appItem}>
+            <Image
+              src="/images/portfolio/new_things_co/gallery/presentation_template2@2x.webp"
+              alt="New Things Co presentation people slide"
+              width={1200}
+              height={675}
+              className={styles.appImage}
+            />
+            <figcaption className={styles.appCaption}>
+              Team introduction slide
+            </figcaption>
+          </figure>
+          <figure className={styles.appItem}>
+            <Image
+              src="/images/portfolio/new_things_co/gallery/NTC-Flag.webp"
+              alt="New Things Co office flag"
+              width={800}
+              height={600}
+              className={styles.appImage}
+            />
+            <figcaption className={styles.appCaption}>
+              Office flag for HQ entrance
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* Gallery - Extended Assets */}
+      <section className={styles.gallerySection}>
+        <div className={styles.galleryHeader}>
+          <Title level={3} terminals="sans">Culture & Merch</Title>
+          <Text size="S">
+            Internal culture assets including apparel, event materials, and office
+            decorations helped build team identity and employer brand.
+          </Text>
+        </div>
+        <div className={styles.galleryContent}>
           <Gallery
-            gutter={32}
-            minColumnWidth={300}
+            gutter={24}
+            minColumnWidth={280}
             images={[
               {
-                src: "/images/portfolio/new_things_co/gallery/housewarming_eventbrite.webp",
-                fallback:
-                  "/images/portfolio/new_things_co/gallery/housewarming_eventbrite.png",
-                alt: "Housewarming Eventbrite invitation",
+                src: "/images/portfolio/new_things_co/gallery/ntc_t_shirts.webp",
+                alt: "New Things Co branded t-shirts and gym shirts",
               },
               {
-                src: "/images/portfolio/new_things_co/gallery/stranger_things_co.webp",
-                fallback:
-                  "/images/portfolio/new_things_co/gallery/stranger_things_co.jpg",
-                alt: "Stranger Things Co parody logo",
-              },
-              {
-                src: "/images/portfolio/new_things_co/gallery/lab-2.webp",
-                fallback: "/images/portfolio/new_things_co/gallery/lab-2.png",
-                alt: "LEGO Robots Lab badge design 1",
-              },
-              {
-                src: "/images/portfolio/new_things_co/gallery/Envelope-back_figma.webp",
-                fallback:
-                  "/images/portfolio/new_things_co/gallery/Envelope-back_figma.png",
-                alt: "New Things Co Envelope Back",
-              },
-              {
-                src: "/images/portfolio/new_things_co/gallery/NTC-Flag.webp",
-                fallback:
-                  "/images/portfolio/new_things_co/gallery/NTC-Flag.png",
-                alt: "NTC HQ Flag",
-              },
-              {
-                src: "/images/portfolio/new_things_co/gallery/rekry.png",
-                alt: "Recruitment advertisement on social media",
-              },
-              {
-                src: "/images/portfolio/new_things_co/gallery/stickers_grid.png",
-                alt: "New Things Co Sticker Designs",
-              },
-              {
-                src: "/images/portfolio/new_things_co/gallery/NEW_FRNDS_logo.png",
-                alt: "NEW FRNDS Logo for New Things Co alumni network",
+                src: "/images/portfolio/new_things_co/gallery/ntc_sweatshirt.webp",
+                alt: "New Things Co branded sweatshirt",
               },
               {
                 src: "/images/portfolio/new_things_co/gallery/kapteeni.webp",
-                alt: "CEO wearing the New Things Co Croatia trip t-shirt",
+                alt: "CEO wearing New Things Co Croatia trip t-shirt",
               },
               {
                 src: "/images/portfolio/new_things_co/gallery/IMG_8817.webp",
-                alt: "HQ interior with New Things Co related illustrations by Jukka Peltosaari",
+                alt: "HQ interior with custom illustrations by Jukka Peltosaari",
               },
               {
-                src: "/images/portfolio/new_things_co/gallery/200 Devs 2.webp",
-                alt: "Recruitment Advertisement for social media",
+                src: "/images/portfolio/new_things_co/gallery/housewarming_eventbrite.webp",
+                alt: "Housewarming party Eventbrite invitation",
               },
               {
-                src: "/images/portfolio/new_things_co/gallery/futures_cone_2.webp",
-                alt: "Futures cone diagram for a workshop",
+                src: "/images/portfolio/new_things_co/gallery/rekry.png",
+                alt: "Recruitment advertisement for social media",
+              },
+              {
+                src: "/images/portfolio/new_things_co/gallery/stranger_things_co.webp",
+                alt: "Stranger Things Co parody logo for Halloween",
+              },
+              {
+                src: "/images/portfolio/new_things_co/gallery/NEW_FRNDS_logo.png",
+                alt: "NEW FRNDS logo for alumni network",
               },
             ]}
           />
-        </section>
-      </PageLayout>
+        </div>
+      </section>
 
-      <PageLayout maxWidth="md" spacing="comfortable" as="section">
-        <section className={styles.section}>
-          <Title size="M" level={3} terminals="sans">
-            Results
-          </Title>
-          <p>
-            The branding efforts paid off and New Things Co was on its way to
-            being established as the small but fierce new player in the Finnish
-            ITC-market early 2018.
-          </p>
-          <br />
-          <ul className={styles.resultsList}>
-            <li>New brand identity and guidelines</li>
-            <li>Comprehensive design system</li>
-            <li>Modern, responsive online presence</li>
-            <li>Improved brand recognition and engagement</li>
-          </ul>
-        </section>
-      </PageLayout>
-      </main>
+      {/* Outcome */}
+      <StoryBlock
+        subtitle="Outcome"
+        title="Establishing the Brand"
+        content={[
+          <Text key="p1" size="S">
+            The branding work helped establish New Things Co as a fresh player in
+            the Finnish IT market. The cohesive identity made recruitment easier
+            and helped communicate their developer-first culture to potential
+            clients and employees.
+          </Text>,
+          <Text key="p2" size="S">
+            The company grew from the founding team to over 100 employees, with
+            the brand system scaling across all touchpoints from digital presence
+            to office environment and company events.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.outcomesSection}
+      />
+
+      {/* Results Section */}
+      <section className={styles.resultsSection}>
+        <div className={styles.resultsContent}>
+          <Title level={3} terminals="sans">Key Results</Title>
+          <div className={styles.resultsGrid}>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>16</span>
+              <span className={styles.resultLabel}>Month Project</span>
+              <span className={styles.resultDetail}>
+                Complete rebrand from strategy to launch
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>100+</span>
+              <span className={styles.resultLabel}>Team Members</span>
+              <span className={styles.resultDetail}>
+                Company growth enabled by strong employer brand
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>React</span>
+              <span className={styles.resultLabel}>Design System</span>
+              <span className={styles.resultDetail}>
+                Figma-based guidelines with React TS components
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>2017</span>
+              <span className={styles.resultLabel}>Brand Launch</span>
+              <span className={styles.resultDetail}>
+                Successful market entry in the Finnish IT sector
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
     </ProjectDetailLayout>
   );
 }
