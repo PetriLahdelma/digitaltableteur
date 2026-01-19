@@ -1,15 +1,61 @@
+/* Finnish Transport Agency unique styling - official government feel */
+/* Distinct from VertaaUX: structured, minimal, Finnish design tradition */
+
 .page {
   background-color: var(--main-body-background-color);
 }
 
+/* Process section - clean, structured appearance (no gradient unlike VertaaUX) */
 .processSection {
-  margin-block: var(--space-layout-64);
+  margin-block: var(--space-layout-48);
+  padding-block: var(--space-layout-32);
+  background-color: var(--color-light-bg);
+  border-radius: var(--radius-lg);
+  margin-inline: calc(-1 * var(--space-layout-16));
+  padding-inline: var(--space-layout-16);
 }
 
+/* Story sections with asymmetric rhythm - government document feel */
 .storySection {
   margin-block: var(--space-layout-64);
 }
 
+/* First story section tighter to process block */
+.storySection:first-of-type {
+  margin-block-start: var(--space-layout-48);
+}
+
+/* Image grid with structured government feel */
 .imageGrid {
+  margin-block: var(--space-layout-48);
+}
+
+/* Subtle border on grid images - official document aesthetic */
+.imageGrid img {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+}
+
+/* Outcomes section - subtle top separator (different from VertaaUX bottom border) */
+.outcomesSection {
   margin-block: var(--space-layout-64);
+  padding-block-start: var(--space-layout-32);
+  border-block-start: 2px solid var(--color-border-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .processSection {
+    margin-inline: calc(-1 * var(--space-layout-8));
+    padding-inline: var(--space-layout-8);
+    border-radius: 0;
+  }
+
+  .storySection {
+    margin-block: var(--space-layout-48);
+  }
+
+  .imageGrid {
+    margin-block: var(--space-layout-32);
+  }
 }
