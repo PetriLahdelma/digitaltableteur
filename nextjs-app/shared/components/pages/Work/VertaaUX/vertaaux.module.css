@@ -1,0 +1,63 @@
+/* VertaaUX unique styling - modern AI startup feel */
+
+.page {
+  background-color: var(--main-body-background-color);
+}
+
+/* Hero accent for brand gradient (used sparingly) */
+.heroAccent {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Process section with enhanced spacing for AI methodology */
+.processSection {
+  margin-block: var(--space-layout-80);
+  padding-block: var(--space-layout-48);
+  background: linear-gradient(
+    180deg,
+    var(--color-light-bg) 0%,
+    transparent 100%
+  );
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+}
+
+/* Standard story section spacing */
+.storySection {
+  margin-block: var(--space-layout-64);
+}
+
+/* Alternate story section with subtle background */
+.storySectionAlt {
+  margin-block: var(--space-layout-64);
+  background-color: var(--color-light-bg);
+  padding-block: var(--space-layout-48);
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+}
+
+/* Brand identity section with generous spacing */
+.brandSection {
+  margin-block: var(--space-layout-80);
+}
+
+/* Image grid with enhanced spacing */
+.imageGrid {
+  margin-block: var(--space-layout-64);
+}
+
+/* Outcomes section with top border for visual separation */
+.outcomesSection {
+  margin-block: var(--space-layout-80);
+  border-block-start: 1px solid var(--color-border);
+  padding-block-start: var(--space-layout-48);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .processSection,
+  .storySectionAlt {
+    margin-inline: calc(-1 * var(--space-layout-16));
+    padding-inline: var(--space-layout-16);
+  }
+}
