@@ -109,6 +109,8 @@ export function KineticTitle({
       const targets = ref.current.querySelectorAll("[data-kinetic-item]");
       if (targets.length === 0) return;
 
+      const scrambleIntervals: Array<ReturnType<typeof setInterval>> = [];
+
       // For reduced motion, just fade in the whole element
       if (motionPreference === "reduced") {
         gsap.from(ref.current, {
@@ -122,7 +124,9 @@ export function KineticTitle({
             },
           }),
         });
-        return;
+        return () => {
+          scrambleIntervals.forEach((interval) => clearInterval(interval));
+        };
       }
 
       // Animation variants
@@ -167,11 +171,14 @@ export function KineticTitle({
           el.textContent = "";
 
           timeline.add(() => {
-            scrambleText(el, originalText, duration);
+            const interval = scrambleText(el, originalText, duration);
+            scrambleIntervals.push(interval);
           }, index * stagger);
         });
 
-        return;
+        return () => {
+          scrambleIntervals.forEach((interval) => clearInterval(interval));
+        };
       }
 
       // Standard animations (fade, slide, wave)
@@ -189,8 +196,24 @@ export function KineticTitle({
           },
         }),
       });
+      return () => {
+        scrambleIntervals.forEach((interval) => clearInterval(interval));
+      };
     },
-    { scope: ref, dependencies: [children, animation, splitBy, motionPreference, triggerOnScroll] }
+    {
+      scope: ref,
+      dependencies: [
+        children,
+        animation,
+        splitBy,
+        motionPreference,
+        triggerOnScroll,
+        delay,
+        duration,
+        stagger,
+        threshold,
+      ],
+    }
   );
 
   return (

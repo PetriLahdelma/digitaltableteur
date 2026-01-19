@@ -1,0 +1,125 @@
+.mermaidFigure {
+  margin: 0;
+  padding: var(--space-400) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-300);
+}
+
+.diagram {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Force all colors to pink */
+.diagram :global(*) {
+  --mermaid-pink: #ed4b9b;
+}
+
+/* All paths and lines */
+.diagram :global(path),
+.diagram :global(line),
+.diagram :global(polyline) {
+  stroke: #ed4b9b !important;
+  stroke-width: 1.5px !important;
+}
+
+/* All shapes - white fill to cover lines beneath */
+.diagram :global(rect),
+.diagram :global(circle),
+.diagram :global(ellipse),
+.diagram :global(polygon) {
+  fill: white !important;
+  stroke: #ed4b9b !important;
+  stroke-width: 1.5px !important;
+}
+
+/* All text elements */
+.diagram :global(text),
+.diagram :global(tspan),
+.diagram :global(foreignObject),
+.diagram :global(foreignObject *) {
+  fill: #ed4b9b !important;
+  color: #ed4b9b !important;
+  font-family: "JetBrains Mono", "Geist Mono", monospace !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
+/* Mindmap nodes - white background to cover lines */
+.diagram :global(.mindmap-node) path,
+.diagram :global(.mindmap-node) rect,
+.diagram :global(.mindmap-node) circle,
+.diagram :global(.section-root) path,
+.diagram :global(.section-root) rect {
+  fill: white !important;
+  stroke: #ed4b9b !important;
+  stroke-width: 1.5px !important;
+}
+
+/* Edge markers and arrows */
+.diagram :global(marker) path,
+.diagram :global(marker) polygon {
+  fill: #ed4b9b !important;
+  stroke: #ed4b9b !important;
+}
+
+/* Labels */
+.diagram :global(.nodeLabel),
+.diagram :global(.label),
+.diagram :global(.edgeLabel) {
+  color: #ed4b9b !important;
+  background: transparent !important;
+}
+
+/* Remove any background colors */
+.diagram :global(.node-bkg),
+.diagram :global(.cluster-bkg) {
+  fill: transparent !important;
+}
+
+.caption {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  font-style: italic;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-600);
+}
+
+.loadingSpinner {
+  inline-size: 24px;
+  block-size: 24px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  padding: var(--space-300);
+  background-color: var(--color-error-surface, #fee);
+  border: 1px solid var(--color-error, #b00);
+  border-radius: var(--radius-200);
+  color: var(--color-error, #b00);
+  font-size: 0.875rem;
+}

@@ -55,9 +55,6 @@ const Header: React.FC<HeaderProps> = ({
   const { theme, cycleTheme } = usePersistentTheme();
   const { t, i18n } = useTranslation();
   const location = useLocation();
-  const leftRef = React.useRef<HTMLDivElement | null>(null);
-  const controlsRef = React.useRef<HTMLDivElement | null>(null);
-  const [navOffset, setNavOffset] = React.useState(0);
   const [isMobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const languages = React.useMemo(
     () => [
@@ -92,49 +89,6 @@ const Header: React.FC<HeaderProps> = ({
       i18n.changeLanguage(cookieLang);
     }
   }, [i18n, currentlang]);
-
-  React.useLayoutEffect(() => {
-    let rafId: number | null = null;
-
-    const computeOffset = () => {
-      if (typeof window === "undefined") return;
-      if (!leftRef.current || !controlsRef.current) {
-        setNavOffset(0);
-        return;
-      }
-      if (window.innerWidth <= 1100) {
-        setNavOffset(0);
-        return;
-      }
-      const leftWidth = leftRef.current.getBoundingClientRect().width;
-      const rightWidth = controlsRef.current.getBoundingClientRect().width;
-      setNavOffset((rightWidth - leftWidth) / 2);
-    };
-
-    const scheduleCompute = () => {
-      if (rafId !== null) return;
-      rafId = window.requestAnimationFrame(() => {
-        rafId = null;
-        computeOffset();
-      });
-    };
-
-    computeOffset();
-    window.addEventListener("resize", scheduleCompute);
-
-    let resizeObserver: ResizeObserver | undefined;
-    if (typeof ResizeObserver !== "undefined") {
-      resizeObserver = new ResizeObserver(() => computeOffset());
-      if (leftRef.current) resizeObserver.observe(leftRef.current);
-      if (controlsRef.current) resizeObserver.observe(controlsRef.current);
-    }
-
-    return () => {
-      if (rafId !== null) window.cancelAnimationFrame(rafId);
-      window.removeEventListener("resize", scheduleCompute);
-      resizeObserver?.disconnect();
-    };
-  }, []);
 
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
@@ -226,7 +180,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <div ref={leftRef} className={styles.left}>
+        <div className={styles.left}>
           <Link to="/" className={styles.logoLink}>
             {isMobile ? (
               <svg
@@ -246,13 +200,7 @@ const Header: React.FC<HeaderProps> = ({
             )}
           </Link>
         </div>
-        <nav
-          className={styles.navbar}
-          style={{
-            transform:
-              navOffset === 0 ? undefined : `translateX(${navOffset}px)`,
-          }}
-        >
+        <nav className={styles.navbar}>
           <ul className={styles.nav}>
             {resolvedNavItems.map((item) => {
               const isActive = item.exact
@@ -272,7 +220,7 @@ const Header: React.FC<HeaderProps> = ({
             })}
           </ul>
         </nav>
-        <div ref={controlsRef} className={styles.controls}>
+        <div className={styles.controls}>
           <div className={styles.languageSwitcher}>
             {languages.map((lang) => (
               <button
