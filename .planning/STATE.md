@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-01-19)
 
 **Core value:** Tell true stories with unique compositions. Each project deserves accurate representation with its own layout personality.
-**Current focus:** Phase 7 — VertaaUX (completing)
+**Current focus:** Phase 8 — Finnish Transport Agency (ready to plan)
 
 ## Current Position
 
-Phase: 7 of 9 (VertaaUX)
-Plan: 07-02 complete
-Status: Phase verification pending
-Last activity: 2026-01-19 — Plan 07-02 completed with visual fixes
+Phase: 8 of 9 (Finnish Transport Agency)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-01-19 — Phase 7 (VertaaUX) completed
 
-Progress: ██████░░░░ 70% (v1.0 complete, phase 7 finishing)
+Progress: ███████░░░ 78% (v1.0 complete, 1 of 3 v1.1 phases done)
 
 ## Performance Metrics
 
