@@ -9,7 +9,6 @@ import { LogoReveal } from "../../../LogoReveal";
 import { LogoConstruction } from "../../../LogoConstruction";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
-import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
@@ -53,49 +52,47 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
       }
       className={styles.page}
     >
-      <ProjectMetaSection
-        services={[
-          "Product Design",
-          "Interaction Design",
-          "Visual Design",
-          "Brand Identity",
-        ]}
-        duration="Dec 2025 – Present"
-        tools={[
-          { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },
-          {
-            key: "after-effects",
-            icon: <SiAdobeaftereffects size={24} />,
-            name: "After Effects",
-          },
-          {
-            key: "illustrator",
-            icon: <SiAdobeillustrator size={24} />,
-            name: "Illustrator",
-          },
-          {
-            key: "photoshop",
-            icon: <SiAdobephotoshop size={24} />,
-            name: "Photoshop",
-          },
-        ]}
-        client={{ name: "KnobSmith Audio" }}
-        overview={
-          <Text size="S">
-            KnobSmith Audio is a personal venture developing professional audio
-            plugins for music producers and sound designers. The focus is on
-            creating tools that feel intuitive and inspiring while honoring the
-            tactile cues of analog hardware.
-            <br />
-            <br />
-            The design challenge is to modernize skeuomorphic controls without
-            losing the familiarity musicians expect. Every control needs to be
-            discoverable, precise, and fast to adjust under creative pressure.
-          </Text>
-        }
-        background="muted"
-        maxWidth="md"
-      />
+      {/* Project Meta - Custom 2-column layout like VertaaUX */}
+      <section className={styles.metaSection}>
+        <div className={styles.metaGrid}>
+          <div className={styles.metaLeft}>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Services</h3>
+              <p className={styles.metaText}>
+                Product Design, Interaction Design, Visual Design, Brand Identity
+              </p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Duration</h3>
+              <p className={styles.metaText}>Dec 2025 – Present</p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Tools used</h3>
+              <div className={styles.metaTools}>
+                <SiFigma size={24} title="Figma" />
+                <SiAdobeaftereffects size={24} title="After Effects" />
+                <SiAdobeillustrator size={24} title="Illustrator" />
+                <SiAdobephotoshop size={24} title="Photoshop" />
+              </div>
+            </div>
+          </div>
+          <div className={styles.metaRight}>
+            <h3 className={styles.metaLabel}>Overview</h3>
+            <p className={styles.metaOverview}>
+              <strong>KnobSmith Audio</strong> is a personal venture developing
+              professional audio plugins for music producers and sound designers.
+              The focus is on creating tools that feel intuitive and inspiring
+              while honoring the tactile cues of analog hardware.
+            </p>
+            <p className={styles.metaOverview}>
+              <strong>The design challenge:</strong> Modernize skeuomorphic
+              controls without losing the familiarity musicians expect. Every
+              control needs to be discoverable, precise, and fast to adjust
+              under creative pressure.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <StoryBlock
         subtitle="The Problem"
