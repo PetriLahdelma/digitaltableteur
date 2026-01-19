@@ -81,52 +81,54 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         maxWidth="md"
       />
 
-      {/* Process methodology phases */}
-      <ProcessBlock
-        phases={[
-          {
-            title: "Research & Strategy",
-            activities: [
-              "UX audit methodology",
-              "Competitive analysis",
-              "User research",
-              "Market positioning",
-            ],
-          },
-          {
-            title: "AI Model Development",
-            activities: [
-              "Predictive models",
-              "Scoring algorithms",
-              "Validation testing",
-              "Performance optimization",
-            ],
-          },
-          {
-            title: "Brand Identity",
-            activities: [
-              "Logo design",
-              "Visual language",
-              "Brand positioning",
-              "Identity system",
-            ],
-          },
-          {
-            title: "Product Design",
-            activities: [
-              "UI/UX design",
-              "Interaction patterns",
-              "Dashboard design",
-              "User flows",
-            ],
-          },
-        ]}
-        sectionTitle="Process"
-        backgroundColor="transparent"
-        maxWidth="lg"
-        spacing="comfortable"
-        columns={4}
-      />
+      {/* Process methodology phases - styled for AI startup feel */}
+      <div className={styles.processSection}>
+        <ProcessBlock
+          phases={[
+            {
+              title: "Research & Strategy",
+              activities: [
+                "UX audit methodology",
+                "Competitive analysis",
+                "User research",
+                "Market positioning",
+              ],
+            },
+            {
+              title: "AI Model Development",
+              activities: [
+                "Predictive models",
+                "Scoring algorithms",
+                "Validation testing",
+                "Performance optimization",
+              ],
+            },
+            {
+              title: "Brand Identity",
+              activities: [
+                "Logo design",
+                "Visual language",
+                "Brand positioning",
+                "Identity system",
+              ],
+            },
+            {
+              title: "Product Design",
+              activities: [
+                "UI/UX design",
+                "Interaction patterns",
+                "Dashboard design",
+                "User flows",
+              ],
+            },
+          ]}
+          sectionTitle="Process"
+          backgroundColor="transparent"
+          maxWidth="lg"
+          spacing="comfortable"
+          columns={4}
+        />
+      </div>
 
       <StoryBlock
         subtitle="Why This Matters"
@@ -174,7 +176,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         backgroundColor="transparent"
         maxWidth="md"
         spacing="comfortable"
-        className={styles.storySection}
+        className={styles.storySectionAlt}
       />
 
       {/* The Approach - technical foundation */}
@@ -264,7 +266,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         backgroundColor="transparent"
         maxWidth="md"
         spacing="comfortable"
-        className={styles.storySection}
+        className={styles.brandSection}
       />
 
       {/* Product mockups */}
@@ -319,7 +321,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         backgroundColor="transparent"
         maxWidth="md"
         spacing="comfortable"
-        className={styles.storySection}
+        className={styles.outcomesSection}
       />
     </ProjectDetailLayout>
   );
