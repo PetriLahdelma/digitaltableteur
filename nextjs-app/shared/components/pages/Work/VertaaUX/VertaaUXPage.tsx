@@ -2,15 +2,17 @@
 
 import React from "react";
 import Text from "@dt/Text";
+import Title from "@dt/Title";
+import { Mermaid } from "../../../Mermaid";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
-import GridBlock from "../../../../patterns/GridBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
 import { SiFigma, SiAdobeillustrator } from "react-icons/si";
+import { ClaudeIcon } from "../../../AskAI/ai-icons";
 
 import styles from "./vertaaux.module.css";
 
@@ -62,6 +64,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               <h3 className={styles.metaLabel}>Tools used</h3>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
+                <ClaudeIcon width={24} height={24} aria-label="Claude AI" />
                 <SiAdobeillustrator size={24} title="Illustrator" />
               </div>
             </div>
@@ -69,17 +72,18 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           <div className={styles.metaRight}>
             <h3 className={styles.metaLabel}>Overview</h3>
             <p className={styles.metaOverview}>
-              <strong>VertaaUX.ai</strong> is a real-time, predictive UX intelligence
-              engine. The product delivers a one-click UX audit with instant insights
-              on usability, clarity, accessibility, and conversion performance. The
-              audit runs in under 1.5 seconds and produces a prioritized UX report
-              that teams can act on without deep UX or accessibility expertise.
+              <strong>VertaaUX.ai</strong> is an automated UX intelligence platform
+              that delivers comprehensive a11y- and UX-audits. Using 15+
+              specialized AI agents and 91+ automated checks, it analyzes usability,
+              clarity, information architecture, and WCAG 2.2 accessibility compliance
+              without requiring deep UX expertise.
             </p>
             <p className={styles.metaOverview}>
               <strong>The goal:</strong> Establish a UX Score the industry can
               adopt, similar to PageSpeed for performance or Lighthouse for
-              accessibility, making professional-grade UX insights accessible
-              to every team.
+              accessibility. The platform achieves 2x higher accuracy than
+              industry benchmarks with less than 5% false positive rate on
+              accessibility findings.
             </p>
           </div>
         </div>
@@ -147,74 +151,98 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             VertaaUX compresses that timeline into seconds, delivering
             actionable UX direction without heavy consulting overhead.
           </Text>,
-        ]}
-        images={{
-          src: "/images/portfolio/vertaaux/hero.png",
-          alt: "VertaaUX brand mark",
-          width: 1020,
-          height: 1018,
-          caption: "Brand mark for the VertaaUX.ai product.",
-        }}
-        imageLayout="single"
-        backgroundColor="transparent"
-        maxWidth="lg"
-        spacing="comfortable"
-        className={styles.storySection}
-      />
-
-      <StoryBlock
-        subtitle="How It Works"
-        title="Predictive UX Models"
-        content={[
-          <Text key="p1" size="S">
-            The engine simulates user behavior with predictive models covering
-            structure, cognitive load, visual attention, semantic structure,
-            keyboard accessibility, and conversion opportunities.
-          </Text>,
-          <Text key="p2" size="S">
-            The result is a precise, prioritized UX score that helps teams fix
-            issues before they hit production.
-          </Text>,
+          <Mermaid
+            key="mindmap"
+            chart={`mindmap
+  root((Traditional UX Audits))
+    Time & Cost
+      2-4 weeks timeline
+      $5K-50K per audit
+      Requires UX specialists
+      Scheduling bottlenecks
+    Inconsistency
+      Subjective opinions
+      Reviewer bias
+      No standardized scoring
+      Hard to compare
+    Limited Scope
+      Manual review only
+      Samples, not full coverage
+      Misses edge cases
+      No real-time updates
+    Actionability Gap
+      Vague recommendations
+      No prioritization
+      Unclear ROI
+      Implementation friction`}
+            className={styles.problemMindmap}
+          />,
         ]}
         imageLayout="none"
         backgroundColor="transparent"
         maxWidth="md"
         spacing="comfortable"
-        className={styles.storySectionAlt}
-      />
-
-      {/* The Approach - technical foundation */}
-      <StoryBlock
-        subtitle="The Approach"
-        title="AI-Driven UX Analysis"
-        content={[
-          <Text key="p1" size="S">
-            <span style={{ fontWeight: 600 }}>
-              The technical foundation combines predictive modeling with
-              real-time analysis.
-            </span>{" "}
-            Each audit runs in under 1.5 seconds, delivering instant insights
-            that would typically require hours of manual review.
-          </Text>,
-          <Text key="p2" size="S">
-            By simulating user behavior across key dimensions (usability,
-            clarity, accessibility, and conversion), the engine produces a
-            precise, prioritized UX score that teams can act on immediately.
-          </Text>,
-        ]}
-        images={{
-          src: "/images/portfolio/vertaaux/computer-mockup-on-colorful-background.jpeg",
-          alt: "VertaaUX one-click UX audit interface showing usability score, clarity analysis, and AI assessment features",
-          width: 6126,
-          height: 4595,
-          caption: "The VertaaUX product delivers one-click UX audits with instant insights.",
-        }}
-        imageLayout="single"
-        backgroundColor="light"
-        maxWidth="md"
-        spacing="comfortable"
         className={styles.storySection}
       />
+
+      {/* The Approach - technical foundation + How It Works */}
+      <div className={styles.approachSection}>
+        <StoryBlock
+          subtitle="The Approach"
+          title="AI-Driven UX Analysis"
+          content={[
+            <Text key="p1" size="S">
+              <span style={{ fontWeight: 600 }}>
+                The technical foundation combines predictive modeling with
+                real-time analysis, running 91+ automated checks in 40-90 seconds.
+              </span>{" "}
+              This is 25x faster than initial performance targets, with simple
+              sites completing in just seconds.
+            </Text>,
+            <Text key="p2" size="S">
+              The hierarchical AI system coordinates specialized agents for each
+              audit dimension, producing severity-weighted findings that help
+              teams prioritize by business impact rather than arbitrary severity
+              levels.
+            </Text>,
+          ]}
+          images={{
+            src: "/images/portfolio/vertaaux/computer-mockup-on-colorful-background.jpeg",
+            alt: "VertaaUX one-click UX audit interface showing usability score, clarity analysis, and AI assessment features",
+            width: 6126,
+            height: 4595,
+            caption: "The VertaaUX product delivers one-click UX audits with instant insights.",
+          }}
+          imageLayout="single"
+          backgroundColor="transparent"
+          maxWidth="md"
+          spacing="comfortable"
+        />
+
+        <StoryBlock
+          subtitle="How It Works"
+          title="Seven Audit Dimensions"
+          content={[
+            <Text key="p1" size="S">
+              The engine analyzes pages across seven key dimensions: usability
+              scoring based on Nielsen heuristics and cognitive load, clarity
+              analysis including visual hierarchy and CTA effectiveness,
+              information architecture assessment, and full WCAG 2.2 accessibility
+              compliance checking.
+            </Text>,
+            <Text key="p2" size="S">
+              Each dimension produces a 0-100 score with severity-weighted findings,
+              enabling teams to prioritize fixes by impact. The hierarchical AI
+              system coordinates 15+ specialized agents to deliver comprehensive
+              coverage that would take human reviewers days to complete.
+            </Text>,
+          ]}
+          imageLayout="none"
+          backgroundColor="transparent"
+          maxWidth="md"
+          spacing="comfortable"
+        />
+      </div>
 
       {/* Brand Identity - expanded with logo variations */}
       <StoryBlock
@@ -236,42 +264,58 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             aesthetic.
           </Text>,
         ]}
-        images={[
-          {
-            src: "/images/portfolio/vertaaux/gradient-logo@2x.png",
-            alt: "VertaaUX gradient logo on dark background",
-            width: 512,
-            height: 512,
-            caption: "Primary gradient logo mark",
-          },
-          {
-            src: "/images/portfolio/vertaaux/black-logo@2x.png",
-            alt: "VertaaUX logo in black for light backgrounds",
-            width: 512,
-            height: 512,
-            caption: "Black logo for light backgrounds",
-          },
-          {
-            src: "/images/portfolio/vertaaux/white-logo@2x.png",
-            alt: "VertaaUX logo in white for dark backgrounds",
-            width: 512,
-            height: 512,
-            caption: "White logo for dark backgrounds",
-          },
-          {
-            src: "/images/portfolio/vertaaux/round-logo-gradient@2x.png",
-            alt: "VertaaUX round logo mark with gradient",
-            width: 512,
-            height: 512,
-            caption: "Circular logo mark for social and icons",
-          },
-        ]}
-        imageLayout="grid"
+        imageLayout="none"
         backgroundColor="transparent"
         maxWidth="md"
         spacing="comfortable"
-        className={styles.brandSection}
+        className={styles.storySection}
       />
+
+      {/* Logo variations grid - custom layout for better presentation */}
+      <div className={styles.logoGridSection}>
+        <div className={styles.logoGrid}>
+          <figure className={styles.logoCard}>
+            <div className={styles.logoCardDark}>
+              <img
+                src="/images/portfolio/vertaaux/gradient-logo@2x.png"
+                alt="VertaaUX gradient logo on dark background"
+                className={styles.logoImage}
+              />
+            </div>
+            <figcaption className={styles.logoCaption}>Primary gradient logo</figcaption>
+          </figure>
+          <figure className={styles.logoCard}>
+            <div className={styles.logoCardLight}>
+              <img
+                src="/images/portfolio/vertaaux/black-logo@2x.png"
+                alt="VertaaUX logo in black for light backgrounds"
+                className={styles.logoImage}
+              />
+            </div>
+            <figcaption className={styles.logoCaption}>Black logo for light backgrounds</figcaption>
+          </figure>
+          <figure className={styles.logoCard}>
+            <div className={styles.logoCardDark}>
+              <img
+                src="/images/portfolio/vertaaux/white-logo@2x.png"
+                alt="VertaaUX logo in white for dark backgrounds"
+                className={styles.logoImage}
+              />
+            </div>
+            <figcaption className={styles.logoCaption}>White logo for dark backgrounds</figcaption>
+          </figure>
+          <figure className={styles.logoCard}>
+            <div className={styles.logoCardGradient}>
+              <img
+                src="/images/portfolio/vertaaux/round-logo-gradient@2x.png"
+                alt="VertaaUX round logo mark with gradient"
+                className={styles.logoImageRound}
+              />
+            </div>
+            <figcaption className={styles.logoCaption}>Circular mark for social & icons</figcaption>
+          </figure>
+        </div>
+      </div>
 
       {/* Product mockup */}
       <StoryBlock
@@ -280,7 +324,14 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="S">
             The interface prioritizes clarity and speed, presenting complex UX
-            data in an instantly scannable format that teams can act on.
+            data in an instantly scannable format. Users can run guest audits
+            without creating an account, or sign in to access audit history,
+            shareable reports, and team collaboration features.
+          </Text>,
+          <Text key="p2" size="S">
+            Enterprise plans include SAML SSO, multi-tenant support, API access,
+            and developer documentation for integration into existing CI/CD
+            pipelines and quality assurance workflows.
           </Text>,
         ]}
         images={{
@@ -297,24 +348,63 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
+      {/* Key Metrics */}
+      <section className={styles.metricsSection}>
+        <div className={styles.metricsContent}>
+          <Title level={3} terminals="sans">Key Metrics</Title>
+          <div className={styles.metricsGrid}>
+            <div className={styles.metricItem}>
+              <span className={styles.metricValue}>91+</span>
+              <span className={styles.metricLabel}>Automated Checks</span>
+              <span className={styles.metricDetail}>
+                Comprehensive coverage across all audit dimensions
+              </span>
+            </div>
+            <div className={styles.metricItem}>
+              <span className={styles.metricValue}>15+</span>
+              <span className={styles.metricLabel}>AI Agents</span>
+              <span className={styles.metricDetail}>
+                Specialized models for each audit dimension
+              </span>
+            </div>
+            <div className={styles.metricItem}>
+              <span className={styles.metricValue}>&lt;5%</span>
+              <span className={styles.metricLabel}>False Positive Rate</span>
+              <span className={styles.metricDetail}>
+                2x more accurate than industry benchmarks
+              </span>
+            </div>
+            <div className={styles.metricItem}>
+              <span className={styles.metricValue}>40-90s</span>
+              <span className={styles.metricLabel}>Audit Speed</span>
+              <span className={styles.metricDetail}>
+                25x faster than original performance targets
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Results & Impact - outcomes section */}
       <StoryBlock
         subtitle="Results & Impact"
-        title="Building the Future of UX Assessment"
+        title="Building the Future of AI driven UX Assessment"
         content={[
           <Text key="p1" size="S">
             <span style={{ fontWeight: 600 }}>
-              VertaaUX.ai is currently in active development (2025-Present).
+              VertaaUX.ai launched in 2025 and is now in production.
             </span>{" "}
-            The product combines comprehensive brand identity design with an
-            AI-powered UX intelligence platform, positioning the product to
-            transform how teams approach experience optimization.
+            The platform combines comprehensive brand identity design with an
+            AI-powered UX intelligence engine that delivers 2x higher accuracy
+            than industry benchmarks and completes audits 25x faster than
+            original performance targets.
           </Text>,
           <Text key="p2" size="S">
-            With audit speeds under 1.5 seconds and coverage across usability,
-            clarity, accessibility, and conversion metrics, the platform aims to
-            democratize UX expertise, making professional-grade insights
-            accessible to teams without dedicated UX specialists.
+            With 91+ automated checks across seven audit dimensions and WCAG 2.2
+            compliance testing with less than 5% false positive rate, the platform
+            democratizes UX expertise for teams without dedicated specialists.
+            Enterprise customers benefit from SAML SSO, API access, and GDPR-
+            compliant data handling.
           </Text>,
         ]}
         imageLayout="none"

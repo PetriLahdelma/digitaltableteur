@@ -95,6 +95,27 @@
   margin-block: var(--space-layout-64);
 }
 
+/* Problem mindmap styling */
+.problemMindmap {
+  margin-block-start: var(--space-400);
+  width: 100%;
+}
+
+/* Combined Approach + How It Works section with continuous gray background */
+.approachSection {
+  background-color: var(--color-light-bg);
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+  padding-block: var(--space-layout-48);
+}
+
+@media (max-width: 768px) {
+  .approachSection {
+    margin-inline: calc(-1 * var(--space-layout-16));
+    padding-inline: var(--space-layout-16);
+  }
+}
+
 /* Alternate story section with subtle background */
 .storySectionAlt {
   margin-block: var(--space-layout-64);
@@ -104,22 +125,96 @@
   padding-inline: var(--space-layout-24);
 }
 
-/* Brand identity section with generous spacing */
-.brandSection {
-  margin-block: var(--space-layout-80);
+/* Logo grid section - custom 2x2 layout */
+.logoGridSection {
+  max-width: var(--container-md);
+  margin-inline: auto;
+  padding-inline: var(--page-margin-mobile);
+  margin-block-end: var(--space-layout-64);
 }
 
-/* Ensure brand logo grid images have equal height per row */
-.brandSection figure {
+@media (width >= 768px) {
+  .logoGridSection {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .logoGridSection {
+    padding-inline: var(--page-margin-desktop);
+  }
+}
+
+.logoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-layout-24);
+}
+
+@media (width < 640px) {
+  .logoGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.logoCard {
+  margin: 0;
   display: flex;
   flex-direction: column;
+  gap: var(--space-internal-12);
 }
 
-.brandSection figure img {
+.logoCardDark {
+  background-color: #111;
+  border-radius: var(--radius-m);
+  padding: var(--space-layout-32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+}
+
+.logoCardLight {
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  padding: var(--space-layout-32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+}
+
+.logoCardGradient {
+  background: #000;
+  border-radius: var(--radius-m);
+  padding: var(--space-layout-32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+}
+
+.logoImage {
+  max-width: 80%;
+  max-height: 80%;
+  height: auto;
   object-fit: contain;
-  height: 120px;
-  width: auto;
-  margin-inline: auto;
+}
+
+.logoImageRound {
+  max-width: 50%;
+  max-height: 90%;
+  height: auto;
+  object-fit: contain;
+}
+
+.logoCaption {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-text-s);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  text-align: center;
 }
 
 /* Image grid with enhanced spacing */
@@ -127,11 +222,63 @@
   margin-block: var(--space-layout-64);
 }
 
-/* Outcomes section with top border for visual separation */
+/* Outcomes section */
 .outcomesSection {
   margin-block: var(--space-layout-80);
   border-block-start: 1px solid var(--color-border);
   padding-block-start: var(--space-layout-48);
+}
+
+/* Key metrics section with gradient */
+.metricsSection {
+  margin-block: var(--space-layout-80);
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+  padding-block: var(--space-layout-64);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.metricsContent {
+  max-width: var(--container-lg);
+  margin-inline: auto;
+}
+
+.metricsContent h3 {
+  color: white;
+  margin-block-end: var(--space-layout-32);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-layout-32);
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-4);
+}
+
+.metricValue {
+  font-family: var(--font-sans);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.metricLabel {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}
+
+.metricDetail {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  opacity: 0.85;
+  line-height: 1.4;
 }
 
 /* Responsive adjustments */
@@ -147,8 +294,13 @@
   }
 
   .processSection,
-  .storySectionAlt {
+  .storySectionAlt,
+  .metricsSection {
     margin-inline: calc(-1 * var(--space-layout-16));
     padding-inline: var(--space-layout-16);
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

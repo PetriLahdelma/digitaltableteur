@@ -10,10 +10,11 @@ import { SiFigma, SiReact, SiTypescript, SiStorybook } from "react-icons/si";
 // Patterns from Phase 08-2
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
-import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
+
+import styles from "./sapBuildApps.module.css";
 
 export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("sap-build-apps");
@@ -45,77 +46,91 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         <RelatedProjects currentSlug={project.slug} maxItems={3} />
       }
     >
-      {/* Project metadata */}
-      <ProjectMetaSection
-        services={[
-          "Design System Architecture",
-          "Component Design",
-          "Documentation",
-          "Design-to-Code Translation",
-        ]}
-        duration="March 2022 – February 2026"
-        tools={[
-          {
-            key: "figma",
-            icon: <SiFigma size={24} />,
-            name: "Figma",
-          },
-          {
-            key: "react",
-            icon: <SiReact size={24} />,
-            name: "ReactTS",
-          },
-          {
-            key: "typescript",
-            icon: <SiTypescript size={24} />,
-            name: "Design Tokens",
-          },
-          {
-            key: "storybook",
-            icon: <SiStorybook size={24} />,
-            name: "Storybook",
-          },
-        ]}
-        team={[
-          {
-            name: "Petri Lahdelma",
-            role: "Design System Lead",
-            image: "/images/portfolio/helsinki-design-system/team/petri.png",
-          },
-          {
-            name: "Hristo Meshinski",
-            role: "Lead Developer",
-            image: "/images/portfolio/sap-build-apps/team/hristo.png?v=2",
-          },
-          {
-            name: "Pekka Turtola",
-            role: "Senior Developer",
-            image: "/images/portfolio/sap-build-apps/team/pekka.png?v=2",
-          },
-          {
-            name: "Vili Karilas",
-            role: "Developer",
-            image: "/images/portfolio/sap-build-apps/team/vili.png?v=2",
-          },
-        ]}
-        overview={
-          <Text size="S">
-            <span style={{ fontWeight: 600 }}>SAP Build Apps</span> is SAP&apos;s
-            flagship low-code platform, evolved from AppGyver following its 2021
-            acquisition. It enables business users and developers to create
-            enterprise-grade applications with drag-and-drop UI, 400+ formula
-            functions, and deep SAP BTP integration.
-            <br /> <br />
-            <span style={{ fontWeight: 600 }}>The challenge:</span> Create a
-            unified design language that bridges the gap between design and
-            development, enabling seamless handoff and consistent implementation
-            across a distributed team serving 300+ developers and designers building applications
-            for the platform used by enterprises worldwide.
-          </Text>
-        }
-        background="muted"
-        maxWidth="md"
-      />
+      {/* Project Meta - Custom 2-column layout like VertaaUX */}
+      <section className={styles.metaSection}>
+        <div className={styles.metaGrid}>
+          <div className={styles.metaLeft}>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Services</h3>
+              <p className={styles.metaText}>
+                Design System Architecture, Component Design, Documentation, Design-to-Code Translation
+              </p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Duration</h3>
+              <p className={styles.metaText}>March 2022 – February 2026</p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Tools used</h3>
+              <div className={styles.metaTools}>
+                <SiFigma size={24} title="Figma" />
+                <SiReact size={24} title="ReactTS" />
+                <SiTypescript size={24} title="TypeScript" />
+                <SiStorybook size={24} title="Storybook" />
+              </div>
+            </div>
+          </div>
+          <div className={styles.metaRight}>
+            <h3 className={styles.metaLabel}>Overview</h3>
+            <p className={styles.metaOverview}>
+              <strong>SAP Build Apps</strong> is SAP&apos;s flagship low-code platform,
+              evolved from AppGyver following its 2021 acquisition. It enables business
+              users and developers to create enterprise-grade applications with
+              drag-and-drop UI, 400+ formula functions, and deep SAP BTP integration.
+            </p>
+            <p className={styles.metaOverview}>
+              <strong>The challenge:</strong> Create a unified design language that
+              bridges the gap between design and development, enabling seamless handoff
+              and consistent implementation across a distributed team serving 300+
+              developers and designers building applications for the platform used by
+              enterprises worldwide.
+            </p>
+          </div>
+        </div>
+
+        {/* Team section - full width with separator */}
+        <div className={styles.teamSection}>
+          <h3 className={styles.teamTitle}>Team</h3>
+          <div className={styles.teamGrid}>
+            <div className={styles.teamMember}>
+              <img
+                src="/images/portfolio/helsinki-design-system/team/petri.png"
+                alt="Petri Lahdelma, Design System Lead"
+                className={styles.teamAvatar}
+              />
+              <span className={styles.teamName}>Petri Lahdelma</span>
+              <span className={styles.teamRole}>Design System Lead</span>
+            </div>
+            <div className={styles.teamMember}>
+              <img
+                src="/images/portfolio/sap-build-apps/team/hristo.png?v=2"
+                alt="Hristo Meshinski, Lead Developer"
+                className={styles.teamAvatar}
+              />
+              <span className={styles.teamName}>Hristo Meshinski</span>
+              <span className={styles.teamRole}>Lead Developer</span>
+            </div>
+            <div className={styles.teamMember}>
+              <img
+                src="/images/portfolio/sap-build-apps/team/pekka.png?v=2"
+                alt="Pekka Turtola, Senior Developer"
+                className={styles.teamAvatar}
+              />
+              <span className={styles.teamName}>Pekka Turtola</span>
+              <span className={styles.teamRole}>Senior Developer</span>
+            </div>
+            <div className={styles.teamMember}>
+              <img
+                src="/images/portfolio/sap-build-apps/team/vili.png?v=2"
+                alt="Vili Karilas, Developer"
+                className={styles.teamAvatar}
+              />
+              <span className={styles.teamName}>Vili Karilas</span>
+              <span className={styles.teamRole}>Developer</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Process phases */}
       <ProcessBlock

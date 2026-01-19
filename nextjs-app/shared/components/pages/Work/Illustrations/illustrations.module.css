@@ -73,7 +73,7 @@
 }
 
 .galleryItem:hover {
-  z-index: 40;
+  z-index: 35; /* Must stay below WorkNav z-index: 40 */
 }
 
 .dragging {
