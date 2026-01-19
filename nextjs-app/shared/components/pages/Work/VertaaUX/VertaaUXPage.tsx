@@ -177,34 +177,149 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
+      {/* The Approach - technical foundation */}
+      <StoryBlock
+        subtitle="The Approach"
+        title="AI-Driven UX Analysis"
+        content={[
+          <Text key="p1" size="S">
+            <span style={{ fontWeight: 600 }}>
+              The technical foundation combines predictive modeling with
+              real-time analysis.
+            </span>{" "}
+            Each audit runs in under 1.5 seconds, delivering instant insights
+            that would typically require hours of manual review.
+          </Text>,
+          <Text key="p2" size="S">
+            By simulating user behavior across key dimensions — usability,
+            clarity, accessibility, and conversion — the engine produces a
+            precise, prioritized UX score that teams can act on immediately.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/vertaaux/identity.png",
+          alt: "VertaaUX identity system showing brand elements",
+          width: 800,
+          height: 600,
+          caption: "Identity system developed for the VertaaUX.ai product.",
+        }}
+        imageLayout="single"
+        backgroundColor="light"
+        maxWidth="md"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Brand Identity - expanded with logo variations */}
+      <StoryBlock
+        subtitle="Brand Identity"
+        title="Visual Language for UX Intelligence"
+        content={[
+          <Text key="p1" size="S">
+            <span style={{ fontWeight: 600 }}>
+              The mission is to make world-class UX accessible to every team.
+            </span>{" "}
+            The brand identity needed to communicate trust, precision, and
+            intelligence while remaining approachable for teams without deep UX
+            expertise.
+          </Text>,
+          <Text key="p2" size="S">
+            The goal is to establish a UX Score the industry can adopt — similar
+            to PageSpeed for performance or Lighthouse for accessibility. The
+            visual language reflects this ambition with a clean, data-driven
+            aesthetic.
+          </Text>,
+        ]}
+        images={[
+          {
+            src: "/images/portfolio/vertaaux/gradient-logo@2x.png",
+            alt: "VertaaUX gradient logo on dark background",
+            width: 512,
+            height: 512,
+            caption: "Primary gradient logo mark",
+          },
+          {
+            src: "/images/portfolio/vertaaux/black-logo@2x.png",
+            alt: "VertaaUX logo in black for light backgrounds",
+            width: 512,
+            height: 512,
+            caption: "Black logo for light backgrounds",
+          },
+          {
+            src: "/images/portfolio/vertaaux/white-logo@2x.png",
+            alt: "VertaaUX logo in white for dark backgrounds",
+            width: 512,
+            height: 512,
+            caption: "White logo for dark backgrounds",
+          },
+          {
+            src: "/images/portfolio/vertaaux/round-logo-gradient@2x.png",
+            alt: "VertaaUX round logo mark with gradient",
+            width: 512,
+            height: 512,
+            caption: "Circular logo mark for social and icons",
+          },
+        ]}
+        imageLayout="grid"
+        backgroundColor="transparent"
+        maxWidth="md"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Product mockups */}
       <GridBlock
         columns={2}
         gap="medium"
-        backgroundColor="transparent"
+        backgroundColor="light"
         maxWidth="lg"
         spacing="comfortable"
         className={styles.imageGrid}
         cells={[
           {
-            type: "text",
-            innerPadding: true,
-            content: (
-              <Text size="S">
-                The mission is to make world-class UX accessible to every team
-                and establish a UX Score the industry can adopt, similar to
-                PageSpeed for performance or Lighthouse for accessibility.
-              </Text>
-            ),
+            type: "image",
+            src: "/images/portfolio/vertaaux/macbook-pro-clay-dark.png",
+            alt: "VertaaUX dashboard on MacBook Pro mockup",
+            width: 738,
+            height: 506,
+            caption: "Dashboard interface design",
           },
           {
             type: "image",
-            src: "/images/portfolio/vertaaux/logo.png",
-            alt: "VertaaUX primary logo",
-            width: 512,
-            height: 512,
-            caption: "Primary logo lockup and proportions.",
+            src: "/images/portfolio/vertaaux/macbook-pro-gradient.jpeg",
+            alt: "VertaaUX product on colorful gradient background",
+            width: 738,
+            height: 506,
+            caption: "Product presentation mockup",
           },
         ]}
+      />
+
+      {/* Results & Impact - outcomes section */}
+      <StoryBlock
+        subtitle="Results & Impact"
+        title="Building the Future of UX Assessment"
+        content={[
+          <Text key="p1" size="S">
+            <span style={{ fontWeight: 600 }}>
+              VertaaUX.ai is currently in active development (2025-Present).
+            </span>{" "}
+            The product combines comprehensive brand identity design with an
+            AI-powered UX intelligence platform, positioning the product to
+            transform how teams approach experience optimization.
+          </Text>,
+          <Text key="p2" size="S">
+            With audit speeds under 1.5 seconds and coverage across usability,
+            clarity, accessibility, and conversion metrics, the platform aims to
+            democratize UX expertise — making professional-grade insights
+            accessible to teams without dedicated UX specialists.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="md"
+        spacing="comfortable"
+        className={styles.storySection}
       />
     </ProjectDetailLayout>
   );
