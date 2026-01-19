@@ -226,6 +226,32 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           },
         ]}
       />
+
+      <StoryBlock
+        subtitle="Outcomes"
+        title="Unified National Identity"
+        content={[
+          <Text key="p1" size="S">
+            The identity system successfully unified three previously separate
+            government agencies under one cohesive visual language. The musical
+            score concept—positioning the agency as conductor of Finland's
+            transport—gave staff and citizens a clear, memorable symbol of the
+            new organization.
+          </Text>,
+          <Text key="p2" size="S">
+            Trilingual support ensures accessibility across Finnish, Swedish,
+            and English communications, while strict protection zones and usage
+            rules maintain consistency from business cards to highway signage.
+            The Felbridge Pro typography balances screen readability with print
+            elegance across all applications.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
     </ProjectDetailLayout>
   );
 }
