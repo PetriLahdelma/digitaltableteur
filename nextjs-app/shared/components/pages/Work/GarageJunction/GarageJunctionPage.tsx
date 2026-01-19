@@ -144,7 +144,8 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             The name "Garage Junction" references both UK garage music and the
             idea of a meeting point for diverse sounds and people. The visual
             identity uses bold typography and a checkerboard pattern inspired
-            by ska and two-tone aesthetics.
+            by the Helsinki Underground/Subway, or as Finns call it, the metro
+            and its high-contrast two-tone aesthetics.
           </Text>,
           <Text key="p2" size="S">
             The color palette combines high-energy orange with deep blacks and
