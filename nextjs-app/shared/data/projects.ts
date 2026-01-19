@@ -34,6 +34,8 @@ export interface Project {
   featured?: boolean;
   /** Display order (lower = first) */
   order?: number;
+  /** Live project URL */
+  liveUrl?: string;
 }
 
 export interface CategoryOption {
@@ -58,6 +60,7 @@ export const projects: Project[] = [
     tags: ["Design System", "UX Design", "Accessibility", "React"],
     featured: true,
     order: 4,
+    liveUrl: "https://hds.hel.fi/",
   },
   {
     id: "new-things-co",
@@ -108,6 +111,7 @@ export const projects: Project[] = [
     tags: ["Design Systems", "Enterprise", "Low-Code Platform", "SAP BTP"],
     featured: true,
     order: 3,
+    liveUrl: "https://www.sap.com/products/technology-platform/low-code-app-builder.html",
   },
   {
     id: "knobsmith-audio",
@@ -125,6 +129,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     order: 1,
+    liveUrl: "https://knobsmithaudio.com",
   },
   {
     id: "vertaaux",
@@ -137,6 +142,7 @@ export const projects: Project[] = [
     tags: ["AI Product", "UX Intelligence", "Accessibility", "Startup"],
     featured: false,
     order: 2,
+    liveUrl: "https://vertaaux.ai",
   },
   {
     id: "finnish-transport-agency",
