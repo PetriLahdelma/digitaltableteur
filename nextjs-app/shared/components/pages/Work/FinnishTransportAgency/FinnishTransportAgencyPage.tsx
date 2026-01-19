@@ -250,7 +250,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         backgroundColor="transparent"
         maxWidth="lg"
         spacing="comfortable"
-        className={styles.storySection}
+        className={styles.outcomesSection}
       />
     </ProjectDetailLayout>
   );
