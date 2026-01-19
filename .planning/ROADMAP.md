@@ -1,8 +1,14 @@
-# Roadmap: SAP Build Apps Portfolio Page
+# Roadmap: Portfolio Case Studies
 
 ## Overview
 
-Update the SAP Build Apps case study with accurate, fact-checked content and real source images. Six phases take us from processing raw images through content fixes, image integration, new sections, metadata updates, and final verification — resulting in a portfolio piece that accurately represents nearly 4 years of design system leadership.
+Expanding the portfolio from SAP Build Apps to include three additional case studies: VertaaUX, Finnish Transport Agency, and Raw View. Each project tells a true story with unique composition using the layout patterns established in v1.0.
+
+## Milestones
+
+- ✅ **v1.0 MVP** - Phases 1-6 (shipped 2026-01-19)
+- 🚧 **v1.1 Portfolio Expansion** - Phases 7-9 (in progress)
+- 📋 **v1.2 Enhanced Portfolio** - Tulli, Intrum, animations (planned)
 
 ## Phases
 
@@ -10,104 +16,108 @@ Update the SAP Build Apps case study with accurate, fact-checked content and rea
 - Integer phases (1, 2, 3): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-- [x] **Phase 1: Image Processing** — Convert source images to web-optimized WebP at correct sizes ✓
-- [x] **Phase 2: Content Accuracy** — Fix inaccurate claims (team size, duration, 60% metric) ✓
-- [x] **Phase 3: Image Integration** — Replace placeholders, add new images with proper captions ✓
-- [x] **Phase 4: Data Components** — Add Tables & Data Visualization section ✓
-- [x] **Phase 5: Metadata & SEO** — Update projects.ts, page SEO, OpenGraph ✓
-- [x] **Phase 6: Verification & Outcomes** — Verify claims, NDA review, outcomes section ✓
+Decimal phases appear between their surrounding integers in numeric order.
+
+<details>
+<summary>✅ v1.0 MVP (Phases 1-6) - SHIPPED 2026-01-19</summary>
+
+### Phase 1: Image Processing
+**Goal**: Process and optimize source images for SAP Build Apps case study
+**Plans**: Completed
+
+### Phase 2: Content Accuracy
+**Goal**: Fix inaccurate claims and update content with verified facts
+**Plans**: Completed
+
+### Phase 3: Image Integration
+**Goal**: Add processed images to the case study page
+**Plans**: Completed
+
+### Phase 4: Data Components
+**Goal**: Add Data Components section (Tables & Data Visualization)
+**Plans**: Completed
+
+### Phase 5: Metadata & SEO
+**Goal**: Add full SEO metadata with OpenGraph and Twitter cards
+**Plans**: Completed
+
+### Phase 6: Verification & Outcomes
+**Goal**: Final verification and add outcomes section
+**Plans**: Completed
+
+</details>
+
+### 🚧 v1.1 Portfolio Expansion (In Progress)
+
+**Milestone Goal:** Add 3 portfolio case studies with unique layouts and verified content.
+
+- [x] **Phase 7: VertaaUX** - UX research and comparison tool case study ✓
+- [ ] **Phase 8: Finnish Transport Agency** - Government digital services case study
+- [ ] **Phase 9: Raw View** - Photography and visual design case study
 
 ## Phase Details
 
-### Phase 1: Image Processing
-**Goal**: Source images converted to web-optimized formats at correct dimensions
-**Depends on**: Nothing (first phase)
-**Requirements**: IMG-01, IMG-02
+### Phase 7: VertaaUX
+**Goal**: Complete case study page showcasing UX research and comparison tool work
+**Depends on**: Nothing (first phase of v1.1)
+**Requirements**: CASE-01, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, QUAL-01, QUAL-02, QUAL-03, QUAL-04
 **Success Criteria** (what must be TRUE):
-  1. All source PNGs converted to WebP format
-  2. Grid images sized at 738x506px
-  3. Hero/single images sized at 1200x600px
-  4. Processed images stored in public/images/portfolio/sap-build-apps/
-**Research**: Unlikely (standard image processing with sharp)
+  1. User can navigate to `/work/vertaaux` and see full case study
+  2. Hero section displays project image, title, duration, and role
+  3. Story sections tell context, challenge, and solution narrative
+  4. Gallery shows optimized WebP images with proper captions
+  5. Layout composition feels distinct from other case studies
+**Research**: Unlikely (established patterns from v1.0)
 **Plans**: TBD
 
-### Phase 2: Content Accuracy
-**Goal**: All inaccurate claims corrected in the page content
-**Depends on**: Phase 1 (images available for references)
-**Requirements**: CONT-01, CONT-02, CONT-03, CONT-04, CONT-06
+Plans:
+- [x] 07-01: Content expansion (ProcessBlock + StoryBlocks)
+- [x] 07-02: Unique layout styling + visual verification
+
+### Phase 8: Finnish Transport Agency
+**Goal**: Complete case study page showcasing government digital services work
+**Depends on**: Phase 7 (for pattern refinement)
+**Requirements**: CASE-02, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, QUAL-01, QUAL-02, QUAL-03, QUAL-04
 **Success Criteria** (what must be TRUE):
-  1. Team size shows "serving 300+ developers and designers"
-  2. 60% development time claim removed entirely
-  3. Duration shows "March 2022 – February 2026" (nearly 4 years)
-  4. Role attribution clarifies "led small DS team"
-  5. Hero description accurately frames the work
-**Research**: Unlikely (content defined in PROJECT.md)
+  1. User can navigate to `/work/finnish-transport-agency` and see full case study
+  2. Hero section displays project image, title, duration, and role
+  3. Story sections tell context, challenge, and solution narrative
+  4. Gallery shows optimized WebP images with proper captions
+  5. Layout composition feels distinct from other case studies
+**Research**: Unlikely (same patterns as Phase 7)
 **Plans**: TBD
 
-### Phase 3: Image Integration
-**Goal**: Processed images integrated into the page with proper metadata
-**Depends on**: Phase 1 (processed images), Phase 2 (content context)
-**Requirements**: IMG-03, IMG-04, IMG-05, IMG-06, IMG-07, IMG-08
+Plans:
+- [ ] 08-01: Page setup and hero section
+- [ ] 08-02: Story narrative and gallery
+- [ ] 08-03: Process section and verification
+
+### Phase 9: Raw View
+**Goal**: Complete case study page showcasing photography and visual design work
+**Depends on**: Phase 8 (for pattern refinement)
+**Requirements**: CASE-03, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, QUAL-01, QUAL-02, QUAL-03, QUAL-04
 **Success Criteria** (what must be TRUE):
-  1. Placeholder images replaced with real source images
-  2. Typography image appears in design tokens section
-  3. Button construction image appears in components section
-  4. Table component image added to page
-  5. Data visualization image added to page
-  6. All alt text and captions accurate and descriptive
-**Research**: Unlikely (React component updates using existing patterns)
+  1. User can navigate to `/work/raw-view` and see full case study
+  2. Hero section displays project image, title, duration, and role
+  3. Story sections tell context, challenge, and solution narrative
+  4. Gallery shows optimized WebP images with proper captions
+  5. Layout composition feels distinct from other case studies
+**Research**: Unlikely (same patterns as Phases 7-8)
 **Plans**: TBD
 
-### Phase 4: Data Components
-**Goal**: New section for Data Components (Tables & Data Visualization) added
-**Depends on**: Phase 3 (images for section available)
-**Requirements**: CONT-05, CONT-07
-**Success Criteria** (what must be TRUE):
-  1. Data Components section exists in page structure
-  2. Tables subsection explains the table component work
-  3. Data visualization subsection added with content
-  4. Story blocks throughout page are factually accurate
-**Research**: Unlikely (following existing StoryBlock patterns)
-**Plans**: TBD
-
-### Phase 5: Metadata & SEO
-**Goal**: All metadata reflects accurate content
-**Depends on**: Phase 2 (content finalized), Phase 4 (all sections complete)
-**Requirements**: META-01, META-02, META-03
-**Success Criteria** (what must be TRUE):
-  1. projects.ts entry has accurate description matching page content
-  2. Page SEO metadata (title, description) updated
-  3. OpenGraph image and description set correctly
-  4. Duration consistent across projects.ts, page component, and metadata
-**Research**: Unlikely (standard Next.js metadata patterns)
-**Plans**: TBD
-
-### Phase 6: Verification & Outcomes
-**Goal**: All claims verified, outcomes section accurate
-**Depends on**: All previous phases (final verification pass)
-**Requirements**: VERF-01, VERF-02, VERF-03, OUTC-01, OUTC-02
-**Success Criteria** (what must be TRUE):
-  1. IDC MarketScape claim verified with source or removed
-  2. Joule AI reference verified with source or removed
-  3. All content passes NDA compliance review
-  4. Impact metrics show verified data (100+ components, 300+ served, WCAG 2.1)
-  5. Outcomes visual uses real source images
-**Research**: Unlikely (verification of existing claims)
-**Plans**: TBD
+Plans:
+- [ ] 09-01: Page setup and hero section
+- [ ] 09-02: Story narrative and gallery
+- [ ] 09-03: Process section and verification
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
+Phases execute in numeric order: 7 → 8 → 9
 
-| Phase | Plans Complete | Status | Completed |
-|-------|----------------|--------|-----------|
-| 1. Image Processing | 1/1 | Complete | 2026-01-16 |
-| 2. Content Accuracy | 1/1 | Complete | 2026-01-16 |
-| 3. Image Integration | 1/1 | Complete | 2026-01-16 |
-| 4. Data Components | 1/1 | Complete | 2026-01-16 |
-| 5. Metadata & SEO | 1/1 | Complete | 2026-01-16 |
-| 6. Verification & Outcomes | 1/1 | Complete | 2026-01-16 |
-
----
-*Roadmap created: 2026-01-16*
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|----------------|--------|-----------|
+| 1-6 | v1.0 | ✓ | Complete | 2026-01-19 |
+| 7. VertaaUX | v1.1 | 2/2 | Complete | 2026-01-19 |
+| 8. Finnish Transport Agency | v1.1 | 0/3 | Not started | - |
+| 9. Raw View | v1.1 | 0/3 | Not started | - |

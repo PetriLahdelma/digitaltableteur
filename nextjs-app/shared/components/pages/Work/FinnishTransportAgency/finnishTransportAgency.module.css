@@ -1,0 +1,521 @@
+/* Finnish Transport Agency — Government branding case study */
+/* Distinct from VertaaUX: structured, minimal, Finnish design tradition */
+
+/* Felbridge Pro font-face definitions for typography specimen */
+@font-face {
+  font-family: "Felbridge Pro";
+  src: url("/images/portfolio/finnish-transport-agency/Felbridge Pro/FelbridgePro-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Felbridge Pro";
+  src: url("/images/portfolio/finnish-transport-agency/Felbridge Pro/FelbridgePro-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Felbridge Pro";
+  src: url("/images/portfolio/finnish-transport-agency/Felbridge Pro/FelbridgePro-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Felbridge Pro";
+  src: url("/images/portfolio/finnish-transport-agency/Felbridge Pro/FelbridgePro-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Felbridge Pro";
+  src: url("/images/portfolio/finnish-transport-agency/Felbridge Pro/FelbridgePro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Felbridge Pro";
+  src: url("/images/portfolio/finnish-transport-agency/Felbridge Pro/FelbridgePro-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+.page {
+  background-color: var(--main-body-background-color);
+}
+
+/* Hero with constrained image */
+.hero img {
+  max-width: 50%;
+  margin-inline: auto;
+}
+
+/* Custom Meta Section - 2 column layout */
+.metaSection {
+  padding-block: var(--space-layout-48);
+  background-color: var(--color-surface);
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-layout-64);
+  max-width: var(--container-md);
+  margin-inline: auto;
+}
+
+.metaLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-32);
+}
+
+.metaRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
+.metaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-8);
+}
+
+.metaLabel {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.metaText {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.metaTools {
+  display: flex;
+  gap: var(--space-layout-16);
+  color: var(--color-text-secondary);
+}
+
+.metaOverview {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.7;
+}
+
+.metaOverview strong {
+  color: var(--color-text);
+}
+
+/* Team Section */
+.teamSection {
+  padding-block: var(--space-layout-48);
+  background-color: var(--color-surface);
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+.teamSection > .teamContent {
+  max-width: var(--container-md);
+  margin-inline: auto;
+}
+
+/* Process Section - Government official feel with subtle structure */
+.processSection {
+  margin-block: var(--space-layout-64);
+  padding-block: var(--space-layout-48);
+  background-color: var(--color-surface-secondary, #f8f9fa);
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+  border-block: 1px solid var(--color-border-subtle, rgba(0, 0, 0, 0.06));
+}
+
+.teamContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
+.teamGrid {
+  display: flex;
+  gap: var(--space-layout-48);
+}
+
+.teamMember {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-layout-8);
+  text-align: center;
+}
+
+.teamAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.teamAvatarPlaceholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--color-surface-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.teamName {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.teamRole {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Story sections - structured rhythm distinct from VertaaUX */
+.storySection {
+  margin-block: var(--space-layout-64);
+}
+
+/* First story section after process block gets reduced top margin for visual flow */
+.storySection:first-of-type {
+  margin-block-start: var(--space-layout-48);
+}
+
+/* Color System Section */
+.colorSection {
+  margin-block: var(--space-layout-64);
+  padding-block: var(--space-layout-48);
+  background-color: var(--color-surface);
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+  border-block: 1px solid var(--color-border-subtle);
+}
+
+.colorContent {
+  max-width: var(--container-lg);
+  margin-inline: auto;
+}
+
+.colorIntro {
+  margin-block: var(--space-layout-16) var(--space-layout-32);
+  max-width: 60ch;
+}
+
+/* Applications Section */
+.applicationsSection {
+  margin-block: var(--space-layout-64);
+  max-width: var(--container-lg);
+  margin-inline: auto;
+}
+
+.applicationsHeader {
+  margin-block-end: var(--space-layout-32);
+}
+
+.applicationsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-layout-24);
+}
+
+.appItem {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-12);
+}
+
+.appImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface);
+}
+
+.appCaption {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* Maritime grid */
+.maritimeGrid {
+  margin-block: var(--space-layout-48);
+}
+
+.maritimeGrid img {
+  border-radius: var(--radius-md);
+}
+
+/* Outcomes section */
+.outcomesSection {
+  margin-block: var(--space-layout-64);
+  padding-block-start: var(--space-layout-32);
+  border-block-start: 2px solid var(--color-border-subtle);
+}
+
+/* Typography Section */
+.typographySection {
+  margin-block: var(--space-layout-64);
+  padding-block: var(--space-layout-48);
+  background-color: var(--color-surface-secondary, #f8f9fa);
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+}
+
+.typographyContent {
+  max-width: var(--container-lg);
+  margin-inline: auto;
+}
+
+.typographyIntro {
+  margin-block: var(--space-layout-16) var(--space-layout-32);
+  max-width: 60ch;
+}
+
+.typographyWaterfall {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-32);
+  margin-block: var(--space-layout-24);
+  padding: var(--space-layout-32);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.waterfallItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-8);
+}
+
+.waterfallLabel {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.waterfallHeader {
+  font-family: "Felbridge Pro", var(--font-sans);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+
+.waterfallSubhead {
+  font-family: "Felbridge Pro", var(--font-sans);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.waterfallBody {
+  font-family: "Felbridge Pro", var(--font-sans);
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.6;
+  max-width: 55ch;
+}
+
+.waterfallCaption {
+  font-family: "Felbridge Pro", var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.typographyNote {
+  margin-block-start: var(--space-layout-16);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* Key Results Section */
+.resultsSection {
+  margin-block: var(--space-layout-64);
+  padding-block: var(--space-layout-64);
+  background-color: #0088CE;
+  margin-inline: calc(-1 * var(--space-layout-24));
+  padding-inline: var(--space-layout-24);
+}
+
+.resultsContent {
+  max-width: var(--container-lg);
+  margin-inline: auto;
+}
+
+.resultsContent h3 {
+  color: white;
+  margin-block-end: var(--space-layout-8);
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-layout-24);
+  margin-block-start: var(--space-layout-48);
+}
+
+.resultItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: left;
+  padding: var(--space-layout-32);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.resultItem:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.resultValue {
+  font-family: var(--font-sans);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.resultLabel {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-block-start: var(--space-layout-8);
+}
+
+.resultDetail {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin-block-start: var(--space-layout-8);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .processSection {
+    margin-inline: calc(-1 * var(--space-layout-16));
+    padding-inline: var(--space-layout-16);
+  }
+
+  .colorSection,
+  .typographySection {
+    margin-inline: calc(-1 * var(--space-layout-16));
+    padding-inline: var(--space-layout-16);
+  }
+
+  .applicationsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-layout-32);
+  }
+
+  .storySection {
+    margin-block: var(--space-layout-48);
+  }
+
+  .maritimeGrid {
+    margin-block: var(--space-layout-32);
+  }
+
+  .typographyWaterfall {
+    padding: var(--space-layout-24);
+    gap: var(--space-layout-24);
+  }
+
+  .resultsSection {
+    margin-inline: calc(-1 * var(--space-layout-16));
+    padding-inline: var(--space-layout-16);
+    padding-block: var(--space-layout-48);
+  }
+
+  .resultsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-layout-16);
+  }
+
+  .resultItem {
+    padding: var(--space-layout-20);
+  }
+
+  .resultValue {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .hero img {
+    max-width: 80%;
+  }
+
+  .metaSection {
+    margin-inline: calc(-1 * var(--space-layout-16));
+    padding-inline: var(--space-layout-16);
+  }
+
+  .metaGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-layout-32);
+  }
+
+  .teamSection {
+    margin-inline: calc(-1 * var(--space-layout-16));
+    padding-inline: var(--space-layout-16);
+  }
+
+  .teamGrid {
+    flex-wrap: wrap;
+    gap: var(--space-layout-32);
+  }
+}

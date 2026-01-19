@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./HelsinkiClock.module.css";
 
-function getTranslatedDate(t: any, date: Date, lng: string) {
-  const weekday = date.getDay(); // 0 (Sun) - 6 (Sat)
-  const day = date.getDate();
-  const month = date.getMonth(); // 0 (Jan) - 11 (Dec)
+type DateParts = {
+  weekdayIndex: number;
+  day: number;
+  monthIndex: number;
+};
 
-  // Map JS getDay to translation keys (Monday=1, Sunday=0)
+const HELSINKI_TIME_ZONE = "Europe/Helsinki";
+const WEEKDAY_ABBREVIATIONS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+function getTranslatedDate(t: (key: string) => string, parts: DateParts) {
+  // Translation keys aligned with Sunday=0, Saturday=6.
   const weekdayKeys = [
     "weekdaySunday",
     "weekdayMonday",
@@ -32,29 +37,67 @@ function getTranslatedDate(t: any, date: Date, lng: string) {
     "monthDecember",
   ];
 
-  const weekdayKey = weekdayKeys[weekday];
-  const monthKey = monthKeys[month];
-  return `${t(weekdayKey)} ${day}. ${t(monthKey)}`;
+  const weekdayKey = weekdayKeys[parts.weekdayIndex] ?? weekdayKeys[0];
+  const monthKey = monthKeys[parts.monthIndex] ?? monthKeys[0];
+  return `${t(weekdayKey)} ${parts.day}. ${t(monthKey)}`;
+}
+
+const getHelsinkiDateParts = (date: Date): DateParts => {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: HELSINKI_TIME_ZONE,
+    weekday: "short",
+    day: "numeric",
+    month: "numeric",
+  });
+  const parts = formatter.formatToParts(date);
+  const weekdayValue = parts.find((part) => part.type === "weekday")?.value;
+  const dayValue = parts.find((part) => part.type === "day")?.value;
+  const monthValue = parts.find((part) => part.type === "month")?.value;
+
+  const weekdayIndex = WEEKDAY_ABBREVIATIONS.indexOf(weekdayValue ?? "");
+  const day = Number(dayValue) || 1;
+  const monthIndex = Number(monthValue) ? Number(monthValue) - 1 : 0;
+
+  return {
+    weekdayIndex: weekdayIndex >= 0 ? weekdayIndex : 0,
+    day,
+    monthIndex,
+  };
+};
+
+const getHelsinkiTime = (date: Date) =>
+  date.toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+    timeZone: HELSINKI_TIME_ZONE,
+  });
+
+const getHelsinkiTimeZoneLabel = (date: Date) => {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: HELSINKI_TIME_ZONE,
+    timeZoneName: "short",
+  });
+  const parts = formatter.formatToParts(date);
+  return parts.find((part) => part.type === "timeZoneName")?.value || "GMT+2";
 }
 
 const HelsinkiClock: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const [helsinki, setHelsinki] = useState<{ date: Date; time: string } | null>(
-    null,
-  );
+  const [helsinki, setHelsinki] = useState<{
+    dateParts: DateParts;
+    time: string;
+    timeZoneLabel: string;
+  } | null>(null);
 
   useEffect(() => {
     const tick = () => {
       const now = new Date();
       setHelsinki({
-        date: now,
-        time: now.toLocaleTimeString("en-GB", {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false,
-          timeZone: "Europe/Helsinki",
-        }),
+        dateParts: getHelsinkiDateParts(now),
+        time: getHelsinkiTime(now),
+        timeZoneLabel: getHelsinkiTimeZoneLabel(now),
       });
     };
 
@@ -65,18 +108,23 @@ const HelsinkiClock: React.FC = () => {
 
   // Use translation key for Helsinki (helsinki, helsinkiFI, helsinkiSV)
   let helsinkiKey = "helsinki";
-  if (i18n.language === "fi") helsinkiKey = "helsinkiFI";
-  if (i18n.language === "sv") helsinkiKey = "helsinkiSV";
+  const languageCode = (
+    i18n.resolvedLanguage ||
+    i18n.language ||
+    "en"
+  ).split("-")[0];
+  if (languageCode === "fi") helsinkiKey = "helsinkiFI";
+  if (languageCode === "sv") helsinkiKey = "helsinkiSV";
 
   return (
     <div className={styles.clockContainer}>
       <div className={styles.date}>
         {helsinki
-          ? getTranslatedDate(t, helsinki.date, i18n.language)
+          ? getTranslatedDate(t, helsinki.dateParts)
           : "\u2007"}
       </div>
       <div className={styles.time}>
-        {t(helsinkiKey)} (GMT+2)
+        {t(helsinkiKey)} ({helsinki?.timeZoneLabel ?? "GMT+2"})
         {helsinki ? `, ${helsinki.time}` : ""}
       </div>
     </div>

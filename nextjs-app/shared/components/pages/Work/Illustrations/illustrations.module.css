@@ -1,3 +1,407 @@
+.page {
+  padding-block: var(--space-layout-32) var(--space-layout-120);
+  padding-inline: var(--page-margin-mobile);
+  max-width: 100%;
+  background-color: var(--main-body-background-color);
+}
+
+@media (width >= 768px) {
+  .page {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .page {
+    padding-inline: var(--page-margin-desktop);
+  }
+}
+
+.header {
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  margin-block-end: var(--space-layout-64);
+  text-align: center;
+}
+
+.title {
+  margin-block-end: var(--space-internal-16);
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-internal-8);
+}
+
+/* Gallery - Mobile: simple stack */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-16);
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+/* Gallery Items */
+.galleryItem {
+  position: relative;
+  overflow: visible;
+  border-radius: var(--radius-m);
+  background-color: var(--color-muted-background);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.galleryItem > img {
+  border-radius: var(--radius-m);
+}
+
+.galleryItemSharp {
+  position: relative;
+  overflow: visible;
+  border-radius: 0;
+  background-color: var(--color-muted-background);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.galleryImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.galleryItem:hover {
+  z-index: 35; /* Must stay below WorkNav z-index: 40 */
+}
+
+.dragging {
+  cursor: grabbing !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dragging .galleryImage {
+  transform: none !important;
+}
+
+/* Handles - hidden by default */
+.handle {
+  position: absolute;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.15s ease;
+  z-index: 10;
+}
+
+.galleryItem:hover .handle,
+.galleryItemSharp:hover .handle {
+  opacity: 1;
+}
+
+/* Resize handles - corners with diagonal resize indicator */
+.handleNW,
+.handleNE,
+.handleSW,
+.handleSE {
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Diagonal double-arrow icons via content */
+.handleNW::before,
+.handleSE::before {
+  content: "⤡";
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.handleNE::before,
+.handleSW::before {
+  content: "⤢";
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Corner positions set via inline style for counter-scaling */
+.handleNW {
+  cursor: nwse-resize;
+}
+
+.handleNE {
+  cursor: nesw-resize;
+}
+
+.handleSW {
+  cursor: nesw-resize;
+}
+
+.handleSE {
+  cursor: nwse-resize;
+}
+
+/* Rotate handles - edge midpoints with curved arrow */
+.handleRotateN,
+.handleRotateE,
+.handleRotateS,
+.handleRotateW {
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Curved rotation arrow icon */
+.handleRotateN::before,
+.handleRotateE::before,
+.handleRotateS::before,
+.handleRotateW::before {
+  content: "↻";
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Edge positions set via inline style for counter-scaling */
+.handleRotateN {
+  left: 50%;
+}
+
+.handleRotateE {
+  top: 50%;
+}
+
+.handleRotateS {
+  left: 50%;
+}
+
+.handleRotateW {
+  top: 50%;
+}
+
+/* Hover effects - only change background, counter-scale is handled via inline styles */
+.handleNW:hover,
+.handleNE:hover,
+.handleSW:hover,
+.handleSE:hover {
+  background: rgba(59, 130, 246, 0.9);
+}
+
+.handleRotateN:hover,
+.handleRotateE:hover,
+.handleRotateS:hover,
+.handleRotateW:hover {
+  background: rgba(59, 130, 246, 0.9);
+}
+
+.dragHint {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-internal-8);
+  opacity: 0.7;
+}
+
+@media (width < 900px) {
+  .dragHint {
+    display: none;
+  }
+
+  /* Hide handles on mobile */
+  .handle {
+    display: none;
+  }
+}
+
+/* Desktop: Scattered collage with overlaps and rotations */
+@media (width >= 900px) {
+  .gallery {
+    position: relative;
+    max-width: 1400px;
+    height: 3500px;
+    margin-inline: auto;
+  }
+
+  .galleryItem,
+  .galleryItemSharp {
+    position: absolute;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .galleryItem:hover,
+  .galleryItemSharp:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* A: Hero top-left */
+  .areaA {
+    width: 580px;
+    top: 0;
+    left: 0;
+  }
+
+  /* B: Tiny, tucked top-right corner */
+  .areaB {
+    width: 220px;
+    top: 20px;
+    right: 180px;
+  }
+
+  /* C: Medium, overlapping A bottom-right */
+  .areaC {
+    width: 340px;
+    top: 280px;
+    left: 480px;
+    z-index: 2;
+  }
+
+  /* D: Small, floating right - rotated */
+  .areaD {
+    width: 200px;
+    top: 120px;
+    right: 40px;
+    transform: rotate(5deg);
+  }
+
+  /* E: Large landscape, row 2 left */
+  .areaE {
+    width: 520px;
+    top: 520px;
+    left: 60px;
+  }
+
+  /* F: Small, nestled between */
+  .areaF {
+    width: 180px;
+    top: 480px;
+    left: 620px;
+    z-index: 3;
+  }
+
+  /* G: Large, right side row 2 */
+  .areaG {
+    width: 480px;
+    top: 620px;
+    right: 20px;
+  }
+
+  /* H: Tiny accent - rotated */
+  .areaH {
+    width: 200px;
+    top: 820px;
+    left: 320px;
+    transform: rotate(10deg);
+    z-index: 4;
+  }
+
+  /* I: Hero center */
+  .areaI {
+    width: 600px;
+    top: 980px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* J: Medium left */
+  .areaJ {
+    width: 300px;
+    top: 1050px;
+    left: 40px;
+  }
+
+  /* K: Large right, overlapping */
+  .areaK {
+    width: 500px;
+    top: 1380px;
+    right: 80px;
+  }
+
+  /* L: Tiny floating - rotated */
+  .areaL {
+    width: 200px;
+    top: 1320px;
+    left: 180px;
+    transform: rotate(15deg);
+    z-index: 5;
+  }
+
+  /* M: Large left */
+  .areaM {
+    width: 460px;
+    top: 1680px;
+    left: 20px;
+  }
+
+  /* N: Medium center-right */
+  .areaN {
+    width: 320px;
+    top: 1780px;
+    left: 520px;
+    z-index: 2;
+  }
+
+  /* O: Large right */
+  .areaO {
+    width: 440px;
+    top: 1900px;
+    right: 60px;
+  }
+
+  /* P: Small scattered */
+  .areaP {
+    width: 190px;
+    top: 2200px;
+    left: 100px;
+  }
+
+  /* Q: Hero bottom */
+  .areaQ {
+    width: 580px;
+    top: 2400px;
+    left: 280px;
+  }
+
+  /* R: Tiny - rotated */
+  .areaR {
+    width: 200px;
+    top: 2350px;
+    right: 200px;
+    transform: rotate(20deg);
+    z-index: 6;
+  }
+
+  /* S: Large bottom-right */
+  .areaS {
+    width: 420px;
+    top: 2650px;
+    right: 40px;
+  }
+
+  /* T: Medium bottom-left */
+  .areaT {
+    width: 350px;
+    top: 2850px;
+    left: 60px;
+  }
+}
+
+/* Legacy styles below - kept for compatibility */
 .caseStudy {
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;

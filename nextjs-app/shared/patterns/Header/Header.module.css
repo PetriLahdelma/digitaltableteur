@@ -9,14 +9,14 @@
 }
 
 .headerInner {
-  display: flex;
+  display: grid;
   margin: 0 auto;
   padding: 14px 0;
   box-sizing: border-box;
   width: 100%;
-  justify-content: space-between;
   align-items: center;
-  flex-flow: row nowrap;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  column-gap: 1rem;
   vertical-align: top;
 }
 
@@ -33,6 +33,7 @@
   display: flex;
   align-items: center;
   pointer-events: auto;
+  justify-self: start;
 }
 
 .logo {
@@ -60,10 +61,10 @@
 
 .navbar {
   display: flex;
-  flex: 1 1 auto;
   justify-content: center;
   align-items: center;
   pointer-events: auto;
+  justify-self: center;
 }
 
 .nav {
@@ -201,6 +202,8 @@
   color: var(--main-body-copy-color);
   cursor: pointer;
   pointer-events: auto;
+  grid-column: 3;
+  justify-self: end;
   transition:
     color 0.2s ease,
     border-color 0.2s ease,
@@ -222,6 +225,7 @@
   align-items: center;
   gap: 1rem;
   pointer-events: auto;
+  justify-self: end;
 }
 
 .visuallyHidden {

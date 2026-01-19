@@ -10,11 +10,18 @@ import { ExpandableSection } from "../ExpandableSection";
 import { useToast } from "../Toaster/Toaster";
 import FileUpload from "@dt/FileUpload";
 import styles from "./ContactFormEditorial.module.css";
+import {
+  CONTACT_ACCEPTED_ATTACHMENT_TYPES,
+  CONTACT_ATTACHMENT_MAX_BYTES,
+  CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES,
+  reportContactHoneypot,
+  validateContactEmail,
+} from "../contactFormUtils";
 
 // === PRESERVED CONSTANTS ===
-const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
-const EMAIL_ATTACHMENT_LIMIT_BYTES = 2 * 1024 * 1024;
-const ACCEPTED_ATTACHMENT_TYPES = ".pdf,.png,.jpg,.jpeg";
+const MAX_ATTACHMENT_BYTES = CONTACT_ATTACHMENT_MAX_BYTES;
+const EMAIL_ATTACHMENT_LIMIT_BYTES = CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES;
+const ACCEPTED_ATTACHMENT_TYPES = CONTACT_ACCEPTED_ATTACHMENT_TYPES;
 
 // === FORM STATE ===
 const getInitialFormState = () => ({
@@ -54,10 +61,7 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
 };
 
 // === VALIDATION ===
-const validateEmail = (email: string) => {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return emailRegex.test(email);
-};
+const validateEmail = validateContactEmail;
 
 // === OPTIONS ===
 const BUDGET_OPTIONS = [
@@ -198,55 +202,7 @@ export function ContactFormEditorial({
   };
 
   // === SPAM PROTECTION ===
-  const SPAM_LOG_ENDPOINT =
-    typeof process !== "undefined"
-      ? process.env.NEXT_PUBLIC_APP_CONTACT_SPAM_LOG_ENDPOINT
-      : undefined;
-  const isDev =
-    typeof process !== "undefined"
-      ? process.env.NODE_ENV !== "production"
-      : false;
-
-  const logHoneypotHit = () => {
-    if (!SPAM_LOG_ENDPOINT) {
-      if (isDev) {
-        console.info("Honeypot triggered but no SPAM log endpoint configured.");
-      }
-      return;
-    }
-
-    const payload = {
-      event: "contact-form-honeypot",
-      submittedAt: new Date().toISOString(),
-      honeypotValue: formData.honeypot,
-      path:
-        typeof window !== "undefined" ? window.location.pathname : "unknown",
-      userAgent:
-        typeof navigator !== "undefined" ? navigator.userAgent : "unknown",
-    };
-
-    const body = JSON.stringify(payload);
-    const canUseBeacon =
-      typeof navigator !== "undefined" &&
-      typeof navigator.sendBeacon === "function";
-
-    if (canUseBeacon) {
-      const success = navigator.sendBeacon(
-        SPAM_LOG_ENDPOINT,
-        new Blob([body], { type: "application/json" }),
-      );
-      if (success) return;
-    }
-
-    fetch(SPAM_LOG_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body,
-      keepalive: true,
-    }).catch((err) => {
-      if (isDev) console.error("Failed to log honeypot submission", err);
-    });
-  };
+  const logHoneypotHit = () => reportContactHoneypot(formData.honeypot);
 
   // === VALIDATION ===
   const validateForm = (): boolean => {
@@ -279,7 +235,6 @@ export function ContactFormEditorial({
     // Honeypot check
     if (formData.honeypot.trim()) {
       logHoneypotHit();
-      if (isDev) console.warn("Honeypot triggered, dropping submission.");
       setIsSubmitting(false);
       return;
     }

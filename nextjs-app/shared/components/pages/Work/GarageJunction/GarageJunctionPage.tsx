@@ -1,255 +1,408 @@
 "use client";
 
 import React from "react";
-
-import Badge from "@dt/Badge";
-import FlexBox from "@dt/FlexBox";
-import Gallery from "@dt/Gallery";
-import Grid from "@dt/Grid";
-import PageLayout from "../../../../patterns/PageLayout/PageLayout";
-import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
+import Image from "next/image";
+import Text from "@dt/Text";
 import Title from "@dt/Title";
-import WorkNav from "@dt/WorkNav";
+import ProcessBlock from "../../../../patterns/ProcessBlock";
+import StoryBlock from "../../../../patterns/StoryBlock";
+import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
+import { ProjectHero } from "../../../../patterns/ProjectHero";
+import { RelatedProjects } from "../../../../patterns/RelatedProjects";
+import { ProjectNav } from "../../../ProjectNav";
+import { getProjectBySlug } from "../../../../data/projects";
+import { SiFigma, SiAdobeillustrator, SiAdobeaftereffects } from "react-icons/si";
+
 import styles from "./garageJunction.module.css";
 
 export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
+  const project = getProjectBySlug("garage-junction");
+
+  if (!project) {
+    return <div>Project not found</div>;
+  }
+
   return (
     <ProjectDetailLayout
-      nav={nav ?? <WorkNav />}
-      hero={<></>}
-      showScrollProgress={false}
+      nav={nav ?? <ProjectNav currentSlug={project.slug} />}
+      hero={
+        <ProjectHero
+          title={project.title}
+          description="Brand identity and event promotion for an underground music event series at Merikerho, Helsinki. Capturing the raw energy of UK garage culture with a Nordic twist."
+          image={{
+            src: "/images/portfolio/garage_junction/gallery/gj_horiz@2x.webp",
+            alt: "Garage Junction event brand horizontal lockup",
+            width: 1200,
+            height: 600,
+          }}
+          category={project.category.replace("-", " ")}
+          tags={project.tags}
+          variant="contained"
+          showScrollIndicator={true}
+          className={styles.hero}
+        />
+      }
+      relatedProjects={<RelatedProjects currentSlug={project.slug} maxItems={3} />}
+      className={styles.page}
     >
-      <main className={styles.caseStudy}>
-        <PageLayout maxWidth="lg" spacing="comfortable" as="section">
-        <section className={styles.caseHeroSection}>
-          <div className={styles.heroText}>
-            <Title level={1}>Garage Junction</Title>
-            <FlexBox className={styles.caseBadges} gap={8}>
-              <Badge size="s" design="secondary">
-                Branding
-              </Badge>
-              <Badge size="s" design="secondary">
-                Event organization
-              </Badge>
-              <Badge size="s" design="secondary">
-                Sound Design
-              </Badge>
-            </FlexBox>
-            <Grid columns={4} gap="2rem" style={{ marginBottom: "2rem" }}>
-              <div
-                style={{
-                  gridColumn: "1 / span 4",
-                  marginBottom: "-0.5rem",
-                }}
-              >
-                <video
-                  aria-label="Garage Junction insert audio-visual"
-                  controls
-                  loop={false}
-                  playsInline
-                  poster="/images/portfolio/garage_junction/gallery/gj_horiz@2x.webp"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    borderRadius: 0,
-                  }}
-                  onEnded={(e) => {
-                    const vid = e.target as HTMLVideoElement;
-                    vid.currentTime = 0;
-                    vid.play().catch(() => {});
-                  }}
-                >
-                  <source
-                    src="/images/portfolio/garage_junction/gallery/garage_junction_ad_video.webm"
-                    type="video/webm"
-                  />
-                  <source
-                    src="/images/portfolio/garage_junction/gallery/garage_junction_ad_video.mp4"
-                    type="video/mp4"
-                  />
-                  Your browser does not support the video tag.
-                </video>
+      {/* Project Meta - Custom 2-column layout */}
+      <section className={styles.metaSection}>
+        <div className={styles.metaGrid}>
+          <div className={styles.metaLeft}>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Services</h3>
+              <p className={styles.metaText}>
+                Brand Identity, Event Visuals, Sound Design and Social Media Assets
+              </p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Duration</h3>
+              <p className={styles.metaText}>2018</p>
+            </div>
+            <div className={styles.metaBlock}>
+              <h3 className={styles.metaLabel}>Tools used</h3>
+              <div className={styles.metaTools}>
+                <SiFigma size={24} title="Figma" />
+                <SiAdobeillustrator size={24} title="Illustrator" />
+                <SiAdobeaftereffects size={24} title="After Effects" />
               </div>
-              <img
-                src="/images/portfolio/garage_junction/gallery/social_square@2x.webp"
-                alt="Garage Junction social graphic 1"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 1",
-                }}
-              />
-              <img
-                src="/images/portfolio/garage_junction/gallery/social_square2@2x.webp"
-                alt="Garage Junction social graphic 2"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "2 / span 1",
-                }}
-              />
-              <img
-                src="/images/portfolio/garage_junction/gallery/social_square3@2x.webp"
-                alt="Garage Junction social graphic 3"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "3 / span 1",
-                }}
-              />
-              <img
-                src="/images/portfolio/garage_junction/gallery/check_pattern@2x.webp"
-                alt="Garage Junction check pattern"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "4 / span 1",
-                }}
-              />
-              <img
-                src="/images/portfolio/garage_junction/gallery/colors@2x.webp"
-                alt="Garage Junction identity colors"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 4",
-                }}
-              />
-              <img
-                src="/images/portfolio/garage_junction/gallery/application@2x.webp"
-                alt="Garage Junction identity application"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  gridColumn: "1 / span 4",
-                }}
-              />
-            </Grid>
-            <PageLayout maxWidth="md" spacing="comfortable" as="section">
-              <div className={styles.heroSummary}>
-                <p>
-                  Garage Junction was a collaborative event series and brand
-                  concept launched at Merikerho, Helsinki, in 2018. The project
-                  brought music lovers, artists, and creative professionals for
-                  a club night and cultural happening, celebrating underground
-                  music and visual arts.
-                </p>
-                <br />
-                <p>
-                  The vision was to create an inclusive platform that captured
-                  the raw energy and diversity of Helsinki’s nightlife with a UK
-                  twist. The brand identity needed to reflect this spirit—bold,
-                  memorable, and flexible for both digital and print promotion.
-                </p>
-                <br />
-                <p>
-                  The work included developing the Garage Junction name, logo,
-                  and visual identity, as well as designing event materials,
-                  social media assets, and a modular design system for future
-                  use. The result was a brand that resonated with the target
-                  audience and helped establish Garage Junction as a recognized
-                  name in the city’s club culture.
-                </p>
-              </div>
-            </PageLayout>
-          </div>
-        </section>
-      </PageLayout>
-
-      <PageLayout maxWidth="md" spacing="comfortable" as="section">
-        <section className={styles.section}>
-          <Title size="M" level={3} terminals="sans">
-            Project Overview
-          </Title>
-          <div className={styles.twoCol}>
-            <div>
-              <p>
-                Garage Junction needed a distinctive identity and digital
-                presence to launch its event at Merikerho. DT worked closely
-                with the organizers to define the brand’s strategy, visual
-                language, and promotional materials, ensuring a consistent
-                experience across all touchpoints.
-              </p>
-            </div>
-            <div>
-              <ul className={styles.projectMeta}>
-                <li>
-                  <strong>Client:</strong> Garage Junction / Merikerho
-                </li>
-                <li>
-                  <strong>Year:</strong> 2018
-                </li>
-                <li>
-                  <strong>Services:</strong> Branding, Visual Identity, Event
-                  Promotion, Social Media Assets
-                </li>
-              </ul>
             </div>
           </div>
-        </section>
-      </PageLayout>
-
-      <PageLayout maxWidth="md" spacing="comfortable" as="section">
-        <section className={styles.section}>
-          <Title size="M" level={3} terminals="sans">
-            Process
-          </Title>
-          <div className={styles.processSteps}>
-            <div className={styles.processStep}>
-              <Title level={4}>01. Research & Discovery</Title>
-              <p>
-                Explored Helsinki’s club scene and audience expectations.
-                Conducted workshops with the organizing team to define the
-                event’s core values and vision.
-              </p>
-            </div>
-            <div className={styles.processStep}>
-              <Title level={4}>02. Brand Strategy</Title>
-              <p>
-                Developed the Garage Junction name, positioning, and messaging
-                to capture the event’s underground and collaborative ethos.
-              </p>
-            </div>
-            <div className={styles.processStep}>
-              <Title level={4}>03. Visual Identity</Title>
-              <p>
-                Designed the logo, color palette, and graphic elements. Created
-                digital and print materials for event promotion and social
-                media.
-              </p>
-            </div>
-            <div className={styles.processStep}>
-              <Title level={4}>04. Launch & Support</Title>
-              <p>
-                Delivered final assets and provided ongoing support for event
-                rollouts and future branding needs.
-              </p>
-            </div>
+          <div className={styles.metaRight}>
+            <h3 className={styles.metaLabel}>Overview</h3>
+            <p className={styles.metaOverview}>
+              <strong>Garage Junction</strong> was a collaborative event series
+              launched at Merikerho, Helsinki, in 2018. The project brought together
+              music lovers, artists, and creative professionals for club nights
+              celebrating underground music and visual arts.
+            </p>
+            <p className={styles.metaOverview}>
+              <strong>The vision:</strong> Create an inclusive platform capturing
+              the raw energy and diversity of Helsinki&apos;s nightlife with a UK
+              garage twist. The brand identity needed to be bold, memorable, and
+              flexible for both digital and print promotion.
+            </p>
           </div>
-        </section>
-      </PageLayout>
+        </div>
+      </section>
 
-      <PageLayout maxWidth="md" spacing="comfortable" as="section">
-        <section className={styles.section}>
-          <Title size="M" level={3} terminals="sans">
-            Results
-          </Title>
-          <p>
-            Garage Junction quickly gained recognition as a fresh and authentic
-            addition to Helsinki’s nightlife. The brand identity helped attract
-            a loyal following and fostered a collaborative community around
-            music and art.
+      {/* Design Process */}
+      <div className={styles.processSection}>
+        <ProcessBlock
+          phases={[
+            {
+              title: "Research & Discovery",
+              activities: [
+                "Scene analysis",
+                "Audience research",
+                "Competitor mapping",
+                "Vision workshops",
+              ],
+            },
+            {
+              title: "Brand Strategy",
+              activities: [
+                "Name development",
+                "Brand positioning",
+                "Tone of voice",
+                "Visual direction",
+              ],
+            },
+            {
+              title: "Visual Identity",
+              activities: [
+                "Logo design",
+                "Color system",
+                "Pattern library",
+                "Motion graphics",
+              ],
+            },
+            {
+              title: "Launch & Support",
+              activities: [
+                "Event materials",
+                "Social templates",
+                "Sound design",
+                "Ongoing assets",
+              ],
+            },
+          ]}
+          sectionTitle="Process"
+          backgroundColor="transparent"
+          maxWidth="lg"
+          spacing="comfortable"
+          columns={4}
+        />
+      </div>
+
+      {/* The Concept */}
+      <StoryBlock
+        subtitle="The Concept"
+        title="Where Underground Meets Helsinki"
+        content={[
+          <Text key="p1" size="S">
+            The name "Garage Junction" references both UK garage music and the
+            idea of a meeting point for diverse sounds and people. The visual
+            identity uses bold typography and a checkerboard pattern inspired
+            by the Helsinki Underground/Subway, or as Finns call it, the metro
+            and its high-contrast two-tone aesthetics.
+          </Text>,
+          <Text key="p2" size="S">
+            The color palette combines high-energy orange with soft blue and
+            clean white, creating contrast that works across dark club
+            environments and bright social media feeds.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Video Section - Promo Video */}
+      <section className={styles.videoSection}>
+        <div className={styles.videoContainer}>
+          <video
+            aria-label="Garage Junction promotional video with original sound design"
+            controls
+            playsInline
+            poster="/images/portfolio/garage_junction/gallery/gj_horiz@2x.webp"
+          >
+            <source
+              src="/images/portfolio/garage_junction/gallery/garage_junction_ad_video.webm"
+              type="video/webm"
+            />
+            <source
+              src="/images/portfolio/garage_junction/gallery/garage_junction_ad_video.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+          <p className={styles.videoCaption}>
+            Promotional video with original sound design and motion graphics
           </p>
-          <br />
-          <ul className={styles.resultsList}>
-            <li>Distinctive brand identity and event visuals</li>
-            <li>Successful launch at Merikerho with strong attendance</li>
-            <li>Engaged community of artists, DJs, and attendees</li>
-            <li>Flexible design system for future events and promotions</li>
-          </ul>
-        </section>
-      </PageLayout>
-      </main>
+        </div>
+      </section>
+
+      {/* Brand Identity */}
+      <StoryBlock
+        subtitle="Brand Identity"
+        title="Bold and Flexible"
+        content={[
+          <Text key="p1" size="S">
+            <span style={{ fontWeight: 600 }}>
+              The logo system was designed for maximum impact
+            </span>{" "}
+            in both horizontal and vertical formats. The checkerboard pattern
+            provides a distinctive secondary element that can be used as
+            backgrounds, borders, or accent graphics.
+          </Text>,
+        ]}
+        images={[
+          {
+            src: "/images/portfolio/garage_junction/gallery/gj_horiz2@2x.webp",
+            alt: "Garage Junction horizontal logo on dark background",
+            width: 1200,
+            height: 600,
+            caption: "Horizontal lockup for wide formats",
+          },
+          {
+            src: "/images/portfolio/garage_junction/gallery/gj_vert@2x.webp",
+            alt: "Garage Junction vertical logo stack",
+            width: 600,
+            height: 800,
+            caption: "Vertical lockup for posters",
+          },
+        ]}
+        imageLayout="grid"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.brandSection}
+      />
+
+      {/* Color Palette */}
+      <section className={styles.colorSection}>
+        <div className={styles.colorContent}>
+          <Title level={3} terminals="sans">Color Palette</Title>
+          <Text size="S">
+            High contrast colors optimized for club environments and social media.
+          </Text>
+          <div className={styles.colorComposition}>
+            <div className={styles.colorBlack}>
+              <span className={styles.colorLabel}>Black #000</span>
+            </div>
+            <div className={styles.colorRed}>
+              <span className={styles.colorLabel}>Metro Red #FF0000</span>
+            </div>
+            <div className={styles.colorBlue}>
+              <span className={styles.colorLabel}>Garage Blue #1976D2</span>
+            </div>
+            <div className={styles.colorWhite}>
+              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>Pure White #FFFFFF</span>
+            </div>
+            <div className={styles.colorOrange}>
+              <span className={styles.colorLabel}>Junction Orange #F57C00</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Media Assets */}
+      <StoryBlock
+        subtitle="Social Media"
+        title="Event Promotion"
+        content={[
+          <Text key="p1" size="S">
+            Square format assets for Instagram and Facebook with consistent
+            branding. Each post maintains the bold visual identity while
+            allowing space for event-specific details and guest DJ information.
+          </Text>,
+        ]}
+        images={[
+          {
+            src: "/images/portfolio/garage_junction/gallery/social_square@2x.webp",
+            alt: "Garage Junction social media post design 1",
+            width: 800,
+            height: 800,
+            caption: "Event announcement",
+          },
+          {
+            src: "/images/portfolio/garage_junction/gallery/social_square2@2x.webp",
+            alt: "Garage Junction social media post design 2",
+            width: 800,
+            height: 800,
+            caption: "DJ lineup announcement",
+          },
+          {
+            src: "/images/portfolio/garage_junction/gallery/social_square3@2x.webp",
+            alt: "Garage Junction social media post design 3",
+            width: 800,
+            height: 800,
+            caption: "Event countdown",
+          },
+          {
+            src: "/images/portfolio/garage_junction/gallery/check_pattern@2x.webp",
+            alt: "Garage Junction checkerboard pattern",
+            width: 800,
+            height: 800,
+            caption: "Brand pattern",
+          },
+        ]}
+        imageLayout="grid"
+        backgroundColor="light"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Applications Section */}
+      <section className={styles.applicationsSection}>
+        <div className={styles.applicationsHeader}>
+          <Title level={3} terminals="sans">Applications</Title>
+        </div>
+        <div className={styles.applicationsGrid}>
+          <figure className={styles.appItem}>
+            <Image
+              src="/images/portfolio/garage_junction/gallery/poster_vert@2x.webp"
+              alt="Garage Junction event poster"
+              width={600}
+              height={800}
+              className={styles.appImage}
+            />
+            <figcaption className={styles.appCaption}>
+              Mobile teaser for Instagram
+            </figcaption>
+          </figure>
+          <div className={styles.appStack}>
+            <figure className={styles.appItem}>
+              <Image
+                src="/images/portfolio/garage_junction/gallery/application@2x.webp"
+                alt="Garage Junction brand application mockup"
+                width={1200}
+                height={800}
+                className={styles.appImage}
+              />
+              <figcaption className={styles.appCaption}>
+                Brand application mockup
+              </figcaption>
+            </figure>
+            <figure className={styles.appItem}>
+              <Image
+                src="/images/portfolio/garage_junction/gallery/colors@2x.webp"
+                alt="Garage Junction color system documentation"
+                width={1200}
+                height={600}
+                className={styles.appImage}
+              />
+              <figcaption className={styles.appCaption}>
+                Color system documentation
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* Outcome */}
+      <StoryBlock
+        subtitle="Outcome"
+        title="Building a Scene"
+        content={[
+          <Text key="p1" size="S">
+            Garage Junction quickly gained recognition as a fresh and authentic
+            addition to Helsinki&apos;s nightlife. The brand identity helped attract
+            a loyal following and fostered a collaborative community around music
+            and art.
+          </Text>,
+          <Text key="p2" size="S">
+            The flexible design system allowed for easy event-to-event variation
+            while maintaining strong brand recognition across all touchpoints.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.outcomesSection}
+      />
+
+      {/* Results Section */}
+      <section className={styles.resultsSection}>
+        <div className={styles.resultsContent}>
+          <Title level={3} terminals="sans">Key Results</Title>
+          <div className={styles.resultsGrid}>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>Merikerho</span>
+              <span className={styles.resultLabel}>Launch Venue</span>
+              <span className={styles.resultDetail}>
+                Historic Helsinki yacht club turned event space
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>2018</span>
+              <span className={styles.resultLabel}>Series Launch</span>
+              <span className={styles.resultDetail}>
+                Successful debut in Helsinki club scene
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>Sound</span>
+              <span className={styles.resultLabel}>Original Design</span>
+              <span className={styles.resultDetail}>
+                Custom audio branding for promo videos
+              </span>
+            </div>
+            <div className={styles.resultItem}>
+              <span className={styles.resultValue}>UK</span>
+              <span className={styles.resultLabel}>Garage Influence</span>
+              <span className={styles.resultDetail}>
+                Bringing two-tone aesthetic to Nordic nightlife
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
     </ProjectDetailLayout>
   );
 }

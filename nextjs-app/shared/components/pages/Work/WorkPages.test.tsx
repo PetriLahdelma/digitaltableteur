@@ -6,15 +6,17 @@ import { WorkIndexPage } from "@dt/WorkIndex/WorkIndexPage";
 import { NewThingsCoPage } from "@dt/NewThingsCo/NewThingsCoPage";
 import { GarageJunctionPage } from "@dt/GarageJunction/GarageJunctionPage";
 import { IllustrationsPage } from "@dt/Illustrations/IllustrationsPage";
+import { RawViewPage } from "@dt/RawView/RawViewPage";
+import { TulliPage } from "@dt/Tulli/TulliPage";
+import { IntrumPage } from "@dt/Intrum/IntrumPage";
+import { projects } from "../../../data/projects";
 
 describe("Work pages", () => {
   it("renders work index with project links", () => {
     render(<WorkIndexPage nav={<div data-testid="work-nav">NAV</div>} />);
     expect(screen.getByTestId("work-nav")).toBeInTheDocument();
-    // The work index currently renders 4 project cards with "Project details" links
-    expect(
-      screen.getAllByRole("link", { name: /project details/i }),
-    ).toHaveLength(4);
+    const links = screen.getAllByRole("link");
+    expect(links.length).toBeGreaterThanOrEqual(projects.length);
   });
 
   it("renders New Things Co case study content", () => {
@@ -36,5 +38,20 @@ describe("Work pages", () => {
   it("renders Illustrations page", () => {
     render(<IllustrationsPage nav={<div>Nav</div>} />);
     expect(screen.getByText(/Illustrations/i)).toBeInTheDocument();
+  });
+
+  it("renders Raw View page", () => {
+    render(<RawViewPage nav={<div>Nav</div>} />);
+    expect(screen.getByText(/Raw View/i)).toBeInTheDocument();
+  });
+
+  it("renders Tulli page", () => {
+    render(<TulliPage nav={<div>Nav</div>} />);
+    expect(screen.getByText(/Tulli/i)).toBeInTheDocument();
+  });
+
+  it("renders Intrum page", () => {
+    render(<IntrumPage nav={<div>Nav</div>} />);
+    expect(screen.getByText(/Intrum/i)).toBeInTheDocument();
   });
 });

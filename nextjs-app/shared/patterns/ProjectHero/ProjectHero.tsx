@@ -16,13 +16,21 @@ export interface ProjectHeroImage {
   height: number;
 }
 
+export interface ProjectHeroVideo {
+  src: string;
+  poster?: string;
+  alt: string;
+}
+
 export interface ProjectHeroProps {
   /** Project title */
   title: string;
   /** Project description/tagline */
   description?: string;
   /** Hero image */
-  image: ProjectHeroImage;
+  image?: ProjectHeroImage;
+  /** Hero video (takes precedence over image when provided) */
+  video?: ProjectHeroVideo;
   /** Project category */
   category?: string;
   /** Project tags */
@@ -41,6 +49,7 @@ export function ProjectHero({
   title,
   description,
   image,
+  video,
   category,
   tags,
   date,
@@ -50,6 +59,7 @@ export function ProjectHero({
 }: ProjectHeroProps) {
   const isFullWidth = variant === "full-width";
   const isSplit = variant === "split";
+  const hasVideo = Boolean(video?.src);
 
   return (
     <Section
@@ -57,16 +67,35 @@ export function ProjectHero({
       background="default"
       className={cn("relative overflow-hidden", className)}
     >
-      {/* Full-width background image */}
+      {/* Full-width background image/video */}
       {isFullWidth && (
         <div className="absolute inset-0 z-0">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            className="object-cover"
-            priority
-          />
+          {hasVideo ? (
+            <video
+              aria-label={video!.alt}
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster={video!.poster}
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source
+                src={video!.src}
+                type={video!.src.endsWith(".webm") ? "video/webm" : "video/mp4"}
+              />
+            </video>
+          ) : (
+            image && (
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover"
+                priority
+              />
+            )
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
         </div>
       )}
@@ -75,7 +104,9 @@ export function ProjectHero({
         size="lg"
         className={cn(
           "relative z-10",
-          isFullWidth ? "min-h-[70vh] flex flex-col justify-end pb-16" : "py-12 tablet:py-16 desktop:py-20"
+          isFullWidth
+            ? "min-h-[70vh] flex flex-col justify-end pb-16"
+            : "py-12 tablet:py-16 desktop:py-20",
         )}
       >
         {isSplit ? (
@@ -92,7 +123,9 @@ export function ProjectHero({
                         {category}
                       </span>
                     )}
-                    {category && date && <span className="text-foreground/40">|</span>}
+                    {category && date && (
+                      <span className="text-foreground/40">|</span>
+                    )}
                     {date && <span>{date}</span>}
                   </div>
                 </FadeIn>
@@ -107,7 +140,7 @@ export function ProjectHero({
                 className={cn(
                   "font-display font-bold",
                   "text-3xl tablet:text-4xl desktop:text-5xl",
-                  "text-foreground leading-tight tracking-tight"
+                  "text-foreground leading-tight tracking-tight",
                 )}
                 as="h1"
               >
@@ -121,7 +154,7 @@ export function ProjectHero({
                     className={cn(
                       "font-body text-lg tablet:text-xl",
                       "text-muted-foreground",
-                      "max-w-xl leading-relaxed"
+                      "max-w-xl leading-relaxed",
                     )}
                   >
                     {description}
@@ -146,19 +179,40 @@ export function ProjectHero({
               )}
             </div>
 
-            {/* Image */}
-            <FadeIn direction="left" delay={0.2} distance={50}>
-              <div className="relative aspect-video overflow-hidden rounded-lg bg-muted">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={image.width}
-                  height={image.height}
-                  className="object-cover w-full h-full"
-                  priority
-                />
-              </div>
-            </FadeIn>
+            {/* Image/Video */}
+            <div className="overflow-hidden rounded-lg bg-muted">
+              {hasVideo ? (
+                <video
+                  aria-label={video!.alt}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster={video!.poster}
+                  className="w-full h-auto object-cover"
+                >
+                  <source
+                    src={video!.src}
+                    type={
+                      video!.src.endsWith(".webm")
+                        ? "video/webm"
+                        : "video/mp4"
+                    }
+                  />
+                </video>
+              ) : (
+                image && (
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    className="w-full h-auto object-cover"
+                    priority
+                  />
+                )
+              )}
+            </div>
           </div>
         ) : (
           /* Default/contained/full-width layout: stacked */
@@ -169,7 +223,7 @@ export function ProjectHero({
                 <div
                   className={cn(
                     "flex flex-wrap items-center gap-3 text-sm",
-                    isFullWidth ? "text-white/80" : "text-foreground/60"
+                    isFullWidth ? "text-white/80" : "text-foreground/60",
                   )}
                 >
                   {category && (
@@ -178,7 +232,13 @@ export function ProjectHero({
                     </span>
                   )}
                   {category && date && (
-                    <span className={isFullWidth ? "text-white/50" : "text-foreground/40"}>|</span>
+                    <span
+                      className={
+                        isFullWidth ? "text-white/50" : "text-foreground/40"
+                      }
+                    >
+                      |
+                    </span>
                   )}
                   {date && <span>{date}</span>}
                 </div>
@@ -196,7 +256,7 @@ export function ProjectHero({
                 "text-3xl tablet:text-4xl desktop:text-5xl",
                 isFullWidth ? "text-white" : "text-foreground",
                 "leading-tight tracking-tight",
-                "max-w-3xl"
+                "max-w-3xl",
               )}
               as="h1"
             >
@@ -210,7 +270,7 @@ export function ProjectHero({
                   className={cn(
                     "font-body text-lg tablet:text-xl",
                     isFullWidth ? "text-white/80" : "text-muted-foreground",
-                    "max-w-2xl leading-relaxed"
+                    "max-w-2xl leading-relaxed",
                   )}
                 >
                   {description}
@@ -229,7 +289,7 @@ export function ProjectHero({
                         "px-2.5 py-1 text-xs font-body rounded-full",
                         isFullWidth
                           ? "bg-white/10 text-white/90"
-                          : "text-foreground/80 bg-foreground/8"
+                          : "text-foreground/80 bg-foreground/8",
                       )}
                     >
                       {tag}
@@ -239,19 +299,41 @@ export function ProjectHero({
               </FadeIn>
             )}
 
-            {/* Contained image (not for full-width) */}
-            {!isFullWidth && (
-              <FadeIn direction="up" delay={0.5} distance={40}>
-                <div className="relative aspect-video overflow-hidden rounded-lg mt-8">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </FadeIn>
+            {/* Contained image/video (not for full-width) */}
+            {!isFullWidth && (hasVideo || image) && (
+              <div className="overflow-hidden rounded-lg mt-8">
+                {hasVideo ? (
+                  <video
+                    aria-label={video!.alt}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster={video!.poster}
+                    className="w-full h-auto object-cover"
+                  >
+                    <source
+                      src={video!.src}
+                      type={
+                        video!.src.endsWith(".webm")
+                          ? "video/webm"
+                          : "video/mp4"
+                      }
+                    />
+                  </video>
+                ) : (
+                  image && (
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={image.width}
+                      height={image.height}
+                      className="w-full h-auto object-cover"
+                      priority
+                    />
+                  )
+                )}
+              </div>
             )}
           </div>
         )}
@@ -262,7 +344,7 @@ export function ProjectHero({
         <div
           className={cn(
             "absolute bottom-8 left-1/2 -translate-x-1/2 z-20",
-            isFullWidth && "text-white"
+            isFullWidth && "text-white",
           )}
         >
           <ScrollIndicator />
