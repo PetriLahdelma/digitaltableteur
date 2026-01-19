@@ -32,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const workRoutes: MetadataRoute.Sitemap = [
+    "/work/knobsmith-audio",
+    "/work/vertaaux",
+    "/work/finnish-transport-agency",
+    "/work/raw-view",
+    "/work/tulli",
+    "/work/intrum",
     "/work/new-things-co",
     "/work/illustrations",
     "/work/garage-junction",

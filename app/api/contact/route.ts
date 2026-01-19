@@ -54,6 +54,8 @@ async function sendEmailViaResend(payload: {
   attachmentName?: string | null;
   attachmentType?: string | null;
   attachmentData?: string | null;
+  attachmentSize?: number | null;
+  attachmentNotice?: string | null;
 }) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const TO = process.env.CONTACT_EMAIL_TO || "mail@digitaltableteur.com";
@@ -76,6 +78,12 @@ async function sendEmailViaResend(payload: {
     payload.hearAbout ? `How they found us: ${payload.hearAbout}` : null,
     payload.inspiration ? `Inspiration/References: ${payload.inspiration}` : null,
     payload.time ? `Submitted: ${payload.time}` : null,
+    payload.attachmentName ? `Attachment: ${payload.attachmentName}` : null,
+    payload.attachmentType ? `Attachment type: ${payload.attachmentType}` : null,
+    typeof payload.attachmentSize === "number"
+      ? `Attachment size: ${payload.attachmentSize} bytes`
+      : null,
+    payload.attachmentNotice ? `Attachment note: ${payload.attachmentNotice}` : null,
     "",
     "Message:",
     payload.message,
@@ -114,6 +122,7 @@ async function sendEmailViaResend(payload: {
 }
 
 export async function POST(req: NextRequest) {
+  const corsHeaders = createCorsHeaders(req.headers.get("origin"));
   const ip =
     req.headers.get("x-real-ip") ||
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
@@ -125,7 +134,10 @@ export async function POST(req: NextRequest) {
         error:
           "Too many contact form submissions. Please try again in 15 minutes.",
       },
-      { status: 429, headers: { "Retry-After": "900" } },
+      {
+        status: 429,
+        headers: { ...corsHeaders, "Retry-After": "900" },
+      },
     );
   }
 
@@ -138,7 +150,10 @@ export async function POST(req: NextRequest) {
       err instanceof z.ZodError
         ? err.issues.map((i) => i.message).join(", ")
         : "Invalid payload";
-    return NextResponse.json({ error: message }, { status: 400 });
+    return NextResponse.json(
+      { error: message },
+      { status: 400, headers: corsHeaders },
+    );
   }
 
   // Sanitize all inputs to prevent NoSQL injection
@@ -153,9 +168,14 @@ export async function POST(req: NextRequest) {
     timeline: parsed.timeline ? sanitize(parsed.timeline) : null,
     inspiration: parsed.inspiration ? sanitize(parsed.inspiration) : null,
     time: parsed.time ? sanitize(parsed.time) : null,
-    attachmentName: parsed.attachmentName,
-    attachmentType: parsed.attachmentType,
+    attachmentName: parsed.attachmentName ? sanitize(parsed.attachmentName) : null,
+    attachmentType: parsed.attachmentType ? sanitize(parsed.attachmentType) : null,
     attachmentData: parsed.attachmentData,
+    attachmentSize:
+      typeof parsed.attachmentSize === "number" ? parsed.attachmentSize : null,
+    attachmentNotice: parsed.attachmentNotice
+      ? sanitize(parsed.attachmentNotice)
+      : null,
   };
 
   try {
@@ -173,13 +193,16 @@ export async function POST(req: NextRequest) {
       createdAt: new Date(),
     });
 
-    return NextResponse.json({ status: "ok" }, { status: 200 });
+    return NextResponse.json(
+      { status: "ok" },
+      { status: 200, headers: corsHeaders },
+    );
   } catch (err: any) {
     // eslint-disable-next-line no-console
     console.error("Contact handler failed:", err);
     return NextResponse.json(
       { error: "Failed to process contact form" },
-      { status: 500 },
+      { status: 500, headers: corsHeaders },
     );
   }
 }

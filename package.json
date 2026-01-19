@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/dev-banner.mjs && next dev",
     "build": "next build",
     "analyze": "ANALYZE=true next build",
     "postinstall": "node scripts/install-playwright-browsers.mjs",
@@ -13,7 +13,7 @@
     "vercel-build": "npm run build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint",
+    "lint": "node scripts/lint-banner.mjs",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:all": "npm run lint && npm run lint:css",
     "test": "vitest run",

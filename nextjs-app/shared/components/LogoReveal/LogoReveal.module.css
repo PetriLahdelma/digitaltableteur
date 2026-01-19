@@ -1,0 +1,73 @@
+.stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 200px;
+}
+
+/* Layout */
+.lockup {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 28px);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
+}
+
+/* Icon container */
+.logoWrap {
+  width: clamp(88px, 10vw, 140px);
+  aspect-ratio: 1 / 1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  cursor: default;
+}
+
+.logoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  will-change: transform, opacity, filter;
+  /* Premium shadow */
+  filter: drop-shadow(0 16px 28px rgb(0 0 0 / 28%));
+  transform-origin: 50% 70%;
+}
+
+/* Wordmark reveal via mask container */
+.wordmarkMask {
+  position: relative;
+  display: inline-block;
+  /* Initial clip - animated via GSAP */
+  clip-path: inset(0 100% 0 0);
+  will-change: clip-path, transform, opacity;
+  filter: drop-shadow(0 16px 28px rgb(0 0 0 / 22%));
+}
+
+.wordmarkImg {
+  height: clamp(38px, 5vw, 84px);
+  width: auto;
+  display: block;
+  will-change: transform, opacity, filter;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .wordmarkMask {
+    clip-path: inset(0 0 0 0) !important;
+  }
+
+  .logoImg,
+  .wordmarkImg {
+    transition: none !important;
+  }
+}
+
+/* Mobile: add padding to keep animation away from edges */
+@media (width < 768px) {
+  .stage {
+    padding-inline: var(--space-layout-16, 16px);
+  }
+}

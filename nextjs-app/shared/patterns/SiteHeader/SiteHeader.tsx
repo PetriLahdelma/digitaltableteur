@@ -120,8 +120,11 @@ export function SiteHeader({
           onMouseLeave={() => setIsLogoHovered(false)}
         >
           <div
-            className="flex items-center justify-center rounded-full transition-transform group-hover:scale-110"
-            style={{ backgroundColor: "var(--logo-background)", color: "var(--logo-color)", width: 40, height: 40 }}
+            className={cn(
+              "flex items-center justify-center rounded-full transition-transform group-hover:scale-110",
+              "h-10 w-10",
+              "bg-[var(--logo-background)] text-[var(--logo-color)]",
+            )}
           >
             <svg
               width="24"
@@ -146,6 +149,18 @@ export function SiteHeader({
                 0%, 61%, 100% { opacity: 1; }
                 66%, 95% { opacity: 0.5; }
               }
+              .logo-bar {
+                transition: opacity 0.3s ease;
+              }
+              .logo-bar.pulse-1 {
+                animation: pulse-1 0.9s ease-in-out infinite;
+              }
+              .logo-bar.pulse-2 {
+                animation: pulse-2 0.9s ease-in-out infinite;
+              }
+              .logo-bar.pulse-3 {
+                animation: pulse-3 0.9s ease-in-out infinite;
+              }
             `}</style>
             <g clipPath="url(#clip0_header)">
               <rect
@@ -153,10 +168,10 @@ export function SiteHeader({
                 width="39.0494"
                 height="142.681"
                 fill="currentColor"
-                style={{
-                  transition: "opacity 0.3s ease",
-                  animation: isLogoHovered ? "pulse-1 0.9s ease-in-out infinite" : "none",
-                }}
+                className={cn(
+                  "logo-bar",
+                  isLogoHovered && "pulse-1",
+                )}
               />
               <rect
                 x="190.742"
@@ -164,10 +179,10 @@ export function SiteHeader({
                 width="39.0494"
                 height="142.681"
                 fill="currentColor"
-                style={{
-                  transition: "opacity 0.3s ease",
-                  animation: isLogoHovered ? "pulse-2 0.9s ease-in-out infinite" : "none",
-                }}
+                className={cn(
+                  "logo-bar",
+                  isLogoHovered && "pulse-2",
+                )}
               />
               <rect
                 x="267.338"
@@ -176,10 +191,10 @@ export function SiteHeader({
                 height="127.662"
                 transform="rotate(-90 267.338 181.73)"
                 fill="currentColor"
-                style={{
-                  transition: "opacity 0.3s ease",
-                  animation: isLogoHovered ? "pulse-3 0.9s ease-in-out infinite" : "none",
-                }}
+                className={cn(
+                  "logo-bar",
+                  isLogoHovered && "pulse-3",
+                )}
               />
               <rect y="37.5475" width="39.0494" height="246.312" fill="currentColor"/>
               <rect x="115.646" y="76.597" width="39.0494" height="168.213" fill="currentColor"/>

@@ -1,0 +1,20 @@
+.chart {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+}
+
+.outerRing path,
+.innerRing path {
+  transition: opacity 0.2s ease;
+}
+
+.chart:hover .outerRing path,
+.chart:hover .innerRing path {
+  opacity: 0.85;
+}
+
+.chart:hover .outerRing path:hover,
+.chart:hover .innerRing path:hover {
+  opacity: 1;
+}

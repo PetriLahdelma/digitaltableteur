@@ -30,11 +30,18 @@ import { FadeIn } from "../animations/FadeIn";
 import PhoneInput from "@dt/PhoneInput";
 import FileUpload from "@dt/FileUpload";
 import { Loader } from "lucide-react";
+import {
+  CONTACT_ACCEPTED_ATTACHMENT_TYPES,
+  CONTACT_ATTACHMENT_MAX_BYTES,
+  CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES,
+  reportContactHoneypot,
+  validateContactEmail,
+} from "../contactFormUtils";
 
 // === PRESERVED CONSTANTS (CRITICAL - DO NOT CHANGE) ===
-const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024; // 2MB upload cap
-const EMAIL_ATTACHMENT_LIMIT_BYTES = 2 * 1024 * 1024; // 2MB email attach cap
-const ACCEPTED_ATTACHMENT_TYPES = ".pdf,.png,.jpg,.jpeg";
+const MAX_ATTACHMENT_BYTES = CONTACT_ATTACHMENT_MAX_BYTES; // 2MB upload cap
+const EMAIL_ATTACHMENT_LIMIT_BYTES = CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES; // 2MB email attach cap
+const ACCEPTED_ATTACHMENT_TYPES = CONTACT_ACCEPTED_ATTACHMENT_TYPES;
 
 // === PRESERVED STATE TYPES (CRITICAL - DO NOT CHANGE) ===
 const getInitialFormState = () => ({
@@ -72,10 +79,7 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
 };
 
 // === PRESERVED EMAIL REGEX (CRITICAL - DO NOT CHANGE) ===
-const validateEmail = (email: string) => {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return emailRegex.test(email);
-};
+const validateEmail = validateContactEmail;
 
 // Interest options
 const INTEREST_OPTIONS = [
@@ -243,59 +247,7 @@ export function EnhancedContactForm({
   };
 
   // === PRESERVED SPAM LOGGING (CRITICAL - DO NOT CHANGE) ===
-  const SPAM_LOG_ENDPOINT =
-    typeof process !== "undefined"
-      ? process.env.NEXT_PUBLIC_APP_CONTACT_SPAM_LOG_ENDPOINT
-      : undefined;
-  const isDev =
-    typeof process !== "undefined" ? process.env.NODE_ENV !== "production" : false;
-
-  const logHoneypotHit = () => {
-    if (!SPAM_LOG_ENDPOINT) {
-      if (isDev) {
-        console.info(
-          "Honeypot triggered but no SPAM log endpoint configured. Set VITE_CONTACT_SPAM_LOG_ENDPOINT to capture these events."
-        );
-      }
-      return;
-    }
-
-    const payload = {
-      event: "contact-form-honeypot",
-      submittedAt: new Date().toISOString(),
-      honeypotValue: formData.honeypot,
-      path:
-        typeof window !== "undefined" ? window.location.pathname : "unknown",
-      userAgent:
-        typeof navigator !== "undefined" ? navigator.userAgent : "unknown",
-    };
-
-    const body = JSON.stringify(payload);
-    const canUseBeacon =
-      typeof navigator !== "undefined" &&
-      typeof navigator.sendBeacon === "function";
-
-    if (canUseBeacon) {
-      const success = navigator.sendBeacon(
-        SPAM_LOG_ENDPOINT,
-        new Blob([body], { type: "application/json" })
-      );
-      if (success) {
-        return;
-      }
-    }
-
-    fetch(SPAM_LOG_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body,
-      keepalive: true,
-    }).catch((err) => {
-      if (isDev) {
-        console.error("Failed to log honeypot submission", err);
-      }
-    });
-  };
+  const logHoneypotHit = () => reportContactHoneypot(formData.honeypot);
 
   // === PRESERVED VALIDATION (CRITICAL - DO NOT CHANGE) ===
   const validateForm = () => {
@@ -335,9 +287,6 @@ export function EnhancedContactForm({
     // Quietly drop submissions that fill the honeypot field
     if (formData.honeypot.trim()) {
       logHoneypotHit();
-      if (isDev) {
-        console.warn("Honeypot triggered, dropping submission.");
-      }
       setIsSubmitting(false);
       return;
     }
