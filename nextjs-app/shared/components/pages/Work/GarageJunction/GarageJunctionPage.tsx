@@ -148,8 +148,8 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             and its high-contrast two-tone aesthetics.
           </Text>,
           <Text key="p2" size="S">
-            The color palette combines high-energy orange with deep blacks and
-            clean whites, creating contrast that works across dark club
+            The color palette combines high-energy orange with soft blue and
+            clean white, creating contrast that works across dark club
             environments and bright social media feeds.
           </Text>,
         ]}
