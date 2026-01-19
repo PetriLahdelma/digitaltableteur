@@ -65,24 +65,24 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CASE-01 | — | Pending |
-| CASE-02 | — | Pending |
-| CASE-03 | — | Pending |
-| CONT-01 | — | Pending |
-| CONT-02 | — | Pending |
-| CONT-03 | — | Pending |
-| CONT-04 | — | Pending |
-| CONT-05 | — | Pending |
-| QUAL-01 | — | Pending |
-| QUAL-02 | — | Pending |
-| QUAL-03 | — | Pending |
-| QUAL-04 | — | Pending |
+| CASE-01 | Phase 7 | Pending |
+| CASE-02 | Phase 8 | Pending |
+| CASE-03 | Phase 9 | Pending |
+| CONT-01 | Phase 7, 8, 9 | Pending |
+| CONT-02 | Phase 7, 8, 9 | Pending |
+| CONT-03 | Phase 7, 8, 9 | Pending |
+| CONT-04 | Phase 7, 8, 9 | Pending |
+| CONT-05 | Phase 7, 8, 9 | Pending |
+| QUAL-01 | Phase 7, 8, 9 | Pending |
+| QUAL-02 | Phase 7, 8, 9 | Pending |
+| QUAL-03 | Phase 7, 8, 9 | Pending |
+| QUAL-04 | Phase 7, 8, 9 | Pending |
 
 **Coverage:**
 - v1 requirements: 12 total
-- Mapped to phases: 0 (pending roadmap creation)
-- Unmapped: 12 ⚠️
+- Mapped to phases: 12 ✓
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-19*
-*Last updated: 2026-01-19 after initial definition*
+*Last updated: 2026-01-19 after roadmap creation*
