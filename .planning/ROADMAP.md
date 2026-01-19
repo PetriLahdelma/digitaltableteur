@@ -51,7 +51,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 **Milestone Goal:** Add 3 portfolio case studies with unique layouts and verified content.
 
-- [ ] **Phase 7: VertaaUX** - UX research and comparison tool case study
+- [x] **Phase 7: VertaaUX** - UX research and comparison tool case study ✓
 - [ ] **Phase 8: Finnish Transport Agency** - Government digital services case study
 - [ ] **Phase 9: Raw View** - Photography and visual design case study
 
@@ -71,9 +71,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: TBD
 
 Plans:
-- [ ] 07-01: Page setup and hero section
-- [ ] 07-02: Story narrative and gallery
-- [ ] 07-03: Process section and verification
+- [x] 07-01: Content expansion (ProcessBlock + StoryBlocks)
+- [x] 07-02: Unique layout styling + visual verification
 
 ### Phase 8: Finnish Transport Agency
 **Goal**: Complete case study page showcasing government digital services work
@@ -119,6 +118,6 @@ Phases execute in numeric order: 7 → 8 → 9
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 1-6 | v1.0 | ✓ | Complete | 2026-01-19 |
-| 7. VertaaUX | v1.1 | 0/3 | Not started | - |
+| 7. VertaaUX | v1.1 | 2/2 | Complete | 2026-01-19 |
 | 8. Finnish Transport Agency | v1.1 | 0/3 | Not started | - |
 | 9. Raw View | v1.1 | 0/3 | Not started | - |
