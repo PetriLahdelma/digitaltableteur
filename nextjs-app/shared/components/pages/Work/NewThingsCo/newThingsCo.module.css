@@ -90,10 +90,10 @@
   margin-block: var(--space-layout-64);
 }
 
-/* Ensure grid images have equal height */
+/* Ensure grid images have equal height (override inline styles) */
 .storySection figure img {
-  height: 320px;
-  object-fit: cover;
+  height: 320px !important;
+  object-fit: cover !important;
 }
 
 /* Brand identity section with generous spacing */
