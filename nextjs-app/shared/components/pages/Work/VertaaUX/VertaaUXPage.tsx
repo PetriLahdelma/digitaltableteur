@@ -199,11 +199,11 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/identity.png",
-          alt: "VertaaUX identity system showing brand elements",
-          width: 800,
-          height: 600,
-          caption: "Identity system developed for the VertaaUX.ai product.",
+          src: "/images/portfolio/vertaaux/computer-mockup-on-colorful-background.jpeg",
+          alt: "VertaaUX one-click UX audit interface showing usability score, clarity analysis, and AI assessment features",
+          width: 6126,
+          height: 4595,
+          caption: "The VertaaUX product delivers one-click UX audits with instant insights.",
         }}
         imageLayout="single"
         backgroundColor="light"
