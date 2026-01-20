@@ -45,6 +45,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
+          liveUrl={project.liveUrl}
           variant="contained"
           showScrollIndicator={true}
         />
