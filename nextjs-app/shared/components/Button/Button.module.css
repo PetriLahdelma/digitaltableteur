@@ -4,7 +4,7 @@
   padding-inline: var(--space-internal-16);
   justify-content: center;
   align-items: center;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-lg);
   font-family: var(--primary-body-font);
   font-size: var(--font-size-button-m);
   text-decoration: none;

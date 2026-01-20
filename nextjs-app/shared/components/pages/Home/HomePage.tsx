@@ -8,6 +8,7 @@ import { HomeHero } from "../../../patterns/HomeHero";
 import { ServicesSection, type ServiceItem } from "../../../patterns/ServicesSection";
 import { WorkPreviewSection, type ProjectItem } from "../../../patterns/WorkPreviewSection";
 import { CTASection } from "../../../patterns/CTASection";
+import { DesignSprintsSection } from "../../../patterns/DesignSprintsSection";
 import HighlightSection from "../../../patterns/HighlightSection";
 
 // Service icons
@@ -98,6 +99,9 @@ export function HomePage() {
         columns={3}
         cardVariant="bordered"
       />
+
+      {/* Design Sprints Section */}
+      <DesignSprintsSection id="design-sprints" />
 
       {/* Highlight Section (GenAI Schema) */}
       <HighlightSection

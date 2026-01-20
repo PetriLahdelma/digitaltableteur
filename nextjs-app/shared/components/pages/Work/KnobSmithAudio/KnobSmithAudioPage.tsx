@@ -39,6 +39,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           category={project.category.replace("-", " ")}
           tags={project.tags}
           date="Dec 2025 – Present"
+          liveUrl={project.liveUrl}
           variant="contained"
           showScrollIndicator={true}
         />
