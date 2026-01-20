@@ -163,6 +163,7 @@
     "@types/webpack": "^5.28.5",
     "@vercel/node": "^5.5.16",
     "@vitest/coverage-v8": "^4.0.16",
+    "agent-browser": "^0.6.0",
     "chart.js": "^4.5.1",
     "eslint": "^9.39.2",
     "eslint-config-next": "16.1.1",
