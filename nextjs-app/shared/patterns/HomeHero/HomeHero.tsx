@@ -116,7 +116,7 @@ export function HomeHero({
                 asChild
                 className="min-w-[160px]"
               >
-                <a href="/contact">
+                <a href="/contact" data-donny-interest="contact-cta">
                   {t("homeHeroContactCta", "Get in touch")}
                 </a>
               </Button>
@@ -126,7 +126,7 @@ export function HomeHero({
                 asChild
                 className="min-w-[160px]"
               >
-                <a href="/about">
+                <a href="/about" data-donny-interest="about-cta">
                   {t("homeHeroAboutCta", "About us")}
                 </a>
               </Button>

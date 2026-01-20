@@ -112,6 +112,11 @@ export default defineConfig({
       "@dt": resolve(dirname, "nextjs-app/shared/components"),
       "@dt-pages": resolve(dirname, "nextjs-app/shared/components/pages"),
       "@": resolve(dirname, "."),
+      // Force single React instance to avoid hook errors
+      react: resolve(dirname, "node_modules/react"),
+      "react-dom": resolve(dirname, "node_modules/react-dom"),
+      "react-dom/client": resolve(dirname, "node_modules/react-dom/client"),
+      "react/jsx-runtime": resolve(dirname, "node_modules/react/jsx-runtime"),
     },
   },
 });

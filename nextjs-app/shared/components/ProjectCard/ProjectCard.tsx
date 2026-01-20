@@ -48,6 +48,7 @@ export function ProjectCard({
         "bg-muted",
         className
       )}
+      data-donny-interest="portfolio-project"
     >
       {/* Image Container */}
       <div
