@@ -133,6 +133,8 @@ describe("DonnyAvatar", () => {
       "playful",
       "impressed",
       "skeptical",
+      "sleepy",
+      "sleeping",
     ];
 
     coreStates.forEach((state) => {

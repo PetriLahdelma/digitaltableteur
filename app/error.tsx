@@ -24,7 +24,7 @@ export default function Error({
     <div className={styles.notFoundPage}>
       <h2>{t("errorTitle", "Something went wrong!")}</h2>
       <p>{t("errorDescription", "An unexpected error occurred.")}</p>
-      <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+      <div className={styles.actions}>
         <Button
           variant="primary"
           size="l"

@@ -303,6 +303,8 @@ const ALL_STATES: DonnyState[] = [
   "playful",
   "impressed",
   "skeptical",
+  "sleepy",
+  "sleeping",
 ];
 
 function InteractiveDemo() {
