@@ -110,6 +110,7 @@ export function EnhancedProjectCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       aria-describedby={description ? descriptionId : undefined}
+      data-donny-interest="portfolio-project"
     >
       {/* Screen reader accessible description */}
       {description && (

@@ -3,12 +3,15 @@ import type { UIMessage } from "ai";
 // Token constants (exported for possible future explicit user prompts)
 export const TOKEN_OPEN_HOURS = "[[openHours]]";
 export const TOKEN_SERVICES_GRID = "[[servicesGrid]]";
+export const TOKEN_STUDIO_MAP = "[[studioMap]]";
 
 // User prompt heuristics (EN + FI + SV) – only user messages may trigger subsequent assistant injection
 const USER_OPEN_HOURS_PATTERN =
   /open\s*hours|business\s*hours|closing\s*time|opening\s*time|hours\s*of\s*operation|operating\s*times|aukioloajat?|aukioloaika|sulkemisaika|avaamisaika|tänään\s+auki|öppettider|öppet|stängningstid|öppningstid|dagens\s+öppettider/i;
 const USER_SERVICES_PATTERN =
   /\bservices?\b|\bcapabilities\b|\bofferings?\b|what\s+do\s+you\s+offer|what\s+services\s+do\s+you\s+provide|palvelut|palveluja|palveluita|mitä\s+tarjoatte|palvelunne|tjänster|era\s+tjänster|vad\s+erbjuder\s+ni|erbjudanden/i;
+const USER_STUDIO_MAP_PATTERN =
+  /\baddress\b|\blocation\b|\bwhere\s+(?:are\s+you|is\s+(?:the|your)\s+(?:office|studio))\b|\bdirections?\b|\bhow\s+(?:to\s+find|do\s+I\s+(?:find|get\s+to))\b|\bfind\s+(?:the|your)\s+(?:office|studio)\b|\boffice\s+location\b|\bstudio\s+(?:address|location)\b|\bvisit(?:\s+you)?\b|\bcome\s+to\b|\bmap\b|\bshow\s+(?:me\s+)?(?:on\s+(?:a\s+)?)?map\b|\bosoite\b|\bsijainti\b|\bmissä\s+(?:olette|on\s+(?:toimisto|studio))\b|\breittiohjeet?\b|\bmiten\s+(?:löydän|pääsen)\b|\btoimisto(?:n\s+sijainti)?\b|\bkäynti\b|\bkartta\b|\bnäytä\s+kartalla\b|\badress\b|\bplats\b|\bvar\s+(?:finns|ligger|är)\b|\bvägbeskrivning\b|\bhitta\b|\bbesök\b|\bkontor(?:et)?\b|\bkarta\b|\bvisa\s+(?:på\s+)?karta/i;
 
 // Email workflow trigger patterns (EN/FI/SV)
 // General send intent: phrases implying composing/sending an email
@@ -21,7 +24,8 @@ const USER_EMAIL_WORKFLOW_SIMPLE_PATTERN = /^(?:email|sähköposti|epost)\s*$/i;
 export type ProcessedPart =
   | { kind: "text"; content: string }
   | { kind: "component"; name: "OpenHours"; props?: { compact?: boolean } }
-  | { kind: "component"; name: "ServicesGrid" };
+  | { kind: "component"; name: "ServicesGrid" }
+  | { kind: "component"; name: "StudioMap"; props?: { compact?: boolean } };
 // Future: email workflow will introduce a pseudo-component or control parts.
 
 export interface ProcessedMessage {
@@ -125,6 +129,7 @@ export const processConversationWithFlags = (
   const processed: ProcessedMessage[] = [];
   let pendingOpenHours = false;
   let pendingServices = false;
+  let pendingStudioMap = false;
   let pendingEmailWorkflowGeneral = false;
   let pendingEmailWorkflowSimple = false;
 
@@ -140,6 +145,9 @@ export const processConversationWithFlags = (
       pendingServices =
         normalized.includes(TOKEN_SERVICES_GRID) ||
         USER_SERVICES_PATTERN.test(normalized);
+      pendingStudioMap =
+        normalized.includes(TOKEN_STUDIO_MAP) ||
+        USER_STUDIO_MAP_PATTERN.test(normalized);
       pendingEmailWorkflowGeneral =
         USER_EMAIL_WORKFLOW_GENERAL_PATTERN.test(normalized);
       pendingEmailWorkflowSimple =
@@ -149,6 +157,8 @@ export const processConversationWithFlags = (
         .split(TOKEN_OPEN_HOURS)
         .join("")
         .split(TOKEN_SERVICES_GRID)
+        .join("")
+        .split(TOKEN_STUDIO_MAP)
         .join("")
         .trim();
       processed.push({
@@ -163,6 +173,7 @@ export const processConversationWithFlags = (
     // When injecting, sanitize any explicit tokens or leading keyword echoes (basic stripping).
     const assistantHasOpenHoursToken = copy.includes(TOKEN_OPEN_HOURS);
     const assistantHasServicesToken = copy.includes(TOKEN_SERVICES_GRID);
+    const assistantHasStudioMapToken = copy.includes(TOKEN_STUDIO_MAP);
     let assistantDisplay = copy;
 
     // If assistant echoes the token explicitly, treat it as a trigger + sanitize
@@ -171,6 +182,9 @@ export const processConversationWithFlags = (
     }
     if (assistantHasServicesToken) {
       pendingServices = true;
+    }
+    if (assistantHasStudioMapToken) {
+      pendingStudioMap = true;
     }
 
     if (pendingOpenHours) {
@@ -188,6 +202,16 @@ export const processConversationWithFlags = (
         .replace(/\b(palvelut|tjänster|services)\b/i, "")
         .trim();
     }
+    if (pendingStudioMap) {
+      assistantDisplay = assistantDisplay
+        .split(TOKEN_STUDIO_MAP)
+        .join("")
+        .replace(
+          /\b(osoite|adress|address|sijainti|location|plats)\b[:\-–]*\s*/i,
+          "",
+        )
+        .trim();
+    }
     const parts: ProcessedPart[] = [
       { kind: "text", content: assistantDisplay },
     ];
@@ -201,11 +225,19 @@ export const processConversationWithFlags = (
     if (pendingServices) {
       parts.push({ kind: "component", name: "ServicesGrid" });
     }
+    if (pendingStudioMap) {
+      parts.push({
+        kind: "component",
+        name: "StudioMap",
+        props: { compact: true },
+      });
+    }
     // Note: pendingEmailWorkflow* flags consumed outside rendering layer (ChatWidget)
     processed.push({ id: m.id, role: m.role, parts });
     // Reset after first assistant response
     pendingOpenHours = false;
     pendingServices = false;
+    pendingStudioMap = false;
     pendingEmailWorkflowGeneral = false;
     pendingEmailWorkflowSimple = false;
   }
