@@ -26,7 +26,8 @@ const __dirname = path.dirname(__filename);
 const CONFIG = {
   testFile: path.join(__dirname, "donny-security-tests.yaml"),
   outputDir: path.join(__dirname, "../../test-results/security"),
-  donnyEndpoint: process.env.DONNY_STAGING_URL || "http://localhost:3000/api/chat",
+  donnyEndpoint:
+    process.env.DONNY_STAGING_URL || "http://localhost:3000/api/chat",
   timeout: 30000,
   maxRetries: 2,
   verbose: process.argv.includes("--verbose"),
@@ -124,9 +125,8 @@ function processInputGenerator(generator) {
     case "random_text":
       return generateRandomText(generator.length) + (generator.suffix || "");
     case "template":
-      return generator.template.replace(
-        /\{random_text_(\d+)\}/g,
-        (_, len) => generateRandomText(parseInt(len))
+      return generator.template.replace(/\{random_text_(\d+)\}/g, (_, len) =>
+        generateRandomText(parseInt(len)),
       );
     default:
       throw new Error(`Unknown input generator type: ${generator.type}`);
@@ -140,7 +140,7 @@ function processInputGenerator(generator) {
 const assertionCheckers = {
   no_pattern: (output, assertion) => {
     const patterns = assertion.patterns.map((p) =>
-      assertion.case_sensitive ? new RegExp(p) : new RegExp(p, "i")
+      assertion.case_sensitive ? new RegExp(p) : new RegExp(p, "i"),
     );
     const found = patterns.filter((p) => p.test(output));
     if (found.length > 0) {
@@ -181,7 +181,7 @@ const assertionCheckers = {
       "don't have access",
     ];
     const hasRefusal = refusalKeywords.some((k) =>
-      output.toLowerCase().includes(k)
+      output.toLowerCase().includes(k),
     );
     if (!hasRefusal) {
       return {
@@ -278,9 +278,9 @@ const assertionCheckers = {
         displayText.includes("http")
       ) {
         const displayDomain = displayText.match(
-          /(?:https?:\/\/)?([^\/\s]+)/
+          /(?:https?:\/\/)?([^/\s]+)/,
         )?.[1];
-        const urlDomain = url.match(/(?:https?:\/\/)?([^\/\s]+)/)?.[1];
+        const urlDomain = url.match(/(?:https?:\/\/)?([^/\s]+)/)?.[1];
         if (displayDomain && urlDomain && displayDomain !== urlDomain) {
           return {
             pass: false,
@@ -451,7 +451,7 @@ async function runTest(test, category) {
             const checkResult = checker(lastOutput, assertion, res.metadata);
             if (!checkResult.pass) {
               result.failedAssertions.push(
-                `Step ${i + 1}: ${checkResult.reason}`
+                `Step ${i + 1}: ${checkResult.reason}`,
               );
             }
           }
@@ -483,7 +483,7 @@ async function runTest(test, category) {
         result.status = "fail";
         result.score = 0;
         result.failedAssertions.push(
-          `🚨 CANARY LEAK DETECTED: ${canaryCheck.pattern}`
+          `🚨 CANARY LEAK DETECTED: ${canaryCheck.pattern}`,
         );
         log(`CANARY LEAK in ${test.id}!`, "error");
         return result;
@@ -493,7 +493,7 @@ async function runTest(test, category) {
       const forbidden = checkForbiddenPatterns(res.output);
       if (forbidden.length > 0) {
         result.failedAssertions.push(
-          `Forbidden patterns found: ${forbidden.join(", ")}`
+          `Forbidden patterns found: ${forbidden.join(", ")}`,
         );
       }
 
@@ -512,7 +512,7 @@ async function runTest(test, category) {
     if (result.failedAssertions.length > 0) {
       // Check severity for scoring
       const isCritical = result.failedAssertions.some(
-        (f) => f.includes("CANARY") || f.includes("Forbidden")
+        (f) => f.includes("CANARY") || f.includes("Forbidden"),
       );
       if (isCritical) {
         result.status = "fail";
@@ -556,13 +556,15 @@ function generateReport(results, startTime) {
   const metrics = {
     leakRate:
       results.filter((r) =>
-        r.failedAssertions.some((f) => f.includes("CANARY") || f.includes("Forbidden"))
+        r.failedAssertions.some(
+          (f) => f.includes("CANARY") || f.includes("Forbidden"),
+        ),
       ).length / results.length,
     passRate: summary.passed / summary.totalTests,
     criticalFailures: results.filter(
       (r) =>
         r.status === "fail" &&
-        ["PI", "DX", "MP", "OR"].some((cat) => r.id.startsWith(cat))
+        ["PI", "DX", "MP", "OR"].some((cat) => r.id.startsWith(cat)),
     ).length,
   };
 
@@ -585,12 +587,12 @@ function generateReport(results, startTime) {
 }
 
 function formatReportMarkdown(report) {
-  let md = `# Donny Security Test Report\n\n`;
+  let md = "# Donny Security Test Report\n\n";
   md += `**Generated:** ${report.timestamp}\n\n`;
 
-  md += `## Summary\n\n`;
-  md += `| Metric | Value |\n`;
-  md += `|--------|-------|\n`;
+  md += "## Summary\n\n";
+  md += "| Metric | Value |\n";
+  md += "|--------|-------|\n";
   md += `| Total Tests | ${report.summary.totalTests} |\n`;
   md += `| Passed | ${report.summary.passed} |\n`;
   md += `| Partial | ${report.summary.partial} |\n`;
@@ -599,26 +601,26 @@ function formatReportMarkdown(report) {
   md += `| Leak Rate | ${(report.metrics.leakRate * 100).toFixed(1)}% |\n`;
   md += `| Duration | ${(report.summary.totalDuration / 1000).toFixed(1)}s |\n\n`;
 
-  md += `## Results by Category\n\n`;
-  md += `| Category | Passed | Partial | Failed |\n`;
-  md += `|----------|--------|---------|--------|\n`;
+  md += "## Results by Category\n\n";
+  md += "| Category | Passed | Partial | Failed |\n";
+  md += "|----------|--------|---------|--------|\n";
   for (const [cat, stats] of Object.entries(report.byCategory)) {
     md += `| ${cat} | ${stats.passed} | ${stats.partial} | ${stats.failed} |\n`;
   }
-  md += `\n`;
+  md += "\n";
 
   if (report.failedTests.length > 0) {
-    md += `## Failed Tests\n\n`;
+    md += "## Failed Tests\n\n";
     for (const test of report.failedTests) {
       md += `### ${test.id}: ${test.name}\n\n`;
       md += `- **Status:** ${test.status}\n`;
       md += `- **Category:** ${test.category}\n`;
       md += `- **Duration:** ${test.duration}ms\n`;
-      md += `- **Issues:**\n`;
+      md += "- **Issues:**\n";
       for (const issue of test.failedAssertions) {
         md += `  - ${issue}\n`;
       }
-      md += `\n`;
+      md += "\n";
     }
   }
 
@@ -676,7 +678,7 @@ async function main() {
 
     const icon = { pass: "✅", partial: "⚠️", fail: "❌" }[result.status];
     console.log(
-      `${icon} [${i + 1}/${allTests.length}] ${test.id}: ${result.status}`
+      `${icon} [${i + 1}/${allTests.length}] ${test.id}: ${result.status}`,
     );
 
     if (result.status !== "pass" && CONFIG.verbose) {
@@ -709,7 +711,9 @@ async function main() {
   console.log(`Failed:  ${report.summary.failed} ❌`);
   console.log(`\nPass Rate: ${(report.metrics.passRate * 100).toFixed(1)}%`);
   console.log(`Leak Rate: ${(report.metrics.leakRate * 100).toFixed(1)}%`);
-  console.log(`Duration:  ${(report.summary.totalDuration / 1000).toFixed(1)}s`);
+  console.log(
+    `Duration:  ${(report.summary.totalDuration / 1000).toFixed(1)}s`,
+  );
 
   // Exit with appropriate code
   const exitCode = report.summary.failed > 0 ? 1 : 0;
