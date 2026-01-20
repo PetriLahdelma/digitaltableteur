@@ -132,7 +132,7 @@ export function DesignSprintsSection({
                   asChild
                   className="min-w-[180px]"
                 >
-                  <a href="/contact">
+                  <a href="/contact" data-donny-interest="design-sprint">
                     {t("homeDesignSprintsCta", "Start your sprint")}
                   </a>
                 </Button>

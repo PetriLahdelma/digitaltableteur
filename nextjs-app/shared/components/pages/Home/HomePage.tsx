@@ -5,8 +5,14 @@ import { useTranslation } from "react-i18next";
 
 // Patterns
 import { HomeHero } from "../../../patterns/HomeHero";
-import { ServicesSection, type ServiceItem } from "../../../patterns/ServicesSection";
-import { WorkPreviewSection, type ProjectItem } from "../../../patterns/WorkPreviewSection";
+import {
+  ServicesSection,
+  type ServiceItem,
+} from "../../../patterns/ServicesSection";
+import {
+  WorkPreviewSection,
+  type ProjectItem,
+} from "../../../patterns/WorkPreviewSection";
 import { CTASection } from "../../../patterns/CTASection";
 import { DesignSprintsSection } from "../../../patterns/DesignSprintsSection";
 import HighlightSection from "../../../patterns/HighlightSection";
@@ -83,7 +89,7 @@ export function HomePage() {
         description: t("homeDesignSystemsDescription"),
       },
     ],
-    [t]
+    [t],
   );
 
   return (
@@ -112,7 +118,7 @@ export function HomePage() {
               window.open(
                 "https://petrilahdelma.gumroad.com/l/mcqoq",
                 "_blank",
-                "noopener,noreferrer"
+                "noopener,noreferrer",
               );
             },
           },
@@ -125,12 +131,12 @@ export function HomePage() {
         ]}
         description={t(
           "homeHighlightDescription",
-          "Keep your AI-generated components consistent, predictable, and on-brand. This schema enforces shared prop structures, naming conventions, and design standards across your entire system."
+          "Keep your AI-generated components consistent, predictable, and on-brand. This schema enforces shared prop structures, naming conventions, and design standards across your entire system.",
         )}
         size="comfortable"
         title={t(
           "homeHighlightTitle",
-          "Component Schema Template for GenAI Design Systems"
+          "Component Schema Template for GenAI Design Systems",
         )}
         variant="dots"
       />

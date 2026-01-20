@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import Button from "@dt/Button";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
+import { DonnyAvatar, type DonnyState } from "@dt/DonnyAvatar";
 import styles from "./ChatWidget.module.css";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
@@ -15,6 +16,8 @@ import Icon from "@dt/Icon";
  * @property {function} onReset - Callback fired when the reset button is clicked
  * @property {function} onMinimize - Callback fired when the minimize button is clicked
  * @property {boolean} isSending - Whether a message is currently being sent (disables reset button)
+ * @property {DonnyState} [avatarState] - Current state of Donny avatar animation
+ * @property {boolean} [enableIdleExpressions] - Enable random expressions when Donny is idle
  * @property {Date} [currentDate] - Optional override for current date/time (used in tests to simulate open/closed hours). Defaults to new Date() when omitted.
  */
 export interface ChatHeaderProps {
@@ -23,6 +26,27 @@ export interface ChatHeaderProps {
   onReset: () => void;
   onMinimize: () => void;
   isSending: boolean;
+  /**
+   * Current state for Donny avatar animation.
+   * Maps to chat interaction states like idle, listening, thinking, success, error.
+   */
+  avatarState?: DonnyState;
+  /**
+   * Enable random idle expressions to make Donny feel more alive when idle.
+   */
+  enableIdleExpressions?: boolean;
+  /**
+   * Enable cursor tracking - Donny's eyes will follow the user's mouse.
+   */
+  trackMouse?: boolean;
+  /**
+   * Animate mouth as if speaking (used during streaming responses).
+   */
+  isSpeaking?: boolean;
+  /**
+   * Enable sleep detection when mouse is idle.
+   */
+  enableSleepDetection?: boolean;
   /**
    * Optional override for current date/time (used in tests to simulate open/closed hours).
    * Defaults to new Date() when omitted.
@@ -36,6 +60,11 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   onReset,
   onMinimize,
   isSending,
+  avatarState = "idle",
+  enableIdleExpressions = false,
+  trackMouse = false,
+  isSpeaking = false,
+  enableSleepDetection = false,
   currentDate,
 }) => {
   const { t } = useTranslation();
@@ -80,6 +109,16 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
 
   return (
     <header className={styles.header}>
+      <DonnyAvatar
+        state={avatarState}
+        size="md"
+        className={styles.headerAvatar}
+        enableIdleExpressions={enableIdleExpressions}
+        idleExpressionInterval={10000}
+        trackMouse={trackMouse}
+        isSpeaking={isSpeaking}
+        enableSleepDetection={enableSleepDetection}
+      />
       <div className={styles.headerCopy}>
         <Text as="p" terminals="sans" className={styles.tagline}>
           {tagline}

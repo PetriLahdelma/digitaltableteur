@@ -64,6 +64,9 @@
     "akaunting:dashboard": "node lib/akaunting-tools.mjs dashboard",
     "akaunting:finnish-setup": "node scripts/akaunting-finnish-setup.mjs",
     "docker:mcp:test": "node scripts/test-docker-mcp.mjs",
+    "test:security": "node tests/security/run-security-tests.mjs",
+    "test:security:verbose": "node tests/security/run-security-tests.mjs --verbose",
+    "test:security:category": "node tests/security/run-security-tests.mjs --category",
     "precommit:guard": "bash scripts/precommit-guard.sh",
     "pseo:generate": "npx tsx scripts/pseo/generate-pseo-copy.ts --only-missing"
   },
@@ -166,6 +169,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "jest-axe": "^10.0.0",
+    "js-yaml": "^4.1.1",
     "jsdom": "^27.3.0",
     "leaflet": "^1.9.4",
     "lighthouse": "^12.8.2",

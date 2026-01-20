@@ -4,6 +4,7 @@ import styles from "./ChatWidget.module.css";
 import MarkdownMessage from "@dt/MarkdownMessage";
 import OpenHours from "@dt/OpenHours/OpenHours";
 import ServicesGrid from "@dt/ServicesGrid/ServicesGrid";
+import StudioMap from "@dt/StudioMap/StudioMap";
 import AIProcessingState from "./AIProcessingState";
 import type { ProcessedMessage } from "./messageProcessor";
 
@@ -70,6 +71,13 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
               return (
                 <div key={idx} className={styles.fullWidthComponent}>
                   <ServicesGrid />
+                </div>
+              );
+            }
+            if (part.kind === "component" && part.name === "StudioMap") {
+              return (
+                <div key={idx} className={styles.fullWidthComponent}>
+                  <StudioMap compact={part.props?.compact} />
                 </div>
               );
             }
