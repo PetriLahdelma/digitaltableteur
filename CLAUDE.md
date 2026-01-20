@@ -45,6 +45,11 @@ npm run typecheck && npm run lint && npm test && npm run build
 npm run test:visual        # Visual regression (Playwright)
 npm run test:a11y          # Accessibility tests (axe-core)
 
+# Visual verification (AI agents)
+npx agent-browser open http://localhost:3000  # Open browser
+npx agent-browser screenshot ./check.png      # Take screenshot
+npx agent-browser snapshot -i -c              # Get accessibility tree
+
 # Content & CMS
 npm run sanity:dev         # Sanity CMS studio
 npm run sanity:publish     # Publish from Sanity
@@ -213,6 +218,35 @@ function Component() {
 | E2E | Playwright | Storybook runner | `npm run test:visual` |
 
 **Coverage target:** >80%
+
+---
+
+## Visual Verification for AI Agents
+
+**IMPORTANT:** For non-testing visual checks during development, use `agent-browser` instead of Playwright.
+
+```bash
+# Quick visual check
+npx agent-browser open http://localhost:3000
+npx agent-browser screenshot ./current-state.png
+
+# Check specific element
+npx agent-browser find text "Start your sprint" click
+npx agent-browser is visible "#design-sprints"
+
+# Mobile viewport
+npx agent-browser set device "iPhone 14"
+npx agent-browser screenshot ./mobile.png
+
+# Dark mode
+npx agent-browser set media dark
+npx agent-browser screenshot ./dark-mode.png
+
+# Get accessibility tree
+npx agent-browser snapshot -i -c
+```
+
+**Full guide:** [`docs/AGENT_BROWSER_GUIDE.md`](docs/AGENT_BROWSER_GUIDE.md)
 
 ---
 
