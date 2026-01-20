@@ -51,12 +51,18 @@
   padding: 1rem 1.25rem 0.75rem;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.75rem;
+}
+
+.headerAvatar {
+  flex-shrink: 0;
+  margin-block-start: 0.125rem;
 }
 
 .headerCopy {
   display: flex;
-  max-width: 70%;
+  flex: 1;
+  min-width: 0;
   flex-direction: column;
   gap: 0.25rem;
 }
@@ -400,11 +406,13 @@
   justify-content: center;
   align-items: center;
   border: none;
-  background: var(--color-primary, #0f62fe);
-  box-shadow: 0 18px 40px rgb(15 98 254 / 30%);
+  /* stylelint-disable-next-line declaration-no-important -- Override Button variant styles */
+  background: var(--logo-background, #dfff00) !important;
+  box-shadow: 0 18px 40px rgb(0 0 0 / 20%);
   font-family: inherit;
   font-size: 0.95rem;
-  color: var(--inverted-text-color, #fff);
+  /* stylelint-disable-next-line declaration-no-important -- Override Button variant styles */
+  color: var(--primary-text-color, #041b23) !important;
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -459,6 +467,24 @@
   display: block;
   width: 1em;
   height: 1em;
+}
+
+/* DonnyAvatar in toggle button */
+.toggleAvatar {
+  /* Override size to match icon size in button */
+  width: 28px !important;
+  height: 28px !important;
+  margin: -4px;
+  transition: transform 0.2s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+}
+
+.toggle:hover .toggleAvatar {
+  transform: scale(1.1);
+}
+
+/* Subtle glow when Donny is curious/interested */
+.toggleAvatar[data-near-target="true"] {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
 }
 
 .shortcutHint {
@@ -520,4 +546,120 @@
   :global(body[data-mobile-menu-open="true"]) .container[data-open="false"] {
     transform: translateX(-277px) translateY(10%) scale(0.98);
   }
+}
+
+/* High Contrast Black (HCB) theme support */
+:global(.themeHCB) .panel {
+  background: #000;
+  border-color: #fff;
+}
+
+:global(.themeHCB) .message {
+  color: #fff;
+  background: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(255 255 255 / 30%);
+}
+
+:global(.themeHCB) .message[data-role="assistant"] {
+  background: rgb(255 255 255 / 10%);
+}
+
+:global(.themeHCB) .message[data-role="user"] {
+  background: #fff;
+  color: #000;
+}
+
+:global(.themeHCB) .input {
+  background: #000;
+  color: #fff;
+  border-color: #fff;
+}
+
+:global(.themeHCB) .input::placeholder {
+  color: rgb(255 255 255 / 60%);
+}
+
+:global(.themeHCB) .sendButton {
+  background: #fff;
+  color: #000;
+}
+
+:global(.themeHCB) .header {
+  border-color: rgb(255 255 255 / 30%);
+}
+
+/* High Contrast White (HCW) theme support */
+:global(.themeHCW) .panel {
+  background: #fff;
+  border-color: #000;
+}
+
+:global(.themeHCW) .message {
+  color: #000;
+  background: rgb(0 0 0 / 8%);
+  border: 1px solid rgb(0 0 0 / 30%);
+}
+
+:global(.themeHCW) .message[data-role="assistant"] {
+  background: rgb(0 0 0 / 8%);
+}
+
+:global(.themeHCW) .message[data-role="user"] {
+  background: #000;
+  color: #fff;
+}
+
+:global(.themeHCW) .input {
+  background: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+:global(.themeHCW) .input::placeholder {
+  color: rgb(0 0 0 / 60%);
+}
+
+:global(.themeHCW) .sendButton {
+  background: #000;
+  color: #fff;
+}
+
+:global(.themeHCW) .header {
+  border-color: rgb(0 0 0 / 30%);
+}
+
+/* Chat Toggle - High Contrast Black: white text on dark toggle */
+:global(.themeHCB) .toggle {
+  /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
+  background: #fff !important;
+  /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
+  color: #000 !important;
+  border: 2px solid #000;
+}
+
+:global(.themeHCB) .toggleLabel {
+  color: #000;
+}
+
+/* DonnyAvatar needs inverted colors in HCB toggle (white bg) */
+:global(.themeHCB) .toggleAvatar {
+  --donny-primary: #000;
+}
+
+/* Chat Toggle - High Contrast White: black text on light toggle */
+:global(.themeHCW) .toggle {
+  /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
+  background: #000 !important;
+  /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
+  color: #fff !important;
+  border: 2px solid #fff;
+}
+
+:global(.themeHCW) .toggleLabel {
+  color: #fff;
+}
+
+/* DonnyAvatar in HCW toggle (black bg) keeps default dark body with white eyes */
+:global(.themeHCW) .toggleAvatar {
+  --donny-primary: #fff;
 }

@@ -210,10 +210,10 @@ export function PseoLeafPageView({
             send a message and describe your current stack and constraints.
           </Text>
           <div className={styles.ctaActions}>
-            <Button href="/contact" variant="primary" size="l">
+            <Button href="/contact" variant="primary" size="l" data-donny-interest="pseo-contact">
               Contact
             </Button>
-            <Button href="/work" variant="secondary" size="l">
+            <Button href="/work" variant="secondary" size="l" data-donny-interest="work-cta">
               See work
             </Button>
           </div>

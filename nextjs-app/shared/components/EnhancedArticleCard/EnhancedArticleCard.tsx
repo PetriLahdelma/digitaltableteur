@@ -89,6 +89,7 @@ export function EnhancedArticleCard({
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           className
         )}
+        data-donny-interest="blog-article"
       >
         {/* Compact image */}
         {showImage && (
@@ -136,6 +137,7 @@ export function EnhancedArticleCard({
         isFeatured && "tablet:flex-row tablet:col-span-2",
         className
       )}
+      data-donny-interest="blog-article"
     >
       {/* Image container */}
       {showImage && (

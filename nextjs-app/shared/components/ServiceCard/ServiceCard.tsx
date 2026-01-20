@@ -81,7 +81,7 @@ export function ServiceCard({
 
   if (href) {
     return (
-      <Link href={href} className={baseClasses}>
+      <Link href={href} className={baseClasses} data-donny-interest="service">
         {cardContent}
       </Link>
     );

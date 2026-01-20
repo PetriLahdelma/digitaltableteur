@@ -19,6 +19,7 @@ export { default as ChatMessages } from "./ChatWidget/ChatMessages";
 export { default as ChatComposer } from "./ChatWidget/ChatComposer";
 export { default as ChatToggle } from "./ChatWidget/ChatToggle";
 export { default as CookieConsent } from "./CookieConsent/CookieConsent";
+export { DonnyAvatar, type DonnyState, type DonnyAvatarProps } from "./DonnyAvatar";
 export { default as FlexBox } from "./FlexBox/FlexBox";
 export { default as FileUpload } from "./FileUpload/FileUpload";
 export { default as Gallery } from "./Gallery/Gallery";
@@ -45,6 +46,7 @@ export { default as SelectOption } from "./Select/SelectOption";
 export { default as ServicesGrid } from "./ServicesGrid/ServicesGrid";
 export { default as Skeleton } from "./Skeleton/Skeleton";
 export { SkillsGrid, type SkillsGridProps, type Skill } from "./SkillsGrid";
+export { default as StudioMap } from "./StudioMap/StudioMap";
 export { default as Switch } from "./Switch/Switch";
 export { SocialShare } from "./SocialShare/SocialShare";
 export { default as Testimonial } from "./Testimonial/Testimonial";
@@ -57,14 +59,31 @@ export { ValueCard, type ValueCardProps } from "./ValueCard";
 export { default as WorkNav } from "./WorkNav/WorkNav";
 
 // Blog components (Phase 10)
-export { EnhancedArticleCard, type EnhancedArticleCardProps } from "./EnhancedArticleCard";
+export {
+  EnhancedArticleCard,
+  type EnhancedArticleCardProps,
+} from "./EnhancedArticleCard";
 export { BlogGrid, type BlogGridProps } from "./BlogGrid";
-export { BlogCategoryFilter, type BlogCategoryFilterProps } from "./BlogCategoryFilter";
+export {
+  BlogCategoryFilter,
+  type BlogCategoryFilterProps,
+} from "./BlogCategoryFilter";
 export { Pagination, type PaginationProps } from "./Pagination";
 
 // Article components (Phase 10-2)
 export { ArticleContent, type ArticleContentProps } from "./ArticleContent";
-export { TableOfContents, type TableOfContentsProps, type TOCItem } from "./TableOfContents";
-export { EnhancedAuthorCard, type EnhancedAuthorCardProps, type AuthorSocial } from "./EnhancedAuthorCard";
-export { ArticleShareSection, type ArticleShareSectionProps } from "./ArticleShareSection";
+export {
+  TableOfContents,
+  type TableOfContentsProps,
+  type TOCItem,
+} from "./TableOfContents";
+export {
+  EnhancedAuthorCard,
+  type EnhancedAuthorCardProps,
+  type AuthorSocial,
+} from "./EnhancedAuthorCard";
+export {
+  ArticleShareSection,
+  type ArticleShareSectionProps,
+} from "./ArticleShareSection";
 export { ReadingProgress, type ReadingProgressProps } from "./ReadingProgress";

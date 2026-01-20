@@ -24,3 +24,9 @@
     background-size: contain;
   }
 }
+
+.actions {
+  display: flex;
+  margin-block-start: 1rem;
+  gap: 1rem;
+}

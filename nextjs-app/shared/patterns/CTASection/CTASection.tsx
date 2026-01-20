@@ -82,7 +82,7 @@ export function CTASection({
           asChild
           className={buttonClassName}
         >
-          <Link href={action.href}>{action.label}</Link>
+          <Link href={action.href} data-donny-interest="cta-section">{action.label}</Link>
         </Button>
       );
     }

@@ -27,6 +27,7 @@ import SendStatus from "./emailWorkflow/SendStatus";
 const RESEND_CONTACT_ENDPOINT = "/api/contact";
 import ChatToggle from "./ChatToggle";
 import { useTranslation } from "react-i18next";
+import type { DonnyState } from "@dt/DonnyAvatar";
 
 interface ChatWidgetProps {
   title?: string;
@@ -473,6 +474,67 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const isStreaming = status === "submitted" || status === "streaming";
   const errorMessage = resolveErrorMessage(error);
 
+  // Keywords that trigger special Donny reactions when user types them
+  const TOOL_KEYWORDS = [
+    // Map/location related
+    "map", "location", "where", "address", "directions", "navigate",
+    // Contact/email related  
+    "email", "contact", "message", "send", "write",
+    // Search/find related
+    "search", "find", "look", "show me",
+    // Help/question related
+    "help", "how", "what", "why", "explain",
+    // Work/portfolio related
+    "work", "portfolio", "project", "case study",
+    // Services related
+    "service", "offer", "price", "cost", "hire",
+  ];
+
+  // Check if a tool workflow is active (not idle or error)
+  const isToolWorkflowActive = emailWorkflow.step !== "idle" && emailWorkflow.step !== "error";
+
+  // Map chat status to DonnyAvatar state
+  // Priority: error > tool workflow success/active > streaming states > keyword reactions > user typing > idle
+  const avatarState = useMemo((): DonnyState => {
+    if (error) return "error";
+    
+    // Donny is happy/celebrating when a tool workflow is triggered and active
+    if (isToolWorkflowActive) {
+      if (emailWorkflow.step === "success") {
+        return "celebrating";
+      }
+      if (emailWorkflow.step === "sending") {
+        return "thinking";
+      }
+      // Active workflow steps - Donny is happy to help!
+      return "success";
+    }
+    
+    if (status === "submitted") return "thinking";
+    if (status === "streaming") return "typing";
+    
+    const trimmedDraft = draft.trim().toLowerCase();
+    if (trimmedDraft.length > 0) {
+      // Check for tool-calling keywords that make Donny extra interested
+      const hasToolKeyword = TOOL_KEYWORDS.some(keyword => 
+        trimmedDraft.includes(keyword)
+      );
+      
+      if (hasToolKeyword) {
+        // Donny gets excited about potential tool calls
+        return "curious";
+      }
+      
+      // Check for question marks - Donny focuses
+      if (trimmedDraft.includes("?")) {
+        return "focused";
+      }
+      
+      return "listening";
+    }
+    return "idle";
+  }, [status, error, draft, isToolWorkflowActive, emailWorkflow.step]);
+
   useEffect(() => {
     const hydrated = loadStoredMessages(greetingText);
     if (!hydrated) return;
@@ -784,6 +846,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             onReset={handleReset}
             onMinimize={closeChat}
             isSending={isStreaming}
+            avatarState={avatarState}
+            enableIdleExpressions={avatarState === "idle"}
+            trackMouse
+            isSpeaking={status === "streaming"}
+            enableSleepDetection
           />
           <ChatMessages
             ref={scrollerRef}
