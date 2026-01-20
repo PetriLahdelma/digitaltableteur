@@ -58,6 +58,23 @@
 - Diffs: `__visual__/diffs/__diff_output__/`
 - Report: `public/visual-diff/report.json`
 
+### Security Testing
+
+**`tests/security/run-security-tests.mjs`**
+
+- Red-team security test runner for Donny AI
+- Run: `npm run test:security`
+- Verbose: `npm run test:security:verbose`
+- Single category: `npm run test:security:category prompt_injection`
+- Output: `test-results/security/security-report.json`
+
+**`tests/security/donny-security-tests.yaml`**
+
+- YAML test suite with 50+ attack patterns
+- Categories: prompt_injection, data_exfiltration, indirect_injection, tool_abuse, memory_poisoning, output_rendering, abuse_dos, social_engineering
+
+**Documentation**: `docs/DONNY_SECURITY_TEST_SPEC.md`
+
 ### Deployment
 
 **`scripts/deploy-hybrid.sh`**
