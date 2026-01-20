@@ -33,6 +33,7 @@ export { RelatedProjects, type RelatedProjectsProps } from "./RelatedProjects";
 // Highlight/CTA sections
 export { default as HighlightSection, type HighlightSectionProps } from "./HighlightSection";
 export { CTASection, type CTASectionProps, type ActionItem } from "./CTASection";
+export { DesignSprintsSection, type DesignSprintsSectionProps } from "./DesignSprintsSection";
 
 // About page patterns
 export { AboutHero, type AboutHeroProps } from "./AboutHero";
