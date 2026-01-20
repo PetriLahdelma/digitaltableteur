@@ -90,6 +90,14 @@
 - **`BADGE_ENHANCEMENT_IMPLEMENTATION.md`**
   - Badge system architecture
 
+### AI Agent Tools
+
+- **`AGENT_BROWSER_GUIDE.md`** (IMPORTANT)
+  - Headless browser automation for AI agents
+  - Visual verification during development
+  - **Use instead of Playwright for non-testing visual checks**
+  - Screenshots, accessibility snapshots, viewport testing
+
 ### Infrastructure
 
 - **`CACHE_BUSTING.md`**
@@ -140,6 +148,25 @@ rg -n "NEXTJS_MIGRATION_PLAN" .
 1. Read `LLM_COMPONENT_GENERATION_RULES.md` (all 10 sections)
 2. Read `LLM-CRITICAL-REASONING-AND-PLANNING-INSTRUCTIONS.md`
 3. Follow checklist at end of component rules doc
+
+### Visual Verification (AI Agents)
+
+**IMPORTANT:** Use `agent-browser` instead of Playwright for visual checks during development.
+
+```bash
+# Quick visual check
+npx agent-browser open http://localhost:3000
+npx agent-browser screenshot ./check.png
+
+# Mobile viewport
+npx agent-browser set device "iPhone 14"
+npx agent-browser screenshot ./mobile.png
+
+# Get accessibility tree
+npx agent-browser snapshot -i -c
+```
+
+See `AGENT_BROWSER_GUIDE.md` for full documentation.
 
 ### Migration Work
 
