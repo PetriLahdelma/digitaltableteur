@@ -184,7 +184,10 @@
     "Rakennamme tulevaisuuden kestäviä designjärjestelmiä AI:n avulla.",
     "Älykästä designia vakaviin tuotteisiin.",
     "Vähemmän kohinaa. Enemmän älykkyyttä.",
-    "Strategista designia, vahvistettuna AI:lla."
+    "Strategista designia, vahvistettuna AI:lla.",
+    "Nopeat brändi-sprintit kunnianhimoisille startupeille.",
+    "Maailmanluokan design. Startup-nopeus.",
+    "Kaksi viikkoa skaalautuvaan brändiin."
   ],
   "homeHeroGradientSubtext": "Konseptista koodiin me rakennamme ihmislähtöisiä GenAI-kokemuksia.",
   "homeHeroSubtext": "Konseptista koodiin me rakennamme ihmislähtöisiä GenAI-kokemuksia.",
@@ -206,6 +209,17 @@
   "headerThemeAnnouncement": "Teema vaihdettu: {{theme}}",
   "themeChanged": "Teema vaihdettu: {{theme}}",
   "languageChanged": "Kieli vaihdettu: {{language}}",
+  "homeDesignSprintsTitle": "Poikkeuksellista designia ilman odottelua",
+  "homeDesignSprintsDescription": "Uskomme, että maailmanluokan design ei vaadi kuukausia. Siksi loimme Design Sprintit. Viimeisteltyä, ajatonta designia kahdessa viikossa.",
+  "homeDesignSprintsBenefits": [
+    "Näytä 10× isommalta kuin olet",
+    "Pääse markkinoille nopeammin",
+    "Kerää seuraava rahoituskierros",
+    "Voita asiakkaiden luottamus ensisilmäyksellä",
+    "Erotu ruuhkaisilla markkinoilla",
+    "Säästä pääomaa tärkeimpään"
+  ],
+  "homeDesignSprintsCta": "Aloita sprintti",
   "homeCtaTitle": "Oletko valmis luomaan jotain poikkeuksellista?",
   "homeCtaLink": "Ota yhteyttä",
   "homeHeroTitle": "Suunnittelujärjestelmät, jotka skaalautuvat kunnianhimosi mukaan",
