@@ -184,7 +184,10 @@
     "Vi skapar framtidssäkra designsystem med AI.",
     "Smart design för seriösa produkter.",
     "Mindre brus. Mer intelligens.",
-    "Strategisk design, förstärkt av AI."
+    "Strategisk design, förstärkt av AI.",
+    "Snabba varumärkessprints för ambitiösa startups.",
+    "Design i världsklass. Startup-tempo.",
+    "Två veckor till ett skalbart varumärke."
   ],
   "homeHeroGradientSubtext": "Från koncept till kod skapar vi människocentrerade GenAI-upplevelser.",
   "homeHeroSubtext": "Från koncept till kod skapar vi människocentrerade GenAI-upplevelser.",
@@ -206,6 +209,17 @@
   "headerThemeAnnouncement": "Tema ändrat till {{theme}}",
   "themeChanged": "Tema ändrat till {{theme}}",
   "languageChanged": "Språk ändrat till {{language}}",
+  "homeDesignSprintsTitle": "Exceptionell design, utan väntan",
+  "homeDesignSprintsDescription": "Vi tror att design i världsklass inte behöver ta månader. Därför skapade vi Design Sprints. Polerad, tidlös design på bara två veckor.",
+  "homeDesignSprintsBenefits": [
+    "Se 10× större ut än du är",
+    "Kom till marknaden snabbare",
+    "Res din nästa runda",
+    "Vinn kundernas förtroende direkt",
+    "Stic ut på en trång marknad",
+    "Spara kapital till det som verkligen räknas"
+  ],
+  "homeDesignSprintsCta": "Starta din sprint",
   "homeCtaTitle": "Redo att skapa något extraordinärt?",
   "homeCtaLink": "Kontakta oss",
   "homeHeroTitle": "Designsystem som skalas med din ambition",
