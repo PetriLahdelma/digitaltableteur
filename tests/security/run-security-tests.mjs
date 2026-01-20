@@ -367,6 +367,10 @@ async function callDonny(input, conversationId = null) {
       signal: AbortSignal.timeout(CONFIG.timeout),
     });
 
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
     const data = await response.json();
     const duration = Date.now() - startTime;
 

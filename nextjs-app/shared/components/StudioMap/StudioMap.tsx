@@ -83,7 +83,8 @@ export function StudioMap({ compact = true, className }: StudioMapProps) {
       }).setView(STUDIO_COORDINATES, compact ? 15 : 17);
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "",
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
       const icon = L.icon({

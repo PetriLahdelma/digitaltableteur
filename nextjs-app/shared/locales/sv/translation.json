@@ -413,6 +413,9 @@
   "postPetriLahdelmaBioMetaDescription": "Från Varissuo till ledande globala designsystem.",
   "notFoundAlt": "En felbild som indikerar en saknad eller otillgänglig resurs.",
   "notFoundButton": "Tillbaka till hem",
+  "errorTitle": "Något gick fel!",
+  "errorDescription": "Ett oväntat fel inträffade.",
+  "errorRetry": "Försök igen",
   "cookieConsent": {
     "title": "Cookie-godkännande",
     "description": "Digitaltableteur använder cookies för att förbättra din upplevelse. Du kan anpassa vilka cookies vi använder, godkänna alla eller godkänna endast nödvändiga cookies som krävs för sidans funktion.",

@@ -311,9 +311,12 @@ export function DonnyAvatar({
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
   const idleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const chainedTimeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const sleepyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sleepTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastActivityRef = useRef<number>(Date.now());
+  const isNearTargetRef = useRef(isNearTarget);
+  const onProximityChangeRef = useRef(onProximityChange);
 
   // State transition effect
   useEffect(() => {
@@ -328,6 +331,21 @@ export function DonnyAvatar({
     }
   }, [state, currentState, onTransitionEnd]);
 
+  // Keep refs in sync with state/props
+  useEffect(() => {
+    isNearTargetRef.current = isNearTarget;
+  }, [isNearTarget]);
+
+  useEffect(() => {
+    onProximityChangeRef.current = onProximityChange;
+  }, [onProximityChange]);
+
+  // Helper to clear all chained timeouts
+  const clearChainedTimeouts = () => {
+    chainedTimeoutsRef.current.forEach(clearTimeout);
+    chainedTimeoutsRef.current = [];
+  };
+
   // Random idle expressions to make Donny feel alive
   useEffect(() => {
     if (!enableIdleExpressions || state !== "idle") {
@@ -336,6 +354,7 @@ export function DonnyAvatar({
         clearTimeout(idleTimeoutRef.current);
         idleTimeoutRef.current = null;
       }
+      clearChainedTimeouts();
       setIdleExpression(null);
       return;
     }
@@ -372,19 +391,21 @@ export function DonnyAvatar({
           // Schedule chained expressions
           let chainDelay = resetDelay;
           for (let i = 0; i < consecutiveCount; i++) {
-            setTimeout(() => {
+            const chainTimerId = setTimeout(() => {
               const chainExpression = idleExpressions[Math.floor(Math.random() * idleExpressions.length)];
               setIdleExpression(chainExpression);
             }, chainDelay);
+            chainedTimeoutsRef.current.push(chainTimerId);
             chainDelay += 400 + Math.random() * 300; // 400-700ms between chained expressions
           }
           resetDelay = chainDelay + 400;
         }
         
-        setTimeout(() => {
+        const resetTimerId = setTimeout(() => {
           setIdleExpression(null);
           scheduleNextExpression();
         }, resetDelay);
+        chainedTimeoutsRef.current.push(resetTimerId);
       }, randomizedDelay);
     };
 
@@ -395,6 +416,7 @@ export function DonnyAvatar({
         clearTimeout(idleTimeoutRef.current);
         idleTimeoutRef.current = null;
       }
+      clearChainedTimeouts();
     };
   }, [enableIdleExpressions, state, idleExpressionInterval]);
 
@@ -498,33 +520,39 @@ export function DonnyAvatar({
           let matchedSelector: string | undefined;
 
           for (const selector of proximitySelectors) {
-            const elements = document.querySelectorAll(selector);
-            for (const element of elements) {
-              const elRect = element.getBoundingClientRect();
-              const elCenterX = elRect.left + elRect.width / 2;
-              const elCenterY = elRect.top + elRect.height / 2;
-              const distToEl = Math.sqrt(
-                Math.pow(event.clientX - elCenterX, 2) +
-                  Math.pow(event.clientY - elCenterY, 2)
-              );
+            try {
+              const elements = document.querySelectorAll(selector);
+              for (const element of elements) {
+                const elRect = element.getBoundingClientRect();
+                const elCenterX = elRect.left + elRect.width / 2;
+                const elCenterY = elRect.top + elRect.height / 2;
+                const distToEl = Math.sqrt(
+                  Math.pow(event.clientX - elCenterX, 2) +
+                    Math.pow(event.clientY - elCenterY, 2)
+                );
 
-              if (distToEl < proximityThreshold) {
-                nearTarget = true;
-                matchedSelector = selector;
-                break;
+                if (distToEl < proximityThreshold) {
+                  nearTarget = true;
+                  matchedSelector = selector;
+                  break;
+                }
               }
+              if (nearTarget) break;
+            } catch {
+              // Invalid selector - skip gracefully
+              continue;
             }
-            if (nearTarget) break;
           }
 
-          if (nearTarget !== isNearTarget) {
+          // Use ref to avoid stale closure comparison
+          if (nearTarget !== isNearTargetRef.current) {
             setIsNearTarget(nearTarget);
-            onProximityChange?.(nearTarget, matchedSelector);
+            onProximityChangeRef.current?.(nearTarget, matchedSelector);
           }
         }
       });
     },
-    [trackMouse, proximitySelectors, proximityThreshold, isNearTarget, onProximityChange]
+    [trackMouse, proximitySelectors, proximityThreshold]
   );
 
   // Setup mouse tracking

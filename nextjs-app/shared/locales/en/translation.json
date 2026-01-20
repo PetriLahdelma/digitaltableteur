@@ -413,6 +413,9 @@
   "postPetriLahdelmaBioMetaDescription": "From Varissuo to leading global design systems.",
   "notFoundAlt": "An error image indicating a missing or inaccessible resource.",
   "notFoundButton": "Return to the Home Page",
+  "errorTitle": "Something went wrong!",
+  "errorDescription": "An unexpected error occurred.",
+  "errorRetry": "Try again",
   "cookieConsent": {
     "title": "Cookie consent",
     "description": "Digitaltableteur uses cookies to improve your experience. You can customize which cookies we use, accept all, or accept only essential cookies required for the site to function.",
