@@ -2,18 +2,64 @@
 
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
-import { Button } from "@/components/ui/button";
+import Icon from "../../components/Icon";
 import { Check } from "lucide-react";
+import styles from "./DesignSprintsSection.module.css";
 
 export interface DesignSprintsSectionProps {
   /** Section id for anchor linking */
   id?: string;
   /** Custom className */
   className?: string;
+}
+
+/**
+ * SprintButton - Animated pill button with icon that slides from left to right on hover
+ */
+function SprintButton({ label }: { label: string }) {
+  return (
+    <a
+      href="/contact"
+      data-donny-interest="design-sprint"
+      className={cn(
+        "group relative inline-flex items-center",
+        "h-11 rounded-full",
+        "bg-primary text-primary-foreground",
+        "font-medium text-base",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        "cursor-pointer"
+      )}
+    >
+      {/* Text */}
+      <span
+        className={cn(
+          "relative z-10 whitespace-nowrap",
+          "pl-11 pr-5 group-hover:pl-5 group-hover:pr-11",
+          "transition-all duration-300 ease-out"
+        )}
+      >
+        {label}
+      </span>
+
+      {/* Icon circle */}
+      <span
+        className={cn(
+          "absolute top-1/2 -translate-y-1/2 flex items-center justify-center",
+          "w-8 h-8 rounded-full",
+          styles.iconCircle,
+          "left-1.5 group-hover:left-[calc(100%-2.375rem)]",
+          "transition-all duration-300 ease-out"
+        )}
+      >
+        <Icon name="Lightning" size="xs" weight="fill" className="text-foreground" />
+      </span>
+    </a>
+  );
 }
 
 /**
@@ -78,12 +124,7 @@ export function DesignSprintsSection({
 
           {/* Benefits column - 2x2 grid with CTA below */}
           <div className="space-y-6">
-            <div
-              className="grid gap-4"
-              style={{
-                gridTemplateColumns: "repeat(2, 1fr)",
-              }}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
                 <FadeIn
                   key={benefit}
@@ -126,16 +167,8 @@ export function DesignSprintsSection({
             </div>
 
             <FadeIn direction="up" delay={0.4} distance={20}>
-              <div className="flex justify-center pt-4">
-                <Button
-                  size="lg"
-                  asChild
-                  className="min-w-[180px]"
-                >
-                  <a href="/contact" data-donny-interest="design-sprint">
-                    {t("homeDesignSprintsCta", "Start your sprint")}
-                  </a>
-                </Button>
+              <div className="flex justify-center pt-8">
+                <SprintButton label={t("homeDesignSprintsCta", "Start your sprint")} />
               </div>
             </FadeIn>
           </div>
