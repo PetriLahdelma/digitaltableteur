@@ -195,6 +195,11 @@
   ],
   "homeHeroGradientSubtext": "Konseptista koodiin me rakennamme ihmislähtöisiä GenAI-kokemuksia.",
   "homeHeroSubtext": "Konseptista koodiin me rakennamme ihmislähtöisiä GenAI-kokemuksia.",
+  "homeHeroSubtextOptions": [
+    "Konseptista koodiin me rakennamme ihmislähtöisiä GenAI-kokemuksia.",
+    "Konseptista koodiin, suunnittelu ja toteutus yhdessä tiimissä.",
+    "Konseptista koodiin, autamme scale-up-yrityksiä toimittamaan nopeammin."
+  ],
   "homeHeroCallToAction": "Ota yhteyttä",
   "homeSelectedWork": "Valikoituja töitä",
   "homeWorkViewAll": "Näytä kaikki työt",

@@ -195,6 +195,11 @@
   ],
   "homeHeroGradientSubtext": "Från koncept till kod skapar vi människocentrerade GenAI-upplevelser.",
   "homeHeroSubtext": "Från koncept till kod skapar vi människocentrerade GenAI-upplevelser.",
+  "homeHeroSubtextOptions": [
+    "Från koncept till kod skapar vi människocentrerade GenAI-upplevelser.",
+    "Från koncept till kod, design och utveckling i ett team.",
+    "Från koncept till kod, vi hjälper scale-ups att leverera snabbare."
+  ],
   "homeHeroCallToAction": "Kontakta oss",
   "homeSelectedWork": "Utvalda projekt",
   "homeWorkViewAll": "Visa alla projekt",
