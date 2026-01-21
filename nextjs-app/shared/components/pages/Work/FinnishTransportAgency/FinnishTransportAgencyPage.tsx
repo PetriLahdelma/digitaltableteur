@@ -95,7 +95,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.teamMember}>
               <Image
                 src="/images/portfolio/helsinki-design-system/team/petri.png"
-                alt="Petri Lahdelma"
+                alt=""
                 width={80}
                 height={80}
                 className={styles.teamAvatar}
@@ -104,12 +104,24 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.teamRole}>Designer</span>
             </div>
             <div className={styles.teamMember}>
-              <div className={styles.teamAvatarPlaceholder}>A</div>
+              <Image
+                src="/images/portfolio/finnish-transport-agency/team/antti.png"
+                alt=""
+                width={80}
+                height={80}
+                className={styles.teamAvatar}
+              />
               <span className={styles.teamName}>Antti Kivinen</span>
               <span className={styles.teamRole}>Designer</span>
             </div>
             <div className={styles.teamMember}>
-              <div className={styles.teamAvatarPlaceholder}>Y</div>
+              <Image
+                src="/images/portfolio/finnish-transport-agency/team/yosi.png"
+                alt=""
+                width={80}
+                height={80}
+                className={styles.teamAvatar}
+              />
               <span className={styles.teamName}>Yosi Bercovich</span>
               <span className={styles.teamRole}>Designer</span>
             </div>
