@@ -46,17 +46,24 @@ function SprintButton({ label }: { label: string }) {
         {label}
       </span>
 
-      {/* Icon circle */}
+      {/* Icon circle - wrapper handles position, inner circle handles rotation */}
       <span
         className={cn(
-          "absolute top-1/2 -translate-y-1/2 flex items-center justify-center",
-          "w-8 h-8 rounded-full",
-          styles.iconCircle,
+          "absolute top-1/2 -translate-y-1/2 z-20",
+          "w-8 h-8",
           "left-1.5 group-hover:left-[calc(100%-2.375rem)]",
-          "transition-all duration-300 ease-out"
+          "transition-[left] duration-[600ms] ease-out"
         )}
       >
-        <Icon name="Lightning" size="xs" weight="fill" className="text-foreground" />
+        <span
+          className={cn(
+            "flex items-center justify-center",
+            "w-8 h-8 rounded-full",
+            styles.iconCircle
+          )}
+        >
+          <Icon name="Lightning" size="sm" weight="fill" className="text-foreground" />
+        </span>
       </span>
     </a>
   );
