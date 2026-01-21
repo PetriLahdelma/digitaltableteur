@@ -34,7 +34,6 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           video={{
             src: "/images/portfolio/knobsmith-audio/LCD-screen_1.webm",
             alt: "KnobSmith Audio plugin LCD screen animation",
-            poster: "/images/portfolio/knobsmith-audio/hero.png",
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
@@ -276,6 +275,20 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           },
         ]}
       />
+
+      <div className={styles.ogImageSection}>
+        <div className={styles.ogImageWrapper}>
+          <img
+            src="/images/portfolio/knobsmith-audio/hero.png"
+            alt="KnobSmith Audio social media preview card"
+            className={styles.ogImage}
+          />
+        </div>
+        <Text size="XS" className={styles.ogImageCaption}>
+          The Open Graph image ensures consistent brand presence when links are
+          shared across social platforms.
+        </Text>
+      </div>
 
       <StoryBlock
         subtitle="Brand Identity"
