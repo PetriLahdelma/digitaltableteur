@@ -167,7 +167,7 @@ export function DesignSprintsSection({
             </div>
 
             <FadeIn direction="up" delay={0.4} distance={20}>
-              <div className="flex justify-center pt-4">
+              <div className="flex justify-center pt-8">
                 <SprintButton label={t("homeDesignSprintsCta", "Start your sprint")} />
               </div>
             </FadeIn>
