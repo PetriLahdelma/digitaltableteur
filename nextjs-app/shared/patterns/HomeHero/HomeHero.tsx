@@ -32,24 +32,41 @@ export function HomeHero({
     defaultValue: [],
   }) as string[];
 
+  // Get the array of subtext options from translations
+  const subtextOptions = t("homeHeroSubtextOptions", {
+    returnObjects: true,
+    defaultValue: [],
+  }) as string[];
+
   // Use state to handle client-side random selection (avoids hydration mismatch)
-  const [randomIndex, setRandomIndex] = useState(0);
+  const [randomTitleIndex, setRandomTitleIndex] = useState(0);
+  const [randomSubtextIndex, setRandomSubtextIndex] = useState(0);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     // Only run on client to avoid hydration mismatch
-    setRandomIndex(Math.floor(Math.random() * titleOptions.length));
+    setRandomTitleIndex(Math.floor(Math.random() * titleOptions.length));
+    setRandomSubtextIndex(Math.floor(Math.random() * subtextOptions.length));
     setIsClient(true);
-  }, [titleOptions.length]);
+  }, [titleOptions.length, subtextOptions.length]);
 
   // Select the hero title - use random option if available, otherwise fallback
   const heroTitle = useMemo(() => {
     if (isClient && titleOptions.length > 0) {
-      return titleOptions[randomIndex];
+      return titleOptions[randomTitleIndex];
     }
     // Fallback for SSR or if no options available
     return t("homeHeroTitle", "Design systems that scale with your ambition");
-  }, [isClient, titleOptions, randomIndex, t]);
+  }, [isClient, titleOptions, randomTitleIndex, t]);
+
+  // Select the hero subtext - use random option if available, otherwise fallback
+  const heroSubtext = useMemo(() => {
+    if (isClient && subtextOptions.length > 0) {
+      return subtextOptions[randomSubtextIndex];
+    }
+    // Fallback for SSR or if no options available
+    return t("homeHeroSubtext", "From concept to code, we craft human-centered GenAI experiences.");
+  }, [isClient, subtextOptions, randomSubtextIndex, t]);
 
   return (
     <HeroSection
@@ -90,8 +107,9 @@ export function HomeHero({
             {heroTitle}
           </KineticTitle>
 
-          {/* Subtitle with text reveal */}
+          {/* Subtitle with text reveal - randomly selected on mount */}
           <TextReveal
+            key={heroSubtext}
             animation="fade"
             type="words"
             as="p"
@@ -102,10 +120,7 @@ export function HomeHero({
             delay={0.5}
             stagger={0.03}
           >
-            {t(
-              "homeHeroSubtext",
-              "From concept to code, we craft human-centered GenAI experiences."
-            )}
+            {heroSubtext}
           </TextReveal>
 
           {/* CTA buttons with staggered entrance */}

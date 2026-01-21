@@ -1,0 +1,11 @@
+.iconCircle {
+  background-color: var(--logo-background);
+}
+
+:global(.themeHCB) .iconCircle {
+  background-color: #000;
+}
+
+:global(.themeHCW) .iconCircle {
+  background-color: #fff;
+}
