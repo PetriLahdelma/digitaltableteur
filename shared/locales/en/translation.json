@@ -198,6 +198,11 @@
   ],
   "homeHeroGradientSubtext": "From concept to code, we craft human-centered GenAI experiences.",
   "homeHeroSubtext": "From concept to code, we craft human-centered GenAI experiences.",
+  "homeHeroSubtextOptions": [
+    "From concept to code, we craft human-centered GenAI experiences.",
+    "From concept to code, design and build in one team.",
+    "From concept to code, we help scale-ups ship faster."
+  ],
   "homeHeroCallToAction": "Contact us",
   "homeSelectedWork": "Selected work",
   "homeWorkViewAll": "View all work",
