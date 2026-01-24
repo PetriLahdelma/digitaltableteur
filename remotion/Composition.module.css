@@ -1,0 +1,34 @@
+.stage {
+  background-color: var(--main-body-background-color);
+  display: grid;
+  place-items: center;
+}
+
+.perspective {
+  perspective: 900px;
+}
+
+.marker {
+  inline-size: 60%;
+  block-size: auto;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  backface-visibility: hidden;
+  animation: marker-spin 6s linear infinite;
+}
+
+@keyframes marker-spin {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marker {
+    animation: none;
+  }
+}

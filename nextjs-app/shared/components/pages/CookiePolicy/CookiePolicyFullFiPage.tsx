@@ -44,7 +44,7 @@ export function CookiePolicyFullFiPage({
       <p>
         <strong>Rekisterinpitäjä:</strong> Digitaltableteur Tmi
         <br />
-        Hämeentie 8 C26
+        Hämeentie 8 C
         <br />
         +358 45 657 4469
         <br />
@@ -56,7 +56,7 @@ export function CookiePolicyFullFiPage({
         <br />
         Petri Lahdelma
         <br />
-        Hämeentie 8 C26
+        Hämeentie 8 C
         <br />
         +358 45 657 4469
         <br />
