@@ -88,12 +88,14 @@ export function ContactPageContentEditorial({
               }}
             >
               <address className={styles.address}>
-                <span className={styles.addressLine}>Helsinki</span>
+                <span className={styles.addressLine}>
+                  {t("contactAddressLine1", "HKI HQ")}
+                </span>
                 <span className={styles.addressLine}>
                   {t("contactAddressLine2", "Hämeentie 8")}
                 </span>
                 <span className={styles.addressLine}>
-                  {t("contactAddressLine3", "00530")}
+                  {t("contactAddressLine3", "00530 Helsinki")}
                 </span>
               </address>
 
