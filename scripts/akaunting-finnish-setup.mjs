@@ -86,7 +86,7 @@ const FINNISH_CONFIG = {
     vatNumber: "FI22644552", // Your VAT number
     currency: "EUR",
     timezone: "Europe/Helsinki",
-    address: "Hämeentie 8 C",
+    address: "Hämeentie 8 C26",
     city: "Helsinki",
     zipCode: "00530",
     country: "FI",
