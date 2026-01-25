@@ -76,9 +76,9 @@ export function ContactPageContent({
             <LocationCard
               officeName={t("contactHelsinkiOffice")}
               address={[
+                t("contactAddressLine1"),
                 t("contactAddressLine2"),
                 t("contactAddressLine3"),
-                t("contactAddressLine4"),
               ]}
               email="mail@digitaltableteur.com"
               variant="bordered"
