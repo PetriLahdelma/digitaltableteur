@@ -178,4 +178,32 @@ const Tabs: React.FC<TabsProps> = ({
   );
 };
 
+/**
+ * Helper to generate tabpanel props for accessibility compliance.
+ * Use this when rendering content panels alongside Tabs.
+ *
+ * @example
+ * ```tsx
+ * <Tabs tabs={tabs} activeTab={active} onTabChange={setActive} />
+ * {tabs.map(tab => (
+ *   <div {...getTabPanelProps(tab.key, tab.key === active)}>
+ *     {tab.key === active && <Content />}
+ *   </div>
+ * ))}
+ * ```
+ *
+ * @param tabKey - The key of the tab this panel is associated with
+ * @param isActive - Whether this panel is currently active
+ * @returns Object with id, role, aria-labelledby, hidden, and tabIndex props
+ */
+export function getTabPanelProps(tabKey: string, isActive: boolean) {
+  return {
+    id: `tabpanel-${tabKey}`,
+    role: "tabpanel" as const,
+    "aria-labelledby": `tab-${tabKey}`,
+    hidden: !isActive,
+    tabIndex: isActive ? 0 : -1,
+  };
+}
+
 export default Tabs;
