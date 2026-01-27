@@ -224,6 +224,31 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
           },
         ]}
       />
+
+      <StoryBlock
+        subtitle="Outcomes"
+        title="A Platform for Documentary Photography"
+        content={[
+          <Text key="p1" size="S">
+            The relaunch successfully transformed a photography magazine into a premium
+            bookazine format, expanding from its original scope to 160 thoughtfully
+            designed pages. Publishing in both English and Finnish editions opened the
+            publication to international audiences while maintaining its Finnish roots.
+          </Text>,
+          <Text key="p2" size="S">
+            Complementing print with an e-magazine and website ensures the documentary
+            photography stories reach readers beyond traditional distribution. The visual
+            system—designed to support immersive long-form photo essays—gives photographers
+            a non-commercial platform that keeps print culture alive while adapting to
+            how audiences consume visual journalism today.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
     </ProjectDetailLayout>
   );
 }
