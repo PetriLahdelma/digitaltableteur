@@ -277,3 +277,275 @@ Secondary: NVDA (Windows + Firefox) if available
 - [ ] Messages container is a live region
 - [ ] Input field has label
 - [ ] Close action accessible
+
+---
+
+## 3. Visual Inspection Testing
+
+### 3.1 Color Contrast
+
+| Test | How to Verify | Pass Criteria |
+|------|---------------|---------------|
+| Text contrast | WebAIM Contrast Checker or WAVE | Normal text: 4.5:1, Large text (18pt+): 3:1 |
+| UI component contrast | Inspect borders, icons, form controls | 3:1 against adjacent colors |
+| Focus indicator contrast | Tab to elements, measure focus ring | 3:1 contrast |
+| Placeholder text | Check input placeholders | 4.5:1 contrast (often fails) |
+| Disabled state | Check disabled buttons/inputs | Still readable (AAA not required but recommended) |
+
+**Tools:**
+- WebAIM Contrast Checker: https://webaim.org/resources/contrastchecker/
+- WAVE browser extension
+- Chrome DevTools color picker
+- Colour Contrast Analyser (desktop app)
+
+### 3.2 Responsive and Zoom Testing
+
+| Test | How to Verify | Pass Criteria |
+|------|---------------|---------------|
+| 200% zoom | Ctrl/Cmd + zoom to 200% | All content visible, no horizontal scroll for text |
+| 400% zoom | Zoom to 400% (WCAG 2.2) | Content reflows, still usable |
+| 320px reflow | DevTools responsive mode at 320px | Content reflows, no horizontal scroll |
+| Text spacing | Apply test stylesheet (see below) | Content remains visible, no overlap |
+| Orientation | Test portrait and landscape | Content works in both orientations |
+
+**Text Spacing Test Stylesheet (WCAG 1.4.12):**
+
+Apply this CSS via DevTools or browser extension to test text spacing:
+
+```css
+* {
+  line-height: 1.5 !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+p {
+  margin-bottom: 2em !important;
+}
+```
+
+All content must remain visible and functional with these styles applied.
+
+### 3.3 Motion and Animation
+
+| Test | How to Verify | Pass Criteria |
+|------|---------------|---------------|
+| Reduced motion | Enable "Reduce Motion" in OS settings | Animations are reduced or stopped |
+| No auto-play video | Check for auto-playing media | Audio/video doesn't auto-play or has controls |
+| No flashing content | Visual scan | No content flashes more than 3 times/second |
+| Pause controls | Check carousels, animations | User can pause/stop moving content |
+
+**How to enable reduced motion:**
+- macOS: System Settings > Accessibility > Display > Reduce motion
+- Windows: Settings > Ease of Access > Display > Show animations
+- iOS: Settings > Accessibility > Motion > Reduce Motion
+- Chrome DevTools: Rendering > Emulate CSS media feature prefers-reduced-motion
+
+### 3.4 Color Independence
+
+| Test | How to Verify | Pass Criteria |
+|------|---------------|---------------|
+| Error indicators | Trigger form errors | Errors use icon/text, not just red color |
+| Required fields | Check required indicators | More than just red asterisk (label or icon) |
+| Links in text | View links in paragraphs | Links have underline or other non-color indicator |
+| Status indicators | Check success/warning/error states | Status conveyed by icon/text, not color alone |
+| Charts/graphs | Check any data visualizations | Patterns or labels, not just colors |
+
+**Test tip:** Use a grayscale filter or colorblind simulation to check if information is still conveyed.
+
+### 3.5 Visual Focus Testing
+
+For each interactive element, tab to it and verify:
+
+- [ ] Focus indicator is visible
+- [ ] Focus indicator has sufficient contrast (3:1)
+- [ ] Focus indicator is not obscured by other elements (sticky headers, overlays)
+- [ ] Focus indicator style is consistent across the site
+
+---
+
+## 4. Cross-Cutting Verifications
+
+### 4.1 Theme Testing Matrix
+
+Test each page in each theme mode. Mark with checkmark when verified.
+
+| Page | Light | Dark | High Contrast Black | High Contrast White |
+|------|-------|------|---------------------|---------------------|
+| Home (/) | [ ] | [ ] | [ ] | [ ] |
+| About (/about) | [ ] | [ ] | [ ] | [ ] |
+| Work (/work) | [ ] | [ ] | [ ] | [ ] |
+| Blog (/blog) | [ ] | [ ] | [ ] | [ ] |
+| Blog Article | [ ] | [ ] | [ ] | [ ] |
+| Contact (/contact) | [ ] | [ ] | [ ] | [ ] |
+| Services | [ ] | [ ] | [ ] | [ ] |
+| Privacy (/privacy) | [ ] | [ ] | [ ] | [ ] |
+| Terms (/terms) | [ ] | [ ] | [ ] | [ ] |
+
+**For each theme, verify:**
+- [ ] Text contrast meets 4.5:1 (AA)
+- [ ] Focus indicators visible
+- [ ] Icons/UI elements have 3:1 contrast
+- [ ] No information lost in theme switch
+
+### 4.2 Language and i18n Testing
+
+The site supports EN, FI, SV. Test each language.
+
+| Test | How to Verify | Pass Criteria |
+|------|---------------|---------------|
+| HTML lang attribute | Inspect `<html>` element | `lang="en"` (or fi/sv) present |
+| Language switching | Switch locale | `lang` attribute updates |
+| Content in different language | Check for inline foreign text | Has `lang` attribute on container |
+| Screen reader pronunciation | Listen with VoiceOver | Correct pronunciation for language |
+| RTL support (if applicable) | N/A for EN/FI/SV | Not required |
+
+**Per-language checklist:**
+
+| Page | English (en) | Finnish (fi) | Swedish (sv) |
+|------|--------------|--------------|--------------|
+| Home | [ ] | [ ] | [ ] |
+| About | [ ] | [ ] | [ ] |
+| Contact | [ ] | [ ] | [ ] |
+
+### 4.3 Form Error Handling
+
+For all forms, verify:
+
+- [ ] Error messages in text (not color only)
+- [ ] Error messages linked to fields (aria-describedby)
+- [ ] Focus moves to first error on submission (or error summary)
+- [ ] Success messages announced (via live region)
+- [ ] Inline validation (if used) doesn't interfere with typing
+- [ ] Required fields clearly indicated before submission
+
+### 4.4 Component State Testing
+
+Test these states for interactive components:
+
+| Component | Default | Hover | Focus | Active | Disabled | Error |
+|-----------|---------|-------|-------|--------|----------|-------|
+| Button | [ ] | [ ] | [ ] | [ ] | [ ] | N/A |
+| Link | [ ] | [ ] | [ ] | [ ] | N/A | N/A |
+| Input | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Textarea | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Checkbox | [ ] | [ ] | [ ] | [ ] | [ ] | N/A |
+| Select | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Card | [ ] | [ ] | [ ] | [ ] | [ ] | N/A |
+
+---
+
+## 5. Issue Tracking Template
+
+When you find an issue, document it using this template:
+
+```markdown
+### Issue: [Brief description]
+
+**Page:** /path
+**Element:** [CSS selector or description]
+**Test Type:** Keyboard / Screen Reader / Visual / Cross-cutting
+**WCAG Criterion:** X.X.X [Name]
+**Level:** A / AA / AAA
+**Severity:** P0 (Critical) / P1 (Major) / P2 (Minor)
+
+**Description:**
+[What's wrong]
+
+**How to Reproduce:**
+1. [Step 1]
+2. [Step 2]
+3. [Observe: ...]
+
+**Expected Behavior:**
+[What should happen]
+
+**Actual Behavior:**
+[What currently happens]
+
+**Screenshot/Recording:**
+[Attach if applicable]
+
+**Suggested Fix:**
+[If known]
+
+**Tested On:**
+- Browser: [Chrome/Safari/Firefox]
+- Screen Reader: [VoiceOver/NVDA/None]
+- Theme: [Light/Dark/HCW/HCB]
+- Viewport: [Desktop/Mobile/Zoom level]
+```
+
+### Severity Definitions
+
+| Severity | Definition | Examples |
+|----------|------------|----------|
+| P0 (Critical) | Complete blocker for AT users | Keyboard trap, missing form labels, no focus indicator |
+| P1 (Major) | Significant barrier, workaround difficult | Poor contrast, missing alt text on informative images |
+| P2 (Minor) | Inconvenience, workaround exists | Suboptimal heading structure, verbose alt text |
+
+---
+
+## 6. Testing Schedule Recommendation
+
+For comprehensive audit, plan approximately:
+
+| Phase | Time Estimate | Focus |
+|-------|---------------|-------|
+| Automated scan | 30 min | Run axe-core Playwright audit, review report |
+| Keyboard testing | 2-3 hours | All pages, all interactive elements |
+| Screen reader testing | 3-4 hours | VoiceOver on all pages (add 2h for NVDA) |
+| Visual inspection | 1-2 hours | Contrast, zoom, themes |
+| Cross-cutting | 1-2 hours | Theme matrix, i18n, states |
+| Documentation | 1-2 hours | Issue writeup, prioritization |
+
+**Total:** ~10-14 hours for thorough manual audit
+
+### Recommended Order
+
+1. **Run automated scan first** - Identify quick wins and patterns
+2. **Keyboard test each page** - Fastest manual test
+3. **Screen reader test critical flows** - Contact form, navigation, chat
+4. **Visual inspection** - Contrast and zoom testing
+5. **Theme testing** - All pages in all themes
+6. **Document and prioritize** - Create issues for Phase 2+
+
+---
+
+## 7. Verification Checklist Summary
+
+After completing all tests, verify these high-level requirements:
+
+### WCAG 2.1 AA Core Requirements
+
+- [ ] **1.1.1** All images have appropriate alt text
+- [ ] **1.3.1** Content structure is semantic (headings, lists, landmarks)
+- [ ] **1.4.3** Text contrast is at least 4.5:1 (3:1 for large text)
+- [ ] **1.4.11** Non-text contrast is at least 3:1
+- [ ] **2.1.1** All functionality is keyboard accessible
+- [ ] **2.1.2** No keyboard traps (except intentional modal traps with escape)
+- [ ] **2.4.1** Skip link bypasses navigation
+- [ ] **2.4.3** Focus order is logical
+- [ ] **2.4.7** Focus indicator is visible
+- [ ] **3.1.1** Page language is declared
+- [ ] **3.3.1** Form errors are identified in text
+- [ ] **3.3.2** Form fields have labels
+- [ ] **4.1.2** Custom components have appropriate roles and states
+- [ ] **4.1.3** Status messages are announced to screen readers
+
+### Site-Specific Requirements
+
+- [ ] Chat widget is fully keyboard accessible
+- [ ] Chat widget works with screen readers
+- [ ] All four themes (Light, Dark, HCW, HCB) pass contrast
+- [ ] All three languages (EN, FI, SV) are properly declared
+- [ ] Forms provide accessible error feedback
+- [ ] Animations respect prefers-reduced-motion
+
+---
+
+*Checklist compiled from:*
+- WCAG 2.1 Quick Reference (W3C)
+- WAI-ARIA Authoring Practices Guide
+- Deque axe-core documentation
+- WebAIM testing methodology
+- Project-specific research (TOOLS.md, PITFALLS.md, PATTERNS.md)
