@@ -659,7 +659,8 @@
   color: #fff;
 }
 
-/* DonnyAvatar in HCW toggle (black bg) keeps default dark body with white eyes */
+/* DonnyAvatar in HCW toggle (black bg) - white body needs black eyes for visibility */
 :global(.themeHCW) .toggleAvatar {
   --donny-primary: #fff;
+  --donny-eyes: #000;
 }
