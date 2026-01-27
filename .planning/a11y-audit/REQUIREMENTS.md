@@ -54,11 +54,22 @@ Requirements for complete WCAG 2.1 AA audit and remediation.
 
 ### Robust (WCAG Principle 4)
 
-- [ ] **RBST-01**: Valid HTML (no parsing errors)
-- [ ] **RBST-02**: All interactive elements have accessible names
-- [ ] **RBST-03**: ARIA attributes used correctly (valid roles, states, properties)
+- [x] **RBST-01**: Valid HTML (no parsing errors)
+  - Status: Complete (2026-01-27)
+  - Result: Baseline audit showed 0 HTML parsing errors
+- [x] **RBST-02**: All interactive elements have accessible names
+  - Status: Complete (2026-01-27)
+  - Result: Baseline audit showed 264 name-related checks passed
+- [x] **RBST-03**: ARIA attributes used correctly (valid roles, states, properties)
+  - Status: Complete (2026-01-27)
+  - Fix: Added role="status" to Toaster container
+  - Result: 0 violations (was 11 aria-prohibited-attr)
 - [ ] **RBST-04**: Status messages announced to assistive technology
+  - Status: Pending (Phase 8 manual testing)
+  - Note: Requires VoiceOver verification
 - [ ] **RBST-05**: Dynamic content updates announced appropriately
+  - Status: Pending (Phase 8 manual testing)
+  - Note: Requires screen reader verification
 
 ### Component Fixes
 
@@ -135,11 +146,11 @@ Deferred to future work.
 | UNDR-04 | Phase 4 | Pending |
 | UNDR-05 | Phase 4 | Pending |
 | UNDR-06 | Phase 4 | Pending |
-| RBST-01 | Phase 5 | Pending |
-| RBST-02 | Phase 5 | Pending |
-| RBST-03 | Phase 5 | Pending |
-| RBST-04 | Phase 5 | Pending |
-| RBST-05 | Phase 5 | Pending |
+| RBST-01 | Phase 5 | **Complete** |
+| RBST-02 | Phase 5 | **Complete** |
+| RBST-03 | Phase 5 | **Complete** |
+| RBST-04 | Phase 8 | Pending (manual) |
+| RBST-05 | Phase 8 | Pending (manual) |
 | COMP-01 | Phase 6 | Pending |
 | COMP-02 | Phase 6 | Pending |
 | COMP-03 | Phase 6 | Pending |
@@ -167,4 +178,4 @@ Deferred to future work.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-27 after Phase 1 completion (4/4 INFRA requirements complete)*
+*Last updated: 2026-01-27 after Phase 5 Plan 1 completion (RBST-01, RBST-02, RBST-03 complete)*
