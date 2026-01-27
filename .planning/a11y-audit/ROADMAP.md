@@ -18,7 +18,13 @@ Comprehensive WCAG 2.1 AA audit and remediation for the entire public-facing Dig
   2. Baseline violations documented with severity (P0/P1/P2)
   3. Manual testing checklist created from research
   4. @axe-core/playwright configured for page-level tests
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Set up @axe-core/playwright for page-level tests
+- [ ] 01-02-PLAN.md — Run automated audit and capture violations
+- [ ] 01-03-PLAN.md — Create manual testing checklist from research
+- [ ] 01-04-PLAN.md — Document baseline report with remediation plan
 
 ### Phase 2: Perceivable Fixes
 **Goal**: Fix all WCAG Principle 1 (Perceivable) violations
@@ -114,16 +120,17 @@ Comprehensive WCAG 2.1 AA audit and remediation for the entire public-facing Dig
 **Execution Order:**
 Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 
-| Phase | Name | Requirements | Status |
-|-------|------|--------------|--------|
-| 1 | Audit Infrastructure | 4 | Not started |
-| 2 | Perceivable Fixes | 6 | Not started |
-| 3 | Operable Fixes | 7 | Not started |
-| 4 | Understandable Fixes | 6 | Not started |
-| 5 | Robust Fixes | 5 | Not started |
-| 6 | Component Remediation | 9 | Not started |
-| 7 | Page-Level Verification | 5 | Not started |
-| 8 | Final Verification | 5 | Not started |
+| Phase | Name | Requirements | Plans | Status |
+|-------|------|--------------|-------|--------|
+| 1 | Audit Infrastructure | 4 | 4 | Planned |
+| 2 | Perceivable Fixes | 6 | TBD | Not started |
+| 3 | Operable Fixes | 7 | TBD | Not started |
+| 4 | Understandable Fixes | 6 | TBD | Not started |
+| 5 | Robust Fixes | 5 | TBD | Not started |
+| 6 | Component Remediation | 9 | TBD | Not started |
+| 7 | Page-Level Verification | 5 | TBD | Not started |
+| 8 | Final Verification | 5 | TBD | Not started |
 
 ---
 *Roadmap created: 2026-01-27*
+*Phase 1 planned: 2026-01-27*
