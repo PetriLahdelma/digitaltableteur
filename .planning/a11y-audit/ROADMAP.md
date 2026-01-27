@@ -21,10 +21,10 @@ Comprehensive WCAG 2.1 AA audit and remediation for the entire public-facing Dig
 **Plans**: 4 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Set up @axe-core/playwright for page-level tests
-- [ ] 01-02-PLAN.md — Run automated audit and capture violations
-- [ ] 01-03-PLAN.md — Create manual testing checklist from research
-- [ ] 01-04-PLAN.md — Document baseline report with remediation plan
+- [x] 01-01-PLAN.md — Set up @axe-core/playwright for page-level tests
+- [x] 01-02-PLAN.md — Run automated audit and capture violations
+- [x] 01-03-PLAN.md — Create manual testing checklist from research
+- [x] 01-04-PLAN.md — Document baseline report with remediation plan
 
 ### Phase 2: Perceivable Fixes
 **Goal**: Fix all WCAG Principle 1 (Perceivable) violations
@@ -122,7 +122,7 @@ Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 
 | Phase | Name | Requirements | Plans | Status |
 |-------|------|--------------|-------|--------|
-| 1 | Audit Infrastructure | 4 | 4 | Planned |
+| 1 | Audit Infrastructure | 4 | 4/4 | ✓ Complete |
 | 2 | Perceivable Fixes | 6 | TBD | Not started |
 | 3 | Operable Fixes | 7 | TBD | Not started |
 | 4 | Understandable Fixes | 6 | TBD | Not started |
@@ -134,3 +134,4 @@ Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 ---
 *Roadmap created: 2026-01-27*
 *Phase 1 planned: 2026-01-27*
+*Phase 1 complete: 2026-01-27*
