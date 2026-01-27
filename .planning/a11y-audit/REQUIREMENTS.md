@@ -9,10 +9,20 @@ Requirements for complete WCAG 2.1 AA audit and remediation.
 
 ### Audit Infrastructure
 
-- [ ] **INFRA-01**: Run automated axe-core audit across all public pages
-- [ ] **INFRA-02**: Document baseline violations with severity ratings
-- [ ] **INFRA-03**: Create manual testing checklist from research findings
-- [ ] **INFRA-04**: Set up page-level accessibility tests with @axe-core/playwright
+- [x] **INFRA-01**: Run automated axe-core audit across all public pages
+  - Status: Complete (2026-01-27)
+  - Result: 11 violations found across 11 pages
+  - See: tests/a11y/audit-results/audit-results.json
+- [x] **INFRA-02**: Document baseline violations with severity ratings
+  - Status: Complete (2026-01-27)
+  - Result: 11 P0 violations (all aria-prohibited-attr from ToastProvider)
+  - See: VIOLATIONS.md, BASELINE-REPORT.md
+- [x] **INFRA-03**: Create manual testing checklist from research findings
+  - Status: Complete (2026-01-27)
+  - See: MANUAL-TESTING-CHECKLIST.md (551 lines)
+- [x] **INFRA-04**: Set up page-level accessibility tests with @axe-core/playwright
+  - Status: Complete (2026-01-27)
+  - See: tests/a11y/playwright.a11y.spec.ts, playwright.config.ts
 
 ### Perceivable (WCAG Principle 1)
 
@@ -102,10 +112,10 @@ Deferred to future work.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01 | Phase 1 | Pending |
-| INFRA-02 | Phase 1 | Pending |
-| INFRA-03 | Phase 1 | Pending |
-| INFRA-04 | Phase 1 | Pending |
+| INFRA-01 | Phase 1 | **Complete** |
+| INFRA-02 | Phase 1 | **Complete** |
+| INFRA-03 | Phase 1 | **Complete** |
+| INFRA-04 | Phase 1 | **Complete** |
 | PERC-01 | Phase 2 | Pending |
 | PERC-02 | Phase 2 | Pending |
 | PERC-03 | Phase 2 | Pending |
@@ -157,4 +167,4 @@ Deferred to future work.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-27 after research completion*
+*Last updated: 2026-01-27 after Phase 1 completion (4/4 INFRA requirements complete)*
