@@ -68,7 +68,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. Gallery shows optimized WebP images with proper captions
   5. Layout composition feels distinct from other case studies
 **Research**: Unlikely (established patterns from v1.0)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
 - [x] 07-01: Content expansion (ProcessBlock + StoryBlocks)
@@ -85,12 +85,11 @@ Plans:
   4. Gallery shows optimized WebP images with proper captions
   5. Layout composition feels distinct from other case studies
 **Research**: Unlikely (same patterns as Phase 7)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 08-01: Page setup and hero section
-- [ ] 08-02: Story narrative and gallery
-- [ ] 08-03: Process section and verification
+- [ ] 08-01: Content expansion (ProcessBlock + outcomes)
+- [ ] 08-02: Unique styling + visual verification
 
 ### Phase 9: Raw View
 **Goal**: Complete case study page showcasing photography and visual design work
@@ -103,12 +102,11 @@ Plans:
   4. Gallery shows optimized WebP images with proper captions
   5. Layout composition feels distinct from other case studies
 **Research**: Unlikely (same patterns as Phases 7-8)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 09-01: Page setup and hero section
-- [ ] 09-02: Story narrative and gallery
-- [ ] 09-03: Process section and verification
+- [ ] 09-01-PLAN.md — Add ProcessBlock methodology and outcomes section
+- [ ] 09-02-PLAN.md — Editorial-inspired styling + visual verification
 
 ## Progress
 
@@ -119,5 +117,5 @@ Phases execute in numeric order: 7 → 8 → 9
 |-------|-----------|----------------|--------|-----------|
 | 1-6 | v1.0 | ✓ | Complete | 2026-01-19 |
 | 7. VertaaUX | v1.1 | 2/2 | Complete | 2026-01-19 |
-| 8. Finnish Transport Agency | v1.1 | 0/3 | Not started | - |
-| 9. Raw View | v1.1 | 0/3 | Not started | - |
+| 8. Finnish Transport Agency | v1.1 | 0/2 | Not started | - |
+| 9. Raw View | v1.1 | 0/2 | Not started | - |
