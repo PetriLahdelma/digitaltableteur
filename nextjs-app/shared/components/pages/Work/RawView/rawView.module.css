@@ -9,3 +9,7 @@
 .imageGrid {
   margin-block: var(--space-layout-64);
 }
+
+.processSection {
+  margin-block: var(--space-layout-64);
+}
