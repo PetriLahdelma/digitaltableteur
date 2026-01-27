@@ -64,7 +64,7 @@ Plans:
 **Plans**: TBD
 
 ### Phase 5: Robust Fixes
-**Goal**: Fix all WCAG Principle 4 (Robust) violations
+**Goal**: Fix all WCAG Principle 4 (Robust) violations - eliminate all automated violations
 **Depends on**: Phase 1
 **Requirements**: RBST-01, RBST-02, RBST-03, RBST-04, RBST-05
 **Success Criteria**:
@@ -73,7 +73,10 @@ Plans:
   3. ARIA attributes are valid and correct
   4. Status messages announced to AT
   5. Dynamic content updates announced
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 05-01-PLAN.md — Fix Toaster aria-prohibited-attr violation (single fix resolves all 11 violations)
 
 ### Phase 6: Component Remediation
 **Goal**: Fix accessibility issues in specific components identified by research
@@ -126,7 +129,7 @@ Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 | 2 | Perceivable Fixes | 6 | TBD | Not started |
 | 3 | Operable Fixes | 7 | TBD | Not started |
 | 4 | Understandable Fixes | 6 | TBD | Not started |
-| 5 | Robust Fixes | 5 | TBD | Not started |
+| 5 | Robust Fixes | 5 | 1/1 | Ready |
 | 6 | Component Remediation | 9 | TBD | Not started |
 | 7 | Page-Level Verification | 5 | TBD | Not started |
 | 8 | Final Verification | 5 | TBD | Not started |
@@ -135,3 +138,4 @@ Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 *Roadmap created: 2026-01-27*
 *Phase 1 planned: 2026-01-27*
 *Phase 1 complete: 2026-01-27*
+*Phase 5 planned: 2026-01-27*
