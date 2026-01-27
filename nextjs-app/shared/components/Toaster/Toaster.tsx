@@ -102,6 +102,7 @@ export function ToasterProvider({
           "fixed z-50 flex flex-col gap-2 pointer-events-none",
           positionClasses[position]
         )}
+        role="status"
         aria-live="polite"
         aria-label="Notifications"
       >
