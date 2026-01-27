@@ -18,7 +18,7 @@
 
 ### Key Finding
 
-All 11 pages share the **same single violation** originating from a global component (ToastProvider). This means fixing one component will resolve all 11 violations.
+All 11 pages share the **same single violation** originating from a global component (Toaster). This means fixing one component will resolve all 11 violations.
 
 ## Violations by Impact
 
@@ -68,7 +68,9 @@ These violations cause inconvenience but don't block access.
 
 **Issue:** The `aria-label` attribute is prohibited on elements with implicit `role="generic"` (which `<div>` elements have by default when no explicit role is set). The `aria-live="polite"` is valid, but `aria-label` requires an explicit role that supports naming.
 
-**Root Cause:** ToastProvider component in `/providers/ToastProvider.tsx`
+**Root Cause:** Toaster component in `nextjs-app/shared/components/Toaster/Toaster.tsx` (lines 100-107)
+
+> Note: There is also a separate `/providers/ToastProvider.tsx` file, but that one delegates to a Toast component and does not contain the aria-live container. The violation originates from `Toaster.tsx`.
 
 **How to Fix:**
 1. Add an explicit role to the container: `role="status"` or `role="log"`
@@ -90,67 +92,67 @@ These violations cause inconvenience but don't block access.
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.fixed` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.fixed` (Toaster) | Add `role="status"` to container |
 
 ### About (/about)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.fixed` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.fixed` (Toaster) | Add `role="status"` to container |
 
 ### Work (/work)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.fixed` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.fixed` (Toaster) | Add `role="status"` to container |
 
 ### Blog (/blog)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.fixed` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.fixed` (Toaster) | Add `role="status"` to container |
 
 ### Contact (/contact)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.fixed` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.fixed` (Toaster) | Add `role="status"` to container |
 
 ### Work - SAP Build Apps (/work/sap-build-apps)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.pointer-events-none` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.pointer-events-none` (Toaster) | Add `role="status"` to container |
 
 ### Work - Helsinki Design System (/work/helsinki-design-system)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.pointer-events-none` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.pointer-events-none` (Toaster) | Add `role="status"` to container |
 
 ### Privacy Policy (/privacy-policy)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.fixed` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.fixed` (Toaster) | Add `role="status"` to container |
 
 ### Accessibility (/accessibility)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.fixed` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.fixed` (Toaster) | Add `role="status"` to container |
 
 ### AI Use (/ai-use)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.fixed` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.fixed` (Toaster) | Add `role="status"` to container |
 
 ### 404 Page (/this-page-does-not-exist-404)
 
 | Severity | Rule | Element | Fix |
 |----------|------|---------|-----|
-| serious | aria-prohibited-attr | `.fixed` (ToastProvider) | Add `role="status"` to container |
+| serious | aria-prohibited-attr | `.fixed` (Toaster) | Add `role="status"` to container |
 
 ## Most Common Violations
 
@@ -158,7 +160,7 @@ Top violations across all pages (ranked by frequency):
 
 1. **aria-prohibited-attr** - 11 instances (100% of pages)
    - **Description:** Elements must only use permitted ARIA attributes
-   - **How to fix:** Add explicit `role="status"` to the ToastProvider container element
+   - **How to fix:** Add explicit `role="status"` to the Toaster container element in `nextjs-app/shared/components/Toaster/Toaster.tsx`
    - **Learn more:** https://dequeuniversity.com/rules/axe/4.11/aria-prohibited-attr
    - **Effort:** Low (single component fix)
    - **Impact:** High (fixes all 11 violations)
@@ -189,13 +191,13 @@ Based on this audit:
 1. **Phase 2 (Perceivable):** No contrast or alt text issues found in automated scan
 2. **Phase 3 (Operable):** Manual keyboard testing needed (see MANUAL-TESTING-CHECKLIST.md)
 3. **Phase 4 (Understandable):** Manual form testing needed (see MANUAL-TESTING-CHECKLIST.md)
-4. **Phase 5 (Robust):** Fix ToastProvider aria-prohibited-attr (P0 - single fix resolves all)
+4. **Phase 5 (Robust):** Fix Toaster aria-prohibited-attr (P0 - single fix resolves all)
 
 ### Priority Actions
 
 | Priority | Component | Issue | Effort | Impact |
 |----------|-----------|-------|--------|--------|
-| P0 | ToastProvider | aria-prohibited-attr | Low | Fixes 11 violations |
+| P0 | Toaster | aria-prohibited-attr | Low | Fixes 11 violations |
 
 ### Components Requiring Manual Testing
 
@@ -214,8 +216,9 @@ The automated audit found few issues, but these components identified in researc
 - Automated testing covers ~30-40% of WCAG criteria
 - Manual testing required for keyboard navigation, screen reader compatibility
 - See MANUAL-TESTING-CHECKLIST.md for comprehensive testing protocol
-- All violations traceable to single global component (ToastProvider)
+- All violations traceable to single global component (Toaster)
 
 ---
 *Generated from tests/a11y/audit-results/audit-results.json*
 *Audit completed: 2026-01-27*
+*File path corrected: 2026-01-27 (ToastProvider.tsx -> Toaster.tsx)*
