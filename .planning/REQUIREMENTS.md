@@ -9,26 +9,26 @@ Requirements for v1.1 Portfolio Expansion. Each maps to roadmap phases.
 
 ### Case Studies
 
-- [ ] **CASE-01**: VertaaUX case study page with hero, narrative, gallery, process, and unique layout
-- [ ] **CASE-02**: Finnish Transport Agency case study page with hero, narrative, gallery, process, and unique layout
-- [ ] **CASE-03**: Raw View case study page with hero, narrative, gallery, process, and unique layout
+- [x] **CASE-01**: VertaaUX case study page with hero, narrative, gallery, process, and unique layout
+- [x] **CASE-02**: Finnish Transport Agency case study page with hero, narrative, gallery, process, and unique layout
+- [x] **CASE-03**: Raw View case study page with hero, narrative, gallery, process, and unique layout
 
 ### Content Structure
 
 Per case study page requirements:
 
-- [ ] **CONT-01**: Hero section with project image, title, duration, and role
-- [ ] **CONT-02**: Story narrative sections (context, challenge, solution)
-- [ ] **CONT-03**: Image gallery with optimized WebP images (738x506 grid, 1200x600 hero)
-- [ ] **CONT-04**: Process documentation section (methodology, tools)
-- [ ] **CONT-05**: Custom sections as needed (flexible layout blocks like HDS or KnobSmith examples)
+- [x] **CONT-01**: Hero section with project image, title, duration, and role
+- [x] **CONT-02**: Story narrative sections (context, challenge, solution)
+- [x] **CONT-03**: Image gallery with optimized WebP images (738x506 grid, 1200x600 hero)
+- [x] **CONT-04**: Process documentation section (methodology, tools)
+- [x] **CONT-05**: Custom sections as needed (flexible layout blocks like HDS or KnobSmith examples)
 
 ### Quality Standards
 
-- [ ] **QUAL-01**: Each page has unique layout composition (not cookie-cutter)
-- [ ] **QUAL-02**: All content verified from user-provided facts only (no invented claims)
-- [ ] **QUAL-03**: NDA-compliant (no confidential client information exposed)
-- [ ] **QUAL-04**: Full SEO metadata (OpenGraph, Twitter cards, meta descriptions)
+- [x] **QUAL-01**: Each page has unique layout composition (not cookie-cutter)
+- [x] **QUAL-02**: All content verified from user-provided facts only (no invented claims)
+- [x] **QUAL-03**: NDA-compliant (no confidential client information exposed)
+- [x] **QUAL-04**: Full SEO metadata (OpenGraph, Twitter cards, meta descriptions)
 
 ## v2 Requirements
 
@@ -65,18 +65,18 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CASE-01 | Phase 7 | Pending |
-| CASE-02 | Phase 8 | Pending |
-| CASE-03 | Phase 9 | Pending |
-| CONT-01 | Phase 7, 8, 9 | Pending |
-| CONT-02 | Phase 7, 8, 9 | Pending |
-| CONT-03 | Phase 7, 8, 9 | Pending |
-| CONT-04 | Phase 7, 8, 9 | Pending |
-| CONT-05 | Phase 7, 8, 9 | Pending |
-| QUAL-01 | Phase 7, 8, 9 | Pending |
-| QUAL-02 | Phase 7, 8, 9 | Pending |
-| QUAL-03 | Phase 7, 8, 9 | Pending |
-| QUAL-04 | Phase 7, 8, 9 | Pending |
+| CASE-01 | Phase 7 | Complete |
+| CASE-02 | Phase 8 | Complete |
+| CASE-03 | Phase 9 | Complete |
+| CONT-01 | Phase 7, 8, 9 | Complete |
+| CONT-02 | Phase 7, 8, 9 | Complete |
+| CONT-03 | Phase 7, 8, 9 | Complete |
+| CONT-04 | Phase 7, 8, 9 | Complete |
+| CONT-05 | Phase 7, 8, 9 | Complete |
+| QUAL-01 | Phase 7, 8, 9 | Complete |
+| QUAL-02 | Phase 7, 8, 9 | Complete |
+| QUAL-03 | Phase 7, 8, 9 | Complete |
+| QUAL-04 | Phase 7, 8, 9 | Complete |
 
 **Coverage:**
 - v1 requirements: 12 total
@@ -85,4 +85,4 @@ Which phases cover which requirements. Updated by create-roadmap.
 
 ---
 *Requirements defined: 2026-01-19*
-*Last updated: 2026-01-19 after roadmap creation*
+*Last updated: 2026-01-27 — v1.1 complete*

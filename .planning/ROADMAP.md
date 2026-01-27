@@ -7,7 +7,7 @@ Expanding the portfolio from SAP Build Apps to include three additional case stu
 ## Milestones
 
 - ✅ **v1.0 MVP** - Phases 1-6 (shipped 2026-01-19)
-- 🚧 **v1.1 Portfolio Expansion** - Phases 7-9 (in progress)
+- ✅ **v1.1 Portfolio Expansion** - Phases 7-9 (shipped 2026-01-27)
 - 📋 **v1.2 Enhanced Portfolio** - Tulli, Intrum, animations (planned)
 
 ## Phases
@@ -47,13 +47,13 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 </details>
 
-### 🚧 v1.1 Portfolio Expansion (In Progress)
+### ✅ v1.1 Portfolio Expansion (Complete)
 
 **Milestone Goal:** Add 3 portfolio case studies with unique layouts and verified content.
 
 - [x] **Phase 7: VertaaUX** - UX research and comparison tool case study ✓
-- [ ] **Phase 8: Finnish Transport Agency** - Government digital services case study
-- [ ] **Phase 9: Raw View** - Photography and visual design case study
+- [x] **Phase 8: Finnish Transport Agency** - Government digital services case study ✓
+- [x] **Phase 9: Raw View** - Photography and visual design case study ✓
 
 ## Phase Details
 
@@ -88,8 +88,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 08-01: Content expansion (ProcessBlock + outcomes)
-- [ ] 08-02: Unique styling + visual verification
+- [x] 08-01: Content expansion (ProcessBlock + outcomes)
+- [x] 08-02: Unique styling + visual verification
 
 ### Phase 9: Raw View
 **Goal**: Complete case study page showcasing photography and visual design work
@@ -105,8 +105,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 09-01-PLAN.md — Add ProcessBlock methodology and outcomes section
-- [ ] 09-02-PLAN.md — Editorial-inspired styling + visual verification
+- [x] 09-01-PLAN.md — Add ProcessBlock methodology and outcomes section
+- [x] 09-02-PLAN.md — Editorial-inspired styling + visual verification
 
 ## Progress
 
@@ -117,5 +117,5 @@ Phases execute in numeric order: 7 → 8 → 9
 |-------|-----------|----------------|--------|-----------|
 | 1-6 | v1.0 | ✓ | Complete | 2026-01-19 |
 | 7. VertaaUX | v1.1 | 2/2 | Complete | 2026-01-19 |
-| 8. Finnish Transport Agency | v1.1 | 0/2 | Not started | - |
-| 9. Raw View | v1.1 | 0/2 | Not started | - |
+| 8. Finnish Transport Agency | v1.1 | 2/2 | Complete | 2026-01-19 |
+| 9. Raw View | v1.1 | 2/2 | Complete | 2026-01-27 |
