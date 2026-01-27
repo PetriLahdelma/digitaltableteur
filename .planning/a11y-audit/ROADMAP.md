@@ -92,7 +92,16 @@ Plans:
   7. Toast live region persists
   8. All icon-only buttons have names
   9. Links distinguishable from buttons
-**Plans**: TBD
+**Plans**: 7 plans
+
+Plans:
+- [ ] 06-01-PLAN.md — Fix Modal aria-live (remove to prevent double announcement)
+- [ ] 06-02-PLAN.md — Fix Forms aria-invalid, aria-describedby, role="alert"
+- [ ] 06-03-PLAN.md — Fix ChatMessages role="log" and aria-live
+- [ ] 06-04-PLAN.md — Fix Tabs aria-controls and tabpanel helpers
+- [ ] 06-05-PLAN.md — Fix Accordion hidden attribute (always-in-DOM panels)
+- [ ] 06-06-PLAN.md — Fix Button icon-only validation and aria-busy
+- [ ] 06-07-PLAN.md — Verify all COMP fixes and update requirements
 
 ### Phase 7: Page-Level Verification
 **Goal**: Verify each public page passes complete audit
@@ -130,7 +139,7 @@ Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 | 3 | Operable Fixes | 7 | TBD | Not started |
 | 4 | Understandable Fixes | 6 | TBD | Not started |
 | 5 | Robust Fixes | 5 | 1/1 | ✓ Complete |
-| 6 | Component Remediation | 9 | TBD | Not started |
+| 6 | Component Remediation | 9 | 7 | Ready |
 | 7 | Page-Level Verification | 5 | TBD | Not started |
 | 8 | Final Verification | 5 | TBD | Not started |
 
@@ -140,3 +149,4 @@ Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 *Phase 1 complete: 2026-01-27*
 *Phase 5 planned: 2026-01-27*
 *Phase 5 complete: 2026-01-27*
+*Phase 6 planned: 2026-01-27*
