@@ -132,3 +132,148 @@ Test with keyboard only - no mouse allowed during these tests.
 
 - [ ] All links in content focusable
 - [ ] Table of contents (if any) navigable
+
+---
+
+## 2. Screen Reader Testing
+
+Primary: VoiceOver (macOS + Safari)
+Secondary: NVDA (Windows + Firefox) if available
+
+### 2.1 VoiceOver Quick Reference (macOS)
+
+**Enable:** Cmd+F5 or System Settings > Accessibility > VoiceOver
+
+| Action | Keys |
+|--------|------|
+| Start/Stop VoiceOver | Cmd+F5 |
+| Read next item | VO+Right Arrow (VO = Ctrl+Option) |
+| Read previous item | VO+Left Arrow |
+| Read all from here | VO+A |
+| Open rotor (navigation menu) | VO+U |
+| Interact with group | VO+Shift+Down Arrow |
+| Stop interacting | VO+Shift+Up Arrow |
+| Click/Activate | VO+Space |
+| Stop speaking | Ctrl |
+
+**Best browser:** Safari (best VoiceOver compatibility)
+
+### 2.2 NVDA Quick Reference (Windows)
+
+**Download:** https://www.nvaccess.org/download/ (Free)
+
+| Action | Keys |
+|--------|------|
+| Start reading | Insert+Down Arrow or Caps Lock+Down Arrow |
+| Stop reading | Ctrl |
+| Next heading | H |
+| Previous heading | Shift+H |
+| Next landmark | D |
+| Previous landmark | Shift+D |
+| Next link | K |
+| Next form element | F |
+| Elements list | Insert+F7 |
+| Speech Viewer | Tools > Speech Viewer (visual output) |
+
+**Best browser:** Firefox (best NVDA compatibility)
+
+### 2.3 Page Structure Tests
+
+| Test | How to Verify | Pass Criteria |
+|------|---------------|---------------|
+| Page title announced | Navigate to page | VoiceOver announces descriptive page title |
+| Landmarks present | Open rotor (VO+U), select Landmarks | Main, Navigation, Banner, Contentinfo landmarks exist |
+| Heading structure | Open rotor, select Headings | Logical hierarchy (h1 -> h2 -> h3), no skipped levels |
+| Single h1 per page | Check headings in rotor | Only one h1 on each page |
+| Skip link announced | Start VoiceOver on page load | First item is "Skip to main content" link |
+
+### 2.4 Content Tests
+
+| Test | How to Verify | Pass Criteria |
+|------|---------------|---------------|
+| Images have alt text | Navigate to images | VoiceOver announces image description, not filename |
+| Decorative images hidden | Navigate past decorative images | Decorative images not announced |
+| Links describe destination | Navigate to links | Link text describes where it goes (not "click here") |
+| Lists announced | Navigate to list content | "List, X items" announced before list content |
+| Tables have headers | Navigate to any tables | Table structure and headers announced |
+| Language attribute | Check page language | Correct pronunciation (EN/FI/SV content) |
+
+### 2.5 Interactive Element Tests
+
+| Test | How to Verify | Pass Criteria |
+|------|---------------|---------------|
+| Form labels | Navigate to form fields | Field purpose announced (e.g., "Email, text field") |
+| Required fields | Navigate to required inputs | "Required" announced for required fields |
+| Error messages | Submit invalid form | Errors announced, linked to specific fields |
+| Button purpose | Navigate to buttons | Button name and role announced |
+| Modal announcements | Open modal | Dialog role and title announced |
+| Live region updates | Trigger toast/notification | Status message announced without focus change |
+| Expanded/collapsed state | Navigate to accordions | "Expanded" or "collapsed" state announced |
+
+### 2.6 Dynamic Content Tests
+
+| Test | How to Verify | Pass Criteria |
+|------|---------------|---------------|
+| Loading states | Trigger async operation | "Loading" or similar announced |
+| Status messages | Trigger success action | "Success" message announced via live region |
+| Error messages | Trigger error | Error announced immediately |
+| Chat messages | Send/receive chat message | New messages announced |
+| Form submission | Submit form | Success/error feedback announced |
+
+### 2.7 Per-Page Screen Reader Checklist
+
+#### Home Page (/)
+
+- [ ] Page title: "Digitaltableteur - [Description]" or similar
+- [ ] Landmarks: main, nav, banner present
+- [ ] Headings: h1 exists, logical structure
+- [ ] Hero content readable and understandable
+- [ ] Chat widget: aria-label identifies purpose
+- [ ] Chat widget toggle: expanded/collapsed state announced
+- [ ] Images have descriptive alt text
+- [ ] All CTAs have descriptive button names
+
+#### About Page (/about)
+
+- [ ] Page title reflects content
+- [ ] Landmarks present
+- [ ] Heading hierarchy logical
+- [ ] Profile images have alt text
+- [ ] Timeline/history sections navigable
+
+#### Work Page (/work)
+
+- [ ] Project cards have descriptive links
+- [ ] Images have meaningful alt text
+- [ ] Filter state (if any) announced
+- [ ] Card interactions announced
+
+#### Blog Index (/blog)
+
+- [ ] Post titles are announced as links
+- [ ] Publication dates announced
+- [ ] Category/tag information accessible
+- [ ] Pagination state announced
+
+#### Blog Article (/blog/[slug])
+
+- [ ] Article title is h1
+- [ ] Author and date accessible
+- [ ] Code blocks announced appropriately
+- [ ] Related posts section navigable
+
+#### Contact Page (/contact)
+
+- [ ] Form fields all labeled
+- [ ] Required fields indicated
+- [ ] Submit button has clear name
+- [ ] Success/error messages announced
+- [ ] Helper text (if any) associated with fields
+
+#### Chat Widget (Global)
+
+- [ ] Toggle button has accessible name
+- [ ] Dialog role announced when opened
+- [ ] Messages container is a live region
+- [ ] Input field has label
+- [ ] Close action accessible
