@@ -36,7 +36,14 @@ Plans:
   3. All 4 themes pass contrast verification
   4. Content reflows correctly at 320px
   5. Text resizes to 200% without breaking
-**Plans**: TBD
+**Plans**: 5 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Audit image alt text (PERC-01)
+- [ ] 02-02-PLAN.md — Audit color contrast across all themes (PERC-02, PERC-06)
+- [ ] 02-03-PLAN.md — Audit color independence (PERC-03)
+- [ ] 02-04-PLAN.md — Audit reflow and zoom (PERC-04, PERC-05)
+- [ ] 02-05-PLAN.md — Consolidate findings and update requirements
 
 ### Phase 3: Operable Fixes
 **Goal**: Fix all WCAG Principle 2 (Operable) violations
@@ -135,7 +142,7 @@ Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 | Phase | Name | Requirements | Plans | Status |
 |-------|------|--------------|-------|--------|
 | 1 | Audit Infrastructure | 4 | 4/4 | ✓ Complete |
-| 2 | Perceivable Fixes | 6 | TBD | Not started |
+| 2 | Perceivable Fixes | 6 | 5 | Planned |
 | 3 | Operable Fixes | 7 | TBD | Not started |
 | 4 | Understandable Fixes | 6 | TBD | Not started |
 | 5 | Robust Fixes | 5 | 1/1 | ✓ Complete |
@@ -151,3 +158,4 @@ Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 *Phase 5 complete: 2026-01-27*
 *Phase 6 planned: 2026-01-27*
 *Phase 6 complete: 2026-01-28*
+*Phase 2 planned: 2026-01-28*
