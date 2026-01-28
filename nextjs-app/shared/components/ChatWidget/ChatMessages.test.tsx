@@ -142,6 +142,76 @@ describe("ChatMessages", () => {
   });
 
   describe("Accessibility", () => {
+    it("should have role=log on messages container", () => {
+      render(
+        withI18n(
+          <ChatMessages
+            messages={mockMessages}
+            isStreaming={false}
+            emailWorkflow={{ step: "idle" }}
+          />,
+        ),
+      );
+      const container = screen.getByRole("log");
+      expect(container).toBeInTheDocument();
+    });
+
+    it("should have aria-live=polite for non-intrusive announcements", () => {
+      render(
+        withI18n(
+          <ChatMessages
+            messages={mockMessages}
+            isStreaming={false}
+            emailWorkflow={{ step: "idle" }}
+          />,
+        ),
+      );
+      const container = screen.getByRole("log");
+      expect(container).toHaveAttribute("aria-live", "polite");
+    });
+
+    it("should have aria-relevant=additions to announce only new messages", () => {
+      render(
+        withI18n(
+          <ChatMessages
+            messages={mockMessages}
+            isStreaming={false}
+            emailWorkflow={{ step: "idle" }}
+          />,
+        ),
+      );
+      const container = screen.getByRole("log");
+      expect(container).toHaveAttribute("aria-relevant", "additions");
+    });
+
+    it("should have accessible name via aria-label", () => {
+      render(
+        withI18n(
+          <ChatMessages
+            messages={mockMessages}
+            isStreaming={false}
+            emailWorkflow={{ step: "idle" }}
+          />,
+        ),
+      );
+      const container = screen.getByRole("log");
+      expect(container).toHaveAccessibleName();
+    });
+
+    it("should have role=log on empty state container", () => {
+      render(
+        withI18n(
+          <ChatMessages
+            messages={[]}
+            isStreaming={false}
+            emailWorkflow={{ step: "idle" }}
+          />,
+        ),
+      );
+      const container = screen.getByRole("log");
+      expect(container).toBeInTheDocument();
+    });
+
     it("has no accessibility violations with default props", async () => {
       const { container } = render(
         withI18n(
