@@ -77,6 +77,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **05-01 Summary** | .planning/a11y-audit/phases/05-robust-fixes/05-01-SUMMARY.md | **Done** |
 | **Phase 6 Plans** | .planning/a11y-audit/phases/06-component-remediation/ | **In Progress** |
 | **06-03 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-03-SUMMARY.md | **Done** |
+| **06-04 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-04-SUMMARY.md | **Done** |
 | **06-05 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-05-SUMMARY.md | **Done** |
 
 ## Accumulated Decisions
@@ -100,6 +101,8 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **aria-live=polite for chat announcements** | 06-03 | Non-intrusive screen reader notifications |
 | **aria-relevant=additions for new messages** | 06-03 | Only announce new messages, not removals |
 | **hidden attribute for accordion panels** | 06-05 | Keeps panels in DOM for valid aria-controls references |
+| **Tab ARIA pattern (id, aria-controls)** | 06-04 | Complete tab-to-panel association for screen readers |
+| **getTabPanelProps helper function** | 06-04 | Enables consumers to create compliant tabpanels |
 
 ## Audit Results Summary
 
@@ -132,6 +135,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 **Phase 6 In Progress:**
 - **Plan 06-03 complete:** ChatMessages now has role="log" + aria-live="polite"
+- **Plan 06-04 complete:** Tabs have id + aria-controls, getTabPanelProps helper exported
 - **Plan 06-05 complete:** Accordion panels use hidden attribute for valid aria-controls
 - Screen readers can now announce new chat messages
 - Pattern established for other live regions
@@ -149,9 +153,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 ## Session Continuity
 
-- **Last session:** 2026-01-28T10:46:54Z
-- **Stopped at:** Completed Plan 06-05 (Accordion hidden attribute)
+- **Last session:** 2026-01-28T10:50:00Z
+- **Stopped at:** Completed Plan 06-04 (Tabs accessibility)
 - **Resume file:** None - ready for 06-06
 
 ---
-*Last updated: 2026-01-28 after Plan 06-05 completion (4/7 Phase 6 plans)*
+*Last updated: 2026-01-28 after Plan 06-04 completion (5/7 Phase 6 plans)*
