@@ -73,15 +73,45 @@ Requirements for complete WCAG 2.1 AA audit and remediation.
 
 ### Component Fixes
 
-- [ ] **COMP-01**: Modal - fix focus management and aria-live usage
-- [ ] **COMP-02**: Navigation - add skip links and aria-label to nav element
-- [ ] **COMP-03**: Forms - add aria-invalid, aria-describedby for error states
-- [ ] **COMP-04**: ChatWidget - add aria-expanded to toggle, role="log" to messages
-- [ ] **COMP-05**: Tabs - add tabpanel role, aria-controls, aria-labelledby
-- [ ] **COMP-06**: Accordion - use hidden attribute instead of conditional render
-- [ ] **COMP-07**: Toast - persist live region container in DOM
-- [ ] **COMP-08**: Buttons - ensure icon-only buttons have accessible names
-- [ ] **COMP-09**: Links - distinguish from buttons, ensure visible focus
+- [x] **COMP-01**: Modal - fix focus management and aria-live usage
+  - Status: Complete (2026-01-28)
+  - Fix: Removed aria-live from dialog element (role=dialog/alertdialog already implies announcement)
+  - See: 06-01-SUMMARY.md
+- [x] **COMP-02**: Navigation - add skip links and aria-label to nav element
+  - Status: Complete (pre-existing)
+  - Note: SkipLink component exists with sr-only + focus:not-sr-only pattern
+  - Note: NextLayout renders SkipLink before SiteHeader
+  - Note: SiteHeader nav has aria-label via translation key
+- [x] **COMP-03**: Forms - add aria-invalid, aria-describedby for error states
+  - Status: Complete (2026-01-28)
+  - Fix: Added aria-invalid, aria-describedby to Input, role="alert" to HelperText error state
+  - See: 06-02-SUMMARY.md
+- [x] **COMP-04**: ChatWidget - add aria-expanded to toggle, role="log" to messages
+  - Status: Complete (2026-01-28)
+  - Note: aria-expanded was pre-existing on ChatToggle
+  - Fix: Added role="log", aria-live="polite", aria-relevant="additions" to ChatMessages
+  - See: 06-03-SUMMARY.md
+- [x] **COMP-05**: Tabs - add tabpanel role, aria-controls, aria-labelledby
+  - Status: Complete (2026-01-28)
+  - Fix: Added id and aria-controls to tab buttons, exported getTabPanelProps helper
+  - See: 06-04-SUMMARY.md
+- [x] **COMP-06**: Accordion - use hidden attribute instead of conditional render
+  - Status: Complete (2026-01-28)
+  - Fix: Panels always in DOM with hidden attribute for valid aria-controls references
+  - See: 06-05-SUMMARY.md
+- [x] **COMP-07**: Toast - persist live region container in DOM
+  - Status: Complete (Phase 5, 2026-01-27)
+  - Fix: Added role="status" to Toaster container (always in DOM)
+  - See: 05-01-SUMMARY.md
+- [x] **COMP-08**: Buttons - ensure icon-only buttons have accessible names
+  - Status: Complete (2026-01-28)
+  - Fix: Added dev warning, tooltip-as-label fallback, aria-busy for loading state
+  - See: 06-06-SUMMARY.md
+- [x] **COMP-09**: Links - distinguish from buttons, ensure visible focus
+  - Status: Complete (pre-existing)
+  - Note: Link component uses semantic `<a>` element
+  - Note: Button renders as `<a>` when href provided (polymorphic)
+  - Note: Link has wavyUnderline class for visible focus/hover styling
 
 ### Page-Level Fixes
 
@@ -151,15 +181,15 @@ Deferred to future work.
 | RBST-03 | Phase 5 | **Complete** |
 | RBST-04 | Phase 8 | Pending (manual) |
 | RBST-05 | Phase 8 | Pending (manual) |
-| COMP-01 | Phase 6 | Pending |
-| COMP-02 | Phase 6 | Pending |
-| COMP-03 | Phase 6 | Pending |
-| COMP-04 | Phase 6 | Pending |
-| COMP-05 | Phase 6 | Pending |
-| COMP-06 | Phase 6 | Pending |
-| COMP-07 | Phase 6 | Pending |
-| COMP-08 | Phase 6 | Pending |
-| COMP-09 | Phase 6 | Pending |
+| COMP-01 | Phase 6 | **Complete** |
+| COMP-02 | Phase 6 | **Complete** (pre-existing) |
+| COMP-03 | Phase 6 | **Complete** |
+| COMP-04 | Phase 6 | **Complete** |
+| COMP-05 | Phase 6 | **Complete** |
+| COMP-06 | Phase 6 | **Complete** |
+| COMP-07 | Phase 5 | **Complete** |
+| COMP-08 | Phase 6 | **Complete** |
+| COMP-09 | Phase 6 | **Complete** (pre-existing) |
 | PAGE-01 | Phase 7 | Pending |
 | PAGE-02 | Phase 7 | Pending |
 | PAGE-03 | Phase 7 | Pending |
@@ -178,4 +208,4 @@ Deferred to future work.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-27 after Phase 5 Plan 1 completion (RBST-01, RBST-02, RBST-03 complete)*
+*Last updated: 2026-01-28 after Phase 6 completion (all COMP-01 through COMP-09 complete)*
