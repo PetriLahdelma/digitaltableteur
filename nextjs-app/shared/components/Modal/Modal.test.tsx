@@ -24,4 +24,24 @@ describe("Modal", () => {
     );
     expect(queryByText("Modal Content")).not.toBeInTheDocument();
   });
+
+  it("should not have aria-live on dialog element (prevents double announcement)", () => {
+    render(
+      <Modal isOpen title="Test">
+        <p>Content</p>
+      </Modal>,
+    );
+    const dialog = within(document.body).getByRole("dialog");
+    expect(dialog).not.toHaveAttribute("aria-live");
+  });
+
+  it("should not have aria-live on alertdialog element", () => {
+    render(
+      <Modal isOpen title="Test" severity="error">
+        <p>Content</p>
+      </Modal>,
+    );
+    const dialog = within(document.body).getByRole("alertdialog");
+    expect(dialog).not.toHaveAttribute("aria-live");
+  });
 });
