@@ -5,47 +5,42 @@
 See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Every user can access and use the site regardless of ability
-**Current focus:** Phase 6 - Component Remediation (COMPLETE)
+**Current focus:** Phase 2 - Perceivable Fixes (In Progress)
 
 ## Current Position
 
-- **Phase:** 6 of 8 (Component Remediation)
-- **Plan:** 7 of 7 completed in Phase 6
-- **Status:** Phase Complete
-- **Last activity:** 2026-01-28 - Completed 06-07-PLAN.md (Phase 6 verification)
+- **Phase:** 2 of 8 (Perceivable Fixes)
+- **Plan:** 3 of ? in Phase 2
+- **Status:** In Progress
+- **Last activity:** 2026-01-28 - Completed 02-03-PLAN.md (Color Independence Audit)
 
-**Progress:** [========] 13/13 plans complete | 4/8 phases complete (Phase 1, 5, 6 complete)
+**Progress:** [========] 14/? plans complete | 4/8 phases complete (Phase 1, 5, 6 complete)
 
 ## Current Phase
 
-**Phase 6: Component Remediation**
-- Status: COMPLETE
-- Plans: 7/7 complete
-- Goal: Fix component-level accessibility issues identified in research
+**Phase 2: Perceivable Fixes**
+- Status: IN PROGRESS
+- Plans: 02-03 complete
+- Goal: Ensure all content is perceivable (color independence, text alternatives, etc.)
 
 ### Plans
 
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
-| 06-01 | Modal aria-live fix | 1 | - | **Complete** |
-| 06-02 | Form/Input error states | 1 | - | **Complete** |
-| 06-03 | ChatMessages ARIA log | 1 | - | **Complete** |
-| 06-04 | Tabs aria-controls | 1 | - | **Complete** |
-| 06-05 | Accordion hidden attribute | 1 | - | **Complete** |
-| 06-06 | Button icon accessibility | 1 | - | **Complete** |
-| 06-07 | Phase 6 verification | 2 | 06-01 to 06-06 | **Complete** |
+| 02-03 | Color independence audit (PERC-03) | 1 | - | **Complete** |
 
 ### Previous Phases
 
 **Phase 1: Audit Infrastructure** - COMPLETE (4/4 plans)
 **Phase 5: Robust Fixes** - COMPLETE (1/1 plans)
+**Phase 6: Component Remediation** - COMPLETE (7/7 plans)
 
 ## Progress Summary
 
 | Phase | Status | Plans |
 |-------|--------|-------|
 | 1. Audit Infrastructure | **Complete** | 4/4 |
-| 2. Perceivable Fixes | Ready | - |
+| 2. Perceivable Fixes | **In Progress** | 1/? |
 | 3. Operable Fixes | Ready | - |
 | 4. Understandable Fixes | Ready | - |
 | 5. Robust Fixes | **Complete** | 1/1 |
@@ -83,6 +78,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **06-05 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-05-SUMMARY.md | **Done** |
 | **06-06 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-06-SUMMARY.md | **Done** |
 | **06-07 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-07-SUMMARY.md | **Done** |
+| **Phase 2 Plans** | .planning/a11y-audit/phases/02-perceivable-fixes/ | **In Progress** |
+| **COLOR-INDEPENDENCE-AUDIT.md** | .planning/a11y-audit/phases/02-perceivable-fixes/COLOR-INDEPENDENCE-AUDIT.md | **Done** |
+| **02-03 Summary** | .planning/a11y-audit/phases/02-perceivable-fixes/02-03-SUMMARY.md | **Done** |
 
 ## Accumulated Decisions
 
@@ -116,6 +114,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **Tooltip as aria-label fallback** | 06-06 | Use tooltip for accessible name when accessibleName not provided |
 | **aria-busy for loading state** | 06-06 | Communicates loading state to screen readers |
 | **Pre-existing fixes verified** | 06-07 | COMP-02, COMP-07, COMP-09 were already compliant |
+| **Icon + text pattern for color independence** | 02-03 | HelperText, Badge, AlertBanner, Toaster all use icons with color |
+| **Wavy underline for link differentiation** | 02-03 | Links distinguishable without color via underline pattern |
+| **PERC-03 mostly compliant** | 02-03 | Minor gaps in Toast/Tag (P2), TextInput/TextArea rely on FormField |
 
 ## Audit Results Summary
 
@@ -145,6 +146,12 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | COMP-08 (Buttons) | Complete | 06-06 |
 | COMP-09 (Links) | Complete | Pre-existing |
 
+## Perceivable Requirements Status
+
+| Requirement | Status | Source |
+|-------------|--------|--------|
+| PERC-03 (Color Independence) | **Mostly Compliant** | 02-03 |
+
 ## Context for Next Session
 
 **Phase 1 Complete:**
@@ -170,7 +177,14 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - **Plan 06-07 complete:** All 9 COMP requirements verified and documented
 - All component-level accessibility fixes complete
 
+**Phase 2 In Progress:**
+- **Plan 02-03 complete:** Color independence audit for PERC-03
+- Documented 11 passing components (HelperText, Badge, AlertBanner, etc.)
+- Identified 5 minor issues (P2) in Toast, Tag, TextInput, TextArea
+- Grayscale test protocol created for manual verification
+
 **Next Steps:**
+- Continue Phase 2 perceivable fixes plans
 - Phase 7: Page-Level Verification (when plans created)
 - Phase 8: Final Verification (manual screen reader testing)
 
@@ -179,12 +193,13 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - Navigation: Mobile menu keyboard access
 - Skip Links: Presence and functionality
 - RBST-04/RBST-05: Screen reader status message announcements
+- Grayscale test using COLOR-INDEPENDENCE-AUDIT.md checklist
 
 ## Session Continuity
 
-- **Last session:** 2026-01-28T10:58:00Z
-- **Stopped at:** Completed Plan 06-07 (Phase 6 verification)
-- **Resume file:** None - Phase 6 complete, ready for Phase 7
+- **Last session:** 2026-01-28T15:37:00Z
+- **Stopped at:** Completed Plan 02-03 (Color Independence Audit)
+- **Resume file:** None - continue with remaining Phase 2 plans
 
 ---
-*Last updated: 2026-01-28 after Plan 06-07 completion (Phase 6 complete)*
+*Last updated: 2026-01-28 after Plan 02-03 completion*
