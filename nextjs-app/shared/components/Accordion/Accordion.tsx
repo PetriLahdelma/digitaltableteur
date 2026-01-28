@@ -46,16 +46,15 @@ const Accordion: React.FC<AccordionProps> = ({ items, defaultOpenId }) => {
                 <Icon name="caret-right" />
               </span>
             </button>
-            {open && (
-              <div
-                id={`panel-${item.id}`}
-                className={styles.content}
-                role="region"
-                aria-labelledby={`trigger-${item.id}`}
-              >
-                {item.content}
-              </div>
-            )}
+            <div
+              id={`panel-${item.id}`}
+              className={styles.content}
+              role="region"
+              aria-labelledby={`trigger-${item.id}`}
+              hidden={!open}
+            >
+              {item.content}
+            </div>
           </div>
         );
       })}
