@@ -5,13 +5,13 @@
 See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Every user can access and use the site regardless of ability
-**Current focus:** Phase 3 - Operable Fixes (Ready)
+**Current focus:** Phase 2 gaps found — contrast fixes needed for Dark/HCB themes
 
 ## Current Position
 
-- **Phase:** 2 of 8 (Perceivable Fixes) - COMPLETE
-- **Plan:** 5 of 5 in Phase 2
-- **Status:** Phase Complete
+- **Phase:** 2 of 8 (Perceivable Fixes) - GAPS FOUND
+- **Plan:** 5 of 5 audits complete, verification found gaps
+- **Status:** Awaiting gap closure planning (contrast fixes)
 - **Last activity:** 2026-01-28 - Completed 02-05-PLAN.md (Phase 2 Consolidation)
 
 **Progress:** [==========] 18/18 plans complete | 5/8 phases complete (Phase 1, 2, 5, 6 complete)
@@ -45,7 +45,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | Phase | Status | Plans |
 |-------|--------|-------|
 | 1. Audit Infrastructure | **Complete** | 4/4 |
-| 2. Perceivable Fixes | **Complete** | 5/5 |
+| 2. Perceivable Fixes | **Gaps Found** | 5/5 audits, gaps in contrast |
 | 3. Operable Fixes | Ready | - |
 | 4. Understandable Fixes | Ready | - |
 | 5. Robust Fixes | **Complete** | 1/1 |
