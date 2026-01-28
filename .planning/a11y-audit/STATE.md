@@ -12,9 +12,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - **Phase:** 6 of 8 (Component Remediation)
 - **Plan:** 6 of 7 completed in Phase 6
 - **Status:** In Progress
-- **Last activity:** 2026-01-28 - Completed 06-02-PLAN.md (Form/Input error states)
+- **Last activity:** 2026-01-28 - Completed 06-06-PLAN.md (Button accessibility)
 
-**Progress:** [=======-] 11/12 plans complete | 3/8 phases complete (Phase 1, 5, 6 partial)
+**Progress:** [=======-] 12/13 plans complete | 3/8 phases complete (Phase 1, 5, 6 partial)
 
 ## Current Phase
 
@@ -32,7 +32,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | 06-03 | ChatMessages ARIA log | 1 | - | **Complete** |
 | 06-04 | Tabs aria-controls | 1 | - | **Complete** |
 | 06-05 | Accordion hidden attribute | 1 | - | **Complete** |
-| 06-06 | Button icon accessibility | 1 | - | Ready |
+| 06-06 | Button icon accessibility | 1 | - | **Complete** |
 | 06-07 | Phase 6 verification | 1 | 06-01 to 06-06 | Ready |
 
 ### Previous Phases
@@ -81,6 +81,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **06-05 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-05-SUMMARY.md | **Done** |
 | **06-01 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-01-SUMMARY.md | **Done** |
 | **06-02 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-02-SUMMARY.md | **Done** |
+| **06-06 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-06-SUMMARY.md | **Done** |
 
 ## Accumulated Decisions
 
@@ -110,6 +111,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **aria-describedby for input-error linking** | 06-02 | Links input to error message via ID reference |
 | **role=alert for error messages** | 06-02 | Immediate announcement of error text |
 | **useId() for accessibility IDs** | 06-02 | Stable, unique IDs for ARIA associations |
+| **Console.warn for icon-only buttons** | 06-06 | Dev-time warning instead of error to avoid breaking existing code |
+| **Tooltip as aria-label fallback** | 06-06 | Use tooltip for accessible name when accessibleName not provided |
+| **aria-busy for loading state** | 06-06 | Communicates loading state to screen readers |
 
 ## Audit Results Summary
 
@@ -146,12 +150,13 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - **Plan 06-03 complete:** ChatMessages now has role="log" + aria-live="polite"
 - **Plan 06-04 complete:** Tabs have id + aria-controls, getTabPanelProps helper exported
 - **Plan 06-05 complete:** Accordion panels use hidden attribute for valid aria-controls
+- **Plan 06-06 complete:** Button has icon-only warning, tooltip fallback, aria-busy
 - Screen readers can now announce new chat messages
 - Form errors are programmatically linked and announced
 - Pattern established for other live regions
+- Icon-only buttons now have dev-time accessibility enforcement
 
 **Remaining in Phase 6:**
-- 06-06: Button icon accessibility
 - 06-07: Phase 6 verification
 
 **Manual testing still needed:**
@@ -162,9 +167,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 ## Session Continuity
 
-- **Last session:** 2026-01-28T10:50:02Z
-- **Stopped at:** Completed Plan 06-02 (Form/Input error states)
-- **Resume file:** None - ready for 06-06
+- **Last session:** 2026-01-28T11:15:00Z
+- **Stopped at:** Completed Plan 06-06 (Button accessibility)
+- **Resume file:** None - ready for 06-07
 
 ---
-*Last updated: 2026-01-28 after Plan 06-02 completion (6/7 Phase 6 plans)*
+*Last updated: 2026-01-28 after Plan 06-06 completion (6/7 Phase 6 plans)*
