@@ -1,0 +1,326 @@
+{
+  "auditDate": "2026-01-28T15:33:54.148Z",
+  "requirements": [
+    "PERC-02",
+    "PERC-06"
+  ],
+  "themes": [
+    {
+      "theme": "Light",
+      "pages": {
+        "home": {
+          "url": "/",
+          "violations": [],
+          "passes": 1
+        },
+        "about": {
+          "url": "/about",
+          "violations": [],
+          "passes": 1
+        },
+        "contact": {
+          "url": "/contact",
+          "violations": [],
+          "passes": 1
+        },
+        "blog": {
+          "url": "/blog",
+          "violations": [],
+          "passes": 1
+        },
+        "work": {
+          "url": "/work",
+          "violations": [],
+          "passes": 1
+        }
+      },
+      "totalViolations": 0
+    },
+    {
+      "theme": "Dark",
+      "pages": {
+        "home": {
+          "url": "/",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+              "nodes": [
+                {
+                  "html": "<span class=\"font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary\">Digitaltableteur</span>",
+                  "target": [
+                    ".lg\\:text-xl"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.86 (foreground color: #3b6495, background color: #181a1b, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1"
+                },
+                {
+                  "html": "<span class=\"ChatWidget_toggleLabel__5c18w\">Chat</span>",
+                  "target": [
+                    ".ChatWidget_toggleLabel__5c18w"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #6fa8ff, background color: #812eff, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "passes": 1
+        },
+        "about": {
+          "url": "/about",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+              "nodes": [
+                {
+                  "html": "<span class=\"font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary\">Digitaltableteur</span>",
+                  "target": [
+                    ".lg\\:text-xl"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.99 (foreground color: #3e6799, background color: #181a1b, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1"
+                },
+                {
+                  "html": "<span class=\"ChatWidget_toggleLabel__5c18w\">Chat</span>",
+                  "target": [
+                    ".ChatWidget_toggleLabel__5c18w"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #6fa8ff, background color: #812eff, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "passes": 1
+        },
+        "contact": {
+          "url": "/contact",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+              "nodes": [
+                {
+                  "html": "<span class=\"font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary\">Digitaltableteur</span>",
+                  "target": [
+                    ".text-lg"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.27 (foreground color: #143043, background color: #181a1b, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1"
+                },
+                {
+                  "html": "<span class=\"ChatWidget_toggleLabel__5c18w\">Chat</span>",
+                  "target": [
+                    ".ChatWidget_toggleLabel__5c18w"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #6fa8ff, background color: #812eff, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "passes": 1
+        },
+        "blog": {
+          "url": "/blog",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+              "nodes": [
+                {
+                  "html": "<span class=\"font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary\">Digitaltableteur</span>",
+                  "target": [
+                    ".lg\\:text-xl"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.95 (foreground color: #3d6698, background color: #181a1b, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1"
+                },
+                {
+                  "html": "<span class=\"ChatWidget_toggleLabel__5c18w\">Chat</span>",
+                  "target": [
+                    ".ChatWidget_toggleLabel__5c18w"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #6fa8ff, background color: #812eff, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "passes": 1
+        },
+        "work": {
+          "url": "/work",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+              "nodes": [
+                {
+                  "html": "<span class=\"font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary\">Digitaltableteur</span>",
+                  "target": [
+                    ".lg\\:text-xl"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.26 (foreground color: #142f43, background color: #181a1b, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1"
+                },
+                {
+                  "html": "<span class=\"ChatWidget_toggleLabel__5c18w\">Chat</span>",
+                  "target": [
+                    ".ChatWidget_toggleLabel__5c18w"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.31 (foreground color: #6fa8ff, background color: #812eff, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "passes": 1
+        }
+      },
+      "totalViolations": 5
+    },
+    {
+      "theme": "High Contrast Black",
+      "pages": {
+        "home": {
+          "url": "/",
+          "violations": [],
+          "passes": 1
+        },
+        "about": {
+          "url": "/about",
+          "violations": [],
+          "passes": 1
+        },
+        "contact": {
+          "url": "/contact",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+              "nodes": [
+                {
+                  "html": "<span class=\"font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary\">Digitaltableteur</span>",
+                  "target": [
+                    ".text-lg"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.82 (foreground color: #293c43, background color: #000000, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1"
+                }
+              ]
+            }
+          ],
+          "passes": 1
+        },
+        "blog": {
+          "url": "/blog",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+              "nodes": [
+                {
+                  "html": "<span class=\"font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary\">Digitaltableteur</span>",
+                  "target": [
+                    ".lg\\:text-xl"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.87 (foreground color: #2a3e44, background color: #000000, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1"
+                }
+              ]
+            }
+          ],
+          "passes": 1
+        },
+        "work": {
+          "url": "/work",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+              "help": "Elements must meet minimum color contrast ratio thresholds",
+              "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+              "nodes": [
+                {
+                  "html": "<span class=\"font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary\">Digitaltableteur</span>",
+                  "target": [
+                    ".lg\\:text-xl"
+                  ],
+                  "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.87 (foreground color: #2a3e44, background color: #000000, font size: 15.0pt (20px), font weight: bold). Expected contrast ratio of 3:1"
+                }
+              ]
+            }
+          ],
+          "passes": 1
+        }
+      },
+      "totalViolations": 3
+    },
+    {
+      "theme": "High Contrast White",
+      "pages": {
+        "home": {
+          "url": "/",
+          "violations": [],
+          "passes": 1
+        },
+        "about": {
+          "url": "/about",
+          "violations": [],
+          "passes": 1
+        },
+        "contact": {
+          "url": "/contact",
+          "violations": [],
+          "passes": 1
+        },
+        "blog": {
+          "url": "/blog",
+          "violations": [],
+          "passes": 1
+        },
+        "work": {
+          "url": "/work",
+          "violations": [],
+          "passes": 1
+        }
+      },
+      "totalViolations": 0
+    }
+  ],
+  "summary": {
+    "totalThemes": 4,
+    "totalPages": 5,
+    "violationsByTheme": [
+      {
+        "theme": "Light",
+        "violations": 0
+      },
+      {
+        "theme": "Dark",
+        "violations": 5
+      },
+      {
+        "theme": "High Contrast Black",
+        "violations": 3
+      },
+      {
+        "theme": "High Contrast White",
+        "violations": 0
+      }
+    ]
+  }
+}
