@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
 import HelperText from "@dt/HelperText";
@@ -54,6 +54,11 @@ const Input: React.FC<InputProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  // Generate stable unique IDs for accessibility
+  const inputId = useId();
+  const errorId = `${inputId}-error`;
+  const helperId = `${inputId}-helper`;
+
   // Deprecation warnings (development only)
   if (process.env.NODE_ENV !== "production") {
     if (onChange && !onValueChange) {
@@ -74,6 +79,16 @@ const Input: React.FC<InputProps> = ({
   );
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
+
+  // Compute error state for ARIA attributes
+  const hasError = !!(error || phoneError || emailError);
+  const errorMessage = error || phoneError || emailError;
+
+  // Compute aria-describedby - link to error or helper text
+  const describedBy = [
+    hasError && errorId,
+    helperText && !hasError && helperId,
+  ].filter(Boolean).join(' ') || undefined;
 
   useEffect(() => {
     setInputValue(value ?? "");
@@ -131,31 +146,33 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className={styles["input-container"]}>
       <Label
-        htmlFor={label}
-        required={!!error || !!phoneError || !!emailError}
-        tooltipText={error || phoneError || emailError}
+        htmlFor={inputId}
+        required={hasError}
+        tooltipText={errorMessage}
         disabled={effectiveDisabled}
       >
         {label}
       </Label>
       <input
-        id={label}
+        id={inputId}
         name={label.replace(/\s+/g, "-").toLowerCase()}
-        className={`${styles.input} ${styles[`input--${normalizedSize}`]} ${error || phoneError || emailError ? styles.error : ""}`}
+        className={`${styles.input} ${styles[`input--${normalizedSize}`]} ${hasError ? styles.error : ""}`}
         type={type}
         placeholder={placeholder}
         value={inputValue}
         onChange={handleChange}
         disabled={effectiveDisabled}
+        aria-invalid={hasError || undefined}
+        aria-describedby={describedBy}
         {...rest}
       />
-      {(error || phoneError || emailError) && (
-        <HelperText state="error">
-          {error || phoneError || emailError}
+      {hasError && (
+        <HelperText id={errorId} state="error">
+          {errorMessage}
         </HelperText>
       )}
-      {helperText && !error && !phoneError && !emailError && (
-        <HelperText>{helperText}</HelperText>
+      {helperText && !hasError && (
+        <HelperText id={helperId}>{helperText}</HelperText>
       )}
     </div>
   );
