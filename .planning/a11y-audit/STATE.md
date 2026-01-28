@@ -10,17 +10,17 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 ## Current Position
 
 - **Phase:** 2 of 8 (Perceivable Fixes)
-- **Plan:** 3 of 5 in Phase 2
+- **Plan:** 4 of 5 in Phase 2
 - **Status:** In Progress
-- **Last activity:** 2026-01-28 - Completed 02-01-PLAN.md (Image Alt Text Audit)
+- **Last activity:** 2026-01-28 - Completed 02-02-PLAN.md (Color Contrast Audit)
 
-**Progress:** [=========] 16/18 plans complete | 4/8 phases complete (Phase 1, 5, 6 complete)
+**Progress:** [=========] 17/18 plans complete | 4/8 phases complete (Phase 1, 5, 6 complete)
 
 ## Current Phase
 
 **Phase 2: Perceivable Fixes**
 - Status: IN PROGRESS
-- Plans: 02-01, 02-03, 02-04 complete
+- Plans: 02-01, 02-02, 02-03, 02-04 complete
 - Goal: Ensure all content is perceivable (color independence, text alternatives, etc.)
 
 ### Plans
@@ -28,7 +28,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
 | 02-01 | Alt text audit (PERC-01) | 1 | - | **Complete** |
-| 02-02 | Color contrast audit (PERC-02) | 1 | - | Ready |
+| 02-02 | Color contrast audit (PERC-02) | 1 | - | **Complete** |
 | 02-03 | Color independence audit (PERC-03) | 1 | - | **Complete** |
 | 02-04 | Reflow and zoom audit (PERC-04, PERC-05) | 1 | - | **Complete** |
 | 02-05 | Heading structure audit | 1 | - | Ready |
@@ -44,7 +44,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | Phase | Status | Plans |
 |-------|--------|-------|
 | 1. Audit Infrastructure | **Complete** | 4/4 |
-| 2. Perceivable Fixes | **In Progress** | 3/5 |
+| 2. Perceivable Fixes | **In Progress** | 4/5 |
 | 3. Operable Fixes | Ready | - |
 | 4. Understandable Fixes | Ready | - |
 | 5. Robust Fixes | **Complete** | 1/1 |
@@ -91,6 +91,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **REFLOW-ZOOM-AUDIT.md** | .planning/a11y-audit/phases/02-perceivable-fixes/REFLOW-ZOOM-AUDIT.md | **Done** |
 | **02-04 Summary** | .planning/a11y-audit/phases/02-perceivable-fixes/02-04-SUMMARY.md | **Done** |
 | **Reflow/Zoom Tests** | tests/a11y/perceivable/reflow-zoom.spec.ts | **Done** |
+| **CONTRAST-AUDIT.md** | .planning/a11y-audit/phases/02-perceivable-fixes/CONTRAST-AUDIT.md | **Done** |
+| **02-02 Summary** | .planning/a11y-audit/phases/02-perceivable-fixes/02-02-SUMMARY.md | **Done** |
+| **Contrast Tests** | tests/a11y/perceivable/color-contrast-audit.spec.ts | **Done** |
 
 ## Accumulated Decisions
 
@@ -133,6 +136,10 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **PERC-01 is COMPLETE** | 02-01 | Zero violations across all 11 pages |
 | **Icon component decorative default is correct** | 02-01 | Defaults to decorative when no ariaLabel |
 | **MdxImage alt="" default acceptable** | 02-01 | Decorative default, authors provide alt for informative |
+| **withTags() for axe-core rule filtering** | 02-02 | AxeBuilder API uses withTags() not options({ rules }) |
+| **4-theme contrast audit pattern** | 02-02 | Apply theme class via page.evaluate, then run axe |
+| **Dark theme contrast issues in logo/chat** | 02-02 | 5 violations: logo text + ChatWidget toggle label |
+| **HCB theme logo contrast issue** | 02-02 | 3 violations: logo text not respecting HC overrides |
 
 ## Audit Results Summary
 
@@ -167,6 +174,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | Requirement | Status | Source |
 |-------------|--------|--------|
 | PERC-01 (Image Alt Text) | **Complete** | 02-01 |
+| PERC-02 (Color Contrast) | **Partial** | 02-02 |
 | PERC-03 (Color Independence) | **Mostly Compliant** | 02-03 |
 | PERC-04 (Text Resize 200%) | **Pass** | 02-04 |
 | PERC-05 (Reflow 320px) | **Pass** | 02-04 |
@@ -202,6 +210,11 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - Zero violations across 11 pages for image accessibility
 - 28 Image components, 17 img elements, 92 Icon usages analyzed
 - Icon component correctly defaults to decorative
+- **Plan 02-02 complete:** Color contrast audit for PERC-02, PERC-06
+- Light and High Contrast White themes: 0 violations (PASS)
+- Dark theme: 5 violations (logo text + ChatWidget toggle label)
+- High Contrast Black: 3 violations (logo text)
+- Documented in CONTRAST-AUDIT.md with CSS fix recommendations
 - **Plan 02-03 complete:** Color independence audit for PERC-03
 - Documented 11 passing components (HelperText, Badge, AlertBanner, etc.)
 - Identified 5 minor issues (P2) in Toast, Tag, TextInput, TextArea
@@ -212,7 +225,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - All 8 pages pass WCAG 1.4.12 text spacing test
 
 **Next Steps:**
-- Continue Phase 2 perceivable fixes plans (02-02, 02-05)
+- Continue Phase 2 perceivable fixes plan (02-05)
 - Phase 7: Page-Level Verification (when plans created)
 - Phase 8: Final Verification (manual screen reader testing)
 
@@ -225,9 +238,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 ## Session Continuity
 
-- **Last session:** 2026-01-28T16:15:00Z
-- **Stopped at:** Completed Plan 02-01 (Image Alt Text Audit)
-- **Resume file:** None - continue with remaining Phase 2 plans (02-02, 02-05)
+- **Last session:** 2026-01-28T17:40:00Z
+- **Stopped at:** Completed Plan 02-02 (Color Contrast Audit)
+- **Resume file:** None - continue with remaining Phase 2 plan (02-05)
 
 ---
-*Last updated: 2026-01-28 after Plan 02-01 completion*
+*Last updated: 2026-01-28 after Plan 02-02 completion*
