@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { vi, beforeEach, describe, it, expect } from "vitest";
-import Tabs, { TabItem } from "@dt/Tabs";
+import Tabs, { TabItem, getTabPanelProps } from "@dt/Tabs";
 
 // Mock react-i18next
 const mockT = vi.fn((key: string, defaultValue: string = key) => {
@@ -56,7 +56,7 @@ describe("Tabs", () => {
   });
 
   it("activates specified default tab", () => {
-    render(<Tabs tabs={defaultTabs} defaultActiveTabKey="tab2" />);
+    render(<Tabs tabs={defaultTabs} defaultActiveTab="tab2" />);
 
     const tabs = screen.getAllByRole("tab");
     expect(tabs[0]).toHaveAttribute("aria-selected", "false");
@@ -86,7 +86,7 @@ describe("Tabs", () => {
   });
 
   it("respects controlled active tab", () => {
-    render(<Tabs tabs={defaultTabs} activeTabKey="tab3" />);
+    render(<Tabs tabs={defaultTabs} activeTab="tab3" />);
 
     const tabs = screen.getAllByRole("tab");
     expect(tabs[0]).toHaveAttribute("aria-selected", "false");
@@ -105,8 +105,9 @@ describe("Tabs", () => {
     render(<Tabs tabs={tabsWithDisabled} onTabChange={mockOnTabChange} />);
 
     const tabs = screen.getAllByRole("tab");
-    expect(tabs[1]).toHaveAttribute("aria-disabled", "true");
+    // Component uses disabled attribute, not aria-disabled (to avoid redundancy)
     expect(tabs[1]).toBeDisabled();
+    expect(tabs[1]).not.toHaveAttribute("aria-disabled");
 
     fireEvent.click(tabs[1]);
     expect(mockOnTabChange).not.toHaveBeenCalled();
@@ -196,5 +197,62 @@ describe("Tabs", () => {
     tabs[2].focus();
     fireEvent.keyDown(tabs[2], { key: "ArrowRight" });
     expect(document.activeElement).toBe(tabs[0]);
+  });
+
+  describe("accessibility", () => {
+    it("should have unique id on each tab", () => {
+      render(<Tabs tabs={defaultTabs} />);
+      const tabElements = screen.getAllByRole("tab");
+      const ids = tabElements.map((tab) => tab.id);
+      expect(new Set(ids).size).toBe(defaultTabs.length);
+      ids.forEach((id) => expect(id).toMatch(/^tab-/));
+    });
+
+    it("should have aria-controls pointing to tabpanel id", () => {
+      render(<Tabs tabs={defaultTabs} />);
+      const tabElements = screen.getAllByRole("tab");
+      tabElements.forEach((tab, index) => {
+        expect(tab).toHaveAttribute(
+          "aria-controls",
+          `tabpanel-${defaultTabs[index].key}`,
+        );
+      });
+    });
+
+    it("should not have redundant aria-disabled when disabled", () => {
+      const tabsWithDisabled = [
+        { key: "tab1", label: "Tab 1" },
+        { key: "tab2", label: "Tab 2", disabled: true },
+      ];
+      render(<Tabs tabs={tabsWithDisabled} />);
+      const disabledTab = screen.getByRole("tab", { name: "Tab 2" });
+      expect(disabledTab).toBeDisabled();
+      // aria-disabled should not be present when disabled attribute is used
+      expect(disabledTab).not.toHaveAttribute("aria-disabled");
+    });
+  });
+});
+
+describe("getTabPanelProps", () => {
+  it("should return correct props for active panel", () => {
+    const props = getTabPanelProps("profile", true);
+    expect(props).toEqual({
+      id: "tabpanel-profile",
+      role: "tabpanel",
+      "aria-labelledby": "tab-profile",
+      hidden: false,
+      tabIndex: 0,
+    });
+  });
+
+  it("should return correct props for inactive panel", () => {
+    const props = getTabPanelProps("settings", false);
+    expect(props).toEqual({
+      id: "tabpanel-settings",
+      role: "tabpanel",
+      "aria-labelledby": "tab-settings",
+      hidden: true,
+      tabIndex: -1,
+    });
   });
 });
