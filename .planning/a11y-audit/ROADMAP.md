@@ -6,7 +6,7 @@ Comprehensive WCAG 2.1 AA audit and remediation for the entire public-facing Dig
 
 ## Milestones
 
-- 🚧 **v1.0 Full Audit + Fixes** - Phases 1-8 (in progress)
+- **v1.0 Full Audit + Fixes** - Phases 1-8 (in progress)
 
 ## Phases
 
@@ -36,14 +36,15 @@ Plans:
   3. All 4 themes pass contrast verification
   4. Content reflows correctly at 320px
   5. Text resizes to 200% without breaking
-**Plans**: 5 plans
+**Plans**: 6 plans
 
 Plans:
-- [x] 02-01-PLAN.md — Audit image alt text (PERC-01) ✓ PASS
-- [x] 02-02-PLAN.md — Audit color contrast across all themes (PERC-02, PERC-06) ⚠ GAPS
-- [x] 02-03-PLAN.md — Audit color independence (PERC-03) ✓ MOSTLY COMPLIANT
-- [x] 02-04-PLAN.md — Audit reflow and zoom (PERC-04, PERC-05) ✓ PASS
-- [x] 02-05-PLAN.md — Consolidate findings and update requirements ✓
+- [x] 02-01-PLAN.md — Audit image alt text (PERC-01) PASS
+- [x] 02-02-PLAN.md — Audit color contrast across all themes (PERC-02, PERC-06) GAPS FOUND
+- [x] 02-03-PLAN.md — Audit color independence (PERC-03) MOSTLY COMPLIANT
+- [x] 02-04-PLAN.md — Audit reflow and zoom (PERC-04, PERC-05) PASS
+- [x] 02-05-PLAN.md — Consolidate findings and update requirements
+- [ ] 02-06-PLAN.md — Fix contrast gaps: Logo text + ChatWidget toggle (gap closure)
 
 ### Phase 3: Operable Fixes
 **Goal**: Fix all WCAG Principle 2 (Operable) violations
@@ -137,16 +138,16 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
+Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 
 | Phase | Name | Requirements | Plans | Status |
 |-------|------|--------------|-------|--------|
-| 1 | Audit Infrastructure | 4 | 4/4 | ✓ Complete |
-| 2 | Perceivable Fixes | 6 | 5/5 | ⚠ Gaps (contrast) |
+| 1 | Audit Infrastructure | 4 | 4/4 | Complete |
+| 2 | Perceivable Fixes | 6 | 6/6 | Gap closure pending |
 | 3 | Operable Fixes | 7 | TBD | Not started |
 | 4 | Understandable Fixes | 6 | TBD | Not started |
-| 5 | Robust Fixes | 5 | 1/1 | ✓ Complete |
-| 6 | Component Remediation | 9 | 7/7 | ✓ Complete |
+| 5 | Robust Fixes | 5 | 1/1 | Complete |
+| 6 | Component Remediation | 9 | 7/7 | Complete |
 | 7 | Page-Level Verification | 5 | TBD | Not started |
 | 8 | Final Verification | 5 | TBD | Not started |
 
@@ -160,3 +161,4 @@ Phase 1 → Phases 2-5 (can run in parallel) → Phase 6 → Phase 7 → Phase 8
 *Phase 6 complete: 2026-01-28*
 *Phase 2 planned: 2026-01-28*
 *Phase 2 audits complete: 2026-01-28 (gaps found: contrast issues in Dark/HCB themes)*
+*Phase 2 gap closure planned: 2026-01-28*
