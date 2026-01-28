@@ -10,24 +10,28 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 ## Current Position
 
 - **Phase:** 2 of 8 (Perceivable Fixes)
-- **Plan:** 3 of ? in Phase 2
+- **Plan:** 4 of 5 in Phase 2
 - **Status:** In Progress
-- **Last activity:** 2026-01-28 - Completed 02-03-PLAN.md (Color Independence Audit)
+- **Last activity:** 2026-01-28 - Completed 02-04-PLAN.md (Reflow and Zoom Audit)
 
-**Progress:** [========] 14/? plans complete | 4/8 phases complete (Phase 1, 5, 6 complete)
+**Progress:** [=========] 15/18 plans complete | 4/8 phases complete (Phase 1, 5, 6 complete)
 
 ## Current Phase
 
 **Phase 2: Perceivable Fixes**
 - Status: IN PROGRESS
-- Plans: 02-03 complete
+- Plans: 02-03, 02-04 complete
 - Goal: Ensure all content is perceivable (color independence, text alternatives, etc.)
 
 ### Plans
 
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
+| 02-01 | Alt text audit (PERC-01) | 1 | - | Ready |
+| 02-02 | Color contrast audit (PERC-02) | 1 | - | Ready |
 | 02-03 | Color independence audit (PERC-03) | 1 | - | **Complete** |
+| 02-04 | Reflow and zoom audit (PERC-04, PERC-05) | 1 | - | **Complete** |
+| 02-05 | Heading structure audit | 1 | - | Ready |
 
 ### Previous Phases
 
@@ -40,7 +44,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | Phase | Status | Plans |
 |-------|--------|-------|
 | 1. Audit Infrastructure | **Complete** | 4/4 |
-| 2. Perceivable Fixes | **In Progress** | 1/? |
+| 2. Perceivable Fixes | **In Progress** | 2/5 |
 | 3. Operable Fixes | Ready | - |
 | 4. Understandable Fixes | Ready | - |
 | 5. Robust Fixes | **Complete** | 1/1 |
@@ -81,6 +85,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **Phase 2 Plans** | .planning/a11y-audit/phases/02-perceivable-fixes/ | **In Progress** |
 | **COLOR-INDEPENDENCE-AUDIT.md** | .planning/a11y-audit/phases/02-perceivable-fixes/COLOR-INDEPENDENCE-AUDIT.md | **Done** |
 | **02-03 Summary** | .planning/a11y-audit/phases/02-perceivable-fixes/02-03-SUMMARY.md | **Done** |
+| **REFLOW-ZOOM-AUDIT.md** | .planning/a11y-audit/phases/02-perceivable-fixes/REFLOW-ZOOM-AUDIT.md | **Done** |
+| **02-04 Summary** | .planning/a11y-audit/phases/02-perceivable-fixes/02-04-SUMMARY.md | **Done** |
+| **Reflow/Zoom Tests** | tests/a11y/perceivable/reflow-zoom.spec.ts | **Done** |
 
 ## Accumulated Decisions
 
@@ -117,6 +124,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **Icon + text pattern for color independence** | 02-03 | HelperText, Badge, AlertBanner, Toaster all use icons with color |
 | **Wavy underline for link differentiation** | 02-03 | Links distinguishable without color via underline pattern |
 | **PERC-03 mostly compliant** | 02-03 | Minor gaps in Toast/Tag (P2), TextInput/TextArea rely on FormField |
+| **320px reflow viewport test** | 02-04 | Simulates iPhone SE equivalent for WCAG 1.4.10 |
+| **640px zoom simulation** | 02-04 | Simulates 200% zoom on 1280px screen for WCAG 1.4.4 |
+| **domcontentloaded for faster tests** | 02-04 | Avoids networkidle timeout issues with parallel tests |
 
 ## Audit Results Summary
 
@@ -151,6 +161,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | Requirement | Status | Source |
 |-------------|--------|--------|
 | PERC-03 (Color Independence) | **Mostly Compliant** | 02-03 |
+| PERC-04 (Text Resize 200%) | **Pass** | 02-04 |
+| PERC-05 (Reflow 320px) | **Pass** | 02-04 |
+| WCAG 1.4.12 (Text Spacing) | **Pass** | 02-04 |
 
 ## Context for Next Session
 
@@ -182,9 +195,13 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - Documented 11 passing components (HelperText, Badge, AlertBanner, etc.)
 - Identified 5 minor issues (P2) in Toast, Tag, TextInput, TextArea
 - Grayscale test protocol created for manual verification
+- **Plan 02-04 complete:** Reflow and zoom audit for PERC-04, PERC-05
+- All 8 pages pass 320px reflow test (no horizontal scroll)
+- All 8 pages pass 200% zoom simulation (640px viewport)
+- All 8 pages pass WCAG 1.4.12 text spacing test
 
 **Next Steps:**
-- Continue Phase 2 perceivable fixes plans
+- Continue Phase 2 perceivable fixes plans (02-01, 02-02, 02-05)
 - Phase 7: Page-Level Verification (when plans created)
 - Phase 8: Final Verification (manual screen reader testing)
 
@@ -197,9 +214,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 ## Session Continuity
 
-- **Last session:** 2026-01-28T15:37:00Z
-- **Stopped at:** Completed Plan 02-03 (Color Independence Audit)
-- **Resume file:** None - continue with remaining Phase 2 plans
+- **Last session:** 2026-01-28T15:31:00Z
+- **Stopped at:** Completed Plan 02-04 (Reflow and Zoom Audit)
+- **Resume file:** None - continue with remaining Phase 2 plans (02-01, 02-02, 02-05)
 
 ---
-*Last updated: 2026-01-28 after Plan 02-03 completion*
+*Last updated: 2026-01-28 after Plan 02-04 completion*
