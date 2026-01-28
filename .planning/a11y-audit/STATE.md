@@ -10,24 +10,24 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 ## Current Position
 
 - **Phase:** 2 of 8 (Perceivable Fixes)
-- **Plan:** 4 of 5 in Phase 2
+- **Plan:** 3 of 5 in Phase 2
 - **Status:** In Progress
-- **Last activity:** 2026-01-28 - Completed 02-04-PLAN.md (Reflow and Zoom Audit)
+- **Last activity:** 2026-01-28 - Completed 02-01-PLAN.md (Image Alt Text Audit)
 
-**Progress:** [=========] 15/18 plans complete | 4/8 phases complete (Phase 1, 5, 6 complete)
+**Progress:** [=========] 16/18 plans complete | 4/8 phases complete (Phase 1, 5, 6 complete)
 
 ## Current Phase
 
 **Phase 2: Perceivable Fixes**
 - Status: IN PROGRESS
-- Plans: 02-03, 02-04 complete
+- Plans: 02-01, 02-03, 02-04 complete
 - Goal: Ensure all content is perceivable (color independence, text alternatives, etc.)
 
 ### Plans
 
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
-| 02-01 | Alt text audit (PERC-01) | 1 | - | Ready |
+| 02-01 | Alt text audit (PERC-01) | 1 | - | **Complete** |
 | 02-02 | Color contrast audit (PERC-02) | 1 | - | Ready |
 | 02-03 | Color independence audit (PERC-03) | 1 | - | **Complete** |
 | 02-04 | Reflow and zoom audit (PERC-04, PERC-05) | 1 | - | **Complete** |
@@ -44,7 +44,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | Phase | Status | Plans |
 |-------|--------|-------|
 | 1. Audit Infrastructure | **Complete** | 4/4 |
-| 2. Perceivable Fixes | **In Progress** | 2/5 |
+| 2. Perceivable Fixes | **In Progress** | 3/5 |
 | 3. Operable Fixes | Ready | - |
 | 4. Understandable Fixes | Ready | - |
 | 5. Robust Fixes | **Complete** | 1/1 |
@@ -83,6 +83,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **06-06 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-06-SUMMARY.md | **Done** |
 | **06-07 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-07-SUMMARY.md | **Done** |
 | **Phase 2 Plans** | .planning/a11y-audit/phases/02-perceivable-fixes/ | **In Progress** |
+| **IMAGE-ALT-AUDIT.md** | .planning/a11y-audit/phases/02-perceivable-fixes/IMAGE-ALT-AUDIT.md | **Done** |
+| **02-01 Summary** | .planning/a11y-audit/phases/02-perceivable-fixes/02-01-SUMMARY.md | **Done** |
+| **Image Alt Test Suite** | tests/a11y/perceivable/image-alt-audit.spec.ts | **Done** |
 | **COLOR-INDEPENDENCE-AUDIT.md** | .planning/a11y-audit/phases/02-perceivable-fixes/COLOR-INDEPENDENCE-AUDIT.md | **Done** |
 | **02-03 Summary** | .planning/a11y-audit/phases/02-perceivable-fixes/02-03-SUMMARY.md | **Done** |
 | **REFLOW-ZOOM-AUDIT.md** | .planning/a11y-audit/phases/02-perceivable-fixes/REFLOW-ZOOM-AUDIT.md | **Done** |
@@ -127,6 +130,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **320px reflow viewport test** | 02-04 | Simulates iPhone SE equivalent for WCAG 1.4.10 |
 | **640px zoom simulation** | 02-04 | Simulates 200% zoom on 1280px screen for WCAG 1.4.4 |
 | **domcontentloaded for faster tests** | 02-04 | Avoids networkidle timeout issues with parallel tests |
+| **PERC-01 is COMPLETE** | 02-01 | Zero violations across all 11 pages |
+| **Icon component decorative default is correct** | 02-01 | Defaults to decorative when no ariaLabel |
+| **MdxImage alt="" default acceptable** | 02-01 | Decorative default, authors provide alt for informative |
 
 ## Audit Results Summary
 
@@ -160,6 +166,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 | Requirement | Status | Source |
 |-------------|--------|--------|
+| PERC-01 (Image Alt Text) | **Complete** | 02-01 |
 | PERC-03 (Color Independence) | **Mostly Compliant** | 02-03 |
 | PERC-04 (Text Resize 200%) | **Pass** | 02-04 |
 | PERC-05 (Reflow 320px) | **Pass** | 02-04 |
@@ -191,6 +198,10 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - All component-level accessibility fixes complete
 
 **Phase 2 In Progress:**
+- **Plan 02-01 complete:** Image alt text audit for PERC-01
+- Zero violations across 11 pages for image accessibility
+- 28 Image components, 17 img elements, 92 Icon usages analyzed
+- Icon component correctly defaults to decorative
 - **Plan 02-03 complete:** Color independence audit for PERC-03
 - Documented 11 passing components (HelperText, Badge, AlertBanner, etc.)
 - Identified 5 minor issues (P2) in Toast, Tag, TextInput, TextArea
@@ -201,7 +212,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - All 8 pages pass WCAG 1.4.12 text spacing test
 
 **Next Steps:**
-- Continue Phase 2 perceivable fixes plans (02-01, 02-02, 02-05)
+- Continue Phase 2 perceivable fixes plans (02-02, 02-05)
 - Phase 7: Page-Level Verification (when plans created)
 - Phase 8: Final Verification (manual screen reader testing)
 
@@ -214,9 +225,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 ## Session Continuity
 
-- **Last session:** 2026-01-28T15:31:00Z
-- **Stopped at:** Completed Plan 02-04 (Reflow and Zoom Audit)
-- **Resume file:** None - continue with remaining Phase 2 plans (02-01, 02-02, 02-05)
+- **Last session:** 2026-01-28T16:15:00Z
+- **Stopped at:** Completed Plan 02-01 (Image Alt Text Audit)
+- **Resume file:** None - continue with remaining Phase 2 plans (02-02, 02-05)
 
 ---
-*Last updated: 2026-01-28 after Plan 02-04 completion*
+*Last updated: 2026-01-28 after Plan 02-01 completion*
