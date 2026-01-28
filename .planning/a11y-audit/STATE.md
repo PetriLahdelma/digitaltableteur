@@ -10,11 +10,11 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 ## Current Position
 
 - **Phase:** 6 of 8 (Component Remediation)
-- **Plan:** 5 of 7 completed in Phase 6
+- **Plan:** 6 of 7 completed in Phase 6
 - **Status:** In Progress
-- **Last activity:** 2026-01-28 - Completed 06-01-PLAN.md (Modal aria-live fix)
+- **Last activity:** 2026-01-28 - Completed 06-02-PLAN.md (Form/Input error states)
 
-**Progress:** [======--] 10/12 plans complete | 3/8 phases complete (Phase 1, 5, 6 partial)
+**Progress:** [=======-] 11/12 plans complete | 3/8 phases complete (Phase 1, 5, 6 partial)
 
 ## Current Phase
 
@@ -28,7 +28,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
 | 06-01 | Modal aria-live fix | 1 | - | **Complete** |
-| 06-02 | Form/Input error states | 1 | - | Ready |
+| 06-02 | Form/Input error states | 1 | - | **Complete** |
 | 06-03 | ChatMessages ARIA log | 1 | - | **Complete** |
 | 06-04 | Tabs aria-controls | 1 | - | **Complete** |
 | 06-05 | Accordion hidden attribute | 1 | - | **Complete** |
@@ -49,7 +49,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | 3. Operable Fixes | Ready | - |
 | 4. Understandable Fixes | Ready | - |
 | 5. Robust Fixes | **Complete** | 1/1 |
-| 6. Component Remediation | **In Progress** | 5/7 |
+| 6. Component Remediation | **In Progress** | 6/7 |
 | 7. Page-Level Verification | Pending | - |
 | 8. Final Verification | Pending | - |
 
@@ -80,6 +80,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **06-04 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-04-SUMMARY.md | **Done** |
 | **06-05 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-05-SUMMARY.md | **Done** |
 | **06-01 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-01-SUMMARY.md | **Done** |
+| **06-02 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-02-SUMMARY.md | **Done** |
 
 ## Accumulated Decisions
 
@@ -105,6 +106,10 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **Tab ARIA pattern (id, aria-controls)** | 06-04 | Complete tab-to-panel association for screen readers |
 | **getTabPanelProps helper function** | 06-04 | Enables consumers to create compliant tabpanels |
 | **No aria-live on dialog elements** | 06-01 | role=dialog/alertdialog implies announcement; aria-live causes double announcements |
+| **aria-invalid for form error indication** | 06-02 | Programmatic error state for screen readers |
+| **aria-describedby for input-error linking** | 06-02 | Links input to error message via ID reference |
+| **role=alert for error messages** | 06-02 | Immediate announcement of error text |
+| **useId() for accessibility IDs** | 06-02 | Stable, unique IDs for ARIA associations |
 
 ## Audit Results Summary
 
@@ -137,29 +142,29 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 **Phase 6 In Progress:**
 - **Plan 06-01 complete:** Modal dialog elements no longer have aria-live (prevents double announcements)
+- **Plan 06-02 complete:** Form inputs have aria-invalid, aria-describedby, and HelperText has role=alert
 - **Plan 06-03 complete:** ChatMessages now has role="log" + aria-live="polite"
 - **Plan 06-04 complete:** Tabs have id + aria-controls, getTabPanelProps helper exported
 - **Plan 06-05 complete:** Accordion panels use hidden attribute for valid aria-controls
 - Screen readers can now announce new chat messages
+- Form errors are programmatically linked and announced
 - Pattern established for other live regions
 
 **Remaining in Phase 6:**
-- 06-02: Form/Input error states
 - 06-06: Button icon accessibility
 - 06-07: Phase 6 verification
 
 **Manual testing still needed:**
 - Modal: Focus trap, escape key, aria-modal
 - Navigation: Mobile menu keyboard access
-- Forms: Error announcements, aria-describedby
 - Skip Links: Presence and functionality
 - RBST-04/RBST-05: Screen reader status message announcements
 
 ## Session Continuity
 
-- **Last session:** 2026-01-28T10:48:27Z
-- **Stopped at:** Completed Plan 06-01 (Modal aria-live fix)
-- **Resume file:** None - ready for 06-02
+- **Last session:** 2026-01-28T10:50:02Z
+- **Stopped at:** Completed Plan 06-02 (Form/Input error states)
+- **Resume file:** None - ready for 06-06
 
 ---
-*Last updated: 2026-01-28 after Plan 06-01 completion (5/7 Phase 6 plans)*
+*Last updated: 2026-01-28 after Plan 06-02 completion (6/7 Phase 6 plans)*
