@@ -5,33 +5,40 @@
 See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Every user can access and use the site regardless of ability
-**Current focus:** Phase 5 - Robust Fixes (COMPLETE)
+**Current focus:** Phase 6 - Component Remediation (IN PROGRESS)
 
 ## Current Position
 
-- **Phase:** 5 of 8 (Robust Fixes)
-- **Plan:** 1 of 1 completed (Phase 5 complete)
-- **Status:** Phase 5 Complete
-- **Last activity:** 2026-01-27 - Completed 05-01-PLAN.md (Toaster ARIA fix)
+- **Phase:** 6 of 8 (Component Remediation)
+- **Plan:** 3 of 7 completed in Phase 6
+- **Status:** In Progress
+- **Last activity:** 2026-01-28 - Completed 06-03-PLAN.md (ChatMessages ARIA log)
 
-**Progress:** [=====---] 5/5 plans complete | 2/8 phases complete
+**Progress:** [======--] 8/12 plans complete | 3/8 phases complete (Phase 1, 5, 6 partial)
 
 ## Current Phase
 
-**Phase 5: Robust Fixes**
-- Status: COMPLETE
-- Plans: 1/1 complete
-- Goal: Fix ARIA attribute violations for WCAG Principle 4 compliance
+**Phase 6: Component Remediation**
+- Status: IN PROGRESS
+- Plans: 3/7 complete
+- Goal: Fix component-level accessibility issues identified in research
 
 ### Plans
 
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
-| 05-01 | Fix Toaster aria-prohibited-attr | 1 | - | **Complete** |
+| 06-01 | Button focus styles | 1 | - | **Complete** |
+| 06-02 | Accordion ARIA expanded | 1 | - | **Complete** |
+| 06-03 | ChatMessages ARIA log | 1 | - | **Complete** |
+| 06-04 | Tabs keyboard navigation | 1 | - | Ready |
+| 06-05 | Modal focus trap | 1 | - | Ready |
+| 06-06 | Navigation mobile a11y | 1 | - | Ready |
+| 06-07 | Form error announcements | 1 | - | Ready |
 
-### Previous Phase
+### Previous Phases
 
 **Phase 1: Audit Infrastructure** - COMPLETE (4/4 plans)
+**Phase 5: Robust Fixes** - COMPLETE (1/1 plans)
 
 ## Progress Summary
 
@@ -42,7 +49,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | 3. Operable Fixes | Ready | - |
 | 4. Understandable Fixes | Ready | - |
 | 5. Robust Fixes | **Complete** | 1/1 |
-| 6. Component Remediation | **Recommended Next** | - |
+| 6. Component Remediation | **In Progress** | 3/7 |
 | 7. Page-Level Verification | Pending | - |
 | 8. Final Verification | Pending | - |
 
@@ -53,7 +60,7 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | Project | .planning/a11y-audit/PROJECT.md | Done |
 | Config | .planning/a11y-audit/config.json | Done |
 | Research | .planning/a11y-audit/research/ | Done |
-| Requirements | .planning/a11y-audit/REQUIREMENTS.md | Updated (4/4 INFRA complete) |
+| Requirements | .planning/a11y-audit/REQUIREMENTS.md | Updated |
 | Roadmap | .planning/a11y-audit/ROADMAP.md | Updated |
 | Phase 1 Plans | .planning/a11y-audit/phases/01-audit-infrastructure/ | Done |
 | **Playwright Config** | playwright.config.ts | **Done** |
@@ -68,6 +75,8 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | 01-04 Summary | .planning/a11y-audit/phases/01-audit-infrastructure/01-04-SUMMARY.md | **Done** |
 | **Phase 5 Plan** | .planning/a11y-audit/phases/05-robust-fixes/05-01-PLAN.md | **Done** |
 | **05-01 Summary** | .planning/a11y-audit/phases/05-robust-fixes/05-01-SUMMARY.md | **Done** |
+| **Phase 6 Plans** | .planning/a11y-audit/phases/06-component-remediation/ | **In Progress** |
+| **06-03 Summary** | .planning/a11y-audit/phases/06-component-remediation/06-03-SUMMARY.md | **Done** |
 
 ## Accumulated Decisions
 
@@ -86,6 +95,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 | **Recommend Phase 5 first for quick win** | 01-04 | Single fix resolves all 11 automated violations |
 | **Phase 2-4 are manual-testing focused** | 01-04 | No automated violations in those areas |
 | **role=status for Toaster live region** | 05-01 | Appropriate ARIA role for advisory notifications |
+| **role=log for ChatMessages container** | 06-03 | Semantic role for sequential chat content |
+| **aria-live=polite for chat announcements** | 06-03 | Non-intrusive screen reader notifications |
+| **aria-relevant=additions for new messages** | 06-03 | Only announce new messages, not removals |
 
 ## Audit Results Summary
 
@@ -116,16 +128,21 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 - 100% automated pass rate achieved
 - RBST-01, RBST-02, RBST-03 requirements satisfied
 
-**Recommended Next:**
-- **Phase 6 (Component Remediation)** - Fix remaining component issues from research
-- Then Phases 2-4 for manual WCAG principle testing
-- Phase 8 for final VoiceOver verification
+**Phase 6 In Progress:**
+- **Plan 06-03 complete:** ChatMessages now has role="log" + aria-live="polite"
+- Screen readers can now announce new chat messages
+- Pattern established for other live regions
+
+**Remaining in Phase 6:**
+- 06-04: Tabs keyboard navigation (arrow keys)
+- 06-05: Modal focus trap and escape key
+- 06-06: Navigation mobile accessibility
+- 06-07: Form error announcements
 
 **Manual testing still needed:**
 - Modal: Focus trap, escape key, aria-modal
 - Navigation: Mobile menu keyboard access
 - Forms: Error announcements, aria-describedby
-- ChatWidget: Focus management, aria-live regions
 - Tabs: Arrow key navigation
 - Accordion: aria-expanded, aria-controls
 - Skip Links: Presence and functionality
@@ -133,9 +150,9 @@ See: .planning/a11y-audit/PROJECT.md (updated 2026-01-27)
 
 ## Session Continuity
 
-- **Last session:** 2026-01-27T14:41:00Z
-- **Stopped at:** Completed Phase 5 (05-01-PLAN.md)
-- **Resume file:** None - Phase 5 complete, ready for Phase 6
+- **Last session:** 2026-01-28T12:45:00Z
+- **Stopped at:** Completed Plan 06-03 (ChatMessages ARIA log)
+- **Resume file:** None - ready for 06-04
 
 ---
-*Last updated: 2026-01-27 after Phase 5 completion (1/1 plans)*
+*Last updated: 2026-01-28 after Plan 06-03 completion (3/7 Phase 6 plans)*
