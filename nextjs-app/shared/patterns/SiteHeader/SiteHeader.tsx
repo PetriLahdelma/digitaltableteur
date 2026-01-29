@@ -208,7 +208,7 @@ export function SiteHeader({
             </defs>
           </svg>
           </div>
-          <span className="font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors group-hover:text-primary">
+          <span className="font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors text-[var(--logo-text-color)] group-hover:text-primary">
             Digitaltableteur
           </span>
         </Link>
