@@ -31,11 +31,11 @@ Requirements for complete WCAG 2.1 AA audit and remediation.
   - Result: Zero violations across 11 pages
   - Verified: 28 Image components, 17 img elements, 92 Icon usages
   - See: IMAGE-ALT-AUDIT.md
-- [~] **PERC-02**: Color contrast meets 4.5:1 for text, 3:1 for large text/UI
-  - Status: Partial (2026-01-28)
-  - Result: Light and High Contrast White themes pass; Dark and HCB have logo/ChatWidget contrast issues
-  - Issue: Logo text and ChatWidget toggle label need contrast fixes in Dark/HCB
-  - See: CONTRAST-AUDIT.md
+- [x] **PERC-02**: Color contrast meets 4.5:1 for text, 3:1 for large text/UI
+  - Status: Complete (2026-01-29)
+  - Result: All 4 themes pass contrast audit - 0 violations
+  - Fix: Added --logo-text-color CSS variable for logo wordmark, added Dark theme override for ChatWidget toggle
+  - See: CONTRAST-AUDIT.md, 02-06-SUMMARY.md
 - [x] **PERC-03**: Color is not sole means of conveying information
   - Status: Mostly Compliant (2026-01-28)
   - Result: 11 components pass with icon+color patterns; 5 minor P2 gaps documented
@@ -51,11 +51,11 @@ Requirements for complete WCAG 2.1 AA audit and remediation.
   - Result: All 8 public pages pass 320px viewport test without horizontal scroll
   - Verified: CSS Grid/Flexbox layouts adapt properly, text spacing overrides work
   - See: REFLOW-ZOOM-AUDIT.md
-- [~] **PERC-06**: All themes (Light, Dark, HCW, HCB) meet contrast requirements
-  - Status: Partial (2026-01-28)
-  - Result: 2 of 4 themes fully compliant (Light, HCW pass; Dark, HCB have issues)
-  - Issue: Logo text and ChatWidget toggle need theme-specific contrast fixes
-  - See: CONTRAST-AUDIT.md
+- [x] **PERC-06**: All themes (Light, Dark, HCW, HCB) meet contrast requirements
+  - Status: Complete (2026-01-29)
+  - Result: 4/4 themes pass contrast audit - 0 violations across all themes
+  - Fix: Added --logo-text-color CSS variable, Dark theme ChatWidget toggle override
+  - See: CONTRAST-AUDIT.md, 02-06-SUMMARY.md
 
 ### Operable (WCAG Principle 2)
 
@@ -182,11 +182,11 @@ Deferred to future work.
 | INFRA-03 | Phase 1 | **Complete** |
 | INFRA-04 | Phase 1 | **Complete** |
 | PERC-01 | Phase 2 | **Complete** |
-| PERC-02 | Phase 2 | **Partial** (contrast fixes needed) |
+| PERC-02 | Phase 2 | **Complete** |
 | PERC-03 | Phase 2 | **Mostly Compliant** |
 | PERC-04 | Phase 2 | **Complete** |
 | PERC-05 | Phase 2 | **Complete** |
-| PERC-06 | Phase 2 | **Partial** (2/4 themes pass) |
+| PERC-06 | Phase 2 | **Complete** |
 | OPER-01 | Phase 3 | Pending |
 | OPER-02 | Phase 3 | Pending |
 | OPER-03 | Phase 3 | Pending |
@@ -232,4 +232,4 @@ Deferred to future work.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-28 after Phase 2 completion (PERC-01 through PERC-06 audited)*
+*Last updated: 2026-01-29 after Phase 2 gap closure (PERC-02, PERC-06 contrast fixes complete)*
