@@ -628,6 +628,16 @@
   border-color: rgb(0 0 0 / 30%);
 }
 
+/* Chat Toggle - Dark theme: white text on purple toggle for contrast */
+:global(.themeDark) .toggle {
+  /* stylelint-disable-next-line declaration-no-important -- Override for dark theme contrast */
+  color: #fff !important;
+}
+
+:global(.themeDark) .toggleLabel {
+  color: #fff;
+}
+
 /* Chat Toggle - High Contrast Black: white text on dark toggle */
 :global(.themeHCB) .toggle {
   /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
