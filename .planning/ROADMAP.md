@@ -124,7 +124,7 @@ Plans:
 - [x] 06-07-PLAN.md — Verify all COMP fixes and update requirements
 
 ### Phase 7: Page-Level Verification
-**Goal**: Verify each public page passes complete audit
+**Goal**: Verify each public page passes complete WCAG 2.1 AA automated audit
 **Depends on**: Phase 6
 **Requirements**: PAGE-01, PAGE-02, PAGE-03, PAGE-04, PAGE-05
 **Success Criteria**:
@@ -133,7 +133,14 @@ Plans:
   3. Work/Portfolio pages pass audit
   4. Blog pages pass audit
   5. Contact page passes audit
-**Plans**: TBD
+**Plans**: 5 plans
+
+Plans:
+- [ ] 07-01-PLAN.md — Create page verification infrastructure (audit helpers, report generator, page registry)
+- [ ] 07-02-PLAN.md — Verify core pages (Home, About, Work, Blog, Contact) across all themes/languages
+- [ ] 07-03-PLAN.md — Verify work project pages (11 projects) across all themes
+- [ ] 07-04-PLAN.md — Verify blog post pages (12 posts) across all themes
+- [ ] 07-05-PLAN.md — Verify legal pages and create phase summary
 
 ### Phase 8: Final Verification
 **Goal**: Complete screen reader, keyboard, and theme testing
@@ -160,7 +167,7 @@ Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 | 4 | Understandable Fixes | 6 | 4/4 | Complete |
 | 5 | Robust Fixes | 5 | 1/1 | Complete |
 | 6 | Component Remediation | 9 | 7/7 | Complete |
-| 7 | Page-Level Verification | 5 | TBD | Not started |
+| 7 | Page-Level Verification | 5 | 5 | Planned |
 | 8 | Final Verification | 5 | TBD | Not started |
 
 ---
@@ -179,3 +186,4 @@ Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 *Phase 3 complete: 2026-01-30*
 *Phase 4 planned: 2026-01-30*
 *Phase 4 complete: 2026-01-30*
+*Phase 7 planned: 2026-01-30*
