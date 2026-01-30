@@ -128,6 +128,7 @@ export function NextMobileMenu({
                     <Link
                       href={item.href}
                       className={`${styles.navLink} ${active ? styles.navLinkActive : ""}`}
+                      aria-current={active ? "page" : undefined}
                       onClick={() => {
                         onNavigate?.();
                         onClose?.();
