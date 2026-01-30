@@ -143,7 +143,7 @@ Plans:
 - [x] 07-05-PLAN.md — Verify legal pages and create phase summary
 
 ### Phase 8: Final Verification
-**Goal**: Complete screen reader, keyboard, and theme testing
+**Goal**: Complete screen reader, keyboard, and theme testing. Produce final audit documentation.
 **Depends on**: Phase 7
 **Requirements**: VERF-01, VERF-02, VERF-03, VERF-04, VERF-05
 **Success Criteria**:
@@ -152,7 +152,13 @@ Plans:
   3. High contrast modes verified
   4. 200% zoom verified
   5. Final audit report documented
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 08-01-PLAN.md — VoiceOver + keyboard testing on core pages (VERF-01, VERF-02)
+- [ ] 08-02-PLAN.md — VoiceOver + keyboard testing on work, blog, legal pages (VERF-01, VERF-02)
+- [ ] 08-03-PLAN.md — High contrast and zoom verification (VERF-03, VERF-04)
+- [ ] 08-04-PLAN.md — Final documentation: audit report, accessibility statement, VPAT (VERF-05)
 
 ## Progress
 
@@ -168,7 +174,7 @@ Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 | 5 | Robust Fixes | 5 | 1/1 | Complete |
 | 6 | Component Remediation | 9 | 7/7 | Complete |
 | 7 | Page-Level Verification | 5 | 5/5 | Complete |
-| 8 | Final Verification | 5 | TBD | Not started |
+| 8 | Final Verification | 5 | 4/4 | Planned |
 
 ---
 *Roadmap created: 2026-01-27*
@@ -188,3 +194,4 @@ Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 *Phase 4 complete: 2026-01-30*
 *Phase 7 planned: 2026-01-30*
 *Phase 7 complete: 2026-01-30 (31 pages verified, 188 combinations, 100% pass rate)*
+*Phase 8 planned: 2026-01-30*
