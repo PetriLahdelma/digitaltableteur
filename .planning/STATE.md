@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 ## Current Position
 
 - **Phase:** 4 of 8 (Understandable Fixes) - IN PROGRESS
-- **Plan:** 1 of ? complete
-- **Status:** Plan 04-01 complete
-- **Last activity:** 2026-01-30 - Completed 04-01-PLAN.md (Required Field Screen Reader Text)
+- **Plan:** 3 of ? complete
+- **Status:** Plan 04-03 complete
+- **Last activity:** 2026-01-30 - Completed 04-03-PLAN.md (Language Notice and Content Language Markers)
 
 **Progress:** [==========] 24/24 plans complete | 6/8 phases complete (Phase 1, 2, 3, 5, 6 complete)
 
@@ -20,15 +20,17 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 
 **Phase 4: Understandable Fixes** - IN PROGRESS
 - Status: IN PROGRESS
-- Plans: 04-01 complete
+- Plans: 04-01, 04-02, 04-03 complete
 - Goal: Ensure content is understandable with clear labels and instructions
-- Result: Required field screen reader text added to Label component
+- Result: Required field screen reader text, email typo suggestions, language notices
 
 ### Plans
 
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
 | 04-01 | Required field screen reader text | 1 | - | **Complete** |
+| 04-02 | Email typo suggestions | 1 | - | **Complete** |
+| 04-03 | Language notice and content language markers | 1 | - | **Complete** |
 
 ### Previous Phases
 
@@ -45,7 +47,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | 1. Audit Infrastructure | **Complete** | 4/4 |
 | 2. Perceivable Fixes | **Complete** | 6/6 |
 | 3. Operable Fixes | **Complete** | 4/4 |
-| 4. Understandable Fixes | **In Progress** | 1/? |
+| 4. Understandable Fixes | **In Progress** | 3/? |
 | 5. Robust Fixes | **Complete** | 1/1 |
 | 6. Component Remediation | **Complete** | 7/7 |
 | 7. Page-Level Verification | Ready | - |
@@ -109,6 +111,9 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **Focus Trap Tests** | tests/a11y/operable/focus-trap.spec.ts | **Done** |
 | **Phase 4 Plans** | .planning/phases/04-understandable-fixes/ | **In Progress** |
 | **04-01 Summary** | .planning/phases/04-understandable-fixes/04-01-SUMMARY.md | **Done** |
+| **04-02 Summary** | .planning/phases/04-understandable-fixes/04-02-SUMMARY.md | **Done** |
+| **04-03 Summary** | .planning/phases/04-understandable-fixes/04-03-SUMMARY.md | **Done** |
+| **LanguageNotice** | app/components/LanguageNotice/ | **Done** |
 
 ## Accumulated Decisions
 
@@ -170,6 +175,9 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **Skip link tests exclude /work, /blog** | 03-03 | Pre-existing page load issues unrelated to a11y |
 | **aria-hidden for visual asterisk** | 04-01 | Hide decorative asterisk from screen readers |
 | **sr-only "(required)" text** | 04-01 | Screen reader text for required field indication |
+| **Finnish locative case for language names** | 04-03 | englanniksi/suomeksi/ruotsiksi for grammatically correct sentences |
+| **lang="en" wrapper for blog articles** | 04-03 | Screen readers use English pronunciation for blog content |
+| **LanguageNotice conditional rendering** | 04-03 | Only shows when UI language differs from content language |
 
 ## Audit Results Summary
 
@@ -284,13 +292,16 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 
 | Requirement | Status | Source |
 |-------------|--------|--------|
+| UNDR-01 (Page Language) | **Complete** | Pre-existing (html lang attribute) |
+| UNDR-02 (Language of Parts) | **Complete** | 04-03 |
 | UNDR-04 (Required Field Indication) | **Complete** | 04-01 |
+| UNDR-05 (Error Suggestions) | **Complete** | 04-02 |
 
 ## Session Continuity
 
-- **Last session:** 2026-01-30T13:41:00Z
-- **Stopped at:** Completed 04-01-PLAN.md (Required Field Screen Reader Text)
+- **Last session:** 2026-01-30T13:43:00Z
+- **Stopped at:** Completed 04-03-PLAN.md (Language Notice and Content Language Markers)
 - **Resume file:** None - Continue with remaining Phase 4 plans
 
 ---
-*Last updated: 2026-01-30 after Plan 04-01 completion (Required field screen reader text)*
+*Last updated: 2026-01-30 after Plan 04-03 completion (Language notice and content language markers)*
