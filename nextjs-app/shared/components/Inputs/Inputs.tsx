@@ -9,6 +9,7 @@ import {
 } from "libphonenumber-js";
 import { warnPropRename } from "../../utils/deprecationWarning";
 import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
+import { suggestEmailCorrection } from "../../utils/emailSuggestion";
 
 interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "size"> {
@@ -132,7 +133,13 @@ const Input: React.FC<InputProps> = ({
         if (validateEmail(e.target.value)) {
           setEmailError("");
         } else {
-          setEmailError(t("inputValidationEmailInvalid"));
+          // Check for typo suggestion first (WCAG 3.3.3: Error Suggestion)
+          const suggestion = suggestEmailCorrection(e.target.value);
+          if (suggestion) {
+            setEmailError(t("contactValidationEmailSuggestion", { suggestion }));
+          } else {
+            setEmailError(t("inputValidationEmailInvalid"));
+          }
         }
       } else {
         setEmailError("");
