@@ -5,24 +5,24 @@
 See: .planning/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Every user can access and use the site regardless of ability
-**Current focus:** Phase 4 in progress - understandable fixes for labels and instructions
+**Current focus:** Phase 4 complete - all WCAG Understandable requirements verified
 
 ## Current Position
 
-- **Phase:** 4 of 8 (Understandable Fixes) - IN PROGRESS
-- **Plan:** 3 of ? complete
-- **Status:** Plan 04-03 complete
-- **Last activity:** 2026-01-30 - Completed 04-03-PLAN.md (Language Notice and Content Language Markers)
+- **Phase:** 4 of 8 (Understandable Fixes) - **COMPLETE**
+- **Plan:** 4 of 4 complete
+- **Status:** Phase 4 complete
+- **Last activity:** 2026-01-30 - Completed 04-04-PLAN.md (Navigation Consistency and UNDR Verification)
 
-**Progress:** [==========] 24/24 plans complete | 6/8 phases complete (Phase 1, 2, 3, 5, 6 complete)
+**Progress:** [==========] 28/28 plans complete | 7/8 phases complete (Phase 1, 2, 3, 4, 5, 6 complete)
 
 ## Current Phase
 
-**Phase 4: Understandable Fixes** - IN PROGRESS
-- Status: IN PROGRESS
-- Plans: 04-01, 04-02, 04-03 complete
+**Phase 4: Understandable Fixes** - **COMPLETE**
+- Status: COMPLETE
+- Plans: 04-01, 04-02, 04-03, 04-04 complete
 - Goal: Ensure content is understandable with clear labels and instructions
-- Result: Required field screen reader text, email typo suggestions, language notices
+- Result: Required field screen reader text, email typo suggestions, language notices, navigation consistency
 
 ### Plans
 
@@ -31,6 +31,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | 04-01 | Required field screen reader text | 1 | - | **Complete** |
 | 04-02 | Email typo suggestions | 1 | - | **Complete** |
 | 04-03 | Language notice and content language markers | 1 | - | **Complete** |
+| 04-04 | Navigation consistency and UNDR verification | 2 | 04-01, 04-02, 04-03 | **Complete** |
 
 ### Previous Phases
 
@@ -47,7 +48,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | 1. Audit Infrastructure | **Complete** | 4/4 |
 | 2. Perceivable Fixes | **Complete** | 6/6 |
 | 3. Operable Fixes | **Complete** | 4/4 |
-| 4. Understandable Fixes | **In Progress** | 3/? |
+| 4. Understandable Fixes | **Complete** | 4/4 |
 | 5. Robust Fixes | **Complete** | 1/1 |
 | 6. Component Remediation | **Complete** | 7/7 |
 | 7. Page-Level Verification | Ready | - |
@@ -98,7 +99,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **02-PHASE-SUMMARY.md** | .planning/phases/02-perceivable-fixes/02-PHASE-SUMMARY.md | **Done** |
 | **02-05 Summary** | .planning/phases/02-perceivable-fixes/02-05-SUMMARY.md | **Done** |
 | **02-06 Summary** | .planning/phases/02-perceivable-fixes/02-06-SUMMARY.md | **Done** |
-| **Phase 3 Plans** | .planning/phases/03-operable-fixes/ | **In Progress** |
+| **Phase 3 Plans** | .planning/phases/03-operable-fixes/ | **Done** |
 | **03-01 Summary** | .planning/phases/03-operable-fixes/03-01-SUMMARY.md | **Done** |
 | **Focus Visibility Tests** | tests/a11y/operable/focus-visibility.spec.ts | **Done** |
 | **03-02 Summary** | .planning/phases/03-operable-fixes/03-02-SUMMARY.md | **Done** |
@@ -109,11 +110,14 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **TOUCH-TARGET-AUDIT.md** | .planning/phases/03-operable-fixes/TOUCH-TARGET-AUDIT.md | **Done** |
 | **03-03 Summary** | .planning/phases/03-operable-fixes/03-03-SUMMARY.md | **Done** |
 | **Focus Trap Tests** | tests/a11y/operable/focus-trap.spec.ts | **Done** |
-| **Phase 4 Plans** | .planning/phases/04-understandable-fixes/ | **In Progress** |
+| **Phase 4 Plans** | .planning/phases/04-understandable-fixes/ | **Done** |
 | **04-01 Summary** | .planning/phases/04-understandable-fixes/04-01-SUMMARY.md | **Done** |
 | **04-02 Summary** | .planning/phases/04-understandable-fixes/04-02-SUMMARY.md | **Done** |
 | **04-03 Summary** | .planning/phases/04-understandable-fixes/04-03-SUMMARY.md | **Done** |
+| **04-04 Summary** | .planning/phases/04-understandable-fixes/04-04-SUMMARY.md | **Done** |
 | **LanguageNotice** | app/components/LanguageNotice/ | **Done** |
+| **Navigation Consistency Tests** | tests/a11y/understandable/navigation-consistency.spec.ts | **Done** |
+| **Form Labels Tests** | tests/a11y/understandable/form-labels.spec.ts | **Done** |
 
 ## Accumulated Decisions
 
@@ -178,6 +182,8 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **Finnish locative case for language names** | 04-03 | englanniksi/suomeksi/ruotsiksi for grammatically correct sentences |
 | **lang="en" wrapper for blog articles** | 04-03 | Screen readers use English pronunciation for blog content |
 | **LanguageNotice conditional rendering** | 04-03 | Only shows when UI language differs from content language |
+| **aria-current="page" on mobile nav links** | 04-04 | Match desktop header pattern for active page indication |
+| **21 Playwright tests for UNDR requirements** | 04-04 | Comprehensive coverage across navigation and form labels |
 
 ## Audit Results Summary
 
@@ -190,7 +196,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | Critical (P0) | 11 | 0 | **0** |
 | Contrast Violations | - | - | **0** (was 11) |
 
-**Key Achievement:** All automated violations resolved. All 9 COMP requirements complete. All 6 PERC requirements complete.
+**Key Achievement:** All automated violations resolved. All 9 COMP requirements complete. All 6 PERC requirements complete. All 6 UNDR requirements complete.
 
 ## Component Requirements Status
 
@@ -229,6 +235,17 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | OPER-05 (Focus Order) | **Complete** | 03-02 |
 | OPER-06 (Touch Targets) | **Complete** | 03-04 |
 | OPER-07 (Animation Frequency) | **Complete** | 03-04 |
+
+## Understandable Requirements Status
+
+| Requirement | Status | Source |
+|-------------|--------|--------|
+| UNDR-01 (Page Language) | **Complete** | 04-04 (verified with tests) |
+| UNDR-02 (Form Labels) | **Complete** | 04-04 (verified with tests) |
+| UNDR-03 (Error Identification) | **Complete** | 04-04, 06-02 |
+| UNDR-04 (Required Field Indication) | **Complete** | 04-01, 04-04 |
+| UNDR-05 (Error Suggestions) | **Complete** | 04-02, 04-04 |
+| UNDR-06 (Navigation Consistency) | **Complete** | 04-04 |
 
 ## Context for Next Session
 
@@ -279,8 +296,16 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 - Modal and ChatWidget already compliant (verified via source code)
 - All 7 OPER requirements now COMPLETE
 
+**Phase 4 Complete:**
+- **Plan 04-01 complete:** Required field screen reader text
+- **Plan 04-02 complete:** Email typo suggestions
+- **Plan 04-03 complete:** Language notice and content language markers
+- **Plan 04-04 complete:** Navigation consistency and UNDR verification
+- aria-current added to mobile nav links (WCAG 3.2.3)
+- 21 Playwright tests covering all 6 UNDR requirements
+- All 6 UNDR requirements now COMPLETE
+
 **Next Steps:**
-- Phase 4: Understandable Fixes (lang, labels, errors)
 - Phase 7: Page-Level Verification (when plans created)
 - Phase 8: Final Verification (manual screen reader testing)
 
@@ -288,20 +313,11 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 - RBST-04/RBST-05: Screen reader status message announcements
 - Grayscale test using COLOR-INDEPENDENCE-AUDIT.md checklist
 
-## Understandable Requirements Status
-
-| Requirement | Status | Source |
-|-------------|--------|--------|
-| UNDR-01 (Page Language) | **Complete** | Pre-existing (html lang attribute) |
-| UNDR-02 (Language of Parts) | **Complete** | 04-03 |
-| UNDR-04 (Required Field Indication) | **Complete** | 04-01 |
-| UNDR-05 (Error Suggestions) | **Complete** | 04-02 |
-
 ## Session Continuity
 
-- **Last session:** 2026-01-30T13:43:00Z
-- **Stopped at:** Completed 04-03-PLAN.md (Language Notice and Content Language Markers)
-- **Resume file:** None - Continue with remaining Phase 4 plans
+- **Last session:** 2026-01-30T13:49:00Z
+- **Stopped at:** Completed 04-04-PLAN.md (Navigation Consistency and UNDR Verification)
+- **Resume file:** None - Phase 4 complete, ready for Phase 7 or 8
 
 ---
-*Last updated: 2026-01-30 after Plan 04-03 completion (Language notice and content language markers)*
+*Last updated: 2026-01-30 after Plan 04-04 completion (Navigation consistency and UNDR verification)*
