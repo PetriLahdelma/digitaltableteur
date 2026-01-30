@@ -70,9 +70,14 @@ export function NextHeader() {
     setCookie("i18next", code);
     localStorage.setItem("i18nextLng", code);
 
-    const langLabel =
-      languages.find((lang) => lang.code === code)?.label || code;
-    showToast?.(t("languageChanged", { language: langLabel }), 3000);
+    const bundle = i18n.getResourceBundle(code, "translation") as
+      | Record<string, string>
+      | undefined;
+    const langLabel = bundle?.[`languageName.${code}`] ?? code;
+    showToast?.(
+      i18n.t("languageChanged", { lng: code, language: langLabel }),
+      3000,
+    );
   };
 
   const isActive = (href: string, exact?: boolean) =>

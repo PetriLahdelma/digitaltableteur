@@ -192,18 +192,23 @@ export function MobileDrawer({
               {t("navMenuLanguages")}
             </span>
             <div className="flex gap-2">
-              {["en", "fi", "sv"].map((code) => (
+              {[
+                { code: "en", ariaLabel: t("langEN_ariaLabel") },
+                { code: "fi", ariaLabel: t("langFI_ariaLabel") },
+                { code: "sv", ariaLabel: t("langSV_ariaLabel") },
+              ].map((lang) => (
                 <button
-                  key={code}
-                  onClick={() => onLanguageChange(code)}
+                  key={lang.code}
+                  onClick={() => onLanguageChange(lang.code)}
+                  aria-label={lang.ariaLabel}
                   className={cn(
                     "flex-1 py-2 px-3 rounded-md text-text-m font-body uppercase transition-colors",
-                    currentLang === code
+                    currentLang === lang.code
                       ? "bg-foreground text-background font-medium"
                       : "bg-muted text-muted-foreground hover:bg-muted/80"
                   )}
                 >
-                  {code}
+                  {lang.code.toUpperCase()}
                 </button>
               ))}
             </div>

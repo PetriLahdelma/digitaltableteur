@@ -221,7 +221,7 @@
   "themeNameHcw": "Korkea kontrasti (valkoinen tausta)",
   "headerThemeAnnouncement": "Teema vaihdettu: {{theme}}",
   "themeChanged": "Teema vaihdettu: {{theme}}",
-  "languageChanged": "Kieli vaihdettu: {{language}}",
+  "languageChanged": "Kieli vaihdettu {{language}}",
   "homeDesignSprintsTitle": "Poikkeuksellista designia ilman odottelua",
   "homeDesignSprintsDescription": "Uskomme, että maailmanluokan design ei vaadi kuukausia. Siksi loimme Design Sprintit. Viimeisteltyä, ajatonta designia kahdessa viikossa.",
   "homeDesignSprintsBenefits": [

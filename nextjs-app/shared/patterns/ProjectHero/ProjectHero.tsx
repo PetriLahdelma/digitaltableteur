@@ -409,14 +409,7 @@ export function ProjectHero({
 
       {/* Scroll indicator */}
       {showScrollIndicator && (
-        <div
-          className={cn(
-            "absolute bottom-8 left-1/2 -translate-x-1/2 z-20",
-            isFullWidth && "text-white",
-          )}
-        >
-          <ScrollIndicator />
-        </div>
+        <ScrollIndicator className={cn("z-20", isFullWidth && "text-white")} />
       )}
     </Section>
   );
