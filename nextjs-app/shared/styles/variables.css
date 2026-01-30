@@ -79,6 +79,7 @@
   --secondary-text-color: #041b23;
   --inverted-text-color: #fff;
   --link-color: #041b23;
+  --logo-text-color: var(--color-text); /* Logo wordmark text - theme-aware */
 
   /* Accent colors */
   --accent-pink: #f205c5;
@@ -356,6 +357,7 @@
   --accent-yellow: #f2e274;
   --logo-background: #812eff; /* Purple for dark mode */
   --logo-color: #fff; /* White logo on dark themes */
+  --logo-text-color: #e0e0e0; /* Light gray for logo wordmark - 10.24:1 on #181a1b */
   --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
   --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
   --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
@@ -421,6 +423,7 @@
   --accent-yellow: #fff;
   --logo-background: #fff; /* White background for high contrast black */
   --logo-color: #000; /* Black logo for high contrast black */
+  --logo-text-color: #fff; /* White logo wordmark - 21:1 on #000 */
   --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
   --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
   --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */
@@ -524,6 +527,7 @@
   --accent-yellow: #000;
   --logo-background: #000; /* Black background for high contrast white */
   --logo-color: #fff; /* White logo for high contrast white */
+  --logo-text-color: #000; /* Black logo wordmark - 21:1 on #fff */
   --storybook-blue: #4780d6; /* Storybook Helper Color: Blue (darker for dark mode) */
   --storybook-cyan: #96e9ed; /* Storybook Helper Color: Cyan (darker for dark mode) */
   --storybook-pink: #ff5fc2; /* Storybook Helper Color: Pink (muted for dark mode) */

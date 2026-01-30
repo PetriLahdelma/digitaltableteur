@@ -60,3 +60,6 @@ lighthouse-*.json
 
 # Backup files
 *.bkup
+
+# TypeScript build info
+*.tsbuildinfo

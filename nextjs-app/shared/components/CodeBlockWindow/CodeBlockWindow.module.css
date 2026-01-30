@@ -1,0 +1,225 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+
+.container {
+  margin-block: var(--space-layout-24);
+  margin-inline: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--main-body-background-color);
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-layout-16);
+  padding-block: var(--space-layout-8);
+  padding-inline: var(--space-layout-16);
+  border-block-end: 1px solid var(--color-border);
+  background-color: var(--color-light-bg);
+}
+
+.controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-layout-8);
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+
+.close {
+  background-color: var(--color-error);
+}
+
+.minimize {
+  background-color: var(--color-warning);
+}
+
+.maximize {
+  background-color: var(--color-success);
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-layout-8);
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.language {
+  padding-block: var(--space-layout-4);
+  padding-inline: var(--space-layout-8);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  background-color: var(--color-light-bg);
+}
+
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-layout-8);
+}
+
+.copyButton {
+  white-space: nowrap;
+}
+
+.status {
+  min-width: 9ch;
+  color: var(--color-muted);
+}
+
+.body {
+  padding: var(--space-layout-16);
+  background-color: var(--main-body-background-color);
+}
+
+.pre {
+  margin: 0;
+  padding: var(--space-layout-16);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-light-bg);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.pre::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 999px;
+}
+
+.pre::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.code {
+  display: grid;
+  font-size: var(--font-size-text-s);
+  line-height: var(--line-height-relaxed);
+  font-family: var(--font-mono);
+}
+
+.code :global([data-line]) {
+  display: block;
+  padding-block: var(--space-layout-4);
+  padding-inline: 0;
+  white-space: pre;
+}
+
+.code :global(span) {
+  color: var(--shiki-light, inherit);
+}
+
+:global(.themeDark) .code :global(span) {
+  color: var(--shiki-dark, inherit) !important;
+}
+
+:global(.themeHCB) .code :global(span) {
+  color: var(--shiki-hcb, inherit) !important;
+}
+
+:global(.themeHCW) .code :global(span) {
+  color: var(--shiki-hcw, inherit) !important;
+}
+
+.container[data-line-numbers="true"] .code {
+  counter-reset: line;
+}
+
+.container[data-line-numbers="true"] .code :global([data-line]) {
+  display: grid;
+  grid-template-columns: minmax(2.5ch, auto) 1fr;
+  column-gap: var(--space-layout-8);
+  align-items: start;
+}
+
+.container[data-line-numbers="true"] .code :global([data-line])::before {
+  counter-increment: line;
+  content: counter(line);
+  color: var(--color-muted);
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.code :global([data-highlighted-line]) {
+  background-color: transparent;
+}
+
+.caption {
+  padding-block: var(--space-layout-8) var(--space-layout-16);
+  padding-inline: var(--space-layout-16);
+  color: var(--color-muted);
+}
+
+@media (width >= 768px) {
+  .header {
+    padding-inline: var(--space-layout-24);
+  }
+
+  .body {
+    padding: var(--space-layout-24);
+  }
+
+  .caption {
+    padding-inline: var(--space-layout-24);
+  }
+}
+
+@supports (color: color-mix(in srgb, black, white)) {
+  .container {
+    box-shadow: 0 16px 40px
+      color-mix(in srgb, var(--color-border) 60%, transparent);
+  }
+
+  .dot {
+    box-shadow: inset 0 0 0 1px
+      color-mix(in srgb, var(--color-border) 70%, transparent);
+  }
+
+  .language {
+    background-color: color-mix(
+      in srgb,
+      var(--main-body-background-color) 80%,
+      var(--color-light-bg)
+    );
+  }
+
+  .code :global([data-highlighted-line]) {
+    background-color: color-mix(
+      in srgb,
+      var(--color-primary) 12%,
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    box-shadow: none;
+  }
+}

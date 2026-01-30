@@ -146,6 +146,7 @@
   "contactValidationFullNameRequired": "Koko nimi on pakollinen",
   "contactValidationEmailRequired": "Sähköposti on pakollinen",
   "contactValidationEmailInvalid": "Syötä kelvollinen sähköpostiosoite",
+  "contactValidationEmailSuggestion": "Tarkoititko {{suggestion}}?",
   "contactValidationMessageRequired": "Viesti on pakollinen",
   "inputValidationEmailInvalid": "Syötä kelvollinen sähköpostiosoite",
   "inputValidationPhoneInvalid": "Virheellinen puhelinnumeron muoto",
@@ -160,7 +161,14 @@
   "langEN": "EN",
   "langFI": "FI",
   "langSV": "SV",
+  "langEN_ariaLabel": "English",
+  "langFI_ariaLabel": "Suomi",
+  "langSV_ariaLabel": "Svenska",
   "switchToLanguage": "Vaihda kieleen {{language}}",
+  "contentLanguageNotice": "Tama sisalto on saatavilla vain {{language}}.",
+  "languageName.en": "englanniksi",
+  "languageName.fi": "suomeksi",
+  "languageName.sv": "ruotsiksi",
   "homeUxInterfacesTitle": "Kokemus ja liittymät",
   "homeUxInterfacesDescription": "Harkittua käyttöliittymäsuunnittelua, joka yhdistää selkeyden, käytettävyyden ja visuaalisen.",
   "homeCreativeDevelopment": "Luovuus & kehitys",
@@ -213,7 +221,7 @@
   "themeNameHcw": "Korkea kontrasti (valkoinen tausta)",
   "headerThemeAnnouncement": "Teema vaihdettu: {{theme}}",
   "themeChanged": "Teema vaihdettu: {{theme}}",
-  "languageChanged": "Kieli vaihdettu: {{language}}",
+  "languageChanged": "Kieli vaihdettu {{language}}",
   "homeDesignSprintsTitle": "Poikkeuksellista designia ilman odottelua",
   "homeDesignSprintsDescription": "Uskomme, että maailmanluokan design ei vaadi kuukausia. Siksi loimme Design Sprintit. Viimeisteltyä, ajatonta designia kahdessa viikossa.",
   "homeDesignSprintsBenefits": [
@@ -1006,6 +1014,14 @@
     "title": "Varhaiset LLM:t käytössä",
     "action": "Toista",
     "bodyLabel": "Ikkunan sisältö"
+  },
+  "codeBlockWindow": {
+    "copy": "Kopioi",
+    "copied": "Kopioitu",
+    "copyFailed": "Kopiointi epäonnistui",
+    "copyAriaLabel": "Kopioi koodi leikepöydälle",
+    "regionLabel": "Koodilohko ({{language}})",
+    "languageFallback": "Koodi"
   },
   "downloadResumeValid": "Salasana kelpaa",
   "articleCard": {

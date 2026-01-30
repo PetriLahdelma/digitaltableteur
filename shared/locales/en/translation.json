@@ -163,6 +163,12 @@
   "langEN": "EN",
   "langFI": "FI",
   "langSV": "SV",
+  "langEN_ariaLabel": "English",
+  "langFI_ariaLabel": "Suomi",
+  "langSV_ariaLabel": "Svenska",
+  "languageName.en": "English",
+  "languageName.fi": "Finnish",
+  "languageName.sv": "Swedish",
   "switchToLanguage": "Switch to {{language}}",
   "workAltIceCream": "A colorful popsicle, melting slightly.",
   "workAltSc5Icon": "The image features a stylized icon character labeled 'Sc5.'",
@@ -1000,6 +1006,14 @@
     "title": "Using Early LLMs",
     "action": "Replay",
     "bodyLabel": "Window content"
+  },
+  "codeBlockWindow": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Copy failed",
+    "copyAriaLabel": "Copy code to clipboard",
+    "regionLabel": "Code block in {{language}}",
+    "languageFallback": "Code"
   },
   "downloadResumeValid": "Valid password",
   "articleCard": {

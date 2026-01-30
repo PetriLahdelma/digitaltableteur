@@ -49,7 +49,12 @@ const HelperText = React.forwardRef<HTMLParagraphElement, HelperTextProps>(
     const icon = state ? stateIcons[state] : null;
 
     return (
-      <p ref={ref} id={id} className={mergedClassName}>
+      <p
+        ref={ref}
+        id={id}
+        className={mergedClassName}
+        role={state === "error" ? "alert" : undefined}
+      >
         {icon && <span className={styles.icon}>{icon}</span>}
         {children}
       </p>

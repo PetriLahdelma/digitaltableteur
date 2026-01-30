@@ -401,4 +401,20 @@
   .button.m {
     padding-block: var(--space-internal-16);
   }
+
+  /* OPER-06: Touch targets must be at least 44x44px on mobile (WCAG 2.1 SC 2.5.5) */
+  .button.sm.iconOnly,
+  .button.s.iconOnly {
+    block-size: 2.75rem; /* 44px */
+    inline-size: 2.75rem; /* 44px */
+    min-inline-size: 2.75rem;
+  }
+
+  /* md.iconOnly is 40px (2.5rem), slightly below 44px - increase for compliance */
+  .button.md.iconOnly,
+  .button.m.iconOnly {
+    block-size: 2.75rem; /* 44px */
+    inline-size: 2.75rem; /* 44px */
+    min-inline-size: 2.75rem;
+  }
 }

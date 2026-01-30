@@ -4,6 +4,7 @@ import React from "react";
 import Text from "@dt/Text";
 import StoryBlock from "../../../../patterns/StoryBlock";
 import GridBlock from "../../../../patterns/GridBlock";
+import ProcessBlock from "../../../../patterns/ProcessBlock";
 import { ProjectDetailLayout } from "../../../../patterns/ProjectDetailLayout";
 import { ProjectHero } from "../../../../patterns/ProjectHero";
 import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
@@ -84,6 +85,53 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
         }
         background="muted"
         maxWidth="md"
+      />
+
+      <ProcessBlock
+        sectionTitle="Design Process"
+        phases={[
+          {
+            title: "Concept & Direction",
+            activities: [
+              "Editorial vision development",
+              "Bookazine format definition",
+              "Audience positioning",
+              "Bilingual strategy (EN/FI)",
+            ],
+          },
+          {
+            title: "Visual System",
+            activities: [
+              "Typography hierarchy",
+              "Layout grid design",
+              "Photo essay pacing",
+              "Color and tone system",
+            ],
+          },
+          {
+            title: "Production Design",
+            activities: [
+              "Print specifications",
+              "Paper and binding selection",
+              "160-page structure",
+              "Cover design",
+            ],
+          },
+          {
+            title: "Launch & Distribution",
+            activities: [
+              "Print run coordination",
+              "E-magazine setup",
+              "Website integration",
+              "Distribution channels",
+            ],
+          },
+        ]}
+        columns={4}
+        backgroundColor="light"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.processSection}
       />
 
       <StoryBlock
@@ -175,6 +223,31 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
             caption: "Visual system balancing clarity and editorial depth.",
           },
         ]}
+      />
+
+      <StoryBlock
+        subtitle="Outcomes"
+        title="A Platform for Documentary Photography"
+        content={[
+          <Text key="p1" size="S">
+            The relaunch successfully transformed a photography magazine into a premium
+            bookazine format, expanding from its original scope to 160 thoughtfully
+            designed pages. Publishing in both English and Finnish editions opened the
+            publication to international audiences while maintaining its Finnish roots.
+          </Text>,
+          <Text key="p2" size="S">
+            Complementing print with an e-magazine and website ensures the documentary
+            photography stories reach readers beyond traditional distribution. The visual
+            system—designed to support immersive long-form photo essays—gives photographers
+            a non-commercial platform that keeps print culture alive while adapting to
+            how audiences consume visual journalism today.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.outcomesSection}
       />
     </ProjectDetailLayout>
   );
