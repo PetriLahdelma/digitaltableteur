@@ -58,6 +58,14 @@ const knownExceptions: KnownException[] = [
 ];
 
 /**
+ * Directory for storing individual test results (for cross-worker aggregation).
+ */
+const RESULTS_DIR = path.join(
+  process.cwd(),
+  "tests/a11y/page-reports/blog-posts/.results"
+);
+
+/**
  * Check if a violation matches a known exception.
  */
 function isKnownException(
@@ -103,17 +111,72 @@ function isKnownException(
 function getActionableViolations(
   result: AuditResult
 ): AuditResult["violations"] {
-  return result.violations.filter(
-    (v) => !isKnownException(v, result.url)
-  );
+  return result.violations.filter((v) => !isKnownException(v, result.url));
+}
+
+/**
+ * Save an individual test result to a JSON file for later aggregation.
+ */
+function saveResultToFile(pageName: string, theme: string, result: AuditResult): void {
+  if (!fs.existsSync(RESULTS_DIR)) {
+    fs.mkdirSync(RESULTS_DIR, { recursive: true });
+  }
+
+  // Use a sanitized filename
+  const safeName = pageName.replace(/[^a-zA-Z0-9]/g, "_");
+  const safeTheme = theme.replace(/[^a-zA-Z0-9]/g, "_");
+  const filename = `${safeName}_${safeTheme}.json`;
+  const filepath = path.join(RESULTS_DIR, filename);
+
+  fs.writeFileSync(filepath, JSON.stringify({ pageName, result }, null, 2));
+}
+
+/**
+ * Load all results from the results directory.
+ */
+function loadAllResults(): Map<string, AuditResult[]> {
+  const resultsMap = new Map<string, AuditResult[]>();
+
+  if (!fs.existsSync(RESULTS_DIR)) {
+    return resultsMap;
+  }
+
+  const files = fs.readdirSync(RESULTS_DIR).filter((f) => f.endsWith(".json"));
+
+  for (const file of files) {
+    try {
+      const filepath = path.join(RESULTS_DIR, file);
+      const content = fs.readFileSync(filepath, "utf-8");
+      const data = JSON.parse(content) as { pageName: string; result: AuditResult };
+
+      const existing = resultsMap.get(data.pageName) || [];
+      existing.push(data.result);
+      resultsMap.set(data.pageName, existing);
+    } catch {
+      // Ignore malformed files
+    }
+  }
+
+  return resultsMap;
+}
+
+/**
+ * Clean up individual result files.
+ */
+function cleanupResultFiles(): void {
+  if (fs.existsSync(RESULTS_DIR)) {
+    const files = fs.readdirSync(RESULTS_DIR);
+    for (const file of files) {
+      fs.unlinkSync(path.join(RESULTS_DIR, file));
+    }
+    fs.rmdirSync(RESULTS_DIR);
+  }
 }
 
 /**
  * Generate consolidated markdown report for all blog posts.
  */
-function generateBlogPostsReport(
-  results: Map<string, AuditResult[]>
-): string {
+function generateBlogPostsReport(results: Map<string, AuditResult[]>): string {
   const timestamp = new Date().toISOString();
   const totalPages = results.size;
   let totalCombinations = 0;
@@ -171,9 +234,10 @@ function generateBlogPostsReport(
     for (const result of pageResults) {
       const actionable = getActionableViolations(result);
       const exceptions = result.violations.length - actionable.length;
-      let status = actionable.length === 0 ? "PASS" : `FAIL (${actionable.length})`;
+      let status =
+        actionable.length === 0 ? "PASS" : `FAIL (${actionable.length})`;
       if (exceptions > 0) {
-        status += exceptions > 0 ? ` [${exceptions}*]` : "";
+        status += ` [${exceptions}*]`;
       }
       themeStatuses[result.theme] = status;
     }
@@ -232,7 +296,9 @@ function generateBlogPostsReport(
 
     md += `## Violations Detail\n\n`;
 
-    for (const [violationId, violations] of Array.from(violationsByType.entries())) {
+    for (const [violationId, violations] of Array.from(
+      violationsByType.entries()
+    )) {
       const first = violations[0].violation;
       const actionableCount = violations.filter((v) => !v.isException).length;
       const exceptionCount = violations.filter((v) => v.isException).length;
@@ -275,9 +341,14 @@ function generateBlogPostsReport(
   return md;
 }
 
+// Configure test to run sequentially to avoid file write race conditions
+test.describe.configure({ mode: "serial" });
+
 test.describe("Blog Post Pages Verification (PAGE-04)", () => {
-  // Initialize results map
-  const resultsMap = new Map<string, AuditResult[]>();
+  // Clean up any previous result files before starting
+  test.beforeAll(() => {
+    cleanupResultFiles();
+  });
 
   // Test each blog post across all themes
   for (const blogPost of blogPages) {
@@ -295,10 +366,8 @@ test.describe("Blog Post Pages Verification (PAGE-04)", () => {
             language
           );
 
-          // Store result
-          const existing = resultsMap.get(blogPost.name) || [];
-          existing.push(result);
-          resultsMap.set(blogPost.name, existing);
+          // Save result to file for aggregation
+          saveResultToFile(blogPost.name, theme.name, result);
 
           // Get actionable violations (excluding known exceptions)
           const actionableViolations = getActionableViolations(result);
@@ -334,9 +403,9 @@ test.describe("Blog Post Pages Verification (PAGE-04)", () => {
   }
 
   // Generate consolidated report after all tests
-  test.afterAll(async () => {
-    // Wait for all results to be collected
-    await new Promise((resolve) => setTimeout(resolve, 500));
+  test.afterAll(() => {
+    // Load all results from files
+    const resultsMap = loadAllResults();
 
     // Generate report
     const report = generateBlogPostsReport(resultsMap);
@@ -357,7 +426,10 @@ test.describe("Blog Post Pages Verification (PAGE-04)", () => {
 
     console.log(`\n=== Blog Post Pages Verification Summary ===`);
     console.log(`Report written to: ${outputPath}`);
-    console.log(`Total blog posts: ${blogPages.length}`);
+    console.log(`Total blog posts tested: ${resultsMap.size}`);
     console.log(`Total combinations: ${blogPages.length * themes.length}`);
+
+    // Clean up result files
+    cleanupResultFiles();
   });
 });
