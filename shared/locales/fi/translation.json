@@ -163,6 +163,9 @@
   "langEN": "EN",
   "langFI": "FI",
   "langSV": "SV",
+  "langEN_ariaLabel": "English",
+  "langFI_ariaLabel": "Suomi",
+  "langSV_ariaLabel": "Svenska",
   "switchToLanguage": "Vaihda kieleen {{language}}",
   "homeUxInterfacesTitle": "Kokemus ja liittymät",
   "homeUxInterfacesDescription": "Harkittua käyttöliittymäsuunnittelua, joka yhdistää selkeyden, käytettävyyden ja visuaalisen.",
@@ -984,6 +987,14 @@
     "title": "Varhaiset LLM:t käytössä",
     "action": "Toista",
     "bodyLabel": "Ikkunan sisältö"
+  },
+  "codeBlockWindow": {
+    "copy": "Kopioi",
+    "copied": "Kopioitu",
+    "copyFailed": "Kopiointi epäonnistui",
+    "copyAriaLabel": "Kopioi koodi leikepöydälle",
+    "regionLabel": "Koodilohko ({{language}})",
+    "languageFallback": "Koodi"
   },
   "downloadResumeValid": "Salasana kelpaa",
   "articleCard": {
