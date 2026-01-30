@@ -146,6 +146,7 @@
   "contactValidationFullNameRequired": "Koko nimi on pakollinen",
   "contactValidationEmailRequired": "Sähköposti on pakollinen",
   "contactValidationEmailInvalid": "Syötä kelvollinen sähköpostiosoite",
+  "contactValidationEmailSuggestion": "Tarkoititko {{suggestion}}?",
   "contactValidationMessageRequired": "Viesti on pakollinen",
   "inputValidationEmailInvalid": "Syötä kelvollinen sähköpostiosoite",
   "inputValidationPhoneInvalid": "Virheellinen puhelinnumeron muoto",
@@ -161,6 +162,10 @@
   "langFI": "FI",
   "langSV": "SV",
   "switchToLanguage": "Vaihda kieleen {{language}}",
+  "contentLanguageNotice": "Tama sisalto on saatavilla vain {{language}}.",
+  "languageName.en": "englanniksi",
+  "languageName.fi": "suomeksi",
+  "languageName.sv": "ruotsiksi",
   "homeUxInterfacesTitle": "Kokemus ja liittymät",
   "homeUxInterfacesDescription": "Harkittua käyttöliittymäsuunnittelua, joka yhdistää selkeyden, käytettävyyden ja visuaalisen.",
   "homeCreativeDevelopment": "Luovuus & kehitys",
@@ -1006,6 +1011,14 @@
     "title": "Varhaiset LLM:t käytössä",
     "action": "Toista",
     "bodyLabel": "Ikkunan sisältö"
+  },
+  "codeBlockWindow": {
+    "copy": "Kopioi",
+    "copied": "Kopioitu",
+    "copyFailed": "Kopiointi epäonnistui",
+    "copyAriaLabel": "Kopioi koodi leikepöydälle",
+    "regionLabel": "Koodilohko ({{language}})",
+    "languageFallback": "Koodi"
   },
   "downloadResumeValid": "Salasana kelpaa",
   "articleCard": {
