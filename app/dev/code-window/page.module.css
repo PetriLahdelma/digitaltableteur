@@ -1,0 +1,21 @@
+.page {
+  padding-block: var(--space-layout-32);
+  display: grid;
+  gap: var(--space-layout-32);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-layout-8);
+}
+
+.section {
+  display: grid;
+  gap: var(--space-layout-16);
+}
+
+.darkPreview {
+  padding: var(--space-layout-24);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-light-bg);
+}

@@ -12,6 +12,11 @@
   transform: translateX(-50%);
 }
 
+.toast--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Size variants (v1.1.0) */
 .toast--sm {
   padding: var(--space-internal-8) var(--space-internal-12);

@@ -166,6 +166,9 @@
   "langEN_ariaLabel": "English",
   "langFI_ariaLabel": "Suomi",
   "langSV_ariaLabel": "Svenska",
+  "languageName.en": "englanniksi",
+  "languageName.fi": "suomeksi",
+  "languageName.sv": "ruotsiksi",
   "switchToLanguage": "Vaihda kieleen {{language}}",
   "homeUxInterfacesTitle": "Kokemus ja liittymät",
   "homeUxInterfacesDescription": "Harkittua käyttöliittymäsuunnittelua, joka yhdistää selkeyden, käytettävyyden ja visuaalisen.",
@@ -220,7 +223,7 @@
   "themeNameHcw": "Korkea kontrasti (valkoinen tausta)",
   "headerThemeAnnouncement": "Teema vaihdettu: {{theme}}",
   "themeChanged": "Teema vaihdettu: {{theme}}",
-  "languageChanged": "Kieli vaihdettu: {{language}}",
+  "languageChanged": "Kieli vaihdettu {{language}}",
   "homeDesignSprintsTitle": "Poikkeuksellista designia ilman odottelua",
   "homeDesignSprintsDescription": "Uskomme, että maailmanluokan design ei vaadi kuukausia. Siksi loimme Design Sprintit. Viimeisteltyä, ajatonta designia kahdessa viikossa.",
   "homeDesignSprintsBenefits": [

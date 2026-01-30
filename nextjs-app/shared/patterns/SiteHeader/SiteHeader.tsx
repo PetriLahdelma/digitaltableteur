@@ -41,9 +41,24 @@ const themeIcons: Record<Theme, typeof Sun> = {
 };
 
 const languages = [
-  { code: "en", labelKey: "langEN" },
-  { code: "fi", labelKey: "langFI" },
-  { code: "sv", labelKey: "langSV" },
+  {
+    code: "en",
+    labelKey: "langEN",
+    ariaLabelKey: "langEN_ariaLabel",
+    announcementKey: "languageName.en",
+  },
+  {
+    code: "fi",
+    labelKey: "langFI",
+    ariaLabelKey: "langFI_ariaLabel",
+    announcementKey: "languageName.fi",
+  },
+  {
+    code: "sv",
+    labelKey: "langSV",
+    ariaLabelKey: "langSV_ariaLabel",
+    announcementKey: "languageName.sv",
+  },
 ];
 
 const themeNames: Record<Theme, string> = {
@@ -96,8 +111,12 @@ export function SiteHeader({
     localStorage.setItem("i18nextLng", code);
 
     const langLabel = languages.find((lang) => lang.code === code);
-    const label = langLabel ? t(langLabel.labelKey) : code;
-    showToast(t("languageChanged", { language: label }), 3000);
+    const bundle = i18n.getResourceBundle(code, "translation") as
+      | Record<string, string>
+      | undefined;
+    const labelKey = langLabel?.announcementKey ?? `languageName.${code}`;
+    const label = bundle?.[labelKey] ?? code;
+    showToast(i18n.t("languageChanged", { lng: code, language: label }), 3000);
   };
 
   return (
@@ -234,19 +253,20 @@ export function SiteHeader({
         <div className="flex items-center gap-2">
           {/* Language Switcher - Desktop */}
           <div className="hidden lg:flex items-center gap-1 border-l border-border/40 ml-4 pl-4">
-            {["en", "fi", "sv"].map((code) => (
+            {languages.map((lang) => (
               <button
-                key={code}
-                onClick={() => handleLanguageChange(code)}
-                disabled={currentLang === code}
+                key={lang.code}
+                onClick={() => handleLanguageChange(lang.code)}
+                disabled={currentLang === lang.code}
+                aria-label={t(lang.ariaLabelKey)}
                 className={cn(
                   "px-2.5 py-1.5 text-sm font-heading font-bold uppercase tracking-widest transition-all cursor-pointer rounded-sm",
-                  currentLang === code
+                  currentLang === lang.code
                     ? "text-foreground bg-foreground/5"
                     : "text-muted-foreground hover:text-foreground hover:bg-foreground/5",
                 )}
               >
-                {code}
+                {lang.code.toUpperCase()}
               </button>
             ))}
           </div>

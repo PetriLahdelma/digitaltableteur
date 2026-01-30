@@ -19,6 +19,7 @@ export { default as ChatMessages } from "./ChatWidget/ChatMessages";
 export { default as ChatComposer } from "./ChatWidget/ChatComposer";
 export { default as ChatToggle } from "./ChatWidget/ChatToggle";
 export { default as CookieConsent } from "./CookieConsent/CookieConsent";
+export { default as CodeBlockWindow } from "./CodeBlockWindow/CodeBlockWindow";
 export { DonnyAvatar, type DonnyState, type DonnyAvatarProps } from "./DonnyAvatar";
 export { default as FlexBox } from "./FlexBox/FlexBox";
 export { default as FileUpload } from "./FileUpload/FileUpload";

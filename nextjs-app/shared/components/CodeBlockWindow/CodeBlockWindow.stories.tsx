@@ -1,0 +1,71 @@
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import CodeBlockWindow from "@dt/CodeBlockWindow";
+import { codeBlockFixtures } from "./codeBlockFixtures";
+import { renderCodeBlockFixtureNode } from "./CodeBlockFixtureRenderer";
+
+const meta: Meta<typeof CodeBlockWindow> = {
+  title: "Components/CodeBlockWindow",
+  component: CodeBlockWindow,
+  parameters: {
+    layout: "padded",
+  },
+  tags: ["autodocs"],
+};
+
+export default meta;
+
+const fixture = {
+  tsx: renderCodeBlockFixtureNode(codeBlockFixtures.tsx.pre),
+  bash: renderCodeBlockFixtureNode(codeBlockFixtures.bash.pre),
+  json: renderCodeBlockFixtureNode(codeBlockFixtures.json.pre),
+  longLine: renderCodeBlockFixtureNode(codeBlockFixtures.longLine.pre),
+};
+
+type Story = StoryObj<typeof CodeBlockWindow>;
+
+export const Default: Story = {
+  args: {
+    title: "components/DemoButton.tsx",
+    language: "tsx",
+    showLineNumbers: true,
+    children: fixture.tsx,
+  },
+};
+
+export const NoTitle: Story = {
+  args: {
+    language: "bash",
+    children: fixture.bash,
+  },
+};
+
+export const JsonExample: Story = {
+  args: {
+    title: "payload.json",
+    language: "json",
+    children: fixture.json,
+  },
+};
+
+export const LongLine: Story = {
+  args: {
+    title: "long-line.ts",
+    language: "ts",
+    children: fixture.longLine,
+  },
+};
+
+export const DarkPreview: Story = {
+  render: (args) => (
+    <div className="themeDark">
+      <CodeBlockWindow {...args} />
+    </div>
+  ),
+  args: {
+    title: "theme-dark.tsx",
+    language: "tsx",
+    showLineNumbers: true,
+    children: fixture.tsx,
+  },
+};
