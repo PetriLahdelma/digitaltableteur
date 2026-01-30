@@ -75,7 +75,13 @@ Plans:
   3. Error messages are descriptive and linked to fields
   4. Required fields clearly marked
   5. Navigation is consistent across pages
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Required field sr-only text for Label component (UNDR-04)
+- [ ] 04-02-PLAN.md — Email typo suggestion utility and integration (UNDR-03, UNDR-05)
+- [ ] 04-03-PLAN.md — LanguageNotice component for English-only content (WCAG 3.1.2)
+- [ ] 04-04-PLAN.md — Navigation consistency audit and mobile aria-current fix (UNDR-06)
 
 ### Phase 5: Robust Fixes
 **Goal**: Fix all WCAG Principle 4 (Robust) violations - eliminate all automated violations
@@ -151,7 +157,7 @@ Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 | 1 | Audit Infrastructure | 4 | 4/4 | Complete |
 | 2 | Perceivable Fixes | 6 | 6/6 | Complete |
 | 3 | Operable Fixes | 7 | 4/4 | Complete |
-| 4 | Understandable Fixes | 6 | TBD | Not started |
+| 4 | Understandable Fixes | 6 | 4/4 | Planned |
 | 5 | Robust Fixes | 5 | 1/1 | Complete |
 | 6 | Component Remediation | 9 | 7/7 | Complete |
 | 7 | Page-Level Verification | 5 | TBD | Not started |
@@ -171,3 +177,4 @@ Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 *Phase 2 complete: 2026-01-29 (all 4 themes pass contrast audit)*
 *Phase 3 planned: 2026-01-30*
 *Phase 3 complete: 2026-01-30*
+*Phase 4 planned: 2026-01-30*
