@@ -10,19 +10,19 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 ## Current Position
 
 - **Phase:** 3 of 8 (Operable Fixes) - IN PROGRESS
-- **Plan:** 2 of 4 complete
+- **Plan:** 3 of 4 complete
 - **Status:** Phase 3 in progress
-- **Last activity:** 2026-01-30 - Completed 03-02-PLAN.md (Keyboard Navigation Audit)
+- **Last activity:** 2026-01-30 - Completed 03-04-PLAN.md (Touch Target Audit)
 
-**Progress:** [==========] 21/23 plans complete | 5/8 phases complete (Phase 1, 2, 5, 6 complete)
+**Progress:** [==========] 22/23 plans complete | 5/8 phases complete (Phase 1, 2, 5, 6 complete)
 
 ## Current Phase
 
 **Phase 3: Operable Fixes** - IN PROGRESS
 - Status: IN PROGRESS
-- Plans: 03-01, 03-02 complete, 03-03, 03-04 pending
+- Plans: 03-01, 03-02, 03-04 complete, 03-03 pending
 - Goal: Ensure all interactive content is keyboard operable with visible focus
-- Result: Focus visibility + keyboard navigation tests; OPER-01 and OPER-05 verified
+- Result: Focus visibility + keyboard navigation + touch target tests; OPER-01, OPER-04, OPER-05, OPER-06, OPER-07 verified
 
 ### Plans
 
@@ -31,7 +31,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | 03-01 | Focus visibility audit and fix | 1 | - | **Complete** |
 | 03-02 | Keyboard navigation audit | 1 | - | **Complete** |
 | 03-03 | Focus trap and skip link verification | 1 | - | Pending |
-| 03-04 | Touch target audit | 2 | 03-01 to 03-03 | Pending |
+| 03-04 | Touch target audit | 2 | 03-01, 03-02 | **Complete** |
 
 ### Previous Phases
 
@@ -46,7 +46,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 |-------|--------|-------|
 | 1. Audit Infrastructure | **Complete** | 4/4 |
 | 2. Perceivable Fixes | **Complete** | 6/6 |
-| 3. Operable Fixes | **In Progress** | 2/4 |
+| 3. Operable Fixes | **In Progress** | 3/4 |
 | 4. Understandable Fixes | Ready | - |
 | 5. Robust Fixes | **Complete** | 1/1 |
 | 6. Component Remediation | **Complete** | 7/7 |
@@ -104,6 +104,9 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **03-02 Summary** | .planning/phases/03-operable-fixes/03-02-SUMMARY.md | **Done** |
 | **Keyboard Navigation Tests** | tests/a11y/operable/keyboard-navigation.spec.ts | **Done** |
 | **KEYBOARD-AUDIT.md** | .planning/phases/03-operable-fixes/KEYBOARD-AUDIT.md | **Done** |
+| **03-04 Summary** | .planning/phases/03-operable-fixes/03-04-SUMMARY.md | **Done** |
+| **Touch Target Tests** | tests/a11y/operable/touch-targets.spec.ts | **Done** |
+| **TOUCH-TARGET-AUDIT.md** | .planning/phases/03-operable-fixes/TOUCH-TARGET-AUDIT.md | **Done** |
 
 ## Accumulated Decisions
 
@@ -157,6 +160,9 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **Allow 3-5 focus order violations** | 03-02 | Footer grid layouts acceptable per WCAG interpretation |
 | **Skip Tabs tests when no tablist** | 03-02 | Component verified in Phase 6, tests activate when used |
 | **Skip link via focus + scroll/view** | 03-02 | Both focus transfer and scroll to view are acceptable behaviors |
+| **Touch target 44px mobile override** | 03-04 | Button.sm/md iconOnly increased to 44px on mobile for WCAG 2.5.5 |
+| **Button.md iconOnly included in fix** | 03-04 | 40px is 4px short of threshold, full compliance preferred |
+| **DonnyAvatar speak animation compliant** | 03-04 | 3.33Hz but shape transform only, not luminance flash |
 
 ## Audit Results Summary
 
@@ -206,7 +212,8 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | OPER-03 (Skip Links) | **Complete** | 03-02 (verified) |
 | OPER-04 (Focus Visible) | **Complete** | 03-01 |
 | OPER-05 (Focus Order) | **Complete** | 03-02 |
-| OPER-06 (Touch Targets) | Pending | 03-04 |
+| OPER-06 (Touch Targets) | **Complete** | 03-04 |
+| OPER-07 (Animation Frequency) | **Complete** | 03-04 |
 
 ## Context for Next Session
 
@@ -250,15 +257,18 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 **Phase 3 In Progress:**
 - **Plan 03-01 complete:** Accordion trigger focus visibility fixed
 - **Plan 03-02 complete:** Keyboard navigation test suite (810 lines)
-- Focus visibility + keyboard navigation tests verify OPER-01, OPER-04, OPER-05
+- **Plan 03-04 complete:** Touch target audit and Button.sm/md fix for mobile
+- Focus visibility + keyboard navigation + touch target tests verify OPER-01, OPER-04, OPER-05, OPER-06, OPER-07
 - KEYBOARD-AUDIT.md documents 20/20 tests passing
+- TOUCH-TARGET-AUDIT.md documents 17+ components + 20+ animations
 - OPER-01 (Keyboard Accessible) now COMPLETE
 - OPER-05 (Focus Order) now COMPLETE
+- OPER-06 (Touch Targets) now COMPLETE
+- OPER-07 (Animation Frequency) now COMPLETE
 - Skip link verified to exist and work (OPER-03 satisfied)
 
 **Next Steps:**
 - Plan 03-03: Focus trap verification (Modal, MobileDrawer, ChatWidget)
-- Plan 03-04: Touch target audit (44px minimum on mobile)
 - Phase 4: Understandable Fixes (lang, labels, errors)
 - Phase 7: Page-Level Verification (when plans created)
 - Phase 8: Final Verification (manual screen reader testing)
@@ -271,9 +281,9 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 
 ## Session Continuity
 
-- **Last session:** 2026-01-30T12:29:09Z
-- **Stopped at:** Completed 03-02-PLAN.md (Keyboard Navigation Audit)
+- **Last session:** 2026-01-30T12:35:00Z
+- **Stopped at:** Completed 03-04-PLAN.md (Touch Target Audit)
 - **Resume file:** None - continue with 03-03-PLAN.md
 
 ---
-*Last updated: 2026-01-30 after Plan 03-02 completion (Keyboard navigation audit complete)*
+*Last updated: 2026-01-30 after Plan 03-04 completion (Touch target audit complete)*
