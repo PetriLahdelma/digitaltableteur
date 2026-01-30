@@ -32,6 +32,9 @@ const allResults = new Map<string, AuditResult[]>();
 const REPORT_DIR = "tests/a11y/page-reports/legal";
 
 test.describe("Legal Pages Verification", () => {
+  // Run tests sequentially to share results across tests in same worker
+  test.describe.configure({ mode: "serial" });
+
   test.beforeAll(async () => {
     // Ensure report directory exists
     const absoluteReportDir = path.resolve(REPORT_DIR);
