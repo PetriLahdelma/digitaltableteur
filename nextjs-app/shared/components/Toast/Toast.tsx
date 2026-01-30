@@ -47,10 +47,12 @@ const Toast: React.FC<ToastProps> = ({
     return () => clearTimeout(timer);
   }, [isOpen, duration, onClose]);
 
-  if (!isOpen) return null;
+  const isVisible = Boolean(isOpen);
+  const displayMessage = isVisible ? message : "";
 
   // Determine aria-live based on severity
-  const ariaLive = severity === "error" || severity === "warning" ? "assertive" : "polite";
+  const ariaLive =
+    severity === "error" || severity === "warning" ? "assertive" : "polite";
 
   return (
     <div
@@ -59,13 +61,15 @@ const Toast: React.FC<ToastProps> = ({
         styles[`toast--${normalizedSize}`],
         severity ? styles[`toast--${severity}`] : "",
         styles[`toast--${position}`],
+        !isVisible ? styles["toast--hidden"] : "",
       ]
         .filter(Boolean)
         .join(" ")}
       role="status"
       aria-live={ariaLive}
+      aria-atomic="true"
     >
-      {message}
+      {displayMessage}
     </div>
   );
 };

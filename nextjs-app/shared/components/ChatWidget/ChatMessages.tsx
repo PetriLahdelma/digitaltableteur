@@ -96,7 +96,13 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
     // Empty state when no messages
     if (processed.length === 0) {
       return (
-        <div className={styles.messages} ref={ref}>
+        <div
+          className={styles.messages}
+          ref={ref}
+          role="log"
+          aria-live="polite"
+          aria-label={t("chatMessages.ariaLabel", "Chat messages")}
+        >
           <div className={styles.emptyState}>
             <Text className={styles.emptyStateText}>
               {t("chatMessages.empty")}
@@ -107,7 +113,14 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
     }
 
     return (
-      <div className={styles.messages} ref={ref}>
+      <div
+        className={styles.messages}
+        ref={ref}
+        role="log"
+        aria-live="polite"
+        aria-label={t("chatMessages.ariaLabel", "Chat messages")}
+        aria-relevant="additions"
+      >
         {processed.map((message, msgIndex) => {
           const workflowUI =
             msgIndex === lastAssistantIndex ? renderWorkflow() : null;

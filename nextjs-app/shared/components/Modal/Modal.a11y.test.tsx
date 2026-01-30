@@ -174,23 +174,27 @@ describe("Modal Accessibility", () => {
       expect(dialog).toHaveAttribute("aria-label", "Dialog");
     });
 
-    it("has aria-live for severity modals", () => {
+    it("should not have aria-live on alertdialog (role already implies announcement)", () => {
       render(
         <Modal isOpen title="Error" severity="error">
           <p>Error message</p>
         </Modal>
       );
       const dialog = screen.getByRole("alertdialog");
-      expect(dialog).toHaveAttribute("aria-live", "assertive");
+      // alertdialog role already implies assertive announcement
+      // Adding aria-live would cause double screen reader announcements
+      expect(dialog).not.toHaveAttribute("aria-live");
     });
 
-    it("has polite aria-live for success/info", () => {
+    it("should not have aria-live on dialog (prevents double announcement)", () => {
       render(
         <Modal isOpen title="Success" severity="success">
           <p>Success message</p>
         </Modal>
       );
-      expect(screen.getByRole("dialog")).toHaveAttribute("aria-live", "polite");
+      // dialog role is announced when opened
+      // Adding aria-live would cause double screen reader announcements
+      expect(screen.getByRole("dialog")).not.toHaveAttribute("aria-live");
     });
   });
 

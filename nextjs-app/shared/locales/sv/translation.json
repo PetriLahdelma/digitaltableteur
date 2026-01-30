@@ -146,6 +146,7 @@
   "contactValidationFullNameRequired": "Fullständigt namn krävs",
   "contactValidationEmailRequired": "E-post krävs",
   "contactValidationEmailInvalid": "Ange en giltig e-postadress",
+  "contactValidationEmailSuggestion": "Menade du {{suggestion}}?",
   "contactValidationMessageRequired": "Meddelande krävs",
   "inputValidationEmailInvalid": "Ange en giltig e-postadress",
   "inputValidationPhoneInvalid": "Ogiltigt telefonnummerformat",
@@ -160,7 +161,14 @@
   "langEN": "EN",
   "langFI": "FI",
   "langSV": "SV",
+  "langEN_ariaLabel": "English",
+  "langFI_ariaLabel": "Suomi",
+  "langSV_ariaLabel": "Svenska",
   "switchToLanguage": "Växla till {{language}}",
+  "contentLanguageNotice": "Detta innehall finns endast pa {{language}}.",
+  "languageName.en": "engelska",
+  "languageName.fi": "finska",
+  "languageName.sv": "svenska",
   "homeUxInterfacesTitle": "Användarupplevelse och gränssnitt",
   "homeUxInterfacesDescription": "Genomtänkt interfacedesign som blandar tydlighet, användbarhet och visuell samstämmighet till meningsfulla resor.",
   "homeCreativeDevelopment": "Kreativitet & Utveckling",
@@ -1016,6 +1024,14 @@
     "title": "Tidiga LLM:er i bruk",
     "action": "Spela upp",
     "bodyLabel": "Fönsterinnehåll"
+  },
+  "codeBlockWindow": {
+    "copy": "Kopiera",
+    "copied": "Kopierad",
+    "copyFailed": "Kopieringen misslyckades",
+    "copyAriaLabel": "Kopiera kod till urklipp",
+    "regionLabel": "Kodblock ({{language}})",
+    "languageFallback": "Kod"
   },
   "downloadResumeValid": "Lösenordet godkändes",
   "articleCard": {

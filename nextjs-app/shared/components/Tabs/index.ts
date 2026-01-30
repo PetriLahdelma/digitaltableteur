@@ -1,2 +1,2 @@
-export { default } from "./Tabs";
+export { default, getTabPanelProps } from "./Tabs";
 export type { TabItem, TabsProps } from "./Tabs";

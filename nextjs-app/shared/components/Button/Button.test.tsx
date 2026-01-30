@@ -177,4 +177,67 @@ describe("Button", () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+
+  describe("accessibility", () => {
+    describe("icon-only buttons", () => {
+      it("should warn in dev mode when icon-only button lacks accessible name", () => {
+        const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+        render(<Button icon="search" />);
+        expect(consoleSpy).toHaveBeenCalledWith(
+          expect.stringContaining("Icon-only button detected without accessible name")
+        );
+        consoleSpy.mockRestore();
+      });
+
+      it("should not warn when icon-only button has accessibleName", () => {
+        const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+        render(<Button icon="search" accessibleName="Search" />);
+        // Check that no Button-specific warning was called (other warnings may occur from Icon)
+        const buttonWarnings = consoleSpy.mock.calls.filter(
+          (call) => typeof call[0] === "string" && call[0].includes("[Button]")
+        );
+        expect(buttonWarnings).toHaveLength(0);
+        consoleSpy.mockRestore();
+      });
+
+      it("should not warn when icon-only button has tooltip", () => {
+        const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+        render(<Button icon="search" tooltip="Search" />);
+        // Check that no Button-specific warning was called (other warnings may occur from Icon)
+        const buttonWarnings = consoleSpy.mock.calls.filter(
+          (call) => typeof call[0] === "string" && call[0].includes("[Button]")
+        );
+        expect(buttonWarnings).toHaveLength(0);
+        consoleSpy.mockRestore();
+      });
+
+      it("should use tooltip as aria-label when accessibleName is not provided", () => {
+        const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+        render(<Button icon="search" tooltip="Search the site" />);
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("aria-label", "Search the site");
+        consoleSpy.mockRestore();
+      });
+    });
+
+    describe("loading state", () => {
+      it("should have aria-busy when loading", () => {
+        render(<Button isLoading>Submit</Button>);
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("aria-busy", "true");
+      });
+
+      it("should not have aria-busy when not loading", () => {
+        render(<Button>Submit</Button>);
+        const button = screen.getByRole("button");
+        expect(button).not.toHaveAttribute("aria-busy");
+      });
+
+      it("should have aria-busy when using legacy loading prop", () => {
+        render(<Button loading>Submit</Button>);
+        const button = screen.getByRole("button");
+        expect(button).toHaveAttribute("aria-busy", "true");
+      });
+    });
+  });
 });

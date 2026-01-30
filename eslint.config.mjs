@@ -14,6 +14,7 @@ export default [
   {
     ignores: [
       ".sanity/",
+      ".history/",
       "__visual__/",
       "debug-env.js",
       "digitaltableteur-blog/",
