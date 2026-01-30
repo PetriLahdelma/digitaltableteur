@@ -60,10 +60,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Focus visibility audit and Accordion trigger fix (OPER-04)
-- [ ] 03-02-PLAN.md — Keyboard navigation audit with Playwright tests (OPER-01, OPER-05)
-- [ ] 03-03-PLAN.md — Focus trap and skip link verification (OPER-02, OPER-03)
-- [ ] 03-04-PLAN.md — Touch target audit and Button.sm fix (OPER-06, OPER-07)
+- [x] 03-01-PLAN.md — Focus visibility audit and Accordion trigger fix (OPER-04)
+- [x] 03-02-PLAN.md — Keyboard navigation audit with Playwright tests (OPER-01, OPER-05)
+- [x] 03-03-PLAN.md — Focus trap and skip link verification (OPER-02, OPER-03)
+- [x] 03-04-PLAN.md — Touch target audit and Button.sm fix (OPER-06, OPER-07)
 
 ### Phase 4: Understandable Fixes
 **Goal**: Fix all WCAG Principle 3 (Understandable) violations
@@ -150,7 +150,7 @@ Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 |-------|------|--------------|-------|--------|
 | 1 | Audit Infrastructure | 4 | 4/4 | Complete |
 | 2 | Perceivable Fixes | 6 | 6/6 | Complete |
-| 3 | Operable Fixes | 7 | 4/4 | Planned |
+| 3 | Operable Fixes | 7 | 4/4 | Complete |
 | 4 | Understandable Fixes | 6 | TBD | Not started |
 | 5 | Robust Fixes | 5 | 1/1 | Complete |
 | 6 | Component Remediation | 9 | 7/7 | Complete |
@@ -170,3 +170,4 @@ Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 *Phase 2 gap closure planned: 2026-01-28*
 *Phase 2 complete: 2026-01-29 (all 4 themes pass contrast audit)*
 *Phase 3 planned: 2026-01-30*
+*Phase 3 complete: 2026-01-30*
