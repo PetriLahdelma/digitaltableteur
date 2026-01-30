@@ -97,12 +97,30 @@ Requirements for complete WCAG 2.1 AA audit and remediation.
 
 ### Understandable (WCAG Principle 3)
 
-- [ ] **UNDR-01**: Page language declared in HTML lang attribute
-- [ ] **UNDR-02**: Form inputs have visible labels
-- [ ] **UNDR-03**: Error messages identify the field and describe the error
-- [ ] **UNDR-04**: Required fields are clearly indicated
-- [ ] **UNDR-05**: Error suggestions provided where possible
-- [ ] **UNDR-06**: Navigation is consistent across pages
+- [x] **UNDR-01**: Page language declared in HTML lang attribute
+  - Status: Complete (2026-01-30)
+  - Verified: HtmlLangSync component dynamically updates HTML lang on language change
+  - See: navigation-consistency.spec.ts
+- [x] **UNDR-02**: Form inputs have visible labels
+  - Status: Complete (2026-01-30)
+  - Verified: Label component with htmlFor, labels positioned above inputs
+  - See: form-labels.spec.ts
+- [x] **UNDR-03**: Error messages identify the field and describe the error
+  - Status: Complete (2026-01-30)
+  - Verified: Error messages with role="alert", aria-describedby linking
+  - See: form-labels.spec.ts, 06-02-SUMMARY.md
+- [x] **UNDR-04**: Required fields are clearly indicated
+  - Status: Complete (2026-01-30)
+  - Verified: Asterisk with aria-hidden, sr-only "(required)" text
+  - See: form-labels.spec.ts, 04-01-SUMMARY.md
+- [x] **UNDR-05**: Error suggestions provided where possible
+  - Status: Complete (2026-01-30)
+  - Verified: Email typo suggestions implemented with "Did you mean" pattern
+  - See: form-labels.spec.ts, 04-02-SUMMARY.md
+- [x] **UNDR-06**: Navigation is consistent across pages
+  - Status: Complete (2026-01-30)
+  - Verified: Desktop/mobile nav order matches, aria-current on active links
+  - See: navigation-consistency.spec.ts, 04-04-SUMMARY.md
 
 ### Robust (WCAG Principle 4)
 
@@ -222,12 +240,12 @@ Deferred to future work.
 | OPER-05 | Phase 3 | **Complete** |
 | OPER-06 | Phase 3 | **Complete** |
 | OPER-07 | Phase 3 | **Complete** |
-| UNDR-01 | Phase 4 | Pending |
-| UNDR-02 | Phase 4 | Pending |
-| UNDR-03 | Phase 4 | Pending |
-| UNDR-04 | Phase 4 | Pending |
-| UNDR-05 | Phase 4 | Pending |
-| UNDR-06 | Phase 4 | Pending |
+| UNDR-01 | Phase 4 | **Complete** |
+| UNDR-02 | Phase 4 | **Complete** |
+| UNDR-03 | Phase 4 | **Complete** |
+| UNDR-04 | Phase 4 | **Complete** |
+| UNDR-05 | Phase 4 | **Complete** |
+| UNDR-06 | Phase 4 | **Complete** |
 | RBST-01 | Phase 5 | **Complete** |
 | RBST-02 | Phase 5 | **Complete** |
 | RBST-03 | Phase 5 | **Complete** |
@@ -260,4 +278,4 @@ Deferred to future work.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-30 after Phase 3 completion (OPER-01 through OPER-07 all complete)*
+*Last updated: 2026-01-30 after Phase 4 completion (UNDR-01 through UNDR-06 all complete)*
