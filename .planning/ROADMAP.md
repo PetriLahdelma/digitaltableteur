@@ -1,121 +1,172 @@
-# Roadmap: Portfolio Case Studies
+# Roadmap: Accessibility Audit
 
 ## Overview
 
-Expanding the portfolio from SAP Build Apps to include three additional case studies: VertaaUX, Finnish Transport Agency, and Raw View. Each project tells a true story with unique composition using the layout patterns established in v1.0.
+Comprehensive WCAG 2.1 AA audit and remediation for the entire public-facing Digitaltableteur website. Eight phases: establish baseline, fix by WCAG principle, remediate components, verify pages, final validation.
 
 ## Milestones
 
-- ✅ **v1.0 MVP** - Phases 1-6 (shipped 2026-01-19)
-- ✅ **v1.1 Portfolio Expansion** - Phases 7-9 (shipped 2026-01-27)
-- 📋 **v1.2 Enhanced Portfolio** - Tulli, Intrum, animations (planned)
+- **v1.0 Full Audit + Fixes** - Phases 1-8 (in progress)
 
 ## Phases
 
-**Phase Numbering:**
-- Integer phases (1, 2, 3): Planned milestone work
-- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
-
-Decimal phases appear between their surrounding integers in numeric order.
-
-<details>
-<summary>✅ v1.0 MVP (Phases 1-6) - SHIPPED 2026-01-19</summary>
-
-### Phase 1: Image Processing
-**Goal**: Process and optimize source images for SAP Build Apps case study
-**Plans**: Completed
-
-### Phase 2: Content Accuracy
-**Goal**: Fix inaccurate claims and update content with verified facts
-**Plans**: Completed
-
-### Phase 3: Image Integration
-**Goal**: Add processed images to the case study page
-**Plans**: Completed
-
-### Phase 4: Data Components
-**Goal**: Add Data Components section (Tables & Data Visualization)
-**Plans**: Completed
-
-### Phase 5: Metadata & SEO
-**Goal**: Add full SEO metadata with OpenGraph and Twitter cards
-**Plans**: Completed
-
-### Phase 6: Verification & Outcomes
-**Goal**: Final verification and add outcomes section
-**Plans**: Completed
-
-</details>
-
-### ✅ v1.1 Portfolio Expansion (Complete)
-
-**Milestone Goal:** Add 3 portfolio case studies with unique layouts and verified content.
-
-- [x] **Phase 7: VertaaUX** - UX research and comparison tool case study ✓
-- [x] **Phase 8: Finnish Transport Agency** - Government digital services case study ✓
-- [x] **Phase 9: Raw View** - Photography and visual design case study ✓
-
-## Phase Details
-
-### Phase 7: VertaaUX
-**Goal**: Complete case study page showcasing UX research and comparison tool work
-**Depends on**: Nothing (first phase of v1.1)
-**Requirements**: CASE-01, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, QUAL-01, QUAL-02, QUAL-03, QUAL-04
-**Success Criteria** (what must be TRUE):
-  1. User can navigate to `/work/vertaaux` and see full case study
-  2. Hero section displays project image, title, duration, and role
-  3. Story sections tell context, challenge, and solution narrative
-  4. Gallery shows optimized WebP images with proper captions
-  5. Layout composition feels distinct from other case studies
-**Research**: Unlikely (established patterns from v1.0)
-**Plans**: 2 plans
+### Phase 1: Audit Infrastructure
+**Goal**: Establish automated testing baseline and document all violations
+**Requirements**: INFRA-01, INFRA-02, INFRA-03, INFRA-04
+**Success Criteria**:
+  1. axe-core audit runs on all public pages without errors
+  2. Baseline violations documented with severity (P0/P1/P2)
+  3. Manual testing checklist created from research
+  4. @axe-core/playwright configured for page-level tests
+**Plans**: 4 plans
 
 Plans:
-- [x] 07-01: Content expansion (ProcessBlock + StoryBlocks)
-- [x] 07-02: Unique layout styling + visual verification
+- [x] 01-01-PLAN.md — Set up @axe-core/playwright for page-level tests
+- [x] 01-02-PLAN.md — Run automated audit and capture violations
+- [x] 01-03-PLAN.md — Create manual testing checklist from research
+- [x] 01-04-PLAN.md — Document baseline report with remediation plan
 
-### Phase 8: Finnish Transport Agency
-**Goal**: Complete case study page showcasing government digital services work
-**Depends on**: Phase 7 (for pattern refinement)
-**Requirements**: CASE-02, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, QUAL-01, QUAL-02, QUAL-03, QUAL-04
-**Success Criteria** (what must be TRUE):
-  1. User can navigate to `/work/finnish-transport-agency` and see full case study
-  2. Hero section displays project image, title, duration, and role
-  3. Story sections tell context, challenge, and solution narrative
-  4. Gallery shows optimized WebP images with proper captions
-  5. Layout composition feels distinct from other case studies
-**Research**: Unlikely (same patterns as Phase 7)
-**Plans**: 2 plans
-
-Plans:
-- [x] 08-01: Content expansion (ProcessBlock + outcomes)
-- [x] 08-02: Unique styling + visual verification
-
-### Phase 9: Raw View
-**Goal**: Complete case study page showcasing photography and visual design work
-**Depends on**: Phase 8 (for pattern refinement)
-**Requirements**: CASE-03, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, QUAL-01, QUAL-02, QUAL-03, QUAL-04
-**Success Criteria** (what must be TRUE):
-  1. User can navigate to `/work/raw-view` and see full case study
-  2. Hero section displays project image, title, duration, and role
-  3. Story sections tell context, challenge, and solution narrative
-  4. Gallery shows optimized WebP images with proper captions
-  5. Layout composition feels distinct from other case studies
-**Research**: Unlikely (same patterns as Phases 7-8)
-**Plans**: 2 plans
+### Phase 2: Perceivable Fixes
+**Goal**: Fix all WCAG Principle 1 (Perceivable) violations
+**Depends on**: Phase 1 (need baseline to know what to fix)
+**Requirements**: PERC-01, PERC-02, PERC-03, PERC-04, PERC-05, PERC-06
+**Success Criteria**:
+  1. All images have appropriate alt text
+  2. Color contrast passes 4.5:1 / 3:1 requirements
+  3. All 4 themes pass contrast verification
+  4. Content reflows correctly at 320px
+  5. Text resizes to 200% without breaking
+**Plans**: 6 plans
 
 Plans:
-- [x] 09-01-PLAN.md — Add ProcessBlock methodology and outcomes section
-- [x] 09-02-PLAN.md — Editorial-inspired styling + visual verification
+- [x] 02-01-PLAN.md — Audit image alt text (PERC-01) PASS
+- [x] 02-02-PLAN.md — Audit color contrast across all themes (PERC-02, PERC-06) GAPS FOUND
+- [x] 02-03-PLAN.md — Audit color independence (PERC-03) MOSTLY COMPLIANT
+- [x] 02-04-PLAN.md — Audit reflow and zoom (PERC-04, PERC-05) PASS
+- [x] 02-05-PLAN.md — Consolidate findings and update requirements
+- [x] 02-06-PLAN.md — Fix contrast gaps: Logo text + ChatWidget toggle (gap closure) COMPLETE
+
+### Phase 3: Operable Fixes
+**Goal**: Fix all WCAG Principle 2 (Operable) violations
+**Depends on**: Phase 1
+**Requirements**: OPER-01, OPER-02, OPER-03, OPER-04, OPER-05, OPER-06, OPER-07
+**Success Criteria**:
+  1. All functionality works via keyboard only
+  2. Skip links implemented and functional
+  3. Focus visible on all interactive elements
+  4. Focus order is logical
+  5. No keyboard traps exist
+  6. Touch targets meet 44x44px minimum
+**Plans**: 4 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Focus visibility audit and Accordion trigger fix (OPER-04)
+- [ ] 03-02-PLAN.md — Keyboard navigation audit with Playwright tests (OPER-01, OPER-05)
+- [ ] 03-03-PLAN.md — Focus trap and skip link verification (OPER-02, OPER-03)
+- [ ] 03-04-PLAN.md — Touch target audit and Button.sm fix (OPER-06, OPER-07)
+
+### Phase 4: Understandable Fixes
+**Goal**: Fix all WCAG Principle 3 (Understandable) violations
+**Depends on**: Phase 1
+**Requirements**: UNDR-01, UNDR-02, UNDR-03, UNDR-04, UNDR-05, UNDR-06
+**Success Criteria**:
+  1. HTML lang attribute set correctly
+  2. All form inputs have visible labels
+  3. Error messages are descriptive and linked to fields
+  4. Required fields clearly marked
+  5. Navigation is consistent across pages
+**Plans**: TBD
+
+### Phase 5: Robust Fixes
+**Goal**: Fix all WCAG Principle 4 (Robust) violations - eliminate all automated violations
+**Depends on**: Phase 1
+**Requirements**: RBST-01, RBST-02, RBST-03, RBST-04, RBST-05
+**Success Criteria**:
+  1. HTML validates without parsing errors
+  2. All interactive elements have accessible names
+  3. ARIA attributes are valid and correct
+  4. Status messages announced to AT
+  5. Dynamic content updates announced
+**Plans**: 1 plan
+
+Plans:
+- [x] 05-01-PLAN.md — Fix Toaster aria-prohibited-attr violation (single fix resolves all 11 violations)
+
+### Phase 6: Component Remediation
+**Goal**: Fix accessibility issues in specific components identified by research
+**Depends on**: Phases 2-5 (general fixes inform component work)
+**Requirements**: COMP-01 through COMP-09
+**Success Criteria**:
+  1. Modal focus management and ARIA fixed
+  2. Navigation has skip links and proper ARIA
+  3. Forms have proper error state ARIA
+  4. ChatWidget has aria-expanded and role="log"
+  5. Tabs have proper panel associations
+  6. Accordion uses hidden attribute
+  7. Toast live region persists
+  8. All icon-only buttons have names
+  9. Links distinguishable from buttons
+**Plans**: 7 plans
+
+Plans:
+- [x] 06-01-PLAN.md — Fix Modal aria-live (remove to prevent double announcement)
+- [x] 06-02-PLAN.md — Fix Forms aria-invalid, aria-describedby, role="alert"
+- [x] 06-03-PLAN.md — Fix ChatMessages role="log" and aria-live
+- [x] 06-04-PLAN.md — Fix Tabs aria-controls and tabpanel helpers
+- [x] 06-05-PLAN.md — Fix Accordion hidden attribute (always-in-DOM panels)
+- [x] 06-06-PLAN.md — Fix Button icon-only validation and aria-busy
+- [x] 06-07-PLAN.md — Verify all COMP fixes and update requirements
+
+### Phase 7: Page-Level Verification
+**Goal**: Verify each public page passes complete audit
+**Depends on**: Phase 6
+**Requirements**: PAGE-01, PAGE-02, PAGE-03, PAGE-04, PAGE-05
+**Success Criteria**:
+  1. Home page passes automated + manual audit
+  2. About page passes audit
+  3. Work/Portfolio pages pass audit
+  4. Blog pages pass audit
+  5. Contact page passes audit
+**Plans**: TBD
+
+### Phase 8: Final Verification
+**Goal**: Complete screen reader, keyboard, and theme testing
+**Depends on**: Phase 7
+**Requirements**: VERF-01, VERF-02, VERF-03, VERF-04, VERF-05
+**Success Criteria**:
+  1. VoiceOver testing complete on all pages
+  2. Keyboard-only navigation verified
+  3. High contrast modes verified
+  4. 200% zoom verified
+  5. Final audit report documented
+**Plans**: TBD
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 7 → 8 → 9
+Phase 1 -> Phases 2-5 (can run in parallel) -> Phase 6 -> Phase 7 -> Phase 8
 
-| Phase | Milestone | Plans Complete | Status | Completed |
-|-------|-----------|----------------|--------|-----------|
-| 1-6 | v1.0 | ✓ | Complete | 2026-01-19 |
-| 7. VertaaUX | v1.1 | 2/2 | Complete | 2026-01-19 |
-| 8. Finnish Transport Agency | v1.1 | 2/2 | Complete | 2026-01-19 |
-| 9. Raw View | v1.1 | 2/2 | Complete | 2026-01-27 |
+| Phase | Name | Requirements | Plans | Status |
+|-------|------|--------------|-------|--------|
+| 1 | Audit Infrastructure | 4 | 4/4 | Complete |
+| 2 | Perceivable Fixes | 6 | 6/6 | Complete |
+| 3 | Operable Fixes | 7 | 4/4 | Planned |
+| 4 | Understandable Fixes | 6 | TBD | Not started |
+| 5 | Robust Fixes | 5 | 1/1 | Complete |
+| 6 | Component Remediation | 9 | 7/7 | Complete |
+| 7 | Page-Level Verification | 5 | TBD | Not started |
+| 8 | Final Verification | 5 | TBD | Not started |
+
+---
+*Roadmap created: 2026-01-27*
+*Phase 1 planned: 2026-01-27*
+*Phase 1 complete: 2026-01-27*
+*Phase 5 planned: 2026-01-27*
+*Phase 5 complete: 2026-01-27*
+*Phase 6 planned: 2026-01-27*
+*Phase 6 complete: 2026-01-28*
+*Phase 2 planned: 2026-01-28*
+*Phase 2 audits complete: 2026-01-28 (gaps found: contrast issues in Dark/HCB themes)*
+*Phase 2 gap closure planned: 2026-01-28*
+*Phase 2 complete: 2026-01-29 (all 4 themes pass contrast audit)*
+*Phase 3 planned: 2026-01-30*
