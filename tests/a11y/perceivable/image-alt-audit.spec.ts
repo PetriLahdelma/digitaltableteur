@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { test, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import * as fs from "fs";
 import * as path from "path";
@@ -40,7 +40,7 @@ const allResults: Record<
     url: string;
     violations: Array<{
       id: string;
-      impact: string | undefined;
+      impact: string | null | undefined;
       description: string;
       help: string;
       helpUrl: string;
@@ -53,7 +53,7 @@ const allResults: Record<
 
 // Helper to run audit and store results
 async function auditPage(
-  page: Parameters<Parameters<typeof test>[1]>[0]["page"],
+  page: Page,
   pageName: string,
   url: string
 ) {

@@ -112,6 +112,11 @@ const getTextContent = (value: React.ReactNode): string => {
   return "";
 };
 
+const isPreElement = (
+  node: React.ReactNode,
+): node is React.ReactElement<React.ComponentPropsWithoutRef<"pre">> =>
+  React.isValidElement(node) && node.type === "pre";
+
 const MdxFigure = ({
   children,
   className,
@@ -133,7 +138,9 @@ const MdxFigure = ({
   const childArray = React.Children.toArray(children);
   let title: string | undefined;
   let caption: string | undefined;
-  let preElement: React.ReactElement | null = null;
+  let preElement: React.ReactElement<React.ComponentPropsWithoutRef<"pre">> | null =
+    null;
+  let languageValue: string | undefined;
 
   childArray.forEach((child) => {
     if (!React.isValidElement(child)) return;
@@ -146,8 +153,12 @@ const MdxFigure = ({
       caption = getTextContent(childProps.children);
       return;
     }
-    if (child.type === "pre") {
+    if (isPreElement(child)) {
       preElement = child;
+      const dataLanguage = (childProps as DataProps)["data-language"];
+      if (typeof dataLanguage === "string") {
+        languageValue = dataLanguage;
+      }
     }
   });
 
@@ -158,11 +169,6 @@ const MdxFigure = ({
       </figure>
     );
   }
-
-  const languageValue =
-    typeof (preElement.props as DataProps)["data-language"] === "string"
-      ? ((preElement.props as DataProps)["data-language"] as string)
-      : undefined;
 
   return (
     <CodeBlockWindow
