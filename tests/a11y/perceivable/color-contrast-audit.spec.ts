@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { test, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import * as fs from "fs";
 import * as path from "path";
@@ -42,7 +42,7 @@ const contrastRules = ["color-contrast", "link-in-text-block"];
 // Store results for all themes and pages
 interface ContrastViolation {
   id: string;
-  impact: string | undefined;
+  impact: string | null | undefined;
   description: string;
   help: string;
   helpUrl: string;
@@ -69,7 +69,7 @@ const allThemeResults: ThemeResult[] = [];
 
 // Helper to apply theme class
 async function applyTheme(
-  page: Parameters<Parameters<typeof test>[1]>[0]["page"],
+  page: Page,
   themeClassName: string | null
 ) {
   if (themeClassName) {
@@ -100,7 +100,7 @@ async function applyTheme(
 
 // Helper to run contrast audit
 async function auditContrastForTheme(
-  page: Parameters<Parameters<typeof test>[1]>[0]["page"],
+  page: Page,
   theme: (typeof themes)[number],
   pageInfo: (typeof pages)[number]
 ): Promise<PageResult> {

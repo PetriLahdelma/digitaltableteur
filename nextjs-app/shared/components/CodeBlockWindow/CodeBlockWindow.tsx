@@ -64,22 +64,32 @@ const hasLineNumbers = (value: React.ReactNode): boolean => {
   return hasLineNumbers(props.children);
 };
 
+const isPreElement = (
+  node: React.ReactNode,
+): node is React.ReactElement<React.ComponentPropsWithoutRef<"pre">> =>
+  React.isValidElement(node) && node.type === "pre";
+
+const isCodeElement = (
+  node: React.ReactNode,
+): node is React.ReactElement<React.ComponentPropsWithoutRef<"code">> =>
+  React.isValidElement(node) && node.type === "code";
+
 const enhancePreElement = (preNode: React.ReactNode) => {
-  if (!React.isValidElement(preNode) || preNode.type !== "pre") {
+  if (!isPreElement(preNode)) {
     return preNode;
   }
 
-  const preProps = preNode.props as React.ComponentPropsWithoutRef<"pre">;
+  const preProps = preNode.props;
   const preClassName = [styles.pre, preProps.className]
     .filter(Boolean)
     .join(" ");
 
   const enhancedChildren = React.Children.map(preProps.children, (child) => {
-    if (!React.isValidElement(child) || child.type !== "code") {
+    if (!isCodeElement(child)) {
       return child;
     }
 
-    const codeProps = child.props as React.ComponentPropsWithoutRef<"code">;
+    const codeProps = child.props;
     const codeClassName = [styles.code, codeProps.className]
       .filter(Boolean)
       .join(" ");
