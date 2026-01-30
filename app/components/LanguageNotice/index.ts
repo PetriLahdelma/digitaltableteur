@@ -1,0 +1,1 @@
+export { LanguageNotice } from "./LanguageNotice";
