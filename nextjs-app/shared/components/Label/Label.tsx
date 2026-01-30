@@ -28,7 +28,14 @@ const Label: React.FC<LabelProps> = ({
       {...rest}
     >
       {children}
-      {required && <span className={styles.required}>*</span>}
+      {required && (
+        <>
+          <span aria-hidden="true" className={styles.required}>
+            *
+          </span>
+          <span className={styles.srOnly}>(required)</span>
+        </>
+      )}
     </label>
   );
 };

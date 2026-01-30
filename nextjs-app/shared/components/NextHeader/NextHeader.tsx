@@ -53,9 +53,9 @@ export function NextHeader() {
 
   const languages = React.useMemo(
     () => [
-      { code: "en", label: t("langEN") },
-      { code: "fi", label: t("langFI") },
-      { code: "sv", label: t("langSV") },
+      { code: "en", label: t("langEN"), ariaLabel: t("langEN_ariaLabel") },
+      { code: "fi", label: t("langFI"), ariaLabel: t("langFI_ariaLabel") },
+      { code: "sv", label: t("langSV"), ariaLabel: t("langSV_ariaLabel") },
     ],
     [t],
   );
@@ -70,9 +70,14 @@ export function NextHeader() {
     setCookie("i18next", code);
     localStorage.setItem("i18nextLng", code);
 
-    const langLabel =
-      languages.find((lang) => lang.code === code)?.label || code;
-    showToast?.(t("languageChanged", { language: langLabel }), 3000);
+    const bundle = i18n.getResourceBundle(code, "translation") as
+      | Record<string, string>
+      | undefined;
+    const langLabel = bundle?.[`languageName.${code}`] ?? code;
+    showToast?.(
+      i18n.t("languageChanged", { lng: code, language: langLabel }),
+      3000,
+    );
   };
 
   const isActive = (href: string, exact?: boolean) =>
@@ -170,7 +175,7 @@ export function NextHeader() {
                   className={`${styles.languageLink} ${
                     currentLang === lang.code ? styles.languageLinkActive : ""
                   }`.trim()}
-                  aria-label={lang.label}
+                  aria-label={lang.ariaLabel}
                   aria-current={currentLang === lang.code ? "page" : undefined}
                 >
                   {lang.label}

@@ -1,34 +1,40 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { I18nextProvider } from "react-i18next";
-import i18n from "../../i18n";
-import Input from "@dt/Inputs";
+import Input from "./Inputs";
 
 // Mock i18next for testing
-vi.mock("react-i18next", async () => {
-  const actual = await vi.importActual("react-i18next");
-  return {
-    ...actual,
-    useTranslation: () => ({
-      t: (key: string) => {
-        const translations: Record<string, string> = {
-          inputValidationEmailInvalid: "Please enter a valid email address",
-          inputValidationPhoneInvalid: "Invalid phone number format",
-        };
-        return translations[key] || key;
-      },
-    }),
-  };
-});
+vi.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        inputValidationEmailInvalid: "Please enter a valid email address",
+        inputValidationPhoneInvalid: "Invalid phone number format",
+      };
+      return translations[key] || key;
+    },
+  }),
+}));
+
+// Mock Phosphor icons to avoid React context issues in tests
+vi.mock("@phosphor-icons/react", () => ({
+  WarningCircle: ({ size }: { size?: number }) => (
+    <span data-testid="warning-circle-icon" style={{ width: size, height: size }} />
+  ),
+  Warning: ({ size }: { size?: number }) => (
+    <span data-testid="warning-icon" style={{ width: size, height: size }} />
+  ),
+  CheckCircle: ({ size }: { size?: number }) => (
+    <span data-testid="check-circle-icon" style={{ width: size, height: size }} />
+  ),
+  Info: ({ size }: { size?: number }) => (
+    <span data-testid="info-icon" style={{ width: size, height: size }} />
+  ),
+}));
 
 describe("Input", () => {
-  const renderInput = (props: any) => {
-    return render(
-      <I18nextProvider i18n={i18n}>
-        <Input {...props} />
-      </I18nextProvider>,
-    );
+  const renderInput = (props: React.ComponentProps<typeof Input>) => {
+    return render(<Input {...props} />);
   };
 
   it("renders with label and placeholder", () => {
@@ -116,5 +122,62 @@ describe("Input", () => {
     });
 
     expect(screen.getByLabelText("Disabled Input")).toBeDisabled();
+  });
+
+  describe("accessibility", () => {
+    it("should have aria-invalid when there is an error", () => {
+      renderInput({
+        label: "Email",
+        type: "email",
+        error: "Invalid email",
+      });
+      const input = screen.getByRole("textbox");
+      expect(input).toHaveAttribute("aria-invalid", "true");
+    });
+
+    it("should not have aria-invalid when there is no error", () => {
+      renderInput({
+        label: "Email",
+        type: "email",
+      });
+      const input = screen.getByRole("textbox");
+      expect(input).not.toHaveAttribute("aria-invalid");
+    });
+
+    it("should have aria-describedby pointing to error message", () => {
+      renderInput({
+        label: "Email",
+        type: "email",
+        error: "Invalid email",
+      });
+      const input = screen.getByRole("textbox");
+      const describedBy = input.getAttribute("aria-describedby");
+      expect(describedBy).toBeTruthy();
+      const errorElement = document.getElementById(describedBy!);
+      expect(errorElement).toHaveTextContent("Invalid email");
+    });
+
+    it("should have aria-describedby pointing to helper text when no error", () => {
+      renderInput({
+        label: "Email",
+        type: "email",
+        helperText: "We'll never share your email",
+      });
+      const input = screen.getByRole("textbox");
+      const describedBy = input.getAttribute("aria-describedby");
+      expect(describedBy).toBeTruthy();
+      const helperElement = document.getElementById(describedBy!);
+      expect(helperElement).toHaveTextContent("We'll never share your email");
+    });
+
+    it("should have role=alert on error message", () => {
+      renderInput({
+        label: "Email",
+        type: "email",
+        error: "Invalid email",
+      });
+      const errorElement = screen.getByRole("alert");
+      expect(errorElement).toHaveTextContent("Invalid email");
+    });
   });
 });

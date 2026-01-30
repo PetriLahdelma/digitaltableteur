@@ -40,7 +40,45 @@ export function MobileDrawer({
   const { t } = useTranslation();
   const backdropRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const ThemeIcon = themeIcons[theme];
+
+  // Focus management: trap focus inside drawer, restore on close
+  useEffect(() => {
+    if (!isOpen || typeof document === "undefined") return;
+
+    // Store the currently focused element (hamburger button) to restore focus on close
+    previousActiveElement.current = document.activeElement as HTMLElement;
+
+    // Find the main content container and set inert to prevent focus escape
+    const mainContent =
+      document.getElementById("main-content") ||
+      document.getElementById("__next") ||
+      document.querySelector("main") ||
+      document.body.firstElementChild;
+
+    if (mainContent && mainContent !== document.body) {
+      mainContent.setAttribute("inert", "");
+    }
+
+    // Focus the close button after drawer opens (first focusable element)
+    const focusCloseButton = () => {
+      closeButtonRef.current?.focus();
+    };
+
+    // Use requestAnimationFrame to ensure DOM is ready after animation
+    requestAnimationFrame(focusCloseButton);
+
+    return () => {
+      // Remove inert from main content
+      if (mainContent && mainContent !== document.body) {
+        mainContent.removeAttribute("inert");
+      }
+      // Restore focus to the element that opened the drawer (hamburger button)
+      previousActiveElement.current?.focus();
+    };
+  }, [isOpen]);
 
   // GSAP animations
   useEffect(() => {
@@ -84,7 +122,7 @@ export function MobileDrawer({
     return () => ctx.revert();
   }, [isOpen]);
 
-  // Focus trap and escape key
+  // Escape key handler
   useEffect(() => {
     if (!isOpen) return;
 
@@ -119,6 +157,7 @@ export function MobileDrawer({
             {t("navMenuTitle", "Menu")}
           </span>
           <IconButton
+            ref={closeButtonRef}
             icon={<X weight="bold" className="size-5" />}
             label={t("navMenuClose")}
             onClick={onClose}
@@ -153,18 +192,23 @@ export function MobileDrawer({
               {t("navMenuLanguages")}
             </span>
             <div className="flex gap-2">
-              {["en", "fi", "sv"].map((code) => (
+              {[
+                { code: "en", ariaLabel: t("langEN_ariaLabel") },
+                { code: "fi", ariaLabel: t("langFI_ariaLabel") },
+                { code: "sv", ariaLabel: t("langSV_ariaLabel") },
+              ].map((lang) => (
                 <button
-                  key={code}
-                  onClick={() => onLanguageChange(code)}
+                  key={lang.code}
+                  onClick={() => onLanguageChange(lang.code)}
+                  aria-label={lang.ariaLabel}
                   className={cn(
                     "flex-1 py-2 px-3 rounded-md text-text-m font-body uppercase transition-colors",
-                    currentLang === code
+                    currentLang === lang.code
                       ? "bg-foreground text-background font-medium"
                       : "bg-muted text-muted-foreground hover:bg-muted/80"
                   )}
                 >
-                  {code}
+                  {lang.code.toUpperCase()}
                 </button>
               ))}
             </div>

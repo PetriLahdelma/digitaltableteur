@@ -1,0 +1,155 @@
+{
+  "auditDate": "2026-01-29T17:06:00.588Z",
+  "requirements": [
+    "PERC-02",
+    "PERC-06"
+  ],
+  "themes": [
+    {
+      "theme": "Light",
+      "pages": {
+        "home": {
+          "url": "/",
+          "violations": [],
+          "passes": 1
+        },
+        "about": {
+          "url": "/about",
+          "violations": [],
+          "passes": 1
+        },
+        "contact": {
+          "url": "/contact",
+          "violations": [],
+          "passes": 1
+        },
+        "blog": {
+          "url": "/blog",
+          "violations": [],
+          "passes": 1
+        },
+        "work": {
+          "url": "/work",
+          "violations": [],
+          "passes": 1
+        }
+      },
+      "totalViolations": 0
+    },
+    {
+      "theme": "Dark",
+      "pages": {
+        "home": {
+          "url": "/",
+          "violations": [],
+          "passes": 1
+        },
+        "about": {
+          "url": "/about",
+          "violations": [],
+          "passes": 1
+        },
+        "contact": {
+          "url": "/contact",
+          "violations": [],
+          "passes": 1
+        },
+        "blog": {
+          "url": "/blog",
+          "violations": [],
+          "passes": 1
+        },
+        "work": {
+          "url": "/work",
+          "violations": [],
+          "passes": 1
+        }
+      },
+      "totalViolations": 0
+    },
+    {
+      "theme": "High Contrast Black",
+      "pages": {
+        "home": {
+          "url": "/",
+          "violations": [],
+          "passes": 1
+        },
+        "about": {
+          "url": "/about",
+          "violations": [],
+          "passes": 1
+        },
+        "contact": {
+          "url": "/contact",
+          "violations": [],
+          "passes": 1
+        },
+        "blog": {
+          "url": "/blog",
+          "violations": [],
+          "passes": 1
+        },
+        "work": {
+          "url": "/work",
+          "violations": [],
+          "passes": 1
+        }
+      },
+      "totalViolations": 0
+    },
+    {
+      "theme": "High Contrast White",
+      "pages": {
+        "home": {
+          "url": "/",
+          "violations": [],
+          "passes": 1
+        },
+        "about": {
+          "url": "/about",
+          "violations": [],
+          "passes": 1
+        },
+        "contact": {
+          "url": "/contact",
+          "violations": [],
+          "passes": 1
+        },
+        "blog": {
+          "url": "/blog",
+          "violations": [],
+          "passes": 1
+        },
+        "work": {
+          "url": "/work",
+          "violations": [],
+          "passes": 1
+        }
+      },
+      "totalViolations": 0
+    }
+  ],
+  "summary": {
+    "totalThemes": 4,
+    "totalPages": 5,
+    "violationsByTheme": [
+      {
+        "theme": "Light",
+        "violations": 0
+      },
+      {
+        "theme": "Dark",
+        "violations": 0
+      },
+      {
+        "theme": "High Contrast Black",
+        "violations": 0
+      },
+      {
+        "theme": "High Contrast White",
+        "violations": 0
+      }
+    ]
+  }
+}

@@ -23,11 +23,30 @@
   color: var(--color-primary, #041B23);
 }
 
+/* Focus states for accessibility (WCAG 2.4.7 Focus Visible) */
+.trigger:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+/* Windows High Contrast Mode support */
+@media (forced-colors: active) {
+  .trigger:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    forced-color-adjust: none;
+  }
+}
+
 .content {
   padding: var(--space-internal-12, 0.75rem) var(--space-internal-16, 1rem);
   background: var(--color-light-bg, #f8fafc);
   font-family: var(--font-text);
   color: var(--color-primary, #041B23);
+}
+
+.content[hidden] {
+  display: none;
 }
 
 .icon {

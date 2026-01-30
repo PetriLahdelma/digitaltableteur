@@ -213,6 +213,22 @@ const Button = React.forwardRef<
       }
     }
 
+    // Icon-only button accessibility warning (development only)
+    // This runs after normalization so we check the raw icon prop
+    if (process.env.NODE_ENV !== "production") {
+      const isIconOnly = !children && icon;
+      const hasAccessibleName = !!(accessibleName || accessibleNameRef || tooltip);
+
+      if (isIconOnly && !hasAccessibleName) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          "[Button] Icon-only button detected without accessible name. " +
+          "Add accessibleName, accessibleNameRef, or tooltip prop for screen reader users. " +
+          'Example: <Button icon="search" accessibleName="Search" />'
+        );
+      }
+    }
+
     // Resolve effective values (new props take precedence)
     const effectiveDisabled = isDisabled ?? disabled;
     const effectiveLoading = isLoading ?? loading;
@@ -401,6 +417,9 @@ const Button = React.forwardRef<
       }
     };
 
+    // Use tooltip as aria-label fallback for icon-only buttons
+    const effectiveAriaLabel = accessibleName || (tooltip && !accessibleNameRef ? tooltip : undefined);
+
     const commonProps = {
       className: [
         styles.button,
@@ -415,8 +434,9 @@ const Button = React.forwardRef<
         .filter(Boolean)
         .join(" "),
       "aria-describedby": accessibleDescription,
-      "aria-label": accessibleName,
+      "aria-label": effectiveAriaLabel,
       "aria-labelledby": accessibleNameRef,
+      "aria-busy": effectiveLoading || undefined,
       role: accessibleRole,
       title: tooltip,
     };
@@ -458,7 +478,7 @@ const Button = React.forwardRef<
           target={target}
           rel={rel || (target === "_blank" ? "noopener noreferrer" : undefined)}
           onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}
-          aria-disabled={effectiveDisabled}
+          aria-disabled={effectiveDisabled || effectiveLoading || undefined}
           {...commonProps}
           {...linkRest}
         >

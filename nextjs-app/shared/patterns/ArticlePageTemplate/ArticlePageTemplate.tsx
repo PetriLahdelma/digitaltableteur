@@ -15,7 +15,7 @@ import type { BlogPostEntry } from "../../data/blogPosts";
 
 // MDX component imports preserved from original
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
-import CodeSnippet, { type SupportedLanguage } from "@dt/CodeSnippet";
+import CodeBlockWindow from "@dt/CodeBlockWindow";
 import { MdxImage } from "../../components/MdxImage";
 import React from "react";
 
@@ -93,37 +93,11 @@ const MdxFigcaption = ({
   );
 };
 
-// Language aliases for syntax highlighting
-const languageAliases: Record<string, SupportedLanguage> = {
-  js: "javascript",
-  javascript: "javascript",
-  ts: "typescript",
-  tsx: "typescript",
-  typescript: "typescript",
-  json: "json",
-  bash: "bash",
-  sh: "bash",
-  shell: "bash",
-  py: "python",
-  python: "python",
-  go: "go",
-  rs: "rust",
-  rust: "rust",
-  md: "markdown",
-  markdown: "markdown",
-  html: "html",
-  xml: "xml",
-};
-
-const normalizeLanguage = (className?: string): SupportedLanguage => {
-  if (!className) return "markdown";
-  const match = className.match(/language-([\w-]+)/i);
-  const raw = (match?.[1] || className).toLowerCase();
-  return languageAliases[raw] ?? "markdown";
-};
-
 type WithChildrenProps = { children?: React.ReactNode };
-type CodeElementProps = { children?: React.ReactNode; className?: string };
+type DataProps = { [key: string]: unknown; children?: React.ReactNode };
+
+const hasDataAttribute = (props: DataProps, attr: string) =>
+  Object.prototype.hasOwnProperty.call(props, attr);
 
 const getTextContent = (value: React.ReactNode): string => {
   if (typeof value === "string" || typeof value === "number") {
@@ -138,52 +112,73 @@ const getTextContent = (value: React.ReactNode): string => {
   return "";
 };
 
-const MdxCode = ({
-  className,
+const isPreElement = (
+  node: React.ReactNode,
+): node is React.ReactElement<React.ComponentPropsWithoutRef<"pre">> =>
+  React.isValidElement(node) && node.type === "pre";
+
+const MdxFigure = ({
   children,
+  className,
   ...props
-}: React.ComponentPropsWithoutRef<"code">) => {
-  if (className?.includes("language-")) {
+}: React.ComponentPropsWithoutRef<"figure">) => {
+  const isPrettyCodeFigure = hasDataAttribute(
+    props as DataProps,
+    "data-rehype-pretty-code-figure",
+  );
+
+  if (!isPrettyCodeFigure) {
     return (
-      <code className={className} {...props}>
+      <figure className={className} {...props}>
         {children}
-      </code>
+      </figure>
     );
   }
-  const code = getTextContent(children);
-  return (
-    <CodeSnippet
-      code={code}
-      language="markdown"
-      variant="inline"
-      allowCopy={false}
-    />
-  );
-};
 
-const MdxPre = ({
-  children,
-  ...props
-}: React.ComponentPropsWithoutRef<"pre">) => {
   const childArray = React.Children.toArray(children);
-  const codeChild = childArray.find((child) =>
-    React.isValidElement<CodeElementProps>(child)
-  );
-  if (!codeChild || !React.isValidElement<CodeElementProps>(codeChild)) {
-    return <pre {...props}>{children}</pre>;
+  let title: string | undefined;
+  let caption: string | undefined;
+  let preElement: React.ReactElement<React.ComponentPropsWithoutRef<"pre">> | null =
+    null;
+  let languageValue: string | undefined;
+
+  childArray.forEach((child) => {
+    if (!React.isValidElement(child)) return;
+    const childProps = child.props as DataProps;
+    if (hasDataAttribute(childProps, "data-rehype-pretty-code-title")) {
+      title = getTextContent(childProps.children);
+      return;
+    }
+    if (hasDataAttribute(childProps, "data-rehype-pretty-code-caption")) {
+      caption = getTextContent(childProps.children);
+      return;
+    }
+    if (isPreElement(child)) {
+      preElement = child;
+      const dataLanguage = (childProps as DataProps)["data-language"];
+      if (typeof dataLanguage === "string") {
+        languageValue = dataLanguage;
+      }
+    }
+  });
+
+  if (!preElement) {
+    return (
+      <figure className={className} {...props}>
+        {children}
+      </figure>
+    );
   }
-  const className =
-    typeof codeChild.props.className === "string"
-      ? codeChild.props.className
-      : undefined;
-  const code = getTextContent(codeChild.props.children);
+
   return (
-    <CodeSnippet
-      code={code}
-      language={normalizeLanguage(className)}
-      variant="multi"
-      showLineNumbers={false}
-    />
+    <CodeBlockWindow
+      title={title}
+      caption={caption}
+      language={languageValue}
+      className={className}
+    >
+      {preElement}
+    </CodeBlockWindow>
   );
 };
 
@@ -192,8 +187,7 @@ const mdxComponents = {
   AuthorBio: MdxAuthorBio,
   img: MdxImageWrapper,
   figcaption: MdxFigcaption,
-  pre: MdxPre,
-  code: MdxCode,
+  figure: MdxFigure,
 };
 
 // ============================================

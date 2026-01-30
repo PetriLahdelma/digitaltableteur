@@ -14,18 +14,19 @@ describe("Toast", () => {
   });
 
   it("renders message when open is true", () => {
-    render(<Toast message="Test message" open={true} />);
+    render(<Toast message="Test message" isOpen={true} />);
     expect(screen.getByText("Test message")).toBeInTheDocument();
   });
 
-  it("does not render when open is false", () => {
-    render(<Toast message="Test message" open={false} />);
+  it("keeps live region mounted when open is false", () => {
+    render(<Toast message="Test message" isOpen={false} />);
     expect(screen.queryByText("Test message")).not.toBeInTheDocument();
+    expect(screen.getByRole("status")).toBeInTheDocument();
   });
 
   it("calls onClose after default duration", () => {
     const onClose = vi.fn();
-    render(<Toast message="Test message" open={true} onClose={onClose} />);
+    render(<Toast message="Test message" isOpen={true} onClose={onClose} />);
 
     expect(onClose).not.toHaveBeenCalled();
 
@@ -41,7 +42,7 @@ describe("Toast", () => {
     render(
       <Toast
         message="Test message"
-        open={true}
+        isOpen={true}
         duration={5000}
         onClose={onClose}
       />,
@@ -59,7 +60,7 @@ describe("Toast", () => {
   });
 
   it("has correct accessibility attributes", () => {
-    render(<Toast message="Test message" open={true} />);
+    render(<Toast message="Test message" isOpen={true} />);
     const toast = screen.getByText("Test message");
     expect(toast).toHaveAttribute("role", "status");
     expect(toast).toHaveAttribute("aria-live", "polite");
@@ -68,7 +69,7 @@ describe("Toast", () => {
   it("clears timer when component unmounts", () => {
     const onClose = vi.fn();
     const { unmount } = render(
-      <Toast message="Test message" open={true} onClose={onClose} />,
+      <Toast message="Test message" isOpen={true} onClose={onClose} />,
     );
 
     unmount();

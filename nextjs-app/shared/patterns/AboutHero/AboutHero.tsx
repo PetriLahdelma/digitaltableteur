@@ -96,11 +96,7 @@ export function AboutHero({
       </Container>
 
       {/* Scroll indicator */}
-      {showScrollIndicator && (
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-          <ScrollIndicator />
-        </div>
-      )}
+      {showScrollIndicator && <ScrollIndicator className="z-20" />}
     </Section>
   );
 }

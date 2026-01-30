@@ -139,15 +139,11 @@ const Modal: React.FC<ModalProps> = ({
     return null;
   };
 
-  // Determine aria-live based on severity
-  const ariaLive =
-    severity === "error" || severity === "warning"
-      ? "assertive"
-      : severity === "info" || severity === "success"
-        ? "polite"
-        : undefined;
-
   // Determine role based on severity
+  // NOTE: Do NOT add aria-live to dialog/alertdialog elements.
+  // - role="alertdialog" already implies assertive announcement
+  // - role="dialog" is announced when opened
+  // Adding aria-live causes double screen reader announcements.
   const dialogRole =
     severity === "error" || severity === "warning" ? "alertdialog" : "dialog";
 
@@ -174,7 +170,6 @@ const Modal: React.FC<ModalProps> = ({
         className={`${styles.modal} ${styles[effectiveVariant]}`}
         role={dialogRole}
         aria-modal="true"
-        aria-live={ariaLive}
         {...(title
           ? { "aria-labelledby": titleId }
           : { "aria-label": "Dialog" })}

@@ -25,6 +25,33 @@ export interface TabsProps {
   variant?: "default" | "pills" | "underline";
 }
 
+/**
+ * Tabs component renders only the tablist. Parent must render tabpanels.
+ * Expected tabpanel structure:
+ *
+ * ```tsx
+ * <div
+ *   id={`tabpanel-${tab.key}`}
+ *   role="tabpanel"
+ *   aria-labelledby={`tab-${tab.key}`}
+ *   hidden={!isActive}
+ * >
+ *   {content}
+ * </div>
+ * ```
+ *
+ * Or use the exported `getTabPanelProps` helper:
+ *
+ * ```tsx
+ * <Tabs tabs={tabs} activeTab={active} onTabChange={setActive} />
+ * {tabs.map(tab => (
+ *   <div {...getTabPanelProps(tab.key, tab.key === active)}>
+ *     {tab.key === active && <Content />}
+ *   </div>
+ * ))}
+ * ```
+ */
+
 const Tabs: React.FC<TabsProps> = ({
   activeTab,
   defaultActiveTab,
@@ -122,11 +149,12 @@ const Tabs: React.FC<TabsProps> = ({
         return (
           <button
             key={tab.key}
+            id={`tab-${tab.key}`}
             data-tab-key={tab.key}
             role="tab"
             type="button"
             aria-selected={isActive}
-            aria-disabled={isDisabled}
+            aria-controls={`tabpanel-${tab.key}`}
             disabled={isDisabled}
             tabIndex={isActive ? 0 : -1}
             className={[
@@ -149,5 +177,33 @@ const Tabs: React.FC<TabsProps> = ({
     </div>
   );
 };
+
+/**
+ * Helper to generate tabpanel props for accessibility compliance.
+ * Use this when rendering content panels alongside Tabs.
+ *
+ * @example
+ * ```tsx
+ * <Tabs tabs={tabs} activeTab={active} onTabChange={setActive} />
+ * {tabs.map(tab => (
+ *   <div {...getTabPanelProps(tab.key, tab.key === active)}>
+ *     {tab.key === active && <Content />}
+ *   </div>
+ * ))}
+ * ```
+ *
+ * @param tabKey - The key of the tab this panel is associated with
+ * @param isActive - Whether this panel is currently active
+ * @returns Object with id, role, aria-labelledby, hidden, and tabIndex props
+ */
+export function getTabPanelProps(tabKey: string, isActive: boolean) {
+  return {
+    id: `tabpanel-${tabKey}`,
+    role: "tabpanel" as const,
+    "aria-labelledby": `tab-${tabKey}`,
+    hidden: !isActive,
+    tabIndex: isActive ? 0 : -1,
+  };
+}
 
 export default Tabs;
