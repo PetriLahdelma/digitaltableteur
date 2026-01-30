@@ -19,7 +19,7 @@ type Props = {
   onNavigate?: () => void;
   id?: string;
   navItems: NavItem[];
-  languages: { code: string; label: string }[];
+  languages: { code: string; label: string; ariaLabel: string }[];
 };
 
 const themeIcons: Record<string, React.ReactNode> = {
@@ -170,6 +170,7 @@ export function NextMobileMenu({
                           ? styles.languageButtonActive
                           : ""
                       }`.trim()}
+                      aria-label={lang.ariaLabel}
                       aria-current={
                         currentLang === lang.code ? "page" : undefined
                       }
