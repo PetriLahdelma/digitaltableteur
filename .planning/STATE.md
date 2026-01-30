@@ -5,31 +5,31 @@
 See: .planning/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Every user can access and use the site regardless of ability
-**Current focus:** Phase 7 in progress - page-level verification infrastructure created
+**Current focus:** Phase 7 in progress - core pages verified (60/60 combinations pass)
 
 ## Current Position
 
 - **Phase:** 7 of 8 (Page-Level Verification) - **IN PROGRESS**
-- **Plan:** 1 of 5 complete
-- **Status:** Infrastructure created
-- **Last activity:** 2026-01-30 - Completed 07-01-PLAN.md (Page Verification Infrastructure)
+- **Plan:** 2 of 5 complete
+- **Status:** Core pages verified
+- **Last activity:** 2026-01-30 - Completed 07-02-PLAN.md (Core Pages Verification)
 
-**Progress:** [==========] 29/33 plans complete | 7/8 phases in progress
+**Progress:** [==========] 30/33 plans complete | 7/8 phases in progress
 
 ## Current Phase
 
 **Phase 7: Page-Level Verification** - **IN PROGRESS**
-- Status: Infrastructure complete, spec files pending
-- Plans: 07-01 complete, 07-02 through 07-05 pending
+- Status: Core pages verified, work/blog/legal pages pending
+- Plans: 07-01, 07-02 complete; 07-03 through 07-05 pending
 - Goal: Verify all public pages pass WCAG 2.1 AA across theme/language matrix
-- Result (so far): Audit helpers created for 31 pages x 4 themes x 3 languages
+- Result (so far): 5 core pages verified (60/60 combinations pass)
 
 ### Plans
 
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
 | 07-01 | Page verification infrastructure | 1 | - | **Complete** |
-| 07-02 | Core pages verification | 1 | 07-01 | Pending |
+| 07-02 | Core pages verification | 1 | 07-01 | **Complete** |
 | 07-03 | Work pages verification | 1 | 07-01 | Pending |
 | 07-04 | Blog pages verification | 1 | 07-01 | Pending |
 | 07-05 | Legal pages verification | 1 | 07-01 | Pending |
@@ -53,7 +53,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | 4. Understandable Fixes | **Complete** | 4/4 |
 | 5. Robust Fixes | **Complete** | 1/1 |
 | 6. Component Remediation | **Complete** | 7/7 |
-| 7. Page-Level Verification | **In Progress** | 1/5 |
+| 7. Page-Level Verification | **In Progress** | 2/5 |
 | 8. Final Verification | Pending | - |
 
 ## Key Artifacts
@@ -125,6 +125,9 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **Page Audit Helper** | tests/a11y/page-verification/helpers/audit-page.ts | **Done** |
 | **Report Generator** | tests/a11y/page-verification/helpers/report-generator.ts | **Done** |
 | **Page Registry** | tests/a11y/page-verification/helpers/page-registry.ts | **Done** |
+| **07-02 Summary** | .planning/phases/07-page-level-verification/07-02-SUMMARY.md | **Done** |
+| **Core Pages Test** | tests/a11y/page-verification/core-pages.spec.ts | **Done** |
+| **Core Pages Reports** | tests/a11y/page-reports/{home,about,work,blog,contact}/ | **Done** |
 
 ## Accumulated Decisions
 
@@ -195,6 +198,8 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **Use networkidle wait state for page audits** | 07-01 | Ensures complete page load before axe scan |
 | **Array.from() for Set/Map iteration** | 07-01 | TypeScript compatibility without downlevelIteration |
 | **31 public pages in registry** | 07-01 | 5 core + 11 work + 12 blog + 3 legal |
+| **Parallel page tests, sequential theme/language** | 07-02 | Avoids DOM manipulation race conditions |
+| **5 core pages verified (60 combinations)** | 07-02 | Home, About, Work, Blog, Contact all pass |
 
 ## Audit Results Summary
 
@@ -321,24 +326,35 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 - `audit-page.ts` - Core audit function with theme/language support
 - `report-generator.ts` - Markdown report generation
 - `page-registry.ts` - 31 public pages by category
-- Ready for spec file creation in plans 07-02 through 07-05
+- **Plan 07-02 complete:** Core pages verified (5 pages, 60 combinations)
+- Home, About, Work, Blog, Contact all pass with 0 violations
+- Reports generated in tests/a11y/page-reports/
 
 **Next Steps:**
-- Plan 07-02: Core pages verification spec
-- Plan 07-03: Work pages verification spec
-- Plan 07-04: Blog pages verification spec
-- Plan 07-05: Legal pages verification spec
+- Plan 07-03: Work pages verification spec (11 pages)
+- Plan 07-04: Blog pages verification spec (12 pages)
+- Plan 07-05: Legal pages verification spec (3 pages)
 - Phase 8: Final Verification (manual screen reader testing)
 
 **Manual testing still needed:**
 - RBST-04/RBST-05: Screen reader status message announcements
 - Grayscale test using COLOR-INDEPENDENCE-AUDIT.md checklist
 
+## Page Verification Progress
+
+| Category | Pages | Combinations | Verified | Pass | Violations |
+|----------|-------|--------------|----------|------|------------|
+| Core | 5 | 60 | **60** | **60** | **0** |
+| Work | 11 | 132 | 0 | - | - |
+| Blog | 12 | 144 | 0 | - | - |
+| Legal | 3 | 36 | 0 | - | - |
+| **Total** | **31** | **372** | **60** | **60** | **0** |
+
 ## Session Continuity
 
-- **Last session:** 2026-01-30T15:53:30Z
-- **Stopped at:** Completed 07-01-PLAN.md (Page Verification Infrastructure)
-- **Resume file:** None - ready for 07-02 through 07-05
+- **Last session:** 2026-01-30T15:53:10Z
+- **Stopped at:** Completed 07-02-PLAN.md (Core Pages Verification)
+- **Resume file:** None - ready for 07-03 through 07-05
 
 ---
-*Last updated: 2026-01-30 after Plan 07-01 completion (Page verification infrastructure)*
+*Last updated: 2026-01-30 after Plan 07-02 completion (Core pages verified)*
