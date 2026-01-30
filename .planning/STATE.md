@@ -5,38 +5,36 @@
 See: .planning/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Every user can access and use the site regardless of ability
-**Current focus:** Phase 3 in progress - operable fixes for keyboard accessibility
+**Current focus:** Phase 4 in progress - understandable fixes for labels and instructions
 
 ## Current Position
 
-- **Phase:** 3 of 8 (Operable Fixes) - COMPLETE
-- **Plan:** 4 of 4 complete
-- **Status:** Phase 3 complete
-- **Last activity:** 2026-01-30 - Completed 03-03-PLAN.md (Focus Trap and Skip Link Verification)
+- **Phase:** 4 of 8 (Understandable Fixes) - IN PROGRESS
+- **Plan:** 1 of ? complete
+- **Status:** Plan 04-01 complete
+- **Last activity:** 2026-01-30 - Completed 04-01-PLAN.md (Required Field Screen Reader Text)
 
-**Progress:** [==========] 23/23 plans complete | 6/8 phases complete (Phase 1, 2, 3, 5, 6 complete)
+**Progress:** [==========] 24/24 plans complete | 6/8 phases complete (Phase 1, 2, 3, 5, 6 complete)
 
 ## Current Phase
 
-**Phase 3: Operable Fixes** - COMPLETE
-- Status: COMPLETE
-- Plans: 03-01, 03-02, 03-03, 03-04 complete
-- Goal: Ensure all interactive content is keyboard operable with visible focus
-- Result: Focus visibility + keyboard navigation + focus trap + skip link + touch target tests; All OPER requirements verified
+**Phase 4: Understandable Fixes** - IN PROGRESS
+- Status: IN PROGRESS
+- Plans: 04-01 complete
+- Goal: Ensure content is understandable with clear labels and instructions
+- Result: Required field screen reader text added to Label component
 
 ### Plans
 
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
-| 03-01 | Focus visibility audit and fix | 1 | - | **Complete** |
-| 03-02 | Keyboard navigation audit | 1 | - | **Complete** |
-| 03-03 | Focus trap and skip link verification | 1 | - | **Complete** |
-| 03-04 | Touch target audit | 2 | 03-01, 03-02 | **Complete** |
+| 04-01 | Required field screen reader text | 1 | - | **Complete** |
 
 ### Previous Phases
 
 **Phase 1: Audit Infrastructure** - COMPLETE (4/4 plans)
 **Phase 2: Perceivable Fixes** - COMPLETE (6/6 plans)
+**Phase 3: Operable Fixes** - COMPLETE (4/4 plans)
 **Phase 5: Robust Fixes** - COMPLETE (1/1 plans)
 **Phase 6: Component Remediation** - COMPLETE (7/7 plans)
 
@@ -47,7 +45,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | 1. Audit Infrastructure | **Complete** | 4/4 |
 | 2. Perceivable Fixes | **Complete** | 6/6 |
 | 3. Operable Fixes | **Complete** | 4/4 |
-| 4. Understandable Fixes | Ready | - |
+| 4. Understandable Fixes | **In Progress** | 1/? |
 | 5. Robust Fixes | **Complete** | 1/1 |
 | 6. Component Remediation | **Complete** | 7/7 |
 | 7. Page-Level Verification | Ready | - |
@@ -109,6 +107,8 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **TOUCH-TARGET-AUDIT.md** | .planning/phases/03-operable-fixes/TOUCH-TARGET-AUDIT.md | **Done** |
 | **03-03 Summary** | .planning/phases/03-operable-fixes/03-03-SUMMARY.md | **Done** |
 | **Focus Trap Tests** | tests/a11y/operable/focus-trap.spec.ts | **Done** |
+| **Phase 4 Plans** | .planning/phases/04-understandable-fixes/ | **In Progress** |
+| **04-01 Summary** | .planning/phases/04-understandable-fixes/04-01-SUMMARY.md | **Done** |
 
 ## Accumulated Decisions
 
@@ -168,6 +168,8 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **MobileDrawer follows Modal focus pattern** | 03-03 | Consistency: store previousActiveElement, set inert, restore focus |
 | **Focus close button on drawer open** | 03-03 | First focusable element, logical for screen reader users |
 | **Skip link tests exclude /work, /blog** | 03-03 | Pre-existing page load issues unrelated to a11y |
+| **aria-hidden for visual asterisk** | 04-01 | Hide decorative asterisk from screen readers |
+| **sr-only "(required)" text** | 04-01 | Screen reader text for required field indication |
 
 ## Audit Results Summary
 
@@ -278,11 +280,17 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 - RBST-04/RBST-05: Screen reader status message announcements
 - Grayscale test using COLOR-INDEPENDENCE-AUDIT.md checklist
 
+## Understandable Requirements Status
+
+| Requirement | Status | Source |
+|-------------|--------|--------|
+| UNDR-04 (Required Field Indication) | **Complete** | 04-01 |
+
 ## Session Continuity
 
-- **Last session:** 2026-01-30T12:40:00Z
-- **Stopped at:** Completed 03-03-PLAN.md (Focus Trap and Skip Link Verification)
-- **Resume file:** None - Phase 3 complete, continue with Phase 4
+- **Last session:** 2026-01-30T13:41:00Z
+- **Stopped at:** Completed 04-01-PLAN.md (Required Field Screen Reader Text)
+- **Resume file:** None - Continue with remaining Phase 4 plans
 
 ---
-*Last updated: 2026-01-30 after Plan 03-03 completion (Focus trap verification complete, Phase 3 complete)*
+*Last updated: 2026-01-30 after Plan 04-01 completion (Required field screen reader text)*
