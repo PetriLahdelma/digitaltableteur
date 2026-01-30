@@ -5,39 +5,41 @@
 See: .planning/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Every user can access and use the site regardless of ability
-**Current focus:** Phase 4 complete - all WCAG Understandable requirements verified
+**Current focus:** Phase 7 in progress - page-level verification infrastructure created
 
 ## Current Position
 
-- **Phase:** 4 of 8 (Understandable Fixes) - **COMPLETE**
-- **Plan:** 4 of 4 complete
-- **Status:** Phase 4 complete
-- **Last activity:** 2026-01-30 - Completed 04-04-PLAN.md (Navigation Consistency and UNDR Verification)
+- **Phase:** 7 of 8 (Page-Level Verification) - **IN PROGRESS**
+- **Plan:** 1 of 5 complete
+- **Status:** Infrastructure created
+- **Last activity:** 2026-01-30 - Completed 07-01-PLAN.md (Page Verification Infrastructure)
 
-**Progress:** [==========] 28/28 plans complete | 7/8 phases complete (Phase 1, 2, 3, 4, 5, 6 complete)
+**Progress:** [==========] 29/33 plans complete | 7/8 phases in progress
 
 ## Current Phase
 
-**Phase 4: Understandable Fixes** - **COMPLETE**
-- Status: COMPLETE
-- Plans: 04-01, 04-02, 04-03, 04-04 complete
-- Goal: Ensure content is understandable with clear labels and instructions
-- Result: Required field screen reader text, email typo suggestions, language notices, navigation consistency
+**Phase 7: Page-Level Verification** - **IN PROGRESS**
+- Status: Infrastructure complete, spec files pending
+- Plans: 07-01 complete, 07-02 through 07-05 pending
+- Goal: Verify all public pages pass WCAG 2.1 AA across theme/language matrix
+- Result (so far): Audit helpers created for 31 pages x 4 themes x 3 languages
 
 ### Plans
 
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
-| 04-01 | Required field screen reader text | 1 | - | **Complete** |
-| 04-02 | Email typo suggestions | 1 | - | **Complete** |
-| 04-03 | Language notice and content language markers | 1 | - | **Complete** |
-| 04-04 | Navigation consistency and UNDR verification | 2 | 04-01, 04-02, 04-03 | **Complete** |
+| 07-01 | Page verification infrastructure | 1 | - | **Complete** |
+| 07-02 | Core pages verification | 1 | 07-01 | Pending |
+| 07-03 | Work pages verification | 1 | 07-01 | Pending |
+| 07-04 | Blog pages verification | 1 | 07-01 | Pending |
+| 07-05 | Legal pages verification | 1 | 07-01 | Pending |
 
 ### Previous Phases
 
 **Phase 1: Audit Infrastructure** - COMPLETE (4/4 plans)
 **Phase 2: Perceivable Fixes** - COMPLETE (6/6 plans)
 **Phase 3: Operable Fixes** - COMPLETE (4/4 plans)
+**Phase 4: Understandable Fixes** - COMPLETE (4/4 plans)
 **Phase 5: Robust Fixes** - COMPLETE (1/1 plans)
 **Phase 6: Component Remediation** - COMPLETE (7/7 plans)
 
@@ -51,7 +53,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | 4. Understandable Fixes | **Complete** | 4/4 |
 | 5. Robust Fixes | **Complete** | 1/1 |
 | 6. Component Remediation | **Complete** | 7/7 |
-| 7. Page-Level Verification | Ready | - |
+| 7. Page-Level Verification | **In Progress** | 1/5 |
 | 8. Final Verification | Pending | - |
 
 ## Key Artifacts
@@ -118,6 +120,11 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **LanguageNotice** | app/components/LanguageNotice/ | **Done** |
 | **Navigation Consistency Tests** | tests/a11y/understandable/navigation-consistency.spec.ts | **Done** |
 | **Form Labels Tests** | tests/a11y/understandable/form-labels.spec.ts | **Done** |
+| **Phase 7 Plans** | .planning/phases/07-page-level-verification/ | **Started** |
+| **07-01 Summary** | .planning/phases/07-page-level-verification/07-01-SUMMARY.md | **Done** |
+| **Page Audit Helper** | tests/a11y/page-verification/helpers/audit-page.ts | **Done** |
+| **Report Generator** | tests/a11y/page-verification/helpers/report-generator.ts | **Done** |
+| **Page Registry** | tests/a11y/page-verification/helpers/page-registry.ts | **Done** |
 
 ## Accumulated Decisions
 
@@ -184,6 +191,10 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **LanguageNotice conditional rendering** | 04-03 | Only shows when UI language differs from content language |
 | **aria-current="page" on mobile nav links** | 04-04 | Match desktop header pattern for active page indication |
 | **21 Playwright tests for UNDR requirements** | 04-04 | Comprehensive coverage across navigation and form labels |
+| **Set i18next cookie BEFORE page.goto()** | 07-01 | Critical for i18n to work properly |
+| **Use networkidle wait state for page audits** | 07-01 | Ensures complete page load before axe scan |
+| **Array.from() for Set/Map iteration** | 07-01 | TypeScript compatibility without downlevelIteration |
+| **31 public pages in registry** | 07-01 | 5 core + 11 work + 12 blog + 3 legal |
 
 ## Audit Results Summary
 
@@ -305,8 +316,18 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 - 21 Playwright tests covering all 6 UNDR requirements
 - All 6 UNDR requirements now COMPLETE
 
+**Phase 7 Progress:**
+- **Plan 07-01 complete:** Page verification infrastructure created
+- `audit-page.ts` - Core audit function with theme/language support
+- `report-generator.ts` - Markdown report generation
+- `page-registry.ts` - 31 public pages by category
+- Ready for spec file creation in plans 07-02 through 07-05
+
 **Next Steps:**
-- Phase 7: Page-Level Verification (when plans created)
+- Plan 07-02: Core pages verification spec
+- Plan 07-03: Work pages verification spec
+- Plan 07-04: Blog pages verification spec
+- Plan 07-05: Legal pages verification spec
 - Phase 8: Final Verification (manual screen reader testing)
 
 **Manual testing still needed:**
@@ -315,9 +336,9 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 
 ## Session Continuity
 
-- **Last session:** 2026-01-30T13:49:00Z
-- **Stopped at:** Completed 04-04-PLAN.md (Navigation Consistency and UNDR Verification)
-- **Resume file:** None - Phase 4 complete, ready for Phase 7 or 8
+- **Last session:** 2026-01-30T15:53:30Z
+- **Stopped at:** Completed 07-01-PLAN.md (Page Verification Infrastructure)
+- **Resume file:** None - ready for 07-02 through 07-05
 
 ---
-*Last updated: 2026-01-30 after Plan 04-04 completion (Navigation consistency and UNDR verification)*
+*Last updated: 2026-01-30 after Plan 07-01 completion (Page verification infrastructure)*
