@@ -110,7 +110,7 @@ export function Pagination({
           "transition-colors duration-200",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           canGoPrev
-            ? "text-foreground hover:bg-accent"
+            ? "text-foreground hover:bg-accent hover:text-accent-foreground"
             : "text-muted-foreground/50 cursor-not-allowed"
         )}
       >
@@ -149,7 +149,7 @@ export function Pagination({
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                 isActive
                   ? "bg-foreground text-background"
-                  : "text-foreground hover:bg-accent"
+                  : "text-foreground hover:bg-accent hover:text-accent-foreground"
               )}
             >
               {page}
@@ -171,7 +171,7 @@ export function Pagination({
           "transition-colors duration-200",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           canGoNext
-            ? "text-foreground hover:bg-accent"
+            ? "text-foreground hover:bg-accent hover:text-accent-foreground"
             : "text-muted-foreground/50 cursor-not-allowed"
         )}
       >
