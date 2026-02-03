@@ -132,6 +132,36 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // Legacy cookie policy URLs → privacy policy (301 permanent)
+      {
+        source: "/cookie-policy-full",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/cookie-policy-full-en",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/cookie-policy-full-fi",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/cookie-policy-full-sv",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/cookie-policy",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+    ];
+  },
   webpack: (config) => {
     // Path aliases (Vercel/Linux safe, works even if tsconfig paths are ignored)
     const nextjsSharedComponents = path.resolve(
