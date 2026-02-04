@@ -1,8 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, type ReactNode } from "react";
 import styles from "./Toast.module.css";
 import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
+import { CheckCircle, Warning, XCircle, Info } from "@phosphor-icons/react";
 
 export type ToastSeverity = "success" | "error" | "warning" | "info";
+
+// Direct Phosphor icons for better alignment (matches Toaster pattern)
+const severityIcons: Record<ToastSeverity, ReactNode> = {
+  success: <CheckCircle weight="fill" aria-hidden="true" />,
+  error: <XCircle weight="fill" aria-hidden="true" />,
+  warning: <Warning weight="fill" aria-hidden="true" />,
+  info: <Info weight="fill" aria-hidden="true" />,
+};
 export type ToastPosition =
   | "top-left"
   | "top-center"
@@ -54,6 +63,9 @@ const Toast: React.FC<ToastProps> = ({
   const ariaLive =
     severity === "error" || severity === "warning" ? "assertive" : "polite";
 
+  // Get icon for severity (color independence - WCAG 1.4.1)
+  const severityIcon = severity ? severityIcons[severity] : null;
+
   return (
     <div
       className={[
@@ -69,7 +81,12 @@ const Toast: React.FC<ToastProps> = ({
       aria-live={ariaLive}
       aria-atomic="true"
     >
-      {displayMessage}
+      {severityIcon && (
+        <span className={styles.icon} aria-hidden="true">
+          {severityIcon}
+        </span>
+      )}
+      <span className={styles.message}>{displayMessage}</span>
     </div>
   );
 };

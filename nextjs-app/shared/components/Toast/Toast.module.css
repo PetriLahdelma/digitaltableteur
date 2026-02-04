@@ -3,6 +3,9 @@
   bottom: var(--space-layout-24);
   left: 50%;
   z-index: 1000;
+  display: flex;
+  gap: var(--space-internal-8);
+  align-items: center;
   padding: var(--space-internal-12) var(--space-internal-16);
   border-radius: var(--radius-md);
   background-color: var(--color-primary);
@@ -10,6 +13,28 @@
   font-family: var(--font-text);
   color: var(--color-white);
   transform: translateX(-50%);
+}
+
+/* Icon for severity (color independence - WCAG 1.4.1) */
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-white);
+}
+
+/* Warning variant needs dark icon for contrast */
+.toast--warning .icon {
+  color: var(--color-warning-text);
+}
+
+.message {
+  flex: 1;
+  align-self: center;
+  line-height: 1.4;
 }
 
 .toast--hidden {
