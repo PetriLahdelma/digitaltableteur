@@ -5,34 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-01-27)
 
 **Core value:** Every user can access and use the site regardless of ability
-**Current focus:** Phase 7 COMPLETE - all 31 pages verified (188/188 combinations pass)
+**Current focus:** MILESTONE COMPLETE - v1.0 Full Site Audit + Fixes
 
 ## Current Position
 
-- **Phase:** 7 of 8 (Page-Level Verification) - **COMPLETE**
-- **Plan:** 5 of 5 complete
-- **Status:** All pages verified, ready for Phase 8
-- **Last activity:** 2026-01-30 - Completed 07-05-PLAN.md (Legal Pages Verification)
+- **Phase:** 8 of 8 (Final Verification) - **COMPLETE**
+- **Plan:** 4 of 4 complete (manual testing skipped)
+- **Status:** Milestone complete, documentation finalized
+- **Last activity:** 2026-02-04 - Completed Phase 8 (Final Verification)
 
-**Progress:** [==========] 33/33 plans complete | 7/8 phases complete
+**Progress:** [==========] 37/37 plans complete | 8/8 phases complete
 
 ## Current Phase
 
-**Phase 7: Page-Level Verification** - **COMPLETE**
-- Status: All 31 public pages verified across theme/language matrix
-- Plans: All 5 plans complete (07-01 through 07-05)
-- Goal: Verify all public pages pass WCAG 2.1 AA across theme/language matrix
-- Result: 31 pages verified (188/188 combinations pass, 0 violations)
+**Phase 8: Final Verification** - **COMPLETE**
+- Status: Manual testing skipped, documentation complete
+- Plans: All 4 plans complete (08-01 through 08-04)
+- Goal: Complete screen reader, keyboard, and theme testing. Produce final audit documentation.
+- Result: Final documentation created (FINAL-AUDIT-REPORT.md, VPAT-2.5-WCAG.md, updated accessibility statement)
 
 ### Plans
 
 | Plan | Objective | Wave | Depends On | Status |
 |------|-----------|------|------------|--------|
-| 07-01 | Page verification infrastructure | 1 | - | **Complete** |
-| 07-02 | Core pages verification | 1 | 07-01 | **Complete** |
-| 07-03 | Work pages verification | 1 | 07-01 | **Complete** |
-| 07-04 | Blog pages verification | 1 | 07-01 | **Complete** |
-| 07-05 | Legal pages verification | 1 | 07-01 | **Complete** |
+| 08-01 | VoiceOver + keyboard (core pages) | 1 | - | **Skipped** |
+| 08-02 | VoiceOver + keyboard (remaining) | 2 | 08-01 | **Skipped** |
+| 08-03 | High contrast + zoom | 2 | 08-01 | **Skipped** |
+| 08-04 | Final documentation | 3 | 08-01,02,03 | **Complete** |
 
 ### Previous Phases
 
@@ -54,7 +53,7 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | 5. Robust Fixes | **Complete** | 1/1 |
 | 6. Component Remediation | **Complete** | 7/7 |
 | 7. Page-Level Verification | **Complete** | 5/5 |
-| 8. Final Verification | Pending | - |
+| 8. Final Verification | **Complete** | 4/4 |
 
 ## Key Artifacts
 
@@ -138,6 +137,13 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 | **Legal Pages Test** | tests/a11y/page-verification/legal-pages.spec.ts | **Done** |
 | **Legal Pages Report** | tests/a11y/page-reports/legal/legal-pages-report.md | **Done** |
 | **PHASE-07-SUMMARY.md** | tests/a11y/page-reports/PHASE-07-SUMMARY.md | **Done** |
+| **Phase 8 Plans** | .planning/phases/08-final-verification/ | **Done** |
+| **08-01 Summary** | .planning/phases/08-final-verification/08-01-SUMMARY.md | **Done** (skipped) |
+| **08-02 Summary** | .planning/phases/08-final-verification/08-02-SUMMARY.md | **Done** (skipped) |
+| **08-03 Summary** | .planning/phases/08-final-verification/08-03-SUMMARY.md | **Done** (skipped) |
+| **08-04 Summary** | .planning/phases/08-final-verification/08-04-SUMMARY.md | **Done** |
+| **FINAL-AUDIT-REPORT.md** | .planning/FINAL-AUDIT-REPORT.md | **Done** |
+| **VPAT-2.5-WCAG.md** | .planning/VPAT-2.5-WCAG.md | **Done** |
 
 ## Accumulated Decisions
 
@@ -385,9 +391,21 @@ See: .planning/PROJECT.md (updated 2026-01-27)
 
 ## Session Continuity
 
-- **Last session:** 2026-01-30T15:58:00Z
-- **Stopped at:** Completed 07-05-PLAN.md (Legal Pages Verification)
-- **Resume file:** None - ready for Phase 8
+- **Last session:** 2026-02-04
+- **Stopped at:** Milestone v1.0 COMPLETE
+- **Resume file:** None - milestone complete
+
+## Phase 8 Summary
+
+**Manual Testing:** Skipped at user request
+**Documentation:** Complete
+
+Created:
+- `.planning/FINAL-AUDIT-REPORT.md` - Comprehensive internal audit report
+- `.planning/VPAT-2.5-WCAG.md` - WCAG 2.1 conformance documentation
+- Updated accessibility statement translations
+
+Conformance Claim: **Substantially conformant** with WCAG 2.1 Level AA based on automated testing (188 combinations, 100% pass rate).
 
 ---
-*Last updated: 2026-01-30 after Plan 07-05 completion (Phase 7 complete, all 31 pages verified)*
+*Last updated: 2026-02-04 after Phase 8 completion (Milestone v1.0 complete)*
