@@ -94,7 +94,7 @@
     "@remotion/cli": "^4.0.409",
     "@sanity/block-content-to-markdown": "^1.0.1",
     "@sanity/client": "^7.13.2",
-    "@sanity/image-url": "^1.2.0",
+    "@sanity/image-url": "^2.0.3",
     "@sanity/vision": "^5.3.1",
     "@sentry/nextjs": "^10.34.0",
     "@storybook/addon-vitest": "^10.1.11",
