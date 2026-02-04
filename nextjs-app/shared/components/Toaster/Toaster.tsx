@@ -40,10 +40,10 @@ export function useToast() {
 }
 
 const severityIcons: Record<ToastSeverity, ReactNode> = {
-  success: <CheckCircle weight="fill" className="size-5 text-green-500" />,
-  error: <XCircle weight="fill" className="size-5 text-red-500" />,
-  warning: <Warning weight="fill" className="size-5 text-yellow-500" />,
-  info: <Info weight="fill" className="size-5 text-blue-500" />,
+  success: <CheckCircle weight="fill" className="size-5 shrink-0 self-center text-green-500" />,
+  error: <XCircle weight="fill" className="size-5 shrink-0 self-center text-red-500" />,
+  warning: <Warning weight="fill" className="size-5 shrink-0 self-center text-yellow-500" />,
+  info: <Info weight="fill" className="size-5 shrink-0 self-center text-blue-500" />,
 };
 
 const severityClasses: Record<ToastSeverity, string> = {
@@ -116,8 +116,12 @@ export function ToasterProvider({
             )}
             role="status"
           >
-            {t.severity && severityIcons[t.severity]}
-            <p className="font-body text-sm flex-1">{t.message}</p>
+            {t.severity && (
+              <span className="flex items-center justify-center">
+                {severityIcons[t.severity]}
+              </span>
+            )}
+            <span className="font-body text-sm flex-1">{t.message}</span>
             <button
               onClick={() => dismiss(t.id)}
               className="text-muted-foreground hover:text-foreground transition-colors"

@@ -77,6 +77,10 @@ async function auditPage(
 }
 
 test.describe("Accessibility Audit - Baseline Capture", () => {
+  // Run tests serially to properly aggregate results into a single JSON file
+  // Without this, parallel workers each have their own allResults object and overwrite each other
+  test.describe.configure({ mode: "serial" });
+
   // Core Pages
   test("home", async ({ page }) => {
     const results = await auditPage(page, "home", "/");

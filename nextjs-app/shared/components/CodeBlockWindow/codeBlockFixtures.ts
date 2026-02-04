@@ -6,8 +6,8 @@ export type CodeBlockFixtureNode =
   | {
       type: "element";
       tagName: string;
-      properties?: Readonly<Record<string, unknown>>;
-      children?: ReadonlyArray<CodeBlockFixtureNode>;
+      properties?: Record<string, unknown>;
+      children?: CodeBlockFixtureNode[];
     };
 
 export type CodeBlockFixture = {

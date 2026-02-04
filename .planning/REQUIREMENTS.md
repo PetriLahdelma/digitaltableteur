@@ -208,11 +208,21 @@ Requirements for complete WCAG 2.1 AA audit and remediation.
 
 ### Verification
 
-- [ ] **VERF-01**: Screen reader testing (VoiceOver) on all pages
-- [ ] **VERF-02**: Keyboard-only navigation test on all pages
-- [ ] **VERF-03**: High contrast mode verification
-- [ ] **VERF-04**: Zoom to 200% verification
-- [ ] **VERF-05**: Document final audit results
+- [x] **VERF-01**: Screen reader testing (VoiceOver) on all pages
+  - Status: Skipped (2026-02-04)
+  - Note: Manual testing not performed at user request; automated tests only
+- [x] **VERF-02**: Keyboard-only navigation test on all pages
+  - Status: Complete via automation (2026-02-04)
+  - Note: Playwright tests verify keyboard navigation on all public pages
+- [x] **VERF-03**: High contrast mode verification
+  - Status: Partially complete (2026-02-04)
+  - Note: Automated contrast checks pass; manual forced colors testing skipped
+- [x] **VERF-04**: Zoom to 200% verification
+  - Status: Complete via automation (2026-02-04)
+  - Note: Playwright tests at 640px viewport (200% simulation) pass
+- [x] **VERF-05**: Document final audit results
+  - Status: Complete (2026-02-04)
+  - See: FINAL-AUDIT-REPORT.md, VPAT-2.5-WCAG.md, updated accessibility statement
 
 ## v2 Requirements
 
@@ -264,8 +274,8 @@ Deferred to future work.
 | RBST-01 | Phase 5 | **Complete** |
 | RBST-02 | Phase 5 | **Complete** |
 | RBST-03 | Phase 5 | **Complete** |
-| RBST-04 | Phase 8 | Pending (manual) |
-| RBST-05 | Phase 8 | Pending (manual) |
+| RBST-04 | Phase 8 | **Skipped** (manual) |
+| RBST-05 | Phase 8 | **Skipped** (manual) |
 | COMP-01 | Phase 6 | **Complete** |
 | COMP-02 | Phase 6 | **Complete** (pre-existing) |
 | COMP-03 | Phase 6 | **Complete** |
@@ -280,11 +290,11 @@ Deferred to future work.
 | PAGE-03 | Phase 7 | **Complete** |
 | PAGE-04 | Phase 7 | **Complete** |
 | PAGE-05 | Phase 7 | **Complete** |
-| VERF-01 | Phase 8 | Pending |
-| VERF-02 | Phase 8 | Pending |
-| VERF-03 | Phase 8 | Pending |
-| VERF-04 | Phase 8 | Pending |
-| VERF-05 | Phase 8 | Pending |
+| VERF-01 | Phase 8 | **Skipped** (manual) |
+| VERF-02 | Phase 8 | **Complete** (automated) |
+| VERF-03 | Phase 8 | **Partial** (automated) |
+| VERF-04 | Phase 8 | **Complete** (automated) |
+| VERF-05 | Phase 8 | **Complete** |
 
 **Coverage:**
 - v1 requirements: 44 total
@@ -293,4 +303,4 @@ Deferred to future work.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-01-30 after Phase 7 completion (PAGE-01 through PAGE-05 all complete)*
+*Last updated: 2026-02-04 after Phase 8 completion (VERF requirements complete with manual testing skipped)*
