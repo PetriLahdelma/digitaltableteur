@@ -1,10 +1,9 @@
 "use client";
 
 import { I18nextProvider } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import i18n from "../i18n/config";
-import styles from "./I18nProvider.module.css";
 
 const supportedLanguages = ["en", "fi", "sv"] as const;
 type SupportedLanguage = (typeof supportedLanguages)[number];
@@ -19,39 +18,23 @@ const normalizeLanguage = (
     : "en";
 };
 
-const waitForI18nInit = (timeoutMs = 5000) =>
-  new Promise<void>((resolve, reject) => {
-    if (i18n.isInitialized) {
-      resolve();
-      return;
-    }
-    let timeout: ReturnType<typeof setTimeout> | null = null;
-    const handleInitialized = () => {
-      if (timeout) clearTimeout(timeout);
-      i18n.off("initialized", handleInitialized);
-      resolve();
-    };
-    timeout = setTimeout(() => {
-      i18n.off("initialized", handleInitialized);
-      reject(new Error("i18n initialization timeout"));
-    }, timeoutMs);
-    i18n.on("initialized", handleInitialized);
-  });
-
+/**
+ * I18nProvider - SSR-compatible internationalization wrapper
+ *
+ * IMPORTANT: This component renders children immediately without blocking.
+ * Translations are bundled statically, so no async loading is needed.
+ * Language detection happens client-side after hydration.
+ *
+ * This ensures crawlers and link previews see actual content instead of "Loading..."
+ */
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [isInitialized, setIsInitialized] = useState(false);
-
+  // Sync language preference client-side after hydration (non-blocking)
   useEffect(() => {
-    let cancelled = false;
+    // Skip if running on server
+    if (typeof window === "undefined") return;
 
-    const syncLanguage = async () => {
-      try {
-        await waitForI18nInit();
-      } catch (error) {
-        console.error("i18n initialization timeout:", error);
-      }
-
-      // Detect language from cookie and sync before rendering children to avoid hydration mismatch
+    const syncLanguage = () => {
+      // Detect language from cookie or localStorage
       const cookieLang = decodeURIComponent(
         document.cookie
           .split("; ")
@@ -66,41 +49,28 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
         i18n.resolvedLanguage || i18n.language,
       );
 
+      // Only change if different to avoid unnecessary re-renders
       if (currentLanguage !== targetLanguage) {
-        try {
-          await i18n.changeLanguage(targetLanguage);
-        } catch (error) {
-          try {
-            await i18n.changeLanguage("en");
-          } catch (fallbackError) {
-            console.error("Failed to initialize i18n language:", fallbackError);
-          }
-        }
-      }
-
-      if (!cancelled) {
-        setIsInitialized(true);
+        i18n.changeLanguage(targetLanguage).catch(() => {
+          // Fallback to English on error
+          i18n.changeLanguage("en").catch(console.error);
+        });
       }
     };
 
-    syncLanguage();
-
-    return () => {
-      cancelled = true;
-    };
+    // If i18n is already initialized, sync immediately
+    if (i18n.isInitialized) {
+      syncLanguage();
+    } else {
+      // Otherwise wait for initialization
+      i18n.on("initialized", syncLanguage);
+      return () => {
+        i18n.off("initialized", syncLanguage);
+      };
+    }
   }, []);
 
-  // Don't render children until language is synced to avoid hydration mismatch
-  if (!isInitialized) {
-    return (
-      <div className={styles.loadingRoot} role="status" aria-live="polite">
-        <div className={styles.loadingCard}>
-          <span className={styles.loadingSpinner} aria-hidden="true" />
-          <span className={styles.loadingText}>Loading...</span>
-        </div>
-      </div>
-    );
-  }
-
+  // Render children immediately - translations are bundled, no loading needed
+  // This ensures SSR works and crawlers see actual content
   return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 }
