@@ -1,11 +1,14 @@
 import { type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { CheckCircle, Warning, XCircle, Info } from "@phosphor-icons/react";
 
 export interface TagProps {
   children: ReactNode;
   variant?: "default" | "secondary" | "outline" | "success" | "warning" | "error" | "info";
   size?: "sm" | "md" | "lg";
   className?: string;
+  /** Show icon for semantic variants (success, warning, error, info). Default: true for color independence (WCAG 1.4.1) */
+  showIcon?: boolean;
 }
 
 const variantClasses = {
@@ -24,21 +27,51 @@ const sizeClasses = {
   lg: "px-3 py-1.5 text-text-m",
 } as const;
 
+const iconSizeClasses = {
+  sm: "size-3",
+  md: "size-3.5",
+  lg: "size-4",
+} as const;
+
+// Semantic variants that get icons for color independence (WCAG 1.4.1)
+const semanticIcons = {
+  success: CheckCircle,
+  warning: Warning,
+  error: XCircle,
+  info: Info,
+} as const;
+
+type SemanticVariant = keyof typeof semanticIcons;
+
+function isSemanticVariant(variant: string): variant is SemanticVariant {
+  return variant in semanticIcons;
+}
+
 export function Tag({
   children,
   variant = "default",
   size = "md",
   className,
+  showIcon = true,
 }: TagProps) {
+  const IconComponent = isSemanticVariant(variant) ? semanticIcons[variant] : null;
+
   return (
     <span
       className={cn(
-        "inline-flex items-center font-body font-medium rounded-sm",
+        "inline-flex items-center gap-1 font-body font-medium rounded-sm",
         variantClasses[variant],
         sizeClasses[size],
         className
       )}
     >
+      {showIcon && IconComponent && (
+        <IconComponent
+          weight="fill"
+          className={cn("flex-shrink-0", iconSizeClasses[size])}
+          aria-hidden="true"
+        />
+      )}
       {children}
     </span>
   );
