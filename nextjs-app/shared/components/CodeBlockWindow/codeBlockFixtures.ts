@@ -4,16 +4,16 @@
 export type CodeBlockFixtureNode =
   | string
   | {
-      type: "element";
-      tagName: string;
-      properties?: Record<string, unknown>;
-      children?: CodeBlockFixtureNode[];
+      readonly type: "element";
+      readonly tagName: string;
+      readonly properties?: Readonly<Record<string, unknown>>;
+      readonly children?: readonly CodeBlockFixtureNode[];
     };
 
 export type CodeBlockFixture = {
-  language: string;
-  code: string;
-  pre: CodeBlockFixtureNode;
+  readonly language: string;
+  readonly code: string;
+  readonly pre: CodeBlockFixtureNode;
 };
 
 export const codeBlockFixtures = {

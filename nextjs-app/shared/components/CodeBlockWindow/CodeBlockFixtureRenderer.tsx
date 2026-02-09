@@ -20,7 +20,7 @@ const toStyleObject = (style: unknown) => {
   return Object.keys(output).length > 0 ? output : undefined;
 };
 
-const normalizeProps = (props: Record<string, unknown> | undefined) => {
+const normalizeProps = (props: Readonly<Record<string, unknown>> | undefined) => {
   if (!props) return {};
   const output: Record<string, unknown> = {};
   Object.entries(props).forEach(([key, value]) => {
@@ -51,7 +51,7 @@ export const renderCodeBlockFixtureNode = (
   if (!node || node.type !== "element") return null;
 
   const props = normalizeProps(node.properties);
-  const children = (node.children ?? []).map((child, index) =>
+  const children = (node.children ?? ([] as readonly CodeBlockFixtureNode[])).map((child, index) =>
     renderCodeBlockFixtureNode(child, `${key}-${index}`),
   );
 
