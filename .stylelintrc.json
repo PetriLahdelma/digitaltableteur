@@ -31,6 +31,28 @@
         "selector-pseudo-class-no-unknown": null,
         "property-disallowed-list": null
       }
+    },
+    {
+      "files": ["**/globals.css", "**/tailwind.css"],
+      "rules": {
+        "selector-class-pattern": null,
+        "at-rule-no-unknown": [true, {
+          "ignoreAtRules": ["theme", "custom-variant", "layer", "apply", "tailwind", "config", "plugin", "utility", "variant", "source"]
+        }],
+        "import-notation": null,
+        "property-no-deprecated": null,
+        "property-disallowed-list": null,
+        "media-feature-range-notation": null
+      }
+    },
+    {
+      "files": ["**/*.module.css"],
+      "rules": {
+        "selector-pseudo-class-no-unknown": [true, {
+          "ignorePseudoClasses": ["global", "local", "export"]
+        }],
+        "selector-class-pattern": null
+      }
     }
   ],
   "rules": {
