@@ -155,7 +155,7 @@
     "@storybook/addon-a11y": "^10.0.5",
     "@storybook/addon-docs": "^10.0.5",
     "@storybook/builder-vite": "^10.0.5",
-    "@storybook/cli": "^10.0.5",
+    "@storybook/cli": "^10.2.13",
     "@storybook/react-vite": "^10.0.5",
     "@storybook/test-runner": "^0.24.1",
     "@storybook/testing-library": "^0.2.2",
