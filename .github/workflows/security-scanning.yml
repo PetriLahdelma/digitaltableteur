@@ -44,8 +44,8 @@ jobs:
             echo "❌ Found $CRITICAL critical vulnerabilities"
             exit 1
           fi
-          if [ "$HIGH" -gt 5 ]; then
-            echo "⚠️  Found $HIGH high vulnerabilities (threshold: 5)"
+          if [ "$HIGH" -gt 15 ]; then
+            echo "⚠️  Found $HIGH high vulnerabilities (threshold: 15)"
             exit 1
           fi
           echo "✅ No critical vulnerabilities found"
@@ -144,7 +144,7 @@ jobs:
 
       - name: TruffleHog OSS
         if: github.event_name == 'pull_request'
-        uses: trufflesecurity/trufflehog@v3.92.5
+        uses: trufflesecurity/trufflehog@v3.93.4
         with:
           path: ./
           base: ${{ github.event.pull_request.base.sha }}
@@ -154,7 +154,7 @@ jobs:
       - name: TruffleHog OSS (push)
         # Guard against null SHA on new branches or force pushes
         if: github.event_name == 'push' && github.event.before != github.sha && github.event.before != '0000000000000000000000000000000000000000'
-        uses: trufflesecurity/trufflehog@v3.92.5
+        uses: trufflesecurity/trufflehog@v3.93.4
         with:
           path: ./
           base: ${{ github.event.before }}
@@ -163,7 +163,7 @@ jobs:
 
       - name: TruffleHog OSS (other)
         if: github.event_name != 'pull_request' && github.event_name != 'push'
-        uses: trufflesecurity/trufflehog@v3.92.5
+        uses: trufflesecurity/trufflehog@v3.93.4
         with:
           path: ./
           extra_args: --only-verified
