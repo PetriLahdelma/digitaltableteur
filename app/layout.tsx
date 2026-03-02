@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 
 import { fontVariables } from "./fonts";
 import {
@@ -173,6 +174,7 @@ export default function RootLayout({
             ),
           }}
         />
+        <Analytics />
         <NextThemeProvider>
           <I18nProvider>
             <HtmlLangSync />
