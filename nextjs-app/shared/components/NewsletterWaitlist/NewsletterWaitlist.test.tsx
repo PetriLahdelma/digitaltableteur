@@ -122,6 +122,35 @@ describe("NewsletterWaitlist", () => {
       });
     });
 
+    it("sends newsletter payload without name field", async () => {
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ status: "ok" }),
+      });
+      global.fetch = mockFetch;
+
+      render(<NewsletterWaitlist />);
+      await userEvent.click(
+        screen.getByRole("button", { name: /newsletterWaitlist.trigger/ }),
+      );
+      const input = screen.getByLabelText(/newsletterWaitlist.inputLabel/);
+      await userEvent.type(input, "test@example.com");
+      await userEvent.click(
+        screen.getByRole("button", { name: /newsletterWaitlist.submit/ }),
+      );
+
+      await waitFor(() => {
+        const call = mockFetch.mock.calls[0];
+        const body = JSON.parse(call[1].body);
+        expect(body).not.toHaveProperty("name");
+        expect(body).toEqual({
+          email: "test@example.com",
+          type: "newsletter",
+          source: "waitlist",
+        });
+      });
+    });
+
     it("handles submission errors", async () => {
       const mockFetch = vi.fn().mockResolvedValue({
         ok: false,
