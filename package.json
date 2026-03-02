@@ -99,6 +99,7 @@
     "@sentry/nextjs": "^10.34.0",
     "@storybook/addon-vitest": "^10.2.7",
     "@swc/helpers": "^0.5.18",
+    "@vercel/analytics": "^1.6.1",
     "@vitest/browser-playwright": "^4.0.18",
     "ai": "^5.0.115",
     "class-variance-authority": "^0.7.1",
