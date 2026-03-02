@@ -52,9 +52,17 @@ export async function POST(request: NextRequest) {
     const interest = body.interest ? sanitize(body.interest) : null;
     const message = body.message ? sanitize(body.message) : null;
     const time = body.time ? sanitize(body.time) : null;
+    const type = body.type ? sanitize(body.type) : null;
+    const source = body.source ? sanitize(body.source) : null;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!name || !email || !emailRegex.test(email)) {
+
+    // Newsletter signups only require a valid email
+    const isNewsletter = type === "newsletter";
+    const isValidEmail = email && emailRegex.test(email);
+    const isValid = isNewsletter ? isValidEmail : name && isValidEmail;
+
+    if (!isValid) {
       SecurityLogger.logDataAccess(
         ip,
         userAgent,
@@ -78,6 +86,8 @@ export async function POST(request: NextRequest) {
         interest,
         message,
         time,
+        type,
+        source,
         submittedFrom: ip,
         userAgent,
         createdAt: new Date(),
