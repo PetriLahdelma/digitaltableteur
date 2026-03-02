@@ -73,7 +73,7 @@
     "pseo:generate": "npx tsx scripts/pseo/generate-pseo-copy.ts --only-missing"
   },
   "dependencies": {
-    "@ai-sdk/mcp": "^0.0.12",
+    "@ai-sdk/mcp": "^1.0.22",
     "@ai-sdk/react": "^2.0.117",
     "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.2",
