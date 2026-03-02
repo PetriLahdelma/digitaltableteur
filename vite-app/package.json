@@ -189,7 +189,7 @@
     "stylelint-declaration-strict-value": "^1.10.11",
     "stylelint-order": "^7.0.0",
     "typescript-language-server": "^5.1.1",
-    "vite-plugin-static-copy": "^3.1.0",
+    "vite-plugin-static-copy": "^3.2.0",
     "vitest": "^4.0.16"
   }
 }
