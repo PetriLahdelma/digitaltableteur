@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
         },
       );
       return NextResponse.json(
-        { error: err instanceof Error ? err.message : "Database error" },
+        { error: "Failed to save contact information" },
         { status: 500 },
       );
     }
