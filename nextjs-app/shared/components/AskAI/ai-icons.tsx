@@ -1,8 +1,8 @@
 "use client";
 
-import type { SVGProps } from "react";
+type SvgIconProps = Omit<JSX.IntrinsicElements["svg"], "ref">;
 
-export function ChatGPTIcon(props: SVGProps<SVGSVGElement>) {
+export function ChatGPTIcon(props: SvgIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@ export function ChatGPTIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function ClaudeIcon(props: SVGProps<SVGSVGElement>) {
+export function ClaudeIcon(props: SvgIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ export function ClaudeIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function GeminiIcon(props: SVGProps<SVGSVGElement>) {
+export function GeminiIcon(props: SvgIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ export function GeminiIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function PerplexityIcon(props: SVGProps<SVGSVGElement>) {
+export function PerplexityIcon(props: SvgIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,3 @@
-import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import styles from "./MarkdownMessage.module.css";
@@ -26,13 +25,13 @@ export interface MarkdownMessageProps {
 }
 
 // Basic link transform: open in same tab for accessibility; could be target _blank with rel
-const MarkdownMessage: React.FC<MarkdownMessageProps> = ({
+function MarkdownMessage({
   content,
   fallback,
   "data-role": dataRole,
   renderWithDesignSystem = false,
   designSystemTextSize = "M",
-}) => {
+}: MarkdownMessageProps) {
   const safe = content?.trim();
   const toRender = safe || fallback || "";
 
@@ -51,76 +50,64 @@ const MarkdownMessage: React.FC<MarkdownMessageProps> = ({
           // Disallow raw HTML for safety; can be enabled later with rehype-sanitize
           skipHtml
           components={{
-            a: ({ href, children, ...props }) =>
+            a: ({ href, children }) =>
               renderWithDesignSystem ? (
-                <Link href={href ?? "#"} {...props}>
+                <Link href={href ?? "#"}>
                   {children}
                 </Link>
               ) : (
-                <a href={href} {...props} rel="noopener noreferrer" />
+                <a href={href} rel="noopener noreferrer">
+                  {children}
+                </a>
               ),
-            code: ({ children, ...props }) => <code {...props}>{children}</code>,
-            p: ({ node, children, ...props }) =>
+            code: ({ children }) => <code>{children}</code>,
+            p: ({ children }) =>
               renderWithDesignSystem ? (
-                <Text
-                  terminals="sans"
-                  size={resolvedDesignSystemTextSize}
-                  {...props}
-                >
+                <Text terminals="sans" size={resolvedDesignSystemTextSize}>
                   {children}
                 </Text>
               ) : (
-                <p {...props}>{children}</p>
+                <p>{children}</p>
               ),
-            h1: ({ node, children, ...props }) =>
+            h1: ({ children }) =>
               renderWithDesignSystem ? (
-                <Title terminals="sans" level={1} size="L" {...props}>
+                <Title terminals="sans" level={1} size="L">
                   {children}
                 </Title>
               ) : (
-                <h1 {...props}>{children}</h1>
+                <h1>{children}</h1>
               ),
-            h2: ({ node, children, ...props }) =>
+            h2: ({ children }) =>
               renderWithDesignSystem ? (
-                <Title terminals="sans" level={2} size="S" {...props}>
+                <Title terminals="sans" level={2} size="S">
                   {children}
                 </Title>
               ) : (
-                <h2 {...props}>{children}</h2>
+                <h2>{children}</h2>
               ),
-            h3: ({ node, children, ...props }) =>
+            h3: ({ children }) =>
               renderWithDesignSystem ? (
-                <Title terminals="sans" level={3} size="XS" {...props}>
+                <Title terminals="sans" level={3} size="XS">
                   {children}
                 </Title>
               ) : (
-                <h3 {...props}>{children}</h3>
+                <h3>{children}</h3>
               ),
-            strong: ({ node, children, ...props }) =>
+            strong: ({ children }) =>
               renderWithDesignSystem ? (
-                <Text
-                  as="strong"
-                  terminals="sans"
-                  size={resolvedDesignSystemTextSize}
-                  {...props}
-                >
+                <Text as="strong" terminals="sans" size={resolvedDesignSystemTextSize}>
                   {children}
                 </Text>
               ) : (
-                <strong {...props}>{children}</strong>
+                <strong>{children}</strong>
               ),
-            em: ({ node, children, ...props }) =>
+            em: ({ children }) =>
               renderWithDesignSystem ? (
-                <Text
-                  as="em"
-                  terminals="sans"
-                  size={resolvedDesignSystemTextSize}
-                  {...props}
-                >
+                <Text as="em" terminals="sans" size={resolvedDesignSystemTextSize}>
                   {children}
                 </Text>
               ) : (
-                <em {...props}>{children}</em>
+                <em>{children}</em>
               ),
           }}
         >
@@ -129,6 +116,6 @@ const MarkdownMessage: React.FC<MarkdownMessageProps> = ({
       ) : null}
     </div>
   );
-};
+}
 
 export default MarkdownMessage;
