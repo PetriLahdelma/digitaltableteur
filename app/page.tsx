@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Script from "next/script";
 
 import { HomePage } from "@dt-pages/Home/HomePage";
@@ -59,10 +58,10 @@ const homepagePaths = [
       "Overview of design systems, AI-powered design, branding, UX, and creative development services.",
   },
   {
-    name: "Selected portfolio work",
+    name: "Selected work and case studies",
     url: "/work",
     description:
-      "Portfolio examples across design systems, product design, branding, and accessibility-focused work.",
+      "Selected work across design systems, product design, branding, and accessibility-focused delivery.",
   },
   {
     name: "Blog and insights",
@@ -110,60 +109,6 @@ export default function Home() {
         }}
       />
       <HomePage />
-      <section className="mx-auto w-full max-w-6xl px-6 pb-20 pt-8">
-        <div className="grid gap-6 rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur md:grid-cols-[1.2fr_repeat(3,minmax(0,1fr))] md:p-8 dark:border-white/10 dark:bg-neutral-950/60">
-          <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-black/55 dark:text-white/55">
-              Site Purpose
-            </p>
-            <h2 className="text-2xl font-semibold tracking-tight text-black dark:text-white">
-              Clear entry points for design systems, AI-powered design, and
-              portfolio proof.
-            </h2>
-            <p className="max-w-xl text-sm leading-6 text-black/70 dark:text-white/70">
-              This site is structured so both people and language models can
-              quickly understand what Digitaltableteur offers, where the proof
-              lives, and how to start a conversation.
-            </p>
-          </div>
-          <article className="rounded-[1.5rem] border border-black/10 bg-black/[0.03] p-4 dark:border-white/10 dark:bg-white/[0.04]">
-            <h3 className="text-sm font-semibold text-black dark:text-white">
-              What we help with
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-black/70 dark:text-white/70">
-              Design systems, AI-assisted design workflows, scalable UI
-              foundations, and product design that can move from concept to
-              production.
-            </p>
-          </article>
-          <article className="rounded-[1.5rem] border border-black/10 bg-black/[0.03] p-4 dark:border-white/10 dark:bg-white/[0.04]">
-            <h3 className="text-sm font-semibold text-black dark:text-white">
-              What to read next
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-black/70 dark:text-white/70">
-              Explore the{" "}
-              <Link href="/work" className="underline underline-offset-4">
-                portfolio
-              </Link>{" "}
-              for project proof or the{" "}
-              <Link href="/blog" className="underline underline-offset-4">
-                blog
-              </Link>{" "}
-              for design systems and AI-native workflow thinking.
-            </p>
-          </article>
-          <article className="rounded-[1.5rem] border border-black/10 bg-black/[0.03] p-4 dark:border-white/10 dark:bg-white/[0.04]">
-            <h3 className="text-sm font-semibold text-black dark:text-white">
-              Who this is for
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-black/70 dark:text-white/70">
-              Product teams, design leaders, and companies that need clearer
-              design system decisions, stronger implementation quality, or
-              practical AI design adoption.
-            </p>
-          </article>
-        </div>
-      </section>
     </>
   );
 }
