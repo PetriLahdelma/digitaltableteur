@@ -129,6 +129,7 @@ describe("Translation Coverage", () => {
       "footerBillingAddress",
       "footerBillingZip",
       "footerBillingVat",
+      "footerImprint",
       "footerCopyright",
     ];
 

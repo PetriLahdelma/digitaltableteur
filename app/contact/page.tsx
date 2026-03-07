@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { ContactContent } from "./ContactContent";
 import {
   getContactPageSchema,
@@ -55,7 +54,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Script
+      <script
         id="schema-contact"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

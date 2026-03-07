@@ -26,7 +26,21 @@ const GDPR_RATE_LIMIT_WINDOW_MS = 3_600_000; // 1 hour
 const GDPR_RATE_LIMIT_MAX = 3; // requests per window per email
 const gdprBuckets = new Map<string, { count: number; windowStart: number }>();
 
+function pruneExpiredBuckets(
+  buckets: Map<string, { count: number; windowStart: number }>,
+  windowMs: number,
+) {
+  const now = Date.now();
+
+  for (const [key, bucket] of buckets.entries()) {
+    if (now - bucket.windowStart > windowMs) {
+      buckets.delete(key);
+    }
+  }
+}
+
 function isGdprRateLimited(email: string): boolean {
+  pruneExpiredBuckets(gdprBuckets, GDPR_RATE_LIMIT_WINDOW_MS);
   const now = Date.now();
   const bucket = gdprBuckets.get(email);
 
@@ -53,6 +67,7 @@ const gdprGetBuckets = new Map<
 >();
 
 function isGdprGetRateLimited(ip: string): boolean {
+  pruneExpiredBuckets(gdprGetBuckets, GDPR_GET_RATE_LIMIT_WINDOW_MS);
   const now = Date.now();
   const bucket = gdprGetBuckets.get(ip);
 
@@ -245,7 +260,7 @@ export async function GET(request: NextRequest) {
         "/api/gdpr/delete-data",
         "GET",
         true,
-        { email },
+        { exists: count > 0 },
       );
 
       return NextResponse.json({

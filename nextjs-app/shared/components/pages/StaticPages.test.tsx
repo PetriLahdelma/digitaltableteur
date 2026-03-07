@@ -11,6 +11,7 @@ import { CookiePolicyFullSvPage } from "@dt/CookiePolicy/CookiePolicyFullSvPage"
 import { AiUsagePage } from "@dt/AiUsagePage/AiUsagePage";
 import { AboutPage } from "@dt/AboutPage/AboutPage";
 import { HomePage } from "@dt/Home/HomePage";
+import { ImprintPage } from "@dt-pages/ImprintPage";
 
 const withI18n = (ui: React.ReactElement) => (
   <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>
@@ -32,6 +33,12 @@ describe("Static content pages", () => {
     render(withI18n(<AiUsagePage onBack={onBack} />));
     fireEvent.click(screen.getByRole("button", { name: /Back/i }));
     expect(onBack).toHaveBeenCalled();
+  });
+
+  it("renders imprint page", () => {
+    render(withI18n(<ImprintPage />));
+    expect(screen.getByText(/Imprint/i)).toBeInTheDocument();
+    expect(screen.getByText(/2264455-2/)).toBeInTheDocument();
   });
 
   it("renders about and home pages", () => {

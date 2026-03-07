@@ -1,6 +1,12 @@
 "use client";
 
-import { Fragment, useRef, useMemo, type ElementType } from "react";
+import {
+  Fragment,
+  useRef,
+  useMemo,
+  type CSSProperties,
+  type ElementType,
+} from "react";
 import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
 import styles from "./TextReveal.module.css";
@@ -17,6 +23,7 @@ export interface TextRevealProps {
   stagger?: number;
   threshold?: string;
   className?: string;
+  style?: CSSProperties;
   as?: ElementType;
 }
 
@@ -29,6 +36,7 @@ export function TextReveal({
   stagger = 0.02,
   threshold = "top 85%",
   className = "",
+  style,
   as: Component = "p",
 }: TextRevealProps) {
   const ref = useRef<HTMLElement>(null);
@@ -106,7 +114,11 @@ export function TextReveal({
   );
 
   return (
-    <Component ref={ref} className={`${styles.textReveal} ${className}`.trim()}>
+    <Component
+      ref={ref}
+      className={`${styles.textReveal} ${className}`.trim()}
+      style={style}
+    >
       {elements.map((el, index) => {
         const needsSpace = type === "words" && index < elements.length - 1;
 

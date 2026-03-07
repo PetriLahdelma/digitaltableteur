@@ -83,17 +83,17 @@ This site explains what Digitaltableteur does, shows portfolio proof, publishes 
 Use the blog for longer-form explanations, design-system thinking, and AI-native workflow topics:
 
 - Blog index: https://www.digitaltableteur.com/blog
-- Example route pattern: https://www.digitaltableteur.com/blog/[slug]
+- Blog article pattern: https://www.digitaltableteur.com/blog/{slug}
 
 ## Programmatic SEO / answer-first content
 
 The PSEO section is built for direct answers around services, stacks, and audiences.
 
 - Hub: https://www.digitaltableteur.com/pseo
-- Service pages pattern: https://www.digitaltableteur.com/pseo/services/[slug]
-- Stack pages pattern: https://www.digitaltableteur.com/pseo/stacks/[slug]
-- Audience pages pattern: https://www.digitaltableteur.com/pseo/audiences/[slug]
-- Leaf answer pages pattern: https://www.digitaltableteur.com/pseo/[slug]
+- Service pages pattern: https://www.digitaltableteur.com/pseo/services/{slug}
+- Stack pages pattern: https://www.digitaltableteur.com/pseo/stacks/{slug}
+- Audience pages pattern: https://www.digitaltableteur.com/pseo/audiences/{slug}
+- Leaf answer pages pattern: https://www.digitaltableteur.com/pseo/{slug}
 
 ## How to use this site as context
 

@@ -1,0 +1,55 @@
+.page {
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  max-width: 680px;
+  font-family: var(--primary-body-font, sans-serif);
+  line-height: 1.6;
+}
+
+.page h1 {
+  font-family: var(--secondary-heading-font, sans-serif);
+  font-size: 2rem;
+  font-weight: var(--secondary-heading-weight, 400);
+  margin-bottom: 1rem;
+}
+
+.page p {
+  margin-block-end: 1rem;
+}
+
+.section {
+  margin-block-start: 2rem;
+}
+
+.row {
+  padding-block: 0.5rem 1rem;
+}
+
+.term {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+}
+
+.value {
+  margin: 0;
+  white-space: pre-line;
+}
+
+.link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary);
+  text-decoration-style: wavy;
+  text-underline-offset: 0.2em;
+}
+
+.link:hover {
+  color: var(--color-primary-dark, var(--color-primary));
+  text-decoration-color: var(--color-primary-dark, var(--color-primary));
+}
+
+@media (width <= 768px) {
+  .page h1 {
+    margin-top: 1.5rem;
+  }
+}

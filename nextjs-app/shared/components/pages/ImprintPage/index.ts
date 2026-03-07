@@ -1,0 +1,1 @@
+export { ImprintPage } from "./ImprintPage";
