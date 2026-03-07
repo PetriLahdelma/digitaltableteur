@@ -664,12 +664,12 @@ assertion_definitions:
     params:
       - patterns: list[string]
       - scope: enum[output, context, all]
-      - case_sensitive: bool (default: false)
+      - case_sensitive: "bool (default: false)"
     
   no_tool_calls:
     description: "No tool invocations should occur"
     params:
-      - tools: list[string] (optional, default: all)
+      - tools: "list[string] (optional, default: all)"
       - unless: string (optional, workflow exception)
     
   refusal_present:
