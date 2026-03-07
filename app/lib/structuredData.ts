@@ -209,8 +209,14 @@ export interface WebPageSchemaOptions {
 export function getWebPageSchema(
   options: WebPageSchemaOptions,
 ): Record<string, unknown> {
-  const { name, description, url, keywords = [], inLanguage = "en", dateModified } =
-    options;
+  const {
+    name,
+    description,
+    url,
+    keywords = [],
+    inLanguage = "en",
+    dateModified,
+  } = options;
 
   return {
     "@context": "https://schema.org",
@@ -226,6 +232,160 @@ export function getWebPageSchema(
     },
     ...(dateModified && { dateModified }),
     ...(keywords.length > 0 && { keywords: keywords.join(", ") }),
+  };
+}
+
+export interface FaqEntry {
+  question: string;
+  answer: string;
+}
+
+/**
+ * FAQPage schema for answer-first content blocks.
+ * Helps search engines and LLMs map direct user questions to clear answers.
+ */
+export function getFaqSchema(entries: FaqEntry[]): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: entries.map((entry) => ({
+      "@type": "Question",
+      name: entry.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: entry.answer,
+      },
+    })),
+  };
+}
+
+export interface ItemListEntry {
+  name: string;
+  url: string;
+  description?: string;
+}
+
+export interface ItemListSchemaOptions {
+  name: string;
+  items: ItemListEntry[];
+}
+
+/**
+ * ItemList schema for ordered collections such as services, work, or primary paths.
+ */
+export function getItemListSchema(
+  options: ItemListSchemaOptions,
+): Record<string, unknown> {
+  const { name, items } = options;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+      name: item.name,
+      ...(item.description ? { description: item.description } : {}),
+    })),
+  };
+}
+
+export interface CollectionPageSchemaOptions extends WebPageSchemaOptions {
+  items: ItemListEntry[];
+}
+
+/**
+ * CollectionPage schema for hub pages that summarize a set of resources.
+ */
+export function getCollectionPageSchema(
+  options: CollectionPageSchemaOptions,
+): Record<string, unknown> {
+  const { items, ...pageOptions } = options;
+  const pageUrl = pageOptions.url.startsWith("http")
+    ? pageOptions.url
+    : `${SITE_URL}${pageOptions.url}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: pageOptions.name,
+    description: pageOptions.description,
+    url: pageUrl,
+    inLanguage: pageOptions.inLanguage ?? "en",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Digitaltableteur",
+      url: SITE_URL,
+    },
+    ...(pageOptions.dateModified
+      ? { dateModified: pageOptions.dateModified }
+      : {}),
+    ...(pageOptions.keywords && pageOptions.keywords.length > 0
+      ? { keywords: pageOptions.keywords.join(", ") }
+      : {}),
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+        name: item.name,
+        ...(item.description ? { description: item.description } : {}),
+      })),
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+    },
+  };
+}
+
+export interface ContactPageSchemaOptions {
+  name: string;
+  description: string;
+  url: string;
+  email: string;
+}
+
+/**
+ * ContactPage schema for the primary inquiry route.
+ */
+export function getContactPageSchema(
+  options: ContactPageSchemaOptions,
+): Record<string, unknown> {
+  const { name, description, url, email } = options;
+  const pageUrl = url.startsWith("http") ? url : `${SITE_URL}${url}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name,
+    description,
+    url: pageUrl,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Digitaltableteur",
+      url: SITE_URL,
+    },
+    about: {
+      "@type": "Organization",
+      name: "Digitaltableteur",
+      url: SITE_URL,
+    },
+    mainEntity: {
+      "@type": "Organization",
+      name: "Digitaltableteur",
+      email,
+      url: SITE_URL,
+      contactPoint: {
+        "@type": "ContactPoint",
+        email,
+        contactType: "sales",
+        availableLanguage: ["English", "Finnish", "Swedish"],
+      },
+    },
   };
 }
 

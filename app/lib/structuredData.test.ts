@@ -6,6 +6,9 @@ import {
   getWebSiteSchema,
   getArticleSchema,
   getWebPageSchema,
+  getFaqSchema,
+  getItemListSchema,
+  getContactPageSchema,
 } from "./structuredData";
 
 describe("structuredData", () => {
@@ -116,6 +119,59 @@ describe("structuredData", () => {
         keywords: ["a", "b"],
       }) as any;
       expect(schema.keywords).toContain("a");
+    });
+  });
+
+  describe("getFaqSchema", () => {
+    it("returns valid FAQPage schema", () => {
+      const schema = getFaqSchema([
+        {
+          question: "What does Digitaltableteur do?",
+          answer:
+            "Digitaltableteur helps teams with design systems and AI-powered design workflows.",
+        },
+      ]) as any;
+
+      expect(schema["@type"]).toBe("FAQPage");
+      expect(schema.mainEntity).toHaveLength(1);
+      expect(schema.mainEntity[0].acceptedAnswer.text).toContain(
+        "design systems",
+      );
+    });
+  });
+
+  describe("getItemListSchema", () => {
+    it("returns valid ItemList schema", () => {
+      const schema = getItemListSchema({
+        name: "Primary services",
+        items: [
+          {
+            name: "Design systems consulting",
+            url: "/services/design-systems",
+          },
+          { name: "AI-powered design workflows", url: "/services/ai-design" },
+        ],
+      }) as any;
+
+      expect(schema["@type"]).toBe("ItemList");
+      expect(schema.itemListElement).toHaveLength(2);
+      expect(schema.itemListElement[0].position).toBe(1);
+    });
+  });
+
+  describe("getContactPageSchema", () => {
+    it("returns valid ContactPage schema", () => {
+      const schema = getContactPageSchema({
+        name: "Contact Digitaltableteur",
+        description: "Get in touch for design systems consulting.",
+        url: "/contact",
+        email: "mail@digitaltableteur.com",
+      }) as any;
+
+      expect(schema["@type"]).toBe("ContactPage");
+      expect(schema.mainEntity.contactPoint.email).toBe(
+        "mail@digitaltableteur.com",
+      );
     });
   });
 

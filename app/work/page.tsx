@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 
 import { WorkIndexPage } from "@dt-pages/Work/WorkIndex";
 import { projects } from "@/nextjs-app/shared/data/projects";
+import {
+  getBreadcrumbSchema,
+  getCollectionPageSchema,
+  stringifyJsonLd,
+} from "@/app/lib/structuredData";
 
 // Dynamic project list for structured data
 const projectNames = projects.map((p) => p.title).join(", ");
@@ -49,5 +55,40 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default function Work() {
-  return <WorkIndexPage />;
+  const structuredData = [
+    getCollectionPageSchema({
+      name: "Digitaltableteur Work & Portfolio",
+      description:
+        "Portfolio examples across design systems, branding, illustration, and AI-powered product design work.",
+      url: "/work",
+      keywords: [
+        "design systems portfolio",
+        "AI-powered design portfolio",
+        "branding work",
+        "product design case studies",
+      ],
+      items: projects.map((project) => ({
+        name: project.title,
+        url: `/work/${project.slug}`,
+        description: project.description,
+      })),
+    }),
+    getBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Work", url: "/work" },
+    ]),
+  ];
+
+  return (
+    <>
+      <Script
+        id="schema-work"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: stringifyJsonLd(structuredData),
+        }}
+      />
+      <WorkIndexPage />
+    </>
+  );
 }
