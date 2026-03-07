@@ -7,6 +7,93 @@ interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   size?: "S" | "M" | "L";
 }
 
+const INTERNAL_HOST = "digitaltableteur.com";
+const ALLOWED_PROTOCOLS = new Set(["http:", "https:", "mailto:", "tel:"]);
+const INTERNAL_URL_BASE = "https://www.digitaltableteur.com";
+
+function isInternalHostname(hostname: string): boolean {
+  return hostname === INTERNAL_HOST || hostname.endsWith(`.${INTERNAL_HOST}`);
+}
+
+function normalizeHref(href: string): string {
+  const trimmedHref = href.trim();
+
+  if (!trimmedHref) {
+    return "#";
+  }
+
+  if (
+    trimmedHref.startsWith("/") ||
+    trimmedHref.startsWith("./") ||
+    trimmedHref.startsWith("../") ||
+    trimmedHref.startsWith("?") ||
+    trimmedHref.startsWith("#")
+  ) {
+    return trimmedHref;
+  }
+
+  try {
+    const parsed = new URL(trimmedHref, INTERNAL_URL_BASE);
+
+    if (!ALLOWED_PROTOCOLS.has(parsed.protocol)) {
+      return "#";
+    }
+
+    return trimmedHref;
+  } catch {
+    return "#";
+  }
+}
+
+function isExternalHref(href: string): boolean {
+  if (!href || href === "#") {
+    return false;
+  }
+
+  if (
+    href.startsWith("/") ||
+    href.startsWith("./") ||
+    href.startsWith("../") ||
+    href.startsWith("?") ||
+    href.startsWith("#")
+  ) {
+    return false;
+  }
+
+  try {
+    const parsed = new URL(href, INTERNAL_URL_BASE);
+
+    if (!ALLOWED_PROTOCOLS.has(parsed.protocol)) {
+      return false;
+    }
+
+    if (parsed.protocol === "mailto:" || parsed.protocol === "tel:") {
+      return false;
+    }
+
+    return !isInternalHostname(parsed.hostname);
+  } catch {
+    return false;
+  }
+}
+
+function extractTextContent(children: React.ReactNode): string {
+  if (typeof children === "string" || typeof children === "number") {
+    return String(children);
+  }
+
+  if (Array.isArray(children)) {
+    return children.map((child) => extractTextContent(child)).join("");
+  }
+
+  if (React.isValidElement(children)) {
+    const props = children.props as { children?: React.ReactNode };
+    return extractTextContent(props.children);
+  }
+
+  return "";
+}
+
 const Link: React.FC<LinkProps> = ({
   href = "#",
   size = "M",
@@ -14,46 +101,15 @@ const Link: React.FC<LinkProps> = ({
   className = "",
   ...rest
 }) => {
-  const isExternal =
-    !href.startsWith("/") && !href.includes("digitaltableteur.com");
+  const normalizedHref = React.useMemo(() => normalizeHref(href), [href]);
+  const isExternal = React.useMemo(
+    () => isExternalHref(normalizedHref),
+    [normalizedHref],
+  );
 
   // Check if children contains actual text content
   const hasTextContent: boolean = React.useMemo((): boolean => {
-    if (typeof children === "string") {
-      return children.trim().length > 0;
-    }
-    if (React.isValidElement(children)) {
-      // If it's a React element (like an icon), check if it has text content
-      const getTextContent = (element: React.ReactElement): string => {
-        const props = element.props as any;
-        if (typeof props.children === "string") {
-          return props.children;
-        }
-        if (Array.isArray(props.children)) {
-          return props.children
-            .map((child: any) =>
-              typeof child === "string"
-                ? child
-                : React.isValidElement(child)
-                  ? getTextContent(child)
-                  : "",
-            )
-            .join("");
-        }
-        return "";
-      };
-      return getTextContent(children).trim().length > 0;
-    }
-    if (Array.isArray(children)) {
-      return children.some((child) =>
-        typeof child === "string"
-          ? child.trim().length > 0
-          : React.isValidElement(child)
-            ? hasTextContent
-            : false,
-      );
-    }
-    return false;
+    return extractTextContent(children).trim().length > 0;
   }, [children]);
 
   // Map link size to icon size
@@ -61,9 +117,14 @@ const Link: React.FC<LinkProps> = ({
 
   return (
     <a
-      href={href}
-      className={`${styles.link} ${styles[`link${size}`]} wavyUnderline ${className}`.trim()}
+      href={normalizedHref}
       {...rest}
+      rel={
+        isExternal
+          ? [rest.rel, "noopener", "noreferrer"].filter(Boolean).join(" ")
+          : rest.rel
+      }
+      className={`${styles.link} ${styles[`link${size}`]} wavyUnderline ${className}`.trim()}
     >
       {children}
       {isExternal && hasTextContent && (

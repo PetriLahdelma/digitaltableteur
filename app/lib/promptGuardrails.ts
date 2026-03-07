@@ -69,21 +69,50 @@ const SENSITIVE_KEYWORDS = [
   "sudo",
 ];
 
-// Patterns that strongly indicate extraction attempts
-const EXTRACTION_PATTERNS = [
-  /ignore\s+(previous|all|your)\s+(instruction|prompt|rule|directive)s?/i,
-  /what\s+(are|were)\s+your\s+(instruction|prompt|rule|directive|guideline|system)s?\s*(instruction|prompt|rule|directive|guideline)?s?/i,
-  /show\s+(me\s+)?(your|the)\s+(instruction|prompt|system|rule|log)s?/i,
-  /tell\s+me\s+(about\s+)?(your|the)\s+(instruction|prompt|system|configuration)/i,
-  /output\s+(your|the)\s+(environment|variable|key|token|secret|config)s?/i,
-  /repeat\s+(your|the)\s+(instruction|prompt|system|rule)s?/i,
-  /summarize\s+(your|the)\s+(instruction|prompt|system)/i,
-  /list\s+(your|all)\s+(environment|variable|key|setting|config)s?/i,
-  /display\s+(your|the)\s+(environment|variable|key|secret|log)s?/i,
-  /(env|environment)\s*(variable|var)s?.*=/i,
-  /console\.(log|debug|error|warn)/i,
-  /process\.env/i,
+const EXTRACTION_PHRASE_GROUPS = [
+  ["ignore", "instruction"],
+  ["ignore", "prompt"],
+  ["show me", "prompt"],
+  ["show me", "instruction"],
+  ["show me", "system"],
+  ["tell me", "configuration"],
+  ["output", "environment"],
+  ["output", "secret"],
+  ["repeat", "prompt"],
+  ["repeat", "system"],
+  ["summarize", "instruction"],
+  ["list", "environment"],
+  ["display", "secret"],
+  ["what are your", "system"],
+  ["what are your", "rules"],
 ];
+
+const EXTRACTION_LITERALS = [
+  "process.env",
+  "console.log",
+  "console.debug",
+  "console.error",
+  "console.warn",
+];
+
+function hasExtractionPattern(lowerPrompt: string): boolean {
+  if (EXTRACTION_LITERALS.some((literal) => lowerPrompt.includes(literal))) {
+    return true;
+  }
+
+  if (
+    (lowerPrompt.includes("env variable") ||
+      lowerPrompt.includes("environment variable") ||
+      lowerPrompt.includes("env var")) &&
+    lowerPrompt.includes("=")
+  ) {
+    return true;
+  }
+
+  return EXTRACTION_PHRASE_GROUPS.some((requiredTerms) =>
+    requiredTerms.every((term) => lowerPrompt.includes(term)),
+  );
+}
 
 // Rate limiting for suspicious prompts
 const suspiciousPromptBuckets = new Map<
@@ -115,24 +144,21 @@ export function checkPromptInjection(
   }
 
   // Check for extraction patterns (high severity)
-  for (const pattern of EXTRACTION_PATTERNS) {
-    if (pattern.test(prompt)) {
-      logSecurityEvent({
-        type: "prompt_injection_blocked",
-        severity: "high",
-        reason: "Extraction pattern detected",
-        pattern: pattern.toString(),
-        promptLength: prompt.length,
-        ipAddress,
-      });
+  if (hasExtractionPattern(lowerPrompt)) {
+    logSecurityEvent({
+      type: "prompt_injection_blocked",
+      severity: "high",
+      reason: "Extraction pattern detected",
+      promptLength: prompt.length,
+      ipAddress,
+    });
 
-      return {
-        isBlocked: true,
-        reason:
-          "Your message contains language that looks like a system command. Please rephrase your question.",
-        suspicionLevel: "high",
-      };
-    }
+    return {
+      isBlocked: true,
+      reason:
+        "Your message contains language that looks like a system command. Please rephrase your question.",
+      suspicionLevel: "high",
+    };
   }
 
   // Check for multiple sensitive keywords (medium severity)
