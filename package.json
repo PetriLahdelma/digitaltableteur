@@ -144,7 +144,9 @@
   "overrides": {
     "undici": "^7.18.2",
     "@pnpm/npm-conf": "^3.0.2",
-    "path-to-regexp": "^8.2.0"
+    "path-to-regexp": "^8.2.0",
+    "glob": "^10.5.0",
+    "lodash": "^4.17.23"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
