@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 
 import { AboutPage } from "@dt-pages/AboutPage";
 import { getPersonSchema, stringifyJsonLd } from "@/app/lib/structuredData";
@@ -42,7 +41,7 @@ export const revalidate = 3600;
 export default function About() {
   return (
     <>
-      <Script
+      <script
         id="schema-person"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

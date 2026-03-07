@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 
 import { getPostMetaBySlug } from "../postMetadata";
 import { getArticleSchema, stringifyJsonLd } from "@/app/lib/structuredData";
@@ -67,7 +66,7 @@ export default async function BlogArticle({
   return (
     <>
       {post && (
-        <Script
+        <script
           id="schema-article"
           type="application/ld+json"
           dangerouslySetInnerHTML={{

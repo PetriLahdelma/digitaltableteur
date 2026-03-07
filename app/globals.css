@@ -106,6 +106,14 @@ code {
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.themeDark .client-logo-marquee-image {
+  filter: brightness(0) invert(1);
+}
+
+.themeHCB .client-logo-marquee-image {
+  filter: brightness(0);
+}
+
 .visuallyHidden {
   position: absolute;
   margin: -1px;
@@ -205,7 +213,8 @@ code {
   .client-logo-marquee-desktop,
   .client-logo-marquee-mobile,
   .client-logo-marquee-mobile-reverse {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation: none !important;
+    transform: none !important;
+    will-change: auto !important;
   }
 }

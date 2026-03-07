@@ -15,6 +15,10 @@ describe("Footer", () => {
     render(<Footer />);
 
     expect(screen.getByLabelText("footerAriaEmail")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "footerImprint" })).toHaveAttribute(
+      "href",
+      "/imprint",
+    );
     const socialLinks = screen.getAllByRole("link");
     expect(socialLinks.length).toBeGreaterThanOrEqual(7);
 

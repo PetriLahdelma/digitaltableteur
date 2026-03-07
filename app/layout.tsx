@@ -172,14 +172,14 @@ export default function RootLayout({
             />
           </>
         ) : null}
-        <Script
+        <script
           id="schema-org"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: stringifyJsonLd(getOrganizationSchema()),
           }}
         />
-        <Script
+        <script
           id="schema-website"
           type="application/ld+json"
           dangerouslySetInnerHTML={{

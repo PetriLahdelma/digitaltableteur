@@ -247,6 +247,22 @@
   color: var(--color-white) !important;
 }
 
+.selectedClientsLabel {
+  color: var(--selected-clients-label-color);
+}
+
+.selectedClientsDivider {
+  border-top-color: var(--selected-clients-divider-color);
+}
+
+:global(.themeHCW) .selectedClientsLabel {
+  color: #000;
+}
+
+:global(.themeHCW) .selectedClientsDivider {
+  border-top-color: rgb(0 0 0 / 18%);
+}
+
 @keyframes gradient-move {
   0% {
     background-position: 0% 50%;

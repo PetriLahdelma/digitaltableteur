@@ -125,6 +125,9 @@ export function SiteFooter({ className }: SiteFooterProps) {
               <TextLink href="/privacy-policy" variant="muted" underline="hover">
                 {t("footerPrivacyPolicy")}
               </TextLink>
+              <TextLink href="/imprint" variant="muted" underline="hover">
+                {t("footerImprint")}
+              </TextLink>
               <TextLink href="/ai-use" variant="muted" underline="hover">
                 {t("footerAiUse")}
               </TextLink>
