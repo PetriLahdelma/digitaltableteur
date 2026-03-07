@@ -75,6 +75,26 @@ a:focus-visible {
   }
 }
 
+@keyframes client-logo-marquee-forward {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes client-logo-marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @media (width <= 768px) {
   html {
     font-size: 18px;
@@ -149,6 +169,25 @@ code {
   .col-span-full {
     grid-column: 1 / -1;
   }
+
+  .client-logo-marquee-desktop {
+    animation: client-logo-marquee-forward 34s linear infinite;
+    will-change: transform;
+  }
+
+  .client-logo-marquee-mobile {
+    animation: client-logo-marquee-forward 24s linear infinite;
+    will-change: transform;
+  }
+
+  .client-logo-marquee-mobile-reverse {
+    animation: client-logo-marquee-reverse 28s linear infinite;
+    will-change: transform;
+  }
+
+  .client-logo-marquee-container:hover .client-logo-marquee-desktop {
+    animation-play-state: paused;
+  }
 }
 
 /* Responsive asymmetric grids */
@@ -159,5 +198,14 @@ code {
   .grid-sidebar-left,
   .grid-sidebar-right {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logo-marquee-desktop,
+  .client-logo-marquee-mobile,
+  .client-logo-marquee-mobile-reverse {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

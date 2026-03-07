@@ -15,6 +15,7 @@ import {
 } from "../../../patterns/WorkPreviewSection";
 import { CTASection } from "../../../patterns/CTASection";
 import { DesignSprintsSection } from "../../../patterns/DesignSprintsSection";
+import { ClientLogoMarquee } from "../../ClientLogoMarquee";
 import HighlightSection from "../../../patterns/HighlightSection";
 
 // Service icons
@@ -149,6 +150,17 @@ export function HomePage() {
         layout="featured"
         showViewAll
       />
+
+      <section className="mx-auto w-full max-w-6xl px-6 py-12">
+        <div className="rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur md:p-8 dark:border-white/10 dark:bg-neutral-950/60">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-black/55 dark:text-white/55">
+            Selected clients
+          </p>
+          <div className="mt-4 border-t border-black/10 pt-4 dark:border-white/10">
+            <ClientLogoMarquee ariaLabel="Selected client organisations" />
+          </div>
+        </div>
+      </section>
 
       {/* Contact CTA Section */}
       <CTASection
