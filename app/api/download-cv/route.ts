@@ -121,6 +121,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Fail closed: if CV_PASSWORD is not configured, refuse all attempts
+    if (!process.env.CV_PASSWORD) {
+      SecurityLogger.logAuthAttempt(
+        ip,
+        userAgent,
+        "/api/download-cv",
+        false,
+        "CV_PASSWORD not configured",
+      );
+      return NextResponse.json(
+        { error: "Service temporarily unavailable" },
+        { status: 503 },
+      );
+    }
+
     // Validate password with timing-safe comparison
     const isValid = constantTimeCompare(password, process.env.CV_PASSWORD);
 
