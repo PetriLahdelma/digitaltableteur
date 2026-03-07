@@ -25,7 +25,8 @@ const siteUrl =
 
 export const metadata: Metadata = {
   title: "Digitaltableteur",
-  description: "Design Systems & AI-Powered DesignOps",
+  description:
+    "Design consultancy and portfolio focused on design systems, AI-powered design workflows, DesignOps, accessibility, and product craft.",
   metadataBase: new URL(siteUrl),
   verification: {
     google: "ZWNygD_tzG8nCWZFlCNWKGCbTkDMFthbvF8L4zltpwE",
@@ -38,6 +39,15 @@ export const metadata: Metadata = {
   ],
   creator: "Petri Lahdelma",
   publisher: "Digitaltableteur",
+  keywords: [
+    "design consultancy",
+    "design systems",
+    "AI-powered design",
+    "DesignOps",
+    "component libraries",
+    "accessibility",
+    "product design",
+  ],
   alternates: {
     canonical: "/",
     languages: {
@@ -51,7 +61,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
     description:
-      "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
+      "Design consultancy, portfolio work, design systems, AI-native workflows, and accessibility-minded product craft from Digitaltableteur.",
     siteName: "Digitaltableteur",
     images: [
       {
@@ -66,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Digitaltableteur — Design Systems & AI-Powered DesignOps",
     description:
-      "Design systems, AI-native workflows, and product craft from Digitaltableteur.",
+      "Design consultancy, portfolio work, design systems, AI-native workflows, and accessibility-minded product craft from Digitaltableteur.",
     images: [`${siteUrl}/twitter-image`],
   },
   robots: {
@@ -98,7 +108,11 @@ export default function RootLayout({
          */}
         {/* Preconnect to external domains for faster resource loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         {/* GTM uses afterInteractive to avoid blocking LCP */}
         <Script id="gtm-base" strategy="afterInteractive">

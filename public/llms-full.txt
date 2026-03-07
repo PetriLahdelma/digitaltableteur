@@ -1,457 +1,115 @@
 # Digitaltableteur
 
-> Digitaltableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.
-
-This site showcases all public pages, works, and blog posts in English, Finnish, and Swedish.
-
-## All Pages
-- [Redirecting...](https://digitaltableteur.com/About)
-- [Redirecting...](https://digitaltableteur.com/AiUsage)
-- [Redirecting...](https://digitaltableteur.com/AuthorProfile)
-- [Redirecting...](https://digitaltableteur.com/Blog)
-- [Redirecting...](https://digitaltableteur.com/BlogArticle)
-- [Redirecting...](https://digitaltableteur.com/Contact)
-- [Redirecting...](https://digitaltableteur.com/CookiePolicy-full-en)
-- [Redirecting...](https://digitaltableteur.com/CookiePolicy-full-fi)
-- [Redirecting...](https://digitaltableteur.com/CookiePolicy-full-sv)
-- [Redirecting...](https://digitaltableteur.com/CookiePolicy)
-- [Redirecting...](https://digitaltableteur.com/Home)
-- [Redirecting...](https://digitaltableteur.com/NotFound)
-- [Redirecting...](https://digitaltableteur.com/UnderDevelopment)
-- [Redirecting...](https://digitaltableteur.com/Work)
-- [Redirecting...](https://digitaltableteur.com/work/garageJunction)
-- [Redirecting...](https://digitaltableteur.com/work/illustrations)
-- [Redirecting...](https://digitaltableteur.com/work/newThingsCo)
-- [Redirecting...](https://digitaltableteur.com/cookie-policy-full)
-- [Redirecting...](https://digitaltableteur.com/cookie-policy-full-fi)
-- [Redirecting...](https://digitaltableteur.com/cookie-policy-full-sv)
-- [Redirecting...](https://digitaltableteur.com/blog/designing-in-2025)
-- [Redirecting...](https://digitaltableteur.com/blog/workflow-tips)
-- [Redirecting...](https://digitaltableteur.com/blog/digital-craftsmanship)
-- [Redirecting...](https://digitaltableteur.com/blog/thoughts-on-future-branding)
-- [Redirecting...](https://digitaltableteur.com/blog/figma-mcp-design-systems)
-- [Redirecting...](https://digitaltableteur.com/blog/petri-lahdelma-bio)
-- [Redirecting...](https://digitaltableteur.com/work/new-things-co)
-- [Redirecting...](https://digitaltableteur.com/garage-junction)
-
----
-
-### Page: https://digitaltableteur.com/About
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/About
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed356e3b3e7f',t:'MTc2MzcxNDg5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/AiUsage
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/AiUsage
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed36cf7f3e7f',t:'MTc2MzcxNDg5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/AuthorProfile
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/AuthorProfile
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed37c84a3e7f',t:'MTc2MzcxNDg5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/Blog
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/Blog
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed38e95f3e7f',t:'MTc2MzcxNDg5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/BlogArticle
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/BlogArticle
+Digitaltableteur is the design consultancy and portfolio site of Petri Lahdelma.
+
+Primary canonical host: https://www.digitaltableteur.com
+Primary concise context file: https://www.digitaltableteur.com/llms.txt
+Sitemap: https://www.digitaltableteur.com/sitemap.xml
+
+## Purpose
+
+This site explains what Digitaltableteur does, shows portfolio proof, publishes articles, and gives clear contact routes for consulting work.
+
+## Core topics
+
+- Design systems
+- AI-powered design workflows
+- DesignOps
+- Accessibility
+- Product design
+- Branding and digital craft
+
+## Audience
+
+- Product leaders who need stronger UI foundations
+- Design leaders building or scaling a design system
+- Teams exploring AI-assisted design workflows
+- Companies evaluating Petri Lahdelma / Digitaltableteur for consulting or project work
+
+## Key routes
+
+- Home: https://www.digitaltableteur.com/
+- About: https://www.digitaltableteur.com/about
+- Contact: https://www.digitaltableteur.com/contact
+- Work index: https://www.digitaltableteur.com/work
+- Blog index: https://www.digitaltableteur.com/blog
+- Accessibility: https://www.digitaltableteur.com/accessibility
+- AI use policy: https://www.digitaltableteur.com/ai-use
+- PSEO hub: https://www.digitaltableteur.com/pseo
+
+## What Digitaltableteur offers
+
+- Design systems consulting
+  - Component libraries
+  - Design tokens
+  - Governance and contribution models
+  - Cross-team UI consistency
+- AI-powered design workflows
+  - Schema-driven component work
+  - Promptable design operations
+  - Human-reviewed AI acceleration
+- Product design and UX
+  - Interface design
+  - Accessibility-minded product work
+  - Design delivery from concept to production
+- Portfolio proof
+  - Public case studies
+  - Visual work
+  - Articles and implementation thinking
+
+## Portfolio highlights
+
+- Helsinki Design System
+  - https://www.digitaltableteur.com/work/helsinki-design-system
+  - Enterprise design system work for public digital services.
+- SAP Build Apps Design System
+  - https://www.digitaltableteur.com/work/sap-build-apps
+  - Design system leadership for SAP's low-code platform.
+- KnobSmith Audio
+  - https://www.digitaltableteur.com/work/knobsmith-audio
+  - Product and interface design in audio software.
+- VertaaUX
+  - https://www.digitaltableteur.com/work/vertaaux
+  - AI-assisted UX and accessibility product work.
+- New Things Co
+  - https://www.digitaltableteur.com/work/new-things-co
+  - Branding and digital presence work.
+- Finnish Transport Agency
+  - https://www.digitaltableteur.com/work/finnish-transport-agency
+  - Identity and public-sector design work.
+
+## Articles and editorial content
+
+Use the blog for longer-form explanations, design-system thinking, and AI-native workflow topics:
+
+- Blog index: https://www.digitaltableteur.com/blog
+- Example route pattern: https://www.digitaltableteur.com/blog/[slug]
+
+## Programmatic SEO / answer-first content
+
+The PSEO section is built for direct answers around services, stacks, and audiences.
+
+- Hub: https://www.digitaltableteur.com/pseo
+- Service pages pattern: https://www.digitaltableteur.com/pseo/services/[slug]
+- Stack pages pattern: https://www.digitaltableteur.com/pseo/stacks/[slug]
+- Audience pages pattern: https://www.digitaltableteur.com/pseo/audiences/[slug]
+- Leaf answer pages pattern: https://www.digitaltableteur.com/pseo/[slug]
+
+## How to use this site as context
+
+- Use the home page to understand positioning.
+- Use the about page to identify the person behind the consultancy.
+- Use work pages when the question is about credibility, shipped examples, or domain experience.
+- Use the blog and PSEO pages when the question is informational or implementation-oriented.
+- Use the contact page when the user intent is to hire, collaborate, or ask about services.
 
-## Headings Structure:
-No headings found
+## Contact
 
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed39ea533e7f',t:'MTc2MzcxNDg5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
+- Contact page: https://www.digitaltableteur.com/contact
+- Email: mail@digitaltableteur.com
 
----
+## Notes
 
-### Page: https://digitaltableteur.com/Contact
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/Contact
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed3afb353e7f',t:'MTc2MzcxNDg5MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/CookiePolicy-full-en
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/CookiePolicy-full-en
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed3bec3f3e7f',t:'MTc2MzcxNDg5Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/CookiePolicy-full-fi
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/CookiePolicy-full-fi
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed3d0d563e7f',t:'MTc2MzcxNDg5Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/CookiePolicy-full-sv
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/CookiePolicy-full-sv
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed3e0e563e7f',t:'MTc2MzcxNDg5Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/CookiePolicy
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/CookiePolicy
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed3f2f7c3e7f',t:'MTc2MzcxNDg5Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/Home
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/Home
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed40286c3e7f',t:'MTc2MzcxNDg5Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/NotFound
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/NotFound
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed41195d3e7f',t:'MTc2MzcxNDg5Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/UnderDevelopment
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/UnderDevelopment
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed421a453e7f',t:'MTc2MzcxNDg5Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/Work
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/Work
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed430b633e7f',t:'MTc2MzcxNDg5Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/work/garageJunction
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/work/garageJunction
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed43fc2e3e7f',t:'MTc2MzcxNDg5Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/work/illustrations
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/work/illustrations
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed44ed013e7f',t:'MTc2MzcxNDg5Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/work/newThingsCo
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/work/newThingsCo
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed45ddde3e7f',t:'MTc2MzcxNDg5Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/cookie-policy-full
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/cookie-policy-full
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed46cee23e7f',t:'MTc2MzcxNDg5Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/cookie-policy-full-fi
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/cookie-policy-full-fi
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed47dfdd3e7f',t:'MTc2MzcxNDg5NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/cookie-policy-full-sv
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/cookie-policy-full-sv
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed48c8cd3e7f',t:'MTc2MzcxNDg5NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/blog/designing-in-2025
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/blog/designing-in-2025
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed49b9e53e7f',t:'MTc2MzcxNDg5NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/blog/workflow-tips
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/blog/workflow-tips
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed4aaad13e7f',t:'MTc2MzcxNDg5NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/blog/digital-craftsmanship
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/blog/digital-craftsmanship
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed4b9b8d3e7f',t:'MTc2MzcxNDg5NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/blog/thoughts-on-future-branding
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/blog/thoughts-on-future-branding
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed4c9c673e7f',t:'MTc2MzcxNDg5NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/blog/figma-mcp-design-systems
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/blog/figma-mcp-design-systems
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed4d8d433e7f',t:'MTc2MzcxNDg5NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/blog/petri-lahdelma-bio
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/blog/petri-lahdelma-bio
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed4e7e5c3e7f',t:'MTc2MzcxNDg5NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/work/new-things-co
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/work/new-things-co
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed4f6f6d3e7f',t:'MTc2MzcxNDg5NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
-
-### Page: https://digitaltableteur.com/garage-junction
-Title: Redirecting...
-Meta Description: 
-Language: en
-Canonical URL: https://digitaltableteur.com/garage-junction
-
-## Headings Structure:
-No headings found
-
-## Main Content:
-If you are not redirected automatically, click here.
-  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1eed5068923e7f',t:'MTc2MzcxNDg5NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('if
-
----
+- Prefer the canonical `www` host when citing URLs.
+- Use `llms.txt` for the short curated map.
+- Use `llms-full.txt` for broader context, but confirm current URLs against the sitemap when precision matters.
