@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 const { createClient } = require("@sanity/client");
 const imageUrlBuilder = require("@sanity/image-url");
 const blocksToMarkdown = require("@sanity/block-content-to-markdown");
@@ -34,9 +35,68 @@ function ensureDir(dir) {
   }
 }
 
-function sanitize(value) {
-  if (typeof value !== "string") return value;
-  return value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+function toQuotedFrontmatterValue(value) {
+  return JSON.stringify(String(value));
+}
+
+function escapeHtmlText(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function escapeHtmlAttribute(value) {
+  return escapeHtmlText(value)
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function toSafeEmbedUrl(value) {
+  try {
+    const parsed = new URL(String(value));
+    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+      return null;
+    }
+    return parsed.toString();
+  } catch {
+    return null;
+  }
+}
+
+function toSafeProviderName(value) {
+  const sanitized = String(value || "embed")
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, "");
+  return sanitized || "embed";
+}
+
+function toSafeFileNameSegment(value) {
+  const normalized = slugify(String(value || ""));
+  return normalized || null;
+}
+
+function atomicWriteFile(filePath, content) {
+  const directory = path.dirname(filePath);
+  ensureDir(directory);
+  const tempPath = path.join(
+    directory,
+    `.${path.basename(filePath)}.${process.pid}.${crypto.randomUUID()}.tmp`,
+  );
+
+  try {
+    fs.writeFileSync(tempPath, content, {
+      encoding: "utf8",
+      mode: 0o600,
+      flag: "wx",
+    });
+    fs.renameSync(tempPath, filePath);
+  } catch (error) {
+    if (fs.existsSync(tempPath)) {
+      fs.unlinkSync(tempPath);
+    }
+    throw error;
+  }
 }
 
 function slugify(value) {
@@ -94,7 +154,7 @@ function buildFrontmatter(post, existing = {}) {
   orderedKeys.forEach((key) => {
     const value = merged[key];
     if (value === undefined || value === null || value === "") return;
-    lines.push(`${key}: "${sanitize(String(value))}"`);
+    lines.push(`${key}: ${toQuotedFrontmatterValue(value)}`);
   });
   lines.push("---", "");
   return `${lines.join("\n")}\n`;
@@ -123,14 +183,16 @@ function buildMarkdown(body, urlBuilder) {
           const url = urlBuilder.image(node).width(1600).url();
           const alt = node.alt ? node.alt.replace(/]/g, "\\]") : "";
           const caption = node.caption
-            ? `\n<figcaption>${node.caption}</figcaption>`
+            ? `\n<figcaption>${escapeHtmlText(node.caption)}</figcaption>`
             : "";
           return `![${alt}](${url})${caption}`;
         },
         embed: ({ node }) => {
           if (!node?.url) return "";
-          const provider = node.provider || "embed";
-          return `\n<Embed provider="${provider}" url="${node.url}" />\n`;
+          const provider = toSafeProviderName(node.provider);
+          const url = toSafeEmbedUrl(node.url);
+          if (!url) return "";
+          return `\n<Embed provider="${escapeHtmlAttribute(provider)}" url="${escapeHtmlAttribute(url)}" />\n`;
         },
         code: ({ node }) => {
           if (!node?.code) return "";
@@ -168,7 +230,12 @@ function writePostFile(post, markdown) {
     console.warn(`[draft-sync] Skipping post without slug (${post._id}).`);
     return null;
   }
-  const filePath = path.join(CONTENT_DIR, `${slug}.mdx`);
+  const safeSlug = toSafeFileNameSegment(slug);
+  if (!safeSlug) {
+    console.warn(`[draft-sync] Skipping post with unsafe slug (${post._id}).`);
+    return null;
+  }
+  const filePath = path.join(CONTENT_DIR, `${safeSlug}.mdx`);
   let existingData = {};
   if (fs.existsSync(filePath)) {
     try {
@@ -182,7 +249,7 @@ function writePostFile(post, markdown) {
     }
   }
   const frontmatter = buildFrontmatter(post, existingData);
-  fs.writeFileSync(filePath, `${frontmatter}${markdown}\n`, "utf8");
+  atomicWriteFile(filePath, `${frontmatter}${markdown}\n`);
   return filePath;
 }
 

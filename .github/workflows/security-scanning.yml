@@ -97,6 +97,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v4
         if: always() && hashFiles('snyk.sarif') != ''
         with:
+          category: nextjs-app
           sarif_file: snyk.sarif
 
       - name: Monitor with Snyk

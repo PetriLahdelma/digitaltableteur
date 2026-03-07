@@ -25,6 +25,21 @@ describe("Link", () => {
     // it just shows an external icon
   });
 
+  it("keeps trusted internal absolute URLs", () => {
+    render(
+      <Link href="https://www.digitaltableteur.com/work">Internal absolute</Link>,
+    );
+    expect(screen.getByRole("link")).toHaveAttribute(
+      "href",
+      "https://www.digitaltableteur.com/work",
+    );
+  });
+
+  it("neutralizes unsafe URL schemes", () => {
+    render(<Link href="javascript:alert(1)">Unsafe Link</Link>);
+    expect(screen.getByRole("link")).toHaveAttribute("href", "#");
+  });
+
   it("renders with different sizes", () => {
     const { rerender } = render(<Link size="S">Small Link</Link>);
     // Check for CSS module classes that include the size

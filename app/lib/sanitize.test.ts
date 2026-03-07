@@ -67,6 +67,7 @@ describe("sanitizeJsonLd", () => {
     const dirty = '{"name":"<script>alert(\\"XSS\\")</script>Test"}';
     const clean = sanitizeJsonLd(dirty);
     expect(clean).not.toContain("<script>");
+    expect(JSON.parse(clean).name).toContain("\\u003cscript\\u003e");
   });
 });
 
