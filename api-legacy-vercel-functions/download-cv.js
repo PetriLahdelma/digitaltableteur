@@ -20,6 +20,11 @@ export default async function handler(req, res) {
   const password =
     typeof req.body?.password === "string" ? req.body.password : "";
 
+  // Fail closed: if CV_PASSWORD is not configured, refuse all attempts
+  if (!process.env.CV_PASSWORD) {
+    return res.status(503).json({ error: "Service temporarily unavailable" });
+  }
+
   if (password !== process.env.CV_PASSWORD) {
     return res.status(403).json({ error: "Invalid password" });
   }
