@@ -138,7 +138,7 @@
     "sanity": "^5.3.1",
     "sanitize-html": "^2.17.1",
     "shiki": "^3.21.0",
-    "simple-icons": "^16.3.0",
+    "simple-icons": "^16.10.0",
     "styled-components": "^6.1.19",
     "tailwind-merge": "^3.4.0"
   },
