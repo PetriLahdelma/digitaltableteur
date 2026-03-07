@@ -7,14 +7,71 @@
  * for VS Code MCP integration.
  */
 
-import { readFileSync, writeFileSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, renameSync, unlinkSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
+import crypto from "crypto";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = resolve(__dirname, "..");
 const MCP_CONFIG_PATH = resolve(ROOT_DIR, "mcp.json");
 const ENV_PATH = resolve(ROOT_DIR, "akaunting", ".env");
+
+function isPrivateHost(hostname) {
+  return (
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname.endsWith(".local") ||
+    /^10\./.test(hostname) ||
+    /^192\.168\./.test(hostname) ||
+    /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname)
+  );
+}
+
+function resolveSafeAkauntingBaseUrl(value) {
+  const candidate = value || "http://localhost:8080/api/v1";
+  let parsed;
+
+  try {
+    parsed = new URL(candidate);
+  } catch {
+    throw new Error("AKAUNTING_API_BASE_URL is not a valid URL");
+  }
+
+  if (parsed.username || parsed.password) {
+    throw new Error("AKAUNTING_API_BASE_URL must not include credentials");
+  }
+
+  if (parsed.protocol === "https:") {
+    return parsed.toString().replace(/\/$/, "");
+  }
+
+  if (parsed.protocol === "http:" && isPrivateHost(parsed.hostname)) {
+    return parsed.toString().replace(/\/$/, "");
+  }
+
+  throw new Error(
+    "AKAUNTING_API_BASE_URL must use https or point to a localhost/private-network host over http",
+  );
+}
+
+function atomicWriteJson(filePath, payload) {
+  const tempPath = `${filePath}.${process.pid}.${crypto.randomUUID()}.tmp`;
+
+  try {
+    writeFileSync(tempPath, `${JSON.stringify(payload, null, 2)}\n`, {
+      encoding: "utf-8",
+      mode: 0o600,
+      flag: "wx",
+    });
+    renameSync(tempPath, filePath);
+  } catch (error) {
+    if (existsSync(tempPath)) {
+      unlinkSync(tempPath);
+    }
+    throw error;
+  }
+}
 
 function loadEnv() {
   if (!existsSync(ENV_PATH)) {
@@ -50,7 +107,7 @@ function updateMcpConfig(env) {
   mcpConfig.mcpServers = mcpConfig.mcpServers || {};
   mcpConfig.mcpServers.akaunting = {
     type: "http",
-    baseUrl: env.AKAUNTING_API_BASE_URL || "http://localhost:8080/api/v1",
+    baseUrl: resolveSafeAkauntingBaseUrl(env.AKAUNTING_API_BASE_URL),
     auth: {
       type: "bearer",
       token: env.AKAUNTING_API_KEY || "REPLACE_WITH_YOUR_API_KEY",
@@ -67,7 +124,7 @@ function updateMcpConfig(env) {
     },
   };
 
-  writeFileSync(MCP_CONFIG_PATH, JSON.stringify(mcpConfig, null, 2), "utf-8");
+  atomicWriteJson(MCP_CONFIG_PATH, mcpConfig);
 
   console.log("✅ Updated mcp.json with Akaunting configuration");
 

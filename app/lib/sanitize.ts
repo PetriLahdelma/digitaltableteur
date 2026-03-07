@@ -1,102 +1,126 @@
 /**
- * HTML Sanitization utilities
+ * HTML sanitization utilities backed by sanitize-html.
  *
- * Provides defense-in-depth sanitization for:
- * - User-generated content
- * - AI-generated responses
- * - Structured data (JSON-LD)
- * - Rich text content
- *
- * Note: Uses regex-based sanitization for server-side contexts (API routes)
- * and DOMPurify for client-side contexts where DOM is available.
+ * These helpers are shared across API routes, structured data generation,
+ * chat output filtering, and CMS content rendering.
  */
 
-// Lazy-load DOMPurify only when needed (client-side or when DOM available)
-let DOMPurify: any = null;
+import sanitizeHtml from "sanitize-html";
 
-async function getDOMPurify() {
-  if (DOMPurify) return DOMPurify;
+type SanitizeConfig = Parameters<typeof sanitizeHtml>[1];
 
-  // Only load in browser or when jsdom is available
-  if (typeof window !== "undefined") {
-    const { default: purify } = await import("isomorphic-dompurify");
-    DOMPurify = purify;
-    return DOMPurify;
+const SHARED_ALLOWED_SCHEMES = ["http", "https", "mailto", "tel"];
+
+const STRICT_HTML_CONFIG: SanitizeConfig = {
+  allowedTags: sanitizeHtml.defaults.allowedTags.filter(
+    (tag: string) => !["style"].includes(tag),
+  ),
+  disallowedTagsMode: "discard",
+  allowedAttributes: {
+    a: ["href", "name", "target", "rel", "title"],
+  },
+  allowedSchemes: SHARED_ALLOWED_SCHEMES,
+  allowedSchemesAppliedToAttributes: ["href", "src"],
+  allowProtocolRelative: false,
+  parser: {
+    lowerCaseAttributeNames: false,
+  },
+};
+
+const AI_OUTPUT_CONFIG: SanitizeConfig = {
+  allowedTags: ["a", "b", "blockquote", "br", "code", "em", "i", "li", "ol", "p", "pre", "strong", "ul"],
+  allowedAttributes: {
+    a: ["href", "rel", "target", "title"],
+  },
+  allowedSchemes: SHARED_ALLOWED_SCHEMES,
+  allowedSchemesAppliedToAttributes: ["href"],
+  allowProtocolRelative: false,
+};
+
+const RICH_TEXT_CONFIG: SanitizeConfig = {
+  allowedTags: [
+    "a",
+    "blockquote",
+    "br",
+    "caption",
+    "code",
+    "em",
+    "figcaption",
+    "figure",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "hr",
+    "img",
+    "li",
+    "ol",
+    "p",
+    "pre",
+    "strong",
+    "table",
+    "tbody",
+    "td",
+    "th",
+    "thead",
+    "tr",
+    "ul",
+  ],
+  allowedAttributes: {
+    a: ["href", "rel", "target", "title"],
+    img: ["alt", "height", "loading", "src", "title", "width"],
+  },
+  allowedSchemes: SHARED_ALLOWED_SCHEMES,
+  allowedSchemesAppliedToAttributes: ["href", "src"],
+  allowProtocolRelative: false,
+};
+
+function sanitizeMarkup(input: string, config: SanitizeConfig): string {
+  return sanitizeHtml(input, config);
+}
+
+function sanitizeJsonLdValue(value: unknown): unknown {
+  if (typeof value === "string") {
+    return value
+      .replaceAll("&", "\\u0026")
+      .replaceAll("<", "\\u003c")
+      .replaceAll(">", "\\u003e")
+      .replaceAll("\u2028", "\\u2028")
+      .replaceAll("\u2029", "\\u2029");
   }
 
-  return null;
+  if (Array.isArray(value)) {
+    return value.map((item) => sanitizeJsonLdValue(item));
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, nestedValue]) => [
+        key,
+        sanitizeJsonLdValue(nestedValue),
+      ]),
+    );
+  }
+
+  return value;
 }
 
 /**
- * Regex-based sanitization for server-side (fallback when DOMPurify unavailable)
- * More aggressive but doesn't require DOM
- */
-function regexSanitize(html: string): string {
-  let sanitized = html;
-
-  // Remove script tags
-  sanitized = sanitized.replace(
-    /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
-    "",
-  );
-
-  // Remove event handlers
-  sanitized = sanitized.replace(/\s*on\w+\s*=\s*["'][^"']*["']/gi, "");
-
-  // Remove javascript: protocol
-  sanitized = sanitized.replace(/javascript:/gi, "");
-
-  // Remove data: URIs that could contain scripts
-  sanitized = sanitized.replace(/data:text\/html[^"'\s]*/gi, "");
-
-  // Remove style tags
-  sanitized = sanitized.replace(
-    /<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi,
-    "",
-  );
-
-  // Remove iframe, object, embed tags
-  sanitized = sanitized.replace(
-    /<(iframe|object|embed)\b[^<]*(?:(?!<\/\1>)<[^<]*)*<\/\1>/gi,
-    "",
-  );
-
-  return sanitized;
-}
-
-/**
- * Sanitize HTML content with strict XSS protection
- * Removes all script tags, event handlers, and dangerous protocols
- *
- * Use for user-generated or AI-generated HTML content
+ * Sanitize strict HTML content for user-provided or AI-provided markup.
  */
 export function sanitizeHTML(html: string): string {
-  // For server-side (API routes), use regex-based sanitization
-  if (typeof window === "undefined") {
-    return regexSanitize(html);
-  }
-
-  // For client-side, use DOMPurify (will be loaded lazily)
-  // Note: This is a placeholder - in practice, use regexSanitize for now
-  return regexSanitize(html);
+  return sanitizeMarkup(html, STRICT_HTML_CONFIG);
 }
 
 /**
- * Sanitize JSON-LD structured data
- * Validates and escapes to prevent script injection in <script type="application/ld+json">
- *
- * Use for all schema.org structured data
+ * Sanitize JSON-LD so it remains valid JSON while neutralizing script-breaking characters.
  */
 export function sanitizeJsonLd(jsonLd: string): string {
   try {
-    // Parse to validate JSON structure
     const parsed = JSON.parse(jsonLd);
-
-    // Re-stringify to ensure no script injection
-    const stringified = JSON.stringify(parsed);
-
-    // Remove any HTML tags that might have been embedded (regex fallback)
-    return stringified.replace(/<[^>]*>/g, "");
+    return JSON.stringify(sanitizeJsonLdValue(parsed));
   } catch (error) {
     console.error("[sanitize] Invalid JSON-LD:", error);
     return "{}";
@@ -104,30 +128,21 @@ export function sanitizeJsonLd(jsonLd: string): string {
 }
 
 /**
- * Sanitize AI-generated text output
- * More permissive than sanitizeHTML but still removes dangerous content
- *
- * Use for chat responses, generated descriptions, etc.
+ * Sanitize AI-generated text output while preserving a small, safe HTML subset.
  */
 export function sanitizeAiOutput(text: string): string {
-  // Use regex-based sanitization for all contexts
-  return regexSanitize(text);
+  return sanitizeMarkup(text, AI_OUTPUT_CONFIG);
 }
 
 /**
- * Sanitize rich text content (blog posts, articles)
- * Most permissive - allows formatting, images, tables
- *
- * Use for CMS content, blog articles from Sanity
+ * Sanitize CMS / article rich text while preserving safe formatting primitives.
  */
 export function sanitizeRichText(html: string): string {
-  // Use regex-based sanitization for all contexts
-  return regexSanitize(html);
+  return sanitizeMarkup(html, RICH_TEXT_CONFIG);
 }
 
 /**
- * Escape HTML entities for safe display in text nodes
- * Use when you need to display HTML as text (not render it)
+ * Escape HTML entities for safe display in text nodes.
  */
 export function escapeHTML(text: string): string {
   return text

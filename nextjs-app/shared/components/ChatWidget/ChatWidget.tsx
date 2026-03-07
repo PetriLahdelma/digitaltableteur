@@ -45,6 +45,56 @@ const DEFAULT_GREETING_TEXT =
   "Hi! I'm Donny, the Digitaltableteur studio guide. Ask me about our work, or anything you notice on the site.";
 
 const REMOTE_CHAT_ENDPOINT = "https://www.digitaltableteur.com/api/chat";
+const INTERNAL_SITE_HOST = "digitaltableteur.com";
+
+export function isTrustedChatHost(hostname: string): boolean {
+  return (
+    hostname === INTERNAL_SITE_HOST ||
+    hostname.endsWith(`.${INTERNAL_SITE_HOST}`)
+  );
+}
+
+export function isLocalLikeHost(hostname: string): boolean {
+  return (
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    /^192\.168\./.test(hostname) ||
+    /^10\./.test(hostname) ||
+    /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname)
+  );
+}
+
+export function resolveChatApiEndpoint(options: {
+  endpoint?: string;
+  envEndpoint?: string;
+  hostname?: string;
+  origin?: string;
+}): string {
+  const {
+    endpoint,
+    envEndpoint,
+    hostname,
+    origin,
+  } = options;
+
+  if (endpoint?.trim()) {
+    return endpoint.trim();
+  }
+
+  if (envEndpoint?.trim()) {
+    return envEndpoint.trim();
+  }
+
+  if (
+    hostname &&
+    origin &&
+    (isLocalLikeHost(hostname) || isTrustedChatHost(hostname))
+  ) {
+    return `${origin}/api/chat`;
+  }
+
+  return REMOTE_CHAT_ENDPOINT;
+}
 
 const createGreetingMessage = (
   text: string = DEFAULT_GREETING_TEXT,
@@ -403,26 +453,19 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   // Determine initial endpoint (static resolution); we may fallback dynamically on certain network errors.
   const apiEndpoint = useMemo(() => {
-    if (endpoint) return endpoint;
     const envEndpoint =
       (typeof import.meta !== "undefined" &&
         (import.meta as any).env?.VITE_DONNY_CHAT_ENDPOINT?.trim?.()) ||
       process.env.NEXT_PUBLIC_DONNY_CHAT_ENDPOINT?.trim?.();
-    if (envEndpoint) return envEndpoint;
-    if (typeof window !== "undefined") {
-      const { hostname, origin } = window.location;
-      const isLocalLike =
-        hostname === "localhost" ||
-        hostname === "127.0.0.1" ||
-        /^192\.168\./.test(hostname) ||
-        /^10\./.test(hostname) ||
-        /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname);
-      // Prefer same-origin API when running Next dev/preview/prod or local dev; fall back to remote for other environments.
-      if (isLocalLike || hostname.endsWith("digitaltableteur.com")) {
-        return `${origin}/api/chat`;
-      }
-    }
-    return REMOTE_CHAT_ENDPOINT; // safe fallback for arbitrary hosts
+    const hostname = typeof window !== "undefined" ? window.location.hostname : undefined;
+    const origin = typeof window !== "undefined" ? window.location.origin : undefined;
+
+    return resolveChatApiEndpoint({
+      endpoint,
+      envEndpoint,
+      hostname,
+      origin,
+    });
   }, [endpoint]);
 
   // Debug flag (query param ?chatDebug=1 or localStorage flag dtChatDebug). Safe getItem wrapper for Safari private mode quirks.

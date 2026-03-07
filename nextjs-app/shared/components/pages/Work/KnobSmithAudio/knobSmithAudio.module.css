@@ -6,7 +6,6 @@
 .metaSection {
   padding-block: var(--space-layout-48);
   background-color: var(--color-surface);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-inline: var(--space-layout-24);
 }
 

@@ -5,7 +5,29 @@ const fs = require("fs");
 const path = require("path");
 
 const POSTS_DIR = path.join(__dirname, "../src/pages/posts");
-const TITLE_CASE_REGEX = /^[A-Z][a-zA-Z0-9'’\-:,.() ]*$/;
+
+function stripTags(text) {
+  let result = "";
+  let insideTag = false;
+
+  for (const character of text) {
+    if (character === "<") {
+      insideTag = true;
+      continue;
+    }
+
+    if (character === ">" && insideTag) {
+      insideTag = false;
+      continue;
+    }
+
+    if (!insideTag) {
+      result += character;
+    }
+  }
+
+  return result;
+}
 
 function isTitleCase(str) {
   // Accepts: Each word starts with uppercase, allows for punctuation, numbers, etc.
@@ -52,13 +74,13 @@ function checkFile(filePath) {
   const h2Matches = [...content.matchAll(/<h2[^>]*>(.*?)<\/h2>/gs)];
   let errors = [];
   h1Matches.forEach(([, text]) => {
-    const clean = text.replace(/<[^>]+>/g, "").trim();
+    const clean = stripTags(text).trim();
     if (clean && !isTitleCase(clean)) {
       errors.push({ tag: "h1", text: clean });
     }
   });
   h2Matches.forEach(([, text]) => {
-    const clean = text.replace(/<[^>]+>/g, "").trim();
+    const clean = stripTags(text).trim();
     if (clean && !isTitleCase(clean)) {
       errors.push({ tag: "h2", text: clean });
     }
