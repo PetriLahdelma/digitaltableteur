@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 
 import { WorkIndexPage } from "@dt-pages/Work/WorkIndex";
 import { projects } from "@/nextjs-app/shared/data/projects";
@@ -81,7 +80,7 @@ export default function Work() {
 
   return (
     <>
-      <Script
+      <script
         id="schema-work"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

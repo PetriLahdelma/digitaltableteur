@@ -44,6 +44,8 @@ const Footer = () => {
           <p>
             <a href="/privacy-policy">{t("footerPrivacyPolicy")}</a>
             <br />
+            <a href="/imprint">{t("footerImprint")}</a>
+            <br />
             <a href="/ai-use">{t("footerAiUse")}</a>
             <br />
             <a href="/accessibility">{t("footerAccessibility")}</a>

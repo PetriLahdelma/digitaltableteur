@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 
 import {
@@ -113,7 +112,7 @@ export default async function PseoLeafRoute({
 
   return (
     <>
-      <Script
+      <script
         id="schema-pseo"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

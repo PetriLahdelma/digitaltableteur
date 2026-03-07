@@ -48,6 +48,16 @@ vi.mock("motion/react", async () => {
   };
 });
 
+vi.mock("framer-motion", async () => {
+  const actual = await vi.importActual<typeof import("framer-motion")>(
+    "framer-motion",
+  );
+  return {
+    ...actual,
+    useReducedMotion: () => false,
+  };
+});
+
 // Helper to wrap components with i18n provider
 function withI18n(ui: React.ReactElement) {
   return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;

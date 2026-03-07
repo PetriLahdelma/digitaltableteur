@@ -10,7 +10,30 @@
 
 import { sanitizeJsonLd } from "./sanitize";
 
-const SITE_URL = "https://www.digitaltableteur.com";
+const DEFAULT_SITE_URL = "https://www.digitaltableteur.com";
+
+function getSiteUrl(): string {
+  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+
+  if (!configuredSiteUrl) {
+    return DEFAULT_SITE_URL;
+  }
+
+  try {
+    return new URL(configuredSiteUrl).origin;
+  } catch {
+    return DEFAULT_SITE_URL;
+  }
+}
+
+function toAbsoluteUrl(url: string): string {
+  if (url.startsWith("http")) {
+    return url;
+  }
+
+  const siteUrl = getSiteUrl();
+  return `${siteUrl}${url.startsWith("/") ? url : `/${url}`}`;
+}
 
 export interface OrganizationSchemaOptions {
   url?: string;
@@ -26,9 +49,10 @@ export interface OrganizationSchemaOptions {
 export function getOrganizationSchema(
   options: OrganizationSchemaOptions = {},
 ): Record<string, unknown> {
+  const siteUrl = getSiteUrl();
   const {
-    url = SITE_URL,
-    logo = `${SITE_URL}/logo512.png`,
+    url = siteUrl,
+    logo = `${siteUrl}/logo512.png`,
     socialLinks = [
       "https://github.com/PetriLahdelma",
       // Add more social profiles as they become available
@@ -75,11 +99,12 @@ export interface PersonSchemaOptions {
 export function getPersonSchema(
   options: PersonSchemaOptions = {},
 ): Record<string, unknown> {
+  const siteUrl = getSiteUrl();
   const {
     name = "Petri Lahdelma",
     jobTitle = "Design Systems Specialist & DesignOps Engineer",
-    url = `${SITE_URL}/about`,
-    image = `${SITE_URL}/pete.png`,
+    url = `${siteUrl}/about`,
+    image = `${siteUrl}/pete.png`,
     sameAs = [
       "https://github.com/PetriLahdelma",
       // Add LinkedIn, Twitter, etc.
@@ -135,6 +160,7 @@ export interface ArticleSchemaOptions {
 export function getArticleSchema(
   options: ArticleSchemaOptions,
 ): Record<string, unknown> {
+  const siteUrl = getSiteUrl();
   const {
     title,
     description,
@@ -148,8 +174,9 @@ export function getArticleSchema(
     tags = [],
   } = options;
 
-  const articleUrl = `${SITE_URL}/blog/${slug}`;
-  const imageUrl = mainImageUrl || `${SITE_URL}/logo512.png`;
+  const normalizedSlug = slug.replace(/^\/+/, "").replace(/^blog\//, "");
+  const articleUrl = `${siteUrl}/blog/${normalizedSlug}`;
+  const imageUrl = mainImageUrl || `${siteUrl}/logo512.png`;
 
   return {
     "@context": "https://schema.org",
@@ -168,7 +195,7 @@ export function getArticleSchema(
       name: "Digitaltableteur",
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo512.png`,
+        url: `${siteUrl}/logo512.png`,
         width: 512,
         height: 512,
       },
@@ -223,12 +250,12 @@ export function getWebPageSchema(
     "@type": "WebPage",
     name,
     description,
-    url: url.startsWith("http") ? url : `${SITE_URL}${url}`,
+    url: toAbsoluteUrl(url),
     inLanguage,
     isPartOf: {
       "@type": "WebSite",
       name: "Digitaltableteur",
-      url: SITE_URL,
+      url: getSiteUrl(),
     },
     ...(dateModified && { dateModified }),
     ...(keywords.length > 0 && { keywords: keywords.join(", ") }),
@@ -285,7 +312,7 @@ export function getItemListSchema(
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+      url: toAbsoluteUrl(item.url),
       name: item.name,
       ...(item.description ? { description: item.description } : {}),
     })),
@@ -303,9 +330,8 @@ export function getCollectionPageSchema(
   options: CollectionPageSchemaOptions,
 ): Record<string, unknown> {
   const { items, ...pageOptions } = options;
-  const pageUrl = pageOptions.url.startsWith("http")
-    ? pageOptions.url
-    : `${SITE_URL}${pageOptions.url}`;
+  const siteUrl = getSiteUrl();
+  const pageUrl = toAbsoluteUrl(pageOptions.url);
 
   return {
     "@context": "https://schema.org",
@@ -317,7 +343,7 @@ export function getCollectionPageSchema(
     isPartOf: {
       "@type": "WebSite",
       name: "Digitaltableteur",
-      url: SITE_URL,
+      url: siteUrl,
     },
     ...(pageOptions.dateModified
       ? { dateModified: pageOptions.dateModified }
@@ -330,7 +356,7 @@ export function getCollectionPageSchema(
       itemListElement: items.map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+        url: toAbsoluteUrl(item.url),
         name: item.name,
         ...(item.description ? { description: item.description } : {}),
       })),
@@ -356,7 +382,8 @@ export function getContactPageSchema(
   options: ContactPageSchemaOptions,
 ): Record<string, unknown> {
   const { name, description, url, email } = options;
-  const pageUrl = url.startsWith("http") ? url : `${SITE_URL}${url}`;
+  const siteUrl = getSiteUrl();
+  const pageUrl = toAbsoluteUrl(url);
 
   return {
     "@context": "https://schema.org",
@@ -367,18 +394,18 @@ export function getContactPageSchema(
     isPartOf: {
       "@type": "WebSite",
       name: "Digitaltableteur",
-      url: SITE_URL,
+      url: siteUrl,
     },
     about: {
       "@type": "Organization",
       name: "Digitaltableteur",
-      url: SITE_URL,
+      url: siteUrl,
     },
     mainEntity: {
       "@type": "Organization",
       name: "Digitaltableteur",
       email,
-      url: SITE_URL,
+      url: siteUrl,
       contactPoint: {
         "@type": "ContactPoint",
         email,
@@ -403,7 +430,7 @@ export function getBreadcrumbSchema(
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+      item: toAbsoluteUrl(item.url),
     })),
   };
 }
@@ -420,13 +447,14 @@ export interface WebSiteSchemaOptions {
 export function getWebSiteSchema(
   options: WebSiteSchemaOptions = {},
 ): Record<string, unknown> {
+  const siteUrl = getSiteUrl();
   const { searchUrl, potentialActions = true } = options;
 
   const baseSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Digitaltableteur",
-    url: SITE_URL,
+    url: siteUrl,
     description:
       "Design Systems, AI-Powered DesignOps, and product craft from Digitaltableteur",
     inLanguage: ["en", "fi", "sv"],
@@ -438,13 +466,17 @@ export function getWebSiteSchema(
 
   // Add SearchAction if search functionality exists
   if (potentialActions && searchUrl) {
+    const targetUrlTemplate = toAbsoluteUrl(searchUrl);
+
     return {
       ...baseSchema,
       potentialAction: {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: `${SITE_URL}${searchUrl}?q={search_term_string}`,
+          urlTemplate: targetUrlTemplate.includes("{search_term_string}")
+            ? targetUrlTemplate
+            : `${targetUrlTemplate}${targetUrlTemplate.includes("?") ? "&" : "?"}q={search_term_string}`,
         },
         "query-input": "required name=search_term_string",
       },
@@ -486,11 +518,11 @@ export function getCreativeWorkSchema(
     "@type": "CreativeWork",
     name,
     description,
-    url: url.startsWith("http") ? url : `${SITE_URL}${url}`,
+    url: toAbsoluteUrl(url),
     ...(image && {
       image: {
         "@type": "ImageObject",
-        url: image.startsWith("http") ? image : `${SITE_URL}${image}`,
+        url: toAbsoluteUrl(image),
       },
     }),
     ...(dateCreated && { dateCreated }),

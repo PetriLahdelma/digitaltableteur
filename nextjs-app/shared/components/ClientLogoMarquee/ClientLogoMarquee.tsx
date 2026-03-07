@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
+import { useReducedMotion } from "framer-motion";
 
 type ClientLogo = {
   src: string;
@@ -109,7 +109,7 @@ function LogoItem({
         alt={logo.alt}
         aria-hidden={duplicate ? "true" : undefined}
         role={duplicate ? "presentation" : undefined}
-        className="block dark:brightness-0 dark:invert"
+        className="client-logo-marquee-image block"
         loading="lazy"
         style={
           hasCustomWidth
@@ -161,9 +161,9 @@ function LogoLane({
 }
 
 export function ClientLogoMarquee({
-  ariaLabel = "Selected client organisations",
+  ariaLabel,
 }: {
-  ariaLabel?: string;
+  ariaLabel: string;
 }) {
   const shouldReduceMotion = useReducedMotion();
 

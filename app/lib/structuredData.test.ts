@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   getOrganizationSchema,
   getPersonSchema,
@@ -9,9 +9,14 @@ import {
   getFaqSchema,
   getItemListSchema,
   getContactPageSchema,
+  getCollectionPageSchema,
 } from "./structuredData";
 
 describe("structuredData", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
   describe("getOrganizationSchema", () => {
     it("returns valid Organization schema", () => {
       const schema = getOrganizationSchema();
@@ -171,6 +176,40 @@ describe("structuredData", () => {
       expect(schema["@type"]).toBe("ContactPage");
       expect(schema.mainEntity.contactPoint.email).toBe(
         "mail@digitaltableteur.com",
+      );
+    });
+  });
+
+  describe("getCollectionPageSchema", () => {
+    it("returns valid CollectionPage schema", () => {
+      const schema = getCollectionPageSchema({
+        name: "Work",
+        description: "Selected client work.",
+        url: "/work",
+        items: [{ name: "KnobSmith Audio", url: "/work/knobsmith-audio" }],
+      }) as any;
+
+      expect(schema["@type"]).toBe("CollectionPage");
+      expect(schema.mainEntity.itemListElement).toHaveLength(1);
+      expect(schema.mainEntity.itemListElement[0].url).toBe(
+        "https://www.digitaltableteur.com/work/knobsmith-audio",
+      );
+    });
+
+    it("uses the configured site origin for relative URLs", () => {
+      vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://preview.digitaltableteur.com/path");
+
+      const schema = getCollectionPageSchema({
+        name: "Work",
+        description: "Preview collection page",
+        url: "/work",
+        items: [{ name: "Preview item", url: "/work/preview-item" }],
+      }) as any;
+
+      expect(schema.url).toBe("https://preview.digitaltableteur.com/work");
+      expect(schema.isPartOf.url).toBe("https://preview.digitaltableteur.com");
+      expect(schema.mainEntity.itemListElement[0].url).toBe(
+        "https://preview.digitaltableteur.com/work/preview-item",
       );
     });
   });

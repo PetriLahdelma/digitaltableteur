@@ -13,6 +13,8 @@ import { createCorsHeaders } from "../chat-shared";
 const RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
 const RATE_LIMIT_MAX = 3; // requests per window per IP
 const buckets = new Map<string, { count: number; windowStart: number }>();
+const ALLOWED_CONTACT_TYPES = new Set(["newsletter"]);
+const ALLOWED_CONTACT_SOURCES = new Set(["waitlist"]);
 
 function rateLimit(key: string): boolean {
   const now = Date.now();
@@ -52,15 +54,48 @@ export async function POST(request: NextRequest) {
     const interest = body.interest ? sanitize(body.interest) : null;
     const message = body.message ? sanitize(body.message) : null;
     const time = body.time ? sanitize(body.time) : null;
-    const type = body.type ? sanitize(body.type) : null;
-    const source = body.source ? sanitize(body.source) : null;
+    const rawType = body.type ? sanitize(body.type) : null;
+    const rawSource = body.source ? sanitize(body.source) : null;
+    const type =
+      typeof rawType === "string" && ALLOWED_CONTACT_TYPES.has(rawType)
+        ? rawType
+        : null;
+    const source =
+      typeof rawSource === "string" && ALLOWED_CONTACT_SOURCES.has(rawSource)
+        ? rawSource
+        : null;
+
+    if ((rawType !== null && type === null) || (rawSource !== null && source === null)) {
+      SecurityLogger.logDataAccess(
+        ip,
+        userAgent,
+        "/api/save-contact",
+        "POST",
+        false,
+        { reason: "Invalid contact metadata" },
+      );
+      return NextResponse.json({ error: "Invalid form data" }, { status: 400 });
+    }
+
+    if (source && type !== "newsletter") {
+      SecurityLogger.logDataAccess(
+        ip,
+        userAgent,
+        "/api/save-contact",
+        "POST",
+        false,
+        { reason: "Invalid contact source" },
+      );
+      return NextResponse.json({ error: "Invalid form data" }, { status: 400 });
+    }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // Newsletter signups only require a valid email
     const isNewsletter = type === "newsletter";
-    const isValidEmail = email && emailRegex.test(email);
-    const isValid = isNewsletter ? isValidEmail : name && isValidEmail;
+    const isValidEmail = typeof email === "string" && emailRegex.test(email);
+    const hasName = typeof name === "string" && name.trim().length > 0;
+    const isValid = isNewsletter ? isValidEmail : hasName && isValidEmail;
 
     if (!isValid) {
       SecurityLogger.logDataAccess(

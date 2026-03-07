@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 
 import { HomePage } from "@dt-pages/Home/HomePage";
 import {
@@ -101,7 +100,7 @@ export default function Home() {
 
   return (
     <>
-      <Script
+      <script
         id="schema-home"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

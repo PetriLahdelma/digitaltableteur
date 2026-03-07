@@ -87,29 +87,42 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  try {
-    const { password } = await request.json();
+  // Fail closed: if CV_PASSWORD is not configured, refuse all attempts
+  if (!process.env.CV_PASSWORD) {
+    SecurityLogger.logAuthAttempt(
+      ip,
+      userAgent,
+      "/api/download-cv",
+      false,
+      "CV_PASSWORD not configured",
+    );
+    return NextResponse.json(
+      { error: "Service temporarily unavailable" },
+      { status: 503 },
+    );
+  }
 
-    // Fail closed: if CV_PASSWORD is not configured, refuse all attempts
-    if (!process.env.CV_PASSWORD) {
-      SecurityLogger.logAuthAttempt(
-        ip,
-        userAgent,
-        "/api/download-cv",
-        false,
-        "CV_PASSWORD not configured",
-      );
+  try {
+    let password = "";
+    try {
+      const body = await request.json();
+      if (
+        typeof body === "object" &&
+        body !== null &&
+        "password" in body &&
+        typeof body.password === "string"
+      ) {
+        password = body.password;
+      }
+    } catch {
       return NextResponse.json(
-        { error: "Service temporarily unavailable" },
-        { status: 503 },
+        { error: "Invalid request body" },
+        { status: 400 },
       );
     }
 
     // Validate password with timing-safe comparison
-    const isValid = constantTimeCompare(
-      password || "",
-      process.env.CV_PASSWORD || "",
-    );
+    const isValid = constantTimeCompare(password, process.env.CV_PASSWORD);
 
     if (!isValid) {
       // Record failed attempt AFTER password check (timing-safe)
