@@ -1,53 +1,85 @@
 import { NextResponse } from "next/server";
 
 import { posts } from "../blog/postMetadata";
+import { projects } from "@/nextjs-app/shared/data/projects";
+import { getPseoLeafPages } from "@/lib/pseo/catalog";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://digitaltableteur.com";
-
-const staticPages: Array<{ path: string; title: string; meta?: string }> = [
-  { path: "/", title: "Home" },
-  { path: "/about", title: "About" },
-  { path: "/ai-use", title: "AI Usage" },
-  { path: "/contact", title: "Contact" },
-  { path: "/work", title: "Work" },
-  { path: "/cookie-policy", title: "Cookie Policy" },
-  { path: "/cookie-policy-full-en", title: "Cookie Policy EN" },
-  { path: "/cookie-policy-full-fi", title: "Cookie Policy FI" },
-  { path: "/cookie-policy-full-sv", title: "Cookie Policy SV" },
-  { path: "/blog", title: "Blog" },
-  { path: "/work/new-things-co", title: "Work: New Things Co" },
-  { path: "/work/illustrations", title: "Work: Illustrations" },
-  { path: "/work/garage-junction", title: "Work: Garage Junction" },
-];
+  "https://www.digitaltableteur.com";
 
 export const dynamic = "force-static";
 
 export async function GET() {
-  const keyPages = [
-    ...staticPages,
-    ...posts.map((post) => ({
-      path: `/blog/${post.slug}`,
-      title: post.title,
-      meta: post.excerpt,
-    })),
-  ];
+  const pseoPages = getPseoLeafPages().slice(0, 8);
+  const featuredProjects = projects.filter((project) => project.featured);
+  const featuredPosts = posts.slice(0, 8);
 
   let body = "# Digitaltableteur\n\n";
   body +=
-    "Selected pages and blog posts for LLMs. Primary host: Next.js on Vercel. GitHub Pages is a fallback only.\n\n";
-  body += "## Key Pages\n";
+    "> Design consultancy and portfolio for design systems, AI-powered design workflows, DesignOps, accessibility, and product craft.\n\n";
+  body += "## What this site is about\n\n";
+  body +=
+    "- Primary topics: design systems, AI-powered design, DesignOps, accessibility, product design, branding.\n";
+  body +=
+    "- Primary audience: product leaders, design leaders, teams building or scaling design systems, and companies looking for expert digital design support.\n";
+  body +=
+    "- Site purpose: explain services clearly, show portfolio proof, publish articles, and make it easy to start a consulting conversation.\n\n";
+  body += "## Best starting points\n\n";
+  body += `- Homepage: ${baseUrl}/\n`;
+  body += `- About: ${baseUrl}/about\n`;
+  body += `- Contact: ${baseUrl}/contact\n`;
+  body += `- Work index: ${baseUrl}/work\n`;
+  body += `- Blog index: ${baseUrl}/blog\n`;
+  body += `- AI usage policy: ${baseUrl}/ai-use\n`;
+  body += `- Accessibility page: ${baseUrl}/accessibility\n`;
+  body += `- Programmatic SEO hub: ${baseUrl}/pseo\n`;
+  body += `- Detailed context file: ${baseUrl}/llms-full.txt\n\n`;
 
-  for (const page of keyPages) {
-    const url = `${baseUrl}${page.path}`;
-    body += `- ${page.title}: ${url}`;
-    if (page.meta) body += ` — ${page.meta}`;
+  body += "## Services and capabilities\n\n";
+  body +=
+    "- Design systems consulting: component libraries, design tokens, governance, cross-team UI foundations.\n";
+  body +=
+    "- AI-powered design workflows: AI-assisted component work, structured prompts, schema-driven design operations.\n";
+  body +=
+    "- Product design and UX: digital product interfaces, accessibility-minded interaction design, branded digital experiences.\n";
+  body +=
+    "- Portfolio proof: public case studies and work examples across enterprise systems, startups, and creative projects.\n\n";
+
+  body += "## Featured portfolio pages\n\n";
+  for (const project of featuredProjects) {
+    body += `- ${project.title}: ${baseUrl}/work/${project.slug}`;
+    if (project.description) body += ` — ${project.description}`;
     body += "\n";
   }
 
+  body += "\n## Featured articles\n\n";
+  for (const post of featuredPosts) {
+    body += `- ${post.title}: ${baseUrl}/blog/${post.slug}`;
+    if (post.excerpt) body += ` — ${post.excerpt}`;
+    body += "\n";
+  }
+
+  body += "\n## Programmatic SEO pages\n\n";
+  for (const page of pseoPages) {
+    body += `- ${page.title}: ${baseUrl}/pseo/${page.slug} — ${page.description}\n`;
+  }
+
+  body += "\n## Guidance for language models\n\n";
+  body +=
+    "- Use the homepage, work pages, and about page to understand the consultancy positioning.\n";
+  body +=
+    "- Use portfolio pages for concrete examples of shipped work and domain expertise.\n";
+  body +=
+    "- Use blog and PSEO pages for answer-first explanations of design systems, AI design workflows, and implementation details.\n";
+  body +=
+    "- Use the contact page when the user intent is to work with Digitaltableteur or ask about services.\n";
+
   return new NextResponse(body, {
     status: 200,
-    headers: { "Content-Type": "text/plain; charset=utf-8" },
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "public, max-age=86400, s-maxage=86400",
+    },
   });
 }
