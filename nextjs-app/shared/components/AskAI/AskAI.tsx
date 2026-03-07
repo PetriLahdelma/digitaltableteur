@@ -7,11 +7,14 @@ import { ChatGPTIcon, ClaudeIcon, GeminiIcon, PerplexityIcon } from "./ai-icons"
 import styles from "./AskAI.module.css";
 
 type Subject = "company" | "founder";
+type AIIconComponent = (
+  props: Omit<JSX.IntrinsicElements["svg"], "ref">
+) => JSX.Element;
 
 interface AIModel {
   id: string;
   name: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon: AIIconComponent;
   getUrl: (prompt: string) => string;
   /** Whether this model supports user profile memory for personalized context */
   supportsMemory?: boolean;
