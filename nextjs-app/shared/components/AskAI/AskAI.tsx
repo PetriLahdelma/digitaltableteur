@@ -1,15 +1,20 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import type { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
-import { ChatGPTIcon, ClaudeIcon, GeminiIcon, PerplexityIcon } from "./ai-icons";
+import {
+  ChatGPTIcon,
+  ClaudeIcon,
+  GeminiIcon,
+  PerplexityIcon,
+  type SvgIconProps,
+} from "./ai-icons";
 import styles from "./AskAI.module.css";
 
 type Subject = "company" | "founder";
-type AIIconComponent = (
-  props: Omit<JSX.IntrinsicElements["svg"], "ref">
-) => JSX.Element;
+type AIIconComponent = (props: SvgIconProps) => ReactElement;
 
 interface AIModel {
   id: string;

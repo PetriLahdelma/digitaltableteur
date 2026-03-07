@@ -1,6 +1,8 @@
 "use client";
 
-type SvgIconProps = Omit<JSX.IntrinsicElements["svg"], "ref">;
+import type { ComponentPropsWithoutRef } from "react";
+
+export type SvgIconProps = ComponentPropsWithoutRef<"svg">;
 
 export function ChatGPTIcon(props: SvgIconProps) {
   return (
