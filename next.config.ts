@@ -118,6 +118,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // TODO: Remove these once the ~23 pre-existing type errors are resolved.
+  // Root cause: dual @types/react versions from dependency tree conflicts.
+  // CI enforces typecheck separately via .github/workflows/pr-validation.yml,
+  // but build-time checking is disabled to prevent blocking deployments.
   eslint: {
     ignoreDuringBuilds: true,
   },
