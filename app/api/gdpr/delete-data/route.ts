@@ -43,6 +43,32 @@ function isGdprRateLimited(email: string): boolean {
   return false;
 }
 
+// Rate limiting for GET endpoint to prevent email enumeration
+// Keyed by IP (not email) since the attacker controls the email parameter
+const GDPR_GET_RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
+const GDPR_GET_RATE_LIMIT_MAX = 10; // lookups per window per IP
+const gdprGetBuckets = new Map<
+  string,
+  { count: number; windowStart: number }
+>();
+
+function isGdprGetRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const bucket = gdprGetBuckets.get(ip);
+
+  if (!bucket || now - bucket.windowStart > GDPR_GET_RATE_LIMIT_WINDOW_MS) {
+    gdprGetBuckets.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+
+  if (bucket.count >= GDPR_GET_RATE_LIMIT_MAX) {
+    return true;
+  }
+
+  bucket.count += 1;
+  return false;
+}
+
 /**
  * POST /api/gdpr/delete-data
  * Request deletion of user data from the database
@@ -177,6 +203,19 @@ export async function GET(request: NextRequest) {
   const ip = getClientIp(request);
   const userAgent = getUserAgent(request);
 
+  // Rate limit to prevent email enumeration
+  if (isGdprGetRateLimited(ip)) {
+    SecurityLogger.logRateLimitExceeded(
+      ip,
+      userAgent,
+      "/api/gdpr/delete-data",
+    );
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429, headers: { "Retry-After": "900" } },
+    );
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const rawEmail = searchParams.get("email");
@@ -206,13 +245,11 @@ export async function GET(request: NextRequest) {
         "/api/gdpr/delete-data",
         "GET",
         true,
-        { email, recordCount: count },
+        { email },
       );
 
       return NextResponse.json({
         exists: count > 0,
-        recordCount: count,
-        email,
       });
     } catch (err) {
       console.error("MongoDB query error:", err);
