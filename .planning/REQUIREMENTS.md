@@ -37,9 +37,10 @@ Requirements for complete WCAG 2.1 AA audit and remediation.
   - Fix: Added --logo-text-color CSS variable for logo wordmark, added Dark theme override for ChatWidget toggle
   - See: CONTRAST-AUDIT.md, 02-06-SUMMARY.md
 - [x] **PERC-03**: Color is not sole means of conveying information
-  - Status: Mostly Compliant (2026-01-28)
-  - Result: 11 components pass with icon+color patterns; 5 minor P2 gaps documented
-  - Note: Toast/Tag components could benefit from icons; TextInput relies on FormField
+  - Status: Complete (2026-02-04)
+  - Result: 13 components pass with icon+color patterns; Toast/Tag icons added
+  - Fix: Added severity icons to Toast component, semantic icons to Tag component
+  - Note: TextInput/TextArea rely on FormField wrapper (documented pattern)
   - See: COLOR-INDEPENDENCE-AUDIT.md
 - [x] **PERC-04**: Text can be resized to 200% without loss of functionality
   - Status: Complete (2026-01-28)
@@ -254,7 +255,7 @@ Deferred to future work.
 | INFRA-04 | Phase 1 | **Complete** |
 | PERC-01 | Phase 2 | **Complete** |
 | PERC-02 | Phase 2 | **Complete** |
-| PERC-03 | Phase 2 | **Mostly Compliant** |
+| PERC-03 | Phase 2 | **Complete** |
 | PERC-04 | Phase 2 | **Complete** |
 | PERC-05 | Phase 2 | **Complete** |
 | PERC-06 | Phase 2 | **Complete** |
@@ -303,4 +304,4 @@ Deferred to future work.
 
 ---
 *Requirements defined: 2026-01-27*
-*Last updated: 2026-02-04 after Phase 8 completion (VERF requirements complete with manual testing skipped)*
+*Last updated: 2026-02-04 after tech debt closure (PERC-03 Toast/Tag icons added, test aggregation fixed)*
