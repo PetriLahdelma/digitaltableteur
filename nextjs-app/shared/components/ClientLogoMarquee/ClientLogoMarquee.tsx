@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
 type ClientLogo = {
@@ -110,7 +111,8 @@ function LogoItem({
         aria-hidden={duplicate ? "true" : undefined}
         role={duplicate ? "presentation" : undefined}
         className="client-logo-marquee-image block"
-        loading="lazy"
+        loading="eager"
+        decoding="async"
         style={
           hasCustomWidth
             ? {
@@ -130,6 +132,35 @@ function LogoItem({
   );
 }
 
+function useMarqueeWidth() {
+  const laneRef = useRef<HTMLDivElement>(null);
+  const [ready, setReady] = useState(false);
+
+  const measure = useCallback(() => {
+    const lane = laneRef.current;
+    if (!lane) return;
+    const firstGroup = lane.children[0] as HTMLElement | undefined;
+    if (!firstGroup) return;
+    const width = firstGroup.scrollWidth;
+    if (width > 0) {
+      lane.style.setProperty("--marquee-width", `${width}px`);
+      setReady(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    measure();
+    const timer = setTimeout(measure, 200);
+    window.addEventListener("resize", measure);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", measure);
+    };
+  }, [measure]);
+
+  return { laneRef, ready };
+}
+
 function LogoLane({
   laneLogos,
   className,
@@ -139,8 +170,14 @@ function LogoLane({
   className: string;
   groupClassName: string;
 }) {
+  const { laneRef, ready } = useMarqueeWidth();
+
   return (
-    <div className={className}>
+    <div
+      ref={laneRef}
+      className={className}
+      style={{ opacity: ready ? 1 : 0, transition: "opacity 0.3s ease" }}
+    >
       {[0, 1].map((duplicateIndex) => (
         <div
           key={duplicateIndex}
