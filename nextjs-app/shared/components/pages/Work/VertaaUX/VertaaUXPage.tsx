@@ -195,7 +195,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             <Text key="p1" size="S">
               <span style={{ fontWeight: 600 }}>
                 The technical foundation combines predictive modeling with
-                real-time analysis, running 91+ automated checks in 40-90 seconds.
+                real-time analysis, running 90+ automated checks in under 60 seconds.
               </span>{" "}
               This is 25x faster than initial performance targets, with simple
               sites completing in just seconds.
@@ -238,31 +238,39 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               coverage that would take human reviewers days to complete.
             </Text>,
           ]}
-          imageLayout="none"
+          images={{
+            src: "/images/portfolio/vertaaux/screenshot-detailed-analysis.png",
+            alt: "VertaaUX detailed analysis view showing individual findings with severity, selectors, and fix recommendations",
+            width: 1920,
+            height: 1080,
+            caption: "Detailed analysis — severity-weighted findings with inspectable evidence.",
+          }}
+          imageLayout="single"
           backgroundColor="transparent"
           maxWidth="md"
           spacing="comfortable"
         />
       </div>
 
-      {/* Brand Identity - expanded with logo variations */}
+      {/* Brand Identity - updated to reflect current guidelines */}
       <StoryBlock
         subtitle="Brand Identity"
         title="Visual Language for UX Intelligence"
         content={[
           <Text key="p1" size="S">
             <span style={{ fontWeight: 600 }}>
-              The mission is to make world-class UX accessible to every team.
+              For dev teams who treat accessibility as craft, not compliance.
             </span>{" "}
-            The brand identity needed to communicate trust, precision, and
-            intelligence while remaining approachable for teams without deep UX
-            expertise.
+            The brand identity is built on three pillars: Evidence-First
+            (every finding backed by inspectable data), Quiet Confidence
+            (the product speaks through clarity and measured output), and
+            Craft Over Compliance (accessibility as a discipline, not a checklist).
           </Text>,
           <Text key="p2" size="S">
-            The goal is to establish a UX Score the industry can adopt, similar
-            to PageSpeed for performance or Lighthouse for accessibility. The
-            visual language reflects this ambition with a clean, data-driven
-            aesthetic.
+            Typography pairs Geist Sans for everything human with Geist Mono
+            for everything data — scores, selectors, code references. The neon
+            teal (#00FFCC) accent is used as a signal color, never decorative.
+            Dark-biased surfaces let the data breathe.
           </Text>,
         ]}
         imageLayout="none"
@@ -376,10 +384,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               </span>
             </div>
             <div className={styles.metricItem}>
-              <span className={styles.metricValue}>40-90s</span>
+              <span className={styles.metricValue}>&lt;60s</span>
               <span className={styles.metricLabel}>Audit Speed</span>
               <span className={styles.metricDetail}>
-                25x faster than original performance targets
+                Full audit in under a minute, simple sites in seconds
               </span>
             </div>
           </div>
