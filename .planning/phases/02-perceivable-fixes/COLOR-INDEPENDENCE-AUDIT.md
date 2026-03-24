@@ -95,14 +95,14 @@ Users who are colorblind or have low vision must be able to perceive all informa
 | Badge | Automatic semantic icons for states |
 | NavMenuList | Border + background + aria-current |
 
-### Issues Found (5)
+### Issues Found (3) — Updated 2026-02-04
 
-| Issue | File | Severity | Fix Needed |
-|-------|------|----------|------------|
-| Toast has no icons | `Toast/Toast.tsx` | P2 (Minor) | Add severity icons like Toaster |
+| Issue | File | Severity | Status |
+|-------|------|----------|--------|
+| Toast has no icons | `Toast/Toast.tsx` | P2 (Minor) | **FIXED** - Added severity icons via `getSemanticIcon()` |
 | TextInput error is color-only | `TextInput/TextInput.tsx` | P1 (Major) | Should be used with FormField or add text indicator |
 | TextArea error is color-only | `TextArea/TextArea.tsx` | P1 (Major) | Should be used with FormField or add text indicator |
-| Tag has no icons for status variants | `Tag/Tag.tsx` | P2 (Minor) | Add optional icons for semantic variants |
+| Tag has no icons for status variants | `Tag/Tag.tsx` | P2 (Minor) | **FIXED** - Added icons for success/warning/error/info variants |
 | Required field relies on asterisk | Multiple | P2 (Minor) | Ensure `required` attr on input; document asterisk convention |
 
 ### Partial Compliance (2)
