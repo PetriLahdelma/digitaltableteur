@@ -72,9 +72,9 @@
   color: var(--color-text);
 }
 
-/* Hero accent for brand gradient (used sparingly) */
+/* Hero accent — VertaaUX brand: dark base + neon teal */
 .heroAccent {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: #0D0D0D;
 }
 
 /* Process section with enhanced spacing for AI methodology */
@@ -165,7 +165,7 @@
 }
 
 .logoCardDark {
-  background-color: #111;
+  background-color: #0D0D0D;
   border-radius: var(--radius-m);
   padding: var(--space-layout-32);
   display: flex;
@@ -186,7 +186,7 @@
 }
 
 .logoCardGradient {
-  background: #000;
+  background-color: #141414;
   border-radius: var(--radius-m);
   padding: var(--space-layout-32);
   display: flex;
@@ -229,14 +229,14 @@
   padding-block-start: var(--space-layout-48);
 }
 
-/* Key metrics section with gradient */
+/* Key metrics section — VertaaUX dark brand with teal accent */
 .metricsSection {
   margin-block: var(--space-layout-80);
   margin-inline: calc(-1 * var(--space-layout-24));
   padding-inline: var(--space-layout-24);
   padding-block: var(--space-layout-64);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background-color: #0D0D0D;
+  color: #F2F2F2;
 }
 
 .metricsContent {
@@ -266,6 +266,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.1;
+  color: #00FFCC;
 }
 
 .metricLabel {
