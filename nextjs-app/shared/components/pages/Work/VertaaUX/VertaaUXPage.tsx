@@ -326,7 +326,109 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         </div>
       </div>
 
-      {/* Product mockup */}
+      {/* Color System */}
+      <StoryBlock
+        subtitle="Color"
+        title="The Palette"
+        content={[
+          <Text key="p1" size="S">
+            Dark-biased surfaces with neon teal (#00FFCC) as a signal color — used
+            sparingly for CTAs, scores, and key data. Never decorative. Semantic
+            score states map to Excellent (green), Good (blue), Fair (amber), and
+            Poor (red) with WCAG AA contrast on all surfaces.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/vertaaux/brand-color-expanded.png",
+          alt: "VertaaUX color system — dark theme primary palette with neon teal accent, score state colors, and light theme reversed",
+          width: 2400,
+          height: 1350,
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Typography System */}
+      <StoryBlock
+        subtitle="Typography"
+        title="The Type System"
+        content={[
+          <Text key="p1" size="S">
+            Geist Sans for everything human. Geist Mono for everything data.
+            The font pairing has clear semantic roles — Sans for prose, headings,
+            and UI labels; Mono for scores, selectors, code references, and
+            technical metadata. Headlines use tight negative tracking. Body copy
+            at 1.6 line-height for readability.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/vertaaux/brand-typography-expanded.png",
+          alt: "VertaaUX type system — Geist Sans display and body specimens, Geist Mono data samples, type scale from 56px hero to 12px caption",
+          width: 2400,
+          height: 1350,
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* UI Components */}
+      <StoryBlock
+        subtitle="Interface"
+        title="The Components"
+        content={[
+          <Text key="p1" size="S">
+            Neon glow as a signature effect on primary CTAs — used sparingly,
+            max one per screen. Score badges, metric cards, and issue rows follow
+            a consistent 8px card radius, 4px input radius system. Base spacing
+            unit of 4px scales through 8, 16, 24, 32, 48, 64.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/vertaaux/brand-ui-interface.png",
+          alt: "VertaaUX interface patterns — neon glow buttons, border radius system, spacing scale, score badge, metric card, and issue row components",
+          width: 2400,
+          height: 1350,
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Do / Don't — Brand in Practice */}
+      <StoryBlock
+        subtitle="Brand in Practice"
+        title="Do and Don't"
+        content={[
+          <Text key="p1" size="S">
+            The brand works when every element is used with intention. Logo on
+            dark backgrounds only at full-color teal. Neon teal as a signal
+            color on near-black, not as background fill. Geist Sans for display,
+            Geist Mono for data. Calm, precise tone — no hype, no exclamation marks.
+            Dark-biased photography with no faces.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/vertaaux/brand-do-dont.png",
+          alt: "VertaaUX brand do and don't grid — twelve examples across logo, color, type, tone, photography, and spacing",
+          width: 2400,
+          height: 1350,
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Product — Dashboard */}
       <StoryBlock
         subtitle="Product"
         title="Dashboard Experience"
