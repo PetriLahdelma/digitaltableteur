@@ -326,7 +326,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         </div>
       </div>
 
-      {/* Color System */}
+      {/* Color System — p9: expanded palette cards + score states + light theme */}
       <StoryBlock
         subtitle="Color"
         title="The Palette"
@@ -339,10 +339,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/brand-color-expanded.png",
+          src: "/images/portfolio/vertaaux/brand-color-expanded.svg",
           alt: "VertaaUX color system — dark theme primary palette with neon teal accent, score state colors, and light theme reversed",
-          width: 2400,
-          height: 1350,
+          width: 1920,
+          height: 1080,
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -351,7 +351,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
-      {/* Typography System */}
+      {/* Typography — p11: expanded specimens + type scale + pairing rule */}
       <StoryBlock
         subtitle="Typography"
         title="The Type System"
@@ -365,10 +365,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/brand-typography-expanded.png",
+          src: "/images/portfolio/vertaaux/brand-typography-expanded.svg",
           alt: "VertaaUX type system — Geist Sans display and body specimens, Geist Mono data samples, type scale from 56px hero to 12px caption",
-          width: 2400,
-          height: 1350,
+          width: 1920,
+          height: 1080,
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -377,7 +377,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
-      {/* UI Components */}
+      {/* UI Components — p17: neon glow, radius, spacing, component examples */}
       <StoryBlock
         subtitle="Interface"
         title="The Components"
@@ -390,10 +390,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/brand-ui-interface.png",
+          src: "/images/portfolio/vertaaux/brand-ui-interface.svg",
           alt: "VertaaUX interface patterns — neon glow buttons, border radius system, spacing scale, score badge, metric card, and issue row components",
-          width: 2400,
-          height: 1350,
+          width: 1920,
+          height: 1080,
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -402,7 +402,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
-      {/* Do / Don't — Brand in Practice */}
+      {/* Do / Don't — p18: 12-panel brand practice grid */}
       <StoryBlock
         subtitle="Brand in Practice"
         title="Do and Don't"
@@ -416,10 +416,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/brand-do-dont.png",
+          src: "/images/portfolio/vertaaux/brand-do-dont.svg",
           alt: "VertaaUX brand do and don't grid — twelve examples across logo, color, type, tone, photography, and spacing",
-          width: 2400,
-          height: 1350,
+          width: 1920,
+          height: 1080,
         }}
         imageLayout="single"
         backgroundColor="transparent"
