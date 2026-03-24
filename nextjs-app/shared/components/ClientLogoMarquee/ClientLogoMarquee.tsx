@@ -176,7 +176,11 @@ function LogoLane({
     <div
       ref={laneRef}
       className={className}
-      style={{ opacity: ready ? 1 : 0, transition: "opacity 0.3s ease" }}
+      style={{
+        opacity: ready ? 1 : 0,
+        transition: "opacity 0.3s ease",
+        animationPlayState: ready ? "running" : "paused",
+      }}
     >
       {[0, 1].map((duplicateIndex) => (
         <div
