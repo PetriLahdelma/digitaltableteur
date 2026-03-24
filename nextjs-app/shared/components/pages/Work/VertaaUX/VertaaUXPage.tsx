@@ -272,48 +272,48 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
-      {/* Logo variations grid - custom layout for better presentation */}
+      {/* Logo variations grid — updated brand identity */}
       <div className={styles.logoGridSection}>
         <div className={styles.logoGrid}>
           <figure className={styles.logoCard}>
             <div className={styles.logoCardDark}>
               <img
-                src="/images/portfolio/vertaaux/gradient-logo@2x.png"
-                alt="VertaaUX gradient logo on dark background"
+                src="/images/portfolio/vertaaux/logo-mint-on-black.svg"
+                alt="VertaaUX mint teal logo on dark background"
                 className={styles.logoImage}
               />
             </div>
-            <figcaption className={styles.logoCaption}>Primary gradient logo</figcaption>
+            <figcaption className={styles.logoCaption}>Primary — dark background</figcaption>
           </figure>
           <figure className={styles.logoCard}>
             <div className={styles.logoCardLight}>
               <img
-                src="/images/portfolio/vertaaux/black-logo@2x.png"
-                alt="VertaaUX logo in black for light backgrounds"
+                src="/images/portfolio/vertaaux/logo-on-white.svg"
+                alt="VertaaUX logo on light background"
                 className={styles.logoImage}
               />
             </div>
-            <figcaption className={styles.logoCaption}>Black logo for light backgrounds</figcaption>
+            <figcaption className={styles.logoCaption}>Primary — light background</figcaption>
           </figure>
           <figure className={styles.logoCard}>
             <div className={styles.logoCardDark}>
               <img
-                src="/images/portfolio/vertaaux/white-logo@2x.png"
-                alt="VertaaUX logo in white for dark backgrounds"
+                src="/images/portfolio/vertaaux/logo-on-black.svg"
+                alt="VertaaUX mono logo on black"
                 className={styles.logoImage}
               />
             </div>
-            <figcaption className={styles.logoCaption}>White logo for dark backgrounds</figcaption>
+            <figcaption className={styles.logoCaption}>Mono — black</figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardGradient}>
+            <div className={styles.logoCardDark}>
               <img
-                src="/images/portfolio/vertaaux/round-logo-gradient@2x.png"
-                alt="VertaaUX round logo mark with gradient"
+                src="/images/portfolio/vertaaux/logo-new.svg"
+                alt="VertaaUX mark only — mint teal geometric V"
                 className={styles.logoImageRound}
               />
             </div>
-            <figcaption className={styles.logoCaption}>Circular mark for social & icons</figcaption>
+            <figcaption className={styles.logoCaption}>Mark only</figcaption>
           </figure>
         </div>
       </div>
