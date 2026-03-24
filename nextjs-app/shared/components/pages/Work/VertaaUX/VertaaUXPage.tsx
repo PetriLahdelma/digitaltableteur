@@ -31,10 +31,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description={project.description}
           image={{
-            src: "/images/portfolio/vertaaux/computer-mockup-on-colorful-background.jpeg",
-            alt: "VertaaUX product interface on colorful gradient background",
-            width: 6126,
-            height: 4595,
+            src: "/images/portfolio/vertaaux/screenshot-landing-page.webp",
+            alt: "VertaaUX landing page — UX and accessibility auditing platform",
+            width: 1920,
+            height: 1080,
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
@@ -208,11 +208,11 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             </Text>,
           ]}
           images={{
-            src: "/images/portfolio/vertaaux/computer-mockup-on-colorful-background.jpeg",
-            alt: "VertaaUX one-click UX audit interface showing usability score, clarity analysis, and AI assessment features",
-            width: 6126,
-            height: 4595,
-            caption: "The VertaaUX product delivers one-click UX audits with instant insights.",
+            src: "/images/portfolio/vertaaux/screenshot-audit-results.png",
+            alt: "VertaaUX audit results interface showing scores across usability, clarity, and accessibility dimensions",
+            width: 1920,
+            height: 1080,
+            caption: "Audit results with severity-weighted findings across seven dimensions.",
           }}
           imageLayout="single"
           backgroundColor="transparent"
@@ -336,11 +336,11 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/macbook-pro-gradient.jpeg",
-          alt: "VertaaUX product on colorful gradient background",
-          width: 738,
-          height: 506,
-          caption: "Product presentation mockup",
+          src: "/images/portfolio/vertaaux/screenshot-dashboard.webp",
+          alt: "VertaaUX dashboard showing audit history, scores, and team activity",
+          width: 1920,
+          height: 1080,
+          caption: "Dashboard — audit history, scores, and team collaboration.",
         }}
         imageLayout="single"
         backgroundColor="light"
