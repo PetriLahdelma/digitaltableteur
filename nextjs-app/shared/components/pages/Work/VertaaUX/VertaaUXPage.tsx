@@ -326,7 +326,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         </div>
       </div>
 
-      {/* Color System — p9: expanded palette cards + score states + light theme */}
+      {/* Color — extracted palette elements */}
       <StoryBlock
         subtitle="Color"
         title="The Palette"
@@ -334,15 +334,15 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="S">
             Dark-biased surfaces with neon teal (#00FFCC) as a signal color — used
             sparingly for CTAs, scores, and key data. Never decorative. Semantic
-            score states map to Excellent (green), Good (blue), Fair (amber), and
-            Poor (red) with WCAG AA contrast on all surfaces.
+            score states map to Excellent, Good, Fair, and Poor with WCAG AA
+            contrast on all surfaces.
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/brand-color-expanded.svg",
-          alt: "VertaaUX color system — dark theme primary palette with neon teal accent, score state colors, and light theme reversed",
-          width: 1920,
-          height: 1080,
+          src: "/images/portfolio/vertaaux/brand/color-dark-palette.png",
+          alt: "VertaaUX dark theme palette — Neon Teal #00FFCC, Near Black #0D0D0D, Card Surface #141414, Near White #F2F2F2",
+          width: 960,
+          height: 240,
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -351,7 +351,27 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
-      {/* Typography — p11: expanded specimens + type scale + pairing rule */}
+      {/* Score states + light theme palette */}
+      <div className={styles.brandImageGrid}>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/color-score-states.png"
+            alt="Semantic score state colors — Excellent (green), Good (blue), Fair (amber), Poor (red)"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Score state colors</figcaption>
+        </figure>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/color-light-palette.png"
+            alt="Light theme palette — Warm White #F7F5F0, Warm Ink #1A1A1A, Muted Teal #00CCAA"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Light theme reversed</figcaption>
+        </figure>
+      </div>
+
+      {/* Typography — extracted elements */}
       <StoryBlock
         subtitle="Typography"
         title="The Type System"
@@ -360,15 +380,14 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             Geist Sans for everything human. Geist Mono for everything data.
             The font pairing has clear semantic roles — Sans for prose, headings,
             and UI labels; Mono for scores, selectors, code references, and
-            technical metadata. Headlines use tight negative tracking. Body copy
-            at 1.6 line-height for readability.
+            technical metadata.
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/brand-typography-expanded.svg",
-          alt: "VertaaUX type system — Geist Sans display and body specimens, Geist Mono data samples, type scale from 56px hero to 12px caption",
-          width: 1920,
-          height: 1080,
+          src: "/images/portfolio/vertaaux/brand/type-pairing-rule.png",
+          alt: "VertaaUX type pairing rule — Geist Sans for everything human, Geist Mono for everything data",
+          width: 1280,
+          height: 96,
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -377,7 +396,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
-      {/* UI Components — p17: neon glow, radius, spacing, component examples */}
+      {/* UI Components — extracted individual elements */}
       <StoryBlock
         subtitle="Interface"
         title="The Components"
@@ -385,24 +404,44 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="S">
             Neon glow as a signature effect on primary CTAs — used sparingly,
             max one per screen. Score badges, metric cards, and issue rows follow
-            a consistent 8px card radius, 4px input radius system. Base spacing
-            unit of 4px scales through 8, 16, 24, 32, 48, 64.
+            a consistent 8px card radius, 4px input radius system.
           </Text>,
         ]}
-        images={{
-          src: "/images/portfolio/vertaaux/brand-ui-interface.svg",
-          alt: "VertaaUX interface patterns — neon glow buttons, border radius system, spacing scale, score badge, metric card, and issue row components",
-          width: 1920,
-          height: 1080,
-        }}
-        imageLayout="single"
+        imageLayout="none"
         backgroundColor="transparent"
         maxWidth="lg"
         spacing="comfortable"
         className={styles.storySection}
       />
 
-      {/* Do / Don't — p18: 12-panel brand practice grid */}
+      <div className={styles.brandImageGrid}>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/ui-score-badge.png"
+            alt="Score badge component — circular ring with score number and label"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Score badge</figcaption>
+        </figure>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/ui-metric-card.png"
+            alt="Metric card component — large number with label and delta indicator"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Metric card</figcaption>
+        </figure>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/ui-issue-row.png"
+            alt="Issue row component — severity bar, title, WCAG reference, and priority badge"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Issue row</figcaption>
+        </figure>
+      </div>
+
+      {/* Do / Don't — full extracted page */}
       <StoryBlock
         subtitle="Brand in Practice"
         title="Do and Don't"
@@ -410,16 +449,15 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           <Text key="p1" size="S">
             The brand works when every element is used with intention. Logo on
             dark backgrounds only at full-color teal. Neon teal as a signal
-            color on near-black, not as background fill. Geist Sans for display,
-            Geist Mono for data. Calm, precise tone — no hype, no exclamation marks.
-            Dark-biased photography with no faces.
+            color, not decorative. Geist Sans for display, Geist Mono for data.
+            Calm, precise tone. Dark-biased photography with no faces.
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/brand-do-dont.svg",
-          alt: "VertaaUX brand do and don't grid — twelve examples across logo, color, type, tone, photography, and spacing",
-          width: 1920,
-          height: 1080,
+          src: "/images/portfolio/vertaaux/brand/do-dont-full.png",
+          alt: "VertaaUX do and don't rules — logo, color, typography, tone of voice, border radius, and photography guidelines",
+          width: 1440,
+          height: 1305,
         }}
         imageLayout="single"
         backgroundColor="transparent"
