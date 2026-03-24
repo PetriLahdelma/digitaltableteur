@@ -77,21 +77,21 @@ a:focus-visible {
 
 @keyframes client-logo-marquee-forward {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(calc(-1 * var(--marquee-width, 50%)), 0, 0);
   }
 }
 
 @keyframes client-logo-marquee-reverse {
   0% {
-    transform: translateX(-50%);
+    transform: translate3d(calc(-1 * var(--marquee-width, 50%)), 0, 0);
   }
 
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -180,17 +180,17 @@ code {
 
   .client-logo-marquee-desktop {
     animation: client-logo-marquee-forward 34s linear infinite;
-    will-change: transform;
+    backface-visibility: hidden;
   }
 
   .client-logo-marquee-mobile {
     animation: client-logo-marquee-forward 24s linear infinite;
-    will-change: transform;
+    backface-visibility: hidden;
   }
 
   .client-logo-marquee-mobile-reverse {
-    animation: client-logo-marquee-reverse 28s linear infinite;
-    will-change: transform;
+    animation: client-logo-marquee-reverse 24s linear infinite;
+    backface-visibility: hidden;
   }
 
   .client-logo-marquee-container:hover .client-logo-marquee-desktop {
@@ -215,6 +215,5 @@ code {
   .client-logo-marquee-mobile-reverse {
     animation: none !important;
     transform: none !important;
-    will-change: auto !important;
   }
 }
