@@ -148,7 +148,7 @@
     "path-to-regexp": "^8.2.0",
     "glob": "^10.5.0",
     "lodash": "^4.17.23",
-    "serialize-javascript": "^7.0.4",
+    "serialize-javascript": "^7.0.5",
     "fast-xml-parser": "^5.4.2",
     "dompurify": "^3.3.2",
     "@mapbox/node-pre-gyp": {
