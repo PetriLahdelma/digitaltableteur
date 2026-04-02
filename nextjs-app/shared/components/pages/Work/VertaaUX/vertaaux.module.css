@@ -4,6 +4,11 @@
   background-color: var(--main-body-background-color);
 }
 
+/* Rounded image corners for specific sections */
+.roundedImage img {
+  border-radius: 1rem;
+}
+
 /* Custom Meta Section - 2 column layout */
 .metaSection {
   padding-block: var(--space-layout-48);
@@ -72,9 +77,9 @@
   color: var(--color-text);
 }
 
-/* Hero accent for brand gradient (used sparingly) */
+/* Hero accent — VertaaUX brand: dark base + neon teal */
 .heroAccent {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: #0D0D0D;
 }
 
 /* Process section with enhanced spacing for AI methodology */
@@ -148,7 +153,11 @@
 .logoGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-layout-24);
+  gap: var(--space-layout-32) var(--space-layout-24);
+}
+
+.logoGrid + .logoGrid {
+  margin-block-start: var(--space-layout-32);
 }
 
 @media (width < 640px) {
@@ -165,9 +174,9 @@
 }
 
 .logoCardDark {
-  background-color: #111;
-  border-radius: var(--radius-m);
-  padding: var(--space-layout-32);
+  background-color: #0D0D0D;
+  border-radius: 0.75rem;
+  padding: var(--space-layout-48);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,8 +186,8 @@
 .logoCardLight {
   background-color: #fff;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-m);
-  padding: var(--space-layout-32);
+  border-radius: 0.75rem;
+  padding: var(--space-layout-48);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,9 +195,9 @@
 }
 
 .logoCardGradient {
-  background: #000;
-  border-radius: var(--radius-m);
-  padding: var(--space-layout-32);
+  background-color: #141414;
+  border-radius: 0.75rem;
+  padding: var(--space-layout-48);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,6 +231,301 @@
   margin-block: var(--space-layout-64);
 }
 
+/* Color palette grid */
+.paletteGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-layout-24);
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  padding-inline: var(--page-margin-mobile);
+  margin-block-end: var(--space-layout-48);
+}
+
+@media (width >= 768px) {
+  .paletteGrid {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .paletteGrid {
+    padding-inline: var(--page-margin-desktop);
+  }
+}
+
+@media (width < 640px) {
+  .paletteGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.paletteCard {
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 4 / 3;
+  min-block-size: 140px;
+}
+
+.paletteCardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.paletteCardFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.paletteName {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.paletteRole {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.paletteUsage {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.paletteHex {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+/* Palette card variants */
+.paletteCardTeal {
+  background-color: #00FFCC;
+  color: #0D0D0D;
+}
+
+.paletteCardNearBlack {
+  background-color: #0D0D0D;
+  color: #F2F2F2;
+}
+
+.paletteCardSurface {
+  background-color: #141414;
+  color: #F2F2F2;
+}
+
+.paletteCardWhite {
+  background-color: #F2F2F2;
+  color: #0D0D0D;
+}
+
+/* Score state variants */
+.paletteCardExcellent {
+  background-color: #10B981;
+  color: #0D0D0D;
+}
+
+.paletteCardGood {
+  background-color: #3B82F6;
+  color: #fff;
+}
+
+.paletteCardFair {
+  background-color: #F59E0B;
+  color: #0D0D0D;
+}
+
+.paletteCardPoor {
+  background-color: #EF4444;
+  color: #fff;
+}
+
+/* Light theme variants */
+.paletteCardPureWhite {
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+  border: 1px solid var(--color-border);
+}
+
+.paletteCardWarmWhite {
+  background-color: #F7F5F0;
+  color: #1A1A1A;
+}
+
+.paletteCardWarmInk {
+  background-color: #1A1A1A;
+  color: #F2F2F2;
+}
+
+.paletteCardMutedTeal {
+  background-color: #00CCAA;
+  color: #0D0D0D;
+}
+
+/* Palette section with title */
+.paletteSection {
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  padding-inline: var(--page-margin-mobile);
+  margin-block-end: var(--space-layout-48);
+}
+
+@media (width >= 768px) {
+  .paletteSection {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .paletteSection {
+    padding-inline: var(--page-margin-desktop);
+  }
+}
+
+.paletteSectionTitle {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-text-s);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-block-end: var(--space-layout-16);
+}
+
+/* 3-column variant for light theme */
+.paletteGridThree {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (width < 640px) {
+  .paletteGridThree {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Remove container padding from paletteGrid inside paletteSection */
+.paletteSection .paletteGrid {
+  padding-inline: 0;
+  margin-block-end: 0;
+}
+
+/* Font waterfall — descending size showcase */
+.fontWaterfall {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-layout-48);
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  padding-inline: var(--page-margin-mobile);
+  margin-block-end: var(--space-layout-64);
+}
+
+@media (width >= 768px) {
+  .fontWaterfall {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .fontWaterfall {
+    padding-inline: var(--page-margin-desktop);
+  }
+}
+
+@media (width < 640px) {
+  .fontWaterfall {
+    grid-template-columns: 1fr;
+    gap: var(--space-layout-32);
+  }
+}
+
+.waterfallColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+
+.waterfallLabel {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-text-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-tertiary);
+  margin-block-end: var(--space-layout-16);
+}
+
+.waterfallSansLine,
+.waterfallMonoLine {
+  margin: 0;
+  line-height: 1.35;
+  padding-block: 0.15em;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.waterfallSansLine {
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+.waterfallMonoLine {
+  font-family: var(--font-mono, monospace);
+  font-weight: 400;
+}
+
+/* Brand asset grid — for presenting extracted design elements */
+.brandImageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-layout-24);
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  padding-inline: var(--page-margin-mobile);
+  margin-block-end: var(--space-layout-48);
+}
+
+@media (width >= 768px) {
+  .brandImageGrid {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .brandImageGrid {
+    padding-inline: var(--page-margin-desktop);
+  }
+}
+
+.brandFigure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-8);
+}
+
+.brandImage {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+}
+
+.brandCaption {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-text-s);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
 /* Outcomes section */
 .outcomesSection {
   margin-block: var(--space-layout-80);
@@ -229,14 +533,14 @@
   padding-block-start: var(--space-layout-48);
 }
 
-/* Key metrics section with gradient */
+/* Key metrics section — VertaaUX dark brand with teal accent */
 .metricsSection {
   margin-block: var(--space-layout-80);
   margin-inline: calc(-1 * var(--space-layout-24));
   padding-inline: var(--space-layout-24);
   padding-block: var(--space-layout-64);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background-color: #0D0D0D;
+  color: #F2F2F2;
 }
 
 .metricsContent {
@@ -266,6 +570,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.1;
+  color: #00FFCC;
 }
 
 .metricLabel {

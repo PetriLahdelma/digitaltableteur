@@ -8,6 +8,10 @@
 }
 
 .diagram {
+  --mermaid-color: #ed4b9b;
+  --mermaid-node-bg: transparent;
+  --mermaid-line-color: #ed4b9b;
+
   display: flex;
   justify-content: center;
   width: 100%;
@@ -15,30 +19,25 @@
 }
 
 .diagram svg {
-  max-width: 100%;
   height: auto;
-}
-
-/* Force all colors to pink */
-.diagram :global(*) {
-  --mermaid-pink: #ed4b9b;
+  min-width: min-content;
 }
 
 /* All paths and lines */
 .diagram :global(path),
 .diagram :global(line),
 .diagram :global(polyline) {
-  stroke: #ed4b9b !important;
+  stroke: var(--mermaid-line-color) !important;
   stroke-width: 1.5px !important;
 }
 
-/* All shapes - white fill to cover lines beneath */
+/* All shapes */
 .diagram :global(rect),
 .diagram :global(circle),
 .diagram :global(ellipse),
 .diagram :global(polygon) {
-  fill: white !important;
-  stroke: #ed4b9b !important;
+  fill: var(--mermaid-node-bg) !important;
+  stroke: var(--mermaid-line-color) !important;
   stroke-width: 1.5px !important;
 }
 
@@ -47,37 +46,44 @@
 .diagram :global(tspan),
 .diagram :global(foreignObject),
 .diagram :global(foreignObject *) {
-  fill: #ed4b9b !important;
-  color: #ed4b9b !important;
-  font-family: "JetBrains Mono", "Geist Mono", monospace !important;
-  font-size: 0.875rem !important;
+  fill: var(--mermaid-color) !important;
+  color: var(--mermaid-color) !important;
   font-weight: 500 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
 }
 
-/* Mindmap nodes - white background to cover lines */
+.diagram :global(foreignObject) {
+  overflow: visible !important;
+}
+
+/* Mindmap nodes */
 .diagram :global(.mindmap-node) path,
 .diagram :global(.mindmap-node) rect,
 .diagram :global(.mindmap-node) circle,
 .diagram :global(.section-root) path,
 .diagram :global(.section-root) rect {
-  fill: white !important;
-  stroke: #ed4b9b !important;
+  fill: var(--mermaid-node-bg) !important;
+  stroke: var(--mermaid-line-color) !important;
   stroke-width: 1.5px !important;
 }
 
 /* Edge markers and arrows */
 .diagram :global(marker) path,
 .diagram :global(marker) polygon {
-  fill: #ed4b9b !important;
-  stroke: #ed4b9b !important;
+  fill: var(--mermaid-line-color) !important;
+  stroke: var(--mermaid-line-color) !important;
 }
 
 /* Labels */
 .diagram :global(.nodeLabel),
 .diagram :global(.label),
 .diagram :global(.edgeLabel) {
-  color: #ed4b9b !important;
+  color: var(--mermaid-color) !important;
   background: transparent !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
 }
 
 /* Remove any background colors */

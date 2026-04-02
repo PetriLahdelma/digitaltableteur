@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
+import { gsap } from "@/nextjs-app/shared/lib/gsap";
+import { useAnimationContext } from "@/providers/AnimationProvider";
 import Icon from "../Icon";
 import Label from "../Label";
 import Title from "../Title";
@@ -75,7 +77,115 @@ export function NextMobileMenu({
     "en"
   ).split("-")[0];
 
-  React.useEffect(() => {
+  const { motionPreference } = useAnimationContext();
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLUListElement>(null);
+  const controlsRef = useRef<HTMLDivElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const isFirstRender = useRef(true);
+
+  // Build GSAP timeline (once, paused)
+  useEffect(() => {
+    if (motionPreference === "reduced") {
+      tlRef.current = null;
+      return;
+    }
+
+    if (
+      !backdropRef.current ||
+      !panelRef.current ||
+      !navRef.current ||
+      !controlsRef.current
+    )
+      return;
+
+    const tl = gsap.timeline({ paused: true });
+
+    tl.fromTo(
+      backdropRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.2, ease: "power2.out" }
+    )
+      .fromTo(
+        panelRef.current,
+        { x: "100%" },
+        { x: "0%", duration: 0.35, ease: "power3.out" },
+        0.05
+      )
+      .fromTo(
+        navRef.current.children,
+        { opacity: 0, x: 20 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          stagger: 0.06,
+          ease: "power2.out",
+        },
+        0.2
+      )
+      .fromTo(
+        controlsRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.2 },
+        "-=0.1"
+      );
+
+    tlRef.current = tl;
+
+    return () => {
+      tl.kill();
+      tlRef.current = null;
+    };
+    // Re-build timeline if navItems length changes (different stagger targets)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [motionPreference, navItems.length]);
+
+  // Play / reverse based on isOpen
+  useEffect(() => {
+    const backdrop = backdropRef.current;
+    if (!backdrop) return;
+
+    // On first render, just set initial hidden state — don't animate
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      backdrop.style.visibility = "hidden";
+      backdrop.style.pointerEvents = "none";
+      return;
+    }
+
+    // Reduced motion — instant toggle
+    if (!tlRef.current) {
+      backdrop.style.visibility = isOpen ? "visible" : "hidden";
+      backdrop.style.pointerEvents = isOpen ? "auto" : "none";
+      // Reset transforms for reduced motion so content is visible when open
+      if (panelRef.current) {
+        panelRef.current.style.transform = "none";
+        panelRef.current.style.opacity = "1";
+      }
+      return;
+    }
+
+    if (isOpen) {
+      backdrop.style.visibility = "visible";
+      backdrop.style.pointerEvents = "auto";
+      tlRef.current.timeScale(1).play(0);
+    } else {
+      // Reverse at slightly faster speed
+      tlRef.current.timeScale(1.4).reverse();
+      const reverseDuration = tlRef.current.duration() / 1.4;
+      gsap.delayedCall(reverseDuration, () => {
+        if (!isOpen && backdropRef.current) {
+          backdropRef.current.style.visibility = "hidden";
+          backdropRef.current.style.pointerEvents = "none";
+        }
+      });
+    }
+  }, [isOpen]);
+
+  // Escape key and focus management (only when open)
+  useEffect(() => {
     if (!isOpen) return;
     const previous = document.activeElement as HTMLElement | null;
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -88,17 +198,22 @@ export function NextMobileMenu({
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   return (
     <div
+      ref={backdropRef}
       className={styles.backdrop}
-      role="dialog"
-      aria-modal="true"
+      role={isOpen ? "dialog" : undefined}
+      aria-modal={isOpen ? "true" : undefined}
+      aria-hidden={!isOpen}
+      inert={!isOpen ? true : undefined}
       id={id}
       onClick={() => onClose?.()}
     >
-      <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
+      <div
+        ref={panelRef}
+        className={styles.panel}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.panelContent} tabIndex={-1}>
           <div className={styles.header} suppressHydrationWarning>
             <Title size="S" level={2} className={styles.title}>
@@ -118,7 +233,7 @@ export function NextMobileMenu({
           </div>
 
           <nav aria-label="Mobile navigation" suppressHydrationWarning>
-            <ul className={styles.nav}>
+            <ul ref={navRef} className={styles.nav}>
               {navItems.map((item) => {
                 const active = item.exact
                   ? pathname === item.href
@@ -143,7 +258,11 @@ export function NextMobileMenu({
             </ul>
           </nav>
 
-          <div className={styles.languageSticky} suppressHydrationWarning>
+          <div
+            ref={controlsRef}
+            className={styles.languageSticky}
+            suppressHydrationWarning
+          >
             <div className={styles.bottomControlsRow}>
               <div className={styles.bottomLeftGroup}>
                 <Label

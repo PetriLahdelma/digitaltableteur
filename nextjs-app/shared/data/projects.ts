@@ -136,8 +136,8 @@ export const projects: Project[] = [
     slug: "vertaaux",
     title: "VertaaUX",
     description:
-      "Building a real-time, predictive UX intelligence engine delivering one-click audits for usability, accessibility, and conversion.",
-    thumbnail: "/images/portfolio/vertaaux/thumbnail@2x 2.png",
+      "UX and accessibility auditing platform for dev teams who treat accessibility as craft, not compliance.",
+    thumbnail: "/images/portfolio/vertaaux/logo-on-white.svg",
     category: "ux-design",
     tags: ["AI Product", "UX Intelligence", "Accessibility", "Startup"],
     featured: false,
