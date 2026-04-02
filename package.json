@@ -175,7 +175,7 @@
     "@lhci/cli": "^0.15.1",
     "@next/bundle-analyzer": "^16.1.1",
     "@playwright/test": "^1.58.0",
-    "@storybook/addon-a11y": "^10.2.3",
+    "@storybook/addon-a11y": "^10.2.13",
     "@storybook/addon-docs": "^10.1.10",
     "@storybook/addon-mcp": "^0.1.6",
     "@storybook/icons": "^2.0.1",
