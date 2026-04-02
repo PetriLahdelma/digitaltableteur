@@ -31,10 +31,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description={project.description}
           image={{
-            src: "/images/portfolio/vertaaux/screenshot-landing-page.webp",
-            alt: "VertaaUX landing page — UX and accessibility auditing platform",
-            width: 1920,
-            height: 1080,
+            src: "/images/portfolio/vertaaux/hero-checkmark.webp",
+            alt: "VertaaUX — glass checkmark icon with ethereal green smoke on dark background",
+            width: 2752,
+            height: 1536,
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
@@ -177,6 +177,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
       Unclear ROI
       Implementation friction`}
             className={styles.problemMindmap}
+            themeColors={{ color: "#00FFCC", nodeBg: "#111111", lineColor: "#111111" }}
           />,
         ]}
         imageLayout="none"
@@ -195,7 +196,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             <Text key="p1" size="S">
               <span style={{ fontWeight: 600 }}>
                 The technical foundation combines predictive modeling with
-                real-time analysis, running 90+ automated checks in under 60 seconds.
+                real-time analysis, running 90+ automated checks in under 30 seconds.
               </span>{" "}
               This is 25x faster than initial performance targets, with simple
               sites completing in just seconds.
@@ -296,8 +297,8 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           <figure className={styles.logoCard}>
             <div className={styles.logoCardLight}>
               <img
-                src="/images/portfolio/vertaaux/logo-on-white.svg"
-                alt="VertaaUX logo on light background"
+                src="/images/portfolio/vertaaux/logo-mint-on-white.svg"
+                alt="VertaaUX mint teal logo on light background"
                 className={styles.logoImage}
               />
             </div>
@@ -311,17 +312,60 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
                 className={styles.logoImage}
               />
             </div>
-            <figcaption className={styles.logoCaption}>Mono — black</figcaption>
+            <figcaption className={styles.logoCaption}>Mono — On black</figcaption>
+          </figure>
+          <figure className={styles.logoCard}>
+            <div className={styles.logoCardLight}>
+              <img
+                src="/images/portfolio/vertaaux/logo-on-white.svg"
+                alt="VertaaUX logo on light background"
+                className={styles.logoImage}
+              />
+            </div>
+            <figcaption className={styles.logoCaption}>Mono — On white</figcaption>
+          </figure>
+
+        </div>
+        <div className={styles.logoGrid}>
+          <figure className={styles.logoCard}>
+            <div className={styles.logoCardDark}>
+              <img
+                src="/images/portfolio/vertaaux/wordmark-on-black.svg"
+                alt="VertaaUX wordmark with mint logo on black"
+                className={styles.logoImage}
+              />
+            </div>
+            <figcaption className={styles.logoCaption}>Wordmark — On black</figcaption>
+          </figure>
+          <figure className={styles.logoCard}>
+            <div className={styles.logoCardLight}>
+              <img
+                src="/images/portfolio/vertaaux/wordmark-on-white.svg"
+                alt="VertaaUX wordmark with mint logo on white"
+                className={styles.logoImage}
+              />
+            </div>
+            <figcaption className={styles.logoCaption}>Wordmark — On white</figcaption>
           </figure>
           <figure className={styles.logoCard}>
             <div className={styles.logoCardDark}>
               <img
-                src="/images/portfolio/vertaaux/logo-new.svg"
-                alt="VertaaUX mark only — mint teal geometric V"
-                className={styles.logoImageRound}
+                src="/images/portfolio/vertaaux/wordmark-white-on-black.svg"
+                alt="VertaaUX wordmark white on black"
+                className={styles.logoImage}
               />
             </div>
-            <figcaption className={styles.logoCaption}>Mark only</figcaption>
+            <figcaption className={styles.logoCaption}>Wordmark mono — On black</figcaption>
+          </figure>
+          <figure className={styles.logoCard}>
+            <div className={styles.logoCardLight}>
+              <img
+                src="/images/portfolio/vertaaux/wordmark-black-on-white.svg"
+                alt="VertaaUX wordmark black on white"
+                className={styles.logoImage}
+              />
+            </div>
+            <figcaption className={styles.logoCaption}>Wordmark mono — On white</figcaption>
           </figure>
         </div>
       </div>
@@ -338,37 +382,43 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             contrast on all surfaces.
           </Text>,
         ]}
-        images={{
-          src: "/images/portfolio/vertaaux/brand/color-dark-palette.png",
-          alt: "VertaaUX dark theme palette — Neon Teal #00FFCC, Near Black #0D0D0D, Card Surface #141414, Near White #F2F2F2",
-          width: 960,
-          height: 240,
-        }}
-        imageLayout="single"
+        imageLayout="none"
         backgroundColor="transparent"
         maxWidth="lg"
         spacing="comfortable"
         className={styles.storySection}
       />
+      <div className={styles.paletteSection}>
+        <p className={styles.paletteSectionTitle}>Dark theme (Default)</p>
+        <img
+          src="/images/portfolio/vertaaux/brand/palette-dark-theme.png"
+          alt="VertaaUX dark theme palette — Neon Teal #00FFCC, Near Black #0D0D0D, Card Surface #141414, Near White #F2F2F2"
+          width={956}
+          height={181}
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
 
-      {/* Score states + light theme palette */}
-      <div className={styles.brandImageGrid}>
-        <figure className={styles.brandFigure}>
-          <img
-            src="/images/portfolio/vertaaux/brand/color-score-states.png"
-            alt="Semantic score state colors — Excellent (green), Good (blue), Fair (amber), Poor (red)"
-            className={styles.brandImage}
-          />
-          <figcaption className={styles.brandCaption}>Score state colors</figcaption>
-        </figure>
-        <figure className={styles.brandFigure}>
-          <img
-            src="/images/portfolio/vertaaux/brand/color-light-palette.png"
-            alt="Light theme palette — Warm White #F7F5F0, Warm Ink #1A1A1A, Muted Teal #00CCAA"
-            className={styles.brandImage}
-          />
-          <figcaption className={styles.brandCaption}>Light theme reversed</figcaption>
-        </figure>
+      <div className={styles.paletteSection}>
+        <p className={styles.paletteSectionTitle}>Light theme</p>
+        <img
+          src="/images/portfolio/vertaaux/brand/palette-light-theme.png"
+          alt="VertaaUX light theme palette — Muted Teal #00CCAA, Warm Ink #1A1A1A, White #FFFFFF, Warm White #F7F5F0"
+          width={956}
+          height={181}
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
+
+      <div className={styles.paletteSection}>
+        <p className={styles.paletteSectionTitle}>Score state colors</p>
+        <img
+          src="/images/portfolio/vertaaux/brand/palette-score-states.png"
+          alt="VertaaUX score state colors — Excellent #10B981, Good #3B82F6, Fair #F59E0B, Poor #EF4444"
+          width={956}
+          height={181}
+          style={{ width: "100%", height: "auto" }}
+        />
       </div>
 
       {/* Typography — extracted elements */}
@@ -396,6 +446,40 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
+      {/* Font waterfall — Geist Sans & Mono at descending sizes */}
+      <div className={styles.fontWaterfall}>
+        <div className={styles.waterfallColumn}>
+          <span className={styles.waterfallLabel}>Geist Sans</span>
+          {[
+            { size: "4rem", text: "Aa" },
+            { size: "2.5rem", text: "The quick brown fox" },
+            { size: "1.75rem", text: "Jumps over the lazy dog" },
+            { size: "1.25rem", text: "Score 76 / 100 — Solid foundation" },
+            { size: "1rem", text: "Audit completed in 2.7 s · 91 checks passed · 4 dimensions analyzed" },
+            { size: "1.625rem", text: "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789", wrap: true },
+          ].map(({ size, text, wrap }) => (
+            <p key={size} className={styles.waterfallSansLine} style={{ fontSize: size, whiteSpace: wrap ? "normal" : undefined }}>
+              {text}
+            </p>
+          ))}
+        </div>
+        <div className={styles.waterfallColumn}>
+          <span className={styles.waterfallLabel}>Geist Mono</span>
+          {[
+            { size: "4rem", text: "Aa" },
+            { size: "2.5rem", text: "76 / 100" },
+            { size: "1.75rem", text: "wcag-2.2-aa" },
+            { size: "1.25rem", text: 'aria-label="navigation"' },
+            { size: "1rem", text: "div.hero > section.cta > button.primary { color: #00E5A0 }" },
+            { size: "1.625rem", text: "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789", wrap: true },
+          ].map(({ size, text, wrap }) => (
+            <p key={size} className={styles.waterfallMonoLine} style={{ fontSize: size, whiteSpace: wrap ? "normal" : undefined }}>
+              {text}
+            </p>
+          ))}
+        </div>
+      </div>
+
       {/* UI Components — extracted individual elements */}
       <StoryBlock
         subtitle="Interface"
@@ -418,7 +502,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         <figure className={styles.brandFigure}>
           <img
             src="/images/portfolio/vertaaux/brand/ui-score-badge.png"
-            alt="Score badge component — circular ring with score number and label"
+            alt="VertaaUX circular score badge showing 66/100 overall score with yellow progress arc"
             className={styles.brandImage}
           />
           <figcaption className={styles.brandCaption}>Score badge</figcaption>
@@ -426,7 +510,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         <figure className={styles.brandFigure}>
           <img
             src="/images/portfolio/vertaaux/brand/ui-metric-card.png"
-            alt="Metric card component — large number with label and delta indicator"
+            alt="VertaaUX score card showing Usability Score 76/100 with confidence badge, progress bar, and Solid foundation rating"
             className={styles.brandImage}
           />
           <figcaption className={styles.brandCaption}>Metric card</figcaption>
@@ -434,37 +518,12 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         <figure className={styles.brandFigure}>
           <img
             src="/images/portfolio/vertaaux/brand/ui-issue-row.png"
-            alt="Issue row component — severity bar, title, WCAG reference, and priority badge"
+            alt="VertaaUX issue detail card showing missing alt text error with severity badges, business impact grid, and fix priority"
             className={styles.brandImage}
           />
           <figcaption className={styles.brandCaption}>Issue row</figcaption>
         </figure>
       </div>
-
-      {/* Do / Don't — full extracted page */}
-      <StoryBlock
-        subtitle="Brand in Practice"
-        title="Do and Don't"
-        content={[
-          <Text key="p1" size="S">
-            The brand works when every element is used with intention. Logo on
-            dark backgrounds only at full-color teal. Neon teal as a signal
-            color, not decorative. Geist Sans for display, Geist Mono for data.
-            Calm, precise tone. Dark-biased photography with no faces.
-          </Text>,
-        ]}
-        images={{
-          src: "/images/portfolio/vertaaux/brand/do-dont-full.png",
-          alt: "VertaaUX do and don't rules — logo, color, typography, tone of voice, border radius, and photography guidelines",
-          width: 1440,
-          height: 1305,
-        }}
-        imageLayout="single"
-        backgroundColor="transparent"
-        maxWidth="lg"
-        spacing="comfortable"
-        className={styles.storySection}
-      />
 
       {/* Product — Dashboard */}
       <StoryBlock
@@ -484,17 +543,17 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/screenshot-dashboard.webp",
-          alt: "VertaaUX dashboard showing audit history, scores, and team activity",
-          width: 1920,
-          height: 1080,
+          src: "/images/portfolio/vertaaux/screenshot-dashboard.png",
+          alt: "Person using VertaaUX dashboard on a laptop, showing score trends, audit history, and team activity",
+          width: 2000,
+          height: 1333,
           caption: "Dashboard — audit history, scores, and team collaboration.",
         }}
         imageLayout="single"
         backgroundColor="light"
         maxWidth="lg"
         spacing="comfortable"
-        className={styles.storySection}
+        className={`${styles.storySection} ${styles.roundedImage}`}
       />
 
       {/* Key Metrics */}
@@ -524,7 +583,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               </span>
             </div>
             <div className={styles.metricItem}>
-              <span className={styles.metricValue}>&lt;60s</span>
+              <span className={styles.metricValue}>&lt;30s</span>
               <span className={styles.metricLabel}>Audit Speed</span>
               <span className={styles.metricDetail}>
                 Full audit in under a minute, simple sites in seconds
