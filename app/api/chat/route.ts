@@ -132,7 +132,7 @@ export async function POST(request: NextRequest) {
       model,
       system,
       tools,
-      messages: convertToModelMessages(messages),
+      messages: await convertToModelMessages(messages),
       temperature: 0.2,
       maxRetries: 2,
       maxOutputTokens: MAX_OUTPUT_TOKENS,
