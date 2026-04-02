@@ -54,7 +54,7 @@ export function ArticleLayout({
       {nav && (
         <div
           className="sticky top-20 z-30 border-b border-border flex items-center"
-          style={{ backgroundColor: "#DFFF00" }}
+          style={{ backgroundColor: "var(--logo-background, #DFFF00)" }}
         >
           {nav}
         </div>
