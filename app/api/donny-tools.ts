@@ -8,6 +8,7 @@ import {
   isOpenAt,
   type DayHours,
 } from "@/nextjs-app/shared/data/openHours";
+import { sortedProjects } from "@/nextjs-app/shared/data/projects";
 
 // ToolSet type matches ai package's expected tool shape
 type ToolMap = Record<string, Tool<any, any>>;
@@ -241,6 +242,173 @@ const staticTools: ToolMap = {
       };
     },
   }),
+  "studio.projectShowcase": tool({
+    description:
+      "Browse and display portfolio projects. Can filter by category, search by keyword, or fetch a specific project by slug. Returns rich project data for inline display.",
+    inputSchema: jsonSchema<{
+      query?: string;
+      category?: string;
+      slug?: string;
+      limit?: number;
+    }>({
+      type: "object",
+      properties: {
+        query: {
+          type: "string",
+          description:
+            "Free-text search across titles, descriptions, and tags.",
+        },
+        category: {
+          type: "string",
+          enum: ["design-systems", "ux-design", "branding", "illustration"],
+          description: "Filter by project category.",
+        },
+        slug: {
+          type: "string",
+          description:
+            "Fetch a specific project by its URL slug (e.g. 'vertaaux', 'helsinki-design-system').",
+        },
+        limit: {
+          type: "number",
+          description: "Max results to return (default 3).",
+        },
+      },
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema<{
+      projects: {
+        title: string;
+        slug: string;
+        description: string;
+        thumbnail: string;
+        category: string;
+        tags: string[];
+        client?: string;
+        duration?: string;
+        liveUrl?: string;
+        url: string;
+      }[];
+      totalMatches: number;
+    }>({
+      type: "object",
+      required: ["projects", "totalMatches"],
+      properties: {
+        projects: {
+          type: "array",
+          items: {
+            type: "object",
+            required: ["title", "slug", "description", "thumbnail", "category", "tags", "url"],
+            properties: {
+              title: { type: "string" },
+              slug: { type: "string" },
+              description: { type: "string" },
+              thumbnail: { type: "string" },
+              category: { type: "string" },
+              tags: { type: "array", items: { type: "string" } },
+              client: { type: "string" },
+              duration: { type: "string" },
+              liveUrl: { type: "string" },
+              url: { type: "string" },
+            },
+            additionalProperties: false,
+          },
+        },
+        totalMatches: { type: "number" },
+      },
+      additionalProperties: false,
+    }),
+    async execute(input) {
+      let filtered = [...sortedProjects]; // Already sorted by order
+
+      // Filter by slug (exact match)
+      if (input?.slug) {
+        filtered = filtered.filter((p) => p.slug === input.slug);
+      }
+      // Filter by category
+      if (input?.category) {
+        filtered = filtered.filter((p) => p.category === input.category);
+      }
+      // Free-text search
+      if (input?.query) {
+        const q = input.query.toLowerCase();
+        filtered = filtered.filter(
+          (p) =>
+            p.title.toLowerCase().includes(q) ||
+            (p.description?.toLowerCase().includes(q) ?? false) ||
+            p.tags.some((t) => t.toLowerCase().includes(q)) ||
+            (p.client?.toLowerCase().includes(q) ?? false),
+        );
+      }
+
+      const totalMatches = filtered.length;
+      const limit = Math.max(1, Math.min(input?.limit ?? 3, 10));
+
+      return {
+        projects: filtered.slice(0, limit).map((p) => ({
+          title: p.title,
+          slug: p.slug,
+          description: p.description || "",
+          thumbnail: p.thumbnail,
+          category: p.category.replace("-", " "),
+          tags: p.tags,
+          client: p.client,
+          duration: p.duration,
+          liveUrl: p.liveUrl,
+          url: `/work/${p.slug}`,
+        })),
+        totalMatches,
+      };
+    },
+  }),
+
+  "studio.navigateTo": tool({
+    description:
+      "Navigate the user to a specific page or scroll to a section on the current page. Use when the user wants to see a specific page, project, or section. This is a client-side tool — it will be executed in the user's browser.",
+    inputSchema: jsonSchema<{
+      destination: string;
+      section?: string;
+      label?: string;
+    }>({
+      type: "object",
+      required: ["destination"],
+      properties: {
+        destination: {
+          type: "string",
+          description:
+            "URL path to navigate to, e.g. '/work', '/work/vertaaux', '/contact', '/about'.",
+        },
+        section: {
+          type: "string",
+          description:
+            "Optional anchor/section ID to scroll to after navigation, e.g. 'services', 'contact-cta'.",
+        },
+        label: {
+          type: "string",
+          description:
+            "Human-readable label for the destination, e.g. 'VertaaUX case study'.",
+        },
+      },
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema<{ navigated: boolean; url: string }>({
+      type: "object",
+      required: ["navigated", "url"],
+      properties: {
+        navigated: { type: "boolean" },
+        url: { type: "string" },
+      },
+      additionalProperties: false,
+    }),
+    async execute(input) {
+      const dest = input?.destination ?? "/";
+      // Enforce internal paths only — reject protocols, double slashes, or external URLs
+      const isInternal = dest.startsWith("/") && !dest.startsWith("//") && !/^\/.*:/.test(dest);
+      const safePath = isInternal ? dest : "/";
+      const url = input?.section ? `${safePath}#${input.section}` : safePath;
+      return { navigated: isInternal, url };
+    },
+  }),
+
   "studio.contactCard": tool({
     description:
       "Return the studio contact details, response windows, and meeting link.",
