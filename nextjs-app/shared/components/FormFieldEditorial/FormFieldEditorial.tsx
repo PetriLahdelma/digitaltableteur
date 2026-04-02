@@ -75,6 +75,7 @@ export const FormFieldEditorial = forwardRef<
           rows={rows}
           className={cn(styles.textarea, error && styles.hasError)}
           aria-invalid={!!error}
+          aria-required={required || undefined}
           aria-describedby={error ? errorId : undefined}
           {...textareaProps}
         />
@@ -94,6 +95,7 @@ export const FormFieldEditorial = forwardRef<
             id={id}
             className={cn(styles.select, error && styles.hasError)}
             aria-invalid={!!error}
+            aria-required={required || undefined}
             aria-describedby={error ? errorId : undefined}
             {...selectProps}
           >
@@ -133,6 +135,7 @@ export const FormFieldEditorial = forwardRef<
         type={type}
         className={cn(styles.input, error && styles.hasError)}
         aria-invalid={!!error}
+        aria-required={required || undefined}
         aria-describedby={error ? errorId : undefined}
         {...inputProps}
       />

@@ -28,8 +28,24 @@ export function RelatedProjects({
   const { t } = useTranslation();
   const relatedProjects = getRelatedProjects(currentSlug, maxItems);
 
-  // If no related projects found, don't render anything
-  if (relatedProjects.length === 0) return null;
+  // If no related projects found, show a fallback CTA
+  if (relatedProjects.length === 0) {
+    return (
+      <Section spacing="lg" background="default" className={className}>
+        <Container size="lg" className="text-center">
+          <h2 className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-4">
+            {t("projectRelatedTitle", "Related Projects")}
+          </h2>
+          <a
+            href="/work"
+            className="inline-flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors font-medium"
+          >
+            {t("projectBrowseAll", "Browse all projects")} &rarr;
+          </a>
+        </Container>
+      </Section>
+    );
+  }
 
   const displayTitle = title || t("projectRelatedTitle", "Related Projects");
 
