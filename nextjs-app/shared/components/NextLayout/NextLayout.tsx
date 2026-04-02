@@ -4,6 +4,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 import { SiteHeader, SiteFooter, SkipLink } from "../../patterns/navigation";
+import { PageTransition } from "../animations/PageTransition";
 import styles from "../Layout/Layout.module.css";
 
 const ChatWidget = dynamic(() => import("../ChatWidget/ChatWidget"), {
@@ -21,7 +22,7 @@ export function NextLayout({ children }: { children: React.ReactNode }) {
         <SkipLink href="#main-content" />
         <SiteHeader />
         <main id="main-content" className={styles.main}>
-          {children}
+          <PageTransition>{children}</PageTransition>
         </main>
         <SiteFooter />
         <ChatWidget />

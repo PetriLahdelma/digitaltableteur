@@ -61,7 +61,7 @@
     "lastReviewed": "Last reviewed: {{date}}"
   },
   "footerAddressTitle": "Visit",
-  "footerAddress1": "Hämeentie 8",
+  "footerAddress1": "Hämeentie 8 C",
   "footerAddress2": "00530 Helsinki",
   "footerBillingTitle": "Billing details",
   "footerBillingName": "Digitaltableteur",
@@ -362,7 +362,7 @@
   "studioMapOpenMaps": "Open in Maps",
   "contactAddressHeading": "In writing",
   "contactAddressLine1": "HKI HQ",
-  "contactAddressLine2": "Hämeentie 8",
+  "contactAddressLine2": "Hämeentie 8 C",
   "contactAddressLine3": "00530 Helsinki",
   "contactPersonAlt": "Portrait of Petri Lahdelma",
   "contactPersonName": "Petri Lahdelma",
@@ -410,7 +410,7 @@
   "blogReadMore": "Read more",
   "workMetaTitle": "Work | Digitaltableteur",
   "workMetaDescription": "Selected projects and experiments by Digitaltableteur",
-  "workTitle": "Our Work",
+  "workTitle": "Work",
   "workDescription": "Explore our portfolio of design systems, UX design, and creative projects.",
   "workFilterAll": "All",
   "workFilterDesignSystems": "Design Systems",
@@ -1170,5 +1170,9 @@
     "imageTip2": "Some recipients may need to click \"Show images\" to see the logo",
     "imageTip3": "Gmail may re-host images automatically — this is normal",
     "imageTip4": "Outlook users: If layout breaks, try pasting as \"Keep Source Formatting\""
-  }
+  },
+  "workCTATitle": "Interested in working together?",
+  "workCTADescription": "Let's discuss how design systems, AI and thoughtful UX can elevate your product.",
+  "workCTAPrimary": "Get in touch",
+  "workCTASecondary": "View all work"
 }

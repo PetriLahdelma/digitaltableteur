@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import type { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
@@ -74,7 +75,11 @@ export function AskAI({ className }: AskAIProps) {
   const [subject, setSubject] = useState<Subject>("company");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [personalizeContext, setPersonalizeContext] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Portal needs document.body — wait for mount
+  useEffect(() => setMounted(true), []);
 
   const companyPrompt = t("askAIPromptCompany", {
     defaultValue:
@@ -140,7 +145,9 @@ export function AskAI({ className }: AskAIProps) {
     setDropdownOpen(false);
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <aside className={cn(styles.container, className)} aria-label={t("askAIAriaLabel", "Ask AI about us")}>
       <div className={styles.header}>
         <h2 className={styles.title}>{t("askAITitle", "Ask AI about")}</h2>
@@ -230,7 +237,8 @@ export function AskAI({ className }: AskAIProps) {
           {t("askAIPersonalizeLabel", "Help me")}
         </span>
       </label>
-    </aside>
+    </aside>,
+    document.body
   );
 }
 

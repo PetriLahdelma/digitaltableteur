@@ -2,6 +2,7 @@
 
 import { type ReactNode, useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { WorkCTA } from "../WorkCTA/WorkCTA";
 
 export interface ProjectDetailLayoutProps {
   /** Navigation slot (top) */
@@ -10,6 +11,8 @@ export interface ProjectDetailLayoutProps {
   hero: ReactNode;
   /** Main content sections */
   children: ReactNode;
+  /** Call-to-action section slot (between content and related projects). Renders WorkCTA by default. Pass null to suppress. */
+  cta?: ReactNode | null;
   /** Related projects section slot */
   relatedProjects?: ReactNode;
   /** Show scroll progress indicator */
@@ -56,6 +59,7 @@ export function ProjectDetailLayout({
   nav,
   hero,
   children,
+  cta,
   relatedProjects,
   showScrollProgress = true,
   className,
@@ -85,6 +89,13 @@ export function ProjectDetailLayout({
         <div className="relative">
           {children}
         </div>
+
+        {/* CTA - render WorkCTA by default, or custom cta prop */}
+        {cta !== null && (
+          <div className="mt-16">
+            {cta || <WorkCTA />}
+          </div>
+        )}
 
         {/* Related projects */}
         {relatedProjects && (

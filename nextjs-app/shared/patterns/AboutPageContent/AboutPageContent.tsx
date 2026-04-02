@@ -15,6 +15,7 @@ import {
 import { AboutHero } from "../AboutHero";
 import { ContentSection } from "../ContentSection";
 import { ValuesSection, type ValueItem } from "../ValuesSection";
+import { StatsSection } from "../../patterns/StatsSection/StatsSection";
 import { ManifestoSection, type ManifestoToken } from "../ManifestoSection";
 import { CTASection } from "../CTASection";
 
@@ -104,6 +105,16 @@ export function AboutPageContent({
         values={values}
         cardVariant="bordered"
         background="muted"
+      />
+
+      {/* Stats Section */}
+      <StatsSection
+        stats={[
+          { value: 20, suffix: "+", label: t("statsYearsExperience", "Years of experience"), duration: 2 },
+          { value: 8, suffix: "K+", label: t("statsComponentsBuilt", "Design system components built"), duration: 2.5 },
+          { value: 300, suffix: "+", label: t("statsProjectsDelivered", "Projects delivered"), duration: 2 },
+        ]}
+        background="primary"
       />
 
       {/* What I Do - Design */}

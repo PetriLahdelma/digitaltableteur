@@ -1,0 +1,70 @@
+"use client";
+
+import { Section } from "../../components/Section";
+import { Container } from "../../components/Container";
+import {
+  AnimatedCounter,
+  type AnimatedCounterProps,
+} from "../../components/animations/AnimatedCounter";
+import { FadeIn } from "../../components/animations/FadeIn";
+import { cn } from "@/lib/utils";
+
+export interface StatItem extends Omit<AnimatedCounterProps, "className"> {}
+
+export interface StatsSectionProps {
+  title?: string;
+  stats: StatItem[];
+  background?: "default" | "muted" | "accent" | "primary";
+  className?: string;
+}
+
+export function StatsSection({
+  title,
+  stats,
+  background = "muted",
+  className,
+}: StatsSectionProps) {
+  const bgClasses = {
+    default: "",
+    muted: "bg-muted/30",
+    accent: "bg-primary/5",
+    primary: "bg-primary",
+  };
+
+  return (
+    <Section spacing="lg" className={cn(bgClasses[background], className)}>
+      <Container size="lg">
+        {title && (
+          <FadeIn direction="up" distance={20}>
+            <h2 className="font-display font-bold text-xl tablet:text-2xl text-foreground mb-12 text-center">
+              {title}
+            </h2>
+          </FadeIn>
+        )}
+        <div
+          className={cn(
+            "grid gap-8 tablet:gap-12",
+            stats.length === 3
+              ? "grid-cols-1 tablet:grid-cols-3"
+              : stats.length === 4
+                ? "grid-cols-2 tablet:grid-cols-4"
+                : "grid-cols-2 tablet:grid-cols-3",
+          )}
+        >
+          {stats.map((stat, index) => (
+            <FadeIn
+              key={stat.label}
+              direction="up"
+              delay={index * 0.1}
+              distance={20}
+            >
+              <AnimatedCounter {...stat} />
+            </FadeIn>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+StatsSection.displayName = "StatsSection";

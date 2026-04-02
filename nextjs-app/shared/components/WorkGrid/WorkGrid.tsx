@@ -1,6 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
+import { useAnimationContext } from "@/providers/AnimationProvider";
 import { FadeIn } from "../animations/FadeIn";
 import { EnhancedProjectCard } from "../EnhancedProjectCard";
 import { cn } from "../../../../lib/utils";
@@ -37,6 +40,54 @@ export function WorkGrid({
   className,
 }: WorkGridProps) {
   const { t } = useTranslation();
+  const gridRef = useRef<HTMLDivElement>(null);
+  const { motionPreference } = useAnimationContext();
+
+  // GSAP ScrollTrigger-based orchestrated stagger animation
+  useGSAP(
+    () => {
+      if (motionPreference === "reduced" || !animateItems) return;
+      if (!gridRef.current) return;
+
+      const items = gridRef.current.querySelectorAll("[data-grid-item]");
+      if (!items.length) return;
+
+      const featuredItems = gridRef.current.querySelectorAll(
+        "[data-grid-item][data-featured]"
+      );
+      const standardItems = gridRef.current.querySelectorAll(
+        "[data-grid-item]:not([data-featured])"
+      );
+
+      // Set initial state for all items
+      gsap.set(featuredItems, { opacity: 0, y: 50, scale: 0.92 });
+      gsap.set(standardItems, { opacity: 0, y: 40, scale: 0.95 });
+
+      // Create a single timeline for orchestrated entrance
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Animate all items together with wave-pattern stagger
+      tl.to(items, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.7,
+        ease: "power3.out",
+        stagger: {
+          each: 0.08,
+          grid: "auto",
+          from: "start",
+        },
+      });
+    },
+    { scope: gridRef, dependencies: [motionPreference, animateItems, projects] }
+  );
 
   // Delightful empty state
   if (projects.length === 0) {
@@ -83,16 +134,9 @@ export function WorkGrid({
       .join(" ");
   };
 
-  // Calculate organic stagger delay - faster, more elegant timing
-  const getStaggerDelay = (index: number, isFeatured: boolean): number => {
-    // Featured projects animate slightly faster
-    const baseDelay = isFeatured ? 0.04 : 0.06;
-    // Exponential falloff for organic feel (items further in animate quicker relative to each other)
-    return index * baseDelay + Math.min(index * 0.01, 0.1);
-  };
-
   return (
     <div
+      ref={gridRef}
       className={cn(
         // Improved grid gaps: more breathing room
         "grid gap-5 sm:gap-6 tablet:gap-8 desktop:gap-10",
@@ -102,45 +146,31 @@ export function WorkGrid({
       role="list"
       aria-label={t("workGalleryLabel", "Project gallery")}
     >
-      {projects.map((project, index) => {
+      {projects.map((project) => {
         const isFeatured = project.featured ?? false;
 
-        const card = (
-          <EnhancedProjectCard
-            key={project.id}
-            title={project.title}
-            slug={project.slug}
-            thumbnail={project.thumbnail}
-            videoThumbnail={project.thumbnailVideo}
-            autoPlayVideo={project.autoPlayVideo}
-            description={project.description}
-            category={showCategory ? formatCategory(project.category) : undefined}
-            tags={project.tags}
-            aspectRatio={aspectRatio}
-            showCategory={showCategory}
-          />
-        );
-
-        if (animateItems) {
-          return (
-            <div key={project.id} role="listitem" className="h-full">
-              <FadeIn
-                direction="up"
-                // Organic stagger timing
-                delay={getStaggerDelay(index, isFeatured)}
-                // Featured projects have more dramatic entrance
-                distance={isFeatured ? 40 : 30}
-                className="h-full"
-              >
-                {card}
-              </FadeIn>
-            </div>
-          );
-        }
-
         return (
-          <div key={project.id} role="listitem" className="h-full">
-            {card}
+          <div
+            key={project.id}
+            role="listitem"
+            className="h-full"
+            data-grid-item
+            {...(isFeatured ? { "data-featured": "" } : {})}
+          >
+            <EnhancedProjectCard
+              title={project.title}
+              slug={project.slug}
+              thumbnail={project.thumbnail}
+              videoThumbnail={project.thumbnailVideo}
+              autoPlayVideo={project.autoPlayVideo}
+              description={project.description}
+              category={
+                showCategory ? formatCategory(project.category) : undefined
+              }
+              tags={project.tags}
+              aspectRatio={aspectRatio}
+              showCategory={showCategory}
+            />
           </div>
         );
       })}

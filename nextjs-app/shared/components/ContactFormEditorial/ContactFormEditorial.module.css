@@ -58,7 +58,7 @@
   opacity: 0.7;
 }
 
-/* Submit button - full width, bold */
+/* Submit button - full width */
 .submitButton {
   display: flex;
   align-items: center;
@@ -66,14 +66,13 @@
   gap: var(--space-internal-8);
   width: 100%;
   padding: var(--space-internal-16) var(--space-internal-32);
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
   color: var(--inverted-text-color);
   background-color: var(--color-primary);
   border: none;
+  border-radius: var(--radius-lg);
   cursor: pointer;
   transition:
     background-color var(--duration-fast) var(--ease-out-cubic),
