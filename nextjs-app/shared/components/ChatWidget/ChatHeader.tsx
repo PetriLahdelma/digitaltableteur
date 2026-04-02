@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Button from "@dt/Button";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
@@ -74,6 +74,14 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   const minimizeAriaLabel = t("chatMinimizeAria", "Minimize chat");
 
   // Finnish (Europe/Helsinki) business hours: Mon–Fri 09:00–17:00 local time (inclusive start, exclusive end)
+  // Recalculates every 60s so the status dot updates without a page refresh
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    if (currentDate) return; // tests pass a fixed date — no timer needed
+    const id = setInterval(() => setTick((t) => t + 1), 60_000);
+    return () => clearInterval(id);
+  }, [currentDate]);
+
   const helsinkiNow = useMemo(() => {
     try {
       const fmt = new Intl.DateTimeFormat("en-GB", {
@@ -94,7 +102,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       const d = currentDate || new Date();
       return { hour: d.getHours(), minute: d.getMinutes(), weekday: "" };
     }
-  }, [currentDate]);
+  }, [currentDate, tick]);
 
   const withinHours = useMemo(() => {
     const { hour, weekday } = helsinkiNow;
