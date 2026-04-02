@@ -6,7 +6,7 @@ export default async function handler(request, response) {
   }
 
   // Get the prompt from the request body
-  let userPrompt = "";
+  let userPrompt;
   try {
     userPrompt = request.body.prompt;
   } catch {
