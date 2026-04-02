@@ -98,7 +98,7 @@
     "@sanity/vision": "^5.3.1",
     "@sentry/nextjs": "^10.41.0",
     "@storybook/addon-vitest": "^10.2.7",
-    "@swc/helpers": "^0.5.18",
+    "@swc/helpers": "^0.5.19",
     "@vercel/analytics": "^1.6.1",
     "@vitest/browser-playwright": "^4.0.18",
     "ai": "^5.0.115",
