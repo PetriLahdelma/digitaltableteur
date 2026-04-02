@@ -85,10 +85,10 @@ const EXTRACTION_PHRASE_GROUPS = [
   ["display", "secret"],
   ["what are your", "system"],
   ["what are your", "rules"],
-  // Persona hijacking / jailbreak patterns
+  // Persona hijacking / jailbreak patterns (all require 2+ matching terms)
   ["pretend", "you are"],
   ["act as", "different"],
-  ["you are now", ""],
+  ["you are now", "my new"],
   ["roleplay", "as"],
   ["ignore", "previous"],
   ["ignore", "above"],
@@ -96,9 +96,9 @@ const EXTRACTION_PHRASE_GROUPS = [
   ["disregard", "rules"],
   ["forget", "rules"],
   ["forget", "instruction"],
-  ["new persona", ""],
-  ["jailbreak", ""],
-  ["developer mode", ""],
+  ["new persona", "adopt"],
+  ["jailbreak", "mode"],
+  ["developer mode", "enabled"],
   ["override", "safety"],
   ["bypass", "filter"],
 ];
@@ -109,6 +109,9 @@ const EXTRACTION_LITERALS = [
   "console.debug",
   "console.error",
   "console.warn",
+  "ignore all previous instructions",
+  "ignore your instructions",
+  "disregard all prior",
 ];
 
 function hasExtractionPattern(lowerPrompt: string): boolean {
@@ -125,11 +128,10 @@ function hasExtractionPattern(lowerPrompt: string): boolean {
     return true;
   }
 
-  return EXTRACTION_PHRASE_GROUPS.some((requiredTerms) =>
-    requiredTerms
-      .filter((term) => term.length > 0)
-      .every((term) => lowerPrompt.includes(term)),
-  );
+  return EXTRACTION_PHRASE_GROUPS.some((requiredTerms) => {
+    const terms = requiredTerms.filter((term) => term.length > 0);
+    return terms.length >= 2 && terms.every((term) => lowerPrompt.includes(term));
+  });
 }
 
 // Rate limiting for suspicious prompts

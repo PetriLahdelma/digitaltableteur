@@ -8,7 +8,7 @@ import {
   isOpenAt,
   type DayHours,
 } from "@/nextjs-app/shared/data/openHours";
-import { projects } from "@/nextjs-app/shared/data/projects";
+import { sortedProjects } from "@/nextjs-app/shared/data/projects";
 
 // ToolSet type matches ai package's expected tool shape
 type ToolMap = Record<string, Tool<any, any>>;
@@ -318,7 +318,7 @@ const staticTools: ToolMap = {
       additionalProperties: false,
     }),
     async execute(input) {
-      let filtered = [...projects];
+      let filtered = [...sortedProjects]; // Already sorted by order
 
       // Filter by slug (exact match)
       if (input?.slug) {
@@ -340,11 +340,8 @@ const staticTools: ToolMap = {
         );
       }
 
-      // Sort by order
-      filtered.sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
-
       const totalMatches = filtered.length;
-      const limit = input?.limit ?? 3;
+      const limit = Math.max(1, Math.min(input?.limit ?? 3, 10));
 
       return {
         projects: filtered.slice(0, limit).map((p) => ({
@@ -402,8 +399,14 @@ const staticTools: ToolMap = {
       },
       additionalProperties: false,
     }),
-    // No execute — this is a client-side tool.
-    // The client will handle navigation and call addToolResult().
+    async execute(input) {
+      const dest = input?.destination ?? "/";
+      // Enforce internal paths only — reject protocols, double slashes, or external URLs
+      const isInternal = dest.startsWith("/") && !dest.startsWith("//") && !/^\/.*:/.test(dest);
+      const safePath = isInternal ? dest : "/";
+      const url = input?.section ? `${safePath}#${input.section}` : safePath;
+      return { navigated: isInternal, url };
+    },
   }),
 
   "studio.contactCard": tool({
