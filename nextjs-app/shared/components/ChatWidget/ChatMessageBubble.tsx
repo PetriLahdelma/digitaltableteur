@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import styles from "./ChatWidget.module.css";
 import MarkdownMessage from "@dt/MarkdownMessage";
@@ -29,10 +30,25 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
   workflowUI,
 }) => {
   const { t } = useTranslation();
+  const router = useRouter();
+  const navigatedRef = useRef<Set<string>>(new Set());
   const isAssistant = message.role === "assistant";
   const thinking = t("chatThinking", "Thinking…");
   const ellipsis = t("chatEllipsis", "…");
   const fallback = isAssistant ? (isStreaming ? thinking : "") : "";
+
+  // Auto-navigate when a NavigateLink tool result appears (once per URL)
+  useEffect(() => {
+    for (const part of message.parts) {
+      if (part.kind === "component" && part.name === "NavigateLink") {
+        const url = part.props.url;
+        if (url && !navigatedRef.current.has(url)) {
+          navigatedRef.current.add(url);
+          router.push(url);
+        }
+      }
+    }
+  }, [message.parts, router]);
 
   // Check if message is empty and streaming (thinking state)
   const hasContent = message.parts.some(
