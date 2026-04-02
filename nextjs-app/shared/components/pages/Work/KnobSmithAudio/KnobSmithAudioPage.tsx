@@ -124,6 +124,10 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
       No screen reader
       Color-only feedback
       Mouse-only control`}
+            themeColors={{
+              color: "#ED4B9B",
+              nodeBg: "#ffffff",
+            }}
             className={styles.problemMindmap}
           />,
         ]}
