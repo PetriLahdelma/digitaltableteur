@@ -674,3 +674,85 @@
   --donny-primary: #fff;
   --donny-eyes: #000;
 }
+
+/* Tool result cards — NavigateLink */
+.toolResultCard {
+  margin-block-start: var(--space-internal-8, 0.5rem);
+}
+
+.navigateLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-m, 0.5rem);
+  background-color: var(--color-primary, #041B23);
+  color: var(--inverted-text-color, #fff);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.navigateLink:hover {
+  opacity: 0.85;
+}
+
+/* Project cards from tool results */
+.projectCards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-block-start: var(--space-internal-8, 0.5rem);
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-m, 0.5rem);
+  border: 1px solid var(--color-border, #e5e5e5);
+  background-color: var(--color-surface, #fff);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.projectCard:hover {
+  border-color: var(--color-primary, #041B23);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.06);
+}
+
+.projectCardTitle {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text, #111);
+}
+
+.projectCardMeta {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary, #666);
+  text-transform: capitalize;
+}
+
+.projectCardDesc {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary, #666);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.projectCardCta {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-primary, #041B23);
+  margin-block-start: 0.25rem;
+}
