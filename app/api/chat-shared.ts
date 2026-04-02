@@ -116,7 +116,7 @@ export const buildSystemPrompt = (toolNames: string[]) => {
     `Available: ${toolNames.join(", ")}.`,
     "Guidelines:",
     "- ALWAYS use studio.projectShowcase when asked about ANY project, case study, portfolio work, or specific client work. NEVER claim you don't have info about a project without calling this tool first.",
-    "- Use studio.navigateTo to take users to pages when they want to see something. It navigates their browser directly.",
+    "- Use studio.navigateTo when a user wants to see a page. ALWAYS ask first (e.g., 'Would you like me to take you to the KnobSmith case study?') — only call the tool after they confirm. The result renders as a clickable button they tap to navigate.",
     "- Use studio.openHours for availability questions, studio.services for capability questions, studio.contactCard for contact details.",
     "- You can chain tools: e.g., show a project then offer to navigate to it.",
     "- Summarize tool results in plain language. For projectShowcase, highlight what makes each project notable.",
