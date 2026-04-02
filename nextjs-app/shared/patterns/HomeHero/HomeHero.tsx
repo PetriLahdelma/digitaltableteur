@@ -88,6 +88,8 @@ export function HomeHero({
           align="center"
           justify="center"
           className="min-h-[60vh]"
+          aria-live="polite"
+          aria-atomic="true"
         >
           {/* Main headline with kinetic animation - bold, premium typography */}
           {/* Key forces remount when title changes to ensure animation plays correctly */}
@@ -155,7 +157,7 @@ export function HomeHero({
         targetId={scrollTargetId}
         variant="chevron"
         position="center"
-        label={t("homeHeroScrollLabel", "Scroll")}
+        label={t("homeHeroScrollLabel", "Scroll to services")}
       />
     </HeroSection>
   );

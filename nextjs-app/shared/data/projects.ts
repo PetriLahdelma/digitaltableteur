@@ -36,6 +36,10 @@ export interface Project {
   order?: number;
   /** Live project URL */
   liveUrl?: string;
+  /** Client or organization name */
+  client?: string;
+  /** Project duration (e.g. "2022-2024") */
+  duration?: string;
 }
 
 export interface CategoryOption {
@@ -61,6 +65,8 @@ export const projects: Project[] = [
     featured: true,
     order: 4,
     liveUrl: "https://hds.hel.fi/",
+    client: "City of Helsinki",
+    duration: "2020–2022",
   },
   {
     id: "new-things-co",
@@ -73,6 +79,8 @@ export const projects: Project[] = [
     tags: ["Branding", "Web Design", "Identity"],
     featured: true,
     order: 6,
+    client: "New Things Co",
+    duration: "2019",
   },
   {
     id: "garage-junction",
@@ -87,6 +95,7 @@ export const projects: Project[] = [
     tags: ["Web Design", "Animation", "Branding"],
     featured: false,
     order: 5,
+    duration: "2023",
   },
   {
     id: "illustrations",
@@ -99,6 +108,7 @@ export const projects: Project[] = [
     tags: ["Illustration", "Character Design", "Editorial"],
     featured: false,
     order: 7,
+    duration: "2016–Present",
   },
   {
     id: "sap-build-apps-design-system",
@@ -112,6 +122,8 @@ export const projects: Project[] = [
     featured: true,
     order: 3,
     liveUrl: "https://www.sap.com/products/technology-platform/low-code-app-builder.html",
+    client: "SAP",
+    duration: "2021–2024",
   },
   {
     id: "knobsmith-audio",
@@ -130,6 +142,7 @@ export const projects: Project[] = [
     featured: true,
     order: 1,
     liveUrl: "https://knobsmithaudio.com",
+    duration: "2025–Present",
   },
   {
     id: "vertaaux",
@@ -143,6 +156,7 @@ export const projects: Project[] = [
     featured: false,
     order: 2,
     liveUrl: "https://vertaaux.ai",
+    duration: "2025–Present",
   },
   {
     id: "finnish-transport-agency",
@@ -155,6 +169,8 @@ export const projects: Project[] = [
     tags: ["Brand Identity", "Public Sector", "Accessibility", "Multilingual"],
     featured: false,
     order: 8,
+    client: "Finnish Transport Agency",
+    duration: "2018",
   },
 ];
 
