@@ -21,12 +21,26 @@ const USER_EMAIL_WORKFLOW_GENERAL_PATTERN =
 // we treat this differently to show the address then offer workflow.
 const USER_EMAIL_WORKFLOW_SIMPLE_PATTERN = /^(?:email|sähköposti|epost)\s*$/i;
 
+export interface ProjectCardData {
+  title: string;
+  slug: string;
+  description: string;
+  thumbnail: string;
+  category: string;
+  tags: string[];
+  client?: string;
+  duration?: string;
+  liveUrl?: string;
+  url: string;
+}
+
 export type ProcessedPart =
   | { kind: "text"; content: string }
   | { kind: "component"; name: "OpenHours"; props?: { compact?: boolean } }
   | { kind: "component"; name: "ServicesGrid" }
-  | { kind: "component"; name: "StudioMap"; props?: { compact?: boolean } };
-// Future: email workflow will introduce a pseudo-component or control parts.
+  | { kind: "component"; name: "StudioMap"; props?: { compact?: boolean } }
+  | { kind: "component"; name: "NavigateLink"; props: { url: string; label?: string } }
+  | { kind: "component"; name: "ProjectCards"; props: { projects: ProjectCardData[] } };
 
 export interface ProcessedMessage {
   id: string;
@@ -100,12 +114,58 @@ export const extractCopy = (message: UIMessage): string => {
  *  - Heuristic mention of services triggers a single ServicesGrid append (only if no token present).
  *  - User token usage is stripped (no component injection for either token).
  */
+/**
+ * Extract tool result components from raw UIMessage parts.
+ * Detects navigateTo and projectShowcase tool results and converts
+ * them to ProcessedPart components for rich rendering.
+ */
+const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
+  if (!Array.isArray(message.parts)) return [];
+  const parts: ProcessedPart[] = [];
+  for (const part of message.parts) {
+    if (part.type !== "tool-invocation") continue;
+    const inv = part as unknown as {
+      toolInvocation?: {
+        toolName?: string;
+        state?: string;
+        result?: Record<string, unknown>;
+      };
+    };
+    const ti = inv.toolInvocation;
+    if (!ti || ti.state !== "result" || !ti.result) continue;
+
+    if (ti.toolName === "studio.navigateTo") {
+      const result = ti.result as { navigated?: boolean; url?: string };
+      if (result.url) {
+        parts.push({
+          kind: "component",
+          name: "NavigateLink",
+          props: { url: result.url, label: result.url },
+        });
+      }
+    }
+
+    if (ti.toolName === "studio.projectShowcase") {
+      const result = ti.result as { projects?: ProjectCardData[] };
+      if (result.projects && result.projects.length > 0) {
+        parts.push({
+          kind: "component",
+          name: "ProjectCards",
+          props: { projects: result.projects },
+        });
+      }
+    }
+  }
+  return parts;
+};
+
 export const processMessage = (message: UIMessage): ProcessedMessage => {
   const copy = extractCopy(message);
+  const toolParts = message.role === "assistant" ? extractToolResultParts(message) : [];
   return {
     id: message.id,
     role: message.role,
-    parts: [{ kind: "text", content: copy }],
+    parts: [{ kind: "text", content: copy }, ...toolParts],
   };
 };
 
