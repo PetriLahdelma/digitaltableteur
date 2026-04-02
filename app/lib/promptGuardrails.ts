@@ -85,6 +85,22 @@ const EXTRACTION_PHRASE_GROUPS = [
   ["display", "secret"],
   ["what are your", "system"],
   ["what are your", "rules"],
+  // Persona hijacking / jailbreak patterns
+  ["pretend", "you are"],
+  ["act as", "different"],
+  ["you are now", ""],
+  ["roleplay", "as"],
+  ["ignore", "previous"],
+  ["ignore", "above"],
+  ["disregard", "instruction"],
+  ["disregard", "rules"],
+  ["forget", "rules"],
+  ["forget", "instruction"],
+  ["new persona", ""],
+  ["jailbreak", ""],
+  ["developer mode", ""],
+  ["override", "safety"],
+  ["bypass", "filter"],
 ];
 
 const EXTRACTION_LITERALS = [
@@ -110,7 +126,9 @@ function hasExtractionPattern(lowerPrompt: string): boolean {
   }
 
   return EXTRACTION_PHRASE_GROUPS.some((requiredTerms) =>
-    requiredTerms.every((term) => lowerPrompt.includes(term)),
+    requiredTerms
+      .filter((term) => term.length > 0)
+      .every((term) => lowerPrompt.includes(term)),
   );
 }
 
