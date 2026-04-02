@@ -364,6 +364,39 @@ const loadStoredMessages = (
 
   return null;
 };
+
+/** Resolve avatar state during active email workflow */
+function resolveWorkflowAvatarState(step: string): DonnyState {
+  if (step === "success") return "celebrating";
+  if (step === "sending") return "thinking";
+  return "success";
+}
+
+/** Resolve avatar state when a tool invocation is active */
+function resolveToolAvatarState(tool: { toolName?: string; state?: string }): DonnyState {
+  const { toolName, state } = tool;
+  if (state === "call" || state === "partial-call") {
+    if (toolName === "studio.navigateTo") return "handoff";
+    return "searching";
+  }
+  if (state === "result") {
+    if (toolName === "studio.projectShowcase") return "impressed";
+    return "confident";
+  }
+  return "typing";
+}
+
+/** Resolve avatar state from the user's current draft text */
+function resolveDraftAvatarState(draft: string, toolKeywords: string[]): DonnyState {
+  const trimmed = draft.trim().toLowerCase();
+  if (!trimmed) return "idle";
+  if (/\b(thanks?|thank you|thx|cheers|great|awesome|perfect)\b/.test(trimmed)) return "celebrating";
+  if (/\b(doesn't work|broken|wrong|bad|terrible|frustrated|annoyed)\b/.test(trimmed)) return "apologetic";
+  if (toolKeywords.some((kw) => trimmed.includes(kw))) return "curious";
+  if (trimmed.includes("?")) return "focused";
+  return "listening";
+}
+
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   title,
   description,
@@ -536,81 +569,37 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   // Check if a tool workflow is active (not idle or error)
   const isToolWorkflowActive = emailWorkflow.step !== "idle" && emailWorkflow.step !== "error";
 
-  // Detect tool invocations in the latest assistant message for richer avatar reactions
+  // Detect the most recent tool invocation in the latest assistant message
   const lastToolState = useMemo(() => {
-    const lastMsg = messages.findLast((m) => m.role === "assistant");
+    // Find last assistant message (reverse loop for older browser compat)
+    let lastMsg: (typeof messages)[number] | null = null;
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].role === "assistant") { lastMsg = messages[i]; break; }
+    }
     if (!lastMsg?.parts) return null;
+    // Find last tool-invocation part (not first) to reflect most recent tool activity
+    let result: { toolName?: string; state?: string } | null = null;
     for (const part of lastMsg.parts) {
       if (part.type === "tool-invocation") {
         const inv = part as { toolInvocation?: { toolName?: string; state?: string } };
-        return {
+        result = {
           toolName: inv.toolInvocation?.toolName,
-          state: inv.toolInvocation?.state, // 'call' | 'partial-call' | 'result'
+          state: inv.toolInvocation?.state,
         };
       }
     }
-    return null;
+    return result;
   }, [messages]);
 
-  // Map chat status to DonnyAvatar state
-  // Priority: error > tool workflow > tool invocations > streaming > keyword reactions > greeting > typing > idle
+  // Map chat status to DonnyAvatar state — decomposed for readability/testability
   const avatarState = useMemo((): DonnyState => {
     if (error) return "error";
-
-    // Donny is happy/celebrating when a tool workflow is triggered and active
-    if (isToolWorkflowActive) {
-      if (emailWorkflow.step === "success") return "celebrating";
-      if (emailWorkflow.step === "sending") return "thinking";
-      return "success";
-    }
-
-    // Tool invocation states — Donny reacts to using his tools
-    if (lastToolState && status === "streaming") {
-      const { toolName, state: toolState } = lastToolState;
-      if (toolState === "call" || toolState === "partial-call") {
-        // Donny is actively searching/working
-        if (toolName === "studio.projectShowcase") return "searching";
-        if (toolName === "studio.navigateTo") return "handoff";
-        return "searching";
-      }
-      if (toolState === "result") {
-        // Tool returned data — Donny is confident/impressed
-        if (toolName === "studio.projectShowcase") return "impressed";
-        if (toolName === "studio.openHours") return "confident";
-        return "confident";
-      }
-    }
-
+    if (isToolWorkflowActive) return resolveWorkflowAvatarState(emailWorkflow.step);
+    if (lastToolState && status === "streaming") return resolveToolAvatarState(lastToolState);
     if (status === "submitted") return "thinking";
     if (status === "streaming") return "typing";
-
-    // First message / greeting state — Donny waves
     if (messages.length <= 1 && !draft.trim()) return "greeting";
-
-    const trimmedDraft = draft.trim().toLowerCase();
-    if (trimmedDraft.length > 0) {
-      // Gratitude keywords — Donny celebrates
-      if (/\b(thanks?|thank you|thx|cheers|great|awesome|perfect)\b/.test(trimmedDraft)) {
-        return "celebrating";
-      }
-
-      // Frustration keywords — Donny becomes apologetic
-      if (/\b(doesn't work|broken|wrong|bad|terrible|frustrated|annoyed)\b/.test(trimmedDraft)) {
-        return "apologetic";
-      }
-
-      // Tool-calling keywords — Donny gets curious
-      const hasToolKeyword = TOOL_KEYWORDS.some(keyword =>
-        trimmedDraft.includes(keyword)
-      );
-      if (hasToolKeyword) return "curious";
-
-      // Question marks — Donny focuses
-      if (trimmedDraft.includes("?")) return "focused";
-
-      return "listening";
-    }
-    return "idle";
+    return resolveDraftAvatarState(draft, TOOL_KEYWORDS);
   }, [status, error, draft, isToolWorkflowActive, emailWorkflow.step, lastToolState, messages]);
 
   useEffect(() => {

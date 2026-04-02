@@ -102,7 +102,6 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       const d = currentDate || new Date();
       return { hour: d.getHours(), minute: d.getMinutes(), weekday: "" };
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDate, tick]);
 
   const withinHours = useMemo(() => {
