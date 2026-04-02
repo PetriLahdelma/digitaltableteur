@@ -89,10 +89,15 @@ const baseSystemPrompt = [
 export const buildSystemPrompt = (toolNames: string[]) => {
   if (!toolNames.length) return baseSystemPrompt;
   const toolInstruction = [
-    "You can call specialized tools when you need factual answers or curated data.",
-    `Available tools: ${toolNames.join(", ")}.`,
-    "Prefer tool outputs over guessing. Summarize what you learned in plain language and cite the relevant capability.",
-  ].join(" ");
+    "You have specialized tools — use them instead of guessing.",
+    `Available: ${toolNames.join(", ")}.`,
+    "Guidelines:",
+    "- Use studio.projectShowcase when asked about work, projects, portfolio, or case studies. Show specific projects rather than describing them.",
+    "- Use studio.navigateTo to take users to pages when they want to see something. It navigates their browser directly.",
+    "- Use studio.openHours for availability questions, studio.services for capability questions, studio.contactCard for contact details.",
+    "- You can chain tools: e.g., show a project then offer to navigate to it.",
+    "- Summarize tool results in plain language. For projectShowcase, highlight what makes each project notable.",
+  ].join("\n");
   return `${baseSystemPrompt}\n\n${toolInstruction}`;
 };
 

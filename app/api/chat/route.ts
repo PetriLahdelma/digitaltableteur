@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { convertToModelMessages, streamText } from "ai";
+import { convertToModelMessages, streamText, stepCountIs } from "ai";
 import {
   createGateway,
   GatewayAuthenticationError,
@@ -133,10 +133,10 @@ export async function POST(request: NextRequest) {
       system,
       tools,
       messages: await convertToModelMessages(messages),
+      stopWhen: stepCountIs(3),
       temperature: 0.2,
       maxRetries: 2,
       maxOutputTokens: MAX_OUTPUT_TOKENS,
-      // Note: maxTokens deprecated in AI SDK, use model-specific settings
     };
 
     const result = await streamText(streamParams);
