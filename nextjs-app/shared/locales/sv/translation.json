@@ -410,7 +410,7 @@
   "blogReadMore": "Läs mer",
   "workMetaTitle": "Arbete | Digitaltableteur",
   "workMetaDescription": "Utvalda projekt och experiment av Digitaltableteur",
-  "workTitle": "Vårt arbete",
+  "workTitle": "Arbete",
   "workDescription": "Utforska vår portfölj av designsystem, UX-design och kreativa projekt.",
   "workFilterAll": "Alla",
   "workFilterDesignSystems": "Designsystem",
@@ -1180,5 +1180,9 @@
     "imageTip2": "Vissa mottagare kan behöva klicka på \"Visa bilder\" för att se logotypen",
     "imageTip3": "Gmail kan automatiskt flytta bilder till egen hosting — detta är normalt",
     "imageTip4": "Outlook-användare: Om layouten bryts, prova att klistra in som \"Behåll källformatering\""
-  }
+  },
+  "workCTATitle": "Intresserad av samarbete?",
+  "workCTADescription": "Låt oss diskutera hur designsystem, AI och genomtänkt UX kan lyfta din produkt.",
+  "workCTAPrimary": "Kontakta oss",
+  "workCTASecondary": "Se alla arbeten"
 }

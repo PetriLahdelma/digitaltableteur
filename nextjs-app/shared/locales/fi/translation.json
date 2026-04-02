@@ -61,7 +61,7 @@
     "lastReviewed": "Tarkistettu viimeksi: {{date}}"
   },
   "footerAddressTitle": "Vieraile",
-  "footerAddress1": "Hämeentie 8",
+  "footerAddress1": "Hämeentie 8 C",
   "footerAddress2": "00530 Helsinki",
   "footerBillingTitle": "Laskutustiedot",
   "footerBillingName": "Digitaltableteur",
@@ -362,7 +362,7 @@
   "studioMapOpenMaps": "Avaa kartalla",
   "contactAddressHeading": "Kirjeitse",
   "contactAddressLine1": "HKI HQ",
-  "contactAddressLine2": "Hämeentie 8",
+  "contactAddressLine2": "Hämeentie 8 C",
   "contactAddressLine3": "00530 Helsinki",
   "contactPersonAlt": "Petri Lahdelman kuva",
   "contactPersonName": "Petri Lahdelma",
@@ -410,7 +410,7 @@
   "blogReadMore": "Lue lisää",
   "workMetaTitle": "Työt | Digitaltableteur",
   "workMetaDescription": "Valikoituja projekteja ja muita juttuja Digitaltableteurilta",
-  "workTitle": "Työmme",
+  "workTitle": "Työt",
   "workDescription": "Tutustu portfolioomme designjärjestelmistä, UX-suunnittelusta ja luovista projekteista.",
   "workFilterAll": "Kaikki",
   "workFilterDesignSystems": "Design systemit",
@@ -1170,5 +1170,9 @@
     "imageTip2": "Joidenkin vastaanottajien on ehkä napsautettava \"Näytä kuvat\" nähdäkseen logon",
     "imageTip3": "Gmail saattaa isännöidä kuvia uudelleen automaattisesti — tämä on normaalia",
     "imageTip4": "Outlook-käyttäjät: Jos asettelu hajoaa, kokeile liittää \"Säilytä lähdemuotoilu\""
-  }
+  },
+  "workCTATitle": "Kiinnostaako yhteistyö?",
+  "workCTADescription": "Keskustellaan, miten designjärjestelmät, tekoäly ja harkittu käyttökokemus voivat nostaa tuotettasi.",
+  "workCTAPrimary": "Ota yhteyttä",
+  "workCTASecondary": "Katso kaikki työt"
 }

@@ -29,7 +29,7 @@ export interface CTASectionProps {
   /** Secondary action button */
   secondaryAction?: ActionItem;
   /** Background style */
-  background?: "primary" | "gradient" | "dark" | "muted";
+  background?: "primary" | "gradient" | "dark" | "muted" | "brand";
   /** Text alignment */
   align?: "left" | "center";
   /** Custom className */
@@ -43,6 +43,7 @@ const backgroundClasses: Record<NonNullable<CTASectionProps["background"]>, stri
   gradient: "bg-gradient-to-br from-primary via-[#4400ff] to-[#0066ff] text-primary-foreground",
   dark: "bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white",
   muted: "bg-muted text-foreground",
+  brand: styles.brandBackground,
 };
 
 export function CTASection({
@@ -55,7 +56,7 @@ export function CTASection({
   className,
   id = "cta",
 }: CTASectionProps) {
-  const isDark = background !== "muted";
+  const isDark = background !== "muted" && background !== "brand";
 
   const renderButton = (action: ActionItem, variant: "default" | "outline") => {
     const buttonVariant = isDark
@@ -71,6 +72,9 @@ export function CTASection({
       isDark && variant === "default" && styles.primaryButton,
       // Outline variant - same across all dark themes
       isDark && variant === "outline" && "border-white bg-transparent text-white hover:bg-white/10",
+      // Brand variant buttons - dark on yellow
+      background === "brand" && variant === "default" && styles.brandPrimaryButton,
+      background === "brand" && variant === "outline" && styles.brandOutlineButton,
       action.className
     );
 
@@ -109,8 +113,10 @@ export function CTASection({
       )}
       aria-labelledby={`${id}-title`}
     >
-      {/* Subtle texture overlay for premium feel */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-30 pointer-events-none mix-blend-overlay" />
+      {/* Subtle texture overlay for premium feel (skip on brand background) */}
+      {background !== "brand" && (
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-30 pointer-events-none mix-blend-overlay" />
+      )}
       <Container size="md" className="relative z-10">
         <FadeIn direction="up">
           <div
@@ -134,7 +140,7 @@ export function CTASection({
               <p
                 className={cn(
                   "font-body text-xl desktop:text-2xl leading-relaxed",
-                  isDark ? "text-white/80" : "text-muted-foreground",
+                  isDark ? "text-white/80" : background === "brand" ? styles.brandDescription : "text-muted-foreground",
                   align === "center" && "max-w-2xl"
                 )}
               >
