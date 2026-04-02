@@ -46,6 +46,9 @@ akaunting/logs/
 .next/
 .next/cache/
 
+# OMX local runtime state
+.omx/
+
 # Prevent generated static sitemap from shadowing Next.js `app/sitemap.ts`
 public/sitemap.xml
 nextjs-app/public/sitemap.xml
