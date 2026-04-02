@@ -88,6 +88,8 @@ export function HomeHero({
           align="center"
           justify="center"
           className="min-h-[60vh]"
+          aria-live="polite"
+          aria-atomic="true"
         >
           {/* Main headline with kinetic animation - bold, premium typography */}
           {/* Key forces remount when title changes to ensure animation plays correctly */}
