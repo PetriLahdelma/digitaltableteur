@@ -3,38 +3,50 @@
 import React, { useEffect, useState, useMemo, useId } from "react";
 import styles from "./Mermaid.module.css";
 
-let mermaidConfigured = false;
+export interface MermaidThemeColors {
+  /** Text color */
+  color: string;
+  /** Node background color */
+  nodeBg: string;
+  /** Line and border color (defaults to color) */
+  lineColor?: string;
+}
 
-const loadMermaid = async () => {
+const DEFAULT_COLORS: MermaidThemeColors = {
+  color: "#ED4B9B",
+  nodeBg: "transparent",
+};
+
+let lastColorKey = "";
+
+const loadMermaid = async (colors: MermaidThemeColors = DEFAULT_COLORS) => {
   const { default: mermaid } = await import("mermaid");
-  if (!mermaidConfigured) {
+  const colorKey = `${colors.color}-${colors.nodeBg}`;
+  if (colorKey !== lastColorKey) {
     mermaid.initialize({
       startOnLoad: false,
       securityLevel: "strict",
       theme: "base",
       themeVariables: {
-        // Core colors - all pink
-        primaryColor: "transparent",
-        primaryTextColor: "#ED4B9B",
-        primaryBorderColor: "#ED4B9B",
-        lineColor: "#ED4B9B",
-        secondaryColor: "transparent",
-        secondaryTextColor: "#ED4B9B",
-        secondaryBorderColor: "#ED4B9B",
-        tertiaryColor: "transparent",
-        tertiaryTextColor: "#ED4B9B",
-        tertiaryBorderColor: "#ED4B9B",
-        // Text
-        textColor: "#ED4B9B",
-        mainBkg: "transparent",
-        nodeBkg: "transparent",
-        nodeBorder: "#ED4B9B",
-        clusterBkg: "transparent",
-        clusterBorder: "#ED4B9B",
-        titleColor: "#ED4B9B",
+        primaryColor: colors.nodeBg,
+        primaryTextColor: colors.color,
+        primaryBorderColor: colors.color,
+        lineColor: colors.color,
+        secondaryColor: colors.nodeBg,
+        secondaryTextColor: colors.color,
+        secondaryBorderColor: colors.color,
+        tertiaryColor: colors.nodeBg,
+        tertiaryTextColor: colors.color,
+        tertiaryBorderColor: colors.color,
+        textColor: colors.color,
+        mainBkg: colors.nodeBg,
+        nodeBkg: colors.nodeBg,
+        nodeBorder: colors.color,
+        clusterBkg: colors.nodeBg,
+        clusterBorder: colors.color,
+        titleColor: colors.color,
         edgeLabelBackground: "transparent",
-        // Font
-        fontFamily: '"JetBrains Mono", "Geist Mono", monospace',
+        fontFamily: '"Geist", "Geist Sans", system-ui, sans-serif',
         fontSize: "14px",
       },
       mindmap: {
@@ -42,7 +54,7 @@ const loadMermaid = async () => {
         padding: 16,
       },
     });
-    mermaidConfigured = true;
+    lastColorKey = colorKey;
   }
   return mermaid;
 };
@@ -54,12 +66,15 @@ export interface MermaidProps {
   caption?: string;
   /** Optional className for styling */
   className?: string;
+  /** Custom theme colors */
+  themeColors?: MermaidThemeColors;
 }
 
 export const Mermaid: React.FC<MermaidProps> = ({
   chart,
   caption,
   className,
+  themeColors,
 }) => {
   const rawId = useId();
   const renderId = useMemo(
@@ -76,7 +91,7 @@ export const Mermaid: React.FC<MermaidProps> = ({
     const render = async () => {
       setIsLoading(true);
       try {
-        const mermaid = await loadMermaid();
+        const mermaid = await loadMermaid(themeColors);
         const result = await mermaid.render(renderId, chart);
         if (cancelled) return;
         setSvg(result.svg);
@@ -106,7 +121,7 @@ export const Mermaid: React.FC<MermaidProps> = ({
     return () => {
       cancelled = true;
     };
-  }, [chart, renderId, containerId]);
+  }, [chart, renderId, containerId, themeColors]);
 
   return (
     <figure className={`${styles.mermaidFigure} ${className ?? ""}`}>
@@ -124,6 +139,11 @@ export const Mermaid: React.FC<MermaidProps> = ({
         <div
           id={containerId}
           className={styles.diagram}
+          style={{
+            "--mermaid-color": (themeColors ?? DEFAULT_COLORS).color,
+            "--mermaid-node-bg": (themeColors ?? DEFAULT_COLORS).nodeBg,
+            "--mermaid-line-color": (themeColors?.lineColor ?? (themeColors ?? DEFAULT_COLORS).color),
+          } as React.CSSProperties}
           dangerouslySetInnerHTML={{ __html: svg }}
         />
       )}

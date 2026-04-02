@@ -31,10 +31,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           title={project.title}
           description={project.description}
           image={{
-            src: "/images/portfolio/vertaaux/computer-mockup-on-colorful-background.jpeg",
-            alt: "VertaaUX product interface on colorful gradient background",
-            width: 6126,
-            height: 4595,
+            src: "/images/portfolio/vertaaux/screenshot-landing-page.webp",
+            alt: "VertaaUX landing page — UX and accessibility auditing platform",
+            width: 1920,
+            height: 1080,
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
@@ -195,7 +195,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             <Text key="p1" size="S">
               <span style={{ fontWeight: 600 }}>
                 The technical foundation combines predictive modeling with
-                real-time analysis, running 91+ automated checks in 40-90 seconds.
+                real-time analysis, running 90+ automated checks in under 60 seconds.
               </span>{" "}
               This is 25x faster than initial performance targets, with simple
               sites completing in just seconds.
@@ -208,11 +208,11 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             </Text>,
           ]}
           images={{
-            src: "/images/portfolio/vertaaux/computer-mockup-on-colorful-background.jpeg",
-            alt: "VertaaUX one-click UX audit interface showing usability score, clarity analysis, and AI assessment features",
-            width: 6126,
-            height: 4595,
-            caption: "The VertaaUX product delivers one-click UX audits with instant insights.",
+            src: "/images/portfolio/vertaaux/screenshot-audit-results.png",
+            alt: "VertaaUX audit results interface showing scores across usability, clarity, and accessibility dimensions",
+            width: 1920,
+            height: 1080,
+            caption: "Audit results with severity-weighted findings across seven dimensions.",
           }}
           imageLayout="single"
           backgroundColor="transparent"
@@ -238,31 +238,39 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               coverage that would take human reviewers days to complete.
             </Text>,
           ]}
-          imageLayout="none"
+          images={{
+            src: "/images/portfolio/vertaaux/screenshot-detailed-analysis.png",
+            alt: "VertaaUX detailed analysis view showing individual findings with severity, selectors, and fix recommendations",
+            width: 1920,
+            height: 1080,
+            caption: "Detailed analysis — severity-weighted findings with inspectable evidence.",
+          }}
+          imageLayout="single"
           backgroundColor="transparent"
           maxWidth="md"
           spacing="comfortable"
         />
       </div>
 
-      {/* Brand Identity - expanded with logo variations */}
+      {/* Brand Identity - updated to reflect current guidelines */}
       <StoryBlock
         subtitle="Brand Identity"
         title="Visual Language for UX Intelligence"
         content={[
           <Text key="p1" size="S">
             <span style={{ fontWeight: 600 }}>
-              The mission is to make world-class UX accessible to every team.
+              For dev teams who treat accessibility as craft, not compliance.
             </span>{" "}
-            The brand identity needed to communicate trust, precision, and
-            intelligence while remaining approachable for teams without deep UX
-            expertise.
+            The brand identity is built on three pillars: Evidence-First
+            (every finding backed by inspectable data), Quiet Confidence
+            (the product speaks through clarity and measured output), and
+            Craft Over Compliance (accessibility as a discipline, not a checklist).
           </Text>,
           <Text key="p2" size="S">
-            The goal is to establish a UX Score the industry can adopt, similar
-            to PageSpeed for performance or Lighthouse for accessibility. The
-            visual language reflects this ambition with a clean, data-driven
-            aesthetic.
+            Typography pairs Geist Sans for everything human with Geist Mono
+            for everything data — scores, selectors, code references. The neon
+            teal (#00FFCC) accent is used as a signal color, never decorative.
+            Dark-biased surfaces let the data breathe.
           </Text>,
         ]}
         imageLayout="none"
@@ -272,53 +280,193 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         className={styles.storySection}
       />
 
-      {/* Logo variations grid - custom layout for better presentation */}
+      {/* Logo variations grid — updated brand identity */}
       <div className={styles.logoGridSection}>
         <div className={styles.logoGrid}>
           <figure className={styles.logoCard}>
             <div className={styles.logoCardDark}>
               <img
-                src="/images/portfolio/vertaaux/gradient-logo@2x.png"
-                alt="VertaaUX gradient logo on dark background"
+                src="/images/portfolio/vertaaux/logo-mint-on-black.svg"
+                alt="VertaaUX mint teal logo on dark background"
                 className={styles.logoImage}
               />
             </div>
-            <figcaption className={styles.logoCaption}>Primary gradient logo</figcaption>
+            <figcaption className={styles.logoCaption}>Primary — dark background</figcaption>
           </figure>
           <figure className={styles.logoCard}>
             <div className={styles.logoCardLight}>
               <img
-                src="/images/portfolio/vertaaux/black-logo@2x.png"
-                alt="VertaaUX logo in black for light backgrounds"
+                src="/images/portfolio/vertaaux/logo-on-white.svg"
+                alt="VertaaUX logo on light background"
                 className={styles.logoImage}
               />
             </div>
-            <figcaption className={styles.logoCaption}>Black logo for light backgrounds</figcaption>
+            <figcaption className={styles.logoCaption}>Primary — light background</figcaption>
           </figure>
           <figure className={styles.logoCard}>
             <div className={styles.logoCardDark}>
               <img
-                src="/images/portfolio/vertaaux/white-logo@2x.png"
-                alt="VertaaUX logo in white for dark backgrounds"
+                src="/images/portfolio/vertaaux/logo-on-black.svg"
+                alt="VertaaUX mono logo on black"
                 className={styles.logoImage}
               />
             </div>
-            <figcaption className={styles.logoCaption}>White logo for dark backgrounds</figcaption>
+            <figcaption className={styles.logoCaption}>Mono — black</figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardGradient}>
+            <div className={styles.logoCardDark}>
               <img
-                src="/images/portfolio/vertaaux/round-logo-gradient@2x.png"
-                alt="VertaaUX round logo mark with gradient"
+                src="/images/portfolio/vertaaux/logo-new.svg"
+                alt="VertaaUX mark only — mint teal geometric V"
                 className={styles.logoImageRound}
               />
             </div>
-            <figcaption className={styles.logoCaption}>Circular mark for social & icons</figcaption>
+            <figcaption className={styles.logoCaption}>Mark only</figcaption>
           </figure>
         </div>
       </div>
 
-      {/* Product mockup */}
+      {/* Color — extracted palette elements */}
+      <StoryBlock
+        subtitle="Color"
+        title="The Palette"
+        content={[
+          <Text key="p1" size="S">
+            Dark-biased surfaces with neon teal (#00FFCC) as a signal color — used
+            sparingly for CTAs, scores, and key data. Never decorative. Semantic
+            score states map to Excellent, Good, Fair, and Poor with WCAG AA
+            contrast on all surfaces.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/vertaaux/brand/color-dark-palette.png",
+          alt: "VertaaUX dark theme palette — Neon Teal #00FFCC, Near Black #0D0D0D, Card Surface #141414, Near White #F2F2F2",
+          width: 960,
+          height: 240,
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Score states + light theme palette */}
+      <div className={styles.brandImageGrid}>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/color-score-states.png"
+            alt="Semantic score state colors — Excellent (green), Good (blue), Fair (amber), Poor (red)"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Score state colors</figcaption>
+        </figure>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/color-light-palette.png"
+            alt="Light theme palette — Warm White #F7F5F0, Warm Ink #1A1A1A, Muted Teal #00CCAA"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Light theme reversed</figcaption>
+        </figure>
+      </div>
+
+      {/* Typography — extracted elements */}
+      <StoryBlock
+        subtitle="Typography"
+        title="The Type System"
+        content={[
+          <Text key="p1" size="S">
+            Geist Sans for everything human. Geist Mono for everything data.
+            The font pairing has clear semantic roles — Sans for prose, headings,
+            and UI labels; Mono for scores, selectors, code references, and
+            technical metadata.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/vertaaux/brand/type-pairing-rule.png",
+          alt: "VertaaUX type pairing rule — Geist Sans for everything human, Geist Mono for everything data",
+          width: 1280,
+          height: 96,
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* UI Components — extracted individual elements */}
+      <StoryBlock
+        subtitle="Interface"
+        title="The Components"
+        content={[
+          <Text key="p1" size="S">
+            Neon glow as a signature effect on primary CTAs — used sparingly,
+            max one per screen. Score badges, metric cards, and issue rows follow
+            a consistent 8px card radius, 4px input radius system.
+          </Text>,
+        ]}
+        imageLayout="none"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      <div className={styles.brandImageGrid}>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/ui-score-badge.png"
+            alt="Score badge component — circular ring with score number and label"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Score badge</figcaption>
+        </figure>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/ui-metric-card.png"
+            alt="Metric card component — large number with label and delta indicator"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Metric card</figcaption>
+        </figure>
+        <figure className={styles.brandFigure}>
+          <img
+            src="/images/portfolio/vertaaux/brand/ui-issue-row.png"
+            alt="Issue row component — severity bar, title, WCAG reference, and priority badge"
+            className={styles.brandImage}
+          />
+          <figcaption className={styles.brandCaption}>Issue row</figcaption>
+        </figure>
+      </div>
+
+      {/* Do / Don't — full extracted page */}
+      <StoryBlock
+        subtitle="Brand in Practice"
+        title="Do and Don't"
+        content={[
+          <Text key="p1" size="S">
+            The brand works when every element is used with intention. Logo on
+            dark backgrounds only at full-color teal. Neon teal as a signal
+            color, not decorative. Geist Sans for display, Geist Mono for data.
+            Calm, precise tone. Dark-biased photography with no faces.
+          </Text>,
+        ]}
+        images={{
+          src: "/images/portfolio/vertaaux/brand/do-dont-full.png",
+          alt: "VertaaUX do and don't rules — logo, color, typography, tone of voice, border radius, and photography guidelines",
+          width: 1440,
+          height: 1305,
+        }}
+        imageLayout="single"
+        backgroundColor="transparent"
+        maxWidth="lg"
+        spacing="comfortable"
+        className={styles.storySection}
+      />
+
+      {/* Product — Dashboard */}
       <StoryBlock
         subtitle="Product"
         title="Dashboard Experience"
@@ -336,11 +484,11 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
         ]}
         images={{
-          src: "/images/portfolio/vertaaux/macbook-pro-gradient.jpeg",
-          alt: "VertaaUX product on colorful gradient background",
-          width: 738,
-          height: 506,
-          caption: "Product presentation mockup",
+          src: "/images/portfolio/vertaaux/screenshot-dashboard.webp",
+          alt: "VertaaUX dashboard showing audit history, scores, and team activity",
+          width: 1920,
+          height: 1080,
+          caption: "Dashboard — audit history, scores, and team collaboration.",
         }}
         imageLayout="single"
         backgroundColor="light"
@@ -376,10 +524,10 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               </span>
             </div>
             <div className={styles.metricItem}>
-              <span className={styles.metricValue}>40-90s</span>
+              <span className={styles.metricValue}>&lt;60s</span>
               <span className={styles.metricLabel}>Audit Speed</span>
               <span className={styles.metricDetail}>
-                25x faster than original performance targets
+                Full audit in under a minute, simple sites in seconds
               </span>
             </div>
           </div>

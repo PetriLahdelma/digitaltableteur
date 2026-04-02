@@ -11,9 +11,9 @@ import {
   type ServiceItem,
 } from "../../../patterns/ServicesSection";
 import {
-  WorkPreviewSection,
+  WorkMagneticField,
   type ProjectItem,
-} from "../../../patterns/WorkPreviewSection";
+} from "../../../patterns/WorkMagneticField";
 import { CTASection } from "../../../patterns/CTASection";
 import { DesignSprintsSection } from "../../../patterns/DesignSprintsSection";
 import { ClientLogoMarquee } from "../../ClientLogoMarquee";
@@ -32,18 +32,18 @@ import {
 // Featured projects for homepage
 const FEATURED_PROJECTS: ProjectItem[] = [
   {
+    title: "SAP Build Apps Design System",
+    slug: "sap-build-apps",
+    thumbnail: "/images/portfolio/sap-build-apps/Build Product Icon_1000px.png",
+    category: "Design Systems",
+    tags: ["Enterprise", "Low-Code", "Design System"],
+  },
+  {
     title: "Helsinki Design System",
     slug: "helsinki-design-system",
     thumbnail: "/images/portfolio/helsinki-design-system/HDS_logo.png",
     category: "Design Systems",
     tags: ["Design System", "Accessibility", "React"],
-  },
-  {
-    title: "SAP Build Apps Design System",
-    slug: "sap-build-apps",
-    thumbnail: "/images/portfolio/sap-build-apps/Build Product Icon_1000px.png",
-    category: "Design Systems",
-    tags: ["Enterprise", "Low-Code", "SAP BTP"],
   },
   {
     title: "New Things Co",
@@ -144,11 +144,10 @@ export function HomePage() {
       />
 
       {/* Work Preview Section */}
-      <WorkPreviewSection
+      <WorkMagneticField
         id="work"
         title={t("homeSelectedWork", "Selected work")}
         projects={FEATURED_PROJECTS}
-        layout="featured"
         showViewAll
       />
 
