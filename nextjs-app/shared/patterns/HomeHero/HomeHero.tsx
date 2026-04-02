@@ -155,7 +155,7 @@ export function HomeHero({
         targetId={scrollTargetId}
         variant="chevron"
         position="center"
-        label={t("homeHeroScrollLabel", "Scroll")}
+        label={t("homeHeroScrollLabel", "Scroll to services")}
       />
     </HeroSection>
   );
