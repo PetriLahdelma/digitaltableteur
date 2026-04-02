@@ -30,3 +30,33 @@
 :global(.themeHCB) .primaryButton:hover {
   background-color: #0a2530;
 }
+
+/* Brand background - fluorescent yellow */
+.brandBackground {
+  background-color: var(--logo-background, #dfff00);
+  color: var(--color-primary, #041B23);
+  margin-block: 0;
+}
+
+.brandPrimaryButton {
+  background-color: var(--color-primary, #041B23);
+  color: var(--logo-background, #dfff00);
+}
+
+.brandPrimaryButton:hover {
+  background-color: color-mix(in srgb, var(--color-primary, #041B23) 85%, transparent);
+}
+
+.brandOutlineButton {
+  border: 1px solid var(--color-primary, #041B23);
+  background-color: transparent;
+  color: var(--color-primary, #041B23);
+}
+
+.brandOutlineButton:hover {
+  background-color: color-mix(in srgb, var(--color-primary, #041B23) 8%, transparent);
+}
+
+.brandDescription {
+  color: color-mix(in srgb, var(--color-primary, #041B23) 70%, transparent);
+}

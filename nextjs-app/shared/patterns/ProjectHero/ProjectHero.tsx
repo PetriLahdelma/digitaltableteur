@@ -1,8 +1,10 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { type ReactNode, useRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
+import { useAnimationContext } from "@/providers/AnimationProvider";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { TextReveal } from "../../components/animations/TextReveal";
@@ -63,6 +65,35 @@ export function ProjectHero({
   const isFullWidth = variant === "full-width";
   const isSplit = variant === "split";
   const hasVideo = Boolean(video?.src);
+
+  const tagsRef = useRef<HTMLDivElement>(null);
+  const { motionPreference } = useAnimationContext();
+
+  useGSAP(
+    () => {
+      if (motionPreference === "reduced" || !tagsRef.current) return;
+
+      const tagElements = tagsRef.current.querySelectorAll("[data-tag]");
+      if (!tagElements.length) return;
+
+      gsap.set(tagElements, { opacity: 0, y: 10, scale: 0.9 });
+
+      gsap.to(tagElements, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.4,
+        stagger: 0.06,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: tagsRef.current,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      });
+    },
+    { scope: tagsRef, dependencies: [motionPreference] },
+  );
 
   return (
     <Section
@@ -168,10 +199,11 @@ export function ProjectHero({
               {/* Tags */}
               {tags && tags.length > 0 && (
                 <FadeIn direction="up" delay={0.4} distance={20}>
-                  <div className="flex flex-wrap gap-2 pt-2">
+                  <div ref={tagsRef} className="flex flex-wrap gap-2 pt-2">
                     {tags.map((tag) => (
                       <span
                         key={tag}
+                        data-tag
                         className="px-2.5 py-1 text-xs font-body text-foreground/80 bg-foreground/8 rounded-full"
                       >
                         {tag}
@@ -314,10 +346,11 @@ export function ProjectHero({
             {/* Tags */}
             {tags && tags.length > 0 && (
               <FadeIn direction="up" delay={0.4} distance={20}>
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div ref={tagsRef} className="flex flex-wrap gap-2 pt-2">
                   {tags.map((tag) => (
                     <span
                       key={tag}
+                      data-tag
                       className={cn(
                         "px-2.5 py-1 text-xs font-body rounded-full",
                         isFullWidth

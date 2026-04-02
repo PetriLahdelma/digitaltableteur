@@ -1,0 +1,139 @@
+/* WorkMagneticField — Magnetic cursor-responsive work section */
+
+.section {
+  padding-block: var(--space-layout-80, 5rem);
+  background: hsl(var(--muted) / 0.3);
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-block: var(--space-layout-112, 7rem);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-block-end: var(--space-layout-48, 3rem);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: hsl(var(--foreground));
+}
+
+.viewAllLink {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm, 0.875rem);
+  color: hsl(var(--muted-foreground));
+  transition: color 0.2s ease;
+}
+
+.viewAllLink:hover {
+  color: hsl(var(--foreground));
+}
+
+.viewAllLink:hover .viewAllIcon {
+  transform: translateX(0.25rem);
+}
+
+@media (min-width: 768px) {
+  .viewAllLink {
+    display: flex;
+  }
+}
+
+.viewAllIcon {
+  inline-size: 1rem;
+  block-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+/* Grid with perspective for 3D tilt */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-layout-32, 2rem);
+  perspective: 800px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card wrapper — receives GSAP transforms */
+.cardWrapper {
+  will-change: transform;
+  transform-style: preserve-3d;
+  opacity: 0;
+}
+
+/* Fallback: show cards if JS fails */
+@media (prefers-reduced-motion: reduce) {
+  .cardWrapper {
+    opacity: 1;
+  }
+}
+
+noscript ~ .cardWrapper,
+.cardWrapper:target {
+  opacity: 1;
+}
+
+/* Card container styling — static shadow, rounded, padded */
+.cardContainer {
+  padding-inline: 0.75rem;
+  padding-block-end: 1rem;
+  background: hsl(var(--card));
+  border-radius: var(--radius-xl, 0.75rem);
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.06),
+    0 1px 2px -1px rgb(0 0 0 / 0.06);
+  overflow: hidden;
+}
+
+/* Override EnhancedProjectCard hover effects inside magnetic field */
+.cardContainer :global(.group:hover) img,
+.cardContainer :global(.group:hover) video {
+  transform: none !important;
+}
+
+/* Tags always visible */
+.cardContainer :global(.flex.flex-wrap) {
+  opacity: 1 !important;
+}
+
+/* Remove hover shadow from image container inside card */
+.cardContainer :global(.group-hover\:shadow-lg) {
+  box-shadow: none !important;
+}
+
+/* Mobile view-all link */
+.mobileViewAll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-block-start: var(--space-layout-32, 2rem);
+  font-family: var(--font-body);
+  font-size: var(--text-sm, 0.875rem);
+  color: hsl(var(--muted-foreground));
+  transition: color 0.2s ease;
+}
+
+.mobileViewAll:hover {
+  color: hsl(var(--foreground));
+}
+
+@media (min-width: 768px) {
+  .mobileViewAll {
+    display: none;
+  }
+}
