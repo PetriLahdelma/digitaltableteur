@@ -92,7 +92,7 @@ export function ContactPageContentEditorial({
                   {t("contactAddressLine1", "HKI HQ")}
                 </span>
                 <span className={styles.addressLine}>
-                  {t("contactAddressLine2", "Hämeentie 8")}
+                  {t("contactAddressLine2", "Hämeentie 8 C")}
                 </span>
                 <span className={styles.addressLine}>
                   {t("contactAddressLine3", "00530 Helsinki")}

@@ -325,6 +325,7 @@ export function ContactFormEditorial({
           onChange={updateField("name")}
           error={formErrors.name}
           autoComplete="name"
+          autoFocus
         />
 
         <FormFieldEditorial

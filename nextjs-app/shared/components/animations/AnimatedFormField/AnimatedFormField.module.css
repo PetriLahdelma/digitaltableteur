@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transform-origin: center center;
+  pointer-events: none;
+  border-radius: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrapper {
+    will-change: auto;
+  }
+
+  .accent {
+    display: none;
+  }
+}

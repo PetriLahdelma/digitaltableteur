@@ -1,9 +1,11 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { type ReactNode, useRef } from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
+import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
+import { useAnimationContext } from "@/providers/AnimationProvider";
 import PageLayout from "../PageLayout";
 import { FadeIn } from "../../components/animations/FadeIn";
 import styles from "./ProjectMetaSection.module.css";
@@ -73,6 +75,36 @@ export function ProjectMetaSection({
 }: ProjectMetaSectionProps) {
   const { t } = useTranslation();
 
+  const servicesRef = useRef<HTMLUListElement>(null);
+  const { motionPreference } = useAnimationContext();
+
+  useGSAP(
+    () => {
+      if (motionPreference === "reduced" || !servicesRef.current) return;
+
+      const serviceItems =
+        servicesRef.current.querySelectorAll("[data-service]");
+      if (!serviceItems.length) return;
+
+      gsap.set(serviceItems, { opacity: 0, x: -10, scale: 0.9 });
+
+      gsap.to(serviceItems, {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        duration: 0.4,
+        stagger: 0.06,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: servicesRef.current,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      });
+    },
+    { scope: servicesRef, dependencies: [motionPreference] },
+  );
+
   return (
     <section
       className={cn(backgroundClasses[background], className)}
@@ -92,10 +124,11 @@ export function ProjectMetaSection({
                 <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
                   {t("projectServicesTitle", "Services")}
                 </h3>
-                <ul className="space-y-2">
+                <ul ref={servicesRef} className="space-y-2">
                   {services.map((service) => (
                     <li
                       key={service}
+                      data-service
                       className="font-body text-sm text-foreground flex items-center gap-2"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
