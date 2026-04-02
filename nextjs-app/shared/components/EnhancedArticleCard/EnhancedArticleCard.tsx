@@ -239,35 +239,34 @@ export function EnhancedArticleCard({
         )}
 
         {/* Meta row */}
-        <div className="flex items-center justify-between mt-auto pt-4 border-t border-border/50">
-          {/* Author */}
-          {author && (
-            <div className="flex items-center gap-2">
-              <div className="relative w-7 h-7 rounded-full overflow-hidden bg-muted">
-                <Image
-                  src={authorAvatar}
-                  alt={author.name}
-                  fill
-                  className="object-cover"
-                  sizes="28px"
-                />
-              </div>
-              <span className="text-sm font-body text-foreground">
-                {author.name}
-              </span>
-            </div>
-          )}
-
-          {/* Date and read time */}
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            {formattedDate && <span>{formattedDate}</span>}
-            {formattedDate && readTime && <span>·</span>}
-            {readTime && <span>{readTime}</span>}
+        <div className="flex items-center mt-auto pt-4 border-t border-border/50">
+          {/* Author, date, read time */}
+          <div className="flex items-center gap-2">
+            {author && (
+              <>
+                <div className="relative w-7 h-7 rounded-full overflow-hidden bg-muted shrink-0">
+                  <Image
+                    src={authorAvatar}
+                    alt={author.name}
+                    fill
+                    className="object-cover"
+                    sizes="28px"
+                  />
+                </div>
+                <span className="text-sm font-body text-foreground">
+                  {author.name}
+                </span>
+              </>
+            )}
+            {author && formattedDate && <span className="text-xs text-muted-foreground">·</span>}
+            {formattedDate && <span className="text-xs text-muted-foreground">{formattedDate}</span>}
+            {readTime && <span className="text-xs text-muted-foreground">·</span>}
+            {readTime && <span className="text-xs text-muted-foreground">{readTime}</span>}
           </div>
         </div>
 
         {/* Read more indicator */}
-        <div className="mt-4">
+        <div className="mt-4 flex justify-end">
           <span
             className={cn(
               "text-sm font-body font-medium",

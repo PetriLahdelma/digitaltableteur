@@ -26,7 +26,7 @@ export function WorkHero({
 }: WorkHeroProps) {
   const { t } = useTranslation();
 
-  const displayTitle = title || t("workTitle", "Our Work");
+  const displayTitle = title || t("workTitle", "Work");
   const displayDescription = description || t("workDescription", "Explore our portfolio of design systems, UX design, and creative projects.");
 
   return (
@@ -38,7 +38,6 @@ export function WorkHero({
     >
       <Container size="lg">
         <div className="max-w-3xl">
-          {/* Title with TextReveal animation */}
           <TextReveal
             type="words"
             animation="fade"

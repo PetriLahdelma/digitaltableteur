@@ -5,6 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 import { sortedProjects } from "@/nextjs-app/shared/data/projects";
+import { gsap } from "@/nextjs-app/shared/lib/gsap";
+import { useAnimationContext } from "@/providers/AnimationProvider";
 
 import styles from "./NextWorkNav.module.css";
 
@@ -16,7 +18,27 @@ const workPages = sortedProjects.map((p) => ({
 export function NextWorkNav() {
   const pathname = usePathname();
   const router = useRouter();
+  const { motionPreference } = useAnimationContext();
   const currentIndex = workPages.findIndex((p) => p.path === pathname);
+
+  const navigateWithSlide = (path: string, direction: "left" | "right") => {
+    const main = document.getElementById("main-content");
+    if (!main || motionPreference === "reduced") {
+      router.push(path);
+      return;
+    }
+
+    gsap.to(main, {
+      opacity: 0,
+      x: direction === "left" ? -40 : 40,
+      duration: 0.25,
+      ease: "power2.in",
+      onComplete: () => {
+        router.push(path);
+        gsap.set(main, { opacity: 1, x: 0 });
+      },
+    });
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -37,7 +59,7 @@ export function NextWorkNav() {
             disabled={currentIndex <= 0}
             onClick={() => {
               if (currentIndex > 0)
-                router.push(workPages[currentIndex - 1].path);
+                navigateWithSlide(workPages[currentIndex - 1].path, "right");
             }}
           >
             <span className={styles.buttonLabel}>Previous</span>
@@ -49,7 +71,7 @@ export function NextWorkNav() {
             disabled={currentIndex === workPages.length - 1}
             onClick={() => {
               if (currentIndex < workPages.length - 1)
-                router.push(workPages[currentIndex + 1].path);
+                navigateWithSlide(workPages[currentIndex + 1].path, "left");
             }}
           >
             <span className={styles.buttonLabel}>Next</span>
