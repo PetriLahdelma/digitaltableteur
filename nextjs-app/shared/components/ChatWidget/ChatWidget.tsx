@@ -536,47 +536,82 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   // Check if a tool workflow is active (not idle or error)
   const isToolWorkflowActive = emailWorkflow.step !== "idle" && emailWorkflow.step !== "error";
 
+  // Detect tool invocations in the latest assistant message for richer avatar reactions
+  const lastToolState = useMemo(() => {
+    const lastMsg = messages.findLast((m) => m.role === "assistant");
+    if (!lastMsg?.parts) return null;
+    for (const part of lastMsg.parts) {
+      if (part.type === "tool-invocation") {
+        const inv = part as { toolInvocation?: { toolName?: string; state?: string } };
+        return {
+          toolName: inv.toolInvocation?.toolName,
+          state: inv.toolInvocation?.state, // 'call' | 'partial-call' | 'result'
+        };
+      }
+    }
+    return null;
+  }, [messages]);
+
   // Map chat status to DonnyAvatar state
-  // Priority: error > tool workflow success/active > streaming states > keyword reactions > user typing > idle
+  // Priority: error > tool workflow > tool invocations > streaming > keyword reactions > greeting > typing > idle
   const avatarState = useMemo((): DonnyState => {
     if (error) return "error";
-    
+
     // Donny is happy/celebrating when a tool workflow is triggered and active
     if (isToolWorkflowActive) {
-      if (emailWorkflow.step === "success") {
-        return "celebrating";
-      }
-      if (emailWorkflow.step === "sending") {
-        return "thinking";
-      }
-      // Active workflow steps - Donny is happy to help!
+      if (emailWorkflow.step === "success") return "celebrating";
+      if (emailWorkflow.step === "sending") return "thinking";
       return "success";
     }
-    
+
+    // Tool invocation states — Donny reacts to using his tools
+    if (lastToolState && status === "streaming") {
+      const { toolName, state: toolState } = lastToolState;
+      if (toolState === "call" || toolState === "partial-call") {
+        // Donny is actively searching/working
+        if (toolName === "studio.projectShowcase") return "searching";
+        if (toolName === "studio.navigateTo") return "handoff";
+        return "searching";
+      }
+      if (toolState === "result") {
+        // Tool returned data — Donny is confident/impressed
+        if (toolName === "studio.projectShowcase") return "impressed";
+        if (toolName === "studio.openHours") return "confident";
+        return "confident";
+      }
+    }
+
     if (status === "submitted") return "thinking";
     if (status === "streaming") return "typing";
-    
+
+    // First message / greeting state — Donny waves
+    if (messages.length <= 1 && !draft.trim()) return "greeting";
+
     const trimmedDraft = draft.trim().toLowerCase();
     if (trimmedDraft.length > 0) {
-      // Check for tool-calling keywords that make Donny extra interested
-      const hasToolKeyword = TOOL_KEYWORDS.some(keyword => 
+      // Gratitude keywords — Donny celebrates
+      if (/\b(thanks?|thank you|thx|cheers|great|awesome|perfect)\b/.test(trimmedDraft)) {
+        return "celebrating";
+      }
+
+      // Frustration keywords — Donny becomes apologetic
+      if (/\b(doesn't work|broken|wrong|bad|terrible|frustrated|annoyed)\b/.test(trimmedDraft)) {
+        return "apologetic";
+      }
+
+      // Tool-calling keywords — Donny gets curious
+      const hasToolKeyword = TOOL_KEYWORDS.some(keyword =>
         trimmedDraft.includes(keyword)
       );
-      
-      if (hasToolKeyword) {
-        // Donny gets excited about potential tool calls
-        return "curious";
-      }
-      
-      // Check for question marks - Donny focuses
-      if (trimmedDraft.includes("?")) {
-        return "focused";
-      }
-      
+      if (hasToolKeyword) return "curious";
+
+      // Question marks — Donny focuses
+      if (trimmedDraft.includes("?")) return "focused";
+
       return "listening";
     }
     return "idle";
-  }, [status, error, draft, isToolWorkflowActive, emailWorkflow.step]);
+  }, [status, error, draft, isToolWorkflowActive, emailWorkflow.step, lastToolState, messages]);
 
   useEffect(() => {
     const hydrated = loadStoredMessages(greetingText);
