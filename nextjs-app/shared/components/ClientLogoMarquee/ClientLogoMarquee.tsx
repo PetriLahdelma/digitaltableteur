@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
+import { useAnimationContext } from "@/providers/AnimationProvider";
 
 type ClientLogo = {
   src: string;
@@ -81,6 +82,9 @@ const logos: ClientLogo[] = [
 const mobilePrimaryLogos = logos.filter((_, index) => index % 2 === 0);
 const mobileSecondaryLogos = logos.filter((_, index) => index % 2 !== 0);
 
+/** Speed constant: pixels per second */
+const MARQUEE_SPEED = 50;
+
 function LogoItem({
   logo,
   duplicate = false,
@@ -132,59 +136,85 @@ function LogoItem({
   );
 }
 
-function useMarqueeWidth() {
-  const laneRef = useRef<HTMLDivElement>(null);
-  const [ready, setReady] = useState(false);
-
-  const measure = useCallback(() => {
-    const lane = laneRef.current;
-    if (!lane) return;
-    const firstGroup = lane.children[0] as HTMLElement | undefined;
-    if (!firstGroup) return;
-    const width = firstGroup.scrollWidth;
-    if (width > 0) {
-      lane.style.setProperty("--marquee-width", `${width}px`);
-      setReady(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    measure();
-    const timer = setTimeout(measure, 200);
-    window.addEventListener("resize", measure);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", measure);
-    };
-  }, [measure]);
-
-  return { laneRef, ready };
-}
-
 function LogoLane({
   laneLogos,
   className,
   groupClassName,
+  reverse = false,
 }: {
   laneLogos: ClientLogo[];
   className: string;
   groupClassName: string;
+  reverse?: boolean;
 }) {
-  const { laneRef, ready } = useMarqueeWidth();
+  const laneRef = useRef<HTMLDivElement>(null);
+  const tweenRef = useRef<gsap.core.Tween | null>(null);
+
+  useGSAP(
+    () => {
+      const lane = laneRef.current;
+      if (!lane) return;
+
+      const firstGroup = lane.querySelector(
+        "[data-marquee-group]",
+      ) as HTMLElement | null;
+      if (!firstGroup) return;
+
+      const width = firstGroup.scrollWidth;
+      if (width <= 0) return;
+
+      const groups = lane.querySelectorAll("[data-marquee-group]");
+
+      tweenRef.current = gsap.to(groups, {
+        x: reverse ? width : -width,
+        duration: width / MARQUEE_SPEED,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize((x: string) => {
+            const val = parseFloat(x);
+            // Wrap the value so it seamlessly loops
+            return reverse
+              ? ((val % width) + width) % width
+              : -(((Math.abs(val)) % width + width) % width);
+          }),
+        },
+      });
+    },
+    { scope: laneRef },
+  );
+
+  const handleMouseEnter = () => {
+    if (tweenRef.current) {
+      gsap.to(tweenRef.current, {
+        timeScale: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (tweenRef.current) {
+      gsap.to(tweenRef.current, {
+        timeScale: 1,
+        duration: 0.5,
+        ease: "power2.in",
+      });
+    }
+  };
 
   return (
     <div
       ref={laneRef}
       className={className}
-      style={{
-        opacity: ready ? 1 : 0,
-        transition: "opacity 0.3s ease",
-        animationPlayState: ready ? "running" : "paused",
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {[0, 1].map((duplicateIndex) => (
         <div
           key={duplicateIndex}
+          data-marquee-group
           className={groupClassName}
           aria-hidden={duplicateIndex > 0 ? "true" : undefined}
         >
@@ -206,9 +236,9 @@ export function ClientLogoMarquee({
 }: {
   ariaLabel: string;
 }) {
-  const shouldReduceMotion = useReducedMotion();
+  const { motionPreference } = useAnimationContext();
 
-  if (shouldReduceMotion) {
+  if (motionPreference === "reduced") {
     return (
       <section aria-label={ariaLabel} className="py-3">
         <div className="grid grid-cols-3 items-center justify-items-center gap-4 md:grid-cols-6 md:gap-6 lg:grid-cols-9">
@@ -229,22 +259,23 @@ export function ClientLogoMarquee({
         <div className="overflow-hidden">
           <LogoLane
             laneLogos={mobilePrimaryLogos}
-            className="client-logo-marquee-mobile pointer-events-none flex w-max items-center"
+            className="flex w-max items-center"
             groupClassName="flex items-center gap-5 pr-5"
           />
         </div>
         <div className="overflow-hidden">
           <LogoLane
             laneLogos={mobileSecondaryLogos}
-            className="client-logo-marquee-mobile-reverse pointer-events-none flex w-max items-center"
+            className="flex w-max items-center"
             groupClassName="flex items-center gap-5 pr-5"
+            reverse
           />
         </div>
       </div>
       <div className="hidden md:block">
         <LogoLane
           laneLogos={logos}
-          className="client-logo-marquee-desktop pointer-events-none flex w-max items-center py-3"
+          className="flex w-max items-center py-3"
           groupClassName="flex items-center gap-10 pr-10"
         />
       </div>

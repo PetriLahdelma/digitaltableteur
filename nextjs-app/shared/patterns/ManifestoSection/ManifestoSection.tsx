@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useRef, useState, useEffect, useMemo, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
+import { gsap } from "@/nextjs-app/shared/lib/gsap";
+import { useAnimationContext } from "@/providers/AnimationProvider";
 
 export interface ManifestoToken {
   /** Token text content */
@@ -52,6 +54,22 @@ export function ManifestoSection({
   background = "transparent",
   className,
 }: ManifestoSectionProps) {
+  const { motionPreference } = useAnimationContext();
+
+  // Refs for GSAP animation targets
+  const tokenRefs = useRef<Map<number, HTMLSpanElement>>(new Map());
+  const prevActiveRef = useRef<number | null>(null);
+  const pulseRef = useRef<gsap.core.Tween | null>(null);
+
+  // Set ref for each token element
+  const setTokenRef = useCallback(
+    (idx: number, el: HTMLSpanElement | null) => {
+      if (el) tokenRefs.current.set(idx, el);
+      else tokenRefs.current.delete(idx);
+    },
+    []
+  );
+
   // Get indices of highlightable tokens
   const highlightableIndices = useMemo(
     () =>
@@ -66,22 +84,9 @@ export function ManifestoSection({
     highlightableIndices[0] ?? null
   );
 
-  // Check for reduced motion preference
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handler = (e: MediaQueryListEvent) =>
-      setPrefersReducedMotion(e.matches);
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
-
   // Cycle through highlights randomly
   useEffect(() => {
-    if (!highlightableIndices.length || prefersReducedMotion) return;
+    if (!highlightableIndices.length || motionPreference === "reduced") return;
 
     let current = highlightableIndices[0];
     const id = window.setInterval(() => {
@@ -99,7 +104,76 @@ export function ManifestoSection({
     }, interval);
 
     return () => window.clearInterval(id);
-  }, [highlightableIndices, interval, prefersReducedMotion]);
+  }, [highlightableIndices, interval, motionPreference]);
+
+  // GSAP animation for token transitions
+  useEffect(() => {
+    if (motionPreference === "reduced" || activeIdx === null) return;
+
+    const prevIdx = prevActiveRef.current;
+    prevActiveRef.current = activeIdx;
+
+    // Kill previous pulse animation
+    if (pulseRef.current) {
+      pulseRef.current.kill();
+      pulseRef.current = null;
+    }
+
+    // Animate out previous active token
+    if (prevIdx !== null && prevIdx !== activeIdx) {
+      const prevEl = tokenRefs.current.get(prevIdx);
+      if (prevEl) {
+        gsap.to(prevEl, {
+          scale: 1,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      }
+    }
+
+    // Animate in new active token
+    const activeEl = tokenRefs.current.get(activeIdx);
+    if (activeEl) {
+      gsap.fromTo(
+        activeEl,
+        { scale: 0.92, y: 2 },
+        {
+          scale: 1.05,
+          y: -1,
+          duration: 0.5,
+          ease: "elastic.out(1, 0.4)",
+          onComplete: () => {
+            // Settle back and start pulse
+            gsap.to(activeEl, {
+              scale: 1,
+              y: 0,
+              duration: 0.3,
+              ease: "power2.out",
+              onComplete: () => {
+                // Continuous gentle pulse on active token
+                pulseRef.current = gsap.to(activeEl, {
+                  scale: 1.02,
+                  duration: 1.2,
+                  ease: "sine.inOut",
+                  yoyo: true,
+                  repeat: -1,
+                });
+              },
+            });
+          },
+        }
+      );
+    }
+
+    // Cleanup on unmount
+    return () => {
+      if (pulseRef.current) {
+        pulseRef.current.kill();
+        pulseRef.current = null;
+      }
+    };
+  }, [activeIdx, motionPreference]);
 
   // Check if there are more highlightable tokens after current index
   const hasNextHighlightable = useCallback(
@@ -151,11 +225,12 @@ export function ManifestoSection({
               return (
                 <span key={`${idx}-${token.text}`} className="contents">
                   <span
+                    ref={(el) => setTokenRef(idx, el)}
                     className={cn(
                       "inline-flex items-center",
                       "px-1.5 py-0.5",
                       "rounded-md",
-                      "transition-all duration-200 ease-out",
+                      "transition-colors duration-200 ease-out",
                       isActive && [
                         isGradient
                           ? "bg-white text-purple-700"
