@@ -229,6 +229,7 @@ export function WorkMagneticField({
               ref={setCardRef(index)}
               className={styles.cardWrapper}
               role="listitem"
+              aria-label={project.title}
             >
               <div className={styles.cardContainer}>
                 <EnhancedProjectCard

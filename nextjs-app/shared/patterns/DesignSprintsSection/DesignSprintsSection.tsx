@@ -24,7 +24,7 @@ export interface DesignSprintsSectionProps {
 function SprintButton({ label }: { label: string }) {
   return (
     <a
-      href="/contact"
+      href="/contact?service=design-sprint"
       data-donny-interest="design-sprint"
       className={cn(
         "group relative inline-flex items-center",

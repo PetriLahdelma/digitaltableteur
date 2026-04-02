@@ -115,7 +115,7 @@ function LogoItem({
         aria-hidden={duplicate ? "true" : undefined}
         role={duplicate ? "presentation" : undefined}
         className="client-logo-marquee-image block"
-        loading="eager"
+        loading={duplicate ? "lazy" : "eager"}
         decoding="async"
         style={
           hasCustomWidth

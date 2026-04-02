@@ -1,23 +1,34 @@
 "use client";
 
 import { useMemo } from "react";
+import dynamic from "next/dynamic";
 import { useTranslation } from "react-i18next";
 import styles from "./Home.module.css";
 
-// Patterns
+// Above-fold patterns (eager)
 import { HomeHero } from "../../../patterns/HomeHero";
 import {
   ServicesSection,
   type ServiceItem,
 } from "../../../patterns/ServicesSection";
-import {
-  WorkMagneticField,
-  type ProjectItem,
-} from "../../../patterns/WorkMagneticField";
-import { CTASection } from "../../../patterns/CTASection";
-import { DesignSprintsSection } from "../../../patterns/DesignSprintsSection";
-import { ClientLogoMarquee } from "../../ClientLogoMarquee";
-import HighlightSection from "../../../patterns/HighlightSection";
+
+// Below-fold patterns (lazy)
+import { type ProjectItem } from "../../../patterns/WorkMagneticField";
+const WorkMagneticField = dynamic(
+  () => import("../../../patterns/WorkMagneticField").then((m) => ({ default: m.WorkMagneticField })),
+);
+const CTASection = dynamic(
+  () => import("../../../patterns/CTASection").then((m) => ({ default: m.CTASection })),
+);
+const DesignSprintsSection = dynamic(
+  () => import("../../../patterns/DesignSprintsSection").then((m) => ({ default: m.DesignSprintsSection })),
+);
+const ClientLogoMarquee = dynamic(
+  () => import("../../ClientLogoMarquee").then((m) => ({ default: m.ClientLogoMarquee })),
+);
+const HighlightSection = dynamic(
+  () => import("../../../patterns/HighlightSection"),
+);
 
 // Service icons
 import {
