@@ -146,9 +146,6 @@
   max-width: 1777px;
   height: auto;
   border-radius: var(--radius-m);
-  margin-block-start: -12%;
-  margin-block-end: -12%;
-  clip-path: inset(12% 0 12% 0 round var(--radius-m));
 }
 
 .knobsVideoContainer {
@@ -156,7 +153,6 @@
   max-width: 355px;
   height: 66.67%;
   border-radius: var(--radius-m);
-  background-color: var(--color-light-bg);
   overflow: hidden;
 }
 
@@ -165,7 +161,6 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  mix-blend-mode: multiply;
 }
 
 .videoCaption {
