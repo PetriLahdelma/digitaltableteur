@@ -96,9 +96,9 @@
 .pre {
   margin: 0;
   padding: var(--space-layout-16);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-light-bg);
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
   overflow-x: auto;
   overflow-y: hidden;
 }
