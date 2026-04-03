@@ -50,7 +50,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           showScrollIndicator={true}
         />
       }
-      relatedProjects={<RelatedProjects currentSlug={project.slug} maxItems={3} />}
+      relatedProjects={<RelatedProjects currentSlug={project.slug} />}
     >
       {/* Project metadata */}
       <ProjectMetaSection

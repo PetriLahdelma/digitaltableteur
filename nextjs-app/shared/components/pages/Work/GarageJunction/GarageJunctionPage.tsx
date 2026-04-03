@@ -42,7 +42,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
           className={styles.hero}
         />
       }
-      relatedProjects={<RelatedProjects currentSlug={project.slug} maxItems={3} />}
+      relatedProjects={<RelatedProjects currentSlug={project.slug} />}
       className={styles.page}
     >
       {/* Project Meta - Custom 2-column layout */}

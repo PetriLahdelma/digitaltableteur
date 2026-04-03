@@ -44,7 +44,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         />
       }
       relatedProjects={
-        <RelatedProjects currentSlug={project.slug} maxItems={3} />
+        <RelatedProjects currentSlug={project.slug} />
       }
     >
       {/* Project Meta - Custom 2-column layout like VertaaUX */}

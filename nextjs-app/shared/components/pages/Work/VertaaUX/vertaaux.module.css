@@ -194,6 +194,15 @@
   aspect-ratio: 16 / 9;
 }
 
+@media (width < 768px) {
+  .logoCardDark,
+  .logoCardLight,
+  .logoCardGradient {
+    padding: var(--space-layout-24);
+    aspect-ratio: 4 / 3;
+  }
+}
+
 .logoCardGradient {
   background-color: #141414;
   border-radius: 0.75rem;
