@@ -196,6 +196,9 @@ const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
           <span className={`${styles.dot} ${styles.close}`} />
           <span className={`${styles.dot} ${styles.minimize}`} />
           <span className={`${styles.dot} ${styles.maximize}`} />
+          <Text as="span" size="XXS" className={styles.language}>
+            {languageLabel}
+          </Text>
         </div>
         <div className={styles.headerInfo}>
           {title ? (
@@ -203,9 +206,6 @@ const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
               {title}
             </Text>
           ) : null}
-          <Text as="span" size="XXS" className={styles.language}>
-            {languageLabel}
-          </Text>
         </div>
         <div className={styles.actions}>
           <Button

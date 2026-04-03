@@ -41,32 +41,32 @@
   background-color: #0a2530;
 }
 
-/* Brand background - fluorescent yellow */
+/* Brand background - uses logo-background/logo-color pair for guaranteed contrast */
 .brandBackground {
   background-color: var(--logo-background, #dfff00);
-  color: var(--color-primary, #041B23);
+  color: var(--logo-color, #000);
   margin-block: 0;
 }
 
 .brandPrimaryButton {
-  background-color: var(--color-primary, #041B23);
+  background-color: var(--logo-color, #000);
   color: var(--logo-background, #dfff00);
 }
 
 .brandPrimaryButton:hover {
-  background-color: color-mix(in srgb, var(--color-primary, #041B23) 85%, transparent);
+  background-color: color-mix(in srgb, var(--logo-color, #000) 85%, transparent);
 }
 
 .brandOutlineButton {
-  border: 1px solid var(--color-primary, #041B23);
+  border: 1px solid var(--logo-color, #000);
   background-color: transparent;
-  color: var(--color-primary, #041B23);
+  color: var(--logo-color, #000);
 }
 
 .brandOutlineButton:hover {
-  background-color: color-mix(in srgb, var(--color-primary, #041B23) 8%, transparent);
+  background-color: color-mix(in srgb, var(--logo-color, #000) 8%, transparent);
 }
 
 .brandDescription {
-  color: color-mix(in srgb, var(--color-primary, #041B23) 70%, transparent);
+  color: color-mix(in srgb, var(--logo-color, #000) 70%, transparent);
 }

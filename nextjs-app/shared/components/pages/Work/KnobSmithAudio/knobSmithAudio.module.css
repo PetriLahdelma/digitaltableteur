@@ -144,29 +144,27 @@
 .meterVideo {
   width: 100%;
   max-width: 1777px;
-  height: 400px;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
   border-radius: var(--radius-m);
+  margin-block-start: -12%;
+  margin-block-end: -12%;
+  clip-path: inset(12% 0 12% 0 round var(--radius-m));
 }
 
-@media (width >= 768px) {
-  .meterVideo {
-    height: 480px;
-  }
-}
-
-@media (width >= 1024px) {
-  .meterVideo {
-    height: 560px;
-  }
+.knobsVideoContainer {
+  width: 44%;
+  max-width: 355px;
+  height: 66.67%;
+  border-radius: var(--radius-m);
+  background-color: var(--color-light-bg);
+  overflow: hidden;
 }
 
 .knobsVideo {
-  width: 44%;
-  max-width: 355px;
-  height: auto;
-  border-radius: var(--radius-m);
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
   mix-blend-mode: multiply;
 }
 
@@ -318,7 +316,7 @@
   font-family: "JetBrains Mono", monospace;
   font-size: 1rem;
   font-weight: 600;
-  color: #2b2f33;
+  color: var(--color-text);
 }
 
 .swatchHex {
@@ -330,7 +328,7 @@
 }
 
 .swatchDescription {
-  color: #2b2f33;
+  color: var(--color-text-secondary);
   margin-block-start: var(--space-internal-8);
 }
 
@@ -437,7 +435,7 @@
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
-  color: #2b2f33;
+  color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -472,7 +470,7 @@
   font-family: var(--font-body);
   font-size: 1.25rem;
   font-weight: 600;
-  color: #2b2f33;
+  color: var(--color-text);
   margin-block-end: var(--space-internal-16);
 }
 
