@@ -13,21 +13,12 @@ export const metadata: Metadata = {
       "Relaunching Photo Raw as Raw View, a 160-page bilingual bookazine and e-magazine for documentary photography.",
     type: "article",
     siteName: "Digitaltableteur",
-    images: [
-      {
-        url: "/images/portfolio/raw-view/hero.jpg",
-        width: 2362,
-        height: 1577,
-        alt: "Raw View editorial spread preview",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Raw View Case Study | Digitaltableteur",
     description:
       "Relaunching Photo Raw as Raw View, a 160-page bilingual bookazine and e-magazine for documentary photography.",
-    images: ["/images/portfolio/raw-view/hero.jpg"],
   },
   alternates: {
     canonical: "/work/raw-view",

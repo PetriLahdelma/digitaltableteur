@@ -31,20 +31,11 @@ export const metadata: Metadata = {
     description: `Explore our portfolio of design systems, UX design, and creative projects. See case studies from ${projectNames}, and more.`,
     type: "website",
     siteName: "Digitaltableteur",
-    images: [
-      {
-        url: "/logo512.png",
-        width: 512,
-        height: 512,
-        alt: "Digitaltableteur Logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Work & Portfolio | Digitaltableteur",
     description: `Explore our portfolio of design systems, UX design, and creative projects. See case studies from ${projectNames}, and more.`,
-    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/work",
