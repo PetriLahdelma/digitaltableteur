@@ -68,6 +68,7 @@
   letter-spacing: 0.08em;
   color: var(--color-muted);
   margin: 0;
+  margin-inline-start: var(--space-layout-8);
 }
 
 .actions {
