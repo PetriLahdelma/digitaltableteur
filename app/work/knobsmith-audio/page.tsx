@@ -13,21 +13,12 @@ export const metadata: Metadata = {
       "Designing frictionless UX for audio plugins, blending analog inspiration with modern interaction patterns.",
     type: "article",
     siteName: "Digitaltableteur",
-    images: [
-      {
-        url: "/images/portfolio/knobsmith-audio/hero.png",
-        width: 2400,
-        height: 1260,
-        alt: "KnobSmith Audio plugin landing visual",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "KnobSmith Audio Case Study | Digitaltableteur",
     description:
       "Designing frictionless UX for audio plugins, blending analog inspiration with modern interaction patterns.",
-    images: ["/images/portfolio/knobsmith-audio/hero.png"],
   },
   alternates: {
     canonical: "/work/knobsmith-audio",

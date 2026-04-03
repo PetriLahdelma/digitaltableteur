@@ -13,21 +13,12 @@ export const metadata: Metadata = {
       "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and React/TypeScript components serving 300+ developers and designers.",
     type: "article",
     siteName: "Digitaltableteur",
-    images: [
-      {
-        url: "/images/portfolio/sap-build-apps/hero-background.webp",
-        width: 1200,
-        height: 600,
-        alt: "SAP Build Apps design system components",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SAP Build Apps Design System | Digitaltableteur",
     description:
       "Design system lead for SAP Build Apps — SAP's flagship low-code platform. 100+ Figma and React/TypeScript components serving 300+ developers and designers.",
-    images: ["/images/portfolio/sap-build-apps/hero-background.webp"],
   },
   alternates: {
     canonical: "/work/sap-build-apps",

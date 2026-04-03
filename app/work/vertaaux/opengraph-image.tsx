@@ -2,12 +2,12 @@ import { ImageResponse } from "next/og";
 import { OG_SIZE, LogoSvg } from "../../lib/og-image-utils";
 
 export const runtime = "edge";
-export const alt = "Illustrations — Digitaltableteur Portfolio";
+export const alt = "VertaaUX — Digitaltableteur Portfolio";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
-const CORAL = "#FF6B6B";
-const DARK = "#041B23";
+const VERTAAUX_TEAL = "#00FFCC";
+const DARK = "#0D0D0D";
 
 const MONO_FONT_URL =
   "https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.ttf";
@@ -28,19 +28,24 @@ export default async function Image() {
           overflow: "hidden",
         }}
       >
-        {/* Diagonal coral slab */}
-        <div
+        {/* Giant VertaaUX logo shape — background element */}
+        <svg
+          width="800"
+          height="480"
+          viewBox="0 0 32 27"
+          fill="none"
           style={{
             position: "absolute",
-            top: -120,
-            right: -80,
-            width: 500,
-            height: 900,
-            backgroundColor: CORAL,
-            transform: "rotate(-12deg)",
-            display: "flex",
+            top: 20,
+            right: -200,
           }}
-        />
+        >
+          <path
+            d="M12.0508 26.2451L0 10.3916H12.0508V0H32L12.0508 26.2451Z"
+            fill={VERTAAUX_TEAL}
+            opacity="1"
+          />
+        </svg>
 
         {/* Content */}
         <div
@@ -75,7 +80,7 @@ export default async function Image() {
                 borderRadius: 24,
               }}
             >
-              <LogoSvg size={28} color={DARK} />
+              <LogoSvg size={28} color="#041B23" />
             </div>
             <div
               style={{
@@ -98,12 +103,12 @@ export default async function Image() {
               display: "flex",
               fontSize: 14,
               fontWeight: 800,
-              color: CORAL,
+              color: VERTAAUX_TEAL,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
             }}
           >
-            Collection
+            Case Study
           </div>
 
           {/* Headline */}
@@ -125,7 +130,7 @@ export default async function Image() {
                 lineHeight: 0.95,
               }}
             >
-              Illustrations
+              VertaaUX
             </div>
           </div>
 
@@ -139,7 +144,7 @@ export default async function Image() {
               letterSpacing: "0.02em",
             }}
           >
-            Editorial → Character Design → Visual Storytelling
+            UX Intelligence → Accessibility → AI Agents
           </div>
         </div>
       </div>
