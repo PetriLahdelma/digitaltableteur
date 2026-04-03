@@ -84,17 +84,8 @@ export const extractCopy = (message: UIMessage): string => {
         return typeof part.text === "string" ? part.text : "";
       }
       if (part.type === "tool-result" || part.type.startsWith("tool-")) {
-        const toolPart = part as unknown as {
-          text?: unknown;
-          result?: unknown;
-          content?: unknown;
-        };
-        return (
-          coerceToDisplayText(toolPart.text) ??
-          coerceToDisplayText(toolPart.result) ??
-          coerceToDisplayText(toolPart.content) ??
-          ""
-        );
+        // Tool results are rendered as interactive components — skip text extraction.
+        return "";
       }
       return "";
     })
@@ -272,9 +263,19 @@ export const processConversationWithFlags = (
         )
         .trim();
     }
+    // Strip any residual "[...result available]" placeholders from stored messages
+    assistantDisplay = assistantDisplay
+      .replace(/\[(?:call_\w+|studio\.\w+|\w+)\s+result\s+available\]\n*/g, "")
+      .trim();
+
     const parts: ProcessedPart[] = [
       { kind: "text", content: assistantDisplay },
     ];
+
+    // Extract tool result components (NavigateLink, ProjectCards, etc.)
+    const toolParts = extractToolResultParts(m);
+    parts.push(...toolParts);
+
     if (pendingOpenHours) {
       parts.push({
         kind: "component",

@@ -159,13 +159,9 @@ const extractTextFromMessage = (message: UIMessage) => {
         return typeof textValue === "string" ? textValue : "";
       }
       if (part.type === "tool-result" || part.type.startsWith("tool-")) {
-        const toolPart = part as unknown as {
-          type: string;
-          toolName?: string;
-          toolCallId: string;
-        };
-        const label = toolPart.toolName ?? toolPart.toolCallId ?? "tool";
-        return `[${label} result available]`;
+        // Tool results are rendered as interactive components (NavigateLink, ProjectCards, etc.)
+        // — never include placeholder text for them in stored messages.
+        return "";
       }
       return "";
     })
