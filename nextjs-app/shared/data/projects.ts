@@ -226,17 +226,26 @@ export function getProjectBySlug(slug: string): Project | undefined {
  */
 export function getRelatedProjects(
   currentSlug: string,
-  maxItems: number = 3,
+  maxItems: number = 2,
 ): Project[] {
   const current = getProjectBySlug(currentSlug);
   if (!current) return [];
 
-  return projects
-    .filter(
-      (project) =>
-        project.slug !== currentSlug && project.category === current.category,
-    )
-    .slice(0, maxItems);
+  const sameCategory = projects.filter(
+    (project) =>
+      project.slug !== currentSlug && project.category === current.category,
+  );
+
+  if (sameCategory.length >= maxItems) {
+    return sameCategory.slice(0, maxItems);
+  }
+
+  const otherProjects = projects.filter(
+    (project) =>
+      project.slug !== currentSlug && project.category !== current.category,
+  );
+
+  return [...sameCategory, ...otherProjects].slice(0, maxItems);
 }
 
 /**
