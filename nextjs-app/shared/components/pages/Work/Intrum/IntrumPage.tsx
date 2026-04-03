@@ -41,7 +41,7 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
           showScrollIndicator={true}
         />
       }
-      relatedProjects={<RelatedProjects currentSlug={project.slug} maxItems={3} />}
+      relatedProjects={<RelatedProjects currentSlug={project.slug} />}
       className={styles.page}
     >
       <ProjectMetaSection

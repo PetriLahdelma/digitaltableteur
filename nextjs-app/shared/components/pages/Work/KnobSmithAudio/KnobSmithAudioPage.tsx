@@ -44,7 +44,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         />
       }
       relatedProjects={
-        <RelatedProjects currentSlug={project.slug} maxItems={3} />
+        <RelatedProjects currentSlug={project.slug} />
       }
       className={styles.page}
     >
