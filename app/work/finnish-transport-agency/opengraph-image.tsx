@@ -2,11 +2,13 @@ import { ImageResponse } from "next/og";
 import { OG_SIZE, LogoSvg } from "../../lib/og-image-utils";
 
 export const runtime = "edge";
-export const alt = "Illustrations — Digitaltableteur Portfolio";
+export const alt = "Finnish Transport Agency — Digitaltableteur Portfolio";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
-const CORAL = "#FF6B6B";
+const TEAL = "#3DB7E4";
+const PROCESS_BLUE = "#0088CE";
+const NAVY = "#0046AD";
 const DARK = "#041B23";
 
 const MONO_FONT_URL =
@@ -28,20 +30,6 @@ export default async function Image() {
           overflow: "hidden",
         }}
       >
-        {/* Diagonal coral slab */}
-        <div
-          style={{
-            position: "absolute",
-            top: -120,
-            right: -80,
-            width: 500,
-            height: 900,
-            backgroundColor: CORAL,
-            transform: "rotate(-12deg)",
-            display: "flex",
-          }}
-        />
-
         {/* Content */}
         <div
           style={{
@@ -98,12 +86,12 @@ export default async function Image() {
               display: "flex",
               fontSize: 14,
               fontWeight: 800,
-              color: CORAL,
+              color: PROCESS_BLUE,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
             }}
           >
-            Collection
+            Case Study
           </div>
 
           {/* Headline */}
@@ -118,14 +106,38 @@ export default async function Image() {
             <div
               style={{
                 display: "flex",
-                fontSize: 84,
+                fontSize: 72,
                 fontWeight: 800,
-                color: "#ffffff",
+                color: TEAL,
                 letterSpacing: "-0.04em",
                 lineHeight: 0.95,
               }}
             >
-              Illustrations
+              Finnish
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 72,
+                fontWeight: 800,
+                color: PROCESS_BLUE,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.95,
+              }}
+            >
+              Transport
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 72,
+                fontWeight: 800,
+                color: NAVY,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.95,
+              }}
+            >
+              Agency
             </div>
           </div>
 
@@ -139,7 +151,7 @@ export default async function Image() {
               letterSpacing: "0.02em",
             }}
           >
-            Editorial → Character Design → Visual Storytelling
+            Brand Identity → Public Sector → Multilingual
           </div>
         </div>
       </div>

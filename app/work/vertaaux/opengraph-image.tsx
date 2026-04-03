@@ -1,31 +1,20 @@
 import { ImageResponse } from "next/og";
-import { OG_SIZE, BRAND_DARK, LogoSvg } from "../../lib/og-image-utils";
+import { OG_SIZE, LogoSvg } from "../../lib/og-image-utils";
 
 export const runtime = "edge";
-export const alt = "VertaaUX — AI-Powered UX Intelligence Platform";
+export const alt = "VertaaUX — Digitaltableteur Portfolio";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
 const VERTAAUX_TEAL = "#00FFCC";
+const DARK = "#0D0D0D";
 
-function VertaaUXLogo({ logoSize = 80 }: { logoSize?: number }) {
-  const h = Math.round(logoSize * (27 / 32));
-  return (
-    <svg
-      width={logoSize}
-      height={h}
-      viewBox="0 0 32 27"
-      fill="none"
-    >
-      <path
-        d="M12.0508 26.2451L0 10.3916H12.0508V0H32L12.0508 26.2451Z"
-        fill={VERTAAUX_TEAL}
-      />
-    </svg>
-  );
-}
+const MONO_FONT_URL =
+  "https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.ttf";
 
 export default async function Image() {
+  const monoFont = await fetch(MONO_FONT_URL).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -33,22 +22,48 @@ export default async function Image() {
           height: "100%",
           width: "100%",
           display: "flex",
-          flexDirection: "column",
-          backgroundColor: "#0D0D0D",
-          padding: 60,
+          fontFamily: "JetBrains Mono",
+          backgroundColor: DARK,
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Top bar with DT logo */}
+        {/* Giant VertaaUX logo shape — background element */}
+        <svg
+          width="800"
+          height="480"
+          viewBox="0 0 32 27"
+          fill="none"
+          style={{
+            position: "absolute",
+            top: 20,
+            right: -200,
+          }}
+        >
+          <path
+            d="M12.0508 26.2451L0 10.3916H12.0508V0H32L12.0508 26.2451Z"
+            fill={VERTAAUX_TEAL}
+            opacity="1"
+          />
+        </svg>
+
+        {/* Content */}
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginBottom: 60,
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            padding: "0 80px 64px 80px",
+            flex: 1,
+            position: "relative",
           }}
         >
+          {/* Logo lockup — top left */}
           <div
             style={{
+              position: "absolute",
+              top: 56,
+              left: 80,
               display: "flex",
               alignItems: "center",
               gap: 16,
@@ -65,102 +80,85 @@ export default async function Image() {
                 borderRadius: 24,
               }}
             >
-              <LogoSvg size={28} color={BRAND_DARK} />
+              <LogoSvg size={28} color="#041B23" />
             </div>
             <div
               style={{
                 display: "flex",
-                fontSize: 24,
-                fontWeight: 700,
-                color: "#ffffff",
+                fontSize: 20,
+                fontWeight: 800,
+                color: "rgba(255,255,255,0.6)",
+                letterSpacing: "0.01em",
               }}
             >
               Digitaltableteur
             </div>
           </div>
+
           <div
             style={{
+              position: "absolute",
+              top: 64,
+              right: 80,
               display: "flex",
-              fontSize: 16,
-              fontWeight: 600,
+              fontSize: 14,
+              fontWeight: 800,
               color: VERTAAUX_TEAL,
-              textTransform: "uppercase",
               letterSpacing: "0.1em",
-              padding: "8px 16px",
-              border: `2px solid ${VERTAAUX_TEAL}`,
-              borderRadius: 4,
+              textTransform: "uppercase",
             }}
           >
             Case Study
           </div>
-        </div>
 
-        {/* Center content: logo + title */}
-        <div
-          style={{
-            display: "flex",
-            flex: 1,
-            flexDirection: "column",
-            alignItems: "flex-start",
-            justifyContent: "center",
-            gap: 32,
-          }}
-        >
-          <VertaaUXLogo logoSize={100} />
+          {/* Headline */}
           <div
             style={{
               display: "flex",
-              fontSize: 60,
-              fontWeight: 700,
-              color: "#ffffff",
-              letterSpacing: "-0.02em",
+              flexDirection: "column",
+              gap: 0,
+              marginBottom: 56,
             }}
           >
-            VertaaUX
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 24,
-              fontWeight: 400,
-              color: "rgba(255, 255, 255, 0.7)",
-              lineHeight: 1.4,
-              maxWidth: "80%",
-            }}
-          >
-            AI-Powered UX Intelligence Platform
-          </div>
-        </div>
-
-        {/* Tags */}
-        <div
-          style={{
-            display: "flex",
-            gap: 12,
-            marginTop: 40,
-          }}
-        >
-          {["UX Intelligence", "Accessibility", "AI Agents", "Brand Identity"].map((tag) => (
             <div
-              key={tag}
               style={{
                 display: "flex",
-                fontSize: 16,
-                fontWeight: 500,
-                color: VERTAAUX_TEAL,
-                backgroundColor: "rgba(0, 255, 204, 0.1)",
-                padding: "8px 16px",
-                borderRadius: 4,
+                fontSize: 84,
+                fontWeight: 800,
+                color: "#ffffff",
+                letterSpacing: "-0.04em",
+                lineHeight: 0.95,
               }}
             >
-              {tag}
+              VertaaUX
             </div>
-          ))}
+          </div>
+
+          {/* Tagline */}
+          <div
+            style={{
+              display: "flex",
+              fontSize: 18,
+              fontWeight: 800,
+              color: "rgba(255,255,255,0.4)",
+              letterSpacing: "0.02em",
+            }}
+          >
+            UX Intelligence → Accessibility → AI Agents
+          </div>
         </div>
       </div>
     ),
     {
       ...OG_SIZE,
+      fonts: [
+        {
+          name: "JetBrains Mono",
+          data: monoFont,
+          style: "normal",
+          weight: 800,
+        },
+      ],
     },
   );
 }

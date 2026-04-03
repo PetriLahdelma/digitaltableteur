@@ -2,12 +2,12 @@ import { ImageResponse } from "next/og";
 import { OG_SIZE, LogoSvg } from "../../lib/og-image-utils";
 
 export const runtime = "edge";
-export const alt = "Illustrations — Digitaltableteur Portfolio";
+export const alt = "Raw View — Digitaltableteur Portfolio";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
-const CORAL = "#FF6B6B";
-const DARK = "#041B23";
+const RAW_RED = "#C0392B";
+const DARK = "#0A0A0A";
 
 const MONO_FONT_URL =
   "https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.ttf";
@@ -28,7 +28,7 @@ export default async function Image() {
           overflow: "hidden",
         }}
       >
-        {/* Diagonal coral slab */}
+        {/* Diagonal red slab — editorial energy */}
         <div
           style={{
             position: "absolute",
@@ -36,7 +36,7 @@ export default async function Image() {
             right: -80,
             width: 500,
             height: 900,
-            backgroundColor: CORAL,
+            backgroundColor: RAW_RED,
             transform: "rotate(-12deg)",
             display: "flex",
           }}
@@ -75,7 +75,7 @@ export default async function Image() {
                 borderRadius: 24,
               }}
             >
-              <LogoSvg size={28} color={DARK} />
+              <LogoSvg size={28} color="#041B23" />
             </div>
             <div
               style={{
@@ -98,12 +98,12 @@ export default async function Image() {
               display: "flex",
               fontSize: 14,
               fontWeight: 800,
-              color: CORAL,
+              color: RAW_RED,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
             }}
           >
-            Collection
+            Case Study
           </div>
 
           {/* Headline */}
@@ -125,7 +125,19 @@ export default async function Image() {
                 lineHeight: 0.95,
               }}
             >
-              Illustrations
+              Raw
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 84,
+                fontWeight: 800,
+                color: RAW_RED,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.95,
+              }}
+            >
+              View
             </div>
           </div>
 
@@ -139,7 +151,7 @@ export default async function Image() {
               letterSpacing: "0.02em",
             }}
           >
-            Editorial → Character Design → Visual Storytelling
+            Editorial Design → Photography → Bilingual Publishing
           </div>
         </div>
       </div>

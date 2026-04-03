@@ -2,11 +2,12 @@ import { ImageResponse } from "next/og";
 import { OG_SIZE, LogoSvg } from "../../lib/og-image-utils";
 
 export const runtime = "edge";
-export const alt = "Illustrations — Digitaltableteur Portfolio";
+export const alt = "Tulli — Digitaltableteur Portfolio";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 
-const CORAL = "#FF6B6B";
+const TULLI_BLUE = "#003580";
+const TULLI_GOLD = "#D4A843";
 const DARK = "#041B23";
 
 const MONO_FONT_URL =
@@ -23,12 +24,12 @@ export default async function Image() {
           width: "100%",
           display: "flex",
           fontFamily: "JetBrains Mono",
-          backgroundColor: DARK,
+          backgroundColor: TULLI_BLUE,
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Diagonal coral slab */}
+        {/* Diagonal gold slab — Finnish Customs colors */}
         <div
           style={{
             position: "absolute",
@@ -36,7 +37,7 @@ export default async function Image() {
             right: -80,
             width: 500,
             height: 900,
-            backgroundColor: CORAL,
+            backgroundColor: TULLI_GOLD,
             transform: "rotate(-12deg)",
             display: "flex",
           }}
@@ -98,12 +99,12 @@ export default async function Image() {
               display: "flex",
               fontSize: 14,
               fontWeight: 800,
-              color: CORAL,
+              color: TULLI_GOLD,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
             }}
           >
-            Collection
+            Case Study
           </div>
 
           {/* Headline */}
@@ -125,7 +126,19 @@ export default async function Image() {
                 lineHeight: 0.95,
               }}
             >
-              Illustrations
+              Tulli
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 84,
+                fontWeight: 800,
+                color: TULLI_GOLD,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.95,
+              }}
+            >
+              Customs
             </div>
           </div>
 
@@ -139,7 +152,7 @@ export default async function Image() {
               letterSpacing: "0.02em",
             }}
           >
-            Editorial → Character Design → Visual Storytelling
+            Enterprise Portal → Intrastat → Self-Service
           </div>
         </div>
       </div>
