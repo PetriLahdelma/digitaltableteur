@@ -44,7 +44,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         />
       }
       relatedProjects={
-        <RelatedProjects currentSlug={project.slug} maxItems={3} />
+        <RelatedProjects currentSlug={project.slug} />
       }
       className={styles.page}
     >
@@ -140,20 +140,22 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
 
       <div className={styles.meterSection}>
         <div className={styles.videoContainer}>
-          <video
-            aria-label="KnobSmith Audio knob interaction animation"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className={styles.knobsVideo}
-          >
-            <source
-              src="/images/portfolio/knobsmith-audio/knobs-animated_1.webm"
-              type="video/webm"
-            />
-            Your browser does not support the video tag.
-          </video>
+          <div className={styles.knobsVideoContainer}>
+            <video
+              aria-label="KnobSmith Audio knob interaction animation"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className={styles.knobsVideo}
+            >
+              <source
+                src="/images/portfolio/knobsmith-audio/knobs-animated_1.webm"
+                type="video/webm"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
           <Text size="XS" className={styles.videoCaption}>
             Exploration of layout, controls, and real-time feedback.
           </Text>
