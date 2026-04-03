@@ -21,7 +21,7 @@ export interface RelatedProjectsProps {
 
 export function RelatedProjects({
   currentSlug,
-  maxItems = 3,
+  maxItems = 2,
   title,
   className,
 }: RelatedProjectsProps) {
