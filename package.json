@@ -95,7 +95,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@remotion/cli": "^4.0.409",
     "@sanity/block-content-to-markdown": "^1.0.1",
-    "@sanity/client": "^7.13.2",
+    "@sanity/client": "^7.20.0",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^5.3.1",
     "@sentry/nextjs": "^10.41.0",
