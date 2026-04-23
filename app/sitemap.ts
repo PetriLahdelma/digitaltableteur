@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/work",
     "/accessibility",
     "/blog",
+    "/colophon",
   ].map((path) => ({
     url: toUrl(path),
     lastModified: today,
@@ -43,6 +44,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/work/garage-junction",
     "/work/helsinki-design-system",
     "/work/sap-build-apps",
+    "/work/rhythmguard",
+    "/work/project-spine",
+    "/work/llm-component-schema",
   ].map((path) => ({
     url: toUrl(path),
     lastModified: today,
@@ -75,14 +79,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: toUrl(path),
     lastModified: today,
     changeFrequency: "monthly",
-    priority: 0.4,
+    priority: 0.5,
   }));
 
   const pseoLeafRoutes: MetadataRoute.Sitemap = pseoLeafPages.map((page: PseoLeafPage) => ({
     url: toUrl(`/pseo/${page.slug}`),
     lastModified: today,
     changeFrequency: "monthly",
-    priority: 0.35,
+    priority: 0.5,
   }));
 
   const toolsRoutes: MetadataRoute.Sitemap = ["/tools/email-signature"].map(

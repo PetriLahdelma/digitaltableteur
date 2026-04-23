@@ -84,6 +84,10 @@ const PROJECT_TYPE_OPTIONS = [
   { value: "digital-product", labelKey: "contactProjectDigital" },
   { value: "website", labelKey: "contactProjectWebsite" },
   { value: "creative-direction", labelKey: "contactProjectCreative" },
+  { value: "ds-audit", labelKey: "contactProjectDsAudit" },
+  { value: "component-library", labelKey: "contactProjectComponentLib" },
+  { value: "tokens-theming", labelKey: "contactProjectTokens" },
+  { value: "ai-designops", labelKey: "contactProjectDesignOps" },
   { value: "other", labelKey: "contactProjectOther" },
 ];
 

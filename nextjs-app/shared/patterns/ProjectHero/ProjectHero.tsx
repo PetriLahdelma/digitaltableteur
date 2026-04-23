@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useRef } from "react";
+import { type ReactNode, useRef, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
@@ -22,6 +22,7 @@ export interface ProjectHeroVideo {
   src: string;
   poster?: string;
   alt: string;
+  playbackRate?: number;
 }
 
 export interface ProjectHeroProps {
@@ -65,6 +66,15 @@ export function ProjectHero({
   const isFullWidth = variant === "full-width";
   const isSplit = variant === "split";
   const hasVideo = Boolean(video?.src);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    const rate = video?.playbackRate;
+    if (rate !== undefined && Number.isFinite(rate) && rate > 0) {
+      videoRef.current.playbackRate = rate;
+    }
+  }, [video?.playbackRate, video?.src]);
 
   const tagsRef = useRef<HTMLDivElement>(null);
   const { motionPreference } = useAnimationContext();
@@ -106,6 +116,7 @@ export function ProjectHero({
         <div className="absolute inset-0 z-0">
           {hasVideo ? (
             <video
+              ref={videoRef}
               aria-label={video!.alt}
               autoPlay
               loop
@@ -248,6 +259,7 @@ export function ProjectHero({
             <div className="overflow-hidden rounded-lg bg-muted">
               {hasVideo ? (
                 <video
+                  ref={videoRef}
                   aria-label={video!.alt}
                   autoPlay
                   loop
@@ -405,6 +417,7 @@ export function ProjectHero({
               <div className="overflow-hidden rounded-lg mt-8">
                 {hasVideo ? (
                   <video
+                    ref={videoRef}
                     aria-label={video!.alt}
                     autoPlay
                     loop
