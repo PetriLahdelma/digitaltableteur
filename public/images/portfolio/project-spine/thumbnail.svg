@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <rect width="800" height="800" fill="#0a0a0a"/>
+  <!-- Spine/backbone line -->
+  <line x1="400" y1="120" x2="400" y2="680" stroke="#812eff" stroke-width="3" opacity="0.3"/>
+  <!-- Compilation nodes -->
+  <circle cx="400" cy="200" r="24" fill="none" stroke="#812eff" stroke-width="2"/>
+  <text x="400" y="206" text-anchor="middle" font-family="monospace" font-size="16" fill="#812eff">B</text>
+  <circle cx="400" cy="320" r="24" fill="none" stroke="#812eff" stroke-width="2"/>
+  <text x="400" y="326" text-anchor="middle" font-family="monospace" font-size="16" fill="#812eff">R</text>
+  <circle cx="400" cy="440" r="24" fill="none" stroke="#812eff" stroke-width="2"/>
+  <text x="400" y="446" text-anchor="middle" font-family="monospace" font-size="16" fill="#812eff">T</text>
+  <!-- Output branches -->
+  <line x1="424" y1="200" x2="560" y2="200" stroke="#812eff" stroke-width="1.5" opacity="0.5"/>
+  <line x1="424" y1="320" x2="560" y2="320" stroke="#812eff" stroke-width="1.5" opacity="0.5"/>
+  <line x1="424" y1="440" x2="560" y2="440" stroke="#812eff" stroke-width="1.5" opacity="0.5"/>
+  <!-- Output file icons -->
+  <rect x="570" y="186" width="100" height="28" rx="4" fill="#812eff" opacity="0.2"/>
+  <text x="620" y="205" text-anchor="middle" font-family="monospace" font-size="11" fill="#812eff">AGENTS.md</text>
+  <rect x="570" y="306" width="100" height="28" rx="4" fill="#812eff" opacity="0.2"/>
+  <text x="620" y="325" text-anchor="middle" font-family="monospace" font-size="11" fill="#812eff">CLAUDE.md</text>
+  <rect x="570" y="426" width="100" height="28" rx="4" fill="#812eff" opacity="0.2"/>
+  <text x="620" y="445" text-anchor="middle" font-family="monospace" font-size="11" fill="#812eff">spine.json</text>
+  <!-- Compile arrow -->
+  <path d="M400 500 L380 560 L400 540 L420 560 Z" fill="#812eff" opacity="0.6"/>
+  <!-- 19 files output -->
+  <rect x="300" y="580" width="200" height="40" rx="8" fill="#812eff" opacity="0.15"/>
+  <text x="400" y="605" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="500" fill="#812eff">19 compiled files</text>
+  <!-- Title -->
+  <text x="400" y="740" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#812eff" letter-spacing="0.1em">PROJECT SPINE</text>
+</svg>
