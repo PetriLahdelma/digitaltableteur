@@ -69,10 +69,12 @@ export function ProjectHero({
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current && video?.playbackRate) {
-      videoRef.current.playbackRate = video.playbackRate;
+    if (!videoRef.current) return;
+    const rate = video?.playbackRate;
+    if (rate !== undefined && Number.isFinite(rate) && rate > 0) {
+      videoRef.current.playbackRate = rate;
     }
-  }, [video?.playbackRate]);
+  }, [video?.playbackRate, video?.src]);
 
   const tagsRef = useRef<HTMLDivElement>(null);
   const { motionPreference } = useAnimationContext();
@@ -114,7 +116,7 @@ export function ProjectHero({
         <div className="absolute inset-0 z-0">
           {hasVideo ? (
             <video
-              onPlay={handleVideoCanPlay}
+              ref={videoRef}
               aria-label={video!.alt}
               autoPlay
               loop
@@ -257,7 +259,7 @@ export function ProjectHero({
             <div className="overflow-hidden rounded-lg bg-muted">
               {hasVideo ? (
                 <video
-
+                  ref={videoRef}
                   aria-label={video!.alt}
                   autoPlay
                   loop

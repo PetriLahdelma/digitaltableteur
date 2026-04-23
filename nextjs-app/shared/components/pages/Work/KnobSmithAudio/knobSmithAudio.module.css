@@ -156,7 +156,8 @@
   width: 100%;
   height: auto;
   display: block;
-  scale: 2.5;
+  transform: scale(2.5);
+  transform-origin: center;
 }
 
 .knobsVideoContainer {
@@ -303,7 +304,7 @@
 .swatchColor {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 24px;
+  border-radius: calc(var(--radius-lg) * 3);
 }
 
 @media (width >= 768px) {
