@@ -9,6 +9,7 @@ export type ProjectCategory =
   | "ux-design"
   | "branding"
   | "illustration"
+  | "tools"
   | "all";
 
 export interface Project {
@@ -63,7 +64,7 @@ export const projects: Project[] = [
     category: "design-systems",
     tags: ["Design System", "UX Design", "Accessibility", "React"],
     featured: true,
-    order: 4,
+    order: 7,
     liveUrl: "https://hds.hel.fi/",
     client: "City of Helsinki",
     duration: "2020–2022",
@@ -78,7 +79,7 @@ export const projects: Project[] = [
     category: "branding",
     tags: ["Branding", "Web Design", "Identity"],
     featured: true,
-    order: 6,
+    order: 9,
     client: "New Things Co",
     duration: "2019",
   },
@@ -94,7 +95,7 @@ export const projects: Project[] = [
     category: "ux-design",
     tags: ["Web Design", "Animation", "Branding"],
     featured: false,
-    order: 5,
+    order: 8,
     duration: "2023",
   },
   {
@@ -107,7 +108,7 @@ export const projects: Project[] = [
     category: "illustration",
     tags: ["Illustration", "Character Design", "Editorial"],
     featured: false,
-    order: 7,
+    order: 10,
     duration: "2016–Present",
   },
   {
@@ -120,7 +121,7 @@ export const projects: Project[] = [
     category: "design-systems",
     tags: ["Design Systems", "Enterprise", "Low-Code Platform", "SAP BTP"],
     featured: true,
-    order: 3,
+    order: 6,
     liveUrl: "https://www.sap.com/products/technology-platform/low-code-app-builder.html",
     client: "SAP",
     duration: "2021–2024",
@@ -140,7 +141,7 @@ export const projects: Project[] = [
       "Brand Identity",
     ],
     featured: true,
-    order: 1,
+    order: 2,
     liveUrl: "https://knobsmithaudio.com",
     duration: "2025–Present",
   },
@@ -154,7 +155,7 @@ export const projects: Project[] = [
     category: "ux-design",
     tags: ["AI Product", "UX Intelligence", "Accessibility", "Startup"],
     featured: false,
-    order: 2,
+    order: 3,
     liveUrl: "https://vertaaux.ai",
     duration: "2025–Present",
   },
@@ -168,9 +169,51 @@ export const projects: Project[] = [
     category: "branding",
     tags: ["Brand Identity", "Public Sector", "Accessibility", "Multilingual"],
     featured: false,
-    order: 8,
+    order: 11,
     client: "Finnish Transport Agency",
     duration: "2018",
+  },
+  {
+    id: "rhythmguard",
+    slug: "rhythmguard",
+    title: "Rhythmguard",
+    description:
+      "A Stylelint plugin that enforces design token usage at lint time: spacing scales, color tokens, and Tailwind class strings.",
+    thumbnail: "/images/portfolio/rhythmguard/thumbnail.png",
+    category: "tools",
+    tags: ["Open Source", "Stylelint", "Design Tokens", "DX", "npm"],
+    featured: true,
+    order: 4,
+    liveUrl: "https://www.npmjs.com/package/stylelint-plugin-rhythmguard",
+    duration: "2025–Present",
+  },
+  {
+    id: "project-spine",
+    slug: "project-spine",
+    title: "Project Spine",
+    description:
+      "An OSS CLI that compiles briefs, repos, and design tokens into agent-native operating context: CLAUDE.md, AGENTS.md, and 19 structured exports.",
+    thumbnail: "/images/portfolio/project-spine/thumbnail.png",
+    category: "tools",
+    tags: ["Open Source", "CLI", "AI Agents", "Design Tokens", "Context"],
+    featured: true,
+    order: 1,
+    liveUrl: "https://projectspine.dev",
+    duration: "2025–Present",
+  },
+  {
+    id: "llm-component-schema",
+    slug: "llm-component-schema",
+    title: "LLM Component Schema",
+    description:
+      "A published npm schema and CLI for component contracts: structured specs that AI agents can consume, with drift detection and eval benchmarks.",
+    thumbnail: "/images/portfolio/llm-component-schema/thumbnail.png",
+    category: "tools",
+    tags: ["Open Source", "npm", "AI", "Component Contracts", "Schema"],
+    featured: false,
+    order: 5,
+    liveUrl: "https://petrilahdelma.gumroad.com/l/mcqoq",
+    duration: "2025–Present",
   },
 ];
 
@@ -197,6 +240,7 @@ export const categories: CategoryOption[] = [
   { value: "ux-design", labelKey: "workFilterUXDesign" },
   { value: "branding", labelKey: "workFilterBranding" },
   { value: "illustration", labelKey: "workFilterIllustration" },
+  { value: "tools", labelKey: "workFilterTools" },
 ];
 
 /**
