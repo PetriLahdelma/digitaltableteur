@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <rect width="800" height="800" fill="#0a0a0a"/>
+  <!-- Schema structure bracket -->
+  <text x="160" y="240" font-family="monospace" font-size="20" fill="#71efff" opacity="0.8">{</text>
+  <text x="200" y="290" font-family="monospace" font-size="16" fill="#71efff" opacity="0.6">"props": {</text>
+  <text x="240" y="330" font-family="monospace" font-size="14" fill="#71efff" opacity="0.4">"variant": ["primary", "ghost"]</text>
+  <text x="240" y="365" font-family="monospace" font-size="14" fill="#71efff" opacity="0.4">"size": ["sm", "md", "lg"]</text>
+  <text x="200" y="405" font-family="monospace" font-size="16" fill="#71efff" opacity="0.6">}</text>
+  <text x="200" y="450" font-family="monospace" font-size="16" fill="#71efff" opacity="0.6">"a11y": {</text>
+  <text x="240" y="490" font-family="monospace" font-size="14" fill="#71efff" opacity="0.4">"role": "button"</text>
+  <text x="240" y="525" font-family="monospace" font-size="14" fill="#71efff" opacity="0.4">"keyboard": "Enter | Space"</text>
+  <text x="200" y="565" font-family="monospace" font-size="16" fill="#71efff" opacity="0.6">}</text>
+  <text x="160" y="610" font-family="monospace" font-size="20" fill="#71efff" opacity="0.8">}</text>
+  <!-- Validation checkmark -->
+  <circle cx="620" cy="400" r="48" fill="none" stroke="#71efff" stroke-width="2" opacity="0.3"/>
+  <path d="M596 400 L612 416 L644 384" stroke="#71efff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Drift arrow -->
+  <line x1="580" y1="480" x2="660" y2="480" stroke="#71efff" stroke-width="1.5" opacity="0.3"/>
+  <text x="620" y="510" text-anchor="middle" font-family="monospace" font-size="12" fill="#71efff" opacity="0.4">drift: none</text>
+  <!-- Title -->
+  <text x="400" y="740" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="600" fill="#71efff" letter-spacing="0.1em">LLM COMPONENT SCHEMA</text>
+</svg>

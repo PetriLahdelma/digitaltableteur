@@ -1,0 +1,109 @@
+/* Project Spine: OSS tool showcase */
+
+.page {
+  background-color: var(--main-body-background-color);
+}
+
+.page code {
+  font-size: 0.9em;
+}
+
+.metaSection {
+  padding-block: var(--space-layout-48);
+  background-color: var(--color-surface);
+  padding-inline: var(--space-layout-24);
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-layout-64);
+  max-width: var(--container-md);
+  margin-inline: auto;
+}
+
+.metaLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-32);
+}
+
+.metaRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
+.metaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-8);
+}
+
+.metaLabel {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.metaText {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.metaTools {
+  display: flex;
+  gap: var(--space-layout-16);
+  color: var(--color-text-secondary);
+}
+
+.metaOverview {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.outputGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-layout-24);
+  max-width: var(--container-md);
+  margin-inline: auto;
+  padding-block: var(--space-layout-32);
+}
+
+.outputCard {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-layout-24);
+}
+
+.outputCard h4 {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--space-8) 0;
+}
+
+.outputCard p {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .metaGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-layout-32);
+  }
+}

@@ -1,0 +1,1 @@
+export { ColophonPage } from "./ColophonPage";

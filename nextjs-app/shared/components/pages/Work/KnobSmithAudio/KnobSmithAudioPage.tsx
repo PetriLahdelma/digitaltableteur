@@ -34,6 +34,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           video={{
             src: "/images/portfolio/knobsmith-audio/LCD-screen_1.webm",
             alt: "KnobSmith Audio plugin LCD screen animation",
+            playbackRate: 3,
           }}
           category={project.category.replace("-", " ")}
           tags={project.tags}
@@ -210,20 +211,22 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
 
       <div className={styles.vuMeterSection}>
         <div className={styles.videoContainer}>
-          <video
-            aria-label="KnobSmith Audio VU meter animation"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className={styles.meterVideo}
-          >
-            <source
-              src="/images/portfolio/knobsmith-audio/vu-meter.webm"
-              type="video/webm"
-            />
-            Your browser does not support the video tag.
-          </video>
+          <div className={styles.meterVideoWrapper}>
+            <video
+              aria-label="KnobSmith Audio VU meter animation"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className={styles.meterVideo}
+            >
+              <source
+                src="/images/portfolio/knobsmith-audio/vu-meter.webm"
+                type="video/webm"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
           <Text size="XS" className={styles.videoCaption}>
             VU meter with analog-style needle physics and dark theming.
           </Text>
