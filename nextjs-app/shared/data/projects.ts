@@ -157,7 +157,7 @@ export const projects: Project[] = [
     featured: false,
     order: 3,
     liveUrl: "https://vertaaux.ai",
-    duration: "2025–Present",
+    duration: "December 2025–Present",
   },
   {
     id: "finnish-transport-agency",
@@ -185,7 +185,7 @@ export const projects: Project[] = [
     featured: true,
     order: 4,
     liveUrl: "https://www.npmjs.com/package/stylelint-plugin-rhythmguard",
-    duration: "2025–Present",
+    duration: "December 2025–Present",
   },
   {
     id: "project-spine",
@@ -199,7 +199,7 @@ export const projects: Project[] = [
     featured: true,
     order: 1,
     liveUrl: "https://projectspine.dev",
-    duration: "2025–Present",
+    duration: "April 2026",
   },
   {
     id: "llm-component-schema",
@@ -213,7 +213,7 @@ export const projects: Project[] = [
     featured: false,
     order: 5,
     liveUrl: "https://petrilahdelma.gumroad.com/l/mcqoq",
-    duration: "2025–Present",
+    duration: "December 2025–Present",
   },
 ];
 
