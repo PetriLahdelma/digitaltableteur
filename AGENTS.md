@@ -150,3 +150,18 @@ All checks must pass + manual testing complete.
 ---
 
 **End of Root AGENTS.md** — For detailed patterns, see subdirectory AGENTS.md files linked above.
+
+<!-- LLM-WIKI:START -->
+## Cross-project LLM-wiki
+
+This repo participates in the shared LLM-wiki at `/Users/petrilahdelma/SAPDevelop/llm-wiki`.
+
+Read before non-trivial work:
+- Search for this project and adjacent concepts with `/Users/petrilahdelma/SAPDevelop/llm-wiki/wiki/tools/qmd-query.sh "digitaltableteur <task or topic>"`.
+- Open relevant pages under `/Users/petrilahdelma/SAPDevelop/llm-wiki/wiki` before deciding.
+
+Write after durable discoveries:
+- Capture decisions, reusable gotchas, cross-project patterns, source summaries, and project-state changes with `/Users/petrilahdelma/SAPDevelop/llm-wiki/wiki/tools/llm-wiki-capture.mjs --project "digitaltableteur" --kind decision --title "<title>" --summary "<what changed and why>"`.
+- Do not capture secrets, raw logs, transient TODOs, or live coordination state.
+- Do not edit compiled wiki pages from this repo. Capture first; the LLM-wiki ingest pass will file it into entities, concepts, patterns, or synthesis.
+<!-- LLM-WIKI:END -->
