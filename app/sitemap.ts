@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const workRoutes: MetadataRoute.Sitemap = [
+    "/work/dsharp-design-system",
     "/work/knobsmith-audio",
     "/work/vertaaux",
     "/work/finnish-transport-agency",
