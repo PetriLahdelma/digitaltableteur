@@ -12,7 +12,7 @@
 
 .primaryButton {
   background-color: #fff;
-  color: #041B23;
+  color: #041b23;
 }
 
 .primaryButton:hover {
@@ -22,7 +22,7 @@
 /* Dark theme */
 :global(.themeDark) .primaryButton,
 :global(.dark) .primaryButton {
-  background-color: #041B23;
+  background-color: #041b23;
   color: #fff;
 }
 
@@ -33,7 +33,7 @@
 
 /* High Contrast Black */
 :global(.themeHCB) .primaryButton {
-  background-color: #041B23;
+  background-color: #041b23;
   color: #fff;
 }
 
@@ -48,23 +48,39 @@
   margin-block: 0;
 }
 
-.brandPrimaryButton {
-  background-color: var(--logo-color, #000);
-  color: var(--logo-background, #dfff00);
+.brandPrimaryButton.brandPrimaryButton {
+  background-color: var(--logo-color, #000) !important;
+  color: var(--logo-background, #dfff00) !important;
+  text-decoration: none !important;
+  text-decoration-color: transparent !important;
 }
 
-.brandPrimaryButton:hover {
-  background-color: color-mix(in srgb, var(--logo-color, #000) 85%, transparent);
+.brandPrimaryButton.brandPrimaryButton:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--logo-color, #000) 85%,
+    transparent
+  ) !important;
+  color: var(--logo-background, #dfff00) !important;
+  text-decoration: none !important;
 }
 
-.brandOutlineButton {
-  border: 1px solid var(--logo-color, #000);
-  background-color: transparent;
-  color: var(--logo-color, #000);
+.brandOutlineButton.brandOutlineButton {
+  border: 1px solid var(--logo-color, #000) !important;
+  background-color: transparent !important;
+  color: var(--logo-color, #000) !important;
+  text-decoration: none !important;
+  text-decoration-color: transparent !important;
 }
 
-.brandOutlineButton:hover {
-  background-color: color-mix(in srgb, var(--logo-color, #000) 8%, transparent);
+.brandOutlineButton.brandOutlineButton:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--logo-color, #000) 8%,
+    transparent
+  ) !important;
+  color: var(--logo-color, #000) !important;
+  text-decoration: none !important;
 }
 
 .brandDescription {
