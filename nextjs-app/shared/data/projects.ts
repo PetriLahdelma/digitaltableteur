@@ -55,6 +55,26 @@ export interface CategoryOption {
  */
 export const projects: Project[] = [
   {
+    id: "dsharp-design-system",
+    slug: "dsharp-design-system",
+    title: "DSharp Design System",
+    description:
+      "Fully AI-powered and guardrailed design-system architecture for enterprise data products: tokens, contracts, Storybook, MCP, CLI, and Rhythmguard enforcement.",
+    thumbnail:
+      "/images/portfolio/dsharp-design-system/dsharp-thumbnail-logo.svg",
+    category: "design-systems",
+    tags: [
+      "Design Systems",
+      "AI Architecture",
+      "Design Tokens",
+      "MCP",
+      "React",
+    ],
+    featured: true,
+    order: 0,
+    duration: "2026–Present",
+  },
+  {
     id: "helsinki-design-system",
     slug: "helsinki-design-system",
     title: "Helsinki Design System",
@@ -122,7 +142,8 @@ export const projects: Project[] = [
     tags: ["Design Systems", "Enterprise", "Low-Code Platform", "SAP BTP"],
     featured: true,
     order: 6,
-    liveUrl: "https://www.sap.com/products/technology-platform/low-code-app-builder.html",
+    liveUrl:
+      "https://www.sap.com/products/technology-platform/low-code-app-builder.html",
     client: "SAP",
     duration: "2021–2024",
   },

@@ -1,0 +1,113 @@
+.page {
+  background-color: var(--main-body-background-color);
+}
+
+.page code {
+  padding-inline: 0.25em;
+  border-radius: 3px;
+  background-color: rgb(87 113 100 / 8%);
+  color: inherit;
+  font-family: "DM Mono", var(--font-mono, monospace);
+  font-size: 0.88em;
+}
+
+.inlineLink {
+  color: currentcolor;
+  font-weight: 600;
+  text-decoration-color: currentcolor;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.inlineLink:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+.metaSection {
+  padding-block: var(--space-layout-48);
+  padding-inline: var(--space-layout-24);
+  background-color: var(--color-surface);
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-layout-64);
+  max-width: var(--container-md);
+  margin-inline: auto;
+}
+
+.metaLeft,
+.metaRight,
+.metaBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.metaLeft {
+  gap: var(--space-layout-32);
+}
+
+.metaRight {
+  gap: var(--space-layout-24);
+}
+
+.metaBlock {
+  gap: var(--space-layout-8);
+}
+
+.metaLabel {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}
+
+.metaText,
+.metaOverview {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+.metaTools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-layout-16);
+  color: var(--color-text-secondary);
+}
+
+.specimenFigure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-16);
+  width: 100%;
+  margin: 0;
+}
+
+.specimenSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.specimenCaption {
+  margin: 0;
+  padding-inline: var(--space-layout-8);
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .metaGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-layout-32);
+  }
+}
