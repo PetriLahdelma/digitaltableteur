@@ -101,6 +101,7 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
           <Title
             level={2}
             size="M"
+            terminals="sans"
             className={styles.sectionTitle}
             data-process-title
           >
