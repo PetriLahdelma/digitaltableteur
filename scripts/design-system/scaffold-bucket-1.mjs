@@ -1411,12 +1411,14 @@ import contract from "./${c.name}.contract.json";
 // previous catalog (per \`npm run audit:catalog\` on 2026-05-26) and is being
 // brought in as part of the Bucket-1 catalog-gap migration documented in
 // nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
-// minimal at alpha — Default + Playground prove the contract surface; the
-// Example + ForcedColors stories are added at the alpha -> beta promotion.
+// minimal at alpha — Default + Playground must include required props (not just
+// variant axes) or stories fail at runtime. Example compositions are added when
+// porting from production (see Roadmap Phase 1).
 
 const meta = {
   title: "${titlePrefix}/${c.name}",
   component: ${c.name},
+  tags: ["alpha", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
