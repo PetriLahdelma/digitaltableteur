@@ -13,6 +13,35 @@ import { Stack } from "../../components/Stack";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+const TITLE_VARIANT_KEY = "dt-home-hero-title-index";
+const SUBTEXT_VARIANT_KEY = "dt-home-hero-subtext-index";
+
+function getOrCreateSessionIndex(storageKey: string, length: number): number {
+  if (length <= 0) return 0;
+  if (length === 1) return 0;
+  if (typeof window === "undefined") return 0;
+
+  try {
+    const stored = sessionStorage.getItem(storageKey);
+    if (stored !== null) {
+      const parsed = Number.parseInt(stored, 10);
+      if (Number.isInteger(parsed) && parsed >= 0 && parsed < length) {
+        return parsed;
+      }
+    }
+  } catch {
+    // sessionStorage unavailable (private mode, SSR tests)
+  }
+
+  const index = Math.floor(Math.random() * length);
+  try {
+    sessionStorage.setItem(storageKey, String(index));
+  } catch {
+    // ignore
+  }
+  return index;
+}
+
 export interface HomeHeroProps {
   /** ID of the section to scroll to when clicking scroll indicator */
   scrollTargetId?: string;
@@ -47,9 +76,10 @@ export function HomeHero({
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Only run on client to avoid hydration mismatch
-    setRandomTitleIndex(Math.floor(Math.random() * titleOptions.length));
-    setRandomSubtextIndex(Math.floor(Math.random() * subtextOptions.length));
+    setRandomTitleIndex(getOrCreateSessionIndex(TITLE_VARIANT_KEY, titleOptions.length));
+    setRandomSubtextIndex(
+      getOrCreateSessionIndex(SUBTEXT_VARIANT_KEY, subtextOptions.length),
+    );
     setIsClient(true);
   }, [titleOptions.length, subtextOptions.length]);
 

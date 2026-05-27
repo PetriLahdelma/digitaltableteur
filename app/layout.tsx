@@ -23,6 +23,10 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://www.digitaltableteur.com";
 
+/** Single GA4 property — env override for staging; production default is site measurement ID. */
+const gaMeasurementId =
+  process.env.NEXT_PUBLIC_GA_ID?.trim() || "G-09HMKEXGPX";
+
 export const metadata: Metadata = {
   title: "Digitaltableteur",
   description:
@@ -130,7 +134,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-09HMKEXGPX"
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
           strategy="afterInteractive"
         />
         <Script id="gtag-config" strategy="afterInteractive">
@@ -138,7 +142,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-09HMKEXGPX');
+            gtag('config', '${gaMeasurementId}');
           `}
         </Script>
       </head>
@@ -157,27 +161,6 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        {process.env.NEXT_PUBLIC_GA_ID ? (
-          <>
-            <Script
-              id="gtag-src"
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script
-              id="gtag-init"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-                `,
-              }}
-            />
-          </>
-        ) : null}
         <script
           id="schema-org"
           type="application/ld+json"

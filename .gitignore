@@ -30,6 +30,9 @@ yarn-error.log*
 *storybook.log
 storybook-static
 
+# Local agent worktrees (never commit)
+.claude/worktrees/
+
 # MCP config
 mcp.json
 .vercel

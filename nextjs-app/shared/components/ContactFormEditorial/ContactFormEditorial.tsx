@@ -1,6 +1,7 @@
 "use client";
 
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -91,6 +92,12 @@ const PROJECT_TYPE_OPTIONS = [
   { value: "other", labelKey: "contactProjectOther" },
 ];
 
+/** Maps homepage CTA `?service=` query values to project-type slugs. */
+const SERVICE_PROJECT_TYPE_MAP: Record<string, string> = {
+  "design-sprint": "component-library",
+  "design-sprints": "component-library",
+};
+
 const HEAR_ABOUT_OPTIONS = [
   { value: "social-media", labelKey: "contactHearSocial" },
   { value: "search-engine", labelKey: "contactHearSearch" },
@@ -116,6 +123,20 @@ export function ContactFormEditorial({
 }: ContactFormEditorialProps) {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const service = searchParams.get("service")?.trim().toLowerCase();
+    if (!service) return;
+
+    const projectType = SERVICE_PROJECT_TYPE_MAP[service];
+    if (!projectType) return;
+
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "projectType", value: projectType },
+    });
+  }, [searchParams]);
 
   // Form state
   const [formData, dispatchForm] = useReducer(
