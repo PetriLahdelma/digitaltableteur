@@ -74,6 +74,7 @@ export default defineConfig({
   test: {
     // Avoid worker teardown races ("Closing rpc while fetch was pending") under CI load.
     fileParallelism: isCI ? false : true,
+    maxWorkers: isCI ? 1 : undefined,
     environment: "jsdom",
     setupFiles: "./vitest.setup.ts",
     globals: true,

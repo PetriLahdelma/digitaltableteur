@@ -114,8 +114,7 @@ export const CookieConsent: React.FC = () => {
     saveMinimizedState(false);
   };
 
-  // If banner not open at all, show nothing
-  if (!isBannerOpen) {
+  if (!isReady || !isBannerOpen) {
     return null;
   }
 
