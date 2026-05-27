@@ -11,6 +11,7 @@ node_modules/
 # production
 /build
 /dist
+nextjs-app/shared/foundations/dist/
 
 # misc
 .DS_Store
