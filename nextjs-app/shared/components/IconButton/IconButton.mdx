@@ -17,9 +17,14 @@ stories are added at the alpha → beta promotion (see Roadmap Phase 2).
 ## How to use
 
 ```tsx
+import { Moon } from '@phosphor-icons/react';
 import { IconButton } from '@dt/IconButton';
 
-<IconButton />
+<IconButton
+  icon={<Moon weight="bold" className="size-5" aria-hidden />}
+  label="Toggle dark mode"
+  variant="ghost"
+/>
 ```
 
 ## When to use

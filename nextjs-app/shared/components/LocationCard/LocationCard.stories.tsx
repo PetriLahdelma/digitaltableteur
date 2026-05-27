@@ -2,16 +2,18 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { LocationCard } from "./LocationCard";
 import contract from "./LocationCard.contract.json";
 
-// Alpha-tier story scaffold for LocationCard. The component lives outside the
-// previous catalog (per `npm run audit:catalog` on 2026-05-26) and is being
-// brought in as part of the Bucket-1 catalog-gap migration documented in
-// nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
-// minimal at alpha — Default + Playground prove the contract surface; the
-// Example + ForcedColors stories are added at the alpha -> beta promotion.
+/** Mirrors `ContactPageContent` — Helsinki office card in the locations grid. */
+const contactPageArgs = {
+  officeName: "Digitaltableteur Helsinki",
+  address: ["Mannerheimintie 20 B", "00100 Helsinki", "Finland"],
+  email: "mail@digitaltableteur.com",
+  variant: "bordered" as const,
+};
 
 const meta = {
   title: "Molecules/LocationCard",
   component: LocationCard,
+  tags: ["alpha", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
@@ -22,19 +24,40 @@ const meta = {
     },
   },
   argTypes: {
+    officeName: { control: "text", table: { category: "Content" } },
+    address: { control: "object", table: { category: "Content" } },
+    email: { control: "text", table: { category: "Content" } },
+    phone: { control: "text", table: { category: "Content" } },
     variant: {
       control: "select",
       options: ["default", "bordered", "elevated"],
       table: { defaultValue: { summary: "default" } },
     },
   },
-  args: {
-    variant: "default",
-  },
+  args: contactPageArgs,
 } satisfies Meta<typeof LocationCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
 export const Playground: Story = {};
+
+export const Example: Story = {
+  name: "Example (contact page)",
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <div style={{ maxWidth: 420, width: "100%" }}>
+      <LocationCard {...contactPageArgs} />
+    </div>
+  ),
+};
+
+export const ElevatedWithPhone: Story = {
+  args: {
+    ...contactPageArgs,
+    variant: "elevated",
+    phone: "+358 40 123 4567",
+  },
+};
