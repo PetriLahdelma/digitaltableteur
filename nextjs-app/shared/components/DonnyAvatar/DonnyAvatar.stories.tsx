@@ -1,12 +1,15 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./DonnyAvatar.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState, useEffect } from "react";
 import { DonnyAvatar, DonnyState } from "./DonnyAvatar";
 
 const meta: Meta<typeof DonnyAvatar> = {
-  title: "Components/DonnyAvatar",
+  title: "Molecules/DonnyAvatar",
   component: DonnyAvatar,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "centered",
     docs: {
       description: {
@@ -74,13 +77,8 @@ When \`enableSleepDetection\` is true, Donny will:
         "sleeping",
       ],
     },
-    size: {
-      control: "select",
-      options: ["sm", "md", "lg", "xl"],
-    },
-    showLabel: {
-      control: "boolean",
-    },
+    size: { control: "select", options: ["sm", "md", "lg", "xl"] },
+    showLabel: { control: "boolean" },
   },
 };
 
@@ -88,12 +86,7 @@ export default meta;
 type Story = StoryObj<typeof DonnyAvatar>;
 
 /** Default idle state */
-export const Default: Story = {
-  args: {
-    state: "idle",
-    size: "lg",
-  },
-};
+export const Default: Story = { args: { state: "idle", size: "lg" } };
 
 /** All sizes */
 export const Sizes: Story = {
@@ -129,12 +122,15 @@ export const CoreStates: Story = {
         }}
       >
         {coreStates.map((state) => (
-          <div
-            key={state}
-            style={{ textAlign: "center" }}
-          >
+          <div key={state} style={{ textAlign: "center" }}>
             <DonnyAvatar state={state} size="lg" />
-            <p style={{ marginTop: "0.5rem", fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
+            <p
+              style={{
+                marginTop: "0.5rem",
+                fontSize: "0.75rem",
+                color: "var(--color-text-muted)",
+              }}
+            >
               {state}
             </p>
           </div>
@@ -173,12 +169,15 @@ export const ExtendedStates: Story = {
         }}
       >
         {extendedStates.map((state) => (
-          <div
-            key={state}
-            style={{ textAlign: "center" }}
-          >
+          <div key={state} style={{ textAlign: "center" }}>
             <DonnyAvatar state={state} size="md" />
-            <p style={{ marginTop: "0.5rem", fontSize: "0.625rem", color: "var(--color-text-muted)" }}>
+            <p
+              style={{
+                marginTop: "0.5rem",
+                fontSize: "0.625rem",
+                color: "var(--color-text-muted)",
+              }}
+            >
               {state}
             </p>
           </div>
@@ -216,7 +215,13 @@ function StateCycleDemo() {
   return (
     <div style={{ textAlign: "center" }}>
       <DonnyAvatar state={CYCLE_STATES[currentIndex]} size="xl" />
-      <p style={{ marginTop: "1rem", fontSize: "0.875rem", fontFamily: "monospace" }}>
+      <p
+        style={{
+          marginTop: "1rem",
+          fontSize: "0.875rem",
+          fontFamily: "monospace",
+        }}
+      >
         {CYCLE_STATES[currentIndex]}
       </p>
       <p style={{ fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
@@ -226,12 +231,14 @@ function StateCycleDemo() {
   );
 }
 
-export const AnimatedCycle: Story = {
-  render: () => <StateCycleDemo />,
-};
+export const AnimatedCycle: Story = { render: () => <StateCycleDemo /> };
 
 /** Conversation simulation */
-const CONVERSATION_SCRIPT: { state: DonnyState; delay: number; label: string }[] = [
+const CONVERSATION_SCRIPT: {
+  state: DonnyState;
+  delay: number;
+  label: string;
+}[] = [
   { state: "greeting", delay: 0, label: "User opens chat" },
   { state: "idle", delay: 1500, label: "Waiting for input" },
   { state: "listening", delay: 3000, label: "User typing..." },
@@ -247,9 +254,7 @@ function ConversationDemo() {
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
     CONVERSATION_SCRIPT.forEach((step, i) => {
-      timers.push(
-        setTimeout(() => setCurrent(i), step.delay)
-      );
+      timers.push(setTimeout(() => setCurrent(i), step.delay));
     });
     return () => timers.forEach(clearTimeout);
   }, []);
@@ -260,7 +265,13 @@ function ConversationDemo() {
       <p style={{ marginTop: "1rem", fontSize: "0.875rem" }}>
         {CONVERSATION_SCRIPT[current].label}
       </p>
-      <p style={{ fontSize: "0.75rem", color: "var(--color-text-muted)", fontFamily: "monospace" }}>
+      <p
+        style={{
+          fontSize: "0.75rem",
+          color: "var(--color-text-muted)",
+          fontFamily: "monospace",
+        }}
+      >
         State: {CONVERSATION_SCRIPT[current].state}
       </p>
     </div>
@@ -272,7 +283,8 @@ export const ConversationSimulation: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Simulates a typical conversation flow: greeting → idle → listening → thinking → searching → success",
+        story:
+          "Simulates a typical conversation flow: greeting → idle → listening → thinking → searching → success",
       },
     },
   },
@@ -331,7 +343,10 @@ function InteractiveDemo() {
               padding: "0.25rem 0.5rem",
               fontSize: "0.625rem",
               fontFamily: "monospace",
-              border: state === s ? "2px solid var(--color-primary)" : "1px solid var(--color-border)",
+              border:
+                state === s
+                  ? "2px solid var(--color-primary)"
+                  : "1px solid var(--color-border)",
               borderRadius: "4px",
               background: state === s ? "var(--color-primary)" : "transparent",
               color: state === s ? "white" : "inherit",
@@ -346,9 +361,7 @@ function InteractiveDemo() {
   );
 }
 
-export const Interactive: Story = {
-  render: () => <InteractiveDemo />,
-};
+export const Interactive: Story = { render: () => <InteractiveDemo /> };
 
 /** Eye tracking demo - move your mouse around! */
 function EyeTrackingDemo() {
@@ -373,7 +386,13 @@ function EyeTrackingDemo() {
 
   return (
     <div style={{ padding: "2rem", minHeight: "400px" }}>
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "2rem",
+        }}
+      >
         <DonnyAvatar
           state={proximityState}
           size="xl"
@@ -382,12 +401,25 @@ function EyeTrackingDemo() {
           onProximityChange={handleProximityChange}
         />
       </div>
-      
-      <p style={{ textAlign: "center", marginBottom: "2rem", color: "var(--color-text-muted)" }}>
+
+      <p
+        style={{
+          textAlign: "center",
+          marginBottom: "2rem",
+          color: "var(--color-text-muted)",
+        }}
+      >
         Move your mouse around - Donny follows! Hover near the buttons below.
       </p>
-      
-      <div style={{ display: "flex", gap: "2rem", justifyContent: "center", flexWrap: "wrap" }}>
+
+      <div
+        style={{
+          display: "flex",
+          gap: "2rem",
+          justifyContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
         <button
           data-contact-cta
           style={{
@@ -402,7 +434,7 @@ function EyeTrackingDemo() {
         >
           Contact Us
         </button>
-        
+
         <button
           data-submit-btn
           style={{
@@ -418,11 +450,16 @@ function EyeTrackingDemo() {
           Submit Form
         </button>
       </div>
-      
+
       <div style={{ marginTop: "2rem", textAlign: "center" }}>
         <p style={{ fontSize: "0.875rem", fontFamily: "monospace" }}>
           State: <strong>{proximityState}</strong>
-          {nearTarget && <> | Near: <code>{nearTarget}</code></>}
+          {nearTarget && (
+            <>
+              {" "}
+              | Near: <code>{nearTarget}</code>
+            </>
+          )}
         </p>
       </div>
     </div>
@@ -434,8 +471,16 @@ export const EyeTracking: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Donny follows your mouse cursor and reacts when you hover near contact CTAs or submit buttons!",
+        story:
+          "Donny follows your mouse cursor and reacts when you hover near contact CTAs or submit buttons!",
       },
     },
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

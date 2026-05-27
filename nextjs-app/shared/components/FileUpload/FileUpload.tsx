@@ -30,6 +30,7 @@ const formatFileSummary = (file: File | null) => {
   return `${file.name} (${Math.max(1, Math.round(sizeInKb))} KB)`;
 };
 
+/** File upload control with size validation and clear action. */
 const FileUpload: React.FC<FileUploadProps> = ({
   label,
   placeholder,

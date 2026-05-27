@@ -5,6 +5,7 @@
 }
 
 /* Honeypot - hidden from users */
+
 .honeypot {
   position: absolute;
   left: -10000px;
@@ -14,6 +15,7 @@
 }
 
 /* Field groups */
+
 .fields {
   display: flex;
   flex-direction: column;
@@ -21,11 +23,13 @@
 }
 
 /* Expandable sections spacing */
+
 .expandable {
   margin-block-start: var(--space-layout-8);
 }
 
 /* File upload wrapper */
+
 .fileUploadWrapper {
   display: flex;
   flex-direction: column;
@@ -40,6 +44,7 @@
 }
 
 /* Privacy policy text */
+
 .privacy {
   margin: 0;
   font-family: var(--font-body);
@@ -48,10 +53,10 @@
 }
 
 .privacyLink {
-  color: var(--color-primary);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  color: var(--color-primary);
   transition: opacity var(--duration-fast) var(--ease-out-cubic);
+  text-underline-offset: 2px;
 }
 
 .privacyLink:hover {
@@ -59,20 +64,21 @@
 }
 
 /* Submit button - full width */
+
 .submitButton {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-internal-8);
-  width: 100%;
   padding: var(--space-internal-16) var(--space-internal-32);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-internal-8);
+  border: none;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-primary);
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
   color: var(--inverted-text-color);
-  background-color: var(--color-primary);
-  border: none;
-  border-radius: var(--radius-lg);
   cursor: pointer;
   transition:
     background-color var(--duration-fast) var(--ease-out-cubic),
@@ -89,11 +95,12 @@
 }
 
 .submitButton:disabled {
-  opacity: 0.5;
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Loading spinner */
+
 .spinner {
   width: 16px;
   height: 16px;

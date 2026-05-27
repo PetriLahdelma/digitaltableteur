@@ -1,0 +1,26 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 11/11" [level=2]'
+- text: CSS Modules only (no inline styles)
+- img "Pass"
+- text: All styles via CSS Modules Design tokens for spacing/colors/typography
+- img "Pass"
+- text: Uses CSS custom properties Logical CSS properties
+- img "Pass"
+- text: Uses logical spacing Semantic HTML (h1-h6 or custom)
+- img "Pass"
+- text: Polymorphic as prop TypeScript strict mode
+- img "Pass"
+- text: Proper typing with TitleProps Accessibility (proper heading levels)
+- img "Pass"
+- text: Semantic heading hierarchy i18n for title text
+- img "Pass"
+- text: Stories use translation keys Unit tests with .play functions
+- img "Pass"
+- text: Test file with interactions Storybook stories
+- img "Pass"
+- text: Multiple size and level variants Font token compliance (--font-text/--font-title)
+- img "Pass"
+- text: Uses design system fonts No hardcoded values
+- img "Pass"
+- text: All values from tokens
+- separator "Resize table"

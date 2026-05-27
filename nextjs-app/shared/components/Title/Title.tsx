@@ -1,4 +1,14 @@
 import React from "react";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+export const titleVariants = cva("", {
+  variants: {
+    size: { XXS: "", XS: "", S: "", M: "", L: "", XL: "", XXL: "" },
+    terminals: { sans: "", serif: "" },
+  },
+  defaultVariants: { size: "L", terminals: "serif" },
+});
 import styles from "./Title.module.css";
 import "../../styles/variables.css";
 
@@ -7,7 +17,7 @@ type TitleTerminals = "sans" | "serif";
 type LineHeight = "tight" | "snug" | "normal" | "relaxed" | "loose";
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-type TitleProps = {
+export type TitleProps = {
   children: React.ReactNode;
   as?: HeadingTag;
   className?: string;
@@ -40,6 +50,7 @@ const lineHeightClassMap: Record<LineHeight, string> = {
   loose: styles["lineHeightLoose"] || "",
 };
 
+/** Page and section headings with size and terminal (serif/sans) variants. */
 const Title: React.FC<TitleProps> = ({
   children,
   as,

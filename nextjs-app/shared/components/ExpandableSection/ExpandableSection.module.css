@@ -3,16 +3,17 @@
 }
 
 /* Trigger styled as subtle text link */
+
 .trigger {
   display: inline-flex;
+  padding: var(--space-internal-8) 0;
   align-items: center;
   gap: var(--space-internal-8);
-  padding: var(--space-internal-8) 0;
+  border: none;
+  background: none;
   font-family: var(--font-body);
   font-size: 14px;
   color: var(--color-muted);
-  background: none;
-  border: none;
   cursor: pointer;
   transition: color var(--duration-fast) var(--ease-out-cubic);
 }
@@ -22,18 +23,19 @@
 }
 
 .trigger:focus-visible {
+  border-radius: var(--radius-sm);
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
   outline-offset: var(--focus-ring-offset);
-  border-radius: var(--radius-sm);
 }
 
 /* Plus icon that rotates to X when expanded */
+
 .icon {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 16px;
   height: 16px;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
   font-weight: 300;
   line-height: 1;
@@ -45,11 +47,13 @@
 }
 
 /* Content wrapper - handles overflow during animation */
+
 .content {
   overflow: hidden;
 }
 
 /* Inner content with padding */
+
 .inner {
   padding-block-start: var(--space-layout-24);
 }

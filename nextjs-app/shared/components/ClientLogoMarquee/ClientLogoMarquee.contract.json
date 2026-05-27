@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "ClientLogoMarquee",
+  "tier": "organism",
+  "group": "marketing",
+  "status": "alpha",
+  "description": "Animated client logo marquee on the homepage.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-client-logo-marquee",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "id",
+    "ref",
+    "style"
+  ],
+  "consumers": []
+}

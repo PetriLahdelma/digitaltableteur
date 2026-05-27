@@ -1,13 +1,17 @@
+import contract from "./EmailSignatureGenerator.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import EmailSignatureGenerator from "./EmailSignatureGenerator";
 import Badge from "@dt/Badge";
 
 const meta: Meta<typeof EmailSignatureGenerator> = {
-  title: "Tools/EmailSignatureGenerator",
+  argTypes: {},
+  title: "Organisms/EmailSignatureGenerator",
   component: EmailSignatureGenerator,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
     docs: {
       description: {
@@ -37,9 +41,7 @@ type Story = StoryObj<typeof EmailSignatureGenerator>;
  * Default email signature generator with Digitaltableteur branding.
  */
 export const Default: Story = {
-  args: {
-    logoUrl: "https://www.digitaltableteur.com/round.png",
-  },
+  args: { logoUrl: "https://www.digitaltableteur.com/round.png" },
 };
 
 /**
@@ -52,3 +54,10 @@ export const CustomBranding: Story = {
     logoUrl: "https://via.placeholder.com/48x48/3b82f6/ffffff?text=AC",
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

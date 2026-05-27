@@ -1,0 +1,46 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "AspectRatio",
+    "tier": "atom",
+    "group": "structure",
+    "status": "alpha",
+    "description": "Layout primitive that locks its children to a fixed width/height ratio (1:1, 4:3, 16:9, …) so media-shaped containers reserve space before content loads.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "ratio": {
+            "values": [
+                "1:1",
+                "4:3",
+                "16:9",
+                "21:9",
+                "3:2",
+                "2:3"
+            ],
+            "default": "16:9"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "No own ARIA — the wrapper inherits semantics from its children. Author the inside as a meaningful region (img, figure, iframe) yourself."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

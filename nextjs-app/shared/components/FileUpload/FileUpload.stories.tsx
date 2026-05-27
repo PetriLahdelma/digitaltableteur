@@ -1,22 +1,13 @@
+import contract from "./FileUpload.contract.json";
 import React, { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import FileUpload from "@dt/FileUpload";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { userEvent, waitFor, within } from "storybook/test";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-
 const fileUploadComplianceRules: ComplianceRule[] = [
   {
     id: "file-structure",
@@ -78,58 +69,63 @@ const fileUploadComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Stories with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export default {
-  title: "Components/FileUpload",
+  title: "Molecules/FileUpload",
   component: FileUpload,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
-    label: { control: "text" },
-    placeholder: { control: "text" },
-    helperText: { control: "text" },
-    uploadButtonLabel: { control: "text" },
-    clearButtonLabel: { control: "text" },
-    accept: { control: "text" },
-    maxSizeInBytes: { control: "number" },
-    sizeErrorMessage: { control: "text" },
-    error: { control: "text" },
-    disabled: { control: "boolean" },
-    required: { control: "boolean" },
-    value: { control: false, table: { disable: true } },
-    onFileChange: { action: "file change" },
+    label: { control: "text", description: "Field label" },
+
+    placeholder: {
+      control: "text",
+      description: "Placeholder when no file selected",
+    },
+
+    helperText: {
+      control: "text",
+      description: "Helper copy below the control",
+    },
+
+    uploadButtonLabel: { control: "text", description: "Upload button label" },
+
+    clearButtonLabel: {
+      control: "text",
+      description: "Clear/remove button label",
+    },
+
+    accept: { control: "text", description: "Accepted file extensions/MIME" },
+
+    maxSizeInBytes: {
+      control: "number",
+      description: "Maximum file size in bytes",
+    },
+
+    sizeErrorMessage: {
+      control: "text",
+      description: "Error when file exceeds max size",
+    },
+
+    error: { control: "text", description: "External error message" },
+
+    disabled: { control: "boolean", description: "Disables the control" },
+
+    required: { control: "boolean", description: "Marks field as required" },
+    value: {
+      table: { disable: true },
+      description: "Controlled File value (managed in stories)",
+    },
+    onFileChange: {
+      action: "file change",
+      description: "Called when a file is selected or cleared",
+    },
   },
 } as Meta<typeof FileUpload>;
 
@@ -171,4 +167,26 @@ Default.play = async ({ canvasElement }) => {
   // Test that upload button is present and clickable
   const uploadButton = canvas.getByRole("button", { name: /choose file/i });
   await userEvent.click(uploadButton);
+};
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  render: Template,
+  args: Default.args,
+};
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: Template,
+  args: Default.args,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  render: Template,
+  args: Default.args,
 };

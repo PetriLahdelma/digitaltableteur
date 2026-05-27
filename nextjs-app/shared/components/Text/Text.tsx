@@ -32,6 +32,7 @@ const lineHeightClassMap: Record<LineHeight, string> = {
   loose: styles["lineHeightLoose"] || "",
 };
 
+/** Body and inline typography with size, terminal, and line-height tokens. */
 const Text = ({
   children,
   as = "p",

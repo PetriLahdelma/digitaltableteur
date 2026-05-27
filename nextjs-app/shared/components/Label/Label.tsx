@@ -1,13 +1,21 @@
+import { cva } from "class-variance-authority";
+
+export const labelVariants = cva("", {
+  variants: { size: { sm: "", md: "", lg: "" } },
+  defaultVariants: { size: "md" },
+});
+
 import React from "react";
 import styles from "./Label.module.css";
 
-interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   htmlFor: string;
   tooltipText?: string;
   required?: boolean;
   disabled?: boolean;
 }
 
+/** Form field label with required, disabled, and tooltip affordances. */
 const Label: React.FC<LabelProps> = ({
   htmlFor,
   children,

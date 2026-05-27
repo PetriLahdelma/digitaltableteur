@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "FileUpload",
+  "tier": "molecule",
+  "group": "form",
+  "status": "beta",
+  "description": "File picker with size validation and clear control.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-file-upload",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
+    "ariaRequirements": [
+      "label association",
+      "error via HelperText"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+    "forcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "accept",
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "clearButtonLabel",
+    "disabled",
+    "error",
+    "helperText",
+    "id",
+    "label",
+    "maxSizeInBytes",
+    "onFileChange",
+    "placeholder",
+    "ref",
+    "required",
+    "sizeErrorMessage",
+    "style",
+    "uploadButtonLabel",
+    "value"
+  ],
+  "consumers": []
+}

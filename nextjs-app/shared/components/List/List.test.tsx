@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import List from "./List";
+import styles from "./List.module.css";
 
 describe("List", () => {
   const items = ["Item 1", "Item 2", "Item 3"];
@@ -32,37 +33,37 @@ describe("List", () => {
 
   it("applies serif terminals class", () => {
     const { container } = render(<List items={items} terminals="serif" />);
-    expect(container.firstChild).toHaveClass("serif");
+    expect(container.firstChild).toHaveClass(styles.serif);
   });
 
   it("applies sans terminals class by default", () => {
     const { container } = render(<List items={items} />);
-    expect(container.firstChild).toHaveClass("sans");
+    expect(container.firstChild).toHaveClass(styles.sans);
   });
 
   it("applies size class", () => {
     const { container } = render(<List items={items} size="L" />);
-    expect(container.firstChild).toHaveClass("textL");
+    expect(container.firstChild).toHaveClass(styles.textL);
   });
 
   it("applies line height class", () => {
     const { container } = render(<List items={items} lineHeight="relaxed" />);
-    expect(container.firstChild).toHaveClass("lineHeightRelaxed");
+    expect(container.firstChild).toHaveClass(styles.lineHeightRelaxed);
   });
 
   it("applies compact spacing class", () => {
     const { container } = render(<List items={items} spacing="compact" />);
-    expect(container.firstChild).toHaveClass("spacingCompact");
+    expect(container.firstChild).toHaveClass(styles.spacingCompact);
   });
 
   it("applies normal spacing by default", () => {
     const { container } = render(<List items={items} />);
-    expect(container.firstChild).toHaveClass("spacingNormal");
+    expect(container.firstChild).toHaveClass(styles.spacingNormal);
   });
 
   it("applies relaxed spacing class", () => {
     const { container } = render(<List items={items} spacing="relaxed" />);
-    expect(container.firstChild).toHaveClass("spacingRelaxed");
+    expect(container.firstChild).toHaveClass(styles.spacingRelaxed);
   });
 
   it("applies listStyleType via inline style", () => {
@@ -74,7 +75,7 @@ describe("List", () => {
     const { container } = render(
       <List items={items} style={{ color: "red" }} />,
     );
-    expect(container.firstChild).toHaveStyle({ color: "red" });
+    expect(container.querySelector("ul, ol")).toHaveStyle({ color: "rgb(255, 0, 0)" });
   });
 
   it("applies custom role", () => {

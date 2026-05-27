@@ -1,11 +1,42 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./AlertBanner.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import AlertBanner from "@dt/AlertBanner";
 
 const meta: Meta<typeof AlertBanner> = {
-  title: "Feedback/AlertBanner",
+  title: "Molecules/AlertBanner",
   component: AlertBanner,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  argTypes: {
+    tone: {
+      control: { type: "select" },
+      options: ["info", "success", "warning", "error"],
+      description: "Semantic tone controlling icon and surface colors",
+      table: { defaultValue: { summary: "info" } },
+    },
+
+    title: { control: "text", description: "Alert heading text" },
+
+    description: { control: "text", description: "Supporting body copy" },
+
+    dismissible: {
+      control: "boolean",
+      description: "Shows a dismiss control when true",
+      table: { defaultValue: { summary: "false" } },
+    },
+    onDismiss: {
+      action: "dismissed",
+      description: "Called when the user dismisses the banner",
+      table: { disable: true },
+    },
+    "aria-live": {
+      control: { type: "select" },
+      options: ["polite", "assertive", "off"],
+      description: "Live region politeness for assistive tech",
+      table: { defaultValue: { summary: "polite" }, disable: true },
+    },
+  },
 };
 
 export default meta;
@@ -34,4 +65,23 @@ export const Dismissible: Story = {
     description: "Your changes have been stored.",
     dismissible: true,
   },
+};
+
+export const Default = Info;
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+};
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  args: Dismissible.args,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

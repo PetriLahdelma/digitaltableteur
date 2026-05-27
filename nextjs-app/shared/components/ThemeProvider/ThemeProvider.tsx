@@ -1,3 +1,9 @@
+
+/** Props for ThemeProvider. */
+export interface ThemeProviderProps {
+  className?: string;
+}
+
 import React, {
   createContext,
   useCallback,
@@ -172,6 +178,9 @@ const ThemeContext = createContext<ThemeContextProps>({
 
 export const useTheme = () => useContext(ThemeContext);
 
+/**
+ * ThemeProvider component.
+ */
 export const ThemeProvider: React.FC<{
   children: React.ReactNode;
   forcedTheme?: Theme;

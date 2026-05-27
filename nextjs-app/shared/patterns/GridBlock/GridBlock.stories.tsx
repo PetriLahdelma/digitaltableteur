@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./GridBlock.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import GridBlock from "./GridBlock";
 import Text from "@dt/Text";
@@ -6,8 +7,10 @@ import Text from "@dt/Text";
 const meta: Meta<typeof GridBlock> = {
   title: "Patterns/GridBlock",
   component: GridBlock,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
     vitest: {
       skip: true, // Skip Vitest tests for this complex pattern component
@@ -19,26 +22,31 @@ const meta: Meta<typeof GridBlock> = {
       control: false,
       table: { disable: true },
     },
+
     columns: {
       control: { type: "select" },
       options: [1, 2, 3, 4],
       description: "Number of columns in the grid",
     },
+
     gap: {
       control: { type: "select" },
       options: ["none", "small", "medium", "large"],
       description: "Gap between grid cells",
     },
+
     backgroundColor: {
       control: { type: "select" },
       options: ["light", "white", "transparent"],
       description: "Background color variant",
     },
+
     maxWidth: {
       control: { type: "select" },
       options: ["sm", "md", "lg", "xl", "full"],
       description: "Maximum width constraint",
     },
+
     spacing: {
       control: { type: "select" },
       options: ["compact", "default", "comfortable", "spacious"],
@@ -391,3 +399,10 @@ export const MixedContent: Story = {
     ],
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

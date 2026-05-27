@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "CodeSnippet",
+  "tier": "molecule",
+  "group": "structure",
+  "status": "alpha",
+  "description": "CodeSnippet — production @dt component (Storybook beta).",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-code-snippet",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "ariaRequirements": []
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "\"aria-label\"",
+    "allowCopy",
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "code",
+    "id",
+    "language",
+    "maxLines",
+    "onCopy",
+    "ref",
+    "showLineNumbers",
+    "style",
+    "variant"
+  ],
+  "consumers": []
+}

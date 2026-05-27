@@ -1,22 +1,26 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../test-utils/render";
 import { PrivacyPolicyPage } from "./PrivacyPolicyPage";
 
 describe("PrivacyPolicyPage", () => {
   it("renders page title", () => {
-    render(<PrivacyPolicyPage />);
-    expect(screen.getByText(/privacy policy/i)).toBeInTheDocument();
-  });
-
-  it("renders privacy policy content", () => {
-    render(<PrivacyPolicyPage />);
+    renderWithProviders(<PrivacyPolicyPage />);
     expect(
-      screen.getByText(/data|privacy|personal information/i),
+      screen.getByRole("heading", { name: /Privacy Policy/i, level: 1 }),
     ).toBeInTheDocument();
   });
 
-  it("renders back button", () => {
-    render(<PrivacyPolicyPage />);
-    expect(screen.getByRole("link", { name: /back/i })).toBeInTheDocument();
+  it("renders privacy policy content", () => {
+    renderWithProviders(<PrivacyPolicyPage />);
+    expect(
+      screen.getByRole("heading", { name: /What data do we collect/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders back button when onBack is provided", () => {
+    const onBack = vi.fn();
+    renderWithProviders(<PrivacyPolicyPage onBack={onBack} />);
+    expect(screen.getByRole("button", { name: /Back/i })).toBeInTheDocument();
   });
 });

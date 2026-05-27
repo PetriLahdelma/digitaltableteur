@@ -1,0 +1,58 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Gallery",
+    "tier": "molecule",
+    "group": "display",
+    "status": "alpha",
+    "description": "Image gallery grid with a click-to-expand lightbox and motion on hover. Used on work-detail and editorial pages where the imagery is the primary content.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "columns": {
+            "values": [
+                "2",
+                "3",
+                "4"
+            ],
+            "default": "3"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab — focuses each gallery item.",
+            "Enter / Space — opens the focused image in the lightbox.",
+            "Esc — closes the lightbox."
+        ],
+        "ariaRequirements": [
+            "Each gallery item is a button when click-to-expand is enabled, with an accessible name describing the image.",
+            "When the lightbox is open, focus is trapped inside it and returns to the source item on close."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false,
+        "motion": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12"
+        ],
+        "radii": [
+            "--radius-md"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

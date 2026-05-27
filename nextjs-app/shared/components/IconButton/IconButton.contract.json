@@ -1,0 +1,64 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "IconButton",
+    "tier": "atom",
+    "group": "actions",
+    "status": "alpha",
+    "description": "Icon-only action button. Wraps the underlying shadcn `Button` with a circular shape, enforced `aria-label`, and the design-system size axis.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "button",
+    "variants": {
+        "variant": {
+            "values": [
+                "default",
+                "ghost",
+                "outline"
+            ],
+            "default": "ghost"
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab — focusable.",
+            "Enter / Space — activates."
+        ],
+        "ariaRequirements": [
+            "`label` prop is required and renders as `aria-label`; the icon glyph itself is `aria-hidden`.",
+            "Disabled state forwards `aria-disabled` and removes pointer events; focus remains routable so keyboard users can discover the disabled affordance."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12"
+        ],
+        "radii": [
+            "--radius-full"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

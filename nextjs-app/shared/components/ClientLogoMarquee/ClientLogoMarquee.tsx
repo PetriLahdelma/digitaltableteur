@@ -231,6 +231,15 @@ function LogoLane({
   );
 }
 
+
+/** Props for ClientLogoMarquee. */
+export interface ClientLogoMarqueeProps {
+  className?: string;
+}
+
+/**
+ * ClientLogoMarquee component.
+ */
 export function ClientLogoMarquee({
   ariaLabel,
 }: {

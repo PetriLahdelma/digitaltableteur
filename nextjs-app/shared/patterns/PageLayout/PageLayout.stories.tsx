@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./PageLayout.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import PageLayout from "./PageLayout";
 import Text from "@dt/Text";
@@ -8,8 +9,10 @@ import TitleStories from "@dt/Title/Title.stories";
 const meta: Meta<typeof PageLayout> = {
   title: "Patterns/PageLayout",
   component: PageLayout,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
     vitest: {
       skip: true, // Skip Vitest tests for this complex pattern component
@@ -21,19 +24,16 @@ const meta: Meta<typeof PageLayout> = {
       options: ["sm", "md", "lg", "xl", "full"],
       description: "Maximum width constraint",
     },
+
     spacing: {
       control: "select",
       options: ["compact", "default", "comfortable", "spacious"],
       description: "Vertical spacing",
     },
-    grid: {
-      control: "boolean",
-      description: "Enable 12-column grid system",
-    },
-    withMargins: {
-      control: "boolean",
-      description: "Apply page margins",
-    },
+
+    grid: { control: "boolean", description: "Enable 12-column grid system" },
+
+    withMargins: { control: "boolean", description: "Apply page margins" },
   },
 };
 
@@ -61,11 +61,7 @@ const DemoContent = ({ gridColumn }: { gridColumn?: string }) => (
 );
 
 export const Default: Story = {
-  args: {
-    maxWidth: "lg",
-    spacing: "default",
-    withMargins: true,
-  },
+  args: { maxWidth: "lg", spacing: "default", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
       <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
@@ -84,11 +80,7 @@ export const Default: Story = {
 };
 
 export const SmallContainer: Story = {
-  args: {
-    maxWidth: "sm",
-    spacing: "default",
-    withMargins: true,
-  },
+  args: { maxWidth: "sm", spacing: "default", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
       <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
@@ -106,11 +98,7 @@ export const SmallContainer: Story = {
 };
 
 export const MediumContainer: Story = {
-  args: {
-    maxWidth: "md",
-    spacing: "comfortable",
-    withMargins: true,
-  },
+  args: { maxWidth: "md", spacing: "comfortable", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
       <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
@@ -128,11 +116,7 @@ export const MediumContainer: Story = {
 };
 
 export const LargeContainer: Story = {
-  args: {
-    maxWidth: "lg",
-    spacing: "spacious",
-    withMargins: true,
-  },
+  args: { maxWidth: "lg", spacing: "spacious", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
       <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
@@ -150,11 +134,7 @@ export const LargeContainer: Story = {
 };
 
 export const ExtraLargeContainer: Story = {
-  args: {
-    maxWidth: "xl",
-    spacing: "default",
-    withMargins: true,
-  },
+  args: { maxWidth: "xl", spacing: "default", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
       <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
@@ -172,11 +152,7 @@ export const ExtraLargeContainer: Story = {
 };
 
 export const FullWidth: Story = {
-  args: {
-    maxWidth: "full",
-    spacing: "default",
-    withMargins: false,
-  },
+  args: { maxWidth: "full", spacing: "default", withMargins: false },
   render: (args) => (
     <PageLayout {...args}>
       <div style={{ padding: "var(--space-layout-32)" }}>
@@ -196,11 +172,7 @@ export const FullWidth: Story = {
 };
 
 export const CompactSpacing: Story = {
-  args: {
-    maxWidth: "md",
-    spacing: "compact",
-    withMargins: true,
-  },
+  args: { maxWidth: "md", spacing: "compact", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
       <Title terminals="sans" style={{ marginBlockEnd: "1rem" }}>
@@ -233,12 +205,7 @@ export const TwoColumnGrid: Story = {
 };
 
 export const ThreeColumnGrid: Story = {
-  args: {
-    maxWidth: "xl",
-    spacing: "default",
-    grid: true,
-    withMargins: true,
-  },
+  args: { maxWidth: "xl", spacing: "default", grid: true, withMargins: true },
   render: (args) => (
     <PageLayout {...args}>
       <DemoContent gridColumn="span 4" />
@@ -321,3 +288,10 @@ export const ResponsiveShowcase: Story = {
     </PageLayout>
   ),
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

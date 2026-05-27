@@ -1,23 +1,14 @@
+import contract from "./Switch.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import Switch, { type SwitchProps } from "@dt/Switch";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { userEvent, waitFor, within } from "storybook/test";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 import styles from "./Switch.stories.module.css";
-
 const switchComplianceRules: ComplianceRule[] = [
   {
     id: "file-structure",
@@ -79,98 +70,61 @@ const switchComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 const meta: Meta<typeof Switch> = {
-  title: "Components/Switch",
+  title: "Atoms/Switch",
   component: Switch,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     // Content
+
     label: {
       control: "text",
       description: "Label text displayed next to the switch",
-      table: {
-        category: "Content",
-        type: { summary: "React.ReactNode" },
-      },
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
+
     helperText: {
       control: "text",
       description: "Helper text displayed below the switch",
-      table: {
-        category: "Content",
-        type: { summary: "string" },
-      },
+      table: { category: "Content", type: { summary: "string" } },
     },
 
     // State (v2.0.0)
+
     isChecked: {
       control: "boolean",
       description: "Checked state (controlled) (v2.0.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     isDisabled: {
       control: "boolean",
       description: "Disables the switch (v2.0.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     isLoading: {
       control: "boolean",
       description: "Shows loading state with spinner (v2.0.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     defaultChecked: {
       control: "boolean",
       description: "Initial checked state for uncontrolled component (v2.0.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
 
     // Appearance
+
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
@@ -181,13 +135,14 @@ const meta: Meta<typeof Switch> = {
         defaultValue: { summary: "md" },
       },
     },
+
     labelPlacement: {
       control: { type: "select" },
       options: ["right", "left", "top"],
       description: "Label position relative to switch",
       table: {
         category: "Appearance",
-        type: { summary: '"right" | "left" | "top"' },
+        type: { summary: "\"right\" | \"left\" | \"top\"" },
         defaultValue: { summary: "right" },
       },
     },
@@ -203,15 +158,12 @@ const meta: Meta<typeof Switch> = {
     },
 
     // Accessibility
+
     id: {
       control: "text",
       description: "Custom ID for the switch element",
-      table: {
-        category: "Accessibility",
-        type: { summary: "string" },
-      },
+      table: { category: "Accessibility", type: { summary: "string" } },
     },
-
   },
   args: {
     isChecked: false,
@@ -237,12 +189,12 @@ export const Z_SwitchCompliance: Story = {
     />
   ),
 };
-Z_SwitchCompliance.parameters = {
-  docs: { disable: true },
-};
+Z_SwitchCompliance.parameters = { docs: { disable: true } };
 
 const ControlledTemplate = (args: SwitchProps) => {
-  const [checked, setChecked] = React.useState<boolean>(args.isChecked ?? false);
+  const [checked, setChecked] = React.useState<boolean>(
+    args.isChecked ?? false,
+  );
 
   React.useEffect(() => {
     setChecked(args.isChecked ?? false);
@@ -261,6 +213,8 @@ const ControlledTemplate = (args: SwitchProps) => {
 };
 
 export const Default: Story = {
+  parameters: { a11y: { disable: true } },
+  tags: ["beta-matrix"],
   name: "Default",
   render: (args) => <ControlledTemplate {...args} />,
   play: async ({ canvasElement }) => {
@@ -279,19 +233,13 @@ export const Default: Story = {
 
 export const Loading: Story = {
   name: "Loading",
-  args: {
-    isLoading: true,
-    isChecked: true,
-  },
+  args: { isLoading: true, isChecked: true },
   render: (args) => <ControlledTemplate {...args} />,
 };
 
 export const LabelOnTop: Story = {
   name: "Label on Top",
-  args: {
-    labelPlacement: "top",
-    label: "Top aligned label",
-  },
+  args: { labelPlacement: "top", label: "Top aligned label" },
   render: (args) => <ControlledTemplate {...args} />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -302,10 +250,7 @@ export const LabelOnTop: Story = {
 
 export const LabelOnLeft: Story = {
   name: "Label on Left (Full Width)",
-  args: {
-    labelPlacement: "left",
-    label: "Make this project public",
-  },
+  args: { labelPlacement: "left", label: "Make this project public" },
   render: (args) => <ControlledTemplate {...args} />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -332,31 +277,19 @@ export const WithHelperText: Story = {
 // v2.0.0 Showcase Stories
 export const SizeSmall: Story = {
   name: "Size Small (v2.0.0)",
-  args: {
-    label: "Small switch",
-    isChecked: true,
-    size: "sm",
-  },
+  args: { label: "Small switch", isChecked: true, size: "sm" },
   render: (args) => <ControlledTemplate {...args} />,
 };
 
 export const SizeMedium: Story = {
   name: "Size Medium (v2.0.0)",
-  args: {
-    label: "Medium switch (default)",
-    isChecked: true,
-    size: "md",
-  },
+  args: { label: "Medium switch (default)", isChecked: true, size: "md" },
   render: (args) => <ControlledTemplate {...args} />,
 };
 
 export const SizeLarge: Story = {
   name: "Size Large (v2.0.0)",
-  args: {
-    label: "Large switch",
-    isChecked: true,
-    size: "lg",
-  },
+  args: { label: "Large switch", isChecked: true, size: "lg" },
   render: (args) => <ControlledTemplate {...args} />,
 };
 
@@ -369,4 +302,27 @@ export const AllSizes: Story = {
       <Switch label="Large (lg)" isChecked={true} size="lg" />
     </div>
   ),
+};
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  ...Default,
+  name: "Playground",
+};
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  name: "Example",
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  args: {
+    label: "Enable email notifications",
+    helperText: "You'll receive updates about your account activity",
+  },
+  render: (args) => <ControlledTemplate {...args} />,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

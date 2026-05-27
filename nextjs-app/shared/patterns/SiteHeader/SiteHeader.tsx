@@ -68,6 +68,9 @@ const themeNames: Record<Theme, string> = {
   hcw: "themeNameHcw",
 };
 
+/**
+ * SiteHeader component.
+ */
 export function SiteHeader({
   navItems = defaultNavItems,
   className,

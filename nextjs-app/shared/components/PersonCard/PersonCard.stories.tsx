@@ -1,13 +1,13 @@
+import contract from "./PersonCard.contract.json";
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react-vite";
 import PersonCard from "@dt/PersonCard";
 import { PersonCardProps } from "@dt/PersonCard";
 import peteVaultBoy from "../../assets/images/pete-vault-boy.jpg";
-import { within, userEvent } from "@storybook/testing-library";
+import { userEvent, within } from "storybook/test";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
-
 const personCardComplianceRules: ComplianceRule[] = [
   {
     id: "file-structure",
@@ -69,16 +69,11 @@ const personCardComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export default {
-  title: "Components/PersonCard",
+  title: "Molecules/PersonCard",
   component: PersonCard,
   args: {
     imageSrc: peteVaultBoy,
@@ -103,24 +98,43 @@ export default {
   },
   argTypes: {
     imageSrc: { control: "text" },
+
     imageAlt: { control: "text" },
+
     name: { control: "text" },
+
     title: { control: "text" },
+
     email: { control: "text" },
+
     linkedinUrl: { control: "text" },
+
     linkedinLabel: { control: "text" },
+
     githubUrl: { control: "text" },
+
     githubLabel: { control: "text" },
+
     facebookUrl: { control: "text" },
+
     facebookLabel: { control: "text" },
+
     twitterUrl: { control: "text" },
+
     twitterLabel: { control: "text" },
+
     dribbbleUrl: { control: "text" },
+
     dribbbleLabel: { control: "text" },
+
     mediumUrl: { control: "text" },
+
     mediumLabel: { control: "text" },
+
     instagramUrl: { control: "text" },
+
     instagramLabel: { control: "text" },
+
     className: { control: "text" },
   },
 } as Meta<typeof PersonCard>;
@@ -154,9 +168,7 @@ WithoutSocialMedia.args = {
 };
 
 export const Loading = Template.bind({});
-Loading.args = {
-  loading: true,
-};
+Loading.args = { loading: true };
 
 export const AllSocialMedia = Template.bind({});
 AllSocialMedia.args = {
@@ -170,9 +182,7 @@ AllSocialMedia.args = {
 };
 
 export const WithCustomClass = Template.bind({});
-WithCustomClass.args = {
-  className: "custom-person-card",
-};
+WithCustomClass.args = { className: "custom-person-card" };
 
 export const LongTitle = Template.bind({});
 LongTitle.args = {
@@ -187,17 +197,11 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
 
   // Check that all elements are rendered
-  await canvas.findByRole("img", {
-    name: /portrait of petri lahdelma/i,
-  });
+  await canvas.findByRole("img", { name: /portrait of petri lahdelma/i });
   await canvas.findByRole("heading", { name: /petri lahdelma/i });
   await canvas.findByText(/digital designer & developer/i);
-  await canvas.findByRole("link", {
-    name: /petri@digitaltableteur.com/i,
-  });
-  await canvas.findByRole("link", {
-    name: /connect on linkedin/i,
-  });
+  await canvas.findByRole("link", { name: /petri@digitaltableteur.com/i });
+  await canvas.findByRole("link", { name: /connect on linkedin/i });
 
   // Test email link functionality
   const emailLink = await canvas.findByRole("link", {
@@ -248,14 +252,10 @@ WithoutSocialMedia.play = async ({
   }
 
   // Check that other elements are still rendered
-  await canvas.findByRole("img", {
-    name: /portrait of petri lahdelma/i,
-  });
+  await canvas.findByRole("img", { name: /portrait of petri lahdelma/i });
   await canvas.findByRole("heading", { name: /petri lahdelma/i });
   await canvas.findByText(/digital designer & developer/i);
-  await canvas.findByRole("link", {
-    name: /petri@digitaltableteur.com/i,
-  });
+  await canvas.findByRole("link", { name: /petri@digitaltableteur.com/i });
 };
 
 AllSocialMedia.play = async ({
@@ -287,3 +287,14 @@ LongTitle.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     name: /alexandra.thompson-williams@company.com/i,
   });
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: {
+    a11y: { test: "error" },
+    contractStatus: contract.status,
+    controls: { disable: true },
+  },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

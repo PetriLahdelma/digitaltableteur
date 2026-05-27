@@ -1,0 +1,37 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Layout",
+    "tier": "pattern",
+    "group": "structure",
+    "status": "alpha",
+    "description": "Top-level page shell wrapping every Next.js app/* route. Renders the global header, the route's children inside the main landmark, and the global footer. Catalog entry exists so the page structure is documented; the implementation is not parameterised.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab order: header → main → footer (standard document flow)."
+        ],
+        "ariaRequirements": [
+            "Provides the page's `<main>` landmark so screen-reader 'skip to main' works.",
+            "Header and footer are rendered by their own pattern components (`SiteHeader`, `SiteFooter`)."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

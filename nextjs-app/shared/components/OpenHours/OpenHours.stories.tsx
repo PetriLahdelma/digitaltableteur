@@ -1,5 +1,6 @@
+import contract from "./OpenHours.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import OpenHours from "@dt/OpenHours";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
@@ -66,18 +67,14 @@ const openHoursComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 const meta: Meta<typeof OpenHours> = {
-  title: "Components/AI/Chat/Custom Components/OpenHours",
+  argTypes: {},
+  title: "Molecules/OpenHours",
   component: OpenHours,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   args: {},
 };
 export default meta;
@@ -86,6 +83,8 @@ type Story = StoryObj<typeof OpenHours>;
 
 export const Z_OpenHoursCompliance: Story = {
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     docs: { disable: true },
   },
   render: () => (
@@ -99,17 +98,11 @@ export const Z_OpenHoursCompliance: Story = {
   ),
 };
 
-export const Default: Story = {
-  args: {},
-};
+export const Default: Story = { args: {} };
 
-export const Compact: Story = {
-  args: { compact: true },
-};
+export const Compact: Story = { args: { compact: true } };
 
-export const TodayOnly: Story = {
-  args: { showAllDays: false },
-};
+export const TodayOnly: Story = { args: { showAllDays: false } };
 
 export const InjectedDate: Story = {
   args: { date: new Date("2025-11-01T10:30:00") },
@@ -121,3 +114,10 @@ export const InjectedDate: Story = {
     },
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

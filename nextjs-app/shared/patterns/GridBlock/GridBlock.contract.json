@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "GridBlock",
+  "tier": "pattern",
+  "group": "layout",
+  "status": "alpha",
+  "description": "GridBlock — production @dt component (Storybook beta).",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-grid-block",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "ariaRequirements": []
+  },
+  "tokens": {
+    "colors": [
+      "--color-light-bg",
+      "--color-white"
+    ],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "backgroundColor",
+    "cells",
+    "children",
+    "className",
+    "columns",
+    "gap",
+    "id",
+    "maxWidth",
+    "ref",
+    "spacing",
+    "style"
+  ],
+  "consumers": []
+}

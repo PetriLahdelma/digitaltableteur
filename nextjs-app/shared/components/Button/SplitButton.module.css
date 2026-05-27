@@ -26,16 +26,16 @@
 .menu {
   position: absolute;
   top: calc(100% + var(--space-internal-8));
-  inset-inline-start: 0;
   z-index: 20;
-  min-inline-size: 12rem;
-  inline-size: max(12rem, 100%);
+  margin: 0;
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-4);
-  margin: 0;
+  inline-size: max(12rem, 100%);
+  min-inline-size: 12rem;
   border-radius: var(--radius-md, 0.5rem);
   background: var(--color-white);
   box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
+  inset-inline-start: 0;
   list-style: none;
 }
 
@@ -50,16 +50,16 @@
 .subMenu {
   position: absolute;
   top: calc(-0.55 * var(--space-internal-6, 0.25rem));
-  inset-inline-start: 100%;
   margin-inline-start: var(--space-internal-4);
-  min-inline-size: 12rem;
-  inline-size: max(12rem, 100%);
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-4);
-  list-style: none;
+  inline-size: max(12rem, 100%);
+  min-inline-size: 12rem;
   border-radius: var(--radius-md, 0.5rem);
   background: var(--color-white);
   box-shadow: 0 8px 18px rgb(0 0 0 / 12%);
+  inset-inline-start: 100%;
+  list-style: none;
 }
 
 .menuItem {
@@ -93,9 +93,9 @@
 }
 
 .menuItem:focus-visible {
+  z-index: 2;
   outline: none;
   box-shadow: 0 0 0 2px var(--color-primary);
-  z-index: 2;
 }
 
 .menuItem:disabled {

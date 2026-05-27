@@ -18,6 +18,9 @@ export interface FadeInProps {
   as?: ElementType;
 }
 
+/**
+ * FadeIn component.
+ */
 export function FadeIn({
   children,
   direction = "up",

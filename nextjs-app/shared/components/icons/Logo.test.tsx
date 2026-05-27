@@ -4,23 +4,17 @@ import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import Logo from "./Logo";
 
-// Mock ThemeProvider
 vi.mock("@/nextjs-app/shared/components/ThemeProvider", () => ({
   useTheme: () => ({ theme: "light" }),
 }));
 
 describe("Logo", () => {
-  it("renders logo image", () => {
+  it("renders filled SVG logo by default", () => {
     render(<Logo />);
-    expect(screen.getByAltText("Digitaltableteur logo")).toBeInTheDocument();
+    expect(screen.getByRole("img")).toBeInTheDocument();
   });
 
-  it("renders filled variant by default", () => {
-    const { container } = render(<Logo />);
-    expect(container.querySelector("svg")).toBeInTheDocument();
-  });
-
-  it("renders outline variant when specified", () => {
+  it("renders outline image variant when specified", () => {
     render(<Logo variant="outline" />);
     expect(screen.getByAltText("Digitaltableteur logo")).toBeInTheDocument();
   });
@@ -35,13 +29,13 @@ describe("Logo", () => {
     const onClick = vi.fn();
     render(<Logo onClick={onClick} />);
 
-    const logo = screen.getByAltText("Digitaltableteur logo");
-    await user.click(logo);
+    await user.click(screen.getByRole("button"));
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it("renders without onClick handler", () => {
+  it("renders as static image without onClick handler", () => {
     render(<Logo />);
-    expect(screen.getByAltText("Digitaltableteur logo")).toBeInTheDocument();
+    expect(screen.getByRole("img")).toBeInTheDocument();
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 });

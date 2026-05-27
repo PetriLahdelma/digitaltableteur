@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Select",
+  "tier": "atom",
+  "group": "form",
+  "status": "beta",
+  "description": "Native select with label, options, error state, and size tokens.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-select",
+  "radixPrimitive": null,
+  "element": "select",
+  "variants": {
+    "size": {
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "forwarded": true,
+      "forwardedTo": "CSS module size classes"
+    }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Arrow keys",
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "ariaRequirements": [
+      "associated label",
+      "error announced via HelperText"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+    "forcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "id",
+    "ref",
+    "size",
+    "style"
+  ],
+  "consumers": []
+}

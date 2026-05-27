@@ -1,16 +1,20 @@
+import contract from "./CodeBlockWindow.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import CodeBlockWindow from "@dt/CodeBlockWindow";
 import { codeBlockFixtures } from "./codeBlockFixtures";
 import { renderCodeBlockFixtureNode } from "./CodeBlockFixtureRenderer";
 
 const meta: Meta<typeof CodeBlockWindow> = {
-  title: "Components/CodeBlockWindow",
+  argTypes: {},
+  title: "Organisms/CodeBlockWindow",
   component: CodeBlockWindow,
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "padded",
   },
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
 };
 
 export default meta;
@@ -34,26 +38,15 @@ export const Default: Story = {
 };
 
 export const NoTitle: Story = {
-  args: {
-    language: "bash",
-    children: fixture.bash,
-  },
+  args: { language: "bash", children: fixture.bash },
 };
 
 export const JsonExample: Story = {
-  args: {
-    title: "payload.json",
-    language: "json",
-    children: fixture.json,
-  },
+  args: { title: "payload.json", language: "json", children: fixture.json },
 };
 
 export const LongLine: Story = {
-  args: {
-    title: "long-line.ts",
-    language: "ts",
-    children: fixture.longLine,
-  },
+  args: { title: "long-line.ts", language: "ts", children: fixture.longLine },
 };
 
 export const DarkPreview: Story = {
@@ -69,3 +62,10 @@ export const DarkPreview: Story = {
     children: fixture.tsx,
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

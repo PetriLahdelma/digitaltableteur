@@ -1,10 +1,11 @@
 /* Subtle noise texture overlay */
+
 .textureOverlay {
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==");
-  opacity: 0.3;
   pointer-events: none;
+  opacity: 0.3;
   mix-blend-mode: overlay;
 }
 
@@ -20,6 +21,7 @@
 }
 
 /* Dark theme */
+
 :global(.themeDark) .primaryButton,
 :global(.dark) .primaryButton {
   background-color: #041b23;
@@ -32,6 +34,7 @@
 }
 
 /* High Contrast Black */
+
 :global(.themeHCB) .primaryButton {
   background-color: #041b23;
   color: #fff;
@@ -42,16 +45,17 @@
 }
 
 /* Brand background - uses logo-background/logo-color pair for guaranteed contrast */
+
 .brandBackground {
+  margin-block: 0;
   background-color: var(--logo-background, #dfff00);
   color: var(--logo-color, #000);
-  margin-block: 0;
 }
 
 .brandPrimaryButton.brandPrimaryButton {
   background-color: var(--logo-color, #000) !important;
-  color: var(--logo-background, #dfff00) !important;
   text-decoration: none !important;
+  color: var(--logo-background, #dfff00) !important;
   text-decoration-color: transparent !important;
 }
 
@@ -61,15 +65,15 @@
     var(--logo-color, #000) 85%,
     transparent
   ) !important;
-  color: var(--logo-background, #dfff00) !important;
   text-decoration: none !important;
+  color: var(--logo-background, #dfff00) !important;
 }
 
 .brandOutlineButton.brandOutlineButton {
   border: 1px solid var(--logo-color, #000) !important;
   background-color: transparent !important;
-  color: var(--logo-color, #000) !important;
   text-decoration: none !important;
+  color: var(--logo-color, #000) !important;
   text-decoration-color: transparent !important;
 }
 
@@ -79,8 +83,8 @@
     var(--logo-color, #000) 8%,
     transparent
   ) !important;
-  color: var(--logo-color, #000) !important;
   text-decoration: none !important;
+  color: var(--logo-color, #000) !important;
 }
 
 .brandDescription {

@@ -1,0 +1,62 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Display",
+    "tier": "atom",
+    "group": "display",
+    "status": "alpha",
+    "description": "Display-sized heading for marketing hero copy. Larger than the `Title` scale; used sparingly on landing/about/contact heroes where the type itself is the visual.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "h1",
+    "variants": {
+        "size": {
+            "values": [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl"
+            ],
+            "default": "lg"
+        },
+        "weight": {
+            "values": [
+                "regular",
+                "medium",
+                "semibold",
+                "bold"
+            ],
+            "default": "bold"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "Renders an h1/h2/h3 by default — semantic heading. Override the level via `as` when nesting inside a section that already owns the page h1."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text"
+        ],
+        "spacing": [],
+        "typography": [
+            "--font-display",
+            "--font-size-display",
+            "--font-weight-bold",
+            "--line-height-tight"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

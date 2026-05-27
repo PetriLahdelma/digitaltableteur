@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Skeleton",
+  "tier": "atom",
+  "group": "structure",
+  "status": "alpha",
+  "description": "Skeleton — production @dt component (Storybook beta).",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-skeleton",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "ariaRequirements": []
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "animate",
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "height",
+    "id",
+    "label",
+    "lines",
+    "ref",
+    "style",
+    "variant",
+    "width"
+  ],
+  "consumers": []
+}

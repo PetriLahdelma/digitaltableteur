@@ -541,46 +541,16 @@ const COMPONENTS = [
       />
     ),
   },
-  {
-    name: "Avatar with Image",
-    Variants: AvatarWithImage,
-  },
-  {
-    name: "Avatar with Initials",
-    Variants: AvatarWithInitials,
-  },
-  {
-    name: "Avatar with Menu",
-    Variants: AvatarWithMenu,
-  },
-  {
-    name: "Checkbox all Variants",
-    Variants: CheckboxAllVariants,
-  },
-  {
-    name: "CheckboxGroup Default",
-    Variants: CheckboxGroupDefault,
-  },
-  {
-    name: "FlexBox Basic",
-    Variants: FlexBoxBasic,
-  },
-  {
-    name: "FlexBox Column",
-    Variants: FlexBoxColumn,
-  },
-  {
-    name: "FlexBox Justify Align",
-    Variants: FlexBoxJustifyAlign,
-  },
-  {
-    name: "FlexBox Wrap",
-    Variants: FlexBoxWrap,
-  },
-  {
-    name: "FlexBox Gap Variants",
-    Variants: FlexBoxGapVariants,
-  },
+  { name: "Avatar with Image", Variants: AvatarWithImage },
+  { name: "Avatar with Initials", Variants: AvatarWithInitials },
+  { name: "Avatar with Menu", Variants: AvatarWithMenu },
+  { name: "Checkbox all Variants", Variants: CheckboxAllVariants },
+  { name: "CheckboxGroup Default", Variants: CheckboxGroupDefault },
+  { name: "FlexBox Basic", Variants: FlexBoxBasic },
+  { name: "FlexBox Column", Variants: FlexBoxColumn },
+  { name: "FlexBox Justify Align", Variants: FlexBoxJustifyAlign },
+  { name: "FlexBox Wrap", Variants: FlexBoxWrap },
+  { name: "FlexBox Gap Variants", Variants: FlexBoxGapVariants },
   { name: "Inputs Text", Variants: InputsText },
   { name: "Inputs Number", Variants: InputsNumber },
   { name: "Inputs Email", Variants: InputsEmail },

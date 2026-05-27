@@ -1,0 +1,19 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "focus": {
+    "ring": {
+      "color": {
+        "$value": "var(--color-primary)",
+        "$description": "Keyboard focus outline color (WCAG focus appearance)."
+      },
+      "width": {
+        "$value": "2px",
+        "$description": "Focus ring token for keyboard accessibility."
+      },
+      "offset": {
+        "$value": "2px",
+        "$description": "Focus ring token for keyboard accessibility."
+      }
+    }
+  }
+}

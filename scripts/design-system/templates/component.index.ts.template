@@ -1,0 +1,2 @@
+export { {{Name}}, {{name}}Variants } from "./{{Name}}";
+export type { {{Name}}Props } from "./{{Name}}";

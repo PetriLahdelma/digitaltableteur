@@ -1,0 +1,170 @@
+#!/usr/bin/env node
+import { readFileSync, readdirSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
+import { execSync } from "node:child_process";
+import { join, resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
+const OUT = join(ROOT, "nextjs-app/shared/foundations/dist/agent-manifest.json");
+const CATALOG_PATH = join(ROOT, "nextjs-app/shared/foundations/token-catalog.json");
+const dirs = [
+  join(ROOT, "nextjs-app/shared/components"),
+  join(ROOT, "nextjs-app/shared/patterns"),
+];
+
+// Honest Beta heuristics — must stay in sync with validate-components.ts.
+const STUB_MDX_PHRASES = [
+  "Production layouts and flows documented in Storybook",
+  "Prefer a smaller primitive when this composition is more than you need",
+  "Promote to stable after AT snapshots and a documented production consumer",
+];
+const STUB_SPEC_MARKER = /\bTODO\b:/;
+
+const components = [];
+const documentationDebt = [];
+
+for (const base of dirs) {
+  for (const name of readdirSync(base)) {
+    const contractPath = join(base, name, `${name}.contract.json`);
+    const specPath = join(base, name, `${name}.spec.md`);
+    const mdxPath = join(base, name, `${name}.mdx`);
+    if (!existsSync(contractPath)) continue;
+    const contract = JSON.parse(readFileSync(contractPath, "utf8"));
+    const spec = existsSync(specPath) ? readFileSync(specPath, "utf8") : null;
+    const mdx = existsSync(mdxPath) ? readFileSync(mdxPath, "utf8") : null;
+
+    const reasons = [];
+    if (contract.status === "beta" || contract.status === "stable") {
+      if (mdx && STUB_MDX_PHRASES.some((p) => mdx.includes(p))) {
+        reasons.push("stub MDX (scaffolder boilerplate not replaced)");
+      }
+      if (spec && STUB_SPEC_MARKER.test(spec)) {
+        reasons.push("stub spec.md (TODO markers present)");
+      }
+    }
+    const hasDocDebt = reasons.length > 0;
+    if (hasDocDebt) documentationDebt.push({ name, status: contract.status, reasons });
+
+    components.push({ name, contract, spec, documentationDebt: hasDocDebt });
+  }
+}
+
+const statusCounts = components.reduce((acc, c) => {
+  acc[c.contract.status] = (acc[c.contract.status] ?? 0) + 1;
+  return acc;
+}, {});
+
+let tokens = null;
+if (existsSync(CATALOG_PATH)) {
+  const catalog = JSON.parse(readFileSync(CATALOG_PATH, "utf8"));
+  tokens = {
+    source: catalog.source,
+    tokenCount: catalog.tokenCount,
+    usageCoverage: catalog.usageCoverage,
+    catalogPath: "nextjs-app/shared/foundations/token-catalog.json",
+    dtcgExport: "nextjs-app/shared/foundations/tokens/production/",
+    tailwindBridge: "app/tailwind.css (DT-THEME block)",
+    regenerate: "npm run build:tokens",
+    themes: catalog.themes,
+    contrastPairCount: catalog.contrastPairs?.length ?? 0,
+  };
+}
+
+// Catalog-coverage audit — how much of the codebase is in the catalog vs out.
+// Sourced from scripts/design-system/audit-catalog-coverage.mjs so both
+// surfaces (manifest + CLI) tell the same story.
+let catalogCoverage = null;
+try {
+  const auditJson = execSync(
+    `node ${join(ROOT, "scripts/design-system/audit-catalog-coverage.mjs")} --json`,
+    { encoding: "utf8" },
+  );
+  const audit = JSON.parse(auditJson);
+  catalogCoverage = {
+    description:
+      "Catalog completeness across the codebase. componentCount above is the catalog count; this block reveals how much of the codebase that catalog actually represents.",
+    totalComponentsInCodebase: audit.summary.totalComponentsInCodebase,
+    inCatalog: audit.summary.inCatalog,
+    outOfCatalog: audit.summary.outOfCatalog,
+    catalogCompletenessPercent: audit.summary.catalogCompleteness,
+    artifactCoverage: {
+      stories: audit.summary.storyCoverage,
+      tests: audit.summary.testCoverage,
+      mdx: audit.summary.mdxCoverage,
+      spec: audit.summary.specCoverage,
+    },
+    outOfCatalogByBucket: audit.summary.outOfCatalogByBucket,
+    regenerate:
+      "node scripts/design-system/audit-catalog-coverage.mjs (run with --json for machine-readable output)",
+  };
+} catch (err) {
+  console.warn("⚠  Could not run catalog audit:", err.message);
+}
+
+// Honest parity statement — the previous "near-parity with DSharp" framing was
+// overstated. This block makes the gap legible to AI consumers so a coding agent
+// does not promote components past their evidence base.
+const dsharpParity = {
+  description:
+    "Comparison against DSharp as of 2026-05-26. Breadth is close, maturity is not. This block walks back the earlier parity overclaim.",
+  contractCount: { digitaltableteur: components.length, dsharp: 112 },
+  statusMix: {
+    digitaltableteur: statusCounts,
+    dsharp: { beta: 110, stable: 2 },
+  },
+  parityScoringScope: "phase-1 story presence only (per parity-audit.mjs line 1)",
+  gapsToClose: [
+    "zod-validated agent manifest schema (none today)",
+    "agent eval suite with golden snapshots (none today)",
+    "bundle-size budgets via size-limit per public entrypoint (none today)",
+    "a11y-tree snapshots committed under __a11y-snapshots__/",
+    "real-browser forced-colors PNG diffs (npm run test:stories:hc)",
+    "light/dark visual baselines (npm run test:visual)",
+    "production consumers auto-detected from app/** into contract.consumers[]",
+    "real Figma node IDs verified by figma-mcp (placeholders today)",
+    "documented @dt subpath/export policy and semver-bound public surface",
+    "green npm run test:ci (53 files / 197 tests failing on 2026-05-26 — see docs/TEST-DEBT.md)",
+  ],
+  notReadyForStablePromotion: true,
+  testCiStatus: {
+    asOf: "2026-05-26",
+    filesWithFailures: 53,
+    failingTests: 197,
+    debtDoc: "docs/TEST-DEBT.md",
+  },
+};
+
+mkdirSync(dirname(OUT), { recursive: true });
+writeFileSync(
+  OUT,
+  JSON.stringify(
+    {
+      schemaVersion: "1.3",
+      generatedAt: new Date().toISOString(),
+      summary: {
+        componentCount: components.length,
+        statusCounts,
+        honestBetaDocDebt: documentationDebt.length,
+        catalogCompletenessPercent:
+          catalogCoverage?.catalogCompletenessPercent ?? null,
+        codebaseComponentCount:
+          catalogCoverage?.totalComponentsInCodebase ?? null,
+        notReadyForStablePromotion: true,
+      },
+      tokens,
+      catalogCoverage,
+      honestBeta: {
+        description:
+          "Components carrying scaffolder boilerplate at beta+. Each entry disappears automatically when its MDX + spec.md are rewritten with real prose.",
+        documentationDebt,
+      },
+      dsharpParity,
+      components,
+    },
+    null,
+    2,
+  ),
+);
+console.log(
+  `✓ agent-manifest.json (${components.length} components${tokens ? `, ${tokens.tokenCount} tokens` : ""}, ${documentationDebt.length} doc-debt)`,
+);

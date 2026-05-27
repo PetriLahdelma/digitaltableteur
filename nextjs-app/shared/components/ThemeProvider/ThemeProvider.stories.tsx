@@ -1,3 +1,4 @@
+import contract from "./ThemeProvider.contract.json";
 /**
  * ThemeProvider Storybook Stories
  * Comprehensive theme testing and verification
@@ -17,10 +18,13 @@ import Title from "@dt/Title";
 import Card from "@dt/Card";
 
 export default {
-  title: "Foundation/ThemeProvider",
+  title: "Foundations/ThemeProvider",
   component: ThemeProvider,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
+  argTypes: {},
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     docs: {
       description: {
         component: `
@@ -39,13 +43,7 @@ The ThemeProvider manages the application's theme state and provides theme-switc
 } as Meta;
 
 // Theme color palette component
-const ColorSwatch = ({
-  name,
-  cssVar,
-}: {
-  name: string;
-  cssVar: string;
-}) => (
+const ColorSwatch = ({ name, cssVar }: { name: string; cssVar: string }) => (
   <div
     style={{
       display: "flex",
@@ -66,10 +64,7 @@ const ColorSwatch = ({
     <div style={{ fontFamily: "var(--font-text)", fontSize: "0.875rem" }}>
       <div style={{ fontWeight: 600, color: "var(--color-text)" }}>{name}</div>
       <code
-        style={{
-          fontSize: "0.75rem",
-          color: "var(--secondary-text-color)",
-        }}
+        style={{ fontSize: "0.75rem", color: "var(--secondary-text-color)" }}
       >
         {cssVar}
       </code>
@@ -103,11 +98,7 @@ const ThemePreviewPanel = ({
       <div style={{ marginBottom: "1.5rem" }}>
         <Text
           size="S"
-          style={{
-            fontWeight: 600,
-            marginBottom: "0.75rem",
-            display: "block",
-          }}
+          style={{ fontWeight: 600, marginBottom: "0.75rem", display: "block" }}
         >
           Color Tokens
         </Text>
@@ -123,21 +114,11 @@ const ThemePreviewPanel = ({
       <div style={{ marginBottom: "1.5rem" }}>
         <Text
           size="S"
-          style={{
-            fontWeight: 600,
-            marginBottom: "0.75rem",
-            display: "block",
-          }}
+          style={{ fontWeight: 600, marginBottom: "0.75rem", display: "block" }}
         >
           Buttons
         </Text>
-        <div
-          style={{
-            display: "flex",
-            gap: "0.5rem",
-            flexWrap: "wrap",
-          }}
-        >
+        <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
           <Button variant="primary" size="sm">
             Primary
           </Button>
@@ -154,11 +135,7 @@ const ThemePreviewPanel = ({
       <div style={{ marginBottom: "1rem" }}>
         <Text
           size="S"
-          style={{
-            fontWeight: 600,
-            marginBottom: "0.75rem",
-            display: "block",
-          }}
+          style={{ fontWeight: 600, marginBottom: "0.75rem", display: "block" }}
         >
           Form Controls
         </Text>
@@ -172,11 +149,7 @@ const ThemePreviewPanel = ({
       <div>
         <Text
           size="S"
-          style={{
-            fontWeight: 600,
-            marginBottom: "0.5rem",
-            display: "block",
-          }}
+          style={{ fontWeight: 600, marginBottom: "0.5rem", display: "block" }}
         >
           Text Samples
         </Text>
@@ -185,10 +158,7 @@ const ThemePreviewPanel = ({
         </Text>
         <Text
           size="S"
-          style={{
-            color: "var(--secondary-text-color)",
-            display: "block",
-          }}
+          style={{ color: "var(--secondary-text-color)", display: "block" }}
         >
           Secondary text with reduced contrast
         </Text>
@@ -199,8 +169,14 @@ const ThemePreviewPanel = ({
 
 // Interactive theme controller
 const ThemeController = () => {
-  const { theme, setTheme, toggleTheme, systemPreference, isExplicitChoice, resetToSystemPreference } =
-    useTheme();
+  const {
+    theme,
+    setTheme,
+    toggleTheme,
+    systemPreference,
+    isExplicitChoice,
+    resetToSystemPreference,
+  } = useTheme();
 
   return (
     <Card style={{ padding: "1.5rem", marginBottom: "2rem" }}>
@@ -334,13 +310,7 @@ export const Interactive: StoryFn = () => (
           <Button variant="success">Success</Button>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            gap: "2rem",
-            alignItems: "center",
-          }}
-        >
+        <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
           <Checkbox label="Accept terms" id="demo-checkbox" />
           <Switch id="demo-switch" label="Enable feature" />
         </div>
@@ -391,11 +361,7 @@ export const FocusStates: StoryFn = () => (
             Light Theme
           </Title>
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-            }}
+            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
           >
             <Button variant="primary">Focus me</Button>
             <Button variant="secondary">And me</Button>
@@ -418,11 +384,7 @@ export const FocusStates: StoryFn = () => (
             Dark Theme
           </Title>
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-            }}
+            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
           >
             <Button variant="primary">Focus me</Button>
             <Button variant="secondary">And me</Button>
@@ -445,11 +407,7 @@ export const FocusStates: StoryFn = () => (
             HC Black
           </Title>
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-            }}
+            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
           >
             <Button variant="primary">Focus me</Button>
             <Button variant="secondary">And me</Button>
@@ -472,11 +430,7 @@ export const FocusStates: StoryFn = () => (
             HC White
           </Title>
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-            }}
+            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
           >
             <Button variant="primary">Focus me</Button>
             <Button variant="secondary">And me</Button>
@@ -558,4 +512,15 @@ ColorTokens.parameters = {
         "Complete color token reference showing how each token renders across all themes.",
     },
   },
+};
+
+export const Default = Interactive;
+export const Playground = Interactive;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  render: Interactive,
+};
+export const ForcedColors = {
+  globals: { forcedColors: "active" },
+  render: Interactive,
 };

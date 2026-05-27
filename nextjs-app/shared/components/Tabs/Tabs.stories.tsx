@@ -1,25 +1,14 @@
+import contract from "./Tabs.contract.json";
 import React from "react";
 import type { Meta, StoryFn } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import Tabs, { TabsProps } from "@dt/Tabs";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 import styles from "./Tabs.stories.module.css";
-
-// expect is available globally in Storybook browser tests
-declare const expect: (typeof import("vitest"))["expect"];
 
 const tabsComplianceRules: ComplianceRule[] = [
   {
@@ -82,88 +71,60 @@ const tabsComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 const meta: Meta<typeof Tabs> = {
-  title: "Components/Tabs",
+  title: "Molecules/Tabs",
   component: Tabs,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     // Content
+
     tabs: {
       control: "object",
-      description: "Array of tab items with key, label, and optional disabled state",
-      table: {
-        category: "Content",
-        type: { summary: "TabItem[]" },
-      },
+      description:
+        "Array of tab items with key, label, and optional disabled state",
+      table: { category: "Content", type: { summary: "TabItem[]" } },
     },
 
     // State (v1.1.0)
+
     activeTab: {
       control: "text",
       description: "Active tab shorthand (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "string" },
-      },
+      table: { category: "State", type: { summary: "string" } },
     },
+
     defaultActiveTab: {
       control: "text",
       description: "Default active tab shorthand (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "string" },
-      },
+      table: { category: "State", type: { summary: "string" } },
     },
 
     // Appearance
+
     variant: {
       control: { type: "select" },
       options: ["default", "pills", "underline"],
       description: "Visual style variant",
       table: {
         category: "Appearance",
-        type: { summary: '"default" | "pills" | "underline"' },
+        type: { summary: "\"default\" | \"pills\" | \"underline\"" },
         defaultValue: { summary: "default" },
       },
     },
+
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg", "s", "m", "l"],
-      description: "Size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats",
+      description:
+        "Size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats",
       table: {
         category: "Appearance",
         type: { summary: "SizeUnified" },
@@ -182,31 +143,27 @@ const meta: Meta<typeof Tabs> = {
     },
 
     // Advanced
+
     className: {
       control: "text",
       description: "Additional CSS classes",
-      table: {
-        category: "Advanced",
-        type: { summary: "string" },
-      },
+      table: { category: "Advanced", type: { summary: "string" } },
     },
 
     // Deprecated
+
     activeTabKey: {
       control: "text",
-      description: "⚠️ Deprecated: Use activeTab instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "string" },
-      },
+      description:
+        "⚠️ Deprecated: Use activeTab instead. Will be removed in v2.0.0",
+      table: { category: "Deprecated", type: { summary: "string" } },
     },
+
     defaultActiveTabKey: {
       control: "text",
-      description: "⚠️ Deprecated: Use defaultActiveTab instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "string" },
-      },
+      description:
+        "⚠️ Deprecated: Use defaultActiveTab instead. Will be removed in v2.0.0",
+      table: { category: "Deprecated", type: { summary: "string" } },
     },
   },
 };
@@ -221,9 +178,7 @@ export const Z_TabsCompliance: StoryFn = () => (
     rules={tabsComplianceRules}
   />
 );
-Z_TabsCompliance.parameters = {
-  docs: { disable: true },
-};
+Z_TabsCompliance.parameters = { docs: { disable: true } };
 
 const Template: StoryFn<TabsProps> = (args) => <Tabs {...args} />;
 
@@ -357,4 +312,25 @@ export const ControlledTabs: StoryFn = () => {
       />
     </div>
   );
+};
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  render: Template,
+  args: Default.args,
+};
+
+export const Example = {
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: Template,
+  args: Default.args,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  render: Template,
+  args: Default.args,
 };

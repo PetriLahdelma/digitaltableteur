@@ -1,6 +1,7 @@
+import contract from "./Text.contract.json";
 import React from "react";
 import Text from "@dt/Text";
-import { within } from "@storybook/testing-library";
+import { within } from "storybook/test";
 import {
   Controls,
   Description,
@@ -15,7 +16,7 @@ import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import Title from "@dt/Title";
 import type { ComplianceRule } from "@dt/ComplianceCard";
-import type { Meta, StoryFn } from "@storybook/react-vite";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
 import CodeSnippet from "@dt/CodeSnippet";
 import styles from "./Text.stories.module.css";
 import schema from "./schema.json";
@@ -81,43 +82,17 @@ const textComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export default {
-  title: "Components/Text",
+  title: "Atoms/Text",
   component: Text,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <DocTitle />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     as: {
@@ -125,25 +100,32 @@ export default {
       options: ["p", "span", "div", "strong", "em"],
       description: "HTML tag to render",
     },
+
     size: {
       control: { type: "radio" },
       options: ["S", "M", "L"],
       description: "Text size variant",
     },
+
     terminals: {
       control: { type: "radio" },
       options: ["sans", "serif"],
       description: "Font family (sans or serif)",
     },
+
     lineHeight: {
       control: { type: "select" },
       options: ["tight", "snug", "normal", "relaxed", "loose"],
       description: "Line height variant",
     },
+
     className: { control: "text", description: "Custom class name" },
+
     children: { control: "text", description: "Text content" },
   },
 } as Meta;
+
+type Story = StoryObj<typeof Text>;
 
 export const Z_TextCompliance: StoryFn = () => (
   <ComplianceCard
@@ -272,4 +254,33 @@ export const LineHeights = () => {
       </div>
     </div>
   );
+};
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => {
+    const { t } = useTranslation();
+    return (
+      <>
+        <Title terminals="sans" level={1} size="L">
+          {t("storyTitlePlayground")}
+        </Title>
+        <Text terminals="sans" size="L" as="p">
+          {t("storyTextDefault")}
+        </Text>
+      </>
+    );
+  },
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: {
+    children: "Body copy under forced-colors",
+    as: "p",
+    terminals: "sans",
+  },
 };

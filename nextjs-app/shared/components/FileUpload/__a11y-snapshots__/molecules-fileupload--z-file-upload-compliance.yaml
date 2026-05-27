@@ -1,0 +1,26 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 11/11" [level=2]'
+- text: Complete file structure
+- img "Pass"
+- text: All 5 files present TypeScript strict
+- img "Pass"
+- text: Proper typing Translation support
+- img "Pass"
+- text: Props accept localized strings CSS Modules
+- img "Pass"
+- text: No inline styles in component Design tokens
+- img "Pass"
+- text: Uses CSS variables Logical properties
+- img "Pass"
+- text: CSS uses logical properties Theme support
+- img "Pass"
+- text: CSS custom properties Component composition
+- img "Pass"
+- text: Uses Button, HelperText Accessibility
+- img "Pass"
+- text: Proper file input semantics Storybook stories
+- img "Pass"
+- text: Stories with ComplianceCard Tests
+- img "Pass"
+- text: Test file exists
+- separator "Resize table"

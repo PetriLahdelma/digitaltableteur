@@ -1,13 +1,14 @@
 .backdrop {
+  display: grid;
   position: absolute;
   inset-block: 0;
   inset-inline: 0;
-  overflow: hidden;
-  pointer-events: none;
-  display: grid;
   place-items: center;
   color: var(--color-border-light);
+  pointer-events: none;
   opacity: 0.6;
+  overflow: hidden;
+
   --glyph-duration: 9s;
 }
 
@@ -28,17 +29,17 @@
 }
 
 .svg {
-  inline-size: 100%;
-  block-size: 100%;
-  max-inline-size: 100%;
-  max-block-size: 100%;
   display: block;
+  block-size: 100%;
+  inline-size: 100%;
+  max-block-size: 100%;
+  max-inline-size: 100%;
 }
 
 .frame {
   opacity: 0;
-  visibility: hidden;
   transform-origin: 50% 50%;
+  visibility: hidden;
 }
 
 .animate .frame {

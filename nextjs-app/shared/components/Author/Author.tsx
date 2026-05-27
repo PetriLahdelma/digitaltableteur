@@ -10,7 +10,10 @@ type AuthorProps = {
   profileUrl?: string;
 };
 
-const Author: React.FC<AuthorProps> = ({
+/**
+ * Author component.
+ */
+export const Author: React.FC<AuthorProps> = ({
   name,
   imageUrl,
   size = "2.5rem",

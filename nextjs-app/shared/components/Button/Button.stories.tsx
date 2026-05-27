@@ -1,82 +1,48 @@
+import contract from "./Button.contract.json";
+import { userEvent, within } from "storybook/test";
 /* stylelint-disable value-keyword-case, scale-unlimited/declaration-strict-value */
 import React from "react";
-import { Meta, StoryFn } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary as PrimaryBlock,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
+import { Meta, StoryFn, type StoryObj } from "@storybook/react-vite";
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 import ComplianceCard, { type ComplianceRule } from "@dt/ComplianceCard";
-import { within, userEvent } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 export default {
-  title: "Components/Button",
+  title: "Atoms/Button",
   component: Button,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <PrimaryBlock />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     // Content
+
     children: {
       control: "text",
       description: "Button label content",
-      table: {
-        category: "Content",
-        type: { summary: "ReactNode" },
-      },
+      table: { category: "Content", type: { summary: "ReactNode" } },
     },
+
     icon: {
       control: "text",
       description:
         "Icon at the start - can be React element, component, or Phosphor icon name (e.g., 'arrow-left')",
-      table: {
-        category: "Content",
-        type: { summary: "ReactNode | string" },
-      },
+      table: { category: "Content", type: { summary: "ReactNode | string" } },
     },
+
     endIcon: {
       control: "text",
       description: "Icon displayed at the end of the button content",
-      table: {
-        category: "Content",
-        type: { summary: "ReactNode | string" },
-      },
+      table: { category: "Content", type: { summary: "ReactNode | string" } },
     },
 
     // Appearance
+
     variant: {
       control: { type: "select" },
       options: [
@@ -97,15 +63,14 @@ export default {
         defaultValue: { summary: "primary" },
       },
     },
+
     severity: {
       control: { type: "select" },
       options: ["error", "warning", "success", "info"],
       description: "Semantic severity for status-based styling (v1.1.0+)",
-      table: {
-        category: "Appearance",
-        type: { summary: "ButtonSeverity" },
-      },
+      table: { category: "Appearance", type: { summary: "ButtonSeverity" } },
     },
+
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg", "s", "m", "l"],
@@ -117,40 +82,32 @@ export default {
         defaultValue: { summary: "md" },
       },
     },
+
     isInverse: {
       control: "boolean",
       description:
         "Replaces primary text/border color with white for dark backgrounds (v1.1.0+)",
-      table: {
-        category: "Appearance",
-        type: { summary: "boolean" },
-      },
+      table: { category: "Appearance", type: { summary: "boolean" } },
     },
+
     isRounded: {
       control: "boolean",
       description: "Applies rounded corners to the button (v1.1.0+)",
-      table: {
-        category: "Appearance",
-        type: { summary: "boolean" },
-      },
+      table: { category: "Appearance", type: { summary: "boolean" } },
     },
 
     // State
+
     isDisabled: {
       control: "boolean",
       description: "Disables the button (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     isLoading: {
       control: "boolean",
       description: "Shows loading state with pulsing animation (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
 
     // Behavior
@@ -162,119 +119,100 @@ export default {
         type: { summary: "(event: MouseEvent) => void" },
       },
     },
+
     href: {
       control: "text",
-      description: "URL to navigate to - when provided, renders as an anchor element",
-      table: {
-        category: "Behavior",
-        type: { summary: "string" },
-      },
+      description:
+        "URL to navigate to - when provided, renders as an anchor element",
+      table: { category: "Behavior", type: { summary: "string" } },
     },
+
     submits: {
       control: "boolean",
       description: "When true, button type becomes 'submit'",
-      table: {
-        category: "Behavior",
-        type: { summary: "boolean" },
-      },
+      table: { category: "Behavior", type: { summary: "boolean" } },
     },
+
     target: {
       control: "text",
       description: "Link target (only for href buttons)",
-      table: {
-        category: "Behavior",
-        type: { summary: "string" },
-      },
+      table: { category: "Behavior", type: { summary: "string" } },
     },
 
     // Accessibility
+
     accessibleName: {
       control: "text",
       description: "ARIA label for accessible name override",
-      table: {
-        category: "Accessibility",
-        type: { summary: "string" },
-      },
+      table: { category: "Accessibility", type: { summary: "string" } },
     },
+
     accessibleDescription: {
       control: "text",
       description: "ARIA description for additional context",
-      table: {
-        category: "Accessibility",
-        type: { summary: "string" },
-      },
+      table: { category: "Accessibility", type: { summary: "string" } },
     },
+
     accessibleNameRef: {
       control: "text",
       description: "ID reference for aria-labelledby",
-      table: {
-        category: "Accessibility",
-        type: { summary: "string" },
-      },
+      table: { category: "Accessibility", type: { summary: "string" } },
     },
+
     accessibleRole: {
       control: { type: "select" },
       options: ["button", "link"],
       description: "ARIA role override",
-      table: {
-        category: "Accessibility",
-        type: { summary: "button | link" },
-      },
+      table: { category: "Accessibility", type: { summary: "button | link" } },
     },
+
     tooltip: {
       control: "text",
       description: "Tooltip text displayed on hover",
-      table: {
-        category: "Accessibility",
-        type: { summary: "string" },
-      },
+      table: { category: "Accessibility", type: { summary: "string" } },
     },
 
     // Advanced
+
     className: {
       control: "text",
       description: "Additional CSS classes",
-      table: {
-        category: "Advanced",
-        type: { summary: "string" },
-      },
+      table: { category: "Advanced", type: { summary: "string" } },
     },
 
     // Deprecated
+
     disabled: {
       control: "boolean",
-      description: "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
+      description:
+        "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
+      table: { category: "Deprecated", type: { summary: "boolean" } },
     },
+
     loading: {
       control: "boolean",
-      description: "⚠️ Deprecated: Use isLoading instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
+      description:
+        "⚠️ Deprecated: Use isLoading instead. Will be removed in v2.0.0",
+      table: { category: "Deprecated", type: { summary: "boolean" } },
     },
+
     inverse: {
       control: "boolean",
-      description: "⚠️ Deprecated: Use isInverse instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
+      description:
+        "⚠️ Deprecated: Use isInverse instead. Will be removed in v2.0.0",
+      table: { category: "Deprecated", type: { summary: "boolean" } },
     },
+
     rounded: {
       control: "boolean",
-      description: "⚠️ Deprecated: Use isRounded instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
+      description:
+        "⚠️ Deprecated: Use isRounded instead. Will be removed in v2.0.0",
+      table: { category: "Deprecated", type: { summary: "boolean" } },
     },
   },
 } as Meta;
+
+type Story = StoryObj<typeof Button>;
 
 const ButtonStoryLabel = ({ tKey }: { tKey: string }) => {
   const { t } = useTranslation();
@@ -305,6 +243,7 @@ const INVERSE_SWATCHES = [
 ] as const;
 
 export const Primary = Template.bind({});
+export const Default = Primary;
 Primary.args = {
   variant: "primary",
   children: <ButtonStoryLabel tKey="buttonPrimary" />,
@@ -325,9 +264,7 @@ Secondary.args = {
 };
 Secondary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", {
-    name: /secondary/i,
-  });
+  const button = await canvas.findByRole("button", { name: /secondary/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -357,27 +294,20 @@ Tertiary.args = {
 };
 Tertiary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", {
-    name: /tertiary/i,
-  });
+  const button = await canvas.findByRole("button", { name: /tertiary/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
 
 export const TertiaryError = Template.bind({});
-TertiaryError.args = {
-  variant: "tertiaryError",
-  children: "Tertiary Error",
-};
+TertiaryError.args = { variant: "tertiaryError", children: "Tertiary Error" };
 TertiaryError.play = async ({
   canvasElement,
 }: {
   canvasElement: HTMLElement;
 }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", {
-    name: /tertiary error/i,
-  });
+  const button = await canvas.findByRole("button", { name: /tertiary error/i });
   await userEvent.click(button);
   await userEvent.tab();
 };
@@ -477,23 +407,15 @@ Disabled.args = {
 };
 Disabled.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", {
-    name: /disabled/i,
-  });
+  const button = await canvas.findByRole("button", { name: /disabled/i });
   await userEvent.tab();
 };
 
 export const Loading = Template.bind({});
-Loading.args = {
-  variant: "primary",
-  children: "Loading...",
-  loading: true,
-};
+Loading.args = { variant: "primary", children: "Loading...", loading: true };
 Loading.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", {
-    name: /loading/i,
-  });
+  const button = await canvas.findByRole("button", { name: /loading/i });
   // Button should be disabled when loading
   await userEvent.tab();
 };
@@ -682,3 +604,24 @@ export const Z_ButtonCompliance: StoryFn = () => (
     lastReviewed="2025-11-24"
   />
 );
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  args: Primary.args,
+};
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: (args: React.ComponentProps<typeof Button>) => (
+    <Button {...Primary.args} {...args} variant="primary" />
+  ),
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: Primary.args,
+};

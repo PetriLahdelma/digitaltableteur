@@ -1,0 +1,626 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - link "Skip to main content" [ref=e4] [cursor=pointer]:
+      - /url: "#main-content"
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - link "Digitaltableteur logo Digitaltableteur" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Digitaltableteur logo" [ref=e9]
+          - generic [ref=e18]: Digitaltableteur
+        - navigation "Main navigation" [ref=e19]:
+          - link "Home" [ref=e20] [cursor=pointer]:
+            - /url: /
+          - link "Work" [ref=e21] [cursor=pointer]:
+            - /url: /work
+          - link "About" [ref=e22] [cursor=pointer]:
+            - /url: /about
+          - link "Blog" [ref=e23] [cursor=pointer]:
+            - /url: /blog
+          - link "Contact" [ref=e24] [cursor=pointer]:
+            - /url: /contact
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - button "English" [disabled] [ref=e27] [cursor=pointer]: EN
+            - button "Suomi" [ref=e28] [cursor=pointer]: FI
+            - button "Svenska" [ref=e29] [cursor=pointer]: SV
+          - button "Toggle dark mode" [ref=e30] [cursor=pointer]:
+            - img
+    - main [ref=e31]:
+      - generic [ref=e32]:
+        - progressbar "Reading progress" [ref=e33]
+        - main [ref=e34]:
+          - generic [ref=e37]:
+            - button "Back to work Back to work" [ref=e38] [cursor=pointer]:
+              - img "Back to work" [ref=e40]:
+                - img [ref=e41]
+              - generic [ref=e44]: Back to work
+            - generic [ref=e45]:
+              - button "Previous Previous" [disabled] [ref=e46]:
+                - img "Previous" [ref=e48]:
+                  - img [ref=e49]
+                - generic [ref=e52]: Previous
+              - button "Next Next" [ref=e53] [cursor=pointer]:
+                - generic [ref=e55]: Next
+                - img "Next" [ref=e57]:
+                  - img [ref=e58]
+          - generic [ref=e61]:
+            - generic [ref=e63]:
+              - generic [ref=e65]:
+                - generic [ref=e66]: design systems
+                - generic [ref=e67]: "|"
+                - generic [ref=e68]: April 2026–Present
+              - heading "DSharp Design System" [level=1] [ref=e69]:
+                - generic [ref=e70]: DSharp
+                - generic [ref=e71]: Design
+                - generic [ref=e72]: System
+              - paragraph [ref=e74]: "The shared UI substrate for a multi-product data-modelling platform: three packages, a contract per component, and domain semantics encoded as atoms instead of styling variants."
+              - generic [ref=e76]:
+                - generic [ref=e77]: Design Systems
+                - generic [ref=e78]: AI Architecture
+                - generic [ref=e79]: Design Tokens
+                - generic [ref=e80]: MCP
+                - generic [ref=e81]: React
+              - img "DSharp logo on the opal-and-ivory brand field" [ref=e83]
+            - button "Scroll to content" [ref=e84]:
+              - img [ref=e86]
+          - generic [ref=e88]:
+            - generic [ref=e90]:
+              - generic [ref=e91]:
+                - generic [ref=e92]:
+                  - heading "Client" [level=3] [ref=e93]
+                  - paragraph [ref=e94]: DSharp, a Finnish data-modelling platform shipping DSharp Studio, PathFinder, and the new DSharp Scout.
+                - generic [ref=e95]:
+                  - heading "Type" [level=3] [ref=e96]
+                  - paragraph [ref=e97]: AI-native product design system. Three layered packages, contract-per-component, enforced spacing.
+                - generic [ref=e98]:
+                  - heading "Stack" [level=3] [ref=e99]
+                  - generic [ref=e100]:
+                    - img "React 19" [ref=e101]
+                    - img "TypeScript 5" [ref=e103]
+                    - img "Tailwind 4" [ref=e105]
+                    - img "Storybook 10" [ref=e107]
+                    - img "Published to Azure Artifacts" [ref=e109]
+                - generic [ref=e111]:
+                  - heading "Distribution" [level=3] [ref=e112]
+                  - paragraph [ref=e113]:
+                    - text: Three npm packages,
+                    - code [ref=e114]: "@dsharp/tokens"
+                    - text: ","
+                    - code [ref=e115]: "@dsharp/tokens-css"
+                    - text: ","
+                    - code [ref=e116]: "@dsharp/react"
+                    - text: ", on a scoped Azure Artifacts feed. An MCP server exposes the component contracts to AI agents; a CLI scaffolds and validates components against them."
+              - generic [ref=e117]:
+                - heading "Brief" [level=3] [ref=e118]
+                - paragraph [ref=e119]: "DSharp ships three products to Finnish data consultancies: DSharp Studio, a model-first desktop app maintained since 2006; PathFinder, its data-discovery sibling; and DSharp Scout, the new web product under active development. Each product had been built by its own team, with its own components, its own spacing, and its own colour tokens. Migrations between them rebuilt the same primitives. Visual polish regressed every release."
+                - paragraph [ref=e120]: The brief was a shared design system. The constraints made it not a standard one. Scout was being built in parallel with the system itself. Studio was being modularised to consume the same components inside its desktop shell. A Windows target sat on the roadmap. And AI generation was expected to be a first-class consumer of the system, not an experiment on the side.
+            - region "Approach" [ref=e121]:
+              - generic [ref=e122]:
+                - heading "Approach" [level=2] [ref=e123]
+                - generic [ref=e124]:
+                  - generic [ref=e125]:
+                    - heading "1. Tokens" [level=4] [ref=e126]
+                    - list [ref=e127]:
+                      - listitem [ref=e128]: — DTCG JSON as Layer 0
+                      - listitem [ref=e129]: — Style Dictionary transforms
+                      - listitem [ref=e130]: — Semantic palettes per mode
+                      - listitem [ref=e131]: — 14-step space scale
+                  - generic [ref=e132]:
+                    - heading "2. Atoms" [level=4] [ref=e133]
+                    - list [ref=e134]:
+                      - listitem [ref=e135]: — Domain semantics as atoms
+                      - listitem [ref=e136]: — Closed string-literal unions
+                      - listitem [ref=e137]: — CVA variants + Radix primitives
+                      - listitem [ref=e138]: — Layout primitives
+                  - generic [ref=e139]:
+                    - heading "3. Contracts" [level=4] [ref=e140]
+                    - list [ref=e141]:
+                      - listitem [ref=e142]: — Four files per component
+                      - listitem [ref=e143]: — Scaffolder, never hand-written
+                      - listitem [ref=e144]: — Validator pre-push
+                      - listitem [ref=e145]: — Status lifecycle gates
+                  - generic [ref=e146]:
+                    - heading "4. Composition" [level=4] [ref=e147]
+                    - list [ref=e148]:
+                      - listitem [ref=e149]: — Molecules combine, do not invent
+                      - listitem [ref=e150]: — Workbench-shaped organisms
+                      - listitem [ref=e151]: — Headless mechanics, owned visual
+                      - listitem [ref=e152]: — Rhythmguard closes the gap
+            - region "Base layer is platform-agnostic JSON" [ref=e153]:
+              - generic [ref=e156]:
+                - heading "Tokens before components" [level=4] [ref=e157]
+                - heading "Base layer is platform-agnostic JSON" [level=4] [ref=e158]
+                - paragraph [ref=e160]:
+                  - text: The first commitment was that the brand, the rhythm, and the semantic palettes had to exist before the first button. The tokens ship as W3C DTCG JSON in
+                  - code [ref=e161]: "@dsharp/tokens"
+                  - text: with no runtime dependencies; Style Dictionary transforms them into CSS custom properties and typed TypeScript constants for the web in
+                  - code [ref=e162]: "@dsharp/tokens-css"
+                  - text: . A Windows or mobile target later becomes a sibling transform package, not a fork of the source.
+                - paragraph [ref=e164]: "An early lesson came from the logo atom. Its first version bound the mark to a primitive brand token, which flattened it when the surface inverted in dark mode; DTCG primitives, by design, do not theme-switch. The fix was a dedicated semantic alias that resolves per mode, and a rule that travelled with it: brand-as-decoration uses primitives, brand-as-content uses semantics."
+            - figure "Six brand primitives, one type ramp, and the 14-step space scale. The scale numbers are the same set Rhythmguard later enforces in lint, so the rhythm in the documentation and the rhythm in the code cannot drift apart." [ref=e169]:
+              - 'img "DSharp Design System foundations: color, typography, spacing" [ref=e170]':
+                - generic [ref=e171]:
+                  - generic [ref=e172]: Color · primitives
+                  - generic [ref=e173]:
+                    - generic [ref=e175]: brand/opal-dark
+                    - generic [ref=e176]: "#577164"
+                  - generic [ref=e177]:
+                    - generic [ref=e179]: brand/opal-light
+                    - generic [ref=e180]: "#aac6bd"
+                  - generic [ref=e181]:
+                    - generic [ref=e183]: brand/ivory
+                    - generic [ref=e184]: "#e6ded0"
+                  - generic [ref=e185]:
+                    - generic [ref=e187]: brand/rust
+                    - generic [ref=e188]: "#9a5635"
+                  - generic [ref=e189]:
+                    - generic [ref=e191]: neutral/black
+                    - generic [ref=e192]: "#292628"
+                  - generic [ref=e193]:
+                    - generic [ref=e195]: surface/raised
+                    - generic [ref=e196]: "#f8f8f7"
+                - generic [ref=e197]:
+                  - generic [ref=e198]: Type · DM Sans / DM Mono
+                  - generic [ref=e199]: Aa
+                  - generic [ref=e200]:
+                    - generic [ref=e201]: Modeling beats decoration.
+                    - generic [ref=e202]: Headings, body, captions, and mono share one type ramp.
+                    - generic [ref=e203]: var(--font-sans) · var(--font-mono)
+                - generic [ref=e204]:
+                  - generic [ref=e205]: Space · 14-step rhythm
+                  - generic [ref=e206]:
+                    - generic [ref=e208]: "--space-1"
+                    - generic [ref=e209]: 4px
+                  - generic [ref=e210]:
+                    - generic [ref=e212]: "--space-2"
+                    - generic [ref=e213]: 8px
+                  - generic [ref=e214]:
+                    - generic [ref=e216]: "--space-3"
+                    - generic [ref=e217]: 12px
+                  - generic [ref=e218]:
+                    - generic [ref=e220]: "--space-4"
+                    - generic [ref=e221]: 16px
+                  - generic [ref=e222]:
+                    - generic [ref=e224]: "--space-5"
+                    - generic [ref=e225]: 24px
+                  - generic [ref=e226]:
+                    - generic [ref=e228]: "--space-6"
+                    - generic [ref=e229]: 32px
+                  - generic [ref=e230]:
+                    - generic [ref=e232]: "--space-7"
+                    - generic [ref=e233]: 48px
+                  - generic [ref=e234]:
+                    - generic [ref=e236]: "--space-8"
+                    - generic [ref=e237]: 64px
+                  - generic [ref=e238]:
+                    - generic [ref=e240]: "--space-9"
+                    - generic [ref=e241]: 128px
+              - generic [ref=e242]: Six brand primitives, one type ramp, and the 14-step space scale. The scale numbers are the same set Rhythmguard later enforces in lint, so the rhythm in the documentation and the rhythm in the code cannot drift apart.
+            - region "Domain vocabulary belongs in the type system" [ref=e243]:
+              - generic [ref=e246]:
+                - heading "The medallion problem" [level=4] [ref=e247]
+                - heading "Domain vocabulary belongs in the type system" [level=4] [ref=e248]
+                - paragraph [ref=e250]:
+                  - text: DSharp’s data work is organised around two closed vocabularies. The medallion architecture sorts every table into one of four layers,
+                  - code [ref=e251]: source
+                  - text: ","
+                  - code [ref=e252]: bronze
+                  - text: ","
+                  - code [ref=e253]: silver
+                  - text: ", or"
+                  - code [ref=e254]: gold
+                  - text: ", depending on how far it has moved from raw ingest. Every concept is one of four archetypes,"
+                  - code [ref=e255]: moment
+                  - text: ","
+                  - code [ref=e256]: party
+                  - text: ","
+                  - code [ref=e257]: description
+                  - text: ", or"
+                  - code [ref=e258]: role
+                  - text: . These show up in tables, navigation, diagrams, mapping screens, and forty-odd other surfaces.
+                - paragraph [ref=e260]:
+                  - text: The shortest path would have been a generic
+                  - code [ref=e261]: Badge
+                  - text: with
+                  - code [ref=e262]: variant=“bronze”
+                  - text: . The longer path we took was
+                  - code [ref=e263]: LayerBadge
+                  - text: ","
+                  - code [ref=e264]: QualityBadge
+                  - text: ", and"
+                  - code [ref=e265]: ArchetypeBadge
+                  - text: as separate atoms with string-literal unions. The type system refuses unknown values, the validator confirms every variant is covered by a story, and downstream AI agents have one authoritative source for what
+                  - code [ref=e266]: bronze
+                  - text: means and where it can appear.
+            - 'figure "Button is the load-bearing atom in any system: six variants, three sizes, four states, all driven from the same tokens. DSharp’s domain semantics, LayerBadge, QualityBadge, ArchetypeBadge, and ModeSwitch, sit alongside as separate atoms with closed string-literal unions rather than variants of a generic Badge." [ref=e271]':
+              - 'img "DSharp Button atom: variants, sizes, and interaction states" [ref=e272]':
+                - generic [ref=e273]:
+                  - generic [ref=e274]: Button · variants
+                  - generic [ref=e275]: Six variants, one type ramp, one radius scale.
+                  - generic [ref=e276]:
+                    - generic [ref=e279]: Promote
+                    - generic [ref=e282]: Cancel
+                    - generic [ref=e285]: Inspect
+                    - generic [ref=e287]: View source
+                    - generic [ref=e290]: Drop layer
+                    - generic [ref=e297]: New concept
+                  - generic [ref=e298]:
+                    - generic [ref=e299]: Primary
+                    - generic [ref=e300]: Secondary
+                    - generic [ref=e301]: Ghost
+                    - generic [ref=e302]: Link
+                    - generic [ref=e303]: Danger
+                    - generic [ref=e304]: Icon
+                    - generic [ref=e305]: Primary + icon
+                - generic [ref=e306]:
+                  - generic [ref=e307]: Button · sizes
+                  - generic [ref=e308]: "Heights snap to the space scale: 28 · 32 · 40."
+                  - generic [ref=e309]:
+                    - generic [ref=e312]: Save
+                    - generic [ref=e315]: Save
+                    - generic [ref=e318]: Save
+                  - generic [ref=e319]:
+                    - generic [ref=e320]: sm · 28px
+                    - generic [ref=e321]: md · 32px
+                    - generic [ref=e322]: lg · 40px
+                - generic [ref=e323]:
+                  - generic [ref=e324]: Button · states
+                  - generic [ref=e325]: Every variant carries the same four states; focus uses the accent token, never the platform default.
+                  - generic [ref=e326]:
+                    - generic [ref=e329]: Promote
+                    - generic [ref=e332]: Promote
+                    - generic [ref=e336]: Promote
+                    - generic [ref=e339]: Promote
+                  - generic [ref=e340]:
+                    - generic [ref=e341]: Default
+                    - generic [ref=e342]: Hover
+                    - generic [ref=e343]: Focus
+                    - generic [ref=e344]: Disabled
+              - generic [ref=e345]:
+                - text: "Button is the load-bearing atom in any system: six variants, three sizes, four states, all driven from the same tokens. DSharp’s domain semantics,"
+                - code [ref=e346]: LayerBadge
+                - text: ","
+                - code [ref=e347]: QualityBadge
+                - text: ","
+                - code [ref=e348]: ArchetypeBadge
+                - text: ", and"
+                - code [ref=e349]: ModeSwitch
+                - text: ", sit alongside as separate atoms with closed string-literal unions rather than variants of a generic Badge."
+            - region "The file AI agents read" [ref=e350]:
+              - generic [ref=e353]:
+                - heading "A contract per component" [level=4] [ref=e354]
+                - heading "The file AI agents read" [level=4] [ref=e355]
+                - paragraph [ref=e357]:
+                  - text: Every component in
+                  - code [ref=e358]: "@dsharp/react"
+                  - text: "ships four files: the React source, a JSON manifest, a markdown spec, and Storybook stories. The manifest is the file built for agents. It declares the component’s tier and group, its variants and slots, the stories that must exist, the tokens it is allowed to reference, and its accessibility-review state. A scaffolder generates all four files pre-wired; the team rule is that no component is ever hand-written."
+                - paragraph [ref=e360]:
+                  - text: "A validator runs on every push and on every CI build. It enforces parity between the CVA variant definition and the manifest, story coverage for every declared variant, and a status lifecycle that gates promotion:"
+                  - code [ref=e361]: beta
+                  - text: requires a Figma URL,
+                  - code [ref=e362]: stable
+                  - text: requires accessibility review. The contract is also what made it possible to add Rhythmguard alongside the system instead of after; once allowed tokens are listed in the manifest, the linter has a closed set to check against.
+            - figure "Molecules combine atoms without inventing a second palette. The table composes LayerBadge and QualityBadge instead of restyling them; the form field uses the same primary accent the button uses; the alert pulls from the same status tokens." [ref=e367]:
+              - 'img "DSharp molecules: Alert, Tabs, FormField, and a Table composed from domain atoms" [ref=e368]':
+                - generic [ref=e369]:
+                  - generic [ref=e370]: Alert · warning
+                  - generic [ref=e371]:
+                    - generic [ref=e377]: Mapping review required
+                    - generic [ref=e378]: 3 columns need confirmation before promotion.
+                    - generic [ref=e381]: Open review
+                    - generic [ref=e384]: Dismiss
+                - generic [ref=e385]:
+                  - generic [ref=e386]: Tabs · contextual navigation
+                  - generic [ref=e387]:
+                    - generic [ref=e389]:
+                      - generic [ref=e391]: Definition
+                      - generic [ref=e394]: Sources
+                      - generic [ref=e396]: Lineage
+                      - generic [ref=e398]: Mappings
+                    - generic [ref=e399]: role="tablist" · roving focus · arrow-key nav
+                - generic [ref=e400]:
+                  - generic [ref=e401]: FormField · label, control, helper
+                  - generic [ref=e404]:
+                    - generic [ref=e405]: Layer
+                    - generic [ref=e406]: "*"
+                    - generic [ref=e407]: Promote only validated concepts.
+                    - generic [ref=e413]: silver
+                    - generic [ref=e415]: Requires owner sign-off before gold promotion.
+                - generic [ref=e416]:
+                  - generic [ref=e417]: Table · composing the atoms
+                  - generic [ref=e418]:
+                    - generic [ref=e422]: CONCEPT
+                    - generic [ref=e423]: LAYER
+                    - generic [ref=e424]: QUALITY
+                    - generic [ref=e425]:
+                      - generic [ref=e426]: Customer
+                      - generic [ref=e430]: silver
+                      - generic [ref=e433]: review
+                    - generic [ref=e434]:
+                      - generic [ref=e435]: Order
+                      - generic [ref=e439]: gold
+                      - generic [ref=e442]: good
+                    - generic [ref=e443]:
+                      - generic [ref=e444]: Product
+                      - generic [ref=e448]: bronze
+                      - generic [ref=e451]: raw
+              - generic [ref=e452]:
+                - text: Molecules combine atoms without inventing a second palette. The table composes
+                - code [ref=e453]: LayerBadge
+                - text: and
+                - code [ref=e454]: QualityBadge
+                - text: instead of restyling them; the form field uses the same primary accent the button uses; the alert pulls from the same status tokens.
+            - region "Organisms encode the work, not the page" [ref=e455]:
+              - generic [ref=e458]:
+                - heading "Composition, continued" [level=4] [ref=e459]
+                - heading "Organisms encode the work, not the page" [level=4] [ref=e460]
+                - paragraph [ref=e462]: Scout is a task-based workbench rather than a CRUD app, which puts more weight on the organism layer than on the templates above it. LayerNav, ConceptCard, Inspector, AIToolbar, MappingGrid, ConceptDiagram, and LineageGraph carry across every modelling surface because they encode the work, not the page. A modelling template assembles a sidebar, a canvas, an inspector, and a toolbar; a refinement template assembles the same parts in a different proportion.
+                - paragraph [ref=e464]:
+                  - text: Inside the heavier organisms, the work split is DSharp-owned visual, library-owned mechanics. DataTable wraps TanStack Table; ConceptDiagram and LineageGraph wrap
+                  - code [ref=e465]: "@xyflow/react"
+                  - text: . The headless libraries handle sorting, virtualisation, node dragging, and edge routing. DSharp owns the typography, the badge composition, the archetype tints, and the focus rules. The split keeps the system small without rebuilding solved problems.
+            - figure "Every organism reads the same domain semantics. LayerNav surfaces the medallion layers; ConceptCard tints by archetype; the Inspector renders the manifest the validator and AI agents both read; the ConceptDiagram lays the same archetypes out as an ER canvas. DSharp owns the visual language; library code, TanStack Table and xyflow, owns the interaction mechanics." [ref=e470]:
+              - 'img "DSharp organisms: LayerNav, ConceptCard, AIToolbar, and the ConceptDiagram canvas" [ref=e471]':
+                - generic [ref=e472]:
+                  - generic [ref=e473]: LayerNav · medallion sidebar
+                  - generic [ref=e474]:
+                    - generic [ref=e476]: LAYERS
+                    - generic [ref=e477]:
+                      - generic [ref=e479]: Source
+                      - generic [ref=e480]: 117 tables
+                      - generic [ref=e482]: "117"
+                    - generic [ref=e483]:
+                      - generic [ref=e485]: Bronze
+                      - generic [ref=e486]: 42 tables
+                      - generic [ref=e488]: "42"
+                    - generic [ref=e489]:
+                      - generic [ref=e492]: Silver
+                      - generic [ref=e493]: 18 tables
+                      - generic [ref=e495]: "18"
+                    - generic [ref=e496]:
+                      - generic [ref=e498]: Gold
+                      - generic [ref=e499]: 6 tables
+                      - generic [ref=e501]: "6"
+                - generic [ref=e502]:
+                  - generic [ref=e503]: ConceptCard · archetype tint
+                  - generic [ref=e504]:
+                    - generic [ref=e508]: PARTY
+                    - generic [ref=e509]: Customer
+                    - generic [ref=e510]: A person or organisation that orders.
+                    - generic [ref=e511]:
+                      - generic [ref=e512]: id
+                      - generic [ref=e515]: PK
+                      - generic [ref=e516]: binary(32)
+                    - generic [ref=e517]:
+                      - generic [ref=e518]: name
+                      - generic [ref=e519]: string
+                    - generic [ref=e520]:
+                      - generic [ref=e521]: email
+                      - generic [ref=e522]: string
+                    - generic [ref=e523]:
+                      - generic [ref=e524]: since
+                      - generic [ref=e525]: date
+                    - generic [ref=e526]:
+                      - generic [ref=e527]: 3 relations
+                      - generic [ref=e528]: 8,912 rows
+                    - generic [ref=e532]: silver
+                - generic [ref=e533]:
+                  - generic [ref=e534]: Inspector · contract pane
+                  - generic [ref=e535]:
+                    - generic [ref=e537]: Customer.contract
+                    - generic [ref=e538]: "tier: atom · group: domain"
+                    - generic [ref=e539]:
+                      - generic [ref=e540]: variants
+                      - generic [ref=e541]: primary / ghost
+                    - generic [ref=e542]:
+                      - generic [ref=e543]: slots
+                      - generic [ref=e544]: label · helper
+                    - generic [ref=e545]:
+                      - generic [ref=e546]: asChild
+                      - generic [ref=e547]: "true"
+                    - generic [ref=e548]:
+                      - generic [ref=e549]: a11y.reviewed
+                      - generic [ref=e550]: "true"
+                    - generic [ref=e551]:
+                      - generic [ref=e552]: tokens.declared
+                      - generic [ref=e553]: "12"
+                    - generic [ref=e554]:
+                      - generic [ref=e555]: stories.required
+                      - generic [ref=e556]: 5 / 5
+                    - generic [ref=e557]:
+                      - generic [ref=e558]: status
+                      - generic [ref=e559]: stable
+                    - generic [ref=e560]:
+                      - generic [ref=e561]: figma
+                      - generic [ref=e562]: EVr7qLFN...
+                - generic [ref=e563]:
+                  - generic [ref=e564]: AIToolbar · scoped agent actions
+                  - generic [ref=e565]:
+                    - generic [ref=e569]: AI
+                    - generic [ref=e572]: Classify columns
+                    - generic [ref=e575]: Suggest mapping
+                    - generic [ref=e578]: Promote to silver
+                    - generic [ref=e581]: Explain lineage
+                    - generic [ref=e584]: 2 running
+                - generic [ref=e585]:
+                  - generic [ref=e586]: ConceptDiagram · ER canvas
+                  - generic [ref=e587]:
+                    - generic [ref=e621]:
+                      - generic [ref=e625]: Person
+                      - generic [ref=e626]: party
+                      - generic [ref=e627]:
+                        - generic [ref=e628]: id
+                        - generic [ref=e631]: PK
+                        - generic [ref=e632]: int
+                      - generic [ref=e633]:
+                        - generic [ref=e634]: name
+                        - generic [ref=e635]: string
+                      - generic [ref=e636]:
+                        - generic [ref=e637]: dob
+                        - generic [ref=e638]: date
+                    - generic [ref=e639]:
+                      - generic [ref=e643]: Membership
+                      - generic [ref=e644]: moment
+                      - generic [ref=e645]:
+                        - generic [ref=e646]: id
+                        - generic [ref=e649]: PK
+                        - generic [ref=e650]: int
+                      - generic [ref=e651]:
+                        - generic [ref=e652]: start
+                        - generic [ref=e653]: date
+                      - generic [ref=e654]:
+                        - generic [ref=e655]: end
+                        - generic [ref=e656]: date
+                    - generic [ref=e657]:
+                      - generic [ref=e661]: Project
+                      - generic [ref=e662]: description
+                      - generic [ref=e663]:
+                        - generic [ref=e664]: id
+                        - generic [ref=e667]: PK
+                        - generic [ref=e668]: int
+                      - generic [ref=e669]:
+                        - generic [ref=e670]: code
+                        - generic [ref=e671]: string
+                      - generic [ref=e672]:
+                        - generic [ref=e673]: name
+                        - generic [ref=e674]: string
+                    - generic [ref=e676]: has member
+                    - generic [ref=e678]: of project
+              - generic [ref=e679]: Every organism reads the same domain semantics. LayerNav surfaces the medallion layers; ConceptCard tints by archetype; the Inspector renders the manifest the validator and AI agents both read; the ConceptDiagram lays the same archetypes out as an ER canvas. DSharp owns the visual language; library code, TanStack Table and xyflow, owns the interaction mechanics.
+            - region "Where the rhythm could still leak" [ref=e680]:
+              - generic [ref=e683]:
+                - heading "Closing the gap" [level=4] [ref=e684]
+                - heading "Where the rhythm could still leak" [level=4] [ref=e685]
+                - paragraph [ref=e687]:
+                  - text: One discipline did not survive the move from tokens to composition.
+                  - link "Rhythmguard" [ref=e688] [cursor=pointer]:
+                    - /url: /work/rhythmguard
+                  - text: ", the Stylelint plugin built alongside the system, enforces the 14-step space scale in CSS declarations and Tailwind class strings. It rejects off-scale literals on padding, margin, gap, inset, and transform translations, and autofixes to the nearest valid step. The values in the spec sheet and the values in the code stay in agreement."
+                - paragraph [ref=e690]:
+                  - text: Stylelint cannot reach JSX inline styles or Tailwind arbitrary brackets, so spacing could still leak through composition. The answer was a small set of layout primitives,
+                  - code [ref=e691]: Stack
+                  - text: ","
+                  - code [ref=e692]: Row
+                  - text: ","
+                  - code [ref=e693]: Grid
+                  - text: ", and"
+                  - code [ref=e694]: Container
+                  - text: ", that take space-scale tokens as props rather than arbitrary numbers. With the lint rule on the styling side and the primitives on the composition side, the rhythm has no path left to drift."
+            - generic [ref=e697]:
+              - generic [ref=e698]:
+                - paragraph [ref=e699]: 112+ components
+                - paragraph [ref=e700]: "Across five tiers: atoms, molecules, organisms, patterns, templates. Each under the same four-file contract."
+              - generic [ref=e701]:
+                - paragraph [ref=e702]: 3 packages
+                - paragraph [ref=e703]:
+                  - code [ref=e704]: "@dsharp/tokens"
+                  - text: ","
+                  - code [ref=e705]: "@dsharp/tokens-css"
+                  - text: ","
+                  - code [ref=e706]: "@dsharp/react"
+                  - text: . Versioned in lockstep on a project-scoped Azure Artifacts feed.
+              - generic [ref=e707]:
+                - paragraph [ref=e708]: 2 consumer apps
+                - paragraph [ref=e709]:
+                  - text: Scout renders organisms from
+                  - code [ref=e710]: "@dsharp/react"
+                  - text: in its UI shell. Studio consumes the same package inside its desktop surface. PathFinder is porting in, view by view.
+              - generic [ref=e711]:
+                - paragraph [ref=e712]: 0.1.0
+                - paragraph [ref=e713]: First packaged release shipped April 2026. Breakpoint tokens and a few brand-asset semantic aliases are still open work; everything else is on the contract.
+          - generic [ref=e718]:
+            - heading "Interested in working together?" [level=2] [ref=e719]
+            - paragraph [ref=e720]: Let's discuss how design systems, AI and thoughtful UX can elevate your product.
+            - generic [ref=e721]:
+              - link "Get in touch" [ref=e722] [cursor=pointer]:
+                - /url: /contact
+              - link "View all work" [ref=e723] [cursor=pointer]:
+                - /url: /work
+          - complementary [ref=e724]:
+            - generic [ref=e726]:
+              - heading "Related Projects" [level=2] [ref=e728]
+              - generic [ref=e729]:
+                - 'link "Category: design systems. Enterprise design system for the City of Helsinki, serving hundreds of digital services with accessible, consistent UI components.. Tags: Design System, UX Design, Accessibility, React design systems Helsinki Design System Enterprise design system for the City of Helsinki, serving hundreds of digital services with accessible, consistent UI components. Design System UX Design Accessibility" [ref=e731] [cursor=pointer]':
+                  - /url: /work/helsinki-design-system
+                  - generic [ref=e732]: "Category: design systems. Enterprise design system for the City of Helsinki, serving hundreds of digital services with accessible, consistent UI components.. Tags: Design System, UX Design, Accessibility, React"
+                  - generic [ref=e735]:
+                    - generic [ref=e736]: design systems
+                    - heading "Helsinki Design System" [level=3] [ref=e737]
+                    - paragraph [ref=e738]: Enterprise design system for the City of Helsinki, serving hundreds of digital services with accessible, consistent UI components.
+                    - generic [ref=e739]:
+                      - generic [ref=e740]: Design System
+                      - generic [ref=e741]: UX Design
+                      - generic [ref=e742]: Accessibility
+                - 'link "Category: design systems. Led the design system for SAP''s flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.. Tags: Design Systems, Enterprise, Low-Code Platform, SAP BTP design systems SAP Build Apps Design System Led the design system for SAP''s flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide. Design Systems Enterprise Low-Code Platform" [ref=e744] [cursor=pointer]':
+                  - /url: /work/sap-build-apps
+                  - generic [ref=e745]: "Category: design systems. Led the design system for SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.. Tags: Design Systems, Enterprise, Low-Code Platform, SAP BTP"
+                  - generic [ref=e748]:
+                    - generic [ref=e749]: design systems
+                    - heading "SAP Build Apps Design System" [level=3] [ref=e750]
+                    - paragraph [ref=e751]: Led the design system for SAP's flagship low-code platform (formerly AppGyver). Built and maintained 100+ components across Figma and ReactTS, serving 300+ developers and designers building enterprise applications worldwide.
+                    - generic [ref=e752]:
+                      - generic [ref=e753]: Design Systems
+                      - generic [ref=e754]: Enterprise
+                      - generic [ref=e755]: Low-Code Platform
+    - contentinfo [ref=e756]:
+      - generic [ref=e757]:
+        - generic [ref=e758]:
+          - generic [ref=e759]:
+            - paragraph [ref=e760]: Address
+            - generic [ref=e761]:
+              - link "Digitaltableteur" [ref=e762] [cursor=pointer]:
+                - /url: /
+              - text: Hämeentie 8 C
+              - text: 00530 Helsinki
+              - link "mail@digitaltableteur.com" [ref=e763] [cursor=pointer]:
+                - /url: mailto:mail@digitaltableteur.com
+          - generic [ref=e764]:
+            - paragraph [ref=e765]: Billing details
+            - generic [ref=e766]:
+              - text: Digitaltableteur
+              - text: Hämeentie 8 C
+              - text: 00530 Helsinki
+              - text: VAT FI22644552
+          - generic [ref=e767]:
+            - paragraph [ref=e768]: Legal
+            - generic [ref=e769]:
+              - link "Privacy Policy" [ref=e770] [cursor=pointer]:
+                - /url: /privacy-policy
+              - link "Imprint" [ref=e771] [cursor=pointer]:
+                - /url: /imprint
+              - link "AI Usage" [ref=e772] [cursor=pointer]:
+                - /url: /ai-use
+              - link "Accessibility Statement" [ref=e773] [cursor=pointer]:
+                - /url: /accessibility
+        - generic [ref=e774]:
+          - generic [ref=e775]:
+            - link "Instagram" [ref=e776] [cursor=pointer]:
+              - /url: https://www.instagram.com/digitaltableteur/
+              - img [ref=e777]
+            - link "Facebook" [ref=e779] [cursor=pointer]:
+              - /url: https://www.facebook.com/digitaltableteur
+              - img [ref=e780]
+            - link "LinkedIn" [ref=e782] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/digitaltableteur/
+              - img [ref=e783]
+            - link "Medium" [ref=e785] [cursor=pointer]:
+              - /url: https://medium.com/digitaltableteur
+              - img [ref=e786]
+            - link "X" [ref=e788] [cursor=pointer]:
+              - /url: https://x.com/dtdoesdesign
+              - img [ref=e789]
+            - link "GitHub" [ref=e791] [cursor=pointer]:
+              - /url: https://github.com/PetriLahdelma
+              - img [ref=e792]
+            - link "Substack" [ref=e794] [cursor=pointer]:
+              - /url: https://substack.com/@petrilahdelma
+              - img [ref=e795]
+            - link "Dribbble" [ref=e797] [cursor=pointer]:
+              - /url: https://dribbble.com/digitaltableteur
+              - img [ref=e798]
+          - paragraph [ref=e800]: © 2026 Digitaltableteur. All rights reserved.
+  - status "Notifications"
+  - status

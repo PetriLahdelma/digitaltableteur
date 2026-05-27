@@ -44,7 +44,10 @@ export interface ImagePlaceholderProps {
  * />
  * ```
  */
-export default function ImagePlaceholder({
+export default /**
+ * ImagePlaceholder component.
+ */
+function ImagePlaceholder({
   width,
   height,
   alt = "Placeholder image",

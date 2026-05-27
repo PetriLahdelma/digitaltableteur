@@ -1,7 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import ChatMessageBubble from "./ChatMessageBubble";
-import type { ProcessedMessage } from "@dt/messageProcessor";
+import type { ProcessedMessage } from "@dt/ChatWidget/messageProcessor";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
@@ -22,10 +22,7 @@ const userMessage: ProcessedMessage = {
   id: "user-1",
   role: "user",
   parts: [
-    {
-      kind: "text",
-      content: "Can you tell me about the services you offer?",
-    },
+    { kind: "text", content: "Can you tell me about the services you offer?" },
   ],
 };
 
@@ -44,24 +41,15 @@ const longAssistantMessage: ProcessedMessage = {
 const thinkingMessage: ProcessedMessage = {
   id: "assistant-3",
   role: "assistant",
-  parts: [
-    {
-      kind: "text",
-      content: "",
-    },
-  ],
+  parts: [{ kind: "text", content: "" }],
 };
 
 const meta: Meta<typeof ChatMessageBubble> = {
-  title: "Components/AI/Chat/ChatMessageBubble",
+  title: "Molecules/Chat/ChatMessageBubble",
   component: ChatMessageBubble,
   tags: ["autodocs"],
-  parameters: {
-    layout: "padded",
-  },
-  args: {
-    isStreaming: false,
-  },
+  parameters: { layout: "padded" },
+  args: { isStreaming: false },
 };
 
 export default meta;
@@ -69,29 +57,18 @@ export default meta;
 type Story = StoryObj<typeof ChatMessageBubble>;
 
 export const AssistantMessage: Story = {
-  args: {
-    message: assistantMessage,
-  },
+  args: { message: assistantMessage },
   parameters: {},
 };
 
-export const UserMessage: Story = {
-  args: {
-    message: userMessage,
-  },
-};
+export const UserMessage: Story = { args: { message: userMessage } };
 
 export const AssistantStreaming: Story = {
-  args: {
-    message: assistantMessage,
-    isStreaming: true,
-  },
+  args: { message: assistantMessage, isStreaming: true },
 };
 
 export const LongAssistantMessage: Story = {
-  args: {
-    message: longAssistantMessage,
-  },
+  args: { message: longAssistantMessage },
 };
 
 export const WithWorkflowUI: Story = {
@@ -186,12 +163,7 @@ const chatMessageBubbleComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export const Z_ChatMessageBubbleCompliance: import("@storybook/react-vite").StoryFn =

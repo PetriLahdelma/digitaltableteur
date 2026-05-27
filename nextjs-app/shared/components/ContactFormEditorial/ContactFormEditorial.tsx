@@ -106,6 +106,9 @@ export interface ContactFormEditorialProps {
   className?: string;
 }
 
+/**
+ * ContactFormEditorial component.
+ */
 export function ContactFormEditorial({
   onSuccess,
   onError,

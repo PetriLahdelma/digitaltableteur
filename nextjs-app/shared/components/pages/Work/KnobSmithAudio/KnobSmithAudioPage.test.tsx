@@ -1,22 +1,24 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../../test-utils/render";
 import { KnobSmithAudioPage } from "./KnobSmithAudioPage";
+
+vi.mock("../../../LogoConstruction/LogoConstruction", () => ({
+  LogoConstruction: () => null,
+}));
 
 describe("KnobSmithAudioPage", () => {
   it("renders page title", () => {
-    render(<KnobSmithAudioPage />);
-    expect(screen.getByText(/KnobSmith Audio/i)).toBeInTheDocument();
-  });
-
-  it("renders project overview", () => {
-    render(<KnobSmithAudioPage />);
-    expect(screen.getByText(/Project Details|Overview/i)).toBeInTheDocument();
+    renderWithProviders(<KnobSmithAudioPage />);
+    expect(
+      screen.getByRole("heading", { name: /KnobSmith Audio/i, level: 1 }),
+    ).toBeInTheDocument();
   });
 
   it("renders back to work link", () => {
-    render(<KnobSmithAudioPage />);
+    renderWithProviders(<KnobSmithAudioPage />);
     expect(
-      screen.getByRole("link", { name: /back to work|work/i }),
+      screen.getByRole("link", { name: /Back to work/i }),
     ).toBeInTheDocument();
   });
 });

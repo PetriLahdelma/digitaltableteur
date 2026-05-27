@@ -1,0 +1,33 @@
+/**
+ * Breadth tranche 2.
+ */
+export const BREADTH_COMPONENTS = [
+  { name: "HomeHero", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Homepage hero with kinetic title, background, and primary CTA." },
+  { name: "CTASection", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Call-to-action band used on marketing pages." },
+  { name: "ServicesSection", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Homepage services grid with icons and copy." },
+  { name: "HighlightSection", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Highlight band with variant backgrounds and CTA slots." },
+  { name: "Container", tier: "atom", group: "layout", root: "components", status: "alpha", description: "Max-width content wrapper with responsive horizontal padding." },
+  { name: "NextLayout", tier: "template", group: "chrome", root: "components", status: "alpha", description: "Production app shell: header, main landmark, footer, chat, consent." },
+  { name: "ContactFormEditorial", tier: "organism", group: "form", root: "components", status: "alpha", description: "Editorial contact form used on the live contact page." },
+  { name: "Grid", tier: "atom", group: "layout", root: "components", status: "alpha", description: "CSS grid layout primitive with tokenized gaps." },
+  { name: "FlexBox", tier: "atom", group: "layout", root: "components", status: "alpha", description: "Flexbox layout primitive for stacks and rows." },
+  { name: "ThemeProvider", tier: "atom", group: "foundation", root: "components", status: "alpha", description: "Theme context for light, dark, and high-contrast modes." },
+,
+  { name: "HeroSection", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Full-bleed hero shell with min-height, alignment, and background variants." },
+  { name: "DesignSprintsSection", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Homepage design-sprints band with animated CTA pills." },
+  { name: "WorkMagneticField", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Homepage work grid with magnetic hover on project cards." },
+  { name: "ContactPageContentEditorial", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Editorial contact page layout with form and success state." },
+  { name: "Section", tier: "atom", group: "layout", root: "components", status: "alpha", description: "Semantic section wrapper with spacing and background tokens." },
+  { name: "Stack", tier: "atom", group: "layout", root: "components", status: "alpha", description: "Flex stack primitive for vertical and horizontal rhythm." },
+  { name: "ServiceCard", tier: "molecule", group: "marketing", root: "components", status: "alpha", description: "Service tile with icon, title, description, and optional link." },
+  { name: "FormFieldEditorial", tier: "molecule", group: "form", root: "components", status: "alpha", description: "Uppercase-label form field for editorial contact flows." },
+  { name: "SkipLink", tier: "atom", group: "navigation", root: "components", status: "alpha", description: "Skip-to-main link shown on keyboard focus." },
+  { name: "ClientLogoMarquee", tier: "organism", group: "marketing", root: "components", status: "alpha", description: "Animated client logo marquee on the homepage." }
+  { name: "CookieConsent", tier: "organism", group: "chrome", root: "components", status: "alpha", description: "GDPR cookie consent modal and banner wired to site providers." },
+  { name: "EnhancedProjectCard", tier: "molecule", group: "marketing", root: "components", status: "alpha", description: "Portfolio project card with image, video hover, and metadata." },
+  { name: "WorkPreviewSection", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Work index preview grid of project cards." },
+  { name: "ContactHero", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Contact page hero with headline and supporting copy." },
+  { name: "AboutPageContent", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "About page narrative sections and team highlights." },
+  { name: "FadeIn", tier: "molecule", group: "motion", root: "components", status: "alpha", description: "Scroll-triggered fade-in animation wrapper (GSAP)." },
+  { name: "ArticleCard", tier: "molecule", group: "content", root: "components", status: "alpha", description: "Blog article teaser card with title, lead, and read time." },
+];

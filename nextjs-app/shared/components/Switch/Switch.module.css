@@ -39,6 +39,7 @@
 }
 
 /* Size variants (v1.1.0) */
+
 .switch--sm {
   --switch-height: 1.25rem;
   --switch-width: 2.25rem;

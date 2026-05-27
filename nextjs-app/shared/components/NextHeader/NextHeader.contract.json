@@ -1,0 +1,46 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "NextHeader",
+    "tier": "pattern",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Concrete Next.js implementation of the site header pattern. Renders the logo, primary nav, theme switcher, and the mobile-menu trigger. Visually documented at the catalog level via `SiteHeader`; this entry exists so the implementation file is also discoverable.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "header",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab — moves through the logo, nav links, theme switcher, then to the mobile-menu trigger on narrow viewports.",
+            "Enter / Space — activates the focused control."
+        ],
+        "ariaRequirements": [
+            "Renders a real `<header>` landmark with the primary `<nav>` inside.",
+            "Active route is marked via `aria-current='page'` on the matching `NavLink`.",
+            "Theme switcher exposes the current theme as the button's accessible name."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated",
+            "--color-accent"
+        ],
+        "spacing": [
+            "--space-internal-12",
+            "--space-internal-16"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

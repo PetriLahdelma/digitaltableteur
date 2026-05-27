@@ -1,0 +1,40 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Radio",
+    "tier": "atom",
+    "group": "form",
+    "status": "alpha",
+    "description": "Single radio option; compose with RadioGroup for sets.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "argTypesProxyExempt": [
+        "className"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-border",
+            "--color-primary"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

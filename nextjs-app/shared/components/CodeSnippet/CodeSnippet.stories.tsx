@@ -1,5 +1,7 @@
+import contract from "./CodeSnippet.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { userEvent, within } from "storybook/test";
 import {
   Controls,
   Description,
@@ -9,20 +11,17 @@ import {
   Subtitle,
   Title,
 } from "@storybook/addon-docs/blocks";
-import { within, userEvent } from "@storybook/testing-library";
 import CodeSnippet from "@dt/CodeSnippet";
 import Text from "@dt/Text";
 import schema from "./schema.json";
 
 const sampleTs = `import { createGatewayProvider } from "@ai-sdk/gateway";
 
-const provider = createGatewayProvider({
-  baseURL: process.env.AI_GATEWAY_URL,
+const provider = createGatewayProvider({ baseURL: process.env.AI_GATEWAY_URL,
   apiKey: process.env.AI_GATEWAY_API_KEY,
 });
 
-export async function ask(question: string) {
-  const model = provider("openai/gpt-4o-mini");
+export async function ask(question: string) { const model = provider("openai/gpt-4o-mini");
   const result = await model.doStuff({ prompt: question });
   return result.text;
 }`;
@@ -32,17 +31,14 @@ import { Button } from "@dt/Button";
 import { Card } from "@dt/Card";
 
 // This is a longer example to demonstrate show more/less
-export function DemoComponent({ title, description }: DemoProps) {
-  const [count, setCount] = useState(0);
+export function DemoComponent({ title, description }: DemoProps) { const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
   
-  useEffect(() => {
-    console.log("Component mounted");
+  useEffect(() => { console.log("Component mounted");
     return () => console.log("Component unmounted");
   }, []);
   
-  const handleClick = async () => {
-    setLoading(true);
+  const handleClick = async () => { setLoading(true);
     await someAsyncOperation();
     setCount(prev => prev + 1);
     setLoading(false);
@@ -59,13 +55,14 @@ export function DemoComponent({ title, description }: DemoProps) {
 }`;
 
 const meta: Meta<typeof CodeSnippet> = {
-  title: "Components/CodeSnippet",
+  argTypes: {},
+  title: "Molecules/CodeSnippet",
   component: CodeSnippet,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
     docs: {
       page: () => (
         <>
@@ -125,17 +122,11 @@ export const Single: Story = {
 };
 
 export const Multi: Story = {
-  args: {
-    variant: "multi",
-    language: "typescript",
-  },
+  args: { variant: "multi", language: "typescript" },
 };
 
 export const Typescript: Story = {
-  args: {
-    variant: "multi",
-    language: "typescript",
-  },
+  args: { variant: "multi", language: "typescript" },
 };
 
 export const Python: Story = {
@@ -172,3 +163,8 @@ export const Minimal: Story = {
     code: "console.log('Hello');",
   },
 };
+
+export const Default = {};
+export const Playground = {};
+export const Example = { parameters: { controls: { disable: true } } };
+export const ForcedColors = { globals: { forcedColors: "active" } };

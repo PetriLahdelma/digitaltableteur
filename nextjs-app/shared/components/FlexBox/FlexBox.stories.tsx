@@ -1,21 +1,20 @@
+import contract from "./FlexBox.contract.json";
 /* stylelint-disable scale-unlimited/declaration-strict-value */
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import FlexBox, { FlexBoxProps } from "@dt/FlexBox";
 
 const meta: Meta<typeof FlexBox> = {
-  title: "Components/FlexBox",
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  title: "Atoms/FlexBox",
   component: FlexBox,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   argTypes: {
     direction: {
       control: "select",
       options: ["row", "row-reverse", "column", "column-reverse"],
     },
-    wrap: {
-      control: "select",
-      options: ["nowrap", "wrap", "wrap-reverse"],
-    },
+    wrap: { control: "select", options: ["nowrap", "wrap", "wrap-reverse"] },
     justify: {
       control: "select",
       options: [
@@ -31,8 +30,11 @@ const meta: Meta<typeof FlexBox> = {
       control: "select",
       options: ["stretch", "flex-start", "flex-end", "center", "baseline"],
     },
+
     gap: { control: "text" },
+
     rowGap: { control: "text" },
+
     columnGap: { control: "text" },
   },
 };
@@ -152,4 +154,15 @@ export const GapVariants: Story = {
       createBlock("4", "4", 3, { minWidth: 120 }),
     ],
   },
+};
+
+export const Default: Story = Basic;
+export const Playground: Story = { ...Basic };
+export const Example: Story = {
+  parameters: { controls: { disable: true } },
+  ...Basic,
+};
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  ...Basic,
 };

@@ -1,11 +1,13 @@
+import contract from "./Icon.contract.json";
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import Icon from "@dt/Icon";
 
 const meta: Meta<typeof Icon> = {
-  title: "Components/Icon",
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  title: "Atoms/Icon",
   component: Icon,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   args: {
     name: "circle-info",
     weight: "regular",
@@ -13,36 +15,69 @@ const meta: Meta<typeof Icon> = {
     ariaLabel: "Information",
   },
   argTypes: {
-    name: { control: "text" },
+    name: {
+      control: "text",
+      description: "Phosphor icon name (kebab-case)",
+      table: { defaultValue: { summary: "circle-info" } },
+    },
+
     weight: {
       control: {
         type: "select",
         options: ["thin", "light", "regular", "bold", "fill", "duotone"],
       },
+      description: "Phosphor stroke/fill weight",
+      table: { defaultValue: { summary: "regular" } },
     },
+
     size: {
       control: {
         type: "select",
         options: ["2xs", "xs", "sm", "md", "lg", "xl", "2xl"],
       },
+      description: "Tokenized icon size",
+      table: { defaultValue: { summary: "lg" } },
     },
-    color: { control: "color" },
+
+    color: {
+      control: "color",
+      description: "Optional CSS color override (prefer tokens in production)",
+    },
+
     rotate: {
-      control: {
-        type: "select",
-        options: [0, 90, 180, 270],
-      },
+      control: { type: "select", options: [0, 90, 180, 270] },
+      description: "Rotation in degrees",
+      table: { defaultValue: { summary: "0" } },
     },
+
     flip: {
-      control: {
-        type: "select",
-        options: ["horizontal", "vertical", "both"],
-      },
+      control: { type: "select", options: ["horizontal", "vertical", "both"] },
+      description: "Mirror the icon along an axis",
     },
-    spin: { control: "boolean" },
-    pulse: { control: "boolean" },
-    decorative: { control: "boolean" },
-    ariaLabel: { control: "text" },
+
+    spin: {
+      control: "boolean",
+      description: "Continuous rotation animation",
+      table: { defaultValue: { summary: "false" } },
+    },
+
+    pulse: {
+      control: "boolean",
+      description: "Opacity pulse animation",
+      table: { defaultValue: { summary: "false" } },
+    },
+
+    decorative: {
+      control: "boolean",
+      description: "When true, icon is hidden from assistive tech",
+      table: { defaultValue: { summary: "false" } },
+    },
+
+    ariaLabel: {
+      control: "text",
+      description:
+        "Accessible name when the icon is meaningful (not decorative)",
+    },
   },
 };
 
@@ -50,27 +85,18 @@ export default meta;
 type Story = StoryObj<typeof Icon>;
 
 export const Playground: Story = {
-  args: {
-    name: "circle-info",
-    ariaLabel: "Information icon",
-  },
+  parameters: { a11y: { disable: true } },
+  tags: ["beta-matrix"],
+  args: { name: "circle-info", ariaLabel: "Information icon" },
 };
 
+export const Default: Story = Playground;
 export const BrandIcon: Story = {
-  args: {
-    name: "github",
-    size: "2xl",
-    color: "#111",
-    ariaLabel: "GitHub",
-  },
+  args: { name: "github", size: "2xl", color: "#111", ariaLabel: "GitHub" },
 };
 
 export const Animated: Story = {
-  args: {
-    name: "circle-notch",
-    spin: true,
-    ariaLabel: "Loading",
-  },
+  args: { name: "circle-notch", spin: true, ariaLabel: "Loading" },
 };
 
 export const ColorShowcase: Story = {
@@ -100,7 +126,9 @@ export const ColorShowcase: Story = {
 };
 
 export const Transformations: Story = {
-  parameters: {// Disable WIP badge to prevent overlap
+  parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" }, // Disable WIP badge to prevent overlap
   },
   render: () => (
     <div
@@ -133,4 +161,16 @@ export const Transformations: Story = {
       />
     </div>
   ),
+};
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => (
+    <Icon name="arrow-square-out" size="md" ariaLabel="Opens in a new window" />
+  ),
+};
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: { name: "circle-info" },
 };

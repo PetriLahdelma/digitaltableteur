@@ -1,0 +1,19 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "size": {
+    "width": {
+      "md": {
+        "$value": "320px",
+        "$description": "Production token --size-width-md"
+      },
+      "lg": {
+        "$value": "900px",
+        "$description": "Production token --size-width-lg"
+      },
+      "form": {
+        "$value": "600px",
+        "$description": "Production token --size-width-form"
+      }
+    }
+  }
+}
