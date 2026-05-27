@@ -1,6 +1,7 @@
 "use client";
 
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -89,6 +90,12 @@ const INTEREST_OPTIONS = [
   { value: "help-me-choose", labelKey: "contactInterestHelpMeChoose" },
 ];
 
+/** Maps marketing CTA `?service=` values to contact-form interest slugs. */
+const SERVICE_INTEREST_MAP: Record<string, string> = {
+  "design-sprint": "digital-products",
+  "design-sprints": "digital-products",
+};
+
 export interface EnhancedContactFormProps {
   onSuccess?: () => void;
   onError?: (error: Error) => void;
@@ -102,6 +109,7 @@ export function EnhancedContactForm({
 }: EnhancedContactFormProps) {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const searchParams = useSearchParams();
 
   // === PRESERVED STATE MANAGEMENT (CRITICAL - DO NOT CHANGE) ===
   const [formData, dispatchForm] = useReducer(
@@ -116,6 +124,24 @@ export function EnhancedContactForm({
   const [attachmentError, setAttachmentError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+
+  useEffect(() => {
+    const service = searchParams.get("service")?.trim().toLowerCase();
+    if (!service) return;
+
+    const interest = SERVICE_INTEREST_MAP[service];
+    if (!interest) return;
+
+    setSelectedInterests((prev) => {
+      if (prev.includes(interest)) return prev;
+      const next = [...prev, interest];
+      dispatchForm({
+        type: "UPDATE_FIELD",
+        payload: { field: "interest", value: next.join(", ") },
+      });
+      return next;
+    });
+  }, [searchParams]);
 
   // Check if form is valid for submission
   const isFormValid =
