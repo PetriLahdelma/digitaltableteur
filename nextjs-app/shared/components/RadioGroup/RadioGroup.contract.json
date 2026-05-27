@@ -1,0 +1,49 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "RadioGroup",
+    "tier": "molecule",
+    "group": "form",
+    "status": "alpha",
+    "description": "Accessible radio button group with legend and validation.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "orientation": {
+            "values": [
+                "vertical",
+                "horizontal"
+            ],
+            "default": "vertical"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "argTypesProxyExempt": [
+        "className",
+        "options"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-border",
+            "--color-primary"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

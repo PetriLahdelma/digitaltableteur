@@ -1,3 +1,20 @@
+// Author registry. Originally implemented with `import.meta.glob(...)` so a new
+// author could be added by dropping a JSON file in `content/authors/`. That
+// indirection routed the call through a `globFn` variable, which Vite's
+// static-analysis pass cannot rewrite — `import.meta.glob` only works as a
+// literal call expression. The fallback object was what actually ran in both
+// bundlers (Vitest emitted an error on the indirect form; Next.js's webpack
+// never had `import.meta.glob` to begin with), so the dynamic discovery was
+// dead code wrapped in a broken try.
+//
+// Replaced 2026-05-26 with an explicit, type-safe import map. New authors
+// land via a JSON file + a one-line registration here. If the file count
+// grows past ~5, replace with a build-time manifest similar to
+// scripts/generate-blog-manifest.mjs (which uses real fs walking at
+// prebuild time and emits JSON the runtime can `import` statically).
+
+import petriAuthor from "../../content/authors/petri-lahdelma.json";
+
 export type AuthorEntry = {
   name: string;
   slug: string;
@@ -5,37 +22,27 @@ export type AuthorEntry = {
   bio?: string;
 };
 
-import petriAuthor from "../../content/authors/petri-lahdelma.json";
-
-const globFn =
-  typeof import.meta !== "undefined" && (import.meta as any).glob
-    ? ((import.meta as any).glob as <T>(
-        pattern: string,
-        opts: any,
-      ) => Record<string, T>)
-    : undefined;
-
-const modules = globFn?.<AuthorEntry>("../../content/authors/*.json", {
-  eager: true,
-}) || {
-  "../../content/authors/petri-lahdelma.json": petriAuthor as AuthorEntry,
+type AuthorSource = {
+  slug: string;
+  filePath: string;
+  data: AuthorEntry;
 };
 
-const normalizeSlug = (entry: AuthorEntry, filePath: string) => {
-  if (entry.slug) return entry.slug;
-  const fileName = filePath.split("/").pop() ?? "";
-  return fileName.replace(/\.json$/, "");
-};
+const SOURCES: AuthorSource[] = [
+  {
+    slug: "petri-lahdelma",
+    filePath: "content/authors/petri-lahdelma.json",
+    data: petriAuthor as AuthorEntry,
+  },
+];
 
-const entries: AuthorEntry[] = Object.entries(modules)
-  .map(([filePath, mod]) => {
-    const slug = normalizeSlug(mod, filePath);
-    return {
-      ...mod,
-      slug,
-    };
-  })
-  .sort((a, b) => a.name.localeCompare(b.name));
+const normalizeSlug = (entry: AuthorEntry, fallback: string) =>
+  entry.slug?.length ? entry.slug : fallback;
+
+const entries: AuthorEntry[] = SOURCES.map(({ slug, data }) => ({
+  ...data,
+  slug: normalizeSlug(data, slug),
+})).sort((a, b) => a.name.localeCompare(b.name));
 
 const authorMap = new Map(entries.map((entry) => [entry.slug, entry]));
 

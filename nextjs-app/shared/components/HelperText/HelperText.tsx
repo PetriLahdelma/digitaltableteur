@@ -1,3 +1,10 @@
+import { cva } from "class-variance-authority";
+
+export const helperTextVariants = cva("", {
+  variants: { size: { sm: "", md: "", lg: "" } },
+  defaultVariants: { size: "md" },
+});
+
 import React from "react";
 import {
   CheckCircle,
@@ -36,6 +43,7 @@ const stateIcons: Record<HelperTextState, React.ReactNode> = {
   info: <Info weight="fill" size={16} />,
 };
 
+/** Semantic helper copy for form fields (error, warning, success, info). */
 const HelperText = React.forwardRef<HTMLParagraphElement, HelperTextProps>(
   ({ children, id, className, state }, ref) => {
     const mergedClassName = [

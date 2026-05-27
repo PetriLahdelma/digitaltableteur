@@ -5,6 +5,18 @@ import type {
 } from "@phosphor-icons/react";
 import * as PhosphorIcons from "@phosphor-icons/react/ssr";
 import styles from "./Icon.module.css";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+export const iconVariants = cva("inline-flex shrink-0 items-center justify-center", {
+  variants: {
+    size: {
+      "2xs": "h-3 w-3", xs: "h-4 w-4", sm: "h-5 w-5", md: "h-6 w-6", lg: "h-8 w-8", xl: "h-12 w-12", "2xl": "h-16 w-16",
+    },
+  },
+  defaultVariants: { size: "md" },
+});
+
 
 type NamedSize = "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 type LegacyStyle =
@@ -120,6 +132,7 @@ const resolveIconComponent = (
   return null;
 };
 
+/** Phosphor icon wrapper with size tokens, motion affordances, and accessible naming. */
 const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
   (
     {
@@ -199,9 +212,13 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
         ? (sizeClassMap[size as NamedSize] ?? sizeClassMap.md)
         : undefined;
 
-    const mergedClassName = [styles.base, sizeClass, animationClass, className]
-      .filter(Boolean)
-      .join(" ");
+    const mergedClassName = cn(
+      styles.base,
+      typeof size === "string" ? iconVariants({ size: size as NamedSize }) : iconVariants({ size: "md" }),
+      sizeClass,
+      animationClass,
+      className,
+    );
 
     return (
       <span

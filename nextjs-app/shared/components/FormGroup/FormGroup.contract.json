@@ -1,0 +1,43 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "FormGroup",
+    "tier": "molecule",
+    "group": "form",
+    "status": "alpha",
+    "description": "Fieldset wrapper for grouped form controls (checkbox set, radio set, named address block). Renders a real `<fieldset>` + `<legend>` so the grouping is announced.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "fieldset",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab — moves focus to the first focusable child control."
+        ],
+        "ariaRequirements": [
+            "Renders a real `<fieldset>` element; `legend` becomes the accessible name of the whole group.",
+            "Disabled state on the fieldset cascades to all enclosed controls."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-border-light"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

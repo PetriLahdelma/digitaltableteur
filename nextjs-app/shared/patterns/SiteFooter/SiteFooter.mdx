@@ -1,0 +1,104 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './SiteFooter.stories';
+
+<Meta of={Stories} />
+
+# SiteFooter
+
+**Status:** beta · **Tier:** pattern · **Group:** layout
+
+The site-wide footer. SiteFooter is laid out as a four-column grid
+(company info, billing, legal links, and below the Divider a row of
+social icons + copyright). The component is intentionally rigid: it
+reads every label and address line from i18n, and the social link list
+is a constant inside the file because adding a social channel is a
+team decision, not a per-page customisation.
+
+## In use
+
+Mounted globally in `app/layout.tsx` after the main content slot. The
+component takes only `className` for theme-scoped overrides. There
+should be exactly one SiteFooter per page; consumers don't
+remount it for individual routes.
+
+One composition worth cribbing:
+
+- **Default mount.** `<SiteFooter />` — every route uses this. The
+  i18n provider supplies the address, billing, and link labels.
+
+Anti-pattern to avoid: forking SiteFooter to add a different social
+link or move the copyright. Modify the source — the const array of
+social links is the canonical list for the whole company.
+
+## How to use
+
+```tsx
+import { SiteFooter } from '@dt/SiteFooter';
+
+// Default global mount (already in app/layout.tsx)
+<SiteFooter />
+
+// Scoped style override
+<SiteFooter className="border-t-accent" />
+```
+
+Required consumer wiring: the parent layout must mount
+`<I18nProvider>` above SiteFooter. The component reads all labels
+from the `footer*` namespace.
+
+Theme & forced-colors notes: the footer uses `bg-muted/30` (a token
+backed by `var(--color-surface-muted)`) and a `border-t border-border`
+for the top edge. Forced-colors keeps the surface and border distinct.
+The internal `Divider` between the four-column grid and the
+social-row uses the `@dt/Divider` component with `className="my-8"`
+— the divider's CSS is now wrapped in `@layer components` so the
+Tailwind `my-8` utility correctly applies (see the Divider docs for
+the cascade-layer reasoning).
+
+## When to use
+
+- The global site footer. No other consumer.
+
+## When not to use
+
+- A "footer" inside a Card or Modal — those have their own footer
+  slots.
+- An admin / dashboard footer — different content, different layout.
+  Build a separate AdminFooter.
+- A landing page where the footer is the primary CTA — that's a
+  pattern of its own (`patterns/CTASection` already exists).
+
+## Accessibility
+
+- **Landmark:** the wrapper is `<footer>` (contentinfo landmark);
+  AT users can jump to "page footer" via landmark navigation.
+- **Address blocks:** the company and billing blocks use `<address>`
+  with `not-italic` styling. Screen readers announce "contact
+  information" before the lines.
+- **Social link list:** each external link has an `aria-label`
+  translated per channel (`footerAriaInstagram`, etc.) so AT users
+  hear "Instagram, link, opens external site" rather than the
+  generic icon glyph. Each link carries `target="_blank"` and
+  `rel="noopener noreferrer"` to prevent the tab-nabbing pattern.
+- **Legal link group:** Privacy, Imprint, AI use, Accessibility
+  render as a vertical Stack of TextLink primitives with
+  `underline="hover"` so the affordance is visible only on hover.
+  Keyboard users see the focus ring via the global focus-visible
+  treatment.
+- **Copyright line:** the current year is computed via
+  `new Date().getFullYear()` per render. SSR / hydration mismatch is
+  not a concern because the server and client use the same clock for
+  the year.
+
+## Promotion notes
+
+- SiteFooter is on every page, so promoting it is high-impact but
+  low-risk because the surface is mostly static text and links.
+  Stable promotion blockers:
+  - AT-tree snapshots for default / scrolled-to / dark-theme states.
+  - Real-browser forced-colors verification.
+  - Documented production consumer (`app/layout.tsx`).
+- Known debt: there is no "newsletter signup" affordance in the
+  footer. The team has deliberately kept signup to `/` and
+  `/blog` via NewsletterWaitlist; if a footer-signup pattern
+  becomes desirable, design + implement it as an opt-in slot.

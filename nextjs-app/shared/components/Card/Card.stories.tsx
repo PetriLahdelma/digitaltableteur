@@ -1,13 +1,5 @@
+import contract from "./Card.contract.json";
 import React from "react";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import Card from "@dt/Card";
 import Icon from "@dt/Icon";
 import ImagePlaceholder, {
@@ -17,34 +9,13 @@ import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const CardStoryMeta = {
-  title: "Components/Card",
+  title: "Molecules/Card",
   component: Card,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     size: {
@@ -53,11 +24,13 @@ const CardStoryMeta = {
       description:
         "Card size with max-width constraints: S(320px), M(480px), L(600px), full(100%)",
     },
+
     variant: {
       control: { type: "select" },
       options: ["outlined", "filled", "elevated"],
       description: "Card visual variant",
     },
+
     badge: {
       control: { type: "text" },
       description: "Badge content (text/number) or custom React element",
@@ -72,6 +45,7 @@ const CardStoryMeta = {
       options: ["start", "end"],
       description: "Badge position in header",
     },
+
     statusMessage: {
       control: { type: "text" },
       description: "Status/error message below header",
@@ -91,10 +65,12 @@ const CardStoryMeta = {
       options: ["sm", "md", "lg"],
       description: "Icon size variant",
     },
+
     hoverable: {
       control: { type: "boolean" },
       description: "Enable hover elevation effect",
     },
+
     loading: {
       control: { type: "boolean" },
       description: "Show loading skeleton state",
@@ -375,9 +351,7 @@ const TabbedStoryComponent = () => {
   );
 };
 
-export const Tabbed = {
-  render: () => <TabbedStoryComponent />,
-};
+export const Tabbed = { render: () => <TabbedStoryComponent /> };
 
 // Real-world Use Cases (Matching current codebase patterns)
 export const ProjectCard = {
@@ -552,4 +526,15 @@ export const ComplexExample = {
     hoverable: true,
     size: "L",
   },
+};
+
+export const Example = {
+  parameters: { controls: { disable: true } },
+  args: ComplexExample.args,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

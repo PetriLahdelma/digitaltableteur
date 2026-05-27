@@ -1,0 +1,26 @@
+# Principles
+
+## Production is the source of truth
+
+Storybook documents what ships. Tokens come from `variables.css`; components from `@dt/*`. Maturity gates (`validate:components`) apply before beta/stable promotion.
+
+## Atomic design tiers
+
+| Tier | Definition | Example |
+|------|------------|---------|
+| **Atom** | Single primitive | Button, Icon, Inputs |
+| **Molecule** | Combined or repeated atoms | CheckboxGroup, Card, Select |
+| **Organism** | Full section | ContactForm, ChatWidget |
+| **Pattern** | Page regions | SiteHeader, Hero |
+| **Template** | Page shells | NextLayout |
+
+## Accessibility
+
+- WCAG 2.2 AA target for in-scope components.
+- Focus tokens documented under **Foundations/Focus**.
+- `prefers-reduced-motion` honored in motion-heavy components.
+
+## Internationalization
+
+EN / FI / SV — 100% key coverage before stable promotion.
+

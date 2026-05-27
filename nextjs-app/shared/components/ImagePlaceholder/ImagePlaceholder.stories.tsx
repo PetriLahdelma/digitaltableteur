@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./ImagePlaceholder.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import {
   Controls,
@@ -14,14 +15,14 @@ import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const meta: Meta<typeof ImagePlaceholder> = {
-  title: "Components/ImagePlaceholder",
+  title: "Atoms/ImagePlaceholder",
   component: ImagePlaceholder,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "centered",
-    llm: {
-      schema,
-    },
+    llm: { schema },
     docs: {
       page: () => (
         <>
@@ -49,31 +50,31 @@ const meta: Meta<typeof ImagePlaceholder> = {
       control: { type: "number", min: 100, max: 4000, step: 50 },
       description: "Width in pixels",
     },
+
     height: {
       control: { type: "number", min: 100, max: 2000, step: 50 },
       description: "Height in pixels",
     },
+
     variant: {
       control: { type: "select" },
       options: ["light", "medium", "dark", "gradient"],
       description: "Background color variant",
     },
+
     showDimensions: {
       control: { type: "boolean" },
       description: "Display dimensions on placeholder",
     },
+
     showIcon: {
       control: { type: "boolean" },
       description: "Display image icon",
     },
-    text: {
-      control: { type: "text" },
-      description: "Custom text to display",
-    },
-    caption: {
-      control: { type: "text" },
-      description: "Caption below image",
-    },
+
+    text: { control: { type: "text" }, description: "Custom text to display" },
+
+    caption: { control: { type: "text" }, description: "Caption below image" },
   },
 };
 
@@ -360,3 +361,10 @@ export const AllVariants: Story = {
     </div>
   ),
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

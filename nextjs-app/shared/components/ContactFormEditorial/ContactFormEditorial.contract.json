@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "ContactFormEditorial",
+  "tier": "organism",
+  "group": "form",
+  "status": "alpha",
+  "description": "Editorial contact form used on the live contact page.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-contact-form-editorial",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "id",
+    "onError",
+    "onSuccess",
+    "ref",
+    "style"
+  ],
+  "consumers": []
+}

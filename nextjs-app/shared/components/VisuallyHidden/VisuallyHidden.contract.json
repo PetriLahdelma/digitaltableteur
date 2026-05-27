@@ -1,0 +1,40 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "VisuallyHidden",
+    "tier": "atom",
+    "group": "accessibility",
+    "status": "alpha",
+    "description": "Screen-reader-only text; not visible until focused in context.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "argTypesProxyExempt": [
+        "className"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-border",
+            "--color-primary"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

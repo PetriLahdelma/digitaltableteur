@@ -11,7 +11,7 @@ interface PageTransitionProps {
 }
 
 export function PageTransition({ children, className }: PageTransitionProps) {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
   const containerRef = useRef<HTMLDivElement>(null);
   const { motionPreference } = useAnimationContext();
   const isFirstRender = useRef(true);

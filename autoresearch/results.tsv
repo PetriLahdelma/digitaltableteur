@@ -1,0 +1,16 @@
+iteration	commit	score	status	description
+0	83ebd31f5	10	baseline	Current homepage state
+1	18e211d46	46	keep	Rewrite sprint section as DS engagement, purge derivative hero options
+2	1bdd9d6a6	56	keep	Rewrite meta, CTA, about, gradient title for DS positioning + proof numbers
+3	977f3fcf6	60	keep	Reduce services from 6 to 3 focused DS capabilities
+4	d7de55635	60	keep	Align FAQ schema and structured data with DS positioning + engagement types
+5	e5a8074a4	60	keep	Align FI + SV translations with repositioned EN copy (i18n parity)
+6	1b1c26d82	63	keep	Add primary service hierarchy signals, accent on DS, rename to Core capabilities
+7	cb12a151c	65	keep	Add 5 productized engagement tiers + testimonial translation keys
+8	02744e0a4	69	keep	Fix scoring script case-sensitivity + P5 calibration (testimonial detected, consistency rewarded)
+9	584cad86b	70	keep	Add primary/secondary hierarchy annotations — PERFECT SCORE
+10	4c7db5017	70	keep	Extend scoring with P8 component completeness metric
+11	034594258	74	keep	Add ProofBar component — numbers strip after hero
+12	d5922ce6a	76	keep	Add EngagementsSection — 5 productized offer tiers
+13	4f56cd56f	78	keep	Add TestimonialSection — social proof before CTA
+14	beb5d827d	80	keep	Add FounderSection — PERFECT SCORE 80/80

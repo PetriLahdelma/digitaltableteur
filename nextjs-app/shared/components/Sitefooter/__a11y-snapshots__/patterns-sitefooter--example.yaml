@@ -1,0 +1,44 @@
+- status: Work in progress (beta)
+- contentinfo:
+  - paragraph: Visit
+  - link "Digitaltableteur":
+    - /url: /
+  - text: Hämeentie 8 C 00530 Helsinki
+  - link "mail@digitaltableteur.com":
+    - /url: mailto:mail@digitaltableteur.com
+  - paragraph: Billing details
+  - text: Digitaltableteur Hämeentie 8 C 00530 Helsinki VAT FI22644552
+  - paragraph: Legal
+  - link "Privacy Policy":
+    - /url: /privacy-policy
+  - link "Imprint":
+    - /url: /imprint
+  - link "AI Usage":
+    - /url: /ai-use
+  - link "Accessibility Statement":
+    - /url: /accessibility
+  - link "Instagram":
+    - /url: https://www.instagram.com/digitaltableteur/
+    - img
+  - link "Facebook":
+    - /url: https://www.facebook.com/digitaltableteur
+    - img
+  - link "LinkedIn":
+    - /url: https://www.linkedin.com/company/digitaltableteur/
+    - img
+  - link "Medium":
+    - /url: https://medium.com/digitaltableteur
+    - img
+  - link "X":
+    - /url: https://x.com/dtdoesdesign
+    - img
+  - link "GitHub":
+    - /url: https://github.com/PetriLahdelma
+    - img
+  - link "Substack":
+    - /url: https://substack.com/@petrilahdelma
+    - img
+  - link "Dribbble":
+    - /url: https://dribbble.com/digitaltableteur
+    - img
+  - paragraph: © 2026 Digitaltableteur. All rights reserved.

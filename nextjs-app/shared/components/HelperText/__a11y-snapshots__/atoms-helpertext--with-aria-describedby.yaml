@@ -1,0 +1,6 @@
+- status: Work in progress (beta)
+- text: Username
+- textbox "Username"
+- paragraph:
+  - img
+  - text: Username must be 3-20 characters and contain only letters and numbers.

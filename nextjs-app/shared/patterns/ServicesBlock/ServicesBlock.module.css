@@ -6,7 +6,7 @@
   gap: var(--space-layout-m, 2rem);
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .grid {
     grid-template-columns: 1fr 2fr;
     gap: var(--space-layout-l, 3rem);
@@ -32,28 +32,27 @@
 }
 
 .sectionTitle {
-  font-weight: 600;
   margin-block-end: 0;
+  font-weight: 600;
 }
 
 .toolsIcons {
   display: flex;
-  flex-direction: row;
-  gap: var(--space-component-m, 1rem);
+  flex-flow: row wrap;
   align-items: center;
-  flex-wrap: wrap;
+  gap: var(--space-component-m, 1rem);
 }
 
 .toolsIcons > div {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   color: var(--color-text, #333);
   transition: color 0.2s ease;
 }
 
 .toolsIcons > div:hover {
-  color: var(--color-primary, #0066cc);
+  color: var(--color-primary, #06c);
 }
 
 .overviewContent {
@@ -67,7 +66,7 @@
     margin-block-start: var(--space-layout-m, 2rem);
   }
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     .grid > * + * {
       margin-block-start: 0;
       margin-inline-start: var(--space-layout-l, 3rem);
@@ -99,13 +98,13 @@
 }
 
 /* High contrast mode support */
-@media (prefers-contrast: high) {
+@media (prefers-contrast: more) {
   .sectionTitle {
     font-weight: 700;
   }
 
   .toolsIcons > div:hover {
-    outline: 2px solid currentColor;
+    outline: 2px solid currentcolor;
     outline-offset: 2px;
   }
 }

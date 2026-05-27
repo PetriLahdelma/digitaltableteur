@@ -1,6 +1,7 @@
+import contract from "./Skeleton.contract.json";
 import React from "react";
 import Skeleton from "@dt/Skeleton";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
@@ -66,28 +67,22 @@ const skeletonComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 const meta: Meta<typeof Skeleton> = {
-  title: "Feedback/Skeleton",
+  argTypes: {},
+  title: "Atoms/Skeleton",
   component: Skeleton,
-  tags: ["autodocs"],
-  parameters: {},
+  tags: ["!autodocs"],
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
 };
 export default meta;
 
 type Story = StoryObj<typeof Skeleton>;
 
 export const Z_SkeletonCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="Compliance: 11/11"
@@ -125,3 +120,8 @@ export const DebugAnimation: Story = {
     },
   },
 };
+
+export const Default = {};
+export const Playground = {};
+export const Example = { parameters: { controls: { disable: true } } };
+export const ForcedColors = { globals: { forcedColors: "active" } };

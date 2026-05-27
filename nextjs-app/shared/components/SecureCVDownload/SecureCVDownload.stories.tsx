@@ -1,11 +1,11 @@
+import contract from "./SecureCVDownload.contract.json";
 import React from "react";
 import type { Meta, StoryFn } from "@storybook/react-vite";
 import SecureCVDownload, { SecureCVDownloadProps } from "@dt/SecureCVDownload";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
-
+import { userEvent, waitFor, within } from "storybook/test";
 const secureCVDownloadComplianceRules: ComplianceRule[] = [
   {
     id: "file-structure",
@@ -67,20 +67,17 @@ const secureCVDownloadComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 const meta: Meta<typeof SecureCVDownload> = {
-  title: "Components/SecureCVDownload",
+  title: "Molecules/SecureCVDownload",
   component: SecureCVDownload,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   argTypes: {
     buttonText: { control: "text" },
+
     buttonVariant: {
       control: {
         type: "select",
@@ -95,6 +92,7 @@ const meta: Meta<typeof SecureCVDownload> = {
         ],
       },
     },
+
     inverse: { control: "boolean" },
   },
 };
@@ -133,9 +131,7 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 };
 
 export const CustomText = Template.bind({});
-CustomText.args = {
-  buttonText: "Download My CV",
-};
+CustomText.args = { buttonText: "Download My CV" };
 CustomText.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
 
@@ -151,9 +147,7 @@ CustomText.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 };
 
 export const Secondary = Template.bind({});
-Secondary.args = {
-  buttonVariant: "secondary",
-};
+Secondary.args = { buttonVariant: "secondary" };
 Secondary.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
@@ -163,12 +157,8 @@ Secondary.play = async ({ canvasElement }) => {
 };
 
 export const Inverse = Template.bind({});
-Inverse.args = {
-  inverse: true,
-};
-Inverse.parameters = {
-  backgrounds: { default: "dark" },
-};
+Inverse.args = { inverse: true };
+Inverse.parameters = { backgrounds: { default: "dark" } };
 Inverse.decorators = [
   (Story) => (
     <div
@@ -189,3 +179,10 @@ Inverse.play = async ({ canvasElement }) => {
   const downloadButton = canvas.getByRole("button", { name: /download/i });
   await userEvent.click(downloadButton);
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

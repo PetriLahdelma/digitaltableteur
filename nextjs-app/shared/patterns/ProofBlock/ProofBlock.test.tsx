@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import ProofBlock from "./ProofBlock";
+import styles from "./ProofBlock.module.css";
 
 describe("ProofBlock", () => {
   const metrics = [
@@ -62,14 +63,14 @@ describe("ProofBlock", () => {
     const { container } = render(
       <ProofBlock title="Metrics" metrics={metrics} tight />,
     );
-    expect(container.querySelector(`.metricsGridTight`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.metricsGridTight}`)).toBeInTheDocument();
   });
 
   it("applies dark class to metric cards when dark is true", () => {
     const { container } = render(
       <ProofBlock title="Metrics" metrics={metrics} dark />,
     );
-    expect(container.querySelector(`.metricCardDark`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.metricCardDark}`)).toBeInTheDocument();
   });
 
   it("applies custom className", () => {

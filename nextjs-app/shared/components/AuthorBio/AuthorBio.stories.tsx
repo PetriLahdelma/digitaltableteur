@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./AuthorBio.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import AuthorBio from "@dt/AuthorBio";
 import { getAuthors } from "../../data/authors";
@@ -7,10 +8,13 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
 
 const meta: Meta<typeof AuthorBio> = {
-  title: "Components/AuthorBio",
+  argTypes: {},
+  title: "Molecules/AuthorBio",
   component: AuthorBio,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "centered",
   },
 };
@@ -22,9 +26,7 @@ type Story = StoryObj<typeof AuthorBio>;
 const [defaultAuthor] = getAuthors();
 
 export const Default: Story = {
-  args: {
-    slug: defaultAuthor?.slug ?? "petri-lahdelma",
-  },
+  args: { slug: defaultAuthor?.slug ?? "petri-lahdelma" },
 };
 
 export const CustomHeading: Story = {
@@ -112,9 +114,7 @@ const authorBioComplianceRules: ComplianceRule[] = [
 ];
 
 export const Z_AuthorBioCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="AuthorBio Compliance: 12/12"
@@ -126,3 +126,10 @@ export const Z_AuthorBioCompliance: Story = {
     />
   ),
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

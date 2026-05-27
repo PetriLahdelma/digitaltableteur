@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Hero",
+  "tier": "pattern",
+  "group": "marketing",
+  "status": "alpha",
+  "description": "Hero — production @dt component (Storybook beta).",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-hero",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "ariaRequirements": []
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "actions",
+    "align",
+    "ariaLabel",
+    "as",
+    "asChild",
+    "background",
+    "children",
+    "className",
+    "description",
+    "id",
+    "imageAlt",
+    "imageHeight",
+    "imageSrc",
+    "imageWidth",
+    "maxWidth",
+    "ref",
+    "spacing",
+    "style",
+    "subtitle",
+    "title",
+    "titleLevel",
+    "variant"
+  ],
+  "consumers": []
+}

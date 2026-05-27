@@ -1,0 +1,127 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "primary": {
+    "body": {
+      "font": {
+        "$value": "var(--font-body), system-ui, sans-serif",
+        "$description": "Production token --primary-body-font"
+      }
+    },
+    "bold": {
+      "font": {
+        "$value": "var(--font-body), system-ui, sans-serif",
+        "$description": "Production token --primary-bold-font"
+      }
+    },
+    "heading": {
+      "font": {
+        "$value": "var(--font-heading), system-ui, sans-serif",
+        "$description": "Production token --primary-heading-font"
+      }
+    },
+    "text": {
+      "color": {
+        "$value": "#041b23",
+        "$description": "Production token --primary-text-color"
+      }
+    }
+  },
+  "secondary": {
+    "body": {
+      "font": {
+        "$value": "var(--font-heading), system-ui, sans-serif",
+        "$description": "Production token --secondary-body-font"
+      }
+    },
+    "bold": {
+      "font": {
+        "$value": "var(--font-heading), system-ui, sans-serif",
+        "$description": "Production token --secondary-bold-font"
+      }
+    },
+    "heading": {
+      "font": {
+        "$value": "var(--font-body), system-ui, sans-serif",
+        "$description": "Production token --secondary-heading-font"
+      }
+    },
+    "text": {
+      "color": {
+        "$value": "#041b23",
+        "$description": "Production token --secondary-text-color"
+      }
+    }
+  },
+  "inverted": {
+    "text": {
+      "color": {
+        "$value": "#fff",
+        "$description": "Production token --inverted-text-color"
+      }
+    }
+  },
+  "wavy": {
+    "underline": {
+      "mask": {
+        "$value": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E\")",
+        "$description": "Production token --wavy-underline-mask"
+      }
+    }
+  },
+  "storybook": {
+    "blue": {
+      "$value": "#041b23",
+      "$description": "Production token --storybook-blue"
+    },
+    "cyan": {
+      "$value": "#71efff",
+      "$description": "Production token --storybook-cyan"
+    },
+    "pink": {
+      "$value": "#f0f",
+      "$description": "Production token --storybook-pink"
+    },
+    "purple": {
+      "$value": "#812eff",
+      "$description": "Production token --storybook-purple"
+    },
+    "violet": {
+      "$value": "#bc6dff",
+      "$description": "Production token --storybook-violet"
+    },
+    "bg": {
+      "$value": "#f9f9f9",
+      "$description": "Production token --storybook-bg"
+    },
+    "dark": {
+      "$value": "#222",
+      "$description": "Production token --storybook-dark"
+    },
+    "yellow": {
+      "$value": "#ff0",
+      "$description": "Production token --storybook-yellow"
+    },
+    "white": {
+      "$value": "#fff",
+      "$description": "Production token --storybook-white"
+    },
+    "gray": {
+      "$value": "#707070",
+      "$description": "Production token --storybook-gray"
+    }
+  },
+  "checkbox": {
+    "checkmark": {
+      "color": {
+        "$value": "#fff",
+        "$description": "Production token --checkbox-checkmark-color"
+      }
+    },
+    "background": {
+      "color": {
+        "$value": "#fff",
+        "$description": "Production token --checkbox-background-color"
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import AIProcessingState from "./AIProcessingState";
 
@@ -36,7 +36,7 @@ import AIProcessingState from "./AIProcessingState";
  * - Works with Server Actions and Route Handlers
  */
 const meta = {
-  title: "Components/AI/Chat/AIProcessingState",
+  title: "Molecules/Chat/AIProcessingState",
   component: AIProcessingState,
   tags: ["autodocs"],
   parameters: {
@@ -53,22 +53,21 @@ const meta = {
       control: "select",
       options: ["thinking", "generating", "analyzing"],
       description: "The cognitive processing mode to display",
-      table: {
-        defaultValue: { summary: "thinking" },
-      },
+      table: { defaultValue: { summary: "thinking" } },
     },
+
     intensity: {
       control: "select",
       options: ["subtle", "moderate", "prominent"],
       description: "Visual intensity of the animation",
-      table: {
-        defaultValue: { summary: "subtle" },
-      },
+      table: { defaultValue: { summary: "subtle" } },
     },
+
     customMessage: {
       control: "text",
       description: "Custom message override (bypasses i18n)",
     },
+
     className: {
       control: "text",
       description: "Additional CSS class for styling extension",
@@ -83,39 +82,27 @@ type Story = StoryObj<typeof meta>;
  * Default thinking state with subtle intensity.
  * Most common usage in chat interfaces.
  */
-export const Default: Story = {
-  args: {},
-  parameters: {},
-};
+export const Default: Story = { args: {}, parameters: {} };
 
 /**
  * Thinking mode - AI is processing the user's query
  */
 export const Thinking: Story = {
-  args: {
-    mode: "thinking",
-    intensity: "subtle",
-  },
+  args: { mode: "thinking", intensity: "subtle" },
 };
 
 /**
  * Generating mode - AI is creating content
  */
 export const Generating: Story = {
-  args: {
-    mode: "generating",
-    intensity: "moderate",
-  },
+  args: { mode: "generating", intensity: "moderate" },
 };
 
 /**
  * Analyzing mode - AI is examining data
  */
 export const Analyzing: Story = {
-  args: {
-    mode: "analyzing",
-    intensity: "moderate",
-  },
+  args: { mode: "analyzing", intensity: "moderate" },
 };
 
 /**
@@ -123,10 +110,7 @@ export const Analyzing: Story = {
  * Good for background processing or when user is reading previous content
  */
 export const SubtleIntensity: Story = {
-  args: {
-    mode: "thinking",
-    intensity: "subtle",
-  },
+  args: { mode: "thinking", intensity: "subtle" },
 };
 
 /**
@@ -134,10 +118,7 @@ export const SubtleIntensity: Story = {
  * Good for typical AI response generation
  */
 export const ModerateIntensity: Story = {
-  args: {
-    mode: "generating",
-    intensity: "moderate",
-  },
+  args: { mode: "generating", intensity: "moderate" },
 };
 
 /**
@@ -145,10 +126,7 @@ export const ModerateIntensity: Story = {
  * Good for important or lengthy operations where user is waiting
  */
 export const ProminentIntensity: Story = {
-  args: {
-    mode: "analyzing",
-    intensity: "prominent",
-  },
+  args: { mode: "analyzing", intensity: "prominent" },
 };
 
 /**
@@ -156,10 +134,7 @@ export const ProminentIntensity: Story = {
  * Useful for specific contexts or non-standard processing states
  */
 export const CustomMessage: Story = {
-  args: {
-    customMessage: "Processing your request...",
-    intensity: "moderate",
-  },
+  args: { customMessage: "Processing your request...", intensity: "moderate" },
 };
 
 /**
@@ -167,10 +142,7 @@ export const CustomMessage: Story = {
  * Shows how it looks within a typical chat message container
  */
 export const InChatContext: Story = {
-  args: {
-    mode: "thinking",
-    intensity: "moderate",
-  },
+  args: { mode: "thinking", intensity: "moderate" },
   decorators: [
     (Story) => (
       <div

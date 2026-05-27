@@ -34,6 +34,9 @@ const MAX_SCALE = 1.03;
 /** Distance (px) at which magnetic effect reaches full strength */
 const EFFECT_RADIUS = 400;
 
+/**
+ * WorkMagneticField component.
+ */
 export function WorkMagneticField({
   title,
   projects,

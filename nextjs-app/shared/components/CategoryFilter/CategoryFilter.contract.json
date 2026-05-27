@@ -1,0 +1,66 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "CategoryFilter",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Filter pill row for list pages (blog archive, work index). Multiple visual treatments (pills, underline, minimal) for different surface densities.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "nav",
+    "variants": {
+        "variant": {
+            "values": [
+                "pills",
+                "underline",
+                "minimal"
+            ],
+            "default": "pills"
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab — moves between filter buttons.",
+            "Enter / Space — activates the focused filter."
+        ],
+        "ariaRequirements": [
+            "Renders a `<nav>` landmark with an accessible name describing the filter dimension ('Filter by category').",
+            "The active filter sets `aria-pressed='true'` on a toggle button (not `aria-current`) because the filter is a UI control, not a navigation target."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-accent",
+            "--color-border-default"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8"
+        ],
+        "typography": [
+            "--font-size-sm",
+            "--font-size-md"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

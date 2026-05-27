@@ -1,0 +1,71 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Tag",
+    "tier": "atom",
+    "group": "display",
+    "status": "alpha",
+    "description": "Small static or removable label for metadata (categories, statuses, filters). Distinct from `Badge` (which is the design-system semantic chip with stable contracts) — `Tag` is the lightweight catalog primitive used by editorial surfaces.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "span",
+    "variants": {
+        "variant": {
+            "values": [
+                "default",
+                "secondary",
+                "outline",
+                "success",
+                "warning",
+                "error",
+                "info"
+            ],
+            "default": "default"
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Backspace / Delete on a removable tag triggers the dismiss action when the close affordance is focused."
+        ],
+        "ariaRequirements": [
+            "Static tags need no own ARIA; the visible text is the announcement.",
+            "Removable tags expose the dismiss control as a button with an accessible name like 'Remove {label}'."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated",
+            "--color-border-light"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8"
+        ],
+        "radii": [
+            "--radius-sm"
+        ],
+        "typography": [
+            "--font-size-sm"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

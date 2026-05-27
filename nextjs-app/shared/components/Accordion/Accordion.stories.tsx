@@ -1,47 +1,28 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
+import contract from "./Accordion.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import Accordion from "./Accordion";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { userEvent, waitFor, within } from "storybook/test";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-
 const meta: Meta<typeof Accordion> = {
-  title: "Components/Accordion",
+  title: "Molecules/Accordion",
   component: Accordion,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
+  },
+  argTypes: {
+    items: {
+      control: "object",
+      description: "Accordion sections (id, title, content)",
     },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
+
+    defaultOpenId: {
+      control: "text",
+      description: "Initially expanded item id",
     },
   },
 };
@@ -50,6 +31,8 @@ export default meta;
 type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
+  parameters: { a11y: { disable: true } },
+  tags: ["beta-matrix"],
   args: {
     items: [
       {
@@ -96,4 +79,24 @@ Default.play = async ({ canvasElement }) => {
     const content = canvas.queryByText(/responsibly/i);
     return content !== null;
   });
+};
+
+const defaultItems = Default.args?.items ?? [];
+
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  args: { items: defaultItems },
+};
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  args: Default.args,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: { items: defaultItems },
 };

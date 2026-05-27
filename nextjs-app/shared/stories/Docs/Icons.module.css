@@ -304,7 +304,7 @@
   font-family: Monaco, Menlo, monospace;
   font-size: var(--font-size-text-xs);
   text-align: center;
-  word-break: break-word;
+  overflow-wrap: anywhere;
   color: var(--color-text-primary);
 }
 

@@ -1,0 +1,15 @@
+{
+  "semantic": {
+    "$description": "Dark theme semantic aliases",
+    "bg": {
+      "$value": "#23272a",
+      "$type": "color",
+      "$description": "Dark page background"
+    },
+    "fg": {
+      "$value": "#f5f5f5",
+      "$type": "color",
+      "$description": "Dark page foreground"
+    }
+  }
+}

@@ -1,0 +1,1722 @@
+{
+  "source": "nextjs-app/shared/styles/variables.css",
+  "generatedAt": "2026-05-27T21:17:38.057Z",
+  "tokenCount": 163,
+  "usageCoverage": 131,
+  "themes": [
+    {
+      "id": "light",
+      "className": "",
+      "label": "Light"
+    },
+    {
+      "id": "dark",
+      "className": "themeDark",
+      "label": "Dark"
+    },
+    {
+      "id": "hcb",
+      "className": "themeHCB",
+      "label": "High contrast (black)"
+    },
+    {
+      "id": "hcw",
+      "className": "themeHCW",
+      "label": "High contrast (white)"
+    }
+  ],
+  "contrastPairs": [
+    {
+      "id": "text-on-canvas",
+      "fg": "--color-text",
+      "bg": "--main-body-background-color",
+      "label": "Body text on canvas",
+      "largeText": false
+    },
+    {
+      "id": "title-on-canvas",
+      "fg": "--color-title",
+      "bg": "--main-body-background-color",
+      "label": "Title on canvas",
+      "largeText": true
+    },
+    {
+      "id": "primary-on-canvas",
+      "fg": "--color-primary",
+      "bg": "--main-body-background-color",
+      "label": "Primary on canvas",
+      "largeText": false
+    },
+    {
+      "id": "link-on-canvas",
+      "fg": "--link-color",
+      "bg": "--main-body-background-color",
+      "label": "Link on canvas",
+      "largeText": false
+    },
+    {
+      "id": "error-on-canvas",
+      "fg": "--color-error",
+      "bg": "--main-body-background-color",
+      "label": "Error on canvas",
+      "largeText": false
+    },
+    {
+      "id": "error-text-on-error-bg",
+      "fg": "--color-error-text",
+      "bg": "--color-error-bg",
+      "label": "Error text on error surface",
+      "largeText": false
+    },
+    {
+      "id": "warning-text-on-warning",
+      "fg": "--color-warning-text",
+      "bg": "--color-warning",
+      "label": "Warning text on warning",
+      "largeText": false
+    }
+  ],
+  "contrastByTheme": {
+    "light": [
+      {
+        "id": "text-on-canvas",
+        "fg": "--color-text",
+        "bg": "--main-body-background-color",
+        "label": "Body text on canvas",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#041b23",
+        "bgRaw": "#fff",
+        "ratio": 17.7,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "title-on-canvas",
+        "fg": "--color-title",
+        "bg": "--main-body-background-color",
+        "label": "Title on canvas",
+        "largeText": true,
+        "themeId": "light",
+        "fgRaw": "#041b23",
+        "bgRaw": "#fff",
+        "ratio": 17.7,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "primary-on-canvas",
+        "fg": "--color-primary",
+        "bg": "--main-body-background-color",
+        "label": "Primary on canvas",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#041b23",
+        "bgRaw": "#fff",
+        "ratio": 17.7,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "link-on-canvas",
+        "fg": "--link-color",
+        "bg": "--main-body-background-color",
+        "label": "Link on canvas",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#041b23",
+        "bgRaw": "#fff",
+        "ratio": 17.7,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "error-on-canvas",
+        "fg": "--color-error",
+        "bg": "--main-body-background-color",
+        "label": "Error on canvas",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#dc3545",
+        "bgRaw": "#fff",
+        "ratio": 4.53,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "error-text-on-error-bg",
+        "fg": "--color-error-text",
+        "bg": "--color-error-bg",
+        "label": "Error text on error surface",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#7a1f1f",
+        "bgRaw": "#dfbdbc",
+        "ratio": 5.94,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "warning-text-on-warning",
+        "fg": "--color-warning-text",
+        "bg": "--color-warning",
+        "label": "Warning text on warning",
+        "largeText": false,
+        "themeId": "light",
+        "fgRaw": "#041b23",
+        "bgRaw": "#ffc107",
+        "ratio": 10.86,
+        "level": "AAA",
+        "pass": true
+      }
+    ],
+    "dark": [
+      {
+        "id": "text-on-canvas",
+        "fg": "--color-text",
+        "bg": "--main-body-background-color",
+        "label": "Body text on canvas",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#e0e0e0",
+        "bgRaw": "#181a1b",
+        "ratio": 13.23,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "title-on-canvas",
+        "fg": "--color-title",
+        "bg": "--main-body-background-color",
+        "label": "Title on canvas",
+        "largeText": true,
+        "themeId": "dark",
+        "fgRaw": "#6fa8ff",
+        "bgRaw": "#181a1b",
+        "ratio": 7.25,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "primary-on-canvas",
+        "fg": "--color-primary",
+        "bg": "--main-body-background-color",
+        "label": "Primary on canvas",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#6fa8ff",
+        "bgRaw": "#181a1b",
+        "ratio": 7.25,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "link-on-canvas",
+        "fg": "--link-color",
+        "bg": "--main-body-background-color",
+        "label": "Link on canvas",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#71efff",
+        "bgRaw": "#181a1b",
+        "ratio": 12.88,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "error-on-canvas",
+        "fg": "--color-error",
+        "bg": "--main-body-background-color",
+        "label": "Error on canvas",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#ff6b6b",
+        "bgRaw": "#181a1b",
+        "ratio": 6.29,
+        "level": "AA",
+        "pass": true
+      },
+      {
+        "id": "error-text-on-error-bg",
+        "fg": "--color-error-text",
+        "bg": "--color-error-bg",
+        "label": "Error text on error surface",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#ffb3b3",
+        "bgRaw": "#2d2323",
+        "ratio": 8.97,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "warning-text-on-warning",
+        "fg": "--color-warning-text",
+        "bg": "--color-warning",
+        "label": "Warning text on warning",
+        "largeText": false,
+        "themeId": "dark",
+        "fgRaw": "#181a1b",
+        "bgRaw": "#ffb366",
+        "ratio": 9.89,
+        "level": "AAA",
+        "pass": true
+      }
+    ],
+    "hcb": [
+      {
+        "id": "text-on-canvas",
+        "fg": "--color-text",
+        "bg": "--main-body-background-color",
+        "label": "Body text on canvas",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#fff",
+        "bgRaw": "#000",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "title-on-canvas",
+        "fg": "--color-title",
+        "bg": "--main-body-background-color",
+        "label": "Title on canvas",
+        "largeText": true,
+        "themeId": "hcb",
+        "fgRaw": "#fff",
+        "bgRaw": "#000",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "primary-on-canvas",
+        "fg": "--color-primary",
+        "bg": "--main-body-background-color",
+        "label": "Primary on canvas",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#fff",
+        "bgRaw": "#000",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "link-on-canvas",
+        "fg": "--link-color",
+        "bg": "--main-body-background-color",
+        "label": "Link on canvas",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#fff",
+        "bgRaw": "#000",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "error-on-canvas",
+        "fg": "--color-error",
+        "bg": "--main-body-background-color",
+        "label": "Error on canvas",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#fff",
+        "bgRaw": "#000",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "error-text-on-error-bg",
+        "fg": "--color-error-text",
+        "bg": "--color-error-bg",
+        "label": "Error text on error surface",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#fff",
+        "bgRaw": "#000",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "warning-text-on-warning",
+        "fg": "--color-warning-text",
+        "bg": "--color-warning",
+        "label": "Warning text on warning",
+        "largeText": false,
+        "themeId": "hcb",
+        "fgRaw": "#000",
+        "bgRaw": "#fff",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      }
+    ],
+    "hcw": [
+      {
+        "id": "text-on-canvas",
+        "fg": "--color-text",
+        "bg": "--main-body-background-color",
+        "label": "Body text on canvas",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#000",
+        "bgRaw": "#fff",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "title-on-canvas",
+        "fg": "--color-title",
+        "bg": "--main-body-background-color",
+        "label": "Title on canvas",
+        "largeText": true,
+        "themeId": "hcw",
+        "fgRaw": "#000",
+        "bgRaw": "#fff",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "primary-on-canvas",
+        "fg": "--color-primary",
+        "bg": "--main-body-background-color",
+        "label": "Primary on canvas",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#000",
+        "bgRaw": "#fff",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "link-on-canvas",
+        "fg": "--link-color",
+        "bg": "--main-body-background-color",
+        "label": "Link on canvas",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#000",
+        "bgRaw": "#fff",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "error-on-canvas",
+        "fg": "--color-error",
+        "bg": "--main-body-background-color",
+        "label": "Error on canvas",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#000",
+        "bgRaw": "#fff",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "error-text-on-error-bg",
+        "fg": "--color-error-text",
+        "bg": "--color-error-bg",
+        "label": "Error text on error surface",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#000",
+        "bgRaw": "#fff",
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
+      },
+      {
+        "id": "warning-text-on-warning",
+        "fg": "--color-warning-text",
+        "bg": "--color-warning",
+        "label": "Warning text on warning",
+        "largeText": false,
+        "themeId": "hcw",
+        "fgRaw": "#041b23",
+        "bgRaw": "#000",
+        "ratio": 1.19,
+        "level": "Fail",
+        "pass": false
+      }
+    ]
+  },
+  "groups": [
+    {
+      "category": "color",
+      "subgroup": "Brand accents",
+      "title": "Brand accents",
+      "tokens": [
+        {
+          "name": "--accent-pink",
+          "value": "#f205c5",
+          "usage": "Brand/marketing accent — not default UI chrome.",
+          "category": "color",
+          "subgroup": "Brand accents"
+        },
+        {
+          "name": "--accent-purple",
+          "value": "#812eff",
+          "usage": "Brand/marketing accent — not default UI chrome.",
+          "category": "color",
+          "subgroup": "Brand accents"
+        },
+        {
+          "name": "--accent-teal",
+          "value": "#85b5bd",
+          "usage": "Brand/marketing accent — not default UI chrome.",
+          "category": "color",
+          "subgroup": "Brand accents"
+        },
+        {
+          "name": "--accent-violet",
+          "value": "#bc6dff",
+          "usage": "Brand/marketing accent — not default UI chrome.",
+          "category": "color",
+          "subgroup": "Brand accents"
+        },
+        {
+          "name": "--accent-cyan",
+          "value": "#71efff",
+          "usage": "Brand/marketing accent — not default UI chrome.",
+          "category": "color",
+          "subgroup": "Brand accents"
+        },
+        {
+          "name": "--accent-yellow",
+          "value": "#f2e274",
+          "usage": "Brand/marketing accent — not default UI chrome.",
+          "category": "color",
+          "subgroup": "Brand accents"
+        }
+      ]
+    },
+    {
+      "category": "color",
+      "subgroup": "Greyscale & borders",
+      "title": "Greyscale & borders",
+      "tokens": [
+        {
+          "name": "--color-black",
+          "value": "#000",
+          "usage": "Color token (black).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-white",
+          "value": "#fff",
+          "usage": "Color token (white).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-gray-dark",
+          "value": "#333",
+          "usage": "Color token (gray-dark).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-gray",
+          "value": "#5e5e5e",
+          "usage": "Color token (gray).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-muted",
+          "value": "#6c757d",
+          "usage": "Color token (muted).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-muted-light",
+          "value": "#4949a7",
+          "usage": "Color token (muted-light).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-disabled-bg",
+          "value": "#e0e0e0",
+          "usage": "Color token (disabled-bg).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-disabled-bg-light",
+          "value": "#d8d8d8",
+          "usage": "Color token (disabled-bg-light).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-disabled-placeholder",
+          "value": "#858585",
+          "usage": "Color token (disabled-placeholder).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-gray-medium",
+          "value": "#666",
+          "usage": "Color token (gray-medium).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        },
+        {
+          "name": "--color-primary-disabled",
+          "value": "#0000ff50",
+          "usage": "Color token (primary-disabled).",
+          "category": "color",
+          "subgroup": "Greyscale & borders"
+        }
+      ]
+    },
+    {
+      "category": "color",
+      "subgroup": "Semantic",
+      "title": "Semantic",
+      "tokens": [
+        {
+          "name": "--selection-color",
+          "value": "var(--color-white)",
+          "usage": "Text selection foreground.",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-title",
+          "value": "var(--primary-text-color, #041b23)",
+          "usage": "Heading color; usually aligned with primary text.",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-text",
+          "value": "var(--primary-text-color, #041b23)",
+          "usage": "Default body copy color.",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--link-color",
+          "value": "#041b23",
+          "usage": "Hyperlink color in prose and inline links.",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--logo-text-color",
+          "value": "var(--color-text)",
+          "usage": "",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--logo-color",
+          "value": "#000",
+          "usage": "",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-dark",
+          "value": "#222",
+          "usage": "Color token (dark).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-border",
+          "value": "#c0c0c0",
+          "usage": "Default 1px borders on inputs, cards, and dividers.",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-border-light",
+          "value": "#ccc",
+          "usage": "Color token (border-light).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-light-bg",
+          "value": "#f9f9f9",
+          "usage": "Color token (light-bg).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-primary",
+          "value": "#041b23",
+          "usage": "Primary actions, links, focus rings, and key UI chrome.",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-react",
+          "value": "#61dafb",
+          "usage": "Color token (react).",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-header-bg",
+          "value": "#282c34",
+          "usage": "Color token (header-bg).",
+          "category": "color",
+          "subgroup": "Semantic"
+        }
+      ]
+    },
+    {
+      "category": "color",
+      "subgroup": "Status & feedback",
+      "title": "Status & feedback",
+      "tokens": [
+        {
+          "name": "--color-success",
+          "value": "#068338",
+          "usage": "Success feedback, positive badges, and confirmations.",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-info",
+          "value": "#0c7a8b",
+          "usage": "Informational alerts and neutral-positive emphasis.",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-error",
+          "value": "#dc3545",
+          "usage": "Errors, destructive actions, and critical alerts.",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-warning",
+          "value": "#ffc107",
+          "usage": "Warning surfaces; pair with --color-warning-text.",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-warning-contrast",
+          "value": "#8d5a00",
+          "usage": "Color token (warning-contrast).",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-warning-text",
+          "value": "#041b23",
+          "usage": "Color token (warning-text).",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-neutral-bg",
+          "value": "#e2e8f0",
+          "usage": "Color token (neutral-bg).",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-neutral-text",
+          "value": "#1a1d26",
+          "usage": "Color token (neutral-text).",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-error-bg",
+          "value": "#dfbdbc",
+          "usage": "Color token (error-bg).",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        },
+        {
+          "name": "--color-error-text",
+          "value": "#7a1f1f",
+          "usage": "Color token (error-text).",
+          "category": "color",
+          "subgroup": "Status & feedback"
+        }
+      ]
+    },
+    {
+      "category": "color",
+      "subgroup": "Surfaces",
+      "title": "Surfaces",
+      "tokens": [
+        {
+          "name": "--selection-background",
+          "value": "var(--color-primary)",
+          "usage": "Text selection highlight background.",
+          "category": "color",
+          "subgroup": "Surfaces"
+        },
+        {
+          "name": "--main-body-copy-color",
+          "value": "#041b23",
+          "usage": "",
+          "category": "color",
+          "subgroup": "Surfaces"
+        },
+        {
+          "name": "--logo-background",
+          "value": "#dfff00",
+          "usage": "",
+          "category": "color",
+          "subgroup": "Surfaces"
+        },
+        {
+          "name": "--color-surface",
+          "value": "var(--main-body-background-color)",
+          "usage": "Color token (surface).",
+          "category": "color",
+          "subgroup": "Surfaces"
+        },
+        {
+          "name": "--main-body-background-color",
+          "value": "#fff",
+          "usage": "Page canvas / body background.",
+          "category": "color",
+          "subgroup": "Surfaces"
+        }
+      ]
+    },
+    {
+      "category": "elevation",
+      "subgroup": "General",
+      "title": "General",
+      "tokens": [
+        {
+          "name": "--modal-overlay-bg",
+          "value": "rgb(0 0 0 / 50%)",
+          "usage": "Overlay or elevation token.",
+          "category": "elevation",
+          "subgroup": "General"
+        },
+        {
+          "name": "--modal-shadow",
+          "value": "0 4px 8px rgb(0 0 0 / 20%)",
+          "usage": "Overlay or elevation token.",
+          "category": "elevation",
+          "subgroup": "General"
+        },
+        {
+          "name": "--gallery-caption-bg",
+          "value": "rgb(0 0 0 / 55%)",
+          "usage": "Overlay or elevation token.",
+          "category": "elevation",
+          "subgroup": "General"
+        }
+      ]
+    },
+    {
+      "category": "focus",
+      "subgroup": "General",
+      "title": "General",
+      "tokens": [
+        {
+          "name": "--focus-ring-color",
+          "value": "var(--color-primary)",
+          "usage": "Keyboard focus outline color (WCAG focus appearance).",
+          "category": "focus",
+          "subgroup": "General"
+        },
+        {
+          "name": "--focus-ring-width",
+          "value": "2px",
+          "usage": "Focus ring token for keyboard accessibility.",
+          "category": "focus",
+          "subgroup": "General"
+        },
+        {
+          "name": "--focus-ring-offset",
+          "value": "2px",
+          "usage": "Focus ring token for keyboard accessibility.",
+          "category": "focus",
+          "subgroup": "General"
+        }
+      ]
+    },
+    {
+      "category": "layout",
+      "subgroup": "General",
+      "title": "General",
+      "tokens": [
+        {
+          "name": "--breakpoint-mobile",
+          "value": "480px",
+          "usage": "Responsive breakpoint reference for media queries.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--breakpoint-tablet",
+          "value": "768px",
+          "usage": "Responsive breakpoint reference for media queries.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--breakpoint-desktop",
+          "value": "1024px",
+          "usage": "Responsive breakpoint reference for media queries.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--breakpoint-wide",
+          "value": "1440px",
+          "usage": "Responsive breakpoint reference for media queries.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--breakpoint-ultra",
+          "value": "1920px",
+          "usage": "Responsive breakpoint reference for media queries.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--container-sm",
+          "value": "640px",
+          "usage": "Max inline size for content containers.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--container-md",
+          "value": "960px",
+          "usage": "Max inline size for content containers.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--container-lg",
+          "value": "1200px",
+          "usage": "Max inline size for content containers.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--container-xl",
+          "value": "1440px",
+          "usage": "Max inline size for content containers.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--container-full",
+          "value": "100%",
+          "usage": "Max inline size for content containers.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--grid-columns-mobile",
+          "value": "4",
+          "usage": "Grid system token (columns or gap).",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--grid-columns-tablet",
+          "value": "8",
+          "usage": "Grid system token (columns or gap).",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--grid-columns-desktop",
+          "value": "12",
+          "usage": "Grid system token (columns or gap).",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--grid-gap-mobile",
+          "value": "var(--space-layout-16)",
+          "usage": "Grid system token (columns or gap).",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--grid-gap-tablet",
+          "value": "var(--space-layout-24)",
+          "usage": "Grid system token (columns or gap).",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--grid-gap-desktop",
+          "value": "var(--space-layout-32)",
+          "usage": "Grid system token (columns or gap).",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--page-margin-mobile",
+          "value": "var(--space-layout-16)",
+          "usage": "Horizontal page margin at a viewport tier.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--page-margin-tablet",
+          "value": "var(--space-layout-32)",
+          "usage": "Horizontal page margin at a viewport tier.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--page-margin-desktop",
+          "value": "var(--space-layout-48)",
+          "usage": "Horizontal page margin at a viewport tier.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--page-margin-wide",
+          "value": "var(--space-layout-64)",
+          "usage": "Horizontal page margin at a viewport tier.",
+          "category": "layout",
+          "subgroup": "General"
+        },
+        {
+          "name": "--rhythm-base",
+          "value": "0.5rem",
+          "usage": "",
+          "category": "layout",
+          "subgroup": "General"
+        }
+      ]
+    },
+    {
+      "category": "motion",
+      "subgroup": "General",
+      "title": "General",
+      "tokens": [
+        {
+          "name": "--duration-instant",
+          "value": "100ms",
+          "usage": "Motion duration for instant transitions.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--duration-fast",
+          "value": "200ms",
+          "usage": "Motion duration for fast transitions.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--duration-normal",
+          "value": "350ms",
+          "usage": "Motion duration for normal transitions.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--duration-slow",
+          "value": "500ms",
+          "usage": "Motion duration for slow transitions.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--duration-slower",
+          "value": "800ms",
+          "usage": "Motion duration for slower transitions.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--duration-slowest",
+          "value": "1200ms",
+          "usage": "Motion duration for slowest transitions.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--stagger-fast",
+          "value": "0.03s",
+          "usage": "Animation stagger delay between siblings.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--stagger-normal",
+          "value": "0.08s",
+          "usage": "Animation stagger delay between siblings.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--stagger-slow",
+          "value": "0.15s",
+          "usage": "Animation stagger delay between siblings.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--motion-distance-sm",
+          "value": "12px",
+          "usage": "Translate distance for entrance animations.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--motion-distance-md",
+          "value": "24px",
+          "usage": "Translate distance for entrance animations.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--motion-distance-lg",
+          "value": "48px",
+          "usage": "Translate distance for entrance animations.",
+          "category": "motion",
+          "subgroup": "General"
+        },
+        {
+          "name": "--motion-distance-xl",
+          "value": "80px",
+          "usage": "Translate distance for entrance animations.",
+          "category": "motion",
+          "subgroup": "General"
+        }
+      ]
+    },
+    {
+      "category": "other",
+      "subgroup": "General",
+      "title": "General",
+      "tokens": [
+        {
+          "name": "--primary-body-font",
+          "value": "var(--font-body), system-ui, sans-serif",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--secondary-body-font",
+          "value": "var(--font-heading), system-ui, sans-serif",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--primary-bold-font",
+          "value": "var(--font-body), system-ui, sans-serif",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--secondary-bold-font",
+          "value": "var(--font-heading), system-ui, sans-serif",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--primary-heading-font",
+          "value": "var(--font-heading), system-ui, sans-serif",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--secondary-heading-font",
+          "value": "var(--font-body), system-ui, sans-serif",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--primary-text-color",
+          "value": "#041b23",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--secondary-text-color",
+          "value": "#041b23",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--inverted-text-color",
+          "value": "#fff",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--wavy-underline-mask",
+          "value": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='6' viewBox='0 0 16 6'%3E%3Cpath d='M0 3 Q4 0 8 3 T16 3' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E\")",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-blue",
+          "value": "#041b23",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-cyan",
+          "value": "#71efff",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-pink",
+          "value": "#f0f",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-purple",
+          "value": "#812eff",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-violet",
+          "value": "#bc6dff",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-bg",
+          "value": "#f9f9f9",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-dark",
+          "value": "#222",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-yellow",
+          "value": "#ff0",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-white",
+          "value": "#fff",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--storybook-gray",
+          "value": "#707070",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--checkbox-checkmark-color",
+          "value": "#fff",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        },
+        {
+          "name": "--checkbox-background-color",
+          "value": "#fff",
+          "usage": "",
+          "category": "other",
+          "subgroup": "General"
+        }
+      ]
+    },
+    {
+      "category": "radius",
+      "subgroup": "General",
+      "title": "General",
+      "tokens": [
+        {
+          "name": "--radius-sm",
+          "value": "2px",
+          "usage": "Border radius (sm).",
+          "category": "radius",
+          "subgroup": "General"
+        },
+        {
+          "name": "--radius-md",
+          "value": "0.25rem",
+          "usage": "Border radius (md).",
+          "category": "radius",
+          "subgroup": "General"
+        },
+        {
+          "name": "--radius-lg",
+          "value": "8px",
+          "usage": "Border radius (lg).",
+          "category": "radius",
+          "subgroup": "General"
+        }
+      ]
+    },
+    {
+      "category": "size",
+      "subgroup": "General",
+      "title": "General",
+      "tokens": [
+        {
+          "name": "--size-width-md",
+          "value": "320px",
+          "usage": "",
+          "category": "size",
+          "subgroup": "General"
+        },
+        {
+          "name": "--size-width-lg",
+          "value": "900px",
+          "usage": "",
+          "category": "size",
+          "subgroup": "General"
+        },
+        {
+          "name": "--size-width-form",
+          "value": "600px",
+          "usage": "",
+          "category": "size",
+          "subgroup": "General"
+        }
+      ]
+    },
+    {
+      "category": "space",
+      "subgroup": "Internal (padding)",
+      "title": "Internal (padding)",
+      "tokens": [
+        {
+          "name": "--space-internal-0",
+          "value": "0",
+          "usage": "Internal spacing step 0: padding inside components.",
+          "category": "space",
+          "subgroup": "Internal (padding)"
+        },
+        {
+          "name": "--space-internal-2",
+          "value": "0.125rem",
+          "usage": "Internal spacing step 2: padding inside components.",
+          "category": "space",
+          "subgroup": "Internal (padding)"
+        },
+        {
+          "name": "--space-internal-4",
+          "value": "0.25rem",
+          "usage": "Internal spacing step 4: padding inside components.",
+          "category": "space",
+          "subgroup": "Internal (padding)"
+        },
+        {
+          "name": "--space-internal-6",
+          "value": "0.375rem",
+          "usage": "Internal spacing step 6: padding inside components.",
+          "category": "space",
+          "subgroup": "Internal (padding)"
+        },
+        {
+          "name": "--space-internal-8",
+          "value": "0.5rem",
+          "usage": "Internal spacing step 8: padding inside components.",
+          "category": "space",
+          "subgroup": "Internal (padding)"
+        },
+        {
+          "name": "--space-internal-12",
+          "value": "0.75rem",
+          "usage": "Internal spacing step 12: padding inside components.",
+          "category": "space",
+          "subgroup": "Internal (padding)"
+        },
+        {
+          "name": "--space-internal-16",
+          "value": "1rem",
+          "usage": "Internal spacing step 16: padding inside components.",
+          "category": "space",
+          "subgroup": "Internal (padding)"
+        },
+        {
+          "name": "--space-internal-24",
+          "value": "1.5rem",
+          "usage": "Internal spacing step 24: padding inside components.",
+          "category": "space",
+          "subgroup": "Internal (padding)"
+        },
+        {
+          "name": "--space-internal-32",
+          "value": "2rem",
+          "usage": "Internal spacing step 32: padding inside components.",
+          "category": "space",
+          "subgroup": "Internal (padding)"
+        }
+      ]
+    },
+    {
+      "category": "space",
+      "subgroup": "Layout (margin & gap)",
+      "title": "Layout (margin & gap)",
+      "tokens": [
+        {
+          "name": "--space-layout-0",
+          "value": "0",
+          "usage": "Layout spacing step 0: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-4",
+          "value": "0.25rem",
+          "usage": "Layout spacing step 4: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-6",
+          "value": "0.375rem",
+          "usage": "Layout spacing step 6: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-8",
+          "value": "0.5rem",
+          "usage": "Layout spacing step 8: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-16",
+          "value": "1rem",
+          "usage": "Layout spacing step 16: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-24",
+          "value": "1.5rem",
+          "usage": "Layout spacing step 24: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-32",
+          "value": "2rem",
+          "usage": "Layout spacing step 32: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-40",
+          "value": "2.5rem",
+          "usage": "Layout spacing step 40: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-48",
+          "value": "3rem",
+          "usage": "Layout spacing step 48: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-64",
+          "value": "4rem",
+          "usage": "Layout spacing step 64: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-80",
+          "value": "5rem",
+          "usage": "Layout spacing step 80: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-96",
+          "value": "6rem",
+          "usage": "Layout spacing step 96: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-120",
+          "value": "7.5rem",
+          "usage": "Layout spacing step 120: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        },
+        {
+          "name": "--space-layout-160",
+          "value": "10rem",
+          "usage": "Layout spacing step 160: margins, section gaps, grid gutters.",
+          "category": "space",
+          "subgroup": "Layout (margin & gap)"
+        }
+      ]
+    },
+    {
+      "category": "typography",
+      "subgroup": "Families & aliases",
+      "title": "Families & aliases",
+      "tokens": [
+        {
+          "name": "--font-title",
+          "value": "var(--font-heading), system-ui, sans-serif",
+          "usage": "Heading font stack (Syne via next/font).",
+          "category": "typography",
+          "subgroup": "Families & aliases"
+        },
+        {
+          "name": "--font-text",
+          "value": "var(--font-body), system-ui, sans-serif",
+          "usage": "Body/UI font stack (Satoshi via next/font).",
+          "category": "typography",
+          "subgroup": "Families & aliases"
+        }
+      ]
+    },
+    {
+      "category": "typography",
+      "subgroup": "Rhythm",
+      "title": "Rhythm",
+      "tokens": [
+        {
+          "name": "--tracking-tighter",
+          "value": "-0.05em",
+          "usage": "Letter-spacing for tighter display/heading styles.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--tracking-tight",
+          "value": "-0.025em",
+          "usage": "Letter-spacing for tight display/heading styles.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--tracking-normal",
+          "value": "0",
+          "usage": "Letter-spacing for normal display/heading styles.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--tracking-wide",
+          "value": "0.025em",
+          "usage": "Letter-spacing for wide display/heading styles.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--tracking-wider",
+          "value": "0.05em",
+          "usage": "Letter-spacing for wider display/heading styles.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--tracking-widest",
+          "value": "0.1em",
+          "usage": "Letter-spacing for widest display/heading styles.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--line-height-tight",
+          "value": "1.2",
+          "usage": "Line-height for tight typography rhythm.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--line-height-snug",
+          "value": "1.375",
+          "usage": "Line-height for snug typography rhythm.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--line-height-normal",
+          "value": "1.5",
+          "usage": "Line-height for normal typography rhythm.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--line-height-relaxed",
+          "value": "1.625",
+          "usage": "Line-height for relaxed typography rhythm.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        },
+        {
+          "name": "--line-height-loose",
+          "value": "1.75",
+          "usage": "Line-height for loose typography rhythm.",
+          "category": "typography",
+          "subgroup": "Rhythm"
+        }
+      ]
+    },
+    {
+      "category": "typography",
+      "subgroup": "Type scale",
+      "title": "Type scale",
+      "tokens": [
+        {
+          "name": "--font-size-text",
+          "value": "clamp(1rem, 0.6vw + 0.9rem, 1.25rem)",
+          "usage": "Fluid type size token (text); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-text-s",
+          "value": "clamp(0.75rem, 0.4vw + 0.8rem, 1.05rem)",
+          "usage": "Fluid type size token (text-s); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-text-m",
+          "value": "clamp(1rem, 0.6vw + 0.9rem, 1.25rem)",
+          "usage": "Fluid type size token (text-m); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-text-l",
+          "value": "clamp(1.125rem, 0.8vw + 1rem, 1.5rem)",
+          "usage": "Fluid type size token (text-l); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-title",
+          "value": "clamp(2.25rem, 3.5vw + 1.5rem, 3.75rem)",
+          "usage": "Fluid type size token (title); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-title-s",
+          "value": "clamp(1.5rem, 2vw + 1.1rem, 2.25rem)",
+          "usage": "Fluid type size token (title-s); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-title-m",
+          "value": "clamp(2rem, 2.8vw + 1.3rem, 3rem)",
+          "usage": "Fluid type size token (title-m); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-title-l",
+          "value": "clamp(2.75rem, 4vw + 1.75rem, 4.25rem)",
+          "usage": "Fluid type size token (title-l); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-title-xl",
+          "value": "clamp(3.5rem, 6vw + 2.5rem, 5.5rem)",
+          "usage": "Fluid type size token (title-xl); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-button-s",
+          "value": "clamp(0.875rem, 0.3vw + 0.8rem, 1rem)",
+          "usage": "Fluid type size token (button-s); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-button-m",
+          "value": "clamp(1rem, 0.35vw + 0.9rem, 1.125rem)",
+          "usage": "Fluid type size token (button-m); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        },
+        {
+          "name": "--font-size-button-l",
+          "value": "clamp(1.125rem, 0.45vw + 1rem, 1.25rem)",
+          "usage": "Fluid type size token (button-l); uses clamp().",
+          "category": "typography",
+          "subgroup": "Type scale"
+        }
+      ]
+    },
+    {
+      "category": "typography",
+      "subgroup": "Weight",
+      "title": "Weight",
+      "tokens": [
+        {
+          "name": "--font-weight-title",
+          "value": "700",
+          "usage": "",
+          "category": "typography",
+          "subgroup": "Weight"
+        },
+        {
+          "name": "--font-weight-text",
+          "value": "400",
+          "usage": "",
+          "category": "typography",
+          "subgroup": "Weight"
+        }
+      ]
+    }
+  ]
+}

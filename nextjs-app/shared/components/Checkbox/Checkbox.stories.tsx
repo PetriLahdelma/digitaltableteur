@@ -1,15 +1,7 @@
+import contract from "./Checkbox.contract.json";
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
-import { within, userEvent } from "@storybook/testing-library";
+import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
@@ -17,7 +9,6 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import Checkbox, { CheckboxProps } from "@dt/Checkbox";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-
 const checkboxComplianceRules: ComplianceRule[] = [
   {
     id: "file-structure",
@@ -79,54 +70,27 @@ const checkboxComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export default {
-  title: "Components/Checkbox",
+  title: "Atoms/Checkbox",
   component: Checkbox,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     // Content
+
     label: {
       control: "text",
       description: "Label text displayed next to the checkbox",
-      table: {
-        category: "Content",
-        type: { summary: "string" },
-      },
+      table: { category: "Content", type: { summary: "string" } },
     },
+
     showLabel: {
       control: "boolean",
       description: "Whether to show the label text",
@@ -138,40 +102,33 @@ export default {
     },
 
     // State (v1.1.0)
+
     isChecked: {
       control: "boolean",
       description: "Checked state (controlled) (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     isIndeterminate: {
       control: "boolean",
       description: "Indeterminate state (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     isDisabled: {
       control: "boolean",
       description: "Disables the checkbox (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     defaultChecked: {
       control: "boolean",
       description: "Initial checked state for uncontrolled component (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
 
     // Appearance
+
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
@@ -194,15 +151,12 @@ export default {
     },
 
     // Accessibility
+
     id: {
       control: "text",
       description: "Custom ID for the checkbox element",
-      table: {
-        category: "Accessibility",
-        type: { summary: "string" },
-      },
+      table: { category: "Accessibility", type: { summary: "string" } },
     },
-
   },
 } as Meta<CheckboxProps>;
 
@@ -224,10 +178,7 @@ const Template: StoryFn<CheckboxProps> = (args: CheckboxProps) => {
 };
 
 export const Default = Template.bind({});
-Default.args = {
-  id: "newsletter",
-  label: "storyCheckboxLabel",
-};
+Default.args = { id: "newsletter", label: "storyCheckboxLabel" };
 Default.parameters = {};
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -236,10 +187,7 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 };
 
 export const Checked = Template.bind({});
-Checked.args = {
-  label: "Checked checkbox",
-  isChecked: true,
-};
+Checked.args = { label: "Checked checkbox", isChecked: true };
 Checked.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByLabelText(/checked checkbox/i);
@@ -304,11 +252,7 @@ export const AllStates: StoryFn = () => (
 
 // v1.1.0 Showcase Stories
 export const SizeSmall = Template.bind({});
-SizeSmall.args = {
-  label: "Small checkbox",
-  isChecked: true,
-  size: "sm",
-};
+SizeSmall.args = { label: "Small checkbox", isChecked: true, size: "sm" };
 
 export const SizeMedium = Template.bind({});
 SizeMedium.args = {
@@ -318,11 +262,7 @@ SizeMedium.args = {
 };
 
 export const SizeLarge = Template.bind({});
-SizeLarge.args = {
-  label: "Large checkbox",
-  isChecked: true,
-  size: "lg",
-};
+SizeLarge.args = { label: "Large checkbox", isChecked: true, size: "lg" };
 
 export const AllSizes: StoryFn = () => (
   <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -341,6 +281,19 @@ export const Z_CheckboxCompliance: StoryFn = () => (
     rules={checkboxComplianceRules}
   />
 );
-Z_CheckboxCompliance.parameters = {
-  docs: { disable: true },
+Z_CheckboxCompliance.parameters = { docs: { disable: true } };
+export const Playground = Default;
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => (
+    <Checkbox
+      label="Accept terms"
+      isChecked={false}
+      onCheckedChange={() => undefined}
+    />
+  ),
 };
+
+export const ForcedColors = { globals: { forcedColors: "active" } };

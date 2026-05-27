@@ -105,12 +105,79 @@
   --max-width-container-md: var(--container-md);
   --max-width-container-lg: var(--container-lg);
   --max-width-container-xl: var(--container-xl);
+
+  /* DT-THEME:START — auto-generated, npm run build:tokens */
+  --color-dt-accent-cyan: var(--accent-cyan);
+  --color-dt-accent-pink: var(--accent-pink);
+  --color-dt-accent-purple: var(--accent-purple);
+  --color-dt-accent-teal: var(--accent-teal);
+  --color-dt-accent-violet: var(--accent-violet);
+  --color-dt-accent-yellow: var(--accent-yellow);
+  --color-dt-black: var(--color-black);
+  --color-dt-border: var(--color-border);
+  --color-dt-border-light: var(--color-border-light);
+  --color-dt-dark: var(--color-dark);
+  --color-dt-disabled-bg: var(--color-disabled-bg);
+  --color-dt-disabled-bg-light: var(--color-disabled-bg-light);
+  --color-dt-disabled-placeholder: var(--color-disabled-placeholder);
+  --color-dt-error: var(--color-error);
+  --color-dt-error-bg: var(--color-error-bg);
+  --color-dt-error-text: var(--color-error-text);
+  --color-dt-gray: var(--color-gray);
+  --color-dt-gray-dark: var(--color-gray-dark);
+  --color-dt-gray-medium: var(--color-gray-medium);
+  --color-dt-header-bg: var(--color-header-bg);
+  --color-dt-info: var(--color-info);
+  --color-dt-light-bg: var(--color-light-bg);
+  --color-dt-muted: var(--color-muted);
+  --color-dt-muted-light: var(--color-muted-light);
+  --color-dt-neutral-bg: var(--color-neutral-bg);
+  --color-dt-neutral-text: var(--color-neutral-text);
+  --color-dt-primary: var(--color-primary);
+  --color-dt-primary-disabled: var(--color-primary-disabled);
+  --color-dt-react: var(--color-react);
+  --color-dt-success: var(--color-success);
+  --color-dt-surface: var(--color-surface);
+  --color-dt-text: var(--color-text);
+  --color-dt-title: var(--color-title);
+  --color-dt-warning: var(--color-warning);
+  --color-dt-warning-contrast: var(--color-warning-contrast);
+  --color-dt-warning-text: var(--color-warning-text);
+  --color-dt-white: var(--color-white);
+  --duration-dt-fast: var(--duration-fast);
+  --duration-dt-instant: var(--duration-instant);
+  --duration-dt-normal: var(--duration-normal);
+  --duration-dt-slow: var(--duration-slow);
+  --duration-dt-slower: var(--duration-slower);
+  --duration-dt-slowest: var(--duration-slowest);
+  --focus-dt-color: var(--focus-ring-color);
+  --focus-dt-offset: var(--focus-ring-offset);
+  --focus-dt-width: var(--focus-ring-width);
+  --text-dt-button-l: var(--font-size-button-l);
+  --text-dt-button-m: var(--font-size-button-m);
+  --text-dt-button-s: var(--font-size-button-s);
+  --text-dt-text: var(--font-size-text);
+  --text-dt-text-l: var(--font-size-text-l);
+  --text-dt-text-m: var(--font-size-text-m);
+  --text-dt-text-s: var(--font-size-text-s);
+  --text-dt-title: var(--font-size-title);
+  --text-dt-title-l: var(--font-size-title-l);
+  --text-dt-title-m: var(--font-size-title-m);
+  --text-dt-title-s: var(--font-size-title-s);
+  --text-dt-title-xl: var(--font-size-title-xl);
+  --color-dt-link: var(--link-color);
+  --radius-dt-lg: var(--radius-lg);
+  --radius-dt-md: var(--radius-md);
+  --radius-dt-sm: var(--radius-sm);
+  /* DT-THEME:END */
+
 }
 
 /*
  * shadcn/ui CSS variables mapped to Digitaltableteur design tokens
  * These bridge shadcn component styling to our existing theme system
  */
+
 :root {
   --radius: 0.625rem;
 
@@ -156,6 +223,7 @@
  * Dark theme (.themeDark or .dark)
  * Maps shadcn/ui variables to our dark theme design tokens
  */
+
 .dark,
 .themeDark {
   --background: var(--main-body-background-color, #181a1b);
@@ -195,6 +263,7 @@
  * High Contrast Black theme (.themeHCB)
  * Maximum contrast with black background
  */
+
 .themeHCB {
   --background: #000;
   --foreground: #fff;
@@ -233,6 +302,7 @@
  * High Contrast White theme (.themeHCW)
  * Maximum contrast with white background
  */
+
 .themeHCW {
   --background: #fff;
   --foreground: #000;
@@ -274,6 +344,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

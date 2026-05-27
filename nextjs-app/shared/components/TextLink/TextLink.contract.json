@@ -1,0 +1,54 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "TextLink",
+    "tier": "atom",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Inline text link primitive with a stable focus ring + underline contract. Distinct from `Link` (the design-system Link wrapping `next/link`) — `TextLink` is the unwrapped underline-on-hover token used inside prose.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "a",
+    "variants": {
+        "variant": {
+            "values": [
+                "default",
+                "muted",
+                "accent"
+            ],
+            "default": "default"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab — focusable in document order.",
+            "Enter — activates the link."
+        ],
+        "ariaRequirements": [
+            "Renders a real `<a>` element with a real `href`; never put `role='link'` on a non-anchor.",
+            "Accessible name comes from the visible link text; do not add `aria-label` unless the text is purely visual (an icon-only link)."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-link",
+            "--color-link-hover"
+        ],
+        "spacing": [],
+        "typography": [
+            "--font-size-md"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

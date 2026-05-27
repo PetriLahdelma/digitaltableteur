@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,19 +19,33 @@
     "incremental": true,
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
-    "typeRoots": ["./node_modules/@types"],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@/components/*": ["./components/*"],
-      "@/lib/*": ["./lib/*"],
-      "@/hooks/*": ["./hooks/*"],
-      "@dt/*": ["./nextjs-app/shared/components/*"],
-      "@dt-pages/*": ["./nextjs-app/shared/components/pages/*"]
+      "@/*": [
+        "./*"
+      ],
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/lib/*": [
+        "./lib/*"
+      ],
+      "@/hooks/*": [
+        "./hooks/*"
+      ],
+      "@dt/*": [
+        "./nextjs-app/shared/components/*"
+      ],
+      "@dt-pages/*": [
+        "./nextjs-app/shared/components/pages/*"
+      ]
     }
   },
   "include": [
@@ -60,6 +78,7 @@
     "coverage",
     "dist",
     "__visual__",
-    "e2e"
+    "e2e",
+    "scripts/design-system/**/*.ts"
   ]
 }

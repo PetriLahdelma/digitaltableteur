@@ -36,6 +36,9 @@ const justifyClasses = {
   around: "justify-around",
 } as const;
 
+/**
+ * Stack component.
+ */
 export function Stack({
   children,
   direction = "vertical",

@@ -629,7 +629,7 @@ export function DonnyAvatar({
           width="36"
           height="28"
           rx="8"
-          fill="var(--donny-primary, #041B23)"
+          fill="var(--donny-primary, var(--color-text))"
           className={styles.body}
         />
 
@@ -673,9 +673,9 @@ export function DonnyAvatar({
         {/* Success sparkles */}
         {currentState === "celebrating" && (
           <g className={styles.sparkles}>
-            <circle cx="6" cy="6" r="1.5" fill="#FFD700" />
-            <circle cx="34" cy="6" r="1.5" fill="#FFD700" />
-            <circle cx="20" cy="2" r="1" fill="#FFD700" />
+            <circle cx="6" cy="6" r="1.5" fill="var(--color-text)" />
+            <circle cx="34" cy="6" r="1.5" fill="var(--color-text)" />
+            <circle cx="20" cy="2" r="1" fill="var(--color-text)" />
           </g>
         )}
 
@@ -684,7 +684,7 @@ export function DonnyAvatar({
           <text
             x="35"
             y="8"
-            fill="var(--donny-warning, #F59E0B)"
+            fill="var(--donny-warning, var(--color-text))"
             fontSize="8"
             fontWeight="bold"
             className={styles.questionMark}

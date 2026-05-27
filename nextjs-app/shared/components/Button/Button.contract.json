@@ -1,0 +1,86 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Button",
+  "tier": "molecule",
+  "group": "interaction",
+  "status": "beta",
+  "description": "Primary interaction control with variant, severity, loading, and link modes.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-button",
+  "radixPrimitive": null,
+  "element": "button",
+  "variants": {},
+  "slots": [
+    "icon",
+    "endIcon"
+  ],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Enter",
+      "Space"
+    ],
+    "ariaRequirements": [
+      "accessible name",
+      "aria-busy when loading",
+      "disabled state"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — keyboard, loading, forced-colors verified in Storybook.",
+    "forcedColorsVerified": true,
+    "axeTestExempt": "Interaction atom; axe on Default/Primary and compliance stories."
+  },
+  "tokens": {
+    "colors": [
+      "--color-warning-text",
+      "--color-white"
+    ],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "ariaDescribedBy",
+    "ariaLabel",
+    "ariaLabelledBy",
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "disabled",
+    "download",
+    "form",
+    "href",
+    "icon",
+    "iconEnd",
+    "id",
+    "inverse",
+    "isDisabled",
+    "isInverse",
+    "isLoading",
+    "isRounded",
+    "loading",
+    "name",
+    "onClick",
+    "ref",
+    "rel",
+    "role",
+    "rounded",
+    "severity",
+    "size",
+    "style",
+    "submit",
+    "target",
+    "tooltip",
+    "type",
+    "value",
+    "variant"
+  ],
+  "consumers": []
+}

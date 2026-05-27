@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "NewsletterWaitlist",
+  "tier": "organism",
+  "group": "form",
+  "status": "beta",
+  "description": "Newsletter waitlist signup with inline email capture.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-newsletter-waitlist",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Tab",
+      "Enter"
+    ],
+    "ariaRequirements": [
+      "submit button labeled",
+      "validation errors announced"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+    "forcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "disabled",
+    "id",
+    "onError",
+    "onSuccess",
+    "ref",
+    "style"
+  ],
+  "consumers": []
+}

@@ -26,6 +26,9 @@ export interface AboutPageContentProps {
   className?: string;
 }
 
+/**
+ * AboutPageContent component.
+ */
 export function AboutPageContent({
   showCTA = true,
   className,

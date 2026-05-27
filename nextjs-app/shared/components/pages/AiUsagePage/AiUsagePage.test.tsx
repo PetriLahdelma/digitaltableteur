@@ -1,43 +1,47 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../test-utils/render";
 import { AiUsagePage } from "./AiUsagePage";
 
 describe("AiUsagePage", () => {
   it("renders page title", () => {
-    render(<AiUsagePage />);
-    expect(screen.getByText(/aiUseTitle/i)).toBeInTheDocument();
+    renderWithProviders(<AiUsagePage />);
+    expect(
+      screen.getByRole("heading", {
+        name: /AI use & transparency statement/i,
+        level: 1,
+      }),
+    ).toBeInTheDocument();
   });
 
   it("renders introduction section", () => {
-    render(<AiUsagePage />);
-    expect(screen.getByText(/aiUseIntro/i)).toBeInTheDocument();
+    renderWithProviders(<AiUsagePage />);
+    expect(
+      screen.getByText(/committed to transparency about AI usage/i),
+    ).toBeInTheDocument();
   });
 
   it("renders principles section", () => {
-    render(<AiUsagePage />);
-    expect(screen.getByText(/aiUsePrinciples/i)).toBeInTheDocument();
+    renderWithProviders(<AiUsagePage />);
+    expect(screen.getByText(/Our AI principles/i)).toBeInTheDocument();
   });
 
-  it("renders tools section", () => {
-    render(<AiUsagePage />);
-    expect(screen.getByText(/aiUseTools/i)).toBeInTheDocument();
+  it("renders use cases section", () => {
+    renderWithProviders(<AiUsagePage />);
+    expect(screen.getByText(/Where AI is used/i)).toBeInTheDocument();
   });
 
   it("renders email contact link", () => {
-    render(<AiUsagePage />);
+    renderWithProviders(<AiUsagePage />);
     const emailLinks = screen.getAllByRole("link", {
       name: /mail@digitaltableteur.com/i,
     });
     expect(emailLinks.length).toBeGreaterThan(0);
   });
 
-  it("renders back button", () => {
-    render(<AiUsagePage />);
-    expect(screen.getByRole("link", { name: /back/i })).toBeInTheDocument();
-  });
-
-  it("renders transparency statement", () => {
-    render(<AiUsagePage />);
-    expect(screen.getByText(/transparency/i)).toBeInTheDocument();
+  it("renders back button when onBack is provided", () => {
+    const onBack = vi.fn();
+    renderWithProviders(<AiUsagePage onBack={onBack} />);
+    expect(screen.getByRole("button", { name: /Back/i })).toBeInTheDocument();
   });
 });

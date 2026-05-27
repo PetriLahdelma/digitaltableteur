@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import TextArea from "./TextArea";
+import styles from "./Inputs.module.css";
 
 describe("TextArea", () => {
   it("renders with label", () => {
@@ -84,7 +85,7 @@ describe("TextArea", () => {
 
   it("applies error styling when error prop is provided", () => {
     render(<TextArea label="Description" error="Error" />);
-    const textarea = screen.getByLabelText("Description");
-    expect(textarea.className).toContain("error");
+    const textarea = screen.getByRole("textbox");
+    expect(textarea.className).toContain(styles.error);
   });
 });

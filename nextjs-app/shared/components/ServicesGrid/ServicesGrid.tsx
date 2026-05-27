@@ -10,7 +10,10 @@ export interface ServicesGridProps {
 // Icon order aligned with titles: Design, Development, Strategy, AI Innovation
 const ICONS = ["palette", "code", "strategy", "robot"] as const;
 
-const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
+/**
+ * ServicesGrid component.
+ */
+export const ServicesGrid: React.FC<ServicesGridProps> = ({ className }) => {
   const { t } = useTranslation();
   const ariaLabel = t("servicesGrid.ariaLabel");
   const titles = [

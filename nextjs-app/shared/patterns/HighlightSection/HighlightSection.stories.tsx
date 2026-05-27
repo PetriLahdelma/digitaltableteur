@@ -1,5 +1,6 @@
+import contract from "./HighlightSection.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import HighlightSection from "./HighlightSection";
 
 const meta: Meta<typeof HighlightSection> = {
@@ -7,6 +8,8 @@ const meta: Meta<typeof HighlightSection> = {
   component: HighlightSection,
   parameters: {
     layout: "fullscreen",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     docs: {
       description: {
         component:
@@ -14,39 +17,43 @@ const meta: Meta<typeof HighlightSection> = {
       },
     },
   },
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   argTypes: {
     title: {
       control: "text",
       description: "Main headline text for the section",
     },
+
     overline: {
       control: "text",
       description: "Optional small text above the title",
     },
+
     description: {
       control: "text",
       description: "Supporting description text",
     },
+
     variant: {
       control: "select",
       options: ["gradient", "pattern", "dots", "solid"],
       description: "Background style variant",
     },
+
     size: {
       control: "radio",
       options: ["compact", "comfortable", "spacious"],
       description: "Section spacing size",
     },
+
     cta: {
       control: "object",
       description:
         "Call-to-action configuration (single object or array up to 3; third aligns to the far edge)",
     },
-    className: {
-      control: "text",
-      description: "Additional CSS class names",
-    },
+
+    className: { control: "text", description: "Additional CSS class names" },
+
     ariaLabel: {
       control: "text",
       description: "ARIA label for screen readers",
@@ -252,4 +259,22 @@ export const KitchenSink: Story = {
       />
     </div>
   ),
+};
+
+export const Playground: Story = { ...Default };
+export const Example: Story = {
+  parameters: { controls: { disable: true } },
+  args: {
+    title:
+      "Download my component schema template for GenAI Design System creation",
+    description:
+      "Supercharge your AI driven design system and guide it to deliver everything up-to-spec.",
+    cta: { label: "Download Schema", onClick: () => {} },
+    variant: "dots",
+    size: "comfortable",
+  },
+};
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: Default.args,
 };

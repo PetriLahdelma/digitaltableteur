@@ -1,55 +1,60 @@
 .stage {
   display: grid;
-  place-items: center;
   width: 100%;
   min-height: 200px;
+  place-items: center;
 }
 
 /* Layout */
+
 .lockup {
   display: flex;
   align-items: center;
   gap: clamp(16px, 2vw, 28px);
-  user-select: none;
-  -webkit-font-smoothing: antialiased;
   transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
 }
 
 /* Icon container */
+
 .logoWrap {
-  width: clamp(88px, 10vw, 140px);
-  aspect-ratio: 1 / 1;
-  position: relative;
   display: grid;
+  position: relative;
+  width: clamp(88px, 10vw, 140px);
   place-items: center;
   cursor: default;
+  aspect-ratio: 1 / 1;
 }
 
 .logoImg {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
-  will-change: transform, opacity, filter;
+
   /* Premium shadow */
   filter: drop-shadow(0 16px 28px rgb(0 0 0 / 28%));
+  object-fit: contain;
   transform-origin: 50% 70%;
+  will-change: transform, opacity, filter;
 }
 
 /* Wordmark reveal via mask container */
+
 .wordmarkMask {
-  position: relative;
   display: inline-block;
+  position: relative;
+
   /* Initial clip - animated via GSAP */
   clip-path: inset(0 100% 0 0);
-  will-change: clip-path, transform, opacity;
   filter: drop-shadow(0 16px 28px rgb(0 0 0 / 22%));
+  will-change: clip-path, transform, opacity;
 }
 
 .wordmarkImg {
-  height: clamp(38px, 5vw, 84px);
-  width: auto;
   display: block;
+  width: auto;
+  height: clamp(38px, 5vw, 84px);
   will-change: transform, opacity, filter;
 }
 

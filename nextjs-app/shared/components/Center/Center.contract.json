@@ -1,0 +1,43 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Center",
+    "tier": "atom",
+    "group": "structure",
+    "status": "alpha",
+    "description": "Centers its children horizontally and vertically inside a relative container. Single-purpose alternative to ad-hoc `flex items-center justify-center` snippets scattered through the codebase.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "axis": {
+            "values": [
+                "both",
+                "horizontal",
+                "vertical"
+            ],
+            "default": "both"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "No own ARIA — inherits semantics from its children."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

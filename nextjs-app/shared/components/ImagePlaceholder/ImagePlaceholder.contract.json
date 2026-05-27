@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "ImagePlaceholder",
+  "tier": "atom",
+  "group": "structure",
+  "status": "alpha",
+  "description": "ImagePlaceholder — production @dt component (Storybook beta).",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-image-placeholder",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "ariaRequirements": []
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "alt",
+    "as",
+    "asChild",
+    "caption",
+    "children",
+    "className",
+    "height",
+    "id",
+    "ref",
+    "showDimensions",
+    "showIcon",
+    "style",
+    "text",
+    "variant",
+    "width"
+  ],
+  "consumers": []
+}

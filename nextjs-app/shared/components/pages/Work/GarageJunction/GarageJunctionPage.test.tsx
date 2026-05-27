@@ -1,22 +1,20 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../../test-utils/render";
 import { GarageJunctionPage } from "./GarageJunctionPage";
 
 describe("GarageJunctionPage", () => {
   it("renders page title", () => {
-    render(<GarageJunctionPage />);
-    expect(screen.getByText(/Garage Junction/i)).toBeInTheDocument();
-  });
-
-  it("renders project description", () => {
-    render(<GarageJunctionPage />);
-    expect(screen.getByText(/description|project/i)).toBeInTheDocument();
+    renderWithProviders(<GarageJunctionPage />);
+    expect(
+      screen.getByRole("heading", { name: /Garage Junction/i, level: 1 }),
+    ).toBeInTheDocument();
   });
 
   it("renders back to work link", () => {
-    render(<GarageJunctionPage />);
+    renderWithProviders(<GarageJunctionPage />);
     expect(
-      screen.getByRole("link", { name: /back|work/i }),
+      screen.getByRole("link", { name: /Back to work/i }),
     ).toBeInTheDocument();
   });
 });

@@ -33,7 +33,7 @@ export function useBlogFilter({
 }: UseBlogFilterOptions): UseBlogFilterReturn {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
 
   // Get initial tag from URL
   const urlTag = searchParams.get(tagParam);

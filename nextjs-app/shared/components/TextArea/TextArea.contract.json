@@ -1,0 +1,60 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "TextArea",
+    "tier": "atom",
+    "group": "form",
+    "status": "alpha",
+    "description": "Multi-line text field with optional label, validation, and character count.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "textarea",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "argTypesProxyExempt": [
+        "className",
+        "onValueChange",
+        "onChange"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Shift+Tab"
+        ],
+        "ariaRequirements": [
+            "aria-label or associated label",
+            "aria-invalid when error"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-border",
+            "--color-primary",
+            "--color-error"
+        ],
+        "spacing": [
+            "--space-internal-8"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

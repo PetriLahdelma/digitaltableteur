@@ -1,0 +1,47 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "NextMobileMenu",
+    "tier": "pattern",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Mobile-viewport navigation drawer paired with `NextHeader`. Opens on the header's mobile-menu trigger, traps focus while open, and closes on Esc / outside click.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "dialog",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Esc — closes the menu, focus returns to the trigger.",
+            "Tab — cycles through focusable items inside the menu.",
+            "Shift+Tab — reverse cycle."
+        ],
+        "ariaRequirements": [
+            "Renders a `role='dialog'` with `aria-modal='true'` while open.",
+            "Focus is trapped inside the drawer until close.",
+            "Outside content has `aria-hidden='true'` while the menu is open."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false,
+        "motion": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-16",
+            "--space-internal-24"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

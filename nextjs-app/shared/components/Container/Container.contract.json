@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Container",
+  "tier": "atom",
+  "group": "layout",
+  "status": "alpha",
+  "description": "Max-width content wrapper with responsive horizontal padding.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-container",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "center",
+    "children",
+    "className",
+    "id",
+    "ref",
+    "size",
+    "style"
+  ],
+  "consumers": []
+}

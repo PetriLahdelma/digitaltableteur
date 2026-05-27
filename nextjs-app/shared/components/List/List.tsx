@@ -54,7 +54,10 @@ const spacingClassMap: Record<string, string> = {
   relaxed: styles["spacingRelaxed"] || "",
 };
 
-const List: React.FC<ListProps> = ({
+/**
+ * List component.
+ */
+export const List: React.FC<ListProps> = ({
   items,
   as = "ul",
   className = "",

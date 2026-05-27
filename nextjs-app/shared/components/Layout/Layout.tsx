@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../../patterns/Header/Header";
 import Footer from "../../patterns/Footer/Footer";
 import Button from "@dt/Button";
-import ChatWidget from "@dt/ChatWidget/ChatWidget";
+import ChatWidget from "@dt/ChatWidget";
 import styles from "./Layout.module.css";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

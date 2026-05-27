@@ -1,13 +1,9 @@
 import React from "react";
 import SelectOption from "./SelectOption";
 import Select from "@dt/Select";
-import { within, userEvent } from "@storybook/testing-library";
+import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
-
-export default {
-  title: "Components/SelectOption",
-  component: SelectOption,
-};
+export default { title: "Atoms/SelectOption", component: SelectOption };
 
 export const Default = () => {
   const { t } = useTranslation();

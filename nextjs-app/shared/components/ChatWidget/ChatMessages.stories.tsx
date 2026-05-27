@@ -5,9 +5,7 @@ import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import ChatMessages from "./ChatMessages";
-import { within, waitFor } from "@storybook/testing-library";
-
-declare const expect: (typeof import("vitest"))["expect"];
+import { expect, waitFor, within } from "storybook/test";
 
 const SAMPLE_MESSAGES: UIMessage[] = [
   {
@@ -23,12 +21,7 @@ const SAMPLE_MESSAGES: UIMessage[] = [
   {
     id: "user-1",
     role: "user",
-    parts: [
-      {
-        type: "text",
-        text: "What services do you offer?",
-      },
-    ],
+    parts: [{ type: "text", text: "What services do you offer?" }],
   },
   {
     id: "assistant-1",
@@ -48,10 +41,7 @@ const LONG_CONVERSATION: UIMessage[] = [
     id: "user-2",
     role: "user",
     parts: [
-      {
-        type: "text",
-        text: "Can you tell me more about your design process?",
-      },
+      { type: "text", text: "Can you tell me more about your design process?" },
     ],
   },
   {
@@ -67,12 +57,7 @@ const LONG_CONVERSATION: UIMessage[] = [
   {
     id: "user-3",
     role: "user",
-    parts: [
-      {
-        type: "text",
-        text: "What technologies do you work with?",
-      },
-    ],
+    parts: [{ type: "text", text: "What technologies do you work with?" }],
   },
   {
     id: "assistant-3",
@@ -147,21 +132,14 @@ const chatMessagesComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test files exist",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test files exist" },
 ];
 
 const meta: Meta<typeof ChatMessages> = {
-  title: "Components/AI/Chat/ChatMessages",
+  title: "Molecules/Chat/ChatMessages",
   component: ChatMessages,
   tags: ["autodocs"],
-  args: {
-    messages: SAMPLE_MESSAGES,
-  },
+  args: { messages: SAMPLE_MESSAGES },
   parameters: {},
 };
 
@@ -170,9 +148,7 @@ export default meta;
 type Story = StoryObj<typeof ChatMessages>;
 
 export const Z_ChatMessagesCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="Compliance: 11/11"
@@ -197,22 +173,15 @@ export const Default: Story = {
 };
 
 export const LongConversation: Story = {
-  args: {
-    messages: LONG_CONVERSATION,
-  },
+  args: { messages: LONG_CONVERSATION },
 };
 
 export const Streaming: Story = {
-  args: {
-    messages: SAMPLE_MESSAGES,
-    isStreaming: true,
-  },
+  args: { messages: SAMPLE_MESSAGES, isStreaming: true },
 };
 
 export const EmptyState: Story = {
-  args: {
-    messages: [],
-  },
+  args: { messages: [] },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await waitFor(() => {

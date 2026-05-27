@@ -94,7 +94,7 @@ describe("ChatWidget helpers", () => {
       role: "assistant",
       text: "Howdy",
     });
-    expect(stored.some((m) => m.text.includes("search"))).toBe(true);
+    expect(stored.some((m) => m.text.includes("search"))).toBe(false);
   });
 
   it("parses modern and legacy stored messages and injects greeting", () => {

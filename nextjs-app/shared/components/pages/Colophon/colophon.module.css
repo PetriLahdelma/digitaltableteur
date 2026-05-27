@@ -1,10 +1,10 @@
 /* Colophon — how this site is built */
 
 .page {
-  max-width: var(--container-md);
   margin-inline: auto;
-  padding-inline: var(--space-layout-24);
   padding-block: var(--space-layout-64);
+  padding-inline: var(--space-layout-24);
+  max-width: var(--container-md);
 }
 
 .header {
@@ -12,12 +12,12 @@
 }
 
 .intro {
+  margin-block-start: var(--space-layout-16);
+  max-width: 640px;
   font-family: var(--font-sans);
   font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
   line-height: 1.6;
-  max-width: 640px;
-  margin-block-start: var(--space-layout-16);
+  color: var(--color-text-secondary);
 }
 
 .section {
@@ -25,11 +25,11 @@
 }
 
 .sectionTitle {
-  font-family: var(--font-sans);
-  font-weight: 600;
   margin-block-end: var(--space-layout-24);
   padding-block-end: var(--space-layout-8);
   border-block-end: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+  font-weight: 600;
 }
 
 .grid {
@@ -39,36 +39,36 @@
 }
 
 .card {
-  background-color: var(--color-surface);
-  border-radius: var(--border-radius-lg);
   padding: var(--space-layout-24);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--color-surface);
 }
 
 .cardLabel {
+  margin: 0 0 var(--space-8) 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
   font-weight: 600;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
-  margin: 0 0 var(--space-8) 0;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
 }
 
 .cardValue {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .tokenList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
+  margin: 0;
+  padding: 0;
   flex-direction: column;
   gap: var(--space-layout-16);
+  list-style: none;
 }
 
 .tokenItem {
@@ -84,10 +84,10 @@
 }
 
 .tokenDesc {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  margin: 0;
 }
 
 .statGrid {
@@ -97,29 +97,29 @@
 }
 
 .stat {
-  text-align: center;
   padding: var(--space-layout-24);
-  background-color: var(--color-surface);
   border-radius: var(--border-radius-lg);
+  background-color: var(--color-surface);
+  text-align: center;
 }
 
 .statNumber {
+  display: block;
   font-family: var(--font-heading);
   font-size: var(--font-size-title-3);
   font-weight: 700;
   color: var(--color-text);
-  display: block;
 }
 
 .statLabel {
+  display: block;
+  margin-block-start: var(--space-4);
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  margin-block-start: var(--space-4);
-  display: block;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .page {
     padding-block: var(--space-layout-40);
   }

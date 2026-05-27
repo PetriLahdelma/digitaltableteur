@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
+
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import path from "node:path";
@@ -13,6 +16,7 @@ const compat = new FlatCompat({
 export default [
   {
     ignores: [
+      ".claude/",
       ".sanity/",
       ".history/",
       "__visual__/",
@@ -62,6 +66,7 @@ export default [
       ],
       "no-undef": "off",
       "no-unused-vars": "off",
+      "react/react-in-jsx-scope": "off",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
     },
@@ -71,4 +76,21 @@ export default [
       },
     },
   }),
+  {
+    files: [
+      "**/*.stories.ts",
+      "**/*.stories.tsx",
+      "**/*.stories.js",
+      "**/*.stories.jsx",
+      "**/*.stories.mjs",
+    ],
+    rules: {
+      "storybook/no-renderer-packages": "off",
+      "react/no-unescaped-entities": "off",
+      "react/prop-types": "off",
+      "react/no-children-prop": "off",
+      "prettier/prettier": "off",
+    },
+  },
+  ...storybook.configs["flat/recommended"],
 ];

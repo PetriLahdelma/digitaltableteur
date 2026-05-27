@@ -50,7 +50,10 @@ export interface ServicesBlockProps {
   ariaLabel?: string;
 }
 
-const ServicesBlock: React.FC<ServicesBlockProps> = ({
+/**
+ * ServicesBlock component.
+ */
+export const ServicesBlock: React.FC<ServicesBlockProps> = ({
   services = [],
   duration,
   tools = [],
