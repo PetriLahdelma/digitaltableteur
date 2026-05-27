@@ -129,6 +129,7 @@ export interface CardProps {
   children?: React.ReactNode;
 }
 
+/** Composable surface for grouped content with header, body, media, and actions. */
 const Card: React.FC<CardProps> = ({
   title,
   titleProps = {},

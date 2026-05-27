@@ -1,13 +1,17 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./MacWindowFrame.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import MacWindowFrame from "@dt/MacWindowFrame";
 
 const meta: Meta<typeof MacWindowFrame> = {
-  title: "Components/MacWindowFrame",
+  argTypes: {},
+  title: "Molecules/MacWindowFrame",
   component: MacWindowFrame,
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "padded",
   },
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
 };
 
 export default meta;
@@ -19,11 +23,7 @@ User: Write a poem about autumn.
 AI: The leaves fall gently to the ground, painting the earth in hues profound.
 The crisp air whispers through the trees, a symphony of nature's ease.`;
 
-export const Default: Story = {
-  args: {
-    children: sampleContent,
-  },
-};
+export const Default: Story = { args: { children: sampleContent } };
 
 export const WithAction: Story = {
   args: {
@@ -34,8 +34,12 @@ export const WithAction: Story = {
 };
 
 export const Compact: Story = {
-  args: {
-    density: "compact",
-    children: sampleContent,
-  },
+  args: { density: "compact", children: sampleContent },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

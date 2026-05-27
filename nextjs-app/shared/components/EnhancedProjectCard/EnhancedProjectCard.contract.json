@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "EnhancedProjectCard",
+  "tier": "molecule",
+  "group": "marketing",
+  "status": "alpha",
+  "description": "Portfolio project card with image, video hover, and metadata.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-enhanced-project-card",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "aspectRatio",
+    "autoPlayVideo",
+    "category",
+    "children",
+    "className",
+    "description",
+    "id",
+    "ref",
+    "showCategory",
+    "showDescription",
+    "slug",
+    "style",
+    "tags",
+    "thumbnail",
+    "title",
+    "videoThumbnail"
+  ],
+  "consumers": []
+}

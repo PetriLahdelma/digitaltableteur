@@ -3,14 +3,12 @@ import type { Meta, StoryObj, StoryFn } from "@storybook/react-vite";
 import ChatComposer from "./ChatComposer";
 import ComplianceCard, { type ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
-
-declare const expect: (typeof import("vitest"))["expect"];
+import { expect, userEvent, waitFor, within } from "storybook/test";
 
 const noop = () => {};
 
 const meta: Meta<typeof ChatComposer> = {
-  title: "Components/AI/Chat/ChatComposer",
+  title: "Molecules/Chat/ChatComposer",
   component: ChatComposer,
   tags: ["autodocs"],
   args: {
@@ -20,9 +18,7 @@ const meta: Meta<typeof ChatComposer> = {
     onSubmit: noop,
     maxLength: 1_000,
   },
-  parameters: {
-    layout: "padded",
-  },
+  parameters: { layout: "padded" },
 };
 
 export default meta;
@@ -65,9 +61,7 @@ export const SendingState: Story = {
   render: (args) => (
     <ChatComposer {...args} value="" onValueChange={() => {}} />
   ),
-  args: {
-    isSending: true,
-  },
+  args: { isSending: true },
 };
 
 const chatComposerComplianceRules: ComplianceRule[] = [

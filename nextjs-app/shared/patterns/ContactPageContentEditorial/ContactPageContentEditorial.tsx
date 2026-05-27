@@ -13,6 +13,9 @@ export interface ContactPageContentEditorialProps {
   className?: string;
 }
 
+/**
+ * ContactPageContentEditorial component.
+ */
 export function ContactPageContentEditorial({
   className,
 }: ContactPageContentEditorialProps) {
@@ -147,63 +150,6 @@ export function ContactPageContentEditorial({
           </div>
         </div>
       </div>
-
-      {/* Footer Section - Founder */}
-      <motion.div
-        className={styles.founderSection}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.6,
-          ease: [0.16, 1, 0.3, 1],
-          delay: 0.5,
-        }}
-      >
-        <div className={styles.container}>
-          <hr className={styles.dividerFull} />
-          <div className={styles.founder}>
-            <div className={styles.founderInfo}>
-              <span className={styles.founderName}>
-                {t("contactPersonName", "Petri Lahdelma")}
-              </span>
-              <span className={styles.founderTitle}>
-                {t("contactPersonTitle", "Founder & Creative Director")}
-              </span>
-            </div>
-            <div className={styles.socialLinks}>
-              <a
-                href="https://www.linkedin.com/in/petrilahdelma/"
-                className={styles.socialLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t("contactLinkedInLabel", "LinkedIn")}
-              >
-                LinkedIn
-              </a>
-              <span className={styles.socialDivider}>·</span>
-              <a
-                href="https://github.com/PetriLahdelma"
-                className={styles.socialLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t("contactGitHubLabel", "GitHub")}
-              >
-                GitHub
-              </a>
-              <span className={styles.socialDivider}>·</span>
-              <a
-                href="https://x.com/dtdoesdesign"
-                className={styles.socialLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t("footerAriaX", "X")}
-              >
-                X
-              </a>
-            </div>
-          </div>
-        </div>
-      </motion.div>
     </div>
   );
 }

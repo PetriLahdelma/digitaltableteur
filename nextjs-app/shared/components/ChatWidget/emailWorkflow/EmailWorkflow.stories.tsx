@@ -1,7 +1,8 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import ChatWidget from "../ChatWidget";
 import { emailWorkflowReducer, initialEmailWorkflowState } from "./reducer";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import {
   EmailWorkflowAction,
   EmailWorkflowState,
@@ -11,9 +12,6 @@ import Button from "@dt/Button";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "../ChatWidget.module.css";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
-
-declare const expect: (typeof import("vitest"))["expect"];
 
 // Simple harness to inject state
 const WorkflowHarness: React.FC<{ state: EmailWorkflowState }> = ({
@@ -55,7 +53,7 @@ const WorkflowHarness: React.FC<{ state: EmailWorkflowState }> = ({
 };
 
 const meta: Meta<typeof WorkflowHarness> = {
-  title: "Components/AI/Chat/Custom Components/EmailWorkflow",
+  title: "Molecules/Chat/EmailWorkflow",
   component: WorkflowHarness,
   tags: ["autodocs"],
   parameters: {},

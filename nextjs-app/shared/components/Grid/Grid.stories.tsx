@@ -1,35 +1,43 @@
+import contract from "./Grid.contract.json";
 import React from "react";
 import Grid from "@dt/Grid";
 
 export default {
-  title: "Components/Grid",
+  title: "Atoms/Grid",
   component: Grid,
+  tags: ["!autodocs"],
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   argTypes: {
     columns: {
       control: { type: "number", min: 1, max: 12 },
       defaultValue: 3,
       description: "Number of columns in the grid",
     },
+
     gap: {
       control: "text",
       defaultValue: "1.5rem",
       description: "Gap between grid items (CSS value)",
     },
+
     rowGap: {
       control: "text",
       defaultValue: "2rem",
       description: "Row gap (CSS value)",
     },
+
     colGap: {
       control: "text",
       defaultValue: "0.5rem",
       description: "Column gap (CSS value)",
     },
+
     align: {
       control: "select",
       options: ["start", "center", "end", "stretch"],
       description: "Align items vertically",
     },
+
     justify: {
       control: "select",
       options: ["start", "center", "end", "stretch"],
@@ -78,10 +86,7 @@ const Template: StoryFn<ComponentProps<typeof Grid>> = (
 );
 
 export const Basic = Template.bind({});
-Basic.args = {
-  columns: 3,
-  gap: "1.5rem",
-};
+Basic.args = { columns: 3, gap: "1.5rem" };
 
 export const Spans = () => (
   <div style={{ maxWidth: "90%", overflow: "hidden" }}>
@@ -140,15 +145,15 @@ export const Nested = () => (
 );
 
 export const RowAndColGap = Template.bind({});
-RowAndColGap.args = {
-  columns: 3,
-  rowGap: "2rem",
-  colGap: "0.5rem",
-};
+RowAndColGap.args = { columns: 3, rowGap: "2rem", colGap: "0.5rem" };
 
 export const Alignment = Template.bind({});
-Alignment.args = {
-  columns: 3,
-  align: "center",
-  justify: "center",
+Alignment.args = { columns: 3, align: "center", justify: "center" };
+
+export const Default = Basic;
+export const Playground = Basic;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Basic,
 };
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Basic };

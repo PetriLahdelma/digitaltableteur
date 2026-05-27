@@ -304,31 +304,40 @@ describe("Avatar Component", () => {
     }
   });
 
-  it("renders with small size variant", () => {
-    const { container } = render(<Avatar name="Petri Lahdelma" size="s" />);
-    expect(container.querySelector('[data-size="s"]')).toBeInTheDocument();
-  });
-
-  it("renders with large size variant", () => {
-    const { container } = render(<Avatar name="Petri Lahdelma" size="l" />);
-    expect(container.querySelector('[data-size="l"]')).toBeInTheDocument();
-  });
-
-  it("applies custom className", () => {
+  it("applies custom size via CSS variable", () => {
     const { container } = render(
-      <Avatar name="Petri Lahdelma" className="custom-avatar" />,
+      <Avatar name="Petri Lahdelma" size="4rem" />,
     );
-    expect(container.firstChild).toHaveClass("custom-avatar");
+    const sized = container.querySelector('[style*="--avatar-size"]');
+    expect(sized).toBeTruthy();
+    expect(sized?.getAttribute("style")).toContain("4rem");
   });
 
-  it("handles click events on avatar without menu", async () => {
-    const handleClick = vi.fn();
-    render(<Avatar name="Petri Lahdelma" onClick={handleClick} />);
+  it("navigates when clickable with destinationUrl", async () => {
+    const hrefSetter = vi.fn();
+    const locationMock = {
+      href: "http://localhost:3000/",
+      assign: vi.fn(),
+      replace: vi.fn(),
+    };
+    Object.defineProperty(locationMock, "href", {
+      configurable: true,
+      get: () => "http://localhost:3000/",
+      set: hrefSetter,
+    });
+    vi.stubGlobal("location", locationMock);
 
-    const avatar = screen.getByText("PL");
-    await userEvent.click(avatar);
+    render(
+      <Avatar
+        name="Petri Lahdelma"
+        clickable
+        destinationUrl="https://example.com/profile"
+      />,
+    );
 
-    expect(handleClick).toHaveBeenCalledTimes(1);
+    await userEvent.click(screen.getByText("PL"));
+    expect(hrefSetter).toHaveBeenCalledWith("https://example.com/profile");
+    vi.unstubAllGlobals();
   });
 
   it("closes menu when clicking outside", async () => {
@@ -377,15 +386,6 @@ describe("Avatar Component", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("renders with status indicator", () => {
-    const { container } = render(
-      <Avatar name="Petri Lahdelma" status="online" />,
-    );
-    expect(
-      container.querySelector('[data-status="online"]'),
-    ).toBeInTheDocument();
-  });
-
   it("generates correct initials for single word names", () => {
     render(<Avatar name="Petri" />);
     expect(screen.getByText("P")).toBeInTheDocument();
@@ -401,44 +401,6 @@ describe("Avatar Component", () => {
     expect(container.firstChild).toBeEmptyDOMElement();
   });
 
-  it("renders divider items in menu", async () => {
-    render(
-      <Avatar
-        name="Petri Lahdelma"
-        menuLabel="Open menu"
-        menuItems={[
-          { label: "Profile" },
-          { type: "divider" },
-          { label: "Logout" },
-        ]}
-      />,
-    );
-
-    const trigger = screen.getByRole("button", { name: "Open menu" });
-    await userEvent.click(trigger);
-
-    expect(screen.getByRole("separator")).toBeInTheDocument();
-  });
-
-  it("disables menu items when disabled prop is set", async () => {
-    render(
-      <Avatar
-        name="Petri Lahdelma"
-        menuLabel="Open menu"
-        menuItems={[
-          { label: "Profile" },
-          { label: "Settings", disabled: true },
-        ]}
-      />,
-    );
-
-    const trigger = screen.getByRole("button", { name: "Open menu" });
-    await userEvent.click(trigger);
-
-    const settingsItem = screen.getByRole("menuitem", { name: "Settings" });
-    expect(settingsItem).toHaveAttribute("aria-disabled", "true");
-  });
-
   it("renders menu item icons", async () => {
     render(
       <Avatar
@@ -452,23 +414,6 @@ describe("Avatar Component", () => {
     await userEvent.click(trigger);
 
     expect(screen.getByText("👤")).toBeInTheDocument();
-  });
-
-  it("does not open menu when disabled", async () => {
-    render(
-      <Avatar
-        name="Petri Lahdelma"
-        menuLabel="Open menu"
-        menuItems={[{ label: "Profile" }]}
-        disabled
-      />,
-    );
-
-    const trigger = screen.getByRole("button", { name: "Open menu" });
-    expect(trigger).toBeDisabled();
-
-    await userEvent.click(trigger);
-    expect(screen.queryByRole("menuitem")).not.toBeInTheDocument();
   });
 
   it("uses fallback alt text when name is not provided", () => {

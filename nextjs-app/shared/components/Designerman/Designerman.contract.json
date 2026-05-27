@@ -1,0 +1,50 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Designerman",
+  "tier": "molecule",
+  "group": "marketing",
+  "status": "alpha",
+  "description": "Designerman — production @dt component (Storybook beta).",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-designerman",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "ariaRequirements": []
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "animations",
+    "as",
+    "asChild",
+    "audioSrc",
+    "children",
+    "className",
+    "columns",
+    "frameHeight",
+    "frameWidth",
+    "id",
+    "ref",
+    "scale",
+    "spriteSheet",
+    "style"
+  ],
+  "consumers": []
+}

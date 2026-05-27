@@ -70,7 +70,7 @@ export function NextMobileMenu({
 }: Props) {
   const { t, i18n } = useTranslation();
   const { theme, cycleTheme } = usePersistentTheme();
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
   const currentLang = (
     i18n?.resolvedLanguage ||
     i18n?.language ||

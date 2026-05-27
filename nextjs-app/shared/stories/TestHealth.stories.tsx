@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { TooltipItem } from "chart.js";
 import {
   Chart as ChartJS,
@@ -34,10 +34,7 @@ type VisualDiffReport = {
   diffs: VisualDiffEntry[];
 };
 
-type AdoptionHistoryEntry = {
-  period: string;
-  rate: number;
-};
+type AdoptionHistoryEntry = { period: string; rate: number };
 
 const defaultAdoptionHistory: AdoptionHistoryEntry[] = [
   { period: "Jan", rate: 0.52 },
@@ -321,17 +318,9 @@ const TestHealthOverview = () => {
     () => ({
       responsive: true,
       maintainAspectRatio: false,
-      interaction: {
-        intersect: false,
-        mode: "index" as const,
-      },
+      interaction: { intersect: false, mode: "index" as const },
       plugins: {
-        legend: {
-          labels: {
-            color: chartPalette.text,
-            usePointStyle: true,
-          },
-        },
+        legend: { labels: { color: chartPalette.text, usePointStyle: true } },
         tooltip: {
           backgroundColor: chartPalette.text,
           titleColor: chartPalette.surface,
@@ -382,10 +371,7 @@ const TestHealthOverview = () => {
       plugins: {
         legend: {
           position: "bottom" as const,
-          labels: {
-            color: chartPalette.text,
-            boxWidth: 12,
-          },
+          labels: { color: chartPalette.text, boxWidth: 12 },
         },
         tooltip: {
           backgroundColor: chartPalette.text,
@@ -394,10 +380,7 @@ const TestHealthOverview = () => {
         },
       },
       scales: {
-        x: {
-          ticks: { color: chartPalette.text },
-          grid: { display: false },
-        },
+        x: { ticks: { color: chartPalette.text }, grid: { display: false } },
         y: {
           ticks: { color: chartPalette.text },
           grid: { color: "rgba(148, 163, 184, 0.2)" },
@@ -718,6 +701,4 @@ const meta: Meta<typeof TestHealthOverview> = {
 
 export default meta;
 
-export const Dashboard: StoryObj = {
-  parameters: { a11y: { disable: true } },
-};
+export const Dashboard: StoryObj = { parameters: { a11y: { disable: true } } };

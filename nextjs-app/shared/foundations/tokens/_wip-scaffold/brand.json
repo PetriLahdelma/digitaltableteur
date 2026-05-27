@@ -1,0 +1,25 @@
+{
+  "color": {
+    "$description": "Brand palette",
+    "primary": {
+      "$value": "#041b23",
+      "$type": "color",
+      "$description": "Primary brand"
+    },
+    "accent": {
+      "$value": "#e85d04",
+      "$type": "color",
+      "$description": "Accent"
+    },
+    "surface": {
+      "$value": "#ffffff",
+      "$type": "color",
+      "$description": "Default surface"
+    },
+    "text": {
+      "$value": "#041b23",
+      "$type": "color",
+      "$description": "Primary text"
+    }
+  }
+}

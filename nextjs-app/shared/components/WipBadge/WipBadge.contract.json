@@ -1,0 +1,51 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "WipBadge",
+    "tier": "atom",
+    "group": "feedback",
+    "status": "alpha",
+    "description": "Storybook-only maturity badge for non-stable components.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "span",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "role=status"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "Storybook chrome only",
+        "forcedColorsVerified": true,
+        "axeTestExempt": "Storybook chrome only"
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated",
+            "--color-border-light"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12"
+        ],
+        "radii": [
+            "--radius-sm"
+        ],
+        "typography": [
+            "--font-size-sm"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": []
+}

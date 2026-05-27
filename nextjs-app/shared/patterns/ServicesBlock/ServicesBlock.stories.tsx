@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./ServicesBlock.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import ServicesBlock from "./ServicesBlock";
 import Text from "@dt/Text";
@@ -28,8 +29,10 @@ import {
 const meta: Meta<typeof ServicesBlock> = {
   title: "Patterns/ServicesBlock",
   component: ServicesBlock,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
     vitest: {
       skip: true, // Skip Vitest tests for this complex pattern component
@@ -41,10 +44,7 @@ const meta: Meta<typeof ServicesBlock> = {
       control: false,
       table: { disable: true },
     },
-    duration: {
-      description: "Project timeline or duration",
-      control: "text",
-    },
+    duration: { description: "Project timeline or duration", control: "text" },
     tools: {
       description: "Array of tool icons with labels",
       control: false,
@@ -58,46 +58,34 @@ const meta: Meta<typeof ServicesBlock> = {
     overviewTitle: {
       description: "Title for overview section",
       control: "text",
-      table: {
-        defaultValue: { summary: "Overview" },
-      },
+      table: { defaultValue: { summary: "Overview" } },
     },
     servicesTitle: {
       description: "Title for services section",
       control: "text",
-      table: {
-        defaultValue: { summary: "Services" },
-      },
+      table: { defaultValue: { summary: "Services" } },
     },
     durationTitle: {
       description: "Title for duration section",
       control: "text",
-      table: {
-        defaultValue: { summary: "Duration" },
-      },
+      table: { defaultValue: { summary: "Duration" } },
     },
     toolsTitle: {
       description: "Title for tools section",
       control: "text",
-      table: {
-        defaultValue: { summary: "Tools" },
-      },
+      table: { defaultValue: { summary: "Tools" } },
     },
     maxWidth: {
       description: "Maximum content width",
       control: "select",
       options: ["sm", "md", "lg", "xl", "full"],
-      table: {
-        defaultValue: { summary: "md" },
-      },
+      table: { defaultValue: { summary: "md" } },
     },
     spacing: {
       description: "Vertical spacing preset",
       control: "select",
       options: ["compact", "default", "comfortable", "spacious"],
-      table: {
-        defaultValue: { summary: "comfortable" },
-      },
+      table: { defaultValue: { summary: "comfortable" } },
     },
     as: {
       description: "Semantic HTML element",
@@ -387,3 +375,10 @@ export const ArticleVariant: Story = {
     ariaLabel: "Project details: Editorial design case study",
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

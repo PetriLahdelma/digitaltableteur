@@ -1,0 +1,50 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "SkillsGrid",
+    "tier": "organism",
+    "group": "display",
+    "status": "alpha",
+    "description": "Grid of skill / tech logos arranged in 4 / 6 / 8 columns. Used on the about page and case studies to show capabilities or tooling at a glance.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "section",
+    "variants": {
+        "columns": {
+            "values": [
+                "4",
+                "6",
+                "8"
+            ],
+            "default": "6"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "Renders a `<section>` with an `aria-labelledby` heading so the grid is a labelled region.",
+            "Each logo carries an `alt` text describing the skill or tool; decorative-only logos are `aria-hidden`."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-text-muted"
+        ],
+        "spacing": [
+            "--space-layout-12",
+            "--space-layout-24"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

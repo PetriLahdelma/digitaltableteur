@@ -1,0 +1,26 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 11/11" [level=2]'
+- text: Complete file structure
+- img "Pass"
+- text: Component + tests + services present TypeScript strict
+- img "Pass"
+- text: Typed reducer and state Translation support
+- img "Pass"
+- text: useTranslation throughout CSS Modules
+- img "Pass"
+- text: No inline styles Design tokens
+- img "Pass"
+- text: Replaced --primary-body-font with --font-text Logical properties
+- img "Pass"
+- text: margin-block used Theme support
+- img "Pass"
+- text: CSS custom properties Component composition
+- img "Pass"
+- text: Uses Inputs, Button, Modal, FileUpload Accessibility
+- img "Pass"
+- text: Proper form semantics, labels Storybook stories
+- img "Pass"
+- text: Stories file created with ComplianceCard Tests
+- img "Pass"
+- text: Multiple test files present
+- separator "Resize table"

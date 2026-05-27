@@ -55,14 +55,14 @@
 }
 
 .headerAvatar {
-  flex-shrink: 0;
   margin-block-start: 0.125rem;
+  flex-shrink: 0;
 }
 
 .headerCopy {
   display: flex;
-  flex: 1;
   min-width: 0;
+  flex: 1;
   flex-direction: column;
   gap: 0.25rem;
 }
@@ -470,11 +470,13 @@
 }
 
 /* DonnyAvatar in toggle button */
+
 .toggleAvatar {
+  margin: -4px;
+
   /* Override size to match icon size in button */
   width: 28px !important;
   height: 28px !important;
-  margin: -4px;
   transition: transform 0.2s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
@@ -483,8 +485,9 @@
 }
 
 /* Subtle glow when Donny is curious/interested */
+
 .toggleAvatar[data-near-target="true"] {
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  filter: drop-shadow(0 0 8px rgb(255 255 255 / 40%));
 }
 
 .shortcutHint {
@@ -538,26 +541,28 @@
 @media (width <= 1024px) {
   :global(body[data-mobile-menu-open="true"]) .container,
   :global(body[data-mobile-menu-open="true"]) .toggle {
-    transform: translateX(-277px);
     transition: transform 0.3s cubic-bezier(0.16, 0.84, 0.44, 1);
+    transform: translateX(-277px);
   }
 
   /* Ensure closed chat panel doesn't have conflicting transforms */
+
   :global(body[data-mobile-menu-open="true"]) .container[data-open="false"] {
     transform: translateX(-277px) translateY(10%) scale(0.98);
   }
 }
 
 /* High Contrast Black (HCB) theme support */
+
 :global(.themeHCB) .panel {
-  background: #000;
   border-color: #fff;
+  background: #000;
 }
 
 :global(.themeHCB) .message {
-  color: #fff;
-  background: rgb(255 255 255 / 10%);
   border: 1px solid rgb(255 255 255 / 30%);
+  background: rgb(255 255 255 / 10%);
+  color: #fff;
 }
 
 :global(.themeHCB) .message[data-role="assistant"] {
@@ -570,9 +575,9 @@
 }
 
 :global(.themeHCB) .input {
+  border-color: #fff;
   background: #000;
   color: #fff;
-  border-color: #fff;
 }
 
 :global(.themeHCB) .input::placeholder {
@@ -589,15 +594,16 @@
 }
 
 /* High Contrast White (HCW) theme support */
+
 :global(.themeHCW) .panel {
-  background: #fff;
   border-color: #000;
+  background: #fff;
 }
 
 :global(.themeHCW) .message {
-  color: #000;
-  background: rgb(0 0 0 / 8%);
   border: 1px solid rgb(0 0 0 / 30%);
+  background: rgb(0 0 0 / 8%);
+  color: #000;
 }
 
 :global(.themeHCW) .message[data-role="assistant"] {
@@ -610,9 +616,9 @@
 }
 
 :global(.themeHCW) .input {
+  border-color: #000;
   background: #fff;
   color: #000;
-  border-color: #000;
 }
 
 :global(.themeHCW) .input::placeholder {
@@ -629,6 +635,7 @@
 }
 
 /* Chat Toggle - Dark theme: white text on purple toggle for contrast */
+
 :global(.themeDark) .toggle {
   /* stylelint-disable-next-line declaration-no-important -- Override for dark theme contrast */
   color: #fff !important;
@@ -639,12 +646,13 @@
 }
 
 /* Chat Toggle - High Contrast Black: white text on dark toggle */
+
 :global(.themeHCB) .toggle {
+  border: 2px solid #000;
   /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
   background: #fff !important;
   /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
   color: #000 !important;
-  border: 2px solid #000;
 }
 
 :global(.themeHCB) .toggleLabel {
@@ -652,17 +660,19 @@
 }
 
 /* DonnyAvatar needs inverted colors in HCB toggle (white bg) */
+
 :global(.themeHCB) .toggleAvatar {
   --donny-primary: #000;
 }
 
 /* Chat Toggle - High Contrast White: black text on light toggle */
+
 :global(.themeHCW) .toggle {
+  border: 2px solid #fff;
   /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
   background: #000 !important;
   /* stylelint-disable-next-line declaration-no-important -- Override for HC theme */
   color: #fff !important;
-  border: 2px solid #fff;
 }
 
 :global(.themeHCW) .toggleLabel {
@@ -670,28 +680,30 @@
 }
 
 /* DonnyAvatar in HCW toggle (black bg) - white body needs black eyes for visibility */
+
 :global(.themeHCW) .toggleAvatar {
   --donny-primary: #fff;
   --donny-eyes: #000;
 }
 
 /* Tool result cards — NavigateLink */
+
 .toolResultCard {
   margin-block-start: var(--space-internal-8, 0.5rem);
 }
 
 .navigateLink {
   display: inline-flex;
+  padding: 0.5rem 1rem;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.5rem 1rem;
   border-radius: var(--radius-m, 0.5rem);
   background-color: var(--color-primary, #041B23);
-  color: var(--inverted-text-color, #fff);
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
+  color: var(--inverted-text-color, #fff);
   transition: opacity 0.15s ease;
 }
 
@@ -700,20 +712,21 @@
 }
 
 /* Project cards from tool results */
+
 .projectCards {
   display: flex;
+  margin-block-start: var(--space-internal-8, 0.5rem);
   flex-direction: column;
   gap: 0.5rem;
-  margin-block-start: var(--space-internal-8, 0.5rem);
 }
 
 .projectCard {
   display: flex;
+  padding: 0.75rem;
   flex-direction: column;
   gap: 0.25rem;
-  padding: 0.75rem;
-  border-radius: var(--radius-m, 0.5rem);
   border: 1px solid var(--color-border, #e5e5e5);
+  border-radius: var(--radius-m, 0.5rem);
   background-color: var(--color-surface, #fff);
   text-decoration: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -721,7 +734,7 @@
 
 .projectCard:hover {
   border-color: var(--color-primary, #041B23);
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.06);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
 }
 
 .projectCardTitle {
@@ -734,25 +747,25 @@
 .projectCardMeta {
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  color: var(--color-text-secondary, #666);
   text-transform: capitalize;
+  color: var(--color-text-secondary, #666);
 }
 
 .projectCardDesc {
+  display: -webkit-box;
   font-family: var(--font-sans);
   font-size: 0.8125rem;
-  color: var(--color-text-secondary, #666);
   line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
+  color: var(--color-text-secondary, #666);
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
 }
 
 .projectCardCta {
+  margin-block-start: 0.25rem;
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--color-primary, #041B23);
-  margin-block-start: 0.25rem;
 }

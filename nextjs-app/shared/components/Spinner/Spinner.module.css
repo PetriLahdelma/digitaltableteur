@@ -1,0 +1,34 @@
+.root {
+  display: inline-block;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  animation: spinner-rotate var(--duration-slow) linear infinite;
+  border-block-start-color: var(--color-primary);
+}
+
+.sm {
+  block-size: 1rem;
+  inline-size: 1rem;
+}
+
+.md {
+  block-size: 1.25rem;
+  inline-size: 1.25rem;
+}
+
+.lg {
+  block-size: 1.75rem;
+  inline-size: 1.75rem;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    animation-duration: var(--duration-slower, 1.5s);
+  }
+}

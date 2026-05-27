@@ -1,12 +1,18 @@
+import contract from "./ProofBlock.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import ProofBlock, { ProofMetric } from "./ProofBlock";
 
 const meta: Meta<typeof ProofBlock> = {
+  argTypes: {},
   title: "Patterns/ProofBlock",
   component: ProofBlock,
-  tags: ["autodocs"],
-  parameters: { wip: { disabled: false } },
+  tags: ["!autodocs"],
+  parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    wip: { disabled: false },
+  },
 };
 export default meta;
 
@@ -37,3 +43,10 @@ export const TightDark: Story = {
     dark: true,
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

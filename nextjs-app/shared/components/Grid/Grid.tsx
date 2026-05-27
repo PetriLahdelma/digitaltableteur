@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import styles from "./Grid.module.css";
 
-interface GridProps {
+export interface GridProps {
   children: ReactNode;
   columns?: number | string;
   rows?: number | string;
@@ -33,6 +33,9 @@ interface GridItemProps {
   [key: string]: any;
 }
 
+/**
+ * Grid component.
+ */
 function Grid({
   children,
   columns = 1,

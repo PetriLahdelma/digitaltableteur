@@ -1,16 +1,18 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./TransformingActionInput.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import TransformingActionInput from "@dt/TransformingActionInput";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
-
-declare const expect: (typeof import("vitest"))["expect"];
+import { expect, userEvent, waitFor, within } from "storybook/test";
 
 const meta: Meta<typeof TransformingActionInput> = {
-  title: "Components/TransformingActionInput",
+  argTypes: {},
+  title: "Molecules/TransformingActionInput",
   component: TransformingActionInput,
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "padded",
   },
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
 };
 
 export default meta;
@@ -31,10 +33,7 @@ export const Default: Story = {
 };
 
 export const StartAsInput: Story = {
-  args: {
-    initialMode: "input",
-    defaultValue: "Intent prompt",
-  },
+  args: { initialMode: "input", defaultValue: "Intent prompt" },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const input = canvas.getByRole("textbox");
@@ -47,13 +46,14 @@ export const StartAsInput: Story = {
 };
 
 export const WithHelper: Story = {
-  args: {
-    helperTextKey: "transformingActionInput.helper",
-  },
+  args: { helperTextKey: "transformingActionInput.helper" },
 };
 
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
+export const Disabled: Story = { args: { disabled: true } };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
 };
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

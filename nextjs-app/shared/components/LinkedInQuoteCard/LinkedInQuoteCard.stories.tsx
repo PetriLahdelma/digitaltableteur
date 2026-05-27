@@ -1,3 +1,4 @@
+import contract from "./LinkedInQuoteCard.contract.json";
 import React, { useRef, useCallback } from "react";
 import html2canvas from "html2canvas";
 import LinkedInQuoteCard from "./LinkedInQuoteCard";
@@ -178,11 +179,7 @@ const ScreenshotWrapper: React.FC<ScreenshotWrapperProps> = ({
         </Button>
       </div>
       <p
-        style={{
-          marginTop: "0.5rem",
-          fontSize: "0.875rem",
-          color: "#6b7280",
-        }}
+        style={{ marginTop: "0.5rem", fontSize: "0.875rem", color: "#6b7280" }}
       >
         {SCREENSHOT_WIDTH}px × {SCREENSHOT_HEIGHT}px
       </p>
@@ -191,9 +188,12 @@ const ScreenshotWrapper: React.FC<ScreenshotWrapperProps> = ({
 };
 
 export default {
-  title: "Components/LinkedInQuoteCard",
+  argTypes: {},
+  title: "Molecules/LinkedInQuoteCard",
   component: LinkedInQuoteCard,
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
   },
 } as Meta;
@@ -311,9 +311,9 @@ export const SecondDegreeConnection = () => (
 );
 
 // Screenshot story - renders the card in a fixed-size container with a capture button
-const ScreenshotCardContent: React.FC<{ variant?: "light" | "dark" | "muted" }> = ({
-  variant = "muted",
-}) => (
+const ScreenshotCardContent: React.FC<{
+  variant?: "light" | "dark" | "muted";
+}> = ({ variant = "muted" }) => (
   <div
     style={{
       position: "relative",
@@ -335,7 +335,8 @@ const ScreenshotCardContent: React.FC<{ variant?: "light" | "dark" | "muted" }> 
         borderRadius: "0.5rem",
         background: "#ffffff",
         boxShadow: "0 4px 6px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 8%)",
-        fontFamily: '"Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif',
+        fontFamily:
+          "\"Source Sans 3\", -apple-system, BlinkMacSystemFont, sans-serif",
       }}
     >
       <header
@@ -433,11 +434,7 @@ const ScreenshotCardContent: React.FC<{ variant?: "light" | "dark" | "muted" }> 
       <img
         src="/dt-logo.svg"
         alt="Digitaltableteur logo"
-        style={{
-          maxWidth: "64px",
-          maxHeight: "64px",
-          objectFit: "contain",
-        }}
+        style={{ maxWidth: "64px", maxHeight: "64px", objectFit: "contain" }}
       />
     </div>
   </div>
@@ -460,3 +457,10 @@ export const ScreenshotDark = () => (
     <ScreenshotCardContent variant="dark" />
   </ScreenshotWrapper>
 );
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

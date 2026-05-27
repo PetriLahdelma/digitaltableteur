@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./NavMenuList.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import NavMenuList from "@dt/NavMenuList";
 import { MemoryRouter, useInRouterContext } from "react-router-dom";
@@ -21,10 +22,11 @@ const navMenuListComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof NavMenuList> = {
-  title: "Patterns/Header/MobileMenu/NavMenuList",
+  argTypes: {},
+  title: "Molecules/NavMenuList",
   component: NavMenuList,
-  tags: ["autodocs"],
-  parameters: {},
+  tags: ["!autodocs"],
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   decorators: [
     (Story) => {
       // If a parent preview already provides a router, don't nest another
@@ -83,9 +85,7 @@ export const CustomActiveClass: Story = {
 };
 
 export const Z_NavMenuListCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="Compliance: 11/11"
@@ -96,3 +96,10 @@ export const Z_NavMenuListCompliance: Story = {
     />
   ),
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

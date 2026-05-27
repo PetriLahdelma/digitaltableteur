@@ -1,3 +1,10 @@
+import { cva } from "class-variance-authority";
+
+export const checkboxVariants = cva("", {
+  variants: { size: { sm: "", md: "", lg: "" } },
+  defaultVariants: { size: "md" },
+});
+
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import Label from "@dt/Label";
 import styles from "./Checkbox.module.css";
@@ -28,6 +35,7 @@ export interface CheckboxProps
   id?: string;
 }
 
+/** Accessible checkbox with label, sizes, and indeterminate state. */
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {

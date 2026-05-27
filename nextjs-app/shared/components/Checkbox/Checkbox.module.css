@@ -22,6 +22,7 @@
 }
 
 /* Size variants (v1.1.0) */
+
 .checkbox--sm {
   width: 18px;
   height: 18px;
@@ -75,6 +76,7 @@
 }
 
 /* Focus-visible state for keyboard navigation - critical for a11y */
+
 .checkbox:focus-visible {
   outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
   outline-offset: var(--focus-ring-offset, 2px);

@@ -40,12 +40,15 @@ export interface CTASectionProps {
 
 const backgroundClasses: Record<NonNullable<CTASectionProps["background"]>, string> = {
   primary: "bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground",
-  gradient: "bg-gradient-to-br from-primary via-[#4400ff] to-[#0066ff] text-primary-foreground",
+  gradient: "bg-gradient-to-br from-primary via-[var(--color-primary)] to-[var(--color-primary)] text-primary-foreground",
   dark: "bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white",
   muted: "bg-muted text-foreground",
   brand: styles.brandBackground,
 };
 
+/**
+ * CTASection component.
+ */
 export function CTASection({
   title,
   description,

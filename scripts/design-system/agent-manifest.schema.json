@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://digitaltableteur.com/schemas/agent-manifest.json",
+  "title": "AgentManifest",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "summary", "components"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "summary": {
+      "type": "object",
+      "required": ["componentCount", "statusCounts"],
+      "properties": {
+        "componentCount": { "type": "integer", "minimum": 0 },
+        "statusCounts": { "type": "object", "additionalProperties": { "type": "integer" } },
+        "honestBetaDocDebt": { "type": "integer" }
+      }
+    },
+    "tokens": { "type": ["object", "null"] },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "contract"],
+        "properties": {
+          "name": { "type": "string" },
+          "contract": { "type": "object" },
+          "documentationDebt": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -10,16 +10,16 @@
 
 .metaSection {
   padding-block: var(--space-layout-48);
-  background-color: var(--color-surface);
   padding-inline: var(--space-layout-24);
+  background-color: var(--color-surface);
 }
 
 .metaGrid {
   display: grid;
+  margin-inline: auto;
+  max-width: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
-  max-width: var(--container-md);
-  margin-inline: auto;
 }
 
 .metaLeft {
@@ -41,19 +41,19 @@
 }
 
 .metaLabel {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-text);
-  margin: 0;
 }
 
 .metaText {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .metaTools {
@@ -63,45 +63,45 @@
 }
 
 .metaOverview {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .outputGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-layout-24);
-  max-width: var(--container-md);
   margin-inline: auto;
   padding-block: var(--space-layout-32);
+  max-width: var(--container-md);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-layout-24);
 }
 
 .outputCard {
-  background-color: var(--color-surface);
-  border-radius: var(--border-radius-lg);
   padding: var(--space-layout-24);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--color-surface);
 }
 
 .outputCard h4 {
+  margin: 0 0 var(--space-8) 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-text);
-  margin: 0 0 var(--space-8) 0;
 }
 
 .outputCard p {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text-secondary);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .metaGrid {
     grid-template-columns: 1fr;
     gap: var(--space-layout-32);

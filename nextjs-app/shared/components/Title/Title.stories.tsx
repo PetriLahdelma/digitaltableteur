@@ -1,6 +1,8 @@
+import contract from "./Title.contract.json";
 import React from "react";
 import Title from "@dt/Title";
-import { within } from "@storybook/testing-library";
+import type { Meta } from "@storybook/react-vite";
+import { within } from "storybook/test";
 import {
   Controls,
   Description,
@@ -87,36 +89,61 @@ const titleComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Components/Title",
+  title: "Atoms/Title",
   component: Title,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
+  },
+  argTypes: {
+    level: {
+      control: { type: "select" },
+      options: [1, 2, 3, 4, 5, 6],
+      description: "Semantic heading level (maps to h1–h6 when as is unset)",
+      table: { defaultValue: { summary: "2" } },
     },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <DocTitle />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
+
+    size: {
+      control: { type: "select" },
+      options: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
+      description: "Display size token for the heading",
+      table: { defaultValue: { summary: "L" } },
+    },
+
+    children: {
+      control: "text",
+      description: "Heading text (translation key in stories)",
+    },
+
+    className: {
+      control: "text",
+      description: "Additional CSS class names",
+      table: { disable: true },
+    },
+
+    terminals: {
+      control: { type: "select" },
+      options: ["serif", "sans"],
+      description: "Type family: serif (display) or sans (UI)",
+      table: { defaultValue: { summary: "serif" } },
+    },
+
+    lineHeight: {
+      control: { type: "select" },
+      options: ["tight", "snug", "normal", "relaxed", "loose"],
+      description: "Line height variant",
+      table: { defaultValue: { summary: "normal" } },
+    },
+
+    as: {
+      control: "text",
+      description: "Override the rendered element (h1–h6)",
+      table: { disable: true },
     },
   },
-};
+} as Meta<typeof Title>;
 
 export const AllSizes = () => {
   const { t } = useTranslation();
@@ -157,40 +184,9 @@ export const Playground = (args: any) => {
   const { t } = useTranslation();
   return <Title {...args}>{t(args.children)}</Title>;
 };
-Playground.args = {
-  level: 2,
-  size: "M",
-  children: "storyTitlePlayground",
-};
-Playground.argTypes = {
-  level: {
-    control: { type: "select" },
-    options: [1, 2, 3, 4, 5, 6],
-    defaultValue: 2,
-  },
-  size: {
-    control: { type: "select" },
-    options: ["XS", "S", "M", "L", "XL"],
-    defaultValue: "M",
-  },
-  children: {
-    control: "text",
-    defaultValue: "Playground Title",
-  },
-  className: { control: "text" },
-  terminals: {
-    control: { type: "select" },
-    options: ["serif", "sans"],
-    defaultValue: "serif",
-  },
-  lineHeight: {
-    control: { type: "select" },
-    options: ["tight", "snug", "normal", "relaxed", "loose"],
-    description: "Line height variant",
-  },
-  as: { control: "text" },
-};
+Playground.args = { level: 2, size: "M", children: "storyTitlePlayground" };
 
+export const Default = Playground;
 export const LineHeights = () => {
   const { t } = useTranslation();
   const sampleTitle =
@@ -287,3 +283,28 @@ export const Z_TitleCompliance: React.FC = () => (
     rules={titleComplianceRules}
   />
 );
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => {
+    const { t } = useTranslation();
+    return (
+      <Title terminals="sans" level={1} size="L">
+        {t("storyTitlePlayground")}
+      </Title>
+    );
+  },
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: {
+    children: "Heading under forced-colors",
+    level: 2,
+    size: "M",
+    terminals: "sans",
+  },
+};

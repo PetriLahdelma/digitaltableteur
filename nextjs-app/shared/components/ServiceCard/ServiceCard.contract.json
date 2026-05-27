@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "ServiceCard",
+  "tier": "molecule",
+  "group": "marketing",
+  "status": "alpha",
+  "description": "Service tile with icon, title, description, and optional link.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-service-card",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [
+    "icon"
+  ],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "description",
+    "href",
+    "icon",
+    "iconPosition",
+    "id",
+    "ref",
+    "style",
+    "title",
+    "variant"
+  ],
+  "consumers": []
+}

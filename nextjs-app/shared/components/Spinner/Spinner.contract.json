@@ -1,0 +1,50 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Spinner",
+    "tier": "atom",
+    "group": "feedback",
+    "status": "alpha",
+    "description": "Indeterminate loading spinner for async UI.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "span",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example"
+    ],
+    "argTypesProxyExempt": [
+        "className"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "aria-label or aria-labelledby"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-primary",
+            "--color-border"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

@@ -1,0 +1,59 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Pagination",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Pagination controls for paged lists (article archive, search results). Renders a `<nav>` landmark with previous/next buttons and a numbered list; supports ellipsis truncation for long page ranges.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "nav",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab — moves through the page links and prev/next buttons in document order.",
+            "Enter / Space — activates the focused control."
+        ],
+        "ariaRequirements": [
+            "Renders a `<nav>` element with `aria-label='Pagination'` (overridable).",
+            "Current page sets `aria-current='page'`.",
+            "Previous/next buttons that are unavailable use `aria-disabled='true'` instead of being removed, so the visual structure does not jump."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-accent",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8"
+        ],
+        "typography": [
+            "--font-size-sm",
+            "--font-size-md"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

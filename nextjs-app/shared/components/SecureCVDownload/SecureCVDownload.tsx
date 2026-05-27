@@ -24,7 +24,10 @@ export interface SecureCVDownloadProps {
   inverse?: boolean;
 }
 
-const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
+/**
+ * SecureCVDownload component.
+ */
+export const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
   buttonText,
   buttonVariant = "primary",
   inverse = false,

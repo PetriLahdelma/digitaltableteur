@@ -94,6 +94,21 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: __dirname,
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   transpilePackages: ["react-phone-number-input", "libphonenumber-js"],
+  // Sentry + OpenTelemetry use dynamic `require()` patterns that webpack
+  // can't statically analyse, producing repeated "Critical dependency: the
+  // request of a dependency is an expression" warnings. Externalising the
+  // packages tells webpack to leave them as Node-resolved requires at
+  // runtime, which is also more correct: these are Node-native packages that
+  // should never have been bundled. Sentry's official guidance for Next 15+.
+  serverExternalPackages: [
+    "@opentelemetry/instrumentation",
+    "@opentelemetry/sdk-node",
+    "@sentry/nextjs",
+    "@sentry/node",
+    "@sentry/profiling-node",
+    "require-in-the-middle",
+    "import-in-the-middle",
+  ],
   // Image optimization configuration
   images: {
     // Enable modern image formats for better compression
@@ -166,7 +181,13 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  webpack: (config) => {
+  webpack: (config, { dev }) => {
+    // Avoid corrupted .next/cache/webpack *.pack.gz ENOENTs during local dev.
+    if (dev) {
+      config.cache = false;
+    }
+
+    // Path aliases
     // Path aliases (Vercel/Linux safe, works even if tsconfig paths are ignored)
     const nextjsSharedComponents = path.resolve(
       __dirname,

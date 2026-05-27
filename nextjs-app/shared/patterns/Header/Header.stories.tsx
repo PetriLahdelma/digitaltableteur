@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./Header.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import Header from "./Header";
 import { ThemeProvider } from "@dt/ThemeProvider";
@@ -7,11 +8,14 @@ import { ThemeProvider } from "@dt/ThemeProvider";
 const cycleThemes = ["light", "dark", "hcb", "hcw"] as const;
 
 const meta: Meta<typeof Header> = {
+  argTypes: {},
   title: "Patterns/Header",
   component: Header,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
-    layout: "fullscreen",// Keep WIP badge until visual + a11y verified
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    layout: "fullscreen", // Keep WIP badge until visual + a11y verified
   },
   decorators: [
     (Story) => (
@@ -24,10 +28,7 @@ const meta: Meta<typeof Header> = {
 export default meta;
 type Story = StoryObj<typeof Header>;
 
-export const Default: Story = {
-  name: "Default",
-  render: () => <Header />,
-};
+export const Default: Story = { name: "Default", render: () => <Header /> };
 
 const ThemeCycleComponent: React.FC = () => {
   const [theme, setTheme] =
@@ -62,3 +63,10 @@ export const ThemeCycle: Story = {
     },
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

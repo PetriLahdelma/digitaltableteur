@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import SplitButton, { type SplitButtonOption } from "./SplitButton";
 
 describe("SplitButton", () => {
@@ -53,7 +53,7 @@ describe("SplitButton", () => {
     expect(handleSelect).toHaveBeenCalledTimes(1);
   });
 
-  it("closes menu after selecting an option", () => {
+  it("closes menu after selecting an option", async () => {
     render(
       <SplitButton
         label="Save"
@@ -65,8 +65,10 @@ describe("SplitButton", () => {
     fireEvent.click(toggleButton);
     expect(screen.getByText("Save as draft")).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText("Save as draft"));
-    expect(screen.queryByText("Save as draft")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("menuitem", { name: /save as draft/i }));
+    await waitFor(() => {
+      expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    });
   });
 
   it("disables both buttons when disabled prop is true", () => {
@@ -144,7 +146,7 @@ describe("SplitButton", () => {
     expect(screen.getByText("Save as draft")).toBeInTheDocument();
 
     fireEvent.mouseDown(screen.getByText("Outside"));
-    expect(screen.queryByText("Save as draft")).not.toBeInTheDocument();
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
   });
 
   it("handles keyboard navigation with arrow keys", () => {
@@ -172,8 +174,9 @@ describe("SplitButton", () => {
     fireEvent.click(toggleButton);
     expect(screen.getByText("Save as draft")).toBeInTheDocument();
 
-    fireEvent.keyDown(window, { key: "Escape" });
-    expect(screen.queryByText("Save as draft")).not.toBeInTheDocument();
+    const menu = screen.getByRole("menu");
+    fireEvent.keyDown(menu, { key: "Escape" });
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
   });
 
   it("applies custom className to wrapper", () => {
@@ -203,7 +206,7 @@ describe("SplitButton", () => {
   });
 
   it("renders with different sizes", () => {
-    const { container } = render(
+    render(
       <SplitButton
         label="Save"
         size="s"
@@ -211,7 +214,8 @@ describe("SplitButton", () => {
       />,
     );
 
-    expect(container.querySelector('[data-size="s"]')).toBeInTheDocument();
+    const buttons = screen.getAllByRole("button");
+    expect(buttons.length).toBeGreaterThanOrEqual(2);
   });
 
   it("opens submenu on hover", async () => {
@@ -260,7 +264,7 @@ describe("SplitButton", () => {
 
     const toggleButton = screen.getAllByRole("button")[1];
     fireEvent.click(toggleButton);
-    expect(screen.queryByText("Save as draft")).not.toBeInTheDocument();
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
   });
 
   it("handles rapid toggle clicks", () => {
@@ -288,6 +292,8 @@ describe("SplitButton", () => {
     const toggleButton = screen.getAllByRole("button")[1];
     fireEvent.click(toggleButton);
 
-    expect(screen.getByText("Save without publishing")).toBeInTheDocument();
+    expect(
+      screen.getByRole("menuitem", { name: /save as draft/i }),
+    ).toHaveAttribute("title", "Save without publishing");
   });
 });

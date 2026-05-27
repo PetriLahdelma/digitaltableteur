@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import GridBlock from "./GridBlock";
 import Text from "@dt/Text";
+import styles from "./GridBlock.module.css";
 
 describe("GridBlock", () => {
   const textCell = {
@@ -36,12 +37,12 @@ describe("GridBlock", () => {
 
   it("applies 2 columns by default", () => {
     const { container } = render(<GridBlock cells={[textCell, imageCell]} />);
-    expect(container.querySelector(`.grid2Col`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.grid2Col}`)).toBeInTheDocument();
   });
 
   it("applies 1 column when specified", () => {
     const { container } = render(<GridBlock cells={[textCell]} columns={1} />);
-    expect(container.querySelector(`.grid1Col`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.grid1Col}`)).toBeInTheDocument();
   });
 
   it("applies light background color", () => {
@@ -63,24 +64,27 @@ describe("GridBlock", () => {
   it("applies transparent background by default", () => {
     const { container } = render(<GridBlock cells={[textCell]} />);
     const section = container.querySelector("section");
-    expect(section).toHaveStyle({ backgroundColor: "transparent" });
+    expect(section).toHaveAttribute(
+      "style",
+      expect.stringContaining("transparent"),
+    );
   });
 
   it("applies custom className", () => {
     const { container } = render(
       <GridBlock cells={[textCell]} className="custom-class" />,
     );
-    expect(container.firstChild).toHaveClass("custom-class");
+    expect(container.querySelector(".custom-class")).toBeInTheDocument();
   });
 
   it("applies noGap class when gap is none", () => {
     const { container } = render(<GridBlock cells={[textCell]} gap="none" />);
-    expect(container.querySelector(`.noGap`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.noGap}`)).toBeInTheDocument();
   });
 
   it("applies smallGap class when gap is small", () => {
     const { container } = render(<GridBlock cells={[textCell]} gap="small" />);
-    expect(container.querySelector(`.smallGap`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.smallGap}`)).toBeInTheDocument();
   });
 
   it("renders image caption when provided and stacked", () => {
@@ -98,7 +102,7 @@ describe("GridBlock", () => {
       innerPadding: true,
     };
     const { container } = render(<GridBlock cells={[cellWithPadding]} />);
-    expect(container.querySelector(`.withPadding`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.innerPadding}`)).toBeInTheDocument();
   });
 
   it("applies mixBlendMode to images when specified", () => {

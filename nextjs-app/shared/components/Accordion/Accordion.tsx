@@ -15,6 +15,7 @@ export type AccordionProps = {
   defaultOpenId?: string;
 };
 
+/** Expandable accordion sections with keyboard-operable triggers. */
 const Accordion: React.FC<AccordionProps> = ({ items, defaultOpenId }) => {
   const [openId, setOpenId] = React.useState<string | null>(
     defaultOpenId ?? null,

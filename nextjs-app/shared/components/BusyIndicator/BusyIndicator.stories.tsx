@@ -1,6 +1,7 @@
+import contract from "./BusyIndicator.contract.json";
 import React, { useEffect, useState } from "react";
 import BusyIndicator from "@dt/BusyIndicator";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
@@ -20,18 +21,17 @@ const busyIndicatorComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof BusyIndicator> = {
-  title: "Feedback/BusyIndicator",
+  argTypes: {},
+  title: "Atoms/BusyIndicator",
   component: BusyIndicator,
-  tags: ["autodocs"],
-  parameters: {},
+  tags: ["!autodocs"],
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
 };
 export default meta;
 
 type Story = StoryObj<typeof BusyIndicator>;
 
-export const Indeterminate: Story = {
-  args: { size: "m" },
-};
+export const Indeterminate: Story = { args: { size: "m" } };
 
 export const SmallInline: Story = { args: { size: "s" } };
 export const Large: Story = { args: { size: "l" } };
@@ -54,14 +54,10 @@ const DeterminateDemo: React.FC = () => {
 
 export const Determinate: Story = { render: () => <DeterminateDemo /> };
 
-export const Completed: Story = {
-  args: { progress: 1, size: "m" },
-};
+export const Completed: Story = { args: { progress: 1, size: "m" } };
 
 export const Z_BusyIndicatorCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="Compliance: 11/11"
@@ -72,3 +68,8 @@ export const Z_BusyIndicatorCompliance: Story = {
     />
   ),
 };
+
+export const Default = {};
+export const Playground = {};
+export const Example = { parameters: { controls: { disable: true } } };
+export const ForcedColors = { globals: { forcedColors: "active" } };

@@ -1,0 +1,27 @@
+{
+  "typography": {
+    "$description": "Font families and scale (aliases to runtime variables.css)",
+    "font": {
+      "title": {
+        "$value": "var(--font-title)",
+        "$type": "fontFamily",
+        "$description": "Display / heading stack"
+      },
+      "text": {
+        "$value": "var(--font-text)",
+        "$type": "fontFamily",
+        "$description": "Body stack"
+      }
+    },
+    "size": {
+      "title": {
+        "$value": "var(--font-size-title)",
+        "$type": "dimension"
+      },
+      "text": {
+        "$value": "var(--font-size-text)",
+        "$type": "dimension"
+      }
+    }
+  }
+}

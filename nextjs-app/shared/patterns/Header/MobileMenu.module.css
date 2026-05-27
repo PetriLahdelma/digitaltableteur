@@ -21,6 +21,7 @@
   box-shadow:
     0 1.5rem 3rem -0.5rem rgb(0 0 0 / 35%),
     0 0 0 1px color-mix(in srgb, var(--color-border, #c0c0c0) 40%, transparent);
+
   /* GSAP controls transform + opacity for open/close animation */
 }
 
@@ -31,11 +32,11 @@
   max-height: 100%;
   flex-direction: column;
   gap: var(--space-internal-24, 1.5rem);
+  border-radius: var(--radius-lg);
+  background: var(--main-body-background-color, #fff);
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   overscroll-behavior: contain;
-  background: var(--main-body-background-color, #fff);
-  border-radius: var(--radius-lg);
 }
 
 .panelContent:focus-visible {

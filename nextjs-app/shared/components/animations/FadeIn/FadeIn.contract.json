@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "FadeIn",
+  "tier": "atom",
+  "group": "motion",
+  "status": "alpha",
+  "description": "Scroll-triggered fade-in animation wrapper (GSAP).",
+  "figma": "https://www.figma.com/design/digitaltableteur/fade-in",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [
+    "children"
+  ],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "delay",
+    "direction",
+    "distance",
+    "duration",
+    "id",
+    "ref",
+    "style",
+    "threshold"
+  ]
+}

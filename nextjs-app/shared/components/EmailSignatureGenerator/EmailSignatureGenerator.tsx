@@ -22,7 +22,7 @@ interface SignatureData {
   tiktok: string;
 }
 
-interface EmailSignatureGeneratorProps {
+export interface EmailSignatureGeneratorProps {
   /** Company name for the signature */
   companyName?: string;
   /** Company website URL */
@@ -33,7 +33,10 @@ interface EmailSignatureGeneratorProps {
   logoUrlFull?: string;
 }
 
-const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
+/**
+ * EmailSignatureGenerator component.
+ */
+export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
   companyName = "Digitaltableteur",
   companyUrl = "https://digitaltableteur.com",
   logoUrl = "/round.png",
@@ -88,47 +91,47 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
     const contactParts: string[] = [];
     if (phone) {
       contactParts.push(
-        `<a href="tel:${phone.replace(/\s/g, "")}" style="color: #6b7280; text-decoration: none;">${phone}</a>`
+        `<a href="tel:${phone.replace(/\s/g, "")}" style="color: var(--color-text); text-decoration: none;">${phone}</a>`
       );
     }
     if (linkedin) {
       const username = linkedin.startsWith("@") ? linkedin.slice(1) : linkedin;
       contactParts.push(
-        `<a href="https://linkedin.com/in/${username}" style="color: #6b7280; text-decoration: none;">${linkedinLabel}</a>`
+        `<a href="https://linkedin.com/in/${username}" style="color: var(--color-text); text-decoration: none;">${linkedinLabel}</a>`
       );
     }
     if (github) {
       const username = github.startsWith("@") ? github.slice(1) : github;
       contactParts.push(
-        `<a href="https://github.com/${username}" style="color: #6b7280; text-decoration: none;">${githubLabel}</a>`
+        `<a href="https://github.com/${username}" style="color: var(--color-text); text-decoration: none;">${githubLabel}</a>`
       );
     }
     if (twitter) {
       const username = twitter.startsWith("@") ? twitter.slice(1) : twitter;
       contactParts.push(
-        `<a href="https://x.com/${username}" style="color: #6b7280; text-decoration: none;">${twitterLabel}</a>`
+        `<a href="https://x.com/${username}" style="color: var(--color-text); text-decoration: none;">${twitterLabel}</a>`
       );
     }
     if (bluesky) {
       const username = bluesky.startsWith("@") ? bluesky.slice(1) : bluesky;
       contactParts.push(
-        `<a href="https://bsky.app/profile/${username}" style="color: #6b7280; text-decoration: none;">${blueskyLabel}</a>`
+        `<a href="https://bsky.app/profile/${username}" style="color: var(--color-text); text-decoration: none;">${blueskyLabel}</a>`
       );
     }
     if (instagram) {
       const username = instagram.startsWith("@") ? instagram.slice(1) : instagram;
       contactParts.push(
-        `<a href="https://instagram.com/${username}" style="color: #6b7280; text-decoration: none;">${instagramLabel}</a>`
+        `<a href="https://instagram.com/${username}" style="color: var(--color-text); text-decoration: none;">${instagramLabel}</a>`
       );
     }
     if (tiktok) {
       const username = tiktok.startsWith("@") ? tiktok.slice(1) : tiktok;
       contactParts.push(
-        `<a href="https://tiktok.com/@${username}" style="color: #6b7280; text-decoration: none;">${tiktokLabel}</a>`
+        `<a href="https://tiktok.com/@${username}" style="color: var(--color-text); text-decoration: none;">${tiktokLabel}</a>`
       );
     }
 
-    return `<table cellpadding="0" cellspacing="0" border="0" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; line-height: 1.5; color: #374151;">
+    return `<table cellpadding="0" cellspacing="0" border="0" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 14px; line-height: 1.5; color: var(--color-text);">
   <tr>
     <td style="padding-bottom: 12px;">
       <a href="${companyUrl}" style="text-decoration: none;">
@@ -138,18 +141,18 @@ const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = ({
   </tr>
   <tr>
     <td>
-      <strong style="font-size: 16px; color: #111827;">${name || t("emailSig.yourName", { defaultValue: "Your Name" })}</strong>
+      <strong style="font-size: 16px; color: var(--color-text);">${name || t("emailSig.yourName", { defaultValue: "Your Name" })}</strong>
     </td>
   </tr>
   <tr>
-    <td style="color: #6b7280; padding-top: 2px;">
+    <td style="color: var(--color-text); padding-top: 2px;">
       ${title ? `${title}, ` : ""}${companyName}
     </td>
   </tr>
   ${
     contactParts.length > 0
       ? `<tr>
-    <td style="padding-top: 8px; color: #6b7280;">
+    <td style="padding-top: 8px; color: var(--color-text);">
       ${contactParts.join(" · ")}
     </td>
   </tr>`

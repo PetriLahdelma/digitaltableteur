@@ -1,12 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./SocialShare.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SocialShare } from "@dt/SocialShare";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import React from "react";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
-
-declare const expect: (typeof import("vitest"))["expect"];
+import { expect, userEvent, waitFor, within } from "storybook/test";
 
 const socialShareComplianceRules: ComplianceRule[] = [
   {
@@ -78,21 +77,18 @@ const socialShareComplianceRules: ComplianceRule[] = [
 ];
 
 const meta = {
-  title: "Components/SocialShare",
+  title: "Molecules/SocialShare",
   component: SocialShare,
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "centered",
   },
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   argTypes: {
-    url: {
-      control: "text",
-      description: "The URL to share",
-    },
-    title: {
-      control: "text",
-      description: "The title to share",
-    },
+    url: { control: "text", description: "The URL to share" },
+
+    title: { control: "text", description: "The title to share" },
   },
 } satisfies Meta<typeof SocialShare>;
 
@@ -100,9 +96,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Z_SocialShareCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="Compliance: 11/11"
@@ -146,18 +140,11 @@ export const MobileView: Story = {
     url: "https://digitaltableteur.com",
     title: "Mobile Social Share Test",
   },
-  parameters: {
-    viewport: {
-      defaultViewport: "mobile1",
-    },
-  },
+  parameters: { viewport: { defaultViewport: "mobile1" } },
 };
 
 export const WithNativeShare: Story = {
-  args: {
-    url: "https://digitaltableteur.com",
-    title: "Native Share API Test",
-  },
+  args: { url: "https://digitaltableteur.com", title: "Native Share API Test" },
   parameters: {
     docs: {
       description: {
@@ -174,3 +161,10 @@ export const WithNativeShare: Story = {
     });
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

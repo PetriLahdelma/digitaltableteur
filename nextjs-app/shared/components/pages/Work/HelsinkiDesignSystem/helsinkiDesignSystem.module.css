@@ -21,21 +21,21 @@
 }
 
 .metricsBand {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
   background: linear-gradient(
       135deg,
-      rgba(129, 46, 255, 0.1),
-      rgba(113, 239, 255, 0.08)
+      rgb(129 46 255 / 10%),
+      rgb(113 239 255 / 8%)
     ),
     var(--color-light-bg);
-  padding-block: clamp(2.5rem, 5vw, 4rem);
 }
 
 .metricsHeader {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--space-layout-32);
-  align-items: center;
   margin-block-end: var(--space-layout-24);
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: var(--space-layout-32);
 }
 
 .metricsTitle {
@@ -49,8 +49,8 @@
 
 .metricsCaption {
   margin: 0;
-  color: var(--color-primary);
   max-width: 36rem;
+  color: var(--color-primary);
 }
 
 .metricsGrid {
@@ -65,19 +65,19 @@
 
 .metricCard {
   display: grid;
-  gap: var(--space-layout-8);
   padding: clamp(1.25rem, 2vw, 1.75rem);
+  gap: var(--space-layout-8);
+  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   background: var(--color-white);
-  border: 1px solid var(--color-border-light);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 12px 36px rgb(0 0 0 / 5%);
 }
 
 .metricCardDark {
+  border-color: rgb(255 255 255 / 8%);
   background: var(--color-dark);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 12%);
   color: var(--color-white);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
 .metricValue {
@@ -88,8 +88,8 @@
 .metricLabel {
   margin: 0;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .metricDetail {

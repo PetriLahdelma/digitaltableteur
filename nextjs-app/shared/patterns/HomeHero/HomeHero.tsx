@@ -20,6 +20,9 @@ export interface HomeHeroProps {
   className?: string;
 }
 
+/**
+ * HomeHero component.
+ */
 export function HomeHero({
   scrollTargetId = "services",
   className,

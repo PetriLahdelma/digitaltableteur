@@ -47,7 +47,10 @@ function getCookie(name: string) {
   }, "");
 }
 
-const Header: React.FC<HeaderProps> = ({
+/**
+ * Header component.
+ */
+export const Header: React.FC<HeaderProps> = ({
   navItems,
   onThemeCycle,
   onLanguageChange,
@@ -205,7 +208,8 @@ const Header: React.FC<HeaderProps> = ({
             {resolvedNavItems.map((item) => {
               const isActive = item.exact
                 ? location.pathname === item.to
-                : location.pathname.startsWith(item.to);
+                : location.pathname === item.to ||
+                  location.pathname.startsWith(`${item.to}/`);
               return (
                 <li key={item.to}>
                   <Link

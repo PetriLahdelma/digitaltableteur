@@ -51,6 +51,9 @@ const DEFAULT_ANIMATIONS: Record<AnimationName, AnimationConfig> = {
 
 const GROUND_Y = 0;
 
+/**
+ * Designerman component.
+ */
 export function Designerman({
   spriteSheet,
   frameWidth = 64,

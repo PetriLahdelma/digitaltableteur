@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useTranslation } from "react-i18next";
 import styles from "./ThemingAndLocalization.module.css";
 
@@ -112,6 +112,4 @@ export default meta;
 
 type Story = StoryObj<typeof DocsContent>;
 
-export const Overview: Story = {
-  render: () => <DocsContent />,
-};
+export const Overview: Story = { render: () => <DocsContent /> };

@@ -1,0 +1,26 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 11/11" [level=2]'
+- text: Complete file structure
+- img "Pass"
+- text: All 5 files present TypeScript strict
+- img "Pass"
+- text: Exported interface, forwardRef Translation support
+- img "Pass"
+- text: StoryLabel pattern for i18n CSS Modules
+- img "Pass"
+- text: Removed all inline styles Design tokens
+- img "Pass"
+- text: Uses CSS variables throughout Logical properties
+- img "Pass"
+- text: border-inline-start used Theme support
+- img "Pass"
+- text: CSS custom properties adapt Accessibility
+- img "Pass"
+- text: Native input, proper labels Progressive enhancement
+- img "Pass"
+- text: "@supports for accent-color Storybook stories"
+- img "Pass"
+- text: Multiple variants with ComplianceCard Tests
+- img "Pass"
+- text: Test file exists
+- separator "Resize table"

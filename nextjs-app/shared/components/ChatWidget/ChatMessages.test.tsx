@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
-import ChatMessages from "@dt/ChatMessages";
+import ChatMessages from "@dt/ChatWidget/ChatMessages";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
 import type { UIMessage } from "ai";

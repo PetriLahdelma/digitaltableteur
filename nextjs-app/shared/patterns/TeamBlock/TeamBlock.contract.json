@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "TeamBlock",
+  "tier": "pattern",
+  "group": "structure",
+  "status": "alpha",
+  "description": "TeamBlock — production @dt component (Storybook beta).",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-team-block",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [
+    "description"
+  ],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "ariaRequirements": []
+  },
+  "tokens": {
+    "colors": [
+      "--color-light-bg",
+      "--color-white"
+    ],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "ariaLabel",
+    "as",
+    "asChild",
+    "backgroundColor",
+    "children",
+    "className",
+    "columns",
+    "description",
+    "id",
+    "maxWidth",
+    "members",
+    "ref",
+    "roundImages",
+    "sectionTitle",
+    "spacing",
+    "style"
+  ],
+  "consumers": []
+}

@@ -61,9 +61,9 @@ describe("Toast", () => {
 
   it("has correct accessibility attributes", () => {
     render(<Toast message="Test message" isOpen={true} />);
-    const toast = screen.getByText("Test message");
-    expect(toast).toHaveAttribute("role", "status");
+    const toast = screen.getByRole("status");
     expect(toast).toHaveAttribute("aria-live", "polite");
+    expect(screen.getByText("Test message")).toBeInTheDocument();
   });
 
   it("clears timer when component unmounts", () => {

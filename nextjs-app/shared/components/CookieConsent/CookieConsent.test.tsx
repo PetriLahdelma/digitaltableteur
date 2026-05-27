@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { vi, beforeEach, afterEach, describe, it, expect } from "vitest";
 import CookieConsent from "@dt/CookieConsent";
 import { CookieConsentProvider } from "../../lib/cookieConsent";
@@ -11,26 +11,41 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: mockT, i18n: mockI18n }),
 }));
 
-// Mock localStorage
+// In-memory localStorage for consent persistence
+const consentStore: Record<string, string> = {};
 const localStorageMock = {
-  getItem: vi.fn(),
-  setItem: vi.fn(),
-  removeItem: vi.fn(),
+  getItem: vi.fn((key: string) => consentStore[key] ?? null),
+  setItem: vi.fn((key: string, value: string) => {
+    consentStore[key] = value;
+  }),
+  removeItem: vi.fn((key: string) => {
+    delete consentStore[key];
+  }),
 };
 Object.defineProperty(window, "localStorage", {
   value: localStorageMock,
+  configurable: true,
+});
+
+const sampleConsent = JSON.stringify({
+  version: 1,
+  timestamp: "2026-01-01T00:00:00.000Z",
+  language: "en",
+  categories: {
+    essential: true,
+    analytics: true,
+    marketing: true,
+    functional: true,
+  },
 });
 
 describe("CookieConsent", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    localStorageMock.getItem.mockReturnValue(null);
+    for (const key of Object.keys(consentStore)) {
+      delete consentStore[key];
+    }
     mockI18n.language = "en";
-  });
-
-  afterEach(() => {
-    localStorageMock.getItem.mockReset();
-    localStorageMock.setItem.mockReset();
   });
 
   it("renders modal when no cookie consent is stored", () => {
@@ -46,16 +61,21 @@ describe("CookieConsent", () => {
     expect(screen.getByText(/cookieConsent.description/i)).toBeInTheDocument();
   });
 
-  it("does not render modal when cookie consent exists", () => {
-    localStorageMock.getItem.mockReturnValue("accepted");
+  it("does not render modal when cookie consent exists", async () => {
+    consentStore["dt-cookie-consent"] = sampleConsent;
+    localStorageMock.getItem.mockImplementation(
+      (key: string) => consentStore[key] ?? null,
+    );
     render(
       <CookieConsentProvider autoShow>
         <CookieConsent />
       </CookieConsentProvider>,
     );
-    expect(
-      screen.queryByRole("heading", { name: /cookieConsent.title/i }),
-    ).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(
+        screen.queryByRole("heading", { name: /cookieConsent.title/i }),
+      ).not.toBeInTheDocument();
+    });
   });
 
   it("renders action buttons", () => {
@@ -87,8 +107,8 @@ describe("CookieConsent", () => {
       screen.getByRole("button", { name: /cookieConsent.acceptAllButton/i }),
     );
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      "cookieConsent",
-      "accepted",
+      "dt-cookie-consent",
+      expect.stringContaining("\"analytics\":true"),
     );
   });
 
@@ -104,8 +124,8 @@ describe("CookieConsent", () => {
       }),
     );
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      "cookieConsent",
-      "essential-only",
+      "dt-cookie-consent",
+      expect.stringContaining("\"essential\":true"),
     );
   });
 

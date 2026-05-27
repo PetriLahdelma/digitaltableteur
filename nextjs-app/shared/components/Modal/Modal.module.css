@@ -28,7 +28,7 @@
 
 .header {
   display: flex;
-  padding: 1.5rem 1.5rem 1.5rem;
+  padding: 1.5rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -78,7 +78,7 @@
 
 .footer {
   display: flex;
-  padding: 1.5rem 1.5rem 1.5rem;
+  padding: 1.5rem;
   justify-content: flex-end;
   gap: 0.5rem;
 }

@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "DesignSprintsSection",
+  "tier": "pattern",
+  "group": "marketing",
+  "status": "alpha",
+  "description": "Homepage design-sprints band with animated CTA pills.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-design-sprints-section",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "id",
+    "ref",
+    "style"
+  ],
+  "consumers": []
+}

@@ -1,0 +1,115 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './SiteHeader.stories';
+
+<Meta of={Stories} />
+
+# SiteHeader
+
+**Status:** beta · **Tier:** pattern · **Group:** layout
+
+The site-wide sticky header. SiteHeader carries the brand mark (an
+animated SVG logo that pulses on hover), the primary nav, the
+language switcher (EN / FI / SV), the theme cycle button (light →
+dark → high-contrast-black → high-contrast-white), and a mobile
+hamburger that opens MobileDrawer. The header is sticky and fades
+to a translucent backdrop on scroll.
+
+## In use
+
+Mounted globally in `app/layout.tsx`; every page renders it. The
+component reads its nav items from a default array (Home / Work /
+About / Blog / Contact) but accepts a `navItems` override for
+contexts that need a different set (e.g. dedicated landing pages
+without the main nav).
+
+Three compositions worth cribbing:
+
+- **Default mount.** `<SiteHeader />` — every consumer should use
+  this. The default nav matches the marketing IA.
+- **Custom nav for a landing page.** Pass `navItems` with a single
+  primary CTA-style link so the landing-page focus isn't diluted
+  by main nav.
+- **Custom className for theme-scoped overrides.** Pass
+  `className="my-special-header"` to add layout-scoped styles
+  without forking the component.
+
+Anti-pattern to avoid: mounting two SiteHeaders. The sticky
+positioning + scroll listener will fight; only one can win the
+backdrop-fade timing.
+
+## How to use
+
+```tsx
+import { SiteHeader } from '@dt/SiteHeader';
+
+// Default global mount (already in app/layout.tsx)
+<SiteHeader />
+
+// Custom nav for a landing route
+<SiteHeader
+  navItems={[
+    { href: '/work', label: 'navWork' },
+    { href: '/contact', label: 'navContact' },
+  ]}
+/>
+```
+
+Required consumer wiring: the parent layout must mount
+`<I18nProvider>`, `<NextThemeProvider>`, and `<ToastProvider>` above
+SiteHeader. The component reads from i18n for nav labels, theme via
+`usePersistentTheme`, and announces theme / language changes via
+`useToast`.
+
+Theme & forced-colors notes: the header background is transparent at
+scroll-top and fades to `bg-background/95 backdrop-blur` on scroll.
+Forced-colors keeps the background opaque and the border solid so the
+header remains a distinct surface. The animated logo's pulse is
+suppressed under `prefers-reduced-motion: reduce`.
+
+## When to use
+
+- The global site header. There's no other consumer.
+
+## When not to use
+
+- An admin / dashboard header — different IA, different controls.
+  Build a separate AdminHeader.
+- A modal header — Modal already provides its own header.
+- A documentation header — Storybook owns its own toolbar.
+
+## Accessibility
+
+- **Landmarks:** the wrapper is `<header>` (banner landmark). The nav
+  inside is `<nav aria-label>` with a translated label so AT users
+  can jump to "site navigation".
+- **Theme cycle button:** the IconButton is labelled
+  `aria-label={t('toggleDarkMode')}`. On activation, the theme cycles
+  and a Toast announces the new theme via the polite live region —
+  AT users hear "Theme changed: Dark".
+- **Language switcher:** each language button has its own translated
+  `aria-label` plus a `disabled` state for the currently active
+  language. On change, a Toast announces "Language changed: Finnish"
+  in the *target* language (the user is switching *to* it).
+- **Mobile menu trigger:** the hamburger IconButton carries
+  `aria-label={t('navMenuOpen')}`. Activating opens MobileDrawer
+  which manages its own focus trap.
+- **Logo link:** wrapped `<svg role="img" aria-label="Digitaltableteur
+  logo">`. The hover pulse animation is purely visual and
+  `prefers-reduced-motion: reduce` suppresses it.
+- **Scroll backdrop:** the visual fade is style-only; the AT
+  experience is identical at scroll-top and mid-scroll.
+
+## Promotion notes
+
+- SiteHeader gates every page navigation, so promoting it is
+  high-stakes. Stable promotion blockers:
+  - AT-tree snapshots for default / mobile / dark-theme / HCB / HCW
+    states.
+  - Real-browser forced-colors verification of every control.
+  - Manual screen-reader walkthrough of language change + theme
+    change.
+  - Documented production consumer (`app/layout.tsx` is canonical).
+- Known debt: the logo SVG is inline rather than a sprite. Inlining
+  keeps the hover animation working without a separate animation
+  asset, but at the cost of ~3kB per render. Acceptable for a
+  globally cached layout component.

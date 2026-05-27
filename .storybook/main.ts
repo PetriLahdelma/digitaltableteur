@@ -1,19 +1,30 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import { fileURLToPath } from "node:url";
 
+const enableVitestPanel = process.env.STORYBOOK_VITEST === "1";
+
 const config: StorybookConfig = {
   stories: [
     "../nextjs-app/shared/components/**/*.mdx",
     "../nextjs-app/shared/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../nextjs-app/shared/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../nextjs-app/shared/patterns/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../nextjs-app/shared/templates/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../nextjs-app/shared/foundations/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../nextjs-app/shared/foundations/**/*.mdx",
   ],
   addons: [
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
     "@storybook/addon-mcp",
-    "@storybook/addon-vitest",
+    ...(enableVitestPanel ? ["@storybook/addon-vitest"] : []),
   ],
+  core: {
+    disableWhatsNewNotifications: true,
+  },
+  features: {
+    onboarding: false,
+  },
   framework: {
     name: "@storybook/react-vite",
     options: {},
@@ -77,6 +88,8 @@ const config: StorybookConfig = {
       "mermaid",
       "react-chartjs-2",
       "@storybook/testing-library",
+      "@gsap/react",
+      "gsap",
     ];
 
     config.optimizeDeps = {

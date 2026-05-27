@@ -48,7 +48,10 @@ export interface LinkedInQuoteCardProps {
   variant?: "light" | "dark" | "muted";
 }
 
-const LinkedInQuoteCard: React.FC<LinkedInQuoteCardProps> = ({
+/**
+ * LinkedInQuoteCard component.
+ */
+export const LinkedInQuoteCard: React.FC<LinkedInQuoteCardProps> = ({
   quote,
   name,
   title,

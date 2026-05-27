@@ -36,6 +36,9 @@ const STATUS_COLOR_MAP: Record<ComplianceStatus, string> = {
   fail: "var(--color-error)",
 };
 
+/**
+ * ComplianceCard component.
+ */
 export const ComplianceCard: React.FC<ComplianceCardProps> = ({
   title,
   titleIcon,

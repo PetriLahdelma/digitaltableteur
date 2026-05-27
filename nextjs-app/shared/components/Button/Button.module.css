@@ -19,12 +19,14 @@
 }
 
 /* Focus states for accessibility (WCAG 2.4.7 Focus Visible) */
+
 .button:focus-visible {
   outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
   outline-offset: var(--focus-ring-offset, 2px);
 }
 
 /* Ensure focus ring is visible on all variants */
+
 .button.primary:focus-visible,
 .button.secondary:focus-visible,
 .button.tertiary:focus-visible,
@@ -37,6 +39,7 @@
 }
 
 /* Inverse variants need contrasting focus ring */
+
 .button.inverse:focus-visible {
   outline-color: var(--color-white);
 }
@@ -251,6 +254,7 @@
 }
 
 /* Modern size variants (v1.1.0) - aliases for legacy sizes */
+
 .button.sm {
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-12);
@@ -294,6 +298,7 @@
 }
 
 /* Modern size iconOnly variants (v1.1.0) */
+
 .button.sm.iconOnly {
   padding: 0;
   block-size: 1.5rem;
@@ -334,44 +339,47 @@
 /* Split button specific styles */
 
 .button.splitMain {
-  border-start-end-radius: 0;
-  border-end-end-radius: 0;
   margin-inline-end: -1px; /* collapse adjoining border */
+  border-end-end-radius: 0;
+  border-start-end-radius: 0;
 }
 
 .button.splitToggle {
   position: relative;
-  border-start-start-radius: 0;
-  border-end-start-radius: 0;
   padding-inline: var(--space-internal-12);
   min-inline-size: 2.75rem;
+  border-end-start-radius: 0;
+  border-start-start-radius: 0;
 }
 
 .button.splitToggle::before {
   position: absolute;
-  inset-inline-start: 0;
-  inset-block-start: 0.5rem;
-  inset-block-end: 0.5rem;
   inline-size: 1px;
   content: "";
+  inset-block: 0.5rem;
+  inset-inline-start: 0;
 }
 
 /* Primary variant: white divider on primary background */
+
 .button.primary.splitToggle::before {
   background-color: color-mix(in srgb, var(--color-white) 50%, transparent);
 }
 
 /* Secondary variant: primary color divider */
+
 .button.secondary.splitToggle::before {
   background-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
 }
 
 /* Tertiary variant: primary color divider */
+
 .button.tertiary.splitToggle::before {
   background-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
 }
 
 /* Disabled variant: muted color divider */
+
 .button:disabled.splitToggle::before {
   background-color: color-mix(in srgb, var(--color-muted) 50%, transparent);
 }
@@ -380,17 +388,17 @@
 .button.splitSecondaryToggle {
   border: none;
   background: transparent;
-  color: var(--color-primary);
   box-shadow: none;
+  color: var(--color-primary);
 }
 
 .button.splitTertiaryMain,
 .button.splitTertiaryToggle {
+  margin-inline-end: 0;
   border: none;
   background: transparent;
-  color: var(--color-primary);
   box-shadow: none;
-  margin-inline-end: 0;
+  color: var(--color-primary);
 }
 
 @media (width <= 768px) {
@@ -403,6 +411,7 @@
   }
 
   /* OPER-06: Touch targets must be at least 44x44px on mobile (WCAG 2.1 SC 2.5.5) */
+
   .button.sm.iconOnly,
   .button.s.iconOnly {
     block-size: 2.75rem; /* 44px */
@@ -411,6 +420,7 @@
   }
 
   /* md.iconOnly is 40px (2.5rem), slightly below 44px - increase for compliance */
+
   .button.md.iconOnly,
   .button.m.iconOnly {
     block-size: 2.75rem; /* 44px */

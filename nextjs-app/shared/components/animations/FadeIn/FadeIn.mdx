@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './FadeIn.stories';
+
+<Meta of={Stories} />
+
+# FadeIn
+
+**Status:** beta · **Tier:** molecule · **Group:** motion
+
+## In use
+
+See the **Example** story for the canonical production composition.
+
+## How to use
+
+```tsx
+import { FadeIn } from '@dt/FadeIn';
+
+<FadeIn />
+```
+
+## When to use
+
+- Production layouts and flows documented in Storybook.
+
+## When not to use
+
+- Prefer a smaller primitive when this composition is more than you need.
+
+## Accessibility
+
+- Verify keyboard, focus, and screen-reader behaviour in the **Example** story.
+- Theme and forced-colors stories cover light, dark, and high-contrast modes.
+
+## Promotion notes
+
+- Promote to stable after AT snapshots and a documented production consumer.

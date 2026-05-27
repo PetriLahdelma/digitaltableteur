@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- link "View portfolio project details":
+  - /url: https://example.com
+  - img "arrow-square-out"
+  - heading "Portfolio Project" [level=3]
+  - paragraph: This entire card functions as a clickable link while maintaining semantic structure.
+  - img "External link"

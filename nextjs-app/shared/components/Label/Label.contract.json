@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Label",
+  "tier": "atom",
+  "group": "form",
+  "status": "beta",
+  "description": "Form field label with required, disabled, and tooltip affordances.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-label",
+  "radixPrimitive": null,
+  "element": "label",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "htmlFor associates control",
+      "required state exposed"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — association and forced-colors verified in Storybook.",
+    "forcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "disabled",
+    "htmlFor",
+    "id",
+    "ref",
+    "required",
+    "style",
+    "tooltipText"
+  ],
+  "consumers": []
+}

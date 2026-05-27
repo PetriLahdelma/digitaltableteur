@@ -1,56 +1,24 @@
+import contract from "./Avatar.contract.json";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 /* stylelint-disable value-keyword-case */
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import Avatar from "@dt/Avatar";
 import peteVaultBoy from "../../assets/images/pete-vault-boy.jpg";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
 import Icon from "@dt/Icon";
 import ComplianceCard, { type ComplianceRule } from "@dt/ComplianceCard";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 import PropTypes from "prop-types";
 
-// expect is available globally in Storybook browser tests
-declare const expect: (typeof import("vitest"))["expect"];
-
 export default {
-  title: "Components/Avatar",
+  title: "Atoms/Avatar",
   component: Avatar,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     variant: {
@@ -58,6 +26,7 @@ export default {
       options: ["image", "initials"],
       description: "Select whether the avatar prefers an image or initials.",
     },
+
     name: {
       control: { type: "text" },
       description:
@@ -188,17 +157,10 @@ DefaultVariant.parameters = {
 };
 
 export const WithImage = Template.bind({});
-WithImage.args = {
-  imageUrl: peteVaultBoy,
-  name: undefined,
-  variant: "image",
-};
+WithImage.args = { imageUrl: peteVaultBoy, name: undefined, variant: "image" };
 
 export const WithInitials = Template.bind({});
-WithInitials.args = {
-  name: "Petri Lahdelma",
-  variant: "initials",
-};
+WithInitials.args = { name: "Petri Lahdelma", variant: "initials" };
 
 export const WithMenu = Template.bind({});
 WithMenu.args = {
@@ -207,22 +169,10 @@ WithMenu.args = {
   menuLabel: "Open avatar menu",
   variant: "image",
   menuItems: [
-    {
-      label: "Profile",
-      icon: <Icon name="user" aria-hidden="true" />,
-    },
-    {
-      label: "Settings",
-      icon: <Icon name="gear" aria-hidden="true" />,
-    },
-    {
-      label: "Help",
-      icon: <Icon name="question-mark" aria-hidden="true" />,
-    },
-    {
-      label: "Sign out",
-      icon: <Icon name="sign-out" aria-hidden="true" />,
-    },
+    { label: "Profile", icon: <Icon name="user" aria-hidden="true" /> },
+    { label: "Settings", icon: <Icon name="gear" aria-hidden="true" /> },
+    { label: "Help", icon: <Icon name="question-mark" aria-hidden="true" /> },
+    { label: "Sign out", icon: <Icon name="sign-out" aria-hidden="true" /> },
   ],
 };
 
@@ -387,3 +337,12 @@ export const Z_AvatarCompliance: StoryFn = () => (
     lastReviewed="2025-11-24"
   />
 );
+export const Default = DefaultVariant;
+export const Playground = DefaultVariant;
+
+export const Example = {
+  parameters: { controls: { disable: true } },
+  render: (args: AvatarStoryArgs) => <Avatar {...WithMenu.args} {...args} />,
+};
+
+export const ForcedColors = { globals: { forcedColors: "active" } };

@@ -1,0 +1,222 @@
+#!/usr/bin/env node
+/**
+ * Extract production tokens + contrast audit into foundations/token-catalog.json
+ */
+import { readFileSync, writeFileSync } from "node:fs";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import {
+  SEMANTIC_CONTRAST_PAIRS,
+  colorToRgb,
+  contrastRatio,
+  wcagLevel,
+} from "./contrast-utils.mjs";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const VARIABLES_CSS = resolve(__dirname, "../../nextjs-app/shared/styles/variables.css");
+const OUT_JSON = resolve(__dirname, "../../nextjs-app/shared/foundations/token-catalog.json");
+
+const USAGE_OVERRIDES = {
+  "--color-primary": "Primary actions, links, focus rings, and key UI chrome.",
+  "--color-text": "Default body copy color.",
+  "--color-title": "Heading color; usually aligned with primary text.",
+  "--main-body-background-color": "Page canvas / body background.",
+  "--color-success": "Success feedback, positive badges, and confirmations.",
+  "--color-info": "Informational alerts and neutral-positive emphasis.",
+  "--color-warning": "Warning surfaces; pair with --color-warning-text.",
+  "--color-error": "Errors, destructive actions, and critical alerts.",
+  "--color-border": "Default 1px borders on inputs, cards, and dividers.",
+  "--link-color": "Hyperlink color in prose and inline links.",
+  "--focus-ring-color": "Keyboard focus outline color (WCAG focus appearance).",
+  "--font-title": "Heading font stack (Syne via next/font).",
+  "--font-text": "Body/UI font stack (Satoshi via next/font).",
+  "--selection-background": "Text selection highlight background.",
+  "--selection-color": "Text selection foreground.",
+};
+
+function inferUsage(name) {
+  if (USAGE_OVERRIDES[name]) return USAGE_OVERRIDES[name];
+  if (name.startsWith("--accent-")) return "Brand/marketing accent — not default UI chrome.";
+  if (name.startsWith("--space-layout-")) {
+    const step = name.replace("--space-layout-", "");
+    return `Layout spacing step ${step}: margins, section gaps, grid gutters.`;
+  }
+  if (name.startsWith("--space-internal-")) {
+    const step = name.replace("--space-internal-", "");
+    return `Internal spacing step ${step}: padding inside components.`;
+  }
+  if (name.startsWith("--font-size-")) return `Fluid type size token (${name.replace("--font-size-", "")}); uses clamp().`;
+  if (name.startsWith("--line-height-")) return `Line-height for ${name.replace("--line-height-", "")} typography rhythm.`;
+  if (name.startsWith("--tracking-")) return `Letter-spacing for ${name.replace("--tracking-", "")} display/heading styles.`;
+  if (name.startsWith("--duration-")) return `Motion duration for ${name.replace("--duration-", "")} transitions.`;
+  if (name.startsWith("--ease-")) return `Cubic-bezier easing curve (${name.replace("--ease-", "")}).`;
+  if (name.startsWith("--stagger-")) return `Animation stagger delay between siblings.`;
+  if (name.startsWith("--motion-distance-")) return `Translate distance for entrance animations.`;
+  if (name.startsWith("--breakpoint-")) return `Responsive breakpoint reference for media queries.`;
+  if (name.startsWith("--container-")) return `Max inline size for content containers.`;
+  if (name.startsWith("--grid-")) return "Grid system token (columns or gap).";
+  if (name.startsWith("--page-margin-")) return "Horizontal page margin at a viewport tier.";
+  if (name.startsWith("--radius-")) return `Border radius (${name.replace("--radius-", "")}).`;
+  if (name.startsWith("--focus-ring-")) return "Focus ring token for keyboard accessibility.";
+  if (name.startsWith("--modal-") || name.startsWith("--gallery-")) return "Overlay or elevation token.";
+  if (name.startsWith("--color-")) return `Color token (${name.replace("--color-", "")}).`;
+  return "";
+}
+
+function parseProps(block) {
+  const props = {};
+  for (const line of block.split("\n")) {
+    const m = line.match(/^\s*(--[\w-]+)\s*:\s*([^;]+);/);
+    if (m) props[m[1]] = m[2].trim();
+  }
+  return props;
+}
+
+function extractBlock(css, marker) {
+  const i = css.indexOf(marker);
+  if (i < 0) return "";
+  const brace = css.indexOf("{", i);
+  if (brace < 0) return "";
+  let depth = 0;
+  for (let j = brace; j < css.length; j++) {
+    const c = css[j];
+    if (c === "{") depth++;
+    else if (c === "}") {
+      depth--;
+      if (depth === 0) return css.slice(brace + 1, j);
+    }
+  }
+  return "";
+}
+
+function parseRootTokens(css) {
+  const chunks = css.split(":root {");
+  const body = (chunks.length >= 3 ? chunks[2] : chunks[1]).split("\n}")[0];
+  return parseProps(body);
+}
+
+function resolveToken(map, value, depth = 0) {
+  if (depth > 8 || !value) return value;
+  const v = value.trim();
+  const varMatch = v.match(/^var\(\s*(--[^),\s]+)(?:\s*,\s*([^)]+))?\s*\)$/);
+  if (varMatch) {
+    const resolved = map[varMatch[1]] ?? varMatch[2];
+    if (resolved) return resolveToken(map, resolved, depth + 1);
+  }
+  if (v.startsWith("color-mix(")) return v;
+  return v;
+}
+
+function buildThemeMap(base, overrides) {
+  return { ...base, ...overrides };
+}
+
+function auditContrast(themeMap, themeId) {
+  return SEMANTIC_CONTRAST_PAIRS.map((pair) => {
+    const fgRaw = resolveToken(themeMap, themeMap[pair.fg] ?? "");
+    const bgRaw = resolveToken(themeMap, themeMap[pair.bg] ?? "");
+    const fgRgb = colorToRgb(fgRaw);
+    const bgRgb = colorToRgb(bgRaw);
+    if (!fgRgb || !bgRgb) {
+      return { ...pair, themeId, fgRaw, bgRaw, ratio: null, level: "N/A", pass: null };
+    }
+    const ratio = contrastRatio(fgRgb, bgRgb);
+    const level = wcagLevel(ratio, pair.largeText);
+    const pass = level !== "Fail";
+    return { ...pair, themeId, fgRaw, bgRaw, ratio: Math.round(ratio * 100) / 100, level, pass };
+  });
+}
+
+function categorize(name) {
+  if (name.startsWith("--color-") || name.startsWith("--accent-") || name.startsWith("--main-body") || name.startsWith("--link-") || name.startsWith("--logo-") || name.startsWith("--selection-"))
+    return "color";
+  if (name.startsWith("--font-") || name.startsWith("--line-height") || name.startsWith("--tracking-") || name.startsWith("--font-weight"))
+    return "typography";
+  if (name.startsWith("--space-")) return "space";
+  if (name.startsWith("--duration-") || name.startsWith("--ease-") || name.startsWith("--stagger-") || name.startsWith("--motion-"))
+    return "motion";
+  if (name.startsWith("--breakpoint-") || name.startsWith("--container-") || name.startsWith("--grid-") || name.startsWith("--page-margin") || name.startsWith("--rhythm-"))
+    return "layout";
+  if (name.startsWith("--radius-")) return "radius";
+  if (name.startsWith("--modal-") || name.startsWith("--gallery-")) return "elevation";
+  if (name.startsWith("--focus-")) return "focus";
+  if (name.startsWith("--size-")) return "size";
+  return "other";
+}
+
+const SUBGROUP = {
+  color: (n) => {
+    if (n.includes("success") || n.includes("error") || n.includes("warning") || n.includes("info") || n.includes("neutral"))
+      return "Status & feedback";
+    if (n.startsWith("--accent-")) return "Brand accents";
+    if (n.includes("gray") || n.includes("black") || n.includes("white") || n.includes("muted") || n.includes("disabled"))
+      return "Greyscale & borders";
+    if (n.includes("background") || n.includes("surface") || n.includes("body"))
+      return "Surfaces";
+    return "Semantic";
+  },
+  typography: (n) => {
+    if (n.includes("font-size")) return "Type scale";
+    if (n.includes("line-height") || n.includes("tracking")) return "Rhythm";
+    if (n.includes("font-weight")) return "Weight";
+    return "Families & aliases";
+  },
+  space: (n) => (n.includes("layout") ? "Layout (margin & gap)" : "Internal (padding)"),
+};
+
+function main() {
+  const css = readFileSync(VARIABLES_CSS, "utf8");
+  const rootProps = parseRootTokens(css);
+  const baseEntries = Object.entries(rootProps);
+
+  const themes = [
+    { id: "light", className: "", label: "Light", marker: null },
+    { id: "dark", className: "themeDark", label: "Dark", marker: ".themeDark," },
+    { id: "hcb", className: "themeHCB", label: "High contrast (black)", marker: ".themeHCB," },
+    { id: "hcw", className: "themeHCW", label: "High contrast (white)", marker: ".themeHCW," },
+  ];
+
+  const contrastByTheme = {};
+  for (const theme of themes) {
+    const overrides = theme.marker ? parseProps(extractBlock(css, theme.marker)) : {};
+    const map = buildThemeMap(rootProps, overrides);
+    contrastByTheme[theme.id] = auditContrast(map, theme.id);
+  }
+
+  const tokens = baseEntries.map(([name, value]) => ({
+    name,
+    value,
+    usage: inferUsage(name),
+    category: categorize(name),
+    subgroup: SUBGROUP[categorize(name)]?.(name) ?? "General",
+  }));
+
+  const groups = {};
+  for (const t of tokens) {
+    const key = `${t.category}::${t.subgroup}`;
+    groups[key] ??= { category: t.category, subgroup: t.subgroup, title: t.subgroup, tokens: [] };
+    groups[key].tokens.push(t);
+  }
+
+  const usageCoverage = tokens.filter((t) => t.usage).length;
+
+  const catalog = {
+    source: "nextjs-app/shared/styles/variables.css",
+    generatedAt: new Date().toISOString(),
+    tokenCount: tokens.length,
+    usageCoverage,
+    themes: themes.map(({ id, className, label }) => ({ id, className, label })),
+    contrastPairs: SEMANTIC_CONTRAST_PAIRS,
+    contrastByTheme,
+    groups: Object.values(groups).sort(
+      (a, b) => a.category.localeCompare(b.category) || a.subgroup.localeCompare(b.subgroup),
+    ),
+  };
+
+  writeFileSync(OUT_JSON, `${JSON.stringify(catalog, null, 2)}\n`);
+  const fails = Object.values(contrastByTheme).flat().filter((r) => r.pass === false);
+  console.log(`✓ ${catalog.tokenCount} tokens (${usageCoverage} with usage) → token-catalog.json`);
+  if (fails.length) console.warn(`⚠ ${fails.length} contrast pair(s) below AA — see Foundations/Contrast`);
+}
+
+main();

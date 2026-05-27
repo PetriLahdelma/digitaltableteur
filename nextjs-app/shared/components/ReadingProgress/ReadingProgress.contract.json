@@ -1,0 +1,42 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "ReadingProgress",
+    "tier": "molecule",
+    "group": "feedback",
+    "status": "alpha",
+    "description": "Scroll-linked reading progress indicator for long content.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example"
+    ],
+    "argTypesProxyExempt": [
+        "targetRef",
+        "className"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "progressbar role"
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [
+            "--color-primary",
+            "--color-border"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

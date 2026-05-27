@@ -72,7 +72,10 @@ export interface GridBlockProps {
  * />
  * ```
  */
-export default function GridBlock({
+export default /**
+ * GridBlock component.
+ */
+function GridBlock({
   cells,
   columns = 2,
   gap = "medium",

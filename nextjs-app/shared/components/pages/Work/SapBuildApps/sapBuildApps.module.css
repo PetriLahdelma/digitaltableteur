@@ -5,19 +5,20 @@
 }
 
 /* Custom Meta Section - 2 column layout */
+
 .metaSection {
-  padding-block: var(--space-layout-48);
-  background-color: var(--color-surface);
   margin-inline: calc(-1 * var(--space-layout-24));
+  padding-block: var(--space-layout-48);
   padding-inline: var(--space-layout-24);
+  background-color: var(--color-surface);
 }
 
 .metaGrid {
   display: grid;
+  margin-inline: auto;
+  max-width: var(--container-md);
   grid-template-columns: 1fr;
   gap: var(--space-layout-32);
-  max-width: var(--container-md);
-  margin-inline: auto;
 }
 
 @media (width >= 768px) {
@@ -46,19 +47,19 @@
 }
 
 .metaLabel {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-text);
-  margin: 0;
 }
 
 .metaText {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .metaTools {
@@ -68,11 +69,11 @@
 }
 
 .metaOverview {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.7;
+  color: var(--color-text);
 }
 
 .metaOverview strong {
@@ -80,22 +81,23 @@
 }
 
 /* Team section - full width with separator like HDS */
+
 .teamSection {
   margin-block-start: var(--space-layout-48);
-  padding-block-start: var(--space-layout-32);
-  border-block-start: 1px solid var(--color-border);
-  max-width: var(--container-md);
   margin-inline: auto;
+  padding-block-start: var(--space-layout-32);
+  max-width: var(--container-md);
+  border-block-start: 1px solid var(--color-border);
 }
 
 .teamTitle {
+  margin: 0 0 var(--space-layout-24) 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--color-text-secondary);
-  margin: 0 0 var(--space-layout-24) 0;
 }
 
 .teamGrid {
@@ -108,16 +110,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   gap: var(--space-internal-8);
+  text-align: center;
 }
 
 .teamAvatar {
+  margin-block-end: var(--space-internal-8);
   width: 80px;
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  margin-block-end: var(--space-internal-8);
 }
 
 .teamName {
@@ -134,7 +136,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .metaSection {
     margin-inline: calc(-1 * var(--space-layout-16));
     padding-inline: var(--space-layout-16);
@@ -145,7 +147,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .teamGrid {
     grid-template-columns: 1fr;
   }
@@ -171,8 +173,8 @@
 }
 
 .caseBadges {
-  flex-wrap: wrap;
   margin-block-end: var(--space-layout-16, 1rem);
+  flex-wrap: wrap;
 }
 
 .section {
@@ -185,15 +187,15 @@
   gap: var(--space-layout-32, 2rem);
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .twoCol {
     grid-template-columns: 2fr 1fr;
   }
 }
 
 .projectMeta {
-  padding: 0;
   margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -210,13 +212,13 @@
 
 .processStep {
   padding: var(--space-layout-16, 1rem);
-  background-color: var(--color-surface);
   border-radius: var(--radius-md, 0.5rem);
+  background-color: var(--color-surface);
 }
 
 .resultsList {
-  padding-inline-start: var(--space-layout-24, 1.5rem);
   margin: 0;
+  padding-inline-start: var(--space-layout-24, 1.5rem);
 }
 
 .resultsList li {

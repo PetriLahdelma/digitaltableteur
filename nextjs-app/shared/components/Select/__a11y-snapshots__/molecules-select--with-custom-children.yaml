@@ -1,0 +1,8 @@
+- status: Work in progress (beta)
+- text: Select an option
+- combobox "Select an option":
+  - option "Select..." [disabled] [selected]
+  - option "Option 1"
+  - option "Option 2"
+  - option "Option 3"
+- img "Toggle options"

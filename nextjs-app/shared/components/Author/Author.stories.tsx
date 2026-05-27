@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./Author.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import Author from "./Author";
 import { getAuthors } from "../../data/authors";
@@ -14,17 +15,16 @@ import { getAuthors } from "../../data/authors";
  * - Design system compliant (Avatar component reuse)
  */
 const meta: Meta<typeof Author> = {
-  title: "Components/Author",
+  title: "Molecules/Author",
   component: Author,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "centered",
   },
   argTypes: {
-    name: {
-      description: "Author's display name",
-      control: "text",
-    },
+    name: { description: "Author's display name", control: "text" },
     imageUrl: {
       description: "Author avatar image URL (string or imported module)",
       control: "text",
@@ -32,9 +32,7 @@ const meta: Meta<typeof Author> = {
     size: {
       description: "Avatar size (CSS unit or preset)",
       control: "text",
-      table: {
-        defaultValue: { summary: "2.5rem" },
-      },
+      table: { defaultValue: { summary: "2.5rem" } },
     },
     profileUrl: {
       description: "Optional link to author's profile page",
@@ -259,3 +257,10 @@ export const InArticleContext: Story = {
     },
   },
 };
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

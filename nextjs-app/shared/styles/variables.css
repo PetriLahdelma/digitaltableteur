@@ -11,7 +11,7 @@
 /* Storybook fallback layer (lowest priority, overridden by next/font classes) */
 @layer storybook-fallbacks {
   :root {
-    --font-heading: "TiemposHeadline-Regular", Georgia, serif;
+    --font-heading: "TiemposHeadline-Regular", georgia, serif;
     --font-body: "Moderat-Regular", system-ui, sans-serif;
   }
 }
@@ -37,6 +37,7 @@
     10vw + 3rem,
     8rem
   ); /* Display typography: 80px-128px */
+
   --font-size-display-xl: clamp(
     6rem,
     14vw + 3rem,
@@ -50,7 +51,6 @@
   --tracking-wide: 0.025em;
   --tracking-wider: 0.05em;
   --tracking-widest: 0.1em;
-
   --font-size-button-s: clamp(0.875rem, 0.3vw + 0.8rem, 1rem);
   --font-size-button-m: clamp(1rem, 0.35vw + 0.9rem, 1.125rem);
   --font-size-button-l: clamp(1.125rem, 0.45vw + 1rem, 1.25rem);
@@ -65,6 +65,7 @@
   --font-weight-text: 400;
   --color-title: var(--primary-text-color, #041b23);
   --color-text: var(--primary-text-color, #041b23);
+
   /* Font family aliases - mapped to new typography system */
   --primary-body-font: var(--font-body), system-ui, sans-serif;
   --secondary-body-font: var(--font-heading), system-ui, sans-serif;
@@ -109,6 +110,9 @@
   --color-gray-medium: #666;
   --color-light-bg: #f9f9f9;
 
+  /* Portfolio/CSS-module aliases → production tokens only (never DTCG scaffold). */
+  --color-surface: var(--main-body-background-color);
+
   /* Functional colors */
   --main-body-background-color: #fff;
   --color-primary: #041b23;
@@ -118,11 +122,11 @@
   --color-error: #dc3545;
   --color-warning: #ffc107;
   --color-warning-contrast: #8d5a00;
-  --color-warning-text: #fff;
+  --color-warning-text: #041b23;
   --color-neutral-bg: #e2e8f0;
   --color-neutral-text: #1a1d26;
   --color-error-bg: #dfbdbc;
-  --color-error-text: #d9534f;
+  --color-error-text: #7a1f1f;
 
   /* Other colors */
   --color-react: #61dafb;
@@ -215,30 +219,35 @@
     0.3,
     1
   ); /* Smooth deceleration - primary for entrances */
+
   --ease-out-quart: cubic-bezier(
     0.25,
     1,
     0.5,
     1
   ); /* Medium deceleration - for reveals */
+
   --ease-out-cubic: cubic-bezier(
     0.33,
     1,
     0.68,
     1
   ); /* Light deceleration - for subtle moves */
+
   --ease-in-out-quart: cubic-bezier(
     0.76,
     0,
     0.24,
     1
   ); /* Symmetric ease - for transitions */
+
   --ease-in-out-expo: cubic-bezier(
     0.87,
     0,
     0.13,
     1
   ); /* Strong symmetric - for dramatic reveals */
+
   --ease-spring: cubic-bezier(
     0.34,
     1.56,
@@ -305,6 +314,7 @@
 .themeDark,
 .themeDark :root {
   color-scheme: dark;
+
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
   --main-body-background-color: #181a1b;
@@ -378,6 +388,7 @@
 .themeHCB,
 .themeHCB :root {
   color-scheme: dark;
+
   --main-body-background-color: #000;
   --color-title: #fff;
   --color-text: #fff;
@@ -444,20 +455,37 @@
 }
 
 /* Utility classes for gradient text effects */
+
 .gradientTextUtility {
   background: var(--home-gradient);
   background-size: 200% 200%;
+  animation: gradient-move 4s ease-in-out infinite;
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-move 4s ease-in-out infinite;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Outline text utility */
+
 .outlineText {
-  -webkit-text-stroke: 2px var(--color-primary);
-  -webkit-text-fill-color: transparent;
   font-weight: var(--font-weight-title);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--color-primary);
 }
 
 .themeHCW,
@@ -497,7 +525,7 @@
   --color-error: #000;
   --color-warning: #000;
   --color-warning-contrast: #000;
-  --color-warning-text: #fff;
+  --color-warning-text: #041b23;
   --color-neutral-bg: #fff;
   --color-neutral-text: #000;
   --color-error-bg: #fff;

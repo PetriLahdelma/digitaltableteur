@@ -3,6 +3,14 @@ import { ThemeProvider } from "@dt/ThemeProvider";
 import type { Preview } from "@storybook/react-vite";
 import type { Decorator, StoryContext, StoryFn } from "@storybook/react";
 import React, { useEffect, useLayoutEffect } from "react";
+import { AnimationProvider } from "../providers/AnimationProvider";
+
+// @gsap/react reads React from globalThis in some Vite/Storybook bundles
+if (typeof globalThis !== "undefined") {
+  (
+    globalThis as typeof globalThis & { React: typeof React }
+  ).React = React;
+}
 
 const { MemoryRouter } = ReactRouterDom;
 import { I18nextProvider } from "react-i18next";
@@ -11,6 +19,8 @@ import i18n from "@dt/../i18n";
 import en from "@dt/../locales/en/translation.json";
 import fi from "@dt/../locales/fi/translation.json";
 import sv from "@dt/../locales/sv/translation.json";
+import { WipBadge } from "@dt/WipBadge";
+import { CookieConsentProvider } from "../nextjs-app/shared/lib/cookieConsent/CookieConsentContext";
 
 // Import global styles - CRITICAL for design tokens and component styling
 import "@dt/../index.css";
@@ -181,7 +191,7 @@ const withI18next: Decorator = (Story: StoryFn, context: StoryContext) => {
     <I18nextProvider i18n={i18n}>
       <MemoryRouter>
         <ThemeProvider forcedTheme={theme}>
-          {Story(context.args, context)}
+          <Story />
         </ThemeProvider>
       </MemoryRouter>
     </I18nextProvider>
@@ -193,16 +203,54 @@ const withI18next: Decorator = (Story: StoryFn, context: StoryContext) => {
 const withFullscreenSafeArea: Decorator = (Story, context) => {
   const isFullscreen = context.parameters?.layout === "fullscreen";
   if (!isFullscreen) {
-    return <>{Story(context)}</>;
+    return <><Story /></>;
   }
   return (
     <div className="fullscreenSafeArea" data-safe-area>
-      {Story(context)}
+      <Story />
     </div>
   );
 };
 
-export const decorators = [withI18next, withFullscreenSafeArea];
+
+const withWipBadge: Decorator = (Story, context) => {
+  const contractStatus =
+    (context.parameters?.contractStatus as string | undefined) ??
+    (context.parameters?.wip?.status as string | undefined) ??
+    "alpha";
+  const showBadge = contractStatus !== "stable" && context.parameters?.wip?.disabled !== true;
+  const isDocs = context.viewMode === "docs";
+  return (
+    <>
+      {showBadge ? <WipBadge status={contractStatus as "alpha" | "beta" | "stable" | "deprecated"} variant={isDocs ? "docs" : "canvas"} /> : null}
+      <Story />
+    </>
+  );
+};
+
+const withAnimation: Decorator = (Story) => (
+  <AnimationProvider>
+    <Story />
+  </AnimationProvider>
+);
+
+// CookieConsentProvider must wrap stories because several patterns (and the
+// CookieConsent component itself) call `useCookieConsent()`, which throws when
+// the provider is missing. `autoShow={false}` keeps the banner from popping on
+// every story render.
+const withCookieConsent: Decorator = (Story) => (
+  <CookieConsentProvider autoShow={false}>
+    <Story />
+  </CookieConsentProvider>
+);
+
+export const decorators = [
+  withI18next,
+  withCookieConsent,
+  withAnimation,
+  withWipBadge,
+  withFullscreenSafeArea,
+];
 
 const detectVisualRegression = () => {
   if (typeof window === "undefined") {
@@ -234,6 +282,8 @@ const isVisualRegression = detectVisualRegression();
 
 const preview: Preview = {
   parameters: {
+    // Built-in onboarding checklist adds weight on first paint; disable for faster dev UX.
+    onboarding: { disable: true },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -241,7 +291,7 @@ const preview: Preview = {
       },
     },
     a11y: {
-      test: "off",
+      test: process.env.CI ? "error" : "todo",
     },
     options: {
       storySort: {
@@ -249,8 +299,33 @@ const preview: Preview = {
           "Overview",
           ["Welcome", "Test Health Overview"],
           "Docs",
-          "Components",
+          "Foundations",
+          [
+            "Color",
+            "Typography",
+            "Space",
+            "Motion",
+            "Layout",
+            "Radius",
+            "Elevation",
+            "Focus",
+            "Themes",
+            "Contrast",
+            "Token catalog",
+            "Icons",
+            "ThemeProvider",
+          ],
+          "Atoms",
+          ["Animations"],
+          "Molecules",
+          ["Chat"],
+          "Organisms",
+          "Patterns",
+          "Templates",
+          "Testing",
         ],
+        method: "alphabetical",
+        locales: "en-US",
       },
     },
     // backgrounds: {

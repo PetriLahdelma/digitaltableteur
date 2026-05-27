@@ -1,6 +1,7 @@
 import React from "react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { MemoryRouter } from "react-router-dom";
+import * as ReactRouter from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import NavMenuList, { NavMenuItem } from "@dt/NavMenuList";
 
@@ -11,34 +12,43 @@ const items: NavMenuItem[] = [
 ];
 
 describe("NavMenuList", () => {
-  it("renders all items", () => {
-    render(
-      <MemoryRouter initialEntries={["/"]}>
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  const renderNav = (pathname: string) => {
+    vi.spyOn(ReactRouter, "useLocation").mockReturnValue({
+      pathname,
+      search: "",
+      hash: "",
+      state: null,
+      key: "test",
+    });
+    return render(
+      <MemoryRouter initialEntries={[pathname]}>
         <NavMenuList items={items} />
       </MemoryRouter>,
     );
+  };
+
+  it("renders all items", () => {
+    renderNav("/");
     items.forEach((item) => {
       expect(screen.getByText(item.label)).toBeInTheDocument();
     });
   });
 
   it("applies active class for exact match", () => {
-    render(
-      <MemoryRouter initialEntries={["/"]}>
-        <NavMenuList items={items} />
-      </MemoryRouter>,
-    );
-    const homeLink = screen.getByText("Home");
-    expect(homeLink.getAttribute("aria-current")).toBe("page");
+    renderNav("/");
+    const homeLink = screen.getByText("Home").closest("a");
+    expect(homeLink).toHaveAttribute("aria-current", "page");
   });
 
   it("applies active class for prefix match", () => {
-    render(
-      <MemoryRouter initialEntries={["/work/client"]}>
-        <NavMenuList items={items} />
-      </MemoryRouter>,
+    renderNav("/work/client");
+    expect(screen.getByRole("link", { name: "Work" })).toHaveAttribute(
+      "aria-current",
+      "page",
     );
-    const workLink = screen.getByText("Work");
-    expect(workLink.getAttribute("aria-current")).toBe("page");
   });
 });

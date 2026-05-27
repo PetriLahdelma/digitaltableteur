@@ -1,0 +1,83 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "AnimatedDialog",
+    "tier": "molecule",
+    "group": "feedback",
+    "status": "alpha",
+    "description": "Dialog (modal) variant with GSAP-driven enter/exit animation. Wraps the shadcn `Dialog` primitive and adds the size axis + severity colour token + animation type axis.",
+    "figma": null,
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ],
+            "default": "md"
+        },
+        "severity": {
+            "values": [
+                "default",
+                "success",
+                "warning",
+                "error",
+                "info"
+            ],
+            "default": "default"
+        },
+        "animationType": {
+            "values": [
+                "scale",
+                "slide",
+                "fade"
+            ],
+            "default": "scale"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab — cycles through focusable elements inside the dialog.",
+            "Shift+Tab — reverse cycle.",
+            "Esc — closes the dialog."
+        ],
+        "ariaRequirements": [
+            "Renders a real `role='dialog'` with `aria-modal='true'` (via the shadcn primitive).",
+            "Focus moves to the dialog body on open and returns to the trigger on close.",
+            "When `severity` is success/warning/error/info, the icon is decorative and the visible text owns the announcement; the dialog itself does not become a live region."
+        ],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false,
+        "motion": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated",
+            "--color-accent",
+            "--color-warning",
+            "--color-error",
+            "--color-success"
+        ],
+        "spacing": [
+            "--space-internal-12",
+            "--space-internal-16"
+        ],
+        "radii": [
+            "--radius-md"
+        ]
+    },
+    "lightDarkVerified": false,
+    "consumers": []
+}

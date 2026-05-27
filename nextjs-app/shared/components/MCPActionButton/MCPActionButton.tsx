@@ -68,7 +68,10 @@ const STATUS_TO_KEY: Record<Status, string> = {
   error: "mcpActionButton.status.error",
 };
 
-const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
+/**
+ * MCPActionButton component.
+ */
+export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
   const { t } = useTranslation();
   const [status, setStatus] = useState<Status>("idle");
   const {

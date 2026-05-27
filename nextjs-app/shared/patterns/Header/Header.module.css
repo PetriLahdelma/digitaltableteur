@@ -14,8 +14,8 @@
   padding: 14px 0;
   box-sizing: border-box;
   width: 100%;
-  align-items: center;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
   column-gap: 1rem;
   vertical-align: top;
 }
@@ -202,12 +202,12 @@
   color: var(--main-body-copy-color);
   cursor: pointer;
   pointer-events: auto;
-  grid-column: 3;
-  justify-self: end;
   transition:
     color 0.2s ease,
     border-color 0.2s ease,
     background-color 0.2s ease;
+  grid-column: 3;
+  justify-self: end;
 }
 
 .mobileMenuButton:hover {

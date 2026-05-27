@@ -1,16 +1,16 @@
+import contract from "./ArticleCard.contract.json";
 import React from "react";
-import { within, userEvent } from "@storybook/testing-library";
+import { userEvent, within } from "storybook/test";
 import ArticleCard from "@dt/ArticleCard";
 import { useTranslation } from "react-i18next";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
-
 const articleCardMeta = {
-  title: "Components/ArticleCard",
+  title: "Molecules/ArticleCard",
   component: ArticleCard,
-  tags: ["autodocs"],
-  parameters: {},
+  tags: ["!autodocs"],
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   args: {
     title:
       "How to Build a Design System for Modern Teams and Ensure Consistency Across All Products",
@@ -20,11 +20,17 @@ const articleCardMeta = {
   },
   argTypes: {
     title: { control: "text" },
+
     lead: { control: "text" },
+
     link: { control: "text" },
+
     readTime: { control: "text" },
+
     publishedAt: { control: "text" },
+
     className: { control: "text" },
+
     loading: { control: "boolean" },
   },
 };
@@ -152,9 +158,7 @@ WithCustomClass.play = async ({
 };
 
 export const Loading = Template.bind({});
-Loading.args = {
-  loading: true,
-};
+Loading.args = { loading: true };
 
 export const Z_ArticleCardCompliance: React.FC = () => (
   <ComplianceCard
@@ -165,3 +169,10 @@ export const Z_ArticleCardCompliance: React.FC = () => (
     rules={articleCardComplianceRules}
   />
 );
+
+export const Playground = Default;
+export const Example = {
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

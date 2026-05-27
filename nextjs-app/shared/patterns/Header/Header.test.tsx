@@ -1,6 +1,7 @@
 import React from "react";
 import { describe, expect, it, beforeEach, vi } from "vitest";
 import { MemoryRouter } from "react-router-dom";
+import * as ReactRouter from "react-router-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import Header from "./Header";
@@ -39,25 +40,48 @@ vi.mock("../../hooks/usePersistentTheme", () => ({
 }));
 
 describe("Header", () => {
+  const testNavItems = [
+    { to: "/", label: "Home", exact: true },
+    { to: "/work", label: "Work" },
+    { to: "/about", label: "About" },
+  ];
+
   beforeEach(() => {
     vi.clearAllMocks();
     (global as any).ResizeObserver = ResizeObserverStub;
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: 1280,
+    });
   });
 
-  const renderHeader = (initialPath = "/work") =>
-    render(
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  const renderHeader = (initialPath = "/work") => {
+    vi.spyOn(ReactRouter, "useLocation").mockReturnValue({
+      pathname: initialPath,
+      search: "",
+      hash: "",
+      state: null,
+      key: "test",
+    });
+    return render(
       <MemoryRouter initialEntries={[initialPath]}>
-        <Header onThemeCycle={mockOnThemeCycle} />
+        <Header navItems={testNavItems} onThemeCycle={mockOnThemeCycle} />
       </MemoryRouter>,
     );
+  };
 
   it("renders nav items and marks active link", () => {
     renderHeader("/work");
-    expect(screen.getByRole("link", { name: /work/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Work" })).toHaveAttribute(
       "aria-current",
       "page",
     );
-    expect(screen.getByRole("link", { name: /home/i })).not.toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Home" })).not.toHaveAttribute(
       "aria-current",
     );
   });

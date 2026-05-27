@@ -42,6 +42,9 @@ const aspectRatioClasses: Record<
   landscape: "aspect-[4/3]",
 };
 
+/**
+ * EnhancedProjectCard component.
+ */
 export function EnhancedProjectCard({
   title,
   slug,
