@@ -1,42 +1,66 @@
-import contract from "./ServiceCard.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Layers } from "lucide-react";
+import { userEvent, within } from "storybook/test";
+import { Sparkle } from "@phosphor-icons/react";
 import { ServiceCard } from "./ServiceCard";
+import contract from "./ServiceCard.contract.json";
 
-const meta: Meta<typeof ServiceCard> = {
+const defaultArgs = {
+  icon: <Sparkle weight="duotone" className="size-8 text-primary" aria-hidden />,
+  title: "Design systems",
+  description: "Tokens, components, and governance that scale with your product.",
+  variant: "bordered" as const,
+};
+
+const meta = {
   title: "Molecules/ServiceCard",
   component: ServiceCard,
-  tags: ["!autodocs"],
-  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    layout: "centered",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
+  },
   argTypes: {
+    icon: { control: false, description: "Leading service icon" },
+    title: { control: "text", description: "Card title" },
+    description: { control: "text", description: "Supporting copy" },
+    href: { control: "text", description: "Optional link destination" },
     variant: {
       control: "select",
       options: ["default", "bordered", "elevated", "minimal"],
+      description: "Surface treatment",
+      table: { defaultValue: { summary: "default" } },
     },
-
-    iconPosition: { control: "radio", options: ["top", "left"] },
+    iconPosition: {
+      control: "select",
+      options: ["top", "left"],
+      description: "Icon placement",
+      table: { defaultValue: { summary: "top" } },
+    },
+    className: { control: "text", description: "Card class names", table: { disable: true } },
   },
-};
+  args: defaultArgs,
+} satisfies Meta<typeof ServiceCard>;
 
 export default meta;
-type Story = StoryObj<typeof ServiceCard>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    icon: <Layers aria-hidden />,
-    title: "Design systems",
-    description:
-      "Tokens, components, and governance that scale with your product.",
-    variant: "default",
-  },
+export const Default: Story = {};
+export const Playground: Story = {};
+
+Playground.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.tab();
 };
 
-export const Playground: Story = { ...Default };
 export const Example: Story = {
-  parameters: { controls: { disable: true } },
-  args: Default.args,
+  name: "Example (services grid tile)",
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => <ServiceCard {...defaultArgs} />,
 };
+
 export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
-  args: Default.args,
+  args: defaultArgs,
 };

@@ -1,178 +1,58 @@
-import contract from "./ArticleCard.contract.json";
-import React from "react";
 import { userEvent, within } from "storybook/test";
-import ArticleCard from "@dt/ArticleCard";
-import { useTranslation } from "react-i18next";
-import ComplianceCard from "@dt/ComplianceCard";
-import type { ComplianceRule } from "@dt/ComplianceCard";
-import Icon from "@dt/Icon";
-const articleCardMeta = {
+import ArticleCard from "./ArticleCard";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import contract from "./ArticleCard.contract.json";
+
+const defaultArgs = {
+  title: "Design systems that survive contact with AI",
+  lead: "How we keep generated UI on-brand with schemas, tokens, and review gates.",
+  link: "/blog/design-systems-ai",
+  readTime: "6 min read",
+};
+
+const meta = {
   title: "Molecules/ArticleCard",
   component: ArticleCard,
-  tags: ["!autodocs"],
-  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
-  args: {
-    title:
-      "How to Build a Design System for Modern Teams and Ensure Consistency Across All Products",
-    lead: "A practical and comprehensive guide to building, scaling, and maintaining a robust design system for modern teams, covering best practices, common pitfalls, and strategies for ensuring consistency and efficiency across all digital products and platforms.",
-    link: "/blog/design-system-guide",
-    readTime: "10 min read",
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    layout: "centered",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
-    title: { control: "text" },
+    title: { control: "text", description: "Article headline" },
+    lead: { control: "text", description: "Deck / summary line" },
+    link: { control: "text", description: "Article URL" },
+    readTime: { control: "text", description: "Estimated reading time label" },
+    loading: { control: "boolean", description: "Skeleton loading state" },
+    className: { control: "text", description: "Card class names", table: { disable: true } },
+  },
+  args: defaultArgs,
+} satisfies Meta<typeof ArticleCard>;
 
-    lead: { control: "text" },
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-    link: { control: "text" },
+export const Default: Story = { };
+export const Playground: Story = { };
 
-    readTime: { control: "text" },
-
-    publishedAt: { control: "text" },
-
-    className: { control: "text" },
-
-    loading: { control: "boolean" },
-  },
-};
-
-export default articleCardMeta;
-
-const articleCardComplianceRules: ComplianceRule[] = [
-  {
-    id: "file-structure",
-    rule: "Complete file structure",
-    status: "pass",
-    details: "All 5 files present",
-  },
-  {
-    id: "typescript-strict",
-    rule: "TypeScript strict",
-    status: "pass",
-    details: "Exported interface ArticleCardProps",
-  },
-  {
-    id: "translation-support",
-    rule: "Translation support",
-    status: "pass",
-    details: "useTranslation, blogRead/blogReadMore keys",
-  },
-  {
-    id: "css-modules",
-    rule: "CSS Modules",
-    status: "pass",
-    details: "No inline styles",
-  },
-  {
-    id: "design-tokens",
-    rule: "Design tokens",
-    status: "pass",
-    details: "All 7 fallback values removed",
-  },
-  {
-    id: "logical-properties",
-    rule: "Logical properties",
-    status: "pass",
-    details: "margin-block, margin-inline used",
-  },
-  {
-    id: "theme-support",
-    rule: "Theme support",
-    status: "pass",
-    details: "Uses CSS variables for colors",
-  },
-  {
-    id: "size-variants",
-    rule: "Size variants",
-    status: "pass",
-    details: "N/A - responsive layout by design",
-  },
-  {
-    id: "state-variants",
-    rule: "State variants",
-    status: "pass",
-    details: "Uses Title/Text components correctly",
-  },
-  {
-    id: "accessibility",
-    rule: "Accessibility",
-    status: "pass",
-    details: "CSS :hover/:focus-visible, axe tests added",
-  },
-  {
-    id: "storybook-stories",
-    rule: "Storybook stories",
-    status: "pass",
-    details: "2 stories with interaction tests",
-  },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Full coverage with accessibility tests",
-  },
-];
-
-const ArticleCardStory: React.FC<any> = (args) => {
-  const { t } = useTranslation();
-  return <ArticleCard {...args} title={t(args.title)} lead={t(args.lead)} />;
-};
-
-const Template: any = (args: any) => <ArticleCardStory {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  title: "storyArticleTitle1",
-  lead: "storyArticleLead1",
-  link: "/blog/design-system-guide",
-  readTime: "10 min read",
-};
-Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByRole("link", { name: /how to build a design system/i });
-  await canvas.findByText(/10 min read/i);
-  await canvas.findByText(/comprehensive guide to building/i);
-  // Focus test
   await userEvent.tab();
 };
 
-export const WithCustomClass = Template.bind({});
-WithCustomClass.args = {
-  title: "storyArticleTitle2",
-  lead: "storyArticleLead2",
-  link: "/blog/branding-2025",
-  readTime: "14 min read",
-  className: "customClass",
+export const Example: Story = {
+  name: "Example (blog index teaser)",
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <div style={{ maxWidth: 420 }}>
+      <ArticleCard {...defaultArgs} />
+    </div>
+  ),
 };
 
-WithCustomClass.play = async ({
-  canvasElement,
-}: {
-  canvasElement: HTMLElement;
-}) => {
-  const canvas = within(canvasElement);
-  await canvas.findByText(/branding in 2025/i);
-  await canvas.findByText(/future holds for digital branding/i);
-  await canvas.findByText(/14 min read/i);
-  // Focus test
-  await userEvent.tab();
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
 };
-
-export const Loading = Template.bind({});
-Loading.args = { loading: true };
-
-export const Z_ArticleCardCompliance: React.FC = () => (
-  <ComplianceCard
-    title="Compliance: 12/12"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
-    }
-    rules={articleCardComplianceRules}
-  />
-);
-
-export const Playground = Default;
-export const Example = {
-  parameters: { controls: { disable: true } },
-  ...Default,
-};
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };

@@ -1,37 +1,52 @@
-import contract from "./Container.contract.json";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Container } from "./Container";
 import Text from "@dt/Text";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import contract from "./Container.contract.json";
 
-const meta: Meta<typeof Container> = {
+const defaultArgs = {
+  size: "lg" as const,
+  center: true,
+  children: (
+    <Text as="p" terminals="sans">
+      Content constrained to the production max-width with responsive padding.
+    </Text>
+  ),
+};
+
+const meta = {
   title: "Atoms/Container",
   component: Container,
-  tags: ["!autodocs"],
-  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
-  argTypes: {
-    size: { control: "select", options: ["sm", "md", "lg", "xl", "full"] },
-
-    center: { control: "boolean" },
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    layout: "centered",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
-};
+  argTypes: {
+    children: { control: false, description: "Page content inside the width constraint" },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg", "xl", "full"],
+      description: "Max-width token",
+      table: { defaultValue: { summary: "lg" } },
+    },
+    center: { control: "boolean", description: "Center the container horizontally" },
+    className: { control: "text", description: "Wrapper class names", table: { disable: true } },
+    as: { control: "text", description: "Polymorphic element", table: { disable: true } },
+  },
+  args: defaultArgs,
+} satisfies Meta<typeof Container>;
 
 export default meta;
-type Story = StoryObj<typeof Container>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    size: "lg",
-    children: (
-      <Text as="p" terminals="sans">
-        Content constrained to the production max-width with responsive padding.
-      </Text>
-    ),
-  },
-};
+export const Default: Story = { };
+export const Playground: Story = { };
 
-export const Playground: Story = { ...Default };
+
 export const Example: Story = {
-  parameters: { controls: { disable: true } },
+  parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Container size="lg">
       <Text as="p" terminals="sans">
@@ -40,7 +55,8 @@ export const Example: Story = {
     </Container>
   ),
 };
+
 export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
-  args: Default.args,
+  args: defaultArgs,
 };

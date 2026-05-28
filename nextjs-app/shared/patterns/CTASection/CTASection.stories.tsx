@@ -1,51 +1,72 @@
-import contract from "./CTASection.contract.json";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { CTASection } from "./CTASection";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import contract from "./CTASection.contract.json";
 
-const meta: Meta<typeof CTASection> = {
+const defaultArgs = {
+  title: "Ready to scale your design system?",
+  description:
+    "We help teams ship accessible, token-driven UI with GenAI-ready specs.",
+  primaryAction: { label: "Book a call", href: "/contact" },
+  secondaryAction: { label: "View work", href: "/work" },
+  background: "brand" as const,
+  align: "center" as const,
+};
+
+const meta = {
   title: "Patterns/CTASection",
   component: CTASection,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "fullscreen",
     contractStatus: contract.status,
     a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
-    title: { control: "text" },
-
-    description: { control: "text" },
-
+    title: { control: "text", description: "Main headline" },
+    description: { control: "text", description: "Supporting description" },
+    primaryAction: { control: "object", description: "Primary CTA (label + href or onClick)" },
+    secondaryAction: { control: "object", description: "Optional secondary CTA" },
     background: {
       control: "select",
       options: ["primary", "gradient", "dark", "muted", "brand"],
+      description: "Band background treatment",
+      table: { defaultValue: { summary: "primary" } },
     },
-
-    align: { control: "radio", options: ["left", "center"] },
+    align: {
+      control: "radio",
+      options: ["left", "center"],
+      description: "Text alignment",
+      table: { defaultValue: { summary: "center" } },
+    },
+    className: { control: "text", description: "Wrapper class names", table: { disable: true } },
+    id: { control: "text", description: "Section id for in-page anchors", table: { disable: true } },
   },
-};
+  args: defaultArgs,
+} satisfies Meta<typeof CTASection>;
 
 export default meta;
-type Story = StoryObj<typeof CTASection>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    title: "Ready to scale your design system?",
-    description:
-      "We help teams ship accessible, token-driven UI with GenAI-ready specs.",
-    primaryAction: { label: "Book a call", href: "/contact" },
-    secondaryAction: { label: "View work", href: "/work" },
-    background: "brand",
-    align: "center",
-  },
-};
+export const Default: Story = { };
+export const Playground: Story = { };
 
-export const Playground: Story = { ...Default };
+
 export const Example: Story = {
-  parameters: { controls: { disable: true } },
-  args: Default.args,
+  name: "Example (homepage contact CTA)",
+  parameters: { controls: { disable: true }, layout: "fullscreen" },
+  render: () => (
+    <CTASection
+      id="contact-cta"
+      title="Ready to create something extraordinary?"
+      primaryAction={{ label: "Let's talk", href: "/contact" }}
+      background="primary"
+      align="center"
+    />
+  ),
 };
+
 export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
-  args: Default.args,
+  args: defaultArgs,
 };
