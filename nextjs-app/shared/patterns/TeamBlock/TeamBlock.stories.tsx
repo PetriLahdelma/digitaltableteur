@@ -121,7 +121,7 @@ const meta: Meta<typeof TeamBlockForStorybook> = {
   title: "Patterns/TeamBlock",
   component: TeamBlockForStorybook,
   // Exclude from Vitest tests
-  tags: ["!autodocs", "!test"],
+  tags: ["beta", "!autodocs", "!test"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

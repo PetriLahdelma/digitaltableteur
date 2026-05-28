@@ -11,13 +11,14 @@ import styles from "./AnimatedGlyphBackground.stories.module.css";
 const meta: Meta<typeof AnimatedGlyphBackground> = {
   title: "Molecules/AnimatedGlyphBackground",
   component: AnimatedGlyphBackground,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "fullscreen",
   },
   argTypes: {
+
     tone: {
       control: { type: "select" },
       options: ["muted", "primary", "accent", "contrast"],

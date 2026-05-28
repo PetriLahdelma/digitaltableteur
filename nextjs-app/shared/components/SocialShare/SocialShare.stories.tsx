@@ -84,7 +84,7 @@ const meta = {
     a11y: { test: "error" },
     layout: "centered",
   },
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   argTypes: {
     url: { control: "text", description: "The URL to share" },
 

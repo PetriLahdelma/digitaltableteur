@@ -17,8 +17,12 @@ const meta = {
       description: "Visible field label (omit for aria-label-only usage)",
       table: { category: "Content" },
     },
-    placeholder: { control: "text", table: { category: "Content" } },
-    helperText: { control: "text", table: { category: "Content" } },
+    placeholder: {
+      description: "Placeholder",
+      control: "text", table: { category: "Content" } },
+    helperText: {
+      description: "Helper Text",
+      control: "text", table: { category: "Content" } },
     error: {
       control: "text",
       description: "Error message or invalid state",
@@ -30,26 +34,36 @@ const meta = {
       table: { category: "Validation", defaultValue: { summary: "false" } },
     },
     maxLength: {
+      description: "Max Length",
       control: { type: "number", min: 1 },
       table: { category: "Validation" },
     },
     rows: {
+      description: "Rows",
       control: { type: "number", min: 2, max: 20 },
       table: { category: "Layout", defaultValue: { summary: "4" } },
     },
     resize: {
+      description: "Resize",
       control: "radio",
       options: ["none", "vertical", "both"],
       table: { category: "Layout", defaultValue: { summary: "vertical" } },
     },
     size: {
+      description: "Size",
       control: "select",
       options: ["sm", "md", "lg"],
       table: { category: "Appearance", defaultValue: { summary: "md" } },
     },
-    isDisabled: { control: "boolean", table: { category: "State" } },
-    onValueChange: { action: "valueChanged", table: { category: "Events" } },
-    className: { control: false, table: { category: "Advanced" } },
+    isDisabled: {
+      description: "Is Disabled",
+      control: "boolean", table: { category: "State" } },
+    onValueChange: {
+      description: "On Value Change",
+      action: "valueChanged", table: { category: "Events" } },
+    className: {
+      description: "Class Name",
+      control: false, table: { category: "Advanced" } },
   },
   args: {
     label: "Message",

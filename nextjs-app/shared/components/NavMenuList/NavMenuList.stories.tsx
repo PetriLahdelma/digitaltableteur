@@ -25,7 +25,7 @@ const meta: Meta<typeof NavMenuList> = {
   argTypes: {},
   title: "Molecules/NavMenuList",
   component: NavMenuList,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   decorators: [
     (Story) => {

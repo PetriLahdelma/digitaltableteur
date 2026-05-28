@@ -12,6 +12,7 @@ const meta = {
     a11y: { test: "error" },
   },
   argTypes: {
+
     label: {
       control: "text",
       table: {
@@ -20,11 +21,14 @@ const meta = {
       },
     },
     size: {
+      description: "Size",
       control: "select",
       options: ["sm", "md", "lg"],
       table: { category: "Appearance", defaultValue: { summary: "md" } },
     },
-    className: { control: false, table: { category: "Advanced" } },
+    className: {
+      description: "Class Name",
+      control: false, table: { category: "Advanced" } },
   },
   args: { label: "Loading content", size: "md" },
 } satisfies Meta<typeof Spinner>;

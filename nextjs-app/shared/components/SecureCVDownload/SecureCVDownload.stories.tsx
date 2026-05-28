@@ -73,12 +73,19 @@ const secureCVDownloadComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof SecureCVDownload> = {
   title: "Molecules/SecureCVDownload",
   component: SecureCVDownload,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   argTypes: {
-    buttonText: { control: "text" },
+
+    buttonText: {
+      control: "text",
+      description: "Download button label override",
+      table: { category: "Content" },
+    },
 
     buttonVariant: {
+
+      description: "Button Variant",
       control: {
         type: "select",
         options: [
@@ -93,7 +100,10 @@ const meta: Meta<typeof SecureCVDownload> = {
       },
     },
 
-    inverse: { control: "boolean" },
+    inverse: {
+
+      description: "Inverse",
+      control: "boolean" },
   },
 };
 export default meta;

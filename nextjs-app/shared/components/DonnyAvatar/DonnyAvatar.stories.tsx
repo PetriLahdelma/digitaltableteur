@@ -6,7 +6,7 @@ import { DonnyAvatar, DonnyState } from "./DonnyAvatar";
 const meta: Meta<typeof DonnyAvatar> = {
   title: "Molecules/DonnyAvatar",
   component: DonnyAvatar,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
@@ -47,7 +47,9 @@ When \`enableSleepDetection\` is true, Donny will:
     },
   },
   argTypes: {
+
     state: {
+      description: "Animated expression state for the avatar",
       control: "select",
       options: [
         "idle",
@@ -77,8 +79,12 @@ When \`enableSleepDetection\` is true, Donny will:
         "sleeping",
       ],
     },
-    size: { control: "select", options: ["sm", "md", "lg", "xl"] },
-    showLabel: { control: "boolean" },
+    size: {
+      description: "Size",
+      control: "select", options: ["sm", "md", "lg", "xl"] },
+    showLabel: {
+      description: "Show Label",
+      control: "boolean" },
   },
 };
 

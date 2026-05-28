@@ -8,7 +8,7 @@ const meta: Meta<typeof Footer> = {
   argTypes: {},
   title: "Patterns/Footer",
   component: Footer,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

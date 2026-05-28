@@ -7,7 +7,7 @@ const meta: Meta<typeof Designerman> = {
   argTypes: {},
   title: "Molecules/Designerman",
   component: Designerman,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

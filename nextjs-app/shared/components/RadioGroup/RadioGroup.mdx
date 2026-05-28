@@ -5,7 +5,7 @@ import * as Stories from './RadioGroup.stories';
 
 # RadioGroup
 
-**Status:** beta · **Tier:** molecule · **Group:** form
+**Status:** alpha · **Tier:** molecule · **Group:** form
 
 ## In use
 
@@ -18,3 +18,23 @@ import { RadioGroup } from '@dt/RadioGroup';
 
 <RadioGroup />
 ```
+
+## When to use
+
+- When the **Example** story matches your layout or flow.
+- When design tokens and theme context from `ThemeProvider` are already mounted.
+
+## When not to use
+
+- When a smaller primitive (link, text, icon) covers the need without extra chrome.
+- When the composition is one-off and not worth standardising in the design system.
+
+## Accessibility
+
+- Exercise keyboard, focus, and screen-reader behaviour in **Playground** and **Example**.
+- Confirm **ForcedColors** for high-contrast regressions; run `npm run test:stories:hc` before marking `forcedColorsVerified`.
+
+## Promotion notes
+
+- Beta: Example + ForcedColors stories, axe gate enabled, MDX headings complete.
+- Stable: documented production consumer, AT snapshots, and honest `lightDarkVerified` / `forcedColorsVerified` flags.

@@ -75,7 +75,7 @@ const meta: Meta<typeof ServicesGrid> = {
   argTypes: {},
   title: "Organisms/ServicesGrid",
   component: ServicesGrid,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

@@ -9,7 +9,7 @@ import TitleStories from "@dt/Title/Title.stories";
 const meta: Meta<typeof PageLayout> = {
   title: "Patterns/PageLayout",
   component: PageLayout,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

@@ -7,7 +7,7 @@ import Text from "@dt/Text";
 const meta: Meta<typeof GridBlock> = {
   title: "Patterns/GridBlock",
   component: GridBlock,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

@@ -7,7 +7,7 @@ const meta: Meta<typeof ProofBlock> = {
   argTypes: {},
   title: "Patterns/ProofBlock",
   component: ProofBlock,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
