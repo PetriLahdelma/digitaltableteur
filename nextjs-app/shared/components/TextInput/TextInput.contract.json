@@ -3,27 +3,23 @@
     "name": "TextInput",
     "tier": "atom",
     "group": "form",
-    "status": "alpha",
+    "status": "beta",
     "description": "Single-line text input primitive with optional start/end icon slots, an inline clear button, and an error state. Wraps a native `<input>` so HTML attributes pass through.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-text-input",
     "radixPrimitive": null,
     "element": "input",
-    "variants": {
-        "size": {
-            "values": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "md"
-        }
-    },
-    "slots": [],
+    "variants": {},
+    "slots": [
+        "startIcon",
+        "endIcon"
+    ],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [
@@ -36,8 +32,9 @@
             "Clear button has `aria-label='Clear input'` and is hidden when the input is empty."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -58,6 +55,6 @@
             "--font-size-lg"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

@@ -5,7 +5,14 @@ import Button from "@dt/Button";
 import ChatWidget from "@dt/ChatWidget";
 import styles from "./Layout.module.css";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+export interface LayoutProps {
+  children: React.ReactNode;
+}
+
+/**
+ * Vite-era page shell: skip link, header, main landmark, footer, and chat widget.
+ */
+const Layout = ({ children }: LayoutProps) => {
   return (
     <div className={styles.layout}>
       <Button

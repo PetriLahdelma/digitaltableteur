@@ -2,41 +2,39 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Display } from "./Display";
 import contract from "./Display.contract.json";
 
-// Alpha-tier story scaffold for Display. The component lives outside the
-// previous catalog (per `npm run audit:catalog` on 2026-05-26) and is being
-// brought in as part of the Bucket-1 catalog-gap migration documented in
-// nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
-// minimal at alpha — Default + Playground prove the contract surface; the
-// Example + ForcedColors stories are added at the alpha -> beta promotion.
+const defaultArgs = {
+  children: "Design systems that ship",
+  as: "h1" as const,
+};
 
 const meta = {
   title: "Atoms/Display",
   component: Display,
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
-    },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
-    size: {
-      control: "select",
-      options: ["xs", "sm", "md", "lg", "xl"],
-      table: { defaultValue: { summary: "lg" } },
+    children: {
+      control: "text",
+      description: "Hero display copy",
     },
-    weight: {
+    as: {
       control: "select",
-      options: ["regular", "medium", "semibold", "bold"],
-      table: { defaultValue: { summary: "bold" } },
+      options: ["h1", "h2", "p", "span", "div"],
+      description: "Semantic element override",
+      table: { defaultValue: { summary: "h1" } },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS class names",
+      table: { disable: true },
     },
   },
-  args: {
-    size: "lg",
-    weight: "bold",
-  },
+  args: defaultArgs,
 } satisfies Meta<typeof Display>;
 
 export default meta;
@@ -44,3 +42,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 export const Playground: Story = {};
+
+export const Example: Story = {
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <div style={{ maxWidth: 720 }}>
+      <Display>Clarity at marketing scale</Display>
+    </div>
+  ),
+};
+
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
+};

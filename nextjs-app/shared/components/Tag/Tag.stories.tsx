@@ -2,21 +2,28 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Tag } from "./Tag";
 import contract from "./Tag.contract.json";
 
+const defaultArgs = {
+  children: "Design systems",
+  variant: "default" as const,
+  size: "md" as const,
+  showIcon: true,
+};
+
 const meta = {
   title: "Atoms/Tag",
   component: Tag,
-  tags: ["alpha", "!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
-    },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
-    children: { control: "text", table: { category: "Content" } },
+    children: {
+      control: "text",
+      description: "Visible tag label",
+    },
     variant: {
       control: "select",
       options: [
@@ -28,27 +35,32 @@ const meta = {
         "error",
         "info",
       ],
+      description: "Color / emphasis variant",
       table: { defaultValue: { summary: "default" } },
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
+      description: "Tag size scale",
       table: { defaultValue: { summary: "md" } },
     },
-    showIcon: { control: "boolean" },
+    showIcon: {
+      control: "boolean",
+      description: "Show leading status icon when variant is semantic",
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS class names",
+      table: { disable: true },
+    },
   },
-  args: {
-    children: "Design systems",
-    variant: "default",
-    size: "md",
-  },
+  args: defaultArgs,
 } satisfies Meta<typeof Tag>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
 export const Playground: Story = {};
 
 export const Example: Story = {
@@ -75,10 +87,7 @@ export const Example: Story = {
   ),
 };
 
-export const SemanticLarge: Story = {
-  args: {
-    children: "Action required",
-    variant: "error",
-    size: "lg",
-  },
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
 };

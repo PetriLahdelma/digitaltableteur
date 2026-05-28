@@ -3,30 +3,20 @@
     "name": "AspectRatio",
     "tier": "atom",
     "group": "structure",
-    "status": "alpha",
+    "status": "beta",
     "description": "Layout primitive that locks its children to a fixed width/height ratio (1:1, 4:3, 16:9, …) so media-shaped containers reserve space before content loads.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-aspect-ratio",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {
-        "ratio": {
-            "values": [
-                "1:1",
-                "4:3",
-                "16:9",
-                "21:9",
-                "3:2",
-                "2:3"
-            ],
-            "default": "16:9"
-        }
-    },
+    "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [],
@@ -34,13 +24,14 @@
             "No own ARIA — the wrapper inherits semantics from its children. Author the inside as a meaningful region (img, figure, iframe) yourself."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

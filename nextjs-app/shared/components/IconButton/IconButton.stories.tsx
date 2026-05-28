@@ -1,56 +1,79 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { userEvent, within } from "storybook/test";
 import { List, Moon } from "@phosphor-icons/react";
 import { IconButton } from "./IconButton";
 import contract from "./IconButton.contract.json";
 
-/** Mirrors `SiteHeader` — theme toggle + mobile menu triggers. */
-const headerToolbarArgs = {
+const defaultArgs = {
   icon: <Moon weight="bold" className="size-5" aria-hidden />,
   label: "Toggle dark mode",
   variant: "ghost" as const,
   size: "md" as const,
+  disabled: false,
 };
 
 const meta = {
   title: "Atoms/IconButton",
   component: IconButton,
-  tags: ["alpha", "!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
-    },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
-    label: { control: "text", table: { category: "Accessibility" } },
+    icon: {
+      control: false,
+      description: "Decorative icon glyph (aria-hidden in component)",
+    },
+    label: {
+      control: "text",
+      description: "Required accessible name (aria-label)",
+    },
     variant: {
       control: "select",
       options: ["default", "ghost", "outline"],
+      description: "Visual button variant",
       table: { defaultValue: { summary: "ghost" } },
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
+      description: "Circular hit-target size",
       table: { defaultValue: { summary: "md" } },
     },
-    disabled: { control: "boolean" },
+    disabled: {
+      control: "boolean",
+      description: "Disabled state",
+    },
+    onClick: {
+      action: "clicked",
+      description: "Click handler",
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS class names",
+      table: { disable: true },
+    },
   },
-  args: headerToolbarArgs,
+  args: defaultArgs,
 } satisfies Meta<typeof IconButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
 export const Playground: Story = {};
+
+Playground.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.tab();
+};
 
 export const Example: Story = {
   name: "Example (site header toolbar)",
-  parameters: { controls: { disable: true } },
+  parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <div
       style={{
@@ -60,7 +83,7 @@ export const Example: Story = {
         padding: "0.5rem",
       }}
     >
-      <IconButton {...headerToolbarArgs} />
+      <IconButton {...defaultArgs} />
       <IconButton
         icon={<List weight="bold" className="size-5" aria-hidden />}
         label="Open navigation menu"
@@ -71,10 +94,7 @@ export const Example: Story = {
   ),
 };
 
-export const OutlineDisabled: Story = {
-  args: {
-    ...headerToolbarArgs,
-    variant: "outline",
-    disabled: true,
-  },
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
 };

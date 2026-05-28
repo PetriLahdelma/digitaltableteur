@@ -3,27 +3,20 @@
     "name": "Pagination",
     "tier": "molecule",
     "group": "navigation",
-    "status": "alpha",
+    "status": "beta",
     "description": "Pagination controls for paged lists (article archive, search results). Renders a `<nav>` landmark with previous/next buttons and a numbered list; supports ellipsis truncation for long page ranges.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-pagination",
     "radixPrimitive": null,
     "element": "nav",
-    "variants": {
-        "size": {
-            "values": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "md"
-        }
-    },
+    "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [
@@ -36,8 +29,9 @@
             "Previous/next buttons that are unavailable use `aria-disabled='true'` instead of being removed, so the visual structure does not jump."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -54,6 +48,6 @@
             "--font-size-md"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

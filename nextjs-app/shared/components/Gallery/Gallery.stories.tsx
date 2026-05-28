@@ -1,36 +1,56 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { userEvent, within } from "storybook/test";
 import Gallery from "./Gallery";
 import contract from "./Gallery.contract.json";
 
-// Alpha-tier story scaffold for Gallery. The component lives outside the
-// previous catalog (per `npm run audit:catalog` on 2026-05-26) and is being
-// brought in as part of the Bucket-1 catalog-gap migration documented in
-// nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
-// minimal at alpha — Default + Playground prove the contract surface; the
-// Example + ForcedColors stories are added at the alpha -> beta promotion.
+const sampleImages = [
+  {
+    src: "https://picsum.photos/800/600?random=1",
+    alt: "Dashboard overview",
+  },
+  {
+    src: "https://picsum.photos/800/600?random=2",
+    alt: "Component library grid",
+  },
+  {
+    src: "https://picsum.photos/800/600?random=3",
+    alt: "Mobile navigation drawer",
+  },
+];
+
+const defaultArgs = {
+  images: sampleImages,
+  minColumnWidth: 280,
+  gutter: 24,
+};
 
 const meta = {
   title: "Molecules/Gallery",
   component: Gallery,
+  tags: ["beta", "!autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "padded",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
-    },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
-    columns: {
-      control: "select",
-      options: ["2", "3", "4"],
-      table: { defaultValue: { summary: "3" } },
+    images: {
+      control: false,
+      description: "Gallery items with alt text for lightbox names",
+    },
+    minColumnWidth: {
+      control: "number",
+      description: "Minimum column width in px",
+      table: { defaultValue: { summary: "320" } },
+    },
+    gutter: {
+      control: "number",
+      description: "Grid gutter in px",
+      table: { defaultValue: { summary: "32" } },
     },
   },
-  args: {
-    columns: "3",
-  },
+  args: defaultArgs,
 } satisfies Meta<typeof Gallery>;
 
 export default meta;
@@ -38,3 +58,24 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 export const Playground: Story = {};
+
+Playground.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.tab();
+};
+
+export const Example: Story = {
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <Gallery
+      gutter={24}
+      minColumnWidth={280}
+      images={sampleImages}
+    />
+  ),
+};
+
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
+};

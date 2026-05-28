@@ -2,35 +2,43 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { AspectRatio } from "./AspectRatio";
 import contract from "./AspectRatio.contract.json";
 
-// Alpha-tier story scaffold for AspectRatio. The component lives outside the
-// previous catalog (per `npm run audit:catalog` on 2026-05-26) and is being
-// brought in as part of the Bucket-1 catalog-gap migration documented in
-// nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
-// minimal at alpha — Default + Playground prove the contract surface; the
-// Example + ForcedColors stories are added at the alpha -> beta promotion.
+const defaultArgs = {
+  ratio: "16:9" as const,
+  children: (
+    <div className="flex h-full w-full items-center justify-center bg-primary/20 text-sm text-muted-foreground">
+      16:9 media slot
+    </div>
+  ),
+};
 
 const meta = {
   title: "Atoms/AspectRatio",
   component: AspectRatio,
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
-    },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
+    children: {
+      control: false,
+      description: "Media or placeholder content inside the ratio box",
+    },
     ratio: {
       control: "select",
       options: ["1:1", "4:3", "16:9", "21:9", "3:2", "2:3"],
+      description: "Width-to-height ratio token",
       table: { defaultValue: { summary: "16:9" } },
     },
+    className: {
+      control: "text",
+      description: "Additional CSS class names",
+      table: { disable: true },
+    },
   },
-  args: {
-    ratio: "16:9",
-  },
+  args: defaultArgs,
 } satisfies Meta<typeof AspectRatio>;
 
 export default meta;
@@ -38,3 +46,23 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 export const Playground: Story = {};
+
+export const Example: Story = {
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <div style={{ width: 320 }}>
+      <AspectRatio ratio="16:9">
+        <img
+          src="https://picsum.photos/640/360"
+          alt="Case study hero frame"
+          className="h-full w-full object-cover"
+        />
+      </AspectRatio>
+    </div>
+  ),
+};
+
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
+};
