@@ -42,6 +42,7 @@ Playground.play = async ({ canvasElement }) => {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => <SkipLink />,
 };

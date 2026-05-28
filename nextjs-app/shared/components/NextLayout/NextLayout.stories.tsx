@@ -46,6 +46,7 @@ Playground.play = async ({ canvasElement }) => {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   render: () => <NextLayout>{sampleMain}</NextLayout>,
 };

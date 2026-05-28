@@ -51,6 +51,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Section spacing="lg" background="muted" id="example-section">

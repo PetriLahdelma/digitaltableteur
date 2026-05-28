@@ -63,8 +63,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
@@ -72,6 +76,7 @@ Playground.play = async ({ canvasElement }) => {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (site header toolbar)",
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (

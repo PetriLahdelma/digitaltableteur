@@ -28,6 +28,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (contact page layout)",
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   render: () => <ContactPageContentEditorial />,

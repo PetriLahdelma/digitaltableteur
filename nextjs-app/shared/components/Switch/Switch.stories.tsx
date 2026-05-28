@@ -311,6 +311,7 @@ export const Playground: Story = {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   tags: ["beta-matrix"],
   name: "Example",
   parameters: { a11y: { disable: true }, controls: { disable: true } },

@@ -32,8 +32,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Playground: Story = {};
-export const Default: Story = Playground;
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+  ...Playground,
+};
 export const Sizes: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
@@ -51,6 +56,7 @@ export const Sizes: Story = {
   ),
 };
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true } },
   render: () => <Spinner />,
 };

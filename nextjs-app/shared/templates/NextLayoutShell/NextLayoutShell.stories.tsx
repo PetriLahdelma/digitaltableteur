@@ -38,8 +38,12 @@ const shellContent = (
 );
 
 export const Default: Story = { render: () => shellContent };
-export const Playground: Story = Default;
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+  ...Default,
+};
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true } },
   render: () => shellContent,
 };

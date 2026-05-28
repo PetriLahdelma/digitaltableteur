@@ -40,10 +40,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Center className="h-40 w-full max-w-md rounded border border-border bg-muted/30">

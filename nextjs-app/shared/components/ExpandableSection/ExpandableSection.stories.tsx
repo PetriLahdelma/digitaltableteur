@@ -93,6 +93,7 @@ Playground.play = async ({ canvasElement }) => {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (contact form editorial)",
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => {

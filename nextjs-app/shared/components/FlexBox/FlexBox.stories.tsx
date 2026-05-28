@@ -69,6 +69,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <FlexBox direction="column" gap="0.75rem" align="stretch" style={{ maxWidth: 320 }}>

@@ -48,6 +48,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Grid columns={3} gap="1.5rem" style={{ maxWidth: 720 }}>
