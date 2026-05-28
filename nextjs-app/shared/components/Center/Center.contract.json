@@ -3,27 +3,20 @@
     "name": "Center",
     "tier": "atom",
     "group": "structure",
-    "status": "alpha",
+    "status": "beta",
     "description": "Centers its children horizontally and vertically inside a relative container. Single-purpose alternative to ad-hoc `flex items-center justify-center` snippets scattered through the codebase.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-center",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {
-        "axis": {
-            "values": [
-                "both",
-                "horizontal",
-                "vertical"
-            ],
-            "default": "both"
-        }
-    },
+    "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [],
@@ -31,13 +24,14 @@
             "No own ARIA — inherits semantics from its children."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

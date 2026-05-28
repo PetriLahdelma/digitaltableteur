@@ -3,27 +3,20 @@
     "name": "TextLink",
     "tier": "atom",
     "group": "navigation",
-    "status": "alpha",
+    "status": "beta",
     "description": "Inline text link primitive with a stable focus ring + underline contract. Distinct from `Link` (the design-system Link wrapping `next/link`) — `TextLink` is the unwrapped underline-on-hover token used inside prose.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-text-link",
     "radixPrimitive": null,
     "element": "a",
-    "variants": {
-        "variant": {
-            "values": [
-                "default",
-                "muted",
-                "accent"
-            ],
-            "default": "default"
-        }
-    },
+    "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [
@@ -35,8 +28,9 @@
             "Accessible name comes from the visible link text; do not add `aria-label` unless the text is purely visual (an icon-only link)."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -49,6 +43,6 @@
             "--font-size-md"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

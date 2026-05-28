@@ -2,8 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { LocationCard } from "./LocationCard";
 import contract from "./LocationCard.contract.json";
 
-/** Mirrors `ContactPageContent` — Helsinki office card in the locations grid. */
-const contactPageArgs = {
+const defaultArgs = {
   officeName: "Digitaltableteur Helsinki",
   address: ["Mannerheimintie 20 B", "00100 Helsinki", "Finland"],
   email: "mail@digitaltableteur.com",
@@ -13,35 +12,37 @@ const contactPageArgs = {
 const meta = {
   title: "Molecules/LocationCard",
   component: LocationCard,
-  tags: ["alpha", "!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
-    },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
-    officeName: { control: "text", table: { category: "Content" } },
-    address: { control: "object", table: { category: "Content" } },
-    email: { control: "text", table: { category: "Content" } },
-    phone: { control: "text", table: { category: "Content" } },
+    officeName: { control: "text", description: "Location title" },
+    address: { control: "object", description: "Address lines inside <address>" },
+    email: { control: "text", description: "Contact email" },
+    phone: { control: "text", description: "Optional phone number" },
     variant: {
       control: "select",
       options: ["default", "bordered", "elevated"],
+      description: "Card surface treatment",
       table: { defaultValue: { summary: "default" } },
     },
+    className: {
+      control: "text",
+      description: "Article wrapper class names",
+      table: { disable: true },
+    },
   },
-  args: contactPageArgs,
+  args: defaultArgs,
 } satisfies Meta<typeof LocationCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
 export const Playground: Story = {};
 
 export const Example: Story = {
@@ -49,15 +50,12 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <div style={{ maxWidth: 420, width: "100%" }}>
-      <LocationCard {...contactPageArgs} />
+      <LocationCard {...defaultArgs} />
     </div>
   ),
 };
 
-export const ElevatedWithPhone: Story = {
-  args: {
-    ...contactPageArgs,
-    variant: "elevated",
-    phone: "+358 40 123 4567",
-  },
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
 };

@@ -13,9 +13,9 @@ import Title from "../Title";
 import { usePersistentTheme } from "../../hooks/usePersistentTheme";
 import styles from "../../patterns/Header/MobileMenu.module.css";
 
-type NavItem = { href: string; label: string; exact?: boolean };
+export type NavItem = { href: string; label: string; exact?: boolean };
 
-type Props = {
+export interface NextMobileMenuProps {
   isOpen: boolean;
   onClose?: () => void;
   onNavigate?: () => void;
@@ -67,7 +67,7 @@ export function NextMobileMenu({
   id,
   navItems,
   languages,
-}: Props) {
+}: NextMobileMenuProps) {
   const { t, i18n } = useTranslation();
   const { theme, cycleTheme } = usePersistentTheme();
   const pathname = usePathname() ?? "";

@@ -1,52 +1,70 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { userEvent, within } from "storybook/test";
 import { TextLink } from "./TextLink";
 import contract from "./TextLink.contract.json";
 
-/** Mirrors `SiteFooter` legal links row. */
-const footerLinkArgs = {
+const defaultArgs = {
   href: "/privacy-policy",
   children: "Privacy policy",
   variant: "muted" as const,
   underline: "hover" as const,
+  external: false,
 };
 
 const meta = {
   title: "Atoms/TextLink",
   component: TextLink,
-  tags: ["alpha", "!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
-    },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
-    href: { control: "text", table: { category: "Content" } },
-    children: { control: "text", table: { category: "Content" } },
+    href: {
+      control: "text",
+      description: "Destination URL",
+    },
+    children: {
+      control: "text",
+      description: "Link text (accessible name)",
+    },
     variant: {
       control: "select",
       options: ["default", "muted", "accent"],
+      description: "Color variant for inline prose",
       table: { defaultValue: { summary: "default" } },
     },
     underline: {
       control: "select",
       options: ["always", "hover", "none"],
+      description: "Underline visibility",
       table: { defaultValue: { summary: "hover" } },
     },
-    external: { control: "boolean" },
+    external: {
+      control: "boolean",
+      description: "Opens in a new tab with rel security attrs when true",
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS class names",
+      table: { disable: true },
+    },
   },
-  args: footerLinkArgs,
+  args: defaultArgs,
 } satisfies Meta<typeof TextLink>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
 export const Playground: Story = {};
+
+Playground.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.tab();
+};
 
 export const Example: Story = {
   name: "Example (footer legal row)",
@@ -77,12 +95,7 @@ export const Example: Story = {
   ),
 };
 
-export const ExternalAccent: Story = {
-  args: {
-    href: "https://www.digitaltableteur.com",
-    children: "digitaltableteur.com",
-    variant: "accent",
-    underline: "always",
-    external: true,
-  },
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
 };

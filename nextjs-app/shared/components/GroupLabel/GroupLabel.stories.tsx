@@ -2,25 +2,56 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import GroupLabel from "./GroupLabel";
 import contract from "./GroupLabel.contract.json";
 
-// Alpha-tier story scaffold for GroupLabel. The component lives outside the
-// previous catalog (per `npm run audit:catalog` on 2026-05-26) and is being
-// brought in as part of the Bucket-1 catalog-gap migration documented in
-// nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
-// minimal at alpha — Default + Playground prove the contract surface; the
-// Example + ForcedColors stories are added at the alpha -> beta promotion.
+const defaultArgs = {
+  htmlFor: "newsletter-options",
+  children: "Notification preferences",
+  required: false,
+  disabled: false,
+};
 
 const meta = {
   title: "Atoms/GroupLabel",
   component: GroupLabel,
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
+  },
+  argTypes: {
+    htmlFor: {
+      control: "text",
+      description: "ID of the grouped control for label association",
+    },
+    children: {
+      control: "text",
+      description: "Group legend text",
+    },
+    tooltipText: {
+      control: "text",
+      description: "Optional browser tooltip",
+    },
+    required: {
+      control: "boolean",
+      description: "Shows required asterisk",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Muted disabled styling",
+    },
+    title: {
+      control: "text",
+      description: "Native title attribute override",
+      table: { disable: true },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS class names",
+      table: { disable: true },
     },
   },
+  args: defaultArgs,
 } satisfies Meta<typeof GroupLabel>;
 
 export default meta;
@@ -28,3 +59,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 export const Playground: Story = {};
+
+export const Example: Story = {
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
+      <GroupLabel htmlFor="contact-topic">What can we help with?</GroupLabel>
+      <div id="contact-topic" role="group" aria-labelledby="contact-topic-label">
+        <p className="text-sm text-muted-foreground">Checkbox group slots here</p>
+      </div>
+    </fieldset>
+  ),
+};
+
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
+};

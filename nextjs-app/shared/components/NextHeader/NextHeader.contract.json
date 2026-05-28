@@ -3,9 +3,9 @@
     "name": "NextHeader",
     "tier": "pattern",
     "group": "navigation",
-    "status": "alpha",
+    "status": "beta",
     "description": "Concrete Next.js implementation of the site header pattern. Renders the logo, primary nav, theme switcher, and the mobile-menu trigger. Visually documented at the catalog level via `SiteHeader`; this entry exists so the implementation file is also discoverable.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-next-header",
     "radixPrimitive": null,
     "element": "header",
     "variants": {},
@@ -14,7 +14,9 @@
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [
@@ -27,8 +29,9 @@
             "Theme switcher exposes the current theme as the button's accessible name."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -41,6 +44,6 @@
             "--space-internal-16"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }
