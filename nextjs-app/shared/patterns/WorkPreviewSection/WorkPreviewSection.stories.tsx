@@ -1,48 +1,69 @@
-import contract from "./WorkPreviewSection.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { WorkPreviewSection } from "./WorkPreviewSection";
+import contract from "./WorkPreviewSection.contract.json";
 
-const meta: Meta<typeof WorkPreviewSection> = {
-  argTypes: {},
-  title: "Patterns/WorkPreviewSection",
-  component: WorkPreviewSection,
-  tags: ["!autodocs"],
-  parameters: {
-    layout: "fullscreen",
-    contractStatus: contract.status,
-    a11y: { test: "error" },
-  },
-};
-
-export default meta;
-type Story = StoryObj<typeof WorkPreviewSection>;
-
-const projects = [
+const sampleProjects = [
   {
-    title: "SAP Build Apps",
+    title: "SAP Build Apps Design System",
     slug: "sap-build-apps",
     thumbnail: "/images/portfolio/sap-build-apps/Build Product Icon_1000px.png",
     category: "Design Systems",
     tags: ["Enterprise"],
   },
   {
-    title: "New Things Co",
-    slug: "new-things-co",
-    thumbnail: "/images/portfolio/new_things_co/new_things_co_item.webp",
-    category: "Branding",
-    tags: ["Identity"],
+    title: "Helsinki Design System",
+    slug: "helsinki-design-system",
+    thumbnail: "/images/portfolio/helsinki-design-system/HDS_logo.png",
+    category: "Design Systems",
+    tags: ["Accessibility"],
   },
 ];
 
-export const Default: Story = {
-  args: { title: "Work", projects, showViewAll: true },
+const defaultArgs = {
+  title: "Selected work",
+  projects: sampleProjects,
+  layout: "grid" as const,
+  showViewAll: true,
 };
-export const Playground: Story = { ...Default };
+
+const meta = {
+  title: "Patterns/WorkPreviewSection",
+  component: WorkPreviewSection,
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    layout: "fullscreen",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
+  },
+  argTypes: {
+    title: { control: "text", description: "Section heading" },
+    projects: { control: false, description: "Project cards" },
+    layout: {
+      control: "select",
+      options: ["grid", "asymmetric", "featured"],
+      description: "Grid composition",
+      table: { defaultValue: { summary: "grid" } },
+    },
+    showViewAll: { control: "boolean", description: "Link to full work index" },
+    className: { control: "text", description: "Section class names", table: { disable: true } },
+    id: { control: "text", description: "Section id", table: { defaultValue: { summary: "work" } } },
+  },
+  args: defaultArgs,
+} satisfies Meta<typeof WorkPreviewSection>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
+export const Playground: Story = {};
+
 export const Example: Story = {
-  parameters: { controls: { disable: true } },
-  args: Default.args,
+  parameters: { controls: { disable: true }, layout: "fullscreen" },
+  args: defaultArgs,
 };
+
 export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
-  args: Default.args,
+  args: defaultArgs,
 };

@@ -1,26 +1,41 @@
-import contract from "./ClientLogoMarquee.contract.json";
-import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ClientLogoMarquee } from "./ClientLogoMarquee";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import contract from "./ClientLogoMarquee.contract.json";
 
-const meta: Meta<typeof ClientLogoMarquee> = {
-  argTypes: {},
+const defaultArgs = {
+  ariaLabel: "Selected clients",
+};
+
+const meta = {
   title: "Organisms/ClientLogoMarquee",
   component: ClientLogoMarquee,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "fullscreen",
     contractStatus: contract.status,
     a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
-};
+  argTypes: {
+    ariaLabel: { control: "text", description: "Accessible name for the logo region" },
+  },
+  args: defaultArgs,
+} satisfies Meta<typeof ClientLogoMarquee>;
 
 export default meta;
-type Story = StoryObj<typeof ClientLogoMarquee>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = { };
+export const Playground: Story = { };
+
+
 export const Example: Story = {
-  parameters: { controls: { disable: true } },
-  render: () => <ClientLogoMarquee />,
+  name: "Example (homepage client strip)",
+  parameters: { controls: { disable: true }, layout: "fullscreen" },
+  render: () => <ClientLogoMarquee ariaLabel="Selected clients" />,
 };
-export const ForcedColors: Story = { globals: { forcedColors: "active" } };
+
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
+};

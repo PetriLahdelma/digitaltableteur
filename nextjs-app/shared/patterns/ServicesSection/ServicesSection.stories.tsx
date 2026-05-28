@@ -1,4 +1,3 @@
-import contract from "./ServicesSection.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   DesignSystemsIcon,
@@ -6,28 +5,7 @@ import {
   AiSolutionsIcon,
 } from "../../components/icons/service-icons";
 import { ServicesSection } from "./ServicesSection";
-
-const meta: Meta<typeof ServicesSection> = {
-  title: "Patterns/ServicesSection",
-  component: ServicesSection,
-  tags: ["!autodocs"],
-  parameters: {
-    layout: "fullscreen",
-    contractStatus: contract.status,
-    a11y: { test: "error" },
-  },
-  argTypes: {
-    columns: { control: "radio", options: [2, 3, 4] },
-
-    cardVariant: {
-      control: "select",
-      options: ["default", "bordered", "elevated", "minimal"],
-    },
-  },
-};
-
-export default meta;
-type Story = StoryObj<typeof ServicesSection>;
+import contract from "./ServicesSection.contract.json";
 
 const sampleServices = [
   {
@@ -47,21 +25,59 @@ const sampleServices = [
   },
 ];
 
-export const Default: Story = {
-  args: {
-    title: "What we do",
-    description: "Strategy, systems, and shipping — end to end.",
-    services: sampleServices,
-    columns: 3,
-  },
+const defaultArgs = {
+  title: "What we do",
+  description: "Strategy, systems, and shipping — end to end.",
+  services: sampleServices,
+  columns: 3 as const,
+  cardVariant: "bordered" as const,
 };
 
-export const Playground: Story = { ...Default };
+const meta = {
+  title: "Patterns/ServicesSection",
+  component: ServicesSection,
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    layout: "fullscreen",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
+  },
+  argTypes: {
+    title: { control: "text", description: "Section heading" },
+    description: { control: "text", description: "Lead copy below the heading" },
+    services: { control: false, description: "Service tiles (icon, title, description)" },
+    columns: {
+      control: "radio",
+      options: [2, 3, 4],
+      description: "Responsive column count",
+      table: { defaultValue: { summary: "3" } },
+    },
+    cardVariant: {
+      control: "select",
+      options: ["default", "bordered", "elevated", "minimal"],
+      description: "ServiceCard surface variant",
+      table: { defaultValue: { summary: "default" } },
+    },
+    className: { control: "text", description: "Section class names", table: { disable: true } },
+    id: { control: "text", description: "Section id", table: { defaultValue: { summary: "services" } } },
+  },
+  args: defaultArgs,
+} satisfies Meta<typeof ServicesSection>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
+export const Playground: Story = {};
+
 export const Example: Story = {
-  parameters: { controls: { disable: true } },
-  args: Default.args,
+  name: "Example (homepage services)",
+  parameters: { controls: { disable: true }, layout: "fullscreen" },
+  args: defaultArgs,
 };
+
 export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
-  args: Default.args,
+  args: defaultArgs,
 };

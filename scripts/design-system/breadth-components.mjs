@@ -12,7 +12,6 @@ export const BREADTH_COMPONENTS = [
   { name: "Grid", tier: "atom", group: "layout", root: "components", status: "alpha", description: "CSS grid layout primitive with tokenized gaps." },
   { name: "FlexBox", tier: "atom", group: "layout", root: "components", status: "alpha", description: "Flexbox layout primitive for stacks and rows." },
   { name: "ThemeProvider", tier: "atom", group: "foundation", root: "components", status: "alpha", description: "Theme context for light, dark, and high-contrast modes." },
-,
   { name: "HeroSection", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Full-bleed hero shell with min-height, alignment, and background variants." },
   { name: "DesignSprintsSection", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Homepage design-sprints band with animated CTA pills." },
   { name: "WorkMagneticField", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Homepage work grid with magnetic hover on project cards." },
@@ -22,7 +21,7 @@ export const BREADTH_COMPONENTS = [
   { name: "ServiceCard", tier: "molecule", group: "marketing", root: "components", status: "alpha", description: "Service tile with icon, title, description, and optional link." },
   { name: "FormFieldEditorial", tier: "molecule", group: "form", root: "components", status: "alpha", description: "Uppercase-label form field for editorial contact flows." },
   { name: "SkipLink", tier: "atom", group: "navigation", root: "components", status: "alpha", description: "Skip-to-main link shown on keyboard focus." },
-  { name: "ClientLogoMarquee", tier: "organism", group: "marketing", root: "components", status: "alpha", description: "Animated client logo marquee on the homepage." }
+  { name: "ClientLogoMarquee", tier: "organism", group: "marketing", root: "components", status: "alpha", description: "Animated client logo marquee on the homepage." },
   { name: "CookieConsent", tier: "organism", group: "chrome", root: "components", status: "alpha", description: "GDPR cookie consent modal and banner wired to site providers." },
   { name: "EnhancedProjectCard", tier: "molecule", group: "marketing", root: "components", status: "alpha", description: "Portfolio project card with image, video hover, and metadata." },
   { name: "WorkPreviewSection", tier: "pattern", group: "marketing", root: "patterns", status: "alpha", description: "Work index preview grid of project cards." },
