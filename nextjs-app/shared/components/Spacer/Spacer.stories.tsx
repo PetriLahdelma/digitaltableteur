@@ -2,41 +2,41 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Spacer } from "./Spacer";
 import contract from "./Spacer.contract.json";
 
-// Alpha-tier story scaffold for Spacer. The component lives outside the
-// previous catalog (per `npm run audit:catalog` on 2026-05-26) and is being
-// brought in as part of the Bucket-1 catalog-gap migration documented in
-// nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
-// minimal at alpha — Default + Playground prove the contract surface; the
-// Example + ForcedColors stories are added at the alpha -> beta promotion.
+const defaultArgs = {
+  size: "md" as const,
+  axis: "vertical" as const,
+};
 
 const meta = {
   title: "Atoms/Spacer",
   component: Spacer,
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
-    },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
   argTypes: {
     size: {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl", "2xl"],
+      description: "Tokenized gap size",
       table: { defaultValue: { summary: "md" } },
     },
     axis: {
       control: "select",
-      options: ["block", "inline"],
-      table: { defaultValue: { summary: "block" } },
+      options: ["vertical", "horizontal"],
+      description: "Block (vertical) or inline (horizontal) axis",
+      table: { defaultValue: { summary: "vertical" } },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS class names",
+      table: { disable: true },
     },
   },
-  args: {
-    size: "md",
-    axis: "block",
-  },
+  args: defaultArgs,
 } satisfies Meta<typeof Spacer>;
 
 export default meta;
@@ -44,3 +44,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 export const Playground: Story = {};
+
+export const Example: Story = {
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <span className="text-sm">First block</span>
+      <Spacer size="md" axis="vertical" />
+      <span className="text-sm">Second block after deliberate gap</span>
+    </div>
+  ),
+};
+
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
+};

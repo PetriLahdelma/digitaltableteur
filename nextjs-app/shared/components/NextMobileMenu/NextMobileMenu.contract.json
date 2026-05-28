@@ -3,9 +3,9 @@
     "name": "NextMobileMenu",
     "tier": "pattern",
     "group": "navigation",
-    "status": "alpha",
+    "status": "beta",
     "description": "Mobile-viewport navigation drawer paired with `NextHeader`. Opens on the header's mobile-menu trigger, traps focus while open, and closes on Esc / outside click.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-next-mobile-menu",
     "radixPrimitive": null,
     "element": "dialog",
     "variants": {},
@@ -14,7 +14,9 @@
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [
@@ -28,9 +30,10 @@
             "Outside content has `aria-hidden='true'` while the menu is open."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false,
-        "motion": true
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "motion": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -42,6 +45,6 @@
             "--space-internal-24"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

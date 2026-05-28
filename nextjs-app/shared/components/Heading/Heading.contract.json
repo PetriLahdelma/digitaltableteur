@@ -3,41 +3,20 @@
     "name": "Heading",
     "tier": "atom",
     "group": "display",
-    "status": "alpha",
+    "status": "beta",
     "description": "Semantic heading primitive (h1–h6) with an explicit visual size axis decoupled from the HTML level so the document outline stays honest.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-heading",
     "radixPrimitive": null,
     "element": "h2",
-    "variants": {
-        "level": {
-            "values": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6"
-            ],
-            "default": "2"
-        },
-        "size": {
-            "values": [
-                "display",
-                "xl",
-                "lg",
-                "md",
-                "sm",
-                "xs"
-            ],
-            "default": "lg"
-        }
-    },
+    "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [],
@@ -46,8 +25,9 @@
             "Authors are responsible for keeping `level` aligned with the surrounding document outline — `Heading` does not introspect its DOM position."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -64,6 +44,6 @@
             "--line-height-tight"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

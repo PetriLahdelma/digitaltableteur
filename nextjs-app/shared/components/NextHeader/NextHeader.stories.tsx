@@ -1,26 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { userEvent, within } from "storybook/test";
 import { NextHeader } from "./NextHeader";
 import contract from "./NextHeader.contract.json";
-
-// Alpha-tier story scaffold for NextHeader. The component lives outside the
-// previous catalog (per `npm run audit:catalog` on 2026-05-26) and is being
-// brought in as part of the Bucket-1 catalog-gap migration documented in
-// nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
-// minimal at alpha — Default + Playground prove the contract surface; the
-// Example + ForcedColors stories are added at the alpha -> beta promotion.
 
 const meta = {
   title: "Patterns/NextHeader",
   component: NextHeader,
+  tags: ["beta", "!autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
-    },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
   },
+  argTypes: {},
+  args: {},
 } satisfies Meta<typeof NextHeader>;
 
 export default meta;
@@ -28,3 +22,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 export const Playground: Story = {};
+
+Playground.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.tab();
+};
+
+export const Example: Story = {
+  parameters: { controls: { disable: true }, layout: "fullscreen" },
+  render: () => <NextHeader />,
+};
+
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: {},
+};

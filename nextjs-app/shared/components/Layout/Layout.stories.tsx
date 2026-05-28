@@ -2,29 +2,49 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import Layout from "./Layout";
 import contract from "./Layout.contract.json";
 
-// Alpha-tier story scaffold for Layout. The component lives outside the
-// previous catalog (per `npm run audit:catalog` on 2026-05-26) and is being
-// brought in as part of the Bucket-1 catalog-gap migration documented in
-// nextjs-app/shared/foundations/05-Roadmap.mdx. Stories are intentionally
-// minimal at alpha — Default + Playground prove the contract surface; the
-// Example + ForcedColors stories are added at the alpha -> beta promotion.
+const sampleMain = (
+  <div style={{ padding: "var(--space-layout-24)" }}>
+    <h1 className="font-heading text-title-l">Page content</h1>
+    <p className="text-sm text-muted-foreground">
+      Vite-era shell with skip link, header, main landmark, footer, and chat widget.
+    </p>
+  </div>
+);
 
 const meta = {
   title: "Patterns/Layout",
   component: Layout,
+  tags: ["beta", "!autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
     contractStatus: contract.status,
-    docs: {
-      description: {
-        component: contract.description,
-      },
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
+  },
+  argTypes: {
+    children: {
+      control: false,
+      description: "Route page content rendered inside <main>",
     },
   },
+  args: { children: sampleMain },
 } satisfies Meta<typeof Layout>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  render: (args) => <Layout>{args.children}</Layout>,
+};
+export const Playground: Story = { ...Default };
+
+export const Example: Story = {
+  parameters: { controls: { disable: true }, layout: "fullscreen" },
+  render: () => <Layout>{sampleMain}</Layout>,
+};
+
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  args: { children: sampleMain },
+  render: (args) => <Layout>{args.children}</Layout>,
+};

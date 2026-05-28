@@ -21,6 +21,9 @@ const sizeMap = {
   lg: "icon-lg" as const,
 };
 
+/**
+ * Icon-only action control; `label` is required and becomes the accessible name.
+ */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ icon, label, variant = "ghost", size = "md", className, onClick, disabled }, ref) => {
     return (

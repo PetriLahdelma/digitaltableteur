@@ -3,26 +3,20 @@
     "name": "FormField",
     "tier": "molecule",
     "group": "form",
-    "status": "alpha",
+    "status": "beta",
     "description": "Wrapper that owns the label + control + helper-text triplet for a single field. Wires `htmlFor`/`id`, `aria-describedby`, and the required-/error-state slots so consumers do not reimplement them per form.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-form-field",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {
-        "orientation": {
-            "values": [
-                "vertical",
-                "horizontal"
-            ],
-            "default": "vertical"
-        }
-    },
+    "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [
@@ -34,8 +28,9 @@
             "When `required`, the asterisk is decorative; the control owns `aria-required`."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -51,6 +46,6 @@
             "--font-size-md"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

@@ -3,37 +3,20 @@
     "name": "Spacer",
     "tier": "atom",
     "group": "structure",
-    "status": "alpha",
+    "status": "beta",
     "description": "Empty layout element that injects a fixed gap on a single axis. Used inside flex/grid containers where adding a token-sized gap as a sibling reads cleaner than the gap utility.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-spacer",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {
-        "size": {
-            "values": [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-                "2xl"
-            ],
-            "default": "md"
-        },
-        "axis": {
-            "values": [
-                "block",
-                "inline"
-            ],
-            "default": "block"
-        }
-    },
+    "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [],
@@ -41,8 +24,9 @@
             "Renders as a non-interactive `<div>`; assistive tech ignores it."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [],
@@ -55,6 +39,6 @@
             "--space-layout-32"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

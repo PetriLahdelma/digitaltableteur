@@ -3,9 +3,9 @@
     "name": "FormGroup",
     "tier": "molecule",
     "group": "form",
-    "status": "alpha",
+    "status": "beta",
     "description": "Fieldset wrapper for grouped form controls (checkbox set, radio set, named address block). Renders a real `<fieldset>` + `<legend>` so the grouping is announced.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-form-group",
     "radixPrimitive": null,
     "element": "fieldset",
     "variants": {},
@@ -14,7 +14,9 @@
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [
@@ -25,8 +27,9 @@
             "Disabled state on the fieldset cascades to all enclosed controls."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -38,6 +41,6 @@
             "--space-internal-12"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

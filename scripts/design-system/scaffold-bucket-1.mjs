@@ -34,14 +34,14 @@ const COMPONENTS = join(ROOT, "nextjs-app/shared/components");
 
 // Tier-prefix mapping mirrors scripts/design-system/in-scope-components.mjs
 // so Storybook sidebar grouping is consistent with existing entries.
-const TIER_PREFIX = {
+export const TIER_PREFIX = {
   atom: "Atoms",
   molecule: "Molecules",
   organism: "Organisms",
   pattern: "Patterns",
 };
 
-const COMPONENTS_DATA = [
+export const COMPONENTS_DATA = [
   // ---------- Atoms ----------
   {
     name: "AspectRatio",
@@ -1298,6 +1298,11 @@ let written = 0;
 let skipped = 0;
 const componentsBuilt = [];
 
+const isMainModule =
+  process.argv[1] &&
+  resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMainModule) {
 for (const c of COMPONENTS_DATA) {
   const dir = join(COMPONENTS, c.name);
   if (!existsSync(dir)) {
@@ -1334,6 +1339,7 @@ for (const c of COMPONENTS_DATA) {
 console.log("");
 console.log(`Wrote ${written} files across ${componentsBuilt.length} components.`);
 if (skipped) console.log(`Skipped ${skipped} components whose directories were missing.`);
+}
 
 // ---------------------------------------------------------------------------
 // Builders

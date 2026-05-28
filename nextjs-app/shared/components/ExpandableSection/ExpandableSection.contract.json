@@ -3,26 +3,20 @@
     "name": "ExpandableSection",
     "tier": "molecule",
     "group": "structure",
-    "status": "alpha",
+    "status": "beta",
     "description": "Collapsible content region with a trigger header. Lighter than `Accordion` (which manages a group of expandables) — used standalone for a single 'show more' or detail-disclosure section.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-expandable-section",
     "radixPrimitive": null,
     "element": "section",
-    "variants": {
-        "defaultOpen": {
-            "values": [
-                "true",
-                "false"
-            ],
-            "default": "false"
-        }
-    },
+    "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
         "Default",
-        "Playground"
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
         "keyboard": [
@@ -34,9 +28,10 @@
             "Trigger sets `aria-controls` to the panel id; the panel uses `role='region'` and `aria-labelledby` pointing at the trigger."
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false,
-        "motion": true
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "motion": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
     },
     "tokens": {
         "colors": [
@@ -48,6 +43,6 @@
             "--space-internal-12"
         ]
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }
