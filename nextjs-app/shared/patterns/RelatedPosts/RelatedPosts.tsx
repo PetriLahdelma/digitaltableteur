@@ -93,7 +93,7 @@ export function RelatedPosts({
             className={cn(
               "font-display font-bold",
               "text-2xl tablet:text-3xl",
-              "text-foreground mb-8"
+              "text-foreground mb-8",
             )}
           >
             {displayTitle}
@@ -139,7 +139,6 @@ export function RelatedPosts({
                   }
                   publishedAt={post.publishedAt}
                   readTime={post.readTime}
-                  tags={post.tags}
                   variant="default"
                   hideImage
                 />
