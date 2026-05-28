@@ -17,7 +17,7 @@ import { getAuthors } from "../../data/authors";
 const meta: Meta<typeof Author> = {
   title: "Molecules/Author",
   component: Author,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
@@ -53,6 +53,7 @@ const [defaultAuthor] = getAuthors();
  * No profile link - displays static "By {name}" text.
  */
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     name: defaultAuthor?.name ?? "Petri Lahdelma",
     imageUrl: defaultAuthor?.imageUrl ?? "https://via.placeholder.com/150",

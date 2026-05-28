@@ -21,17 +21,20 @@ import { TeamBlock } from '@dt/TeamBlock';
 
 ## When to use
 
-- Production layouts and flows documented in Storybook.
+- When the **Example** story matches your layout or flow.
+- When design tokens and theme context from `ThemeProvider` are already mounted.
 
 ## When not to use
 
-- Prefer a smaller primitive when this composition is more than you need.
+- When a smaller primitive (link, text, icon) covers the need without extra chrome.
+- When the composition is one-off and not worth standardising in the design system.
 
 ## Accessibility
 
-- Verify keyboard, focus, and screen-reader behaviour in the **Example** story.
-- Theme and forced-colors stories cover light, dark, and high-contrast modes.
+- Exercise keyboard, focus, and screen-reader behaviour in **Playground** and **Example**.
+- Confirm **ForcedColors** for high-contrast regressions; run `npm run test:stories:hc:ci` before marking `forcedColorsVerified`.
 
 ## Promotion notes
 
-- Promote to stable after AT snapshots and a documented production consumer.
+- Beta: Example + ForcedColors stories, axe gate enabled, MDX headings complete.
+- Stable: documented production consumer, AT snapshots, and honest `lightDarkVerified` / `forcedColorsVerified` flags.

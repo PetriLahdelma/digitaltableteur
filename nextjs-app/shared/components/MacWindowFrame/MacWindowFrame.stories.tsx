@@ -23,7 +23,8 @@ User: Write a poem about autumn.
 AI: The leaves fall gently to the ground, painting the earth in hues profound.
 The crisp air whispers through the trees, a symphony of nature's ease.`;
 
-export const Default: Story = { args: { children: sampleContent } };
+export const Default: Story = {
+  tags: ["beta-matrix"], args: { children: sampleContent } };
 
 export const WithAction: Story = {
   args: {

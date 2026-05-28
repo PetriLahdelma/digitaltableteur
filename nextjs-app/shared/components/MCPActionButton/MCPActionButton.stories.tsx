@@ -23,6 +23,7 @@ const mockExecute = async () => {
 };
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: { toolId: "sync.calendar", onExecute: mockExecute },
 };
 

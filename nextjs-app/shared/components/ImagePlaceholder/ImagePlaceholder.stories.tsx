@@ -17,7 +17,7 @@ import schema from "./schema.json";
 const meta: Meta<typeof ImagePlaceholder> = {
   title: "Atoms/ImagePlaceholder",
   component: ImagePlaceholder,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
@@ -82,6 +82,7 @@ export default meta;
 type Story = StoryObj<typeof ImagePlaceholder>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     width: 800,
     height: 400,

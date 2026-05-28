@@ -55,6 +55,7 @@ export default meta;
 type Story = StoryObj<typeof StoryBlock>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     subtitle: "Project Overview",
     title: "Building a Design System",

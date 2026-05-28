@@ -257,6 +257,7 @@ const largeTeam = [
  * Default story showing a 5-person team (Helsinki Design System)
  */
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     members: smallTeam,
     sectionTitle: "Team",

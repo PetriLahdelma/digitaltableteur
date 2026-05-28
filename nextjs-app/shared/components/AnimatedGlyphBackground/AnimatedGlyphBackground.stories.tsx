@@ -54,7 +54,8 @@ const StoryFrame: React.FC<AnimatedGlyphBackgroundProps> = (args) => {
   );
 };
 
-export const Default: Story = { render: (args) => <StoryFrame {...args} /> };
+export const Default: Story = {
+  tags: ["beta-matrix"], render: (args) => <StoryFrame {...args} /> };
 
 export const PrimaryTone: Story = {
   args: { tone: "primary" },

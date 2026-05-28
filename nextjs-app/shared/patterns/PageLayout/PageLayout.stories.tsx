@@ -61,6 +61,7 @@ const DemoContent = ({ gridColumn }: { gridColumn?: string }) => (
 );
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: { maxWidth: "lg", spacing: "default", withMargins: true },
   render: (args) => (
     <PageLayout {...args}>

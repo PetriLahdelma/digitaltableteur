@@ -11,7 +11,7 @@ const meta: Meta<typeof Header> = {
   argTypes: {},
   title: "Patterns/Header",
   component: Header,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
@@ -28,7 +28,8 @@ const meta: Meta<typeof Header> = {
 export default meta;
 type Story = StoryObj<typeof Header>;
 
-export const Default: Story = { name: "Default", render: () => <Header /> };
+export const Default: Story = {
+  tags: ["beta-matrix"], name: "Default", render: () => <Header /> };
 
 const ThemeCycleComponent: React.FC = () => {
   const [theme, setTheme] =

@@ -5,7 +5,7 @@ import contract from "./Progress.contract.json";
 const meta = {
   title: "Atoms/Progress",
   component: Progress,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "padded",
     contractStatus: contract.status,
@@ -39,7 +39,11 @@ const meta = {
       description: "Semantic fill color",
       table: { category: "Appearance", defaultValue: { summary: "neutral" } },
     },
-    className: { control: false, table: { category: "Advanced" } },
+    className: {
+      control: false,
+      description: "Optional utility classes on the root",
+      table: { category: "Advanced" },
+    },
   },
   args: {
     value: 45,
@@ -54,14 +58,17 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 export const Default: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   ...Playground,
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true } },
   render: () => (
