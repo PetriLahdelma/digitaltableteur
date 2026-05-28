@@ -57,6 +57,7 @@ export default meta;
 type Story = StoryObj<typeof ChatMessageBubble>;
 
 export const AssistantMessage: Story = {
+  tags: ["beta-matrix"],
   args: { message: assistantMessage },
   parameters: {},
 };

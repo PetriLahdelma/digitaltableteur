@@ -194,4 +194,7 @@ export const Example: Story = {
     </LabelStory>
   ),
 };
-export const ForcedColors = { globals: { forcedColors: "active" } };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+};

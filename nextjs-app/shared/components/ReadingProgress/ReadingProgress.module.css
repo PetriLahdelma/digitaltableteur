@@ -29,7 +29,11 @@
   background: color-mix(in srgb, var(--main-body-background-color) 85%, transparent);
   font-family: var(--font-text);
   font-size: var(--font-size-text-s);
-  color: var(--color-text-muted);
+
+  /* `--color-text-muted` is not a published token in `variables.css`; fall back
+   * to the theme-aware secondary text token so contrast stays >=4.5:1 in
+   * light (#041b23), dark (#aaa), and forced-colors (CanvasText) modes. */
+  color: var(--secondary-text-color, #4b5563);
   inset-block-start: 100%;
   inset-inline-end: var(--space-internal-8);
 }

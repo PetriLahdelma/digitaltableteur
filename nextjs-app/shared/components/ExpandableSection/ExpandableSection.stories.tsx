@@ -9,11 +9,7 @@ function ExpandableSectionDemo(
 ) {
   const [open, setOpen] = useState(args.defaultExpanded ?? false);
   return (
-    <ExpandableSection
-      {...args}
-      expanded={open}
-      onExpandedChange={setOpen}
-    />
+    <ExpandableSection {...args} expanded={open} onExpandedChange={setOpen} />
   );
 }
 
@@ -110,7 +106,13 @@ export const Example: Story = {
           expanded={tier2}
           onExpandedChange={setTier2}
         >
-          <div style={{ display: "grid", gap: "0.5rem", paddingBlockStart: "0.75rem" }}>
+          <div
+            style={{
+              display: "grid",
+              gap: "0.5rem",
+              paddingBlockStart: "0.75rem",
+            }}
+          >
             <label className="text-sm">Budget range</label>
             <select className="rounded border px-2 py-1 text-sm">
               <option>Select…</option>

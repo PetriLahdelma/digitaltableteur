@@ -16,9 +16,16 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    onSuccess: { action: "success", description: "Called after successful submit" },
+    onSuccess: {
+      action: "success",
+      description: "Called after successful submit",
+    },
     onError: { action: "error", description: "Called when submit fails" },
-    className: { control: "text", description: "Form wrapper class names", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Form wrapper class names",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof ContactFormEditorial>;
@@ -27,9 +34,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

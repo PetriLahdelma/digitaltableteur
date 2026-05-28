@@ -37,17 +37,23 @@ const shellContent = (
   </NextLayout>
 );
 
-export const Default: Story = { render: () => shellContent };
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  render: () => shellContent,
+};
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   ...Default,
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true } },
   render: () => shellContent,
 };
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   render: () => shellContent,
 };

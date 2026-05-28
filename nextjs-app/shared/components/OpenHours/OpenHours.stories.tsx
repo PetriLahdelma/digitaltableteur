@@ -99,7 +99,9 @@ export const Z_OpenHoursCompliance: Story = {
 };
 
 export const Default: Story = {
-  tags: ["beta-matrix"], args: {} };
+  tags: ["beta-matrix"],
+  args: {},
+};
 
 export const Compact: Story = { args: { compact: true } };
 
@@ -118,7 +120,12 @@ export const InjectedDate: Story = {
 
 export const Playground = Default;
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   ...Default,
 };
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

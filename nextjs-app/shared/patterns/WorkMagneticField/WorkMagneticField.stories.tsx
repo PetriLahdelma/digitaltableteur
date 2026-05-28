@@ -44,10 +44,24 @@ const meta = {
   },
   argTypes: {
     title: { control: "text", description: "Section heading" },
-    projects: { control: false, description: "Portfolio cards with magnetic hover" },
-    showViewAll: { control: "boolean", description: "Show link to full work index" },
-    className: { control: "text", description: "Section class names", table: { disable: true } },
-    id: { control: "text", description: "Section id", table: { defaultValue: { summary: "work" } } },
+    projects: {
+      control: false,
+      description: "Portfolio cards with magnetic hover",
+    },
+    showViewAll: {
+      control: "boolean",
+      description: "Show link to full work index",
+    },
+    className: {
+      control: "text",
+      description: "Section class names",
+      table: { disable: true },
+    },
+    id: {
+      control: "text",
+      description: "Section id",
+      table: { defaultValue: { summary: "work" } },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof WorkMagneticField>;

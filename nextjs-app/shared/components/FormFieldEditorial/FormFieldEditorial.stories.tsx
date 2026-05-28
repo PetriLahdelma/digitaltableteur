@@ -31,8 +31,16 @@ const meta = {
     error: { control: "text", description: "Error message (role=alert)" },
     required: { control: "boolean", description: "Required indicator" },
     placeholder: { control: "text", description: "Input placeholder" },
-    className: { control: "text", description: "Field wrapper class names", table: { disable: true } },
-    id: { control: "text", description: "Stable id override", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Field wrapper class names",
+      table: { disable: true },
+    },
+    id: {
+      control: "text",
+      description: "Stable id override",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof FormFieldEditorial>;
@@ -41,9 +49,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
@@ -57,7 +67,12 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <div style={{ maxWidth: 420 }}>
-      <FormFieldEditorial label="Email" type="email" required placeholder="you@company.com" />
+      <FormFieldEditorial
+        label="Email"
+        type="email"
+        required
+        placeholder="you@company.com"
+      />
     </div>
   ),
 };

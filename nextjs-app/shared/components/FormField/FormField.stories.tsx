@@ -27,7 +27,10 @@ const meta = {
       description: "Single form control (input, select, textarea)",
     },
     error: { control: "text", description: "Submit-time error message" },
-    helperText: { control: "text", description: "Hint text wired via aria-describedby" },
+    helperText: {
+      control: "text",
+      description: "Hint text wired via aria-describedby",
+    },
     required: { control: "boolean", description: "Required field indicator" },
     disabled: { control: "boolean", description: "Disabled fieldset styling" },
     className: {
@@ -62,7 +65,11 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <div style={{ width: 360 }}>
-      <FormField label="Full name" required helperText="As on your business card">
+      <FormField
+        label="Full name"
+        required
+        helperText="As on your business card"
+      >
         <TextInput placeholder="Alex Example" />
       </FormField>
     </div>

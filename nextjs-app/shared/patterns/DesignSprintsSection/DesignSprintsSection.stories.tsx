@@ -17,8 +17,16 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    id: { control: "text", description: "Section anchor id", table: { defaultValue: { summary: "design-sprints" } } },
-    className: { control: "text", description: "Section class names", table: { disable: true } },
+    id: {
+      control: "text",
+      description: "Section anchor id",
+      table: { defaultValue: { summary: "design-sprints" } },
+    },
+    className: {
+      control: "text",
+      description: "Section class names",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof DesignSprintsSection>;
@@ -27,10 +35,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],

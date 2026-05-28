@@ -60,11 +60,26 @@
   color: var(--color-text, #e5e7eb);
 }
 
+/* Dark-theme toolbar surface
+ *
+ * The shared `--color-neutral-bg` token resolves to #3b3f5c in dark mode.
+ * The toolbar hosts a `<Button variant="secondary">` whose text inherits
+ * `--color-primary` (#6fa8ff in dark mode); on #3b3f5c that combination
+ * lands at 4.25:1 — just below the 4.5:1 WCAG normal-text floor.
+ * Darken the toolbar surface so the same secondary button now clears 7:1
+ * without forcing every consumer of `--color-neutral-bg` darker. */
+
+:global(.themeDark) .toolbar,
+:global([data-theme="dark"]) .toolbar {
+  border-color: #2d2d2d;
+  background: #1e1e1e;
+}
+
 .language {
   margin-block: 0 !important;
   font-size: var(--font-size-text-xxs, 0.75rem);
   letter-spacing: 0.08em;
-  color: var(--color-muted, #9ca3af);
+  color: var(--code-toolbar-text, #2b3a45);
 }
 
 .actions {
@@ -76,24 +91,24 @@
 .copyStatus {
   min-width: 5ch;
   font-size: var(--font-size-text-xxs, 0.75rem);
-  color: var(--color-muted, #9ca3af);
+  color: var(--code-toolbar-text, #2b3a45);
 }
 
 .pre {
-  /* VS theme by Andrew Lock (prism-vs) */
+  /* Accessible VS-like light theme (all tokens ≥ 4.5:1 on #fff) */
   --code-bg: #fff;
   --code-border: #041B23;
-  --code-text: #393a34;
-  --code-line-number: #2b91af;
-  --code-token-comment: #008000;
+  --code-text: #1f2937;
+  --code-line-number: #4b5563;
+  --code-token-comment: #006400;
   --code-token-string: #a31515;
-  --code-token-number: #36acaa;
-  --code-token-keyword: #00f;
+  --code-token-number: #0b6b66;
+  --code-token-keyword: #0033b3;
   --code-token-function: var(--code-text);
-  --code-token-class-name: #2b91af;
+  --code-token-class-name: #1d6b87;
   --code-token-tag: #800000;
   --code-token-selector: #800000;
-  --code-token-attr-name: #f00;
+  --code-token-attr-name: #b30000;
   --code-token-property: var(--code-token-attr-name);
   --code-token-attr-value: var(--code-token-keyword);
   --code-token-operator: var(--code-text);
@@ -103,7 +118,7 @@
   --code-token-boolean: var(--code-token-number);
   --code-token-inserted: var(--code-token-number);
   --code-token-deleted: #9a050f;
-  --code-token-important: #e90;
+  --code-token-important: #8a4c00;
 
   margin: 0;
   padding: 1rem;

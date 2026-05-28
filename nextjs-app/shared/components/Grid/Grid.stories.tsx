@@ -8,10 +8,26 @@ const defaultArgs = {
   gap: "1rem",
   children: (
     <>
-      <div><Text as="p" terminals="sans">Cell A</Text></div>
-      <div><Text as="p" terminals="sans">Cell B</Text></div>
-      <div><Text as="p" terminals="sans">Cell C</Text></div>
-      <div><Text as="p" terminals="sans">Cell D</Text></div>
+      <div>
+        <Text as="p" terminals="sans">
+          Cell A
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          Cell B
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          Cell C
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          Cell D
+        </Text>
+      </div>
     </>
   ),
 };
@@ -27,15 +43,46 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    children: { control: false, description: "Grid cells (supports span on child props)" },
+    children: {
+      control: false,
+      description: "Grid cells (supports span on child props)",
+    },
     columns: { control: "number", description: "Column count or template" },
-    rows: { control: "text", description: "Row count or template", table: { disable: true } },
-    gap: { control: "text", description: "Grid gap", table: { defaultValue: { summary: "1rem" } } },
-    rowGap: { control: "text", description: "Row gap override", table: { disable: true } },
-    colGap: { control: "text", description: "Column gap override", table: { disable: true } },
-    align: { control: "text", description: "align-items", table: { disable: true } },
-    justify: { control: "text", description: "justify-items", table: { disable: true } },
-    className: { control: "text", description: "Grid class names", table: { disable: true } },
+    rows: {
+      control: "text",
+      description: "Row count or template",
+      table: { disable: true },
+    },
+    gap: {
+      control: "text",
+      description: "Grid gap",
+      table: { defaultValue: { summary: "1rem" } },
+    },
+    rowGap: {
+      control: "text",
+      description: "Row gap override",
+      table: { disable: true },
+    },
+    colGap: {
+      control: "text",
+      description: "Column gap override",
+      table: { disable: true },
+    },
+    align: {
+      control: "text",
+      description: "align-items",
+      table: { disable: true },
+    },
+    justify: {
+      control: "text",
+      description: "justify-items",
+      table: { disable: true },
+    },
+    className: {
+      control: "text",
+      description: "Grid class names",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof Grid>;
@@ -44,10 +91,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],
@@ -55,9 +103,21 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Grid columns={3} gap="1.5rem" style={{ maxWidth: 720 }}>
-      <div><Text as="p" terminals="sans">Services</Text></div>
-      <div><Text as="p" terminals="sans">Work</Text></div>
-      <div><Text as="p" terminals="sans">About</Text></div>
+      <div>
+        <Text as="p" terminals="sans">
+          Services
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          Work
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          About
+        </Text>
+      </div>
     </Grid>
   ),
 };

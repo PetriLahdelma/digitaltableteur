@@ -18,6 +18,14 @@
   overflow: hidden;
 }
 
+/* Ensure label slots inherit the variant color so AA contrast holds inside any
+ * coloured Button background (white-on-info, primary-on-warning, etc). */
+
+.button > :is([data-button-slot="text"], .text),
+.button > :is([data-button-slot="icon"], [data-button-slot="end-icon"]) {
+  color: inherit;
+}
+
 /* Focus states for accessibility (WCAG 2.4.7 Focus Visible) */
 
 .button:focus-visible {
@@ -114,14 +122,14 @@
 
 .button.error {
   border: none;
-  background-color: var(--color-error);
+  background-color: var(--button-error-bg, #b91c1c);
   color: var(--color-white);
 }
 
 .button.warning {
   border: none;
   background-color: var(--color-warning-contrast);
-  color: var(--color-warning-text);
+  color: var(--color-white);
 }
 
 .button.success {
@@ -354,9 +362,9 @@
 
 .button.splitToggle::before {
   position: absolute;
+  inset-block: 0.5rem;
   inline-size: 1px;
   content: "";
-  inset-block: 0.5rem;
   inset-inline-start: 0;
 }
 

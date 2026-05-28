@@ -83,7 +83,9 @@
 }
 
 .input.error::placeholder {
-  color: var(--color-error); /* Error color for placeholder */
+  /* Placeholder still hints the error context but stays AA-contrast on the
+   * tinted error background. */
+  color: var(--color-error-text, #7a1f1f);
 }
 
 .input:disabled {

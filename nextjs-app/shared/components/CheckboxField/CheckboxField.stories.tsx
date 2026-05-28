@@ -62,7 +62,7 @@ export const Playground: Story = {
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  await userEvent.click(canvas.getByRole("button"));
+  await userEvent.click(canvas.getByRole("checkbox"));
 };
 
 export const Example: Story = {

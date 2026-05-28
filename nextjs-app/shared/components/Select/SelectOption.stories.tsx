@@ -21,6 +21,7 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const select = await canvas.findByLabelText(/select an option/i);
   await userEvent.selectOptions(select, "option2");
 };
+Default.tags = ["beta-matrix"];
 
 export const Disabled = () => {
   const { t } = useTranslation();

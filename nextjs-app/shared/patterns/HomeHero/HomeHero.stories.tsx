@@ -36,9 +36,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

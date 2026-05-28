@@ -43,6 +43,7 @@ const InteractiveRender: React.FC<React.ComponentProps<typeof ChatComposer>> = (
 };
 
 export const Interactive: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <InteractiveRender {...args} />,
   parameters: {},
   play: async ({ canvasElement }) => {

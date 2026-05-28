@@ -17,7 +17,10 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    ariaLabel: { control: "text", description: "Accessible name for the logo region" },
+    ariaLabel: {
+      control: "text",
+      description: "Accessible name for the logo region",
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof ClientLogoMarquee>;
@@ -26,10 +29,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],

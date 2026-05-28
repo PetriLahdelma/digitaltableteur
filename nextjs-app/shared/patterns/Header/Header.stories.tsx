@@ -29,7 +29,10 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], name: "Default", render: () => <Header /> };
+  tags: ["beta-matrix"],
+  name: "Default",
+  render: () => <Header />,
+};
 
 const ThemeCycleComponent: React.FC = () => {
   const [theme, setTheme] =
@@ -67,7 +70,12 @@ export const ThemeCycle: Story = {
 
 export const Playground = Default;
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   ...Default,
 };
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

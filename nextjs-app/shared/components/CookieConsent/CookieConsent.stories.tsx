@@ -14,7 +14,11 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    className: { control: "text", description: "Banner class names", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Banner class names",
+      table: { disable: true },
+    },
   },
   args: {},
 } satisfies Meta<typeof CookieConsent>;

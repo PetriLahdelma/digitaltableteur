@@ -14,7 +14,7 @@ export function WipBadge({ status = "alpha", variant = "canvas" }: WipBadgeProps
   if (status === "stable") return null;
   const containerClass = variant === "docs" ? styles.wipBadgeDocs : styles.wipBadgeContainer;
   return (
-    <div className={styles.wipWrapper} aria-hidden={false}>
+    <div className={styles.wipWrapper} aria-hidden={false} data-axe-ignore>
       <div className={containerClass}>
         <span className={`${styles.badge} badge`} role="status">
           {t("storybookWipBadge")} ({status})

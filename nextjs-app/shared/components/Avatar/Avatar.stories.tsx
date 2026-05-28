@@ -341,8 +341,12 @@ export const Default = DefaultVariant;
 export const Playground = DefaultVariant;
 
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   render: (args: AvatarStoryArgs) => <Avatar {...WithMenu.args} {...args} />,
 };
 
-export const ForcedColors = { globals: { forcedColors: "active" } };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+};

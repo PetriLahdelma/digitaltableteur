@@ -26,6 +26,9 @@ const ToggleRender: React.FC<React.ComponentProps<typeof ChatToggle>> = (
   );
 };
 
-export const Default: Story = { render: (args) => <ToggleRender {...args} /> };
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  render: (args) => <ToggleRender {...args} />,
+};
 
 export const Open: Story = { args: { isOpen: true } };

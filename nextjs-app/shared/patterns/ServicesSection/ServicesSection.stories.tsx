@@ -45,8 +45,14 @@ const meta = {
   },
   argTypes: {
     title: { control: "text", description: "Section heading" },
-    description: { control: "text", description: "Lead copy below the heading" },
-    services: { control: false, description: "Service tiles (icon, title, description)" },
+    description: {
+      control: "text",
+      description: "Lead copy below the heading",
+    },
+    services: {
+      control: false,
+      description: "Service tiles (icon, title, description)",
+    },
     columns: {
       control: "radio",
       options: [2, 3, 4],
@@ -59,8 +65,16 @@ const meta = {
       description: "ServiceCard surface variant",
       table: { defaultValue: { summary: "default" } },
     },
-    className: { control: "text", description: "Section class names", table: { disable: true } },
-    id: { control: "text", description: "Section id", table: { defaultValue: { summary: "services" } } },
+    className: {
+      control: "text",
+      description: "Section class names",
+      table: { disable: true },
+    },
+    id: {
+      control: "text",
+      description: "Section id",
+      table: { defaultValue: { summary: "services" } },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof ServicesSection>;

@@ -25,7 +25,9 @@ const meta = {
     },
     className: {
       description: "Class Name",
-      control: false, table: { category: "Advanced" } },
+      control: false,
+      table: { category: "Advanced" },
+    },
   },
   args: { children: "Additional context for screen readers", as: "span" },
 } satisfies Meta<typeof VisuallyHidden>;
@@ -61,4 +63,7 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors: Story = { globals: { forcedColors: "active" } };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+};

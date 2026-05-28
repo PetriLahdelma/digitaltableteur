@@ -297,4 +297,14 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors = { globals: { forcedColors: "active" } };
+export const ForcedColors: Story = {
+  globals: { forcedColors: "active" },
+  tags: ["beta-matrix"],
+  render: () => (
+    <Checkbox
+      label="Accept terms"
+      isChecked={false}
+      onCheckedChange={() => undefined}
+    />
+  ),
+};

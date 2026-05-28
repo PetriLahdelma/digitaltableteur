@@ -98,7 +98,7 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
                   />
                 </div>
                 <Title
-                  level={4}
+                  level={3}
                   terminals="sans"
                   size="XS"
                   className={styles.memberName}
@@ -494,7 +494,12 @@ export const MinimalTeam: Story = {
 
 export const Playground = Default;
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   ...Default,
 };
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

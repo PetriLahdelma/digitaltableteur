@@ -82,7 +82,11 @@ type Story = StoryObj<typeof meta>;
  * Default thinking state with subtle intensity.
  * Most common usage in chat interfaces.
  */
-export const Default: Story = { args: {}, parameters: {} };
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  args: {},
+  parameters: {},
+};
 
 /**
  * Thinking mode - AI is processing the user's query

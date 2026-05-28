@@ -23,7 +23,10 @@ export default meta;
 
 type Story = StoryObj<typeof ChatHeader>;
 
-export const Default: Story = { parameters: {} };
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  parameters: {},
+};
 
 export const Sending: Story = { args: { isSending: true } };
 

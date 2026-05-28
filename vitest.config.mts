@@ -59,9 +59,13 @@ export default defineConfig({
   plugins: [stubMdxInTests, react()],
   css: {
     modules: {
-      // Predictable class names so tests can assert module classes via import
-      // or literal local names (e.g. toHaveClass("serif")).
-      generateScopedName: "[local]",
+      // Predictable but module-scoped class names. We prefix the local name
+      // with the module basename so that storybook tests (which load every
+      // component's CSS into a single document) cannot collide on common
+      // names like `.error`, `.warning`, `.button`, etc. Unit tests that
+      // assert via `styles.xxx` keep working because they read the resolved
+      // class name from the CSS Module import.
+      generateScopedName: "[name]__[local]",
     },
   },
   optimizeDeps: {

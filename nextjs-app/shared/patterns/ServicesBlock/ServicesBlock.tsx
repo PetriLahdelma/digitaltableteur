@@ -144,7 +144,15 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
                       role="listitem"
                       aria-label={tool.ariaLabel}
                     >
-                      {tool.icon}
+                      {React.isValidElement(tool.icon)
+                        ? React.cloneElement(
+                            tool.icon as React.ReactElement<{
+                              "aria-hidden"?: boolean;
+                              focusable?: boolean;
+                            }>,
+                            { "aria-hidden": true, focusable: false },
+                          )
+                        : tool.icon}
                     </div>
                   ))}
                 </div>

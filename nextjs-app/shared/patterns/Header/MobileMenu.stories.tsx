@@ -51,6 +51,9 @@ const DemoScaffold: React.FC = () => {
   );
 };
 
-export const Playground: Story = { render: () => <DemoScaffold /> };
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  render: () => <DemoScaffold />,
+};
 
 export const StaticOpen: Story = { args: { isOpen: true } };

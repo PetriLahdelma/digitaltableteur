@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # WipBadge
 
-**Status:** alpha · **Tier:** atom · **Group:** feedback
+**Status:** beta · **Tier:** atom · **Group:** feedback
 
 Storybook-only maturity badge. Non-stable components mount `WipBadge` in their
 preview decorators so reviewers can see at a glance whether what they're
@@ -42,6 +42,17 @@ import { WipBadge } from '@dt/WipBadge';
 <WipBadge status="beta" variant="docs" />
 ```
 
+## In use
+
+The badge is mounted automatically by the Storybook preview decorator for any
+component whose contract is not yet `status: "stable"`. The default decorator
+reads `<component>.contract.json` and forwards `status` to `<WipBadge />` so the
+maturity pill stays in sync with the manifest without manual upkeep. Use the
+`docs` variant inside MDX pages when you want the pill to flow with prose, and
+the `canvas` variant inside story previews when you want it pinned to the
+viewport. The badge sets `data-axe-ignore` so it never participates in the host
+component's accessibility evaluation.
+
 The component reads its label from i18n key `storybookWipBadge` so the badge
 flips language alongside the rest of the catalog. `role="status"` is set so
 assistive tech announces the maturity tier when the badge mounts.
@@ -77,8 +88,9 @@ assistive tech announces the maturity tier when the badge mounts.
 
 ## Promotion notes
 
-This is intentionally pinned at `alpha`. The badge is part of the catalog's
-self-description and is not a candidate for stable promotion — promoting it
-would imply we are committing to it as a public API for consumer apps, which
-we are not. If consumers ever need a runtime maturity pill, that is a separate
-component built on `Badge`.
+Promoted to `beta` so the catalog's self-description is itself catalogued and
+tested in the matrix/HC runs. The badge is **not** a candidate for `stable`
+because promoting it to a public API would imply consumer apps could rely on
+it — they cannot. If consumer apps ever need a runtime maturity pill, that
+should be a separate component built on `Badge`, not this Storybook-only
+chrome.

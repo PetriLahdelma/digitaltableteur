@@ -18,7 +18,6 @@ const meta: Meta<typeof AnimatedGlyphBackground> = {
     layout: "fullscreen",
   },
   argTypes: {
-
     tone: {
       control: { type: "select" },
       options: ["muted", "primary", "accent", "contrast"],
@@ -55,7 +54,9 @@ const StoryFrame: React.FC<AnimatedGlyphBackgroundProps> = (args) => {
 };
 
 export const Default: Story = {
-  tags: ["beta-matrix"], render: (args) => <StoryFrame {...args} /> };
+  tags: ["beta-matrix"],
+  render: (args) => <StoryFrame {...args} />,
+};
 
 export const PrimaryTone: Story = {
   args: { tone: "primary" },
@@ -69,7 +70,12 @@ export const StaticFrame: Story = {
 
 export const Playground = Default;
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   ...Default,
 };
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

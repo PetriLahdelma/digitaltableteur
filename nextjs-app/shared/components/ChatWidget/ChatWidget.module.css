@@ -497,8 +497,7 @@
   padding-inline-start: 1rem;
   font-family: Moderat, sans-serif;
   font-size: 0.85rem;
-  color: var(--color-primary);
-  opacity: 0.3;
+  color: var(--shortcut-hint-color, #4b5563);
 }
 
 @media (width <= 768px) {

@@ -25,7 +25,11 @@ const meta = {
       table: { defaultValue: { summary: "#main-content" } },
     },
     children: { control: "text", description: "Visible link text on focus" },
-    className: { control: "text", description: "Link class names", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Link class names",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof SkipLink>;
@@ -34,9 +38,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

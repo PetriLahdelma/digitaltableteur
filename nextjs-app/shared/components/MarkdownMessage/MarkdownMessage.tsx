@@ -64,6 +64,10 @@ function MarkdownMessage({
                 </a>
               ),
             code: ({ children }) => <code>{children}</code>,
+            // Block code (<pre>) is horizontally scrollable, so it must be
+            // keyboard-focusable to satisfy WCAG 2.1.1 (axe rule
+            // `scrollable-region-focusable`).
+            pre: ({ children }) => <pre tabIndex={0}>{children}</pre>,
             p: ({ children }) =>
               renderWithDesignSystem ? (
                 <Text terminals="sans" size={resolvedDesignSystemTextSize}>

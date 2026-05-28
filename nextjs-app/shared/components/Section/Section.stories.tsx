@@ -37,8 +37,16 @@ const meta = {
       description: "Surface background token",
       table: { defaultValue: { summary: "default" } },
     },
-    className: { control: "text", description: "Section class names", table: { disable: true } },
-    id: { control: "text", description: "Section id", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Section class names",
+      table: { disable: true },
+    },
+    id: {
+      control: "text",
+      description: "Section id",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof Section>;
@@ -47,10 +55,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],
@@ -58,7 +67,9 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Section spacing="lg" background="muted" id="example-section">
-      <Text as="p" terminals="sans">Used across marketing patterns for vertical rhythm.</Text>
+      <Text as="p" terminals="sans">
+        Used across marketing patterns for vertical rhythm.
+      </Text>
     </Section>
   ),
 };

@@ -12,8 +12,12 @@ const defaultArgs = {
   justify: "center" as const,
   children: (
     <Container size="lg">
-      <Title level={1} terminals="sans">Hero shell</Title>
-      <Text as="p" terminals="sans">Composable full-bleed marketing hero wrapper.</Text>
+      <Title level={1} terminals="sans">
+        Hero shell
+      </Title>
+      <Text as="p" terminals="sans">
+        Composable full-bleed marketing hero wrapper.
+      </Text>
     </Container>
   ),
 };
@@ -36,7 +40,10 @@ const meta = {
       description: "Background treatment",
       table: { defaultValue: { summary: "gradient" } },
     },
-    backgroundImage: { control: "text", description: "Image URL when background is image" },
+    backgroundImage: {
+      control: "text",
+      description: "Image URL when background is image",
+    },
     minHeight: {
       control: "select",
       options: ["screen", "hero", "half", "auto"],
@@ -53,9 +60,21 @@ const meta = {
       options: ["start", "center", "end"],
       description: "Horizontal alignment of content",
     },
-    className: { control: "text", description: "Section class names", table: { disable: true } },
-    as: { control: "text", description: "Polymorphic element", table: { disable: true } },
-    ariaLabel: { control: "text", description: "Accessible name", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Section class names",
+      table: { disable: true },
+    },
+    as: {
+      control: "text",
+      description: "Polymorphic element",
+      table: { disable: true },
+    },
+    ariaLabel: {
+      control: "text",
+      description: "Accessible name",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof HeroSection>;
@@ -64,19 +83,27 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   render: () => (
-    <HeroSection background="gradient" minHeight="half" align="center" justify="center">
+    <HeroSection
+      background="gradient"
+      minHeight="half"
+      align="center"
+      justify="center"
+    >
       <Container size="lg">
-        <Title level={1} terminals="sans">Marketing hero frame</Title>
+        <Title level={1} terminals="sans">
+          Marketing hero frame
+        </Title>
       </Container>
     </HeroSection>
   ),

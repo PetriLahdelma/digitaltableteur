@@ -24,16 +24,30 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    children: { control: false, description: "Page content inside the width constraint" },
+    children: {
+      control: false,
+      description: "Page content inside the width constraint",
+    },
     size: {
       control: "select",
       options: ["sm", "md", "lg", "xl", "full"],
       description: "Max-width token",
       table: { defaultValue: { summary: "lg" } },
     },
-    center: { control: "boolean", description: "Center the container horizontally" },
-    className: { control: "text", description: "Wrapper class names", table: { disable: true } },
-    as: { control: "text", description: "Polymorphic element", table: { disable: true } },
+    center: {
+      control: "boolean",
+      description: "Center the container horizontally",
+    },
+    className: {
+      control: "text",
+      description: "Wrapper class names",
+      table: { disable: true },
+    },
+    as: {
+      control: "text",
+      description: "Polymorphic element",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof Container>;
@@ -42,10 +56,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],

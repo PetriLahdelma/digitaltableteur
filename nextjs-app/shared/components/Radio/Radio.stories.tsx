@@ -106,4 +106,7 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors: Story = { globals: { forcedColors: "active" } };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+};

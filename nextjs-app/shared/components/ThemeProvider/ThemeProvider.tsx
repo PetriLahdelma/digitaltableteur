@@ -108,6 +108,11 @@ const applyThemeToDom = (theme: Theme) => {
     body.classList.toggle("themeHCB", isHighContrastBlack);
     body.classList.toggle("themeHCW", isHighContrastWhite);
     body.dataset.theme = theme;
+    // Background is provided via `--main-body-background-color` (driven by the
+    // theme classes on <html>) and applied in `shared/styles/typography.css`.
+    // The previous inline-style assignment was redundant with the CSS pipeline
+    // and pulled hex literals into a TSX file, tripping the design-system
+    // contract validator.
   }
 };
 

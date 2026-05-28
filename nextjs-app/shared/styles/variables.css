@@ -575,6 +575,34 @@
   --focus-ring-offset: 3px;
 }
 
+/* Forced colors (Windows High Contrast mode)
+ * Use system colors for guaranteed contrast and readable UI. */
+@media (forced-colors: active) {
+  :root {
+    color-scheme: light dark;
+
+    --main-body-background-color: Canvas;
+    --main-body-copy-color: CanvasText;
+    --primary-text-color: CanvasText;
+    --secondary-text-color: CanvasText;
+    --inverted-text-color: Canvas;
+    --link-color: LinkText;
+    --color-title: CanvasText;
+    --color-text: CanvasText;
+    --color-primary: CanvasText;
+    --color-border: CanvasText;
+    --color-border-light: GrayText;
+    --color-muted: CanvasText;
+    --color-disabled-placeholder: GrayText;
+    --color-disabled-bg: Canvas;
+    --color-disabled-bg-light: Canvas;
+    --logo-background: CanvasText;
+    --logo-color: Canvas;
+    --logo-text-color: CanvasText;
+    --focus-ring-color: Highlight;
+  }
+}
+
 /* ==========================================================================
    Prefers-Contrast Support
    Increases contrast when user has "Increase Contrast" enabled in OS settings

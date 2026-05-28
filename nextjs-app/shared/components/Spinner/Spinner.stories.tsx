@@ -12,10 +12,10 @@ const meta = {
     a11y: { test: "error" },
   },
   argTypes: {
-
     label: {
       control: "text",
-      description: "Accessible name for the loading indicator (required when standalone)",
+      description:
+        "Accessible name for the loading indicator (required when standalone)",
       table: {
         category: "Accessibility",
         defaultValue: { summary: "Loading" },
@@ -29,7 +29,9 @@ const meta = {
     },
     className: {
       description: "Class Name",
-      control: false, table: { category: "Advanced" } },
+      control: false,
+      table: { category: "Advanced" },
+    },
   },
   args: { label: "Loading content", size: "md" },
 } satisfies Meta<typeof Spinner>;
@@ -68,4 +70,7 @@ export const Example: Story = {
   parameters: { controls: { disable: true } },
   render: () => <Spinner />,
 };
-export const ForcedColors: Story = { globals: { forcedColors: "active" } };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+};

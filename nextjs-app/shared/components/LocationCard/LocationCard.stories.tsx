@@ -21,7 +21,10 @@ const meta = {
   },
   argTypes: {
     officeName: { control: "text", description: "Location title" },
-    address: { control: "object", description: "Address lines inside <address>" },
+    address: {
+      control: "object",
+      description: "Address lines inside <address>",
+    },
     email: { control: "text", description: "Contact email" },
     phone: { control: "text", description: "Optional phone number" },
     variant: {

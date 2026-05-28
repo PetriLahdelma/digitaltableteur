@@ -353,8 +353,22 @@ const Card: React.FC<CardProps> = ({
     </div>
   );
 
+  const hasTabs = Boolean(tabItems && tabItems.length > 0 && effectiveActiveTab);
+  const tabPanelProps = hasTabs
+    ? {
+        id: `tabpanel-${effectiveActiveTab}`,
+        role: "tabpanel" as const,
+        "aria-labelledby": `tab-${effectiveActiveTab}`,
+        tabIndex: 0,
+      }
+    : {};
+
   const bodyBlock = !loading && hasBodyContent && (
-    <div className={styles.cardContent} style={bodyStyle}>
+    <div
+      className={styles.cardContent}
+      style={bodyStyle}
+      {...tabPanelProps}
+    >
       {body && (
         <Text
           size={bodyProps.size || "M"}

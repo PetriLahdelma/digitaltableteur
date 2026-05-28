@@ -239,7 +239,7 @@ export function Designerman({
         pressed.current.clear();
       }}
     >
-      <div className={styles.hud} aria-hidden>
+      <div className={styles.hud}>
         <div className={styles.hint}>
           <span className={styles.key}>← →</span>
           <span className={styles.key}>Shift</span>

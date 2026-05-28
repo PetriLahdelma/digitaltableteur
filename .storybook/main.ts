@@ -54,6 +54,20 @@ const config: StorybookConfig = {
       new URL("../node_modules/react/jsx-runtime", import.meta.url),
     );
 
+    // Predictable but module-scoped class names. Storybook bundles every
+    // component's CSS into a single document, so duplicate local names like
+    // `.error`, `.info`, `.warning`, `.title` from different CSS Modules
+    // collide when the default `[local]` scoping is used. Prefixing with the
+    // module basename keeps tests that read `styles.xxx` correct (they read
+    // the resolved class name) while preventing cross-module bleed.
+    config.css = {
+      ...(config.css || {}),
+      modules: {
+        ...((config.css as any)?.modules || {}),
+        generateScopedName: "[name]__[local]",
+      },
+    };
+
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...(config.resolve.alias || {}),

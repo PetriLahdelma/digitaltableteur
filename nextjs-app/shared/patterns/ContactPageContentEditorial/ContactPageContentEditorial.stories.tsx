@@ -15,7 +15,11 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    className: { control: "text", description: "Page wrapper class names", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Page wrapper class names",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof ContactPageContentEditorial>;
@@ -24,10 +28,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],

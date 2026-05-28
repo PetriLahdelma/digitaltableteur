@@ -28,7 +28,10 @@ const meta = {
     title: { control: "text", description: "Project title" },
     slug: { control: "text", description: "Detail page slug" },
     thumbnail: { control: "text", description: "Poster image URL" },
-    videoThumbnail: { control: "text", description: "Optional hover video URL" },
+    videoThumbnail: {
+      control: "text",
+      description: "Optional hover video URL",
+    },
     description: { control: "text", description: "Short description on hover" },
     category: { control: "text", description: "Category label" },
     tags: { control: "object", description: "Tag list" },
@@ -38,10 +41,23 @@ const meta = {
       description: "Media aspect ratio",
       table: { defaultValue: { summary: "video" } },
     },
-    showCategory: { control: "boolean", description: "Show category in caption" },
-    showDescription: { control: "boolean", description: "Reveal description on hover" },
-    autoPlayVideo: { control: "boolean", description: "Autoplay video thumbnail loop" },
-    className: { control: "text", description: "Card class names", table: { disable: true } },
+    showCategory: {
+      control: "boolean",
+      description: "Show category in caption",
+    },
+    showDescription: {
+      control: "boolean",
+      description: "Reveal description on hover",
+    },
+    autoPlayVideo: {
+      control: "boolean",
+      description: "Autoplay video thumbnail loop",
+    },
+    className: {
+      control: "text",
+      description: "Card class names",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof EnhancedProjectCard>;
@@ -50,9 +66,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

@@ -97,7 +97,6 @@ export default {
     instagramLabel: "Follow on Instagram",
   },
   argTypes: {
-
     imageSrc: {
       control: "text",
       description: "Portrait image URL",
@@ -105,99 +104,99 @@ export default {
     },
 
     imageAlt: {
-
       description: "Image Alt",
-      control: "text" },
+      control: "text",
+    },
 
     name: {
-
       description: "Name",
-      control: "text" },
+      control: "text",
+    },
 
     title: {
-
       description: "Title",
-      control: "text" },
+      control: "text",
+    },
 
     email: {
-
       description: "Email",
-      control: "text" },
+      control: "text",
+    },
 
     linkedinUrl: {
-
       description: "Linkedin URL",
-      control: "text" },
+      control: "text",
+    },
 
     linkedinLabel: {
-
       description: "Linkedin Label",
-      control: "text" },
+      control: "text",
+    },
 
     githubUrl: {
-
       description: "Github URL",
-      control: "text" },
+      control: "text",
+    },
 
     githubLabel: {
-
       description: "Github Label",
-      control: "text" },
+      control: "text",
+    },
 
     facebookUrl: {
-
       description: "Facebook URL",
-      control: "text" },
+      control: "text",
+    },
 
     facebookLabel: {
-
       description: "Facebook Label",
-      control: "text" },
+      control: "text",
+    },
 
     twitterUrl: {
-
       description: "Twitter URL",
-      control: "text" },
+      control: "text",
+    },
 
     twitterLabel: {
-
       description: "Twitter Label",
-      control: "text" },
+      control: "text",
+    },
 
     dribbbleUrl: {
-
       description: "Dribbble URL",
-      control: "text" },
+      control: "text",
+    },
 
     dribbbleLabel: {
-
       description: "Dribbble Label",
-      control: "text" },
+      control: "text",
+    },
 
     mediumUrl: {
-
       description: "Medium URL",
-      control: "text" },
+      control: "text",
+    },
 
     mediumLabel: {
-
       description: "Medium Label",
-      control: "text" },
+      control: "text",
+    },
 
     instagramUrl: {
-
       description: "Instagram URL",
-      control: "text" },
+      control: "text",
+    },
 
     instagramLabel: {
-
       description: "Instagram Label",
-      control: "text" },
+      control: "text",
+    },
 
     className: {
-
       description: "Class Name",
-      control: "text" },
+      control: "text",
+    },
   },
 } as Meta<typeof PersonCard>;
 
@@ -352,6 +351,7 @@ LongTitle.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
 export const Playground = Default;
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: {
     a11y: { test: "error" },
     contractStatus: contract.status,
@@ -359,4 +359,8 @@ export const Example = {
   },
   ...Default,
 };
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

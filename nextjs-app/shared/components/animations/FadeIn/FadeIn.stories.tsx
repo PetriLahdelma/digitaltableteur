@@ -33,9 +33,21 @@ const meta = {
     delay: { control: "number", description: "Animation delay in seconds" },
     duration: { control: "number", description: "Tween duration in seconds" },
     distance: { control: "number", description: "Travel distance in pixels" },
-    threshold: { control: "text", description: "ScrollTrigger position", table: { disable: true } },
-    className: { control: "text", description: "Wrapper class names", table: { disable: true } },
-    as: { control: "text", description: "Polymorphic element", table: { disable: true } },
+    threshold: {
+      control: "text",
+      description: "ScrollTrigger position",
+      table: { disable: true },
+    },
+    className: {
+      control: "text",
+      description: "Wrapper class names",
+      table: { disable: true },
+    },
+    as: {
+      control: "text",
+      description: "Polymorphic element",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof FadeIn>;
@@ -44,13 +56,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
@@ -63,6 +78,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
 };

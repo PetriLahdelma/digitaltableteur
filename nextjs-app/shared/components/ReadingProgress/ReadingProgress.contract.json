@@ -3,9 +3,9 @@
     "name": "ReadingProgress",
     "tier": "molecule",
     "group": "feedback",
-    "status": "alpha",
+    "status": "beta",
     "description": "Scroll-linked reading progress indicator for long content.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-reading-progress",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
@@ -15,7 +15,8 @@
     "requiredStories": [
         "Default",
         "Playground",
-        "Example"
+        "Example",
+        "ForcedColors"
     ],
     "argTypesProxyExempt": [
         "targetRef",
@@ -27,8 +28,9 @@
             "progressbar role"
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-05-28 — Beta promotion review: progressbar role with aria-valuenow/min/max + aria-label is set; passive scroll listener avoids jank; transition is decorative (transform-only) and respected by reduced motion. ForcedColors story verifies the bar/percentage remain visible in CanvasText/Highlight. Light/dark verified via matrix CI.",
+        "forcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -37,6 +39,6 @@
         ],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

@@ -4,7 +4,9 @@ import { ValueCard } from "./ValueCard";
 import contract from "./ValueCard.contract.json";
 
 const defaultArgs = {
-  icon: <Sparkle weight="duotone" className="size-8 text-primary" aria-hidden />,
+  icon: (
+    <Sparkle weight="duotone" className="size-8 text-primary" aria-hidden />
+  ),
   title: "Clarity first",
   description: "Interfaces should explain themselves before they decorate.",
   variant: "bordered" as const,
@@ -66,7 +68,13 @@ export const Example: Story = {
     >
       <ValueCard {...defaultArgs} />
       <ValueCard
-        icon={<Sparkle weight="duotone" className="size-8 text-primary" aria-hidden />}
+        icon={
+          <Sparkle
+            weight="duotone"
+            className="size-8 text-primary"
+            aria-hidden
+          />
+        }
         title="Accessible by default"
         description="Keyboard, contrast, and semantics are part of the definition of done."
         variant="bordered"

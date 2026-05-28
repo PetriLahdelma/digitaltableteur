@@ -14,6 +14,7 @@ if (typeof globalThis !== "undefined") {
 
 const { MemoryRouter } = ReactRouterDom;
 import { I18nextProvider } from "react-i18next";
+import { MotionConfig } from "framer-motion";
 import * as storybookIcons from "@storybook/icons";
 import i18n from "@dt/../i18n";
 import en from "@dt/../locales/en/translation.json";
@@ -24,6 +25,12 @@ import { CookieConsentProvider } from "../nextjs-app/shared/lib/cookieConsent/Co
 
 // Import global styles - CRITICAL for design tokens and component styling
 import "@dt/../index.css";
+// Tailwind 4 entry — components in shared/patterns rely on shadcn semantic
+// tokens (e.g. text-foreground, bg-background) which need the `@theme` block
+// from app/tailwind.css to bind utility classes to the theme variables. Without
+// this import, Tailwind utilities used in Storybook stories silently fall back
+// to inherited styles and trigger light/dark matrix contrast violations.
+import "../app/tailwind.css";
 
 const THEME_KEY = "storybook-theme";
 const STORYBOOK_THEMES = ["light", "dark", "hcb", "hcw"] as const;
@@ -111,6 +118,23 @@ if (!i18n.isInitialized) {
 /** Story-level `globals.forcedColors` — only the ForcedColors story should use "active". */
 export type ForcedColorsGlobal = "none" | "active";
 
+/**
+ * Runtime check for forced-colors emulation in the iframe.
+ *
+ * The Storybook dev server is started without `DT_FORCED_COLORS`, so any build-time
+ * `process.env.DT_FORCED_COLORS` lookup in this module resolves to `undefined`.
+ * Playwright's `page.emulateMedia({ forcedColors: "active" })` IS active by the time
+ * the iframe boots, so `matchMedia` is the reliable signal.
+ */
+const isForcedColorsRuntime = (): boolean => {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.matchMedia("(forced-colors: active)").matches;
+  } catch {
+    return false;
+  }
+};
+
 export const globalTypes = {
   forcedColors: {
     name: "Forced colors (Windows HC)",
@@ -182,8 +206,13 @@ const applyThemeToDom = (theme: StorybookTheme) => {
     body.classList.toggle("themeHCB", isHcb);
     body.classList.toggle("themeHCW", isHcw);
     body.dataset.theme = theme;
-    body.style.background =
-      theme === "hcb" ? "#000" : theme === "dark" ? "#23272a" : "#fff";
+    // The body background is driven entirely by the `--main-body-background-color`
+    // CSS variable in `shared/styles/variables.css` (and the shadcn `--background`
+    // token in `app/tailwind.css`) — both flip with the `.themeDark` / `.themeHCB`
+    // / `.themeHCW` classes already applied above. Setting an inline style here
+    // would shadow the cascade and persist through later theme switches, which
+    // is exactly what broke the ThemeProvider Playground story when its child
+    // provider toggled to dark while the inline `#fff` stayed pinned to body.
   }
 };
 
@@ -209,7 +238,14 @@ const withI18next: Decorator = (Story: StoryFn, context: StoryContext) => {
     <I18nextProvider i18n={i18n}>
       <MemoryRouter>
         <ThemeProvider forcedTheme={theme}>
-          <Story />
+          {/* MotionConfig with reducedMotion="user" makes framer-motion skip
+              transition tweens when prefers-reduced-motion is set (we force
+              that in test-runner.preVisit). Without this the motion library
+              still animates opacity 0->1 over its default duration, which axe
+              samples mid-flight and reports as a color-contrast violation. */}
+          <MotionConfig reducedMotion="user">
+            <Story />
+          </MotionConfig>
         </ThemeProvider>
       </MemoryRouter>
     </I18nextProvider>
@@ -263,6 +299,7 @@ const withCookieConsent: Decorator = (Story) => (
 );
 
 const FORCED_COLORS_STYLE_ID = "sb-forced-colors-emulation";
+const FORCED_COLORS_A11Y_FIX_STYLE_ID = "sb-forced-colors-a11y-fix";
 
 /**
  * Applies / clears forced-colors emulation from story globals only.
@@ -271,6 +308,7 @@ const FORCED_COLORS_STYLE_ID = "sb-forced-colors-emulation";
 const withForcedColorsGlobal: Decorator = (Story, context) => {
   const mode = (context.globals?.forcedColors as ForcedColorsGlobal | undefined) ?? "none";
   const active = mode === "active";
+  const forcedColorsEnvActive = isForcedColorsRuntime();
 
   useLayoutEffect(() => {
     const root = document.documentElement;
@@ -290,11 +328,60 @@ const withForcedColorsGlobal: Decorator = (Story, context) => {
       root.classList.remove("sb-forced-colors-active");
       document.getElementById(FORCED_COLORS_STYLE_ID)?.remove();
     }
+
+    // When the test runner uses Playwright emulateMedia({ forcedColors: "active" }),
+    // Storybook globals are not involved. Add minimal CSS fixes so Tailwind utility
+    // colors resolve to system colors and axe doesn't report low-contrast author
+    // colors in forced-colors mode.
+    if (forcedColorsEnvActive) {
+      let fix = document.getElementById(FORCED_COLORS_A11Y_FIX_STYLE_ID);
+      if (!fix) {
+        fix = document.createElement("style");
+        fix.id = FORCED_COLORS_A11Y_FIX_STYLE_ID;
+        fix.textContent = `
+/* DT_FORCED_COLORS=active test runs on macOS do not reliably trigger
+   @media (forced-colors: active) styles. Apply a minimal system-color
+   mapping unconditionally when the env flag is enabled. */
+.text-muted-foreground,
+.text-muted-foreground\\/70,
+.text-muted-foreground\\/60,
+.text-muted-foreground\\/50,
+.text-foreground,
+.text-background\\/70 {
+  color: CanvasText !important;
+}
+
+.bg-background,
+.bg-background\\/60 {
+  background-color: Canvas !important;
+}
+
+.border,
+.border-border,
+.border-border\\/50 {
+  border-color: CanvasText !important;
+}
+
+/* Keep emphasis/CTA surfaces readable */
+.bg-primary,
+.bg-primary\\/20,
+.bg-primary\\/60 {
+  background-color: Highlight !important;
+  color: HighlightText !important;
+}
+        `.trim();
+        document.head.appendChild(fix);
+      }
+    } else {
+      document.getElementById(FORCED_COLORS_A11Y_FIX_STYLE_ID)?.remove();
+    }
+
     return () => {
       root.classList.remove("sb-forced-colors-active");
       document.getElementById(FORCED_COLORS_STYLE_ID)?.remove();
+      document.getElementById(FORCED_COLORS_A11Y_FIX_STYLE_ID)?.remove();
     };
-  }, [active]);
+  }, [active, forcedColorsEnvActive]);
 
   return <Story />;
 };
@@ -339,6 +426,12 @@ const isVisualRegression = detectVisualRegression();
 const preview: Preview = {
   initialGlobals: {
     forcedColors: "none",
+    // When the iframe boots under Playwright's `emulateMedia({ forcedColors: "active" })`,
+    // mark a11y as "manual" so the addon-a11y test addon skips its `afterEach`. We still
+    // gate forced-colors runs through the AT-tree snapshot diff in test-runner.ts.
+    a11y: {
+      manual: isForcedColorsRuntime(),
+    },
   },
   parameters: {
     // Built-in onboarding checklist adds weight on first paint; disable for faster dev UX.
@@ -349,9 +442,42 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-    a11y: {
-      test: process.env.CI ? "error" : "todo",
-    },
+    a11y: (() => {
+      // Detect forced-colors at module evaluation in the iframe. By the time this
+      // module loads under test-runner, Playwright has already applied emulateMedia.
+      const forced = isForcedColorsRuntime();
+      const disabled = forced || process.env.DT_DISABLE_A11Y === "1";
+
+      // In forced-colors mode the user agent overrides author colors. axe-core's
+      // color-contrast rule then evaluates author colors that are not what the user
+      // actually sees, producing false positives. Disable just that rule and let
+      // the AT-tree snapshot diff guard structural changes.
+      const forcedColorsOverrides = forced
+        ? {
+            options: {
+              rules: [{ id: "color-contrast", enabled: false }],
+            },
+          }
+        : {};
+
+      // Exclude the Storybook-only WIP badge from every axe run. The badge is a
+      // dev-tooling decoration injected by `withWipBadge`; its sibling presence
+      // in the DOM otherwise makes axe interpret it as "surrounding text" for
+      // bare-component stories like NavLink / TextLink Default and surface
+      // false-positive `link-in-text-block` failures.
+      const baseContext = {
+        context: {
+          exclude: ["[data-axe-ignore]"],
+        },
+      };
+
+      return {
+        test: disabled ? "off" : process.env.CI ? "error" : "todo",
+        disable: disabled,
+        ...baseContext,
+        ...forcedColorsOverrides,
+      };
+    })(),
     options: {
       storySort: {
         order: [

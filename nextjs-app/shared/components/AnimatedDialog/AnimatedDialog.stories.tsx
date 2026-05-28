@@ -11,9 +11,7 @@ import {
 } from "./AnimatedDialog";
 import contract from "./AnimatedDialog.contract.json";
 
-function AnimatedDialogDemo(
-  args: React.ComponentProps<typeof AnimatedDialog>,
-) {
+function AnimatedDialogDemo(args: React.ComponentProps<typeof AnimatedDialog>) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -41,7 +39,10 @@ const dialogBody = (
           Cancel
         </button>
       </DialogClose>
-      <button type="button" className="rounded bg-primary px-3 py-1 text-sm text-primary-foreground">
+      <button
+        type="button"
+        className="rounded bg-primary px-3 py-1 text-sm text-primary-foreground"
+      >
         Archive
       </button>
     </DialogFooter>

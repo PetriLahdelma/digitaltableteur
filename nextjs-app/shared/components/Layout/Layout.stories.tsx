@@ -6,7 +6,8 @@ const sampleMain = (
   <div style={{ padding: "var(--space-layout-24)" }}>
     <h1 className="font-heading text-title-l">Page content</h1>
     <p className="text-sm text-muted-foreground">
-      Vite-era shell with skip link, header, main landmark, footer, and chat widget.
+      Vite-era shell with skip link, header, main landmark, footer, and chat
+      widget.
     </p>
   </div>
 );
@@ -38,7 +39,9 @@ export const Default: Story = {
   render: (args) => <Layout>{args.children}</Layout>,
 };
 export const Playground: Story = {
-  tags: ["beta-matrix"], ...Default };
+  tags: ["beta-matrix"],
+  ...Default,
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],

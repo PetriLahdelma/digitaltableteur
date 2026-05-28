@@ -20,10 +20,14 @@ const meta = {
     },
     targetRef: {
       description: "Target Ref",
-      control: false, table: { category: "Advanced" } },
+      control: false,
+      table: { category: "Advanced" },
+    },
     className: {
       description: "Class Name",
-      control: false, table: { category: "Advanced" } },
+      control: false,
+      table: { category: "Advanced" },
+    },
   },
   args: { showPercentage: false },
 } satisfies Meta<typeof ReadingProgress>;
@@ -59,11 +63,22 @@ function Demo({ showPercentage }: { showPercentage?: boolean }) {
 }
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <Demo showPercentage={args.showPercentage} />,
 };
-export const Default: Story = Playground;
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  render: (args) => <Demo showPercentage={args.showPercentage} />,
+};
 export const WithPercentage: Story = { render: () => <Demo showPercentage /> };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   render: () => <Demo />,
+};
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  parameters: { controls: { disable: true } },
+  render: () => <Demo showPercentage />,
 };

@@ -30,7 +30,11 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    className: { control: "text", description: "Provider wrapper class names", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Provider wrapper class names",
+      table: { disable: true },
+    },
   },
   args: {},
 } satisfies Meta<typeof ThemeProvider>;
@@ -47,7 +51,9 @@ export const Default: Story = {
   ),
 };
 export const Playground: Story = {
-  tags: ["beta-matrix"], ...Default };
+  tags: ["beta-matrix"],
+  ...Default,
+};
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

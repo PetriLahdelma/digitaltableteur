@@ -73,8 +73,14 @@ export const Example: Story = {
   render: () => (
     <fieldset style={{ border: 0, padding: 0, margin: 0 }}>
       <GroupLabel htmlFor="contact-topic">What can we help with?</GroupLabel>
-      <div id="contact-topic" role="group" aria-labelledby="contact-topic-label">
-        <p className="text-sm text-muted-foreground">Checkbox group slots here</p>
+      <div
+        id="contact-topic"
+        role="group"
+        aria-labelledby="contact-topic-label"
+      >
+        <p className="text-sm text-muted-foreground">
+          Checkbox group slots here
+        </p>
       </div>
     </fieldset>
   ),

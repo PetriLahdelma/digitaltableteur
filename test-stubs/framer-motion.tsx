@@ -85,6 +85,16 @@ export function AnimatePresence({
   return <>{children}</>;
 }
 
+export function MotionConfig({
+  children,
+}: {
+  children?: React.ReactNode;
+  reducedMotion?: unknown;
+  transition?: unknown;
+}) {
+  return <>{children}</>;
+}
+
 export const useReducedMotion = () => true;
 export const useAnimation = () => ({});
 export const useMotionValue = (initial: number) => ({ get: () => initial });

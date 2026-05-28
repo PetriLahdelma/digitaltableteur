@@ -180,7 +180,29 @@ export const Z_FailedCompliance: Story = {
   },
 };
 
-export const Default = {};
-export const Playground = {};
-export const Example = { parameters: { controls: { disable: true } } };
-export const ForcedColors = { globals: { forcedColors: "active" } };
+const defaultStoryArgs = {
+  title: "Compliance: 12/12",
+  titleIcon: (
+    <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+  ),
+  rules: badgeComplianceRules,
+};
+
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  args: defaultStoryArgs,
+};
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  args: defaultStoryArgs,
+};
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  args: defaultStoryArgs,
+};
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: defaultStoryArgs,
+};

@@ -137,32 +137,40 @@
   object-fit: contain;
 }
 
-/* Dark theme support */
+/* Dark theme support
+ *
+ * LinkedIn-style dark card (dark surface + light text). The previous version
+ * used `--color-gray-dark`, which resolves to #bbb in dark theme — putting
+ * white name text and `--color-gray-light` (undefined) connection text onto a
+ * light gray card. Both pairings failed contrast (white/#bbb = 1.92, and the
+ * undefined token fell through to the dark-mode foreground #6fa8ff for 1.25).
+ * Use explicit dark surface + LinkedIn-style muted text tokens that hold a
+ * >=4.5:1 contrast in every supported theme. */
 
 [data-theme="dark"] .card {
-  background: var(--color-gray-dark);
+  background: #1f1f1f;
   box-shadow:
-    0 1px 3px rgb(0 0 0 / 20%),
-    0 4px 12px rgb(0 0 0 / 15%);
+    0 1px 3px rgb(0 0 0 / 40%),
+    0 4px 12px rgb(0 0 0 / 30%);
 }
 
 [data-theme="dark"] .avatarPlaceholder {
-  background: var(--color-gray-medium);
-  color: var(--color-white);
+  background: #2c2f30;
+  color: #fff;
 }
 
 [data-theme="dark"] .name {
-  color: var(--color-white);
+  color: #fff;
 }
 
 [data-theme="dark"] .quoteText {
-  color: var(--color-white);
+  color: rgb(255 255 255 / 92%);
 }
 
 [data-theme="dark"] .separator,
 [data-theme="dark"] .connectionDegree,
 [data-theme="dark"] .titleCompany {
-  color: var(--color-gray-light);
+  color: rgb(255 255 255 / 75%);
 }
 
 /* Wrapper dark variant adjustments */

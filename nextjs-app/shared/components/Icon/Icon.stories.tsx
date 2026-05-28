@@ -91,6 +91,7 @@ export const Playground: Story = {
 };
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   ...Playground,
 };
@@ -175,6 +176,7 @@ export const Example: Story = {
   ),
 };
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: { name: "circle-info" },
 };

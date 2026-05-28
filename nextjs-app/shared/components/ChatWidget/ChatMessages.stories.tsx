@@ -161,6 +161,7 @@ export const Z_ChatMessagesCompliance: Story = {
 };
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await waitFor(() => {

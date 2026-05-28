@@ -75,11 +75,7 @@ export const Example: Story = {
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
-    <Gallery
-      gutter={24}
-      minColumnWidth={280}
-      images={sampleImages}
-    />
+    <Gallery gutter={24} minColumnWidth={280} images={sampleImages} />
   ),
 };
 

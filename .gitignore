@@ -71,3 +71,6 @@ lighthouse-*.json
 
 # TypeScript build info
 *.tsbuildinfo
+
+# Ad-hoc design-system / matrix CI run logs (kept out of VCS)
+.dt-*.log

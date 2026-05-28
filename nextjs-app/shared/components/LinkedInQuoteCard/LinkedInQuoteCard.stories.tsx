@@ -179,7 +179,7 @@ const ScreenshotWrapper: React.FC<ScreenshotWrapperProps> = ({
         </Button>
       </div>
       <p
-        style={{ marginTop: "0.5rem", fontSize: "0.875rem", color: "#6b7280" }}
+        style={{ marginTop: "0.5rem", fontSize: "0.875rem", color: "#4b5563" }}
       >
         {SCREENSHOT_WIDTH}px × {SCREENSHOT_HEIGHT}px
       </p>
@@ -460,7 +460,12 @@ export const ScreenshotDark = () => (
 
 export const Playground = Default;
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   ...Default,
 };
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

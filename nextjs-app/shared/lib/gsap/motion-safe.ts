@@ -27,9 +27,27 @@ export function setupReducedMotion(): () => void {
 }
 
 export function getMotionPreference(): MotionPreference {
+  // Re-check the user-agent media query on every read so callers that run
+  // before gsap.matchMedia() has finished wiring up its listeners still see the
+  // correct preference. Without this, the AnimationProvider would call this
+  // function synchronously after setupReducedMotion() (in a useEffect) and
+  // observe the module-level default "full" because gsap.matchMedia callbacks
+  // had not yet fired. That left the Storybook test runner — which forces
+  // prefers-reduced-motion via Playwright emulateMedia — running animations at
+  // full opacity ramp, tripping axe color-contrast on every FadeIn/TextReveal
+  // wrapper.
+  if (typeof window !== "undefined") {
+    try {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        currentPreference = "reduced";
+      }
+    } catch {
+      // matchMedia unavailable — fall through to cached value.
+    }
+  }
   return currentPreference;
 }
 
 export function isReducedMotion(): boolean {
-  return currentPreference === "reduced";
+  return getMotionPreference() === "reduced";
 }

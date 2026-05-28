@@ -24,7 +24,9 @@ AI: The leaves fall gently to the ground, painting the earth in hues profound.
 The crisp air whispers through the trees, a symphony of nature's ease.`;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], args: { children: sampleContent } };
+  tags: ["beta-matrix"],
+  args: { children: sampleContent },
+};
 
 export const WithAction: Story = {
   args: {
@@ -40,7 +42,12 @@ export const Compact: Story = {
 
 export const Playground = Default;
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   ...Default,
 };
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

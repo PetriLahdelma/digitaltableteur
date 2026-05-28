@@ -74,6 +74,7 @@ export default meta;
 type Story = StoryObj<typeof SplitButton>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     label: "Save",
     variant: "primary",

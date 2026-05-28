@@ -26,7 +26,11 @@ const meta = {
     link: { control: "text", description: "Article URL" },
     readTime: { control: "text", description: "Estimated reading time label" },
     loading: { control: "boolean", description: "Skeleton loading state" },
-    className: { control: "text", description: "Card class names", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Card class names",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof ArticleCard>;
@@ -35,9 +39,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

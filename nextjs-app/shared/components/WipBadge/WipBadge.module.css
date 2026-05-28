@@ -15,7 +15,10 @@
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-8);
   border-radius: var(--radius-sm, 4px);
-  background: var(--color-surface-elevated, #fff);
+  background: var(
+    --color-surface-elevated,
+    var(--main-body-background-color, #fff)
+  );
   box-shadow: 0 0 0 1px var(--color-border-light), 0 2px 4px rgb(0 0 0 / 12%);
   font-size: var(--font-size-sm, 0.875rem);
   color: var(--color-text, #111);

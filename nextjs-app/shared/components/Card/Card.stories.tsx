@@ -82,6 +82,7 @@ export default CardStoryMeta;
 
 // Basic Examples
 export const Playground = {
+  tags: ["beta-matrix"],
   args: {
     title: "Card Playground",
     subTitle: "Interactive testing",
@@ -97,6 +98,7 @@ export const Playground = {
 };
 
 export const Default = {
+  tags: ["beta-matrix"],
   args: {
     title: "Default Card",
     body: "Simple card with basic content and default styling.",
@@ -529,6 +531,7 @@ export const ComplexExample = {
 };
 
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   args: ComplexExample.args,
 };

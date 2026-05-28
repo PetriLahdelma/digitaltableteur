@@ -88,5 +88,8 @@
 }
 
 .brandDescription {
-  color: color-mix(in srgb, var(--logo-color, #000) 70%, transparent);
+  /* Keep a hint of softness while staying >=4.5:1 in both light (#000 on
+   * chartreuse) and dark (#fff on purple) brand themes. The previous 70%
+   * mix fell to 3.43 on the dark `#812eff` background. */
+  color: color-mix(in srgb, var(--logo-color, #000) 90%, transparent);
 }

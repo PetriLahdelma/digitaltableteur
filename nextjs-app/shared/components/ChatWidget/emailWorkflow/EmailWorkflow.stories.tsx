@@ -63,6 +63,7 @@ export default meta;
 type Story = StoryObj<typeof WorkflowHarness>;
 
 export const Prompt: Story = {
+  tags: ["beta-matrix"],
   args: { state: { step: "promptStart" } },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

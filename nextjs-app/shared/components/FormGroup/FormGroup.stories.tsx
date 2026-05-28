@@ -29,8 +29,14 @@ const meta = {
       control: false,
       description: "Grouped controls inside the fieldset",
     },
-    legend: { control: "text", description: "Fieldset legend / accessible group name" },
-    description: { control: "text", description: "Optional helper copy below legend" },
+    legend: {
+      control: "text",
+      description: "Fieldset legend / accessible group name",
+    },
+    description: {
+      control: "text",
+      description: "Optional helper copy below legend",
+    },
     className: {
       control: "text",
       description: "Fieldset class names",

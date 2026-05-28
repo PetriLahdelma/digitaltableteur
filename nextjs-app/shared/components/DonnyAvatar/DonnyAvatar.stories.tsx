@@ -47,7 +47,6 @@ When \`enableSleepDetection\` is true, Donny will:
     },
   },
   argTypes: {
-
     state: {
       description: "Animated expression state for the avatar",
       control: "select",
@@ -81,10 +80,13 @@ When \`enableSleepDetection\` is true, Donny will:
     },
     size: {
       description: "Size",
-      control: "select", options: ["sm", "md", "lg", "xl"] },
+      control: "select",
+      options: ["sm", "md", "lg", "xl"],
+    },
     showLabel: {
       description: "Show Label",
-      control: "boolean" },
+      control: "boolean",
+    },
   },
 };
 
@@ -93,7 +95,9 @@ type Story = StoryObj<typeof DonnyAvatar>;
 
 /** Default idle state */
 export const Default: Story = {
-  tags: ["beta-matrix"], args: { state: "idle", size: "lg" } };
+  tags: ["beta-matrix"],
+  args: { state: "idle", size: "lg" },
+};
 
 /** All sizes */
 export const Sizes: Story = {
@@ -487,7 +491,12 @@ export const EyeTracking: Story = {
 
 export const Playground = Default;
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   ...Default,
 };
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

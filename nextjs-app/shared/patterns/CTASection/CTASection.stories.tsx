@@ -25,8 +25,14 @@ const meta = {
   argTypes: {
     title: { control: "text", description: "Main headline" },
     description: { control: "text", description: "Supporting description" },
-    primaryAction: { control: "object", description: "Primary CTA (label + href or onClick)" },
-    secondaryAction: { control: "object", description: "Optional secondary CTA" },
+    primaryAction: {
+      control: "object",
+      description: "Primary CTA (label + href or onClick)",
+    },
+    secondaryAction: {
+      control: "object",
+      description: "Optional secondary CTA",
+    },
     background: {
       control: "select",
       options: ["primary", "gradient", "dark", "muted", "brand"],
@@ -39,8 +45,16 @@ const meta = {
       description: "Text alignment",
       table: { defaultValue: { summary: "center" } },
     },
-    className: { control: "text", description: "Wrapper class names", table: { disable: true } },
-    id: { control: "text", description: "Section id for in-page anchors", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Wrapper class names",
+      table: { disable: true },
+    },
+    id: {
+      control: "text",
+      description: "Section id for in-page anchors",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof CTASection>;
@@ -49,10 +63,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],

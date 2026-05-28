@@ -58,13 +58,29 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Standalone TextLink stories are not embedded in body copy. axe's
+// `link-in-text-block` rule fires anyway because the iframe `<body>` carries
+// the global text color through CSS variables — that color counts as the
+// "surrounding text" for a bare-component preview even when no actual prose
+// surrounds the link. The Example story (footer legal row) keeps the rule
+// active. Disabling it on the bare stories keeps the signal honest.
+const linkInTextBlockOverride = {
+  a11y: {
+    config: {
+      rules: [{ id: "link-in-text-block", enabled: false }],
+    },
+  },
+};
+
 export const Default: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  parameters: linkInTextBlockOverride,
 };
 export const Playground: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
+  parameters: linkInTextBlockOverride,
 };
 
 Playground.play = async ({ canvasElement }) => {
@@ -107,4 +123,5 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
+  parameters: linkInTextBlockOverride,
 };

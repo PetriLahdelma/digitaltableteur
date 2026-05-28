@@ -9,9 +9,15 @@ const defaultArgs = {
   align: "center" as const,
   children: (
     <>
-      <Text as="span" terminals="sans">Alpha</Text>
-      <Text as="span" terminals="sans">Beta</Text>
-      <Text as="span" terminals="sans">Gamma</Text>
+      <Text as="span" terminals="sans">
+        Alpha
+      </Text>
+      <Text as="span" terminals="sans">
+        Beta
+      </Text>
+      <Text as="span" terminals="sans">
+        Gamma
+      </Text>
     </>
   ),
 };
@@ -42,7 +48,14 @@ const meta = {
     },
     justify: {
       control: "select",
-      options: ["flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly"],
+      options: [
+        "flex-start",
+        "flex-end",
+        "center",
+        "space-between",
+        "space-around",
+        "space-evenly",
+      ],
       description: "justify-content",
     },
     align: {
@@ -52,11 +65,31 @@ const meta = {
       table: { defaultValue: { summary: "stretch" } },
     },
     gap: { control: "text", description: "Shorthand gap" },
-    rowGap: { control: "text", description: "Row gap override", table: { disable: true } },
-    columnGap: { control: "text", description: "Column gap override", table: { disable: true } },
-    alignContent: { control: "text", description: "align-content", table: { disable: true } },
-    className: { control: "text", description: "Wrapper class names", table: { disable: true } },
-    style: { control: "object", description: "Inline style override", table: { disable: true } },
+    rowGap: {
+      control: "text",
+      description: "Row gap override",
+      table: { disable: true },
+    },
+    columnGap: {
+      control: "text",
+      description: "Column gap override",
+      table: { disable: true },
+    },
+    alignContent: {
+      control: "text",
+      description: "align-content",
+      table: { disable: true },
+    },
+    className: {
+      control: "text",
+      description: "Wrapper class names",
+      table: { disable: true },
+    },
+    style: {
+      control: "object",
+      description: "Inline style override",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof FlexBox>;
@@ -65,19 +98,29 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
-    <FlexBox direction="column" gap="0.75rem" align="stretch" style={{ maxWidth: 320 }}>
-      <Text as="p" terminals="sans">Stacked editorial row</Text>
-      <Text as="p" terminals="sans">Second line with deliberate rhythm</Text>
+    <FlexBox
+      direction="column"
+      gap="0.75rem"
+      align="stretch"
+      style={{ maxWidth: 320 }}
+    >
+      <Text as="p" terminals="sans">
+        Stacked editorial row
+      </Text>
+      <Text as="p" terminals="sans">
+        Second line with deliberate rhythm
+      </Text>
     </FlexBox>
   ),
 };

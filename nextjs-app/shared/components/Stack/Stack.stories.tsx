@@ -8,8 +8,12 @@ const defaultArgs = {
   gap: "md" as const,
   children: (
     <>
-      <Text as="p" terminals="sans">First item</Text>
-      <Text as="p" terminals="sans">Second item</Text>
+      <Text as="p" terminals="sans">
+        First item
+      </Text>
+      <Text as="p" terminals="sans">
+        Second item
+      </Text>
     </>
   ),
 };
@@ -48,9 +52,20 @@ const meta = {
       options: ["start", "center", "end", "between", "around"],
       description: "Main-axis distribution",
     },
-    wrap: { control: "boolean", description: "Allow wrapping on horizontal stacks" },
-    className: { control: "text", description: "Stack class names", table: { disable: true } },
-    as: { control: "text", description: "Polymorphic element", table: { disable: true } },
+    wrap: {
+      control: "boolean",
+      description: "Allow wrapping on horizontal stacks",
+    },
+    className: {
+      control: "text",
+      description: "Stack class names",
+      table: { disable: true },
+    },
+    as: {
+      control: "text",
+      description: "Polymorphic element",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof Stack>;
@@ -59,10 +74,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],
@@ -70,8 +86,12 @@ export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Stack direction="vertical" gap="sm">
-      <Text as="p" terminals="sans">Hero copy block</Text>
-      <Text as="p" terminals="sans">Supporting line with consistent spacing</Text>
+      <Text as="p" terminals="sans">
+        Hero copy block
+      </Text>
+      <Text as="p" terminals="sans">
+        Supporting line with consistent spacing
+      </Text>
     </Stack>
   ),
 };

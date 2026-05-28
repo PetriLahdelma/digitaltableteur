@@ -76,7 +76,6 @@ const meta: Meta<typeof SecureCVDownload> = {
   tags: ["beta", "!autodocs"],
   parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   argTypes: {
-
     buttonText: {
       control: "text",
       description: "Download button label override",
@@ -84,7 +83,6 @@ const meta: Meta<typeof SecureCVDownload> = {
     },
 
     buttonVariant: {
-
       description: "Button Variant",
       control: {
         type: "select",
@@ -101,9 +99,9 @@ const meta: Meta<typeof SecureCVDownload> = {
     },
 
     inverse: {
-
       description: "Inverse",
-      control: "boolean" },
+      control: "boolean",
+    },
   },
 };
 export default meta;
@@ -192,7 +190,12 @@ Inverse.play = async ({ canvasElement }) => {
 
 export const Playground = Default;
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { controls: { disable: true } },
   ...Default,
 };
-export const ForcedColors = { globals: { forcedColors: "active" }, ...Default };
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

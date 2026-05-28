@@ -46,8 +46,16 @@ const meta = {
       table: { defaultValue: { summary: "grid" } },
     },
     showViewAll: { control: "boolean", description: "Link to full work index" },
-    className: { control: "text", description: "Section class names", table: { disable: true } },
-    id: { control: "text", description: "Section id", table: { defaultValue: { summary: "work" } } },
+    className: {
+      control: "text",
+      description: "Section class names",
+      table: { disable: true },
+    },
+    id: {
+      control: "text",
+      description: "Section id",
+      table: { defaultValue: { summary: "work" } },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof WorkPreviewSection>;

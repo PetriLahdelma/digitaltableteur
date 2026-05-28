@@ -20,10 +20,14 @@ const meta = {
     },
     placeholder: {
       description: "Placeholder",
-      control: "text", table: { category: "Content" } },
+      control: "text",
+      table: { category: "Content" },
+    },
     helperText: {
       description: "Helper Text",
-      control: "text", table: { category: "Content" } },
+      control: "text",
+      table: { category: "Content" },
+    },
     error: {
       control: "text",
       description: "Error message or invalid state",
@@ -58,13 +62,19 @@ const meta = {
     },
     isDisabled: {
       description: "Is Disabled",
-      control: "boolean", table: { category: "State" } },
+      control: "boolean",
+      table: { category: "State" },
+    },
     onValueChange: {
       description: "On Value Change",
-      action: "valueChanged", table: { category: "Events" } },
+      action: "valueChanged",
+      table: { category: "Events" },
+    },
     className: {
       description: "Class Name",
-      control: false, table: { category: "Advanced" } },
+      control: false,
+      table: { category: "Advanced" },
+    },
   },
   args: {
     label: "Message",
@@ -132,4 +142,7 @@ export const Example: Story = {
   ),
 };
 
-export const ForcedColors: Story = { globals: { forcedColors: "active" } };
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+};

@@ -902,6 +902,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           role="dialog"
           aria-modal="false"
           aria-hidden={!isOpen}
+          aria-label={resolvedTitle}
           tabIndex={isOpen ? 0 : -1}
         >
           <ChatHeader

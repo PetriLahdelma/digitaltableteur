@@ -5,9 +5,12 @@ import { ServiceCard } from "./ServiceCard";
 import contract from "./ServiceCard.contract.json";
 
 const defaultArgs = {
-  icon: <Sparkle weight="duotone" className="size-8 text-primary" aria-hidden />,
+  icon: (
+    <Sparkle weight="duotone" className="size-8 text-primary" aria-hidden />
+  ),
   title: "Design systems",
-  description: "Tokens, components, and governance that scale with your product.",
+  description:
+    "Tokens, components, and governance that scale with your product.",
   variant: "bordered" as const,
 };
 
@@ -38,7 +41,11 @@ const meta = {
       description: "Icon placement",
       table: { defaultValue: { summary: "top" } },
     },
-    className: { control: "text", description: "Card class names", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Card class names",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof ServiceCard>;

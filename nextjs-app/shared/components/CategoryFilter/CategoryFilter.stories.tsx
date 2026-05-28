@@ -12,7 +12,10 @@ const categories = [
 ];
 
 function CategoryFilterDemo(
-  args: Omit<React.ComponentProps<typeof CategoryFilter>, "activeCategory" | "onCategoryChange"> & {
+  args: Omit<
+    React.ComponentProps<typeof CategoryFilter>,
+    "activeCategory" | "onCategoryChange"
+  > & {
     activeCategory?: string;
   },
 ) {

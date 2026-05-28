@@ -256,11 +256,18 @@ function componentSnapshotDir(storyId: string): string | null {
   return path.join(componentDir, "__a11y-snapshots__");
 }
 
+function snapshotVariantSuffix(): string {
+  const parts: string[] = [];
+  if (THEME) parts.push(THEME);
+  if (FORCED_COLORS === "active") parts.push("forced-colors");
+  return parts.length > 0 ? `.${parts.join(".")}` : "";
+}
+
 async function captureAccessibilityTree(page: import("playwright").Page, storyId: string) {
   const dir = componentSnapshotDir(storyId);
   if (!dir) return;
   fs.mkdirSync(dir, { recursive: true });
-  const file = path.join(dir, `${storyId}.yaml`);
+  const file = path.join(dir, `${storyId}${snapshotVariantSuffix()}.yaml`);
   const snapshot = await page.locator("#storybook-root").ariaSnapshot();
   const content = typeof snapshot === "string" ? snapshot : String(snapshot);
   if (!fs.existsSync(file)) {
@@ -278,24 +285,27 @@ async function captureAccessibilityTree(page: import("playwright").Page, storyId
   const existing = fs.readFileSync(file, "utf8");
   if (existing !== content) {
     if (UPDATE_AT) fs.writeFileSync(file, content);
-    else throw new Error(`AT snapshot mismatch for ${storyId}. Run DT_UPDATE_A11Y_SNAPSHOTS=1 npm run test:stories:ci`);
+    else
+      throw new Error(
+        `AT snapshot mismatch for ${storyId}${snapshotVariantSuffix()}.` +
+          ` Run DT_UPDATE_A11Y_SNAPSHOTS=1 npm run test:stories:ci`,
+      );
   }
 }
 
 const config: TestRunnerConfig = {
-  async preVisit(page) {
-    const width = Number.isFinite(VIEWPORT) && VIEWPORT > 0 ? VIEWPORT : 1280;
-    await page.setViewportSize({ width, height: 720 });
-    await page.addInitScript(() => {
-      window.__STORYBOOK_VISUAL_REGRESSION__ = true;
-      try {
-        window.localStorage.setItem("STORYBOOK_VISUAL_REGRESSION", "true");
-      } catch {
-        // ignore cases where localStorage is unavailable
-      }
-    });
-    // Theme injection for story matrix runs. Our preview reads localStorage via
-    // getStoredTheme(), so set the key before the story loads.
+  // The iframe page is loaded once per worker by `defaultPrepare`, so the preview
+  // module's `parameters.a11y` IIFE only sees `matchMedia('(forced-colors: active)')`
+  // if the emulation is applied BEFORE that navigation. We provide a custom
+  // `prepare` that runs the emulation + init scripts first, then triggers the
+  // navigation Playwright would have made.
+  async prepare({ page, browserContext, testRunnerConfig: testRunnerConfig2 }) {
+    const targetURL = process.env.TARGET_URL ?? "";
+    const iframeURL = new URL("iframe.html", targetURL).toString();
+    if (testRunnerConfig2?.getHttpHeaders) {
+      const headers = await testRunnerConfig2.getHttpHeaders(iframeURL);
+      await browserContext.setExtraHTTPHeaders(headers);
+    }
     if (THEME) {
       await page.addInitScript((theme) => {
         try {
@@ -309,6 +319,27 @@ const config: TestRunnerConfig = {
     if (FORCED_COLORS === "active") {
       await page.emulateMedia({ forcedColors: "active" });
     }
+    await page.goto(iframeURL, { waitUntil: "load" });
+  },
+  async preVisit(page) {
+    const width = Number.isFinite(VIEWPORT) && VIEWPORT > 0 ? VIEWPORT : 1280;
+    await page.setViewportSize({ width, height: 720 });
+    await page.addInitScript(() => {
+      window.__STORYBOOK_VISUAL_REGRESSION__ = true;
+      try {
+        window.localStorage.setItem("STORYBOOK_VISUAL_REGRESSION", "true");
+      } catch {
+        // ignore cases where localStorage is unavailable
+      }
+    });
+    // Re-assert forced-colors per story in case the page was reset.
+    if (FORCED_COLORS === "active") {
+      await page.emulateMedia({ forcedColors: "active" });
+    }
+    // Force prefers-reduced-motion so JS-driven animations (GSAP/Framer) collapse
+    // to no-op tweens. Without this, axe color-contrast misreports partial-opacity
+    // frames (e.g. FadeIn at 60%) as 3.x:1 contrast violations.
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.addStyleTag({
       content: `
         *, *::before, *::after {

@@ -29,7 +29,11 @@ const meta = {
       table: { defaultValue: { summary: "minimal" } },
     },
     compact: { control: "boolean", description: "Use shorter min-height" },
-    className: { control: "text", description: "Section class names", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Section class names",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof ContactHero>;
@@ -38,10 +42,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],

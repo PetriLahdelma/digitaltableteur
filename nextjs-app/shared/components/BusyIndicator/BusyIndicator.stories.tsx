@@ -69,7 +69,13 @@ export const Z_BusyIndicatorCompliance: Story = {
   ),
 };
 
-export const Default = {};
-export const Playground = {};
-export const Example = { parameters: { controls: { disable: true } } };
-export const ForcedColors = { globals: { forcedColors: "active" } };
+export const Default = { tags: ["beta-matrix"] };
+export const Playground = { tags: ["beta-matrix"] };
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+};

@@ -90,7 +90,6 @@ export default {
     llm: { schema },
   },
   argTypes: {
-
     size: {
       control: { type: "select" },
       options: ["S", "M", "L"],
@@ -167,4 +166,13 @@ export const Example: Story = {
     />
   ),
 };
-export const ForcedColors = { globals: { forcedColors: "active" } };
+export const ForcedColors = {
+  globals: { forcedColors: "active" },
+  tags: ["beta-matrix"],
+  render: Template,
+  args: {
+    size: "M",
+    href: "https://example.com",
+    children: "storyLinkPlayground",
+  },
+};

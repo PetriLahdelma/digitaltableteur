@@ -27,7 +27,11 @@ const meta = {
     docs: { description: { component: contract.description } },
   },
   argTypes: {
-    className: { control: "text", description: "Layout wrapper class names", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Layout wrapper class names",
+      table: { disable: true },
+    },
   },
   args: {},
 } satisfies Meta<typeof NextLayout>;
@@ -40,7 +44,9 @@ export const Default: Story = {
   render: () => <NextLayout>{sampleMain}</NextLayout>,
 };
 export const Playground: Story = {
-  tags: ["beta-matrix"], ...Default };
+  tags: ["beta-matrix"],
+  ...Default,
+};
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);

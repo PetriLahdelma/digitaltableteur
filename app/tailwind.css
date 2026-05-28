@@ -190,10 +190,19 @@
   --popover-foreground: var(--primary-text-color, #041B23);
   --primary: var(--color-primary, #041B23);
   --primary-foreground: var(--inverted-text-color, #fff);
-  --secondary: var(--color-muted, #6c757d);
+  /* shadcn secondary surface (used by `bg-secondary` etc.) — the legacy
+   * `--color-muted` (#6c757d) is a dark badge text color, not a surface, and
+   * paired with the dark `--secondary-foreground` falls to 3.77 contrast.
+   * Use the same gray-200 surface as `--muted` so dark foreground text stays
+   * >=4.5 contrast against it. */
+  --secondary: #e5e7eb;
   --secondary-foreground: var(--primary-text-color, #041B23);
-  --muted: var(--color-muted, #6c757d);
-  --muted-foreground: var(--secondary-text-color, #041B23);
+  /* shadcn muted surface — use a light gray surface (gray-200) so the muted
+   * foreground stays >=4.5 contrast for body copy. The legacy `--color-muted`
+   * is intentionally dark (#6c757d) for badge text on white; reusing it here
+   * caused 3.77 contrast and tripped the light-mode matrix gate. */
+  --muted: #e5e7eb;
+  --muted-foreground: #4b5563;
   --accent: var(--accent-purple, #812eff);
   --accent-foreground: var(--inverted-text-color, #fff);
   --destructive: var(--color-error, #dc3545);
@@ -234,9 +243,14 @@
   --popover-foreground: var(--primary-text-color, #6fa8ff);
   --primary: var(--color-primary, #6fa8ff);
   --primary-foreground: var(--inverted-text-color, #181a1b);
-  --secondary: var(--color-muted, #888);
+  /* Dark-mode secondary/muted surfaces: must sit slightly above
+   * `--background` (#181a1b) without trashing contrast for either
+   * `--secondary-foreground` (#6fa8ff) or `--muted-foreground` (#aaa).
+   * The legacy `--color-muted` token (#888) is a mid-gray badge color and
+   * fails 4.5:1 against both, tripping the dark-mode matrix gate. */
+  --secondary: #2a2c2d;
   --secondary-foreground: var(--primary-text-color, #6fa8ff);
-  --muted: var(--color-muted, #888);
+  --muted: #2a2c2d;
   --muted-foreground: var(--secondary-text-color, #aaa);
   --accent: var(--accent-purple, #812eff);
   --accent-foreground: var(--inverted-text-color, #181a1b);
@@ -335,6 +349,41 @@
   --sidebar-accent-foreground: #fff;
   --sidebar-border: #000;
   --sidebar-ring: #000;
+}
+
+/*
+ * Forced colors (Windows High Contrast mode)
+ * Map Tailwind/shadcn semantic tokens to system colors so contrast is guaranteed.
+ */
+@media (forced-colors: active) {
+  :root {
+    --background: Canvas;
+    --foreground: CanvasText;
+    --card: Canvas;
+    --card-foreground: CanvasText;
+    --popover: Canvas;
+    --popover-foreground: CanvasText;
+    --primary: CanvasText;
+    --primary-foreground: Canvas;
+    --secondary: Canvas;
+    --secondary-foreground: CanvasText;
+    --muted: Canvas;
+    --muted-foreground: CanvasText;
+    --accent: Highlight;
+    --accent-foreground: HighlightText;
+    --destructive: CanvasText;
+    --border: CanvasText;
+    --input: CanvasText;
+    --ring: Highlight;
+    --sidebar: Canvas;
+    --sidebar-foreground: CanvasText;
+    --sidebar-primary: Highlight;
+    --sidebar-primary-foreground: HighlightText;
+    --sidebar-accent: Highlight;
+    --sidebar-accent-foreground: HighlightText;
+    --sidebar-border: CanvasText;
+    --sidebar-ring: Highlight;
+  }
 }
 
 /*

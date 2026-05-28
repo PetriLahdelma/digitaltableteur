@@ -72,6 +72,11 @@ export function WorkMagneticField({
 
       if (!section || cards.length === 0) return;
 
+      // Pre-set the resting state synchronously so axe never observes the
+      // initial opacity:0 state. gsap.matchMedia callbacks below still adjust
+      // things async, but this guarantees the cards are visible from frame 1.
+      gsap.set(cards, { opacity: 1, y: 0 });
+
       const mm = gsap.matchMedia();
 
       // --- Reduced motion: show immediately, no interactions ---

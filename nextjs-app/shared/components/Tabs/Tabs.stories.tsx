@@ -1,7 +1,7 @@
 import contract from "./Tabs.contract.json";
 import React from "react";
-import type { Meta, StoryFn } from "@storybook/react-vite";
-import Tabs, { TabsProps } from "@dt/Tabs";
+import type { Meta, StoryFn, StoryObj } from "@storybook/react-vite";
+import Tabs, { TabsProps, getTabPanelProps } from "@dt/Tabs";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
@@ -9,6 +9,41 @@ import { expect, userEvent, waitFor, within } from "storybook/test";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 import styles from "./Tabs.stories.module.css";
+
+type Story = StoryObj<typeof Tabs>;
+
+/**
+ * Story wrapper that pairs the Tabs component with the tabpanels it controls.
+ * Without panels, `aria-controls` references would be invalid (axe will flag
+ * `aria-valid-attr-value`), so every story must render panels too.
+ */
+function TabsWithPanels(args: TabsProps) {
+  const initial =
+    args.activeTab ?? args.defaultActiveTab ?? args.tabs[0]?.key ?? "";
+  const [active, setActive] = React.useState(initial);
+  React.useEffect(() => {
+    if (args.activeTab) {
+      setActive(args.activeTab);
+    }
+  }, [args.activeTab]);
+  return (
+    <div>
+      <Tabs
+        {...args}
+        activeTab={args.activeTab ?? active}
+        onTabChange={(key) => {
+          if (!args.activeTab) setActive(key);
+          args.onTabChange?.(key);
+        }}
+      />
+      {args.tabs.map((tab) => (
+        <div key={tab.key} {...getTabPanelProps(tab.key, tab.key === active)}>
+          <p>{tab.label} content</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const tabsComplianceRules: ComplianceRule[] = [
   {
@@ -180,7 +215,7 @@ export const Z_TabsCompliance: StoryFn = () => (
 );
 Z_TabsCompliance.parameters = { docs: { disable: true } };
 
-const Template: StoryFn<TabsProps> = (args) => <Tabs {...args} />;
+const Template: StoryFn<TabsProps> = (args) => <TabsWithPanels {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -296,20 +331,25 @@ SizeLarge.args = {
 
 export const ControlledTabs: StoryFn = () => {
   const [activeTab, setActiveTab] = React.useState("tab1");
+  const tabs = [
+    { key: "tab1", label: "First" },
+    { key: "tab2", label: "Second" },
+    { key: "tab3", label: "Third" },
+  ];
   return (
     <div>
       <p className={styles.demoText}>
         Active tab (v1.1.0): <strong>{activeTab}</strong>
       </p>
-      <Tabs
-        tabs={[
-          { key: "tab1", label: "First" },
-          { key: "tab2", label: "Second" },
-          { key: "tab3", label: "Third" },
-        ]}
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-      />
+      <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
+      {tabs.map((tab) => (
+        <div
+          key={tab.key}
+          {...getTabPanelProps(tab.key, tab.key === activeTab)}
+        >
+          <p>{tab.label} content</p>
+        </div>
+      ))}
     </div>
   );
 };
@@ -322,6 +362,7 @@ export const Playground: Story = {
 };
 
 export const Example = {
+  tags: ["beta-matrix"],
   parameters: { a11y: { disable: true }, controls: { disable: true } },
   render: Template,
   args: Default.args,

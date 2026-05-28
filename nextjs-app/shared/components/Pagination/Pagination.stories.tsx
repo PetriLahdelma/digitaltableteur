@@ -4,9 +4,7 @@ import { fn, userEvent, within } from "storybook/test";
 import { Pagination } from "./Pagination";
 import contract from "./Pagination.contract.json";
 
-function PaginationDemo(
-  args: React.ComponentProps<typeof Pagination>,
-) {
+function PaginationDemo(args: React.ComponentProps<typeof Pagination>) {
   const [page, setPage] = useState(args.currentPage ?? 1);
   return (
     <Pagination
@@ -79,7 +77,9 @@ export const Example: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
-  render: () => <PaginationDemo currentPage={3} totalPages={12} onPageChange={fn()} />,
+  render: () => (
+    <PaginationDemo currentPage={3} totalPages={12} onPageChange={fn()} />
+  ),
 };
 
 export const ForcedColors: Story = {

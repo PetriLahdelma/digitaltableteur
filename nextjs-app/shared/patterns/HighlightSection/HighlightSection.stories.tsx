@@ -41,8 +41,16 @@ const meta = {
       description: "Vertical rhythm scale",
       table: { defaultValue: { summary: "comfortable" } },
     },
-    className: { control: "text", description: "Section class names", table: { disable: true } },
-    ariaLabel: { control: "text", description: "Accessible section label override", table: { disable: true } },
+    className: {
+      control: "text",
+      description: "Section class names",
+      table: { disable: true },
+    },
+    ariaLabel: {
+      control: "text",
+      description: "Accessible section label override",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof HighlightSection>;
@@ -51,10 +59,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  tags: ["beta-matrix"], };
+  tags: ["beta-matrix"],
+};
 export const Playground: Story = {
-  tags: ["beta-matrix"], };
-
+  tags: ["beta-matrix"],
+};
 
 export const Example: Story = {
   tags: ["beta-matrix"],

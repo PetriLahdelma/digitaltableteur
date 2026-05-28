@@ -398,7 +398,30 @@ export const WithLineHeights: StoryFn = () => {
   );
 };
 
-export const Default = {};
-export const Playground = {};
-export const Example = { parameters: { controls: { disable: true } } };
-export const ForcedColors = { globals: { forcedColors: "active" } };
+const defaultListArgs = {
+  as: "ul" as const,
+  items: ["storyListItem1", "storyListItem2", "storyListItem3"],
+};
+
+export const Default = {
+  tags: ["beta-matrix"],
+  render: Template,
+  args: defaultListArgs,
+};
+export const Playground = {
+  tags: ["beta-matrix"],
+  render: Template,
+  args: defaultListArgs,
+};
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  render: Template,
+  args: defaultListArgs,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  render: Template,
+  args: defaultListArgs,
+};

@@ -195,9 +195,13 @@ Default.play = async ({ canvasElement }) => {
   await userEvent.click(showButton);
 
   await waitFor(() => {
-    expect(canvas.getByRole("status")).toBeInTheDocument();
     expect(canvas.getByText(/toast notification/i)).toBeInTheDocument();
   });
+  const toasts = canvas.getAllByRole("status");
+  const toast = toasts.find((el) =>
+    /toast notification/i.test(el.textContent ?? ""),
+  );
+  expect(toast).toBeDefined();
 };
 
 export const LongDuration = () => {
@@ -220,9 +224,11 @@ LongDuration.play = async ({ canvasElement }) => {
   await userEvent.click(showButton);
 
   await waitFor(() => {
-    expect(canvas.getByRole("status")).toBeInTheDocument();
     expect(canvas.getByText(/6 seconds/i)).toBeInTheDocument();
   });
+  const toasts = canvas.getAllByRole("status");
+  const toast = toasts.find((el) => /6 seconds/i.test(el.textContent ?? ""));
+  expect(toast).toBeDefined();
 };
 
 // v1.1.0 Showcase Stories
