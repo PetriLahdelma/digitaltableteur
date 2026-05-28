@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/DSharpFi/DSharp.DesignSystem/main/packages/react/scripts/contract.schema.json",
-    "title": "DSharp component contract",
+    "$id": "https://raw.githubusercontent.com/PetriLahdelma/digitaltableteur/main/scripts/design-system/contract.schema.json",
+    "title": "Digitaltableteur component contract",
     "type": "object",
     "additionalProperties": false,
     "required": [
@@ -369,7 +369,7 @@
                     "repo": {
                         "type": "string",
                         "minLength": 1,
-                        "description": "Repository slug (e.g. \"DSharp.Scout.Core\")."
+                        "description": "Repository slug (e.g. \"PetriLahdelma/digitaltableteur\")."
                     },
                     "path": {
                         "type": "string",

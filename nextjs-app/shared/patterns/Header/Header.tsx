@@ -141,24 +141,6 @@ export const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Only announce theme AFTER a user-initiated change. The first render that
-  // resolves the persisted theme would otherwise emit a spurious "Theme switched
-  // to Light theme" announcement and inflate the AT-tree snapshot with a value
-  // that depends on test timing (snapshot is captured before/after the effect
-  // fires depending on the run, which made the matrix gate flaky).
-  const previousThemeRef = React.useRef<typeof theme | null>(null);
-  React.useEffect(() => {
-    if (!hasMounted) return;
-    if (previousThemeRef.current === null) {
-      previousThemeRef.current = theme;
-      return;
-    }
-    if (previousThemeRef.current === theme) return;
-    previousThemeRef.current = theme;
-    const label = themeNames[theme] ?? theme;
-    setThemeAnnouncement(t("headerThemeAnnouncement", { theme: label }));
-  }, [hasMounted, theme, themeNames, t]);
-
   const handleThemeToggle = () => {
     if (!isThemeAnimating) {
       setIsThemeAnimating(true);
@@ -169,6 +151,11 @@ export const Header: React.FC<HeaderProps> = ({
     }
     const nextTheme = cycleTheme();
     onThemeCycle?.(nextTheme);
+    // Announce only on user-initiated changes (driven by the click handler),
+    // so initial paint never emits a spurious "Theme switched to ..."
+    // message that destabilised AT-tree snapshots in matrix CI.
+    const nextLabel = themeNames[nextTheme] ?? nextTheme;
+    setThemeAnnouncement(t("headerThemeAnnouncement", { theme: nextLabel }));
   };
 
   const handleOpenMobileMenu = () => setMobileMenuOpen(true);

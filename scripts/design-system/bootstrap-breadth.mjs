@@ -32,7 +32,7 @@ function fill(template, item) {
 }
 
 let created = 0;
-for (const item of ALL_BREADTH {
+for (const item of ALL_BREADTH) {
   const base =
     item.root === "patterns"
       ? join(REPO_ROOT, "nextjs-app/shared/patterns")

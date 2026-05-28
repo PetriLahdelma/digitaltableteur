@@ -74,3 +74,21 @@ lighthouse-*.json
 
 # Ad-hoc design-system / matrix CI run logs (kept out of VCS)
 .dt-*.log
+
+# Browser/MCP scratch state and brainstorming session output
+.playwright-mcp/
+.superpowers/
+*.pid
+
+# Playwright test outputs (snapshots live alongside their tests, not here)
+playwright-report/
+test-results/
+
+# Visual-diff transient outputs — baselines are tracked, actual/diff are not
+public/visual-diff/*-actual.png
+public/visual-diff/*-diff.png
+public/visual-diff/report.json
+
+# Stray top-level build/debug logs
+/build.log
+/vite-debug.log

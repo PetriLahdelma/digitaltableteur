@@ -1,9 +1,3 @@
-
-/** Props for CookieConsent. */
-export interface CookieConsentProps {
-  className?: string;
-}
-
 "use client";
 
 /**
