@@ -2,7 +2,13 @@
 
 import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { XLogo, LinkedinLogo, FacebookLogo, Link, Check } from "@phosphor-icons/react";
+import {
+  XLogo,
+  LinkedinLogo,
+  FacebookLogo,
+  Link,
+  Check,
+} from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 export interface ArticleShareSectionProps {
@@ -33,6 +39,12 @@ export function ArticleShareSection({
 
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
+  const twitterLabel = t("shareTwitter", "Share on X");
+  const linkedinLabel = t("shareLinkedIn", "Share on LinkedIn");
+  const facebookLabel = t("shareFacebook", "Share on Facebook");
+  const copyLinkLabel = copied
+    ? t("articleLinkCopied", "Link copied!")
+    : t("articleCopyLink", "Copy link");
 
   const shareLinks = {
     twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
@@ -67,14 +79,14 @@ export function ArticleShareSection({
     "text-muted-foreground",
     "transition-colors duration-200",
     "hover:bg-foreground hover:text-background hover:border-foreground",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
   );
 
   return (
     <div
       className={cn(
         isVertical ? "flex flex-col items-start gap-4" : "space-y-4",
-        className
+        className,
       )}
     >
       {/* Title */}
@@ -82,7 +94,7 @@ export function ArticleShareSection({
         <h3
           className={cn(
             "font-body text-sm font-medium",
-            "text-muted-foreground uppercase tracking-wider"
+            "text-muted-foreground uppercase tracking-wider",
           )}
         >
           {t("articleShareTitle", "Share this article")}
@@ -90,19 +102,15 @@ export function ArticleShareSection({
       )}
 
       {/* Buttons */}
-      <div
-        className={cn(
-          "flex gap-3",
-          isVertical && "flex-col"
-        )}
-      >
+      <div className={cn("flex gap-3", isVertical && "flex-col")}>
         {/* Twitter/X */}
         <a
           href={shareLinks.twitter}
           target="_blank"
           rel="noopener noreferrer"
           className={buttonBaseClass}
-          aria-label={t("shareTwitter", "Share on X")}
+          aria-label={twitterLabel}
+          title={twitterLabel}
         >
           <XLogo size={16} aria-hidden="true" />
         </a>
@@ -113,7 +121,8 @@ export function ArticleShareSection({
           target="_blank"
           rel="noopener noreferrer"
           className={buttonBaseClass}
-          aria-label={t("shareLinkedIn", "Share on LinkedIn")}
+          aria-label={linkedinLabel}
+          title={linkedinLabel}
         >
           <LinkedinLogo size={16} aria-hidden="true" />
         </a>
@@ -124,7 +133,8 @@ export function ArticleShareSection({
           target="_blank"
           rel="noopener noreferrer"
           className={buttonBaseClass}
-          aria-label={t("shareFacebook", "Share on Facebook")}
+          aria-label={facebookLabel}
+          title={facebookLabel}
         >
           <FacebookLogo size={16} aria-hidden="true" />
         </a>
@@ -135,13 +145,10 @@ export function ArticleShareSection({
           onClick={copyToClipboard}
           className={cn(
             buttonBaseClass,
-            copied && "bg-green-500 text-white border-green-500"
+            copied && "bg-green-500 text-white border-green-500",
           )}
-          aria-label={
-            copied
-              ? t("articleLinkCopied", "Link copied!")
-              : t("articleCopyLink", "Copy link")
-          }
+          aria-label={copyLinkLabel}
+          title={copyLinkLabel}
         >
           {copied ? (
             <Check size={16} aria-hidden="true" />

@@ -5,6 +5,9 @@ export type BlogPostMeta = {
   excerpt?: string;
   readTime?: string;
   publishedAt?: string;
+  intendedPublishedAt?: string;
+  draft?: boolean;
+  status?: string;
   modifiedAt?: string;
   seoTitle?: string;
   seoDescription?: string;
@@ -17,7 +20,79 @@ export type BlogPostMeta = {
   tags?: string[];
 };
 
-export const posts: BlogPostMeta[] = [
+const showUnpublishedPosts =
+  process.env.SHOW_UNPUBLISHED_POSTS === "true" ||
+  process.env.NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS === "true";
+
+const isVisiblePost = (post: BlogPostMeta) => {
+  if (showUnpublishedPosts) return true;
+  if (post.draft || post.status === "draft" || post.status === "unpublished") {
+    return false;
+  }
+
+  if (!post.publishedAt) return true;
+  const publishedAt = new Date(post.publishedAt);
+  return (
+    Number.isNaN(publishedAt.getTime()) || publishedAt.getTime() <= Date.now()
+  );
+};
+
+export const allPosts: BlogPostMeta[] = [
+  {
+    title: "From DesignOps to AgentOps",
+    slug: "from-designops-to-agentops",
+    excerpt: "As AI agents enter product delivery, design-system leaders become operators of context, contracts, review loops, and trust.",
+    readTime: "6 min read",
+    publishedAt: "2026-06-19T08:00:00.000Z",
+    status: "scheduled",
+    authorName: "Petri Lahdelma",
+    authorSlug: "petri-lahdelma",
+    tags: ["DesignOps","AgentOps","Design Leadership","AI"],
+  },
+  {
+    title: "The Minimum Viable Agent-Ready Design System",
+    slug: "the-minimum-viable-agent-ready-design-system",
+    excerpt: "You do not need a giant enterprise design system to work safely with AI. You need a small, enforceable system that agents can read and humans can trust.",
+    readTime: "6 min read",
+    publishedAt: "2026-06-15T08:00:00.000Z",
+    status: "scheduled",
+    authorName: "Petri Lahdelma",
+    authorSlug: "petri-lahdelma",
+    tags: ["Design Systems","AI Governance","Product Design","Frontend"],
+  },
+  {
+    title: "Component Contracts Are Where Taste Becomes Infrastructure",
+    slug: "component-contracts-are-where-taste-becomes-infrastructure",
+    excerpt: "Taste does not scale by explanation alone. In agentic design systems, it has to become contracts, examples, and verification.",
+    readTime: "6 min read",
+    publishedAt: "2026-06-11T08:00:00.000Z",
+    status: "scheduled",
+    authorName: "Petri Lahdelma",
+    authorSlug: "petri-lahdelma",
+    tags: ["Component Contracts","Design Systems","AI","Frontend Architecture"],
+  },
+  {
+    title: "Tools, Harnesses, and Skills: The Missing Model for Design Systems",
+    slug: "tools-harnesses-and-skills-the-missing-model-for-design-systems",
+    excerpt: "Most agentic design workflow conversations confuse the workspace, the operating model, and the reusable capability. Separating them changes how teams scale.",
+    readTime: "6 min read",
+    publishedAt: "2026-06-07T08:00:00.000Z",
+    status: "scheduled",
+    authorName: "Petri Lahdelma",
+    authorSlug: "petri-lahdelma",
+    tags: ["Design Systems","Agentic Workflows","Figma","Storybook"],
+  },
+  {
+    title: "Agentic Design Systems Need Operating Models, Not More Components",
+    slug: "agentic-design-systems-need-operating-models-not-more-components",
+    excerpt: "AI does not make design systems obsolete. It exposes whether they were ever operational in the first place.",
+    readTime: "6 min read",
+    publishedAt: "2026-06-03T08:00:00.000Z",
+    status: "scheduled",
+    authorName: "Petri Lahdelma",
+    authorSlug: "petri-lahdelma",
+    tags: ["Design Systems","AI","Agentic Workflows","DesignOps"],
+  },
   {
     title: "From Tokens to Thinking Systems: Making AI-Native Design Systems Actually Work",
     slug: "from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work",
@@ -134,5 +209,7 @@ export const posts: BlogPostMeta[] = [
   }
 ];
 
+export const getVisiblePosts = () => allPosts.filter(isVisiblePost);
+
 export const getPostMetaBySlug = (slug?: string | null) =>
-  slug ? posts.find((post) => post.slug === slug) : undefined;
+  slug ? getVisiblePosts().find((post) => post.slug === slug) : undefined;
