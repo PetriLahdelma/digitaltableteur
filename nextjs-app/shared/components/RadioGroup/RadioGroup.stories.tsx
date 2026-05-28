@@ -11,7 +11,7 @@ const OPTIONS = [
 const meta = {
   title: "Molecules/RadioGroup",
   component: RadioGroup,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "padded",
     contractStatus: contract.status,
@@ -31,6 +31,16 @@ const meta = {
     value: {
       control: "text",
       description: "Controlled selected value",
+      table: { category: "Value" },
+    },
+    name: {
+      control: "text",
+      description: "Native form field name for the group",
+      table: { category: "Form" },
+    },
+    defaultValue: {
+      control: "text",
+      description: "Initial value when uncontrolled",
       table: { category: "Value" },
     },
     orientation: {
@@ -82,9 +92,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 export const Default: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   ...Playground,
 };
@@ -100,6 +112,7 @@ export const WithError: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true } },
   render: () => (

@@ -92,7 +92,8 @@ export default meta;
 type Story = StoryObj<typeof DonnyAvatar>;
 
 /** Default idle state */
-export const Default: Story = { args: { state: "idle", size: "lg" } };
+export const Default: Story = {
+  tags: ["beta-matrix"], args: { state: "idle", size: "lg" } };
 
 /** All sizes */
 export const Sizes: Story = {

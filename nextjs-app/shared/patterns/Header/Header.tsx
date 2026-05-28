@@ -20,11 +20,11 @@ const themeIcons: Record<Theme, React.ReactNode> = {
   hcw: <Icon name="circle-half" ariaLabel="High contrast light" />,
 };
 
-type HeaderProps = {
+export interface HeaderProps {
   navItems?: HeaderNavItem[];
   onThemeCycle?: (nextTheme: Theme) => void;
   onLanguageChange?: (code: string) => void;
-};
+}
 
 export type HeaderNavItem = {
   to: string;

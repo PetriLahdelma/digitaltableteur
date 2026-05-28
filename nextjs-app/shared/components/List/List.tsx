@@ -17,7 +17,7 @@ type ListStyleType =
   | "upper-roman"
   | "none";
 
-type ListProps = {
+export interface ListProps {
   items: React.ReactNode[];
   as?: ListType;
   className?: string;
@@ -28,7 +28,7 @@ type ListProps = {
   listStyleType?: ListStyleType;
   spacing?: "compact" | "normal" | "relaxed";
   role?: string;
-};
+}
 
 const sizeClassMap: Record<TextSize, string> = {
   XXS: styles["textXXS"] || "",

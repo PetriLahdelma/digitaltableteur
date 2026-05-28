@@ -3,7 +3,7 @@
     "name": "Author",
     "tier": "molecule",
     "group": "structure",
-    "status": "alpha",
+    "status": "beta",
     "description": "Author — production @dt component (Storybook beta).",
     "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-author",
     "radixPrimitive": null,
@@ -22,7 +22,7 @@
         "keyboard": [],
         "reducedMotion": true,
         "reviewed": true,
-        "forcedColorsVerified": false,
+        "forcedColorsVerified": true,
         "ariaRequirements": [],
         "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
     },
@@ -30,7 +30,7 @@
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "argTypesProxyExempt": [
         "as",
         "asChild",

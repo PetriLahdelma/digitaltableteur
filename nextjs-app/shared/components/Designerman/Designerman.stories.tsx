@@ -32,7 +32,8 @@ const meta: Meta<typeof Designerman> = {
 export default meta;
 type Story = StoryObj<typeof Designerman>;
 
-export const Default: Story = { render: (args) => <Designerman {...args} /> };
+export const Default: Story = {
+  tags: ["beta-matrix"], render: (args) => <Designerman {...args} /> };
 
 export const Playground = Default;
 export const Example = {

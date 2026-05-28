@@ -103,6 +103,7 @@ type Story = StoryObj<typeof Hero>;
 
 // Default Story
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     title: "Welcome to Digitaltableteur",
     subtitle: "Creative Development & Design",

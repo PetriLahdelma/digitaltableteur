@@ -26,6 +26,7 @@ type Story = StoryObj<typeof AuthorBio>;
 const [defaultAuthor] = getAuthors();
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: { slug: defaultAuthor?.slug ?? "petri-lahdelma" },
 };
 

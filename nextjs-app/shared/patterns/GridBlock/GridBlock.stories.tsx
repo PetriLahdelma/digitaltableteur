@@ -59,6 +59,7 @@ export default meta;
 type Story = StoryObj<typeof GridBlock>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     columns: 2,
     gap: "medium",

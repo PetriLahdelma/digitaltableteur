@@ -34,7 +34,8 @@ const meta: Meta<typeof Footer> = {
 export default meta;
 type Story = StoryObj<typeof Footer>;
 
-export const Default: Story = { name: "Default", render: () => <Footer /> };
+export const Default: Story = {
+  tags: ["beta-matrix"], name: "Default", render: () => <Footer /> };
 
 export const WithSurroundingContent: Story = {
   name: "With Surrounding Content",

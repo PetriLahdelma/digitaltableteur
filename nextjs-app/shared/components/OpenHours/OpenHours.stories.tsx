@@ -98,7 +98,8 @@ export const Z_OpenHoursCompliance: Story = {
   ),
 };
 
-export const Default: Story = { args: {} };
+export const Default: Story = {
+  tags: ["beta-matrix"], args: {} };
 
 export const Compact: Story = { args: { compact: true } };
 

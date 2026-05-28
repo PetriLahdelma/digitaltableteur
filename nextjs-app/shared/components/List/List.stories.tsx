@@ -86,7 +86,7 @@ const listComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof List> = {
   title: "Molecules/List",
   component: List,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
