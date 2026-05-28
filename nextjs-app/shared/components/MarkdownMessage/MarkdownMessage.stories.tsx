@@ -19,7 +19,9 @@ export default meta;
 
 type Story = StoryObj<typeof MarkdownMessage>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Fallback: Story = {
   args: {

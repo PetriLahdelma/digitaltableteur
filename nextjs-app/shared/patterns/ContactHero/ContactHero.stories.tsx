@@ -42,6 +42,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (contact page hero)",
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   args: defaultArgs,

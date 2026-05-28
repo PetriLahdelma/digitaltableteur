@@ -74,6 +74,7 @@ Playground.play = async ({ canvasElement }) => {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => <PaginationDemo currentPage={3} totalPages={12} onPageChange={fn()} />,
 };

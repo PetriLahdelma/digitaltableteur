@@ -68,10 +68,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (homepage services)",
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   args: defaultArgs,

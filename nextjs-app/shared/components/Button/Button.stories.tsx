@@ -612,6 +612,7 @@ export const Playground: Story = {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   tags: ["beta-matrix"],
   parameters: { a11y: { disable: true }, controls: { disable: true } },
   render: (args: React.ComponentProps<typeof Button>) => (

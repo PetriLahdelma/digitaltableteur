@@ -108,7 +108,25 @@ if (!i18n.isInitialized) {
   });
 }
 
+/** Story-level `globals.forcedColors` — only the ForcedColors story should use "active". */
+export type ForcedColorsGlobal = "none" | "active";
+
 export const globalTypes = {
+  forcedColors: {
+    name: "Forced colors (Windows HC)",
+    description:
+      "Simulates forced-colors mode for the ForcedColors story only. Default stories keep this Off.",
+    defaultValue: "none" satisfies ForcedColorsGlobal,
+    toolbar: {
+      icon: "contrast",
+      items: [
+        { value: "none", title: "Off" },
+        { value: "active", title: "On (HC)" },
+      ],
+      showName: true,
+      dynamicTitle: true,
+    },
+  },
   theme: {
     name: "Theme",
     description: "Global theme for components",
@@ -244,8 +262,46 @@ const withCookieConsent: Decorator = (Story) => (
   </CookieConsentProvider>
 );
 
+const FORCED_COLORS_STYLE_ID = "sb-forced-colors-emulation";
+
+/**
+ * Applies / clears forced-colors emulation from story globals only.
+ * Default/Playground/Example set `forcedColors: "none"` so toolbar + URL do not stick.
+ */
+const withForcedColorsGlobal: Decorator = (Story, context) => {
+  const mode = (context.globals?.forcedColors as ForcedColorsGlobal | undefined) ?? "none";
+  const active = mode === "active";
+
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    if (active) {
+      root.classList.add("sb-forced-colors-active");
+      let style = document.getElementById(FORCED_COLORS_STYLE_ID);
+      if (!style) {
+        style = document.createElement("style");
+        style.id = FORCED_COLORS_STYLE_ID;
+        style.textContent = `
+          /* Dev-only hint; CI uses Playwright emulateMedia in test:stories:hc */
+          html.sb-forced-colors-active { color-scheme: light dark; }
+        `;
+        document.head.appendChild(style);
+      }
+    } else {
+      root.classList.remove("sb-forced-colors-active");
+      document.getElementById(FORCED_COLORS_STYLE_ID)?.remove();
+    }
+    return () => {
+      root.classList.remove("sb-forced-colors-active");
+      document.getElementById(FORCED_COLORS_STYLE_ID)?.remove();
+    };
+  }, [active]);
+
+  return <Story />;
+};
+
 export const decorators = [
   withI18next,
+  withForcedColorsGlobal,
   withCookieConsent,
   withAnimation,
   withWipBadge,
@@ -281,6 +337,9 @@ const detectVisualRegression = () => {
 const isVisualRegression = detectVisualRegression();
 
 const preview: Preview = {
+  initialGlobals: {
+    forcedColors: "none",
+  },
   parameters: {
     // Built-in onboarding checklist adds weight on first paint; disable for faster dev UX.
     onboarding: { disable: true },

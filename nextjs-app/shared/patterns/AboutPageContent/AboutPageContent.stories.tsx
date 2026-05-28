@@ -31,6 +31,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (about page)",
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   render: () => <AboutPageContent showCTA />,

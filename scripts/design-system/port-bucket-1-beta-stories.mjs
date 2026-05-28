@@ -67,8 +67,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -135,8 +139,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -197,8 +205,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -271,8 +283,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -358,8 +374,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   name: "Example (article metadata)",
@@ -453,8 +473,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 ${playTab("Playground")}
 
 export const Example: Story = {
@@ -550,8 +574,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 ${playTab("Playground")}
 
 export const Example: Story = {
@@ -641,8 +669,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 ${playTab("Playground")}
 
 export const Example: Story = {
@@ -720,8 +752,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -801,8 +837,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -872,8 +912,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -939,8 +983,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -1014,8 +1062,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 ${playClickButton("Playground")}
 
 export const Example: Story = {
@@ -1546,8 +1598,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   name: "Example (contact page)",
@@ -1611,8 +1667,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -1702,8 +1762,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 ${playTab("Playground")}
 
 export const Example: Story = {
@@ -1808,8 +1872,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 ${playTab("Playground")}
 
 export const Example: Story = {
@@ -1912,8 +1980,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 ${playTab("Playground")}
 
 export const Example: Story = {
@@ -2081,8 +2153,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Playground: Story = {};
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  globals: { forcedColors: "none" },
+};
 
 export const Example: Story = {
   parameters: { controls: { disable: true }, layout: "padded" },
