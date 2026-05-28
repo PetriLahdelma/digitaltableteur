@@ -1,21 +1,6 @@
-import contract from "./WorkMagneticField.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { WorkMagneticField } from "./WorkMagneticField";
-
-const meta: Meta<typeof WorkMagneticField> = {
-  title: "Patterns/WorkMagneticField",
-  component: WorkMagneticField,
-  tags: ["!autodocs"],
-  parameters: {
-    layout: "fullscreen",
-    contractStatus: contract.status,
-    a11y: { test: "error" },
-  },
-  argTypes: { showViewAll: { control: "boolean" } },
-};
-
-export default meta;
-type Story = StoryObj<typeof WorkMagneticField>;
+import contract from "./WorkMagneticField.contract.json";
 
 const sampleProjects = [
   {
@@ -41,16 +26,45 @@ const sampleProjects = [
   },
 ];
 
-export const Default: Story = {
-  args: { title: "Selected work", projects: sampleProjects, showViewAll: true },
+const defaultArgs = {
+  title: "Selected work",
+  projects: sampleProjects,
+  showViewAll: true,
 };
 
-export const Playground: Story = { ...Default };
+const meta = {
+  title: "Patterns/WorkMagneticField",
+  component: WorkMagneticField,
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    layout: "fullscreen",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
+  },
+  argTypes: {
+    title: { control: "text", description: "Section heading" },
+    projects: { control: false, description: "Portfolio cards with magnetic hover" },
+    showViewAll: { control: "boolean", description: "Show link to full work index" },
+    className: { control: "text", description: "Section class names", table: { disable: true } },
+    id: { control: "text", description: "Section id", table: { defaultValue: { summary: "work" } } },
+  },
+  args: defaultArgs,
+} satisfies Meta<typeof WorkMagneticField>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
+export const Playground: Story = {};
+
 export const Example: Story = {
-  parameters: { controls: { disable: true } },
-  args: Default.args,
+  name: "Example (homepage work grid)",
+  parameters: { controls: { disable: true }, layout: "fullscreen" },
+  args: defaultArgs,
 };
+
 export const ForcedColors: Story = {
   globals: { forcedColors: "active" },
-  args: Default.args,
+  args: defaultArgs,
 };
