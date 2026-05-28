@@ -123,13 +123,14 @@ const dsharpParity = {
     "production consumers auto-detected from app/** into contract.consumers[]",
     "real Figma node IDs verified by figma-mcp (placeholders today)",
     "documented @dt subpath/export policy and semver-bound public surface",
-    "green npm run test:ci (53 files / 197 tests failing on 2026-05-26 — see docs/TEST-DEBT.md)",
+    "green npm run test:ci (0 failing tests as of 2026-05-28)",
   ],
   notReadyForStablePromotion: true,
   testCiStatus: {
-    asOf: "2026-05-26",
-    filesWithFailures: 53,
-    failingTests: 197,
+    asOf: "2026-05-28",
+    filesWithFailures: 0,
+    failingTests: 0,
+    note: "Header, ProcessBlock, TeamBlock, and CookieConsent regressions resolved.",
     debtDoc: "docs/TEST-DEBT.md",
   },
 };

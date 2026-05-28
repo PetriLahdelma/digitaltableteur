@@ -896,6 +896,21 @@ export function validateComponentsDir(root: string): ValidationResult {
         if (existsSync(tsxPath)) {
             const source = readFileSync(tsxPath, 'utf8')
 
+            // 0. Next.js "use client" must be the file prologue — only comments/blank
+            //    lines may precede it. An export or import before the directive is ignored
+            //    by the RSC compiler and silently breaks client-boundary semantics.
+            if (source.includes('"use client"') || source.includes("'use client'")) {
+                const withoutLeadingComments = source.replace(
+                    /^(\s*\/\*[\s\S]*?\*\/\s*|\s*\/\/[^\n]*\n|\s*\n)*/m,
+                    '',
+                )
+                if (!/^["']use client["'];?\s*\n/.test(withoutLeadingComments)) {
+                    errors.push(
+                        `${name}.tsx: "use client" must be the first statement (only comments/blank lines before it). Move the directive above imports and exports.`,
+                    )
+                }
+            }
+
             // 1. No hex literals
             const hexMatches = source.match(/#[0-9a-fA-F]{3,8}\b/g) ?? []
             for (const hex of hexMatches) {

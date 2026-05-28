@@ -21,10 +21,15 @@ import {
 import CookieConsentBanner from "./CookieConsentBanner";
 import styles from "./CookieConsent.module.css";
 
+/** Props for CookieConsent. */
+export interface CookieConsentProps {
+  className?: string;
+}
+
 /**
  * CookieConsent component.
  */
-export const CookieConsent: React.FC = () => {
+export const CookieConsent: React.FC<CookieConsentProps> = () => {
   const { t, i18n } = useTranslation();
   const {
     isBannerOpen,
