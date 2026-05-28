@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { getPostMetaBySlug } from "../postMetadata";
 import { getArticleSchema, stringifyJsonLd } from "@/app/lib/structuredData";
@@ -63,32 +64,34 @@ export default async function BlogArticle({
   const { slug } = await params;
   const post = getPostMetaBySlug(slug);
 
+  if (!post) {
+    notFound();
+  }
+
   return (
     <>
-      {post && (
-        <script
-          id="schema-article"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: stringifyJsonLd(
-              getArticleSchema({
-                title: post.title,
-                description: post.excerpt ?? "",
-                publishedAt: post.publishedAt || new Date().toISOString(),
-                modifiedAt: post.modifiedAt ?? undefined,
-                slug: post.slug,
-                author: post.authorName ?? "Petri Lahdelma",
-                authorUrl: post.authorSlug
-                  ? `${siteBase}/blog/authors/${post.authorSlug}`
-                  : undefined,
-                mainImageUrl: post.mainImageUrl ?? undefined,
-                mainImageAlt: post.mainImageAlt ?? undefined,
-                tags: post.tags ?? [],
-              }),
-            ),
-          }}
-        />
-      )}
+      <script
+        id="schema-article"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: stringifyJsonLd(
+            getArticleSchema({
+              title: post.title,
+              description: post.excerpt ?? "",
+              publishedAt: post.publishedAt || new Date().toISOString(),
+              modifiedAt: post.modifiedAt ?? undefined,
+              slug: post.slug,
+              author: post.authorName ?? "Petri Lahdelma",
+              authorUrl: post.authorSlug
+                ? `${siteBase}/blog/authors/${post.authorSlug}`
+                : undefined,
+              mainImageUrl: post.mainImageUrl ?? undefined,
+              mainImageAlt: post.mainImageAlt ?? undefined,
+              tags: post.tags ?? [],
+            }),
+          ),
+        }}
+      />
       <ClientArticle slug={slug} />
     </>
   );

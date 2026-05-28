@@ -138,8 +138,9 @@ const MdxFigure = ({
   const childArray = React.Children.toArray(children);
   let title: string | undefined;
   let caption: string | undefined;
-  let preElement: React.ReactElement<React.ComponentPropsWithoutRef<"pre">> | null =
-    null;
+  let preElement: React.ReactElement<
+    React.ComponentPropsWithoutRef<"pre">
+  > | null = null;
   let languageValue: string | undefined;
 
   childArray.forEach((child) => {
@@ -239,7 +240,6 @@ export function ArticlePageTemplate({
     mainImageUrl,
     mainImageAlt,
     mainImageCaption,
-    tags,
     Component,
   } = post;
 
@@ -279,7 +279,6 @@ export function ArticlePageTemplate({
           }
           publishedAt={publishedAt}
           readTime={readTime}
-          tags={tags}
           variant="contained"
         />
       }
@@ -294,7 +293,9 @@ export function ArticlePageTemplate({
         ) : undefined
       }
       relatedPosts={
-        showRelated ? <RelatedPosts currentSlug={slug} maxPosts={3} /> : undefined
+        showRelated ? (
+          <RelatedPosts currentSlug={slug} maxPosts={3} />
+        ) : undefined
       }
       showReadingProgress={showReadingProgress}
       contentRef={contentRef}
@@ -307,7 +308,7 @@ export function ArticlePageTemplate({
 
         {/* Author card */}
         {author && (
-          <div className="mt-12 pt-8 border-t border-border">
+          <div className="mt-12">
             <EnhancedAuthorCard
               name={author.name}
               slug={author.slug}
