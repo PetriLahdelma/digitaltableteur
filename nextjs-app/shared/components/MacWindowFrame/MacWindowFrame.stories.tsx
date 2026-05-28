@@ -11,7 +11,7 @@ const meta: Meta<typeof MacWindowFrame> = {
     a11y: { test: "error" },
     layout: "padded",
   },
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
 };
 
 export default meta;

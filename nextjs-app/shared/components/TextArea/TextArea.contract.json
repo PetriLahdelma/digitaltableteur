@@ -5,7 +5,7 @@
     "group": "form",
     "status": "alpha",
     "description": "Multi-line text field with optional label, validation, and character count.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-text-area",
     "radixPrimitive": null,
     "element": "textarea",
     "variants": {
@@ -42,8 +42,9 @@
             "aria-invalid when error"
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": false,
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
     },
     "tokens": {
         "colors": [

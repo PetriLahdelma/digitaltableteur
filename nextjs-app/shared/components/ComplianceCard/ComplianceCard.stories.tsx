@@ -14,7 +14,7 @@ const meta = {
     layout: "padded",
     controls: { disable: true },
   },
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   argTypes: {},
 } satisfies Meta<typeof ComplianceCard>;
 

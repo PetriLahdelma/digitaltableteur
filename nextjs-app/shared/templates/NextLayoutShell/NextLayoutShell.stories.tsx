@@ -6,7 +6,7 @@ import Text from "@dt/Text";
 
 const meta: Meta = {
   argTypes: {},
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   title: "Templates/NextLayoutShell",
   parameters: {
     contractStatus: contract.status,

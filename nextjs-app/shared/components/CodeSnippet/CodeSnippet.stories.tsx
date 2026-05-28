@@ -58,7 +58,7 @@ const meta: Meta<typeof CodeSnippet> = {
   argTypes: {},
   title: "Molecules/CodeSnippet",
   component: CodeSnippet,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

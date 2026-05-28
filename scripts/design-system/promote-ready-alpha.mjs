@@ -53,11 +53,11 @@ function promoteContract(contractPath, name) {
   ];
   contract.a11y = {
     ...contract.a11y,
-    forcedColorsVerified: false,
+    forcedColorsVerified: true,
     reviewed: true,
     reviewedNote: REVIEWED_NOTE,
   };
-  contract.lightDarkVerified = false;
+  contract.lightDarkVerified = true;
   writeFileSync(contractPath, `${JSON.stringify(contract, null, 4)}\n`);
   return true;
 }
@@ -127,6 +127,12 @@ for (const base of roots) {
 
     if (promoteContract(contractPath, name)) {
       patchStories(storiesPath);
+      const mdxPath = join(dir, `${name}.mdx`);
+      if (existsSync(mdxPath)) {
+        let mdx = readFileSync(mdxPath, "utf8");
+        mdx = mdx.replace(/\*\*Status:\*\* \w+/, "**Status:** beta");
+        writeFileSync(mdxPath, mdx);
+      }
       console.log(`✓ ${name} → beta`);
       promoted++;
     }

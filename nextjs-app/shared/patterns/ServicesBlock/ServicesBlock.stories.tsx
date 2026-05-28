@@ -29,7 +29,7 @@ import {
 const meta: Meta<typeof ServicesBlock> = {
   title: "Patterns/ServicesBlock",
   component: ServicesBlock,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

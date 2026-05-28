@@ -90,6 +90,7 @@ export default {
     llm: { schema },
   },
   argTypes: {
+
     size: {
       control: { type: "select" },
       options: ["S", "M", "L"],

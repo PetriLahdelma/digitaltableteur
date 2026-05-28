@@ -7,7 +7,7 @@ const meta: Meta<typeof MarkdownMessage> = {
   argTypes: {},
   title: "Molecules/Chat/MarkdownMessage",
   component: MarkdownMessage,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   args: {
     content:

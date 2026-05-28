@@ -12,7 +12,7 @@ const meta: Meta<typeof AdaptiveLoadingButton> = {
     a11y: { test: "error" },
     layout: "centered",
   },
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
 };
 
 export default meta;

@@ -74,7 +74,7 @@ const meta: Meta<typeof OpenHours> = {
   argTypes: {},
   title: "Molecules/OpenHours",
   component: OpenHours,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   args: {},
 };
 export default meta;

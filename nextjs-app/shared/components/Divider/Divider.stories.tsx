@@ -5,7 +5,7 @@ import contract from "./Divider.contract.json";
 const meta = {
   title: "Atoms/Divider",
   component: Divider,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "padded",
     contractStatus: contract.status,

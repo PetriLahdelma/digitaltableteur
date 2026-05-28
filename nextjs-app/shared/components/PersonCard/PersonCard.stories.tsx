@@ -97,45 +97,107 @@ export default {
     instagramLabel: "Follow on Instagram",
   },
   argTypes: {
-    imageSrc: { control: "text" },
 
-    imageAlt: { control: "text" },
+    imageSrc: {
+      control: "text",
+      description: "Portrait image URL",
+      table: { category: "Media" },
+    },
 
-    name: { control: "text" },
+    imageAlt: {
 
-    title: { control: "text" },
+      description: "Image Alt",
+      control: "text" },
 
-    email: { control: "text" },
+    name: {
 
-    linkedinUrl: { control: "text" },
+      description: "Name",
+      control: "text" },
 
-    linkedinLabel: { control: "text" },
+    title: {
 
-    githubUrl: { control: "text" },
+      description: "Title",
+      control: "text" },
 
-    githubLabel: { control: "text" },
+    email: {
 
-    facebookUrl: { control: "text" },
+      description: "Email",
+      control: "text" },
 
-    facebookLabel: { control: "text" },
+    linkedinUrl: {
 
-    twitterUrl: { control: "text" },
+      description: "Linkedin URL",
+      control: "text" },
 
-    twitterLabel: { control: "text" },
+    linkedinLabel: {
 
-    dribbbleUrl: { control: "text" },
+      description: "Linkedin Label",
+      control: "text" },
 
-    dribbbleLabel: { control: "text" },
+    githubUrl: {
 
-    mediumUrl: { control: "text" },
+      description: "Github URL",
+      control: "text" },
 
-    mediumLabel: { control: "text" },
+    githubLabel: {
 
-    instagramUrl: { control: "text" },
+      description: "Github Label",
+      control: "text" },
 
-    instagramLabel: { control: "text" },
+    facebookUrl: {
 
-    className: { control: "text" },
+      description: "Facebook URL",
+      control: "text" },
+
+    facebookLabel: {
+
+      description: "Facebook Label",
+      control: "text" },
+
+    twitterUrl: {
+
+      description: "Twitter URL",
+      control: "text" },
+
+    twitterLabel: {
+
+      description: "Twitter Label",
+      control: "text" },
+
+    dribbbleUrl: {
+
+      description: "Dribbble URL",
+      control: "text" },
+
+    dribbbleLabel: {
+
+      description: "Dribbble Label",
+      control: "text" },
+
+    mediumUrl: {
+
+      description: "Medium URL",
+      control: "text" },
+
+    mediumLabel: {
+
+      description: "Medium Label",
+      control: "text" },
+
+    instagramUrl: {
+
+      description: "Instagram URL",
+      control: "text" },
+
+    instagramLabel: {
+
+      description: "Instagram Label",
+      control: "text" },
+
+    className: {
+
+      description: "Class Name",
+      control: "text" },
   },
 } as Meta<typeof PersonCard>;
 
