@@ -3,7 +3,11 @@ import { promises as fs } from "fs";
 import path from "path";
 
 const repoRoot = process.cwd();
-const postsDir = path.join(repoRoot, "content", "posts");
+const contentRoot = path.join(repoRoot, "content");
+const sourceDirs = [
+  { dir: path.join(contentRoot, "posts"), kind: "post" },
+  { dir: path.join(contentRoot, "drafts"), kind: "draft" },
+];
 const outFile = path.join(
   repoRoot,
   "nextjs-app",
@@ -12,32 +16,120 @@ const outFile = path.join(
   "blogManifest.ts",
 );
 
+const showUnpublishedPosts =
+  process.env.SHOW_UNPUBLISHED_POSTS === "true" ||
+  process.env.NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS === "true";
+
+const draftPattern = /^\s*draft:\s*true\s*$/im;
+const unpublishedStatusPattern =
+  /^\s*status:\s*["']?(draft|unpublished)["']?\s*$/im;
+const scheduledStatusPattern = /^\s*status:\s*["']?scheduled["']?\s*$/im;
+const publishedAtPattern = /^\s*publishedAt:\s*["']?([^"'\n]+)["']?\s*$/im;
+const slugPattern = /^\s*slug:\s*["']?([^"'\n]+)["']?\s*$/im;
+
+const getFrontmatter = (raw) => {
+  if (!raw.startsWith("---")) return "";
+  const end = raw.indexOf("\n---", 3);
+  return end >= 0 ? raw.slice(0, end + 4) : raw;
+};
+
+const isFutureDate = (value) => {
+  const date = new Date(value);
+  return !Number.isNaN(date.getTime()) && date.getTime() > Date.now();
+};
+
+const isPublishablePost = (raw, kind) => {
+  const frontmatter = getFrontmatter(raw);
+
+  if (showUnpublishedPosts) return true;
+
+  if (
+    draftPattern.test(frontmatter) ||
+    unpublishedStatusPattern.test(frontmatter)
+  ) {
+    return false;
+  }
+
+  const scheduled = scheduledStatusPattern.test(frontmatter);
+  if (kind === "draft" && !scheduled) return false;
+
+  const publishedAt = frontmatter.match(publishedAtPattern)?.[1];
+  if (scheduled && !publishedAt) return false;
+
+  return kind === "draft" || scheduled
+    ? true
+    : !publishedAt || !isFutureDate(publishedAt);
+};
+
+const getSlug = (raw, filePath) => {
+  const frontmatter = getFrontmatter(raw);
+  return (
+    frontmatter.match(slugPattern)?.[1] ??
+    path.basename(filePath).replace(/\.mdx?$/, "")
+  );
+};
+
+const getImportPath = (filePath) => {
+  const relativePath = path
+    .relative(path.dirname(outFile), filePath)
+    .replace(/\\/g, "/");
+  return relativePath.startsWith(".") ? relativePath : `./${relativePath}`;
+};
+
+const collectMdxFiles = async ({ dir, kind }) => {
+  const files = [];
+
+  const walk = async (currentDir) => {
+    const entries = await fs.readdir(currentDir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const filePath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        await walk(filePath);
+        continue;
+      }
+
+      if (!entry.name.endsWith(".mdx")) continue;
+
+      const raw = await fs.readFile(filePath, "utf8");
+      if (isPublishablePost(raw, kind)) {
+        files.push({
+          filePath,
+          slug: getSlug(raw, filePath),
+        });
+      }
+    }
+  };
+
+  try {
+    await walk(dir);
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+
+  return files;
+};
+
 async function main() {
   try {
     await fs.mkdir(path.dirname(outFile), { recursive: true });
 
-    const files = await fs.readdir(postsDir);
-    const mdxFiles = files.filter(
-      (f) => f.endsWith(".mdx") || f.endsWith(".md"),
-    );
-
-    mdxFiles.sort();
+    const mdxFiles = (await Promise.all(sourceDirs.map(collectMdxFiles)))
+      .flat()
+      .sort((a, b) => a.slug.localeCompare(b.slug));
 
     const importLines = [];
     const entryLines = [];
 
-    mdxFiles.forEach((file, idx) => {
+    mdxFiles.forEach(({ filePath, slug }, idx) => {
       const importName = `Post${idx}`;
       const frontmatterImportName = `${importName}Frontmatter`;
-      const relImport = path
-        .join("../../../content/posts", file)
-        .replace(/\\/g, "/");
+      const relImport = getImportPath(filePath);
       importLines.push(
-        `import ${importName}, { frontmatter as ${frontmatterImportName} } from "${relImport}"`,
+        `import ${importName}, {\n  frontmatter as ${frontmatterImportName},\n} from "${relImport}";`,
       );
-      const slug = file.replace(/\.mdx?$/, "");
       entryLines.push(
-        `  { slug: "${slug}", Component: ${importName} as unknown as import("react").ComponentType, frontmatter: ${frontmatterImportName} }`,
+        `  {\n    slug: "${slug}",\n    Component: ${importName} as unknown as import("react").ComponentType,\n    frontmatter: ${frontmatterImportName},\n  },`,
       );
     });
 
@@ -51,6 +143,9 @@ ${importLines.join("\n")}\n\nexport type BlogManifestEntry = {
     excerpt?: string;
     readTime?: string;
     publishedAt?: string;
+    intendedPublishedAt?: string;
+    draft?: boolean;
+    status?: string;
     seoTitle?: string;
     seoDescription?: string;
     legacyUrl?: string;
@@ -59,11 +154,13 @@ ${importLines.join("\n")}\n\nexport type BlogManifestEntry = {
     mainImageUrl?: string;
     mainImageAlt?: string;
     mainImageCaption?: string;
+    tags?: string[];
+    modifiedAt?: string;
   };
 };
 
 export const blogManifest: BlogManifestEntry[] = [
-${entryLines.join(",\n")}
+${entryLines.join("\n")}
 ];
 `;
 
@@ -74,7 +171,7 @@ ${entryLines.join(",\n")}
   } catch (err) {
     console.error("Failed to generate blog manifest:", err);
     // Write an empty manifest to keep builds working
-    const fallback = `export const blogManifest = [] as const;`;
+    const fallback = "export const blogManifest = [] as const;\n";
     await fs.mkdir(path.dirname(outFile), { recursive: true });
     await fs.writeFile(outFile, fallback, "utf8");
     process.exitCode = 0;

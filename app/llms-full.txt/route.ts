@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { posts } from "../blog/postMetadata";
+import { getVisiblePosts } from "../blog/postMetadata";
 import { projects } from "@/nextjs-app/shared/data/projects";
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 import type { PseoCatalogItem } from "@/lib/pseo/types";
@@ -9,11 +9,12 @@ const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://www.digitaltableteur.com";
 
-export const dynamic = "force-static";
+export const revalidate = 600;
 
 export async function GET() {
   const pseoCatalog = getPseoCatalog();
   const pseoLeafPages = getPseoLeafPages();
+  const posts = getVisiblePosts();
 
   let body = "# Digitaltableteur — Full Context\n\n";
   body +=

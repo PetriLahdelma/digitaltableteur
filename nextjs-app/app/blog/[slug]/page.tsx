@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { getPostMetaBySlug } from "../postMetadata";
 import ClientArticle from "./ClientArticle";
@@ -8,9 +9,14 @@ type Params = { slug: string };
 export const dynamic = "force-dynamic";
 
 const siteBase =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://digitaltableteur.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://digitaltableteur.com";
 
-export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostMetaBySlug(slug);
 
@@ -49,7 +55,17 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   };
 }
 
-export default async function BlogArticle({ params }: { params: Promise<Params> }) {
+export default async function BlogArticle({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
   const { slug } = await params;
+  const post = getPostMetaBySlug(slug);
+
+  if (!post) {
+    notFound();
+  }
+
   return <ClientArticle slug={slug} />;
 }

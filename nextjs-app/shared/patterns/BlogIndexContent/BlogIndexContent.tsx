@@ -61,7 +61,6 @@ function transformToCardProps(post: BlogPostEntry): EnhancedArticleCardProps {
         : undefined,
     publishedAt: post.publishedAt,
     readTime: post.readTime,
-    tags: post.tags,
   };
 }
 
@@ -101,7 +100,7 @@ function BlogIndexContentInner({
   // Transform to card props
   const cardProps = useMemo(
     () => paginatedPosts.map(transformToCardProps),
-    [paginatedPosts]
+    [paginatedPosts],
   );
 
   // Calculate total pages
