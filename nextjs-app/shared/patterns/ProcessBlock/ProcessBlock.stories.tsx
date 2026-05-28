@@ -5,7 +5,7 @@ import ProcessBlock from "./ProcessBlock";
 const meta: Meta<typeof ProcessBlock> = {
   title: "Patterns/ProcessBlock",
   component: ProcessBlock,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

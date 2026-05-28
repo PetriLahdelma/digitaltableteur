@@ -18,8 +18,12 @@ const meta = {
       description: "Show numeric percentage below the bar",
       table: { category: "Display", defaultValue: { summary: "false" } },
     },
-    targetRef: { control: false, table: { category: "Advanced" } },
-    className: { control: false, table: { category: "Advanced" } },
+    targetRef: {
+      description: "Target Ref",
+      control: false, table: { category: "Advanced" } },
+    className: {
+      description: "Class Name",
+      control: false, table: { category: "Advanced" } },
   },
   args: { showPercentage: false },
 } satisfies Meta<typeof ReadingProgress>;

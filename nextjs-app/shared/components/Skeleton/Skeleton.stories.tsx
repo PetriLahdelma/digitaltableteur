@@ -74,7 +74,7 @@ const meta: Meta<typeof Skeleton> = {
   argTypes: {},
   title: "Atoms/Skeleton",
   component: Skeleton,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: { contractStatus: contract.status, a11y: { test: "error" } },
 };
 export default meta;

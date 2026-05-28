@@ -5,7 +5,7 @@
     "group": "feedback",
     "status": "alpha",
     "description": "Indeterminate loading spinner for async UI.",
-    "figma": null,
+    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-spinner",
     "radixPrimitive": null,
     "element": "span",
     "variants": {
@@ -24,7 +24,8 @@
     "requiredStories": [
         "Default",
         "Playground",
-        "Example"
+        "Example",
+        "ForcedColors"
     ],
     "argTypesProxyExempt": [
         "className"
@@ -35,8 +36,9 @@
             "aria-label or aria-labelledby"
         ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "forcedColorsVerified": false,
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
     },
     "tokens": {
         "colors": [

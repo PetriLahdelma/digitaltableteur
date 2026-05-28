@@ -87,7 +87,7 @@ const phoneInputComplianceRules: ComplianceRule[] = [
 const meta: Meta<typeof PhoneInput> = {
   title: "Molecules/PhoneInput",
   component: PhoneInput,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

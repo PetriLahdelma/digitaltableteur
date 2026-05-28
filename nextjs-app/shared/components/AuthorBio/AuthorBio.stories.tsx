@@ -11,7 +11,7 @@ const meta: Meta<typeof AuthorBio> = {
   argTypes: {},
   title: "Molecules/AuthorBio",
   component: AuthorBio,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },

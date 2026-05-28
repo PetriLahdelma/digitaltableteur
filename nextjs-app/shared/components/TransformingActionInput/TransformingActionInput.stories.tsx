@@ -12,7 +12,7 @@ const meta: Meta<typeof TransformingActionInput> = {
     a11y: { test: "error" },
     layout: "padded",
   },
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
 };
 
 export default meta;

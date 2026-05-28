@@ -9,6 +9,7 @@ const meta: Meta<typeof AlertBanner> = {
   tags: ["beta", "!autodocs"],
   parameters: { contractStatus: contract.status, a11y: { test: "error" } },
   argTypes: {
+
     tone: {
       control: { type: "select" },
       options: ["info", "success", "warning", "error"],

@@ -5,7 +5,7 @@ import contract from "./Radio.contract.json";
 const meta = {
   title: "Atoms/Radio",
   component: Radio,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
@@ -37,6 +37,11 @@ const meta = {
       description: "Disable this option",
       table: { category: "State", defaultValue: { summary: "false" } },
     },
+    defaultChecked: {
+      control: false,
+      description: "Initial checked state (uncontrolled mode only)",
+      table: { category: "State", disable: true },
+    },
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
@@ -48,8 +53,16 @@ const meta = {
       description: "Render visible label",
       table: { category: "Content", defaultValue: { summary: "true" } },
     },
-    onCheckedChange: { action: "checkedChange", table: { category: "Events" } },
-    className: { control: false, table: { category: "Advanced" } },
+    onCheckedChange: {
+      description: "Fired when selection changes",
+      action: "checkedChange",
+      table: { category: "Events" },
+    },
+    className: {
+      control: false,
+      description: "Optional utility classes",
+      table: { category: "Advanced" },
+    },
   },
   args: {
     label: "Email updates",

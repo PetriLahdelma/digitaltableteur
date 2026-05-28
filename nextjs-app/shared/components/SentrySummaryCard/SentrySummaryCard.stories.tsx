@@ -24,7 +24,7 @@ const meta: Meta<typeof SentrySummaryCard> = {
   argTypes: {},
   title: "Molecules/SentrySummaryCard",
   component: SentrySummaryCard,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: { contractStatus: contract.status, a11y: { test: "error" } },
 };
 export default meta;

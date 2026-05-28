@@ -5,7 +5,7 @@ import contract from "./VisuallyHidden.contract.json";
 const meta = {
   title: "Atoms/VisuallyHidden",
   component: VisuallyHidden,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
@@ -23,7 +23,9 @@ const meta = {
       description: "Semantic element wrapper",
       table: { category: "Structure", defaultValue: { summary: "span" } },
     },
-    className: { control: false, table: { category: "Advanced" } },
+    className: {
+      description: "Class Name",
+      control: false, table: { category: "Advanced" } },
   },
   args: { children: "Additional context for screen readers", as: "span" },
 } satisfies Meta<typeof VisuallyHidden>;

@@ -60,8 +60,12 @@ const meta = {
       description: "Disable entire group",
       table: { category: "State", defaultValue: { summary: "false" } },
     },
-    onValueChange: { action: "valueChanged", table: { category: "Events" } },
-    className: { control: false, table: { category: "Advanced" } },
+    onValueChange: {
+      description: "On Value Change",
+      action: "valueChanged", table: { category: "Events" } },
+    className: {
+      description: "Class Name",
+      control: false, table: { category: "Advanced" } },
   },
   args: {
     legend: "Primary expertise",

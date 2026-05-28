@@ -8,7 +8,7 @@ const meta: Meta<typeof EmailSignatureGenerator> = {
   argTypes: {},
   title: "Organisms/EmailSignatureGenerator",
   component: EmailSignatureGenerator,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
