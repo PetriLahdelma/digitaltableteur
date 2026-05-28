@@ -5,7 +5,7 @@ import contract from "./Spinner.contract.json";
 const meta = {
   title: "Atoms/Spinner",
   component: Spinner,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "centered",
     contractStatus: contract.status,
@@ -15,6 +15,7 @@ const meta = {
 
     label: {
       control: "text",
+      description: "Accessible name for the loading indicator (required when standalone)",
       table: {
         category: "Accessibility",
         defaultValue: { summary: "Loading" },
@@ -37,9 +38,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 export const Default: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   ...Playground,
 };
@@ -60,6 +63,7 @@ export const Sizes: Story = {
   ),
 };
 export const Example: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true } },
   render: () => <Spinner />,

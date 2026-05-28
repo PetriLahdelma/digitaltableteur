@@ -25,6 +25,7 @@ const sampleMetrics: ProofMetric[] = [
 ];
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     title: "The challenge in numbers",
     subTitle: "Works at city scale",

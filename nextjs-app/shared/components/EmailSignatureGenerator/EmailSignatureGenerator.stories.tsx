@@ -41,6 +41,7 @@ type Story = StoryObj<typeof EmailSignatureGenerator>;
  * Default email signature generator with Digitaltableteur branding.
  */
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: { logoUrl: "https://www.digitaltableteur.com/round.png" },
 };
 

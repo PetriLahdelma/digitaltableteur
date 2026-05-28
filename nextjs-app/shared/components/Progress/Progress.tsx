@@ -10,6 +10,7 @@ export interface ProgressProps {
   className?: string;
 }
 
+/** Determinate progress bar with optional label and semantic state colors. */
 const Progress: React.FC<ProgressProps> = ({
   value = 0,
   max = 100,

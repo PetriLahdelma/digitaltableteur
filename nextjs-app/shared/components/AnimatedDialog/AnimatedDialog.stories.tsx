@@ -104,9 +104,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <AnimatedDialogDemo {...args} />,
 };
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <AnimatedDialogDemo {...args} />,
 };
 
@@ -116,12 +118,14 @@ Playground.play = async ({ canvasElement }) => {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => <AnimatedDialogDemo {...defaultArgs} />,
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
   render: (args) => <AnimatedDialogDemo {...args} />,

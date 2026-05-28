@@ -100,7 +100,8 @@ export const Z_ServicesGridCompliance: Story = {
   ),
 };
 
-export const Default: Story = { render: () => <ServicesGrid /> };
+export const Default: Story = {
+  tags: ["beta-matrix"], render: () => <ServicesGrid /> };
 
 export const Playground = Default;
 export const Example = {

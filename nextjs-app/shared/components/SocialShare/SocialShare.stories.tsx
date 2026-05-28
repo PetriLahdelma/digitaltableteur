@@ -109,6 +109,7 @@ export const Z_SocialShareCompliance: Story = {
 };
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     url: "https://digitaltableteur.com",
     title: "Digital Tableteur - Portfolio",

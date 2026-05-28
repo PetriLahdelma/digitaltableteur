@@ -3,7 +3,7 @@
     "name": "RadioGroup",
     "tier": "molecule",
     "group": "form",
-    "status": "alpha",
+    "status": "beta",
     "description": "Accessible radio button group with legend and validation.",
     "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-radio-group",
     "radixPrimitive": null,
@@ -14,7 +14,9 @@
                 "vertical",
                 "horizontal"
             ],
-            "default": "vertical"
+            "default": "vertical",
+            "forwarded": true,
+            "forwardedTo": "fieldset layout class in RadioGroup.module.css"
         }
     },
     "slots": [],
@@ -35,7 +37,7 @@
         "ariaRequirements": [],
         "reducedMotion": true,
         "reviewed": true,
-        "forcedColorsVerified": false,
+        "forcedColorsVerified": true,
         "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
     },
     "tokens": {
@@ -45,6 +47,6 @@
         ],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
     "consumers": []
 }

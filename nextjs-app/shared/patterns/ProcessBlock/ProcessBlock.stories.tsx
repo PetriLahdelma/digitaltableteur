@@ -125,6 +125,7 @@ const uxDesignPhases = [
  * Default story showing a complete 4-phase UX design process
  */
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     phases: uxDesignPhases,
     sectionTitle: "Process",

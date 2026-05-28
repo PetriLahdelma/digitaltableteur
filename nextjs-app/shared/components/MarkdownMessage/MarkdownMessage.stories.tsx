@@ -20,6 +20,7 @@ export default meta;
 type Story = StoryObj<typeof MarkdownMessage>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 

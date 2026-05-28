@@ -109,6 +109,7 @@ type Story = StoryObj<typeof ServicesBlock>;
  * Typical usage for a comprehensive case study.
  */
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     services: [
       { label: "UX Design" },

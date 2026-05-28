@@ -48,6 +48,7 @@ export default meta;
 type Story = StoryObj<typeof NavMenuList>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   name: "Default",
   render: () => (
     <NavMenuList

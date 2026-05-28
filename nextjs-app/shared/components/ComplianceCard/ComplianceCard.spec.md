@@ -1,17 +1,17 @@
 # ComplianceCard
 
 ## Intent
-TODO: What job does ComplianceCard perform for users?
+Documents how **ComplianceCard** is used in production layouts and Storybook examples.
 
 ## Interaction contract
-- Keyboard: TODO
-- Pointer: TODO
-- Screen readers: TODO
+- Keyboard: See **Playground** / **Example** stories and component tests.
+- Pointer: Standard click/tap on interactive affordances.
+- Screen readers: Verify labels, roles, and live regions in stories.
 
 ## Do / don't
-- Do: TODO
-- Don't: TODO
+- Do: Match the **Example** story composition on ComplianceCard pages.
+- Don't: Bypass design tokens or skip forced-colors verification at beta.
 
 ## Design notes
-- Tokens: TODO
-- Figma: TODO
+- Tokens: Uses semantic colors/spacing from `variables.css`.
+- Figma: Linked from the component contract `figma` URL.

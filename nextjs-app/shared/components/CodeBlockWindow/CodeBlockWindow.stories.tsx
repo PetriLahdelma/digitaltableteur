@@ -29,6 +29,7 @@ const fixture = {
 type Story = StoryObj<typeof CodeBlockWindow>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     title: "components/DemoButton.tsx",
     language: "tsx",

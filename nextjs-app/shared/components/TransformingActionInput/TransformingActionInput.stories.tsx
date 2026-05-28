@@ -19,6 +19,7 @@ export default meta;
 type Story = StoryObj<typeof TransformingActionInput>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

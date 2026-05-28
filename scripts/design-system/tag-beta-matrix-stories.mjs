@@ -36,10 +36,10 @@ for (const root of roots) {
         if (/tags:\s*\[[^\]]*beta-matrix/.test(body)) return full;
         if (/tags:\s*\[/.test(body)) {
           fileUpdated = true;
-          return `${open}${body.replace(/tags:\s*\[/, "tags: ['beta-matrix', ")}${close}`;
+          return `${open}${body.replace(/tags:\s*\[/, 'tags: ["beta-matrix", ')}${close}`;
         }
         fileUpdated = true;
-        return `${open}\n  tags: ['beta-matrix'],${body}${close}`;
+        return `${open}\n  tags: ["beta-matrix"],${body}${close}`;
       });
     }
 

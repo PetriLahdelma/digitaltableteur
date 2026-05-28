@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { userEvent, within } from "storybook/test";
 import TextArea from "./TextArea";
 import contract from "./TextArea.contract.json";
 
 const meta = {
   title: "Atoms/TextArea",
   component: TextArea,
-  tags: ["!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "padded",
     contractStatus: contract.status,
@@ -81,11 +82,20 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
 };
 export const Default: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   ...Playground,
+};
+
+Playground.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const field = canvas.getByRole("textbox", { name: /message/i });
+  await userEvent.click(field);
+  await userEvent.type(field, "Project kickoff notes");
 };
 
 export const WithError: Story = {
@@ -110,6 +120,7 @@ export const BareTextarea: Story = {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   parameters: { controls: { disable: true } },
   render: () => (

@@ -26,8 +26,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { };
-export const Playground: Story = { };
+export const Default: Story = {
+  tags: ["beta-matrix"], };
+export const Playground: Story = {
+  tags: ["beta-matrix"], };
 
 Playground.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
@@ -35,6 +37,7 @@ Playground.play = async ({ canvasElement }) => {
 };
 
 export const Example: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "none" },
   name: "Example (contact page form)",
   parameters: { controls: { disable: true }, layout: "padded" },
@@ -46,6 +49,7 @@ export const Example: Story = {
 };
 
 export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
 };
