@@ -8,6 +8,9 @@ type Frontmatter = {
   excerpt?: string;
   readTime?: string;
   publishedAt?: string;
+  intendedPublishedAt?: string;
+  draft?: boolean;
+  status?: string;
   modifiedAt?: string;
   seoTitle?: string;
   seoDescription?: string;
@@ -25,12 +28,30 @@ type PostMeta = Required<Pick<Frontmatter, "title" | "slug">> &
 
 const ROOT = process.cwd();
 const POSTS_DIR = path.join(ROOT, "content", "posts");
+const DRAFTS_DIR = path.join(ROOT, "content", "drafts");
 const OUTPUTS = [
   // Next.js App Router (production)
   path.join(ROOT, "app", "blog", "postMetadata.ts"),
   // Legacy Next.js folder (still referenced by some tooling/docs)
   path.join(ROOT, "nextjs-app", "app", "blog", "postMetadata.ts"),
 ];
+
+const SHOW_UNPUBLISHED_POSTS =
+  process.env.SHOW_UNPUBLISHED_POSTS === "true" ||
+  process.env.NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS === "true";
+
+const isBundledPost = (post: PostMeta, kind: "post" | "draft") => {
+  if (SHOW_UNPUBLISHED_POSTS) return true;
+  if (post.draft || post.status === "draft" || post.status === "unpublished") {
+    return false;
+  }
+
+  if (kind === "draft") {
+    return post.status === "scheduled" && Boolean(post.publishedAt);
+  }
+
+  return true;
+};
 
 const readFrontmatter = (filePath: string): PostMeta => {
   const raw = fs.readFileSync(filePath, "utf8");
@@ -43,6 +64,9 @@ const readFrontmatter = (filePath: string): PostMeta => {
     excerpt: fm.excerpt,
     readTime: fm.readTime,
     publishedAt: fm.publishedAt,
+    intendedPublishedAt: fm.intendedPublishedAt,
+    draft: fm.draft,
+    status: fm.status,
     modifiedAt: fm.modifiedAt,
     seoTitle: fm.seoTitle,
     seoDescription: fm.seoDescription,
@@ -59,20 +83,43 @@ const readFrontmatter = (filePath: string): PostMeta => {
 const formatValue = (value: unknown) => JSON.stringify(value);
 
 const formatPost = (post: PostMeta) => {
-  const entries = Object.entries(post).filter(([, value]) => value !== undefined);
+  const entries = Object.entries(post).filter(
+    ([key, value]) => value !== undefined && key !== "intendedPublishedAt",
+  );
   const lines = entries.map(
     ([key, value]) => `    ${key}: ${formatValue(value)},`,
   );
   return ["  {", ...lines, "  }"].join("\n");
 };
 
-const generate = () => {
-  const files = fs
-    .readdirSync(POSTS_DIR)
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => path.join(POSTS_DIR, file));
+const collectPostFiles = (dir: string, kind: "post" | "draft") => {
+  if (!fs.existsSync(dir)) return [];
 
-  const posts = files.map(readFrontmatter).sort((a, b) => {
+  const files: string[] = [];
+  const walk = (currentDir: string) => {
+    for (const entry of fs.readdirSync(currentDir, { withFileTypes: true })) {
+      const filePath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        walk(filePath);
+        continue;
+      }
+
+      if (entry.name.endsWith(".mdx")) {
+        files.push(filePath);
+      }
+    }
+  };
+
+  walk(dir);
+
+  return files.map(readFrontmatter).filter((post) => isBundledPost(post, kind));
+};
+
+const generate = () => {
+  const posts = [
+    ...collectPostFiles(POSTS_DIR, "post"),
+    ...collectPostFiles(DRAFTS_DIR, "draft"),
+  ].sort((a, b) => {
     const timeA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
     const timeB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
     return timeB - timeA;
@@ -85,6 +132,9 @@ export type BlogPostMeta = {
   excerpt?: string;
   readTime?: string;
   publishedAt?: string;
+  intendedPublishedAt?: string;
+  draft?: boolean;
+  status?: string;
   modifiedAt?: string;
   seoTitle?: string;
   seoDescription?: string;
@@ -97,12 +147,31 @@ export type BlogPostMeta = {
   tags?: string[];
 };
 
-export const posts: BlogPostMeta[] = [
+const showUnpublishedPosts =
+  process.env.SHOW_UNPUBLISHED_POSTS === "true" ||
+  process.env.NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS === "true";
+
+const isVisiblePost = (post: BlogPostMeta) => {
+  if (showUnpublishedPosts) return true;
+  if (post.draft || post.status === "draft" || post.status === "unpublished") {
+    return false;
+  }
+
+  if (!post.publishedAt) return true;
+  const publishedAt = new Date(post.publishedAt);
+  return (
+    Number.isNaN(publishedAt.getTime()) || publishedAt.getTime() <= Date.now()
+  );
+};
+
+export const allPosts: BlogPostMeta[] = [
 ${posts.map(formatPost).join(",\n")}
 ];
 
+export const getVisiblePosts = () => allPosts.filter(isVisiblePost);
+
 export const getPostMetaBySlug = (slug?: string | null) =>
-  slug ? posts.find((post) => post.slug === slug) : undefined;
+  slug ? getVisiblePosts().find((post) => post.slug === slug) : undefined;
 `;
 
   for (const outputPath of OUTPUTS) {

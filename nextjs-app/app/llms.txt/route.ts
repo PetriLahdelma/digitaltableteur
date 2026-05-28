@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { posts } from "../blog/postMetadata";
+import { getVisiblePosts } from "../blog/postMetadata";
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 
 const baseUrl =
@@ -23,11 +23,12 @@ const staticPages: Array<{ path: string; title: string; meta?: string }> = [
   { path: "/work/garage-junction", title: "Work: Garage Junction" },
 ];
 
-export const dynamic = "force-static";
+export const revalidate = 600;
 
 export async function GET() {
   const pseoCatalog = getPseoCatalog();
   const pseoLeafPages = getPseoLeafPages();
+  const posts = getVisiblePosts();
 
   const keyPages = [
     ...staticPages,

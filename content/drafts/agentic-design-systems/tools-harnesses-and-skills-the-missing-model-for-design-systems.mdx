@@ -1,0 +1,130 @@
+---
+title: "Tools, Harnesses, and Skills: The Missing Model for Design Systems"
+slug: "tools-harnesses-and-skills-the-missing-model-for-design-systems"
+publishedAt: "2026-06-07T08:00:00.000Z"
+readTime: "6 min read"
+excerpt: "Most agentic design workflow conversations confuse the workspace, the operating model, and the reusable capability. Separating them changes how teams scale."
+authorName: "Petri Lahdelma"
+authorSlug: "petri-lahdelma"
+status: "scheduled"
+series: "Agentic Design Systems"
+tags:
+  - Design Systems
+  - Agentic Workflows
+  - Figma
+  - Storybook
+---
+
+Most conversations about agentic workflows start at the visible layer. Which tool should we use? Should agents run in an IDE, a terminal, a desktop app, a browser, tmux, a cloud environment, or some orchestration surface that appeared last Tuesday?
+
+Those questions are useful, but they are not the foundation. For design systems, the real leverage starts when teams separate three things that are often treated as interchangeable: tools, harnesses, and skills.
+
+**Tools give the work a place to happen. Harnesses define how the work stays safe. Skills make valuable work repeatable.** Once those categories are separated, the conversation becomes less about tool preference and more about operational maturity.
+
+## Tools are the workspace
+
+Tools are where the work happens. Figma, Storybook, Cursor, Codex, Claude Code, GitHub, local dev servers, visual regression platforms, MCP integrations, and documentation sites all belong in this category. They expose files, components, diffs, previews, logs, screenshots, and tasks.
+
+Good tools matter because environment shapes behavior. A bad workflow surface creates context switching, invisible state, and brittle handoffs. A good one makes work visible and recoverable. But tools do not automatically create intelligence.
+
+Storybook does not guarantee component maturity. Figma variables do not guarantee token discipline. A coding agent inside a repo does not guarantee product coherence. The tool gives the system a surface. It does not define how work should proceed.
+
+That is the harness.
+
+## Harnesses are the operating model
+
+A harness is the layer around the agent or workflow that defines how work is framed, constrained, reviewed, and verified. In design-system terms, it answers which files are authoritative, what context the agent must read, which checks prove safety, when a human should review judgment, and what counts as a breaking change.
+
+Without a harness, teams end up with impressive demos and fragile output. With a harness, the system can repeatedly turn ambiguous intent into reviewable work.
+
+```yaml title="agent-harness.yml"
+scope:
+  allowed_paths:
+    - nextjs-app/shared/components/Button/**
+    - nextjs-app/shared/components/Button/Button.contract.json
+  blocked_paths:
+    - nextjs-app/shared/styles/variables.css
+
+required_context:
+  - docs/LLM_COMPONENT_GENERATION_RULES.md
+  - Button.contract.json
+  - Button.stories.tsx
+
+verification:
+  - npm run typecheck
+  - npm run validate:components -- --component Button
+  - npm run test -- Button
+
+human_review:
+  required_when:
+    - variant taxonomy changes
+    - accessibility exception requested
+    - destructive action pattern changes
+```
+
+This is the difference between "AI helped us update a component" and "the system knows how component work is allowed to happen." The first is a useful moment. The second is infrastructure.
+
+## Skills are repeatable capabilities
+
+Skills are reusable playbooks. They are not the workspace and they are not the operating model. They are the specific things an agent or team can do inside the harness.
+
+For a design system, useful skills include auditing a component for token drift, generating a Storybook state matrix, comparing Figma variants against React props, writing accessibility acceptance criteria, promoting an alpha component to beta, drafting MDX usage guidance from a contract file, finding deprecated props, and preparing migration notes.
+
+The important detail is repeatability. If a task happens often, it should not depend on whoever happens to be in the room. It should become a named capability with inputs, outputs, rules, and exit criteria.
+
+```txt title="capability-stack.txt"
+Tool surface
+  -> Harness boundary
+    -> Skill execution
+      -> Evidence
+        -> Reviewable change
+```
+
+This is how a design system becomes easier to operate over time instead of more fragile. The team is not just collecting components. It is collecting reliable ways to improve the system.
+
+## Diagnose before buying another tool
+
+When teams do not separate tools, harnesses, and skills, they solve the wrong problem. If generated UI is inconsistent, they buy another tool. If agents choose the wrong variants, they add more documentation. If reviews take too long, they add another approval step.
+
+The issue may be elsewhere. Inconsistent output may mean contracts and examples are weak. Wrong button variants may mean action hierarchy is not encoded. Slow reviews may mean mechanical checks are not automated. Generic AI output may mean the skill lacks product-specific taste.
+
+Different diagnosis. Different fix.
+
+For example, a team might say: "The agent used the wrong button variant." That sounds like a model problem. It may actually be a contract problem because the system never defined action hierarchy clearly enough. It may be a skill problem because the agent was never given a repeatable "choose the correct action pattern" playbook. It may be a harness problem because the workflow never required validation against component usage rules before handoff.
+
+## A practical design-system stack
+
+For an agentic design system, I would start with a simple map. Tools should make work visible and recoverable. Harnesses should define boundaries before anyone acts. Skills should make valuable tasks repeatable. Evidence should make claims reviewable without trust theatre.
+
+The tool stack can vary. The model should not.
+
+The mature version of a skill is not a prompt saved in a document. It is a small contract.
+
+```json title="skill.contract.json"
+{
+  "name": "component-a11y-pass",
+  "input": ["componentName", "contractPath", "storyPath"],
+  "reads": ["contract", "stories", "tests", "mdx"],
+  "writes": ["test updates", "mdx acceptance criteria"],
+  "mustNotWrite": ["global tokens", "unrelated components"],
+  "exitCriteria": [
+    "axe expectations documented",
+    "keyboard behavior covered",
+    "manual AT gaps listed honestly"
+  ]
+}
+```
+
+That small bit of structure changes the tone of the workflow. The agent is not simply "helping." It is performing a bounded capability that can be reviewed.
+
+## The takeaway
+
+The agentic design-system question is not "which tool should we use?" It is what workspace we need, what operating model makes the work reliable, and what repeatable capabilities the system should learn.
+
+When tools, harnesses, and skills are confused, agentic workflows become noisy. When they are separated, they become infrastructure. The value is not in running more agents. The value is in designing the conditions where agents can produce work worth keeping.
+
+---
+
+<br />
+
+Digitaltableteur helps teams turn design-system knowledge into contracts, workflows, and agent-readable guardrails so automation improves quality instead of amplifying drift.
