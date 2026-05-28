@@ -262,6 +262,7 @@ export const ChatTextAreaDemo = (): React.ReactElement => {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   tags: ["beta-matrix"],
   render: () => <ChatWidgetStoryDemo />,
   parameters: { a11y: { disable: true }, controls: { disable: true } },

@@ -63,6 +63,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "padded" },
   render: () => (
     <Stack direction="vertical" gap="sm">

@@ -90,7 +90,10 @@ export const Playground: Story = {
   args: { name: "circle-info", ariaLabel: "Information icon" },
 };
 
-export const Default: Story = Playground;
+export const Default: Story = {
+  globals: { forcedColors: "none" },
+  ...Playground,
+};
 export const BrandIcon: Story = {
   args: { name: "github", size: "2xl", color: "#111", ariaLabel: "GitHub" },
 };
@@ -164,6 +167,7 @@ export const Transformations: Story = {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   tags: ["beta-matrix"],
   parameters: { a11y: { disable: true }, controls: { disable: true } },
   render: () => (

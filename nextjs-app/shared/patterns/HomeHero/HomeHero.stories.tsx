@@ -44,6 +44,7 @@ Playground.play = async ({ canvasElement }) => {
 };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (homepage hero)",
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   render: () => <HomeHero scrollTargetId="services" />,

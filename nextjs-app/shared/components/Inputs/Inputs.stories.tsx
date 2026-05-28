@@ -134,6 +134,7 @@ export const Playground: Story = {
   render: () => <InputStory {...TextInput.args} />,
 };
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   tags: ["beta-matrix"],
   parameters: { a11y: { disable: true }, controls: { disable: true } },
   render: () => <InputStory {...InputWithError.args} />,

@@ -55,6 +55,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (homepage GenAI highlight)",
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   args: {

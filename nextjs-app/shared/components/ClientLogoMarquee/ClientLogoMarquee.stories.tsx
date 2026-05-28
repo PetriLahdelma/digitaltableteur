@@ -30,6 +30,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (homepage client strip)",
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   render: () => <ClientLogoMarquee ariaLabel="Selected clients" />,

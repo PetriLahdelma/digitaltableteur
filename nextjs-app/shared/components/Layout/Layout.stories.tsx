@@ -39,6 +39,7 @@ export const Default: Story = {
 export const Playground: Story = { ...Default };
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   render: () => <Layout>{sampleMain}</Layout>,
 };

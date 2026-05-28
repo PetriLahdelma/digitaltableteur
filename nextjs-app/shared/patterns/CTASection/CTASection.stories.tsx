@@ -53,6 +53,7 @@ export const Playground: Story = { };
 
 
 export const Example: Story = {
+  globals: { forcedColors: "none" },
   name: "Example (homepage contact CTA)",
   parameters: { controls: { disable: true }, layout: "fullscreen" },
   render: () => (
