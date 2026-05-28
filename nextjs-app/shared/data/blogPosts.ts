@@ -7,6 +7,9 @@ type BlogFrontmatter = {
   excerpt?: string;
   readTime?: string;
   publishedAt?: string;
+  intendedPublishedAt?: string;
+  draft?: boolean;
+  status?: string;
   seoTitle?: string;
   seoDescription?: string;
   legacyUrl?: string;
@@ -59,6 +62,9 @@ export type BlogPostEntry = {
   excerpt?: string;
   readTime?: string;
   publishedAt?: string;
+  intendedPublishedAt?: string;
+  draft?: boolean;
+  status?: string;
   seoTitle?: string;
   seoDescription?: string;
   legacyUrl?: string;
@@ -72,6 +78,23 @@ export type BlogPostEntry = {
   Component: ComponentType;
 };
 
+const showUnpublishedPosts =
+  process.env.NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS === "true";
+
+const isPublishableEntry = (entry: BlogPostEntry) => {
+  if (showUnpublishedPosts) return true;
+  if (
+    entry.draft ||
+    entry.status === "draft" ||
+    entry.status === "unpublished"
+  ) {
+    return false;
+  }
+
+  const publishedAt = toDate(entry.publishedAt);
+  return !publishedAt || publishedAt.getTime() <= Date.now();
+};
+
 const entries: BlogPostEntry[] = Object.entries(modules)
   .map(([filePath, mod]) => {
     const frontmatter = mod.frontmatter ?? {};
@@ -82,6 +105,9 @@ const entries: BlogPostEntry[] = Object.entries(modules)
       excerpt: frontmatter.excerpt,
       readTime: frontmatter.readTime,
       publishedAt: frontmatter.publishedAt,
+      intendedPublishedAt: frontmatter.intendedPublishedAt,
+      draft: frontmatter.draft,
+      status: frontmatter.status,
       seoTitle: frontmatter.seoTitle,
       seoDescription: frontmatter.seoDescription,
       legacyUrl: frontmatter.legacyUrl,
@@ -99,7 +125,8 @@ const entries: BlogPostEntry[] = Object.entries(modules)
     const dateA = toDate(a.publishedAt)?.getTime() ?? 0;
     const dateB = toDate(b.publishedAt)?.getTime() ?? 0;
     return dateB - dateA;
-  });
+  })
+  .filter(isPublishableEntry);
 
 const entryMap = new Map(entries.map((entry) => [entry.slug, entry]));
 

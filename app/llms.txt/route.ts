@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { posts } from "../blog/postMetadata";
+import { getVisiblePosts } from "../blog/postMetadata";
 import { projects } from "@/nextjs-app/shared/data/projects";
 import { getPseoLeafPages } from "@/lib/pseo/catalog";
 
@@ -8,11 +8,12 @@ const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://www.digitaltableteur.com";
 
-export const dynamic = "force-static";
+export const revalidate = 600;
 
 export async function GET() {
   const pseoPages = getPseoLeafPages().slice(0, 8);
   const featuredProjects = projects.filter((project) => project.featured);
+  const posts = getVisiblePosts();
   const featuredPosts = posts.slice(0, 8);
 
   let body = "# Digitaltableteur\n\n";

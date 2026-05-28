@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: "Selected articles by Digitaltableteur.",
 };
 
+export const revalidate = 600;
+
 export default function Blog() {
   return <BlogPage />;
 }

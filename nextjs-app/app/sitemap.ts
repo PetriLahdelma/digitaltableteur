@@ -1,16 +1,20 @@
 import type { MetadataRoute } from "next";
 
-import { posts } from "./blog/postMetadata";
+import { getVisiblePosts } from "./blog/postMetadata";
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://digitaltableteur.com";
 
-const toUrl = (path: string) => `${baseUrl}${path.startsWith("/") ? path : `/${path}`}`;
+const toUrl = (path: string) =>
+  `${baseUrl}${path.startsWith("/") ? path : `/${path}`}`;
+
+export const revalidate = 600;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const today = new Date();
+  const posts = getVisiblePosts();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     "/",

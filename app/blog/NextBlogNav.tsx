@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
-import { posts } from "./postMetadata";
+import { getVisiblePosts } from "./postMetadata";
 
 import styles from "./NextBlogNav.module.css";
 
@@ -18,7 +18,7 @@ export function NextBlogNav() {
 
   // Generate blog pages from actual blog post metadata
   const blogPages = useMemo(() => {
-    return posts.map((post) => ({
+    return getVisiblePosts().map((post) => ({
       path: `/blog/${post.slug}`,
       label: post.title,
     }));
