@@ -199,7 +199,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: var(--space-layout-24);
+  gap: var(--space-layout-32);
 }
 
 .newBusinessContent .newBusinessHeading {
