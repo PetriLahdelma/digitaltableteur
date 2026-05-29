@@ -199,12 +199,11 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: var(--space-layout-12);
+  gap: var(--space-layout-24);
 }
 
 .newBusinessContent .newBusinessHeading {
   margin: 0;
-  margin-block-end: var(--space-layout-4);
   text-wrap: pretty;
 }
 
