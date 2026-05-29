@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 /**
- * Prevent broken `next dev` from stale production output or corrupted webpack packs.
+ * Prevent broken `next dev` from stale production output.
+ *
+ * Only removes `.next` when a production `next build` left BUILD_ID behind.
+ * Do NOT wipe `.next/cache` on every dev start — that forces a full cold
+ * webpack compile (~30–60s) and causes ChunkLoadError if the browser still
+ * holds chunk URLs from a previous dev session.
  */
 import fs from "node:fs";
 import path from "node:path";
 
 const nextDir = path.join(process.cwd(), ".next");
 const buildIdPath = path.join(nextDir, "BUILD_ID");
-const cacheDir = path.join(nextDir, "cache");
 
 function rmSafe(target, label) {
   if (!fs.existsSync(target)) return;
@@ -25,8 +29,4 @@ function rmSafe(target, label) {
 // Production `next build` artifacts break dev RSC manifests.
 if (fs.existsSync(buildIdPath)) {
   rmSafe(nextDir, "Cleared .next (stale production build).");
-  process.exit(0);
 }
-
-// Partial deletes while dev is running cause missing *.pack.gz ENOENTs.
-rmSafe(cacheDir, "Cleared .next/cache (stale webpack packs).");

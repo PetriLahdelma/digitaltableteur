@@ -77,6 +77,7 @@ describe("Translation Coverage", () => {
       "navHome",
       "navWork",
       "navAbout",
+      "navPricing",
       "navBlog",
       "navContact",
     ];

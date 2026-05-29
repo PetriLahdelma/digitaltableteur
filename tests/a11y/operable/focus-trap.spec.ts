@@ -476,11 +476,11 @@ test.describe("OPER-02: MobileDrawer Focus Trap", () => {
         const btn = headerButtons.nth(i);
         const ariaLabel = await btn.getAttribute("aria-label");
         console.log(`Button ${i}: aria-label="${ariaLabel}"`);
-        // Check for menu-related aria-label or "navMenuOpen" (translation key fallback)
+        // Check for menu-related aria-label (localized open-menu label)
         if (
           ariaLabel?.toLowerCase().includes("menu") ||
           ariaLabel?.toLowerCase().includes("nav") ||
-          ariaLabel === "navMenuOpen"
+          ariaLabel === "Open navigation menu"
         ) {
           menuButton = btn;
           break;

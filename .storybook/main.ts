@@ -8,6 +8,38 @@ loadEnv({ path: resolve(repoRoot, ".env.local") });
 
 const enableVitestPanel = process.env.STORYBOOK_VITEST === "1";
 
+/** Paths that must not trigger preview reloads (Next dev, generators, tooling). */
+const STORYBOOK_WATCH_IGNORED = [
+  "**/.next/**",
+  "**/.git/**",
+  "**/node_modules/**",
+  "**/storybook-static/**",
+  "**/dist/**",
+  "**/coverage/**",
+  "**/.planning/**",
+  "**/.cursor/**",
+  "**/app/**",
+  "**/nextjs-app/app/**",
+  "**/instrumentation.ts",
+  "**/sentry.*.config.ts",
+  "**/next.config.ts",
+  "**/middleware.ts",
+  "**/scripts/**",
+  "**/postMetadata.ts",
+  "**/blogManifest.ts",
+  "**/codeBlockFixtures.ts",
+  "**/package.json",
+  "**/package-lock.json",
+  "**/content/**",
+  "**/digitaltableteur-blog/**",
+  "**/api-legacy-vercel-functions/**",
+  "**/akaunting/**",
+  "**/docs/**",
+  "**/tests/**",
+  "**/__visual__/**",
+  "**/playwright-report/**",
+];
+
 const config: StorybookConfig = {
   stories: [
     "../nextjs-app/shared/components/**/*.mdx",
@@ -151,11 +183,13 @@ const config: StorybookConfig = {
       ...config.server,
       hmr: {
         overlay: true,
+        // Avoid clashing with other Vite instances (default 24678)
+        port: 24680,
       },
       watch: {
-        // Ensure file watching works properly
         usePolling: false,
         interval: 100,
+        ignored: STORYBOOK_WATCH_IGNORED,
       },
     };
 
