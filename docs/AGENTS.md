@@ -9,6 +9,18 @@
 
 ## Key Documents
 
+### Agent instructions
+
+- **`AGENT_WORKFLOW.md`**
+  - Three-layer architecture: router → area AGENTS.md → skills
+  - How to write and maintain agent context
+
+- **`SKILL_AUTHORING.md`**
+  - How to write Claude/Cursor skills: frontmatter, triggers, references/, validation checklist
+
+- **[`../AGENT_INDEX.md`](../AGENT_INDEX.md)****
+  - Master index of areas, skills, and deep references
+
 ### Component Development (CRITICAL)
 
 - **`LLM_COMPONENT_GENERATION_RULES.md`** (12,000+ words, authoritative)

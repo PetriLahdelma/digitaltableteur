@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '{}'"
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/block-secret-files.sh"
           }
         ]
       },
@@ -40,5 +40,8 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "claude-code-setup@claude-plugins-official": true
   }
 }
