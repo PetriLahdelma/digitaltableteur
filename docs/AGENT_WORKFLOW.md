@@ -76,6 +76,7 @@ Pasting all of that into every chat wastes tokens and causes missed rules.
 | `dt-scripts` | `scripts/`, automation, design-system CLI |
 | `dt-sanity-cms` | Blog, Sanity, manifest publish |
 | `dt-ship-pr` | Commit, push, PR (user-only) |
+| `dt-workflow` | Dynamic workflows (`workflow:` / `ultracode:`) — bulk partitionable sweeps |
 | `add-project` | New portfolio case study |
 | `brainstorming` | Creative work before implementation |
 
@@ -112,6 +113,8 @@ Skills live in [`.claude/skills/`](../.claude/skills/). Subagents in [`.claude/a
 ## External context
 
 - **Site index:** `https://www.digitaltableteur.com/llms.txt`
+- **Agent skills index (machine-readable):** `https://www.digitaltableteur.com/.well-known/agent-skills/index.json`
+- **Dynamic workflow templates:** [`.claude/skills/dt-workflow/references/templates.md`](../.claude/skills/dt-workflow/references/templates.md)
 - **Component manifest:** `nextjs-app/shared/foundations/dist/agent-manifest.json` (generated)
 - **Cross-project wiki:** `/Users/petrilahdelma/SAPDevelop/llm-wiki`
 
