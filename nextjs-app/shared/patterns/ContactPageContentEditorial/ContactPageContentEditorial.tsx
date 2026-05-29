@@ -205,35 +205,38 @@ export function ContactPageContentEditorial({
                     "New Business Inquiries"
                   )}
                 </Title>
-                <div className={styles.newBusinessBody}>
-                  <Text
-                    as="p"
-                    size="M"
-                    terminals="sans"
-                    className={styles.newBusinessLine}
-                  >
-                    {t("contactNewBusinessName", "Petri Lahdelma")}
-                  </Text>
-                  <Text
-                    as="p"
-                    size="M"
-                    terminals="sans"
-                    className={styles.newBusinessLineMuted}
-                  >
-                    {t(
-                      "contactNewBusinessRole",
-                      "Founder, Head of Design"
-                    )}
-                  </Text>
-                </div>
-                <a href="#contact-form" className={styles.newBusinessCta}>
-                  <span className={styles.email}>
-                    {t("contactNewBusinessLink", "Contact")}
-                  </span>
-                  <span className={styles.newBusinessLinkIcon} aria-hidden>
-                    <Icon name="ArrowRight" size="sm" decorative />
-                  </span>
-                </a>
+                  <div className={styles.newBusinessDetails}>
+                    <div className={styles.newBusinessBody}>
+                      <Text
+                        as="p"
+                        size="M"
+                        terminals="sans"
+                        className={styles.newBusinessLine}
+                      >
+                        {t("contactNewBusinessName", "Petri Lahdelma")}
+                      </Text>
+                      <Text
+                        as="p"
+                        size="S"
+                        terminals="sans"
+                        lineHeight="normal"
+                        className={styles.newBusinessLineMuted}
+                      >
+                        {t(
+                          "contactNewBusinessRole",
+                          "Founder, Head of Design"
+                        )}
+                      </Text>
+                    </div>
+                    <a href="#contact-form" className={styles.newBusinessCta}>
+                      <span className={styles.email}>
+                        {t("contactNewBusinessLink", "Contact")}
+                      </span>
+                      <span className={styles.newBusinessLinkIcon} aria-hidden>
+                        <Icon name="ArrowRight" size="sm" decorative />
+                      </span>
+                    </a>
+                  </div>
               </div>
             </div>
           </div>
