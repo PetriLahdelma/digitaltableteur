@@ -152,9 +152,9 @@
 .newBusiness {
   display: grid;
   width: 100%;
-  grid-template-columns: 12rem minmax(0, 1fr);
+  grid-template-columns: 9.5rem minmax(0, 1fr);
   align-items: start;
-  gap: var(--space-layout-24);
+  gap: var(--space-layout-16);
 }
 
 .newBusinessMedia,
@@ -173,7 +173,7 @@
 .newBusinessMedia {
   position: relative;
   width: 100%;
-  height: calc(12rem * 22.5 / 15);
+  height: calc(9.5rem * 22.5 / 15);
   overflow: hidden;
   background-color: var(--color-neutral-bg);
 }
