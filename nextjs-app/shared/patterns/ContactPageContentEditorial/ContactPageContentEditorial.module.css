@@ -301,6 +301,7 @@
 @media (width >= 1024px) {
   .rightColumn {
     gap: var(--space-layout-64);
+
     /* Slight top offset to align with headline baseline */
     padding-block-start: var(--space-layout-16);
   }
@@ -329,6 +330,7 @@
 .pullQuote {
   margin: 0;
   padding: 0;
+
   /* Gutter for the hung opening quote */
   padding-inline-start: 0.6em;
   border: none;
@@ -340,13 +342,13 @@
 }
 
 /* Hung opening quote — straight typographic left edge on body text */
+
 .pullQuoteText::before {
   content: "\201C";
   float: inline-start;
   width: 0;
   height: 0;
-  margin-inline-start: -0.6em;
-  margin-inline-end: 0.08em;
+  margin-inline: -0.6em 0.08em;
   line-height: inherit;
 }
 

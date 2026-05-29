@@ -167,6 +167,7 @@
   margin: 0;
   max-width: var(--container-md);
   padding: 0;
+
   /* Gutter for the hung opening quote */
   padding-inline-start: 0.6em;
   border: none;
@@ -178,13 +179,13 @@
 }
 
 /* Hung opening quote — straight typographic left edge on body text */
+
 .testimonial .testimonialQuote::before {
   content: "\201C";
   float: inline-start;
   width: 0;
   height: 0;
-  margin-inline-start: -0.6em;
-  margin-inline-end: 0.08em;
+  margin-inline: -0.6em 0.08em;
   line-height: inherit;
 }
 
