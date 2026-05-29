@@ -13,14 +13,12 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      images: ["/logo512.png"],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/logo512.png"],
     },
   };
 }

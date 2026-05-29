@@ -29,7 +29,6 @@ export async function generateMetadata({
   const url = `${siteBase}/pseo/services/${service.slug}`;
   const title = `${service.name} Guides | Digitaltableteur`;
   const description = service.shortDescription;
-  const ogImage = `${siteBase}/logo512.png`;
 
   return {
     title,
@@ -41,20 +40,11 @@ export async function generateMetadata({
       url,
       type: "website",
       siteName: "Digitaltableteur",
-      images: [
-        {
-          url: ogImage,
-          width: 512,
-          height: 512,
-          alt: service.name,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
     },
     robots: {
       index: true,
