@@ -1,5 +1,5 @@
 import { Meta, Canvas } from '@storybook/addon-docs/blocks';
-import * as Stories from './{{Name}}.stories';
+import * as Stories from './{{Name}}.stories.tsx';
 
 <Meta of={Stories} />
 

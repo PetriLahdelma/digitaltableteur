@@ -1457,7 +1457,7 @@ function buildMdx(c) {
     : "- None — non-interactive primitive.";
 
   return `import { Meta } from '@storybook/addon-docs/blocks';
-import * as Stories from './${c.name}.stories';
+import * as Stories from './${c.name}.stories.tsx';
 
 <Meta of={Stories} />
 

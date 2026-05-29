@@ -110,8 +110,66 @@ const collectMdxFiles = async ({ dir, kind }) => {
   return files;
 };
 
+async function manifestIsUpToDate() {
+  if (process.env.FORCE_BLOG_MANIFEST === "1") return false;
+  try {
+    const [outStat, scriptStat] = await Promise.all([
+      fs.stat(outFile),
+      fs.stat(path.join(repoRoot, "scripts/generate-blog-manifest.mjs")),
+    ]);
+    if (outStat.mtimeMs < scriptStat.mtimeMs) return false;
+
+    const currentFiles = (await Promise.all(sourceDirs.map(collectMdxFiles)))
+      .flat()
+      .sort((a, b) => a.slug.localeCompare(b.slug));
+    const currentSlugs = currentFiles.map(({ slug }) => slug).join("\0");
+    const existingContent = await fs.readFile(outFile, "utf8");
+    const existingSlugs = [...existingContent.matchAll(/slug: "([^"]+)"/g)]
+      .map((match) => match[1])
+      .sort()
+      .join("\0");
+    if (currentSlugs !== existingSlugs) return false;
+
+    let newestContentMtime = 0;
+    const walkMtime = async (dir) => {
+      let entries;
+      try {
+        const dirStat = await fs.stat(dir);
+        newestContentMtime = Math.max(newestContentMtime, dirStat.mtimeMs);
+        entries = await fs.readdir(dir, { withFileTypes: true });
+      } catch (error) {
+        if (error?.code === "ENOENT") return;
+        throw error;
+      }
+      for (const entry of entries) {
+        const filePath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          await walkMtime(filePath);
+          continue;
+        }
+        if (!/\.mdx?$/i.test(entry.name)) continue;
+        const stat = await fs.stat(filePath);
+        newestContentMtime = Math.max(newestContentMtime, stat.mtimeMs);
+      }
+    };
+    for (const { dir } of sourceDirs) {
+      await walkMtime(dir);
+    }
+    return outStat.mtimeMs >= newestContentMtime;
+  } catch {
+    return false;
+  }
+}
+
 async function main() {
   try {
+    if (await manifestIsUpToDate()) {
+      console.log(
+        `Skipping blog manifest (up to date): ${path.relative(repoRoot, outFile)}`,
+      );
+      return;
+    }
+
     await fs.mkdir(path.dirname(outFile), { recursive: true });
 
     const mdxFiles = (await Promise.all(sourceDirs.map(collectMdxFiles)))
