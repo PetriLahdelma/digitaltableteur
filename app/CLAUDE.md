@@ -391,4 +391,4 @@ Ensure:
 
 ---
 
-**End of app/CLAUDE.md** — For shared component patterns, see [shared/components/CLAUDE.md](../shared/components/CLAUDE.md)
+**End of app/CLAUDE.md** — For components see [nextjs-app/shared/components/AGENTS.md](../nextjs-app/shared/components/AGENTS.md). Skill: [dt-nextjs-app](../.claude/skills/dt-nextjs-app/SKILL.md).

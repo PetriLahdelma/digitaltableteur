@@ -2,21 +2,25 @@
 
 ## 📚 Documentation Hierarchy
 
-This project uses a **hierarchical documentation system** optimized for different AI assistants:
+This project uses a **three-layer agent instruction system**:
 
-- **`CLAUDE.md`** → Comprehensive authority document for Claude Code (200-400 lines, immutable system rules)
-- **`AGENTS.md`** → Lightweight quick reference for generic AI agents (100-200 lines, JIT indexing)
+- **`AGENT_INDEX.md`** → Master map (areas, skills, deep references)
+- **`CLAUDE.md`** → Short router for Claude Code (~200 lines)
+- **`AGENTS.md`** → Short router for generic agents
+- **`.claude/skills/dt-*/SKILL.md`** → Workflow skills (on-demand activation)
 - **`.github/copilot-instructions.md`** → This file, optimized for GitHub Copilot
 
-**Subdirectories** contain specialized documentation that extends root guidance:
+**Area instructions** (load when working in that directory):
 
-- `app/CLAUDE.md` + `app/AGENTS.md` → Next.js App Router patterns
-- `shared/components/CLAUDE.md` + `shared/components/AGENTS.md` → Design system rules
-- `api-legacy-vercel-functions/AGENTS.md` → Serverless function patterns
-- `docs/AGENTS.md` → Documentation navigation guide
+- `app/AGENTS.md` + `app/api/AGENTS.md` → Next.js App Router & API routes
+- `nextjs-app/shared/components/AGENTS.md` → Design system rules
+- `nextjs-app/shared/patterns/AGENTS.md` → Layout patterns
 - `scripts/AGENTS.md` → Automation patterns
+- `digitaltableteur-blog/AGENTS.md` → Sanity CMS / blog
 
-**When working in a specific directory, read its CLAUDE.md/AGENTS.md for context-specific guidance.**
+**Architecture guide:** `docs/AGENT_WORKFLOW.md`
+
+**When working in a specific directory, read its AGENTS.md and matching dt-* skill.**
 
 ---
 
