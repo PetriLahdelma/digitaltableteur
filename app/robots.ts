@@ -1,8 +1,11 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://www.digitaltableteur.com";
+import {
+  agentDiscoveryBaseUrl,
+  contentSignal,
+} from "@/app/lib/agent-discovery";
+
+const baseUrl = agentDiscoveryBaseUrl;
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -17,6 +20,7 @@ export default function robots(): MetadataRoute.Robots {
     host: baseUrl,
     other: {
       "LLMs-Txt": `${baseUrl}/llms.txt`,
+      "Content-Signal": contentSignal,
     },
   };
 }
