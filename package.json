@@ -188,7 +188,7 @@
     "shiki": "^3.21.0",
     "simple-icons": "^16.3.0",
     "styled-components": "^6.1.19",
-    "tailwind-merge": "^3.4.0",
+    "tailwind-merge": "^3.5.0",
     "typescript-eslint": "^8.58.0"
   },
   "overrides": {
