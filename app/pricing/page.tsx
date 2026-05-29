@@ -13,21 +13,12 @@ export const metadata: Metadata = {
       "Productized design, UX/UI and DesignOps packages from €8k. AI-ready workflows, fixed scope and senior delivery without bloated agency retainers.",
     type: "website",
     siteName: "Digitaltableteur",
-    images: [
-      {
-        url: "/logo512.png",
-        width: 512,
-        height: 512,
-        alt: "Digitaltableteur Logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Pricing | Digitaltableteur",
     description:
       "Productized design, UX/UI and DesignOps packages from €8k. AI-ready workflows, fixed scope and senior delivery without bloated agency retainers.",
-    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/pricing",

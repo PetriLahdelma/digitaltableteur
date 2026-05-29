@@ -28,7 +28,6 @@ export async function generateMetadata({
   if (!stack) return {};
   const url = `${siteBase}/pseo/stacks/${stack.slug}`;
   const title = `${stack.name} Design System Guides | Digitaltableteur`;
-  const ogImage = `${siteBase}/logo512.png`;
   const description = stack.shortDescription;
   return {
     title,
@@ -40,20 +39,11 @@ export async function generateMetadata({
       url,
       type: "website",
       siteName: "Digitaltableteur",
-      images: [
-        {
-          url: ogImage,
-          width: 512,
-          height: 512,
-          alt: stack.name,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
     },
     robots: {
       index: true,

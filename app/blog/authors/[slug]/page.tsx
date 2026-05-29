@@ -16,8 +16,6 @@ export async function generateMetadata({
   const author = getAuthorBySlug(slug);
   if (!author) return {};
 
-  const imageUrlString = author.imageUrl ?? "/logo512.png";
-
   const title = `${author.name} | Digitaltableteur`;
   const description =
     author.bio?.slice(0, 160) ||
@@ -28,13 +26,15 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      images: [{ url: imageUrlString }],
+      ...(author.imageUrl
+        ? { images: [{ url: author.imageUrl, alt: author.name }] }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [imageUrlString],
+      ...(author.imageUrl ? { images: [author.imageUrl] } : {}),
     },
   };
 }

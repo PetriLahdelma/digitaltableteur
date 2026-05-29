@@ -12,21 +12,12 @@ export const metadata: Metadata = {
       "Legal business information for Digitaltableteur, including business form, address, contact email, Business ID, trade register details, and VAT ID.",
     type: "website",
     siteName: "Digitaltableteur",
-    images: [
-      {
-        url: "/logo512.png",
-        width: 512,
-        height: 512,
-        alt: "Digitaltableteur Logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Imprint | Digitaltableteur",
     description:
       "Legal business information for Digitaltableteur, including business form, address, contact email, Business ID, trade register details, and VAT ID.",
-    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/imprint",
