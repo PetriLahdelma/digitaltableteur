@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { convertToModelMessages, streamText, stepCountIs } from "ai";
+import { convertToModelMessages, streamText, stepCountIs, type ToolSet } from "ai";
 import {
   createGateway,
   GatewayAuthenticationError,
@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
     const streamParams: Parameters<typeof streamText>[0] = {
       model,
       system,
-      tools,
+      tools: tools as ToolSet,
       messages: await convertToModelMessages(messages),
       stopWhen: stepCountIs(3),
       temperature: 0.2,
