@@ -8,6 +8,8 @@ import rehypePrettyCode from "rehype-pretty-code";
 import path from "path";
 import webpack from "webpack";
 
+import { getAgentDiscoveryLinkHeader } from "./app/lib/agent-discovery";
+
 // Bundle analyzer configuration
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -151,9 +153,18 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   async headers() {
+    const agentLinkHeader = {
+      key: "Link",
+      value: getAgentDiscoveryLinkHeader(),
+    };
+
     return [
       {
-        source: "/(.*)",
+        source: "/",
+        headers: [...securityHeaders, agentLinkHeader],
+      },
+      {
+        source: "/:path+",
         headers: securityHeaders,
       },
     ];
