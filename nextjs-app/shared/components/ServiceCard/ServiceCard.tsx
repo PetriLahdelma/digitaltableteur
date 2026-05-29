@@ -35,6 +35,9 @@ const hoverVariantClasses: Record<NonNullable<ServiceCardProps["variant"]>, stri
   minimal: "hover:border-foreground",
 };
 
+/**
+ * ServiceCard component.
+ */
 export function ServiceCard({
   icon,
   title,

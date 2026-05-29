@@ -16,9 +16,7 @@ const meta: Meta<typeof MobileMenu> = {
       },
     },
   },
-  args: {
-    isOpen: true,
-  },
+  args: { isOpen: true },
   argTypes: {
     onClose: { action: "close" },
     onNavigate: { action: "navigate" },
@@ -54,11 +52,8 @@ const DemoScaffold: React.FC = () => {
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: () => <DemoScaffold />,
 };
 
-export const StaticOpen: Story = {
-  args: {
-    isOpen: true,
-  },
-};
+export const StaticOpen: Story = { args: { isOpen: true } };

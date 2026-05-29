@@ -4,7 +4,7 @@ import {
   createValidators,
   emailRegex,
   generateErrors,
-} from "@dt/contactValidation";
+} from "@dt/ContactForm/contactValidation";
 
 describe("contactValidation helpers", () => {
   it("validates email/full name/message", () => {

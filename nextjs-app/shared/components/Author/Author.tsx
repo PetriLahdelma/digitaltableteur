@@ -3,14 +3,17 @@ import type { StaticImageData } from "next/image";
 import Avatar, { type AvatarSize } from "@dt/Avatar";
 import styles from "./Author.module.css";
 
-type AuthorProps = {
+export interface AuthorProps {
   name: string;
   imageUrl: string | { default: string } | StaticImageData;
   size?: AvatarSize;
   profileUrl?: string;
-};
+}
 
-const Author: React.FC<AuthorProps> = ({
+/**
+ * Author component.
+ */
+export const Author: React.FC<AuthorProps> = ({
   name,
   imageUrl,
   size = "2.5rem",

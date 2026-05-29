@@ -19,6 +19,7 @@ export interface NewsletterWaitlistProps {
   disabled?: boolean;
 }
 
+/** Newsletter waitlist signup with expandable email field. */
 const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
   className,
   onSuccess,

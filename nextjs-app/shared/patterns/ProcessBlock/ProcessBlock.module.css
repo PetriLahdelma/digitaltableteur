@@ -4,20 +4,21 @@
 
 .sectionTitle {
   display: flex;
+  margin-block-end: var(--space-layout-l, 4rem);
   flex-direction: column;
   align-items: center;
-  margin-block-end: var(--space-layout-l, 4rem);
   text-align: center;
 }
 
 .description {
   margin-block-end: var(--space-layout-m, 3rem);
-  text-align: center;
-  max-width: 48rem;
   margin-inline: auto;
+  max-width: 48rem;
+  text-align: center;
 }
 
 /* Grid layouts */
+
 .grid2Col,
 .grid3Col,
 .grid4Col {
@@ -26,6 +27,7 @@
 }
 
 /* 2-column grid */
+
 .grid2Col {
   grid-template-columns: 1fr;
 }
@@ -37,6 +39,7 @@
 }
 
 /* 3-column grid */
+
 .grid3Col {
   grid-template-columns: 1fr;
 }
@@ -54,6 +57,7 @@
 }
 
 /* 4-column grid */
+
 .grid4Col {
   grid-template-columns: 1fr;
 }
@@ -80,6 +84,7 @@
 }
 
 /* Column styles */
+
 .col {
   display: flex;
   flex-direction: column;
@@ -103,31 +108,32 @@
 }
 
 .activityList {
-  color: var(--color-primary);
   padding-inline-start: 0;
+  color: var(--color-primary);
 }
 
 /* Custom em dash list markers */
+
 .activityList :global(li) {
   padding-inline-start: 1.5em;
   text-indent: -1.5em;
 }
 
 .activityList :global(li)::before {
-  content: "— ";
   margin-inline-end: 0.5rem;
+  content: "— ";
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .processBlock * {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }
 
-@media (prefers-contrast: high) {
+@media (prefers-contrast: more) {
   .phaseTitle {
     font-weight: 700;
   }

@@ -21,7 +21,10 @@ const toneClasses: Record<GlyphTone, string> = {
   contrast: styles.toneContrast,
 };
 
-const AnimatedGlyphBackground: React.FC<AnimatedGlyphBackgroundProps> = ({
+/**
+ * AnimatedGlyphBackground component.
+ */
+export const AnimatedGlyphBackground: React.FC<AnimatedGlyphBackgroundProps> = ({
   className,
   animate = true,
   tone = "muted",

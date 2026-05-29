@@ -1,5 +1,12 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { config as loadEnv } from "dotenv";
 import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
+
+const repoRoot = fileURLToPath(new URL("..", import.meta.url));
+loadEnv({ path: resolve(repoRoot, ".env.local") });
+
+const enableVitestPanel = process.env.STORYBOOK_VITEST === "1";
 
 const config: StorybookConfig = {
   stories: [
@@ -7,13 +14,23 @@ const config: StorybookConfig = {
     "../nextjs-app/shared/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../nextjs-app/shared/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../nextjs-app/shared/patterns/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../nextjs-app/shared/templates/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../nextjs-app/shared/foundations/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../nextjs-app/shared/foundations/**/*.mdx",
   ],
   addons: [
     "@storybook/addon-docs",
+    "@storybook/addon-designs",
     "@storybook/addon-a11y",
     "@storybook/addon-mcp",
-    "@storybook/addon-vitest",
+    ...(enableVitestPanel ? ["@storybook/addon-vitest"] : []),
   ],
+  core: {
+    disableWhatsNewNotifications: true,
+  },
+  features: {
+    onboarding: false,
+  },
   framework: {
     name: "@storybook/react-vite",
     options: {},
@@ -42,6 +59,20 @@ const config: StorybookConfig = {
     const reactJsxRuntimePath = fileURLToPath(
       new URL("../node_modules/react/jsx-runtime", import.meta.url),
     );
+
+    // Predictable but module-scoped class names. Storybook bundles every
+    // component's CSS into a single document, so duplicate local names like
+    // `.error`, `.info`, `.warning`, `.title` from different CSS Modules
+    // collide when the default `[local]` scoping is used. Prefixing with the
+    // module basename keeps tests that read `styles.xxx` correct (they read
+    // the resolved class name) while preventing cross-module bleed.
+    config.css = {
+      ...(config.css || {}),
+      modules: {
+        ...((config.css as any)?.modules || {}),
+        generateScopedName: "[name]__[local]",
+      },
+    };
 
     config.resolve = config.resolve || {};
     config.resolve.alias = {
@@ -77,6 +108,8 @@ const config: StorybookConfig = {
       "mermaid",
       "react-chartjs-2",
       "@storybook/testing-library",
+      "@gsap/react",
+      "gsap",
     ];
 
     config.optimizeDeps = {

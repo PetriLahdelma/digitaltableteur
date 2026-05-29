@@ -77,16 +77,19 @@ export function TextReveal({
       const targets = ref.current.querySelectorAll("[data-reveal-item]");
       if (targets.length === 0) return;
 
-      // For reduced motion, just fade in the whole element
-      if (motionPreference === "reduced") {
-        gsap.from(ref.current, {
-          opacity: 0,
-          duration: 0.3,
-          scrollTrigger: {
-            trigger: ref.current,
-            start: threshold,
-          },
-        });
+      // For reduced motion, snap targets to their final visible state instead
+      // of running any tween. Partial-opacity frames otherwise misreport as
+      // color-contrast failures in the matrix axe runs (axe samples once,
+      // doesn't poll until animations finish). Read the media query directly
+      // as a fallback because the AnimationContext bootstraps in a useEffect
+      // and the first render can otherwise still observe "full".
+      const prefersReduced =
+        motionPreference === "reduced" ||
+        (typeof window !== "undefined" &&
+          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
+      if (prefersReduced) {
+        gsap.set(targets, { opacity: 1, x: 0, y: 0, scale: 1, rotationX: 0 });
+        gsap.set(ref.current, { opacity: 1 });
         return;
       }
 

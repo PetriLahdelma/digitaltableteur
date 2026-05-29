@@ -1,5 +1,6 @@
+import contract from "./AnimatedGlyphBackground.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useTranslation } from "react-i18next";
 import AnimatedGlyphBackground from "./AnimatedGlyphBackground";
 import type { AnimatedGlyphBackgroundProps } from "./AnimatedGlyphBackground";
@@ -8,10 +9,12 @@ import Text from "@dt/Text";
 import styles from "./AnimatedGlyphBackground.stories.module.css";
 
 const meta: Meta<typeof AnimatedGlyphBackground> = {
-  title: "Components/AnimatedGlyphBackground",
+  title: "Molecules/AnimatedGlyphBackground",
   component: AnimatedGlyphBackground,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
   },
   argTypes: {
@@ -20,19 +23,12 @@ const meta: Meta<typeof AnimatedGlyphBackground> = {
       options: ["muted", "primary", "accent", "contrast"],
       description: "Color tone for the animated glyph",
     },
-    animate: {
-      control: "boolean",
-      description: "Toggle frame animation",
-    },
-    className: {
-      control: "text",
-      description: "Optional className override",
-    },
+
+    animate: { control: "boolean", description: "Toggle frame animation" },
+
+    className: { control: "text", description: "Optional className override" },
   },
-  args: {
-    tone: "muted",
-    animate: true,
-  },
+  args: { tone: "muted", animate: true },
 };
 
 export default meta;
@@ -58,19 +54,28 @@ const StoryFrame: React.FC<AnimatedGlyphBackgroundProps> = (args) => {
 };
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <StoryFrame {...args} />,
 };
 
 export const PrimaryTone: Story = {
-  args: {
-    tone: "primary",
-  },
+  args: { tone: "primary" },
   render: (args) => <StoryFrame {...args} />,
 };
 
 export const StaticFrame: Story = {
-  args: {
-    animate: false,
-  },
+  args: { animate: false },
   render: (args) => <StoryFrame {...args} />,
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

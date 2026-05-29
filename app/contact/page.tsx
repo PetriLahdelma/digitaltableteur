@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ContactContent } from "./ContactContent";
 import {
   getContactPageSchema,
@@ -61,7 +62,9 @@ export default function ContactPage() {
           __html: stringifyJsonLd(structuredData),
         }}
       />
-      <ContactContent />
+      <Suspense fallback={null}>
+        <ContactContent />
+      </Suspense>
     </>
   );
 }

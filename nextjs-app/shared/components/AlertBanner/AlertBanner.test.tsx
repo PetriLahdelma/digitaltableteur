@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import AlertBanner from "./AlertBanner";
+import styles from "./AlertBanner.module.css";
 
 describe("AlertBanner", () => {
   it("renders with default info tone", () => {
@@ -23,19 +24,19 @@ describe("AlertBanner", () => {
     const { container } = render(
       <AlertBanner tone="success" title="Success" />,
     );
-    expect(container.querySelector(`.success`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.success}`)).toBeInTheDocument();
   });
 
   it("renders warning tone", () => {
     const { container } = render(
       <AlertBanner tone="warning" title="Warning" />,
     );
-    expect(container.querySelector(`.warning`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.warning}`)).toBeInTheDocument();
   });
 
   it("renders error tone", () => {
     const { container } = render(<AlertBanner tone="error" title="Error" />);
-    expect(container.querySelector(`.error`)).toBeInTheDocument();
+    expect(container.querySelector(`.${styles.error}`)).toBeInTheDocument();
   });
 
   it("renders dismiss button when dismissible", () => {

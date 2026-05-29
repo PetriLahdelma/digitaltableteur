@@ -51,6 +51,9 @@ const DEFAULT_ANIMATIONS: Record<AnimationName, AnimationConfig> = {
 
 const GROUND_Y = 0;
 
+/**
+ * Designerman component.
+ */
 export function Designerman({
   spriteSheet,
   frameWidth = 64,
@@ -236,7 +239,7 @@ export function Designerman({
         pressed.current.clear();
       }}
     >
-      <div className={styles.hud} aria-hidden>
+      <div className={styles.hud}>
         <div className={styles.hint}>
           <span className={styles.key}>← →</span>
           <span className={styles.key}>Shift</span>

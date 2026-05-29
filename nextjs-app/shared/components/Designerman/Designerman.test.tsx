@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Designerman from "./Designerman";
+import styles from "./Designerman.module.css";
 
 describe("Designerman", () => {
   beforeEach(() => {
@@ -13,137 +13,39 @@ describe("Designerman", () => {
     vi.useRealTimers();
   });
 
-  it("renders sprite canvas", () => {
+  it("renders sprite stage with application role", () => {
+    render(<Designerman spriteSheet="/sprites/test.png" />);
+    expect(
+      screen.getByRole("application", { name: /Designerman interactive sprite/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("renders sprite layer with background image", () => {
     const { container } = render(
       <Designerman spriteSheet="/sprites/test.png" />,
     );
-    const canvas = container.querySelector("canvas");
-    expect(canvas).toBeInTheDocument();
+    const sprite = container.querySelector(`.${styles.sprite}`);
+    expect(sprite).toBeInTheDocument();
+    expect(sprite).toHaveStyle({
+      backgroundImage: "url(/sprites/test.png)",
+    });
   });
 
-  it("applies default scale", () => {
+  it("renders mute control in the HUD", () => {
     const { container } = render(
       <Designerman spriteSheet="/sprites/test.png" />,
     );
-    const canvas = container.querySelector("canvas");
-    expect(canvas).toHaveAttribute("width", "192"); // 64 * 3 default scale
+    expect(container.querySelector("button")).toHaveTextContent("Mute");
   });
 
-  it("applies custom scale", () => {
-    const { container } = render(
-      <Designerman spriteSheet="/sprites/test.png" scale={2} />,
-    );
-    const canvas = container.querySelector("canvas");
-    expect(canvas).toHaveAttribute("width", "128"); // 64 * 2
-  });
-
-  it("starts with idle animation", () => {
+  it("toggles mute label when clicked", () => {
     const { container } = render(
       <Designerman spriteSheet="/sprites/test.png" />,
     );
-    expect(container.querySelector("canvas")).toBeInTheDocument();
-  });
 
-  it("renders control buttons", () => {
-    render(<Designerman spriteSheet="/sprites/test.png" />);
-    expect(screen.getByRole("button", { name: /walk/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /run/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /jump/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /punch/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /blast/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /block/i })).toBeInTheDocument();
-  });
-
-  it("handles walk button click", async () => {
-    const user = userEvent.setup({ delay: null });
-    render(<Designerman spriteSheet="/sprites/test.png" />);
-
-    const walkButton = screen.getByRole("button", { name: /walk/i });
-    await user.click(walkButton);
-
-    expect(walkButton).toBeInTheDocument();
-  });
-
-  it("handles run button click", async () => {
-    const user = userEvent.setup({ delay: null });
-    render(<Designerman spriteSheet="/sprites/test.png" />);
-
-    const runButton = screen.getByRole("button", { name: /run/i });
-    await user.click(runButton);
-
-    expect(runButton).toBeInTheDocument();
-  });
-
-  it("handles jump button click", async () => {
-    const user = userEvent.setup({ delay: null });
-    render(<Designerman spriteSheet="/sprites/test.png" />);
-
-    const jumpButton = screen.getByRole("button", { name: /jump/i });
-    await user.click(jumpButton);
-
-    expect(jumpButton).toBeInTheDocument();
-  });
-
-  it("handles punch button click", async () => {
-    const user = userEvent.setup({ delay: null });
-    render(<Designerman spriteSheet="/sprites/test.png" />);
-
-    const punchButton = screen.getByRole("button", { name: /punch/i });
-    await user.click(punchButton);
-
-    expect(punchButton).toBeInTheDocument();
-  });
-
-  it("handles blast button click", async () => {
-    const user = userEvent.setup({ delay: null });
-    render(<Designerman spriteSheet="/sprites/test.png" />);
-
-    const blastButton = screen.getByRole("button", { name: /blast/i });
-    await user.click(blastButton);
-
-    expect(blastButton).toBeInTheDocument();
-  });
-
-  it("handles block button click", async () => {
-    const user = userEvent.setup({ delay: null });
-    render(<Designerman spriteSheet="/sprites/test.png" />);
-
-    const blockButton = screen.getByRole("button", { name: /block/i });
-    await user.click(blockButton);
-
-    expect(blockButton).toBeInTheDocument();
-  });
-
-  it("uses custom frame dimensions", () => {
-    const { container } = render(
-      <Designerman
-        spriteSheet="/sprites/test.png"
-        frameWidth={32}
-        frameHeight={32}
-      />,
-    );
-    const canvas = container.querySelector("canvas");
-    expect(canvas).toHaveAttribute("width", "96"); // 32 * 3 default scale
-  });
-
-  it("uses custom columns", () => {
-    const { container } = render(
-      <Designerman spriteSheet="/sprites/test.png" columns={8} />,
-    );
-    expect(container.querySelector("canvas")).toBeInTheDocument();
-  });
-
-  it("applies custom animations", () => {
-    const customAnimations = {
-      idle: { frames: [0, 1], fps: 10, loop: true },
-    };
-    const { container } = render(
-      <Designerman
-        spriteSheet="/sprites/test.png"
-        animations={customAnimations}
-      />,
-    );
-    expect(container.querySelector("canvas")).toBeInTheDocument();
+    const muteButton = container.querySelector("button") as HTMLButtonElement;
+    fireEvent.click(muteButton);
+    expect(muteButton).toHaveTextContent("Unmute");
   });
 
   it("renders audio element when audioSrc provided", () => {
@@ -158,14 +60,29 @@ describe("Designerman", () => {
     expect(audio).toHaveAttribute("src", "/audio/test.mp3");
   });
 
-  it("audio is muted by default", () => {
+  it("does not render audio when audioSrc is empty", () => {
+    const { container } = render(
+      <Designerman spriteSheet="/sprites/test.png" audioSrc="" />,
+    );
+    expect(container.querySelector("audio")).not.toBeInTheDocument();
+  });
+
+  it("applies custom animations without crashing", () => {
+    const customAnimations = {
+      idle: { frames: [0, 1], fps: 10, loop: true },
+    };
     const { container } = render(
       <Designerman
         spriteSheet="/sprites/test.png"
-        audioSrc="/audio/test.mp3"
+        animations={customAnimations}
       />,
     );
-    const audio = container.querySelector("audio");
-    expect(audio).toHaveAttribute("muted");
+    expect(container.querySelector(`.${styles.sprite}`)).toBeInTheDocument();
+  });
+
+  it("is keyboard focusable", () => {
+    render(<Designerman spriteSheet="/sprites/test.png" />);
+    const stage = screen.getByRole("application");
+    expect(stage).toHaveAttribute("tabindex", "0");
   });
 });

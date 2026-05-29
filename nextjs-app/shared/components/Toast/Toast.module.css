@@ -1,12 +1,12 @@
 .toast {
+  display: flex;
   position: fixed;
   bottom: var(--space-layout-24);
   left: 50%;
   z-index: 1000;
-  display: flex;
-  gap: var(--space-internal-8);
-  align-items: center;
   padding: var(--space-internal-12) var(--space-internal-16);
+  align-items: center;
+  gap: var(--space-internal-8);
   border-radius: var(--radius-md);
   background-color: var(--color-primary);
   box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
@@ -16,17 +16,19 @@
 }
 
 /* Icon for severity (color independence - WCAG 1.4.1) */
+
 .icon {
   display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
   width: 1.25rem;
   height: 1.25rem;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
   color: var(--color-white);
 }
 
 /* Warning variant needs dark icon for contrast */
+
 .toast--warning .icon {
   color: var(--color-warning-text);
 }
@@ -38,11 +40,12 @@
 }
 
 .toast--hidden {
-  opacity: 0;
   pointer-events: none;
+  opacity: 0;
 }
 
 /* Size variants (v1.1.0) */
+
 .toast--sm {
   padding: var(--space-internal-8) var(--space-internal-12);
   font-size: 0.875rem;
@@ -59,6 +62,7 @@
 }
 
 /* Severity variants (v1.1.0) */
+
 .toast--success {
   background-color: var(--color-success);
 }
@@ -77,6 +81,7 @@
 }
 
 /* Position variants (v1.1.0) */
+
 .toast--top-left {
   top: var(--space-layout-24);
   bottom: auto;
@@ -92,10 +97,7 @@
 }
 
 .toast--top-right {
-  top: var(--space-layout-24);
-  bottom: auto;
-  right: var(--space-layout-24);
-  left: auto;
+  inset: var(--space-layout-24) var(--space-layout-24) auto auto;
   transform: none;
 }
 
@@ -112,8 +114,8 @@
 }
 
 .toast--bottom-right {
-  bottom: var(--space-layout-24);
   right: var(--space-layout-24);
+  bottom: var(--space-layout-24);
   left: auto;
   transform: none;
 }

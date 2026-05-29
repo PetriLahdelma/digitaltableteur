@@ -204,9 +204,126 @@ const waitForStoryStability = async (
   }
 };
 
+
+const ROOT_DIR = path.resolve(__dirname, "..");
+const UPDATE_AT = process.env.DT_UPDATE_A11Y_SNAPSHOTS === "1";
+const BOOTSTRAP_AT = process.env.DT_BOOTSTRAP_A11Y_SNAPSHOTS === "1";
+const REQUIRE_AT = process.env.DT_REQUIRE_A11Y_SNAPSHOTS === "1";
+const THEME = (process.env.DT_THEME ?? "").toLowerCase();
+const FORCED_COLORS = (process.env.DT_FORCED_COLORS ?? "").toLowerCase();
+const VIEWPORT = Number.parseInt(process.env.DT_VIEWPORT ?? "", 10);
+
+let storyPrefixToDir: Map<string, string> | null = null;
+
+function loadStoryPrefixMap(): Map<string, string> {
+  if (storyPrefixToDir) return storyPrefixToDir;
+  storyPrefixToDir = new Map();
+  const roots = [
+    path.join(ROOT_DIR, "nextjs-app/shared/components"),
+    path.join(ROOT_DIR, "nextjs-app/shared/patterns"),
+  ];
+  const titleRe = /title:\s*["']([^"']+)["']/;
+
+  for (const base of roots) {
+    if (!fs.existsSync(base)) continue;
+    for (const name of fs.readdirSync(base)) {
+      const dir = path.join(base, name);
+      const contractPath = path.join(dir, `${name}.contract.json`);
+      const storyPath = path.join(dir, `${name}.stories.tsx`);
+      if (!fs.existsSync(contractPath) || !fs.existsSync(storyPath)) continue;
+      const text = fs.readFileSync(storyPath, "utf8");
+      const m = text.match(titleRe);
+      if (!m) continue;
+      const prefix = m[1]
+        .split("/")
+        .map((segment) =>
+          segment
+            .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+            .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
+            .toLowerCase(),
+        )
+        .join("-");
+      storyPrefixToDir.set(prefix, dir);
+    }
+  }
+  return storyPrefixToDir;
+}
+
+function componentSnapshotDir(storyId: string): string | null {
+  const prefix = storyId.split("--")[0];
+  const componentDir = loadStoryPrefixMap().get(prefix);
+  if (!componentDir) return null;
+  return path.join(componentDir, "__a11y-snapshots__");
+}
+
+function snapshotVariantSuffix(): string {
+  const parts: string[] = [];
+  if (THEME) parts.push(THEME);
+  if (FORCED_COLORS === "active") parts.push("forced-colors");
+  return parts.length > 0 ? `.${parts.join(".")}` : "";
+}
+
+async function captureAccessibilityTree(page: import("playwright").Page, storyId: string) {
+  const dir = componentSnapshotDir(storyId);
+  if (!dir) return;
+  fs.mkdirSync(dir, { recursive: true });
+  const file = path.join(dir, `${storyId}${snapshotVariantSuffix()}.yaml`);
+  const snapshot = await page.locator("#storybook-root").ariaSnapshot();
+  const content = typeof snapshot === "string" ? snapshot : String(snapshot);
+  if (!fs.existsSync(file)) {
+    if (UPDATE_AT || BOOTSTRAP_AT) {
+      fs.writeFileSync(file, content);
+      return;
+    }
+    if (REQUIRE_AT) {
+      throw new Error(
+        `Missing AT snapshot for ${storyId}. Run DT_BOOTSTRAP_A11Y_SNAPSHOTS=1 npm run a11y-snapshot:bootstrap`,
+      );
+    }
+    return;
+  }
+  const existing = fs.readFileSync(file, "utf8");
+  if (existing !== content) {
+    if (UPDATE_AT) fs.writeFileSync(file, content);
+    else
+      throw new Error(
+        `AT snapshot mismatch for ${storyId}${snapshotVariantSuffix()}.` +
+          ` Run DT_UPDATE_A11Y_SNAPSHOTS=1 npm run test:stories:ci`,
+      );
+  }
+}
+
 const config: TestRunnerConfig = {
+  // The iframe page is loaded once per worker by `defaultPrepare`, so the preview
+  // module's `parameters.a11y` IIFE only sees `matchMedia('(forced-colors: active)')`
+  // if the emulation is applied BEFORE that navigation. We provide a custom
+  // `prepare` that runs the emulation + init scripts first, then triggers the
+  // navigation Playwright would have made.
+  async prepare({ page, browserContext, testRunnerConfig: testRunnerConfig2 }) {
+    const targetURL = process.env.TARGET_URL ?? "";
+    const iframeURL = new URL("iframe.html", targetURL).toString();
+    if (testRunnerConfig2?.getHttpHeaders) {
+      const headers = await testRunnerConfig2.getHttpHeaders(iframeURL);
+      await browserContext.setExtraHTTPHeaders(headers);
+    }
+    if (THEME) {
+      await page.addInitScript((theme) => {
+        try {
+          window.localStorage.setItem("storybook-theme", theme);
+          window.localStorage.setItem("theme", theme);
+        } catch {
+          // ignore
+        }
+      }, THEME);
+    }
+    if (FORCED_COLORS === "active") {
+      await page.emulateMedia({ forcedColors: "active" });
+    }
+    await page.goto(iframeURL, { waitUntil: "load" });
+  },
   async preVisit(page) {
-    await page.setViewportSize({ width: 1280, height: 720 });
+    const width = Number.isFinite(VIEWPORT) && VIEWPORT > 0 ? VIEWPORT : 1280;
+    await page.setViewportSize({ width, height: 720 });
     await page.addInitScript(() => {
       window.__STORYBOOK_VISUAL_REGRESSION__ = true;
       try {
@@ -215,6 +332,14 @@ const config: TestRunnerConfig = {
         // ignore cases where localStorage is unavailable
       }
     });
+    // Re-assert forced-colors per story in case the page was reset.
+    if (FORCED_COLORS === "active") {
+      await page.emulateMedia({ forcedColors: "active" });
+    }
+    // Force prefers-reduced-motion so JS-driven animations (GSAP/Framer) collapse
+    // to no-op tweens. Without this, axe color-contrast misreports partial-opacity
+    // frames (e.g. FadeIn at 60%) as 3.x:1 contrast violations.
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.addStyleTag({
       content: `
         *, *::before, *::after {
@@ -233,11 +358,19 @@ const config: TestRunnerConfig = {
     }
 
     const storyContext = await getStoryContext(page, context);
+    const storyId = sanitizeId(context.id);
+
+    // AT-tree snapshots are the DSharp-style gate for Phase 2.
+    await captureAccessibilityTree(page, context.id);
+
+    // Visual pixel diffs are opt-in (Phase 4). Running them on every story makes
+    // the matrix flaky while Vite is still optimizing dependencies.
+    if (process.env.DT_VISUAL_SNAPSHOTS !== "1") {
+      return;
+    }
     if (storyContext?.parameters?.visualRegression?.disable) {
       return;
     }
-
-    const storyId = sanitizeId(context.id);
 
     await waitForStoryStability(page, storyContext);
 

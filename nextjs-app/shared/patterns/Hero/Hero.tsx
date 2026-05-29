@@ -60,7 +60,10 @@ export interface HeroAction {
   inverse?: boolean;
 }
 
-const Hero: React.FC<HeroProps> = ({
+/**
+ * Hero component.
+ */
+export const Hero: React.FC<HeroProps> = ({
   title,
   titleLevel = 1,
   subtitle,

@@ -1,0 +1,113 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './Badge.stories';
+
+<Meta of={Stories} />
+
+# Badge
+
+**Status:** beta · **Tier:** atom · **Group:** display
+
+Compact status label. Badge carries a short string of meaning — a state,
+a count, a tag — and renders with a semantic colour (`success`, `info`,
+`error`, `warning`, `neutral`) and an optional auto-resolved status icon.
+Two designs cover the visual weight: `primary` for filled emphasis,
+`secondary` for outlined or tonal subtlety. Badges can be removable
+(with a built-in close affordance) or live (`role="status"` for screen-
+reader announcements when the content changes).
+
+## In use
+
+Used inside `ServiceCard` headers (a status tag next to the title), in
+filter chips on the work index, and as unread counters on chat-style
+surfaces. The **Example** story shows the canonical state + icon
+composition.
+
+Two compositions worth cribbing:
+
+- **Filter chip with remove.** `removable` plus `onRemove` gives a built-
+  in dismiss affordance; the close button is an internal Button atom with
+  the right hit-target size and `accessibleName` translation. Use this for
+  the active filter pills.
+- **Live counter.** `role="status"` adds `aria-live="polite"` so screen
+  readers announce updates without yanking focus. Use for unread counters
+  or notification dots that mutate at runtime.
+
+Anti-pattern to avoid: shipping a static badge with `role="status"`. The
+live-region churn is wasted when the content doesn't change.
+
+## How to use
+
+```tsx
+import Badge from '@dt/Badge';
+
+// Static status tag
+<Badge state="success">Completed</Badge>
+
+// Outlined secondary design
+<Badge design="secondary" state="info">Beta</Badge>
+
+// Removable filter chip
+<Badge removable onRemove={() => removeFilter('Helsinki')}>
+  Helsinki
+</Badge>
+
+// Live count
+<Badge role="status" state="info">{unreadCount} new</Badge>
+
+// Custom icon
+<Badge state="warning" icon={<Icon name="warning-circle" />}>
+  Action required
+</Badge>
+```
+
+Required consumer wiring: nothing. Translations route through the project's
+`react-i18next` instance, so the close button label localises automatically.
+
+Theme & forced-colors notes: the **ForcedColors** story verifies that each
+state survives the system palette. The primary design's status icons swap
+to high-contrast white on filled surfaces; the secondary design uses
+semantic colours that pass AA on both light and dark surfaces.
+
+## When to use
+
+- A short status or category label next to a heading, list item, or row.
+- A filter chip that can be removed by the user.
+- A live counter (unread, queue length) that updates at runtime.
+
+## When not to use
+
+- A standalone interactive action — use **Button**.
+- An inline status sentence in body copy — use a `<Text as="strong">` with
+  the right colour rather than wrapping a phrase in a Badge.
+- A toggle or selection state — use **Switch** or **Checkbox**; Badge does
+  not own a pressed/checked state.
+- A persistent on-page indicator that you would also caption visually
+  ("New", "Updated") — consider whether a Toast or AlertBanner expresses
+  the intent more clearly.
+
+## Accessibility
+
+- **Default semantic:** a plain `<span>` with no role. Decorative status
+  badges do not announce on their own — the surrounding heading or text
+  carries the meaning.
+- **Live semantic:** `role="status"` adds `aria-live="polite"`. Screen
+  readers announce changes to the text content without interrupting the
+  current speech. Use sparingly to avoid noisy announcements.
+- **Removable affordance:** the close button is a Button atom with
+  `accessibleName` translated via `t("badgeRemove")`. Focus moves to the
+  next focusable sibling on remove because the badge unmounts cleanly.
+- **Icon contrast:** primary-design icons get an explicit colour pair from
+  `PRIMARY_ICON_COLORS` to keep contrast on the filled surface; secondary-
+  design icons inherit the semantic palette.
+- **Reduced motion:** Badge has no motion. The removable transition is
+  CSS-only and respects `prefers-reduced-motion: reduce`.
+
+## Promotion notes
+
+- Bulk-author target for Honest Beta phase. Reviewed against the live
+  filter chips on the work index and the status tags on ServiceCard.
+- Stable promotion blockers: a11y-tree snapshots for the four required
+  stories, real-browser forced-colors run, documented production consumers.
+- Known debt: the size prop accepts the legacy `s|m|l` shorthand. New
+  consumers should pass the modern `size="m"` form (matches Button's
+  normalised contract).

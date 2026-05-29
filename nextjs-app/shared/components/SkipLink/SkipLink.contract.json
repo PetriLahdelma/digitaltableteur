@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "SkipLink",
+  "tier": "atom",
+  "group": "navigation",
+  "status": "beta",
+  "description": "Skip-to-main link shown on keyboard focus.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-skip-link",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "href",
+    "id",
+    "ref",
+    "style"
+  ],
+  "consumers": [],
+  "slots": []
+}

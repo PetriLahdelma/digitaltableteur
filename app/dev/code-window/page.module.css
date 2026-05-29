@@ -1,6 +1,6 @@
 .page {
-  padding-block: var(--space-layout-32);
   display: grid;
+  padding-block: var(--space-layout-32);
   gap: var(--space-layout-32);
 }
 

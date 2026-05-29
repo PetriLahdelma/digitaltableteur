@@ -14,6 +14,7 @@ export type BreadcrumbProps = {
   "aria-label"?: string;
 };
 
+/** Breadcrumb navigation trail with current page indication. */
 const Breadcrumb: React.FC<BreadcrumbProps> = ({
   items,
   "aria-label": ariaLabel = "Breadcrumb",

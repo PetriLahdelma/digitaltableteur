@@ -1,6 +1,6 @@
 .parallax {
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 
 .inner {

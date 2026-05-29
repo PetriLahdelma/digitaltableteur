@@ -1,12 +1,18 @@
+import contract from "./ProofBlock.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import ProofBlock, { ProofMetric } from "./ProofBlock";
 
 const meta: Meta<typeof ProofBlock> = {
+  argTypes: {},
   title: "Patterns/ProofBlock",
   component: ProofBlock,
-  tags: ["autodocs"],
-  parameters: { wip: { disabled: false } },
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    wip: { disabled: false },
+  },
 };
 export default meta;
 
@@ -19,6 +25,7 @@ const sampleMetrics: ProofMetric[] = [
 ];
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     title: "The challenge in numbers",
     subTitle: "Works at city scale",
@@ -36,4 +43,16 @@ export const TightDark: Story = {
     tight: true,
     dark: true,
   },
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

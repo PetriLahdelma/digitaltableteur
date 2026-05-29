@@ -15,6 +15,7 @@
 @import "./tailwind.css";
 
 /* Base styles (inlined from shared/index.css to avoid @import after rules) */
+
 body {
   margin: 0;
   background-color: var(--main-body-background-color);
@@ -129,30 +130,34 @@ code {
 /* Layout Utilities - Phase 04 */
 @layer utilities {
   /* Full bleed - break out of container */
+
   .full-bleed {
     width: 100vw;
     margin-left: calc(50% - 50vw);
   }
 
   /* Prose width for readable content */
+
   .prose-width {
     max-width: 65ch;
   }
 
   /* Screen reader only */
+
   .sr-only {
     position: absolute;
+    margin: -1px;
+    padding: 0;
     width: 1px;
     height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
     border-width: 0;
+    white-space: nowrap;
+    clip-path: inset(50%);
+    overflow: hidden;
   }
 
   /* Grid utilities for asymmetric layouts */
+
   .grid-asymmetric-2-1 {
     grid-template-columns: 2fr 1fr;
   }
@@ -174,6 +179,7 @@ code {
   }
 
   /* Responsive grid column spans */
+
   .col-span-full {
     grid-column: 1 / -1;
   }

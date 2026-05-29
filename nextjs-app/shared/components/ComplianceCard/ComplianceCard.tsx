@@ -36,6 +36,9 @@ const STATUS_COLOR_MAP: Record<ComplianceStatus, string> = {
   fail: "var(--color-error)",
 };
 
+/**
+ * ComplianceCard component.
+ */
 export const ComplianceCard: React.FC<ComplianceCardProps> = ({
   title,
   titleIcon,
@@ -166,6 +169,9 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
           role="separator"
           aria-orientation="vertical"
           aria-label={t("complianceCard.resizeHandle")}
+          aria-valuenow={Math.round((tableHeight / 800) * 100)}
+          aria-valuemin={0}
+          aria-valuemax={100}
           tabIndex={0}
         />
       </div>

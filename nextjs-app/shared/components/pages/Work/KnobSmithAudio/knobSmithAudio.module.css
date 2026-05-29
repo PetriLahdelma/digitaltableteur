@@ -3,18 +3,19 @@
 }
 
 /* Custom Meta Section - 2 column layout */
+
 .metaSection {
   padding-block: var(--space-layout-48);
-  background-color: var(--color-surface);
   padding-inline: var(--space-layout-24);
+  background-color: var(--color-surface);
 }
 
 .metaGrid {
   display: grid;
+  margin-inline: auto;
+  max-width: var(--container-md);
   grid-template-columns: 1fr;
   gap: var(--space-layout-32);
-  max-width: var(--container-md);
-  margin-inline: auto;
 }
 
 @media (width >= 768px) {
@@ -43,19 +44,19 @@
 }
 
 .metaLabel {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-text);
-  margin: 0;
 }
 
 .metaText {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .metaTools {
@@ -65,11 +66,11 @@
 }
 
 .metaOverview {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.7;
+  color: var(--color-text);
 }
 
 .metaOverview strong {
@@ -81,8 +82,7 @@
 }
 
 .storySectionBeforeVuMeter {
-  margin-block-start: var(--space-layout-64);
-  margin-block-end: 0;
+  margin-block: var(--space-layout-64) 0;
   padding-block-end: 0;
 }
 
@@ -96,6 +96,7 @@
 }
 
 /* Force captions to always show in image grids */
+
 .imageGrid :global(figcaption),
 .webPresenceGrid :global(figcaption) {
   display: block !important;
@@ -107,26 +108,25 @@
 }
 
 .meterSection {
-  padding-block: var(--space-layout-64);
   margin-block-start: var(--space-layout-32);
+  padding-block: var(--space-layout-64);
   background-color: var(--color-muted-background, var(--color-light-bg));
 }
 
 .vuMeterSection {
-  padding-block-start: 0;
-  padding-block-end: var(--space-layout-32);
   margin-block-start: calc(-1 * var(--space-layout-32));
+  padding-block: 0 var(--space-layout-32);
 }
 
 .videoContainer {
   display: flex;
+  margin-inline: auto;
+  padding-inline: var(--page-margin-mobile);
+  width: 100%;
+  max-width: var(--container-lg);
   flex-direction: column;
   align-items: center;
   gap: var(--space-internal-16);
-  width: 100%;
-  max-width: var(--container-lg);
-  margin-inline: auto;
-  padding-inline: var(--page-margin-mobile);
 }
 
 @media (width >= 768px) {
@@ -142,20 +142,20 @@
 }
 
 .meterVideoWrapper {
+  display: flex;
   width: 100%;
   max-width: 1777px;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-m);
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: var(--radius-m);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .meterVideo {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
   transform: scale(2.5);
   transform-origin: center;
 }
@@ -169,27 +169,27 @@
 }
 
 .knobsVideo {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
 }
 
 .videoCaption {
-  color: var(--color-muted);
   text-align: center;
+  color: var(--color-muted);
 }
 
 .logoWordmarkSection {
   display: flex;
+  margin-block-start: var(--space-layout-32);
+  margin-inline: auto;
+  padding-inline: var(--page-margin-mobile);
+  width: 100%;
+  max-width: var(--container-md);
   flex-direction: column;
   align-items: center;
   gap: var(--space-internal-16);
-  margin-block-start: var(--space-layout-32);
-  width: 100%;
-  max-width: var(--container-md);
-  margin-inline: auto;
-  padding-inline: var(--page-margin-mobile);
 }
 
 @media (width >= 768px) {
@@ -205,13 +205,13 @@
 }
 
 .logoWordmarkWrapper {
-  width: 100%;
-  background-color: #2b2f33;
-  border-radius: var(--radius-m);
-  padding: var(--space-layout-64);
   display: flex;
+  padding: var(--space-layout-64);
+  width: 100%;
   justify-content: center;
   align-items: center;
+  border-radius: var(--radius-m);
+  background-color: #2b2f33;
 }
 
 .logoWordmarkImage {
@@ -221,32 +221,32 @@
 }
 
 .logoWordmarkCaption {
-  color: var(--color-muted);
   text-align: center;
+  color: var(--color-muted);
 }
 
 .logoRevealSection {
   display: flex;
+  margin-block-start: var(--space-layout-32);
+  padding-block: var(--space-layout-120);
   flex-direction: column;
   align-items: center;
   gap: var(--space-layout-32);
-  padding-block: var(--space-layout-120);
   background-color: #2b2f33;
-  margin-block-start: var(--space-layout-32);
 }
 
 .logoRevealCaption {
-  color: #fff;
-  text-align: center;
   padding-inline: var(--space-layout-16);
+  text-align: center;
+  color: #fff;
 }
 
 .logoConstructionSection {
+  margin-block-start: var(--space-layout-32);
+  margin-inline: auto;
+  padding-inline: var(--page-margin-mobile);
   width: 100%;
   max-width: var(--container-md);
-  margin-inline: auto;
-  margin-block-start: var(--space-layout-32);
-  padding-inline: var(--page-margin-mobile);
 }
 
 @media (width >= 768px) {
@@ -262,11 +262,11 @@
 }
 
 .colorPaletteSection {
+  margin-inline: auto;
   padding-block: var(--space-layout-32);
+  padding-inline: var(--page-margin-mobile);
   width: 100%;
   max-width: var(--container-md);
-  margin-inline: auto;
-  padding-inline: var(--page-margin-mobile);
 }
 
 @media (width >= 768px) {
@@ -295,16 +295,16 @@
 }
 
 .colorSwatch {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: var(--space-internal-16);
 }
 
 .swatchColor {
   width: 100%;
-  aspect-ratio: 16 / 9;
   border-radius: calc(var(--radius-lg) * 3);
+  aspect-ratio: 16 / 9;
 }
 
 @media (width >= 768px) {
@@ -330,28 +330,28 @@
   font-family: "JetBrains Mono", monospace;
   font-size: 0.875rem;
   font-weight: 400;
-  color: #ed4b9b;
   text-transform: uppercase;
+  color: #ed4b9b;
 }
 
 .swatchDescription {
-  color: var(--color-text-secondary);
   margin-block-start: var(--space-internal-8);
+  color: var(--color-text-secondary);
 }
 
 .typographySection {
-  padding-block: var(--space-layout-64);
   margin-block-start: var(--space-layout-32);
+  padding-block: var(--space-layout-64);
 }
 
 .typographyShowcase {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-layout-32);
-  width: 100%;
-  max-width: var(--container-md);
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
+  width: 100%;
+  max-width: var(--container-md);
+  flex-direction: column;
+  gap: var(--space-layout-32);
 }
 
 @media (width >= 768px) {
@@ -368,8 +368,8 @@
 
 .typeSample {
   font-family: "JetBrains Mono", monospace;
-  color: #ed4b9b;
   line-height: 1.2;
+  color: #ed4b9b;
 }
 
 .typeDisplay {
@@ -442,23 +442,23 @@
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
   letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
 }
 
 .typeSampleGeist {
   font-family: "Geist Mono", monospace;
-  color: #ed4b9b;
   line-height: 1.2;
+  color: #ed4b9b;
 }
 
 .typographySectionDivider {
-  width: 100%;
-  max-width: var(--container-md);
   margin-inline: auto;
   padding-block: var(--space-layout-32);
   padding-inline: var(--page-margin-mobile);
+  width: 100%;
+  max-width: var(--container-md);
 }
 
 @media (width >= 768px) {
@@ -474,23 +474,23 @@
 }
 
 .fontName {
+  margin-block-end: var(--space-internal-16);
   font-family: var(--font-body);
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-text);
-  margin-block-end: var(--space-internal-16);
 }
 
 .ogImageSection {
   display: flex;
+  margin-block-start: var(--space-layout-48);
+  margin-inline: auto;
+  padding-inline: var(--page-margin-mobile);
+  width: 100%;
+  max-width: var(--container-lg);
   flex-direction: column;
   align-items: center;
   gap: var(--space-internal-16);
-  margin-block-start: var(--space-layout-48);
-  width: 100%;
-  max-width: var(--container-lg);
-  margin-inline: auto;
-  padding-inline: var(--page-margin-mobile);
 }
 
 @media (width >= 768px) {
@@ -514,10 +514,10 @@
   width: 100%;
   height: auto;
   border-radius: var(--radius-m);
-  box-shadow: 0 4px 24px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 10%);
 }
 
 .ogImageCaption {
-  color: var(--color-muted);
   text-align: center;
+  color: var(--color-muted);
 }

@@ -1,13 +1,17 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./MacWindowFrame.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import MacWindowFrame from "@dt/MacWindowFrame";
 
 const meta: Meta<typeof MacWindowFrame> = {
-  title: "Components/MacWindowFrame",
+  argTypes: {},
+  title: "Molecules/MacWindowFrame",
   component: MacWindowFrame,
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "padded",
   },
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
 };
 
 export default meta;
@@ -20,9 +24,8 @@ AI: The leaves fall gently to the ground, painting the earth in hues profound.
 The crisp air whispers through the trees, a symphony of nature's ease.`;
 
 export const Default: Story = {
-  args: {
-    children: sampleContent,
-  },
+  tags: ["beta-matrix"],
+  args: { children: sampleContent },
 };
 
 export const WithAction: Story = {
@@ -34,8 +37,17 @@ export const WithAction: Story = {
 };
 
 export const Compact: Story = {
-  args: {
-    density: "compact",
-    children: sampleContent,
-  },
+  args: { density: "compact", children: sampleContent },
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

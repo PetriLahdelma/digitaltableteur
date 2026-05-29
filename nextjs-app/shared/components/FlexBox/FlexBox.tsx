@@ -25,7 +25,10 @@ export interface FlexBoxProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-const FlexBox: React.FC<FlexBoxProps> = ({
+/**
+ * FlexBox component.
+ */
+export const FlexBox: React.FC<FlexBoxProps> = ({
   direction = "row",
   wrap = "nowrap",
   justify = "flex-start",

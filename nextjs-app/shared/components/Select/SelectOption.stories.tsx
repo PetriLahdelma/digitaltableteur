@@ -1,13 +1,9 @@
 import React from "react";
 import SelectOption from "./SelectOption";
 import Select from "@dt/Select";
-import { within, userEvent } from "@storybook/testing-library";
+import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
-
-export default {
-  title: "Components/SelectOption",
-  component: SelectOption,
-};
+export default { title: "Atoms/SelectOption", component: SelectOption };
 
 export const Default = () => {
   const { t } = useTranslation();
@@ -25,6 +21,7 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const select = await canvas.findByLabelText(/select an option/i);
   await userEvent.selectOptions(select, "option2");
 };
+Default.tags = ["beta-matrix"];
 
 export const Disabled = () => {
   const { t } = useTranslation();

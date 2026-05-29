@@ -98,7 +98,7 @@
 .warning {
   border: 2px solid transparent;
   background: var(--color-warning-contrast);
-  color: var(--color-warning-text);
+  color: var(--color-white);
 }
 
 .neutral {

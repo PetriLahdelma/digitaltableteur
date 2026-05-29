@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import styles from "./ContactFormSuccessEditorial.module.css";
 
@@ -24,27 +24,29 @@ export function ContactFormSuccessEditorial({
   sendAnotherLabel = "Send another message",
   className,
 }: ContactFormSuccessEditorialProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.div
       className={cn(styles.container, className)}
-      initial={{ opacity: 0, y: 20 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1],
-        delay: 0.3, // Delay for form exit animation
-      }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0 }
+          : { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.3 }
+      }
     >
       {/* Title - typography carries the success */}
       <motion.h3
         className={styles.title}
-        initial={{ opacity: 0, y: 10 }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.4,
-          ease: [0.16, 1, 0.3, 1],
-          delay: 0.4,
-        }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0 }
+            : { duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.4 }
+        }
       >
         {title}
       </motion.h3>
@@ -52,12 +54,13 @@ export function ContactFormSuccessEditorial({
       {/* Message */}
       <motion.p
         className={styles.message}
-        initial={{ opacity: 0 }}
+        initial={prefersReducedMotion ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{
-          duration: 0.4,
-          delay: 0.5,
-        }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0 }
+            : { duration: 0.4, delay: 0.5 }
+        }
       >
         {message}
       </motion.p>
@@ -68,12 +71,13 @@ export function ContactFormSuccessEditorial({
           type="button"
           onClick={onSendAnother}
           className={styles.sendAnother}
-          initial={{ opacity: 0 }}
+          initial={prefersReducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.4,
-            delay: 0.6,
-          }}
+          transition={
+            prefersReducedMotion
+              ? { duration: 0 }
+              : { duration: 0.4, delay: 0.6 }
+          }
         >
           {sendAnotherLabel}
         </motion.button>

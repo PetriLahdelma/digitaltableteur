@@ -12,7 +12,10 @@ export interface OpenHoursProps {
   date?: Date; // inject custom date for testing
 }
 
-const OpenHours: React.FC<OpenHoursProps> = ({
+/**
+ * OpenHours component.
+ */
+export const OpenHours: React.FC<OpenHoursProps> = ({
   compact = false,
   showAllDays = true,
   highlightToday = true,

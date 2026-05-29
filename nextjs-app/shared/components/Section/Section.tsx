@@ -26,6 +26,9 @@ const backgroundClasses = {
   inverse: "bg-foreground text-background",
 } as const;
 
+/**
+ * Section component.
+ */
 export const Section = forwardRef<HTMLElement, SectionProps>(
   ({ children, spacing = "md", background = "default", className, id }, ref) => {
     return (

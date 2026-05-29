@@ -1,17 +1,21 @@
+import contract from "./ComplianceCard.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
 
 const meta = {
-  title: "Utility/ComplianceCard",
+  title: "Molecules/ComplianceCard",
   component: ComplianceCard,
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "padded",
     controls: { disable: true },
   },
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
+  argTypes: {},
 } satisfies Meta<typeof ComplianceCard>;
 
 export default meta;
@@ -84,19 +88,11 @@ const badgeComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "File exists",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "File exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "File exists" },
 ];
 
 export const Z_BadgeCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-    controls: { disable: true },
-  },
+  parameters: { docs: { disable: true }, controls: { disable: true } },
   args: {
     title: "Compliance: 12/12",
     titleIcon: (
@@ -140,10 +136,7 @@ const mixedComplianceRules: ComplianceRule[] = [
 ];
 
 export const Z_MixedCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-    controls: { disable: true },
-  },
+  parameters: { docs: { disable: true }, controls: { disable: true } },
   args: {
     title: "Compliance: 2/5",
     titleIcon: (
@@ -158,10 +151,7 @@ export const Z_MixedCompliance: Story = {
 };
 
 export const Z_FailedCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-    controls: { disable: true },
-  },
+  parameters: { docs: { disable: true }, controls: { disable: true } },
   args: {
     title: "Compliance: 0/3",
     titleIcon: (
@@ -188,4 +178,31 @@ export const Z_FailedCompliance: Story = {
       },
     ],
   },
+};
+
+const defaultStoryArgs = {
+  title: "Compliance: 12/12",
+  titleIcon: (
+    <Icon name="check-fat" color="var(--color-success)" weight="fill" />
+  ),
+  rules: badgeComplianceRules,
+};
+
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  args: defaultStoryArgs,
+};
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  args: defaultStoryArgs,
+};
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  args: defaultStoryArgs,
+};
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: defaultStoryArgs,
 };

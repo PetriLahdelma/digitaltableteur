@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "StoryBlock",
+  "tier": "pattern",
+  "group": "structure",
+  "status": "beta",
+  "description": "StoryBlock — production @dt component (Storybook beta).",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-story-block",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [
+    "content"
+  ],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "ariaRequirements": [],
+    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+  },
+  "tokens": {
+    "colors": [
+      "--color-light-bg",
+      "--color-white"
+    ],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "ariaLabel",
+    "as",
+    "asChild",
+    "backgroundColor",
+    "children",
+    "className",
+    "content",
+    "id",
+    "imageLayout",
+    "images",
+    "maxWidth",
+    "ref",
+    "spacing",
+    "style",
+    "subtitle",
+    "title"
+  ],
+  "consumers": []
+}

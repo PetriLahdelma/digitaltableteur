@@ -34,13 +34,15 @@
 .info {
   border: 1px solid rgb(15 98 254 / 25%);
   background: rgb(15 98 254 / 12%);
-  color: var(--color-info);
+
+  /* Darkened teal lifts AA contrast above 4.5:1 on the tinted bg. */
+  color: var(--alert-info-text, #054956);
 }
 
 .success {
   border: 1px solid rgb(34 197 94 / 25%);
   background: rgb(34 197 94 / 12%);
-  color: var(--color-success);
+  color: var(--alert-success-text, #045924);
 }
 
 .warning {
@@ -52,5 +54,5 @@
 .error {
   border: 1px solid rgb(239 68 68 / 25%);
   background: rgb(239 68 68 / 12%);
-  color: var(--color-error);
+  color: var(--alert-error-text, #8b1010);
 }

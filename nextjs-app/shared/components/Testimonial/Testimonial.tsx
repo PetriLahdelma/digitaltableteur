@@ -35,7 +35,10 @@ export interface TestimonialProps {
   avatarUrl?: string;
 }
 
-const Testimonial: React.FC<TestimonialProps> = ({
+/**
+ * Testimonial component.
+ */
+export const Testimonial: React.FC<TestimonialProps> = ({
   quote,
   name,
   title,

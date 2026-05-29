@@ -1,43 +1,51 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../test-utils/render";
 import { AccessibilityPage } from "./AccessibilityPage";
 
 describe("AccessibilityPage", () => {
   it("renders page title", () => {
-    render(<AccessibilityPage />);
-    expect(screen.getByText(/accessibilityTitle/i)).toBeInTheDocument();
+    renderWithProviders(<AccessibilityPage />);
+    expect(
+      screen.getByRole("heading", {
+        name: /Accessibility Statement/i,
+        level: 1,
+      }),
+    ).toBeInTheDocument();
   });
 
   it("renders introduction section", () => {
-    render(<AccessibilityPage />);
-    expect(screen.getByText(/accessibilityIntro/i)).toBeInTheDocument();
+    renderWithProviders(<AccessibilityPage />);
+    expect(
+      screen.getByText(/committed to ensuring digital accessibility/i),
+    ).toBeInTheDocument();
   });
 
   it("renders WCAG compliance section", () => {
-    render(<AccessibilityPage />);
-    expect(screen.getByText(/WCAG/i)).toBeInTheDocument();
+    renderWithProviders(<AccessibilityPage />);
+    expect(
+      screen.getByRole("heading", { name: /Conformance status/i }),
+    ).toBeInTheDocument();
   });
 
-  it("renders features section", () => {
-    render(<AccessibilityPage />);
-    expect(screen.getByText(/features/i)).toBeInTheDocument();
+  it("renders measures section", () => {
+    renderWithProviders(<AccessibilityPage />);
+    expect(
+      screen.getByText(/Measures to support accessibility/i),
+    ).toBeInTheDocument();
   });
 
   it("renders email contact link", () => {
-    render(<AccessibilityPage />);
+    renderWithProviders(<AccessibilityPage />);
     const emailLinks = screen.getAllByRole("link", {
       name: /mail@digitaltableteur.com/i,
     });
     expect(emailLinks.length).toBeGreaterThan(0);
   });
 
-  it("renders back button", () => {
-    render(<AccessibilityPage />);
-    expect(screen.getByRole("link", { name: /back/i })).toBeInTheDocument();
-  });
-
-  it("renders commitment statement", () => {
-    render(<AccessibilityPage />);
-    expect(screen.getByText(/commitment/i)).toBeInTheDocument();
+  it("renders back button when onBack is provided", () => {
+    const onBack = vi.fn();
+    renderWithProviders(<AccessibilityPage onBack={onBack} />);
+    expect(screen.getByRole("button", { name: /Back/i })).toBeInTheDocument();
   });
 });

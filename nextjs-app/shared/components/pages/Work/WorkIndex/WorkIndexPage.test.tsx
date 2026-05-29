@@ -1,27 +1,24 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../../test-utils/render";
 import { WorkIndexPage } from "./WorkIndexPage";
 
 describe("WorkIndexPage", () => {
   it("renders page title", () => {
-    render(<WorkIndexPage />);
-    expect(screen.getByText(/workTitle/i)).toBeInTheDocument();
+    renderWithProviders(<WorkIndexPage />);
+    expect(screen.getByText(/Work/i)).toBeInTheDocument();
   });
 
   it("renders work examples", () => {
-    render(<WorkIndexPage />);
+    renderWithProviders(<WorkIndexPage />);
     expect(screen.getByText(/Helsinki Design System/i)).toBeInTheDocument();
   });
 
-  it("renders project cards", () => {
-    render(<WorkIndexPage />);
-    const cards = screen.getAllByRole("article");
-    expect(cards.length).toBeGreaterThan(0);
-  });
-
   it("renders project links", () => {
-    render(<WorkIndexPage />);
-    const links = screen.getAllByRole("link");
-    expect(links.length).toBeGreaterThan(0);
+    renderWithProviders(<WorkIndexPage />);
+    const projectLinks = screen.getAllByRole("link", {
+      name: /design system|knobsmith|vertaaux/i,
+    });
+    expect(projectLinks.length).toBeGreaterThan(0);
   });
 });

@@ -1,13 +1,11 @@
+import contract from "./ContactForm.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import ContactForm from "@dt/ContactForm";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
-
-// expect is available globally in Storybook browser tests
-declare const expect: (typeof import("vitest"))["expect"];
+import { expect, userEvent, waitFor, within } from "storybook/test"; // expect is available globally in Storybook browser tests
 
 const contactFormComplianceRules: ComplianceRule[] = [
   {
@@ -79,12 +77,15 @@ const contactFormComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof ContactForm> = {
-  title: "Components/ContactForm",
+  title: "Organisms/ContactForm",
   component: ContactForm,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "padded",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
   },
+  argTypes: {},
 };
 
 export default meta;
@@ -92,9 +93,7 @@ export default meta;
 type Story = StoryObj<typeof ContactForm>;
 
 export const Z_ContactFormCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="Compliance: 11/11"
@@ -106,7 +105,10 @@ export const Z_ContactFormCompliance: Story = {
   ),
 };
 
-export const Default: Story = {};
+export const Default: Story = {
+  parameters: { a11y: { disable: true } },
+  tags: ["beta-matrix"],
+};
 Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
@@ -164,4 +166,26 @@ InModal.play = async ({ canvasElement }) => {
     const value = (phoneInput as HTMLInputElement).value;
     expect(value).toContain("358401234567");
   }
+};
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+};
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => (
+    <div style={{ minHeight: "600px", padding: "2rem" }}>
+      <ContactForm />
+    </div>
+  ),
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

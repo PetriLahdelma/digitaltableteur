@@ -1,6 +1,8 @@
 import React from "react";
 import { describe, it, expect } from "vitest";
 import { MemoryRouter } from "react-router-dom";
+import * as ReactRouter from "react-router-dom";
+import { vi, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import MobileMenu from "./MobileMenu";
 import { ThemeProvider } from "@dt/ThemeProvider";
@@ -12,6 +14,13 @@ const renderWithProviders = (
   ui: React.ReactElement,
   route: string = "/work/client",
 ) => {
+  vi.spyOn(ReactRouter, "useLocation").mockReturnValue({
+    pathname: route,
+    search: "",
+    hash: "",
+    state: null,
+    key: "test",
+  });
   return render(
     <I18nextProvider i18n={i18n}>
       <MemoryRouter initialEntries={[route]}>
@@ -22,6 +31,10 @@ const renderWithProviders = (
 };
 
 describe("MobileMenu", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it("renders localized labels and applies active state", () => {
     renderWithProviders(
       <MobileMenu isOpen onNavigate={() => {}} />,
@@ -37,13 +50,14 @@ describe("MobileMenu", () => {
     expect(screen.getByText(i18n.t("navAbout"))).toBeInTheDocument();
 
     // Active state: work should be active given subpath /work/client
-    const workLink = screen.getByText(i18n.t("navWork"));
-    expect(workLink.getAttribute("aria-current")).toBe("page");
+    expect(
+      screen.getByRole("link", { name: i18n.t("navWork") }),
+    ).toHaveAttribute("aria-current", "page");
   });
 
   it("exact root route marks home active", () => {
     renderWithProviders(<MobileMenu isOpen onNavigate={() => {}} />, "/");
-    const homeLink = screen.getByText(i18n.t("navHome"));
-    expect(homeLink.getAttribute("aria-current")).toBe("page");
+    const homeLink = screen.getByText(i18n.t("navHome")).closest("a");
+    expect(homeLink).toHaveAttribute("aria-current", "page");
   });
 });

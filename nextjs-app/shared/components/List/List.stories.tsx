@@ -1,5 +1,7 @@
+import contract from "./List.contract.json";
 import React from "react";
 import type { Meta, StoryFn } from "@storybook/react-vite";
+import { expect, within } from "storybook/test";
 import {
   Controls,
   Description,
@@ -13,7 +15,6 @@ import List from "@dt/List";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
-import { within } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
@@ -79,22 +80,17 @@ const listComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 const meta: Meta<typeof List> = {
-  title: "Components/List",
+  title: "Molecules/List",
   component: List,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
     docs: {
       page: () => (
         <>
@@ -122,31 +118,37 @@ const meta: Meta<typeof List> = {
       control: "object",
       description: "Array of list items (strings or React nodes)",
     },
+
     as: {
       control: { type: "select" },
       options: ["ul", "ol"],
       description: "List element type",
     },
+
     size: {
       control: { type: "select" },
       options: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
       description: "Text size variant",
     },
+
     terminals: {
       control: { type: "radio" },
       options: ["sans", "serif"],
       description: "Font family",
     },
+
     lineHeight: {
       control: { type: "select" },
       options: ["tight", "snug", "normal", "relaxed", "loose"],
       description: "Line height variant",
     },
+
     spacing: {
       control: { type: "select" },
       options: ["compact", "normal", "relaxed"],
       description: "Spacing between list items",
     },
+
     listStyleType: {
       control: { type: "select" },
       options: [
@@ -163,7 +165,9 @@ const meta: Meta<typeof List> = {
       ],
       description: "CSS list-style-type",
     },
+
     className: { control: "text", description: "Custom class name" },
+
     role: { control: "text", description: "ARIA role override" },
   },
 };
@@ -217,11 +221,7 @@ OrderedList.play = async ({ canvasElement }) => {
 
 export const DifferentSizes: StoryFn = () => {
   const { t } = useTranslation();
-  const items = [
-    t("storyListItem1"),
-    t("storyListItem2"),
-    t("storyListItem3"),
-  ];
+  const items = [t("storyListItem1"), t("storyListItem2"), t("storyListItem3")];
 
   return (
     <div style={{ display: "grid", gap: "2rem" }}>
@@ -292,11 +292,7 @@ export const DifferentSpacing: StoryFn = () => {
 
 export const DifferentListStyles: StoryFn = () => {
   const { t } = useTranslation();
-  const items = [
-    t("storyListItem1"),
-    t("storyListItem2"),
-    t("storyListItem3"),
-  ];
+  const items = [t("storyListItem1"), t("storyListItem2"), t("storyListItem3")];
 
   return (
     <div style={{ display: "grid", gap: "2rem" }}>
@@ -334,11 +330,7 @@ export const DifferentListStyles: StoryFn = () => {
 
 export const SerifAndSans: StoryFn = () => {
   const { t } = useTranslation();
-  const items = [
-    t("storyListItem1"),
-    t("storyListItem2"),
-    t("storyListItem3"),
-  ];
+  const items = [t("storyListItem1"), t("storyListItem2"), t("storyListItem3")];
 
   return (
     <div style={{ display: "grid", gap: "2rem" }}>
@@ -375,7 +367,9 @@ export const WithComplexItems: StoryFn = () => {
 
 export const WithLineHeights: StoryFn = () => {
   const { t } = useTranslation();
-  const longText = t("storyListLongText") || "This is a longer list item that demonstrates the effect of different line heights on text readability and visual density.";
+  const longText =
+    t("storyListLongText") ||
+    "This is a longer list item that demonstrates the effect of different line heights on text readability and visual density.";
   const items = [longText, longText, longText];
 
   return (
@@ -402,4 +396,32 @@ export const WithLineHeights: StoryFn = () => {
       </div>
     </div>
   );
+};
+
+const defaultListArgs = {
+  as: "ul" as const,
+  items: ["storyListItem1", "storyListItem2", "storyListItem3"],
+};
+
+export const Default = {
+  tags: ["beta-matrix"],
+  render: Template,
+  args: defaultListArgs,
+};
+export const Playground = {
+  tags: ["beta-matrix"],
+  render: Template,
+  args: defaultListArgs,
+};
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  render: Template,
+  args: defaultListArgs,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  render: Template,
+  args: defaultListArgs,
 };

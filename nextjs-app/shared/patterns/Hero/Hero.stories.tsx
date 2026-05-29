@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./Hero.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import Hero from "./Hero";
 import { ThemeProvider } from "@dt/ThemeProvider";
@@ -7,8 +8,10 @@ import { t } from "i18next";
 const meta: Meta<typeof Hero> = {
   title: "Patterns/Hero",
   component: Hero,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
     vitest: {
       skip: true, // Skip Vitest tests for this complex pattern component
@@ -29,51 +32,49 @@ const meta: Meta<typeof Hero> = {
     ),
   ],
   argTypes: {
-    title: {
-      control: "text",
-      description: "Hero title text (required)",
-    },
+    title: { control: "text", description: "Hero title text (required)" },
+
     titleLevel: {
       control: { type: "select" },
       options: [1, 2, 3, 4, 5, 6],
       description: "Semantic heading level for title",
     },
-    subtitle: {
-      control: "text",
-      description: "Optional subtitle text",
-    },
-    description: {
-      control: "text",
-      description: "Optional body description",
-    },
-    imageSrc: {
-      control: "text",
-      description: "Hero image source URL",
-    },
+
+    subtitle: { control: "text", description: "Optional subtitle text" },
+
+    description: { control: "text", description: "Optional body description" },
+
+    imageSrc: { control: "text", description: "Hero image source URL" },
+
     imageAlt: {
       control: "text",
       description: "Image alt text for accessibility",
     },
+
     variant: {
       control: { type: "select" },
       options: ["default", "centered", "split", "minimal"],
       description: "Layout variant",
     },
+
     background: {
       control: { type: "select" },
       options: ["light", "dark", "gradient", "image"],
       description: "Background style",
     },
+
     align: {
       control: { type: "select" },
       options: ["left", "center", "right"],
       description: "Content alignment",
     },
+
     maxWidth: {
       control: { type: "select" },
       options: ["sm", "md", "lg", "xl", "full"],
       description: "Maximum content width",
     },
+
     spacing: {
       control: { type: "select" },
       options: ["compact", "default", "comfortable", "spacious"],
@@ -102,6 +103,7 @@ type Story = StoryObj<typeof Hero>;
 
 // Default Story
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     title: "Welcome to Digitaltableteur",
     subtitle: "Creative Development & Design",
@@ -495,4 +497,16 @@ export const ServiceLanding: Story = {
       },
     ],
   },
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

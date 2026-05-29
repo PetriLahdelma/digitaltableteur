@@ -1,3 +1,10 @@
+import { cva } from "class-variance-authority";
+
+export const badgeVariants = cva("", {
+  variants: { size: { sm: "", md: "", lg: "" } },
+  defaultVariants: { size: "md" },
+});
+
 import React, { isValidElement, useState } from "react";
 import styles from "./Badge.module.css";
 import Button from "@dt/Button";
@@ -29,7 +36,7 @@ const PRIMARY_ICON_COLORS: Record<BadgeState, string> = {
   neutral: "var(--color-black)",
 };
 
-interface BadgeProps {
+export interface BadgeProps {
   children: React.ReactNode;
   design?: "primary" | "secondary";
   state?: BadgeState;
@@ -56,6 +63,7 @@ interface BadgeProps {
   role?: "status";
 }
 
+/** Compact status label with semantic state, size, and optional icon. */
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   (
     {

@@ -1,0 +1,26 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 11/11" [level=2]'
+- text: Complete file structure
+- img "Pass"
+- text: All 5 files present TypeScript strict
+- img "Pass"
+- text: Proper typing with TextProps Translation support
+- img "Pass"
+- text: Content as children prop CSS Modules
+- img "Pass"
+- text: Removed inline styles, using module classes Design tokens
+- img "Pass"
+- text: Replaced Moderat with var(--font-text) Logical properties
+- img "Pass"
+- text: Uses margin-block and margin-inline Theme support
+- img "Pass"
+- text: CSS custom properties throughout Component composition
+- img "Pass"
+- text: Polymorphic as prop, size/lineHeight variants Accessibility
+- img "Pass"
+- text: Semantic HTML with flexible tag Storybook stories
+- img "Pass"
+- text: Multiple variants with ComplianceCard Tests
+- img "Pass"
+- text: Test file exists
+- separator "Resize table"

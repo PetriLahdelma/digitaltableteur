@@ -1,17 +1,16 @@
-import { describe, it, expect, vi } from "vitest";
+import React from "react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { NextMobileMenu } from "./NextMobileMenu";
 
-// Mock next/navigation
 vi.mock("next/navigation", () => ({
   usePathname: () => "/",
 }));
 
-// Mock i18n
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
-    t: (key: string) => key,
+    t: (key: string, fallback?: string) => fallback ?? key,
     i18n: {
       language: "en",
       changeLanguage: vi.fn(),
@@ -19,11 +18,17 @@ vi.mock("react-i18next", () => ({
   }),
 }));
 
-// Mock usePersistentTheme
 vi.mock("../../hooks/usePersistentTheme", () => ({
   usePersistentTheme: () => ({
     theme: "light",
-    setTheme: vi.fn(),
+    cycleTheme: vi.fn(),
+  }),
+}));
+
+vi.mock("@/providers/AnimationProvider", () => ({
+  useAnimationContext: () => ({
+    motionPreference: "reduced",
+    isReady: true,
   }),
 }));
 
@@ -34,19 +39,39 @@ const mockNavItems = [
 ];
 
 const mockLanguages = [
-  { code: "en", label: "English" },
-  { code: "fi", label: "Suomi" },
+  { code: "en", label: "English", ariaLabel: "English" },
+  { code: "fi", label: "Suomi", ariaLabel: "Suomi" },
 ];
 
+function renderOpenMenu(
+  props: Partial<React.ComponentProps<typeof NextMobileMenu>> = {},
+) {
+  const { rerender, ...result } = render(
+    <NextMobileMenu
+      isOpen={false}
+      navItems={mockNavItems}
+      languages={mockLanguages}
+      {...props}
+    />,
+  );
+  rerender(
+    <NextMobileMenu
+      isOpen
+      navItems={mockNavItems}
+      languages={mockLanguages}
+      {...props}
+    />,
+  );
+  return result;
+}
+
 describe("NextMobileMenu", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("renders when open", () => {
-    render(
-      <NextMobileMenu
-        isOpen={true}
-        navItems={mockNavItems}
-        languages={mockLanguages}
-      />,
-    );
+    renderOpenMenu();
     expect(screen.getByText("Home")).toBeInTheDocument();
   });
 
@@ -58,47 +83,31 @@ describe("NextMobileMenu", () => {
         languages={mockLanguages}
       />,
     );
-    expect(container.querySelector('[class*="menu"]')).not.toBeInTheDocument();
+    expect(container.querySelector('[role="dialog"]')).not.toBeInTheDocument();
   });
 
   it("renders all navigation items", () => {
-    render(
-      <NextMobileMenu
-        isOpen={true}
-        navItems={mockNavItems}
-        languages={mockLanguages}
-      />,
-    );
+    renderOpenMenu();
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("About")).toBeInTheDocument();
     expect(screen.getByText("Work")).toBeInTheDocument();
   });
 
   it("renders close button", () => {
-    render(
-      <NextMobileMenu
-        isOpen={true}
-        navItems={mockNavItems}
-        languages={mockLanguages}
-      />,
-    );
-    expect(screen.getByRole("button", { name: /close/i })).toBeInTheDocument();
+    renderOpenMenu();
+    expect(
+      screen.getByRole("button", { name: /close navigation/i }),
+    ).toBeInTheDocument();
   });
 
   it("calls onClose when close button clicked", async () => {
     const onClose = vi.fn();
     const user = userEvent.setup();
-    render(
-      <NextMobileMenu
-        isOpen={true}
-        onClose={onClose}
-        navItems={mockNavItems}
-        languages={mockLanguages}
-      />,
-    );
+    renderOpenMenu({ onClose });
 
-    const closeButton = screen.getByRole("button", { name: /close/i });
-    await user.click(closeButton);
+    await user.click(
+      screen.getByRole("button", { name: /close navigation/i }),
+    );
 
     expect(onClose).toHaveBeenCalled();
   });
@@ -106,50 +115,32 @@ describe("NextMobileMenu", () => {
   it("calls onNavigate when nav item clicked", async () => {
     const onNavigate = vi.fn();
     const user = userEvent.setup();
-    render(
-      <NextMobileMenu
-        isOpen={true}
-        onNavigate={onNavigate}
-        navItems={mockNavItems}
-        languages={mockLanguages}
-      />,
-    );
+    renderOpenMenu({ onNavigate });
 
-    const aboutLink = screen.getByText("About");
-    await user.click(aboutLink);
+    await user.click(screen.getByRole("link", { name: "About" }));
 
     expect(onNavigate).toHaveBeenCalled();
   });
 
   it("renders language buttons", () => {
-    render(
-      <NextMobileMenu
-        isOpen={true}
-        navItems={mockNavItems}
-        languages={mockLanguages}
-      />,
-    );
+    renderOpenMenu();
     expect(
-      screen.getByRole("button", { name: /english/i }),
+      screen.getByRole("button", { name: "English" }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /suomi/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Suomi" })).toBeInTheDocument();
   });
 
   it("renders theme toggle button", () => {
-    render(
-      <NextMobileMenu
-        isOpen={true}
-        navItems={mockNavItems}
-        languages={mockLanguages}
-      />,
-    );
-    expect(screen.getByRole("button", { name: /theme/i })).toBeInTheDocument();
+    renderOpenMenu();
+    expect(
+      screen.getByRole("button", { name: /cycle theme/i }),
+    ).toBeInTheDocument();
   });
 
   it("uses custom id when provided", () => {
     const { container } = render(
       <NextMobileMenu
-        isOpen={true}
+        isOpen
         id="custom-menu"
         navItems={mockNavItems}
         languages={mockLanguages}
@@ -159,14 +150,8 @@ describe("NextMobileMenu", () => {
   });
 
   it("marks active link with aria-current", () => {
-    render(
-      <NextMobileMenu
-        isOpen={true}
-        navItems={mockNavItems}
-        languages={mockLanguages}
-      />,
-    );
-    const homeLink = screen.getByText("Home").closest("a");
+    renderOpenMenu();
+    const homeLink = screen.getByRole("link", { name: "Home" });
     expect(homeLink).toHaveAttribute("aria-current", "page");
   });
 });

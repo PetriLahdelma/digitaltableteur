@@ -2,10 +2,10 @@
 
 .section {
   padding-block: var(--space-layout-80, 5rem);
-  background: hsl(var(--muted) / 0.3);
+  background: hsl(var(--muted) / 30%);
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
   .section {
     padding-block: var(--space-layout-112, 7rem);
   }
@@ -13,9 +13,9 @@
 
 .header {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
   margin-block-end: var(--space-layout-48, 3rem);
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .title {
@@ -42,19 +42,20 @@
   transform: translateX(0.25rem);
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .viewAllLink {
     display: flex;
   }
 }
 
 .viewAllIcon {
-  inline-size: 1rem;
   block-size: 1rem;
+  inline-size: 1rem;
   transition: transform 0.2s ease;
 }
 
 /* Grid with perspective for 3D tilt */
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -62,17 +63,18 @@
   perspective: 800px;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 /* Card wrapper — receives GSAP transforms */
+
 .cardWrapper {
-  will-change: transform;
-  transform-style: preserve-3d;
   opacity: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 /* Fallback: show cards if JS fails */
@@ -88,40 +90,45 @@ noscript ~ .cardWrapper,
 }
 
 /* Card container styling — static shadow, rounded, padded */
+
 .cardContainer {
-  padding-inline: 0.75rem;
   padding-block-end: 1rem;
-  background: hsl(var(--card));
+  padding-inline: 0.75rem;
   border-radius: var(--radius-xl, 0.75rem);
+  background: hsl(var(--card));
   box-shadow:
-    0 1px 3px 0 rgb(0 0 0 / 0.06),
-    0 1px 2px -1px rgb(0 0 0 / 0.06);
+    0 1px 3px 0 rgb(0 0 0 / 6%),
+    0 1px 2px -1px rgb(0 0 0 / 6%);
   overflow: hidden;
 }
 
 /* Override EnhancedProjectCard hover effects inside magnetic field */
+
 .cardContainer :global(.group:hover) img,
 .cardContainer :global(.group:hover) video {
   transform: none !important;
 }
 
 /* Tags always visible */
+
 .cardContainer :global(.flex.flex-wrap) {
   opacity: 1 !important;
 }
 
 /* Remove hover shadow from image container inside card */
+
 .cardContainer :global(.group-hover\:shadow-lg) {
   box-shadow: none !important;
 }
 
 /* Mobile view-all link */
+
 .mobileViewAll {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
   margin-block-start: var(--space-layout-32, 2rem);
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-body);
   font-size: var(--text-sm, 0.875rem);
   color: hsl(var(--muted-foreground));
@@ -132,7 +139,7 @@ noscript ~ .cardWrapper,
   color: hsl(var(--foreground));
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .mobileViewAll {
     display: none;
   }

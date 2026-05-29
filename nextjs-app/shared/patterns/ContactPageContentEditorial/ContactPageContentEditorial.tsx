@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ContactFormEditorial } from "../../components/ContactFormEditorial";
 import { ContactFormSuccessEditorial } from "../../components/ContactFormSuccessEditorial";
@@ -13,11 +13,17 @@ export interface ContactPageContentEditorialProps {
   className?: string;
 }
 
+/**
+ * ContactPageContentEditorial component.
+ */
 export function ContactPageContentEditorial({
   className,
 }: ContactPageContentEditorialProps) {
   const { t } = useTranslation();
   const [showSuccess, setShowSuccess] = useState(false);
+  // Skip entrance animations under reduced-motion so axe never samples
+  // partial-opacity frames as color-contrast violations.
+  const prefersReducedMotion = useReducedMotion();
 
   const handleFormSuccess = () => {
     setShowSuccess(true);
@@ -37,12 +43,13 @@ export function ContactPageContentEditorial({
             {/* Display Headline */}
             <motion.h1
               className={styles.headline}
-              initial={{ opacity: 0, y: 30 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+              }
             >
               {t("contactHeadline", "Let's talk.")}
             </motion.h1>
@@ -50,25 +57,25 @@ export function ContactPageContentEditorial({
             {/* Divider */}
             <motion.hr
               className={styles.divider}
-              initial={{ scaleX: 0 }}
+              initial={prefersReducedMotion ? false : { scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{
-                duration: 0.6,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.2,
-              }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }
+              }
             />
 
             {/* Intro Paragraph */}
             <motion.p
               className={styles.intro}
-              initial={{ opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.3,
-              }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }
+              }
             >
               {t(
                 "contactIntro",
@@ -79,13 +86,13 @@ export function ContactPageContentEditorial({
             {/* Contact Details */}
             <motion.div
               className={styles.contactDetails}
-              initial={{ opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.4,
-              }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4 }
+              }
             >
               <address className={styles.address}>
                 <span className={styles.addressLine}>
@@ -114,10 +121,10 @@ export function ContactPageContentEditorial({
               {showSuccess ? (
                 <motion.div
                   key="success"
-                  initial={{ opacity: 0 }}
+                  initial={prefersReducedMotion ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
                 >
                   <ContactFormSuccessEditorial
                     title={t("contactSuccessTitle", "Message sent.")}
@@ -135,10 +142,10 @@ export function ContactPageContentEditorial({
               ) : (
                 <motion.div
                   key="form"
-                  initial={{ opacity: 0 }}
+                  initial={prefersReducedMotion ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
                 >
                   <ContactFormEditorial onSuccess={handleFormSuccess} />
                 </motion.div>
@@ -147,63 +154,6 @@ export function ContactPageContentEditorial({
           </div>
         </div>
       </div>
-
-      {/* Footer Section - Founder */}
-      <motion.div
-        className={styles.founderSection}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.6,
-          ease: [0.16, 1, 0.3, 1],
-          delay: 0.5,
-        }}
-      >
-        <div className={styles.container}>
-          <hr className={styles.dividerFull} />
-          <div className={styles.founder}>
-            <div className={styles.founderInfo}>
-              <span className={styles.founderName}>
-                {t("contactPersonName", "Petri Lahdelma")}
-              </span>
-              <span className={styles.founderTitle}>
-                {t("contactPersonTitle", "Founder & Creative Director")}
-              </span>
-            </div>
-            <div className={styles.socialLinks}>
-              <a
-                href="https://www.linkedin.com/in/petrilahdelma/"
-                className={styles.socialLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t("contactLinkedInLabel", "LinkedIn")}
-              >
-                LinkedIn
-              </a>
-              <span className={styles.socialDivider}>·</span>
-              <a
-                href="https://github.com/PetriLahdelma"
-                className={styles.socialLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t("contactGitHubLabel", "GitHub")}
-              >
-                GitHub
-              </a>
-              <span className={styles.socialDivider}>·</span>
-              <a
-                href="https://x.com/dtdoesdesign"
-                className={styles.socialLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t("footerAriaX", "X")}
-              >
-                X
-              </a>
-            </div>
-          </div>
-        </div>
-      </motion.div>
     </div>
   );
 }

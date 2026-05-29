@@ -1,7 +1,7 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import styles from "./Documentation.module.css";
-
+import { expect } from "storybook/test";
 const APIIntegrationDocsContent = () => {
   return (
     <article className={styles.wrapper}>
@@ -86,20 +86,16 @@ import { donnyTools } from './donny-tools';
 export default async function handler(req, res) {
   // CORS handling
   const corsHeaders = createCorsHeaders();
-  Object.entries(corsHeaders).forEach(([key, value]) => {
-    res.setHeader(key, value);
+  Object.entries(corsHeaders).forEach(([key, value]) => { res.setHeader(key, value);
   });
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+  if (req.method === 'OPTIONS') { return res.status(200).end();
   }
 
   // Extract messages from request
   const { messages } = req.body;
 
-  try {
-    const result = await streamText({
-      model: aiGatewayProvider,
+  try { const result = await streamText({ model: aiGatewayProvider,
       messages,
       tools: donnyTools,
       system: systemPrompt,
@@ -143,11 +139,8 @@ data: [DONE]`}
           {`// ChatWidget.tsx
 import { useChat } from 'ai/react';
 
-function ChatWidget() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    api: '/api/chat',
-    onError: (error) => {
-      console.error('Chat error:', error);
+function ChatWidget() { const { messages, input, handleInputChange, handleSubmit } = useChat({ api: '/api/chat',
+    onError: (error) => { console.error('Chat error:', error);
     },
   });
 
@@ -175,14 +168,9 @@ function ChatWidget() {
           {`// api/donny-tools.ts
 import { z } from 'zod';
 
-export const donnyTools = {
-  getOpenHours: {
-    description: 'Get business opening hours',
+export const donnyTools = { getOpenHours: { description: 'Get business opening hours',
     parameters: z.object({}),
-    execute: async () => {
-      return {
-        hours: {
-          monday: '09:00-17:00',
+    execute: async () => { return { hours: { monday: '09:00-17:00',
           tuesday: '09:00-17:00',
           // ...
         }
@@ -190,10 +178,8 @@ export const donnyTools = {
     },
   },
   
-  getServices: {
-    description: 'Get available services',
-    parameters: z.object({
-      category: z.enum(['web', 'mobile', 'consulting']).optional(),
+  getServices: { description: 'Get available services',
+    parameters: z.object({ category: z.enum(['web', 'mobile', 'consulting']).optional(),
     }),
     execute: async ({ category }) => {
       // Fetch and return services
@@ -245,16 +231,13 @@ export const donnyTools = {
           {`// api/save-contact.js
 import emailjs from '@emailjs/nodejs';
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+export default async function handler(req, res) { if (req.method !== 'POST') { return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { name, email, message } = req.body;
 
   // Validation
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: 'Missing required fields' });
+  if (!name || !email || !message) { return res.status(400).json({ error: 'Missing required fields' });
   }
 
   try {
@@ -267,8 +250,7 @@ export default async function handler(req, res) {
     );
 
     res.status(200).json({ success: true });
-  } catch (error) {
-    console.error('EmailJS error:', error);
+  } catch (error) { console.error('EmailJS error:', error);
     res.status(500).json({ error: 'Failed to send message' });
   }
 }`}
@@ -310,16 +292,13 @@ Content-Type: application/json
 import fs from 'fs';
 import path from 'path';
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+export default async function handler(req, res) { if (req.method !== 'POST') { return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { password } = req.body;
 
   // Verify password
-  if (password !== process.env.CV_PASSWORD) {
-    return res.status(401).json({ error: 'Invalid password' });
+  if (password !== process.env.CV_PASSWORD) { return res.status(401).json({ error: 'Invalid password' });
   }
 
   // Serve file
@@ -335,15 +314,12 @@ export default async function handler(req, res) {
         <h3>Client Integration</h3>
         <pre className={styles.code}>
           {`// SecureCVDownload.tsx
-async function handleDownload(password: string) {
-  const response = await fetch('/api/download-cv', {
-    method: 'POST',
+async function handleDownload(password: string) { const response = await fetch('/api/download-cv', { method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ password }),
   });
 
-  if (!response.ok) {
-    throw new Error('Invalid password');
+  if (!response.ok) { throw new Error('Invalid password');
   }
 
   const blob = await response.blob();
@@ -366,8 +342,7 @@ async function handleDownload(password: string) {
         <h3>Implementation</h3>
         <pre className={styles.code}>
           {`// api/chat-shared.ts
-export function createCorsHeaders(): Record<string, string> {
-  const allowedOrigins = [
+export function createCorsHeaders(): Record<string, string> { const allowedOrigins = [
     'https://digitaltableteur.com',
     'https://www.digitaltableteur.com',
     'http://localhost:3000',
@@ -383,14 +358,11 @@ export function createCorsHeaders(): Record<string, string> {
 }
 
 // Usage in endpoints
-export default async function handler(req, res) {
-  const corsHeaders = createCorsHeaders();
-  Object.entries(corsHeaders).forEach(([key, value]) => {
-    res.setHeader(key, value);
+export default async function handler(req, res) { const corsHeaders = createCorsHeaders();
+  Object.entries(corsHeaders).forEach(([key, value]) => { res.setHeader(key, value);
   });
 
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+  if (req.method === 'OPTIONS') { return res.status(200).end();
   }
 
   // Handle request...
@@ -464,22 +436,17 @@ export default async function handler(req, res) {
 
         <h3>Client Error Handling</h3>
         <pre className={styles.code}>
-          {`async function callAPI(endpoint: string, data: any) {
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
+          {`async function callAPI(endpoint: string, data: any) { try { const response = await fetch(endpoint, { method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
 
-    if (!response.ok) {
-      const error = await response.json();
+    if (!response.ok) { const error = await response.json();
       throw new Error(error.error || 'Request failed');
     }
 
     return await response.json();
-  } catch (error) {
-    console.error('API error:', error);
+  } catch (error) { console.error('API error:', error);
     // Show user-friendly error message
     throw error;
   }
@@ -553,13 +520,9 @@ curl -X POST http://localhost:3000/api/download-cv \\
           {`// tests/api/chat.test.ts
 import { describe, it, expect } from 'vitest';
 
-describe('Chat API', () => {
-  it('should handle user messages', async () => {
-    const response = await fetch('http://localhost:3000/api/chat', {
-      method: 'POST',
+describe('Chat API', () => { it('should handle user messages', async () => { const response = await fetch('http://localhost:3000/api/chat', { method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        messages: [{ role: 'user', content: 'Hello' }],
+      body: JSON.stringify({ messages: [{ role: 'user', content: 'Hello' }],
       }),
     });
 
@@ -567,12 +530,9 @@ describe('Chat API', () => {
     // Assert streaming response
   });
 
-  it('should handle tool calls', async () => {
-    const response = await fetch('http://localhost:3000/api/chat', {
-      method: 'POST',
+  it('should handle tool calls', async () => { const response = await fetch('http://localhost:3000/api/chat', { method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        messages: [{ role: 'user', content: 'What are your hours?' }],
+      body: JSON.stringify({ messages: [{ role: 'user', content: 'What are your hours?' }],
       }),
     });
 
@@ -703,6 +663,4 @@ export default meta;
 
 type Story = StoryObj;
 
-export const Default: Story = {
-  render: () => <APIIntegrationDocsContent />,
-};
+export const Default: Story = { render: () => <APIIntegrationDocsContent /> };

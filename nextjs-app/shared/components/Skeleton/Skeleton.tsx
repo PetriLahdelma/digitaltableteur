@@ -18,7 +18,10 @@ export interface SkeletonProps {
   animate?: boolean;
 }
 
-const Skeleton: React.FC<SkeletonProps> = ({
+/**
+ * Skeleton component.
+ */
+export const Skeleton: React.FC<SkeletonProps> = ({
   variant = "text",
   width,
   height,

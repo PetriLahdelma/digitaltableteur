@@ -1,0 +1,98 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Text",
+  "tier": "atom",
+  "group": "display",
+  "status": "stable",
+  "description": "Body and inline typography with size, terminal, and line-height tokens.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-text",
+  "radixPrimitive": null,
+  "element": "p",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "semantic element via as prop"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — typography contrast and forced-colors verified in Storybook.",
+    "forcedColorsVerified": true,
+    "axeTestExempt": "Typography display; axe in colocated tests.",
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "id",
+    "lineHeight",
+    "ref",
+    "size",
+    "style",
+    "terminals"
+  ],
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/dev/code-window/page.tsx",
+      "since": "2026-05-27"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/templates/NextLayoutShell/NextLayoutShell.stories.tsx",
+      "since": "2026-05-27"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/ProofBlock/ProofBlock.tsx",
+      "since": "2026-05-27"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/GridBlock/GridBlock.stories.tsx",
+      "since": "2026-05-27"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/GridBlock/GridBlock.tsx",
+      "since": "2026-05-27"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/HighlightSection/HighlightSection.tsx",
+      "since": "2026-05-27"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/GridBlock/GridBlock.test.tsx",
+      "since": "2026-05-27"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.stories.tsx",
+      "since": "2026-05-27"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.tsx",
+      "since": "2026-05-27"
+    }
+  ]
+}

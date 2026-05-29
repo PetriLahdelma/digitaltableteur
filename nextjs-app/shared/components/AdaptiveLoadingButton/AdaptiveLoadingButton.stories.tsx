@@ -1,26 +1,25 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./AdaptiveLoadingButton.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import AdaptiveLoadingButton from "@dt/AdaptiveLoadingButton";
-import { within, userEvent } from "@storybook/testing-library";
-
-declare const expect: (typeof import("vitest"))["expect"];
+import { expect, userEvent, within } from "storybook/test";
 
 const meta: Meta<typeof AdaptiveLoadingButton> = {
-  title: "Components/AdaptiveLoadingButton",
+  argTypes: {},
+  title: "Molecules/AdaptiveLoadingButton",
   component: AdaptiveLoadingButton,
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "centered",
   },
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
 };
 
 export default meta;
 type Story = StoryObj<typeof AdaptiveLoadingButton>;
 
 export const Idle: Story = {
-  args: {
-    children: "Submit",
-    variant: "primary",
-  },
+  args: { children: "Submit", variant: "primary" },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole("button", { name: /submit/i });
@@ -30,11 +29,7 @@ export const Idle: Story = {
 };
 
 export const Loading: Story = {
-  args: {
-    children: "Saving",
-    loading: true,
-    variant: "primary",
-  },
+  args: { children: "Saving", loading: true, variant: "primary" },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole("button");
@@ -59,8 +54,16 @@ export const WithProgress: Story = {
 };
 
 export const Disabled: Story = {
-  args: {
-    children: "Disabled",
-    disabled: true,
-  },
+  args: { children: "Disabled", disabled: true },
+};
+
+export const Default = { tags: ["beta-matrix"] };
+export const Playground = { tags: ["beta-matrix"] };
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

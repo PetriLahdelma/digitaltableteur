@@ -1,15 +1,7 @@
+import contract from "./Link.contract.json";
 import React from "react";
 import Link from "@dt/Link";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import { useTranslation } from "react-i18next";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
@@ -87,36 +79,15 @@ const linkComplianceRules: ComplianceRule[] = [
 ];
 
 export default {
-  title: "Components/Link",
+  title: "Atoms/Link",
   component: Link,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     test: { disable: true },
     visualRegression: { disable: true },
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    llm: { schema },
   },
   argTypes: {
     size: {
@@ -124,8 +95,11 @@ export default {
       options: ["S", "M", "L"],
       description: "Size of the link",
     },
+
     href: { control: "text", description: "Link URL" },
+
     children: { control: "text", description: "Link text" },
+
     className: { control: "text", description: "Custom class name" },
   },
 } as Meta;
@@ -140,6 +114,7 @@ const Template: StoryFn<typeof Link> = (
 ) => <LinkStory {...args} />;
 
 export const Playground = Template.bind({});
+export const Default = Playground;
 Playground.args = {
   size: "M",
   href: "https://example.com",
@@ -151,11 +126,7 @@ Small.args = {
   href: "https://example.com",
   children: "storyLinkSmall",
 };
-Small.parameters = {
-  visualRegression: {
-    threshold: 0.004,
-  },
-};
+Small.parameters = { visualRegression: { threshold: 0.004 } };
 
 export const Medium = Template.bind({});
 Medium.args = {
@@ -163,11 +134,7 @@ Medium.args = {
   href: "https://example.com",
   children: "storyLinkMedium",
 };
-Medium.parameters = {
-  visualRegression: {
-    threshold: 0.004,
-  },
-};
+Medium.parameters = { visualRegression: { threshold: 0.004 } };
 
 export const Large = Template.bind({});
 Large.args = {
@@ -175,11 +142,7 @@ Large.args = {
   href: "https://example.com",
   children: "storyLinkLarge",
 };
-Large.parameters = {
-  visualRegression: {
-    threshold: 0.004,
-  },
-};
+Large.parameters = { visualRegression: { threshold: 0.004 } };
 
 export const Z_LinkCompliance: StoryFn = () => (
   <ComplianceCard
@@ -190,3 +153,26 @@ export const Z_LinkCompliance: StoryFn = () => (
     rules={linkComplianceRules}
   />
 );
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => (
+    <LinkStory
+      size="M"
+      href="https://www.digitaltableteur.com"
+      children="storyLinkPlayground"
+    />
+  ),
+};
+export const ForcedColors = {
+  globals: { forcedColors: "active" },
+  tags: ["beta-matrix"],
+  render: Template,
+  args: {
+    size: "M",
+    href: "https://example.com",
+    children: "storyLinkPlayground",
+  },
+};

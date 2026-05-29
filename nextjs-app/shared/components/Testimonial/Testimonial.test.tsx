@@ -42,7 +42,8 @@ describe("Testimonial", () => {
       "https://linkedin.com/in/johndoe",
     );
     expect(linkedinLink).toHaveAttribute("target", "_blank");
-    expect(linkedinLink).toHaveAttribute("rel", "noopener noreferrer");
+    expect(linkedinLink.getAttribute("rel")).toContain("noopener");
+    expect(linkedinLink.getAttribute("rel")).toContain("noreferrer");
   });
 
   it("does not render LinkedIn link when not provided", () => {

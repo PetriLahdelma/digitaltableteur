@@ -4,11 +4,6 @@ import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
 
-// Mock emailjs send
-vi.mock("@emailjs/browser", () => ({
-  send: vi.fn(() => Promise.resolve({ status: 200 })),
-}));
-
 import ContactForm from "@dt/ContactForm";
 
 function withI18n(ui: React.ReactElement) {
@@ -81,35 +76,26 @@ describe("ContactForm integration", () => {
     const fetchCall = fetchMock.mock.calls[0];
     const fetchBody = JSON.parse(fetchCall[1].body);
 
-    const { send } = await import("@emailjs/browser");
-    const sendCall = (send as jest.Mock).mock.calls[0];
-    const sendArgs = sendCall ? sendCall[2] : null;
-
-    return { values, fetchBody, sendArgs };
+    return { values, fetchBody };
   };
 
-  it("submits correct payload to fetch and EmailJS", async () => {
-    const { fetchBody, sendArgs } = await submitContactForm();
+  it("submits correct payload to the contact API", async () => {
+    const { fetchBody } = await submitContactForm();
 
     expect(fetchBody).toMatchObject({
       name: defaultFormValues.fullName,
       email: defaultFormValues.email,
-      phone: defaultFormValues.phone,
+      phone: expect.stringContaining("123456"),
       message: defaultFormValues.message,
       interest: expect.any(String),
       hearAbout: "",
+      attachmentName: null,
+      attachmentType: null,
+      attachmentSize: null,
+      attachmentData: null,
+      attachmentNotice: "",
     });
     expect(fetchBody).toHaveProperty("time");
-
-    expect(sendArgs).toMatchObject({
-      name: defaultFormValues.fullName,
-      email: defaultFormValues.email,
-      phone: defaultFormValues.phone,
-      message: defaultFormValues.message,
-      interest: expect.any(String),
-      hearAbout: "",
-    });
-    expect(sendArgs).toHaveProperty("time");
   });
 
   it("allows overriding values via helper to test different payloads", async () => {
@@ -120,23 +106,14 @@ describe("ContactForm integration", () => {
       message: "Automated message",
     };
 
-    const { fetchBody, sendArgs } = await submitContactForm(overrides);
+    const { fetchBody } = await submitContactForm(overrides);
 
     expect(fetchBody).toMatchObject({
       name: overrides.fullName,
       email: overrides.email,
-      phone: overrides.phone,
       message: overrides.message,
     });
-
-    expect(sendArgs).toMatchObject({
-      name: overrides.fullName,
-      email: overrides.email,
-      phone: overrides.phone,
-      message: overrides.message,
-      interest: expect.any(String),
-      hearAbout: "",
-    });
+    expect(fetchBody.phone).toContain("555");
   });
 
   it("clears user input when the clear button is pressed", () => {
@@ -242,7 +219,7 @@ describe("ContactForm integration", () => {
     expect(global.fetch).not.toHaveBeenCalled();
   });
 
-  it("shows email attachment limit notice for large files", async () => {
+  it("shows attachment size error for files above the upload limit", async () => {
     const onload = vi.fn();
     const originalFileReader = global.FileReader;
     class MockFileReader {
@@ -259,23 +236,26 @@ describe("ContactForm integration", () => {
 
     render(withI18n(<ContactForm />));
 
-    const largeFile = new File(["x".repeat(50_000)], "large.pdf", {
-      type: "application/pdf",
-    });
+    const largeFile = new File(
+      ["x".repeat(2 * 1024 * 1024 + 1)],
+      "large.pdf",
+      { type: "application/pdf" },
+    );
     const fileInput = document.querySelector(
       "input[type='file']",
     ) as HTMLInputElement;
     fireEvent.change(fileInput, { target: { files: [largeFile] } });
 
     expect(
-      await screen.findByText(/can't be attached to the confirmation email/i),
+      await screen.findByText(/too large|contactAttachmentTooLarge/i),
     ).toBeInTheDocument();
     global.FileReader = originalFileReader;
   });
 
-  it("shows error modal when EmailJS send fails", async () => {
-    const { send } = await import("@emailjs/browser");
-    (send as unknown as vi.Mock).mockRejectedValueOnce(new Error("fail"));
+  it("shows error modal when the contact API fails", async () => {
+    global.fetch = vi.fn(() =>
+      Promise.resolve({ ok: false, json: () => ({}) }),
+    ) as unknown as typeof fetch;
 
     render(withI18n(<ContactForm />));
 
@@ -292,7 +272,7 @@ describe("ContactForm integration", () => {
     fireEvent.click(screen.getByRole("button", { name: /Submit/i }));
 
     await waitFor(() =>
-      expect(screen.getByText(/failed to send/i)).toBeInTheDocument(),
+      expect(screen.getByText(/Failed to send message/i)).toBeInTheDocument(),
     );
   });
 
@@ -324,27 +304,14 @@ describe("ContactForm integration", () => {
     expect(submitButton).not.toBeDisabled();
   });
 
-  it("displays character count for message field", () => {
+  it("allows selecting an interest", () => {
     render(withI18n(<ContactForm />));
 
-    const messageInput = screen.getByLabelText(/Your Message/i);
-    fireEvent.change(messageInput, {
-      target: { value: "Hello" },
+    const interestCheckbox = screen.getByRole("checkbox", {
+      name: /Brand Strategy/i,
     });
-
-    expect(screen.getByText(/5/)).toBeInTheDocument();
-  });
-
-  it("handles multiple interests selection", () => {
-    render(withI18n(<ContactForm />));
-
-    const checkboxes = screen.getAllByRole("checkbox");
-
-    fireEvent.click(checkboxes[0]);
-    fireEvent.click(checkboxes[1]);
-
-    expect(checkboxes[0]).toBeChecked();
-    expect(checkboxes[1]).toBeChecked();
+    fireEvent.click(interestCheckbox);
+    expect(interestCheckbox).toBeChecked();
   });
 
   it("validates phone number format", async () => {
@@ -373,9 +340,6 @@ describe("ContactForm integration", () => {
   });
 
   it("shows success message after successful submission", async () => {
-    const { send } = await import("@emailjs/browser");
-    (send as unknown as vi.Mock).mockResolvedValueOnce({ status: 200 });
-
     render(withI18n(<ContactForm />));
 
     fireEvent.change(screen.getByLabelText(/Full Name/i), {

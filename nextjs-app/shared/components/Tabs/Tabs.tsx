@@ -52,6 +52,7 @@ export interface TabsProps {
  * ```
  */
 
+/** Tablist navigation with keyboard support and visual variants. */
 const Tabs: React.FC<TabsProps> = ({
   activeTab,
   defaultActiveTab,

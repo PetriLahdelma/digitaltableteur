@@ -37,7 +37,10 @@ export interface PersonCardProps {
   loading?: boolean;
 }
 
-const PersonCard: React.FC<PersonCardProps> = ({
+/**
+ * PersonCard component.
+ */
+export const PersonCard: React.FC<PersonCardProps> = ({
   imageSrc,
   imageAlt,
   imageSrcSet,

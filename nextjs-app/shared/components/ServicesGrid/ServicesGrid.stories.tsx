@@ -1,6 +1,7 @@
+import contract from "./ServicesGrid.contract.json";
 import React from "react";
 import ServicesGrid from "@dt/ServicesGrid";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { withTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
@@ -67,19 +68,17 @@ const servicesGridComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 const meta: Meta<typeof ServicesGrid> = {
-  title: "Components/AI/Chat/Custom Components/ServicesGrid",
+  argTypes: {},
+  title: "Organisms/ServicesGrid",
   component: ServicesGrid,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "centered",
   },
 };
@@ -89,9 +88,7 @@ export default meta;
 type Story = StoryObj<typeof ServicesGrid>;
 
 export const Z_ServicesGridCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="Compliance: 11/11"
@@ -104,5 +101,18 @@ export const Z_ServicesGridCompliance: Story = {
 };
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: () => <ServicesGrid />,
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

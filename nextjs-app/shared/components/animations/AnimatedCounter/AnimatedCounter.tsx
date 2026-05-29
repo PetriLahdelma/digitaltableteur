@@ -37,7 +37,11 @@ export function AnimatedCounter({
     () => {
       if (!ref.current || !numberRef.current) return;
 
-      if (motionPreference === "reduced") {
+      const prefersReduced =
+        motionPreference === "reduced" ||
+        (typeof window !== "undefined" &&
+          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
+      if (prefersReduced) {
         numberRef.current.textContent = `${prefix}${value}${suffix}`;
         return;
       }

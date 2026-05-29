@@ -13,18 +13,18 @@
 
 .description {
   margin: 0;
+  margin-block-end: 1rem;
+  margin-inline-end: var(--space-layout-32);
   font-size: var(--font-size-body-m);
   line-height: var(--line-height-m);
   color: var(--color-text);
-  margin-block-end: 1rem;
-  margin-inline-end: var(--space-layout-32);
 }
 
 .policyLink {
   margin: 0;
+  margin-block-start: 1rem;
   font-size: var(--font-size-body-s);
   color: var(--color-text-secondary);
-  margin-block-start: 1rem;
 }
 
 .policyLink a {
@@ -55,8 +55,8 @@
 }
 
 .categoryInfo {
-  flex: 0 1 66.67%;
   max-width: 66.67%;
+  flex: 0 1 66.67%;
 }
 
 .categoryTitle {

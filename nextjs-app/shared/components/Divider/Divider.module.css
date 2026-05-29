@@ -1,0 +1,26 @@
+/*
+ * Wrap defaults in @layer components so Tailwind utilities (in @layer utilities)
+ * win over the module's own reset. Without this, the module's unlayered rules
+ * always beat @layer utilities per CSS Cascade Layers, which silently clobbers
+ * consumer margin/size utilities like `my-8`.
+ */
+@layer components {
+  .horizontal,
+  .vertical {
+    margin: 0;
+    flex-shrink: 0;
+    border: none;
+    background-color: var(--color-border);
+  }
+
+  .horizontal {
+    block-size: 1px;
+    inline-size: 100%;
+  }
+
+  .vertical {
+    inline-size: 1px;
+    min-block-size: var(--space-layout-24);
+    align-self: stretch;
+  }
+}

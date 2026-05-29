@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- switch "Small (sm)" [checked]
+- text: Small (sm)
+- switch "Medium (md)" [checked]
+- text: Medium (md)
+- switch "Large (lg)" [checked]
+- text: Large (lg)

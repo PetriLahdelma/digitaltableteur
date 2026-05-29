@@ -33,23 +33,31 @@ export function SlideIn({
     () => {
       if (!ref.current) return;
 
-      const isReduced = motionPreference === "reduced";
-      const distance = isReduced ? 0 : 100;
-      const actualDuration = isReduced ? 0.2 : duration;
+      // For reduced motion, snap children to their final visible state instead
+      // of running a tween. Partial-opacity frames mid-slide otherwise misreport
+      // as color-contrast failures in the matrix axe runs.
+      const prefersReduced =
+        motionPreference === "reduced" ||
+        (typeof window !== "undefined" &&
+          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
+      if (prefersReduced) {
+        gsap.set(ref.current.children, { opacity: 1, x: 0, y: 0 });
+        return;
+      }
 
       const from: gsap.TweenVars = {
         opacity: 0,
-        ...(direction === "left" && { x: -distance }),
-        ...(direction === "right" && { x: distance }),
-        ...(direction === "up" && { y: distance }),
-        ...(direction === "down" && { y: -distance }),
+        ...(direction === "left" && { x: -100 }),
+        ...(direction === "right" && { x: 100 }),
+        ...(direction === "up" && { y: 100 }),
+        ...(direction === "down" && { y: -100 }),
       };
 
       gsap.from(ref.current.children, {
         ...from,
         delay,
-        duration: actualDuration,
-        stagger: isReduced ? 0 : stagger,
+        duration,
+        stagger,
         ease: "power3.out",
         scrollTrigger: {
           trigger: ref.current,

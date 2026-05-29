@@ -20,11 +20,11 @@ const themeIcons: Record<Theme, React.ReactNode> = {
   hcw: <Icon name="circle-half" ariaLabel="High contrast light" />,
 };
 
-type HeaderProps = {
+export interface HeaderProps {
   navItems?: HeaderNavItem[];
   onThemeCycle?: (nextTheme: Theme) => void;
   onLanguageChange?: (code: string) => void;
-};
+}
 
 export type HeaderNavItem = {
   to: string;
@@ -47,7 +47,10 @@ function getCookie(name: string) {
   }, "");
 }
 
-const Header: React.FC<HeaderProps> = ({
+/**
+ * Header component.
+ */
+export const Header: React.FC<HeaderProps> = ({
   navItems,
   onThemeCycle,
   onLanguageChange,
@@ -138,12 +141,6 @@ const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  React.useEffect(() => {
-    if (!hasMounted) return;
-    const label = themeNames[theme] ?? theme;
-    setThemeAnnouncement(t("headerThemeAnnouncement", { theme: label }));
-  }, [hasMounted, theme, themeNames, t]);
-
   const handleThemeToggle = () => {
     if (!isThemeAnimating) {
       setIsThemeAnimating(true);
@@ -154,6 +151,11 @@ const Header: React.FC<HeaderProps> = ({
     }
     const nextTheme = cycleTheme();
     onThemeCycle?.(nextTheme);
+    // Announce only on user-initiated changes (driven by the click handler),
+    // so initial paint never emits a spurious "Theme switched to ..."
+    // message that destabilised AT-tree snapshots in matrix CI.
+    const nextLabel = themeNames[nextTheme] ?? nextTheme;
+    setThemeAnnouncement(t("headerThemeAnnouncement", { theme: nextLabel }));
   };
 
   const handleOpenMobileMenu = () => setMobileMenuOpen(true);
@@ -205,7 +207,8 @@ const Header: React.FC<HeaderProps> = ({
             {resolvedNavItems.map((item) => {
               const isActive = item.exact
                 ? location.pathname === item.to
-                : location.pathname.startsWith(item.to);
+                : location.pathname === item.to ||
+                  location.pathname.startsWith(`${item.to}/`);
               return (
                 <li key={item.to}>
                   <Link

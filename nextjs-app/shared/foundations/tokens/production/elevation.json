@@ -1,0 +1,23 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "modal": {
+    "overlay": {
+      "bg": {
+        "$value": "rgb(0 0 0 / 50%)",
+        "$description": "Overlay or elevation token."
+      }
+    },
+    "shadow": {
+      "$value": "0 4px 8px rgb(0 0 0 / 20%)",
+      "$description": "Overlay or elevation token."
+    }
+  },
+  "gallery": {
+    "caption": {
+      "bg": {
+        "$value": "rgb(0 0 0 / 55%)",
+        "$description": "Overlay or elevation token."
+      }
+    }
+  }
+}

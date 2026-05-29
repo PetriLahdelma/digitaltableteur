@@ -1,23 +1,14 @@
+import contract from "./CheckboxGroup.contract.json";
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import { within, userEvent } from "@storybook/testing-library";
+import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import CheckboxGroup, { CheckboxGroupProps } from "@dt/CheckboxGroup";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-
 const checkboxGroupComplianceRules: ComplianceRule[] = [
   {
     id: "file-structure",
@@ -79,49 +70,33 @@ const checkboxGroupComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export default {
-  title: "Components/CheckboxGroup",
+  title: "Molecules/CheckboxGroup",
   component: CheckboxGroup,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
-    label: { control: "text" },
-    options: { control: "object" },
-    id: { control: "text" },
-    showMasterCheckbox: { control: "boolean" },
+    label: { control: "text", description: "Legend text for the group" },
+
+    options: {
+      control: "object",
+      description: "Checkbox options (label, value)",
+    },
+
+    id: { control: "text", description: "Base id for checkbox inputs" },
+
+    showMasterCheckbox: {
+      control: "boolean",
+      description: "Shows select-all master checkbox",
+      table: { defaultValue: { summary: "true" } },
+    },
   },
 } as Meta<CheckboxGroupProps>;
 
@@ -221,4 +196,23 @@ WithIndeterminateState.play = async ({
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findAllByRole("checkbox");
+};
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+};
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: Template,
+  args: Default.args,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

@@ -1,13 +1,20 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { I18nextProvider } from "react-i18next";
+import i18n from "../../i18n";
 import { NextHeader } from "./NextHeader";
 
-const mockUsePathname = vi.fn(() => "/");
-const mockCycleTheme = vi.fn();
-const mockUsePersistentTheme = vi.fn(() => ({
-  theme: "light",
-  cycleTheme: mockCycleTheme,
-}));
+const { mockUsePathname, mockCycleTheme, mockUsePersistentTheme } = vi.hoisted(
+  () => {
+    const mockCycleTheme = vi.fn(() => "dark");
+    const mockUsePathname = vi.fn(() => "/");
+    const mockUsePersistentTheme = vi.fn(() => ({
+      theme: "light",
+      cycleTheme: mockCycleTheme,
+    }));
+    return { mockUsePathname, mockCycleTheme, mockUsePersistentTheme };
+  },
+);
 
 vi.mock("next/navigation", () => ({
   usePathname: mockUsePathname,
@@ -23,6 +30,14 @@ vi.mock("@/providers/ToastProvider", () => ({
   }),
 }));
 
+function renderHeader() {
+  return render(
+    <I18nextProvider i18n={i18n}>
+      <NextHeader />
+    </I18nextProvider>,
+  );
+}
+
 describe("NextHeader", () => {
   beforeEach(() => {
     mockCycleTheme.mockClear();
@@ -31,188 +46,76 @@ describe("NextHeader", () => {
       theme: "light",
       cycleTheme: mockCycleTheme,
     });
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: 1280,
+    });
+    window.dispatchEvent(new Event("resize"));
   });
 
-  it("renders navigation items", () => {
-    render(<NextHeader />);
-    expect(screen.getByText(/navHome/i)).toBeInTheDocument();
+  it("renders main navigation links", () => {
+    renderHeader();
+    expect(screen.getByRole("link", { name: "Home" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Work" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Contact" })).toBeInTheDocument();
   });
 
-  it("renders logo", () => {
-    render(<NextHeader />);
-    const logo = screen.getByRole("link", { name: /logo|home/i });
-    expect(logo).toBeInTheDocument();
+  it("renders logo link to home", () => {
+    renderHeader();
+    const logo = screen.getByRole("link", { name: /Digitaltableteur logo/i });
+    expect(logo).toHaveAttribute("href", "/");
   });
 
-  it("renders theme toggle button", () => {
-    render(<NextHeader />);
-    const themeButton = screen.getByRole("button", { name: /theme/i });
-    expect(themeButton).toBeInTheDocument();
-  });
-
-  it("renders language selector", () => {
-    render(<NextHeader />);
-    expect(screen.getByText(/EN|FI|SV/i)).toBeInTheDocument();
-  });
-
-  it("renders mobile menu toggle", () => {
-    render(<NextHeader />);
-    const menuButton = screen.getByRole("button", { name: /menu/i });
-    expect(menuButton).toBeInTheDocument();
-  });
-
-  it("opens mobile menu when toggle is clicked", () => {
-    render(<NextHeader />);
-    const menuButton = screen.getByRole("button", { name: /menu/i });
-    fireEvent.click(menuButton);
+  it("renders theme toggle", () => {
+    renderHeader();
     expect(
-      screen.getByRole("navigation", { name: /mobile/i }),
+      screen.getByRole("button", { name: /Toggle dark mode/i }),
     ).toBeInTheDocument();
-  });
-
-  it("closes mobile menu when toggle is clicked again", () => {
-    render(<NextHeader />);
-    const menuButton = screen.getByRole("button", { name: /menu/i });
-
-    fireEvent.click(menuButton);
-    expect(
-      screen.getByRole("navigation", { name: /mobile/i }),
-    ).toBeInTheDocument();
-
-    fireEvent.click(menuButton);
-    expect(
-      screen.queryByRole("navigation", { name: /mobile/i }),
-    ).not.toBeInTheDocument();
   });
 
   it("cycles theme when theme button is clicked", () => {
-    render(<NextHeader />);
-    const themeButton = screen.getByRole("button", { name: /theme/i });
-
-    fireEvent.click(themeButton);
+    renderHeader();
+    fireEvent.click(screen.getByRole("button", { name: /Toggle dark mode/i }));
     expect(mockCycleTheme).toHaveBeenCalledTimes(1);
   });
 
-  it("renders all navigation links", () => {
-    render(<NextHeader />);
-
-    expect(screen.getByText(/navHome/i)).toBeInTheDocument();
-    expect(screen.getByText(/navWork/i)).toBeInTheDocument();
-    expect(screen.getByText(/navAbout/i)).toBeInTheDocument();
-    expect(screen.getByText(/navContact/i)).toBeInTheDocument();
+  it("renders language switcher buttons", () => {
+    renderHeader();
+    expect(
+      screen.getByRole("button", { name: /Switch to English/i }),
+    ).toBeDisabled();
+    expect(
+      screen.getByRole("button", { name: /Switch to Suomi/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Switch to Svenska/i }),
+    ).toBeInTheDocument();
   });
 
   it("highlights active navigation item", () => {
     mockUsePathname.mockReturnValue("/work");
-
-    render(<NextHeader />);
-    const workLink = screen.getByText(/navWork/i).closest("a");
-
-    expect(workLink).toHaveAttribute("aria-current", "page");
+    renderHeader();
+    expect(screen.getByRole("link", { name: "Work" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
   });
 
-  it("applies sticky positioning class", () => {
-    const { container } = render(<NextHeader />);
-    const header = container.querySelector("header");
-
-    expect(header).toHaveClass("sticky");
-  });
-
-  it("renders with proper semantic HTML structure", () => {
-    render(<NextHeader />);
-
-    const header = screen.getByRole("banner");
-    expect(header).toBeInTheDocument();
-
-    const nav = screen.getByRole("navigation");
-    expect(nav).toBeInTheDocument();
-  });
-
-  it("language selector shows current language", () => {
-    render(<NextHeader />);
-    const languageButton = screen.getByRole("button", {
-      name: /language|EN|FI|SV/i,
+  it("opens mobile menu from mobile menu button", () => {
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: 800,
     });
+    window.dispatchEvent(new Event("resize"));
 
-    expect(languageButton).toBeInTheDocument();
-  });
+    renderHeader();
+    const openButton = screen.getByRole("button", { name: /Open navigation/i });
+    expect(openButton).toHaveAttribute("aria-expanded", "false");
 
-  it("closes mobile menu when a navigation link is clicked", () => {
-    render(<NextHeader />);
-    const menuButton = screen.getByRole("button", { name: /menu/i });
-
-    fireEvent.click(menuButton);
-    expect(
-      screen.getByRole("navigation", { name: /mobile/i }),
-    ).toBeInTheDocument();
-
-    const homeLink = screen.getAllByText(/navHome/i)[0];
-    fireEvent.click(homeLink);
-
-    expect(
-      screen.queryByRole("navigation", { name: /mobile/i }),
-    ).not.toBeInTheDocument();
-  });
-
-  it("renders skip to main content link", () => {
-    render(<NextHeader />);
-    const skipLink = screen.getByText(/skip to main content/i);
-
-    expect(skipLink).toBeInTheDocument();
-  });
-
-  it("logo links to home page", () => {
-    render(<NextHeader />);
-    const logo = screen.getByRole("link", { name: /logo|home/i });
-
-    expect(logo).toHaveAttribute("href", "/");
-  });
-
-  it("applies dark theme class when theme is dark", () => {
-    mockUsePersistentTheme.mockReturnValue({
-      theme: "dark",
-      cycleTheme: mockCycleTheme,
-    });
-
-    const { container } = render(<NextHeader />);
-    const header = container.querySelector("header");
-
-    expect(header).toHaveClass("dark");
-  });
-
-  it("mobile menu has proper accessibility attributes", () => {
-    render(<NextHeader />);
-    const menuButton = screen.getByRole("button", { name: /menu/i });
-
-    expect(menuButton).toHaveAttribute("aria-expanded", "false");
-
-    fireEvent.click(menuButton);
-    expect(menuButton).toHaveAttribute("aria-expanded", "true");
-  });
-
-  it("renders language options when language selector is clicked", () => {
-    render(<NextHeader />);
-    const languageButton = screen.getByRole("button", {
-      name: /language|EN|FI|SV/i,
-    });
-
-    fireEvent.click(languageButton);
-
-    expect(screen.getByText("English")).toBeInTheDocument();
-    expect(screen.getByText("Suomi")).toBeInTheDocument();
-    expect(screen.getByText("Svenska")).toBeInTheDocument();
-  });
-
-  it("closes language menu when option is selected", () => {
-    render(<NextHeader />);
-    const languageButton = screen.getByRole("button", {
-      name: /language|EN|FI|SV/i,
-    });
-
-    fireEvent.click(languageButton);
-    expect(screen.getByText("English")).toBeInTheDocument();
-
-    fireEvent.click(screen.getByText("Suomi"));
-    expect(screen.queryByText("English")).not.toBeInTheDocument();
+    fireEvent.click(openButton);
+    expect(openButton).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
 });

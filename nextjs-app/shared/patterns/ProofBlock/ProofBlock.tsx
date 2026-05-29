@@ -21,7 +21,10 @@ export interface ProofBlockProps {
   className?: string;
 }
 
-const ProofBlock: React.FC<ProofBlockProps> = ({
+/**
+ * ProofBlock component.
+ */
+export const ProofBlock: React.FC<ProofBlockProps> = ({
   ariaLabel,
   title,
   subTitle,
