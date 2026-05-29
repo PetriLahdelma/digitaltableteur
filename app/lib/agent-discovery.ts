@@ -15,5 +15,26 @@ export function getAgentDiscoveryLinkHeader(): string {
   return links.join(", ");
 }
 
-export const contentSignal =
-  "ai-train=no, search=yes, ai-input=yes";
+export const contentSignal = "ai-train=no, search=yes, ai-input=yes";
+
+/** robots.txt body — custom route; MetadataRoute.Robots `other` omits Content-Signal. */
+export function buildRobotsTxtBody(): string {
+  return [
+    "User-Agent: *",
+    "Allow: /",
+    "Disallow: /api",
+    "Disallow: /api/",
+    "Disallow: /studio",
+    "Disallow: /studio/",
+    "",
+    `Content-Signal: ${contentSignal}`,
+    "",
+    `Host: ${baseUrl}`,
+    `Sitemap: ${baseUrl}/sitemap.xml`,
+    `LLMs-Txt: ${baseUrl}/llms.txt`,
+    "",
+  ].join("\n");
+}
+
+/** Set by middleware when homepage is negotiated with Accept: text/markdown */
+export const markdownNegotiationHeader = "x-accept-markdown";

@@ -1,5 +1,7 @@
+import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
+import { markdownNegotiationHeader } from "@/app/lib/agent-discovery";
 import { getVisiblePosts } from "../blog/postMetadata";
 import { projects } from "@/nextjs-app/shared/data/projects";
 import { getPseoLeafPages } from "@/lib/pseo/catalog";
@@ -11,6 +13,10 @@ const baseUrl =
 export const revalidate = 600;
 
 export async function GET() {
+  const requestHeaders = await headers();
+  const isMarkdownNegotiation =
+    requestHeaders.get(markdownNegotiationHeader) === "1";
+
   const pseoPages = getPseoLeafPages().slice(0, 8);
   const featuredProjects = projects.filter((project) => project.featured);
   const posts = getVisiblePosts();
@@ -36,6 +42,14 @@ export async function GET() {
   body += `- Accessibility page: ${baseUrl}/accessibility\n`;
   body += `- Programmatic SEO hub: ${baseUrl}/pseo\n`;
   body += `- Detailed context file: ${baseUrl}/llms-full.txt\n\n`;
+
+  body += "## Agent skills and workflows (for coding agents)\n\n";
+  body += `- Skills index (JSON): ${baseUrl}/.well-known/agent-skills/index.json\n`;
+  body += `- Dynamic workflow skill: ${baseUrl}/.well-known/agent-skills/dt-workflow\n`;
+  body += `- Workflow prompt templates: ${baseUrl}/.well-known/agent-skills/dt-workflow/references/templates.md\n`;
+  body += `- Human skill map: repo AGENT_INDEX.md (dt-design-system, dt-nextjs-app, dt-workflow, …)\n`;
+  body += `- API catalog: ${baseUrl}/.well-known/api-catalog\n`;
+  body += `- A2A agent card: ${baseUrl}/.well-known/agent-card.json\n\n`;
 
   body += "## Services and capabilities\n\n";
   body +=
@@ -76,11 +90,19 @@ export async function GET() {
   body +=
     "- Use the contact page when the user intent is to work with Digitaltableteur or ask about services.\n";
 
+  const responseHeaders: Record<string, string> = {
+    "Cache-Control": "public, max-age=86400, s-maxage=86400",
+    "Content-Type": isMarkdownNegotiation
+      ? "text/markdown; charset=utf-8"
+      : "text/plain; charset=utf-8",
+  };
+
+  if (isMarkdownNegotiation) {
+    responseHeaders.Vary = "Accept";
+  }
+
   return new NextResponse(body, {
     status: 200,
-    headers: {
-      "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, max-age=86400, s-maxage=86400",
-    },
+    headers: responseHeaders,
   });
 }

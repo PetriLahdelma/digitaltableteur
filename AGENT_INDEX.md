@@ -44,6 +44,7 @@ Principles (Apple-style + [Agent Skills](https://agentskills.io)):
 | [`dt-scripts`](.claude/skills/dt-scripts/SKILL.md) | Linear, Sentry, visual regression, deploy scripts |
 | [`dt-sanity-cms`](.claude/skills/dt-sanity-cms/SKILL.md) | Blog posts, Sanity studio, manifest publish |
 | [`dt-ship-pr`](.claude/skills/dt-ship-pr/SKILL.md) | Commit, push, create PR (user-only) |
+| [`dt-workflow`](.claude/skills/dt-workflow/SKILL.md) | Dynamic workflows / ultracode bulk sweeps with test gates |
 | [`add-project`](.claude/skills/add-project/SKILL.md) | New portfolio / work case study |
 | [`brainstorming`](.claude/skills/brainstorming/SKILL.md) | Creative features before implementation |
 | [`claude-automation-recommender`](claude-code-setup plugin) | Audit hooks/skills/MCP gaps — say "recommend automations" |
