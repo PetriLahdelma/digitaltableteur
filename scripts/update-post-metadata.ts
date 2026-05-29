@@ -115,7 +115,46 @@ const collectPostFiles = (dir: string, kind: "post" | "draft") => {
   return files.map(readFrontmatter).filter((post) => isBundledPost(post, kind));
 };
 
+const newestMtime = (dirs: string[]) => {
+  let newest = 0;
+  const walk = (dir: string) => {
+    if (!fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const filePath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walk(filePath);
+        continue;
+      }
+      if (!/\.mdx?$/i.test(entry.name)) continue;
+      newest = Math.max(newest, fs.statSync(filePath).mtimeMs);
+    }
+  };
+  for (const dir of dirs) walk(dir);
+  return newest;
+};
+
+const metadataIsUpToDate = () => {
+  if (process.env.FORCE_POST_METADATA === "1") return false;
+  try {
+    const scriptMtime = fs.statSync(__filename).mtimeMs;
+    const contentMtime = newestMtime([POSTS_DIR, DRAFTS_DIR]);
+    return OUTPUTS.every((outputPath) => {
+      const outStat = fs.statSync(outputPath);
+      return (
+        outStat.mtimeMs >= contentMtime && outStat.mtimeMs >= scriptMtime
+      );
+    });
+  } catch {
+    return false;
+  }
+};
+
 const generate = () => {
+  if (metadataIsUpToDate()) {
+    console.log("Skipping post metadata (up to date).");
+    return;
+  }
+
   const posts = [
     ...collectPostFiles(POSTS_DIR, "post"),
     ...collectPostFiles(DRAFTS_DIR, "draft"),

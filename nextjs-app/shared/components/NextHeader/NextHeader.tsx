@@ -24,6 +24,7 @@ const navItemsBase = [
   { href: "/", labelKey: "navHome", exact: true },
   { href: "/work", labelKey: "navWork" },
   { href: "/about", labelKey: "navAbout" },
+  { href: "/pricing", labelKey: "navPricing" },
   { href: "/blog", labelKey: "navBlog" },
   { href: "/contact", labelKey: "navContact" },
 ];

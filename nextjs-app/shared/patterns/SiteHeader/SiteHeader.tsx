@@ -29,6 +29,7 @@ const defaultNavItems: NavItem[] = [
   { href: "/", label: "navHome", exact: true },
   { href: "/work", label: "navWork" },
   { href: "/about", label: "navAbout" },
+  { href: "/pricing", label: "navPricing" },
   { href: "/blog", label: "navBlog" },
   { href: "/contact", label: "navContact" },
 ];

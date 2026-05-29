@@ -73,6 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
       { to: "/", label: t("navHome"), exact: true },
       { to: "/work", label: t("navWork") },
       { to: "/about", label: t("navAbout") },
+      { to: "/pricing", label: t("navPricing") },
       { to: "/blog", label: t("navBlog") },
       { to: "/contact", label: t("navContact") },
     ],

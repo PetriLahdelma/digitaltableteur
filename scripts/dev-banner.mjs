@@ -21,6 +21,8 @@ ${LIME}                ██
 ${LIME}                ██${RESET}
 
   ${DIM}digitaltableteur • Development Server Starting...${RESET}
+  ${DIM}First route compile takes ~30–60s (13k modules). Do not refresh until this terminal shows “✓ Compiled /your-route”.${RESET}
+  ${DIM}Blog/codeblock generators run on build only — use \`npm run generate:blog\` after editing posts.${RESET}
 `;
 
 console.log(banner);
