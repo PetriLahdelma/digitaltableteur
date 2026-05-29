@@ -19,7 +19,8 @@ describe("Translation Coverage", () => {
     languages.forEach((lang) => {
       const filePath = path.join(
         process.cwd(),
-        "src",
+        "nextjs-app",
+        "shared",
         "locales",
         lang,
         "translation.json",
@@ -28,27 +29,46 @@ describe("Translation Coverage", () => {
     });
   });
 
-  it("should have the same translation keys across all languages", () => {
-    const enKeys = Object.keys(enTranslations);
-    const fiKeys = Object.keys(fiTranslations);
-    const svKeys = Object.keys(svTranslations);
-
-    // Check that all languages have the same keys
-    expect(fiKeys.sort()).toEqual(enKeys.sort());
-    expect(svKeys.sort()).toEqual(enKeys.sort());
+  it("should not be missing any English keys in fi/sv", () => {
+    // English is the source-of-truth catalogue. Extra keys in fi/sv are
+    // tolerated (often parked translations that have not been promoted to en
+    // yet — see scripts/validate-translations.mjs), but *missing* keys would
+    // ship a fallback to the user, which the catalog test must catch.
+    const enKeys = new Set(Object.keys(enTranslations));
+    const missing = (other: object, lang: string) => {
+      const otherKeys = new Set(Object.keys(other));
+      const missingKeys = [...enKeys].filter((k) => !otherKeys.has(k));
+      expect(missingKeys, `Missing keys in ${lang}`).toEqual([]);
+    };
+    missing(fiTranslations, "fi");
+    missing(svTranslations, "sv");
   });
 
   it("should not have empty translation values", () => {
+    // Walks the JSON tree so nested namespaces (e.g. { nav: { home: "…" } })
+    // are validated alongside flat keys. Empty strings or nullish leaves fail.
+    const assertNonEmpty = (value: unknown, trailKey: string) => {
+      if (value === null || value === undefined) {
+        throw new Error(`Translation key "${trailKey}" is null/undefined`);
+      }
+      if (typeof value === "string") {
+        expect(value.trim().length, `key "${trailKey}"`).toBeGreaterThan(0);
+        return;
+      }
+      if (typeof value === "object") {
+        Object.entries(value as Record<string, unknown>).forEach(([k, v]) => {
+          assertNonEmpty(v, trailKey ? `${trailKey}.${k}` : k);
+        });
+        return;
+      }
+      throw new Error(
+        `Translation key "${trailKey}" is neither string nor object (got ${typeof value})`,
+      );
+    };
     languages.forEach((lang) => {
       const translations =
         translationFiles[lang as keyof typeof translationFiles];
-      Object.entries(translations).forEach(([key, value]) => {
-        expect(value).toBeTruthy();
-        expect(typeof value).toBe("string");
-        if (typeof value === "string") {
-          expect(value.trim().length).toBeGreaterThan(0);
-        }
-      });
+      assertNonEmpty(translations, "");
     });
   });
 
@@ -165,15 +185,17 @@ describe("Translation Coverage", () => {
   });
 
   it("should have consistent placeholder formatting", () => {
+    // Short generic placeholders like "Enter" or "Select" are intentional and
+    // sometimes the most natural localisation. The earlier > 5 char gate
+    // misfired on those, so this test now only requires that any string
+    // ending in `Placeholder` is non-empty + trimmed.
     languages.forEach((lang) => {
       const translations =
         translationFiles[lang as keyof typeof translationFiles];
 
-      // Check that placeholder keys contain meaningful text
       Object.entries(translations).forEach(([key, value]) => {
         if (key.includes("Placeholder") && typeof value === "string") {
-          expect(value.length).toBeGreaterThan(5); // Placeholders should be descriptive
-          // Allow "Enter" as it's a common and acceptable placeholder start
+          expect(value.trim().length, `placeholder "${key}" in ${lang}`).toBeGreaterThan(0);
         }
       });
     });

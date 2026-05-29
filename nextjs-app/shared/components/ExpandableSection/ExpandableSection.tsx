@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, type ReactNode } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import styles from "./ExpandableSection.module.css";
 
@@ -37,6 +37,20 @@ export function ExpandableSection({
   const [internalExpanded, setInternalExpanded] = useState(defaultExpanded);
   const isControlled = controlledExpanded !== undefined;
   const isExpanded = isControlled ? controlledExpanded : internalExpanded;
+  // Reduced-motion bypass: framer-motion's MotionConfig only skips transforms
+  // (x/y/scale), not opacity/height. Under reduce we therefore set the morph
+  // animation duration to 0 so axe never samples partial-opacity expansion
+  // frames (which were tripping color-contrast on the revealed body copy).
+  const prefersReducedMotion = useReducedMotion();
+  const morphTransition = prefersReducedMotion
+    ? { height: { duration: 0 }, opacity: { duration: 0 } }
+    : {
+        height: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+        opacity: { duration: 0.3, ease: [0.33, 1, 0.68, 1] as const },
+      };
+  const innerTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const, delay: 0.1 };
 
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -73,30 +87,17 @@ export function ExpandableSection({
         {isExpanded && (
           <motion.div
             ref={contentRef}
-            initial={{ height: 0, opacity: 0 }}
+            initial={prefersReducedMotion ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{
-              height: {
-                duration: 0.5,
-                ease: [0.16, 1, 0.3, 1], // ease-out-expo
-              },
-              opacity: {
-                duration: 0.3,
-                ease: [0.33, 1, 0.68, 1], // ease-out-cubic
-              },
-            }}
+            exit={prefersReducedMotion ? { height: 0, opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={morphTransition}
             className={styles.content}
           >
             <motion.div
-              initial={{ y: 16 }}
+              initial={prefersReducedMotion ? false : { y: 16 }}
               animate={{ y: 0 }}
-              exit={{ y: 16 }}
-              transition={{
-                duration: 0.4,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.1,
-              }}
+              exit={prefersReducedMotion ? { y: 0 } : { y: 16 }}
+              transition={innerTransition}
               className={styles.inner}
             >
               {children}

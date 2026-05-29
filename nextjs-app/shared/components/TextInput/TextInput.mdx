@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './TextInput.stories';
+
+<Meta of={Stories} />
+
+# TextInput
+
+**Status:** alpha · **Tier:** atom · **Group:** form
+
+Single-line input atom used inside `FormField`. Owns the focus ring, error border, and icon slots so consumers do not restyle the native `<input>` per form.
+
+## In use
+
+See the **Default** and **Playground** stories. Example and ForcedColors
+stories are added at the alpha → beta promotion (see Roadmap Phase 2).
+
+## How to use
+
+```tsx
+import { TextInput } from '@dt/TextInput';
+
+<TextInput />
+```
+
+## When to use
+
+- Every single-line text input on the site (search, email, name, …).
+
+## When not to use
+
+- Phone numbers — use `PhoneInput` which owns formatting and validation.
+- Multi-line text — use `TextArea`.
+
+## Accessibility
+
+### Keyboard
+
+- Tab — focuses the input.
+- Esc when `clearable` and the input has a value — clears the value (when the clear button is the active element).
+
+### ARIA / semantics
+
+- Renders a native `<input>`; HTML autocomplete + form-association attributes pass through.
+- `error` is a visual state — the actual error message lives in the surrounding `FormField`'s helper text.
+- Clear button has `aria-label='Clear input'` and is hidden when the input is empty.
+
+### Reduced motion
+
+- No own motion.
+
+## Promotion notes
+
+- Bucket-1 catalog-gap migration. Status is intentionally **alpha** until the
+  beta gates land: ForcedColors story, real-browser HC verification,
+  light/dark theme verification, a11y review notes, and a Figma node reference.

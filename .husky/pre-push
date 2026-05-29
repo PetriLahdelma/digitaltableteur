@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+changed=$(git diff --name-only HEAD @{push} 2>/dev/null || git diff --name-only --cached)
+echo "$changed" | grep -qE 'nextjs-app/shared/(components|patterns|foundations)|scripts/design-system' || exit 0
+npm run validate:components
+npm run typecheck
+npm run lint
+npm run lint:css

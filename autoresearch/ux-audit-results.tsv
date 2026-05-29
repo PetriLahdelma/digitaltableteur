@@ -1,0 +1,24 @@
+iteration	category	severity	issue	file	line	evidence
+0	accessibility	critical	Missing skip-to-main-content link	app/layout.tsx	99-208	No skip link in root layout; keyboard users must tab through entire header/nav
+0	accessibility	critical	Missing semantic H1 on homepage	nextjs-app/shared/patterns/HomeHero/HomeHero.tsx	60	Hero headline uses <div> wrapper instead of <h1>; screen readers can't identify primary heading
+0	design	critical	Hard-coded yellow background on project nav	nextjs-app/shared/patterns/ProjectDetailLayout/ProjectDetailLayout.tsx	78	inline style backgroundColor: '#DFFF00' — not from design tokens, likely debug code
+0	trust	high	No testimonials or case study quotes	nextjs-app/shared/components/pages/Home/HomePage.tsx	-	Client logos present but zero testimonials/quotes; missing key trust signal
+0	conversion	high	Generic CTA copy on homepage hero	nextjs-app/shared/patterns/HomeHero/HomeHero.tsx	105-118	Primary CTA is "Get in touch" with no value proposition; low conversion specificity
+0	accessibility	high	Video elements lack captions/transcripts	nextjs-app/shared/patterns/ProjectHero/ProjectHero.tsx	108-121	Videos have aria-label but no captions, subtitles, or transcript links; WCAG 2.1 AA violation
+0	accessibility	high	ScrollIndicator missing descriptive label	nextjs-app/shared/components/ScrollIndicator/ScrollIndicator.tsx	52	Fallback "Scroll to content" is vague; HomeHero passes no explicit label
+0	accessibility	high	WorkMagneticField card links lack semantic text	nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.tsx	226-246	Cards have role="listitem" but no aria-label on linked elements
+0	accessibility	high	IllustrationsPage drag interactions not keyboard accessible	nextjs-app/shared/components/pages/Work/IllustrationsPage.tsx	-	Complex drag/drop/rotate/resize with no keyboard navigation or screen reader announcements
+0	accessibility	medium	Missing aria-required on contact form inputs	nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.tsx	320-350	Required fields have asterisk but inputs lack aria-required="true"
+0	ux	medium	Random hero content without aria-live	nextjs-app/shared/patterns/HomeHero/HomeHero.tsx	62-78	Content changes after mount via useEffect without aria-live="polite" announcement
+0	ux	medium	RelatedProjects returns null with no fallback CTA	nextjs-app/shared/patterns/RelatedProjects/RelatedProjects.tsx	-	Returns null when empty; missed "Browse more work" opportunity
+0	performance	medium	ClientLogoMarquee renders 36 images without lazy loading	nextjs-app/shared/components/ClientLogoMarquee/ClientLogoMarquee.tsx	85-95	18 logos x2 for loop = 36 img elements with loading="eager"
+0	performance	medium	No lazy loading for below-fold homepage sections	nextjs-app/shared/components/pages/Home/HomePage.tsx	-	All patterns rendered eagerly; no dynamic() imports for below-fold sections
+0	performance	medium	Missing image optimization in SapBuildAppsPage	nextjs-app/shared/components/pages/Work/SapBuildAppsPage.tsx	-	Team member images use plain <img> tags instead of next/image
+0	ux	medium	Missing error.tsx files for route error boundaries	app/	-	No error.tsx files found for about, contact, work, blog routes
+0	trust	medium	Projects missing measurable results/metrics	nextjs-app/shared/data/projects.ts	-	No duration, client name, team size, or measurable outcomes stored
+0	conversion	medium	DesignSprintsSection CTA links to generic /contact	nextjs-app/shared/patterns/DesignSprintsSection/	-	No service pre-selection via URL params; friction for interested users
+0	design	medium	CTASection texture overlay uses inline base64 SVG	nextjs-app/shared/patterns/CTASection/CTASection.tsx	116-119	Large base64-encoded SVG inlined on every CTA section instance
+0	accessibility	low	Language switcher buttons may lack descriptive aria-labels	nextjs-app/shared/patterns/SiteHeader/	-	Language options need aria-label="Switch to {language}" for screen readers
+0	performance	low	WorkMagneticField no image skeleton during load	nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.tsx	-	Empty cards animate in while images load; perceived slow load
+0	ux	low	Translation keys with long English fallback strings in JSX	nextjs-app/shared/components/pages/Home/HomePage.tsx	134-137	Long fallbacks should be in translation.json, not inline
+0	conversion	low	No analytics event tracking on key CTAs	Multiple CTA files	-	data-donny-interest attributes present but no onClick analytics calls

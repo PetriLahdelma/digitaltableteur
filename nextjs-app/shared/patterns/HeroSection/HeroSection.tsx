@@ -50,6 +50,9 @@ const backgroundClasses: Record<NonNullable<HeroSectionProps["background"]>, str
   transparent: "bg-transparent",
 };
 
+/**
+ * HeroSection component.
+ */
 export function HeroSection({
   children,
   background = "transparent",

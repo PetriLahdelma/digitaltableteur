@@ -1,0 +1,49 @@
+{
+  "space": {
+    "$description": "Layout and internal spacing scale",
+    "layout": {
+      "4": {
+        "$value": "0.25rem",
+        "$type": "dimension",
+        "$description": "4px"
+      },
+      "8": {
+        "$value": "0.5rem",
+        "$type": "dimension",
+        "$description": "8px"
+      },
+      "12": {
+        "$value": "0.75rem",
+        "$type": "dimension",
+        "$description": "12px"
+      },
+      "16": {
+        "$value": "1rem",
+        "$type": "dimension",
+        "$description": "16px"
+      },
+      "24": {
+        "$value": "1.5rem",
+        "$type": "dimension",
+        "$description": "24px"
+      }
+    },
+    "internal": {
+      "4": {
+        "$value": "0.25rem",
+        "$type": "dimension",
+        "$description": "4px"
+      },
+      "8": {
+        "$value": "0.5rem",
+        "$type": "dimension",
+        "$description": "8px"
+      },
+      "12": {
+        "$value": "0.75rem",
+        "$type": "dimension",
+        "$description": "12px"
+      }
+    }
+  }
+}

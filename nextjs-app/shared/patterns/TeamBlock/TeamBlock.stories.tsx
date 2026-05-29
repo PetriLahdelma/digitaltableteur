@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./TeamBlock.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import TeamBlock from "./TeamBlock";
 import type { TeamBlockProps } from "./TeamBlock";
@@ -97,7 +98,7 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
                   />
                 </div>
                 <Title
-                  level={4}
+                  level={3}
                   terminals="sans"
                   size="XS"
                   className={styles.memberName}
@@ -119,11 +120,15 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
 const meta: Meta<typeof TeamBlockForStorybook> = {
   title: "Patterns/TeamBlock",
   component: TeamBlockForStorybook,
-  tags: ["autodocs", "!test"], // Exclude from Vitest tests
+  // Exclude from Vitest tests
+  tags: ["beta", "!autodocs", "!test"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
     vitest: {
-      skip: true, // Skip Vitest tests for this complex pattern component
+      // Skip Vitest tests for this complex pattern component
+      skip: true,
     },
   },
   argTypes: {
@@ -238,52 +243,21 @@ const smallTeam = [
 
 // Large team example
 const largeTeam = [
-  {
-    name: "Alex Rivera",
-    title: "Creative Director",
-    image: "placeholder",
-  },
-  {
-    name: "Jordan Lee",
-    title: "Lead Designer",
-    image: "placeholder",
-  },
-  {
-    name: "Taylor Swift",
-    title: "Senior Developer",
-    image: "placeholder",
-  },
-  {
-    name: "Casey Morgan",
-    title: "UX Designer",
-    image: "placeholder",
-  },
-  {
-    name: "Jamie Park",
-    title: "Frontend Engineer",
-    image: "placeholder",
-  },
-  {
-    name: "Riley Chen",
-    title: "Product Manager",
-    image: "placeholder",
-  },
-  {
-    name: "Avery Johnson",
-    title: "UI Designer",
-    image: "placeholder",
-  },
-  {
-    name: "Morgan Davis",
-    title: "Backend Developer",
-    image: "placeholder",
-  },
+  { name: "Alex Rivera", title: "Creative Director", image: "placeholder" },
+  { name: "Jordan Lee", title: "Lead Designer", image: "placeholder" },
+  { name: "Taylor Swift", title: "Senior Developer", image: "placeholder" },
+  { name: "Casey Morgan", title: "UX Designer", image: "placeholder" },
+  { name: "Jamie Park", title: "Frontend Engineer", image: "placeholder" },
+  { name: "Riley Chen", title: "Product Manager", image: "placeholder" },
+  { name: "Avery Johnson", title: "UI Designer", image: "placeholder" },
+  { name: "Morgan Davis", title: "Backend Developer", image: "placeholder" },
 ];
 
 /**
  * Default story showing a 5-person team (Helsinki Design System)
  */
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     members: smallTeam,
     sectionTitle: "Team",
@@ -456,26 +430,14 @@ export const ArticleVariant: Story = {
 export const DesignTeam: Story = {
   args: {
     members: [
-      {
-        name: "Alex Rivera",
-        title: "Design Director",
-        image: "placeholder",
-      },
+      { name: "Alex Rivera", title: "Design Director", image: "placeholder" },
       {
         name: "Jordan Lee",
         title: "Lead Product Designer",
         image: "placeholder",
       },
-      {
-        name: "Taylor Morgan",
-        title: "UI/UX Designer",
-        image: "placeholder",
-      },
-      {
-        name: "Casey Park",
-        title: "Visual Designer",
-        image: "placeholder",
-      },
+      { name: "Taylor Morgan", title: "UI/UX Designer", image: "placeholder" },
+      { name: "Casey Park", title: "Visual Designer", image: "placeholder" },
     ],
     sectionTitle: "Design Team",
     description: "Our creative minds shaping exceptional user experiences.",
@@ -491,31 +453,15 @@ export const DesignTeam: Story = {
 export const DevelopmentTeam: Story = {
   args: {
     members: [
-      {
-        name: "Jamie Chen",
-        title: "Tech Lead",
-        image: "placeholder",
-      },
+      { name: "Jamie Chen", title: "Tech Lead", image: "placeholder" },
       {
         name: "Riley Johnson",
         title: "Senior Frontend Engineer",
         image: "placeholder",
       },
-      {
-        name: "Avery Davis",
-        title: "Backend Developer",
-        image: "placeholder",
-      },
-      {
-        name: "Morgan Lee",
-        title: "DevOps Engineer",
-        image: "placeholder",
-      },
-      {
-        name: "Dakota Smith",
-        title: "QA Engineer",
-        image: "placeholder",
-      },
+      { name: "Avery Davis", title: "Backend Developer", image: "placeholder" },
+      { name: "Morgan Lee", title: "DevOps Engineer", image: "placeholder" },
+      { name: "Dakota Smith", title: "QA Engineer", image: "placeholder" },
     ],
     sectionTitle: "Development Team",
     columns: 5,
@@ -544,4 +490,16 @@ export const MinimalTeam: Story = {
     columns: 2,
     backgroundColor: "transparent",
   },
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

@@ -124,7 +124,10 @@ const copyTextToClipboard = async (text: string) => {
   }
 };
 
-const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
+/**
+ * CodeBlockWindow component.
+ */
+export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
   title,
   caption,
   language,

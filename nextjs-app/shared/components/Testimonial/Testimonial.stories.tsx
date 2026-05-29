@@ -1,3 +1,4 @@
+import contract from "./Testimonial.contract.json";
 import React from "react";
 import Testimonial from "@dt/Testimonial";
 import Icon from "@dt/Icon";
@@ -66,18 +67,16 @@ const testimonialComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export default {
-  title: "Components/Testimonial",
+  argTypes: {},
+  title: "Molecules/Testimonial",
   component: Testimonial,
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "padded",
   },
 } as Meta;
@@ -131,3 +130,15 @@ export const WithoutLinkedIn = () => (
     company="StartupHub"
   />
 );
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
+};

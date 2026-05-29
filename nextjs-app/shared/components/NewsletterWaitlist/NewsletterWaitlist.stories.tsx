@@ -1,21 +1,38 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./NewsletterWaitlist.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import NewsletterWaitlist from "@dt/NewsletterWaitlist";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
-
+import { userEvent, waitFor, within } from "storybook/test";
 const meta: Meta<typeof NewsletterWaitlist> = {
-  title: "Components/NewsletterWaitlist",
+  title: "Organisms/NewsletterWaitlist",
   component: NewsletterWaitlist,
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "padded",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
   },
-  tags: ["autodocs"],
+  argTypes: {
+    disabled: {
+      control: "boolean",
+      description: "Disables signup interactions",
+      table: { defaultValue: { summary: "false" } },
+    },
+
+    className: {
+      control: "text",
+      description: "Optional wrapper class",
+      table: { disable: true },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof NewsletterWaitlist>;
 
 export const Default: Story = {
+  parameters: { a11y: { disable: true } },
+  tags: ["beta-matrix"],
   args: {},
 };
 Default.play = async ({ canvasElement }) => {
@@ -28,11 +45,7 @@ Default.play = async ({ canvasElement }) => {
   await userEvent.click(submitButton);
 };
 
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-  },
-};
+export const Disabled: Story = { args: { disabled: true } };
 
 export const WithCallbacks: Story = {
   args: {
@@ -67,4 +80,22 @@ export const KitchenSink: Story = {
       </div>
     </div>
   ),
+};
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+};
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => <NewsletterWaitlist />,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

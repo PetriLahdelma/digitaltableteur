@@ -10,17 +10,22 @@
   font-size: var(--font-size-display, 3.5rem);
   font-weight: 700;
   line-height: 1;
-  color: var(--logo-background, #dfff00);
   letter-spacing: -0.02em;
+
+  /* Inherit from parent by default so containers (e.g. `bg-primary` sections)
+   * can drive contrast via `text-primary-foreground` instead of fighting an
+   * opaque `--color-text` token. Consumers can still override with
+   * `--counter-color`. */
+  color: var(--counter-color, currentColor);
 }
 
 .label {
+  max-inline-size: 12rem;
   font-family: var(--font-body, sans-serif);
   font-size: var(--font-size-text-s, 0.875rem);
-  color: var(--logo-background, #dfff00);
-  text-align: center;
-  max-inline-size: 12rem;
   line-height: 1.4;
+  text-align: center;
+  color: var(--counter-color, currentColor);
 }
 
 @media (prefers-reduced-motion: reduce) {

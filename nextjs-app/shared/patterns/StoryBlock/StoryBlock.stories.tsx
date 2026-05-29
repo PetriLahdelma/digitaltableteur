@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./StoryBlock.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import StoryBlock from "./StoryBlock";
 import Text from "@dt/Text";
@@ -6,8 +7,10 @@ import Text from "@dt/Text";
 const meta: Meta<typeof StoryBlock> = {
   title: "Patterns/StoryBlock",
   component: StoryBlock,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
   },
   argTypes: {
@@ -21,21 +24,25 @@ const meta: Meta<typeof StoryBlock> = {
       control: false,
       table: { disable: true },
     },
+
     imageLayout: {
       control: { type: "select" },
       options: ["single", "grid", "none"],
       description: "Image layout: single (1 col), grid (2 col), or none",
     },
+
     backgroundColor: {
       control: { type: "select" },
       options: ["light", "white", "transparent"],
       description: "Background color variant",
     },
+
     maxWidth: {
       control: { type: "select" },
       options: ["sm", "md", "lg", "xl", "full"],
       description: "Maximum width constraint",
     },
+
     spacing: {
       control: { type: "select" },
       options: ["compact", "default", "comfortable", "spacious"],
@@ -48,6 +55,7 @@ export default meta;
 type Story = StoryObj<typeof StoryBlock>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     subtitle: "Project Overview",
     title: "Building a Design System",
@@ -343,4 +351,16 @@ export const RichContent: Story = {
     maxWidth: "md",
     spacing: "comfortable",
   },
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

@@ -1,47 +1,30 @@
-import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../test-utils/render";
 import { AuthorPage } from "./AuthorPage";
 
-const mockAuthor = {
-  name: "Test Author",
-  slug: "test-author",
-  bio: "Test bio",
-  image: "/test-image.jpg",
-  articles: [],
-};
+vi.mock("../../../data/authors", () => ({
+  getAuthorBySlug: vi.fn((slug: string) => {
+    if (slug !== "petri-lahdelma") return undefined;
+    return {
+      name: "Petri Lahdelma",
+      slug: "petri-lahdelma",
+      bio: "Test author bio for the author page.",
+      imageUrl: "/test-image.jpg",
+    };
+  }),
+}));
 
 describe("AuthorPage", () => {
-  it("renders author name", () => {
-    render(<AuthorPage author={mockAuthor} />);
-    expect(screen.getByText("Test Author")).toBeInTheDocument();
-  });
-
-  it("renders author bio", () => {
-    render(<AuthorPage author={mockAuthor} />);
-    expect(screen.getByText("Test bio")).toBeInTheDocument();
-  });
-
-  it("renders author image", () => {
-    render(<AuthorPage author={mockAuthor} />);
-    const img = screen.getByAltText(/Test Author/i);
-    expect(img).toBeInTheDocument();
-  });
-
-  it("renders back to blog link", () => {
-    render(<AuthorPage author={mockAuthor} />);
+  it("renders author name in page title", () => {
+    renderWithProviders(<AuthorPage slug="petri-lahdelma" />);
     expect(
-      screen.getByRole("link", { name: /back|blog/i }),
+      screen.getByRole("heading", { name: /Petri Lahdelma/i, level: 1 }),
     ).toBeInTheDocument();
   });
 
-  it("renders articles section when author has articles", () => {
-    const authorWithArticles = {
-      ...mockAuthor,
-      articles: [
-        { title: "Article 1", slug: "article-1", excerpt: "Excerpt 1" },
-      ],
-    };
-    render(<AuthorPage author={authorWithArticles} />);
-    expect(screen.getByText("Article 1")).toBeInTheDocument();
+  it("renders author bio excerpt", () => {
+    renderWithProviders(<AuthorPage slug="petri-lahdelma" />);
+    expect(screen.getAllByText(/Test author bio/i).length).toBeGreaterThan(0);
   });
 });

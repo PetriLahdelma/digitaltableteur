@@ -160,7 +160,6 @@
 }
 
 .cardTitle {
-  word-break: break-word;
   overflow-wrap: anywhere;
   hyphens: auto;
   text-wrap: balance;
@@ -196,8 +195,9 @@
   font-size: 8rem;
   color: transparent;
   animation: gradient-move 4s ease-in-out infinite;
-  background-clip: text;
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
   margin: 0 auto var(--space-layout-16);

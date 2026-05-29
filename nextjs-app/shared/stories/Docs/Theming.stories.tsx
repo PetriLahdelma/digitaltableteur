@@ -1,7 +1,7 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import styles from "./Documentation.module.css";
-
+import { expect } from "storybook/test";
 const ThemingDocsContent = () => {
   return (
     <article className={styles.wrapper}>
@@ -85,8 +85,7 @@ const ThemingDocsContent = () => {
           {`// App.tsx or _app.tsx
 import { ThemeProvider } from "@dt/ThemeProvider";
 
-function App({ children }) {
-  return (
+function App({ children }) { return (
     <ThemeProvider>
       {children}
     </ThemeProvider>
@@ -99,8 +98,7 @@ function App({ children }) {
         <pre className={styles.code}>
           {`import { useTheme } from "@dt/ThemeProvider";
 
-function ThemeToggle() {
-  const { theme, setTheme, toggleTheme, cycleTheme } = useTheme();
+function ThemeToggle() { const { theme, setTheme, toggleTheme, cycleTheme } = useTheme();
 
   return (
     <div>
@@ -188,8 +186,7 @@ function ThemeToggle() {
 --space-layout-64      /* 4rem = 64px */
 
 /* Usage */
-.component {
-  padding: var(--space-layout-16);
+.component { padding: var(--space-layout-16);
   margin-bottom: var(--space-layout-24);
 }`}
         </pre>
@@ -225,37 +222,32 @@ function ThemeToggle() {
         <p>Use tokens in your component CSS Modules for theme-aware styling:</p>
         <pre className={styles.code}>
           {`/* Component.module.css */
-.container {
-  background: var(--main-body-background-color);
+.container { background: var(--main-body-background-color);
   color: var(--color-text);
   padding: var(--space-layout-24);
   border-radius: var(--radius-m);
   box-shadow: var(--shadow-m);
 }
 
-.heading {
-  font-family: var(--font-title);
+.heading { font-family: var(--font-title);
   font-size: var(--font-size-title-m);
   color: var(--color-primary);
   margin-bottom: var(--space-layout-16);
   line-height: var(--line-height-tight);
 }
 
-.text {
-  font-family: var(--font-text);
+.text { font-family: var(--font-text);
   font-size: var(--font-size-text-m);
   color: var(--color-text);
   line-height: var(--line-height-relaxed);
 }
 
 /* Theme-specific overrides */
-.themeDark .container {
-  background: var(--color-gray-dark);
+.themeDark .container { background: var(--color-gray-dark);
   border: 1px solid var(--color-gray);
 }
 
-.themeHCB .heading {
-  color: var(--inverted-text-color);
+.themeHCB .heading { color: var(--inverted-text-color);
   text-shadow: 0 0 2px currentColor;
 }`}
         </pre>
@@ -284,15 +276,12 @@ function ThemeToggle() {
         </p>
         <pre className={styles.code}>
           {`// ThemeProvider.tsx (internal)
-const syncThemeClass = () => {
-  if (typeof window !== "undefined") {
-    applyThemeToDom(getStoredTheme());
+const syncThemeClass = () => { if (typeof window !== "undefined") { applyThemeToDom(getStoredTheme());
   }
 };
 syncThemeClass(); // Executes immediately on module load
 
-const applyThemeToDom = (theme: Theme) => {
-  const root = document.documentElement;
+const applyThemeToDom = (theme: Theme) => { const root = document.documentElement;
   root.classList.toggle("themeDark", theme === "dark");
   root.classList.toggle("themeHCB", theme === "hcb");
   root.classList.toggle("themeHCW", theme === "hcw");
@@ -308,8 +297,7 @@ const applyThemeToDom = (theme: Theme) => {
         </p>
         <pre className={styles.code}>
           {`// app/layout.tsx
-export default function RootLayout({ children }) {
-  return (
+export default function RootLayout({ children }) { return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <NextThemeProvider>
@@ -340,10 +328,8 @@ export default function RootLayout({ children }) {
           Override the theme for specific stories using <code>parameters</code>:
         </p>
         <pre className={styles.code}>
-          {`export const DarkThemeExample: Story = {
-  render: () => <MyComponent />,
-  parameters: {
-    theme: "dark", // Force dark theme
+          {`export const DarkThemeExample: Story = { render: () => <MyComponent />,
+  parameters: { theme: "dark", // Force dark theme
   },
 };`}
         </pre>
@@ -379,8 +365,7 @@ export default function RootLayout({ children }) {
 import { ThemeProvider } from "@dt/ThemeProvider";
 import MyComponent from "./MyComponent";
 
-test("renders correctly in dark theme", () => {
-  render(
+test("renders correctly in dark theme", () => { render(
     <ThemeProvider forcedTheme="dark">
       <MyComponent />
     </ThemeProvider>
@@ -398,19 +383,16 @@ test("renders correctly in dark theme", () => {
 
         <h3>Theme-Aware Icon Colors</h3>
         <pre className={styles.code}>
-          {`.icon {
-  color: var(--color-primary);
+          {`.icon { color: var(--color-primary);
 }
 
-.themeDark .icon {
-  color: var(--inverted-text-color);
+.themeDark .icon { color: var(--inverted-text-color);
 }`}
         </pre>
 
         <h3>Conditional Theme Rendering</h3>
         <pre className={styles.code}>
-          {`function ThemeAwareComponent() {
-  const { theme } = useTheme();
+          {`function ThemeAwareComponent() { const { theme } = useTheme();
   
   return (
     <div>
@@ -427,15 +409,13 @@ test("renders correctly in dark theme", () => {
         <h3>Progressive Enhancement with @supports</h3>
         <pre className={styles.code}>
           {`/* Base styles */
-.panel {
-  background: var(--color-white);
+.panel { background: var(--color-white);
   box-shadow: var(--shadow-m);
 }
 
 /* Enhanced for modern browsers */
 @supports (backdrop-filter: blur(8px)) {
-  .panel {
-    background: color-mix(
+  .panel { background: color-mix(
       in srgb,
       var(--color-white) 80%,
       transparent
@@ -501,6 +481,4 @@ export default meta;
 
 type Story = StoryObj<typeof ThemingDocsContent>;
 
-export const ThemingGuide: Story = {
-  render: () => <ThemingDocsContent />,
-};
+export const ThemingGuide: Story = { render: () => <ThemingDocsContent /> };

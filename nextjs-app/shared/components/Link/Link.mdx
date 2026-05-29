@@ -1,0 +1,103 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './Link.stories';
+
+<Meta of={Stories} />
+
+# Link
+
+**Status:** beta · **Tier:** atom · **Group:** navigation
+
+Inline navigation anchor with built-in URL sanitisation and an
+external-link affordance. Link normalises and validates the `href` (only
+`http`/`https`/`mailto`/`tel` protocols, with relative paths preserved
+unchanged), then renders an external-icon hint when the destination is
+off-site. Hover, focus, and visited styling are token-driven so the
+contract survives theme swaps and forced-colors mode.
+
+## In use
+
+Used in body copy, navigation lists, footer columns, and the `Breadcrumb`
+component. The **Example** story shows the canonical inline anchor inside
+a paragraph; the External story exercises the off-site affordance.
+
+Two compositions worth cribbing:
+
+- **Inline body anchor.** Drop a `<Link href="/about">` inside a `<Text>`
+  paragraph. The default size matches the surrounding text; the underline
+  follows the system's `text-decoration` token.
+- **External link with hint.** Pass an off-site `href` (anything that
+  doesn't resolve to a `digitaltableteur.com` host or a relative path).
+  The component appends an external-icon glyph and adds
+  `rel="noopener noreferrer"` for `target="_blank"`.
+
+Anti-pattern to avoid: using Link to render a button-shaped CTA. The
+visual idiom for actions is **Button**; use `Button` with `href` to get
+the button look on a navigation surface.
+
+## How to use
+
+```tsx
+import Link from '@dt/Link';
+
+// Inline anchor
+<Link href="/about">About us</Link>
+
+// External link (auto-detects and adds icon + rel)
+<Link href="https://github.com/digitaltableteur" target="_blank">
+  GitHub
+</Link>
+
+// Mailto / tel
+<Link href="mailto:hello@digitaltableteur.com">hello@…</Link>
+
+// Sized inline anchor in editorial copy
+<Link href="/work" size="L">See the work</Link>
+```
+
+Required consumer wiring: nothing. The component sanitises `href`
+unconditionally — invalid protocols (`javascript:`, `data:`) are
+rewritten to `#` so a stray pasted URL cannot become an XSS surface.
+
+Theme & forced-colors notes: link colour follows the system `LinkText`
+keyword in forced-colors mode; visited follows `VisitedText`. The
+external icon's stroke colour reads the parent's `color` and survives
+both themes.
+
+## When to use
+
+- Inline navigation anchor in body copy.
+- A link in a navigation list, breadcrumb, or footer column.
+- A mailto / tel affordance.
+
+## When not to use
+
+- A primary action — use **Button**.
+- A "button styled as a link" — use **Button** with `variant="tertiary"`,
+  which preserves the right keyboard and ARIA contract.
+- A page-internal scroll target — anchors work but for in-page navigation
+  consider whether the layout would benefit from a Tabs or Breadcrumb
+  composition instead.
+
+## Accessibility
+
+- **Native anchor:** the underlying element is a real `<a>`. Keyboard and
+  focus behaviour is the platform's.
+- **External hint:** when the link is off-site, an icon is appended with
+  `aria-hidden="true"` and a visually hidden " (opens in a new window)"
+  is added when `target="_blank"`. Screen-reader users hear the new-tab
+  context before the browser opens it.
+- **URL sanitisation:** invalid protocols are rewritten to `#`. The
+  surface API cannot inject `javascript:` or `data:` URLs.
+- **Focus:** `focus-visible` outline only — keyboard focus shows the
+  ring, mouse clicks do not. Ring colour follows `--focus-ring-color`.
+- **Reduced motion:** Link has no motion to suppress.
+
+## Promotion notes
+
+- Bulk-author target for Honest Beta phase. Reviewed against the
+  footer columns and the inline article links on the blog routes.
+- Stable promotion blockers: a11y-tree snapshots for the four required
+  stories, real-browser forced-colors run, documented production consumers.
+- Known debt: the size prop accepts only the legacy casing (`S`, `M`, `L`).
+  Aligning with the lowercase `sm|md|lg` ladder is a separate decision —
+  the visual ramp matches the typography ramp, not the form-atom ramp.

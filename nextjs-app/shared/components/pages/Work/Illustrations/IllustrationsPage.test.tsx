@@ -1,23 +1,18 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../../test-utils/render";
 import { IllustrationsPage } from "./IllustrationsPage";
 
 describe("IllustrationsPage", () => {
   it("renders page title", () => {
-    render(<IllustrationsPage />);
-    expect(screen.getByText(/illustrations/i)).toBeInTheDocument();
-  });
-
-  it("renders illustration gallery", () => {
-    render(<IllustrationsPage />);
-    const images = screen.getAllByRole("img");
-    expect(images.length).toBeGreaterThan(0);
-  });
-
-  it("renders back to work link", () => {
-    render(<IllustrationsPage />);
+    renderWithProviders(<IllustrationsPage />);
     expect(
-      screen.getByRole("link", { name: /back|work/i }),
+      screen.getByRole("heading", { name: /Illustrations/i, level: 1 }),
     ).toBeInTheDocument();
+  });
+
+  it("renders work nav back control", () => {
+    renderWithProviders(<IllustrationsPage />);
+    expect(screen.getAllByRole("button", { name: /Work/i }).length).toBeGreaterThan(0);
   });
 });

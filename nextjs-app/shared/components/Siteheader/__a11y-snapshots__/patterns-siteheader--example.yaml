@@ -1,0 +1,24 @@
+- status: Work in progress (beta)
+- banner:
+  - link "Digitaltableteur logo Digitaltableteur":
+    - /url: /
+    - img "Digitaltableteur logo"
+    - text: Digitaltableteur
+  - navigation "navMenuAccessibleLabel":
+    - link "Home":
+      - /url: /
+    - link "Work":
+      - /url: /work
+    - link "About":
+      - /url: /about
+    - link "Blog":
+      - /url: /blog
+    - link "Contact":
+      - /url: /contact
+  - button "Switch to English" [disabled]: EN
+  - button "Switch to Suomi": FI
+  - button "Switch to Svenska": SV
+  - button "Toggle dark mode":
+    - img
+  - button "navMenuOpen":
+    - img

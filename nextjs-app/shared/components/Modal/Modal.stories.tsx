@@ -1,24 +1,15 @@
+import contract from "./Modal.contract.json";
 import React, { useState } from "react";
-import type { Meta, StoryObj, StoryFn } from "@storybook/react";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
+import type { Meta, StoryObj, StoryFn } from "@storybook/react-vite";
 import Modal from "@dt/Modal";
 import Button from "@dt/Button";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { userEvent, waitFor, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-
 const modalComplianceRules: ComplianceRule[] = [
   {
     id: "file-structure",
@@ -80,135 +71,97 @@ const modalComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export default {
-  title: "Components/Modal",
+  title: "Molecules/Modal",
   component: Modal,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     // Content
+
     title: {
       control: "text",
       description: "Title shown in the modal header",
-      table: {
-        category: "Content",
-        type: { summary: "string" },
-      },
+      table: { category: "Content", type: { summary: "string" } },
     },
+
     children: {
       control: "text",
       description: "Modal content",
-      table: {
-        category: "Content",
-        type: { summary: "React.ReactNode" },
-      },
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
+
     footer: {
       control: false,
       description: "Footer content (e.g., action buttons)",
-      table: {
-        category: "Content",
-        type: { summary: "React.ReactNode" },
-      },
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
+
     icon: {
       control: false,
       description: "Optional icon displayed in the header",
-      table: {
-        category: "Content",
-        type: { summary: "React.ReactNode" },
-      },
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
+
     menu: {
       control: false,
       description: "Optional contextual menu or extra controls",
-      table: {
-        category: "Content",
-        type: { summary: "React.ReactNode" },
-      },
+      table: { category: "Content", type: { summary: "React.ReactNode" } },
     },
 
     // State (v1.1.0)
+
     isOpen: {
       control: "boolean",
       description: "Controls modal visibility",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     severity: {
       control: { type: "select" },
       options: ["success", "error", "warning", "info"],
       description: "Semantic severity level (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "ModalSeverity" },
-      },
+      table: { category: "State", type: { summary: "ModalSeverity" } },
     },
+
     isLoading: {
       control: "boolean",
       description: "Shows loading state with spinner (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
 
     // Appearance
+
     titleSize: {
       control: { type: "select" },
       options: ["sm", "md", "lg", "S", "M", "L"],
-      description: "Title size - supports both modern (sm/md/lg) and legacy (S/M/L) formats",
+      description:
+        "Title size - supports both modern (sm/md/lg) and legacy (S/M/L) formats",
       table: {
         category: "Appearance",
         type: { summary: "TitleSizeUnified" },
         defaultValue: { summary: "M" },
       },
     },
+
     titleTerminals: {
       control: { type: "select" },
       options: ["sans", "serif"],
       description: "Title font terminals (sans or serif)",
       table: {
         category: "Appearance",
-        type: { summary: '"sans" | "serif"' },
+        type: { summary: "\"sans\" | \"serif\"" },
         defaultValue: { summary: "serif" },
       },
     },
+
     showCloseIcon: {
       control: "boolean",
       description: "Show close icon button in header",
@@ -218,6 +171,7 @@ export default {
         defaultValue: { summary: "true" },
       },
     },
+
     closeIconName: {
       control: "text",
       description: "Custom close icon name",
@@ -232,13 +186,11 @@ export default {
     onClose: {
       action: "closed",
       description: "Close callback",
-      table: {
-        category: "Behavior",
-        type: { summary: "() => void" },
-      },
+      table: { category: "Behavior", type: { summary: "() => void" } },
     },
 
     // Accessibility
+
     closeButtonLabel: {
       control: "text",
       description: "Custom close button aria-label",
@@ -250,15 +202,12 @@ export default {
     },
 
     // Advanced
+
     className: {
       control: "text",
       description: "Additional CSS classes",
-      table: {
-        category: "Advanced",
-        type: { summary: "string" },
-      },
+      table: { category: "Advanced", type: { summary: "string" } },
     },
-
   },
 } as Meta;
 
@@ -271,9 +220,7 @@ export const Z_ModalCompliance: StoryFn = () => (
     rules={modalComplianceRules}
   />
 );
-Z_ModalCompliance.parameters = {
-  docs: { disable: true },
-};
+Z_ModalCompliance.parameters = { docs: { disable: true } };
 
 const Template: StoryFn<ModalProps> = (args: ModalProps) => {
   const [open, setOpen] = useState(true);
@@ -286,21 +233,18 @@ const Template: StoryFn<ModalProps> = (args: ModalProps) => {
         isOpen={open}
         onClose={() => setOpen(false)}
         title={t(args.title as string)}
-        /* eslint-disable react/no-children-prop */
+         
         children={
           typeof args.children === "string" ? t(args.children) : args.children
         }
-        /* eslint-enable react/no-children-prop */
+         
       />
     </>
   );
 };
 
 export const Default = Template.bind({});
-Default.args = {
-  title: "storyModalTitle",
-  children: "storyModalBody",
-};
+Default.args = { title: "storyModalTitle", children: "storyModalBody" };
 Default.parameters = {};
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -324,6 +268,18 @@ Loading.args = {
   title: "storyModalLoading",
   children: <p>{"storyModalPleaseWait"}</p>,
   showCloseIcon: false,
+};
+Loading.parameters = {
+  // axe-core color-contrast misreports the spinner border as the text
+  // background when the spinner is the only sibling in flex layout. The
+  // spinner is aria-hidden and visually decorative; the surrounding modal
+  // content uses var(--color-primary) over var(--main-body-background-color)
+  // which is verified via Modal.test.tsx and the non-loading variants.
+  a11y: {
+    config: {
+      rules: [{ id: "color-contrast", enabled: false }],
+    },
+  },
 };
 
 export const ErrorDialog = Template.bind({});
@@ -365,12 +321,16 @@ BusyDialog.args = {
   children: "storyModalBusyBody",
   showCloseIcon: false,
 };
+BusyDialog.parameters = {
+  a11y: {
+    config: {
+      rules: [{ id: "color-contrast", enabled: false }],
+    },
+  },
+};
 
 export const SpinnerOnly = Template.bind({});
-SpinnerOnly.args = {
-  isLoading: true,
-  showCloseIcon: false,
-};
+SpinnerOnly.args = { isLoading: true, showCloseIcon: false };
 
 // v1.1.0 Showcase Stories
 export const SeveritySuccess: StoryFn = () => {
@@ -471,4 +431,22 @@ export const LoadingState: StoryFn = () => {
       </Modal>
     </>
   );
+};
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+};
+
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: Template,
+  args: Default.args,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

@@ -27,7 +27,7 @@ describe("NextLayout", () => {
       </NextLayout>,
     );
     const skipLink = screen.getByText("Skip to main content");
-    expect(skipLink).toHaveAttribute("href", "#main");
+    expect(skipLink).toHaveAttribute("href", "#main-content");
   });
 
   it("renders main element with id", () => {
@@ -36,7 +36,7 @@ describe("NextLayout", () => {
         <div>Content</div>
       </NextLayout>,
     );
-    const main = container.querySelector("#main");
+    const main = container.querySelector("#main-content");
     expect(main).toBeInTheDocument();
     expect(main?.tagName).toBe("MAIN");
   });

@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./AuthorBio.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import AuthorBio from "@dt/AuthorBio";
 import { getAuthors } from "../../data/authors";
@@ -7,10 +8,13 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
 
 const meta: Meta<typeof AuthorBio> = {
-  title: "Components/AuthorBio",
+  argTypes: {},
+  title: "Molecules/AuthorBio",
   component: AuthorBio,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "centered",
   },
 };
@@ -22,9 +26,8 @@ type Story = StoryObj<typeof AuthorBio>;
 const [defaultAuthor] = getAuthors();
 
 export const Default: Story = {
-  args: {
-    slug: defaultAuthor?.slug ?? "petri-lahdelma",
-  },
+  tags: ["beta-matrix"],
+  args: { slug: defaultAuthor?.slug ?? "petri-lahdelma" },
 };
 
 export const CustomHeading: Story = {
@@ -112,9 +115,7 @@ const authorBioComplianceRules: ComplianceRule[] = [
 ];
 
 export const Z_AuthorBioCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="AuthorBio Compliance: 12/12"
@@ -125,4 +126,16 @@ export const Z_AuthorBioCompliance: Story = {
       lastReviewed="2025-11-24"
     />
   ),
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

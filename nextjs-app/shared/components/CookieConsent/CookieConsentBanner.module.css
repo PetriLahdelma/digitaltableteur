@@ -2,42 +2,42 @@
 
 .banner {
   position: fixed;
-  margin-inline-start: 2rem;
-  margin-block-end: 2rem;
-  padding: 1.5rem 1.5rem;
   inset-inline: 0;
-  inset-block-end: 0;
-  max-width: 46rem;
   z-index: 9998; /* Below modal (9999) but above everything else */
-  background-color: var(--color-white);
+  margin-block-end: 2rem;
+  margin-inline-start: 2rem;
+  padding: 1.5rem;
+  max-width: 46rem;
   border-block-start: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  background-color: var(--color-white);
   box-shadow: 0 -2px 8px rgb(0 0 0 / 10%);
+  inset-block-end: 0;
 }
 
 .container {
   display: flex;
-  gap: var(--space-m);
-  align-items: center;
-  max-inline-size: 1200px;
   margin-inline: auto;
   padding-block: var(--space-m);
   padding-inline: var(--space-l);
+  max-inline-size: 1200px;
+  align-items: center;
+  gap: var(--space-m);
 }
 
 .expandButton {
   display: flex;
-  flex-shrink: 0;
   padding: var(--space-xs);
-  border: none;
-  background: transparent;
-  align-items: center;
+  flex-shrink: 0;
   justify-content: center;
+  align-items: center;
   gap: 0.5rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
   color: var(--color-primary);
   cursor: pointer;
   transition: all 0.2s;
-  border-radius: var(--radius-sm);
 }
 
 .expandButton:hover {
@@ -51,23 +51,23 @@
 
 .expandButton svg {
   display: block;
-  inline-size: 24px;
   block-size: 24px;
+  inline-size: 24px;
 }
 
 .actions {
   display: flex;
-  gap: var(--space-layout-16);
-  align-items: center;
   margin-inline-start: auto;
+  align-items: center;
+  gap: var(--space-layout-16);
 }
 
 /* Responsive adjustments */
 @media (width <= 768px) {
   .container {
-    flex-wrap: wrap;
     padding-block: var(--space-s);
     padding-inline: var(--space-m);
+    flex-wrap: wrap;
   }
 
   .title {
@@ -75,8 +75,8 @@
   }
 
   .actions {
-    inline-size: 100%;
     margin-inline-start: 0;
+    inline-size: 100%;
     justify-content: stretch;
   }
 

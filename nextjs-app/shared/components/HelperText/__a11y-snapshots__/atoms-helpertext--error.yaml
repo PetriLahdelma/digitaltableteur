@@ -1,0 +1,4 @@
+- status: Work in progress (beta)
+- alert:
+  - img
+  - text: This field is required and cannot be left empty.

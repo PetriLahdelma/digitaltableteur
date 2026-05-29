@@ -37,6 +37,7 @@ export interface ToastProps {
   onClose?: () => void;
 }
 
+/** Transient toast notification with severity and auto-dismiss. */
 const Toast: React.FC<ToastProps> = ({
   isOpen,
   severity,

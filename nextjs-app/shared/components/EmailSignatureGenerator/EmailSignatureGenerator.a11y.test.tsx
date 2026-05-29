@@ -148,11 +148,14 @@ describe("EmailSignatureGenerator Accessibility", () => {
     it("action buttons have button type", () => {
       render(withI18n(<EmailSignatureGenerator />));
 
-      const copyButton = screen.getByText(/Copy Signature|Kopioi|Kopiera/i);
-      expect(copyButton.tagName).toBe("BUTTON");
-
-      const importButton = screen.getByText(/How to Import|Miten tuoda|Hur importerar/i);
-      expect(importButton.tagName).toBe("BUTTON");
+      expect(
+        screen.getByRole("button", { name: /Copy Signature|Kopioi|Kopiera/i }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole("button", {
+          name: /How to Import|Miten tuoda|Hur importerar/i,
+        }),
+      ).toBeInTheDocument();
     });
   });
 
@@ -177,7 +180,9 @@ describe("EmailSignatureGenerator Accessibility", () => {
     it("buttons are focusable", () => {
       render(withI18n(<EmailSignatureGenerator />));
 
-      const copyButton = screen.getByText(/Copy Signature|Kopioi|Kopiera/i);
+      const copyButton = screen.getByRole("button", {
+        name: /Copy Signature|Kopioi|Kopiera/i,
+      });
       copyButton.focus();
       expect(document.activeElement).toBe(copyButton);
     });

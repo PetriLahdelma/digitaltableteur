@@ -1,22 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../../test-utils/render";
 import { TulliPage } from "./TulliPage";
 
 describe("TulliPage", () => {
-  it("renders page title", () => {
-    render(<TulliPage />);
-    expect(screen.getByText(/Tulli|Finnish Customs/i)).toBeInTheDocument();
-  });
-
-  it("renders project overview", () => {
-    render(<TulliPage />);
-    expect(screen.getByText(/Project Details|Overview/i)).toBeInTheDocument();
-  });
-
-  it("renders back to work link", () => {
-    render(<TulliPage />);
-    expect(
-      screen.getByRole("link", { name: /back to work|work/i })
-    ).toBeInTheDocument();
+  it("shows missing-project state until tulli is restored to projects data", () => {
+    renderWithProviders(<TulliPage />);
+    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
   });
 });

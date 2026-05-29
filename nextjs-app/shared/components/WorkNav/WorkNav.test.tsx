@@ -69,7 +69,7 @@ describe("WorkNav", () => {
 
   describe("navigation state", () => {
     it("disables prev button when on first page", () => {
-      renderWorkNav("/work/new-things-co");
+      renderWorkNav("/work/helsinki-design-system");
 
       const prevButton = screen.getByText("Prev").closest("button");
       expect(prevButton).toBeDisabled();
@@ -117,7 +117,7 @@ describe("WorkNav", () => {
     });
 
     it("does not navigate when prev is clicked on first page", () => {
-      renderWorkNav("/work/new-things-co");
+      renderWorkNav("/work/helsinki-design-system");
 
       const prevButton = screen.getByText("Prev");
       fireEvent.click(prevButton);

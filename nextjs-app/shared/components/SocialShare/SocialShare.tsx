@@ -6,7 +6,7 @@ import Toast from "@dt/Toast/Toast";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 
-interface SocialShareProps {
+export interface SocialShareProps {
   url: string;
   title: string;
 }
@@ -58,6 +58,9 @@ const fallbackCopy = (value: string): boolean => {
   }
 };
 
+/**
+ * SocialShare component.
+ */
 export const SocialShare = ({ url, title }: SocialShareProps) => {
   const { t } = useTranslation();
   const encodedUrl = encodeURIComponent(url);

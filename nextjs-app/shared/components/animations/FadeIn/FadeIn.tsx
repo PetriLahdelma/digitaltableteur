@@ -18,6 +18,9 @@ export interface FadeInProps {
   as?: ElementType;
 }
 
+/**
+ * FadeIn component.
+ */
 export function FadeIn({
   children,
   direction = "up",
@@ -35,16 +38,30 @@ export function FadeIn({
     () => {
       if (!ref.current) return;
 
-      // Respect reduced motion preference
-      const actualDistance = motionPreference === "reduced" ? 0 : distance;
-      const actualDuration = motionPreference === "reduced" ? 0.2 : duration;
+      // Respect reduced motion preference. When the user (or the test runner via
+      // `page.emulateMedia({ reducedMotion: "reduce" })`) opts out of motion, skip
+      // the tween entirely so the element snaps to its final visible state. This
+      // matters for axe color-contrast — partial-opacity frames mid-FadeIn were
+      // tripping the matrix gate on every section that uses this animation.
+      // Re-read the media query directly here too: the AnimationContext bootstraps
+      // in a useEffect (post-mount), so the very first FadeIn render could otherwise
+      // observe `motionPreference === "full"` and kick off a gsap.from that axe then
+      // samples mid-animation.
+      const prefersReduced =
+        motionPreference === "reduced" ||
+        (typeof window !== "undefined" &&
+          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
+      if (prefersReduced) {
+        gsap.set(ref.current, { opacity: 1, x: 0, y: 0 });
+        return;
+      }
 
       const from: gsap.TweenVars = {
         opacity: 0,
-        ...(direction === "up" && { y: actualDistance }),
-        ...(direction === "down" && { y: -actualDistance }),
-        ...(direction === "left" && { x: actualDistance }),
-        ...(direction === "right" && { x: -actualDistance }),
+        ...(direction === "up" && { y: distance }),
+        ...(direction === "down" && { y: -distance }),
+        ...(direction === "left" && { x: distance }),
+        ...(direction === "right" && { x: -distance }),
       };
 
       // Check if element is already in view (above the fold)
@@ -56,7 +73,7 @@ export function FadeIn({
         gsap.from(ref.current, {
           ...from,
           delay,
-          duration: actualDuration,
+          duration,
           ease: "power2.out",
         });
       } else {
@@ -64,7 +81,7 @@ export function FadeIn({
         gsap.from(ref.current, {
           ...from,
           delay,
-          duration: actualDuration,
+          duration,
           ease: "power2.out",
           scrollTrigger: {
             trigger: ref.current,

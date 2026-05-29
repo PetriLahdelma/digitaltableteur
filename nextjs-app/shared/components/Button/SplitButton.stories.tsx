@@ -1,5 +1,6 @@
 import React from "react";
 import { type Meta, type StoryObj, type StoryFn } from "@storybook/react-vite";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import {
   Controls,
   Description,
@@ -13,22 +14,16 @@ import { SplitButton } from "@dt/Button";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./SplitButton.schema.json";
 
-// expect is available globally in Storybook browser tests
-declare const expect: (typeof import("vitest"))["expect"];
-
 const meta: Meta<typeof SplitButton> = {
-  title: "Components/SplitButton",
+  title: "Molecules/SplitButton",
   component: SplitButton,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
-    llm: {
-      schema,
-    },
+    llm: { schema },
     docs: {
       page: () => (
         <>
@@ -64,9 +59,13 @@ const meta: Meta<typeof SplitButton> = {
         "info",
       ],
     },
+
     size: { control: "select", options: ["s", "m", "l"] },
+
     inverse: { control: "boolean" },
+
     rounded: { control: "boolean" },
+
     disabled: { control: "boolean" },
   },
 };
@@ -75,6 +74,7 @@ export default meta;
 type Story = StoryObj<typeof SplitButton>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     label: "Save",
     variant: "primary",
@@ -352,9 +352,7 @@ export const EdgeDetection: StoryFn<EdgeDetectionArgs> = ({
   );
 };
 
-EdgeDetection.args = {
-  previewPlacement: "right",
-};
+EdgeDetection.args = { previewPlacement: "right" };
 
 EdgeDetection.argTypes = {
   previewPlacement: {

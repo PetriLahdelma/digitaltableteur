@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./GroupLabel.module.css";
 
-interface GroupLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+export interface GroupLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   htmlFor: string;
   tooltipText?: string;
   required?: boolean;
@@ -9,7 +9,10 @@ interface GroupLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   title?: string; // Add title for browser tooltips
 }
 
-const GroupLabel: React.FC<GroupLabelProps> = ({
+/**
+ * Fieldset/legend-style label for grouped form controls.
+ */
+export const GroupLabel: React.FC<GroupLabelProps> = ({
   htmlFor,
   children,
   tooltipText,

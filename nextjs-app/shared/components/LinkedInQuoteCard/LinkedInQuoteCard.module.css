@@ -2,14 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap");
 
 .wrapper {
+  display: flex;
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: 1.5rem;
   box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper[data-variant="light"] {
@@ -25,9 +25,9 @@
 }
 
 .card {
-  max-inline-size: 480px;
-  inline-size: 100%;
   padding: var(--space-layout-20, 1.25rem) var(--space-layout-24, 1.5rem);
+  inline-size: 100%;
+  max-inline-size: 480px;
   border-radius: 0.5rem;
   background: var(--color-white);
   box-shadow:
@@ -37,14 +37,14 @@
 
 .header {
   display: flex;
+  margin-block-end: var(--space-layout-16, 1rem);
   align-items: flex-start;
   gap: var(--space-layout-12, 0.75rem);
-  margin-block-end: var(--space-layout-16, 1rem);
 }
 
 .avatar {
-  inline-size: 48px;
   block-size: 48px;
+  inline-size: 48px;
   flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
@@ -52,56 +52,56 @@
 
 .avatarPlaceholder {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: 48px;
   block-size: 48px;
+  inline-size: 48px;
   flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   background: var(--color-neutral-bg);
   color: var(--color-gray-medium);
 }
 
 .authorInfo {
-  flex: 1;
   min-inline-size: 0;
+  flex: 1;
 }
 
 .nameRow {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: var(--space-layout-4, 0.25rem);
-  flex-wrap: wrap;
 }
 
 .name {
   font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 600;
   font-size: 1.3rem;
-  color: rgba(0, 0, 0, 0.9);
+  font-weight: 600;
   line-height: 1.33;
+  color: rgb(0 0 0 / 90%);
 }
 
 .separator {
   font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
-  color: rgba(0, 0, 0, 0.6);
   font-size: 0.875rem;
   font-weight: 400;
+  color: rgb(0 0 0 / 60%);
 }
 
 .connectionDegree {
   font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(0 0 0 / 60%);
 }
 
 .titleCompany {
+  margin-block-start: 0;
   font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.875rem;
-  color: rgba(0, 0, 0, 0.6);
   line-height: 1.33;
-  margin-block-start: 0;
+  color: rgb(0 0 0 / 60%);
 }
 
 .linkedinLink {
@@ -117,52 +117,60 @@
 .quoteText {
   margin: 0;
   font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 400;
-  font-style: normal;
   font-size: 1.125rem;
+  font-weight: 400;
   line-height: 1.5;
-  color: rgba(0, 0, 0, 0.9);
+  color: rgb(0 0 0 / 90%);
+  font-style: normal;
 }
 
 .logoContainer {
   display: flex;
-  align-items: center;
-  justify-content: center;
   margin-block-start: var(--space-layout-48, 3rem);
+  justify-content: center;
+  align-items: center;
 }
 
 .companyLogo {
-  max-inline-size: 64px;
   max-block-size: 64px;
+  max-inline-size: 64px;
   object-fit: contain;
 }
 
-/* Dark theme support */
+/* Dark theme support
+ *
+ * LinkedIn-style dark card (dark surface + light text). The previous version
+ * used `--color-gray-dark`, which resolves to #bbb in dark theme — putting
+ * white name text and `--color-gray-light` (undefined) connection text onto a
+ * light gray card. Both pairings failed contrast (white/#bbb = 1.92, and the
+ * undefined token fell through to the dark-mode foreground #6fa8ff for 1.25).
+ * Use explicit dark surface + LinkedIn-style muted text tokens that hold a
+ * >=4.5:1 contrast in every supported theme. */
 
 [data-theme="dark"] .card {
-  background: var(--color-gray-dark);
+  background: #1f1f1f;
   box-shadow:
-    0 1px 3px rgb(0 0 0 / 20%),
-    0 4px 12px rgb(0 0 0 / 15%);
+    0 1px 3px rgb(0 0 0 / 40%),
+    0 4px 12px rgb(0 0 0 / 30%);
 }
 
 [data-theme="dark"] .avatarPlaceholder {
-  background: var(--color-gray-medium);
-  color: var(--color-white);
+  background: #2c2f30;
+  color: #fff;
 }
 
 [data-theme="dark"] .name {
-  color: var(--color-white);
+  color: #fff;
 }
 
 [data-theme="dark"] .quoteText {
-  color: var(--color-white);
+  color: rgb(255 255 255 / 92%);
 }
 
 [data-theme="dark"] .separator,
 [data-theme="dark"] .connectionDegree,
 [data-theme="dark"] .titleCompany {
-  color: var(--color-gray-light);
+  color: rgb(255 255 255 / 75%);
 }
 
 /* Wrapper dark variant adjustments */

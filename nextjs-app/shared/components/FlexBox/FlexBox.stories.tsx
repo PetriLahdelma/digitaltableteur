@@ -1,20 +1,50 @@
-/* stylelint-disable scale-unlimited/declaration-strict-value */
-import React from "react";
+import FlexBox from "./FlexBox";
+import Text from "@dt/Text";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import FlexBox, { FlexBoxProps } from "@dt/FlexBox";
+import contract from "./FlexBox.contract.json";
 
-const meta: Meta<typeof FlexBox> = {
-  title: "Components/FlexBox",
+const defaultArgs = {
+  direction: "row" as const,
+  gap: "1rem",
+  align: "center" as const,
+  children: (
+    <>
+      <Text as="span" terminals="sans">
+        Alpha
+      </Text>
+      <Text as="span" terminals="sans">
+        Beta
+      </Text>
+      <Text as="span" terminals="sans">
+        Gamma
+      </Text>
+    </>
+  ),
+};
+
+const meta = {
+  title: "Atoms/FlexBox",
   component: FlexBox,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    layout: "centered",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
+  },
   argTypes: {
+    children: { control: false, description: "Flex items" },
     direction: {
       control: "select",
       options: ["row", "row-reverse", "column", "column-reverse"],
+      description: "flex-direction",
+      table: { defaultValue: { summary: "row" } },
     },
     wrap: {
       control: "select",
       options: ["nowrap", "wrap", "wrap-reverse"],
+      description: "flex-wrap",
+      table: { defaultValue: { summary: "nowrap" } },
     },
     justify: {
       control: "select",
@@ -26,130 +56,77 @@ const meta: Meta<typeof FlexBox> = {
         "space-around",
         "space-evenly",
       ],
+      description: "justify-content",
     },
     align: {
       control: "select",
       options: ["stretch", "flex-start", "flex-end", "center", "baseline"],
+      description: "align-items",
+      table: { defaultValue: { summary: "stretch" } },
     },
-    gap: { control: "text" },
-    rowGap: { control: "text" },
-    columnGap: { control: "text" },
+    gap: { control: "text", description: "Shorthand gap" },
+    rowGap: {
+      control: "text",
+      description: "Row gap override",
+      table: { disable: true },
+    },
+    columnGap: {
+      control: "text",
+      description: "Column gap override",
+      table: { disable: true },
+    },
+    alignContent: {
+      control: "text",
+      description: "align-content",
+      table: { disable: true },
+    },
+    className: {
+      control: "text",
+      description: "Wrapper class names",
+      table: { disable: true },
+    },
+    style: {
+      control: "object",
+      description: "Inline style override",
+      table: { disable: true },
+    },
   },
-};
+  args: defaultArgs,
+} satisfies Meta<typeof FlexBox>;
+
 export default meta;
-type Story = StoryObj<typeof FlexBox>;
+type Story = StoryObj<typeof meta>;
 
-const swatches = {
-  blue: "#0b3d91",
-  cyan: "#0f766e",
-  pink: "#9d174d",
-  purple: "#5b21b6",
-  neutral: "#f1f5f9",
-} as const;
+export const Default: Story = {
+  tags: ["beta-matrix"],
+};
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+};
 
-const lightText = "#f9fafb";
-const darkText = "#1f2933";
-
-const flexPalette = [
-  { background: swatches.blue, color: lightText },
-  { background: swatches.cyan, color: lightText },
-  { background: swatches.pink, color: lightText },
-  { background: swatches.purple, color: lightText },
-  { background: swatches.neutral, color: darkText },
-];
-
-const swatchFor = (index: number) => flexPalette[index % flexPalette.length];
-
-const createBlock = (
-  key: string,
-  label: React.ReactNode,
-  index: number,
-  extra: React.CSSProperties = {},
-) => {
-  const { background, color } = swatchFor(index);
-  return (
-    <div
-      key={key}
-      style={{
-        background,
-        // stylelint-disable-next-line scale-unlimited/declaration-strict-value
-        color,
-        padding: 16,
-        ...extra,
-      }}
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <FlexBox
+      direction="column"
+      gap="0.75rem"
+      align="stretch"
+      style={{ maxWidth: 320 }}
     >
-      {label}
-    </div>
-  );
+      <Text as="p" terminals="sans">
+        Stacked editorial row
+      </Text>
+      <Text as="p" terminals="sans">
+        Second line with deliberate rhythm
+      </Text>
+    </FlexBox>
+  ),
 };
 
-export const Basic: Story = {
-  args: {
-    direction: "row",
-    gap: "1rem",
-    children: [
-      createBlock("1", "Item 1", 0),
-      createBlock("2", "Item 2", 1),
-      createBlock("3", "Item 3", 2),
-    ],
-  },
-};
-
-export const Column: Story = {
-  args: {
-    direction: "column",
-    gap: "1rem",
-    children: [
-      createBlock("1", "Column 1", 0),
-      createBlock("2", "Column 2", 1),
-      createBlock("3", "Column 3", 2),
-    ],
-  },
-};
-
-export const JustifyAlign: Story = {
-  args: {
-    direction: "row",
-    justify: "space-between",
-    align: "center",
-    gap: "1rem",
-    style: { minHeight: 120 },
-    children: [
-      createBlock("1", "Left", 0),
-      createBlock("2", "Center", 1),
-      createBlock("3", "Right", 2),
-    ],
-  },
-};
-
-export const Wrap: Story = {
-  args: {
-    direction: "row",
-    wrap: "wrap",
-    gap: "1rem",
-    style: { width: 300 },
-    children: [
-      createBlock("1", "A", 0, { minWidth: 120 }),
-      createBlock("2", "B", 1, { minWidth: 120 }),
-      createBlock("3", "C", 2, { minWidth: 120 }),
-      createBlock("4", "D", 3, { minWidth: 120 }),
-    ],
-  },
-};
-
-export const GapVariants: Story = {
-  args: {
-    direction: "row",
-    gap: "2rem",
-    rowGap: "1rem",
-    columnGap: "2rem",
-    wrap: "wrap",
-    style: { width: 400 },
-    children: [
-      createBlock("1", "1", 0, { minWidth: 120 }),
-      createBlock("2", "2", 1, { minWidth: 120 }),
-      createBlock("3", "3", 2, { minWidth: 120 }),
-      createBlock("4", "4", 3, { minWidth: 120 }),
-    ],
-  },
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
 };

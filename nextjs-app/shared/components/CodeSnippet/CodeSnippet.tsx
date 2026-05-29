@@ -74,7 +74,10 @@ const renderLines = (
     .join("");
 };
 
-const CodeSnippet: React.FC<CodeSnippetProps> = ({
+/**
+ * CodeSnippet component.
+ */
+export const CodeSnippet: React.FC<CodeSnippetProps> = ({
   code,
   language = "typescript",
   showLineNumbers = true,

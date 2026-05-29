@@ -1,0 +1,23 @@
+# Theming
+
+## Production themes
+
+| Theme | Class | When |
+|-------|-------|------|
+| Light | _(default)_ | Marketing site default |
+| Dark | `.themeDark` | User preference / dark mode |
+| High contrast (black) | `.themeHCB` | Forced colors, a11y |
+| High contrast (white) | `.themeHCW` | Forced colors, a11y |
+
+Semantic tokens **keep the same names** across themes; only computed values change. Components should never branch on theme in TS — use CSS variables.
+
+## Storybook
+
+Use the **Theme** toolbar (synced with `localStorage`) — same classes as `ThemeProvider` on the site.
+
+## Focus & selection
+
+High-contrast themes widen focus rings (`--focus-ring-width: 3px`) and adjust selection colors for maximum contrast.
+
+See **Foundations/Themes** for a side-by-side semantic matrix.
+

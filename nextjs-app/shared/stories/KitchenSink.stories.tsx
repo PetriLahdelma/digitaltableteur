@@ -8,10 +8,7 @@ import {
   AllVariants as BadgeVariantsStory,
   AllSizes as BadgeSizesStory,
 } from "../components/Badge/Badge.stories";
-import {
-  Spans as GridSpans,
-  Nested as GridNested,
-} from "../components/Grid/Grid.stories";
+import Grid from "@dt/Grid";
 import {
   Default as TextDefault,
   AsSpan as TextAsSpan,
@@ -25,10 +22,7 @@ import {
   AllLevels as TitleLevels,
   CustomTagAndClass as TitleCustomTag,
 } from "../components/Title/Title.stories";
-import {
-  Default as ArticleCardDefault,
-  WithCustomClass as ArticleCardWithCustomClass,
-} from "../components/ArticleCard/ArticleCard.stories";
+import ArticleCard from "@dt/ArticleCard";
 import Avatar from "@dt/Avatar";
 import {
   WithImage as AvatarWithImageStory,
@@ -44,13 +38,6 @@ import { Default as CheckboxGroupDefaultStory } from "../components/CheckboxGrou
 import Checkbox from "@dt/Checkbox";
 import CheckboxGroup from "@dt/CheckboxGroup";
 import FlexBox from "@dt/FlexBox";
-import {
-  Basic as FlexBoxBasicStory,
-  Column as FlexBoxColumnStory,
-  JustifyAlign as FlexBoxJustifyAlignStory,
-  Wrap as FlexBoxWrapStory,
-  GapVariants as FlexBoxGapVariantsStory,
-} from "../components/FlexBox/FlexBox.stories";
 import * as InputsStories from "../components/Inputs/Inputs.stories";
 import * as LabelStories from "../components/Label/Label.stories";
 import * as LinkStories from "../components/Link/Link.stories";
@@ -148,29 +135,144 @@ const CheckboxAllVariants = () => (
     <CheckboxIndeterminate />
   </div>
 );
+const kitchenSinkSwatches = {
+  blue: "#0b3d91",
+  cyan: "#0f766e",
+  pink: "#9d174d",
+  purple: "#5b21b6",
+  neutral: "#f1f5f9",
+} as const;
+
+const kitchenSinkLightText = "#f9fafb";
+const kitchenSinkDarkText = "#1f2933";
+
+const flexSinkBlock = (
+  key: string,
+  label: React.ReactNode,
+  index: number,
+  extra: React.CSSProperties = {},
+) => {
+  const palette = [
+    { background: kitchenSinkSwatches.blue, color: kitchenSinkLightText },
+    { background: kitchenSinkSwatches.cyan, color: kitchenSinkLightText },
+    { background: kitchenSinkSwatches.pink, color: kitchenSinkLightText },
+    { background: kitchenSinkSwatches.purple, color: kitchenSinkLightText },
+    { background: kitchenSinkSwatches.neutral, color: kitchenSinkDarkText },
+  ];
+  const { background, color } = palette[index % palette.length];
+  return (
+    <div key={key} style={{ background, color, padding: 16, ...extra }}>
+      {label}
+    </div>
+  );
+};
+
+const gridItemStyle = (background: string, color: string) => ({
+  background,
+  color,
+  padding: 16,
+});
+
+const GridSpans = () => (
+  <div style={{ maxWidth: "90%", overflow: "hidden" }}>
+    <Grid
+      columns={4}
+      gap="1rem"
+      style={{
+        background: "var(--storybook-bg)",
+        padding: 24,
+        overflow: "hidden",
+      }}
+    >
+      <Grid.Item span={2} style={gridItemStyle(kitchenSinkSwatches.blue, kitchenSinkLightText)}>
+        Span 2
+      </Grid.Item>
+      <Grid.Item style={gridItemStyle(kitchenSinkSwatches.neutral, kitchenSinkDarkText)}>
+        Normal
+      </Grid.Item>
+      <Grid.Item span={2} style={gridItemStyle(kitchenSinkSwatches.pink, kitchenSinkLightText)}>
+        Span 2
+      </Grid.Item>
+      <Grid.Item style={gridItemStyle(kitchenSinkSwatches.purple, kitchenSinkLightText)}>
+        Normal
+      </Grid.Item>
+    </Grid>
+  </div>
+);
+
+const GridNested = () => (
+  <div style={{ maxWidth: "90%", overflow: "hidden" }}>
+    <Grid
+      columns={2}
+      gap="2rem"
+      style={{
+        background: "var(--storybook-bg)",
+        padding: 24,
+        overflow: "hidden",
+      }}
+    >
+      <Grid.Item
+        style={{
+          background: "var(--storybook-blue)",
+          color: "var(--storybook-white)",
+          padding: 16,
+        }}
+      >
+        Parent 1
+      </Grid.Item>
+      <Grid columns={3} gap="0.5rem">
+        <Grid.Item style={gridItemStyle(kitchenSinkSwatches.cyan, kitchenSinkLightText)}>A</Grid.Item>
+        <Grid.Item style={gridItemStyle(kitchenSinkSwatches.pink, kitchenSinkLightText)}>B</Grid.Item>
+        <Grid.Item style={gridItemStyle(kitchenSinkSwatches.purple, kitchenSinkLightText)}>C</Grid.Item>
+      </Grid>
+    </Grid>
+  </div>
+);
+
 const FlexBoxBasic = () => (
-  <FlexBox {...FlexBoxBasicStory.args}>
-    {FlexBoxBasicStory.args?.children ?? null}
+  <FlexBox direction="row" gap="1rem">
+    {flexSinkBlock("1", "Item 1", 0)}
+    {flexSinkBlock("2", "Item 2", 1)}
+    {flexSinkBlock("3", "Item 3", 2)}
   </FlexBox>
 );
 const FlexBoxColumn = () => (
-  <FlexBox {...FlexBoxColumnStory.args}>
-    {FlexBoxColumnStory.args?.children ?? null}
+  <FlexBox direction="column" gap="1rem">
+    {flexSinkBlock("1", "Column 1", 0)}
+    {flexSinkBlock("2", "Column 2", 1)}
+    {flexSinkBlock("3", "Column 3", 2)}
   </FlexBox>
 );
 const FlexBoxJustifyAlign = () => (
-  <FlexBox {...FlexBoxJustifyAlignStory.args}>
-    {FlexBoxJustifyAlignStory.args?.children ?? null}
+  <FlexBox
+    direction="row"
+    justify="space-between"
+    align="center"
+    gap="1rem"
+    style={{ minHeight: 120 }}
+  >
+    {flexSinkBlock("1", "Left", 0)}
+    {flexSinkBlock("2", "Center", 1)}
+    {flexSinkBlock("3", "Right", 2)}
   </FlexBox>
 );
 const FlexBoxWrap = () => (
-  <FlexBox {...FlexBoxWrapStory.args}>
-    {FlexBoxWrapStory.args?.children ?? null}
+  <FlexBox direction="row" wrap="wrap" gap="0.5rem" style={{ maxWidth: 320 }}>
+    {Array.from({ length: 8 }, (_, index) =>
+      flexSinkBlock(String(index), `Item ${index + 1}`, index, { minWidth: 96 }),
+    )}
   </FlexBox>
 );
 const FlexBoxGapVariants = () => (
-  <FlexBox {...FlexBoxGapVariantsStory.args}>
-    {FlexBoxGapVariantsStory.args?.children ?? null}
+  <FlexBox direction="column" rowGap="1.5rem">
+    <FlexBox gap="0.25rem">
+      {flexSinkBlock("a", "gap 0.25rem", 0)}
+      {flexSinkBlock("b", "gap 0.25rem", 1)}
+    </FlexBox>
+    <FlexBox columnGap="2rem">
+      {flexSinkBlock("c", "columnGap 2rem", 2)}
+      {flexSinkBlock("d", "columnGap 2rem", 3)}
+    </FlexBox>
   </FlexBox>
 );
 
@@ -521,7 +623,7 @@ const COMPONENTS = [
   {
     name: "Article Card Default",
     Variants: () => (
-      <ArticleCardDefault
+      <ArticleCard
         title="Design System Best Practices"
         lead="Learn how to build, scale, and maintain a robust design system for modern teams."
         link="/blog/design-system-best-practices"
@@ -532,7 +634,7 @@ const COMPONENTS = [
   {
     name: "Article Card with Custom Class",
     Variants: () => (
-      <ArticleCardWithCustomClass
+      <ArticleCard
         title="Branding in 2025: Trends & Opportunities"
         lead="Explore the future of digital branding, emerging technologies, and resilient brand strategies."
         link="/blog/branding-2025"
@@ -541,46 +643,16 @@ const COMPONENTS = [
       />
     ),
   },
-  {
-    name: "Avatar with Image",
-    Variants: AvatarWithImage,
-  },
-  {
-    name: "Avatar with Initials",
-    Variants: AvatarWithInitials,
-  },
-  {
-    name: "Avatar with Menu",
-    Variants: AvatarWithMenu,
-  },
-  {
-    name: "Checkbox all Variants",
-    Variants: CheckboxAllVariants,
-  },
-  {
-    name: "CheckboxGroup Default",
-    Variants: CheckboxGroupDefault,
-  },
-  {
-    name: "FlexBox Basic",
-    Variants: FlexBoxBasic,
-  },
-  {
-    name: "FlexBox Column",
-    Variants: FlexBoxColumn,
-  },
-  {
-    name: "FlexBox Justify Align",
-    Variants: FlexBoxJustifyAlign,
-  },
-  {
-    name: "FlexBox Wrap",
-    Variants: FlexBoxWrap,
-  },
-  {
-    name: "FlexBox Gap Variants",
-    Variants: FlexBoxGapVariants,
-  },
+  { name: "Avatar with Image", Variants: AvatarWithImage },
+  { name: "Avatar with Initials", Variants: AvatarWithInitials },
+  { name: "Avatar with Menu", Variants: AvatarWithMenu },
+  { name: "Checkbox all Variants", Variants: CheckboxAllVariants },
+  { name: "CheckboxGroup Default", Variants: CheckboxGroupDefault },
+  { name: "FlexBox Basic", Variants: FlexBoxBasic },
+  { name: "FlexBox Column", Variants: FlexBoxColumn },
+  { name: "FlexBox Justify Align", Variants: FlexBoxJustifyAlign },
+  { name: "FlexBox Wrap", Variants: FlexBoxWrap },
+  { name: "FlexBox Gap Variants", Variants: FlexBoxGapVariants },
   { name: "Inputs Text", Variants: InputsText },
   { name: "Inputs Number", Variants: InputsNumber },
   { name: "Inputs Email", Variants: InputsEmail },

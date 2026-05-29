@@ -1,0 +1,19 @@
+- status: Work in progress (beta)
+- strong: Default (Neutral)
+- paragraph: This is helper text providing additional context.
+- strong: Error
+- alert:
+  - img
+  - text: This field is required and cannot be left empty.
+- strong: Warning
+- paragraph:
+  - img
+  - text: This action cannot be undone. Please proceed with caution.
+- strong: Success
+- paragraph:
+  - img
+  - text: Your changes have been saved successfully.
+- strong: Info
+- paragraph:
+  - img
+  - text: Password must be at least 8 characters long.

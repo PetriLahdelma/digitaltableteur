@@ -1,12 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./Designerman.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import Designerman from "@dt/Designerman";
 
 const meta: Meta<typeof Designerman> = {
-  title: "Playground/Designerman",
+  argTypes: {},
+  title: "Molecules/Designerman",
   component: Designerman,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
     docs: {
       description: {
@@ -29,5 +33,18 @@ export default meta;
 type Story = StoryObj<typeof Designerman>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <Designerman {...args} />,
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

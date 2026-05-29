@@ -15,6 +15,15 @@ const CookieConsentModal = dynamic(
   { ssr: false },
 );
 
+
+/** Props for NextLayout. */
+export interface NextLayoutProps {
+  className?: string;
+}
+
+/**
+ * NextLayout component.
+ */
 export function NextLayout({ children }: { children: React.ReactNode }) {
   return (
     <>

@@ -8,6 +8,9 @@ export interface SkipLinkProps {
   className?: string;
 }
 
+/**
+ * SkipLink component.
+ */
 export function SkipLink({
   href = "#main-content",
   children = "Skip to main content",

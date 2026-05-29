@@ -5,7 +5,7 @@ import Text from "@dt/Text";
 import Skeleton from "@dt/Skeleton";
 import styles from "./ArticleCard.module.css";
 
-interface ArticleCardProps {
+export interface ArticleCardProps {
   title: string;
   lead?: string;
   link: string;
@@ -15,7 +15,10 @@ interface ArticleCardProps {
   loading?: boolean;
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = ({
+/**
+ * ArticleCard component.
+ */
+export const ArticleCard: React.FC<ArticleCardProps> = ({
   title,
   lead,
   link,

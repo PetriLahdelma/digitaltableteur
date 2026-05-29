@@ -68,23 +68,8 @@ export function CookieConsentProvider({
     setConsents(initialConsents);
     setIsReady(true);
 
-    // Auto-show banner if no consent given yet
-    const hasConsent = hasGivenConsent();
-    console.log("[CookieConsent] Context initialized:", {
-      state,
-      hasConsent,
-      autoShow,
-      willShowBanner: autoShow && !hasConsent,
-      storageKey: "dt-cookie-consent",
-      storageValue:
-        typeof window !== "undefined"
-          ? localStorage.getItem("dt-cookie-consent")
-          : null,
-    });
-
-    if (autoShow && !hasConsent) {
+    if (autoShow && !hasGivenConsent()) {
       setIsBannerOpen(true);
-      console.log("[CookieConsent] Banner opened - first visit detected");
     }
   }, [autoShow]);
 

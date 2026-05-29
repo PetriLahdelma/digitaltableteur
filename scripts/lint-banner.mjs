@@ -5,6 +5,20 @@
  */
 
 import { spawn } from "child_process";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// Resolve the locally-installed eslint binary so we never pull a transient
+// network copy via bare `npx eslint`. The script lives at scripts/lint-banner.mjs,
+// so the project root is one level up.
+const localEslintBin = path.resolve(
+  __dirname,
+  "..",
+  "node_modules",
+  ".bin",
+  "eslint",
+);
 
 const GREEN = "\x1b[32m";
 const YELLOW = "\x1b[33m";
@@ -48,10 +62,11 @@ ${RED}
 
 console.log(startBanner);
 
-// Run ESLint and capture exit code
-const eslint = spawn("npx", ["eslint", ...process.argv.slice(2)], {
+const eslintArgs = process.argv.slice(2);
+const eslintTargets = eslintArgs.length > 0 ? eslintArgs : ["."];
+const eslint = spawn(localEslintBin, eslintTargets, {
   stdio: "inherit",
-  shell: true,
+  shell: false,
 });
 
 eslint.on("close", (code) => {

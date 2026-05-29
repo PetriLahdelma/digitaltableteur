@@ -1,15 +1,7 @@
+import contract from "./Badge.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
-import { within, userEvent } from "@storybook/testing-library";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 
@@ -19,7 +11,6 @@ import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-
 const STATE_ICON_MAP: Record<string, string> = {
   success: "check-circle",
   info: "info",
@@ -28,35 +19,14 @@ const STATE_ICON_MAP: Record<string, string> = {
 };
 
 const meta: Meta<typeof Badge> = {
-  title: "Components/Badge",
+  title: "Atoms/Badge",
   component: Badge,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     // Disable global WIP badge to prevent duplicate 'Badge' text collision in tests
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    llm: { schema },
   },
   argTypes: {
     design: {
@@ -64,17 +34,22 @@ const meta: Meta<typeof Badge> = {
       options: ["primary", "secondary"],
       description: "Badge design variant",
     },
+
     state: {
       control: { type: "select" },
       options: ["success", "info", "error", "warning", "neutral"],
       description: "Semantic state color",
     },
+
     children: { control: "text", description: "Badge content" },
+
     className: { control: "text", description: "Custom class name" },
+
     removable: {
       control: "boolean",
       description: "Show a close button to remove the badge",
     },
+
     square: {
       control: "boolean",
       description: "Toggle square (no border-radius) style",
@@ -83,11 +58,13 @@ const meta: Meta<typeof Badge> = {
       action: "removed",
       description: "Callback when badge is removed",
     },
+
     iconName: {
       control: { type: "text" },
       description:
         "Enter a Phosphor icon name (e.g. palette) to display inside the badge. Defaults to a semantic icon when empty.",
     },
+
     size: {
       control: { type: "select" },
       options: ["s", "m", "l"],
@@ -207,23 +184,21 @@ const badgeComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "File exists",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "File exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "File exists" },
 ];
 
 export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
   render: Template,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    // Query more specific text to avoid collision with global WIP badge label when enabled elsewhere
     await canvas.findByText(/Badge$/i);
     await userEvent.tab();
   },
 };
+
+export const Default = Playground;
 
 const AllVariantsContent: React.FC = () => {
   const { t } = useTranslation();
@@ -374,9 +349,7 @@ export const AllSizes: Story = {
 };
 
 export const Z_BadgeCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="Compliance: 12/12"
@@ -386,4 +359,17 @@ export const Z_BadgeCompliance: Story = {
       rules={badgeComplianceRules}
     />
   ),
+};
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => <AllVariantsContent />,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

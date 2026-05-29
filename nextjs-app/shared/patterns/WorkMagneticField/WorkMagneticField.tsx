@@ -34,6 +34,9 @@ const MAX_SCALE = 1.03;
 /** Distance (px) at which magnetic effect reaches full strength */
 const EFFECT_RADIUS = 400;
 
+/**
+ * WorkMagneticField component.
+ */
 export function WorkMagneticField({
   title,
   projects,
@@ -68,6 +71,11 @@ export function WorkMagneticField({
       const cards = cardRefs.current.filter(Boolean) as HTMLDivElement[];
 
       if (!section || cards.length === 0) return;
+
+      // Pre-set the resting state synchronously so axe never observes the
+      // initial opacity:0 state. gsap.matchMedia callbacks below still adjust
+      // things async, but this guarantees the cards are visible from frame 1.
+      gsap.set(cards, { opacity: 1, y: 0 });
 
       const mm = gsap.matchMedia();
 

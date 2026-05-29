@@ -345,17 +345,16 @@ describe("Modal Accessibility", () => {
     it("clicking overlay closes modal", async () => {
       const user = userEvent.setup();
       const onClose = vi.fn();
-      const { container } = render(
+      render(
         <Modal isOpen title="Dialog" onClose={onClose}>
           <p>Content</p>
         </Modal>
       );
 
-      // Find overlay (first child which is the overlay div)
-      const overlay = container.firstChild as HTMLElement;
+      const overlay = document.body.querySelector('[class*="overlay"]');
+      expect(overlay).toBeTruthy();
 
-      // Click the overlay (not the modal content)
-      await user.click(overlay);
+      await user.click(overlay as HTMLElement);
 
       expect(onClose).toHaveBeenCalled();
     });

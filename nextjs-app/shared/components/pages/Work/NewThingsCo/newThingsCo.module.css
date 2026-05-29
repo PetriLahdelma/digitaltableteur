@@ -5,19 +5,20 @@
 }
 
 /* Custom Meta Section - 2 column layout */
+
 .metaSection {
-  padding-block: var(--space-layout-48);
-  background-color: var(--color-surface);
   margin-inline: calc(-1 * var(--space-layout-24));
+  padding-block: var(--space-layout-48);
   padding-inline: var(--space-layout-24);
+  background-color: var(--color-surface);
 }
 
 .metaGrid {
   display: grid;
+  margin-inline: auto;
+  max-width: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
-  max-width: var(--container-md);
-  margin-inline: auto;
 }
 
 .metaLeft {
@@ -39,19 +40,19 @@
 }
 
 .metaLabel {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-text);
-  margin: 0;
 }
 
 .metaText {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .metaTools {
@@ -61,11 +62,11 @@
 }
 
 .metaOverview {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.7;
+  color: var(--color-text);
 }
 
 .metaOverview strong {
@@ -73,51 +74,57 @@
 }
 
 /* Process section with NTC brand blue accent */
+
 .processSection {
   margin-block: var(--space-layout-80);
+  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
+  padding-inline: var(--space-layout-24);
   background: linear-gradient(
     180deg,
     color-mix(in srgb, #7f96B2 10%, var(--color-surface)) 0%,
     transparent 100%
   );
-  margin-inline: calc(-1 * var(--space-layout-24));
-  padding-inline: var(--space-layout-24);
 }
 
 /* Standard story section spacing */
+
 .storySection {
   margin-block: var(--space-layout-64);
 }
 
 /* Equal height for 2-column grid images only */
+
 .printSection figure img {
   height: 320px !important;
   object-fit: cover !important;
 }
 
 /* Brand identity section with generous spacing */
+
 .brandSection {
   margin-block: var(--space-layout-80);
 }
 
 /* Image grid with NTC feel */
+
 .imageGrid {
   margin-block: var(--space-layout-64);
 }
 
 /* Video showcase section */
+
 .videoSection {
   margin-block: var(--space-layout-80);
   margin-inline: calc(-1 * var(--space-layout-24));
-  padding-inline: var(--space-layout-24);
   padding-block: var(--space-layout-48);
+  padding-inline: var(--space-layout-24);
   background-color: var(--color-surface-secondary, #f8f9fa);
 }
 
 .videoContainer {
-  max-width: var(--container-lg);
   margin-inline: auto;
+  max-width: var(--container-lg);
 }
 
 .videoContainer video {
@@ -127,34 +134,36 @@
 }
 
 .videoCaption {
+  margin-block-start: var(--space-layout-16);
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
   text-align: center;
-  margin-block-start: var(--space-layout-16);
+  color: var(--color-text-secondary);
 }
 
 /* Gallery section - full bleed */
+
 .gallerySection {
   margin-block: var(--space-layout-80);
   margin-inline: calc(-1 * var(--space-layout-24));
-  padding-inline: var(--space-layout-24);
   padding-block: var(--space-layout-48);
+  padding-inline: var(--space-layout-24);
   background-color: var(--color-surface);
 }
 
 .galleryHeader {
-  max-width: var(--container-lg);
-  margin-inline: auto;
   margin-block-end: var(--space-layout-32);
+  margin-inline: auto;
+  max-width: var(--container-lg);
 }
 
 .galleryContent {
-  max-width: var(--container-xl);
   margin-inline: auto;
+  max-width: var(--container-xl);
 }
 
 /* Applications showcase grid */
+
 .applicationsSection {
   margin-block: var(--space-layout-80);
   margin-inline: calc(-1 * var(--space-layout-24));
@@ -162,17 +171,17 @@
 }
 
 .applicationsHeader {
-  max-width: var(--container-lg);
-  margin-inline: auto;
   margin-block-end: var(--space-layout-32);
+  margin-inline: auto;
+  max-width: var(--container-lg);
 }
 
 .applicationsGrid {
   display: grid;
+  margin-inline: auto;
+  max-width: var(--container-xl);
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-layout-24);
-  max-width: var(--container-xl);
-  margin-inline: auto;
 }
 
 .appItem {
@@ -182,43 +191,45 @@
 .appImage {
   width: 100%;
   height: 280px;
-  object-fit: cover;
   border-radius: var(--radius-md);
   background-color: var(--color-surface-secondary);
+  object-fit: cover;
 }
 
 .appCaption {
+  margin-block-start: var(--space-layout-8);
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  margin-block-start: var(--space-layout-8);
 }
 
 /* Outcomes section with top border */
+
 .outcomesSection {
   margin-block: var(--space-layout-80);
-  border-block-start: 1px solid var(--color-border);
   padding-block-start: var(--space-layout-48);
+  border-block-start: 1px solid var(--color-border);
 }
 
 /* Results section with NTC brand blue */
+
 .resultsSection {
   margin-block: var(--space-layout-80);
   margin-inline: calc(-1 * var(--space-layout-24));
-  padding-inline: var(--space-layout-24);
   padding-block: var(--space-layout-64);
+  padding-inline: var(--space-layout-24);
   background: linear-gradient(135deg, #7f96B2 0%, #6a829e 100%);
   color: white;
 }
 
 .resultsContent {
-  max-width: var(--container-lg);
   margin-inline: auto;
+  max-width: var(--container-lg);
 }
 
 .resultsContent h3 {
-  color: white;
   margin-block-end: var(--space-layout-32);
+  color: white;
 }
 
 .resultsGrid {
@@ -249,12 +260,12 @@
 .resultDetail {
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
-  opacity: 0.85;
   line-height: 1.4;
+  opacity: 0.85;
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .metaSection {
     margin-inline: calc(-1 * var(--space-layout-16));
     padding-inline: var(--space-layout-16);

@@ -1,10 +1,107 @@
 import { expect, afterEach, vi } from "vitest";
+import React from "react";
 import "@testing-library/jest-dom";
 import { cleanup } from "@testing-library/react";
 import { toHaveNoViolations } from "jest-axe";
 
 // Extend Vitest matchers with jest-axe
 expect.extend(toHaveNoViolations);
+
+// next/image and next/link are aliased to test-stubs/ in vitest.config.mts
+// so jsdom never touches nextjs-app/node_modules/next (which ships a second
+// React copy and crashes useContext under jsdom).
+
+// Default mock for next/navigation. Individual tests can override with
+// vi.mock("next/navigation", ...). This prevents components that read
+// usePathname/useRouter at module init from crashing.
+vi.mock("@/providers/ThemeProvider", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/providers/ThemeProvider")>();
+  return {
+    ...actual,
+    useTheme: () => ({
+      theme: "light" as const,
+      setTheme: vi.fn(),
+      toggleTheme: vi.fn(),
+      systemPreference: "light" as const,
+      isExplicitChoice: false,
+      resetToSystemPreference: vi.fn(),
+    }),
+  };
+});
+
+vi.mock("@/providers/AnimationProvider", () => ({
+  AnimationProvider: ({ children }: { children: React.ReactNode }) => children,
+  useAnimationContext: () => ({
+    motionPreference: "reduced" as const,
+    isReady: true,
+  }),
+}));
+
+vi.mock("@/nextjs-app/shared/lib/gsap", () => {
+  const timeline = () => ({
+    to: vi.fn().mockReturnThis(),
+    from: vi.fn().mockReturnThis(),
+    fromTo: vi.fn().mockReturnThis(),
+    set: vi.fn().mockReturnThis(),
+    kill: vi.fn(),
+  });
+
+  const gsap = {
+    context: (fn: () => void) => {
+      fn();
+      return { revert: vi.fn() };
+    },
+    to: vi.fn(),
+    from: vi.fn(),
+    fromTo: vi.fn(),
+    set: vi.fn(),
+    timeline,
+    registerPlugin: vi.fn(),
+    killTweensOf: vi.fn(),
+    utils: {
+      toArray: (v: unknown) => (Array.isArray(v) ? v : v ? [v] : []),
+    },
+  };
+
+  return {
+    gsap,
+    useGSAP: (fn: () => void) => {
+      fn();
+    },
+    ScrollTrigger: {
+      create: vi.fn(),
+      refresh: vi.fn(),
+      getAll: vi.fn(() => []),
+      killAll: vi.fn(),
+    },
+  };
+});
+
+vi.mock("react-router-dom", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("react-router-dom")>();
+  return {
+    ...actual,
+    useNavigate: () => vi.fn(),
+    useLocation: () => ({ pathname: "/", search: "", hash: "", state: null, key: "default" }),
+    useParams: () => ({}),
+  };
+});
+
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: vi.fn(),
+    replace: vi.fn(),
+    prefetch: vi.fn(),
+    back: vi.fn(),
+    forward: vi.fn(),
+    refresh: vi.fn(),
+  }),
+  usePathname: () => "/",
+  useSearchParams: () => new URLSearchParams(),
+  useParams: () => ({}),
+  redirect: vi.fn(),
+  notFound: vi.fn(),
+}));
 
 afterEach(() => {
   cleanup();
@@ -32,7 +129,9 @@ globalThis.IntersectionObserver = IntersectionObserverMock as any;
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: vi.fn().mockImplementation((query) => ({
-    matches: false,
+    matches:
+      query.includes("prefers-reduced-motion") ||
+      query.includes("prefers-contrast"),
     media: query,
     onchange: null,
     addListener: vi.fn(),
@@ -54,4 +153,19 @@ globalThis.console = {
 Object.defineProperty(navigator, "share", {
   writable: true,
   value: vi.fn().mockImplementation(() => Promise.resolve()),
+});
+
+// jsdom returns `undefined` from HTMLMediaElement.play(), but real browsers
+// (and code that calls `.catch()` on the result) expect a Promise. Stubbing
+// here keeps audio/video-aware components (Designerman, ChatWidget toggle
+// sounds) from crashing under the test runner.
+Object.defineProperty(HTMLMediaElement.prototype, "play", {
+  configurable: true,
+  writable: true,
+  value: vi.fn().mockImplementation(() => Promise.resolve()),
+});
+Object.defineProperty(HTMLMediaElement.prototype, "pause", {
+  configurable: true,
+  writable: true,
+  value: vi.fn(),
 });

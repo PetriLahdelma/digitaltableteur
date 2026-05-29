@@ -1,14 +1,18 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./Footer.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import Footer from "./Footer";
 import { ThemeProvider } from "@dt/ThemeProvider";
 
 const meta: Meta<typeof Footer> = {
+  argTypes: {},
   title: "Patterns/Footer",
   component: Footer,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    layout: "fullscreen",// Keep WIP badge until visual + a11y verified
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    layout: "fullscreen", // Keep WIP badge until visual + a11y verified
   },
   decorators: [
     (Story) => (
@@ -31,6 +35,7 @@ export default meta;
 type Story = StoryObj<typeof Footer>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   name: "Default",
   render: () => <Footer />,
 };
@@ -40,11 +45,7 @@ export const WithSurroundingContent: Story = {
   render: () => (
     <ThemeProvider>
       <div
-        style={{
-          minHeight: "80vh",
-          display: "flex",
-          flexDirection: "column",
-        }}
+        style={{ minHeight: "80vh", display: "flex", flexDirection: "column" }}
       >
         <main style={{ flex: 1, padding: "2rem" }}>
           <h1 style={{ marginTop: 0 }}>Demo Page Content</h1>
@@ -57,4 +58,16 @@ export const WithSurroundingContent: Story = {
       </div>
     </ThemeProvider>
   ),
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

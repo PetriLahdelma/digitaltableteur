@@ -5,12 +5,13 @@
   max-width: 640px;
   border: 2px solid var(--color-border, #1f2937);
   border-radius: var(--radius-md, 12px);
+
+  /* Focus indicator for keyboard accessibility */
+  outline: none;
   background: linear-gradient(180deg, #f7f0d8 0%, #d8c69f 100%);
   aspect-ratio: 16 / 9;
   image-rendering: pixelated;
   overflow: hidden;
-  /* Focus indicator for keyboard accessibility */
-  outline: none;
 }
 
 .canvas:focus {

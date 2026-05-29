@@ -25,6 +25,7 @@ const toneIcon: Record<Tone, string> = {
   error: "x-circle",
 };
 
+/** Inline alert banner with semantic tones and optional dismiss. */
 const AlertBanner: React.FC<AlertBannerProps> = ({
   tone = "info",
   title,

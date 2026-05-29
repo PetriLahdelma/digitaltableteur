@@ -11,20 +11,20 @@
 }
 
 .sectionTitle {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text);
-  margin: 0;
 }
 
 .grid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-layout-32);
   justify-content: flex-start;
+  gap: var(--space-layout-32);
 }
 
 .row {
@@ -35,10 +35,10 @@
 
 .swatch {
   display: flex;
+  min-width: 100px;
   flex-direction: column;
   align-items: center;
   gap: var(--space-layout-16);
-  min-width: 100px;
 }
 
 .swatch.small {
@@ -55,16 +55,16 @@
   height: 80px;
   border-radius: 50%;
   box-shadow:
-    inset 0 0 0 1px rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.08);
+    inset 0 0 0 1px rgb(0 0 0 / 8%),
+    0 2px 8px rgb(0 0 0 / 8%);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .color:hover {
-  transform: scale(1.05);
   box-shadow:
-    inset 0 0 0 1px rgba(0, 0, 0, 0.08),
-    0 4px 16px rgba(0, 0, 0, 0.12);
+    inset 0 0 0 1px rgb(0 0 0 / 8%),
+    0 4px 16px rgb(0 0 0 / 12%);
+  transform: scale(1.05);
 }
 
 .info {
@@ -85,25 +85,26 @@
 .hex {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
-  color: var(--color-text);
   letter-spacing: 0.02em;
+  color: var(--color-text);
 }
 
 .value {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
   letter-spacing: 0.01em;
+  color: var(--color-text-secondary);
 }
 
 /* Color proportions chart */
+
 .proportionsSection {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-layout-48);
-  align-items: center;
   margin-block-start: var(--space-layout-32);
   padding-block-start: var(--space-layout-32);
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-layout-48);
   border-block-start: 1px solid var(--color-border-subtle);
 }
 
@@ -126,7 +127,7 @@
   justify-self: center;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .proportionsSection {
     grid-template-columns: 1fr;
     gap: var(--space-layout-24);

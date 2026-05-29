@@ -16,7 +16,7 @@ interface SelectOptionItem {
   isDisabled?: boolean;
 }
 
-interface SelectProps
+export interface SelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "size"> {
   label: string;
   options?: SelectOptionItem[];
@@ -37,6 +37,7 @@ interface SelectProps
   onChange?: (value: string) => void;
 }
 
+/** Native select with label, options, and error/helper text. */
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
