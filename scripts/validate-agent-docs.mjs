@@ -131,6 +131,7 @@ const dtSkills = [
   "dt-scripts",
   "dt-sanity-cms",
   "dt-ship-pr",
+  "dt-workflow",
 ];
 
 for (const folder of dtSkills) {

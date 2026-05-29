@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+import { markdownNegotiationHeader } from "@/app/lib/agent-discovery";
+
 /**
  * Markdown content negotiation for AI agents (Cloudflare Agent Readiness / llmstxt.org).
  * Homepage requests with Accept: text/markdown receive llms.txt content.
@@ -18,8 +20,12 @@ export function middleware(request: NextRequest) {
   const rewriteUrl = request.nextUrl.clone();
   rewriteUrl.pathname = "/llms.txt";
 
-  const response = NextResponse.rewrite(rewriteUrl);
-  response.headers.set("Content-Type", "text/markdown; charset=utf-8");
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set(markdownNegotiationHeader, "1");
+
+  const response = NextResponse.rewrite(rewriteUrl, {
+    request: { headers: requestHeaders },
+  });
   response.headers.set("Vary", "Accept");
   return response;
 }
