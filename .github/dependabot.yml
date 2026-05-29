@@ -41,14 +41,15 @@ updates:
     # Security updates always get individual PRs
     versioning-strategy: "increase"
 
-  # Next.js app package.json
+  # Legacy nextjs-app mirror — not deployed; security scanning only via root /
+  # open-pull-requests-limit: 0 disables version-update PRs for this directory.
   - package-ecosystem: "npm"
     directory: "/nextjs-app"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "09:00"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 0
     reviewers:
       - "PetriLahdelma"
     labels:
@@ -59,14 +60,14 @@ updates:
       prefix: "chore(deps)"
       include: "scope"
 
-  # Vite app package.json
+  # Legacy Vite app — being phased out; no version-update PRs
   - package-ecosystem: "npm"
     directory: "/vite-app"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "09:00"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 0
     reviewers:
       - "PetriLahdelma"
     labels:
@@ -77,7 +78,7 @@ updates:
       prefix: "chore(deps)"
       include: "scope"
 
-  # Sanity blog package.json
+  # Sanity CMS studio (still used via npm run sanity:dev)
   - package-ecosystem: "npm"
     directory: "/digitaltableteur-blog"
     schedule:
