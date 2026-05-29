@@ -18,7 +18,10 @@
 - **`SKILL_AUTHORING.md`**
   - How to write Claude/Cursor skills: frontmatter, triggers, references/, validation checklist
 
-- **[`../AGENT_INDEX.md`](../AGENT_INDEX.md)****
+- **`AGENT_READINESS.md`**
+  - isitagentready.com checks, discovery endpoints, re-scan commands
+
+- **[`../AGENT_INDEX.md`](../AGENT_INDEX.md)**
   - Master index of areas, skills, and deep references
 
 ### Component Development (CRITICAL)

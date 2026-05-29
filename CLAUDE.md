@@ -21,6 +21,7 @@
 | New UI component | [`nextjs-app/shared/components/AGENTS.md`](nextjs-app/shared/components/AGENTS.md) + skill [`dt-design-system`](.claude/skills/dt-design-system/SKILL.md) |
 | API route | [`app/api/AGENTS.md`](app/api/AGENTS.md) + skill [`dt-api-routes`](.claude/skills/dt-api-routes/SKILL.md) |
 | Script / CI / deploy | [`scripts/AGENTS.md`](scripts/AGENTS.md) + skill [`dt-scripts`](.claude/skills/dt-scripts/SKILL.md) |
+| Bulk autonomous sweep (ultracode) | skill [`dt-workflow`](.claude/skills/dt-workflow/SKILL.md) + templates in `references/templates.md` |
 | Blog / Sanity | [`digitaltableteur-blog/AGENTS.md`](digitaltableteur-blog/AGENTS.md) + skill [`dt-sanity-cms`](.claude/skills/dt-sanity-cms/SKILL.md) |
 | Docs navigation | [`docs/AGENTS.md`](docs/AGENTS.md) |
 

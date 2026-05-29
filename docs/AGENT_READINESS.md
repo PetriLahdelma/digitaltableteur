@@ -20,8 +20,8 @@ MCP: `POST https://isitagentready.com/mcp` → tool `scan_site`
 | sitemap.xml | pass |
 | Link headers | fail → fixed in this branch |
 | DNS-AID | fail (DNS infra — not app code) |
-| Markdown negotiation | fail → middleware rewrite to `/llms.txt` |
-| Content Signals | fail → `Content-Signal` in robots.txt |
+| Content Signals | fail → fixed via `app/robots.txt/route.ts` body directive |
+| Markdown negotiation | fail → middleware sets `x-accept-markdown`; `/llms.txt` returns `text/markdown` |
 | API catalog | fail → `/.well-known/api-catalog` |
 | A2A agent card | fail → `/.well-known/agent-card.json` |
 | Agent skills index | fail → `/.well-known/agent-skills/index.json` |
