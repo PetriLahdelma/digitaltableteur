@@ -90,6 +90,13 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   experimental: {
     externalDir: true,
+    optimizePackageImports: [
+      "@phosphor-icons/react",
+      "framer-motion",
+      "gsap",
+      "@gsap/react",
+      "lenis",
+    ],
   },
   outputFileTracingRoot: __dirname,
   pageExtensions: ["ts", "tsx", "md", "mdx"],
@@ -181,12 +188,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  webpack: (config, { dev }) => {
-    // Avoid corrupted .next/cache/webpack *.pack.gz ENOENTs during local dev.
-    if (dev) {
-      config.cache = false;
-    }
-
+  webpack: (config) => {
     // Path aliases
     // Path aliases (Vercel/Linux safe, works even if tsconfig paths are ignored)
     const nextjsSharedComponents = path.resolve(
@@ -216,10 +218,20 @@ const nextConfig: NextConfig = {
       ),
     };
 
-    // Legacy Vite pages moved to shared/vite-pages to prevent routing conflicts
+    // Ignore generated + build output so predev/build scripts do not trigger
+    // full 16k-module recompiles while a route is still compiling.
     config.watchOptions = {
       ...config.watchOptions,
-      ignored: ["**/shared/vite-pages/**", "**/node_modules/**"],
+      ignored: [
+        "**/node_modules/**",
+        "**/.next/**",
+        "**/storybook-static/**",
+        "**/shared/vite-pages/**",
+        "**/app/blog/postMetadata.ts",
+        "**/nextjs-app/app/blog/postMetadata.ts",
+        "**/nextjs-app/shared/data/blogManifest.ts",
+        "**/nextjs-app/shared/components/CodeBlockWindow/codeBlockFixtures.ts",
+      ],
     };
 
     // Redirect React imports from Sanity packages to a wrapper that includes useEffectEvent

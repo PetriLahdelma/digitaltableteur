@@ -22,6 +22,7 @@ const motionTags = [
   "a",
   "article",
   "aside",
+  "blockquote",
   "button",
   "div",
   "figure",

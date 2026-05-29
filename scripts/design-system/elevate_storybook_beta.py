@@ -187,7 +187,7 @@ def build_contract(name: str, dirpath: Path, existing: dict | None, tsx: str | N
 
 def build_mdx(name: str, contract: dict) -> str:
     return f"""import {{ Meta }} from '@storybook/addon-docs/blocks';
-import * as Stories from './{name}.stories';
+import * as Stories from './{name}.stories.tsx';
 
 <Meta of={{Stories}} />
 

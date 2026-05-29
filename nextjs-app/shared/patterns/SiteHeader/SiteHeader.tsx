@@ -29,6 +29,7 @@ const defaultNavItems: NavItem[] = [
   { href: "/", label: "navHome", exact: true },
   { href: "/work", label: "navWork" },
   { href: "/about", label: "navAbout" },
+  { href: "/pricing", label: "navPricing" },
   { href: "/blog", label: "navBlog" },
   { href: "/contact", label: "navContact" },
 ];
@@ -294,7 +295,7 @@ export function SiteHeader({
           {/* Mobile Menu Button */}
           <IconButton
             icon={<List weight="bold" className="size-5" />}
-            label={t("navMenuOpen")}
+            label={t("navMenuOpen", "Open navigation menu")}
             onClick={openMobileMenu}
             className="lg:hidden"
             variant="ghost"
