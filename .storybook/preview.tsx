@@ -22,6 +22,7 @@ import fi from "@dt/../locales/fi/translation.json";
 import sv from "@dt/../locales/sv/translation.json";
 import { WipBadge } from "@dt/WipBadge";
 import { CookieConsentProvider } from "../nextjs-app/shared/lib/cookieConsent/CookieConsentContext";
+import { resolveDesignParameters } from "./lib/resolve-figma-from-contract";
 
 // Import global styles - CRITICAL for design tokens and component styling
 import "@dt/../index.css";
@@ -386,7 +387,23 @@ const withForcedColorsGlobal: Decorator = (Story, context) => {
   return <Story />;
 };
 
+/**
+ * Wires the Design addon panel to each component's contract `figma` URL
+ * (Digitaltableteur scaffold URLs). Stories may override via `parameters.design`.
+ */
+const withFigmaDesignFromContract: Decorator = (Story, context) => {
+  const design = resolveDesignParameters(context);
+  if (design && !context.parameters.design?.url) {
+    context.parameters = {
+      ...context.parameters,
+      design,
+    };
+  }
+  return <Story />;
+};
+
 export const decorators = [
+  withFigmaDesignFromContract,
   withI18next,
   withForcedColorsGlobal,
   withCookieConsent,

@@ -108,6 +108,8 @@
     "agent:eval": "node scripts/design-system/agent-eval/run.mjs",
     "check:generated": "node scripts/design-system/check-generated.mjs",
     "check:figma": "node scripts/design-system/figma-link.mjs",
+    "sync:figma": "node scripts/design-system/sync-figma-contract-urls.mjs",
+    "check:storybook-figma": "node scripts/design-system/check-storybook-figma-contract.mjs",
     "sync:figma-contracts": "node scripts/design-system/sync-figma-contract-urls.mjs",
     "audit:consumers": "node scripts/design-system/audit-consumers.mjs",
     "promote:stable-atoms": "node scripts/design-system/promote-stable-atoms.mjs",
@@ -222,6 +224,7 @@
     "@next/bundle-analyzer": "^16.1.6",
     "@playwright/test": "^1.58.0",
     "@storybook/addon-a11y": "^10.4.1",
+    "@storybook/addon-designs": "^11.1.3",
     "@storybook/addon-docs": "^10.4.1",
     "@storybook/addon-mcp": "^0.6.0",
     "@storybook/icons": "^2.0.1",
@@ -251,6 +254,7 @@
     "eslint-config-next": "^16.2.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-storybook": "10.4.1",
     "husky": "^9.1.7",
     "jest-axe": "^10.0.0",
     "js-yaml": "^4.1.1",
@@ -279,7 +283,6 @@
     "vitest": "^4.0.18",
     "vitest-axe": "^0.1.0",
     "wait-on": "^9.0.10",
-    "webpack": "^5.104.1",
-    "eslint-plugin-storybook": "10.4.1"
+    "webpack": "^5.104.1"
   }
 }

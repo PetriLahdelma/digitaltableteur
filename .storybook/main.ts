@@ -1,5 +1,10 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import { config as loadEnv } from "dotenv";
 import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
+
+const repoRoot = fileURLToPath(new URL("..", import.meta.url));
+loadEnv({ path: resolve(repoRoot, ".env.local") });
 
 const enableVitestPanel = process.env.STORYBOOK_VITEST === "1";
 
@@ -15,6 +20,7 @@ const config: StorybookConfig = {
   ],
   addons: [
     "@storybook/addon-docs",
+    "@storybook/addon-designs",
     "@storybook/addon-a11y",
     "@storybook/addon-mcp",
     ...(enableVitestPanel ? ["@storybook/addon-vitest"] : []),

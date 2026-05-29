@@ -1,48 +1,48 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
-    "name": "WorkPreviewSection",
-    "tier": "pattern",
-    "group": "marketing",
-    "status": "beta",
-    "description": "Work index preview grid of project cards.",
-    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-work-preview-section",
-    "radixPrimitive": null,
-    "element": "div",
-    "variants": {},
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
-    ],
-    "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
-        "reducedMotion": true,
-        "reviewed": true,
-        "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-    },
-    "tokens": {
-        "colors": [],
-        "spacing": []
-    },
-    "lightDarkVerified": true,
-    "argTypesProxyExempt": [
-        "as",
-        "asChild",
-        "children",
-        "className",
-        "id",
-        "layout",
-        "projects",
-        "ref",
-        "showViewAll",
-        "style",
-        "title"
-    ],
-    "consumers": [],
-    "slots": []
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "WorkPreviewSection",
+  "tier": "pattern",
+  "group": "marketing",
+  "status": "beta",
+  "description": "Work index preview grid of project cards.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-work-preview-section",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "id",
+    "layout",
+    "projects",
+    "ref",
+    "showViewAll",
+    "style",
+    "title"
+  ],
+  "consumers": [],
+  "slots": []
 }

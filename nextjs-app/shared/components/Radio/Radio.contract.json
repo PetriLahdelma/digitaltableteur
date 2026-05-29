@@ -1,41 +1,41 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
-    "name": "Radio",
-    "tier": "atom",
-    "group": "form",
-    "status": "beta",
-    "description": "Single radio option; compose with RadioGroup for sets.",
-    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-radio",
-    "radixPrimitive": null,
-    "element": "div",
-    "variants": {},
-    "slots": [],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Radio",
+  "tier": "atom",
+  "group": "form",
+  "status": "beta",
+  "description": "Single radio option; compose with RadioGroup for sets.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-radio",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "argTypesProxyExempt": [
+    "className"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+  },
+  "tokens": {
+    "colors": [
+      "--color-border",
+      "--color-primary"
     ],
-    "argTypesProxyExempt": [
-        "className"
-    ],
-    "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
-        "reducedMotion": true,
-        "reviewed": true,
-        "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-    },
-    "tokens": {
-        "colors": [
-            "--color-border",
-            "--color-primary"
-        ],
-        "spacing": []
-    },
-    "lightDarkVerified": true,
-    "consumers": []
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": []
 }

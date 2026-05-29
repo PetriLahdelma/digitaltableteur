@@ -1,54 +1,54 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
-    "name": "Spinner",
-    "tier": "atom",
-    "group": "feedback",
-    "status": "beta",
-    "description": "Indeterminate loading spinner for async UI.",
-    "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-spinner",
-    "radixPrimitive": null,
-    "element": "span",
-    "variants": {
-        "size": {
-            "values": [
-                "sm",
-                "md",
-                "lg"
-            ],
-            "default": "md",
-            "forwarded": true,
-            "forwardedTo": "CSS module size classes on Spinner.module.css"
-        }
-    },
-    "slots": [],
-    "asChild": false,
-    "subParts": [],
-    "requiredStories": [
-        "Default",
-        "Playground",
-        "Example",
-        "ForcedColors"
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Spinner",
+  "tier": "atom",
+  "group": "feedback",
+  "status": "beta",
+  "description": "Indeterminate loading spinner for async UI.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-spinner",
+  "radixPrimitive": null,
+  "element": "span",
+  "variants": {
+    "size": {
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "forwarded": true,
+      "forwardedTo": "CSS module size classes on Spinner.module.css"
+    }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "argTypesProxyExempt": [
+    "className"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "aria-label or aria-labelledby"
     ],
-    "argTypesProxyExempt": [
-        "className"
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+  },
+  "tokens": {
+    "colors": [
+      "--color-primary",
+      "--color-border"
     ],
-    "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [
-            "aria-label or aria-labelledby"
-        ],
-        "reducedMotion": true,
-        "reviewed": true,
-        "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-    },
-    "tokens": {
-        "colors": [
-            "--color-primary",
-            "--color-border"
-        ],
-        "spacing": []
-    },
-    "lightDarkVerified": true,
-    "consumers": []
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "consumers": []
 }
