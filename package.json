@@ -220,7 +220,7 @@
     }
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.11.0",
+    "@axe-core/playwright": "^4.11.1",
     "@lhci/cli": "^0.15.1",
     "@next/bundle-analyzer": "^16.1.6",
     "@playwright/test": "^1.58.0",
