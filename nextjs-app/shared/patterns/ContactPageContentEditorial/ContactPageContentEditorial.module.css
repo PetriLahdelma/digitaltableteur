@@ -37,7 +37,7 @@
 @media (width >= 1024px) {
   .layout {
     padding-block: var(--space-layout-120);
-    grid-template-columns: 55% 45%;
+    grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
     align-items: start;
     gap: var(--space-layout-64);
   }
@@ -47,7 +47,9 @@
 
 .leftColumn {
   display: flex;
+  min-width: 0;
   flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-layout-32);
 }
 
@@ -75,6 +77,13 @@
   transform-origin: left;
 }
 
+.layoutDivider {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: none;
+  margin-block-start: var(--space-layout-96);
+}
+
 /* Intro Paragraph */
 
 .intro {
@@ -90,8 +99,26 @@
 
 .contactDetails {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: var(--space-layout-24);
+}
+
+.newBusinessSection {
+  display: flex;
+  width: 100%;
+  max-width: 34rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-layout-24);
+  align-self: flex-start;
+  contain: layout;
+}
+
+@media (width >= 1024px) {
+  .newBusinessSection {
+    grid-column: 1;
+  }
 }
 
 .address {
@@ -123,15 +150,172 @@
   text-underline-offset: 3px;
 }
 
-/* Right Column - Form */
+.newBusiness {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-layout-24);
+}
+
+@media (width >= 768px) {
+  .newBusiness {
+    grid-template-columns: 10.5rem minmax(0, 1fr);
+    gap: var(--space-layout-32);
+  }
+}
+
+.newBusinessMedia {
+  position: relative;
+  width: 100%;
+  height: calc((9rem * 3 / 2) + 20px);
+  overflow: hidden;
+  background-color: var(--color-neutral-bg);
+}
+
+@media (width >= 768px) {
+  .newBusinessMedia {
+    height: calc((10.5rem * 3 / 2) + 20px);
+  }
+}
+
+.newBusinessPortrait {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.newBusinessContent {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-layout-24);
+}
+
+.newBusinessHeading {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.newBusinessBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-4);
+  line-height: 1;
+}
+
+.newBusinessLine,
+.newBusinessLineMuted {
+  margin: 0;
+}
+
+.newBusinessLineMuted {
+  color: var(--color-muted);
+}
+
+.newBusinessCta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-layout-16);
+  width: fit-content;
+  text-decoration: none;
+  transition: gap var(--duration-fast) var(--ease-out-cubic);
+}
+
+.newBusinessCta:hover .email,
+.newBusinessCta:focus-visible .email {
+  text-decoration: underline;
+  color: var(--color-primary);
+  text-underline-offset: 3px;
+}
+
+.newBusinessCta:hover .newBusinessLinkIcon {
+  transform: translateX(2px);
+}
+
+.newBusinessCta:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs, 2px);
+}
+
+.newBusinessLinkIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transition: transform var(--duration-fast) var(--ease-out-cubic);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .newBusinessCta {
+    transition: none;
+  }
+
+  .newBusinessCta:hover .newBusinessLinkIcon {
+    transform: none;
+  }
+
+  .newBusinessLinkIcon {
+    transition: none;
+  }
+}
+
+/* Right Column - Form & Quote */
 
 .rightColumn {
+  display: flex;
+  min-width: 0;
   width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-layout-48);
 }
 
 @media (width >= 1024px) {
   .rightColumn {
+    gap: var(--space-layout-64);
     /* Slight top offset to align with headline baseline */
     padding-block-start: var(--space-layout-16);
   }
 }
+
+.formPanel {
+  width: 100%;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.quoteSection {
+  width: 100%;
+  min-width: 0;
+  align-self: flex-start;
+  contain: layout;
+}
+
+@media (width >= 1024px) {
+  .quoteSection {
+    grid-column: 2;
+    align-self: center;
+  }
+}
+
+.pullQuote {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.pullQuoteText {
+  margin: 0;
+  color: var(--color-primary);
+}
+
