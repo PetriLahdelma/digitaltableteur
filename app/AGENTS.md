@@ -110,4 +110,4 @@ npm run typecheck && npm run lint && npm test && npm run build:next
 
 ---
 
-**See [shared/components/AGENTS.md](../shared/components/AGENTS.md) for component patterns.**
+**See [nextjs-app/shared/components/AGENTS.md](../nextjs-app/shared/components/AGENTS.md) for component patterns.**

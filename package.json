@@ -76,6 +76,7 @@
     "precommit:guard": "bash scripts/precommit-guard.sh",
     "pseo:generate": "npx tsx scripts/pseo/generate-pseo-copy.ts --only-missing",
     "validate:components": "tsx scripts/design-system/validate-components.ts",
+    "validate:agent-docs": "node scripts/validate-agent-docs.mjs",
     "audit:catalog": "node scripts/design-system/audit-catalog-coverage.mjs",
     "new-component": "node scripts/design-system/scaffold-component.mjs",
     "bootstrap:contracts": "node scripts/design-system/bootstrap-contracts.mjs",
