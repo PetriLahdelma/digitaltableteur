@@ -205,7 +205,7 @@ export function NextHeader() {
           type="button"
           className={styles.mobileMenuButton}
           onClick={() => setMobileMenuOpen(true)}
-          aria-label={t("navMenuOpen", "Open navigation")}
+          aria-label={t("navMenuOpen", "Open navigation menu")}
           aria-haspopup="dialog"
           aria-expanded={isMobileMenuOpen}
         >

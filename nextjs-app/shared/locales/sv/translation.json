@@ -7,6 +7,8 @@
   "navContact": "Kontakt",
   "toggleDarkMode": "Växla mörkt läge",
   "navMenuTitle": "Meny",
+  "navMenuOpen": "Öppna navigeringsmenyn",
+  "navMenuClose": "Stäng navigering",
   "navMenuCookiePolicy": "Integritetspolicy",
   "navMenuAiUsage": "AI-användning",
   "navMenuAccessibility": "Tillgänglighetsutlåtande",

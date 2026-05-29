@@ -7,6 +7,7 @@
   "navContact": "Yhteys",
   "toggleDarkMode": "Vaihda tumma/vaalea tila",
   "navMenuTitle": "Valikko",
+  "navMenuOpen": "Avaa navigointivalikko",
   "navMenuClose": "Sulje navigointi",
   "navMenuLinks": "Navigointilinkit",
   "navMenuAccessibleLabel": "Päänavigaatio",
