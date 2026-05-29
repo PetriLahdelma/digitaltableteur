@@ -19,13 +19,13 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     openGraph: {
       title,
       description,
-      images: author.imageUrl ? [author.imageUrl] : ["/logo512.png"],
+      ...(author.imageUrl ? { images: [author.imageUrl] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: author.imageUrl ? [author.imageUrl] : ["/logo512.png"],
+      ...(author.imageUrl ? { images: [author.imageUrl] } : {}),
     },
   };
 }

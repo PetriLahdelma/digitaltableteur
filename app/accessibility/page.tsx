@@ -12,21 +12,12 @@ export const metadata: Metadata = {
       "Digitaltableteur's commitment to web accessibility. WCAG 2.1 AA compliance, keyboard navigation, screen reader support, and accessible design practices.",
     type: "website",
     siteName: "Digitaltableteur",
-    images: [
-      {
-        url: "/logo512.png",
-        width: 512,
-        height: 512,
-        alt: "Digitaltableteur Logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Accessibility Statement | Digitaltableteur",
     description:
       "Digitaltableteur's commitment to web accessibility. WCAG 2.1 AA compliance, keyboard navigation, screen reader support, and accessible design practices.",
-    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/accessibility",

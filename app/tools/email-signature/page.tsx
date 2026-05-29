@@ -11,21 +11,12 @@ export const metadata: Metadata = {
       "Create a professional email signature with our free generator. Includes live preview, dark mode toggle, and easy copy-to-clipboard.",
     type: "website",
     siteName: "Digitaltableteur",
-    images: [
-      {
-        url: "/logo512.png",
-        width: 512,
-        height: 512,
-        alt: "Digitaltableteur Logo",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Email Signature Generator | Digitaltableteur",
     description:
       "Create a professional email signature with our free generator. Includes live preview, dark mode toggle, and easy copy-to-clipboard.",
-    images: ["/logo512.png"],
   },
   alternates: {
     canonical: "/tools/email-signature",

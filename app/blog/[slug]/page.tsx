@@ -30,7 +30,6 @@ export async function generateMetadata({
 
   const title = post.seoTitle ?? `${post.title} | Digitaltableteur`;
   const description = post.seoDescription ?? post.excerpt;
-  const imageUrl = post.mainImageUrl ?? "/logo512.png";
   const url = `${siteBase}/blog/${post.slug}`;
 
   return {
@@ -42,13 +41,22 @@ export async function generateMetadata({
       description,
       url,
       publishedTime: post.publishedAt,
-      images: [{ url: imageUrl, alt: post.mainImageAlt || post.title }],
+      ...(post.mainImageUrl
+        ? {
+            images: [
+              {
+                url: post.mainImageUrl,
+                alt: post.mainImageAlt || post.title,
+              },
+            ],
+          }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [imageUrl],
+      ...(post.mainImageUrl ? { images: [post.mainImageUrl] } : {}),
     },
     alternates: {
       canonical: url,
