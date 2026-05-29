@@ -66,7 +66,7 @@ export const projects: Project[] = [
     tags: [
       "Design Systems",
       "AI Architecture",
-      "Design Tokens",
+      "Data Science",
       "MCP",
       "React",
     ],

@@ -73,7 +73,27 @@ const toJson = (node) => {
   };
 };
 
+async function isUpToDate() {
+  if (process.env.FORCE_CODEBLOCK_FIXTURES === "1") return false;
+  try {
+    const [outStat, scriptStat] = await Promise.all([
+      fs.stat(outFile),
+      fs.stat(path.join(repoRoot, "scripts/generate-codeblock-fixtures.mjs")),
+    ]);
+    return outStat.mtimeMs >= scriptStat.mtimeMs;
+  } catch {
+    return false;
+  }
+}
+
 async function main() {
+  if (await isUpToDate()) {
+    console.log(
+      `Skipping code block fixtures (up to date): ${path.relative(repoRoot, outFile)}`,
+    );
+    return;
+  }
+
   const highlighter = await getSingletonHighlighter({
     themes: Object.values(themes),
     langs: ["plaintext"],
