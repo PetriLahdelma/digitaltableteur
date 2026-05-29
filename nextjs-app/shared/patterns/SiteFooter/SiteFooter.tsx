@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { Container } from "@/nextjs-app/shared/components/Layout";
 import { Stack } from "@/nextjs-app/shared/components/Layout";
 import { TextLink } from "@/nextjs-app/shared/components/TextLink";
-import { Divider } from "@/nextjs-app/shared/components/Divider";
+import { Divider } from "@dt/Divider";
 import {
   InstagramLogo,
   FacebookLogo,
@@ -67,6 +67,7 @@ export interface SiteFooterProps {
   className?: string;
 }
 
+/** Production site footer with social and legal links. */
 export function SiteFooter({ className }: SiteFooterProps) {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();

@@ -5,24 +5,26 @@
 }
 
 /* Rounded image corners for specific sections */
+
 .roundedImage img {
   border-radius: 1rem;
 }
 
 /* Custom Meta Section - 2 column layout */
+
 .metaSection {
-  padding-block: var(--space-layout-48);
-  background-color: var(--color-surface);
   margin-inline: calc(-1 * var(--space-layout-24));
+  padding-block: var(--space-layout-48);
   padding-inline: var(--space-layout-24);
+  background-color: var(--color-surface);
 }
 
 .metaGrid {
   display: grid;
+  margin-inline: auto;
+  max-width: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
-  max-width: var(--container-md);
-  margin-inline: auto;
 }
 
 .metaLeft {
@@ -44,19 +46,19 @@
 }
 
 .metaLabel {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-text);
-  margin: 0;
 }
 
 .metaText {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .metaTools {
@@ -66,11 +68,11 @@
 }
 
 .metaOverview {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.7;
+  color: var(--color-text);
 }
 
 .metaOverview strong {
@@ -78,43 +80,48 @@
 }
 
 /* Hero accent — VertaaUX brand: dark base + neon teal */
+
 .heroAccent {
   background-color: #0D0D0D;
 }
 
 /* Process section with enhanced spacing for AI methodology */
+
 .processSection {
   margin-block: var(--space-layout-80);
+  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
+  padding-inline: var(--space-layout-24);
   background: linear-gradient(
     180deg,
     var(--color-light-bg) 0%,
     transparent 100%
   );
-  margin-inline: calc(-1 * var(--space-layout-24));
-  padding-inline: var(--space-layout-24);
 }
 
 /* Standard story section spacing */
+
 .storySection {
   margin-block: var(--space-layout-64);
 }
 
 /* Problem mindmap styling */
+
 .problemMindmap {
   margin-block-start: var(--space-400);
   width: 100%;
 }
 
 /* Combined Approach + How It Works section with continuous gray background */
+
 .approachSection {
-  background-color: var(--color-light-bg);
   margin-inline: calc(-1 * var(--space-layout-24));
-  padding-inline: var(--space-layout-24);
   padding-block: var(--space-layout-48);
+  padding-inline: var(--space-layout-24);
+  background-color: var(--color-light-bg);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .approachSection {
     margin-inline: calc(-1 * var(--space-layout-16));
     padding-inline: var(--space-layout-16);
@@ -122,20 +129,22 @@
 }
 
 /* Alternate story section with subtle background */
+
 .storySectionAlt {
   margin-block: var(--space-layout-64);
-  background-color: var(--color-light-bg);
-  padding-block: var(--space-layout-48);
   margin-inline: calc(-1 * var(--space-layout-24));
+  padding-block: var(--space-layout-48);
   padding-inline: var(--space-layout-24);
+  background-color: var(--color-light-bg);
 }
 
 /* Logo grid section - custom 2x2 layout */
+
 .logoGridSection {
-  max-width: var(--container-md);
+  margin-block-end: var(--space-layout-64);
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  margin-block-end: var(--space-layout-64);
+  max-width: var(--container-md);
 }
 
 @media (width >= 768px) {
@@ -167,30 +176,30 @@
 }
 
 .logoCard {
-  margin: 0;
   display: flex;
+  margin: 0;
   flex-direction: column;
   gap: var(--space-internal-12);
 }
 
 .logoCardDark {
-  background-color: #0D0D0D;
-  border-radius: 0.75rem;
-  padding: var(--space-layout-48);
   display: flex;
-  align-items: center;
+  padding: var(--space-layout-48);
   justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  background-color: #0D0D0D;
   aspect-ratio: 16 / 9;
 }
 
 .logoCardLight {
-  background-color: #fff;
+  display: flex;
+  padding: var(--space-layout-48);
+  justify-content: center;
+  align-items: center;
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
-  padding: var(--space-layout-48);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #fff;
   aspect-ratio: 16 / 9;
 }
 
@@ -204,51 +213,53 @@
 }
 
 .logoCardGradient {
-  background-color: #141414;
-  border-radius: 0.75rem;
-  padding: var(--space-layout-48);
   display: flex;
-  align-items: center;
+  padding: var(--space-layout-48);
   justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  background-color: #141414;
   aspect-ratio: 16 / 9;
 }
 
 .logoImage {
   max-width: 80%;
-  max-height: 80%;
   height: auto;
+  max-height: 80%;
   object-fit: contain;
 }
 
 .logoImageRound {
   max-width: 50%;
-  max-height: 90%;
   height: auto;
+  max-height: 90%;
   object-fit: contain;
 }
 
 .logoCaption {
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
-  font-style: italic;
-  color: var(--color-text-secondary);
   text-align: center;
+  color: var(--color-text-secondary);
+  font-style: italic;
 }
 
 /* Image grid with enhanced spacing */
+
 .imageGrid {
   margin-block: var(--space-layout-64);
 }
 
 /* Color palette grid */
+
 .paletteGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-layout-24);
-  max-width: var(--container-lg);
+  margin-block-end: var(--space-layout-48);
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  margin-block-end: var(--space-layout-48);
+  max-width: var(--container-lg);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-layout-24);
 }
 
 @media (width >= 768px) {
@@ -270,13 +281,13 @@
 }
 
 .paletteCard {
-  border-radius: 0.75rem;
-  padding: 1.25rem;
   display: flex;
+  padding: 1.25rem;
+  min-block-size: 140px;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 0.75rem;
   aspect-ratio: 4 / 3;
-  min-block-size: 140px;
 }
 
 .paletteCardHeader {
@@ -316,8 +327,9 @@
 }
 
 /* Palette card variants */
+
 .paletteCardTeal {
-  background-color: #00FFCC;
+  background-color: #0FC;
   color: #0D0D0D;
 }
 
@@ -337,6 +349,7 @@
 }
 
 /* Score state variants */
+
 .paletteCardExcellent {
   background-color: #10B981;
   color: #0D0D0D;
@@ -358,10 +371,11 @@
 }
 
 /* Light theme variants */
+
 .paletteCardPureWhite {
-  background-color: #FFFFFF;
-  color: #1A1A1A;
   border: 1px solid var(--color-border);
+  background-color: #FFF;
+  color: #1A1A1A;
 }
 
 .paletteCardWarmWhite {
@@ -375,16 +389,17 @@
 }
 
 .paletteCardMutedTeal {
-  background-color: #00CCAA;
+  background-color: #0CA;
   color: #0D0D0D;
 }
 
 /* Palette section with title */
+
 .paletteSection {
-  max-width: var(--container-lg);
+  margin-block-end: var(--space-layout-48);
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  margin-block-end: var(--space-layout-48);
+  max-width: var(--container-lg);
 }
 
 @media (width >= 768px) {
@@ -400,15 +415,16 @@
 }
 
 .paletteSectionTitle {
+  margin-block-end: var(--space-layout-16);
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
-  font-style: italic;
-  color: var(--color-text-secondary);
   text-align: center;
-  margin-block-end: var(--space-layout-16);
+  color: var(--color-text-secondary);
+  font-style: italic;
 }
 
 /* 3-column variant for light theme */
+
 .paletteGridThree {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -420,20 +436,22 @@
 }
 
 /* Remove container padding from paletteGrid inside paletteSection */
+
 .paletteSection .paletteGrid {
-  padding-inline: 0;
   margin-block-end: 0;
+  padding-inline: 0;
 }
 
 /* Font waterfall — descending size showcase */
+
 .fontWaterfall {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-layout-48);
-  max-width: var(--container-lg);
+  margin-block-end: var(--space-layout-64);
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  margin-block-end: var(--space-layout-64);
+  max-width: var(--container-lg);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-layout-48);
 }
 
 @media (width >= 768px) {
@@ -463,22 +481,22 @@
 }
 
 .waterfallLabel {
+  margin-block-end: var(--space-layout-16);
   font-family: var(--font-sans);
   font-size: var(--font-size-text-xs);
   font-weight: 500;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text-tertiary);
-  margin-block-end: var(--space-layout-16);
 }
 
 .waterfallSansLine,
 .waterfallMonoLine {
   margin: 0;
-  line-height: 1.35;
   padding-block: 0.15em;
-  color: var(--color-text);
+  line-height: 1.35;
   white-space: nowrap;
+  color: var(--color-text);
 }
 
 .waterfallSansLine {
@@ -492,14 +510,15 @@
 }
 
 /* Brand asset grid — for presenting extracted design elements */
+
 .brandImageGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-layout-24);
-  max-width: var(--container-lg);
+  margin-block-end: var(--space-layout-48);
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
-  margin-block-end: var(--space-layout-48);
+  max-width: var(--container-lg);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-layout-24);
 }
 
 @media (width >= 768px) {
@@ -515,8 +534,8 @@
 }
 
 .brandFigure {
-  margin: 0;
   display: flex;
+  margin: 0;
   flex-direction: column;
   gap: var(--space-internal-8);
 }
@@ -524,42 +543,44 @@
 .brandImage {
   width: 100%;
   height: auto;
-  border-radius: 0.75rem;
   border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
 }
 
 .brandCaption {
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
-  color: var(--color-text-secondary);
   text-align: center;
+  color: var(--color-text-secondary);
 }
 
 /* Outcomes section */
+
 .outcomesSection {
   margin-block: var(--space-layout-80);
-  border-block-start: 1px solid var(--color-border);
   padding-block-start: var(--space-layout-48);
+  border-block-start: 1px solid var(--color-border);
 }
 
 /* Key metrics section — VertaaUX dark brand with teal accent */
+
 .metricsSection {
   margin-block: var(--space-layout-80);
   margin-inline: calc(-1 * var(--space-layout-24));
-  padding-inline: var(--space-layout-24);
   padding-block: var(--space-layout-64);
+  padding-inline: var(--space-layout-24);
   background-color: #0D0D0D;
   color: #F2F2F2;
 }
 
 .metricsContent {
-  max-width: var(--container-lg);
   margin-inline: auto;
+  max-width: var(--container-lg);
 }
 
 .metricsContent h3 {
-  color: white;
   margin-block-end: var(--space-layout-32);
+  color: white;
 }
 
 .metricsGrid {
@@ -579,7 +600,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.1;
-  color: #00FFCC;
+  color: #0FC;
 }
 
 .metricLabel {
@@ -591,12 +612,12 @@
 .metricDetail {
   font-family: var(--font-sans);
   font-size: var(--font-size-sm);
-  opacity: 0.85;
   line-height: 1.4;
+  opacity: 0.85;
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .metaSection {
     margin-inline: calc(-1 * var(--space-layout-16));
     padding-inline: var(--space-layout-16);

@@ -26,6 +26,9 @@ const iconSizeClasses = {
   lg: "size-6",
 } as const;
 
+/**
+ * Single-line text input with optional icons and clear affordance.
+ */
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
     {

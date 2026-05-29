@@ -38,6 +38,9 @@ export interface WorkPreviewSectionProps {
   id?: string;
 }
 
+/**
+ * WorkPreviewSection component.
+ */
 export function WorkPreviewSection({
   title,
   projects,

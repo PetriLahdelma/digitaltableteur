@@ -7,7 +7,7 @@ import Icon from "@dt/Icon";
 const noop = () => {};
 
 const meta: Meta<typeof ChatHeader> = {
-  title: "Components/AI/Chat/ChatHeader",
+  title: "Molecules/Chat/ChatHeader",
   component: ChatHeader,
   tags: ["autodocs"],
   args: {
@@ -24,14 +24,11 @@ export default meta;
 type Story = StoryObj<typeof ChatHeader>;
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   parameters: {},
 };
 
-export const Sending: Story = {
-  args: {
-    isSending: true,
-  },
-};
+export const Sending: Story = { args: { isSending: true } };
 
 const chatHeaderComplianceRules: ComplianceRule[] = [
   {

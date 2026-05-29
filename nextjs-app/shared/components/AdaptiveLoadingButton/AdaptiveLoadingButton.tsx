@@ -55,7 +55,10 @@ const governanceBlueprint = {
   evolution_log: [],
 } as const;
 
-const AdaptiveLoadingButton = React.forwardRef<
+/**
+ * AdaptiveLoadingButton component.
+ */
+export const AdaptiveLoadingButton = React.forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   AdaptiveLoadingButtonProps
 >(

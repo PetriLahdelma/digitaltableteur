@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
-import ChatHeader from "@dt/ChatHeader";
+import ChatHeader from "@dt/ChatWidget/ChatHeader";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../../i18n";
 

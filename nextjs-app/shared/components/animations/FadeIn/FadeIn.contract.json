@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "FadeIn",
+  "tier": "atom",
+  "group": "motion",
+  "status": "beta",
+  "description": "Scroll-triggered fade-in animation wrapper (GSAP).",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-fade-in",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "delay",
+    "direction",
+    "distance",
+    "duration",
+    "id",
+    "ref",
+    "style",
+    "threshold"
+  ]
+}

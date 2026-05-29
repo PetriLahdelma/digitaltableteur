@@ -34,7 +34,20 @@ const ToasterContext = createContext<ToasterContextValue | null>(null);
 export function useToast() {
   const context = useContext(ToasterContext);
   if (!context) {
-    throw new Error("useToast must be used within a ToasterProvider");
+    // Soft-failing matches the existing providers/ToastProvider.tsx hook so
+    // components remain testable without wiring a full ToasterProvider in
+    // every test, and so accidental production usage outside the provider
+    // degrades quietly to a no-op instead of crashing the page. The warn
+    // gives developers a breadcrumb during local dev.
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(
+        "useToast called outside ToasterProvider — toasts will be no-ops.",
+      );
+    }
+    return {
+      toast: () => {},
+      dismiss: () => {},
+    } as ToasterContextValue;
   }
   return context;
 }

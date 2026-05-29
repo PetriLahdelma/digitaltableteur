@@ -5,6 +5,7 @@
 }
 
 /* Labels */
+
 .label {
   display: block;
   font-family: var(--font-body);
@@ -19,16 +20,17 @@
 }
 
 /* Bordered input */
+
 .input {
-  width: 100%;
   padding: var(--space-internal-12) var(--space-internal-16);
-  font-family: var(--font-body);
-  font-size: var(--font-size-text);
-  color: var(--color-text);
-  background: transparent;
+  width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text);
+  color: var(--color-text);
   transition: border-color var(--duration-fast) var(--ease-out-cubic);
 }
 
@@ -46,19 +48,20 @@
 }
 
 /* Bordered textarea */
+
 .textarea {
+  padding: var(--space-internal-16);
   width: 100%;
   min-height: 140px;
-  padding: var(--space-internal-16);
-  font-family: var(--font-body);
-  font-size: var(--font-size-text);
-  color: var(--color-text);
-  background: transparent;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   outline: none;
-  resize: vertical;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text);
+  color: var(--color-text);
   transition: border-color var(--duration-fast) var(--ease-out-cubic);
+  resize: vertical;
 }
 
 .textarea::placeholder {
@@ -75,26 +78,27 @@
 }
 
 /* Select wrapper for custom chevron */
+
 .selectWrapper {
-  position: relative;
   display: flex;
+  position: relative;
   align-items: center;
 }
 
 .select {
-  width: 100%;
   padding: var(--space-internal-12) var(--space-internal-16);
-  padding-right: var(--space-internal-32);
-  font-family: var(--font-body);
-  font-size: var(--font-size-text);
-  color: var(--color-text);
-  background: transparent;
+  width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text);
+  color: var(--color-text);
   cursor: pointer;
-  appearance: none;
   transition: border-color var(--duration-fast) var(--ease-out-cubic);
+  appearance: none;
+  padding-right: var(--space-internal-32);
 }
 
 .select:focus {
@@ -106,6 +110,7 @@
 }
 
 /* Placeholder option styling */
+
 .select option[value=""] {
   color: var(--color-muted);
 }
@@ -123,6 +128,7 @@
 }
 
 /* Error message */
+
 .error {
   margin: 0;
   font-family: var(--font-body);
@@ -133,12 +139,12 @@
 
 @keyframes fadeIn {
   from {
-    opacity: 0;
     transform: translateY(-4px);
+    opacity: 0;
   }
 
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }

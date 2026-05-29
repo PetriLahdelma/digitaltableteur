@@ -1,1 +1,1 @@
-export { ReadingProgress, type ReadingProgressProps } from "./ReadingProgress";
+export { ReadingProgress, default, type ReadingProgressProps } from './ReadingProgress';

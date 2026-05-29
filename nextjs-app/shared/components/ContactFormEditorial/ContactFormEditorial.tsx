@@ -1,9 +1,10 @@
 "use client";
 
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Loader } from "lucide-react";
 import { FormFieldEditorial } from "../FormFieldEditorial";
 import { ExpandableSection } from "../ExpandableSection";
@@ -91,6 +92,12 @@ const PROJECT_TYPE_OPTIONS = [
   { value: "other", labelKey: "contactProjectOther" },
 ];
 
+/** Maps homepage CTA `?service=` query values to project-type slugs. */
+const SERVICE_PROJECT_TYPE_MAP: Record<string, string> = {
+  "design-sprint": "component-library",
+  "design-sprints": "component-library",
+};
+
 const HEAR_ABOUT_OPTIONS = [
   { value: "social-media", labelKey: "contactHearSocial" },
   { value: "search-engine", labelKey: "contactHearSearch" },
@@ -106,6 +113,9 @@ export interface ContactFormEditorialProps {
   className?: string;
 }
 
+/**
+ * ContactFormEditorial component.
+ */
 export function ContactFormEditorial({
   onSuccess,
   onError,
@@ -113,6 +123,26 @@ export function ContactFormEditorial({
 }: ContactFormEditorialProps) {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const searchParams = useSearchParams();
+  // Honour reduced-motion: when set, skip the form's entrance animation entirely
+  // so the rendered tree sits at its final visible state from frame 1. Without
+  // this, axe samples the form mid-fade (opacity ~0.7) and reports the
+  // ExpandableSection trigger/privacy paragraph as a color-contrast violation
+  // because their muted-foreground color blends to ~3.5:1 against the page.
+  const prefersReducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    const service = searchParams?.get("service")?.trim().toLowerCase();
+    if (!service) return;
+
+    const projectType = SERVICE_PROJECT_TYPE_MAP[service];
+    if (!projectType) return;
+
+    dispatchForm({
+      type: "UPDATE_FIELD",
+      payload: { field: "projectType", value: projectType },
+    });
+  }, [searchParams]);
 
   // Form state
   const [formData, dispatchForm] = useReducer(
@@ -299,9 +329,13 @@ export function ContactFormEditorial({
     <motion.form
       onSubmit={handleSubmit}
       className={cn(styles.form, className)}
-      initial={{ opacity: 0, y: 20 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0 }
+          : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+      }
     >
       {/* Honeypot */}
       <div className={styles.honeypot} aria-hidden="true">

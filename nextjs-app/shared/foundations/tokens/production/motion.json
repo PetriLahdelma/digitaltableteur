@@ -1,0 +1,63 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "duration": {
+    "instant": {
+      "$value": "100ms",
+      "$description": "Motion duration for instant transitions."
+    },
+    "fast": {
+      "$value": "200ms",
+      "$description": "Motion duration for fast transitions."
+    },
+    "normal": {
+      "$value": "350ms",
+      "$description": "Motion duration for normal transitions."
+    },
+    "slow": {
+      "$value": "500ms",
+      "$description": "Motion duration for slow transitions."
+    },
+    "slower": {
+      "$value": "800ms",
+      "$description": "Motion duration for slower transitions."
+    },
+    "slowest": {
+      "$value": "1200ms",
+      "$description": "Motion duration for slowest transitions."
+    }
+  },
+  "stagger": {
+    "fast": {
+      "$value": "0.03s",
+      "$description": "Animation stagger delay between siblings."
+    },
+    "normal": {
+      "$value": "0.08s",
+      "$description": "Animation stagger delay between siblings."
+    },
+    "slow": {
+      "$value": "0.15s",
+      "$description": "Animation stagger delay between siblings."
+    }
+  },
+  "motion": {
+    "distance": {
+      "sm": {
+        "$value": "12px",
+        "$description": "Translate distance for entrance animations."
+      },
+      "md": {
+        "$value": "24px",
+        "$description": "Translate distance for entrance animations."
+      },
+      "lg": {
+        "$value": "48px",
+        "$description": "Translate distance for entrance animations."
+      },
+      "xl": {
+        "$value": "80px",
+        "$description": "Translate distance for entrance animations."
+      }
+    }
+  }
+}

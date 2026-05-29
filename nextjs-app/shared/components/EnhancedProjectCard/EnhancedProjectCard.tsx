@@ -42,6 +42,9 @@ const aspectRatioClasses: Record<
   landscape: "aspect-[4/3]",
 };
 
+/**
+ * EnhancedProjectCard component.
+ */
 export function EnhancedProjectCard({
   title,
   slug,
@@ -179,7 +182,7 @@ export function EnhancedProjectCard({
           <span
             className={cn(
               "block text-[11px] font-body uppercase tracking-wider",
-              "text-foreground/60"
+              "text-muted-foreground"
             )}
           >
             {category}

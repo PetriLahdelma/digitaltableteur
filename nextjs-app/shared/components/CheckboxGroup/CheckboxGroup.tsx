@@ -17,6 +17,7 @@ export interface CheckboxGroupProps {
   onChange?: (selectedOptions: string[]) => void;
 }
 
+/** Checkbox group with optional master select-all control. */
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   id = "",
   label,

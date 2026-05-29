@@ -1,0 +1,26 @@
+- status: Work in progress (beta)
+- 'heading "Compliance: 11/11" [level=2]'
+- text: Complete file structure
+- img "Pass"
+- text: All 5 files present TypeScript strict
+- img "Pass"
+- text: Proper typing with SelectProps Translation support
+- img "Pass"
+- text: Stories use translation keys CSS Modules
+- img "Pass"
+- text: Removed inline styles, using module classes Design tokens
+- img "Pass"
+- text: Replaced Moderat with var(--font-text) Logical properties
+- img "Pass"
+- text: Uses standard padding Theme support
+- img "Pass"
+- text: CSS custom properties Component composition
+- img "Pass"
+- text: Flexible with SelectOption Accessibility
+- img "Pass"
+- text: Label, disabled state, keyboard navigation Storybook stories
+- img "Pass"
+- text: Multiple variants with ComplianceCard Tests
+- img "Pass"
+- text: Test file exists
+- separator "Resize table"

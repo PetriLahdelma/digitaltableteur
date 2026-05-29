@@ -19,11 +19,12 @@
   font-family: var(--font-text);
   font-size: 1rem;
   text-align: left;
-  cursor: pointer;
   color: var(--color-primary, #041B23);
+  cursor: pointer;
 }
 
 /* Focus states for accessibility (WCAG 2.4.7 Focus Visible) */
+
 .trigger:focus-visible {
   outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
   outline-offset: var(--focus-ring-offset, 2px);

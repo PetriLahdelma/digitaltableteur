@@ -1,9 +1,16 @@
+import { cva } from "class-variance-authority";
+
+export const linkVariants = cva("", {
+  variants: { size: { sm: "", md: "", lg: "" } },
+  defaultVariants: { size: "md" },
+});
+
 import React from "react";
 import styles from "./Link.module.css";
 import "../../styles/variables.css";
 import Icon from "@dt/Icon";
 
-interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   size?: "S" | "M" | "L";
 }
 
@@ -94,6 +101,7 @@ function extractTextContent(children: React.ReactNode): string {
   return "";
 }
 
+/** Accessible inline link with size tokens and optional trailing icon. */
 const Link: React.FC<LinkProps> = ({
   href = "#",
   size = "M",

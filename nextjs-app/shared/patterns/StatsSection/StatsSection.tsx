@@ -25,10 +25,10 @@ export function StatsSection({
   className,
 }: StatsSectionProps) {
   const bgClasses = {
-    default: "",
-    muted: "bg-muted/30",
-    accent: "bg-primary/5",
-    primary: "bg-primary",
+    default: "text-foreground",
+    muted: "bg-muted/30 text-foreground",
+    accent: "bg-primary/5 text-foreground",
+    primary: "bg-primary text-primary-foreground",
   };
 
   return (
@@ -36,7 +36,7 @@ export function StatsSection({
       <Container size="lg">
         {title && (
           <FadeIn direction="up" distance={20}>
-            <h2 className="font-display font-bold text-xl tablet:text-2xl text-foreground mb-12 text-center">
+            <h2 className="font-display font-bold text-xl tablet:text-2xl mb-12 text-center">
               {title}
             </h2>
           </FadeIn>

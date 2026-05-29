@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "TextArea",
+  "tier": "atom",
+  "group": "form",
+  "status": "beta",
+  "description": "Multi-line text field with optional label, validation, and character count.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-text-area",
+  "radixPrimitive": null,
+  "element": "textarea",
+  "variants": {
+    "size": {
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "forwarded": true,
+      "forwardedTo": "normalizeSizeProp + CSS module size classes"
+    }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "argTypesProxyExempt": [
+    "className",
+    "onValueChange",
+    "onChange"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Tab",
+      "Shift+Tab"
+    ],
+    "ariaRequirements": [
+      "aria-label or associated label",
+      "aria-invalid when error"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "forcedColorsVerified": true,
+    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+  },
+  "tokens": {
+    "colors": [
+      "--color-border",
+      "--color-primary",
+      "--color-error"
+    ],
+    "spacing": [
+      "--space-internal-8"
+    ]
+  },
+  "lightDarkVerified": true,
+  "consumers": []
+}

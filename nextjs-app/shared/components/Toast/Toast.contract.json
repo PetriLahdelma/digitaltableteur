@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Toast",
+  "tier": "molecule",
+  "group": "feedback",
+  "status": "beta",
+  "description": "Transient status message with severity, position, and auto-dismiss.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-toast",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {
+    "size": {
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "forwarded": true,
+      "forwardedTo": "CSS module size classes"
+    },
+    "severity": {
+      "values": [
+        "success",
+        "error",
+        "warning",
+        "info"
+      ],
+      "default": "info",
+      "forwarded": true
+    },
+    "position": {
+      "values": [
+        "top-left",
+        "top-center",
+        "top-right",
+        "bottom-left",
+        "bottom-center",
+        "bottom-right"
+      ],
+      "default": "bottom-center",
+      "forwarded": true
+    }
+  },
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "role=status",
+      "aria-live polite"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+    "forcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "duration",
+    "id",
+    "isOpen",
+    "message",
+    "onClose",
+    "position",
+    "ref",
+    "severity",
+    "size",
+    "style"
+  ],
+  "consumers": []
+}

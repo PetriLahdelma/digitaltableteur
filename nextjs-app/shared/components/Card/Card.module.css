@@ -10,24 +10,24 @@
 
   /* Sophisticated Shadow System (layered depth) */
   --card-shadow-sm:
-    0 1px 2px 0 rgb(0 0 0 / 0.05),
-    0 1px 3px 0 rgb(0 0 0 / 0.1);
+    0 1px 2px 0 rgb(0 0 0 / 5%),
+    0 1px 3px 0 rgb(0 0 0 / 10%);
   --card-shadow-md:
-    0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -1px rgb(0 0 0 / 0.06);
+    0 4px 6px -1px rgb(0 0 0 / 10%),
+    0 2px 4px -1px rgb(0 0 0 / 6%);
   --card-shadow-lg:
-    0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -2px rgb(0 0 0 / 0.05);
+    0 10px 15px -3px rgb(0 0 0 / 10%),
+    0 4px 6px -2px rgb(0 0 0 / 5%);
   --card-shadow-xl:
-    0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 10px 10px -5px rgb(0 0 0 / 0.04);
+    0 20px 25px -5px rgb(0 0 0 / 10%),
+    0 10px 10px -5px rgb(0 0 0 / 4%);
   --card-shadow-2xl:
-    0 25px 50px -12px rgb(0 0 0 / 0.25);
+    0 25px 50px -12px rgb(0 0 0 / 25%);
 
   /* Gradient Overlay (for hover effects) */
   --card-gradient-subtle: linear-gradient(
     135deg,
-    rgb(0 102 255 / 0.03) 0%,
+    rgb(0 102 255 / 3%) 0%,
     transparent 50%
   );
 
@@ -68,20 +68,21 @@
 
 .outlined {
   border: var(--card-outline-width) solid var(--card-outline-color);
-  box-shadow: none;
   background-color: var(--card-container-color);
+  box-shadow: none;
 }
 
 .outlined::before {
-  /* Subtle gradient overlay for depth */
-  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background: var(--card-gradient-subtle);
-  opacity: 0;
-  transition: opacity 0.3s ease;
   pointer-events: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+
+  /* Subtle gradient overlay for depth */
+  content: '';
 }
 
 .outlined.hoverable:hover::before {
@@ -89,41 +90,43 @@
 }
 
 .filled {
+  position: relative;
   border: none;
   background-color: var(--card-filled-bg);
   box-shadow: var(--card-shadow-sm);
-  position: relative;
 }
 
 .filled::after {
-  /* Inner glow effect */
-  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.05);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 5%);
   pointer-events: none;
+
+  /* Inner glow effect */
+  content: '';
 }
 
 .elevated {
+  position: relative;
   border: none;
   background-color: var(--card-container-color);
   box-shadow: var(--card-shadow-md);
-  position: relative;
 }
 
 .elevated::before {
-  /* Colored top border accent */
-  content: '';
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
+  left: 0;
   height: 4px;
-  background: var(--home-gradient, var(--color-primary));
   border-radius: var(--card-container-shape) var(--card-container-shape) 0 0;
-  opacity: 0;
+  background: var(--home-gradient, var(--color-primary));
   transition: opacity 0.3s ease;
+  opacity: 0;
+
+  /* Colored top border accent */
+  content: '';
 }
 
 .elevated.hoverable:hover::before {
@@ -137,17 +140,19 @@
 }
 
 .outlined.hoverable:hover {
+  border-color: var(--accent-purple, var(--color-primary));
+
   /* Lift effect with subtle shadow */
   box-shadow: var(--card-shadow-lg);
   transform: translateY(-4px) scale(1.01);
-  border-color: var(--accent-purple, var(--color-primary));
 }
 
 .filled.hoverable:hover {
+  background-color: var(--color-white);
+
   /* Elevation increase */
   box-shadow: var(--card-shadow-md);
   transform: translateY(-2px);
-  background-color: var(--color-white);
 }
 
 .elevated.hoverable:hover {
@@ -157,20 +162,23 @@
 }
 
 /* Active State (pressed) */
+
 .hoverable:active {
-  transform: translateY(-1px) scale(0.99);
   transition-duration: 0.1s;
+  transform: translateY(-1px) scale(0.99);
 }
 
 /* Card Layout Structure - Improved Spacing Rhythm */
 
 .cardHeader {
   padding: var(--card-header-padding);
+
   /* Subtle bottom border for header separation */
-  border-bottom: 1px solid rgb(0 0 0 / 0.05);
+  border-bottom: 1px solid rgb(0 0 0 / 5%);
 }
 
 /* Header without content below doesn't need border */
+
 .cardHeader:last-child {
   border-bottom: none;
 }
@@ -178,15 +186,17 @@
 .cardContent {
   padding: var(--card-content-padding);
   flex: 1;
+
   /* Optimal line height for readability */
   line-height: var(--line-height-relaxed, 1.625);
 }
 
 .cardFooter {
   padding: var(--card-footer-padding);
+  background: rgb(0 0 0 / 1%); /* Subtle background differentiation */
+
   /* Top border for footer separation */
-  border-top: 1px solid rgb(0 0 0 / 0.05);
-  background: rgb(0 0 0 / 0.01); /* Subtle background differentiation */
+  border-top: 1px solid rgb(0 0 0 / 5%);
 }
 
 .cardActions {
@@ -269,11 +279,11 @@
 }
 
 .subTitle {
+  font-size: 0.75rem; /* Smaller, compact size */
+  font-weight: 600; /* Semibold for emphasis */
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-primary);
-  font-weight: 600; /* Semibold for emphasis */
-  font-size: 0.75rem; /* Smaller, compact size */
   margin-bottom: 0.5rem; /* Spacing before title */
 }
 
@@ -354,13 +364,14 @@
   block-size: 120px;
   inline-size: 100%;
   border-radius: 8px;
+
   /* Modern gradient shimmer effect */
   background: linear-gradient(
     90deg,
-    rgb(0 0 0 / 0.04) 0%,
-    rgb(0 0 0 / 0.08) 40%,
-    rgb(0 0 0 / 0.04) 80%,
-    rgb(0 0 0 / 0.04) 100%
+    rgb(0 0 0 / 4%) 0%,
+    rgb(0 0 0 / 8%) 40%,
+    rgb(0 0 0 / 4%) 80%,
+    rgb(0 0 0 / 4%) 100%
   );
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.8s ease-in-out infinite;
@@ -370,6 +381,7 @@
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -396,10 +408,11 @@
 .card:focus-visible {
   outline: 3px solid var(--color-primary);
   outline-offset: 4px; /* Larger offset for better visibility */
+
   /* Subtle glow effect */
   box-shadow:
     var(--card-shadow-lg),
-    0 0 0 4px rgb(0 102 204 / 0.1);
+    0 0 0 4px rgb(0 102 204 / 10%);
 }
 
 /* Size Variants */
@@ -482,32 +495,36 @@
 }
 
 /* Advanced Variant: Glassmorphism (Frosted Glass Effect) */
+
 /* Usage: Add custom className "glass" to Card component */
+
 .card.glass {
-  background: rgb(255 255 255 / 0.7);
-  backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 30%);
+  background: rgb(255 255 255 / 70%);
+  /* stylelint-disable-next-line property-no-vendor-prefix -- Required for Safari support */
   -webkit-backdrop-filter: blur(10px) saturate(180%);
-  border: 1px solid rgb(255 255 255 / 0.3);
+  backdrop-filter: blur(10px) saturate(180%);
   box-shadow:
     var(--card-shadow-md),
-    inset 0 1px 1px rgb(255 255 255 / 0.5);
+    inset 0 1px 1px rgb(255 255 255 / 50%);
 }
 
 .card.glass:hover {
-  background: rgb(255 255 255 / 0.85);
-  border-color: rgb(255 255 255 / 0.5);
+  border-color: rgb(255 255 255 / 50%);
+  background: rgb(255 255 255 / 85%);
   box-shadow: var(--card-shadow-xl);
 }
 
 /* Dark variant for glassmorphism */
+
 [data-theme="dark"] .card.glass {
-  background: rgb(0 0 0 / 0.4);
-  border-color: rgb(255 255 255 / 0.1);
+  border-color: rgb(255 255 255 / 10%);
+  background: rgb(0 0 0 / 40%);
 }
 
 [data-theme="dark"] .card.glass:hover {
-  background: rgb(0 0 0 / 0.5);
-  border-color: rgb(255 255 255 / 0.2);
+  border-color: rgb(255 255 255 / 20%);
+  background: rgb(0 0 0 / 50%);
 }
 
 /* Responsive Design */

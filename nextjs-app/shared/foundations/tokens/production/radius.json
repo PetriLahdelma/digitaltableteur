@@ -1,0 +1,17 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "radius": {
+    "sm": {
+      "$value": "2px",
+      "$description": "Border radius (sm)."
+    },
+    "md": {
+      "$value": "0.25rem",
+      "$description": "Border radius (md)."
+    },
+    "lg": {
+      "$value": "8px",
+      "$description": "Border radius (lg)."
+    }
+  }
+}

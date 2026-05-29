@@ -1,16 +1,8 @@
+import contract from "./Select.contract.json";
 import React, { useState } from "react";
 import { Meta, StoryFn } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import Select from "@dt/Select";
-import { within, userEvent } from "@storybook/testing-library";
+import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import SelectOption from "./SelectOption";
 import Icon from "@dt/Icon";
@@ -19,7 +11,6 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import CodeSnippet from "@dt/CodeSnippet";
 import styles from "./Select.stories.module.css";
 import schema from "./schema.json";
-
 const selectComplianceRules: ComplianceRule[] = [
   {
     id: "file-structure",
@@ -81,81 +72,49 @@ const selectComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export default {
-  title: "Components/Select",
+  title: "Molecules/Select",
   component: Select,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     // Content
+
     label: {
       control: "text",
       description: "Label text displayed above the select dropdown",
-      table: {
-        category: "Content",
-        type: { summary: "string" },
-      },
+      table: { category: "Content", type: { summary: "string" } },
     },
+
     options: {
       control: "object",
       description:
         "Array of option objects with value, label, and optional isDisabled",
-      table: {
-        category: "Content",
-        type: { summary: "SelectOptionItem[]" },
-      },
+      table: { category: "Content", type: { summary: "SelectOptionItem[]" } },
     },
+
     helperText: {
       control: "text",
-      description: "Helper text displayed below the select (hidden if error is set)",
-      table: {
-        category: "Content",
-        type: { summary: "string" },
-      },
+      description:
+        "Helper text displayed below the select (hidden if error is set)",
+      table: { category: "Content", type: { summary: "string" } },
     },
+
     children: {
       control: false,
       description: "Custom SelectOption children (overrides options prop)",
-      table: {
-        category: "Content",
-        type: { summary: "ReactNode" },
-      },
+      table: { category: "Content", type: { summary: "ReactNode" } },
     },
 
     // Appearance
+
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
@@ -166,40 +125,32 @@ export default {
         defaultValue: { summary: "md" },
       },
     },
+
     error: {
       control: "text",
       description:
         "Error message to display (changes border color and shows error HelperText)",
-      table: {
-        category: "Appearance",
-        type: { summary: "string" },
-      },
+      table: { category: "Appearance", type: { summary: "string" } },
     },
 
     // State
+
     isDisabled: {
       control: "boolean",
       description: "Disables the select (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     value: {
       control: "text",
       description: "Controlled value (requires onValueChange)",
-      table: {
-        category: "State",
-        type: { summary: "string" },
-      },
+      table: { category: "State", type: { summary: "string" } },
     },
+
     defaultValue: {
       control: "text",
       description: "Initial value for uncontrolled component",
-      table: {
-        category: "State",
-        type: { summary: "string" },
-      },
+      table: { category: "State", type: { summary: "string" } },
     },
 
     // Behavior
@@ -213,33 +164,28 @@ export default {
     },
 
     // Accessibility
+
     id: {
       control: "text",
       description: "Custom ID for the select element",
-      table: {
-        category: "Accessibility",
-        type: { summary: "string" },
-      },
+      table: { category: "Accessibility", type: { summary: "string" } },
     },
 
     // Advanced
+
     className: {
       control: "text",
       description: "Additional CSS classes",
-      table: {
-        category: "Advanced",
-        type: { summary: "string" },
-      },
+      table: { category: "Advanced", type: { summary: "string" } },
     },
 
     // Deprecated
+
     disabled: {
       control: "boolean",
-      description: "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
-      table: {
-        category: "Deprecated",
-        type: { summary: "boolean" },
-      },
+      description:
+        "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
+      table: { category: "Deprecated", type: { summary: "boolean" } },
     },
     onChange: {
       action: "changed",
@@ -415,4 +361,23 @@ Disabled.play = async ({ canvasElement }) => {
   const select = await canvas.findByLabelText(/disabled select/i);
   // Focus test
   await userEvent.tab();
+};
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+};
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  args: Default.args,
+  render: (args) => <SelectStory {...args} />,
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

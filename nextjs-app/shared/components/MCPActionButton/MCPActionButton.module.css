@@ -21,7 +21,10 @@
 }
 
 .status.disabled {
-  color: var(--color-primary-disabled);
+  /* `--color-primary-disabled` is intentionally low alpha for backgrounds; for
+   * disabled status text we need a solid color that still meets 4.5:1 contrast
+   * on the card surface. */
+  color: var(--color-text-muted, #4b5563);
 }
 
 [data-status="loading"] .status {

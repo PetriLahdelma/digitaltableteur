@@ -29,7 +29,7 @@ import ChatToggle from "./ChatToggle";
 import { useTranslation } from "react-i18next";
 import type { DonnyState } from "@dt/DonnyAvatar";
 
-interface ChatWidgetProps {
+export interface ChatWidgetProps {
   title?: string;
   description?: string;
   /**
@@ -110,7 +110,7 @@ type StoredMessage = {
   text: string;
 };
 
-const generateId = () => {
+export const generateId = () => {
   if (
     typeof globalThis !== "undefined" &&
     globalThis.crypto &&
@@ -170,7 +170,7 @@ const extractTextFromMessage = (message: UIMessage) => {
     .trim();
 };
 
-const toStoredMessages = (
+export const toStoredMessages = (
   messages: UIMessage[],
   greetingText: string = DEFAULT_GREETING_TEXT,
 ): StoredMessage[] => {
@@ -224,7 +224,7 @@ const toStoredMessages = (
   return sanitized;
 };
 
-const parseStoredMessages = (raw: string | null): StoredMessage[] | null => {
+export const parseStoredMessages = (raw: string | null): StoredMessage[] | null => {
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw);
@@ -255,7 +255,7 @@ const parseStoredMessages = (raw: string | null): StoredMessage[] | null => {
   }
 };
 
-const parseLegacyMessages = (raw: string | null): StoredMessage[] | null => {
+export const parseLegacyMessages = (raw: string | null): StoredMessage[] | null => {
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw);
@@ -290,7 +290,7 @@ const parseLegacyMessages = (raw: string | null): StoredMessage[] | null => {
   }
 };
 
-const fromStoredMessages = (
+export const fromStoredMessages = (
   entries: StoredMessage[],
   greetingText: string = DEFAULT_GREETING_TEXT,
 ): UIMessage[] => {
@@ -393,6 +393,7 @@ function resolveDraftAvatarState(draft: string, toolKeywords: string[]): DonnySt
   return "listening";
 }
 
+/** Collapsible AI chat widget anchored to the viewport. */
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   title,
   description,
@@ -901,6 +902,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           role="dialog"
           aria-modal="false"
           aria-hidden={!isOpen}
+          aria-label={resolvedTitle}
           tabIndex={isOpen ? 0 : -1}
         >
           <ChatHeader
@@ -956,11 +958,6 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 };
 
 export default ChatWidget;
-// Expose helpers for testing edge cases without mounting the full widget.
-export {
-  generateId,
-  toStoredMessages,
-  parseStoredMessages,
-  parseLegacyMessages,
-  fromStoredMessages,
-};
+// Helpers are exported inline at their declaration above (see generateId,
+// toStoredMessages, parseStoredMessages, parseLegacyMessages, fromStoredMessages).
+// ChatWidget/index.ts re-exports them so tests can import via @dt/ChatWidget.

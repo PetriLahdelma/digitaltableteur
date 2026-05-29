@@ -1,3 +1,10 @@
+import { cva } from "class-variance-authority";
+
+export const inputsVariants = cva("", {
+  variants: { size: { sm: "", md: "", lg: "" } },
+  defaultVariants: { size: "md" },
+});
+
 import React, { useEffect, useId, useState } from "react";
 import styles from "./Inputs.module.css";
 import Label from "@dt/Label";
@@ -11,7 +18,7 @@ import { warnPropRename } from "../../utils/deprecationWarning";
 import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 import { suggestEmailCorrection } from "../../utils/emailSuggestion";
 
-interface InputProps
+export interface InputsProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "size"> {
   label: string;
   type: "text" | "number" | "email" | "password" | "search" | "tel";
@@ -36,7 +43,8 @@ interface InputProps
   onChange?: (value: string | number) => void;
 }
 
-const Input: React.FC<InputProps> = ({
+/** Labeled text input with validation states and size tokens. */
+const Inputs: React.FC<InputsProps> = ({
   label,
   type,
   placeholder,
@@ -185,4 +193,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default Inputs;

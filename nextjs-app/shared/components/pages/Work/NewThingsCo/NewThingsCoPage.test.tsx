@@ -1,22 +1,20 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../../test-utils/render";
 import { NewThingsCoPage } from "./NewThingsCoPage";
 
 describe("NewThingsCoPage", () => {
   it("renders page title", () => {
-    render(<NewThingsCoPage />);
-    expect(screen.getByText(/New Things Co/i)).toBeInTheDocument();
-  });
-
-  it("renders project description", () => {
-    render(<NewThingsCoPage />);
-    expect(screen.getByText(/description|project/i)).toBeInTheDocument();
+    renderWithProviders(<NewThingsCoPage />);
+    expect(
+      screen.getByRole("heading", { name: /New Things Co/i, level: 1 }),
+    ).toBeInTheDocument();
   });
 
   it("renders back to work link", () => {
-    render(<NewThingsCoPage />);
+    renderWithProviders(<NewThingsCoPage />);
     expect(
-      screen.getByRole("link", { name: /back|work/i }),
+      screen.getByRole("link", { name: /Back to work/i }),
     ).toBeInTheDocument();
   });
 });

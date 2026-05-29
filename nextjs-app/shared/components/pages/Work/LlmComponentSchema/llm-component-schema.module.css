@@ -9,10 +9,11 @@
 }
 
 /* Contract pipeline: hand-crafted SVG diagram, centered inside a block of breathing room */
+
 .pipelineDiagram {
+  display: flex;
   margin: 0;
   padding-block: 2.5rem;
-  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
@@ -26,25 +27,25 @@
 }
 
 .pipelineCaption {
+  max-width: 720px;
   font-size: 0.875rem;
-  font-style: italic;
   text-align: center;
   color: var(--color-text-secondary);
-  max-width: 720px;
+  font-style: italic;
 }
 
 .metaSection {
   padding-block: var(--space-layout-48);
-  background-color: var(--color-surface);
   padding-inline: var(--space-layout-24);
+  background-color: var(--color-surface);
 }
 
 .metaGrid {
   display: grid;
+  margin-inline: auto;
+  max-width: var(--container-md);
   grid-template-columns: 1fr 1.5fr;
   gap: var(--space-layout-64);
-  max-width: var(--container-md);
-  margin-inline: auto;
 }
 
 .metaLeft {
@@ -66,19 +67,19 @@
 }
 
 .metaLabel {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-text);
-  margin: 0;
 }
 
 .metaText {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .metaTools {
@@ -88,33 +89,33 @@
 }
 
 .metaOverview {
+  margin: 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
-  color: var(--color-text);
-  margin: 0;
   line-height: 1.6;
+  color: var(--color-text);
 }
 
 .schemaExample {
-  max-width: var(--container-md);
   margin-inline: auto;
   padding-block: var(--space-layout-32);
+  max-width: var(--container-md);
 }
 
 .schemaExample pre {
-  background-color: var(--color-surface);
-  border-radius: var(--border-radius-lg);
   padding: var(--space-layout-24);
-  overflow-x: auto;
+  border-radius: var(--border-radius-lg);
+  background-color: var(--color-surface);
   font-size: var(--font-size-sm);
   line-height: 1.5;
+  overflow-x: auto;
 }
 
 .schemaExample code {
   font-family: var(--font-mono, "SF Mono", "Fira Code", monospace);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .metaGrid {
     grid-template-columns: 1fr;
     gap: var(--space-layout-32);

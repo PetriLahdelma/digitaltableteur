@@ -17,6 +17,9 @@ const sizeClasses = {
   full: "max-w-full",
 } as const;
 
+/**
+ * Container component.
+ */
 export function Container({
   children,
   size = "lg",

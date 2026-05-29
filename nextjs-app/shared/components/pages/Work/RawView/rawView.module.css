@@ -5,55 +5,64 @@
 }
 
 /* Editorial-inspired generous spacing */
+
 .storySection {
   margin-block: var(--space-layout-80, 5rem);
 }
 
 /* Asymmetric rhythm - first story section closer to meta */
+
 .storySection:first-of-type {
   margin-block-start: var(--space-layout-48);
 }
 
 /* Process section - subtle editorial tone */
+
 .processSection {
   margin-block: var(--space-layout-80, 5rem);
   padding-block: var(--space-layout-48);
 }
 
 /* Image grid with editorial breathing room */
+
 .imageGrid {
   margin-block: var(--space-layout-80, 5rem);
 }
 
 /* Editorial image presentation - clean, no borders */
+
 .imageGrid img {
   border-radius: 0;
 }
 
 /* Pull-quote inspired subtitle treatment */
+
 .storySection [data-story-subtitle] {
+  font-size: var(--font-size-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
 }
 
 /* Process phase titles - editorial weight */
+
 .processSection [data-process-title] {
   letter-spacing: 0.05em;
 }
 
 /* Outcomes section - editorial finale */
+
 .outcomesSection {
   margin-block: var(--space-layout-96, 6rem);
   padding-block: var(--space-layout-48);
-  border-block-start: 1px solid var(--color-border-subtle, rgba(0, 0, 0, 0.1));
+  border-block-start: 1px solid var(--color-border-subtle, rgb(0 0 0 / 10%));
 }
 
 /* Magazine-style image captions */
+
 .storySection figcaption,
 .imageGrid figcaption {
-  font-style: italic;
-  color: var(--color-text-secondary);
   margin-block-start: var(--space-layout-12);
+  color: var(--color-text-secondary);
+  font-style: italic;
 }

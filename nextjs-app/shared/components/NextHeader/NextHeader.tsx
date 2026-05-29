@@ -33,8 +33,10 @@ const setCookie = (name: string, value: string, days = 365) => {
   document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
 };
 
+export interface NextHeaderProps {}
+
 export function NextHeader() {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
   const { t, i18n } = useTranslation();
   const { theme, cycleTheme } = usePersistentTheme();
   const { showToast } = useToast();

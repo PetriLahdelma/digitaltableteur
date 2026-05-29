@@ -12,7 +12,7 @@ export interface UseNavigationReturn {
 
 export function useNavigation(): UseNavigationReturn {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
+  const pathname = usePathname() ?? "";
 
   // Close mobile menu on route change
   useEffect(() => {

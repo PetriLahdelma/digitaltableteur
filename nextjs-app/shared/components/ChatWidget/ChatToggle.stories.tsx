@@ -3,12 +3,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import ChatToggle from "./ChatToggle";
 
 const meta: Meta<typeof ChatToggle> = {
-  title: "Components/AI/Chat/ChatToggle",
+  title: "Molecules/Chat/ChatToggle",
   component: ChatToggle,
   tags: ["autodocs"],
-  args: {
-    isOpen: false,
-  },
+  args: { isOpen: false },
 };
 
 export default meta;
@@ -29,11 +27,8 @@ const ToggleRender: React.FC<React.ComponentProps<typeof ChatToggle>> = (
 };
 
 export const Default: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <ToggleRender {...args} />,
 };
 
-export const Open: Story = {
-  args: {
-    isOpen: true,
-  },
-};
+export const Open: Story = { args: { isOpen: true } };

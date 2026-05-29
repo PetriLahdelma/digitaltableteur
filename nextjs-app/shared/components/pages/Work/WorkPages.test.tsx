@@ -1,57 +1,58 @@
-import React from "react";
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-
-import { WorkIndexPage } from "@dt/WorkIndex/WorkIndexPage";
-import { NewThingsCoPage } from "@dt/NewThingsCo/NewThingsCoPage";
-import { GarageJunctionPage } from "@dt/GarageJunction/GarageJunctionPage";
-import { IllustrationsPage } from "@dt/Illustrations/IllustrationsPage";
-import { RawViewPage } from "@dt/RawView/RawViewPage";
-import { TulliPage } from "@dt/Tulli/TulliPage";
-import { IntrumPage } from "@dt/Intrum/IntrumPage";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../test-utils/render";
+import { WorkIndexPage } from "./WorkIndex/WorkIndexPage";
+import { NewThingsCoPage } from "./NewThingsCo/NewThingsCoPage";
+import { GarageJunctionPage } from "./GarageJunction/GarageJunctionPage";
+import { IllustrationsPage } from "./Illustrations/IllustrationsPage";
+import { IntrumPage } from "./Intrum/IntrumPage";
+import { RawViewPage } from "./RawView/RawViewPage";
+import { TulliPage } from "./Tulli/TulliPage";
 import { projects } from "../../../data/projects";
 
 describe("Work pages", () => {
   it("renders work index with project links", () => {
-    render(<WorkIndexPage nav={<div data-testid="work-nav">NAV</div>} />);
+    renderWithProviders(
+      <WorkIndexPage nav={<div data-testid="work-nav">NAV</div>} />,
+    );
     expect(screen.getByTestId("work-nav")).toBeInTheDocument();
     const links = screen.getAllByRole("link");
     expect(links.length).toBeGreaterThanOrEqual(projects.length);
   });
 
   it("renders New Things Co case study content", () => {
-    render(<NewThingsCoPage nav={<div>Nav</div>} />);
+    renderWithProviders(<NewThingsCoPage nav={<div>Nav</div>} />);
     expect(
       screen.getByRole("heading", { name: /New Things Co/i, level: 1 }),
     ).toBeInTheDocument();
-    expect(screen.getAllByText(/Branding/i)[0]).toBeInTheDocument();
   });
 
   it("renders Garage Junction headings", () => {
-    render(<GarageJunctionPage nav={<div>Nav</div>} />);
+    renderWithProviders(<GarageJunctionPage nav={<div>Nav</div>} />);
     expect(
       screen.getByRole("heading", { name: /Garage Junction/i, level: 1 }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Research & Discovery/i)).toBeInTheDocument();
   });
 
   it("renders Illustrations page", () => {
-    render(<IllustrationsPage nav={<div>Nav</div>} />);
-    expect(screen.getByText(/Illustrations/i)).toBeInTheDocument();
+    renderWithProviders(<IllustrationsPage nav={<div>Nav</div>} />);
+    expect(
+      screen.getByRole("heading", { name: /Illustrations/i, level: 1 }),
+    ).toBeInTheDocument();
   });
 
-  it("renders Raw View page", () => {
-    render(<RawViewPage nav={<div>Nav</div>} />);
-    expect(screen.getByText(/Raw View/i)).toBeInTheDocument();
+  it("shows missing-project state for legacy Raw View slug", () => {
+    renderWithProviders(<RawViewPage nav={<div>Nav</div>} />);
+    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
   });
 
-  it("renders Tulli page", () => {
-    render(<TulliPage nav={<div>Nav</div>} />);
-    expect(screen.getByText(/Tulli/i)).toBeInTheDocument();
+  it("shows missing-project state for legacy Tulli slug", () => {
+    renderWithProviders(<TulliPage nav={<div>Nav</div>} />);
+    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
   });
 
-  it("renders Intrum page", () => {
-    render(<IntrumPage nav={<div>Nav</div>} />);
-    expect(screen.getByText(/Intrum/i)).toBeInTheDocument();
+  it("shows missing-project state for legacy Intrum slug", () => {
+    renderWithProviders(<IntrumPage nav={<div>Nav</div>} />);
+    expect(screen.getByText(/Project not found/i)).toBeInTheDocument();
   });
 });

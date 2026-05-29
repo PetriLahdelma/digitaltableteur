@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
 import SelectOption from "./SelectOption";
+import styles from "./SelectOption.module.css";
 
 describe("SelectOption", () => {
   it("renders with value and label", () => {
@@ -53,7 +54,7 @@ describe("SelectOption", () => {
       </select>,
     );
     const option = container.querySelector("option");
-    expect(option).toHaveClass("option");
+    expect(option).toHaveClass(styles.option);
   });
 
   it("forwards additional props", () => {

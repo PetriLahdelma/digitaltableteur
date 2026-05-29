@@ -22,8 +22,15 @@ export function NavLink({
   activeClassName = "text-foreground",
   inactiveClassName = "text-muted-foreground hover:text-foreground",
 }: NavLinkProps) {
+  // usePathname() returns string | null per Next.js typing — null occurs in
+  // SSR fallback and outside the app router (e.g. Storybook). Treat null as
+  // "no current pathname" → never active.
   const pathname = usePathname();
-  const isActive = exact ? pathname === href : pathname.startsWith(href);
+  const isActive = pathname === null
+    ? false
+    : exact
+      ? pathname === href
+      : pathname.startsWith(href);
 
   return (
     <Link

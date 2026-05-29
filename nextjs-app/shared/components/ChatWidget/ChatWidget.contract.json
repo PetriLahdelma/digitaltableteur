@@ -1,0 +1,54 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "ChatWidget",
+  "tier": "organism",
+  "group": "interaction",
+  "status": "beta",
+  "description": "Collapsible site assistant chat widget with streaming replies.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-chat-widget",
+  "radixPrimitive": null,
+  "element": "div",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Escape"
+    ],
+    "ariaRequirements": [
+      "launcher button labeled",
+      "chat region when open"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+    "forcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "description",
+    "endpoint",
+    "id",
+    "ref",
+    "style",
+    "title"
+  ],
+  "consumers": []
+}

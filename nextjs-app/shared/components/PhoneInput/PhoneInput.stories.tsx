@@ -1,5 +1,7 @@
+import contract from "./PhoneInput.contract.json";
 import React, { useState } from "react";
 import type { Meta, StoryFn } from "@storybook/react-vite";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import {
   Controls,
   Description,
@@ -13,7 +15,6 @@ import PhoneInput from "@dt/PhoneInput";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
 import { useTranslation } from "react-i18next";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
@@ -80,22 +81,17 @@ const phoneInputComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 const meta: Meta<typeof PhoneInput> = {
-  title: "Components/PhoneInput",
+  title: "Molecules/PhoneInput",
   component: PhoneInput,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
     docs: {
       page: () => (
         <>
@@ -120,10 +116,18 @@ const meta: Meta<typeof PhoneInput> = {
   },
   argTypes: {
     label: { control: "text", description: "Label text" },
-    value: { control: "text", description: "Phone number value (E.164 format)" },
+
+    value: {
+      control: "text",
+      description: "Phone number value (E.164 format)",
+    },
+
     placeholder: { control: "text", description: "Placeholder text" },
+
     helperText: { control: "text", description: "Helper text below input" },
+
     error: { control: "text", description: "Error message" },
+
     disabled: { control: "boolean", description: "Disabled state" },
     onChange: { action: "phone change", description: "Change handler" },
   },
@@ -200,7 +204,9 @@ WithHelperText.args = {
 };
 WithHelperText.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByText(/include country code|sisällytä maakoodi|inkludera landskod/i);
+  await canvas.findByText(
+    /include country code|sisällytä maakoodi|inkludera landskod/i,
+  );
 };
 
 export const WithError = Template.bind({});
@@ -211,14 +217,13 @@ WithError.args = {
 };
 WithError.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  await canvas.findByText(/invalid phone number|virheellinen puhelinnumero|ogiltigt telefonnummer/i);
+  await canvas.findByText(
+    /invalid phone number|virheellinen puhelinnumero|ogiltigt telefonnummer/i,
+  );
 };
 
 export const WithValue = Template.bind({});
-WithValue.args = {
-  label: "storyPhoneInputLabel",
-  value: "+358401234567",
-};
+WithValue.args = { label: "storyPhoneInputLabel", value: "+358401234567" };
 WithValue.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const input = canvas.getByRole("textbox") as HTMLInputElement;
@@ -251,9 +256,7 @@ export const AllStates: StoryFn = () => {
   return (
     <div className={styles.stackContainer}>
       <div>
-        <strong className={styles.stateLabel}>
-          Default
-        </strong>
+        <strong className={styles.stateLabel}>Default</strong>
         <PhoneInput
           label={t("storyPhoneInputLabel")}
           placeholder={t("storyPhoneInputPlaceholder")}
@@ -263,9 +266,7 @@ export const AllStates: StoryFn = () => {
       </div>
 
       <div>
-        <strong className={styles.stateLabel}>
-          With Value
-        </strong>
+        <strong className={styles.stateLabel}>With Value</strong>
         <PhoneInput
           label={t("storyPhoneInputLabel")}
           value={value2}
@@ -274,9 +275,7 @@ export const AllStates: StoryFn = () => {
       </div>
 
       <div>
-        <strong className={styles.stateLabel}>
-          With Helper Text
-        </strong>
+        <strong className={styles.stateLabel}>With Helper Text</strong>
         <PhoneInput
           label={t("storyPhoneInputLabel")}
           placeholder={t("storyPhoneInputPlaceholder")}
@@ -287,9 +286,7 @@ export const AllStates: StoryFn = () => {
       </div>
 
       <div>
-        <strong className={styles.stateLabel}>
-          With Error
-        </strong>
+        <strong className={styles.stateLabel}>With Error</strong>
         <PhoneInput
           label={t("storyPhoneInputLabel")}
           error={t("storyPhoneInputError")}
@@ -299,9 +296,7 @@ export const AllStates: StoryFn = () => {
       </div>
 
       <div>
-        <strong className={styles.stateLabel}>
-          Disabled
-        </strong>
+        <strong className={styles.stateLabel}>Disabled</strong>
         <PhoneInput
           label={t("storyPhoneInputLabel")}
           value="+358401234567"
@@ -322,9 +317,7 @@ export const InternationalNumbers: StoryFn = () => {
   return (
     <div className={styles.stackContainer}>
       <div>
-        <strong className={styles.stateLabel}>
-          Finland (Default)
-        </strong>
+        <strong className={styles.stateLabel}>Finland (Default)</strong>
         <PhoneInput
           label={t("storyPhoneInputLabel")}
           value={fi}
@@ -333,9 +326,7 @@ export const InternationalNumbers: StoryFn = () => {
       </div>
 
       <div>
-        <strong className={styles.stateLabel}>
-          United States
-        </strong>
+        <strong className={styles.stateLabel}>United States</strong>
         <PhoneInput
           label={t("storyPhoneInputLabel")}
           value={us}
@@ -344,9 +335,7 @@ export const InternationalNumbers: StoryFn = () => {
       </div>
 
       <div>
-        <strong className={styles.stateLabel}>
-          United Kingdom
-        </strong>
+        <strong className={styles.stateLabel}>United Kingdom</strong>
         <PhoneInput
           label={t("storyPhoneInputLabel")}
           value={uk}
@@ -355,9 +344,7 @@ export const InternationalNumbers: StoryFn = () => {
       </div>
 
       <div>
-        <strong className={styles.stateLabel}>
-          Sweden
-        </strong>
+        <strong className={styles.stateLabel}>Sweden</strong>
         <PhoneInput
           label={t("storyPhoneInputLabel")}
           value={se}
@@ -366,4 +353,16 @@ export const InternationalNumbers: StoryFn = () => {
       </div>
     </div>
   );
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

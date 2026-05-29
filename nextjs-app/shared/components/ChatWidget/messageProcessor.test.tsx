@@ -6,7 +6,7 @@ import {
   TOKEN_OPEN_HOURS,
   TOKEN_SERVICES_GRID,
   extractCopy,
-} from "@dt/messageProcessor";
+} from "@dt/ChatWidget/messageProcessor";
 
 const makeMsg = (role: UIMessage["role"], text: string): UIMessage => ({
   id: Math.random().toString(36).slice(2),
@@ -36,7 +36,7 @@ describe("messageProcessor (user-triggered only) | OpenHours + ServicesGrid", ()
     expect(extractCopy(message)).toBe("Here is what I found.");
   });
 
-  it("extractCopy includes textual tool-result payloads when provided", () => {
+  it("extractCopy skips tool-result payloads (rendered as components)", () => {
     const message: UIMessage = {
       id: "tool_text",
       role: "assistant",
@@ -48,7 +48,7 @@ describe("messageProcessor (user-triggered only) | OpenHours + ServicesGrid", ()
         } as any,
       ],
     };
-    expect(extractCopy(message)).toBe("[[openHours]]");
+    expect(extractCopy(message)).toBe("");
   });
 
   it("assistant message alone does NOT inject components anymore", () => {

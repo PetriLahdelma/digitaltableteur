@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- tablist "Navigate between tabs":
+  - tab "Home"
+  - tab "Profile"
+  - tab "Messages" [selected]

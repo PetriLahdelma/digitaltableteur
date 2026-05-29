@@ -1,12 +1,14 @@
 import React from "react";
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import { renderHook, act } from "@testing-library/react";
+import { NextThemeProvider } from "@/providers/ThemeProvider";
 
-import { ThemeProvider } from "@dt/ThemeProvider";
+vi.unmock("@/providers/ThemeProvider");
+
 import { usePersistentTheme } from "./usePersistentTheme";
 
 const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <ThemeProvider>{children}</ThemeProvider>
+  <NextThemeProvider>{children}</NextThemeProvider>
 );
 
 describe("usePersistentTheme", () => {
@@ -15,22 +17,24 @@ describe("usePersistentTheme", () => {
     localStorage.clear();
   });
 
-  it("reads theme from cookie on mount", () => {
+  it("reads theme from cookie on mount", async () => {
     document.cookie = "dt_theme=dark";
     const { result } = renderHook(() => usePersistentTheme(), { wrapper });
-    expect(result.current.theme).toBe("dark");
+    await vi.waitFor(() => {
+      expect(result.current.theme).toBe("dark");
+    });
   });
 
   it("cycles theme and persists cookie", () => {
     const { result } = renderHook(() => usePersistentTheme(), { wrapper });
     act(() => result.current.setPersistentTheme("dark"));
-    expect(localStorage.getItem("theme")).toBe("dark");
+    expect(document.cookie).toContain("dt_theme=dark");
 
     let next: string | undefined;
     act(() => {
       next = result.current.cycleTheme();
     });
     expect(next).toBe("hcb");
-    expect(localStorage.getItem("theme")).toBe("hcb");
+    expect(document.cookie).toContain("dt_theme=hcb");
   });
 });

@@ -55,6 +55,7 @@ const SEVERITY_STATUS_MAP: Record<
   info: "info",
 };
 
+/** Modal dialog for confirmations, forms, and focused tasks with focus trap and Escape close. */
 const Modal: React.FC<ModalProps> = ({
   severity,
   isLoading = false,
@@ -203,7 +204,9 @@ const Modal: React.FC<ModalProps> = ({
           </div>
         )}
         <div className={styles.content}>
-          {isLoading && <div className={styles.spinner} />}
+          {isLoading && (
+            <div className={styles.spinner} aria-hidden="true" />
+          )}
           {children}
         </div>
         {(footer !== undefined || !isLoading) && (

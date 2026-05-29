@@ -25,7 +25,10 @@ export interface AuthorBioProps {
   heading?: string;
 }
 
-const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }) => {
+/**
+ * AuthorBio component.
+ */
+export const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }) => {
   const { t } = useTranslation();
   const author = getAuthorBySlug(slug);
 

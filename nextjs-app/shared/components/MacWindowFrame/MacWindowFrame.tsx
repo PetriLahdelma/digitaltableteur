@@ -48,7 +48,10 @@ const governanceBlueprint = {
   evolution_log: [],
 } as const;
 
-const MacWindowFrame: React.FC<MacWindowFrameProps> = ({
+/**
+ * MacWindowFrame component.
+ */
+export const MacWindowFrame: React.FC<MacWindowFrameProps> = ({
   titleKey = "macWindowFrame.title",
   actionLabelKey = "macWindowFrame.action",
   onAction,

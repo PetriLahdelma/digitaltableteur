@@ -65,7 +65,10 @@ const governanceBlueprint = {
   evolution_log: [],
 } as const;
 
-const TransformingActionInput: React.FC<TransformingActionInputProps> = ({
+/**
+ * TransformingActionInput component.
+ */
+export const TransformingActionInput: React.FC<TransformingActionInputProps> = ({
   initialMode = "button",
   value,
   defaultValue = "",

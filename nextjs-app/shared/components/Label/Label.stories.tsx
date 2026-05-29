@@ -1,15 +1,7 @@
+import contract from "./Label.contract.json";
 import React from "react";
-import { Meta, StoryFn } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
-import { within, userEvent } from "@storybook/testing-library";
+import { Meta, StoryFn, type StoryObj } from "@storybook/react-vite";
+import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
@@ -17,7 +9,6 @@ import type { ComplianceRule } from "@dt/ComplianceCard";
 import Label from "@dt/Label";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-
 const labelComplianceRules: ComplianceRule[] = [
   {
     id: "file-structure",
@@ -79,52 +70,49 @@ const labelComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 export default {
-  title: "Components/Label",
+  title: "Atoms/Label",
   component: Label,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
-    htmlFor: { control: "text" },
-    children: { control: "text" },
-    tooltipText: { control: "text" },
-    required: { control: "boolean" },
-    disabled: { control: "boolean" },
+    htmlFor: {
+      control: "text",
+      description: "ID of the associated form control (for/id pairing)",
+    },
+
+    children: {
+      control: "text",
+      description: "Visible label text (translation key in stories)",
+    },
+
+    tooltipText: {
+      control: "text",
+      description: "Optional tooltip content beside the label",
+    },
+
+    required: {
+      control: "boolean",
+      description: "Shows the required indicator when true",
+      table: { defaultValue: { summary: "false" } },
+    },
+
+    disabled: {
+      control: "boolean",
+      description: "Muted style when the labeled control is disabled",
+      table: { defaultValue: { summary: "false" } },
+    },
   },
 } as Meta;
+
+type Story = StoryObj<typeof Label>;
 
 const LabelStory: React.FC<React.ComponentProps<typeof Label>> = (args) => {
   const { t } = useTranslation();
@@ -146,10 +134,10 @@ export const Z_LabelCompliance: StoryFn = () => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  htmlFor: "field",
-  children: "storyLabelDefault",
-};
+export const Playground = Template.bind({});
+Playground.args = Default.args;
+
+Default.args = { htmlFor: "field", children: "storyLabelDefault" };
 Default.parameters = {};
 
 export const WithTooltip = Template.bind({});
@@ -194,4 +182,19 @@ Disabled.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const label = await canvas.findByText(/disabled label/i);
   // Optionally, check for disabled state if implemented
+};
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => (
+    <LabelStory htmlFor="email" required>
+      storyLabelRequired
+    </LabelStory>
+  ),
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };
