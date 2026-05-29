@@ -188,7 +188,7 @@ export function ContactPageContentEditorial({
                   )}
                   width={NEW_BUSINESS_PORTRAIT.width}
                   height={NEW_BUSINESS_PORTRAIT.height}
-                    sizes="(min-width: 768px) 240px, 192px"
+                    sizes="(min-width: 768px) 240px, 152px"
                   className={styles.newBusinessPortrait}
                 />
               </div>
