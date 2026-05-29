@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useTranslation } from "react-i18next";
 import styles from "./Documentation.module.css";
 
@@ -477,8 +477,7 @@ vercel --prod`}
 import { useTheme } from "@dt/ThemeProvider";
 import { useTranslation } from "react-i18next";
 
-function MyComponent() {
-  const { t } = useTranslation();
+function MyComponent() { const { t } = useTranslation();
   const { theme, cycleTheme } = useTheme();
 
   return (

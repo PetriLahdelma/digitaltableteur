@@ -36,8 +36,8 @@
 }
 
 .link {
-  color: var(--color-primary);
   text-decoration: underline;
+  color: var(--color-primary);
   text-decoration-color: var(--color-primary);
   text-decoration-style: wavy;
   text-underline-offset: 0.2em;

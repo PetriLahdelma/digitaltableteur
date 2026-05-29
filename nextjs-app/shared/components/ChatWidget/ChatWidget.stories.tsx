@@ -1,13 +1,11 @@
+import contract from "./ChatWidget.contract.json";
 import React, { useEffect, useRef, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import ChatWidget from "./ChatWidget";
 import { ChatTextArea } from "@dt/Inputs/TextArea";
 import Title from "@dt/Title";
 import Text from "@dt/Text";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
-
-// expect is available globally in Storybook browser tests
-declare const expect: (typeof import("vitest"))["expect"];
+import { expect, userEvent, waitFor, within } from "storybook/test"; // expect is available globally in Storybook browser tests
 
 const FAKE_ENDPOINT = "/storybook-fake-chat";
 
@@ -130,16 +128,32 @@ const ChatWidgetStoryDemo = () => {
 };
 
 const meta: Meta<typeof ChatWidget> = {
-  title: "Components/AI/Chat/ChatWidget",
+  title: "Organisms/ChatWidget",
   component: ChatWidget,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     layout: "fullscreen",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     docs: {
       description: {
         component:
           "Collapsible assistant widget that anchors bottom-right and remembers the conversation.",
       },
+    },
+  },
+  argTypes: {
+    title: { control: "text", description: "Panel title when chat is open" },
+
+    description: {
+      control: "text",
+      description: "Intro copy shown in the chat header",
+    },
+
+    endpoint: {
+      control: "text",
+      description: "Chat API endpoint override",
+      table: { disable: true },
     },
   },
 };
@@ -149,8 +163,12 @@ export default meta;
 type Story = StoryObj<typeof ChatWidget>;
 
 export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
   render: () => <ChatWidgetStoryDemo />,
 };
+
+export const Default = Playground;
 
 export const EmptyState: Story = {
   render: () => <ChatWidgetStoryDemo />,
@@ -241,4 +259,18 @@ export const ChatTextAreaDemo = (): React.ReactElement => {
       />
     </div>
   );
+};
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  render: () => <ChatWidgetStoryDemo />,
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  render: () => <ChatWidgetStoryDemo />,
 };

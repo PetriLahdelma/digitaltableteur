@@ -10,7 +10,9 @@
 /* Base body text */
 
 body {
+  background-color: var(--main-body-background-color, #fff);
   line-height: var(--line-height-normal); /* 1.5 */
+  color: var(--color-text, #041b23);
 }
 
 /* Headings - tighter line-height for impact */

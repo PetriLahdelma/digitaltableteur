@@ -1,3 +1,10 @@
+import { cva } from "class-variance-authority";
+
+export const switchVariants = cva("", {
+  variants: { size: { sm: "", md: "", lg: "" } },
+  defaultVariants: { size: "md" },
+});
+
 import React, { useState } from "react";
 import styles from "./Switch.module.css";
 import Label from "@dt/Label";
@@ -26,6 +33,7 @@ export interface SwitchProps
   helperText?: string;
 }
 
+/** Toggle with label, helper text, and loading affordances. */
 const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
   (
     {

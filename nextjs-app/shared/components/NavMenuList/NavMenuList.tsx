@@ -33,7 +33,8 @@ const NavMenuList: React.FC<NavMenuListProps> = ({
       {items.map((item) => {
         const isActive = item.exact
           ? location.pathname === item.to
-          : location.pathname.startsWith(item.to);
+          : location.pathname === item.to ||
+            location.pathname.startsWith(`${item.to}/`);
         const linkClass = [styles.navLink, itemClassName]
           .filter(Boolean)
           .join(" ");

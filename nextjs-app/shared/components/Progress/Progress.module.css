@@ -1,0 +1,24 @@
+.root {
+  position: relative;
+  inline-size: 100%;
+  border-radius: var(--radius-md);
+  background: var(--color-neutral-bg);
+  overflow: hidden;
+}
+
+.sm { block-size: var(--space-internal-4); }
+.md { block-size: var(--space-internal-8); }
+.lg { block-size: var(--space-layout-16); }
+
+.bar {
+  block-size: 100%;
+  inline-size: 100%;
+  background: var(--color-primary);
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+  transform-origin: left center;
+}
+
+.success { background: var(--color-success); }
+.info { background: var(--color-info); }
+.warning { background: var(--color-warning); }
+.error { background: var(--color-error); }

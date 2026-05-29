@@ -1,11 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import contract from "./ProcessBlock.contract.json";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import ProcessBlock from "./ProcessBlock";
 
 const meta: Meta<typeof ProcessBlock> = {
   title: "Patterns/ProcessBlock",
   component: ProcessBlock,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
+    contractStatus: contract.status,
+    a11y: { test: "error" },
     layout: "fullscreen",
     vitest: {
       skip: true, // Skip Vitest tests for this complex pattern component
@@ -122,6 +125,7 @@ const uxDesignPhases = [
  * Default story showing a complete 4-phase UX design process
  */
 export const Default: Story = {
+  tags: ["beta-matrix"],
   args: {
     phases: uxDesignPhases,
     sectionTitle: "Process",
@@ -238,14 +242,8 @@ export const CompactSpacing: Story = {
         title: "Analyze",
         activities: ["Data Collection", "User Insights", "Problem Definition"],
       },
-      {
-        title: "Create",
-        activities: ["Ideation", "Sketching", "Prototyping"],
-      },
-      {
-        title: "Test",
-        activities: ["User Testing", "Feedback", "Iteration"],
-      },
+      { title: "Create", activities: ["Ideation", "Sketching", "Prototyping"] },
+      { title: "Test", activities: ["User Testing", "Feedback", "Iteration"] },
       {
         title: "Launch",
         activities: ["Final Review", "Deployment", "Monitoring"],
@@ -340,18 +338,9 @@ export const AgileSprint: Story = {
 export const MinimalProcess: Story = {
   args: {
     phases: [
-      {
-        title: "Research",
-        activities: ["User Interviews", "Data Analysis"],
-      },
-      {
-        title: "Design",
-        activities: ["Wireframes", "Visual Design"],
-      },
-      {
-        title: "Test",
-        activities: ["User Testing", "Iteration"],
-      },
+      { title: "Research", activities: ["User Interviews", "Data Analysis"] },
+      { title: "Design", activities: ["Wireframes", "Visual Design"] },
+      { title: "Test", activities: ["User Testing", "Iteration"] },
     ],
     sectionTitle: "Lean UX Process",
     columns: 3,
@@ -406,4 +395,16 @@ export const ContentStrategy: Story = {
     backgroundColor: "transparent",
     columns: 4,
   },
+};
+
+export const Playground = Default;
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+  ...Default,
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  ...Default,
 };

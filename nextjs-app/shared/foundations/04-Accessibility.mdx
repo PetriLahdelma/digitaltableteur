@@ -1,0 +1,23 @@
+# Accessibility
+
+## Contrast
+
+Semantic text/background pairs are audited in **Foundations/Contrast** and enforced in CI:
+
+```bash
+npm run check:contrast
+```
+
+Ratios are computed from `variables.css` theme overrides (light, dark, HCB, HCW).
+
+## Focus
+
+See **Foundations/Focus** for `--focus-ring-*` tokens. High-contrast themes use 3px rings.
+
+## Motion
+
+Honor `prefers-reduced-motion` in animated components. Motion tokens are defaults only — see **Foundations/Motion**.
+
+## Components
+
+In-scope `@dt/*` components target WCAG 2.2 AA before stable promotion (`validate:components` + axe in Storybook).

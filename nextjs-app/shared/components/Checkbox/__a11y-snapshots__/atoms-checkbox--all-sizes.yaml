@@ -1,0 +1,7 @@
+- status: Work in progress (beta)
+- checkbox "Small (sm) Medium (md) Large (lg)" [checked]
+- text: Small (sm)
+- checkbox [checked]
+- text: Medium (md)
+- checkbox [checked]
+- text: Large (lg)

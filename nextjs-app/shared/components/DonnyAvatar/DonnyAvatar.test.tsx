@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, act } from "@testing-library/react";
 // Import directly from file to avoid React version mismatch through alias resolution
 import { DonnyAvatar, type DonnyState } from "./DonnyAvatar";
+import styles from "./DonnyAvatar.module.css";
 
 describe("DonnyAvatar", () => {
   describe("Rendering", () => {
@@ -157,7 +158,7 @@ describe("DonnyAvatar", () => {
   describe("Decorative Elements", () => {
     it("renders sparkles for celebrating state", () => {
       const { container } = render(<DonnyAvatar state="celebrating" />);
-      const sparkles = container.querySelectorAll("circle[fill='#FFD700']");
+      const sparkles = container.querySelectorAll(`.${styles.sparkles} circle`);
       expect(sparkles.length).toBeGreaterThan(0);
     });
 

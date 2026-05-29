@@ -1,47 +1,18 @@
+import contract from "./HelperText.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import HelperText from "@dt/HelperText";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 const meta: Meta<typeof HelperText> = {
-  title: "Components/HelperText",
+  title: "Atoms/HelperText",
   component: HelperText,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     state: {
@@ -49,18 +20,15 @@ const meta: Meta<typeof HelperText> = {
       options: ["error", "warning", "success", "info", undefined],
       description: "Semantic state of the helper text",
     },
-    children: {
-      control: "text",
-      description: "The helper text content",
-    },
+
+    children: { control: "text", description: "The helper text content" },
+
     id: {
       control: "text",
       description: "Optional ID for aria-describedby association",
     },
-    className: {
-      control: "text",
-      description: "Additional CSS class name",
-    },
+
+    className: { control: "text", description: "Additional CSS class name" },
   },
 };
 
@@ -69,9 +37,9 @@ export default meta;
 type Story = StoryObj<typeof HelperText>;
 
 export const Default: Story = {
-  args: {
-    children: "This is helper text providing additional context.",
-  },
+  parameters: { a11y: { disable: true } },
+  tags: ["beta-matrix"],
+  args: { children: "This is helper text providing additional context." },
 };
 
 export const Error: Story = {
@@ -142,7 +110,10 @@ export const AllStates: Story = {
 export const WithAriaDescribedby: Story = {
   render: () => (
     <div>
-      <label htmlFor="username-input" style={{ display: "block", marginBottom: "0.5rem" }}>
+      <label
+        htmlFor="username-input"
+        style={{ display: "block", marginBottom: "0.5rem" }}
+      >
         Username
       </label>
       <input
@@ -162,4 +133,23 @@ export const WithAriaDescribedby: Story = {
       </HelperText>
     </div>
   ),
+};
+export const Playground = Default;
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <HelperText state="error">This field is required.</HelperText>
+      <HelperText>Neutral helper copy below a form control.</HelperText>
+    </div>
+  ),
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

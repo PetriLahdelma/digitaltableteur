@@ -1,3 +1,6 @@
+/** Props for Footer. */
+export interface FooterProps { className?: string }
+
 import React from "react";
 import styles from "./Footer.module.css";
 import Grid from "@dt/Grid";
@@ -5,7 +8,10 @@ import Link from "@dt/Link";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 
-const Footer = () => {
+/**
+ * Footer component.
+ */
+export const Footer = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 

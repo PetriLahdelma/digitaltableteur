@@ -176,6 +176,7 @@
 }
 
 /* Similar Reads are card links; remove global wavy underline styling */
+
 .similarList :global(.wavyUnderline) {
   padding-bottom: 0;
 }

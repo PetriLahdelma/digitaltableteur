@@ -1,7 +1,7 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import styles from "./Documentation.module.css";
-
+import { expect } from "storybook/test";
 const LocalizationDocsContent = () => {
   return (
     <article className={styles.wrapper}>
@@ -72,8 +72,7 @@ const LocalizationDocsContent = () => {
           {`import { useTranslation } from "react-i18next";
 import { Title, Text, Button } from "@dt/ComponentName";
 
-function MyComponent() {
-  const { t, i18n } = useTranslation();
+function MyComponent() { const { t, i18n } = useTranslation();
 
   return (
     <div>
@@ -178,12 +177,10 @@ t("item", { count: 5 })  // "5 items"`}
         <pre className={styles.code}>
           {`import { useTranslation } from "react-i18next";
 
-function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+function LanguageSwitcher() { const { i18n } = useTranslation();
   const currentLang = i18n.language; // "en", "fi", or "sv"
 
-  const changeLanguage = (code: string) => {
-    i18n.changeLanguage(code);
+  const changeLanguage = (code: string) => { i18n.changeLanguage(code);
     
     // Persist to storage
     localStorage.setItem("i18nextLng", code);
@@ -229,9 +226,7 @@ function LanguageSwitcher() {
         <h3>Coverage Test</h3>
         <pre className={styles.code}>
           {`// src/__tests__/translation-coverage.test.tsx
-describe("Translation Coverage", () => {
-  it("has complete FI translations", () => {
-    const enKeys = Object.keys(flattenObject(enTranslation));
+describe("Translation Coverage", () => { it("has complete FI translations", () => { const enKeys = Object.keys(flattenObject(enTranslation));
     const fiKeys = Object.keys(flattenObject(fiTranslation));
     
     const missing = enKeys.filter(key => !fiKeys.includes(key));
@@ -285,16 +280,13 @@ npm run test`}
 
         <h3>Testing Translations in Stories</h3>
         <pre className={styles.code}>
-          {`export const Default: Story = {
-  render: () => {
-    const { t } = useTranslation();
+          {`export const Default: Story = { render: () => { const { t } = useTranslation();
     return <MyComponent title={t("componentTitle")} />;
   },
 };
 
 // Test all languages at once
-export const AllLanguages: Story = {
-  render: () => (
+export const AllLanguages: Story = { render: () => (
     <div>
       <div lang="en">
         <I18nextProvider i18n={createInstance("en")}>
@@ -352,8 +344,7 @@ export const AllLanguages: Story = {
         <h3>Example: Complete Component</h3>
         <pre className={styles.code}>
           {`// ❌ BAD - Hardcoded text
-function BadComponent() {
-  return (
+function BadComponent() { return (
     <div>
       <h1>Welcome to Digitaltableteur</h1>
       <p>We create amazing designs</p>
@@ -363,8 +354,7 @@ function BadComponent() {
 }
 
 // ✅ GOOD - Fully translated
-function GoodComponent() {
-  const { t } = useTranslation();
+function GoodComponent() { const { t } = useTranslation();
   
   return (
     <div>
@@ -419,8 +409,7 @@ function GoodComponent() {
 
         <h3>Conditional Content by Language</h3>
         <pre className={styles.code}>
-          {`function LanguageSpecificContent() {
-  const { i18n } = useTranslation();
+          {`function LanguageSpecificContent() { const { i18n } = useTranslation();
   const isFinnish = i18n.language === "fi";
 
   return (
@@ -439,8 +428,7 @@ function GoodComponent() {
         <pre className={styles.code}>
           {`import { useTranslation } from "react-i18next";
 
-function FormattedContent() {
-  const { i18n } = useTranslation();
+function FormattedContent() { const { i18n } = useTranslation();
   const locale = i18n.language; // "en", "fi", "sv"
 
   const date = new Date("2025-11-25");
@@ -452,8 +440,7 @@ function FormattedContent() {
         {new Intl.DateTimeFormat(locale).format(date)}
       </p>
       <p>
-        {new Intl.NumberFormat(locale, {
-          style: "currency",
+        {new Intl.NumberFormat(locale, { style: "currency",
           currency: "EUR"
         }).format(price)}
       </p>
@@ -464,8 +451,7 @@ function FormattedContent() {
 
         <h3>Accessible Translated Labels</h3>
         <pre className={styles.code}>
-          {`function AccessibleButton() {
-  const { t } = useTranslation();
+          {`function AccessibleButton() { const { t } = useTranslation();
 
   return (
     <button

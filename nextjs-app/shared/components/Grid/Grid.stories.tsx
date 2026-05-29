@@ -1,154 +1,129 @@
-import React from "react";
-import Grid from "@dt/Grid";
+import Grid from "./Grid";
+import Text from "@dt/Text";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import contract from "./Grid.contract.json";
 
-export default {
-  title: "Components/Grid",
+const defaultArgs = {
+  columns: 2,
+  gap: "1rem",
+  children: (
+    <>
+      <div>
+        <Text as="p" terminals="sans">
+          Cell A
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          Cell B
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          Cell C
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          Cell D
+        </Text>
+      </div>
+    </>
+  ),
+};
+
+const meta = {
+  title: "Atoms/Grid",
   component: Grid,
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    layout: "centered",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
+  },
   argTypes: {
-    columns: {
-      control: { type: "number", min: 1, max: 12 },
-      defaultValue: 3,
-      description: "Number of columns in the grid",
+    children: {
+      control: false,
+      description: "Grid cells (supports span on child props)",
+    },
+    columns: { control: "number", description: "Column count or template" },
+    rows: {
+      control: "text",
+      description: "Row count or template",
+      table: { disable: true },
     },
     gap: {
       control: "text",
-      defaultValue: "1.5rem",
-      description: "Gap between grid items (CSS value)",
+      description: "Grid gap",
+      table: { defaultValue: { summary: "1rem" } },
     },
     rowGap: {
       control: "text",
-      defaultValue: "2rem",
-      description: "Row gap (CSS value)",
+      description: "Row gap override",
+      table: { disable: true },
     },
     colGap: {
       control: "text",
-      defaultValue: "0.5rem",
-      description: "Column gap (CSS value)",
+      description: "Column gap override",
+      table: { disable: true },
     },
     align: {
-      control: "select",
-      options: ["start", "center", "end", "stretch"],
-      description: "Align items vertically",
+      control: "text",
+      description: "align-items",
+      table: { disable: true },
     },
     justify: {
-      control: "select",
-      options: ["start", "center", "end", "stretch"],
-      description: "Justify items horizontally",
+      control: "text",
+      description: "justify-items",
+      table: { disable: true },
+    },
+    className: {
+      control: "text",
+      description: "Grid class names",
+      table: { disable: true },
     },
   },
+  args: defaultArgs,
+} satisfies Meta<typeof Grid>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  tags: ["beta-matrix"],
+};
+export const Playground: Story = {
+  tags: ["beta-matrix"],
 };
 
-import type { ComponentProps } from "react";
-import type { StoryFn } from "@storybook/react-vite";
-
-const swatches = {
-  blue: "#0b3d91",
-  cyan: "#0f766e",
-  pink: "#9d174d",
-  purple: "#5b21b6",
-  neutral: "#f1f5f9",
-};
-
-const lightText = "#f9fafb";
-const darkText = "#1f2933";
-
-const itemStyle = (background: string, color: string) => ({
-  background,
-  color,
-  padding: 16,
-});
-
-const Template: StoryFn<ComponentProps<typeof Grid>> = (
-  args: ComponentProps<typeof Grid>,
-) => (
-  <div style={{ maxWidth: "90%", overflow: "hidden" }}>
-    <Grid
-      {...args}
-      style={{
-        background: "var(--storybook-bg)",
-        padding: 24,
-        overflow: "hidden",
-      }}
-    >
-      <Grid.Item style={itemStyle(swatches.blue, lightText)}>1</Grid.Item>
-      <Grid.Item style={itemStyle(swatches.cyan, lightText)}>2</Grid.Item>
-      <Grid.Item style={itemStyle(swatches.pink, lightText)}>3</Grid.Item>
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <Grid columns={3} gap="1.5rem" style={{ maxWidth: 720 }}>
+      <div>
+        <Text as="p" terminals="sans">
+          Services
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          Work
+        </Text>
+      </div>
+      <div>
+        <Text as="p" terminals="sans">
+          About
+        </Text>
+      </div>
     </Grid>
-  </div>
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-  columns: 3,
-  gap: "1.5rem",
+  ),
 };
 
-export const Spans = () => (
-  <div style={{ maxWidth: "90%", overflow: "hidden" }}>
-    <Grid
-      columns={4}
-      gap="1rem"
-      style={{
-        background: "var(--storybook-bg)",
-        padding: 24,
-        overflow: "hidden",
-      }}
-    >
-      <Grid.Item span={2} style={itemStyle(swatches.blue, lightText)}>
-        Span 2
-      </Grid.Item>
-      <Grid.Item style={itemStyle(swatches.neutral, darkText)}>
-        Normal
-      </Grid.Item>
-      <Grid.Item span={2} style={itemStyle(swatches.pink, lightText)}>
-        Span 2
-      </Grid.Item>
-      <Grid.Item style={itemStyle(swatches.purple, lightText)}>
-        Normal
-      </Grid.Item>
-    </Grid>
-  </div>
-);
-
-export const Nested = () => (
-  <div style={{ maxWidth: "90%", overflow: "hidden" }}>
-    <Grid
-      columns={2}
-      gap="2rem"
-      style={{
-        background: "var(--storybook-bg)",
-        padding: 24,
-        overflow: "hidden",
-      }}
-    >
-      <Grid.Item
-        style={{
-          background: "var(--storybook-blue)",
-          color: "var(--storybook-white)",
-          padding: 16,
-        }}
-      >
-        Parent 1
-      </Grid.Item>
-      <Grid columns={3} gap="0.5rem">
-        <Grid.Item style={itemStyle(swatches.cyan, lightText)}>A</Grid.Item>
-        <Grid.Item style={itemStyle(swatches.pink, lightText)}>B</Grid.Item>
-        <Grid.Item style={itemStyle(swatches.purple, lightText)}>C</Grid.Item>
-      </Grid>
-    </Grid>
-  </div>
-);
-
-export const RowAndColGap = Template.bind({});
-RowAndColGap.args = {
-  columns: 3,
-  rowGap: "2rem",
-  colGap: "0.5rem",
-};
-
-export const Alignment = Template.bind({});
-Alignment.args = {
-  columns: 3,
-  align: "center",
-  justify: "center",
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
 };

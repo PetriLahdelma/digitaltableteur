@@ -102,6 +102,7 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
           role="log"
           aria-live="polite"
           aria-label={t("chatMessages.ariaLabel", "Chat messages")}
+          tabIndex={0}
         >
           <div className={styles.emptyState}>
             <Text className={styles.emptyStateText}>
@@ -120,6 +121,7 @@ const ChatMessages = React.forwardRef<HTMLDivElement, ChatMessagesProps>(
         aria-live="polite"
         aria-label={t("chatMessages.ariaLabel", "Chat messages")}
         aria-relevant="additions"
+        tabIndex={0}
       >
         {processed.map((message, msgIndex) => {
           const workflowUI =

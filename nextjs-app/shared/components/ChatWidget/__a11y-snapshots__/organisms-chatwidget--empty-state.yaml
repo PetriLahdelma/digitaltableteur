@@ -1,0 +1,26 @@
+- status: Work in progress (beta)
+- paragraph: Donny Preview
+- paragraph: Click the chat bubble in the bottom-right corner to open the demo. You can type a prompt and Donny will answer with a prerecorded reply so you can explore the flow without calling the real API.
+- dialog:
+  - banner:
+    - img "Donny is greeting":
+      - img
+    - paragraph:
+      - text: DT Donny
+      - status "Available now"
+    - heading "Meet Donny" [level=2]
+    - button "Reset conversation":
+      - img "Reset conversation"
+      - text: Reset
+    - button "Minimize chat":
+      - img "Minimize chat"
+  - log "Chat messages":
+    - paragraph: Hi! I’m Donny. Tell me about your design system challenge — whether it’s tokens, components, DesignOps, or AI workflows — and I’ll point you to the right service.
+  - text: Ask Donny a question
+  - textbox "Ask Donny a question":
+    - /placeholder: Describe your design system challenge…
+  - button "Send message" [disabled]
+  - paragraph: Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.
+- button "Hide chat" [expanded]:
+  - img "Hide chat"
+  - text: Chat

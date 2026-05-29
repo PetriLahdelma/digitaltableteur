@@ -53,7 +53,10 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
   }
 };
 
-const ContactForm = () => {
+export type ContactFormProps = Record<string, never>;
+
+/** Contact form organism with validation and file attachment support. */
+const ContactForm: React.FC<ContactFormProps> = () => {
   const { t } = useTranslation();
   const [formData, dispatchForm] = useReducer(
     formReducer,

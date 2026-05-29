@@ -1,0 +1,7 @@
+iteration	commit	score	status	description
+0	5c55080ca	20	baseline	Current state — 20 stale brand references
+1	4a057c42d	16	keep	Replace 4 old logo images with press-kit SVGs
+2	5ee7e8268	11	keep	Replace 3 old mockup images with real product screenshots
+3	2f371fd28	6	keep	Replace gradient colors with #0D0D0D/#141414/#00FFCC/#F2F2F2 brand palette
+4	fac6e3d59	0	keep	Update brand copy, speed, screenshot, thumbnail — SCORE 0 (DONE)
+5	acb8ad1c6	0	keep	Add 4 brand system showcase sections (color, type, UI, do-dont)

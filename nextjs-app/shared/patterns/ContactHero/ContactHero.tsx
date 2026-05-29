@@ -24,6 +24,9 @@ const backgroundClasses: Record<NonNullable<ContactHeroProps["background"]>, str
   minimal: "bg-background",
 };
 
+/**
+ * ContactHero component.
+ */
 export function ContactHero({
   title,
   subtitle,

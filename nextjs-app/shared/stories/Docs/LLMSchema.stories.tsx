@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useMemo, useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import styles from "./Documentation.module.css";
 import schemaTemplate from "../../../../docs/LLM_COMPONENT_SCHEMA_TEMPLATE.json";
 import accordionSchema from "../../components/Accordion/schema.json";
@@ -19,17 +19,12 @@ const buttonSchemaExample = {
     description: "Single action trigger with semantic intent and variants.",
     source: "nextjs-app/shared/components/Button/Button.tsx",
   },
-  semanticRole: {
-    container: "button",
-  },
+  semanticRole: { container: "button" },
   layout: {
     direction: "horizontal",
     width: "intrinsic",
     height: "content-driven",
-    spacing: {
-      padding: "space.12 space.16",
-      gap: "space.8",
-    },
+    spacing: { padding: "space.12 space.16", gap: "space.8" },
   },
   visualStyle: {
     surface: "flat",
@@ -55,9 +50,7 @@ const buttonSchemaExample = {
     defaultState: "enabled",
   },
   interaction: {
-    logic: [
-      { trigger: "onClick", effect: "Invoke primary action handler." },
-    ],
+    logic: [{ trigger: "onClick", effect: "Invoke primary action handler." }],
     feedback: {
       hover: "Increase surface contrast.",
       focus: "Show focus ring.",
@@ -80,16 +73,10 @@ const buttonSchemaExample = {
       motionTokens: ["token.motion.duration.fast"],
     },
   ],
-  constraints: {
-    nesting: ["Button cannot contain another Button."],
-  },
+  constraints: { nesting: ["Button cannot contain another Button."] },
   accessibility: {
-    roles: {
-      container: "button",
-    },
-    aria: {
-      label: "Required when text label is not visible.",
-    },
+    roles: { container: "button" },
+    aria: { label: "Required when text label is not visible." },
     keyboard: "Enter and Space activate the button.",
   },
   generativeRules: {
@@ -173,10 +160,7 @@ const loadMermaid = async () => {
   return mermaid;
 };
 
-type MermaidDiagramProps = {
-  title?: string;
-  code: string;
-};
+type MermaidDiagramProps = { title?: string; code: string };
 
 const MermaidDiagram: React.FC<MermaidDiagramProps> = ({ title, code }) => {
   const rawId = useId();
@@ -301,7 +285,10 @@ const LLMSchemaDocsContent = () => {
       <section className={styles.section}>
         <h2>Schema anatomy (the blueprint)</h2>
         <p>Every component schema describes the same major categories.</p>
-        <MermaidDiagram title="Schema Blueprint" code={schemaBlueprintDiagram} />
+        <MermaidDiagram
+          title="Schema Blueprint"
+          code={schemaBlueprintDiagram}
+        />
         <ul>
           <li>
             <strong>Behavior map</strong>: what the component does, by default.
@@ -343,8 +330,7 @@ const LLMSchemaDocsContent = () => {
               <td>Base</td>
               <td>Raw primitives and scale</td>
               <td>
-                <code>token.color.gray.900</code>,{" "}
-                <code>token.space.16</code>
+                <code>token.color.gray.900</code>, <code>token.space.16</code>
               </td>
             </tr>
             <tr>
@@ -358,8 +344,7 @@ const LLMSchemaDocsContent = () => {
               <td>Mode</td>
               <td>Theme-specific overrides</td>
               <td>
-                <code>mode.dark.surface</code>,{" "}
-                <code>mode.light.text</code>
+                <code>mode.dark.surface</code>, <code>mode.light.text</code>
               </td>
             </tr>
             <tr>
@@ -403,9 +388,8 @@ const LLMSchemaDocsContent = () => {
       <section className={styles.section}>
         <h2>States, transitions, and constraints</h2>
         <p>
-          States describe the finite set of conditions. Transitions describe
-          how the component moves between them. Constraints define what is
-          allowed.
+          States describe the finite set of conditions. Transitions describe how
+          the component moves between them. Constraints define what is allowed.
         </p>
         <MermaidDiagram title="State Transitions" code={stateDiagram} />
         <pre className={styles.code}>
@@ -458,10 +442,7 @@ const LLMSchemaDocsContent = () => {
           Rules transform context into token overrides. They are the bridge
           between intent and appearance.
         </p>
-        <MermaidDiagram
-          title="Generative Rule Pipeline"
-          code={rulesDiagram}
-        />
+        <MermaidDiagram title="Generative Rule Pipeline" code={rulesDiagram} />
         <pre className={styles.code}>
           {`"generativeRules": {
   "contextInputs": ["variant", "mode", "density", "contentType"],
@@ -493,8 +474,8 @@ const LLMSchemaDocsContent = () => {
       <section className={styles.section}>
         <h2>Template file</h2>
         <p>
-          Use the template as the starting point for any new component. Keep
-          it in a stable location so LLMs can load it directly.
+          Use the template as the starting point for any new component. Keep it
+          in a stable location so LLMs can load it directly.
         </p>
         <pre className={styles.code}>{templateJson}</pre>
       </section>
@@ -502,7 +483,9 @@ const LLMSchemaDocsContent = () => {
       <section className={styles.section}>
         <h2>Implementation checklist</h2>
         <ol>
-          <li>Create <code>schema.json</code> in the component folder.</li>
+          <li>
+            Create <code>schema.json</code> in the component folder.
+          </li>
           <li>Describe anatomy, layout, behavior, and constraints.</li>
           <li>Link token layers and define generative rules.</li>
           <li>Import the schema into the Storybook docs page.</li>
@@ -510,12 +493,10 @@ const LLMSchemaDocsContent = () => {
         <pre className={styles.code}>
           {`import schema from "./schema.json";
 
-const meta = {
-  title: "Components/MyComponent",
+const meta = { title: "Atoms/MyComponent",
   component: MyComponent,
   tags: ["autodocs"],
-  parameters: {
-    llm: { schema }
+  parameters: { llm: { schema }
   }
 };`}
         </pre>
@@ -526,18 +507,11 @@ const meta = {
 
 const meta: Meta = {
   title: "Docs/LLM Schema",
-  parameters: {
-    layout: "fullscreen",
-    vitest: {
-      skip: true,
-    },
-  },
+  parameters: { layout: "fullscreen", vitest: { skip: true } },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof LLMSchemaDocsContent>;
 
-export const LLMSchemaGuide: Story = {
-  render: () => <LLMSchemaDocsContent />,
-};
+export const LLMSchemaGuide: Story = { render: () => <LLMSchemaDocsContent /> };

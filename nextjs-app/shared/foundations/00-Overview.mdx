@@ -1,0 +1,35 @@
+# Design system foundations
+
+Digitaltableteur ships a **production-first** token layer: every color, space, and motion value in Storybook resolves from [`variables.css`](../../styles/variables.css) — the same file the Next.js app loads.
+
+## What you will find here
+
+| Foundation | Storybook | Purpose |
+|------------|-----------|---------|
+| **Color** | Foundations/Color | Semantic, status, accent, greyscale, theme matrix |
+| **Typography** | Foundations/Typography | Fluid clamp scale, families, rhythm |
+| **Space** | Foundations/Space | Layout vs internal spacing, grid margins |
+| **Motion** | Foundations/Motion | Duration, easing, stagger, distance |
+| **Layout** | Foundations/Layout | Breakpoints, containers, grid |
+| **Radius** | Foundations/Radius | Corner radii |
+| **Elevation** | Foundations/Elevation | Modal shadow & overlays |
+| **Focus** | Foundations/Focus | Focus ring tokens (WCAG) |
+| **Themes** | Foundations/Themes | Light, dark, HCB, HCW |
+
+## Rules (non-negotiable)
+
+1. **Add tokens in `variables.css` first** — never import quarantined DTCG JSON at runtime.
+2. **Consume tokens in CSS Modules** via `var(--token-name)` — no hardcoded hex in components.
+3. **Use logical properties** (`margin-inline`, `padding-block`) with layout/internal space tokens.
+4. **Match Storybook themes** to production (`ThemeProvider` + toolbar).
+
+## Parity methodology
+
+We adopt **DSharp / Carbon / Polaris** documentation *process* (contracts, tiers, foundation catalogs) — not their palette or components. See [ADR-0005](../../../docs/adr/0005-dsharp-parity-baseline.md).
+
+Regenerate the machine catalog after token changes:
+
+```bash
+npm run build:tokens
+```
+

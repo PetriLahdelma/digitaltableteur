@@ -1,24 +1,14 @@
+import contract from "./Toast.contract.json";
 import React, { useState } from "react";
 import type { Meta, StoryFn } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Heading,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import Toast, { ToastProps } from "@dt/Toast";
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
-import { within, userEvent, waitFor } from "@storybook/testing-library";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
-
-declare const expect: (typeof import("vitest"))["expect"];
 
 const toastComplianceRules: ComplianceRule[] = [
   {
@@ -81,64 +71,35 @@ const toastComplianceRules: ComplianceRule[] = [
     status: "pass",
     details: "Multiple variants with ComplianceCard",
   },
-  {
-    id: "tests",
-    rule: "Tests",
-    status: "pass",
-    details: "Test file exists",
-  },
+  { id: "tests", rule: "Tests", status: "pass", details: "Test file exists" },
 ];
 
 const meta: Meta<typeof Toast> = {
-  title: "Feedback/Toast",
+  title: "Molecules/Toast",
   component: Toast,
-  tags: ["autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
-    llm: {
-      schema,
-    },
-    docs: {
-      page: () => (
-        <>
-          <Primary />
-          <Title />
-          <Subtitle />
-          <Description />
-          <Controls />
-          <Stories />
-          <Heading>LLM Schema</Heading>
-          <CodeSnippet
-            code={JSON.stringify(schema, null, 2)}
-            language="json"
-            variant="multi"
-            maxLines={20}
-            showLineNumbers={true}
-            allowCopy={true}
-          />
-        </>
-      ),
-    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    llm: { schema },
   },
   argTypes: {
     // Content
+
     message: {
       control: "text",
       description: "Message text displayed in the toast",
-      table: {
-        category: "Content",
-        type: { summary: "string" },
-      },
+      table: { category: "Content", type: { summary: "string" } },
     },
 
     // State (v1.1.0)
+
     isOpen: {
       control: "boolean",
       description: "Controls toast visibility (v1.1.0+)",
-      table: {
-        category: "State",
-        type: { summary: "boolean" },
-      },
+      table: { category: "State", type: { summary: "boolean" } },
     },
+
     severity: {
       control: { type: "select" },
       options: ["success", "error", "warning", "info"],
@@ -146,10 +107,12 @@ const meta: Meta<typeof Toast> = {
       table: {
         category: "State",
         type: { summary: "ToastSeverity" },
+        defaultValue: { summary: "info" },
       },
     },
 
     // Appearance
+
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
@@ -160,6 +123,7 @@ const meta: Meta<typeof Toast> = {
         defaultValue: { summary: "md" },
       },
     },
+
     position: {
       control: { type: "select" },
       options: [
@@ -179,6 +143,7 @@ const meta: Meta<typeof Toast> = {
     },
 
     // Behavior
+
     duration: {
       control: "number",
       description: "Auto-dismiss duration in milliseconds",
@@ -191,12 +156,8 @@ const meta: Meta<typeof Toast> = {
     onClose: {
       action: "closed",
       description: "Close callback",
-      table: {
-        category: "Behavior",
-        type: { summary: "() => void" },
-      },
+      table: { category: "Behavior", type: { summary: "() => void" } },
     },
-
   },
 };
 export default meta;
@@ -210,9 +171,7 @@ export const Z_ToastCompliance: StoryFn = () => (
     rules={toastComplianceRules}
   />
 );
-Z_ToastCompliance.parameters = {
-  docs: { disable: true },
-};
+Z_ToastCompliance.parameters = { docs: { disable: true } };
 
 const Template: StoryFn<ToastProps> = () => {
   const [open, setOpen] = useState(false);
@@ -236,9 +195,13 @@ Default.play = async ({ canvasElement }) => {
   await userEvent.click(showButton);
 
   await waitFor(() => {
-    expect(canvas.getByRole("status")).toBeInTheDocument();
     expect(canvas.getByText(/toast notification/i)).toBeInTheDocument();
   });
+  const toasts = canvas.getAllByRole("status");
+  const toast = toasts.find((el) =>
+    /toast notification/i.test(el.textContent ?? ""),
+  );
+  expect(toast).toBeDefined();
 };
 
 export const LongDuration = () => {
@@ -261,9 +224,11 @@ LongDuration.play = async ({ canvasElement }) => {
   await userEvent.click(showButton);
 
   await waitFor(() => {
-    expect(canvas.getByRole("status")).toBeInTheDocument();
     expect(canvas.getByText(/6 seconds/i)).toBeInTheDocument();
   });
+  const toasts = canvas.getAllByRole("status");
+  const toast = toasts.find((el) => /6 seconds/i.test(el.textContent ?? ""));
+  expect(toast).toBeDefined();
 };
 
 // v1.1.0 Showcase Stories
@@ -400,4 +365,32 @@ export const SizeLarge: StoryFn = () => {
       />
     </>
   );
+};
+
+export const Playground: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+};
+
+export const Example: Story = {
+  globals: { forcedColors: "none" },
+  tags: ["beta-matrix"],
+  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  render: () => {
+    const [open, setOpen] = React.useState(true);
+    return (
+      <Toast
+        message="Saved successfully."
+        isOpen={open}
+        severity="success"
+        onClose={() => setOpen(false)}
+      />
+    );
+  },
+};
+
+export const ForcedColors: Story = {
+  parameters: { a11y: { disable: true, test: "off" } },
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

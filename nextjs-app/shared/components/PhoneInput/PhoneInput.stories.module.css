@@ -4,9 +4,9 @@
 
 .stackContainer {
   display: flex;
+  max-width: 28rem;
   flex-direction: column;
   gap: 2rem;
-  max-width: 28rem;
 }
 
 .stateLabel {

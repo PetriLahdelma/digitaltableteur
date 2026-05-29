@@ -21,7 +21,15 @@ import {
 import CookieConsentBanner from "./CookieConsentBanner";
 import styles from "./CookieConsent.module.css";
 
-const CookieConsent: React.FC = () => {
+/** Props for CookieConsent. */
+export interface CookieConsentProps {
+  className?: string;
+}
+
+/**
+ * CookieConsent component.
+ */
+export const CookieConsent: React.FC<CookieConsentProps> = () => {
   const { t, i18n } = useTranslation();
   const {
     isBannerOpen,
@@ -105,8 +113,7 @@ const CookieConsent: React.FC = () => {
     saveMinimizedState(false);
   };
 
-  // If banner not open at all, show nothing
-  if (!isBannerOpen) {
+  if (!isReady || !isBannerOpen) {
     return null;
   }
 

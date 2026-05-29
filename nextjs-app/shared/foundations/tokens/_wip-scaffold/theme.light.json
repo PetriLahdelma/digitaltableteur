@@ -1,0 +1,15 @@
+{
+  "semantic": {
+    "$description": "Light theme semantic aliases",
+    "bg": {
+      "$value": "{color.surface}",
+      "$type": "color",
+      "$description": "Page background"
+    },
+    "fg": {
+      "$value": "{color.text}",
+      "$type": "color",
+      "$description": "Page foreground"
+    }
+  }
+}

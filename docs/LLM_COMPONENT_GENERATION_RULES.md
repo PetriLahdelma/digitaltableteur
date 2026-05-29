@@ -1,3 +1,5 @@
+> **Updated 2026-05-26:** In-scope components use `Component.contract.json` + `Component.spec.md` + `Component.mdx`. Scaffold with `npm run new-component`. Stack: Tailwind v4 + CVA + production tokens in `variables.css` (DTCG export is WIP — see `foundations/tokens/README.md`).
+
 # LLM Component Generation Rules for Digitaltableteur
 
 > Comprehensive guidelines for AI-assisted React component generation following project conventions, design system patterns, and accessibility standards.
@@ -1619,6 +1621,29 @@ export const Loading: Story = {
     loading: true,
   },
 };
+```
+
+
+### Rule 9.1b - argTypes required at beta promotion
+
+When `contract.status` is **beta** or **stable**, `meta.argTypes` is mandatory and machine-checked:
+
+1. **Coverage** — variant axes from the contract and public props from `<Name>Props` (minus standard skips and `argTypesProxyExempt`).
+2. **Documentation** — every control entry needs a `description` string for the Storybook Controls panel.
+3. **Defaults** — each contract variant axis needs `table.defaultValue.summary` so consumers see the default at a glance.
+
+Use `{ table: { disable: true } }` only for slots, `className`, or props that must not be edited via Controls. Prefer real controls with descriptions over proxy-exempt lists.
+
+```typescript
+variant: {
+  control: { type: "select" },
+  options: ["primary", "secondary"],
+  description: "Visual style variant",
+  table: {
+    type: { summary: "ButtonVariant" },
+    defaultValue: { summary: "primary" },
+  },
+},
 ```
 
 ### Rule 9.2 - WIP Badge System

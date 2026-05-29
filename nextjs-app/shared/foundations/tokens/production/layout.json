@@ -1,0 +1,103 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "breakpoint": {
+    "mobile": {
+      "$value": "480px",
+      "$description": "Responsive breakpoint reference for media queries."
+    },
+    "tablet": {
+      "$value": "768px",
+      "$description": "Responsive breakpoint reference for media queries."
+    },
+    "desktop": {
+      "$value": "1024px",
+      "$description": "Responsive breakpoint reference for media queries."
+    },
+    "wide": {
+      "$value": "1440px",
+      "$description": "Responsive breakpoint reference for media queries."
+    },
+    "ultra": {
+      "$value": "1920px",
+      "$description": "Responsive breakpoint reference for media queries."
+    }
+  },
+  "container": {
+    "sm": {
+      "$value": "640px",
+      "$description": "Max inline size for content containers."
+    },
+    "md": {
+      "$value": "960px",
+      "$description": "Max inline size for content containers."
+    },
+    "lg": {
+      "$value": "1200px",
+      "$description": "Max inline size for content containers."
+    },
+    "xl": {
+      "$value": "1440px",
+      "$description": "Max inline size for content containers."
+    },
+    "full": {
+      "$value": "100%",
+      "$description": "Max inline size for content containers."
+    }
+  },
+  "grid": {
+    "columns": {
+      "mobile": {
+        "$value": "4",
+        "$description": "Grid system token (columns or gap)."
+      },
+      "tablet": {
+        "$value": "8",
+        "$description": "Grid system token (columns or gap)."
+      },
+      "desktop": {
+        "$value": "12",
+        "$description": "Grid system token (columns or gap)."
+      }
+    },
+    "gap": {
+      "mobile": {
+        "$value": "var(--space-layout-16)",
+        "$description": "Grid system token (columns or gap)."
+      },
+      "tablet": {
+        "$value": "var(--space-layout-24)",
+        "$description": "Grid system token (columns or gap)."
+      },
+      "desktop": {
+        "$value": "var(--space-layout-32)",
+        "$description": "Grid system token (columns or gap)."
+      }
+    }
+  },
+  "page": {
+    "margin": {
+      "mobile": {
+        "$value": "var(--space-layout-16)",
+        "$description": "Horizontal page margin at a viewport tier."
+      },
+      "tablet": {
+        "$value": "var(--space-layout-32)",
+        "$description": "Horizontal page margin at a viewport tier."
+      },
+      "desktop": {
+        "$value": "var(--space-layout-48)",
+        "$description": "Horizontal page margin at a viewport tier."
+      },
+      "wide": {
+        "$value": "var(--space-layout-64)",
+        "$description": "Horizontal page margin at a viewport tier."
+      }
+    }
+  },
+  "rhythm": {
+    "base": {
+      "$value": "0.5rem",
+      "$description": "Production token --rhythm-base"
+    }
+  }
+}

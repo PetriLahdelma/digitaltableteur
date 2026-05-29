@@ -1,5 +1,6 @@
+import contract from "./SentrySummaryCard.contract.json";
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import SentrySummaryCard, { SentrySummaryData } from "@dt/SentrySummaryCard";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
@@ -20,10 +21,11 @@ const sentrySummaryCardComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof SentrySummaryCard> = {
-  title: "Observability/SentrySummaryCard",
+  argTypes: {},
+  title: "Molecules/SentrySummaryCard",
   component: SentrySummaryCard,
-  tags: ["autodocs"],
-  parameters: {},
+  tags: ["beta", "!autodocs"],
+  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
 };
 export default meta;
 
@@ -98,9 +100,7 @@ export const ErrorState: Story = {
   render: () => <SentrySummaryCard forceError />,
   parameters: {
     docs: {
-      description: {
-        story: "Displays localized error when fetch fails.",
-      },
+      description: { story: "Displays localized error when fetch fails." },
     },
   },
 };
@@ -130,9 +130,7 @@ export const Stub: Story = {
 };
 
 export const Z_SentrySummaryCardCompliance: Story = {
-  parameters: {
-    docs: { disable: true },
-  },
+  parameters: { docs: { disable: true } },
   render: () => (
     <ComplianceCard
       title="Compliance: 11/11"
@@ -142,4 +140,15 @@ export const Z_SentrySummaryCardCompliance: Story = {
       rules={sentrySummaryCardComplianceRules}
     />
   ),
+};
+
+export const Default = { tags: ["beta-matrix"] };
+export const Playground = { tags: ["beta-matrix"] };
+export const Example = {
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
+};
+export const ForcedColors = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
 };

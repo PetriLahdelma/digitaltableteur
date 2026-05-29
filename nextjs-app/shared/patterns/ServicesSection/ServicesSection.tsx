@@ -35,6 +35,9 @@ export interface ServicesSectionProps {
   id?: string;
 }
 
+/**
+ * ServicesSection component.
+ */
 export function ServicesSection({
   title,
   description,

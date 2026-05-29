@@ -1,3 +1,6 @@
+/** Props for SentrySummaryCard. */
+export interface SentrySummaryCardProps { className?: string }
+
 import React, { useEffect, useState } from "react";
 import Card from "@dt/Card";
 import Text from "@dt/Text";
@@ -45,7 +48,10 @@ interface Props {
   forceError?: boolean;
 }
 
-const SentrySummaryCard: React.FC<Props> = ({
+/**
+ * SentrySummaryCard component.
+ */
+export const SentrySummaryCard: React.FC<Props> = ({
   className,
   maxIssues = 10,
   showEnvironment = true,

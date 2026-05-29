@@ -1,0 +1,73 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { LocationCard } from "./LocationCard";
+import contract from "./LocationCard.contract.json";
+
+const defaultArgs = {
+  officeName: "Digitaltableteur Helsinki",
+  address: ["Mannerheimintie 20 B", "00100 Helsinki", "Finland"],
+  email: "mail@digitaltableteur.com",
+  variant: "bordered" as const,
+};
+
+const meta = {
+  title: "Molecules/LocationCard",
+  component: LocationCard,
+  tags: ["beta", "!autodocs"],
+  parameters: {
+    layout: "centered",
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+    docs: { description: { component: contract.description } },
+  },
+  argTypes: {
+    officeName: { control: "text", description: "Location title" },
+    address: {
+      control: "object",
+      description: "Address lines inside <address>",
+    },
+    email: { control: "text", description: "Contact email" },
+    phone: { control: "text", description: "Optional phone number" },
+    variant: {
+      control: "select",
+      options: ["default", "bordered", "elevated"],
+      description: "Card surface treatment",
+      table: { defaultValue: { summary: "default" } },
+    },
+    className: {
+      control: "text",
+      description: "Article wrapper class names",
+      table: { disable: true },
+    },
+  },
+  args: defaultArgs,
+} satisfies Meta<typeof LocationCard>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+};
+export const Playground: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+};
+
+export const Example: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "none" },
+  name: "Example (contact page)",
+  parameters: { controls: { disable: true }, layout: "padded" },
+  render: () => (
+    <div style={{ maxWidth: 420, width: "100%" }}>
+      <LocationCard {...defaultArgs} />
+    </div>
+  ),
+};
+
+export const ForcedColors: Story = {
+  tags: ["beta-matrix"],
+  globals: { forcedColors: "active" },
+  args: defaultArgs,
+};

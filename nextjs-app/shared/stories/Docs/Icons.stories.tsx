@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React, { useMemo, useState } from "react";
 import Icon from "@dt/Icon";
 import Toast from "@dt/Toast";
@@ -1593,8 +1593,7 @@ const IconsDocsContent = () => {
         <pre className={styles.code}>
           {`import Icon from '@dt/Icon';
 
-function MyComponent() {
-  return (
+function MyComponent() { return (
     <>
       <Icon name="Heart" size="md" />
       <Icon name="Star" size="lg" color="gold" />
@@ -1946,10 +1945,6 @@ export default meta;
 
 type Story = StoryObj;
 
-export const Default: Story = {
-  render: () => <IconsDocsContent />,
-};
+export const Default: Story = { render: () => <IconsDocsContent /> };
 
-export const Browse: Story = {
-  render: () => <IconBrowserContent />,
-};
+export const Browse: Story = { render: () => <IconBrowserContent /> };

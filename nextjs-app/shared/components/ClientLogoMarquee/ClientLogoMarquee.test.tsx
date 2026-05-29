@@ -2,23 +2,22 @@ import { render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { ClientLogoMarquee } from "./ClientLogoMarquee";
 
-const useReducedMotionMock = vi.fn(() => false);
+const useAnimationContextMock = vi.fn(() => ({
+  motionPreference: "full" as const,
+  isReady: true,
+}));
 
-vi.mock("framer-motion", async () => {
-  const actual = await vi.importActual<typeof import("framer-motion")>(
-    "framer-motion",
-  );
-
-  return {
-    ...actual,
-    useReducedMotion: () => useReducedMotionMock(),
-  };
-});
+vi.mock("@/providers/AnimationProvider", () => ({
+  useAnimationContext: () => useAnimationContextMock(),
+}));
 
 describe("ClientLogoMarquee", () => {
   afterEach(() => {
-    useReducedMotionMock.mockReset();
-    useReducedMotionMock.mockReturnValue(false);
+    useAnimationContextMock.mockReset();
+    useAnimationContextMock.mockReturnValue({
+      motionPreference: "full",
+      isReady: true,
+    });
   });
 
   it("renders the animated marquee by default", () => {
@@ -35,7 +34,10 @@ describe("ClientLogoMarquee", () => {
   });
 
   it("renders a static grid when reduced motion is preferred", () => {
-    useReducedMotionMock.mockReturnValue(true);
+    useAnimationContextMock.mockReturnValue({
+      motionPreference: "reduced",
+      isReady: true,
+    });
 
     const { container } = render(
       <ClientLogoMarquee ariaLabel="Selected client organisations" />,

@@ -6,7 +6,7 @@ import styles from "./PhoneInput.module.css";
 import Label from "@dt/Label/Label";
 import HelperText from "@dt/HelperText/HelperText";
 
-interface PhoneInputProps {
+export interface PhoneInputProps {
   label: string;
   value?: string;
   error?: string;
@@ -16,7 +16,10 @@ interface PhoneInputProps {
   onChange?: (value: string | undefined) => void;
 }
 
-const PhoneInput: React.FC<PhoneInputProps> = ({
+/**
+ * PhoneInput component.
+ */
+export const PhoneInput: React.FC<PhoneInputProps> = ({
   label,
   value,
   error,

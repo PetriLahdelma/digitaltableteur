@@ -17,6 +17,7 @@
  *
  * Usage: Apply to buttons, links, form inputs, etc.
  */
+
 .focus-ring:focus-visible {
   outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
   outline-offset: var(--focus-ring-offset, 2px);
@@ -26,6 +27,7 @@
  * Focus ring without offset - for elements where offset looks awkward
  * (e.g., text inputs that already have a border)
  */
+
 .focus-ring-inset:focus-visible {
   outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
   outline-offset: 0;
@@ -34,6 +36,7 @@
 /**
  * Focus ring inside the element - useful for elements with overflow:hidden
  */
+
 .focus-ring-inner:focus-visible {
   outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
   outline-offset: calc(-1 * var(--focus-ring-width, 2px));
@@ -54,12 +57,6 @@
     /* Use system highlight color in forced colors mode */
     outline: 3px solid Highlight;
     outline-offset: 2px;
-  }
-
-  /* Ensure focus ring is always visible */
-  .focus-ring:focus-visible,
-  .focus-ring-inset:focus-visible,
-  .focus-ring-inner:focus-visible {
     forced-color-adjust: none;
   }
 }
@@ -87,30 +84,30 @@
  * Hide content visually but keep it accessible to screen readers
  * Use for skip links, form labels, etc.
  */
+
 .visually-hidden {
   position: absolute;
-  width: 1px;
-  height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  width: 1px;
+  height: 1px;
   border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  overflow: hidden;
 }
 
 /**
  * Show visually hidden content when focused (for skip links)
  */
+
 .visually-hidden-focusable:focus,
 .visually-hidden-focusable:focus-visible {
   position: static;
+  margin: 0;
   width: auto;
   height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
   white-space: normal;
+  clip-path: none;
+  overflow: visible;
 }

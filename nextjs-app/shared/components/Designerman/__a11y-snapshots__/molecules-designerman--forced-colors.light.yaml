@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- application "Designerman interactive sprite game. Use arrow keys to move, Space to jump, J to punch, K to blast, L to block.":
+  - text: ← → Shift Space/W J K L
+  - button "Mute"
+  - text: "Anim: idle"

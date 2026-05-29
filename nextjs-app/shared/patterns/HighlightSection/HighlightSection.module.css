@@ -2,8 +2,9 @@
 
 .section {
   position: relative;
-  inline-size: 100%;
   block-size: auto;
+  inline-size: 100%;
+
   --highlight-bg: var(--color-light-bg);
   --highlight-gradient-start: #ddf;
   --highlight-gradient-end: #eef;
@@ -12,6 +13,7 @@
 }
 
 /* Background layers */
+
 .background {
   position: absolute;
   inset: 0;
@@ -25,6 +27,7 @@
 }
 
 /* Gradient variant */
+
 .gradient .backgroundBase {
   background: linear-gradient(
     135deg,
@@ -34,6 +37,7 @@
 }
 
 /* Pattern variant */
+
 .pattern .backgroundBase {
   background-color: var(--highlight-gradient-start);
 }
@@ -54,13 +58,13 @@
   background-image:
     repeating-linear-gradient(
       0deg,
-      var(--color-primary) 0px,
+      var(--color-primary) 0,
       transparent 1px,
       transparent 8px
     ),
     repeating-linear-gradient(
       90deg,
-      var(--color-primary) 0px,
+      var(--color-primary) 0,
       transparent 1px,
       transparent 8px
     );
@@ -77,93 +81,101 @@
 }
 
 /* Solid variant */
+
 .solid .backgroundBase {
   background-color: var(--color-light-bg);
 }
 
 /* Border decoration - removed for cleaner look */
+
 .border {
   display: none;
 }
 
 /* Container for content */
+
 .container {
   position: relative;
-  inline-size: 100%;
-  block-size: 100%;
-  max-inline-size: var(--container-lg);
   margin-inline: auto;
+  block-size: 100%;
+  inline-size: 100%;
+  max-inline-size: var(--container-lg);
 }
 
 /* Content wrapper */
+
 .content {
   display: flex;
+  padding-block: var(--space-layout-56, 3.5rem);
+  padding-inline: var(--space-layout-40);
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-layout-32);
-  padding-block: var(--space-layout-56, 3.5rem);
-  padding-inline: var(--space-layout-40);
 }
 
 /* Size variants */
+
 .compact .content {
-  gap: var(--space-layout-24);
   padding-block: var(--space-layout-32);
   padding-inline: var(--space-layout-16);
+  gap: var(--space-layout-24);
 }
 
 .comfortable .content {
-  gap: var(--space-layout-32);
   padding-block: var(--space-layout-56, 3.5rem);
   padding-inline: var(--space-layout-40);
+  gap: var(--space-layout-32);
 }
 
 .spacious .content {
-  gap: var(--space-layout-48);
   padding-block: var(--space-layout-64);
   padding-inline: var(--space-layout-32);
+  gap: var(--space-layout-48);
 }
 
 /* Overline text */
+
 .overline {
   display: block;
-  color: var(--color-text);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text);
 }
 
 /* Title */
+
 .title {
-  max-inline-size: 820px;
-  color: var(--color-title);
   margin-block-start: 0;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  max-inline-size: 820px;
+  overflow-wrap: anywhere;
   hyphens: auto;
+  color: var(--color-title);
 }
 
 /* Description */
+
 .description {
   max-inline-size: 760px;
   color: var(--color-text);
 }
 
 /* CTA layout */
+
 .ctaRow {
   display: flex;
+  margin-block-start: var(--space-layout-16);
+  inline-size: 100%;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-layout-16);
-  flex-wrap: wrap;
-  inline-size: 100%;
-  margin-block-start: var(--space-layout-16);
 }
 
 .ctaGroup {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-layout-16);
-  flex-wrap: wrap;
 }
 
 .ctaTrailing {
@@ -201,21 +213,21 @@
 /* Desktop (1024px+) */
 @media (width >= 1024px) {
   .content {
-    gap: var(--space-layout-40);
     padding-block: var(--space-layout-64);
     padding-inline: var(--space-layout-48);
+    gap: var(--space-layout-40);
   }
 
   .compact .content {
-    gap: var(--space-layout-32);
     padding-block: var(--space-layout-48);
     padding-inline: var(--space-layout-32);
+    gap: var(--space-layout-32);
   }
 
   .spacious .content {
-    gap: var(--space-layout-64);
     padding-block: var(--space-layout-96);
     padding-inline: var(--space-layout-64);
+    gap: var(--space-layout-64);
   }
 }
 
@@ -227,6 +239,7 @@
 }
 
 /* Theme support - Dark mode */
+
 :global(.themeDark) .backgroundBase {
   --highlight-bg: #0b0d12;
   --highlight-gradient-start: #0b0d12;
@@ -255,6 +268,7 @@
 }
 
 /* Theme support - High Contrast White */
+
 :global(.themeHCW) .backgroundBase {
   --highlight-bg: var(--main-body-background-color);
   --highlight-gradient-start: var(--main-body-background-color);
@@ -273,6 +287,7 @@
 }
 
 /* Theme support - High Contrast Black */
+
 :global(.themeHCB) .backgroundBase {
   --highlight-bg: #000;
   --highlight-gradient-start: #000;

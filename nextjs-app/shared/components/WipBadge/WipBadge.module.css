@@ -1,0 +1,42 @@
+.wipWrapper {
+  display: contents;
+}
+
+.wipBadgeContainer {
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  inset-block-end: var(--space-internal-12);
+  inset-inline-end: var(--space-internal-12);
+}
+
+.wipBadgeContainer .badge {
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-8);
+  border-radius: var(--radius-sm, 4px);
+  background: var(
+    --color-surface-elevated,
+    var(--main-body-background-color, #fff)
+  );
+  box-shadow: 0 0 0 1px var(--color-border-light), 0 2px 4px rgb(0 0 0 / 12%);
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text, #111);
+  pointer-events: auto;
+}
+
+.wipBadgeDocs {
+  display: flex;
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  inset-block-end: var(--space-internal-12);
+  inset-inline-end: var(--space-internal-12);
+}
+
+.wipBadgeDocs .badge {
+  padding-block: var(--space-internal-4);
+  padding-inline: var(--space-internal-8);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 8%), 0 8px 24px rgb(15 23 42 / 12%);
+  pointer-events: auto;
+}

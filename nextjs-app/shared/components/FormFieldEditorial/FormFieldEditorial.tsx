@@ -43,6 +43,9 @@ function generateId(label: string): string {
   return label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 }
 
+/**
+ * FormFieldEditorial component.
+ */
 export const FormFieldEditorial = forwardRef<
   HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
   FormFieldEditorialProps

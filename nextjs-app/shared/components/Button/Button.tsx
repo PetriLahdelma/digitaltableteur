@@ -164,6 +164,7 @@ const getElementBackgroundColor = (element: Element | null): string | null => {
 const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
 
+/** Primary action control with variants, loading, and optional link rendering. */
 const Button = React.forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonProps

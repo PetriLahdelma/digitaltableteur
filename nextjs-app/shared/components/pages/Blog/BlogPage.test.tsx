@@ -1,10 +1,8 @@
-import React from "react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { I18nextProvider } from "react-i18next";
-
-import i18n from "../../../i18n";
-import { BlogPage, BlogArticlePage } from "@dt/";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../test-utils/render";
+import { BlogPage } from "./BlogPage";
+import { BlogArticlePage } from "./BlogArticlePage";
 
 const samplePosts = [
   {
@@ -47,36 +45,32 @@ describe("Blog pages", () => {
   });
 
   it("lists blog posts with cards", () => {
-    render(
-      <I18nextProvider i18n={i18n}>
-        <BlogPage />
-      </I18nextProvider>,
-    );
+    renderWithProviders(<BlogPage />);
 
-    expect(screen.getByText(/Latest Articles/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Blog/i })).toBeInTheDocument();
     expect(
       screen.getAllByRole("link", { name: /first post|second post/i }),
     ).toHaveLength(2);
   });
 
-  it("renders blog article with metadata, hero and similar reads", () => {
-    render(
-      <I18nextProvider i18n={i18n}>
-        <BlogArticlePage
-          slug="first-post"
-          nav={<div data-testid="nav-slot">NAV</div>}
-          shareBaseUrl="https://example.com"
-        />
-      </I18nextProvider>,
+  it("renders blog article with metadata, hero and related reads", () => {
+    renderWithProviders(
+      <BlogArticlePage
+        slug="first-post"
+        nav={<div data-testid="nav-slot">NAV</div>}
+        shareBaseUrl="https://example.com"
+      />,
     );
 
     expect(screen.getByTestId("nav-slot")).toBeInTheDocument();
-    expect(screen.getByText("First Post")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /First Post/i, level: 1 }),
+    ).toBeInTheDocument();
     expect(screen.getByText("3 min read")).toBeInTheDocument();
     expect(
       screen.getByRole("img", { name: /first post/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Similar Reads/i)).toBeInTheDocument();
+    expect(screen.getByText(/Related Articles/i)).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: /second post/i })).toHaveLength(
       1,
     );

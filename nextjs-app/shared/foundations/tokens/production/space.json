@@ -1,0 +1,124 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "space": {
+    "internal": {
+      "0": {
+        "$value": "0",
+        "$description": "Internal spacing step 0: padding inside components.",
+        "$type": "dimension"
+      },
+      "2": {
+        "$value": "0.125rem",
+        "$description": "Internal spacing step 2: padding inside components.",
+        "$type": "dimension"
+      },
+      "4": {
+        "$value": "0.25rem",
+        "$description": "Internal spacing step 4: padding inside components.",
+        "$type": "dimension"
+      },
+      "6": {
+        "$value": "0.375rem",
+        "$description": "Internal spacing step 6: padding inside components.",
+        "$type": "dimension"
+      },
+      "8": {
+        "$value": "0.5rem",
+        "$description": "Internal spacing step 8: padding inside components.",
+        "$type": "dimension"
+      },
+      "12": {
+        "$value": "0.75rem",
+        "$description": "Internal spacing step 12: padding inside components.",
+        "$type": "dimension"
+      },
+      "16": {
+        "$value": "1rem",
+        "$description": "Internal spacing step 16: padding inside components.",
+        "$type": "dimension"
+      },
+      "24": {
+        "$value": "1.5rem",
+        "$description": "Internal spacing step 24: padding inside components.",
+        "$type": "dimension"
+      },
+      "32": {
+        "$value": "2rem",
+        "$description": "Internal spacing step 32: padding inside components.",
+        "$type": "dimension"
+      }
+    },
+    "layout": {
+      "0": {
+        "$value": "0",
+        "$description": "Layout spacing step 0: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "4": {
+        "$value": "0.25rem",
+        "$description": "Layout spacing step 4: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "6": {
+        "$value": "0.375rem",
+        "$description": "Layout spacing step 6: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "8": {
+        "$value": "0.5rem",
+        "$description": "Layout spacing step 8: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "16": {
+        "$value": "1rem",
+        "$description": "Layout spacing step 16: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "24": {
+        "$value": "1.5rem",
+        "$description": "Layout spacing step 24: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "32": {
+        "$value": "2rem",
+        "$description": "Layout spacing step 32: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "40": {
+        "$value": "2.5rem",
+        "$description": "Layout spacing step 40: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "48": {
+        "$value": "3rem",
+        "$description": "Layout spacing step 48: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "64": {
+        "$value": "4rem",
+        "$description": "Layout spacing step 64: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "80": {
+        "$value": "5rem",
+        "$description": "Layout spacing step 80: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "96": {
+        "$value": "6rem",
+        "$description": "Layout spacing step 96: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "120": {
+        "$value": "7.5rem",
+        "$description": "Layout spacing step 120: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      },
+      "160": {
+        "$value": "10rem",
+        "$description": "Layout spacing step 160: margins, section gaps, grid gutters.",
+        "$type": "dimension"
+      }
+    }
+  }
+}

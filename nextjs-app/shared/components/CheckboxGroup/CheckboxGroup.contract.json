@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "CheckboxGroup",
+  "tier": "molecule",
+  "group": "form",
+  "status": "beta",
+  "description": "Grouped checkboxes with optional master checkbox.",
+  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-checkbox-group",
+  "radixPrimitive": null,
+  "element": "fieldset",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Space",
+      "Tab"
+    ],
+    "ariaRequirements": [
+      "fieldset legend",
+      "group checkbox associations"
+    ],
+    "reducedMotion": true,
+    "reviewed": true,
+    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+    "forcedColorsVerified": true
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": true,
+  "argTypesProxyExempt": [
+    "as",
+    "asChild",
+    "children",
+    "className",
+    "defaultSelected",
+    "id",
+    "label",
+    "masterLabel",
+    "onChange",
+    "options",
+    "ref",
+    "showMasterCheckbox",
+    "style"
+  ],
+  "consumers": []
+}

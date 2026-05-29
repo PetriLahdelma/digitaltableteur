@@ -1,0 +1,60 @@
+/**
+ * WCAG 2.x contrast helpers (shared by CLI + catalog export).
+ */
+
+export function parseHex(hex) {
+  const h = hex.trim().replace(/^#/, "");
+  if (h.length === 3) {
+    return [0, 1, 2].map((i) => parseInt(h[i] + h[i], 16));
+  }
+  if (h.length === 6) {
+    return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+  }
+  return null;
+}
+
+export function parseRgbString(value) {
+  const m = value.match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/);
+  if (!m) return null;
+  return [m[1], m[2], m[3]].map((n) => Math.round(Number(n)));
+}
+
+export function luminanceFromRgb([r, g, b]) {
+  const lin = [r, g, b]
+    .map((c) => c / 255)
+    .map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
+}
+
+export function contrastRatio(fg, bg) {
+  const l1 = luminanceFromRgb(fg);
+  const l2 = luminanceFromRgb(bg);
+  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+}
+
+export function colorToRgb(value) {
+  const v = value.trim();
+  const hex = parseHex(v);
+  if (hex) return hex;
+  const rgb = parseRgbString(v);
+  if (rgb) return rgb;
+  return null;
+}
+
+export function wcagLevel(ratio, largeText = false) {
+  const aa = largeText ? 3 : 4.5;
+  const aaa = largeText ? 4.5 : 7;
+  if (ratio >= aaa) return "AAA";
+  if (ratio >= aa) return "AA";
+  return "Fail";
+}
+
+export const SEMANTIC_CONTRAST_PAIRS = [
+  { id: "text-on-canvas", fg: "--color-text", bg: "--main-body-background-color", label: "Body text on canvas", largeText: false },
+  { id: "title-on-canvas", fg: "--color-title", bg: "--main-body-background-color", label: "Title on canvas", largeText: true },
+  { id: "primary-on-canvas", fg: "--color-primary", bg: "--main-body-background-color", label: "Primary on canvas", largeText: false },
+  { id: "link-on-canvas", fg: "--link-color", bg: "--main-body-background-color", label: "Link on canvas", largeText: false },
+  { id: "error-on-canvas", fg: "--color-error", bg: "--main-body-background-color", label: "Error on canvas", largeText: false },
+  { id: "error-text-on-error-bg", fg: "--color-error-text", bg: "--color-error-bg", label: "Error text on error surface", largeText: false },
+  { id: "warning-text-on-warning", fg: "--color-warning-text", bg: "--color-warning", label: "Warning text on warning", largeText: false },
+];

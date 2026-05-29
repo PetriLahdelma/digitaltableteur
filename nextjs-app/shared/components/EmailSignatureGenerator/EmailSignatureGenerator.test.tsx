@@ -275,7 +275,10 @@ describe("EmailSignatureGenerator", () => {
       render(withI18n(<EmailSignatureGenerator />));
 
       // Find instagram input (has @username or similar placeholder)
-      const instagramInput = screen.getByPlaceholderText(/instagram|@username/i);
+      const instagramInput = document.getElementById(
+        "instagram",
+      ) as HTMLInputElement;
+      expect(instagramInput).toBeTruthy();
       fireEvent.change(instagramInput, { target: { value: "myinsta" } });
 
       const instagramLink = screen.getByRole("link", { name: "Instagram" });

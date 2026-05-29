@@ -18,9 +18,9 @@
 }
 
 .header {
-  max-width: var(--container-lg);
-  margin-inline: auto;
   margin-block-end: var(--space-layout-64);
+  margin-inline: auto;
+  max-width: var(--container-lg);
   text-align: center;
 }
 
@@ -30,27 +30,29 @@
 
 .badges {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-internal-8);
 }
 
 /* Gallery - Mobile: simple stack */
+
 .gallery {
   display: flex;
+  margin-inline: auto;
+  max-width: 500px;
   flex-direction: column;
   gap: var(--space-internal-16);
-  max-width: 500px;
-  margin-inline: auto;
 }
 
 /* Gallery Items */
+
 .galleryItem {
   position: relative;
-  overflow: visible;
   border-radius: var(--radius-m);
   background-color: var(--color-muted-background);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
+  overflow: visible;
 }
 
 .galleryItem > img {
@@ -59,16 +61,16 @@
 
 .galleryItemSharp {
   position: relative;
-  overflow: visible;
   border-radius: 0;
   background-color: var(--color-muted-background);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
+  overflow: visible;
 }
 
 .galleryImage {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
   transition: transform 0.4s ease;
 }
 
@@ -77,8 +79,8 @@
 }
 
 .dragging {
+  box-shadow: 0 20px 60px rgb(0 0 0 / 40%) !important;
   cursor: grabbing !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
 }
 
 .dragging .galleryImage {
@@ -86,13 +88,14 @@
 }
 
 /* Handles - hidden by default */
+
 .handle {
   position: absolute;
-  opacity: 0;
+  z-index: 10;
   transition:
     opacity 0.2s ease,
     transform 0.15s ease;
-  z-index: 10;
+  opacity: 0;
 }
 
 .galleryItem:hover .handle,
@@ -101,39 +104,42 @@
 }
 
 /* Resize handles - corners with diagonal resize indicator */
+
 .handleNW,
 .handleNE,
 .handleSW,
 .handleSE {
+  display: flex;
   width: 24px;
   height: 24px;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 70%);
 }
 
 /* Diagonal double-arrow icons via content */
+
 .handleNW::before,
 .handleSE::before {
-  content: "⤡";
-  color: white;
   font-size: 1rem;
   font-weight: bold;
   line-height: 1;
+  color: white;
+  content: "⤡";
 }
 
 .handleNE::before,
 .handleSW::before {
-  content: "⤢";
-  color: white;
   font-size: 1rem;
   font-weight: bold;
   line-height: 1;
+  color: white;
+  content: "⤢";
 }
 
 /* Corner positions set via inline style for counter-scaling */
+
 .handleNW {
   cursor: nwse-resize;
 }
@@ -151,33 +157,36 @@
 }
 
 /* Rotate handles - edge midpoints with curved arrow */
+
 .handleRotateN,
 .handleRotateE,
 .handleRotateS,
 .handleRotateW {
+  display: flex;
   width: 28px;
   height: 28px;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 50%;
-  cursor: grab;
-  display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 70%);
+  cursor: grab;
 }
 
 /* Curved rotation arrow icon */
+
 .handleRotateN::before,
 .handleRotateE::before,
 .handleRotateS::before,
 .handleRotateW::before {
-  content: "↻";
-  color: white;
   font-size: 1rem;
   font-weight: bold;
   line-height: 1;
+  color: white;
+  content: "↻";
 }
 
 /* Edge positions set via inline style for counter-scaling */
+
 .handleRotateN {
   left: 50%;
 }
@@ -195,25 +204,26 @@
 }
 
 /* Hover effects - only change background, counter-scale is handled via inline styles */
+
 .handleNW:hover,
 .handleNE:hover,
 .handleSW:hover,
 .handleSE:hover {
-  background: rgba(59, 130, 246, 0.9);
+  background: rgb(59 130 246 / 90%);
 }
 
 .handleRotateN:hover,
 .handleRotateE:hover,
 .handleRotateS:hover,
 .handleRotateW:hover {
-  background: rgba(59, 130, 246, 0.9);
+  background: rgb(59 130 246 / 90%);
 }
 
 .dragHint {
   font-size: 0.875rem;
   color: var(--color-text-muted);
-  margin-top: var(--space-internal-8);
   opacity: 0.7;
+  margin-top: var(--space-internal-8);
 }
 
 @media (width < 900px) {
@@ -222,6 +232,7 @@
   }
 
   /* Hide handles on mobile */
+
   .handle {
     display: none;
   }
@@ -231,9 +242,9 @@
 @media (width >= 900px) {
   .gallery {
     position: relative;
+    margin-inline: auto;
     max-width: 1400px;
     height: 3500px;
-    margin-inline: auto;
   }
 
   .galleryItem,
@@ -246,162 +257,183 @@
 
   .galleryItem:hover,
   .galleryItemSharp:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 40px rgb(0 0 0 / 30%);
   }
 
   /* A: Hero top-left */
+
   .areaA {
-    width: 580px;
     top: 0;
     left: 0;
+    width: 580px;
   }
 
   /* B: Tiny, tucked top-right corner */
+
   .areaB {
-    width: 220px;
     top: 20px;
     right: 180px;
+    width: 220px;
   }
 
   /* C: Medium, overlapping A bottom-right */
+
   .areaC {
-    width: 340px;
     top: 280px;
     left: 480px;
     z-index: 2;
+    width: 340px;
   }
 
   /* D: Small, floating right - rotated */
+
   .areaD {
-    width: 200px;
     top: 120px;
     right: 40px;
+    width: 200px;
     transform: rotate(5deg);
   }
 
   /* E: Large landscape, row 2 left */
+
   .areaE {
-    width: 520px;
     top: 520px;
     left: 60px;
+    width: 520px;
   }
 
   /* F: Small, nestled between */
+
   .areaF {
-    width: 180px;
     top: 480px;
     left: 620px;
     z-index: 3;
+    width: 180px;
   }
 
   /* G: Large, right side row 2 */
+
   .areaG {
-    width: 480px;
     top: 620px;
     right: 20px;
+    width: 480px;
   }
 
   /* H: Tiny accent - rotated */
+
   .areaH {
-    width: 200px;
     top: 820px;
     left: 320px;
-    transform: rotate(10deg);
     z-index: 4;
+    width: 200px;
+    transform: rotate(10deg);
   }
 
   /* I: Hero center */
+
   .areaI {
-    width: 600px;
     top: 980px;
     left: 50%;
+    width: 600px;
     transform: translateX(-50%);
   }
 
   /* J: Medium left */
+
   .areaJ {
-    width: 300px;
     top: 1050px;
     left: 40px;
+    width: 300px;
   }
 
   /* K: Large right, overlapping */
+
   .areaK {
-    width: 500px;
     top: 1380px;
     right: 80px;
+    width: 500px;
   }
 
   /* L: Tiny floating - rotated */
+
   .areaL {
-    width: 200px;
     top: 1320px;
     left: 180px;
-    transform: rotate(15deg);
     z-index: 5;
+    width: 200px;
+    transform: rotate(15deg);
   }
 
   /* M: Large left */
+
   .areaM {
-    width: 460px;
     top: 1680px;
     left: 20px;
+    width: 460px;
   }
 
   /* N: Medium center-right */
+
   .areaN {
-    width: 320px;
     top: 1780px;
     left: 520px;
     z-index: 2;
+    width: 320px;
   }
 
   /* O: Large right */
+
   .areaO {
-    width: 440px;
     top: 1900px;
     right: 60px;
+    width: 440px;
   }
 
   /* P: Small scattered */
+
   .areaP {
-    width: 190px;
     top: 2200px;
     left: 100px;
+    width: 190px;
   }
 
   /* Q: Hero bottom */
+
   .areaQ {
-    width: 580px;
     top: 2400px;
     left: 280px;
+    width: 580px;
   }
 
   /* R: Tiny - rotated */
+
   .areaR {
-    width: 200px;
     top: 2350px;
     right: 200px;
-    transform: rotate(20deg);
     z-index: 6;
+    width: 200px;
+    transform: rotate(20deg);
   }
 
   /* S: Large bottom-right */
+
   .areaS {
-    width: 420px;
     top: 2650px;
     right: 40px;
+    width: 420px;
   }
 
   /* T: Medium bottom-left */
+
   .areaT {
-    width: 350px;
     top: 2850px;
     left: 60px;
+    width: 350px;
   }
 }
 
 /* Legacy styles below - kept for compatibility */
+
 .caseStudy {
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
@@ -489,6 +521,7 @@
   max-width: 1920px;
 }
 
+/* stylelint-disable-next-line no-duplicate-selectors -- intentional override of mobile .gallery in line 40 for desktop layout. TODO: refactor into one .gallery with proper @media. */
 .gallery {
   display: flex;
   width: 100%;

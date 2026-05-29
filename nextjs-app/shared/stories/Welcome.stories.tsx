@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@dt/ThemeProvider";
 import styles from "./Welcome.module.css";
@@ -48,15 +48,11 @@ const meta: Meta<typeof WelcomeContent> = {
   title: "Overview/Welcome",
   component: WelcomeContent,
   tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
+  parameters: { layout: "fullscreen" },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof WelcomeContent>;
 
-export const Welcome: Story = {
-  render: () => <WelcomeContent />,
-};
+export const Welcome: Story = { render: () => <WelcomeContent /> };

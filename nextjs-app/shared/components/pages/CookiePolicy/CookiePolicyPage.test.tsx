@@ -1,21 +1,21 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { renderWithProviders } from "../../../../../test-utils/render";
 import { CookiePolicyPage } from "./CookiePolicyPage";
 
 describe("CookiePolicyPage", () => {
   it("renders page title", () => {
-    render(<CookiePolicyPage />);
-    expect(screen.getByText(/cookie/i)).toBeInTheDocument();
+    renderWithProviders(<CookiePolicyPage />);
+    expect(screen.getByText(/Cookie policy/i)).toBeInTheDocument();
   });
 
   it("renders cookie policy content", () => {
-    render(<CookiePolicyPage />);
-    expect(screen.getByText(/policy|cookies/i)).toBeInTheDocument();
+    renderWithProviders(<CookiePolicyPage />);
+    expect(screen.getByText(/cookies to remember your preferences/i)).toBeInTheDocument();
   });
 
-  it("renders language-specific links", () => {
-    render(<CookiePolicyPage />);
-    const links = screen.getAllByRole("link");
-    expect(links.length).toBeGreaterThan(0);
+  it("renders AI policy link", () => {
+    renderWithProviders(<CookiePolicyPage />);
+    expect(screen.getByRole("link", { name: /AI/i })).toBeInTheDocument();
   });
 });

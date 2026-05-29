@@ -12,7 +12,7 @@ export interface GalleryImage {
   fallbackSrcSet?: string;
 }
 
-interface GalleryProps {
+export interface GalleryProps {
   images: GalleryImage[];
   minColumnWidth?: number;
   gutter?: number;
@@ -30,6 +30,9 @@ const computeResponsiveSizes = (columnCount: number, gap: number) => {
   ].join(", ");
 };
 
+/**
+ * Responsive image gallery grid with click-to-expand lightbox.
+ */
 const Gallery: React.FC<GalleryProps> = ({
   images,
   minColumnWidth = 320,
