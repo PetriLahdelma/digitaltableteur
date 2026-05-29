@@ -119,10 +119,23 @@ async function manifestIsUpToDate() {
     ]);
     if (outStat.mtimeMs < scriptStat.mtimeMs) return false;
 
+    const currentFiles = (await Promise.all(sourceDirs.map(collectMdxFiles)))
+      .flat()
+      .sort((a, b) => a.slug.localeCompare(b.slug));
+    const currentSlugs = currentFiles.map(({ slug }) => slug).join("\0");
+    const existingContent = await fs.readFile(outFile, "utf8");
+    const existingSlugs = [...existingContent.matchAll(/slug: "([^"]+)"/g)]
+      .map((match) => match[1])
+      .sort()
+      .join("\0");
+    if (currentSlugs !== existingSlugs) return false;
+
     let newestContentMtime = 0;
     const walkMtime = async (dir) => {
       let entries;
       try {
+        const dirStat = await fs.stat(dir);
+        newestContentMtime = Math.max(newestContentMtime, dirStat.mtimeMs);
         entries = await fs.readdir(dir, { withFileTypes: true });
       } catch (error) {
         if (error?.code === "ENOENT") return;

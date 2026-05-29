@@ -11,7 +11,7 @@
     "analyze": "ANALYZE=true next build",
     "postinstall": "node scripts/install-playwright-browsers.mjs",
     "postbuild": "node scripts/ensure-no-static-sitemap.mjs",
-    "predev": "node scripts/ensure-stale-dev-killed.mjs && node scripts/ensure-dev-next-cache.mjs",
+    "predev": "node scripts/ensure-stale-dev-killed.mjs && node scripts/ensure-dev-next-cache.mjs && npm run generate:blog",
     "prebuild": "npm run generate:blog && node scripts/generate-codeblock-fixtures.mjs && node scripts/ensure-no-static-sitemap.mjs",
     "generate:blog": "node scripts/generate-blog-manifest.mjs && tsx scripts/update-post-metadata.ts",
     "vercel-build": "npm run build",
