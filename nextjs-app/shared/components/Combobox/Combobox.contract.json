@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Combobox",
+  "tier": "molecule",
+  "group": "form",
+  "status": "alpha",
+  "description": "Single-select combobox with portaled dropdown, shared with MultiCombobox.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "button",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default"],
+  "a11y": {
+    "keyboard": ["Tab", "Enter", "Space", "Escape", "ArrowDown", "ArrowUp"],
+    "ariaRequirements": ["combobox", "listbox", "option aria-selected"],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": ["className", "id", "options"],
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.tsx",
+      "since": "2026-05-28"
+    }
+  ]
+}

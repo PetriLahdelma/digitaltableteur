@@ -1,4 +1,6 @@
 import React, { useEffect, useId, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
+import fieldStyles from "../Combobox/ComboboxField.module.css";
 import styles from "./FileUpload.module.css";
 import Inputs from "@dt/Inputs";
 import Button from "@dt/Button";
@@ -18,6 +20,9 @@ export interface FileUploadProps {
   onFileChange?: (file: File | null) => void;
   disabled?: boolean;
   required?: boolean;
+  /** Match FormFieldEditorial / Combobox styling on editorial forms. */
+  appearance?: "default" | "editorial";
+  className?: string;
 }
 
 const formatFileSummary = (file: File | null) => {
@@ -45,17 +50,27 @@ const FileUpload: React.FC<FileUploadProps> = ({
   onFileChange,
   disabled = false,
   required = false,
+  appearance = "default",
+  className,
 }) => {
   const hiddenInputRef = useRef<HTMLInputElement>(null);
+  const fieldId = useId();
   const helperId = useId();
   const [selectedFile, setSelectedFile] = useState<File | null>(value);
   const [internalError, setInternalError] = useState("");
+  const isEditorial = appearance === "editorial";
 
   useEffect(() => {
     setSelectedFile(value ?? null);
   }, [value]);
 
   const displayError = error || internalError;
+  const fileSummary = formatFileSummary(selectedFile);
+  const helperTextId = helperText ? `${helperId}-helper` : undefined;
+  const errorId = `${fieldId}-error`;
+  const describedBy = [displayError ? errorId : null, helperTextId]
+    .filter(Boolean)
+    .join(" ");
 
   const handleBrowseClick = () => {
     if (disabled) return;
@@ -95,26 +110,107 @@ const FileUpload: React.FC<FileUploadProps> = ({
     onFileChange?.(null);
   };
 
-  const helperTextId = helperText ? `${helperId}-helper` : undefined;
+  const hiddenInput = (
+    <input
+      ref={hiddenInputRef}
+      type="file"
+      className={styles.hiddenInput}
+      onChange={handleFileSelection}
+      accept={accept}
+      tabIndex={-1}
+      aria-hidden="true"
+      disabled={disabled}
+    />
+  );
+
+  const helper = displayError ? (
+    <HelperText id={errorId} state="error">
+      {displayError}
+    </HelperText>
+  ) : (
+    helperText && <HelperText id={helperTextId}>{helperText}</HelperText>
+  );
+
+  if (isEditorial) {
+    return (
+      <div className={cn(fieldStyles.field, styles.editorial, className)}>
+        {hiddenInput}
+        <label id={`${fieldId}-label`} htmlFor={fieldId} className={fieldStyles.label}>
+          {label}
+          {required && (
+            <>
+              <span className={fieldStyles.required} aria-hidden="true">
+                *
+              </span>
+              <span className="sr-only"> (required)</span>
+            </>
+          )}
+        </label>
+
+        <div
+          className={cn(
+            fieldStyles.control,
+            displayError && fieldStyles.controlError,
+            disabled && fieldStyles.disabled,
+          )}
+        >
+          <button
+            id={fieldId}
+            type="button"
+            className={fieldStyles.trigger}
+            disabled={disabled}
+            aria-labelledby={`${fieldId}-label`}
+            aria-describedby={describedBy || undefined}
+            aria-invalid={displayError ? true : undefined}
+            aria-required={required || undefined}
+            onClick={handleBrowseClick}
+          >
+            <span
+              className={cn(
+                fieldStyles.triggerLabel,
+                !fileSummary && placeholder && fieldStyles.triggerPlaceholder,
+              )}
+            >
+              {fileSummary || placeholder}
+            </span>
+          </button>
+        </div>
+
+        <div className={styles.editorialActions}>
+          <button
+            type="button"
+            className={styles.editorialBrowseButton}
+            disabled={disabled}
+            onClick={handleBrowseClick}
+          >
+            {uploadButtonLabel}
+          </button>
+          {selectedFile && clearButtonLabel ? (
+            <button
+              type="button"
+              className={styles.editorialClearButton}
+              disabled={disabled}
+              onClick={handleClear}
+            >
+              {clearButtonLabel}
+            </button>
+          ) : null}
+        </div>
+
+        {helper}
+      </div>
+    );
+  }
 
   return (
-    <div className={styles.container}>
-      <input
-        ref={hiddenInputRef}
-        type="file"
-        className={styles.hiddenInput}
-        onChange={handleFileSelection}
-        accept={accept}
-        tabIndex={-1}
-        aria-hidden="true"
-        disabled={disabled}
-      />
+    <div className={cn(styles.container, className)}>
+      {hiddenInput}
       <div className={styles.displayField}>
         <Inputs
           label={label}
           type="text"
           placeholder={placeholder}
-          value={formatFileSummary(selectedFile)}
+          value={fileSummary}
           readOnly
           error={displayError ? "" : undefined}
           aria-describedby={helperTextId}
@@ -145,11 +241,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
           </Button>
         ) : null}
       </div>
-      {displayError ? (
-        <HelperText state="error">{displayError}</HelperText>
-      ) : (
-        helperText && <HelperText id={helperTextId}>{helperText}</HelperText>
-      )}
+      {helper}
     </div>
   );
 };
