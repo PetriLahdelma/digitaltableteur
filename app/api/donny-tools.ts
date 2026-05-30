@@ -8,7 +8,7 @@ import {
   isOpenAt,
   type DayHours,
 } from "@/nextjs-app/shared/data/openHours";
-import { sortedProjects } from "@/nextjs-app/shared/data/projects";
+import { sortedProjects, resolveProjectNavigationPath } from "@/nextjs-app/shared/data/projects";
 
 // ToolSet type matches ai package's expected tool shape
 type ToolMap = Record<string, Tool<any, any>>;
@@ -363,7 +363,7 @@ const staticTools: ToolMap = {
 
   "studio.navigateTo": tool({
     description:
-      "Navigate the user to a specific page or scroll to a section on the current page. Use when the user wants to see a specific page, project, or section. This is a client-side tool — it will be executed in the user's browser.",
+      "Navigate the user to a specific page or project case study. Accepts internal paths (/work, /work/{slug}, /contact) OR project names/slugs (e.g. 'SAP Build Apps', 'vertaaux', 'helsinki'). Use when the user asks to navigate, open, go to, or show me a page or project.",
     inputSchema: jsonSchema<{
       destination: string;
       section?: string;
@@ -375,7 +375,7 @@ const staticTools: ToolMap = {
         destination: {
           type: "string",
           description:
-            "URL path to navigate to, e.g. '/work', '/work/vertaaux', '/contact', '/about'.",
+            "Internal path (/work/vertaaux) or project name/slug (vertaaux, SAP Build Apps, Helsinki Design System).",
         },
         section: {
           type: "string",
@@ -400,12 +400,22 @@ const staticTools: ToolMap = {
       additionalProperties: false,
     }),
     async execute(input) {
-      const dest = input?.destination ?? "/";
+      const raw = (input?.destination ?? "/").trim();
+      let dest = raw;
+
+      if (!raw.startsWith("/")) {
+        const resolved = resolveProjectNavigationPath(raw);
+        if (resolved) {
+          dest = resolved;
+        }
+      }
+
       // Enforce internal paths only — reject protocols, double slashes, or external URLs
-      const isInternal = dest.startsWith("/") && !dest.startsWith("//") && !/^\/.*:/.test(dest);
-      const safePath = isInternal ? dest : "/";
+      const isInternal =
+        dest.startsWith("/") && !dest.startsWith("//") && !/^\/.*:/.test(dest);
+      const safePath = isInternal ? dest.split("#")[0] : "/";
       const url = input?.section ? `${safePath}#${input.section}` : safePath;
-      return { navigated: isInternal, url };
+      return { navigated: isInternal && safePath !== "/", url };
     },
   }),
 

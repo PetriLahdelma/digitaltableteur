@@ -415,3 +415,74 @@ export function validateDonnySiteRegistry(): string[] {
 
   return errors;
 }
+
+const NAVIGATION_HASH_TARGETS: Record<string, DonnyTargetId> = {
+  services: "home.services",
+  "design-sprints": "home.designSprints",
+  "design-sprint": "home.designSprints",
+  "contact-cta": "home.contactCta",
+  "contact-form": "contact.form",
+  "pricing-packages-title": "pricing.packages",
+  packages: "pricing.packages",
+  comparison: "pricing.comparison",
+};
+
+const ROUTE_DEFAULT_TARGETS: Partial<Record<string, DonnyTargetId>> = {
+  "/": "home.services",
+  "/pricing": "pricing.packages",
+  "/work": "work.index",
+  "/contact": "contact.form",
+};
+
+function normalizeNavigationPath(route: string): string {
+  return route.split("?")[0]?.split("#")[0] ?? route;
+}
+
+/** Map studio.navigateTo URLs to registry targets for client navigation. */
+export function resolveDonnyTargetFromNavigationUrl(
+  url: string,
+): { targetId: DonnyTargetId; route: string } | null {
+  const trimmed = url.trim();
+  if (!trimmed.startsWith("/") || trimmed.startsWith("//")) {
+    return null;
+  }
+
+  const hashIndex = trimmed.indexOf("#");
+  const pathPart = hashIndex >= 0 ? trimmed.slice(0, hashIndex) : trimmed;
+  const hash =
+    hashIndex >= 0 ? trimmed.slice(hashIndex + 1).trim().toLowerCase() : "";
+  const path = normalizeNavigationPath(pathPart || "/");
+
+  if (hash && NAVIGATION_HASH_TARGETS[hash]) {
+    return { targetId: NAVIGATION_HASH_TARGETS[hash], route: path };
+  }
+
+  const workMatch = path.match(/^\/work\/([^/]+)$/);
+  if (workMatch?.[1]) {
+    const targetId = getDonnyProjectTargetId(workMatch[1], "root");
+    if (targetId) {
+      return { targetId, route: path };
+    }
+  }
+
+  const routeDefault = ROUTE_DEFAULT_TARGETS[path];
+  if (routeDefault) {
+    return { targetId: routeDefault, route: path };
+  }
+
+  const onRoute = getDonnyTargetsByRoute(path);
+  if (onRoute.length === 1) {
+    return { targetId: onRoute[0].id, route: path };
+  }
+
+  if (onRoute.length > 1) {
+    const sectionTarget = onRoute.find(
+      (entry) => !entry.packageId && !entry.projectSlug,
+    );
+    if (sectionTarget) {
+      return { targetId: sectionTarget.id, route: path };
+    }
+  }
+
+  return null;
+}

@@ -453,3 +453,7 @@ export function useDonnyActions(): DonnyActionsContextValue {
   }
   return context;
 }
+
+export function useOptionalDonnyActions(): DonnyActionsContextValue | null {
+  return useContext(DonnyActionsContext);
+}

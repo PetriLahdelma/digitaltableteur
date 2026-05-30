@@ -12,6 +12,7 @@ import {
   isDonnyTargetId,
   isSafeDonnyRoute,
   isStaticDonnySelector,
+  resolveDonnyTargetFromNavigationUrl,
   validateDonnySiteRegistry,
   type DonnyTargetId,
 } from "./donny-site-actions";
@@ -112,5 +113,20 @@ describe("donny-site-actions", () => {
       "work.project.sapBuildApps.proof",
     );
     expect(getDonnyProjectTargetId("unknown-project")).toBeUndefined();
+  });
+
+  it("maps navigateTo URLs to registry targets", () => {
+    expect(resolveDonnyTargetFromNavigationUrl("/work")?.targetId).toBe(
+      "work.index",
+    );
+    expect(resolveDonnyTargetFromNavigationUrl("/pricing")?.targetId).toBe(
+      "pricing.packages",
+    );
+    expect(
+      resolveDonnyTargetFromNavigationUrl("/work/sap-build-apps")?.targetId,
+    ).toBe("work.project.sapBuildApps");
+    expect(
+      resolveDonnyTargetFromNavigationUrl("/#services")?.targetId,
+    ).toBe("home.services");
   });
 });

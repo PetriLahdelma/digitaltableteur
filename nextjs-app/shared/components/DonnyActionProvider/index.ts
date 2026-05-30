@@ -1,4 +1,4 @@
-export { DonnyActionProvider, useDonnyActions } from "./DonnyActionProvider";
+export { DonnyActionProvider, useDonnyActions, useOptionalDonnyActions } from "./DonnyActionProvider";
 export type {
   CapturePageContextOutput,
   PrefillContactIntentInput,

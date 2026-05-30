@@ -39,7 +39,7 @@ export function DonnyActionProvider({ children }: DonnyActionProviderProps) {
   );
 }
 
-export { useDonnyActions } from "./useDonnyActions";
+export { useDonnyActions, useOptionalDonnyActions } from "./useDonnyActions";
 export type {
   CapturePageContextOutput,
   PrefillContactIntentInput,
