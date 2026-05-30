@@ -117,6 +117,8 @@ const nextConfig: NextConfig = {
     "@sentry/profiling-node",
     "require-in-the-middle",
     "import-in-the-middle",
+    "@modelcontextprotocol/sdk",
+    "mcp-handler",
   ],
   // Image optimization configuration
   images: {

@@ -1,47 +1,26 @@
 import {
-  getAudiences,
-  getCaseStudies,
-  getCaseStudyBySlug,
-  getConsultingPackages,
-  getExpertiseStacks,
-  getHourlyRate,
-  getOpenHoursSummary,
-  getServices,
-  mapProblemToService,
-} from "@/nextjs-app/shared/data/consulting-catalog";
+  CONSULTING_TOOL_NAMES,
+  executeGetCaseStudy,
+  executeGetConsultingFit,
+  executeGetHourlyRate,
+  executeGetOpenHours,
+  executeListAudiences,
+  executeListCaseStudies,
+  executeListExpertiseStacks,
+  executeListPricingPackages,
+  executeListServices,
+} from "@/nextjs-app/shared/lib/consulting-tools/executors";
 
 import type {
   WebMcpModelContext,
   WebMcpToolDefinition,
-  WebMcpToolResult,
 } from "./types";
 
 const READ_ONLY = { readOnlyHint: true } as const;
 
-function jsonResult(data: unknown): WebMcpToolResult {
-  return {
-    content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
-  };
-}
+export const CONSULTING_WEBMCP_TOOL_NAMES = CONSULTING_TOOL_NAMES;
 
-function textResult(text: string): WebMcpToolResult {
-  return { content: [{ type: "text", text }] };
-}
-
-export const CONSULTING_WEBMCP_TOOL_NAMES = [
-  "list_case_studies",
-  "get_case_study",
-  "list_pricing_packages",
-  "get_hourly_rate",
-  "list_services",
-  "list_expertise_stacks",
-  "list_audiences",
-  "get_open_hours",
-  "get_consulting_fit",
-] as const;
-
-export type ConsultingWebMcpToolName =
-  (typeof CONSULTING_WEBMCP_TOOL_NAMES)[number];
+export type ConsultingWebMcpToolName = (typeof CONSULTING_WEBMCP_TOOL_NAMES)[number];
 
 export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
   return [
@@ -59,10 +38,10 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
         },
       },
       annotations: READ_ONLY,
-      execute: (args) => {
-        const featuredOnly = Boolean(args?.featuredOnly);
-        return jsonResult(getCaseStudies({ featuredOnly }));
-      },
+      execute: (args) =>
+        executeListCaseStudies({
+          featuredOnly: Boolean(args?.featuredOnly),
+        }),
     },
     {
       name: "get_case_study",
@@ -76,17 +55,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
         required: ["slug"],
       },
       annotations: READ_ONLY,
-      execute: (args) => {
-        const slug = String(args?.slug ?? "").trim();
-        if (!slug) {
-          return textResult("Error: slug is required.");
-        }
-        const study = getCaseStudyBySlug(slug);
-        if (!study) {
-          return textResult(`No case study found for slug: ${slug}`);
-        }
-        return jsonResult(study);
-      },
+      execute: (args) => executeGetCaseStudy({ slug: String(args?.slug ?? "") }),
     },
     {
       name: "list_pricing_packages",
@@ -94,7 +63,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
         "List fixed consulting packages with EUR price ranges and duration (preferred over hourly for defined outcomes).",
       inputSchema: { type: "object", properties: {} },
       annotations: READ_ONLY,
-      execute: () => jsonResult(getConsultingPackages()),
+      execute: () => executeListPricingPackages(),
     },
     {
       name: "get_hourly_rate",
@@ -102,7 +71,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
         "Get typical and range hourly consulting rates in EUR (€90/h typical, €90–150/h depending on scope).",
       inputSchema: { type: "object", properties: {} },
       annotations: READ_ONLY,
-      execute: () => jsonResult(getHourlyRate()),
+      execute: () => executeGetHourlyRate(),
     },
     {
       name: "list_services",
@@ -110,7 +79,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
         "List core consulting services (design system audit, component library, tokens, AI DesignOps).",
       inputSchema: { type: "object", properties: {} },
       annotations: READ_ONLY,
-      execute: () => jsonResult(getServices()),
+      execute: () => executeListServices(),
     },
     {
       name: "list_expertise_stacks",
@@ -118,7 +87,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
         "List technology and practice areas (React, Next.js, Storybook, Figma, TypeScript, etc.).",
       inputSchema: { type: "object", properties: {} },
       annotations: READ_ONLY,
-      execute: () => jsonResult(getExpertiseStacks()),
+      execute: () => executeListExpertiseStacks(),
     },
     {
       name: "list_audiences",
@@ -126,7 +95,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
         "List client audiences Digitaltableteur serves (startups, scaleups, enterprise, etc.).",
       inputSchema: { type: "object", properties: {} },
       annotations: READ_ONLY,
-      execute: () => jsonResult(getAudiences()),
+      execute: () => executeListAudiences(),
     },
     {
       name: "get_open_hours",
@@ -134,7 +103,7 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
         "Get Digitaltableteur office hours in Europe/Helsinki timezone.",
       inputSchema: { type: "object", properties: {} },
       annotations: READ_ONLY,
-      execute: () => jsonResult(getOpenHoursSummary()),
+      execute: () => executeGetOpenHours(),
     },
     {
       name: "get_consulting_fit",
@@ -151,13 +120,8 @@ export function buildConsultingWebMcpTools(): WebMcpToolDefinition[] {
         required: ["problem"],
       },
       annotations: READ_ONLY,
-      execute: (args) => {
-        const problem = String(args?.problem ?? "").trim();
-        if (!problem) {
-          return textResult("Error: problem is required.");
-        }
-        return jsonResult(mapProblemToService(problem));
-      },
+      execute: (args) =>
+        executeGetConsultingFit({ problem: String(args?.problem ?? "") }),
     },
   ];
 }
