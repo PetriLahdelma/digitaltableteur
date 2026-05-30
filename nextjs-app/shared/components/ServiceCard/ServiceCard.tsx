@@ -19,6 +19,8 @@ export interface ServiceCardProps {
   iconPosition?: "top" | "left";
   /** Custom className */
   className?: string;
+  /** Donny site action target id when this card is a spotlight anchor */
+  donnyTarget?: string;
 }
 
 const variantClasses: Record<NonNullable<ServiceCardProps["variant"]>, string> = {
@@ -46,6 +48,7 @@ export function ServiceCard({
   variant = "default",
   iconPosition = "top",
   className,
+  donnyTarget,
 }: ServiceCardProps) {
   const cardContent = (
     <>
@@ -84,13 +87,22 @@ export function ServiceCard({
 
   if (href) {
     return (
-      <Link href={href} className={baseClasses} data-donny-interest="service">
+      <Link
+        href={href}
+        className={baseClasses}
+        data-donny-interest="service"
+        data-donny-target={donnyTarget}
+      >
         {cardContent}
       </Link>
     );
   }
 
-  return <div className={baseClasses}>{cardContent}</div>;
+  return (
+    <div className={baseClasses} data-donny-target={donnyTarget}>
+      {cardContent}
+    </div>
+  );
 }
 
 ServiceCard.displayName = "ServiceCard";

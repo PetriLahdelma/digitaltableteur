@@ -113,32 +113,75 @@ export const extractCopy = (message: UIMessage): string => {
 const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
   if (!Array.isArray(message.parts)) return [];
   const parts: ProcessedPart[] = [];
-  for (const part of message.parts) {
-    if (part.type !== "tool-invocation") continue;
-    const inv = part as unknown as {
-      toolInvocation?: {
-        toolName?: string;
-        state?: string;
-        result?: Record<string, unknown>;
-      };
-    };
-    const ti = inv.toolInvocation;
-    if (!ti || ti.state !== "result" || !ti.result) continue;
 
-    if (ti.toolName === "studio.navigateTo") {
-      const result = ti.result as { navigated?: boolean; url?: string };
-      if (result.url) {
-        parts.push({
-          kind: "component",
-          name: "NavigateLink",
-          props: { url: result.url, label: result.url },
-        });
+  const pushNavigateLink = (url: string, label?: string) => {
+    parts.push({
+      kind: "component",
+      name: "NavigateLink",
+      props: { url, label: label || url },
+    });
+  };
+
+  for (const part of message.parts) {
+    if (part.type === "tool-invocation") {
+      const inv = part as unknown as {
+        toolInvocation?: {
+          toolName?: string;
+          state?: string;
+          result?: Record<string, unknown>;
+        };
+      };
+      const ti = inv.toolInvocation;
+      if (!ti || ti.state !== "result" || !ti.result) continue;
+
+      if (ti.toolName === "studio.navigateTo") {
+        const result = ti.result as { navigated?: boolean; url?: string };
+        if (result.url) {
+          pushNavigateLink(result.url);
+        }
       }
+
+      if (ti.toolName === "studio.projectShowcase") {
+        const result = ti.result as { projects?: ProjectCardData[] };
+        if (result.projects && result.projects.length > 0) {
+          parts.push({
+            kind: "component",
+            name: "ProjectCards",
+            props: { projects: result.projects },
+          });
+        }
+      }
+      continue;
     }
 
-    if (ti.toolName === "studio.projectShowcase") {
-      const result = ti.result as { projects?: ProjectCardData[] };
-      if (result.projects && result.projects.length > 0) {
+    const typed = part as {
+      type?: string;
+      toolName?: string;
+      state?: string;
+      output?: unknown;
+      input?: { label?: string };
+    };
+
+    const isNavigatePart =
+      typed.type === "tool-studio.navigateTo" ||
+      (typed.type === "dynamic-tool" && typed.toolName === "studio.navigateTo");
+
+    if (isNavigatePart && typed.state === "output-available") {
+      const result = typed.output as { url?: string; label?: string } | undefined;
+      if (result?.url) {
+        pushNavigateLink(result.url, typed.input?.label);
+      }
+      continue;
+    }
+
+    const isProjectPart =
+      typed.type === "tool-studio.projectShowcase" ||
+      (typed.type === "dynamic-tool" &&
+        typed.toolName === "studio.projectShowcase");
+
+    if (isProjectPart && typed.state === "output-available") {
+      const result = typed.output as { projects?: ProjectCardData[] } | undefined;
+      if (result?.projects && result.projects.length > 0) {
         parts.push({
           kind: "component",
           name: "ProjectCards",

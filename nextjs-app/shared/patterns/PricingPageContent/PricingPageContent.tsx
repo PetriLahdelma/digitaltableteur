@@ -54,6 +54,7 @@ type PackageItem = {
   durationDefault: string;
   descriptionKey: string;
   descriptionDefault: string;
+  donnyTarget: string;
 };
 
 const PACKAGES: PackageItem[] = [
@@ -67,6 +68,7 @@ const PACKAGES: PackageItem[] = [
     descriptionKey: "pricingPackage3Description",
     descriptionDefault:
       "Prototype, eval plan and handoff your team can ship.",
+    donnyTarget: "pricing.package.uxSprint",
   },
   {
     titleKey: "pricingPackage2Title",
@@ -78,6 +80,7 @@ const PACKAGES: PackageItem[] = [
     descriptionKey: "pricingPackage2Description",
     descriptionDefault:
       "Design workflow setup, component governance, AI tooling hooks and a DesignOps playbook your team can run.",
+    donnyTarget: "pricing.package.aiReadyDesignOps",
   },
   {
     titleKey: "pricingPackage1Title",
@@ -89,6 +92,7 @@ const PACKAGES: PackageItem[] = [
     descriptionKey: "pricingPackage1Description",
     descriptionDefault:
       "Audit, tokens, core components, Storybook and an adoption playbook.",
+    donnyTarget: "pricing.package.designSystemLiftOff",
   },
 ];
 
@@ -196,6 +200,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
       <div className={styles.container}>
         <section
           className={styles.value}
+          data-donny-target="pricing.comparison"
           aria-label={`${t("pricingComparisonUsTitle", "Digitaltableteur")} / ${t("pricingComparisonThemTitle", "Traditional agency")}`}
         >
           <div className={styles.comparisonGrid}>
@@ -251,7 +256,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
           )}
         </Title>
 
-        <div className={styles.packagesSection}>
+        <div className={styles.packagesSection} data-donny-target="pricing.packages">
           <Title
             level={3}
             size="S"
@@ -268,7 +273,11 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
             aria-labelledby="pricing-packages-title"
           >
           {PACKAGES.map((pkg) => (
-            <li key={pkg.titleKey} className={styles.packageCard}>
+            <li
+              key={pkg.titleKey}
+              className={styles.packageCard}
+              data-donny-target={pkg.donnyTarget}
+            >
               <div className={styles.packageHeader}>
                 <Title level={3} size="S" terminals="sans">
                   {t(pkg.titleKey, pkg.titleDefault)}

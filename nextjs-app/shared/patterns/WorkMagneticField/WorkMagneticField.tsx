@@ -23,6 +23,8 @@ export interface WorkMagneticFieldProps {
   className?: string;
   /** Section ID for navigation */
   id?: string;
+  /** Donny site action target id */
+  donnyTarget?: string;
 }
 
 /** Maximum pixel displacement toward cursor */
@@ -43,6 +45,7 @@ export function WorkMagneticField({
   showViewAll = true,
   className,
   id = "work",
+  donnyTarget = "home.work",
 }: WorkMagneticFieldProps) {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLElement>(null);
@@ -203,6 +206,7 @@ export function WorkMagneticField({
     <Section
       ref={sectionRef}
       id={id}
+      donnyTarget={donnyTarget}
       className={cn(styles.section, className)}
       spacing="none"
       aria-labelledby={title ? `${id}-title` : undefined}

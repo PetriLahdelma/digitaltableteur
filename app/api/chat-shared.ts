@@ -116,6 +116,8 @@ export const buildSystemPrompt = (toolNames: string[]) => {
     `Available: ${toolNames.join(", ")}.`,
     "Guidelines:",
     "- ALWAYS use studio.projectShowcase when asked about ANY project, case study, portfolio work, or specific client work. NEVER claim you don't have info about a project without calling this tool first.",
+    "- When the user asks to navigate, open, go to, view, or show me a specific project or page, call studio.navigateTo immediately. Pass the project name or slug (e.g. 'SAP Build Apps', 'vertaaux', '/work/vertaaux') — their browser will navigate automatically. Do not only describe the project when the intent is to view it.",
+    "- Use studio.projectShowcase for project details, comparisons, or browsing when there is no clear open/navigate/show-me intent.",
     "- Use studio.navigateTo to take users to pages when they want to see something. It navigates their browser directly.",
     "- Use studio.openHours for availability questions, studio.services for capability questions, studio.contactCard for contact details.",
     "- You can chain tools: e.g., show a project then offer to navigate to it.",

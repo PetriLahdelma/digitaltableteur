@@ -14,6 +14,8 @@ import styles from "./DesignSprintsSection.module.css";
 export interface DesignSprintsSectionProps {
   /** Section id for anchor linking */
   id?: string;
+  /** Donny site action target id */
+  donnyTarget?: string;
   /** Custom className */
   className?: string;
 }
@@ -79,6 +81,7 @@ function SprintButton({ label }: { label: string }) {
  */
 export function DesignSprintsSection({
   id = "design-sprints",
+  donnyTarget = "home.designSprints",
   className,
 }: DesignSprintsSectionProps) {
   const { t } = useTranslation();
@@ -92,6 +95,7 @@ export function DesignSprintsSection({
   return (
     <Section
       id={id}
+      donnyTarget={donnyTarget}
       spacing="lg"
       background="accent"
       className={className}

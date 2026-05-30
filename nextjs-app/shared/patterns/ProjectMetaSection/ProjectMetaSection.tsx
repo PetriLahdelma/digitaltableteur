@@ -54,6 +54,8 @@ export interface ProjectMetaSectionProps {
   maxWidth?: "sm" | "md" | "lg" | "xl" | "full";
   /** Custom className */
   className?: string;
+  /** Donny site action target id for the overview column */
+  donnyTarget?: string;
 }
 
 const backgroundClasses: Record<NonNullable<ProjectMetaSectionProps["background"]>, string> = {
@@ -72,6 +74,7 @@ export function ProjectMetaSection({
   background = "default",
   maxWidth = "md",
   className,
+  donnyTarget,
 }: ProjectMetaSectionProps) {
   const { t } = useTranslation();
 
@@ -202,7 +205,7 @@ export function ProjectMetaSection({
           </div>
 
           {/* Right column: Overview */}
-          <div className="desktop:col-span-8">
+          <div className="desktop:col-span-8" data-donny-target={donnyTarget}>
             <FadeIn direction="up" delay={0.2} distance={30}>
               <div>
                 <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">

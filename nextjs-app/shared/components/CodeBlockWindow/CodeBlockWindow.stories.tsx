@@ -6,7 +6,14 @@ import { codeBlockFixtures } from "./codeBlockFixtures";
 import { renderCodeBlockFixtureNode } from "./CodeBlockFixtureRenderer";
 
 const meta: Meta<typeof CodeBlockWindow> = {
-  argTypes: {},
+  argTypes: {
+    context: {
+      control: "select",
+      options: ["default", "article"],
+      description: "Layout context for article vs default sizing",
+      table: { defaultValue: { summary: "default" } },
+    },
+  },
   title: "Organisms/CodeBlockWindow",
   component: CodeBlockWindow,
   parameters: {

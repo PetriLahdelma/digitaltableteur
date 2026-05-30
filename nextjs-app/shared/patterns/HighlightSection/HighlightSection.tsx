@@ -62,6 +62,10 @@ export interface HighlightSectionProps {
   className?: string;
   /** ARIA label for the section */
   ariaLabel?: string;
+  /** Section id for anchor linking */
+  id?: string;
+  /** Donny site action target id */
+  donnyTarget?: string;
 }
 
 /**
@@ -99,6 +103,8 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
   size = "comfortable",
   className = "",
   ariaLabel,
+  id = "component-schema",
+  donnyTarget = "home.componentSchema",
 }) => {
   const { t } = useTranslation();
   const ctaItems = Array.isArray(cta) ? cta : cta ? [cta] : [];
@@ -117,6 +123,8 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
 
   return (
     <section
+      id={id}
+      data-donny-target={donnyTarget}
       className={sectionClasses}
       aria-label={ariaLabel || t("createSection.ariaLabel")}
     >

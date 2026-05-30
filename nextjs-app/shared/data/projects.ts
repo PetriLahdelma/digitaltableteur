@@ -340,3 +340,122 @@ export function getProjectNavigation(currentSlug: string): {
         : null,
   };
 }
+
+const PROJECT_NAV_ALIASES: Record<string, string> = {
+  sap: "sap-build-apps",
+  "sap build": "sap-build-apps",
+  "sap build apps": "sap-build-apps",
+  helsinki: "helsinki-design-system",
+  hds: "helsinki-design-system",
+  vertaa: "vertaaux",
+  vertaaux: "vertaaux",
+  knobsmith: "knobsmith-audio",
+  dsharp: "dsharp-design-system",
+  spine: "project-spine",
+  "project spine": "project-spine",
+  rhythmguard: "rhythmguard",
+  illustrations: "illustrations",
+  intrum: "intrum",
+  tulli: "tulli",
+};
+
+const NAVIGATION_PHRASE_PREFIX =
+  /^(?:please\s+)?(?:(?:can you|could you)\s+)?(?:navigate(?:\s+me)?\s+to|open|show\s+me|go\s+to|take\s+me\s+to|view)\s+/i;
+
+function normalizeProjectQuery(input: string): string {
+  return input.trim().replace(NAVIGATION_PHRASE_PREFIX, "").trim();
+}
+
+function slugifyProjectQuery(input: string): string {
+  return input
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, " ")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+function scoreProjectMatch(project: Project, query: string): number {
+  const q = query.toLowerCase().trim();
+  if (!q) return 0;
+
+  const title = project.title.toLowerCase();
+  const slug = project.slug;
+  const slugQuery = slugifyProjectQuery(query);
+
+  if (title === q) return 100;
+  if (slug === q || slug === slugQuery || project.id === slugQuery) return 90;
+  if (project.client?.toLowerCase() === q) return 85;
+  if (title.startsWith(q)) return 75;
+  if (title.includes(q)) return 60;
+  if (project.client?.toLowerCase().includes(q)) return 50;
+  if (project.tags.some((tag) => tag.toLowerCase() === q)) return 45;
+  if (project.description?.toLowerCase().includes(q)) return 35;
+  if (project.tags.some((tag) => tag.toLowerCase().includes(q))) return 30;
+  if (slug.includes(slugQuery) && slugQuery.length >= 3) return 25;
+
+  return 0;
+}
+
+/**
+ * Resolve a project slug, title, alias, or free-text query to `/work/{slug}`.
+ * Returns null when no confident single match exists.
+ */
+export function resolveProjectNavigationPath(input: string): string | null {
+  const normalized = normalizeProjectQuery(input);
+  if (!normalized) return null;
+
+  if (normalized.startsWith("/work/")) {
+    const slug = normalized.split("/")[2]?.split("#")[0]?.split("?")[0];
+    if (slug && getProjectBySlug(slug)) {
+      return `/work/${slug}`;
+    }
+    return null;
+  }
+
+  if (normalized.startsWith("/")) {
+    return null;
+  }
+
+  const aliasKey = normalized.toLowerCase();
+  const aliasSlug = PROJECT_NAV_ALIASES[aliasKey];
+  if (aliasSlug && getProjectBySlug(aliasSlug)) {
+    return `/work/${aliasSlug}`;
+  }
+
+  const slugCandidate = slugifyProjectQuery(normalized);
+  const bySlug = getProjectBySlug(slugCandidate);
+  if (bySlug) {
+    return `/work/${bySlug.slug}`;
+  }
+
+  const scored = projects
+    .map((project) => ({ project, score: scoreProjectMatch(project, normalized) }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  if (scored.length === 0) {
+    return null;
+  }
+
+  const best = scored[0];
+  const runnerUp = scored[1];
+
+  if (!runnerUp || best.score >= runnerUp.score + 10) {
+    return `/work/${best.project.slug}`;
+  }
+
+  return null;
+}
+
+/** Compact slug list for model-facing navigation tools. */
+export function getProjectNavigationCatalog(): Array<{
+  slug: string;
+  title: string;
+  url: string;
+}> {
+  return sortedProjects.map((project) => ({
+    slug: project.slug,
+    title: project.title,
+    url: `/work/${project.slug}`,
+  }));
+}
