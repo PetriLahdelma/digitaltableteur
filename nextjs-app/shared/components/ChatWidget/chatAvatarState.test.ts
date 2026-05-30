@@ -117,6 +117,21 @@ describe("chatAvatarState", () => {
         }),
       ).toBe("success");
     });
+
+    it("maps showExpression to the requested mood when provided", () => {
+      expect(
+        resolveToolAvatarState(
+          { toolName: "studio.showExpression", phase: "call" },
+          "celebrating",
+        ),
+      ).toBe("celebrating");
+      expect(
+        resolveToolAvatarState(
+          { toolName: "studio.showExpression", phase: "result" },
+          null,
+        ),
+      ).toBe("playful");
+    });
   });
 
   describe("resolveDraftAvatarState", () => {
@@ -189,6 +204,36 @@ describe("chatAvatarState", () => {
           messages,
         }),
       ).toBe("handoff");
+    });
+
+    it("shows requested expression while showExpression tool is streaming", () => {
+      const messages: UIMessage[] = [
+        ...greetingOnly,
+        {
+          id: "assistant-expr",
+          role: "assistant",
+          parts: [
+            {
+              type: "tool-studio.showExpression",
+              toolCallId: "call-expr",
+              state: "input-available",
+              input: { expression: "skeptical" },
+            } as never,
+          ],
+        },
+      ];
+
+      expect(
+        resolveChatAvatarState({
+          status: "streaming",
+          resolvedErrorCopy: null,
+          fallbackErrorCopy: ERROR_COPY.fallback,
+          draft: "",
+          toolKeywords: TOOL_KEYWORDS,
+          emailWorkflowStep: "idle",
+          messages,
+        }),
+      ).toBe("skeptical");
     });
 
     it("keeps suggesting visible after VertaaUX tool output completes", () => {
