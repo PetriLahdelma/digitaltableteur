@@ -1,33 +1,62 @@
 # Agentic Design Systems Draft Series
 
-These drafts are intentionally outside `content/posts`, so the current blog
-manifest generator will not publish them.
+These drafts live outside `content/posts` until promoted. The blog manifest generator
+includes scheduled drafts in the build artifact; runtime hides them until `publishedAt`.
 
-Publishing cadence:
+## Publishing cadence
 
-1. 2026-06-03 - Agentic Design Systems Need Operating Models, Not More Components
-2. 2026-06-07 - Tools, Harnesses, and Skills: The Missing Model for Design Systems
-3. 2026-06-11 - Component Contracts Are Where Taste Becomes Infrastructure
-4. 2026-06-15 - The Minimum Viable Agent-Ready Design System
-5. 2026-06-19 - From DesignOps to AgentOps
+| Date (08:00 UTC) | Part | Slug |
+|------------------|------|------|
+| 2026-06-03 | 1 | `agentic-design-systems-need-operating-models-not-more-components` |
+| 2026-06-07 | 2 | `tools-harnesses-and-skills-the-missing-model-for-design-systems` |
+| 2026-06-11 | 3 | `component-contracts-are-where-taste-becomes-infrastructure` |
+| 2026-06-15 | 4 | `the-minimum-viable-agent-ready-design-system` |
+| 2026-06-19 | 5 | `from-designops-to-agentops` |
 
-Positioning:
+## Positioning
 
-This series extends the argument from:
-https://www.petrilahdelma.com/writing/design-systems-for-bots
+**Theory → operations:**
 
-The goal is to make Digitaltableteur credible for teams that are starting to
-use coding agents, UI generators, Figma MCP, Storybook, contract files, and
-automated design-system QA, but do not yet have a coherent operating model.
+- [Design systems for bots](https://www.petrilahdelma.com/writing/design-systems-for-bots) — maturity model (readability / executability / survivability)
+- [From Tokens to Thinking Systems](/blog/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work) — what to encode
+- [Figma MCP](/blog/figma-mcp-design-systems) — one tool surface
+- **This series** — how teams operate when agents, linters, and humans share a repo
 
-Publishing note:
+Suggested opener for Part 1 (included in draft): *Tokens* = encode; *Figma MCP* = tool; series = operate with CI evidence.
 
-Drafts with `status: "draft"` stay unpublished. Drafts with
-`status: "scheduled"` and a future `publishedAt` are bundled into the app but
-hidden until that date.
+## Honesty: v1 vs v2 contracts
 
-To schedule one, keep it in `content/drafts`, set `status: "scheduled"`, and
-set `publishedAt` to the release time. The blog pipeline includes scheduled
-drafts in the build artifact, then runtime filters keep them hidden until their
-date. Set `SHOW_UNPUBLISHED_POSTS=true` for generator previews or
-`NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS=true` for local client previews.
+Council review (May 2026) flagged aspirational JSON in early drafts. Current drafts distinguish:
+
+- **v1 structural (shipped)** — `validate:components` on 127 `.contract.json` files: props/CVA, required stories, a11y flags, tokens
+- **v2 semantic (target)** — `forbiddenUse`, action hierarchy, composition lint — documented, migrating into checks
+
+Blog examples labeled `.target.json` or “target schema” are design direction, not current CI failures.
+
+## Series navigation
+
+Each post includes Part N of 5 footer with prev/next links. Part 5 links back to Part 1.
+
+## Cross-links and tooling
+
+- npm: `@petritapanilahdelma/llm-component-contracts`, `llm-component-cli`
+- Repo: `docs/LLM_COMPONENT_GENERATION_RULES.md`, `npm run validate:components`
+- Agent skills: `/.well-known/agent-skills/index.json`
+- https://projectspine.dev (harness packaging, external)
+
+Token lint in this repo: `stylelint-declaration-strict-value` (not Rhythmguard).
+
+## CTA pattern (post-council)
+
+- Part 1: services contact
+- Part 2: tooling links + soft contact
+- Part 3: tooling links + soft contact
+- Parts 4–5: editorial closing questions (no services pitch)
+
+## Scheduling
+
+- `status: "draft"` — unpublished
+- `status: "scheduled"` + future `publishedAt` — bundled, hidden until date
+- Preview: `SHOW_UNPUBLISHED_POSTS=true` or `NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS=true`
+
+To promote: move MDX to `content/posts/` or adjust pipeline when ready.

@@ -2,7 +2,7 @@
 title: "The Minimum Viable Agent-Ready Design System"
 slug: "the-minimum-viable-agent-ready-design-system"
 publishedAt: "2026-06-15T08:00:00.000Z"
-readTime: "6 min read"
+readTime: "8 min read"
 excerpt: "You do not need a giant enterprise design system to work safely with AI. You need a small, enforceable system that agents can read and humans can trust."
 authorName: "Petri Lahdelma"
 authorSlug: "petri-lahdelma"
@@ -17,23 +17,30 @@ tags:
 
 Not every team needs a cathedral.
 
-Some teams hear "design system" and imagine a multi-year enterprise program with dedicated governance councils, dozens of component owners, complex contribution models, and a documentation site that requires its own roadmap. That is one version of the work. It is not the only one.
+Some hear “design system” and picture governance councils, forty component owners, and a documentation site with its own roadmap. That is one valid shape. It is not the only one — and it is not where most teams should start if agents are already generating UI in their repos.
 
-For many teams entering agentic product development, the more useful target is a minimum viable agent-ready design system: small enough to maintain, strict enough to prevent drift, and explicit enough for both humans and machines to use.
+The useful target for many squads is a **minimum viable agent-ready design system**: small enough to maintain, strict enough to prevent drift, explicit enough for humans and machines to operate without hallway context.
 
-**The alternative to a giant design system is not no system. It is a thinner, enforceable one.**
+The alternative to a giant system is not no system. It is a thinner, enforceable one.
 
-## Why small still needs structure
+## Why “small team magic” stops working
 
-Small teams often rely on proximity. Everyone knows the product, the brand, the acceptable shortcuts, and the person to ask when something feels unclear. That works until the workflow changes.
+Proximity carries context: who owns brand judgment, which shortcuts are tolerated, which form validation pattern is canonical. Add contractors, parallel squads, coding agents, or a second repo and proximity stops scaling.
 
-Add contractors, product squads, AI coding agents, UI generators, multiple repositories, fast experiments, or white-label variants, and proximity stops scaling. The system starts drifting in small ways. Buttons gain informal variants. Empty states sound different across features. Forms validate differently. Spacing decisions become local guesses. Dark mode breaks in edge cases. Accessibility becomes a late audit instead of a design constraint.
+Drift shows up quietly:
 
-None of those failures requires a massive design-system program to fix. But they do require a real system.
+- Informal button variants
+- Empty states with different voice
+- Forms validating on different triggers
+- Spacing becoming local guesswork
+- Dark mode breaking at the edges
+- Accessibility arriving in a late audit
 
-## The minimum viable stack
+None of that requires an enterprise program to fix. All of it requires a real system — just not necessarily a large one.
 
-An agent-ready design system can start with six layers.
+## Six layers, in order
+
+An agent-ready foundation can start here:
 
 ```txt title="minimum-agent-ready-stack.txt"
 Semantic tokens
@@ -44,74 +51,125 @@ Semantic tokens
           -> automated checks
 ```
 
-Semantic tokens come first because raw colors are not enough. Agents and developers should not reach for `brand-pink-500` or `gray-800` in product code when the product decision is really `surface`, `text`, `border`, `accent`, `danger`, `success`, `focus`, `disabled`, or `overlay`.
+**Semantic tokens first.** Agents and developers should reach for `surface`, `text`, `border`, `accent`, `danger`, `focus` — not `gray-800` or `brand-pink-500`. Raw values are implementation details; semantics are product decisions. This is the same API mindset I described in [From Tokens to Thinking Systems](/blog/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work).
 
-Production components come next. Not only Figma components, but real coded components with stable APIs, clear exports, and examples that represent product reality. If the coded component is weak, the agent will copy weakness faster than a human would.
+**Production components next.** Not Figma-only symbols — coded components with stable props, exports, and stories that reflect product reality. Weak code copied by an agent becomes weak product at speed.
 
-Component contracts make the system safer. Each serious component should define allowed variants, required states, accessibility guarantees, forbidden combinations, lifecycle status, and required stories. Pattern recipes then cover the spaces between components: forms, onboarding, settings, tables, permissions, empty states, errors, destructive actions, search, and dashboard summaries.
+**Contracts on serious components.** Start with [structural contracts](/blog/component-contracts-are-where-taste-becomes-infrastructure) — required stories, a11y flags, prop alignment — before semantic rules like forbidden combinations. One validation command in CI beats forty markdown pages.
 
-Finally, the system needs examples and checks. Agents need examples. Humans need examples. QA needs examples. Those examples should include edge cases, not only the happy path. Token drift, type errors, accessibility violations, missing stories, contrast failures, and visual regressions should not rely on memory.
+**Pattern recipes for the gaps.** Forms, settings, tables, permissions, destructive flows, search, empty and error states — the space between atoms.
 
-That is already a design system, even if the team calls it a frontend foundation, product language, UI kit, component platform, or shared interface layer.
+**Examples that include edge cases.** Loading, empty, denied, long translation, narrow viewport, keyboard-only, high contrast. Agents learn from examples under pressure, not from hero screenshots.
+
+**Checks that fail.** Token lint, typecheck, contract validation, axe, visual smoke. Memory is not a strategy.
+
+That is already a design system — even if you call it a UI foundation or shared interface layer.
 
 ## Start where the product already hurts
 
-The minimum viable system should be boring in the right places. Avoid starting with too many variants, abstract taxonomy debates, a huge documentation migration, governance ceremonies before contribution rules exist, AI generation before contracts exist, or a component count target.
+Avoid opening moves that feel productive but delay enforcement:
 
-Start where the product already hurts. If forms are inconsistent, write the form recipe first: fields, validation, copy anatomy, loading, errors, and recovery. If dashboards drift, define density, cards, tables, filters, and empty states. If agents generate bad UI, create contracts and examples for the components they misuse most. If accessibility is late, make it part of the component promotion gate. If brand feels diluted, define semantic token scopes and show real usage.
+- Variant taxonomy debates before contracts exist
+- Documentation migration before validation exists
+- AI generation before examples exist
+- Component count targets
 
-The system should grow from repeated product friction, not from an abstract inventory dream.
+Start where friction is visible:
 
-## The agent-readiness checklist
+| Pain | First move |
+|------|------------|
+| Forms inconsistent | Form recipe: fields, validation, errors, recovery |
+| Dashboards drift | Density rules, table toolbar pattern, empty states |
+| Agents misuse components | Contracts + stories for top five offenders |
+| Accessibility late | Promotion gate: no stable without axe + keyboard coverage |
+| Brand dilution | Semantic token scopes + real usage examples |
 
-A small design system becomes agent-ready when it can answer practical questions without relying on hallway memory.
+Grow from repeated product friction, not from an abstract inventory dream.
 
-Can an agent find the right component? Naming must be consistent across docs, stories, code, and Figma. Can it understand when to use it? The contract and examples must describe intent, not only appearance. Can it generate valid usage? Props, slots, variants, tokens, and accessibility rules must be constrained.
+## Agent-readiness checklist
 
-Can the system detect invalid usage? Validation needs to run in a command that humans and agents can both execute. Can humans review the right layer? Mechanical failures should be separated from judgment calls. Can the system survive change? Deprecations, changelogs, and migration notes must be normal, not emergency work.
+A small system is agent-ready when it answers these without Slack archaeology:
+
+- **Find** — consistent naming across Figma, code, docs, Storybook
+- **Choose** — contract + examples describe intent, not only appearance
+- **Generate valid usage** — props, slots, tokens, a11y rules are constrained
+- **Detect invalid usage** — one command humans and agents can run
+- **Review the right layer** — mechanics automated, judgment human
+- **Change safely** — deprecations and migration notes are normal
 
 ```json title="minimum-agent-ready-system.json"
 {
   "tokens": ["semantic-color", "type-scale", "spacing-scale", "focus"],
   "components": ["Button", "Input", "Select", "Dialog", "Alert", "Card"],
   "patterns": ["Form", "EmptyState", "ErrorState", "TableToolbar"],
-  "contracts": {
-    "requiredFor": ["stable", "beta"],
-    "fields": ["intent", "variants", "states", "a11y", "forbiddenUse"]
-  },
-  "checks": ["typecheck", "component-contract", "axe", "visual-smoke"],
+  "checks": ["typecheck", "validate:components", "axe", "visual-smoke"],
   "review": {
     "humanRequiredFor": ["new pattern", "breaking change", "a11y exception"]
   }
 }
 ```
 
-This is not an enterprise design-system program. It is a practical operating floor.
+Six components with contracts and checks will outperform forty components with markdown only — if someone owns keeping them current.
 
-## A 30-60-90 day path
+## Who owns this in a three-person squad?
 
-The first version should be deliberately small. In the first 30 days, stop the worst drift: semantic token scopes, the top five components, and basic contracts. In the next 30 days, make generation safer: pattern recipes, Storybook edge states, and one validation command that proves the system is not only documented. By day 90, make adoption repeatable with contribution rules, lifecycle stages, deprecation notes, and migration expectations.
+You do not need a design-system team. You need a **named owner** — often the design-system lead, staff frontend, or the person who already answers “which button do we use?”
 
-This is enough to change the behavior of both humans and agents. It also avoids the common failure mode: spending months designing the design-system program before the product has a usable system.
+Rough split that works:
 
-## The business case
+- **Design** — token semantics, pattern recipes, Storybook examples
+- **Engineering** — contracts, validation script, CI gate
+- **Shared** — promotion criteria (experimental → beta → stable)
 
-The minimum viable agent-ready system is not only a technical investment. It reduces rework because generated output starts closer to acceptable. It improves onboarding because new contributors can follow explicit rules. It protects brand quality because common patterns do not get reinvented under pressure. It improves accessibility because important constraints appear earlier.
+If nobody owns contracts, agents will still generate UI. The system just will not learn from failures.
 
-It also makes outsourcing and AI adoption less risky because external contributors and agents plug into a bounded environment instead of reverse-engineering taste from screenshots.
+## A 30–60–90 day path that fits a squad
 
-That is the actual promise of a design system: **speed with memory.**
+**Days 1–30 — stop the bleeding**
 
-## The takeaway
+- Semantic color, spacing, type, focus tokens
+- Structural contracts for Button, Input, Dialog, Alert, Card
+- One validation command in CI (`validate:components` or equivalent)
 
-You do not need to build the whole enterprise design-system machine before AI becomes useful. But you do need a system that knows what it is.
+**Days 31–60 — make generation safer**
 
-Start small: semantic tokens, real components, contracts, pattern recipes, examples, and checks. Then make the system executable.
+- Form and error-state recipes
+- Edge-case Storybook stories for top components
+- Token lint (Stylelint strict-value or equivalent)
 
-The winning teams will not be the ones with the largest design-system surface area. They will be the ones whose smallest reliable system is strong enough to guide people and agents toward the same product standard.
+**Days 61–90 — make adoption repeatable**
+
+- Lifecycle stages: experimental → beta → stable → deprecated
+- Contribution rules: what evidence is required to promote
+- Migration notes when APIs change
+
+Treat the timeline as a hypothesis, not a guarantee. Squad size and existing debt matter. The point is to ship enforcement before agents outpace your docs.
+
+## When to stop (or never start)
+
+This stack is overkill when:
+
+- You are pre-product-market-fit with throwaway UI
+- One person owns all surfaces and will for the next year
+- Agents are not touching the repo yet — good `AGENTS.md` + Storybook may be enough for months
+- You cannot maintain contracts after the first sprint (unmaintained contracts become lies agents trust)
+
+False confidence is a real risk: green CI with wrong product judgment. Structural validation catches drift in props and stories; it does not replace design review for hierarchy and copy.
+
+**Speed with memory** — when the stack fits, generated output starts closer to acceptable, onboarding shortens, and external contributors plug into boundaries instead of reverse-engineering taste from screenshots.
+
+You do not need the entire enterprise machine before AI becomes useful. You need a system that knows what it is — and proves it.
 
 ---
 
 <br />
 
-Digitaltableteur helps teams create practical, agent-ready design-system foundations: tokens, components, contracts, Storybook examples, and validation gates that improve delivery without adding unnecessary ceremony.
+**Series:** [Agentic Design Systems](/blog/agentic-design-systems-need-operating-models-not-more-components) · Part 4 of 5
+
+**←** [Component Contracts](/blog/component-contracts-are-where-taste-becomes-infrastructure) · **→** [DesignOps to AgentOps](/blog/from-designops-to-agentops)
+
+---
+
+<br />
+
+What is the smallest layer your squad could enforce in CI this sprint — tokens, five contracts, or one pattern recipe?
