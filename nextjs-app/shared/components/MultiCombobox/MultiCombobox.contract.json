@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "MultiCombobox",
+  "tier": "molecule",
+  "group": "form",
+  "status": "alpha",
+  "description": "Multi-select combobox with inline chips, type-to-filter dropdown, label, error, and helper text.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "input",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": ["Default", "Playground"],
+  "a11y": {
+    "keyboard": ["Tab", "Enter", "Escape", "ArrowDown", "ArrowUp", "Backspace"],
+    "ariaRequirements": ["combobox", "listbox", "aria-multiselectable", "aria-activedescendant"],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": ["className", "id", "options"],
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.tsx",
+      "since": "2026-05-28"
+    }
+  ]
+}

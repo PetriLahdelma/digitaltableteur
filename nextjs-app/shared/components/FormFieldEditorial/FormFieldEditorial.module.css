@@ -98,7 +98,7 @@
   cursor: pointer;
   transition: border-color var(--duration-fast) var(--ease-out-cubic);
   appearance: none;
-  padding-right: var(--space-internal-32);
+  padding-inline-end: calc(var(--space-internal-32) + var(--space-internal-8));
 }
 
 .select:focus {
@@ -115,15 +115,26 @@
   color: var(--color-muted);
 }
 
-.chevron {
+.chevronSlot {
+  display: flex;
   position: absolute;
-  right: var(--space-internal-12, 0.75rem);
-  color: var(--color-muted);
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: calc(var(--space-internal-32) + var(--space-internal-8));
+  align-items: center;
+  justify-content: flex-end;
+  padding-inline-end: calc(var(--space-internal-12) + var(--space-internal-8));
   pointer-events: none;
+}
+
+.chevron {
+  display: block;
+  flex-shrink: 0;
+  color: var(--color-muted);
   transition: transform var(--duration-normal) var(--ease-out-expo);
 }
 
-.select:focus + .chevron {
+.select:focus + .chevronSlot .chevron {
   color: var(--color-primary);
 }
 
