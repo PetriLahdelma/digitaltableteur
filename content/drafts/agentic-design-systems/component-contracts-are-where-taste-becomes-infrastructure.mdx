@@ -2,7 +2,7 @@
 title: "Component Contracts Are Where Taste Becomes Infrastructure"
 slug: "component-contracts-are-where-taste-becomes-infrastructure"
 publishedAt: "2026-06-11T08:00:00.000Z"
-readTime: "6 min read"
+readTime: "9 min read"
 excerpt: "Taste does not scale by explanation alone. In agentic design systems, it has to become contracts, examples, and verification."
 authorName: "Petri Lahdelma"
 authorSlug: "petri-lahdelma"
@@ -15,124 +15,137 @@ tags:
   - Frontend Architecture
 ---
 
-Taste is one of the most valuable forces in product design. It is also one of the hardest to scale.
+If you read [From Tokens to Thinking Systems](/blog/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work), you already know the theory: LLMs follow rules when rules are explicit, scoped, and validated. **This post is where theory becomes CI** — how judgment becomes infrastructure without flattening craft.
 
-A strong designer can look at a screen and notice that something is off: the hierarchy is noisy, the spacing feels borrowed from three systems, the button prominence is wrong, the empty state is trying too hard, the error copy is technically accurate but emotionally useless. That judgment matters, but judgment trapped inside one person's head does not become a system. It becomes dependency.
+A senior designer can glance at a screen and say: hierarchy is noisy, spacing belongs to three different systems, the primary action is fighting the destructive one, the empty state is performing optimism instead of helping.
 
-This is where component contracts become important. Not because they replace taste, but because they preserve the parts of taste that can be made operational. **A contract is taste with handles. It gives agents and humans something precise enough to hold.**
+That judgment is taste. Taste trapped in one person’s head is not a design system. It is a bottleneck.
+
+**A contract is taste with handles:** precise enough for agents, validators, and new teammates to hold without guessing.
+
+This builds on [design systems for bots](https://www.petrilahdelma.com/writing/design-systems-for-bots) and the [operating model loop](/blog/agentic-design-systems-need-operating-models-not-more-components): if you cannot validate generated UI mechanically, you will debug it in production.
 
 ## Documentation explains. Contracts constrain.
 
-Most component documentation is written for humans. It describes purpose, props, variants, usage examples, dos and don'ts, and sometimes accessibility notes. This is useful because it helps teams understand the component.
+Most component docs describe purpose, props, variants, examples, dos and don’ts. Useful for humans. Insufficient for agents.
 
-Agents need more than explanation. They need constraints. A contract defines what is allowed, what is required, what is discouraged, what is deprecated, and how those decisions can be checked.
+Agents need constraints: allowed variants, required states, forbidden combinations, deprecated props, accessibility guarantees, lifecycle status, and what must exist in Storybook before a component is “stable.”
 
-For a button, the contract might define which variants exist, which size range is supported, which variant is allowed for destructive actions, when an icon-only button requires an accessible name, which props are deprecated, which loading behavior is guaranteed, which token categories are allowed, and which stories must exist.
+### What we ship today (v1 structural)
 
-```json title="button.contract.json"
+Our repo has 127 `.contract.json` files. Here is a real excerpt from `Button.contract.json` — what `npm run validate:components` actually checks against:
+
+```json title="Button.contract.json (shipped)"
 {
-  "component": "Button",
-  "status": "stable",
-  "meaning": "action trigger",
-  "allowedVariants": ["primary", "secondary", "tertiary", "danger"],
-  "actionHierarchy": {
-    "primary": "one per decision region",
-    "danger": "destructive or irreversible actions only",
-    "tertiary": "supporting actions that must not compete"
+  "name": "Button",
+  "tier": "molecule",
+  "status": "beta",
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
+  "a11y": {
+    "keyboard": ["Enter", "Space"],
+    "ariaRequirements": ["accessible name", "aria-busy when loading", "disabled state"],
+    "reviewed": true,
+    "forcedColorsVerified": true
   },
-  "accessibility": {
-    "iconOnlyRequires": ["aria-label", "tooltip"],
-    "loadingStateRequires": ["aria-busy", "disabled-click-target"]
-  },
-  "forbidden": [
-    "raw color overrides",
-    "icon-only button without accessible name",
-    "primary and danger competing in the same action group"
-  ]
+  "tokens": {
+    "colors": ["--color-warning-text", "--color-white"]
+  }
 }
 ```
 
-The point is not the exact schema. The point is the move from recommendation to constraint.
+This enforces structural alignment: props match CVA, required stories exist, a11y flags are set, token references are declared. It does **not** yet fail when primary and danger buttons compete in the same action group.
 
-## The problem with soft rules
+### What we are migrating toward (v2 semantic)
 
-Soft rules sound clear until a machine has to use them. "Use cards for grouped content" is sensible, but it does not define what grouped content means. "Keep primary actions clear" is good advice, but it does not tell an agent how many primary actions are allowed in a region. "Use concise error messages" can produce copy that is short and useless.
+The next layer adds product-level rules — the ones that cause repeat drift:
 
-A contract asks for sharper structure. A card is allowed when content shares an object, action, comparison boundary, or decision context. A decision region gets one primary action unless a human review explicitly approves an exception. An error message must include cause, recovery, and next action when the user can do something about the problem.
+```json title="Button.pattern-rules.target.json"
+{
+  "patternRules": {
+    "actionHierarchy": {
+      "primary": "one per decision region",
+      "danger": "destructive or irreversible actions only",
+      "tertiary": "supporting actions that must not compete"
+    },
+    "forbidden": [
+      "raw color overrides",
+      "icon-only without accessible name",
+      "primary and danger competing in the same action group"
+    ]
+  }
+}
+```
 
-The goal is not to turn every design decision into a rigid formula. The goal is to identify the decisions that repeatedly create drift and encode enough of them to keep the system coherent.
+The schema matters less than the move from recommendation to constraint — and being honest about which layer fails a command today.
 
-That is how taste becomes infrastructure.
+I ship contract tooling as open source — [`@petritapanilahdelma/llm-component-contracts`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-contracts) for versioned JSON schemas, and [`llm-component-cli`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-cli) for validate, migrate, drift-check, and scaffold. The CLI’s `drift-check` compares schema props to component props and Storybook args. That is v1 infrastructure working: when mismatch fails a command, documentation stops being optional.
 
-## Contracts create better human reviews
+## The failure mode of soft rules
 
-There is a common fear that contracts will flatten design judgment. In practice, good contracts do the opposite. They remove low-value debate so people can focus on the decisions that still require taste.
+Soft rules feel clear until a machine applies them.
 
-If validation can tell you that a component uses the wrong token tier, lacks a required story, ships an invalid prop combination, or breaks an accessibility rule, the review no longer has to spend energy catching basic drift. The conversation can move to whether the pattern fits the user goal, whether the hierarchy is strong enough, whether the interaction reduces cognitive load, and whether the exception is justified.
+- “Use cards for grouped content” — grouped how?
+- “Keep primary actions clear” — how many primaries per region?
+- “Write concise errors” — concise can still be useless without recovery
+
+Contracts ask for sharper structure:
+
+- A card is allowed when content shares an object boundary, comparison set, or decision context — not whenever layout feels busy.
+- A decision region gets one primary action unless a human explicitly approves an exception.
+- An error message includes cause, recovery, and next action when the user can act.
+
+Not every design decision should be encoded. Encode the ones that create repeat drift — action hierarchy, token scope, destructive patterns, form validation anatomy, empty states without recovery.
+
+## The anecdote that belongs here
+
+I have watched agents place **primary and danger buttons side by side** in a delete confirmation — technically valid props, contract-violating product design — because nothing in the repo forbade the combination yet.
+
+That is the v2 problem: structural contracts pass, product judgment fails. Contracts become shared memory that does not depend on who is in the room — but only when the forbidden combination actually fails a check.
+
+## Contracts improve human review
+
+Good contracts do not flatten judgment. They protect it.
+
+When validation catches wrong token tier, missing required story, invalid prop combination, or broken accessibility expectation, review stops wasting time on preventable drift. Conversation moves to what still requires taste: fit to user goal, cognitive load, whether an exception is worth the complexity.
 
 ```txt title="review-flow.txt"
 Proposed change
   -> contract checks catch mechanical drift
-  -> evidence is attached to the review
+  -> evidence attached to review
   -> humans spend attention on judgment
 ```
 
-Contracts do not eliminate judgment. They protect it from being wasted on preventable errors.
+## Connect contracts to checks that fail
 
-## Agents need contracts because they do not share your context
+A contract nobody validates is another doc.
 
-Human teams often rely on shared history. They remember why a component was built a certain way. They know which product area has special constraints. They understand that one variant exists for legacy reasons and should not be copied.
+Our validator lives in `scripts/design-system/validate-components.ts` — not pseudocode. Typical checks:
 
-Agents do not have that social memory unless you give it to them. They see files, examples, names, props, comments, and tests. If the system contains contradictions, they will find them. If old patterns are still present, they may reuse them. If forbidden combinations are possible in code, they may generate them.
+- Props and variants align with the contract and CVA definition
+- Required Storybook stories exist
+- Token references match declared scopes
+- A11y review flags are set before promotion
 
-This is why contracts matter more as AI enters the workflow. They become shared memory that does not depend on who happens to be present. They tell the agent what is stable, what is experimental, what is legacy, what is forbidden, what requires human review, and what must be validated before completion.
+In practice: `npm run validate:components`, axe in CI, Stylelint with token rules, drift reports from `llm-component-cli`. Uncomfortable at first — then faster, because debates shift from “did we follow the doc?” to “is this exception justified?”
 
-That is not bureaucracy. It is context engineering for design systems.
+## What to encode (and what to leave human)
 
-## The contract should connect to real checks
+**Encode:** token scopes, variant rules, state models, accessibility guarantees, composition anti-patterns, lifecycle stages, required stories, review triggers.
 
-A contract that is never validated is just another document. The useful version connects to real checks.
+**Leave human:** proportion, brand warmth, narrative timing, emotional fit, the sense that something is technically correct but wrong for the moment.
 
-```ts title="validate-component-contract.ts"
-type ContractCheck = {
-  id: string;
-  severity: "warn" | "fail";
-  run: (componentName: string) => Promise<boolean>;
-};
-
-const checks: ContractCheck[] = [
-  { id: "props-match-contract", severity: "fail", run: checkProps },
-  { id: "required-stories-exist", severity: "fail", run: checkStories },
-  { id: "token-scope-valid", severity: "fail", run: checkTokenScope },
-  {
-    id: "deprecated-props-documented",
-    severity: "warn",
-    run: checkDeprecations,
-  },
-  { id: "a11y-expectations-covered", severity: "fail", run: checkA11y },
-];
-```
-
-The moment a contract can fail a check, it changes behavior. It stops being guidance and becomes infrastructure. That shift is uncomfortable at first, but it creates speed because teams no longer need to guess which rules matter.
-
-## What taste should and should not become
-
-Not all taste should be encoded. Some parts of design are deliberately human: proportion, restraint, brand feeling, timing, narrative, emotional fit, and the ability to notice when a technically correct pattern feels wrong.
-
-But some parts of taste are repeated decisions pretending to be intuition. Error message anatomy can be encoded. Spacing scales and density rules can be encoded. Exception review triggers can be encoded. Token scopes, component theming, and action hierarchy constraints can be encoded.
-
-**The strongest design systems do not automate taste. They protect the conditions where taste can be applied at the right level.**
-
-## The takeaway
-
-Taste still matters. In fact, it matters more as production accelerates. But in agentic workflows, taste cannot remain only a critique skill. It has to become part of the operating system of the design system.
-
-Some taste stays human: proportion, narrative, brand feeling, restraint, timing, judgment. Some taste can become structure: tokens, states, variants, accessibility guarantees, composition rules, anti-patterns, lifecycle stages, examples, and review gates.
-
-Component contracts are the bridge. They do not make design mechanical. They make design intent harder to misinterpret. In a world where agents can generate UI at machine speed, that may be the difference between leverage and entropy.
+The strongest systems do not automate taste. They protect the conditions where taste is applied at the right altitude.
 
 ---
 
 <br />
 
-Digitaltableteur can help your team define component contracts, Storybook gates, token rules, and review loops that make design-system quality repeatable across humans and agents.
+**Series:** [Agentic Design Systems](/blog/agentic-design-systems-need-operating-models-not-more-components) · Part 3 of 5
+
+**←** [Tools, Harnesses, and Skills](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems) · **→** [Minimum Viable Agent-Ready](/blog/the-minimum-viable-agent-ready-design-system)
+
+---
+
+<br />
+
+Contracts and tooling: [`llm-component-cli`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-cli) · [`llm-component-contracts`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-contracts) · [Contact](https://www.digitaltableteur.com/contact) for contract + CI setup help.
