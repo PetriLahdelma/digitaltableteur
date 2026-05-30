@@ -22,14 +22,8 @@ export interface ArticleContentProps {
  * - Proper spacing between elements
  * - Responsive padding
  */
-export const ArticleContent = forwardRef<HTMLDivElement, ArticleContentProps>(
-  function ArticleContent({ children, size = "md", className }, ref) {
-    return (
-      <Container size={size} className={cn("py-8 tablet:py-12", className)}>
-        <div
-          ref={ref}
-          className={cn(
-            // Base prose styling
+const articleProseClassName = cn(
+            // Base prose styling (MDX body only — never wrap author cards / avatars)
             "prose prose-lg dark:prose-invert max-w-none",
 
             // Headings
@@ -65,13 +59,13 @@ export const ArticleContent = forwardRef<HTMLDivElement, ArticleContentProps>(
             "prose-code:font-mono prose-code:text-sm",
             "prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded",
             "prose-pre:bg-muted prose-pre:rounded-lg prose-pre:p-4",
-            "prose-pre:overflow-x-auto prose-pre:my-6",
+            "prose-pre:mx-auto prose-pre:max-w-[80%] prose-pre:max-h-[35vh]",
+            "prose-pre:overflow-x-hidden prose-pre:overflow-y-auto prose-pre:whitespace-pre-wrap prose-pre:break-words prose-pre:my-6",
 
-            // Images
-            "prose-img:rounded-lg prose-img:my-8",
-            "prose-figure:my-8",
-            "prose-figcaption:text-sm prose-figcaption:text-center",
-            "prose-figcaption:text-muted-foreground prose-figcaption:mt-3",
+            // Images (figure layout handled by MdxFigure + MdxImageWrapper)
+            "prose-img:rounded-lg",
+            "prose-figure:my-0",
+            "prose-figcaption:mt-0",
 
             // Tables
             "prose-table:my-6",
@@ -84,10 +78,23 @@ export const ArticleContent = forwardRef<HTMLDivElement, ArticleContentProps>(
 
             // Horizontal rule
             "prose-hr:my-12 prose-hr:border-border"
-          )}
-        >
-          {children}
-        </div>
+);
+
+export interface ArticleProseProps {
+  children: ReactNode;
+  className?: string;
+}
+
+/** Typography wrapper for MDX article body. Use `not-prose` for anything outside MDX. */
+export function ArticleProse({ children, className }: ArticleProseProps) {
+  return <div className={cn(articleProseClassName, className)}>{children}</div>;
+}
+
+export const ArticleContent = forwardRef<HTMLDivElement, ArticleContentProps>(
+  function ArticleContent({ children, size = "md", className }, ref) {
+    return (
+      <Container size={size} className={cn("py-8 tablet:py-12", className)}>
+        <div ref={ref} className="min-w-0">{children}</div>
       </Container>
     );
   }

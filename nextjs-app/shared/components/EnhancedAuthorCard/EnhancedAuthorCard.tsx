@@ -87,7 +87,7 @@ export function EnhancedAuthorCard({
     return (
       <div
         className={cn(
-          "flex items-start gap-4",
+          "not-prose flex items-start gap-4",
           "py-6 border-t border-border",
           className
         )}

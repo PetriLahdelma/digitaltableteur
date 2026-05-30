@@ -1,0 +1,13 @@
+$imagegen
+
+Generate ONE editorial blog hero PNG, landscape 1536x1024.
+
+Subject: An operating loop shown as a refined print-style circular diagram — intent, rules, output, evidence, better rules — on subtle paper grain. Feels like an operations map or museum technical plate, not a SaaS infographic.
+
+Palette only: deep ink #041b23, warm paper #f4f1ea, muted teal #85b5bd, single violet accent #812eff. Max 5 flat colors. Subtle grain OK.
+
+Strictly avoid: neon lime, purple gradients, 3D glass, glowing robots, stock photography, readable text, generic AI/vibe-coded aesthetic.
+
+Save to workspace file: public/blog/agentic-design-systems/hero-01-operating-models.png
+
+After saving, run ls -la on that path and report success.

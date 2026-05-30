@@ -35,6 +35,14 @@ node scripts/generate-blog-manifest.mjs   # Manual manifest regen
 
 ---
 
+## Writing voice
+
+Long-form blog and draft MDX: read **[`docs/WRITING_STYLE.md`](../docs/WRITING_STYLE.md)** before editing prose. That guide is **scoped to this repository** — do not copy to llm-wiki or global agent skills. UI microcopy stays in [`.claude/agents/copywriting-lead.md`](../.claude/agents/copywriting-lead.md).
+
+Raster heroes / OG images: **[`docs/CODEX_IMAGE_GENERATION.md`](../docs/CODEX_IMAGE_GENERATION.md)** + [`docs/OG_IMAGE_GENERATION_GUIDE.md`](../docs/OG_IMAGE_GENERATION_GUIDE.md).
+
+---
+
 ## Publishing workflow
 
 1. Edit content in Sanity Studio

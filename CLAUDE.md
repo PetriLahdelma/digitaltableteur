@@ -23,6 +23,7 @@
 | Script / CI / deploy | [`scripts/AGENTS.md`](scripts/AGENTS.md) + skill [`dt-scripts`](.claude/skills/dt-scripts/SKILL.md) |
 | Bulk autonomous sweep (ultracode) | skill [`dt-workflow`](.claude/skills/dt-workflow/SKILL.md) + templates in `references/templates.md` |
 | Blog / Sanity | [`digitaltableteur-blog/AGENTS.md`](digitaltableteur-blog/AGENTS.md) + skill [`dt-sanity-cms`](.claude/skills/dt-sanity-cms/SKILL.md) |
+| Blog prose, drafts, articles | [`docs/WRITING_STYLE.md`](docs/WRITING_STYLE.md) (**this repo only**) |
 | Docs navigation | [`docs/AGENTS.md`](docs/AGENTS.md) |
 
 **Before creating any component**, read [`docs/LLM_COMPONENT_GENERATION_RULES.md`](docs/LLM_COMPONENT_GENERATION_RULES.md) (do not paste into context — open by section).

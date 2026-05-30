@@ -52,6 +52,11 @@ select {
   line-height: 1.2;
 }
 
+/* Prose article headings: avoid global 1.2 leading clipping descenders */
+article .prose :where(h2, h3, h4) {
+  line-height: var(--line-height-snug);
+}
+
 a {
   touch-action: manipulation;
 }

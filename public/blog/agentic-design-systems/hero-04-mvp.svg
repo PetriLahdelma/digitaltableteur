@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">Minimum viable agent-ready design system</title>
+  <desc id="d">Six layers built bottom-up for small squads</desc>
+  <rect width="1200" height="630" fill="#0a0c10"/>
+  <text x="80" y="88" fill="#e8eaed" font-family="system-ui,sans-serif" font-size="28" font-weight="700">Minimum viable · agent-ready</text>
+  <text x="80" y="124" fill="#9aa0a6" font-family="system-ui,sans-serif" font-size="16">Agentic Design Systems · Part 4 of 5</text>
+  <g font-family="system-ui,sans-serif" font-size="16" fill="#e8eaed">
+    <rect x="520" y="480" width="360" height="48" rx="8" fill="#151820" stroke="#4a5260"/><text x="700" y="512" text-anchor="middle">1 · Tokens</text>
+    <rect x="480" y="418" width="400" height="48" rx="8" fill="#151820" stroke="#4a5260"/><text x="680" y="450" text-anchor="middle">2 · Patterns</text>
+    <rect x="440" y="356" width="440" height="48" rx="8" fill="#151820" stroke="#4a5260"/><text x="660" y="388" text-anchor="middle">3 · Components</text>
+    <rect x="400" y="294" width="480" height="48" rx="8" fill="#151820" stroke="#bfff00" stroke-width="1.5"/><text x="640" y="326" text-anchor="middle" font-weight="700">4 · Contracts</text>
+    <rect x="360" y="232" width="520" height="48" rx="8" fill="#151820" stroke="#4a5260"/><text x="620" y="264" text-anchor="middle">5 · Verification</text>
+    <rect x="320" y="170" width="560" height="48" rx="8" fill="#151820" stroke="#bfff00" stroke-width="2"/><text x="600" y="202" text-anchor="middle" font-weight="700">6 · Governance</text>
+  </g>
+  <text x="200" y="360" fill="#9aa0a6" font-family="system-ui,sans-serif" font-size="15">Cathedral optional.</text>
+  <text x="200" y="390" fill="#bfff00" font-family="system-ui,sans-serif" font-size="15" font-weight="600">Enforceable required.</text>
+</svg>

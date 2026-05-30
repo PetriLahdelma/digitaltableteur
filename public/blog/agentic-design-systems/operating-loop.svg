@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic operating loop</title>
+  <desc id="desc">Intent, rules, output, evidence, and better rules in a cycle</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#bfff00"/>
+    </marker>
+  </defs>
+  <rect width="720" height="200" rx="12" fill="#0f1115"/>
+  <g font-family="system-ui,sans-serif" font-size="13" fill="#e8eaed">
+    <rect x="24" y="72" width="110" height="56" rx="8" fill="#1a1d24" stroke="#bfff00" stroke-width="1.5"/>
+    <text x="79" y="104" text-anchor="middle" font-weight="600">Intent</text>
+    <rect x="158" y="72" width="110" height="56" rx="8" fill="#1a1d24" stroke="#5c6370"/>
+    <text x="213" y="104" text-anchor="middle" font-weight="600">Rules</text>
+    <rect x="292" y="72" width="110" height="56" rx="8" fill="#1a1d24" stroke="#5c6370"/>
+    <text x="347" y="104" text-anchor="middle" font-weight="600">Output</text>
+    <rect x="426" y="72" width="110" height="56" rx="8" fill="#1a1d24" stroke="#5c6370"/>
+    <text x="481" y="104" text-anchor="middle" font-weight="600">Evidence</text>
+    <rect x="560" y="72" width="136" height="56" rx="8" fill="#1a1d24" stroke="#bfff00" stroke-width="1.5"/>
+    <text x="628" y="104" text-anchor="middle" font-weight="600">Better rules</text>
+    <path d="M134 100 H158 M268 100 H292 M402 100 H426 M536 100 H560" stroke="#bfff00" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M628 128 Q628 168 79 168 Q24 168 24 128" fill="none" stroke="#5c6370" stroke-width="1.5" stroke-dasharray="4 4"/>
+  </g>
+</svg>

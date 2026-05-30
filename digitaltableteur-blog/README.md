@@ -14,6 +14,6 @@ Now you can do the following things:
 
 The Next.js app consumes a build-time blog manifest at `nextjs-app/shared/data/blogManifest.ts` to surface articles.
 
-- The manifest is auto-generated before dev/build via root scripts (`predev`/`prebuild`).
+- The manifest is auto-generated before **build** (`prebuild`). After editing MDX locally, run `npm run generate:blog` or `npm run dev:full`.
 - The root `scripts/publish-from-sanity.sh` triggers manifest regeneration after syncing content.
 - If articles don’t appear, run `node scripts/generate-blog-manifest.mjs` from the root repo or restart the dev server.

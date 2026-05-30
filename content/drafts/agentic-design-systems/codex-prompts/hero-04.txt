@@ -1,0 +1,12 @@
+$imagegen
+
+Generate ONE editorial blog hero PNG, landscape 1536x1024.
+
+Subject: Minimum viable agent-ready design system as six thin horizontal slabs stacked like an engineering specimen — tokens, components, stories, contracts, CI, review. Modest, precise, not enterprise clipart.
+
+Palette: #041b23, #f4f1ea, #85b5bd, #812eff sparingly. Editorial print style, no text.
+
+Avoid: neon, purple gradients, 3D glass, robots, vibe-coded AI.
+
+Save to: public/blog/agentic-design-systems/hero-04-mvp.png
+Then ls -la that file.
