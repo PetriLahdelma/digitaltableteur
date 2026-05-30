@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 160" role="img" aria-labelledby="title desc">
+  <title id="title">Design system maturity for agents</title>
+  <desc id="desc">Readability, executability, and survivability progression</desc>
+  <rect width="720" height="160" rx="12" fill="#0f1115"/>
+  <g font-family="system-ui,sans-serif" font-size="13" fill="#e8eaed">
+    <rect x="40" y="48" width="180" height="64" rx="8" fill="#1a1d24" stroke="#5c6370"/>
+    <text x="130" y="76" text-anchor="middle" font-weight="700">1 Readability</text>
+    <text x="130" y="98" text-anchor="middle" fill="#9aa0a6" font-size="11">Find the right piece</text>
+    <rect x="270" y="48" width="180" height="64" rx="8" fill="#1a1d24" stroke="#bfff00" stroke-width="1.5"/>
+    <text x="360" y="76" text-anchor="middle" font-weight="700">2 Executability</text>
+    <text x="360" y="98" text-anchor="middle" fill="#bfff00" font-size="11">Validate mechanically</text>
+    <rect x="500" y="48" width="180" height="64" rx="8" fill="#1a1d24" stroke="#5c6370"/>
+    <text x="590" y="76" text-anchor="middle" font-weight="700">3 Survivability</text>
+    <text x="590" y="98" text-anchor="middle" fill="#9aa0a6" font-size="11">Change without breakage</text>
+    <path d="M220 80 H270 M450 80 H500" stroke="#bfff00" stroke-width="2"/>
+  </g>
+</svg>

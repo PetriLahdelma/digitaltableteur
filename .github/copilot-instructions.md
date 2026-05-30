@@ -167,7 +167,7 @@ npm run eslint-fix   # Auto-fix linting issues
 
 - Blog article discovery uses a build-time manifest at `nextjs-app/shared/data/blogManifest.ts`.
 - The manifest is auto-generated:
-  - Before dev and build via `predev`/`prebuild` scripts.
+  - Before build via `prebuild`; after local MDX edits run `npm run generate:blog` (or `npm run dev:full`).
   - After running `scripts/publish-from-sanity.sh` for single or bulk publishes.
 - If articles don’t appear, run `node scripts/generate-blog-manifest.mjs` manually or restart dev.
 - Keep MDX sources under `content/posts/` for inclusion.

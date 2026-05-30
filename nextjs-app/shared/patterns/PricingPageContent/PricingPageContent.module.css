@@ -23,27 +23,77 @@
   }
 }
 
-/* Hero */
+/* Hero — full-bleed image with light surface wash (image barely visible) */
 
-.hero {
-  padding-block: var(--space-layout-64);
+.heroBleed {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  min-height: 52vh;
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.heroBleedImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroBleedOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Always a light wash — image barely visible beneath */
+  background-color: rgb(255 255 255 / 0.91);
+}
+
+.heroBleedContent {
+  position: relative;
+  z-index: 2;
+  /* Dark ink on light hero — stable across theme switches */
+  --color-title: #041b23;
+  color: #041b23;
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-lg);
+  padding-block: var(--space-layout-48);
+  padding-inline: var(--page-margin-mobile);
+}
+
+@media (width >= 768px) {
+  .heroBleedContent {
+    padding-inline: var(--page-margin-tablet);
+  }
 }
 
 @media (width >= 1024px) {
-  .hero {
-    padding-block: var(--space-layout-120);
+  .heroBleed {
+    min-height: 56vh;
+  }
+
+  .heroBleedContent {
+    padding-block: var(--space-layout-56);
+    padding-inline: var(--page-margin-desktop);
   }
 }
 
 .heroTitle {
   margin: 0;
   max-width: min(28ch, 100%);
+  color: inherit;
 }
 
 .heroTitleClosing {
   display: block;
   margin-block-start: var(--space-layout-8);
   text-wrap: balance;
+  color: inherit;
 }
 
 @media (width >= 768px) {
@@ -53,17 +103,22 @@
   }
 }
 
-/* Value proposition + comparison */
+/* Legacy hero block removed — kept selector out of cascade */
+
 
 .value {
   display: flex;
   flex-direction: column;
-  padding-block-end: var(--space-layout-80);
-  gap: var(--space-layout-48);
+  justify-content: center;
+  align-items: stretch;
+  min-height: 36vh;
+  padding-block: var(--space-layout-48);
 }
 
 .comparisonGrid {
   display: grid;
+  align-items: stretch;
+  width: 100%;
   gap: var(--space-layout-32);
 }
 
@@ -77,7 +132,14 @@
 .comparisonColumn {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: var(--space-layout-24);
+}
+
+@media (width >= 768px) {
+  .comparisonColumn {
+    height: 100%;
+  }
 }
 
 .comparisonTitle {
@@ -95,7 +157,7 @@
 
 .comparisonItem {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1em;
 }
 
@@ -104,7 +166,6 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  margin-block-start: 2px;
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 50%;
@@ -245,7 +306,7 @@
   padding: var(--space-layout-24);
   gap: var(--space-layout-12);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md, 8px);
+  border-radius: var(--space-layout-16);
 }
 
 .packageHeader {

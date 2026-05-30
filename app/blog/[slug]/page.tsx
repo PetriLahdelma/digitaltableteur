@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 
+import {
+  PREVIEW_DRAFTS_COOKIE,
+  shouldShowUnpublishedPosts,
+} from "@/lib/blog/postVisibility";
 import { getPostMetaBySlug } from "../postMetadata";
 import { getArticleSchema, stringifyJsonLd } from "@/app/lib/structuredData";
 import ClientArticle from "./ClientArticle";
@@ -13,13 +18,21 @@ const siteBase =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://digitaltableteur.com";
 
+async function getPreviewOptions() {
+  const cookieStore = await cookies();
+  const showUnpublished = shouldShowUnpublishedPosts({
+    previewCookie: cookieStore.get(PREVIEW_DRAFTS_COOKIE)?.value,
+  });
+  return { showUnpublished };
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostMetaBySlug(slug);
+  const post = getPostMetaBySlug(slug, await getPreviewOptions());
 
   if (!post) {
     return {
@@ -31,6 +44,9 @@ export async function generateMetadata({
   const title = post.seoTitle ?? `${post.title} | Digitaltableteur`;
   const description = post.seoDescription ?? post.excerpt;
   const url = `${siteBase}/blog/${post.slug}`;
+  const ogImageUrl = post.mainImageUrl?.startsWith("/")
+    ? `${siteBase}${post.mainImageUrl}`
+    : post.mainImageUrl;
 
   return {
     title,
@@ -41,11 +57,11 @@ export async function generateMetadata({
       description,
       url,
       publishedTime: post.publishedAt,
-      ...(post.mainImageUrl
+      ...(ogImageUrl
         ? {
             images: [
               {
-                url: post.mainImageUrl,
+                url: ogImageUrl,
                 alt: post.mainImageAlt || post.title,
               },
             ],
@@ -56,7 +72,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      ...(post.mainImageUrl ? { images: [post.mainImageUrl] } : {}),
+      ...(ogImageUrl ? { images: [ogImageUrl] } : {}),
     },
     alternates: {
       canonical: url,
@@ -70,7 +86,7 @@ export default async function BlogArticle({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const post = getPostMetaBySlug(slug);
+  const post = getPostMetaBySlug(slug, await getPreviewOptions());
 
   if (!post) {
     notFound();

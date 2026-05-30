@@ -1,0 +1,15 @@
+$imagegen
+
+Generate FIVE editorial inline illustration PNGs for a design-system blog series. Same visual language for all: print/editorial, palette #041b23 #f4f1ea #85b5bd #812eff accent only, subtle grain, NO readable text, no neon/3D glass/robots/vibe-coded AI. Each 1200x800 landscape, generous margins, single clear focal diagram.
+
+1) public/blog/agentic-design-systems/fig-operating-loop.png — simple circular operating loop, five nodes, museum plate style.
+
+2) public/blog/agentic-design-systems/fig-tools-layers.png — three stacked layers cut-paper section.
+
+3) public/blog/agentic-design-systems/fig-contract-layers.png — documentation sheet becoming enforced grid, two tiers suggested.
+
+4) public/blog/agentic-design-systems/fig-mvp-stack.png — six thin horizontal specimen slabs.
+
+5) public/blog/agentic-design-systems/fig-agentops-bridge.png — bridge from calm process nodes to tighter loop.
+
+Save each to the exact path. After all five, run ls -la on each file and report dimensions with sips.

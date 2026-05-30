@@ -122,6 +122,10 @@ const nextConfig: NextConfig = {
   ],
   // Image optimization configuration
   images: {
+    // Local SVG heroes/diagrams use <img> via BlogMediaImage; this allows raster fallbacks.
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     // Enable modern image formats for better compression
     formats: ["image/avif", "image/webp"],
     // Device sizes for responsive images
@@ -201,7 +205,17 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  webpack: (config) => {
+  webpack: (config, { dev }) => {
+    // Avoid multi-GB `.next/cache/webpack` on disk — it can add minutes to every
+    // `next dev` startup while webpack validates a stale cache. Memory cache is
+    // enough for a single dev session; predev prunes oversized disk cache if present.
+    if (dev) {
+      config.cache = {
+        type: "memory",
+        maxGenerations: 2,
+      };
+    }
+
     // Path aliases
     // Path aliases (Vercel/Linux safe, works even if tsconfig paths are ignored)
     const nextjsSharedComponents = path.resolve(
