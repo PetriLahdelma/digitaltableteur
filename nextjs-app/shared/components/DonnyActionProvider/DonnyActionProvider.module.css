@@ -1,0 +1,54 @@
+/* Spotlight overlay — fixed layer, no layout shift */
+.spotlightLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-index-overlay, 900);
+}
+
+.spotlightFrame,
+.spotlightFrameStatic {
+  position: fixed;
+  border: 2px solid var(--color-primary, #041b23);
+  border-radius: var(--radius-md, 8px);
+  box-shadow:
+    0 0 0 9999px rgb(4 27 35 / 28%),
+    0 0 0 4px rgb(4 27 35 / 12%);
+}
+
+.spotlightFrame {
+  animation: donny-spotlight-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes donny-spotlight-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 9999px rgb(4 27 35 / 28%),
+      0 0 0 4px rgb(4 27 35 / 12%);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 9999px rgb(4 27 35 / 34%),
+      0 0 0 6px rgb(4 27 35 / 20%);
+  }
+}
+
+.liveRegion {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  block-size: 1px;
+  inline-size: 1px;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlightFrame {
+    animation: none;
+  }
+}

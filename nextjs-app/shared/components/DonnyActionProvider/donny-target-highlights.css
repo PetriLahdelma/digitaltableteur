@@ -1,0 +1,39 @@
+/**
+ * Donny page-target highlight styles (plain CSS — applied via data attributes on page nodes).
+ * Kept outside CSS Modules to avoid :global purity build errors.
+ */
+
+[data-donny-active="true"][data-donny-highlight="underline"] {
+  outline: 2px solid var(--color-primary, #041b23);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+[data-donny-active="true"][data-donny-highlight="focus"] {
+  outline: 3px solid var(--color-primary, #041b23);
+  outline-offset: 6px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+[data-donny-active="true"][data-donny-highlight="pulse"] {
+  outline: 2px solid var(--color-primary, #041b23);
+  outline-offset: 4px;
+  animation: donny-target-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes donny-target-pulse {
+  0%,
+  100% {
+    outline-color: var(--color-primary, #041b23);
+  }
+
+  50% {
+    outline-color: var(--color-accent, #00c2ff);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-donny-active="true"][data-donny-highlight="pulse"] {
+    animation: none;
+  }
+}

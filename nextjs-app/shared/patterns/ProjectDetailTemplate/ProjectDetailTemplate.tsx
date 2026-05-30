@@ -2,6 +2,7 @@
 
 import { type ReactNode } from "react";
 import { type Project } from "../../data/projects";
+import { getDonnyProjectTargetId } from "../../data/donny-site-actions";
 import { ProjectDetailLayout } from "../ProjectDetailLayout";
 import { ProjectHero, type ProjectHeroImage } from "../ProjectHero";
 import { ProjectMetaSection, type ToolItem, type TeamMember, type ClientInfo } from "../ProjectMetaSection";
@@ -53,10 +54,14 @@ export function ProjectDetailTemplate({
 }: ProjectDetailTemplateProps) {
   // Format category for display
   const categoryDisplay = project.category.replace("-", " ");
+  const projectRootTarget = getDonnyProjectTargetId(project.slug, "root");
+  const projectOverviewTarget = getDonnyProjectTargetId(project.slug, "overview");
+  const projectProofTarget = getDonnyProjectTargetId(project.slug, "proof");
 
   return (
     <ProjectDetailLayout
       className={className}
+      donnyTarget={projectRootTarget}
       nav={nav ?? <ProjectNav currentSlug={project.slug} />}
       hero={
         <ProjectHero
@@ -84,6 +89,7 @@ export function ProjectDetailTemplate({
         client={meta.client}
         overview={meta.overview}
         background="muted"
+        donnyTarget={projectOverviewTarget}
       />
 
       {/* Content sections */}
@@ -96,6 +102,7 @@ export function ProjectDetailTemplate({
           images={section.images}
           imageLayout={section.imageLayout}
           background={section.background}
+          donnyTarget={index === 0 ? projectProofTarget : undefined}
         />
       ))}
 

@@ -9,6 +9,8 @@ export interface SectionProps {
   background?: "default" | "muted" | "accent" | "inverse";
   className?: string;
   id?: string;
+  /** Whitelisted Donny spotlight / navigation target id */
+  donnyTarget?: string;
 }
 
 const spacingClasses = {
@@ -30,11 +32,12 @@ const backgroundClasses = {
  * Section component.
  */
 export const Section = forwardRef<HTMLElement, SectionProps>(
-  ({ children, spacing = "md", background = "default", className, id }, ref) => {
+  ({ children, spacing = "md", background = "default", className, id, donnyTarget }, ref) => {
     return (
       <section
         ref={ref}
         id={id}
+        data-donny-target={donnyTarget}
         className={cn(
           spacingClasses[spacing],
           backgroundClasses[background],

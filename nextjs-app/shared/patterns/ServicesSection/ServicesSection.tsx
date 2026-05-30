@@ -16,6 +16,8 @@ export interface ServiceItem {
   description: string;
   /** Optional link URL */
   href?: string;
+  /** Donny site action target id when this card is a spotlight anchor */
+  donnyTarget?: string;
 }
 
 export interface ServicesSectionProps {
@@ -33,6 +35,8 @@ export interface ServicesSectionProps {
   className?: string;
   /** Section ID for navigation */
   id?: string;
+  /** Donny site action target id for this section */
+  donnyTarget?: string;
 }
 
 /**
@@ -46,6 +50,7 @@ export function ServicesSection({
   cardVariant = "default",
   className,
   id = "services",
+  donnyTarget = "home.services",
 }: ServicesSectionProps) {
   // Grid column classes - using standard Tailwind breakpoints (md: 768px, lg: 1024px)
   const gridClasses = cn(
@@ -58,6 +63,7 @@ export function ServicesSection({
   return (
     <Section
       id={id}
+      donnyTarget={donnyTarget}
       className={cn("py-24 desktop:py-32", className)}
       aria-labelledby={title ? `${id}-title` : undefined}
     >
@@ -97,6 +103,7 @@ export function ServicesSection({
                 description={service.description}
                 href={service.href}
                 variant={cardVariant}
+                donnyTarget={service.donnyTarget}
               />
             </FadeIn>
           ))}

@@ -49,15 +49,18 @@
   position: absolute;
   inset: 0;
   z-index: 1;
+
   /* Always a light wash — image barely visible beneath */
-  background-color: rgb(255 255 255 / 0.91);
+  background-color: rgb(255 255 255 / 91%);
 }
 
 .heroBleedContent {
   position: relative;
   z-index: 2;
+
   /* Dark ink on light hero — stable across theme switches */
   --color-title: #041b23;
+
   color: #041b23;
   margin-inline: auto;
   width: 100%;

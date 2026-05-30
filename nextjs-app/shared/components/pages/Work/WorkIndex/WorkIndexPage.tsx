@@ -43,7 +43,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" data-donny-target="work.index">
       {/* Navigation (if provided) */}
       {nav}
 
