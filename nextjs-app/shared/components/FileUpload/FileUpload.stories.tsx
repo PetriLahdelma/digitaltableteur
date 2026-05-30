@@ -118,6 +118,12 @@ export default {
     disabled: { control: "boolean", description: "Disables the control" },
 
     required: { control: "boolean", description: "Marks field as required" },
+
+    appearance: {
+      control: "select",
+      options: ["default", "editorial"],
+      description: "Visual variant — editorial matches FormFieldEditorial / Combobox",
+    },
     value: {
       table: { disable: true },
       description: "Controlled File value (managed in stories)",

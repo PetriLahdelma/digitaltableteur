@@ -1,0 +1,53 @@
+.inner {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-internal-6);
+  padding: var(--space-internal-12)
+    calc(var(--space-internal-32) + var(--space-internal-8))
+    var(--space-internal-12) var(--space-internal-16);
+  min-width: 0;
+}
+
+.control {
+  cursor: text;
+}
+
+.input {
+  flex: 1 1 6rem;
+  min-width: 6rem;
+  padding: var(--space-internal-4) 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text);
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.badgeWrap {
+  display: inline-flex;
+  max-width: 100%;
+}
+
+.badge {
+  max-width: 100%;
+}
+
+.badgeLabel {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
