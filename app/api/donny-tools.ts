@@ -18,6 +18,12 @@ import {
   resolveDonnyMailRequestType,
   type DonnyMailRequestType,
 } from "@/nextjs-app/shared/data/donny-mail-requests";
+import {
+  clampDonnyExpressionDurationMs,
+  DONNY_EXPRESSION_LABELS,
+  listDonnyShowcaseExpressions,
+  resolveDonnyShowcaseExpression,
+} from "@/nextjs-app/shared/data/donny-expressions";
 import { VERTAAUX_ACCESSIBILITY_OFFER } from "@/nextjs-app/shared/data/donny-vertaaux-offer";
 
 // ToolSet type matches ai package's expected tool shape
@@ -484,6 +490,88 @@ const staticTools: ToolMap = {
         requestType,
         mailtoUrl: buildDonnyMailtoUrl(requestType),
         opened: true,
+      };
+    },
+  }),
+
+  "studio.listExpressions": tool({
+    description:
+      "List Donny's showcase avatar moods/expressions. Use when the user asks what faces, moods, or expressions Donny can show.",
+    inputSchema: jsonSchema({
+      type: "object",
+      properties: {},
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema<{
+      expressions: Array<{ id: string; label: string }>;
+    }>({
+      type: "object",
+      required: ["expressions"],
+      properties: {
+        expressions: {
+          type: "array",
+          items: {
+            type: "object",
+            required: ["id", "label"],
+            properties: {
+              id: { type: "string" },
+              label: { type: "string" },
+            },
+            additionalProperties: false,
+          },
+        },
+      },
+      additionalProperties: false,
+    }),
+    async execute() {
+      return { expressions: listDonnyShowcaseExpressions() };
+    },
+  }),
+
+  "studio.showExpression": tool({
+    description:
+      "Show Donny's avatar in a specific mood or expression. Use when the user asks to see a face, mood, expression, or personality demo (e.g. 'look happy', 'show me your confused face', 'what moods can you make?').",
+    inputSchema: jsonSchema<{
+      expression: string;
+      durationMs?: number;
+    }>({
+      type: "object",
+      required: ["expression"],
+      properties: {
+        expression: {
+          type: "string",
+          description:
+            "Mood to show: canonical id (celebrating, confused, playful, thinking, impressed, skeptical, waving, apologetic, confident, suggesting, remembering, focused, greeting, curious) or alias (happy, sad, surprised, wave, etc.).",
+        },
+        durationMs: {
+          type: "number",
+          description:
+            "How long to hold the expression in milliseconds (800–8000, default 2500).",
+        },
+      },
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema<{
+      expression: string;
+      label: string;
+      durationMs: number;
+    }>({
+      type: "object",
+      required: ["expression", "label", "durationMs"],
+      properties: {
+        expression: { type: "string" },
+        label: { type: "string" },
+        durationMs: { type: "number" },
+      },
+      additionalProperties: false,
+    }),
+    async execute(input) {
+      const expression = resolveDonnyShowcaseExpression(input?.expression);
+      const durationMs = clampDonnyExpressionDurationMs(input?.durationMs);
+      return {
+        expression,
+        label: DONNY_EXPRESSION_LABELS[expression],
+        durationMs,
       };
     },
   }),
