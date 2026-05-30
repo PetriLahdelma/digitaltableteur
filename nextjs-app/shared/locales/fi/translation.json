@@ -497,6 +497,8 @@
   "errorRetry": "Yritä uudelleen",
   "cookieConsent": {
     "title": "Evästehyväksyntä",
+    "bannerLabel": "Evästeasetukset",
+    "bannerSummary": "Käytämme evästeitä parantaaksemme kokemustasi.",
     "description": "Digitaltableteur käyttää evästeitä parantaakseen kokemustasi. Voit mukauttaa, mitä evästeitä käytämme, hyväksyä kaikki tai hyväksyä vain sivuston toiminnalle välttämättömät evästeet.",
     "detailedDescription": "Mukauta, mitkä evästeluokat haluat sallia. Välttämättömiä evästeitä ei voi poistaa käytöstä, sillä ne ovat välttämättömiä sivuston perustoiminnoille.",
     "customizeButton": "Mukauta asetuksia",
