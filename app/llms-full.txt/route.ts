@@ -135,6 +135,9 @@ export async function GET() {
   body += `- Skills index (JSON): ${baseUrl}/.well-known/agent-skills/index.json\n`;
   body += `- dt-workflow (ultracode bulk sweeps): ${baseUrl}/.well-known/agent-skills/dt-workflow\n`;
   body += `- Workflow templates: ${baseUrl}/.well-known/agent-skills/dt-workflow/references/templates.md\n`;
+  body += `- MCP server card: ${baseUrl}/.well-known/mcp/server-card.json\n`;
+  body += `- MCP endpoint: ${baseUrl}/mcp\n`;
+  body += `- Agent auth policy: ${baseUrl}/auth.md\n`;
   body += `- dt-design-system, dt-nextjs-app, dt-api-routes, dt-scripts, dt-sanity-cms, dt-ship-pr: same index\n`;
   body += `- Workflow prompt templates live in repo: .claude/skills/dt-workflow/references/templates.md\n`;
   body += `- Human index: repo AGENT_INDEX.md; architecture: docs/AGENT_WORKFLOW.md\n\n`;
