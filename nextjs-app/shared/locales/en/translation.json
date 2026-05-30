@@ -45,6 +45,8 @@
   "chatErrorFallback": "I couldn’t reach our studio brain right now. Please retry in a moment.",
   "chatEmailSendPhrase": "Sure thing! Let's send an email!",
   "chatEmailSimplePhrase": "Our email is mail@digitaltableteur.com. Would you like to send an email now?",
+  "chatVertaauxCaseStudy": "Read the VertaaUX case study",
+  "chatVertaauxProduct": "Score your accessibility with VertaaUX",
   "chatThinking": "Thinking…",
   "chatEllipsis": "…",
   "chatMessages.empty": "No messages yet. Start a conversation!",

@@ -8,7 +8,17 @@ import {
   isOpenAt,
   type DayHours,
 } from "@/nextjs-app/shared/data/openHours";
-import { sortedProjects, resolveProjectNavigationPath } from "@/nextjs-app/shared/data/projects";
+import {
+  sortedProjects,
+  resolveProjectNavigationPath,
+} from "@/nextjs-app/shared/data/projects";
+import { resolveDonnyNavigationPath } from "@/nextjs-app/shared/data/donny-navigation";
+import {
+  buildDonnyMailtoUrl,
+  resolveDonnyMailRequestType,
+  type DonnyMailRequestType,
+} from "@/nextjs-app/shared/data/donny-mail-requests";
+import { VERTAAUX_ACCESSIBILITY_OFFER } from "@/nextjs-app/shared/data/donny-vertaaux-offer";
 
 // ToolSet type matches ai package's expected tool shape
 type ToolMap = Record<string, Tool<any, any>>;
@@ -363,7 +373,7 @@ const staticTools: ToolMap = {
 
   "studio.navigateTo": tool({
     description:
-      "Navigate the user to a specific page or project case study. Accepts internal paths (/work, /work/{slug}, /contact) OR project names/slugs (e.g. 'SAP Build Apps', 'vertaaux', 'helsinki'). Use when the user asks to navigate, open, go to, or show me a page or project.",
+      "Navigate the user to a page on digitaltableteur.com. Accepts paths (/pricing, /work, /contact) OR natural language (prices, packages, SAP Build Apps, vertaaux). Use when the user asks to navigate, open, go to, view, or show me a page, prices, packages, project, or section.",
     inputSchema: jsonSchema<{
       destination: string;
       section?: string;
@@ -375,7 +385,7 @@ const staticTools: ToolMap = {
         destination: {
           type: "string",
           description:
-            "Internal path (/work/vertaaux) or project name/slug (vertaaux, SAP Build Apps, Helsinki Design System).",
+            "Internal path (/pricing, /work/vertaaux) or natural language (prices, packages, SAP Build Apps, contact).",
         },
         section: {
           type: "string",
@@ -404,7 +414,7 @@ const staticTools: ToolMap = {
       let dest = raw;
 
       if (!raw.startsWith("/")) {
-        const resolved = resolveProjectNavigationPath(raw);
+        const resolved = resolveDonnyNavigationPath(raw);
         if (resolved) {
           dest = resolved;
         }
@@ -416,6 +426,87 @@ const staticTools: ToolMap = {
       const safePath = isInternal ? dest.split("#")[0] : "/";
       const url = input?.section ? `${safePath}#${input.section}` : safePath;
       return { navigated: isInternal && safePath !== "/", url };
+    },
+  }),
+
+  "studio.composeMailRequest": tool({
+    description:
+      "Open the visitor's email client with a pre-filled message to mail@digitaltableteur.com. Use for 'Request a CV', 'Request a portfolio', or similar email requests — not for general contact form questions.",
+    inputSchema: jsonSchema<{
+      requestType?: DonnyMailRequestType;
+      query?: string;
+    }>({
+      type: "object",
+      properties: {
+        requestType: {
+          type: "string",
+          enum: ["cv", "portfolio"],
+          description:
+            "Use 'cv' for CV/resume requests and 'portfolio' for curated work samples requests.",
+        },
+        query: {
+          type: "string",
+          description:
+            "Optional natural-language fallback, e.g. 'request a CV' or 'request a portfolio'.",
+        },
+      },
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema<{
+      requestType: DonnyMailRequestType;
+      mailtoUrl: string;
+      opened: boolean;
+    }>({
+      type: "object",
+      required: ["requestType", "mailtoUrl", "opened"],
+      properties: {
+        requestType: { type: "string", enum: ["cv", "portfolio"] },
+        mailtoUrl: { type: "string" },
+        opened: { type: "boolean" },
+      },
+      additionalProperties: false,
+    }),
+    async execute(input) {
+      let requestType = input?.requestType;
+      if (requestType !== "cv" && requestType !== "portfolio" && input?.query) {
+        requestType = resolveDonnyMailRequestType(input.query) ?? undefined;
+      }
+
+      if (requestType !== "cv" && requestType !== "portfolio") {
+        return {
+          requestType: "cv",
+          mailtoUrl: buildDonnyMailtoUrl("cv"),
+          opened: false,
+        };
+      }
+
+      return {
+        requestType,
+        mailtoUrl: buildDonnyMailtoUrl(requestType),
+        opened: true,
+      };
+    },
+  }),
+
+  "studio.vertaauxAccessibility": tool({
+    description:
+      "Recommend VertaaUX when the user asks about accessibility issues, WCAG, audits, a11y tooling, screen readers, or inclusive design. Returns links to the VertaaUX case study and the live product at vertaaux.ai.",
+    inputSchema: jsonSchema({
+      type: "object",
+      properties: {},
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema({
+      type: "object",
+      required: ["caseStudyUrl", "productUrl"],
+      properties: {
+        caseStudyUrl: { type: "string" },
+        productUrl: { type: "string" },
+      },
+      additionalProperties: false,
+    }),
+    async execute() {
+      return { ...VERTAAUX_ACCESSIBILITY_OFFER };
     },
   }),
 
