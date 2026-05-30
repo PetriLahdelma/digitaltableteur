@@ -51,6 +51,16 @@ const meta = {
       description: "Accessible section label override",
       table: { disable: true },
     },
+    id: {
+      control: "text",
+      description: "Section anchor id",
+      table: { disable: true },
+    },
+    donnyTarget: {
+      control: "text",
+      description: "Donny spotlight target id",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof HighlightSection>;
