@@ -5,6 +5,7 @@ import {
   donnyTargetSelector,
   getDonnyTarget,
   getDonnyTargetByPackageId,
+  getDonnyProjectTargetId,
   getDonnyTargetCatalog,
   getDonnyTargetsByIntent,
   getDonnyTargetsByRoute,
@@ -98,5 +99,18 @@ describe("donny-site-actions", () => {
     for (const id of proofIds) {
       expect(getDonnyTarget(id)?.projectSlug).toBeTruthy();
     }
+  });
+
+  it("maps project slugs to registry target ids", () => {
+    expect(getDonnyProjectTargetId("sap-build-apps", "root")).toBe(
+      "work.project.sapBuildApps",
+    );
+    expect(getDonnyProjectTargetId("sap-build-apps", "overview")).toBe(
+      "work.project.sapBuildApps.overview",
+    );
+    expect(getDonnyProjectTargetId("sap-build-apps", "proof")).toBe(
+      "work.project.sapBuildApps.proof",
+    );
+    expect(getDonnyProjectTargetId("unknown-project")).toBeUndefined();
   });
 });

@@ -334,8 +334,27 @@ export function getDonnyTargetByPackageId(packageId: string): DonnyTarget | unde
 
 export function getDonnyTargetByProjectSlug(slug: string): DonnyTarget | undefined {
   return DONNY_SITE_TARGETS.find(
-    (entry) => entry.projectSlug === slug && !entry.id.includes(".overview") && !entry.id.includes(".proof"),
+    (entry) =>
+      entry.projectSlug === slug &&
+      !entry.id.endsWith(".overview") &&
+      !entry.id.endsWith(".proof"),
   );
+}
+
+const PROJECT_SLUG_TO_ROOT: Partial<Record<string, DonnyTargetId>> = {
+  "sap-build-apps": "work.project.sapBuildApps",
+  "helsinki-design-system": "work.project.helsinkiDesignSystem",
+};
+
+export function getDonnyProjectTargetId(
+  slug: string,
+  section: "root" | "overview" | "proof" = "root",
+): DonnyTargetId | undefined {
+  const root = PROJECT_SLUG_TO_ROOT[slug];
+  if (!root) return undefined;
+  if (section === "root") return root;
+  if (section === "overview") return `${root}.overview` as DonnyTargetId;
+  return `${root}.proof` as DonnyTargetId;
 }
 
 /** Compact registry shape for model-facing tools. */

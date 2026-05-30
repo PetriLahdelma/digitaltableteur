@@ -34,6 +34,8 @@ export interface ContentSectionProps {
   centered?: boolean;
   /** Custom className */
   className?: string;
+  /** Donny site action target id for this content block */
+  donnyTarget?: string;
 }
 
 const backgroundClasses: Record<NonNullable<ContentSectionProps["background"]>, string> = {
@@ -51,6 +53,7 @@ export function ContentSection({
   background = "default",
   centered = false,
   className,
+  donnyTarget,
 }: ContentSectionProps) {
   // Normalize images to array
   const imageArray = images
@@ -69,6 +72,7 @@ export function ContentSection({
     <Section
       spacing="lg"
       background="default"
+      donnyTarget={donnyTarget}
       className={cn(backgroundClasses[background], className)}
     >
       <Container size="md">

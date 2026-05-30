@@ -19,6 +19,8 @@ export interface ProjectDetailLayoutProps {
   showScrollProgress?: boolean;
   /** Custom className */
   className?: string;
+  /** Donny site action target id for the project main landmark */
+  donnyTarget?: string;
 }
 
 function ScrollProgress() {
@@ -63,6 +65,7 @@ export function ProjectDetailLayout({
   relatedProjects,
   showScrollProgress = true,
   className,
+  donnyTarget,
 }: ProjectDetailLayoutProps) {
   const mainRef = useRef<HTMLElement>(null);
 
@@ -72,6 +75,7 @@ export function ProjectDetailLayout({
       <main
         ref={mainRef}
         className={cn("min-h-screen", className)}
+        data-donny-target={donnyTarget}
       >
         {/* Navigation - sticky below header */}
         {nav && (

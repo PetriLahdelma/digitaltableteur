@@ -20,6 +20,7 @@ export {
   getDonnyTargetOrThrow,
   getDonnyTargetByPackageId,
   getDonnyTargetByProjectSlug,
+  getDonnyProjectTargetId,
   getDonnyTargetCatalog,
   getDonnyTargetsByIntent,
   getDonnyTargetsByRoute,
