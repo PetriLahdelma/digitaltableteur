@@ -4,15 +4,16 @@ import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import CookieConsentBanner from "./CookieConsentBanner";
 
-// Mock dependencies
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key: string) => {
       const translations: Record<string, string> = {
-        "cookieConsent.bannerLabel": "Cookie Consent Banner",
-        "cookieConsent.expandBanner": "Expand Banner",
-        "cookieConsent.acceptEssentialButton": "Accept Essential",
-        "cookieConsent.acceptAllButton": "Accept All",
+        "cookieConsent.bannerLabel": "Cookie preferences",
+        "cookieConsent.bannerSummary": "We use cookies to improve your experience.",
+        "cookieConsent.policyLinkText": "cookie policy",
+        "cookieConsent.customizeButton": "Customize settings",
+        "cookieConsent.acceptEssentialButton": "Only essential",
+        "cookieConsent.acceptAllButton": "Accept all",
       };
       return translations[key] || key;
     },
@@ -28,41 +29,46 @@ vi.mock("../../lib/cookieConsent", () => ({
 
 describe("CookieConsentBanner", () => {
   it("renders banner with correct region role", () => {
-    render(<CookieConsentBanner onExpand={vi.fn()} />);
+    render(<CookieConsentBanner onCustomize={vi.fn()} />);
     expect(
-      screen.getByRole("region", { name: "Cookie Consent Banner" }),
+      screen.getByRole("region", { name: "Cookie preferences" }),
     ).toBeInTheDocument();
   });
 
-  it("renders expand button", () => {
-    render(<CookieConsentBanner onExpand={vi.fn()} />);
+  it("renders summary copy and policy link", () => {
+    render(<CookieConsentBanner onCustomize={vi.fn()} />);
     expect(
-      screen.getByRole("button", { name: "Expand Banner" }),
+      screen.getByText(/We use cookies to improve your experience/i),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "cookie policy" })).toHaveAttribute(
+      "href",
+      "/privacy-policy",
+    );
+  });
+
+  it("renders customize button", () => {
+    render(<CookieConsentBanner onCustomize={vi.fn()} />);
+    expect(
+      screen.getByRole("button", { name: "Customize settings" }),
     ).toBeInTheDocument();
   });
 
   it("renders accept essential button", () => {
-    render(<CookieConsentBanner onExpand={vi.fn()} />);
-    expect(screen.getByText("Accept Essential")).toBeInTheDocument();
+    render(<CookieConsentBanner onCustomize={vi.fn()} />);
+    expect(screen.getByText("Only essential")).toBeInTheDocument();
   });
 
   it("renders accept all button", () => {
-    render(<CookieConsentBanner onExpand={vi.fn()} />);
-    expect(screen.getByText("Accept All")).toBeInTheDocument();
+    render(<CookieConsentBanner onCustomize={vi.fn()} />);
+    expect(screen.getByText("Accept all")).toBeInTheDocument();
   });
 
-  it("calls onExpand when expand button clicked", async () => {
+  it("calls onCustomize when customize button clicked", async () => {
     const user = userEvent.setup();
-    const onExpand = vi.fn();
-    render(<CookieConsentBanner onExpand={onExpand} />);
+    const onCustomize = vi.fn();
+    render(<CookieConsentBanner onCustomize={onCustomize} />);
 
-    await user.click(screen.getByRole("button", { name: "Expand Banner" }));
-    expect(onExpand).toHaveBeenCalledTimes(1);
-  });
-
-  it("has proper accessible name on expand button", () => {
-    render(<CookieConsentBanner onExpand={vi.fn()} />);
-    const expandButton = screen.getByRole("button", { name: "Expand Banner" });
-    expect(expandButton).toHaveAttribute("aria-label", "Expand Banner");
+    await user.click(screen.getByRole("button", { name: "Customize settings" }));
+    expect(onCustomize).toHaveBeenCalledTimes(1);
   });
 });

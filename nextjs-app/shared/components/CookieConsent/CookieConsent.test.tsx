@@ -1,17 +1,15 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { vi, beforeEach, afterEach, describe, it, expect } from "vitest";
+import { vi, beforeEach, describe, it, expect } from "vitest";
 import CookieConsent from "@dt/CookieConsent";
 import { CookieConsentProvider } from "../../lib/cookieConsent";
 
-// Minimal i18n mock: return keys as-is
 const mockT = vi.fn((key: string) => key);
 const mockI18n = { language: "en" };
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: mockT, i18n: mockI18n }),
 }));
 
-// In-memory localStorage for consent persistence
 const consentStore: Record<string, string> = {};
 const localStorageMock = {
   getItem: vi.fn((key: string) => consentStore[key] ?? null),
@@ -48,7 +46,7 @@ describe("CookieConsent", () => {
     mockI18n.language = "en";
   });
 
-  it("renders modal when no cookie consent is stored", () => {
+  it("renders compact banner when no cookie consent is stored", () => {
     localStorageMock.getItem.mockReturnValue(null);
     render(
       <CookieConsentProvider autoShow>
@@ -56,12 +54,15 @@ describe("CookieConsent", () => {
       </CookieConsentProvider>,
     );
     expect(
-      screen.getByRole("heading", { name: /cookieConsent.title/i }),
+      screen.getByRole("region", { name: /cookieConsent.bannerLabel/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/cookieConsent.description/i)).toBeInTheDocument();
+    expect(screen.getByText(/cookieConsent.bannerSummary/i)).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: /cookieConsent.title/i }),
+    ).not.toBeInTheDocument();
   });
 
-  it("does not render modal when cookie consent exists", async () => {
+  it("does not render banner when cookie consent exists", async () => {
     consentStore["dt-cookie-consent"] = sampleConsent;
     localStorageMock.getItem.mockImplementation(
       (key: string) => consentStore[key] ?? null,
@@ -73,12 +74,12 @@ describe("CookieConsent", () => {
     );
     await waitFor(() => {
       expect(
-        screen.queryByRole("heading", { name: /cookieConsent.title/i }),
+        screen.queryByRole("region", { name: /cookieConsent.bannerLabel/i }),
       ).not.toBeInTheDocument();
     });
   });
 
-  it("renders action buttons", () => {
+  it("renders action buttons on the compact banner", () => {
     render(
       <CookieConsentProvider autoShow>
         <CookieConsent />
@@ -94,6 +95,20 @@ describe("CookieConsent", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /cookieConsent.acceptAllButton/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("opens settings modal from customize button", () => {
+    render(
+      <CookieConsentProvider autoShow>
+        <CookieConsent />
+      </CookieConsentProvider>,
+    );
+    fireEvent.click(
+      screen.getByRole("button", { name: /cookieConsent.customizeButton/i }),
+    );
+    expect(
+      screen.getByRole("heading", { name: /cookieConsent.title/i }),
     ).toBeInTheDocument();
   });
 
@@ -129,7 +144,7 @@ describe("CookieConsent", () => {
     );
   });
 
-  it("renders cookie policy link", () => {
+  it("renders cookie policy link on the banner", () => {
     render(
       <CookieConsentProvider autoShow>
         <CookieConsent />

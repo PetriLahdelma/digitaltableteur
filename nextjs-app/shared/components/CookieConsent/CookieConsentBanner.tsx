@@ -1,24 +1,23 @@
 "use client";
 
 /**
- * Compact Cookie Consent Banner
- * Minimized footer banner shown when user closes the full modal
- * Forces user to make a choice before entering the site
+ * Compact cookie consent bar — default first-touch UI (no modal overlay).
  */
 
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
-import Title from "@dt/Title";
+import Link from "@dt/Link";
+import Text from "@dt/Text";
 import { useCookieConsent } from "../../lib/cookieConsent";
 import styles from "./CookieConsentBanner.module.css";
 
-interface CookieConsentBannerProps {
-  onExpand: () => void;
+export interface CookieConsentBannerProps {
+  onCustomize: () => void;
 }
 
 const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
-  onExpand,
+  onCustomize,
 }) => {
   const { t } = useTranslation();
   const { acceptAll, acceptEssentialOnly } = useCookieConsent();
@@ -29,27 +28,21 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
       role="region"
       aria-label={t("cookieConsent.bannerLabel")}
     >
-      <div className={styles.container}>
-        <Button
-          size="l"
-          variant="tertiary"
-          icon="caret-up"
-          className={styles.expandButton}
-          onClick={onExpand}
-          aria-label={t("cookieConsent.expandBanner")}
-        >
-          {t("cookieConsent.expandBanner")}
-        </Button>
+      <div className={styles.bar}>
+        <Text as="p" size="S" terminals="sans" className={styles.copy}>
+          {t("cookieConsent.bannerSummary")}{" "}
+          <Link href="/privacy-policy" size="S">
+            {t("cookieConsent.policyLinkText")}
+          </Link>
+        </Text>
         <div className={styles.actions}>
-          <Button
-            variant="secondary"
-            size="l"
-            onClick={acceptEssentialOnly}
-            icon="cookie"
-          >
+          <Button variant="tertiary" size="s" onClick={onCustomize}>
+            {t("cookieConsent.customizeButton")}
+          </Button>
+          <Button variant="secondary" size="s" onClick={acceptEssentialOnly}>
             {t("cookieConsent.acceptEssentialButton")}
           </Button>
-          <Button variant="primary" size="l" onClick={acceptAll} icon="check">
+          <Button variant="primary" size="s" onClick={acceptAll}>
             {t("cookieConsent.acceptAllButton")}
           </Button>
         </div>
