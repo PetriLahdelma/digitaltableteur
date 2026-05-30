@@ -497,6 +497,8 @@
   "errorRetry": "Försök igen",
   "cookieConsent": {
     "title": "Cookie-godkännande",
+    "bannerLabel": "Cookie-inställningar",
+    "bannerSummary": "Vi använder cookies för att förbättra din upplevelse.",
     "description": "Digitaltableteur använder cookies för att förbättra din upplevelse. Du kan anpassa vilka cookies vi använder, godkänna alla eller godkänna endast nödvändiga cookies som krävs för sidans funktion.",
     "detailedDescription": "Anpassa vilka kategorier av cookies du vill tillåta. Nödvändiga cookies kan inte inaktiveras eftersom de krävs för grundläggande sidfunktioner.",
     "customizeButton": "Anpassa inställningar",
