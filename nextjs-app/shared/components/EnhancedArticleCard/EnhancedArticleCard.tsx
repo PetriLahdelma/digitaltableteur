@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
+import { BlogMediaImage } from "@dt/BlogMediaImage";
+import { isSvgSrc } from "@/lib/media/imageSrc";
 
 export interface EnhancedArticleCardProps {
   /** Article slug for URL */
@@ -154,15 +156,16 @@ export function EnhancedArticleCard({
             <div className="absolute inset-0 bg-muted animate-pulse" />
           )}
 
-          <Image
+          <BlogMediaImage
             src={image.src}
             alt={image.alt}
             fill
+            fit={isSvgSrc(image.src) ? "contain" : "cover"}
             className={cn(
-              "object-cover",
               "transition-transform duration-500",
               "group-hover:scale-105",
-              !imageLoaded && "opacity-0"
+              !imageLoaded && "opacity-0",
+              isSvgSrc(image.src) && "bg-[#0a0c10]",
             )}
             sizes={
               isFeatured

@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
 import Text from "@dt/Text";
+import { cn } from "@/lib/utils";
 import styles from "./CodeBlockWindow.module.css";
 
 export interface CodeBlockWindowProps {
@@ -15,6 +16,8 @@ export interface CodeBlockWindowProps {
   language?: string;
   /** Force line numbers on/off (defaults to presence in Shiki output) */
   showLineNumbers?: boolean;
+  /** Article prose layout — 80% width, 35vh max height, wrap + vertical scroll */
+  context?: "default" | "article";
   /** Optional className passthrough */
   className?: string;
   /** Code block content (expected Shiki <pre><code>) */
@@ -100,6 +103,43 @@ const enhancePreElement = (preNode: React.ReactNode) => {
   return React.cloneElement(preNode, { className: preClassName }, enhancedChildren);
 };
 
+/**
+ * Lenis smooth-scroll ignores wheel events inside this subtree; header/caption
+ * wheel is forwarded to the scrollable body manually.
+ */
+const bindArticleCodeBlockWheelScroll = (
+  container: HTMLElement,
+  body: HTMLElement,
+) => {
+  const onWheel = (event: WheelEvent) => {
+    if (body.scrollHeight <= body.clientHeight + 1) {
+      return;
+    }
+
+    // Body uses native overflow scroll once Lenis is excluded via data-lenis-prevent-wheel.
+    if (body.contains(event.target as Node)) {
+      return;
+    }
+
+    const { scrollTop, scrollHeight, clientHeight } = body;
+    const maxScrollTop = scrollHeight - clientHeight;
+    const deltaY = event.deltaY;
+    const canScrollUp = scrollTop > 0;
+    const canScrollDown = scrollTop < maxScrollTop - 1;
+
+    if ((deltaY < 0 && canScrollUp) || (deltaY > 0 && canScrollDown)) {
+      event.preventDefault();
+      body.scrollTop = Math.min(
+        maxScrollTop,
+        Math.max(0, scrollTop + deltaY),
+      );
+    }
+  };
+
+  container.addEventListener("wheel", onWheel, { passive: false });
+  return () => container.removeEventListener("wheel", onWheel);
+};
+
 const copyTextToClipboard = async (text: string) => {
   if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
     await navigator.clipboard.writeText(text);
@@ -132,14 +172,18 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
   caption,
   language,
   showLineNumbers,
+  context = "default",
   className = "",
   children,
 }) => {
+  const isArticleContext = context === "article";
   const { t } = useTranslation();
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">(
     "idle",
   );
   const resetTimer = useRef<number | null>(null);
+  const containerRef = useRef<HTMLElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   const codeText = useMemo(() => {
     const text = extractCodeText(children).trimEnd();
@@ -170,6 +214,20 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (!isArticleContext) {
+      return;
+    }
+
+    const containerElement = containerRef.current;
+    const bodyElement = bodyRef.current;
+    if (!containerElement || !bodyElement) {
+      return;
+    }
+
+    return bindArticleCodeBlockWheelScroll(containerElement, bodyElement);
+  }, [isArticleContext, children]);
+
   const handleCopy = async () => {
     if (!codeText) return;
     if (resetTimer.current) {
@@ -191,8 +249,15 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
 
   return (
     <figure
-      className={`${styles.container} not-prose ${className}`.trim()}
+      ref={containerRef}
+      className={cn(
+        styles.container,
+        isArticleContext && styles.containerArticle,
+        "not-prose",
+        className,
+      )}
       data-line-numbers={lineNumbersEnabled ? "true" : "false"}
+      {...(isArticleContext ? { "data-lenis-prevent-wheel": "" } : {})}
     >
       <div className={styles.header}>
         <div className={styles.controls} aria-hidden="true">
@@ -235,8 +300,10 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
         </div>
       </div>
       <div
-        className={styles.body}
+        ref={bodyRef}
+        className={cn(styles.body, isArticleContext && styles.bodyArticle)}
         role="group"
+        tabIndex={isArticleContext ? 0 : undefined}
         aria-label={t("codeBlockWindow.regionLabel", { language: languageLabel })}
       >
         {enhancePreElement(children)}

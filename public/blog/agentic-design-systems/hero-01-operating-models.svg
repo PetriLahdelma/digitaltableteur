@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">Agentic design systems need operating models</title>
+  <desc id="d">Circular operating loop: intent, rules, output, evidence, better rules</desc>
+  <rect width="1200" height="630" fill="#0a0c10"/>
+  <text x="80" y="88" fill="#e8eaed" font-family="system-ui,sans-serif" font-size="28" font-weight="700">Operating models, not more components</text>
+  <text x="80" y="124" fill="#9aa0a6" font-family="system-ui,sans-serif" font-size="16">Agentic Design Systems · Part 1 of 5</text>
+  <g transform="translate(600 380)">
+    <circle r="200" fill="none" stroke="#2a2f38" stroke-width="2"/>
+    <circle r="140" fill="#12151c" stroke="#bfff00" stroke-width="2" stroke-opacity="0.35"/>
+    <g font-family="system-ui,sans-serif" font-size="15" font-weight="600" fill="#e8eaed">
+      <text y="-175" text-anchor="middle">Intent</text>
+      <text x="168" y="-52" text-anchor="middle">Rules</text>
+      <text x="104" y="142" text-anchor="middle">Output</text>
+      <text x="-104" y="142" text-anchor="middle">Evidence</text>
+      <text x="-168" y="-52" text-anchor="middle" fill="#bfff00">Better rules</text>
+    </g>
+    <path d="M0 -140 A140 140 0 0 1 120 -70" fill="none" stroke="#bfff00" stroke-width="3" marker-end="url(#m)"/>
+    <defs><marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#bfff00"/></marker></defs>
+  </g>
+</svg>

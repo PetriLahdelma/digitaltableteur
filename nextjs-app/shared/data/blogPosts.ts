@@ -1,4 +1,8 @@
 import type { ComponentType } from "react";
+import {
+  isPostVisible,
+  shouldShowUnpublishedPosts,
+} from "@/lib/blog/postVisibility";
 import { blogManifest, type BlogManifestEntry } from "./blogManifest";
 
 type BlogFrontmatter = {
@@ -78,24 +82,7 @@ export type BlogPostEntry = {
   Component: ComponentType;
 };
 
-const showUnpublishedPosts =
-  process.env.NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS === "true";
-
-const isPublishableEntry = (entry: BlogPostEntry) => {
-  if (showUnpublishedPosts) return true;
-  if (
-    entry.draft ||
-    entry.status === "draft" ||
-    entry.status === "unpublished"
-  ) {
-    return false;
-  }
-
-  const publishedAt = toDate(entry.publishedAt);
-  return !publishedAt || publishedAt.getTime() <= Date.now();
-};
-
-const entries: BlogPostEntry[] = Object.entries(modules)
+const allEntries: BlogPostEntry[] = Object.entries(modules)
   .map(([filePath, mod]) => {
     const frontmatter = mod.frontmatter ?? {};
     const slug = normalizeSlug(frontmatter, filePath);
@@ -125,14 +112,22 @@ const entries: BlogPostEntry[] = Object.entries(modules)
     const dateA = toDate(a.publishedAt)?.getTime() ?? 0;
     const dateB = toDate(b.publishedAt)?.getTime() ?? 0;
     return dateB - dateA;
-  })
-  .filter(isPublishableEntry);
+  });
 
-const entryMap = new Map(entries.map((entry) => [entry.slug, entry]));
+const filterVisible = (showUnpublished?: boolean) =>
+  allEntries.filter((entry) =>
+    isPostVisible(entry, showUnpublished ?? shouldShowUnpublishedPosts()),
+  );
 
-export const getBlogPosts = () => entries;
+export const getBlogPosts = (options?: { showUnpublished?: boolean }) =>
+  filterVisible(options?.showUnpublished);
 
-export const getBlogPostBySlug = (slug: string | undefined | null) => {
+export const getBlogPostBySlug = (
+  slug: string | undefined | null,
+  options?: { showUnpublished?: boolean },
+) => {
   if (!slug) return undefined;
-  return entryMap.get(slug);
+  return filterVisible(options?.showUnpublished).find(
+    (entry) => entry.slug === slug,
+  );
 };

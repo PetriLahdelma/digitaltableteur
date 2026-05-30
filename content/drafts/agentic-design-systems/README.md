@@ -1,5 +1,7 @@
 # Agentic Design Systems Draft Series
 
+**Voice:** [`docs/WRITING_STYLE.md`](../../../docs/WRITING_STYLE.md) (project-local; prose-first, humor when it fits, CTAs in footer only).
+
 These drafts live outside `content/posts` until promoted. The blog manifest generator
 includes scheduled drafts in the build artifact; runtime hides them until `publishedAt`.
 
@@ -44,6 +46,28 @@ Each post includes Part N of 5 footer with prev/next links. Part 5 links back to
 - Agent skills: `/.well-known/agent-skills/index.json`
 - https://projectspine.dev (harness packaging, external)
 
+### Figma agent surfaces (external)
+
+| Surface | Author | Links |
+|---------|--------|-------|
+| Official Figma MCP | Figma | [Intro](https://www.figma.com/blog/introducing-figma-mcp-server/) · [Site post](/blog/figma-mcp-design-systems) |
+| Figma Console MCP | TJ Pitre | [GitHub](https://github.com/southleft/figma-console-mcp) · [Docs](https://docs.figma-console-mcp.southleft.com/) |
+| figma-cli | Sil Bormüller | [GitHub](https://github.com/silships/figma-cli) · [Tutorial](https://www.intodesignsystems.com/blog/claude-code-figma-no-mcp) |
+
+Part 2 draft includes intros for Console MCP and figma-cli under **Three Figma surfaces (not interchangeable)**.
+
+## Hero & illustration assets (series-only)
+
+| Asset | Path | Source |
+|-------|------|--------|
+| Heroes (1536×1024 PNG) | `public/blog/agentic-design-systems/hero-0N-*.png` | Codex `$imagegen` (May 2026) |
+| Inline figures (1200×800 PNG) | `public/blog/agentic-design-systems/fig-*.png` | Codex `$imagegen` |
+| Legacy SVG (reference) | `hero-*.svg`, `*.svg` diagrams | Pre-Codex; keep for diff only |
+
+Art direction: [`VISUAL_BRIEF.md`](VISUAL_BRIEF.md). Regenerate prompts: [`codex-prompts/`](codex-prompts/). Workflow: [`docs/CODEX_IMAGE_GENERATION.md`](../../../docs/CODEX_IMAGE_GENERATION.md).
+
+Draft MDX `mainImageUrl` points at **PNG heroes**. Do not reuse Sanity assets from other published articles. Before launch, optionally export WebP/OG 1200×630 to Sanity and update `mainImageUrl`.
+
 Token lint in this repo: `stylelint-declaration-strict-value` (not Rhythmguard).
 
 ## CTA pattern (post-council)
@@ -57,6 +81,10 @@ Token lint in this repo: `stylelint-declaration-strict-value` (not Rhythmguard).
 
 - `status: "draft"` — unpublished
 - `status: "scheduled"` + future `publishedAt` — bundled, hidden until date
-- Preview: `SHOW_UNPUBLISHED_POSTS=true` or `NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS=true`
+- Preview (pick one):
+  - **`npm run dev:drafts`** — sets env, regenerates blog manifest, starts dev (port **3001**)
+  - **`/blog?preview=drafts`** — cookie toggle (no env edit); turn off with `/blog?preview=off`
+  - `.env.local`: `NEXT_PUBLIC_SHOW_UNPUBLISHED_POSTS=true` then restart `npm run dev`
+- After MDX edits: `npm run generate:blog` (no longer runs on every `npm run dev`)
 
 To promote: move MDX to `content/posts/` or adjust pipeline when ready.

@@ -1,0 +1,12 @@
+$imagegen
+
+Generate ONE editorial blog hero PNG, landscape 1536x1024.
+
+Subject: Three stacked layers (tool workspace, harness boundary, skill playbooks) as cut-paper or architectural section illustration — bottom layer wide workspace, middle framing boundary, top small playbook cards. Design-system operations metaphor.
+
+Palette only: #041b23, #f4f1ea, #85b5bd, #812eff sparingly. Print/editorial, subtle grain. No readable text.
+
+Avoid: neon, purple haze, 3D glass, robots, stock photo, vibe-coded AI look.
+
+Save to: public/blog/agentic-design-systems/hero-02-tools-harness-skills.png
+Then ls -la that file.

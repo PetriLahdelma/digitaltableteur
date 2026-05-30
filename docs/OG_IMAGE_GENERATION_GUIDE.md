@@ -94,6 +94,13 @@ Create these images in `/public/og/`:
 
 ## 🛠️ Generation Methods
 
+### Option 0: Codex `image_gen` (ChatGPT/Codex login)
+
+For AI-generated raster heroes and OG art, use Codex’s built-in image tool or the fallback Images API script. Auth, feature flags, and Cursor delegation are documented in **[`CODEX_IMAGE_GENERATION.md`](CODEX_IMAGE_GENERATION.md)** (this repo only).
+
+- **Default:** `codex` + `$imagegen` → no extra API key if built-in tool is enabled.
+- **Fallback:** `~/.codex/skills/.system/imagegen/scripts/image_gen.py` → requires `OPENAI_API_KEY` in `.env.local`.
+
 ### Option 1: Design Tool (Figma/Sketch/Adobe XD)
 
 1. Create 1200x630 artboard

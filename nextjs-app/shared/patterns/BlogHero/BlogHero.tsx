@@ -65,7 +65,6 @@ export function BlogHero({
             animation="fade"
             duration={0.6}
             stagger={0.05}
-            style={{ overflow: "visible", paddingBlock: "0.08em" }}
             className={cn(
               "font-display font-bold",
               "text-4xl tablet:text-5xl desktop:text-6xl",

@@ -1,0 +1,12 @@
+$imagegen
+
+Generate ONE editorial blog hero PNG, landscape 1536x1024.
+
+Subject: Component contracts as infrastructure — a documentation sheet dissolving into enforced grid and lint marks; taste becoming structure. Layered or split composition, museum-plate clarity.
+
+Palette: #041b23, #f4f1ea, #85b5bd, #812eff accent only. Flat, grain, no text.
+
+Avoid: neon, purple gradients, 3D glass, robots, stock imagery, generic AI aesthetic.
+
+Save to: public/blog/agentic-design-systems/hero-03-contracts.png
+Then ls -la that file.
