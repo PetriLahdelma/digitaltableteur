@@ -1,9 +1,11 @@
 import type { UIMessage } from "ai";
+import { VERTAAUX_ACCESSIBILITY_OFFER } from "../../data/donny-vertaaux-offer";
 
 // Token constants (exported for possible future explicit user prompts)
 export const TOKEN_OPEN_HOURS = "[[openHours]]";
 export const TOKEN_SERVICES_GRID = "[[servicesGrid]]";
 export const TOKEN_STUDIO_MAP = "[[studioMap]]";
+export const TOKEN_VERTAAUX_OFFER = "[[vertaauxOffer]]";
 
 // User prompt heuristics (EN + FI + SV) – only user messages may trigger subsequent assistant injection
 const USER_OPEN_HOURS_PATTERN =
@@ -12,6 +14,8 @@ const USER_SERVICES_PATTERN =
   /\bservices?\b|\bcapabilities\b|\bofferings?\b|what\s+do\s+you\s+offer|what\s+services\s+do\s+you\s+provide|palvelut|palveluja|palveluita|mitä\s+tarjoatte|palvelunne|tjänster|era\s+tjänster|vad\s+erbjuder\s+ni|erbjudanden/i;
 const USER_STUDIO_MAP_PATTERN =
   /\baddress\b|\blocation\b|\bwhere\s+(?:are\s+you|is\s+(?:the|your)\s+(?:office|studio))\b|\bdirections?\b|\bhow\s+(?:to\s+find|do\s+I\s+(?:find|get\s+to))\b|\bfind\s+(?:the|your)\s+(?:office|studio)\b|\boffice\s+location\b|\bstudio\s+(?:address|location)\b|\bvisit(?:\s+you)?\b|\bcome\s+to\b|\bmap\b|\bshow\s+(?:me\s+)?(?:on\s+(?:a\s+)?)?map\b|\bosoite\b|\bsijainti\b|\bmissä\s+(?:olette|on\s+(?:toimisto|studio))\b|\breittiohjeet?\b|\bmiten\s+(?:löydän|pääsen)\b|\btoimisto(?:n\s+sijainti)?\b|\bkäynti\b|\bkartta\b|\bnäytä\s+kartalla\b|\badress\b|\bplats\b|\bvar\s+(?:finns|ligger|är)\b|\bvägbeskrivning\b|\bhitta\b|\bbesök\b|\bkontor(?:et)?\b|\bkarta\b|\bvisa\s+(?:på\s+)?karta/i;
+const USER_ACCESSIBILITY_PATTERN =
+  /accessibilit(y|ies)|\ba11y\b|\bwcag\b|axe-core|\bscreen\s*readers?\b|inclusive\s+design|saavutettavuus|tillgänglighet|tillganglighet/i;
 
 // Email workflow trigger patterns (EN/FI/SV)
 // General send intent: phrases implying composing/sending an email
@@ -40,7 +44,12 @@ export type ProcessedPart =
   | { kind: "component"; name: "ServicesGrid" }
   | { kind: "component"; name: "StudioMap"; props?: { compact?: boolean } }
   | { kind: "component"; name: "NavigateLink"; props: { url: string; label?: string } }
-  | { kind: "component"; name: "ProjectCards"; props: { projects: ProjectCardData[] } };
+  | { kind: "component"; name: "ProjectCards"; props: { projects: ProjectCardData[] } }
+  | {
+      kind: "component";
+      name: "VertaaUxAccessibilityOffer";
+      props: { caseStudyUrl: string; productUrl: string };
+    };
 
 export interface ProcessedMessage {
   id: string;
@@ -122,6 +131,25 @@ const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
     });
   };
 
+  const pushVertaauxOffer = (output: unknown) => {
+    if (!output || typeof output !== "object") return;
+    const record = output as { caseStudyUrl?: unknown; productUrl?: unknown };
+    if (
+      typeof record.caseStudyUrl !== "string" ||
+      typeof record.productUrl !== "string"
+    ) {
+      return;
+    }
+    parts.push({
+      kind: "component",
+      name: "VertaaUxAccessibilityOffer",
+      props: {
+        caseStudyUrl: record.caseStudyUrl,
+        productUrl: record.productUrl,
+      },
+    });
+  };
+
   for (const part of message.parts) {
     if (part.type === "tool-invocation") {
       const inv = part as unknown as {
@@ -150,6 +178,10 @@ const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
             props: { projects: result.projects },
           });
         }
+      }
+
+      if (ti.toolName === "studio.vertaauxAccessibility") {
+        pushVertaauxOffer(ti.result);
       }
       continue;
     }
@@ -188,6 +220,16 @@ const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
           props: { projects: result.projects },
         });
       }
+      continue;
+    }
+
+    const isVertaauxPart =
+      typed.type === "tool-studio.vertaauxAccessibility" ||
+      (typed.type === "dynamic-tool" &&
+        typed.toolName === "studio.vertaauxAccessibility");
+
+    if (isVertaauxPart && typed.state === "output-available") {
+      pushVertaauxOffer(typed.output);
     }
   }
   return parts;
@@ -224,6 +266,7 @@ export const processConversationWithFlags = (
   let pendingOpenHours = false;
   let pendingServices = false;
   let pendingStudioMap = false;
+  let pendingVertaauxOffer = false;
   let pendingEmailWorkflowGeneral = false;
   let pendingEmailWorkflowSimple = false;
 
@@ -242,6 +285,9 @@ export const processConversationWithFlags = (
       pendingStudioMap =
         normalized.includes(TOKEN_STUDIO_MAP) ||
         USER_STUDIO_MAP_PATTERN.test(normalized);
+      pendingVertaauxOffer =
+        normalized.includes(TOKEN_VERTAAUX_OFFER) ||
+        USER_ACCESSIBILITY_PATTERN.test(normalized);
       pendingEmailWorkflowGeneral =
         USER_EMAIL_WORKFLOW_GENERAL_PATTERN.test(normalized);
       pendingEmailWorkflowSimple =
@@ -253,6 +299,8 @@ export const processConversationWithFlags = (
         .split(TOKEN_SERVICES_GRID)
         .join("")
         .split(TOKEN_STUDIO_MAP)
+        .join("")
+        .split(TOKEN_VERTAAUX_OFFER)
         .join("")
         .trim();
       processed.push({
@@ -268,6 +316,7 @@ export const processConversationWithFlags = (
     const assistantHasOpenHoursToken = copy.includes(TOKEN_OPEN_HOURS);
     const assistantHasServicesToken = copy.includes(TOKEN_SERVICES_GRID);
     const assistantHasStudioMapToken = copy.includes(TOKEN_STUDIO_MAP);
+    const assistantHasVertaauxToken = copy.includes(TOKEN_VERTAAUX_OFFER);
     let assistantDisplay = copy;
 
     // If assistant echoes the token explicitly, treat it as a trigger + sanitize
@@ -279,6 +328,9 @@ export const processConversationWithFlags = (
     }
     if (assistantHasStudioMapToken) {
       pendingStudioMap = true;
+    }
+    if (assistantHasVertaauxToken) {
+      pendingVertaauxOffer = true;
     }
 
     if (pendingOpenHours) {
@@ -306,6 +358,12 @@ export const processConversationWithFlags = (
         )
         .trim();
     }
+    if (pendingVertaauxOffer) {
+      assistantDisplay = assistantDisplay
+        .split(TOKEN_VERTAAUX_OFFER)
+        .join("")
+        .trim();
+    }
     // Strip any residual "[...result available]" placeholders from stored messages
     assistantDisplay = assistantDisplay
       .replace(/\[(?:call_\w+|studio\.\w+|\w+)\s+result\s+available\]\n*/g, "")
@@ -318,6 +376,11 @@ export const processConversationWithFlags = (
     // Extract tool result components (NavigateLink, ProjectCards, etc.)
     const toolParts = extractToolResultParts(m);
     parts.push(...toolParts);
+
+    const hasVertaauxOffer = toolParts.some(
+      (part) =>
+        part.kind === "component" && part.name === "VertaaUxAccessibilityOffer",
+    );
 
     if (pendingOpenHours) {
       parts.push({
@@ -336,12 +399,20 @@ export const processConversationWithFlags = (
         props: { compact: true },
       });
     }
+    if (pendingVertaauxOffer && !hasVertaauxOffer) {
+      parts.push({
+        kind: "component",
+        name: "VertaaUxAccessibilityOffer",
+        props: { ...VERTAAUX_ACCESSIBILITY_OFFER },
+      });
+    }
     // Note: pendingEmailWorkflow* flags consumed outside rendering layer (ChatWidget)
     processed.push({ id: m.id, role: m.role, parts });
     // Reset after first assistant response
     pendingOpenHours = false;
     pendingServices = false;
     pendingStudioMap = false;
+    pendingVertaauxOffer = false;
     pendingEmailWorkflowGeneral = false;
     pendingEmailWorkflowSimple = false;
   }

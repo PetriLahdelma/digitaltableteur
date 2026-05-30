@@ -94,6 +94,35 @@ const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
                 </div>
               );
             }
+            if (
+              part.kind === "component" &&
+              part.name === "VertaaUxAccessibilityOffer"
+            ) {
+              return (
+                <div key={idx} className={styles.toolResultCard}>
+                  <div className={styles.vertaauxOffer}>
+                    <Link
+                      href={part.props.caseStudyUrl}
+                      className={styles.navigateLink}
+                    >
+                      {t("chatVertaauxCaseStudy", "Read the VertaaUX case study")} →
+                    </Link>
+                    <a
+                      href={part.props.productUrl}
+                      className={styles.navigateLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t(
+                        "chatVertaauxProduct",
+                        "Score your accessibility with VertaaUX",
+                      )}{" "}
+                      →
+                    </a>
+                  </div>
+                </div>
+              );
+            }
             if (part.kind === "component" && part.name === "ProjectCards") {
               return (
                 <div key={idx} className={styles.projectCards}>

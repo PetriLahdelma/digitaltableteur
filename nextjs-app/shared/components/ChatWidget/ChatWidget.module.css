@@ -734,6 +734,13 @@
   opacity: 0.85;
 }
 
+.vertaauxOffer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-internal-8, 0.5rem);
+}
+
 /* Project cards from tool results */
 
 .projectCards {

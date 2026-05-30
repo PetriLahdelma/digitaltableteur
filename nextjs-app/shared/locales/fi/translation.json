@@ -45,6 +45,8 @@
   "chatErrorFallback": "En päässyt juuri nyt käsiksi studion \"aivoihin\". Yritä hetken kuluttua uudelleen.",
   "chatEmailSendPhrase": "Totta kai! Lähetetään sähköposti!",
   "chatEmailSimplePhrase": "Sähköpostimme on mail@digitaltableteur.com. Haluatko lähettää sähköpostin nyt?",
+  "chatVertaauxCaseStudy": "Lue VertaaUX-tapaustutkimus",
+  "chatVertaauxProduct": "Arvioi saavutettavuutesi VertaaUX:lla",
   "chatThinking": "Ajattelee…",
   "chatEllipsis": "…",
   "chatMessages.empty": "Ei vielä viestejä. Aloita keskustelu!",
