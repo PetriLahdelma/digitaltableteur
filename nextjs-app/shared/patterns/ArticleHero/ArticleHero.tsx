@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { BlogMediaImage } from "@dt/BlogMediaImage";
+import { isSvgSrc } from "@/lib/media/imageSrc";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { Container } from "../../components/Container";
@@ -78,11 +80,11 @@ export function ArticleHero({
       {/* Full-width background image */}
       {isFullWidth && image && (
         <div className="absolute inset-0 z-0">
-          <Image
+          <BlogMediaImage
             src={image.src}
             alt={image.alt}
             fill
-            className="object-cover"
+            fit={isSvgSrc(image.src) ? "contain" : "cover"}
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
@@ -222,12 +224,17 @@ export function ArticleHero({
         <Container size="md" className="pb-8">
           <FadeIn direction="up" delay={0.4} distance={40}>
             <figure className="relative overflow-hidden rounded-lg bg-muted">
-              <div className="relative aspect-video">
-                <Image
+              <div
+                className={cn(
+                  "relative aspect-video",
+                  isSvgSrc(image.src) && "bg-[#0a0c10]",
+                )}
+              >
+                <BlogMediaImage
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover"
+                  fit={isSvgSrc(image.src) ? "contain" : "cover"}
                   priority
                 />
               </div>

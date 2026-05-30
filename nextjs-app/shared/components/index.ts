@@ -72,7 +72,12 @@ export {
 export { Pagination, type PaginationProps } from "./Pagination";
 
 // Article components (Phase 10-2)
-export { ArticleContent, type ArticleContentProps } from "./ArticleContent";
+export {
+  ArticleContent,
+  ArticleProse,
+  type ArticleContentProps,
+  type ArticleProseProps,
+} from "./ArticleContent";
 export {
   TableOfContents,
   type TableOfContentsProps,

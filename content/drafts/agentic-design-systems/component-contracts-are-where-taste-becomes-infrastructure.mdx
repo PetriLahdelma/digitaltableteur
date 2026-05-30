@@ -2,7 +2,7 @@
 title: "Component Contracts Are Where Taste Becomes Infrastructure"
 slug: "component-contracts-are-where-taste-becomes-infrastructure"
 publishedAt: "2026-06-11T08:00:00.000Z"
-readTime: "9 min read"
+readTime: "14 min read"
 excerpt: "Taste does not scale by explanation alone. In agentic design systems, it has to become contracts, examples, and verification."
 authorName: "Petri Lahdelma"
 authorSlug: "petri-lahdelma"
@@ -13,27 +13,35 @@ tags:
   - Design Systems
   - AI
   - Frontend Architecture
+mainImageUrl: "/blog/agentic-design-systems/hero-03-contracts.png"
+mainImageAlt: "Split panel: documentation explains, contracts constrain with v1 and v2 layers"
 ---
 
-If you read [From Tokens to Thinking Systems](/blog/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work), you already know the theory: LLMs follow rules when rules are explicit, scoped, and validated. **This post is where theory becomes CI** — how judgment becomes infrastructure without flattening craft.
+[From Tokens to Thinking Systems](/blog/from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work) argued that LLMs follow rules when rules are explicit, scoped, and validated. This post is where that argument meets CI.
 
-A senior designer can glance at a screen and say: hierarchy is noisy, spacing belongs to three different systems, the primary action is fighting the destructive one, the empty state is performing optimism instead of helping.
+**Thesis:** Taste that lives only in senior designers’ heads is a bottleneck, not a design system. Contracts are taste with handles — precise enough for agents, validators, and new teammates to apply without guessing. Documentation explains why; contracts constrain what may ship. If the forbidden combination does not fail a command, you still debug taste in production.
 
-That judgment is taste. Taste trapped in one person’s head is not a design system. It is a bottleneck.
+A senior designer can glance at a screen and name what is wrong: hierarchy is noisy, spacing belongs to three systems, the primary action fights the destructive one, the empty state performs optimism instead of helping. That judgment is taste. When taste stays informal, agents treat every valid prop combination as equally acceptable. When taste becomes infrastructure, repeat failures stop being review comments and start being red CI.
 
-**A contract is taste with handles:** precise enough for agents, validators, and new teammates to hold without guessing.
-
-This builds on [design systems for bots](https://www.petrilahdelma.com/writing/design-systems-for-bots) and the [operating model loop](/blog/agentic-design-systems-need-operating-models-not-more-components): if you cannot validate generated UI mechanically, you will debug it in production.
+If you cannot validate generated UI mechanically, you will debug it in production. That is the link to [design systems for bots](https://www.petrilahdelma.com/writing/design-systems-for-bots) and the [operating model](/blog/agentic-design-systems-need-operating-models-not-more-components) from Part 1.
 
 ## Documentation explains. Contracts constrain.
 
-Most component docs describe purpose, props, variants, examples, dos and don’ts. Useful for humans. Insufficient for agents.
+<ArticleFigure layout="full">
 
-Agents need constraints: allowed variants, required states, forbidden combinations, deprecated props, accessibility guarantees, lifecycle status, and what must exist in Storybook before a component is “stable.”
+<img src="/blog/agentic-design-systems/fig-contract-layers.png" alt="Documentation explains intent; contracts constrain usage with structural and semantic layers." />
+
+<figcaption>Documentation carries judgment; contracts carry boundaries — and in a healthy system, the boundary is what fails a command.</figcaption>
+
+</ArticleFigure>
+
+Component docs describe purpose, props, variants, examples, dos and don’ts. That is essential for humans and insufficient for agents. Agents need allowed variants, required states, forbidden combinations, deprecated props, accessibility guarantees, lifecycle status, and what must exist in Storybook before a component is treated as stable. Documentation carries judgment; contracts carry boundaries — and, in a healthy system, the boundary is what fails a command.
+
+Humans read docs when they are curious or stuck. Agents read whatever is shortest to copy. If the doc says “avoid using danger buttons for non-destructive actions” and the contract allows `variant="danger"` next to `variant="primary"` with no complaint, the agent will eventually place both in a delete confirmation. The doc was right. The system was not enforceable.
 
 ### What we ship today (v1 structural)
 
-Our repo has 127 `.contract.json` files. Here is a real excerpt from `Button.contract.json` — what `npm run validate:components` actually checks against:
+Our repo has 127 `.contract.json` files. Here is a real excerpt from `Button.contract.json`, what `npm run validate:components` checks today:
 
 ```json title="Button.contract.json (shipped)"
 {
@@ -53,99 +61,130 @@ Our repo has 127 `.contract.json` files. Here is a real excerpt from `Button.con
 }
 ```
 
-This enforces structural alignment: props match CVA, required stories exist, a11y flags are set, token references are declared. It does **not** yet fail when primary and danger buttons compete in the same action group.
+This enforces structural alignment: props match CVA, required stories exist, a11y flags are set, token references are declared. It does not yet fail when primary and danger buttons sit side by side in a delete confirmation. That gap is honest. Structural contracts catch drift in APIs and stories. Semantic contracts catch drift in product judgment.
+
+Structural validation already pays for itself. When someone renames a story from `Example` to `Showcase` without updating the contract, CI fails before design review. When a new prop lands in code but not in CVA, the validator catches the mismatch. When a component claims forced-colors verification but no story exercises it, the flag is not decorative — it is checked.
 
 ### What we are migrating toward (v2 semantic)
 
-The next layer adds product-level rules — the ones that cause repeat drift:
+The next layer adds product rules — the ones that cause repeat drift:
 
 ```json title="Button.pattern-rules.target.json"
 {
   "patternRules": {
     "actionHierarchy": {
       "primary": "one per decision region",
-      "danger": "destructive or irreversible actions only",
-      "tertiary": "supporting actions that must not compete"
+      "danger": "destructive or irreversible actions only"
     },
     "forbidden": [
-      "raw color overrides",
-      "icon-only without accessible name",
       "primary and danger competing in the same action group"
     ]
   }
 }
 ```
 
-The schema matters less than the move from recommendation to constraint — and being honest about which layer fails a command today.
+The schema matters less than the move from recommendation to constraint, and honesty about which layer fails a command today. I ship tooling as [`llm-component-contracts`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-contracts) and [`llm-component-cli`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-cli) — validate, migrate, drift-check, scaffold. When `drift-check` fails because Storybook args no longer match the contract, documentation stops being optional.
 
-I ship contract tooling as open source — [`@petritapanilahdelma/llm-component-contracts`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-contracts) for versioned JSON schemas, and [`llm-component-cli`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-cli) for validate, migrate, drift-check, and scaffold. The CLI’s `drift-check` compares schema props to component props and Storybook args. That is v1 infrastructure working: when mismatch fails a command, documentation stops being optional.
+Semantic rules start from repeat review comments. If three PRs in a month get “only one primary in this footer,” that sentence belongs in a contract. If agents keep putting icon-only buttons without labels in toolbars, the contract should require an accessible name story and fail promotion without it. If empty states always forget recovery copy, encode minimum content structure in the pattern recipe and reference it from the Alert or EmptyState contract.
+
+You do not need the perfect schema on day one. You need one forbidden combination that fails. Ship that, watch false positives, tighten language, add the next rule.
 
 ## The failure mode of soft rules
 
-Soft rules feel clear until a machine applies them.
+Soft rules feel clear until a machine applies them. “Use cards for grouped content” does not say grouped how. “Keep primary actions clear” does not say how many primaries per region. “Write concise errors” can still be useless without recovery.
 
-- “Use cards for grouped content” — grouped how?
-- “Keep primary actions clear” — how many primaries per region?
-- “Write concise errors” — concise can still be useless without recovery
+Contracts ask for sharper structure: a card when content shares an object boundary or decision context, not when layout feels busy; one primary per decision region unless a human approves an exception; an error that includes cause, recovery, and next action when the user can act. Encode the decisions that create repeat drift — action hierarchy, token scope, destructive patterns, form anatomy, empty states without recovery. Leave proportion, brand warmth, and narrative timing to human review.
 
-Contracts ask for sharper structure:
+I have watched agents place primary and danger buttons side by side in a delete flow — valid props, invalid product design — because nothing in the repo forbade the combination yet. Structural contracts pass; product judgment fails. Contracts become shared memory only when the forbidden combination actually fails a check.
 
-- A card is allowed when content shares an object boundary, comparison set, or decision context — not whenever layout feels busy.
-- A decision region gets one primary action unless a human explicitly approves an exception.
-- An error message includes cause, recovery, and next action when the user can act.
+Soft rules also fail across locales and density modes. “Keep it airy” means something different on a mobile settings screen than on a data table toolbar. Contracts anchor on testable structure: minimum touch target, maximum actions per row, required heading level for dialog titles. Judgment fills the gap between minimum and excellent.
 
-Not every design decision should be encoded. Encode the ones that create repeat drift — action hierarchy, token scope, destructive patterns, form validation anatomy, empty states without recovery.
+## A walkthrough: delete workspace
 
-## The anecdote that belongs here
+Consider a destructive flow: delete workspace. Intent is clear. The agent assembles `Dialog`, `Button`, and copy from nearby examples.
 
-I have watched agents place **primary and danger buttons side by side** in a delete confirmation — technically valid props, contract-violating product design — because nothing in the repo forbade the combination yet.
+Without semantic contracts, you might get: primary “Delete workspace” and secondary “Cancel” — acceptable — or primary “Delete” next to danger “Delete forever” because two stories used different variant names — unacceptable but valid at the prop layer. With semantic rules, the action group fails when two competing commit variants appear, when danger is used without irreversibility copy, or when the dialog lacks a focused heading for screen readers.
 
-That is the v2 problem: structural contracts pass, product judgment fails. Contracts become shared memory that does not depend on who is in the room — but only when the forbidden combination actually fails a check.
+The fix is not “prompt harder.” The fix is a contract on the dialog pattern and button composition that the validator or a lightweight AST check can enforce. Human review then spends time on whether the warning copy matches brand voice, not on whether the hierarchy is legal.
+
+Pattern-level contracts can reference component contracts without duplicating them. A `DestructiveFlow.recipe.json` might require `Dialog` with titled heading, `Button` danger variant for commit, and explicit absence of a second primary in the action region. Validators can stay dumb at first — even a checklist skill that fails the PR description when fields are missing moves you from soft to operational.
 
 ## Contracts improve human review
 
-Good contracts do not flatten judgment. They protect it.
+Good contracts do not flatten judgment; they protect it. When validation catches wrong token tier, missing required story, or broken accessibility expectation, review stops wasting time on preventable drift. Conversation moves to what still requires taste: fit to the user goal, cognitive load, whether an exception is worth the complexity.
 
-When validation catches wrong token tier, missing required story, invalid prop combination, or broken accessibility expectation, review stops wasting time on preventable drift. Conversation moves to what still requires taste: fit to user goal, cognitive load, whether an exception is worth the complexity.
+Before contracts, a typical design-system review mixed three conversations: API correctness, pattern correctness, and aesthetic fit. After structural contracts, the first two move to CI. Reviewers arrive with fewer “did you run the checker?” comments and more “should we ship this exception?” questions. That is the job design leads actually want.
 
-```txt title="review-flow.txt"
-Proposed change
-  -> contract checks catch mechanical drift
-  -> evidence attached to review
-  -> humans spend attention on judgment
-```
-
-## Connect contracts to checks that fail
-
-A contract nobody validates is another doc.
-
-Our validator lives in `scripts/design-system/validate-components.ts` — not pseudocode. Typical checks:
-
-- Props and variants align with the contract and CVA definition
-- Required Storybook stories exist
-- Token references match declared scopes
-- A11y review flags are set before promotion
-
-In practice: `npm run validate:components`, axe in CI, Stylelint with token rules, drift reports from `llm-component-cli`. Uncomfortable at first — then faster, because debates shift from “did we follow the doc?” to “is this exception justified?”
+A contract nobody validates is another doc. Our validator lives in `scripts/design-system/validate-components.ts`. In practice that means `npm run validate:components`, axe in CI, Stylelint with token rules, drift reports from `llm-component-cli`. Uncomfortable at first — then faster, because debate shifts from “did we follow the doc?” to “is this exception justified?”
 
 ## What to encode (and what to leave human)
 
-**Encode:** token scopes, variant rules, state models, accessibility guarantees, composition anti-patterns, lifecycle stages, required stories, review triggers.
+Encode token scopes, variant rules, state models, accessibility guarantees, composition anti-patterns, lifecycle stages, required stories, and review triggers. Leave proportion, emotional fit, and the sense that something is technically correct but wrong for the moment. The strongest systems do not automate taste. They protect the conditions where taste is applied at the right altitude.
 
-**Leave human:** proportion, brand warmth, narrative timing, emotional fit, the sense that something is technically correct but wrong for the moment.
+| Encode in contracts | Keep in human review |
+|---------------------|----------------------|
+| Forbidden variant pairs | Whether the headline tone fits the brand |
+| Required stories per state | Whether the illustration helps or distracts |
+| Token tier per component | Spacing rhythm in marketing hero sections |
+| Lifecycle status (beta/stable) | Whether to ship an experiment at all |
+| Accessibility guarantees | Copy warmth vs directness in sensitive flows |
 
-The strongest systems do not automate taste. They protect the conditions where taste is applied at the right altitude.
+When in doubt, ask: has this mistake happened three times? If yes, encode. If no, document and wait. Over-contracting early creates false positives that teams ignore. Under-contracting creates agents that learn the wrong defaults.
+
+## Migrating from docs to contracts
+
+Start with five components that agents misuse most. Export their current Storybook stories and props into structural contracts. Run validation in CI in report-only mode for one sprint if you must, then flip to blocking. Collect review comments that repeat. Promote the first semantic rule that would have caught a real bug. Link the contract from the doc — docs become commentary on the enforceable baseline, not a parallel truth.
+
+The [minimum viable stack](/blog/the-minimum-viable-agent-ready-design-system) in Part 4 assumes this migration path. You do not need one hundred contracts on day one. You need five that fail for the right reasons.
+
+## Working with validators that complain
+
+Structural validators feel picky until they save a release. Common pushback and responses:
+
+**“The contract is too strict for our velocity.”** Start report-only in CI for one sprint. Log failures. If fewer than ten percent would have blocked bad merges, tighten later. If more than half would have helped, turn blocking on.
+
+**“Design needs freedom.”** Contracts encode minimums, not maximums. Human review still owns proportion and voice. If designers need an exception, add a review trigger and document it — do not silently bypass the validator.
+
+**“Agents keep failing the same rule.”** Good. Fix the example or the skill, not the rule. If humans fail it too, the rule is real.
+
+**“We have two repos.”** Contracts follow components. If agents touch both repos, harness scope and validation commands must exist in both — or one repo must be declared read-only to agents.
+
+## Contracts and the operating loop
+
+Contracts sit in the **rules** and **evidence** stages of the loop from Part 1. Rules state what may exist; evidence proves stories, a11y, and tokens match. When validation fails, better rules follow — a new forbidden pair, a required story for loading state, a lifecycle flag that marks beta components as unsafe defaults for generation.
+
+Without closing that loop, contracts become PDFs. With it, every failed PR teaches the system something agents inherit on the next run.
+
+## Field notes from validation work
+
+When we first wired `validate:components` into CI, the noise was instructive. Missing `ForcedColors` stories — easy fix, embarrassing gap. Token lists that referenced deprecated CSS variables — harder fix, revealed Figma-code drift. Components marked `a11y.reviewed: true` without keyboard stories — process problem, not a linter problem. Each failure class pointed to a different owner: design for examples, engineering for props, shared for honesty in contract flags.
+
+Drift-check via `llm-component-cli` caught Storybook args that no longer matched contract enums — the kind of silent rot agents amplify because args look like API documentation. Treat drift reports like production incidents for agentic work. If args lie, agents learn the wrong prop names with confidence.
+
+Semantic rules will introduce false positives. Plan for them. A rule that forbids adjacent primary and danger buttons might flag a legitimate marketing hero with two CTAs — rare in product UI, common in marketing. Encode scope: pattern recipes for product surfaces vs campaign surfaces. Contracts without scope become folklore agents ignore after the third false alarm.
+
+## Encoding lifecycle so agents know what to trust
+
+Every contract should answer: **may an agent treat this component as a default?** Experimental components need `status: experimental` and missing promotion stories — validators should warn when agents import them in product paths. Beta components might be copyable with caution flags. Stable components carry the full story matrix and semantic rules.
+
+Deprecation is where systems usually lie. A prop marked deprecated in a comment but still featured in the Default story is an agent trap. Deprecation belongs in the contract, the story names, and a migration snippet in the same folder. Agents read files sequentially; put the warning where the copy path starts.
+
+## A contract authoring workflow that sticks
+
+When a designer flags a repeat issue in critique, capture the sentence verbatim. If it applies to a component API, open the contract in the same sprint — not a doc ticket for later. If it applies to composition, open the pattern recipe. Assign an engineering partner to wire validation or admit honestly that the rule is guidance-only until v2 schema lands.
+
+Review contracts in PR like code. A contract change without a story change is suspicious. A story change without a contract change is drift waiting to happen. Pair them the way you pair API and tests.
+
+Publish a one-page “contract changelog” when semantic rules ship so squads know what newly fails. Silence creates resentment; loud failures create learning — provided false positives are fixed quickly.
+
+When `npm run validate:components` fails, the PR author should see which field failed and a link to the example that passes. Good error messages are part of agentic UX for humans too.
+
+## Thesis recap
+
+Documentation persuades; contracts enforce. Structural contracts align APIs and stories; semantic contracts protect product judgment. Agents inherit whatever fails or passes in CI — plan accordingly. The minimum stack in Part 4 gives you scope; AgentOps in Part 5 gives you ownership. The work is not finished when the schema is clever. It is finished when the forbidden combination fails on a real PR.
+
+If you remember one sentence from this post: **taste that does not fail a command is still just a comment.** Everything else is implementation detail you can ship incrementally.
 
 ---
 
-<br />
-
-**Series:** [Agentic Design Systems](/blog/agentic-design-systems-need-operating-models-not-more-components) · Part 3 of 5
-
-**←** [Tools, Harnesses, and Skills](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems) · **→** [Minimum Viable Agent-Ready](/blog/the-minimum-viable-agent-ready-design-system)
-
----
-
-<br />
-
-Contracts and tooling: [`llm-component-cli`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-cli) · [`llm-component-contracts`](https://www.npmjs.com/package/@petritapanilahdelma/llm-component-contracts) · [Contact](https://www.digitaltableteur.com/contact) for contract + CI setup help.
+**Series:** Part 3 of 5 · **←** [Tools, Harnesses, and Skills](/blog/tools-harnesses-and-skills-the-missing-model-for-design-systems) · **→** [Minimum Viable Agent-Ready](/blog/the-minimum-viable-agent-ready-design-system)

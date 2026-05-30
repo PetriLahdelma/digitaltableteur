@@ -1,0 +1,71 @@
+/* Article inline figures — outside prose img rules (parent has not-prose) */
+
+.figure {
+  margin-block: var(--space-layout-32, 2rem);
+  width: 100%;
+  padding: 0;
+  border: 0;
+}
+
+/* Wrapper around figure image(s) */
+.media {
+  display: block;
+  width: 100%;
+}
+
+/* Span the full article content column */
+.figureFull .media {
+  display: block;
+  width: 100%;
+  margin-inline: 0;
+}
+
+.figureFull .media img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  border-radius: var(--radius-lg, 0.5rem);
+}
+
+.figureFull .caption {
+  width: 100%;
+  max-width: none;
+  padding-inline: 0;
+}
+
+/* Smaller diagram, centered in the column */
+.figureCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.figureCenter .media {
+  display: block;
+  width: 100%;
+  max-width: 32rem;
+  margin-inline: auto;
+}
+
+.figureCenter .media img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  border-radius: var(--radius-lg, 0.5rem);
+}
+
+.caption {
+  margin-block-start: var(--space-layout-12, 0.75rem);
+  width: 100%;
+  max-width: 32rem;
+  margin-inline: auto;
+  padding-inline: var(--space-layout-8, 0.5rem);
+  text-align: center;
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: var(--font-size-text-s, 0.875rem);
+  line-height: var(--line-height-normal, 1.5);
+  color: var(--color-text-muted, color-mix(in srgb, var(--color-text) 65%, transparent));
+}

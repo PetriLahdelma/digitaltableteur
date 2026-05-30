@@ -3,11 +3,49 @@
 .container {
   margin-block: var(--space-layout-24);
   margin-inline: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background-color: var(--main-body-background-color);
   box-shadow: none;
   overflow: hidden;
+}
+
+/* Article MDX — constrained footprint, vertical scroll only */
+.containerArticle {
+  width: 100%;
+  max-width: 80%;
+  margin-block: var(--space-layout-48);
+  margin-inline: auto;
+}
+
+.bodyArticle {
+  max-height: 35vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bodyArticle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.bodyArticle::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bodyArticle::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-color: var(--color-border);
+}
+
+.bodyArticle::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .header {
@@ -96,6 +134,9 @@
 .body {
   padding: var(--space-layout-16);
   background-color: var(--main-body-background-color);
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .pre {
@@ -104,38 +145,43 @@
   border: none;
   border-radius: 0;
   background-color: transparent;
-  overflow: auto hidden;
-}
-
-.pre::-webkit-scrollbar {
-  height: 8px;
-}
-
-.pre::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background-color: var(--color-border);
-}
-
-.pre::-webkit-scrollbar-track {
-  background-color: transparent;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: visible;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .code {
   display: grid;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   font-family: var(--font-mono);
   font-size: var(--font-size-text-s);
   line-height: var(--line-height-relaxed);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .code :global([data-line]) {
   display: block;
   padding-block: var(--space-layout-4);
   padding-inline: 0;
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .code :global(span) {
   color: var(--shiki-light, inherit);
+  white-space: inherit;
 }
 
 :global(.themeDark) .code :global(span) {
@@ -162,7 +208,7 @@
 
 .container[data-line-numbers="true"] .code :global([data-line]) {
   display: grid;
-  grid-template-columns: minmax(2.5ch, auto) 1fr;
+  grid-template-columns: minmax(2.5ch, auto) minmax(0, 1fr);
   align-items: start;
   column-gap: var(--space-layout-8);
 }
@@ -202,6 +248,10 @@
 
   .caption {
     padding-inline: var(--space-layout-24);
+  }
+
+  .containerArticle {
+    margin-block: var(--space-layout-64);
   }
 }
 

@@ -2,6 +2,12 @@
   overflow: hidden;
 }
 
+/* Display headings: tight leading + overflow:hidden clips g/p descenders */
+.textReveal:where(h1) {
+  overflow: visible;
+  padding-block: 0.08em;
+}
+
 .inline {
   display: inline-block;
   will-change: transform, opacity;

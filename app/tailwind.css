@@ -1,5 +1,6 @@
 /* Tailwind CSS 4.x entry point */
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 
 /*

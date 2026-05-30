@@ -1,8 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { isSvgSrc } from "@/lib/media/imageSrc";
+import { BlogMediaImage } from "@dt/BlogMediaImage";
 
 export interface MdxImageProps {
   /** Image source URL */
@@ -19,6 +20,12 @@ export interface MdxImageProps {
   className?: string;
   /** Loading priority - set true for above-fold images */
   priority?: boolean;
+  /** Span container width (used inside article figures). */
+  fluid?: boolean;
+  /** Object fit for raster images */
+  fit?: "cover" | "contain";
+  /** Responsive sizes hint for next/image */
+  sizes?: string;
 }
 
 /**
@@ -43,6 +50,9 @@ export function MdxImage({
   title,
   className,
   priority = false,
+  fluid = false,
+  fit = "cover",
+  sizes,
 }: MdxImageProps) {
   const [hasError, setHasError] = useState(false);
 
@@ -51,46 +61,55 @@ export function MdxImage({
     return null;
   }
 
-  // Check if external URL (Sanity CDN, third-party, etc.)
   const isExternal =
     src.startsWith("http://") ||
     src.startsWith("https://") ||
     src.startsWith("//");
 
-  // For external images or on error, fall back to regular img tag
   if (hasError) {
     return (
+      // eslint-disable-next-line @next/next/no-img-element
       <img
         src={src}
         alt={alt}
         title={title}
-        className={cn("rounded-lg max-w-full h-auto", className)}
+        className={cn("max-w-full h-auto rounded-lg", className)}
         loading="lazy"
       />
     );
   }
 
+  if (isSvgSrc(src)) {
+    return (
+      <BlogMediaImage
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className={cn("rounded-lg", className)}
+        priority={priority}
+        fit="contain"
+      />
+    );
+  }
+
   return (
-    <Image
+    <BlogMediaImage
       src={src}
       alt={alt}
       width={width}
       height={height}
-      title={title}
-      loading={priority ? "eager" : "lazy"}
-      priority={priority}
       className={cn("rounded-lg", className)}
-      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
+      priority={priority}
+      sizes={
+        sizes ??
+        (fluid
+          ? "(max-width: 768px) 100vw, (max-width: 1200px) 72rem, 896px"
+          : "(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px")
+      }
       onError={() => setHasError(true)}
-      style={{
-        width: "100%",
-        height: "auto",
-        maxWidth: width,
-      }}
-      // External images don't support blur placeholder
-      placeholder={isExternal ? "empty" : "empty"}
-      // Allow external domains (configured in next.config.ts images.remotePatterns)
-      unoptimized={isExternal}
+      fit={fit}
+      fluid={fluid}
     />
   );
 }
