@@ -10,6 +10,7 @@ import { FormFieldEditorial } from "../FormFieldEditorial";
 import { ExpandableSection } from "../ExpandableSection";
 import { useToast } from "../Toaster/Toaster";
 import FileUpload from "@dt/FileUpload";
+import MultiCombobox from "@dt/MultiCombobox";
 import styles from "./ContactFormEditorial.module.css";
 import {
   CONTACT_ACCEPTED_ATTACHMENT_TYPES,
@@ -35,7 +36,7 @@ const getInitialFormState = () => ({
   message: "",
   budget: "",
   timeline: "",
-  projectType: "",
+  projectType: [] as string[],
   hearAbout: "",
   inspiration: "",
   honeypot: "",
@@ -51,13 +52,33 @@ type FormState = ReturnType<typeof getInitialFormState>;
 type ErrorState = ReturnType<typeof getInitialErrorState>;
 
 type FormAction =
-  | { type: "UPDATE_FIELD"; payload: { field: keyof FormState; value: string } }
+  | {
+      type: "UPDATE_FIELD";
+      payload: {
+        field: Exclude<keyof FormState, "projectType">;
+        value: string;
+      };
+    }
+  | { type: "UPDATE_PROJECT_TYPES"; payload: string[] }
+  | { type: "ADD_PROJECT_TYPE"; payload: string }
   | { type: "RESET" };
+
+const mergeProjectType = (current: string[], next: string): string[] => {
+  if (!next || current.includes(next)) return current;
+  return [...current, next];
+};
 
 const formReducer = (state: FormState, action: FormAction): FormState => {
   switch (action.type) {
     case "UPDATE_FIELD":
       return { ...state, [action.payload.field]: action.payload.value };
+    case "UPDATE_PROJECT_TYPES":
+      return { ...state, projectType: action.payload };
+    case "ADD_PROJECT_TYPE":
+      return {
+        ...state,
+        projectType: mergeProjectType(state.projectType, action.payload),
+      };
     case "RESET":
       return getInitialFormState();
     default:
@@ -95,6 +116,17 @@ const PROJECT_TYPE_OPTIONS = [
   { value: "ai-designops", labelKey: "contactProjectDesignOps" },
   { value: "other", labelKey: "contactProjectOther" },
 ];
+
+const formatProjectTypesForSubmit = (
+  values: string[],
+  t: (key: string) => string,
+): string =>
+  values
+    .map((value) => {
+      const option = PROJECT_TYPE_OPTIONS.find((entry) => entry.value === value);
+      return option ? t(option.labelKey) : value;
+    })
+    .join(", ");
 
 /** Maps homepage CTA `?service=` query values to project-type slugs. */
 const SERVICE_PROJECT_TYPE_MAP: Record<string, string> = {
@@ -143,9 +175,10 @@ export function ContactFormEditorial({
     if (!projectType) return;
 
     dispatchForm({
-      type: "UPDATE_FIELD",
-      payload: { field: "projectType", value: projectType },
+      type: "ADD_PROJECT_TYPE",
+      payload: projectType,
     });
+    setTier2Expanded(true);
   }, [searchParams]);
 
   useEffect(() => {
@@ -155,9 +188,10 @@ export function ContactFormEditorial({
 
       if (detail.projectType) {
         dispatchForm({
-          type: "UPDATE_FIELD",
-          payload: { field: "projectType", value: detail.projectType },
+          type: "ADD_PROJECT_TYPE",
+          payload: detail.projectType,
         });
+        setTier2Expanded(true);
       }
 
       if (detail.message) {
@@ -220,7 +254,7 @@ export function ContactFormEditorial({
 
   // === HANDLERS ===
   const updateField =
-    (field: keyof FormState) =>
+    (field: Exclude<keyof FormState, "projectType">) =>
     (
       e: React.ChangeEvent<
         HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -318,7 +352,7 @@ export function ContactFormEditorial({
           name: formData.name,
           email: formData.email,
           phone: "", // Not collected in editorial form
-          interest: formData.projectType,
+          interest: formatProjectTypesForSubmit(formData.projectType, t),
           message: formData.message,
           hearAbout: formData.hearAbout,
           budget: formData.budget,
@@ -458,21 +492,21 @@ export function ContactFormEditorial({
             ))}
           </FormFieldEditorial>
 
-          <FormFieldEditorial
+          <MultiCombobox
             label={t("contactProjectTypeLabel", "Project type")}
-            type="select"
+            options={PROJECT_TYPE_OPTIONS.map((opt) => ({
+              value: opt.value,
+              label: t(opt.labelKey),
+            }))}
             value={formData.projectType}
-            onChange={updateField("projectType")}
-          >
-            <option value="">
-              {t("contactSelectPlaceholder", "Select...")}
-            </option>
-            {PROJECT_TYPE_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {t(opt.labelKey)}
-              </option>
-            ))}
-          </FormFieldEditorial>
+            onValueChange={(values) =>
+              dispatchForm({ type: "UPDATE_PROJECT_TYPES", payload: values })
+            }
+            placeholder={t(
+              "contactMultiSelectPlaceholder",
+              "Select one or more...",
+            )}
+          />
         </div>
 
         {/* === TIER 3: Relationship & Brief === */}
@@ -502,6 +536,7 @@ export function ContactFormEditorial({
 
             <div className={styles.fileUploadWrapper}>
               <FileUpload
+                appearance="editorial"
                 label={t("contactAttachmentLabel")}
                 placeholder={t("contactAttachmentPlaceholder")}
                 helperText={t("contactAttachmentHelper", {
