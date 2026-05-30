@@ -1,0 +1,88 @@
+/* Spotlight overlay — fixed layer, no layout shift */
+.spotlightLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-index-overlay, 900);
+}
+
+.spotlightFrame,
+.spotlightFrameStatic {
+  position: fixed;
+  border: 2px solid var(--color-primary, #041b23);
+  border-radius: var(--radius-md, 8px);
+  box-shadow:
+    0 0 0 9999px rgb(4 27 35 / 28%),
+    0 0 0 4px rgb(4 27 35 / 12%);
+}
+
+.spotlightFrame {
+  animation: donny-spotlight-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes donny-spotlight-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 9999px rgb(4 27 35 / 28%),
+      0 0 0 4px rgb(4 27 35 / 12%);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 9999px rgb(4 27 35 / 34%),
+      0 0 0 6px rgb(4 27 35 / 20%);
+  }
+}
+
+.liveRegion {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Global highlight modes — applied via data attributes on page targets */
+:global([data-donny-active="true"][data-donny-highlight="underline"]) {
+  outline: 2px solid var(--color-primary, #041b23);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+:global([data-donny-active="true"][data-donny-highlight="focus"]) {
+  outline: 3px solid var(--color-primary, #041b23);
+  outline-offset: 6px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+:global([data-donny-active="true"][data-donny-highlight="pulse"]) {
+  outline: 2px solid var(--color-primary, #041b23);
+  outline-offset: 4px;
+  animation: donny-target-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes donny-target-pulse {
+  0%,
+  100% {
+    outline-color: var(--color-primary, #041b23);
+  }
+
+  50% {
+    outline-color: var(--color-accent, #00c2ff);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlightFrame {
+    animation: none;
+  }
+
+  :global([data-donny-active="true"][data-donny-highlight="pulse"]) {
+    animation: none;
+  }
+}
