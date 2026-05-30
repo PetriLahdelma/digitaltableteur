@@ -13,6 +13,12 @@
   align-items: center;
 }
 
+/* Dark theme: white body + brand purple features for contrast on purple/dark surfaces */
+:global(.themeDark) .container {
+  --donny-primary: #fff;
+  --donny-eyes: var(--logo-background, var(--accent-purple, #812eff));
+}
+
 .avatar {
   width: 100%;
   height: 100%;
