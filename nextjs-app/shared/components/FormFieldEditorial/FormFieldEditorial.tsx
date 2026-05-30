@@ -2,6 +2,10 @@
 
 import { forwardRef, type InputHTMLAttributes, type TextareaHTMLAttributes, type SelectHTMLAttributes, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import Combobox, {
+  optionsFromSelectChildren,
+  splitPlaceholderOption,
+} from "@dt/Combobox";
 import styles from "./FormFieldEditorial.module.css";
 
 type InputType = "text" | "email" | "tel" | "textarea" | "select";
@@ -88,42 +92,36 @@ export const FormFieldEditorial = forwardRef<
   }
 
   if (type === "select") {
-    const { children, ...selectProps } = restProps as Omit<SelectProps, keyof BaseProps | "type">;
+    const { children, value, defaultValue, onChange, disabled, name } =
+      restProps as Omit<SelectProps, keyof BaseProps | "type">;
+
+    const parsedOptions = optionsFromSelectChildren(children);
+    const { placeholder, options } = splitPlaceholderOption(parsedOptions);
+    const currentValue =
+      value === undefined || value === null
+        ? defaultValue === undefined || defaultValue === null
+          ? ""
+          : String(defaultValue)
+        : String(value);
+
     return (
-      <div className={cn(styles.field, className)}>
-        {labelElement}
-        <div className={styles.selectWrapper}>
-          <select
-            ref={ref as React.Ref<HTMLSelectElement>}
-            id={id}
-            className={cn(styles.select, error && styles.hasError)}
-            aria-invalid={!!error}
-            aria-required={required || undefined}
-            aria-describedby={error ? errorId : undefined}
-            {...selectProps}
-          >
-            {children}
-          </select>
-          <svg
-            className={styles.chevron}
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M2.5 4.5L6 8L9.5 4.5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        {errorElement}
-      </div>
+      <Combobox
+        id={id}
+        label={label}
+        options={options}
+        value={currentValue}
+        placeholder={placeholder}
+        onValueChange={(nextValue) => {
+          onChange?.({
+            target: { value: nextValue, name: name ?? id },
+            currentTarget: { value: nextValue, name: name ?? id },
+          } as React.ChangeEvent<HTMLSelectElement>);
+        }}
+        error={error}
+        required={required}
+        isDisabled={disabled}
+        className={className}
+      />
     );
   }
 

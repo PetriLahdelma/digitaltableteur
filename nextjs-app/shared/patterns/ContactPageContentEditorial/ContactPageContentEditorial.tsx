@@ -89,7 +89,7 @@ export function ContactPageContentEditorial({
             >
               {t(
                 "contactIntro",
-                "We'd love to hear about your project, idea, or just say hello."
+                "We'd love to hear about your project, idea or you can just say hello."
               )}
             </motion.p>
 

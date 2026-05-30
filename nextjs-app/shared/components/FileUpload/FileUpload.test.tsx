@@ -24,6 +24,14 @@ describe("FileUpload", () => {
     expect(screen.getByText(/Max 5 MB/i)).toBeInTheDocument();
   });
 
+  it("renders editorial appearance with a combobox-style field", () => {
+    renderComponent({ appearance: "editorial", placeholder: "No file selected" });
+    expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
+    expect(screen.getByText("Attachment")).toBeInTheDocument();
+    expect(screen.getByText("No file selected")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /choose file/i })).toBeInTheDocument();
+  });
+
   it("calls onFileChange when file is selected", () => {
     const handleChange = vi.fn();
     const { container } = renderComponent({ onFileChange: handleChange });
