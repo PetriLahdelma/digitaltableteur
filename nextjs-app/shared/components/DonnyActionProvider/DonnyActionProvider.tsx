@@ -6,6 +6,7 @@ import {
   useDonnyActionsState,
 } from "./useDonnyActions";
 import { DonnySpotlightOverlay } from "./DonnySpotlightOverlay";
+import "./donny-target-highlights.css";
 import styles from "./DonnyActionProvider.module.css";
 
 export interface DonnyActionProviderProps {

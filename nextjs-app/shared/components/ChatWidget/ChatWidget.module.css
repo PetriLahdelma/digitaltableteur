@@ -495,6 +495,7 @@
   /* stylelint-disable-next-line declaration-no-important -- Ensure spacing consistency */
   margin-block-end: 0 !important;
   padding-inline-start: 1rem;
+  background-color: transparent;
   font-family: Moderat, sans-serif;
   font-size: 0.85rem;
   color: var(--shortcut-hint-color, #4b5563);
@@ -556,6 +557,7 @@
 :global(.themeHCB) .panel {
   border-color: #fff;
   background: #000;
+  backdrop-filter: none;
 }
 
 :global(.themeHCB) .message {
@@ -590,6 +592,17 @@
 
 :global(.themeHCB) .header {
   border-color: rgb(255 255 255 / 30%);
+}
+
+:global(.themeHCB) .shortcutHint {
+  background-color: transparent;
+  color: rgb(255 255 255 / 85%);
+}
+
+/* Header avatar: white body + black eyes on dark panel */
+:global(.themeHCB) .headerAvatar {
+  --donny-primary: #fff;
+  --donny-eyes: #000;
 }
 
 /* High Contrast White (HCW) theme support */
@@ -633,6 +646,16 @@
   border-color: rgb(0 0 0 / 30%);
 }
 
+:global(.themeHCW) .shortcutHint {
+  background-color: transparent;
+  color: rgb(0 0 0 / 75%);
+}
+
+:global(.themeHCW) .headerAvatar {
+  --donny-primary: #000;
+  --donny-eyes: #fff;
+}
+
 /* Chat Toggle - Dark theme: white text on purple toggle for contrast */
 
 :global(.themeDark) .toggle {
@@ -662,6 +685,7 @@
 
 :global(.themeHCB) .toggleAvatar {
   --donny-primary: #000;
+  --donny-eyes: #fff;
 }
 
 /* Chat Toggle - High Contrast White: black text on light toggle */
