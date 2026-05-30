@@ -111,4 +111,13 @@ describe("ChatWidget behaviors", () => {
     fireEvent.keyDown(window, { key: "Escape" });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
   });
+
+  it("opts the open panel out of Lenis wheel capture for nested chat scrolling", async () => {
+    render(<ChatWidget />);
+
+    fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
+
+    const panel = document.getElementById("donny-panel");
+    expect(panel).toHaveAttribute("data-lenis-prevent-wheel");
+  });
 });

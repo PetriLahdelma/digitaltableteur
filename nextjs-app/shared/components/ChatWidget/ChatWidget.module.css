@@ -207,10 +207,12 @@
 .messages {
   display: flex;
   padding: 1rem 1.25rem;
-  flex: 1;
+  flex: 1 1 auto;
   flex-direction: column;
   gap: 0.75rem;
+  min-block-size: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 @supports (scroll-behavior: smooth) {
@@ -665,6 +667,13 @@
 
 :global(.themeDark) .toggleLabel {
   color: #fff;
+}
+
+/* DonnyAvatar on purple toggle / dark chat header */
+:global(.themeDark) .toggleAvatar,
+:global(.themeDark) .headerAvatar {
+  --donny-primary: #fff;
+  --donny-eyes: var(--logo-background, var(--accent-purple, #812eff));
 }
 
 /* Chat Toggle - High Contrast Black: white text on dark toggle */

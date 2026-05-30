@@ -25,4 +25,9 @@ export {
   fromStoredMessages,
   resolveChatErrorMessage,
 } from "./ChatWidget";
+export {
+  resolveChatAvatarState,
+  extractLastToolActivity,
+  resolveToolAvatarState,
+} from "./chatAvatarState";
 export type { ChatErrorMessages } from "./ChatWidget";
