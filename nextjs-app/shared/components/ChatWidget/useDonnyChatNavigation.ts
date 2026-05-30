@@ -8,6 +8,10 @@ import {
   executeChatNavigation,
   extractNavigateToolResults,
 } from "./chatToolNavigation";
+import {
+  executeChatMailRequest,
+  extractComposeMailRequestResults,
+} from "./chatToolMailRequest";
 
 /**
  * Executes studio.navigateTo tool results in the browser once per toolCallId.
@@ -23,10 +27,6 @@ export function useDonnyChatNavigation(
   const previousStatusRef = useRef(status);
 
   useEffect(() => {
-    if (!donnyActions) {
-      return;
-    }
-
     const previousStatus = previousStatusRef.current;
     previousStatusRef.current = status;
 
@@ -48,12 +48,23 @@ export function useDonnyChatNavigation(
         }
 
         executedToolCallIdsRef.current.add(result.toolCallId);
-        void executeChatNavigation(
-          result.url,
-          { showPageTarget: donnyActions.showPageTarget },
-          router,
-          result.toolCallId,
-        );
+        if (donnyActions) {
+          void executeChatNavigation(
+            result.url,
+            { showPageTarget: donnyActions.showPageTarget },
+            router,
+            result.toolCallId,
+          );
+        }
+      }
+
+      for (const result of extractComposeMailRequestResults(message)) {
+        if (!result.opened || executedToolCallIdsRef.current.has(result.toolCallId)) {
+          continue;
+        }
+
+        executedToolCallIdsRef.current.add(result.toolCallId);
+        executeChatMailRequest(result);
       }
 
       break;
