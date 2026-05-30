@@ -27,6 +27,23 @@ export async function GET() {
         ],
       },
       {
+        anchor: `${baseUrl}/mcp`,
+        link: [
+          {
+            rel: "service-doc",
+            href: `${baseUrl}/.well-known/mcp/server-card.json`,
+            type: "application/json",
+            title: "MCP server card (SEP-1649)",
+          },
+          {
+            rel: "service-doc",
+            href: `${baseUrl}/auth.md`,
+            type: "text/markdown",
+            title: "Agent authentication policy",
+          },
+        ],
+      },
+      {
         anchor: `${baseUrl}/api/contact`,
         link: [
           {

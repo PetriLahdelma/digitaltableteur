@@ -11,6 +11,8 @@ export function getAgentDiscoveryLinkHeader(): string {
     `<${baseUrl}/llms.txt>; rel="describedby"`,
     `<${baseUrl}/.well-known/agent-card.json>; rel="describedby"`,
     `<${baseUrl}/.well-known/agent-skills/index.json>; rel="describedby"`,
+    `<${baseUrl}/.well-known/mcp/server-card.json>; rel="describedby"`,
+    `<${baseUrl}/auth.md>; rel="describedby"`,
   ];
   return links.join(", ");
 }
