@@ -1,101 +1,144 @@
-/* Compact Cookie Consent Banner - Footer fixed position */
+/* Compact bottom bar — site stays visible; no modal on first visit */
 
 .banner {
   position: fixed;
   inset-inline: 0;
-  z-index: 9998; /* Below modal (9999) but above everything else */
-  margin-block-end: 2rem;
-  margin-inline-start: 2rem;
-  padding: 1.5rem;
-  max-width: 46rem;
-  border-block-start: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background-color: var(--color-white);
-  box-shadow: 0 -2px 8px rgb(0 0 0 / 10%);
   inset-block-end: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  border-block-start: 1px solid var(--color-border);
+  background-color: color-mix(
+    in srgb,
+    var(--main-body-background-color, #fff) 94%,
+    transparent
+  );
+  padding-block: var(--space-layout-16);
+  padding-inline: max(var(--page-margin-mobile), env(safe-area-inset-left))
+    max(var(--page-margin-mobile), env(safe-area-inset-right));
+  padding-block-end: max(
+    var(--space-layout-16),
+    env(safe-area-inset-bottom)
+  );
+  overflow: visible;
+  backdrop-filter: blur(10px);
 }
 
-.container {
+.bar {
   display: flex;
   margin-inline: auto;
-  padding-block: var(--space-m);
-  padding-inline: var(--space-l);
-  max-inline-size: 1200px;
+  width: 100%;
+  max-width: var(--container-lg);
   align-items: center;
-  gap: var(--space-m);
+  min-block-size: 2.5rem;
+  gap: var(--space-layout-24);
 }
 
-.expandButton {
+/*
+ * Optical vertical center: flex aligns to layout box, but the wavy underline
+ * extends below the link via padding-bottom. Pull decoration out of flow so
+ * centering matches the cap height, then nudge down for underline mass.
+ */
+.copy {
+  --cookie-banner-underline-depth: 6px;
+  --cookie-banner-optical-shift: calc(var(--cookie-banner-underline-depth) / 2 - 2px);
+
   display: flex;
-  padding: var(--space-xs);
-  flex-shrink: 0;
-  justify-content: center;
+  flex: 1 1 auto;
   align-items: center;
-  gap: 0.5rem;
-  border: none;
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--color-primary);
-  cursor: pointer;
-  transition: all 0.2s;
+  min-block-size: 2.5rem;
+  min-width: 0;
+  overflow: visible;
 }
 
-.expandButton:hover {
-  background-color: var(--color-primary-light);
+.copyText {
+  margin: 0;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--font-size-text-m);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  transform: translateY(var(--cookie-banner-optical-shift));
 }
 
-.expandButton:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+/* Global wavyUnderline adds padding-bottom — exclude from layout metrics here */
+.copyText :global(.wavyUnderline) {
+  padding-bottom: 0;
 }
 
-.expandButton svg {
-  display: block;
-  block-size: 24px;
-  inline-size: 24px;
+.copyText :global(.wavyUnderline::after) {
+  bottom: calc(-1 * var(--cookie-banner-underline-depth));
+  height: var(--cookie-banner-underline-depth);
 }
 
 .actions {
   display: flex;
-  margin-inline-start: auto;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
   gap: var(--space-layout-16);
 }
 
-/* Responsive adjustments */
-@media (width <= 768px) {
-  .container {
-    padding-block: var(--space-s);
-    padding-inline: var(--space-m);
-    flex-wrap: wrap;
-  }
-
-  .title {
-    font-size: var(--font-size-body-l);
-  }
-
-  .actions {
-    margin-inline-start: 0;
-    inline-size: 100%;
-    justify-content: stretch;
-  }
-
-  .actions button {
-    flex: 1;
+@media (width >= 768px) {
+  .banner {
+    padding-inline: max(var(--page-margin-tablet), env(safe-area-inset-left))
+      max(var(--page-margin-tablet), env(safe-area-inset-right));
   }
 }
 
-@media (width <= 480px) {
-  .container {
-    gap: var(--space-s);
+@media (width >= 1024px) {
+  .banner {
+    padding-inline: max(var(--page-margin-desktop), env(safe-area-inset-left))
+      max(var(--page-margin-desktop), env(safe-area-inset-right));
+  }
+}
+
+@media (width <= 767px) {
+  .bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-layout-16);
+  }
+
+  .copy {
+    min-block-size: auto;
   }
 
   .actions {
-    flex-direction: column;
-    gap: var(--space-xs);
+    justify-content: stretch;
+    gap: var(--space-layout-12, 0.75rem);
   }
 
-  .actions button {
-    inline-size: 100%;
+  .actions > * {
+    flex: 1 1 calc(50% - var(--space-layout-6));
+    min-width: 0;
+  }
+
+  .actions > :first-child {
+    flex-basis: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .banner {
+    animation: cookie-bar-in 220ms ease-out;
+  }
+}
+
+@keyframes cookie-bar-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner {
+    animation: none;
   }
 }
