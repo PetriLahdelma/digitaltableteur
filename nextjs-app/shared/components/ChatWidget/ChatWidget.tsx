@@ -29,6 +29,7 @@ import ChatToggle from "./ChatToggle";
 import { useTranslation } from "react-i18next";
 import { resolveChatAvatarState } from "./chatAvatarState";
 import { useDonnyChatNavigation } from "./useDonnyChatNavigation";
+import { useDonnyChatExpression } from "./useDonnyChatExpression";
 
 export interface ChatWidgetProps {
   title?: string;
@@ -546,24 +547,20 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const errorMessage = resolveErrorMessage(error);
 
   useDonnyChatNavigation(messages, status);
+  const forcedExpression = useDonnyChatExpression(messages, status);
 
   // Keywords that trigger special Donny reactions when user types them
   const TOOL_KEYWORDS = [
-    // Map/location related
     "map", "location", "where", "address", "directions", "navigate",
-    // Contact/email related  
     "email", "contact", "message", "send", "write",
-    // Search/find related
     "search", "find", "look", "show me",
-    // Help/question related
     "help", "how", "what", "why", "explain",
-    // Work/portfolio related
     "work", "portfolio", "project", "case study",
-    // Services related
     "service", "offer", "price", "cost", "hire",
+    "expression", "mood", "face", "moods",
   ];
 
-  const avatarState = useMemo(
+  const reactiveAvatarState = useMemo(
     () =>
       resolveChatAvatarState({
         status,
@@ -583,6 +580,11 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       messages,
     ],
   );
+
+  const avatarState =
+    status === "submitted" || status === "streaming"
+      ? reactiveAvatarState
+      : (forcedExpression ?? reactiveAvatarState);
 
   useEffect(() => {
     const hydrated = loadStoredMessages(greetingText);

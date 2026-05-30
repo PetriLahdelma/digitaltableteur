@@ -1,5 +1,6 @@
 import type { UIMessage } from "ai";
 import type { DonnyState } from "@dt/DonnyAvatar";
+import { extractShowExpressionFromMessage } from "./chatToolExpression";
 
 export type ChatStatus = "ready" | "submitted" | "streaming" | "error";
 
@@ -133,8 +134,15 @@ export function resolveWorkflowAvatarState(step: string): DonnyState {
 }
 
 /** Resolve avatar state when a tool invocation is active */
-export function resolveToolAvatarState(tool: ToolActivity): DonnyState {
+export function resolveToolAvatarState(
+  tool: ToolActivity,
+  expressionHint?: DonnyState | null,
+): DonnyState {
   const { toolName, phase } = tool;
+
+  if (toolName === "studio.showExpression") {
+    return expressionHint ?? "playful";
+  }
 
   if (phase === "call") {
     if (toolName === "studio.navigateTo") return "handoff";
@@ -173,6 +181,9 @@ export function resolveDraftAvatarState(
   }
   if (/\b(accessibility|a11y|wcag|screen reader|saavutettavuus|tillgänglighet)\b/.test(trimmed)) {
     return "curious";
+  }
+  if (/\b(expression|mood|face|moods|expressions)\b/.test(trimmed)) {
+    return "playful";
   }
   if (toolKeywords.some((keyword) => trimmed.includes(keyword))) {
     return "curious";
@@ -227,12 +238,16 @@ export function resolveChatAvatarState(
 
   const lastAssistant = findLatestAssistantMessage(messages);
   const lastToolActivity = extractLastToolActivity(lastAssistant);
+  const expressionFromTool =
+    lastToolActivity?.toolName === "studio.showExpression"
+      ? extractShowExpressionFromMessage(lastAssistant)
+      : null;
 
   if (
     lastToolActivity &&
     (status === "streaming" || status === "submitted")
   ) {
-    return resolveToolAvatarState(lastToolActivity);
+    return resolveToolAvatarState(lastToolActivity, expressionFromTool);
   }
 
   if (status === "submitted") return "loading";
