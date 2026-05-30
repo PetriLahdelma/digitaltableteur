@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">Tools, harnesses, and skills</title>
+  <desc id="d">Three-layer stack for agentic design system work</desc>
+  <rect width="1200" height="630" fill="#0a0c10"/>
+  <text x="80" y="88" fill="#e8eaed" font-family="system-ui,sans-serif" font-size="28" font-weight="700">Tools · Harness · Skills</text>
+  <text x="80" y="124" fill="#9aa0a6" font-family="system-ui,sans-serif" font-size="16">Agentic Design Systems · Part 2 of 5</text>
+  <g font-family="system-ui,sans-serif" font-size="18" fill="#e8eaed">
+    <rect x="200" y="200" width="800" height="72" rx="10" fill="#151820" stroke="#4a5260" stroke-width="1.5"/>
+    <text x="600" y="246" text-anchor="middle" font-weight="700">Tools  workspace</text>
+    <rect x="260" y="292" width="680" height="72" rx="10" fill="#151820" stroke="#bfff00" stroke-width="2"/>
+    <text x="600" y="338" text-anchor="middle" font-weight="700">Harness  boundaries &amp; CI</text>
+    <rect x="320" y="384" width="560" height="72" rx="10" fill="#151820" stroke="#4a5260" stroke-width="1.5"/>
+    <text x="600" y="430" text-anchor="middle" font-weight="700">Skills  repeatable playbooks</text>
+    <rect x="380" y="480" width="440" height="40" rx="8" fill="#bfff00" fill-opacity="0.12"/>
+    <text x="600" y="506" text-anchor="middle" font-size="14" fill="#bfff00">Evidence ’ reviewable change</text>
+  </g>
+</svg>

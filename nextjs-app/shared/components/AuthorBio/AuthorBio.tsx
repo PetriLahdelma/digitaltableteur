@@ -37,8 +37,8 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ slug, className, heading }
   }
 
   const rootClassName = className
-    ? `${styles.authorBio} ${className}`
-    : styles.authorBio;
+    ? `${styles.authorBio} not-prose ${className}`
+    : `${styles.authorBio} not-prose`;
 
   const bioContent = author.bio ?? "";
   const [lead = "", ...rest] = bioContent.split(/\n{2,}/);

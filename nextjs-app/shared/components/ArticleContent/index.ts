@@ -1,1 +1,6 @@
-export { ArticleContent, type ArticleContentProps } from "./ArticleContent";
+export {
+  ArticleContent,
+  ArticleProse,
+  type ArticleContentProps,
+  type ArticleProseProps,
+} from "./ArticleContent";

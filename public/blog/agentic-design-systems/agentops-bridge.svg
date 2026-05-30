@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-labelledby="title desc">
+  <title id="title">DesignOps to AgentOps</title>
+  <desc id="desc">Context operator curates sources for agents and humans</desc>
+  <rect width="720" height="200" rx="12" fill="#0f1115"/>
+  <g font-family="system-ui,sans-serif" font-size="13" fill="#e8eaed">
+    <rect x="32" y="56" width="140" height="88" rx="8" fill="#1a1d24" stroke="#5c6370"/>
+    <text x="102" y="92" text-anchor="middle" font-weight="600">DesignOps</text>
+    <text x="102" y="114" text-anchor="middle" fill="#9aa0a6" font-size="11">Rituals &amp; handoff</text>
+    <rect x="290" y="40" width="140" height="120" rx="8" fill="#1a1d24" stroke="#bfff00" stroke-width="1.5"/>
+    <text x="360" y="88" text-anchor="middle" font-weight="700">Context</text>
+    <text x="360" y="110" text-anchor="middle" font-weight="700">operator</text>
+    <text x="360" y="132" text-anchor="middle" fill="#9aa0a6" font-size="11">Contracts · skills</text>
+    <rect x="548" y="56" width="140" height="88" rx="8" fill="#1a1d24" stroke="#bfff00" stroke-width="1.5"/>
+    <text x="618" y="92" text-anchor="middle" font-weight="600">AgentOps</text>
+    <text x="618" y="114" text-anchor="middle" fill="#9aa0a6" font-size="11">Evidence loops</text>
+    <path d="M172 100 H290 M430 100 H548" stroke="#bfff00" stroke-width="2"/>
+  </g>
+</svg>

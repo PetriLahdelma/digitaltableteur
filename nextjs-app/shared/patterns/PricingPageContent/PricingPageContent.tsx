@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import Button from "@dt/Button";
@@ -7,6 +8,8 @@ import Icon from "@dt/Icon";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "./PricingPageContent.module.css";
+
+const PRICING_HERO_IMAGE = "/images/pricing/dsharp3-hero.png";
 
 type ComparisonRow = {
   usKey: string;
@@ -160,43 +163,54 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
 
   return (
     <div className={cn(styles.page, className)}>
-      <div className={styles.container}>
-      <section className={styles.hero} aria-labelledby="pricing-hero-title">
-        <Title
-          level={1}
-          size="XL"
-          terminals="sans"
-          lineHeight="tight"
-          className={styles.heroTitle}
-          id="pricing-hero-title"
-        >
-          {t(
-            "pricingHeroTitleLead",
-            "Design Systems. Digital branding. UX/UI."
-          )}{" "}
-          <span className={styles.heroTitleClosing}>
-            {t("pricingHeroTitleClosing", "One clear investment.")}
-          </span>
-        </Title>
-      </section>
-
-      <section
-        className={styles.value}
-        aria-label={`${t("pricingComparisonUsTitle", "Digitaltableteur")} / ${t("pricingComparisonThemTitle", "Traditional agency")}`}
-      >
-        <div className={styles.comparisonGrid}>
-          <ComparisonList
-            variant="us"
-            title={t("pricingComparisonUsTitle", "Digitaltableteur")}
-            rows={COMPARISON_ROWS}
-          />
-          <ComparisonList
-            variant="them"
-            title={t("pricingComparisonThemTitle", "Traditional agency")}
-            rows={COMPARISON_ROWS}
-          />
+      <section className={styles.heroBleed} aria-labelledby="pricing-hero-title">
+        <Image
+          src={PRICING_HERO_IMAGE}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.heroBleedImage}
+        />
+        <div className={styles.heroBleedOverlay} aria-hidden="true" />
+        <div className={styles.heroBleedContent}>
+          <Title
+            level={1}
+            size="XL"
+            terminals="sans"
+            lineHeight="tight"
+            className={styles.heroTitle}
+            id="pricing-hero-title"
+          >
+            {t(
+              "pricingHeroTitleLead",
+              "Design Systems. Digital branding. UX/UI."
+            )}{" "}
+            <span className={styles.heroTitleClosing}>
+              {t("pricingHeroTitleClosing", "One clear investment.")}
+            </span>
+          </Title>
         </div>
       </section>
+
+      <div className={styles.container}>
+        <section
+          className={styles.value}
+          aria-label={`${t("pricingComparisonUsTitle", "Digitaltableteur")} / ${t("pricingComparisonThemTitle", "Traditional agency")}`}
+        >
+          <div className={styles.comparisonGrid}>
+            <ComparisonList
+              variant="us"
+              title={t("pricingComparisonUsTitle", "Digitaltableteur")}
+              rows={COMPARISON_ROWS}
+            />
+            <ComparisonList
+              variant="them"
+              title={t("pricingComparisonThemTitle", "Traditional agency")}
+              rows={COMPARISON_ROWS}
+            />
+          </div>
+        </section>
       </div>
 
       <section

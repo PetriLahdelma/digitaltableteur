@@ -70,7 +70,7 @@ export function ArticleLayout({
           <div className="max-w-7xl mx-auto px-4 tablet:px-6 desktop:px-8">
             <div className="grid grid-cols-1 desktop:grid-cols-12 gap-8 desktop:gap-12">
               {/* Main content */}
-              <main className="desktop:col-span-8">{children}</main>
+              <main className="desktop:col-span-8 min-w-0">{children}</main>
 
               {/* Sidebar */}
               <aside className="hidden desktop:block desktop:col-span-4">

@@ -44,7 +44,10 @@ Content strategy and microcopy specialist for the Digitaltableteur project, ensu
 ### Before ANY task
 - `docs/LLM_COMPONENT_GENERATION_RULES.md` (Section 4: i18n, microcopy patterns)
 - `/shared/components/CLAUDE.md` (existing content patterns)
-- `/CLAUDE.md` (project tone and voice)
+- `/CLAUDE.md` (project router)
+
+### Blog / long-form (not microcopy)
+- `docs/WRITING_STYLE.md` — articles, MDX drafts, case studies (**repo-local only**)
 
 ### Content Examples
 - Existing components in `shared/components/` (button labels, error messages)

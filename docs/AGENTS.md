@@ -24,6 +24,12 @@
 - **[`../AGENT_INDEX.md`](../AGENT_INDEX.md)**
   - Master index of areas, skills, and deep references
 
+### Writing (blog & long-form)
+
+- **`WRITING_STYLE.md`** (project-local only — tone, banned words, structure for `content/` MDX; not for UI i18n)
+  - Read BEFORE drafting or editing articles, case studies, or draft series
+  - Cursor rule: `.cursor/rules/writing-style.mdc` auto-applies on `content/**`
+
 ### Component Development (CRITICAL)
 
 - **`LLM_COMPONENT_GENERATION_RULES.md`** (12,000+ words, authoritative)
