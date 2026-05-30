@@ -8,7 +8,6 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
 import Link from "@dt/Link";
-import Text from "@dt/Text";
 import { useCookieConsent } from "../../lib/cookieConsent";
 import styles from "./CookieConsentBanner.module.css";
 
@@ -29,20 +28,22 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
       aria-label={t("cookieConsent.bannerLabel")}
     >
       <div className={styles.bar}>
-        <Text as="p" size="S" terminals="sans" className={styles.copy}>
-          {t("cookieConsent.bannerSummary")}{" "}
-          <Link href="/privacy-policy" size="S">
-            {t("cookieConsent.policyLinkText")}
-          </Link>
-        </Text>
+        <div className={styles.copy}>
+          <p className={styles.copyText}>
+            {t("cookieConsent.bannerSummary")}{" "}
+            <Link href="/privacy-policy" size="M">
+              {t("cookieConsent.policyLinkText")}
+            </Link>
+          </p>
+        </div>
         <div className={styles.actions}>
-          <Button variant="tertiary" size="s" onClick={onCustomize}>
+          <Button variant="tertiary" size="m" onClick={onCustomize}>
             {t("cookieConsent.customizeButton")}
           </Button>
-          <Button variant="secondary" size="s" onClick={acceptEssentialOnly}>
+          <Button variant="secondary" size="m" onClick={acceptEssentialOnly}>
             {t("cookieConsent.acceptEssentialButton")}
           </Button>
-          <Button variant="primary" size="s" onClick={acceptAll}>
+          <Button variant="primary" size="m" onClick={acceptAll}>
             {t("cookieConsent.acceptAllButton")}
           </Button>
         </div>

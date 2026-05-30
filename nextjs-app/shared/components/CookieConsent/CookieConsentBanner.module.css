@@ -5,19 +5,22 @@
   inset-inline: 0;
   inset-block-end: 0;
   z-index: 9998;
+  display: flex;
+  align-items: center;
   border-block-start: 1px solid var(--color-border);
   background-color: color-mix(
     in srgb,
     var(--main-body-background-color, #fff) 94%,
     transparent
   );
-  padding-block: var(--space-layout-12);
+  padding-block: var(--space-layout-16);
   padding-inline: max(var(--page-margin-mobile), env(safe-area-inset-left))
     max(var(--page-margin-mobile), env(safe-area-inset-right));
   padding-block-end: max(
-    var(--space-layout-12),
+    var(--space-layout-16),
     env(safe-area-inset-bottom)
   );
+  overflow: visible;
   backdrop-filter: blur(10px);
 }
 
@@ -27,14 +30,44 @@
   width: 100%;
   max-width: var(--container-lg);
   align-items: center;
-  gap: var(--space-layout-16);
+  min-block-size: 2.5rem;
+  gap: var(--space-layout-24);
 }
 
+/*
+ * Optical vertical center: flex aligns to layout box, but the wavy underline
+ * extends below the link via padding-bottom. Pull decoration out of flow so
+ * centering matches the cap height, then nudge down for underline mass.
+ */
 .copy {
+  --cookie-banner-underline-depth: 6px;
+  --cookie-banner-optical-shift: calc(var(--cookie-banner-underline-depth) / 2 - 2px);
+
+  display: flex;
   flex: 1 1 auto;
+  align-items: center;
+  min-block-size: 2.5rem;
   min-width: 0;
+  overflow: visible;
+}
+
+.copyText {
   margin: 0;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--font-size-text-m);
+  line-height: var(--line-height-normal);
   color: var(--color-text);
+  transform: translateY(var(--cookie-banner-optical-shift));
+}
+
+/* Global wavyUnderline adds padding-bottom — exclude from layout metrics here */
+.copyText :global(.wavyUnderline) {
+  padding-bottom: 0;
+}
+
+.copyText :global(.wavyUnderline::after) {
+  bottom: calc(-1 * var(--cookie-banner-underline-depth));
+  height: var(--cookie-banner-underline-depth);
 }
 
 .actions {
@@ -43,7 +76,7 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  gap: var(--space-layout-8);
+  gap: var(--space-layout-16);
 }
 
 @media (width >= 768px) {
@@ -64,15 +97,20 @@
   .bar {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-layout-12);
+    gap: var(--space-layout-16);
+  }
+
+  .copy {
+    min-block-size: auto;
   }
 
   .actions {
     justify-content: stretch;
+    gap: var(--space-layout-12, 0.75rem);
   }
 
   .actions > * {
-    flex: 1 1 calc(50% - var(--space-layout-4));
+    flex: 1 1 calc(50% - var(--space-layout-6));
     min-width: 0;
   }
 
