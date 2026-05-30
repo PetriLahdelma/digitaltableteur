@@ -100,6 +100,7 @@ export function HomePage() {
         icon: <DesignSystemsIcon />,
         title: t("homeDesignSystemsTitle"),
         description: t("homeDesignSystemsDescription"),
+        donnyTarget: "home.services.designSystems",
       },
     ],
     [t],
@@ -162,7 +163,7 @@ export function HomePage() {
         showViewAll
       />
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-12">
+      <section className="mx-auto w-full max-w-6xl px-6 py-12" data-donny-target="home.clients">
         <div className="rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur md:p-8 dark:border-white/10 dark:bg-neutral-950/60 hcb:border-white/30 hcb:bg-black [--selected-clients-label-color:rgb(4_27_35_/_55%)] [--selected-clients-divider-color:rgb(4_27_35_/_12%)] dark:[--selected-clients-label-color:rgb(255_255_255)] dark:[--selected-clients-divider-color:rgb(255_255_255_/_0.15)] hcb:[--selected-clients-label-color:rgb(0_0_0)] hcb:[--selected-clients-divider-color:rgb(0_0_0_/_0.18)] hcw:[--selected-clients-label-color:rgb(0_0_0)] hcw:[--selected-clients-divider-color:rgb(0_0_0_/_0.18)]">
           <p
             className={`${styles.selectedClientsLabel} text-[var(--selected-clients-label-color)] text-xs font-semibold uppercase tracking-[0.28em]`}
@@ -182,6 +183,7 @@ export function HomePage() {
       {/* Contact CTA Section */}
       <CTASection
         id="contact-cta"
+        donnyTarget="home.contactCta"
         title={t("homeCtaTitle", "Ready to create something extraordinary?")}
         primaryAction={{
           label: t("homeCtaLink", "Let's talk"),

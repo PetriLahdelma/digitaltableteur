@@ -55,6 +55,11 @@ const meta = {
       description: "Section id for in-page anchors",
       table: { disable: true },
     },
+    donnyTarget: {
+      control: "text",
+      description: "Donny spotlight target id",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof CTASection>;

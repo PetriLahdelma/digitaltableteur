@@ -181,6 +181,22 @@ export async function POST(request: NextRequest) {
         });
       }
     } catch (usageError) {
+      // Gateway failures often surface here as AI_NoOutputGeneratedError after a 429.
+      if (
+        GatewayRateLimitError.isInstance(usageError) ||
+        GatewayAuthenticationError.isInstance(usageError) ||
+        GatewayInvalidRequestError.isInstance(usageError) ||
+        GatewayModelNotFoundError.isInstance(usageError)
+      ) {
+        const normalized = normalizeError(usageError);
+        return NextResponse.json(
+          { error: normalized.message },
+          {
+            status: normalized.status,
+            headers: corsHeaders,
+          },
+        );
+      }
       console.warn("[chat] Could not retrieve token usage:", usageError);
     }
 

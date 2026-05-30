@@ -46,6 +46,11 @@ const meta = {
       description: "Card class names",
       table: { disable: true },
     },
+    donnyTarget: {
+      control: "text",
+      description: "Donny spotlight target id",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof ServiceCard>;

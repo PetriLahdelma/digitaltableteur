@@ -18,6 +18,10 @@ import {
   reportContactHoneypot,
   validateContactEmail,
 } from "../contactFormUtils";
+import {
+  DONNY_PREFILL_CONTACT_EVENT,
+  type DonnyContactPrefillDetail,
+} from "../DonnyActionProvider/donnyContactPrefill";
 
 // === PRESERVED CONSTANTS ===
 const MAX_ATTACHMENT_BYTES = CONTACT_ATTACHMENT_MAX_BYTES;
@@ -143,6 +147,31 @@ export function ContactFormEditorial({
       payload: { field: "projectType", value: projectType },
     });
   }, [searchParams]);
+
+  useEffect(() => {
+    const onDonnyPrefill = (event: Event) => {
+      const detail = (event as CustomEvent<DonnyContactPrefillDetail>).detail;
+      if (!detail) return;
+
+      if (detail.projectType) {
+        dispatchForm({
+          type: "UPDATE_FIELD",
+          payload: { field: "projectType", value: detail.projectType },
+        });
+      }
+
+      if (detail.message) {
+        dispatchForm({
+          type: "UPDATE_FIELD",
+          payload: { field: "message", value: detail.message },
+        });
+      }
+    };
+
+    window.addEventListener(DONNY_PREFILL_CONTACT_EVENT, onDonnyPrefill);
+    return () =>
+      window.removeEventListener(DONNY_PREFILL_CONTACT_EVENT, onDonnyPrefill);
+  }, []);
 
   // Form state
   const [formData, dispatchForm] = useReducer(
