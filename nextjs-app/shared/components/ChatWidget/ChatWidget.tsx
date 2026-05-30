@@ -27,7 +27,7 @@ import SendStatus from "./emailWorkflow/SendStatus";
 const RESEND_CONTACT_ENDPOINT = "/api/contact";
 import ChatToggle from "./ChatToggle";
 import { useTranslation } from "react-i18next";
-import type { DonnyState } from "@dt/DonnyAvatar";
+import { resolveChatAvatarState } from "./chatAvatarState";
 import { useDonnyChatNavigation } from "./useDonnyChatNavigation";
 
 export interface ChatWidgetProps {
@@ -417,38 +417,6 @@ const loadStoredMessages = (
   return null;
 };
 
-/** Resolve avatar state during active email workflow */
-function resolveWorkflowAvatarState(step: string): DonnyState {
-  if (step === "success") return "celebrating";
-  if (step === "sending") return "thinking";
-  return "success";
-}
-
-/** Resolve avatar state when a tool invocation is active */
-function resolveToolAvatarState(tool: { toolName?: string; state?: string }): DonnyState {
-  const { toolName, state } = tool;
-  if (state === "call" || state === "partial-call") {
-    if (toolName === "studio.navigateTo") return "handoff";
-    return "searching";
-  }
-  if (state === "result") {
-    if (toolName === "studio.projectShowcase") return "impressed";
-    return "confident";
-  }
-  return "typing";
-}
-
-/** Resolve avatar state from the user's current draft text */
-function resolveDraftAvatarState(draft: string, toolKeywords: string[]): DonnyState {
-  const trimmed = draft.trim().toLowerCase();
-  if (!trimmed) return "idle";
-  if (/\b(thanks?|thank you|thx|cheers|great|awesome|perfect)\b/.test(trimmed)) return "celebrating";
-  if (/\b(doesn't work|broken|wrong|bad|terrible|frustrated|annoyed)\b/.test(trimmed)) return "apologetic";
-  if (toolKeywords.some((kw) => trimmed.includes(kw))) return "curious";
-  if (trimmed.includes("?")) return "focused";
-  return "listening";
-}
-
 /** Collapsible AI chat widget anchored to the viewport. */
 const ChatWidget: React.FC<ChatWidgetProps> = ({
   title,
@@ -595,41 +563,26 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     "service", "offer", "price", "cost", "hire",
   ];
 
-  // Check if a tool workflow is active (not idle or error)
-  const isToolWorkflowActive = emailWorkflow.step !== "idle" && emailWorkflow.step !== "error";
-
-  // Detect the most recent tool invocation in the latest assistant message
-  const lastToolState = useMemo(() => {
-    // Find last assistant message (reverse loop for older browser compat)
-    let lastMsg: (typeof messages)[number] | null = null;
-    for (let i = messages.length - 1; i >= 0; i--) {
-      if (messages[i].role === "assistant") { lastMsg = messages[i]; break; }
-    }
-    if (!lastMsg?.parts) return null;
-    // Find last tool-invocation part (not first) to reflect most recent tool activity
-    let result: { toolName?: string; state?: string } | null = null;
-    for (const part of lastMsg.parts) {
-      if (part.type === "tool-invocation") {
-        const inv = part as { toolInvocation?: { toolName?: string; state?: string } };
-        result = {
-          toolName: inv.toolInvocation?.toolName,
-          state: inv.toolInvocation?.state,
-        };
-      }
-    }
-    return result;
-  }, [messages]);
-
-  // Map chat status to DonnyAvatar state — decomposed for readability/testability
-  const avatarState = useMemo((): DonnyState => {
-    if (error) return "error";
-    if (isToolWorkflowActive) return resolveWorkflowAvatarState(emailWorkflow.step);
-    if (lastToolState && status === "streaming") return resolveToolAvatarState(lastToolState);
-    if (status === "submitted") return "thinking";
-    if (status === "streaming") return "typing";
-    if (messages.length <= 1 && !draft.trim()) return "greeting";
-    return resolveDraftAvatarState(draft, TOOL_KEYWORDS);
-  }, [status, error, draft, isToolWorkflowActive, emailWorkflow.step, lastToolState, messages]);
+  const avatarState = useMemo(
+    () =>
+      resolveChatAvatarState({
+        status,
+        resolvedErrorCopy: errorMessage,
+        fallbackErrorCopy: errorMessages.fallback,
+        draft,
+        toolKeywords: TOOL_KEYWORDS,
+        emailWorkflowStep: emailWorkflow.step,
+        messages,
+      }),
+    [
+      status,
+      errorMessage,
+      errorMessages.fallback,
+      draft,
+      emailWorkflow.step,
+      messages,
+    ],
+  );
 
   useEffect(() => {
     const hydrated = loadStoredMessages(greetingText);
@@ -671,6 +624,42 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
       panel.setAttribute("inert", "");
     }
   }, [isOpen]);
+
+  // Lenis smooth scroll captures wheel events globally; exclude the chat panel
+  // and forward wheel from header/composer into the message scroller (CodeBlockWindow pattern).
+  useEffect(() => {
+    if (!isOpen) return;
+    const panel = panelRef.current;
+    const scroller = scrollerRef.current;
+    if (!panel || !scroller) return;
+
+    const onWheel = (event: WheelEvent) => {
+      if (scroller.scrollHeight <= scroller.clientHeight + 1) {
+        return;
+      }
+
+      if (scroller.contains(event.target as Node)) {
+        return;
+      }
+
+      const { scrollTop, scrollHeight, clientHeight } = scroller;
+      const maxScrollTop = scrollHeight - clientHeight;
+      const deltaY = event.deltaY;
+      const canScrollUp = scrollTop > 0;
+      const canScrollDown = scrollTop < maxScrollTop - 1;
+
+      if ((deltaY < 0 && canScrollUp) || (deltaY > 0 && canScrollDown)) {
+        event.preventDefault();
+        scroller.scrollTop = Math.min(
+          maxScrollTop,
+          Math.max(0, scrollTop + deltaY),
+        );
+      }
+    };
+
+    panel.addEventListener("wheel", onWheel, { passive: false });
+    return () => panel.removeEventListener("wheel", onWheel);
+  }, [isOpen, messages.length]);
 
   useEffect(() => {
     return () => {
@@ -936,6 +925,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           aria-hidden={!isOpen}
           aria-label={resolvedTitle}
           tabIndex={isOpen ? 0 : -1}
+          data-lenis-prevent-wheel=""
         >
           <ChatHeader
             title={resolvedTitle}
