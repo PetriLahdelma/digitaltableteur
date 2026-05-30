@@ -36,6 +36,8 @@ export interface CTASectionProps {
   className?: string;
   /** Section ID for navigation */
   id?: string;
+  /** Donny site action target id */
+  donnyTarget?: string;
 }
 
 const backgroundClasses: Record<NonNullable<CTASectionProps["background"]>, string> = {
@@ -58,6 +60,7 @@ export function CTASection({
   align = "center",
   className,
   id = "cta",
+  donnyTarget,
 }: CTASectionProps) {
   const isDark = background !== "muted" && background !== "brand";
 
@@ -109,6 +112,7 @@ export function CTASection({
   return (
     <Section
       id={id}
+      donnyTarget={donnyTarget}
       className={cn(
         "py-24 desktop:py-32 relative overflow-hidden",
         backgroundClasses[background],

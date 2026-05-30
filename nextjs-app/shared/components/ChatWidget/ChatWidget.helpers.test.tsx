@@ -6,7 +6,17 @@ import {
   parseStoredMessages,
   parseLegacyMessages,
   fromStoredMessages,
+  resolveChatErrorMessage,
 } from "@dt/ChatWidget";
+
+const ERROR_COPY = {
+  network: "network",
+  auth: "auth",
+  notFound: "notFound",
+  rateLimit: "rateLimit",
+  server: "server",
+  fallback: "fallback",
+} as const;
 
 describe("ChatWidget helpers", () => {
   const cryptoDescriptor = Object.getOwnPropertyDescriptor(
@@ -63,6 +73,21 @@ describe("ChatWidget helpers", () => {
 
     expect(id).toContain("123456");
     expect(id.startsWith("id-")).toBe(true);
+  });
+
+  it("maps gateway rate-limit stream failures to rateLimit copy", () => {
+    expect(
+      resolveChatErrorMessage(
+        new Error("No output generated. Check the stream for errors."),
+        ERROR_COPY,
+      ),
+    ).toBe("rateLimit");
+    expect(
+      resolveChatErrorMessage(
+        new Error("Free tier requests on this model are rate-limited."),
+        ERROR_COPY,
+      ),
+    ).toBe("rateLimit");
   });
 
   it("serializes and normalizes stored messages with a greeting", () => {

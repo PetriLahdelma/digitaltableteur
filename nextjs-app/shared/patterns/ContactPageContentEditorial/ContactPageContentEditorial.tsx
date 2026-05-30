@@ -96,6 +96,7 @@ export function ContactPageContentEditorial({
             {/* Contact Details */}
             <motion.div
               className={styles.contactDetails}
+              data-donny-target="contact.location"
               initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={
@@ -127,7 +128,11 @@ export function ContactPageContentEditorial({
 
           {/* Right Column - Form */}
           <div className={styles.rightColumn}>
-            <div id="contact-form" className={styles.formPanel}>
+            <div
+              id="contact-form"
+              className={styles.formPanel}
+              data-donny-target="contact.form"
+            >
             <AnimatePresence mode="wait">
               {showSuccess ? (
                 <motion.div

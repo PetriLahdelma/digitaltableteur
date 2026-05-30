@@ -28,6 +28,7 @@ const RESEND_CONTACT_ENDPOINT = "/api/contact";
 import ChatToggle from "./ChatToggle";
 import { useTranslation } from "react-i18next";
 import type { DonnyState } from "@dt/DonnyAvatar";
+import { useDonnyChatNavigation } from "./useDonnyChatNavigation";
 
 export interface ChatWidgetProps {
   title?: string;
@@ -62,6 +63,61 @@ export function isLocalLikeHost(hostname: string): boolean {
     /^10\./.test(hostname) ||
     /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname)
   );
+}
+
+export type ChatErrorMessages = {
+  network: string;
+  auth: string;
+  notFound: string;
+  rateLimit: string;
+  server: string;
+  fallback: string;
+};
+
+/** Map useChat / transport errors to user-facing copy. */
+export function resolveChatErrorMessage(
+  error: Error | undefined | null,
+  messages: ChatErrorMessages,
+): string | null {
+  if (!error) return null;
+  const message = error.message ?? "";
+  const normalized = message.toLowerCase();
+
+  if (normalized.includes("abort")) {
+    return null;
+  }
+  if (normalized.includes("failed to fetch")) {
+    return messages.network;
+  }
+  if (
+    normalized.includes("authentication") ||
+    normalized.includes("unauthorized")
+  ) {
+    return messages.auth;
+  }
+  if (normalized.includes("404") || normalized.includes("not found")) {
+    return messages.notFound;
+  }
+  if (
+    normalized.includes("429") ||
+    normalized.includes("rate limit") ||
+    normalized.includes("rate_limit") ||
+    normalized.includes("rate-limit") ||
+    normalized.includes("quota") ||
+    normalized.includes("too many requests")
+  ) {
+    return messages.rateLimit;
+  }
+  if (normalized.match(/5\d{2}/)) {
+    return messages.server;
+  }
+  if (
+    normalized.includes("no output generated") ||
+    normalized.includes("gateway")
+  ) {
+    return messages.rateLimit;
+  }
+  return messages.fallback;
 }
 
 export function resolveChatApiEndpoint(options: {
@@ -443,34 +499,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   );
 
   const resolveErrorMessage = useCallback(
-    (error: Error | undefined | null) => {
-      if (!error) return null;
-      const message = error.message ?? "";
-      const normalized = message.toLowerCase();
-
-      if (normalized.includes("abort")) {
-        return null;
-      }
-      if (normalized.includes("failed to fetch")) {
-        return errorMessages.network;
-      }
-      if (
-        normalized.includes("authentication") ||
-        normalized.includes("unauthorized")
-      ) {
-        return errorMessages.auth;
-      }
-      if (normalized.includes("404") || normalized.includes("not found")) {
-        return errorMessages.notFound;
-      }
-      if (normalized.includes("429")) {
-        return errorMessages.rateLimit;
-      }
-      if (normalized.match(/5\d{2}/)) {
-        return errorMessages.server;
-      }
-      return errorMessages.fallback;
-    },
+    (chatError: Error | undefined | null) =>
+      resolveChatErrorMessage(chatError, errorMessages),
     [errorMessages],
   );
 
@@ -546,6 +576,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
 
   const isStreaming = status === "submitted" || status === "streaming";
   const errorMessage = resolveErrorMessage(error);
+
+  useDonnyChatNavigation(messages, status);
 
   // Keywords that trigger special Donny reactions when user types them
   const TOOL_KEYWORDS = [

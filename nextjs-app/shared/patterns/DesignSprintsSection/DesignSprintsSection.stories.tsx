@@ -27,6 +27,11 @@ const meta = {
       description: "Section class names",
       table: { disable: true },
     },
+    donnyTarget: {
+      control: "text",
+      description: "Donny spotlight target id",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof DesignSprintsSection>;

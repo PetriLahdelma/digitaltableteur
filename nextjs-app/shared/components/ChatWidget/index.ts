@@ -23,4 +23,6 @@ export {
   parseStoredMessages,
   parseLegacyMessages,
   fromStoredMessages,
+  resolveChatErrorMessage,
 } from "./ChatWidget";
+export type { ChatErrorMessages } from "./ChatWidget";
