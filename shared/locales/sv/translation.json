@@ -47,6 +47,8 @@
   "chatErrorFallback": "Jag kunde inte nå studions \"hjärna\" just nu. Försök igen om en stund.",
   "chatEmailSendPhrase": "Självklart! Låt oss skicka ett e-postmeddelande!",
   "chatEmailSimplePhrase": "Vår e-post är mail@digitaltableteur.com. Vill du skicka ett meddelande nu?",
+  "chatVertaauxCaseStudy": "Läs VertaaUX-fallstudien",
+  "chatVertaauxProduct": "Poängsätt din tillgänglighet med VertaaUX",
   "chatThinking": "Tänker…",
   "donnyAction.cleared": "Markering borttagen",
   "donnyAction.highlighted": "Markerade {{label}}",

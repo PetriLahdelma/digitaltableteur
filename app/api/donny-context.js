@@ -41,7 +41,7 @@ Featured Case Studies (use studio.projectShowcase tool for full details):
 IMPORTANT: When asked about ANY project, case study, or portfolio work, ALWAYS use the studio.projectShowcase tool to look it up. Never say you don't have information about a project without checking the tool first.
 - SAP Build Apps Design System: Enterprise design system for SAP's low-code platform (100+ components, 300+ users)
 - Helsinki Design System: Enterprise design system for the City of Helsinki's digital services
-- VertaaUX: AI-powered UX & accessibility auditing platform (SaaS, own product)
+- VertaaUX: AI-powered UX & accessibility auditing platform (SaaS, own product) — when users ask about accessibility issues, use studio.vertaauxAccessibility and offer the case study (/work/vertaaux) plus vertaaux.ai
 - KnobSmith Audio: Audio plugin UX design — frictionless controls for music production software
 - Finnish Transport Agency: National identity system for merged transport authority
 - New Things Co: Brand identity for a digital transformation consultancy
@@ -61,6 +61,7 @@ Contact:
 - Email: mail@digitaltableteur.com
 - Phone: +358 45 657 4469
 - Location: Helsinki, Finland
+- CV or curated portfolio requests: use studio.composeMailRequest to open the visitor's email client with a pre-filled message to mail@digitaltableteur.com
 
 Other:
 - Music project: Random Gorsey (electronic music production) — https://randomgorsey.com

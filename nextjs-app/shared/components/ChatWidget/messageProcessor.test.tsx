@@ -5,6 +5,7 @@ import {
   processConversation,
   TOKEN_OPEN_HOURS,
   TOKEN_SERVICES_GRID,
+  TOKEN_VERTAAUX_OFFER,
   extractCopy,
 } from "@dt/ChatWidget/messageProcessor";
 
@@ -228,5 +229,28 @@ describe("messageProcessor (user-triggered only) | OpenHours + ServicesGrid", ()
     const textPart = assistant.parts.find((p) => p.kind === "text") as any;
     expect(textPart.content).not.toContain(TOKEN_OPEN_HOURS);
     expect(/open\s*hours/i.test(textPart.content)).toBe(false);
+  });
+
+  it("injects VertaaUX offer after accessibility questions", () => {
+    const convo = processConversation([
+      makeMsg("user", "We have accessibility issues on our site"),
+      makeMsg(
+        "assistant",
+        `VertaaUX can help audit those issues. ${TOKEN_VERTAAUX_OFFER}`,
+      ),
+    ]);
+    const assistant = convo[1];
+    const offer = assistant.parts.find(
+      (part) =>
+        part.kind === "component" && part.name === "VertaaUxAccessibilityOffer",
+    );
+    expect(offer).toMatchObject({
+      kind: "component",
+      name: "VertaaUxAccessibilityOffer",
+      props: {
+        caseStudyUrl: "/work/vertaaux",
+        productUrl: "https://vertaaux.ai",
+      },
+    });
   });
 });
