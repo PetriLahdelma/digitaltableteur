@@ -1,6 +1,7 @@
 .root {
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 2rem;
+  min-width: 0;
   max-width: 100%;
   font-family: var(--primary-body-font);
   font-size: 1rem;
@@ -21,7 +22,7 @@
 
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 1rem;
   margin-top: 2rem;
 }

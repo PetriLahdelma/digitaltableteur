@@ -85,3 +85,10 @@
     font-optical-sizing: auto;
   }
 }
+
+@media (width < 768px) {
+  .title {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
