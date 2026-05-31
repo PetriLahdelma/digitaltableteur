@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { getBlogPostBySlug } from "@/nextjs-app/shared/data/blogPosts";
+import { getPostMetaBySlug } from "@/app/blog/postMetadata";
 import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
 import { Container } from "@/nextjs-app/shared/components/Container";
-import { articleProseClassName } from "@/nextjs-app/shared/components/ArticleContent/articleProseClasses";
 import { toAbsoluteSiteUrl } from "@/app/lib/siteUrl";
+import { BlogArticleMdxBody } from "./BlogArticleMdxBody";
 import { ServerRelatedPosts } from "./ServerRelatedPosts";
 
 function formatPublishedDate(iso?: string): string {
@@ -26,11 +26,10 @@ export function ServerArticleContent({
   slug: string;
   showUnpublished?: boolean;
 }) {
-  const post = getBlogPostBySlug(slug, { showUnpublished });
+  const post = getPostMetaBySlug(slug, { showUnpublished });
   if (!post) return null;
 
   const {
-    Component,
     title,
     excerpt,
     publishedAt,
@@ -120,9 +119,7 @@ export function ServerArticleContent({
 
       <Container size="md" className="py-8 tablet:py-12">
         <div className="min-w-0">
-          <div className={articleProseClassName}>
-            <Component />
-          </div>
+          <BlogArticleMdxBody slug={slug} showUnpublished={showUnpublished} />
 
           {author ? (
             <aside className="not-prose mt-12 rounded-lg border border-border bg-muted/30 p-6">
