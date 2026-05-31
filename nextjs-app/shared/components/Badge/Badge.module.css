@@ -123,7 +123,7 @@
 }
 
 .removable .closeButton:hover {
-  background: color-mix(in srgb, currentColor 12%, transparent);
+  background: color-mix(in srgb, currentcolor 12%, transparent);
 }
 
 .removable .closeButton:focus-visible {
