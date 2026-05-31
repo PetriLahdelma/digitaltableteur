@@ -107,17 +107,27 @@
   color: var(--color-neutral-text);
 }
 
-.closeButton {
-  display: inline-block;
-  margin-inline-start: 0;
-  justify-content: center;
-  align-items: center;
-  gap: 0.25em;
+.removable .closeButton {
+  flex-shrink: 0;
+  margin-inline-start: 0.125rem;
+  padding: 0;
   border: none;
-  background: none;
+  border-radius: 999px;
+  background: transparent;
   color: inherit;
   cursor: pointer;
-  vertical-align: middle;
+  block-size: 1.125rem;
+  inline-size: 1.125rem;
+  min-block-size: 1.125rem;
+  min-inline-size: 1.125rem;
+}
+
+.removable .closeButton:hover {
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.removable .closeButton:focus-visible {
+  outline-offset: 1px;
 }
 
 .icon {

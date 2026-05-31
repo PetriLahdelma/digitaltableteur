@@ -211,6 +211,16 @@ describe("Button", () => {
         consoleSpy.mockRestore();
       });
 
+      it("should not warn when icon-only button has aria-label", () => {
+        const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+        render(<Button icon="search" aria-label="Search" />);
+        const buttonWarnings = consoleSpy.mock.calls.filter(
+          (call) => typeof call[0] === "string" && call[0].includes("[Button]")
+        );
+        expect(buttonWarnings).toHaveLength(0);
+        consoleSpy.mockRestore();
+      });
+
       it("should use tooltip as aria-label when accessibleName is not provided", () => {
         const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
         render(<Button icon="search" tooltip="Search the site" />);
