@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 
 import { AboutPage } from "@dt-pages/AboutPage";
-import { getPersonSchema, stringifyJsonLd } from "@/app/lib/structuredData";
+import { aboutFaqs } from "@/app/lib/aeoContent";
+import {
+  getBreadcrumbSchema,
+  getFaqSchema,
+  getPersonSchema,
+  getWebPageSchema,
+  stringifyJsonLd,
+} from "@/app/lib/structuredData";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = "About Petri Lahdelma | Digitaltableteur";
@@ -30,13 +37,34 @@ export async function generateMetadata(): Promise<Metadata> {
 export const revalidate = 3600;
 
 export default function About() {
+  const structuredData = [
+    getWebPageSchema({
+      name: "About Petri Lahdelma | Digitaltableteur",
+      description:
+        "Design Systems Specialist and DesignOps Engineer. Expert in React, TypeScript, Figma, and AI-powered design workflows.",
+      url: "/about",
+      keywords: [
+        "Petri Lahdelma",
+        "design systems specialist",
+        "DesignOps engineer",
+        "Helsinki design consultant",
+      ],
+    }),
+    getPersonSchema(),
+    getFaqSchema(aboutFaqs),
+    getBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "About", url: "/about" },
+    ]),
+  ];
+
   return (
     <>
       <script
-        id="schema-person"
+        id="schema-about"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: stringifyJsonLd(getPersonSchema()),
+          __html: stringifyJsonLd(structuredData),
         }}
       />
       <AboutPage />

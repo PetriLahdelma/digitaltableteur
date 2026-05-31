@@ -1,0 +1,49 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "SiteTree",
+  "tier": "molecule",
+  "group": "navigation",
+  "status": "wip",
+  "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
+  "figma": null,
+  "radixPrimitive": null,
+  "element": "nav",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "a11y": {
+    "keyboard": [
+      "Tab",
+      "Enter",
+      "Space"
+    ],
+    "ariaRequirements": [
+      "nav landmark",
+      "aria-label",
+      "native details/summary for branch toggles"
+    ],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "playFunctionExempt": "Static navigation tree; keyboard follows native details behavior."
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "argTypesProxyExempt": [
+    "aria-label",
+    "className",
+    "defaultExpandAll",
+    "nodes"
+  ],
+  "consumers": []
+}
