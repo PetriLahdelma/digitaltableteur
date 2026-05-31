@@ -1,14 +1,46 @@
 import withMDX from "@next/mdx";
 import bundleAnalyzer from "@next/bundle-analyzer";
 import type { NextConfig } from "next";
-import remarkFrontmatter from "remark-frontmatter";
-import remarkGfm from "remark-gfm";
-import remarkMdxFrontmatter from "remark-mdx-frontmatter";
-import rehypePrettyCode from "rehype-pretty-code";
 import path from "path";
 import webpack from "webpack";
 
 import { getAgentDiscoveryLinkHeader } from "./app/lib/agent-discovery";
+
+// Shared path aliases (webpack + turbopack)
+const nextjsSharedComponents = path.resolve(
+  __dirname,
+  "nextjs-app/shared/components",
+);
+const appRoot = path.resolve(__dirname, ".");
+const rootNodeModules = path.resolve(__dirname, "node_modules");
+
+// String plugin names + JSON-serializable options only — required for Turbopack MDX.
+// Function imports (remarkGfm, rehypePrettyCode, …) break @next/mdx with Turbopack.
+const mdxRemarkPlugins = [
+  "remark-gfm",
+  "remark-frontmatter",
+  "remark-mdx-frontmatter",
+];
+
+const mdxRehypePlugins = [
+  [
+    "rehype-pretty-code",
+    {
+      theme: {
+        light: "github-light",
+        dark: "github-dark",
+        hcw: "github-light-high-contrast",
+        hcb: "github-dark-high-contrast",
+      },
+      keepBackground: false,
+      bypassInlineCode: true,
+      defaultLang: {
+        block: "text",
+        inline: "text",
+      },
+    },
+  ],
+];
 
 // Bundle analyzer configuration
 const withBundleAnalyzer = bundleAnalyzer({
@@ -167,15 +199,16 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   turbopack: {
-    // tsconfig paths cover @, @dt, @dt-pages; pin i18n packages to root node_modules.
+    // Turbopack aliases must be project-relative (absolute paths get `./` prefixed and break).
     resolveAlias: {
-      i18next: path.join(__dirname, "node_modules", "i18next"),
-      "react-i18next": path.join(__dirname, "node_modules", "react-i18next"),
-      "i18next-browser-languagedetector": path.join(
-        __dirname,
-        "node_modules",
-        "i18next-browser-languagedetector",
-      ),
+      "@": "./",
+      "@dt": "./nextjs-app/shared/components",
+      "@dt-pages": "./nextjs-app/shared/components/pages",
+      // Pin i18n to root node_modules — duplicate copies break initReactI18next on Turbopack.
+      i18next: "./node_modules/i18next",
+      "react-i18next": "./node_modules/react-i18next",
+      "i18next-browser-languagedetector":
+        "./node_modules/i18next-browser-languagedetector",
     },
   },
   async headers() {
@@ -241,15 +274,6 @@ const nextConfig: NextConfig = {
       };
     }
 
-    // Path aliases
-    // Path aliases (Vercel/Linux safe, works even if tsconfig paths are ignored)
-    const nextjsSharedComponents = path.resolve(
-      __dirname,
-      "nextjs-app/shared/components",
-    );
-    const appRoot = path.resolve(__dirname, ".");
-    const rootNodeModules = path.resolve(__dirname, "node_modules");
-
     const existingAlias = config.resolve.alias;
     const normalizedAlias: Record<string, string | false> = Array.isArray(
       existingAlias,
@@ -312,26 +336,8 @@ const nextConfig: NextConfig = {
 const withMdx = withMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkGfm, remarkFrontmatter, remarkMdxFrontmatter],
-    rehypePlugins: [
-      [
-        rehypePrettyCode,
-        {
-          theme: {
-            light: "github-light",
-            dark: "github-dark",
-            hcw: "github-light-high-contrast",
-            hcb: "github-dark-high-contrast",
-          },
-          keepBackground: false,
-          bypassInlineCode: true,
-          defaultLang: {
-            block: "text",
-            inline: "text",
-          },
-        },
-      ],
-    ],
+    remarkPlugins: mdxRemarkPlugins as string[],
+    rehypePlugins: mdxRehypePlugins as [string, Record<string, unknown>][],
   },
 });
 

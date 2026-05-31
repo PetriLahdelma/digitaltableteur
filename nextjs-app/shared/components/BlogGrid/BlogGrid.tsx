@@ -18,8 +18,8 @@ export interface BlogGridProps {
   /** Custom column configuration */
   columns?: {
     sm?: 1 | 2;
-    md?: 2 | 3;
-    lg?: 2 | 3 | 4;
+    md?: 1 | 2 | 3;
+    lg?: 1 | 2 | 3 | 4;
   };
   /** Hide images in article cards */
   hideImages?: boolean;
@@ -85,10 +85,12 @@ export function BlogGrid({
       2: "grid-cols-2",
     },
     md: {
+      1: "tablet:grid-cols-1",
       2: "tablet:grid-cols-2",
       3: "tablet:grid-cols-3",
     },
     lg: {
+      1: "desktop:grid-cols-1",
       2: "desktop:grid-cols-2",
       3: "desktop:grid-cols-3",
       4: "desktop:grid-cols-4",
