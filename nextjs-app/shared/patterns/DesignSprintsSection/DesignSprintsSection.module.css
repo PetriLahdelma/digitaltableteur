@@ -1,3 +1,91 @@
+/* Stacked layout — intentional single column (not side-by-side at desktop). */
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-48);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+  max-width: 36rem;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--font-size-title-m);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  color: var(--color-foreground);
+}
+
+.description {
+  margin: 0;
+  max-width: 36rem;
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-l);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-muted-foreground);
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-layout-16);
+}
+
+@media (width >= 768px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.benefitCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-layout-16);
+  padding: var(--space-layout-16);
+  border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  border-radius: var(--radius-lg);
+  background-color: color-mix(in srgb, var(--color-background) 60%, transparent);
+  backdrop-filter: blur(8px);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.benefitCard:hover {
+  border-color: var(--color-border);
+  background-color: color-mix(in srgb, var(--color-background) 80%, transparent);
+}
+
+.benefitIcon {
+  display: flex;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  color: var(--color-primary);
+}
+
+.benefitLabel {
+  font-family: var(--font-body);
+  font-size: var(--font-size-text-m);
+  font-weight: 500;
+  color: var(--color-foreground);
+}
+
+.ctaRow {
+  display: flex;
+  justify-content: center;
+  padding-block-start: var(--space-layout-32);
+}
+
 .iconCircle {
   background-color: var(--logo-background);
 
