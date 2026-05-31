@@ -5,10 +5,7 @@ import { markdownNegotiationHeader } from "@/app/lib/agent-discovery";
 import { getVisiblePosts } from "../blog/postMetadata";
 import { projects } from "@/nextjs-app/shared/data/projects";
 import { getPseoLeafPages } from "@/lib/pseo/catalog";
-
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://www.digitaltableteur.com";
+import { getSiteUrl, toAbsoluteSiteUrl } from "@/app/lib/siteUrl";
 
 export const revalidate = 600;
 
@@ -16,6 +13,8 @@ export async function GET() {
   const requestHeaders = await headers();
   const isMarkdownNegotiation =
     requestHeaders.get(markdownNegotiationHeader) === "1";
+
+  const baseUrl = getSiteUrl();
 
   const pseoPages = getPseoLeafPages().slice(0, 8);
   const featuredProjects = projects.filter((project) => project.featured);
@@ -37,7 +36,8 @@ export async function GET() {
   body += `- About: ${baseUrl}/about\n`;
   body += `- Contact: ${baseUrl}/contact\n`;
   body += `- Work index: ${baseUrl}/work\n`;
-  body += `- Blog index: ${baseUrl}/blog\n`;
+  body += `- Blog index: ${toAbsoluteSiteUrl("/blog")}\n`;
+  body += `- Blog RSS feed: ${toAbsoluteSiteUrl("/blog/feed.xml")}\n`;
   body += `- AI usage policy: ${baseUrl}/ai-use\n`;
   body += `- Accessibility page: ${baseUrl}/accessibility\n`;
   body += `- Programmatic SEO hub: ${baseUrl}/pseo\n`;

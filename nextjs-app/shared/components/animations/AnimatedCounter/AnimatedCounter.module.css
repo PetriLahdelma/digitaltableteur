@@ -30,6 +30,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .value {
-    /* No animation needed - shows final value immediately */
+    /* Final value is applied in JS; assistive tech uses aria-label. */
   }
 }

@@ -1,20 +1,13 @@
 "use client";
 
-import { BlogArticlePage } from "@dt-pages/Blog";
-import { NextBlogNav } from "../NextBlogNav";
 import { LanguageNotice } from "@/app/components/LanguageNotice";
+import { NextBlogNav } from "../NextBlogNav";
 
-export default function ClientArticle({ slug }: { slug: string }) {
+export default function ClientArticleChrome() {
   return (
-    <article lang="en">
+    <>
       <LanguageNotice contentLanguage="en" />
-      <BlogArticlePage
-        slug={slug}
-        nav={<NextBlogNav />}
-        shareBaseUrl={
-          process.env.NEXT_PUBLIC_SITE_URL || "https://digitaltableteur.com"
-        }
-      />
-    </article>
+      <NextBlogNav />
+    </>
   );
 }
