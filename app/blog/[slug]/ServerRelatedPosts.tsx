@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-import { getBlogPosts, getBlogPostBySlug } from "@/nextjs-app/shared/data/blogPosts";
+import {
+  getPostMetaBySlug,
+  getVisiblePosts,
+} from "@/app/blog/postMetadata";
 import { Container } from "@/nextjs-app/shared/components/Container";
 
 export function ServerRelatedPosts({
@@ -10,10 +13,10 @@ export function ServerRelatedPosts({
   currentSlug: string;
   maxPosts?: number;
 }) {
-  const currentPost = getBlogPostBySlug(currentSlug);
+  const currentPost = getPostMetaBySlug(currentSlug);
   const currentTags = new Set(currentPost?.tags ?? []);
 
-  const related = getBlogPosts()
+  const related = getVisiblePosts()
     .filter((post) => post.slug !== currentSlug)
     .map((post) => {
       const sharedTags = (post.tags ?? []).filter((tag) => currentTags.has(tag));
