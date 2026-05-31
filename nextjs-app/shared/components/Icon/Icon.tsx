@@ -1,12 +1,9 @@
 import React from "react";
-import type {
-  IconProps as PhosphorIconProps,
-  IconWeight,
-} from "@phosphor-icons/react";
-import * as PhosphorIcons from "@phosphor-icons/react/ssr";
+import type { IconWeight } from "@phosphor-icons/react";
 import styles from "./Icon.module.css";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { resolvePhosphorIcon } from "./iconRegistry";
 
 export const iconVariants = cva("inline-flex shrink-0 items-center justify-center", {
   variants: {
@@ -70,68 +67,6 @@ const LEGACY_STYLE_TO_WEIGHT: Record<LegacyStyle, IconWeight> = {
   brands: "regular",
 };
 
-const ICON_ALIASES: Record<string, string> = {
-  "circle-info": "Info",
-  info: "Info",
-  "circle-check": "CheckCircle",
-  "circle-xmark": "XCircle",
-  "triangle-exclamation": "WarningCircle",
-  "share-nodes": "ShareNetwork",
-  "share-network": "ShareNetwork",
-  copy: "CopySimple",
-  sync: "ArrowsClockwise",
-  "arrows-rotate": "ArrowsClockwise",
-  "arrow-right": "ArrowRight",
-  github: "GithubLogo",
-  "square-instagram": "InstagramLogo",
-  instagram: "InstagramLogo",
-  "square-x-twitter": "XLogo",
-  "x-twitter": "XLogo",
-  "square-facebook": "FacebookLogo",
-  facebook: "FacebookLogo",
-  "square-whatsapp": "WhatsappLogo",
-  whatsapp: "WhatsappLogo",
-  "reddit-alien": "RedditLogo",
-  reddit: "RedditLogo",
-  "x-circle": "XCircle",
-  x: "X",
-};
-
-const toPascalCase = (value: string | undefined) =>
-  (value ?? "")
-    .split(/[\s_-]+/)
-    .filter(Boolean)
-    .map((segment) => segment[0].toUpperCase() + segment.slice(1))
-    .join("");
-
-const resolveIconComponent = (
-  rawName: string,
-): React.ComponentType<PhosphorIconProps> | null => {
-  const cleaned = rawName?.replace(/^fa-/, "");
-  const alias = ICON_ALIASES[cleaned] ?? ICON_ALIASES[rawName];
-  const candidates = [alias, toPascalCase(cleaned), rawName].filter(
-    Boolean,
-  ) as string[];
-
-  for (const candidate of candidates) {
-    const IconComponent = (
-      PhosphorIcons as unknown as Record<
-        string,
-        React.ComponentType<PhosphorIconProps>
-      >
-    )[candidate];
-    if (IconComponent) return IconComponent;
-  }
-
-  if (process.env.NODE_ENV !== "production") {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `[Icon] Unable to find Phosphor icon "${rawName}". Did you provide a valid name?`,
-    );
-  }
-  return null;
-};
-
 /** Phosphor icon wrapper with size tokens, motion affordances, and accessible naming. */
 const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
   (
@@ -154,8 +89,14 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
     },
     ref,
   ) => {
-    const IconComponent = resolveIconComponent(name);
+    const IconComponent = resolvePhosphorIcon(name);
     if (!IconComponent) {
+      if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `[Icon] Unable to find Phosphor icon "${name}". Add it to iconRegistry.ts.`,
+        );
+      }
       return null;
     }
 
