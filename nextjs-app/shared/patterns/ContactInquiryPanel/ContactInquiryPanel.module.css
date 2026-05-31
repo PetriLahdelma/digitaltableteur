@@ -1,0 +1,110 @@
+.inquiryPanel {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
+.modeSwitch {
+  display: inline-flex;
+  width: 100%;
+  padding: var(--space-internal-4);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-muted);
+  gap: var(--space-internal-4);
+}
+
+.modeButton {
+  flex: 1;
+  padding-block: var(--space-layout-12);
+  padding-inline: var(--space-layout-16);
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    color var(--duration-fast) var(--ease-out-cubic);
+}
+
+.modeButton:hover {
+  color: var(--color-text);
+}
+
+.modeButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.modeButtonActive {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+}
+
+.modeButtonContent {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-internal-2);
+}
+
+.modeButtonLabel {
+  display: inline-block;
+}
+
+.newBadge {
+  flex-shrink: 0;
+  margin-block-start: -0.125rem;
+  padding-block: 1px;
+  padding-inline: var(--space-internal-4);
+  border-radius: var(--radius-full);
+  background-color: var(--logo-background);
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--logo-color);
+  pointer-events: none;
+}
+
+.panelBody {
+  width: 100%;
+  min-width: 0;
+}
+
+.unconfigured {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-16);
+  padding: var(--space-layout-24);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-muted);
+}
+
+.unconfiguredText {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-muted);
+}
+
+.unconfiguredActions {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--space-layout-16);
+}
+
+.actionButton {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

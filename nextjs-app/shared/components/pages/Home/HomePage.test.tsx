@@ -43,7 +43,7 @@ describe("HomePage", () => {
 
   it("renders services section", () => {
     renderWithProviders(<HomePage />);
-    expect(screen.getByText(/What we do/i)).toBeInTheDocument();
+    expect(screen.getByText(/Services/i)).toBeInTheDocument();
   });
 
   it("renders selected clients label", () => {

@@ -1,5 +1,11 @@
 import type { UIMessage } from "ai";
 import { VERTAAUX_ACCESSIBILITY_OFFER } from "../../data/donny-vertaaux-offer";
+import {
+  getChatToolLabel,
+  getChatToolSectionTitle,
+} from "./chatToolLabels";
+import { sanitizeAssistantChatMarkdown } from "./chatMarkdownSanitizer";
+import { normalizeDonnyToolName, isDonnyToolPart } from "../../lib/donny-tool-names";
 
 // Token constants (exported for possible future explicit user prompts)
 export const TOKEN_OPEN_HOURS = "[[openHours]]";
@@ -38,17 +44,82 @@ export interface ProjectCardData {
   url: string;
 }
 
+export interface ToolResultMeta {
+  toolName: string;
+  toolLabel: string;
+  sectionTitle?: string;
+  timestamp?: string;
+  timestampIso?: string;
+}
+
+export interface ServicePackageCardData {
+  id: string;
+  name: string;
+  priceRangeEur: string;
+  duration: string;
+  description: string;
+  recommended?: boolean;
+}
+
+export interface FollowUpDraftData {
+  subject: string;
+  body: string;
+  disclaimer: string;
+  contactUrl: string;
+}
+
+export interface BookingEmbedData {
+  configured: boolean;
+  provider: "calcom" | "calendly" | "none";
+  meetingLabel: string;
+  embedUrl: string;
+  fallbackUrl: string;
+  prefillApplied?: boolean;
+  calLink?: string;
+  calOrigin?: string;
+  embedJsUrl?: string;
+}
+
 export type ProcessedPart =
   | { kind: "text"; content: string }
-  | { kind: "component"; name: "OpenHours"; props?: { compact?: boolean } }
-  | { kind: "component"; name: "ServicesGrid" }
-  | { kind: "component"; name: "StudioMap"; props?: { compact?: boolean } }
-  | { kind: "component"; name: "NavigateLink"; props: { url: string; label?: string } }
-  | { kind: "component"; name: "ProjectCards"; props: { projects: ProjectCardData[] } }
+  | { kind: "component"; name: "OpenHours"; props?: { compact?: boolean }; meta?: ToolResultMeta }
+  | { kind: "component"; name: "ServicesGrid"; meta?: ToolResultMeta }
+  | { kind: "component"; name: "StudioMap"; props?: { compact?: boolean }; meta?: ToolResultMeta }
+  | {
+      kind: "component";
+      name: "NavigateLink";
+      props: { url: string; label?: string };
+      meta?: ToolResultMeta;
+    }
+  | {
+      kind: "component";
+      name: "ProjectCards";
+      props: { projects: ProjectCardData[] };
+      meta?: ToolResultMeta;
+    }
+  | {
+      kind: "component";
+      name: "ServicePackageCards";
+      props: { packages: ServicePackageCardData[]; pricingUrl: string };
+      meta?: ToolResultMeta;
+    }
+  | {
+      kind: "component";
+      name: "FollowUpDraft";
+      props: FollowUpDraftData;
+      meta?: ToolResultMeta;
+    }
+  | {
+      kind: "component";
+      name: "BookingEmbed";
+      props: BookingEmbedData;
+      meta?: ToolResultMeta;
+    }
   | {
       kind: "component";
       name: "VertaaUxAccessibilityOffer";
       props: { caseStudyUrl: string; productUrl: string };
+      meta?: ToolResultMeta;
     };
 
 export interface ProcessedMessage {
@@ -119,16 +190,71 @@ export const extractCopy = (message: UIMessage): string => {
  * Detects navigateTo and projectShowcase tool results and converts
  * them to ProcessedPart components for rich rendering.
  */
+function resolveMessageToolTimestamp(message: UIMessage): {
+  timestamp?: string;
+  timestampIso?: string;
+} {
+  const record = message as {
+    createdAt?: Date | string | number;
+    metadata?: { createdAt?: string | number };
+  };
+  const raw = record.createdAt ?? record.metadata?.createdAt;
+  if (raw == null) return {};
+  const date = raw instanceof Date ? raw : new Date(raw);
+  if (Number.isNaN(date.getTime())) return {};
+  return {
+    timestamp: date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+    timestampIso: date.toISOString(),
+  };
+}
+
+function buildToolMeta(
+  toolName: string,
+  message: UIMessage,
+): ToolResultMeta {
+  return {
+    toolName,
+    toolLabel: getChatToolLabel(toolName),
+    sectionTitle: getChatToolSectionTitle(toolName),
+    ...resolveMessageToolTimestamp(message),
+  };
+}
+
+function matchesDonnyTool(
+  part: { type?: string; toolName?: string },
+  expected: string,
+): boolean {
+  return isDonnyToolPart(part, expected);
+}
+
 const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
   if (!Array.isArray(message.parts)) return [];
   const parts: ProcessedPart[] = [];
 
-  const pushNavigateLink = (url: string, label?: string) => {
+  const pushNavigateLink = (url: string, label?: string, toolName?: string) => {
     parts.push({
       kind: "component",
       name: "NavigateLink",
       props: { url, label: label || url },
+      meta: toolName ? buildToolMeta(toolName, message) : undefined,
     });
+  };
+
+  const pushProjectCards = (
+    projects: ProjectCardData[] | undefined,
+    toolName: string,
+  ) => {
+    if (projects && projects.length > 0) {
+      parts.push({
+        kind: "component",
+        name: "ProjectCards",
+        props: { projects },
+        meta: buildToolMeta(toolName, message),
+      });
+    }
   };
 
   const pushVertaauxOffer = (output: unknown) => {
@@ -147,6 +273,111 @@ const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
         caseStudyUrl: record.caseStudyUrl,
         productUrl: record.productUrl,
       },
+      meta: buildToolMeta("studio.vertaauxAccessibility", message),
+    });
+  };
+
+  const pushServicePackages = (output: unknown, toolName: string) => {
+    if (!output || typeof output !== "object") return;
+    const record = output as {
+      packages?: Array<{
+        id?: string;
+        name?: string;
+        priceRangeEur?: string;
+        duration?: string;
+        description?: string;
+      }>;
+      recommendedPackageId?: string;
+      pricingUrl?: string;
+    };
+    if (!Array.isArray(record.packages) || record.packages.length === 0) return;
+
+    const packages: ServicePackageCardData[] = record.packages
+      .filter(
+        (pkg): pkg is Required<typeof pkg> =>
+          Boolean(pkg.id && pkg.name && pkg.priceRangeEur && pkg.duration),
+      )
+      .map((pkg) => ({
+        id: pkg.id!,
+        name: pkg.name!,
+        priceRangeEur: pkg.priceRangeEur!,
+        duration: pkg.duration!,
+        description: pkg.description ?? "",
+        recommended: pkg.id === record.recommendedPackageId,
+      }));
+
+    if (packages.length === 0) return;
+
+    parts.push({
+      kind: "component",
+      name: "ServicePackageCards",
+      props: {
+        packages,
+        pricingUrl:
+          typeof record.pricingUrl === "string" ? record.pricingUrl : "/pricing",
+      },
+      meta: buildToolMeta(toolName, message),
+    });
+  };
+
+  const pushFollowUpDraft = (output: unknown, toolName: string) => {
+    if (!output || typeof output !== "object") return;
+    const record = output as {
+      subject?: unknown;
+      body?: unknown;
+      disclaimer?: unknown;
+      contactUrl?: unknown;
+    };
+    if (
+      typeof record.subject !== "string" ||
+      typeof record.body !== "string" ||
+      typeof record.disclaimer !== "string"
+    ) {
+      return;
+    }
+    parts.push({
+      kind: "component",
+      name: "FollowUpDraft",
+      props: {
+        subject: record.subject,
+        body: record.body,
+        disclaimer: record.disclaimer,
+        contactUrl:
+          typeof record.contactUrl === "string" ? record.contactUrl : "/contact",
+      },
+      meta: buildToolMeta(toolName, message),
+    });
+  };
+
+  const pushBookingEmbed = (output: unknown, toolName: string) => {
+    if (!output || typeof output !== "object") return;
+    const record = output as BookingEmbedData;
+    if (
+      typeof record.meetingLabel !== "string" ||
+      typeof record.fallbackUrl !== "string"
+    ) {
+      return;
+    }
+    parts.push({
+      kind: "component",
+      name: "BookingEmbed",
+      props: {
+        configured: record.configured === true,
+        provider:
+          record.provider === "calcom" || record.provider === "calendly"
+            ? record.provider
+            : "none",
+        meetingLabel: record.meetingLabel,
+        embedUrl: typeof record.embedUrl === "string" ? record.embedUrl : "",
+        fallbackUrl: record.fallbackUrl,
+        prefillApplied: record.prefillApplied === true,
+        calLink: typeof record.calLink === "string" ? record.calLink : undefined,
+        calOrigin:
+          typeof record.calOrigin === "string" ? record.calOrigin : undefined,
+        embedJsUrl:
+          typeof record.embedJsUrl === "string" ? record.embedJsUrl : undefined,
+      },
+      meta: buildToolMeta(toolName, message),
     });
   };
 
@@ -161,26 +392,38 @@ const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
       };
       const ti = inv.toolInvocation;
       if (!ti || ti.state !== "result" || !ti.result) continue;
+      const toolName = normalizeDonnyToolName(ti.toolName ?? "") ?? ti.toolName;
 
-      if (ti.toolName === "studio.navigateTo") {
+      if (toolName === "studio.navigateTo") {
         const result = ti.result as { navigated?: boolean; url?: string };
         if (result.url) {
-          pushNavigateLink(result.url);
+          pushNavigateLink(result.url, undefined, toolName);
         }
       }
 
-      if (ti.toolName === "studio.projectShowcase") {
+      if (toolName === "studio.projectShowcase") {
         const result = ti.result as { projects?: ProjectCardData[] };
-        if (result.projects && result.projects.length > 0) {
-          parts.push({
-            kind: "component",
-            name: "ProjectCards",
-            props: { projects: result.projects },
-          });
-        }
+        pushProjectCards(result.projects, toolName);
       }
 
-      if (ti.toolName === "studio.vertaauxAccessibility") {
+      if (toolName === "studio.getCaseStudies") {
+        const result = ti.result as { projects?: ProjectCardData[] };
+        pushProjectCards(result.projects, toolName);
+      }
+
+      if (toolName === "studio.getServicePackages") {
+        pushServicePackages(ti.result, toolName);
+      }
+
+      if (toolName === "studio.draftFollowUp") {
+        pushFollowUpDraft(ti.result, toolName);
+      }
+
+      if (toolName === "studio.bookCall") {
+        pushBookingEmbed(ti.result, toolName);
+      }
+
+      if (toolName === "studio.vertaauxAccessibility") {
         pushVertaauxOffer(ti.result);
       }
       continue;
@@ -194,41 +437,42 @@ const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
       input?: { label?: string };
     };
 
-    const isNavigatePart =
-      typed.type === "tool-studio.navigateTo" ||
-      (typed.type === "dynamic-tool" && typed.toolName === "studio.navigateTo");
-
-    if (isNavigatePart && typed.state === "output-available") {
+    if (matchesDonnyTool(typed, "studio.navigateTo") && typed.state === "output-available") {
       const result = typed.output as { url?: string; label?: string } | undefined;
       if (result?.url) {
-        pushNavigateLink(result.url, typed.input?.label);
+        pushNavigateLink(result.url, typed.input?.label, "studio.navigateTo");
       }
       continue;
     }
 
-    const isProjectPart =
-      typed.type === "tool-studio.projectShowcase" ||
-      (typed.type === "dynamic-tool" &&
-        typed.toolName === "studio.projectShowcase");
-
-    if (isProjectPart && typed.state === "output-available") {
+    if (matchesDonnyTool(typed, "studio.projectShowcase") && typed.state === "output-available") {
       const result = typed.output as { projects?: ProjectCardData[] } | undefined;
-      if (result?.projects && result.projects.length > 0) {
-        parts.push({
-          kind: "component",
-          name: "ProjectCards",
-          props: { projects: result.projects },
-        });
-      }
+      pushProjectCards(result?.projects, "studio.projectShowcase");
       continue;
     }
 
-    const isVertaauxPart =
-      typed.type === "tool-studio.vertaauxAccessibility" ||
-      (typed.type === "dynamic-tool" &&
-        typed.toolName === "studio.vertaauxAccessibility");
+    if (matchesDonnyTool(typed, "studio.getCaseStudies") && typed.state === "output-available") {
+      const result = typed.output as { projects?: ProjectCardData[] } | undefined;
+      pushProjectCards(result?.projects, "studio.getCaseStudies");
+      continue;
+    }
 
-    if (isVertaauxPart && typed.state === "output-available") {
+    if (matchesDonnyTool(typed, "studio.getServicePackages") && typed.state === "output-available") {
+      pushServicePackages(typed.output, "studio.getServicePackages");
+      continue;
+    }
+
+    if (matchesDonnyTool(typed, "studio.draftFollowUp") && typed.state === "output-available") {
+      pushFollowUpDraft(typed.output, "studio.draftFollowUp");
+      continue;
+    }
+
+    if (matchesDonnyTool(typed, "studio.bookCall") && typed.state === "output-available") {
+      pushBookingEmbed(typed.output, "studio.bookCall");
+      continue;
+    }
+
+    if (matchesDonnyTool(typed, "studio.vertaauxAccessibility") && typed.state === "output-available") {
       pushVertaauxOffer(typed.output);
     }
   }
@@ -237,11 +481,16 @@ const extractToolResultParts = (message: UIMessage): ProcessedPart[] => {
 
 export const processMessage = (message: UIMessage): ProcessedMessage => {
   const copy = extractCopy(message);
-  const toolParts = message.role === "assistant" ? extractToolResultParts(message) : [];
+  const toolParts =
+    message.role === "assistant" ? extractToolResultParts(message) : [];
+  const sanitizedCopy =
+    message.role === "assistant"
+      ? sanitizeAssistantChatMarkdown(copy, toolParts)
+      : copy;
   return {
     id: message.id,
     role: message.role,
-    parts: [{ kind: "text", content: copy }, ...toolParts],
+    parts: [{ kind: "text", content: sanitizedCopy }, ...toolParts],
   };
 };
 
@@ -369,12 +618,14 @@ export const processConversationWithFlags = (
       .replace(/\[(?:call_\w+|studio\.\w+|\w+)\s+result\s+available\]\n*/g, "")
       .trim();
 
+    const toolParts = extractToolResultParts(m);
+    assistantDisplay = sanitizeAssistantChatMarkdown(assistantDisplay, toolParts);
+
     const parts: ProcessedPart[] = [
       { kind: "text", content: assistantDisplay },
     ];
 
     // Extract tool result components (NavigateLink, ProjectCards, etc.)
-    const toolParts = extractToolResultParts(m);
     parts.push(...toolParts);
 
     const hasVertaauxOffer = toolParts.some(

@@ -110,7 +110,10 @@ const baseSystemPrompt = [
   buildContextSummary(),
 ].join("\n");
 
-export const buildSystemPrompt = (toolNames: string[]) => {
+export const buildSystemPrompt = (
+  toolNames: string[],
+  options?: { useOpenAiToolNames?: boolean },
+) => {
   if (!toolNames.length) return baseSystemPrompt;
   const toolInstruction = [
     "You have specialized tools — use them instead of guessing.",
@@ -120,6 +123,12 @@ export const buildSystemPrompt = (toolNames: string[]) => {
     "- When the user asks to navigate, open, go to, view, or show me a page (including prices, packages, pricing, work, contact), call studio.navigateTo immediately. Examples: 'show me the prices' → destination 'pricing' or '/pricing'; 'open SAP' → 'SAP Build Apps'. Their browser navigates automatically — never refuse to show the public pricing page.",
     "- When the user asks about accessibility issues, WCAG, a11y audits, screen readers, or inclusive design tooling, call studio.vertaauxAccessibility and mention VertaaUX. Include [[vertaauxOffer]] in your reply so the chat shows links to the VertaaUX case study (/work/vertaaux) and vertaaux.ai ('Score your accessibility with VertaaUX').",
     "- When the user asks to request a CV/resume or request a portfolio/work samples by email, call studio.composeMailRequest immediately (requestType 'cv' or 'portfolio'). This opens their email client with a pre-filled message to mail@digitaltableteur.com — do not refuse or redirect to the contact form.",
+    "- LEAD TRIAGE: When someone wants to hire Petri, buy services, discuss a project, or asks about engagement — run a short intake (one question at a time): (1) persona — client buying services, recruiter/hiring manager, or other; (2) need/challenge; (3) timeline and budget band if relevant. Then call studio.getCaseStudies with persona, studio.getServicePackages for clients (with problem/budget), and studio.composeMailRequest (cv) for recruiters who want CV/portfolio by email. Never invent package prices — use tool output only.",
+    "- When studio.getCaseStudies or studio.getServicePackages render cards in chat, do NOT repeat them as markdown lists, headings (## Case Studies), or ![image](url) thumbnails — summarize in one short paragraph only; the UI shows cards with section headers.",
+    "- In lead triage, call at most ONE tool per reply (getCaseStudies OR getServicePackages OR createLead OR bookCall — never chain multiple tools). Summarize in text after that single tool call.",
+    "- After fit is confirmed (package chosen, budget band aligned, or they ask to schedule), call studio.bookCall with packageId and any known name/email/notes. The chat renders the same inline scheduler as /contact?mode=book. If booking env vars are unset, point them to /contact.",
+    "- Before storing data, ask for explicit consent to follow up. When they consent and you have enough context, call studio.createLead with consent=true. Email is optional but ask for it when they want a reply. createLead pre-fills the contact form — tell them they can review and submit on /contact.",
+    "- studio.draftFollowUp returns draft email text only — never auto-send. Offer it when they want wording to email Petri themselves.",
     "- When the user asks to see Donny's face, mood, expression, or personality (e.g. 'look happy', 'show me your confused face', 'what expressions can you make?'), call studio.showExpression with the matching mood. For catalog questions, call studio.listExpressions first, then demo one or two moods — do not spam many tool calls in one reply.",
     "- Use studio.projectShowcase for project details, comparisons, or browsing when there is no clear open/navigate/show-me intent.",
     "- Use studio.navigateTo to take users to pages when they want to see something. It navigates their browser directly.",
@@ -127,7 +136,13 @@ export const buildSystemPrompt = (toolNames: string[]) => {
     "- You can chain tools: e.g., show a project then offer to navigate to it.",
     "- Summarize tool results in plain language. For projectShowcase, highlight what makes each project notable.",
   ].join("\n");
-  return `${baseSystemPrompt}\n\n${toolInstruction}`;
+
+  const guidelines =
+    options?.useOpenAiToolNames
+      ? toolInstruction.replace(/\bstudio\.([a-zA-Z0-9_]+)/g, "studio_$1")
+      : toolInstruction;
+
+  return `${baseSystemPrompt}\n\n${guidelines}`;
 };
 
 export const resolveModelId = () => {

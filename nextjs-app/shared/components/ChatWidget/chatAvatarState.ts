@@ -21,10 +21,10 @@ type MessagePart = {
   };
 };
 
-const STUDIO_TOOL_PREFIX = "tool-studio.";
+import { normalizeDonnyToolName } from "../../lib/donny-tool-names";
 
-function normalizeToolName(toolName: string): string {
-  return toolName.startsWith("studio.") ? toolName : `studio.${toolName}`;
+function normalizeToolName(name: string): string {
+  return normalizeDonnyToolName(name) ?? name;
 }
 
 /** Normalize legacy and AI SDK v5 tool lifecycle states. */
@@ -54,10 +54,8 @@ function readToolActivityFromPart(part: MessagePart): ToolActivity | null {
     return phase ? { toolName: normalizeToolName(toolName), phase } : null;
   }
 
-  if (part.type?.startsWith(STUDIO_TOOL_PREFIX)) {
-    const toolName = normalizeToolName(
-      part.type.slice(STUDIO_TOOL_PREFIX.length),
-    );
+  if (part.type?.startsWith("tool-")) {
+    const toolName = normalizeToolName(part.type.slice("tool-".length));
     const phase = normalizeToolPhase(part.state);
     return phase ? { toolName, phase } : null;
   }
@@ -147,6 +145,7 @@ export function resolveToolAvatarState(
   if (phase === "call") {
     if (toolName === "studio.navigateTo") return "handoff";
     if (toolName === "studio.composeMailRequest") return "acknowledging";
+    if (toolName === "studio.bookCall") return "handoff";
     if (toolName === "studio.vertaauxAccessibility") return "suggesting";
     if (toolName === "studio.projectShowcase") return "searching";
     return "searching";
@@ -156,6 +155,7 @@ export function resolveToolAvatarState(
   if (toolName === "studio.projectShowcase") return "impressed";
   if (toolName === "studio.vertaauxAccessibility") return "suggesting";
   if (toolName === "studio.composeMailRequest") return "success";
+  if (toolName === "studio.bookCall") return "handoff";
   return "confident";
 }
 

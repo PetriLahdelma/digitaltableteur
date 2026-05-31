@@ -8,6 +8,9 @@ import { cn } from "@/lib/utils";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import Icon from "@dt/Icon";
+import { ContactInquiryPanel } from "../ContactInquiryPanel";
+import type { ContactInquiryMode } from "../ContactInquiryPanel";
+import type { SiteBookingConfig } from "../../lib/donny-booking";
 import { ContactFormEditorial } from "../../components/ContactFormEditorial";
 import { ContactFormSuccessEditorial } from "../../components/ContactFormSuccessEditorial";
 import styles from "./ContactPageContentEditorial.module.css";
@@ -21,6 +24,12 @@ const NEW_BUSINESS_PORTRAIT = {
 export interface ContactPageContentEditorialProps {
   /** Custom className */
   className?: string;
+  /** Deep-link from /contact?mode=book */
+  initialInquiryMode?: ContactInquiryMode;
+  /** Deep-link from /contact?package=ux-sprint */
+  bookingPackageId?: string;
+  /** Server-resolved booking embed config from env vars. */
+  bookingConfig?: SiteBookingConfig;
 }
 
 /**
@@ -28,6 +37,9 @@ export interface ContactPageContentEditorialProps {
  */
 export function ContactPageContentEditorial({
   className,
+  initialInquiryMode,
+  bookingPackageId,
+  bookingConfig,
 }: ContactPageContentEditorialProps) {
   const { t } = useTranslation();
   const [showSuccess, setShowSuccess] = useState(false);
@@ -126,47 +138,50 @@ export function ContactPageContentEditorial({
             </motion.div>
           </div>
 
-          {/* Right Column - Form */}
+          {/* Right Column - Message or booking */}
           <div className={styles.rightColumn}>
-            <div
-              id="contact-form"
-              className={styles.formPanel}
-              data-donny-target="contact.form"
-            >
-            <AnimatePresence mode="wait">
-              {showSuccess ? (
-                <motion.div
-                  key="success"
-                  initial={prefersReducedMotion ? false : { opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
-                >
-                  <ContactFormSuccessEditorial
-                    title={t("contactSuccessTitle", "Message sent.")}
-                    message={t(
-                      "contactSuccessSubtitle",
-                      "We'll be in touch shortly."
+            <div className={styles.formPanel}>
+              <ContactInquiryPanel
+                initialMode={initialInquiryMode}
+                packageId={bookingPackageId}
+                bookingConfig={bookingConfig}
+                messagePanel={
+                  <AnimatePresence mode="wait">
+                    {showSuccess ? (
+                      <motion.div
+                        key="success"
+                        initial={prefersReducedMotion ? false : { opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
+                      >
+                        <ContactFormSuccessEditorial
+                          title={t("contactSuccessTitle", "Message sent.")}
+                          message={t(
+                            "contactSuccessSubtitle",
+                            "We'll be in touch shortly."
+                          )}
+                          onSendAnother={handleSendAnother}
+                          sendAnotherLabel={t(
+                            "contactSendAnother",
+                            "Send another message"
+                          )}
+                        />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="form"
+                        initial={prefersReducedMotion ? false : { opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
+                      >
+                        <ContactFormEditorial onSuccess={handleFormSuccess} />
+                      </motion.div>
                     )}
-                    onSendAnother={handleSendAnother}
-                    sendAnotherLabel={t(
-                      "contactSendAnother",
-                      "Send another message"
-                    )}
-                  />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="form"
-                  initial={prefersReducedMotion ? false : { opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
-                >
-                  <ContactFormEditorial onSuccess={handleFormSuccess} />
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  </AnimatePresence>
+                }
+              />
             </div>
           </div>
 
@@ -233,9 +248,9 @@ export function ContactPageContentEditorial({
                         )}
                       </Text>
                     </div>
-                    <a href="#contact-form" className={styles.newBusinessCta}>
+                    <a href="/contact?mode=book" className={styles.newBusinessCta}>
                       <span className={styles.email}>
-                        {t("contactNewBusinessLink", "Contact")}
+                        {t("contactNewBusinessBookLink", "Book a call")}
                       </span>
                       <span className={styles.newBusinessLinkIcon} aria-hidden>
                         <Icon name="ArrowRight" size="sm" decorative />
