@@ -1,6 +1,8 @@
 import { type ReactNode, type ElementType } from "react";
 import { cn } from "@/lib/utils";
 
+import styles from "./Container.module.css";
+
 export interface ContainerProps {
   children: ReactNode;
   size?: "sm" | "md" | "lg" | "xl" | "full";
@@ -30,9 +32,9 @@ export function Container({
   return (
     <Component
       className={cn(
-        "w-full px-4 tablet:px-8 desktop:px-12",
+        styles.container,
         sizeClasses[size],
-        center && "mx-auto",
+        center && styles.centered,
         className
       )}
     >

@@ -1,0 +1,27 @@
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  padding-inline: var(--page-margin-mobile);
+}
+
+@media (width >= 768px) {
+  .container {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .container {
+    padding-inline: var(--page-margin-desktop);
+  }
+}
+
+@media (width >= 1440px) {
+  .container {
+    padding-inline: var(--page-margin-wide);
+  }
+}
+
+.centered {
+  margin-inline: auto;
+}
