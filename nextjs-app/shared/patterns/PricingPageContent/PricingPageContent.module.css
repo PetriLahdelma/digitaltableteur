@@ -176,12 +176,12 @@
 }
 
 .comparisonIconUs {
-  color: var(--inverted-text-color, #fff);
+  color: var(--color-white);
   background-color: var(--color-primary);
 }
 
 .comparisonIconThem {
-  color: var(--inverted-text-color, #fff);
+  color: var(--color-white);
   background-color: var(--color-error);
 }
 
