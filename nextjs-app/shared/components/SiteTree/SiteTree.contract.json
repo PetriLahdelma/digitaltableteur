@@ -3,7 +3,7 @@
   "name": "SiteTree",
   "tier": "molecule",
   "group": "navigation",
-  "status": "wip",
+  "status": "alpha",
   "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
   "figma": null,
   "radixPrimitive": null,
