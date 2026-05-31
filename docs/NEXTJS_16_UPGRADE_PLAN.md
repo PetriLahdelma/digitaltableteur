@@ -1,6 +1,6 @@
 # Next.js 16 Upgrade Plan
 
-**Status:** In progress (branch `chore/nextjs-16-upgrade`)  
+**Status:** Done — core upgrade merged in [#634](https://github.com/digitaltableteur/digitaltableteur/pull/634) (2026-05-31). Turbopack unblocked in follow-up branch `chore/turbopack-mdx-unblock`.
 **Created:** 2026-05-31  
 **Owner:** Digitaltableteur engineering  
 **Goal:** Upgrade production Next.js app from 15.5.x → 16.x with Turbopack as default bundler, without regressions.
@@ -28,8 +28,8 @@
 | **Next.js (nextjs-app/)** | `16.2.1` | Legacy/subfolder; **do not treat as production** |
 | **React** | `^19.2.6` | OK for 16 |
 | **Node (CI)** | `20.19.0` | Meets 16 minimum (20.9+) |
-| **Bundler (dev)** | Webpack (interim) | `next dev --webpack -p 3001` — `@next/mdx` remark/rehype plugins not Turbopack-serializable |
-| **Bundler (build)** | Webpack (interim) | `next build --webpack` — same MDX constraint |
+| **Bundler (dev)** | **Turbopack (default)** | `next dev -p 3001` — MDX plugins use string names; `dev:webpack` fallback retained |
+| **Bundler (build)** | **Turbopack (default)** | `next build` — ~22s local vs ~90s webpack; `analyze` uses Turbopack too |
 | **Lint** | Custom `scripts/lint-banner.mjs` → local ESLint | Already off `next lint` |
 | **MDX** | `@next/mdx` + `next.config.ts` wrapper | Root has `@next/mdx@16.0.10` while `next@15.5.18` — **align on upgrade** |
 
@@ -277,18 +277,54 @@ Compare route first-load JS sizes if Turbopack build is used on Vercel. Roll bac
 - [x] `middleware.ts` removed; `proxy.ts` in place
 - [x] `--webpack` opt-out documented for **build** only (MDX); dev uses Turbopack default
 - [ ] Dev compile times measured and noted in PR description
-- [ ] This doc **Status** updated to `Done` with PR link and date
+- [x] This doc **Status** updated to `Done` with PR link and date
 
-### Upgrade notes (2026-05-28, branch `chore/nextjs-16-upgrade`)
+### Upgrade notes (2026-05-28, [#634](https://github.com/digitaltableteur/digitaltableteur/pull/634))
 
 - **`middleware.ts` → `proxy.ts`:** export renamed to `proxy`; matcher unchanged.
 - **`/auth.md` route:** moved to `app/agent-auth/route.ts` + rewrite (`.md` conflicts with `pageExtensions`).
 - **`images.localPatterns`:** added `/images/**` for cache-busting query strings (Next 16 breaking change).
-- **Build bundler:** `--webpack` retained until `@next/mdx` remark/rehype plugins are Turbopack-serializable (affects **dev and build**).
+- **Build bundler:** Turbopack default as of `chore/turbopack-mdx-unblock` — MDX remark/rehype plugins converted to string names + JSON options; Turbopack `resolveAlias` uses **project-relative** paths (`./node_modules/i18next`, not absolute).
 - **`test:ci` teardown:** fixed by making `test-stubs/next-loadable.tsx` skip async dynamic imports (no post-teardown module loads).
 - **`@types/react` dedupe:** root `package.json` overrides `"@types/react": "$@types/react"` to reduce Ref type clashes.
 - **Draft MDX:** `BlogArticleMdxBody` now wraps content in `MDXProvider` with exported `articleMdxComponents` (fixes `ArticleFigure` on preview drafts).
 - **Smoke (2026-05-31):** `/`, `/work`, `/work/vertaaux`, `/work/garage-junction`, `/blog`, published slug, draft slug + cookie, `/blog?preview=drafts`, `/contact`, `/contact?mode=book`, `/studio`, `/auth.md`, `/llms.txt`, markdown negotiation on `/`, `/api/contact`, `/api/chat`.
+
+---
+
+## Post-upgrade follow-ups
+
+### Turbopack (done locally on `chore/turbopack-mdx-unblock`)
+
+| Change | File |
+|--------|------|
+| MDX plugins → string names (`remark-gfm`, `rehype-pretty-code`, …) | `next.config.ts` |
+| Turbopack `resolveAlias` with `./`-relative paths | `next.config.ts` |
+| Default `dev` / `build` without `--webpack` | `package.json` |
+| Fallback `dev:webpack` for debugging | `package.json` |
+
+**Webpack-only (still required for Sanity):** `NormalModuleReplacementPlugin` for `react` → `lib/react-with-use-effect-event.js` inside Sanity packages. Turbopack has no equivalent yet; `/studio` may log `SchemaError` in dev but returns 200 — verify in browser after deploy.
+
+### Cache Components (not started — separate PR)
+
+Enabling `cacheComponents: true` requires migrating ~40 routes from `export const revalidate = N` to `cacheLife({ revalidate: N })` inside `'use cache'` functions. Recommended pilot:
+
+1. `app/lib/blog/cachedPostMetadata.ts` — `'use cache'` + `cacheTag('blog-posts')`
+2. Wire `revalidateTag('blog-posts')` from a Server Action or publish webhook after `npm run generate:blog`
+3. Enable `cacheComponents: true` only after blog pilot passes build + smoke
+
+See [Cache Components guide](https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents).
+
+### Human-only verification checklist
+
+| Step | Why |
+|------|-----|
+| Confirm Vercel production deploy for merge commit `747bfdabb` | Validates CI + env on real infra |
+| Submit `/contact` on production; check Resend inbox | Confirms honeypot + HTML email template |
+| Resend dashboard: `CONTACT_EMAIL_FROM` on verified domain | Avoid `onboarding@resend.dev` in prod |
+| Open `/studio` in prod; confirm Sanity loads | Turbopack has no React shim — webpack build may behave differently |
+| Run `npm run test:stories:matrix:ci` with **no** dev server on 3001/6010 | Prior matrix run timed out with dev server running |
+| IDE: select workspace TypeScript 6.0.2 if `ignoreDeprecations` warning persists | `.vscode/settings.json` already points `typescript.tsdk` |
 
 ---
 
