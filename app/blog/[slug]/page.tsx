@@ -8,7 +8,11 @@ import {
 } from "@/lib/blog/postVisibility";
 import { getSiteUrl, toAbsoluteSiteUrl } from "@/app/lib/siteUrl";
 import { getPostMetaBySlug, getVisiblePosts } from "../postMetadata";
-import { getArticleSchema, stringifyJsonLd } from "@/app/lib/structuredData";
+import {
+  getArticleSchema,
+  getBreadcrumbSchema,
+  stringifyJsonLd,
+} from "@/app/lib/structuredData";
 import ClientArticleChrome from "./ClientArticle";
 import { ServerArticleContent } from "./ServerArticleContent";
 
@@ -59,6 +63,7 @@ export async function generateMetadata({
       description,
       url,
       publishedTime: post.publishedAt,
+      ...(post.modifiedAt ? { modifiedTime: post.modifiedAt } : {}),
       ...(ogImageUrl
         ? {
             images: [
@@ -103,7 +108,7 @@ export default async function BlogArticle({
         id="schema-article"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: stringifyJsonLd(
+          __html: stringifyJsonLd([
             getArticleSchema({
               title: post.title,
               description: post.excerpt ?? "",
@@ -118,7 +123,12 @@ export default async function BlogArticle({
               mainImageAlt: post.mainImageAlt ?? undefined,
               tags: post.tags ?? [],
             }),
-          ),
+            getBreadcrumbSchema([
+              { name: "Home", url: "/" },
+              { name: "Blog", url: "/blog" },
+              { name: post.title, url: `/blog/${post.slug}` },
+            ]),
+          ]),
         }}
       />
       <ClientArticleChrome />

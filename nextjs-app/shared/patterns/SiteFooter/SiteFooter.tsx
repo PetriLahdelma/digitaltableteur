@@ -77,7 +77,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
       className={cn("border-t border-border bg-muted/30 py-16", className)}
     >
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <p className="font-heading text-text-m font-semibold mb-3">
@@ -117,15 +117,36 @@ export function SiteFooter({ className }: SiteFooterProps) {
             </address>
           </div>
 
+          {/* Primary navigation */}
+          <div>
+            <p className="font-heading text-text-m font-semibold mb-3">
+              {t("footerExploreTitle")}
+            </p>
+            <Stack gap="xs">
+              <TextLink href="/work" variant="muted" underline="hover">
+                {t("navWork")}
+              </TextLink>
+              <TextLink href="/about" variant="muted" underline="hover">
+                {t("navAbout")}
+              </TextLink>
+              <TextLink href="/blog" variant="muted" underline="hover">
+                {t("navBlog")}
+              </TextLink>
+              <TextLink href="/pricing" variant="muted" underline="hover">
+                {t("navPricing")}
+              </TextLink>
+              <TextLink href="/contact" variant="muted" underline="hover">
+                {t("navContact")}
+              </TextLink>
+            </Stack>
+          </div>
+
           {/* Legal Links */}
           <div>
             <p className="font-heading text-text-m font-semibold mb-3">
               {t("footerLegalTitle")}
             </p>
             <Stack gap="xs">
-              <TextLink href="/blog" variant="muted" underline="hover">
-                {t("navBlog")}
-              </TextLink>
               <TextLink href="/privacy-policy" variant="muted" underline="hover">
                 {t("footerPrivacyPolicy")}
               </TextLink>
@@ -137,6 +158,9 @@ export function SiteFooter({ className }: SiteFooterProps) {
               </TextLink>
               <TextLink href="/accessibility" variant="muted" underline="hover">
                 {t("footerAccessibility")}
+              </TextLink>
+              <TextLink href="/sitemap" variant="muted" underline="hover">
+                {t("footerSiteMap")}
               </TextLink>
             </Stack>
           </div>

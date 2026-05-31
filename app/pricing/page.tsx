@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 
 import { PricingPage } from "@dt-pages/PricingPage";
-import { getBreadcrumbSchema, stringifyJsonLd } from "@/app/lib/structuredData";
+import { pricingFaqs } from "@/app/lib/aeoContent";
+import {
+  getBreadcrumbSchema,
+  getFaqSchema,
+  getWebPageSchema,
+  stringifyJsonLd,
+} from "@/app/lib/structuredData";
 
 export const metadata: Metadata = {
   title: "Pricing | Digitaltableteur",
@@ -28,10 +34,25 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default function Pricing() {
-  const structuredData = getBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Pricing", url: "/pricing" },
-  ]);
+  const structuredData = [
+    getWebPageSchema({
+      name: "Pricing | Digitaltableteur",
+      description:
+        "Productized design, UX/UI and DesignOps packages from €8k. AI-ready workflows, fixed scope and senior delivery.",
+      url: "/pricing",
+      keywords: [
+        "design pricing",
+        "design systems consulting",
+        "DesignOps packages",
+        "UX/UI pricing",
+      ],
+    }),
+    getFaqSchema(pricingFaqs),
+    getBreadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Pricing", url: "/pricing" },
+    ]),
+  ];
 
   return (
     <>
