@@ -1,15 +1,12 @@
 import type { MetadataRoute } from "next";
 
 import { getVisiblePosts } from "./blog/postMetadata";
+import { getAuthors } from "@/nextjs-app/shared/data/authors";
 import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 import type { PseoCatalogItem, PseoLeafPage } from "@/lib/pseo/types";
+import { toAbsoluteSiteUrl } from "./lib/siteUrl";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://www.digitaltableteur.com";
-
-const toUrl = (path: string) =>
-  `${baseUrl}${path.startsWith("/") ? path : `/${path}`}`;
+const toUrl = (path: string) => toAbsoluteSiteUrl(path);
 
 export const revalidate = 600;
 
@@ -67,6 +64,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const authorRoutes: MetadataRoute.Sitemap = getAuthors().map((author) => ({
+    url: toUrl(`/blog/authors/${author.slug}`),
+    lastModified: today,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  }));
+
   const pseoCatalog = getPseoCatalog();
   const pseoLeafPages = getPseoLeafPages();
 
@@ -114,6 +118,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...workRoutes,
     ...blogRoutes,
+    ...authorRoutes,
     ...toolsRoutes,
     ...pseoIndexRoutes,
     ...pseoPillarRoutes,

@@ -1,5 +1,7 @@
 /* Finnish Transport Agency — Government branding case study */
 
+@import "../../../../styles/caseStudyPageInset.css";
+
 /* Distinct from VertaaUX: structured, minimal, Finnish design tradition */
 
 /* Felbridge Pro font-face definitions for typography specimen */
@@ -65,9 +67,8 @@
 /* Custom Meta Section - 2 column layout */
 
 .metaSection {
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   background-color: var(--color-surface);
 }
 
@@ -134,9 +135,8 @@
 /* Team Section */
 
 .teamSection {
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   border-block-start: 1px solid var(--color-border-subtle);
   background-color: var(--color-surface);
 }
@@ -150,9 +150,8 @@
 
 .processSection {
   margin-block: var(--space-layout-64);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   border-block: 1px solid var(--color-border-subtle, rgb(0 0 0 / 6%));
   background-color: var(--color-surface-secondary, #f8f9fa);
 }
@@ -226,9 +225,8 @@
 
 .colorSection {
   margin-block: var(--space-layout-64);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   border-block: 1px solid var(--color-border-subtle);
   background-color: var(--color-surface);
 }
@@ -305,9 +303,8 @@
 
 .typographySection {
   margin-block: var(--space-layout-64);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   background-color: var(--color-surface-secondary, #f8f9fa);
 }
 
@@ -390,9 +387,8 @@
 
 .resultsSection {
   margin-block: var(--space-layout-64);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-64);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   background-color: #0088CE;
 }
 
@@ -460,17 +456,6 @@
 
 /* Responsive */
 @media (width <= 768px) {
-  .processSection {
-    margin-inline: calc(-1 * var(--space-layout-16));
-    padding-inline: var(--space-layout-16);
-  }
-
-  .colorSection,
-  .typographySection {
-    margin-inline: calc(-1 * var(--space-layout-16));
-    padding-inline: var(--space-layout-16);
-  }
-
   .applicationsGrid {
     grid-template-columns: 1fr;
     gap: var(--space-layout-32);
@@ -490,9 +475,7 @@
   }
 
   .resultsSection {
-    margin-inline: calc(-1 * var(--space-layout-16));
     padding-block: var(--space-layout-48);
-    padding-inline: var(--space-layout-16);
   }
 
   .resultsGrid {
@@ -512,19 +495,9 @@
     max-width: 80%;
   }
 
-  .metaSection {
-    margin-inline: calc(-1 * var(--space-layout-16));
-    padding-inline: var(--space-layout-16);
-  }
-
   .metaGrid {
     grid-template-columns: 1fr;
     gap: var(--space-layout-32);
-  }
-
-  .teamSection {
-    margin-inline: calc(-1 * var(--space-layout-16));
-    padding-inline: var(--space-layout-16);
   }
 
   .teamGrid {

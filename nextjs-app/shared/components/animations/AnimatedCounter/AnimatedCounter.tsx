@@ -21,7 +21,11 @@ export interface AnimatedCounterProps {
   className?: string;
 }
 
-function formatStatValue(value: number, prefix: string, suffix: string): string {
+export function formatStatValue(
+  value: number,
+  prefix = "",
+  suffix = "",
+): string {
   return `${prefix}${value}${suffix}`;
 }
 
@@ -37,6 +41,8 @@ export function AnimatedCounter({
   const numberRef = useRef<HTMLSpanElement>(null);
   const { motionPreference } = useAnimationContext();
   const displayValue = formatStatValue(value, prefix, suffix);
+  const initialVisibleValue = formatStatValue(0, prefix, suffix);
+  const accessibleLabel = `${displayValue} ${label}`;
 
   useGSAP(
     () => {
@@ -51,7 +57,9 @@ export function AnimatedCounter({
         return;
       }
 
-      const counter = { val: value };
+      numberRef.current.textContent = initialVisibleValue;
+
+      const counter = { val: 0 };
 
       gsap.fromTo(
         counter,
@@ -80,16 +88,31 @@ export function AnimatedCounter({
     },
     {
       scope: ref,
-      dependencies: [value, motionPreference, duration, prefix, suffix, displayValue],
+      dependencies: [
+        value,
+        motionPreference,
+        duration,
+        prefix,
+        suffix,
+        displayValue,
+        initialVisibleValue,
+      ],
     },
   );
 
   return (
-    <div ref={ref} className={cn(styles.counter, className)}>
-      <span ref={numberRef} className={styles.value}>
-        {displayValue}
+    <div
+      ref={ref}
+      className={cn(styles.counter, className)}
+      role="group"
+      aria-label={accessibleLabel}
+    >
+      <span ref={numberRef} className={styles.value} aria-hidden="true">
+        {initialVisibleValue}
       </span>
-      <span className={styles.label}>{label}</span>
+      <span className={styles.label} aria-hidden="true">
+        {label}
+      </span>
     </div>
   );
 }

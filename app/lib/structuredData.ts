@@ -9,30 +9,10 @@
  */
 
 import { sanitizeJsonLd } from "./sanitize";
-
-const DEFAULT_SITE_URL = "https://www.digitaltableteur.com";
-
-function getSiteUrl(): string {
-  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-
-  if (!configuredSiteUrl) {
-    return DEFAULT_SITE_URL;
-  }
-
-  try {
-    return new URL(configuredSiteUrl).origin;
-  } catch {
-    return DEFAULT_SITE_URL;
-  }
-}
+import { getSiteUrl, toAbsoluteSiteUrl } from "./siteUrl";
 
 function toAbsoluteUrl(url: string): string {
-  if (url.startsWith("http")) {
-    return url;
-  }
-
-  const siteUrl = getSiteUrl();
-  return `${siteUrl}${url.startsWith("/") ? url : `/${url}`}`;
+  return toAbsoluteSiteUrl(url);
 }
 
 export interface OrganizationSchemaOptions {

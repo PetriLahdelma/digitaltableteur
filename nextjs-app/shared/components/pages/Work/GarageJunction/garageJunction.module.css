@@ -1,5 +1,7 @@
 /* Garage Junction unique styling - underground music/club aesthetic */
 
+@import "../../../../styles/caseStudyPageInset.css";
+
 .page {
   background-color: var(--main-body-background-color);
 }
@@ -7,9 +9,8 @@
 /* Custom Meta Section - 2 column layout */
 
 .metaSection {
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   background-color: var(--color-surface);
 }
 
@@ -77,9 +78,8 @@
 
 .processSection {
   margin-block: var(--space-layout-80);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   background: linear-gradient(
     180deg,
     color-mix(in srgb, #ff6b35 8%, var(--color-surface)) 0%,
@@ -103,9 +103,8 @@
 
 .videoSection {
   margin-block: var(--space-layout-80);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-64);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   background-color: #1a1a1a;
 }
 
@@ -154,8 +153,7 @@
 
 .colorSection {
   margin-block: var(--space-layout-80);
-  margin-inline: calc(-1 * var(--space-layout-24));
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
 }
 
 .colorContent {
@@ -237,8 +235,7 @@
 
 .applicationsSection {
   margin-block: var(--space-layout-80);
-  margin-inline: calc(-1 * var(--space-layout-24));
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
 }
 
 .applicationsHeader {
@@ -291,9 +288,8 @@
 
 .resultsSection {
   margin-block: var(--space-layout-80);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-64);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   background: linear-gradient(135deg, #ff6b35 0%, #e65a2b 100%);
   color: white;
 }
@@ -342,23 +338,9 @@
 
 /* Responsive adjustments */
 @media (width <= 768px) {
-  .metaSection {
-    margin-inline: calc(-1 * var(--space-layout-16));
-    padding-inline: var(--space-layout-16);
-  }
-
   .metaGrid {
     grid-template-columns: 1fr;
     gap: var(--space-layout-32);
-  }
-
-  .processSection,
-  .videoSection,
-  .colorSection,
-  .applicationsSection,
-  .resultsSection {
-    margin-inline: calc(-1 * var(--space-layout-16));
-    padding-inline: var(--space-layout-16);
   }
 
   .socialGrid {

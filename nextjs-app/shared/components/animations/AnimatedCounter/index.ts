@@ -1,1 +1,5 @@
-export { AnimatedCounter, type AnimatedCounterProps } from "./AnimatedCounter";
+export {
+  AnimatedCounter,
+  formatStatValue,
+  type AnimatedCounterProps,
+} from "./AnimatedCounter";
