@@ -145,3 +145,45 @@
   height: auto;
   border-radius: var(--radius-xs);
 }
+
+/* In-chat assistant copy: smaller hierarchy, tighter rhythm */
+.chat {
+  font-size: 0.9375rem;
+}
+
+.chat p {
+  margin: 0.375rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.chat :global(.chatHeading),
+.chat h2 {
+  margin: 0.75rem 0 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.chat :global(.chatSubheading),
+.chat h3 {
+  margin: 0.625rem 0 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.chat h1,
+.chat h4,
+.chat h5,
+.chat h6 {
+  margin: 0.625rem 0 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.chat ul,
+.chat ol {
+  margin: 0.375rem 0;
+  font-size: 0.9375rem;
+}

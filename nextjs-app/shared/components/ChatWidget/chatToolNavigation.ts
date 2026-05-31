@@ -4,6 +4,7 @@ import {
   resolveDonnyTargetFromNavigationUrl,
 } from "../../data/donny-site-actions";
 import type { DonnyActionsContextValue } from "../DonnyActionProvider/useDonnyActions";
+import { isDonnyToolPart, normalizeDonnyToolName } from "../../lib/donny-tool-names";
 
 type ChatRouter = {
   push: (href: string) => void;
@@ -54,7 +55,10 @@ export function extractNavigateToolResults(
 
     if (typed.type === "tool-invocation" && typed.toolInvocation) {
       const inv = typed.toolInvocation;
-      if (inv.toolName !== "studio.navigateTo" || inv.state !== "result") {
+      if (
+        normalizeDonnyToolName(inv.toolName) !== "studio.navigateTo" ||
+        inv.state !== "result"
+      ) {
         continue;
       }
       const output = readNavigateOutput(inv.result);
@@ -67,11 +71,7 @@ export function extractNavigateToolResults(
       continue;
     }
 
-    const isNavigatePart =
-      typed.type === "tool-studio.navigateTo" ||
-      (typed.type === "dynamic-tool" && typed.toolName === "studio.navigateTo");
-
-    if (!isNavigatePart) continue;
+    if (!isDonnyToolPart(typed, "studio.navigateTo")) continue;
     if (typed.state !== "output-available") continue;
 
     const output = readNavigateOutput(typed.output);

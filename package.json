@@ -121,7 +121,9 @@
   },
   "dependencies": {
     "@ai-sdk/mcp": "^1.0.30",
+    "@ai-sdk/openai": "^3.0.67",
     "@ai-sdk/react": "^3.0.148",
+    "@calcom/embed-react": "^1.5.3",
     "@emailjs/browser": "^4.4.1",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
