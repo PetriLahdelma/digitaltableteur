@@ -1,0 +1,97 @@
+.donnyBookingEmbed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-12);
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-4);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.subtitle {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-muted);
+}
+
+.frameWrap {
+  overflow: auto;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.calEmbed {
+  display: block;
+  width: 100%;
+  min-block-size: 42rem;
+  overflow: auto;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  min-block-size: 42rem;
+  block-size: 42rem;
+  border: 0;
+}
+
+@media (width >= 768px) {
+  .frame {
+    min-block-size: 36rem;
+    block-size: 36rem;
+  }
+}
+
+.fallback {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-8);
+  padding: var(--space-layout-16);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-muted);
+}
+
+.fallbackActions {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--space-layout-16);
+}
+
+.actionButton {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.externalLink {
+  align-self: flex-start;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body-xs);
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.externalLink:hover {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+.externalLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

@@ -22,6 +22,8 @@ export interface MarkdownMessageProps {
    * paragraph and inline emphasis text (e.g. `p`, `strong`, `em`).
    */
   designSystemTextSize?: DesignSystemTextSize;
+  /** Compact typography for in-chat assistant replies. */
+  density?: "default" | "chat";
 }
 
 // Basic link transform: open in same tab for accessibility; could be target _blank with rel
@@ -34,16 +36,18 @@ function MarkdownMessage({
   "data-role": dataRole,
   renderWithDesignSystem = false,
   designSystemTextSize = "M",
+  density = "default",
 }: MarkdownMessageProps) {
   const safe = content?.trim();
   const toRender = safe || fallback || "";
+  const isChatDensity = density === "chat";
 
   const resolvedDesignSystemTextSize: DesignSystemTextSize =
     designSystemTextSize || "M";
 
   return (
     <div
-      className={styles.root}
+      className={`${styles.root}${isChatDensity ? ` ${styles.chat}` : ""}`}
       data-role={dataRole}
       aria-live={safe ? undefined : "polite"}
     >
@@ -100,6 +104,11 @@ function MarkdownMessage({
               ) : (
                 <h3>{children}</h3>
               ),
+            img: isChatDensity
+              ? () => null
+              : ({ src, alt }) => (
+                  <img src={src} alt={alt ?? ""} loading="lazy" />
+                ),
             strong: ({ children }) =>
               renderWithDesignSystem ? (
                 <Text as="strong" terminals="sans" size={resolvedDesignSystemTextSize}>

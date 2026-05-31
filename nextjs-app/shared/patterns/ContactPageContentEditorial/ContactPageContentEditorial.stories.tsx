@@ -20,6 +20,22 @@ const meta = {
       description: "Page wrapper class names",
       table: { disable: true },
     },
+    initialInquiryMode: {
+      control: "select",
+      options: ["message", "book"],
+      description: "Deep-link tab from /contact?mode=book",
+      table: { disable: true },
+    },
+    bookingPackageId: {
+      control: "text",
+      description: "Package slug from /contact?package=…",
+      table: { disable: true },
+    },
+    bookingConfig: {
+      control: false,
+      description: "Server-resolved Cal.com/Calendly embed config",
+      table: { disable: true },
+    },
   },
   args: defaultArgs,
 } satisfies Meta<typeof ContactPageContentEditorial>;

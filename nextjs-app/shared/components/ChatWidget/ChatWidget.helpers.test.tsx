@@ -75,6 +75,17 @@ describe("ChatWidget helpers", () => {
     expect(id.startsWith("id-")).toBe(true);
   });
 
+  it("maps insufficient quota to rateLimit copy", () => {
+    expect(
+      resolveChatErrorMessage(
+        new Error(
+          '{"type":"error","error":{"code":"insufficient_quota","message":"You exceeded your current quota"}}',
+        ),
+        ERROR_COPY,
+      ),
+    ).toBe("rateLimit");
+  });
+
   it("maps gateway rate-limit stream failures to rateLimit copy", () => {
     expect(
       resolveChatErrorMessage(

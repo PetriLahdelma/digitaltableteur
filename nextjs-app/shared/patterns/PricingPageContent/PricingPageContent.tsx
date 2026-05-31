@@ -298,7 +298,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
         </div>
 
         <div className={styles.ctaRow}>
-          <Button href="/contact" variant="primary" size="lg">
+          <Button href="/contact?mode=book" variant="primary" size="lg">
             {t("pricingCtaPrimary", "Book a call")}
           </Button>
           <Button href="/work" variant="secondary" size="lg">

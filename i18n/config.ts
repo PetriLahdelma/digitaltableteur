@@ -1,9 +1,9 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-import enTranslation from "../shared/locales/en/translation.json";
-import fiTranslation from "../shared/locales/fi/translation.json";
-import svTranslation from "../shared/locales/sv/translation.json";
+import enTranslation from "../nextjs-app/shared/locales/en/translation.json";
+import fiTranslation from "../nextjs-app/shared/locales/fi/translation.json";
+import svTranslation from "../nextjs-app/shared/locales/sv/translation.json";
 
 const resources = {
   en: { translation: enTranslation },
