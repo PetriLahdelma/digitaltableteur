@@ -3,8 +3,20 @@
 .page {
   margin-inline: auto;
   padding-block: var(--space-layout-64);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--page-margin-mobile);
   max-width: var(--container-md);
+}
+
+@media (width >= 768px) {
+  .page {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .page {
+    padding-inline: var(--page-margin-desktop);
+  }
 }
 
 .header {
@@ -14,10 +26,14 @@
 .intro {
   margin-block-start: var(--space-layout-16);
   max-width: 640px;
-  font-family: var(--font-sans);
   font-size: var(--font-size-lg);
   line-height: 1.6;
   color: var(--color-text-secondary);
+}
+
+.inlineCode {
+  font-family: var(--font-mono, "SF Mono", "Fira Code", monospace);
+  font-size: 0.9em;
 }
 
 .section {

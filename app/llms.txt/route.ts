@@ -34,10 +34,13 @@ export async function GET() {
   body += "## Best starting points\n\n";
   body += `- Homepage: ${baseUrl}/\n`;
   body += `- About: ${baseUrl}/about\n`;
+  body += `- Pricing: ${baseUrl}/pricing\n`;
   body += `- Contact: ${baseUrl}/contact\n`;
   body += `- Work index: ${baseUrl}/work\n`;
   body += `- Blog index: ${toAbsoluteSiteUrl("/blog")}\n`;
   body += `- Blog RSS feed: ${toAbsoluteSiteUrl("/blog/feed.xml")}\n`;
+  body += `- Human sitemap: ${baseUrl}/sitemap\n`;
+  body += `- Colophon (site stats): ${baseUrl}/colophon\n`;
   body += `- AI usage policy: ${baseUrl}/ai-use\n`;
   body += `- Accessibility page: ${baseUrl}/accessibility\n`;
   body += `- Programmatic SEO hub: ${baseUrl}/pseo\n`;

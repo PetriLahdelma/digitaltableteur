@@ -1,0 +1,29 @@
+.page {
+  margin-inline: auto;
+  padding-block: var(--space-layout-48) var(--space-layout-120);
+  padding-inline: var(--page-margin-mobile);
+  max-width: var(--container-md);
+}
+
+@media (width >= 768px) {
+  .page {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .page {
+    padding-inline: var(--page-margin-desktop);
+  }
+}
+
+.intro {
+  margin-block: var(--space-layout-16) var(--space-layout-32);
+  max-width: 55ch;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.tree {
+  margin-block-start: var(--space-layout-24);
+}
