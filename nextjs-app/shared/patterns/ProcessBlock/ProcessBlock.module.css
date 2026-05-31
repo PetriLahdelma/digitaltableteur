@@ -115,6 +115,8 @@
 /* Custom em dash list markers */
 
 .activityList :global(li) {
+  /* List defaults to 20ch; process activities need full column width when stacked */
+  max-inline-size: 100%;
   padding-inline-start: 1.5em;
   text-indent: -1.5em;
 }
