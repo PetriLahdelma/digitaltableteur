@@ -11,6 +11,10 @@ export const CONTACT_ATTACHMENT_MAX_BYTES = 2 * 1024 * 1024;
 export const CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES = 2 * 1024 * 1024;
 export const CONTACT_ACCEPTED_ATTACHMENT_TYPES = ".pdf,.png,.jpg,.jpeg";
 
+/** Obscure honeypot id/name — avoid autofill magnets like `website` or `url`. */
+export const CONTACT_HONEYPOT_INPUT_ID = "dt-contact-hp";
+export const CONTACT_HONEYPOT_INPUT_NAME = "dt-contact-hp";
+
 export const validateContactEmail = (email: string) => EMAIL_REGEX.test(email);
 
 const getSpamLogEndpoint = (): string | null => {

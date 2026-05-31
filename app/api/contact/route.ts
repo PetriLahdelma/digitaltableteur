@@ -3,6 +3,12 @@ import sanitize from "mongo-sanitize";
 import { getDatabase } from "../../lib/mongodb";
 import { z } from "zod";
 import { createCorsHeaders } from "../chat-shared";
+import {
+  buildContactNotificationHtml,
+  buildContactNotificationSubject,
+  buildContactNotificationText,
+  type ContactNotificationPayload,
+} from "../../lib/contact-notification-email";
 
 // Simple in-memory rate limiter (best-effort; serverless cold starts reset this)
 // Security audit recommendation: 3 submissions per 15 minutes to prevent spam amplification
@@ -40,23 +46,7 @@ function rateLimit(key: string) {
   return false;
 }
 
-async function sendEmailViaResend(payload: {
-  name: string;
-  email: string;
-  phone?: string | null;
-  interest?: string | null;
-  message: string;
-  hearAbout?: string | null;
-  budget?: string | null;
-  timeline?: string | null;
-  inspiration?: string | null;
-  time?: string | null;
-  attachmentName?: string | null;
-  attachmentType?: string | null;
-  attachmentData?: string | null;
-  attachmentSize?: number | null;
-  attachmentNotice?: string | null;
-}) {
+async function sendEmailViaResend(payload: ContactNotificationPayload) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const TO = process.env.CONTACT_EMAIL_TO || "mail@digitaltableteur.com";
   const FROM =
@@ -67,27 +57,9 @@ async function sendEmailViaResend(payload: {
     throw new Error("RESEND_API_KEY is not configured");
   }
 
-  const subject = `New contact form submission from ${payload.name}`;
-  const textLines = [
-    `Name: ${payload.name}`,
-    `Email: ${payload.email}`,
-    payload.phone ? `Phone: ${payload.phone}` : null,
-    payload.interest ? `Project type: ${payload.interest}` : null,
-    payload.budget ? `Budget: ${payload.budget}` : null,
-    payload.timeline ? `Timeline: ${payload.timeline}` : null,
-    payload.hearAbout ? `How they found us: ${payload.hearAbout}` : null,
-    payload.inspiration ? `Inspiration/References: ${payload.inspiration}` : null,
-    payload.time ? `Submitted: ${payload.time}` : null,
-    payload.attachmentName ? `Attachment: ${payload.attachmentName}` : null,
-    payload.attachmentType ? `Attachment type: ${payload.attachmentType}` : null,
-    typeof payload.attachmentSize === "number"
-      ? `Attachment size: ${payload.attachmentSize} bytes`
-      : null,
-    payload.attachmentNotice ? `Attachment note: ${payload.attachmentNotice}` : null,
-    "",
-    "Message:",
-    payload.message,
-  ].filter(Boolean);
+  const subject = buildContactNotificationSubject(payload);
+  const text = buildContactNotificationText(payload);
+  const html = buildContactNotificationHtml(payload);
 
   const attachments = [];
   if (payload.attachmentData && payload.attachmentName) {
@@ -109,8 +81,10 @@ async function sendEmailViaResend(payload: {
     body: JSON.stringify({
       from: FROM,
       to: [TO],
+      reply_to: payload.email,
       subject,
-      text: textLines.join("\n"),
+      text,
+      html,
       ...(attachments.length ? { attachments } : {}),
     }),
   });
