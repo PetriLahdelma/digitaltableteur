@@ -332,6 +332,9 @@ const mdxComponents = {
   figure: MdxFigure,
 };
 
+/** Shared MDX component map for blog article bodies (App Router + Storybook). */
+export const articleMdxComponents = mdxComponents;
+
 // ============================================
 // ArticlePageTemplate
 // ============================================

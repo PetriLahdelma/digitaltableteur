@@ -152,17 +152,17 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         </span>
         {removable && (
           <Button
+            variant="tertiary"
             size={size === "s" ? "s" : size === "l" ? "l" : "m"}
             type="button"
             icon={<Icon name="x" ariaLabel={t("badgeRemove")} />}
             className={styles.closeButton}
-            aria-label={t("badgeRemove")}
             accessibleName={t("badgeRemove")}
             onClick={() => {
               setVisible(false);
               if (onRemove) onRemove();
             }}
-          ></Button>
+          />
         )}
       </span>
     );

@@ -84,7 +84,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
     return (
       <Button
         type="button"
-        rounded
+        isRounded
         className={styles.toggle}
         ref={ref}
         data-open={isOpen}
