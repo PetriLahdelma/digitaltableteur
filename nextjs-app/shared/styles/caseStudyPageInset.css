@@ -19,3 +19,9 @@
     --cs-page-inset: var(--page-margin-desktop);
   }
 }
+
+@media (width >= 1440px) {
+  .page {
+    --cs-page-inset: var(--page-margin-wide);
+  }
+}

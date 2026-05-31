@@ -3,6 +3,7 @@
 .pageLayout {
   box-sizing: border-box;
   width: 100%;
+  min-width: 0;
 }
 
 /* Maximum width constraints */

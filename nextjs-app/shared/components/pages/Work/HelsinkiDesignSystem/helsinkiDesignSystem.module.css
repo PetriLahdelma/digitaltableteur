@@ -1,7 +1,22 @@
 .caseStudy {
-  padding: 2.5rem 1.5rem 1.5rem;
+  box-sizing: border-box;
+  padding-block: 2.5rem 1.5rem;
+  padding-inline: var(--page-margin-mobile);
   min-height: 100vh;
+  min-width: 0;
   background: var(--main-body-background-color);
+}
+
+@media (width >= 768px) {
+  .caseStudy {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .caseStudy {
+    padding-inline: var(--page-margin-desktop);
+  }
 }
 
 /* Hero Section */
