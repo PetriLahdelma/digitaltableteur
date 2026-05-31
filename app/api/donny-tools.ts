@@ -25,6 +25,15 @@ import {
   resolveDonnyShowcaseExpression,
 } from "@/nextjs-app/shared/data/donny-expressions";
 import { VERTAAUX_ACCESSIBILITY_OFFER } from "@/nextjs-app/shared/data/donny-vertaaux-offer";
+import {
+  buildLeadContactPrefill,
+  draftLeadFollowUp,
+  getLeadCaseStudies,
+  recommendLeadPackage,
+  resolveLeadPersona,
+} from "@/nextjs-app/shared/lib/donny-lead/donny-lead-routing";
+import { resolveDonnyBookingEmbed } from "@/nextjs-app/shared/lib/donny-booking";
+import { storeDonnyLead } from "../lib/donny-lead-store";
 
 // ToolSet type matches ai package's expected tool shape
 type ToolMap = Record<string, Tool<any, any>>;
@@ -432,6 +441,304 @@ const staticTools: ToolMap = {
       const safePath = isInternal ? dest.split("#")[0] : "/";
       const url = input?.section ? `${safePath}#${input.section}` : safePath;
       return { navigated: isInternal && safePath !== "/", url };
+    },
+  }),
+
+  "studio.getCaseStudies": tool({
+    description:
+      "Return curated case studies for lead triage. Filter by persona (client, recruiter, other) and optional search query. Use after identifying who the visitor is — do not guess proof without calling this tool.",
+    inputSchema: jsonSchema<{
+      persona?: string;
+      query?: string;
+      limit?: number;
+    }>({
+      type: "object",
+      properties: {
+        persona: {
+          type: "string",
+          enum: ["client", "recruiter", "other"],
+          description:
+            "client = buying services; recruiter = hiring Petri; other = general interest.",
+        },
+        query: {
+          type: "string",
+          description: "Optional keyword search across titles, tags, clients.",
+        },
+        limit: {
+          type: "number",
+          description: "Max results (default 3, max 6).",
+        },
+      },
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema({
+      type: "object",
+      required: ["persona", "projects", "totalMatches"],
+      properties: {
+        persona: { type: "string", enum: ["client", "recruiter", "other"] },
+        projects: { type: "array" },
+        totalMatches: { type: "number" },
+      },
+      additionalProperties: false,
+    }),
+    async execute(input) {
+      return getLeadCaseStudies(input);
+    },
+  }),
+
+  "studio.getServicePackages": tool({
+    description:
+      "Return fixed consulting packages (€8–20k) and optional package recommendation from the visitor's problem or budget hints. Use during client lead triage — never invent prices.",
+    inputSchema: jsonSchema<{
+      problem?: string;
+      budget?: string;
+    }>({
+      type: "object",
+      properties: {
+        problem: {
+          type: "string",
+          description: "Visitor need in their words (design system, tokens, AI DesignOps, etc.).",
+        },
+        budget: {
+          type: "string",
+          description: "Budget band or constraints, e.g. 'around 12k' or 'tight'.",
+        },
+      },
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema({
+      type: "object",
+      required: ["packages", "pricingUrl"],
+      properties: {
+        packages: { type: "array" },
+        recommendedPackageId: { type: "string" },
+        fit: { type: "object" },
+        pricingUrl: { type: "string" },
+      },
+      additionalProperties: false,
+    }),
+    async execute(input) {
+      const result = recommendLeadPackage(input);
+      return {
+        ...result,
+        pricingUrl: "/pricing",
+      };
+    },
+  }),
+
+  "studio.createLead": tool({
+    description:
+      "Store a qualified lead from chat when the visitor explicitly consents to follow-up. Requires consent=true. Email is optional but recommended. Returns contact form prefill — never auto-submits the contact form.",
+    inputSchema: jsonSchema<{
+      persona: string;
+      consent: boolean;
+      name?: string;
+      email?: string;
+      company?: string;
+      need?: string;
+      budget?: string;
+      timeline?: string;
+      role?: string;
+      recommendedPackageId?: string;
+      recommendedCaseSlugs?: string[];
+      summary?: string;
+    }>({
+      type: "object",
+      required: ["persona", "consent"],
+      properties: {
+        persona: {
+          type: "string",
+          enum: ["client", "recruiter", "other"],
+        },
+        consent: {
+          type: "boolean",
+          description: "Must be true — visitor agreed to follow-up / storage.",
+        },
+        name: { type: "string" },
+        email: { type: "string" },
+        company: { type: "string" },
+        need: { type: "string" },
+        budget: { type: "string" },
+        timeline: { type: "string" },
+        role: { type: "string" },
+        recommendedPackageId: { type: "string" },
+        recommendedCaseSlugs: {
+          type: "array",
+          items: { type: "string" },
+        },
+        summary: { type: "string" },
+      },
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema({
+      type: "object",
+      required: ["stored", "contactUrl"],
+      properties: {
+        stored: { type: "boolean" },
+        leadId: { type: "string" },
+        contactPrefill: { type: "object" },
+        contactUrl: { type: "string" },
+        reason: { type: "string" },
+      },
+      additionalProperties: false,
+    }),
+    async execute(input) {
+      const persona = resolveLeadPersona(input?.persona);
+      if (!input?.consent) {
+        return {
+          stored: false,
+          contactUrl: "/contact",
+          reason: "consent_required",
+        };
+      }
+
+      const contactPrefill = buildLeadContactPrefill({
+        persona,
+        qualification: {
+          need: input?.need,
+          budget: input?.budget,
+          timeline: input?.timeline,
+          company: input?.company,
+          role: input?.role,
+        },
+        recommendedPackageId: input?.recommendedPackageId,
+        summary: input?.summary,
+      });
+
+      const { leadId, stored } = await storeDonnyLead({
+        persona,
+        name: input?.name,
+        email: input?.email,
+        company: input?.company,
+        need: input?.need,
+        budget: input?.budget,
+        timeline: input?.timeline,
+        role: input?.role,
+        recommendedPackageId: input?.recommendedPackageId,
+        recommendedCaseSlugs: input?.recommendedCaseSlugs,
+        summary: input?.summary,
+      });
+
+      return {
+        stored,
+        leadId: leadId ?? undefined,
+        contactPrefill,
+        contactUrl: "/contact",
+        reason: stored ? undefined : "storage_unavailable",
+      };
+    },
+  }),
+
+  "studio.draftFollowUp": tool({
+    description:
+      "Draft a follow-up email for the visitor to review and send themselves. Never auto-sends mail — returns subject, body, and disclaimer only.",
+    inputSchema: jsonSchema<{
+      persona: string;
+      recipientName?: string;
+      need?: string;
+      recommendedPackageId?: string;
+      caseSlugs?: string[];
+    }>({
+      type: "object",
+      required: ["persona"],
+      properties: {
+        persona: {
+          type: "string",
+          enum: ["client", "recruiter", "other"],
+        },
+        recipientName: { type: "string" },
+        need: { type: "string" },
+        recommendedPackageId: { type: "string" },
+        caseSlugs: {
+          type: "array",
+          items: { type: "string" },
+        },
+      },
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema({
+      type: "object",
+      required: ["subject", "body", "disclaimer", "contactUrl"],
+      properties: {
+        subject: { type: "string" },
+        body: { type: "string" },
+        disclaimer: { type: "string" },
+        contactUrl: { type: "string" },
+      },
+      additionalProperties: false,
+    }),
+    async execute(input) {
+      return draftLeadFollowUp({
+        persona: resolveLeadPersona(input?.persona),
+        recipientName: input?.recipientName,
+        need: input?.need,
+        recommendedPackageId: input?.recommendedPackageId,
+        caseSlugs: input?.caseSlugs,
+      });
+    },
+  }),
+
+  "studio.bookCall": tool({
+    description:
+      "Show an inline scheduling embed after fit is confirmed or when the visitor asks to book a call. Use after package selection or when they want a meeting — not before basic qualification. Prefill name/email when known.",
+    inputSchema: jsonSchema<{
+      meetingType?: "discovery" | "consultation";
+      packageId?: string;
+      name?: string;
+      email?: string;
+      notes?: string;
+    }>({
+      type: "object",
+      properties: {
+        meetingType: {
+          type: "string",
+          enum: ["discovery", "consultation"],
+        },
+        packageId: {
+          type: "string",
+          description:
+            "Recommended package id from getServicePackages (ux-sprint, design-system-lift-off, ai-ready-designops).",
+        },
+        name: { type: "string" },
+        email: { type: "string" },
+        notes: {
+          type: "string",
+          description: "Short context for the booking (need, budget band, timeline).",
+        },
+      },
+      additionalProperties: false,
+    }),
+    outputSchema: jsonSchema({
+      type: "object",
+      required: [
+        "configured",
+        "provider",
+        "meetingLabel",
+        "embedUrl",
+        "fallbackUrl",
+        "prefillApplied",
+      ],
+      properties: {
+        configured: { type: "boolean" },
+        provider: { type: "string", enum: ["calcom", "calendly", "none"] },
+        meetingLabel: { type: "string" },
+        embedUrl: { type: "string" },
+        fallbackUrl: { type: "string" },
+        prefillApplied: { type: "boolean" },
+        calLink: { type: "string" },
+        calOrigin: { type: "string" },
+        embedJsUrl: { type: "string" },
+      },
+      additionalProperties: false,
+    }),
+    async execute(input) {
+      return resolveDonnyBookingEmbed({
+        meetingType: input?.meetingType,
+        packageId: input?.packageId,
+        name: input?.name,
+        email: input?.email,
+        notes: input?.notes,
+      });
     },
   }),
 

@@ -6,6 +6,7 @@ import {
   getBreadcrumbSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
+import { resolveSiteBookingConfig } from "@/nextjs-app/shared/lib/donny-booking";
 
 export const metadata: Metadata = {
   title: "Contact | Digitaltableteur",
@@ -29,7 +30,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage() {
+type ContactSearchParams = {
+  mode?: string;
+  package?: string;
+};
+
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<ContactSearchParams>;
+}) {
+  const params = await searchParams;
+  const initialInquiryMode =
+    params.mode === "book" || params.mode === "message" ? params.mode : undefined;
+  const bookingPackageId = params.package?.trim() || undefined;
+  const bookingConfig = resolveSiteBookingConfig({
+    packageId: bookingPackageId,
+  });
+
   const structuredData = [
     getContactPageSchema({
       name: "Contact Digitaltableteur",
@@ -54,7 +72,11 @@ export default function ContactPage() {
         }}
       />
       <Suspense fallback={null}>
-        <ContactContent />
+        <ContactContent
+          initialInquiryMode={initialInquiryMode}
+          bookingPackageId={bookingPackageId}
+          bookingConfig={bookingConfig}
+        />
       </Suspense>
     </>
   );

@@ -46,6 +46,15 @@ describe("ClientLogoMarquee", () => {
     expect(
       container.querySelector(".client-logo-marquee-container"),
     ).not.toBeInTheDocument();
-    expect(screen.getAllByRole("img")).toHaveLength(18);
+    expect(screen.getAllByRole("img")).toHaveLength(19);
+    expect(screen.getByText("DSharp")).toBeInTheDocument();
+  });
+
+  it("exposes one semantic client list for assistive tech and crawlers", () => {
+    render(<ClientLogoMarquee ariaLabel="Selected client organisations" />);
+
+    expect(screen.getByText("SAP")).toBeInTheDocument();
+    expect(screen.getByText("DSharp")).toBeInTheDocument();
+    expect(screen.getAllByText("SAP")).toHaveLength(1);
   });
 });

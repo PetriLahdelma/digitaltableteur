@@ -41,16 +41,26 @@ const NextImage = React.forwardRef<HTMLImageElement, ImgProps>(function NextImag
   const {
     src,
     fill: _fill,
-    priority: _priority,
+    priority,
     placeholder: _placeholder,
     blurDataURL: _blurDataURL,
     quality: _quality,
     loader: _loader,
     unoptimized: _unoptimized,
     sizes,
+    loading,
     ...rest
   } = props;
-  return <img ref={ref} src={resolveSrc(src)} sizes={sizes} {...rest} />;
+  const resolvedLoading = loading ?? (priority ? "eager" : "lazy");
+  return (
+    <img
+      ref={ref}
+      src={resolveSrc(src)}
+      sizes={sizes}
+      loading={resolvedLoading}
+      {...rest}
+    />
+  );
 });
 
 export default NextImage;

@@ -5,6 +5,7 @@ import {
   resolveDonnyShowcaseExpression,
   type DonnyShowcaseExpression,
 } from "../../data/donny-expressions";
+import { isDonnyToolPart, normalizeDonnyToolName } from "../../lib/donny-tool-names";
 
 export const SHOW_EXPRESSION_TOOL_NAME = "studio.showExpression";
 
@@ -39,11 +40,7 @@ function isShowExpressionPart(typed: {
   type?: string;
   toolName?: string;
 }): boolean {
-  return (
-    typed.type === "tool-studio.showExpression" ||
-    (typed.type === "dynamic-tool" &&
-      typed.toolName === SHOW_EXPRESSION_TOOL_NAME)
-  );
+  return isDonnyToolPart(typed, SHOW_EXPRESSION_TOOL_NAME);
 }
 
 function toShowExpressionResult(
@@ -91,7 +88,7 @@ export function extractShowExpressionResults(
 
     if (typed.type === "tool-invocation" && typed.toolInvocation) {
       const inv = typed.toolInvocation;
-      if (inv.toolName !== SHOW_EXPRESSION_TOOL_NAME) continue;
+      if (normalizeDonnyToolName(inv.toolName) !== SHOW_EXPRESSION_TOOL_NAME) continue;
       if (inv.state !== "result") continue;
       const payload = readExpressionPayload(inv.result);
       const result = toShowExpressionResult(inv.toolCallId, payload);
