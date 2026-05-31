@@ -5,11 +5,11 @@ import { ColophonPage } from "@dt-pages/Colophon";
 export const metadata: Metadata = {
   title: "Colophon — How This Site Is Built | Digitaltableteur",
   description:
-    "The architecture behind digitaltableteur.com: a 100-component design system, 4 theme modes, 3 languages, and the tools that make it work.",
+    "How digitaltableteur.com is built: 200+ components, 12 case studies, crawlable blog, programmatic SEO, Donny AI chat, and agent-native tooling.",
   openGraph: {
-    title: "Colophon �� How This Site Is Built | Digitaltableteur",
+    title: "Colophon — How This Site Is Built | Digitaltableteur",
     description:
-      "The architecture behind digitaltableteur.com: a 100-component design system, 4 theme modes, 3 languages, and the tools that make it work.",
+      "How digitaltableteur.com is built: 200+ components, 12 case studies, crawlable blog, programmatic SEO, Donny AI chat, and agent-native tooling.",
     type: "article",
     siteName: "Digitaltableteur",
   },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Colophon — How This Site Is Built | Digitaltableteur",
     description:
-      "The architecture behind digitaltableteur.com: a 100-component design system, 4 theme modes, 3 languages, and the tools that make it work.",
+      "How digitaltableteur.com is built: 200+ components, 12 case studies, crawlable blog, programmatic SEO, Donny AI chat, and agent-native tooling.",
   },
   alternates: {
     canonical: "/colophon",

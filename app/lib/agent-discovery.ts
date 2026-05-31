@@ -19,16 +19,46 @@ export function getAgentDiscoveryLinkHeader(): string {
 
 export const contentSignal = "ai-train=no, search=yes, ai-input=yes";
 
+/** AI answer-engine crawlers — explicitly allowed alongside global Allow. */
+export const AI_CRAWLER_USER_AGENTS = [
+  "GPTBot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "ClaudeBot",
+  "anthropic-ai",
+  "PerplexityBot",
+  "Google-Extended",
+  "Applebot-Extended",
+  "Bytespider",
+  "CCBot",
+  "cohere-ai",
+  "FacebookBot",
+  "meta-externalagent",
+] as const;
+
 /** robots.txt body — custom route; MetadataRoute.Robots `other` omits Content-Signal. */
 export function buildRobotsTxtBody(): string {
-  return [
-    "User-Agent: *",
-    "Allow: /",
+  const disallow = [
     "Disallow: /api",
     "Disallow: /api/",
     "Disallow: /studio",
     "Disallow: /studio/",
+  ];
+
+  const aiCrawlerBlocks = AI_CRAWLER_USER_AGENTS.flatMap((agent) => [
+    `User-Agent: ${agent}`,
+    "Allow: /",
+    ...disallow,
     "",
+  ]);
+
+  return [
+    "User-Agent: *",
+    "Allow: /",
+    ...disallow,
+    "",
+    "# AI answer engines and LLM crawlers",
+    ...aiCrawlerBlocks,
     `Content-Signal: ${contentSignal}`,
     "",
     `Host: ${baseUrl}`,

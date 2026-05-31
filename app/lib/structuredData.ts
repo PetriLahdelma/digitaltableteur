@@ -34,8 +34,12 @@ export function getOrganizationSchema(
     url = siteUrl,
     logo = `${siteUrl}/logo512.png`,
     socialLinks = [
+      "https://www.linkedin.com/company/digitaltableteur/",
       "https://github.com/PetriLahdelma",
-      // Add more social profiles as they become available
+      "https://x.com/dtdoesdesign",
+      "https://medium.com/digitaltableteur",
+      "https://www.instagram.com/digitaltableteur/",
+      "https://www.facebook.com/digitaltableteur",
     ],
     contactEmail = "mail@digitaltableteur.com",
   } = options;
@@ -86,8 +90,11 @@ export function getPersonSchema(
     url = `${siteUrl}/about`,
     image = `${siteUrl}/pete.png`,
     sameAs = [
+      "https://www.linkedin.com/in/petritapanilahdelma/",
       "https://github.com/PetriLahdelma",
-      // Add LinkedIn, Twitter, etc.
+      "https://x.com/dtdoesdesign",
+      "https://medium.com/@petritapanilahdelma",
+      "https://www.instagram.com/digitaltableteur/",
     ],
     description = "Design Systems Specialist and DesignOps Engineer focusing on AI-powered design workflows and scalable component systems",
   } = options;
