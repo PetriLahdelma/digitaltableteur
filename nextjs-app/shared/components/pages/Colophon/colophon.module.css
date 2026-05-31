@@ -4,6 +4,8 @@
   margin-inline: auto;
   padding-block: var(--space-layout-64);
   padding-inline: var(--page-margin-mobile);
+  box-sizing: border-box;
+  min-width: 0;
   max-width: var(--container-md);
 }
 
@@ -50,7 +52,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: var(--space-layout-24);
 }
 

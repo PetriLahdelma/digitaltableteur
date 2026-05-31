@@ -1,6 +1,7 @@
 .root {
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 2rem;
+  min-width: 0;
   max-width: 100%;
   font-family: var(--primary-body-font);
   font-size: 1rem;

@@ -12,6 +12,10 @@
 @custom-variant dark (&:is(.dark *, .themeDark *));
 @custom-variant hcb (&:is(.themeHCB *));
 @custom-variant hcw (&:is(.themeHCW *));
+@custom-variant mobile (@media (width < 768px));
+@custom-variant tablet (@media (width >= 768px));
+@custom-variant desktop (@media (width >= 1024px));
+@custom-variant wide (@media (width >= 1440px));
 
 /*
  * Tailwind theme tokens for shadcn/ui components
