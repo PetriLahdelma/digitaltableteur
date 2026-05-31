@@ -47,6 +47,19 @@ function generateId(label: string): string {
   return label.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 }
 
+function setForwardedRef<T>(
+  ref: React.ForwardedRef<T>,
+  value: T | null,
+) {
+  if (typeof ref === "function") {
+    ref(value);
+    return;
+  }
+  if (ref) {
+    ref.current = value;
+  }
+}
+
 /**
  * FormFieldEditorial component.
  */
@@ -77,7 +90,7 @@ export const FormFieldEditorial = forwardRef<
       <div className={cn(styles.field, className)}>
         {labelElement}
         <textarea
-          ref={ref as React.Ref<HTMLTextAreaElement>}
+          ref={(node) => setForwardedRef(ref, node)}
           id={id}
           rows={rows}
           className={cn(styles.textarea, error && styles.hasError)}
@@ -131,7 +144,7 @@ export const FormFieldEditorial = forwardRef<
     <div className={cn(styles.field, className)}>
       {labelElement}
       <input
-        ref={ref as React.Ref<HTMLInputElement>}
+        ref={(node) => setForwardedRef(ref, node)}
         id={id}
         type={type}
         className={cn(styles.input, error && styles.hasError)}

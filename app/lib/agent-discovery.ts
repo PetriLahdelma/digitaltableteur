@@ -68,5 +68,5 @@ export function buildRobotsTxtBody(): string {
   ].join("\n");
 }
 
-/** Set by middleware when homepage is negotiated with Accept: text/markdown */
+/** Set by proxy when homepage is negotiated with Accept: text/markdown */
 export const markdownNegotiationHeader = "x-accept-markdown";
