@@ -6,17 +6,15 @@ import {
   PREVIEW_DRAFTS_COOKIE,
   shouldShowUnpublishedPosts,
 } from "@/lib/blog/postVisibility";
-import { getPostMetaBySlug } from "../postMetadata";
+import { getSiteUrl, toAbsoluteSiteUrl } from "@/app/lib/siteUrl";
+import { getPostMetaBySlug, getVisiblePosts } from "../postMetadata";
 import { getArticleSchema, stringifyJsonLd } from "@/app/lib/structuredData";
-import ClientArticle from "./ClientArticle";
+import ClientArticleChrome from "./ClientArticle";
+import { ServerArticleContent } from "./ServerArticleContent";
 
 type Params = { slug: string };
 
-export const dynamic = "force-dynamic";
-
-const siteBase =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://digitaltableteur.com";
+export const revalidate = 600;
 
 async function getPreviewOptions() {
   const cookieStore = await cookies();
@@ -24,6 +22,10 @@ async function getPreviewOptions() {
     previewCookie: cookieStore.get(PREVIEW_DRAFTS_COOKIE)?.value,
   });
   return { showUnpublished };
+}
+
+export function generateStaticParams() {
+  return getVisiblePosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({
@@ -43,9 +45,9 @@ export async function generateMetadata({
 
   const title = post.seoTitle ?? `${post.title} | Digitaltableteur`;
   const description = post.seoDescription ?? post.excerpt;
-  const url = `${siteBase}/blog/${post.slug}`;
+  const url = toAbsoluteSiteUrl(`/blog/${post.slug}`);
   const ogImageUrl = post.mainImageUrl?.startsWith("/")
-    ? `${siteBase}${post.mainImageUrl}`
+    ? toAbsoluteSiteUrl(post.mainImageUrl)
     : post.mainImageUrl;
 
   return {
@@ -86,11 +88,14 @@ export default async function BlogArticle({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const post = getPostMetaBySlug(slug, await getPreviewOptions());
+  const previewOptions = await getPreviewOptions();
+  const post = getPostMetaBySlug(slug, previewOptions);
 
   if (!post) {
     notFound();
   }
+
+  const siteUrl = getSiteUrl();
 
   return (
     <>
@@ -107,7 +112,7 @@ export default async function BlogArticle({
               slug: post.slug,
               author: post.authorName ?? "Petri Lahdelma",
               authorUrl: post.authorSlug
-                ? `${siteBase}/blog/authors/${post.authorSlug}`
+                ? `${siteUrl}/blog/authors/${post.authorSlug}`
                 : undefined,
               mainImageUrl: post.mainImageUrl ?? undefined,
               mainImageAlt: post.mainImageAlt ?? undefined,
@@ -116,7 +121,11 @@ export default async function BlogArticle({
           ),
         }}
       />
-      <ClientArticle slug={slug} />
+      <ClientArticleChrome />
+      <ServerArticleContent
+        slug={slug}
+        showUnpublished={previewOptions.showUnpublished}
+      />
     </>
   );
 }

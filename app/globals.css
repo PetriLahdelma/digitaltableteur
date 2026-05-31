@@ -91,16 +91,6 @@ a:focus-visible {
   }
 }
 
-@keyframes client-logo-marquee-reverse {
-  0% {
-    transform: translate3d(calc(-1 * var(--marquee-width, 50%)), 0, 0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 @media (width <= 768px) {
   html {
     font-size: 18px;
@@ -189,22 +179,19 @@ code {
     grid-column: 1 / -1;
   }
 
-  .client-logo-marquee-desktop {
-    animation: client-logo-marquee-forward 34s linear infinite;
+  .client-logo-marquee-track {
+    animation: client-logo-marquee-forward 36s linear infinite;
     backface-visibility: hidden;
+    will-change: transform;
   }
 
-  .client-logo-marquee-mobile {
-    animation: client-logo-marquee-forward 24s linear infinite;
-    backface-visibility: hidden;
+  @media (width <= 768px) {
+    .client-logo-marquee-track {
+      animation-duration: 48s;
+    }
   }
 
-  .client-logo-marquee-mobile-reverse {
-    animation: client-logo-marquee-reverse 24s linear infinite;
-    backface-visibility: hidden;
-  }
-
-  .client-logo-marquee-container:hover .client-logo-marquee-desktop {
+  .client-logo-marquee-container:hover .client-logo-marquee-track {
     animation-play-state: paused;
   }
 }
@@ -221,9 +208,7 @@ code {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .client-logo-marquee-desktop,
-  .client-logo-marquee-mobile,
-  .client-logo-marquee-mobile-reverse {
+  .client-logo-marquee-track {
     animation: none !important;
     transform: none !important;
   }

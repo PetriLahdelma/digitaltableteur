@@ -451,14 +451,24 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.waterfallColumn}>
           <span className={styles.waterfallLabel}>Geist Sans</span>
           {[
-            { size: "4rem", text: "Aa" },
-            { size: "2.5rem", text: "The quick brown fox" },
-            { size: "1.75rem", text: "Jumps over the lazy dog" },
-            { size: "1.25rem", text: "Score 76 / 100 — Solid foundation" },
-            { size: "1rem", text: "Audit completed in 2.7 s · 91 checks passed · 4 dimensions analyzed" },
-            { size: "1.625rem", text: "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789", wrap: true },
-          ].map(({ size, text, wrap }) => (
-            <p key={size} className={styles.waterfallSansLine} style={{ fontSize: size, whiteSpace: wrap ? "normal" : undefined }}>
+            { sizeClass: styles.waterfallSize4xl, text: "Aa" },
+            { sizeClass: styles.waterfallSize2xl, text: "The quick brown fox" },
+            { sizeClass: styles.waterfallSizeXl, text: "Jumps over the lazy dog" },
+            { sizeClass: styles.waterfallSizeLg, text: "Score 76 / 100 — Solid foundation" },
+            {
+              sizeClass: styles.waterfallSizeMd,
+              text: "Audit completed in 2.7 s · 91 checks passed · 4 dimensions analyzed",
+            },
+            {
+              sizeClass: styles.waterfallSizeSpecimen,
+              text: "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789",
+              wrap: true,
+            },
+          ].map(({ sizeClass, text, wrap }) => (
+            <p
+              key={text}
+              className={`${styles.waterfallSansLine} ${sizeClass}${wrap ? ` ${styles.waterfallWrap}` : ""}`}
+            >
               {text}
             </p>
           ))}
@@ -466,14 +476,24 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.waterfallColumn}>
           <span className={styles.waterfallLabel}>Geist Mono</span>
           {[
-            { size: "4rem", text: "Aa" },
-            { size: "2.5rem", text: "76 / 100" },
-            { size: "1.75rem", text: "wcag-2.2-aa" },
-            { size: "1.25rem", text: 'aria-label="navigation"' },
-            { size: "1rem", text: "div.hero > section.cta > button.primary { color: #00E5A0 }" },
-            { size: "1.625rem", text: "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789", wrap: true },
-          ].map(({ size, text, wrap }) => (
-            <p key={size} className={styles.waterfallMonoLine} style={{ fontSize: size, whiteSpace: wrap ? "normal" : undefined }}>
+            { sizeClass: styles.waterfallSize4xl, text: "Aa" },
+            { sizeClass: styles.waterfallSize2xl, text: "76 / 100" },
+            { sizeClass: styles.waterfallSizeXl, text: "wcag-2.2-aa" },
+            { sizeClass: styles.waterfallSizeLg, text: 'aria-label="navigation"' },
+            {
+              sizeClass: styles.waterfallSizeMd,
+              text: "div.hero > section.cta > button.primary { color: #00E5A0 }",
+            },
+            {
+              sizeClass: styles.waterfallSizeSpecimen,
+              text: "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789",
+              wrap: true,
+            },
+          ].map(({ sizeClass, text, wrap }) => (
+            <p
+              key={text}
+              className={`${styles.waterfallMonoLine} ${sizeClass}${wrap ? ` ${styles.waterfallWrap}` : ""}`}
+            >
               {text}
             </p>
           ))}
