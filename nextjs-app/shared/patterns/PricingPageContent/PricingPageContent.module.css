@@ -159,9 +159,10 @@
 }
 
 .comparisonItem {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  column-gap: var(--space-layout-16);
   align-items: center;
-  gap: 1em;
 }
 
 .comparisonIcon {
@@ -184,12 +185,13 @@
   background-color: var(--color-error);
 }
 
-.comparisonTextUs {
+.comparisonItem .comparisonTextUs,
+.comparisonItem .comparisonTextThem {
   margin: 0;
+  line-height: var(--line-height-normal);
 }
 
-.comparisonTextThem {
-  margin: 0;
+.comparisonItem .comparisonTextThem {
   color: var(--color-muted);
 }
 
