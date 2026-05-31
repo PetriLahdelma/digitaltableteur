@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
+import type { CSSProperties } from "react";
 import { useAnimationContext } from "@/providers/AnimationProvider";
 
 type ClientLogo = {
@@ -85,6 +84,10 @@ const logos: ClientLogo[] = [
   { src: "/logos/clients/seppo.svg", alt: "Seppo" },
 ];
 
+const marqueeTrackStyle = {
+  "--marquee-width": "50%",
+} as CSSProperties;
+
 function ClientLogoSemanticList() {
   return (
     <ul className="sr-only">
@@ -94,12 +97,6 @@ function ClientLogoSemanticList() {
     </ul>
   );
 }
-
-const mobilePrimaryLogos = logos.filter((_, index) => index % 2 === 0);
-const mobileSecondaryLogos = logos.filter((_, index) => index % 2 !== 0);
-
-/** Speed constant: pixels per second */
-const MARQUEE_SPEED = 50;
 
 function LogoItem({
   logo,
@@ -115,9 +112,7 @@ function LogoItem({
     logo.mobileHeight && logo.desktopHeight
       ? `${logo.mobileHeight} ${logo.desktopHeight}`
       : "h-6 md:h-10",
-    hasCustomWidth
-      ? `${logo.mobileWidth} md:${logo.desktopWidth}`
-      : "",
+    hasCustomWidth ? `${logo.mobileWidth} md:${logo.desktopWidth}` : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -152,101 +147,33 @@ function LogoItem({
   );
 }
 
-function LogoLane({
-  laneLogos,
-  className,
-  groupClassName,
-  reverse = false,
-}: {
-  laneLogos: ClientLogo[];
-  className: string;
-  groupClassName: string;
-  reverse?: boolean;
-}) {
-  const laneRef = useRef<HTMLDivElement>(null);
-  const tweenRef = useRef<gsap.core.Tween | null>(null);
-
-  useGSAP(
-    () => {
-      const lane = laneRef.current;
-      if (!lane) return;
-
-      const firstGroup = lane.querySelector(
-        "[data-marquee-group]",
-      ) as HTMLElement | null;
-      if (!firstGroup) return;
-
-      const width = firstGroup.scrollWidth;
-      if (width <= 0) return;
-
-      const groups = lane.querySelectorAll("[data-marquee-group]");
-
-      tweenRef.current = gsap.to(groups, {
-        x: reverse ? width : -width,
-        duration: width / MARQUEE_SPEED,
-        ease: "none",
-        repeat: -1,
-        modifiers: {
-          x: gsap.utils.unitize((x: string) => {
-            const val = parseFloat(x);
-            // Wrap the value so it seamlessly loops
-            return reverse
-              ? ((val % width) + width) % width
-              : -(((Math.abs(val)) % width + width) % width);
-          }),
-        },
-      });
-    },
-    { scope: laneRef },
-  );
-
-  const handleMouseEnter = () => {
-    if (tweenRef.current) {
-      gsap.to(tweenRef.current, {
-        timeScale: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (tweenRef.current) {
-      gsap.to(tweenRef.current, {
-        timeScale: 1,
-        duration: 0.5,
-        ease: "power2.in",
-      });
-    }
-  };
-
+function LogoMarqueeTrack({ laneLogos }: { laneLogos: ClientLogo[] }) {
   return (
-    <div
-      ref={laneRef}
-      className={className}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {[0, 1].map((duplicateIndex) => (
-        <div
-          key={duplicateIndex}
-          data-marquee-group
-          className={groupClassName}
-          aria-hidden={duplicateIndex > 0 ? "true" : undefined}
-        >
-          {laneLogos.map((logo) => (
-            <LogoItem
-              key={`${logo.src}-${duplicateIndex}`}
-              logo={logo}
-              duplicate={duplicateIndex > 0}
-            />
-          ))}
-        </div>
-      ))}
+    <div className="overflow-hidden">
+      <div
+        className="client-logo-marquee-track flex w-max items-center py-3"
+        style={marqueeTrackStyle}
+      >
+        {[0, 1].map((duplicateIndex) => (
+          <div
+            key={duplicateIndex}
+            data-marquee-group
+            className="flex shrink-0 items-center gap-5 pr-5 md:gap-10 md:pr-10"
+            aria-hidden={duplicateIndex > 0 ? "true" : undefined}
+          >
+            {laneLogos.map((logo) => (
+              <LogoItem
+                key={`${logo.src}-${duplicateIndex}`}
+                logo={logo}
+                duplicate={duplicateIndex > 0}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
-
 
 /** Props for ClientLogoMarquee. */
 export interface ClientLogoMarqueeProps {
@@ -282,30 +209,7 @@ export function ClientLogoMarquee({
       className="client-logo-marquee-container relative overflow-hidden"
     >
       <ClientLogoSemanticList />
-      <div className="space-y-3 md:hidden">
-        <div className="overflow-hidden">
-          <LogoLane
-            laneLogos={mobilePrimaryLogos}
-            className="flex w-max items-center"
-            groupClassName="flex items-center gap-5 pr-5"
-          />
-        </div>
-        <div className="overflow-hidden">
-          <LogoLane
-            laneLogos={mobileSecondaryLogos}
-            className="flex w-max items-center"
-            groupClassName="flex items-center gap-5 pr-5"
-            reverse
-          />
-        </div>
-      </div>
-      <div className="hidden md:block">
-        <LogoLane
-          laneLogos={logos}
-          className="flex w-max items-center py-3"
-          groupClassName="flex items-center gap-10 pr-10"
-        />
-      </div>
+      <LogoMarqueeTrack laneLogos={logos} />
     </section>
   );
 }

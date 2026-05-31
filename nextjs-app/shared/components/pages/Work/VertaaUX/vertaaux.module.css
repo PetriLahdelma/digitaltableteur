@@ -1,7 +1,10 @@
 /* VertaaUX unique styling - modern AI startup feel */
 
+@import "../../../../styles/caseStudyPageInset.css";
+
 .page {
   background-color: var(--main-body-background-color);
+  overflow-x: clip;
 }
 
 /* Rounded image corners for specific sections */
@@ -13,9 +16,8 @@
 /* Custom Meta Section - 2 column layout */
 
 .metaSection {
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   background-color: var(--color-surface);
 }
 
@@ -89,14 +91,25 @@
 
 .processSection {
   margin-block: var(--space-layout-80);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--page-margin-mobile);
   background: linear-gradient(
     180deg,
     var(--color-light-bg) 0%,
     transparent 100%
   );
+}
+
+@media (width >= 768px) {
+  .processSection {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .processSection {
+    padding-inline: var(--page-margin-desktop);
+  }
 }
 
 /* Standard story section spacing */
@@ -110,21 +123,27 @@
 .problemMindmap {
   margin-block-start: var(--space-400);
   width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 /* Combined Approach + How It Works section with continuous gray background */
 
 .approachSection {
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--page-margin-mobile);
   background-color: var(--color-light-bg);
 }
 
-@media (width <= 768px) {
+@media (width >= 768px) {
   .approachSection {
-    margin-inline: calc(-1 * var(--space-layout-16));
-    padding-inline: var(--space-layout-16);
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .approachSection {
+    padding-inline: var(--page-margin-desktop);
   }
 }
 
@@ -132,10 +151,21 @@
 
 .storySectionAlt {
   margin-block: var(--space-layout-64);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--page-margin-mobile);
   background-color: var(--color-light-bg);
+}
+
+@media (width >= 768px) {
+  .storySectionAlt {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .storySectionAlt {
+    padding-inline: var(--page-margin-desktop);
+  }
 }
 
 /* Logo grid section - custom 2x2 layout */
@@ -161,6 +191,7 @@
 
 .logoGrid {
   display: grid;
+  min-width: 0;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-layout-32) var(--space-layout-24);
 }
@@ -178,52 +209,52 @@
 .logoCard {
   display: flex;
   margin: 0;
+  min-width: 0;
   flex-direction: column;
   gap: var(--space-internal-12);
 }
 
-.logoCardDark {
+.logoCardDark,
+.logoCardLight,
+.logoCardGradient {
   display: flex;
-  padding: var(--space-layout-48);
+  min-width: 0;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
   border-radius: 0.75rem;
-  background-color: #0D0D0D;
   aspect-ratio: 16 / 9;
 }
 
-.logoCardLight {
-  display: flex;
+.logoCardDark {
   padding: var(--space-layout-48);
-  justify-content: center;
-  align-items: center;
+  background-color: #0D0D0D;
+}
+
+.logoCardLight {
+  padding: var(--space-layout-48);
   border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
   background-color: #fff;
-  aspect-ratio: 16 / 9;
 }
 
 @media (width < 768px) {
   .logoCardDark,
   .logoCardLight,
   .logoCardGradient {
-    padding: var(--space-layout-24);
+    padding: var(--space-layout-16);
     aspect-ratio: 4 / 3;
   }
 }
 
 .logoCardGradient {
-  display: flex;
   padding: var(--space-layout-48);
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.75rem;
   background-color: #141414;
-  aspect-ratio: 16 / 9;
 }
 
 .logoImage {
-  max-width: 80%;
+  display: block;
+  width: 100%;
+  max-width: min(80%, 100%);
   height: auto;
   max-height: 80%;
   object-fit: contain;
@@ -450,6 +481,7 @@
   margin-inline: auto;
   padding-inline: var(--page-margin-mobile);
   max-width: var(--container-lg);
+  min-width: 0;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-layout-48);
 }
@@ -475,6 +507,7 @@
 
 .waterfallColumn {
   display: flex;
+  min-width: 0;
   flex-direction: column;
   gap: 0;
   overflow: hidden;
@@ -495,7 +528,8 @@
   margin: 0;
   padding-block: 0.15em;
   line-height: 1.35;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   color: var(--color-text);
 }
 
@@ -507,6 +541,37 @@
 .waterfallMonoLine {
   font-family: var(--font-mono, monospace);
   font-weight: 400;
+}
+
+.waterfallSize4xl {
+  font-size: clamp(2rem, 12vw, 4rem);
+}
+
+.waterfallSize2xl {
+  font-size: clamp(1.375rem, 7vw, 2.5rem);
+}
+
+.waterfallSizeXl {
+  font-size: clamp(1.125rem, 5vw, 1.75rem);
+}
+
+.waterfallSizeLg {
+  font-size: clamp(1rem, 4vw, 1.25rem);
+}
+
+.waterfallSizeMd {
+  font-size: clamp(0.875rem, 3.5vw, 1rem);
+}
+
+.waterfallSizeSpecimen {
+  font-size: clamp(0.875rem, 3vw, 1.625rem);
+}
+
+@media (width >= 640px) {
+  .waterfallSansLine:not(.waterfallWrap),
+  .waterfallMonoLine:not(.waterfallWrap) {
+    white-space: nowrap;
+  }
 }
 
 /* Brand asset grid — for presenting extracted design elements */
@@ -566,11 +631,22 @@
 
 .metricsSection {
   margin-block: var(--space-layout-80);
-  margin-inline: calc(-1 * var(--space-layout-24));
   padding-block: var(--space-layout-64);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--page-margin-mobile);
   background-color: #0D0D0D;
   color: #F2F2F2;
+}
+
+@media (width >= 768px) {
+  .metricsSection {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .metricsSection {
+    padding-inline: var(--page-margin-desktop);
+  }
 }
 
 .metricsContent {
@@ -618,21 +694,9 @@
 
 /* Responsive adjustments */
 @media (width <= 768px) {
-  .metaSection {
-    margin-inline: calc(-1 * var(--space-layout-16));
-    padding-inline: var(--space-layout-16);
-  }
-
   .metaGrid {
     grid-template-columns: 1fr;
     gap: var(--space-layout-32);
-  }
-
-  .processSection,
-  .storySectionAlt,
-  .metricsSection {
-    margin-inline: calc(-1 * var(--space-layout-16));
-    padding-inline: var(--space-layout-16);
   }
 
   .metricsGrid {

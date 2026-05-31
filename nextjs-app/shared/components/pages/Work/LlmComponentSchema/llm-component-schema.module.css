@@ -1,5 +1,7 @@
 /* LLM Component Schema: OSS tool showcase */
 
+@import "../../../../styles/caseStudyPageInset.css";
+
 .page {
   background-color: var(--main-body-background-color);
 }
@@ -36,7 +38,7 @@
 
 .metaSection {
   padding-block: var(--space-layout-48);
-  padding-inline: var(--space-layout-24);
+  padding-inline: var(--cs-page-inset);
   background-color: var(--color-surface);
 }
 
