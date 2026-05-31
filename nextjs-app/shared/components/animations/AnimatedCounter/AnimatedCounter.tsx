@@ -21,6 +21,10 @@ export interface AnimatedCounterProps {
   className?: string;
 }
 
+function formatStatValue(value: number, prefix: string, suffix: string): string {
+  return `${prefix}${value}${suffix}`;
+}
+
 export function AnimatedCounter({
   value,
   suffix = "",
@@ -32,6 +36,7 @@ export function AnimatedCounter({
   const ref = useRef<HTMLDivElement>(null);
   const numberRef = useRef<HTMLSpanElement>(null);
   const { motionPreference } = useAnimationContext();
+  const displayValue = formatStatValue(value, prefix, suffix);
 
   useGSAP(
     () => {
@@ -42,41 +47,47 @@ export function AnimatedCounter({
         (typeof window !== "undefined" &&
           window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
       if (prefersReduced) {
-        numberRef.current.textContent = `${prefix}${value}${suffix}`;
+        numberRef.current.textContent = displayValue;
         return;
       }
 
-      const counter = { val: 0 };
+      const counter = { val: value };
 
-      gsap.to(counter, {
-        val: value,
-        duration,
-        ease: "power2.out",
-        snap: { val: 1 },
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 85%",
-          toggleActions: "play none none none",
+      gsap.fromTo(
+        counter,
+        { val: 0 },
+        {
+          val: value,
+          duration,
+          ease: "power2.out",
+          snap: { val: 1 },
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+          onUpdate: () => {
+            if (numberRef.current) {
+              numberRef.current.textContent = formatStatValue(
+                Math.round(counter.val),
+                prefix,
+                suffix,
+              );
+            }
+          },
         },
-        onUpdate: () => {
-          if (numberRef.current) {
-            numberRef.current.textContent = `${prefix}${Math.round(counter.val)}${suffix}`;
-          }
-        },
-      });
+      );
     },
     {
       scope: ref,
-      dependencies: [value, motionPreference, duration, prefix, suffix],
+      dependencies: [value, motionPreference, duration, prefix, suffix, displayValue],
     },
   );
 
   return (
     <div ref={ref} className={cn(styles.counter, className)}>
       <span ref={numberRef} className={styles.value}>
-        {motionPreference === "reduced"
-          ? `${prefix}${value}${suffix}`
-          : `${prefix}0${suffix}`}
+        {displayValue}
       </span>
       <span className={styles.label}>{label}</span>
     </div>

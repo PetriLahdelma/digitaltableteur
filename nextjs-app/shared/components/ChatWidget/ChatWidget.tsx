@@ -29,6 +29,7 @@ import ChatToggle from "./ChatToggle";
 import { useTranslation } from "react-i18next";
 import { resolveChatAvatarState } from "./chatAvatarState";
 import { useDonnyChatNavigation } from "./useDonnyChatNavigation";
+import { useDonnyChatLead } from "./useDonnyChatLead";
 import { useDonnyChatExpression } from "./useDonnyChatExpression";
 
 export interface ChatWidgetProps {
@@ -105,9 +106,16 @@ export function resolveChatErrorMessage(
     normalized.includes("rate_limit") ||
     normalized.includes("rate-limit") ||
     normalized.includes("quota") ||
+    normalized.includes("insufficient_quota") ||
     normalized.includes("too many requests")
   ) {
     return messages.rateLimit;
+  }
+  if (
+    normalized.includes("invalid 'tools") ||
+    normalized.includes('invalid "tools')
+  ) {
+    return messages.server;
   }
   if (normalized.match(/5\d{2}/)) {
     return messages.server;
@@ -547,6 +555,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
   const errorMessage = resolveErrorMessage(error);
 
   useDonnyChatNavigation(messages, status);
+  useDonnyChatLead(messages, status);
   const forcedExpression = useDonnyChatExpression(messages, status);
 
   // Keywords that trigger special Donny reactions when user types them

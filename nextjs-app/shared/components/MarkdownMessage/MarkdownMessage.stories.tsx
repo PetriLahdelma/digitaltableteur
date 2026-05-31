@@ -4,7 +4,14 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import MarkdownMessage from "@dt/MarkdownMessage";
 
 const meta: Meta<typeof MarkdownMessage> = {
-  argTypes: {},
+  argTypes: {
+    density: {
+      control: "select",
+      options: ["default", "chat"],
+      description: "Typography density for chat bubbles vs default markdown blocks",
+      table: { defaultValue: { summary: "default" } },
+    },
+  },
   title: "Molecules/Chat/MarkdownMessage",
   component: MarkdownMessage,
   tags: ["beta", "!autodocs"],

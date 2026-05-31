@@ -1,1 +1,1 @@
-export { ContactPage } from "./ContactPage";
+export { ContactPage, type ContactPageProps } from "./ContactPage";

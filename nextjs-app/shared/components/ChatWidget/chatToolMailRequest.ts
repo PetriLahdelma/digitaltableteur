@@ -4,6 +4,7 @@ import {
   openDonnyMailtoUrl,
   type DonnyMailRequestType,
 } from "../../data/donny-mail-requests";
+import { isDonnyToolPart, normalizeDonnyToolName } from "../../lib/donny-tool-names";
 
 export interface ComposeMailRequestToolResult {
   toolCallId: string;
@@ -40,10 +41,7 @@ function isMailRequestPart(typed: {
   type?: string;
   toolName?: string;
 }): boolean {
-  return (
-    typed.type === "tool-studio.composeMailRequest" ||
-    (typed.type === "dynamic-tool" && typed.toolName === MAIL_TOOL_NAME)
-  );
+  return isDonnyToolPart(typed, MAIL_TOOL_NAME);
 }
 
 /** Extract completed studio.composeMailRequest tool results from AI SDK UI messages. */
@@ -75,7 +73,12 @@ export function extractComposeMailRequestResults(
 
     if (typed.type === "tool-invocation" && typed.toolInvocation) {
       const inv = typed.toolInvocation;
-      if (inv.toolName !== MAIL_TOOL_NAME || inv.state !== "result") continue;
+      if (
+        normalizeDonnyToolName(inv.toolName) !== MAIL_TOOL_NAME ||
+        inv.state !== "result"
+      ) {
+        continue;
+      }
       const output = readMailRequestOutput(inv.result);
       if (!output.mailtoUrl || !output.requestType || !inv.toolCallId) continue;
       results.push({

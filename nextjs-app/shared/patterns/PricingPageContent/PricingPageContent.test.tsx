@@ -25,7 +25,7 @@ describe("PricingPageContent", () => {
     expect(screen.getByText(/Design System Lift-Off/i)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /book a call/i })).toHaveAttribute(
       "href",
-      "/contact"
+      "/contact?mode=book"
     );
   });
 

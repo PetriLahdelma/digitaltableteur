@@ -76,8 +76,24 @@ const logos: ClientLogo[] = [
   },
   { src: "/logos/clients/kone.svg", alt: "Kone" },
   { src: "/logos/clients/sap.svg", alt: "SAP" },
+  {
+    src: "/logos/clients/dsharp.svg",
+    alt: "DSharp",
+    mobileWidth: "w-[97px]",
+    desktopWidth: "w-[185px]",
+  },
   { src: "/logos/clients/seppo.svg", alt: "Seppo" },
 ];
+
+function ClientLogoSemanticList() {
+  return (
+    <ul className="sr-only">
+      {logos.map((logo) => (
+        <li key={logo.src}>{logo.alt}</li>
+      ))}
+    </ul>
+  );
+}
 
 const mobilePrimaryLogos = logos.filter((_, index) => index % 2 === 0);
 const mobileSecondaryLogos = logos.filter((_, index) => index % 2 !== 0);
@@ -250,6 +266,7 @@ export function ClientLogoMarquee({
   if (motionPreference === "reduced") {
     return (
       <section aria-label={ariaLabel} className="py-3">
+        <ClientLogoSemanticList />
         <div className="grid grid-cols-3 items-center justify-items-center gap-4 md:grid-cols-6 md:gap-6 lg:grid-cols-9">
           {logos.map((logo) => (
             <LogoItem key={logo.src} logo={logo} />
@@ -264,6 +281,7 @@ export function ClientLogoMarquee({
       aria-label={ariaLabel}
       className="client-logo-marquee-container relative overflow-hidden"
     >
+      <ClientLogoSemanticList />
       <div className="space-y-3 md:hidden">
         <div className="overflow-hidden">
           <LogoLane

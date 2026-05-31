@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { BlogPage } from "@dt-pages/Blog";
+import { getVisiblePosts } from "./postMetadata";
 
 export const metadata: Metadata = {
   title: "Blog | Digitaltableteur",
@@ -27,5 +29,22 @@ export const metadata: Metadata = {
 export const revalidate = 600;
 
 export default function Blog() {
-  return <BlogPage />;
+  const posts = getVisiblePosts();
+
+  return (
+    <>
+      <section aria-labelledby="blog-index-heading" className="sr-only">
+        <h2 id="blog-index-heading">Blog articles</h2>
+        <ul>
+          {posts.map((post) => (
+            <li key={post.slug}>
+              <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+              {post.excerpt ? <p>{post.excerpt}</p> : null}
+            </li>
+          ))}
+        </ul>
+      </section>
+      <BlogPage />
+    </>
+  );
 }
