@@ -123,6 +123,9 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerLegalTitle")}
             </p>
             <Stack gap="xs">
+              <TextLink href="/blog" variant="muted" underline="hover">
+                {t("navBlog")}
+              </TextLink>
               <TextLink href="/privacy-policy" variant="muted" underline="hover">
                 {t("footerPrivacyPolicy")}
               </TextLink>

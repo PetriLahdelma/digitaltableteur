@@ -31,6 +31,10 @@ describe("ClientLogoMarquee", () => {
     expect(
       screen.getByRole("region", { name: "Selected client organisations" }),
     ).toBeInTheDocument();
+    expect(container.querySelectorAll(".client-logo-marquee-track")).toHaveLength(
+      1,
+    );
+    expect(container.querySelectorAll("[data-marquee-group]")).toHaveLength(2);
   });
 
   it("renders a static grid when reduced motion is preferred", () => {
