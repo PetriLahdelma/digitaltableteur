@@ -4,6 +4,7 @@ import { agentDiscoveryBaseUrl } from "@/app/lib/agent-discovery";
 
 export const dynamic = "force-static";
 
+/** Served at `/auth.md` via rewrite in next.config.ts (avoids `.md` pageExtension conflict). */
 export async function GET() {
   const baseUrl = agentDiscoveryBaseUrl;
 

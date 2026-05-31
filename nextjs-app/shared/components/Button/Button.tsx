@@ -214,11 +214,19 @@ const Button = React.forwardRef<
       }
     }
 
+    const ariaLabelFromRest =
+      typeof rest["aria-label"] === "string" ? rest["aria-label"].trim() : "";
+
     // Icon-only button accessibility warning (development only)
     // This runs after normalization so we check the raw icon prop
     if (process.env.NODE_ENV !== "production") {
       const isIconOnly = !children && icon;
-      const hasAccessibleName = !!(accessibleName || accessibleNameRef || tooltip);
+      const hasAccessibleName = !!(
+        accessibleName ||
+        accessibleNameRef ||
+        tooltip ||
+        ariaLabelFromRest
+      );
 
       if (isIconOnly && !hasAccessibleName) {
         // eslint-disable-next-line no-console
@@ -418,8 +426,12 @@ const Button = React.forwardRef<
       }
     };
 
-    // Use tooltip as aria-label fallback for icon-only buttons
-    const effectiveAriaLabel = accessibleName || (tooltip && !accessibleNameRef ? tooltip : undefined);
+    // Use tooltip / native aria-label as accessible name fallbacks for icon-only buttons
+    const effectiveAriaLabel =
+      accessibleName ||
+      (tooltip && !accessibleNameRef ? tooltip : undefined) ||
+      ariaLabelFromRest ||
+      undefined;
 
     const commonProps = {
       className: [

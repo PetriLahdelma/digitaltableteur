@@ -16,6 +16,8 @@ import {
   CONTACT_ACCEPTED_ATTACHMENT_TYPES,
   CONTACT_ATTACHMENT_MAX_BYTES,
   CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES,
+  CONTACT_HONEYPOT_INPUT_ID,
+  CONTACT_HONEYPOT_INPUT_NAME,
   reportContactHoneypot,
   validateContactEmail,
 } from "../contactFormUtils";
@@ -271,15 +273,17 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     <div className={styles["contactForm"]}>
       <form onSubmit={handleSubmit}>
         <div className={styles["honeypot"]} aria-hidden="true">
-          <label htmlFor="website" className={styles["honeypotLabel"]}>
+          <label htmlFor={CONTACT_HONEYPOT_INPUT_ID} className={styles["honeypotLabel"]}>
             {t("contactSpamTrapLabel")}
           </label>
           <input
-            id="website"
+            id={CONTACT_HONEYPOT_INPUT_ID}
             type="text"
-            name="website"
+            name={CONTACT_HONEYPOT_INPUT_NAME}
             tabIndex={-1}
             autoComplete="off"
+            data-1p-ignore
+            data-lpignore="true"
             value={formData.honeypot}
             onChange={handleHoneypotChange}
           />

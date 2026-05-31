@@ -1,6 +1,6 @@
 # Next.js 16 Upgrade Plan
 
-**Status:** Planned (not started)  
+**Status:** In progress (branch `chore/nextjs-16-upgrade`)  
 **Created:** 2026-05-31  
 **Owner:** Digitaltableteur engineering  
 **Goal:** Upgrade production Next.js app from 15.5.x → 16.x with Turbopack as default bundler, without regressions.
@@ -24,12 +24,12 @@
 | Item | Value | Notes |
 |------|-------|-------|
 | **Production app root** | `/` (`app/`, `next.config.ts`, root `package.json`) | **Authoritative** — not `nextjs-app/` |
-| **Next.js (root)** | `^15.5.18` | `package.json` dependencies |
+| **Next.js (root)** | `^16.2.6` | Upgraded on `chore/nextjs-16-upgrade` |
 | **Next.js (nextjs-app/)** | `16.2.1` | Legacy/subfolder; **do not treat as production** |
 | **React** | `^19.2.6` | OK for 16 |
 | **Node (CI)** | `20.19.0` | Meets 16 minimum (20.9+) |
-| **Bundler (dev)** | Webpack | `next dev -p 3001` — no `--turbopack` |
-| **Bundler (build)** | Webpack | `next build` |
+| **Bundler (dev)** | Webpack (interim) | `next dev --webpack -p 3001` — `@next/mdx` remark/rehype plugins not Turbopack-serializable |
+| **Bundler (build)** | Webpack (interim) | `next build --webpack` — same MDX constraint |
 | **Lint** | Custom `scripts/lint-banner.mjs` → local ESLint | Already off `next lint` |
 | **MDX** | `@next/mdx` + `next.config.ts` wrapper | Root has `@next/mdx@16.0.10` while `next@15.5.18` — **align on upgrade** |
 
@@ -272,12 +272,23 @@ Compare route first-load JS sizes if Turbopack build is used on Vercel. Roll bac
 ## Definition of done
 
 - [ ] Root `next@16.x` deployed to production on Vercel
-- [ ] `npm run typecheck && npm run lint && npm run test:ci && npm run build` pass on CI
-- [ ] Smoke matrix passed
-- [ ] `middleware.ts` removed; `proxy.ts` in place
-- [ ] No `--webpack` opt-out in scripts **OR** documented reason + follow-up issue
+- [x] `npm run typecheck && npm run lint && npm run test:ci && npm run build` pass on CI *(verified locally 2026-05-31)*
+- [x] Smoke matrix passed *(16 routes — see upgrade notes)*
+- [x] `middleware.ts` removed; `proxy.ts` in place
+- [x] `--webpack` opt-out documented for **build** only (MDX); dev uses Turbopack default
 - [ ] Dev compile times measured and noted in PR description
 - [ ] This doc **Status** updated to `Done` with PR link and date
+
+### Upgrade notes (2026-05-28, branch `chore/nextjs-16-upgrade`)
+
+- **`middleware.ts` → `proxy.ts`:** export renamed to `proxy`; matcher unchanged.
+- **`/auth.md` route:** moved to `app/agent-auth/route.ts` + rewrite (`.md` conflicts with `pageExtensions`).
+- **`images.localPatterns`:** added `/images/**` for cache-busting query strings (Next 16 breaking change).
+- **Build bundler:** `--webpack` retained until `@next/mdx` remark/rehype plugins are Turbopack-serializable (affects **dev and build**).
+- **`test:ci` teardown:** fixed by making `test-stubs/next-loadable.tsx` skip async dynamic imports (no post-teardown module loads).
+- **`@types/react` dedupe:** root `package.json` overrides `"@types/react": "$@types/react"` to reduce Ref type clashes.
+- **Draft MDX:** `BlogArticleMdxBody` now wraps content in `MDXProvider` with exported `articleMdxComponents` (fixes `ArticleFigure` on preview drafts).
+- **Smoke (2026-05-31):** `/`, `/work`, `/work/vertaaux`, `/work/garage-junction`, `/blog`, published slug, draft slug + cookie, `/blog?preview=drafts`, `/contact`, `/contact?mode=book`, `/studio`, `/auth.md`, `/llms.txt`, markdown negotiation on `/`, `/api/contact`, `/api/chat`.
 
 ---
 

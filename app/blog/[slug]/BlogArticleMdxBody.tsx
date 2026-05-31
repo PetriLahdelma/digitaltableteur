@@ -1,7 +1,9 @@
 "use client";
 
+import { MDXProvider } from "@mdx-js/react";
 import { getBlogPostBySlug } from "@/nextjs-app/shared/data/blogPosts";
 import { articleProseClassName } from "@/nextjs-app/shared/components/ArticleContent/articleProseClasses";
+import { articleMdxComponents } from "@/nextjs-app/shared/patterns/ArticlePageTemplate";
 
 export function BlogArticleMdxBody({
   slug,
@@ -17,7 +19,9 @@ export function BlogArticleMdxBody({
 
   return (
     <div className={articleProseClassName}>
-      <Component />
+      <MDXProvider components={articleMdxComponents}>
+        <Component />
+      </MDXProvider>
     </div>
   );
 }
