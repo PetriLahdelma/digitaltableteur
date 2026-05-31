@@ -94,6 +94,8 @@ const nextConfig: NextConfig = {
     externalDir: true,
     optimizePackageImports: [
       "@phosphor-icons/react",
+      "react-icons",
+      "react-icons/si",
       "framer-motion",
       "gsap",
       "@gsap/react",
@@ -206,13 +208,14 @@ const nextConfig: NextConfig = {
     ];
   },
   webpack: (config, { dev }) => {
-    // Avoid multi-GB `.next/cache/webpack` on disk — it can add minutes to every
-    // `next dev` startup while webpack validates a stale cache. Memory cache is
-    // enough for a single dev session; predev prunes oversized disk cache if present.
+    // Use filesystem cache in dev so revisiting a route reuses work from earlier in the
+    // session. Memory-only cache (maxGenerations: 2) forced ~1 min recompiles per route.
+    // predev prunes .next/cache/webpack when it exceeds 400MB.
     if (dev) {
       config.cache = {
-        type: "memory",
-        maxGenerations: 2,
+        type: "filesystem",
+        cacheDirectory: path.join(__dirname, ".next", "cache", "webpack"),
+        maxMemoryGenerations: 1,
       };
     }
 

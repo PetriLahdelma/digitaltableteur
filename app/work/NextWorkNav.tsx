@@ -1,12 +1,11 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 import { sortedProjects } from "@/nextjs-app/shared/data/projects";
-import { gsap } from "@/nextjs-app/shared/lib/gsap";
-import { useAnimationContext } from "@/providers/AnimationProvider";
 
 import styles from "./NextWorkNav.module.css";
 
@@ -18,27 +17,38 @@ const workPages = sortedProjects.map((p) => ({
 export function NextWorkNav() {
   const pathname = usePathname();
   const router = useRouter();
-  const { motionPreference } = useAnimationContext();
+  const [isPending, startTransition] = useTransition();
+  const navigatingRef = useRef(false);
   const currentIndex = workPages.findIndex((p) => p.path === pathname);
 
-  const navigateWithSlide = (path: string, direction: "left" | "right") => {
-    const main = document.getElementById("main-content");
-    if (!main || motionPreference === "reduced") {
-      router.push(path);
-      return;
-    }
+  const prevPath = currentIndex > 0 ? workPages[currentIndex - 1].path : null;
+  const nextPath =
+    currentIndex >= 0 && currentIndex < workPages.length - 1
+      ? workPages[currentIndex + 1].path
+      : null;
 
-    gsap.to(main, {
-      opacity: 0,
-      x: direction === "left" ? -40 : 40,
-      duration: 0.25,
-      ease: "power2.in",
-      onComplete: () => {
+  useEffect(() => {
+    navigatingRef.current = false;
+  }, [pathname]);
+
+  useEffect(() => {
+    router.prefetch("/work");
+    if (prevPath) router.prefetch(prevPath);
+    if (nextPath) router.prefetch(nextPath);
+  }, [nextPath, prevPath, router]);
+
+  const navigate = useCallback(
+    (path: string) => {
+      if (navigatingRef.current || isPending || pathname === path) return;
+      navigatingRef.current = true;
+      startTransition(() => {
         router.push(path);
-        gsap.set(main, { opacity: 1, x: 0 });
-      },
-    });
-  };
+      });
+    },
+    [isPending, pathname, router],
+  );
+
+  const navDisabled = isPending || currentIndex < 0;
 
   return (
     <div className={styles.wrapper}>
@@ -47,7 +57,8 @@ export function NextWorkNav() {
           variant="tertiary"
           size="m"
           icon={<Icon name="briefcase" ariaLabel="Back to work" />}
-          onClick={() => router.push("/work")}
+          disabled={isPending}
+          onClick={() => navigate("/work")}
         >
           <span className={styles.buttonLabel}>Back to work</span>
         </Button>
@@ -56,10 +67,9 @@ export function NextWorkNav() {
             variant="tertiary"
             size="m"
             icon={<Icon name="arrow-left" ariaLabel="Previous" />}
-            disabled={currentIndex <= 0}
+            disabled={navDisabled || currentIndex <= 0}
             onClick={() => {
-              if (currentIndex > 0)
-                navigateWithSlide(workPages[currentIndex - 1].path, "right");
+              if (prevPath) navigate(prevPath);
             }}
           >
             <span className={styles.buttonLabel}>Previous</span>
@@ -68,10 +78,9 @@ export function NextWorkNav() {
             variant="tertiary"
             size="m"
             endIcon={<Icon name="arrow-right" ariaLabel="Next" />}
-            disabled={currentIndex === workPages.length - 1}
+            disabled={navDisabled || currentIndex === workPages.length - 1}
             onClick={() => {
-              if (currentIndex < workPages.length - 1)
-                navigateWithSlide(workPages[currentIndex + 1].path, "left");
+              if (nextPath) navigate(nextPath);
             }}
           >
             <span className={styles.buttonLabel}>Next</span>
