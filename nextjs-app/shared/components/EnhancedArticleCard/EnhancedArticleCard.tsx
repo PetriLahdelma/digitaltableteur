@@ -241,10 +241,9 @@ export function EnhancedArticleCard({
           </p>
         )}
 
-        {/* Meta row */}
-        <div className="flex items-center mt-auto pt-4 border-t border-border/50">
-          {/* Author, date, read time */}
-          <div className="flex items-center gap-2">
+        {/* Meta row + read link */}
+        <div className="flex items-center justify-between gap-4 mt-auto pt-4 border-t border-border/50">
+          <div className="flex min-w-0 items-center gap-2">
             {author && (
               <>
                 <div className="relative w-7 h-7 rounded-full overflow-hidden bg-muted shrink-0">
@@ -261,23 +260,22 @@ export function EnhancedArticleCard({
                 </span>
               </>
             )}
-            {author && formattedDate && <span className="text-xs text-muted-foreground">·</span>}
-            {formattedDate && <span className="text-xs text-muted-foreground">{formattedDate}</span>}
+            {author && formattedDate && (
+              <span className="text-xs text-muted-foreground">·</span>
+            )}
+            {formattedDate && (
+              <span className="text-xs text-muted-foreground">{formattedDate}</span>
+            )}
             {readTime && <span className="text-xs text-muted-foreground">·</span>}
-            {readTime && <span className="text-xs text-muted-foreground">{readTime}</span>}
+            {readTime && (
+              <span className="text-xs text-muted-foreground">{readTime}</span>
+            )}
           </div>
-        </div>
 
-        {/* Read more indicator */}
-        <div className="mt-4 flex justify-end">
           <span
             className={cn(
-              "text-sm font-body font-medium",
-              "text-primary",
+              "shrink-0 text-sm font-body font-medium text-primary",
               "inline-flex items-center gap-1",
-              "opacity-0 group-hover:opacity-100",
-              "translate-y-2 group-hover:translate-y-0",
-              "transition-all duration-200"
             )}
           >
             {t("blogReadMore", "Read article")}
