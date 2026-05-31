@@ -146,6 +146,7 @@ function ComparisonList({
               <Text
                 as="span"
                 size="M"
+                lineHeight="normal"
                 terminals="sans"
                 className={isUs ? styles.comparisonTextUs : styles.comparisonTextThem}
               >
