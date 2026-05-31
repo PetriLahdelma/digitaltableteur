@@ -515,8 +515,8 @@ export function ContactFormEditorial({
 
         {/* === TIER 3: Relationship & Brief === */}
         <ExpandableSection
-          collapsedLabel={t("contactTellUsMore", "+ Tell us more")}
-          expandedLabel={t("contactHideTellUsMore", "− Hide")}
+          collapsedLabel={t("contactTellUsMore", "Tell us more")}
+          expandedLabel={t("contactHideTellUsMore", "Hide")}
           expanded={tier3Expanded}
           onExpandedChange={setTier3Expanded}
           className={styles.expandable}
