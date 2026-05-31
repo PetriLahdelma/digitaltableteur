@@ -42,6 +42,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           liveUrl={project.liveUrl}
           variant="contained"
           showScrollIndicator={true}
+          className={styles.hero}
         />
       }
       relatedProjects={<RelatedProjects currentSlug={project.slug} />}
@@ -285,84 +286,115 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
       <div className={styles.logoGridSection}>
         <div className={styles.logoGrid}>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardDark}>
+            <div className={`${styles.logoCardDark} ${styles.logoCardMark}`}>
               <img
                 src="/images/portfolio/vertaaux/logo-mint-on-black.svg"
                 alt="VertaaUX mint teal logo on dark background"
-                className={styles.logoImage}
+                className={styles.logoImageMark}
+                width={512}
+                height={512}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption className={styles.logoCaption}>Primary — dark background</figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardLight}>
+            <div className={`${styles.logoCardLight} ${styles.logoCardMark}`}>
               <img
                 src="/images/portfolio/vertaaux/logo-mint-on-white.svg"
                 alt="VertaaUX mint teal logo on light background"
-                className={styles.logoImage}
+                className={styles.logoImageMark}
+                width={512}
+                height={512}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption className={styles.logoCaption}>Primary — light background</figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardDark}>
+            <div className={`${styles.logoCardDark} ${styles.logoCardMark}`}>
               <img
                 src="/images/portfolio/vertaaux/logo-on-black.svg"
                 alt="VertaaUX mono logo on black"
-                className={styles.logoImage}
+                className={styles.logoImageMark}
+                width={512}
+                height={512}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption className={styles.logoCaption}>Mono — On black</figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardLight}>
+            <div className={`${styles.logoCardLight} ${styles.logoCardMark}`}>
               <img
                 src="/images/portfolio/vertaaux/logo-on-white.svg"
                 alt="VertaaUX logo on light background"
-                className={styles.logoImage}
+                className={styles.logoImageMark}
+                width={512}
+                height={512}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption className={styles.logoCaption}>Mono — On white</figcaption>
           </figure>
-
         </div>
-        <div className={styles.logoGrid}>
+        <div className={`${styles.logoGrid} ${styles.logoGridWordmarks}`}>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardDark}>
+            <div className={`${styles.logoCardDark} ${styles.logoCardWordmark}`}>
               <img
                 src="/images/portfolio/vertaaux/wordmark-on-black.svg"
                 alt="VertaaUX wordmark with mint logo on black"
-                className={styles.logoImage}
+                className={styles.logoImageWordmark}
+                width={1346}
+                height={416}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption className={styles.logoCaption}>Wordmark — On black</figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardLight}>
+            <div className={`${styles.logoCardLight} ${styles.logoCardWordmark}`}>
               <img
                 src="/images/portfolio/vertaaux/wordmark-on-white.svg"
                 alt="VertaaUX wordmark with mint logo on white"
-                className={styles.logoImage}
+                className={styles.logoImageWordmark}
+                width={1346}
+                height={416}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption className={styles.logoCaption}>Wordmark — On white</figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardDark}>
+            <div className={`${styles.logoCardDark} ${styles.logoCardWordmark}`}>
               <img
                 src="/images/portfolio/vertaaux/wordmark-white-on-black.svg"
                 alt="VertaaUX wordmark white on black"
-                className={styles.logoImage}
+                className={styles.logoImageWordmark}
+                width={1346}
+                height={416}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption className={styles.logoCaption}>Wordmark mono — On black</figcaption>
           </figure>
           <figure className={styles.logoCard}>
-            <div className={styles.logoCardLight}>
+            <div className={`${styles.logoCardLight} ${styles.logoCardWordmark}`}>
               <img
                 src="/images/portfolio/vertaaux/wordmark-black-on-white.svg"
                 alt="VertaaUX wordmark black on white"
-                className={styles.logoImage}
+                className={styles.logoImageWordmark}
+                width={1346}
+                height={416}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption className={styles.logoCaption}>Wordmark mono — On white</figcaption>

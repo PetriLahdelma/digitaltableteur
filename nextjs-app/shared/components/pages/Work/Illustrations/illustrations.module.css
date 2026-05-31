@@ -49,10 +49,13 @@
 
 .galleryItem {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   border-radius: var(--radius-m);
   background-color: var(--color-muted-background);
   box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .galleryItem > img {
@@ -61,10 +64,13 @@
 
 .galleryItemSharp {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   border-radius: 0;
   background-color: var(--color-muted-background);
   box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .galleryImage {
@@ -235,6 +241,21 @@
 
   .handle {
     display: none;
+  }
+
+  .gallery {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .galleryItem,
+  .galleryItemSharp {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
+    transform: none !important;
   }
 }
 
@@ -451,7 +472,7 @@
 }
 
 .heroText {
-  min-width: 280px;
+  min-width: 0;
   flex: 1 1 320px;
 }
 
@@ -483,7 +504,7 @@
 
 .heroImage {
   display: flex;
-  min-width: 280px;
+  min-width: 0;
   flex: 1 1 320px;
   justify-content: flex-end;
   align-items: flex-end;
@@ -544,7 +565,7 @@
 }
 
 .twoCol > div {
-  min-width: 240px;
+  min-width: 0;
   flex: 1 1 320px;
 }
 

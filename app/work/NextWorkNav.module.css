@@ -1,8 +1,21 @@
 .wrapper {
   display: grid;
   padding-block: 0.75rem;
+  padding-inline: var(--page-margin-mobile);
   width: 100%;
   gap: 0.75rem;
+}
+
+@media (width >= 768px) {
+  .wrapper {
+    padding-inline: var(--page-margin-tablet);
+  }
+}
+
+@media (width >= 1024px) {
+  .wrapper {
+    padding-inline: var(--page-margin-desktop);
+  }
 }
 
 .row {

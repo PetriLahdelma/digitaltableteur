@@ -4,10 +4,13 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  overflow-x: clip;
 }
 
 .main {
   flex: 1;
+  min-width: 0;
+  overflow-x: clip;
 }
 
 /* Main is not an interactive element; focus is only set programmatically for skip link scroll target */
