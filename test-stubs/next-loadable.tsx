@@ -1,28 +1,17 @@
 import React from "react";
 
-/** Avoid Next loadable.shared-runtime pulling a second React copy under Vitest. */
+/**
+ * Stub for `next/dynamic` under Vitest.
+ * Does not invoke the loader — async imports after test teardown caused
+ * EnvironmentTeardownError (Icon, EnhancedProjectCard, etc.).
+ * Tests that need lazy-loaded UI should override with vi.mock("next/dynamic").
+ */
 export default function dynamic(
-  loader: () => Promise<{ default: React.ComponentType<Record<string, unknown>> }>,
+  _loader: () => Promise<{ default: React.ComponentType<Record<string, unknown>> }>,
 ) {
-  function Loadable(props: Record<string, unknown>) {
-    const [Component, setComponent] = React.useState<React.ComponentType<
-      Record<string, unknown>
-    > | null>(null);
-
-    React.useEffect(() => {
-      let active = true;
-      loader().then((mod) => {
-        if (!active) return;
-        setComponent(() => mod.default);
-      });
-      return () => {
-        active = false;
-      };
-    }, []);
-
-    if (!Component) return null;
-    return React.createElement(Component, props);
+  function LoadableStub(_props: Record<string, unknown>) {
+    return null;
   }
-  Loadable.displayName = "LoadableMock";
-  return Loadable;
+  LoadableStub.displayName = "LoadableMock";
+  return LoadableStub;
 }

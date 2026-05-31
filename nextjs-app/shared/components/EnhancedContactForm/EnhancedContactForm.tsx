@@ -35,6 +35,8 @@ import {
   CONTACT_ACCEPTED_ATTACHMENT_TYPES,
   CONTACT_ATTACHMENT_MAX_BYTES,
   CONTACT_EMAIL_ATTACHMENT_LIMIT_BYTES,
+  CONTACT_HONEYPOT_INPUT_ID,
+  CONTACT_HONEYPOT_INPUT_NAME,
   reportContactHoneypot,
   validateContactEmail,
 } from "../contactFormUtils";
@@ -372,15 +374,17 @@ export function EnhancedContactForm({
       <form onSubmit={handleSubmit} className={cn("space-y-6", className)}>
         {/* === PRESERVED HONEYPOT FIELD (CRITICAL - DO NOT CHANGE) === */}
         <div className="absolute -left-[10000px] aria-hidden" aria-hidden="true">
-          <label htmlFor="website" className="sr-only">
+          <label htmlFor={CONTACT_HONEYPOT_INPUT_ID} className="sr-only">
             {t("contactSpamTrapLabel")}
           </label>
           <input
-            id="website"
+            id={CONTACT_HONEYPOT_INPUT_ID}
             type="text"
-            name="website"
+            name={CONTACT_HONEYPOT_INPUT_NAME}
             tabIndex={-1}
             autoComplete="off"
+            data-1p-ignore
+            data-lpignore="true"
             value={formData.honeypot}
             onChange={handleHoneypotChange}
           />

@@ -90,30 +90,8 @@ async function extractPageData(url) {
   }
   fs.writeFileSync("./public/llms.txt", txt);
 
-  // --- llms-full.txt (all pages, more detail) ---
-  let fullTxt =
-    "# Digitaltableteur\n\n" +
-    "> Digitaltableteur is a multilingual, accessible portfolio site for Petri Lahdelma, featuring internationalized content, responsive design, and best practices for LLMs and users.\n\n" +
-    "This site showcases all public pages, works, and blog posts in English, Finnish, and Swedish.\n\n" +
-    "## All Pages\n";
-  for (const page of results) {
-    fullTxt += `- [${page.title || page.url}](${page.url})`;
-    if (page.metaDesc) fullTxt += `: ${page.metaDesc}`;
-    fullTxt += "\n";
-  }
-  fullTxt += "\n---\n";
-  for (const page of results) {
-    if (!page.success) continue;
-    fullTxt += `\n### Page: ${page.url}\n`;
-    fullTxt += `Title: ${page.title}\nMeta Description: ${page.metaDesc}\nLanguage: ${page.lang}\nCanonical URL: ${page.canonical}\n\n## Headings Structure:\n`;
-    if (page.headings.length) {
-      fullTxt += page.headings.map((h) => `- ${h}`).join("\n") + "\n";
-    } else {
-      fullTxt += "No headings found\n";
-    }
-    fullTxt += `\n## Main Content:\n${page.mainContent}\n\n---\n`;
-  }
-  fs.writeFileSync("./public/llms-full.txt", fullTxt);
+  // llms-full.txt is served dynamically by app/llms-full.txt/route.ts (Next 16
+  // rejects a public file + route handler at the same path).
 
-  console.log("llms.txt (concise) and llms-full.txt (detailed) generated.");
+  console.log("llms.txt (concise) generated. llms-full.txt is served by app route.");
 })();

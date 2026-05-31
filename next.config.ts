@@ -124,6 +124,15 @@ const nextConfig: NextConfig = {
   ],
   // Image optimization configuration
   images: {
+    // Local images with cache-busting query strings (e.g. ?v=2) require explicit patterns in Next 16.
+    localPatterns: [
+      {
+        pathname: "/images/**",
+      },
+      {
+        pathname: "/blog/**",
+      },
+    ],
     // Local SVG heroes/diagrams use <img> via BlogMediaImage; this allows raster fallbacks.
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
@@ -150,15 +159,24 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // TODO: Remove these once the ~23 pre-existing type errors are resolved.
+  // TODO: Remove ignoreBuildErrors once the ~23 pre-existing type errors are resolved.
   // Root cause: dual @types/react versions from dependency tree conflicts.
-  // CI enforces typecheck separately via .github/workflows/pr-validation.yml,
-  // but build-time checking is disabled to prevent blocking deployments.
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // CI enforces typecheck separately via .github/workflows/pr-validation.yml.
+  // Next.js 16 removed the eslint config key — lint runs via npm run lint in CI.
   typescript: {
     ignoreBuildErrors: true,
+  },
+  turbopack: {
+    // tsconfig paths cover @, @dt, @dt-pages; pin i18n packages to root node_modules.
+    resolveAlias: {
+      i18next: path.join(__dirname, "node_modules", "i18next"),
+      "react-i18next": path.join(__dirname, "node_modules", "react-i18next"),
+      "i18next-browser-languagedetector": path.join(
+        __dirname,
+        "node_modules",
+        "i18next-browser-languagedetector",
+      ),
+    },
   },
   async headers() {
     const agentLinkHeader = {
@@ -206,6 +224,10 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
     ];
+  },
+  async rewrites() {
+    // `/auth.md` cannot live as `app/auth.md/` — `.md` is a pageExtension (MDX).
+    return [{ source: "/auth.md", destination: "/agent-auth" }];
   },
   webpack: (config, { dev }) => {
     // Use filesystem cache in dev so revisiting a route reuses work from earlier in the

@@ -106,9 +106,13 @@ function MarkdownMessage({
               ),
             img: isChatDensity
               ? () => null
-              : ({ src, alt }) => (
-                  <img src={src} alt={alt ?? ""} loading="lazy" />
-                ),
+              : ({ src, alt }) => {
+                  const imageSrc = typeof src === "string" ? src : undefined;
+                  if (!imageSrc) return null;
+                  return (
+                    <img src={imageSrc} alt={alt ?? ""} loading="lazy" />
+                  );
+                },
             strong: ({ children }) =>
               renderWithDesignSystem ? (
                 <Text as="strong" terminals="sans" size={resolvedDesignSystemTextSize}>
