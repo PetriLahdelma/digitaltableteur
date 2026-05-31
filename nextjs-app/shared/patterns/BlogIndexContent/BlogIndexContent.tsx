@@ -144,12 +144,13 @@ function BlogIndexContentInner({
             </div>
           )}
 
-          {/* Grid */}
+          {/* Grid — single column list on all breakpoints (editorial index) */}
           <BlogGrid
             articles={cardProps}
             layout={gridLayout}
             featuredSlug={filteredPosts[0]?.slug}
             hideImages={hideImages}
+            columns={{ sm: 1, md: 1, lg: 1 }}
           />
 
           {/* Pagination */}
@@ -204,7 +205,7 @@ function BlogIndexContentFallback() {
               />
             ))}
           </div>
-          <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div
                 key={i}
