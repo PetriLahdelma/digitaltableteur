@@ -33,7 +33,7 @@ function handleBlogDraftPreview(request: NextRequest) {
  * Markdown content negotiation for AI agents (Cloudflare Agent Readiness / llmstxt.org).
  * Homepage requests with Accept: text/markdown receive llms.txt content.
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const draftPreview = handleBlogDraftPreview(request);
   if (draftPreview) return draftPreview;
 
