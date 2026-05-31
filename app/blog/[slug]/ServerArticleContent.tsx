@@ -34,6 +34,7 @@ export function ServerArticleContent({
     title,
     excerpt,
     publishedAt,
+    modifiedAt,
     readTime,
     authorName,
     authorSlug,
@@ -44,6 +45,10 @@ export function ServerArticleContent({
 
   const author = authorSlug ? getAuthorBySlug(authorSlug) : undefined;
   const shareUrl = toAbsoluteSiteUrl(`/blog/${slug}`);
+  const showUpdated =
+    modifiedAt &&
+    publishedAt &&
+    modifiedAt.slice(0, 10) !== publishedAt.slice(0, 10);
 
   return (
     <article lang="en">
@@ -51,7 +56,19 @@ export function ServerArticleContent({
         <Container size="md" className="py-10 tablet:py-14">
           <div className="mx-auto max-w-3xl text-center">
             <p className="font-body text-sm text-muted-foreground">
-              {formatPublishedDate(publishedAt)}
+              {publishedAt ? (
+                <time dateTime={publishedAt}>
+                  {formatPublishedDate(publishedAt)}
+                </time>
+              ) : null}
+              {showUpdated && modifiedAt ? (
+                <>
+                  {" · Updated "}
+                  <time dateTime={modifiedAt}>
+                    {formatPublishedDate(modifiedAt)}
+                  </time>
+                </>
+              ) : null}
               {readTime ? ` · ${readTime}` : ""}
             </p>
             <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-foreground tablet:text-5xl">

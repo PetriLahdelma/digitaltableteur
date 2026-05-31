@@ -14,9 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const today = new Date();
   const posts = getVisiblePosts();
 
-  // Exclude noindex pages from sitemap:
+  // Exclude noindex / internal pages from sitemap:
   // - /privacy-policy (noindex)
   // - /studio (noindex - Sanity CMS admin)
+  // - /tools/email-signature (internal, noindex)
   const staticRoutes: MetadataRoute.Sitemap = [
     "/",
     "/about",
@@ -27,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/accessibility",
     "/blog",
     "/colophon",
+    "/sitemap",
   ].map((path) => ({
     url: toUrl(path),
     lastModified: today,
@@ -105,21 +107,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  const toolsRoutes: MetadataRoute.Sitemap = ["/tools/email-signature"].map(
-    (path) => ({
-      url: toUrl(path),
-      lastModified: today,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    }),
-  );
-
   return [
     ...staticRoutes,
     ...workRoutes,
     ...blogRoutes,
     ...authorRoutes,
-    ...toolsRoutes,
     ...pseoIndexRoutes,
     ...pseoPillarRoutes,
     ...pseoLeafRoutes,

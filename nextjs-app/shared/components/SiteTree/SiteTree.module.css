@@ -1,0 +1,125 @@
+.root {
+  --site-tree-indent: var(--space-layout-20, 1.25rem);
+  --site-tree-row-gap: var(--space-internal-8, 0.5rem);
+  --site-tree-branch-gap: var(--space-internal-4, 0.25rem);
+
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+
+.list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  gap: var(--site-tree-row-gap);
+  list-style: none;
+}
+
+.branchItem,
+.leaf {
+  margin: 0;
+  padding: 0;
+}
+
+.branch {
+  margin: 0;
+  padding-inline-start: calc(var(--site-tree-depth, 0) * var(--site-tree-indent));
+}
+
+.branch > .list {
+  margin-block-start: var(--site-tree-row-gap);
+  padding-inline-start: var(--site-tree-indent);
+  border-inline-start: 1px solid var(--color-border-subtle, rgb(0 0 0 / 8%));
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: var(--site-tree-branch-gap);
+  padding-block: var(--space-internal-4);
+  border-radius: var(--radius-s, 4px);
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary::marker {
+  content: "";
+}
+
+.summary:focus-visible {
+  outline: 2px solid var(--color-focus-ring, var(--color-primary));
+  outline-offset: 2px;
+}
+
+.branch[open] .caret {
+  transform: rotate(90deg);
+}
+
+.caret {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  transition: transform 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    transition: none;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--site-tree-branch-gap);
+  padding-block: var(--space-internal-4);
+  padding-inline-start: calc(
+    var(--site-tree-depth, 0) * var(--site-tree-indent) + var(--site-tree-indent)
+  );
+}
+
+.summaryLabel,
+.label {
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-4);
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+/* Sitemap links use a plain underline on hover, not the global wavy decoration */
+
+.root :global(.wavyUnderline) {
+  padding-bottom: 0;
+}
+
+.root :global(.wavyUnderline::after) {
+  display: none;
+  content: none;
+}
+
+.leaf .row {
+  padding-inline-start: calc(
+    var(--site-tree-depth, 0) * var(--site-tree-indent) + var(--site-tree-indent)
+  );
+}
+
+.branchItem > .branch > .summary {
+  padding-inline-start: calc(var(--site-tree-depth, 0) * var(--site-tree-indent));
+}
