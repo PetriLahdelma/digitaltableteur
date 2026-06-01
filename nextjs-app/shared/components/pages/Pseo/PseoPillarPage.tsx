@@ -27,7 +27,7 @@ export function PseoPillarPage({
   siblingItems: PseoCatalogItem[];
 }) {
   const metaLinks = [
-    { href: "/pseo", label: "All guides" },
+    { href: "/pseo", label: "All playbooks" },
     ...siblingItems
       .filter((sibling) => sibling.slug !== item.slug)
       .slice(0, 6)

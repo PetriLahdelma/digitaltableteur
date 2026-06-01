@@ -49,7 +49,7 @@ export function BlogHero({
   return (
     <Section
       id={id}
-      spacing={isFullHeight ? "none" : "lg"}
+      spacing={isFullHeight ? "none" : "hero"}
       background="default"
       className={cn(
         "relative overflow-hidden",

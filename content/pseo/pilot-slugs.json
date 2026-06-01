@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "description": "Phase 3 pilot — 12 slugs selected for generation and human review before indexation.",
+  "generationStatus": "complete",
+  "generatedAt": "2026-05-28",
+  "rationale": "Core services, site stack (Next.js), strong proof links, and differentiated DesignOps combos.",
+  "slugs": [
+    "design-system-audit-react-startups",
+    "design-system-audit-nextjs-startups",
+    "design-system-audit-figma-scaleups",
+    "design-system-audit-typescript-enterprises",
+    "component-library-build-react-scaleups",
+    "component-library-build-nextjs-product-teams",
+    "component-library-build-storybook-enterprises",
+    "design-tokens-setup-figma-product-teams",
+    "design-tokens-setup-react-startups",
+    "design-tokens-setup-typescript-scaleups",
+    "ai-designops-automation-storybook-designops",
+    "ai-designops-automation-nextjs-designops"
+  ]
+}

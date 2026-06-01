@@ -8,8 +8,11 @@ import {
   getRelatedPseoLeafPages,
 } from "@/lib/pseo/catalog";
 import { getPseoPageCopy } from "@/lib/pseo/copy";
+import { mergeLeafCopy } from "@/lib/pseo/leaf-blocks";
+import { isPseoLeafIndexable } from "@/lib/pseo/indexing";
 import {
   getBreadcrumbSchema,
+  getFaqSchema,
   getWebPageSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
@@ -37,6 +40,7 @@ export async function generateMetadata({
   const url = `${siteBase}/pseo/${page.slug}`;
   const title = `${page.title} | Digitaltableteur`;
   const description = page.description;
+  const indexable = isPseoLeafIndexable(slug);
 
   return {
     title,
@@ -57,10 +61,18 @@ export async function generateMetadata({
       description,
     },
     robots: {
-      index: true,
+      index: indexable,
       follow: true,
     },
   };
+}
+
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, "$1")
+    .replace(/\[(.*?)\]\(.*?\)/g, "$1")
+    .replace(/[#*_`]/g, "")
+    .trim();
 }
 
 export default async function PseoLeafRoute({
@@ -75,9 +87,10 @@ export default async function PseoLeafRoute({
   const copy = getPseoPageCopy(slug);
   const relatedLimit = getPseoCatalog().generation?.relatedLinksPerPage ?? 8;
   const relatedPages = getRelatedPseoLeafPages(page, relatedLimit);
+  const { blocks } = mergeLeafCopy(page, copy);
 
   const url = `${siteBase}/pseo/${page.slug}`;
-  const structuredData = [
+  const structuredData: Record<string, unknown>[] = [
     getWebPageSchema({
       name: page.title,
       description: page.description,
@@ -86,12 +99,15 @@ export default async function PseoLeafRoute({
     }),
     getBreadcrumbSchema([
       { name: "Home", url: siteBase },
-      { name: "PSEO", url: `${siteBase}/pseo` },
+      { name: "Playbooks", url: `${siteBase}/pseo` },
       {
         name: page.service.name,
         url: `${siteBase}/pseo/services/${page.service.slug}`,
       },
-      { name: page.stack.name, url: `${siteBase}/pseo/stacks/${page.stack.slug}` },
+      {
+        name: page.stack.displayName ?? page.stack.name,
+        url: `${siteBase}/pseo/stacks/${page.stack.slug}`,
+      },
       {
         name: page.audience.name,
         url: `${siteBase}/pseo/audiences/${page.audience.slug}`,
@@ -99,6 +115,17 @@ export default async function PseoLeafRoute({
       { name: page.title, url },
     ]),
   ];
+
+  if (blocks.faqs.length > 0) {
+    structuredData.push(
+      getFaqSchema(
+        blocks.faqs.map((faq) => ({
+          question: faq.question,
+          answer: stripMarkdown(faq.answerMarkdown),
+        })),
+      ),
+    );
+  }
 
   return (
     <>
