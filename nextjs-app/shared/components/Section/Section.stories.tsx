@@ -27,7 +27,7 @@ const meta = {
     children: { control: false, description: "Section content" },
     spacing: {
       control: "select",
-      options: ["none", "sm", "md", "lg", "xl"],
+      options: ["none", "sm", "md", "lg", "xl", "hero", "follow"],
       description: "Block padding scale",
       table: { defaultValue: { summary: "md" } },
     },

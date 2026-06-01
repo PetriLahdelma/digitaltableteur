@@ -44,14 +44,21 @@ npx tsx scripts/pseo/generate-pseo-copy.ts --only-missing --limit 5
 npx tsx scripts/pseo/generate-pseo-copy.ts --slugs design-system-audit-react-startups,design-tokens-setup-nextjs-scaleups
 ```
 
-Required env:
+Required env (either provider):
 
 ```bash
+# Preferred for batch generation (avoids direct OpenAI quota limits)
+AI_GATEWAY_API_KEY=...
+AI_GATEWAY_MODEL=openai/gpt-4o-mini   # optional
+
+# Fallback
 OPENAI_API_KEY=...
-# Optional
-OPENAI_MODEL=gpt-4o-mini
-OPENAI_API_URL=https://api.openai.com/v1/chat/completions
+OPENAI_MODEL=gpt-4o-mini            # optional
 ```
+
+Use `--provider gateway` or `--provider openai` to force a backend. By default the script tries Gateway first, then OpenAI.
+
+Pilot slugs are tracked in `content/pseo/pilot-slugs.json`.
 
 ## Next steps (recommended workflow)
 

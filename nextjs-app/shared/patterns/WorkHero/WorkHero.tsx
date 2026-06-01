@@ -32,7 +32,7 @@ export function WorkHero({
   return (
     <Section
       id={id}
-      spacing="lg"
+      spacing="hero"
       background="default"
       className={cn("relative overflow-hidden", className)}
     >
