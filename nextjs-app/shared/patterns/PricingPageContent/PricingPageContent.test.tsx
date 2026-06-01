@@ -22,11 +22,19 @@ describe("PricingPageContent", () => {
         name: /design systems/i,
       })
     ).toBeInTheDocument();
-    expect(screen.getByText(/Design System Lift-Off/i)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /book a call/i })).toHaveAttribute(
+    expect(
+      screen.getByRole("heading", { level: 3, name: /design system lift-off/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /book ux sprint/i })).toHaveAttribute(
       "href",
-      "/contact?mode=book"
+      "/contact?mode=book&package=ux-sprint",
     );
+    expect(
+      screen.getByRole("link", { name: /book design system lift-off/i }),
+    ).toHaveAttribute("href", "/contact?mode=book&package=design-system-lift-off");
+    expect(
+      screen.getByRole("button", { name: /aaas \(agents as a service\)/i }),
+    ).toHaveAttribute("aria-expanded", "false");
   });
 
   it("has no accessibility violations", async () => {
