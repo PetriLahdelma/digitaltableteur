@@ -283,7 +283,7 @@ This report documents the comprehensive accessibility audit and remediation of t
 
 | Component | Version |
 |-----------|---------|
-| Next.js | 15.5 |
+| Next.js | 16.2.x |
 | React | 19 |
 | @axe-core/playwright | Latest |
 | Playwright | Latest |

@@ -31,7 +31,7 @@
 | **Bundler (dev)** | **Turbopack (default)** | `next dev -p 3001` — MDX plugins use string names; `dev:webpack` fallback retained |
 | **Bundler (build)** | **Turbopack (default)** | `next build` — ~22s local vs ~90s webpack; `analyze` uses Turbopack too |
 | **Lint** | Custom `scripts/lint-banner.mjs` → local ESLint | Already off `next lint` |
-| **MDX** | `@next/mdx` + `next.config.ts` wrapper | Root has `@next/mdx@16.0.10` while `next@15.5.18` — **align on upgrade** |
+| **MDX** | `@next/mdx` + `next.config.ts` wrapper | Align `@next/mdx` peer with `next@16.2.x` (done in #634) |
 
 ### Recent stability context (do not repeat mistakes)
 
@@ -262,7 +262,7 @@ Compare route first-load JS sizes if Turbopack build is used on Vercel. Roll bac
 
 ## Rollback plan
 
-1. Revert PR / branch — production stays on 15.5.x
+1. Revert PR / branch — production would roll back to 15.5.x (pre-#634)
 2. If merged and broken: revert commit on `main`, redeploy Vercel
 3. `.next` local corruption: `npm run dev:reset`
 4. Keep `--webpack` flags in scripts for 1 release if Turbopack blocks ship

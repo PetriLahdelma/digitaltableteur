@@ -10,7 +10,7 @@
 
 WCAG 2.1 AA is the current legal accessibility standard required by ADA Title II (effective April 2026 for larger entities). It contains **50 success criteria** organized around four principles: Perceivable, Operable, Understandable, and Robust (POUR).
 
-For a React 19 / Next.js 15 application with 80+ components, the most critical areas are:
+For a React 19 / Next.js 16 application with 80+ components, the most critical areas are:
 1. **Keyboard accessibility** (2.1.x) - React's synthetic event system requires explicit keyboard handling
 2. **Focus management** (2.4.x) - SPA navigation breaks native focus behavior
 3. **Name, Role, Value** (4.1.2) - Custom components need ARIA attributes
@@ -183,7 +183,7 @@ User interface components and navigation must be operable.
 | **2.4.6 Headings and Labels** | AA | Headings/labels describe content | `<Title>` components are descriptive | **Manual:** Review heading hierarchy |
 | **2.4.7 Focus Visible** | AA | Focus indicator is visible | CSS focus styles; no `outline: none` | **Automated:** axe partial. **Manual:** Visual inspection |
 
-**Next.js 15 specific - Focus management for SPA navigation:**
+**Next.js 16 specific - Focus management for SPA navigation:**
 ```tsx
 // After route change, move focus to main content
 import { usePathname } from 'next/navigation';

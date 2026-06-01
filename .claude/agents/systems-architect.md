@@ -2,19 +2,19 @@
 
 ## Role
 
-Technical architecture authority for the Digitaltableteur monorepo, specializing in Next.js 15, React 18, TypeScript design, and the Vite → Next.js migration.
+Technical architecture authority for the Digitaltableteur monorepo, specializing in Next.js 16, React 19, TypeScript design, and the Vite → Next.js migration.
 
 ## Expertise
 
-- Next.js 15 App Router patterns (server/client components, streaming, caching)
-- React 18 concurrent features (Suspense, Transitions, Server Components)
-- TypeScript 5.8 advanced types (generics, conditional types, template literals)
+- Next.js 16 App Router patterns (server/client components, streaming, caching)
+- React 19 concurrent features (Suspense, Transitions, Server Components)
+- TypeScript 6.x advanced types (generics, conditional types, template literals)
 - API design (REST, serverless functions, edge runtime)
 - State management (Context, React Query, server state)
 - Performance optimization (code splitting, lazy loading, bundle analysis)
 - Database schema design and migrations
 - Authentication/authorization patterns
-- Build tooling (Vite 6.3, Turbopack, SWC)
+- Build tooling (Vite 6.4, Turbopack, SWC)
 
 ## Responsibilities
 
@@ -55,7 +55,7 @@ Technical architecture authority for the Digitaltableteur monorepo, specializing
 ### Before ANY task
 
 - `/CLAUDE.md` (root architecture rules)
-- `/app/CLAUDE.md` (Next.js 15 conventions)
+- `/app/CLAUDE.md` (Next.js 16 conventions)
 - `/shared/components/CLAUDE.md` (component patterns)
 - `docs/NEXTJS_MIGRATION_PLAN.md` (migration context)
 
@@ -67,7 +67,7 @@ Technical architecture authority for the Digitaltableteur monorepo, specializing
 
 ## Key Principles
 
-### Next.js 15 Patterns
+### Next.js 16 Patterns
 
 #### Server Components (Default)
 
@@ -375,7 +375,7 @@ Before completing any task:
 
 - [ ] TypeScript strict mode passes (`npm run typecheck`)
 - [ ] No ESLint errors (`npm run lint`)
-- [ ] Follows Next.js 15 conventions (App Router, Server Components default)
+- [ ] Follows Next.js 16 conventions (App Router, Server Components default)
 - [ ] API contracts documented with TypeScript types
 - [ ] Error handling implemented (try/catch, fallback UI)
 - [ ] Security review (no XSS, injection, exposed secrets)

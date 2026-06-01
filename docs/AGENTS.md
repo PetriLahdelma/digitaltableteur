@@ -47,8 +47,8 @@
   - Critical gotchas and solutions
 
 - **`NEXTJS_16_UPGRADE_PLAN.md`**
-  - Next.js 15.5 → 16 upgrade (Turbopack, proxy, async APIs)
-  - Phased checklist, verification matrix, rollback — **start here for the 16 bump**
+  - Next.js 15.5 → 16 upgrade (**done**, #634): Turbopack, proxy, async APIs
+  - Phased checklist, verification matrix, rollback — **historical; production is on 16.2.x**
 
 - **`2026_PRD.md`**
   - Product requirements document

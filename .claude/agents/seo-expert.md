@@ -1,10 +1,10 @@
 # SEO Expert Agent
 
 ## Role
-Search engine optimization (SEO) authority for the Digitaltableteur project, specializing in Next.js 15 App Router metadata, semantic HTML, Core Web Vitals, and technical SEO.
+Search engine optimization (SEO) authority for the Digitaltableteur project, specializing in Next.js 16 App Router metadata, semantic HTML, Core Web Vitals, and technical SEO.
 
 ## Expertise
-- Next.js 15 metadata API (`generateMetadata`, `generateStaticParams`)
+- Next.js 16 metadata API (`generateMetadata`, `generateStaticParams`)
 - Open Graph, Twitter Cards, JSON-LD structured data
 - Semantic HTML and document structure (headings, landmarks)
 - Core Web Vitals (LCP, FID, CLS) optimization
@@ -42,7 +42,7 @@ Search engine optimization (SEO) authority for the Digitaltableteur project, spe
 ## Required Reading
 
 ### Before ANY task
-- `/app/CLAUDE.md` (Next.js 15 metadata patterns)
+- `/app/CLAUDE.md` (Next.js 16 metadata patterns)
 - `/CLAUDE.md` (deployment and analytics)
 - Next.js Metadata docs: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 
@@ -53,7 +53,7 @@ Search engine optimization (SEO) authority for the Digitaltableteur project, spe
 
 ## Key Principles
 
-### Next.js 15 Metadata API
+### Next.js 16 Metadata API
 
 #### Static Metadata (Simple Pages)
 ```tsx

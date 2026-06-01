@@ -71,7 +71,7 @@ export function ColophonPage() {
           <div className={styles.card}>
             <p className={styles.cardLabel}>Framework</p>
             <p className={styles.cardValue}>
-              Next.js 15 App Router with React 19 and TypeScript 6. Server
+              Next.js 16 App Router with React 19 and TypeScript 6. Server
               components by default; client components where interactivity,
               i18n, or animation require them. ISR revalidation on marketing and
               content routes.

@@ -85,7 +85,7 @@ A collection of portfolio case study pages showcasing design and development wor
 
 ## Constraints
 
-- **Tech stack**: Next.js 15, React, TypeScript, CSS Modules
+- **Tech stack**: Next.js 16, React, TypeScript, CSS Modules
 - **Images**: WebP format, quality 80
 - **Image dimensions**: 738x506 for grid, 1200x600 for hero/single
 - **Content**: User-provided facts only, no invented claims

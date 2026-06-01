@@ -299,7 +299,7 @@ Digitaltableteur is committed to ensuring digital accessibility for people with 
 This site uses the following technologies:
 - HTML5
 - CSS (with CSS custom properties)
-- JavaScript (React 19, Next.js 15)
+- JavaScript (React 19, Next.js 16)
 - ARIA (Accessible Rich Internet Applications)
 
 Accessibility features rely on:

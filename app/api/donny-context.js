@@ -49,7 +49,7 @@ IMPORTANT: When asked about ANY project, case study, or portfolio work, ALWAYS u
 - Illustrations: Editorial illustrations and character designs
 
 Technology Stack:
-- Frontend: React 19, Next.js 15, TypeScript, CSS Modules, Radix UI
+- Frontend: React 19, Next.js 16, TypeScript, CSS Modules, Radix UI
 - Design: Figma, design tokens (CSS custom properties), Storybook 10
 - Animation: GSAP, Framer Motion, Lenis smooth scroll
 - AI/LLM: Vercel AI SDK, MCP integrations

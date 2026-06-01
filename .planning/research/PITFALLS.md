@@ -1,6 +1,6 @@
 # Accessibility Pitfalls for React/Next.js Applications
 
-**Domain:** Next.js 15 / React 19 web application accessibility audit
+**Domain:** Next.js 16 / React 19 web application accessibility audit
 **Researched:** 2026-01-27
 **Confidence:** HIGH (sources: WebAIM studies, W3C WCAG documentation, MDN, official React docs)
 
