@@ -13,33 +13,16 @@ import { Stack } from "../../components/Stack";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const TITLE_VARIANT_KEY = "dt-home-hero-title-index";
-const SUBTEXT_VARIANT_KEY = "dt-home-hero-subtext-index";
+function pickRandomIndex(length: number): number {
+  if (length <= 1) return 0;
+  return Math.floor(Math.random() * length);
+}
 
-function getOrCreateSessionIndex(storageKey: string, length: number): number {
-  if (length <= 0) return 0;
-  if (length === 1) return 0;
-  if (typeof window === "undefined") return 0;
-
-  try {
-    const stored = sessionStorage.getItem(storageKey);
-    if (stored !== null) {
-      const parsed = Number.parseInt(stored, 10);
-      if (Number.isInteger(parsed) && parsed >= 0 && parsed < length) {
-        return parsed;
-      }
-    }
-  } catch {
-    // sessionStorage unavailable (private mode, SSR tests)
-  }
-
-  const index = Math.floor(Math.random() * length);
-  try {
-    sessionStorage.setItem(storageKey, String(index));
-  } catch {
-    // ignore
-  }
-  return index;
+function readTranslationList(
+  value: unknown,
+): string[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((item): item is string => typeof item === "string");
 }
 
 export interface HomeHeroProps {
@@ -58,17 +41,27 @@ export function HomeHero({
 }: HomeHeroProps) {
   const { t } = useTranslation();
 
-  // Get the array of title options from translations
-  const titleOptions = t("homeHeroGradientTitleOptions", {
-    returnObjects: true,
-    defaultValue: [],
-  }) as string[];
+  const titleOptions = useMemo(
+    () =>
+      readTranslationList(
+        t("homeHeroGradientTitleOptions", {
+          returnObjects: true,
+          defaultValue: [],
+        }),
+      ),
+    [t],
+  );
 
-  // Get the array of subtext options from translations
-  const subtextOptions = t("homeHeroSubtextOptions", {
-    returnObjects: true,
-    defaultValue: [],
-  }) as string[];
+  const subtextOptions = useMemo(
+    () =>
+      readTranslationList(
+        t("homeHeroSubtextOptions", {
+          returnObjects: true,
+          defaultValue: [],
+        }),
+      ),
+    [t],
+  );
 
   // Use state to handle client-side random selection (avoids hydration mismatch)
   const [randomTitleIndex, setRandomTitleIndex] = useState(0);
@@ -76,10 +69,8 @@ export function HomeHero({
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setRandomTitleIndex(getOrCreateSessionIndex(TITLE_VARIANT_KEY, titleOptions.length));
-    setRandomSubtextIndex(
-      getOrCreateSessionIndex(SUBTEXT_VARIANT_KEY, subtextOptions.length),
-    );
+    setRandomTitleIndex(pickRandomIndex(titleOptions.length));
+    setRandomSubtextIndex(pickRandomIndex(subtextOptions.length));
     setIsClient(true);
   }, [titleOptions.length, subtextOptions.length]);
 
