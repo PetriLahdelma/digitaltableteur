@@ -188,9 +188,10 @@ export function ClientLogoMarquee({
 }: {
   ariaLabel: string;
 }) {
-  const { motionPreference } = useAnimationContext();
+  const { motionPreference, isReady } = useAnimationContext();
 
-  if (motionPreference === "reduced") {
+  // Static grid until motion preference is resolved client-side (SSR-safe).
+  if (!isReady || motionPreference === "reduced") {
     return (
       <section aria-label={ariaLabel} className="py-3">
         <ClientLogoSemanticList />

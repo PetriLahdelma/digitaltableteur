@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
 import DonnyBookingEmbed from "@dt/DonnyBookingEmbed";
@@ -27,6 +34,8 @@ export function ContactInquiryPanel({
 }: ContactInquiryPanelProps) {
   const { t } = useTranslation();
   const [mode, setMode] = useState<ContactInquiryMode>(initialMode);
+  const messageTabRef = useRef<HTMLButtonElement>(null);
+  const bookTabRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (initialMode === "book" || initialMode === "message") {
@@ -45,6 +54,20 @@ export function ContactInquiryPanel({
     setMode("message");
   }, []);
 
+  const handleTabKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLButtonElement>) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
+        return;
+      }
+      event.preventDefault();
+      const nextMode: ContactInquiryMode =
+        mode === "message" ? "book" : "message";
+      setMode(nextMode);
+      (nextMode === "message" ? messageTabRef : bookTabRef).current?.focus();
+    },
+    [mode],
+  );
+
   return (
     <div
       className={styles.inquiryPanel}
@@ -57,24 +80,30 @@ export function ContactInquiryPanel({
         aria-label={t("contactInquiryModeLabel", "Contact options")}
       >
         <button
+          ref={messageTabRef}
           type="button"
           role="tab"
           id="contact-tab-message"
           aria-selected={mode === "message"}
           aria-controls="contact-panel-message"
+          tabIndex={mode === "message" ? 0 : -1}
           className={`${styles.modeButton}${mode === "message" ? ` ${styles.modeButtonActive}` : ""}`}
           onClick={handleSelectMessage}
+          onKeyDown={handleTabKeyDown}
         >
           {t("contactInquiryMessageTab", "Send a message")}
         </button>
         <button
+          ref={bookTabRef}
           type="button"
           role="tab"
           id="contact-tab-book"
           aria-selected={mode === "book"}
           aria-controls="contact-panel-book"
+          tabIndex={mode === "book" ? 0 : -1}
           className={`${styles.modeButton}${mode === "book" ? ` ${styles.modeButtonActive}` : ""}`}
           onClick={() => setMode("book")}
+          onKeyDown={handleTabKeyDown}
         >
           <span className={styles.modeButtonContent}>
             <span className={styles.modeButtonLabel}>
@@ -88,22 +117,23 @@ export function ContactInquiryPanel({
       </div>
 
       <div className={styles.panelBody}>
-        {mode === "message" ? (
-          <div
-            id="contact-form"
-            role="tabpanel"
-            aria-labelledby="contact-tab-message"
-            data-donny-target="contact.form"
-          >
-            {messagePanel}
-          </div>
-        ) : (
-          <div
-            id="contact-booking"
-            role="tabpanel"
-            aria-labelledby="contact-tab-book"
-            data-donny-target="contact.booking"
-          >
+        <div
+          id="contact-panel-message"
+          role="tabpanel"
+          aria-labelledby="contact-tab-message"
+          hidden={mode !== "message"}
+          data-donny-target="contact.form"
+        >
+          <div id="contact-form">{messagePanel}</div>
+        </div>
+        <div
+          id="contact-panel-book"
+          role="tabpanel"
+          aria-labelledby="contact-tab-book"
+          hidden={mode !== "book"}
+          data-donny-target="contact.booking"
+        >
+          <div id="contact-booking">
             {booking.configured ? (
               <DonnyBookingEmbed {...booking} />
             ) : (
@@ -135,7 +165,7 @@ export function ContactInquiryPanel({
               </div>
             )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

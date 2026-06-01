@@ -87,6 +87,12 @@ When \`enableSleepDetection\` is true, Donny will:
       description: "Show Label",
       control: "boolean",
     },
+    decorative: {
+      description:
+        "Hide accessible name when the avatar sits inside a labeled control",
+      control: "boolean",
+      table: { defaultValue: { summary: "false" } },
+    },
   },
 };
 

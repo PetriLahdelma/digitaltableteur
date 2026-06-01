@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
@@ -10,8 +10,10 @@ import { useNavigation } from "@/nextjs-app/shared/hooks/useNavigation";
 import { usePersistentTheme } from "@/nextjs-app/shared/hooks/usePersistentTheme";
 import { useToast } from "@/providers/ToastProvider";
 import { IconButton } from "@/nextjs-app/shared/components/IconButton";
+import { LanguageSwitcher } from "@/nextjs-app/shared/components/LanguageSwitcher";
 import { List, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import { MobileDrawer } from "./MobileDrawer";
+import styles from "./SiteHeader.module.css";
 import type { Theme } from "@dt/ThemeProvider";
 
 export interface NavItem {
@@ -81,8 +83,19 @@ export function SiteHeader({
   const { showToast } = useToast();
   const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useNavigation();
   const [isThemeAnimating, setIsThemeAnimating] = useState(false);
+  const themeAnimationTimeout = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      if (themeAnimationTimeout.current) {
+        clearTimeout(themeAnimationTimeout.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,7 +115,10 @@ export function SiteHeader({
   const handleThemeToggle = () => {
     if (!isThemeAnimating) {
       setIsThemeAnimating(true);
-      setTimeout(() => setIsThemeAnimating(false), 450);
+      themeAnimationTimeout.current = setTimeout(() => {
+        setIsThemeAnimating(false);
+        themeAnimationTimeout.current = null;
+      }, 450);
     }
     const nextTheme = cycleTheme() as Theme;
     const label = t(themeNames[nextTheme], nextTheme);
@@ -261,43 +277,41 @@ export function SiteHeader({
         </nav>
 
         {/* Controls */}
-        <div className="flex items-center gap-2">
-          {/* Language Switcher - Desktop */}
-          <div className="hidden lg:flex items-center gap-1 border-l border-border/40 ml-4 pl-4">
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => handleLanguageChange(lang.code)}
-                disabled={currentLang === lang.code}
-                aria-label={`${lang.code.toUpperCase()} — ${t(lang.ariaLabelKey)}`}
-                className={cn(
-                  "px-2.5 py-1.5 text-sm font-heading font-bold uppercase tracking-widest transition-all cursor-pointer rounded-sm",
-                  currentLang === lang.code
-                    ? "text-foreground bg-foreground/5"
-                    : "text-muted-foreground hover:text-foreground hover:bg-foreground/5",
-                )}
-              >
-                {lang.code.toUpperCase()}
-              </button>
-            ))}
-          </div>
-
-          {/* Theme Toggle */}
-          <IconButton
-            icon={
-              <ThemeIcon
-                weight="bold"
-                className={cn(
-                  "size-5 transition-transform",
-                  isThemeAnimating && "animate-spin",
-                )}
+        <div className="flex items-center gap-2 ml-4">
+          <div className="hidden lg:flex items-center">
+            {/* pr-4 / pl-4 — equal inset on both sides of the divider */}
+            <div className="pr-4">
+              <LanguageSwitcher
+                languages={languages.map((lang) => ({
+                  code: lang.code,
+                  label: lang.code.toUpperCase(),
+                  ariaLabel: `${lang.code.toUpperCase()} — ${t(lang.ariaLabelKey)}`,
+                }))}
+                currentLang={currentLang}
+                onLanguageChange={handleLanguageChange}
               />
-            }
-            label={t("toggleDarkMode")}
-            onClick={handleThemeToggle}
-            variant="ghost"
-            className="cursor-pointer"
-          />
+            </div>
+
+            <div className="flex items-center gap-2 border-l border-border/40 pl-4">
+              <IconButton
+                icon={
+                  <span
+                    className={cn(
+                      styles.themeIcon,
+                      isThemeAnimating && styles.themeIconAnimating,
+                    )}
+                    aria-hidden
+                  >
+                    <ThemeIcon weight="bold" className="size-5" />
+                  </span>
+                }
+                label={t("toggleDarkMode")}
+                onClick={handleThemeToggle}
+                variant="ghost"
+                className="cursor-pointer"
+              />
+            </div>
+          </div>
 
           {/* Mobile Menu Button */}
           <IconButton

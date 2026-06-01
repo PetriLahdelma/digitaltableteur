@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useHydrationSafeMotion } from "../../hooks/useHydrationSafeMotion";
 import { cn } from "@/lib/utils";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
@@ -45,7 +46,7 @@ export function ContactPageContentEditorial({
   const [showSuccess, setShowSuccess] = useState(false);
   // Skip entrance animations under reduced-motion so axe never samples
   // partial-opacity frames as color-contrast violations.
-  const prefersReducedMotion = useReducedMotion();
+  const { shouldAnimate } = useHydrationSafeMotion();
 
   const handleFormSuccess = () => {
     setShowSuccess(true);
@@ -65,12 +66,12 @@ export function ContactPageContentEditorial({
             {/* Display Headline */}
             <motion.h1
               className={styles.headline}
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+              initial={shouldAnimate ? { opacity: 0, y: 30 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={
-                prefersReducedMotion
-                  ? { duration: 0 }
-                  : { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+                shouldAnimate
+                  ? { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+                  : { duration: 0 }
               }
             >
               {t("contactHeadline", "Let's talk.")}
@@ -79,24 +80,24 @@ export function ContactPageContentEditorial({
             {/* Divider */}
             <motion.hr
               className={styles.divider}
-              initial={prefersReducedMotion ? false : { scaleX: 0 }}
+              initial={shouldAnimate ? { scaleX: 0 } : false}
               animate={{ scaleX: 1 }}
               transition={
-                prefersReducedMotion
-                  ? { duration: 0 }
-                  : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }
+                shouldAnimate
+                  ? { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }
+                  : { duration: 0 }
               }
             />
 
             {/* Intro Paragraph */}
             <motion.p
               className={styles.intro}
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+              initial={shouldAnimate ? { opacity: 0, y: 20 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={
-                prefersReducedMotion
-                  ? { duration: 0 }
-                  : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }
+                shouldAnimate
+                  ? { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.3 }
+                  : { duration: 0 }
               }
             >
               {t(
@@ -109,12 +110,12 @@ export function ContactPageContentEditorial({
             <motion.div
               className={styles.contactDetails}
               data-donny-target="contact.location"
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+              initial={shouldAnimate ? { opacity: 0, y: 20 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={
-                prefersReducedMotion
-                  ? { duration: 0 }
-                  : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4 }
+                shouldAnimate
+                  ? { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4 }
+                  : { duration: 0 }
               }
             >
               <address className={styles.address}>
@@ -150,10 +151,10 @@ export function ContactPageContentEditorial({
                     {showSuccess ? (
                       <motion.div
                         key="success"
-                        initial={prefersReducedMotion ? false : { opacity: 0 }}
+                        initial={shouldAnimate ? { opacity: 0 } : false}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
+                        transition={{ duration: shouldAnimate ? 0.3 : 0 }}
                       >
                         <ContactFormSuccessEditorial
                           title={t("contactSuccessTitle", "Message sent.")}
@@ -171,10 +172,10 @@ export function ContactPageContentEditorial({
                     ) : (
                       <motion.div
                         key="form"
-                        initial={prefersReducedMotion ? false : { opacity: 0 }}
+                        initial={shouldAnimate ? { opacity: 0 } : false}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
+                        transition={{ duration: shouldAnimate ? 0.3 : 0 }}
                       >
                         <ContactFormEditorial onSuccess={handleFormSuccess} />
                       </motion.div>
@@ -188,12 +189,12 @@ export function ContactPageContentEditorial({
           <motion.hr
             className={cn(styles.divider, styles.layoutDivider)}
             aria-hidden
-            initial={prefersReducedMotion ? false : { scaleX: 0 }}
+            initial={shouldAnimate ? { scaleX: 0 } : false}
             animate={{ scaleX: 1 }}
             transition={
-              prefersReducedMotion
-                ? { duration: 0 }
-                : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.55 }
+              shouldAnimate
+                ? { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.55 }
+                : { duration: 0 }
             }
           />
 
@@ -264,12 +265,12 @@ export function ContactPageContentEditorial({
           <div className={styles.quoteSection}>
             <motion.blockquote
               className={styles.pullQuote}
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+              initial={shouldAnimate ? { opacity: 0, y: 20 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={
-                prefersReducedMotion
-                  ? { duration: 0 }
-                  : { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.45 }
+                shouldAnimate
+                  ? { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.45 }
+                  : { duration: 0 }
               }
             >
               <Text
