@@ -95,19 +95,18 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
           isOpen ? (
             <Icon name="caret-down" ariaLabel={ariaLabel} />
           ) : (
-            <span aria-hidden="true">
-              <DonnyAvatar
-                state={donnyState}
-                size="sm"
-                trackMouse={!isOpen}
-                proximitySelectors={CURIOSITY_SELECTORS}
-                onProximityChange={handleProximityChange}
-                enableIdleExpressions={!isOpen}
-                idleExpressionInterval={8000}
-                enableSleepDetection={!isOpen}
-                className={styles.toggleAvatar}
-              />
-            </span>
+            <DonnyAvatar
+              decorative
+              state={donnyState}
+              size="sm"
+              trackMouse={!isOpen}
+              proximitySelectors={CURIOSITY_SELECTORS}
+              onProximityChange={handleProximityChange}
+              enableIdleExpressions={!isOpen}
+              idleExpressionInterval={8000}
+              enableSleepDetection={!isOpen}
+              className={styles.toggleAvatar}
+            />
           )
         }
         aria-expanded={isOpen}
