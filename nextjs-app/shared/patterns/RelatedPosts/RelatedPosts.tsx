@@ -8,7 +8,6 @@ import { Section } from "../../components/Section";
 import { EnhancedArticleCard } from "../../components/EnhancedArticleCard";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { getBlogPosts, getBlogPostBySlug } from "../../data/blogPosts";
-import { getAuthorBySlug } from "../../data/authors";
 
 export interface RelatedPostsProps {
   /** Current article slug to exclude */
@@ -101,50 +100,28 @@ export function RelatedPosts({
         </FadeIn>
 
         {/* Posts grid */}
-        <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-6">
-          {relatedPosts.map((post, index) => {
-            const author = post.authorSlug
-              ? getAuthorBySlug(post.authorSlug)
-              : undefined;
-
-            return (
-              <FadeIn
-                key={post.slug}
-                direction="up"
-                delay={0.1 + index * 0.05}
-                distance={30}
-              >
-                <EnhancedArticleCard
-                  slug={post.slug}
-                  title={post.title}
-                  excerpt={post.excerpt}
-                  image={
-                    post.mainImageUrl
-                      ? {
-                          src: post.mainImageUrl,
-                          alt: post.mainImageAlt || post.title,
-                        }
-                      : undefined
-                  }
-                  author={
-                    author
-                      ? {
-                          name: author.name,
-                          slug: author.slug,
-                          imageUrl: author.imageUrl,
-                        }
-                      : post.authorName
-                        ? { name: post.authorName }
-                        : undefined
-                  }
-                  publishedAt={post.publishedAt}
-                  readTime={post.readTime}
-                  variant="default"
-                  hideImage
-                />
-              </FadeIn>
-            );
-          })}
+        <div className="grid grid-cols-1 items-stretch gap-6 tablet:grid-cols-2 desktop:grid-cols-3">
+          {relatedPosts.map((post, index) => (
+            <FadeIn
+              key={post.slug}
+              direction="up"
+              delay={0.1 + index * 0.05}
+              distance={30}
+              className="flex h-full min-h-0 w-full"
+            >
+              <EnhancedArticleCard
+                slug={post.slug}
+                title={post.title}
+                excerpt={post.excerpt}
+                publishedAt={post.publishedAt}
+                readTime={post.readTime}
+                variant="default"
+                hideImage
+                showAuthor={false}
+                className="h-full"
+              />
+            </FadeIn>
+          ))}
         </div>
       </Container>
     </Section>

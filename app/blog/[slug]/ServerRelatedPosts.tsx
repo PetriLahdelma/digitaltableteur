@@ -6,6 +6,9 @@ import {
 } from "@/app/blog/postMetadata";
 import { Container } from "@/nextjs-app/shared/components/Container";
 
+/**
+ * Minimal SSR related links. Production uses {@link RelatedPosts} + EnhancedArticleCard.
+ */
 export function ServerRelatedPosts({
   currentSlug,
   maxPosts = 3,

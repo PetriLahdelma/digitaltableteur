@@ -1,0 +1,79 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { getPostMetaBySlug } from "@/app/blog/postMetadata";
+import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
+import { toAbsoluteSiteUrl } from "@/app/lib/siteUrl";
+import { BlogArticleMdxBody } from "./BlogArticleMdxBody";
+
+/** Article body, author aside, and share links (hero is separate for layout shell). */
+export function ServerArticleMain({
+  slug,
+  showUnpublished = false,
+}: {
+  slug: string;
+  showUnpublished?: boolean;
+}) {
+  const post = getPostMetaBySlug(slug, { showUnpublished });
+  if (!post) return null;
+
+  const { title, authorSlug } = post;
+  const author = authorSlug ? getAuthorBySlug(authorSlug) : undefined;
+  const shareUrl = toAbsoluteSiteUrl(`/blog/${slug}`);
+
+  return (
+    <>
+      <BlogArticleMdxBody slug={slug} showUnpublished={showUnpublished} />
+
+      {author ? (
+        <aside className="not-prose mt-12 rounded-lg border border-border bg-muted/30 p-6">
+          <div className="flex items-start gap-4">
+            {author.imageUrl ? (
+              <Image
+                src={author.imageUrl}
+                alt=""
+                width={64}
+                height={64}
+                className="size-16 rounded-full object-cover"
+              />
+            ) : null}
+            <div>
+              <p className="font-display text-lg font-semibold text-foreground">
+                <Link
+                  href={`/blog/authors/${author.slug}`}
+                  className="underline-offset-2 hover:underline"
+                >
+                  {author.name}
+                </Link>
+              </p>
+              {author.bio ? (
+                <p className="mt-2 font-body text-sm leading-relaxed text-muted-foreground">
+                  {author.bio}
+                </p>
+              ) : null}
+            </div>
+          </div>
+        </aside>
+      ) : null}
+
+      <footer className="not-prose mt-8 border-t border-border pt-8">
+        <p className="font-body text-sm text-muted-foreground">
+          Share:{" "}
+          <a
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+            className="text-foreground underline underline-offset-2"
+          >
+            LinkedIn
+          </a>
+          {" · "}
+          <a
+            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`}
+            className="text-foreground underline underline-offset-2"
+          >
+            X
+          </a>
+        </p>
+      </footer>
+    </>
+  );
+}

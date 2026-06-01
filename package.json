@@ -79,6 +79,8 @@
     "precommit:guard": "bash scripts/precommit-guard.sh",
     "pseo:generate": "npx tsx scripts/pseo/generate-pseo-copy.ts --only-missing",
     "pseo:check-quality": "node scripts/pseo/check-pseo-quality.mjs",
+    "prose:check": "node scripts/prose/check-prose-slop.mjs",
+    "prose:fix-em-dashes": "node scripts/prose/fix-em-dashes.mjs --write",
     "validate:components": "tsx scripts/design-system/validate-components.ts",
     "validate:agent-docs": "node scripts/validate-agent-docs.mjs",
     "audit:catalog": "node scripts/design-system/audit-catalog-coverage.mjs",

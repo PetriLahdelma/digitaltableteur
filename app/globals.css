@@ -72,6 +72,19 @@ a:focus-visible {
   list-style-type: " ";
 }
 
+/* Article MDX body: show markers (global rule above hides bullets for nav/menus) */
+article .prose :where(ul) {
+  list-style-type: disc;
+}
+
+article .prose :where(ol) {
+  list-style-type: decimal;
+}
+
+article .prose :where(li)::marker {
+  color: var(--color-primary);
+}
+
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;

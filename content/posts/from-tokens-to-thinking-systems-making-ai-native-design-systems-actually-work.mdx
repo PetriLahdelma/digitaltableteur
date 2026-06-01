@@ -2,7 +2,7 @@
 title: "From Tokens to Thinking Systems: Making AI-Native Design Systems Actually Work"
 slug: "from-tokens-to-thinking-systems-making-ai-native-design-systems-actually-work"
 publishedAt: "2025-12-29T08:16:00.000Z"
-readTime: "5 min read"
+readTime: "9 min read"
 excerpt: "A practical blueprint for AI-native design systems that LLMs can actually execute: tokens, schema, and generative rules as explicit contracts."
 authorName: "Petri Lahdelma"
 authorSlug: "petri-lahdelma"
@@ -13,27 +13,17 @@ In AI Design Systems: Why Tokens, Schema & Generative Rules Matter Now, Rythm la
 
 > Design systems are no longer built for designers. They are built for AI.
 
-I strongly agree with that direction and I would argue we are now past the theory phase.
+I strongly agree with that direction, and I would argue we are now past the theory phase. The interesting failures I see in client work and in open experiments are not philosophical. They show up as the same diff, again and again: a component that looks fine in Storybook, reads well in Notion, and still produces the wrong DOM, the wrong focus order, or the wrong token when an agent assembles a screen from a one-line prompt.
 
-The real question in 2026 is no longer why tokens, schema, and generative rules matter, but:
+The real question in 2026 is no longer why tokens, schema, and generative rules matter, but how we make them usable by real LLMs today, without hand-holding or tribal knowledge. That is the gap I have been trying to close with schema templates you can hand to a model and expect a repeatable result, not a lucky Friday afternoon.
 
-How do we make them usable by real LLMs, today, without hand-holding or tribal knowledge?
-
-That is the gap I have been trying to close.
-
-This article is a response and a concrete extension to Rythm's framing, focused on one thing: LLM-consumable design systems that can actually generate UI, not just talk about it.
+This article is a response and a concrete extension to Rythm's framing. It stays focused on one thing: LLM-consumable design systems that can actually generate UI, not just talk about it.
 
 ## The Missing Piece: AI Needs Contracts, Not Concepts
 
-Rythm correctly identifies the three pillars of AI-ready design systems:
+Rythm correctly identifies the three pillars of AI-ready design systems: tokens, schema, and generative rules. Tokens carry visual and semantic intent. Schema names what a component is allowed to be. Generative rules connect context (variant, mode, density, domain) to the token overrides that should apply. Together they are supposed to replace the designer's implicit judgment with something a model can execute.
 
-* Tokens
-* Schema
-* Generative rules
-
-Generative rules: Generative rules transform context into token overrides. They are the bridge between intent and appearance.
-
-
+Most teams already have the first two in some form. Figma variables, Style Dictionary exports, Storybook props. The third pillar is where documentation usually stays fuzzy. A slide says "primary uses brand accent in light mode," and everyone nods. An LLM does not nod. It needs a rule object with inputs, conditions, and outputs.
 
 ```json
 "generativeRules": {
@@ -46,28 +36,9 @@ Generative rules: Generative rules transform context into token overrides. They 
 }
 ```
 
+But there is an implicit assumption hiding in most discussions: if we define these things clearly enough, AI will understand them. In practice, that is not how LLMs work. They do not infer intent from prose, diagrams, or Figma pages the way a senior designer does after three years on the same product. They operate best when given explicit, machine-readable contracts: deterministic structure, declared constraints, named responsibilities, and predictable output shapes. In other words, schemas that leave very little room for interpretation.
 
-
-But there is an implicit assumption hiding in most discussions:
-
-> If we define these things clearly enough, AI will understand them.
-
-In practice, that is not how LLMs work.
-
-LLMs do not infer intent from prose, diagrams, or Figma pages.
-
-They operate best when given explicit, machine-readable contracts:
-
-* Deterministic structure
-* Declared constraints
-* Named responsibilities
-* Predictable output shapes
-
-In other words: schemas that leave very little room for interpretation.
-
-E.g. Behavior and interaction: Behavior explains what the component does by default. Interaction logic describes triggers and feedback in every state.
-
-
+Behavior and interaction deserve the same treatment as color. A paragraph in the docs that says "accordion panels close when another opens" is not enough. The contract should state the default state, the state model (controlled vs uncontrolled), and what renders when.
 
 ```json
 "behavior": {
@@ -88,11 +59,7 @@ E.g. Behavior and interaction: Behavior explains what the component does by defa
 }
 ```
 
-
-
-Or e.g. Accessibility mapping: Accessibility rules make semantics explicit and enforceable. Use roles, aria relationships, and keyboard behavior to define expected interaction.
-
-
+Accessibility is the same story. WCAG checklists in a wiki do not survive contact with a generative prompt. Roles, relationships, and keyboard paths need to be part of the schema so the model cannot "helpfully" invent a `div` with a click handler where a button belongs.
 
 ```json
 "accessibility": {
@@ -110,156 +77,51 @@ Or e.g. Accessibility mapping: Accessibility rules make semantics explicit and e
 }
 ```
 
+Without that level of explicitness, AI-generated UI quickly becomes visually plausible and structurally wrong. You get inconsistent spacing across runs, focus traps that only show up in production, and brand drift that no linter catches because the output never touched your token files. That is not a model quality problem. It is a contract problem.
 
+## The Shift I am Proposing: From Design Systems to Generation Systems
 
-Without that, AI-generated UI quickly becomes:
+Traditional design systems answer a human question: how should a person assemble UI from approved parts? The documentation, the Figma library, and the Storybook stories all assume someone is making judgment calls in the loop. AI-native design systems have to answer a different question: under what conditions is UI allowed to exist, and how should it be derived?
 
-* Visually plausible
-* Structurally incorrect
-* Inconsistent across runs
-* Unsafe at scale
+That shift changes what you document. Components stop being static artifacts you copy from a gallery. Variants stop being endless enumerations in a dropdown. Documentation stops being explanation that only makes sense after you have already built the thing. Instead you describe components as semantic objects (what they mean, where they may appear), behavior as logic that can be evaluated (not bullet points), and screens as outcomes of rules plus context.
 
-## The Shift I am Proposing: From Design Systems -> Generation Systems
-
-
-
-Traditional design systems answer:
-
-> How should a human assemble UI?
-
-AI-native design systems must answer something else entirely:
-
-> Under what conditions is UI allowed to exist and how should it be derived?
-
-That means moving away from:
-
-* Components as static artifacts
-* Variants as enumerated lists
-* Documentation as explanation
-
-And toward:
-
-* Components as semantic objects
-* Behavior as evaluated logic
-* UI as a generated outcome
-
-
+The goal is not to remove designers. It is to move their work up a layer: from placing instances to defining the system that places instances correctly when asked.
 
 ## Two LLM Template Schemas (Public, Opinionated, Practical)
 
-To explore this paradigm, I have prepared two publicly shared LLM template schemas, designed explicitly for design-system autogeneration.
-
-They are not tied to a specific tool, vendor, or framework (however, I have enclosed a TailwindCSS version as well).
-
-They are designed to work with any capable LLM.
+To explore this paradigm, I have prepared two publicly shared LLM template schemas designed explicitly for design-system autogeneration. They are not tied to a specific tool, vendor, or framework, though I have also published a Tailwind-oriented variant for teams that live in utility classes. They are meant to work with any capable LLM, as long as you treat the JSON as source of truth and the prose around it as commentary, not the other way around.
 
 ### 1. Design System Semantic Schema
 
-This schema answers one core question:
+This schema answers one core question: what is this thing, really? It defines components as semantic entities, not as rectangles with padding. At a high level it encodes identity and purpose, allowed contexts, required vs optional properties, interaction states, accessibility obligations, and containment rules (what may nest inside what).
 
-> What is this thing, really?
+A button in this model is not "a clickable rectangle." It is an action trigger with intent (primary, destructive, passive), behavioral guarantees (what happens on press, loading, disabled), accessibility constraints (name, role, keyboard), and layout implications (inline vs block, icon placement). That gives the model comprehension, not just a class string that happened to match last time.
 
-It defines components as semantic entities, not visuals.
+### 2. Generative Rule and Token Resolution Schema
 
-At a high level, it encodes:
+The second schema answers a different question: given a context, how should this UI adapt? It formalizes token resolution logic, conditional overrides, environmental triggers (mode, density, accessibility preferences, viewport), precedence when two rules conflict, and safe mutation boundaries (what an agent may never override without a human flag).
 
-* Component identity and purpose
-* Allowed contexts
-* Required vs optional properties
-* Interaction states
-* Accessibility obligations
-* Containment rules (what can and cannot nest)
-
-For example, a Button is not a clickable rectangle. It is:
-
-* An action trigger
-* With intent (primary / destructive / passive)
-* With behavioral guarantees
-* With accessibility constraints
-* With layout implications
-
-This gives the LLM comprehension, not just appearance.
-
-### 2. Generative Rule & Token Resolution Schema
-
-The second schema answers a different question:
-
-> Given a context, how should this UI adapt?
-
-It formalizes:
-
-* Token resolution logic
-* Conditional overrides
-* Environmental triggers (mode, density, accessibility, device)
-* Precedence rules
-* Safe mutation boundaries
-
-Instead of hardcoding variants, the LLM evaluates rules like:
-
-* If accessibility mode = low-vision -> adjust typography and contrast tokens
-* If viewport < X -> switch navigation pattern
-* If domain = finance -> prioritize numerical hierarchy tokens
-
-This is where UI becomes adaptive by default, not by exception.
+Instead of hardcoding twelve navigation variants, you describe evaluations: if accessibility mode favors low vision, adjust typography and contrast tokens; if viewport width drops below a threshold, switch navigation pattern; if the surface is financial data, prioritize numerical hierarchy tokens. UI becomes adaptive by default, not adaptive by exception after someone files a bug.
 
 ## Why This Matters (And Where Many Systems Fail)
 
-Most AI design systems today fail for one simple reason:
+Most AI design system experiments I have reviewed fail for a simple reason. They describe systems. They do not define execution logic. The Notion page is beautiful. The Figma file is meticulous. The prompt still hallucinates a secondary button style because nothing in machine-readable form said it could not.
 
-> They describe systems. They do not define execution logic.
-
-LLMs are extremely good at following rules — but only if those rules are explicit, scoped, and validated.
-
-By separating:
-
-* Semantic meaning
-* Token intent
-* Generative behavior
-
-...we give AI just enough structure to generate UI that is:
-
-* Consistent
-* Accessible
-* Brand-aligned
-* Evolvable
-* Auditable
+LLMs are extremely good at following rules, but only if those rules are explicit, scoped, and validated. When you separate semantic meaning, token intent, and generative behavior into distinct layers, you give the model just enough structure to produce UI that stays consistent, accessible, brand-aligned, evolvable, and auditable. Auditable matters: if a screen is wrong, you want to trace which rule fired, not re-run the prompt until luck improves.
 
 ## This Is Meta-Design, Not Automation
 
-Rythm frames this shift perfectly when he writes:
+Rythm frames this shift well when he writes that your job moves from designing screens to designing the logic that generates screens. These schemas are my attempt to make that shift operational, not aspirational.
 
-> Your job shifts from designing screens to designing the logic that generates screens.
-
-These schemas are my attempt to make that shift operational.
-
-They do not replace designers. They raise the abstraction level of design work.
-
-The designer's role becomes:
-
-* Defining intent
-* Encoding judgment
-* Shaping constraints
-* Anticipating misuse
-
-Edit: One could argue, become is the wrong word here.
-
-AI does not design. It executes the system you designed.
+They do not replace designers. They raise the abstraction level of design work. You spend more time defining intent, encoding judgment, shaping constraints, and anticipating misuse (what happens when someone asks for a destructive primary button on a checkout step). The model's job is execution inside those boundaries. AI does not design in the sense of owning tradeoffs; it runs the system you designed.
 
 ## Where This Is Going Next
 
-I strongly believe we are heading toward:
-
-* Schema-driven UI APIs
-* Token-only brand definitions
-* AI-assisted design QA
-* Runtime-adaptive interfaces
-* Zero-artifact design workflows
-
-But none of that works unless we get the contracts right first.
-
-That is what these schemas are meant to test.
+I expect the next wave to look less like "chat to UI" and more like schema-driven UI APIs, token-only brand definitions, AI-assisted design QA in CI, runtime-adaptive interfaces, and workflows where Figma artifacts are outputs of the system rather than the source of truth. None of that works unless the contracts are right first. That is what these public schemas are for: a place to stress-test the idea with real prompts, real products, and real criticism.
 
 ## Validation checklist
+
+Before you trust generated UI in a pipeline, walk through this list against your own components. It is deliberately boring. Boring is what keeps agents from improvising.
 
 * Schema uses required sections with meaningful content.
 * Behavior and interaction maps match actual component behavior.
@@ -268,34 +130,47 @@ That is what these schemas are meant to test.
 * Generative rules map to tokens or Tailwind classes correctly.
 * Storybook exposes schema for review and auditing.
 
-## Open Invitation: Tear This Apart 🙌
+## Open Invitation: Tear This Apart
 
 These schemas are public by design.
 
 They are:
 
-* Opinionated
-* Incomplete
-* Evolving
+<DashLeadList>
 
-And that is intentional.
+—Opinionated
+
+—Incomplete
+
+—Evolving
+
+—And that is intentional.
+
+</DashLeadList>
+
+I would rather ship something wrong in the open and fix it with your production scars than polish a PDF nobody runs against GPT-4o on a Monday morning.
 
 If you are working on:
 
-* AI-assisted design systems
-* Design tokens at scale
-* Schema-first UI
-* Generative interfaces
+<DashLeadList>
+
+—AI-assisted design systems
+
+—Design tokens at scale
+
+—Schema-first UI
+
+—Generative interfaces
+
+</DashLeadList>
 
 I would genuinely love your critique.
 
-What is missing?
+- What is missing?
+- What is naive?
+- What breaks under real product pressure?
 
-What is naive?
-
-What breaks under real product pressure?
-
-I have linked the schemas below. Comments, suggestions, donations and brutal feedback are very welcome.
+I have linked the schemas below. Comments, suggestions, and brutal feedback are very welcome.
 
 [LLM Component Schema Template (Gumroad)](https://petrilahdelma.gumroad.com)
 
@@ -303,6 +178,6 @@ PS. I promise to follow up with an updated version if I get good suggestions or 
 
 LLM Component Schema Guide. MIT Distribution License. Copyright Petri Lahdelma Digitaltableteur. digitaltableteur.com
 
-—-
+---
 
 Build systems, not screens, but make sure your systems are precise enough that AI cannot misunderstand them.

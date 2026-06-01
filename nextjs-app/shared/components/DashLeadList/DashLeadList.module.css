@@ -1,0 +1,20 @@
+.list {
+  margin-block: var(--space-layout-16);
+}
+
+/* MDX children render as <p> per line when separated by blank lines */
+.list p {
+  margin-block: var(--space-layout-4);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-lg, 1.125rem);
+  line-height: var(--line-height-relaxed);
+  color: color-mix(in srgb, var(--color-foreground) 90%, transparent);
+}
+
+.list p:first-child {
+  margin-block-start: 0;
+}
+
+.list p:last-child {
+  margin-block-end: 0;
+}

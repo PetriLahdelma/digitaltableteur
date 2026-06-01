@@ -69,7 +69,8 @@ Routes:
 ### Fix shipped
 
 - **`ServerArticleContent`** — server-rendered hero, MDX body, author aside, share links, related posts
-- **`ClientArticleChrome`** — client-only nav + language notice (no duplicate body)
+- **`ClientArticleShell`** — `ArticleLayout` with yellow sticky `NextBlogNav` + reading progress
+- **`ServerArticleHero`** / **`ServerArticleMain`** — split SSR surfaces (crawlable hero + body shell)
 - **`generateStaticParams`** for visible slugs + `revalidate = 600`
 
 ---
@@ -174,7 +175,9 @@ curl -s https://www.digitaltableteur.com/blog/figma-mcp-design-systems | rg 'can
 |------|--------|
 | `app/blog/[slug]/ServerArticleContent.tsx` | SSR article body |
 | `app/blog/[slug]/ServerRelatedPosts.tsx` | SSR related links |
-| `app/blog/[slug]/ClientArticle.tsx` | Chrome only (nav, language notice) |
+| `app/blog/[slug]/ClientArticleShell.tsx` | Layout chrome (nav, reading progress) |
+| `app/blog/[slug]/ServerArticleHero.tsx` | SSR hero |
+| `app/blog/[slug]/ServerArticleMain.tsx` | SSR body shell + client MDX |
 | `app/blog/[slug]/page.tsx` | Static params, ISR, unified URLs |
 | `app/blog/page.tsx` | CollectionPage JSON-LD, RSS alternate |
 | `app/blog/authors/[slug]/page.tsx` | Canonical + Person JSON-LD |

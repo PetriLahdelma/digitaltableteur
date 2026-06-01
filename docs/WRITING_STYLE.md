@@ -268,12 +268,41 @@ These informed this file. They are **external references**, not rules for this r
 
 ---
 
+## Automation (prose gate)
+
+Run before shipping or editing blog MDX:
+
+```bash
+npm run prose:check              # errors on em dashes + banned vocab
+npm run prose:fix-em-dashes      # rewrite — → comma / period / colon
+npm run prose:check -- --include-drafts
+```
+
+Rules live in `scripts/prose/lib/slop-rules.mjs` (kept in sync with this doc). The checker also warns on patterns humans associate with Gen-AI prose:
+
+| Tell | Why it reads as AI |
+|------|---------------------|
+| Em dashes (—) | Overused for dramatic pauses; NPR/Reddit called out as LLM habit |
+| “In today’s fast-paced landscape…” | Empty opener |
+| “Not X, it’s Y” (repeated) | Formulaic contrast |
+| `delve`, `leverage`, `unlock`, `seamless`, `tapestry` | Default LLM vocabulary |
+| Furthermore / Moreover at sentence start | Essay-bot transitions |
+| “Here’s the thing” / hedge stacks | Throat-clearing and false nuance |
+| Metaphorical *navigate* + *landscape* | Business-bot imagery |
+
+**Policy:** zero em dashes in published posts; automated fix is a first pass, then read aloud. PSEO copy generation includes the same constraints in `scripts/pseo/generate-pseo-copy.ts`.
+
+Agent skill: `.claude/skills/prose-quality/SKILL.md`
+
+---
+
 ## Related repo files
 
 | File | Role |
 |------|------|
 | `content/posts/*.mdx` | Published voice reference |
 | `content/drafts/**` | Work in progress |
+| `scripts/prose/check-prose-slop.mjs` | Machine prose gate |
 | `improve-writing.md` | Generic concision checklist (secondary) |
 | `.claude/agents/copywriting-lead.md` | UI/UX microcopy |
 | `docs/LLM_COMPONENT_GENERATION_RULES.md` | Components, not prose |
