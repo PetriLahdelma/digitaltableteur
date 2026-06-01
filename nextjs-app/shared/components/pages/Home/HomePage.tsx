@@ -20,6 +20,12 @@ const WorkMagneticField = dynamic(
 const CTASection = dynamic(
   () => import("../../../patterns/CTASection").then((m) => ({ default: m.CTASection })),
 );
+const NewsBulletin = dynamic(
+  () =>
+    import("../../../patterns/NewsBulletin").then((m) => ({
+      default: m.NewsBulletin,
+    })),
+);
 const DesignSprintsSection = dynamic(
   () => import("../../../patterns/DesignSprintsSection").then((m) => ({ default: m.DesignSprintsSection })),
 );
@@ -192,6 +198,8 @@ export function HomePage() {
         background="primary"
         align="center"
       />
+
+      <NewsBulletin />
     </div>
   );
 }
