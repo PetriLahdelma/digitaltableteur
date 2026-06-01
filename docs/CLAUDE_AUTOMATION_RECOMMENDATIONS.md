@@ -16,8 +16,8 @@ recommend automations for this project
 
 | Signal | Detected |
 |--------|----------|
-| **Type** | Hybrid monorepo — Next.js 15 production + Vite legacy + Storybook |
-| **Stack** | React 19, TypeScript 5.9, Vitest, Playwright, Sanity CMS |
+| **Type** | Hybrid monorepo — Next.js 16 production + Vite legacy + Storybook |
+| **Stack** | React 19, TypeScript 6.x, Vitest, Playwright, Sanity CMS |
 | **Backend** | Next.js API routes, MongoDB, Vercel AI SDK (chat) |
 | **Design system** | 80+ contracted components, CSS Modules, agent-manifest |
 | **CI** | GitHub Actions PR validation (typecheck, lint, visual, security) |

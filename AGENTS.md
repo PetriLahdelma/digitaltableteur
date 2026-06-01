@@ -4,8 +4,8 @@
 
 ## Snapshot
 
-**Type:** Hybrid monorepo (Next.js 15 production + Vite legacy)  
-**Stack:** React 19, TypeScript 5.9, Next.js 15.5, Storybook 10  
+**Type:** Hybrid monorepo (Next.js 16 production + Vite legacy)  
+**Stack:** React 19, TypeScript 6.x, Next.js 16.2, Storybook 10  
 **Production app:** `app/` · **Design system:** `nextjs-app/shared/components/`
 
 ---

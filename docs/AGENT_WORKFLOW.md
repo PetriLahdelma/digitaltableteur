@@ -9,7 +9,7 @@ How Digitaltableteur structures AI agent context — inspired by Apple's leaked 
 General-purpose models do not know:
 
 - Our component contract system and WIP lifecycle
-- Next.js 15 async params and OG image conventions
+- Next.js 16 async params and OG image conventions
 - Which npm scripts gate merges
 - That `react-icons` must stay at 5.5.0
 

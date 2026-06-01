@@ -1,6 +1,6 @@
 # Accessibility Testing Tools and Methodology
 
-**Domain:** Accessibility Audit for Next.js 15 / React 19 Site
+**Domain:** Accessibility Audit for Next.js 16 / React 19 Site
 **Researched:** 2026-01-27
 **Overall Confidence:** HIGH (well-established domain, verified sources)
 
@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-This document provides a comprehensive guide to accessibility testing tools and methodologies for auditing a production Next.js 15 / React 19 website. The project already has axe-core integrated via `jest-axe` in the test suite. This research covers how to maximize that investment while adding complementary manual testing.
+This document provides a comprehensive guide to accessibility testing tools and methodologies for auditing a production Next.js 16 / React 19 website. The project already has axe-core integrated via `jest-axe` in the test suite. This research covers how to maximize that investment while adding complementary manual testing.
 
 **Key insight:** Automated tools catch 30-40% of WCAG violations. A robust audit requires combining automation with manual keyboard testing, screen reader testing, and visual inspection.
 

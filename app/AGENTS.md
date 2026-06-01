@@ -2,8 +2,8 @@
 
 ## Package Identity
 
-**Purpose**: Next.js 15 App Router (production app)  
-**Framework**: Next.js 15.5.6 with App Router
+**Purpose**: Next.js 16 App Router (production app)  
+**Framework**: Next.js 16.2.x with App Router
 
 ---
 

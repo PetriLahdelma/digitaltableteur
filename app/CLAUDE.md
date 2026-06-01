@@ -2,8 +2,8 @@
 
 ## Package Identity
 
-**Purpose**: Next.js 15 App Router (production application)  
-**Technology**: Next.js 15.5.6, React Server Components, App Router  
+**Purpose**: Next.js 16 App Router (production application)  
+**Technology**: Next.js 16.2.x, React Server Components, App Router  
 **Entry Point**: `app/layout.tsx` (root layout)  
 **Parent Context**: Extends [../CLAUDE.md](../CLAUDE.md)
 

@@ -95,9 +95,9 @@
 
 **No Critical Dependency Risks Detected**
 - All major dependencies are actively maintained
-- Next.js 15.5.9 (latest)
+- Next.js 16.2.x (latest)
 - React 19.2.3 (latest)
-- TypeScript 5.9.3 (latest)
+- TypeScript 6.x (latest)
 
 ## Missing Critical Features
 

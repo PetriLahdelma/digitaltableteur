@@ -25,7 +25,7 @@
 
 **Gemini Claimed**: "Your site is a CSR SPA that is not serving static HTML to crawlers"
 
-**Reality**: Site is Next.js 15 with **full SSR/SSG**. Verification:
+**Reality**: Site is Next.js 16 with **full SSR/SSG**. Verification:
 
 ```bash
 curl -s https://www.digitaltableteur.com/about | grep -o '<meta name="description" content="[^"]*"'
@@ -42,7 +42,7 @@ curl -s https://www.digitaltableteur.com/about | grep -o '<meta name="descriptio
 
 ✅ **Static HTML with unique meta tags per route**  
 ✅ **Pre-rendered content visible to crawlers**  
-✅ **Next.js 15 App Router with SSG**
+✅ **Next.js 16 App Router with SSG**
 
 ### 2. Robots.txt ✅ **WORKING**
 
