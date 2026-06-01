@@ -393,6 +393,8 @@ async function main() {
       "",
       "Rules:",
       "- Markdown only (no HTML).",
+      "- No em dashes (—); use commas, periods, or a second sentence.",
+      "- Avoid AI-slop vocabulary (delve, leverage, unlock, seamless, landscape, game-changer, etc.).",
       "- Intro: 80–120 words, combo-specific, no generic opener.",
       "- sections: optional overrides for ids playbook, situation, failure-modes only.",
       "- playbook section: numbered steps with stack-specific tactics (min 150 words).",

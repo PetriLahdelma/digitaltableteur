@@ -16,6 +16,7 @@ import type { BlogPostEntry } from "../../data/blogPosts";
 // MDX component imports preserved from original
 import AuthorBio from "@dt/AuthorBio/AuthorBio";
 import CodeBlockWindow from "@dt/CodeBlockWindow";
+import { DashLeadList } from "@dt/DashLeadList";
 import { MdxImage } from "../../components/MdxImage";
 import { cn } from "@/lib/utils";
 import React from "react";
@@ -327,6 +328,7 @@ const mdxComponents = {
   Embed,
   AuthorBio: MdxAuthorBio,
   ArticleFigure,
+  DashLeadList,
   img: MdxImageWrapper,
   figcaption: MdxFigcaption,
   figure: MdxFigure,

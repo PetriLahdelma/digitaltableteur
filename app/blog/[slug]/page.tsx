@@ -13,8 +13,10 @@ import {
   getBreadcrumbSchema,
   stringifyJsonLd,
 } from "@/app/lib/structuredData";
-import ClientArticleChrome from "./ClientArticle";
-import { ServerArticleContent } from "./ServerArticleContent";
+import ClientArticleShell from "./ClientArticleShell";
+import { ServerArticleHero } from "./ServerArticleHero";
+import { ServerArticleMain } from "./ServerArticleMain";
+import { RelatedPosts } from "@/nextjs-app/shared/patterns/RelatedPosts";
 
 type Params = { slug: string };
 
@@ -131,11 +133,20 @@ export default async function BlogArticle({
           ]),
         }}
       />
-      <ClientArticleChrome />
-      <ServerArticleContent
-        slug={slug}
-        showUnpublished={previewOptions.showUnpublished}
-      />
+      <ClientArticleShell
+        hero={
+          <ServerArticleHero
+            slug={slug}
+            showUnpublished={previewOptions.showUnpublished}
+          />
+        }
+        relatedPosts={<RelatedPosts currentSlug={slug} />}
+      >
+        <ServerArticleMain
+          slug={slug}
+          showUnpublished={previewOptions.showUnpublished}
+        />
+      </ClientArticleShell>
     </>
   );
 }
