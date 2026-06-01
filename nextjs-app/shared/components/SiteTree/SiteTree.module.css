@@ -57,7 +57,8 @@
   outline-offset: 2px;
 }
 
-.branch[open] .caret {
+/* Only rotate this branch's caret — not nested branches inside an open ancestor */
+.branch[open] > .summary .caret {
   transform: rotate(90deg);
 }
 
