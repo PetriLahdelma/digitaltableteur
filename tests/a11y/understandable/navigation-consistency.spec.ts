@@ -9,7 +9,7 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("UNDR-06: Navigation Consistency", () => {
-  const pages = ["/", "/about", "/work", "/blog", "/contact"];
+  const pages = ["/", "/about", "/work", "/blog", "/contact", "/pricing"];
 
   test("desktop navigation order is consistent across pages", async ({
     page,
@@ -186,7 +186,7 @@ test.describe("UNDR-01: Page Language", () => {
   });
 
   test("all pages have valid lang attribute", async ({ page }) => {
-    const pages = ["/", "/about", "/work", "/blog", "/contact"];
+    const pages = ["/", "/about", "/work", "/blog", "/contact", "/pricing"];
 
     for (const url of pages) {
       await page.goto(url, { waitUntil: "domcontentloaded" });

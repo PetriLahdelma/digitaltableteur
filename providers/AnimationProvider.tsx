@@ -36,8 +36,9 @@ interface AnimationProviderProps {
 
 export function AnimationProvider({ children }: AnimationProviderProps) {
   const [isReady, setIsReady] = useState(false);
-  const [motionPreference, setMotionPreference] =
-    useState<MotionPreference>("full");
+  const [motionPreference, setMotionPreference] = useState<MotionPreference>(
+    () => (typeof window !== "undefined" ? getMotionPreference() : "full")
+  );
 
   useEffect(() => {
     const cleanup = setupReducedMotion();

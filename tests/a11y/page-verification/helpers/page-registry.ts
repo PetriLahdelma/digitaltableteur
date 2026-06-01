@@ -17,7 +17,7 @@ export interface PageInfo {
   /** URL path (relative to base URL) */
   url: string;
   /** Page category for grouping */
-  category: "core" | "work" | "blog" | "legal";
+  category: "core" | "work" | "blog" | "legal" | "utility" | "pseo";
 }
 
 /**
@@ -29,6 +29,7 @@ export const corePages: PageInfo[] = [
   { name: "Work", url: "/work", category: "core" },
   { name: "Blog", url: "/blog", category: "core" },
   { name: "Contact", url: "/contact", category: "core" },
+  { name: "Pricing", url: "/pricing", category: "core" },
 ];
 
 /**
@@ -161,6 +162,36 @@ export const blogPages: PageInfo[] = [
 ];
 
 /**
+ * Utility pages (2 pages)
+ */
+export const utilityPages: PageInfo[] = [
+  { name: "Colophon", url: "/colophon", category: "utility" },
+];
+
+/**
+ * PSEO hub and pilot leaf pages (4 pages)
+ * Pilot slugs from content/pseo/pilot-slugs.json — sample for CI, not all 12.
+ */
+export const pseoPages: PageInfo[] = [
+  { name: "PSEO Hub", url: "/pseo", category: "pseo" },
+  {
+    name: "PSEO Design System Audit Next.js Startups",
+    url: "/pseo/design-system-audit-nextjs-startups",
+    category: "pseo",
+  },
+  {
+    name: "PSEO Component Library Build React Scaleups",
+    url: "/pseo/component-library-build-react-scaleups",
+    category: "pseo",
+  },
+  {
+    name: "PSEO Design Tokens Setup Figma Product Teams",
+    url: "/pseo/design-tokens-setup-figma-product-teams",
+    category: "pseo",
+  },
+];
+
+/**
  * Legal/utility pages (3 pages)
  */
 export const legalPages: PageInfo[] = [
@@ -182,14 +213,16 @@ export const legalPages: PageInfo[] = [
 ];
 
 /**
- * All public pages combined (31 total)
- * 5 core + 11 work + 12 blog + 3 legal = 31
+ * All public pages combined
+ * 6 core + 11 work + 12 blog + 3 legal + 1 utility + 4 pseo = 37
  */
 export const allPages: PageInfo[] = [
   ...corePages,
   ...workPages,
   ...blogPages,
   ...legalPages,
+  ...utilityPages,
+  ...pseoPages,
 ];
 
 /**
@@ -222,5 +255,7 @@ export const pageCounts = {
   work: workPages.length,
   blog: blogPages.length,
   legal: legalPages.length,
+  utility: utilityPages.length,
+  pseo: pseoPages.length,
   total: allPages.length,
 } as const;
