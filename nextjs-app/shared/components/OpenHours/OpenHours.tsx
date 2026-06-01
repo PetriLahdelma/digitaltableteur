@@ -56,9 +56,9 @@ export const OpenHours: React.FC<OpenHoursProps> = ({
       <table className={styles.table} role="table">
         <thead>
           <tr>
-            <th>{t("openHours.day", "Day")}</th>
-            <th>{t("openHours.opens", "Opens")}</th>
-            <th>{t("openHours.closes", "Closes")}</th>
+            <th scope="col">{t("openHours.day", "Day")}</th>
+            <th scope="col">{t("openHours.opens", "Opens")}</th>
+            <th scope="col">{t("openHours.closes", "Closes")}</th>
           </tr>
         </thead>
         <tbody>

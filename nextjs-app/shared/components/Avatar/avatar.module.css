@@ -51,6 +51,7 @@
   background-color: var(--color-white);
   box-shadow: 0 12px 32px rgb(0 0 0 / 15%);
   list-style: none;
+  list-style-type: " ";
 }
 
 .avatarMenu[data-horizontal="right"] {

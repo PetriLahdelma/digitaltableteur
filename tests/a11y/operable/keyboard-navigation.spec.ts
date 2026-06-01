@@ -20,6 +20,7 @@ const pages = [
   { name: "Work", path: "/work" },
   { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
+  { name: "Pricing", path: "/pricing" },
 ];
 
 // Store results for summary

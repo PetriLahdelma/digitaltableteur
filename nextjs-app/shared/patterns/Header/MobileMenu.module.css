@@ -145,6 +145,7 @@
   flex-direction: column;
   gap: var(--space-internal-8, 0.5rem);
   list-style: none;
+  list-style-type: " ";
 }
 
 .navLink {

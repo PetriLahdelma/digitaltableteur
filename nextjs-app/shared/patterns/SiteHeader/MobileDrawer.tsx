@@ -200,7 +200,7 @@ export function MobileDrawer({
                 <button
                   key={lang.code}
                   onClick={() => onLanguageChange(lang.code)}
-                  aria-label={lang.ariaLabel}
+                  aria-label={`${lang.code.toUpperCase()} — ${lang.ariaLabel}`}
                   className={cn(
                     "flex-1 py-2 px-3 rounded-md text-text-m font-body uppercase transition-colors",
                     currentLang === lang.code

@@ -84,6 +84,7 @@
   flex-direction: column;
   gap: var(--space-s);
   list-style: none;
+  list-style-type: " ";
 }
 
 .issue {

@@ -87,6 +87,7 @@
   flex-direction: column;
   gap: var(--space-layout-16);
   list-style: none;
+  list-style-type: " ";
 }
 
 .tokenItem {
