@@ -20,7 +20,7 @@ const defaultActiveButtonClassName =
 
 /** Selected language when the menu is expanded (focused control). */
 const defaultOpenTriggerClassName =
-  "bg-foreground/5 border-border text-foreground";
+  "bg-foreground/5 border-foreground text-foreground hover:border-foreground";
 
 const defaultFloatedButtonClassName =
   "font-semibold text-muted-foreground hover:text-foreground";

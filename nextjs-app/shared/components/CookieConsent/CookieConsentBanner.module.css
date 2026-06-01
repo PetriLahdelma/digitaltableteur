@@ -4,6 +4,7 @@
   position: fixed;
   inset-inline: 0;
   inset-block-end: 0;
+
   /* Below chat widget (1000+) so Donny stays reachable on first visit */
   z-index: 900;
   display: flex;
@@ -100,8 +101,7 @@
   }
 
   .bar {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     align-items: center;
     gap: var(--space-layout-12);
   }
