@@ -1,6 +1,8 @@
 /**
  * Homepage news bulletin — always exactly three topical slots.
  * Edit via `.claude/skills/news-bulletin/SKILL.md` workflows.
+ *
+ * Figma source: DT-Site-stuff node 310:899 (First / Second / Group 20)
  */
 
 export const NEWS_BULLETIN_SLOT_COUNT = 3 as const;
@@ -10,17 +12,48 @@ export type NewsBulletinLink =
   | { kind: "external"; href: string }
   | { kind: "static" };
 
-export interface NewsBulletinBadge {
-  /** Public URL under /public, e.g. /images/news-bulletin/go-24.svg */
+/** Raster/SVG mark (plain — no round badge background) */
+export type NewsBulletinImageBadge = {
+  kind: "image";
   src: string;
   alt: string;
   width: number;
   height: number;
-}
+  /**
+   * Tint via CSS mask using theme logo tokens.
+   * Light theme: `--color-white`; dark theme: `--logo-color` (see NewsBulletin.module.css).
+   */
+  tint?: "logo-color";
+};
+
+/** Lime circle + bold value (Figma “First”) */
+export type NewsBulletinPercentBadge = {
+  kind: "percent";
+  value: string;
+};
+
+/** npm-style version pill (Figma “Second”) */
+export type NewsBulletinNpmBadge = {
+  kind: "npm";
+  version: string;
+};
+
+/** Grey square until final art is ready (Figma “Group 20”) */
+export type NewsBulletinPlaceholderBadge = {
+  kind: "placeholder";
+};
+
+export type NewsBulletinBadge =
+  | NewsBulletinImageBadge
+  | NewsBulletinPercentBadge
+  | NewsBulletinNpmBadge
+  | NewsBulletinPlaceholderBadge;
 
 export interface NewsBulletinItem {
   /** Stable id for agent replace/remove commands (kebab-case). */
   id: string;
+  /** Figma layer name / node id for export sync */
+  figmaRef?: string;
   badge: NewsBulletinBadge;
   body: string;
   link?: NewsBulletinLink;
@@ -28,37 +61,35 @@ export interface NewsBulletinItem {
 
 export const NEWS_BULLETIN_ITEMS: NewsBulletinItem[] = [
   {
-    id: "go-24",
-    badge: {
-      src: "/images/news-bulletin/go-24.svg",
-      alt: "Grand One 2024",
-      width: 88,
-      height: 56,
-    },
-    body: "K-Ruoka app, Best use of data, 2024",
-    link: { kind: "static" },
+    id: "bandwidth-summer-2026",
+    figmaRef: "310:898",
+    badge: { kind: "percent", value: "50%" },
+    body: "Bandwidth during summertime, 2026",
+    link: { kind: "internal", href: "/contact" },
   },
   {
-    id: "go-23",
-    badge: {
-      src: "/images/news-bulletin/go-23.svg",
-      alt: "Grand One 2023",
-      width: 88,
-      height: 56,
+    id: "rhythmguard-2",
+    figmaRef: "310:897",
+    badge: { kind: "npm", version: "v2.0.0" },
+    body: "Rhythmguard 2.0 out now",
+    link: {
+      kind: "external",
+      href: "https://www.npmjs.com/package/stylelint-plugin-rhythmguard",
     },
-    body: "Terveystalo Medoma app, Grand Prix, Best digital service, Best service design, 2023",
-    link: { kind: "static" },
   },
   {
-    id: "go-22",
+    id: "dsharp-case-study",
+    figmaRef: "310:896",
     badge: {
-      src: "/images/news-bulletin/go-22.svg",
-      alt: "Grand One 2022",
-      width: 88,
-      height: 56,
+      kind: "image",
+      src: "/images/news-bulletin/dsharp-logobig.svg",
+      alt: "DSharp",
+      width: 48,
+      height: 48,
+      tint: "logo-color",
     },
-    body: "Terveystalo appointments, Best UX, 2022",
-    link: { kind: "static" },
+    body: "Check out the DSharp Case Study",
+    link: { kind: "internal", href: "/work/dsharp-design-system" },
   },
 ];
 

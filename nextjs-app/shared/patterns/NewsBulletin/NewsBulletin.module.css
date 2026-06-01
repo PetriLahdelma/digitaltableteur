@@ -1,41 +1,122 @@
-/* Matches Figma DT-Site-stuff node 310:899 — always-dark strip above footer */
+/* Figma DT-Site-stuff node 310:899 — full-bleed band, horizontal cards, 32px badge→copy */
 
 .section {
-  --bulletin-bg: #0a0a0a;
-  --bulletin-card-bg: #161616;
-  --bulletin-divider: rgb(255 255 255 / 0.08);
-  --bulletin-copy: rgb(255 255 255 / 0.78);
+  --bulletin-card-bg: #041b23;
+  --bulletin-copy: #fff;
+  --bulletin-card-gap: var(--space-layout-24);
+  --bulletin-content-gap: var(--space-layout-32);
+  --bulletin-card-padding-inline: var(--space-layout-24);
+  --bulletin-card-min-height: 5rem;
+  --bulletin-nav-size: 2.75rem;
 
-  border-block-start: 1px solid var(--bulletin-divider);
-  background-color: var(--bulletin-bg);
-  color: #fff;
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  background-color: var(--bulletin-card-bg);
+  color: var(--bulletin-copy);
+  --bulletin-mark-color: var(--color-white);
 }
 
-.inner {
-  padding-block: var(--space-layout-24);
+:global(.themeDark) .section {
+  --bulletin-mark-color: var(--logo-color);
 }
 
-.grid {
+.viewport {
   display: grid;
-  gap: var(--space-layout-16);
-  grid-template-columns: 1fr;
+  align-items: center;
+  box-sizing: border-box;
+  grid-template-columns: var(--bulletin-nav-size) minmax(0, 1fr) var(
+      --bulletin-nav-size
+    );
 }
 
-@media (width >= 768px) {
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+.viewportCentered {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+}
+
+.navSpacer {
+  display: block;
+  inline-size: var(--bulletin-nav-size);
+  block-size: var(--bulletin-nav-size);
+  flex-shrink: 0;
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--bulletin-nav-size);
+  block-size: var(--bulletin-nav-size);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: color-mix(in srgb, var(--bulletin-card-bg) 72%, white);
+  color: var(--bulletin-copy);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: color-mix(in srgb, var(--bulletin-card-bg) 60%, white);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--bulletin-copy);
+  outline-offset: 2px;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  gap: var(--bulletin-card-gap);
+  box-sizing: border-box;
+  inline-size: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.trackCentered {
+  inline-size: auto;
+  max-inline-size: 100%;
+  justify-content: center;
+  overflow-x: visible;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
   }
 }
 
 .card {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
-  gap: var(--space-layout-20);
-  min-block-size: 5.75rem;
-  padding: var(--space-layout-20) var(--space-layout-24);
-  border-radius: 0;
+  box-sizing: border-box;
+  inline-size: max-content;
+  max-inline-size: 100%;
+  min-block-size: var(--bulletin-card-min-height);
+  padding-inline: var(--bulletin-card-padding-inline);
   background-color: var(--bulletin-card-bg);
+  scroll-snap-align: start;
   transition: background-color 0.2s ease;
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  gap: var(--bulletin-content-gap);
+  min-block-size: 3rem;
 }
 
 .cardInteractive {
@@ -44,11 +125,11 @@
 }
 
 .cardInteractive:hover {
-  background-color: color-mix(in srgb, var(--bulletin-card-bg) 85%, white);
+  background-color: color-mix(in srgb, var(--bulletin-card-bg) 88%, white);
 }
 
 .cardInteractive:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--bulletin-copy);
   outline-offset: 2px;
 }
 
@@ -57,25 +138,98 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  inline-size: 5.5rem;
 }
 
 .badgeImage {
   inline-size: auto;
   block-size: auto;
   max-inline-size: 100%;
-  max-block-size: 3.5rem;
+  max-block-size: 3rem;
   object-fit: contain;
+}
+
+.logoColorMark {
+  display: block;
+  flex-shrink: 0;
+  background-color: var(--bulletin-mark-color, var(--color-white));
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.percentBadge {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  inline-size: 3rem;
+  block-size: 3rem;
+  border-radius: 999px;
+  background-color: var(--logo-background, #dfff00);
+  color: var(--color-primary, #041b23);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.npmBadge {
+  display: inline-flex;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 0.2rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.803rem;
+  font-weight: 500;
+  line-height: 1;
+  text-shadow: 0 0.05rem 0 rgb(0 0 0 / 0.55);
+}
+
+.npmBadgeLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 0.45rem;
+  min-block-size: 1.506rem;
+  background-color: #5c5c5c;
+  color: #fff;
+}
+
+.npmBadgeVersion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 0.45rem;
+  min-block-size: 1.506rem;
+  background-color: #0085ca;
+  color: #fff;
+  letter-spacing: -0.06em;
+}
+
+.placeholderBadge {
+  display: block;
+  flex-shrink: 0;
+  inline-size: 3rem;
+  block-size: 3rem;
+  background-color: #d9d9d9;
 }
 
 .body {
   margin: 0;
-  flex: 1;
+  flex-shrink: 0;
   font-family: var(--font-sans, var(--primary-body-font));
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1;
   color: var(--bulletin-copy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-inline-size: 100%;
 }
 
 @media (forced-colors: active) {
@@ -85,12 +239,8 @@
     color: CanvasText;
   }
 
-  .card {
-    background-color: Canvas;
+  .card,
+  .navButton {
     border: 1px solid CanvasText;
-  }
-
-  .body {
-    color: CanvasText;
   }
 }
