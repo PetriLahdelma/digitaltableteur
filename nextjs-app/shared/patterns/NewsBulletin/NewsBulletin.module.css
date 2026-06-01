@@ -1,21 +1,18 @@
+/* Matches Figma DT-Site-stuff node 310:899 — always-dark strip above footer */
+
 .section {
-  border-block-start: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
-  background-color: color-mix(
-    in srgb,
-    var(--color-foreground) 92%,
-    transparent
-  );
-  color: var(--color-background);
+  --bulletin-bg: #0a0a0a;
+  --bulletin-card-bg: #161616;
+  --bulletin-divider: rgb(255 255 255 / 0.08);
+  --bulletin-copy: rgb(255 255 255 / 0.78);
+
+  border-block-start: 1px solid var(--bulletin-divider);
+  background-color: var(--bulletin-bg);
+  color: #fff;
 }
 
-:global(.themeDark) .section,
-:global(.themeHCB) .section {
-  background-color: color-mix(
-    in srgb,
-    var(--color-background) 88%,
-    var(--color-foreground) 12%
-  );
-  color: var(--color-foreground);
+.inner {
+  padding-block: var(--space-layout-24);
 }
 
 .grid {
@@ -33,17 +30,12 @@
 .card {
   display: flex;
   align-items: center;
-  gap: var(--space-layout-16);
-  min-block-size: 5.5rem;
-  padding: var(--space-layout-16) var(--space-layout-20);
-  border-radius: var(--radius-sm, 2px);
-  background-color: color-mix(in srgb, var(--color-background) 8%, transparent);
+  gap: var(--space-layout-20);
+  min-block-size: 5.75rem;
+  padding: var(--space-layout-20) var(--space-layout-24);
+  border-radius: 0;
+  background-color: var(--bulletin-card-bg);
   transition: background-color 0.2s ease;
-}
-
-:global(.themeDark) .card,
-:global(.themeHCB) .card {
-  background-color: color-mix(in srgb, var(--color-foreground) 6%, transparent);
 }
 
 .cardInteractive {
@@ -52,59 +44,53 @@
 }
 
 .cardInteractive:hover {
-  background-color: color-mix(in srgb, var(--color-background) 14%, transparent);
+  background-color: color-mix(in srgb, var(--bulletin-card-bg) 85%, white);
 }
 
 .cardInteractive:focus-visible {
-  outline: 2px solid var(--color-focus-ring, currentcolor);
+  outline: 2px solid #fff;
   outline-offset: 2px;
 }
 
 .badge {
+  display: flex;
   flex-shrink: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  align-items: center;
+  justify-content: center;
+  inline-size: 5.5rem;
 }
 
-.badgeLime {
-  color: var(--logo-background, var(--color-primary));
-}
-
-.badgeMono {
-  color: color-mix(in srgb, var(--color-background) 85%, transparent);
-}
-
-:global(.themeDark) .badgeMono,
-:global(.themeHCB) .badgeMono {
-  color: color-mix(in srgb, var(--color-foreground) 75%, transparent);
-}
-
-.badgeGradient {
-  background: linear-gradient(
-    135deg,
-    #6ec8ff 0%,
-    #b8f0ff 45%,
-    #e8f4ff 100%
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.badgeImage {
+  inline-size: auto;
+  block-size: auto;
+  max-inline-size: 100%;
+  max-block-size: 3.5rem;
+  object-fit: contain;
 }
 
 .body {
   margin: 0;
+  flex: 1;
   font-family: var(--font-sans, var(--primary-body-font));
-  font-size: var(--text-s, 0.8125rem);
+  font-size: 0.8125rem;
+  font-weight: 400;
   line-height: 1.45;
-  color: color-mix(in srgb, currentcolor 78%, transparent);
+  color: var(--bulletin-copy);
 }
 
 @media (forced-colors: active) {
-  .badgeGradient {
-    background: none;
-    -webkit-text-fill-color: unset;
+  .section {
+    border-block-start: 1px solid CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .card {
+    background-color: Canvas;
+    border: 1px solid CanvasText;
+  }
+
+  .body {
     color: CanvasText;
   }
 }

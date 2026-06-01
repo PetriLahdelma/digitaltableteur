@@ -14,8 +14,7 @@ Reference layout: dark full-width strip, subtle top border, three equal cards wi
 | Field | Required | Notes |
 |-------|----------|--------|
 | `id` | yes | Stable slug for skill commands (`replace go-24 …`) |
-| `badge` | yes | Short label, e.g. `GO 24` (text; optional image later) |
-| `badgeVariant` | no | `lime` \| `mono` \| `gradient` for badge styling |
+| `badge` | yes | `{ src, alt, width, height }` — SVG/PNG from Figma (see `public/images/news-bulletin/`) |
 | `body` | yes | Snippet text |
 | `link` | no | Discriminated union (see below) |
 

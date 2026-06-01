@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Container } from "@/nextjs-app/shared/components/Container";
@@ -16,23 +17,22 @@ export interface NewsBulletinProps {
   className?: string;
 }
 
-function badgeClassName(variant: NewsBulletinItem["badgeVariant"]): string {
-  switch (variant) {
-    case "lime":
-      return styles.badgeLime;
-    case "gradient":
-      return styles.badgeGradient;
-    case "mono":
-    default:
-      return styles.badgeMono;
-  }
+function cardLabel(item: NewsBulletinItem): string {
+  return `${item.badge.alt}. ${item.body}`;
 }
 
 function BulletinCardContent({ item }: { item: NewsBulletinItem }) {
   return (
     <>
-      <span className={cn(styles.badge, badgeClassName(item.badgeVariant))}>
-        {item.badge}
+      <span className={styles.badge}>
+        <Image
+          src={item.badge.src}
+          alt=""
+          aria-hidden
+          width={item.badge.width}
+          height={item.badge.height}
+          className={styles.badgeImage}
+        />
       </span>
       <p className={styles.body}>{item.body}</p>
     </>
@@ -45,11 +45,12 @@ function resolveLink(link: NewsBulletinLink | undefined): NewsBulletinLink {
 
 function BulletinCard({ item }: { item: NewsBulletinItem }) {
   const link = resolveLink(item.link);
+  const label = cardLabel(item);
   const cardClass = cn(styles.card, link.kind !== "static" && styles.cardInteractive);
 
   if (link.kind === "internal") {
     return (
-      <Link href={link.href} className={cardClass}>
+      <Link href={link.href} className={cardClass} aria-label={label}>
         <BulletinCardContent item={item} />
       </Link>
     );
@@ -60,6 +61,7 @@ function BulletinCard({ item }: { item: NewsBulletinItem }) {
       <a
         href={link.href}
         className={cardClass}
+        aria-label={label}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -69,7 +71,7 @@ function BulletinCard({ item }: { item: NewsBulletinItem }) {
   }
 
   return (
-    <article className={styles.card}>
+    <article className={styles.card} aria-label={label}>
       <BulletinCardContent item={item} />
     </article>
   );
@@ -87,7 +89,7 @@ export function NewsBulletin({
       className={cn(styles.section, className)}
       aria-label={t("newsBulletinAriaLabel", "Current highlights")}
     >
-      <Container size="lg" className="py-0">
+      <Container size="lg" className={styles.inner}>
         <div className={styles.grid}>
           {items.map((item) => (
             <BulletinCard key={item.id} item={item} />

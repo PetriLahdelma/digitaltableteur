@@ -5,19 +5,23 @@
 
 export const NEWS_BULLETIN_SLOT_COUNT = 3 as const;
 
-export type NewsBulletinBadgeVariant = "lime" | "mono" | "gradient";
-
 export type NewsBulletinLink =
   | { kind: "internal"; href: string }
   | { kind: "external"; href: string }
   | { kind: "static" };
 
+export interface NewsBulletinBadge {
+  /** Public URL under /public, e.g. /images/news-bulletin/go-24.svg */
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
 export interface NewsBulletinItem {
   /** Stable id for agent replace/remove commands (kebab-case). */
   id: string;
-  /** Short mark shown left of copy, e.g. award year badge. */
-  badge: string;
-  badgeVariant?: NewsBulletinBadgeVariant;
+  badge: NewsBulletinBadge;
   body: string;
   link?: NewsBulletinLink;
 }
@@ -25,22 +29,34 @@ export interface NewsBulletinItem {
 export const NEWS_BULLETIN_ITEMS: NewsBulletinItem[] = [
   {
     id: "go-24",
-    badge: "GO 24",
-    badgeVariant: "lime",
+    badge: {
+      src: "/images/news-bulletin/go-24.svg",
+      alt: "Grand One 2024",
+      width: 88,
+      height: 56,
+    },
     body: "K-Ruoka app, Best use of data, 2024",
     link: { kind: "static" },
   },
   {
     id: "go-23",
-    badge: "GO 23",
-    badgeVariant: "mono",
+    badge: {
+      src: "/images/news-bulletin/go-23.svg",
+      alt: "Grand One 2023",
+      width: 88,
+      height: 56,
+    },
     body: "Terveystalo Medoma app, Grand Prix, Best digital service, Best service design, 2023",
     link: { kind: "static" },
   },
   {
     id: "go-22",
-    badge: "GO 22",
-    badgeVariant: "gradient",
+    badge: {
+      src: "/images/news-bulletin/go-22.svg",
+      alt: "Grand One 2022",
+      width: 88,
+      height: 56,
+    },
     body: "Terveystalo appointments, Best UX, 2022",
     link: { kind: "static" },
   },
