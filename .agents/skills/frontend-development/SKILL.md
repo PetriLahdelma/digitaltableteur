@@ -1,6 +1,6 @@
 ---
 name: frontend-development
-description: Expert guidance for React 18+, Next.js 15, TypeScript, CSS Modules, and modern frontend architecture. Use when building components, implementing features, optimizing performance, or working with React hooks, state management, routing, or frontend tooling. Includes accessibility (a11y), internationalization (i18n), and design system integration.
+description: Expert guidance for React 19+, Next.js 16, TypeScript, CSS Modules, and modern frontend architecture. Use when building components, implementing features, optimizing performance, or working with React hooks, state management, routing, or frontend tooling. Includes accessibility (a11y), internationalization (i18n), and design system integration.
 allowed-tools: Read, Edit, Write, Glob, Grep, Bash(npm:*), Bash(npx:*)
 ---
 
@@ -21,9 +21,9 @@ When building frontend features, always follow these principles:
 ## Technology Stack (Digitaltableteur Project)
 
 ### Core Framework
-- **React 18** with concurrent features
-- **Next.js 15.5.6** with App Router (server components)
-- **TypeScript 5.8** in strict mode
+- **React 19** with concurrent features
+- **Next.js 16.2.x** with App Router (server components)
+- **TypeScript 6.x** in strict mode
 
 ### Styling
 - **CSS Modules** for scoped styling (never inline styles except dynamic `backgroundImage`)
@@ -251,7 +251,7 @@ export const Secondary: Story = {
 
 ---
 
-## Next.js 15 App Router Patterns
+## Next.js 16 App Router Patterns
 
 ### Server Components (Default)
 

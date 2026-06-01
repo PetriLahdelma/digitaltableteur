@@ -79,7 +79,7 @@ const DesignSystemOverviewContent = () => {
 
         <div className={styles.techStack}>
           <div className={styles.techItem}>
-            <h3>React 18+</h3>
+            <h3>React 19+</h3>
             <p>
               Functional components with TypeScript strict mode, hooks-based
               state management, and forwardRef support for ref forwarding.

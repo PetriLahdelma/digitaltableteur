@@ -1,7 +1,7 @@
 ---
 name: dt-nextjs-app
 description: >-
-  Builds and fixes Digitaltableteur Next.js 15 App Router pages, layouts, metadata,
+  Builds and fixes Digitaltableteur Next.js 16 App Router pages, layouts, metadata,
   OG images, sitemap, and robots under app/. Use when the user says "add a page",
   "opengraph", "OG image", "generateMetadata", "page.tsx", "layout.tsx", "sitemap",
   "async params", or edits app/ routes. Do NOT use for UI component internals
@@ -28,7 +28,7 @@ CRITICAL before committing:
 - Server component by default; `"use client"` only for hooks/events/browser APIs
 - `generateMetadata` or `metadata` export
 - OG via colocated `opengraph-image.tsx` — never hardcode `logo512.png` in metadata
-- Next.js 15 async params: `const slug = (await params).slug`
+- Next.js 16 async params: `const slug = (await params).slug`
 - `Image` from `next/image`, not raw `<img>`
 - CSS Modules: relative import `./Component.module.css`
 
@@ -92,7 +92,7 @@ Solution: `suppressHydrationWarning` on root `<html>` in `app/layout.tsx`.
 
 ### params.slug is undefined
 
-Cause: Next.js 15 made route params async.
+Cause: Next.js 16 made route params async.
 
 Solution:
 

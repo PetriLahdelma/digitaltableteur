@@ -2,11 +2,11 @@
 
 **Date:** December 3, 2025  
 **Status:** ✅ Verified Secure  
-**Next.js Version:** 15.5.6
+**Next.js Version:** 16.2.x (production root `package.json`)
 
 ## Executive Summary
 
-Next.js 15 does not include service workers by default. All API routes have been reviewed and configured with appropriate cache headers to prevent sensitive data caching.
+Next.js does not include service workers by default. All API routes have been reviewed and configured with appropriate cache headers to prevent sensitive data caching.
 
 ## Service Worker Review
 
@@ -23,7 +23,7 @@ grep -r "navigator.serviceWorker" src/ app/
 # Result: Only documentation examples, no actual implementation
 ```
 
-**Conclusion:** ✅ No service worker to harden. Next.js 15 handles caching through HTTP headers and Next.js cache configuration.
+**Conclusion:** ✅ No service worker to harden. Next.js 16 handles caching through HTTP headers and Next.js cache configuration.
 
 ### Next.js Built-in Caching
 
