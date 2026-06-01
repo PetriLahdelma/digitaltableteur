@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useTranslation } from "react-i18next";
+
+function normalizeHtmlLang(language: string | undefined): string {
+  if (!language) return "en";
+  return language.split("-")[0] || "en";
+}
 
 /**
  * Synchronizes the HTML lang attribute with the current i18n language
@@ -10,11 +15,8 @@ import { useTranslation } from "react-i18next";
 export function HtmlLangSync() {
   const { i18n } = useTranslation();
 
-  useEffect(() => {
-    // Update HTML lang attribute when language changes
-    if (i18n.language) {
-      document.documentElement.lang = i18n.language;
-    }
+  useLayoutEffect(() => {
+    document.documentElement.lang = normalizeHtmlLang(i18n.language);
   }, [i18n.language]);
 
   return null;

@@ -54,6 +54,9 @@ const PACKAGE_EVENT_SLUGS: Record<string, string> = {
   "ux-sprint": "ux-sprint",
   "design-system-lift-off": "design-system-consultation",
   "ai-ready-designops": "ai-designops-discovery",
+  "agent-pilot": "agent-pilot",
+  "agent-workforce": "agent-workforce",
+  "designops-copilot": "designops-copilot",
 };
 
 const MEETING_EVENT_SLUGS: Record<SiteMeetingType, string> = {

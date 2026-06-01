@@ -19,7 +19,7 @@
     "generate:blog": "node scripts/generate-blog-manifest.mjs && tsx scripts/update-post-metadata.ts",
     "vercel-build": "npm run build",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "lint": "node scripts/lint-banner.mjs",
     "lint:css": "stylelint \"**/*.css\" \"**/*.module.css\"",
     "lint:all": "npm run lint && npm run lint:css",

@@ -41,6 +41,16 @@ describe("ContactInquiryPanel", () => {
     ).toHaveAttribute("aria-selected", "true");
   });
 
+  it("links tabs to tabpanels with matching ids", () => {
+    renderPanel("message");
+
+    expect(
+      screen.getByRole("tab", { name: /Send a message/i }),
+    ).toHaveAttribute("aria-controls", "contact-panel-message");
+    expect(document.getElementById("contact-panel-message")).toBeTruthy();
+    expect(document.getElementById("contact-form")).toBeTruthy();
+  });
+
   it("shows booking coming-soon state when opened via ?mode=book", async () => {
     renderPanel("book");
 
