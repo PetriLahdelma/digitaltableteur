@@ -98,6 +98,7 @@
   background: var(--main-body-background-color, #fff);
   box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
   list-style: none;
+  list-style-type: " ";
 }
 
 .dropdownItem {
@@ -136,6 +137,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-internal-8, 0.5rem);
   list-style: none;
+  list-style-type: " ";
 }
 
 .iconItem {

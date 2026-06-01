@@ -124,6 +124,7 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   list-style: none;
+  list-style-type: " ";
 }
 
 .option {

@@ -428,11 +428,14 @@ const Card: React.FC<CardProps> = ({
     .filter(Boolean)
     .join(" ");
 
+  const hasVisibleLinkText = Boolean(description || body || subTitle || children);
+  const linkAccessibleName = hasVisibleLinkText ? undefined : linkLabel || title;
+
   return link ? (
     <Link
       href={link}
       className={baseClasses}
-      aria-label={linkLabel || title}
+      aria-label={linkAccessibleName}
       title={linkLabel || title}
     >
       {innerContent}
