@@ -15,6 +15,7 @@
   flex-direction: column;
   gap: var(--site-tree-row-gap);
   list-style: none;
+  list-style-type: " ";
 }
 
 .branchItem,
@@ -42,6 +43,7 @@
   border-radius: var(--radius-s, 4px);
   cursor: pointer;
   list-style: none;
+  list-style-type: " ";
 }
 
 .summary::-webkit-details-marker {

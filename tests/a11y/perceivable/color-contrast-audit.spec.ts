@@ -34,6 +34,9 @@ const pages = [
   { name: "contact", url: "/contact" },
   { name: "blog", url: "/blog" },
   { name: "work", url: "/work" },
+  { name: "pricing", url: "/pricing" },
+  { name: "colophon", url: "/colophon" },
+  { name: "pseo", url: "/pseo" },
 ];
 
 // Contrast-specific rules to focus on
