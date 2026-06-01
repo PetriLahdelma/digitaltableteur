@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export interface SectionProps {
   children: ReactNode;
-  spacing?: "none" | "sm" | "md" | "lg" | "xl";
+  spacing?: "none" | "sm" | "md" | "lg" | "xl" | "hero" | "follow";
   background?: "default" | "muted" | "accent" | "inverse";
   className?: string;
   id?: string;
@@ -19,6 +19,10 @@ const spacingClasses = {
   md: "py-12 tablet:py-16 desktop:py-24",
   lg: "py-16 tablet:py-24 desktop:py-32",
   xl: "py-24 tablet:py-32 desktop:py-48",
+  /** Page hero — generous top, tight bottom (pair with `follow`) */
+  hero: "pt-16 tablet:pt-24 desktop:pt-32 pb-8 tablet:pb-10 desktop:pb-12",
+  /** Content directly after a page hero — avoids double vertical gap */
+  follow: "pt-0 pb-16 tablet:pb-24 desktop:pb-32",
 } as const;
 
 const backgroundClasses = {

@@ -2,7 +2,12 @@ import type { MetadataRoute } from "next";
 
 import { getVisiblePosts } from "./blog/postMetadata";
 import { getAuthors } from "@/nextjs-app/shared/data/authors";
-import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
+import {
+  getPseoCatalog,
+  getPseoCatalogUpdatedAt,
+  getPseoLeafPages,
+} from "@/lib/pseo/catalog";
+import { getPseoPageCopy } from "@/lib/pseo/copy";
 import type { PseoCatalogItem, PseoLeafPage } from "@/lib/pseo/types";
 import { toAbsoluteSiteUrl } from "./lib/siteUrl";
 
@@ -75,10 +80,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const pseoCatalog = getPseoCatalog();
   const pseoLeafPages = getPseoLeafPages();
+  const pseoCatalogUpdated = getPseoCatalogUpdatedAt();
 
   const pseoIndexRoutes: MetadataRoute.Sitemap = ["/pseo"].map((path) => ({
     url: toUrl(path),
-    lastModified: today,
+    lastModified: pseoCatalogUpdated,
     changeFrequency: "weekly",
     priority: 0.5,
   }));
@@ -93,18 +99,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
   ].map((path) => ({
     url: toUrl(path),
-    lastModified: today,
+    lastModified: pseoCatalogUpdated,
     changeFrequency: "monthly",
     priority: 0.5,
   }));
 
   const pseoLeafRoutes: MetadataRoute.Sitemap = pseoLeafPages.map(
-    (page: PseoLeafPage) => ({
-      url: toUrl(`/pseo/${page.slug}`),
-      lastModified: today,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    }),
+    (page: PseoLeafPage) => {
+      const copyUpdated = getPseoPageCopy(page.slug)?.updatedAt;
+      const lastModified = copyUpdated
+        ? new Date(copyUpdated)
+        : pseoCatalogUpdated;
+
+      return {
+        url: toUrl(`/pseo/${page.slug}`),
+        lastModified: Number.isNaN(lastModified.getTime())
+          ? pseoCatalogUpdated
+          : lastModified,
+        changeFrequency: "monthly" as const,
+        priority: 0.5,
+      };
+    },
   );
 
   return [
