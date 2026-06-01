@@ -79,6 +79,12 @@ describe("DonnyAvatar", () => {
       expect(avatar).toHaveAttribute("aria-label", "Donny is thinking");
     });
 
+    it("is decorative when used inside a labeled control", () => {
+      const { container } = render(<DonnyAvatar decorative state="idle" />);
+      expect(screen.queryByRole("img")).not.toBeInTheDocument();
+      expect(container.firstChild).toHaveAttribute("aria-hidden", "true");
+    });
+
     it("updates aria-label when state changes", async () => {
       vi.useFakeTimers();
       const { rerender } = render(<DonnyAvatar state="idle" />);
