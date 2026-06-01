@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { BlogMediaImage } from "@dt/BlogMediaImage";
 import { isSvgSrc } from "@/lib/media/imageSrc";
+import styles from "./EnhancedArticleCard.module.css";
 
 export interface EnhancedArticleCardProps {
   /** Article slug for URL */
@@ -36,6 +37,10 @@ export interface EnhancedArticleCardProps {
   variant?: "default" | "featured" | "compact";
   /** Hide featured image */
   hideImage?: boolean;
+  /** Show author avatar and name in the footer meta row */
+  showAuthor?: boolean;
+  /** Show “Read article” affordance in the footer */
+  showReadMore?: boolean;
   /** Custom className */
   className?: string;
 }
@@ -63,6 +68,8 @@ export function EnhancedArticleCard({
   tags,
   variant = "default",
   hideImage = false,
+  showAuthor = true,
+  showReadMore = true,
   className,
 }: EnhancedArticleCardProps) {
   const { i18n, t } = useTranslation();
@@ -129,15 +136,14 @@ export function EnhancedArticleCard({
   return (
     <Link
       href={`/blog/${slug}`}
+      aria-label={`${t("blogReadMore", "Read article")}: ${title}`}
       className={cn(
-        "group flex flex-col rounded-lg overflow-hidden",
-        "bg-card hover:bg-accent/30",
-        "border border-border hover:border-foreground/20",
-        "transition-all duration-300",
-        "hover:shadow-lg hover:-translate-y-1",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        styles.cardLink,
+        "group flex h-full min-h-0 w-full flex-col rounded-lg overflow-hidden",
+        hideImage && !isFeatured && "min-h-[12rem]",
+        "border border-border bg-card",
         isFeatured && "tablet:flex-row tablet:col-span-2",
-        className
+        className,
       )}
       data-donny-interest="blog-article"
     >
@@ -241,60 +247,65 @@ export function EnhancedArticleCard({
           </p>
         )}
 
-        {/* Meta row + read link */}
-        <div className="flex items-center justify-between gap-4 mt-auto pt-4 border-t border-border/50">
-          <div className="flex min-w-0 items-center gap-2">
-            {author && (
-              <>
-                <div className="relative w-7 h-7 rounded-full overflow-hidden bg-muted shrink-0">
-                  <Image
-                    src={authorAvatar}
-                    alt={author.name}
-                    fill
-                    className="object-cover"
-                    sizes="28px"
-                  />
-                </div>
-                <span className="text-sm font-body text-foreground">
-                  {author.name}
-                </span>
-              </>
-            )}
-            {author && formattedDate && (
-              <span className="text-xs text-muted-foreground">·</span>
-            )}
-            {formattedDate && (
-              <span className="text-xs text-muted-foreground">{formattedDate}</span>
-            )}
-            {readTime && <span className="text-xs text-muted-foreground">·</span>}
-            {readTime && (
-              <span className="text-xs text-muted-foreground">{readTime}</span>
-            )}
-          </div>
-
-          <span
+        {/* Meta row (+ optional read link) */}
+        {(showAuthor || formattedDate || readTime || showReadMore) && (
+          <div
             className={cn(
-              "shrink-0 text-sm font-body font-medium text-primary",
-              "inline-flex items-center gap-1",
+              "mt-auto flex items-center gap-4 border-t border-border/50 pt-4",
+              showReadMore ? "justify-between" : "justify-start",
             )}
           >
-            {t("blogReadMore", "Read article")}
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </span>
-        </div>
+            <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+              {showAuthor && author && (
+                <>
+                  <div className="relative size-7 shrink-0 overflow-hidden rounded-full bg-muted">
+                    <Image
+                      src={authorAvatar}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="28px"
+                    />
+                  </div>
+                  <span className="text-sm font-body text-foreground">
+                    {author.name}
+                  </span>
+                </>
+              )}
+              {showAuthor && author && formattedDate && (
+                <span aria-hidden="true">·</span>
+              )}
+              {formattedDate && <time dateTime={publishedAt}>{formattedDate}</time>}
+              {formattedDate && readTime && <span aria-hidden="true">·</span>}
+              {readTime && <span>{readTime}</span>}
+            </div>
+
+            {showReadMore && (
+              <span
+                className={cn(
+                  styles.readMore,
+                  "inline-flex shrink-0 items-center gap-1 text-sm font-body font-medium text-primary",
+                )}
+              >
+                {t("blogReadMore", "Read article")}
+                <svg
+                  className="size-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </Link>
   );
