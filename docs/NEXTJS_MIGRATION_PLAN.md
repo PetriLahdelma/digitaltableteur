@@ -1,6 +1,8 @@
 # Next.js Migration Plan: Parallel Hybrid Approach
 
-**Status:** Planning  
+> **Current truth (2026):** Production runs **Next.js 16.2.x** at the **repo root** (`app/`, `next.config.ts`). Vite remains in `vite-app/` for legacy/Storybook-adjacent workflows. This document describes the **historical** Vite → Next migration; for the 15 → 16 bump see [`NEXTJS_16_UPGRADE_PLAN.md`](NEXTJS_16_UPGRADE_PLAN.md).
+
+**Status:** Largely complete (production on root App Router)  
 **Start Date:** November 2025  
 **Strategy:** Zero-downtime incremental migration  
 **Risk Level:** Minimal (instant rollback capability)
@@ -9,7 +11,7 @@
 
 ## Executive Summary
 
-This document outlines a **parallel migration strategy** from Vite SPA to Next.js 15 App Router. The core principle: **keep the existing Vite app running in production while gradually introducing Next.js routes alongside it**. This approach eliminates migration risk and enables instant rollback.
+This document outlines a **parallel migration strategy** from Vite SPA to Next.js 16 App Router. The core principle: **keep the existing Vite app running in production while gradually introducing Next.js routes alongside it**. This approach eliminates migration risk and enables instant rollback.
 
 ### Why Parallel Migration?
 
@@ -28,7 +30,7 @@ This document outlines a **parallel migration strategy** from Vite SPA to Next.j
 ```
 digitaltableteur/
 ├── src/                    # Existing Vite app (untouched during migration)
-├── nextjs-app/            # New Next.js 15 app
+├── nextjs-app/            # New Next.js 16 app
 │   ├── app/               # App router
 │   ├── providers/         # Next.js-specific providers
 │   ├── components/        # Next.js-specific wrappers
@@ -1007,7 +1009,7 @@ npx lighthouse "$NEXT_BASE$ROUTE" --quiet --only-categories=accessibility
 
 ### Documentation
 
-- [Next.js 15 App Router](https://nextjs.org/docs/app)
+- [Next.js 16 App Router](https://nextjs.org/docs/app)
 - [Next.js Metadata API](https://nextjs.org/docs/app/building-your-application/optimizing/metadata)
 - [Vercel Rewrites](https://vercel.com/docs/projects/project-configuration#rewrites)
 - [i18next React](https://react.i18next.com/)

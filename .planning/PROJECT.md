@@ -76,7 +76,7 @@ A comprehensive accessibility audit and remediation project for the entire publi
 ## Constraints
 
 - **Standard**: WCAG 2.1 AA (not AAA)
-- **Tech stack**: Next.js 15, React 19, TypeScript, CSS Modules
+- **Tech stack**: Next.js 16, React 19, TypeScript, CSS Modules
 - **Testing**: axe-core for automated, manual testing for keyboard/screen reader
 - **Browsers**: Modern browsers (Chrome, Firefox, Safari, Edge)
 - **Screen readers**: VoiceOver (macOS), NVDA (Windows) as primary targets

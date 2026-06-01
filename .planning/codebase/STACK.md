@@ -1,11 +1,13 @@
 # Technology Stack
 
-**Analysis Date:** 2026-01-16
+> **Source of truth:** Root `package.json` + `package-lock.json`. Production app: repo root `app/` (not `nextjs-app/` package name).
+
+**Analysis Date:** 2026-06-01 (stack versions synced post–Next.js 16 upgrade, #634)
 
 ## Languages
 
 **Primary:**
-- TypeScript 5.9.3 - All application code (strict mode enabled)
+- TypeScript 6.x - All application code (strict mode enabled)
 
 **Secondary:**
 - JavaScript - Build scripts, config files (`scripts/`, `next.config.ts`)
@@ -16,7 +18,7 @@
 **Environment:**
 - Node.js 20.19.0 - `.nvmrc`
 - React 19.2.3 - Browser runtime
-- Next.js 15.5.9 App Router - Server components and API routes
+- Next.js 16.2.x App Router - Server components and API routes
 
 **Package Manager:**
 - npm - `package.json` (monorepo root)
@@ -31,7 +33,7 @@
 ## Frameworks
 
 **Core:**
-- Next.js 15.5.9 - Web framework with App Router (`app/`, `next.config.ts`)
+- Next.js 16.2.x - Web framework with App Router (`app/`, `next.config.ts`)
 - React 19.2.3 - UI framework with React Server Components
 
 **Testing:**

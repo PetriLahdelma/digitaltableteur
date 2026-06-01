@@ -1,5 +1,7 @@
 # Test & Lint Results Summary - December 3, 2025
 
+> **Historical run.** Dependency advisories (e.g. Next.js 15.5.x RCE) were addressed by upgrading to **Next.js 16.2.x** (#634). Do not treat version callouts below as current production state.
+
 ## ✅ Successfully Completed Checks
 
 ### 1. ESLint

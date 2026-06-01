@@ -4,7 +4,7 @@
 
 ## Pattern Overview
 
-**Overall:** Hybrid Monorepo with Next.js 15 Full-Stack Architecture
+**Overall:** Hybrid Monorepo with Next.js 16 Full-Stack Architecture
 
 **Key Characteristics:**
 - Server-first architecture (React Server Components by default)

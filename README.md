@@ -12,16 +12,16 @@
 
 > "Iteration beats perfection—ship today, learn tomorrow, refine forever."
 
-Digitaltableteur is a hybrid monorepo portfolio website featuring both Next.js 15 (production) and Vite (legacy) applications. Built with React 18 and TypeScript 5.8, it showcases a comprehensive design system, multi-language support (EN/FI/SV), AI-powered chat interface, and enterprise-grade tooling including Sentry observability, Linear issue management, and MCP (Model Context Protocol) integrations.
+Digitaltableteur is a hybrid monorepo portfolio website featuring both Next.js 16 (production) and Vite (legacy) applications. Built with React 19 and TypeScript 6.x, it showcases a comprehensive design system, multi-language support (EN/FI/SV), AI-powered chat interface, and enterprise-grade tooling including Sentry observability, Linear issue management, and MCP (Model Context Protocol) integrations.
 
 ## 🚀 Features
 
 ### Core Architecture
 
-- **Hybrid Monorepo**: Next.js 15 App Router (production) + Vite 6.3 (legacy) in parallel migration
+- **Hybrid Monorepo**: Next.js 16 App Router (production) + Vite 6.4 (legacy) in parallel migration
 - **AI Documentation System**: Hierarchical CLAUDE.md/AGENTS.md structure optimized for AI assistants
 - **Design System**: 50+ components with CSS Modules, design tokens, Storybook, and visual regression testing
-- **Type Safety**: TypeScript 5.8 strict mode with comprehensive interfaces and JSDoc documentation
+- **Type Safety**: TypeScript 6.x strict mode with comprehensive interfaces and JSDoc documentation
 
 ### User Experience
 
@@ -361,7 +361,7 @@ npm run sanity:publish
 
 ```
 digitaltableteur/
-├── app/                       # Next.js 15 App Router (production)
+├── app/                       # Next.js 16 App Router (production)
 │   ├── layout.tsx             # Root layout with providers
 │   ├── page.tsx               # Home page (server component)
 │   ├── about/page.tsx         # Route pages
@@ -405,10 +405,10 @@ digitaltableteur/
 
 **Frontend**
 
-- React 18: Concurrent features, Suspense, automatic batching
-- TypeScript 5.8: Strict mode, decorators, import attributes
-- Next.js 15.5.6: App Router, Server Components, Streaming SSR
-- Vite 6.3: Lightning-fast HMR, optimized production builds
+- React 19: Concurrent features, Suspense, automatic batching
+- TypeScript 6.x: Strict mode, decorators, import attributes
+- Next.js 16.2.x: App Router, Server Components, Streaming SSR
+- Vite 6.4: Lightning-fast HMR, optimized production builds
 - React Router 7: Client-side routing with lazy loading (Vite app)
 
 **Styling & Design**
@@ -782,8 +782,8 @@ Before creating a PR:
 
 **Frontend**:
 
-- [React 18](https://react.dev/) - UI framework
-- [Next.js 15](https://nextjs.org/) - React framework with App Router
+- [React 19](https://react.dev/) - UI framework
+- [Next.js 16](https://nextjs.org/) - React framework with App Router
 - [Vite](https://vitejs.dev/) - Build tool and development server
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 - [React Router](https://reactrouter.com/) - Client-side routing (Vite app)

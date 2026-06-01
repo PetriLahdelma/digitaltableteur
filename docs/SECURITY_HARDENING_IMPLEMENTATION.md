@@ -502,7 +502,7 @@ done
   - **Verification**:
     - Searched `public/` and entire codebase for service worker files
     - No `sw.js`, `service-worker.js`, or `navigator.serviceWorker.register()` calls found
-    - Next.js 15 doesn't include service workers by default
+    - Next.js 16 doesn't include service workers by default
   - **Conclusion**: No action needed, security risk eliminated by absence
 
 - [ ] **AI Output Sanitization in DB Storage**
