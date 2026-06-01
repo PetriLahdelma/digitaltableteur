@@ -17,6 +17,7 @@
 
 .modeButton {
   flex: 1;
+  min-block-size: 2.75rem;
   padding-block: var(--space-layout-12);
   padding-inline: var(--space-layout-16);
   border: none;
