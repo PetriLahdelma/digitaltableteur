@@ -77,9 +77,12 @@ export const List: React.FC<ListProps> = ({
     : "";
   const spacingClass = spacingClassMap[spacing] || "";
 
+  const resolvedListStyleType =
+    listStyleType === "none" ? ('" "' as ListStyleType) : listStyleType;
+
   const combinedStyle = {
     ...style,
-    ...(listStyleType && { listStyleType }),
+    ...(resolvedListStyleType && { listStyleType: resolvedListStyleType }),
   };
 
   return (

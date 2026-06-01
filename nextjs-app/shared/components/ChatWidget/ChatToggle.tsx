@@ -26,8 +26,8 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
     const { t } = useTranslation();
     const toggleLabel = t("chatToggleLabel", "Chat");
     const ariaLabel = isOpen
-      ? t("chatToggleClose", "Hide chat")
-      : t("chatToggleOpen", "Chat with Donny");
+      ? `${toggleLabel} — ${t("chatToggleClose", "Hide chat")}`
+      : `${toggleLabel} — ${t("chatToggleOpen", "Chat with Donny")}`;
 
     const [donnyState, setDonnyState] = useState<DonnyState>("idle");
     const [isHovered, setIsHovered] = useState(false);
@@ -95,17 +95,19 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
           isOpen ? (
             <Icon name="caret-down" ariaLabel={ariaLabel} />
           ) : (
-            <DonnyAvatar
-              state={donnyState}
-              size="sm"
-              trackMouse={!isOpen}
-              proximitySelectors={CURIOSITY_SELECTORS}
-              onProximityChange={handleProximityChange}
-              enableIdleExpressions={!isOpen}
-              idleExpressionInterval={8000}
-              enableSleepDetection={!isOpen}
-              className={styles.toggleAvatar}
-            />
+            <span aria-hidden="true">
+              <DonnyAvatar
+                state={donnyState}
+                size="sm"
+                trackMouse={!isOpen}
+                proximitySelectors={CURIOSITY_SELECTORS}
+                onProximityChange={handleProximityChange}
+                enableIdleExpressions={!isOpen}
+                idleExpressionInterval={8000}
+                enableSleepDetection={!isOpen}
+                className={styles.toggleAvatar}
+              />
+            </span>
           )
         }
         aria-expanded={isOpen}

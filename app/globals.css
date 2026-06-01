@@ -68,6 +68,8 @@ a:focus-visible {
 
 :where(ul, ol) {
   padding-inline-start: 1.25rem;
+  /* Tailwind preflight sets list-style:none; preserve list semantics in Safari VO */
+  list-style-type: " ";
 }
 
 :focus-visible {

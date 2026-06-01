@@ -156,8 +156,8 @@ export function SiteHeader({
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
-              aria-label={t("headerLogoAlt", "Digitaltableteur logo")}
-              role="img"
+              aria-hidden="true"
+              focusable="false"
             >
             <style>{`
               @keyframes pulse-1 {
@@ -183,6 +183,13 @@ export function SiteHeader({
               }
               .logo-bar.pulse-3 {
                 animation: pulse-3 0.9s ease-in-out infinite;
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .logo-bar.pulse-1,
+                .logo-bar.pulse-2,
+                .logo-bar.pulse-3 {
+                  animation: none;
+                }
               }
             `}</style>
             <g clipPath="url(#clip0_header)">
@@ -262,7 +269,7 @@ export function SiteHeader({
                 key={lang.code}
                 onClick={() => handleLanguageChange(lang.code)}
                 disabled={currentLang === lang.code}
-                aria-label={t(lang.ariaLabelKey)}
+                aria-label={`${lang.code.toUpperCase()} — ${t(lang.ariaLabelKey)}`}
                 className={cn(
                   "px-2.5 py-1.5 text-sm font-heading font-bold uppercase tracking-widest transition-all cursor-pointer rounded-sm",
                   currentLang === lang.code
