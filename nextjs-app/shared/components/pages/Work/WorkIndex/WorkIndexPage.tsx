@@ -51,7 +51,7 @@ export function WorkIndexPage({ nav }: WorkIndexPageProps) {
       <WorkHero />
 
       {/* Projects Section */}
-      <Section spacing="lg" background="default">
+      <Section spacing="follow" background="default">
         <Container size="lg">
           {/* Filter Bar with entrance animation */}
           <FadeIn delay={0.3} direction="up" distance={20} className="mb-12 tablet:mb-16">

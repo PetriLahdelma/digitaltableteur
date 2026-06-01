@@ -1,5 +1,833 @@
 {
   "version": 1,
-  "pages": {}
+  "pages": {
+    "design-system-audit-react-startups": {
+      "introMarkdown": "Startup teams using React often face unique challenges in maintaining a cohesive UI. An audit of your design system can reveal inconsistencies, accessibility issues, and misalignments between design and engineering. By identifying these gaps, we help you create a prioritized roadmap that enables rapid shipping without accruing UI debt. This audit focuses on your production environment, ensuring that what you deliver meets user needs effectively.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Audit Playbook Steps",
+          "bodyMarkdown": "1. **Inventory Existing Components**: Review all components currently in production. Use tools like Storybook to visualize and document each component's behavior and usage.\n\n2. **Evaluate Component Consistency**: Compare similar components across squads. Identify discrepancies in behavior, styling, and accessibility. Document these findings to highlight areas needing standardization.\n\n3. **Assess Accessibility Compliance**: Conduct accessibility testing using tools like Axe or Lighthouse. Focus on keyboard navigation and screen-reader compatibility. Document issues and prioritize fixes based on user impact.\n\n4. **Engage Stakeholders**: Facilitate workshops with design and engineering teams to align on what constitutes 'in the system.' Use this opportunity to clarify component usage and naming conventions.\n\n5. **Create a Prioritized Roadmap**: Based on the findings, develop a roadmap that prioritizes fixes and enhancements. Ensure that the roadmap is actionable and aligns with your team's shipping timelines."
+        },
+        {
+          "id": "situation",
+          "title": "Current Landscape",
+          "bodyMarkdown": "Many startup teams struggle with UI consistency due to rapid development cycles. Components may appear similar but behave differently, leading to confusion and inefficiencies. Accessibility issues often recur because patterns are undocumented, and disagreements between design and engineering can stall progress. Token renames can disrupt multiple applications, causing further delays. An audit helps clarify these issues and sets a clear path forward."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Common Pitfalls",
+          "bodyMarkdown": "1. **Inconsistent Component Behavior**: Teams may unknowingly use similar components that function differently, leading to user confusion.\n\n2. **Neglected Accessibility**: Without proper documentation, accessibility issues can go unnoticed, impacting user experience for those relying on assistive technologies.\n\n3. **Misalignment Between Teams**: Disagreements on what components are 'in the system' can lead to wasted effort and duplicated work, hindering delivery timelines."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does a design system audit benefit startup teams using React?",
+          "answerMarkdown": "A design system audit identifies inconsistencies and accessibility issues in your UI, enabling you to streamline development. By creating a prioritized roadmap, you can focus on high-impact changes that facilitate faster shipping without accumulating UI debt."
+        },
+        {
+          "question": "What specific challenges do startup teams face with their design systems?",
+          "answerMarkdown": "Startup teams often deal with rapid iterations, leading to inconsistent component behavior and undocumented patterns. This can result in accessibility issues and misalignment between design and engineering, making a design system audit essential for maintaining quality."
+        },
+        {
+          "question": "What tools are recommended for conducting a design system audit in React?",
+          "answerMarkdown": "Utilize tools like Storybook for component visualization, Axe for accessibility testing, and collaborative platforms for stakeholder engagement. These tools help ensure a thorough and effective audit process."
+        }
+      ],
+      "related": [
+        {
+          "slug": "design-system-audit-react-designops",
+          "reasonMarkdown": "Read this if you're looking to integrate design operations into your React workflow."
+        },
+        {
+          "slug": "design-system-audit-react-enterprises",
+          "reasonMarkdown": "Read this if you're scaling your design system for enterprise-level applications."
+        },
+        {
+          "slug": "design-system-audit-react-product-teams",
+          "reasonMarkdown": "Read this if you're focused on enhancing product delivery through design system improvements."
+        },
+        {
+          "slug": "design-system-audit-react-scaleups",
+          "reasonMarkdown": "Read this if you're in a scale-up phase and need to refine your design system for growth."
+        },
+        {
+          "slug": "design-system-audit-figma-startups",
+          "reasonMarkdown": "Read this if you're using Figma and want to ensure alignment with your React components."
+        },
+        {
+          "slug": "design-system-audit-nextjs-startups",
+          "reasonMarkdown": "Read this if you're leveraging Next.js and need a cohesive design system."
+        },
+        {
+          "slug": "design-system-audit-storybook-startups",
+          "reasonMarkdown": "Read this if you're using Storybook and want to enhance your design system documentation."
+        },
+        {
+          "slug": "design-system-audit-typescript-startups",
+          "reasonMarkdown": "Read this if you're implementing TypeScript and need to ensure type safety in your design system."
+        }
+      ],
+      "updatedAt": "2026-05-31T23:58:15.931Z"
+    },
+    "design-system-audit-nextjs-startups": {
+      "introMarkdown": "Startup teams leveraging Next.js face unique challenges in maintaining a cohesive UI. A design system audit identifies inconsistencies and gaps in your current UI foundation, ensuring that your team can ship high-quality products rapidly. By focusing on actionable insights, this audit helps prioritize improvements that align with your fast-paced development cycles.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Design System Audit Playbook",
+          "bodyMarkdown": "1. **Inventory Existing Components**: Begin by cataloging all UI components currently in use across your applications. Use tools like Storybook to visualize and document these components.  \n2. **Evaluate Component Behavior**: Assess how components behave in different contexts. Identify discrepancies in functionality and appearance across squads.  \n3. **Accessibility Review**: Conduct an accessibility audit to pinpoint issues that may hinder user experience. Utilize tools like Axe or Lighthouse to automate parts of this process.  \n4. **Stakeholder Interviews**: Engage with design and engineering teams to clarify what is considered 'in the system.' Document differing perspectives to align on a unified definition.  \n5. **Token Consistency Check**: Review design tokens for naming conventions. Ensure that any renames are documented and communicated to avoid breaking changes across applications.  \n6. **Roadmap Creation**: Synthesize findings into a prioritized roadmap. Focus on high-impact, low-effort fixes that can be implemented quickly to reduce UI debt and enhance delivery speed."
+        },
+        {
+          "id": "situation",
+          "title": "Current Situation",
+          "bodyMarkdown": "Many startup teams using Next.js struggle with UI consistency. Components may look similar but behave differently, leading to confusion and increased development time. Accessibility issues often recur due to undocumented patterns, and misalignment between design and engineering teams can result in wasted effort. Inconsistent naming of design tokens can also disrupt multiple applications, creating a cycle of rework."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Common Failure Modes",
+          "bodyMarkdown": "1. **Inconsistent Component Usage**: Teams may unknowingly create duplicate components, leading to a fragmented user experience.  \n2. **Accessibility Oversights**: Without proper documentation, accessibility issues can persist, affecting user engagement and compliance.  \n3. **Miscommunication Between Teams**: Differing definitions of what constitutes a 'standard' can lead to friction and inefficiencies in the development process."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does a design system audit benefit startup teams using Next.js?",
+          "answerMarkdown": "A design system audit provides a clear inventory of your UI components, identifies inconsistencies, and creates a prioritized roadmap for improvements. This is crucial for startup teams needing to ship quickly without accruing UI debt."
+        },
+        {
+          "question": "What specific challenges does this audit address for small engineering teams?",
+          "answerMarkdown": "The audit tackles common pain points such as inconsistent component behavior, accessibility issues, and misalignment between design and engineering. By addressing these, teams can streamline their workflow and enhance product quality."
+        },
+        {
+          "question": "Can this audit help with performance and SEO in Next.js applications?",
+          "answerMarkdown": "Yes, the audit includes recommendations for optimizing component performance and aligning metadata with shared layout primitives, ensuring your applications are both fast and SEO-friendly."
+        }
+      ],
+      "related": [
+        {
+          "slug": "design-system-audit-nextjs-designops",
+          "reasonMarkdown": "Read this if you want to integrate design operations into your Next.js workflow."
+        },
+        {
+          "slug": "design-system-audit-nextjs-enterprises",
+          "reasonMarkdown": "Read this if you're scaling your design system for enterprise-level applications."
+        },
+        {
+          "slug": "design-system-audit-nextjs-product-teams",
+          "reasonMarkdown": "Read this if you're focused on product development and need a robust design foundation."
+        },
+        {
+          "slug": "design-system-audit-nextjs-scaleups",
+          "reasonMarkdown": "Read this if you're in a scale-up phase and need to optimize your design processes."
+        },
+        {
+          "slug": "design-system-audit-figma-startups",
+          "reasonMarkdown": "Read this if you're using Figma and want to ensure your designs translate effectively into code."
+        },
+        {
+          "slug": "design-system-audit-react-startups",
+          "reasonMarkdown": "Read this if you're also working with React and need insights applicable across frameworks."
+        },
+        {
+          "slug": "design-system-audit-storybook-startups",
+          "reasonMarkdown": "Read this if you're utilizing Storybook for component documentation and need to enhance your system."
+        },
+        {
+          "slug": "design-system-audit-typescript-startups",
+          "reasonMarkdown": "Read this if you're implementing TypeScript and want to ensure type safety in your design system."
+        }
+      ],
+      "updatedAt": "2026-05-31T23:58:27.891Z"
+    },
+    "design-system-audit-figma-scaleups": {
+      "introMarkdown": "Scaleup teams using Figma face unique challenges in maintaining a cohesive design system. As multiple squads work concurrently, inconsistencies in UI components and accessibility issues can hinder progress. A design system audit focuses on assessing your current UI foundation, identifying gaps, and creating a prioritized roadmap tailored to your specific needs. This audit not only aligns design and engineering but also ensures that your design system evolves alongside your product.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Audit Playbook Steps",
+          "bodyMarkdown": "1. **Inventory Current Components**: Review all existing components in Figma and compare them against the production UI. Identify discrepancies in appearance and behavior across squads.\n\n2. **User Impact Assessment**: Sample high-traffic user flows to evaluate the impact of inconsistencies. Score findings based on user experience and potential fix costs.\n\n3. **Accessibility Review**: Conduct an accessibility audit on the sampled flows. Document recurring issues and ensure patterns are well-defined and accessible.\n\n4. **Stakeholder Alignment**: Facilitate workshops with design and engineering teams to clarify what constitutes 'in the system'. Establish a shared understanding of component behavior and naming conventions.\n\n5. **Token Standardization**: Implement semantic tokens in Figma, avoiding hardcoded hex values. Ensure that component properties mirror code component names and variant props for seamless design-to-code alignment.\n\n6. **Changelog Implementation**: Develop a changelog for library updates that affect downstream files. This ensures all squads are informed of changes that may impact their work.\n\n7. **Prioritized Roadmap Creation**: Synthesize findings into a prioritized list of standards and actionable items. This roadmap should focus on removing rework while maintaining delivery timelines."
+        },
+        {
+          "id": "situation",
+          "title": "Current Landscape",
+          "bodyMarkdown": "Scaleup teams often operate with a mix of legacy and greenfield codebases, leading to inconsistencies in UI components. With 3+ product squads, the challenge is compounded by differing interpretations of design patterns and accessibility standards. Components may visually resemble one another but behave differently, resulting in user confusion and inefficiencies. Moreover, undocumented patterns lead to repeated accessibility issues, while inconsistent token naming can disrupt multiple applications. A design system audit is essential to address these pain points and create a unified approach."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Common Pitfalls",
+          "bodyMarkdown": "1. **Inconsistent Component Behavior**: Without a clear definition of components, squads may implement variations that lead to user confusion.\n\n2. **Accessibility Oversights**: Repeated issues arise when patterns are undocumented, causing teams to overlook critical accessibility standards.\n\n3. **Misalignment Between Design and Engineering**: Disagreements on what is 'in the system' can lead to wasted effort and frustration.\n\n4. **Token Naming Confusion**: Renaming tokens without a consistent strategy can break multiple applications, complicating the development process."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does a design system audit benefit scaleup teams using Figma?",
+          "answerMarkdown": "A design system audit helps scaleup teams identify inconsistencies in their UI components and accessibility issues. By creating a prioritized roadmap, teams can align design and engineering efforts, ensuring a more cohesive user experience across multiple squads."
+        },
+        {
+          "question": "What specific challenges does this audit address for teams with legacy and greenfield code?",
+          "answerMarkdown": "The audit addresses challenges such as inconsistent component behavior, repeated accessibility issues, and misalignment between design and engineering. By documenting patterns and establishing clear standards, teams can mitigate these issues effectively."
+        },
+        {
+          "question": "How does the Figma stack enhance the design system audit process?",
+          "answerMarkdown": "Using Figma allows for seamless design-to-code alignment. By implementing semantic tokens and ensuring component properties mirror code, teams can streamline the development process and reduce discrepancies between design and production."
+        }
+      ],
+      "related": [
+        {
+          "slug": "design-system-audit-figma-designops",
+          "reasonMarkdown": "Read this if you want to integrate design operations into your audit process."
+        },
+        {
+          "slug": "design-system-audit-figma-enterprises",
+          "reasonMarkdown": "Read this if you're scaling design systems in larger organizational contexts."
+        },
+        {
+          "slug": "design-system-audit-figma-product-teams",
+          "reasonMarkdown": "Read this if you're focused on enhancing product team collaboration."
+        },
+        {
+          "slug": "design-system-audit-figma-startups",
+          "reasonMarkdown": "Read this if you're a startup looking to establish a robust design foundation."
+        },
+        {
+          "slug": "design-system-audit-nextjs-scaleups",
+          "reasonMarkdown": "Read this if you're implementing Next.js and need a compatible design system."
+        },
+        {
+          "slug": "design-system-audit-react-scaleups",
+          "reasonMarkdown": "Read this if you're using React and want to ensure component consistency."
+        },
+        {
+          "slug": "design-system-audit-storybook-scaleups",
+          "reasonMarkdown": "Read this if you're leveraging Storybook for component documentation."
+        },
+        {
+          "slug": "design-system-audit-typescript-scaleups",
+          "reasonMarkdown": "Read this if you're developing with TypeScript and need to align your design system."
+        }
+      ],
+      "updatedAt": "2026-05-31T23:58:41.423Z"
+    },
+    "design-system-audit-typescript-enterprises": {
+      "introMarkdown": "Enterprise teams leveraging TypeScript face unique challenges in maintaining a cohesive design system. An audit reveals the discrepancies between design intentions and engineering implementations, ensuring alignment across squads. By identifying gaps and prioritizing actionable steps, teams can enhance governance, accessibility, and collaboration, ultimately leading to a more robust UI foundation.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Audit Playbook Steps",
+          "bodyMarkdown": "1. **Inventory Existing Components**: Catalog all UI components currently in use across applications. Utilize TypeScript's type-safe features to ensure accurate documentation of component properties and behaviors.\n\n2. **Evaluate Component Consistency**: Assess the visual and functional consistency of components. Identify discrepancies in behavior across squads, focusing on those that appear similar but function differently.\n\n3. **Accessibility Review**: Conduct an accessibility audit using automated tools and manual testing. Document recurring issues and prioritize fixes based on user impact.\n\n4. **Stakeholder Interviews**: Engage with design and engineering teams to clarify what constitutes 'in the system.' Gather insights on pain points and discrepancies in understanding.\n\n5. **Roadmap Development**: Create a prioritized roadmap that addresses identified gaps. Focus on standardizing component behavior, improving documentation, and establishing naming conventions for design tokens.\n\n6. **Implementation Strategy**: Recommend exporting discriminated unions for variant props to enhance type safety. Encourage generating documentation directly from TypeScript types using tools like Storybook docgen and TSDoc. Enforce strict mode for the library package to ensure consistency, even if app code transitions gradually."
+        },
+        {
+          "id": "situation",
+          "title": "Current Landscape",
+          "bodyMarkdown": "Enterprise teams often operate with multiple vendors and face long approval cycles, complicating design system governance. Components may look similar but behave inconsistently, leading to user confusion and increased rework. Accessibility issues frequently arise due to undocumented patterns, and disagreements between design and engineering teams hinder progress. A thorough audit is essential to align these teams and establish a unified approach."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Common Pitfalls",
+          "bodyMarkdown": "1. **Inconsistent Component Behavior**: Teams may unknowingly use similar components that function differently, leading to user frustration.\n\n2. **Undocumented Patterns**: Repeated accessibility issues often stem from a lack of documentation, resulting in non-compliance and poor user experiences.\n\n3. **Token Renaming Confusion**: Inconsistent naming conventions for design tokens can break multiple applications, complicating updates and maintenance."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does a design system audit benefit enterprise teams using TypeScript?",
+          "answerMarkdown": "A design system audit provides enterprise teams with a clear understanding of their current UI foundation, identifying gaps and inconsistencies. By leveraging TypeScript's type safety, teams can create a more predictable and maintainable component library, ultimately improving collaboration and reducing rework."
+        },
+        {
+          "question": "What specific challenges do enterprise teams face when implementing a design system with TypeScript?",
+          "answerMarkdown": "Enterprise teams often deal with multiple vendors, long approval cycles, and varying interpretations of design standards. These challenges can lead to inconsistent component behavior and accessibility issues, making a thorough audit essential for establishing a cohesive design system."
+        },
+        {
+          "question": "How can TypeScript enhance the effectiveness of a design system audit?",
+          "answerMarkdown": "TypeScript's type-safe features allow for better documentation and understanding of component APIs. By exporting discriminated unions and generating documentation from types, teams can ensure consistency and clarity, which are crucial for successful implementation and governance."
+        }
+      ],
+      "related": [
+        {
+          "slug": "design-system-audit-typescript-designops",
+          "reasonMarkdown": "Read this if you're focused on operationalizing design systems within TypeScript environments."
+        },
+        {
+          "slug": "design-system-audit-typescript-product-teams",
+          "reasonMarkdown": "Read this if you're part of a product team looking to streamline UI consistency and accessibility."
+        },
+        {
+          "slug": "design-system-audit-typescript-scaleups",
+          "reasonMarkdown": "Read this if you're scaling your design system and need to address growing complexity."
+        },
+        {
+          "slug": "design-system-audit-typescript-startups",
+          "reasonMarkdown": "Read this if you're a startup aiming to establish a strong design foundation from the outset."
+        },
+        {
+          "slug": "design-system-audit-figma-enterprises",
+          "reasonMarkdown": "Read this if you're integrating Figma designs into your TypeScript-based design system."
+        },
+        {
+          "slug": "design-system-audit-nextjs-enterprises",
+          "reasonMarkdown": "Read this if you're using Next.js and need to align your design system with server-side rendering."
+        },
+        {
+          "slug": "design-system-audit-react-enterprises",
+          "reasonMarkdown": "Read this if you're implementing a design system in a React environment with TypeScript."
+        },
+        {
+          "slug": "design-system-audit-storybook-enterprises",
+          "reasonMarkdown": "Read this if you're utilizing Storybook for documenting your TypeScript components."
+        }
+      ],
+      "updatedAt": "2026-05-31T23:58:54.568Z"
+    },
+    "design-tokens-setup-react-startups": {
+      "introMarkdown": "For startup teams leveraging React, establishing a robust design token setup is crucial for maintaining design consistency and accelerating development. By defining tokens that bridge design and code, teams can create a scalable theming foundation that adapts to brand changes without extensive refactoring. This approach minimizes UI debt, enabling rapid delivery of shippable UI components while ensuring alignment between design and engineering.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Playbook Steps",
+          "bodyMarkdown": "1. **Define Design Tokens**: Start by identifying your design primitives—colors, typography, spacing, and elevation. Use a consistent naming convention that aligns with Figma variables to avoid discrepancies.  \n2. **Map Tokens to Components**: Create a mapping of your design tokens to React components. Utilize CSS Modules or styled-components to colocate styles, ensuring that each component pulls from the defined tokens.  \n3. **Implement Theming**: Design your theme structure to support dark mode from the outset. Use semantic tokens to manage theme variations, allowing for easy updates without altering component files.  \n4. **Integrate with CI/CD**: Wire your Figma variables to your CI pipeline, enabling automated validation of design decisions against code. This ensures that any changes in design are reflected in the codebase without manual intervention.  \n5. **Test Accessibility**: Conduct thorough testing for keyboard navigation and screen-reader compatibility. This step is crucial for ensuring that your UI is usable for all users, not just visually compliant.  \n6. **Iterate and Refine**: As your product evolves, continuously revisit your tokens and component mappings. Gather feedback from designers and developers to refine the system, ensuring it remains aligned with your brand and user needs."
+        },
+        {
+          "id": "situation",
+          "title": "Situation",
+          "bodyMarkdown": "Startup teams often face the challenge of rapid development cycles while maintaining design integrity. With limited resources, the need for a cohesive design system becomes paramount. Misalignment between design tools like Figma and code can lead to inconsistencies, making it difficult to implement brand updates or new features efficiently."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Failure Modes",
+          "bodyMarkdown": "1. **Inconsistent Naming**: When design tokens and code use different names, it leads to confusion and implementation errors.  \n2. **Bolted-on Dark Mode**: Treating dark mode as an afterthought results in a disjointed user experience.  \n3. **Manual Updates**: Relying on manual find-and-replace for brand updates can introduce errors and slow down the development process.  \n4. **Undefined Primitives**: Without clear definitions for spacing and typography, visual elements may drift, leading to a fragmented UI."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How do design tokens benefit startup teams using React?",
+          "answerMarkdown": "Design tokens provide a unified language between design and development, allowing startup teams to implement consistent UI elements quickly. This alignment reduces the risk of UI debt and accelerates the delivery of shippable components."
+        },
+        {
+          "question": "What challenges do startup teams face when implementing design tokens?",
+          "answerMarkdown": "Common challenges include discrepancies between design tools and code, the complexity of managing themes like dark mode, and the need for manual updates across multiple repositories. A well-defined token strategy addresses these issues."
+        },
+        {
+          "question": "Can design tokens help with accessibility in React applications?",
+          "answerMarkdown": "Yes, by establishing a consistent design language and ensuring that components are built with accessibility in mind, design tokens can enhance the usability of React applications for all users, including those relying on assistive technologies."
+        }
+      ],
+      "related": [
+        {
+          "slug": "design-tokens-setup-react-designops",
+          "reasonMarkdown": "Read this if you're looking to streamline design operations alongside your token setup."
+        },
+        {
+          "slug": "design-tokens-setup-react-enterprises",
+          "reasonMarkdown": "Read this if you're scaling design tokens for larger enterprise applications."
+        },
+        {
+          "slug": "design-tokens-setup-react-product-teams",
+          "reasonMarkdown": "Read this if you're part of a product team needing rapid iteration with design tokens."
+        },
+        {
+          "slug": "design-tokens-setup-react-scaleups",
+          "reasonMarkdown": "Read this if you're transitioning from startup to scaleup and need to refine your design system."
+        },
+        {
+          "slug": "design-tokens-setup-figma-startups",
+          "reasonMarkdown": "Read this if you're using Figma and want to align your design tokens with your React components."
+        },
+        {
+          "slug": "design-tokens-setup-nextjs-startups",
+          "reasonMarkdown": "Read this if you're implementing design tokens in a Next.js environment."
+        },
+        {
+          "slug": "design-tokens-setup-storybook-startups",
+          "reasonMarkdown": "Read this if you're documenting your components with Storybook while using design tokens."
+        },
+        {
+          "slug": "design-tokens-setup-typescript-startups",
+          "reasonMarkdown": "Read this if you're working with TypeScript and want to ensure type safety in your design tokens."
+        }
+      ],
+      "updatedAt": "2026-05-31T23:59:09.216Z"
+    },
+    "component-library-build-storybook-enterprises": {
+      "introMarkdown": "Building a component library for enterprise teams using Storybook requires a strategic approach that prioritizes accessibility, governance, and alignment across multiple squads. The goal is to create production-ready components that not only meet design standards but also reflect real-world usage. By focusing on how teams actually compose UI, we can ensure that the library is adopted and utilized effectively, reducing discrepancies in component implementation across the organization.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Component Library Playbook",
+          "bodyMarkdown": "1. **Define Composition Patterns**: Start by analyzing existing UI components across squads. Identify common patterns and establish a baseline for how components should be composed. This reduces variance and ensures consistency.\n\n2. **Create Realistic Stories**: In Storybook, develop stories that reflect actual product compositions rather than isolated components. This involves integrating multiple components to showcase their interactions and behaviors in a real-world context.\n\n3. **Document Meaningful Props**: Ensure that all meaningful props are documented clearly in Storybook. Internal props should be hidden to avoid confusion. This documentation should include usage examples and edge cases to facilitate understanding.\n\n4. **Implement Visual Regression Testing**: Set up visual regression tests for components that exceed a defined traffic threshold. This ensures that any visual changes are caught early in the development process, reducing the risk of regressions slipping through.\n\n5. **Pilot with One Squad**: Before rolling out the component library organization-wide, pilot the implementation with a single squad. Gather feedback and make necessary adjustments to improve usability and adoption.\n\n6. **Focus on Accessibility**: Ensure that all components meet accessibility standards. Document keyboard behaviors and failure states, not just the happy path, to provide a comprehensive understanding of component functionality."
+        },
+        {
+          "id": "situation",
+          "title": "Current Situation",
+          "bodyMarkdown": "Enterprise teams often face challenges with component consistency, especially when multiple squads are involved. Each squad may implement slightly different versions of buttons, forms, and modals, leading to a fragmented user experience. Additionally, while Storybook is available, the stories often do not align with production usage, making it difficult for teams to leverage the library effectively. The organic growth of Props APIs can create a steep learning curve, and manual testing for visual regressions can result in missed issues."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Potential Failure Modes",
+          "bodyMarkdown": "1. **Inconsistent Component Usage**: If squads do not adhere to defined composition patterns, discrepancies will continue to arise, undermining the library's effectiveness.\n\n2. **Poor Documentation**: Inadequate documentation of props and usage can lead to confusion and misuse of components, resulting in a lack of adoption.\n\n3. **Neglected Accessibility**: Failing to prioritize accessibility can alienate users and create compliance issues, particularly in enterprise environments with strict procurement standards."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does this service address component consistency across teams?",
+          "answerMarkdown": "By defining composition patterns and creating realistic stories in Storybook, we ensure that all squads are aligned on how components should be implemented, reducing discrepancies and fostering a unified user experience."
+        },
+        {
+          "question": "What measures are taken to ensure accessibility compliance?",
+          "answerMarkdown": "Accessibility is prioritized by documenting keyboard behaviors and failure states for each component. This ensures that all components meet necessary standards and are usable by all individuals, aligning with enterprise procurement requirements."
+        },
+        {
+          "question": "How does visual regression testing fit into the component library build?",
+          "answerMarkdown": "Visual regression testing is integrated for components that exceed a specific traffic threshold, allowing teams to catch visual discrepancies early in the development process and maintain a high-quality user interface."
+        }
+      ],
+      "related": [
+        {
+          "slug": "component-library-build-storybook-designops",
+          "reasonMarkdown": "Read this if you want to streamline design operations with a cohesive component library."
+        },
+        {
+          "slug": "component-library-build-storybook-product-teams",
+          "reasonMarkdown": "Read this if you're part of a product team looking to enhance component consistency."
+        },
+        {
+          "slug": "component-library-build-storybook-scaleups",
+          "reasonMarkdown": "Read this if you're scaling your design system and need robust governance."
+        },
+        {
+          "slug": "component-library-build-storybook-startups",
+          "reasonMarkdown": "Read this if you're a startup aiming for rapid component development with Storybook."
+        },
+        {
+          "slug": "component-library-build-figma-enterprises",
+          "reasonMarkdown": "Read this if you need to integrate Figma designs with your component library."
+        },
+        {
+          "slug": "component-library-build-nextjs-enterprises",
+          "reasonMarkdown": "Read this if you're implementing a component library in a Next.js environment."
+        },
+        {
+          "slug": "component-library-build-react-enterprises",
+          "reasonMarkdown": "Read this if you're building a React-based component library for enterprise use."
+        },
+        {
+          "slug": "component-library-build-typescript-enterprises",
+          "reasonMarkdown": "Read this if you're developing a TypeScript component library to enhance type safety."
+        }
+      ],
+      "updatedAt": "2026-06-01T00:03:22.701Z"
+    },
+    "design-tokens-setup-figma-product-teams": {
+      "introMarkdown": "Establishing a robust design token setup in Figma is essential for product teams aiming to streamline design-to-code workflows. By aligning design and code through semantic tokens, teams can enhance user experience while reducing regression issues. This approach not only facilitates faster shipping but also ensures that design updates are manageable, even under OKR pressures. With a focus on scalability and maintainability, this playbook provides actionable steps tailored for mixed-skill teams navigating the complexities of modern design systems.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Playbook Steps",
+          "bodyMarkdown": "1. **Define Primitive Tokens**: Start by identifying the foundational styles such as colors, typography, and spacing. Use consistent naming conventions that reflect their purpose. For instance, instead of hardcoding hex values, create semantic variables like `--color-primary`.\n\n2. **Map to Semantic Tokens**: Translate primitive tokens into semantic tokens that represent design decisions. For example, map `--color-primary` to `--color-button-background`. This ensures clarity in design and code alignment.\n\n3. **Implement in Figma**: Use Figma's variable system to create these tokens. Ensure that component properties mirror the semantic token names, allowing designers to easily apply them without confusion.\n\n4. **Dark Mode Planning**: Design dark mode as a core theme rather than an afterthought. Create separate semantic tokens for dark mode that align with your light mode counterparts, ensuring a seamless transition between themes.\n\n5. **Version Control and Changelog**: Establish a version control system for your design tokens. Publish a changelog whenever updates are made that affect downstream files, ensuring all team members are aware of changes and can adapt accordingly."
+        },
+        {
+          "id": "situation",
+          "title": "Current Challenges",
+          "bodyMarkdown": "Product teams often face significant hurdles when integrating design tokens into their workflows. Figma variables and CSS custom properties frequently use different naming conventions, leading to confusion and inconsistencies. Additionally, dark mode is often treated as an add-on rather than a fully integrated theme, complicating the design process. Manual updates for brand changes across multiple repositories can be time-consuming and error-prone. Furthermore, undefined spacing and typography primitives can lead to visual drift, undermining the overall design integrity."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Common Pitfalls",
+          "bodyMarkdown": "1. **Inconsistent Naming**: Failing to align naming conventions between design and code can lead to confusion and errors. Ensure that all team members understand and adhere to the established naming standards.\n\n2. **Neglecting Dark Mode**: Treating dark mode as an afterthought can result in a disjointed user experience. Plan for it from the outset to ensure a cohesive design.\n\n3. **Manual Updates**: Relying on manual find-and-replace for brand updates can introduce errors. Use semantic tokens to streamline this process and minimize the risk of oversight."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How do design tokens improve collaboration between designers and developers?",
+          "answerMarkdown": "Design tokens create a shared language between designers and developers, reducing miscommunication. By using semantic tokens that both teams understand, the risk of inconsistencies is minimized, leading to a smoother workflow."
+        },
+        {
+          "question": "What are the key benefits of using Figma for design tokens?",
+          "answerMarkdown": "Figma's variable system allows for easy implementation of design tokens, enabling real-time updates and collaboration. This ensures that design changes are immediately reflected in the code, facilitating faster iterations."
+        },
+        {
+          "question": "How can we ensure our design tokens are scalable?",
+          "answerMarkdown": "To achieve scalability, define a clear hierarchy of tokens from primitive to semantic. Regularly review and update your tokens based on user feedback and design evolution, ensuring they remain relevant and effective."
+        }
+      ],
+      "related": [
+        {
+          "slug": "design-tokens-setup-figma-designops",
+          "reasonMarkdown": "Read this if you want to optimize design operations with a focus on token management."
+        },
+        {
+          "slug": "design-tokens-setup-figma-enterprises",
+          "reasonMarkdown": "Read this if you're part of a large organization needing scalable design solutions."
+        },
+        {
+          "slug": "design-tokens-setup-figma-scaleups",
+          "reasonMarkdown": "Read this if you're in a growing company looking to enhance design consistency."
+        },
+        {
+          "slug": "design-tokens-setup-figma-startups",
+          "reasonMarkdown": "Read this if you're in a startup environment needing rapid design iterations."
+        },
+        {
+          "slug": "design-tokens-setup-nextjs-product-teams",
+          "reasonMarkdown": "Read this if you're integrating design tokens with Next.js for streamlined development."
+        },
+        {
+          "slug": "design-tokens-setup-react-product-teams",
+          "reasonMarkdown": "Read this if you're using React and want to align your design tokens effectively."
+        },
+        {
+          "slug": "design-tokens-setup-storybook-product-teams",
+          "reasonMarkdown": "Read this if you're utilizing Storybook to document and showcase your design tokens."
+        },
+        {
+          "slug": "design-tokens-setup-typescript-product-teams",
+          "reasonMarkdown": "Read this if you're working with TypeScript and need to ensure type safety in your design tokens."
+        }
+      ],
+      "updatedAt": "2026-06-01T00:04:40.607Z"
+    },
+    "design-tokens-setup-typescript-scaleups": {
+      "introMarkdown": "For scaleup teams leveraging TypeScript, establishing a robust design token setup is crucial for maintaining consistency across multiple product squads. This approach not only aligns design and code but also facilitates a scalable theming foundation. By addressing common pain points such as naming discrepancies and manual updates, teams can streamline their workflows and enhance collaboration between design and development.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Implementation Steps",
+          "bodyMarkdown": "1. **Define Design Tokens**: Start by creating a clear mapping of design tokens that includes colors, typography, spacing, and other UI elements. Ensure that these tokens are named consistently across Figma and TypeScript to avoid confusion.\n\n2. **Utilize TypeScript Types**: Implement TypeScript's discriminated unions for variant props instead of using loose strings. This ensures type safety and reduces errors during development.\n\n3. **Integrate Figma Variables**: Wire Figma variables directly to your TypeScript exports. This allows for real-time validation in your CI pipeline, ensuring that design changes are reflected in code without manual intervention.\n\n4. **Plan for Dark Mode**: Design dark mode as a core theme rather than an afterthought. Create semantic tokens that can easily switch between light and dark themes, ensuring a seamless user experience.\n\n5. **Automate Documentation**: Generate documentation from your TypeScript types using tools like Storybook docgen and TSDoc. This keeps your documentation in sync with your codebase and reduces the overhead of manual updates.\n\n6. **Enforce Strict Mode**: Implement strict mode for your library package, even if your application code is gradually adopting TypeScript. This will help catch potential issues early and enforce best practices across your teams."
+        },
+        {
+          "id": "situation",
+          "title": "Current Challenges",
+          "bodyMarkdown": "Scaleup teams often face challenges when integrating design tokens into their workflows. With multiple product squads working on both legacy and greenfield code, inconsistencies arise from differing naming conventions between design tools and code. Additionally, dark mode is frequently added as an afterthought, leading to a disjointed user experience. Manual updates for brand changes across repositories can be time-consuming and error-prone, while undefined spacing and typography primitives can lead to visual drift."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Common Pitfalls",
+          "bodyMarkdown": "1. **Inconsistent Naming**: When design and code use different names for the same tokens, it leads to confusion and errors. Establish a clear naming convention early on.\n\n2. **Neglecting Dark Mode**: Failing to design dark mode as a core theme can result in a poor user experience. Plan for it from the start to ensure consistency.\n\n3. **Manual Updates**: Relying on manual find-and-replace for brand updates can introduce bugs. Use semantic tokens to automate this process and minimize risk."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How do design tokens improve collaboration between design and development teams?",
+          "answerMarkdown": "Design tokens create a shared vocabulary between design and development, ensuring that both teams are aligned on the same visual language. By using consistent naming conventions and integrating Figma variables with TypeScript, teams can reduce misunderstandings and streamline their workflows."
+        },
+        {
+          "question": "What are the benefits of using TypeScript for design tokens?",
+          "answerMarkdown": "TypeScript provides type safety, which helps catch errors early in the development process. By using discriminated unions for variant props, teams can ensure that only valid values are used, reducing the likelihood of runtime errors and improving overall code quality."
+        },
+        {
+          "question": "How can we effectively manage dark mode in our design token setup?",
+          "answerMarkdown": "To manage dark mode effectively, design it as a core theme from the outset. Create semantic tokens that can easily switch between light and dark modes, ensuring a cohesive user experience. This approach prevents dark mode from being an afterthought and integrates it seamlessly into your design system."
+        }
+      ],
+      "related": [
+        {
+          "slug": "design-tokens-setup-typescript-designops",
+          "reasonMarkdown": "Read this if you're looking to streamline design operations with TypeScript."
+        },
+        {
+          "slug": "design-tokens-setup-typescript-enterprises",
+          "reasonMarkdown": "Read this if you're part of an enterprise needing scalable design solutions."
+        },
+        {
+          "slug": "design-tokens-setup-typescript-product-teams",
+          "reasonMarkdown": "Read this if you're a product team aiming for consistency across multiple squads."
+        },
+        {
+          "slug": "design-tokens-setup-typescript-startups",
+          "reasonMarkdown": "Read this if you're a startup looking to establish a solid design foundation."
+        },
+        {
+          "slug": "design-tokens-setup-figma-scaleups",
+          "reasonMarkdown": "Read this if you want to integrate Figma with your design token strategy."
+        },
+        {
+          "slug": "design-tokens-setup-nextjs-scaleups",
+          "reasonMarkdown": "Read this if you're using Next.js and want to enhance your design token setup."
+        },
+        {
+          "slug": "design-tokens-setup-react-scaleups",
+          "reasonMarkdown": "Read this if you're working with React and need a cohesive design system."
+        },
+        {
+          "slug": "design-tokens-setup-storybook-scaleups",
+          "reasonMarkdown": "Read this if you're using Storybook for documentation and want to integrate design tokens."
+        }
+      ],
+      "updatedAt": "2026-06-01T00:05:58.458Z"
+    },
+    "ai-designops-automation-storybook-designops": {
+      "introMarkdown": "AI-powered DesignOps automation enhances the efficiency of DesignOps teams utilizing Storybook. By automating workflows, reducing design debt, and ensuring consistent execution, teams can focus on delivering high-quality designs without the bottlenecks of manual processes. This playbook provides actionable insights tailored for DesignOps teams, addressing common pain points and leveraging Storybook's capabilities to streamline operations.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Playbook Steps",
+          "bodyMarkdown": "1. **Assess Current Workflows**: Identify existing bottlenecks in design reviews and handoffs. Document where time is lost, focusing on spec, build, review, and release phases.\n\n2. **Define Automation Scope**: Determine which workflows can be automated. Prioritize those that yield the highest ROI and reduce design debt.\n\n3. **Implement Storybook Stories**: Create stories that reflect real product compositions rather than isolated components. Ensure every meaningful prop is documented, while hiding internal ones to maintain clarity.\n\n4. **Integrate Visual Regression Testing**: Wire visual regression tests on pull requests for components exceeding a defined traffic threshold. This ensures that changes are validated against existing designs, catching drift early.\n\n5. **Establish Guardrails**: Clearly define what agents may change, what requires human review, and how drift is monitored in CI. This clarity helps maintain quality while scaling automation.\n\n6. **Iterate and Scale**: After automating one workflow end-to-end, analyze results and iterate. Gradually scale automation across additional workflows, ensuring throughput gains do not compromise error rates."
+        },
+        {
+          "id": "situation",
+          "title": "Current Landscape",
+          "bodyMarkdown": "DesignOps teams face increasing pressure to deliver high-quality designs rapidly. However, as output scales, headcount often does not keep pace, leading to review bottlenecks. Handoffs still rely on outdated methods like screenshots and Slack threads, creating a fragmented source of truth. This environment fosters the accumulation of design debt, which manual QA struggles to manage effectively. Implementing AI-powered automation with Storybook can address these challenges, providing a cohesive solution that enhances throughput and consistency."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Common Pitfalls",
+          "bodyMarkdown": "1. **Neglecting Documentation**: Failing to document controls for props can lead to confusion and errors during development. Ensure all meaningful props are clearly defined.\n\n2. **Overlooking Visual Regression**: Not implementing visual regression testing can result in unnoticed drift, causing inconsistencies in the final product. Prioritize this step to maintain design integrity.\n\n3. **Scaling Without Strategy**: Automating workflows without a clear understanding of existing pain points can exacerbate issues. Start with a focused approach, addressing the most critical workflows first."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does AI-powered automation improve DesignOps workflows?",
+          "answerMarkdown": "AI-powered automation streamlines repetitive tasks, reduces manual intervention, and enhances consistency in design execution. By integrating with Storybook, teams can automate visual regression testing and documentation, allowing designers to focus on creative work rather than administrative overhead."
+        },
+        {
+          "question": "What role does Storybook play in DesignOps automation?",
+          "answerMarkdown": "Storybook serves as a central hub for component-driven development, enabling teams to document and visualize components effectively. By leveraging Storybook's capabilities, DesignOps teams can automate workflows, ensuring that design changes are validated and consistent across the board."
+        },
+        {
+          "question": "How can DesignOps teams prove ROI from automation?",
+          "answerMarkdown": "ROI can be demonstrated through metrics such as reduced design debt, faster review cycles, and improved throughput. By automating key workflows, teams can track time saved and increased output, providing tangible evidence of the benefits of AI-powered DesignOps automation."
+        }
+      ],
+      "related": [
+        {
+          "slug": "ai-designops-automation-storybook-enterprises",
+          "reasonMarkdown": "Read this if you're in an enterprise setting looking to scale DesignOps efficiently."
+        },
+        {
+          "slug": "ai-designops-automation-storybook-product-teams",
+          "reasonMarkdown": "Read this if you're part of a product team needing to streamline design processes."
+        },
+        {
+          "slug": "ai-designops-automation-storybook-scaleups",
+          "reasonMarkdown": "Read this if you're in a scale-up environment aiming to enhance design throughput."
+        },
+        {
+          "slug": "ai-designops-automation-storybook-startups",
+          "reasonMarkdown": "Read this if you're a startup seeking cost-effective DesignOps solutions."
+        },
+        {
+          "slug": "ai-designops-automation-figma-designops",
+          "reasonMarkdown": "Read this if you're integrating Figma into your DesignOps workflows."
+        },
+        {
+          "slug": "ai-designops-automation-nextjs-designops",
+          "reasonMarkdown": "Read this if you're leveraging Next.js in your design and development processes."
+        },
+        {
+          "slug": "ai-designops-automation-react-designops",
+          "reasonMarkdown": "Read this if you're utilizing React and want to optimize your DesignOps."
+        },
+        {
+          "slug": "ai-designops-automation-typescript-designops",
+          "reasonMarkdown": "Read this if you're working with TypeScript and need to enhance your DesignOps efficiency."
+        }
+      ],
+      "updatedAt": "2026-06-01T00:07:21.308Z"
+    },
+    "ai-designops-automation-nextjs-designops": {
+      "introMarkdown": "AI-powered DesignOps automation leverages Next.js to streamline workflows, reduce design debt, and enhance execution consistency. Tailored for DesignOps teams, this approach addresses common pain points such as design review bottlenecks and fragmented communication. By integrating automation into your design processes, you can ensure that your team operates efficiently, even under budget scrutiny, while proving ROI through measurable improvements.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Playbook for AI-Powered DesignOps Automation",
+          "bodyMarkdown": "1. **Identify Bottlenecks**: Conduct a thorough analysis of your current design workflow. Pinpoint areas where delays occur, such as design reviews and handoffs. Use analytics tools to gather data on time spent in each phase.\n\n2. **Define Automation Points**: Based on your analysis, determine which tasks can be automated. Focus on repetitive tasks like asset management and feedback collection. Leverage Next.js features like dynamic imports to optimize performance for client-only components.\n\n3. **Implement Guardrails**: Establish clear guidelines on what can be automated and what requires human oversight. Document these guardrails in your design system to ensure all team members are aligned.\n\n4. **Integrate CI/CD**: Utilize Continuous Integration/Continuous Deployment (CI/CD) practices to automate testing and deployment. This helps catch design drift early and ensures that updates are consistent across all platforms.\n\n5. **Monitor and Iterate**: After implementing automation, continuously monitor the workflow for improvements. Gather feedback from designers and adjust the automation processes as necessary to enhance efficiency."
+        },
+        {
+          "id": "situation",
+          "title": "Current Situation",
+          "bodyMarkdown": "DesignOps teams face increasing pressure to deliver high-quality outputs quickly. With limited resources, the risk of design debt accumulation rises, leading to inefficiencies. Traditional handoff methods, such as screenshots and Slack threads, create confusion and slow down the process. A lack of a single source of truth exacerbates these issues, making it difficult to track changes and maintain consistency."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Common Failure Modes",
+          "bodyMarkdown": "1. **Inconsistent Outputs**: Without automation, design outputs can vary significantly, leading to brand inconsistency.\n\n2. **Increased Design Debt**: Manual processes often result in unaddressed design debt, which compounds over time and becomes harder to manage.\n\n3. **Communication Breakdowns**: Relying on fragmented communication tools can lead to misunderstandings and missed feedback, further delaying project timelines."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does AI-powered automation improve DesignOps workflows?",
+          "answerMarkdown": "AI-powered automation streamlines repetitive tasks, allowing designers to focus on high-value work. By integrating with Next.js, teams can automate handoffs and reviews, reducing bottlenecks and enhancing throughput."
+        },
+        {
+          "question": "What role does Next.js play in this automation?",
+          "answerMarkdown": "Next.js provides a robust framework for building performant applications. Its features, like dynamic imports and optimized routing, enhance the user experience while supporting the automation of design workflows."
+        },
+        {
+          "question": "How can I measure the ROI of implementing this service?",
+          "answerMarkdown": "ROI can be measured by tracking improvements in throughput, reduction in design debt, and time saved in the review process. Establish baseline metrics before implementation to quantify the impact of automation."
+        }
+      ],
+      "related": [
+        {
+          "slug": "ai-designops-automation-nextjs-enterprises",
+          "reasonMarkdown": "Read this if your enterprise needs scalable DesignOps solutions."
+        },
+        {
+          "slug": "ai-designops-automation-nextjs-product-teams",
+          "reasonMarkdown": "Read this if you're a product team looking to enhance design efficiency."
+        },
+        {
+          "slug": "ai-designops-automation-nextjs-scaleups",
+          "reasonMarkdown": "Read this if your scaleup is facing growing design challenges."
+        },
+        {
+          "slug": "ai-designops-automation-nextjs-startups",
+          "reasonMarkdown": "Read this if you're a startup aiming to establish efficient design processes."
+        },
+        {
+          "slug": "ai-designops-automation-figma-designops",
+          "reasonMarkdown": "Read this if you use Figma and want to integrate automation."
+        },
+        {
+          "slug": "ai-designops-automation-react-designops",
+          "reasonMarkdown": "Read this if you're leveraging React in your DesignOps strategy."
+        },
+        {
+          "slug": "ai-designops-automation-storybook-designops",
+          "reasonMarkdown": "Read this if you're using Storybook for component management."
+        },
+        {
+          "slug": "ai-designops-automation-typescript-designops",
+          "reasonMarkdown": "Read this if your team is implementing TypeScript in your design workflows."
+        }
+      ],
+      "updatedAt": "2026-06-01T00:08:35.326Z"
+    },
+    "component-library-build-react-scaleups": {
+      "introMarkdown": "Scaleup teams face unique challenges when building a component library in React. With multiple squads shipping components, inconsistencies arise in UI elements like buttons and forms. This playbook provides a structured approach to create a cohesive, production-ready component library that emphasizes accessibility, documentation, and governance. By aligning on best practices and leveraging modern React capabilities, teams can streamline their workflows and enhance collaboration across legacy and greenfield projects.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Playbook Steps",
+          "bodyMarkdown": "1. **Define Core Components**: Identify the most frequently used UI elements across squads. Prioritize components based on traffic and accessibility risk.  \n2. **Establish Composition Patterns**: Use compound components to manage complex UIs without overwhelming prop APIs. This approach simplifies usage and enhances readability.  \n3. **Implement CSS Modules or Tokens**: Colocate styles with components to ensure consistency and avoid inline one-offs. This practice aids in maintainability and scalability.  \n4. **Integrate Accessibility Testing**: Test keyboard and screen-reader behavior alongside visual snapshots. Ensure that all components meet accessibility standards before deployment.  \n5. **Pilot with One Squad**: Launch the component library with a single squad to gather feedback and iterate. This step helps identify pain points and areas for improvement before broader adoption.  \n6. **Document Thoroughly**: Create documentation that covers not just the happy path but also keyboard behavior and failure states. This ensures all squads can effectively utilize the library."
+        },
+        {
+          "id": "situation",
+          "title": "Current Challenges",
+          "bodyMarkdown": "Scaleup teams often struggle with inconsistent UI elements due to multiple squads working in parallel. Each squad may implement buttons, forms, and modals differently, leading to a fragmented user experience. Existing Storybook instances may not accurately reflect production usage, complicating onboarding and knowledge transfer. As prop APIs evolve organically, they can become unwieldy, making it difficult for developers to learn and utilize components effectively. Additionally, manual testing processes can result in visual regressions slipping through, impacting the overall quality of the product."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Potential Pitfalls",
+          "bodyMarkdown": "1. **Inconsistent Component Usage**: Without clear guidelines, squads may continue to create their own versions of components, leading to a lack of uniformity.  \n2. **Overcomplicated APIs**: Allowing prop APIs to grow unchecked can confuse developers, making it hard to understand how to use components correctly.  \n3. **Neglecting Accessibility**: Failing to prioritize accessibility testing can alienate users and create compliance issues.  \n4. **Insufficient Documentation**: Inadequate documentation can hinder adoption and lead to misuse of components, ultimately affecting the user experience."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does this component library address the needs of scaleup teams?",
+          "answerMarkdown": "The component library is designed specifically for scaleup teams by standardizing UI elements across multiple squads. It emphasizes accessibility and thorough documentation, ensuring that all team members can effectively use the components regardless of their experience level."
+        },
+        {
+          "question": "What are the key benefits of using React for our component library?",
+          "answerMarkdown": "React's modern component architecture allows for predictable composition and typed props, which simplifies the development process. This leads to a more maintainable codebase and enhances collaboration among squads, especially when legacy and greenfield code coexist."
+        },
+        {
+          "question": "How can we ensure our components remain consistent and accessible?",
+          "answerMarkdown": "By implementing strict governance around component design and usage, and by integrating accessibility testing into the development process, teams can maintain consistency and ensure that all components meet necessary accessibility standards."
+        }
+      ],
+      "related": [
+        {
+          "slug": "component-library-build-react-designops",
+          "reasonMarkdown": "Read this if you want to align design operations with component development."
+        },
+        {
+          "slug": "component-library-build-react-enterprises",
+          "reasonMarkdown": "Read this if you're scaling component libraries in enterprise environments."
+        },
+        {
+          "slug": "component-library-build-react-product-teams",
+          "reasonMarkdown": "Read this if you're part of product teams looking to unify UI across products."
+        },
+        {
+          "slug": "component-library-build-react-startups",
+          "reasonMarkdown": "Read this if you're a startup aiming for rapid UI development with React."
+        },
+        {
+          "slug": "component-library-build-figma-scaleups",
+          "reasonMarkdown": "Read this if you want to integrate Figma designs with your component library."
+        },
+        {
+          "slug": "component-library-build-nextjs-scaleups",
+          "reasonMarkdown": "Read this if you're using Next.js and want to enhance your component library."
+        },
+        {
+          "slug": "component-library-build-storybook-scaleups",
+          "reasonMarkdown": "Read this if you're looking to improve Storybook integration with your components."
+        },
+        {
+          "slug": "component-library-build-typescript-scaleups",
+          "reasonMarkdown": "Read this if you want to leverage TypeScript for better type safety in your components."
+        }
+      ],
+      "updatedAt": "2026-06-01T00:11:35.281Z"
+    },
+    "component-library-build-nextjs-product-teams": {
+      "introMarkdown": "Building a component library for product teams using Next.js requires a focus on accessibility, documentation, and governance. This playbook addresses the unique challenges faced by squads under OKR pressure, ensuring that components are consistent, reusable, and easy to integrate. By leveraging Next.js, we can create a performant UI system that enhances user experience while reducing visual regressions and mismatched implementations across teams.",
+      "sections": [
+        {
+          "id": "playbook",
+          "title": "Component Library Playbook",
+          "bodyMarkdown": "1. **Define Core Components**: Start by identifying the most commonly used UI elements across squads, such as buttons, forms, and modals. Use analytics to prioritize components based on traffic and accessibility risk.\n\n2. **Establish Composition Patterns**: Before creating variants, define how these components will be composed. This prevents unnecessary complexity and ensures that all teams are on the same page.\n\n3. **Implement Accessibility Standards**: Ensure all components meet WCAG guidelines. Document keyboard interactions and failure states to provide a comprehensive understanding of component behavior.\n\n4. **Utilize Next.js Features**: Separate server and client component boundaries in your documentation. Use dynamic imports for heavy client-only widgets to optimize performance on marketing surfaces.\n\n5. **Pilot with One Squad**: Test the library with a single squad to gather feedback and iterate. This allows for adjustments before a wider rollout.\n\n6. **Documentation and Governance**: Create thorough documentation that covers not just the happy path but also edge cases. Establish governance to maintain consistency and quality as the library evolves."
+        },
+        {
+          "id": "situation",
+          "title": "Current Challenges",
+          "bodyMarkdown": "Product teams face inconsistencies in UI components, leading to a fragmented user experience. Each squad tends to implement buttons, forms, and modals differently, which complicates maintenance and user interaction. Storybook may exist, but the stories often do not reflect actual production usage, creating confusion. As props APIs grow organically, they become difficult to learn and use effectively. Manual testing leads to visual regressions slipping through, impacting the overall quality of the product."
+        },
+        {
+          "id": "failure-modes",
+          "title": "Potential Failure Modes",
+          "bodyMarkdown": "1. **Inconsistent Component Usage**: Without a centralized library, teams may continue to create their own versions of components, leading to a lack of cohesion.\n\n2. **Accessibility Oversights**: Failing to prioritize accessibility can alienate users and lead to compliance issues.\n\n3. **Documentation Gaps**: Insufficient documentation can result in misunderstandings about component usage, leading to errors in implementation.\n\n4. **Performance Issues**: Not leveraging Next.js features effectively can lead to slow-loading components, negatively impacting user experience."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How does this component library improve collaboration among product teams?",
+          "answerMarkdown": "By providing a standardized set of components, teams can work more cohesively, reducing discrepancies in UI implementation. This fosters better collaboration and speeds up the development process."
+        },
+        {
+          "question": "What role does accessibility play in the component library?",
+          "answerMarkdown": "Accessibility is a core focus, ensuring that all components meet WCAG standards. This not only broadens the user base but also mitigates legal risks associated with non-compliance."
+        },
+        {
+          "question": "How can Next.js enhance the performance of the component library?",
+          "answerMarkdown": "Next.js allows for optimized loading through features like dynamic imports and server-side rendering, ensuring that components are delivered quickly and efficiently, which is crucial for maintaining a high-quality user experience."
+        }
+      ],
+      "related": [
+        {
+          "slug": "component-library-build-nextjs-designops",
+          "reasonMarkdown": "Read this if you want to align design operations with component library development."
+        },
+        {
+          "slug": "component-library-build-nextjs-enterprises",
+          "reasonMarkdown": "Read this if you're in an enterprise setting looking to standardize UI components."
+        },
+        {
+          "slug": "component-library-build-nextjs-scaleups",
+          "reasonMarkdown": "Read this if you're scaling your product and need a robust component library."
+        },
+        {
+          "slug": "component-library-build-nextjs-startups",
+          "reasonMarkdown": "Read this if you're a startup aiming for rapid development with consistent UI."
+        },
+        {
+          "slug": "component-library-build-figma-product-teams",
+          "reasonMarkdown": "Read this if you want to integrate Figma designs with your component library."
+        },
+        {
+          "slug": "component-library-build-react-product-teams",
+          "reasonMarkdown": "Read this if you're using React and want to enhance your component library."
+        },
+        {
+          "slug": "component-library-build-storybook-product-teams",
+          "reasonMarkdown": "Read this if you're utilizing Storybook and want to improve component documentation."
+        },
+        {
+          "slug": "component-library-build-typescript-product-teams",
+          "reasonMarkdown": "Read this if you're implementing TypeScript in your component library for better type safety."
+        }
+      ],
+      "updatedAt": "2026-06-01T00:13:28.852Z"
+    }
+  }
 }
-
