@@ -36,9 +36,9 @@ interface AnimationProviderProps {
 
 export function AnimationProvider({ children }: AnimationProviderProps) {
   const [isReady, setIsReady] = useState(false);
-  const [motionPreference, setMotionPreference] = useState<MotionPreference>(
-    () => (typeof window !== "undefined" ? getMotionPreference() : "full")
-  );
+  // Stable SSR + first paint; real preference applied in useEffect only.
+  const [motionPreference, setMotionPreference] =
+    useState<MotionPreference>("full");
 
   useEffect(() => {
     const cleanup = setupReducedMotion();

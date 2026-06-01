@@ -24,19 +24,19 @@ describe("ChatToggle", () => {
     expect(screen.getByRole("button")).toBeInTheDocument();
   });
 
-  it("shows 'Chat with Donny' label when closed", () => {
+  it("shows open prompt in aria-label when closed", () => {
     render(<ChatToggle isOpen={false} onToggle={vi.fn()} />);
     expect(screen.getByRole("button")).toHaveAttribute(
       "aria-label",
-      "Chat with Donny",
+      "Chat — Chat with Donny",
     );
   });
 
-  it("shows 'Hide chat' label when open", () => {
+  it("shows close prompt in aria-label when open", () => {
     render(<ChatToggle isOpen={true} onToggle={vi.fn()} />);
     expect(screen.getByRole("button")).toHaveAttribute(
       "aria-label",
-      "Hide chat",
+      "Chat — Hide chat",
     );
   });
 

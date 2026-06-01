@@ -337,6 +337,120 @@
   margin: 0;
 }
 
+.packageProof {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--font-size-body-sm);
+}
+
+.packageCta {
+  margin-block-start: auto;
+  padding-block-start: var(--space-layout-8);
+}
+
+.packageCta :global(a),
+.packageCta :global(button) {
+  min-block-size: 2.75rem;
+  min-inline-size: 2.75rem;
+}
+
+/* AaaS — borderless accordion (pricing-native, not Accordion component) */
+
+.aaasSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+  margin-block-start: var(--space-layout-48);
+}
+
+.aaasTrigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+  gap: var(--space-layout-24);
+}
+
+.aaasTrigger:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.aaasCaretWrap {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.aaasCaretIcon {
+  min-inline-size: 16px;
+  min-block-size: 16px;
+  transition: transform var(--duration-fast) var(--ease-out-cubic);
+}
+
+.aaasCaretOpen {
+  transform: rotate(90deg);
+}
+
+.aaasTriggerHeading {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--space-layout-12);
+  min-width: 0;
+}
+
+.aaasTriggerTitle {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-title-s);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.newBadge {
+  flex-shrink: 0;
+  padding-block: 1px;
+  padding-inline: var(--space-internal-4);
+  border-radius: var(--radius-full);
+  background-color: var(--logo-background);
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--logo-color);
+}
+
+.aaasPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-24);
+}
+
+.aaasPanel[hidden] {
+  display: none;
+}
+
+.aaasSummary {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--color-muted);
+}
+
+@media (width <= 767px) {
+  .aaasTriggerTitle {
+    white-space: normal;
+  }
+}
+
 /* CTAs */
 
 .ctaRow {

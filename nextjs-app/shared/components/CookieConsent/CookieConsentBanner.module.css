@@ -4,7 +4,9 @@
   position: fixed;
   inset-inline: 0;
   inset-block-end: 0;
-  z-index: 9998;
+
+  /* Below chat widget (1000+) so Donny stays reachable on first visit */
+  z-index: 900;
   display: flex;
   align-items: center;
   border-block-start: 1px solid var(--color-border);
@@ -94,28 +96,38 @@
 }
 
 @media (width <= 767px) {
+  .banner {
+    padding-block: var(--space-layout-12);
+  }
+
   .bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-layout-16);
+    flex-flow: row wrap;
+    align-items: center;
+    gap: var(--space-layout-12);
   }
 
   .copy {
+    flex: 1 1 100%;
     min-block-size: auto;
   }
 
+  .copyText {
+    font-size: var(--font-size-text-s);
+    line-height: var(--line-height-snug);
+  }
+
   .actions {
-    justify-content: stretch;
-    gap: var(--space-layout-12, 0.75rem);
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: var(--space-layout-8);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .actions > * {
-    flex: 1 1 calc(50% - var(--space-layout-6));
-    min-width: 0;
-  }
-
-  .actions > :first-child {
-    flex-basis: 100%;
+    flex: 0 0 auto;
+    min-width: min-content;
   }
 }
 
