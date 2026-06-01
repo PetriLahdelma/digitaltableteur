@@ -140,6 +140,7 @@ function ComparisonList({
                   name={isUs ? "Plus" : "X"}
                   size="sm"
                   weight="bold"
+                  color="var(--color-white)"
                   decorative
                 />
               </span>
