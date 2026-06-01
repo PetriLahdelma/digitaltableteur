@@ -64,6 +64,8 @@ export interface DonnyAvatarProps {
   sleepyDelay?: number;
   /** Time in ms before Donny falls asleep (default 150000 = 2.5 min) */
   sleepDelay?: number;
+  /** When true, omit role/label so a parent control owns the accessible name (e.g. chat toggle) */
+  decorative?: boolean;
 }
 
 /**
@@ -301,6 +303,7 @@ export function DonnyAvatar({
   enableSleepDetection = false,
   sleepyDelay = 120000,  // 2 minutes
   sleepDelay = 150000,   // 2.5 minutes
+  decorative = false,
 }: DonnyAvatarProps) {
   const [currentState, setCurrentState] = useState<DonnyState>(state);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -613,8 +616,9 @@ export function DonnyAvatar({
       data-transitioning={isTransitioning}
       data-tracking={trackMouse}
       data-near-target={isNearTarget}
-      aria-label={`Donny is ${currentState}`}
-      role="img"
+      aria-hidden={decorative ? true : undefined}
+      aria-label={decorative ? undefined : `Donny is ${currentState}`}
+      role={decorative ? undefined : "img"}
     >
       <svg
         viewBox="0 0 40 32"
