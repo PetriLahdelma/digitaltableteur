@@ -138,7 +138,7 @@ Partition: one subagent per route marked ready=yes in the T3a migration map [pas
 Per slice:
 - Follow dt-nextjs-app skill and app/AGENTS.md
 - Create app/[route]/page.tsx (+ layout.tsx if needed), generateMetadata, opengraph-image.tsx
-- Reuse nextjs-app/shared/components; CSS Modules; Next.js 15 async params
+- Reuse nextjs-app/shared/components; CSS Modules; Next.js 16 async params
 - Do not delete src/ legacy files yet
 
 Done when:

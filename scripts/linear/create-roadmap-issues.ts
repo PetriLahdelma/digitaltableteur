@@ -42,7 +42,7 @@ const tasks: TicketSeed[] = [
     summary:
       "Build the 2026-ready web surface with Next.js SSR/ISR, structured metadata, and hardened security baselines per PRD section 4.1 + roadmap Q1 foundation.",
     scope: [
-      "Create Next.js 15 app router codebase with SSR/ISR for all current pages",
+      "Create Next.js 16 app router codebase with SSR/ISR for all current pages",
       "Implement head-manager with Organization, Article, and Service schema",
       "Add security headers (CSP, HSTS, Referrer-Policy) + SRI for third-party scripts",
       "Set up GitHub Actions pipeline with OWASP ZAP + Lighthouse gates",

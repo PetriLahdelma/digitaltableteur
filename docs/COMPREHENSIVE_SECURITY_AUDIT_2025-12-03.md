@@ -1,5 +1,7 @@
 # Comprehensive Security Audit Report
 
+> **Superseded dependency snapshot:** Production now runs **Next.js 16.2.x** and **React 19** (see root `package.json`, merged in #634). Version tables below reflect **December 2025** audit time, not current installs.
+
 **Date**: December 3, 2025  
 **Last Updated**: January 19, 2026 (OpenAI Spending Limits)  
 **Scope**: Full codebase lint, security checks, vulnerability scan  

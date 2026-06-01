@@ -10,7 +10,7 @@ Beyond the SEO fundamentals already implemented, these technical optimizations w
 
 ### Current Implementation (Good Foundation ✅):
 
-- Next.js 15 with App Router
+- Next.js 16 with App Router
 - Dynamic imports with React.lazy()
 - Image optimization
 - Aggressive cache busting

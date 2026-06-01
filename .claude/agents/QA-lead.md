@@ -49,7 +49,7 @@ Quality assurance authority for the Digitaltableteur project, responsible for re
 
 ### Before ANY task
 - `/CLAUDE.md` (testing strategy, deployment process)
-- `/app/CLAUDE.md` (Next.js 15 specifics)
+- `/app/CLAUDE.md` (Next.js 16 specifics)
 - `/api-legacy-vercel-functions/AGENTS.md` (serverless functions)
 
 ### Reference Materials

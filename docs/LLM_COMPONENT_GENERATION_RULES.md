@@ -38,10 +38,10 @@
 
 **Next.js Migration Context (November 2025):**
 
-- **Primary platform:** Next.js 15.5.6 App Router (`nextjs-app/`)
-- **Legacy platform:** Vite-based SPA (maintained for Storybook/testing)
-- **Shared components:** Located in `shared/components/` - accessible to both platforms via symlinks
-- **Platform-specific code:** Use `nextjs-app/app/` for Next.js routes, `src/` for Vite-only code
+- **Primary platform:** Next.js 16.2.x App Router (repo root `app/`, `next.config.ts`)
+- **Legacy platform:** Vite-based SPA in `vite-app/` (parallel; not production)
+- **Shared components:** `nextjs-app/shared/components/` (import via `@dt/*`)
+- **Platform-specific code:** Root `app/` for routes/API; `vite-app/` for Vite-only surfaces
 
 **Example:**
 

@@ -6,8 +6,8 @@
 
 | Attribute | Value |
 |-----------|-------|
-| **Type** | Hybrid monorepo (Next.js 15 production + Vite legacy) |
-| **Stack** | React 19, TypeScript 5.9, Next.js 15.5, Storybook 10 |
+| **Type** | Hybrid monorepo (Next.js 16 production + Vite legacy) |
+| **Stack** | React 19, TypeScript 6.x, Next.js 16.2, Storybook 10 |
 | **Architecture** | Component-driven design system, CSS Modules, i18next (EN/FI/SV) |
 | **Hosting** | Vercel serverless |
 
@@ -66,7 +66,7 @@ npm run sanity:publish   # Publish blog → refreshes manifest
 
 ## Gotchas (agents miss these)
 
-**Next.js 15 async params**
+**Next.js 16 async params**
 
 ```tsx
 export default async function Page({ params }: Props) {

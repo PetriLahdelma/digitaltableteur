@@ -35,7 +35,7 @@ Chief coordinating agent responsible for project-wide planning, task delegation,
 - Confirm translation coverage (EN/FI/SV) before deployment
 
 ### Risk Management
-- Identify breaking changes in Next.js 15 vs. Vite
+- Identify breaking changes in Next.js 16 vs. Vite
 - Flag security concerns (secrets, CORS, PII)
 - Prevent scope creep on simple tasks
 - Warn before destructive operations (`rm -rf`, `git push --force`, migrations)

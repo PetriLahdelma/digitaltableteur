@@ -6,7 +6,7 @@
 
 ```
 digitaltableteur/
-├── app/                    # Next.js 15 App Router (production)
+├── app/                    # Next.js 16 App Router (production)
 ├── nextjs-app/             # Shared design system & components
 │   ├── shared/
 │   │   ├── components/     # 80+ UI components
@@ -32,7 +32,7 @@ digitaltableteur/
 ## Directory Purposes
 
 **app/**
-- Purpose: Next.js 15 App Router pages and API routes
+- Purpose: Next.js 16 App Router pages and API routes
 - Contains: Server components, route handlers, layouts
 - Key files: `layout.tsx`, `page.tsx`, `api/*/route.ts`
 - Subdirectories: `about/`, `blog/`, `contact/`, `work/`, `pseo/`, `api/`, `lib/`
