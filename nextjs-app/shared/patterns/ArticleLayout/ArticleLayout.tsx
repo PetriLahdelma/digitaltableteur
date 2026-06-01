@@ -21,6 +21,8 @@ export interface ArticleLayoutProps {
   contentRef?: RefObject<HTMLElement | null>;
   /** Custom className */
   className?: string;
+  /** Document language for the article root */
+  lang?: string;
 }
 
 /**
@@ -42,9 +44,10 @@ export function ArticleLayout({
   showReadingProgress = true,
   contentRef,
   className,
+  lang,
 }: ArticleLayoutProps) {
   return (
-    <article className={cn("relative", className)}>
+    <article lang={lang} className={cn("relative", className)}>
       {/* Reading progress */}
       {showReadingProgress && contentRef && (
         <ReadingProgress targetRef={contentRef} />
@@ -53,8 +56,12 @@ export function ArticleLayout({
       {/* Navigation - sticky below header with yellow background */}
       {nav && (
         <div
-          className="sticky top-20 z-30 border-b border-border flex items-center"
-          style={{ backgroundColor: 'var(--logo-background, #DFFF00)', color: 'var(--logo-color, #000)', ['--color-primary' as string]: 'var(--logo-color, #000)' }}
+          className="sticky top-20 z-30 flex w-full items-center border-b border-border"
+          style={{
+            backgroundColor: "var(--logo-background, #DFFF00)",
+            color: "var(--logo-color, #000)",
+            ["--color-primary" as string]: "var(--logo-color, #000)",
+          }}
         >
           {nav}
         </div>

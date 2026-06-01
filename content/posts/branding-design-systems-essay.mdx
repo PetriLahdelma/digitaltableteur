@@ -2,54 +2,110 @@
 title: "Branding Design Systems"
 slug: "branding-design-systems-essay"
 publishedAt: "2025-11-26T18:43:00.000Z"
-readTime: "3 min read"
-excerpt: "Branding a design system transforms it from invisible infrastructure into a living language that communicates values, builds trust, and makes every interaction feel intentional, human, and unmistakably coherent."
+readTime: "9 min read"
+excerpt: "Branding a design system is not a logo exercise. It is how you encode judgment so strangers ship UI that still feels like you."
 authorName: "Petri Lahdelma"
 authorSlug: "petri-lahdelma"
 ---
 
-**It’s late April 2025.** I’m staring at my screen — a sprawling design system for a European fintech startup. There are dozens of components, dozens of variant states, tokens updated across light and dark themes, edge cases and accessibility tweaks.
+**It's late April 2025.** I'm staring at my screen, a sprawling design system for a European fintech startup. There are dozens of components, dozens of variant states, tokens updated across light and dark themes, edge cases and accessibility tweaks. The Figma file is immaculate. The Storybook build is green. And yet the product still reads like three different companies depending on which squad shipped last.
 
-A few hours ago, a senior engineer asked: “Why does this system need a brand identity? Isn’t this just code, or design — not something people see directly?”
+A few hours ago, a senior engineer asked: "Why does this system need a brand identity? Isn't this just code, or design, not something people see directly?"
 
-Her question hit home. Because for many, a design system feels like an invisible infrastructure — a tool, a library. Useful, but unseen. But maybe that’s exactly why branding it matters.
+Her question hit home, because it is the polite version of a belief I hear constantly: design systems are plumbing. Brand is marketing. Keep them separate and nobody gets confused. That separation sounds rational until you watch a contractor drop a neon gradient "primary" button into a calm banking flow because the token was technically allowed. The system did not fail. The system had no opinion.
 
-## The Invisible Manifest
+For many teams, a design system really is invisible infrastructure: a tool, a library, a dependency. Useful, but unseen. I think that is exactly why branding it matters. Not branding as lipstick on Storybook. Branding as the layer that decides what is allowed to exist when you are not in the room to veto the PR.
 
-A design system isn’t just a collection of components. It’s a silent manifesto. It declares: “This is who we are. This is how we build. This is what we care about.”
+## The invisible manifest
 
-When you build a system without a clear identity, good typography, consistent spacing, tone of voice, even how buttons feel when you hover, you end up with something efficient but soulless. It works fine, but it doesn’t communicate. It doesn’t persuade.
+A design system is not a collection of components. It is a silent manifesto. Every default encodes a claim about who you are and how you build. Default button size says something about density and confidence. Default error copy says something about blame and care. Default motion says something about whether your product is nervous or composed. None of that is neutral.
 
-Branding your design system turns it into a unified language for the whole team. It’s no longer “the catalogue of UI bits.” It becomes “our toolbox”, a toolbox that feels like belonging, like standards, like values.
+When you build a system without a clear identity, you still get typography and spacing. You still pass accessibility checks if you are disciplined. You end up with something efficient but soulless. It works fine on a checklist. It does not persuade a user who is deciding whether to trust you with their money, their health data, or their team's workflow. It does not persuade an engineer who has six ways to implement the same card and no guidance on which one is "us."
 
-## Human Trust in Machine-Era Infrastructure
+Branding your design system turns it into a unified language for the whole team. It stops being "the catalogue of UI bits" and becomes "our toolbox," with shared nouns, shared limits, and shared pride. Pride sounds soft until you have maintained a system for three years. The teams that treat the system as culture ship faster because they argue about intent, not about hex codes.
 
-In a world increasingly built on abstractions, APIs, cloud services, continuous delivery, it’s easy to forget the humans that crafted every layer. The same applies to design systems: many have come to rely on auto-generated themes, “smart defaults,” AI-assisted layout tools.
+## What branding a design system is not
 
-But human-centred branding reminds everyone that behind every component, someone decided on padding, on corner radius, on hover behaviour, on voice in microcopy. It’s a quiet signal: integrity matters. Consistency matters. Empathy matters.
+Let me be blunt about the distractions.
 
-It builds trust. Internally (among engineers, designers, product people), and externally (when the product surfaces to a user). Because users don’t just see a button, they feel a brand. They feel a mood, a promise, a consistency.
+Branding a design system is not slapping the marketing logo on the Storybook header. It is not a PDF brand book that designers cite once and engineers never open. It is not choosing Inter because everyone else did, then calling it a day. Those activities can run in parallel with good work, but they do not substitute for operational brand inside the system.
 
-## From Systems Thinking to Brand Thinking
+It is also not the same job as campaign branding. Marketing needs spikes, seasonal skins, emotional swings. A product design system needs stability, predictability, and rules that survive a reorg. The argument I make to brand teams is simple: give us principles and constraints we can enforce, not mood boards we can only admire. If the brand team cannot answer "what should the destructive button never do," the design system team cannot protect users when shipping velocity doubles.
 
-Branding a design system doesn’t mean plastering logos everywhere. It means thinking as a brand strategist and a systems thinker at once.
+The most expensive failure mode I see is performative branding: new token names that sound on-brand, same components underneath, no change in behavior. You get `brand-accent-emphasis` instead of `blue-500` and the UI still feels like a generic SaaS template. That is renaming, not branding.
 
-* Define **purpose**: beyond “makes UI easy,” a design system’s purpose might be “empower teams to build human-friendly products, quickly and reliably.”
-* Embed **values**: clarity, accessibility, empathy, scalability —values that guide even the tiniest decision about margin or colour contrast.
-* Build **voice & tone**: microcopy, error states, empty states, all echo a unified personality.
-* Ensure **flexibility + identity**: allow variation (dark mode, custom themes, localisations) without diluting core identity.
-* Make **onboarding feel like initiation**: bringing a new designer or engineer in should feel like joining a shared culture, not merely reading a doc, but absorbing what makes the product human.
+## Human trust in machine-era infrastructure
 
-## Why It’s Worth the Effort
+We build on abstractions now: APIs, feature flags, generated themes, agents that draft layouts from prompts. It is easy to forget that every layer still carries human judgment, or the absence of it.
 
-Because without brand thinking, design systems run the risk of becoming sterile scaffolding, functional, yes, but forgettable, cold, and ultimately disconnected.
+Human-centred branding inside a design system reminds everyone that someone decided padding, corner radius, hover feedback, and the voice in microcopy. Those decisions are ethical, not decorative. A cramped table says you optimize for data density over readability. A playful empty state in a grief-adjacent product says you did not think hard enough about context. A system with no stance on either makes every squad improvise their own ethics at the component level.
 
-With brand thinking, they become the backbone of something larger: a product that feels coherent, intentional, alive. They help preserve a sense of identity, even as the codebase grows, features shift, teams scale.
+That matters internally before it matters externally. Engineers trust a system when it reduces guessing. Designers trust it when it protects craft instead of freezing it. Product managers trust it when "on brand" is testable, not a meeting. Externally, users do not read your token JSON. They feel mood, promise, and consistency in the hundred small choices that survived contact with your repo.
 
-**They turn infrastructure into legacy. They turn routine components into ambassadors of company values.**
+I am not romantic about this. Users will not thank you for semantic color roles. They will notice when the product stops feeling like it was assembled by committee. Brand, in that sense, is the compression algorithm for a thousand micro-decisions.
 
-**They help the people who build feel aligned. They help the people who use feel welcomed.**
+## From systems thinking to brand thinking
 
-___  
-  
-If your team is building a design system — or thinking of scaling one — treat branding as a core feature, not an afterthought. Because real consistency doesn't live in token names or CSS variables. It lives in what your product _feels like_ when someone clicks, scrolls, or hesitates for a moment. That feeling is your brand.
+Branding a design system means holding two hats at once: brand strategist and systems thinker. The strategist asks what you want people to believe. The systems thinker asks how to make belief cheap to ship and hard to violate.
+
+Purpose comes first. "Makes UI easy" is not a purpose; it is a feature description. A sharper purpose sounds like: "Help teams ship calm, legible financial interfaces without re-litigating basics every sprint." That sentence already rules things out. It has an opinion about density, tone, and risk.
+
+Values are next, and they must be falsifiable. "We care about accessibility" is worthless until it changes defaults: focus rings always on, minimum touch targets, error text that names the fix, not the failure. "We care about clarity" should show up in typography scales, table layouts, and the ban on icon-only buttons without labels in production paths. If a value cannot fail a pull request, it is wallpaper.
+
+Voice and tone belong in the system, not only in marketing copy. Error states, empty states, loading states, and confirmation dialogs are where brand actually lives for most users. I push teams to ship example strings alongside components, not lorem ipsum. "Payment failed" and "We could not charge your card. Try again or use a different method." are the same fact with different relationships to the user. Your system should know which one you are.
+
+Flexibility without dilution is the hard trade. Dark mode, white-label themes, and localization are not excuses to fork the soul of the product. The opinionated take: variation should ride on semantic tokens and documented exceptions, not ad hoc overrides in product repos. If every market gets its own button component, you do not have a design system. You have a museum of compromises.
+
+Onboarding should feel like initiation, not like reading a manual written by someone who hates you. New designers and engineers should absorb how you argue, what you refuse, and what you automate. Good branded systems teach judgment. Bad ones teach Ctrl+C from Storybook.
+
+## Governance: who owns the soul
+
+Here is the uncomfortable part most posts skip. Somebody has to own brand inside the system, and in many orgs that person does not exist.
+
+Marketing owns campaigns. Product owns roadmaps. Platform owns uptime. Design system teams own releases and migration guides. Brand gets shared across all of them and therefore accountable to none of them. The result is a beautiful library that decays the moment pressure hits, because "on brand" becomes whatever the loudest stakeholder in the sprint wants.
+
+My opinion: brand stewardship for a design system should sit with a small, empowered group that includes design engineering, not only visual design. They need veto power on defaults, not just advisory power on slides. They need metrics that are not Storybook page views. How often do teams bypass tokens? How many one-off components landed in production last quarter? How long does it take a new hire to ship a screen that passes design review without rework?
+
+If you cannot measure drift, you will not prevent it. Brand is not a workshop. It is governance with taste.
+
+## Tokens are arguments, not paint
+
+This is where I get opinionated about implementation. Tokens are not just theming hooks. They are compressed arguments about meaning.
+
+When you name a color `semantic.error` instead of `red-500`, you are telling future contributors what that color is for. When you document that `surface.elevated` is for modals and not for random cards, you are defending hierarchy. When you forbid raw values in CI, you are saying the brand is not negotiable at the pixel level, only at the semantic level.
+
+That is branding in the only form engineers will consistently respect: enforceable structure. The fintech team I mentioned eventually stopped debating "is this blue on-brand?" and started debating "is this the right semantic role for a destructive action in a wealth context?" Better arguments, fewer meetings, stronger product.
+
+The same logic applies to motion, elevation, and density. A snappy animation curve is a brand choice. A table that defaults to 40px row height is a brand choice. Pretending those are neutral engineering decisions is how you get a product that feels like a theme switcher on top of someone else's personality.
+
+## When branding the system is a waste
+
+I will not pretend every team should invest here on day one. If you are three people searching for product-market fit, a heavy branded system is procrastination. Ship, learn, delete code. But the moment you have two squads building customer-facing UI, you already have a system. It is just undocumented and inconsistent.
+
+The other time to pause is during acquisition chaos or a full rebrand in flight. Branding the system while the company identity is unstable means encoding tomorrow's regret into tokens today. Freeze the minimum, document the migration, brand the system after the strategy stops moving weekly.
+
+Everything else is fair game.
+
+## White-label, franchises, and the identity trap
+
+Multi-tenant products tempt you to think brand belongs only in the theme layer. Sometimes that is true. Often it is a lie that saves sales demos and punishes users.
+
+If your core flows must feel trustworthy in the same way across tenants, brand belongs in structure: typography rhythm, spacing logic, component behavior, accessibility defaults. Let tenants swap logos and accent colors. Do not let them swap information hierarchy or error patterns unless you are building a page builder, not a product.
+
+The opinionated line: white-label without non-negotiable system behavior is how you get "enterprise-ready" software that still embarrasses you in screenshots.
+
+## Why it's worth the effort
+
+Without brand thinking, design systems become sterile scaffolding. Functional, yes. Forgettable, cold, disconnected from the reason the company exists. Contributors treat the system as a vending machine: insert prop, receive UI, feel nothing.
+
+With brand thinking, the system becomes the backbone of something larger. Coherent products at scale. Identity that survives hiring sprees and vendor changes. Components that act like ambassadors instead of like parts.
+
+They turn infrastructure into legacy, in the good sense: the kind junior people inherit and senior people protect. They help builders feel aligned because the system encodes shared judgment. They help users feel welcomed because the product stops surprising them in cheap ways.
+
+That is not fluff. It is competitive advantage expressed as fewer regressions and stronger trust.
+
+---
+
+If your team is building a design system, or thinking of scaling one, treat branding as a core feature, not an afterthought. Start with purpose you can enforce, values that can fail a PR, and voice baked into components, not only into landing pages.
+
+Real consistency does not live in token names or CSS variables alone. It lives in what your product feels like when someone clicks, scrolls, or hesitates for a moment. That feeling is your brand. The system is how you keep it honest when you are not watching every merge.
