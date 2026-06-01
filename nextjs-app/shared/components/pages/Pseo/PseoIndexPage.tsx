@@ -1,14 +1,13 @@
 import type { PseoCatalog, PseoLeafPage } from "@/lib/pseo/types";
 
+import { getStackDisplayName } from "@/lib/pseo/display";
+
 import PageLayout from "../../../patterns/PageLayout/PageLayout";
 import Card from "@dt/Card";
 import NextLink from "next/link";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import styles from "./PseoIndexPage.module.css";
-
-const titleCase = (text: string) =>
-  text.replace(/\b\w/g, (match) => match.toUpperCase());
 
 export function PseoIndexPage({
   catalog,
@@ -21,17 +20,17 @@ export function PseoIndexPage({
     <PageLayout as="main" maxWidth="lg" spacing="comfortable">
       <div className={styles.root}>
         <Title terminals="sans" level={1} size="L">
-          Programmatic Guides
+          Design system playbooks
         </Title>
         <Text className={styles.lead} size="L" terminals="sans">
-          A structured library of design system and DesignOps playbooks. Each
-          guide is built with clear headings, a table of contents, and internal
-          links for both humans and LLMs.
+          Practical guides for design systems and DesignOps—organized by service,
+          stack, and team context. Each playbook includes a situation brief,
+          failure modes, checklist, and links to relevant case work.
         </Text>
 
         <section className={styles.section}>
           <Title terminals="sans" level={2} size="S">
-            Services
+            Start by service
           </Title>
           <div className={`${styles.grid} ${styles.gridTwo}`.trim()}>
             {catalog.services.map((service) => (
@@ -39,10 +38,10 @@ export function PseoIndexPage({
                 key={service.slug}
                 className={styles.card}
                 link={`/pseo/services/${service.slug}`}
-                linkLabel={`Open ${titleCase(service.name)}`}
+                linkLabel={`Open ${service.name}`}
                 hoverable
                 size="full"
-                title={titleCase(service.name)}
+                title={service.name}
                 titleProps={{
                   terminals: "sans",
                   level: 3,
@@ -62,7 +61,7 @@ export function PseoIndexPage({
 
         <section className={styles.section}>
           <Title terminals="sans" level={2} size="S">
-            Stacks
+            Browse by stack
           </Title>
           <div className={`${styles.grid} ${styles.gridTwo}`.trim()}>
             {catalog.stacks.map((stack) => (
@@ -70,10 +69,10 @@ export function PseoIndexPage({
                 key={stack.slug}
                 className={styles.card}
                 link={`/pseo/stacks/${stack.slug}`}
-                linkLabel={`Open ${titleCase(stack.name)}`}
+                linkLabel={`Open ${getStackDisplayName(stack)}`}
                 hoverable
                 size="full"
-                title={titleCase(stack.name)}
+                title={getStackDisplayName(stack)}
                 titleProps={{
                   terminals: "sans",
                   level: 3,
@@ -93,7 +92,7 @@ export function PseoIndexPage({
 
         <section className={styles.section}>
           <Title terminals="sans" level={2} size="S">
-            Audiences
+            Browse by audience
           </Title>
           <div className={`${styles.grid} ${styles.gridThree}`.trim()}>
             {catalog.audiences.map((audience) => (
@@ -101,10 +100,10 @@ export function PseoIndexPage({
                 key={audience.slug}
                 className={styles.card}
                 link={`/pseo/audiences/${audience.slug}`}
-                linkLabel={`Open ${titleCase(audience.name)}`}
+                linkLabel={`Open ${audience.name}`}
                 hoverable
                 size="full"
-                title={titleCase(audience.name)}
+                title={audience.name}
                 titleProps={{
                   terminals: "sans",
                   level: 3,
@@ -124,10 +123,11 @@ export function PseoIndexPage({
 
         <section className={styles.section}>
           <Title terminals="sans" level={2} size="S">
-            Sample pages
+            Featured playbooks
           </Title>
           <Text terminals="sans">
-            A few example landing pages from the full catalog:
+            A sample from the full library—pick a service and stack that matches
+            your team:
           </Text>
           <ul className={styles.smallList}>
             {samplePages.map((page) => (

@@ -78,6 +78,7 @@
     "test:security:category": "node tests/security/run-security-tests.mjs --category",
     "precommit:guard": "bash scripts/precommit-guard.sh",
     "pseo:generate": "npx tsx scripts/pseo/generate-pseo-copy.ts --only-missing",
+    "pseo:check-quality": "node scripts/pseo/check-pseo-quality.mjs",
     "validate:components": "tsx scripts/design-system/validate-components.ts",
     "validate:agent-docs": "node scripts/validate-agent-docs.mjs",
     "audit:catalog": "node scripts/design-system/audit-catalog-coverage.mjs",

@@ -6,28 +6,25 @@ import type {
 } from "./types";
 
 import catalog from "@/content/pseo/catalog.json";
+import {
+  buildLeafDescription,
+  buildLeafTitle,
+} from "./display";
 
 const toLeafSlug = ({ serviceSlug, stackSlug, audienceSlug }: PseoLeafPageKey) =>
   `${serviceSlug}-${stackSlug}-${audienceSlug}`;
 
-const titleCase = (text: string) =>
-  text.replace(/\b\w/g, (match) => match.toUpperCase());
-
-const buildLeafTitle = (
-  service: PseoCatalogItem,
-  stack: PseoCatalogItem,
-  audience: PseoCatalogItem,
-) => `${service.name} for ${audience.name} using ${stack.name}`;
-
-const buildLeafDescription = (
-  service: PseoCatalogItem,
-  stack: PseoCatalogItem,
-  audience: PseoCatalogItem,
-) =>
-  `${service.shortDescription} Tailored for ${audience.name} shipping with ${stack.name}.`;
-
 export function getPseoCatalog(): PseoCatalog {
   return catalog as unknown as PseoCatalog;
+}
+
+export function getPseoCatalogUpdatedAt(): Date {
+  const raw = getPseoCatalog().catalogUpdatedAt;
+  if (raw) {
+    const parsed = new Date(raw);
+    if (!Number.isNaN(parsed.getTime())) return parsed;
+  }
+  return new Date("2026-05-28T00:00:00.000Z");
 }
 
 export function getPseoLeafPages(): PseoLeafPage[] {
@@ -44,7 +41,7 @@ export function getPseoLeafPages(): PseoLeafPage[] {
         });
         pages.push({
           slug,
-          title: titleCase(buildLeafTitle(service, stack, audience)),
+          title: buildLeafTitle(service, stack, audience),
           description: buildLeafDescription(service, stack, audience),
           service,
           stack,
@@ -100,4 +97,3 @@ export function getRelatedPseoLeafPages(
     .slice(0, limit)
     .map((entry) => entry.candidate);
 }
-

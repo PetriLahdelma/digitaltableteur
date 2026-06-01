@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "services": {
+    "design-system-audit": {
+      "excerpt": "A design system audit inventories what ships in production—not what lives in Figma alone. We sample high-traffic flows, score findings by user impact and fix cost, and produce a roadmap stakeholders can actually follow. The goal is not a 200-slide deck; it is a prioritized list of standards that remove rework without freezing delivery.",
+      "bannedPhrases": ["This guide explains how", "programmatic SEO", "comprehensive overview"]
+    },
+    "design-tokens-setup": {
+      "excerpt": "Tokens fail when design and code use different names for the same decision. We define primitive → semantic → component layers, wire Figma variables to exports your CI can validate, and plan theme rollout so dark mode is designed—not bolted on. Brand updates should touch semantic tokens, not every component file.",
+      "bannedPhrases": ["This guide explains how", "programmatic SEO", "comprehensive overview"]
+    },
+    "component-library-build": {
+      "excerpt": "A component library earns adoption when it matches how squads actually compose UI—not when it wins a Storybook beauty contest. We prioritize by traffic and a11y risk, define composition patterns before variants multiply, and pilot with one squad before declaring victory. Docs must cover keyboard behavior and failure states, not just the happy path.",
+      "bannedPhrases": ["This guide explains how", "programmatic SEO", "comprehensive overview"]
+    },
+    "ai-designops-automation": {
+      "excerpt": "DesignOps automation works when guardrails are explicit: what agents may change, what requires human review, and how drift is caught in CI. We map where time is lost—spec, build, review, release—and automate one workflow end-to-end before scaling. Throughput gains mean nothing if error rate climbs.",
+      "bannedPhrases": ["This guide explains how", "programmatic SEO", "comprehensive overview"]
+    }
+  }
+}

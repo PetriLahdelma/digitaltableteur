@@ -128,7 +128,7 @@ function BlogIndexContentInner({
       )}
 
       {/* Content */}
-      <Section id="blog-content" spacing="lg" background="default">
+      <Section id="blog-content" spacing="follow" background="default">
         <Container size="md">
           {/* Filter */}
           {showFilter && allTags.length > 0 && (

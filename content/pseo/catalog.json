@@ -1,84 +1,256 @@
 {
-  "version": 1,
+  "version": 2,
+  "catalogUpdatedAt": "2026-05-28T00:00:00.000Z",
   "services": [
     {
       "slug": "design-system-audit",
       "name": "Design system audit",
-      "shortDescription": "Assess your current UI foundation, identify gaps, and create a prioritized roadmap."
+      "shortDescription": "Assess your current UI foundation, identify gaps, and create a prioritized roadmap.",
+      "painPoints": [
+        "Components look similar but behave differently across squads",
+        "Accessibility issues repeat because patterns are undocumented",
+        "Design and engineering disagree on what is 'in the system'",
+        "Token renames break multiple apps because naming is inconsistent"
+      ],
+      "deliverables": [
+        "Inventory of components, tokens, and patterns in use",
+        "Severity-ranked findings with effort estimates",
+        "90-day roadmap with quick wins vs structural fixes",
+        "Governance recommendations (RFC, review, release cadence)"
+      ],
+      "typicalTimeline": "1–2 weeks",
+      "pricingPackageSlug": "ux-sprint",
+      "packageFitReason": "UX Sprint covers a focused audit, eval plan, and handoff your team can ship within two weeks.",
+      "relatedWorkSlugs": ["helsinki-design-system", "dsharp-design-system", "project-spine"],
+      "proofReasons": {
+        "helsinki-design-system": "City-scale design system audit and adoption across multiple product teams.",
+        "dsharp-design-system": "Enterprise audit baseline before AI-assisted component governance.",
+        "project-spine": "Structured assessment of component contracts and documentation gaps."
+      },
+      "playbookSteps": [
+        "Map live UI surfaces and who owns each pattern family.",
+        "Sample high-traffic flows for consistency, a11y, and token usage.",
+        "Score findings by user impact, rework cost, and fix complexity.",
+        "Agree on minimal standards and an adoption sequence stakeholders will follow."
+      ]
     },
     {
       "slug": "design-tokens-setup",
       "name": "Design tokens setup",
-      "shortDescription": "Define tokens, align design + code, and ship a scalable theming foundation."
+      "shortDescription": "Define tokens, align design + code, and ship a scalable theming foundation.",
+      "painPoints": [
+        "Figma variables and CSS custom properties use different names",
+        "Dark mode is bolted on instead of designed as a theme",
+        "Brand updates require manual find-and-replace across repos",
+        "Spacing and typography drift because primitives are undefined"
+      ],
+      "deliverables": [
+        "Token taxonomy (primitive → semantic → component)",
+        "Figma variables and code export pipeline",
+        "Theme switching strategy (light/dark/high-contrast)",
+        "Migration guide for existing hardcoded values"
+      ],
+      "typicalTimeline": "2–3 weeks",
+      "pricingPackageSlug": "design-system-lift-off",
+      "packageFitReason": "Design System Lift-Off includes token architecture, core components, and Storybook setup.",
+      "relatedWorkSlugs": ["helsinki-design-system", "project-spine"],
+      "proofReasons": {
+        "helsinki-design-system": "Production token pipeline for a multi-team municipal design system.",
+        "project-spine": "Token contracts shared between design tools and React components."
+      },
+      "playbookSteps": [
+        "Audit existing color, type, and spacing decisions in design and code.",
+        "Define semantic tokens that survive brand refreshes.",
+        "Wire Figma variables to code exports your CI can validate.",
+        "Roll out themes incrementally with a deprecation plan for legacy values."
+      ]
     },
     {
       "slug": "component-library-build",
       "name": "Component library build",
-      "shortDescription": "Build production-ready components with accessibility, documentation, and governance."
+      "shortDescription": "Build production-ready components with accessibility, documentation, and governance.",
+      "painPoints": [
+        "Every squad ships slightly different buttons, forms, and modals",
+        "Storybook exists but stories do not match production usage",
+        "Props APIs grow organically and become hard to learn",
+        "Visual regressions slip through because testing is manual"
+      ],
+      "deliverables": [
+        "Core component set with typed props and a11y baselines",
+        "Storybook docs with usage dos/don'ts",
+        "Visual regression or interaction test hooks",
+        "Contribution guide and review checklist"
+      ],
+      "typicalTimeline": "3–4 weeks",
+      "pricingPackageSlug": "design-system-lift-off",
+      "packageFitReason": "Lift-Off is scoped for audit through core components, Storybook, and adoption playbook.",
+      "relatedWorkSlugs": ["helsinki-design-system", "sap-build-apps", "dsharp-design-system"],
+      "proofReasons": {
+        "helsinki-design-system": "Large-scale React component library with municipal accessibility requirements.",
+        "sap-build-apps": "Enterprise component patterns for low-code and pro-code surfaces.",
+        "dsharp-design-system": "AI-guardrailed component architecture with enforcement tooling."
+      },
+      "playbookSteps": [
+        "Prioritize components by traffic, rework cost, and a11y risk.",
+        "Define composition patterns before building one-off variants.",
+        "Document states, edge cases, and keyboard behavior in Storybook.",
+        "Pilot with one product squad, then expand with measured adoption metrics."
+      ]
     },
     {
       "slug": "ai-designops-automation",
       "name": "AI-powered DesignOps automation",
-      "shortDescription": "Automate workflows, reduce design debt, and scale consistent execution."
+      "shortDescription": "Automate workflows, reduce design debt, and scale consistent execution.",
+      "painPoints": [
+        "Design review bottlenecks when headcount does not scale with output",
+        "Handoffs still rely on screenshots and Slack threads",
+        "No single source of truth for what agents or tools may change",
+        "Design debt accumulates faster than manual QA can catch"
+      ],
+      "deliverables": [
+        "DesignOps workflow map with automation candidates",
+        "Agent/tool guardrails for design-system changes",
+        "Linting or CI checks for token and component drift",
+        "Playbook for human-in-the-loop review"
+      ],
+      "typicalTimeline": "2–3 weeks",
+      "pricingPackageSlug": "ai-ready-designops",
+      "packageFitReason": "AI-Ready DesignOps packages workflow setup, governance, and tooling hooks in three weeks.",
+      "relatedWorkSlugs": ["dsharp-design-system", "llm-component-schema"],
+      "proofReasons": {
+        "dsharp-design-system": "MCP, CLI, and Rhythmguard enforcement for AI-assisted design systems.",
+        "llm-component-schema": "Structured schemas so LLMs generate components that pass review."
+      },
+      "playbookSteps": [
+        "Map where time is lost: spec, build, review, or release.",
+        "Identify safe automation targets vs decisions that need human judgment.",
+        "Prototype one workflow end-to-end (e.g. token PR or component scaffold).",
+        "Measure throughput and error rate before expanding automation scope."
+      ]
     }
   ],
   "stacks": [
     {
       "slug": "react",
       "name": "React",
-      "shortDescription": "Modern component architecture with typed props and predictable composition."
+      "displayName": "React",
+      "shortDescription": "Modern component architecture with typed props and predictable composition.",
+      "implementationNotes": [
+        "Prefer composition over prop explosion; use compound components for complex UI.",
+        "Colocate styles with CSS Modules or tokens; avoid inline one-offs.",
+        "Test keyboard and screen-reader behavior—not just visual snapshots."
+      ],
+      "commonPitfalls": [
+        "Copy-pasting MUI/Chakra patterns without aligning to your token layer",
+        "Uncontrolled vs controlled input bugs in shared form components",
+        "Context providers nested so deeply that tree-shaking and testing suffer"
+      ]
     },
     {
       "slug": "nextjs",
       "name": "Next.js",
-      "shortDescription": "App Router-ready UI systems with performance and SEO built in."
+      "displayName": "Next.js",
+      "shortDescription": "App Router-ready UI systems with performance and SEO built in.",
+      "implementationNotes": [
+        "Separate server and client component boundaries in your design system docs.",
+        "Use dynamic imports for heavy client-only widgets in marketing surfaces.",
+        "Align metadata and OG patterns with shared layout primitives."
+      ],
+      "commonPitfalls": [
+        "Marking entire design-system shells as client components unnecessarily",
+        "Hydration mismatches from theme or locale stored only in localStorage",
+        "Duplicated layout code between marketing and app routes"
+      ]
     },
     {
       "slug": "storybook",
       "name": "Storybook",
-      "shortDescription": "Component-driven development, documentation, and visual regression workflows."
+      "displayName": "Storybook",
+      "shortDescription": "Component-driven development, documentation, and visual regression workflows.",
+      "implementationNotes": [
+        "Stories should reflect real product compositions—not isolated atoms only.",
+        "Document controls for every meaningful prop; hide internal ones.",
+        "Wire visual regression on PRs for components above a traffic threshold."
+      ],
+      "commonPitfalls": [
+        "Stories that pass while production usage breaks because args are unrealistic",
+        "Missing dark-mode or RTL variants in the story matrix",
+        "Docs pages that drift from the actual exported API"
+      ]
     },
     {
       "slug": "figma",
       "name": "Figma",
-      "shortDescription": "Design-to-code alignment, tokens, and component specs that engineers can ship."
+      "displayName": "Figma",
+      "shortDescription": "Design-to-code alignment, tokens, and component specs that engineers can ship.",
+      "implementationNotes": [
+        "Mirror code component names and variant props in Figma component properties.",
+        "Use variables for semantic tokens; avoid hardcoded hex in component sets.",
+        "Publish a changelog when library updates affect downstream files."
+      ],
+      "commonPitfalls": [
+        "Detached instances proliferate because the library is hard to find",
+        "Auto-layout specs that do not map to flex/grid in code",
+        "Designers and engineers maintaining parallel token spreadsheets"
+      ]
     },
     {
       "slug": "typescript",
       "name": "TypeScript",
-      "shortDescription": "Type-safe design systems and predictable component APIs."
+      "displayName": "TypeScript",
+      "shortDescription": "Type-safe design systems and predictable component APIs.",
+      "implementationNotes": [
+        "Export discriminated unions for variant props instead of loose strings.",
+        "Generate docs from types where possible (Storybook docgen, TSDoc).",
+        "Strict mode for the library package even if app code is gradual."
+      ],
+      "commonPitfalls": [
+        "Over-wide props types that accept any string and hide invalid combinations",
+        "Breaking changes shipped without codemods or deprecation warnings",
+        "Duplicate type definitions between design tokens and component props"
+      ]
     }
   ],
   "audiences": [
     {
       "slug": "startups",
       "name": "startup teams",
-      "shortDescription": "Move fast without creating UI debt that blocks your roadmap."
+      "shortDescription": "Move fast without creating UI debt that blocks your roadmap.",
+      "constraints": ["1–2 designers", "small eng team", "need shippable UI in weeks not quarters"],
+      "successMetric": "Consistent MVP UI in 2–4 weeks without a rewrite at Series A"
     },
     {
       "slug": "scaleups",
       "name": "scaleup teams",
-      "shortDescription": "Standardize UI and workflows across multiple squads and surfaces."
+      "shortDescription": "Standardize UI and workflows across multiple squads and surfaces.",
+      "constraints": ["3+ product squads", "legacy and greenfield code coexist", "release trains already exist"],
+      "successMetric": "One shared component source with measurable adoption across squads"
     },
     {
       "slug": "enterprises",
       "name": "enterprise teams",
-      "shortDescription": "Governance, accessibility, and multi-team alignment for long-term scale."
+      "shortDescription": "Governance, accessibility, and multi-team alignment for long-term scale.",
+      "constraints": ["procurement and a11y compliance", "multiple vendors", "long approval cycles"],
+      "successMetric": "Documented governance model with WCAG-aligned baselines and audit trail"
     },
     {
       "slug": "designops",
       "name": "DesignOps teams",
-      "shortDescription": "Tooling, process, and automation to improve throughput and consistency."
+      "shortDescription": "Tooling, process, and automation to improve throughput and consistency.",
+      "constraints": ["serve many designers", "tooling budget scrutiny", "must prove ROI"],
+      "successMetric": "Reduced review cycle time and fewer design-to-dev regressions"
     },
     {
       "slug": "product-teams",
       "name": "product teams",
-      "shortDescription": "Faster shipping with better UX and fewer regressions."
+      "shortDescription": "Faster shipping with better UX and fewer regressions.",
+      "constraints": ["designers embedded in squads", "OKR pressure", "mixed skill levels"],
+      "successMetric": "Faster feature delivery with fewer UI bugs in QA"
     }
   ],
   "generation": {
     "maxLeafPages": 120,
-    "relatedLinksPerPage": 8
+    "relatedLinksPerPage": 8,
+    "indexedLeafSlugs": []
   }
 }
-

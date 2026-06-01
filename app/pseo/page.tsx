@@ -4,21 +4,21 @@ import { getPseoCatalog, getPseoLeafPages } from "@/lib/pseo/catalog";
 import { PseoIndexPage } from "@dt-pages/Pseo/PseoIndexPage";
 
 export const metadata: Metadata = {
-  title: "Design System Guides | Digitaltableteur",
+  title: "Design System Playbooks | Digitaltableteur",
   description:
-    "Comprehensive library of design system and DesignOps guides. Structured content covering services, technology stacks, and audience-specific implementation strategies.",
+    "Practical design system and DesignOps playbooks by service, stack, and team context. Situation briefs, checklists, and case-study proof.",
   openGraph: {
-    title: "Design System Guides | Digitaltableteur",
+    title: "Design System Playbooks | Digitaltableteur",
     description:
-      "Comprehensive library of design system and DesignOps guides. Structured content covering services, technology stacks, and audience-specific implementation strategies.",
+      "Practical design system and DesignOps playbooks by service, stack, and team context. Situation briefs, checklists, and case-study proof.",
     type: "website",
     siteName: "Digitaltableteur",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Design System Guides | Digitaltableteur",
+    title: "Design System Playbooks | Digitaltableteur",
     description:
-      "Comprehensive library of design system and DesignOps guides. Structured content covering services, technology stacks, and audience-specific implementation strategies.",
+      "Practical design system and DesignOps playbooks by service, stack, and team context. Situation briefs, checklists, and case-study proof.",
   },
   alternates: {
     canonical: "/pseo",
