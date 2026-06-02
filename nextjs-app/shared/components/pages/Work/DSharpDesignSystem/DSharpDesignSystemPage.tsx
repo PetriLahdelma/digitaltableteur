@@ -2072,6 +2072,23 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
       />
 
       {/* Closing the composition gap */}
+      <GridBlock
+        columns={1}
+        gap="none"
+        backgroundColor="light"
+        maxWidth="lg"
+        spacing="compact"
+        cells={[
+          {
+            type: "image",
+            src: "/images/portfolio/dsharp-design-system/rhythmguard-spec@2x.png",
+            alt: "Rhythmguard spacing spec sheet showing the 14-step space scale",
+            width: 1920,
+            height: 360,
+          },
+        ]}
+      />
+
       <StoryBlock
         subtitle="Closing the gap"
         title="Where the rhythm could still leak"
