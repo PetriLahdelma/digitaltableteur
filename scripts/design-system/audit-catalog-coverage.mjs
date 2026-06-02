@@ -41,6 +41,11 @@ const BESPOKE_OR_INFRA = new Set([
   "AppLoading",
   "AskAI",
   "ChunkErrorBoundary",
+  // App features / providers / third-party embeds — not reusable DS primitives,
+  // so they are not held to the contract+stories catalog bar.
+  "DashLeadList",
+  "DonnyActionProvider",
+  "DonnyBookingEmbed",
   "GradientDots",
   "HelsinkiClock",
   "HeroBackground",
