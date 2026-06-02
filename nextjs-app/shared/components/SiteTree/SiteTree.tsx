@@ -71,9 +71,22 @@ function SiteTreeLeaf({ node, depth }: SiteTreeLeafProps) {
   );
 }
 
-function SiteTreeBranch({ node, depth, defaultExpandAll }: SiteTreeBranchProps) {
-  const { label, href, external, children = [], defaultExpanded } = node;
+function SiteTreeBranch({
+  node,
+  depth,
+  defaultExpandAll,
+}: SiteTreeBranchProps) {
+  const { id, label, href, external, children = [], defaultExpanded } = node;
   const open = defaultExpandAll || defaultExpanded;
+
+  // A branch toggle (<summary>) must not contain an interactive element: a link
+  // nested inside <summary> is the axe `nested-interactive` violation and
+  // leaves keyboard/screen-reader users unsure whether activating toggles or
+  // navigates. When the branch has its own page, surface that as the first leaf
+  // so the toggle and the link stay separate and both remain accessible.
+  const branchChildren: SiteTreeNode[] = href
+    ? [{ id: `${id}-index`, label, href, external }, ...children]
+    : children;
 
   return (
     <li
@@ -82,28 +95,19 @@ function SiteTreeBranch({ node, depth, defaultExpandAll }: SiteTreeBranchProps) 
     >
       <details className={styles.branch} open={open}>
         <summary className={styles.summary}>
-          <Icon name="caret-right" size="xs" className={styles.caret} decorative />
+          <Icon
+            name="caret-right"
+            size="xs"
+            className={styles.caret}
+            decorative
+          />
           <Icon name="folder" size="sm" decorative />
           <span className={styles.summaryLabel}>
-            {href ? (
-              <Link
-                href={href}
-                size="S"
-                className={styles.link}
-                onClick={(event) => event.stopPropagation()}
-                {...(external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-              >
-                {label}
-              </Link>
-            ) : (
-              <span className={styles.label}>{label}</span>
-            )}
+            <span className={styles.label}>{label}</span>
           </span>
         </summary>
         <SiteTreeList
-          nodes={children}
+          nodes={branchChildren}
           depth={depth + 1}
           defaultExpandAll={defaultExpandAll}
         />
@@ -122,7 +126,7 @@ function SiteTreeList({ nodes, depth, defaultExpandAll }: SiteTreeListProps) {
   if (!nodes.length) return null;
 
   return (
-    <ul className={styles.list} role="group">
+    <ul className={styles.list}>
       {nodes.map((node) =>
         isBranch(node) ? (
           <SiteTreeBranch
