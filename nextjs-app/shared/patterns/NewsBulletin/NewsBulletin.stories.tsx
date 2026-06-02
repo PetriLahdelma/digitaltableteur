@@ -10,7 +10,7 @@ const meta: Meta<typeof NewsBulletin> = {
     layout: "fullscreen",
     design: {
       type: "figma",
-      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=310-899",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=503-20",
     },
   },
 };

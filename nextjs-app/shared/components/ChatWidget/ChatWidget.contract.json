@@ -5,7 +5,7 @@
   "group": "interaction",
   "status": "beta",
   "description": "Collapsible site assistant chat widget with streaming replies.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-chat-widget",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",
   "radixPrimitive": null,
   "element": "div",
   "variants": {},

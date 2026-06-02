@@ -1,0 +1,37 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as LogoStories from "./Logo.stories.tsx";
+
+<Meta of={LogoStories} />
+
+# Logo
+
+The Digitaltableteur brand mark. Monochrome (inherits `currentColor`), renders in
+a square `size`×`size` box, and supports an opt-in hover pulse.
+
+<Canvas of={LogoStories.Default} />
+
+## Usage
+
+```tsx
+import Logo from "@dt/Logo";
+
+<Logo size={28} />
+<Logo size={28} animated />        {/* hover pulse, reduced-motion safe */}
+<Logo decorative />                {/* next to a visible wordmark */}
+```
+
+## Sizes
+
+<Canvas of={LogoStories.Sizes} />
+
+## Controls
+
+<Controls />
+
+## Accessibility
+
+- Default exposes `role="img"` with an accessible name from `title`
+  (`"Digitaltableteur"`).
+- Use `decorative` when the brand is already named by adjacent text — the mark is
+  then `aria-hidden`.
+- The pulse only runs on hover and is disabled under `prefers-reduced-motion`.

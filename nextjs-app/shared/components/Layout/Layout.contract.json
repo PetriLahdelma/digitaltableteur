@@ -5,7 +5,7 @@
   "group": "structure",
   "status": "beta",
   "description": "Top-level page shell wrapping every Next.js app/* route. Renders the global header, the route's children inside the main landmark, and the global footer. Catalog entry exists so the page structure is documented; the implementation is not parameterised.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-layout",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-layout",
   "radixPrimitive": null,
   "element": "div",
   "variants": {},

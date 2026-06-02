@@ -1,0 +1,93 @@
+/*
+ * Wrap defaults in @layer components so Tailwind utilities (in @layer utilities)
+ * win over the module's own rules — matches the Divider/Icon pattern and keeps
+ * consumer sizing/spacing utilities authoritative.
+ */
+@layer components {
+  .logo {
+    display: inline-block;
+    flex-shrink: 0;
+
+    /* Mark inherits text color via currentColor — theme- and forced-colors-safe. */
+    color: inherit;
+    vertical-align: middle;
+  }
+
+  /* Brand badge: flip the mark to the contrast token; lime fill on the circle. */
+
+  .badged {
+    color: var(--logo-color, #000);
+  }
+
+  .badgeBg {
+    fill: var(--logo-background, #dfff00);
+  }
+
+  .bar1,
+  .bar2,
+  .bar3 {
+    transition: opacity 0.3s ease;
+  }
+
+  /* Opt-in: pulse the three leading bars on hover. */
+
+  .animated:hover .bar1 {
+    animation: dt-logo-pulse-1 0.9s ease-in-out infinite;
+  }
+
+  .animated:hover .bar2 {
+    animation: dt-logo-pulse-2 0.9s ease-in-out infinite;
+  }
+
+  .animated:hover .bar3 {
+    animation: dt-logo-pulse-3 0.9s ease-in-out infinite;
+  }
+
+  @keyframes dt-logo-pulse-1 {
+    0%,
+    33%,
+    100% {
+      opacity: 1;
+    }
+
+    5%,
+    28% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes dt-logo-pulse-2 {
+    0%,
+    5%,
+    66%,
+    100% {
+      opacity: 1;
+    }
+
+    33%,
+    61% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes dt-logo-pulse-3 {
+    0%,
+    61%,
+    100% {
+      opacity: 1;
+    }
+
+    66%,
+    95% {
+      opacity: 0.5;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animated:hover .bar1,
+    .animated:hover .bar2,
+    .animated:hover .bar3 {
+      animation: none;
+    }
+  }
+}
