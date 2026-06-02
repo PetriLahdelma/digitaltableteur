@@ -5,7 +5,7 @@
   "group": "form",
   "status": "beta",
   "description": "Labeled text input with validation, helper text, and size tokens.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-inputs",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-10",
   "radixPrimitive": null,
   "element": "input",
   "variants": {

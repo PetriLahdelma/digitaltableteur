@@ -5,7 +5,7 @@
   "group": "display",
   "status": "beta",
   "description": "Grid of skill / tech logos arranged in 4 / 6 / 8 columns. Used on the about page and case studies to show capabilities or tooling at a glance.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-skills-grid",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skills-grid",
   "radixPrimitive": null,
   "element": "section",
   "variants": {},

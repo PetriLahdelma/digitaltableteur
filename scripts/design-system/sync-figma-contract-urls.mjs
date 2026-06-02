@@ -9,7 +9,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { buildFigmaPlaceholderUrl, FIGMA_FILE_KEY } from "./figma-config.mjs";
+import { buildFigmaUrl, FIGMA_FILE_KEY } from "./figma-config.mjs";
 import { iterBetaStableContracts } from "./figma-contract-utils.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -23,7 +23,7 @@ let updated = 0;
 let skipped = 0;
 
 for (const { name, contract, contractPath } of iterBetaStableContracts(roots)) {
-  const nextUrl = buildFigmaPlaceholderUrl(name);
+  const nextUrl = buildFigmaUrl(name);
   if (contract.figma === nextUrl) {
     skipped += 1;
     continue;

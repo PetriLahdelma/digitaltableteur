@@ -5,7 +5,7 @@
   "group": "form",
   "status": "beta",
   "description": "Single radio option; compose with RadioGroup for sets.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-radio",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=372-27",
   "radixPrimitive": null,
   "element": "div",
   "variants": {},
