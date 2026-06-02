@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../scripts/design-system/contract.schema.json",
+  "name": "Logo",
+  "tier": "atom",
+  "group": "display",
+  "status": "beta",
+  "description": "Digitaltableteur brand mark — monochrome (currentColor), square footprint, optional hover pulse.",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=480-1588",
+  "radixPrimitive": null,
+  "element": "svg",
+  "variants": {},
+  "slots": [],
+  "asChild": false,
+  "subParts": [],
+  "requiredStories": [
+    "Default",
+    "Playground",
+    "Example",
+    "ForcedColors"
+  ],
+  "argTypesProxyExempt": [
+    "animated",
+    "badge",
+    "className",
+    "decorative",
+    "size",
+    "title"
+  ],
+  "a11y": {
+    "keyboard": [],
+    "ariaRequirements": [
+      "accessible name via title unless decorative",
+      "decorative renders aria-hidden"
+    ],
+    "reducedMotion": true,
+    "reviewed": false,
+    "forcedColorsVerified": false,
+    "reviewedNote": "New atom — WIP badge retained until a11y + visual + translation verification."
+  },
+  "tokens": {
+    "colors": [],
+    "spacing": []
+  },
+  "lightDarkVerified": false,
+  "consumers": []
+}

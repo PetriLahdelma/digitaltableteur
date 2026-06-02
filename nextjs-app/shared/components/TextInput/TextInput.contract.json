@@ -5,7 +5,7 @@
   "group": "form",
   "status": "beta",
   "description": "Single-line text input primitive with optional start/end icon slots, an inline clear button, and an error state. Wraps a native `<input>` so HTML attributes pass through.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-text-input",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-text-input",
   "radixPrimitive": null,
   "element": "input",
   "variants": {},

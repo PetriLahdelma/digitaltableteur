@@ -5,7 +5,7 @@
   "group": "display",
   "status": "stable",
   "description": "Compact status label with semantic state, size, and optional icon.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-badge",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=400-1249",
   "radixPrimitive": null,
   "element": "span",
   "variants": {},

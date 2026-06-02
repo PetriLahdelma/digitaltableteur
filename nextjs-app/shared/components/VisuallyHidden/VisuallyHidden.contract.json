@@ -5,7 +5,7 @@
   "group": "accessibility",
   "status": "beta",
   "description": "Screen-reader-only text; not visible until focused in context.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-visually-hidden",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-31",
   "radixPrimitive": null,
   "element": "div",
   "variants": {},

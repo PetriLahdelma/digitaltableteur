@@ -5,7 +5,7 @@
   "group": "form",
   "status": "beta",
   "description": "Wrapper that owns the label + control + helper-text triplet for a single field. Wires `htmlFor`/`id`, `aria-describedby`, and the required-/error-state slots so consumers do not reimplement them per form.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-form-field",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-form-field",
   "radixPrimitive": null,
   "element": "div",
   "variants": {},

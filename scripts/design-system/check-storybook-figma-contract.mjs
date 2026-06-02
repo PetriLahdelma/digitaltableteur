@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 
 import {
   FIGMA_FILE_KEY,
+  FIGMA_LIBRARY_EXISTS,
   isDtPlaceholderNodeId,
   isRealFigmaNodeId,
 } from "./figma-config.mjs";
@@ -38,9 +39,16 @@ for (const { name, contract } of iterBetaStableContracts(roots)) {
   }
   const nodeMatch = figma.match(/[?&]node-id=([^&]+)/);
   const nodeId = nodeMatch?.[1] ?? "";
+  // When the DT library exists, a real numeric node-id is valid (and deep-links
+  // from Storybook's Design panel); foreign files are blocked by the file-key
+  // guard above. Otherwise contracts must use the dt-<slug> placeholder.
   if (isRealFigmaNodeId(nodeId)) {
-    console.error(`FAIL ${name}: contract figma must not use foreign numeric node-id`);
-    failed += 1;
+    if (!FIGMA_LIBRARY_EXISTS) {
+      console.error(
+        `FAIL ${name}: contract figma must not use a numeric node-id until the DT library exists`,
+      );
+      failed += 1;
+    }
     continue;
   }
   if (!isDtPlaceholderNodeId(nodeId)) {

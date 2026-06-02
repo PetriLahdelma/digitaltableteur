@@ -12,6 +12,7 @@ import { fileURLToPath } from "node:url";
 
 import {
   FIGMA_FILE_KEY,
+  FIGMA_LIBRARY_EXISTS,
   isDtPlaceholderNodeId,
   isRealFigmaNodeId,
 } from "./figma-config.mjs";
@@ -67,11 +68,15 @@ for (const { name, contract } of iterBetaStableContracts(roots)) {
   const nodeMatch = figma.match(/[?&]node-id=([^&]+)/);
   const nodeId = nodeMatch?.[1] ?? "";
   if (isRealFigmaNodeId(nodeId)) {
-    console.error(
-      `FAIL ${name}: numeric Figma node-id without DT library (${figma})`,
-    );
-    foreignRealIds += 1;
-    failed += 1;
+    // Numeric node-ids are valid once the DT library exists (file-key guard
+    // above already blocks foreign files). Until then they are forbidden.
+    if (!FIGMA_LIBRARY_EXISTS) {
+      console.error(
+        `FAIL ${name}: numeric Figma node-id without DT library (${figma})`,
+      );
+      foreignRealIds += 1;
+      failed += 1;
+    }
     continue;
   }
   if (!isDtPlaceholderNodeId(nodeId)) {
@@ -88,7 +93,9 @@ if (failed) {
   process.exit(1);
 }
 
-console.log("✓ figma-link: beta/stable contracts have honest DT scaffold figma URLs");
+console.log("✓ figma-link: beta/stable contracts have valid DT figma URLs");
 console.log(
-  "  (HONEST_FIGMA_DEBT: real Figma frames pending — dt-* slugs are expected until the DT file ships)",
+  FIGMA_LIBRARY_EXISTS
+    ? "  (DT library exists — verified components use real node-ids; unbuilt ones keep dt-* slugs)"
+    : "  (HONEST_FIGMA_DEBT: real Figma frames pending — dt-* slugs are expected until the DT file ships)",
 );

@@ -5,7 +5,7 @@
   "group": "layout",
   "status": "beta",
   "description": "CSS grid layout primitive with tokenized gaps.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-grid",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-grid",
   "radixPrimitive": null,
   "element": "div",
   "variants": {},
