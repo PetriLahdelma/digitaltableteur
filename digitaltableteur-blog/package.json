@@ -18,7 +18,7 @@
     "@sanity/code-input": "^7.1.2",
     "@sanity/vision": "^5.28.0",
     "react": "^19.2.6",
-    "react-dom": "^19.2.3",
+    "react-dom": "^19.2.7",
     "sanity": "^5.28.0",
     "styled-components": "^6.4.2"
   },
