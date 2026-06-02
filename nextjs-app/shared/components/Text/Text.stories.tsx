@@ -90,6 +90,10 @@ export default {
   component: Text,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=370-19",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     llm: { schema },

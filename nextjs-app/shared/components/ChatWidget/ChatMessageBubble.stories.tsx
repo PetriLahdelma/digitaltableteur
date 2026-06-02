@@ -48,7 +48,13 @@ const meta: Meta<typeof ChatMessageBubble> = {
   title: "Molecules/Chat/ChatMessageBubble",
   component: ChatMessageBubble,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",
+    },
+    layout: "padded",
+  },
   args: { isStreaming: false },
 };
 

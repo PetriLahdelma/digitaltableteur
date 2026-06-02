@@ -7,6 +7,10 @@ const meta: Meta<typeof ProcessBlock> = {
   component: ProcessBlock,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-process-block",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "fullscreen",

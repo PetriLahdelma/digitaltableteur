@@ -353,6 +353,10 @@ export const Playground = Default;
 export const Example = {
   tags: ["beta-matrix"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-person-card",
+    },
     a11y: { test: "error" },
     contractStatus: contract.status,
     controls: { disable: true },

@@ -140,7 +140,12 @@ const meta: Meta<typeof ChatMessages> = {
   component: ChatMessages,
   tags: ["autodocs"],
   args: { messages: SAMPLE_MESSAGES },
-  parameters: {},
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",
+    },
+  },
 };
 
 export default meta;

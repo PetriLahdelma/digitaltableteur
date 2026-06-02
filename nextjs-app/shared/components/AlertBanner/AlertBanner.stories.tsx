@@ -7,7 +7,14 @@ const meta: Meta<typeof AlertBanner> = {
   title: "Molecules/AlertBanner",
   component: AlertBanner,
   tags: ["beta", "!autodocs"],
-  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=394-41",
+    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+  },
   argTypes: {
     tone: {
       control: { type: "select" },
