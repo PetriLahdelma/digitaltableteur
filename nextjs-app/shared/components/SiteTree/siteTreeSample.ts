@@ -17,6 +17,7 @@ export const sampleSiteTree: SiteTreeNode[] = [
     id: "work",
     label: "Work",
     href: "/work",
+    indexLabel: "Work overview",
     defaultExpanded: true,
     children: [
       {
@@ -40,6 +41,7 @@ export const sampleSiteTree: SiteTreeNode[] = [
     id: "blog",
     label: "Blog",
     href: "/blog",
+    indexLabel: "Blog home",
     defaultExpanded: true,
     children: [
       {

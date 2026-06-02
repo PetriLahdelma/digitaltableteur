@@ -12,6 +12,12 @@ export type SiteTreeNode = {
   label: string;
   /** Page URL for leaf nodes, or optional index link on branches */
   href?: string;
+  /**
+   * Label (already translated) for a branch's own index link, surfaced as the
+   * branch's first leaf. Defaults to `label`; set it to disambiguate from the
+   * folder name, e.g. "Work overview" under the "Work" branch.
+   */
+  indexLabel?: string;
   /** Opens in a new tab with external affordance */
   external?: boolean;
   /** Nested pages or sections */
@@ -76,16 +82,34 @@ function SiteTreeBranch({
   depth,
   defaultExpandAll,
 }: SiteTreeBranchProps) {
-  const { id, label, href, external, children = [], defaultExpanded } = node;
+  const {
+    id,
+    label,
+    href,
+    indexLabel,
+    external,
+    children = [],
+    defaultExpanded,
+  } = node;
   const open = defaultExpandAll || defaultExpanded;
 
   // A branch toggle (<summary>) must not contain an interactive element: a link
   // nested inside <summary> is the axe `nested-interactive` violation and
   // leaves keyboard/screen-reader users unsure whether activating toggles or
   // navigates. When the branch has its own page, surface that as the first leaf
-  // so the toggle and the link stay separate and both remain accessible.
+  // so the toggle and the link stay separate and both remain accessible. The
+  // synthetic id is namespaced so it can't collide with a sibling node id, and
+  // `indexLabel` lets callers disambiguate it from the folder name.
   const branchChildren: SiteTreeNode[] = href
-    ? [{ id: `${id}-index`, label, href, external }, ...children]
+    ? [
+        {
+          id: `site-tree-index:${id}`,
+          label: indexLabel ?? label,
+          href,
+          external,
+        },
+        ...children,
+      ]
     : children;
 
   return (

@@ -36,10 +36,12 @@ import SiteTree from "@dt/SiteTree";
       ],
     },
     // A branch with its own page: the href is surfaced as the first leaf.
+    // `indexLabel` disambiguates that link from the folder name.
     {
       id: "work",
       label: "Work",
       href: "/work",
+      indexLabel: "Work overview",
       children: [
         { id: "hds", label: "Helsinki Design System", href: "/work/hds" },
       ],
@@ -68,7 +70,8 @@ Pass already-translated `label`s; the component renders structure, not copy.
 - `nav[aria-label]` landmark wrapping nested `ul`/`li` lists.
 - **Branch**: a native `details`/`summary` toggle (caret + folder + label).
   When a branch has its own page, that page is surfaced as the branch's first
-  **leaf** so the toggle and the link never nest.
+  **leaf** so the toggle and the link never nest. Set `indexLabel` to give that
+  link a distinct name (e.g. "Work overview") instead of repeating the folder.
 - **Leaf**: a file icon plus a `Link` (or plain text when it has no `href`).
 
 ## Variants
