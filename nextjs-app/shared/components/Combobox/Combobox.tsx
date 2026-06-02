@@ -96,17 +96,14 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
       [closeDropdown, onValueChange],
     );
 
-    const {
-      mounted,
-      dropdownStyle,
-      controlRef,
-      listRef,
-      containerRef,
-    } = useComboboxDropdown(open, options.length, closeDropdown);
+    const { mounted, dropdownStyle, controlRef, listRef, containerRef } =
+      useComboboxDropdown(open, options.length, closeDropdown);
 
     useEffect(() => {
       if (!open) return;
-      const selectedIndex = options.findIndex((option) => option.value === value);
+      const selectedIndex = options.findIndex(
+        (option) => option.value === value,
+      );
       setHighlightedIndex(selectedIndex >= 0 ? selectedIndex : 0);
     }, [open, options, value]);
 
@@ -237,7 +234,11 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
 
     return (
       <div className={cn(styles.field, className)} ref={containerRef}>
-        <label id={`${fieldId}-label`} htmlFor={fieldId} className={styles.label}>
+        <label
+          id={`${fieldId}-label`}
+          htmlFor={fieldId}
+          className={styles.label}
+        >
           {label}
           {required && (
             <>
