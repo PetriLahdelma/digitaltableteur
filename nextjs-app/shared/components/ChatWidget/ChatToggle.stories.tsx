@@ -3,6 +3,12 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import ChatToggle from "./ChatToggle";
 
 const meta: Meta<typeof ChatToggle> = {
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",
+    },
+  },
   title: "Molecules/Chat/ChatToggle",
   component: ChatToggle,
   tags: ["autodocs"],

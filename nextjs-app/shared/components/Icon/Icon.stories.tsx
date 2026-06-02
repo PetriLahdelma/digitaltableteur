@@ -4,7 +4,14 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import Icon from "@dt/Icon";
 
 const meta: Meta<typeof Icon> = {
-  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon",
+    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+  },
   title: "Atoms/Icon",
   component: Icon,
   tags: ["beta", "!autodocs"],

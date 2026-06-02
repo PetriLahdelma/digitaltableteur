@@ -18,7 +18,13 @@ const meta: Meta<typeof ChatComposer> = {
     onSubmit: noop,
     maxLength: 1_000,
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",
+    },
+    layout: "padded",
+  },
 };
 
 export default meta;

@@ -9,6 +9,10 @@ const meta: Meta<typeof StoryBlock> = {
   component: StoryBlock,
   tags: ["!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-story-block",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "fullscreen",

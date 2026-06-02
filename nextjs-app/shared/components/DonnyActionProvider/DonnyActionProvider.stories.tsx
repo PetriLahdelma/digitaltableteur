@@ -29,7 +29,7 @@ function DemoPanel() {
       <Button
         variant="secondary"
         onClick={() => {
-          // eslint-disable-next-line no-console
+           
           console.log(capturePageContext());
         }}
       >
