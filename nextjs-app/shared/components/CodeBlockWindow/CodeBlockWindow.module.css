@@ -197,6 +197,18 @@
   }
 }
 
+/*
+ * Storybook's globals-based forced-colors emulation (html.sb-forced-colors-active)
+ * cannot trigger the real @media (forced-colors: active) above, so axe would
+ * otherwise test the light syntax-token colors (e.g. shiki orange) against the
+ * window background and report a false contrast failure. Mirror the system-color
+ * mapping under the emulation class so the ForcedColors story reflects real
+ * forced-colors behavior. CanvasText resolves to a real color outside FC too.
+ */
+:global(html.sb-forced-colors-active) .code :global(span) {
+  color: CanvasText !important;
+}
+
 .container[data-line-numbers="true"] .code {
   counter-reset: line;
 }
