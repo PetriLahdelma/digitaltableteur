@@ -25,7 +25,12 @@ type Story = StoryObj<typeof ChatHeader>;
 
 export const Default: Story = {
   tags: ["beta-matrix"],
-  parameters: {},
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=473-25",
+    },
+  },
 };
 
 export const Sending: Story = { args: { isSending: true } };

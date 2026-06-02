@@ -79,6 +79,10 @@ export default {
   component: Modal,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=384-13",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     llm: { schema },
@@ -233,11 +237,9 @@ const Template: StoryFn<ModalProps> = (args: ModalProps) => {
         isOpen={open}
         onClose={() => setOpen(false)}
         title={t(args.title as string)}
-         
         children={
           typeof args.children === "string" ? t(args.children) : args.children
         }
-         
       />
     </>
   );

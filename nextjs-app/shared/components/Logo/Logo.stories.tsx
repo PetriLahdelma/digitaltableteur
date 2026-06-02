@@ -7,6 +7,10 @@ const meta = {
   component: Logo,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=480-1588",
+    },
     layout: "centered",
     contractStatus: contract.status,
     a11y: { test: "error" },
@@ -19,7 +23,8 @@ const meta = {
     },
     animated: {
       control: "boolean",
-      description: "Pulse the leading bars on hover (disabled under reduced motion)",
+      description:
+        "Pulse the leading bars on hover (disabled under reduced motion)",
       table: { category: "Motion", defaultValue: { summary: "false" } },
     },
     badge: {
@@ -30,7 +35,10 @@ const meta = {
     title: {
       control: "text",
       description: "Accessible name (ignored when decorative)",
-      table: { category: "Accessibility", defaultValue: { summary: "Digitaltableteur" } },
+      table: {
+        category: "Accessibility",
+        defaultValue: { summary: "Digitaltableteur" },
+      },
     },
     decorative: {
       control: "boolean",

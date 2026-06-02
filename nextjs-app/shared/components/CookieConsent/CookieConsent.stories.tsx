@@ -8,6 +8,10 @@ const meta = {
   component: CookieConsent,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-cookie-consent",
+    },
     layout: "fullscreen",
     contractStatus: contract.status,
     a11y: { test: "error" },

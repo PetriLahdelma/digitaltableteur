@@ -8,6 +8,10 @@ const meta: Meta<typeof MobileMenu> = {
   component: MobileMenu,
   tags: ["autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-header",
+    },
     layout: "fullscreen",
     docs: {
       description: {

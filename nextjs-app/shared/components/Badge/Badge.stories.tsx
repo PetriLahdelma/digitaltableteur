@@ -23,6 +23,10 @@ const meta: Meta<typeof Badge> = {
   component: Badge,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=400-1249",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     // Disable global WIP badge to prevent duplicate 'Badge' text collision in tests
