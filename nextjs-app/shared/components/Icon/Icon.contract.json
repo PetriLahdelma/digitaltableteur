@@ -5,7 +5,7 @@
   "group": "display",
   "status": "stable",
   "description": "Phosphor icon wrapper with size, weight, and motion affordances.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-icon",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon",
   "radixPrimitive": null,
   "element": "span",
   "variants": {},

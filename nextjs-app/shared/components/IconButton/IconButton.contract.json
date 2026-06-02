@@ -5,7 +5,7 @@
   "group": "actions",
   "status": "beta",
   "description": "Icon-only action button. Wraps the underlying shadcn `Button` with a circular shape, enforced `aria-label`, and the design-system size axis.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-icon-button",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon-button",
   "radixPrimitive": null,
   "element": "button",
   "variants": {},

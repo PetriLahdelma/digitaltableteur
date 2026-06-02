@@ -5,7 +5,7 @@
   "group": "navigation",
   "status": "beta",
   "description": "Concrete Next.js implementation of the site header pattern. Renders the logo, primary nav, theme switcher, and the mobile-menu trigger. Visually documented at the catalog level via `SiteHeader`; this entry exists so the implementation file is also discoverable.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-next-header",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-next-header",
   "radixPrimitive": null,
   "element": "header",
   "variants": {},
