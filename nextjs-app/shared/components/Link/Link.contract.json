@@ -5,7 +5,7 @@
   "group": "navigation",
   "status": "beta",
   "description": "Accessible inline link with size tokens and optional trailing icon.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-link",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-30",
   "radixPrimitive": null,
   "element": "a",
   "variants": {},

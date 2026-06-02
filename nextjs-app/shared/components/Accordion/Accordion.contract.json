@@ -5,7 +5,7 @@
   "group": "structure",
   "status": "beta",
   "description": "Expandable sections with keyboard-operable triggers.",
-  "figma": "https://www.figma.com/design/d8nFs8A5KcjbFr6KkwZV4H5K/Digitaltableteur-Design-System?node-id=dt-accordion",
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-17",
   "radixPrimitive": null,
   "element": "div",
   "variants": {},

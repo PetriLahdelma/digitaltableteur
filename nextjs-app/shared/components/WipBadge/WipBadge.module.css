@@ -37,6 +37,17 @@
 .wipBadgeDocs .badge {
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-8);
+  border-radius: var(--radius-sm, 4px);
+
+  /* Must be opaque: the badge is position:fixed over scrolling docs content,
+     so a transparent fill lets page content (e.g. transparent SVG marks) bleed
+     through the label. Mirrors the canvas variant's surface fill. */
+  background: var(
+    --color-surface-elevated,
+    var(--main-body-background-color, #fff)
+  );
   box-shadow: 0 0 0 1px rgb(0 0 0 / 8%), 0 8px 24px rgb(15 23 42 / 12%);
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text, #111);
   pointer-events: auto;
 }

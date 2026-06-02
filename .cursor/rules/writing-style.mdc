@@ -1,0 +1,17 @@
+---
+description: Digitaltableteur blog and long-form prose — load project voice rules before drafting or editing articles
+globs:
+  - content/**/*.mdx
+  - content/**/*.md
+  - docs/WRITING_STYLE.md
+---
+
+# Writing style (this repo only)
+
+Before creating or editing blog posts, drafts, or long-form markdown in this project:
+
+1. Read **`docs/WRITING_STYLE.md`** (authoritative; do not use global llm-wiki or shared skills for voice).
+2. UI microcopy / `t()` strings → `.claude/agents/copywriting-lead.md`, not WRITING_STYLE.
+3. After substantive edits: read aloud; check banned vocabulary and paragraph rhythm (no staccato one-liners).
+
+Do not copy `WRITING_STYLE.md` to other repositories.
