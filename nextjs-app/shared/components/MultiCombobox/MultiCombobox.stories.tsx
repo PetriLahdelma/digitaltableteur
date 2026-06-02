@@ -123,22 +123,28 @@ export const Example: Story = {
   ),
 };
 
-/** Opens with ArrowDown, toggles an option with Enter — keyboard-only. */
+/** Type-to-filter to a single match, then select it with Enter — keyboard-only. */
 export const KeyboardMultiSelect: Story = {
   tags: ["beta-matrix"],
   render: () => <MultiComboboxDemo />,
   play: async ({ canvasElement }) => {
     const input = within(canvasElement).getByRole("combobox");
-    input.focus(); // onFocus opens the list (highlight starts at index 0)
-    await waitFor(() => expect(screen.getByRole("listbox")).toBeVisible());
-    await userEvent.keyboard("{ArrowDown}{Enter}"); // move to 2nd option, toggle
-    // Multi-select keeps the list open; the moved-to option is now aria-selected
-    // and a chip is added to the field.
+    // Type-to-filter narrows to a single option and resets the highlight to it,
+    // so Enter selects it deterministically — no dependence on auto-open
+    // behavior or arrow-key index math.
+    await userEvent.type(input, "acc");
     await waitFor(() =>
-      expect(screen.getByRole("option", { name: /design/i })).toHaveAttribute(
-        "aria-selected",
-        "true",
-      ),
+      expect(
+        screen.getByRole("option", { name: /accessibility/i }),
+      ).toBeVisible(),
+    );
+    await userEvent.keyboard("{Enter}");
+    // Multi-select keeps the list open; the option is now aria-selected and a
+    // chip is added to the field.
+    await waitFor(() =>
+      expect(
+        screen.getByRole("option", { name: /accessibility/i }),
+      ).toHaveAttribute("aria-selected", "true"),
     );
   },
 };
