@@ -27,7 +27,7 @@ export const codeBlockFixtures = {
         "className": [
           "shiki",
           "shiki-themes",
-          "github-light",
+          "github-light-high-contrast",
           "github-dark",
           "github-light-high-contrast",
           "github-dark-high-contrast"
@@ -51,7 +51,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "type"
@@ -61,7 +61,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
+                    "style": "--shiki-light:#702C00;--shiki-dark:#B392F0;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
                   },
                   "children": [
                     " Props"
@@ -71,7 +71,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     " ="
@@ -81,7 +81,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     " {"
@@ -101,7 +101,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#E36209;--shiki-dark:#FFAB70;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
+                    "style": "--shiki-light:#702C00;--shiki-dark:#FFAB70;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
                   },
                   "children": [
                     "  label"
@@ -111,7 +111,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     ":"
@@ -121,7 +121,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
+                    "style": "--shiki-light:#023B95;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
                   },
                   "children": [
                     " string"
@@ -131,7 +131,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ";"
@@ -151,7 +151,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "};"
@@ -180,7 +180,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "export"
@@ -190,7 +190,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     " function"
@@ -200,7 +200,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-hcw:#622CBC;--shiki-hcb:#DBB7FF"
+                    "style": "--shiki-light:#622CBC;--shiki-dark:#B392F0;--shiki-hcw:#622CBC;--shiki-hcb:#DBB7FF"
                   },
                   "children": [
                     " DemoButton"
@@ -210,7 +210,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "({ "
@@ -220,7 +220,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#E36209;--shiki-dark:#FFAB70;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
+                    "style": "--shiki-light:#702C00;--shiki-dark:#FFAB70;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
                   },
                   "children": [
                     "label"
@@ -230,7 +230,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     " }"
@@ -240,7 +240,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     ":"
@@ -250,7 +250,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
+                    "style": "--shiki-light:#702C00;--shiki-dark:#B392F0;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
                   },
                   "children": [
                     " Props"
@@ -260,7 +260,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ") {"
@@ -280,7 +280,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "  return"
@@ -290,7 +290,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     " ("
@@ -310,7 +310,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "    <"
@@ -320,7 +320,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#22863A;--shiki-dark:#85E89D;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
+                    "style": "--shiki-light:#024C1A;--shiki-dark:#85E89D;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
                   },
                   "children": [
                     "button"
@@ -330,7 +330,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
+                    "style": "--shiki-light:#023B95;--shiki-dark:#B392F0;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
                   },
                   "children": [
                     " type"
@@ -340,7 +340,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "="
@@ -350,7 +350,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     "\"button\""
@@ -360,7 +360,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
+                    "style": "--shiki-light:#023B95;--shiki-dark:#B392F0;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
                   },
                   "children": [
                     " aria-label"
@@ -370,7 +370,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "="
@@ -380,7 +380,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#E1E4E8;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "{"
@@ -390,7 +390,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "label"
@@ -400,7 +400,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#E1E4E8;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "}"
@@ -410,7 +410,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ">"
@@ -430,7 +430,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#E1E4E8;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "      {"
@@ -440,7 +440,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "label"
@@ -450,7 +450,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#E1E4E8;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "}"
@@ -470,7 +470,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "    </"
@@ -480,7 +480,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#22863A;--shiki-dark:#85E89D;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
+                    "style": "--shiki-light:#024C1A;--shiki-dark:#85E89D;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
                   },
                   "children": [
                     "button"
@@ -490,7 +490,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ">"
@@ -510,7 +510,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "  );"
@@ -530,7 +530,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "}"
@@ -553,7 +553,7 @@ export const codeBlockFixtures = {
         "className": [
           "shiki",
           "shiki-themes",
-          "github-light",
+          "github-light-high-contrast",
           "github-dark",
           "github-light-high-contrast",
           "github-dark-high-contrast"
@@ -577,7 +577,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
+                    "style": "--shiki-light:#702C00;--shiki-dark:#B392F0;--shiki-hcw:#702C00;--shiki-hcb:#FFB757"
                   },
                   "children": [
                     "curl"
@@ -587,7 +587,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
+                    "style": "--shiki-light:#023B95;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
                   },
                   "children": [
                     " -X"
@@ -597,7 +597,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     " POST"
@@ -607,7 +607,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     " https://api.digitaltableteur.com/v1/send"
@@ -617,7 +617,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#79B8FF;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     " \\"
@@ -637,7 +637,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "+  "
@@ -647,7 +647,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
+                    "style": "--shiki-light:#023B95;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
                   },
                   "children": [
                     "-H"
@@ -657,7 +657,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     " \"Authorization: Bearer "
@@ -667,7 +667,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "$TOKEN"
@@ -677,7 +677,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     "\""
@@ -687,7 +687,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#79B8FF;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     " \\"
@@ -707,7 +707,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "+  "
@@ -717,7 +717,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
+                    "style": "--shiki-light:#023B95;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
                   },
                   "children": [
                     "-H"
@@ -727,7 +727,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     " \"Content-Type: application/json\""
@@ -737,7 +737,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#79B8FF;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     " \\"
@@ -757,7 +757,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "+  "
@@ -767,7 +767,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
+                    "style": "--shiki-light:#023B95;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
                   },
                   "children": [
                     "-d"
@@ -777,7 +777,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     " '{\"name\":\"Petri\",\"message\":\"Hello\"}'"
@@ -800,7 +800,7 @@ export const codeBlockFixtures = {
         "className": [
           "shiki",
           "shiki-themes",
-          "github-light",
+          "github-light-high-contrast",
           "github-dark",
           "github-light-high-contrast",
           "github-dark-high-contrast"
@@ -824,7 +824,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "{"
@@ -834,7 +834,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
+                    "style": "--shiki-light:#024C1A;--shiki-dark:#79B8FF;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
                   },
                   "children": [
                     "\"service\""
@@ -844,7 +844,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ":"
@@ -854,7 +854,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     "\"digitaltableteur\""
@@ -864,7 +864,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ","
@@ -874,7 +874,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
+                    "style": "--shiki-light:#024C1A;--shiki-dark:#79B8FF;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
                   },
                   "children": [
                     "\"mode\""
@@ -884,7 +884,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ":"
@@ -894,7 +894,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     "\"active\""
@@ -904,7 +904,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ","
@@ -914,7 +914,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
+                    "style": "--shiki-light:#024C1A;--shiki-dark:#79B8FF;--shiki-hcw:#024C1A;--shiki-hcb:#72F088"
                   },
                   "children": [
                     "\"regions\""
@@ -924,7 +924,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ":["
@@ -934,7 +934,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     "\"eu\""
@@ -944,7 +944,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ","
@@ -954,7 +954,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     "\"us\""
@@ -964,7 +964,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     "]}"
@@ -987,7 +987,7 @@ export const codeBlockFixtures = {
         "className": [
           "shiki",
           "shiki-themes",
-          "github-light",
+          "github-light-high-contrast",
           "github-dark",
           "github-light-high-contrast",
           "github-dark-high-contrast"
@@ -1011,7 +1011,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     "const"
@@ -1021,7 +1021,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
+                    "style": "--shiki-light:#023B95;--shiki-dark:#79B8FF;--shiki-hcw:#023B95;--shiki-hcb:#91CBFF"
                   },
                   "children": [
                     " longLine"
@@ -1031,7 +1031,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
+                    "style": "--shiki-light:#A0111F;--shiki-dark:#F97583;--shiki-hcw:#A0111F;--shiki-hcb:#FF9492"
                   },
                   "children": [
                     " ="
@@ -1041,7 +1041,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
+                    "style": "--shiki-light:#032563;--shiki-dark:#9ECBFF;--shiki-hcw:#032563;--shiki-hcb:#ADDCFF"
                   },
                   "children": [
                     " 'This is an intentionally long line to verify horizontal scrolling within the code window without wrapping.'"
@@ -1051,7 +1051,7 @@ export const codeBlockFixtures = {
                   "type": "element",
                   "tagName": "span",
                   "properties": {
-                    "style": "--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
+                    "style": "--shiki-light:#0E1116;--shiki-dark:#E1E4E8;--shiki-hcw:#0E1116;--shiki-hcb:#F0F3F6"
                   },
                   "children": [
                     ";"
