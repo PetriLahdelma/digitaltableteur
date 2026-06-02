@@ -80,6 +80,10 @@ const meta = {
   title: "Molecules/SocialShare",
   component: SocialShare,
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-social-share",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "centered",

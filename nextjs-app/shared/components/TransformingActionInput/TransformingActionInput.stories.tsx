@@ -8,6 +8,10 @@ const meta: Meta<typeof TransformingActionInput> = {
   title: "Molecules/TransformingActionInput",
   component: TransformingActionInput,
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-transforming-action-input",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "padded",

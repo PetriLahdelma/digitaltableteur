@@ -74,7 +74,14 @@ const meta: Meta<typeof SecureCVDownload> = {
   title: "Molecules/SecureCVDownload",
   component: SecureCVDownload,
   tags: ["beta", "!autodocs"],
-  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-secure-cvdownload",
+    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+  },
   argTypes: {
     buttonText: {
       control: "text",

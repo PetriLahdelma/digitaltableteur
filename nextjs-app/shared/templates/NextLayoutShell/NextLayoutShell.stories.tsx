@@ -9,6 +9,10 @@ const meta: Meta = {
   tags: ["beta", "!autodocs"],
   title: "Templates/NextLayoutShell",
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-next-layout-shell",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "fullscreen",

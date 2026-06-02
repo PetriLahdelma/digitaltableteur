@@ -26,7 +26,14 @@ const meta: Meta<typeof NavMenuList> = {
   title: "Molecules/NavMenuList",
   component: NavMenuList,
   tags: ["beta", "!autodocs"],
-  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-nav-menu-list",
+    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+  },
   decorators: [
     (Story) => {
       // If a parent preview already provides a router, don't nest another

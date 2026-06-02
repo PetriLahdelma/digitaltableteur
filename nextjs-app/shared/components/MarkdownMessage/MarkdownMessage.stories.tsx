@@ -8,14 +8,22 @@ const meta: Meta<typeof MarkdownMessage> = {
     density: {
       control: "select",
       options: ["default", "chat"],
-      description: "Typography density for chat bubbles vs default markdown blocks",
+      description:
+        "Typography density for chat bubbles vs default markdown blocks",
       table: { defaultValue: { summary: "default" } },
     },
   },
   title: "Molecules/Chat/MarkdownMessage",
   component: MarkdownMessage,
   tags: ["beta", "!autodocs"],
-  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-markdown-message",
+    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+  },
   args: {
     content:
       "# Heading\n\nSome **bold** text, _italics_, and a list:\n\n- Item one\n- Item two\n\n`inline code`\n\n```js\nconsole.log('block code');\n```\n\n> Blockquote example\n\nA table:\n\n| Col A | Col B |\n|-------|-------|\n| 1     | 2     |\n| 3     | 4     |\n",
