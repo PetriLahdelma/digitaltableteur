@@ -36,9 +36,7 @@ describe("Combobox", () => {
     );
 
     fireEvent.click(screen.getByRole("combobox"));
-    fireEvent.click(
-      within(screen.getByRole("listbox")).getByRole("option", { name: "ASAP" }),
-    );
+    fireEvent.click(within(screen.getByRole("listbox")).getByRole("option", { name: "ASAP" }));
     expect(onValueChange).toHaveBeenCalledWith("asap");
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });

@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect, useId, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
@@ -119,8 +125,13 @@ export function MultiCombobox({
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const { mounted, dropdownStyle, controlRef, listRef, containerRef } =
-    useComboboxDropdown(open, filteredOptions.length, closeDropdown);
+  const {
+    mounted,
+    dropdownStyle,
+    controlRef,
+    listRef,
+    containerRef,
+  } = useComboboxDropdown(open, filteredOptions.length, closeDropdown);
 
   useEffect(() => {
     setHighlightedIndex(0);
@@ -259,11 +270,7 @@ export function MultiCombobox({
 
   return (
     <div className={cn(fieldStyles.field, className)} ref={containerRef}>
-      <label
-        id={`${fieldId}-label`}
-        htmlFor={fieldId}
-        className={fieldStyles.label}
-      >
+      <label id={`${fieldId}-label`} htmlFor={fieldId} className={fieldStyles.label}>
         {label}
         {required && (
           <>
@@ -289,9 +296,7 @@ export function MultiCombobox({
             if ((event.target as HTMLElement).closest("[data-chip-remove]")) {
               return;
             }
-            if (
-              (event.target as HTMLElement).closest("[data-chevron-toggle]")
-            ) {
+            if ((event.target as HTMLElement).closest("[data-chevron-toggle]")) {
               return;
             }
             event.preventDefault();
@@ -371,10 +376,7 @@ export function MultiCombobox({
           >
             <Icon
               name="caret-down"
-              className={cn(
-                fieldStyles.chevron,
-                open && fieldStyles.chevronOpen,
-              )}
+              className={cn(fieldStyles.chevron, open && fieldStyles.chevronOpen)}
               ariaLabel=""
             />
           </button>

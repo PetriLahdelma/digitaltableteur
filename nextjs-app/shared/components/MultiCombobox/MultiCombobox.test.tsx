@@ -20,9 +20,7 @@ describe("MultiCombobox", () => {
       />,
     );
 
-    expect(
-      screen.getByPlaceholderText("Select one or more..."),
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Select one or more...")).toBeInTheDocument();
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });
 
@@ -45,9 +43,7 @@ describe("MultiCombobox", () => {
     fireEvent.change(input, { target: { value: "brand" } });
 
     const listbox = screen.getByRole("listbox");
-    expect(
-      within(listbox).getByRole("option", { name: /Brand & Identity/i }),
-    ).toBeInTheDocument();
+    expect(within(listbox).getByRole("option", { name: /Brand & Identity/i })).toBeInTheDocument();
     expect(
       within(listbox).queryByRole("option", { name: /^Other$/i }),
     ).not.toBeInTheDocument();
@@ -91,7 +87,9 @@ describe("MultiCombobox", () => {
     fireEvent.focus(screen.getByRole("combobox"));
     expect(screen.getByRole("listbox")).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: /toggle options/i }));
+    fireEvent.click(
+      screen.getByRole("button", { name: /toggle options/i }),
+    );
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });
 
@@ -122,8 +120,6 @@ describe("MultiCombobox", () => {
       />,
     );
 
-    expect(
-      screen.getByText("Pick at least one project type"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Pick at least one project type")).toBeInTheDocument();
   });
 });
