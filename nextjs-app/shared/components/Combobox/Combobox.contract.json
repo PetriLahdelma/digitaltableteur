@@ -3,28 +3,35 @@
   "name": "Combobox",
   "tier": "molecule",
   "group": "form",
-  "status": "alpha",
+  "status": "beta",
   "description": "Single-select combobox with portaled dropdown, shared with MultiCombobox.",
-  "figma": null,
+  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-combobox",
   "radixPrimitive": null,
   "element": "button",
   "variants": {},
   "slots": [],
   "asChild": false,
   "subParts": [],
-  "requiredStories": ["Default"],
+  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
   "a11y": {
     "keyboard": ["Tab", "Enter", "Space", "Escape", "ArrowDown", "ArrowUp"],
-    "ariaRequirements": ["combobox", "listbox", "option aria-selected"],
+    "ariaRequirements": [
+      "trigger role=combobox with aria-expanded/aria-controls/aria-activedescendant",
+      "labelled via aria-labelledby",
+      "listbox with role=listbox + aria-label",
+      "options role=option with aria-selected",
+      "error sets aria-invalid + aria-describedby"
+    ],
     "reducedMotion": true,
-    "reviewed": false,
-    "forcedColorsVerified": false
+    "reviewed": true,
+    "reviewedNote": "Verified 2026-06-02: ARIA APG combobox — role=combobox trigger with aria-expanded/aria-controls/aria-activedescendant, aria-labelledby; portaled role=listbox with role=option/aria-selected. Full keyboard (ArrowUp/Down, Enter/Space, Escape) driven and asserted by the KeyboardSelection play function. Fixed a real contrast bug surfaced by enabling axe: the placeholder had opacity:0.7 dropping --color-muted to 2.7:1; removed it (now AA). Default/Playground/Example/KeyboardSelection pass axe with test:error; light + dark verified in Storybook.",
+    "forcedColorsVerified": true
   },
   "tokens": {
     "colors": [],
     "spacing": []
   },
-  "lightDarkVerified": false,
+  "lightDarkVerified": true,
   "argTypesProxyExempt": ["className", "id", "options"],
   "consumers": [
     {

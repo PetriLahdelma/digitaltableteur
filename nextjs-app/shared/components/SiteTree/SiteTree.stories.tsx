@@ -7,7 +7,7 @@ import { sampleSiteTree } from "./siteTreeSample";
 const meta: Meta<typeof SiteTree> = {
   title: "Molecules/SiteTree",
   component: SiteTree,
-  tags: ["wip", "!autodocs"],
+  tags: ["beta", "!autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
@@ -33,8 +33,7 @@ export default meta;
 type Story = StoryObj<typeof SiteTree>;
 
 export const Default: Story = {
-  parameters: { a11y: { disable: true } },
-  tags: ["wip-matrix"],
+  tags: ["beta-matrix"],
   args: {
     nodes: sampleSiteTree,
     defaultExpandAll: true,
@@ -42,8 +41,7 @@ export const Default: Story = {
 };
 
 export const Playground: Story = {
-  parameters: { a11y: { disable: true, test: "off" } },
-  tags: ["wip-matrix"],
+  tags: ["beta-matrix"],
   args: {
     nodes: sampleSiteTree,
   },
@@ -51,8 +49,8 @@ export const Playground: Story = {
 
 export const Example: Story = {
   globals: { forcedColors: "none" },
-  tags: ["wip-matrix"],
-  parameters: { a11y: { disable: true }, controls: { disable: true } },
+  tags: ["beta-matrix"],
+  parameters: { controls: { disable: true } },
   args: {
     nodes: sampleSiteTree,
     defaultExpandAll: true,
@@ -61,7 +59,7 @@ export const Example: Story = {
 
 export const ForcedColors: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
-  tags: ["wip-matrix"],
+  tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: {
     nodes: sampleSiteTree,

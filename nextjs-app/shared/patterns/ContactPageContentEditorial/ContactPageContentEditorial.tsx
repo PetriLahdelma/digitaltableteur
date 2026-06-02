@@ -215,7 +215,7 @@ export function ContactPageContentEditorial({
               </div>
               <div className={styles.newBusinessContent}>
                 <Title
-                  level={3}
+                  level={2}
                   size="M"
                   terminals="sans"
                   lineHeight="tight"
