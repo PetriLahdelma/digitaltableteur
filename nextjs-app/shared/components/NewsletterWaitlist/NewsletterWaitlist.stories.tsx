@@ -8,6 +8,10 @@ const meta: Meta<typeof NewsletterWaitlist> = {
   component: NewsletterWaitlist,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=471-21",
+    },
     layout: "padded",
     contractStatus: contract.status,
     a11y: { test: "error" },

@@ -3,7 +3,16 @@ import SelectOption from "./SelectOption";
 import Select from "@dt/Select";
 import { userEvent, within } from "storybook/test";
 import { useTranslation } from "react-i18next";
-export default { title: "Atoms/SelectOption", component: SelectOption };
+export default {
+  title: "Atoms/SelectOption",
+  component: SelectOption,
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=383-23",
+    },
+  },
+};
 
 export const Default = () => {
   const { t } = useTranslation();

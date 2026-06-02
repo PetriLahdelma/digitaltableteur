@@ -16,6 +16,10 @@ const meta = {
   component: AspectRatio,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-aspect-ratio",
+    },
     layout: "centered",
     contractStatus: contract.status,
     a11y: { test: "error" },

@@ -7,6 +7,10 @@ const meta: Meta<typeof MCPActionButton> = {
   title: "Molecules/MCPActionButton",
   component: MCPActionButton,
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-mcpaction-button",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "padded",

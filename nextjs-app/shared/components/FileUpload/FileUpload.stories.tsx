@@ -77,6 +77,10 @@ export default {
   component: FileUpload,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=384-26",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     llm: { schema },
@@ -122,7 +126,8 @@ export default {
     appearance: {
       control: "select",
       options: ["default", "editorial"],
-      description: "Visual variant — editorial matches FormFieldEditorial / Combobox",
+      description:
+        "Visual variant — editorial matches FormFieldEditorial / Combobox",
     },
     value: {
       table: { disable: true },

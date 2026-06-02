@@ -13,6 +13,10 @@ const meta: Meta<typeof Header> = {
   component: Header,
   tags: ["beta", "!autodocs"],
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-header",
+    },
     contractStatus: contract.status,
     a11y: { test: "error" },
     layout: "fullscreen", // Keep WIP badge until visual + a11y verified

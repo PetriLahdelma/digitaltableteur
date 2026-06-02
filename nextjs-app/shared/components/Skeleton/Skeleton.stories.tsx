@@ -75,7 +75,14 @@ const meta: Meta<typeof Skeleton> = {
   title: "Atoms/Skeleton",
   component: Skeleton,
   tags: ["beta", "!autodocs"],
-  parameters: { contractStatus: contract.status, a11y: { test: "error" } },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skeleton",
+    },
+    contractStatus: contract.status,
+    a11y: { test: "error" },
+  },
 };
 export default meta;
 
