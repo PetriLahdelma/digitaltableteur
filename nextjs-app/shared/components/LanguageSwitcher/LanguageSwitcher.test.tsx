@@ -28,9 +28,15 @@ function renderSwitcher(currentLang = "en") {
 describe("LanguageSwitcher", () => {
   it("shows only the current language by default", () => {
     renderSwitcher("en");
-    expect(screen.getByRole("button", { name: /english/i })).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /^finnish$/i })).not.toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: /^swedish$/i })).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /english/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /^finnish$/i }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /^swedish$/i }),
+    ).not.toBeInTheDocument();
   });
 
   it("fans out other languages on trigger click", async () => {
@@ -51,6 +57,8 @@ describe("LanguageSwitcher", () => {
     await user.click(screen.getByRole("button", { name: /^finnish$/i }));
 
     expect(onLanguageChange).toHaveBeenCalledWith("fi");
-    expect(screen.queryByRole("button", { name: /^swedish$/i })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /^swedish$/i }),
+    ).not.toBeInTheDocument();
   });
 });

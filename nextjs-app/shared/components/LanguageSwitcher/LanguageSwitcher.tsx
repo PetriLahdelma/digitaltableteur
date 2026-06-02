@@ -78,10 +78,7 @@ export function LanguageSwitcher({
     if (!isOpen) return;
 
     const handlePointerDown = (event: MouseEvent) => {
-      if (
-        rootRef.current &&
-        !rootRef.current.contains(event.target as Node)
-      ) {
+      if (rootRef.current && !rootRef.current.contains(event.target as Node)) {
         close();
       }
     };
@@ -125,9 +122,7 @@ export function LanguageSwitcher({
               exit={
                 prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x: 8 }
               }
-              transition={
-                prefersReducedMotion ? { duration: 0.12 } : fanSpring
-              }
+              transition={prefersReducedMotion ? { duration: 0.12 } : fanSpring}
             >
               {otherLanguages.map((lang) => (
                 <button
