@@ -1,0 +1,80 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as ComboboxStories from "./Combobox.stories.tsx";
+
+<Meta of={ComboboxStories} />
+
+# Combobox
+
+A single-select combobox: a `role="combobox"` trigger that opens a portaled
+`listbox` of options. Full keyboard support; shares its UX with `MultiCombobox`.
+
+<Canvas of={ComboboxStories.Default} />
+
+## In use
+
+Used in editorial form fields (`FormFieldEditorial`) where a compact, styled
+single-select is needed and the native `<select>` look isn't enough.
+
+<Canvas of={ComboboxStories.Example} />
+
+## How to use
+
+```tsx
+import Combobox from "@dt/Combobox";
+
+const [value, setValue] = useState("");
+
+<Combobox
+  label="Timeline"
+  options={[
+    { value: "asap", label: "ASAP" },
+    { value: "flexible", label: "Flexible" },
+  ]}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Select…"
+  helperText="When should the project start?"
+/>;
+```
+
+It's controlled — own the `value` and update it in `onValueChange`.
+
+## When to use
+
+- A single choice from a short-to-medium option list where the native select
+  styling is insufficient.
+- Form fields needing helper text, error state, and required marking.
+
+## When not to use
+
+- Multiple selection — use `MultiCombobox`.
+- Free-text entry / autocomplete — this selects from a fixed list.
+- A simple, native-styled select is fine — use `Select`.
+
+<Controls />
+
+## Accessibility
+
+- Trigger is `role="combobox"` with `aria-expanded`, `aria-controls`,
+  `aria-activedescendant`, and `aria-labelledby`.
+- Options live in a `role="listbox"` (portaled) as `role="option"` with
+  `aria-selected`; the active option is tracked via `aria-activedescendant`.
+- `error` sets `aria-invalid` and links the message via `aria-describedby`.
+
+## Keyboard
+
+| Key                     | Action                                 |
+| ----------------------- | -------------------------------------- |
+| `ArrowDown` / `ArrowUp` | Open the list / move the highlight     |
+| `Enter` / `Space`       | Open, or select the highlighted option |
+| `Escape`                | Close the list                         |
+| `Tab`                   | Move focus away (closes)               |
+
+## Promotion notes
+
+Promoted to **beta** after enabling axe on the stories surfaced and fixed a real
+contrast bug: the placeholder carried `opacity: 0.7`, dropping `--color-muted`
+to 2.7:1 — removed (now AA). The `KeyboardSelection` play function drives the
+list open/move/select by keyboard; Default/Playground/Example pass axe with
+`test: "error"`; light + dark verified in Storybook. In production via
+`FormFieldEditorial`. Stable pending wider adoption.

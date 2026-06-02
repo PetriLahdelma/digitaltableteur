@@ -1,0 +1,121 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as SiteTreeStories from "./SiteTree.stories.tsx";
+
+<Meta of={SiteTreeStories} />
+
+# SiteTree
+
+A hierarchical sitemap: collapsible folder branches and page leaves, rendered
+as a `nav` landmark with native `details`/`summary` disclosure.
+
+<Canvas of={SiteTreeStories.Default} />
+
+## In use
+
+Production home is the `/sitemap` route (and a "browse all pages" footer view):
+the tree mirrors the site's information architecture so users can see the whole
+structure and jump to any node.
+
+<Canvas of={SiteTreeStories.Example} />
+
+## How to use
+
+```tsx
+import SiteTree from "@dt/SiteTree";
+
+<SiteTree
+  aria-label="Sitemap"
+  defaultExpandAll
+  nodes={[
+    {
+      id: "main",
+      label: "Main",
+      children: [
+        { id: "home", label: "Home", href: "/" },
+        { id: "about", label: "About", href: "/about" },
+      ],
+    },
+    // A branch with its own page: the href is surfaced as the first leaf.
+    // `indexLabel` disambiguates that link from the folder name.
+    {
+      id: "work",
+      label: "Work",
+      href: "/work",
+      indexLabel: "Work overview",
+      children: [
+        { id: "hds", label: "Helsinki Design System", href: "/work/hds" },
+      ],
+    },
+  ]}
+/>;
+```
+
+Pass already-translated `label`s; the component renders structure, not copy.
+
+## When to use
+
+- A `/sitemap` page or footer "all pages" view that mirrors the site's
+  information architecture.
+- Anywhere users benefit from seeing the page hierarchy at a glance and jumping
+  to any node.
+
+## When not to use
+
+- Primary site navigation — use the header nav / `NavMenuList`.
+- A generic expand/collapse list of non-navigational content — use
+  `Accordion` or `ExpandableSection`.
+
+## Anatomy
+
+- `nav[aria-label]` landmark wrapping nested `ul`/`li` lists.
+- **Branch**: a native `details`/`summary` toggle (caret + folder + label).
+  When a branch has its own page, that page is surfaced as the branch's first
+  **leaf** so the toggle and the link never nest. Set `indexLabel` to give that
+  link a distinct name (e.g. "Work overview") instead of repeating the folder.
+- **Leaf**: a file icon plus a `Link` (or plain text when it has no `href`).
+
+## Variants
+
+Structural only — depth is driven by the `nodes` tree. `defaultExpandAll`
+expands every branch; per-node `defaultExpanded` sets initial state.
+
+<Controls />
+
+## Accessibility
+
+- Renders a `nav` landmark with an accessible name (`aria-label`, default
+  "Sitemap").
+- Branch toggles use native `details`/`summary`, so expand/collapse is keyboard-
+  and screen-reader-native with no custom ARIA.
+- Interactive elements are never nested: a branch's own link is a separate leaf,
+  not inside its `summary` (avoids `nested-interactive`).
+- Lists keep their native `ul`/`li` semantics (no role override), so list
+  structure is announced correctly.
+- External links carry `rel="noopener noreferrer"` and open in a new tab.
+- Inherits theme colors via the `Link`/`Icon` primitives — light/dark and
+  forced-colors safe.
+
+## Keyboard
+
+| Key                 | Action                                       |
+| ------------------- | -------------------------------------------- |
+| `Tab` / `Shift+Tab` | Move between branch toggles and links        |
+| `Enter` / `Space`   | Toggle the focused branch (native `summary`) |
+| `Enter`             | Follow the focused link                      |
+
+## Common mistakes
+
+- **Don't** wrap the branch label in a link inside `summary` — nest-free is the
+  whole point; let the index leaf carry the link.
+- **Don't** add `role="group"`/`role="tree"` to the `ul` — it strips the native
+  list semantics and trips `listitem`.
+- **Don't** translate inside the component; pass already-translated `label`s.
+
+## Promotion notes
+
+Promoted to **beta** after resolving two real axe findings surfaced once the
+stories ran axe (they were previously disabled): `nested-interactive`
+(link inside `summary`) and `listitem` (`role="group"` on `ul`). Default,
+Playground and Example now pass axe with `test: "error"`; dark theme verified
+in Storybook; branch/leaf semantics confirmed. Stable pending production
+consumer evidence (the `/sitemap` route).

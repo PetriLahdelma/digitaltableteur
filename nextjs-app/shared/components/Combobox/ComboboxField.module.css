@@ -62,8 +62,9 @@
 }
 
 .triggerPlaceholder {
+  /* No opacity: it would drop --color-muted below the WCAG AA 4.5:1 ratio on
+     the field background. --color-muted alone is AA-compliant. */
   color: var(--color-muted);
-  opacity: 0.7;
 }
 
 .triggerLabel {

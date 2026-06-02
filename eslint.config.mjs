@@ -26,6 +26,8 @@ export default [
       "private/",
       "sanity-output/",
       "scripts/",
+      // Generated Figma variable payloads (build:figma-variables) — not authored.
+      "nextjs-app/shared/foundations/figma/phases/",
       "nextjs-app/digitaltableteur-blog/",
       "dist/",
       "storybook-static/",
