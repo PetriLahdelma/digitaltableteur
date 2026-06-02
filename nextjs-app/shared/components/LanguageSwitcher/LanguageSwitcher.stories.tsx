@@ -58,10 +58,6 @@ const meta = {
       description: "Optional classes on the group wrapper",
       table: { category: "Advanced" },
     },
-    buttonClassName: { control: false, table: { disable: true } },
-    activeButtonClassName: { control: false, table: { disable: true } },
-    openTriggerClassName: { control: false, table: { disable: true } },
-    floatedButtonClassName: { control: false, table: { disable: true } },
   },
 } satisfies Meta<typeof LanguageSwitcher>;
 

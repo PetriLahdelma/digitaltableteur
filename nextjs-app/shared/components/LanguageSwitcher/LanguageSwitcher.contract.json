@@ -24,8 +24,7 @@
     "reducedMotion": true,
     "reviewed": true,
     "reviewedNote": "Verified 2026-06-02: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label. Escape and outside-click close; reduced motion swaps the fan for a fade. KeyboardToggle play function drives open-via-trigger / close-via-Escape and passes axe; Default/Example/Playground pass axe with test:error; light + dark verified in Storybook.",
-    "forcedColorsVerified": true,
-    "playFunctionExempt": null
+    "forcedColorsVerified": true
   },
   "tokens": {
     "colors": [],

@@ -82,7 +82,6 @@ const meta = {
       description: "Disables the control",
       table: { category: "State" },
     },
-    id: { control: false, table: { disable: true } },
     className: {
       control: false,
       description: "Classes on the field wrapper",
