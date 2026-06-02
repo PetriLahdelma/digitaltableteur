@@ -45,7 +45,11 @@ const meta = {
       description: "Remove the mark from the accessibility tree",
       table: { category: "Accessibility", defaultValue: { summary: "false" } },
     },
-    className: { control: false, table: { category: "Advanced" } },
+    className: {
+      control: false,
+      description: "Optional utility/spacing classes applied to the root svg",
+      table: { category: "Advanced" },
+    },
   },
   args: { size: 24, animated: false, badge: false, decorative: false },
 } satisfies Meta<typeof Logo>;

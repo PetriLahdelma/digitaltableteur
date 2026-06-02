@@ -125,7 +125,7 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
               <Title
                 size="XS"
                 terminals="sans"
-                level={4}
+                level={3}
                 className={styles.phaseTitle}
               >
                 {phase.title}

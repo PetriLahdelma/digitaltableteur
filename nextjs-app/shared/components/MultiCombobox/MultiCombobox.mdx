@@ -1,0 +1,82 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as MultiComboboxStories from "./MultiCombobox.stories.tsx";
+
+<Meta of={MultiComboboxStories} />
+
+# MultiCombobox
+
+A multi-select combobox: a type-to-filter input that adds selections as
+removable chips. Shares its field styling and dropdown with `Combobox`.
+
+<Canvas of={MultiComboboxStories.Default} />
+
+## In use
+
+Used in the editorial contact form (`ContactFormEditorial`) to capture multiple
+disciplines/interests in one compact field.
+
+<Canvas of={MultiComboboxStories.Example} />
+
+## How to use
+
+```tsx
+import { MultiCombobox } from "@dt/MultiCombobox";
+
+const [value, setValue] = useState<string[]>([]);
+
+<MultiCombobox
+  label="Disciplines"
+  options={[
+    { value: "design", label: "Design" },
+    { value: "frontend", label: "Frontend" },
+  ]}
+  value={value}
+  onValueChange={setValue}
+  placeholder="Add disciplines…"
+  helperText="Pick all that apply"
+/>;
+```
+
+Controlled with a `string[]`; selections render as removable chips.
+
+## When to use
+
+- Selecting several items from a list with type-to-filter (skills, tags,
+  disciplines, categories).
+- When the chosen set should stay visible as chips.
+
+## When not to use
+
+- Single selection — use `Combobox`.
+- Free-text tags not backed by a fixed option list.
+
+<Controls />
+
+## Accessibility
+
+- Input is `role="combobox"` with `aria-autocomplete="list"`, `aria-expanded`,
+  `aria-controls`, and `aria-activedescendant`.
+- Options live in a portaled `role="listbox"` with `aria-multiselectable`;
+  each is `role="option"` with `aria-selected`.
+- Selections are removable `Badge` chips; `Backspace` on an empty input removes
+  the last one.
+- `error` sets `aria-invalid` and links the message via `aria-describedby`.
+
+## Keyboard
+
+| Key                     | Action                                          |
+| ----------------------- | ----------------------------------------------- |
+| Type                    | Filter options                                  |
+| `ArrowDown` / `ArrowUp` | Open / move the highlight                       |
+| `Enter`                 | Toggle the highlighted option (list stays open) |
+| `Backspace`             | Remove the last chip when the input is empty    |
+| `Escape`                | Close the list                                  |
+
+## Promotion notes
+
+Promoted to **beta** with documented argTypes, Example/ForcedColors stories, a
+`KeyboardMultiSelect` play function (open, arrow-navigate, toggle by keyboard;
+portaled listbox queried via `screen`), and Carbon MDX. Shares `Combobox`'s
+field CSS, inheriting the placeholder contrast fix. Default/Playground/Example
+pass axe with `test: "error"`; light + dark verified in Storybook. In production
+via `ContactFormEditorial`. Stable pending wider adoption.
