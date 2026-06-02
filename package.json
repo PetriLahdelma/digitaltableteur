@@ -195,7 +195,7 @@
     "remark-gfm": "^4.0.1",
     "remark-mdx-frontmatter": "^5.2.0",
     "remotion": "^4.0.409",
-    "sanitize-html": "^2.17.1",
+    "sanitize-html": "^2.17.4",
     "sanity": "^5.3.1",
     "shiki": "^3.21.0",
     "simple-icons": "^16.3.0",
