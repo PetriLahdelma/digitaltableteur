@@ -201,7 +201,7 @@
     "simple-icons": "^16.3.0",
     "styled-components": "^6.4.2",
     "tailwind-merge": "^3.5.0",
-    "typescript-eslint": "^8.58.0",
+    "typescript-eslint": "^8.60.1",
     "zod": "^4.4.3"
   },
   "overrides": {
