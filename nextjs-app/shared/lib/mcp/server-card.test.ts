@@ -6,6 +6,7 @@ import {
   MCP_SERVER_VERSION,
 } from "@/nextjs-app/shared/lib/mcp/constants";
 import { CONSULTING_TOOL_NAMES } from "@/nextjs-app/shared/lib/consulting-tools/executors";
+import { DESIGN_SYSTEM_TOOL_NAMES } from "@/nextjs-app/shared/lib/design-system-mcp/executors";
 
 describe("MCP server card shape", () => {
   it("matches isitagentready discovery fields", () => {
@@ -18,8 +19,8 @@ describe("MCP server card shape", () => {
       description: MCP_SERVER_DESCRIPTION,
       url: `${baseUrl}/mcp`,
       transport: { type: "streamable-http" },
-      capabilities: { tools: true },
-      tools: [...CONSULTING_TOOL_NAMES],
+      capabilities: { tools: true, resources: true },
+      tools: [...CONSULTING_TOOL_NAMES, ...DESIGN_SYSTEM_TOOL_NAMES],
       authentication: {
         required: false,
         documentation: `${baseUrl}/auth.md`,
@@ -30,6 +31,6 @@ describe("MCP server card shape", () => {
     expect(card.serverInfo.version).toMatch(/^\d+\.\d+\.\d+$/);
     expect(card.url).toContain("/mcp");
     expect(card.capabilities.tools).toBe(true);
-    expect(card.tools).toHaveLength(9);
+    expect(card.tools).toHaveLength(14);
   });
 });

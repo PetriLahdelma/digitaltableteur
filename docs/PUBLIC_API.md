@@ -21,11 +21,21 @@ import { Title } from "@dt/Title";
 
 ```bash
 npm run validate:components   # contract + story gates
-npm run build:tokens          # tokens + agent manifest
+npm run build:tokens          # tokens + agent manifest (includes usage evidence)
 npm run build:zod-catalog     # Zod catalog for agents
 npm run agent:eval            # manifest schema + golden checks
-npm run audit:consumers       # refresh contract.consumers[] from app imports
+npm run audit:usage           # import evidence for all cataloged components
+npm run build:agent-blocks    # TS + spec → component-agent-blocks.json
+npm run find-component -- "your intent"  # rank @dt components for a task
+npm run build:relationship-graph  # composesWith graph (also in build:tokens)
+npm run lint:dt-usage         # strict: shadcn @/components/ui/* imports in app/ only (do not mass-swap headings/buttons in patterns)
+npm run ds:mcp                # local stdio MCP (design-system tools + resources)
+npm run sync:contract-api     # dry-run eligible variant sync (CVA + propSourced allowlist)
+npm run check:contract-drift -- --strict  # CI: contracts match agent blocks
+npm run audit:consumers       # refresh contract.consumers[] (stable tier only)
 ```
+
+HTTP MCP (consulting + design system): `https://www.digitaltableteur.com/mcp` — see [DESIGN_SYSTEM_MCP.md](./DESIGN_SYSTEM_MCP.md).
 
 ## Stable-tier atoms (promoted)
 

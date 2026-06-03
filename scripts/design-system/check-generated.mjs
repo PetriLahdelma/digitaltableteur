@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const required = [
   "nextjs-app/shared/foundations/dist/agent-manifest.json",
+  "nextjs-app/shared/foundations/dist/component-agent-blocks.json",
   "nextjs-app/shared/foundations/dist/tokens-manifest.json",
   "nextjs-app/shared/foundations/dist/component-catalog.zod.ts",
 ];

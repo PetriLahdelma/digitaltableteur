@@ -52,17 +52,17 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Services</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Services</Title>
               <p className={styles.metaText}>
                 Brand Identity, Logo System, Visual Guidelines and Multilingual Design
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Duration</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Duration</Title>
               <p className={styles.metaText}>2009–2010</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Tools used</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Tools used</Title>
               <div className={styles.metaTools}>
                 <SiAdobeillustrator size={24} title="Illustrator" />
                 <SiAdobeindesign size={24} title="InDesign" />
@@ -70,7 +70,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <h3 className={styles.metaLabel}>Overview</h3>
+            <Title as="h3" unstyled className={styles.metaLabel}>Overview</Title>
             <p className={styles.metaOverview}>
               <strong>When Finland merged</strong> its Maritime Administration, Rail
               Administration, and Road Administration into a single transport agency,
@@ -90,7 +90,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Team Section */}
       <section className={styles.teamSection}>
         <div className={styles.teamContent}>
-          <h3 className={styles.metaLabel}>Team</h3>
+          <Title as="h3" unstyled className={styles.metaLabel}>Team</Title>
           <div className={styles.teamGrid}>
             <div className={styles.teamMember}>
               <Image

@@ -1,13 +1,19 @@
 /* Compact bottom bar — site stays visible; no modal on first visit */
 
 .banner {
+  display: flex;
   position: fixed;
   inset-inline: 0;
-  inset-block-end: 0;
 
   /* Below chat widget (1000+) so Donny stays reachable on first visit */
   z-index: 900;
-  display: flex;
+  padding-block: var(--space-layout-16);
+  padding-block-end: max(
+    var(--space-layout-16),
+    env(safe-area-inset-bottom)
+  );
+  padding-inline: max(var(--page-margin-mobile), env(safe-area-inset-left))
+    max(var(--page-margin-mobile), env(safe-area-inset-right));
   align-items: center;
   border-block-start: 1px solid var(--color-border);
   background-color: color-mix(
@@ -15,24 +21,18 @@
     var(--main-body-background-color, #fff) 94%,
     transparent
   );
-  padding-block: var(--space-layout-16);
-  padding-inline: max(var(--page-margin-mobile), env(safe-area-inset-left))
-    max(var(--page-margin-mobile), env(safe-area-inset-right));
-  padding-block-end: max(
-    var(--space-layout-16),
-    env(safe-area-inset-bottom)
-  );
-  overflow: visible;
   backdrop-filter: blur(10px);
+  inset-block-end: 0;
+  overflow: visible;
 }
 
 .bar {
   display: flex;
   margin-inline: auto;
+  min-block-size: 2.5rem;
   width: 100%;
   max-width: var(--container-lg);
   align-items: center;
-  min-block-size: 2.5rem;
   gap: var(--space-layout-24);
 }
 
@@ -41,15 +41,16 @@
  * extends below the link via padding-bottom. Pull decoration out of flow so
  * centering matches the cap height, then nudge down for underline mass.
  */
+
 .copy {
   --cookie-banner-underline-depth: 6px;
   --cookie-banner-optical-shift: calc(var(--cookie-banner-underline-depth) / 2 - 2px);
 
   display: flex;
-  flex: 1 1 auto;
-  align-items: center;
   min-block-size: 2.5rem;
   min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
   overflow: visible;
 }
 
@@ -65,12 +66,14 @@
 /* Keep the inline policy link the same size as the sentence around it. The
    Link size prop otherwise renders it noticeably larger than the body copy
    (worse on mobile, where the copy drops to text-s but the link stays at M). */
+
 .copyText a {
   font-size: inherit;
   line-height: inherit;
 }
 
 /* Global wavyUnderline adds padding-bottom — exclude from layout metrics here */
+
 .copyText :global(.wavyUnderline) {
   padding-bottom: 0;
 }
@@ -107,23 +110,21 @@
   .banner {
     /* Roomier top so the copy isn't crammed against the container edge;
        keep the safe-area-aware bottom (a bare padding-block would clobber it). */
-    padding-block-start: var(--space-layout-24);
-    padding-block-end: max(var(--space-layout-16), env(safe-area-inset-bottom));
+    padding-block: var(--space-layout-24) max(var(--space-layout-16), env(safe-area-inset-bottom));
   }
 
   .bar {
-    flex-flow: row wrap;
     align-items: center;
     gap: var(--space-layout-16);
+    flex-flow: row wrap;
   }
 
   .copy {
-    flex: 1 1 100%;
-    min-block-size: auto;
-
     /* Reserve room for the wavy underline so the link never kisses the
        buttons below it. */
     padding-block-end: var(--cookie-banner-underline-depth);
+    min-block-size: auto;
+    flex: 1 1 100%;
   }
 
   .copyText {
@@ -147,6 +148,7 @@
 
   /* DOM order is Customize, Only essential, Accept all — reflow via order so
      the primary choices lead and Customize sits full-width below. */
+
   .actions > :nth-child(1) {
     order: 3;
     grid-column: 1 / -1;
@@ -169,13 +171,13 @@
 
 @keyframes cookie-bar-in {
   from {
-    opacity: 0;
     transform: translateY(100%);
+    opacity: 0;
   }
 
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }
 

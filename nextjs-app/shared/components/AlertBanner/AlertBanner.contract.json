@@ -1,52 +1,63 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "AlertBanner",
-  "tier": "molecule",
-  "group": "feedback",
-  "status": "beta",
-  "description": "Inline alert for info, warning, success, and error feedback.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=394-41",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [
-    "description"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Escape"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "AlertBanner",
+    "tier": "molecule",
+    "group": "feedback",
+    "status": "beta",
+    "description": "Inline alert for info, warning, success, and error feedback.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=394-41",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "tone": {
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error"
+            ],
+            "default": "info",
+            "propSourced": true
+        }
+    },
+    "slots": [
+        "description"
     ],
-    "ariaRequirements": [
-      "role=alert or status",
-      "dismiss button labeled"
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — tones and dismiss control reviewed in Storybook.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "onDismiss",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Escape"
+        ],
+        "ariaRequirements": [
+            "role=alert or status",
+            "dismiss button labeled"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — tones and dismiss control reviewed in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "onDismiss",
+        "ref",
+        "style"
+    ],
+    "consumers": []
 }
