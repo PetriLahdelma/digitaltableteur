@@ -144,14 +144,14 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
             <Button
               type="button"
               onClick={handleCancel}
-              disabled={disabled || isSubmitting}
+              isDisabled={disabled || isSubmitting}
               variant="secondary"
             >
               {t("newsletterWaitlist.cancel")}
             </Button>
             <AdaptiveLoadingButton
               type="submit"
-              disabled={disabled || isSubmitting || !email.trim()}
+              isDisabled={disabled || isSubmitting || !email.trim()}
               variant="primary"
               loading={isSubmitting}
               loadingLabelKey="newsletterWaitlist.submitting"
