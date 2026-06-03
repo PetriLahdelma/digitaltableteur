@@ -110,7 +110,7 @@
     "prepare": "husky",
     "test:stories:i18n": "node scripts/design-system/run-i18n-visual-matrix.mjs",
     "parity:audit": "node scripts/design-system/parity-audit.mjs",
-    "parity:verify": "npm run parity:audit && npm run check:contrast && npm run build:tokens && npm run validate:components && npm run typecheck",
+    "parity:verify": "npm run parity:audit && npm run check:contrast && npm run build:tokens && npm run check:contract-drift -- --strict && npm run validate:components && npm run typecheck",
     "storybook:wait": "node scripts/wait-for-storybook.mjs",
     "apply:storybook-tiers": "node scripts/design-system/apply-storybook-tiers.mjs",
     "test:stories:smoke": "node scripts/design-system/smoke-stories.mjs",
@@ -125,6 +125,7 @@
     "audit:usage": "node scripts/design-system/audit-usage.mjs",
     "find-component": "node scripts/design-system/find-component.mjs",
     "sync:contract-api": "node scripts/design-system/sync-contract-api.mjs",
+    "check:contract-drift": "node scripts/design-system/check-contract-drift.mjs",
     "promote:stable-atoms": "node scripts/design-system/promote-stable-atoms.mjs",
     "check:bundle-budgets": "node scripts/design-system/check-bundle-budgets.mjs"
   },

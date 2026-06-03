@@ -14,6 +14,7 @@ import { parseSpecAgentHints, extractSpecIntent } from "./parse-spec-agent-hints
 import {
   getReplacementFor,
   getPrefersOver,
+  COMPOSES_WITH,
 } from "./component-replacement-policy.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -229,8 +230,9 @@ function main() {
       intent: intent || contract.description || "",
       props,
       variants,
-      /** CVA-only axes — safe to sync into contract.json */
+      /** CVA-only axes — safe to sync into contract.json when invoked in source */
       cvaVariants: extracted.variants,
+      variantsFnName: extracted.variantsFnName,
       useWhen,
       avoidWhen,
       requiredA11y: a11y.ariaRequirements ?? [],
@@ -241,6 +243,7 @@ function main() {
       canonicalExamples: canonicalExamplesFromStories(join(entry.dir, `${entry.name}.stories.tsx`)),
       replacementFor: getReplacementFor(entry.name),
       prefersOver: getPrefersOver(entry.name),
+      composesWith: COMPOSES_WITH[entry.name] ?? [],
       declaredPropCount: extracted.declaredPropNames.length,
     };
   }

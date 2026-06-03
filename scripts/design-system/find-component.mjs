@@ -64,6 +64,7 @@ if (jsonMode) {
           useWhen: entry.agent?.useWhen ?? [],
           avoidWhen: entry.agent?.avoidWhen ?? [],
           replacementFor: entry.agent?.replacementFor ?? [],
+          composesWith: entry.agent?.composesWith ?? [],
           productionImportCount: entry.usage?.productionImportCount ?? 0,
           importCount: entry.usage?.importCount ?? 0,
           topEvidence: entry.usage?.evidence?.slice(0, 3) ?? [],

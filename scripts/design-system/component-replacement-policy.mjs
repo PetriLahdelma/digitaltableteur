@@ -29,6 +29,14 @@ export const REPLACEMENT_FOR = {
 };
 
 /** @type {Record<string, string[]>} */
+/** @type {Record<string, string[]>} */
+export const COMPOSES_WITH = {
+  AlertBanner: ["Button", "Icon"],
+  FormField: ["Label", "Inputs", "HelperText"],
+  Card: ["Title", "Text", "Button"],
+  Modal: ["Button", "Title", "Text"],
+};
+
 export const PREFERS_OVER = {
   Title: ["raw heading elements"],
   Text: ["raw paragraph elements"],

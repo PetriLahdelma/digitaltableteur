@@ -12,8 +12,8 @@
 |-------|--------|--------|
 | **1** | Usage evidence + intent retrieval | **Done** |
 | **2** | Generated agent blocks (props, variants, spec hints) | **Done** |
-| **3** | Contract API sync + drift gate | In progress |
-| **4** | Relationship graph (`prefersOver`, `composesWith`) | Planned |
+| **3** | Contract API sync + drift gate | **Done** |
+| **4** | Relationship graph (`prefersOver`, `composesWith`) | In progress |
 | **5** | `@dt` usage ESLint gate | Planned |
 | **6** | Design System MCP server | Planned |
 

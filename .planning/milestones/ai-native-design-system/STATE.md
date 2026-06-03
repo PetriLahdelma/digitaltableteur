@@ -4,50 +4,54 @@
 
 ## Current phase
 
-**Phase 2** — Generated agent blocks (props, variants, spec hints)
+**Phase 4** — Relationship graph (`prefersOver`, `composesWith`)
 
 ## Completed
 
-### Phase 1 (2026-06-02)
+### Phase 1 — Usage evidence
 
-- [x] `usage-scan-lib.mjs` — `@dt/*` + relative import scan
-- [x] `npm run audit:usage` — 119/130 cataloged with evidence, 28 production
-- [x] `npm run find-component` — intent-ranked retrieval (AlertBanner for warning banner)
-- [x] `agent-manifest.json` schema v1.4 + `usageCoverage` block
-- [x] `agent:eval` gates for usage evidence
-- [x] Skill `dt-use-existing-component` + AGENT_INDEX entry
+- [x] `usage-scan-lib.mjs`, `audit:usage`, `find-component`
+- [x] Manifest v1.4 `usage` + `usageCoverage`
+- [x] Skill `dt-use-existing-component`
 
-## In progress
+### Phase 2 — Agent blocks
 
-- [x] `build-component-agent-blocks.ts` — TS + spec → manifest `agent` block
-- [x] `parse-spec-agent-hints.mjs` — Do/Don't → useWhen/avoidWhen
-- [x] `component-replacement-policy.mjs` — replacementFor defaults
-- [x] Manifest schema v1.5 with `agent` per component
-- [x] `sync:contract-api` — fills empty contract variant axes from TS
+- [x] `build-component-agent-blocks.ts` → `component-agent-blocks.json`
+- [x] Manifest v1.5 per-component `agent` blocks
+- [x] Spec hints, replacement policy
 
-## Next up (Phase 3)
+### Phase 3 — Contract sync + drift
 
-- [ ] Align CVA vs prop size axes (Badge sm/md/lg vs s/m/l) before contract sync
-- [ ] Validator: fail on prop/variant drift vs source (strict mode)
-- [ ] Retire `argTypesProxyExempt` as props become generated in contracts
-- [ ] `sync:contract-api --write` after story argTypes catch up
+- [x] `cva-sync-lib.mjs` — eligibility rules
+- [x] `check:contract-drift` — strict CI gate
+- [x] `sync:contract-api` — safe allowlisted sync
+- [x] `propSourced` in contract schema + validator skip for CVA
+- [x] Badge CVA aligned to `s`/`m`/`l`
+- [x] Six contracts synced (Icon, Badge, Title, Checkbox, Switch, AlertBanner)
+- [x] CVA token normalization (`2xs`, `2xl`)
 
-## Metrics snapshot
+## Next up (Phase 4–6)
+
+- [ ] Expand `composesWith` graph in manifest + `find-component` ranking
+- [ ] ESLint `@dt` usage gate (Phase 5)
+- [ ] Design System MCP (Phase 6)
+
+## Metrics
 
 | Metric | Value |
 |--------|-------|
 | Cataloged components | 130 |
-| Usage evidence coverage | 119/130 (91.5%) |
-| Production usage | 28 components |
-| Stable atoms | Title, Text, Icon, Badge, Avatar |
-| Honest beta doc debt | 0 |
+| Usage evidence | 119/130 (91.5%) |
+| Production usage | 28 |
+| Contracts with synced variants | 6 (+ legacy manual) |
+| Agent blocks | 130/130 |
 
 ## Commands
 
 ```bash
-npm run build:tokens          # manifest + usage + agent blocks
-npm run audit:usage
+npm run build:tokens
+npm run check:contract-drift -- --strict
+npm run sync:contract-api
 npm run find-component -- "your intent"
-npm run agent:eval
 npm run validate:components
 ```
