@@ -62,6 +62,14 @@
   transform: translateY(var(--cookie-banner-optical-shift));
 }
 
+/* Keep the inline policy link the same size as the sentence around it. The
+   Link size prop otherwise renders it noticeably larger than the body copy
+   (worse on mobile, where the copy drops to text-s but the link stays at M). */
+.copyText a {
+  font-size: inherit;
+  line-height: inherit;
+}
+
 /* Global wavyUnderline adds padding-bottom — exclude from layout metrics here */
 .copyText :global(.wavyUnderline) {
   padding-bottom: 0;
@@ -97,18 +105,25 @@
 
 @media (width <= 767px) {
   .banner {
-    padding-block: var(--space-layout-12);
+    /* Roomier top so the copy isn't crammed against the container edge;
+       keep the safe-area-aware bottom (a bare padding-block would clobber it). */
+    padding-block-start: var(--space-layout-24);
+    padding-block-end: max(var(--space-layout-16), env(safe-area-inset-bottom));
   }
 
   .bar {
     flex-flow: row wrap;
     align-items: center;
-    gap: var(--space-layout-12);
+    gap: var(--space-layout-16);
   }
 
   .copy {
     flex: 1 1 100%;
     min-block-size: auto;
+
+    /* Reserve room for the wavy underline so the link never kisses the
+       buttons below it. */
+    padding-block-end: var(--cookie-banner-underline-depth);
   }
 
   .copyText {
@@ -117,17 +132,32 @@
   }
 
   .actions {
+    /* Roomy 2-up layout instead of one cramped, horizontally-scrolling row.
+       The two consent choices share the top row; "Customize settings"
+       (tertiary, DOM-first) drops to a full-width row beneath them. */
+    display: grid;
     flex: 1 1 100%;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--space-layout-8);
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   .actions > * {
-    flex: 0 0 auto;
-    min-width: min-content;
+    width: 100%;
+  }
+
+  /* DOM order is Customize, Only essential, Accept all — reflow via order so
+     the primary choices lead and Customize sits full-width below. */
+  .actions > :nth-child(1) {
+    order: 3;
+    grid-column: 1 / -1;
+  }
+
+  .actions > :nth-child(2) {
+    order: 1;
+  }
+
+  .actions > :nth-child(3) {
+    order: 2;
   }
 }
 

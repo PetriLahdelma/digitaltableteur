@@ -52,6 +52,15 @@ const withBundleAnalyzer = bundleAnalyzer({
 // Production: Strict (blocks 80% of XSS/injection attacks)
 const isDev = process.env.NODE_ENV === "development";
 
+// HTTPS-only hardening (upgrade-insecure-requests, HSTS) belongs on the real
+// HTTPS deployment only. When a production build is served over plain HTTP —
+// e.g. `next start` reached via a LAN IP from a phone on the same network —
+// these directives rewrite every CSS/JS request to https://, which the local
+// server can't answer, so the page loads with zero CSS and zero JS. Vercel
+// sets VERCEL=1 on real deployments; FORCE_HTTPS_CSP=1 is an explicit override.
+const isHttpsDeployment =
+  process.env.VERCEL === "1" || process.env.FORCE_HTTPS_CSP === "1";
+
 const csp = isDev
   ? [
       // Development CSP - allows Next.js dev features
@@ -82,7 +91,8 @@ const csp = isDev
       "base-uri 'self'",
       "form-action 'self'",
       "frame-ancestors 'none'",
-      "upgrade-insecure-requests",
+      // Only on a genuine HTTPS deployment — see isHttpsDeployment note above.
+      ...(isHttpsDeployment ? ["upgrade-insecure-requests"] : []),
     ].join("; ");
 
 const securityHeaders = [
@@ -90,10 +100,16 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: csp,
   },
-  {
-    key: "Strict-Transport-Security",
-    value: "max-age=63072000; includeSubDomains; preload",
-  },
+  // HSTS forces the browser to use https:// for this host. Sending it from a
+  // local HTTP server can brick LAN-IP testing, so only emit it on real HTTPS.
+  ...(isHttpsDeployment
+    ? [
+        {
+          key: "Strict-Transport-Security",
+          value: "max-age=63072000; includeSubDomains; preload",
+        },
+      ]
+    : []),
   {
     key: "X-Content-Type-Options",
     value: "nosniff",
