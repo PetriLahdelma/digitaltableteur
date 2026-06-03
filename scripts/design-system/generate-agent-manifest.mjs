@@ -4,7 +4,13 @@ import { execSync } from "node:child_process";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { scanComponentUsage } from "./usage-scan-lib.mjs";
+
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
+const AGENT_BLOCKS_PATH = join(
+  ROOT,
+  "nextjs-app/shared/foundations/dist/component-agent-blocks.json",
+);
 const OUT = join(ROOT, "nextjs-app/shared/foundations/dist/agent-manifest.json");
 const CATALOG_PATH = join(ROOT, "nextjs-app/shared/foundations/token-catalog.json");
 const dirs = [
@@ -48,6 +54,60 @@ for (const base of dirs) {
     components.push({ name, contract, spec, documentationDebt: hasDocDebt });
   }
 }
+
+const usageScan = scanComponentUsage({ root: ROOT });
+
+let agentBlocksByName = {};
+if (existsSync(AGENT_BLOCKS_PATH)) {
+  try {
+    agentBlocksByName = JSON.parse(readFileSync(AGENT_BLOCKS_PATH, "utf8")).components ?? {};
+  } catch (err) {
+    console.warn("⚠  Could not parse component-agent-blocks.json:", err.message);
+  }
+} else {
+  console.warn(
+    "⚠  component-agent-blocks.json missing — run npm run build:agent-blocks",
+  );
+}
+
+const usageCoverage = {
+  description:
+    "Auto-detected import evidence from app/** and nextjs-app/**. Separate from contract.consumers[], which remains the stable-promotion gate for shipping-product proof.",
+  ...usageScan.summary,
+  regenerate: "npm run audit:usage (--json) or npm run build:tokens",
+  findComponent: "npm run find-component -- \"your intent\"",
+};
+
+const componentsWithUsage = components.map((entry) => {
+  const usage = usageScan.byComponent.get(entry.name);
+  const agent = agentBlocksByName[entry.name] ?? {
+    preferredImport: `@dt/${entry.name}`,
+    intent: entry.contract.description ?? "",
+    props: {},
+    variants: entry.contract.variants ?? {},
+    useWhen: [],
+    avoidWhen: [],
+    requiredA11y: entry.contract.a11y?.ariaRequirements ?? [],
+    keyboard: entry.contract.a11y?.keyboard ?? [],
+    compositionRules: [],
+    canonicalExamples: entry.contract.requiredStories ?? ["Default"],
+    replacementFor: [],
+    prefersOver: [],
+    declaredPropCount: 0,
+  };
+  return {
+    ...entry,
+    usage: usage ?? {
+      publicImport: `@dt/${entry.name}`,
+      importCount: 0,
+      productionImportCount: 0,
+      patternImportCount: 0,
+      componentImportCount: 0,
+      evidence: [],
+    },
+    agent,
+  };
+});
 
 const statusCounts = components.reduce((acc, c) => {
   acc[c.contract.status] = (acc[c.contract.status] ?? 0) + 1;
@@ -120,7 +180,8 @@ const dsharpParity = {
     "a11y-tree snapshots committed under __a11y-snapshots__/",
     "real-browser forced-colors PNG diffs (npm run test:stories:hc)",
     "light/dark visual baselines (npm run test:visual)",
-    "production consumers auto-detected from app/** into contract.consumers[]",
+    "production consumers auto-detected from app/** into contract.consumers[] (stable tier only)",
+    "usage evidence for all cataloged components in agent-manifest.usageCoverage (Phase 1 complete)",
     "real Figma node IDs verified by figma-mcp (placeholders today)",
     "documented @dt subpath/export policy and semver-bound public surface",
     "green npm run test:ci (0 failing tests as of 2026-05-28)",
@@ -140,7 +201,7 @@ writeFileSync(
   OUT,
   JSON.stringify(
     {
-      schemaVersion: "1.3",
+      schemaVersion: "1.5",
       generatedAt: new Date().toISOString(),
       summary: {
         componentCount: components.length,
@@ -150,17 +211,26 @@ writeFileSync(
           catalogCoverage?.catalogCompletenessPercent ?? null,
         codebaseComponentCount:
           catalogCoverage?.totalComponentsInCodebase ?? null,
+        usageCoveragePercent:
+          usageCoverage.catalogedComponents > 0
+            ? Math.round(
+                (usageCoverage.withAnyUsage / usageCoverage.catalogedComponents) *
+                  1000,
+              ) / 10
+            : null,
+        componentsWithProductionUsage: usageCoverage.withProductionUsage,
         notReadyForStablePromotion: true,
       },
       tokens,
       catalogCoverage,
+      usageCoverage,
       honestBeta: {
         description:
           "Components carrying scaffolder boilerplate at beta+. Each entry disappears automatically when its MDX + spec.md are rewritten with real prose.",
         documentationDebt,
       },
       dsharpParity,
-      components,
+      components: componentsWithUsage,
     },
     null,
     2,

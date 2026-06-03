@@ -46,4 +46,45 @@ if (betaPlus < 25) {
   console.log(`✓ ${betaPlus} beta/stable components in manifest`);
 }
 
+const usage = manifest.usageCoverage;
+if (!usage || typeof usage.withAnyUsage !== "number") {
+  console.error("FAIL: usageCoverage block missing — regenerate manifest");
+  failed += 1;
+} else if (usage.withAnyUsage < 40) {
+  console.error(
+    `FAIL: expected >=40 cataloged components with import evidence, got ${usage.withAnyUsage}`,
+  );
+  failed += 1;
+} else {
+  console.log(
+    `✓ usage evidence: ${usage.withAnyUsage}/${usage.catalogedComponents} cataloged, ${usage.withProductionUsage} with production usage`,
+  );
+}
+
+if (!manifest.components?.every((c) => c.usage?.publicImport)) {
+  console.error("FAIL: every manifest component must include usage.publicImport");
+  failed += 1;
+} else {
+  console.log("✓ per-component usage blocks present");
+}
+
+const withAgentBlocks =
+  manifest.components?.filter((c) => c.agent?.preferredImport).length ?? 0;
+if (withAgentBlocks < 100) {
+  console.error(
+    `FAIL: expected >=100 components with agent blocks, got ${withAgentBlocks}`,
+  );
+  failed += 1;
+} else {
+  console.log(`✓ ${withAgentBlocks} components with agent blocks`);
+}
+
+const buttonEntry = manifest.components?.find((c) => c.name === "Button");
+if (!buttonEntry?.agent?.variants?.variant?.values?.length) {
+  console.error("FAIL: Button agent block must include variant axis from TypeScript");
+  failed += 1;
+} else {
+  console.log("✓ Button agent variants extracted from source");
+}
+
 process.exit(failed ? 1 : 0);

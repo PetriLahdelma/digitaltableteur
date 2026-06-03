@@ -72,21 +72,14 @@
 /* Card wrapper — receives GSAP transforms */
 
 .cardWrapper {
-  opacity: 0;
+  /* Visible by default. The entrance fade is a GSAP enhancement that animates
+     from 0 on scroll; the card must never depend on JS to become visible, or
+     it stays blank whenever the GSAP context is reverted (e.g. React Strict
+     Mode's dev double-invoke) or JS fails — which left "Selected work" empty
+     in dev while production rendered fine. */
+  opacity: 1;
   transform-style: preserve-3d;
   will-change: transform;
-}
-
-/* Fallback: show cards if JS fails */
-@media (prefers-reduced-motion: reduce) {
-  .cardWrapper {
-    opacity: 1;
-  }
-}
-
-noscript ~ .cardWrapper,
-.cardWrapper:target {
-  opacity: 1;
 }
 
 /* Card container styling — static shadow, rounded, padded */

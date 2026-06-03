@@ -81,6 +81,16 @@ function extractCvaConfig(call: CallExpression): VariantMap {
     return variants
 }
 
+export function extractComponentFromSourceFile(
+    sf: SourceFile,
+    tsxPath?: string,
+): ExtractedComponent {
+    const componentName = tsxPath
+        ? basename(tsxPath, '.tsx')
+        : basename(sf.getFilePath(), '.tsx')
+    return extractComponentInner(sf, componentName)
+}
+
 export function extractComponent(tsxPath: string): ExtractedComponent {
     const project = new Project({
         compilerOptions: { allowJs: false, jsx: 4 /* Preserve */ },
@@ -88,7 +98,10 @@ export function extractComponent(tsxPath: string): ExtractedComponent {
         skipAddingFilesFromTsConfig: true,
     })
     const sf: SourceFile = project.addSourceFileAtPath(tsxPath)
-    const componentName = basename(tsxPath, '.tsx')
+    return extractComponentInner(sf, basename(tsxPath, '.tsx'))
+}
+
+function extractComponentInner(sf: SourceFile, componentName: string): ExtractedComponent {
     const expectedPropsName = `${componentName}Props`
 
     // Accept either `interface XProps` or `type XProps = ...` for the root Props
