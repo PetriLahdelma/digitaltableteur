@@ -190,8 +190,15 @@ export function ClientLogoMarquee({
 }) {
   const { motionPreference, isReady } = useAnimationContext();
 
-  // Static grid until motion preference is resolved client-side (SSR-safe).
-  if (!isReady || motionPreference === "reduced") {
+  // Render the animated marquee by DEFAULT. The animation is pure CSS
+  // (no JS required to run) and reduced-motion is honoured by the CSS
+  // @media query, so it is SSR-safe and keeps animating even if client
+  // hydration is slow or never completes (e.g. mobile Safari over a dev
+  // server). Only fall back to the static grid once we have positively
+  // confirmed the visitor prefers reduced motion. Previously this gated on
+  // !isReady, so any device where the AnimationProvider effect did not run
+  // was stuck on the static grid.
+  if (isReady && motionPreference === "reduced") {
     return (
       <section aria-label={ariaLabel} className="py-3">
         <ClientLogoSemanticList />
