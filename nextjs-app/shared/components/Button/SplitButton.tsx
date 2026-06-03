@@ -448,7 +448,7 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
           tooltip={tooltip}
           accessibleName={accessibleName}
           onClick={onPrimaryClick}
-          disabled={disabled}
+          isDisabled={disabled}
           className={[
             buttonStyles.splitMain,
             isTertiary ? buttonStyles.splitTertiaryMain : "",
@@ -494,7 +494,7 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
               });
             }
           }}
-          disabled={disabled || !hasOptions}
+          isDisabled={disabled || !hasOptions}
           className={[
             buttonStyles.splitToggle,
             isTertiary ? buttonStyles.splitTertiaryToggle : "",

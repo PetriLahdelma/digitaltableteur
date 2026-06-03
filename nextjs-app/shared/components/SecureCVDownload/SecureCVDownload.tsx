@@ -181,14 +181,14 @@ export const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
             <Button
               variant="secondary"
               onClick={handleClose}
-              disabled={loading}
+              isDisabled={loading}
             >
               {t("downloadResumeCancel")}
             </Button>
             <Button
               variant="primary"
               onClick={handleDownload}
-              disabled={loading || !isValidPassword}
+              isDisabled={loading || !isValidPassword}
             >
               {loading
                 ? t("downloadResumeDownloading")

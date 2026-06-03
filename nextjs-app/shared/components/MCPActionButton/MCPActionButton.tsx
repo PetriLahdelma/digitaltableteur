@@ -82,10 +82,12 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
     onError,
     children,
     disabled,
+    isDisabled,
     className = "",
   } = props;
+  const effectiveDisabled = isDisabled ?? disabled;
 
-  const statusKey = disabled
+  const statusKey = effectiveDisabled
     ? "mcpActionButton.status.notReady"
     : STATUS_TO_KEY[status];
   const mergedClassName = useMemo(
@@ -94,7 +96,7 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
   );
 
   const handleClick = async () => {
-    if (!onExecute || disabled) return;
+    if (!onExecute || effectiveDisabled) return;
     setStatus("loading");
     try {
       const result = await onExecute({ toolId, payload });
@@ -108,7 +110,7 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
 
   const commonProps = {
     className: mergedClassName,
-    disabled: disabled || status === "loading",
+    isDisabled: effectiveDisabled || status === "loading",
     onClick: handleClick,
     accessibleDescription: t("mcpActionButton.actionDescription"),
   };
@@ -125,6 +127,7 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
         onError: _onError,
         children: _children,
         disabled: _disabled,
+        isDisabled: _isDisabled,
         className: _className,
         ...rest
       } = props;
@@ -145,6 +148,7 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
       onError: _onError,
       children: _children,
       disabled: _disabled,
+      isDisabled: _isDisabled,
       className: _className,
       ...rest
     } = props;
@@ -168,7 +172,7 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
         size="S"
         role="status"
         aria-live="polite"
-        className={`${styles.status} ${disabled ? styles.disabled : ""}`}
+        className={`${styles.status} ${effectiveDisabled ? styles.disabled : ""}`}
       >
         {t(statusKey)}
       </Text>
