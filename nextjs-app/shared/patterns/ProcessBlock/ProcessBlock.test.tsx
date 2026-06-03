@@ -214,8 +214,11 @@ describe("ProcessBlock", () => {
       const mainHeading = screen.getByText("Process");
       expect(mainHeading.tagName).toBe("H2");
 
+      // Phase titles sit directly under the section title (H2), so they are
+      // H3 — sequential, no skipped level. Asserting H4 here would itself be a
+      // heading-hierarchy violation (H2 → H4).
       const phaseHeading = screen.getByText("Discover");
-      expect(phaseHeading.tagName).toBe("H4");
+      expect(phaseHeading.tagName).toBe("H3");
     });
 
     it("has data attribute for title", () => {
