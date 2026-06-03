@@ -29,13 +29,15 @@ export function ServerArticleMain({
         <aside className="not-prose mt-12 rounded-lg border border-border bg-muted/30 p-6">
           <div className="flex items-start gap-4">
             {author.imageUrl ? (
-              <Image
-                src={author.imageUrl}
-                alt=""
-                width={64}
-                height={64}
-                className="size-16 rounded-full object-cover"
-              />
+              <div className="relative size-16 shrink-0 overflow-hidden rounded-full bg-muted">
+                <Image
+                  src={author.imageUrl}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="64px"
+                />
+              </div>
             ) : null}
             <div>
               <p className="font-display text-lg font-semibold text-foreground">

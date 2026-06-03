@@ -429,7 +429,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               type="button"
               variant="tertiary"
               onClick={handleClearForm}
-              disabled={isSubmitting}
+              isDisabled={isSubmitting}
             >
               {t("contactClear")}
             </Button>
@@ -439,7 +439,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               variant="primary"
               loading={isSubmitting}
               loadingLabelKey="busyIndicator.loading"
-              disabled={isSubmitting || !isFormValid}
+              isDisabled={isSubmitting || !isFormValid}
             >
               {t("contactSubmit")}
             </AdaptiveLoadingButton>
