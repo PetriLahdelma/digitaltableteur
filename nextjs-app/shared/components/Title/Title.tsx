@@ -21,6 +21,8 @@ export type TitleProps = {
   children: React.ReactNode;
   as?: HeadingTag;
   className?: string;
+  /** When true, only sets the heading tag + className (no Title token typography). Use in patterns/pages that already define font/size in CSS or Tailwind. */
+  unstyled?: boolean;
   size?: TitleSize;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   terminals?: TitleTerminals;
@@ -55,6 +57,7 @@ const Title: React.FC<TitleProps> = ({
   children,
   as,
   className = "",
+  unstyled = false,
   size = "L",
   level,
   terminals = "serif",
@@ -63,6 +66,13 @@ const Title: React.FC<TitleProps> = ({
 }) => {
   const Tag =
     as || (level ? (`h${level}` as HeadingTag) : "h1");
+  if (unstyled) {
+    return (
+      <Tag className={className.trim() || undefined} {...rest}>
+        {children}
+      </Tag>
+    );
+  }
   const sizeClass = sizeClassMap[size] || "";
   const terminalsClass = terminalsClassMap[terminals] || "";
   const lineHeightClass = lineHeight

@@ -14,23 +14,30 @@ import {
 
 // Below-fold patterns (lazy)
 import { type ProjectItem } from "../../../patterns/WorkMagneticField";
-const WorkMagneticField = dynamic(
-  () => import("../../../patterns/WorkMagneticField").then((m) => ({ default: m.WorkMagneticField })),
+const WorkMagneticField = dynamic(() =>
+  import("../../../patterns/WorkMagneticField").then((m) => ({
+    default: m.WorkMagneticField,
+  })),
 );
-const CTASection = dynamic(
-  () => import("../../../patterns/CTASection").then((m) => ({ default: m.CTASection })),
+const CTASection = dynamic(() =>
+  import("../../../patterns/CTASection").then((m) => ({
+    default: m.CTASection,
+  })),
 );
-const NewsBulletin = dynamic(
-  () =>
-    import("../../../patterns/NewsBulletin").then((m) => ({
-      default: m.NewsBulletin,
-    })),
+const NewsBulletin = dynamic(() =>
+  import("../../../patterns/NewsBulletin").then((m) => ({
+    default: m.NewsBulletin,
+  })),
 );
-const DesignSprintsSection = dynamic(
-  () => import("../../../patterns/DesignSprintsSection").then((m) => ({ default: m.DesignSprintsSection })),
+const DesignSprintsSection = dynamic(() =>
+  import("../../../patterns/DesignSprintsSection").then((m) => ({
+    default: m.DesignSprintsSection,
+  })),
 );
-const ClientLogoMarquee = dynamic(
-  () => import("../../ClientLogoMarquee").then((m) => ({ default: m.ClientLogoMarquee })),
+const ClientLogoMarquee = dynamic(() =>
+  import("../../ClientLogoMarquee").then((m) => ({
+    default: m.ClientLogoMarquee,
+  })),
 );
 const HighlightSection = dynamic(
   () => import("../../../patterns/HighlightSection"),
@@ -125,7 +132,10 @@ export function HomePage() {
         showViewAll
       />
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-12" data-donny-target="home.clients">
+      <section
+        className="mx-auto w-full max-w-6xl px-6 py-12"
+        data-donny-target="home.clients"
+      >
         <div className="rounded-[2rem] border border-black/10 bg-white/70 p-6 shadow-sm backdrop-blur md:p-8 dark:border-white/10 dark:bg-neutral-950/60 hcb:border-white/30 hcb:bg-black [--selected-clients-label-color:rgb(4_27_35_/_55%)] [--selected-clients-divider-color:rgb(4_27_35_/_12%)] dark:[--selected-clients-label-color:rgb(255_255_255)] dark:[--selected-clients-divider-color:rgb(255_255_255_/_0.15)] hcb:[--selected-clients-label-color:rgb(0_0_0)] hcb:[--selected-clients-divider-color:rgb(0_0_0_/_0.18)] hcw:[--selected-clients-label-color:rgb(0_0_0)] hcw:[--selected-clients-divider-color:rgb(0_0_0_/_0.18)]">
           <p
             className={`${styles.selectedClientsLabel} text-[var(--selected-clients-label-color)] text-xs font-semibold uppercase tracking-[0.28em]`}
@@ -135,9 +145,7 @@ export function HomePage() {
           <div
             className={`${styles.selectedClientsDivider} mt-4 border-t border-t-[var(--selected-clients-divider-color)] pt-4`}
           >
-            <ClientLogoMarquee
-              ariaLabel={t("homeSelectedClientsAria")}
-            />
+            <ClientLogoMarquee ariaLabel={t("homeSelectedClientsAria")} />
           </div>
         </div>
       </section>

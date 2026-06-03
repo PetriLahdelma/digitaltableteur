@@ -1,59 +1,69 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Checkbox",
-  "tier": "atom",
-  "group": "form",
-  "status": "beta",
-  "description": "Accessible checkbox with label, indeterminate, and size variants.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=372-14",
-  "radixPrimitive": null,
-  "element": "input",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Space"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Checkbox",
+    "tier": "atom",
+    "group": "form",
+    "status": "beta",
+    "description": "Accessible checkbox with label, indeterminate, and size variants.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=372-14",
+    "radixPrimitive": null,
+    "element": "input",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "associated label",
-      "indeterminate exposes aria-checked mixed when applicable"
+    "a11y": {
+        "keyboard": [
+            "Space"
+        ],
+        "ariaRequirements": [
+            "associated label",
+            "indeterminate exposes aria-checked mixed when applicable"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "defaultChecked",
+        "id",
+        "isChecked",
+        "isDisabled",
+        "isIndeterminate",
+        "label",
+        "name",
+        "onCheckedChange",
+        "ref",
+        "showLabel",
+        "size",
+        "style",
+        "value"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "defaultChecked",
-    "id",
-    "isChecked",
-    "isDisabled",
-    "isIndeterminate",
-    "label",
-    "name",
-    "onCheckedChange",
-    "ref",
-    "showLabel",
-    "size",
-    "style",
-    "value"
-  ],
-  "consumers": []
+    "consumers": []
 }

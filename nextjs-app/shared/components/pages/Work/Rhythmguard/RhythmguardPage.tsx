@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Title from "@dt/Title";
 import Text from "@dt/Text";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
@@ -51,15 +52,15 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Type</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Type</Title>
               <p className={styles.metaText}>Open-source Stylelint plugin (MIT)</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Version</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Version</Title>
               <p className={styles.metaText}>v1.5.0</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Stack</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Stack</Title>
               <div className={styles.metaTools}>
                 <SiNodedotjs size={24} title="Node.js" />
                 <SiTypescript size={24} title="TypeScript" />
@@ -67,7 +68,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
               </div>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Links</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Links</Title>
               <p className={styles.metaText}>
                 <a href="https://www.npmjs.com/package/stylelint-plugin-rhythmguard" target="_blank" rel="noopener noreferrer">npm</a>
                 {" · "}
@@ -76,7 +77,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <h3 className={styles.metaLabel}>Overview</h3>
+            <Title as="h3" unstyled className={styles.metaLabel}>Overview</Title>
             <p className={styles.metaOverview}>
               <strong>Every design system ships a spacing scale.</strong> Almost none enforce it. Documentation says &ldquo;use <code>--space-16</code>&rdquo; but <code>padding: 14px</code> compiles just fine. Over months, the codebase drifts from the system. Auditing manually doesn&apos;t scale. Existing linters check syntax, not semantics.
             </p>

@@ -19,7 +19,8 @@ metadata:
 ### Step 1: Load context
 
 1. Read [`references/area-guide.md`](references/area-guide.md)
-2. Search for existing components before creating new ones:
+2. **Before creating UI**, run [`dt-use-existing-component`](../dt-use-existing-component/SKILL.md) or `npm run find-component -- "your intent"`.
+3. Search for existing components before creating new ones:
 
 ```bash
 rg -n "<SimilarName" nextjs-app/shared/components/
@@ -69,6 +70,16 @@ npm run build:tokens
 ```
 
 Regenerates `nextjs-app/shared/foundations/dist/agent-manifest.json`.
+
+### @dt usage gate
+
+Do **not** replace pattern-level `<h*>` / header chrome `<button>` with `@dt/Title` / `@dt/Button` unless explicitly requested — that changes typography and breaks section CSS. Fix heading **levels** only (`h3` → `h2`) while keeping existing classes. `npm run lint:dt-usage` only flags `@/components/ui/*` imports in `app/`.
+
+### Agent / MCP discovery
+
+- CLI: `npm run find-component -- "your intent"`
+- Local MCP: `npm run ds:mcp` (stdio — see `docs/DESIGN_SYSTEM_MCP.md`)
+- HTTP: `/mcp` on production (design-system tools + consulting)
 
 ---
 

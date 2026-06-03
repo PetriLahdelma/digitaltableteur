@@ -1,103 +1,112 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Badge",
-  "tier": "atom",
-  "group": "display",
-  "status": "stable",
-  "description": "Compact status label with semantic state, size, and optional icon.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=400-1249",
-  "radixPrimitive": null,
-  "element": "span",
-  "variants": {},
-  "slots": [
-    "icon"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "meaningful text or aria-label when icon-only"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Badge",
+    "tier": "atom",
+    "group": "display",
+    "status": "stable",
+    "description": "Compact status label with semantic state, size, and optional icon.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=400-1249",
+    "radixPrimitive": null,
+    "element": "span",
+    "variants": {
+        "size": {
+            "values": [
+                "s",
+                "m",
+                "l"
+            ],
+            "default": "m"
+        }
+    },
+    "slots": [
+        "icon"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — contrast and forced-colors verified in Storybook.",
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": true,
-    "realBrowserForcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [
-      "--color-black",
-      "--color-white"
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "design",
-    "icon",
-    "id",
-    "onRemove",
-    "ref",
-    "removable",
-    "role",
-    "size",
-    "square",
-    "state",
-    "style",
-    "title"
-  ],
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
-      "since": "2026-05-27"
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "meaningful text or aria-label when icon-only"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — contrast and forced-colors verified in Storybook.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/Badge/Badge.stories.tsx",
-      "since": "2026-05-27"
+    "tokens": {
+        "colors": [
+            "--color-black",
+            "--color-white"
+        ],
+        "spacing": []
     },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/Badge/Badge.test.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/OpenHours/OpenHours.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.stories.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/Card/Card.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/pages/Pseo/PseoClusterBadges.tsx",
-      "since": "2026-05-27"
-    }
-  ]
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "design",
+        "icon",
+        "id",
+        "onRemove",
+        "ref",
+        "removable",
+        "role",
+        "size",
+        "square",
+        "state",
+        "style",
+        "title"
+    ],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/Badge/Badge.stories.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/Badge/Badge.test.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/OpenHours/OpenHours.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.stories.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/Card/Card.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoClusterBadges.tsx",
+            "since": "2026-05-27"
+        }
+    ]
 }

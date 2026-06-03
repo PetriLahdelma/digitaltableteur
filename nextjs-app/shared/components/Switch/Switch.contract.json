@@ -1,60 +1,70 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Switch",
-  "tier": "atom",
-  "group": "form",
-  "status": "beta",
-  "description": "Toggle control with label placement, loading, and helper text.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=373-14",
-  "radixPrimitive": null,
-  "element": "button",
-  "variants": {},
-  "slots": [
-    "label"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Space",
-      "Enter"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Switch",
+    "tier": "atom",
+    "group": "form",
+    "status": "beta",
+    "description": "Toggle control with label placement, loading, and helper text.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=373-14",
+    "radixPrimitive": null,
+    "element": "button",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "propSourced": true
+        }
+    },
+    "slots": [
+        "label"
     ],
-    "ariaRequirements": [
-      "role=switch",
-      "aria-checked reflects state"
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "helperText",
-    "id",
-    "isChecked",
-    "isDisabled",
-    "isLoading",
-    "label",
-    "labelPlacement",
-    "onCheckedChange",
-    "ref",
-    "size",
-    "style"
-  ],
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Space",
+            "Enter"
+        ],
+        "ariaRequirements": [
+            "role=switch",
+            "aria-checked reflects state"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "helperText",
+        "id",
+        "isChecked",
+        "isDisabled",
+        "isLoading",
+        "label",
+        "labelPlacement",
+        "onCheckedChange",
+        "ref",
+        "size",
+        "style"
+    ],
+    "consumers": []
 }

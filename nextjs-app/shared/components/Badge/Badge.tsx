@@ -1,12 +1,18 @@
 import { cva } from "class-variance-authority";
+import styles from "./Badge.module.css";
 
-export const badgeVariants = cva("", {
-  variants: { size: { sm: "", md: "", lg: "" } },
-  defaultVariants: { size: "md" },
+export const badgeVariants = cva(styles.badge, {
+  variants: {
+    size: {
+      s: styles.s,
+      m: "",
+      l: styles.l,
+    },
+  },
+  defaultVariants: { size: "m" },
 });
 
 import React, { isValidElement, useState } from "react";
-import styles from "./Badge.module.css";
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 import { useTranslation } from "react-i18next";
@@ -131,10 +137,9 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         aria-live={role === "status" ? "polite" : undefined}
         {...rest}
         className={[
-          styles.badge,
+          badgeVariants({ size }),
           styles[design],
           state ? styles[state] : "",
-          styles[size], // Add size class
           className,
           square ? styles.square : "",
           removable ? styles.removable : "",

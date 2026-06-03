@@ -17,9 +17,9 @@ export function ColophonPage() {
         <Text as="p" terminals="sans" className={styles.intro}>
           This site is its own case study — a production portfolio, content
           platform, and agent-aware design system in one codebase. Twelve case
-          studies, a crawlable blog, a hundred programmatic SEO guides, streaming
-          AI chat with booking, and a token system that enforces itself. Here is
-          how it is built today.
+          studies, a crawlable blog, a hundred programmatic SEO guides,
+          streaming AI chat with booking, and a token system that enforces
+          itself. Here is how it is built today.
         </Text>
       </header>
 
@@ -126,8 +126,8 @@ export function ColophonPage() {
             <p className={styles.cardLabel}>Programmatic SEO</p>
             <p className={styles.cardValue}>
               One hundred service × stack × audience topic pages under{" "}
-              <code className={styles.inlineCode}>/pseo</code>, generated from
-              a typed catalog with pillar pages for services, stacks, and
+              <code className={styles.inlineCode}>/pseo</code>, generated from a
+              typed catalog with pillar pages for services, stacks, and
               audiences.
             </p>
           </div>
@@ -135,8 +135,8 @@ export function ColophonPage() {
             <p className={styles.cardLabel}>Portfolio</p>
             <p className={styles.cardValue}>
               Twelve case-study routes with shared ProjectDetailLayout,
-              ProjectMetaSection, StoryBlock, and ProcessBlock patterns —
-              each with bespoke CSS Modules where the story demands it.
+              ProjectMetaSection, StoryBlock, and ProcessBlock patterns — each
+              with bespoke CSS Modules where the story demands it.
             </p>
           </div>
           <div className={styles.card}>
@@ -175,17 +175,17 @@ export function ColophonPage() {
           <div className={styles.card}>
             <p className={styles.cardLabel}>Typography</p>
             <p className={styles.cardValue}>
-              Syne for headings, Satoshi for body. Fluid sizing via clamp() —
-              no breakpoint-based font scales. Title and Text components wrap
-              every typographic surface.
+              Syne for headings, Satoshi for body. Fluid sizing via clamp() — no
+              breakpoint-based font scales. Title and Text components wrap every
+              typographic surface.
             </p>
           </div>
           <div className={styles.card}>
             <p className={styles.cardLabel}>Themes</p>
             <p className={styles.cardValue}>
-              Light, dark, high-contrast black, and high-contrast white. Switched
-              via CSS class selectors on the root element and persisted in a
-              cookie.
+              Light, dark, high-contrast black, and high-contrast white.
+              Switched via CSS class selectors on the root element and persisted
+              in a cookie.
             </p>
           </div>
         </div>
@@ -296,8 +296,8 @@ export function ColophonPage() {
             <p className={styles.cardLabel}>Contact</p>
             <p className={styles.cardValue}>
               Editorial contact form with file uploads, MongoDB persistence, and
-              Cal.com scheduling tabs on the contact page. Donny can pre-fill the
-              form and spotlight relevant fields.
+              Cal.com scheduling tabs on the contact page. Donny can pre-fill
+              the form and spotlight relevant fields.
             </p>
           </div>
           <div className={styles.card}>

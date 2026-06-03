@@ -23,9 +23,9 @@ export function PseoIndexPage({
           Design system playbooks
         </Title>
         <Text className={styles.lead} size="L" terminals="sans">
-          Practical guides for design systems and DesignOps—organized by service,
-          stack, and team context. Each playbook includes a situation brief,
-          failure modes, checklist, and links to relevant case work.
+          Practical guides for design systems and DesignOps—organized by
+          service, stack, and team context. Each playbook includes a situation
+          brief, failure modes, checklist, and links to relevant case work.
         </Text>
 
         <section className={styles.section}>

@@ -15,6 +15,11 @@ import {
 
 type VariantMap = Record<string, { values: string[]; default: string | null }>
 
+function normalizeVariantToken(value: string | null | undefined): string | null {
+    if (value == null) return null
+    return String(value).replace(/^["']+|["']+$/g, '')
+}
+
 interface ExtractedCva {
     fnName: string
     variants: VariantMap
@@ -51,7 +56,8 @@ function extractCvaConfig(call: CallExpression): VariantMap {
             const valueNames = axisValues
                 .getProperties()
                 .filter((p: any) => p.getKind() === SyntaxKind.PropertyAssignment)
-                .map((p: any) => (p as any).getName())
+                .map((p: any) => normalizeVariantToken((p as any).getName())!)
+                .filter(Boolean)
             variants[axisName] = { values: valueNames, default: null }
         }
     }
@@ -75,10 +81,20 @@ function extractCvaConfig(call: CallExpression): VariantMap {
                 if (kind === SyntaxKind.TrueKeyword) defValue = 'true'
                 else if (kind === SyntaxKind.FalseKeyword) defValue = 'false'
             }
-            if (variants[axisName]) variants[axisName].default = defValue
+            if (variants[axisName]) variants[axisName].default = normalizeVariantToken(defValue)
         }
     }
     return variants
+}
+
+export function extractComponentFromSourceFile(
+    sf: SourceFile,
+    tsxPath?: string,
+): ExtractedComponent {
+    const componentName = tsxPath
+        ? basename(tsxPath, '.tsx')
+        : basename(sf.getFilePath(), '.tsx')
+    return extractComponentInner(sf, componentName)
 }
 
 export function extractComponent(tsxPath: string): ExtractedComponent {
@@ -88,7 +104,10 @@ export function extractComponent(tsxPath: string): ExtractedComponent {
         skipAddingFilesFromTsConfig: true,
     })
     const sf: SourceFile = project.addSourceFileAtPath(tsxPath)
-    const componentName = basename(tsxPath, '.tsx')
+    return extractComponentInner(sf, basename(tsxPath, '.tsx'))
+}
+
+function extractComponentInner(sf: SourceFile, componentName: string): ExtractedComponent {
     const expectedPropsName = `${componentName}Props`
 
     // Accept either `interface XProps` or `type XProps = ...` for the root Props
@@ -785,7 +804,10 @@ export function validateComponentsDir(root: string): ValidationResult {
             }
 
             // Variants
-            const manifestVariants = manifest.variants as Record<string, { values: string[]; default: string; forwarded?: boolean }>
+            const manifestVariants = manifest.variants as Record<
+                string,
+                { values: string[]; default: string; forwarded?: boolean; propSourced?: boolean }
+            >
             for (const [axis, def] of Object.entries(manifestVariants)) {
                 // `forwarded: true` opts the axis out of CVA-contract alignment.
                 // The contract still declares the axis (so it appears in
@@ -793,6 +815,7 @@ export function validateComponentsDir(root: string): ValidationResult {
                 // but the value isn't styled by a root CVA — it's threaded to
                 // a child component.
                 if (def.forwarded) continue
+                if (def.propSourced) continue
                 const extractedAxis = extracted.variants[axis]
                 if (!extractedAxis) {
                     errors.push(`${name}.tsx: CVA is missing variant axis "${axis}"`)

@@ -110,6 +110,10 @@
                         "type": "string",
                         "minLength": 1,
                         "description": "Optional name of the child component this axis is forwarded to. For documentation; not validated."
+                    },
+                    "propSourced": {
+                        "type": "boolean",
+                        "description": "When true, the axis is validated against TypeScript prop unions instead of root CVA (CSS-module or map-driven styling)."
                     }
                 }
             }
