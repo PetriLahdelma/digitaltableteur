@@ -10,6 +10,11 @@ import {
   Sparkles,
   ChevronUp,
   ChevronDown,
+  UserCheck,
+  Network,
+  ClipboardCheck,
+  RefreshCw,
+  KeyRound,
 } from "lucide-react";
 
 import { AboutHero } from "../AboutHero";
@@ -72,6 +77,39 @@ export function AboutPageContent({
     [t, i18n.language],
   );
 
+  // "How we deliver at scale" — addresses enterprise-buyer concerns
+  // (continuity, governance, ownership) beyond a single-person dependency.
+  const deliveryValues: ValueItem[] = useMemo(
+    () => [
+      {
+        icon: <UserCheck className="w-6 h-6" />,
+        title: t("aboutDeliverySeniorTitle"),
+        description: t("aboutDeliverySeniorDescription"),
+      },
+      {
+        icon: <Network className="w-6 h-6" />,
+        title: t("aboutDeliveryNetworkTitle"),
+        description: t("aboutDeliveryNetworkDescription"),
+      },
+      {
+        icon: <ClipboardCheck className="w-6 h-6" />,
+        title: t("aboutDeliveryGovernanceTitle"),
+        description: t("aboutDeliveryGovernanceDescription"),
+      },
+      {
+        icon: <RefreshCw className="w-6 h-6" />,
+        title: t("aboutDeliveryContinuityTitle"),
+        description: t("aboutDeliveryContinuityDescription"),
+      },
+      {
+        icon: <KeyRound className="w-6 h-6" />,
+        title: t("aboutDeliveryOwnershipTitle"),
+        description: t("aboutDeliveryOwnershipDescription"),
+      },
+    ],
+    [t, i18n.language],
+  );
+
   // Manifesto tokens (intro + highlightable phrases)
   const manifestoTokens: ManifestoToken[] = useMemo(
     () => [
@@ -118,6 +156,15 @@ export function AboutPageContent({
           { value: 300, suffix: "+", label: t("statsProjectsDelivered", "Projects delivered"), duration: 2 },
         ]}
         background="primary"
+      />
+
+      {/* How we deliver at scale */}
+      <ValuesSection
+        title={t("aboutDeliveryTitle")}
+        subtitle={t("aboutDeliverySubtitle")}
+        values={deliveryValues}
+        cardVariant="bordered"
+        background="default"
       />
 
       {/* What I Do - Design */}
