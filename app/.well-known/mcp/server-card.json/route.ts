@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 import { agentDiscoveryBaseUrl } from "@/app/lib/agent-discovery";
 import { CONSULTING_TOOL_NAMES } from "@/nextjs-app/shared/lib/consulting-tools/executors";
-import { DESIGN_SYSTEM_TOOL_NAMES } from "@/nextjs-app/shared/lib/design-system-mcp/executors";
 import {
   MCP_SERVER_DESCRIPTION,
   MCP_SERVER_NAME,
@@ -26,14 +25,8 @@ export async function GET() {
     },
     capabilities: {
       tools: true,
-      resources: true,
     },
-    tools: [...CONSULTING_TOOL_NAMES, ...DESIGN_SYSTEM_TOOL_NAMES],
-    resources: [
-      "digitaltableteur://design-system/manifest/summary",
-      "digitaltableteur://design-system/tokens/summary",
-      "digitaltableteur://design-system/import-policy",
-    ],
+    tools: [...CONSULTING_TOOL_NAMES],
     authentication: {
       required: false,
       documentation: `${baseUrl}/auth.md`,

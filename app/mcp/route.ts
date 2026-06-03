@@ -5,8 +5,4 @@ export const maxDuration = 60;
 
 const { handleMcpRequest } = createConsultingMcpHandler({ basePath: "" });
 
-export {
-  handleMcpRequest as GET,
-  handleMcpRequest as POST,
-  handleMcpRequest as DELETE,
-};
+export { handleMcpRequest as GET, handleMcpRequest as POST, handleMcpRequest as DELETE };

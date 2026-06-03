@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BlogPage } from "@dt-pages/Blog";
-import Title from "@dt/Title";
 import {
   getCollectionPageSchema,
   stringifyJsonLd,
@@ -61,9 +60,7 @@ export default function Blog() {
         }}
       />
       <section aria-labelledby="blog-index-heading" className="sr-only">
-        <Title as="h2" unstyled id="blog-index-heading">
-          Blog articles
-        </Title>
+        <h2 id="blog-index-heading">Blog articles</h2>
         <ul>
           {posts.map((post) => (
             <li key={post.slug}>

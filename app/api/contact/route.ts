@@ -172,7 +172,7 @@ export async function POST(req: NextRequest) {
       { status: 200, headers: corsHeaders },
     );
   } catch (err: any) {
-    // eslint-disable-next-line no-console
+     
     console.error("Contact handler failed:", err);
     return NextResponse.json(
       { error: "Failed to process contact form" },
