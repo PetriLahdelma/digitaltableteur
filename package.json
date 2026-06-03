@@ -202,7 +202,7 @@
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
     "react-phone-number-input": "^3.4.17",
-    "react-router-dom": "^7.11.0",
+    "react-router-dom": "^7.16.0",
     "rehype-pretty-code": "^0.14.1",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
