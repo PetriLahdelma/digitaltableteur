@@ -63,8 +63,20 @@ Optional: `DT_REPO_ROOT` if the process cwd is not the repo root.
 - HTTP registration: `create-consulting-mcp-handler.ts` (same `/mcp` route as consulting)
 - Stdio entry: `scripts/design-system/ds-mcp-stdio.ts`
 
+## Evaluation
+
+`npm run agent:eval` validates manifest, MCP tool registration, and **intent retrieval** against `scripts/design-system/agent-eval/golden-intents.json` (≥85% pass rate).
+
+```bash
+node scripts/design-system/agent-eval/intent-retrieval-eval.mjs
+```
+
+See [AGENTIC_DS_OPERATING_MODEL.md](./AGENTIC_DS_OPERATING_MODEL.md).
+
 ## Related
 
 - [PUBLIC_API.md](./PUBLIC_API.md) — import policy
+- [AGENTIC_DS_OPERATING_MODEL.md](./AGENTIC_DS_OPERATING_MODEL.md) — human + agent workflow
 - `.claude/skills/dt-use-existing-component/SKILL.md` — reuse workflow
-- `.planning/milestones/ai-native-design-system/` — milestone roadmap
+- `.planning/milestones/ai-native-design-system/` — milestone v1 (complete)
+- `.planning/milestones/agentic-ds-v2/` — milestone v2 roadmap

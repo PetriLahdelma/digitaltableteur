@@ -134,4 +134,27 @@ if (!buttonEntry?.agent?.variants?.variant?.values?.length) {
   console.log("✓ Button agent variants extracted from source");
 }
 
+const goldenPath = join(dirname(fileURLToPath(import.meta.url)), "golden-intents.json");
+if (!existsSync(goldenPath)) {
+  console.error("FAIL: golden-intents.json missing");
+  failed += 1;
+} else {
+  const { runIntentRetrievalEval } = await import("./intent-retrieval-eval.mjs");
+  const spec = JSON.parse(readFileSync(goldenPath, "utf8"));
+  const intentResult = runIntentRetrievalEval(spec, manifest.components ?? []);
+  if (intentResult.rate < intentResult.minPassRate) {
+    console.error(
+      `FAIL: intent retrieval ${intentResult.passed}/${intentResult.total} (${(intentResult.rate * 100).toFixed(1)}% < ${(intentResult.minPassRate * 100).toFixed(0)}%)`,
+    );
+    for (const row of intentResult.results.filter((r) => !r.ok)) {
+      console.error(`  ✗ ${row.id}: got [${row.top3.join(", ")}]`);
+    }
+    failed += 1;
+  } else {
+    console.log(
+      `✓ intent retrieval golden set: ${intentResult.passed}/${intentResult.total} (${(intentResult.rate * 100).toFixed(1)}%)`,
+    );
+  }
+}
+
 process.exit(failed ? 1 : 0);

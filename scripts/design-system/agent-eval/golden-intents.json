@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "description": "Golden intent → @dt component retrieval benchmark. Run via npm run agent:eval (included in run.mjs).",
+  "cases": [
+    {
+      "id": "alert-dismissible",
+      "query": "dismissible warning banner",
+      "expectedTop1": "AlertBanner"
+    },
+    {
+      "id": "button-primary",
+      "query": "primary action button",
+      "expectedInTop3": ["Button", "AdaptiveLoadingButton", "MCPActionButton"]
+    },
+    {
+      "id": "title-semantic",
+      "query": "semantic page title heading",
+      "expectedTop1": "Title"
+    },
+    {
+      "id": "submit-loading",
+      "query": "loading submit button",
+      "expectedInTop3": ["AdaptiveLoadingButton", "Button"]
+    },
+    {
+      "id": "modal",
+      "query": "modal dialog",
+      "expectedInTop3": ["Modal", "AnimatedDialog"]
+    },
+    {
+      "id": "cookie-consent",
+      "query": "cookie consent",
+      "expectedTop1": "CookieConsent"
+    },
+    {
+      "id": "text-input",
+      "query": "labeled text input",
+      "expectedInTop3": ["Inputs", "TextInput"]
+    },
+    {
+      "id": "pagination",
+      "query": "pagination controls",
+      "expectedTop1": "Pagination"
+    },
+    {
+      "id": "chat-widget",
+      "query": "chat widget send",
+      "expectedInTop3": ["ChatWidget", "ChatComposer", "ChatHeader"]
+    },
+    {
+      "id": "file-upload",
+      "query": "file upload",
+      "expectedTop1": "FileUpload"
+    },
+    {
+      "id": "toast",
+      "query": "toast message",
+      "expectedTop1": "Toast"
+    },
+    {
+      "id": "hero",
+      "query": "hero section landing",
+      "expectedInTop3": ["HeroSection", "Hero", "CTASection"]
+    },
+    {
+      "id": "card-actions",
+      "query": "card with actions",
+      "expectedTop1": "Card"
+    },
+    {
+      "id": "select",
+      "query": "dropdown select options",
+      "expectedTop1": "Select"
+    },
+    {
+      "id": "checkbox",
+      "query": "checkbox with label",
+      "expectedInTop3": ["Checkbox", "CheckboxField"]
+    },
+    {
+      "id": "switch",
+      "query": "toggle switch",
+      "expectedTop1": "Switch"
+    },
+    {
+      "id": "badge",
+      "query": "status badge",
+      "expectedTop1": "Badge"
+    },
+    {
+      "id": "tabs",
+      "query": "tabs navigation",
+      "expectedTop1": "Tabs"
+    },
+    {
+      "id": "icon-button",
+      "query": "icon only button",
+      "expectedTop1": "IconButton"
+    },
+    {
+      "id": "helper-text",
+      "query": "tooltip help",
+      "expectedInTop3": ["HelperText", "Label"]
+    }
+  ]
+}
