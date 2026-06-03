@@ -36,7 +36,7 @@ const WorkNav: React.FC = () => {
             variant="tertiary"
             size="m"
             icon={<Icon name="arrow-left" ariaLabel={t("workNavPrev")} />}
-            disabled={currentIndex <= 0}
+            isDisabled={currentIndex <= 0}
             onClick={() => {
               if (currentIndex > 0) navigate(workPages[currentIndex - 1].path);
             }}
@@ -47,7 +47,7 @@ const WorkNav: React.FC = () => {
             variant="tertiary"
             size="m"
             endIcon={<Icon name="arrow-right" ariaLabel={t("workNavNext")} />}
-            disabled={currentIndex === workPages.length - 1}
+            isDisabled={currentIndex === workPages.length - 1}
             onClick={() => {
               if (currentIndex < workPages.length - 1)
                 navigate(workPages[currentIndex + 1].path);

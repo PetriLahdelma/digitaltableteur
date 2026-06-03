@@ -133,7 +133,7 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
         <Button
           variant="primary"
           onClick={handleTransform}
-          disabled={disabled}
+          isDisabled={disabled}
           accessibleName={t(actionLabelKey)}
           className={styles.trigger}
         >
@@ -167,14 +167,14 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
               variant="secondary"
               type="button"
               onClick={() => setMode("button")}
-              disabled={disabled}
+              isDisabled={disabled}
             >
               {t("transformingActionInput.cancel")}
             </Button>
             <Button
               variant="primary"
               type="submit"
-              disabled={disabled}
+              isDisabled={disabled}
               accessibleDescription={t(
                 "transformingActionInput.submitDescription",
               )}

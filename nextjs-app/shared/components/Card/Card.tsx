@@ -202,7 +202,7 @@ const Card: React.FC<CardProps> = ({
         <Button
           key={action.key}
           variant={action.variant || "secondary"}
-          disabled={action.disabled}
+          isDisabled={action.disabled}
           onClick={() => action.onClick?.(action.key)}
           size={size === "L" ? "l" : size === "S" ? "s" : "m"}
         >
