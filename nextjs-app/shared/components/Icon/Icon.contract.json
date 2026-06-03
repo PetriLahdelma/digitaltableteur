@@ -1,119 +1,132 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Icon",
-  "tier": "atom",
-  "group": "display",
-  "status": "stable",
-  "description": "Phosphor icon wrapper with size, weight, and motion affordances.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon",
-  "radixPrimitive": null,
-  "element": "span",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "decorative icons use aria-hidden",
-      "meaningful icons require aria-label"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Icon",
+    "tier": "atom",
+    "group": "display",
+    "status": "stable",
+    "description": "Phosphor icon wrapper with size, weight, and motion affordances.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon",
+    "radixPrimitive": null,
+    "element": "span",
+    "variants": {
+        "size": {
+            "values": [
+                "2xs",
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "2xl"
+            ],
+            "default": "md"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 code review",
-    "forcedColorsVerified": true,
-    "axeTestExempt": "Display-only glyph wrapper",
-    "accessibilityTreeVerified": true,
-    "realBrowserForcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [
-      "--color-error",
-      "--color-info",
-      "--color-primary",
-      "--color-success",
-      "--color-warning"
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "decorative icons use aria-hidden",
+            "meaningful icons require aria-label"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 code review",
+        "forcedColorsVerified": true,
+        "axeTestExempt": "Display-only glyph wrapper",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-error",
+            "--color-info",
+            "--color-primary",
+            "--color-success",
+            "--color-warning"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "legacyStyle",
+        "mirrored",
+        "ref",
+        "style"
     ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "legacyStyle",
-    "mirrored",
-    "ref",
-    "style"
-  ],
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/not-found.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/error.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/work/NextWorkNav.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/blog/NextBlogNav.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/app/work/NextWorkNav.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/utils/semanticIcons.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/stories/Docs/Icons.stories.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/foundations/stories/Icons.stories.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/Badge/Badge.stories.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/Title/Title.stories.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/Badge/Badge.tsx",
-      "since": "2026-05-27"
-    }
-  ]
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/error.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/NextWorkNav.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/NextBlogNav.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/app/work/NextWorkNav.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/utils/semanticIcons.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/stories/Docs/Icons.stories.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/foundations/stories/Icons.stories.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/Badge/Badge.stories.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/Title/Title.stories.tsx",
+            "since": "2026-05-27"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/Badge/Badge.tsx",
+            "since": "2026-05-27"
+        }
+    ]
 }

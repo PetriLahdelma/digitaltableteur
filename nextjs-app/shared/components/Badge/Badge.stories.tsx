@@ -73,6 +73,7 @@ const meta: Meta<typeof Badge> = {
       control: { type: "select" },
       options: ["s", "m", "l"],
       description: "Badge size: small (s), medium (m), or large (l)",
+      table: { defaultValue: { summary: "m" } },
     },
   },
   args: {

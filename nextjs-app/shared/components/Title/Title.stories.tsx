@@ -146,6 +146,13 @@ export default {
       description: "Override the rendered element (h1–h6)",
       table: { disable: true },
     },
+
+    unstyled: {
+      control: "boolean",
+      description:
+        "Render only the heading tag and className (no Title size/terminal tokens)",
+      table: { defaultValue: { summary: "false" } },
+    },
   },
 } as Meta<typeof Title>;
 
