@@ -15,4 +15,4 @@ File: [`DT-Site-stuff`](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-S
 
 See `docs/FIGMA_DESIGN_SYSTEM_SYNC.md`.
 
-Run ID: `dt-dsb-2026-06-01`
+Run ID: `dt-dsb-2026-06-03`

@@ -5,6 +5,7 @@ import {
   executeGetComponentContract,
   executeGetTokens,
   executeListComponents,
+  executeSuggestPatternForLayout,
   executeValidateComponentUsage,
 } from "./executors";
 
@@ -57,6 +58,18 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
   );
 
   tools.tool(
+    "suggest_pattern_for_layout",
+    "Rank @dt layout patterns (CTASection, Header, HeroSection, …) for a page-level intent. Returns useWhen, avoidWhen, composesWith, and variantNotes — not a license to replace pattern chrome.",
+    emptySchema,
+    READ_ONLY,
+    (args) =>
+      executeSuggestPatternForLayout({
+        query: String(args.query ?? ""),
+        limit: args.limit != null ? Number(args.limit) : undefined,
+      }),
+  );
+
+  tools.tool(
     "get_component_contract",
     "Get full contract + agent block + usage evidence for one cataloged component by name.",
     emptySchema,
@@ -84,5 +97,5 @@ export function registerDesignSystemMcpTools(server: McpServer): number {
       }),
   );
 
-  return 5;
+  return 6;
 }
