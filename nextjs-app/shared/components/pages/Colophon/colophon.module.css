@@ -38,6 +38,12 @@
   font-size: 0.9em;
 }
 
+.inlineLink {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .section {
   margin-block-end: var(--space-layout-64);
 }
