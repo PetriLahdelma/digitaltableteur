@@ -44,6 +44,8 @@ npm run validate:agent-docs
 
 ## Universal rules
 
+- **CI / GitHub Actions quota is exhausted and not a viable gate.** Do not wait on, cite, or block merges on CI status. Verify locally (`typecheck`, `lint`, `test`, `build`, `agent:eval` as relevant) and merge with admin bypass when the user asks. Do not suggest “check CI” or assume PR checks will run.
+
 - CSS Modules only; design tokens from `variables.css`
 - Components: folder under `nextjs-app/shared/components/<Name>/`
 - i18n: EN / FI / SV

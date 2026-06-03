@@ -21,6 +21,15 @@
 - **`AGENT_READINESS.md`**
   - isitagentready.com checks, discovery endpoints, re-scan commands
 
+- **`AGENTIC_DS_OPERATING_MODEL.md`**
+  - Agent + human workflow for `@dt/*`, MCP, evals, enforcement guardrails
+
+- **`DESIGN_SYSTEM_MCP.md`**
+  - Design system MCP tools, resources, local stdio setup
+
+- **`PUBLIC_API.md`**
+  - `@dt/*` import policy and verification commands
+
 - **[`../AGENT_INDEX.md`](../AGENT_INDEX.md)**
   - Master index of areas, skills, and deep references
 

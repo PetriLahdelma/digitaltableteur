@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "description": "Pattern-level composition recipes for agents — useWhen/avoidWhen without replacing pattern chrome.",
+  "patterns": [
+    {
+      "name": "CTASection",
+      "publicImport": "@dt/CTASection",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "marketing call-to-action band at section end",
+        "primary and secondary actions with title and description",
+        "inverse or primary background CTA block"
+      ],
+      "avoidWhen": [
+        "inline alert or toast feedback",
+        "header navigation or language switcher",
+        "replacing shadcn CTA buttons with @dt/Button without variant parity review"
+      ],
+      "composesWith": ["Title", "Text", "Button"],
+      "variantNotes": {
+        "inverseBackground": "Production CTASection uses @/components/ui/button outline on dark bands — do not swap to @dt/Button tertiary without contrast check."
+      },
+      "storybookId": "patterns-ctasection--default"
+    },
+    {
+      "name": "Header",
+      "publicImport": "@dt/Header",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "legacy site header with nav items and language switcher",
+        "pattern-level navigation shell in Storybook"
+      ],
+      "avoidWhen": [
+        "Next.js app shell — prefer SiteHeader in app routes",
+        "mass-replacing native header buttons with @dt/Button without design sign-off"
+      ],
+      "composesWith": ["Link", "Icon", "MobileMenu"],
+      "variantNotes": {
+        "chrome": "Keep native <button> for language/theme controls unless explicitly redesigning header chrome."
+      },
+      "storybookId": "patterns-header--default"
+    },
+    {
+      "name": "HeroSection",
+      "publicImport": "@dt/HeroSection",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "full-bleed marketing hero with alignment and background variants",
+        "homepage or landing hero shell with min-height"
+      ],
+      "avoidWhen": [
+        "blog article hero — prefer ArticleHero pattern",
+        "compact inline page title without hero imagery"
+      ],
+      "composesWith": ["Title", "Text", "Button", "Hero"],
+      "variantNotes": {
+        "background": "Supports backgroundImage and tokenized min-height; compose children rather than hardcoding layout."
+      },
+      "storybookId": "patterns-herosection--default"
+    }
+  ]
+}

@@ -2,9 +2,11 @@ import { describe, expect, it } from "vitest";
 
 import {
   executeFindComponentForIntent,
+  executeSuggestPatternForLayout,
   executeValidateComponentUsage,
 } from "./executors";
 import { rankComponentsForIntent } from "./rank-intent";
+import { rankPatternsForIntent } from "./pattern-composition";
 import type { ManifestComponentEntry } from "./types";
 
 const FIXTURE_COMPONENTS: ManifestComponentEntry[] = [
@@ -72,5 +74,41 @@ describe("executeFindComponentForIntent", () => {
     const result = executeFindComponentForIntent({ query: "banner" });
     process.chdir(prev);
     expect(result.isError).toBe(true);
+  });
+});
+
+describe("rankPatternsForIntent", () => {
+  it("ranks CTASection for marketing CTA query", () => {
+    const ranked = rankPatternsForIntent(
+      "marketing call to action band",
+      [
+        {
+          name: "CTASection",
+          publicImport: "@dt/CTASection",
+          useWhen: ["marketing call-to-action band"],
+          status: "beta",
+        },
+        {
+          name: "Header",
+          publicImport: "@dt/Header",
+          useWhen: ["site header navigation"],
+          status: "beta",
+        },
+      ],
+      3,
+    );
+    expect(ranked[0]?.name).toBe("CTASection");
+  });
+});
+
+describe("executeSuggestPatternForLayout", () => {
+  it("returns matches for layout query", () => {
+    const result = executeSuggestPatternForLayout({
+      query: "full bleed homepage hero",
+    });
+    const parsed = JSON.parse(result.content[0].text) as {
+      matches: Array<{ name: string }>;
+    };
+    expect(parsed.matches[0]?.name).toBe("HeroSection");
   });
 });

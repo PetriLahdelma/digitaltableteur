@@ -88,6 +88,8 @@ export async function GET() {
       ai_chat: `${baseUrl}/api/chat`,
       context: `${baseUrl}/llms.txt`,
       context_full: `${baseUrl}/llms-full.txt`,
+      design_system_mcp: `${baseUrl}/mcp`,
+      design_system_demo: `${baseUrl}/design-system/agent`,
     },
     languages: ["en", "fi", "sv"],
     business_id: "2226445-2",
