@@ -101,11 +101,7 @@ export default [
   },
   ...storybook.configs["flat/recommended"],
   {
-    files: [
-      "app/**/*.{ts,tsx,js,jsx}",
-      "nextjs-app/shared/patterns/**/*.{ts,tsx,js,jsx}",
-      "nextjs-app/shared/components/pages/**/*.{ts,tsx,js,jsx}",
-    ],
+    files: ["app/**/*.{ts,tsx,js,jsx}"],
     ignores: [
       "**/*.stories.*",
       "**/*.test.*",

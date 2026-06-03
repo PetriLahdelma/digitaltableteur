@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Title from "@dt/Title";
 import Text from "@dt/Text";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
@@ -61,11 +60,9 @@ const palette = {
   statusInfoTint: "#eff6ff",
 } as const;
 
-/* eslint-disable quotes -- font-family strings embed double quotes */
 const FONT_SANS = '"DM Sans", "Inter", system-ui, -apple-system, sans-serif';
 const FONT_MONO =
   '"DM Mono", "JetBrains Mono", "SF Mono", ui-monospace, monospace';
-/* eslint-enable quotes */
 
 type BadgeProps = {
   x: number;
@@ -1796,27 +1793,21 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Client
-              </Title>
+              <h3 className={styles.metaLabel}>Client</h3>
               <p className={styles.metaText}>
                 DSharp, a Finnish data-modelling platform shipping DSharp
                 Studio, PathFinder, and the new DSharp Scout.
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Type
-              </Title>
+              <h3 className={styles.metaLabel}>Type</h3>
               <p className={styles.metaText}>
                 AI-native product design system. Three layered packages,
                 contract-per-component, enforced spacing.
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Stack
-              </Title>
+              <h3 className={styles.metaLabel}>Stack</h3>
               <div className={styles.metaTools}>
                 <SiReact size={22} title="React 19" />
                 <SiTypescript size={22} title="TypeScript 5" />
@@ -1826,9 +1817,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
               </div>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Distribution
-              </Title>
+              <h3 className={styles.metaLabel}>Distribution</h3>
               <p className={styles.metaText}>
                 Five npm packages, <code>@dsharp/tokens</code>,{" "}
                 <code>@dsharp/tokens-css</code>, <code>@dsharp/react</code>,{" "}
@@ -1840,9 +1829,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title level={3} size="XS" className={styles.metaLabel}>
-              Brief
-            </Title>
+            <h3 className={styles.metaLabel}>Brief</h3>
             <p className={styles.metaOverview}>
               DSharp ships products to a broad customer base in Finland and
               internationally: DSharp Studio, a model-first desktop app

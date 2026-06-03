@@ -54,16 +54,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         tools={[
           { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },
           { key: "react", icon: <SiReact size={24} />, name: "ReactTS" },
-          {
-            key: "typescript",
-            icon: <SiTypescript size={24} />,
-            name: "TypeScript",
-          },
-          {
-            key: "storybook",
-            icon: <SiStorybook size={24} />,
-            name: "Storybook",
-          },
+          { key: "typescript", icon: <SiTypescript size={24} />, name: "TypeScript" },
+          { key: "storybook", icon: <SiStorybook size={24} />, name: "Storybook" },
         ]}
         team={[
           {
@@ -90,20 +82,18 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         overview={
           <>
             <Text size="S">
-              <span style={{ fontWeight: 600 }}>SAP Build Apps</span> is
-              SAP&apos;s flagship low-code platform, evolved from AppGyver
-              following its 2021 acquisition. It enables business users and
-              developers to create enterprise-grade applications with
-              drag-and-drop UI, 400+ formula functions, and deep SAP BTP
-              integration.
+              <span style={{ fontWeight: 600 }}>SAP Build Apps</span> is SAP&apos;s
+              flagship low-code platform, evolved from AppGyver following its 2021
+              acquisition. It enables business users and developers to create
+              enterprise-grade applications with drag-and-drop UI, 400+ formula
+              functions, and deep SAP BTP integration.
             </Text>
             <Text size="S">
               <span style={{ fontWeight: 600 }}>The challenge:</span> Create a
               unified design language that bridges the gap between design and
-              development, enabling seamless handoff and consistent
-              implementation across a distributed team serving 300+ developers
-              and designers building applications for the platform used by
-              enterprises worldwide.
+              development, enabling seamless handoff and consistent implementation
+              across a distributed team serving 300+ developers and designers
+              building applications for the platform used by enterprises worldwide.
             </Text>
           </>
         }
@@ -161,9 +151,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         title="Scaling Design Consistency"
         content={[
           <Text key="1" size="S">
-            <span style={{ fontWeight: 600 }}>
-              Serving 300+ developers and designers
-            </span>{" "}
+            <span style={{ fontWeight: 600 }}>Serving 300+ developers and designers</span>{" "}
             working across multiple teams and time zones, maintaining visual
             consistency was becoming increasingly difficult. Components were
             being recreated with slight variations, leading to fragmented user
@@ -229,9 +217,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="2" size="S">
             The SAP Horizon theme provided the base color system, with semantic
-            tokens for consistent theming across light and dark modes.
-            Typography followed a modular scale optimized for enterprise
-            applications.
+            tokens for consistent theming across light and dark modes. Typography
+            followed a modular scale optimized for enterprise applications.
           </Text>,
         ]}
         images={[
@@ -261,8 +248,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             alt: "Typography scale showing font families, sizes, and weights for enterprise readability",
             width: 738,
             height: 506,
-            caption:
-              "Modular typography scale optimized for enterprise applications",
+            caption: "Modular typography scale optimized for enterprise applications",
           },
         ]}
         imageLayout="grid"
@@ -287,8 +273,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             The button system alone covered primary, secondary, ghost, and
             destructive variants, each with hover, active, focus, and disabled
             states across multiple sizes. The library grew to 100+ components
-            covering form controls, data display, navigation, and feedback
-            patterns.
+            covering form controls, data display, navigation, and feedback patterns.
           </Text>,
         ]}
         images={[
@@ -333,23 +318,22 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="1" size="S">
             <span style={{ fontWeight: 600 }}>
-              I led the design and specification of a comprehensive table
-              component
+              I led the design and specification of a comprehensive table component
             </span>{" "}
             supporting sorting, filtering, pagination, row selection, and column
-            configuration. Optimized for large enterprise datasets with
-            thousands of rows, the table includes full keyboard navigation and
-            screen reader support, built for seamless integration with SAP data
-            sources including S/4HANA and OData services.
+            configuration. Optimized for large enterprise datasets with thousands
+            of rows, the table includes full keyboard navigation and screen reader
+            support, built for seamless integration with SAP data sources including
+            S/4HANA and OData services.
           </Text>,
           <Text key="2" size="S">
             <span style={{ fontWeight: 600 }}>
               Data visualization components for analytics dashboards
             </span>{" "}
             included bar, line, pie, donut, and area chart variants. All charts
-            were designed to be responsive and accessible with proper color
-            contrast and pattern alternatives for colorblind users, consistent
-            with SAP Horizon theme tokens.
+            were designed to be responsive and accessible with proper color contrast
+            and pattern alternatives for colorblind users, consistent with SAP
+            Horizon theme tokens.
           </Text>,
         ]}
         images={[
@@ -383,9 +367,9 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
               Deployment on SAP Business Technology Platform (BTP)
             </span>{" "}
             required components optimized for enterprise-grade performance. The
-            design system integrated with SAP backend services including
-            S/4HANA, SuccessFactors, and third-party systems via REST and OData,
-            supporting real-time data flows common in low-code applications.
+            design system integrated with SAP backend services including S/4HANA,
+            SuccessFactors, and third-party systems via REST and OData, supporting
+            real-time data flows common in low-code applications.
           </Text>,
           <Text key="2" size="S">
             Each component was built to handle large datasets while maintaining

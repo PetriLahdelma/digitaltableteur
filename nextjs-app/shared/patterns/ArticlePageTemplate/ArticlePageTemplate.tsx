@@ -49,9 +49,7 @@ const getFigureLayout = (
 const isFigcaptionElement = (child: React.ReactNode): boolean => {
   if (!React.isValidElement(child)) return false;
   if (child.type === MdxFigcaption) return true;
-  return (
-    typeof child.type === "string" && child.type.toLowerCase() === "figcaption"
-  );
+  return typeof child.type === "string" && child.type.toLowerCase() === "figcaption";
 };
 
 const isParagraphElement = (
@@ -63,8 +61,7 @@ const isParagraphElement = (
 
 const renderFigureCaption = (child: React.ReactNode, key: number) => {
   if (isFigcaptionElement(child) && React.isValidElement(child)) {
-    const captionProps =
-      child.props as React.ComponentPropsWithoutRef<"figcaption">;
+    const captionProps = child.props as React.ComponentPropsWithoutRef<"figcaption">;
     return (
       <figcaption
         key={key}
@@ -130,6 +127,7 @@ const MdxImageWrapper = (props: React.ComponentPropsWithoutRef<"img">) => {
   if (figureLayout !== null) {
     if (typeof src !== "string" || !src) return null;
     return (
+      // eslint-disable-next-line @next/next/no-img-element -- figure layout needs plain img width control
       <img
         src={src}
         alt={alt ?? ""}
@@ -162,7 +160,10 @@ const MdxFigcaption = ({
 
   if (figureLayout !== null) {
     return (
-      <figcaption {...props} className={cn(figureStyles.caption, className)}>
+      <figcaption
+        {...props}
+        className={cn(figureStyles.caption, className)}
+      >
         {children}
       </figcaption>
     );
@@ -214,7 +215,8 @@ const MdxFigure = ({
   );
 
   if (!isPrettyCodeFigure) {
-    const layout = layoutProp ?? getFigureLayout(props as DataProps, className);
+    const layout =
+      layoutProp ?? getFigureLayout(props as DataProps, className);
     const childArray = React.Children.toArray(children);
     const media: React.ReactNode[] = [];
     const captions: React.ReactNode[] = [];
@@ -243,9 +245,7 @@ const MdxFigure = ({
           className={cn(
             "not-prose",
             figureStyles.figure,
-            layout === "full"
-              ? figureStyles.figureFull
-              : figureStyles.figureCenter,
+            layout === "full" ? figureStyles.figureFull : figureStyles.figureCenter,
             className,
           )}
           {...props}
@@ -253,9 +253,7 @@ const MdxFigure = ({
           {media.length > 0 ? (
             <div className={figureStyles.media}>{media}</div>
           ) : null}
-          {captions.map((caption, index) =>
-            renderFigureCaption(caption, index),
-          )}
+          {captions.map((caption, index) => renderFigureCaption(caption, index))}
         </figure>
       </FigureLayoutContext.Provider>
     );

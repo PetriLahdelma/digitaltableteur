@@ -97,7 +97,7 @@ export function ArticleHero({
           "relative z-10",
           isFullWidth
             ? "min-h-[60vh] flex flex-col justify-end pb-16"
-            : "py-12 tablet:py-16 desktop:py-20",
+            : "py-12 tablet:py-16 desktop:py-20"
         )}
       >
         <div className="space-y-6">
@@ -112,7 +112,7 @@ export function ArticleHero({
                       "px-3 py-1 text-xs font-body font-medium rounded-full",
                       isFullWidth
                         ? "bg-white/10 text-white/90"
-                        : "bg-muted text-muted-foreground",
+                        : "bg-muted text-muted-foreground"
                     )}
                   >
                     {tag}
@@ -132,7 +132,7 @@ export function ArticleHero({
               "font-display font-bold",
               "text-3xl tablet:text-4xl desktop:text-5xl",
               isFullWidth ? "text-white" : "text-foreground",
-              "leading-tight tracking-tight",
+              "leading-tight tracking-tight"
             )}
             as="h1"
           >
@@ -144,7 +144,7 @@ export function ArticleHero({
             <div
               className={cn(
                 "flex flex-wrap items-center gap-4",
-                isFullWidth ? "text-white/80" : "text-muted-foreground",
+                isFullWidth ? "text-white/80" : "text-muted-foreground"
               )}
             >
               {/* Author */}
@@ -164,7 +164,7 @@ export function ArticleHero({
                       href={`/blog/authors/${author.slug}`}
                       className={cn(
                         "font-body font-medium hover:underline",
-                        isFullWidth ? "text-white" : "text-foreground",
+                        isFullWidth ? "text-white" : "text-foreground"
                       )}
                     >
                       {author.name}
@@ -173,7 +173,7 @@ export function ArticleHero({
                     <span
                       className={cn(
                         "font-body font-medium",
-                        isFullWidth ? "text-white" : "text-foreground",
+                        isFullWidth ? "text-white" : "text-foreground"
                       )}
                     >
                       {author.name}
@@ -187,7 +187,7 @@ export function ArticleHero({
                 <span
                   className={cn(
                     "hidden tablet:inline",
-                    isFullWidth ? "text-white/40" : "text-border",
+                    isFullWidth ? "text-white/40" : "text-border"
                   )}
                 >
                   |
@@ -202,7 +202,9 @@ export function ArticleHero({
               {/* Separator */}
               {formattedDate && readTime && (
                 <span
-                  className={cn(isFullWidth ? "text-white/40" : "text-border")}
+                  className={cn(
+                    isFullWidth ? "text-white/40" : "text-border"
+                  )}
                 >
                   ·
                 </span>

@@ -220,7 +220,11 @@ export async function GET(request: NextRequest) {
 
   // Rate limit to prevent email enumeration
   if (isGdprGetRateLimited(ip)) {
-    SecurityLogger.logRateLimitExceeded(ip, userAgent, "/api/gdpr/delete-data");
+    SecurityLogger.logRateLimitExceeded(
+      ip,
+      userAgent,
+      "/api/gdpr/delete-data",
+    );
     return NextResponse.json(
       { error: "Too many requests. Please try again later." },
       { status: 429, headers: { "Retry-After": "900" } },

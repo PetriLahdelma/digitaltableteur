@@ -1,7 +1,10 @@
 import { createGateway } from "@ai-sdk/gateway";
 import { createOpenAI } from "@ai-sdk/openai";
 import type { LanguageModel } from "ai";
-import { resolveGatewayModelId, resolveModelId } from "@/app/api/chat-shared";
+import {
+  resolveGatewayModelId,
+  resolveModelId,
+} from "@/app/api/chat-shared";
 
 export type ChatModelBackend = "gateway" | "openai";
 

@@ -24,10 +24,7 @@ export interface HeroSectionProps {
   ariaLabel?: string;
 }
 
-const minHeightClasses: Record<
-  NonNullable<HeroSectionProps["minHeight"]>,
-  string
-> = {
+const minHeightClasses: Record<NonNullable<HeroSectionProps["minHeight"]>, string> = {
   screen: "min-h-screen",
   hero: "min-h-[75vh]",
   half: "min-h-[50vh]",
@@ -40,19 +37,13 @@ const alignClasses: Record<NonNullable<HeroSectionProps["align"]>, string> = {
   end: "items-end",
 };
 
-const justifyClasses: Record<
-  NonNullable<HeroSectionProps["justify"]>,
-  string
-> = {
+const justifyClasses: Record<NonNullable<HeroSectionProps["justify"]>, string> = {
   start: "justify-start",
   center: "justify-center",
   end: "justify-end",
 };
 
-const backgroundClasses: Record<
-  NonNullable<HeroSectionProps["background"]>,
-  string
-> = {
+const backgroundClasses: Record<NonNullable<HeroSectionProps["background"]>, string> = {
   gradient: "bg-gradient-to-br from-background via-background to-muted",
   solid: "bg-background",
   image: "bg-cover bg-center bg-no-repeat",
@@ -83,13 +74,9 @@ export function HeroSection({
         alignClasses[align],
         justifyClasses[justify],
         backgroundClasses[background],
-        className,
+        className
       )}
-      style={
-        hasBackgroundImage
-          ? { backgroundImage: `url(${backgroundImage})` }
-          : undefined
-      }
+      style={hasBackgroundImage ? { backgroundImage: `url(${backgroundImage})` } : undefined}
       aria-label={ariaLabel}
     >
       {children}

@@ -72,7 +72,8 @@ const PACKAGES: PackageItem[] = [
     durationKey: "pricingPackage3Duration",
     durationDefault: "2 weeks",
     descriptionKey: "pricingPackage3Description",
-    descriptionDefault: "Prototype, eval plan and handoff your team can ship.",
+    descriptionDefault:
+      "Prototype, eval plan and handoff your team can ship.",
     proofKey: "pricingPackageProofUxSprint",
     proofDefault:
       "2-week prototype with eval plan — see UX Sprint patterns in our work.",
@@ -205,12 +206,7 @@ function ComparisonList({
         isUs ? styles.comparisonColumnUs : styles.comparisonColumnThem,
       )}
     >
-      <Title
-        level={2}
-        size="S"
-        terminals="sans"
-        className={styles.comparisonTitle}
-      >
+      <Title level={2} size="S" terminals="sans" className={styles.comparisonTitle}>
         {title}
       </Title>
       <ul className={styles.comparisonList}>
@@ -240,9 +236,7 @@ function ComparisonList({
                 size="M"
                 lineHeight="normal"
                 terminals="sans"
-                className={
-                  isUs ? styles.comparisonTextUs : styles.comparisonTextThem
-                }
+                className={isUs ? styles.comparisonTextUs : styles.comparisonTextThem}
               >
                 {text}
               </Text>
@@ -282,12 +276,7 @@ function PackageCard({
       <Text as="p" size="S" terminals="sans" className={styles.packageDuration}>
         {t(pkg.durationKey, pkg.durationDefault)}
       </Text>
-      <Text
-        as="p"
-        size="M"
-        terminals="sans"
-        className={styles.packageDescription}
-      >
+      <Text as="p" size="M" terminals="sans" className={styles.packageDescription}>
         {t(pkg.descriptionKey, pkg.descriptionDefault)}
       </Text>
       {hasProof ? (
@@ -323,10 +312,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
 
   return (
     <div className={cn(styles.page, className)}>
-      <section
-        className={styles.heroBleed}
-        aria-labelledby="pricing-hero-title"
-      >
+      <section className={styles.heroBleed} aria-labelledby="pricing-hero-title">
         <Image
           src={PRICING_HERO_IMAGE}
           alt=""
@@ -448,10 +434,8 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
           </div>
 
           <div className={styles.aaasSection} data-donny-target="pricing.aaas">
-            <Button
+            <button
               type="button"
-              variant="tertiary"
-              size="m"
               className={styles.aaasTrigger}
               aria-expanded={aaasOpen}
               aria-controls={aaasPanelId}
@@ -477,7 +461,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
                   {t("contactInquiryBookTabNew", "NEW!")}
                 </span>
               </span>
-            </Button>
+            </button>
 
             <div
               id={aaasPanelId}
@@ -486,12 +470,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
               aria-labelledby={aaasHeadingId}
               hidden={!aaasOpen}
             >
-              <Text
-                as="p"
-                size="M"
-                terminals="sans"
-                className={styles.aaasSummary}
-              >
+              <Text as="p" size="M" terminals="sans" className={styles.aaasSummary}>
                 {t(
                   "pricingAaasSummary",
                   "Autonomous DesignOps packages — agents that do the work, supervised by your team.",

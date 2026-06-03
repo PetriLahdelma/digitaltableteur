@@ -25,10 +25,7 @@ export async function DraftPreviewBanner() {
         className="border-b border-amber-500/40 bg-amber-500/10 px-4 py-2 text-center text-sm text-foreground"
       >
         <span className="font-medium">Draft preview is off.</span>{" "}
-        <Link
-          href="/blog?preview=drafts"
-          className="underline underline-offset-2"
-        >
+        <Link href="/blog?preview=drafts" className="underline underline-offset-2">
           Show scheduled &amp; draft posts
         </Link>
         {" · "}
@@ -55,7 +52,8 @@ export async function DraftPreviewBanner() {
       className="border-b border-lime-400/50 bg-lime-400/10 px-4 py-3 text-sm text-foreground"
     >
       <p className="text-center font-medium">
-        Draft preview ON ({envHint}){" · "}
+        Draft preview ON ({envHint})
+        {" · "}
         <Link href="/blog?preview=off" className="underline underline-offset-2">
           Turn off
         </Link>
@@ -64,10 +62,7 @@ export async function DraftPreviewBanner() {
         <ul className="mx-auto mt-2 flex max-w-4xl flex-wrap justify-center gap-x-4 gap-y-1 text-xs">
           {scheduled.map((post) => (
             <li key={post.slug}>
-              <Link
-                href={`/blog/${post.slug}`}
-                className="underline underline-offset-2"
-              >
+              <Link href={`/blog/${post.slug}`} className="underline underline-offset-2">
                 {post.title}
               </Link>
               {post.publishedAt ? (

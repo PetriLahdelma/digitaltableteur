@@ -41,7 +41,7 @@ export function BlogHero({
     subtitle ||
     t(
       "blogHeroSubtitle",
-      "Thoughts on design, development, and everything in between",
+      "Thoughts on design, development, and everything in between"
     );
 
   const isFullHeight = variant === "full";
@@ -54,7 +54,7 @@ export function BlogHero({
       className={cn(
         "relative overflow-hidden",
         isFullHeight && "min-h-[60vh] flex items-center",
-        className,
+        className
       )}
     >
       <Container size="md" className={isFullHeight ? "py-24" : undefined}>
@@ -69,7 +69,7 @@ export function BlogHero({
               "font-display font-bold",
               "text-4xl tablet:text-5xl desktop:text-6xl",
               "text-foreground leading-tight tracking-tight",
-              "mb-4",
+              "mb-4"
             )}
             as="h1"
           >
@@ -82,7 +82,7 @@ export function BlogHero({
               className={cn(
                 "font-body text-lg tablet:text-xl",
                 "text-muted-foreground",
-                "leading-relaxed",
+                "leading-relaxed"
               )}
             >
               {displaySubtitle}

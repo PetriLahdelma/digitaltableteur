@@ -1,5 +1,1 @@
-export {
-  ServicesSection,
-  type ServicesSectionProps,
-  type ServiceItem,
-} from "./ServicesSection";
+export { ServicesSection, type ServicesSectionProps, type ServiceItem } from "./ServicesSection";

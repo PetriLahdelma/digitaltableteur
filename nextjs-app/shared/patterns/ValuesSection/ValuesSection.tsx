@@ -6,7 +6,6 @@ import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { ValueCard } from "../../components/ValueCard";
-import Title from "@dt/Title";
 
 export interface ValueItem {
   /** Icon element */
@@ -32,10 +31,7 @@ export interface ValuesSectionProps {
   className?: string;
 }
 
-const backgroundClasses: Record<
-  NonNullable<ValuesSectionProps["background"]>,
-  string
-> = {
+const backgroundClasses: Record<NonNullable<ValuesSectionProps["background"]>, string> = {
   default: "bg-background",
   muted: "bg-muted/30",
   accent: "bg-primary/5",
@@ -59,16 +55,15 @@ export function ValuesSection({
         {/* Section header */}
         <div className="text-center mb-12">
           <FadeIn direction="up" delay={0} distance={20}>
-            <Title
-              level={2}
+            <h2
               className={cn(
                 "font-display font-bold",
                 "text-2xl tablet:text-3xl desktop:text-4xl",
-                "text-foreground mb-4",
+                "text-foreground mb-4"
               )}
             >
               {title}
-            </Title>
+            </h2>
           </FadeIn>
 
           {subtitle && (
@@ -77,7 +72,7 @@ export function ValuesSection({
                 className={cn(
                   "font-body text-lg",
                   "text-muted-foreground",
-                  "max-w-2xl mx-auto",
+                  "max-w-2xl mx-auto"
                 )}
               >
                 {subtitle}
@@ -90,7 +85,7 @@ export function ValuesSection({
         <div
           className={cn(
             "grid gap-6",
-            "grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3",
+            "grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3"
           )}
         >
           {values.map((value, index) => (

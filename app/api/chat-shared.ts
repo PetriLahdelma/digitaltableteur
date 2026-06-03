@@ -137,9 +137,10 @@ export const buildSystemPrompt = (
     "- Summarize tool results in plain language. For projectShowcase, highlight what makes each project notable.",
   ].join("\n");
 
-  const guidelines = options?.useOpenAiToolNames
-    ? toolInstruction.replace(/\bstudio\.([a-zA-Z0-9_]+)/g, "studio_$1")
-    : toolInstruction;
+  const guidelines =
+    options?.useOpenAiToolNames
+      ? toolInstruction.replace(/\bstudio\.([a-zA-Z0-9_]+)/g, "studio_$1")
+      : toolInstruction;
 
   return `${baseSystemPrompt}\n\n${guidelines}`;
 };

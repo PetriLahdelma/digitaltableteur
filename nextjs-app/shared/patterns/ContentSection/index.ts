@@ -1,5 +1,1 @@
-export {
-  ContentSection,
-  type ContentSectionProps,
-  type ContentImage,
-} from "./ContentSection";
+export { ContentSection, type ContentSectionProps, type ContentImage } from "./ContentSection";

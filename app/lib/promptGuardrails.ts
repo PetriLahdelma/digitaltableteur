@@ -130,9 +130,7 @@ function hasExtractionPattern(lowerPrompt: string): boolean {
 
   return EXTRACTION_PHRASE_GROUPS.some((requiredTerms) => {
     const terms = requiredTerms.filter((term) => term.length > 0);
-    return (
-      terms.length >= 2 && terms.every((term) => lowerPrompt.includes(term))
-    );
+    return terms.length >= 2 && terms.every((term) => lowerPrompt.includes(term));
   });
 }
 

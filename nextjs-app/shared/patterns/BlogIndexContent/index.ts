@@ -1,4 +1,1 @@
-export {
-  BlogIndexContent,
-  type BlogIndexContentProps,
-} from "./BlogIndexContent";
+export { BlogIndexContent, type BlogIndexContentProps } from "./BlogIndexContent";

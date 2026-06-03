@@ -1,7 +1,5 @@
 /** Props for Footer. */
-export interface FooterProps {
-  className?: string;
-}
+export interface FooterProps { className?: string }
 
 import React from "react";
 import styles from "./Footer.module.css";
@@ -9,7 +7,6 @@ import Grid from "@dt/Grid";
 import Link from "@dt/Link";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
-import Title from "@dt/Title";
 
 /**
  * Footer component.
@@ -22,9 +19,9 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <Grid columns={3} className={styles.footerGrid}>
         <div className={styles.companyInfo}>
-          <Title level={2}>
+          <h2>
             <a href="/">Digitaltableteur</a>
-          </Title>
+          </h2>
           <p className={styles.billingDetails}>{t("footerAddressTitle")}</p>
           <p>
             {t("footerAddress1")}

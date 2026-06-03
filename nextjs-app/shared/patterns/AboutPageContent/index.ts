@@ -1,4 +1,1 @@
-export {
-  AboutPageContent,
-  type AboutPageContentProps,
-} from "./AboutPageContent";
+export { AboutPageContent, type AboutPageContentProps } from "./AboutPageContent";

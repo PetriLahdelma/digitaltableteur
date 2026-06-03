@@ -12,13 +12,7 @@ const STUDIO_DARK = "#2B2F33";
 const MONO_FONT_URL =
   "https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.ttf";
 
-function KnobSmithLogo({
-  logoSize = 280,
-  color = "#ffffff",
-}: {
-  logoSize?: number;
-  color?: string;
-}) {
+function KnobSmithLogo({ logoSize = 280, color = "#ffffff" }: { logoSize?: number; color?: string }) {
   const scale = logoSize / 250;
   return (
     <svg
@@ -43,159 +37,161 @@ export default async function Image() {
   const monoFont = await fetch(MONO_FONT_URL).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        fontFamily: "JetBrains Mono",
-        backgroundColor: STUDIO_DARK,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      {/* Diagonal pink slab — top-right */}
+    (
       <div
         style={{
-          position: "absolute",
-          top: -120,
-          right: -80,
-          width: 500,
-          height: 900,
-          backgroundColor: PINK,
-          transform: "rotate(-12deg)",
+          height: "100%",
+          width: "100%",
           display: "flex",
-        }}
-      />
-
-      {/* KnobSmith logo — white, on the pink slab */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          right: -100,
-          transform: "translateY(-50%)",
-          display: "flex",
-          opacity: 0.25,
-        }}
-      >
-        <KnobSmithLogo logoSize={420} color="#ffffff" />
-      </div>
-
-      {/* Content — left side, bottom-heavy */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-          padding: "0 80px 64px 80px",
-          flex: 1,
+          fontFamily: "JetBrains Mono",
+          backgroundColor: STUDIO_DARK,
           position: "relative",
+          overflow: "hidden",
         }}
       >
-        {/* Logo lockup — top left */}
+        {/* Diagonal pink slab — top-right */}
         <div
           style={{
             position: "absolute",
-            top: 56,
-            left: 80,
+            top: -120,
+            right: -80,
+            width: 500,
+            height: 900,
+            backgroundColor: PINK,
+            transform: "rotate(-12deg)",
             display: "flex",
-            alignItems: "center",
-            gap: 16,
           }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 48,
-              height: 48,
-              backgroundColor: "#DFFF00",
-              borderRadius: 24,
-            }}
-          >
-            <LogoSvg size={28} color="#041B23" />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 20,
-              fontWeight: 800,
-              color: "rgba(255,255,255,0.6)",
-              letterSpacing: "0.01em",
-            }}
-          >
-            Digitaltableteur
-          </div>
-        </div>
+        />
 
-        {/* Case study badge — top right */}
+        {/* KnobSmith logo — white, on the pink slab */}
         <div
           style={{
             position: "absolute",
-            top: 64,
-            right: 80,
+            top: "50%",
+            right: -100,
+            transform: "translateY(-50%)",
             display: "flex",
-            fontSize: 14,
-            fontWeight: 800,
-            color: PINK,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
+            opacity: 0.25,
           }}
         >
-          Case Study
+          <KnobSmithLogo logoSize={420} color="#ffffff" />
         </div>
 
-        {/* Headline — stacked */}
+        {/* Content — left side, bottom-heavy */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 0,
-            marginBottom: 56,
+            justifyContent: "flex-end",
+            padding: "0 80px 64px 80px",
+            flex: 1,
+            position: "relative",
           }}
         >
+          {/* Logo lockup — top left */}
           <div
             style={{
+              position: "absolute",
+              top: 56,
+              left: 80,
               display: "flex",
-              fontSize: 84,
-              fontWeight: 800,
-              color: "#ffffff",
-              letterSpacing: "-0.04em",
-              lineHeight: 0.95,
+              alignItems: "center",
+              gap: 16,
             }}
           >
-            KnobSmith
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 48,
+                height: 48,
+                backgroundColor: "#DFFF00",
+                borderRadius: 24,
+              }}
+            >
+              <LogoSvg size={28} color="#041B23" />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 20,
+                fontWeight: 800,
+                color: "rgba(255,255,255,0.6)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              Digitaltableteur
+            </div>
           </div>
+
+          {/* Case study badge — top right */}
           <div
             style={{
+              position: "absolute",
+              top: 64,
+              right: 80,
               display: "flex",
-              fontSize: 84,
+              fontSize: 14,
               fontWeight: 800,
               color: PINK,
-              letterSpacing: "-0.04em",
-              lineHeight: 0.95,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
             }}
           >
-            Audio
+            Case Study
+          </div>
+
+          {/* Headline — stacked */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 0,
+              marginBottom: 56,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                fontSize: 84,
+                fontWeight: 800,
+                color: "#ffffff",
+                letterSpacing: "-0.04em",
+                lineHeight: 0.95,
+              }}
+            >
+              KnobSmith
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 84,
+                fontWeight: 800,
+                color: PINK,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.95,
+              }}
+            >
+              Audio
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <div
+            style={{
+              display: "flex",
+              fontSize: 18,
+              fontWeight: 800,
+              color: "rgba(255,255,255,0.4)",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Interaction Design → Visual Design → Brand Identity
           </div>
         </div>
-
-        {/* Tagline */}
-        <div
-          style={{
-            display: "flex",
-            fontSize: 18,
-            fontWeight: 800,
-            color: "rgba(255,255,255,0.4)",
-            letterSpacing: "0.02em",
-          }}
-        >
-          Interaction Design → Visual Design → Brand Identity
-        </div>
       </div>
-    </div>,
+    ),
     {
       ...OG_SIZE,
       fonts: [

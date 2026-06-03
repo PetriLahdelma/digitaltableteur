@@ -322,15 +322,7 @@ const staticTools: ToolMap = {
           type: "array",
           items: {
             type: "object",
-            required: [
-              "title",
-              "slug",
-              "description",
-              "thumbnail",
-              "category",
-              "tags",
-              "url",
-            ],
+            required: ["title", "slug", "description", "thumbnail", "category", "tags", "url"],
             properties: {
               title: { type: "string" },
               slug: { type: "string" },
@@ -505,13 +497,11 @@ const staticTools: ToolMap = {
       properties: {
         problem: {
           type: "string",
-          description:
-            "Visitor need in their words (design system, tokens, AI DesignOps, etc.).",
+          description: "Visitor need in their words (design system, tokens, AI DesignOps, etc.).",
         },
         budget: {
           type: "string",
-          description:
-            "Budget band or constraints, e.g. 'around 12k' or 'tight'.",
+          description: "Budget band or constraints, e.g. 'around 12k' or 'tight'.",
         },
       },
       additionalProperties: false,
@@ -713,8 +703,7 @@ const staticTools: ToolMap = {
         email: { type: "string" },
         notes: {
           type: "string",
-          description:
-            "Short context for the booking (need, budget band, timeline).",
+          description: "Short context for the booking (need, budget band, timeline).",
         },
       },
       additionalProperties: false,

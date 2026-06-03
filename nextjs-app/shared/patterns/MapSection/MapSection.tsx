@@ -63,9 +63,7 @@ export function MapSection({
       const leafletCore = await import("leaflet");
       await import("leaflet/dist/leaflet.css");
 
-      const L =
-        (leafletCore as unknown as { default?: typeof leafletCore }).default ??
-        leafletCore;
+      const L = (leafletCore as unknown as { default?: typeof leafletCore }).default ?? leafletCore;
       if (typeof L?.map !== "function") {
         // In non-browser/test environments, bail out gracefully
         return;
@@ -95,7 +93,7 @@ export function MapSection({
 
       L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        {},
+        {}
       ).addTo(map);
 
       // Create custom marker if icon provided
@@ -133,7 +131,7 @@ export function MapSection({
         <div
           className={cn(
             "relative rounded-lg overflow-hidden",
-            "ring-1 ring-border",
+            "ring-1 ring-border"
           )}
           style={{ height }}
           aria-label={popupText || t("contactHelsinkiOffice")}
@@ -150,7 +148,7 @@ export function MapSection({
                 "absolute inset-0",
                 "flex items-center justify-center",
                 "bg-muted text-muted-foreground",
-                "font-body text-sm",
+                "font-body text-sm"
               )}
             >
               {resolvedFallback}

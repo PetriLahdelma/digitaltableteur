@@ -44,9 +44,7 @@ export default async function ContactPage({
 }) {
   const params = await searchParams;
   const initialInquiryMode =
-    params.mode === "book" || params.mode === "message"
-      ? params.mode
-      : undefined;
+    params.mode === "book" || params.mode === "message" ? params.mode : undefined;
   const bookingPackageId = params.package?.trim() || undefined;
   const bookingConfig = resolveSiteBookingConfig({
     packageId: bookingPackageId,

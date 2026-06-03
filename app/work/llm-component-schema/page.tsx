@@ -4,7 +4,8 @@ import { LlmComponentSchemaPage } from "@dt-pages/Work/LlmComponentSchema";
 import { NextWorkNav } from "../NextWorkNav";
 
 export const metadata: Metadata = {
-  title: "LLM Component Schema: Component Contracts for AI | Digitaltableteur",
+  title:
+    "LLM Component Schema: Component Contracts for AI | Digitaltableteur",
   description:
     "A published npm schema and CLI for component contracts that AI agents can consume, with drift detection and eval benchmarks.",
   openGraph: {

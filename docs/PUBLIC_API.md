@@ -28,7 +28,7 @@ npm run audit:usage           # import evidence for all cataloged components
 npm run build:agent-blocks    # TS + spec → component-agent-blocks.json
 npm run find-component -- "your intent"  # rank @dt components for a task
 npm run build:relationship-graph  # composesWith graph (also in build:tokens)
-npm run lint:dt-usage         # strict: raw button/heading/shadcn in app/ + patterns (ESLint mirror in npm run lint)
+npm run lint:dt-usage         # strict: shadcn @/components/ui/* imports in app/ only (do not mass-swap headings/buttons in patterns)
 npm run ds:mcp                # local stdio MCP (design-system tools + resources)
 npm run sync:contract-api     # dry-run eligible variant sync (CVA + propSourced allowlist)
 npm run check:contract-drift -- --strict  # CI: contracts match agent blocks

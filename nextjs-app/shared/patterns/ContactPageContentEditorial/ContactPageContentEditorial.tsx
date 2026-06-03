@@ -102,7 +102,7 @@ export function ContactPageContentEditorial({
             >
               {t(
                 "contactIntro",
-                "We'd love to hear about your project, idea or you can just say hello.",
+                "We'd love to hear about your project, idea or you can just say hello."
               )}
             </motion.p>
 
@@ -160,12 +160,12 @@ export function ContactPageContentEditorial({
                           title={t("contactSuccessTitle", "Message sent.")}
                           message={t(
                             "contactSuccessSubtitle",
-                            "We'll be in touch shortly.",
+                            "We'll be in touch shortly."
                           )}
                           onSendAnother={handleSendAnother}
                           sendAnotherLabel={t(
                             "contactSendAnother",
-                            "Send another message",
+                            "Send another message"
                           )}
                         />
                       </motion.div>
@@ -205,11 +205,11 @@ export function ContactPageContentEditorial({
                   src={NEW_BUSINESS_PORTRAIT.src}
                   alt={t(
                     "contactNewBusinessImageAlt",
-                    "Portrait of Petri Lahdelma",
+                    "Portrait of Petri Lahdelma"
                   )}
                   width={NEW_BUSINESS_PORTRAIT.width}
                   height={NEW_BUSINESS_PORTRAIT.height}
-                  sizes="(min-width: 768px) 240px, 152px"
+                    sizes="(min-width: 768px) 240px, 152px"
                   className={styles.newBusinessPortrait}
                 />
               </div>
@@ -221,40 +221,43 @@ export function ContactPageContentEditorial({
                   lineHeight="tight"
                   className={styles.newBusinessHeading}
                 >
-                  {t("contactNewBusinessHeading", "New Business Inquiries")}
+                  {t(
+                    "contactNewBusinessHeading",
+                    "New Business Inquiries"
+                  )}
                 </Title>
-                <div className={styles.newBusinessDetails}>
-                  <div className={styles.newBusinessBody}>
-                    <Text
-                      as="p"
-                      size="M"
-                      terminals="sans"
-                      className={styles.newBusinessLine}
-                    >
-                      {t("contactNewBusinessName", "Petri Lahdelma")}
-                    </Text>
-                    <Text
-                      as="p"
-                      size="S"
-                      terminals="sans"
-                      lineHeight="normal"
-                      className={styles.newBusinessLineMuted}
-                    >
-                      {t("contactNewBusinessRole", "Founder, Head of Design")}
-                    </Text>
+                  <div className={styles.newBusinessDetails}>
+                    <div className={styles.newBusinessBody}>
+                      <Text
+                        as="p"
+                        size="M"
+                        terminals="sans"
+                        className={styles.newBusinessLine}
+                      >
+                        {t("contactNewBusinessName", "Petri Lahdelma")}
+                      </Text>
+                      <Text
+                        as="p"
+                        size="S"
+                        terminals="sans"
+                        lineHeight="normal"
+                        className={styles.newBusinessLineMuted}
+                      >
+                        {t(
+                          "contactNewBusinessRole",
+                          "Founder, Head of Design"
+                        )}
+                      </Text>
+                    </div>
+                    <a href="/contact?mode=book" className={styles.newBusinessCta}>
+                      <span className={styles.email}>
+                        {t("contactNewBusinessBookLink", "Book a call")}
+                      </span>
+                      <span className={styles.newBusinessLinkIcon} aria-hidden>
+                        <Icon name="ArrowRight" size="sm" decorative />
+                      </span>
+                    </a>
                   </div>
-                  <a
-                    href="/contact?mode=book"
-                    className={styles.newBusinessCta}
-                  >
-                    <span className={styles.email}>
-                      {t("contactNewBusinessBookLink", "Book a call")}
-                    </span>
-                    <span className={styles.newBusinessLinkIcon} aria-hidden>
-                      <Icon name="ArrowRight" size="sm" decorative />
-                    </span>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -279,7 +282,7 @@ export function ContactPageContentEditorial({
               >
                 {t(
                   "contactPullQuote",
-                  "We help ambitious teams turn what they do into products with clarity and conviction. Bring us your vision and we'll shape how it shows up in the world.",
+                  "We help ambitious teams turn what they do into products with clarity and conviction. Bring us your vision and we'll shape how it shows up in the world."
                 )}
               </Text>
             </motion.blockquote>

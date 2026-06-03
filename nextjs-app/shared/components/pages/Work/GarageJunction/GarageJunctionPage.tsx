@@ -11,11 +11,7 @@ import { ProjectHero } from "../../../../patterns/ProjectHero";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
-import {
-  SiFigma,
-  SiAdobeillustrator,
-  SiAdobeaftereffects,
-} from "react-icons/si";
+import { SiFigma, SiAdobeillustrator, SiAdobeaftereffects } from "react-icons/si";
 
 import styles from "./garageJunction.module.css";
 
@@ -54,24 +50,17 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Services
-              </Title>
+              <h3 className={styles.metaLabel}>Services</h3>
               <p className={styles.metaText}>
-                Brand Identity, Event Visuals, Sound Design and Social Media
-                Assets
+                Brand Identity, Event Visuals, Sound Design and Social Media Assets
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Duration
-              </Title>
+              <h3 className={styles.metaLabel}>Duration</h3>
               <p className={styles.metaText}>2018</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Tools used
-              </Title>
+              <h3 className={styles.metaLabel}>Tools used</h3>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <SiAdobeillustrator size={24} title="Illustrator" />
@@ -80,21 +69,18 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title level={3} size="XS" className={styles.metaLabel}>
-              Overview
-            </Title>
+            <h3 className={styles.metaLabel}>Overview</h3>
             <p className={styles.metaOverview}>
               <strong>Garage Junction</strong> was a collaborative event series
-              launched at Merikerho, Helsinki, in 2018. The project brought
-              together music lovers, artists, and creative professionals for
-              club nights celebrating underground music and visual arts.
+              launched at Merikerho, Helsinki, in 2018. The project brought together
+              music lovers, artists, and creative professionals for club nights
+              celebrating underground music and visual arts.
             </p>
             <p className={styles.metaOverview}>
-              <strong>The vision:</strong> Create an inclusive platform
-              capturing the raw energy and diversity of Helsinki&apos;s
-              nightlife with a UK garage twist. The brand identity needed to be
-              bold, memorable, and flexible for both digital and print
-              promotion.
+              <strong>The vision:</strong> Create an inclusive platform capturing
+              the raw energy and diversity of Helsinki&apos;s nightlife with a UK
+              garage twist. The brand identity needed to be bold, memorable, and
+              flexible for both digital and print promotion.
             </p>
           </div>
         </div>
@@ -155,11 +141,11 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         title="Where Underground Meets Helsinki"
         content={[
           <Text key="p1" size="S">
-            The name &quot;Garage Junction&quot; references both UK garage music
-            and the idea of a meeting point for diverse sounds and people. The
-            visual identity uses bold typography and a checkerboard pattern
-            inspired by the Helsinki Underground/Subway, or as Finns call it,
-            the metro and its high-contrast two-tone aesthetics.
+            The name "Garage Junction" references both UK garage music and the
+            idea of a meeting point for diverse sounds and people. The visual
+            identity uses bold typography and a checkerboard pattern inspired
+            by the Helsinki Underground/Subway, or as Finns call it, the metro
+            and its high-contrast two-tone aesthetics.
           </Text>,
           <Text key="p2" size="S">
             The color palette combines high-energy orange with soft blue and
@@ -239,12 +225,9 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
       {/* Color Palette */}
       <section className={styles.colorSection}>
         <div className={styles.colorContent}>
-          <Title level={3} terminals="sans">
-            Color Palette
-          </Title>
+          <Title level={3} terminals="sans">Color Palette</Title>
           <Text size="S">
-            High contrast colors optimized for club environments and social
-            media.
+            High contrast colors optimized for club environments and social media.
           </Text>
           <div className={styles.colorComposition}>
             <div className={styles.colorBlack}>
@@ -257,9 +240,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
               <span className={styles.colorLabel}>Garage Blue #1976D2</span>
             </div>
             <div className={styles.colorWhite}>
-              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>
-                Pure White #FFFFFF
-              </span>
+              <span className={`${styles.colorLabel} ${styles.colorLabelDark}`}>Pure White #FFFFFF</span>
             </div>
             <div className={styles.colorOrange}>
               <span className={styles.colorLabel}>Junction Orange #F57C00</span>
@@ -319,9 +300,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
       {/* Applications Section */}
       <section className={styles.applicationsSection}>
         <div className={styles.applicationsHeader}>
-          <Title level={3} terminals="sans">
-            Applications
-          </Title>
+          <Title level={3} terminals="sans">Applications</Title>
         </div>
         <div className={styles.applicationsGrid}>
           <figure className={styles.appItem}>
@@ -372,9 +351,9 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         content={[
           <Text key="p1" size="S">
             Garage Junction quickly gained recognition as a fresh and authentic
-            addition to Helsinki&apos;s nightlife. The brand identity helped
-            attract a loyal following and fostered a collaborative community
-            around music and art.
+            addition to Helsinki&apos;s nightlife. The brand identity helped attract
+            a loyal following and fostered a collaborative community around music
+            and art.
           </Text>,
           <Text key="p2" size="S">
             The flexible design system allowed for easy event-to-event variation
@@ -391,9 +370,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
       {/* Results Section */}
       <section className={styles.resultsSection}>
         <div className={styles.resultsContent}>
-          <Title level={3} terminals="sans">
-            Key Results
-          </Title>
+          <Title level={3} terminals="sans">Key Results</Title>
           <div className={styles.resultsGrid}>
             <div className={styles.resultItem}>
               <span className={styles.resultValue}>Merikerho</span>

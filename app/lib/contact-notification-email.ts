@@ -136,7 +136,11 @@ function buildTextFields(payload: ContactNotificationPayload): TextField[] {
     const type = payload.attachmentType?.split("/").pop()?.toUpperCase();
     fields.push({
       label: "Attachment",
-      value: [formatAttachmentDisplayName(payload.attachmentName), size, type]
+      value: [
+        formatAttachmentDisplayName(payload.attachmentName),
+        size,
+        type,
+      ]
         .filter(Boolean)
         .join(" · "),
     });
@@ -276,19 +280,17 @@ export function buildContactNotificationHtml(
     ? renderSection("Phone", escapeHTML(payload.phone.trim()))
     : "";
 
-  const attachmentSection = payload.attachmentName?.trim()
-    ? renderAttachmentCard(
-        payload.attachmentName,
-        payload.attachmentSize,
-        payload.attachmentType,
-      )
-    : "";
+  const attachmentSection =
+    payload.attachmentName?.trim()
+      ? renderAttachmentCard(
+          payload.attachmentName,
+          payload.attachmentSize,
+          payload.attachmentType,
+        )
+      : "";
 
   const attachmentNoticeSection = payload.attachmentNotice?.trim()
-    ? renderSection(
-        "Attachment note",
-        escapeHTML(payload.attachmentNotice.trim()),
-      )
+    ? renderSection("Attachment note", escapeHTML(payload.attachmentNotice.trim()))
     : "";
 
   const submittedLine = payload.time?.trim()

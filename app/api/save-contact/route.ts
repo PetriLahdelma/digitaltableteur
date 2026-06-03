@@ -65,10 +65,7 @@ export async function POST(request: NextRequest) {
         ? rawSource
         : null;
 
-    if (
-      (rawType !== null && type === null) ||
-      (rawSource !== null && source === null)
-    ) {
+    if ((rawType !== null && type === null) || (rawSource !== null && source === null)) {
       SecurityLogger.logDataAccess(
         ip,
         userAgent,

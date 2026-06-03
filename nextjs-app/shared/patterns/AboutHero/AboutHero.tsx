@@ -22,10 +22,7 @@ export interface AboutHeroProps {
   className?: string;
 }
 
-const backgroundClasses: Record<
-  NonNullable<AboutHeroProps["background"]>,
-  string
-> = {
+const backgroundClasses: Record<NonNullable<AboutHeroProps["background"]>, string> = {
   gradient: "bg-gradient-to-br from-primary/10 via-background to-accent/10",
   image: "bg-cover bg-center bg-no-repeat",
   minimal: "bg-background",
@@ -48,7 +45,7 @@ export function AboutHero({
       className={cn(
         "relative min-h-[80vh] flex items-center justify-center",
         !isImageBackground && backgroundClasses[background],
-        className,
+        className
       )}
     >
       {/* Background image layer */}
@@ -74,7 +71,7 @@ export function AboutHero({
           className={cn(
             "font-display font-bold",
             "text-4xl tablet:text-5xl desktop:text-6xl",
-            "text-foreground leading-tight tracking-tight",
+            "text-foreground leading-tight tracking-tight"
           )}
           as="h1"
         >
@@ -89,7 +86,7 @@ export function AboutHero({
                 "font-body text-lg tablet:text-xl desktop:text-2xl",
                 "text-muted-foreground",
                 "max-w-2xl mx-auto mt-6",
-                "leading-relaxed",
+                "leading-relaxed"
               )}
             >
               {subtitle}

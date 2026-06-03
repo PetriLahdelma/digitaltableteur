@@ -146,15 +146,8 @@ export async function POST(request: NextRequest) {
   const corsHeaders = createCorsHeaders(request.headers.get("origin"));
 
   const providedToken = request.headers.get("x-health-token");
-  if (
-    !HEALTH_TOKEN ||
-    !providedToken ||
-    !constantTimeCompare(providedToken, HEALTH_TOKEN)
-  ) {
-    return NextResponse.json(
-      { error: "Unauthorized" },
-      { status: 401, headers: corsHeaders },
-    );
+  if (!HEALTH_TOKEN || !providedToken || !constantTimeCompare(providedToken, HEALTH_TOKEN)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401, headers: corsHeaders });
   }
 
   let payload: VitestReport;

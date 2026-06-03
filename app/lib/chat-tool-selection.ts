@@ -2,7 +2,10 @@ import type { Tool } from "@ai-sdk/provider-utils";
 
 type ToolMap = Record<string, Tool<any, any>>;
 
-const CORE_CHAT_TOOLS = ["studio.navigateTo", "studio.contactCard"] as const;
+const CORE_CHAT_TOOLS = [
+  "studio.navigateTo",
+  "studio.contactCard",
+] as const;
 
 const LEAD_CHAT_TOOLS = [
   "studio.getCaseStudies",
@@ -33,7 +36,8 @@ const SERVICES_INTENT_PATTERN =
 const ACCESSIBILITY_INTENT_PATTERN =
   /\b(accessibility|a11y|wcag|screen\s*reader|saavutettavuus|tillgänglighet)\b/i;
 
-const EXPRESSION_INTENT_PATTERN = /\b(expression|mood|face|moods?)\b/i;
+const EXPRESSION_INTENT_PATTERN =
+  /\b(expression|mood|face|moods?)\b/i;
 
 const MAIL_INTENT_PATTERN =
   /\b(cv|resume|curriculum|portfolio\s*by\s*email|mail\s*me)\b/i;
@@ -53,11 +57,7 @@ export function selectDonnyToolsForChat(
 ): ToolMap {
   const text = lastUserMessage.trim();
   if (!text) {
-    return pickTools(tools, [
-      ...CORE_CHAT_TOOLS,
-      ...LEAD_CHAT_TOOLS,
-      "studio.projectShowcase",
-    ]);
+    return pickTools(tools, [...CORE_CHAT_TOOLS, ...LEAD_CHAT_TOOLS, "studio.projectShowcase"]);
   }
 
   const selected = new Set<string>(CORE_CHAT_TOOLS);
@@ -70,10 +70,7 @@ export function selectDonnyToolsForChat(
     selected.add("studio.bookCall");
   }
 
-  if (
-    PORTFOLIO_INTENT_PATTERN.test(text) ||
-    PROJECT_INTENT_PATTERN.test(text)
-  ) {
+  if (PORTFOLIO_INTENT_PATTERN.test(text) || PROJECT_INTENT_PATTERN.test(text)) {
     selected.add("studio.projectShowcase");
     selected.add("studio.getCaseStudies");
   }

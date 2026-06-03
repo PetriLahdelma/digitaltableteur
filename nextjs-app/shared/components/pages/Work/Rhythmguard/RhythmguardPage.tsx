@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Title from "@dt/Title";
 import Text from "@dt/Text";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
@@ -52,23 +51,15 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Type
-              </Title>
-              <p className={styles.metaText}>
-                Open-source Stylelint plugin (MIT)
-              </p>
+              <h3 className={styles.metaLabel}>Type</h3>
+              <p className={styles.metaText}>Open-source Stylelint plugin (MIT)</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Version
-              </Title>
+              <h3 className={styles.metaLabel}>Version</h3>
               <p className={styles.metaText}>v1.5.0</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Stack
-              </Title>
+              <h3 className={styles.metaLabel}>Stack</h3>
               <div className={styles.metaTools}>
                 <SiNodedotjs size={24} title="Node.js" />
                 <SiTypescript size={24} title="TypeScript" />
@@ -76,46 +67,21 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
               </div>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Links
-              </Title>
+              <h3 className={styles.metaLabel}>Links</h3>
               <p className={styles.metaText}>
-                <a
-                  href="https://www.npmjs.com/package/stylelint-plugin-rhythmguard"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  npm
-                </a>
+                <a href="https://www.npmjs.com/package/stylelint-plugin-rhythmguard" target="_blank" rel="noopener noreferrer">npm</a>
                 {" · "}
-                <a
-                  href="https://github.com/PetriLahdelma/stylelint-plugin-rhythmguard"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </a>
+                <a href="https://github.com/PetriLahdelma/stylelint-plugin-rhythmguard" target="_blank" rel="noopener noreferrer">GitHub</a>
               </p>
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title level={3} size="XS" className={styles.metaLabel}>
-              Overview
-            </Title>
+            <h3 className={styles.metaLabel}>Overview</h3>
             <p className={styles.metaOverview}>
-              <strong>Every design system ships a spacing scale.</strong> Almost
-              none enforce it. Documentation says &ldquo;use{" "}
-              <code>--space-16</code>&rdquo; but <code>padding: 14px</code>{" "}
-              compiles just fine. Over months, the codebase drifts from the
-              system. Auditing manually doesn&apos;t scale. Existing linters
-              check syntax, not semantics.
+              <strong>Every design system ships a spacing scale.</strong> Almost none enforce it. Documentation says &ldquo;use <code>--space-16</code>&rdquo; but <code>padding: 14px</code> compiles just fine. Over months, the codebase drifts from the system. Auditing manually doesn&apos;t scale. Existing linters check syntax, not semantics.
             </p>
             <p className={styles.metaOverview}>
-              <strong>Rhythmguard is the enforcement layer.</strong> It catches
-              spacing drift (arbitrary pixel values that violate a configured
-              scale or bypass design tokens) and autofixes them at lint time,
-              before the PR is opened. The only tool that governs the actual
-              values in both CSS declarations and Tailwind arbitrary brackets.
+              <strong>Rhythmguard is the enforcement layer.</strong> It catches spacing drift (arbitrary pixel values that violate a configured scale or bypass design tokens) and autofixes them at lint time, before the PR is opened. The only tool that governs the actual values in both CSS declarations and Tailwind arbitrary brackets.
             </p>
           </div>
         </div>
@@ -174,20 +140,10 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         title="Install and extend the strict config"
         content={[
           <Text key="1" size="S">
-            <span style={{ fontWeight: 600 }}>
-              One install, one extends line.
-            </span>{" "}
-            <code>npm i -D stylelint stylelint-plugin-rhythmguard</code>, then
-            extend <code>stylelint-plugin-rhythmguard/configs/strict</code> from{" "}
-            <code>.stylelintrc.json</code>. Running{" "}
-            <code>npx stylelint &quot;src/**/*.css&quot;</code> immediately
-            enforces the three rules across the codebase.
+            <span style={{ fontWeight: 600 }}>One install, one extends line.</span> <code>npm i -D stylelint stylelint-plugin-rhythmguard</code>, then extend <code>stylelint-plugin-rhythmguard/configs/strict</code> from <code>.stylelintrc.json</code>. Running <code>npx stylelint &quot;src/**/*.css&quot;</code> immediately enforces the three rules across the codebase.
           </Text>,
           <Text key="2" size="S">
-            Shared config replaces ad-hoc spacing rules spread across files. The
-            strict preset ships with sensible defaults; <code>init</code> and{" "}
-            <code>doctor</code> pick up from there when the team wants
-            stack-specific configuration.
+            Shared config replaces ad-hoc spacing rules spread across files. The strict preset ships with sensible defaults; <code>init</code> and <code>doctor</code> pick up from there when the team wants stack-specific configuration.
           </Text>,
         ]}
         images={{
@@ -195,8 +151,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
           alt: "Rhythmguard step 1 of 6: install + strict config. Terminal shows npm install, .stylelintrc.json extending the strict preset, and the three rules (use-scale, prefer-token, no-offscale-transform).",
           width: 1920,
           height: 1080,
-          caption:
-            "Step 1: install stylelint-plugin-rhythmguard and extend the strict config",
+          caption: "Step 1: install stylelint-plugin-rhythmguard and extend the strict config",
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -210,23 +165,13 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         title="Three rules, all with autofix"
         content={[
           <Text key="1" size="S">
-            <span style={{ fontWeight: 600 }}>use-scale</span>. Every spacing
-            value must be on the configured scale. Write{" "}
-            <code>margin-top: 13px</code>, get autofixed to <code>12px</code>.
-            Supports 17 built-in scales including 4pt grid, 8pt grid, Material
-            8dp, Atlassian, Carbon 2x, Fibonacci, and golden ratio.
+            <span style={{ fontWeight: 600 }}>use-scale</span>. Every spacing value must be on the configured scale. Write <code>margin-top: 13px</code>, get autofixed to <code>12px</code>. Supports 17 built-in scales including 4pt grid, 8pt grid, Material 8dp, Atlassian, Carbon 2x, Fibonacci, and golden ratio.
           </Text>,
           <Text key="2" size="S">
-            <span style={{ fontWeight: 600 }}>prefer-token</span>. Raw literal
-            values must use design tokens. Write <code>padding: 16px</code>, get
-            autofixed to <code>var(--spacing-4)</code>. Builds token maps from
-            four sources with cascade precedence.
+            <span style={{ fontWeight: 600 }}>prefer-token</span>. Raw literal values must use design tokens. Write <code>padding: 16px</code>, get autofixed to <code>var(--spacing-4)</code>. Builds token maps from four sources with cascade precedence.
           </Text>,
           <Text key="3" size="S">
-            <span style={{ fontWeight: 600 }}>no-offscale-transform</span>.
-            Transform translations must be on scale. The same discipline applied
-            to <code>translateX</code> and <code>translateY</code> values, which
-            are easy to miss in manual review.
+            <span style={{ fontWeight: 600 }}>no-offscale-transform</span>. Transform translations must be on scale. The same discipline applied to <code>translateX</code> and <code>translateY</code> values, which are easy to miss in manual review.
           </Text>,
         ]}
         images={{
@@ -234,8 +179,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
           alt: "Rhythmguard use-scale rule: LOCK TO SCALE. Every spacing value gets checked. Autofix maps to nearest safe scale step.",
           width: 1920,
           height: 1080,
-          caption:
-            "use-scale rule: catches off-scale values and autofixes to nearest step",
+          caption: "use-scale rule: catches off-scale values and autofixes to nearest step",
         }}
         imageLayout="single"
         backgroundColor="light"
@@ -249,20 +193,10 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         title="Multi-format token ingestion"
         content={[
           <Text key="1" size="S">
-            <span style={{ fontWeight: 600 }}>
-              Rhythmguard reads tokens from wherever your team defines them
-            </span>
-            , not just one format. DTCG JSON with nested <code>$value</code>{" "}
-            groups? Parsed recursively. Tailwind v4 <code>@theme</code> blocks?
-            PostCSS traverses them natively. CSS custom properties? Scanned from
-            your stylesheet.
+            <span style={{ fontWeight: 600 }}>Rhythmguard reads tokens from wherever your team defines them</span>, not just one format. DTCG JSON with nested <code>$value</code> groups? Parsed recursively. Tailwind v4 <code>@theme</code> blocks? PostCSS traverses them natively. CSS custom properties? Scanned from your stylesheet.
           </Text>,
           <Text key="2" size="S">
-            Autofix output is source-aware: tokens from <code>@theme</code> emit{" "}
-            <code>var(--spacing-4)</code>, tokens from Tailwind JS config emit{" "}
-            <code>theme(spacing.4)</code>. The developer gets the right
-            reference for their stack without knowing the underlying token
-            format.
+            Autofix output is source-aware: tokens from <code>@theme</code> emit <code>var(--spacing-4)</code>, tokens from Tailwind JS config emit <code>theme(spacing.4)</code>. The developer gets the right reference for their stack without knowing the underlying token format.
           </Text>,
         ]}
         images={[
@@ -278,8 +212,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             alt: "Rhythmguard no-offscale-transform rule: transform translations enforced on scale.",
             width: 1920,
             height: 1080,
-            caption:
-              "no-offscale-transform: same discipline for CSS transforms",
+            caption: "no-offscale-transform: same discipline for CSS transforms",
           },
         ]}
         imageLayout="single"
@@ -294,20 +227,10 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         title="Beyond CSS: Tailwind & ESLint"
         content={[
           <Text key="1" size="S">
-            <span style={{ fontWeight: 600 }}>
-              The ESLint companion catches drift in JSX too.
-            </span>{" "}
-            A separate export provides the <code>tailwind-class-use-scale</code>{" "}
-            rule. It checks every string literal, automatically covering{" "}
-            <code>cn()</code>, <code>clsx()</code>, <code>cva()</code>,{" "}
-            <code>twMerge()</code>, and JSX <code>className</code>.{" "}
-            <code>p-[13px]</code> becomes <code>p-[12px]</code>.
+            <span style={{ fontWeight: 600 }}>The ESLint companion catches drift in JSX too.</span> A separate export provides the <code>tailwind-class-use-scale</code> rule. It checks every string literal, automatically covering <code>cn()</code>, <code>clsx()</code>, <code>cva()</code>, <code>twMerge()</code>, and JSX <code>className</code>. <code>p-[13px]</code> becomes <code>p-[12px]</code>.
           </Text>,
           <Text key="2" size="S">
-            Seven shipped config presets, from <code>migration</code> (lenient)
-            to <code>strict</code> (scale + tokens + transforms) to{" "}
-            <code>react-tailwind</code> (Tailwind + CSS Modules + Next.js
-            ignores). Framework snippets for Vue, Lit, Astro, and SvelteKit.
+            Seven shipped config presets, from <code>migration</code> (lenient) to <code>strict</code> (scale + tokens + transforms) to <code>react-tailwind</code> (Tailwind + CSS Modules + Next.js ignores). Framework snippets for Vue, Lit, Astro, and SvelteKit.
           </Text>,
         ]}
         images={{
@@ -329,17 +252,10 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         title="CLI: audit, init, doctor"
         content={[
           <Text key="1" size="S">
-            <span style={{ fontWeight: 600 }}>npx rhythmguard audit</span> scans
-            a directory for scale drift (off-scale values, token opportunities)
-            and outputs JSON for CI. Know exactly how much spacing debt exists
-            before you start enforcing.
+            <span style={{ fontWeight: 600 }}>npx rhythmguard audit</span> scans a directory for scale drift (off-scale values, token opportunities) and outputs JSON for CI. Know exactly how much spacing debt exists before you start enforcing.
           </Text>,
           <Text key="2" size="S">
-            <span style={{ fontWeight: 600 }}>npx rhythmguard init</span>{" "}
-            detects your stack and writes the right config.{" "}
-            <span style={{ fontWeight: 600 }}>npx rhythmguard doctor</span>{" "}
-            validates the setup: Stylelint installed, config valid, token
-            pattern compiles. Zero-friction onboarding.
+            <span style={{ fontWeight: 600 }}>npx rhythmguard init</span> detects your stack and writes the right config. <span style={{ fontWeight: 600 }}>npx rhythmguard doctor</span> validates the setup: Stylelint installed, config valid, token pattern compiles. Zero-friction onboarding.
           </Text>,
         ]}
         images={{
@@ -347,8 +263,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
           alt: "Rhythmguard CLI tools: audit, init, doctor commands for developer onboarding.",
           width: 1920,
           height: 1080,
-          caption:
-            "CLI tools: audit for drift analysis, init for setup, doctor for validation",
+          caption: "CLI tools: audit for drift analysis, init for setup, doctor for validation",
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -370,10 +285,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             content: (
               <>
                 <Text size="L">3 Rules</Text>
-                <Text size="S">
-                  use-scale, prefer-token, no-offscale-transform. Each with full
-                  autofix.
-                </Text>
+                <Text size="S">use-scale, prefer-token, no-offscale-transform. Each with full autofix.</Text>
               </>
             ),
           },
@@ -383,10 +295,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             content: (
               <>
                 <Text size="L">17 Scale Presets</Text>
-                <Text size="S">
-                  4pt grid, 8pt grid, Material, Atlassian, Carbon, Fibonacci,
-                  golden ratio, and custom.
-                </Text>
+                <Text size="S">4pt grid, 8pt grid, Material, Atlassian, Carbon, Fibonacci, golden ratio, and custom.</Text>
               </>
             ),
           },
@@ -396,10 +305,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             content: (
               <>
                 <Text size="L">7 Config Presets</Text>
-                <Text size="S">
-                  From migration to strict to react-tailwind. Framework support
-                  for Vue, Lit, Astro, SvelteKit.
-                </Text>
+                <Text size="S">From migration to strict to react-tailwind. Framework support for Vue, Lit, Astro, SvelteKit.</Text>
               </>
             ),
           },
@@ -409,10 +315,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             content: (
               <>
                 <Text size="L">269 Downloads/mo</Text>
-                <Text size="S">
-                  npm weekly installs. Zero runtime dependencies. CJS + ESM
-                  dual. Stylelint 16 &amp; 17.
-                </Text>
+                <Text size="S">npm weekly installs. Zero runtime dependencies. CJS + ESM dual. Stylelint 16 &amp; 17.</Text>
               </>
             ),
           },
@@ -425,14 +328,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
         title="The only value-level linter"
         content={[
           <Text key="1" size="S">
-            <span style={{ fontWeight: 600 }}>
-              Rhythmguard is not a class sorter, not a token transformer, not a
-              Tailwind class linter.
-            </span>{" "}
-            It&apos;s the only tool that governs actual values in both CSS
-            declarations and Tailwind arbitrary brackets. Where Project Spine
-            says &ldquo;use <code>--spacing-4</code>&rdquo;, Rhythmguard catches
-            developers who don&apos;t.
+            <span style={{ fontWeight: 600 }}>Rhythmguard is not a class sorter, not a token transformer, not a Tailwind class linter.</span> It&apos;s the only tool that governs actual values in both CSS declarations and Tailwind arbitrary brackets. Where Project Spine says &ldquo;use <code>--spacing-4</code>&rdquo;, Rhythmguard catches developers who don&apos;t.
           </Text>,
         ]}
         imageLayout="none"

@@ -27,12 +27,7 @@ export function WorkHero({
   const { t } = useTranslation();
 
   const displayTitle = title || t("workTitle", "Work");
-  const displayDescription =
-    description ||
-    t(
-      "workDescription",
-      "Explore our portfolio of design systems, UX design, and creative projects.",
-    );
+  const displayDescription = description || t("workDescription", "Explore our portfolio of design systems, UX design, and creative projects.");
 
   return (
     <Section
@@ -52,7 +47,7 @@ export function WorkHero({
               "font-display font-bold",
               "text-4xl tablet:text-5xl desktop:text-6xl",
               "text-foreground leading-tight tracking-tight",
-              "mb-6",
+              "mb-6"
             )}
             as="h1"
           >
@@ -65,7 +60,7 @@ export function WorkHero({
               className={cn(
                 "font-body text-lg tablet:text-xl",
                 "text-muted-foreground",
-                "max-w-2xl leading-relaxed",
+                "max-w-2xl leading-relaxed"
               )}
             >
               {displayDescription}

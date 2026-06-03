@@ -3,8 +3,7 @@ import { EmailSignatureContent } from "./EmailSignatureContent";
 
 export const metadata: Metadata = {
   title: "Email Signature Generator | Digitaltableteur",
-  description:
-    "Internal email signature generator for Digitaltableteur team use.",
+  description: "Internal email signature generator for Digitaltableteur team use.",
   robots: {
     index: false,
     follow: false,

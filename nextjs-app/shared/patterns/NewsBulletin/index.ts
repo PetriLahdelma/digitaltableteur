@@ -1,1 +1,5 @@
-export { NewsBulletin, type NewsBulletinProps, default } from "./NewsBulletin";
+export {
+  NewsBulletin,
+  type NewsBulletinProps,
+  default,
+} from "./NewsBulletin";

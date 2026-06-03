@@ -73,7 +73,7 @@ Regenerates `nextjs-app/shared/foundations/dist/agent-manifest.json`.
 
 ### @dt usage gate
 
-Product UI under `app/`, `patterns/`, and `pages/` must use `@dt/Button` and `@dt/Title` (not raw `<button>` / headings). CI: `npm run lint:dt-usage` and ESLint `no-restricted-syntax` in `npm run lint`.
+Do **not** replace pattern-level `<h*>` / header chrome `<button>` with `@dt/Title` / `@dt/Button` unless explicitly requested — that changes typography and breaks section CSS. Fix heading **levels** only (`h3` → `h2`) while keeping existing classes. `npm run lint:dt-usage` only flags `@/components/ui/*` imports in `app/`.
 
 ### Agent / MCP discovery
 

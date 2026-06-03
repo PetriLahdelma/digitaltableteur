@@ -15,7 +15,6 @@ export default async function Image({ params }: { params: Promise<Params> }) {
   return generatePageOgImage({
     title: author?.name ?? "Author",
     subtitle:
-      author?.bio?.slice(0, 90) ??
-      "Articles and insights from Digitaltableteur",
+      author?.bio?.slice(0, 90) ?? "Articles and insights from Digitaltableteur",
   });
 }

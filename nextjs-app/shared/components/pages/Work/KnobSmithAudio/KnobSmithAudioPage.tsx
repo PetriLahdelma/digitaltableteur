@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Title from "@dt/Title";
 import Text from "@dt/Text";
 import { Mermaid } from "../../../Mermaid";
 import StoryBlock from "../../../../patterns/StoryBlock";
@@ -45,7 +44,9 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           showScrollIndicator={true}
         />
       }
-      relatedProjects={<RelatedProjects currentSlug={project.slug} />}
+      relatedProjects={
+        <RelatedProjects currentSlug={project.slug} />
+      }
       className={styles.page}
     >
       {/* Project Meta - Custom 2-column layout like VertaaUX */}
@@ -53,24 +54,17 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Services
-              </Title>
+              <h3 className={styles.metaLabel}>Services</h3>
               <p className={styles.metaText}>
-                Product Design, Interaction Design, Visual Design, Brand
-                Identity
+                Product Design, Interaction Design, Visual Design, Brand Identity
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Duration
-              </Title>
+              <h3 className={styles.metaLabel}>Duration</h3>
               <p className={styles.metaText}>Dec 2025 – Present</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Tools used
-              </Title>
+              <h3 className={styles.metaLabel}>Tools used</h3>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <ClaudeIcon width={24} height={24} aria-label="Claude AI" />
@@ -79,14 +73,12 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title level={3} size="XS" className={styles.metaLabel}>
-              Overview
-            </Title>
+            <h3 className={styles.metaLabel}>Overview</h3>
             <p className={styles.metaOverview}>
               <strong>KnobSmith Audio</strong> is a personal venture developing
-              professional audio plugins for music producers and sound
-              designers. The focus is on creating tools that feel intuitive and
-              inspiring while honoring the tactile cues of analog hardware.
+              professional audio plugins for music producers and sound designers.
+              The focus is on creating tools that feel intuitive and inspiring
+              while honoring the tactile cues of analog hardware.
             </p>
             <p className={styles.metaOverview}>
               <strong>The design challenge:</strong> Modernize skeuomorphic

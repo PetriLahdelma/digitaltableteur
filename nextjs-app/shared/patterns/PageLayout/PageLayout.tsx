@@ -68,7 +68,7 @@ export interface PageLayoutProps {
  * @example
  * ```tsx
  * <PageLayout maxWidth="lg" spacing="comfortable">
- *   <Title level={1}>Page Title</Title>
+ *   <h1>Page Title</h1>
  *   <p>Content goes here...</p>
  * </PageLayout>
  * ```

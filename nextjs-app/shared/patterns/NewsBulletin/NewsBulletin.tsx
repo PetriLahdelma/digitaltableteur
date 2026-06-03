@@ -4,17 +4,13 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Icon from "@/nextjs-app/shared/components/Icon";
-import Button from "@dt/Button";
 import {
   NEWS_BULLETIN_ITEMS,
   type NewsBulletinItem,
   type NewsBulletinLink,
 } from "@/nextjs-app/shared/data/news-bulletin";
 import { cn } from "@/lib/utils";
-import {
-  NewsBulletinBadgeMark,
-  badgeAccessibleLabel,
-} from "./NewsBulletinBadge";
+import { NewsBulletinBadgeMark, badgeAccessibleLabel } from "./NewsBulletinBadge";
 import styles from "./NewsBulletin.module.css";
 
 const TRACK_ID = "news-bulletin-track";
@@ -45,10 +41,7 @@ function resolveLink(link: NewsBulletinLink | undefined): NewsBulletinLink {
 function BulletinCard({ item }: { item: NewsBulletinItem }) {
   const link = resolveLink(item.link);
   const label = cardLabel(item);
-  const cardClass = cn(
-    styles.card,
-    link.kind !== "static" && styles.cardInteractive,
-  );
+  const cardClass = cn(styles.card, link.kind !== "static" && styles.cardInteractive);
 
   if (link.kind === "internal") {
     return (
@@ -184,19 +177,18 @@ export function NewsBulletin({
       >
         {isOverflowing ? (
           canScrollPrev ? (
-            <Button
+            <button
               type="button"
-              variant="tertiary"
-              size="s"
               className={styles.navButton}
-              accessibleName={t(
+              aria-label={t(
                 "newsBulletinScrollPrev",
                 "Show previous highlights",
               )}
               aria-controls={TRACK_ID}
               onClick={() => scrollTrack(-1)}
-              icon={<Icon name="arrow-left" size="sm" ariaLabel="" />}
-            />
+            >
+              <Icon name="arrow-left" size="sm" ariaLabel="" />
+            </button>
           ) : (
             <span className={styles.navSpacer} aria-hidden />
           )
@@ -205,7 +197,10 @@ export function NewsBulletin({
         <div
           ref={trackRef}
           id={TRACK_ID}
-          className={cn(styles.track, !isOverflowing && styles.trackCentered)}
+          className={cn(
+            styles.track,
+            !isOverflowing && styles.trackCentered,
+          )}
           tabIndex={isOverflowing ? 0 : undefined}
         >
           {items.map((item) => (
@@ -215,19 +210,18 @@ export function NewsBulletin({
 
         {isOverflowing ? (
           canScrollNext ? (
-            <Button
+            <button
               type="button"
-              variant="tertiary"
-              size="s"
               className={styles.navButton}
-              accessibleName={t(
+              aria-label={t(
                 "newsBulletinScrollNext",
                 "Show more highlights",
               )}
               aria-controls={TRACK_ID}
               onClick={() => scrollTrack(1)}
-              icon={<Icon name="arrow-right" size="sm" ariaLabel="" />}
-            />
+            >
+              <Icon name="arrow-right" size="sm" ariaLabel="" />
+            </button>
           ) : (
             <span className={styles.navSpacer} aria-hidden />
           )

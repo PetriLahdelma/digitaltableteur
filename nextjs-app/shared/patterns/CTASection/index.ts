@@ -1,5 +1,1 @@
-export {
-  CTASection,
-  type CTASectionProps,
-  type ActionItem,
-} from "./CTASection";
+export { CTASection, type CTASectionProps, type ActionItem } from "./CTASection";

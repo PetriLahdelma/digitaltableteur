@@ -6,7 +6,6 @@ import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import SecureCVDownload from "@dt/SecureCVDownload";
-import Title from "@dt/Title";
 
 export interface CVDownloadSectionProps {
   /** Section title */
@@ -21,13 +20,9 @@ export interface CVDownloadSectionProps {
   className?: string;
 }
 
-const backgroundClasses: Record<
-  NonNullable<CVDownloadSectionProps["background"]>,
-  string
-> = {
+const backgroundClasses: Record<NonNullable<CVDownloadSectionProps["background"]>, string> = {
   primary: "bg-primary text-primary-foreground",
-  gradient:
-    "bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground",
+  gradient: "bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground",
   dark: "bg-zinc-900 text-white",
 };
 
@@ -44,26 +39,25 @@ export function CVDownloadSection({
       className={cn(
         "py-16 desktop:py-24",
         backgroundClasses[background],
-        className,
+        className
       )}
     >
       <Container size="md">
         <FadeIn direction="up">
           <div className="flex flex-col items-center text-center gap-6">
-            <Title
-              level={2}
+            <h2
               className={cn(
                 "font-display font-bold",
-                "text-2xl tablet:text-3xl desktop:text-4xl",
+                "text-2xl tablet:text-3xl desktop:text-4xl"
               )}
             >
               {title}
-            </Title>
+            </h2>
 
             <p
               className={cn(
                 "font-body text-base tablet:text-lg",
-                "text-white/80 max-w-xl",
+                "text-white/80 max-w-xl"
               )}
             >
               {description}{" "}

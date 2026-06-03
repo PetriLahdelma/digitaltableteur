@@ -76,7 +76,7 @@ for (const file of files) {
 }
 
 if (!findings.length) {
-  console.log("✓ lint:dt-usage — no violations in app/, patterns/, or pages/");
+  console.log("✓ lint:dt-usage — no violations in app/");
   process.exit(0);
 }
 

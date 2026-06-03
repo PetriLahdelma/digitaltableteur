@@ -79,12 +79,10 @@ export function ContactInquiryPanel({
         role="tablist"
         aria-label={t("contactInquiryModeLabel", "Contact options")}
       >
-        <Button
+        <button
           ref={messageTabRef}
           type="button"
           role="tab"
-          variant="tertiary"
-          size="m"
           id="contact-tab-message"
           aria-selected={mode === "message"}
           aria-controls="contact-panel-message"
@@ -94,13 +92,11 @@ export function ContactInquiryPanel({
           onKeyDown={handleTabKeyDown}
         >
           {t("contactInquiryMessageTab", "Send a message")}
-        </Button>
-        <Button
+        </button>
+        <button
           ref={bookTabRef}
           type="button"
           role="tab"
-          variant="tertiary"
-          size="m"
           id="contact-tab-book"
           aria-selected={mode === "book"}
           aria-controls="contact-panel-book"
@@ -117,7 +113,7 @@ export function ContactInquiryPanel({
               {t("contactInquiryBookTabNew", "NEW!")}
             </span>
           </span>
-        </Button>
+        </button>
       </div>
 
       <div className={styles.panelBody}>

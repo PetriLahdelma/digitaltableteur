@@ -84,10 +84,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerAddressTitle")}
             </p>
             <address className="font-body text-text-m text-muted-foreground not-italic leading-relaxed">
-              <Link
-                href="/"
-                className="font-medium text-foreground hover:underline"
-              >
+              <Link href="/" className="font-medium text-foreground hover:underline">
                 Digitaltableteur
               </Link>
               <br />
@@ -110,9 +107,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerBillingTitle")}
             </p>
             <address className="font-body text-text-s text-muted-foreground not-italic leading-relaxed">
-              <span className="font-medium text-foreground">
-                {t("footerBillingName")}
-              </span>
+              <span className="font-medium text-foreground">{t("footerBillingName")}</span>
               <br />
               {t("footerBillingAddress")}
               <br />
@@ -152,11 +147,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerLegalTitle")}
             </p>
             <Stack gap="xs">
-              <TextLink
-                href="/privacy-policy"
-                variant="muted"
-                underline="hover"
-              >
+              <TextLink href="/privacy-policy" variant="muted" underline="hover">
                 {t("footerPrivacyPolicy")}
               </TextLink>
               <TextLink href="/imprint" variant="muted" underline="hover">

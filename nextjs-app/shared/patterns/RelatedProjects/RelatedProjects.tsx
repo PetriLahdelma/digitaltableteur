@@ -7,7 +7,6 @@ import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { EnhancedProjectCard } from "../../components/EnhancedProjectCard";
 import { getRelatedProjects } from "../../data/projects";
-import Title from "@dt/Title";
 
 export interface RelatedProjectsProps {
   /** Current project slug (to exclude from results) */
@@ -34,12 +33,9 @@ export function RelatedProjects({
     return (
       <Section spacing="lg" background="default" className={className}>
         <Container size="lg" className="text-center">
-          <Title
-            level={2}
-            className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-4"
-          >
+          <h2 className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-4">
             {t("projectRelatedTitle", "Related Projects")}
-          </Title>
+          </h2>
           <a
             href="/work"
             className="inline-flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors font-medium"
@@ -54,15 +50,16 @@ export function RelatedProjects({
   const displayTitle = title || t("projectRelatedTitle", "Related Projects");
 
   return (
-    <Section spacing="lg" background="default" className={className}>
+    <Section
+      spacing="lg"
+      background="default"
+      className={className}
+    >
       <Container size="lg">
         <FadeIn direction="up" delay={0} distance={20}>
-          <Title
-            level={2}
-            className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-8"
-          >
+          <h2 className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-8">
             {displayTitle}
-          </Title>
+          </h2>
         </FadeIn>
 
         <div
@@ -70,8 +67,7 @@ export function RelatedProjects({
             "grid gap-6",
             relatedProjects.length === 1 && "grid-cols-1 max-w-md",
             relatedProjects.length === 2 && "grid-cols-1 md:grid-cols-2",
-            relatedProjects.length >= 3 &&
-              "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+            relatedProjects.length >= 3 && "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           )}
         >
           {relatedProjects.map((project, index) => (

@@ -7,7 +7,6 @@ import { gsap } from "gsap";
 import { cn } from "@/lib/utils";
 import { NavLink } from "@/nextjs-app/shared/components/NavLink";
 import { IconButton } from "@/nextjs-app/shared/components/IconButton";
-import Button from "@dt/Button";
 import { X, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import type { NavItem } from "./SiteHeader";
 import type { Theme } from "@dt/ThemeProvider";
@@ -87,7 +86,7 @@ export function MobileDrawer({
 
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-motion: reduce)"
     ).matches;
 
     const ctx = gsap.context(() => {
@@ -101,21 +100,21 @@ export function MobileDrawer({
         gsap.fromTo(
           backdropRef.current,
           { opacity: 0 },
-          { opacity: 1, duration: 0.2 },
+          { opacity: 1, duration: 0.2 }
         );
 
         // Panel slide in
         gsap.fromTo(
           panelRef.current,
           { x: "100%" },
-          { x: "0%", duration: 0.3, ease: "power2.out" },
+          { x: "0%", duration: 0.3, ease: "power2.out" }
         );
 
         // Stagger nav items
         gsap.fromTo(
           "[data-nav-item]",
           { opacity: 0, x: 20 },
-          { opacity: 1, x: 0, duration: 0.2, stagger: 0.05, delay: 0.15 },
+          { opacity: 1, x: 0, duration: 0.2, stagger: 0.05, delay: 0.15 }
         );
       }
     });
@@ -198,22 +197,19 @@ export function MobileDrawer({
                 { code: "fi", ariaLabel: t("langFI_ariaLabel") },
                 { code: "sv", ariaLabel: t("langSV_ariaLabel") },
               ].map((lang) => (
-                <Button
+                <button
                   key={lang.code}
-                  type="button"
-                  variant="tertiary"
-                  size="s"
                   onClick={() => onLanguageChange(lang.code)}
-                  accessibleName={`${lang.code.toUpperCase()} — ${lang.ariaLabel}`}
+                  aria-label={`${lang.code.toUpperCase()} — ${lang.ariaLabel}`}
                   className={cn(
                     "flex-1 py-2 px-3 rounded-md text-text-m font-body uppercase transition-colors",
                     currentLang === lang.code
                       ? "bg-foreground text-background font-medium"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80",
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
                   )}
                 >
                   {lang.code.toUpperCase()}
-                </Button>
+                </button>
               ))}
             </div>
           </div>

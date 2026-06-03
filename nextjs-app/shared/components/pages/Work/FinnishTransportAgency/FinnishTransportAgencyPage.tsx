@@ -52,24 +52,17 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Services
-              </Title>
+              <h3 className={styles.metaLabel}>Services</h3>
               <p className={styles.metaText}>
-                Brand Identity, Logo System, Visual Guidelines and Multilingual
-                Design
+                Brand Identity, Logo System, Visual Guidelines and Multilingual Design
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Duration
-              </Title>
+              <h3 className={styles.metaLabel}>Duration</h3>
               <p className={styles.metaText}>2009–2010</p>
             </div>
             <div className={styles.metaBlock}>
-              <Title level={3} size="XS" className={styles.metaLabel}>
-                Tools used
-              </Title>
+              <h3 className={styles.metaLabel}>Tools used</h3>
               <div className={styles.metaTools}>
                 <SiAdobeillustrator size={24} title="Illustrator" />
                 <SiAdobeindesign size={24} title="InDesign" />
@@ -77,21 +70,18 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <Title level={3} size="XS" className={styles.metaLabel}>
-              Overview
-            </Title>
+            <h3 className={styles.metaLabel}>Overview</h3>
             <p className={styles.metaOverview}>
-              <strong>When Finland merged</strong> its Maritime Administration,
-              Rail Administration, and Road Administration into a single
-              transport agency, the new organization needed an identity that
-              could unify three distinct cultures while serving citizens in
-              Finnish, Swedish, and English.
+              <strong>When Finland merged</strong> its Maritime Administration, Rail
+              Administration, and Road Administration into a single transport agency,
+              the new organization needed an identity that could unify three distinct
+              cultures while serving citizens in Finnish, Swedish, and English.
             </p>
             <p className={styles.metaOverview}>
-              <strong>The goal:</strong> Create a cohesive visual identity
-              system that signals a fresh start for the merged organization,
-              works across three official languages, and scales from business
-              cards to highway signage.
+              <strong>The goal:</strong> Create a cohesive visual identity system
+              that signals a fresh start for the merged organization, works across
+              three official languages, and scales from business cards to highway
+              signage.
             </p>
           </div>
         </div>
@@ -100,9 +90,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Team Section */}
       <section className={styles.teamSection}>
         <div className={styles.teamContent}>
-          <Title level={3} size="XS" className={styles.metaLabel}>
-            Team
-          </Title>
+          <h3 className={styles.metaLabel}>Team</h3>
           <div className={styles.teamGrid}>
             <div className={styles.teamMember}>
               <Image
@@ -196,16 +184,16 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         title="The Conductor of Finland's Transport"
         content={[
           <Text key="p1" size="S">
-            The logo structure is a graphic interpretation of a polyphonic
-            musical score, positioning Liikennevirasto as the conductor
-            orchestrating Finland&apos;s roads, rails, and waterways. The
-            cascading word parts create a unique, human-friendly wordmark that
-            signals a fresh start for the merged organization.
+            The logo structure is a graphic interpretation of a polyphonic musical
+            score, positioning Liikennevirasto as the conductor orchestrating
+            Finland's roads, rails, and waterways. The cascading word parts create
+            a unique, human-friendly wordmark that signals a fresh start for the
+            merged organization.
           </Text>,
           <Text key="p2" size="S">
-            Unlike traditional government marks, the moving letters invite a
-            second look. Staff and citizens get a memorable symbol that
-            challenges expectations of what a transport agency can be.
+            Unlike traditional government marks, the moving letters invite a second
+            look. Staff and citizens get a memorable symbol that challenges
+            expectations of what a transport agency can be.
           </Text>,
         ]}
         imageLayout="none"
@@ -221,10 +209,10 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         title="Language Lockups"
         content={[
           <Text key="p1" size="S">
-            The identity supports three official languages: Finnish
-            (Liikennevirasto), Swedish (Trafikverket), and English (Finnish
-            Transport Agency). Each lockup maintains the cascading wordmark with
-            language descriptors in horizontal or vertical arrangements.
+            The identity supports three official languages: Finnish (Liikennevirasto),
+            Swedish (Trafikverket), and English (Finnish Transport Agency). Each
+            lockup maintains the cascading wordmark with language descriptors in
+            horizontal or vertical arrangements.
           </Text>,
         ]}
         images={{
@@ -232,8 +220,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           alt: "Four logo lockups showing Swedish and English variants in horizontal and vertical layouts",
           width: 1754,
           height: 1241,
-          caption:
-            "Language variants with locked descriptors for official documents",
+          caption: "Language variants with locked descriptors for official documents",
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -248,10 +235,10 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         title="Minimum Clear Space"
         content={[
           <Text key="p1" size="S">
-            The protection zone is defined by the height of the lowercase
-            &quot;i&quot; as the base unit (x). A minimum of 5x clear space
-            above and x on each side ensures the mark breathes across all
-            applications, from business cards to highway signage.
+            The protection zone is defined by the height of the lowercase "i"
+            as the base unit (x). A minimum of 5x clear space above and x on
+            each side ensures the mark breathes across all applications, from
+            business cards to highway signage.
           </Text>,
         ]}
         images={[
@@ -294,8 +281,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           alt: "Logo usage examples showing correct and incorrect applications with checkmarks and X marks",
           width: 1754,
           height: 1241,
-          caption:
-            "Approved usage on white, tinted, and photographic backgrounds",
+          caption: "Approved usage on white, tinted, and photographic backgrounds",
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -307,9 +293,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Color System */}
       <section className={styles.colorSection}>
         <div className={styles.colorContent}>
-          <Title level={3} terminals="sans">
-            Color System
-          </Title>
+          <Title level={3} terminals="sans">Color System</Title>
           <Text size="S" className={styles.colorIntro}>
             Four primary blues form the wordmark, supported by warm grays and
             accent colors. The palette was specified for Pantone (print), CMYK
@@ -322,14 +306,12 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Typography */}
       <section className={styles.typographySection}>
         <div className={styles.typographyContent}>
-          <Title level={3} terminals="sans">
-            Typography
-          </Title>
+          <Title level={3} terminals="sans">Typography</Title>
           <Text size="S" className={styles.typographyIntro}>
             The identity uses Agfa Monotype Felbridge Pro, designed by Robin
             Nicholas in 2003 specifically for electronic display. Its letter
-            shapes reproduce clearly at low resolutions while maintaining
-            elegance in print.
+            shapes reproduce clearly at low resolutions while maintaining elegance
+            in print.
           </Text>
           <div className={styles.typographyWaterfall}>
             <div className={styles.waterfallItem}>
@@ -347,10 +329,9 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.waterfallItem}>
               <span className={styles.waterfallLabel}>Body</span>
               <span className={styles.waterfallBody}>
-                The Finnish Transport Agency oversees the planning,
-                construction, and maintenance of transport infrastructure. Our
-                mission is to ensure safe, efficient, and sustainable mobility
-                for all.
+                The Finnish Transport Agency oversees the planning, construction,
+                and maintenance of transport infrastructure. Our mission is to
+                ensure safe, efficient, and sustainable mobility for all.
               </span>
             </div>
             <div className={styles.waterfallItem}>
@@ -361,8 +342,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <Text size="S" className={styles.typographyNote}>
-            Specimen rendered in Felbridge Pro, designed by Robin Nicholas for
-            Agfa Monotype.
+            Specimen rendered in Felbridge Pro, designed by Robin Nicholas for Agfa Monotype.
           </Text>
         </div>
       </section>
@@ -384,8 +364,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           alt: "Five circular stamp logo variations for official documents",
           width: 2481,
           height: 1754,
-          caption:
-            "Stamp variations for certificates, approvals, and official seals",
+          caption: "Stamp variations for certificates, approvals, and official seals",
         }}
         imageLayout="single"
         backgroundColor="transparent"
@@ -397,9 +376,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Applications Grid */}
       <section className={styles.applicationsSection}>
         <div className={styles.applicationsHeader}>
-          <Title level={3} terminals="sans">
-            Applications
-          </Title>
+          <Title level={3} terminals="sans">Applications</Title>
         </div>
         <div className={styles.applicationsGrid}>
           <figure className={styles.appItem}>
@@ -482,10 +459,9 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
           </Text>,
           <Text key="p2" size="S">
             Trilingual support (Finnish, Swedish, English) ensures accessibility
-            for all citizens, while strict construction rules maintain
-            consistency from business cards to highway signs. The system scaled
-            successfully across print, digital, environmental, and publication
-            applications.
+            for all citizens, while strict construction rules maintain consistency
+            from business cards to highway signs. The system scaled successfully
+            across print, digital, environmental, and publication applications.
           </Text>,
         ]}
         imageLayout="none"
@@ -498,16 +474,13 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       {/* Key Results */}
       <section className={styles.resultsSection}>
         <div className={styles.resultsContent}>
-          <Title level={3} terminals="sans">
-            Key Results
-          </Title>
+          <Title level={3} terminals="sans">Key Results</Title>
           <div className={styles.resultsGrid}>
             <div className={styles.resultItem}>
               <span className={styles.resultValue}>3</span>
               <span className={styles.resultLabel}>Agencies Unified</span>
               <span className={styles.resultDetail}>
-                Road, Rail, and Maritime administrations merged under one
-                identity
+                Road, Rail, and Maritime administrations merged under one identity
               </span>
             </div>
             <div className={styles.resultItem}>

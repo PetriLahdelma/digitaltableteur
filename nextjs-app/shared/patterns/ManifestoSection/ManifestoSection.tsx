@@ -7,7 +7,6 @@ import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { gsap } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
-import Title from "@dt/Title";
 
 export interface ManifestoToken {
   /** Token text content */
@@ -41,7 +40,7 @@ const backgroundClasses: Record<
     "before:absolute before:inset-0",
     "before:bg-[radial-gradient(circle_at_20%_25%,rgba(255,255,255,0.22),transparent_45%)]",
     "after:absolute after:inset-0",
-    "after:bg-[radial-gradient(circle_at_80%_75%,rgba(113,239,255,0.18),transparent_50%)]",
+    "after:bg-[radial-gradient(circle_at_80%_75%,rgba(113,239,255,0.18),transparent_50%)]"
   ),
   muted: "bg-muted/30",
   transparent: "bg-transparent",
@@ -63,10 +62,13 @@ export function ManifestoSection({
   const pulseRef = useRef<gsap.core.Tween | null>(null);
 
   // Set ref for each token element
-  const setTokenRef = useCallback((idx: number, el: HTMLSpanElement | null) => {
-    if (el) tokenRefs.current.set(idx, el);
-    else tokenRefs.current.delete(idx);
-  }, []);
+  const setTokenRef = useCallback(
+    (idx: number, el: HTMLSpanElement | null) => {
+      if (el) tokenRefs.current.set(idx, el);
+      else tokenRefs.current.delete(idx);
+    },
+    []
+  );
 
   // Get indices of highlightable tokens
   const highlightableIndices = useMemo(
@@ -74,12 +76,12 @@ export function ManifestoSection({
       tokens
         .map((token, idx) => (token.highlightable ? idx : -1))
         .filter((idx) => idx >= 0),
-    [tokens],
+    [tokens]
   );
 
   // Track the currently active highlight index
   const [activeIdx, setActiveIdx] = useState<number | null>(
-    highlightableIndices[0] ?? null,
+    highlightableIndices[0] ?? null
   );
 
   // Cycle through highlights randomly
@@ -160,7 +162,7 @@ export function ManifestoSection({
               },
             });
           },
-        },
+        }
       );
     }
 
@@ -178,7 +180,7 @@ export function ManifestoSection({
     (currentIdx: number) => {
       return tokens.slice(currentIdx + 1).some((t) => t.highlightable);
     },
-    [tokens],
+    [tokens]
   );
 
   const isGradient = background === "gradient";
@@ -192,17 +194,16 @@ export function ManifestoSection({
       <Container size="lg" className="relative z-10">
         {/* Title */}
         <FadeIn direction="up" delay={0} distance={20}>
-          <Title
-            level={2}
+          <h2
             className={cn(
               "font-display font-bold",
               "text-xl tablet:text-2xl",
               "mb-6",
-              isGradient ? "text-white" : "text-foreground",
+              isGradient ? "text-white" : "text-foreground"
             )}
           >
             {title}
-          </Title>
+          </h2>
         </FadeIn>
 
         {/* Manifesto tokens */}
@@ -213,7 +214,7 @@ export function ManifestoSection({
               "font-body",
               "text-base tablet:text-lg desktop:text-xl",
               "leading-relaxed",
-              isGradient ? "text-white" : "text-foreground",
+              isGradient ? "text-white" : "text-foreground"
             )}
           >
             {tokens.map((token, idx) => {
@@ -235,7 +236,7 @@ export function ManifestoSection({
                           ? "bg-white text-purple-700"
                           : "bg-primary text-primary-foreground",
                         "shadow-sm",
-                      ],
+                      ]
                     )}
                     aria-live="off"
                   >
@@ -247,7 +248,9 @@ export function ManifestoSection({
                         "inline-flex items-center",
                         "px-1",
                         "font-semibold",
-                        isGradient ? "text-white/80" : "text-foreground/60",
+                        isGradient
+                          ? "text-white/80"
+                          : "text-foreground/60"
                       )}
                       aria-hidden="true"
                     >

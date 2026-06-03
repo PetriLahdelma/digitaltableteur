@@ -44,7 +44,7 @@ export const fetchLatestRun = async (): Promise<RunRecord | null> => {
   }
   try {
     const result = await pool.query(
-      "SELECT run_id, branch, status, metrics, inserted_at FROM test_health_runs ORDER BY inserted_at DESC LIMIT 1;",
+      `SELECT run_id, branch, status, metrics, inserted_at FROM test_health_runs ORDER BY inserted_at DESC LIMIT 1;`,
     );
     if (!result.rows.length) {
       return null;
