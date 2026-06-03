@@ -50,17 +50,17 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Services</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Services</Title>
               <p className={styles.metaText}>
                 Brand Identity, Event Visuals, Sound Design and Social Media Assets
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Duration</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Duration</Title>
               <p className={styles.metaText}>2018</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Tools used</h3>
+              <Title as="h3" unstyled className={styles.metaLabel}>Tools used</Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <SiAdobeillustrator size={24} title="Illustrator" />
@@ -69,7 +69,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <h3 className={styles.metaLabel}>Overview</h3>
+            <Title as="h3" unstyled className={styles.metaLabel}>Overview</Title>
             <p className={styles.metaOverview}>
               <strong>Garage Junction</strong> was a collaborative event series
               launched at Merikerho, Helsinki, in 2018. The project brought together

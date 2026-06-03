@@ -2,6 +2,16 @@
  * Static replacement guidance for agent blocks — what raw UI this @dt component supersedes.
  */
 
+/**
+ * Agents must not mass-replace pattern chrome or section headings — that changes fonts and layout.
+ * Allowed without design review: semantic tag + existing classes via Title `unstyled`, or h-level-only fixes.
+ */
+export const REPLACEMENT_GUARDRAILS = [
+  "Do not swap pattern Header/Footer/CTA <button> for @dt/Button unless explicitly requested.",
+  "Do not replace <h*> that already have font-display/Tailwind/module classes with default @dt/Title — use Title unstyled or change level only.",
+  "lint:dt-usage flags @/components/ui/* in app/ only; patterns keep their typography.",
+];
+
 /** @type {Record<string, string[]>} */
 export const REPLACEMENT_FOR = {
   Button: ["raw <button>", "@/components/ui/button", "shadcn Button"],

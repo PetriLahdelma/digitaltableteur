@@ -1,19 +1,27 @@
-# Phase 5 — @dt usage enforcement (tightened)
+# Phase 5 — @dt usage policy (revised)
 
-**Completed:** 2026-06-02
+**Completed:** 2026-06-02 (revised 2026-06-03)
 
 ## Delivered
 
-- **ESLint mirror** (`eslint.config.mjs` dt/usage block) — `no-restricted-syntax` for raw `<button>` / `<h1>`–`<h6>`, `no-restricted-imports` for `@/components/ui/*`
+- **ESLint mirror** (`eslint.config.mjs` dt/usage block) — `no-restricted-imports` for `@/components/ui/*` in `app/` only
 - **Shared rules** — `scripts/design-system/dt-usage-rules.mjs` (single source for lint script + ESLint)
-- **Baseline cleared** — 85 → 0 findings in `app/`, `patterns/`, `pages/` (work pages, Header, CTASection, HomeHero, etc.)
-- **CI strict** — `npm run lint:dt-usage` defaults to `--strict`
-- **Exempt** — `app/global-error.tsx` only (no provider shell)
-- **Codemod** — `codemod-meta-label-titles.mjs` for portfolio meta labels
+- **No mass heading/button swaps** — patterns keep native `<h*>` / chrome `<button>` and existing CSS; swapping to default `@dt/Title` / `@dt/Button` changes typography (regression)
+- **`Title` `unstyled`** — semantic tag + existing classes without Title token styles (blog SSR, work meta labels)
+- **CI** — `npm run lint:dt-usage` (strict) for shadcn imports in `app/`
+- **Codemod** — `codemod-meta-label-titles.mjs` uses `Title as="h3" unstyled className={styles.metaLabel}`
+- **Guardrails** — `REPLACEMENT_GUARDRAILS` in `component-replacement-policy.mjs`
 
 ## Commands
 
 ```bash
-npm run lint:dt-usage      # strict (exit 1 on violation)
-npm run lint               # includes ESLint dt/usage block
+npm run lint:dt-usage      # strict — @/components/ui/* in app/
+npm run lint               # includes ESLint dt/usage import block
+node scripts/design-system/codemod-meta-label-titles.mjs
 ```
+
+## Explicitly out of scope (unless discussed)
+
+- Replacing pattern section `<h2 className="font-display…">` with default `@dt/Title`
+- Header language/theme/mobile controls → `@dt/Button`
+- `CTASection` shadcn → `@dt/Button` without variant parity (`isInverse`, outline on dark)

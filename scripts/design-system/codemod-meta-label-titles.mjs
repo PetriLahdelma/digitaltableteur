@@ -27,7 +27,7 @@ for (const file of files) {
 
   const next = src.replace(
     /<h3 className=\{styles\.metaLabel\}>([^<]*)<\/h3>/g,
-    '<Title level={3} size="XS" className={styles.metaLabel}>$1</Title>',
+    '<Title as="h3" unstyled className={styles.metaLabel}>$1</Title>',
   );
   if (next === src) continue;
 

@@ -5,6 +5,7 @@ import {
   getVisiblePosts,
 } from "@/app/blog/postMetadata";
 import { Container } from "@/nextjs-app/shared/components/Container";
+import Title from "@dt/Title";
 
 /**
  * Minimal SSR related links. Production uses {@link RelatedPosts} + EnhancedArticleCard.
@@ -39,12 +40,14 @@ export function ServerRelatedPosts({
   return (
     <section aria-labelledby="related-posts-heading" className="border-t border-border bg-muted/20 py-12">
       <Container size="lg">
-        <h2
+        <Title
+          as="h2"
+          unstyled
           id="related-posts-heading"
           className="mb-6 font-display text-2xl font-bold text-foreground"
         >
           Related articles
-        </h2>
+        </Title>
         <ul className="grid gap-4 tablet:grid-cols-3">
           {related.map((post) => (
             <li key={post.slug} className="rounded-lg border border-border bg-background p-5">

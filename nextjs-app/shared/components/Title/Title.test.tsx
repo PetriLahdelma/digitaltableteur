@@ -20,6 +20,18 @@ describe("Title", () => {
     expect(container.firstChild).toHaveClass("custom-class");
   });
 
+  it("unstyled renders only custom className without token typography", () => {
+    const { container } = render(
+      <Title as="h2" unstyled className="font-display text-2xl">
+        Section
+      </Title>,
+    );
+    const heading = container.querySelector("h2");
+    expect(heading).toHaveClass("font-display", "text-2xl");
+    expect(heading).not.toHaveClass(styles.title);
+    expect(heading).not.toHaveClass(styles.titleL);
+  });
+
   it("applies lineHeight class when provided", () => {
     const { container } = render(<Title lineHeight="tight">Title</Title>);
     expect(container.firstChild).toHaveClass(styles.lineHeightTight);

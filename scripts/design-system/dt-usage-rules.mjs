@@ -16,7 +16,10 @@ export const DT_USAGE_SKIP_SEGMENTS = [
 /** Root layout failure UI — no providers / theme CSS. */
 export const DT_USAGE_EXEMPT_REL = new Set(["app/global-error.tsx"]);
 
-/** Do not ban raw <h*> or <button> — patterns/pages own typography; swapping to @dt/* changes visuals. */
+/**
+ * Do not ban raw <h*> or <button> — patterns/pages own typography; swapping to @dt/* changes visuals.
+ * For app/ SSR headings with custom classes, use @dt/Title with unstyled + as="hN".
+ */
 export const DT_USAGE_RULES = [
   {
     id: "shadcn-import",
