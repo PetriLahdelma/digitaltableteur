@@ -162,6 +162,17 @@ File: [\`${manifest.fileSlug}\`](${manifest.fileUrl}) (\`${manifest.fileKey}\`)
 See \`docs/FIGMA_DESIGN_SYSTEM_SYNC.md\`.
 
 Run ID: \`${manifest.runId}\`
+
+## Phase 2–3 — library (verified)
+
+State ledger: \`../dsb-state.json\`. Verify in-scope node ids:
+
+\`\`\`bash
+npm run verify:figma-in-scope
+npm run sync:figma
+\`\`\`
+
+Code Connect is **not** used (Figma Pro). Storybook Design panel + contract \`figma\` URLs instead.
 `;
 
   writeFileSync(resolve(OUT_DIR, "README.md"), readme);

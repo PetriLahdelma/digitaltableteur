@@ -12,7 +12,7 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const MANIFEST = join(ROOT, "nextjs-app/shared/foundations/dist/agent-manifest.json");
 const GOLDEN = join(dirname(fileURLToPath(import.meta.url)), "golden-intents.json");
 
-const MIN_PASS_RATE = 0.85;
+const MIN_PASS_RATE = 0.9;
 
 /**
  * @param {import('./golden-intents.json')} spec

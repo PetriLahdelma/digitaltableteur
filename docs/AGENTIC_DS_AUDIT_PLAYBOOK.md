@@ -24,7 +24,10 @@ Runs, in order:
 | Step | What it proves |
 |------|----------------|
 | `build:tokens` | Manifest, agent blocks, relationship graph regenerate |
-| `agent:eval` | Schema, MCP tools, intent + pattern golden sets |
+| `agent:eval` | Schema, MCP tools, intent (≥90%) + pattern golden sets |
+| `check:storybook-figma` | Contract `figma` URLs use DT file + real node ids |
+| `verify:figma-in-scope` | In-scope components mapped in `FIGMA_NODE_IDS` |
+| `sync:figma` | Contracts aligned with `figma-config.mjs` |
 | `lint:dt-usage` | Import policy in `app/` |
 | `check:contract-drift --strict` | TS ↔ contract parity |
 
@@ -65,10 +68,14 @@ Call:
 
 ```bash
 npm run build:figma-variables
+npm run verify:figma-in-scope
+npm run sync:figma
 npm run check:figma
 ```
 
-**Pass:** Variable payloads generated; contracts link to real Figma nodes for promoted components.
+**Pass:** Variable payloads generated; 33/34 in-scope components deep-link to Figma (Icon = Phosphor library exception).
+
+**Code Connect:** not used on Figma Pro — Storybook Design panel + contract URLs instead.
 
 ### 5. Agent discovery
 
@@ -83,9 +90,9 @@ npm run check:figma
 | Dimension | Weak | Strong |
 |-----------|------|--------|
 | Manifest + contracts | Hand-written README only | Generated agent blocks + drift CI |
-| Retrieval | Generic component list | Intent + pattern golden evals ≥85% |
+| Retrieval | Generic component list | Intent + pattern golden evals ≥90% |
 | Enforcement | Ad hoc review | `lint:dt-usage` + validate commands |
-| Figma loop | Drift accepted | Variables + node-id sync |
+| Figma loop | Drift accepted | Variables + node-id sync (no Code Connect on Pro) |
 | Operating model | Undocumented | Public workflow + guardrails |
 
 ---

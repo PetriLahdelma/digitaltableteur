@@ -2,9 +2,19 @@
   "fileKey": "PC2UPdYwm8qGt6ZTg0AakF",
   "fileSlug": "DT-Site-stuff",
   "fileUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff",
-  "generatedAt": "2026-06-03T15:23:17.082Z",
+  "generatedAt": "2026-06-03T15:58:03.846Z",
   "source": "nextjs-app/shared/styles/variables.css",
   "runId": "dt-dsb-2026-06-03",
+  "figmaApplied": {
+    "appliedAt": "2026-06-03T16:00:00.000Z",
+    "verifiedAt": "2026-06-03T18:00:00.000Z",
+    "variableCounts": {
+      "DT / Color": 45,
+      "DT / Dimension": 29,
+      "DT / String": 4
+    },
+    "total": 78
+  },
   "modes": [
     {
       "id": "light",

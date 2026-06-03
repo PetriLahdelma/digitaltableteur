@@ -10,12 +10,32 @@
     {
       "id": "site-header",
       "query": "site header navigation pattern",
+      "expectedTop1": "SiteHeader"
+    },
+    {
+      "id": "legacy-header",
+      "query": "legacy storybook header pattern language switcher",
       "expectedTop1": "Header"
     },
     {
       "id": "hero-landing",
       "query": "full bleed homepage hero",
       "expectedTop1": "HeroSection"
+    },
+    {
+      "id": "app-header",
+      "query": "Next.js app shell sticky header navigation",
+      "expectedTop1": "SiteHeader"
+    },
+    {
+      "id": "site-footer",
+      "query": "site wide footer link columns",
+      "expectedTop1": "SiteFooter"
+    },
+    {
+      "id": "article-hero",
+      "query": "blog article hero title metadata",
+      "expectedTop1": "ArticleHero"
     }
   ]
 }
