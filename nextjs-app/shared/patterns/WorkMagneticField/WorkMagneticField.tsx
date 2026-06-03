@@ -51,14 +51,6 @@ export function WorkMagneticField({
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const quickToRefs = useRef<{
-    x: gsap.QuickToFunc[];
-    y: gsap.QuickToFunc[];
-    rotateX: gsap.QuickToFunc[];
-    rotateY: gsap.QuickToFunc[];
-    scale: gsap.QuickToFunc[];
-  }>({ x: [], y: [], rotateX: [], rotateY: [], scale: [] });
-
   const setCardRef = useCallback(
     (index: number) => (el: HTMLDivElement | null) => {
       cardRefs.current[index] = el;
@@ -89,26 +81,30 @@ export function WorkMagneticField({
 
       // --- Normal motion ---
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // Entrance animation — staggered fade-in
-        const entranceTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-            once: true,
+        // Reveal on scroll WITHOUT pre-hiding the cards. The cards stay visible
+        // (opacity:1 from the gsap.set above); the entrance only plays once the
+        // section scrolls into view, via onEnter. Critically, if the trigger
+        // never fires (mobile Safari can leave a dormant ScrollTrigger when the
+        // dynamic toolbar resizes the viewport), the cards simply stay visible
+        // instead of being stuck at opacity:0 forever. A previous version bound a
+        // fromTo at timeline position 0, which rendered opacity:0 immediately and
+        // left "Selected work" blank on devices where the trigger didn't fire.
+        const entrance = ScrollTrigger.create({
+          trigger: section,
+          start: "top 85%",
+          once: true,
+          onEnter: () => {
+            gsap.from(cards, {
+              opacity: 0,
+              y: 30,
+              duration: 0.7,
+              ease: "power2.out",
+              stagger: 0.1,
+            });
           },
         });
 
-        entranceTl.fromTo(
-          cards,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: "power2.out",
-            stagger: 0.1,
-          },
-        );
+        return () => entrance.kill();
       });
 
       // --- Magnetic effect: only on hover-capable devices ---
@@ -118,23 +114,23 @@ export function WorkMagneticField({
         const qy: gsap.QuickToFunc[] = [];
         const qrx: gsap.QuickToFunc[] = [];
         const qry: gsap.QuickToFunc[] = [];
-        const qs: gsap.QuickToFunc[] = [];
+        const qsx: gsap.QuickToFunc[] = [];
+        const qsy: gsap.QuickToFunc[] = [];
 
+        // Use GSAP's canonical transform property names. quickTo() relies on
+        // resetTo(), which can only reset a property GSAP stores directly.
+        // "scale" is a shorthand (split into scaleX/scaleY) and "rotateX/rotateY"
+        // normalise to "rotationX/rotationY", so quickTo on those logged
+        // "<prop> not eligible for reset" on every pointer move. scaleX/scaleY
+        // and rotationX/rotationY are directly resettable.
         cards.forEach((card) => {
           qx.push(gsap.quickTo(card, "x", { duration: 0.6, ease: "power3.out" }));
           qy.push(gsap.quickTo(card, "y", { duration: 0.6, ease: "power3.out" }));
-          qrx.push(gsap.quickTo(card, "rotateX", { duration: 0.6, ease: "power3.out" }));
-          qry.push(gsap.quickTo(card, "rotateY", { duration: 0.6, ease: "power3.out" }));
-          qs.push(gsap.quickTo(card, "scale", { duration: 0.6, ease: "power3.out" }));
+          qrx.push(gsap.quickTo(card, "rotationX", { duration: 0.6, ease: "power3.out" }));
+          qry.push(gsap.quickTo(card, "rotationY", { duration: 0.6, ease: "power3.out" }));
+          qsx.push(gsap.quickTo(card, "scaleX", { duration: 0.6, ease: "power3.out" }));
+          qsy.push(gsap.quickTo(card, "scaleY", { duration: 0.6, ease: "power3.out" }));
         });
-
-        quickToRefs.current = {
-          x: qx,
-          y: qy,
-          rotateX: qrx,
-          rotateY: qry,
-          scale: qs,
-        };
 
         const handleMouseMove = (e: MouseEvent) => {
           const mouseX = e.clientX;
@@ -172,7 +168,8 @@ export function WorkMagneticField({
             qy[i](ty);
             qrx[i](rx);
             qry[i](ry);
-            qs[i](s);
+            qsx[i](s);
+            qsy[i](s);
           });
         };
 
@@ -183,7 +180,8 @@ export function WorkMagneticField({
             qy[i](0);
             qrx[i](0);
             qry[i](0);
-            qs[i](1);
+            qsx[i](1);
+            qsy[i](1);
           });
         };
 

@@ -45,4 +45,9 @@ declare module "lucide-react" {
   export const Terminal: LucideIcon;
   export const Command: LucideIcon;
   export const Sparkles: LucideIcon;
+  export const UserCheck: LucideIcon;
+  export const Network: LucideIcon;
+  export const ClipboardCheck: LucideIcon;
+  export const RefreshCw: LucideIcon;
+  export const KeyRound: LucideIcon;
 }

@@ -49,18 +49,22 @@
 }
 
 .modeButtonContent {
+  position: relative;
   display: inline-flex;
-  align-items: flex-start;
-  gap: var(--space-internal-2);
+  align-items: center;
 }
 
 .modeButtonLabel {
   display: inline-block;
+  white-space: nowrap;
 }
 
+/* Badge perches above the label's top-right so "Book a call" stays on one line. */
 .newBadge {
-  flex-shrink: 0;
-  margin-block-start: -0.125rem;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  transform: translate(45%, -55%);
   padding-block: 1px;
   padding-inline: var(--space-internal-4);
   border-radius: var(--radius-full);
