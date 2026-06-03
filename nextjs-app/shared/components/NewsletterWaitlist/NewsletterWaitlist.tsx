@@ -103,7 +103,7 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
       <div className={`${styles.container} ${className || ""}`}>
         <Button
           onClick={handleTransform}
-          disabled={disabled}
+          isDisabled={disabled}
           variant="primary"
           size="l"
           className={styles.triggerButton}
