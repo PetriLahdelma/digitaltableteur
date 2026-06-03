@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/accessibility",
     "/blog",
     "/colophon",
+    "/design-system/agent",
     "/sitemap",
   ].map((path) => ({
     url: toUrl(path),

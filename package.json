@@ -93,6 +93,8 @@
     "build:agent-blocks": "tsx scripts/design-system/build-component-agent-blocks.ts",
     "build:relationship-graph": "node scripts/design-system/generate-relationship-graph.mjs",
     "build:figma-variables": "node scripts/design-system/build-figma-variables-payload.mjs && node scripts/design-system/generate-figma-phase-scripts.mjs",
+    "figma:apply-variables": "node scripts/design-system/apply-figma-variables-local.mjs",
+    "verify:figma-in-scope": "node scripts/design-system/verify-figma-in-scope.mjs",
     "check:contrast": "node scripts/design-system/check-contrast.mjs",
     "check:token-descriptions": "tsx scripts/design-system/check-token-descriptions.ts",
     "check:drift": "tsx scripts/design-system/check-drift.ts",

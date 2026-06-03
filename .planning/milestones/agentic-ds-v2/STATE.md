@@ -4,20 +4,23 @@
 
 ## Shipped
 
-- [x] Phase 7: Intent golden eval (20 cases, 85% gate)
+- [x] Phase 7: Intent golden eval (20 cases, 90% gate — currently 100%)
 - [x] Phase 8: Operating model + audit playbook
-- [x] Phase 10 (partial): Pattern recipes + `suggest_pattern_for_layout` MCP + golden patterns eval
-- [x] Phase 11 (partial): `/design-system/agent` proof page
+- [x] Phase 9: Figma variables verified in DT-Site-stuff (78 vars: Color 45, Dimension 29, String 4)
+- [x] Phase 2–3: Page skeleton + 277 components verified; `dsb-state.json` + `npm run verify:figma-in-scope`
+- [x] Code Connect: **skipped** (Figma Pro — use contract URLs + Storybook Design panel)
+- [x] Phase 10 (expanded): SiteHeader, SiteFooter, ArticleHero recipes + golden patterns
+- [x] Phase 11: `/design-system/agent` proof page + sitemap + Colophon link
 - [x] Phase 12 (partial): `npm run agentic-ds-audit` + audit playbook doc
 - [x] CI quota rule in `AGENTS.md` — verify locally, admin merge
 
-## Figma (phase 9 — manual MCP)
+## Figma (phase 9 — verified)
 
-Local payloads ready:
+Variables synced to [DT-Site-stuff](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff) (`runId: dt-dsb-2026-06-03`). Re-apply after token changes:
 
 ```bash
 npm run build:figma-variables
-# Apply nextjs-app/shared/foundations/figma/phases/*.js via Figma MCP (DT-Site-stuff)
+npm run figma:apply-variables   # Desktop MCP; sequential phase scripts
 ```
 
 See [docs/FIGMA_DESIGN_SYSTEM_SYNC.md](../../../docs/FIGMA_DESIGN_SYSTEM_SYNC.md).

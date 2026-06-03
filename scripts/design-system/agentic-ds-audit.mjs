@@ -12,6 +12,9 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const steps = [
   { name: "build:tokens", cmd: "npm", args: ["run", "build:tokens"] },
   { name: "agent:eval", cmd: "npm", args: ["run", "agent:eval"] },
+  { name: "check:storybook-figma", cmd: "npm", args: ["run", "check:storybook-figma"] },
+  { name: "verify:figma-in-scope", cmd: "npm", args: ["run", "verify:figma-in-scope"] },
+  { name: "sync:figma", cmd: "npm", args: ["run", "sync:figma"] },
   { name: "lint:dt-usage", cmd: "npm", args: ["run", "lint:dt-usage"] },
   {
     name: "contract-drift",
@@ -27,6 +30,10 @@ const manifestPath = join(
 const figmaPhasesDir = join(
   ROOT,
   "nextjs-app/shared/foundations/figma/phases",
+);
+const dsbStatePath = join(
+  ROOT,
+  "nextjs-app/shared/foundations/figma/dsb-state.json",
 );
 
 console.log("# Agentic DS audit (local)\n");
@@ -72,6 +79,15 @@ const figmaPhaseCount = existsSync(figmaPhasesDir)
 console.log(
   `- Figma variable phases (local payloads): ${figmaPhaseCount} script(s) — apply via MCP per docs/FIGMA_DESIGN_SYSTEM_SYNC.md`,
 );
+if (existsSync(dsbStatePath)) {
+  const dsb = JSON.parse(readFileSync(dsbStatePath, "utf8"));
+  console.log(
+    `- Figma library state: ${dsb.components?.totalComponentNodes ?? "?"} components, ${dsb.variables?.total ?? "?"} tokens (runId ${dsb.runId})`,
+  );
+  if (dsb.codeConnect?.status === "skipped") {
+    console.log(`- Code Connect: skipped (${dsb.codeConnect.reason})`);
+  }
+}
 console.log("\nPlaybook: docs/AGENTIC_DS_AUDIT_PLAYBOOK.md\n");
 
 process.exit(failed ? 1 : 0);
