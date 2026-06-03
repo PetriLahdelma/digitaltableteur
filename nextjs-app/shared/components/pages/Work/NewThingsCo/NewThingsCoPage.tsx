@@ -51,17 +51,17 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Services</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Services</Title>
               <p className={styles.metaText}>
                 Brand Strategy, Visual Identity, Design System and Digital Presence
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Duration</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Duration</Title>
               <p className={styles.metaText}>2017–2018</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Tools used</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Tools used</Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <SiAdobeillustrator size={24} title="Illustrator" />
@@ -70,7 +70,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <h3 className={styles.metaLabel}>Overview</h3>
+            <Title level={3} size="XS" className={styles.metaLabel}>Overview</Title>
             <p className={styles.metaOverview}>
               <strong>New Things Co</strong> (originally Lab of New) approached us
               in September 2017 seeking to establish a cohesive brand identity that

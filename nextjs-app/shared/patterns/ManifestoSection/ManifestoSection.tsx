@@ -7,6 +7,7 @@ import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { gsap } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
+import Title from "@dt/Title";
 
 export interface ManifestoToken {
   /** Token text content */
@@ -194,16 +195,17 @@ export function ManifestoSection({
       <Container size="lg" className="relative z-10">
         {/* Title */}
         <FadeIn direction="up" delay={0} distance={20}>
-          <h2
+          <Title
+            level={2}
             className={cn(
               "font-display font-bold",
               "text-xl tablet:text-2xl",
               "mb-6",
-              isGradient ? "text-white" : "text-foreground"
+              isGradient ? "text-white" : "text-foreground",
             )}
           >
             {title}
-          </h2>
+          </Title>
         </FadeIn>
 
         {/* Manifesto tokens */}

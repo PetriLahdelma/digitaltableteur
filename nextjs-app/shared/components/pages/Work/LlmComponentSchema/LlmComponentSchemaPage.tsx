@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Title from "@dt/Title";
 import Text from "@dt/Text";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
@@ -186,15 +187,15 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Type</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Type</Title>
               <p className={styles.metaText}>npm schema + CLI + governance toolkit (MIT)</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Version</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Version</Title>
               <p className={styles.metaText}>v1.2.0</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Stack</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Stack</Title>
               <div className={styles.metaTools}>
                 <SiTypescript size={24} title="TypeScript" />
                 <SiNpm size={24} title="npm" />
@@ -202,7 +203,7 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
               </div>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Packages</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Packages</Title>
               <p className={styles.metaText}>
                 <a href="https://www.npmjs.com/package/@petritapanilahdelma/llm-component-contracts" target="_blank" rel="noopener noreferrer">contracts</a>
                 {" · "}
@@ -213,7 +214,7 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <h3 className={styles.metaLabel}>Overview</h3>
+            <Title level={3} size="XS" className={styles.metaLabel}>Overview</Title>
             <p className={styles.metaOverview}>
               <strong>AI-generated components look right but behave wrong.</strong> They miss ARIA attributes, invent prop APIs that don&apos;t match the system, use hardcoded values instead of tokens. Code review catches some of this. Most of it ships.
             </p>

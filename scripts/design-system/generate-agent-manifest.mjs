@@ -57,6 +57,35 @@ for (const base of dirs) {
 
 const usageScan = scanComponentUsage({ root: ROOT });
 
+const RELATIONSHIP_GRAPH_PATH = join(
+  ROOT,
+  "nextjs-app/shared/foundations/dist/relationship-graph.json",
+);
+let relationshipGraph = null;
+if (existsSync(RELATIONSHIP_GRAPH_PATH)) {
+  try {
+    const graph = JSON.parse(readFileSync(RELATIONSHIP_GRAPH_PATH, "utf8"));
+    const withEdges = Object.values(graph.components ?? {}).filter(
+      (c) => c.composesWith?.length > 0,
+    ).length;
+    relationshipGraph = {
+      description:
+        "Merged static composesWith policy + co-import evidence (see generate-relationship-graph.mjs).",
+      generatedAt: graph.generatedAt,
+      coImportMinFiles: graph.coImportMinFiles,
+      nodesWithComposesWith: withEdges,
+      regenerate: "npm run build:relationship-graph or npm run build:tokens",
+      path: "nextjs-app/shared/foundations/dist/relationship-graph.json",
+    };
+  } catch (err) {
+    console.warn("⚠  Could not parse relationship-graph.json:", err.message);
+  }
+} else {
+  console.warn(
+    "⚠  relationship-graph.json missing — run npm run build:relationship-graph",
+  );
+}
+
 let agentBlocksByName = {};
 if (existsSync(AGENT_BLOCKS_PATH)) {
   try {
@@ -224,6 +253,7 @@ writeFileSync(
       tokens,
       catalogCoverage,
       usageCoverage,
+      relationshipGraph,
       honestBeta: {
         description:
           "Components carrying scaffolder boilerplate at beta+. Each entry disappears automatically when its MDX + spec.md are rewritten with real prose.",

@@ -71,6 +71,16 @@ npm run build:tokens
 
 Regenerates `nextjs-app/shared/foundations/dist/agent-manifest.json`.
 
+### @dt usage gate
+
+Product UI under `app/`, `patterns/`, and `pages/` must use `@dt/Button` and `@dt/Title` (not raw `<button>` / headings). CI: `npm run lint:dt-usage` and ESLint `no-restricted-syntax` in `npm run lint`.
+
+### Agent / MCP discovery
+
+- CLI: `npm run find-component -- "your intent"`
+- Local MCP: `npm run ds:mcp` (stdio — see `docs/DESIGN_SYSTEM_MCP.md`)
+- HTTP: `/mcp` on production (design-system tools + consulting)
+
 ---
 
 ## Examples

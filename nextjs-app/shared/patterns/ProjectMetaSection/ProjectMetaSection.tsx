@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
 import PageLayout from "../PageLayout";
+import Title from "@dt/Title";
 import { FadeIn } from "../../components/animations/FadeIn";
 import styles from "./ProjectMetaSection.module.css";
 
@@ -124,9 +125,9 @@ export function ProjectMetaSection({
             {/* Services */}
             <FadeIn direction="up" delay={0} distance={20}>
               <div>
-                <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
+                <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
                   {t("projectServicesTitle", "Services")}
-                </h3>
+                </Title>
                 <ul ref={servicesRef} className="space-y-2">
                   {services.map((service) => (
                     <li
@@ -146,9 +147,9 @@ export function ProjectMetaSection({
             {duration && (
               <FadeIn direction="up" delay={0.1} distance={20}>
                 <div>
-                  <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-2">
+                  <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-2">
                     {t("projectDurationLabel", "Duration")}
-                  </h3>
+                  </Title>
                   <p className="font-body text-sm text-foreground">{duration}</p>
                 </div>
               </FadeIn>
@@ -158,9 +159,9 @@ export function ProjectMetaSection({
             {tools && tools.length > 0 && (
               <FadeIn direction="up" delay={0.2} distance={20}>
                 <div>
-                  <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
+                  <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
                     {t("projectToolsLabel", "Tools")}
-                  </h3>
+                  </Title>
                   <div className="flex flex-wrap gap-4">
                     {tools.map((tool) => (
                       <div
@@ -181,9 +182,9 @@ export function ProjectMetaSection({
             {client && (
               <FadeIn direction="up" delay={0.3} distance={20}>
                 <div>
-                  <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-2">
+                  <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-2">
                     {t("projectClientLabel", "Client")}
-                  </h3>
+                  </Title>
                   {client.logo ? (
                     <div className="relative h-10 w-auto">
                       <Image
@@ -208,9 +209,9 @@ export function ProjectMetaSection({
           <div className="desktop:col-span-8" data-donny-target={donnyTarget}>
             <FadeIn direction="up" delay={0.2} distance={30}>
               <div>
-                <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
+                <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
                   {t("projectOverviewLabel", "Overview")}
-                </h3>
+                </Title>
                 <div className="prose prose-sm max-w-none font-body text-foreground">
                   {overview}
                 </div>
@@ -223,9 +224,9 @@ export function ProjectMetaSection({
         {team && team.length > 0 && (
           <FadeIn direction="up" delay={0.4} distance={30}>
             <div className="mt-12 pt-8 border-t border-border">
-              <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-6">
+              <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-6">
                 {t("projectTeamLabel", "Team")}
-              </h3>
+              </Title>
               <ul
                 role="list"
                 aria-label={t("projectTeamMembers", "Team members")}

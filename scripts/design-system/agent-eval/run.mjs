@@ -79,6 +79,53 @@ if (withAgentBlocks < 100) {
   console.log(`✓ ${withAgentBlocks} components with agent blocks`);
 }
 
+if (!manifest.relationshipGraph?.nodesWithComposesWith) {
+  console.error("FAIL: relationshipGraph block missing — run npm run build:tokens");
+  failed += 1;
+} else if (manifest.relationshipGraph.nodesWithComposesWith < 8) {
+  console.error(
+    `FAIL: expected >=8 nodes with composesWith, got ${manifest.relationshipGraph.nodesWithComposesWith}`,
+  );
+  failed += 1;
+} else {
+  console.log(
+    `✓ relationship graph: ${manifest.relationshipGraph.nodesWithComposesWith} nodes with composesWith`,
+  );
+}
+
+const alertEntry = manifest.components?.find((c) => c.name === "AlertBanner");
+if (!alertEntry?.agent?.composesWith?.includes("Button")) {
+  console.error("FAIL: AlertBanner agent block must list Button in composesWith");
+  failed += 1;
+} else {
+  console.log("✓ AlertBanner composesWith includes Button");
+}
+
+const DS_MCP_TOOLS = [
+  "list_components",
+  "find_component_for_intent",
+  "get_component_contract",
+  "get_tokens",
+  "validate_component_usage",
+];
+const dsExecutorsPath = join(
+  ROOT,
+  "nextjs-app/shared/lib/design-system-mcp/executors.ts",
+);
+if (!existsSync(dsExecutorsPath)) {
+  console.error("FAIL: design-system MCP executors missing");
+  failed += 1;
+} else {
+  const source = readFileSync(dsExecutorsPath, "utf8");
+  const missing = DS_MCP_TOOLS.filter((name) => !source.includes(`"${name}"`));
+  if (missing.length) {
+    console.error(`FAIL: design-system MCP tools not defined: ${missing.join(", ")}`);
+    failed += 1;
+  } else {
+    console.log(`✓ design-system MCP tools defined (${DS_MCP_TOOLS.length})`);
+  }
+}
+
 const buttonEntry = manifest.components?.find((c) => c.name === "Button");
 if (!buttonEntry?.agent?.variants?.variant?.values?.length) {
   console.error("FAIL: Button agent block must include variant axis from TypeScript");

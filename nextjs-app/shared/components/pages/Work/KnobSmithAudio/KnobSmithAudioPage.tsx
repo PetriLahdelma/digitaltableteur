@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Title from "@dt/Title";
 import Text from "@dt/Text";
 import { Mermaid } from "../../../Mermaid";
 import StoryBlock from "../../../../patterns/StoryBlock";
@@ -54,17 +55,17 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Services</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Services</Title>
               <p className={styles.metaText}>
                 Product Design, Interaction Design, Visual Design, Brand Identity
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Duration</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Duration</Title>
               <p className={styles.metaText}>Dec 2025 – Present</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Tools used</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Tools used</Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <ClaudeIcon width={24} height={24} aria-label="Claude AI" />
@@ -73,7 +74,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <h3 className={styles.metaLabel}>Overview</h3>
+            <Title level={3} size="XS" className={styles.metaLabel}>Overview</Title>
             <p className={styles.metaOverview}>
               <strong>KnobSmith Audio</strong> is a personal venture developing
               professional audio plugins for music producers and sound designers.

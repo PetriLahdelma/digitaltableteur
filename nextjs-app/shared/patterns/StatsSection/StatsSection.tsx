@@ -9,6 +9,7 @@ import {
 } from "../../components/animations/AnimatedCounter";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { cn } from "@/lib/utils";
+import Title from "@dt/Title";
 
 export interface StatItem extends Omit<AnimatedCounterProps, "className"> {}
 
@@ -62,9 +63,12 @@ export function StatsSection({
         </noscript>
         {title && (
           <FadeIn direction="up" distance={20}>
-            <h2 className="font-display font-bold text-xl tablet:text-2xl mb-12 text-center">
+            <Title
+              level={2}
+              className="font-display font-bold text-xl tablet:text-2xl mb-12 text-center"
+            >
               {title}
-            </h2>
+            </Title>
           </FadeIn>
         )}
         <div

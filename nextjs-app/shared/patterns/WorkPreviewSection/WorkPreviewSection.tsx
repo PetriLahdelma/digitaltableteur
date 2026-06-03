@@ -9,6 +9,7 @@ import { FadeIn } from "../../components/animations/FadeIn";
 import { ProjectCard } from "../../components/ProjectCard";
 import { EnhancedProjectCard } from "../../components/EnhancedProjectCard";
 import { cn } from "@/lib/utils";
+import Title from "@dt/Title";
 
 export interface ProjectItem {
   /** Project title */
@@ -89,7 +90,11 @@ export function WorkPreviewSection({
         {/* Smaller projects */}
         <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-1 gap-6">
           {rest.slice(0, 2).map((project, index) => (
-            <FadeIn key={project.slug} delay={(index + 1) * 0.15} direction="up">
+            <FadeIn
+              key={project.slug}
+              delay={(index + 1) * 0.15}
+              direction="up"
+            >
               <ProjectCard
                 title={project.title}
                 slug={project.slug}
@@ -136,12 +141,13 @@ export function WorkPreviewSection({
         {/* Section Header */}
         <FadeIn className="flex items-end justify-between mb-12">
           {title && (
-            <h2
+            <Title
+              level={2}
               id={`${id}-title`}
               className="font-display font-bold text-3xl tablet:text-4xl desktop:text-5xl text-foreground"
             >
               {title}
-            </h2>
+            </Title>
           )}
           {showViewAll && (
             <Link
@@ -150,7 +156,7 @@ export function WorkPreviewSection({
                 "hidden tablet:flex items-center gap-2",
                 "font-body text-sm text-muted-foreground",
                 "hover:text-foreground transition-colors",
-                "group"
+                "group",
               )}
             >
               {t("homeWorkViewAll", "View all work")}
@@ -172,7 +178,7 @@ export function WorkPreviewSection({
               className={cn(
                 "flex items-center justify-center gap-2",
                 "font-body text-sm text-muted-foreground",
-                "hover:text-foreground transition-colors"
+                "hover:text-foreground transition-colors",
               )}
             >
               {t("homeWorkViewAll", "View all work")}

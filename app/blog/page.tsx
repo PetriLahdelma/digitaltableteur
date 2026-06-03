@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { BlogPage } from "@dt-pages/Blog";
+import Title from "@dt/Title";
 import {
   getCollectionPageSchema,
   stringifyJsonLd,
@@ -60,7 +61,9 @@ export default function Blog() {
         }}
       />
       <section aria-labelledby="blog-index-heading" className="sr-only">
-        <h2 id="blog-index-heading">Blog articles</h2>
+        <Title level={2} id="blog-index-heading" className="sr-only">
+          Blog articles
+        </Title>
         <ul>
           {posts.map((post) => (
             <li key={post.slug}>
@@ -70,8 +73,7 @@ export default function Blog() {
           ))}
         </ul>
         <p>
-          RSS feed:{" "}
-          <a href={toAbsoluteSiteUrl("/blog/feed.xml")}>Subscribe</a>
+          RSS feed: <a href={toAbsoluteSiteUrl("/blog/feed.xml")}>Subscribe</a>
         </p>
       </section>
       <BlogPage />

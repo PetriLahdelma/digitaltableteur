@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Icon from "@/nextjs-app/shared/components/Icon";
+import Button from "@dt/Button";
 import {
   NEWS_BULLETIN_ITEMS,
   type NewsBulletinItem,
@@ -177,18 +178,19 @@ export function NewsBulletin({
       >
         {isOverflowing ? (
           canScrollPrev ? (
-            <button
+            <Button
               type="button"
+              variant="tertiary"
+              size="s"
               className={styles.navButton}
-              aria-label={t(
+              accessibleName={t(
                 "newsBulletinScrollPrev",
                 "Show previous highlights",
               )}
               aria-controls={TRACK_ID}
               onClick={() => scrollTrack(-1)}
-            >
-              <Icon name="arrow-left" size="sm" ariaLabel="" />
-            </button>
+              icon={<Icon name="arrow-left" size="sm" ariaLabel="" />}
+            />
           ) : (
             <span className={styles.navSpacer} aria-hidden />
           )
@@ -210,18 +212,19 @@ export function NewsBulletin({
 
         {isOverflowing ? (
           canScrollNext ? (
-            <button
+            <Button
               type="button"
+              variant="tertiary"
+              size="s"
               className={styles.navButton}
-              aria-label={t(
+              accessibleName={t(
                 "newsBulletinScrollNext",
                 "Show more highlights",
               )}
               aria-controls={TRACK_ID}
               onClick={() => scrollTrack(1)}
-            >
-              <Icon name="arrow-right" size="sm" ariaLabel="" />
-            </button>
+              icon={<Icon name="arrow-right" size="sm" ariaLabel="" />}
+            />
           ) : (
             <span className={styles.navSpacer} aria-hidden />
           )

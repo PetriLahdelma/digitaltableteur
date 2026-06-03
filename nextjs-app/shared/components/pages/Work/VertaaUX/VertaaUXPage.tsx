@@ -53,17 +53,17 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Services</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Services</Title>
               <p className={styles.metaText}>
                 Product Strategy, UX Intelligence, Accessibility and Brand Identity
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Duration</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Duration</Title>
               <p className={styles.metaText}>2025–Present</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Tools used</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Tools used</Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <ClaudeIcon width={24} height={24} aria-label="Claude AI" />
@@ -72,7 +72,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <h3 className={styles.metaLabel}>Overview</h3>
+            <Title level={3} size="XS" className={styles.metaLabel}>Overview</Title>
             <p className={styles.metaOverview}>
               <strong>VertaaUX.ai</strong> is an automated UX intelligence platform
               that delivers comprehensive a11y- and UX-audits. Using 15+

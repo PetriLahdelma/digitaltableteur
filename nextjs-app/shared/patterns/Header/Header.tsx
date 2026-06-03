@@ -9,6 +9,7 @@ import { type Theme } from "@dt/ThemeProvider";
 import { useTranslation } from "react-i18next";
 import { usePersistentTheme } from "../../hooks/usePersistentTheme";
 import Icon from "@dt/Icon";
+import Button from "@dt/Button";
 import MobileMenu from "./MobileMenu";
 
 const MOBILE_MENU_ID = "dt-mobile-menu";
@@ -80,11 +81,9 @@ export const Header: React.FC<HeaderProps> = ({
     [t],
   );
   const resolvedNavItems = navItems ?? defaultNavItems;
-  const currentlang = (
-    i18n?.resolvedLanguage ||
-    i18n?.language ||
-    "en"
-  ).split("-")[0];
+  const currentlang = (i18n?.resolvedLanguage || i18n?.language || "en").split(
+    "-",
+  )[0];
 
   // On mount, check for cookie and set language if needed
   React.useEffect(() => {
@@ -227,33 +226,39 @@ export const Header: React.FC<HeaderProps> = ({
         <div className={styles.controls}>
           <div className={styles.languageSwitcher}>
             {languages.map((lang) => (
-              <button
+              <Button
                 key={lang.code}
                 type="button"
+                variant="tertiary"
+                size="s"
                 onClick={() => changeLanguage(lang.code)}
-                disabled={currentlang === lang.code}
+                isDisabled={currentlang === lang.code}
                 className={`${styles.languageLink} ${
                   currentlang === lang.code ? styles.languageLinkActive : ""
                 }`.trim()}
-                aria-label={lang.label}
+                accessibleName={lang.label}
                 aria-current={currentlang === lang.code ? "page" : undefined}
               >
                 {lang.label}
-              </button>
+              </Button>
             ))}
           </div>
-          <button
+          <Button
+            type="button"
+            variant="tertiary"
+            size="s"
             onClick={handleThemeToggle}
             className={styles.themeToggle}
-            aria-label={t("toggleDarkMode")}
-          >
-            <span
-              className={`${styles.themeToggleIcon} ${isThemeAnimating ? styles.themeToggleIconAnimating : ""}`.trim()}
-              aria-hidden="true"
-            >
-              {themeIcons[theme]}
-            </span>
-          </button>
+            accessibleName={t("toggleDarkMode")}
+            icon={
+              <span
+                className={`${styles.themeToggleIcon} ${isThemeAnimating ? styles.themeToggleIconAnimating : ""}`.trim()}
+                aria-hidden="true"
+              >
+                {themeIcons[theme]}
+              </span>
+            }
+          />
           <span
             className={styles.visuallyHidden}
             aria-live="polite"
@@ -262,17 +267,18 @@ export const Header: React.FC<HeaderProps> = ({
             {themeAnnouncement}
           </span>
         </div>
-        <button
+        <Button
           type="button"
+          variant="tertiary"
+          size="s"
           className={styles.mobileMenuButton}
           onClick={handleOpenMobileMenu}
-          aria-label={t("navMenuOpen", "Open navigation menu")}
+          accessibleName={t("navMenuOpen", "Open navigation menu")}
           aria-haspopup="dialog"
           aria-expanded={isMobileMenuOpen}
           aria-controls={MOBILE_MENU_ID}
-        >
-          <Icon name="list" aria-hidden="true" />
-        </button>
+          icon={<Icon name="list" aria-hidden="true" />}
+        />
       </div>
       <MobileMenu
         isOpen={isMobileMenuOpen}

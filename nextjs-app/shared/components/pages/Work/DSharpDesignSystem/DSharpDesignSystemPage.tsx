@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Title from "@dt/Title";
 import Text from "@dt/Text";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
@@ -1793,21 +1794,21 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Client</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Client</Title>
               <p className={styles.metaText}>
                 DSharp, a Finnish data-modelling platform shipping DSharp
                 Studio, PathFinder, and the new DSharp Scout.
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Type</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Type</Title>
               <p className={styles.metaText}>
                 AI-native product design system. Three layered packages,
                 contract-per-component, enforced spacing.
               </p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Stack</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Stack</Title>
               <div className={styles.metaTools}>
                 <SiReact size={22} title="React 19" />
                 <SiTypescript size={22} title="TypeScript 5" />
@@ -1817,7 +1818,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
               </div>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Distribution</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Distribution</Title>
               <p className={styles.metaText}>
                 Five npm packages, <code>@dsharp/tokens</code>,{" "}
                 <code>@dsharp/tokens-css</code>, <code>@dsharp/react</code>,{" "}
@@ -1829,7 +1830,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <h3 className={styles.metaLabel}>Brief</h3>
+            <Title level={3} size="XS" className={styles.metaLabel}>Brief</Title>
             <p className={styles.metaOverview}>
               DSharp ships products to a broad customer base in Finland and
               internationally: DSharp Studio, a model-first desktop app

@@ -8,6 +8,7 @@ import { NavMenuList } from "@dt/index";
 import Label from "@dt/Label";
 import { usePersistentTheme } from "../../hooks/usePersistentTheme";
 import Icon from "@dt/Icon";
+import Button from "@dt/Button";
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -192,15 +193,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             <Title as="h2" size="S" terminals="sans" className={styles.title}>
               {t("navMenuTitle", "Menu")}
             </Title>
-            <button
+            <Button
               type="button"
+              variant="tertiary"
+              size="m"
               className={styles.closeButton}
               onClick={onClose}
               ref={closeButtonRef}
-              aria-label={t("navMenuClose", "Close navigation")}
-            >
-              <Icon name="x" ariaLabel="Close" size="lg" />
-            </button>
+              accessibleName={t("navMenuClose", "Close navigation")}
+              icon={<Icon name="x" ariaLabel="Close" size="lg" />}
+            />
           </header>
           <nav aria-label={t("navMenuLinks", "Primary pages")}>
             <NavMenuList
@@ -233,9 +235,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                 className={styles.languageList}
               >
                 {languages.map((language) => (
-                  <button
+                  <Button
                     key={language.code}
                     type="button"
+                    variant="tertiary"
+                    size="s"
                     onClick={() => handleLanguageChange(language.code)}
                     className={`${styles.languageButton} ${
                       currentLanguage === language.code
@@ -247,7 +251,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                     }
                   >
                     {language.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -258,15 +262,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               >
                 {t("navMenuTheme", "Theme")}
               </Label>
-              <button
+              <Button
                 id="mobile-menu-theme-button"
                 type="button"
+                variant="tertiary"
+                size="s"
                 className={styles.themeIconButton}
                 onClick={handleThemeToggle}
-                aria-label={t("navMenuThemeToggle", "Cycle theme")}
-              >
-                {themeIcons[theme]}
-              </button>
+                accessibleName={t("navMenuThemeToggle", "Cycle theme")}
+                icon={themeIcons[theme]}
+              />
             </div>
           </div>
           <div className={styles.footerLinks}>

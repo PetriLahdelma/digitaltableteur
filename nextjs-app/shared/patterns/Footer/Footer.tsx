@@ -7,6 +7,7 @@ import Grid from "@dt/Grid";
 import Link from "@dt/Link";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
+import Title from "@dt/Title";
 
 /**
  * Footer component.
@@ -19,9 +20,9 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <Grid columns={3} className={styles.footerGrid}>
         <div className={styles.companyInfo}>
-          <h2>
+          <Title level={2}>
             <a href="/">Digitaltableteur</a>
-          </h2>
+          </Title>
           <p className={styles.billingDetails}>{t("footerAddressTitle")}</p>
           <p>
             {t("footerAddress1")}

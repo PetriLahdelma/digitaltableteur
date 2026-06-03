@@ -15,6 +15,7 @@ jobs:
       - run: npm run build:zod-catalog
       - run: npm run check:generated
       - run: npm run agent:eval
+      - run: npm run lint:dt-usage
       - run: npm run check:figma
       - run: npm run check:bundle-budgets
       - run: npm run check:contrast

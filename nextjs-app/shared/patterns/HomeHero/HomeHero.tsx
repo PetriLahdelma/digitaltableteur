@@ -10,7 +10,7 @@ import { FadeIn } from "../../components/animations/FadeIn";
 import { ScrollIndicator } from "../../components/ScrollIndicator";
 import { Container } from "../../components/Container";
 import { Stack } from "../../components/Stack";
-import { Button } from "@/components/ui/button";
+import Button from "@dt/Button";
 import { cn } from "@/lib/utils";
 
 function pickRandomIndex(length: number): number {
@@ -18,9 +18,7 @@ function pickRandomIndex(length: number): number {
   return Math.floor(Math.random() * length);
 }
 
-function readTranslationList(
-  value: unknown,
-): string[] {
+function readTranslationList(value: unknown): string[] {
   if (!Array.isArray(value)) return [];
   return value.filter((item): item is string => typeof item === "string");
 }
@@ -89,7 +87,10 @@ export function HomeHero({
       return subtextOptions[randomSubtextIndex];
     }
     // Fallback for SSR or if no options available
-    return t("homeHeroSubtext", "From concept to code, we craft human-centered GenAI experiences.");
+    return t(
+      "homeHeroSubtext",
+      "From concept to code, we craft human-centered GenAI experiences.",
+    );
   }, [isClient, subtextOptions, randomSubtextIndex, t]);
 
   return (
@@ -124,7 +125,7 @@ export function HomeHero({
             as="h1"
             className={cn(
               "text-5xl tablet:text-6xl desktop:text-7xl xl:text-8xl 2xl:text-9xl",
-              "text-foreground max-w-5xl tracking-tight leading-[0.95]"
+              "text-foreground max-w-5xl tracking-tight leading-[0.95]",
             )}
             stagger={0.06}
             duration={1}
@@ -141,7 +142,7 @@ export function HomeHero({
             as="p"
             className={cn(
               "text-xl tablet:text-2xl desktop:text-3xl",
-              "text-foreground/70 max-w-3xl font-body leading-relaxed"
+              "text-foreground/70 max-w-3xl font-body leading-relaxed",
             )}
             delay={0.5}
             stagger={0.03}
@@ -153,23 +154,22 @@ export function HomeHero({
           <FadeIn delay={1.2} direction="up" distance={30}>
             <Stack direction="horizontal" gap="md" align="center" wrap>
               <Button
-                size="lg"
-                asChild
+                variant="primary"
+                size="l"
+                href="/contact"
                 className="min-w-[160px]"
+                data-donny-interest="contact-cta"
               >
-                <a href="/contact" data-donny-interest="contact-cta">
-                  {t("homeHeroContactCta", "Get in touch")}
-                </a>
+                {t("homeHeroContactCta", "Get in touch")}
               </Button>
               <Button
-                variant="outline"
-                size="lg"
-                asChild
+                variant="tertiary"
+                size="l"
+                href="/about"
                 className="min-w-[160px]"
+                data-donny-interest="about-cta"
               >
-                <a href="/about" data-donny-interest="about-cta">
-                  {t("homeHeroAboutCta", "About us")}
-                </a>
+                {t("homeHeroAboutCta", "About us")}
               </Button>
             </Stack>
           </FadeIn>

@@ -434,8 +434,10 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
           </div>
 
           <div className={styles.aaasSection} data-donny-target="pricing.aaas">
-            <button
+            <Button
               type="button"
+              variant="tertiary"
+              size="m"
               className={styles.aaasTrigger}
               aria-expanded={aaasOpen}
               aria-controls={aaasPanelId}
@@ -461,7 +463,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
                   {t("contactInquiryBookTabNew", "NEW!")}
                 </span>
               </span>
-            </button>
+            </Button>
 
             <div
               id={aaasPanelId}

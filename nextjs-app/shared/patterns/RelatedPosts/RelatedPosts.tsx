@@ -8,6 +8,7 @@ import { Section } from "../../components/Section";
 import { EnhancedArticleCard } from "../../components/EnhancedArticleCard";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { getBlogPosts, getBlogPostBySlug } from "../../data/blogPosts";
+import Title from "@dt/Title";
 
 export interface RelatedPostsProps {
   /** Current article slug to exclude */
@@ -88,7 +89,8 @@ export function RelatedPosts({
       <Container size="lg">
         {/* Section header */}
         <FadeIn direction="up" delay={0} distance={20}>
-          <h2
+          <Title
+            level={2}
             className={cn(
               "font-display font-bold",
               "text-2xl tablet:text-3xl",
@@ -96,7 +98,7 @@ export function RelatedPosts({
             )}
           >
             {displayTitle}
-          </h2>
+          </Title>
         </FadeIn>
 
         {/* Posts grid */}

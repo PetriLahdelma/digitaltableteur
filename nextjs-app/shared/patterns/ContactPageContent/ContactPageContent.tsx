@@ -9,6 +9,7 @@ import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { ContactHero } from "../ContactHero";
 import { CVDownloadSection } from "../CVDownloadSection";
+import Title from "@dt/Title";
 
 // Dynamic import for MapSection - Leaflet is heavy (~150KB) and requires client-side only
 const MapSection = dynamic(() => import("../MapSection").then(mod => mod.MapSection), {
@@ -66,9 +67,12 @@ export function ContactPageContent({
       <Section spacing="lg" className="py-16">
         <Container size="lg">
           <FadeIn direction="up">
-            <h2 className="font-display font-semibold text-2xl tablet:text-3xl text-foreground mb-8">
+            <Title
+              level={2}
+              className="font-display font-semibold text-2xl tablet:text-3xl text-foreground mb-8"
+            >
               {t("contactSectionHeading")}
-            </h2>
+            </Title>
           </FadeIn>
 
           <div className="grid grid-cols-1 desktop:grid-cols-2 gap-8">
@@ -107,9 +111,12 @@ export function ContactPageContent({
       <Section spacing="lg" className="py-16 bg-muted/30">
         <Container size="md">
           <FadeIn direction="up">
-            <h2 className="font-display font-semibold text-xl tablet:text-2xl text-foreground mb-8 text-center">
+            <Title
+              level={2}
+              className="font-display font-semibold text-xl tablet:text-2xl text-foreground mb-8 text-center"
+            >
               {t("contactTitle")}
-            </h2>
+            </Title>
           </FadeIn>
           <div className="flex justify-center">
             <EnhancedPersonCard
@@ -141,9 +148,12 @@ export function ContactPageContent({
       <Section spacing="lg" className="py-16">
         <Container size="sm">
           <FadeIn direction="up">
-            <h2 className="font-display font-semibold text-xl tablet:text-2xl text-foreground mb-4 text-center">
+            <Title
+              level={2}
+              className="font-display font-semibold text-xl tablet:text-2xl text-foreground mb-4 text-center"
+            >
               {t("contactFormTitle")}
-            </h2>
+            </Title>
             <p className="font-body text-muted-foreground text-center mb-8">
               {t("contactInfo")}{" "}
               <a

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getPostMetaBySlug } from "@/app/blog/postMetadata";
 import { getAuthorBySlug } from "@/nextjs-app/shared/data/authors";
 import { Container } from "@/nextjs-app/shared/components/Container";
+import Title from "@dt/Title";
 
 function formatPublishedDate(iso?: string): string {
   if (!iso) return "";
@@ -66,9 +67,12 @@ export function ServerArticleHero({
             ) : null}
             {readTime ? ` · ${readTime}` : ""}
           </p>
-          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-foreground tablet:text-5xl">
+          <Title
+            level={1}
+            className="mt-4 font-display text-3xl font-bold tracking-tight text-foreground tablet:text-5xl"
+          >
             {title}
-          </h1>
+          </Title>
           {excerpt ? (
             <p className="mt-4 font-body text-lg leading-relaxed text-muted-foreground">
               {excerpt}

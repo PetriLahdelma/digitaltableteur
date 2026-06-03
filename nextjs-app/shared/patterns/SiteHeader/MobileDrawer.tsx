@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { cn } from "@/lib/utils";
 import { NavLink } from "@/nextjs-app/shared/components/NavLink";
 import { IconButton } from "@/nextjs-app/shared/components/IconButton";
+import Button from "@dt/Button";
 import { X, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
 import type { NavItem } from "./SiteHeader";
 import type { Theme } from "@dt/ThemeProvider";
@@ -197,19 +198,22 @@ export function MobileDrawer({
                 { code: "fi", ariaLabel: t("langFI_ariaLabel") },
                 { code: "sv", ariaLabel: t("langSV_ariaLabel") },
               ].map((lang) => (
-                <button
+                <Button
                   key={lang.code}
+                  type="button"
+                  variant="tertiary"
+                  size="s"
                   onClick={() => onLanguageChange(lang.code)}
-                  aria-label={`${lang.code.toUpperCase()} — ${lang.ariaLabel}`}
+                  accessibleName={`${lang.code.toUpperCase()} — ${lang.ariaLabel}`}
                   className={cn(
                     "flex-1 py-2 px-3 rounded-md text-text-m font-body uppercase transition-colors",
                     currentLang === lang.code
                       ? "bg-foreground text-background font-medium"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                      : "bg-muted text-muted-foreground hover:bg-muted/80",
                   )}
                 >
                   {lang.code.toUpperCase()}
-                </button>
+                </Button>
               ))}
             </div>
           </div>

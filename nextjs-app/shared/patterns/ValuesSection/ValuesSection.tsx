@@ -6,6 +6,7 @@ import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { ValueCard } from "../../components/ValueCard";
+import Title from "@dt/Title";
 
 export interface ValueItem {
   /** Icon element */
@@ -55,15 +56,16 @@ export function ValuesSection({
         {/* Section header */}
         <div className="text-center mb-12">
           <FadeIn direction="up" delay={0} distance={20}>
-            <h2
+            <Title
+              level={2}
               className={cn(
                 "font-display font-bold",
                 "text-2xl tablet:text-3xl desktop:text-4xl",
-                "text-foreground mb-4"
+                "text-foreground mb-4",
               )}
             >
               {title}
-            </h2>
+            </Title>
           </FadeIn>
 
           {subtitle && (

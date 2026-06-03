@@ -6,6 +6,7 @@ import { Section } from "../../components/Section";
 import { Container } from "../../components/Container";
 import { FadeIn } from "../../components/animations/FadeIn";
 import SecureCVDownload from "@dt/SecureCVDownload";
+import Title from "@dt/Title";
 
 export interface CVDownloadSectionProps {
   /** Section title */
@@ -45,14 +46,15 @@ export function CVDownloadSection({
       <Container size="md">
         <FadeIn direction="up">
           <div className="flex flex-col items-center text-center gap-6">
-            <h2
+            <Title
+              level={2}
               className={cn(
                 "font-display font-bold",
-                "text-2xl tablet:text-3xl desktop:text-4xl"
+                "text-2xl tablet:text-3xl desktop:text-4xl",
               )}
             >
               {title}
-            </h2>
+            </Title>
 
             <p
               className={cn(

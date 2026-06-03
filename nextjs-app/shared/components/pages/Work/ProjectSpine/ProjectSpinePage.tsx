@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Title from "@dt/Title";
 import Text from "@dt/Text";
 import ProcessBlock from "../../../../patterns/ProcessBlock";
 import StoryBlock from "../../../../patterns/StoryBlock";
@@ -51,22 +52,22 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
         <div className={styles.metaGrid}>
           <div className={styles.metaLeft}>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Type</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Type</Title>
               <p className={styles.metaText}>Open-source CLI tool (MIT)</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Version</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Version</Title>
               <p className={styles.metaText}>v0.9.x (alpha, feature-complete for PRD v0.1)</p>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Stack</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Stack</Title>
               <div className={styles.metaTools}>
                 <SiTypescript size={24} title="TypeScript (strict)" />
                 <SiNodedotjs size={24} title="Node 20+" />
               </div>
             </div>
             <div className={styles.metaBlock}>
-              <h3 className={styles.metaLabel}>Links</h3>
+              <Title level={3} size="XS" className={styles.metaLabel}>Links</Title>
               <p className={styles.metaText}>
                 <a href="https://projectspine.dev" target="_blank" rel="noopener noreferrer">projectspine.dev</a>
                 {" · "}
@@ -75,7 +76,7 @@ export function ProjectSpinePage({ nav }: { nav?: React.ReactNode }) {
             </div>
           </div>
           <div className={styles.metaRight}>
-            <h3 className={styles.metaLabel}>Overview</h3>
+            <Title level={3} size="XS" className={styles.metaLabel}>Overview</Title>
             <p className={styles.metaOverview}>
               <strong>Developers save ~10 hours/week with AI tools and lose ~10 hours/week to fragmented context</strong> (Atlassian 2025 DevEx). Only ~5% of repos contain AI configuration files. The 5% that do typically use boilerplate generators that drift from reality immediately.
             </p>

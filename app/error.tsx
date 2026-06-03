@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "@dt/Button";
 import Icon from "@dt/Icon";
+import Title from "@dt/Title";
 import styles from "./not-found.module.css";
 
 export default function Error({
@@ -22,7 +23,7 @@ export default function Error({
 
   return (
     <div className={styles.notFoundPage}>
-      <h2>{t("errorTitle", "Something went wrong!")}</h2>
+      <Title level={2}>{t("errorTitle", "Something went wrong!")}</Title>
       <p>{t("errorDescription", "An unexpected error occurred.")}</p>
       <div className={styles.actions}>
         <Button
@@ -33,7 +34,12 @@ export default function Error({
         >
           {t("errorRetry", "Try again")}
         </Button>
-        <Button variant="secondary" size="l" href="/" icon={<Icon name="house" />}>
+        <Button
+          variant="secondary"
+          size="l"
+          href="/"
+          icon={<Icon name="house" />}
+        >
           {t("notFoundButton", "Go home")}
         </Button>
       </div>

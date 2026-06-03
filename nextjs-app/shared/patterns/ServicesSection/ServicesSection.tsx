@@ -6,6 +6,7 @@ import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { ServiceCard } from "../../components/ServiceCard";
 import { cn } from "@/lib/utils";
+import Title from "@dt/Title";
 
 export interface ServiceItem {
   /** Icon element */
@@ -72,12 +73,13 @@ export function ServicesSection({
         {(title || description) && (
           <FadeIn className="text-center mb-16 desktop:mb-20">
             {title && (
-              <h2
+              <Title
+                level={2}
                 id={`${id}-title`}
                 className="font-display font-bold text-4xl tablet:text-5xl desktop:text-6xl text-foreground mb-6 tracking-tight"
               >
                 {title}
-              </h2>
+              </Title>
             )}
             {description && (
               <p className="font-body text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

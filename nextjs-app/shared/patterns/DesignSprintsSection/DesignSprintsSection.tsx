@@ -8,6 +8,7 @@ import { FadeIn } from "../../components/animations/FadeIn";
 import Icon from "../../components/Icon";
 import { Check } from "lucide-react";
 import styles from "./DesignSprintsSection.module.css";
+import Title from "@dt/Title";
 
 export interface DesignSprintsSectionProps {
   /** Section id for anchor linking */
@@ -94,9 +95,9 @@ export function DesignSprintsSection({
         <div className={styles.layout}>
           <div className={styles.intro}>
             <FadeIn direction="up" delay={0} distance={20}>
-              <h2 className={styles.title}>
+              <Title level={2} className={styles.title}>
                 {t("homeDesignSprintsTitle", "Exceptional design, without the wait")}
-              </h2>
+              </Title>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.1} distance={20}>

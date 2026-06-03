@@ -29,12 +29,16 @@ export const REPLACEMENT_FOR = {
 };
 
 /** @type {Record<string, string[]>} */
-/** @type {Record<string, string[]>} */
 export const COMPOSES_WITH = {
   AlertBanner: ["Button", "Icon"],
+  ContactForm: ["FormField", "Inputs", "Button", "Text"],
+  ChatWidget: ["Button", "Text", "Inputs", "DonnyAvatar"],
   FormField: ["Label", "Inputs", "HelperText"],
   Card: ["Title", "Text", "Button"],
   Modal: ["Button", "Title", "Text"],
+  CookieConsent: ["Button", "Text"],
+  ProjectHero: ["Title", "Text", "Button"],
+  StoryBlock: ["Title", "Text"],
 };
 
 export const PREFERS_OVER = {

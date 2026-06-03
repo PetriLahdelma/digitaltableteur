@@ -11,6 +11,7 @@ import { EnhancedProjectCard } from "../../components/EnhancedProjectCard";
 import { cn } from "@/lib/utils";
 import type { ProjectItem } from "../WorkPreviewSection/WorkPreviewSection";
 import styles from "./WorkMagneticField.module.css";
+import Title from "@dt/Title";
 
 export interface WorkMagneticFieldProps {
   /** Section title */
@@ -213,7 +214,8 @@ export function WorkMagneticField({
         {/* Section Header */}
         <div className={styles.header}>
           {title && (
-            <h2
+            <Title
+              level={2}
               id={`${id}-title`}
               className={cn(
                 styles.title,
@@ -221,7 +223,7 @@ export function WorkMagneticField({
               )}
             >
               {title}
-            </h2>
+            </Title>
           )}
           {showViewAll && (
             <Link href="/work" className={cn(styles.viewAllLink, "group")}>

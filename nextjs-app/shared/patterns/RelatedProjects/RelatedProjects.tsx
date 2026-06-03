@@ -7,6 +7,7 @@ import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
 import { EnhancedProjectCard } from "../../components/EnhancedProjectCard";
 import { getRelatedProjects } from "../../data/projects";
+import Title from "@dt/Title";
 
 export interface RelatedProjectsProps {
   /** Current project slug (to exclude from results) */
@@ -33,9 +34,12 @@ export function RelatedProjects({
     return (
       <Section spacing="lg" background="default" className={className}>
         <Container size="lg" className="text-center">
-          <h2 className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-4">
+          <Title
+            level={2}
+            className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-4"
+          >
             {t("projectRelatedTitle", "Related Projects")}
-          </h2>
+          </Title>
           <a
             href="/work"
             className="inline-flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors font-medium"
@@ -57,9 +61,12 @@ export function RelatedProjects({
     >
       <Container size="lg">
         <FadeIn direction="up" delay={0} distance={20}>
-          <h2 className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-8">
+          <Title
+            level={2}
+            className="font-display font-bold text-2xl tablet:text-3xl text-foreground mb-8"
+          >
             {displayTitle}
-          </h2>
+          </Title>
         </FadeIn>
 
         <div

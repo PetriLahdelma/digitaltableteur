@@ -282,6 +282,13 @@ export function rankComponentsForIntent(query, components, limit = 8) {
       if (usage?.productionImportCount > 0) score += 4;
       else if (usage?.importCount > 0) score += 2;
 
+      const composesWith = entry.agent?.composesWith ?? [];
+      for (const term of terms) {
+        if (composesWith.some((child) => child.toLowerCase().includes(term))) {
+          score += 5;
+        }
+      }
+
       if (contract.status === "stable") score += 2;
       else if (contract.status === "beta") score += 1;
 
