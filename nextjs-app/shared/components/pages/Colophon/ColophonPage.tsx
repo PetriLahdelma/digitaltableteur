@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 
 import Text from "@dt/Text";
@@ -306,7 +307,12 @@ export function ColophonPage() {
               Fourteen Model Context Protocol configurations for development and
               operations: Figma, GitHub, Sentry, Vercel, Sanity, Context7,
               TypeScript LSP, Akaunting, Docker, Next.js devtools, and more. The
-              repo and CMS workflows are agent-native by design.
+              repo and CMS workflows are agent-native by design. The{" "}
+              <Link href="/design-system/agent" className={styles.inlineLink}>
+                design system agent demo
+              </Link>{" "}
+              shows MCP tools, golden evals, and pattern recipes without
+              changing production chrome.
             </p>
           </div>
         </div>

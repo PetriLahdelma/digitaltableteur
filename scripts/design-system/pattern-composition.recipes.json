@@ -60,6 +60,66 @@
         "background": "Supports backgroundImage and tokenized min-height; compose children rather than hardcoding layout."
       },
       "storybookId": "patterns-herosection--default"
+    },
+    {
+      "name": "SiteHeader",
+      "publicImport": "@dt/SiteHeader",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "Next.js app shell sticky header with brand and nav",
+        "production site header with theme and language controls",
+        "global navigation shell on marketing routes"
+      ],
+      "avoidWhen": [
+        "Storybook-only legacy Header pattern",
+        "embedded header inside a card or modal",
+        "replacing native header buttons without design sign-off"
+      ],
+      "composesWith": ["Link", "MobileDrawer", "Icon"],
+      "variantNotes": {
+        "chrome": "Production SiteHeader owns theme/language controls — do not swap to @dt/Button without explicit header redesign."
+      },
+      "storybookId": "patterns-siteheader--default"
+    },
+    {
+      "name": "SiteFooter",
+      "publicImport": "@dt/SiteFooter",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "site-wide footer with link columns and social links",
+        "global footer shell on marketing routes"
+      ],
+      "avoidWhen": [
+        "legacy Footer pattern with different IA",
+        "inline footer inside a card or modal",
+        "admin or app-specific footer fork"
+      ],
+      "composesWith": ["Link", "Text"],
+      "variantNotes": {
+        "singleton": "Mount exactly one SiteFooter per page via app layout."
+      },
+      "storybookId": "patterns-sitefooter--default"
+    },
+    {
+      "name": "ArticleHero",
+      "publicImport": "@dt/ArticleHero",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "blog article hero with title metadata and optional image",
+        "editorial article header block"
+      ],
+      "avoidWhen": [
+        "marketing homepage hero — prefer HeroSection",
+        "compact page title without article metadata"
+      ],
+      "composesWith": ["Title", "Text", "Link"],
+      "variantNotes": {
+        "metadata": "Expects article fields (date, author, tags) — compose rather than hardcoding."
+      },
+      "storybookId": null
     }
   ]
 }

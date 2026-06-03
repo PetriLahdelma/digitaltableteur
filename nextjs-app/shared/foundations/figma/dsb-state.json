@@ -1,0 +1,49 @@
+{
+  "runId": "dt-dsb-2026-06-03",
+  "fileKey": "PC2UPdYwm8qGt6ZTg0AakF",
+  "fileSlug": "DT-Site-stuff",
+  "updatedAt": "2026-06-03T18:00:00.000Z",
+  "phase": "phase3-complete",
+  "pages": [
+    "✦ DT · Design System",
+    "▸ Getting Started",
+    "◆ Foundations",
+    "──────  Components",
+    "Atoms",
+    "Molecules",
+    "Organisms",
+    "Patterns",
+    "Design WIP"
+  ],
+  "variables": {
+    "DT / Color": 45,
+    "DT / Dimension": 29,
+    "DT / String": 4,
+    "total": 78
+  },
+  "components": {
+    "totalComponentNodes": 277,
+    "byPage": {
+      "Atoms": 201,
+      "Molecules": 64,
+      "Organisms": 3,
+      "Patterns": 8
+    }
+  },
+  "inScopeCoverage": {
+    "mappedInFigmaConfig": 33,
+    "documentedExceptions": ["Icon"],
+    "totalInScope": 34
+  },
+  "codeConnect": {
+    "status": "skipped",
+    "reason": "Figma Pro plan — Code Connect requires Organization. Use contract figma URLs + Storybook Design panel."
+  },
+  "completedSteps": [
+    "phase0-discovery",
+    "phase1-variables",
+    "phase2-file-structure",
+    "phase3-in-scope-components"
+  ],
+  "pendingSteps": ["phase4-route-views"]
+}

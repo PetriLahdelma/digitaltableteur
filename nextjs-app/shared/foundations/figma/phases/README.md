@@ -16,3 +16,14 @@ File: [`DT-Site-stuff`](https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-S
 See `docs/FIGMA_DESIGN_SYSTEM_SYNC.md`.
 
 Run ID: `dt-dsb-2026-06-03`
+
+## Phase 2–3 — library (verified)
+
+State ledger: `../dsb-state.json`. Verify in-scope node ids:
+
+```bash
+npm run verify:figma-in-scope
+npm run sync:figma
+```
+
+Code Connect is **not** used (Figma Pro). Storybook Design panel + contract `figma` URLs instead.

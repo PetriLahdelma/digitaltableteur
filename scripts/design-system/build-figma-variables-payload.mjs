@@ -3,7 +3,7 @@
  * Build Figma variable manifest from variables.css (all 4 themes).
  * Output: nextjs-app/shared/foundations/figma/variables-manifest.json
  */
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { FIGMA_FILE_KEY, FIGMA_FILE_SLUG } from "./figma-config.mjs";
@@ -103,6 +103,17 @@ function main() {
     }
   }
 
+  const manifestPath = resolve(
+    __dirname,
+    "../../nextjs-app/shared/foundations/figma/variables-manifest.json",
+  );
+  let figmaApplied;
+  try {
+    figmaApplied = JSON.parse(readFileSync(manifestPath, "utf8")).figmaApplied;
+  } catch {
+    /* first run */
+  }
+
   const manifest = {
     fileKey: FIGMA_FILE_KEY,
     fileSlug: FIGMA_FILE_SLUG,
@@ -110,6 +121,7 @@ function main() {
     generatedAt: new Date().toISOString(),
     source: "nextjs-app/shared/styles/variables.css",
     runId: `dt-dsb-${new Date().toISOString().slice(0, 10)}`,
+    ...(figmaApplied ? { figmaApplied } : {}),
     modes: FIGMA_MODES,
     collections,
     stats: {
