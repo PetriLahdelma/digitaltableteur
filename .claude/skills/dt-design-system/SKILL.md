@@ -19,7 +19,8 @@ metadata:
 ### Step 1: Load context
 
 1. Read [`references/area-guide.md`](references/area-guide.md)
-2. Search for existing components before creating new ones:
+2. **Before creating UI**, run [`dt-use-existing-component`](../dt-use-existing-component/SKILL.md) or `npm run find-component -- "your intent"`.
+3. Search for existing components before creating new ones:
 
 ```bash
 rg -n "<SimilarName" nextjs-app/shared/components/

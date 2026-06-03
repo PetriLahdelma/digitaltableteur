@@ -3,7 +3,7 @@
   "$id": "https://digitaltableteur.com/schemas/agent-manifest.json",
   "title": "AgentManifest",
   "type": "object",
-  "required": ["schemaVersion", "generatedAt", "summary", "components"],
+  "required": ["schemaVersion", "generatedAt", "summary", "components", "usageCoverage"],
   "properties": {
     "schemaVersion": { "type": "string" },
     "generatedAt": { "type": "string", "format": "date-time" },
@@ -13,7 +13,28 @@
       "properties": {
         "componentCount": { "type": "integer", "minimum": 0 },
         "statusCounts": { "type": "object", "additionalProperties": { "type": "integer" } },
-        "honestBetaDocDebt": { "type": "integer" }
+        "honestBetaDocDebt": { "type": "integer" },
+        "usageCoveragePercent": { "type": ["number", "null"] },
+        "componentsWithProductionUsage": { "type": ["integer", "null"] }
+      }
+    },
+    "usageCoverage": {
+      "type": "object",
+      "required": [
+        "catalogedComponents",
+        "withAnyUsage",
+        "withProductionUsage",
+        "uniqueImportedComponents"
+      ],
+      "properties": {
+        "description": { "type": "string" },
+        "catalogedComponents": { "type": "integer", "minimum": 0 },
+        "withAnyUsage": { "type": "integer", "minimum": 0 },
+        "withProductionUsage": { "type": "integer", "minimum": 0 },
+        "uniqueImportedComponents": { "type": "integer", "minimum": 0 },
+        "totalEvidenceRows": { "type": "integer", "minimum": 0 },
+        "regenerate": { "type": "string" },
+        "findComponent": { "type": "string" }
       }
     },
     "tokens": { "type": ["object", "null"] },
@@ -21,11 +42,65 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "contract"],
+        "required": ["name", "contract", "usage", "agent"],
         "properties": {
           "name": { "type": "string" },
           "contract": { "type": "object" },
-          "documentationDebt": { "type": "boolean" }
+          "documentationDebt": { "type": "boolean" },
+          "agent": {
+            "type": "object",
+            "required": ["preferredImport", "props", "variants"],
+            "properties": {
+              "preferredImport": { "type": "string" },
+              "intent": { "type": "string" },
+              "props": { "type": "object" },
+              "variants": { "type": "object" },
+              "useWhen": { "type": "array", "items": { "type": "string" } },
+              "avoidWhen": { "type": "array", "items": { "type": "string" } },
+              "requiredA11y": { "type": "array", "items": { "type": "string" } },
+              "replacementFor": { "type": "array", "items": { "type": "string" } },
+              "prefersOver": { "type": "array", "items": { "type": "string" } },
+              "canonicalExamples": { "type": "array", "items": { "type": "string" } }
+            }
+          },
+          "usage": {
+            "type": "object",
+            "required": [
+              "publicImport",
+              "importCount",
+              "productionImportCount",
+              "evidence"
+            ],
+            "properties": {
+              "publicImport": { "type": "string", "pattern": "^@dt/" },
+              "importCount": { "type": "integer", "minimum": 0 },
+              "productionImportCount": { "type": "integer", "minimum": 0 },
+              "patternImportCount": { "type": "integer", "minimum": 0 },
+              "componentImportCount": { "type": "integer", "minimum": 0 },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["path", "importKind", "context"],
+                  "properties": {
+                    "path": { "type": "string" },
+                    "importKind": { "enum": ["alias", "relative"] },
+                    "importPath": { "type": "string" },
+                    "context": {
+                      "enum": [
+                        "production",
+                        "pattern",
+                        "component",
+                        "story",
+                        "test",
+                        "other"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

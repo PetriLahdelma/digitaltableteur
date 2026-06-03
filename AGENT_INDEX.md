@@ -39,6 +39,7 @@ Principles (Apple-style + [Agent Skills](https://agentskills.io)):
 | Skill | Trigger |
 |-------|---------|
 | [`dt-design-system`](.claude/skills/dt-design-system/SKILL.md) | Create or modify UI components, Storybook, contracts, tokens |
+| [`dt-use-existing-component`](.claude/skills/dt-use-existing-component/SKILL.md) | Find/reuse @dt components before creating new UI |
 | [`dt-nextjs-app`](.claude/skills/dt-nextjs-app/SKILL.md) | Pages, layouts, metadata, OG images, App Router |
 | [`dt-api-routes`](.claude/skills/dt-api-routes/SKILL.md) | `app/api/*`, chat, contact, GDPR endpoints |
 | [`dt-scripts`](.claude/skills/dt-scripts/SKILL.md) | Linear, Sentry, visual regression, deploy scripts |

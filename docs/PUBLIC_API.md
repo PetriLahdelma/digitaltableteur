@@ -21,10 +21,14 @@ import { Title } from "@dt/Title";
 
 ```bash
 npm run validate:components   # contract + story gates
-npm run build:tokens          # tokens + agent manifest
+npm run build:tokens          # tokens + agent manifest (includes usage evidence)
 npm run build:zod-catalog     # Zod catalog for agents
 npm run agent:eval            # manifest schema + golden checks
-npm run audit:consumers       # refresh contract.consumers[] from app imports
+npm run audit:usage           # import evidence for all cataloged components
+npm run build:agent-blocks    # TS + spec → component-agent-blocks.json
+npm run find-component -- "your intent"  # rank @dt components for a task
+npm run sync:contract-api     # dry-run TS → contract variants sync
+npm run audit:consumers       # refresh contract.consumers[] (stable tier only)
 ```
 
 ## Stable-tier atoms (promoted)
