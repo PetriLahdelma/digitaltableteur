@@ -5,9 +5,17 @@ import { type Project } from "../../data/projects";
 import { getDonnyProjectTargetId } from "../../data/donny-site-actions";
 import { ProjectDetailLayout } from "../ProjectDetailLayout";
 import { ProjectHero, type ProjectHeroImage } from "../ProjectHero";
-import { ProjectMetaSection, type ToolItem, type TeamMember, type ClientInfo } from "../ProjectMetaSection";
+import {
+  ProjectMetaSection,
+  type ToolItem,
+  type TeamMember,
+  type ClientInfo,
+} from "../ProjectMetaSection";
 import { ContentSection, type ContentSectionProps } from "../ContentSection";
-import { ProjectGallery, type GalleryImage } from "../../components/ProjectGallery";
+import {
+  ProjectGallery,
+  type GalleryImage,
+} from "../../components/ProjectGallery";
 import { RelatedProjects } from "../RelatedProjects";
 import { ProjectNav } from "../../components/ProjectNav";
 import { Container } from "../../components/Container";
@@ -55,7 +63,10 @@ export function ProjectDetailTemplate({
   // Format category for display
   const categoryDisplay = project.category.replace("-", " ");
   const projectRootTarget = getDonnyProjectTargetId(project.slug, "root");
-  const projectOverviewTarget = getDonnyProjectTargetId(project.slug, "overview");
+  const projectOverviewTarget = getDonnyProjectTargetId(
+    project.slug,
+    "overview",
+  );
   const projectProofTarget = getDonnyProjectTargetId(project.slug, "proof");
 
   return (

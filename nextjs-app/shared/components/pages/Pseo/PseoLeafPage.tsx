@@ -1,7 +1,11 @@
 import Link from "next/link";
 
 import { mergeLeafCopy } from "@/lib/pseo/leaf-blocks";
-import type { PseoLeafPage, PseoPageCopy, PseoRelatedLinkCopy } from "@/lib/pseo/types";
+import type {
+  PseoLeafPage,
+  PseoPageCopy,
+  PseoRelatedLinkCopy,
+} from "@/lib/pseo/types";
 
 import Card from "@dt/Card";
 import Button from "@dt/Button";
@@ -54,7 +58,8 @@ const mergeRelated = (
     const copy = bySlug.get(related.slug);
     return {
       page: related,
-      reasonMarkdown: copy?.reasonMarkdown ?? buildFallbackReason(page, related),
+      reasonMarkdown:
+        copy?.reasonMarkdown ?? buildFallbackReason(page, related),
     };
   });
 };
@@ -300,10 +305,20 @@ export function PseoLeafPageView({
             scoped engagement or point you to the right playbook next step.
           </Text>
           <div className={styles.ctaActions}>
-            <Button href="/contact" variant="primary" size="l" data-donny-interest="pseo-contact">
+            <Button
+              href="/contact"
+              variant="primary"
+              size="l"
+              data-donny-interest="pseo-contact"
+            >
               Contact
             </Button>
-            <Button href="/work" variant="secondary" size="l" data-donny-interest="work-cta">
+            <Button
+              href="/work"
+              variant="secondary"
+              size="l"
+              data-donny-interest="work-cta"
+            >
               See work
             </Button>
           </div>

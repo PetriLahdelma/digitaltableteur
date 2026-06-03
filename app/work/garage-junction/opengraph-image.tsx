@@ -17,163 +17,161 @@ export default async function Image() {
   const monoFont = await fetch(MONO_FONT_URL).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        fontFamily: "JetBrains Mono",
+        backgroundColor: "#ffffff",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Metro line — horizontal red line across the image */}
       <div
         style={{
-          height: "100%",
-          width: "100%",
+          position: "absolute",
+          top: 200,
+          left: 0,
+          right: 0,
+          height: 8,
+          backgroundColor: METRO_RED,
           display: "flex",
-          fontFamily: "JetBrains Mono",
-          backgroundColor: "#ffffff",
-          position: "relative",
-          overflow: "hidden",
         }}
-      >
-        {/* Metro line — horizontal red line across the image */}
+      />
+
+      {/* Metro station dots */}
+      {[120, 320, 520, 720, 920].map((x) => (
         <div
+          key={x}
           style={{
             position: "absolute",
-            top: 200,
-            left: 0,
-            right: 0,
-            height: 8,
-            backgroundColor: METRO_RED,
+            top: 190,
+            left: x,
+            width: 28,
+            height: 28,
+            borderRadius: 14,
+            backgroundColor: "#ffffff",
+            border: `6px solid ${METRO_RED}`,
             display: "flex",
           }}
         />
+      ))}
 
-        {/* Metro station dots */}
-        {[120, 320, 520, 720, 920].map((x) => (
+      {/* Content */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          padding: "0 80px 64px 80px",
+          flex: 1,
+          position: "relative",
+        }}
+      >
+        {/* Logo lockup — top left */}
+        <div
+          style={{
+            position: "absolute",
+            top: 56,
+            left: 80,
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+          }}
+        >
           <div
-            key={x}
             style={{
-              position: "absolute",
-              top: 190,
-              left: x,
-              width: 28,
-              height: 28,
-              borderRadius: 14,
-              backgroundColor: "#ffffff",
-              border: `6px solid ${METRO_RED}`,
               display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 48,
+              height: 48,
+              backgroundColor: "#DFFF00",
+              borderRadius: 24,
             }}
-          />
-        ))}
+          >
+            <LogoSvg size={28} color="#041B23" />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 20,
+              fontWeight: 800,
+              color: "rgba(0,0,0,0.4)",
+              letterSpacing: "0.01em",
+            }}
+          >
+            Digitaltableteur
+          </div>
+        </div>
 
-        {/* Content */}
+        <div
+          style={{
+            position: "absolute",
+            top: 64,
+            right: 80,
+            display: "flex",
+            fontSize: 14,
+            fontWeight: 800,
+            color: JUNCTION_ORANGE,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+          }}
+        >
+          Case Study
+        </div>
+
+        {/* Headline */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-end",
-            padding: "0 80px 64px 80px",
-            flex: 1,
-            position: "relative",
+            gap: 0,
+            marginBottom: 56,
           }}
         >
-          {/* Logo lockup — top left */}
           <div
             style={{
-              position: "absolute",
-              top: 56,
-              left: 80,
               display: "flex",
-              alignItems: "center",
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 48,
-                height: 48,
-                backgroundColor: "#DFFF00",
-                borderRadius: 24,
-              }}
-            >
-              <LogoSvg size={28} color="#041B23" />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                fontSize: 20,
-                fontWeight: 800,
-                color: "rgba(0,0,0,0.4)",
-                letterSpacing: "0.01em",
-              }}
-            >
-              Digitaltableteur
-            </div>
-          </div>
-
-          <div
-            style={{
-              position: "absolute",
-              top: 64,
-              right: 80,
-              display: "flex",
-              fontSize: 14,
+              fontSize: 84,
               fontWeight: 800,
-              color: JUNCTION_ORANGE,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
+              color: GARAGE_BLUE,
+              letterSpacing: "-0.04em",
+              lineHeight: 0.95,
             }}
           >
-            Case Study
+            Garage
           </div>
-
-          {/* Headline */}
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
-              gap: 0,
-              marginBottom: 56,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                fontSize: 84,
-                fontWeight: 800,
-                color: GARAGE_BLUE,
-                letterSpacing: "-0.04em",
-                lineHeight: 0.95,
-              }}
-            >
-              Garage
-            </div>
-            <div
-              style={{
-                display: "flex",
-                fontSize: 84,
-                fontWeight: 800,
-                color: GARAGE_BLUE,
-                letterSpacing: "-0.04em",
-                lineHeight: 0.95,
-              }}
-            >
-              Junction
-            </div>
-          </div>
-
-          {/* Tagline */}
-          <div
-            style={{
-              display: "flex",
-              fontSize: 18,
+              fontSize: 84,
               fontWeight: 800,
-              color: "rgba(0,0,0,0.35)",
-              letterSpacing: "0.02em",
+              color: GARAGE_BLUE,
+              letterSpacing: "-0.04em",
+              lineHeight: 0.95,
             }}
           >
-            Branding → Event Identity → Merikerho Helsinki
+            Junction
           </div>
         </div>
+
+        {/* Tagline */}
+        <div
+          style={{
+            display: "flex",
+            fontSize: 18,
+            fontWeight: 800,
+            color: "rgba(0,0,0,0.35)",
+            letterSpacing: "0.02em",
+          }}
+        >
+          Branding → Event Identity → Merikerho Helsinki
+        </div>
       </div>
-    ),
+    </div>,
     {
       ...OG_SIZE,
       fonts: [

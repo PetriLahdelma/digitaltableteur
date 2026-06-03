@@ -12,7 +12,9 @@ const SKILLS_SCHEMA =
   "https://schemas.agentskills.io/discovery/0.2.0/schema.json";
 
 function parseDescription(content: string): string {
-  const match = content.match(/^description:\s*>-\s*\n([\s\S]*?)(?=\n\S|\n---)/m);
+  const match = content.match(
+    /^description:\s*>-\s*\n([\s\S]*?)(?=\n\S|\n---)/m,
+  );
   if (match) {
     return match[1]
       .split("\n")

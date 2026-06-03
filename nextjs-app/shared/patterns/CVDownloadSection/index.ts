@@ -1,1 +1,4 @@
-export { CVDownloadSection, type CVDownloadSectionProps } from "./CVDownloadSection";
+export {
+  CVDownloadSection,
+  type CVDownloadSectionProps,
+} from "./CVDownloadSection";

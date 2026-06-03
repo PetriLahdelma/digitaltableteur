@@ -29,12 +29,14 @@ export async function GET() {
       {
         id: "site-context",
         name: "Site context",
-        description: "Answer questions using llms.txt and public portfolio content.",
+        description:
+          "Answer questions using llms.txt and public portfolio content.",
       },
       {
         id: "contact-routing",
         name: "Contact routing",
-        description: "Direct users to the contact form for consulting inquiries.",
+        description:
+          "Direct users to the contact form for consulting inquiries.",
       },
     ],
     interaction: {

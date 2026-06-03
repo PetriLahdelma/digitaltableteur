@@ -45,7 +45,12 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
       className={styles.page}
     >
       <ProjectMetaSection
-        services={["UX Design", "Service Design", "Interaction Design", "Design System"]}
+        services={[
+          "UX Design",
+          "Service Design",
+          "Interaction Design",
+          "Design System",
+        ]}
         duration="2016"
         tools={[
           { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },
@@ -87,8 +92,8 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
             The service defines clear roles for enterprise users: individual
             users, reporters responsible for Intrastat reporting, and agents
             acting on behalf of companies. Login and role selection are critical
-            entry points into the service, paired with language selection and
-            an anonymous front page for first-time visitors.
+            entry points into the service, paired with language selection and an
+            anonymous front page for first-time visitors.
           </Text>,
           <Text key="p2" size="S">
             Case tracking is anchored by the Ilmoitukset view, where recent
@@ -155,8 +160,8 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
                 The Tulli styleguide defines the visual system: a blue and
                 yellow core palette, Gill Sans typography, and a 12-column grid
                 for large screens and tablets. The image line follows Customs
-                staff in action, captured from an observer's viewpoint to keep
-                the focus on the work rather than the camera.
+                staff in action, captured from an observer&apos;s viewpoint to
+                keep the focus on the work rather than the camera.
               </Text>
             ),
           },

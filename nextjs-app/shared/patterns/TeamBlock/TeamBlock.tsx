@@ -97,12 +97,12 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
     columns === 2
       ? styles.grid2Col
       : columns === 3
-      ? styles.grid3Col
-      : columns === 4
-      ? styles.grid4Col
-      : columns === 5
-      ? styles.grid5Col
-      : styles.grid6Col;
+        ? styles.grid3Col
+        : columns === 4
+          ? styles.grid4Col
+          : columns === 5
+            ? styles.grid5Col
+            : styles.grid6Col;
 
   const imageClass = roundImages
     ? `${styles.teamImage} ${styles.roundImage}`
@@ -113,7 +113,8 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
       className={`${styles.teamBlock} ${className}`}
       style={{
         backgroundColor: bgColors[backgroundColor],
-        paddingBlock: backgroundColor !== "transparent" ? "var(--space-xl, 3rem)" : "0",
+        paddingBlock:
+          backgroundColor !== "transparent" ? "var(--space-xl, 3rem)" : "0",
       }}
       aria-label={ariaLabel || sectionTitle}
     >

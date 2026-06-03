@@ -68,11 +68,7 @@ export default function CodeWindowDemoPage() {
         <Title level={2} size="M" terminals="serif">
           Dark Mode Preview
         </Title>
-        <CodeBlockWindow
-          title="theme-dark.tsx"
-          language="tsx"
-          showLineNumbers
-        >
+        <CodeBlockWindow title="theme-dark.tsx" language="tsx" showLineNumbers>
           {fixture.tsx}
         </CodeBlockWindow>
       </section>

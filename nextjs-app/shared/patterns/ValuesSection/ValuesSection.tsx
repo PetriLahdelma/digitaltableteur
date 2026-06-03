@@ -32,7 +32,10 @@ export interface ValuesSectionProps {
   className?: string;
 }
 
-const backgroundClasses: Record<NonNullable<ValuesSectionProps["background"]>, string> = {
+const backgroundClasses: Record<
+  NonNullable<ValuesSectionProps["background"]>,
+  string
+> = {
   default: "bg-background",
   muted: "bg-muted/30",
   accent: "bg-primary/5",
@@ -74,7 +77,7 @@ export function ValuesSection({
                 className={cn(
                   "font-body text-lg",
                   "text-muted-foreground",
-                  "max-w-2xl mx-auto"
+                  "max-w-2xl mx-auto",
                 )}
               >
                 {subtitle}
@@ -87,7 +90,7 @@ export function ValuesSection({
         <div
           className={cn(
             "grid gap-6",
-            "grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3"
+            "grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3",
           )}
         >
           {values.map((value, index) => (

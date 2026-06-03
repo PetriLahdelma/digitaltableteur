@@ -631,7 +631,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             iterative component development pipeline, HDS establishes a
             foundation that is both accessible and scalable. The system enables
             teams throughout the city to build services that are consistent,
-            intuitive, and aligned with Helsinki's values of equality,
+            intuitive, and aligned with Helsinki&apos;s values of equality,
             transparency, and inclusion.
           </Text>,
         ]}

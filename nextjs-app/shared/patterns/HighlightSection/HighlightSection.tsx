@@ -11,11 +11,7 @@ import styles from "./HighlightSection.module.css";
 /**
  * Background variant for the section
  */
-export type HighlightSectionVariant =
-  | "gradient"
-  | "pattern"
-  | "dots"
-  | "solid";
+export type HighlightSectionVariant = "gradient" | "pattern" | "dots" | "solid";
 
 /**
  * Size variants for spacing
@@ -169,8 +165,7 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
             <div className={styles.ctaRow}>
               <div className={styles.ctaGroup}>
                 {primaryCtas.map((item, index) => {
-                  const variantFallback =
-                    index === 0 ? "primary" : "secondary";
+                  const variantFallback = index === 0 ? "primary" : "secondary";
                   const sizeValue = item.size ?? "lg";
                   const variantValue = item.variant ?? variantFallback;
 

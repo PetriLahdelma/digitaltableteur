@@ -10,9 +10,7 @@ import { describeChatBackend, getChatLanguageModel } from "./chat-model";
 type StreamTextParams = {
   system: string;
   tools: ToolSet;
-  messages: Awaited<
-    ReturnType<typeof import("ai").convertToModelMessages>
-  >;
+  messages: Awaited<ReturnType<typeof import("ai").convertToModelMessages>>;
   stopWhen: Parameters<typeof streamText>[0]["stopWhen"];
   temperature: number;
   maxOutputTokens: number;
@@ -28,10 +26,8 @@ const STREAM_META_TYPES = new Set([
 export function isRetryableChatStreamError(errorText: unknown): boolean {
   if (typeof errorText !== "string") return false;
   const normalized = errorText.toLowerCase();
-  return (
-    /rate.?limit|429|too many requests|free tier|insufficient_quota|exceeded your current quota|quota/.test(
-      normalized,
-    )
+  return /rate.?limit|429|too many requests|free tier|insufficient_quota|exceeded your current quota|quota/.test(
+    normalized,
   );
 }
 
@@ -41,7 +37,10 @@ function isSubstantiveStreamChunk(chunk: { type?: string }): boolean {
   return true;
 }
 
-function readStreamErrorText(chunk: { type?: string; errorText?: unknown }): unknown {
+function readStreamErrorText(chunk: {
+  type?: string;
+  errorText?: unknown;
+}): unknown {
   if (chunk.type !== "error") return undefined;
   return chunk.errorText;
 }

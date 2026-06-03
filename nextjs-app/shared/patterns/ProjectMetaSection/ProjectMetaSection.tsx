@@ -59,7 +59,10 @@ export interface ProjectMetaSectionProps {
   donnyTarget?: string;
 }
 
-const backgroundClasses: Record<NonNullable<ProjectMetaSectionProps["background"]>, string> = {
+const backgroundClasses: Record<
+  NonNullable<ProjectMetaSectionProps["background"]>,
+  string
+> = {
   default: "bg-background",
   muted: "bg-muted/30",
   accent: "bg-primary/5",
@@ -114,18 +117,18 @@ export function ProjectMetaSection({
       className={cn(backgroundClasses[background], className)}
       aria-label={t("projectDetailsSection", "Project Details")}
     >
-      <PageLayout
-        maxWidth={maxWidth}
-        spacing="comfortable"
-        as="div"
-      >
+      <PageLayout maxWidth={maxWidth} spacing="comfortable" as="div">
         <div className="grid grid-cols-1 desktop:grid-cols-12 gap-8 desktop:gap-12">
           {/* Left column: Services, Duration, Tools */}
           <div className="desktop:col-span-4 space-y-8">
             {/* Services */}
             <FadeIn direction="up" delay={0} distance={20}>
               <div>
-                <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
+                <Title
+                  level={3}
+                  size="XS"
+                  className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4"
+                >
                   {t("projectServicesTitle", "Services")}
                 </Title>
                 <ul ref={servicesRef} className="space-y-2">
@@ -147,10 +150,16 @@ export function ProjectMetaSection({
             {duration && (
               <FadeIn direction="up" delay={0.1} distance={20}>
                 <div>
-                  <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-2">
+                  <Title
+                    level={3}
+                    size="XS"
+                    className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-2"
+                  >
                     {t("projectDurationLabel", "Duration")}
                   </Title>
-                  <p className="font-body text-sm text-foreground">{duration}</p>
+                  <p className="font-body text-sm text-foreground">
+                    {duration}
+                  </p>
                 </div>
               </FadeIn>
             )}
@@ -159,7 +168,11 @@ export function ProjectMetaSection({
             {tools && tools.length > 0 && (
               <FadeIn direction="up" delay={0.2} distance={20}>
                 <div>
-                  <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
+                  <Title
+                    level={3}
+                    size="XS"
+                    className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4"
+                  >
                     {t("projectToolsLabel", "Tools")}
                   </Title>
                   <div className="flex flex-wrap gap-4">
@@ -182,7 +195,11 @@ export function ProjectMetaSection({
             {client && (
               <FadeIn direction="up" delay={0.3} distance={20}>
                 <div>
-                  <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-2">
+                  <Title
+                    level={3}
+                    size="XS"
+                    className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-2"
+                  >
                     {t("projectClientLabel", "Client")}
                   </Title>
                   {client.logo ? (
@@ -209,7 +226,11 @@ export function ProjectMetaSection({
           <div className="desktop:col-span-8" data-donny-target={donnyTarget}>
             <FadeIn direction="up" delay={0.2} distance={30}>
               <div>
-                <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4">
+                <Title
+                  level={3}
+                  size="XS"
+                  className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-4"
+                >
                   {t("projectOverviewLabel", "Overview")}
                 </Title>
                 <div className="prose prose-sm max-w-none font-body text-foreground">
@@ -224,7 +245,11 @@ export function ProjectMetaSection({
         {team && team.length > 0 && (
           <FadeIn direction="up" delay={0.4} distance={30}>
             <div className="mt-12 pt-8 border-t border-border">
-              <Title level={3} size="XS" className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-6">
+              <Title
+                level={3}
+                size="XS"
+                className="font-display font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-6"
+              >
                 {t("projectTeamLabel", "Team")}
               </Title>
               <ul
@@ -249,15 +274,28 @@ export function ProjectMetaSection({
                         role="img"
                         aria-label={`${member.name}, ${member.role}`}
                       >
-                        <span className="text-2xl font-medium text-muted-foreground" aria-hidden="true">
+                        <span
+                          className="text-2xl font-medium text-muted-foreground"
+                          aria-hidden="true"
+                        >
                           {member.name.charAt(0)}
                         </span>
                       </div>
                     )}
-                    <p className={cn("font-body font-medium text-sm text-foreground", styles.teamMemberName)}>
+                    <p
+                      className={cn(
+                        "font-body font-medium text-sm text-foreground",
+                        styles.teamMemberName,
+                      )}
+                    >
                       {member.name}
                     </p>
-                    <p className={cn("font-body text-xs text-muted-foreground", styles.teamMemberRole)}>
+                    <p
+                      className={cn(
+                        "font-body text-xs text-muted-foreground",
+                        styles.teamMemberRole,
+                      )}
+                    >
                       {member.role}
                     </p>
                   </li>

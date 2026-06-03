@@ -22,7 +22,7 @@ export function WorkCTA({ title, description, className }: WorkCTAProps) {
         description ||
         t(
           "workCTADescription",
-          "Let's discuss how design systems, AI and thoughtful UX can elevate your product."
+          "Let's discuss how design systems, AI and thoughtful UX can elevate your product.",
         )
       }
       primaryAction={{

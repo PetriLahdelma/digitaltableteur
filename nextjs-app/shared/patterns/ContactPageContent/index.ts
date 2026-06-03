@@ -1,1 +1,4 @@
-export { ContactPageContent, type ContactPageContentProps } from "./ContactPageContent";
+export {
+  ContactPageContent,
+  type ContactPageContentProps,
+} from "./ContactPageContent";

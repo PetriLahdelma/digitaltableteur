@@ -142,8 +142,12 @@ export async function POST(req: NextRequest) {
     timeline: parsed.timeline ? sanitize(parsed.timeline) : null,
     inspiration: parsed.inspiration ? sanitize(parsed.inspiration) : null,
     time: parsed.time ? sanitize(parsed.time) : null,
-    attachmentName: parsed.attachmentName ? sanitize(parsed.attachmentName) : null,
-    attachmentType: parsed.attachmentType ? sanitize(parsed.attachmentType) : null,
+    attachmentName: parsed.attachmentName
+      ? sanitize(parsed.attachmentName)
+      : null,
+    attachmentType: parsed.attachmentType
+      ? sanitize(parsed.attachmentType)
+      : null,
     attachmentData: parsed.attachmentData,
     attachmentSize:
       typeof parsed.attachmentSize === "number" ? parsed.attachmentSize : null,
@@ -172,7 +176,6 @@ export async function POST(req: NextRequest) {
       { status: 200, headers: corsHeaders },
     );
   } catch (err: any) {
-    // eslint-disable-next-line no-console
     console.error("Contact handler failed:", err);
     return NextResponse.json(
       { error: "Failed to process contact form" },

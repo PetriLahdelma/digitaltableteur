@@ -1,1 +1,4 @@
-export { ProjectDetailLayout, type ProjectDetailLayoutProps } from "./ProjectDetailLayout";
+export {
+  ProjectDetailLayout,
+  type ProjectDetailLayoutProps,
+} from "./ProjectDetailLayout";

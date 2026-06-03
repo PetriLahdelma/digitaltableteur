@@ -150,32 +150,32 @@ export function SiteHeader({
           className,
         )}
       >
-      <Container size="lg" className="flex h-20 items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 group"
-          onMouseEnter={() => setIsLogoHovered(true)}
-          onMouseLeave={() => setIsLogoHovered(false)}
-        >
-          <div
-            className={cn(
-              "flex items-center justify-center rounded-full transition-transform group-hover:scale-110",
-              "h-10 w-10",
-              "bg-[var(--logo-background)] text-[var(--logo-color)]",
-            )}
+        <Container size="lg" className="flex h-20 items-center justify-between">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex items-center gap-3 group"
+            onMouseEnter={() => setIsLogoHovered(true)}
+            onMouseLeave={() => setIsLogoHovered(false)}
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 395 323"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              aria-hidden="true"
-              focusable="false"
+            <div
+              className={cn(
+                "flex items-center justify-center rounded-full transition-transform group-hover:scale-110",
+                "h-10 w-10",
+                "bg-[var(--logo-background)] text-[var(--logo-color)]",
+              )}
             >
-            <style>{`
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 395 323"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <style>{`
               @keyframes pulse-1 {
                 0%, 33%, 100% { opacity: 1; }
                 5%, 28% { opacity: 0.5; }
@@ -208,121 +208,129 @@ export function SiteHeader({
                 }
               }
             `}</style>
-            <g clipPath="url(#clip0_header)">
-              <rect
-                x="190.742"
-                width="39.0494"
-                height="142.681"
-                fill="currentColor"
-                className={cn(
-                  "logo-bar",
-                  isLogoHovered && "pulse-1",
-                )}
-              />
-              <rect
-                x="190.742"
-                y="180.228"
-                width="39.0494"
-                height="142.681"
-                fill="currentColor"
-                className={cn(
-                  "logo-bar",
-                  isLogoHovered && "pulse-2",
-                )}
-              />
-              <rect
-                x="267.338"
-                y="181.73"
-                width="39.0494"
-                height="127.662"
-                transform="rotate(-90 267.338 181.73)"
-                fill="currentColor"
-                className={cn(
-                  "logo-bar",
-                  isLogoHovered && "pulse-3",
-                )}
-              />
-              <rect y="37.5475" width="39.0494" height="246.312" fill="currentColor"/>
-              <rect x="115.646" y="76.597" width="39.0494" height="168.213" fill="currentColor"/>
-              <path d="M39.0493 76.597L39.0493 37.5475L118.65 37.5475L154.696 76.5969L39.0493 76.597Z" fill="currentColor"/>
-              <path d="M39.0493 244.81L39.0493 283.859L118.65 283.859L154.696 244.81L39.0493 244.81Z" fill="currentColor"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_header">
-                <rect width="395" height="322.909" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
-          </div>
-          <span className="font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors text-[var(--logo-text-color)] group-hover:text-primary">
-            Digitaltableteur
-          </span>
-        </Link>
+                <g clipPath="url(#clip0_header)">
+                  <rect
+                    x="190.742"
+                    width="39.0494"
+                    height="142.681"
+                    fill="currentColor"
+                    className={cn("logo-bar", isLogoHovered && "pulse-1")}
+                  />
+                  <rect
+                    x="190.742"
+                    y="180.228"
+                    width="39.0494"
+                    height="142.681"
+                    fill="currentColor"
+                    className={cn("logo-bar", isLogoHovered && "pulse-2")}
+                  />
+                  <rect
+                    x="267.338"
+                    y="181.73"
+                    width="39.0494"
+                    height="127.662"
+                    transform="rotate(-90 267.338 181.73)"
+                    fill="currentColor"
+                    className={cn("logo-bar", isLogoHovered && "pulse-3")}
+                  />
+                  <rect
+                    y="37.5475"
+                    width="39.0494"
+                    height="246.312"
+                    fill="currentColor"
+                  />
+                  <rect
+                    x="115.646"
+                    y="76.597"
+                    width="39.0494"
+                    height="168.213"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M39.0493 76.597L39.0493 37.5475L118.65 37.5475L154.696 76.5969L39.0493 76.597Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M39.0493 244.81L39.0493 283.859L118.65 283.859L154.696 244.81L39.0493 244.81Z"
+                    fill="currentColor"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_header">
+                    <rect width="395" height="322.909" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <span className="font-heading text-lg lg:text-xl font-bold tracking-tight transition-colors text-[var(--logo-text-color)] group-hover:text-primary">
+              Digitaltableteur
+            </span>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav
-          className="hidden lg:flex items-center gap-6"
-          aria-label={t("navMenuAccessibleLabel")}
-        >
-          {navItems.map((item) => (
-            <NavLink
-              key={item.href}
-              href={item.href}
-              exact={item.exact}
-              className="text-base font-semibold tracking-wide hover:text-primary transition-colors"
-            >
-              {t(item.label)}
-            </NavLink>
-          ))}
-        </nav>
+          {/* Desktop Navigation */}
+          <nav
+            className="hidden lg:flex items-center gap-6"
+            aria-label={t("navMenuAccessibleLabel")}
+          >
+            {navItems.map((item) => (
+              <NavLink
+                key={item.href}
+                href={item.href}
+                exact={item.exact}
+                className="text-base font-semibold tracking-wide hover:text-primary transition-colors"
+              >
+                {t(item.label)}
+              </NavLink>
+            ))}
+          </nav>
 
-        {/* Controls */}
-        <div className="flex items-center gap-2 ml-4">
-          <div className="hidden lg:flex items-center">
-            {/* pr-4 / pl-4 — equal inset on both sides of the divider */}
-            <div className="pr-4">
-              <LanguageSwitcher
-                languages={languages.map((lang) => ({
-                  code: lang.code,
-                  label: lang.code.toUpperCase(),
-                  ariaLabel: `${lang.code.toUpperCase()} — ${t(lang.ariaLabelKey)}`,
-                }))}
-                currentLang={currentLang}
-                onLanguageChange={handleLanguageChange}
-              />
+          {/* Controls */}
+          <div className="flex items-center gap-2 ml-4">
+            <div className="hidden lg:flex items-center">
+              {/* pr-4 / pl-4 — equal inset on both sides of the divider */}
+              <div className="pr-4">
+                <LanguageSwitcher
+                  languages={languages.map((lang) => ({
+                    code: lang.code,
+                    label: lang.code.toUpperCase(),
+                    ariaLabel: `${lang.code.toUpperCase()} — ${t(lang.ariaLabelKey)}`,
+                  }))}
+                  currentLang={currentLang}
+                  onLanguageChange={handleLanguageChange}
+                />
+              </div>
+
+              <div className="flex items-center gap-2 border-l border-border/40 pl-4">
+                <IconButton
+                  icon={
+                    <span
+                      className={cn(
+                        styles.themeIcon,
+                        isThemeAnimating && styles.themeIconAnimating,
+                      )}
+                      aria-hidden
+                    >
+                      <ThemeIcon weight="bold" className="size-5" />
+                    </span>
+                  }
+                  label={t("toggleDarkMode")}
+                  onClick={handleThemeToggle}
+                  variant="ghost"
+                  className="cursor-pointer"
+                />
+              </div>
             </div>
 
-            <div className="flex items-center gap-2 border-l border-border/40 pl-4">
-              <IconButton
-                icon={
-                  <span
-                    className={cn(
-                      styles.themeIcon,
-                      isThemeAnimating && styles.themeIconAnimating,
-                    )}
-                    aria-hidden
-                  >
-                    <ThemeIcon weight="bold" className="size-5" />
-                  </span>
-                }
-                label={t("toggleDarkMode")}
-                onClick={handleThemeToggle}
-                variant="ghost"
-                className="cursor-pointer"
-              />
-            </div>
+            {/* Mobile Menu Button */}
+            <IconButton
+              icon={<List weight="bold" className="size-5" />}
+              label={t("navMenuOpen", "Open navigation menu")}
+              onClick={openMobileMenu}
+              className="lg:hidden"
+              variant="ghost"
+            />
           </div>
-
-          {/* Mobile Menu Button */}
-          <IconButton
-            icon={<List weight="bold" className="size-5" />}
-            label={t("navMenuOpen", "Open navigation menu")}
-            onClick={openMobileMenu}
-            className="lg:hidden"
-            variant="ghost"
-          />
-        </div>
-      </Container>
+        </Container>
       </header>
 
       {/* Mobile Drawer - outside header to avoid inheriting transparent background */}

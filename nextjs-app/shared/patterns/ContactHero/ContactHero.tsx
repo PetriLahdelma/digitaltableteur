@@ -19,7 +19,10 @@ export interface ContactHeroProps {
   className?: string;
 }
 
-const backgroundClasses: Record<NonNullable<ContactHeroProps["background"]>, string> = {
+const backgroundClasses: Record<
+  NonNullable<ContactHeroProps["background"]>,
+  string
+> = {
   gradient: "bg-gradient-to-br from-primary/10 via-background to-accent/10",
   minimal: "bg-background",
 };
@@ -42,7 +45,7 @@ export function ContactHero({
         "relative flex items-center justify-center",
         compact ? "min-h-[60vh] desktop:min-h-[70vh]" : "min-h-[80vh]",
         backgroundClasses[background],
-        className
+        className,
       )}
     >
       <Container size="lg" className="relative z-10 text-center py-16">
@@ -55,7 +58,7 @@ export function ContactHero({
           className={cn(
             "font-display font-bold",
             "text-3xl tablet:text-4xl desktop:text-5xl",
-            "text-foreground leading-tight tracking-tight"
+            "text-foreground leading-tight tracking-tight",
           )}
           as="h1"
         >
@@ -70,7 +73,7 @@ export function ContactHero({
                 "font-body text-lg tablet:text-xl",
                 "text-muted-foreground",
                 "max-w-2xl mx-auto mt-6",
-                "leading-relaxed"
+                "leading-relaxed",
               )}
             >
               {subtitle}

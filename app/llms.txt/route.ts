@@ -50,7 +50,8 @@ export async function GET() {
   body += `- Skills index (JSON): ${baseUrl}/.well-known/agent-skills/index.json\n`;
   body += `- Dynamic workflow skill: ${baseUrl}/.well-known/agent-skills/dt-workflow\n`;
   body += `- Workflow prompt templates: ${baseUrl}/.well-known/agent-skills/dt-workflow/references/templates.md\n`;
-  body += `- Human skill map: repo AGENT_INDEX.md (dt-design-system, dt-nextjs-app, dt-workflow, …)\n`;
+  body +=
+    "- Human skill map: repo AGENT_INDEX.md (dt-design-system, dt-nextjs-app, dt-workflow, …)\n";
   body += `- API catalog: ${baseUrl}/.well-known/api-catalog\n`;
   body += `- A2A agent card: ${baseUrl}/.well-known/agent-card.json\n`;
   body += `- MCP server card: ${baseUrl}/.well-known/mcp/server-card.json\n`;

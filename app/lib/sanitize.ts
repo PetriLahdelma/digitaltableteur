@@ -28,7 +28,21 @@ const STRICT_HTML_CONFIG: SanitizeConfig = {
 };
 
 const AI_OUTPUT_CONFIG: SanitizeConfig = {
-  allowedTags: ["a", "b", "blockquote", "br", "code", "em", "i", "li", "ol", "p", "pre", "strong", "ul"],
+  allowedTags: [
+    "a",
+    "b",
+    "blockquote",
+    "br",
+    "code",
+    "em",
+    "i",
+    "li",
+    "ol",
+    "p",
+    "pre",
+    "strong",
+    "ul",
+  ],
   allowedAttributes: {
     a: ["href", "rel", "target", "title"],
   },

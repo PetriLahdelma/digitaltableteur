@@ -12,21 +12,26 @@ import { CVDownloadSection } from "../CVDownloadSection";
 import Title from "@dt/Title";
 
 // Dynamic import for MapSection - Leaflet is heavy (~150KB) and requires client-side only
-const MapSection = dynamic(() => import("../MapSection").then(mod => mod.MapSection), {
-  ssr: false,
-  loading: () => (
-    <div className="flex items-center justify-center h-full bg-muted text-muted-foreground font-body text-sm">
-      Loading map...
-    </div>
-  ),
-});
+const MapSection = dynamic(
+  () => import("../MapSection").then((mod) => mod.MapSection),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center justify-center h-full bg-muted text-muted-foreground font-body text-sm">
+        Loading map...
+      </div>
+    ),
+  },
+);
 import { LocationCard } from "../../components/LocationCard";
 import { EnhancedPersonCard } from "../../components/EnhancedPersonCard";
 import { EnhancedContactForm } from "../../components/EnhancedContactForm";
 import { ContactFormSuccess } from "../../components/ContactFormSuccess";
 
 // Helsinki office coordinates
-const HELSINKI_COORDINATES: [number, number] = [60.1810882006689, 24.952352100000002];
+const HELSINKI_COORDINATES: [number, number] = [
+  60.1810882006689, 24.952352100000002,
+];
 
 export interface ContactPageContentProps {
   /** Show the map section */
@@ -168,8 +173,14 @@ export function ContactPageContent({
           {showSuccess ? (
             <ContactFormSuccess
               title={t("contactFormSuccessTitle", "Thank you!")}
-              message={t("contactFormSuccessMessage", "Your message has been sent successfully.")}
-              responseTime={t("contactFormSuccessResponseTime", "We'll get back to you within 24-48 hours.")}
+              message={t(
+                "contactFormSuccessMessage",
+                "Your message has been sent successfully.",
+              )}
+              responseTime={t(
+                "contactFormSuccessResponseTime",
+                "We'll get back to you within 24-48 hours.",
+              )}
               onSendAnother={handleSendAnother}
               sendAnotherLabel={t("contactSendAnother", "Send another message")}
             />

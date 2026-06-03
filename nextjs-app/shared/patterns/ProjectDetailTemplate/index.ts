@@ -1,1 +1,4 @@
-export { ProjectDetailTemplate, type ProjectDetailTemplateProps } from "./ProjectDetailTemplate";
+export {
+  ProjectDetailTemplate,
+  type ProjectDetailTemplateProps,
+} from "./ProjectDetailTemplate";

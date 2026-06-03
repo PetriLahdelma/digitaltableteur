@@ -25,8 +25,7 @@ const siteUrl =
   "https://www.digitaltableteur.com";
 
 /** Single GA4 property — env override for staging; production default is site measurement ID. */
-const gaMeasurementId =
-  process.env.NEXT_PUBLIC_GA_ID?.trim() || "G-09HMKEXGPX";
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_ID?.trim() || "G-09HMKEXGPX";
 
 export const metadata: Metadata = {
   title: "Digitaltableteur",

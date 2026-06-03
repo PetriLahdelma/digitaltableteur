@@ -271,9 +271,7 @@ export function ProjectHero({
                   <source
                     src={video!.src}
                     type={
-                      video!.src.endsWith(".webm")
-                        ? "video/webm"
-                        : "video/mp4"
+                      video!.src.endsWith(".webm") ? "video/webm" : "video/mp4"
                     }
                   />
                 </video>

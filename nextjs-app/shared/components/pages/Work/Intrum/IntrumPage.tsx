@@ -45,7 +45,12 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
       className={styles.page}
     >
       <ProjectMetaSection
-        services={["UX Research", "Service Design", "Interaction Design", "Product Strategy"]}
+        services={[
+          "UX Research",
+          "Service Design",
+          "Interaction Design",
+          "Product Strategy",
+        ]}
         duration="2017"
         tools={[
           { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },
@@ -55,10 +60,10 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
         client={{ name: "Intrum Justitia" }}
         overview={
           <Text size="S">
-            The Compass program mapped Intrum Justitia's receivable life cycle
-            and aligned teams across debt collection, debt surveillance, and
-            legal affairs. The work combined business process mapping with deep
-            user research across call centers and back-office teams.
+            The Compass program mapped Intrum Justitia&apos;s receivable life
+            cycle and aligned teams across debt collection, debt surveillance,
+            and legal affairs. The work combined business process mapping with
+            deep user research across call centers and back-office teams.
             <br />
             <br />
             Personas and interviews highlighted major pain points: switching

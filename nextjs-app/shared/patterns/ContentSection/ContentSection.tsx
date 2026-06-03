@@ -39,7 +39,10 @@ export interface ContentSectionProps {
   donnyTarget?: string;
 }
 
-const backgroundClasses: Record<NonNullable<ContentSectionProps["background"]>, string> = {
+const backgroundClasses: Record<
+  NonNullable<ContentSectionProps["background"]>,
+  string
+> = {
   default: "bg-background",
   muted: "bg-muted/30",
   accent: "bg-primary/5",
@@ -57,17 +60,11 @@ export function ContentSection({
   donnyTarget,
 }: ContentSectionProps) {
   // Normalize images to array
-  const imageArray = images
-    ? Array.isArray(images)
-      ? images
-      : [images]
-    : [];
+  const imageArray = images ? (Array.isArray(images) ? images : [images]) : [];
 
   // Determine effective layout
   const effectiveLayout =
-    imageLayout === "none" || imageArray.length === 0
-      ? "none"
-      : imageLayout;
+    imageLayout === "none" || imageArray.length === 0 ? "none" : imageLayout;
 
   return (
     <Section
@@ -100,7 +97,12 @@ export function ContentSection({
           {/* Content */}
           {content && (
             <FadeIn direction="up" delay={0.2} distance={25}>
-              <div className={cn("prose prose-neutral dark:prose-invert max-w-none font-body", centered && "mx-auto")}>
+              <div
+                className={cn(
+                  "prose prose-neutral dark:prose-invert max-w-none font-body",
+                  centered && "mx-auto",
+                )}
+              >
                 {content}
               </div>
             </FadeIn>
@@ -136,8 +138,10 @@ export function ContentSection({
                   <div
                     className={cn(
                       "grid gap-4",
-                      imageArray.length === 2 && "grid-cols-1 tablet:grid-cols-2",
-                      imageArray.length >= 3 && "grid-cols-1 tablet:grid-cols-2"
+                      imageArray.length === 2 &&
+                        "grid-cols-1 tablet:grid-cols-2",
+                      imageArray.length >= 3 &&
+                        "grid-cols-1 tablet:grid-cols-2",
                     )}
                   >
                     {imageArray.map((image, index) => (
@@ -164,31 +168,32 @@ export function ContentSection({
                   </div>
                 )}
 
-                {effectiveLayout === "side-by-side" && imageArray.length >= 2 && (
-                  <div className="grid grid-cols-1 tablet:grid-cols-2 gap-4 items-start">
-                    {imageArray.slice(0, 2).map((image, index) => (
-                      <figure key={`${image.src}-${index}`}>
-                        <div className="relative overflow-hidden rounded-lg bg-muted">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            width={image.width}
-                            height={image.height}
-                            className="w-full h-auto"
-                            style={{
-                              mixBlendMode: image.mixBlendMode,
-                            }}
-                          />
-                        </div>
-                        {image.caption && (
-                          <figcaption className="mt-2 text-sm text-muted-foreground text-center italic">
-                            {image.caption}
-                          </figcaption>
-                        )}
-                      </figure>
-                    ))}
-                  </div>
-                )}
+                {effectiveLayout === "side-by-side" &&
+                  imageArray.length >= 2 && (
+                    <div className="grid grid-cols-1 tablet:grid-cols-2 gap-4 items-start">
+                      {imageArray.slice(0, 2).map((image, index) => (
+                        <figure key={`${image.src}-${index}`}>
+                          <div className="relative overflow-hidden rounded-lg bg-muted">
+                            <Image
+                              src={image.src}
+                              alt={image.alt}
+                              width={image.width}
+                              height={image.height}
+                              className="w-full h-auto"
+                              style={{
+                                mixBlendMode: image.mixBlendMode,
+                              }}
+                            />
+                          </div>
+                          {image.caption && (
+                            <figcaption className="mt-2 text-sm text-muted-foreground text-center italic">
+                              {image.caption}
+                            </figcaption>
+                          )}
+                        </figure>
+                      ))}
+                    </div>
+                  )}
               </div>
             </FadeIn>
           )}

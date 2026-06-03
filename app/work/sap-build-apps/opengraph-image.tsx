@@ -17,158 +17,156 @@ export default async function Image() {
   const monoFont = await fetch(MONO_FONT_URL).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        fontFamily: "JetBrains Mono",
+        backgroundColor: DARK,
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Diagonal SAP blue slab */}
       <div
         style={{
-          height: "100%",
-          width: "100%",
+          position: "absolute",
+          top: -120,
+          right: -80,
+          width: 500,
+          height: 900,
+          backgroundColor: SAP_BLUE,
+          transform: "rotate(-12deg)",
           display: "flex",
-          fontFamily: "JetBrains Mono",
-          backgroundColor: DARK,
+        }}
+      />
+
+      {/* Content */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          padding: "0 80px 64px 80px",
+          flex: 1,
           position: "relative",
-          overflow: "hidden",
         }}
       >
-        {/* Diagonal SAP blue slab */}
+        {/* Logo lockup — top left */}
         <div
           style={{
             position: "absolute",
-            top: -120,
-            right: -80,
-            width: 500,
-            height: 900,
-            backgroundColor: SAP_BLUE,
-            transform: "rotate(-12deg)",
+            top: 56,
+            left: 80,
             display: "flex",
+            alignItems: "center",
+            gap: 16,
           }}
-        />
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 48,
+              height: 48,
+              backgroundColor: "#DFFF00",
+              borderRadius: 24,
+            }}
+          >
+            <LogoSvg size={28} color={DARK} />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 20,
+              fontWeight: 800,
+              color: "rgba(255,255,255,0.6)",
+              letterSpacing: "0.01em",
+            }}
+          >
+            Digitaltableteur
+          </div>
+        </div>
 
-        {/* Content */}
+        <div
+          style={{
+            position: "absolute",
+            top: 64,
+            right: 80,
+            display: "flex",
+            fontSize: 14,
+            fontWeight: 800,
+            color: SAP_GOLD,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+          }}
+        >
+          Case Study
+        </div>
+
+        {/* SAP Build Apps wedge mark above headline */}
+        <div
+          style={{
+            display: "flex",
+            marginBottom: 24,
+          }}
+        >
+          <svg width="120" height="60" viewBox="0 0 70 34.15" fill="none">
+            <path d="M70 0H0V34.15H35L70 0Z" fill={SAP_BLUE} />
+          </svg>
+        </div>
+
+        {/* Headline */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-end",
-            padding: "0 80px 64px 80px",
-            flex: 1,
-            position: "relative",
+            gap: 0,
+            marginBottom: 56,
           }}
         >
-          {/* Logo lockup — top left */}
           <div
             style={{
-              position: "absolute",
-              top: 56,
-              left: 80,
               display: "flex",
-              alignItems: "center",
-              gap: 16,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 48,
-                height: 48,
-                backgroundColor: "#DFFF00",
-                borderRadius: 24,
-              }}
-            >
-              <LogoSvg size={28} color={DARK} />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                fontSize: 20,
-                fontWeight: 800,
-                color: "rgba(255,255,255,0.6)",
-                letterSpacing: "0.01em",
-              }}
-            >
-              Digitaltableteur
-            </div>
-          </div>
-
-          <div
-            style={{
-              position: "absolute",
-              top: 64,
-              right: 80,
-              display: "flex",
-              fontSize: 14,
+              fontSize: 84,
               fontWeight: 800,
-              color: SAP_GOLD,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
+              color: "#ffffff",
+              letterSpacing: "-0.04em",
+              lineHeight: 0.95,
             }}
           >
-            Case Study
+            Build
           </div>
-
-          {/* SAP Build Apps wedge mark above headline */}
           <div
             style={{
               display: "flex",
-              marginBottom: 24,
-            }}
-          >
-            <svg width="120" height="60" viewBox="0 0 70 34.15" fill="none">
-              <path d="M70 0H0V34.15H35L70 0Z" fill={SAP_BLUE} />
-            </svg>
-          </div>
-
-          {/* Headline */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 0,
-              marginBottom: 56,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                fontSize: 84,
-                fontWeight: 800,
-                color: "#ffffff",
-                letterSpacing: "-0.04em",
-                lineHeight: 0.95,
-              }}
-            >
-              Build
-            </div>
-            <div
-              style={{
-                display: "flex",
-                fontSize: 84,
-                fontWeight: 800,
-                color: SAP_BLUE,
-                letterSpacing: "-0.04em",
-                lineHeight: 0.95,
-              }}
-            >
-              Apps
-            </div>
-          </div>
-
-          {/* Tagline */}
-          <div
-            style={{
-              display: "flex",
-              fontSize: 18,
+              fontSize: 84,
               fontWeight: 800,
-              color: "rgba(255,255,255,0.4)",
-              letterSpacing: "0.02em",
+              color: SAP_BLUE,
+              letterSpacing: "-0.04em",
+              lineHeight: 0.95,
             }}
           >
-            Design System → Enterprise → Low-Code
+            Apps
           </div>
         </div>
+
+        {/* Tagline */}
+        <div
+          style={{
+            display: "flex",
+            fontSize: 18,
+            fontWeight: 800,
+            color: "rgba(255,255,255,0.4)",
+            letterSpacing: "0.02em",
+          }}
+        >
+          Design System → Enterprise → Low-Code
+        </div>
       </div>
-    ),
+    </div>,
     {
       ...OG_SIZE,
       fonts: [

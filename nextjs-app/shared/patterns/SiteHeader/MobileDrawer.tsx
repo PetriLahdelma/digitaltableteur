@@ -87,7 +87,7 @@ export function MobileDrawer({
 
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     const ctx = gsap.context(() => {
@@ -101,21 +101,21 @@ export function MobileDrawer({
         gsap.fromTo(
           backdropRef.current,
           { opacity: 0 },
-          { opacity: 1, duration: 0.2 }
+          { opacity: 1, duration: 0.2 },
         );
 
         // Panel slide in
         gsap.fromTo(
           panelRef.current,
           { x: "100%" },
-          { x: "0%", duration: 0.3, ease: "power2.out" }
+          { x: "0%", duration: 0.3, ease: "power2.out" },
         );
 
         // Stagger nav items
         gsap.fromTo(
           "[data-nav-item]",
           { opacity: 0, x: 20 },
-          { opacity: 1, x: 0, duration: 0.2, stagger: 0.05, delay: 0.15 }
+          { opacity: 1, x: 0, duration: 0.2, stagger: 0.05, delay: 0.15 },
         );
       }
     });

@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { convertToModelMessages, streamText, stepCountIs, type ToolSet } from "ai";
+import {
+  convertToModelMessages,
+  streamText,
+  stepCountIs,
+  type ToolSet,
+} from "ai";
 import * as Sentry from "@sentry/nextjs";
 import {
   GatewayAuthenticationError,
@@ -144,8 +149,7 @@ function normalizeIncomingMessages(rawPayload: unknown): IncomingUiMessages {
       parts?: unknown;
     };
     const content =
-      record.content ??
-      (Array.isArray(record.parts) ? record.parts : []);
+      record.content ?? (Array.isArray(record.parts) ? record.parts : []);
     return { ...message, content };
   });
 }

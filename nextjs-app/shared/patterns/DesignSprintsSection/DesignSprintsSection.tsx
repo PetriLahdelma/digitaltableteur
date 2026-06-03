@@ -33,14 +33,14 @@ function SprintButton({ label }: { label: string }) {
         "bg-primary text-primary-foreground",
         "font-medium text-base",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-        "cursor-pointer"
+        "cursor-pointer",
       )}
     >
       <span
         className={cn(
           "relative z-10 whitespace-nowrap",
           "pl-11 pr-5 group-hover:pl-5 group-hover:pr-11",
-          "transition-all duration-300 ease-out"
+          "transition-all duration-300 ease-out",
         )}
       >
         {label}
@@ -51,17 +51,22 @@ function SprintButton({ label }: { label: string }) {
           "absolute top-1/2 -translate-y-1/2 z-20",
           "w-8 h-8",
           "left-1.5 group-hover:left-[calc(100%-2.375rem)]",
-          "transition-[left] duration-[600ms] ease-out"
+          "transition-[left] duration-[600ms] ease-out",
         )}
       >
         <span
           className={cn(
             "flex items-center justify-center",
             "w-8 h-8 rounded-full",
-            styles.iconCircle
+            styles.iconCircle,
           )}
         >
-          <Icon name="Lightning" size="sm" weight="fill" className="text-foreground" />
+          <Icon
+            name="Lightning"
+            size="sm"
+            weight="fill"
+            className="text-foreground"
+          />
         </span>
       </span>
     </a>
@@ -96,7 +101,10 @@ export function DesignSprintsSection({
           <div className={styles.intro}>
             <FadeIn direction="up" delay={0} distance={20}>
               <Title level={2} className={styles.title}>
-                {t("homeDesignSprintsTitle", "Exceptional design, without the wait")}
+                {t(
+                  "homeDesignSprintsTitle",
+                  "Exceptional design, without the wait",
+                )}
               </Title>
             </FadeIn>
 
@@ -104,7 +112,7 @@ export function DesignSprintsSection({
               <p className={styles.description}>
                 {t(
                   "homeDesignSprintsDescription",
-                  "We believe world-class design shouldn't take months. That's why we created Design Sprints—polished, timeless branding delivered in just two weeks."
+                  "We believe world-class design shouldn't take months. That's why we created Design Sprints—polished, timeless branding delivered in just two weeks.",
                 )}
               </p>
             </FadeIn>
@@ -130,7 +138,9 @@ export function DesignSprintsSection({
 
           <FadeIn direction="up" delay={0.4} distance={20}>
             <div className={styles.ctaRow}>
-              <SprintButton label={t("homeDesignSprintsCta", "Start your sprint")} />
+              <SprintButton
+                label={t("homeDesignSprintsCta", "Start your sprint")}
+              />
             </div>
           </FadeIn>
         </div>

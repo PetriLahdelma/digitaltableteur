@@ -11,7 +11,10 @@ import {
   type NewsBulletinLink,
 } from "@/nextjs-app/shared/data/news-bulletin";
 import { cn } from "@/lib/utils";
-import { NewsBulletinBadgeMark, badgeAccessibleLabel } from "./NewsBulletinBadge";
+import {
+  NewsBulletinBadgeMark,
+  badgeAccessibleLabel,
+} from "./NewsBulletinBadge";
 import styles from "./NewsBulletin.module.css";
 
 const TRACK_ID = "news-bulletin-track";
@@ -42,7 +45,10 @@ function resolveLink(link: NewsBulletinLink | undefined): NewsBulletinLink {
 function BulletinCard({ item }: { item: NewsBulletinItem }) {
   const link = resolveLink(item.link);
   const label = cardLabel(item);
-  const cardClass = cn(styles.card, link.kind !== "static" && styles.cardInteractive);
+  const cardClass = cn(
+    styles.card,
+    link.kind !== "static" && styles.cardInteractive,
+  );
 
   if (link.kind === "internal") {
     return (
@@ -199,10 +205,7 @@ export function NewsBulletin({
         <div
           ref={trackRef}
           id={TRACK_ID}
-          className={cn(
-            styles.track,
-            !isOverflowing && styles.trackCentered,
-          )}
+          className={cn(styles.track, !isOverflowing && styles.trackCentered)}
           tabIndex={isOverflowing ? 0 : undefined}
         >
           {items.map((item) => (

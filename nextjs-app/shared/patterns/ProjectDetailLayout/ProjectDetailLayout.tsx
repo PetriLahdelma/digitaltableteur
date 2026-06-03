@@ -29,7 +29,8 @@ function ScrollProgress() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setProgress(scrollPercent);
     };
@@ -79,27 +80,26 @@ export function ProjectDetailLayout({
       >
         {/* Navigation - sticky below header */}
         {nav && (
-          <div className="sticky top-20 z-30 border-b border-border flex items-center" style={{ backgroundColor: 'var(--logo-background, #DFFF00)', color: 'var(--logo-color, #000)', ['--color-primary' as string]: 'var(--logo-color, #000)' }}>
+          <div
+            className="sticky top-20 z-30 border-b border-border flex items-center"
+            style={{
+              backgroundColor: "var(--logo-background, #DFFF00)",
+              color: "var(--logo-color, #000)",
+              ["--color-primary" as string]: "var(--logo-color, #000)",
+            }}
+          >
             {nav}
           </div>
         )}
 
         {/* Hero */}
-        <header className="relative">
-          {hero}
-        </header>
+        <header className="relative">{hero}</header>
 
         {/* Main content sections */}
-        <div className="relative">
-          {children}
-        </div>
+        <div className="relative">{children}</div>
 
         {/* CTA - render WorkCTA by default, or custom cta prop */}
-        {cta !== null && (
-          <div className="mt-16">
-            {cta || <WorkCTA />}
-          </div>
-        )}
+        {cta !== null && <div className="mt-16">{cta || <WorkCTA />}</div>}
 
         {/* Related projects */}
         {relatedProjects && (

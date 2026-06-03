@@ -54,11 +54,7 @@ export function RelatedProjects({
   const displayTitle = title || t("projectRelatedTitle", "Related Projects");
 
   return (
-    <Section
-      spacing="lg"
-      background="default"
-      className={className}
-    >
+    <Section spacing="lg" background="default" className={className}>
       <Container size="lg">
         <FadeIn direction="up" delay={0} distance={20}>
           <Title
@@ -74,7 +70,8 @@ export function RelatedProjects({
             "grid gap-6",
             relatedProjects.length === 1 && "grid-cols-1 max-w-md",
             relatedProjects.length === 2 && "grid-cols-1 md:grid-cols-2",
-            relatedProjects.length >= 3 && "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+            relatedProjects.length >= 3 &&
+              "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
           )}
         >
           {relatedProjects.map((project, index) => (

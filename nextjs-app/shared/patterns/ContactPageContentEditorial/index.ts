@@ -1,1 +1,4 @@
-export { ContactPageContentEditorial, type ContactPageContentEditorialProps } from "./ContactPageContentEditorial";
+export {
+  ContactPageContentEditorial,
+  type ContactPageContentEditorialProps,
+} from "./ContactPageContentEditorial";

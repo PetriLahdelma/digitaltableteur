@@ -1,5 +1,7 @@
 /** Props for Footer. */
-export interface FooterProps { className?: string }
+export interface FooterProps {
+  className?: string;
+}
 
 import React from "react";
 import styles from "./Footer.module.css";
