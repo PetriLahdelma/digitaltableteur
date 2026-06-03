@@ -60,6 +60,8 @@ See [PHASE-05-SUMMARY.md](../.planning/milestones/ai-native-design-system/PHASE-
 | Metric | Command / artifact |
 |--------|-------------------|
 | Intent retrieval | `npm run agent:eval` → golden-intents (20 cases, ≥85%) |
+| Pattern composition | `npm run agent:eval:patterns` — 3 layout recipes |
+| Local audit bundle | `npm run agentic-ds-audit` |
 | Manifest health | Schema, usage coverage, agent blocks, graph |
 | Contract drift | `npm run check:contract-drift --strict` |
 | Import policy | `npm run lint:dt-usage` |

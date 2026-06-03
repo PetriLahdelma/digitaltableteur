@@ -2,25 +2,38 @@
 
 **Updated:** 2026-06-03
 
-## Shipped this session
+## Shipped
 
-- [x] Phase 7: `golden-intents.json` + `intent-retrieval-eval.mjs` (20 cases, 85% CI gate)
-- [x] Phase 8 (partial): `docs/AGENTIC_DS_OPERATING_MODEL.md`
-- [x] Milestone roadmap: `.planning/milestones/agentic-ds-v2/ROADMAP.md`
+- [x] Phase 7: Intent golden eval (20 cases, 85% gate)
+- [x] Phase 8: Operating model + audit playbook
+- [x] Phase 10 (partial): Pattern recipes + `suggest_pattern_for_layout` MCP + golden patterns eval
+- [x] Phase 11 (partial): `/design-system/agent` proof page
+- [x] Phase 12 (partial): `npm run agentic-ds-audit` + audit playbook doc
+- [x] CI quota rule in `AGENTS.md` — verify locally, admin merge
 
-## Next up
+## Figma (phase 9 — manual MCP)
 
-1. Merge `fix/button-isdisabled-migration` (#675) if still open
-2. Figma phase 1a/1b variable chunks → DT-Site-stuff via MCP
-3. Pattern `agent` blocks for `CTASection`, `Header` (composition, not replacement)
-4. Optional: `/design-system/agent` doc route (links only, no layout churn)
+Local payloads ready:
+
+```bash
+npm run build:figma-variables
+# Apply nextjs-app/shared/foundations/figma/phases/*.js via Figma MCP (DT-Site-stuff)
+```
+
+See [docs/FIGMA_DESIGN_SYSTEM_SYNC.md](../../../docs/FIGMA_DESIGN_SYSTEM_SYNC.md).
 
 ## Commands
 
 ```bash
-npm run build:tokens
 npm run agent:eval
-node scripts/design-system/agent-eval/intent-retrieval-eval.mjs
-npm run find-component -- "your intent"
+npm run agent:eval:intents
+npm run agent:eval:patterns
+npm run agentic-ds-audit
 npm run ds:mcp
 ```
+
+## Public surfaces
+
+- `/design-system/agent` — proof page
+- `/mcp` — HTTP MCP
+- `/.well-known/agent.json` — agent discovery

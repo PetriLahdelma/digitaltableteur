@@ -118,6 +118,8 @@
     "build:zod-catalog": "tsx scripts/design-system/build-zod-catalog.ts",
     "agent:eval": "node scripts/design-system/agent-eval/run.mjs",
     "agent:eval:intents": "node scripts/design-system/agent-eval/intent-retrieval-eval.mjs",
+    "agent:eval:patterns": "node scripts/design-system/agent-eval/pattern-composition-eval.mjs",
+    "agentic-ds-audit": "node scripts/design-system/agentic-ds-audit.mjs",
     "check:generated": "node scripts/design-system/check-generated.mjs",
     "check:figma": "node scripts/design-system/figma-link.mjs",
     "sync:figma": "node scripts/design-system/sync-figma-contract-urls.mjs",

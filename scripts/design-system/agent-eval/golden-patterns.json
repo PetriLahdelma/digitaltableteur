@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "description": "Golden layout intent → @dt pattern recipe benchmark.",
+  "cases": [
+    {
+      "id": "cta-band",
+      "query": "marketing call to action band",
+      "expectedTop1": "CTASection"
+    },
+    {
+      "id": "site-header",
+      "query": "site header navigation pattern",
+      "expectedTop1": "Header"
+    },
+    {
+      "id": "hero-landing",
+      "query": "full bleed homepage hero",
+      "expectedTop1": "HeroSection"
+    }
+  ]
+}

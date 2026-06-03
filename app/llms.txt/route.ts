@@ -41,6 +41,7 @@ export async function GET() {
   body += `- Blog RSS feed: ${toAbsoluteSiteUrl("/blog/feed.xml")}\n`;
   body += `- Human sitemap: ${baseUrl}/sitemap\n`;
   body += `- Colophon (site stats): ${baseUrl}/colophon\n`;
+  body += `- Design system agent demo: ${baseUrl}/design-system/agent\n`;
   body += `- AI usage policy: ${baseUrl}/ai-use\n`;
   body += `- Accessibility page: ${baseUrl}/accessibility\n`;
   body += `- Programmatic SEO hub: ${baseUrl}/pseo\n`;
@@ -55,6 +56,8 @@ export async function GET() {
   body += `- A2A agent card: ${baseUrl}/.well-known/agent-card.json\n`;
   body += `- MCP server card: ${baseUrl}/.well-known/mcp/server-card.json\n`;
   body += `- MCP endpoint (Streamable HTTP): ${baseUrl}/mcp\n`;
+  body +=
+    "- Design system tools: list_components, find_component_for_intent, suggest_pattern_for_layout, get_component_contract, get_tokens, validate_component_usage\n";
   body += `- Agent auth policy: ${baseUrl}/auth.md\n\n`;
 
   body += "## Services and capabilities\n\n";

@@ -13,11 +13,11 @@
 | Phase | Focus | Status |
 |-------|--------|--------|
 | **7** | Intent retrieval benchmark in `agent:eval` | **Done** |
-| **8** | Public operating model + agent workflow docs | **In progress** |
-| **9** | Figma closed loop (variables → nodes → `sync:figma`) | Planned |
-| **10** | Pattern composition in manifest + MCP | Planned |
-| **11** | Portfolio proof route (read-only DS agent demo) | Planned |
-| **12** | Client-facing “agentic DS audit” playbook | Planned |
+| **8** | Public operating model + agent workflow docs | **Done** |
+| **9** | Figma closed loop (variables → nodes → `sync:figma`) | **Payloads ready** — apply via MCP |
+| **10** | Pattern composition in manifest + MCP | **Partial** — recipes + MCP tool |
+| **11** | Portfolio proof route (read-only DS agent demo) | **Done** — `/design-system/agent` |
+| **12** | Client-facing “agentic DS audit” playbook | **Done** — `agentic-ds-audit` script |
 
 ---
 

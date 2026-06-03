@@ -3,6 +3,7 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import {
   readImportPolicyResource,
   readManifestSummaryResource,
+  readPatternRecipesResource,
   readTokenSummaryResource,
 } from "./executors";
 
@@ -80,5 +81,24 @@ export function registerDesignSystemMcpResources(server: McpServer): number {
     }),
   );
 
-  return 3;
+  resources.resource(
+    "pattern-recipes",
+    "digitaltableteur://design-system/pattern-recipes",
+    {
+      description:
+        "Pattern composition recipes (useWhen, avoidWhen, variantNotes) for layout-level agent retrieval.",
+      mimeType: "application/json",
+    },
+    async () => ({
+      contents: [
+        {
+          uri: "digitaltableteur://design-system/pattern-recipes",
+          mimeType: "application/json",
+          text: readPatternRecipesResource(),
+        },
+      ],
+    }),
+  );
+
+  return 4;
 }

@@ -6,8 +6,8 @@ Agents can discover `@dt/*` components, tokens, and import policy through MCP â€
 
 | Surface | URL / command | Tools |
 |---------|----------------|-------|
-| **Production HTTP** | `https://www.digitaltableteur.com/mcp` | Consulting + design system (14 tools) + 3 resources |
-| **Local stdio** | `npm run ds:mcp` | Design system only (5 tools + 3 resources) |
+| **Production HTTP** | `https://www.digitaltableteur.com/mcp` | Consulting + design system (6 tools) + 4 resources |
+| **Local stdio** | `npm run ds:mcp` | Design system only (6 tools + 4 resources) |
 
 Discovery card: `/.well-known/mcp/server-card.json`
 
@@ -25,6 +25,7 @@ If manifest is missing, tools return an error with this hint.
 |------|---------|
 | `list_components` | Catalog with status, import path, usage, `composesWith` |
 | `find_component_for_intent` | Rank components for a free-text UI task |
+| `suggest_pattern_for_layout` | Rank layout patterns (CTA, header, hero) with useWhen/avoidWhen |
 | `get_component_contract` | Full contract + agent block + usage for one name |
 | `get_tokens` | Token catalog summary + manifest token metadata |
 | `validate_component_usage` | Scan file path or snippet for raw button/heading/shadcn |
@@ -38,6 +39,7 @@ CLI equivalents: `npm run find-component`, `npm run lint:dt-usage`, `npm run val
 | `digitaltableteur://design-system/manifest/summary` | Manifest summary + usage coverage |
 | `digitaltableteur://design-system/tokens/summary` | Token catalog rollup |
 | `digitaltableteur://design-system/import-policy` | `docs/PUBLIC_API.md` |
+| `digitaltableteur://design-system/pattern-recipes` | Pattern composition recipes JSON |
 
 ## Cursor / Claude Desktop (stdio)
 

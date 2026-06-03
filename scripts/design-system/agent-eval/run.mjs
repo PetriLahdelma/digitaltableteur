@@ -104,6 +104,7 @@ if (!alertEntry?.agent?.composesWith?.includes("Button")) {
 const DS_MCP_TOOLS = [
   "list_components",
   "find_component_for_intent",
+  "suggest_pattern_for_layout",
   "get_component_contract",
   "get_tokens",
   "validate_component_usage",
@@ -155,6 +156,40 @@ if (!existsSync(goldenPath)) {
       `✓ intent retrieval golden set: ${intentResult.passed}/${intentResult.total} (${(intentResult.rate * 100).toFixed(1)}%)`,
     );
   }
+}
+
+const goldenPatternsPath = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "golden-patterns.json",
+);
+if (!existsSync(goldenPatternsPath)) {
+  console.error("FAIL: golden-patterns.json missing");
+  failed += 1;
+} else {
+  const { runPatternCompositionEval } = await import(
+    "./pattern-composition-eval.mjs"
+  );
+  const { loadPatternRecipes } = await import("../pattern-composition-lib.mjs");
+  const patternSpec = JSON.parse(readFileSync(goldenPatternsPath, "utf8"));
+  const { patterns } = loadPatternRecipes(ROOT);
+  const patternResult = runPatternCompositionEval(patternSpec, patterns);
+  if (patternResult.rate < patternResult.minPassRate) {
+    console.error(
+      `FAIL: pattern composition ${patternResult.passed}/${patternResult.total}`,
+    );
+    failed += 1;
+  } else {
+    console.log(
+      `✓ pattern composition golden set: ${patternResult.passed}/${patternResult.total}`,
+    );
+  }
+}
+
+if (!readFileSync(dsExecutorsPath, "utf8").includes("suggest_pattern_for_layout")) {
+  console.error("FAIL: suggest_pattern_for_layout tool not registered in executors");
+  failed += 1;
+} else {
+  console.log("✓ suggest_pattern_for_layout MCP tool present");
 }
 
 process.exit(failed ? 1 : 0);
