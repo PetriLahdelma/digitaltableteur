@@ -128,25 +128,36 @@ export function NewsBulletin({
       "(prefers-reduced-motion: reduce)",
     ).matches;
     const behavior: ScrollBehavior = prefersReducedMotion ? "auto" : "smooth";
-    const trackLeft = track.scrollLeft;
-    const trackRight = trackLeft + track.clientWidth;
+
+    // Measure card vs track in the same (viewport) coordinate space via
+    // getBoundingClientRect, then scroll by the delta. offsetLeft is relative
+    // to the offset parent (here <body>, since no ancestor is positioned), so
+    // it was inflated by the track's left gutter — comparing it against
+    // scroll-space trackRight made the first "next" click pick the already-
+    // visible first card and nudge only ~the gutter width (looked like nothing).
+    const trackRect = track.getBoundingClientRect();
+    const epsilon = 1;
+    const scrollToCard = (card: HTMLElement) => {
+      const delta = card.getBoundingClientRect().left - trackRect.left;
+      track.scrollTo({ left: track.scrollLeft + delta, behavior });
+    };
 
     if (direction === 1) {
       for (const card of cards) {
-        const cardRight = card.offsetLeft + card.offsetWidth;
-        if (cardRight > trackRight + 1) {
-          track.scrollTo({ left: card.offsetLeft, behavior });
+        if (card.getBoundingClientRect().right > trackRect.right + epsilon) {
+          scrollToCard(card);
           return;
         }
       }
+      track.scrollTo({ left: track.scrollWidth, behavior });
       return;
     }
 
     for (let index = cards.length - 1; index >= 0; index -= 1) {
       const card = cards[index];
       if (!card) continue;
-      if (card.offsetLeft < trackLeft - 1) {
-        track.scrollTo({ left: card.offsetLeft, behavior });
+      if (card.getBoundingClientRect().left < trackRect.left - epsilon) {
+        scrollToCard(card);
         return;
       }
     }
