@@ -539,6 +539,18 @@
   }
 }
 
+/* Lift the chat toggle above the cookie consent bar so it never covers the
+   banner's CTAs (e.g. "Accept all"), worst on mobile where the bar is tall.
+   The offset tracks the banner's measured height (published as
+   --cookie-banner-height by CookieConsentBanner) so it clears the bar across
+   locales and wrapped buttons. Scoped to the closed toggle so it never fights
+   the open-state hide transform. */
+:global(body[data-cookie-banner-open="true"]) .toggle:not([data-open="true"]) {
+  transform: translateY(
+    calc(-1 * (var(--cookie-banner-height, 8rem) + 0.75rem))
+  );
+}
+
 /* Slide chat to the left when mobile menu is open */
 @media (width <= 1024px) {
   :global(body[data-mobile-menu-open="true"]) .container,
