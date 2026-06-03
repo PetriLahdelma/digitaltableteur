@@ -45,7 +45,7 @@ export function NextBlogNav() {
             variant="tertiary"
             size="m"
             icon={<Icon name="arrow-left" ariaLabel="Previous article" />}
-            disabled={!isArticleRoute || currentIndex <= 0}
+            isDisabled={!isArticleRoute || currentIndex <= 0}
             onClick={() => {
               if (!isArticleRoute) return;
               if (currentIndex > 0)
@@ -58,7 +58,9 @@ export function NextBlogNav() {
             variant="tertiary"
             size="m"
             endIcon={<Icon name="arrow-right" ariaLabel="Next article" />}
-            disabled={!isArticleRoute || currentIndex === blogPages.length - 1}
+            isDisabled={
+              !isArticleRoute || currentIndex === blogPages.length - 1
+            }
             onClick={() => {
               if (!isArticleRoute) return;
               if (currentIndex < blogPages.length - 1)

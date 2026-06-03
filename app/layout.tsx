@@ -129,11 +129,13 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-NJ654G92');
           `}
         </Script>
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="iO1vJe+oY/MXihktNC/upw"
-          strategy="afterInteractive"
-        />
+        {process.env.NODE_ENV === "production" ? (
+          <Script
+            src="https://analytics.ahrefs.com/analytics.js"
+            data-key="iO1vJe+oY/MXihktNC/upw"
+            strategy="afterInteractive"
+          />
+        ) : null}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
           strategy="afterInteractive"
