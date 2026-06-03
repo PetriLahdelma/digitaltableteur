@@ -9,10 +9,15 @@ import type {
   DesignSystemToolTextResult,
 } from "./types";
 import { loadPublicApiDoc, loadTokenCatalog } from "./manifest-loader";
+import {
+  loadPatternRecipes,
+  rankPatternsForIntent,
+} from "./pattern-composition";
 
 export const DESIGN_SYSTEM_TOOL_NAMES = [
   "list_components",
   "find_component_for_intent",
+  "suggest_pattern_for_layout",
   "get_component_contract",
   "get_tokens",
   "validate_component_usage",
@@ -24,6 +29,7 @@ export const DESIGN_SYSTEM_RESOURCE_URIS = [
   "digitaltableteur://design-system/manifest/summary",
   "digitaltableteur://design-system/tokens/summary",
   "digitaltableteur://design-system/import-policy",
+  "digitaltableteur://design-system/pattern-recipes",
 ] as const;
 
 export function dsJsonResult(data: unknown): DesignSystemToolTextResult {
@@ -157,6 +163,51 @@ export function executeFindComponentForIntent(args?: {
     })),
     cliEquivalent: `npm run find-component -- ${JSON.stringify(query)}`,
   });
+}
+
+export function executeSuggestPatternForLayout(args?: {
+  query?: string;
+  limit?: number;
+}): DesignSystemToolTextResult {
+  const query = String(args?.query ?? "").trim();
+  if (!query) {
+    return dsTextResult("Error: query is required.", true);
+  }
+
+  const { patterns } = loadPatternRecipes();
+  if (!patterns.length) {
+    return dsTextResult(
+      "Error: pattern-composition.recipes.json missing — see scripts/design-system/pattern-composition.recipes.json",
+      true,
+    );
+  }
+
+  const limit = Math.min(Math.max(Number(args?.limit) || 5, 1), 10);
+  const ranked = rankPatternsForIntent(query, patterns, limit);
+
+  return dsJsonResult({
+    query,
+    guardrails:
+      "Patterns are layout shells — do not mass-replace Header/CTA chrome without design sign-off. See docs/AGENTIC_DS_OPERATING_MODEL.md",
+    matches: ranked.map(({ name, score, pattern }) => ({
+      name,
+      score,
+      publicImport: pattern.publicImport,
+      status: pattern.status,
+      tier: pattern.tier,
+      useWhen: pattern.useWhen ?? [],
+      avoidWhen: pattern.avoidWhen ?? [],
+      composesWith: pattern.composesWith ?? [],
+      variantNotes: pattern.variantNotes ?? {},
+      storybookId: pattern.storybookId,
+    })),
+    resource: "digitaltableteur://design-system/pattern-recipes",
+  });
+}
+
+export function readPatternRecipesResource(): string {
+  const file = loadPatternRecipes();
+  return JSON.stringify(file, null, 2);
 }
 
 export function executeGetComponentContract(args?: {
