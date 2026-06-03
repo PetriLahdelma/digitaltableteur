@@ -150,6 +150,14 @@ const nextConfig: NextConfig = {
       "lenis",
     ],
   },
+  // Allow physical devices on the LAN (e.g. a phone reaching `next dev` via the
+  // Mac's LAN IP) to load /_next/* dev resources. Next 16 blocks cross-origin
+  // dev-asset requests by default, which strips CSS, client JS, and optimized
+  // images on any non-localhost origin — the device renders an unstyled,
+  // non-interactive page (dead hamburger, no nav background, broken images)
+  // while desktop localhost looks fine. Production is unaffected: this gate is
+  // dev-server-only. The subnet wildcard tolerates DHCP reassigning the IP.
+  allowedDevOrigins: ["192.168.1.119", "192.168.1.*"],
   outputFileTracingRoot: __dirname,
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   transpilePackages: ["react-phone-number-input", "libphonenumber-js"],
