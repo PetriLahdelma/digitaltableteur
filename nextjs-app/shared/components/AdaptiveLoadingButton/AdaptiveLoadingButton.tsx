@@ -71,8 +71,10 @@ export const AdaptiveLoadingButton = React.forwardRef<
       idleLabelKey = "adaptiveLoadingButton.idle",
       children,
       disabled,
+      isDisabled,
       className = "",
     } = props;
+    const effectiveDisabled = isDisabled ?? disabled;
     const derivedLabel = children ?? t(idleLabelKey);
     const content = loading ? (
       <span className={styles.loadingContent}>
@@ -94,7 +96,7 @@ export const AdaptiveLoadingButton = React.forwardRef<
 
     const commonProps = {
       ref,
-      disabled: disabled || loading,
+      isDisabled: effectiveDisabled || loading,
       "aria-busy": loading,
       accessibleDescription,
       className: `${styles.button} ${className}`.trim(),
@@ -110,6 +112,7 @@ export const AdaptiveLoadingButton = React.forwardRef<
         idleLabelKey: _idleLabelKey,
         children: _children,
         disabled: _disabled,
+        isDisabled: _isDisabled,
         className: _className,
         ...rest
       } = props;
@@ -128,6 +131,7 @@ export const AdaptiveLoadingButton = React.forwardRef<
       idleLabelKey: _idleLabelKey,
       children: _children,
       disabled: _disabled,
+      isDisabled: _isDisabled,
       className: _className,
       ...rest
     } = props;

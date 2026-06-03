@@ -158,7 +158,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         <Button
           type="button"
           onClick={onReset}
-          disabled={isSending}
+          isDisabled={isSending}
           aria-label={resetAriaLabel}
           variant="tertiary"
           size="m"
