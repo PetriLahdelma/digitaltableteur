@@ -8,7 +8,28 @@
   "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=406-1569",
   "radixPrimitive": null,
   "element": "button",
-  "variants": {},
+  "variants": {
+    "variant": {
+      "values": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "secondaryError",
+        "tertiaryError",
+        "error",
+        "warning",
+        "success",
+        "info"
+      ],
+      "default": "primary",
+      "propSourced": true
+    },
+    "surface": {
+      "values": ["default", "onDark", "onBrand"],
+      "default": "default",
+      "propSourced": true
+    }
+  },
   "slots": [
     "icon",
     "endIcon"

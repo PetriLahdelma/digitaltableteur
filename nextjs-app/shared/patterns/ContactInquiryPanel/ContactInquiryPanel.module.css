@@ -5,6 +5,10 @@
   gap: var(--space-layout-24);
 }
 
+.contactFormAnchor {
+  scroll-margin-top: 6rem;
+}
+
 .modeSwitch {
   display: inline-flex;
   width: 100%;
