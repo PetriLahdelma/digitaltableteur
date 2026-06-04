@@ -2,7 +2,7 @@
   margin: 0 auto;
   padding: var(--space-layout-48, 3rem) var(--space-layout-24, 1.5rem);
   max-width: 90rem;
-  font-family: var(--font-text);
+  font-family: var(--primary-body-font, var(--font-text));
   line-height: var(--line-height-relaxed);
   color: var(--color-text);
 }
@@ -14,9 +14,10 @@
 }
 
 .header h1 {
-  font-family: var(--font-title);
-  font-size: var(--font-size-title-l);
-  line-height: var(--line-height-tight);
+  font-family: var(--primary-bold-font, var(--font-text));
+  font-size: var(--font-size-text-l);
+  font-weight: 600;
+  line-height: var(--line-height-snug);
   color: var(--color-primary);
   margin-bottom: var(--space-layout-16, 1rem);
 }
@@ -39,16 +40,17 @@
 }
 
 .section h2 {
-  font-family: var(--font-title);
-  font-size: var(--font-size-title-s);
+  font-family: var(--primary-bold-font, var(--font-text));
+  font-size: var(--font-size-text-m);
+  font-weight: 600;
   line-height: var(--line-height-snug);
   color: var(--color-primary);
   margin-bottom: var(--space-layout-16, 1rem);
 }
 
 .section h3 {
-  font-family: var(--font-text);
-  font-size: var(--font-size-text-l);
+  font-family: var(--primary-bold-font, var(--font-text));
+  font-size: var(--font-size-text-m);
   font-weight: 600;
   color: var(--color-dark);
   margin-bottom: var(--space-layout-12, 0.75rem);
@@ -292,14 +294,6 @@
   .wrapper {
     padding: var(--space-layout-24, 1.5rem) var(--space-layout-16, 1rem);
   }
-
-  .header h1 {
-    font-size: var(--font-size-title-m);
-  }
-
-  .section h2 {
-    font-size: var(--font-size-title-xs);
-  }
 }
 
 /* Icon-specific styles */
@@ -428,6 +422,11 @@
   margin-bottom: var(--space-layout-8, 0.5rem);
 }
 
+.iconDisplay svg {
+  display: block;
+  flex-shrink: 0;
+}
+
 .iconCard:hover .iconDisplay {
   color: var(--color-primary);
 }
@@ -521,8 +520,9 @@
   margin: 0 0 var(--space-layout-8, 0.5rem) 0;
   align-items: center;
   gap: var(--space-layout-8, 0.5rem);
-  font-family: var(--font-title);
-  font-size: var(--font-size-title-xxs);
+  font-family: var(--primary-bold-font, var(--font-text));
+  font-size: var(--font-size-text-m);
+  font-weight: 600;
   color: var(--color-primary);
 }
 

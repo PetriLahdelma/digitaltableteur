@@ -58,6 +58,24 @@
 - Diffs: `__visual__/diffs/__diff_output__/`
 - Report: `public/visual-diff/report.json`
 
+**Migration matrix (shadcn → @dt)**
+
+- Run: `npm run test:migration:visual` (Storybook `:6010` + Next dev `:3001`)
+- Update baselines: `npm run test:migration:visual:update`
+- Report: `public/visual-diff/migration-matrix-report.json`
+- Optional CI: `.github/workflows/ds-migration-visual.yml` (workflow_dispatch)
+
+**DS health (CI-safe aggregate)**
+
+- Run: `npm run ds:health`
+- Output: `public/ds-health/report.json`, `public/ds-health/summary.md`
+- Includes: `lint:dt-usage`, `lint:dt-responsive-visibility`, shadcn inventory, last matrix result
+
+**Responsive visibility lint**
+
+- Run: `npm run lint:dt-responsive-visibility -- --strict`
+- Prevents `lg:hidden` (etc.) on `@dt/Button` — use wrapper pattern (see IconButton)
+
 ### Security Testing
 
 **`tests/security/run-security-tests.mjs`**

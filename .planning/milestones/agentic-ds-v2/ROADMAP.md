@@ -13,8 +13,8 @@
 | Phase | Focus | Status |
 |-------|--------|--------|
 | **7** | Intent retrieval benchmark in `agent:eval` | **Done** |
-| **8** | Public operating model + agent workflow docs | **Done** |
-| **9** | Figma closed loop (variables → nodes → `sync:figma`) | **Payloads ready** — apply via MCP |
+| **8** | Public operating model + agent workflow docs | **Done** (+ [CATALOG-POLICY.md](../../../docs/CATALOG-POLICY.md), [AGENTIC_DS_CASE_STUDY.md](../../../docs/AGENTIC_DS_CASE_STUDY.md)) |
+| **9** | Figma closed loop (variables → nodes → `sync:figma`) | **Done** — 77 variables applied in Figma; contracts synced |
 | **10** | Pattern composition in manifest + MCP | **Partial** — recipes + MCP tool |
 | **11** | Portfolio proof route (read-only DS agent demo) | **Done** — `/design-system/agent` |
 | **12** | Client-facing “agentic DS audit” playbook | **Done** — `agentic-ds-audit` script |
@@ -80,11 +80,11 @@ Package for consulting:
 
 ## Success criteria (v2 complete)
 
-1. Intent eval ≥90% on golden set; failures block CI.
-2. ≥5 stable atoms with Figma `node-id` + Code Connect.
-3. ≥3 documented pattern recipes with composition in manifest.
-4. Public operating model linked from site agent discovery (`/.well-known/`).
-5. One published case study with before/after agent metrics.
+1. Intent eval ≥90% on golden set; failures block CI. **Done (20/20, 100%).**
+2. ≥5 stable atoms with Figma `node-id`. **Done (6/7 stable; Icon = `dt-icon`).** Code Connect deferred (Figma Pro).
+3. ≥3 documented pattern recipes with composition in manifest. **Done** (`pattern-composition.recipes.json` + MCP).
+4. Public operating model linked from site agent discovery (`/.well-known/`). **Done** (`design_system` on agent-card).
+5. One published case study with before/after agent metrics. **Done** — [docs/AGENTIC_DS_CASE_STUDY.md](../../../docs/AGENTIC_DS_CASE_STUDY.md).
 
 ---
 

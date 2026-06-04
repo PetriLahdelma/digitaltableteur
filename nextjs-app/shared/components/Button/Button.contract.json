@@ -3,7 +3,7 @@
   "name": "Button",
   "tier": "molecule",
   "group": "interaction",
-  "status": "beta",
+  "status": "stable",
   "description": "Primary interaction control with variant, severity, loading, and link modes.",
   "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=406-1569",
   "radixPrimitive": null,
@@ -35,6 +35,8 @@
     "reviewed": true,
     "reviewedNote": "2026-05-26 — keyboard, loading, forced-colors verified in Storybook.",
     "forcedColorsVerified": true,
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true,
     "axeTestExempt": "Interaction atom; axe on Default/Primary and compliance stories."
   },
   "tokens": {
@@ -82,5 +84,32 @@
     "value",
     "variant"
   ],
-  "consumers": []
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/not-found.tsx",
+      "since": "2026-06-03",
+      "note": "App Router error surface"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "app/error.tsx",
+      "since": "2026-06-03"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/CookieConsent/CookieConsentBanner.tsx",
+      "since": "2026-06-03"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/ContactForm/ContactForm.tsx",
+      "since": "2026-06-03"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/ChatWidget/ChatToggle.tsx",
+      "since": "2026-06-03"
+    }
+  ]
 }

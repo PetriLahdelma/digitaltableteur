@@ -37,13 +37,24 @@ npm run build:tokens          # refresh token-catalog + DTCG
 npm run build:figma-variables # → foundations/figma/variables-manifest.json + phases/*.js
 ```
 
-Then apply each `foundations/figma/phases/phase-*.js` via MCP `use_figma` with `fileKey: PC2UPdYwm8qGt6ZTg0AakF` and `skillNames: "figma-generate-library"` (Cursor Figma plugin or remote MCP — **not** Desktop selection MCP, which lacks `use_figma`).
+Then apply each phase via MCP `use_figma` with `fileKey: PC2UPdYwm8qGt6ZTg0AakF`.
 
-Optional CLI wrapper when your MCP endpoint exposes `use_figma`:
+**Who can run it**
+
+| MCP | `use_figma`? | How |
+|-----|----------------|-----|
+| **Cursor Figma plugin** (`plugin-figma-figma`) | Yes | Ask the Cursor agent to apply payloads (preferred in this repo). |
+| **Figma remote** (`https://mcp.figma.com/mcp`) | Yes | OAuth in editor; `FIGMA_DESKTOP_MCP_URL=https://mcp.figma.com/mcp npm run figma:apply-variables` |
+| **Figma Desktop** (`http://127.0.0.1:3845/mcp`) | **No** | Read/selection tools only — CLI script exits with a clear error |
+
+Agent workflow (after `npm run build:figma-variables`):
 
 ```bash
-FIGMA_DESKTOP_MCP_URL=https://your-mcp-endpoint/mcp npm run figma:apply-variables
+node scripts/design-system/emit-use-figma-payload.mjs nextjs-app/shared/foundations/figma/phases/phase-1a-color-chunk-01.js
+# → then CallMcpTool(plugin-figma-figma, use_figma) with the generated .use-figma-payload-*.json
 ```
+
+Or batch via Cursor agent: apply all `nextjs-app/shared/foundations/figma/.use-figma-payload-*.json` sequentially.
 
 ## Repo config
 

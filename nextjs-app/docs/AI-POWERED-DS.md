@@ -1,5 +1,11 @@
 # AI-POWERED DESIGN SYSTEM
 
+> **Status: north-star roadmap (not current runtime).**  
+> Agents: [AGENTIC_DS_OPERATING_MODEL.md](../../docs/AGENTIC_DS_OPERATING_MODEL.md), `foundations/dist/agent-manifest.json`, [LLM_COMPONENT_GENERATION_RULES.md](../../docs/LLM_COMPONENT_GENERATION_RULES.md).  
+> Proof: [AGENTIC_DS_CASE_STUDY.md](../../docs/AGENTIC_DS_CASE_STUDY.md).
+
+---
+
 ## Component Creation Rules (LLM Ingestion Format v1.0)
 
 ### SYSTEM ROLE

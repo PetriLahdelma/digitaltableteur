@@ -1,131 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 128 128">
-  <!-- Generator: Adobe Illustrator 29.6.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 207)  -->
-  <path d="M108.6,77.1c-2.4-1.4-5.4-.6-6.8,1.8-3.6,6.2-8.7,11.1-10.5,11.1s-3.1,0-3.1-6.4v-34h9.1c6.6-.2,6.6-9.8,0-10,0,0-9.1,0-9.1,0v-7c0-2.8-2.2-5-5-5s-5,2.2-5,5c0,0,0,7,0,7h-21.2v-7c-.2-6.6-9.8-6.6-10,0,0,0,0,7,0,7h-7.3c-2.8,0-5,2.2-5,5s2.2,5,5,5h7.3v22.2c0,12.4-5.2,18.2-16.3,18.2s-6.2-5.9-6.2-7.1c.2-7.6,6.6-11.8,14.4-11.7,2.8,0,5-2.2,5-5s-2.2-5-5-5c-9.4,0-15.1,3.7-18.2,6.9-3.9,3.9-6.2,9.3-6.2,14.8,0,19.9,23.2,20.9,34.4,11,1.7,3.4,5,6.1,11.3,6.1s11.8-6.2,18.1-14c.2,5.3,1.9,14,13.1,14s16.9-12.3,19.1-16.1c1.4-2.4.6-5.4-1.8-6.8ZM59.8,90c-2.2,0-2.9-.2-2.9-6.4v-34h21.2v19.7c-7.1,10.3-15.4,19.7-18.3,20.7Z" fill="none" stroke="blue" stroke-miterlimit="10"/>
-  <metadata>
-    <sfw xmlns="http://ns.adobe.com/SaveForWeb/1.0/">
-      <slices/>
-      <sliceSourceBounds x="66.8" y="-1178.08" width="951.93" height="1580.35" bottomLeftOrigin="true"/>
-    </sfw>
-  </metadata>
-  <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
-<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 9.1-c003 1.000000, 0000/00/00-00:00:00        ">
-   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-      <rdf:Description rdf:about=""
-            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
-            xmlns:xmpGImg="http://ns.adobe.com/xap/1.0/g/img/"
-            xmlns:xmpTPg="http://ns.adobe.com/xap/1.0/t/pg/"
-            xmlns:stDim="http://ns.adobe.com/xap/1.0/sType/Dimensions#"
-            xmlns:stFnt="http://ns.adobe.com/xap/1.0/sType/Font#"
-            xmlns:xmpG="http://ns.adobe.com/xap/1.0/g/"
-            xmlns:illustrator="http://ns.adobe.com/illustrator/1.0/"
-            xmlns:dc="http://purl.org/dc/elements/1.1/"
-            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
-            xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
-            xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#">
-         <xmp:CreatorTool>Adobe Illustrator 29.6 (Macintosh)</xmp:CreatorTool>
-         <xmp:CreateDate>2025-11-24T09:37:14+02:00</xmp:CreateDate>
-         <xmp:MetadataDate>2025-11-24T09:37:15+02:00</xmp:MetadataDate>
-         <xmp:ModifyDate>2025-11-24T09:37:15+02:00</xmp:ModifyDate>
-         <xmp:Thumbnails>
-            <rdf:Alt>
-               <rdf:li rdf:parseType="Resource">
-                  <xmpGImg:width>156</xmpGImg:width>
-                  <xmpGImg:height>256</xmpGImg:height>
-                  <xmpGImg:format>JPEG</xmpGImg:format>
-                  <xmpGImg:image>/9j/4AAQSkZJRgABAgEAAAAAAAD/7QAsUGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAAAAAAAAEA&#xA;AQAAAAAAAQAB/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoK&#xA;DBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8f&#xA;Hx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgBAACcAwER&#xA;AAIRAQMRAf/EAaIAAAAHAQEBAQEAAAAAAAAAAAQFAwIGAQAHCAkKCwEAAgIDAQEBAQEAAAAAAAAA&#xA;AQACAwQFBgcICQoLEAACAQMDAgQCBgcDBAIGAnMBAgMRBAAFIRIxQVEGE2EicYEUMpGhBxWxQiPB&#xA;UtHhMxZi8CRygvElQzRTkqKyY3PCNUQnk6OzNhdUZHTD0uIIJoMJChgZhJRFRqS0VtNVKBry4/PE&#xA;1OT0ZXWFlaW1xdXl9WZ2hpamtsbW5vY3R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo+Ck5SVlpeYmZ&#xA;qbnJ2en5KjpKWmp6ipqqusra6voRAAICAQIDBQUEBQYECAMDbQEAAhEDBCESMUEFURNhIgZxgZEy&#xA;obHwFMHR4SNCFVJicvEzJDRDghaSUyWiY7LCB3PSNeJEgxdUkwgJChgZJjZFGidkdFU38qOzwygp&#xA;0+PzhJSktMTU5PRldYWVpbXF1eX1RlZmdoaWprbG1ub2R1dnd4eXp7fH1+f3OEhYaHiImKi4yNjo&#xA;+DlJWWl5iZmpucnZ6fkqOkpaanqKmqq6ytrq+v/aAAwDAQACEQMRAD8A9U4qg9U1rR9JhWfVb+3s&#xA;IHbist1KkKFutA0hUVxVh1y3kzzp5ztLZp7HzFp1hp9xMbMSQ3lsk8s0SLJJEC6epwDKhYVALU6n&#xA;FVLyN5r8p6Lpl9o1/rVjYNpuqajbWtldXUUckNsl3J6EYWVw4RYyAlf2aU2piqeXn5j+RYrOeSLz&#xA;JpTSpG7Rr9dtzVgpIFA/jirDNH0nRPLuh+TfN0k/6P1K/Ns3mLVbmYr9bF7Zu8ou3lbif3/F1rTi&#xA;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&#xA;2Q==</xmpGImg:image>
-               </rdf:li>
-            </rdf:Alt>
-         </xmp:Thumbnails>
-         <xmpTPg:MaxPageSize rdf:parseType="Resource">
-            <stDim:w>200.000000</stDim:w>
-            <stDim:h>40.000000</stDim:h>
-            <stDim:unit>Pixels</stDim:unit>
-         </xmpTPg:MaxPageSize>
-         <xmpTPg:NPages>1</xmpTPg:NPages>
-         <xmpTPg:HasVisibleTransparency>False</xmpTPg:HasVisibleTransparency>
-         <xmpTPg:HasVisibleOverprint>False</xmpTPg:HasVisibleOverprint>
-         <xmpTPg:Fonts>
-            <rdf:Bag>
-               <rdf:li rdf:parseType="Resource">
-                  <stFnt:fontName>Moderat-Regular</stFnt:fontName>
-                  <stFnt:fontFamily>Moderat</stFnt:fontFamily>
-                  <stFnt:fontFace>Regular</stFnt:fontFace>
-                  <stFnt:fontType>Open Type</stFnt:fontType>
-                  <stFnt:versionString>Version 1.000;PS 001.000;hotconv 1.0.88;makeotf.lib2.5.64775</stFnt:versionString>
-                  <stFnt:composite>False</stFnt:composite>
-                  <stFnt:fontFileName>Moderat.otf</stFnt:fontFileName>
-               </rdf:li>
-            </rdf:Bag>
-         </xmpTPg:Fonts>
-         <xmpTPg:PlateNames>
-            <rdf:Seq>
-               <rdf:li>Cyan</rdf:li>
-               <rdf:li>Magenta</rdf:li>
-               <rdf:li>Yellow</rdf:li>
-               <rdf:li>Black</rdf:li>
-            </rdf:Seq>
-         </xmpTPg:PlateNames>
-         <xmpTPg:SwatchGroups>
-            <rdf:Seq>
-               <rdf:li rdf:parseType="Resource">
-                  <xmpG:groupName>Default Swatch Group</xmpG:groupName>
-                  <xmpG:groupType>0</xmpG:groupType>
-               </rdf:li>
-            </rdf:Seq>
-         </xmpTPg:SwatchGroups>
-         <illustrator:IsFileSavedViaInstantSave>False</illustrator:IsFileSavedViaInstantSave>
-         <dc:format>image/svg+xml</dc:format>
-         <xmpMM:DerivedFrom rdf:parseType="Resource">
-            <stRef:instanceID>xmp.iid:caf56863-4a81-49c7-b634-e93b4af2cf28</stRef:instanceID>
-            <stRef:documentID>xmp.did:caf56863-4a81-49c7-b634-e93b4af2cf28</stRef:documentID>
-            <stRef:originalDocumentID>xmp.did:668d366e-6398-42d6-a7d7-fd4adb7c9240</stRef:originalDocumentID>
-         </xmpMM:DerivedFrom>
-         <xmpMM:DocumentID>xmp.did:45fbe6bd-b9ba-4237-8ab2-8e2f1f680947</xmpMM:DocumentID>
-         <xmpMM:InstanceID>xmp.iid:45fbe6bd-b9ba-4237-8ab2-8e2f1f680947</xmpMM:InstanceID>
-         <xmpMM:OriginalDocumentID>xmp.did:668d366e-6398-42d6-a7d7-fd4adb7c9240</xmpMM:OriginalDocumentID>
-         <xmpMM:History>
-            <rdf:Seq>
-               <rdf:li rdf:parseType="Resource">
-                  <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:668d366e-6398-42d6-a7d7-fd4adb7c9240</stEvt:instanceID>
-                  <stEvt:when>2025-11-21T17:49:37+02:00</stEvt:when>
-                  <stEvt:softwareAgent>Adobe Illustrator 29.6 (Macintosh)</stEvt:softwareAgent>
-                  <stEvt:changed>/</stEvt:changed>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:45fbe6bd-b9ba-4237-8ab2-8e2f1f680947</stEvt:instanceID>
-                  <stEvt:when>2025-11-24T09:37:15+02:00</stEvt:when>
-                  <stEvt:softwareAgent>Adobe Illustrator 29.6 (Macintosh)</stEvt:softwareAgent>
-                  <stEvt:changed>/</stEvt:changed>
-               </rdf:li>
-            </rdf:Seq>
-         </xmpMM:History>
-      </rdf:Description>
-   </rdf:RDF>
-</x:xmpmeta>
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                           
-<?xpacket end="w"?>
-  </metadata>
+<svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_543_1635)">
+<path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="#DFFF00"/>
+<path d="M22.0278 9.85872H19.5757V18.8183H22.0278V9.85872Z" fill="black"/>
+<path d="M22.0278 21.176H19.5757V30.1356H22.0278V21.176Z" fill="black"/>
+<path d="M24.3855 18.8182V21.2703H32.4019V18.8182H24.3855Z" fill="black"/>
+<path d="M10.0502 12.2165H7.59814V27.6835H10.0502V12.2165Z" fill="black"/>
+<path d="M17.3122 14.6686H14.8601V25.2314H17.3122V14.6686Z" fill="black"/>
+<path d="M10.0503 14.6686V12.2165H15.0488L17.3123 14.6686L10.0503 14.6686Z" fill="black"/>
+<path d="M10.0503 25.2314V27.6835H15.0488L17.3123 25.2314H10.0503Z" fill="black"/>
+</g>
+<path d="M184.4 30.3526H181.033V10H184.4V22.5015L189.743 16.8389H194L188.769 22.2006L193.889 30.3526H189.993L186.403 24.6626L184.4 26.7143V30.3526Z" fill="white"/>
+<path d="M163.594 23.5684C163.594 19.3556 166.683 16.4559 170.94 16.4559C175.198 16.4559 178.286 19.3556 178.286 23.5684C178.286 27.7812 175.198 30.6809 170.94 30.6809C166.683 30.6809 163.594 27.7812 163.594 23.5684ZM166.989 23.5684C166.989 26.0304 168.603 27.6991 170.94 27.6991C173.278 27.6991 174.892 26.0304 174.892 23.5684C174.892 21.1064 173.278 19.4377 170.94 19.4377C168.603 19.4377 166.989 21.1064 166.989 23.5684Z" fill="white"/>
+<path d="M147.018 23.5684C147.018 19.3556 150.107 16.4559 154.364 16.4559C158.622 16.4559 161.71 19.3556 161.71 23.5684C161.71 27.7812 158.622 30.6809 154.364 30.6809C150.107 30.6809 147.018 27.7812 147.018 23.5684ZM150.413 23.5684C150.413 26.0304 152.027 27.6991 154.364 27.6991C156.702 27.6991 158.315 26.0304 158.315 23.5684C158.315 21.1064 156.702 19.4377 154.364 19.4377C152.027 19.4377 150.413 21.1064 150.413 23.5684Z" fill="white"/>
+<path d="M133.741 30.3526H130.597V10H133.992V18.8085C134.882 17.304 136.719 16.4012 138.806 16.4012C142.729 16.4012 145.122 19.4103 145.122 23.6778C145.122 27.8359 142.534 30.7082 138.583 30.7082C136.524 30.7082 134.771 29.8055 133.964 28.2462L133.741 30.3526ZM134.02 23.541C134.02 25.9757 135.55 27.6444 137.887 27.6444C140.28 27.6444 141.7 25.9483 141.7 23.541C141.7 21.1337 140.28 19.4103 137.887 19.4103C135.55 19.4103 134.02 21.1064 134.02 23.541Z" fill="white"/>
+<path d="M127.036 30.3526H123.669V10H127.036V30.3526Z" fill="white"/>
+<path d="M112.459 30.7082C109.537 30.7082 107.756 29.0395 107.756 26.4954C107.756 24.0061 109.593 22.4468 112.849 22.2006L116.967 21.8997V21.5988C116.967 19.766 115.854 19.0274 114.129 19.0274C112.125 19.0274 111.012 19.848 111.012 21.2705H108.118C108.118 18.3435 110.567 16.4286 114.295 16.4286C117.996 16.4286 120.278 18.3982 120.278 22.1459V30.3526H117.301L117.05 28.3556C116.466 29.7508 114.602 30.7082 112.459 30.7082ZM113.572 28.1915C115.659 28.1915 116.995 26.9605 116.995 24.8815V24.1702L114.129 24.3891C112.014 24.5805 111.207 25.2644 111.207 26.3587C111.207 27.5897 112.042 28.1915 113.572 28.1915Z" fill="white"/>
+<path d="M103.668 30.3526H100.274V19.6292H97.6301V16.8389H100.274V12.6261H103.668V16.8389H106.34V19.6292H103.668V30.3526Z" fill="white"/>
+<path d="M93.7889 14.1307C92.6202 14.1307 91.7019 13.228 91.7019 12.1064C91.7019 10.9848 92.6202 10.1094 93.7889 10.1094C94.9019 10.1094 95.8202 10.9848 95.8202 12.1064C95.8202 13.228 94.9019 14.1307 93.7889 14.1307ZM92.0915 30.3526V16.8389H95.4863V30.3526H92.0915Z" fill="white"/>
+<path d="M74.22 23.2948C74.22 19.3556 76.8356 16.4012 80.7591 16.4012C82.8182 16.4012 84.4321 17.2492 85.2391 18.6991L85.4339 16.8389H88.5782V29.6687C88.5782 34.1824 85.8235 37 81.3713 37C77.42 37 74.7208 34.7842 74.3034 31.1732H77.6982C77.9208 32.924 79.2843 33.9635 81.3713 33.9635C83.7087 33.9635 85.2113 32.5137 85.2113 30.2705V28.0274C84.3487 29.2857 82.6513 30.079 80.6756 30.079C76.78 30.079 74.22 27.2067 74.22 23.2948ZM77.6426 23.2128C77.6426 25.4833 79.1174 27.1793 81.3434 27.1793C83.6808 27.1793 85.1278 25.5653 85.1278 23.2128C85.1278 20.9149 83.7087 19.3283 81.3434 19.3283C79.0895 19.3283 77.6426 20.997 77.6426 23.2128Z" fill="white"/>
+<path d="M69.7942 14.1307C68.6255 14.1307 67.7073 13.228 67.7073 12.1064C67.7073 10.9848 68.6255 10.1094 69.7942 10.1094C70.9073 10.1094 71.8255 10.9848 71.8255 12.1064C71.8255 13.228 70.9073 14.1307 69.7942 14.1307ZM68.0968 30.3526V16.8389H71.4916V30.3526H68.0968Z" fill="white"/>
+<path d="M55.3183 30.3526H48V10.3556H55.1235C61.1339 10.3556 65.28 14.4316 65.28 20.3951C65.28 26.2766 61.2174 30.3526 55.3183 30.3526ZM54.7896 13.5836H51.5617V27.1246H54.9843C59.047 27.1246 61.5235 24.5532 61.5235 20.3951C61.5235 16.155 58.9913 13.5836 54.7896 13.5836Z" fill="white"/>
+<defs>
+<clipPath id="clip0_543_1635">
+<rect width="40" height="40" fill="white"/>
+</clipPath>
+</defs>
 </svg>

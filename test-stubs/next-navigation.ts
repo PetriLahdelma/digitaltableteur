@@ -1,18 +1,19 @@
 /**
- * Stub for `next/navigation` used by Vitest.
+ * Stub for `next/navigation` in Vitest and Storybook (Vite alias).
  *
- * Avoids loading nextjs-app/node_modules/next (second React copy → useContext null).
+ * Avoids loading Next's App Router context, which is not mounted outside the
+ * Next.js app (Storybook, unit tests).
  */
-import { vi } from "vitest";
+const noop = () => undefined;
 
 export function useRouter() {
   return {
-    push: vi.fn(),
-    replace: vi.fn(),
-    prefetch: vi.fn(),
-    back: vi.fn(),
-    forward: vi.fn(),
-    refresh: vi.fn(),
+    push: noop,
+    replace: noop,
+    prefetch: noop,
+    back: noop,
+    forward: noop,
+    refresh: noop,
   };
 }
 
@@ -28,5 +29,5 @@ export function useParams() {
   return {} as Record<string, string | string[]>;
 }
 
-export const redirect = vi.fn();
-export const notFound = vi.fn();
+export const redirect = noop;
+export const notFound = noop;

@@ -3,6 +3,10 @@ import React, { useMemo, useState } from "react";
 import Icon from "@dt/Icon";
 import Toast from "@dt/Toast";
 import styles from "./Documentation.module.css";
+import {
+  filterBrowsableIconNames,
+  resolveBrowserPhosphorIcon,
+} from "./iconBrowserPhosphor";
 
 // Comprehensive list of all Phosphor icons (1512 icons)
 const ALL_ICON_NAMES = [
@@ -1523,6 +1527,9 @@ const ALL_ICON_NAMES = [
   "Zeppelin",
 ];
 
+/** Names from ALL_ICON_NAMES that exist in @phosphor-icons/react (browser uses full set, not iconRegistry). */
+const BROWSABLE_ICON_NAMES = filterBrowsableIconNames(ALL_ICON_NAMES);
+
 // IconCard component for click-to-copy functionality
 interface IconCardProps {
   name: string;
@@ -1531,6 +1538,7 @@ interface IconCardProps {
 
 const IconCard = ({ name, onCopy }: IconCardProps) => {
   const [showHint, setShowHint] = useState(false);
+  const PhosphorComponent = resolveBrowserPhosphorIcon(name);
 
   const handleClick = async () => {
     try {
@@ -1551,7 +1559,11 @@ const IconCard = ({ name, onCopy }: IconCardProps) => {
       aria-label={`Copy ${name} icon name`}
     >
       <div className={styles.iconDisplay}>
-        <Icon name={name} size="xl" decorative />
+        {PhosphorComponent ? (
+          <PhosphorComponent size={48} weight="regular" aria-hidden />
+        ) : (
+          <span aria-hidden>—</span>
+        )}
       </div>
       <div className={styles.iconName}>{name}</div>
       {showHint && <div className={styles.copyHint}>Click to copy</div>}
@@ -1839,11 +1851,13 @@ const IconBrowserContent = () => {
 
   const filteredIcons = useMemo(() => {
     if (!searchQuery.trim()) {
-      return ALL_ICON_NAMES;
+      return BROWSABLE_ICON_NAMES;
     }
 
     const query = searchQuery.toLowerCase();
-    return ALL_ICON_NAMES.filter((name) => name.toLowerCase().includes(query));
+    return BROWSABLE_ICON_NAMES.filter((name) =>
+      name.toLowerCase().includes(query),
+    );
   }, [searchQuery]);
 
   const handleCopy = (name: string) => {
@@ -1860,7 +1874,7 @@ const IconBrowserContent = () => {
       <header className={styles.header}>
         <h1>Icon Browser</h1>
         <p className={styles.lead}>
-          Search and browse all {ALL_ICON_NAMES.length} Phosphor icons. Click
+          Search and browse {BROWSABLE_ICON_NAMES.length} Phosphor icons. Click
           any icon to copy its name to clipboard.
         </p>
       </header>

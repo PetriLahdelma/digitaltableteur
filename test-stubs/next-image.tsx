@@ -1,13 +1,10 @@
 /**
- * Stub for `next/image` used by Vitest.
+ * Stub for `next/image` used by Vitest and Storybook (Vite alias).
  *
  * Replaces Next's <Image> with a plain <img> so we never load
  * nextjs-app/node_modules/next/dist/client/image-component.js (which carries a
  * second React copy and crashes jsdom with "Cannot read properties of null
  * (reading 'useContext')").
- *
- * Faithful enough for unit-level tests: shape-compatible with the StaticImageData
- * type, drops Next-specific props that <img> rejects.
  */
 import React from "react";
 
@@ -34,13 +31,20 @@ function resolveSrc(src: ImgProps["src"]): string {
   return "";
 }
 
+const fillStyle: React.CSSProperties = {
+  position: "absolute",
+  inset: 0,
+  width: "100%",
+  height: "100%",
+};
+
 const NextImage = React.forwardRef<HTMLImageElement, ImgProps>(function NextImage(
   props,
   ref,
 ) {
   const {
     src,
-    fill: _fill,
+    fill,
     priority,
     placeholder: _placeholder,
     blurDataURL: _blurDataURL,
@@ -49,22 +53,45 @@ const NextImage = React.forwardRef<HTMLImageElement, ImgProps>(function NextImag
     unoptimized: _unoptimized,
     sizes,
     loading,
+    style,
+    width: _width,
+    height: _height,
     ...rest
   } = props;
   const resolvedLoading = loading ?? (priority ? "eager" : "lazy");
+  const resolvedSrc = resolveSrc(src);
+
+  if (fill) {
+    return (
+      <img
+        ref={ref}
+        src={resolvedSrc}
+        sizes={sizes}
+        loading={resolvedLoading}
+        style={{
+          ...fillStyle,
+          ...(typeof style === "object" && style !== null ? style : {}),
+        }}
+        {...rest}
+      />
+    );
+  }
+
   return (
     <img
       ref={ref}
-      src={resolveSrc(src)}
+      src={resolvedSrc}
+      width={_width}
+      height={_height}
       sizes={sizes}
       loading={resolvedLoading}
+      style={style}
       {...rest}
     />
   );
 });
 
 export default NextImage;
-// Mirror runtime exports so `import { type } from 'next/image'` keeps working.
 export type StaticImageData = {
   src: string;
   width?: number;
