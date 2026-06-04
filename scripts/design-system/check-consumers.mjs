@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * CI gate: stable contract consumers[] must match @dt import scan in app/ + nextjs-app/.
+ * CI gate: stable contract consumers[] must match transitive @dt import scan
+ * from app/, patterns/, and pages/ (follows local imports into shared/components).
  *
  *   npm run check:consumers
  *   npm run audit:consumers   # rewrite contracts to match scan

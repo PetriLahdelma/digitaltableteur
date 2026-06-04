@@ -1,49 +1,198 @@
 /**
  * Compute production consumers[] for stable component contracts from @dt imports.
+ * Follows local imports from app / patterns / pages (transitive closure).
  */
-import { execSync } from "node:child_process";
-import { existsSync, readdirSync } from "node:fs";
-import { join, resolve, dirname } from "node:path";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { join, resolve, dirname, relative, extname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 export const CONSUMER_REPO = "digitaltableteur/digitaltableteur";
+
 const COMPONENT_ROOTS = [
   join(ROOT, "nextjs-app/shared/components"),
   join(ROOT, "nextjs-app/shared/patterns"),
 ];
-/** Production surfaces — app routes, patterns, and page modules (not atom cross-imports). */
-const SCAN_DIRS = [
+
+/** Production entry surfaces — paths recorded in consumers[]. */
+const ENTRY_ROOTS = [
   join(ROOT, "app"),
   join(ROOT, "nextjs-app/shared/patterns"),
   join(ROOT, "nextjs-app/shared/components/pages"),
 ].filter((d) => existsSync(d));
+
+/** Modules we follow when resolving local import graph. */
+const MODULE_ROOTS = [
+  join(ROOT, "app"),
+  join(ROOT, "nextjs-app/shared/components"),
+  join(ROOT, "nextjs-app/shared/patterns"),
+].filter((d) => existsSync(d));
+
+const MODULE_EXTENSIONS = [".tsx", ".ts", ".jsx", ".js"];
 const MAX_CONSUMERS_PER_COMPONENT = 12;
+const SKIP_SEGMENTS = ["/__tests__/", ".test.", ".stories.", ".a11y.test."];
+
+/** @type {Map<string, { dt: Set<string>, deps: Set<string> }> | null} */
+let moduleGraph = null;
+
+function relPath(abs) {
+  return relative(ROOT, abs).replace(/\\/g, "/");
+}
+
+function shouldSkipRel(rel) {
+  return SKIP_SEGMENTS.some((seg) => rel.includes(seg));
+}
+
+function isProductionModule(abs) {
+  const rel = relPath(abs);
+  if (shouldSkipRel(rel)) return false;
+  return (
+    rel.startsWith("app/") ||
+    rel.startsWith("nextjs-app/shared/components/") ||
+    rel.startsWith("nextjs-app/shared/patterns/")
+  );
+}
+
+function resolveToFile(basePath) {
+  if (existsSync(basePath) && statSync(basePath).isFile()) {
+    if (MODULE_EXTENSIONS.includes(extname(basePath))) return basePath;
+  }
+  for (const ext of MODULE_EXTENSIONS) {
+    const withExt = `${basePath}${ext}`;
+    if (existsSync(withExt)) return withExt;
+  }
+  if (existsSync(basePath) && statSync(basePath).isDirectory()) {
+    for (const ext of MODULE_EXTENSIONS) {
+      const indexFile = join(basePath, `index${ext}`);
+      if (existsSync(indexFile)) return indexFile;
+    }
+  }
+  return null;
+}
+
+/**
+ * @param {string} fromFile
+ * @param {string} spec
+ */
+function resolveLocalImport(fromFile, spec) {
+  if (spec.startsWith("@dt/")) return null;
+  if (!spec.startsWith(".") && !spec.startsWith("@/")) return null;
+
+  let target;
+  if (spec.startsWith("@/")) {
+    target = join(ROOT, spec.slice(2));
+  } else {
+    target = resolve(dirname(fromFile), spec);
+  }
+  const resolved = resolveToFile(target);
+  if (!resolved || !isProductionModule(resolved)) return null;
+  return resolved;
+}
+
+/**
+ * @param {string} content
+ */
+function parseDtComponents(content) {
+  const names = new Set();
+  const re = /@dt\/([A-Z][A-Za-z0-9]*)/g;
+  let match;
+  while ((match = re.exec(content)) !== null) {
+    names.add(match[1]);
+  }
+  return names;
+}
+
+/**
+ * @param {string} content
+ */
+function parseImportSpecs(content) {
+  const specs = new Set();
+  const re =
+    /\b(?:import|export)\s+(?:type\s+)?(?:[\w*{}\s,$]+?\sfrom\s+)?["']([^"']+)["']/g;
+  let match;
+  while ((match = re.exec(content)) !== null) {
+    specs.add(match[1]);
+  }
+  return specs;
+}
+
+function walkTsx(dir, out) {
+  if (!existsSync(dir)) return;
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      if (entry.name === "node_modules" || entry.name === ".next") continue;
+      walkTsx(full, out);
+      continue;
+    }
+    if (!/\.(tsx|ts|jsx|js)$/.test(entry.name)) continue;
+    const rel = relPath(full);
+    if (shouldSkipRel(rel)) continue;
+    out.push(full);
+  }
+}
+
+function buildModuleGraph() {
+  if (moduleGraph) return moduleGraph;
+  const files = [];
+  for (const root of MODULE_ROOTS) walkTsx(root, files);
+
+  /** @type {Map<string, { dt: Set<string>, deps: Set<string> }>} */
+  const graph = new Map();
+  for (const file of files) {
+    const content = readFileSync(file, "utf8");
+    const dt = parseDtComponents(content);
+    const deps = new Set();
+    for (const spec of parseImportSpecs(content)) {
+      const resolved = resolveLocalImport(file, spec);
+      if (resolved) deps.add(resolved);
+    }
+    graph.set(file, { dt, deps });
+  }
+  moduleGraph = graph;
+  return graph;
+}
+
+function collectEntryFiles() {
+  const entries = [];
+  for (const root of ENTRY_ROOTS) walkTsx(root, entries);
+  return entries;
+}
+
+/**
+ * @param {string} entryFile
+ * @param {string} componentName
+ * @param {Map<string, { dt: Set<string>, deps: Set<string> }>} graph
+ */
+function entryUsesComponent(entryFile, componentName, graph) {
+  const visited = new Set();
+  const stack = [entryFile];
+  while (stack.length) {
+    const file = stack.pop();
+    if (visited.has(file)) continue;
+    visited.add(file);
+    const node = graph.get(file);
+    if (!node) continue;
+    if (node.dt.has(componentName)) return true;
+    for (const dep of node.deps) stack.push(dep);
+  }
+  return false;
+}
 
 /**
  * @param {string} componentName
  * @returns {Array<{ repo: string, path: string, since: string }>}
  */
 export function computeConsumersForComponent(componentName) {
+  const graph = buildModuleGraph();
   const hits = [];
-  for (const scan of SCAN_DIRS) {
-    if (!existsSync(scan)) continue;
-    try {
-      const out = execSync(
-        `rg -l "@dt/${componentName}[^a-zA-Z]" "${scan}" --glob '*.{tsx,ts,jsx,js}' --glob '!**/*.test.*' --glob '!**/*.stories.*' 2>/dev/null || true`,
-        { encoding: "utf8" },
-      ).trim();
-      if (!out) continue;
-      for (const file of out.split("\n").filter(Boolean)) {
-        hits.push({
-          repo: CONSUMER_REPO,
-          path: file.replace(`${ROOT}/`, ""),
-          since: "2026-06-04",
-        });
-      }
-    } catch {
-      // ignore rg failures
-    }
+  for (const entry of collectEntryFiles()) {
+    if (!entryUsesComponent(entry, componentName, graph)) continue;
+    hits.push({
+      repo: CONSUMER_REPO,
+      path: relPath(entry),
+      since: "2026-06-04",
+    });
   }
   const unique = [...new Map(hits.map((h) => [h.path, h])).values()];
   unique.sort((a, b) => a.path.localeCompare(b.path));
@@ -92,4 +241,9 @@ export function consumersEqual(a, b) {
   return (
     left.length === right.length && left.every((path, i) => path === right[i])
   );
+}
+
+/** @internal test hook */
+export function resetConsumerGraphCache() {
+  moduleGraph = null;
 }

@@ -73,7 +73,7 @@ Regenerates `nextjs-app/shared/foundations/dist/agent-manifest.json`.
 
 ### @dt usage gate
 
-Do **not** replace pattern-level `<h*>` / header chrome `<button>` with `@dt/Title` / `@dt/Button` unless explicitly requested — that changes typography and breaks section CSS. Fix heading **levels** only (`h3` → `h2`) while keeping existing classes. `npm run lint:dt-usage` only flags `@/components/ui/*` imports in `app/`.
+Do **not** replace pattern-level `<h*>` / header chrome `<button>` with `@dt/Title` / `@dt/Button` unless explicitly requested — that changes typography and breaks section CSS. Fix heading **levels** only (`h3` → `h2`) while keeping existing classes. `npm run lint:dt-usage` flags `@/components/ui/*` in `app/`, patterns, pages, and shared components (known shadcn debt allowlisted).
 
 ### Agent / MCP discovery
 

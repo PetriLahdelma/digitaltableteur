@@ -1,7 +1,7 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from "eslint-plugin-storybook";
 
-import { DT_USAGE_ESLINT_IMPORT_PATTERNS } from "./scripts/design-system/dt-usage-rules.mjs";
+import { DT_USAGE_ESLINT_FILE_GLOBS, DT_USAGE_ESLINT_IGNORES, DT_USAGE_ESLINT_IMPORT_PATTERNS } from "./scripts/design-system/dt-usage-rules.mjs";
 
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
@@ -98,13 +98,8 @@ export default [
   },
   ...storybook.configs["flat/recommended"],
   {
-    files: ["app/**/*.{ts,tsx,js,jsx}"],
-    ignores: [
-      "**/*.stories.*",
-      "**/*.test.*",
-      "**/__tests__/**",
-      "app/global-error.tsx",
-    ],
+    files: DT_USAGE_ESLINT_FILE_GLOBS,
+    ignores: DT_USAGE_ESLINT_IGNORES,
     rules: {
       "prettier/prettier": "off",
       "no-restricted-imports": [
