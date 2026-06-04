@@ -3,7 +3,7 @@
   "name": "Card",
   "tier": "molecule",
   "group": "structure",
-  "status": "beta",
+  "status": "stable",
   "description": "Composable surface for grouped content with header, body, media, and actions.",
   "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=377-26",
   "radixPrimitive": null,
@@ -34,6 +34,8 @@
     "reviewed": true,
     "reviewedNote": "2026-05-26 — structure, hover/focus, forced-colors verified in Storybook.",
     "forcedColorsVerified": true,
+    "accessibilityTreeVerified": true,
+    "realBrowserForcedColorsVerified": true,
     "axeTestExempt": "Complex molecule; axe on representative Default/Example stories."
   },
   "tokens": {
@@ -88,5 +90,21 @@
     "titleProps",
     "variant"
   ],
-  "consumers": []
+  "consumers": [
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+      "since": "2026-06-03"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
+      "since": "2026-06-03"
+    },
+    {
+      "repo": "digitaltableteur/digitaltableteur",
+      "path": "nextjs-app/shared/components/SentrySummaryCard/SentrySummaryCard.tsx",
+      "since": "2026-06-03"
+    }
+  ]
 }

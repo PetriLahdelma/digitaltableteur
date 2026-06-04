@@ -6,6 +6,34 @@ import { resolve } from "node:path";
 const repoRoot = fileURLToPath(new URL("..", import.meta.url));
 loadEnv({ path: resolve(repoRoot, ".env.local") });
 
+type ViteAliasEntry = { find: string | RegExp; replacement: string };
+
+/** Merge Vite aliases without dropping Storybook's array-shaped defaults. */
+function mergeViteAlias(
+  existing: unknown,
+  additions: ViteAliasEntry[],
+): ViteAliasEntry[] {
+  const merged: ViteAliasEntry[] = [];
+
+  if (Array.isArray(existing)) {
+    merged.push(...(existing as ViteAliasEntry[]));
+  } else if (existing && typeof existing === "object") {
+    for (const [find, replacement] of Object.entries(existing)) {
+      merged.push({ find, replacement: String(replacement) });
+    }
+  }
+
+  for (const entry of additions) {
+    const index = merged.findIndex(
+      (item) => String(item.find) === String(entry.find),
+    );
+    if (index >= 0) merged[index] = entry;
+    else merged.push(entry);
+  }
+
+  return merged;
+}
+
 const enableVitestPanel = process.env.STORYBOOK_VITEST === "1";
 
 /** Paths that must not trigger preview reloads (Next dev, generators, tooling). */
@@ -68,7 +96,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
-  staticDirs: ["../public"],
+  staticDirs: ["../public", { from: "../app/fonts", to: "/fonts" }],
   // Configure base path for subdirectory deployment
   managerHead: (head) => `
     ${head}
@@ -92,6 +120,13 @@ const config: StorybookConfig = {
     const reactJsxRuntimePath = fileURLToPath(
       new URL("../node_modules/react/jsx-runtime", import.meta.url),
     );
+    const testStubsPath = fileURLToPath(
+      new URL("../test-stubs", import.meta.url),
+    );
+    const nextNavigationStub = resolve(testStubsPath, "next-navigation.ts");
+    const nextImageStub = resolve(testStubsPath, "next-image.tsx");
+    const nextLinkStub = resolve(testStubsPath, "next-link.tsx");
+    const nextDynamicStub = resolve(testStubsPath, "next-loadable.tsx");
 
     // Predictable but module-scoped class names. Storybook bundles every
     // component's CSS into a single document, so duplicate local names like
@@ -108,16 +143,19 @@ const config: StorybookConfig = {
     };
 
     config.resolve = config.resolve || {};
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      "@": rootPath,
-      "@dt": componentsPath,
-      "@dt/shared": sharedComponentsPath,
-      "@dt/patterns": patternsPath,
-      react: reactPath,
-      "react-dom": reactDomPath,
-      "react/jsx-runtime": reactJsxRuntimePath,
-    };
+    config.resolve.alias = mergeViteAlias(config.resolve.alias, [
+      { find: "@", replacement: rootPath },
+      { find: "@dt", replacement: componentsPath },
+      { find: "@dt/shared", replacement: sharedComponentsPath },
+      { find: "@dt/patterns", replacement: patternsPath },
+      { find: "react", replacement: reactPath },
+      { find: "react-dom", replacement: reactDomPath },
+      { find: "react/jsx-runtime", replacement: reactJsxRuntimePath },
+      { find: "next/navigation", replacement: nextNavigationStub },
+      { find: "next/image", replacement: nextImageStub },
+      { find: "next/link", replacement: nextLinkStub },
+      { find: "next/dynamic", replacement: nextDynamicStub },
+    ]);
     config.resolve.dedupe = Array.from(
       new Set([
         ...(config.resolve.dedupe || []),
@@ -143,10 +181,20 @@ const config: StorybookConfig = {
       "@storybook/testing-library",
       "@gsap/react",
       "gsap",
+      "@phosphor-icons/react",
     ];
 
     config.optimizeDeps = {
       ...(config.optimizeDeps || {}),
+      exclude: Array.from(
+        new Set([
+          ...(config.optimizeDeps?.exclude || []),
+          "next/navigation",
+          "next/image",
+          "next/link",
+          "next/dynamic",
+        ]),
+      ),
       include: Array.from(
         new Set([...(config.optimizeDeps?.include || []), ...optimizeIncludes]),
       ),

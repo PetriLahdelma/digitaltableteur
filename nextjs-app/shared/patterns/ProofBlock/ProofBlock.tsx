@@ -44,17 +44,17 @@ export const ProofBlock: React.FC<ProofBlockProps> = ({
       <PageLayout maxWidth="lg" spacing="comfortable" withMargins={false}>
         <div className={styles.metricsHeader}>
           <div>
-            <Title level={2} size="M" className={styles.metricsTitle}>
+            <Title level={2} unstyled className={styles.metricsTitle}>
               {title}
             </Title>
             {subTitle && (
-              <Text size="M" className={styles.metricsSubtitle}>
+              <Text size="M" terminals="sans" className={styles.metricsSubtitle}>
                 {subTitle}
               </Text>
             )}
           </div>
           {caption && (
-            <Text size="S" className={styles.metricsCaption}>
+            <Text size="S" terminals="sans" className={styles.metricsCaption}>
               {caption}
             </Text>
           )}
@@ -65,7 +65,7 @@ export const ProofBlock: React.FC<ProofBlockProps> = ({
               className={`${styles.metricCard} ${dark ? styles.metricCardDark : ""}`.trim()}
               key={`${metric.label}-${metric.value}`}
             >
-              <Title level={3} size="L" className={styles.metricValue}>
+              <Title level={3} unstyled className={styles.metricValue}>
                 {metric.value}
               </Title>
               <Text size="S" className={styles.metricLabel}>

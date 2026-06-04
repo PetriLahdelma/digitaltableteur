@@ -98,15 +98,10 @@ export {
 
 // Contact page patterns
 export { ContactHero, type ContactHeroProps } from "./ContactHero";
-export { MapSection, type MapSectionProps } from "./MapSection";
 export {
   CVDownloadSection,
   type CVDownloadSectionProps,
 } from "./CVDownloadSection";
-export {
-  ContactPageContent,
-  type ContactPageContentProps,
-} from "./ContactPageContent";
 
 // Navigation
 export { SiteHeader, type SiteHeaderProps, type NavItem } from "./SiteHeader";

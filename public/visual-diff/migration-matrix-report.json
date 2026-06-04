@@ -1,0 +1,780 @@
+{
+  "generatedAt": "2026-06-04T12:56:27.686Z",
+  "storybookUrl": "http://127.0.0.1:6010",
+  "appUrl": "http://localhost:3001",
+  "updateMode": false,
+  "total": 96,
+  "passed": 96,
+  "failed": 0,
+  "failures": [],
+  "results": [
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "home",
+      "theme": "light",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "home",
+      "theme": "light",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "contact",
+      "theme": "light",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "contact",
+      "theme": "light",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "SiteHeader",
+      "theme": "light",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "SiteHeader",
+      "theme": "light",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "IconButton",
+      "theme": "light",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "FormField",
+      "theme": "light",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "CheckboxField",
+      "theme": "light",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ContactFormEditorial",
+      "theme": "light",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceCtaBands",
+      "theme": "light",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceHomeHero",
+      "theme": "light",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "home",
+      "theme": "dark",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "home",
+      "theme": "dark",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "contact",
+      "theme": "dark",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "contact",
+      "theme": "dark",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "SiteHeader",
+      "theme": "dark",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "SiteHeader",
+      "theme": "dark",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "IconButton",
+      "theme": "dark",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "FormField",
+      "theme": "dark",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "CheckboxField",
+      "theme": "dark",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ContactFormEditorial",
+      "theme": "dark",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceCtaBands",
+      "theme": "dark",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceHomeHero",
+      "theme": "dark",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "home",
+      "theme": "hcb",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "home",
+      "theme": "hcb",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "contact",
+      "theme": "hcb",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "contact",
+      "theme": "hcb",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "SiteHeader",
+      "theme": "hcb",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "SiteHeader",
+      "theme": "hcb",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "IconButton",
+      "theme": "hcb",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "FormField",
+      "theme": "hcb",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "CheckboxField",
+      "theme": "hcb",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ContactFormEditorial",
+      "theme": "hcb",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceCtaBands",
+      "theme": "hcb",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceHomeHero",
+      "theme": "hcb",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "home",
+      "theme": "hcw",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "home",
+      "theme": "hcw",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "contact",
+      "theme": "hcw",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "contact",
+      "theme": "hcw",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button hidden on desktop",
+      "target": "SiteHeader",
+      "theme": "hcw",
+      "viewport": "desktop"
+    },
+    {
+      "type": "pixel",
+      "target": "SiteHeader",
+      "theme": "hcw",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "IconButton",
+      "theme": "hcw",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "FormField",
+      "theme": "hcw",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "CheckboxField",
+      "theme": "hcw",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ContactFormEditorial",
+      "theme": "hcw",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceCtaBands",
+      "theme": "hcw",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceHomeHero",
+      "theme": "hcw",
+      "viewport": "desktop",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "home",
+      "theme": "light",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "home",
+      "theme": "light",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "contact",
+      "theme": "light",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "contact",
+      "theme": "light",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "SiteHeader",
+      "theme": "light",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "SiteHeader",
+      "theme": "light",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "IconButton",
+      "theme": "light",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "FormField",
+      "theme": "light",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "CheckboxField",
+      "theme": "light",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ContactFormEditorial",
+      "theme": "light",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceCtaBands",
+      "theme": "light",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceHomeHero",
+      "theme": "light",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "home",
+      "theme": "dark",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "home",
+      "theme": "dark",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "contact",
+      "theme": "dark",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "contact",
+      "theme": "dark",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "SiteHeader",
+      "theme": "dark",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "SiteHeader",
+      "theme": "dark",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "IconButton",
+      "theme": "dark",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "FormField",
+      "theme": "dark",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "CheckboxField",
+      "theme": "dark",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ContactFormEditorial",
+      "theme": "dark",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceCtaBands",
+      "theme": "dark",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceHomeHero",
+      "theme": "dark",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "home",
+      "theme": "hcb",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "home",
+      "theme": "hcb",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "contact",
+      "theme": "hcb",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "contact",
+      "theme": "hcb",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "SiteHeader",
+      "theme": "hcb",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "SiteHeader",
+      "theme": "hcb",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "IconButton",
+      "theme": "hcb",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "FormField",
+      "theme": "hcb",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "CheckboxField",
+      "theme": "hcb",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ContactFormEditorial",
+      "theme": "hcb",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceCtaBands",
+      "theme": "hcb",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceHomeHero",
+      "theme": "hcb",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "home",
+      "theme": "hcw",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "home",
+      "theme": "hcw",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "contact",
+      "theme": "hcw",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "contact",
+      "theme": "hcw",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "guard",
+      "ok": true,
+      "detail": "menu button visible",
+      "target": "SiteHeader",
+      "theme": "hcw",
+      "viewport": "mobile"
+    },
+    {
+      "type": "pixel",
+      "target": "SiteHeader",
+      "theme": "hcw",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "IconButton",
+      "theme": "hcw",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "FormField",
+      "theme": "hcw",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "CheckboxField",
+      "theme": "hcw",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ContactFormEditorial",
+      "theme": "hcw",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceCtaBands",
+      "theme": "hcw",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    },
+    {
+      "type": "pixel",
+      "target": "ButtonSurfaceHomeHero",
+      "theme": "hcw",
+      "viewport": "mobile",
+      "ok": true,
+      "detail": "0.00% pixels differ"
+    }
+  ]
+}

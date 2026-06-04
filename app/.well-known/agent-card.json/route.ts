@@ -43,6 +43,17 @@ export async function GET() {
       context: `${baseUrl}/llms.txt`,
       context_full: `${baseUrl}/llms-full.txt`,
     },
+    design_system: {
+      repo_paths: {
+        operating_model: "docs/AGENTIC_DS_OPERATING_MODEL.md",
+        case_study: "docs/AGENTIC_DS_CASE_STUDY.md",
+        catalog_policy: "docs/CATALOG-POLICY.md",
+        manifest: "nextjs-app/shared/foundations/dist/agent-manifest.json",
+      },
+      agent_demo: `${baseUrl}/design-system/agent`,
+      mcp: `${baseUrl}/mcp`,
+      eval: "npm run agent:eval (intent ≥90%, pattern composition golden set)",
+    },
   };
 
   return NextResponse.json(agentCard, {

@@ -11,8 +11,8 @@
 /* Storybook fallback layer (lowest priority, overridden by next/font classes) */
 @layer storybook-fallbacks {
   :root {
-    --font-heading: "TiemposHeadline-Regular", georgia, serif;
-    --font-body: "Moderat-Regular", system-ui, sans-serif;
+    --font-heading: "Syne", system-ui, sans-serif;
+    --font-body: "Satoshi", system-ui, sans-serif;
   }
 }
 

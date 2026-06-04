@@ -9,6 +9,7 @@ const meta: Meta<typeof ProofBlock> = {
   component: ProofBlock,
   tags: ["beta", "!autodocs"],
   parameters: {
+    layout: "fullscreen",
     design: {
       type: "figma",
       url: "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-proof-block",

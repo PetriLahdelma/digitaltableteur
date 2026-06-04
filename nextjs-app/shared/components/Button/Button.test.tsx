@@ -71,6 +71,16 @@ describe("Button", () => {
     expect(el.className).toMatch(/inverse/);
   });
 
+  it("applies onDark surface class for contrast on dark bands", () => {
+    const { container } = render(
+      <Button variant="primary" surface="onDark">
+        CTA
+      </Button>,
+    );
+    const el = container.firstChild as HTMLElement;
+    expect(el.className).toMatch(/onDark/);
+  });
+
   it("renders a custom icon element passed as icon prop", () => {
     render(
       <Button icon={<Icon name="arrow-clockwise" ariaLabel="refresh" />}>

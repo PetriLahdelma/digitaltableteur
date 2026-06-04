@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { Icon, Map as LeafletMap } from "leaflet";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import Button from "@dt/Button";
 import { ExternalLink, MapPin } from "lucide-react";
 
 // Digitaltableteur Helsinki studio coordinates
@@ -152,21 +152,27 @@ export function StudioMap({ compact = true, className }: StudioMapProps) {
       <div className="space-y-2">
         <p className="text-sm font-medium text-foreground">{STUDIO_ADDRESS}</p>
         <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm" asChild className="text-xs">
-            <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer">
-              <MapPin className="w-3 h-3 mr-1.5" />
-              {t("studioMapDirections", "Get directions")}
-            </a>
+          <Button
+            href={GOOGLE_MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="secondary"
+            size="sm"
+            className="text-xs"
+            icon={<MapPin className="w-3 h-3" aria-hidden />}
+          >
+            {t("studioMapDirections", "Get directions")}
           </Button>
-          <Button variant="ghost" size="sm" asChild className="text-xs">
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(STUDIO_ADDRESS)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink className="w-3 h-3 mr-1.5" />
-              {t("studioMapOpenMaps", "Open in Maps")}
-            </a>
+          <Button
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(STUDIO_ADDRESS)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="tertiary"
+            size="sm"
+            className="text-xs"
+            icon={<ExternalLink className="w-3 h-3" aria-hidden />}
+          >
+            {t("studioMapOpenMaps", "Open in Maps")}
           </Button>
         </div>
       </div>

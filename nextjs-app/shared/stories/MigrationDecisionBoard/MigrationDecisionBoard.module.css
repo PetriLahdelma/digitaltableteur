@@ -1,0 +1,149 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 100vh;
+  font-family: var(--primary-body-font);
+}
+
+.header {
+  padding: 1.5rem 2rem;
+  background: var(--color-background-light, #fff);
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-border, #e5e7eb);
+}
+
+.pageTitle {
+  margin: 0 0 0.5rem;
+  font-family: var(--primary-display-font);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.pageLead {
+  margin: 0;
+  max-width: 52rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.pageLead code {
+  font-size: 0.85em;
+}
+
+.hubList {
+  list-style: none;
+  margin: 0;
+  padding: 2rem;
+}
+
+.hubItem {
+  margin-bottom: 1.25rem;
+}
+
+.hubLink {
+  font-family: var(--primary-display-font);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.hubNote {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.band {
+  padding: 2.5rem 2rem;
+}
+
+.bandLight {
+  background: var(--color-background-light, #fff);
+  color: var(--color-primary);
+}
+
+.bandMuted {
+  background: color-mix(in srgb, var(--color-muted, #f4f4f5) 80%, transparent);
+  color: var(--color-primary);
+}
+
+.bandInset {
+  padding: 1.25rem;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: var(--radius-md, 0.5rem);
+  background: var(--color-background-light, #fff);
+}
+
+.bandTitle {
+  margin: 0 0 1.5rem;
+  font-family: var(--primary-display-font);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.block {
+  margin-bottom: 1.25rem;
+}
+
+.block:last-child {
+  margin-bottom: 0;
+}
+
+.label,
+.labelBad,
+.labelGood,
+.labelDefer {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.label {
+  opacity: 0.85;
+}
+
+.labelBad {
+  color: #f87171;
+}
+
+.labelGood {
+  color: #4ade80;
+}
+
+.labelDefer {
+  color: #ca8a04;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.rowCenter {
+  justify-content: center;
+}
+
+/* HeroBackground colorScheme=primary */
+.heroBandLight {
+  padding: 4rem 2rem;
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--color-primary) 20%, transparent),
+    var(--color-background, #fff),
+    color-mix(in srgb, var(--color-primary) 10%, transparent)
+  );
+  color: var(--color-primary);
+}
+
+.chatEmbed {
+  max-width: 22rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: var(--radius-lg, 0.75rem);
+  background: var(--color-background-light, #fff);
+}

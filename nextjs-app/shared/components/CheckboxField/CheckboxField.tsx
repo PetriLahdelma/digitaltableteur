@@ -2,8 +2,7 @@
 
 import { useId } from "react";
 import { cn } from "@/lib/utils";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
+import Checkbox from "@dt/Checkbox";
 
 export interface CheckboxFieldProps {
   label: string;
@@ -34,40 +33,27 @@ export function CheckboxField({
   const id = propId ?? generatedId;
 
   return (
-    <div className={cn("flex gap-3", className)}>
+    <div className={cn("space-y-1", className)}>
       <Checkbox
         id={id}
-        checked={checked}
+        label={label}
+        isChecked={checked}
         defaultChecked={defaultChecked}
         onCheckedChange={onCheckedChange}
-        disabled={disabled}
-        aria-invalid={!!error}
-        className="mt-0.5"
+        isDisabled={disabled}
+        required={required}
+        aria-invalid={error ? true : undefined}
       />
-      <div className="space-y-1">
-        <Label
-          htmlFor={id}
-          className={cn(
-            "font-body text-text-m leading-none cursor-pointer",
-            disabled && "opacity-50 cursor-not-allowed"
-          )}
-        >
-          {label}
-          {required && (
-            <span className="text-destructive ml-1" aria-hidden>*</span>
-          )}
-        </Label>
-        {description && (
-          <p className="font-body text-text-s text-muted-foreground">
-            {description}
-          </p>
-        )}
-        {error && (
-          <p className="font-body text-text-s text-destructive" role="alert">
-            {error}
-          </p>
-        )}
-      </div>
+      {description && (
+        <p className="font-body text-text-s text-muted-foreground pl-0">
+          {description}
+        </p>
+      )}
+      {error && (
+        <p className="font-body text-text-s text-destructive" role="alert">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

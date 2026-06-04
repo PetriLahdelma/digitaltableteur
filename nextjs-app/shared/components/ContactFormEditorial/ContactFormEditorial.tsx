@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { motion, useReducedMotion } from "framer-motion";
-import { Loader } from "lucide-react";
+import Button from "@dt/Button";
 import { FormFieldEditorial } from "../FormFieldEditorial";
 import { ExpandableSection } from "../ExpandableSection";
 import { useToast } from "../Toaster/Toaster";
@@ -595,20 +595,17 @@ export function ContactFormEditorial({
       </p>
 
       {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={isSubmitting || !isFormValid}
+      <Button
+        submits
+        variant="primary"
+        isLoading={isSubmitting}
+        disabled={!isFormValid}
         className={styles.submitButton}
       >
-        {isSubmitting ? (
-          <>
-            <Loader className={styles.spinner} aria-hidden="true" />
-            <span>{t("contactSubmitting", "Sending...")}</span>
-          </>
-        ) : (
-          <span>{t("contactSubmit")}</span>
-        )}
-      </button>
+        {isSubmitting
+          ? t("contactSubmitting", "Sending...")
+          : t("contactSubmit")}
+      </Button>
     </motion.form>
   );
 }

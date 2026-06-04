@@ -1,5 +1,11 @@
 # AI-POWERED DESIGN SYSTEM
 
+> **Status: north-star roadmap (not current runtime).**  
+> Agents building UI today must follow [AGENTIC_DS_OPERATING_MODEL.md](./AGENTIC_DS_OPERATING_MODEL.md), `nextjs-app/shared/foundations/dist/agent-manifest.json`, and [LLM_COMPONENT_GENERATION_RULES.md](./LLM_COMPONENT_GENERATION_RULES.md).  
+> Measured proof: [AGENTIC_DS_CASE_STUDY.md](./AGENTIC_DS_CASE_STUDY.md).
+
+---
+
 ## Component Creation Rules (LLM Ingestion Format v1.0)
 
 ### SYSTEM ROLE
