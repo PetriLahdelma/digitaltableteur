@@ -94,6 +94,18 @@ export default {
       table: { category: "Appearance", type: { summary: "boolean" } },
     },
 
+    surface: {
+      control: { type: "select" },
+      options: ["default", "onDark", "onBrand"],
+      description:
+        "Surface behind the button — use onDark/onBrand on tinted bands instead of isInverse on gradients",
+      table: {
+        category: "Appearance",
+        type: { summary: "ButtonSurface" },
+        defaultValue: { summary: "default" },
+      },
+    },
+
     isRounded: {
       control: "boolean",
       description: "Applies rounded corners to the button (v1.1.0+)",

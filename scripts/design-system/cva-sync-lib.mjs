@@ -9,6 +9,7 @@ function normalizeVariantValue(value) {
 
 const VARIANT_PROP_NAMES = new Set([
   "variant",
+  "surface",
   "size",
   "severity",
   "tone",
@@ -52,6 +53,7 @@ export function cvaAlignsWithProps(cvaVariants, props) {
 
 /** Explicit allowlist: prop-driven styling without root CVA invocation. */
 const PROP_SOURCED_AXES = {
+  Button: ["variant", "surface"],
   Title: ["size", "terminals"],
   Checkbox: ["size"],
   Switch: ["size"],
