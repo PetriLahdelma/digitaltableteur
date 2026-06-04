@@ -13,6 +13,7 @@ import {
   DT_USAGE_EXEMPT_REL,
   DT_USAGE_RULES,
   DT_USAGE_SCAN_ROOTS,
+  DT_USAGE_SHADCN_ALLOWLIST_REL,
   DT_USAGE_SKIP_SEGMENTS,
 } from "./dt-usage-rules.mjs";
 
@@ -26,6 +27,7 @@ const RULES = DT_USAGE_RULES;
 function shouldScan(filePath) {
   const rel = relative(ROOT, filePath).replace(/\\/g, "/");
   if (DT_USAGE_EXEMPT_REL.has(rel)) return false;
+  if (DT_USAGE_SHADCN_ALLOWLIST_REL.has(rel)) return false;
   if (SKIP_SEGMENTS.some((seg) => rel.includes(seg))) return false;
   return /\.(tsx|jsx)$/.test(rel);
 }

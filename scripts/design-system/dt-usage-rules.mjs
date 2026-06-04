@@ -3,13 +3,14 @@
  */
 
 /**
- * Product surfaces: app routes, layout patterns, and page modules.
- * Still import-policy only (@/components/ui/*) — no forced raw-element swaps.
+ * Product surfaces: app routes, layout patterns, page modules, and DS components.
+ * Import-policy only (@/components/ui/*) — no forced raw-element swaps.
  */
 export const DT_USAGE_SCAN_ROOTS = [
   "app",
   "nextjs-app/shared/patterns",
   "nextjs-app/shared/components/pages",
+  "nextjs-app/shared/components",
 ];
 
 export const DT_USAGE_SKIP_SEGMENTS = [
@@ -19,6 +20,17 @@ export const DT_USAGE_SKIP_SEGMENTS = [
   ".a11y.test.",
   "/node_modules/",
 ];
+
+/** Known shadcn debt — see MigrationDecisionBoard/DialogComparison.stories.tsx */
+export const DT_USAGE_SHADCN_ALLOWLIST_REL = new Set([
+  "nextjs-app/shared/components/ui/index.ts",
+  "nextjs-app/shared/components/interactive/index.ts",
+  "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+  "nextjs-app/shared/components/Lightbox/Lightbox.tsx",
+  "nextjs-app/shared/components/AnimatedDialog/AnimatedDialog.tsx",
+  "nextjs-app/shared/components/SkillsGrid/SkillsGrid.tsx",
+  "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
+]);
 
 /** Root layout failure UI — no providers / theme CSS. */
 export const DT_USAGE_EXEMPT_REL = new Set(["app/global-error.tsx"]);
@@ -45,4 +57,15 @@ export const DT_USAGE_ESLINT_IMPORT_PATTERNS = [
     message:
       "Prefer @dt/* design-system imports over @/components/ui/* (see npm run lint:dt-usage).",
   },
+];
+
+/** Relative paths (posix) for eslint `files` globs — app routes only (IDE guard). */
+export const DT_USAGE_ESLINT_FILE_GLOBS = ["app/**/*.{ts,tsx,js,jsx}"];
+
+/** eslint ignores — keep in sync with skip segments */
+export const DT_USAGE_ESLINT_IGNORES = [
+  "**/*.stories.*",
+  "**/*.test.*",
+  "**/__tests__/**",
+  "app/global-error.tsx",
 ];
