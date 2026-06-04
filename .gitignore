@@ -33,7 +33,7 @@ storybook-static
 # Local agent worktrees (never commit)
 .claude/worktrees/
 
-# MCP config
+# MCP config (copy mcp.example.json → mcp.json locally; never commit secrets)
 mcp.json
 .vercel
 .env*.local

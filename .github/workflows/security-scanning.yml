@@ -209,6 +209,10 @@ jobs:
             echo "❌ Environment files found in repository!"
             exit 1
           fi
+          if git ls-files --error-unmatch mcp.json >/dev/null 2>&1; then
+            echo "❌ mcp.json is tracked in git — use mcp.example.json and keep mcp.json local only"
+            exit 1
+          fi
           echo "✅ No environment files committed"
 
       - name: Verify .gitignore
