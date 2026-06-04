@@ -72,7 +72,11 @@ export default {
       control: { type: "select" },
       options: ["error", "warning", "success", "info"],
       description: "Semantic severity for status-based styling (v1.1.0+)",
-      table: { category: "Appearance", type: { summary: "ButtonSeverity" } },
+      table: {
+        category: "Appearance",
+        type: { summary: "ButtonSeverity" },
+        defaultValue: { summary: "error" },
+      },
     },
 
     size: {

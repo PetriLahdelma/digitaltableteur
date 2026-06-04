@@ -71,47 +71,62 @@
         {
             "repo": "digitaltableteur/digitaltableteur",
             "path": "app/dev/code-window/page.tsx",
-            "since": "2026-05-27"
+            "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/HighlightSection/HighlightSection.tsx",
-            "since": "2026-05-27"
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ProofBlock/ProofBlock.tsx",
-            "since": "2026-05-27"
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ServicesBlock/ServicesBlock.tsx",
-            "since": "2026-05-27"
+            "path": "nextjs-app/shared/components/pages/Blog/AuthorPage.tsx",
+            "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.tsx",
-            "since": "2026-05-27"
+            "path": "nextjs-app/shared/components/pages/Colophon/ColophonPage.tsx",
+            "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/Hero/Hero.tsx",
-            "since": "2026-05-27"
+            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
+            "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/templates/NextLayoutShell/NextLayoutShell.stories.tsx",
-            "since": "2026-05-27"
+            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
+            "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/NextLayout/NextLayout.stories.tsx",
-            "since": "2026-05-27"
+            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
+            "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/HeroSection/HeroSection.stories.tsx",
-            "since": "2026-05-27"
+            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/ImprintPage/ImprintPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+            "since": "2026-06-04"
         }
     ]
 }
