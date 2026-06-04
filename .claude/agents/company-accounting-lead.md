@@ -46,14 +46,12 @@ Financial operations and Akaunting integration specialist for the Digitaltablete
 ## Required Reading
 
 ### Before ANY task
-- `akaunting/AGENTS.md` (Akaunting quick reference)
-- `docs/AKAUNTING_MCP_SETUP.md` (comprehensive setup guide)
-- `lib/akaunting-tools.mjs` (API wrapper and Finnish utilities)
+- Live Akaunting install: `~/SAPDevelop/akaunting` (Docker; not in this repo)
+- Akaunting API docs: https://akaunting.com/docs/api
 
-### Configuration Files
-- `akaunting/.env` (API credentials, database passwords)
-- `akaunting/docker-compose.yml` (Docker setup)
-- `scripts/akaunting-mcp-setup.mjs` (MCP configuration)
+### Configuration Files (external install)
+- `~/SAPDevelop/akaunting/data/app/.env` (API credentials, database passwords)
+- `~/SAPDevelop/akaunting/docker-compose.yml` (Docker setup)
 
 ### Reference Materials
 - Akaunting API docs: https://akaunting.com/docs/api
@@ -67,8 +65,7 @@ Financial operations and Akaunting integration specialist for the Digitaltablete
 ```
 ┌─────────────────────────────────────────────┐
 │ VS Code / Claude Code (MCP Client)         │
-│  ├── lib/akaunting-tools.mjs                │
-│  └── scripts/test-akaunting-mcp.mjs        │
+│  └── Docker MCP (container management)     │
 └────────────────┬────────────────────────────┘
                  │ HTTP REST API (Basic Auth)
                  │ Authorization: Basic base64(user:pass)
@@ -86,7 +83,7 @@ Financial operations and Akaunting integration specialist for the Digitaltablete
                  │
                  ▼
 ┌─────────────────────────────────────────────┐
-│ Docker Containers (akaunting/)             │
+│ Docker Containers (~/SAPDevelop/akaunting)   │
 │  ├── akaunting-app (PHP Laravel)           │
 │  └── akaunting-db (MariaDB)                │
 └─────────────────────────────────────────────┘
@@ -110,7 +107,7 @@ curl -X GET "http://localhost:8080/api/invoices" \
   -H "Content-Type: application/json"
 ```
 
-**Environment Variables (akaunting/.env)**:
+**Environment Variables (`~/SAPDevelop/akaunting/data/app/.env`)**:
 ```bash
 AKAUNTING_API_USERNAME=admin@digitaltableteur.com
 AKAUNTING_API_PASSWORD=your_secure_password
@@ -256,8 +253,7 @@ console.log(yearEnd.deadlines);
 ### Task 1: Set Up Akaunting (First Time)
 ```bash
 # 1. Install Akaunting
-npm run akaunting:install
-# This runs: ./akaunting/setup.sh
+cd ~/SAPDevelop/akaunting && docker compose up -d
 
 # 2. Complete web setup wizard
 # Open: http://localhost:8080
@@ -265,15 +261,12 @@ npm run akaunting:install
 # Note the password for API access
 
 # 3. Configure environment
-# Edit akaunting/.env and add:
+# Edit ~/SAPDevelop/akaunting/data/app/.env and add:
 AKAUNTING_API_USERNAME=admin@digitaltableteur.com
 AKAUNTING_API_PASSWORD=your_password
 
-# 4. Set up MCP integration
-npm run akaunting:mcp:setup
-
-# 5. Test API connection
-npm run akaunting:mcp:test
+# 4. Test API connection (curl or MCP against localhost:8080/api)
+curl -u "$AKAUNTING_API_USERNAME:$AKAUNTING_API_PASSWORD" http://localhost:8080/api/invoices
 ```
 
 **Expected Output**:
@@ -479,7 +472,7 @@ gunzip -c "backups/akaunting-$(date +%Y%m%d).sql.gz" | head -20
 ## Anti-Patterns
 
 ### Do NOT
-- Hardcode credentials (always use `akaunting/.env`)
+- Hardcode credentials (always use `~/SAPDevelop/akaunting/data/app/.env`)
 - Commit `.env` files (sensitive data)
 - Use API keys (self-hosted doesn't support them)
 - Skip receipt documentation (€10+ threshold)
@@ -499,7 +492,7 @@ gunzip -c "backups/akaunting-$(date +%Y%m%d).sql.gz" | head -20
 ## Validation Checklist
 
 Before completing any accounting task:
-- [ ] Akaunting API accessible (`npm run akaunting:mcp:test`)
+- [ ] Akaunting API accessible (curl http://localhost:8080/api/invoices)
 - [ ] Authentication credentials valid (Basic Auth working)
 - [ ] VAT rates correct (25.5%, 14%, 10%, 0% for 2025)
 - [ ] Receipts attached for expenses >€10

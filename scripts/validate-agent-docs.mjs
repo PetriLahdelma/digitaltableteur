@@ -83,7 +83,6 @@ const requiredAreas = [
   "docs/AGENTS.md",
   "api-legacy-vercel-functions/AGENTS.md",
   "digitaltableteur-blog/AGENTS.md",
-  "akaunting/AGENTS.md",
 ];
 
 for (const rel of requiredAreas) {
