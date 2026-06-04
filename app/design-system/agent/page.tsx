@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+
+import goldenIntentsJson from "../../../scripts/design-system/agent-eval/golden-intents.json";
+import patternRecipesJson from "../../../scripts/design-system/pattern-composition.recipes.json";
 
 export const metadata: Metadata = {
   title: "Design System Agent Demo | Digitaltableteur",
@@ -20,19 +21,10 @@ type PatternRecipe = {
   avoidWhen?: string[];
 };
 
-function loadJson<T>(relativePath: string): T {
-  const path = join(process.cwd(), relativePath);
-  return JSON.parse(readFileSync(path, "utf8")) as T;
-}
-
 /** Read-only agentic DS proof — no layout chrome changes. */
 export default function DesignSystemAgentPage() {
-  const goldenIntents = loadJson<{ cases: GoldenCase[] }>(
-    "scripts/design-system/agent-eval/golden-intents.json",
-  );
-  const patternRecipes = loadJson<{ patterns: PatternRecipe[] }>(
-    "scripts/design-system/pattern-composition.recipes.json",
-  );
+  const goldenIntents = goldenIntentsJson as { cases: GoldenCase[] };
+  const patternRecipes = patternRecipesJson as { patterns: PatternRecipe[] };
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16 font-body text-foreground">

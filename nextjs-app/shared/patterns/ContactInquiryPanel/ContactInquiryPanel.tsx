@@ -1,8 +1,10 @@
 "use client";
 
 import {
+  forwardRef,
   useCallback,
   useEffect,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
@@ -26,12 +28,18 @@ export interface ContactInquiryPanelProps {
   bookingConfig?: SiteBookingConfig;
 }
 
-export function ContactInquiryPanel({
-  initialMode = "message",
-  packageId,
-  messagePanel,
-  bookingConfig,
-}: ContactInquiryPanelProps) {
+export interface ContactInquiryPanelHandle {
+  /** Switch to the message tab and scroll the viewport to the form. */
+  scrollToMessageForm: () => void;
+}
+
+export const ContactInquiryPanel = forwardRef<
+  ContactInquiryPanelHandle,
+  ContactInquiryPanelProps
+>(function ContactInquiryPanel(
+  { initialMode = "message", packageId, messagePanel, bookingConfig },
+  ref,
+) {
   const { t } = useTranslation();
   const [mode, setMode] = useState<ContactInquiryMode>(initialMode);
   const messageTabRef = useRef<HTMLButtonElement>(null);
@@ -53,6 +61,23 @@ export function ContactInquiryPanel({
   const handleSelectMessage = useCallback(() => {
     setMode("message");
   }, []);
+
+  const scrollToMessageForm = useCallback(() => {
+    setMode("message");
+    requestAnimationFrame(() => {
+      const formRoot = document.getElementById("contact-form");
+      if (!formRoot) return;
+
+      formRoot.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      const firstField = formRoot.querySelector<HTMLElement>(
+        'input:not([type="hidden"]):not([disabled]), textarea:not([disabled]), select:not([disabled])',
+      );
+      firstField?.focus({ preventScroll: true });
+    });
+  }, []);
+
+  useImperativeHandle(ref, () => ({ scrollToMessageForm }), [scrollToMessageForm]);
 
   const handleTabKeyDown = useCallback(
     (event: KeyboardEvent<HTMLButtonElement>) => {
@@ -124,7 +149,9 @@ export function ContactInquiryPanel({
           hidden={mode !== "message"}
           data-donny-target="contact.form"
         >
-          <div id="contact-form">{messagePanel}</div>
+          <div id="contact-form" className={styles.contactFormAnchor}>
+            {messagePanel}
+          </div>
         </div>
         <div
           id="contact-panel-book"
@@ -169,7 +196,7 @@ export function ContactInquiryPanel({
       </div>
     </div>
   );
-}
+});
 
 ContactInquiryPanel.displayName = "ContactInquiryPanel";
 
