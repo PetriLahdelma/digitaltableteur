@@ -59,25 +59,13 @@ export const DT_USAGE_ESLINT_IMPORT_PATTERNS = [
   },
 ];
 
-/** Relative paths (posix) for eslint `files` globs — mirrors DT_USAGE_SCAN_ROOTS. */
-export const DT_USAGE_ESLINT_FILE_GLOBS = [
-  "app/**/*.{ts,tsx,js,jsx}",
-  "nextjs-app/shared/patterns/**/*.{ts,tsx,js,jsx}",
-  "nextjs-app/shared/components/pages/**/*.{ts,tsx,js,jsx}",
-  "nextjs-app/shared/components/**/*.{ts,tsx,js,jsx}",
-];
+/** Relative paths (posix) for eslint `files` globs — app routes only (IDE guard). */
+export const DT_USAGE_ESLINT_FILE_GLOBS = ["app/**/*.{ts,tsx,js,jsx}"];
 
-/** eslint ignores — keep in sync with skip segments + shadcn allowlist */
+/** eslint ignores — keep in sync with skip segments */
 export const DT_USAGE_ESLINT_IGNORES = [
   "**/*.stories.*",
   "**/*.test.*",
   "**/__tests__/**",
   "app/global-error.tsx",
-  "nextjs-app/shared/components/ui/**",
-  "nextjs-app/shared/components/interactive/**",
-  "nextjs-app/shared/components/TailwindTest/**",
-  "nextjs-app/shared/components/Lightbox/Lightbox.tsx",
-  "nextjs-app/shared/components/AnimatedDialog/AnimatedDialog.tsx",
-  "nextjs-app/shared/components/SkillsGrid/SkillsGrid.tsx",
-  "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
 ];

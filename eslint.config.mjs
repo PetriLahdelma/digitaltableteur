@@ -1,7 +1,11 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from "eslint-plugin-storybook";
 
-import { DT_USAGE_ESLINT_FILE_GLOBS, DT_USAGE_ESLINT_IGNORES, DT_USAGE_ESLINT_IMPORT_PATTERNS } from "./scripts/design-system/dt-usage-rules.mjs";
+import {
+  DT_USAGE_ESLINT_FILE_GLOBS,
+  DT_USAGE_ESLINT_IGNORES,
+  DT_USAGE_ESLINT_IMPORT_PATTERNS,
+} from "./scripts/design-system/dt-usage-rules.mjs";
 
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
