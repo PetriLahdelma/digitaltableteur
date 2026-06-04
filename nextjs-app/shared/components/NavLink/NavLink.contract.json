@@ -1,48 +1,82 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "NavLink",
-  "tier": "atom",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Navigation anchor primitive used inside `SiteHeader`, `Footer`, and in-page navs. Renders an underlying `next/link` and applies the `aria-current='page'` token when the active route matches.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-nav-link",
-  "radixPrimitive": null,
-  "element": "a",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — focusable.",
-      "Enter — follows the link."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "NavLink",
+    "tier": "atom",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Navigation anchor primitive used inside `SiteHeader`, `Footer`, and in-page navs. Renders an underlying `next/link` and applies the `aria-current='page'` token when the active route matches.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-nav-link",
+    "radixPrimitive": null,
+    "element": "a",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "Sets `aria-current='page'` on the active route so the active nav item is announced.",
-      "Renders a real `<a>` (via next/link) for native browser behaviour."
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-link",
-      "--color-link-hover"
-    ],
-    "spacing": [],
-    "typography": [
-      "--font-size-md"
+    "a11y": {
+        "keyboard": [
+            "Tab — focusable.",
+            "Enter — follows the link."
+        ],
+        "ariaRequirements": [
+            "Sets `aria-current='page'` on the active route so the active nav item is announced.",
+            "Renders a real `<a>` (via next/link) for native browser behaviour."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-link",
+            "--color-link-hover"
+        ],
+        "spacing": [],
+        "typography": [
+            "--font-size-md"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "href": {
+            "optional": false,
+            "type": "string"
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "exact": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "activeClassName": {
+            "optional": true,
+            "type": "string"
+        },
+        "inactiveClassName": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "ThemeProvider",
+        "IconButton",
+        "Container",
+        "LanguageSwitcher",
+        "SkipLink"
     ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
 }

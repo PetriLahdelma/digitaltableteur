@@ -1,72 +1,139 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Inputs",
-  "tier": "atom",
-  "group": "form",
-  "status": "beta",
-  "description": "Labeled text input with validation, helper text, and size tokens.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-10",
-  "radixPrimitive": null,
-  "element": "input",
-  "variants": {
-    "size": {
-      "values": [
-        "sm",
-        "md",
-        "lg"
-      ],
-      "default": "md",
-      "forwarded": true,
-      "forwardedTo": "CSS module size classes"
-    }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Inputs",
+    "tier": "atom",
+    "group": "form",
+    "status": "beta",
+    "description": "Labeled text input with validation, helper text, and size tokens.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-10",
+    "radixPrimitive": null,
+    "element": "input",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "md",
+            "forwarded": true,
+            "forwardedTo": "CSS module size classes"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "label association",
-      "aria-describedby for error/helper"
+    "a11y": {
+        "keyboard": [
+            "Tab"
+        ],
+        "ariaRequirements": [
+            "label association",
+            "aria-describedby for error/helper"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "defaultValue",
+        "disabled",
+        "error",
+        "helperText",
+        "id",
+        "isDisabled",
+        "label",
+        "onChange",
+        "onValueChange",
+        "placeholder",
+        "ref",
+        "size",
+        "style",
+        "type",
+        "value"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "defaultValue",
-    "disabled",
-    "error",
-    "helperText",
-    "id",
-    "isDisabled",
-    "label",
-    "onChange",
-    "onValueChange",
-    "placeholder",
-    "ref",
-    "size",
-    "style",
-    "type",
-    "value"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "type": {
+            "optional": false,
+            "type": "union",
+            "values": [
+                "number",
+                "search",
+                "text",
+                "tel",
+                "email",
+                "password"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "isDisabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onValueChange": {
+            "optional": true,
+            "type": "(value: string | number) => void"
+        },
+        "defaultValue": {
+            "optional": true,
+            "type": "string | number"
+        },
+        "value": {
+            "optional": true,
+            "type": "string | number"
+        },
+        "error": {
+            "optional": true,
+            "type": "string"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
+        },
+        "onChange": {
+            "optional": true,
+            "type": "(value: string | number) => void"
+        }
+    },
+    "composesWith": [
+        "Button",
+        "Text",
+        "CheckboxGroup",
+        "Modal",
+        "Label",
+        "Title"
+    ]
 }

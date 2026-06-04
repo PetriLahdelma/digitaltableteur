@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Hero",
     "tier": "pattern",
     "group": "marketing",
@@ -76,5 +76,104 @@
         "titleLevel",
         "variant"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "titleLevel": {
+            "optional": true,
+            "type": "1 | 2 | 3 | 4 | 5 | 6"
+        },
+        "subtitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "imageSrc": {
+            "optional": true,
+            "type": "string"
+        },
+        "imageAlt": {
+            "optional": true,
+            "type": "string"
+        },
+        "imageWidth": {
+            "optional": true,
+            "type": "number"
+        },
+        "imageHeight": {
+            "optional": true,
+            "type": "number"
+        },
+        "actions": {
+            "optional": true,
+            "type": "HeroAction[]"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "minimal",
+                "centered",
+                "split",
+                "stacked"
+            ]
+        },
+        "background": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "image",
+                "light",
+                "dark",
+                "gradient",
+                "transparent"
+            ]
+        },
+        "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "center",
+                "left",
+                "right"
+            ]
+        },
+        "maxWidth": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ]
+        },
+        "spacing": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "compact",
+                "comfortable",
+                "spacious"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "ariaLabel": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

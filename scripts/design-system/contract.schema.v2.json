@@ -1,0 +1,520 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/PetriLahdelma/digitaltableteur/main/scripts/design-system/contract.schema.v2.json",
+    "title": "Digitaltableteur component contract (v2)",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schemaVersion",
+        "name",
+        "tier",
+        "group",
+        "status",
+        "description",
+        "figma",
+        "radixPrimitive",
+        "element",
+        "variants",
+        "slots",
+        "asChild",
+        "subParts",
+        "requiredStories",
+        "a11y",
+        "tokens",
+        "lightDarkVerified"
+    ],
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "schemaVersion": {
+            "type": "integer",
+            "enum": [
+                2
+            ],
+            "description": "Contract schema version. v2 adds props, composesWith, prefersOver, and stricter beta/stable conditionals."
+        },
+        "name": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Za-z0-9]*$"
+        },
+        "tier": {
+            "enum": [
+                "atom",
+                "molecule",
+                "organism",
+                "pattern",
+                "template"
+            ]
+        },
+        "group": {
+            "type": "string",
+            "minLength": 1
+        },
+        "status": {
+            "enum": [
+                "alpha",
+                "beta",
+                "stable",
+                "deprecated"
+            ]
+        },
+        "description": {
+            "type": "string",
+            "minLength": 1
+        },
+        "figma": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "radixPrimitive": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "minLength": 1
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "element": {
+            "type": "string",
+            "minLength": 1
+        },
+        "variants": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "values",
+                    "default"
+                ],
+                "properties": {
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "minItems": 1,
+                        "uniqueItems": true
+                    },
+                    "default": {
+                        "type": "string"
+                    },
+                    "forwarded": {
+                        "type": "boolean",
+                        "description": "When true, this axis is documented as a public prop but doesn't drive a root CVA. The component forwards the value to a child component (e.g. DataTable.density forwards to inner Table). The validator's CVA-contract alignment check is skipped for forwarded axes."
+                    },
+                    "forwardedTo": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Optional name of the child component this axis is forwarded to. For documentation; not validated."
+                    },
+                    "propSourced": {
+                        "type": "boolean",
+                        "description": "When true, the axis is validated against TypeScript prop unions instead of root CVA (CSS-module or map-driven styling)."
+                    }
+                }
+            }
+        },
+        "slots": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-zA-Z0-9]*$"
+            },
+            "uniqueItems": true
+        },
+        "asChild": {
+            "type": "boolean"
+        },
+        "subParts": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "pattern": "^[A-Z][A-Za-z0-9]*$"
+                    },
+                    "element": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "variants": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "values",
+                                "default"
+                            ],
+                            "properties": {
+                                "values": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "minItems": 1,
+                                    "uniqueItems": true
+                                },
+                                "default": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "requiredStories": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true,
+            "default": [
+                "Default",
+                "Playground",
+                "Example",
+                "ForcedColors"
+            ],
+            "description": "List of story names that must be exported from the component's .stories.tsx. Default seeds Default + Playground (autodocs Primary slots) + Example (canonical 'in use' composition; required at beta+ via the validator) + ForcedColors (HC verification; required at beta+ via the validator). New scaffolds inherit this default; existing components keep whatever list they declared."
+        },
+        "argTypesProxyExempt": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "minLength": 1
+            },
+            "uniqueItems": true,
+            "description": "Props that are intentionally NOT exposed as Storybook argTypes because the stories file uses a proxy-controls pattern (e.g. `Omit<Props, 'leading' | 'trailing'> + showLeading/showTrailing` booleans). The argTypes-coverage gate skips these props since the proxy controls cover the same UX surface. Use sparingly \u2014 explicit `{ table: { disable: true } }` in argTypes is preferred when the prop can be plainly hidden. The proxy pattern only makes sense when a boolean toggle stands in for a complex slot consumer flag (the Badge / Input `showLeading` shape). Names must match the prop names on <Component>Props verbatim."
+        },
+        "a11y": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "keyboard",
+                "ariaRequirements",
+                "reducedMotion",
+                "reviewed",
+                "forcedColorsVerified"
+            ],
+            "properties": {
+                "keyboard": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ariaRequirements": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "reducedMotion": {
+                    "type": "boolean"
+                },
+                "reviewed": {
+                    "type": "boolean"
+                },
+                "reviewedNote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Free-text evidence note when reviewed=true. Records what was checked (keyboard / ARIA / focus / reduced motion), date of review, reviewer, tools, and any known limitations carried forward to the stable-promotion gate. Required when reviewed=true at the beta documentation bar (see AGENTS.md Status lifecycle); the validator will enforce once the beta-debt is closed."
+                },
+                "forcedColorsVerified": {
+                    "type": "boolean",
+                    "description": "True when the component has been verified under Windows High Contrast / forced-colors: active. Required to be true at the alpha->beta promotion gate (validator enforces). Defaults to false on alpha components; flip to true after the ForcedColors story passes manual verification."
+                },
+                "motion": {
+                    "type": "boolean",
+                    "description": "Does this component have visible positional, scale, or opacity motion (not just colour transitions)? Authoring signal used by the validator to gate a11y.reducedMotion at beta+. When motion=true, reducedMotion must also be true before beta promotion."
+                },
+                "playFunctionExempt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Free-text justification for opting out of the interactive-beta play-function gate. Set when the component is technically interactive (has keyboard contract or sits in an interactive group) but cannot meaningfully ship a play function \u2014 e.g., composition templates whose interaction lives in their children, or canvas wrappers (ReactFlow) where the underlying library owns the keyboard handling. The validator accepts the exemption but lists exempted components on each run so the gap stays visible. See AGENTS.md 'Status lifecycle' play-function rule."
+                },
+                "axeTestExempt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Free-text justification for opting out of the beta+ axe-test gate (`parameters.a11y.test: 'error'` on the stories meta). Set when the component genuinely has no own a11y surface to test \u2014 composition templates whose accessibility lives entirely in their children, layout-only primitives whose tree is empty for axe to walk. Rare. The validator accepts the exemption but lists exempted components on each run so the gap stays visible. Prefer disabling specific rules via `parameters.a11y.config.rules` (per-rule, in-source) for documented axe debt rather than exempting the whole component."
+                },
+                "accessibilityTreeVerified": {
+                    "type": "boolean",
+                    "description": "True when an accessibility-tree snapshot has been captured + committed for every required story. The snapshot is the role/name/state/property tree that drives every screen reader's narration; future structural ARIA regressions break CI on diff. Captured via test-runner postVisit + Playwright locator.ariaSnapshot() and stored under packages/react/__a11y-snapshots__/<story-id>.yaml. Required at status: stable (validator enforces). Replaces the manual screenReaderVerified gate as the practical, automatable stable bar \u2014 real SR audio nuance (announcement timing, voice quality) remains optional via screenReaderVerified for consumers who invest in paid SR SaaS or do manual passes."
+                },
+                "realBrowserForcedColorsVerified": {
+                    "type": "boolean",
+                    "description": "True when the component has been verified under REAL browser forced-colors mode (Playwright emulateMedia({forcedColors: 'active'}) or actual Windows HC), not just the Storybook addon's CSS-injection simulation. Real-browser HC uses Chromium's actual forced-colors:active media query implementation \u2014 same mode Windows HC triggers \u2014 and tests that the component's @media (forced-colors: active) rules apply correctly. Required at status: stable (validator enforces). Captured automatically by test:stories:hc which runs the test-runner under emulateMedia({forcedColors: 'active'}); flip to true after that pass succeeds for every required story."
+                },
+                "screenReaderVerified": {
+                    "type": "boolean",
+                    "description": "OPTIONAL. True when the component has additionally been driven through a real screen reader (VoiceOver on macOS, NVDA on Windows) \u2014 beyond the accessibility-tree snapshot \u2014 and audio-level announcements were verified. NOT a stable gate (accessibilityTreeVerified is the gate); this is an aspirational signal for components that have had a paid SR SaaS pass (Assistivlabs etc.) or a documented manual walkthrough. See screenReaderNote for the recorded evidence."
+                },
+                "screenReaderNote": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "Free-text record of what was tested in the manual / SaaS SR walkthrough \u2014 date, screen reader + version, the keyboard path walked, what was announced at each step, and any discrepancy between expected (per a11y.keyboard / ariaRequirements) and actual. Required when screenReaderVerified=true."
+                },
+                "announces": {
+                    "description": "Live-region semantics for state-changing components (toast, async button, inline validation). Set to null for static / non-state-changing components. Set to an object describing the live-region politeness when the component announces dynamic content (e.g. a Toast that appears, an async Button that flips to loading state, an inline form-validation error that materialises after submit).",
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "live"
+                            ],
+                            "properties": {
+                                "live": {
+                                    "enum": [
+                                        "polite",
+                                        "assertive"
+                                    ]
+                                },
+                                "atomic": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "tokens": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "colors",
+                "spacing"
+            ],
+            "properties": {
+                "colors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "^--[a-z][a-z0-9-]*$"
+                    },
+                    "uniqueItems": true
+                },
+                "spacing": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "^--space-[a-z0-9-]+$"
+                    },
+                    "uniqueItems": true
+                },
+                "radii": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "^--radius-[a-z0-9]+$"
+                    },
+                    "uniqueItems": true
+                },
+                "shadows": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "^--shadow-[a-z0-9-]+$"
+                    },
+                    "uniqueItems": true
+                },
+                "zIndex": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "^--z-[a-z][a-z0-9-]*$"
+                    },
+                    "uniqueItems": true
+                },
+                "typography": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "pattern": "^--(font|line-height|letter-spacing|text)-[a-z0-9-]+$"
+                    },
+                    "uniqueItems": true
+                }
+            }
+        },
+        "lightDarkVerified": {
+            "type": "boolean"
+        },
+        "consumers": {
+            "type": "array",
+            "uniqueItems": true,
+            "description": "Production consumers of this component. Required (length >= 1) at status: stable \u2014 \"used in shipping product\" is part of the stable contract. Each entry records WHERE the component is consumed and SINCE WHEN, so reverse-impact analysis on a future breaking change is mechanical.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "repo",
+                    "path",
+                    "since"
+                ],
+                "properties": {
+                    "repo": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Repository slug (e.g. \"PetriLahdelma/digitaltableteur\")."
+                    },
+                    "path": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Path to a representative file using the component (e.g. \"apps/ui/src/pages/pathfinder/PathfinderPage.tsx\")."
+                    },
+                    "since": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "ISO date the consumption first landed (or first version of the consumer that uses it)."
+                    },
+                    "note": {
+                        "type": "string",
+                        "description": "Optional context (e.g. \"hero logo on splash\"). Free-text."
+                    }
+                }
+            }
+        },
+        "deprecatedReason": {
+            "type": "string",
+            "minLength": 1
+        },
+        "props": {
+            "type": "object",
+            "description": "Public props API synced from TypeScript (component-agent-blocks). Required at beta+.",
+            "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "type"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "optional": {
+                        "type": "boolean"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "uniqueItems": true,
+                        "description": "Union literal values when type is union."
+                    },
+                    "description": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        "composesWith": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Za-z0-9]*$"
+            },
+            "uniqueItems": true,
+            "description": "Other @dt components commonly composed with this one (from agent graph)."
+        },
+        "prefersOver": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "minLength": 1
+            },
+            "uniqueItems": true,
+            "description": "Raw HTML or legacy patterns this component replaces (from agent graph)."
+        }
+    },
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "status": {
+                        "const": "deprecated"
+                    }
+                },
+                "required": [
+                    "status"
+                ]
+            },
+            "then": {
+                "required": [
+                    "deprecatedReason"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "status": {
+                        "enum": [
+                            "beta",
+                            "stable"
+                        ]
+                    }
+                },
+                "required": [
+                    "status"
+                ]
+            },
+            "then": {
+                "required": [
+                    "props"
+                ]
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "status": {
+                        "const": "stable"
+                    }
+                },
+                "required": [
+                    "status"
+                ]
+            },
+            "then": {
+                "required": [
+                    "consumers"
+                ],
+                "properties": {
+                    "consumers": {
+                        "type": "array",
+                        "minItems": 1
+                    }
+                }
+            }
+        }
+    ]
+}

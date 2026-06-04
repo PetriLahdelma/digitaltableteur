@@ -1,49 +1,98 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ServicesSection",
-  "tier": "pattern",
-  "group": "marketing",
-  "status": "beta",
-  "description": "Homepage services grid with icons and copy.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-section",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "cardVariant",
-    "children",
-    "className",
-    "columns",
-    "description",
-    "id",
-    "ref",
-    "services",
-    "style",
-    "title"
-  ],
-  "consumers": [],
-  "slots": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ServicesSection",
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "beta",
+    "description": "Homepage services grid with icons and copy.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-section",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "cardVariant",
+        "children",
+        "className",
+        "columns",
+        "description",
+        "id",
+        "ref",
+        "services",
+        "style",
+        "title"
+    ],
+    "consumers": [],
+    "slots": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "services": {
+            "optional": false,
+            "type": "ServiceItem[]"
+        },
+        "columns": {
+            "optional": true,
+            "type": "2 | 3 | 4"
+        },
+        "cardVariant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "elevated",
+                "minimal",
+                "bordered"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "donnyTarget": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "HomeHero",
+        "WorkMagneticField",
+        "CTASection",
+        "NewsBulletin",
+        "DesignSprintsSection",
+        "HighlightSection"
+    ]
 }

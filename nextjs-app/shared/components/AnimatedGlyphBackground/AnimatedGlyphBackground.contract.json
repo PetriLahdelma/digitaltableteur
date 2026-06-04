@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "AnimatedGlyphBackground",
     "tier": "molecule",
     "group": "structure",
@@ -53,5 +53,26 @@
         "style",
         "tone"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "animate": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "muted",
+                "primary",
+                "accent",
+                "contrast"
+            ]
+        }
+    }
 }

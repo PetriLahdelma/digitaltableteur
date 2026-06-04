@@ -1,55 +1,116 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "EnhancedProjectCard",
-  "tier": "molecule",
-  "group": "marketing",
-  "status": "beta",
-  "description": "Portfolio project card with image, video hover, and metadata.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-enhanced-project-card",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "aspectRatio",
-    "autoPlayVideo",
-    "category",
-    "children",
-    "className",
-    "description",
-    "id",
-    "ref",
-    "showCategory",
-    "showDescription",
-    "slug",
-    "style",
-    "tags",
-    "thumbnail",
-    "title",
-    "videoThumbnail"
-  ],
-  "consumers": [],
-  "slots": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "EnhancedProjectCard",
+    "tier": "molecule",
+    "group": "marketing",
+    "status": "beta",
+    "description": "Portfolio project card with image, video hover, and metadata.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-enhanced-project-card",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "aspectRatio",
+        "autoPlayVideo",
+        "category",
+        "children",
+        "className",
+        "description",
+        "id",
+        "ref",
+        "showCategory",
+        "showDescription",
+        "slug",
+        "style",
+        "tags",
+        "thumbnail",
+        "title",
+        "videoThumbnail"
+    ],
+    "consumers": [],
+    "slots": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "slug": {
+            "optional": false,
+            "type": "string"
+        },
+        "thumbnail": {
+            "optional": false,
+            "type": "string"
+        },
+        "videoThumbnail": {
+            "optional": true,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "category": {
+            "optional": true,
+            "type": "string"
+        },
+        "tags": {
+            "optional": true,
+            "type": "string[]"
+        },
+        "aspectRatio": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "video",
+                "square",
+                "portrait",
+                "landscape"
+            ]
+        },
+        "showCategory": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "showDescription": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "autoPlayVideo": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Container",
+        "Section"
+    ]
 }

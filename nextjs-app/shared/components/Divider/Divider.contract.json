@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Divider",
     "tier": "atom",
     "group": "structure",
@@ -46,5 +46,28 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "orientation": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "horizontal",
+                "vertical"
+            ]
+        },
+        "decorative": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Layout",
+        "TextLink"
+    ]
 }

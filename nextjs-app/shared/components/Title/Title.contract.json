@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Title",
     "tier": "atom",
     "group": "display",
@@ -128,5 +128,76 @@
             "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
             "since": "2026-06-04"
         }
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": true,
+            "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+        },
+        "as": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string | undefined"
+        },
+        "unstyled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "S",
+                "M",
+                "L",
+                "XXS",
+                "XS",
+                "XL",
+                "XXL"
+            ]
+        },
+        "level": {
+            "optional": true,
+            "type": "1 | 2 | 3 | 4 | 5 | 6"
+        },
+        "terminals": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "serif",
+                "sans"
+            ]
+        },
+        "lineHeight": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "normal",
+                "tight",
+                "snug",
+                "relaxed",
+                "loose"
+            ]
+        }
+    },
+    "composesWith": [
+        "Text",
+        "Button",
+        "ProjectDetailLayout",
+        "StoryBlock",
+        "ProjectHero",
+        "RelatedProjects"
     ]
 }

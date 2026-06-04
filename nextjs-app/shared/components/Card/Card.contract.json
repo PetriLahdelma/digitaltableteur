@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Card",
     "tier": "molecule",
     "group": "structure",
@@ -10,12 +10,21 @@
     "element": "div",
     "variants": {
         "variant": {
-            "values": ["elevated", "filled", "outlined"],
+            "values": [
+                "elevated",
+                "filled",
+                "outlined"
+            ],
             "default": "elevated",
             "propSourced": true
         },
         "size": {
-            "values": ["S", "M", "L", "full"],
+            "values": [
+                "S",
+                "M",
+                "L",
+                "full"
+            ],
             "default": "M",
             "propSourced": true
         }
@@ -117,5 +126,229 @@
             "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
             "since": "2026-06-04"
         }
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "titleProps": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "M",
+                "L",
+                "h2",
+                "h3",
+                "h4",
+                "h5"
+            ]
+        },
+        "subTitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "subTitleProps": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "M",
+                "span",
+                "div",
+                "strong",
+                "em",
+                "cite",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5"
+            ]
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "descriptionProps": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "M",
+                "span",
+                "div",
+                "strong",
+                "em",
+                "cite",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5"
+            ]
+        },
+        "bodyProps": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "M",
+                "span",
+                "div",
+                "strong",
+                "em",
+                "cite",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5"
+            ]
+        },
+        "extra": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "cover": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "actions": {
+            "optional": true,
+            "type": "CardAction[]"
+        },
+        "loading": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "hoverable": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "bordered": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "full",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "elevated",
+                "filled",
+                "outlined"
+            ]
+        },
+        "tabs": {
+            "optional": true,
+            "type": "CardTab[]"
+        },
+        "activeTabKey": {
+            "optional": true,
+            "type": "string"
+        },
+        "defaultActiveTabKey": {
+            "optional": true,
+            "type": "string"
+        },
+        "onTabChange": {
+            "optional": true,
+            "type": "(key: string) => void"
+        },
+        "body": {
+            "optional": true,
+            "type": "string"
+        },
+        "link": {
+            "optional": true,
+            "type": "string"
+        },
+        "icon": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "iconProps": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "end",
+                "md"
+            ]
+        },
+        "badge": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "badgeProps": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "error",
+                "warning",
+                "m"
+            ]
+        },
+        "statusMessage": {
+            "optional": true,
+            "type": "string"
+        },
+        "statusMessageProps": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "error",
+                "M"
+            ]
+        },
+        "linkLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "interactive": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onClick": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "bodyStyle": {
+            "optional": true,
+            "type": "React.CSSProperties"
+        },
+        "headStyle": {
+            "optional": true,
+            "type": "React.CSSProperties"
+        },
+        "footer": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "children": {
+            "optional": true,
+            "type": "React.ReactNode"
+        }
+    },
+    "composesWith": [
+        "Title",
+        "Text",
+        "Button",
+        "PageLayout",
+        "MarkdownMessage",
+        "Icon"
     ]
 }

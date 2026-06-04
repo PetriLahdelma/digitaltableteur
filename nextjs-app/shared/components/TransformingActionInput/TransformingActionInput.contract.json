@@ -1,55 +1,110 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "TransformingActionInput",
-  "tier": "molecule",
-  "group": "form",
-  "status": "beta",
-  "description": "TransformingActionInput — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-transforming-action-input",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "actionLabelKey",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "defaultValue",
-    "disabled",
-    "helperTextKey",
-    "id",
-    "initialMode",
-    "inputLabelKey",
-    "onChange",
-    "onSubmit",
-    "placeholderKey",
-    "ref",
-    "stayInInputMode",
-    "style",
-    "value"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "TransformingActionInput",
+    "tier": "molecule",
+    "group": "form",
+    "status": "beta",
+    "description": "TransformingActionInput — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-transforming-action-input",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "actionLabelKey",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "defaultValue",
+        "disabled",
+        "helperTextKey",
+        "id",
+        "initialMode",
+        "inputLabelKey",
+        "onChange",
+        "onSubmit",
+        "placeholderKey",
+        "ref",
+        "stayInInputMode",
+        "style",
+        "value"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "initialMode": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "button",
+                "input"
+            ]
+        },
+        "value": {
+            "optional": true,
+            "type": "string"
+        },
+        "defaultValue": {
+            "optional": true,
+            "type": "string"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "actionLabelKey": {
+            "optional": true,
+            "type": "string"
+        },
+        "inputLabelKey": {
+            "optional": true,
+            "type": "string"
+        },
+        "helperTextKey": {
+            "optional": true,
+            "type": "string"
+        },
+        "placeholderKey": {
+            "optional": true,
+            "type": "string"
+        },
+        "onChange": {
+            "optional": true,
+            "type": "(value: string) => void"
+        },
+        "onSubmit": {
+            "optional": true,
+            "type": "(value: string) => void"
+        },
+        "stayInInputMode": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

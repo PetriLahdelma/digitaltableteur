@@ -1,50 +1,57 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "SiteFooter",
-  "tier": "pattern",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Production site footer with links and social icons.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=477-6",
-  "radixPrimitive": null,
-  "element": "footer",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "SiteFooter",
+    "tier": "pattern",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Production site footer with links and social icons.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=477-6",
+    "radixPrimitive": null,
+    "element": "footer",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "contentinfo landmark",
-      "external links labeled"
+    "a11y": {
+        "keyboard": [
+            "Tab"
+        ],
+        "ariaRequirements": [
+            "contentinfo landmark",
+            "external links labeled"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true,
+        "playFunctionExempt": "Footer is mostly links; interaction is standard Tab navigation."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "style"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true,
-    "playFunctionExempt": "Footer is mostly links; interaction is standard Tab navigation."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

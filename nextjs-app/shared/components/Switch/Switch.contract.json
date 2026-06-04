@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Switch",
     "tier": "atom",
     "group": "form",
@@ -66,5 +66,57 @@
         "size",
         "style"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "isChecked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "isDisabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "isLoading": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "defaultChecked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "onCheckedChange": {
+            "optional": true,
+            "type": "(checked: boolean) => void"
+        },
+        "label": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "labelPlacement": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "left",
+                "right",
+                "top"
+            ]
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

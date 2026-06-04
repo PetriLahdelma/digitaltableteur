@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Checkbox",
     "tier": "atom",
     "group": "form",
@@ -65,5 +65,60 @@
         "style",
         "value"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "label": {
+            "optional": true,
+            "type": "string"
+        },
+        "showLabel": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "isChecked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "isIndeterminate": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "isDisabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "defaultChecked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "onCheckedChange": {
+            "optional": true,
+            "type": "(checked: boolean) => void"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Inputs",
+        "Label",
+        "Text",
+        "Grid",
+        "ArticleCard",
+        "Avatar"
+    ]
 }

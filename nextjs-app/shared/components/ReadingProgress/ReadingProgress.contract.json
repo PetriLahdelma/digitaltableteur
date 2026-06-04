@@ -1,44 +1,59 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ReadingProgress",
-  "tier": "molecule",
-  "group": "feedback",
-  "status": "beta",
-  "description": "Scroll-linked reading progress indicator for long content.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-reading-progress",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "argTypesProxyExempt": [
-    "targetRef",
-    "className"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "progressbar role"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ReadingProgress",
+    "tier": "molecule",
+    "group": "feedback",
+    "status": "beta",
+    "description": "Scroll-linked reading progress indicator for long content.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-reading-progress",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-28 — Beta promotion review: progressbar role with aria-valuenow/min/max + aria-label is set; passive scroll listener avoids jank; transition is decorative (transform-only) and respected by reduced motion. ForcedColors story verifies the bar/percentage remain visible in CanvasText/Highlight. Light/dark verified via matrix CI.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [
-      "--color-primary",
-      "--color-border"
+    "argTypesProxyExempt": [
+        "targetRef",
+        "className"
     ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "progressbar role"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-28 — Beta promotion review: progressbar role with aria-valuenow/min/max + aria-label is set; passive scroll listener avoids jank; transition is decorative (transform-only) and respected by reduced motion. ForcedColors story verifies the bar/percentage remain visible in CanvasText/Highlight. Light/dark verified via matrix CI.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [
+            "--color-primary",
+            "--color-border"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "targetRef": {
+            "optional": false,
+            "type": "RefObject<HTMLElement | null>"
+        },
+        "showPercentage": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

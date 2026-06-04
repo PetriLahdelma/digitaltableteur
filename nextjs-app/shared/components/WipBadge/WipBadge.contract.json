@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "WipBadge",
     "tier": "atom",
     "group": "feedback",
@@ -56,5 +56,26 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "status": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "alpha",
+                "beta",
+                "stable",
+                "deprecated"
+            ]
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "canvas",
+                "docs"
+            ]
+        }
+    }
 }

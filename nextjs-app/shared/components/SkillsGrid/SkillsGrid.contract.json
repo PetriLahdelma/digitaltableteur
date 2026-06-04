@@ -1,44 +1,63 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "SkillsGrid",
-  "tier": "organism",
-  "group": "display",
-  "status": "beta",
-  "description": "Grid of skill / tech logos arranged in 4 / 6 / 8 columns. Used on the about page and case studies to show capabilities or tooling at a glance.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skills-grid",
-  "radixPrimitive": null,
-  "element": "section",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "Renders a `<section>` with an `aria-labelledby` heading so the grid is a labelled region.",
-      "Each logo carries an `alt` text describing the skill or tool; decorative-only logos are `aria-hidden`."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "SkillsGrid",
+    "tier": "organism",
+    "group": "display",
+    "status": "beta",
+    "description": "Grid of skill / tech logos arranged in 4 / 6 / 8 columns. Used on the about page and case studies to show capabilities or tooling at a glance.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skills-grid",
+    "radixPrimitive": null,
+    "element": "section",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-text-muted"
-    ],
-    "spacing": [
-      "--space-layout-12",
-      "--space-layout-24"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "Renders a `<section>` with an `aria-labelledby` heading so the grid is a labelled region.",
+            "Each logo carries an `alt` text describing the skill or tool; decorative-only logos are `aria-hidden`."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-text-muted"
+        ],
+        "spacing": [
+            "--space-layout-12",
+            "--space-layout-24"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "skills": {
+            "optional": false,
+            "type": "Skill[]"
+        },
+        "showCategories": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "columns": {
+            "optional": true,
+            "type": "4 | 6 | 8"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

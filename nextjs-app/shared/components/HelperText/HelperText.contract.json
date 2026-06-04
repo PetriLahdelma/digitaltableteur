@@ -1,47 +1,78 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "HelperText",
-  "tier": "atom",
-  "group": "form",
-  "status": "beta",
-  "description": "Semantic helper or validation copy below form controls.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-17",
-  "radixPrimitive": null,
-  "element": "p",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "link to control via id / aria-describedby"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "HelperText",
+    "tier": "atom",
+    "group": "form",
+    "status": "beta",
+    "description": "Semantic helper or validation copy below form controls.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-17",
+    "radixPrimitive": null,
+    "element": "p",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "state",
-    "style"
-  ],
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "link to control via id / aria-describedby"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "state",
+        "style"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "state": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error"
+            ]
+        }
+    },
+    "composesWith": [
+        "Label",
+        "Icon",
+        "Button",
+        "Inputs"
+    ]
 }

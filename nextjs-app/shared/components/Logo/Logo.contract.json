@@ -1,41 +1,73 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Logo",
-  "tier": "atom",
-  "group": "display",
-  "status": "beta",
-  "description": "Digitaltableteur brand mark — monochrome (currentColor), square footprint, optional hover pulse.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=480-1588",
-  "radixPrimitive": null,
-  "element": "svg",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
-  "argTypesProxyExempt": [
-    "animated",
-    "badge",
-    "className",
-    "decorative",
-    "size",
-    "title"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "accessible name via title unless decorative",
-      "decorative renders aria-hidden"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Logo",
+    "tier": "atom",
+    "group": "display",
+    "status": "beta",
+    "description": "Digitaltableteur brand mark — monochrome (currentColor), square footprint, optional hover pulse.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=480-1588",
+    "radixPrimitive": null,
+    "element": "svg",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Hover pulse is disabled under prefers-reduced-motion. All Logo tests pass (7/7)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "argTypesProxyExempt": [
+        "animated",
+        "badge",
+        "className",
+        "decorative",
+        "size",
+        "title"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "accessible name via title unless decorative",
+            "decorative renders aria-hidden"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "Verified 2026-06-02: role=img/aria-label vs aria-hidden when decorative, focusable=false, non-interactive (no keyboard contract — wrap in link/button to activate). Every mark uses fill=currentColor → maps to system CanvasText in forced colors; the ForcedColors story passes axe. Hover pulse is disabled under prefers-reduced-motion. All Logo tests pass (7/7)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "size": {
+            "optional": true,
+            "type": "number"
+        },
+        "animated": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "badge": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "decorative": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

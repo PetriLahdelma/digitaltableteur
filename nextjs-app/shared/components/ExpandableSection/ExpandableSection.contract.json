@@ -1,48 +1,83 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ExpandableSection",
-  "tier": "molecule",
-  "group": "structure",
-  "status": "beta",
-  "description": "Collapsible content region with a trigger header. Lighter than `Accordion` (which manages a group of expandables) — used standalone for a single 'show more' or detail-disclosure section.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-expandable-section",
-  "radixPrimitive": null,
-  "element": "section",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — focuses the trigger header.",
-      "Enter / Space — toggles the section."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ExpandableSection",
+    "tier": "molecule",
+    "group": "structure",
+    "status": "beta",
+    "description": "Collapsible content region with a trigger header. Lighter than `Accordion` (which manages a group of expandables) — used standalone for a single 'show more' or detail-disclosure section.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-expandable-section",
+    "radixPrimitive": null,
+    "element": "section",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "Trigger is a `<button>` with `aria-expanded` reflecting the open state.",
-      "Trigger sets `aria-controls` to the panel id; the panel uses `role='region'` and `aria-labelledby` pointing at the trigger."
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "motion": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-surface-elevated"
-    ],
-    "spacing": [
-      "--space-internal-8",
-      "--space-internal-12"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Tab — focuses the trigger header.",
+            "Enter / Space — toggles the section."
+        ],
+        "ariaRequirements": [
+            "Trigger is a `<button>` with `aria-expanded` reflecting the open state.",
+            "Trigger sets `aria-controls` to the panel id; the panel uses `role='region'` and `aria-labelledby` pointing at the trigger."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "motion": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "collapsedLabel": {
+            "optional": false,
+            "type": "string"
+        },
+        "expandedLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "defaultExpanded": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "expanded": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onExpandedChange": {
+            "optional": true,
+            "type": "(expanded: boolean) => void"
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "staggerDelay": {
+            "optional": true,
+            "type": "number"
+        }
+    }
 }

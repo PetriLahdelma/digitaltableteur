@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Avatar",
     "tier": "atom",
     "group": "display",
@@ -67,5 +67,81 @@
         "style",
         "variant"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "name": {
+            "optional": true,
+            "type": "string"
+        },
+        "imageUrl": {
+            "optional": true,
+            "type": "string | { default: string } | StaticImageData"
+        },
+        "clickable": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "destinationUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "size": {
+            "optional": true,
+            "type": "AvatarSize"
+        },
+        "srcSet": {
+            "optional": true,
+            "type": "string"
+        },
+        "sizes": {
+            "optional": true,
+            "type": "string"
+        },
+        "loading": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "lazy",
+                "eager"
+            ]
+        },
+        "decoding": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "auto",
+                "sync",
+                "async"
+            ]
+        },
+        "menuItems": {
+            "optional": true,
+            "type": "AvatarMenuItem[]"
+        },
+        "menuLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "image",
+                "initials"
+            ]
+        },
+        "placementRefreshKey": {
+            "optional": true,
+            "type": "number"
+        }
+    },
+    "composesWith": [
+        "Text",
+        "Title",
+        "Grid",
+        "ArticleCard",
+        "Checkbox",
+        "CheckboxGroup"
+    ]
 }

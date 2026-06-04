@@ -1,37 +1,60 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "AspectRatio",
-  "tier": "atom",
-  "group": "structure",
-  "status": "beta",
-  "description": "Layout primitive that locks its children to a fixed width/height ratio (1:1, 4:3, 16:9, …) so media-shaped containers reserve space before content loads.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-aspect-ratio",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "No own ARIA — the wrapper inherits semantics from its children. Author the inside as a meaningful region (img, figure, iframe) yourself."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "AspectRatio",
+    "tier": "atom",
+    "group": "structure",
+    "status": "beta",
+    "description": "Layout primitive that locks its children to a fixed width/height ratio (1:1, 4:3, 16:9, …) so media-shaped containers reserve space before content loads.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-aspect-ratio",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "No own ARIA — the wrapper inherits semantics from its children. Author the inside as a meaningful region (img, figure, iframe) yourself."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "ratio": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "1:1",
+                "4:3",
+                "16:9",
+                "21:9",
+                "3:2",
+                "2:3"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

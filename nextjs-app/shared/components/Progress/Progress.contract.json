@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Progress",
     "tier": "atom",
     "group": "feedback",
@@ -47,5 +47,44 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "value": {
+            "optional": true,
+            "type": "number"
+        },
+        "max": {
+            "optional": true,
+            "type": "number"
+        },
+        "label": {
+            "optional": true,
+            "type": "string"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "state": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error",
+                "neutral"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

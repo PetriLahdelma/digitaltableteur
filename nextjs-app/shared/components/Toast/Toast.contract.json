@@ -1,90 +1,151 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Toast",
-  "tier": "molecule",
-  "group": "feedback",
-  "status": "beta",
-  "description": "Transient status message with severity, position, and auto-dismiss.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=393-35",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {
-    "size": {
-      "values": [
-        "sm",
-        "md",
-        "lg",
-        "S",
-        "M",
-        "L"
-      ],
-      "default": "md",
-      "forwarded": true,
-      "forwardedTo": "CSS module size classes"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Toast",
+    "tier": "molecule",
+    "group": "feedback",
+    "status": "beta",
+    "description": "Transient status message with severity, position, and auto-dismiss.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=393-35",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ],
+            "default": "md",
+            "forwarded": true,
+            "forwardedTo": "CSS module size classes"
+        },
+        "severity": {
+            "values": [
+                "success",
+                "error",
+                "warning",
+                "info"
+            ],
+            "default": "info",
+            "forwarded": true
+        },
+        "position": {
+            "values": [
+                "top-left",
+                "top-center",
+                "top-right",
+                "bottom-left",
+                "bottom-center",
+                "bottom-right"
+            ],
+            "default": "bottom-center",
+            "forwarded": true
+        }
     },
-    "severity": {
-      "values": [
-        "success",
-        "error",
-        "warning",
-        "info"
-      ],
-      "default": "info",
-      "forwarded": true
-    },
-    "position": {
-      "values": [
-        "top-left",
-        "top-center",
-        "top-right",
-        "bottom-left",
-        "bottom-center",
-        "bottom-right"
-      ],
-      "default": "bottom-center",
-      "forwarded": true
-    }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "role=status",
-      "aria-live polite"
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "duration",
-    "id",
-    "isOpen",
-    "message",
-    "onClose",
-    "position",
-    "ref",
-    "severity",
-    "size",
-    "style"
-  ],
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "role=status",
+            "aria-live polite"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "duration",
+        "id",
+        "isOpen",
+        "message",
+        "onClose",
+        "position",
+        "ref",
+        "severity",
+        "size",
+        "style"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "isOpen": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "severity": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error"
+            ]
+        },
+        "position": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "top-left",
+                "top-center",
+                "top-right",
+                "bottom-left",
+                "bottom-center",
+                "bottom-right"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "message": {
+            "optional": false,
+            "type": "string"
+        },
+        "duration": {
+            "optional": true,
+            "type": "number"
+        },
+        "onClose": {
+            "optional": true,
+            "type": "() => void"
+        }
+    },
+    "composesWith": [
+        "Button",
+        "Text",
+        "Modal",
+        "Inputs",
+        "CheckboxGroup",
+        "Select"
+    ]
 }

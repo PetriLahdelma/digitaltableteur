@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Spacer",
     "tier": "atom",
     "group": "structure",
@@ -53,5 +53,32 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "xs",
+                "2xl"
+            ]
+        },
+        "axis": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "horizontal",
+                "vertical"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

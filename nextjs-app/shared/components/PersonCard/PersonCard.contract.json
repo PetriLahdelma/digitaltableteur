@@ -1,70 +1,190 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "PersonCard",
-  "tier": "molecule",
-  "group": "structure",
-  "status": "beta",
-  "description": "PersonCard — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-person-card",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "dribbbleLabel",
-    "dribbbleUrl",
-    "email",
-    "facebookLabel",
-    "facebookUrl",
-    "githubLabel",
-    "githubUrl",
-    "id",
-    "imageAlt",
-    "imageDecoding",
-    "imageLoading",
-    "imageSizes",
-    "imageSrc",
-    "imageSrcSet",
-    "instagramLabel",
-    "instagramUrl",
-    "linkedinLabel",
-    "linkedinUrl",
-    "loading",
-    "mediumLabel",
-    "mediumUrl",
-    "name",
-    "ref",
-    "style",
-    "substackLabel",
-    "substackUrl",
-    "title",
-    "twitterLabel",
-    "twitterUrl"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "PersonCard",
+    "tier": "molecule",
+    "group": "structure",
+    "status": "beta",
+    "description": "PersonCard — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-person-card",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "dribbbleLabel",
+        "dribbbleUrl",
+        "email",
+        "facebookLabel",
+        "facebookUrl",
+        "githubLabel",
+        "githubUrl",
+        "id",
+        "imageAlt",
+        "imageDecoding",
+        "imageLoading",
+        "imageSizes",
+        "imageSrc",
+        "imageSrcSet",
+        "instagramLabel",
+        "instagramUrl",
+        "linkedinLabel",
+        "linkedinUrl",
+        "loading",
+        "mediumLabel",
+        "mediumUrl",
+        "name",
+        "ref",
+        "style",
+        "substackLabel",
+        "substackUrl",
+        "title",
+        "twitterLabel",
+        "twitterUrl"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "imageSrc": {
+            "optional": false,
+            "type": "string"
+        },
+        "imageAlt": {
+            "optional": false,
+            "type": "string"
+        },
+        "imageSrcSet": {
+            "optional": true,
+            "type": "string"
+        },
+        "imageSizes": {
+            "optional": true,
+            "type": "string"
+        },
+        "name": {
+            "optional": false,
+            "type": "string"
+        },
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "email": {
+            "optional": false,
+            "type": "string"
+        },
+        "linkedinUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "linkedinLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "githubUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "githubLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "facebookUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "facebookLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "twitterUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "twitterLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "dribbbleUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "dribbbleLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "mediumUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "mediumLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "instagramUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "instagramLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "substackUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "substackLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "imageLoading": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "lazy",
+                "eager"
+            ]
+        },
+        "imageDecoding": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "auto",
+                "sync",
+                "async"
+            ]
+        },
+        "loading": {
+            "optional": true,
+            "type": "boolean"
+        }
+    }
 }

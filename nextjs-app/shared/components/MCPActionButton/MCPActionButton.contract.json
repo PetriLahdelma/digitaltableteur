@@ -1,46 +1,73 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "MCPActionButton",
-  "tier": "molecule",
-  "group": "interaction",
-  "status": "beta",
-  "description": "MCPActionButton — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-mcpaction-button",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "payload",
-    "ref",
-    "style",
-    "toolId"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "MCPActionButton",
+    "tier": "molecule",
+    "group": "interaction",
+    "status": "beta",
+    "description": "MCPActionButton — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-mcpaction-button",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "payload",
+        "ref",
+        "style",
+        "toolId"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "toolId": {
+            "optional": false,
+            "type": "string"
+        },
+        "payload": {
+            "optional": true,
+            "type": "Record<string, unknown>"
+        },
+        "onExecute": {
+            "optional": true,
+            "type": "(input: {\n    toolId: string;\n    payload?: Record<string, unknown>;\n  }) => Promise<unknown>"
+        },
+        "onResult": {
+            "optional": true,
+            "type": "(result: unknown) => void"
+        },
+        "onError": {
+            "optional": true,
+            "type": "(error: unknown) => void"
+        },
+        "children": {
+            "optional": true,
+            "type": "React.ReactNode"
+        }
+    }
 }

@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "CTASection",
     "tier": "pattern",
     "group": "marketing",
@@ -57,5 +57,63 @@
         "title"
     ],
     "consumers": [],
-    "slots": []
+    "slots": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "primaryAction": {
+            "optional": false,
+            "type": "ActionItem"
+        },
+        "secondaryAction": {
+            "optional": true,
+            "type": "ActionItem"
+        },
+        "background": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "muted",
+                "primary",
+                "dark",
+                "gradient",
+                "brand"
+            ]
+        },
+        "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "center",
+                "left"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "donnyTarget": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "HomeHero",
+        "ServicesSection",
+        "WorkMagneticField",
+        "NewsBulletin",
+        "DesignSprintsSection",
+        "HighlightSection"
+    ]
 }
