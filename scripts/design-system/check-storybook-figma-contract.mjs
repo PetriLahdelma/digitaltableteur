@@ -9,9 +9,13 @@ import { fileURLToPath } from "node:url";
 import {
   FIGMA_FILE_KEY,
   FIGMA_LIBRARY_EXISTS,
+  FIGMA_NODE_IDS,
   isDtPlaceholderNodeId,
   isRealFigmaNodeId,
 } from "./figma-config.mjs";
+
+/** Stable components without a single Figma component node (Phosphor library on canvas). */
+const STABLE_FIGMA_PLACEHOLDER_OK = new Set(["Icon"]);
 import { iterBetaStableContracts } from "./figma-contract-utils.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -49,6 +53,20 @@ for (const { name, contract } of iterBetaStableContracts(roots)) {
       );
       failed += 1;
     }
+    continue;
+  }
+  const isStable = contract.status === "stable";
+  const mappedNode = FIGMA_NODE_IDS[name];
+  if (
+    isStable &&
+    FIGMA_LIBRARY_EXISTS &&
+    mappedNode &&
+    !STABLE_FIGMA_PLACEHOLDER_OK.has(name)
+  ) {
+    console.error(
+      `FAIL ${name}: stable requires verified Figma node-id (${mappedNode}); got placeholder ${nodeId}`,
+    );
+    failed += 1;
     continue;
   }
   if (!isDtPlaceholderNodeId(nodeId)) {

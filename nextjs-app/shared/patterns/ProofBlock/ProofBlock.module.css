@@ -1,56 +1,89 @@
 .metricsBand {
   display: block;
+  padding-block: clamp(2.5rem, 5vw, 4rem);
 }
 
 .metricsHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: var(--space-4);
+  display: grid;
+  margin-block-end: var(--space-layout-24, 1.5rem);
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: var(--space-layout-32, 2rem);
 }
 
 .metricsTitle {
-  display: block;
+  margin: 0;
+  font-family: var(--primary-bold-font, var(--font-body));
+  font-size: var(--font-size-text-l);
+  font-weight: 600;
+  line-height: var(--line-height-snug);
+  color: var(--color-primary);
 }
 
 .metricsSubtitle {
-  color: var(--color-text-secondary);
+  margin: 0;
+  color: var(--color-primary);
 }
 
 .metricsCaption {
-  max-inline-size: 32rem;
-  color: var(--color-text-secondary);
+  margin: 0;
+  max-inline-size: 36rem;
+  color: var(--color-primary);
 }
 
 .metricsGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-layout-24, 1.5rem);
 }
 
 .metricsGridTight {
-  gap: var(--space-3);
+  gap: var(--space-layout-16, 1rem);
 }
 
 .metricCard {
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
+  display: grid;
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  gap: var(--space-layout-8, 0.5rem);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: 0 12px 36px rgb(0 0 0 / 5%);
 }
 
 .metricCardDark {
-  background: var(--color-surface-elevated);
-  color: var(--color-text-on-surface);
+  border-color: rgb(255 255 255 / 8%);
+  background: var(--color-dark);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 12%);
+  color: var(--color-white);
 }
 
 .metricValue {
+  margin: 0;
+  font-family: var(--primary-bold-font, var(--font-body));
+  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
   font-weight: 700;
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.01em;
+  color: var(--color-title);
 }
 
 .metricLabel {
-  font-weight: 600;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .metricDetail {
-  color: var(--color-text-secondary);
+  margin: 0;
+  color: inherit;
+  opacity: 0.85;
+}
+
+@media (width <= 48rem) {
+  .metricsHeader {
+    grid-template-columns: 1fr;
+    gap: var(--space-layout-16, 1rem);
+  }
 }

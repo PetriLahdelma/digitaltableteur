@@ -1,7 +1,7 @@
 /* Tailwind CSS 4.x entry point */
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 /*
  * Custom theme variants for Digitaltableteur's 4-theme system

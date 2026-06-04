@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Button from "@dt/Button";
 import styles from "./ContactFormSuccessEditorial.module.css";
 
 export interface ContactFormSuccessEditorialProps {
@@ -67,10 +68,7 @@ export function ContactFormSuccessEditorial({
 
       {/* Send another - subtle text link */}
       {onSendAnother && (
-        <motion.button
-          type="button"
-          onClick={onSendAnother}
-          className={styles.sendAnother}
+        <motion.div
           initial={prefersReducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={
@@ -79,8 +77,14 @@ export function ContactFormSuccessEditorial({
               : { duration: 0.4, delay: 0.6 }
           }
         >
-          {sendAnotherLabel}
-        </motion.button>
+          <Button
+            variant="tertiary"
+            className={styles.sendAnother}
+            onClick={onSendAnother}
+          >
+            {sendAnotherLabel}
+          </Button>
+        </motion.div>
       )}
     </motion.div>
   );

@@ -292,6 +292,16 @@ export function rankComponentsForIntent(query, components, limit = 8) {
       if (contract.status === "stable") score += 2;
       else if (contract.status === "beta") score += 1;
 
+      // Prefer specialized primitives over general Button for explicit icon-only intent.
+      if (
+        name === "IconButton" &&
+        terms.includes("icon") &&
+        terms.includes("button") &&
+        (terms.includes("only") || query.toLowerCase().includes("icon only"))
+      ) {
+        score += 10;
+      }
+
       return { name, score, entry };
     })
     .filter((row) => row.score > 0)

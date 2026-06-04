@@ -2,7 +2,7 @@
 
 import { CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import Button from "@dt/Button";
 import { FadeIn } from "../animations/FadeIn";
 
 export interface ContactFormSuccessProps {
@@ -80,7 +80,7 @@ export function ContactFormSuccess({
 
         {/* Send another button */}
         {onSendAnother && (
-          <Button variant="outline" onClick={onSendAnother}>
+          <Button variant="secondary" onClick={onSendAnother}>
             {sendAnotherLabel}
           </Button>
         )}

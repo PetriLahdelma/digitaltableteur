@@ -24,6 +24,12 @@
 - **`AGENTIC_DS_OPERATING_MODEL.md`**
   - Agent + human workflow for `@dt/*`, MCP, evals, enforcement guardrails
 
+- **`DS_AUTOMATION_STRATEGY.md`**
+  - Solo-studio automation intent: observable governance, CI commands, 90-day priorities, optional service packaging
+
+- **`SHADCN_TO_DT_MIGRATION.md`**
+  - Decision boards, migration visual matrix, approve-before-swap workflow
+
 - **`DESIGN_SYSTEM_MCP.md`**
   - Design system MCP tools, resources, local stdio setup
 

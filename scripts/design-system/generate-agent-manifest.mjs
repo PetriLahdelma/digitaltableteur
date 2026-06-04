@@ -164,6 +164,10 @@ if (existsSync(CATALOG_PATH)) {
 // surfaces (manifest + CLI) tell the same story.
 let catalogCoverage = null;
 try {
+  execSync(
+    `node ${join(ROOT, "scripts/design-system/audit-catalog-coverage.mjs")} --emit`,
+    { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] },
+  );
   const auditJson = execSync(
     `node ${join(ROOT, "scripts/design-system/audit-catalog-coverage.mjs")} --json`,
     { encoding: "utf8" },
@@ -203,19 +207,14 @@ const dsharpParity = {
   },
   parityScoringScope: "phase-1 story presence only (per parity-audit.mjs line 1)",
   gapsToClose: [
-    "zod-validated agent manifest schema (none today)",
-    "agent eval suite with golden snapshots (none today)",
-    "bundle-size budgets via size-limit per public entrypoint (none today)",
-    "a11y-tree snapshots committed under __a11y-snapshots__/",
-    "real-browser forced-colors PNG diffs (npm run test:stories:hc)",
-    "light/dark visual baselines (npm run test:visual)",
-    "production consumers auto-detected from app/** into contract.consumers[] (stable tier only)",
-    "usage evidence for all cataloged components in agent-manifest.usageCoverage (Phase 1 complete)",
-    "real Figma node IDs verified by figma-mcp (placeholders today)",
-    "documented @dt subpath/export policy and semver-bound public surface",
-    "green npm run test:ci (0 failing tests as of 2026-05-28)",
+    "bundle-size budgets via size-limit per public entrypoint",
+    "light/dark visual baselines on all stable atoms (npm run test:visual)",
+    "production consumers auto-synced into contract.consumers[] (stable tier; manual today)",
+    "Figma variable phases applied in file (npm run figma:apply-variables via MCP)",
+    "Code Connect on Figma Organization tier (skipped on Pro)",
+    "semver-bound public @dt export policy",
   ],
-  notReadyForStablePromotion: true,
+  notReadyForStablePromotion: false,
   testCiStatus: {
     asOf: "2026-05-28",
     filesWithFailures: 0,
@@ -248,7 +247,9 @@ writeFileSync(
               ) / 10
             : null,
         componentsWithProductionUsage: usageCoverage.withProductionUsage,
-        notReadyForStablePromotion: true,
+        notReadyForStablePromotion:
+          (statusCounts.stable ?? 0) < 6 ||
+          (catalogCoverage?.outOfCatalogByBucket?.["catalog-gap"] ?? 0) > 0,
       },
       tokens,
       catalogCoverage,

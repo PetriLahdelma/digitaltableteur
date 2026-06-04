@@ -6,15 +6,23 @@
 // Run directly for a human-readable report:
 //   node scripts/design-system/audit-catalog-coverage.mjs
 //
-// Run with `--json` to emit machine-readable output for the agent manifest:
-//   node scripts/design-system/audit-catalog-coverage.mjs --json
+// Run with `--json` for machine-readable output (agent manifest).
+// Run with `--emit` to write foundations/dist/non-agent-surfaces.json:
+//   node scripts/design-system/audit-catalog-coverage.mjs --emit
 //
 // The audit treats a folder as "component-shaped" if it owns a `<Name>.tsx`
 // file matching the folder name. Page-level subdirectories (`components/pages`),
 // the animation/icon/marketing sub-trees, and the interactive primitives folder
 // are skipped because they're collections, not single components.
 
-import { readdirSync, readFileSync, existsSync, statSync, writeFileSync } from "node:fs";
+import {
+  readdirSync,
+  readFileSync,
+  existsSync,
+  statSync,
+  writeFileSync,
+  mkdirSync,
+} from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -162,10 +170,54 @@ const summary = {
   },
 };
 
+const EMIT_PATH = join(
+  ROOT,
+  "nextjs-app/shared/foundations/dist/non-agent-surfaces.json",
+);
+
+function buildNonAgentSurfaces(report) {
+  const outOfCatalog = report.filter((c) => !c.hasContract);
+  return {
+    generatedAt: new Date().toISOString(),
+    description:
+      "Component-shaped folders outside the agent catalog. Agents should not invent replacements; use find-component for cataloged primitives or respect bucket policy.",
+    policyDoc: "docs/CATALOG-POLICY.md",
+    summary: {
+      totalOutOfCatalog: outOfCatalog.length,
+      byBucket: summary.outOfCatalogByBucket,
+      catalogCompletenessPercent: summary.catalogCompleteness,
+    },
+    surfaces: outOfCatalog.map((c) => ({
+      name: c.name,
+      path: c.dir,
+      root: c.root,
+      parent: c.parent,
+      bucket: c.classification,
+      agentGuidance:
+        c.classification === "exempt"
+          ? "Do not catalog; app-specific or infrastructure."
+          : c.classification === "page-pattern"
+            ? "Page assembly; compose from @dt/* catalog, do not promote to stable atom."
+            : c.classification === "enhanced-fork"
+              ? "Editorial fork; prefer base catalog component unless explicitly requested."
+              : "Catalog gap — file a contract before agent use.",
+    })),
+  };
+}
+
 const asJson = process.argv.includes("--json");
+const shouldEmit = process.argv.includes("--emit");
+
+if (shouldEmit) {
+  const payload = buildNonAgentSurfaces(report);
+  mkdirSync(dirname(EMIT_PATH), { recursive: true });
+  writeFileSync(EMIT_PATH, `${JSON.stringify(payload, null, 2)}\n`);
+  console.log(`✓ Wrote ${EMIT_PATH.replace(`${ROOT}/`, "")}`);
+}
+
 if (asJson) {
   process.stdout.write(JSON.stringify({ summary, components: report }, null, 2));
-} else {
+} else if (!shouldEmit) {
   console.log("Catalog coverage audit");
   console.log("=======================");
   console.log(`Codebase components:       ${summary.totalComponentsInCodebase}`);

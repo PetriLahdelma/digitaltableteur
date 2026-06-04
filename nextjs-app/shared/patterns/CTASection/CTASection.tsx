@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import Button, { type ButtonSurface } from "@dt/Button";
 import { Container } from "../../components/Container";
 import { Section } from "../../components/Section";
 import { FadeIn } from "../../components/animations/FadeIn";
@@ -64,45 +63,34 @@ export function CTASection({
 }: CTASectionProps) {
   const isDark = background !== "muted" && background !== "brand";
 
-  const renderButton = (action: ActionItem, variant: "default" | "outline") => {
-    const buttonVariant = isDark
-      ? variant === "default"
-        ? "secondary"
-        : "outline"
-      : variant === "default"
-        ? "default"
-        : "outline";
+  const buttonSurface: ButtonSurface =
+    background === "brand" ? "onBrand" : isDark ? "onDark" : "default";
 
-    const buttonClassName = cn(
-      // Primary button with theme-aware colors via CSS module
-      isDark && variant === "default" && styles.primaryButton,
-      // Outline variant - same across all dark themes
-      isDark && variant === "outline" && "border-white bg-transparent text-white hover:bg-white/10",
-      // Brand variant buttons - dark on yellow
-      background === "brand" && variant === "default" && styles.brandPrimaryButton,
-      background === "brand" && variant === "outline" && styles.brandOutlineButton,
-      action.className
-    );
+  const renderButton = (action: ActionItem, variant: "default" | "outline") => {
+    const dtVariant = variant === "default" ? "primary" : "secondary";
 
     if (action.href) {
       return (
         <Button
-          variant={buttonVariant}
+          href={action.href}
+          variant={dtVariant}
           size="lg"
-          asChild
-          className={buttonClassName}
+          surface={buttonSurface}
+          className={action.className}
+          data-donny-interest="cta-section"
         >
-          <Link href={action.href} data-donny-interest="cta-section">{action.label}</Link>
+          {action.label}
         </Button>
       );
     }
 
     return (
       <Button
-        variant={buttonVariant}
+        variant={dtVariant}
         size="lg"
+        surface={buttonSurface}
         onClick={action.onClick}
-        className={buttonClassName}
+        className={action.className}
       >
         {action.label}
       </Button>

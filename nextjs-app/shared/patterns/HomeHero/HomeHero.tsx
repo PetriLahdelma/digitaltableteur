@@ -10,7 +10,7 @@ import { FadeIn } from "../../components/animations/FadeIn";
 import { ScrollIndicator } from "../../components/ScrollIndicator";
 import { Container } from "../../components/Container";
 import { Stack } from "../../components/Stack";
-import { Button } from "@/components/ui/button";
+import Button from "@dt/Button";
 import { cn } from "@/lib/utils";
 
 function pickRandomIndex(length: number): number {
@@ -153,23 +153,22 @@ export function HomeHero({
           <FadeIn delay={1.2} direction="up" distance={30}>
             <Stack direction="horizontal" gap="md" align="center" wrap>
               <Button
+                href="/contact"
+                variant="primary"
                 size="lg"
-                asChild
                 className="min-w-[160px]"
+                data-donny-interest="contact-cta"
               >
-                <a href="/contact" data-donny-interest="contact-cta">
-                  {t("homeHeroContactCta", "Get in touch")}
-                </a>
+                {t("homeHeroContactCta", "Get in touch")}
               </Button>
               <Button
-                variant="outline"
+                href="/about"
+                variant="secondary"
                 size="lg"
-                asChild
                 className="min-w-[160px]"
+                data-donny-interest="about-cta"
               >
-                <a href="/about" data-donny-interest="about-cta">
-                  {t("homeHeroAboutCta", "About us")}
-                </a>
+                {t("homeHeroAboutCta", "About us")}
               </Button>
             </Stack>
           </FadeIn>

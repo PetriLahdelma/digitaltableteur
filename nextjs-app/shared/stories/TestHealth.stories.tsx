@@ -688,7 +688,7 @@ const TestHealthOverview = () => {
 const meta: Meta<typeof TestHealthOverview> = {
   title: "Overview/Test Health Overview",
   component: TestHealthOverview,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
     options: {

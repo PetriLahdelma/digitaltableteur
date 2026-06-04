@@ -192,4 +192,34 @@ if (!readFileSync(dsExecutorsPath, "utf8").includes("suggest_pattern_for_layout"
   console.log("✓ suggest_pattern_for_layout MCP tool present");
 }
 
+const stableEntries =
+  manifest.components?.filter((c) => c.contract?.status === "stable") ?? [];
+const MIN_STABLE = 6;
+if (stableEntries.length < MIN_STABLE) {
+  console.error(
+    `FAIL: expected >=${MIN_STABLE} stable components, got ${stableEntries.length}`,
+  );
+  failed += 1;
+} else {
+  console.log(`✓ stable promotion fleet: ${stableEntries.length} components`);
+}
+
+const realFigmaStable = stableEntries.filter((c) => {
+  const figma = c.contract?.figma;
+  if (typeof figma !== "string") return false;
+  const m = figma.match(/[?&]node-id=([^&]+)/);
+  return m && /^\d+[:-]\d+$/.test(m[1]);
+}).length;
+const MIN_STABLE_FIGMA = 5;
+if (realFigmaStable < MIN_STABLE_FIGMA) {
+  console.error(
+    `FAIL: expected >=${MIN_STABLE_FIGMA} stable with verified Figma node-ids, got ${realFigmaStable}`,
+  );
+  failed += 1;
+} else {
+  console.log(
+    `✓ stable Figma deep links: ${realFigmaStable}/${stableEntries.length} (Icon uses dt-icon placeholder)`,
+  );
+}
+
 process.exit(failed ? 1 : 0);

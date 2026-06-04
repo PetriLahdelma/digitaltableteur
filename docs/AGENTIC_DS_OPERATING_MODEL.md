@@ -28,7 +28,8 @@ How humans and agents build UI on Digitaltableteur without drift, visual regress
 ```
 
 **MCP:** production `https://www.digitaltableteur.com/mcp` · local `npm run ds:mcp`  
-**Policy:** [PUBLIC_API.md](./PUBLIC_API.md) · **Tools:** [DESIGN_SYSTEM_MCP.md](./DESIGN_SYSTEM_MCP.md)
+**Policy:** [PUBLIC_API.md](./PUBLIC_API.md) · **Tools:** [DESIGN_SYSTEM_MCP.md](./DESIGN_SYSTEM_MCP.md)  
+**Catalog boundaries:** [CATALOG-POLICY.md](./CATALOG-POLICY.md) · **Proof:** [AGENTIC_DS_CASE_STUDY.md](./AGENTIC_DS_CASE_STUDY.md)
 
 ---
 

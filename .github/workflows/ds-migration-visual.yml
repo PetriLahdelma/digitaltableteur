@@ -1,0 +1,57 @@
+# Optional: full theme × viewport migration matrix (needs Storybook + Next dev).
+# Default PR path uses fast npm run ds:health only.
+name: DS migration visual matrix
+on:
+  workflow_dispatch:
+    inputs:
+      update_baselines:
+        description: "Refresh PNG baselines (--update)"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+jobs:
+  migration-visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20.19.0
+      - run: npm ci
+      - run: npx playwright install chromium --with-deps
+      - name: Start Storybook and Next dev
+        run: |
+          npm run storybook -- --ci --no-open --host 127.0.0.1 -p 6010 &
+          npm run dev &
+          npm run storybook:wait
+          for i in $(seq 1 60); do
+            if curl -sf http://127.0.0.1:3001/ >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          echo "Next dev did not become ready on :3001"
+          exit 1
+      - name: Run migration visual matrix
+        env:
+          STORYBOOK_URL: http://127.0.0.1:6010
+          APP_URL: http://127.0.0.1:3001
+        run: |
+          if [ "${{ inputs.update_baselines }}" = "true" ]; then
+            npm run test:migration:visual:update
+          else
+            npm run test:migration:visual
+          fi
+      - name: Upload matrix report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: migration-visual-report
+          path: |
+            public/visual-diff/migration-matrix-report.json
+            public/ds-health/
+            __visual__/snapshots/migration-matrix/
+          if-no-files-found: ignore
