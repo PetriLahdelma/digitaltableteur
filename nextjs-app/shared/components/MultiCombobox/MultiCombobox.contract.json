@@ -1,44 +1,54 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "MultiCombobox",
-  "tier": "molecule",
-  "group": "form",
-  "status": "beta",
-  "description": "Multi-select combobox with inline chips, type-to-filter dropdown, label, error, and helper text.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-multi-combobox",
-  "radixPrimitive": null,
-  "element": "input",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
-  "a11y": {
-    "keyboard": ["Tab", "Enter", "Escape", "ArrowDown", "ArrowUp", "Backspace"],
-    "ariaRequirements": [
-      "input role=combobox with aria-autocomplete=list, aria-expanded, aria-controls, aria-activedescendant",
-      "labelled via aria-labelledby",
-      "listbox role=listbox + aria-multiselectable + aria-label",
-      "options role=option with aria-selected",
-      "selected values are removable Badge chips; Backspace removes the last",
-      "error sets aria-invalid + aria-describedby"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "MultiCombobox",
+    "tier": "molecule",
+    "group": "form",
+    "status": "beta",
+    "description": "Multi-select combobox with inline chips, type-to-filter dropdown, label, error, and helper text.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-multi-combobox",
+    "radixPrimitive": null,
+    "element": "input",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "Verified 2026-06-02: type-to-filter combobox — input role=combobox with aria-autocomplete=list/aria-expanded/aria-controls/aria-activedescendant, aria-labelledby; portaled role=listbox aria-multiselectable with role=option/aria-selected; chips are removable Badges, Backspace removes the last. Keyboard (ArrowUp/Down, Enter toggle, Escape, Backspace) driven and asserted by the KeyboardMultiSelect play function. Shares ComboboxField CSS (inherits the placeholder contrast fix). Default/Playground/Example/KeyboardMultiSelect pass axe with test:error; light + dark verified in Storybook.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": ["className", "id", "options"],
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/ContactFormEditorial/ContactFormEditorial.tsx",
-      "since": "2026-05-28"
-    }
-  ]
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter",
+            "Escape",
+            "ArrowDown",
+            "ArrowUp",
+            "Backspace"
+        ],
+        "ariaRequirements": [
+            "input role=combobox with aria-autocomplete=list, aria-expanded, aria-controls, aria-activedescendant",
+            "labelled via aria-labelledby",
+            "listbox role=listbox + aria-multiselectable + aria-label",
+            "options role=option with aria-selected",
+            "selected values are removable Badge chips; Backspace removes the last",
+            "error sets aria-invalid + aria-describedby"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "Verified 2026-06-02: type-to-filter combobox — input role=combobox with aria-autocomplete=list/aria-expanded/aria-controls/aria-activedescendant, aria-labelledby; portaled role=listbox aria-multiselectable with role=option/aria-selected; chips are removable Badges, Backspace removes the last. Keyboard (ArrowUp/Down, Enter toggle, Escape, Backspace) driven and asserted by the KeyboardMultiSelect play function. Shares ComboboxField CSS (inherits the placeholder contrast fix). Default/Playground/Example/KeyboardMultiSelect pass axe with test:error; light + dark verified in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "className",
+        "id",
+        "options"
+    ],
+    "consumers": []
 }

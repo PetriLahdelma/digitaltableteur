@@ -27,12 +27,14 @@ const CardStoryMeta = {
       options: ["S", "M", "L", "full"],
       description:
         "Card size with max-width constraints: S(320px), M(480px), L(600px), full(100%)",
+      table: { defaultValue: { summary: "M" } },
     },
 
     variant: {
       control: { type: "select" },
       options: ["outlined", "filled", "elevated"],
       description: "Card visual variant",
+      table: { defaultValue: { summary: "elevated" } },
     },
 
     badge: {

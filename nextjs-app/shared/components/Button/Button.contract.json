@@ -1,136 +1,184 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Button",
-  "tier": "molecule",
-  "group": "interaction",
-  "status": "stable",
-  "description": "Primary interaction control with variant, severity, loading, and link modes.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=406-1569",
-  "radixPrimitive": null,
-  "element": "button",
-  "variants": {
-    "variant": {
-      "values": [
-        "primary",
-        "secondary",
-        "tertiary",
-        "secondaryError",
-        "tertiaryError",
-        "error",
-        "warning",
-        "success",
-        "info"
-      ],
-      "default": "primary",
-      "propSourced": true
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Button",
+    "tier": "molecule",
+    "group": "interaction",
+    "status": "stable",
+    "description": "Primary interaction control with variant, severity, loading, and link modes.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=406-1569",
+    "radixPrimitive": null,
+    "element": "button",
+    "variants": {
+        "variant": {
+            "values": [
+                "primary",
+                "secondary",
+                "tertiary",
+                "secondaryError",
+                "tertiaryError",
+                "error",
+                "warning",
+                "success",
+                "info"
+            ],
+            "default": "primary",
+            "propSourced": true
+        },
+        "surface": {
+            "values": [
+                "default",
+                "onDark",
+                "onBrand"
+            ],
+            "default": "default",
+            "propSourced": true
+        },
+        "severity": {
+            "values": ["error", "warning", "success", "info"],
+            "default": "error",
+            "propSourced": true
+        },
+        "size": {
+            "values": ["sm", "md", "lg", "s", "m", "l"],
+            "default": "md",
+            "propSourced": true
+        }
     },
-    "surface": {
-      "values": ["default", "onDark", "onBrand"],
-      "default": "default",
-      "propSourced": true
-    }
-  },
-  "slots": [
-    "icon",
-    "endIcon"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Enter",
-      "Space"
+    "slots": [
+        "icon",
+        "endIcon"
     ],
-    "ariaRequirements": [
-      "accessible name",
-      "aria-busy when loading",
-      "disabled state"
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — keyboard, loading, forced-colors verified in Storybook.",
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": true,
-    "realBrowserForcedColorsVerified": true,
-    "axeTestExempt": "Interaction atom; axe on Default/Primary and compliance stories."
-  },
-  "tokens": {
-    "colors": [
-      "--color-warning-text",
-      "--color-white"
+    "a11y": {
+        "keyboard": [
+            "Enter",
+            "Space"
+        ],
+        "ariaRequirements": [
+            "accessible name",
+            "aria-busy when loading",
+            "disabled state"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — keyboard, loading, forced-colors verified in Storybook.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "axeTestExempt": "Interaction atom; axe on Default/Primary and compliance stories."
+    },
+    "tokens": {
+        "colors": [
+            "--color-warning-text",
+            "--color-white"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "ariaDescribedBy",
+        "ariaLabel",
+        "ariaLabelledBy",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "disabled",
+        "download",
+        "form",
+        "href",
+        "icon",
+        "iconEnd",
+        "id",
+        "inverse",
+        "isDisabled",
+        "isInverse",
+        "isLoading",
+        "isRounded",
+        "loading",
+        "name",
+        "onClick",
+        "ref",
+        "rel",
+        "role",
+        "rounded",
+        "severity",
+        "size",
+        "style",
+        "submit",
+        "target",
+        "tooltip",
+        "type",
+        "value",
+        "variant"
     ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "ariaDescribedBy",
-    "ariaLabel",
-    "ariaLabelledBy",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "disabled",
-    "download",
-    "form",
-    "href",
-    "icon",
-    "iconEnd",
-    "id",
-    "inverse",
-    "isDisabled",
-    "isInverse",
-    "isLoading",
-    "isRounded",
-    "loading",
-    "name",
-    "onClick",
-    "ref",
-    "rel",
-    "role",
-    "rounded",
-    "severity",
-    "size",
-    "style",
-    "submit",
-    "target",
-    "tooltip",
-    "type",
-    "value",
-    "variant"
-  ],
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/not-found.tsx",
-      "since": "2026-06-03",
-      "note": "App Router error surface"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "app/error.tsx",
-      "since": "2026-06-03"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/CookieConsent/CookieConsentBanner.tsx",
-      "since": "2026-06-03"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/ContactForm/ContactForm.tsx",
-      "since": "2026-06-03"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/ChatWidget/ChatToggle.tsx",
-      "since": "2026-06-03"
-    }
-  ]
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/blog/NextBlogNav.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/error.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/work/NextWorkNav.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AccessibilityPage/AccessibilityPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/AiUsagePage/AiUsagePage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullEnPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullFiPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/CookiePolicy/CookiePolicyFullSvPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PrivacyPolicyPage/PrivacyPolicyPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactInquiryPanel/ContactInquiryPanel.tsx",
+            "since": "2026-06-04"
+        }
+    ]
 }

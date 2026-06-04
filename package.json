@@ -132,6 +132,7 @@
     "check:storybook-figma": "node scripts/design-system/check-storybook-figma-contract.mjs",
     "sync:figma-contracts": "node scripts/design-system/sync-figma-contract-urls.mjs",
     "audit:consumers": "node scripts/design-system/audit-consumers.mjs",
+    "check:consumers": "node scripts/design-system/check-consumers.mjs",
     "audit:usage": "node scripts/design-system/audit-usage.mjs",
     "find-component": "node scripts/design-system/find-component.mjs",
     "lint:dt-usage": "node scripts/design-system/lint-dt-usage.mjs --strict",
