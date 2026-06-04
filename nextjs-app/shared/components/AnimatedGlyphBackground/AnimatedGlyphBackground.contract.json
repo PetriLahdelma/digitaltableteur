@@ -1,46 +1,57 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "AnimatedGlyphBackground",
-  "tier": "molecule",
-  "group": "structure",
-  "status": "beta",
-  "description": "AnimatedGlyphBackground — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-animated-glyph-background",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "animate",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "style",
-    "tone"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "AnimatedGlyphBackground",
+    "tier": "molecule",
+    "group": "structure",
+    "status": "beta",
+    "description": "AnimatedGlyphBackground — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-animated-glyph-background",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "tone": {
+            "values": [
+                "muted",
+                "primary",
+                "accent",
+                "contrast"
+            ],
+            "default": "muted",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "animate",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "style",
+        "tone"
+    ],
+    "consumers": []
 }

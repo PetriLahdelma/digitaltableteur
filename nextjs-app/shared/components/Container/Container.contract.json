@@ -1,46 +1,58 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Container",
-  "tier": "atom",
-  "group": "layout",
-  "status": "beta",
-  "description": "Max-width content wrapper with responsive horizontal padding.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-container",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "center",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "size",
-    "style"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Container",
+    "tier": "atom",
+    "group": "layout",
+    "status": "beta",
+    "description": "Max-width content wrapper with responsive horizontal padding.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-container",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ],
+            "default": "sm",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "center",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "size",
+        "style"
+    ],
+    "consumers": []
 }

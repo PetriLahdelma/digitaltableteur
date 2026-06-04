@@ -133,12 +133,14 @@ const meta: Meta<typeof List> = {
       control: { type: "select" },
       options: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
       description: "Text size variant",
+      table: { defaultValue: { summary: "S" } },
     },
 
     terminals: {
       control: { type: "radio" },
       options: ["sans", "serif"],
       description: "Font family",
+      table: { defaultValue: { summary: "serif" } },
     },
 
     lineHeight: {

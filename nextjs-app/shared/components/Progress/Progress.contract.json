@@ -1,41 +1,51 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Progress",
-  "tier": "atom",
-  "group": "feedback",
-  "status": "beta",
-  "description": "Determinate linear progress indicator.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=369-15",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "argTypesProxyExempt": [
-    "className"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [
-      "--color-border",
-      "--color-primary"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Progress",
+    "tier": "atom",
+    "group": "feedback",
+    "status": "beta",
+    "description": "Determinate linear progress indicator.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=369-15",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "sm",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "argTypesProxyExempt": [
+        "className"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [
+            "--color-border",
+            "--color-primary"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "consumers": []
 }

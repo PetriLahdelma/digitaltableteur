@@ -132,7 +132,11 @@ export default {
       control: { type: "select" },
       options: ["success", "error", "warning", "info"],
       description: "Semantic severity level (v1.1.0+)",
-      table: { category: "State", type: { summary: "ModalSeverity" } },
+      table: {
+        category: "State",
+        type: { summary: "ModalSeverity" },
+        defaultValue: { summary: "info" },
+      },
     },
 
     isLoading: {

@@ -55,7 +55,14 @@ export function DemoComponent({ title, description }: DemoProps) { const [count,
 }`;
 
 const meta: Meta<typeof CodeSnippet> = {
-  argTypes: {},
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["inline", "single", "multi"],
+      description: "Code snippet layout variant",
+      table: { defaultValue: { summary: "inline" } },
+    },
+  },
   title: "Molecules/CodeSnippet",
   component: CodeSnippet,
   tags: ["beta", "!autodocs"],

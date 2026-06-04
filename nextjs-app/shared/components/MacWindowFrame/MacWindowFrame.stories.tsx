@@ -3,7 +3,14 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import MacWindowFrame from "@dt/MacWindowFrame";
 
 const meta: Meta<typeof MacWindowFrame> = {
-  argTypes: {},
+  argTypes: {
+    density: {
+      control: { type: "select" },
+      options: ["compact", "comfortable"],
+      description: "Chrome density inside the window frame",
+      table: { defaultValue: { summary: "compact" } },
+    },
+  },
   title: "Molecules/MacWindowFrame",
   component: MacWindowFrame,
   parameters: {

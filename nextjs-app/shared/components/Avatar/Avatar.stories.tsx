@@ -29,6 +29,7 @@ export default {
       control: { type: "inline-radio" },
       options: ["image", "initials"],
       description: "Select whether the avatar prefers an image or initials.",
+      table: { defaultValue: { summary: "image" } },
     },
 
     name: {

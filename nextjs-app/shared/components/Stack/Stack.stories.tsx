@@ -50,6 +50,7 @@ const meta = {
       control: "select",
       options: ["start", "center", "end", "stretch"],
       description: "Cross-axis alignment",
+      table: { defaultValue: { summary: "center" } },
     },
     justify: {
       control: "select",

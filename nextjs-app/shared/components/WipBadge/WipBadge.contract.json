@@ -1,51 +1,60 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "WipBadge",
-  "tier": "atom",
-  "group": "feedback",
-  "status": "beta",
-  "description": "Storybook-only maturity badge for non-stable components.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-wip-badge",
-  "radixPrimitive": null,
-  "element": "span",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "role=status"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "WipBadge",
+    "tier": "atom",
+    "group": "feedback",
+    "status": "beta",
+    "description": "Storybook-only maturity badge for non-stable components.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-wip-badge",
+    "radixPrimitive": null,
+    "element": "span",
+    "variants": {
+        "variant": {
+            "values": [
+                "canvas",
+                "docs"
+            ],
+            "default": "canvas",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-28 — Beta promotion: Storybook-only chrome (carries data-axe-ignore + axeTestExempt so it never gates host component contrast). role=status announcement is non-disruptive and stable lifecycle hides it entirely. Forced-colors + light/dark verified via dedicated stories.",
-    "forcedColorsVerified": true,
-    "axeTestExempt": "Storybook chrome only"
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-surface-elevated",
-      "--color-border-light"
-    ],
-    "spacing": [
-      "--space-internal-4",
-      "--space-internal-8",
-      "--space-internal-12"
-    ],
-    "radii": [
-      "--radius-sm"
-    ],
-    "typography": [
-      "--font-size-sm"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "role=status"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-28 — Beta promotion: Storybook-only chrome (carries data-axe-ignore + axeTestExempt so it never gates host component contrast). role=status announcement is non-disruptive and stable lifecycle hides it entirely. Forced-colors + light/dark verified via dedicated stories.",
+        "forcedColorsVerified": true,
+        "axeTestExempt": "Storybook chrome only"
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated",
+            "--color-border-light"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12"
+        ],
+        "radii": [
+            "--radius-sm"
+        ],
+        "typography": [
+            "--font-size-sm"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": []
 }

@@ -2,8 +2,15 @@
  * Shared @dt usage gate rules — keep in sync with eslint.config.mjs (dt/usage block).
  */
 
-/** App routes only — patterns keep their own typography/CSS; do not force @dt swaps here. */
-export const DT_USAGE_SCAN_ROOTS = ["app"];
+/**
+ * Product surfaces: app routes, layout patterns, and page modules.
+ * Still import-policy only (@/components/ui/*) — no forced raw-element swaps.
+ */
+export const DT_USAGE_SCAN_ROOTS = [
+  "app",
+  "nextjs-app/shared/patterns",
+  "nextjs-app/shared/components/pages",
+];
 
 export const DT_USAGE_SKIP_SEGMENTS = [
   "/__tests__/",

@@ -21,7 +21,20 @@ const busyIndicatorComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof BusyIndicator> = {
-  argTypes: {},
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["inline", "overlay"],
+      description: "Presentation context for the busy indicator",
+      table: { defaultValue: { summary: "inline" } },
+    },
+    size: {
+      control: { type: "select" },
+      options: ["s", "m", "l"],
+      description: "Spinner size",
+      table: { defaultValue: { summary: "s" } },
+    },
+  },
   title: "Atoms/BusyIndicator",
   component: BusyIndicator,
   tags: ["beta", "!autodocs"],

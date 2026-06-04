@@ -13,7 +13,10 @@
       "values": [
         "sm",
         "md",
-        "lg"
+        "lg",
+        "S",
+        "M",
+        "L"
       ],
       "default": "md",
       "forwarded": true,
