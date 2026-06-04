@@ -58,6 +58,7 @@ const meta = {
       control: "select",
       options: ["start", "center", "end"],
       description: "Vertical alignment of content",
+      table: { defaultValue: { summary: "center" } },
     },
     justify: {
       control: "select",

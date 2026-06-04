@@ -1,52 +1,71 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "CategoryFilter",
-  "tier": "molecule",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Filter pill row for list pages (blog archive, work index). Multiple visual treatments (pills, underline, minimal) for different surface densities.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-category-filter",
-  "radixPrimitive": null,
-  "element": "nav",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — moves between filter buttons.",
-      "Enter / Space — activates the focused filter."
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "CategoryFilter",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Filter pill row for list pages (blog archive, work index). Multiple visual treatments (pills, underline, minimal) for different surface densities.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-category-filter",
+    "radixPrimitive": null,
+    "element": "nav",
+    "variants": {
+        "variant": {
+            "values": [
+                "pills",
+                "underline",
+                "minimal"
+            ],
+            "default": "pills",
+            "propSourced": true
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "sm",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "Renders a `<nav>` landmark with an accessible name describing the filter dimension ('Filter by category').",
-      "The active filter sets `aria-pressed='true'` on a toggle button (not `aria-current`) because the filter is a UI control, not a navigation target."
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-accent",
-      "--color-border-default"
-    ],
-    "spacing": [
-      "--space-internal-4",
-      "--space-internal-8"
-    ],
-    "typography": [
-      "--font-size-sm",
-      "--font-size-md"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Tab — moves between filter buttons.",
+            "Enter / Space — activates the focused filter."
+        ],
+        "ariaRequirements": [
+            "Renders a `<nav>` landmark with an accessible name describing the filter dimension ('Filter by category').",
+            "The active filter sets `aria-pressed='true'` on a toggle button (not `aria-current`) because the filter is a UI control, not a navigation target."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-accent",
+            "--color-border-default"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8"
+        ],
+        "typography": [
+            "--font-size-sm",
+            "--font-size-md"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": []
 }

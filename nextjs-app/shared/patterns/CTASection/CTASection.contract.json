@@ -1,52 +1,61 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "CTASection",
-  "tier": "pattern",
-  "group": "marketing",
-  "status": "beta",
-  "description": "Call-to-action band used on marketing pages.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=502-20",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-primary"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "CTASection",
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "beta",
+    "description": "Call-to-action band used on marketing pages.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=502-20",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "align": {
+            "values": [
+                "center",
+                "left"
+            ],
+            "default": "center",
+            "propSourced": true
+        }
+    },
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "align",
-    "as",
-    "asChild",
-    "background",
-    "children",
-    "className",
-    "description",
-    "id",
-    "primaryAction",
-    "ref",
-    "secondaryAction",
-    "style",
-    "title"
-  ],
-  "consumers": [],
-  "slots": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-primary"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "align",
+        "as",
+        "asChild",
+        "background",
+        "children",
+        "className",
+        "description",
+        "id",
+        "primaryAction",
+        "ref",
+        "secondaryAction",
+        "style",
+        "title"
+    ],
+    "consumers": [],
+    "slots": []
 }

@@ -1,52 +1,63 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ImagePlaceholder",
-  "tier": "molecule",
-  "group": "structure",
-  "status": "beta",
-  "description": "ImagePlaceholder — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-image-placeholder",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "alt",
-    "as",
-    "asChild",
-    "caption",
-    "children",
-    "className",
-    "height",
-    "id",
-    "ref",
-    "showDimensions",
-    "showIcon",
-    "style",
-    "text",
-    "variant",
-    "width"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "ImagePlaceholder",
+    "tier": "molecule",
+    "group": "structure",
+    "status": "beta",
+    "description": "ImagePlaceholder — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-image-placeholder",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "variant": {
+            "values": [
+                "light",
+                "medium",
+                "dark",
+                "gradient"
+            ],
+            "default": "light",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "alt",
+        "as",
+        "asChild",
+        "caption",
+        "children",
+        "className",
+        "height",
+        "id",
+        "ref",
+        "showDimensions",
+        "showIcon",
+        "style",
+        "text",
+        "variant",
+        "width"
+    ],
+    "consumers": []
 }

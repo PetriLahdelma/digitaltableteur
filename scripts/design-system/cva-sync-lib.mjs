@@ -67,20 +67,35 @@ const PROP_SOURCED_AXES = {
  * @param {string} componentName
  * @param {object} agentBlock
  */
-export function getPropSourcedVariants(componentName, agentBlock) {
-  const allowed = PROP_SOURCED_AXES[componentName];
-  if (!allowed?.length) return {};
+function propSourcedAxis(agentBlock, axis) {
+  const def = agentBlock?.variants?.[axis];
+  const prop = agentBlock?.props?.[axis];
+  if (!def?.values?.length || !prop?.values?.length) return null;
+  const propSet = new Set(prop.values.map(normalizeVariantValue));
+  if (!def.values.every((v) => propSet.has(normalizeVariantValue(v)))) return null;
+  return {
+    values: def.values.map(normalizeVariantValue),
+    default: normalizeVariantValue(def.default ?? def.values[0]),
+    propSourced: true,
+  };
+}
 
-  const all = agentBlock?.variants ?? {};
+export function getPropSourcedVariants(componentName, agentBlock) {
   const out = {};
+  const allowed = PROP_SOURCED_AXES[componentName] ?? [];
+
   for (const axis of allowed) {
-    const def = all[axis];
-    const prop = agentBlock?.props?.[axis];
-    if (!def?.values?.length || !prop?.values?.length) continue;
-    const propSet = new Set(prop.values);
-    if (!def.values.every((v) => propSet.has(v))) continue;
-    out[axis] = { values: def.values, default: def.default, propSourced: true };
+    const entry = propSourcedAxis(agentBlock, axis);
+    if (entry) out[axis] = entry;
   }
+
+  // Auto-detect prop-driven axes present in agent blocks (no per-component allowlist required).
+  for (const axis of VARIANT_PROP_NAMES) {
+    if (out[axis]) continue;
+    const entry = propSourcedAxis(agentBlock, axis);
+    if (entry) out[axis] = entry;
+  }
+
   return out;
 }
 

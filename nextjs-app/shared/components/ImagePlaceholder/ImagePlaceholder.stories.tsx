@@ -64,6 +64,7 @@ const meta: Meta<typeof ImagePlaceholder> = {
       control: { type: "select" },
       options: ["light", "medium", "dark", "gradient"],
       description: "Background color variant",
+      table: { defaultValue: { summary: "light" } },
     },
 
     showDimensions: {

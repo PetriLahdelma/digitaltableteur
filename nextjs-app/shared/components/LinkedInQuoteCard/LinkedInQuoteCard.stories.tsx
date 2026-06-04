@@ -188,7 +188,14 @@ const ScreenshotWrapper: React.FC<ScreenshotWrapperProps> = ({
 };
 
 export default {
-  argTypes: {},
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["muted", "light", "dark"],
+      description: "Surface treatment for the quote card",
+      table: { defaultValue: { summary: "muted" } },
+    },
+  },
   title: "Molecules/LinkedInQuoteCard",
   component: LinkedInQuoteCard,
   parameters: {

@@ -1,52 +1,71 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "IconButton",
-  "tier": "atom",
-  "group": "actions",
-  "status": "beta",
-  "description": "Icon-only action button. Wraps the underlying shadcn `Button` with a circular shape, enforced `aria-label`, and the design-system size axis.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon-button",
-  "radixPrimitive": null,
-  "element": "button",
-  "variants": {},
-  "slots": [
-    "icon"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — focusable.",
-      "Enter / Space — activates."
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "IconButton",
+    "tier": "atom",
+    "group": "actions",
+    "status": "beta",
+    "description": "Icon-only action button. Wraps the underlying shadcn `Button` with a circular shape, enforced `aria-label`, and the design-system size axis.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-icon-button",
+    "radixPrimitive": null,
+    "element": "button",
+    "variants": {
+        "variant": {
+            "values": [
+                "default",
+                "ghost",
+                "outline"
+            ],
+            "default": "default",
+            "propSourced": true
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "sm",
+            "propSourced": true
+        }
+    },
+    "slots": [
+        "icon"
     ],
-    "ariaRequirements": [
-      "`label` prop is required and renders as `aria-label`; the icon glyph itself is `aria-hidden`.",
-      "Disabled state forwards `aria-disabled` and removes pointer events; focus remains routable so keyboard users can discover the disabled affordance."
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-surface-elevated"
-    ],
-    "spacing": [
-      "--space-internal-8",
-      "--space-internal-12"
-    ],
-    "radii": [
-      "--radius-full"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Tab — focusable.",
+            "Enter / Space — activates."
+        ],
+        "ariaRequirements": [
+            "`label` prop is required and renders as `aria-label`; the icon glyph itself is `aria-hidden`.",
+            "Disabled state forwards `aria-disabled` and removes pointer events; focus remains routable so keyboard users can discover the disabled affordance."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12"
+        ],
+        "radii": [
+            "--radius-full"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": []
 }

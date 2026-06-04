@@ -1,59 +1,80 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Hero",
-  "tier": "pattern",
-  "group": "marketing",
-  "status": "beta",
-  "description": "Hero — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-hero",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "actions",
-    "align",
-    "ariaLabel",
-    "as",
-    "asChild",
-    "background",
-    "children",
-    "className",
-    "description",
-    "id",
-    "imageAlt",
-    "imageHeight",
-    "imageSrc",
-    "imageWidth",
-    "maxWidth",
-    "ref",
-    "spacing",
-    "style",
-    "subtitle",
-    "title",
-    "titleLevel",
-    "variant"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Hero",
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "beta",
+    "description": "Hero — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-hero",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "variant": {
+            "values": [
+                "default",
+                "minimal",
+                "centered",
+                "split",
+                "stacked"
+            ],
+            "default": "default",
+            "propSourced": true
+        },
+        "align": {
+            "values": [
+                "center",
+                "left",
+                "right"
+            ],
+            "default": "center",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "actions",
+        "align",
+        "ariaLabel",
+        "as",
+        "asChild",
+        "background",
+        "children",
+        "className",
+        "description",
+        "id",
+        "imageAlt",
+        "imageHeight",
+        "imageSrc",
+        "imageWidth",
+        "maxWidth",
+        "ref",
+        "spacing",
+        "style",
+        "subtitle",
+        "title",
+        "titleLevel",
+        "variant"
+    ],
+    "consumers": []
 }

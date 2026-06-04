@@ -71,7 +71,14 @@ const skeletonComplianceRules: ComplianceRule[] = [
 ];
 
 const meta: Meta<typeof Skeleton> = {
-  argTypes: {},
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["text", "circle", "rect", "avatar", "card"],
+      description: "Skeleton shape preset",
+      table: { defaultValue: { summary: "text" } },
+    },
+  },
   title: "Atoms/Skeleton",
   component: Skeleton,
   tags: ["beta", "!autodocs"],

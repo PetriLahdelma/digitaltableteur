@@ -75,7 +75,7 @@ const meta = {
     align: {
       control: "text",
       description: "align-items",
-      table: { disable: true },
+      table: { disable: true, defaultValue: { summary: "inherit" } },
     },
     justify: {
       control: "text",

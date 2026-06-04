@@ -1,68 +1,79 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Modal",
-  "tier": "molecule",
-  "group": "overlay",
-  "status": "beta",
-  "description": "Modal dialog for confirmations, forms, and focused tasks.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=384-13",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [
-    "menu",
-    "footer",
-    "icon"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Escape",
-      "Tab"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Modal",
+    "tier": "molecule",
+    "group": "overlay",
+    "status": "beta",
+    "description": "Modal dialog for confirmations, forms, and focused tasks.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=384-13",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "severity": {
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error"
+            ],
+            "default": "info",
+            "propSourced": true
+        }
+    },
+    "slots": [
+        "menu",
+        "footer",
+        "icon"
     ],
-    "ariaRequirements": [
-      "role=dialog",
-      "focus trap while open",
-      "accessible title"
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — focus trap, Escape close, aria dialog reviewed in Storybook plays.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "closeButtonLabel",
-    "closeIconName",
-    "footer",
-    "icon",
-    "id",
-    "isLoading",
-    "isOpen",
-    "menu",
-    "onClose",
-    "ref",
-    "severity",
-    "showCloseIcon",
-    "style",
-    "title",
-    "titleSize",
-    "titleTerminals"
-  ],
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Escape",
+            "Tab"
+        ],
+        "ariaRequirements": [
+            "role=dialog",
+            "focus trap while open",
+            "accessible title"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — focus trap, Escape close, aria dialog reviewed in Storybook plays.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "closeButtonLabel",
+        "closeIconName",
+        "footer",
+        "icon",
+        "id",
+        "isLoading",
+        "isOpen",
+        "menu",
+        "onClose",
+        "ref",
+        "severity",
+        "showCloseIcon",
+        "style",
+        "title",
+        "titleSize",
+        "titleTerminals"
+    ],
+    "consumers": []
 }

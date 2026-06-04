@@ -1,51 +1,61 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ValueCard",
-  "tier": "molecule",
-  "group": "display",
-  "status": "beta",
-  "description": "Card variant for values / principles grids — icon + title + short description, with the same three visual treatments as `LocationCard`.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-value-card",
-  "radixPrimitive": null,
-  "element": "article",
-  "variants": {},
-  "slots": [
-    "icon"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "Renders an `<article>` so the whole card is announced as a region.",
-      "Decorative icons are `aria-hidden`; the title carries the announcement."
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "ValueCard",
+    "tier": "molecule",
+    "group": "display",
+    "status": "beta",
+    "description": "Card variant for values / principles grids — icon + title + short description, with the same three visual treatments as `LocationCard`.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-value-card",
+    "radixPrimitive": null,
+    "element": "article",
+    "variants": {
+        "variant": {
+            "values": [
+                "default",
+                "elevated",
+                "bordered"
+            ],
+            "default": "default",
+            "propSourced": true
+        }
+    },
+    "slots": [
+        "icon"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-text-muted",
-      "--color-surface-elevated"
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "spacing": [
-      "--space-internal-8",
-      "--space-internal-12",
-      "--space-internal-16"
-    ],
-    "radii": [
-      "--radius-md"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "Renders an `<article>` so the whole card is announced as a region.",
+            "Decorative icons are `aria-hidden`; the title carries the announcement."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-text-muted",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16"
+        ],
+        "radii": [
+            "--radius-md"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": []
 }

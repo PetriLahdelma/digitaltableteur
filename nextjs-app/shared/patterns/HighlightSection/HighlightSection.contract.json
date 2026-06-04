@@ -1,51 +1,71 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "HighlightSection",
-  "tier": "pattern",
-  "group": "marketing",
-  "status": "beta",
-  "description": "Highlight band with variant backgrounds and CTA slots.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-highlight-section",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "ariaLabel",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "cta",
-    "description",
-    "id",
-    "overline",
-    "ref",
-    "size",
-    "style",
-    "title",
-    "variant"
-  ],
-  "consumers": [],
-  "slots": []
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "HighlightSection",
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "beta",
+    "description": "Highlight band with variant backgrounds and CTA slots.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-highlight-section",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "variant": {
+            "values": [
+                "pattern",
+                "solid",
+                "gradient",
+                "dots"
+            ],
+            "default": "pattern",
+            "propSourced": true
+        },
+        "size": {
+            "values": [
+                "compact",
+                "comfortable",
+                "spacious"
+            ],
+            "default": "compact",
+            "propSourced": true
+        }
+    },
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "ariaLabel",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "cta",
+        "description",
+        "id",
+        "overline",
+        "ref",
+        "size",
+        "style",
+        "title",
+        "variant"
+    ],
+    "consumers": [],
+    "slots": []
 }

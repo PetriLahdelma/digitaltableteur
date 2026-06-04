@@ -1,41 +1,50 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Divider",
-  "tier": "atom",
-  "group": "structure",
-  "status": "beta",
-  "description": "Visual separator between sections (horizontal or vertical).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=368-6",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "argTypesProxyExempt": [
-    "className"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [
-      "--color-border",
-      "--color-primary"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Divider",
+    "tier": "atom",
+    "group": "structure",
+    "status": "beta",
+    "description": "Visual separator between sections (horizontal or vertical).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=368-6",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "orientation": {
+            "values": [
+                "horizontal",
+                "vertical"
+            ],
+            "default": "horizontal",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "argTypesProxyExempt": [
+        "className"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [
+            "--color-border",
+            "--color-primary"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "consumers": []
 }

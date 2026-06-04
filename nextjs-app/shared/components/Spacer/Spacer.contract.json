@@ -1,44 +1,57 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Spacer",
-  "tier": "atom",
-  "group": "structure",
-  "status": "beta",
-  "description": "Empty layout element that injects a fixed gap on a single axis. Used inside flex/grid containers where adding a token-sized gap as a sibling reads cleaner than the gap utility.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-spacer",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "Renders as a non-interactive `<div>`; assistive tech ignores it."
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Spacer",
+    "tier": "atom",
+    "group": "structure",
+    "status": "beta",
+    "description": "Empty layout element that injects a fixed gap on a single axis. Used inside flex/grid containers where adding a token-sized gap as a sibling reads cleaner than the gap utility.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-spacer",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "xs",
+                "2xl"
+            ],
+            "default": "sm",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": [
-      "--space-layout-4",
-      "--space-layout-8",
-      "--space-layout-12",
-      "--space-layout-16",
-      "--space-layout-24",
-      "--space-layout-32"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "Renders as a non-interactive `<div>`; assistive tech ignores it."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": [
+            "--space-layout-4",
+            "--space-layout-8",
+            "--space-layout-12",
+            "--space-layout-16",
+            "--space-layout-24",
+            "--space-layout-32"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": []
 }
