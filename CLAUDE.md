@@ -101,7 +101,15 @@ When changing agent workflows: update the relevant area `AGENTS.md`, skill in `.
 <!-- LLM-WIKI:START -->
 ## Cross-project LLM-wiki
 
-Read before non-trivial work: `/Users/petrilahdelma/SAPDevelop/llm-wiki/wiki/tools/qmd-query.sh "digitaltableteur <topic>"`
+This repo participates in the shared LLM-wiki at `/Users/petrilahdelma/SAPDevelop/llm-wiki`.
 
-Capture durable discoveries: `llm-wiki-capture.mjs --project digitaltableteur --kind decision --title "..." --summary "..."`
+Read before non-trivial work:
+- Start with a compact project memory packet: `/Users/petrilahdelma/SAPDevelop/llm-wiki/wiki/tools/llm-wiki-context.mjs --project "digitaltableteur" --query "<task or topic>"`.
+- For broader retrieval, search adjacent concepts with `/Users/petrilahdelma/SAPDevelop/llm-wiki/wiki/tools/qmd-query.sh "digitaltableteur <task or topic>"`.
+- Open relevant pages under `/Users/petrilahdelma/SAPDevelop/llm-wiki/wiki` before deciding.
+
+Write after durable discoveries:
+- Capture decisions, reusable gotchas, cross-project patterns, source summaries, and project-state changes with `/Users/petrilahdelma/SAPDevelop/llm-wiki/wiki/tools/llm-wiki-capture.mjs --project "digitaltableteur" --kind decision --title "<title>" --summary "<what changed and why>"`.
+- Do not capture secrets, raw logs, transient TODOs, or live coordination state.
+- Do not edit compiled wiki pages from this repo. Capture first; the LLM-wiki ingest pass will file it into entities, concepts, patterns, or synthesis.
 <!-- LLM-WIKI:END -->
