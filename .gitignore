@@ -92,3 +92,6 @@ public/visual-diff/report.json
 # Stray top-level build/debug logs
 /build.log
 /vite-debug.log
+
+# Personal / tax documents — never commit
+**/Verokortti*.pdf

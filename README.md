@@ -42,8 +42,7 @@ Digitaltableteur is a hybrid monorepo portfolio website featuring both Next.js 1
 
 - **Storybook 10**: Component development with WIP badge system, visual regression testing
 - **Testing**: Vitest + Testing Library (>80% coverage target), accessibility tests, E2E with Playwright
-- **MCP Integrations**: GitHub, Figma, Context7, TypeScript LSP, Sentry, Akaunting for AI-assisted development
-- **Akaunting Integration**: Self-hosted accounting with Docker, REST API, automated bookkeeping via MCP (see `akaunting/AGENTS.md`)
+- **MCP Integrations**: GitHub, Figma, Context7, TypeScript LSP, Sentry for AI-assisted development
 - **Linear Automation**: Programmatic issue creation/update, label management, state workflows
 - **Sentry Observability**: Error tracking, performance monitoring, release health, MCP query interface
 
@@ -154,13 +153,6 @@ npm run typecheck && npm run lint && npm test && npm run build
 ### MCP & Automation
 
 ```bash
-# Akaunting Accounting Integration (Self-hosted)
-npm run akaunting:install      # First-time setup (Docker)
-npm run akaunting:start        # Start containers
-npm run akaunting:stop         # Stop containers
-npm run akaunting:mcp:test     # Test API connectivity
-# See akaunting/AGENTS.md for complete documentation
-
 # GitHub MCP Server
 npm run github:mcp:test        # Test connectivity and authentication
 

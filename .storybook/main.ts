@@ -62,7 +62,6 @@ const STORYBOOK_WATCH_IGNORED = [
   "**/content/**",
   "**/digitaltableteur-blog/**",
   "**/api-legacy-vercel-functions/**",
-  "**/akaunting/**",
   "**/docs/**",
   "**/tests/**",
   "**/__visual__/**",

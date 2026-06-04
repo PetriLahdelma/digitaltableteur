@@ -205,7 +205,7 @@ jobs:
 
       - name: Check for committed secrets
         run: |
-          if [ -f ".env" ] || [ -f ".env.local" ] || [ -f "akaunting/.env" ]; then
+          if [ -f ".env" ] || [ -f ".env.local" ]; then
             echo "❌ Environment files found in repository!"
             exit 1
           fi

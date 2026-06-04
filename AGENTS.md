@@ -23,7 +23,6 @@
 | Docs | [`docs/AGENTS.md`](docs/AGENTS.md) |
 | Legacy serverless | [`api-legacy-vercel-functions/AGENTS.md`](api-legacy-vercel-functions/AGENTS.md) |
 | Sanity / blog | [`digitaltableteur-blog/AGENTS.md`](digitaltableteur-blog/AGENTS.md) |
-| Akaunting | [`akaunting/AGENTS.md`](akaunting/AGENTS.md) |
 
 **Skills:** [`.claude/skills/`](.claude/skills/) — load `dt-*` skills for workflows (see AGENT_INDEX).
 
