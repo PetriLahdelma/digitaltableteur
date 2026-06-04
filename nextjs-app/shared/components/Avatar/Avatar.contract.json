@@ -1,88 +1,62 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Avatar",
-  "tier": "atom",
-  "group": "display",
-  "status": "stable",
-  "description": "Profile image, initials, link, or menu trigger.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=369-8",
-  "radixPrimitive": null,
-  "element": "button",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "menu trigger needs accessible name",
-      "image alt from name"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Avatar",
+    "tier": "atom",
+    "group": "display",
+    "status": "beta",
+    "description": "Profile image, initials, link, or menu trigger.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=369-8",
+    "radixPrimitive": null,
+    "element": "button",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": true,
-    "realBrowserForcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "clickable",
-    "decoding",
-    "destinationUrl",
-    "id",
-    "imageUrl",
-    "loading",
-    "menuItems",
-    "menuLabel",
-    "name",
-    "placementRefreshKey",
-    "ref",
-    "size",
-    "sizes",
-    "srcSet",
-    "style",
-    "variant"
-  ],
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/stories/KitchenSink.stories.tsx",
-      "since": "2026-05-27"
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "menu trigger needs accessible name",
+            "image alt from name"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior, keyboard, and forced-colors verified in Storybook.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/AuthorBio/AuthorBio.tsx",
-      "since": "2026-05-27"
+    "tokens": {
+        "colors": [],
+        "spacing": []
     },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/Author/Author.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/Avatar/Avatar.test.tsx",
-      "since": "2026-05-27"
-    },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/Avatar/Avatar.stories.tsx",
-      "since": "2026-05-27"
-    }
-  ]
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "clickable",
+        "decoding",
+        "destinationUrl",
+        "id",
+        "imageUrl",
+        "loading",
+        "menuItems",
+        "menuLabel",
+        "name",
+        "placementRefreshKey",
+        "ref",
+        "size",
+        "sizes",
+        "srcSet",
+        "style",
+        "variant"
+    ],
+    "consumers": []
 }

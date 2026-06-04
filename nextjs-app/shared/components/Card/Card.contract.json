@@ -1,110 +1,121 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Card",
-  "tier": "molecule",
-  "group": "structure",
-  "status": "stable",
-  "description": "Composable surface for grouped content with header, body, media, and actions.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=377-26",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [
-    "extra",
-    "cover",
-    "icon",
-    "badge",
-    "footer"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "semantic heading for title",
-      "link/button actions need accessible names"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Card",
+    "tier": "molecule",
+    "group": "structure",
+    "status": "stable",
+    "description": "Composable surface for grouped content with header, body, media, and actions.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=377-26",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "variant": {
+            "values": ["elevated", "filled", "outlined"],
+            "default": "elevated",
+            "propSourced": true
+        },
+        "size": {
+            "values": ["S", "M", "L", "full"],
+            "default": "M",
+            "propSourced": true
+        }
+    },
+    "slots": [
+        "extra",
+        "cover",
+        "icon",
+        "badge",
+        "footer"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — structure, hover/focus, forced-colors verified in Storybook.",
-    "forcedColorsVerified": true,
-    "accessibilityTreeVerified": true,
-    "realBrowserForcedColorsVerified": true,
-    "axeTestExempt": "Complex molecule; axe on representative Default/Example stories."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "actions",
-    "activeTabKey",
-    "as",
-    "asChild",
-    "badge",
-    "badgeProps",
-    "body",
-    "bodyProps",
-    "bodyStyle",
-    "bordered",
-    "children",
-    "className",
-    "cover",
-    "defaultActiveTabKey",
-    "description",
-    "descriptionProps",
-    "design",
-    "extra",
-    "footer",
-    "headStyle",
-    "hoverable",
-    "icon",
-    "iconProps",
-    "id",
-    "interactive",
-    "level",
-    "link",
-    "linkLabel",
-    "loading",
-    "onClick",
-    "onTabChange",
-    "position",
-    "ref",
-    "size",
-    "state",
-    "statusMessage",
-    "statusMessageProps",
-    "style",
-    "subTitle",
-    "subTitleProps",
-    "tabs",
-    "terminals",
-    "title",
-    "titleProps",
-    "variant"
-  ],
-  "consumers": [
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-      "since": "2026-06-03"
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "semantic heading for title",
+            "link/button actions need accessible names"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — structure, hover/focus, forced-colors verified in Storybook.",
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true,
+        "axeTestExempt": "Complex molecule; axe on representative Default/Example stories."
     },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.tsx",
-      "since": "2026-06-03"
+    "tokens": {
+        "colors": [],
+        "spacing": []
     },
-    {
-      "repo": "digitaltableteur/digitaltableteur",
-      "path": "nextjs-app/shared/components/SentrySummaryCard/SentrySummaryCard.tsx",
-      "since": "2026-06-03"
-    }
-  ]
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "actions",
+        "activeTabKey",
+        "as",
+        "asChild",
+        "badge",
+        "badgeProps",
+        "body",
+        "bodyProps",
+        "bodyStyle",
+        "bordered",
+        "children",
+        "className",
+        "cover",
+        "defaultActiveTabKey",
+        "description",
+        "descriptionProps",
+        "design",
+        "extra",
+        "footer",
+        "headStyle",
+        "hoverable",
+        "icon",
+        "iconProps",
+        "id",
+        "interactive",
+        "level",
+        "link",
+        "linkLabel",
+        "loading",
+        "onClick",
+        "onTabChange",
+        "position",
+        "ref",
+        "size",
+        "state",
+        "statusMessage",
+        "statusMessageProps",
+        "style",
+        "subTitle",
+        "subTitleProps",
+        "tabs",
+        "terminals",
+        "title",
+        "titleProps",
+        "variant"
+    ],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
+            "since": "2026-06-04"
+        }
+    ]
 }

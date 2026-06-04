@@ -109,12 +109,14 @@ export default {
       control: { type: "radio" },
       options: ["S", "M", "L"],
       description: "Text size variant",
+      table: { defaultValue: { summary: "M" } },
     },
 
     terminals: {
       control: { type: "radio" },
       options: ["sans", "serif"],
       description: "Font family (sans or serif)",
+      table: { defaultValue: { summary: "sans" } },
     },
 
     lineHeight: {
