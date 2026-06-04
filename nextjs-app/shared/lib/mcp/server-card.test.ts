@@ -31,6 +31,9 @@ describe("MCP server card shape", () => {
     expect(card.serverInfo.version).toMatch(/^\d+\.\d+\.\d+$/);
     expect(card.url).toContain("/mcp");
     expect(card.capabilities.tools).toBe(true);
-    expect(card.tools).toHaveLength(14);
+    expect(card.tools).toEqual([
+      ...CONSULTING_TOOL_NAMES,
+      ...DESIGN_SYSTEM_TOOL_NAMES,
+    ]);
   });
 });

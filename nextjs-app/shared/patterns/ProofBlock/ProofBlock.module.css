@@ -51,13 +51,6 @@
   box-shadow: 0 12px 36px rgb(0 0 0 / 5%);
 }
 
-.metricCardDark {
-  border-color: rgb(255 255 255 / 8%);
-  background: var(--color-dark);
-  box-shadow: 0 12px 40px rgb(0 0 0 / 12%);
-  color: var(--color-white);
-}
-
 .metricValue {
   margin: 0;
   font-family: var(--primary-bold-font, var(--font-body));
@@ -79,6 +72,26 @@
   margin: 0;
   color: inherit;
   opacity: 0.85;
+}
+
+.metricCardDark {
+  border-color: rgb(255 255 255 / 8%);
+  background: var(--color-dark);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 12%);
+  color: var(--color-white);
+}
+
+.metricCardDark .metricValue {
+  color: var(--color-white);
+}
+
+.metricCardDark .metricLabel {
+  color: rgb(255 255 255 / 92%);
+}
+
+.metricCardDark .metricDetail {
+  color: rgb(255 255 255 / 85%);
+  opacity: 1;
 }
 
 @media (width <= 48rem) {

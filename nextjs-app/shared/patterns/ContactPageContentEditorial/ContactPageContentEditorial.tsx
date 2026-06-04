@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,8 +9,11 @@ import { cn } from "@/lib/utils";
 import Text from "@dt/Text";
 import Title from "@dt/Title";
 import Icon from "@dt/Icon";
-import { ContactInquiryPanel } from "../ContactInquiryPanel";
-import type { ContactInquiryMode } from "../ContactInquiryPanel";
+import {
+  ContactInquiryPanel,
+  type ContactInquiryMode,
+  type ContactInquiryPanelHandle,
+} from "../ContactInquiryPanel";
 import type { SiteBookingConfig } from "../../lib/donny-booking";
 import { ContactFormEditorial } from "../../components/ContactFormEditorial";
 import { ContactFormSuccessEditorial } from "../../components/ContactFormSuccessEditorial";
@@ -43,6 +46,7 @@ export function ContactPageContentEditorial({
   bookingConfig,
 }: ContactPageContentEditorialProps) {
   const { t } = useTranslation();
+  const inquiryPanelRef = useRef<ContactInquiryPanelHandle>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   // Skip entrance animations under reduced-motion so axe never samples
   // partial-opacity frames as color-contrast violations.
@@ -55,6 +59,17 @@ export function ContactPageContentEditorial({
   const handleSendAnother = () => {
     setShowSuccess(false);
   };
+
+  const handleScrollToContactForm = useCallback(
+    (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      inquiryPanelRef.current?.scrollToMessageForm();
+      if (typeof window !== "undefined") {
+        window.history.replaceState(null, "", "#contact-form");
+      }
+    },
+    [],
+  );
 
   return (
     <div className={cn(styles.page, className)}>
@@ -143,6 +158,7 @@ export function ContactPageContentEditorial({
           <div className={styles.rightColumn}>
             <div className={styles.formPanel}>
               <ContactInquiryPanel
+                ref={inquiryPanelRef}
                 initialMode={initialInquiryMode}
                 packageId={bookingPackageId}
                 bookingConfig={bookingConfig}
@@ -249,7 +265,11 @@ export function ContactPageContentEditorial({
                         )}
                       </Text>
                     </div>
-                    <a href="/contact?mode=book" className={styles.newBusinessCta}>
+                    <a
+                      href="#contact-form"
+                      className={styles.newBusinessCta}
+                      onClick={handleScrollToContactForm}
+                    >
                       <span className={styles.email}>
                         {t("contactNewBusinessBookLink", "Book a call")}
                       </span>
