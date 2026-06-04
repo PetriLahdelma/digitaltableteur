@@ -70,43 +70,18 @@
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/stories/TestHealth.stories.tsx",
-            "since": "2026-05-27"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/Badge/Badge.stories.tsx",
-            "since": "2026-05-27"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/Badge/Badge.test.tsx",
-            "since": "2026-05-27"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/OpenHours/OpenHours.tsx",
-            "since": "2026-05-27"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/EmailSignatureGenerator/EmailSignatureGenerator.stories.tsx",
-            "since": "2026-05-27"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/Card/Card.tsx",
-            "since": "2026-05-27"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
-            "since": "2026-05-27"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Pseo/PseoClusterBadges.tsx",
-            "since": "2026-05-27"
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarMetaBadgeLinks.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
+            "since": "2026-06-04"
         }
     ]
 }

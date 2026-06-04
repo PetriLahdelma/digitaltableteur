@@ -7,7 +7,7 @@ function normalizeVariantValue(value) {
   return String(value).replace(/^["']+|["']+$/g, "");
 }
 
-const VARIANT_PROP_NAMES = new Set([
+export const VARIANT_PROP_NAMES = new Set([
   "variant",
   "surface",
   "size",
@@ -53,7 +53,9 @@ export function cvaAlignsWithProps(cvaVariants, props) {
 
 /** Explicit allowlist: prop-driven styling without root CVA invocation. */
 const PROP_SOURCED_AXES = {
-  Button: ["variant", "surface"],
+  Button: ["variant", "surface", "severity", "size"],
+  Text: ["size", "terminals"],
+  Card: ["variant", "size"],
   Title: ["size", "terminals"],
   Checkbox: ["size"],
   Switch: ["size"],

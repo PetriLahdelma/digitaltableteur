@@ -12,6 +12,7 @@ import {
     type ObjectLiteralExpression,
     type PropertyAssignment,
 } from 'ts-morph'
+import { VARIANT_PROP_NAMES } from './cva-sync-lib.mjs'
 
 type VariantMap = Record<string, { values: string[]; default: string | null }>
 
@@ -833,6 +834,17 @@ export function validateComponentsDir(root: string): ValidationResult {
                     errors.push(
                         `${name}.tsx: default mismatch for "${axis}": CVA has "${extractedAxis.default ?? '(none)'}", manifest has "${def.default}"`,
                     )
+                }
+            }
+
+            // Stable only: styling axes on Props must be declared in contract.variants (Button.surface drift).
+            if (manifest.status === 'stable') {
+                for (const propName of extracted.declaredPropNames) {
+                    if (VARIANT_PROP_NAMES.has(propName) && !(propName in manifestVariants)) {
+                        errors.push(
+                            `${name}.contract.json: stable requires contract.variants.${propName} (${name}Props exposes styling axis "${propName}"; set propSourced:true when not backed by root CVA)`,
+                        )
+                    }
                 }
             }
 
