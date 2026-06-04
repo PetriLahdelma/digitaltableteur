@@ -1,63 +1,85 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Tabs",
-  "tier": "molecule",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Tablist navigation with keyboard support and variant styles.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-5",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "ArrowLeft",
-      "ArrowRight",
-      "Home",
-      "End"
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "Tabs",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Tablist navigation with keyboard support and variant styles.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-5",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "variant": {
+            "values": [
+                "default",
+                "pills",
+                "underline"
+            ],
+            "default": "default",
+            "propSourced": true
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ],
+            "default": "sm",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "tablist",
-      "tab",
-      "aria-selected",
-      "aria-controls"
+    "a11y": {
+        "keyboard": [
+            "ArrowLeft",
+            "ArrowRight",
+            "Home",
+            "End"
+        ],
+        "ariaRequirements": [
+            "tablist",
+            "tab",
+            "aria-selected",
+            "aria-controls"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — arrow-key navigation and selection verified in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "activeKey",
+        "activeTab",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "defaultActiveKey",
+        "defaultActiveTab",
+        "id",
+        "onChange",
+        "onTabChange",
+        "ref",
+        "size",
+        "style",
+        "tabs",
+        "variant"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — arrow-key navigation and selection verified in Storybook.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "activeKey",
-    "activeTab",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "defaultActiveKey",
-    "defaultActiveTab",
-    "id",
-    "onChange",
-    "onTabChange",
-    "ref",
-    "size",
-    "style",
-    "tabs",
-    "variant"
-  ],
-  "consumers": []
+    "consumers": []
 }

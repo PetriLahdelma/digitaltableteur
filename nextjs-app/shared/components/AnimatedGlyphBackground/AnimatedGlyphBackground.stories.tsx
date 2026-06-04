@@ -26,6 +26,7 @@ const meta: Meta<typeof AnimatedGlyphBackground> = {
       control: { type: "select" },
       options: ["muted", "primary", "accent", "contrast"],
       description: "Color tone for the animated glyph",
+      table: { defaultValue: { summary: "muted" } },
     },
 
     animate: { control: "boolean", description: "Toggle frame animation" },

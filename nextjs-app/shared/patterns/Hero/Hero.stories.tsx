@@ -59,6 +59,7 @@ const meta: Meta<typeof Hero> = {
       control: { type: "select" },
       options: ["default", "centered", "split", "minimal"],
       description: "Layout variant",
+      table: { defaultValue: { summary: "default" } },
     },
 
     background: {
@@ -71,6 +72,7 @@ const meta: Meta<typeof Hero> = {
       control: { type: "select" },
       options: ["left", "center", "right"],
       description: "Content alignment",
+      table: { defaultValue: { summary: "center" } },
     },
 
     maxWidth: {

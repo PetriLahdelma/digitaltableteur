@@ -133,7 +133,7 @@ npm run test:stories:matrix:ci
 
 - [ ] “Site baseline” script: run a11y + visual matrix against staging URL → stored report
 - [ ] One-pager for proposals using matrix screenshots
-- [ ] Expand `lint:dt-usage` to `shared/patterns` when shadcn baseline is zero (with exempt list)
+- [x] Expand `lint:dt-usage` to `shared/patterns` and `shared/components/pages` (import policy only)
 
 ### Month 3 — Scale decision
 

@@ -1,60 +1,70 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "TextInput",
-  "tier": "atom",
-  "group": "form",
-  "status": "beta",
-  "description": "Single-line text input primitive with optional start/end icon slots, an inline clear button, and an error state. Wraps a native `<input>` so HTML attributes pass through.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-text-input",
-  "radixPrimitive": null,
-  "element": "input",
-  "variants": {},
-  "slots": [
-    "startIcon",
-    "endIcon"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — focuses the input.",
-      "Esc when `clearable` and the input has a value — clears the value (when the clear button is the active element)."
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "TextInput",
+    "tier": "atom",
+    "group": "form",
+    "status": "beta",
+    "description": "Single-line text input primitive with optional start/end icon slots, an inline clear button, and an error state. Wraps a native `<input>` so HTML attributes pass through.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-text-input",
+    "radixPrimitive": null,
+    "element": "input",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "sm",
+            "propSourced": true
+        }
+    },
+    "slots": [
+        "startIcon",
+        "endIcon"
     ],
-    "ariaRequirements": [
-      "Renders a native `<input>`; HTML autocomplete + form-association attributes pass through.",
-      "`error` is a visual state — the actual error message lives in the surrounding `FormField`'s helper text.",
-      "Clear button has `aria-label='Clear input'` and is hidden when the input is empty."
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-border-default",
-      "--color-accent"
-    ],
-    "spacing": [
-      "--space-internal-8",
-      "--space-internal-12"
-    ],
-    "radii": [
-      "--radius-md"
-    ],
-    "typography": [
-      "--font-size-sm",
-      "--font-size-md",
-      "--font-size-lg"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Tab — focuses the input.",
+            "Esc when `clearable` and the input has a value — clears the value (when the clear button is the active element)."
+        ],
+        "ariaRequirements": [
+            "Renders a native `<input>`; HTML autocomplete + form-association attributes pass through.",
+            "`error` is a visual state — the actual error message lives in the surrounding `FormField`'s helper text.",
+            "Clear button has `aria-label='Clear input'` and is hidden when the input is empty."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-border-default",
+            "--color-accent"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12"
+        ],
+        "radii": [
+            "--radius-md"
+        ],
+        "typography": [
+            "--font-size-sm",
+            "--font-size-md",
+            "--font-size-lg"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": []
 }

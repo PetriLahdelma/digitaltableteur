@@ -86,6 +86,7 @@ When \`enableSleepDetection\` is true, Donny will:
       description: "Size",
       control: "select",
       options: ["sm", "md", "lg", "xl"],
+      table: { defaultValue: { summary: "sm" } },
     },
     showLabel: {
       description: "Show Label",

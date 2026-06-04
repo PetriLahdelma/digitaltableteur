@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
@@ -61,8 +61,8 @@ export function ContactPageContentEditorial({
   };
 
   const handleScrollToContactForm = useCallback(
-    (event: React.MouseEvent<HTMLAnchorElement>) => {
-      event.preventDefault();
+    (event?: React.MouseEvent<HTMLAnchorElement>) => {
+      event?.preventDefault();
       inquiryPanelRef.current?.scrollToMessageForm();
       if (typeof window !== "undefined") {
         window.history.replaceState(null, "", "#contact-form");
@@ -70,6 +70,12 @@ export function ContactPageContentEditorial({
     },
     [],
   );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.location.hash !== "#contact-form") return;
+    handleScrollToContactForm();
+  }, [handleScrollToContactForm]);
 
   return (
     <div className={cn(styles.page, className)}>

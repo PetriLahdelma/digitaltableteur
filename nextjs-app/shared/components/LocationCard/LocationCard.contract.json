@@ -1,51 +1,61 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "LocationCard",
-  "tier": "molecule",
-  "group": "display",
-  "status": "beta",
-  "description": "Card variant for displaying a single office or service location (address, hours, map link). Visual sibling of `Card` with the location-specific slot order baked in.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-location-card",
-  "radixPrimitive": null,
-  "element": "article",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — focuses the embedded action (map link, contact CTA) in order."
+    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "name": "LocationCard",
+    "tier": "molecule",
+    "group": "display",
+    "status": "beta",
+    "description": "Card variant for displaying a single office or service location (address, hours, map link). Visual sibling of `Card` with the location-specific slot order baked in.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-location-card",
+    "radixPrimitive": null,
+    "element": "article",
+    "variants": {
+        "variant": {
+            "values": [
+                "default",
+                "elevated",
+                "bordered"
+            ],
+            "default": "default",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "Renders an `<article>` so the whole card is announced as a region.",
-      "Address content sits inside a real `<address>` element so screen readers identify it as contact information."
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-text-muted",
-      "--color-surface-elevated"
-    ],
-    "spacing": [
-      "--space-internal-8",
-      "--space-internal-12",
-      "--space-internal-16"
-    ],
-    "radii": [
-      "--radius-md"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Tab — focuses the embedded action (map link, contact CTA) in order."
+        ],
+        "ariaRequirements": [
+            "Renders an `<article>` so the whole card is announced as a region.",
+            "Address content sits inside a real `<address>` element so screen readers identify it as contact information."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-text-muted",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16"
+        ],
+        "radii": [
+            "--radius-md"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": []
 }

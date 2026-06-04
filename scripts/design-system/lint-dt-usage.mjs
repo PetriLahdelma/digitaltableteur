@@ -76,7 +76,9 @@ for (const file of files) {
 }
 
 if (!findings.length) {
-  console.log("✓ lint:dt-usage — no violations in app/");
+  console.log(
+    `✓ lint:dt-usage — no violations in ${DT_USAGE_SCAN_ROOTS.join(", ")}`,
+  );
   process.exit(0);
 }
 

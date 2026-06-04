@@ -8,7 +8,16 @@
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=369-8",
     "radixPrimitive": null,
     "element": "button",
-    "variants": {},
+    "variants": {
+        "variant": {
+            "values": [
+                "image",
+                "initials"
+            ],
+            "default": "image",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],

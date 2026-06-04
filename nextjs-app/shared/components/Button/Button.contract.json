@@ -39,7 +39,7 @@
             "propSourced": true
         },
         "size": {
-            "values": ["sm", "md", "lg", "s", "m", "l"],
+            "values": ["sm", "md", "lg", "s", "m", "l", "S", "M", "L"],
             "default": "md",
             "propSourced": true
         }
