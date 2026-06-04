@@ -67,6 +67,9 @@ Latest automation audit: [`docs/CLAUDE_AUTOMATION_RECOMMENDATIONS.md`](docs/CLAU
 | [`docs/NEXTJS_MIGRATION_PLAN.md`](docs/NEXTJS_MIGRATION_PLAN.md) | Vite vs Next.js boundaries |
 | [`docs/AGENT_BROWSER_GUIDE.md`](docs/AGENT_BROWSER_GUIDE.md) | Visual verification during dev |
 | [`nextjs-app/shared/foundations/dist/agent-manifest.json`](nextjs-app/shared/foundations/dist/agent-manifest.json) | Component contracts (generated) |
+| [`docs/AGENTIC_DS_OPERATING_MODEL.md`](docs/AGENTIC_DS_OPERATING_MODEL.md) | Agent + human DS workflow |
+| [`docs/AGENTIC_DS_CASE_STUDY.md`](docs/AGENTIC_DS_CASE_STUDY.md) | Measured agentic DS outcomes |
+| [`docs/CATALOG-POLICY.md`](docs/CATALOG-POLICY.md) | In-catalog vs non-agent surfaces |
 
 External context for this site: `https://www.digitaltableteur.com/llms.txt`
 
@@ -76,5 +79,8 @@ External context for this site: `https://www.digitaltableteur.com/llms.txt`
 
 ```bash
 npm run typecheck && npm run lint && npm test && npm run build
+npm run ds:health            # governance snapshot (lint + migration matrix if present)
 npm run validate:agent-docs   # link + skill + root size checks
 ```
+
+DS automation strategy: [`docs/DS_AUTOMATION_STRATEGY.md`](docs/DS_AUTOMATION_STRATEGY.md)

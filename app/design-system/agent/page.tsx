@@ -73,6 +73,14 @@ export default function DesignSystemAgentPage() {
               /.well-known/agent.json
             </a>
           </li>
+          <li>
+            Case study (repo):{" "}
+            <code className="text-xs">docs/AGENTIC_DS_CASE_STUDY.md</code>
+          </li>
+          <li>
+            Catalog policy (repo):{" "}
+            <code className="text-xs">docs/CATALOG-POLICY.md</code>
+          </li>
         </ul>
       </section>
 

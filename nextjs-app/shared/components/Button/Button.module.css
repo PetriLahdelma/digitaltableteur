@@ -108,6 +108,61 @@
   color: var(--color-white);
 }
 
+/* Surface: onDark — static contrast for primary/gradient/dark bands (CTA, hero) */
+
+.button.primary.onDark {
+  border: none;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.button.primary.onDark:hover {
+  background-color: color-mix(in srgb, var(--color-white) 90%, transparent);
+}
+
+.button.secondary.onDark {
+  border: 0.125rem solid var(--color-white);
+  background-color: transparent;
+  color: var(--color-white);
+}
+
+.button.secondary.onDark:hover {
+  background-color: color-mix(in srgb, var(--color-white) 10%, transparent);
+}
+
+.button.tertiary.onDark {
+  border: none;
+  background-color: transparent;
+  color: var(--color-white);
+}
+
+.button.tertiary.onDark:hover {
+  background-color: color-mix(in srgb, var(--color-white) 8%, transparent);
+}
+
+/* Surface: onBrand — logo token pair (homepage brand CTA) */
+
+.button.primary.onBrand {
+  border: none;
+  background-color: var(--logo-color, #000);
+  color: var(--logo-background, #dfff00);
+}
+
+.button.primary.onBrand:hover {
+  background-color: color-mix(in srgb, var(--logo-color, #000) 85%, transparent);
+  color: var(--logo-background, #dfff00);
+}
+
+.button.secondary.onBrand {
+  border: 0.125rem solid var(--logo-color, #000);
+  background-color: transparent;
+  color: var(--logo-color, #000);
+}
+
+.button.secondary.onBrand:hover {
+  background-color: color-mix(in srgb, var(--logo-color, #000) 8%, transparent);
+}
+
 .button.tertiary {
   border: none;
   background-color: transparent;

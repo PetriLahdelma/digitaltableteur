@@ -20,6 +20,12 @@ const PHASES_DIR = join(
   ROOT,
   "nextjs-app/shared/foundations/figma/phases",
 );
+/**
+ * Desktop MCP (127.0.0.1:3845) = selection/read tools only — NO use_figma.
+ * For variable apply from the CLI, set FIGMA_DESKTOP_MCP_URL to an endpoint
+ * that exposes use_figma (e.g. Cursor Figma plugin remote MCP), or use the
+ * Cursor agent CallMcpTool(plugin-figma-figma, use_figma) path.
+ */
 const MCP_URL = process.env.FIGMA_DESKTOP_MCP_URL ?? "http://127.0.0.1:3845/mcp";
 const RUN_ID =
   JSON.parse(
@@ -78,6 +84,23 @@ async function main() {
   const transport = new StreamableHTTPClientTransport(new URL(MCP_URL));
   await client.connect(transport);
 
+  const tools = await client.listTools();
+  const hasUseFigma = tools.tools?.some((t) => t.name === "use_figma");
+  if (!hasUseFigma) {
+    console.error(
+      "FAIL: MCP at",
+      MCP_URL,
+      "does not expose use_figma (Desktop selection MCP is read-only).",
+    );
+    console.error(
+      "Use Cursor agent CallMcpTool(server: plugin-figma-figma, tool: use_figma)",
+    );
+    console.error(
+      "or set FIGMA_DESKTOP_MCP_URL to a remote MCP that includes use_figma.",
+    );
+    process.exit(1);
+  }
+
   try {
     for (const phasePath of phasePaths) {
       if (!existsSync(phasePath)) {
@@ -91,6 +114,13 @@ async function main() {
         code,
         `Apply ${base} (${RUN_ID})`,
       );
+      const failed =
+        /invalid tool arguments|error|fail/i.test(summary) &&
+        !/"collectionId"|variableIds|variableCount/i.test(summary);
+      if (failed) {
+        console.error(`  ✗ ${base}: ${summary.slice(0, 400)}`);
+        process.exit(1);
+      }
       console.log(`  ✓ ${summary.slice(0, 200)}\n`);
     }
     console.log("Done.");

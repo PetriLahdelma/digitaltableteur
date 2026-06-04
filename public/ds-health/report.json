@@ -1,0 +1,115 @@
+{
+  "generatedAt": "2026-06-04T14:07:07.365Z",
+  "checks": [
+    {
+      "name": "lint:dt-usage",
+      "ok": true,
+      "status": 0,
+      "stdout": "> nextjs-app@2.0.0 lint:dt-usage\n> node scripts/design-system/lint-dt-usage.mjs --strict --strict\n\n✓ lint:dt-usage — no violations in app/",
+      "stderr": ""
+    },
+    {
+      "name": "lint:dt-responsive-visibility",
+      "ok": true,
+      "status": 0,
+      "stdout": "> nextjs-app@2.0.0 lint:dt-responsive-visibility\n> node scripts/lint-dt-responsive-visibility.mjs --strict\n\n✓ lint:dt-responsive-visibility — no responsive display classes on <Button>",
+      "stderr": ""
+    }
+  ],
+  "shadcnByArea": {
+    "app": [],
+    "nextjs-app/shared/components": [
+      {
+        "file": "nextjs-app/shared/components/AnimatedDialog/AnimatedDialog.tsx",
+        "line": 14
+      },
+      {
+        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
+        "line": 7
+      },
+      {
+        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
+        "line": 8
+      },
+      {
+        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
+        "line": 9
+      },
+      {
+        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
+        "line": 10
+      },
+      {
+        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
+        "line": 11
+      },
+      {
+        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
+        "line": 18
+      },
+      {
+        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
+        "line": 26
+      },
+      {
+        "file": "nextjs-app/shared/components/Lightbox/Lightbox.tsx",
+        "line": 9
+      },
+      {
+        "file": "nextjs-app/shared/components/SkillsGrid/SkillsGrid.tsx",
+        "line": 10
+      },
+      {
+        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "line": 4
+      },
+      {
+        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "line": 12
+      },
+      {
+        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "line": 13
+      },
+      {
+        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "line": 14
+      },
+      {
+        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "line": 20
+      },
+      {
+        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "line": 25
+      },
+      {
+        "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
+        "line": 30
+      }
+    ],
+    "nextjs-app/shared/patterns": []
+  },
+  "shadcnTotal": 17,
+  "migrationBoards": {
+    "buttonSurfaces": "approved",
+    "buttonContexts": "migrated",
+    "contactFlow": "migrated",
+    "formPrimitives": "migrated",
+    "dialogs": "blocked — @dt/Modal needs board sign-off"
+  },
+  "migrationMatrix": {
+    "present": true,
+    "generatedAt": "2026-06-04T12:56:27.686Z",
+    "passed": 96,
+    "total": 96,
+    "failed": 0,
+    "failures": []
+  },
+  "docs": {
+    "strategy": "docs/DS_AUTOMATION_STRATEGY.md",
+    "migration": "docs/SHADCN_TO_DT_MIGRATION.md",
+    "storybookHub": "Design system / Migration boards / Review hub"
+  },
+  "ok": true
+}

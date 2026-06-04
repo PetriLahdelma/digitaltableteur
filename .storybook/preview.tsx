@@ -499,7 +499,16 @@ const preview: Preview = {
       storySort: {
         order: [
           "Overview",
-          ["Welcome", "Test Health Overview"],
+          [
+            "Welcome",
+            "Test Health Overview",
+            "00-Overview",
+            "01-Principles",
+            "02-Tokens",
+            "03-Theming",
+            "04-Accessibility",
+            "05-Roadmap",
+          ],
           "Docs",
           "Foundations",
           [

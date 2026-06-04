@@ -2,7 +2,7 @@
 
 import { type ReactNode, useId } from "react";
 import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
+import Label from "@dt/Label";
 
 export interface FormFieldProps {
   label: string;
@@ -32,17 +32,8 @@ export function FormField({
 
   return (
     <div className={cn("space-y-2", className)}>
-      <Label
-        htmlFor={id}
-        className={cn(
-          "font-body text-text-s font-medium",
-          disabled && "opacity-50"
-        )}
-      >
+      <Label htmlFor={id} required={required} disabled={disabled}>
         {label}
-        {required && (
-          <span className="text-destructive ml-1" aria-hidden>*</span>
-        )}
       </Label>
 
       {/* Children should be Input, Textarea, or Select with id prop */}

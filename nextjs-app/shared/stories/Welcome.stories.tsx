@@ -47,7 +47,7 @@ const WelcomeContent = () => {
 const meta: Meta<typeof WelcomeContent> = {
   title: "Overview/Welcome",
   component: WelcomeContent,
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: { layout: "fullscreen" },
 };
 

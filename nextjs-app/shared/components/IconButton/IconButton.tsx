@@ -5,8 +5,7 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import Button from "@dt/Button";
 
 export interface IconButtonProps
   extends Omit<ComponentPropsWithoutRef<"button">, "children"> {
@@ -18,14 +17,23 @@ export interface IconButtonProps
   size?: "sm" | "md" | "lg";
 }
 
+const variantMap = {
+  default: "primary",
+  ghost: "tertiary",
+  outline: "secondary",
+} as const;
+
 const sizeMap = {
-  sm: "icon-sm" as const,
-  md: "icon" as const,
-  lg: "icon-lg" as const,
-};
+  sm: "sm",
+  md: "md",
+  lg: "lg",
+} as const;
 
 /**
  * Icon-only action control; `label` is required and becomes the accessible name.
+ *
+ * `className` is applied on a wrapper span so Tailwind responsive utilities (e.g.
+ * `lg:hidden`) are not overridden by @dt/Button CSS module `display: inline-flex`.
  */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (
@@ -37,23 +45,61 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       className,
       type = "button",
       "aria-labelledby": ariaLabelledBy,
-      ...rest
+      disabled,
+      onClick,
+      onBlur,
+      onFocus,
+      onKeyDown,
+      onKeyUp,
+      onMouseDown,
+      onMouseUp,
+      "aria-expanded": ariaExpanded,
+      "aria-controls": ariaControls,
+      "aria-haspopup": ariaHaspopup,
+      "aria-pressed": ariaPressed,
+      tabIndex,
+      id,
+      name,
+      value,
+      form,
     },
     ref,
   ) => {
-    return (
+    const button = (
       <Button
         ref={ref}
         type={type}
-        variant={variant}
+        variant={variantMap[variant]}
         size={sizeMap[size]}
-        aria-label={ariaLabelledBy ? undefined : label}
-        className={cn("rounded-full", className)}
-        {...rest}
-      >
-        {icon}
-      </Button>
+        accessibleName={ariaLabelledBy ? undefined : label}
+        aria-labelledby={ariaLabelledBy}
+        isRounded
+        icon={icon}
+        disabled={disabled}
+        onClick={onClick}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        onKeyDown={onKeyDown}
+        onKeyUp={onKeyUp}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+        aria-expanded={ariaExpanded}
+        aria-controls={ariaControls}
+        aria-haspopup={ariaHaspopup}
+        aria-pressed={ariaPressed}
+        tabIndex={tabIndex}
+        id={id}
+        name={name}
+        value={value}
+        form={form}
+      />
     );
+
+    if (!className) {
+      return button;
+    }
+
+    return <span className={className}>{button}</span>;
   },
 );
 

@@ -21,6 +21,11 @@ export type ButtonSeverity = "error" | "warning" | "success" | "info";
 export type ButtonVariantVisual = "primary" | "secondary" | "tertiary";
 
 /**
+ * Surface context for contrast-safe styling (static CSS — no ancestor sampling).
+ */
+export type ButtonSurface = "default" | "onDark" | "onBrand";
+
+/**
  * Legacy size format
  */
 type ButtonSizeLegacy = "s" | "m" | "l";
@@ -38,6 +43,11 @@ interface BaseButtonProps {
   size?: SizeUnified | ButtonSizeLegacy;
   /** Replaces primary text/border color with white for dark backgrounds (v1.1.0+) */
   isInverse?: boolean;
+  /**
+   * Surface behind the button. Prefer `onDark` / `onBrand` on tinted bands instead of
+   * `isInverse` on gradients (ancestor sampling can mis-read transparent parents).
+   */
+  surface?: ButtonSurface;
   /** Applies rounded corners to the button (v1.1.0+) */
   isRounded?: boolean;
   /** Semantic severity for status-based styling (v1.1.0+) */
@@ -177,6 +187,7 @@ const Button = React.forwardRef<
       isDisabled,
       isLoading,
       isInverse,
+      surface = "default",
       isRounded,
       // Deprecated props
       disabled = false,
@@ -440,6 +451,7 @@ const Button = React.forwardRef<
         styles[normalizedSize],
         !children && normalizedIcon ? styles["iconOnly"] : "",
         effectiveInverse ? styles.inverse : "",
+        surface !== "default" ? styles[surface] : "",
         effectiveRounded ? styles.rounded : "",
         effectiveLoading ? styles.loading : "",
         className,
