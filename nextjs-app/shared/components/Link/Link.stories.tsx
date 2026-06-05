@@ -98,6 +98,7 @@ export default {
       control: { type: "select" },
       options: ["S", "M", "L"],
       description: "Size of the link",
+      table: { defaultValue: { summary: "M" } },
     },
 
     href: { control: "text", description: "Link URL" },

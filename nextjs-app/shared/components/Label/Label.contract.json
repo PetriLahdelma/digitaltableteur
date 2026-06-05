@@ -3,7 +3,7 @@
     "name": "Label",
     "tier": "atom",
     "group": "form",
-    "status": "beta",
+    "status": "stable",
     "description": "Form field label with required, disabled, and tooltip affordances.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-6",
     "radixPrimitive": null,
@@ -27,7 +27,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-05-26 — association and forced-colors verified in Storybook.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
@@ -47,7 +49,14 @@
         "style",
         "tooltipText"
     ],
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-06",
+            "note": "Auto-added by promote-stable-fleet — refresh with npm run audit:consumers"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "htmlFor": {

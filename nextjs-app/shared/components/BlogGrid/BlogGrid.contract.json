@@ -1,0 +1,42 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "BlogGrid",
+    "tier": "organism",
+    "group": "content",
+    "status": "alpha",
+    "description": "Blog post card grid for index pages.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-blog-grid",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "layout": {
+            "values": [
+                "standard",
+                "featured-first",
+                "masonry"
+            ],
+            "default": "standard",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "composesWith": []
+}

@@ -3,7 +3,7 @@
     "name": "SiteHeader",
     "tier": "pattern",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Production site header with nav, theme toggle, and mobile drawer.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=476-2",
     "radixPrimitive": null,
@@ -32,7 +32,9 @@
         "reviewed": true,
         "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
         "forcedColorsVerified": true,
-        "playFunctionExempt": "Header composition; keyboard flows are covered in MobileDrawer and nav link Tab order — add story play when drawer story is split out."
+        "playFunctionExempt": "Header composition; keyboard flows are covered in MobileDrawer and nav link Tab order — add story play when drawer story is split out.",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [
@@ -53,7 +55,14 @@
         "ref",
         "style"
     ],
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-06",
+            "note": "Auto-added by promote-stable-fleet — refresh with npm run audit:consumers"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "navItems": {

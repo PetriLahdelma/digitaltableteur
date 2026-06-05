@@ -457,6 +457,7 @@ export function ContactFormEditorial({
 
         <CheckboxField
           id="contact-request-portfolio-materials"
+          className={styles.checkboxField}
           label={t("contactRequestPortfolioMaterials")}
           checked={formData.requestPortfolioMaterials}
           onCheckedChange={(checked) =>

@@ -212,7 +212,6 @@ const dsharpParity = {
     "production consumers auto-synced into contract.consumers[] (stable tier; manual today)",
     "Figma variable phases applied in file (npm run figma:apply-variables via MCP)",
     "Code Connect on Figma Organization tier (skipped on Pro)",
-    "semver-bound public @dt export policy",
   ],
   notReadyForStablePromotion: false,
   testCiStatus: {
@@ -248,8 +247,16 @@ writeFileSync(
             : null,
         componentsWithProductionUsage: usageCoverage.withProductionUsage,
         notReadyForStablePromotion:
-          (statusCounts.stable ?? 0) < 6 ||
+          (statusCounts.stable ?? 0) < 10 ||
+          (catalogCoverage?.catalogCompletenessPercent ?? 0) < 85 ||
           (catalogCoverage?.outOfCatalogByBucket?.["catalog-gap"] ?? 0) > 0,
+      },
+      exportPolicy: {
+        importSurface: "@dt/<ComponentName>",
+        npmPackage: null,
+        semverDoc: "docs/PUBLIC_API.md",
+        stableCount: statusCounts.stable ?? 0,
+        releaseGate: "npm run release:gate",
       },
       tokens,
       catalogCoverage,

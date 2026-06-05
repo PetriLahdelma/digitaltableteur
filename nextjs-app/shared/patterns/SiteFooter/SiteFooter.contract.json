@@ -3,7 +3,7 @@
     "name": "SiteFooter",
     "tier": "pattern",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Production site footer with links and social icons.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=477-6",
     "radixPrimitive": null,
@@ -30,7 +30,9 @@
         "reviewed": true,
         "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
         "forcedColorsVerified": true,
-        "playFunctionExempt": "Footer is mostly links; interaction is standard Tab navigation."
+        "playFunctionExempt": "Footer is mostly links; interaction is standard Tab navigation.",
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
@@ -46,7 +48,14 @@
         "ref",
         "style"
     ],
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-06",
+            "note": "Auto-added by promote-stable-fleet — refresh with npm run audit:consumers"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "className": {

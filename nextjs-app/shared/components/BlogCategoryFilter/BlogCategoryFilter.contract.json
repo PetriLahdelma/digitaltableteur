@@ -1,0 +1,51 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "BlogCategoryFilter",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Blog category filter control.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-blog-category-filter",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {
+        "variant": {
+            "values": [
+                "pills",
+                "underline",
+                "minimal"
+            ],
+            "default": "pills",
+            "propSourced": true
+        },
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ],
+            "default": "sm",
+            "propSourced": true
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "composesWith": []
+}

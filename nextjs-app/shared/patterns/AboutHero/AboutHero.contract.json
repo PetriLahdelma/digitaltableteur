@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "AboutHero",
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "alpha",
+    "description": "About page hero with studio positioning.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-about-hero",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "composesWith": []
+}
