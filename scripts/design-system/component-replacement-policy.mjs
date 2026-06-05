@@ -73,6 +73,10 @@ export const FORBIDDEN_USE_CURATED = {
   Modal: [
     "Nested modals — swap content in place inside one overlay",
     "Lazy-mounting Modal only when isOpen — mount always and toggle isOpen for focus restore",
+    "Pair AlertBanner with Modal for the same status — use Modal alone for blocking alerts",
+  ],
+  AlertBanner: [
+    "Pair AlertBanner with blocking Modal for the same user outcome — pick one surface",
   ],
 };
 
@@ -94,6 +98,13 @@ export const INCOMPATIBLE_DT_IMPORT_PAIRS = [
     b: "Modal",
     message:
       "Do not pair transient Toast with blocking Modal for the same user action — use Modal alone.",
+  },
+  {
+    id: "alertbanner-modal",
+    a: "AlertBanner",
+    b: "Modal",
+    message:
+      "Do not pair inline AlertBanner with blocking Modal for the same outcome — pick one surface.",
   },
 ];
 

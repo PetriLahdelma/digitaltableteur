@@ -3,6 +3,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
@@ -220,6 +221,18 @@ if (realFigmaStable < MIN_STABLE_FIGMA) {
   console.log(
     `✓ stable Figma deep links: ${realFigmaStable}/${stableEntries.length} (Icon uses dt-icon placeholder)`,
   );
+}
+
+const compositionTest = spawnSync(
+  process.execPath,
+  ["--test", join(ROOT, "scripts/design-system/composition-lint-lib.test.mjs")],
+  { stdio: "inherit" },
+);
+if (compositionTest.status !== 0) {
+  console.error("FAIL: composition-lint-lib unit tests");
+  failed += 1;
+} else {
+  console.log("✓ composition-lint-lib unit tests");
 }
 
 process.exit(failed ? 1 : 0);

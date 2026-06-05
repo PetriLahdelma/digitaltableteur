@@ -1,2 +1,6 @@
 - status: Work in progress (beta)
 - button "Open modal"
+- dialog "Success":
+  - heading "Success" [level=2]
+  - text: Your operation was successful!
+  - button "OK"
