@@ -43,8 +43,8 @@ const BOARDS = [
   {
     title: "Dialogs & overlays",
     storyId: "design-system-migration-boards-dialogs--alert-and-deferrals",
-    note: "Blocked — @dt/Modal needs work before production swap",
-    status: "defer" as const,
+    note: "Approved — error alert via @dt/Modal + description; composable trigger deferred",
+    status: "approved" as const,
   },
 ];
 

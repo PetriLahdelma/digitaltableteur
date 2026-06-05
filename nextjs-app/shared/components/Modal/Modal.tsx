@@ -23,6 +23,8 @@ export interface ModalProps {
   isOpen: boolean;
   /** Title shown in header */
   title?: string;
+  /** Supporting text — wired to aria-describedby (DialogDescription parity) */
+  description?: string;
   /** Title terminals (sans or serif) */
   titleTerminals?: "sans" | "serif";
   /** Optional contextual menu or extra controls */
@@ -62,6 +64,7 @@ const Modal: React.FC<ModalProps> = ({
   titleSize = "M",
   isOpen,
   title,
+  description,
   titleTerminals = "serif",
   menu,
   children,
@@ -74,6 +77,7 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   const normalizedTitleSize = normalizeTitleSize(titleSize);
   const titleId = useId();
+  const descriptionId = useId();
   const previousActiveElement = useRef<HTMLElement | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -174,6 +178,7 @@ const Modal: React.FC<ModalProps> = ({
         {...(title
           ? { "aria-labelledby": titleId }
           : { "aria-label": "Dialog" })}
+        {...(description ? { "aria-describedby": descriptionId } : {})}
       >
         {title && (
           <div className={styles.header}>
@@ -206,6 +211,11 @@ const Modal: React.FC<ModalProps> = ({
         <div className={styles.content}>
           {isLoading && (
             <div className={styles.spinner} aria-hidden="true" />
+          )}
+          {description && (
+            <p id={descriptionId} className={styles.description}>
+              {description}
+            </p>
           )}
           {children}
         </div>

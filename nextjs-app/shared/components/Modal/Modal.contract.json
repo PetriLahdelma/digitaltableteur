@@ -120,6 +120,10 @@
             "optional": true,
             "type": "string"
         },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
         "titleTerminals": {
             "optional": true,
             "type": "union",
@@ -170,8 +174,8 @@
         "Title",
         "Text",
         "Inputs",
-        "AdaptiveLoadingButton",
-        "Toast",
-        "CheckboxGroup"
+        "FileUpload",
+        "PhoneInput",
+        "AdaptiveLoadingButton"
     ]
 }

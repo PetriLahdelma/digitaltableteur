@@ -164,6 +164,23 @@ describe("Modal Accessibility", () => {
       expect(titleElement).toHaveTextContent("Modal Title");
     });
 
+    it("has aria-describedby referencing description", () => {
+      render(
+        <Modal
+          isOpen
+          title="Error"
+          severity="error"
+          description="Please try again in a moment."
+        />
+      );
+      const dialog = screen.getByRole("alertdialog");
+      expect(dialog).toHaveAttribute("aria-describedby");
+
+      const descriptionId = dialog.getAttribute("aria-describedby");
+      const descriptionElement = document.getElementById(descriptionId!);
+      expect(descriptionElement).toHaveTextContent("Please try again in a moment.");
+    });
+
     it("has aria-label when no title provided", () => {
       render(
         <Modal isOpen>
