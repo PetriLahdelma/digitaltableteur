@@ -267,29 +267,32 @@ const Template: StoryFn<ModalProps> = (args: ModalProps) => {
 };
 
 export const Default = Template.bind({});
+Default.tags = ["beta-matrix"];
 Default.args = {
   title: "storyModalTitle",
   children: "storyModalBody",
   showCloseIcon: true,
 };
 Default.parameters = {};
-Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+
+/** Interaction coverage (not beta-matrix — play runs before AT capture). */
+export const CloseViaIcon = Template.bind({});
+CloseViaIcon.args = Default.args;
+CloseViaIcon.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
 
-  // Open modal - use more specific button selector
   const openButton = canvas.getByRole("button", { name: /open/i });
   await userEvent.click(openButton);
 
-  // Wait for modal to appear (modal renders in portal, so check document.body)
   const body = within(document.body);
   await waitFor(() => body.getByRole("dialog"), { timeout: 3000 });
 
-  // Close modal via close button (also in portal)
   const closeButton = body.getByLabelText(/close/i);
   await userEvent.click(closeButton);
 };
 
 export const Loading = Template.bind({});
+Loading.tags = ["beta-matrix"];
 Loading.args = {
   isLoading: true,
   title: "storyModalLoading",
@@ -310,6 +313,7 @@ Loading.parameters = {
 };
 
 export const ErrorDialog = Template.bind({});
+ErrorDialog.tags = ["beta-matrix"];
 ErrorDialog.args = {
   isOpen: true,
   title: "storyModalErrorTitle",
@@ -318,6 +322,7 @@ ErrorDialog.args = {
 };
 
 export const SuccessDialog = Template.bind({});
+SuccessDialog.tags = ["beta-matrix"];
 SuccessDialog.args = {
   isOpen: true,
   title: "storyModalSuccessTitle",
@@ -326,6 +331,7 @@ SuccessDialog.args = {
 };
 
 export const WarningDialog = Template.bind({});
+WarningDialog.tags = ["beta-matrix"];
 WarningDialog.args = {
   isOpen: true,
   title: "storyModalWarningTitle",
@@ -334,6 +340,7 @@ WarningDialog.args = {
 };
 
 export const InfoDialog = Template.bind({});
+InfoDialog.tags = ["beta-matrix"];
 InfoDialog.args = {
   isOpen: true,
   title: "storyModalInfoTitle",
@@ -342,6 +349,7 @@ InfoDialog.args = {
 };
 
 export const BusyDialog = Template.bind({});
+BusyDialog.tags = ["beta-matrix"];
 BusyDialog.args = {
   isLoading: true,
   title: "storyModalBusyTitle",

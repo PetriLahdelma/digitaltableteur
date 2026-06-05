@@ -1,1 +1,6 @@
 - status: Work in progress (beta)
+- button "Open modal"
+- alertdialog "Error":
+  - heading "Error" [level=2]
+  - paragraph: storyModalErrorBody
+  - button "OK"
