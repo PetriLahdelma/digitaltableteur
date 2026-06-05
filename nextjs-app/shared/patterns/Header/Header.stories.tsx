@@ -34,7 +34,6 @@ type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {
   tags: ["beta-matrix"],
-  name: "Default",
   render: () => <Header />,
 };
 
