@@ -64,15 +64,10 @@ export const Editorial: Story = {
       </MigrationDecisionBand>
 
       <MigrationDecisionBand title="Success — send another" className={board.bandLight}>
-        <div className={successStyles.container} style={{ maxWidth: "24rem" }}>
-          <MigrationDecisionBlock variant="legacy" title="Today — native button + module class">
-            <button type="button" className={successStyles.sendAnother}>
-              Send another message
-            </button>
-          </MigrationDecisionBlock>
+        <div className={successStyles.action} style={{ maxWidth: "24rem" }}>
           <MigrationDecisionBlock
             variant="proposed"
-            title="Proposed — @dt tertiary + sendAnother class"
+            title="Proposed — @dt tertiary text link"
           >
             <DtButton variant="tertiary" className={successStyles.sendAnother}>
               Send another message

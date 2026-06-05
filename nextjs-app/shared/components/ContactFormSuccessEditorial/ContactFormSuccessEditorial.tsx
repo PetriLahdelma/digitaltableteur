@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import Button from "@dt/Button";
 import styles from "./ContactFormSuccessEditorial.module.css";
@@ -25,58 +26,36 @@ export function ContactFormSuccessEditorial({
   sendAnotherLabel = "Send another message",
   className,
 }: ContactFormSuccessEditorialProps) {
+  const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
+  const motionEase = [0.16, 1, 0.3, 1] as const;
 
   return (
     <motion.div
       className={cn(styles.container, className)}
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+      role="status"
+      aria-live="polite"
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={
         prefersReducedMotion
           ? { duration: 0 }
-          : { duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.3 }
+          : { duration: 0.4, ease: motionEase }
       }
     >
-      {/* Title - typography carries the success */}
-      <motion.h3
-        className={styles.title}
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={
-          prefersReducedMotion
-            ? { duration: 0 }
-            : { duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.4 }
-        }
-      >
-        {title}
-      </motion.h3>
+      <p className={styles.eyebrow}>
+        {t("contactSuccessEyebrow", "Inquiry received")}
+      </p>
 
-      {/* Message */}
-      <motion.p
-        className={styles.message}
-        initial={prefersReducedMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={
-          prefersReducedMotion
-            ? { duration: 0 }
-            : { duration: 0.4, delay: 0.5 }
-        }
-      >
-        {message}
-      </motion.p>
+      <div className={styles.copy}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.message}>{message}</p>
+      </div>
 
-      {/* Send another - subtle text link */}
-      {onSendAnother && (
-        <motion.div
-          initial={prefersReducedMotion ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={
-            prefersReducedMotion
-              ? { duration: 0 }
-              : { duration: 0.4, delay: 0.6 }
-          }
-        >
+      <hr className={styles.divider} aria-hidden="true" />
+
+      {onSendAnother ? (
+        <div className={styles.action}>
           <Button
             variant="tertiary"
             className={styles.sendAnother}
@@ -84,8 +63,8 @@ export function ContactFormSuccessEditorial({
           >
             {sendAnotherLabel}
           </Button>
-        </motion.div>
-      )}
+        </div>
+      ) : null}
     </motion.div>
   );
 }
