@@ -96,10 +96,15 @@ const meta = {
       control: "select",
       options: ["inline", "article"],
       description: "Layout variant",
+      table: { defaultValue: { summary: "inline" } },
     },
     showHeading: {
       control: "boolean",
       description: "Show share heading above channel row",
+    },
+    heading: {
+      control: "text",
+      description: "Custom share section heading (defaults to i18n shareHeading)",
     },
     channels: {
       control: "object",
