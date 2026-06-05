@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ArticleLayout",
+    "tier": "template",
+    "group": "layout",
+    "status": "alpha",
+    "description": "Blog article page layout shell.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-layout",
+    "radixPrimitive": null,
+    "element": "main",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "composesWith": []
+}

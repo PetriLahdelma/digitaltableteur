@@ -195,7 +195,7 @@ if (!readFileSync(dsExecutorsPath, "utf8").includes("suggest_pattern_for_layout"
 
 const stableEntries =
   manifest.components?.filter((c) => c.contract?.status === "stable") ?? [];
-const MIN_STABLE = 6;
+const MIN_STABLE = 10;
 if (stableEntries.length < MIN_STABLE) {
   console.error(
     `FAIL: expected >=${MIN_STABLE} stable components, got ${stableEntries.length}`,
@@ -211,7 +211,7 @@ const realFigmaStable = stableEntries.filter((c) => {
   const m = figma.match(/[?&]node-id=([^&]+)/);
   return m && /^\d+[:-]\d+$/.test(m[1]);
 }).length;
-const MIN_STABLE_FIGMA = 5;
+const MIN_STABLE_FIGMA = 8;
 if (realFigmaStable < MIN_STABLE_FIGMA) {
   console.error(
     `FAIL: expected >=${MIN_STABLE_FIGMA} stable with verified Figma node-ids, got ${realFigmaStable}`,
@@ -233,6 +233,18 @@ if (compositionTest.status !== 0) {
   failed += 1;
 } else {
   console.log("✓ composition-lint-lib unit tests");
+}
+
+const catalogGate = spawnSync(
+  process.execPath,
+  [join(ROOT, "scripts/design-system/check-catalog-coverage-gate.mjs")],
+  { stdio: "inherit" },
+);
+if (catalogGate.status !== 0) {
+  console.error("FAIL: catalog coverage gate");
+  failed += 1;
+} else {
+  console.log("✓ catalog coverage ≥85%");
 }
 
 process.exit(failed ? 1 : 0);

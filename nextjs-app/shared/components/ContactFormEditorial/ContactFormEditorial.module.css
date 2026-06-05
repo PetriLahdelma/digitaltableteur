@@ -22,6 +22,10 @@
   gap: var(--space-layout-24);
 }
 
+.checkboxField {
+  padding-inline-start: var(--space-internal-8);
+}
+
 /* Expandable sections spacing */
 
 .expandable {

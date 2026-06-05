@@ -16,10 +16,25 @@ Client-facing checklist for assessing how **agent-ready** a design system is. Al
 ## Automated bundle (Digitaltableteur repo)
 
 ```bash
-npm run agentic-ds-audit
+npm run agentic-ds-audit   # Figma + MCP + contract drift (local consulting audit)
+npm run release:gate       # unified pre-release gate (tokens, evals, bundle, catalog)
 ```
 
-Runs, in order:
+### Release gate (`npm run release:gate`)
+
+| Step | What it proves |
+|------|----------------|
+| `typecheck` + `lint` | TS + ESLint clean |
+| `build:tokens` | Manifest, agent blocks, relationship graph regenerate |
+| `agent:eval` | Schema, MCP tools, intent + pattern golden sets, catalog ≥85% |
+| `check:contract-drift --strict` | TS ↔ contract parity |
+| `check:bundle-budgets` | Stable public entry source-size budgets |
+| `validate:components` | Contract + story credibility gates |
+| `check:catalog-coverage` | ≥85% catalog completeness, zero catalog-gap |
+
+Add `--full` for `test:ci`, `test:visual:ci`, and `test:a11y:pages`.
+
+### Agentic audit (`npm run agentic-ds-audit`)
 
 | Step | What it proves |
 |------|----------------|

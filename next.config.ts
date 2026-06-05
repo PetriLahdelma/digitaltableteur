@@ -65,11 +65,11 @@ const csp = isDev
   ? [
       // Development CSP - allows Next.js dev features
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.ahrefs.com https://app.cal.com https://app.cal.eu",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://analytics.ahrefs.com https://app.cal.com https://app.cal.eu https://mcp.figma.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://api.resend.com https://*.google-analytics.com https://analytics.ahrefs.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu wss: ws:",
+      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://api.resend.com https://*.google-analytics.com https://analytics.ahrefs.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu https://mcp.figma.com wss: ws:",
       // Allow embedding trusted media providers in MDX (e.g. YouTube) during local dev.
       "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com https://player.vimeo.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu https://calendly.com https://*.calendly.com",
       "media-src 'self' https: data:",

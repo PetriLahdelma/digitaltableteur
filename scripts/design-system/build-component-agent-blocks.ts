@@ -10,7 +10,12 @@ import { Project, SyntaxKind } from "ts-morph";
 import {
   extractComponentFromSourceFile,
 } from "./validate-components.ts";
-import { parseSpecAgentHints, extractSpecIntent } from "./parse-spec-agent-hints.mjs";
+import {
+  parseSpecAgentHints,
+  extractSpecIntent,
+  pickAgentIntent,
+  sanitizeAgentProseLine,
+} from "./parse-spec-agent-hints.mjs";
 import {
   getReplacementFor,
   getPrefersOver,
@@ -235,7 +240,10 @@ function main() {
     const props = extractPropSchemasFromFile(sf, entry.name);
     const variants = mergeVariants(extracted.variants, variantsFromProps(props));
     const { useWhen, avoidWhen } = parseSpecAgentHints(spec);
-    const intent = extractSpecIntent(spec);
+    const intent = pickAgentIntent(
+      extractSpecIntent(spec),
+      contract.description ?? "",
+    );
     const a11y = (contract.a11y ?? {}) as {
       ariaRequirements?: string[];
       keyboard?: string[];
@@ -243,7 +251,7 @@ function main() {
 
     blocks[entry.name] = {
       preferredImport: `@dt/${entry.name}`,
-      intent: intent || contract.description || "",
+      intent: intent || "",
       props,
       variants,
       /** CVA-only axes — safe to sync into contract.json when invoked in source */
@@ -253,9 +261,9 @@ function main() {
       avoidWhen,
       requiredA11y: a11y.ariaRequirements ?? [],
       keyboard: a11y.keyboard ?? [],
-      compositionRules: avoidWhen.filter((line) =>
-        /nest|inside|stack|terminal|pair/i.test(line),
-      ),
+      compositionRules: avoidWhen
+        .map((line) => sanitizeAgentProseLine(line) ?? line)
+        .filter((line) => /nest|inside|stack|terminal|pair|parallel|duplicate/i.test(line)),
       canonicalExamples: canonicalExamplesFromStories(join(entry.dir, `${entry.name}.stories.tsx`)),
       replacementFor: getReplacementFor(entry.name),
       forbiddenUse: getForbiddenUse(entry.name, avoidWhen),
