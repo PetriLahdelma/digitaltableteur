@@ -63,5 +63,9 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Use as a label for a single input — that is `Label`.",
+        "Style as a heading — screen readers will navigate to it as a heading and miss the group it labels."
+    ]
 }

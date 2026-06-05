@@ -61,5 +61,9 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Wrap a single input — use `FormField`.",
+        "Nest fieldsets more than 2 deep — screen-reader announcements collapse."
+    ]
 }

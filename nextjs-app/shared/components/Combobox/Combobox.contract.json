@@ -96,5 +96,8 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "nest inside containers with `overflow: hidden` without portaling (dropdown renders on `document.body`)."
+    ]
 }

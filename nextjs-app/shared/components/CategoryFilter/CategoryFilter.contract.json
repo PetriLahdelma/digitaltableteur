@@ -110,5 +110,9 @@
         "Section",
         "WorkHero",
         "WorkGrid"
+    ],
+    "forbiddenUse": [
+        "Use as primary navigation — `CategoryFilter` is a UI control, not a nav surface; use `NavLink` for routes.",
+        "Stack two filter rows when one composite control would do — readability collapses."
     ]
 }

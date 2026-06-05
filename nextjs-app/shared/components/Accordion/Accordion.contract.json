@@ -60,5 +60,10 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "put primary navigation inside an accordion. AT users land on",
+        "nest accordions more than one level deep. Two-level",
+        "ship long, scrollable panels. If the content scrolls inside"
+    ]
 }

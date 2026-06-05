@@ -65,5 +65,9 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Use as the primary site header navigation — use `NavMenuList` / `NextHeader` instead.",
+        "Nest more than three levels without testing keyboard focus order."
+    ]
 }

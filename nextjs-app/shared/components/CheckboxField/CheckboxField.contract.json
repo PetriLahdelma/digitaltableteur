@@ -88,5 +88,9 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Use for a checkbox group — use `CheckboxGroup`.",
+        "Use as a toggle for a setting that takes effect immediately — use `Switch`."
+    ]
 }

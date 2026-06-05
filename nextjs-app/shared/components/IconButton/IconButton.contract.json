@@ -102,5 +102,9 @@
         "NavLink",
         "Container",
         "LanguageSwitcher"
+    ],
+    "forbiddenUse": [
+        "Omit `label` — there is no fallback announcement.",
+        "Use for primary marketing CTAs — text + icon is more discoverable; use `Button` with an icon prop."
     ]
 }

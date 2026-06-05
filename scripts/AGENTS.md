@@ -69,7 +69,7 @@
 
 - Run: `npm run ds:health`
 - Output: `public/ds-health/report.json`, `public/ds-health/summary.md`
-- Includes: `lint:dt-usage`, `lint:dt-responsive-visibility`, shadcn inventory, last matrix result
+- Includes: `lint:dt-usage`, `lint:composition`, `lint:dt-responsive-visibility`, shadcn inventory, last matrix result
 
 **Responsive visibility lint**
 

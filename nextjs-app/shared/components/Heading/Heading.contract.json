@@ -93,5 +93,9 @@
             "optional": false,
             "type": "React.ReactNode"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Skip levels for visual effect (h1 → h3) — screen-reader navigation breaks.",
+        "Use the same level twice for the same scope when one is a subheading of the other."
+    ]
 }

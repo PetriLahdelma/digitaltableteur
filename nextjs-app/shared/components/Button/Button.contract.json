@@ -337,7 +337,18 @@
         "Text",
         "Icon",
         "Inputs",
-        "CheckboxGroup",
-        "Modal"
+        "Modal",
+        "CheckboxGroup"
+    ],
+    "forbiddenUse": [
+        "tertiary on dark or inverse backgrounds without explicit contrast verification",
+        "isInverse on primary over transparent or gradient parents — use surface instead",
+        "pair an icon-only button with a tooltip as the *only* accessible",
+        "nest a Button inside another interactive control. Buttons are",
+        "use a Button for inline navigation in body copy. Use **Link**."
+    ],
+    "prefersOver": [
+        "raw button",
+        "Link for in-copy navigation"
     ]
 }

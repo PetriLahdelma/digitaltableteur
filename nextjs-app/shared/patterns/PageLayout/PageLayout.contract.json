@@ -121,5 +121,8 @@
         "Button",
         "MarkdownMessage",
         "AuthorBio"
+    ],
+    "forbiddenUse": [
+        "Bypass design tokens or skip forced-colors verification at beta."
     ]
 }

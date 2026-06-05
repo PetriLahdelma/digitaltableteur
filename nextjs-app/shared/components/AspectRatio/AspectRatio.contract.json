@@ -56,5 +56,9 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Use this as a generic flex/grid item — pick a layout primitive instead.",
+        "Add padding or margin via className — children will overlap their own padding because the wrapper is `position: relative`."
+    ]
 }

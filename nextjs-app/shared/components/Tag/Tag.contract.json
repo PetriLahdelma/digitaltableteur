@@ -109,5 +109,9 @@
             "optional": true,
             "type": "boolean"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Use as a button — `Tag` is metadata, not an action surface. Use `Button` for actions.",
+        "Stack more than ~6 tags in a row without wrapping — readability collapses; use a `Select` instead."
+    ]
 }

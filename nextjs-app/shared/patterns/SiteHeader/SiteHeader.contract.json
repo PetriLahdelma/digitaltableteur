@@ -64,5 +64,10 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "tamper with the IconButton variants. The header's theme",
+        "nest a `<header>` inside SiteHeader. Multiple banner",
+        "hard-code the language list. The `languages` array is the"
+    ]
 }

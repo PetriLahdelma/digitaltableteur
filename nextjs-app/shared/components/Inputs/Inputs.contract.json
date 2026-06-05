@@ -135,5 +135,10 @@
         "Modal",
         "Label",
         "Title"
+    ],
+    "forbiddenUse": [
+        "ship a form that relies on the email validator as the only",
+        "pass a `value` plus a `defaultValue`. The component treats",
+        "use Inputs for multi-line text. Use **TextArea**, which"
     ]
 }

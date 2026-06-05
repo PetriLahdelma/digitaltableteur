@@ -1,12 +1,16 @@
 #!/usr/bin/env node
 /**
- * CI gate: beta/stable contracts must carry props synced from agent blocks.
+ * CI gate: beta/stable contracts must carry props + v2 semantic fields synced from agent blocks.
  *
  *   npm run check:contract-props
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  diffSemanticFields,
+  expectedSemanticFields,
+} from "./contract-semantics-lib.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const AGENT_BLOCKS_PATH = join(
@@ -58,31 +62,39 @@ for (const base of roots) {
           detail: "beta/stable requires props object (may be {})",
         });
       }
-      continue;
+    } else {
+      const missing = expectedKeys.filter((k) => !(k in actualProps));
+      const stale = Object.keys(actualProps).filter((k) => !(k in expectedProps));
+
+      if (missing.length) {
+        failures.push({
+          name,
+          kind: "props-drift",
+          detail: `missing keys: ${missing.join(", ")} — run npm run sync:contract-props -- --write`,
+        });
+      }
+      if (stale.length) {
+        failures.push({
+          name,
+          kind: "props-stale",
+          detail: `stale keys: ${stale.join(", ")} — run npm run sync:contract-props -- --write`,
+        });
+      }
     }
 
-    const missing = expectedKeys.filter((k) => !(k in actualProps));
-    const stale = Object.keys(actualProps).filter((k) => !(k in expectedProps));
-
-    if (missing.length) {
-      failures.push({
-        name,
-        kind: "props-drift",
-        detail: `missing keys: ${missing.join(", ")} — run npm run sync:contract-props -- --write`,
-      });
-    }
-    if (stale.length) {
-      failures.push({
-        name,
-        kind: "props-stale",
-        detail: `stale keys: ${stale.join(", ")} — run npm run sync:contract-props -- --write`,
-      });
+    for (const issue of diffSemanticFields(
+      contract,
+      expectedSemanticFields(agent),
+    )) {
+      failures.push({ name, ...issue });
     }
   }
 }
 
 if (!failures.length) {
-  console.log("✓ Beta/stable contract props match agent blocks");
+  console.log(
+    "✓ Beta/stable contract props and semantic fields match agent blocks",
+  );
   process.exit(0);
 }
 
