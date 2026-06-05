@@ -35,7 +35,7 @@ describe("contact-notification-email", () => {
         requestPortfolioMaterials: true,
       }),
     ).toBe(
-      "Portfolio follow-up · Contact inquiry · Petri Lahdelma · Brand & Identity",
+      "Work samples follow-up · Contact inquiry · Petri Lahdelma · Brand & Identity",
     );
   });
 
@@ -45,8 +45,19 @@ describe("contact-notification-email", () => {
       requestPortfolioMaterials: true,
     });
     expect(text).toContain(
-      "Follow-up: Resume, references, or portfolio requested",
+      "Follow-up: References or work samples requested",
     );
+  });
+
+  it("renders work samples follow-up in HTML output", () => {
+    const html = buildContactNotificationHtml({
+      ...samplePayload,
+      requestPortfolioMaterials: true,
+    });
+
+    expect(html).toContain("Follow-up requested");
+    expect(html).toContain("References or work samples requested");
+    expect(html).toContain("work samples follow-up");
   });
 
   it("formats select slugs in plain text output", () => {

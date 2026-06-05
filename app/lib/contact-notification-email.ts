@@ -42,6 +42,9 @@ const TIMELINE_LABELS: Record<string, string> = {
   flexible: "Flexible",
 };
 
+export const WORK_SAMPLES_FOLLOW_UP_LINE =
+  "References or work samples requested";
+
 const HEAR_ABOUT_LABELS: Record<string, string> = {
   "social-media": "Social media",
   "search-engine": "Search engine",
@@ -129,7 +132,7 @@ function buildTextFields(payload: ContactNotificationPayload): TextField[] {
   if (payload.requestPortfolioMaterials) {
     fields.push({
       label: "Follow-up",
-      value: "Resume, references, or portfolio requested",
+      value: WORK_SAMPLES_FOLLOW_UP_LINE,
     });
   }
   if (payload.time?.trim()) {
@@ -167,7 +170,7 @@ export function buildContactNotificationSubject(
 ): string {
   const leadInterest = payload.interest?.split(",")[0]?.trim();
   const portfolioFlag = payload.requestPortfolioMaterials
-    ? "Portfolio follow-up · "
+    ? "Work samples follow-up · "
     : "";
   return leadInterest
     ? `${portfolioFlag}Contact inquiry · ${payload.name} · ${leadInterest}`
@@ -211,6 +214,22 @@ function renderSection(title: string, bodyHtml: string): string {
       <tr>
         <td style="font-family:${FONT};font-size:15px;line-height:1.55;color:${BRAND};">
           ${bodyHtml}
+        </td>
+      </tr>
+    </table>`;
+}
+
+function renderWorkSamplesFollowUpCard(): string {
+  return `
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom:24px;border:1px solid ${BORDER};border-left:4px solid ${ACCENT};border-radius:10px;background:${SURFACE};">
+      <tr>
+        <td style="padding:16px 18px;">
+          <p style="margin:0 0 6px 0;font-family:${FONT};font-size:11px;line-height:1.3;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${MUTED};">
+            Follow-up requested
+          </p>
+          <p style="margin:0;font-family:${FONT};font-size:15px;line-height:1.5;font-weight:600;color:${BRAND};">
+            ${escapeHTML(WORK_SAMPLES_FOLLOW_UP_LINE)}
+          </p>
         </td>
       </tr>
     </table>`;
@@ -303,6 +322,10 @@ export function buildContactNotificationHtml(
     ? renderSection("Attachment note", escapeHTML(payload.attachmentNotice.trim()))
     : "";
 
+  const workSamplesSection = payload.requestPortfolioMaterials
+    ? renderWorkSamplesFollowUpCard()
+    : "";
+
   const submittedLine = payload.time?.trim()
     ? `<p style="margin:8px 0 0 0;font-family:${FONT};font-size:13px;line-height:1.4;color:rgba(255,255,255,0.72);">${escapeHTML(payload.time.trim())}</p>`
     : "";
@@ -325,7 +348,7 @@ export function buildContactNotificationHtml(
                   digitaltableteur
                 </p>
                 <p style="margin:0 0 4px 0;font-size:13px;line-height:1.4;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.64);">
-                  New contact inquiry
+                  ${payload.requestPortfolioMaterials ? "New contact inquiry · work samples follow-up" : "New contact inquiry"}
                 </p>
                 <h1 style="margin:0;font-size:28px;line-height:1.2;font-weight:600;color:#ffffff;">
                   ${escapeHTML(payload.name)}
@@ -339,6 +362,7 @@ export function buildContactNotificationHtml(
             <tr>
               <td style="padding:28px;">
                 ${metricsRow}
+                ${workSamplesSection}
                 ${projectSection}
                 ${phoneSection}
                 ${referencesSection}
