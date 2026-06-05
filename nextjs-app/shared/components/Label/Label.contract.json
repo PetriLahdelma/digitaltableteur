@@ -1,51 +1,78 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Label",
-  "tier": "atom",
-  "group": "form",
-  "status": "beta",
-  "description": "Form field label with required, disabled, and tooltip affordances.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-6",
-  "radixPrimitive": null,
-  "element": "label",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "htmlFor associates control",
-      "required state exposed"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Label",
+    "tier": "atom",
+    "group": "form",
+    "status": "beta",
+    "description": "Form field label with required, disabled, and tooltip affordances.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-6",
+    "radixPrimitive": null,
+    "element": "label",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — association and forced-colors verified in Storybook.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "disabled",
-    "htmlFor",
-    "id",
-    "ref",
-    "required",
-    "style",
-    "tooltipText"
-  ],
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "htmlFor associates control",
+            "required state exposed"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — association and forced-colors verified in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "disabled",
+        "htmlFor",
+        "id",
+        "ref",
+        "required",
+        "style",
+        "tooltipText"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "htmlFor": {
+            "optional": false,
+            "type": "string"
+        },
+        "tooltipText": {
+            "optional": true,
+            "type": "string"
+        },
+        "required": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        }
+    },
+    "composesWith": [
+        "Inputs",
+        "HelperText",
+        "Button",
+        "Checkbox",
+        "Text",
+        "Title"
+    ]
 }

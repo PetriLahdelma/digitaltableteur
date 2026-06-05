@@ -1,57 +1,68 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "SiteHeader",
-  "tier": "pattern",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Production site header with nav, theme toggle, and mobile drawer.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=476-2",
-  "radixPrimitive": null,
-  "element": "header",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab",
-      "Enter",
-      "Escape"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "SiteHeader",
+    "tier": "pattern",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Production site header with nav, theme toggle, and mobile drawer.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=476-2",
+    "radixPrimitive": null,
+    "element": "header",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "nav landmark",
-      "mobile menu keyboard trap when open"
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter",
+            "Escape"
+        ],
+        "ariaRequirements": [
+            "nav landmark",
+            "mobile menu keyboard trap when open"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true,
+        "playFunctionExempt": "Header composition; keyboard flows are covered in MobileDrawer and nav link Tab order — add story play when drawer story is split out."
+    },
+    "tokens": {
+        "colors": [
+            "--logo-background",
+            "--logo-color",
+            "--logo-text-color"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "navItems",
+        "ref",
+        "style"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true,
-    "playFunctionExempt": "Header composition; keyboard flows are covered in MobileDrawer and nav link Tab order — add story play when drawer story is split out."
-  },
-  "tokens": {
-    "colors": [
-      "--logo-background",
-      "--logo-color",
-      "--logo-text-color"
-    ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "navItems",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "navItems": {
+            "optional": true,
+            "type": "NavItem[]"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

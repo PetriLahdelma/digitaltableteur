@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "ValueCard",
     "tier": "molecule",
     "group": "display",
@@ -57,5 +57,33 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "icon": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "description": {
+            "optional": false,
+            "type": "string"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "elevated",
+                "bordered"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

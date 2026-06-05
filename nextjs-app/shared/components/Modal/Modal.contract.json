@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Modal",
     "tier": "molecule",
     "group": "overlay",
@@ -75,5 +75,103 @@
         "titleSize",
         "titleTerminals"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "severity": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error"
+            ]
+        },
+        "isLoading": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "titleSize": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "S",
+                "M",
+                "L",
+                "xs",
+                "XXS",
+                "XS",
+                "XL",
+                "XXL",
+                "xxs",
+                "xxl"
+            ]
+        },
+        "isOpen": {
+            "optional": false,
+            "type": "boolean"
+        },
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "titleTerminals": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "serif",
+                "sans"
+            ]
+        },
+        "menu": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "children": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "footer": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "onClose": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "icon": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "showCloseIcon": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "closeIconName": {
+            "optional": true,
+            "type": "string"
+        },
+        "closeButtonLabel": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Button",
+        "Title",
+        "Text",
+        "Inputs",
+        "AdaptiveLoadingButton",
+        "Toast",
+        "CheckboxGroup"
+    ]
 }

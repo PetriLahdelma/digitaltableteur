@@ -1,53 +1,83 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Pagination",
-  "tier": "molecule",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Pagination controls for paged lists (article archive, search results). Renders a `<nav>` landmark with previous/next buttons and a numbered list; supports ellipsis truncation for long page ranges.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-pagination",
-  "radixPrimitive": null,
-  "element": "nav",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — moves through the page links and prev/next buttons in document order.",
-      "Enter / Space — activates the focused control."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Pagination",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Pagination controls for paged lists (article archive, search results). Renders a `<nav>` landmark with previous/next buttons and a numbered list; supports ellipsis truncation for long page ranges.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-pagination",
+    "radixPrimitive": null,
+    "element": "nav",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "Renders a `<nav>` element with `aria-label='Pagination'` (overridable).",
-      "Current page sets `aria-current='page'`.",
-      "Previous/next buttons that are unavailable use `aria-disabled='true'` instead of being removed, so the visual structure does not jump."
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-accent",
-      "--color-surface-elevated"
-    ],
-    "spacing": [
-      "--space-internal-4",
-      "--space-internal-8"
-    ],
-    "typography": [
-      "--font-size-sm",
-      "--font-size-md"
+    "a11y": {
+        "keyboard": [
+            "Tab — moves through the page links and prev/next buttons in document order.",
+            "Enter / Space — activates the focused control."
+        ],
+        "ariaRequirements": [
+            "Renders a `<nav>` element with `aria-label='Pagination'` (overridable).",
+            "Current page sets `aria-current='page'`.",
+            "Previous/next buttons that are unavailable use `aria-disabled='true'` instead of being removed, so the visual structure does not jump."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-accent",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8"
+        ],
+        "typography": [
+            "--font-size-sm",
+            "--font-size-md"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "currentPage": {
+            "optional": false,
+            "type": "number"
+        },
+        "totalPages": {
+            "optional": false,
+            "type": "number"
+        },
+        "onPageChange": {
+            "optional": false,
+            "type": "(page: number) => void"
+        },
+        "siblingCount": {
+            "optional": true,
+            "type": "number"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Container",
+        "Section",
+        "BlogCategoryFilter",
+        "BlogGrid",
+        "EnhancedArticleCard"
     ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
 }

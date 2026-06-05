@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "FlexBox",
     "tier": "atom",
     "group": "layout",
@@ -53,5 +53,90 @@
         "ref",
         "style"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "direction": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "row",
+                "row-reverse",
+                "column",
+                "column-reverse"
+            ]
+        },
+        "wrap": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "nowrap",
+                "wrap",
+                "wrap-reverse"
+            ]
+        },
+        "justify": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "center",
+                "flex-start",
+                "flex-end",
+                "space-between",
+                "space-around",
+                "space-evenly"
+            ]
+        },
+        "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "center",
+                "flex-start",
+                "flex-end",
+                "stretch",
+                "baseline"
+            ]
+        },
+        "alignContent": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "center",
+                "flex-start",
+                "flex-end",
+                "space-between",
+                "space-around",
+                "stretch"
+            ]
+        },
+        "gap": {
+            "optional": true,
+            "type": "string | number"
+        },
+        "rowGap": {
+            "optional": true,
+            "type": "string | number"
+        },
+        "columnGap": {
+            "optional": true,
+            "type": "string | number"
+        },
+        "style": {
+            "optional": true,
+            "type": "React.CSSProperties"
+        },
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        }
+    },
+    "composesWith": [
+        "Badge",
+        "Title",
+        "Grid",
+        "ArticleCard",
+        "Avatar",
+        "Checkbox"
+    ]
 }

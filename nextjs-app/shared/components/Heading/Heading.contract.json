@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Heading",
     "tier": "atom",
     "group": "display",
@@ -58,5 +58,40 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "level": {
+            "optional": true,
+            "type": "HeadingLevel"
+        },
+        "as": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "display",
+                "xs"
+            ]
+        },
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        }
+    }
 }

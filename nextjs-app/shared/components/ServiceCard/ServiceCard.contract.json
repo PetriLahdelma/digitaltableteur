@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "ServiceCard",
     "tier": "molecule",
     "group": "marketing",
@@ -59,5 +59,50 @@
     "consumers": [],
     "slots": [
         "icon"
-    ]
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "icon": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "description": {
+            "optional": false,
+            "type": "string"
+        },
+        "href": {
+            "optional": true,
+            "type": "string"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "elevated",
+                "minimal",
+                "bordered"
+            ]
+        },
+        "iconPosition": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "left",
+                "top"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "donnyTarget": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

@@ -1,51 +1,82 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Designerman",
-  "tier": "molecule",
-  "group": "marketing",
-  "status": "beta",
-  "description": "Designerman — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-designerman",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "animations",
-    "as",
-    "asChild",
-    "audioSrc",
-    "children",
-    "className",
-    "columns",
-    "frameHeight",
-    "frameWidth",
-    "id",
-    "ref",
-    "scale",
-    "spriteSheet",
-    "style"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Designerman",
+    "tier": "molecule",
+    "group": "marketing",
+    "status": "beta",
+    "description": "Designerman — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-designerman",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "animations",
+        "as",
+        "asChild",
+        "audioSrc",
+        "children",
+        "className",
+        "columns",
+        "frameHeight",
+        "frameWidth",
+        "id",
+        "ref",
+        "scale",
+        "spriteSheet",
+        "style"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "spriteSheet": {
+            "optional": false,
+            "type": "string"
+        },
+        "frameWidth": {
+            "optional": true,
+            "type": "number"
+        },
+        "frameHeight": {
+            "optional": true,
+            "type": "number"
+        },
+        "columns": {
+            "optional": true,
+            "type": "number"
+        },
+        "animations": {
+            "optional": true,
+            "type": "Partial<Record<AnimationName, AnimationConfig>>"
+        },
+        "scale": {
+            "optional": true,
+            "type": "number"
+        },
+        "audioSrc": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

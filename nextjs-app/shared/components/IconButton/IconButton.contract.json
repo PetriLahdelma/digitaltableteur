@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "IconButton",
     "tier": "atom",
     "group": "actions",
@@ -67,5 +67,40 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "icon": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "ghost",
+                "outline"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        }
+    },
+    "composesWith": [
+        "ThemeProvider",
+        "NavLink",
+        "Container",
+        "LanguageSwitcher"
+    ]
 }

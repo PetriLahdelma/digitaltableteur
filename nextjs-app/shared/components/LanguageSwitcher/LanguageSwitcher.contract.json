@@ -1,42 +1,93 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "LanguageSwitcher",
-  "tier": "molecule",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Compact language selector: a current-language trigger that fans out the other locales as a button group.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-language-switcher",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
-  "a11y": {
-    "keyboard": ["Tab", "Enter", "Space", "Escape"],
-    "ariaRequirements": [
-      "role=group with aria-label",
-      "trigger aria-expanded + aria-controls",
-      "trigger aria-current",
-      "each option has an accessible name (aria-label)"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "LanguageSwitcher",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Compact language selector: a current-language trigger that fans out the other locales as a button group.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-language-switcher",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "Verified 2026-06-02: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label. Escape and outside-click close; reduced motion swaps the fan for a fade. KeyboardToggle play function drives open-via-trigger / close-via-Escape and passes axe; Default/Example/Playground pass axe with test:error; light + dark verified in Storybook.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "activeButtonClassName",
-    "buttonClassName",
-    "className",
-    "floatedButtonClassName",
-    "openTriggerClassName"
-  ],
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter",
+            "Space",
+            "Escape"
+        ],
+        "ariaRequirements": [
+            "role=group with aria-label",
+            "trigger aria-expanded + aria-controls",
+            "trigger aria-current",
+            "each option has an accessible name (aria-label)"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "Verified 2026-06-02: role=group + aria-label; trigger exposes aria-expanded/aria-controls/aria-current; options are native buttons with aria-label. Escape and outside-click close; reduced motion swaps the fan for a fade. KeyboardToggle play function drives open-via-trigger / close-via-Escape and passes axe; Default/Example/Playground pass axe with test:error; light + dark verified in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "activeButtonClassName",
+        "buttonClassName",
+        "className",
+        "floatedButtonClassName",
+        "openTriggerClassName"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "languages": {
+            "optional": false,
+            "type": "LanguageSwitcherOption[]"
+        },
+        "currentLang": {
+            "optional": false,
+            "type": "string"
+        },
+        "onLanguageChange": {
+            "optional": false,
+            "type": "(code: string) => void"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "buttonClassName": {
+            "optional": true,
+            "type": "string"
+        },
+        "activeButtonClassName": {
+            "optional": true,
+            "type": "string"
+        },
+        "openTriggerClassName": {
+            "optional": true,
+            "type": "string"
+        },
+        "floatedButtonClassName": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "ThemeProvider",
+        "NavLink",
+        "Container",
+        "IconButton"
+    ]
 }

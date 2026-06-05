@@ -1,53 +1,64 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Breadcrumb",
-  "tier": "molecule",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Navigation trail with current page indication.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-31",
-  "radixPrimitive": null,
-  "element": "nav",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Breadcrumb",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Navigation trail with current page indication.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-31",
+    "radixPrimitive": null,
+    "element": "nav",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "nav landmark",
-      "aria-label",
-      "current page on last item"
+    "a11y": {
+        "keyboard": [
+            "Tab"
+        ],
+        "ariaRequirements": [
+            "nav landmark",
+            "aria-label",
+            "current page on last item"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true,
+        "playFunctionExempt": "Static navigation landmark; Tab order only."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "aria-label",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "items",
+        "ref",
+        "style"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true,
-    "playFunctionExempt": "Static navigation landmark; Tab order only."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "aria-label",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "items",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "items": {
+            "optional": false,
+            "type": "BreadcrumbItem[]"
+        },
+        "aria-label": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

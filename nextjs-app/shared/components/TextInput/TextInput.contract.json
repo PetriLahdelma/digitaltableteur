@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "TextInput",
     "tier": "atom",
     "group": "form",
@@ -66,5 +66,37 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "startIcon": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "endIcon": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "clearable": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onClear": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "error": {
+            "optional": true,
+            "type": "boolean"
+        }
+    }
 }

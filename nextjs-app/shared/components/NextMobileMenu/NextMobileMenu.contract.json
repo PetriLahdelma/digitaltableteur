@@ -1,50 +1,77 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "NextMobileMenu",
-  "tier": "pattern",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Mobile-viewport navigation drawer paired with `NextHeader`. Opens on the header's mobile-menu trigger, traps focus while open, and closes on Esc / outside click.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-next-mobile-menu",
-  "radixPrimitive": null,
-  "element": "dialog",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Esc — closes the menu, focus returns to the trigger.",
-      "Tab — cycles through focusable items inside the menu.",
-      "Shift+Tab — reverse cycle."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "NextMobileMenu",
+    "tier": "pattern",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Mobile-viewport navigation drawer paired with `NextHeader`. Opens on the header's mobile-menu trigger, traps focus while open, and closes on Esc / outside click.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-next-mobile-menu",
+    "radixPrimitive": null,
+    "element": "dialog",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "Renders a `role='dialog'` with `aria-modal='true'` while open.",
-      "Focus is trapped inside the drawer until close.",
-      "Outside content has `aria-hidden='true'` while the menu is open."
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "motion": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-surface-elevated"
-    ],
-    "spacing": [
-      "--space-internal-16",
-      "--space-internal-24"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Esc — closes the menu, focus returns to the trigger.",
+            "Tab — cycles through focusable items inside the menu.",
+            "Shift+Tab — reverse cycle."
+        ],
+        "ariaRequirements": [
+            "Renders a `role='dialog'` with `aria-modal='true'` while open.",
+            "Focus is trapped inside the drawer until close.",
+            "Outside content has `aria-hidden='true'` while the menu is open."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "motion": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-16",
+            "--space-internal-24"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "isOpen": {
+            "optional": false,
+            "type": "boolean"
+        },
+        "onClose": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "onNavigate": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "navItems": {
+            "optional": false,
+            "type": "NavItem[]"
+        },
+        "languages": {
+            "optional": false,
+            "type": "{ code: string; label: string; ariaLabel: string }[]"
+        }
+    }
 }

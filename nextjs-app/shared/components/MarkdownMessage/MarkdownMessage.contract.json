@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "MarkdownMessage",
     "tier": "molecule",
     "group": "structure",
@@ -54,5 +54,44 @@
         "renderWithDesignSystem",
         "style"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "content": {
+            "optional": false,
+            "type": "string"
+        },
+        "fallback": {
+            "optional": true,
+            "type": "string"
+        },
+        "data-role": {
+            "optional": true,
+            "type": "string"
+        },
+        "renderWithDesignSystem": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "designSystemTextSize": {
+            "optional": true,
+            "type": "DesignSystemTextSize"
+        },
+        "density": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "chat"
+            ]
+        }
+    },
+    "composesWith": [
+        "Card",
+        "Button",
+        "Text",
+        "Title",
+        "PageLayout",
+        "OpenHours"
+    ]
 }

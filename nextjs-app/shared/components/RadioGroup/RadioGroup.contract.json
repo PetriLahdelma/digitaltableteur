@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "RadioGroup",
     "tier": "molecule",
     "group": "form",
@@ -60,5 +60,68 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "name": {
+            "optional": true,
+            "type": "string"
+        },
+        "legend": {
+            "optional": false,
+            "type": "string"
+        },
+        "options": {
+            "optional": false,
+            "type": "RadioGroupOption[]"
+        },
+        "value": {
+            "optional": true,
+            "type": "string"
+        },
+        "defaultValue": {
+            "optional": true,
+            "type": "string"
+        },
+        "onValueChange": {
+            "optional": true,
+            "type": "(value: string) => void"
+        },
+        "orientation": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "horizontal",
+                "vertical"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "isDisabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "error": {
+            "optional": true,
+            "type": "string"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

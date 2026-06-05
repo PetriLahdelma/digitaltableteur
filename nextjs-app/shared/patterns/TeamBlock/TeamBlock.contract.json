@@ -1,58 +1,136 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "TeamBlock",
-  "tier": "pattern",
-  "group": "structure",
-  "status": "beta",
-  "description": "TeamBlock — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-team-block",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [
-    "description"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [
-      "--color-light-bg",
-      "--color-white"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "TeamBlock",
+    "tier": "pattern",
+    "group": "structure",
+    "status": "beta",
+    "description": "TeamBlock — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-team-block",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [
+        "description"
     ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "ariaLabel",
-    "as",
-    "asChild",
-    "backgroundColor",
-    "children",
-    "className",
-    "columns",
-    "description",
-    "id",
-    "maxWidth",
-    "members",
-    "ref",
-    "roundImages",
-    "sectionTitle",
-    "spacing",
-    "style"
-  ],
-  "consumers": []
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [
+            "--color-light-bg",
+            "--color-white"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "ariaLabel",
+        "as",
+        "asChild",
+        "backgroundColor",
+        "children",
+        "className",
+        "columns",
+        "description",
+        "id",
+        "maxWidth",
+        "members",
+        "ref",
+        "roundImages",
+        "sectionTitle",
+        "spacing",
+        "style"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "members": {
+            "optional": false,
+            "type": "TeamMember[]"
+        },
+        "sectionTitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "columns": {
+            "optional": true,
+            "type": "2 | 3 | 4 | 5 | 6"
+        },
+        "backgroundColor": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "light",
+                "white",
+                "transparent"
+            ]
+        },
+        "maxWidth": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ]
+        },
+        "spacing": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "compact",
+                "comfortable",
+                "spacious"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "as": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "article",
+                "div",
+                "section"
+            ]
+        },
+        "ariaLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "roundImages": {
+            "optional": true,
+            "type": "boolean"
+        }
+    },
+    "composesWith": [
+        "Text",
+        "ProcessBlock",
+        "StoryBlock",
+        "GridBlock",
+        "ProjectDetailLayout",
+        "ProjectHero"
+    ]
 }

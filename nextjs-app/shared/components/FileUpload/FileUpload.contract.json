@@ -1,64 +1,139 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "FileUpload",
-  "tier": "molecule",
-  "group": "form",
-  "status": "beta",
-  "description": "File picker with size validation and clear control.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=384-26",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab",
-      "Enter",
-      "Space"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "FileUpload",
+    "tier": "molecule",
+    "group": "form",
+    "status": "beta",
+    "description": "File picker with size validation and clear control.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=384-26",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "label association",
-      "error via HelperText"
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter",
+            "Space"
+        ],
+        "ariaRequirements": [
+            "label association",
+            "error via HelperText"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "accept",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "clearButtonLabel",
+        "disabled",
+        "error",
+        "helperText",
+        "id",
+        "label",
+        "maxSizeInBytes",
+        "onFileChange",
+        "placeholder",
+        "ref",
+        "required",
+        "sizeErrorMessage",
+        "style",
+        "uploadButtonLabel",
+        "value"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "accept",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "clearButtonLabel",
-    "disabled",
-    "error",
-    "helperText",
-    "id",
-    "label",
-    "maxSizeInBytes",
-    "onFileChange",
-    "placeholder",
-    "ref",
-    "required",
-    "sizeErrorMessage",
-    "style",
-    "uploadButtonLabel",
-    "value"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "placeholder": {
+            "optional": true,
+            "type": "string"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
+        },
+        "uploadButtonLabel": {
+            "optional": false,
+            "type": "string"
+        },
+        "clearButtonLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "accept": {
+            "optional": true,
+            "type": "string"
+        },
+        "maxSizeInBytes": {
+            "optional": true,
+            "type": "number"
+        },
+        "sizeErrorMessage": {
+            "optional": true,
+            "type": "string"
+        },
+        "error": {
+            "optional": true,
+            "type": "string"
+        },
+        "value": {
+            "optional": true,
+            "type": "File | null"
+        },
+        "onFileChange": {
+            "optional": true,
+            "type": "(file: File | null) => void"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "required": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "appearance": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "editorial"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Button",
+        "PhoneInput",
+        "Inputs",
+        "CheckboxGroup",
+        "Modal",
+        "Toast"
+    ]
 }

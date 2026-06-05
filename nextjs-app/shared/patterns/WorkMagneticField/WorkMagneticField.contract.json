@@ -1,47 +1,82 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "WorkMagneticField",
-  "tier": "pattern",
-  "group": "marketing",
-  "status": "beta",
-  "description": "Homepage work grid with magnetic hover on project cards.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-magnetic-field",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "projects",
-    "ref",
-    "showViewAll",
-    "style",
-    "title"
-  ],
-  "consumers": [],
-  "slots": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "WorkMagneticField",
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "beta",
+    "description": "Homepage work grid with magnetic hover on project cards.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-magnetic-field",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "projects",
+        "ref",
+        "showViewAll",
+        "style",
+        "title"
+    ],
+    "consumers": [],
+    "slots": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "projects": {
+            "optional": false,
+            "type": "ProjectItem[]"
+        },
+        "showViewAll": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "donnyTarget": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "HomeHero",
+        "ServicesSection",
+        "CTASection",
+        "NewsBulletin",
+        "DesignSprintsSection",
+        "HighlightSection"
+    ]
 }

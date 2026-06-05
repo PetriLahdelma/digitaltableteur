@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "List",
     "tier": "molecule",
     "group": "structure",
@@ -64,5 +64,93 @@
         "ref",
         "style"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "items": {
+            "optional": false,
+            "type": "React.ReactNode[]"
+        },
+        "as": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "ol",
+                "ul"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "terminals": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "serif",
+                "sans"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "S",
+                "M",
+                "L",
+                "XXS",
+                "XS",
+                "XL",
+                "XXL"
+            ]
+        },
+        "lineHeight": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "normal",
+                "tight",
+                "snug",
+                "relaxed",
+                "loose"
+            ]
+        },
+        "style": {
+            "optional": true,
+            "type": "React.CSSProperties"
+        },
+        "listStyleType": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "none",
+                "decimal",
+                "circle",
+                "square",
+                "disc",
+                "decimal-leading-zero",
+                "lower-alpha",
+                "upper-alpha",
+                "lower-roman",
+                "upper-roman"
+            ]
+        },
+        "spacing": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "normal",
+                "relaxed",
+                "compact"
+            ]
+        },
+        "role": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Title",
+        "Text"
+    ]
 }

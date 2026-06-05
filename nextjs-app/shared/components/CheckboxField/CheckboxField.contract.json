@@ -1,49 +1,92 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "CheckboxField",
-  "tier": "molecule",
-  "group": "form",
-  "status": "beta",
-  "description": "Single checkbox wired to a label and optional helper text. Distinct from `Checkbox` (the unwrapped primitive) — `CheckboxField` is the form-row composition with `Label` + `HelperText` already attached.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-checkbox-field",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — focuses the checkbox.",
-      "Space — toggles the checkbox."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "CheckboxField",
+    "tier": "molecule",
+    "group": "form",
+    "status": "beta",
+    "description": "Single checkbox wired to a label and optional helper text. Distinct from `Checkbox` (the unwrapped primitive) — `CheckboxField` is the form-row composition with `Label` + `HelperText` already attached.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-checkbox-field",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "Renders a native `<input type='checkbox'>` linked to the label via `htmlFor` / `id`.",
-      "`indeterminate` is set imperatively on mount when the prop is true; the visual matches.",
-      "`error` exposes the helper text as `role='alert'` on form submit."
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-border-default",
-      "--color-accent"
-    ],
-    "spacing": [
-      "--space-internal-4",
-      "--space-internal-8"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Tab — focuses the checkbox.",
+            "Space — toggles the checkbox."
+        ],
+        "ariaRequirements": [
+            "Renders a native `<input type='checkbox'>` linked to the label via `htmlFor` / `id`.",
+            "`indeterminate` is set imperatively on mount when the prop is true; the visual matches.",
+            "`error` exposes the helper text as `role='alert'` on form submit."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-border-default",
+            "--color-accent"
+        ],
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "checked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "defaultChecked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onCheckedChange": {
+            "optional": true,
+            "type": "(checked: boolean) => void"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "required": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "error": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

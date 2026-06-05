@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "TextLink",
     "tier": "atom",
     "group": "navigation",
@@ -54,5 +54,46 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "href": {
+            "optional": false,
+            "type": "string"
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "muted",
+                "accent"
+            ]
+        },
+        "underline": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "none",
+                "always",
+                "hover"
+            ]
+        },
+        "external": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Divider",
+        "Layout"
+    ]
 }

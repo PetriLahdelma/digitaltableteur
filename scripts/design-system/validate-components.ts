@@ -2,8 +2,6 @@
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs'
 import { basename, join, resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import Ajv2020 from 'ajv/dist/2020.js'
-import addFormats from 'ajv-formats'
 import {
     Project,
     SyntaxKind,
@@ -13,6 +11,7 @@ import {
     type PropertyAssignment,
 } from 'ts-morph'
 import { VARIANT_PROP_NAMES } from './cva-sync-lib.mjs'
+import { validateContractSchema } from './contract-schema-lib.mjs'
 
 type VariantMap = Record<string, { values: string[]; default: string | null }>
 
@@ -301,13 +300,9 @@ const STUB_MDX_PHRASES = [
 const STUB_SPEC_MARKER = /\bTODO\b:/
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const schemaPath = resolve(__dirname, 'contract.schema.json')
 
 function loadValidator() {
-    const schema = JSON.parse(readFileSync(schemaPath, 'utf8'))
-    const ajv = new Ajv2020({ strict: false, allErrors: true })
-    addFormats(ajv)
-    return ajv.compile(schema)
+    return validateContractSchema
 }
 
 function isComponentDir(dir: string): boolean {
@@ -466,9 +461,9 @@ export function validateComponentsDir(root: string): ValidationResult {
             continue
         }
 
-        const ok = validateSchema(manifest)
-        if (!ok) {
-            for (const err of validateSchema.errors ?? []) {
+        const schemaResult = validateSchema(manifest)
+        if (!schemaResult.ok) {
+            for (const err of schemaResult.errors ?? []) {
                 errors.push(`${name}.contract.json: ${err.instancePath || '/'} ${err.message}`)
             }
             continue

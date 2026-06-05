@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Radio",
     "tier": "atom",
     "group": "form",
@@ -50,5 +50,52 @@
         "spacing": []
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "value": {
+            "optional": false,
+            "type": "string"
+        },
+        "name": {
+            "optional": false,
+            "type": "string"
+        },
+        "isChecked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "defaultChecked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "isDisabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "onCheckedChange": {
+            "optional": true,
+            "type": "(checked: boolean) => void"
+        },
+        "showLabel": {
+            "optional": true,
+            "type": "boolean"
+        }
+    }
 }

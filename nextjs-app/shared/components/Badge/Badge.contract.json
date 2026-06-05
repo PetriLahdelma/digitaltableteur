@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Badge",
     "tier": "atom",
     "group": "display",
@@ -98,5 +98,76 @@
             "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
             "since": "2026-06-04"
         }
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "design": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "primary",
+                "secondary"
+            ]
+        },
+        "state": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error",
+                "neutral"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "removable": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onRemove": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "icon": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "square": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "s",
+                "m",
+                "l"
+            ]
+        },
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "role": {
+            "optional": true,
+            "type": "\"status\""
+        }
+    },
+    "composesWith": [
+        "Link",
+        "Button",
+        "Text",
+        "Title",
+        "FlexBox",
+        "Grid"
     ]
 }

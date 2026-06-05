@@ -1,67 +1,118 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Select",
-  "tier": "atom",
-  "group": "form",
-  "status": "beta",
-  "description": "Native select with label, options, error state, and size tokens.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=383-23",
-  "radixPrimitive": null,
-  "element": "select",
-  "variants": {
-    "size": {
-      "values": [
-        "sm",
-        "md",
-        "lg",
-        "S",
-        "M",
-        "L"
-      ],
-      "default": "md",
-      "forwarded": true,
-      "forwardedTo": "CSS module size classes"
-    }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Arrow keys",
-      "Enter",
-      "Space",
-      "Tab"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Select",
+    "tier": "atom",
+    "group": "form",
+    "status": "beta",
+    "description": "Native select with label, options, error state, and size tokens.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=383-23",
+    "radixPrimitive": null,
+    "element": "select",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ],
+            "default": "md",
+            "forwarded": true,
+            "forwardedTo": "CSS module size classes"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "associated label",
-      "error announced via HelperText"
+    "a11y": {
+        "keyboard": [
+            "Arrow keys",
+            "Enter",
+            "Space",
+            "Tab"
+        ],
+        "ariaRequirements": [
+            "associated label",
+            "error announced via HelperText"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "size",
+        "style"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "size",
-    "style"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "options": {
+            "optional": true,
+            "type": "SelectOptionItem[]"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
+        },
+        "error": {
+            "optional": true,
+            "type": "string"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "isDisabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onValueChange": {
+            "optional": true,
+            "type": "(value: string) => void"
+        },
+        "onChange": {
+            "optional": true,
+            "type": "(value: string) => void"
+        }
+    },
+    "composesWith": [
+        "Inputs",
+        "Button",
+        "CheckboxGroup",
+        "Modal",
+        "Toast",
+        "FileUpload"
+    ]
 }

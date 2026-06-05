@@ -1,44 +1,79 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ArticleCard",
-  "tier": "molecule",
-  "group": "content",
-  "status": "beta",
-  "description": "Blog article teaser card with title, lead, and read time.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-card",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "style"
-  ],
-  "consumers": [],
-  "slots": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ArticleCard",
+    "tier": "molecule",
+    "group": "content",
+    "status": "beta",
+    "description": "Blog article teaser card with title, lead, and read time.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-article-card",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "style"
+    ],
+    "consumers": [],
+    "slots": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "lead": {
+            "optional": true,
+            "type": "string"
+        },
+        "link": {
+            "optional": false,
+            "type": "string"
+        },
+        "readTime": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "loading": {
+            "optional": true,
+            "type": "boolean"
+        }
+    },
+    "composesWith": [
+        "Grid",
+        "Avatar",
+        "Checkbox",
+        "CheckboxGroup",
+        "FlexBox",
+        "Inputs"
+    ]
 }

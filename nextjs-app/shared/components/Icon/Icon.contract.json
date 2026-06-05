@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Icon",
     "tier": "atom",
     "group": "display",
@@ -128,5 +128,94 @@
             "path": "app/work/intrum/page.tsx",
             "since": "2026-06-04"
         }
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "name": {
+            "optional": false,
+            "type": "string"
+        },
+        "weight": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "thin",
+                "light",
+                "regular",
+                "bold",
+                "fill",
+                "duotone"
+            ]
+        },
+        "legacyStyle": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "thin",
+                "light",
+                "regular",
+                "duotone",
+                "solid",
+                "brands"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "xs",
+                "2xs",
+                "2xl"
+            ]
+        },
+        "color": {
+            "optional": true,
+            "type": "string"
+        },
+        "rotate": {
+            "optional": true,
+            "type": "0 | 90 | 180 | 270"
+        },
+        "flip": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "both",
+                "horizontal",
+                "vertical"
+            ]
+        },
+        "spin": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "pulse": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "mirrored": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "ariaLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "decorative": {
+            "optional": true,
+            "type": "boolean"
+        }
+    },
+    "composesWith": [
+        "Button",
+        "Title",
+        "ComplianceCard",
+        "CodeSnippet",
+        "Text",
+        "HelperText"
     ]
 }

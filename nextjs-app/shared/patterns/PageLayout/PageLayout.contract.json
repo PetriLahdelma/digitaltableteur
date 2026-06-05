@@ -1,51 +1,125 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "PageLayout",
-  "tier": "pattern",
-  "group": "layout",
-  "status": "beta",
-  "description": "PageLayout — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-page-layout",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "ariaLabel",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "columns",
-    "grid",
-    "id",
-    "maxWidth",
-    "ref",
-    "role",
-    "spacing",
-    "style",
-    "withMargins"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "PageLayout",
+    "tier": "pattern",
+    "group": "layout",
+    "status": "beta",
+    "description": "PageLayout — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-page-layout",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "ariaLabel",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "columns",
+        "grid",
+        "id",
+        "maxWidth",
+        "ref",
+        "role",
+        "spacing",
+        "style",
+        "withMargins"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "maxWidth": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ]
+        },
+        "grid": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "columns": {
+            "optional": true,
+            "type": "number"
+        },
+        "spacing": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "compact",
+                "comfortable",
+                "spacious"
+            ]
+        },
+        "withMargins": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "as": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "article",
+                "main",
+                "div",
+                "section"
+            ]
+        },
+        "role": {
+            "optional": true,
+            "type": "string"
+        },
+        "ariaLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "style": {
+            "optional": true,
+            "type": "React.CSSProperties"
+        }
+    },
+    "composesWith": [
+        "Title",
+        "Card",
+        "Text",
+        "Button",
+        "MarkdownMessage",
+        "AuthorBio"
+    ]
 }

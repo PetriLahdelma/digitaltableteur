@@ -1,48 +1,75 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ContactHero",
-  "tier": "pattern",
-  "group": "marketing",
-  "status": "beta",
-  "description": "Contact page hero with headline and supporting copy.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-contact-hero",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "background",
-    "children",
-    "className",
-    "compact",
-    "id",
-    "ref",
-    "style",
-    "subtitle",
-    "title"
-  ],
-  "consumers": [],
-  "slots": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ContactHero",
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "beta",
+    "description": "Contact page hero with headline and supporting copy.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-contact-hero",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "background",
+        "children",
+        "className",
+        "compact",
+        "id",
+        "ref",
+        "style",
+        "subtitle",
+        "title"
+    ],
+    "consumers": [],
+    "slots": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "subtitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "background": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "minimal",
+                "gradient"
+            ]
+        },
+        "compact": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

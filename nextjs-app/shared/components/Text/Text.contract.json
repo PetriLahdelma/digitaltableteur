@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Text",
     "tier": "atom",
     "group": "display",
@@ -131,5 +131,70 @@
             "path": "nextjs-app/shared/components/pages/SitemapPage/SitemapPage.tsx",
             "since": "2026-06-04"
         }
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": true,
+            "type": "ReactI18NextChildren | Iterable<ReactI18NextChildren>"
+        },
+        "as": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "cite",
+                "div",
+                "em",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "p",
+                "span",
+                "strong"
+            ]
+        },
+        "terminals": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "serif",
+                "sans"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "S",
+                "M",
+                "L",
+                "XXS",
+                "XS",
+                "XL",
+                "XXL"
+            ]
+        },
+        "lineHeight": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "normal",
+                "tight",
+                "snug",
+                "relaxed",
+                "loose"
+            ]
+        }
+    },
+    "composesWith": [
+        "Title",
+        "StoryBlock",
+        "ProjectDetailLayout",
+        "ProjectHero",
+        "RelatedProjects",
+        "Button"
     ]
 }

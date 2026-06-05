@@ -1,44 +1,83 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "PhoneInput",
-  "tier": "molecule",
-  "group": "form",
-  "status": "beta",
-  "description": "PhoneInput — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-phone-input",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "PhoneInput",
+    "tier": "molecule",
+    "group": "form",
+    "status": "beta",
+    "description": "PhoneInput — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-phone-input",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "style"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "value": {
+            "optional": true,
+            "type": "string"
+        },
+        "error": {
+            "optional": true,
+            "type": "string"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
+        },
+        "placeholder": {
+            "optional": true,
+            "type": "string"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onChange": {
+            "optional": true,
+            "type": "(value: string | undefined) => void"
+        }
+    },
+    "composesWith": [
+        "FileUpload",
+        "Inputs",
+        "Button",
+        "CheckboxGroup",
+        "Modal",
+        "Toast"
+    ]
 }

@@ -1,66 +1,114 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "TextArea",
-  "tier": "atom",
-  "group": "form",
-  "status": "beta",
-  "description": "Multi-line text field with optional label, validation, and character count.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-17",
-  "radixPrimitive": null,
-  "element": "textarea",
-  "variants": {
-    "size": {
-      "values": [
-        "sm",
-        "md",
-        "lg",
-        "S",
-        "M",
-        "L"
-      ],
-      "default": "md",
-      "forwarded": true,
-      "forwardedTo": "normalizeSizeProp + CSS module size classes"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "TextArea",
+    "tier": "atom",
+    "group": "form",
+    "status": "beta",
+    "description": "Multi-line text field with optional label, validation, and character count.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=374-17",
+    "radixPrimitive": null,
+    "element": "textarea",
+    "variants": {
+        "size": {
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ],
+            "default": "md",
+            "forwarded": true,
+            "forwardedTo": "normalizeSizeProp + CSS module size classes"
+        }
+    },
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "argTypesProxyExempt": [
+        "className",
+        "onValueChange",
+        "onChange"
+    ],
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Shift+Tab"
+        ],
+        "ariaRequirements": [
+            "aria-label or associated label",
+            "aria-invalid when error"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [
+            "--color-border",
+            "--color-primary",
+            "--color-error"
+        ],
+        "spacing": [
+            "--space-internal-8"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "label": {
+            "optional": true,
+            "type": "string"
+        },
+        "error": {
+            "optional": true,
+            "type": "string | boolean"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "isDisabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "showCount": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onValueChange": {
+            "optional": true,
+            "type": "(value: string) => void"
+        },
+        "resize": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "none",
+                "both",
+                "vertical"
+            ]
+        }
     }
-  },
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "argTypesProxyExempt": [
-    "className",
-    "onValueChange",
-    "onChange"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab",
-      "Shift+Tab"
-    ],
-    "ariaRequirements": [
-      "aria-label or associated label",
-      "aria-invalid when error"
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [
-      "--color-border",
-      "--color-primary",
-      "--color-error"
-    ],
-    "spacing": [
-      "--space-internal-8"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
 }

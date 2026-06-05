@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Combobox",
     "tier": "molecule",
     "group": "form",
@@ -49,5 +49,52 @@
         "id",
         "options"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "label": {
+            "optional": false,
+            "type": "string"
+        },
+        "options": {
+            "optional": false,
+            "type": "ComboboxOption[]"
+        },
+        "value": {
+            "optional": false,
+            "type": "string"
+        },
+        "onValueChange": {
+            "optional": false,
+            "type": "(value: string) => void"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "placeholder": {
+            "optional": true,
+            "type": "string"
+        },
+        "helperText": {
+            "optional": true,
+            "type": "string"
+        },
+        "error": {
+            "optional": true,
+            "type": "string"
+        },
+        "required": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "isDisabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

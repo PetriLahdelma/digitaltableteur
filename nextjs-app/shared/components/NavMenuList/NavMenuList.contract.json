@@ -1,49 +1,72 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "NavMenuList",
-  "tier": "molecule",
-  "group": "navigation",
-  "status": "beta",
-  "description": "NavMenuList — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-nav-menu-list",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "activeClassName",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "itemClassName",
-    "items",
-    "listClassName",
-    "onNavigate",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "NavMenuList",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "beta",
+    "description": "NavMenuList — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-nav-menu-list",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "activeClassName",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "itemClassName",
+        "items",
+        "listClassName",
+        "onNavigate",
+        "ref",
+        "style"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "items": {
+            "optional": false,
+            "type": "NavMenuItem[]"
+        },
+        "onNavigate": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "activeClassName": {
+            "optional": true,
+            "type": "string"
+        },
+        "listClassName": {
+            "optional": true,
+            "type": "string"
+        },
+        "itemClassName": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }
