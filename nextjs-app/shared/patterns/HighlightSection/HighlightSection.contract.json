@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "HighlightSection",
     "tier": "pattern",
     "group": "marketing",
@@ -67,5 +67,67 @@
         "variant"
     ],
     "consumers": [],
-    "slots": []
+    "slots": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "overline": {
+            "optional": true,
+            "type": "string"
+        },
+        "description": {
+            "optional": false,
+            "type": "string"
+        },
+        "cta": {
+            "optional": true,
+            "type": "HighlightSectionCTA | HighlightSectionCTA[]"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "pattern",
+                "solid",
+                "gradient",
+                "dots"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "compact",
+                "comfortable",
+                "spacious"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "ariaLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "donnyTarget": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "HomeHero",
+        "ServicesSection",
+        "WorkMagneticField",
+        "CTASection",
+        "NewsBulletin",
+        "DesignSprintsSection"
+    ]
 }

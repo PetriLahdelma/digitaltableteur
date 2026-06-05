@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "DonnyAvatar",
     "tier": "molecule",
     "group": "display",
@@ -67,5 +67,105 @@
         "style",
         "trackMouse"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "state": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "success",
+                "error",
+                "loading",
+                "idle",
+                "listening",
+                "thinking",
+                "searching",
+                "confused",
+                "handoff",
+                "greeting",
+                "acknowledging",
+                "suggesting",
+                "confident",
+                "curious",
+                "celebrating",
+                "apologetic",
+                "typing",
+                "waving",
+                "remembering",
+                "focused",
+                "playful",
+                "impressed",
+                "skeptical",
+                "sleepy",
+                "sleeping"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "onTransitionEnd": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "showLabel": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "trackMouse": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "proximitySelectors": {
+            "optional": true,
+            "type": "string[]"
+        },
+        "onProximityChange": {
+            "optional": true,
+            "type": "(isNearTarget: boolean, targetSelector?: string) => void"
+        },
+        "proximityThreshold": {
+            "optional": true,
+            "type": "number"
+        },
+        "enableIdleExpressions": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "idleExpressionInterval": {
+            "optional": true,
+            "type": "number"
+        },
+        "isSpeaking": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "enableSleepDetection": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "sleepyDelay": {
+            "optional": true,
+            "type": "number"
+        },
+        "sleepDelay": {
+            "optional": true,
+            "type": "number"
+        },
+        "decorative": {
+            "optional": true,
+            "type": "boolean"
+        }
+    }
 }

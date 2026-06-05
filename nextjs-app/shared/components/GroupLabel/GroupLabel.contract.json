@@ -1,44 +1,67 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "GroupLabel",
-  "tier": "atom",
-  "group": "form",
-  "status": "beta",
-  "description": "Fieldset/legend-shaped label used by `CheckboxGroup`, `FormGroup`, and other multi-control groupings. Provides the group's accessible name without forcing every child input to repeat it.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-group-label",
-  "radixPrimitive": null,
-  "element": "label",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [
-      "Renders a `<label>` element; pair with a fieldset or use `aria-labelledby` on the group container so the legend becomes the group's accessible name."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "GroupLabel",
+    "tier": "atom",
+    "group": "form",
+    "status": "beta",
+    "description": "Fieldset/legend-shaped label used by `CheckboxGroup`, `FormGroup`, and other multi-control groupings. Provides the group's accessible name without forcing every child input to repeat it.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-group-label",
+    "radixPrimitive": null,
+    "element": "label",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text"
-    ],
-    "spacing": [
-      "--space-internal-4"
-    ],
-    "typography": [
-      "--font-size-sm"
-    ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [
+            "Renders a `<label>` element; pair with a fieldset or use `aria-labelledby` on the group container so the legend becomes the group's accessible name."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text"
+        ],
+        "spacing": [
+            "--space-internal-4"
+        ],
+        "typography": [
+            "--font-size-sm"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "htmlFor": {
+            "optional": false,
+            "type": "string"
+        },
+        "tooltipText": {
+            "optional": true,
+            "type": "string"
+        },
+        "required": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "title": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

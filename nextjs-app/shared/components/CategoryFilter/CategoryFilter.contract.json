@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "CategoryFilter",
     "tier": "molecule",
     "group": "navigation",
@@ -67,5 +67,48 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "categories": {
+            "optional": false,
+            "type": "CategoryOption[]"
+        },
+        "activeCategory": {
+            "optional": false,
+            "type": "string"
+        },
+        "onCategoryChange": {
+            "optional": false,
+            "type": "(category: string) => void"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "pills",
+                "underline",
+                "minimal"
+            ]
+        }
+    },
+    "composesWith": [
+        "Container",
+        "Section",
+        "WorkHero",
+        "WorkGrid"
+    ]
 }

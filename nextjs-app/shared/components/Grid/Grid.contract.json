@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Grid",
     "tier": "atom",
     "group": "layout",
@@ -65,5 +65,97 @@
         "rows",
         "style"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "columns": {
+            "optional": true,
+            "type": "number | string"
+        },
+        "rows": {
+            "optional": true,
+            "type": "number | string"
+        },
+        "gap": {
+            "optional": true,
+            "type": "string"
+        },
+        "rowGap": {
+            "optional": true,
+            "type": "string"
+        },
+        "colGap": {
+            "optional": true,
+            "type": "string"
+        },
+        "align": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "inherit",
+                "center",
+                "flex-start",
+                "flex-end",
+                "stretch",
+                "baseline",
+                "-moz-initial",
+                "initial",
+                "revert",
+                "revert-layer",
+                "unset",
+                "end",
+                "self-end",
+                "self-start",
+                "start",
+                "anchor-center",
+                "normal"
+            ]
+        },
+        "justify": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "inherit",
+                "center",
+                "flex-start",
+                "flex-end",
+                "stretch",
+                "baseline",
+                "-moz-initial",
+                "initial",
+                "revert",
+                "revert-layer",
+                "unset",
+                "end",
+                "self-end",
+                "self-start",
+                "start",
+                "anchor-center",
+                "normal",
+                "left",
+                "legacy",
+                "right"
+            ]
+        },
+        "style": {
+            "optional": true,
+            "type": "CSSProperties"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Link",
+        "ArticleCard",
+        "Avatar",
+        "Checkbox",
+        "CheckboxGroup",
+        "FlexBox"
+    ]
 }

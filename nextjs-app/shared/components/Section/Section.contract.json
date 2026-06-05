@@ -1,46 +1,95 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Section",
-  "tier": "atom",
-  "group": "layout",
-  "status": "beta",
-  "description": "Semantic section wrapper with spacing and background tokens.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-section",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "ariaRequirements": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "background",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "spacing",
-    "style"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Section",
+    "tier": "atom",
+    "group": "layout",
+    "status": "beta",
+    "description": "Semantic section wrapper with spacing and background tokens.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-section",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "2026-05-28 — Breadth beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "background",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "spacing",
+        "style"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "spacing": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "none",
+                "hero",
+                "follow"
+            ]
+        },
+        "background": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "muted",
+                "accent",
+                "inverse"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "donnyTarget": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Container",
+        "ScrollIndicator",
+        "EnhancedProjectCard",
+        "WorkHero",
+        "CategoryFilter"
+    ]
 }

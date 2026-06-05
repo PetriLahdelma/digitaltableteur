@@ -1,52 +1,75 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Gallery",
-  "tier": "molecule",
-  "group": "display",
-  "status": "beta",
-  "description": "Image gallery grid with a click-to-expand lightbox and motion on hover. Used on work-detail and editorial pages where the imagery is the primary content.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-gallery",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab — focuses each gallery item.",
-      "Enter / Space — opens the focused image in the lightbox.",
-      "Esc — closes the lightbox."
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Gallery",
+    "tier": "molecule",
+    "group": "display",
+    "status": "beta",
+    "description": "Image gallery grid with a click-to-expand lightbox and motion on hover. Used on work-detail and editorial pages where the imagery is the primary content.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-gallery",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "Each gallery item is a button when click-to-expand is enabled, with an accessible name describing the image.",
-      "When the lightbox is open, focus is trapped inside it and returns to the source item on close."
-    ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "motion": true,
-    "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text",
-      "--color-surface-elevated"
-    ],
-    "spacing": [
-      "--space-internal-8",
-      "--space-internal-12"
-    ],
-    "radii": [
-      "--radius-md"
+    "a11y": {
+        "keyboard": [
+            "Tab — focuses each gallery item.",
+            "Enter / Space — opens the focused image in the lightbox.",
+            "Esc — closes the lightbox."
+        ],
+        "ariaRequirements": [
+            "Each gallery item is a button when click-to-expand is enabled, with an accessible name describing the image.",
+            "When the lightbox is open, focus is trapped inside it and returns to the source item on close."
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "motion": true,
+        "reviewedNote": "2026-05-28 — Bucket-1 beta port: keyboard/ARIA contract reviewed, ForcedColors story added, Storybook axe gate (parameters.a11y.test: error)."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text",
+            "--color-surface-elevated"
+        ],
+        "spacing": [
+            "--space-internal-8",
+            "--space-internal-12"
+        ],
+        "radii": [
+            "--radius-md"
+        ]
+    },
+    "lightDarkVerified": true,
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "images": {
+            "optional": false,
+            "type": "GalleryImage[]"
+        },
+        "minColumnWidth": {
+            "optional": true,
+            "type": "number"
+        },
+        "gutter": {
+            "optional": true,
+            "type": "number"
+        }
+    },
+    "composesWith": [
+        "Text",
+        "Title",
+        "ProcessBlock",
+        "StoryBlock",
+        "ProjectDetailLayout",
+        "ProjectHero"
     ]
-  },
-  "lightDarkVerified": true,
-  "consumers": []
 }

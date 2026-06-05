@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Skeleton",
     "tier": "atom",
     "group": "structure",
@@ -58,5 +58,46 @@
         "variant",
         "width"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "text",
+                "circle",
+                "rect",
+                "avatar",
+                "card"
+            ]
+        },
+        "width": {
+            "optional": true,
+            "type": "number | string"
+        },
+        "height": {
+            "optional": true,
+            "type": "number | string"
+        },
+        "lines": {
+            "optional": true,
+            "type": "number"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "label": {
+            "optional": true,
+            "type": "string"
+        },
+        "animate": {
+            "optional": true,
+            "type": "boolean"
+        }
+    },
+    "composesWith": [
+        "Text"
+    ]
 }

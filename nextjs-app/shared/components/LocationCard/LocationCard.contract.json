@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "LocationCard",
     "tier": "molecule",
     "group": "display",
@@ -57,5 +57,37 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "officeName": {
+            "optional": false,
+            "type": "string"
+        },
+        "address": {
+            "optional": false,
+            "type": "string[]"
+        },
+        "email": {
+            "optional": true,
+            "type": "string"
+        },
+        "phone": {
+            "optional": true,
+            "type": "string"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "elevated",
+                "bordered"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

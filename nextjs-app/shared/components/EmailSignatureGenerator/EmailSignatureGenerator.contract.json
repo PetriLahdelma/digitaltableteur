@@ -1,50 +1,69 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "EmailSignatureGenerator",
-  "tier": "organism",
-  "group": "structure",
-  "status": "beta",
-  "description": "EmailSignatureGenerator — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-email-signature-generator",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [
-      "--color-text"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "EmailSignatureGenerator",
+    "tier": "organism",
+    "group": "structure",
+    "status": "beta",
+    "description": "EmailSignatureGenerator — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-email-signature-generator",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "companyName",
-    "companyUrl",
-    "id",
-    "logoUrl",
-    "logoUrlFull",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [
+            "--color-text"
+        ],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "companyName",
+        "companyUrl",
+        "id",
+        "logoUrl",
+        "logoUrlFull",
+        "ref",
+        "style"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "companyName": {
+            "optional": true,
+            "type": "string"
+        },
+        "companyUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "logoUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "logoUrlFull": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

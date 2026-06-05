@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "AnimatedDialog",
     "tier": "molecule",
     "group": "feedback",
@@ -78,5 +78,59 @@
         ]
     },
     "lightDarkVerified": true,
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "open": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "onOpenChange": {
+            "optional": true,
+            "type": "(open: boolean) => void"
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "trigger": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ]
+        },
+        "severity": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error",
+                "default"
+            ]
+        },
+        "animationType": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "scale",
+                "slide",
+                "fade"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

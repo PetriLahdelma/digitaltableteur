@@ -1,53 +1,72 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "NewsletterWaitlist",
-  "tier": "organism",
-  "group": "form",
-  "status": "beta",
-  "description": "Newsletter waitlist signup with inline email capture.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=471-21",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab",
-      "Enter"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "NewsletterWaitlist",
+    "tier": "organism",
+    "group": "form",
+    "status": "beta",
+    "description": "Newsletter waitlist signup with inline email capture.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=471-21",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "submit button labeled",
-      "validation errors announced"
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter"
+        ],
+        "ariaRequirements": [
+            "submit button labeled",
+            "validation errors announced"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "disabled",
+        "id",
+        "onError",
+        "onSuccess",
+        "ref",
+        "style"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "disabled",
-    "id",
-    "onError",
-    "onSuccess",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "onSuccess": {
+            "optional": true,
+            "type": "(email: string) => void"
+        },
+        "onError": {
+            "optional": true,
+            "type": "(error: Error) => void"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        }
+    }
 }

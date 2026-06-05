@@ -1,48 +1,68 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Header",
-  "tier": "pattern",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Header — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-header",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "exact",
-    "id",
-    "label",
-    "navItems",
-    "ref",
-    "style",
-    "to"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Header",
+    "tier": "pattern",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Header — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-header",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "exact",
+        "id",
+        "label",
+        "navItems",
+        "ref",
+        "style",
+        "to"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "navItems": {
+            "optional": true,
+            "type": "HeaderNavItem[]"
+        },
+        "onThemeCycle": {
+            "optional": true,
+            "type": "(nextTheme: Theme) => void"
+        },
+        "onLanguageChange": {
+            "optional": true,
+            "type": "(code: string) => void"
+        }
+    },
+    "composesWith": [
+        "Button",
+        "ChatWidget",
+        "Footer"
+    ]
 }

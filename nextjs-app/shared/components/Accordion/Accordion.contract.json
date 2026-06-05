@@ -1,53 +1,64 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Accordion",
-  "tier": "molecule",
-  "group": "structure",
-  "status": "beta",
-  "description": "Expandable sections with keyboard-operable triggers.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-17",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Enter",
-      "Space",
-      "Tab"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Accordion",
+    "tier": "molecule",
+    "group": "structure",
+    "status": "beta",
+    "description": "Expandable sections with keyboard-operable triggers.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=381-17",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "aria-expanded on triggers",
-      "region panels"
+    "a11y": {
+        "keyboard": [
+            "Enter",
+            "Space",
+            "Tab"
+        ],
+        "ariaRequirements": [
+            "aria-expanded on triggers",
+            "region panels"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "defaultOpenId",
+        "id",
+        "items",
+        "ref",
+        "style"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "defaultOpenId",
-    "id",
-    "items",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "items": {
+            "optional": false,
+            "type": "AccordionItem[]"
+        },
+        "defaultOpenId": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

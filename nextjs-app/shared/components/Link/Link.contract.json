@@ -1,49 +1,69 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "Link",
-  "tier": "atom",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Accessible inline link with size tokens and optional trailing icon.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-30",
-  "radixPrimitive": null,
-  "element": "a",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Enter"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Link",
+    "tier": "atom",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Accessible inline link with size tokens and optional trailing icon.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-30",
+    "radixPrimitive": null,
+    "element": "a",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "visible focus",
-      "descriptive link text"
+    "a11y": {
+        "keyboard": [
+            "Enter"
+        ],
+        "ariaRequirements": [
+            "visible focus",
+            "descriptive link text"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — focus and forced-colors verified in Storybook.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "style"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — focus and forced-colors verified in Storybook.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "S",
+                "M",
+                "L"
+            ]
+        }
+    },
+    "composesWith": [
+        "Button",
+        "Text",
+        "Badge",
+        "Title",
+        "Grid",
+        "ArticleCard"
+    ]
 }

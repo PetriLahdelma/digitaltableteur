@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Button",
     "tier": "molecule",
     "group": "interaction",
@@ -195,5 +195,149 @@
             "path": "app/work/intrum/page.tsx",
             "since": "2026-06-04"
         }
+    ],
+    "schemaVersion": 2,
+    "props": {
+        "submits": {
+            "optional": true,
+            "type": "never"
+        },
+        "href": {
+            "optional": false,
+            "type": "string"
+        },
+        "target": {
+            "optional": true,
+            "type": "HTMLAttributeAnchorTarget | undefined"
+        },
+        "rel": {
+            "optional": true,
+            "type": "string | undefined"
+        },
+        "isDisabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "isLoading": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "s",
+                "m",
+                "l",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "isInverse": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "surface": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "onDark",
+                "onBrand"
+            ]
+        },
+        "isRounded": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "severity": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error"
+            ]
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "info",
+                "success",
+                "warning",
+                "error",
+                "primary",
+                "secondary",
+                "tertiary",
+                "secondaryError",
+                "tertiaryError"
+            ]
+        },
+        "icon": {
+            "optional": true,
+            "type": "React.ReactNode | string"
+        },
+        "endIcon": {
+            "optional": true,
+            "type": "React.ReactNode | string"
+        },
+        "children": {
+            "optional": true,
+            "type": "React.ReactNode | React.ReactNode[]"
+        },
+        "accessibleDescription": {
+            "optional": true,
+            "type": "string"
+        },
+        "accessibleName": {
+            "optional": true,
+            "type": "string"
+        },
+        "accessibleNameRef": {
+            "optional": true,
+            "type": "string"
+        },
+        "accessibleRole": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "button",
+                "link"
+            ]
+        },
+        "tooltip": {
+            "optional": true,
+            "type": "string"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "loading": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "inverse": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "rounded": {
+            "optional": true,
+            "type": "boolean"
+        }
+    },
+    "composesWith": [
+        "Title",
+        "Text",
+        "Icon",
+        "Inputs",
+        "CheckboxGroup",
+        "Modal"
     ]
 }

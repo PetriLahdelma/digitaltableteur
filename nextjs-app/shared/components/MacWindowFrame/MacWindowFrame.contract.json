@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "MacWindowFrame",
     "tier": "molecule",
     "group": "structure",
@@ -53,5 +53,36 @@
         "style",
         "titleKey"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "titleKey": {
+            "optional": true,
+            "type": "string"
+        },
+        "actionLabelKey": {
+            "optional": true,
+            "type": "string"
+        },
+        "onAction": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "density": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "compact",
+                "comfortable"
+            ]
+        },
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

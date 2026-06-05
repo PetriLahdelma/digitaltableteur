@@ -1,57 +1,130 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ServicesBlock",
-  "tier": "pattern",
-  "group": "marketing",
-  "status": "beta",
-  "description": "ServicesBlock — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-block",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [
-    "overview"
-  ],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "ariaLabel",
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "duration",
-    "durationTitle",
-    "id",
-    "maxWidth",
-    "overview",
-    "overviewTitle",
-    "ref",
-    "services",
-    "servicesTitle",
-    "spacing",
-    "style",
-    "tools",
-    "toolsTitle"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ServicesBlock",
+    "tier": "pattern",
+    "group": "marketing",
+    "status": "beta",
+    "description": "ServicesBlock — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-services-block",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [
+        "overview"
+    ],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "ariaLabel",
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "duration",
+        "durationTitle",
+        "id",
+        "maxWidth",
+        "overview",
+        "overviewTitle",
+        "ref",
+        "services",
+        "servicesTitle",
+        "spacing",
+        "style",
+        "tools",
+        "toolsTitle"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "services": {
+            "optional": true,
+            "type": "ServiceItem[]"
+        },
+        "duration": {
+            "optional": true,
+            "type": "string"
+        },
+        "tools": {
+            "optional": true,
+            "type": "ToolIcon[]"
+        },
+        "overviewTitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "overview": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "servicesTitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "durationTitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "toolsTitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "maxWidth": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ]
+        },
+        "spacing": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "compact",
+                "comfortable",
+                "spacious"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "as": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "article",
+                "div",
+                "section"
+            ]
+        },
+        "ariaLabel": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

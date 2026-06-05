@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Tabs",
     "tier": "molecule",
     "group": "navigation",
@@ -81,5 +81,56 @@
         "tabs",
         "variant"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "activeTab": {
+            "optional": true,
+            "type": "string"
+        },
+        "defaultActiveTab": {
+            "optional": true,
+            "type": "string"
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        "tabs": {
+            "optional": false,
+            "type": "TabItem[]"
+        },
+        "onTabChange": {
+            "optional": true,
+            "type": "(key: string) => void"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "pills",
+                "underline"
+            ]
+        }
+    },
+    "composesWith": [
+        "Title",
+        "Text",
+        "Link",
+        "Button",
+        "Badge"
+    ]
 }

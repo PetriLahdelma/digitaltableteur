@@ -1,51 +1,60 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ContactForm",
-  "tier": "organism",
-  "group": "form",
-  "status": "beta",
-  "description": "Full contact form with validation, attachments, and submission flow.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=470-2",
-  "radixPrimitive": null,
-  "element": "form",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [
-      "Tab",
-      "Enter",
-      "Space"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ContactForm",
+    "tier": "organism",
+    "group": "form",
+    "status": "beta",
+    "description": "Full contact form with validation, attachments, and submission flow.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=470-2",
+    "radixPrimitive": null,
+    "element": "form",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "ariaRequirements": [
-      "labels on all fields",
-      "error messages associated"
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter",
+            "Space"
+        ],
+        "ariaRequirements": [
+            "labels on all fields",
+            "error messages associated"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
+        "forcedColorsVerified": true
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "children",
+        "className",
+        "id",
+        "ref",
+        "style"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "reviewedNote": "2026-05-26 — production behavior verified in Storybook; argTypes and required stories aligned with validate:components.",
-    "forcedColorsVerified": true
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "children",
-    "className",
-    "id",
-    "ref",
-    "style"
-  ],
-  "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {},
+    "composesWith": [
+        "FormField",
+        "Inputs",
+        "Button",
+        "Text",
+        "CheckboxGroup"
+    ]
 }

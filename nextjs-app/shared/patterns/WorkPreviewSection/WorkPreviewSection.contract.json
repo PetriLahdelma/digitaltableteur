@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "WorkPreviewSection",
     "tier": "pattern",
     "group": "marketing",
@@ -54,5 +54,37 @@
         "title"
     ],
     "consumers": [],
-    "slots": []
+    "slots": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "projects": {
+            "optional": false,
+            "type": "ProjectItem[]"
+        },
+        "layout": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "grid",
+                "asymmetric",
+                "featured"
+            ]
+        },
+        "showViewAll": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

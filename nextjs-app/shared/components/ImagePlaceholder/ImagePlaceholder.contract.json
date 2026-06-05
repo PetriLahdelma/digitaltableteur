@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "ImagePlaceholder",
     "tier": "molecule",
     "group": "structure",
@@ -59,5 +59,54 @@
         "variant",
         "width"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "width": {
+            "optional": false,
+            "type": "number"
+        },
+        "height": {
+            "optional": false,
+            "type": "number"
+        },
+        "alt": {
+            "optional": true,
+            "type": "string"
+        },
+        "caption": {
+            "optional": true,
+            "type": "string"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "light",
+                "medium",
+                "dark",
+                "gradient"
+            ]
+        },
+        "showDimensions": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "showIcon": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "text": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "style": {
+            "optional": true,
+            "type": "React.CSSProperties"
+        }
+    }
 }

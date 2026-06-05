@@ -1,41 +1,69 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "SiteTree",
-  "tier": "molecule",
-  "group": "navigation",
-  "status": "beta",
-  "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-site-tree",
-  "radixPrimitive": null,
-  "element": "nav",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": ["Default", "Playground", "Example", "ForcedColors"],
-  "a11y": {
-    "keyboard": ["Tab", "Enter", "Space"],
-    "ariaRequirements": [
-      "nav landmark",
-      "aria-label",
-      "native details/summary for branch toggles"
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "SiteTree",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "beta",
+    "description": "Hierarchical sitemap with collapsible folder branches and page leaves.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-site-tree",
+    "radixPrimitive": null,
+    "element": "nav",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "reviewedNote": "Verified 2026-06-02: nav landmark + aria-label; native details/summary disclosure (keyboard/SR-native). Fixed two real axe findings surfaced by enabling axe on the stories — nested-interactive (link inside summary; branch index now a separate leaf) and listitem (removed role=group from ul). Default/Playground/Example pass axe with test:error; dark theme verified in Storybook. Forced colors: links/icons inherit currentColor via Icon/Link primitives → CanvasText; ForcedColors story present.",
-    "playFunctionExempt": "Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "aria-label",
-    "className",
-    "defaultExpandAll",
-    "nodes"
-  ],
-  "consumers": []
+    "a11y": {
+        "keyboard": [
+            "Tab",
+            "Enter",
+            "Space"
+        ],
+        "ariaRequirements": [
+            "nav landmark",
+            "aria-label",
+            "native details/summary for branch toggles"
+        ],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "reviewedNote": "Verified 2026-06-02: nav landmark + aria-label; native details/summary disclosure (keyboard/SR-native). Fixed two real axe findings surfaced by enabling axe on the stories — nested-interactive (link inside summary; branch index now a separate leaf) and listitem (removed role=group from ul). Default/Playground/Example pass axe with test:error; dark theme verified in Storybook. Forced colors: links/icons inherit currentColor via Icon/Link primitives → CanvasText; ForcedColors story present.",
+        "playFunctionExempt": "Static navigation tree; expand/collapse follows native details/summary keyboard behavior, no custom handlers to drive."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "aria-label",
+        "className",
+        "defaultExpandAll",
+        "nodes"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "nodes": {
+            "optional": false,
+            "type": "SiteTreeNode[]"
+        },
+        "aria-label": {
+            "optional": true,
+            "type": "string"
+        },
+        "defaultExpandAll": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }

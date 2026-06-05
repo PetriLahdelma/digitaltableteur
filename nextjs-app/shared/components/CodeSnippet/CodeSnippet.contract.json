@@ -1,5 +1,5 @@
 {
-    "$schema": "../../../scripts/design-system/contract.schema.json",
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "CodeSnippet",
     "tier": "molecule",
     "group": "structure",
@@ -58,5 +58,64 @@
         "style",
         "variant"
     ],
-    "consumers": []
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "code": {
+            "optional": false,
+            "type": "string"
+        },
+        "language": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "go",
+                "html",
+                "javascript",
+                "typescript",
+                "xml",
+                "python",
+                "rust",
+                "json",
+                "bash",
+                "markdown"
+            ]
+        },
+        "showLineNumbers": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "aria-label": {
+            "optional": true,
+            "type": "string"
+        },
+        "allowCopy": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "inline",
+                "single",
+                "multi"
+            ]
+        },
+        "maxLines": {
+            "optional": true,
+            "type": "number"
+        },
+        "onCopy": {
+            "optional": true,
+            "type": "() => void"
+        }
+    },
+    "composesWith": [
+        "Icon",
+        "ComplianceCard",
+        "Button",
+        "Text",
+        "Card"
+    ]
 }

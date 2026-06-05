@@ -94,7 +94,8 @@ Static MCP resources first; tools second. Align with Figma MCP + Code Connect.
 
 ## References
 
-- `scripts/design-system/contract.schema.json` — governance schema (v2 planned)
+- `scripts/design-system/contract.schema.v2.json` — governance schema (v2, current)
+- `scripts/design-system/contract.schema.json` — legacy v1 (schemaVersion omitted)
 - `docs/PUBLIC_API.md` — import policy
 - `.claude/skills/dt-use-existing-component/SKILL.md` — reuse workflow
 - External: Figma MCP guide, MCP tools spec, shadcn registry, DTCG, Storybook MCP

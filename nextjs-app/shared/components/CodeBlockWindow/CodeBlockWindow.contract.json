@@ -1,48 +1,89 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "CodeBlockWindow",
-  "tier": "organism",
-  "group": "structure",
-  "status": "beta",
-  "description": "CodeBlockWindow — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-code-block-window",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "as",
-    "asChild",
-    "caption",
-    "children",
-    "className",
-    "id",
-    "language",
-    "ref",
-    "showLineNumbers",
-    "style",
-    "title"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "CodeBlockWindow",
+    "tier": "organism",
+    "group": "structure",
+    "status": "beta",
+    "description": "CodeBlockWindow — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-code-block-window",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "as",
+        "asChild",
+        "caption",
+        "children",
+        "className",
+        "id",
+        "language",
+        "ref",
+        "showLineNumbers",
+        "style",
+        "title"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "caption": {
+            "optional": true,
+            "type": "string"
+        },
+        "language": {
+            "optional": true,
+            "type": "string"
+        },
+        "showLineNumbers": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "context": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "article"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "children": {
+            "optional": false,
+            "type": "React.ReactNode"
+        }
+    },
+    "composesWith": [
+        "Container",
+        "Text",
+        "Title",
+        "Greeting"
+    ]
 }

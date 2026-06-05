@@ -1,51 +1,86 @@
 {
-  "$schema": "../../../scripts/design-system/contract.schema.json",
-  "name": "ProofBlock",
-  "tier": "pattern",
-  "group": "structure",
-  "status": "beta",
-  "description": "ProofBlock — production @dt component (Storybook beta).",
-  "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-proof-block",
-  "radixPrimitive": null,
-  "element": "div",
-  "variants": {},
-  "slots": [],
-  "asChild": false,
-  "subParts": [],
-  "requiredStories": [
-    "Default",
-    "Playground",
-    "Example",
-    "ForcedColors"
-  ],
-  "a11y": {
-    "keyboard": [],
-    "reducedMotion": true,
-    "reviewed": true,
-    "forcedColorsVerified": true,
-    "ariaRequirements": [],
-    "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
-  },
-  "tokens": {
-    "colors": [],
-    "spacing": []
-  },
-  "lightDarkVerified": true,
-  "argTypesProxyExempt": [
-    "ariaLabel",
-    "as",
-    "asChild",
-    "caption",
-    "children",
-    "className",
-    "dark",
-    "id",
-    "metrics",
-    "ref",
-    "style",
-    "subTitle",
-    "tight",
-    "title"
-  ],
-  "consumers": []
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "ProofBlock",
+    "tier": "pattern",
+    "group": "structure",
+    "status": "beta",
+    "description": "ProofBlock — production @dt component (Storybook beta).",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-proof-block",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "reducedMotion": true,
+        "reviewed": true,
+        "forcedColorsVerified": true,
+        "ariaRequirements": [],
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "ariaLabel",
+        "as",
+        "asChild",
+        "caption",
+        "children",
+        "className",
+        "dark",
+        "id",
+        "metrics",
+        "ref",
+        "style",
+        "subTitle",
+        "tight",
+        "title"
+    ],
+    "consumers": [],
+    "schemaVersion": 2,
+    "props": {
+        "ariaLabel": {
+            "optional": true,
+            "type": "string"
+        },
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "subTitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "caption": {
+            "optional": true,
+            "type": "string"
+        },
+        "metrics": {
+            "optional": false,
+            "type": "ProofMetric[]"
+        },
+        "tight": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "dark": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    }
 }
