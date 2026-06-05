@@ -60,15 +60,14 @@ function DtErrorModal() {
         isOpen={open}
         severity="error"
         title="Something went wrong"
+        description="Please try again in a moment."
         onClose={() => setOpen(false)}
         footer={
-          <DtButton variant="primary" onClick={() => setOpen(false)}>
+          <DtButton variant="secondary" onClick={() => setOpen(false)}>
             Back
           </DtButton>
         }
-      >
-        <p style={{ margin: 0 }}>Please try again in a moment.</p>
-      </Modal>
+      />
     </>
   );
 }
@@ -80,9 +79,11 @@ export const AlertAndDeferrals: Story = {
       title="Dialogs decision board"
       lead={
         <>
-          <strong>Blocked for production</strong> — @dt/Modal needs design/API work before
-          swapping shadcn Dialog. Board stays for comparison. Defer Lightbox, AnimatedDialog,
-          and SkillsGrid tooltips until matching @dt primitives exist.
+          <strong>Error alert approved</strong> — use @dt/Modal with{" "}
+          <code>severity=&quot;error&quot;</code>, <code>description</code>, and{" "}
+          <code>isOpen</code>/<code>onClose</code>. EnhancedContactForm error path migrated.
+          Defer Lightbox, AnimatedDialog, and composable DialogTrigger until matching
+          primitives exist.
         </>
       }
     >
@@ -126,8 +127,10 @@ export const AlertAndDeferrals: Story = {
         <MigrationDecisionBlock variant="defer" title="SkillsGrid — shadcn Tooltip">
           <span className="font-body text-sm">No @dt Tooltip; defer or use title attribute.</span>
         </MigrationDecisionBlock>
-        <MigrationDecisionBlock variant="defer" title="EnhancedContactForm — full shadcn form">
-          <span className="font-body text-sm">Migrate after primitives + Modal boards approved.</span>
+        <MigrationDecisionBlock variant="defer" title="EnhancedContactForm — shadcn form shell">
+          <span className="font-body text-sm">
+            Error alert uses @dt/Modal; inputs/selects still shadcn until form boards pass.
+          </span>
         </MigrationDecisionBlock>
       </MigrationDecisionBand>
     </MigrationDecisionPage>

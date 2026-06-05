@@ -16,14 +16,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
+import Modal from "@dt/Modal";
+import DtButton from "@dt/Button";
 import { useToast } from "../Toaster/Toaster";
 import { FormField } from "../FormField";
 import { FormGroup } from "../FormGroup";
@@ -560,20 +554,18 @@ export function EnhancedContactForm({
         </div>
       </form>
 
-      {/* Error Dialog */}
-      <Dialog open={isErrorOpen} onOpenChange={setIsErrorOpen}>
-        <DialogContent severity="error">
-          <DialogHeader>
-            <DialogTitle>{t("contactErrorTitle")}</DialogTitle>
-            <DialogDescription>{t("contactErrorMessage")}</DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button onClick={() => setIsErrorOpen(false)}>
-              {t("back")}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <Modal
+        isOpen={isErrorOpen}
+        severity="error"
+        title={t("contactErrorTitle")}
+        description={t("contactErrorMessage")}
+        onClose={() => setIsErrorOpen(false)}
+        footer={
+          <DtButton variant="secondary" onClick={() => setIsErrorOpen(false)}>
+            {t("back")}
+          </DtButton>
+        }
+      />
     </FadeIn>
   );
 }
