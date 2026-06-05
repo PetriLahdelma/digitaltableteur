@@ -60,5 +60,10 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "include the home icon as a separate item. Use `label: 'Home'`",
+        "skip levels to make the trail shorter. If the user is at",
+        "render the breadcrumb above a hero — it gets lost. Place it"
+    ]
 }

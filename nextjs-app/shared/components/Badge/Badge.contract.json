@@ -169,5 +169,9 @@
         "Title",
         "FlexBox",
         "Grid"
+    ],
+    "forbiddenUse": [
+        "rely on colour alone to convey state — pair with the icon (the",
+        "nest a Button inside a Badge. The removable affordance is"
     ]
 }

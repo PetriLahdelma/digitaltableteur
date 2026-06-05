@@ -108,5 +108,8 @@
             "optional": true,
             "type": "React.CSSProperties"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Bypass design tokens or skip forced-colors verification at beta."
+    ]
 }

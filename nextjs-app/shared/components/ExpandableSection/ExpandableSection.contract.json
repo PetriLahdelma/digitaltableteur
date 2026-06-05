@@ -79,5 +79,9 @@
             "optional": true,
             "type": "number"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Use a sequence of `ExpandableSection`s instead of `Accordion` — accordion owns the focus management and single-open behaviour.",
+        "Hide critical content (errors, primary CTA) behind a disclosure."
+    ]
 }

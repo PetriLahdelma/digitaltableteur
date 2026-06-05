@@ -80,5 +80,9 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Stack two Spacers — collapse them into the larger size.",
+        "Use as a 'push' element to right-align content — use flex `margin-inline-start: auto` instead."
+    ]
 }

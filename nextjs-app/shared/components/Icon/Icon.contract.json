@@ -217,5 +217,9 @@
         "CodeSnippet",
         "Text",
         "HelperText"
+    ],
+    "forbiddenUse": [
+        "pass both `ariaLabel` and `decorative`. The component prefers",
+        "import a Phosphor component directly from `@phosphor-icons/react`"
     ]
 }

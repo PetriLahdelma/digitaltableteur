@@ -89,5 +89,9 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Use as a generic 'card with an icon and label' — that is `Card`.",
+        "Stack two `LocationCard`s vertically with no spacing — they need rhythm via `Grid` or `Stack`."
+    ]
 }

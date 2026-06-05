@@ -71,5 +71,9 @@
         "StoryBlock",
         "ProjectDetailLayout",
         "ProjectHero"
+    ],
+    "forbiddenUse": [
+        "Use as a navigation surface — gallery items are not links.",
+        "Auto-open the lightbox on mount — confine motion to explicit user actions."
     ]
 }

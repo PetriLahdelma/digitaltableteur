@@ -120,5 +120,9 @@
         "Grid",
         "ArticleCard",
         "Avatar"
+    ],
+    "forbiddenUse": [
+        "use `checked` directly. The prefixed `isChecked` name is the",
+        "rely on the native `indeterminate` HTML attribute — there is"
     ]
 }

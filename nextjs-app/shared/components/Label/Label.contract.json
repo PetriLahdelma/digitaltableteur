@@ -74,5 +74,9 @@
         "Checkbox",
         "Text",
         "Title"
+    ],
+    "forbiddenUse": [
+        "place validation errors inside Label. Errors belong to the",
+        "use a Label as a section heading. Headings carry navigation"
     ]
 }

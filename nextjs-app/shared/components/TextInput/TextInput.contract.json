@@ -98,5 +98,9 @@
             "optional": true,
             "type": "boolean"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Use without a label — the input has no accessible name on its own.",
+        "Use for multi-line input — use `TextArea`."
+    ]
 }

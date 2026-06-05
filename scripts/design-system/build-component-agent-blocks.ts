@@ -11,7 +11,11 @@ import {
   extractComponentFromSourceFile,
 } from "./validate-components.ts";
 import { parseSpecAgentHints, extractSpecIntent } from "./parse-spec-agent-hints.mjs";
-import { getReplacementFor, getPrefersOver } from "./component-replacement-policy.mjs";
+import {
+  getReplacementFor,
+  getPrefersOver,
+  getForbiddenUse,
+} from "./component-replacement-policy.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const RELATIONSHIP_GRAPH = join(
@@ -254,6 +258,7 @@ function main() {
       ),
       canonicalExamples: canonicalExamplesFromStories(join(entry.dir, `${entry.name}.stories.tsx`)),
       replacementFor: getReplacementFor(entry.name),
+      forbiddenUse: getForbiddenUse(entry.name, avoidWhen),
       ...getGraphRelations(entry.name),
       declaredPropCount: extracted.declaredPropNames.length,
     };

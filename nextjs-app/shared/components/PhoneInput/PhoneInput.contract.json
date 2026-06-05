@@ -73,11 +73,14 @@
         }
     },
     "composesWith": [
+        "Button",
+        "Modal",
         "FileUpload",
         "Inputs",
-        "Button",
         "CheckboxGroup",
-        "Modal",
         "Toast"
+    ],
+    "forbiddenUse": [
+        "Bypass design tokens or skip forced-colors verification at beta."
     ]
 }

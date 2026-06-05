@@ -15,6 +15,14 @@ function sanitizeComponentNames(names) {
   return [...new Set((names ?? []).filter((n) => COMPONENT_NAME.test(n)))];
 }
 
+function sanitizeStringList(names) {
+  return [
+    ...new Set(
+      (names ?? []).filter((n) => typeof n === "string" && n.trim().length > 0),
+    ),
+  ].slice(0, 8);
+}
+
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const writeMode = process.argv.includes("--write");
 const AGENT_BLOCKS_PATH = join(
@@ -48,7 +56,8 @@ for (const base of roots) {
     const contract = JSON.parse(readFileSync(contractPath, "utf8"));
     const nextProps = agent.props ?? {};
     const nextComposes = sanitizeComponentNames(agent.composesWith);
-    const nextPrefers = sanitizeComponentNames(agent.prefersOver);
+    const nextPrefers = sanitizeStringList(agent.prefersOver);
+    const nextForbidden = sanitizeStringList(agent.forbiddenUse);
 
     const shouldSyncProps =
       contract.status === "beta" ||
@@ -66,8 +75,11 @@ for (const base of roots) {
       JSON.stringify(nextComposes);
     const samePrefers =
       JSON.stringify(contract.prefersOver ?? []) === JSON.stringify(nextPrefers);
+    const sameForbidden =
+      JSON.stringify(contract.forbiddenUse ?? []) ===
+      JSON.stringify(nextForbidden);
 
-    if (sameProps && sameComposes && samePrefers) continue;
+    if (sameProps && sameComposes && samePrefers && sameForbidden) continue;
 
     wouldUpdate += 1;
     if (!writeMode) {
@@ -80,6 +92,8 @@ for (const base of roots) {
     else delete contract.composesWith;
     if (nextPrefers.length) contract.prefersOver = nextPrefers;
     else delete contract.prefersOver;
+    if (nextForbidden.length) contract.forbiddenUse = nextForbidden;
+    else delete contract.forbiddenUse;
 
     writeFileSync(contractPath, `${JSON.stringify(contract, null, 4)}\n`);
     updated += 1;

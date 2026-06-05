@@ -85,5 +85,8 @@
         "Text",
         "Title",
         "Greeting"
+    ],
+    "forbiddenUse": [
+        "Bypass design tokens or skip forced-colors verification at beta."
     ]
 }

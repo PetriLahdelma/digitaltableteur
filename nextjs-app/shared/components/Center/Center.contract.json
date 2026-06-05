@@ -228,5 +228,9 @@
                 "view"
             ]
         }
-    }
+    },
+    "forbiddenUse": [
+        "Center large layout sections — use `Section` + `Container` instead.",
+        "Rely on this to vertically center text inside a button or input — those already center via their own padding."
+    ]
 }

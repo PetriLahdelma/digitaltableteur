@@ -77,5 +77,8 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Bypass design tokens or skip forced-colors verification at beta."
+    ]
 }
