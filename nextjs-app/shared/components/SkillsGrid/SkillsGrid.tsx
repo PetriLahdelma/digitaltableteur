@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@dt/Tooltip";
 import { FadeIn } from "../animations/FadeIn";
 
 export interface Skill {
@@ -164,14 +164,9 @@ function SkillItem({ skill }: SkillItemProps) {
         <TooltipTrigger asChild>
           <div className="group">{content}</div>
         </TooltipTrigger>
-        <TooltipContent
-          className={cn(
-            "max-w-xs",
-            "font-body text-sm"
-          )}
-        >
+        <TooltipContent className="max-w-xs">
           <p className="font-semibold mb-1">{skill.name}</p>
-          <p className="text-muted-foreground">{skill.description}</p>
+          <p className="opacity-80">{skill.description}</p>
         </TooltipContent>
       </Tooltip>
     );

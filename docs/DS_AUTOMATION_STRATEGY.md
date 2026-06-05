@@ -147,7 +147,7 @@ npm run test:stories:matrix:ci
 | Area | Status |
 |------|--------|
 | `@dt/Modal` vs shadcn Dialog | **Blocked** — board must pass first |
-| Lightbox, AnimatedDialog, SkillsGrid tooltip | **Defer** |
+| Composable Radix DialogTrigger | **Defer** |
 | EnhancedContactForm full stack | **Defer** until primitives exist |
 
 ---

@@ -1,12 +1,9 @@
 "use client";
 
-import { useEffect, useCallback, useState } from "react";
-import { X, CaretLeft, CaretRight } from "@phosphor-icons/react";
-import {
-  Dialog,
-  DialogContent,
-  DialogClose,
-} from "@/components/ui/dialog";
+import { useEffect, useCallback, useState, useRef } from "react";
+import { createPortal } from "react-dom";
+import Icon from "@dt/Icon";
+import styles from "./Lightbox.module.css";
 
 export interface LightboxImage {
   src: string;
@@ -24,14 +21,20 @@ export interface LightboxProps {
 export function Lightbox({
   images,
   initialIndex = 0,
-  open,
+  open = false,
   onOpenChange,
 }: LightboxProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const previousActiveElement = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (open) setCurrentIndex(initialIndex);
   }, [open, initialIndex]);
+
+  const close = useCallback(() => {
+    onOpenChange?.(false);
+  }, [onOpenChange]);
 
   const goNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -44,75 +47,118 @@ export function Lightbox({
   useEffect(() => {
     if (!open) return;
 
+    previousActiveElement.current = document.activeElement as HTMLElement;
+
+    const mainContent =
+      document.getElementById("main-content") ||
+      document.getElementById("__next") ||
+      document.querySelector("main") ||
+      document.body.firstElementChild;
+
+    if (mainContent && mainContent !== document.body) {
+      mainContent.setAttribute("inert", "");
+    }
+
+    const focusClose = () => {
+      panelRef.current
+        ?.querySelector<HTMLElement>("button")
+        ?.focus();
+    };
+    requestAnimationFrame(focusClose);
+
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
       if (e.key === "ArrowRight") goNext();
       if (e.key === "ArrowLeft") goPrev();
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open, goNext, goPrev]);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      if (mainContent && mainContent !== document.body) {
+        mainContent.removeAttribute("inert");
+      }
+      previousActiveElement.current?.focus();
+    };
+  }, [open, close, goNext, goPrev]);
 
   const currentImage = images[currentIndex];
 
-  if (!images.length) return null;
+  if (!images.length || !open) return null;
 
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent
-        className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95 border-none"
-        showCloseButton={false}
-        size="full"
+  const content = (
+    <div
+      className={styles.overlay}
+      role="presentation"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) close();
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Escape") close();
+      }}
+    >
+      <div
+        ref={panelRef}
+        className={styles.panel}
+        role="dialog"
+        aria-modal="true"
+        aria-label={currentImage?.alt ?? "Image gallery"}
       >
-        <div className="relative flex items-center justify-center min-h-[60vh]">
-          {/* Close button */}
-          <DialogClose className="absolute top-4 right-4 z-10 p-2 text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10">
-            <X className="size-6" />
-            <span className="sr-only">Close</span>
-          </DialogClose>
+        <button
+          type="button"
+          className={`${styles.navButton} ${styles.close}`}
+          onClick={close}
+          aria-label="Close"
+        >
+          <Icon name="x" decorative />
+        </button>
 
-          {/* Navigation */}
-          {images.length > 1 && (
-            <>
-              <button
-                onClick={goPrev}
-                className="absolute left-4 z-10 p-3 text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10"
-                aria-label="Previous image"
-              >
-                <CaretLeft className="size-8" />
-              </button>
-              <button
-                onClick={goNext}
-                className="absolute right-4 z-10 p-3 text-white/70 hover:text-white transition-colors rounded-full hover:bg-white/10"
-                aria-label="Next image"
-              >
-                <CaretRight className="size-8" />
-              </button>
-            </>
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              className={`${styles.navButton} ${styles.nav} ${styles.navPrev}`}
+              onClick={goPrev}
+              aria-label="Previous image"
+            >
+              <Icon name="arrow-left" size="lg" decorative />
+            </button>
+            <button
+              type="button"
+              className={`${styles.navButton} ${styles.nav} ${styles.navNext}`}
+              onClick={goNext}
+              aria-label="Next image"
+            >
+              <Icon name="arrow-right" size="lg" decorative />
+            </button>
+          </>
+        )}
+
+        <figure className={styles.figure}>
+          <img
+            src={currentImage?.src}
+            alt={currentImage?.alt ?? ""}
+            className={styles.image}
+          />
+          {currentImage?.caption && (
+            <figcaption className={styles.caption}>
+              {currentImage.caption}
+            </figcaption>
           )}
+        </figure>
 
-          {/* Image */}
-          <figure className="flex flex-col items-center px-16">
-            <img
-              src={currentImage?.src}
-              alt={currentImage?.alt ?? ""}
-              className="max-w-full max-h-[80vh] object-contain rounded"
-            />
-            {currentImage?.caption && (
-              <figcaption className="mt-4 text-white/70 font-body text-sm text-center max-w-2xl px-4">
-                {currentImage.caption}
-              </figcaption>
-            )}
-          </figure>
-
-          {/* Counter */}
-          {images.length > 1 && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 font-body text-xs">
-              {currentIndex + 1} / {images.length}
-            </div>
-          )}
-        </div>
-      </DialogContent>
-    </Dialog>
+        {images.length > 1 && (
+          <div className={styles.counter} aria-live="polite">
+            {currentIndex + 1} / {images.length}
+          </div>
+        )}
+      </div>
+    </div>
   );
+
+  if (typeof document !== "undefined") {
+    return createPortal(content, document.body);
+  }
+
+  return content;
 }

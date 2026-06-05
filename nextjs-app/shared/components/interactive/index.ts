@@ -31,7 +31,7 @@ export {
   TooltipTrigger,
   TooltipContent,
   TooltipProvider,
-} from "@/components/ui/tooltip";
+} from "@dt/Tooltip";
 
 export {
   DropdownMenu,
