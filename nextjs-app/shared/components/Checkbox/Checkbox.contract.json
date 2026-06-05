@@ -115,11 +115,11 @@
     },
     "composesWith": [
         "Inputs",
+        "Button",
         "Label",
         "Text",
         "Grid",
-        "ArticleCard",
-        "Avatar"
+        "ArticleCard"
     ],
     "forbiddenUse": [
         "use `checked` directly. The prefixed `isChecked` name is the",

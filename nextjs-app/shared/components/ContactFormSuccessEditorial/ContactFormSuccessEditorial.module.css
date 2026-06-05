@@ -1,53 +1,80 @@
 .container {
   display: flex;
-  padding: var(--space-layout-48) 0;
+  width: 100%;
   flex-direction: column;
-  align-items: flex-start;
+  gap: var(--space-layout-32);
+  padding-block: var(--space-layout-8) var(--space-layout-16);
 }
 
-/* Title - confident, typography-driven */
-
-.title {
-  margin: 0 0 var(--space-layout-16) 0;
-  font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 3vw + 1rem, 2.5rem);
-  font-weight: 700;
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--tracking-tight);
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: var(--line-height-normal);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--color-primary);
 }
 
-/* Message - softer, secondary */
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-layout-16);
+  max-width: 22rem;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.625rem, 1.5vw + 1.25rem, 2rem);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  text-wrap: balance;
+}
 
 .message {
-  margin: 0 0 var(--space-layout-24) 0;
+  margin: 0;
   font-family: var(--font-body);
-  font-size: var(--font-size-text);
-  line-height: var(--line-height-normal);
+  font-size: var(--font-size-text-l);
+  line-height: var(--line-height-relaxed);
   color: var(--color-muted);
 }
 
-/* Send another - subtle text link */
+.divider {
+  width: 100%;
+  max-width: 12.5rem;
+  height: 1px;
+  border: none;
+  margin: 0;
+  background-color: var(--color-border);
+}
+
+.action {
+  display: flex;
+  align-items: center;
+}
 
 .sendAnother {
+  margin: 0;
   padding: 0;
+  min-block-size: 0;
   border: none;
   background: none;
   font-family: var(--font-body);
-  font-size: 14px;
-  text-decoration: underline;
-  color: var(--color-muted);
-  cursor: pointer;
-  transition: color var(--duration-fast) var(--ease-out-cubic);
-  text-underline-offset: 3px;
-}
-
-.sendAnother:hover {
+  font-size: var(--font-size-text-s);
+  font-weight: 500;
+  line-height: var(--line-height-normal);
+  text-decoration: none;
   color: var(--color-primary);
+  transition: color var(--duration-fast) var(--ease-out-cubic);
 }
 
+.sendAnother:hover,
 .sendAnother:focus-visible {
-  border-radius: var(--radius-sm);
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+  text-decoration: underline;
+  color: var(--color-primary);
+  text-underline-offset: 3px;
 }

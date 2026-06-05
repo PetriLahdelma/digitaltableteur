@@ -163,10 +163,6 @@
             "optional": true,
             "type": "string"
         },
-        "showCloseIcon": {
-            "optional": true,
-            "type": "boolean"
-        },
         "showFooter": {
             "optional": true,
             "type": "boolean"
@@ -174,6 +170,10 @@
         "panelRef": {
             "optional": true,
             "type": "React.Ref<HTMLDivElement>"
+        },
+        "showCloseIcon": {
+            "optional": true,
+            "type": "boolean"
         },
         "closeIconName": {
             "optional": true,
@@ -189,9 +189,9 @@
         "Title",
         "Text",
         "Inputs",
+        "Select",
         "FileUpload",
-        "PhoneInput",
-        "AdaptiveLoadingButton"
+        "PhoneInput"
     ],
     "forbiddenUse": [
         "Nested modals — swap content in place inside one overlay",

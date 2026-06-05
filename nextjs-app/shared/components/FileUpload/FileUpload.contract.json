@@ -130,11 +130,11 @@
     },
     "composesWith": [
         "Button",
-        "Modal",
-        "PhoneInput",
         "Inputs",
-        "CheckboxGroup",
-        "Toast"
+        "Modal",
+        "Select",
+        "PhoneInput",
+        "CheckboxGroup"
     ],
     "forbiddenUse": [
         "render two FileUploads in the same form without unique",

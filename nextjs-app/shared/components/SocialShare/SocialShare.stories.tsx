@@ -91,8 +91,25 @@ const meta = {
   tags: ["beta", "!autodocs"],
   argTypes: {
     url: { control: "text", description: "The URL to share" },
-
     title: { control: "text", description: "The title to share" },
+    variant: {
+      control: "select",
+      options: ["inline", "article"],
+      description: "Layout variant",
+      table: { defaultValue: { summary: "inline" } },
+    },
+    showHeading: {
+      control: "boolean",
+      description: "Show share heading above channel row",
+    },
+    heading: {
+      control: "text",
+      description: "Custom share section heading (defaults to i18n shareHeading)",
+    },
+    channels: {
+      control: "object",
+      description: "Ordered list of share channels",
+    },
   },
 } satisfies Meta<typeof SocialShare>;
 
@@ -132,9 +149,22 @@ export const BlogPost: Story = {
   args: {
     url: "https://digitaltableteur.com/blog/workflow-tips",
     title: "Workflow Tips for Developers",
+    variant: "article",
+    showHeading: true,
+    channels: [
+      "linkedin",
+      "twitter",
+      "facebook",
+      "reddit",
+      "whatsapp",
+      "instagram",
+    ],
   },
+  parameters: { layout: "padded" },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    expect(canvas.getByText("Share")).toBeInTheDocument();
+    expect(canvas.getByLabelText("Share on LinkedIn")).toBeInTheDocument();
     const buttons = canvas.getAllByRole("button");
     expect(buttons.length).toBeGreaterThan(0);
   },
