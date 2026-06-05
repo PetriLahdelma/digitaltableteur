@@ -70,6 +70,8 @@
         "ref",
         "severity",
         "showCloseIcon",
+        "showFooter",
+        "panelRef",
         "style",
         "title",
         "titleSize",
@@ -164,6 +166,14 @@
         "showCloseIcon": {
             "optional": true,
             "type": "boolean"
+        },
+        "showFooter": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "panelRef": {
+            "optional": true,
+            "type": "React.Ref<HTMLDivElement>"
         },
         "closeIconName": {
             "optional": true,

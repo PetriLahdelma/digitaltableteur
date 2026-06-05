@@ -4,27 +4,17 @@ import { useEffect, useReducer, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import Inputs, { TextArea } from "@dt/Inputs";
+import Select from "@dt/Select";
+import SelectOption from "@dt/Select/SelectOption";
+import Checkbox from "@dt/Checkbox";
+import Button from "@dt/Button";
 import Modal from "@dt/Modal";
-import DtButton from "@dt/Button";
 import { useToast } from "../Toaster/Toaster";
-import { FormField } from "../FormField";
 import { FormGroup } from "../FormGroup";
 import { FadeIn } from "../animations/FadeIn";
 import PhoneInput from "@dt/PhoneInput";
 import FileUpload from "@dt/FileUpload";
-import { Loader } from "lucide-react";
 import {
   CONTACT_ACCEPTED_ATTACHMENT_TYPES,
   CONTACT_ATTACHMENT_MAX_BYTES,
@@ -85,6 +75,15 @@ const INTEREST_OPTIONS = [
   { value: "digital-products", labelKey: "contactInterestDigitalProducts" },
   { value: "help-me-choose", labelKey: "contactInterestHelpMeChoose" },
 ];
+
+const HEAR_ABOUT_OPTIONS = [
+  { value: "social-media", labelKey: "contactHearSocial" },
+  { value: "search-engine", labelKey: "contactHearSearch" },
+  { value: "word-of-mouth", labelKey: "contactHearWord" },
+  { value: "event", labelKey: "contactHearEvent" },
+  { value: "existing-client", labelKey: "contactHearExisting" },
+  { value: "other", labelKey: "contactHearOther" },
+] as const;
 
 /** Maps marketing CTA `?service=` values to contact-form interest slugs. */
 const SERVICE_INTEREST_MAP: Record<string, string> = {
@@ -171,32 +170,10 @@ export function EnhancedContactForm({
       })
     : "";
 
-  // === PRESERVED HANDLERS (CRITICAL - DO NOT CHANGE LOGIC) ===
-  const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({
-      type: "UPDATE_FIELD",
-      payload: { field: "fullName", value: e.target.value },
-    });
-  };
-
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({
-      type: "UPDATE_FIELD",
-      payload: { field: "email", value: e.target.value },
-    });
-  };
-
   const handlePhoneChange = (value: string | undefined) => {
     dispatchForm({
       type: "UPDATE_FIELD",
       payload: { field: "phone", value: value || "" },
-    });
-  };
-
-  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    dispatchForm({
-      type: "UPDATE_FIELD",
-      payload: { field: "message", value: e.target.value },
     });
   };
 
@@ -384,37 +361,34 @@ export function EnhancedContactForm({
           />
         </div>
 
-        {/* Full Name */}
-        <FormField
+        <Inputs
+          type="text"
           label={t("contactFullName")}
+          placeholder={t("contactFullNamePlaceholder")}
+          value={formData.fullName}
           error={formErrors.fullName}
-          required
-        >
-          <Input
-            type="text"
-            placeholder={t("contactFullNamePlaceholder")}
-            value={formData.fullName}
-            onChange={handleFullNameChange}
-            className={cn(formErrors.fullName && "border-destructive")}
-          />
-        </FormField>
+          onValueChange={(value) =>
+            dispatchForm({
+              type: "UPDATE_FIELD",
+              payload: { field: "fullName", value: String(value) },
+            })
+          }
+        />
 
-        {/* Email */}
-        <FormField
+        <Inputs
+          type="email"
           label={t("contactEmail")}
+          placeholder={t("contactEmailPlaceholder")}
+          value={formData.email}
           error={formErrors.email}
-          required
-        >
-          <Input
-            type="email"
-            placeholder={t("contactEmailPlaceholder")}
-            value={formData.email}
-            onChange={handleEmailChange}
-            className={cn(formErrors.email && "border-destructive")}
-          />
-        </FormField>
+          onValueChange={(value) =>
+            dispatchForm({
+              type: "UPDATE_FIELD",
+              payload: { field: "email", value: String(value) },
+            })
+          }
+        />
 
-        {/* Phone */}
         <PhoneInput
           label={t("contactPhone")}
           placeholder={t("contactPhonePlaceholder")}
@@ -422,59 +396,44 @@ export function EnhancedContactForm({
           onChange={handlePhoneChange}
         />
 
-        {/* Interests */}
         <FormGroup legend={t("contactInterest")}>
           <div className="space-y-3">
-            {/* Select All */}
-            <div className="flex items-center gap-2">
-              <Checkbox
-                id="interest-all"
-                checked={allSelected}
-                onCheckedChange={handleSelectAllInterests}
-              />
-              <Label htmlFor="interest-all" className="text-sm font-normal cursor-pointer">
-                {t("contactAll")}
-              </Label>
-            </div>
-            {/* Individual options */}
+            <Checkbox
+              id="interest-all"
+              label={t("contactAll")}
+              isChecked={allSelected}
+              onCheckedChange={handleSelectAllInterests}
+            />
             <div className="grid grid-cols-1 tablet:grid-cols-2 gap-3 ml-6">
               {INTEREST_OPTIONS.map((option) => (
-                <div key={option.value} className="flex items-center gap-2">
-                  <Checkbox
-                    id={`interest-${option.value}`}
-                    checked={selectedInterests.includes(option.value)}
-                    onCheckedChange={(checked) =>
-                      handleInterestToggle(option.value, checked === true)
-                    }
-                  />
-                  <Label
-                    htmlFor={`interest-${option.value}`}
-                    className="text-sm font-normal cursor-pointer"
-                  >
-                    {t(option.labelKey)}
-                  </Label>
-                </div>
+                <Checkbox
+                  key={option.value}
+                  id={`interest-${option.value}`}
+                  label={t(option.labelKey)}
+                  isChecked={selectedInterests.includes(option.value)}
+                  onCheckedChange={(checked) =>
+                    handleInterestToggle(option.value, checked)
+                  }
+                />
               ))}
             </div>
           </div>
         </FormGroup>
 
-        {/* Message */}
-        <FormField
+        <TextArea
           label={t("contactMessage")}
+          placeholder={t("contactMessagePlaceholder")}
+          value={formData.message}
           error={formErrors.message}
-          required
-        >
-          <Textarea
-            placeholder={t("contactMessagePlaceholder")}
-            value={formData.message}
-            onChange={handleMessageChange}
-            rows={5}
-            className={cn(formErrors.message && "border-destructive")}
-          />
-        </FormField>
+          rows={5}
+          onChange={(value) =>
+            dispatchForm({
+              type: "UPDATE_FIELD",
+              payload: { field: "message", value },
+            })
+          }
+        />
 
-        {/* Attachment */}
         <FileUpload
           label={t("contactAttachmentLabel")}
           placeholder={t("contactAttachmentPlaceholder")}
@@ -504,24 +463,25 @@ export function EnhancedContactForm({
           </p>
         )}
 
-        {/* How did you hear about us */}
-        <FormField label={t("contactHearAbout")}>
-          <Select value={formData.hearAbout} onValueChange={handleHearAboutChange}>
-            <SelectTrigger>
-              <SelectValue placeholder={t("contactHearAboutPlaceholder")} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="social-media">{t("contactHearSocial")}</SelectItem>
-              <SelectItem value="search-engine">{t("contactHearSearch")}</SelectItem>
-              <SelectItem value="word-of-mouth">{t("contactHearWord")}</SelectItem>
-              <SelectItem value="event">{t("contactHearEvent")}</SelectItem>
-              <SelectItem value="existing-client">{t("contactHearExisting")}</SelectItem>
-              <SelectItem value="other">{t("contactHearOther")}</SelectItem>
-            </SelectContent>
-          </Select>
-        </FormField>
+        <Select
+          label={t("contactHearAbout")}
+          value={formData.hearAbout}
+          onValueChange={handleHearAboutChange}
+        >
+          <SelectOption
+            value=""
+            label={t("contactHearAboutPlaceholder")}
+            disabled
+          />
+          {HEAR_ABOUT_OPTIONS.map((option) => (
+            <SelectOption
+              key={option.value}
+              value={option.value}
+              label={t(option.labelKey)}
+            />
+          ))}
+        </Select>
 
-        {/* Privacy Policy */}
         <p className="text-xs text-muted-foreground">
           *{t("contactPrivacyPolicy1")}{" "}
           <a
@@ -533,22 +493,22 @@ export function EnhancedContactForm({
           .
         </p>
 
-        {/* Actions */}
         <div className="flex flex-col-reverse tablet:flex-row gap-3 pt-4">
           <Button
             type="button"
-            variant="outline"
+            variant="secondary"
             onClick={resetFormState}
-            disabled={isSubmitting}
+            isDisabled={isSubmitting}
           >
             {t("contactClear")}
           </Button>
           <Button
             type="submit"
-            disabled={isSubmitting || !isFormValid}
+            variant="primary"
+            isDisabled={isSubmitting || !isFormValid}
+            isLoading={isSubmitting}
             className="flex-1"
           >
-            {isSubmitting && <Loader className="mr-2 h-4 w-4 animate-spin" />}
             {t("contactSubmit")}
           </Button>
         </div>
@@ -561,9 +521,9 @@ export function EnhancedContactForm({
         description={t("contactErrorMessage")}
         onClose={() => setIsErrorOpen(false)}
         footer={
-          <DtButton variant="secondary" onClick={() => setIsErrorOpen(false)}>
+          <Button variant="secondary" onClick={() => setIsErrorOpen(false)}>
             {t("back")}
-          </DtButton>
+          </Button>
         }
       />
     </FadeIn>
