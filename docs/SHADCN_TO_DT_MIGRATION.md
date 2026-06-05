@@ -18,7 +18,7 @@ Shared UI lives in `nextjs-app/shared/stories/MigrationDecisionBoard/` (`Migrati
 |-------|----------------|------------------------|--------|
 | Button surfaces | `Atoms/Button/Surface comparison` (Cta Bands + Home Hero Band) | `CTASection`, `HomeHero` | Approved |
 | Button contexts | `Migration boards/Button contexts` | `StudioMap`, `IconButton`, `ContactFormSuccess` | Migrated |
-| Contact flow | `Migration boards/Contact flow` | `ContactFormEditorial`, `ContactFormSuccessEditorial` | Migrated |
+| Contact flow | `Migration boards/Contact flow` | `ContactFormEditorial`, `ContactFormSuccessEditorial` | Migrated (success state + work-samples checkbox) |
 | Form primitives | `Migration boards/Form primitives` | `FormField`, `CheckboxField` | Migrated |
 | Dialogs | `Migration boards/Dialogs` | composable Radix `DialogTrigger` only | **Mostly done** — `EnhancedContactForm`, `Lightbox`, `AnimatedDialog` on `@dt/*`; composable trigger deferred |
 
