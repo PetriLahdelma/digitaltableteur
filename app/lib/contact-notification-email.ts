@@ -16,6 +16,7 @@ export type ContactNotificationPayload = {
   attachmentData?: string | null;
   attachmentSize?: number | null;
   attachmentNotice?: string | null;
+  requestPortfolioMaterials?: boolean | null;
 };
 
 const FONT =
@@ -125,6 +126,12 @@ function buildTextFields(payload: ContactNotificationPayload): TextField[] {
   if (payload.inspiration?.trim()) {
     fields.push({ label: "References", value: payload.inspiration.trim() });
   }
+  if (payload.requestPortfolioMaterials) {
+    fields.push({
+      label: "Follow-up",
+      value: "Resume, references, or portfolio requested",
+    });
+  }
   if (payload.time?.trim()) {
     fields.push({ label: "Submitted", value: payload.time.trim() });
   }
@@ -159,9 +166,12 @@ export function buildContactNotificationSubject(
   payload: ContactNotificationPayload,
 ): string {
   const leadInterest = payload.interest?.split(",")[0]?.trim();
+  const portfolioFlag = payload.requestPortfolioMaterials
+    ? "Portfolio follow-up · "
+    : "";
   return leadInterest
-    ? `Contact inquiry · ${payload.name} · ${leadInterest}`
-    : `Contact inquiry · ${payload.name}`;
+    ? `${portfolioFlag}Contact inquiry · ${payload.name} · ${leadInterest}`
+    : `${portfolioFlag}Contact inquiry · ${payload.name}`;
 }
 
 export function buildContactNotificationText(

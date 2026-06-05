@@ -120,6 +120,7 @@
   "storybookWipBadge": "Pågående arbete",
   "contactMessage": "Ditt meddelande",
   "contactMessagePlaceholder": "Ange ditt meddelande",
+  "contactRequestPortfolioMaterials": "Begär CV, referenser eller portfolio",
   "contactAttachmentLabel": "Bilaga (valfritt)",
   "contactAttachmentPlaceholder": "Ingen fil vald",
   "contactAttachmentHelper": "Max {{size}}. Godkända format: {{types}}.",

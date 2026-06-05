@@ -119,6 +119,7 @@
   "contactInterestHelpMeChoose": "Auta valitsemaan",
   "contactMessage": "Viestisi",
   "contactMessagePlaceholder": "Kirjoita viestisi",
+  "contactRequestPortfolioMaterials": "Pyydä ansioluettelo, suosituksia tai portfolio",
   "contactAttachmentLabel": "Liite (valinnainen)",
   "contactAttachmentPlaceholder": "Ei tiedostoa valittu",
   "contactAttachmentHelper": "Enintään {{size}}. Tiedostotyypit: {{types}}.",

@@ -120,6 +120,7 @@
   "storybookWipBadge": "Work in progress",
   "contactMessage": "Your Message",
   "contactMessagePlaceholder": "Enter your message",
+  "contactRequestPortfolioMaterials": "Request resume, references or portfolio",
   "contactAttachmentLabel": "Attachment (optional)",
   "contactAttachmentPlaceholder": "No file selected",
   "contactAttachmentHelper": "Max {{size}}. Accepted formats: {{types}}.",

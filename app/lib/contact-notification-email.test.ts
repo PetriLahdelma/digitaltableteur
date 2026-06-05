@@ -28,6 +28,27 @@ describe("contact-notification-email", () => {
     );
   });
 
+  it("prefixes subject when portfolio materials are requested", () => {
+    expect(
+      buildContactNotificationSubject({
+        ...samplePayload,
+        requestPortfolioMaterials: true,
+      }),
+    ).toBe(
+      "Portfolio follow-up · Contact inquiry · Petri Lahdelma · Brand & Identity",
+    );
+  });
+
+  it("includes portfolio follow-up in plain text output", () => {
+    const text = buildContactNotificationText({
+      ...samplePayload,
+      requestPortfolioMaterials: true,
+    });
+    expect(text).toContain(
+      "Follow-up: Resume, references, or portfolio requested",
+    );
+  });
+
   it("formats select slugs in plain text output", () => {
     const text = buildContactNotificationText(samplePayload);
     expect(text).toContain("Budget: 50k€+");

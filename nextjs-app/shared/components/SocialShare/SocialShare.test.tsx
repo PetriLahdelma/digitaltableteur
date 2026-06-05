@@ -28,6 +28,7 @@ vi.mock("react-i18next", async () => {
       t: (key: string) => {
         const translations: Record<string, string> = {
           shareOnInstagram: "Share on Instagram",
+          shareLinkedIn: "Share on LinkedIn",
           shareOnTwitter: "Share on Twitter",
           shareOnFacebook: "Share on Facebook",
           shareOnReddit: "Share on Reddit",
@@ -62,11 +63,24 @@ describe("SocialShare", () => {
   it("renders all social media links", () => {
     renderSocialShare();
 
-    expect(screen.getByLabelText("Share on Instagram")).toBeInTheDocument();
-    expect(screen.getByLabelText("Share on Twitter")).toBeInTheDocument();
-    expect(screen.getByLabelText("Share on Facebook")).toBeInTheDocument();
-    expect(screen.getByLabelText("Share on Reddit")).toBeInTheDocument();
-    expect(screen.getByLabelText("Share on WhatsApp")).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Share on LinkedIn" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Share on Instagram" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Share on Twitter" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Share on Facebook" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Share on Reddit" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Share on WhatsApp" }),
+    ).toBeInTheDocument();
   });
 
   it("renders share button when native share is supported", () => {
@@ -100,7 +114,7 @@ describe("SocialShare", () => {
 
   it("generates correct Twitter share URL", () => {
     renderSocialShare();
-    const twitterLink = screen.getByLabelText("Share on Twitter");
+    const twitterLink = screen.getByRole("link", { name: "Share on Twitter" });
     const expectedUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
       defaultProps.url,
     )}&text=${encodeURIComponent(defaultProps.title)}`;
@@ -109,7 +123,7 @@ describe("SocialShare", () => {
 
   it("generates correct Facebook share URL", () => {
     renderSocialShare();
-    const facebookLink = screen.getByLabelText("Share on Facebook");
+    const facebookLink = screen.getByRole("link", { name: "Share on Facebook" });
     const expectedUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
       defaultProps.url,
     )}`;

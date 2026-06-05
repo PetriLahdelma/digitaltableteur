@@ -1,15 +1,90 @@
-// components/SocialShare.tsx
-import React, { useState, useEffect } from "react";
+"use client";
+
+import React, { useState, useEffect, useMemo } from "react";
 import styles from "./SocialShare.module.css";
 import Button from "@dt/Button";
 import Toast from "@dt/Toast/Toast";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
+import Text from "@dt/Text";
+
+export type SocialShareChannel =
+  | "linkedin"
+  | "twitter"
+  | "facebook"
+  | "reddit"
+  | "whatsapp"
+  | "instagram";
+
+export type SocialShareVariant = "inline" | "article";
 
 export interface SocialShareProps {
   url: string;
   title: string;
+  /** Ordered list of network share targets. Defaults to all supported channels. */
+  channels?: SocialShareChannel[];
+  /** `article` adds a labelled section suited to blog post footers. */
+  variant?: SocialShareVariant;
+  showHeading?: boolean;
+  heading?: string;
 }
+
+const DEFAULT_CHANNELS: SocialShareChannel[] = [
+  "linkedin",
+  "twitter",
+  "facebook",
+  "reddit",
+  "whatsapp",
+  "instagram",
+];
+
+const CHANNEL_META: Record<
+  SocialShareChannel,
+  {
+    icon: string;
+    labelKey: string;
+    buildHref: (encodedUrl: string, encodedTitle: string) => string;
+    /** Profile links open without share params */
+    isProfile?: boolean;
+  }
+> = {
+  linkedin: {
+    icon: "linkedin-logo",
+    labelKey: "shareLinkedIn",
+    buildHref: (encodedUrl) =>
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+  },
+  twitter: {
+    icon: "twitter-logo",
+    labelKey: "shareOnTwitter",
+    buildHref: (encodedUrl, encodedTitle) =>
+      `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+  },
+  facebook: {
+    icon: "facebook-logo",
+    labelKey: "shareOnFacebook",
+    buildHref: (encodedUrl) =>
+      `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+  },
+  reddit: {
+    icon: "reddit-logo",
+    labelKey: "shareOnReddit",
+    buildHref: (encodedUrl, encodedTitle) =>
+      `https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
+  },
+  whatsapp: {
+    icon: "whatsapp-logo",
+    labelKey: "shareOnWhatsapp",
+    buildHref: (encodedUrl, encodedTitle) =>
+      `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`,
+  },
+  instagram: {
+    icon: "instagram-logo",
+    labelKey: "shareOnInstagram",
+    buildHref: () => "https://www.instagram.com/digitaltableteur/",
+    isProfile: true,
+  },
+};
 
 const isClipboardSupported = () =>
   typeof navigator !== "undefined" &&
@@ -58,10 +133,15 @@ const fallbackCopy = (value: string): boolean => {
   }
 };
 
-/**
- * SocialShare component.
- */
-export const SocialShare = ({ url, title }: SocialShareProps) => {
+/** Multi-channel share row with native share / copy fallback. */
+export const SocialShare = ({
+  url,
+  title,
+  channels = DEFAULT_CHANNELS,
+  variant = "inline",
+  showHeading = false,
+  heading,
+}: SocialShareProps) => {
   const { t } = useTranslation();
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
@@ -69,8 +149,12 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
   const [isMobile, setIsMobile] = useState(false);
   const [supportsNativeShare, setSupportsNativeShare] = useState(false);
 
+  const resolvedChannels = useMemo(
+    () => channels.filter((channel) => CHANNEL_META[channel]),
+    [channels],
+  );
+
   useEffect(() => {
-    // Check if matchMedia is available (not in JSDOM/test environment)
     if (typeof window !== "undefined" && window.matchMedia) {
       const mediaQuery = window.matchMedia("(width < 768px)");
       setIsMobile(mediaQuery.matches);
@@ -85,7 +169,6 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
   }, []);
 
   useEffect(() => {
-    // Check if native sharing is supported
     if (typeof window !== "undefined" && "share" in navigator) {
       setSupportsNativeShare(true);
     }
@@ -116,96 +199,88 @@ export const SocialShare = ({ url, title }: SocialShareProps) => {
         url,
         text: title,
       });
-    } catch (error) {
-      // If native share fails or is cancelled, fall back to copy
+    } catch {
       await handleCopy();
     }
   };
 
-  const handleToastClose = () => {
-    setToastOpen(false);
-  };
+  const rootClassName = [
+    styles.socialShare,
+    variant === "article" ? styles.article : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div className={styles.socialShare}>
-      <a
-        href="https://www.instagram.com/digitaltableteur/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={t("shareOnInstagram")}
-      >
-        <Icon name="instagram-logo" ariaLabel="Instagram" />
-      </a>
-      <a
-        href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={t("shareOnTwitter")}
-      >
-        <Icon name="twitter-logo" ariaLabel="Twitter" />
-      </a>
-      <a
-        href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={t("shareOnFacebook")}
-      >
-        <Icon name="facebook-logo" ariaLabel="Facebook" />
-      </a>
-      <a
-        href={`https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={t("shareOnReddit")}
-      >
-        <Icon name="reddit-logo" ariaLabel="Reddit" />
-      </a>
-      <a
-        href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={t("shareOnWhatsapp")}
-      >
-        <Icon name="whatsapp-logo" ariaLabel="WhatsApp" />
-      </a>
-      {supportsNativeShare ? (
-        <Button
-          size={isMobile ? "s" : "l"}
-          variant="secondary"
-          icon={<Icon name="share-network" ariaLabel={t("share")} />}
-          className={styles.copyButton}
-          onClick={handleNativeShare}
-          aria-label={t("share")}
-        >
-          {!isMobile && (
-            <span className={styles.copyButtonText} aria-hidden="true">
-              {t("share")}
-            </span>
-          )}
-        </Button>
-      ) : (
-        <Button
-          size={isMobile ? "s" : "l"}
-          variant="secondary"
-          icon={
-            <Icon name="copy-simple" ariaLabel={t("copyLinkToClipboard")} />
-          }
-          className={styles.copyButton}
-          onClick={handleCopy}
-          aria-label={t("copyLinkToClipboard")}
-        >
-          {!isMobile && (
-            <span className={styles.copyButtonText} aria-hidden="true">
-              {t("copyLinkToClipboard")}
-            </span>
-          )}
-        </Button>
+    <section
+      className={rootClassName}
+      aria-label={heading ?? t("shareHeading")}
+    >
+      {(showHeading || variant === "article") && (
+        <Text as="p" className={styles.heading}>
+          {heading ?? t("shareHeading")}
+        </Text>
       )}
+
+      <div className={styles.actions} role="group" aria-label={t("share")}>
+        {resolvedChannels.map((channel) => {
+          const meta = CHANNEL_META[channel];
+          const href = meta.buildHref(encodedUrl, encodedTitle);
+          return (
+            <a
+              key={channel}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.channelLink}
+              aria-label={t(meta.labelKey)}
+              {...(meta.isProfile ? { "aria-describedby": undefined } : {})}
+            >
+              <Icon name={meta.icon} ariaLabel={t(meta.labelKey)} />
+            </a>
+          );
+        })}
+
+        {supportsNativeShare ? (
+          <Button
+            size={isMobile ? "s" : "l"}
+            variant="secondary"
+            icon={<Icon name="share-network" ariaLabel={t("share")} />}
+            className={styles.copyButton}
+            onClick={handleNativeShare}
+            aria-label={t("share")}
+          >
+            {!isMobile && (
+              <span className={styles.copyButtonText} aria-hidden="true">
+                {t("share")}
+              </span>
+            )}
+          </Button>
+        ) : (
+          <Button
+            size={isMobile ? "s" : "l"}
+            variant="secondary"
+            icon={
+              <Icon name="copy-simple" ariaLabel={t("copyLinkToClipboard")} />
+            }
+            className={styles.copyButton}
+            onClick={handleCopy}
+            aria-label={t("copyLinkToClipboard")}
+          >
+            {!isMobile && (
+              <span className={styles.copyButtonText} aria-hidden="true">
+                {t("copyLinkToClipboard")}
+              </span>
+            )}
+          </Button>
+        )}
+      </div>
+
       <Toast
         message={t("linkCopied")}
         isOpen={toastOpen}
-        onClose={handleToastClose}
+        onClose={() => setToastOpen(false)}
       />
-    </div>
+    </section>
   );
 };

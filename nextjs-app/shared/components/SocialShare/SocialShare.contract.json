@@ -50,6 +50,22 @@
         "title": {
             "optional": false,
             "type": "string"
+        },
+        "channels": {
+            "optional": true,
+            "type": "SocialShareChannel[]"
+        },
+        "variant": {
+            "optional": true,
+            "type": "'inline' | 'article'"
+        },
+        "showHeading": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "heading": {
+            "optional": true,
+            "type": "string"
         }
     },
     "forbiddenUse": [

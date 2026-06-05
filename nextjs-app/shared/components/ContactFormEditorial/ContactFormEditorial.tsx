@@ -11,6 +11,7 @@ import { ExpandableSection } from "../ExpandableSection";
 import { useToast } from "../Toaster/Toaster";
 import FileUpload from "@dt/FileUpload";
 import MultiCombobox from "@dt/MultiCombobox";
+import { CheckboxField } from "../CheckboxField";
 import styles from "./ContactFormEditorial.module.css";
 import {
   CONTACT_ACCEPTED_ATTACHMENT_TYPES,
@@ -41,6 +42,7 @@ const getInitialFormState = () => ({
   projectType: [] as string[],
   hearAbout: "",
   inspiration: "",
+  requestPortfolioMaterials: false,
   honeypot: "",
 });
 
@@ -63,6 +65,13 @@ type FormAction =
     }
   | { type: "UPDATE_PROJECT_TYPES"; payload: string[] }
   | { type: "ADD_PROJECT_TYPE"; payload: string }
+  | {
+      type: "UPDATE_BOOLEAN";
+      payload: {
+        field: "requestPortfolioMaterials";
+        value: boolean;
+      };
+    }
   | { type: "RESET" };
 
 const mergeProjectType = (current: string[], next: string): string[] => {
@@ -81,6 +90,8 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
         ...state,
         projectType: mergeProjectType(state.projectType, action.payload),
       };
+    case "UPDATE_BOOLEAN":
+      return { ...state, [action.payload.field]: action.payload.value };
     case "RESET":
       return getInitialFormState();
     default:
@@ -360,6 +371,7 @@ export function ContactFormEditorial({
           budget: formData.budget,
           timeline: formData.timeline,
           inspiration: formData.inspiration,
+          requestPortfolioMaterials: formData.requestPortfolioMaterials,
           attachmentName: attachmentFile?.name ?? null,
           attachmentType: attachmentFile?.type ?? null,
           attachmentSize: attachmentFile?.size ?? null,
@@ -441,6 +453,18 @@ export function ContactFormEditorial({
           onChange={updateField("email")}
           error={formErrors.email}
           autoComplete="email"
+        />
+
+        <CheckboxField
+          id="contact-request-portfolio-materials"
+          label={t("contactRequestPortfolioMaterials")}
+          checked={formData.requestPortfolioMaterials}
+          onCheckedChange={(checked) =>
+            dispatchForm({
+              type: "UPDATE_BOOLEAN",
+              payload: { field: "requestPortfolioMaterials", value: checked },
+            })
+          }
         />
 
         <FormFieldEditorial
