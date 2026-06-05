@@ -132,6 +132,7 @@
     "check:contract-drift": "node scripts/design-system/check-contract-drift.mjs",
     "check:contract-props": "node scripts/design-system/check-contract-props.mjs",
     "lint:composition": "node scripts/design-system/lint-composition.mjs --strict",
+    "capture:a11y-snapshots": "node scripts/design-system/capture-story-a11y-snapshots.mjs",
     "promote:stable-atoms": "node scripts/design-system/promote-stable-atoms.mjs",
     "check:bundle-budgets": "node scripts/design-system/check-bundle-budgets.mjs"
   },
