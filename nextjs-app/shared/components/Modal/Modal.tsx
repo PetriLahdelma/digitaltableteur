@@ -4,7 +4,7 @@ import styles from "./Modal.module.css";
 import Button from "@dt/Button";
 import Title from "@dt/Title";
 import { getSemanticIcon } from "../../utils/semanticIcons";
-import Icon from "@dt/Icon";
+import Icon, { type IconProps } from "@dt/Icon";
 import { normalizeTitleSize, type TitleSizeUnified } from "../../utils/sizeNormalization";
 
 export type ModalSeverity = "success" | "error" | "warning" | "info";
@@ -17,6 +17,8 @@ export interface ModalProps {
   isLoading?: boolean;
   /** Title size - supports both modern (sm/md/lg) and legacy (S/M/L) formats */
   titleSize?: TitleSizeUnified;
+  /** Header icon size — Icon token scale (default lg for severity dialogs) */
+  iconSize?: IconProps["size"];
 
   // EXISTING PROPS
   /** Controls visibility */
@@ -61,7 +63,8 @@ const SEVERITY_STATUS_MAP: Record<
 const Modal: React.FC<ModalProps> = ({
   severity,
   isLoading = false,
-  titleSize = "M",
+  titleSize = "S",
+  iconSize = "lg",
   isOpen,
   title,
   description,
@@ -71,7 +74,7 @@ const Modal: React.FC<ModalProps> = ({
   footer,
   onClose,
   icon,
-  showCloseIcon = true,
+  showCloseIcon = false,
   closeIconName = "x",
   closeButtonLabel = "Close dialog",
 }) => {
@@ -128,7 +131,9 @@ const Modal: React.FC<ModalProps> = ({
 
   const resolvedHeaderIcon =
     icon ??
-    (severity ? getSemanticIcon(SEVERITY_STATUS_MAP[severity]) : null);
+    (severity
+      ? getSemanticIcon(SEVERITY_STATUS_MAP[severity], { size: iconSize })
+      : null);
 
   const renderFooter = () => {
     if (footer !== undefined) {
@@ -189,6 +194,7 @@ const Modal: React.FC<ModalProps> = ({
               <Title
                 level={2}
                 size={normalizedTitleSize}
+                lineHeight="tight"
                 id={titleId}
                 className={styles.title}
                 terminals={titleTerminals}

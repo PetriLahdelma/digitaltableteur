@@ -44,4 +44,28 @@ describe("Modal", () => {
     const dialog = within(document.body).getByRole("alertdialog");
     expect(dialog).not.toHaveAttribute("aria-live");
   });
+
+  it("uses iconSize for semantic severity icons (default lg)", () => {
+    render(
+      <Modal isOpen title="Error" severity="error">
+        <p>Content</p>
+      </Modal>,
+    );
+    const iconRoot = document.body.querySelector('[data-semantic-icon="error"]');
+    const svg = iconRoot?.querySelector("svg");
+    expect(svg).toHaveAttribute("width", "32");
+    expect(svg).toHaveAttribute("height", "32");
+  });
+
+  it("accepts iconSize override for semantic severity icons", () => {
+    render(
+      <Modal isOpen title="Error" severity="error" iconSize="xl">
+        <p>Content</p>
+      </Modal>,
+    );
+    const iconRoot = document.body.querySelector('[data-semantic-icon="error"]');
+    const svg = iconRoot?.querySelector("svg");
+    expect(svg).toHaveAttribute("width", "48");
+    expect(svg).toHaveAttribute("height", "48");
+  });
 });

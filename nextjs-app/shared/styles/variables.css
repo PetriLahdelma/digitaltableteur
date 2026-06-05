@@ -600,6 +600,13 @@
     --logo-color: Canvas;
     --logo-text-color: CanvasText;
     --focus-ring-color: Highlight;
+    --modal-overlay-bg: Canvas;
+    --modal-shadow: none;
+    --color-success: CanvasText;
+    --color-error: CanvasText;
+    --color-warning: CanvasText;
+    --color-warning-contrast: CanvasText;
+    --color-info: CanvasText;
   }
 }
 

@@ -73,6 +73,7 @@
         "style",
         "title",
         "titleSize",
+        "iconSize",
         "titleTerminals"
     ],
     "consumers": [],
