@@ -103,6 +103,7 @@
         "Icon"
     ],
     "forbiddenUse": [
+        "Pair AlertBanner with blocking Modal for the same user outcome — pick one surface",
         "make errors dismissable. Letting the user hide a blocking",
         "stack more than one banner on the same page. Two competing",
         "animate the banner in on every render. AlertBanner is for"

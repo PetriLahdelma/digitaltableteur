@@ -6,6 +6,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { PNG } from "pngjs";
 import pixelmatch from "pixelmatch";
+import { captureStoryAccessibilityTree } from "../scripts/design-system/a11y-snapshot-capture-lib.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -205,7 +206,7 @@ const waitForStoryStability = async (
 };
 
 
-const ROOT_DIR = path.resolve(__dirname, "..");
+const ROOT_DIR = ROOT;
 const UPDATE_AT = process.env.DT_UPDATE_A11Y_SNAPSHOTS === "1";
 const BOOTSTRAP_AT = process.env.DT_BOOTSTRAP_A11Y_SNAPSHOTS === "1";
 const REQUIRE_AT = process.env.DT_REQUIRE_A11Y_SNAPSHOTS === "1";
@@ -268,8 +269,7 @@ async function captureAccessibilityTree(page: import("playwright").Page, storyId
   if (!dir) return;
   fs.mkdirSync(dir, { recursive: true });
   const file = path.join(dir, `${storyId}${snapshotVariantSuffix()}.yaml`);
-  const snapshot = await page.locator("#storybook-root").ariaSnapshot();
-  const content = typeof snapshot === "string" ? snapshot : String(snapshot);
+  const content = await captureStoryAccessibilityTree(page);
   if (!fs.existsSync(file)) {
     if (UPDATE_AT || BOOTSTRAP_AT) {
       fs.writeFileSync(file, content);
