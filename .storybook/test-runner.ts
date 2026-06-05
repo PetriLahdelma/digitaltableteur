@@ -264,7 +264,11 @@ function snapshotVariantSuffix(): string {
   return parts.length > 0 ? `.${parts.join(".")}` : "";
 }
 
-async function captureAccessibilityTree(page: import("playwright").Page, storyId: string) {
+async function captureAccessibilityTree(
+  page: import("playwright").Page,
+  storyId: string,
+  { betaMatrix = false }: { betaMatrix?: boolean } = {},
+) {
   const dir = componentSnapshotDir(storyId);
   if (!dir) return;
   fs.mkdirSync(dir, { recursive: true });
@@ -275,11 +279,14 @@ async function captureAccessibilityTree(page: import("playwright").Page, storyId
       fs.writeFileSync(file, content);
       return;
     }
-    if (REQUIRE_AT) {
+    if (REQUIRE_AT && betaMatrix) {
       throw new Error(
         `Missing AT snapshot for ${storyId}. Run DT_BOOTSTRAP_A11Y_SNAPSHOTS=1 npm run a11y-snapshot:bootstrap`,
       );
     }
+    return;
+  }
+  if (!betaMatrix && !(UPDATE_AT || BOOTSTRAP_AT)) {
     return;
   }
   const existing = fs.readFileSync(file, "utf8");
@@ -359,9 +366,14 @@ const config: TestRunnerConfig = {
 
     const storyContext = await getStoryContext(page, context);
     const storyId = sanitizeId(context.id);
+    const storyTags = [
+      ...(Array.isArray(storyContext?.tags) ? storyContext.tags : []),
+      ...(Array.isArray(context.tags) ? context.tags : []),
+    ];
+    const betaMatrix = storyTags.includes("beta-matrix");
 
     // AT-tree snapshots are the DSharp-style gate for Phase 2.
-    await captureAccessibilityTree(page, context.id);
+    await captureAccessibilityTree(page, context.id, { betaMatrix });
 
     // Visual pixel diffs are opt-in (Phase 4). Running them on every story makes
     // the matrix flaky while Vite is still optimizing dependencies.

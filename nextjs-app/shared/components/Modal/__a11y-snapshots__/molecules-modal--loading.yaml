@@ -1,2 +1,5 @@
 - status: Work in progress (beta)
 - button "Open modal"
+- dialog "Loading":
+  - heading "Loading" [level=2]
+  - paragraph: storyModalPleaseWait

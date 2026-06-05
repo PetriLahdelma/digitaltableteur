@@ -1,1 +1,7 @@
 - status: Work in progress (beta)
+- button "Open modal"
+- dialog "storyModalTitle":
+  - heading "storyModalTitle" [level=2]
+  - button "Close dialog"
+  - text: storyModalBody
+  - button "OK"
