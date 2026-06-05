@@ -56,7 +56,6 @@ type Story = StoryObj<typeof NavMenuList>;
 
 export const Default: Story = {
   tags: ["beta-matrix"],
-  name: "Default",
   render: () => (
     <NavMenuList
       items={[
@@ -71,7 +70,6 @@ export const Default: Story = {
 };
 
 export const CustomActiveClass: Story = {
-  name: "Custom Active Class",
   render: () => (
     <NavMenuList
       items={[

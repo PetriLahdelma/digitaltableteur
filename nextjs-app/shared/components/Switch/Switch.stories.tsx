@@ -219,7 +219,6 @@ const ControlledTemplate = (args: SwitchProps) => {
 export const Default: Story = {
   parameters: { a11y: { disable: true } },
   tags: ["beta-matrix"],
-  name: "Default",
   render: (args) => <ControlledTemplate {...args} />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -236,7 +235,6 @@ export const Default: Story = {
 };
 
 export const Loading: Story = {
-  name: "Loading",
   args: { isLoading: true, isChecked: true },
   render: (args) => <ControlledTemplate {...args} />,
 };
@@ -264,7 +262,6 @@ export const LabelOnLeft: Story = {
 };
 
 export const WithHelperText: Story = {
-  name: "With Helper Text",
   args: {
     label: "Enable email notifications",
     helperText: "You'll receive updates about your account activity",
@@ -311,13 +308,11 @@ export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
   ...Default,
-  name: "Playground",
 };
 
 export const Example: Story = {
   globals: { forcedColors: "none" },
   tags: ["beta-matrix"],
-  name: "Example",
   parameters: { a11y: { disable: true }, controls: { disable: true } },
   args: {
     label: "Enable email notifications",
