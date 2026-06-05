@@ -163,8 +163,13 @@ export const BlogPost: Story = {
   parameters: { layout: "padded" },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText("Share")).toBeInTheDocument();
-    expect(canvas.getByLabelText("Share on LinkedIn")).toBeInTheDocument();
+    const section = canvas.getByRole("region", { name: "Share" });
+    expect(
+      within(section).getByText("Share", { selector: "p" }),
+    ).toBeVisible();
+    expect(
+      canvas.getByRole("link", { name: "Share on LinkedIn" }),
+    ).toBeInTheDocument();
     const buttons = canvas.getAllByRole("button");
     expect(buttons.length).toBeGreaterThan(0);
   },

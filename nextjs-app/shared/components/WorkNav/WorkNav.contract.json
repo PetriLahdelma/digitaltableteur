@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "WorkNav",
+    "tier": "molecule",
+    "group": "navigation",
+    "status": "alpha",
+    "description": "Work section sub-navigation.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-work-nav",
+    "radixPrimitive": null,
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "composesWith": []
+}

@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../scripts/design-system/contract.schema.v2.json",
+    "name": "Tooltip",
+    "tier": "molecule",
+    "group": "overlay",
+    "status": "alpha",
+    "description": "Radix tooltip primitive set (Provider, Trigger, Content) for icon hints.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-tooltip",
+    "radixPrimitive": "@radix-ui/react-tooltip",
+    "element": "div",
+    "variants": {},
+    "slots": [],
+    "asChild": false,
+    "subParts": [],
+    "requiredStories": [
+        "Default"
+    ],
+    "a11y": {
+        "keyboard": [],
+        "ariaRequirements": [],
+        "reducedMotion": true,
+        "reviewed": false,
+        "forcedColorsVerified": false
+    },
+    "tokens": {
+        "colors": [],
+        "spacing": []
+    },
+    "lightDarkVerified": false,
+    "schemaVersion": 2,
+    "composesWith": []
+}

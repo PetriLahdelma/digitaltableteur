@@ -7,36 +7,102 @@ import { Button } from "@dt/Button";
 import { Title } from "@dt/Title";
 ```
 
-## Policy
+---
+
+## Import surface
 
 | Rule | Detail |
 |------|--------|
-| **Import surface** | `@dt/<ComponentName>` only — maps to `nextjs-app/shared/components/<ComponentName>/` or `patterns/` |
-| **Stability** | Governed by `<Component>.contract.json` → `status`: `alpha` \| `beta` \| `stable` \| `deprecated` |
-| **Breaking changes** | Allowed on `alpha`; `beta` requires validator + Storybook gates; `stable` requires consumers + AT snapshots |
-| **Tokens** | Runtime source: `nextjs-app/shared/styles/variables.css`; DTCG export: `npm run build:tokens` |
+| **Path** | `@dt/<ComponentName>` → `nextjs-app/shared/components/<ComponentName>/` or `patterns/<ComponentName>/` |
+| **Barrel** | Avoid `nextjs-app/shared/components/index.ts` in new code — prefer direct `@dt/*` imports |
+| **Tokens** | Runtime: `nextjs-app/shared/styles/variables.css`; machine export: `npm run build:tokens` |
 | **Agent manifest** | `nextjs-app/shared/foundations/dist/agent-manifest.json` (regenerated with tokens) |
+| **Non-catalog surfaces** | `non-agent-surfaces.json` — page assemblies and exempt infra; see [CATALOG-POLICY.md](./CATALOG-POLICY.md) |
 
-## Verification
+---
+
+## Stability tiers (semver policy)
+
+Contract `status` in `<Component>.contract.json` is the **public API semver boundary** until a standalone npm export ships.
+
+| Status | Semver | Breaking changes | Promotion gate |
+|--------|--------|------------------|----------------|
+| **alpha** | `0.x` | Allowed | Contract + spec only; not in agent manifest |
+| **beta** | `0.x` | Additive only; deprecate with `deprecated` prop flags | Stories, MDX, axe gate, ForcedColors story |
+| **stable** | `1.x` per component family | Breaking props/layout require ADR + consumer update | AT snapshots, production `consumers[]`, Figma node-id |
+| **deprecated** | frozen | Remove only after migration window | Listed in manifest with `replacementFor` |
+
+### What counts as breaking (stable)
+
+- Removing or renaming exported props
+- Changing default variant semantics visible in production
+- Removing sub-components or slots documented in the contract
+- Changing required child composition (`composesWith` / `forbiddenUse`)
+
+### Non-breaking (beta+)
+
+- New optional props
+- New variant enum values with safe defaults
+- Token binding fixes that preserve computed appearance
+- Additional stories and agent-block metadata
+
+### Future npm export
+
+When `@digitaltableteur/ds` ships:
+
+- Component names match `@dt/<Name>` one-to-one
+- Package semver follows **stable fleet** cadence (minor = new stable components; patch = fixes)
+- Alpha/beta components remain workspace-only until promoted
+- `agent-manifest.json` → `exportPolicy.version` will track the package semver
+
+---
+
+## Stable fleet (promoted)
+
+**Atoms / molecules:** `Title`, `Text`, `Icon`, `Badge`, `Button`, `Card`, `Link`, `Label`, `Container`
+
+**Patterns:** `SiteHeader`, `SiteFooter`
+
+Promote with:
+
+```bash
+node scripts/design-system/promote-stable-atoms.mjs   # first atoms
+node scripts/design-system/promote-stable-fleet.mjs     # production fleet
+npm run audit:consumers                               # refresh consumers[]
+```
+
+All stable components require committed `__a11y-snapshots__/` and verified Figma `node-id` (except `Icon` — Phosphor library exception).
+
+---
+
+## Release gate
+
+Single command before DS-facing releases:
+
+```bash
+npm run release:gate           # fast: tokens, agent:eval, bundle, catalog ≥85%
+npm run release:gate -- --full # + test:ci, visual baselines, Playwright a11y pages
+```
+
+See [AGENTIC_DS_AUDIT_PLAYBOOK.md](./AGENTIC_DS_AUDIT_PLAYBOOK.md).
+
+---
+
+## Verification commands
 
 ```bash
 npm run validate:components   # contract + story gates
 npm run build:tokens          # tokens + agent manifest (includes usage evidence)
 npm run build:zod-catalog     # Zod catalog for agents
-npm run agent:eval            # manifest schema + golden checks
-npm run audit:usage           # import evidence for all cataloged components
+npm run agent:eval            # manifest schema + MCP + golden intent/pattern evals
+npm run audit:usage           # import evidence for cataloged components
+npm run audit:catalog         # catalog completeness (target ≥85%)
 npm run build:agent-blocks    # TS + spec → component-agent-blocks.json
-npm run find-component -- "your intent"  # rank @dt components for a task
-npm run build:relationship-graph  # composesWith graph (also in build:tokens)
-npm run lint:dt-usage         # strict: shadcn @/components/ui/* imports in app/ only (do not mass-swap headings/buttons in patterns)
-npm run ds:mcp                # local stdio MCP (design-system tools + resources)
-npm run sync:contract-api     # dry-run eligible variant sync (CVA + propSourced allowlist)
-npm run check:contract-drift -- --strict  # CI: contracts match agent blocks
-npm run audit:consumers       # refresh contract.consumers[] (stable tier only)
+npm run find-component -- "your intent"
+npm run lint:dt-usage         # shadcn imports in app/ only
+npm run check:contract-drift -- --strict
+npm run check:bundle-budgets  # stable atom source-size budgets
+npm run ds:mcp                # local stdio MCP
 ```
 
-HTTP MCP (consulting + design system): `https://www.digitaltableteur.com/mcp` — see [DESIGN_SYSTEM_MCP.md](./DESIGN_SYSTEM_MCP.md).
-
-## Stable-tier atoms (promoted)
-
-`Title`, `Text`, `Icon`, `Badge`, `Avatar` — first stable atoms with committed AT-tree snapshots under `__a11y-snapshots__/`.
+HTTP MCP: `https://www.digitaltableteur.com/mcp` — see [DESIGN_SYSTEM_MCP.md](./DESIGN_SYSTEM_MCP.md).

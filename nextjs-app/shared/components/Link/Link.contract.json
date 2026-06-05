@@ -3,12 +3,18 @@
     "name": "Link",
     "tier": "atom",
     "group": "navigation",
-    "status": "beta",
+    "status": "stable",
     "description": "Accessible inline link with size tokens and optional trailing icon.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-30",
     "radixPrimitive": null,
     "element": "a",
-    "variants": {},
+    "variants": {
+        "size": {
+            "values": ["S", "M", "L"],
+            "default": "M",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -29,7 +35,9 @@
         "reducedMotion": true,
         "reviewed": true,
         "reviewedNote": "2026-05-26 — focus and forced-colors verified in Storybook.",
-        "forcedColorsVerified": true
+        "forcedColorsVerified": true,
+        "accessibilityTreeVerified": true,
+        "realBrowserForcedColorsVerified": true
     },
     "tokens": {
         "colors": [],
@@ -45,7 +53,14 @@
         "ref",
         "style"
     ],
-    "consumers": [],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/layout.tsx",
+            "since": "2026-06-06",
+            "note": "Auto-added by promote-stable-fleet — refresh with npm run audit:consumers"
+        }
+    ],
     "schemaVersion": 2,
     "props": {
         "size": {

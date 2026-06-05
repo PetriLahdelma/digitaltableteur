@@ -2,8 +2,64 @@
   "runId": "dt-dsb-2026-06-05",
   "fileKey": "PC2UPdYwm8qGt6ZTg0AakF",
   "fileSlug": "DT-Site-stuff",
-  "updatedAt": "2026-06-05T12:00:00.000Z",
-  "phase": "phase3-complete",
+  "updatedAt": "2026-06-05T18:45:00.000Z",
+  "phase": "phase4-route-views-rebuilt",
+  "routeViews": {
+    "home": {
+      "nodeId": "606:3192",
+      "page": "VIews",
+      "url": "https://www.digitaltableteur.com/",
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=606-3192"
+    },
+    "work": {
+      "nodeId": "615:33",
+      "page": "VIews",
+      "url": "https://www.digitaltableteur.com/work",
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=615-33"
+    },
+    "about": {
+      "nodeId": "616:2",
+      "page": "VIews",
+      "url": "https://www.digitaltableteur.com/about",
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=616-2"
+    },
+    "dsharp": {
+      "nodeId": "620:5030",
+      "page": "VIews",
+      "url": "https://www.digitaltableteur.com/work/dsharp-design-system",
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=620-5030"
+    },
+    "pricing": {
+      "nodeId": "620:3746",
+      "page": "VIews",
+      "url": "https://www.digitaltableteur.com/pricing",
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=620-3746"
+    },
+    "blog-article": {
+      "nodeId": "620:4652",
+      "page": "VIews",
+      "url": "https://www.digitaltableteur.com/blog/agentic-design-systems-operating-models",
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=620-4652"
+    },
+    "blog": {
+      "nodeId": "620:4022",
+      "page": "VIews",
+      "url": "https://www.digitaltableteur.com/blog",
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=620-4022"
+    },
+    "sitemap": {
+      "nodeId": "620:5995",
+      "page": "VIews",
+      "url": "https://www.digitaltableteur.com/sitemap",
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=620-5995"
+    },
+    "contact": {
+      "nodeId": "620:4366",
+      "page": "VIews",
+      "url": "https://www.digitaltableteur.com/contact",
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=620-4366"
+    }
+  },
   "pages": [
     "✦ DT · Design System",
     "▸ Getting Started",
@@ -13,7 +69,8 @@
     "Molecules",
     "Organisms",
     "Patterns",
-    "Design WIP"
+    "Design WIP",
+    "VIews"
   ],
   "variables": {
     "DT / Color": 45,
@@ -43,7 +100,30 @@
     "phase0-discovery",
     "phase1-variables",
     "phase2-file-structure",
-    "phase3-in-scope-components"
+    "phase3-in-scope-components",
+    "phase4-route-views-ds-refinement"
   ],
-  "pendingSteps": ["phase4-route-views"]
+  "pendingSteps": [
+    "phase4-pattern-instances",
+    "phase4-contract-sync"
+  ],
+  "refinementNotes": {
+    "tool": "plugin-figma-figma use_figma + scripts/design-system/figma-rebuild-route-views.mjs",
+    "npmScript": "npm run build:figma-rebuild-views",
+    "applied": [
+      "SiteHeader/SiteFooter DS instances on all 9 VIews frames",
+      "NewsBulletin + CTASection pattern swaps (by frame name + CTA copy heuristics)",
+      "Title/Text atom instances from capture typography (Syne headings, Satoshi body)",
+      "Card instances for ServiceCard, EnhancedProjectCard, Card frames",
+      "Button component-set instances for raw Button frames",
+      "DT / Color variable binding on matching solid fills",
+      "Local text styles on remaining raw text nodes"
+    ],
+    "gaps": [
+      "HeroSection, ServicesSection, HighlightSection etc. have no Figma pattern components yet — capture geometry retained",
+      "ContactInquiryPanel / ContactPageContentEditorial differs from ContactForm organism",
+      "Image fills and gradients from capture not fully tokenized",
+      "DSharp case study: 472/619 fills bound (gradients/images)"
+    ]
+  }
 }

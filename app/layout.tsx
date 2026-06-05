@@ -119,6 +119,12 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        {process.env.FIGMA_HTML_CAPTURE === "1" ? (
+          <Script
+            src="https://mcp.figma.com/mcp/html-to-design/capture.js"
+            strategy="beforeInteractive"
+          />
+        ) : null}
         {/* GTM uses afterInteractive to avoid blocking LCP */}
         <Script id="gtm-base" strategy="afterInteractive">
           {`
