@@ -39,8 +39,12 @@ export interface ModalProps {
   onClose?: () => void;
   /** Optional icon to display in the header */
   icon?: React.ReactNode;
-  /** Optional className for additional styling */
+  /** Optional className for additional styling on the panel */
   className?: string;
+  /** When false, omit the footer region (e.g. composable dialog bodies) */
+  showFooter?: boolean;
+  /** Ref on the dialog panel for animation hooks */
+  panelRef?: React.Ref<HTMLDivElement>;
   /** Show close icon button in header */
   showCloseIcon?: boolean;
   /** Custom close icon name (defaults to "x") */
@@ -77,12 +81,24 @@ const Modal: React.FC<ModalProps> = ({
   showCloseIcon = false,
   closeIconName = "x",
   closeButtonLabel = "Close dialog",
+  className,
+  showFooter,
+  panelRef,
 }) => {
   const normalizedTitleSize = normalizeTitleSize(titleSize);
   const titleId = useId();
   const descriptionId = useId();
   const previousActiveElement = useRef<HTMLElement | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!panelRef || !modalRef.current) return;
+    if (typeof panelRef === "function") {
+      panelRef(modalRef.current);
+      return;
+    }
+    panelRef.current = modalRef.current;
+  }, [isOpen, panelRef]);
 
   // Apply inert attribute to main content when modal is open
   // This prevents focus from escaping the modal to background content
@@ -177,7 +193,9 @@ const Modal: React.FC<ModalProps> = ({
     >
       <div
         ref={modalRef}
-        className={`${styles.modal} ${styles[effectiveVariant]}`}
+        className={[styles.modal, styles[effectiveVariant], className]
+          .filter(Boolean)
+          .join(" ")}
         role={dialogRole}
         aria-modal="true"
         {...(title
@@ -225,7 +243,7 @@ const Modal: React.FC<ModalProps> = ({
           )}
           {children}
         </div>
-        {(footer !== undefined || !isLoading) && (
+        {showFooter !== false && (footer !== undefined || !isLoading) && (
           <div className={styles.footer}>{renderFooter()}</div>
         )}
       </div>

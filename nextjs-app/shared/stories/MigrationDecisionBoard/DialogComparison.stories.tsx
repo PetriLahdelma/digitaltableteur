@@ -81,9 +81,8 @@ export const AlertAndDeferrals: Story = {
         <>
           <strong>Error alert approved</strong> — use @dt/Modal with{" "}
           <code>severity=&quot;error&quot;</code>, <code>description</code>, and{" "}
-          <code>isOpen</code>/<code>onClose</code>. EnhancedContactForm error path migrated.
-          Defer Lightbox, AnimatedDialog, and composable DialogTrigger until matching
-          primitives exist.
+          <code>isOpen</code>/<code>onClose</code>. Production overlays migrated: EnhancedContactForm,
+          Lightbox (portal), AnimatedDialog (GSAP + @dt/Modal). Defer composable DialogTrigger only.
         </>
       }
     >
@@ -117,19 +116,11 @@ export const AlertAndDeferrals: Story = {
         </MigrationDecisionBlock>
       </MigrationDecisionBand>
 
-      <MigrationDecisionBand title="Deferred — do not migrate yet" className={board.bandMuted}>
-        <MigrationDecisionBlock variant="defer" title="AnimatedDialog — GSAP + shadcn shell">
-          <span className="font-body text-sm">Keep until Modal supports entry animation contract.</span>
-        </MigrationDecisionBlock>
-        <MigrationDecisionBlock variant="defer" title="Lightbox — ProjectGallery full-bleed">
-          <span className="font-body text-sm">Needs gallery overlay primitive or spec extension.</span>
-        </MigrationDecisionBlock>
-        <MigrationDecisionBlock variant="defer" title="SkillsGrid — shadcn Tooltip">
-          <span className="font-body text-sm">No @dt Tooltip; defer or use title attribute.</span>
-        </MigrationDecisionBlock>
-        <MigrationDecisionBlock variant="defer" title="EnhancedContactForm — shadcn form shell">
+      <MigrationDecisionBand title="Deferred — composable trigger only" className={board.bandMuted}>
+        <MigrationDecisionBlock variant="defer" title="Radix DialogTrigger + asChild">
           <span className="font-body text-sm">
-            Error alert uses @dt/Modal; inputs/selects still shadcn until form boards pass.
+            @dt/Modal stays controlled (<code>isOpen</code> / <code>onClose</code>). Wrap local state
+            or keep shadcn for trigger composition until a DT primitive ships.
           </span>
         </MigrationDecisionBlock>
       </MigrationDecisionBand>

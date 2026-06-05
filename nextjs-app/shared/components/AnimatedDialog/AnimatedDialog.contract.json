@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "feedback",
     "status": "beta",
-    "description": "Dialog (modal) variant with GSAP-driven enter/exit animation. Wraps the shadcn `Dialog` primitive and adds the size axis + severity colour token + animation type axis.",
+    "description": "Dialog (modal) variant with GSAP-driven enter animation. Wraps @dt/Modal with composable header/footer slots and size + severity tokens.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-animated-dialog",
     "radixPrimitive": null,
     "element": "div",
@@ -50,7 +50,7 @@
             "Esc — closes the dialog."
         ],
         "ariaRequirements": [
-            "Renders a real `role='dialog'` with `aria-modal='true'` (via the shadcn primitive).",
+            "Renders a real `role='dialog'` with `aria-modal='true'` (via @dt/Modal portal).",
             "Focus moves to the dialog body on open and returns to the trigger on close.",
             "When `severity` is success/warning/error/info, the icon is decorative and the visible text owns the announcement; the dialog itself does not become a live region."
         ],

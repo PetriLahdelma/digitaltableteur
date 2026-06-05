@@ -1,0 +1,112 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0 0 0 / 95%);
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 95vw;
+  max-height: 95vh;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+}
+
+.navPrev {
+  left: 1rem;
+}
+
+.navNext {
+  right: 1rem;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 4rem;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
+.caption {
+  margin-top: 1rem;
+  max-width: 42rem;
+  padding-inline: 1rem;
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-s, 0.875rem);
+  text-align: center;
+  color: rgb(255 255 255 / 70%);
+}
+
+.counter {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-xs, 0.75rem);
+  color: rgb(255 255 255 / 50%);
+}
+
+.navButton {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  color: rgb(255 255 255 / 70%);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.navButton:hover {
+  background-color: rgb(255 255 255 / 10%);
+  color: rgb(255 255 255 / 100%);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid rgb(255 255 255 / 80%);
+  outline-offset: 2px;
+}
+
+@media (forced-colors: active) {
+  .overlay {
+    background-color: Canvas;
+  }
+
+  .navButton {
+    border: 1px solid CanvasText;
+    color: CanvasText;
+  }
+
+  .caption,
+  .counter {
+    color: CanvasText;
+  }
+}

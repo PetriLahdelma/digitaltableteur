@@ -1,0 +1,53 @@
+.content {
+  z-index: 6000;
+  max-width: 20rem;
+  padding: var(--space-internal-8) var(--space-internal-12);
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--main-body-background-color, var(--color-white));
+  font-family: var(--font-text);
+  font-size: var(--font-size-text-s, 0.875rem);
+  line-height: var(--line-height-normal, 1.5);
+  box-shadow: var(--shadow-md, 0 4px 12px rgb(0 0 0 / 15%));
+}
+
+.arrow {
+  fill: var(--color-primary);
+}
+
+.title {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+}
+
+.body {
+  margin: 0;
+  color: var(--color-text-muted, rgb(255 255 255 / 80%));
+}
+
+@media (forced-colors: active) {
+  .content {
+    border: 1px solid CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+    forced-color-adjust: none;
+  }
+
+  .arrow {
+    fill: Canvas;
+  }
+
+  .body {
+    color: CanvasText;
+  }
+}
+
+:global(html.sb-forced-colors-active) .content {
+  border: 1px solid CanvasText;
+  background-color: Canvas;
+  color: CanvasText;
+}
+
+:global(html.sb-forced-colors-active) .arrow {
+  fill: Canvas;
+}

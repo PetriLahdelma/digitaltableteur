@@ -20,7 +20,7 @@ Shared UI lives in `nextjs-app/shared/stories/MigrationDecisionBoard/` (`Migrati
 | Button contexts | `Migration boards/Button contexts` | `StudioMap`, `IconButton`, `ContactFormSuccess` | Migrated |
 | Contact flow | `Migration boards/Contact flow` | `ContactFormEditorial`, `ContactFormSuccessEditorial` | Migrated |
 | Form primitives | `Migration boards/Form primitives` | `FormField`, `CheckboxField` | Migrated |
-| Dialogs | `Migration boards/Dialogs` | `AnimatedDialog`, `Lightbox`; `EnhancedContactForm` error alert | **Partial** — error alert approved (`@dt/Modal` + `description`); gallery/animation/composable trigger deferred |
+| Dialogs | `Migration boards/Dialogs` | composable Radix `DialogTrigger` only | **Mostly done** — `EnhancedContactForm`, `Lightbox`, `AnimatedDialog` on `@dt/*`; composable trigger deferred |
 
 Restart Storybook after adding or renaming board files so hub `storyId` links resolve.
 
@@ -49,9 +49,6 @@ Report: `public/visual-diff/migration-matrix-report.json`
 
 ## Deferred (no @dt primitive yet)
 
-- **SkillsGrid** — shadcn Tooltip only
-- **Lightbox** — full-bleed gallery; needs spec vs `@dt/Modal`
-- **EnhancedContactForm** — migrate after primitives + dialog boards approved
 - **TailwindTest**, **`interactive/index`**, **`ui/index`** — dev/barrel only
 
 ## API decisions (locked)

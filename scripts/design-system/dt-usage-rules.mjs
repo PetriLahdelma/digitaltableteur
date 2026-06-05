@@ -26,10 +26,6 @@ export const DT_USAGE_SHADCN_ALLOWLIST_REL = new Set([
   "nextjs-app/shared/components/ui/index.ts",
   "nextjs-app/shared/components/interactive/index.ts",
   "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
-  "nextjs-app/shared/components/Lightbox/Lightbox.tsx",
-  "nextjs-app/shared/components/AnimatedDialog/AnimatedDialog.tsx",
-  "nextjs-app/shared/components/SkillsGrid/SkillsGrid.tsx",
-  "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
 ]);
 
 /** Root layout failure UI — no providers / theme CSS. */
