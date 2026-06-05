@@ -1,2 +1,6 @@
 - status: Work in progress (beta)
 - button "Open modal"
+- alertdialog "Warning":
+  - heading "Warning" [level=2]
+  - text: Please review this warning carefully.
+  - button "OK"
