@@ -110,10 +110,10 @@
     "composesWith": [
         "Inputs",
         "Button",
-        "CheckboxGroup",
         "Modal",
-        "Toast",
-        "FileUpload"
+        "FileUpload",
+        "PhoneInput",
+        "CheckboxGroup"
     ],
     "forbiddenUse": [
         "ship a Select with `value` and `defaultValue` both set —",
