@@ -11,6 +11,7 @@ import type {
 import { loadPublicApiDoc, loadTokenCatalog } from "./manifest-loader";
 import {
   loadPatternRecipes,
+  queryImpliesInverseSurface,
   rankPatternsForIntent,
 } from "./pattern-composition";
 
@@ -185,11 +186,14 @@ export function executeSuggestPatternForLayout(args?: {
   const limit = Math.min(Math.max(Number(args?.limit) || 5, 1), 10);
   const ranked = rankPatternsForIntent(query, patterns, limit);
 
+  const inverseSurface = queryImpliesInverseSurface(query);
+
   return dsJsonResult({
     query,
+    inverseSurface,
     guardrails:
       "Patterns are layout shells — do not mass-replace Header/CTA chrome without design sign-off. See docs/AGENTIC_DS_OPERATING_MODEL.md",
-    matches: ranked.map(({ name, score, pattern }) => ({
+    matches: ranked.map(({ name, score, pattern, surfaceConstraints }) => ({
       name,
       score,
       publicImport: pattern.publicImport,
@@ -200,6 +204,7 @@ export function executeSuggestPatternForLayout(args?: {
       composesWith: pattern.composesWith ?? [],
       variantNotes: pattern.variantNotes ?? {},
       storybookId: pattern.storybookId,
+      ...(surfaceConstraints?.length ? { surfaceConstraints } : {}),
     })),
     resource: "digitaltableteur://design-system/pattern-recipes",
   });

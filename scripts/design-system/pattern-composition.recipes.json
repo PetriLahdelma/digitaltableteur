@@ -53,13 +53,36 @@
       ],
       "avoidWhen": [
         "blog article hero — prefer ArticleHero pattern",
-        "compact inline page title without hero imagery"
+        "compact inline page title without hero imagery",
+        "production homepage with kinetic title — prefer HomeHero"
       ],
       "composesWith": ["Title", "Text", "Button", "Hero"],
       "variantNotes": {
         "background": "Supports backgroundImage and tokenized min-height; compose children rather than hardcoding layout."
       },
       "storybookId": "patterns-herosection--default"
+    },
+    {
+      "name": "HomeHero",
+      "publicImport": "@dt/HomeHero",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "production homepage hero with kinetic title and scroll indicator",
+        "full-bleed homepage hero on dark or gradient background bands",
+        "homepage hero with @dt/Button primary CTA on inverse surface"
+      ],
+      "avoidWhen": [
+        "generic marketing hero without homepage-specific motion",
+        "blog article hero — prefer ArticleHero",
+        "swapping outline shadcn buttons to @dt/Button tertiary on dark bands without contrast check"
+      ],
+      "composesWith": ["Button", "HeroSection", "Container", "Stack"],
+      "variantNotes": {
+        "inverseBackground": "Uses @dt/Button with surface=default on dark HeroBackground — do not use isInverse primary over gradient parents.",
+        "motion": "KineticTitle and TextReveal require reduced-motion fallbacks — do not strip animation hooks."
+      },
+      "storybookId": "patterns-homehero--default"
     },
     {
       "name": "SiteHeader",
