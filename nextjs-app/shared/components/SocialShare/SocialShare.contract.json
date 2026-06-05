@@ -8,7 +8,16 @@
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-social-share",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {},
+    "variants": {
+        "variant": {
+            "values": [
+                "inline",
+                "article"
+            ],
+            "default": "inline",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -57,7 +66,11 @@
         },
         "variant": {
             "optional": true,
-            "type": "'inline' | 'article'"
+            "type": "union",
+            "values": [
+                "inline",
+                "article"
+            ]
         },
         "showHeading": {
             "optional": true,
