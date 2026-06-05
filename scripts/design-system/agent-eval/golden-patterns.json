@@ -36,6 +36,16 @@
       "id": "article-hero",
       "query": "blog article hero title metadata",
       "expectedTop1": "ArticleHero"
+    },
+    {
+      "id": "cta-inverse",
+      "query": "inverse background CTA on dark band",
+      "expectedTop1": "CTASection"
+    },
+    {
+      "id": "home-hero",
+      "query": "homepage hero kinetic title scroll indicator",
+      "expectedTop1": "HomeHero"
     }
   ]
 }

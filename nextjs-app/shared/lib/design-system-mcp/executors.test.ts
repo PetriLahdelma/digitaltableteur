@@ -99,6 +99,36 @@ describe("rankPatternsForIntent", () => {
     );
     expect(ranked[0]?.name).toBe("CTASection");
   });
+
+  it("boosts inverse-aware patterns and surfaces constraints for dark CTA queries", () => {
+    const ranked = rankPatternsForIntent(
+      "inverse background CTA on dark band",
+      [
+        {
+          name: "CTASection",
+          publicImport: "@dt/CTASection",
+          useWhen: ["inverse or primary background CTA block"],
+          avoidWhen: [
+            "replacing shadcn CTA buttons with @dt/Button without variant parity review",
+          ],
+          variantNotes: {
+            inverseBackground:
+              "Production CTASection uses outline on dark bands — contrast check required.",
+          },
+          status: "beta",
+        },
+        {
+          name: "Header",
+          publicImport: "@dt/Header",
+          useWhen: ["site header navigation"],
+          status: "beta",
+        },
+      ],
+      2,
+    );
+    expect(ranked[0]?.name).toBe("CTASection");
+    expect(ranked[0]?.surfaceConstraints?.length).toBeGreaterThan(0);
+  });
 });
 
 describe("executeSuggestPatternForLayout", () => {
@@ -110,5 +140,18 @@ describe("executeSuggestPatternForLayout", () => {
       matches: Array<{ name: string }>;
     };
     expect(parsed.matches[0]?.name).toBe("HeroSection");
+  });
+
+  it("flags inverseSurface for dark-band layout queries", () => {
+    const result = executeSuggestPatternForLayout({
+      query: "inverse background CTA on dark band",
+    });
+    const parsed = JSON.parse(result.content[0].text) as {
+      inverseSurface: boolean;
+      matches: Array<{ name: string; surfaceConstraints?: string[] }>;
+    };
+    expect(parsed.inverseSurface).toBe(true);
+    expect(parsed.matches[0]?.name).toBe("CTASection");
+    expect(parsed.matches[0]?.surfaceConstraints?.length).toBeGreaterThan(0);
   });
 });
