@@ -50,7 +50,7 @@ export function ContactPageContentEditorial({
   const [showSuccess, setShowSuccess] = useState(false);
   // Skip entrance animations under reduced-motion so axe never samples
   // partial-opacity frames as color-contrast violations.
-  const { shouldAnimate } = useHydrationSafeMotion();
+  const { shouldAnimate, gateInitial } = useHydrationSafeMotion();
 
   const handleFormSuccess = () => {
     setShowSuccess(true);
@@ -87,7 +87,7 @@ export function ContactPageContentEditorial({
             {/* Display Headline */}
             <motion.h1
               className={styles.headline}
-              initial={shouldAnimate ? { opacity: 0, y: 30 } : false}
+              initial={gateInitial({ opacity: 0, y: 30 })}
               animate={{ opacity: 1, y: 0 }}
               transition={
                 shouldAnimate
@@ -101,7 +101,7 @@ export function ContactPageContentEditorial({
             {/* Divider */}
             <motion.hr
               className={styles.divider}
-              initial={shouldAnimate ? { scaleX: 0 } : false}
+              initial={gateInitial({ scaleX: 0 })}
               animate={{ scaleX: 1 }}
               transition={
                 shouldAnimate
@@ -113,7 +113,7 @@ export function ContactPageContentEditorial({
             {/* Intro Paragraph */}
             <motion.p
               className={styles.intro}
-              initial={shouldAnimate ? { opacity: 0, y: 20 } : false}
+              initial={gateInitial({ opacity: 0, y: 20 })}
               animate={{ opacity: 1, y: 0 }}
               transition={
                 shouldAnimate
@@ -131,7 +131,7 @@ export function ContactPageContentEditorial({
             <motion.div
               className={styles.contactDetails}
               data-donny-target="contact.location"
-              initial={shouldAnimate ? { opacity: 0, y: 20 } : false}
+              initial={gateInitial({ opacity: 0, y: 20 })}
               animate={{ opacity: 1, y: 0 }}
               transition={
                 shouldAnimate
@@ -173,7 +173,7 @@ export function ContactPageContentEditorial({
                     {showSuccess ? (
                       <motion.div
                         key="success"
-                        initial={shouldAnimate ? { opacity: 0 } : false}
+                        initial={gateInitial({ opacity: 0 })}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: shouldAnimate ? 0.3 : 0 }}
@@ -194,7 +194,7 @@ export function ContactPageContentEditorial({
                     ) : (
                       <motion.div
                         key="form"
-                        initial={shouldAnimate ? { opacity: 0 } : false}
+                        initial={gateInitial({ opacity: 0 })}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: shouldAnimate ? 0.3 : 0 }}
@@ -211,7 +211,7 @@ export function ContactPageContentEditorial({
           <motion.hr
             className={cn(styles.divider, styles.layoutDivider)}
             aria-hidden
-            initial={shouldAnimate ? { scaleX: 0 } : false}
+            initial={gateInitial({ scaleX: 0 })}
             animate={{ scaleX: 1 }}
             transition={
               shouldAnimate
@@ -291,7 +291,7 @@ export function ContactPageContentEditorial({
           <div className={styles.quoteSection}>
             <motion.blockquote
               className={styles.pullQuote}
-              initial={shouldAnimate ? { opacity: 0, y: 20 } : false}
+              initial={gateInitial({ opacity: 0, y: 20 })}
               animate={{ opacity: 1, y: 0 }}
               transition={
                 shouldAnimate

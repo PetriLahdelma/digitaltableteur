@@ -17,5 +17,14 @@ export function useHydrationSafeMotion() {
 
   const shouldAnimate = mounted && prefersReducedMotion !== true;
 
-  return { mounted, shouldAnimate, prefersReducedMotion: prefersReducedMotion === true };
+  /** Use for Framer `initial` so SSR and first client paint both use `false`. */
+  const gateInitial = <T,>(animatedInitial: T): T | false =>
+    mounted && shouldAnimate ? animatedInitial : false;
+
+  return {
+    mounted,
+    shouldAnimate,
+    gateInitial,
+    prefersReducedMotion: prefersReducedMotion === true,
+  };
 }
