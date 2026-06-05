@@ -40,12 +40,10 @@ type Story = StoryObj<typeof Footer>;
 
 export const Default: Story = {
   tags: ["beta-matrix"],
-  name: "Default",
   render: () => <Footer />,
 };
 
 export const WithSurroundingContent: Story = {
-  name: "With Surrounding Content",
   render: () => (
     <ThemeProvider>
       <div
