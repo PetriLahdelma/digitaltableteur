@@ -8,7 +8,16 @@
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-social-share",
     "radixPrimitive": null,
     "element": "div",
-    "variants": {},
+    "variants": {
+        "variant": {
+            "values": [
+                "inline",
+                "article"
+            ],
+            "default": "inline",
+            "propSourced": true
+        }
+    },
     "slots": [],
     "asChild": false,
     "subParts": [],
@@ -49,6 +58,26 @@
         },
         "title": {
             "optional": false,
+            "type": "string"
+        },
+        "channels": {
+            "optional": true,
+            "type": "SocialShareChannel[]"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "inline",
+                "article"
+            ]
+        },
+        "showHeading": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "heading": {
+            "optional": true,
             "type": "string"
         }
     },

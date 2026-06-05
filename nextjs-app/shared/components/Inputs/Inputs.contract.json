@@ -131,10 +131,10 @@
     "composesWith": [
         "Button",
         "Text",
-        "CheckboxGroup",
         "Modal",
-        "Label",
-        "Title"
+        "CheckboxGroup",
+        "Checkbox",
+        "Select"
     ],
     "forbiddenUse": [
         "ship a form that relies on the email validator as the only",

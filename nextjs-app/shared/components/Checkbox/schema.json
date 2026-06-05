@@ -65,7 +65,7 @@
     "surface": "flat",
     "elevation": "none",
     "border": "1px solid var(--color-primary)",
-    "radius": "2px",
+    "radius": "var(--radius-lg) (8px)",
     "backgrounds": {
       "default": "var(--color-light-bg)",
       "hover": "var(--color-light-bg)",
@@ -103,7 +103,7 @@
       "spacing": [
         "space.internal.8"
       ],
-      "radii": ["radius.xs (2px)"]
+      "radii": ["radius.lg (8px)"]
     },
     "mode": {
       "light": ["mode.light.checkbox.bg", "mode.light.checkbox.border"],
