@@ -73,5 +73,9 @@
             "optional": false,
             "type": "{ code: string; label: string; ariaLabel: string }[]"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Render outside `Layout` — depends on the theme provider and the header.",
+        "Mount multiple instances simultaneously — focus management collapses."
+    ]
 }

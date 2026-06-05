@@ -147,5 +147,13 @@
         "Inputs",
         "CheckboxGroup",
         "Select"
+    ],
+    "forbiddenUse": [
+        "stack toasts. The provider queues them — calling `showToast`",
+        "rely on Toast for compliance acknowledgements (cookie consent,",
+        "use Toast for validation errors on a field. The visual is far"
+    ],
+    "prefersOver": [
+        "AlertBanner for page-level persistent status"
     ]
 }

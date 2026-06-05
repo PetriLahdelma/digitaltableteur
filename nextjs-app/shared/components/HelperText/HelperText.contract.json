@@ -74,5 +74,12 @@
         "Icon",
         "Button",
         "Inputs"
+    ],
+    "forbiddenUse": [
+        "render multiple `state=\"error\"` HelperTexts under one field —",
+        "use HelperText for page-level messages. AlertBanner and Toast"
+    ],
+    "prefersOver": [
+        "AlertBanner for field-level hints"
     ]
 }

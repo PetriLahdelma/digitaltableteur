@@ -65,5 +65,12 @@
         "Title",
         "Grid",
         "ArticleCard"
+    ],
+    "forbiddenUse": [
+        "use Link for actions. Buttons are for actions; anchors are for",
+        "override the underline via inline styles. The token-driven"
+    ],
+    "prefersOver": [
+        "Button with href for body-copy links"
     ]
 }

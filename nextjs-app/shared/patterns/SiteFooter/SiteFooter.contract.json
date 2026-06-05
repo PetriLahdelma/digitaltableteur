@@ -53,5 +53,10 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "mount more than one SiteFooter. AT users encounter two",
+        "hand-author a `<footer>` instead of using SiteFooter on a",
+        "change the Divider's margin via `className=\"my-X\"` without"
+    ]
 }

@@ -32,7 +32,7 @@
             "enum": [
                 2
             ],
-            "description": "Contract schema version. v2 adds props, composesWith, prefersOver, and stricter beta/stable conditionals."
+            "description": "Contract schema version. v2 adds props, composesWith, prefersOver, forbiddenUse, and stricter beta/stable conditionals."
         },
         "name": {
             "type": "string",
@@ -453,6 +453,16 @@
             },
             "uniqueItems": true,
             "description": "Raw HTML or legacy patterns this component replaces (from agent graph)."
+        },
+        "forbiddenUse": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "minLength": 1
+            },
+            "uniqueItems": true,
+            "maxItems": 8,
+            "description": "Agent-facing anti-patterns from spec Do/Don't and curated policy (v2 semantic)."
         }
     },
     "allOf": [

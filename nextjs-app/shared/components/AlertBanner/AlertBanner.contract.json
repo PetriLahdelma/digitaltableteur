@@ -101,5 +101,13 @@
     "composesWith": [
         "Button",
         "Icon"
+    ],
+    "forbiddenUse": [
+        "make errors dismissable. Letting the user hide a blocking",
+        "stack more than one banner on the same page. Two competing",
+        "animate the banner in on every render. AlertBanner is for"
+    ],
+    "prefersOver": [
+        "Toast for non-persistent status"
     ]
 }

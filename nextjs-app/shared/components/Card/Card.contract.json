@@ -350,5 +350,10 @@
         "PageLayout",
         "MarkdownMessage",
         "Icon"
+    ],
+    "forbiddenUse": [
+        "nest interactive controls inside a `link`-mode card. Use a",
+        "hide critical state in `extra`. Right-aligned slots are easy to",
+        "stretch the variant set to encode marketing themes. Compose"
     ]
 }

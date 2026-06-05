@@ -132,5 +132,9 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "Animate every modal — reserve `AnimatedDialog` for moments where the animation reads as deliberate.",
+        "Stack two open dialogs — focus management collapses; close the first before opening the second."
+    ]
 }

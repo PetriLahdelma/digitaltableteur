@@ -118,5 +118,9 @@
             "optional": true,
             "type": "string"
         }
-    }
+    },
+    "forbiddenUse": [
+        "use Switch inside a form whose values are submitted in a batch.",
+        "rely on colour alone to convey state — the position of the"
+    ]
 }

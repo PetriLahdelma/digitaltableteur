@@ -47,5 +47,9 @@
     "lightDarkVerified": true,
     "consumers": [],
     "schemaVersion": 2,
-    "props": {}
+    "props": {},
+    "forbiddenUse": [
+        "Render `NextHeader` outside `Layout` — it expects the global shell context (theme provider, router).",
+        "Duplicate the header in routes — `Layout` already mounts it once."
+    ]
 }

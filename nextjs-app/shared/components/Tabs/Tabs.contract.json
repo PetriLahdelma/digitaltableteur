@@ -132,5 +132,10 @@
         "Link",
         "Button",
         "Badge"
+    ],
+    "forbiddenUse": [
+        "nest tablists inside another tablist. APG explicitly disallows",
+        "use Tabs for non-mutually-exclusive content. Two panels open",
+        "hand-author `id=\"tab-<key>\"` / `id=\"tabpanel-<key>\"` on the"
     ]
 }

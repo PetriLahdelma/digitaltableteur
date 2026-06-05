@@ -47,5 +47,9 @@
     "composesWith": [
         "Divider",
         "TextLink"
+    ],
+    "forbiddenUse": [
+        "Render `Layout` inside another `Layout` — there is one global shell per page.",
+        "Use as a generic 'two-column with sidebar' wrapper — that is what a section pattern would be."
     ]
 }

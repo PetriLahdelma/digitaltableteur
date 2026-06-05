@@ -177,5 +177,12 @@
         "FileUpload",
         "PhoneInput",
         "AdaptiveLoadingButton"
+    ],
+    "forbiddenUse": [
+        "Nested modals — swap content in place inside one overlay",
+        "Lazy-mounting Modal only when isOpen — mount always and toggle isOpen for focus restore",
+        "nest a Modal inside another Modal. AT focus order becomes",
+        "render a Modal lazily (e.g. only mount it when `isOpen`).",
+        "add `aria-live` to the dialog root. The role implies"
     ]
 }
