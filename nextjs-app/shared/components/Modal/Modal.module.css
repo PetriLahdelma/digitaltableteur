@@ -17,9 +17,10 @@
   max-width: var(--size-width-lg);
   max-height: 90vh;
   flex-direction: column;
+  border-radius: var(--radius-lg);
   background-color: var(--main-body-background-color, var(--color-white));
   box-shadow: var(--modal-shadow, 0 4px 8px rgb(0 0 0 / 20%));
-  overflow-y: auto;
+  overflow: hidden auto;
 }
 
 .modal :is(.header, .content, .footer) {
@@ -39,19 +40,25 @@
 
 .leftHeader {
   display: flex;
+  flex: 1;
   flex-direction: row;
-  gap: 0.5rem;
-}
-
-.header svg {
-  width: 24px;
-  height: 24px;
   align-items: center;
-  vertical-align: middle;
+  gap: 0.5rem;
+  min-width: 0;
 }
 
-.title {
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.leftHeader .title {
   margin: 0;
+  margin-block: 0;
+  line-height: var(--line-height-tight, 1.2);
   font-family: var(--secondary-heading-font, sans-serif);
   color: var(--color-primary);
 }
@@ -63,8 +70,15 @@
 }
 
 .closeButton {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
   padding: 0;
   border: none;
+  border-radius: var(--radius-sm);
   background: none;
   font-size: 1rem;
   color: var(--color-primary);
@@ -187,4 +201,47 @@
   .footer {
     padding: 0.75rem 1rem 1.5rem;
   }
+}
+
+/* Forced colors (Windows High Contrast) */
+@media (forced-colors: active) {
+  .overlay {
+    background-color: Canvas;
+  }
+
+  .modal {
+    border: 2px solid CanvasText;
+    box-shadow: none;
+    forced-color-adjust: none;
+  }
+
+  .error,
+  .success,
+  .warning,
+  .info {
+    border-top: 4px solid Highlight;
+  }
+
+  .closeButton:focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+/* Storybook globals emulation — macOS does not trigger @media (forced-colors) */
+:global(html.sb-forced-colors-active) .overlay {
+  background-color: Canvas;
+}
+
+:global(html.sb-forced-colors-active) .modal {
+  border: 2px solid CanvasText;
+  box-shadow: none;
+  forced-color-adjust: none;
+}
+
+:global(html.sb-forced-colors-active) .error,
+:global(html.sb-forced-colors-active) .success,
+:global(html.sb-forced-colors-active) .warning,
+:global(html.sb-forced-colors-active) .info {
+  border-top: 4px solid Highlight;
 }

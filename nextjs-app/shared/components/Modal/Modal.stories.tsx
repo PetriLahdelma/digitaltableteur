@@ -161,7 +161,18 @@ export default {
       table: {
         category: "Appearance",
         type: { summary: "TitleSizeUnified" },
-        defaultValue: { summary: "M" },
+        defaultValue: { summary: "S" },
+      },
+    },
+
+    iconSize: {
+      control: { type: "select" },
+      options: ["2xs", "xs", "sm", "md", "lg", "xl", "2xl"],
+      description: "Header severity icon size (Icon token scale)",
+      table: {
+        category: "Appearance",
+        type: { summary: "IconProps[\"size\"]" },
+        defaultValue: { summary: "lg" },
       },
     },
 
@@ -182,7 +193,7 @@ export default {
       table: {
         category: "Appearance",
         type: { summary: "boolean" },
-        defaultValue: { summary: "true" },
+        defaultValue: { summary: "false" },
       },
     },
 
@@ -256,7 +267,11 @@ const Template: StoryFn<ModalProps> = (args: ModalProps) => {
 };
 
 export const Default = Template.bind({});
-Default.args = { title: "storyModalTitle", children: "storyModalBody" };
+Default.args = {
+  title: "storyModalTitle",
+  children: "storyModalBody",
+  showCloseIcon: true,
+};
 Default.parameters = {};
 Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
@@ -448,6 +463,8 @@ export const LoadingState: StoryFn = () => {
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
+  render: Template,
+  args: Default.args,
 };
 
 export const Example = {
@@ -461,4 +478,10 @@ export const ForcedColors: Story = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
+  render: Template,
+  args: {
+    title: "storyModalErrorTitle",
+    severity: "error",
+    description: "storyModalErrorBody",
+  },
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "@dt/Icon";
+import Icon, { type IconProps } from "@dt/Icon";
 
 export type SemanticStatus = "success" | "info" | "warning" | "error";
 
@@ -17,10 +17,18 @@ const STATUS_COLORS: Record<SemanticStatus, string> = {
   info: "var(--color-info)",
 };
 
-export const getSemanticIcon = (status: SemanticStatus) => {
+export type SemanticIconOptions = {
+  size?: IconProps["size"];
+};
+
+export const getSemanticIcon = (
+  status: SemanticStatus,
+  options?: SemanticIconOptions,
+) => {
   return (
     <Icon
       name={STATUS_ICON_NAMES[status]}
+      size={options?.size}
       color={STATUS_COLORS[status]}
       ariaLabel={status}
       aria-hidden="true"

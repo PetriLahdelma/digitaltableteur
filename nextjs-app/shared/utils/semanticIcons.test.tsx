@@ -31,6 +31,13 @@ describe("semanticIcons", () => {
     ).toBeInTheDocument();
   });
 
+  it("forwards size option to Icon", () => {
+    const { container } = render(getSemanticIcon("error", { size: "xl" }));
+    const svg = container.querySelector("svg");
+    expect(svg).toHaveAttribute("width", "48");
+    expect(svg).toHaveAttribute("height", "48");
+  });
+
   it("has correct icon names in STATUS_ICON_NAMES", () => {
     expect(STATUS_ICON_NAMES.success).toBe("check-circle");
     expect(STATUS_ICON_NAMES.error).toBe("x-circle");
