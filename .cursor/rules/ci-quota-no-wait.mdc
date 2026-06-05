@@ -1,0 +1,25 @@
+---
+description: GitHub Actions quota exhausted — never wait on or fix CI validate checks
+alwaysApply: true
+---
+
+# CI quota — do not wait on GitHub Actions
+
+**GitHub Actions quota for this repo is exhausted.** The `validate` (and related) CI checks will routinely fail, hang, or never run. That is **not** a signal about code quality.
+
+## MUST NOT
+
+- Poll, watch, or block on PR CI / `validate` status
+- Treat CI failure as something to debug unless the user explicitly says CI ran and failed for a real reason
+- Suggest "wait for CI" or "check if checks pass" before merge
+- Spend time fixing CI-only flakes when local gates already pass
+
+## MUST
+
+- Verify locally instead: `npm run typecheck`, `npm run lint`, `npm test`, and other relevant scripts (`build`, `agent:eval`, pre-push hooks) as the task requires
+- When the user asks to merge: use admin squash bypass (`gh pr merge --squash --admin`) after local verification — **do not** wait for green CI
+- Say clearly if asked about CI: quota issue, not a code blocker
+
+## User expectation
+
+Local verification + admin merge is the normal ship path for this project.
