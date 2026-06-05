@@ -21,6 +21,9 @@ route.
 ## Do / don't
 - Do: always pass a `title`. Title-less modals are a bad AT experience;
   the user lands on "Dialog" with no context.
+- Do: pass `description` for supporting copy (maps to `aria-describedby`,
+  shadcn `DialogDescription` parity). Prefer `description` over a lone
+  `<p>` child when the body is a single sentence.
 - Do: pick the severity that matches the message. `error` and
   `warning` flip the role to `alertdialog`, which carries an implicit
   assertive announcement.
@@ -54,3 +57,14 @@ route.
 - The default OK button is rendered only when `footer` is `undefined`
   and `isLoading` is false. Pass `footer={null}` to suppress the OK
   without supplying alternative actions.
+
+## shadcn Dialog migration
+
+| shadcn | @dt/Modal |
+|--------|-----------|
+| `open` / `onOpenChange` | `isOpen` / `onClose` — keep modal mounted; toggle `isOpen` |
+| `DialogTitle` | `title` |
+| `DialogDescription` | `description` (preferred) or `children` |
+| `DialogFooter` + actions | `footer` slot with `@dt/Button` |
+| `DialogContent severity="error"` | `severity="error"` (`alertdialog` role) |
+| `DialogTrigger asChild` | **Defer** — wrap trigger in local state until a composable API ships |

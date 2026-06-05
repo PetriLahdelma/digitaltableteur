@@ -20,7 +20,7 @@ Shared UI lives in `nextjs-app/shared/stories/MigrationDecisionBoard/` (`Migrati
 | Button contexts | `Migration boards/Button contexts` | `StudioMap`, `IconButton`, `ContactFormSuccess` | Migrated |
 | Contact flow | `Migration boards/Contact flow` | `ContactFormEditorial`, `ContactFormSuccessEditorial` | Migrated |
 | Form primitives | `Migration boards/Form primitives` | `FormField`, `CheckboxField` | Migrated |
-| Dialogs | `Migration boards/Dialogs` | `AnimatedDialog`, `Lightbox`, `EnhancedContactForm` | **Blocked** — `@dt/Modal` needs design/API work before swap |
+| Dialogs | `Migration boards/Dialogs` | `AnimatedDialog`, `Lightbox`; `EnhancedContactForm` error alert | **Partial** — error alert approved (`@dt/Modal` + `description`); gallery/animation/composable trigger deferred |
 
 Restart Storybook after adding or renaming board files so hub `storyId` links resolve.
 

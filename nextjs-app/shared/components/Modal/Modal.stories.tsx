@@ -96,6 +96,12 @@ export default {
       table: { category: "Content", type: { summary: "string" } },
     },
 
+    description: {
+      control: "text",
+      description: "Supporting text (aria-describedby; DialogDescription parity)",
+      table: { category: "Content", type: { summary: "string" } },
+    },
+
     children: {
       control: "text",
       description: "Modal content",
@@ -293,7 +299,7 @@ ErrorDialog.args = {
   isOpen: true,
   title: "storyModalErrorTitle",
   severity: "error",
-  children: "storyModalErrorBody",
+  description: "storyModalErrorBody",
 };
 
 export const SuccessDialog = Template.bind({});
