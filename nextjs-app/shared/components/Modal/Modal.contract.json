@@ -113,6 +113,10 @@
                 "xxl"
             ]
         },
+        "iconSize": {
+            "optional": true,
+            "type": "IconProps[\"size\"]"
+        },
         "isOpen": {
             "optional": false,
             "type": "boolean"
@@ -180,9 +184,9 @@
         "AdaptiveLoadingButton"
     ],
     "forbiddenUse": [
-        "Pair AlertBanner with Modal for the same status — use Modal alone for blocking alerts",
         "Nested modals — swap content in place inside one overlay",
         "Lazy-mounting Modal only when isOpen — mount always and toggle isOpen for focus restore",
+        "Pair AlertBanner with Modal for the same status — use Modal alone for blocking alerts",
         "nest a Modal inside another Modal. AT focus order becomes",
         "render a Modal lazily (e.g. only mount it when `isOpen`).",
         "add `aria-live` to the dialog root. The role implies"
