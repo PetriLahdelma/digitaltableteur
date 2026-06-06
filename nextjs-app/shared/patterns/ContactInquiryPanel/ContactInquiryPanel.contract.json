@@ -49,13 +49,7 @@
         "packageId",
         "ref"
     ],
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
-            "since": "2026-06-06"
-        }
-    ],
+    "consumers": [],
     "schemaVersion": 2,
     "props": {
         "initialMode": {

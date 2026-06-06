@@ -43,13 +43,7 @@
         "className",
         "items"
     ],
-    "consumers": [
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
-            "since": "2026-06-06"
-        }
-    ],
+    "consumers": [],
     "schemaVersion": 2,
     "props": {
         "items": {

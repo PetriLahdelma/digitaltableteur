@@ -9,6 +9,7 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 import { buildFigmaUrl, isRealFigmaNodeId } from "./figma-config.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -130,4 +131,14 @@ for (const entry of STABLE_FLEET) {
 }
 
 console.log(`\n${dryRun ? "Would promote" : "Promoted"} ${promoted} component(s).`);
+
+if (!dryRun && promoted > 0) {
+  const audit = spawnSync("npm", ["run", "audit:consumers"], {
+    cwd: ROOT,
+    stdio: "inherit",
+    encoding: "utf8",
+  });
+  if (audit.status !== 0) process.exit(audit.status ?? 1);
+}
+
 process.exit(0);
