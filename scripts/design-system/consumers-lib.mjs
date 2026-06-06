@@ -1,6 +1,6 @@
 /**
- * Compute production consumers[] for stable component contracts from @dt imports.
- * Follows local imports from app / patterns / pages (transitive closure).
+ * Compute production consumers[] for stable component contracts.
+ * Follows @dt/, @/, and relative imports from app / patterns / pages (transitive).
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, resolve, dirname, relative, extname } from "node:path";
@@ -70,6 +70,30 @@ function resolveToFile(basePath) {
   return null;
 }
 
+function resolveDtImport(spec) {
+  if (!spec.startsWith("@dt/")) return null;
+  const name = spec.slice(4).split("/")[0];
+  for (const base of COMPONENT_ROOTS) {
+    const dir = join(base, name);
+    const contract = join(dir, `${name}.contract.json`);
+    if (!existsSync(contract)) continue;
+    return resolveToFile(join(dir, name)) ?? resolveToFile(dir);
+  }
+  return null;
+}
+
+/** Catalog component name when a module path resolves inside a contract folder. */
+function componentNameFromResolvedPath(resolved) {
+  const rel = relPath(resolved);
+  for (const base of COMPONENT_ROOTS) {
+    const prefix = `${relPath(base)}/`;
+    if (!rel.startsWith(prefix)) continue;
+    const name = rel.slice(prefix.length).split("/")[0];
+    if (existsSync(join(base, name, `${name}.contract.json`))) return name;
+  }
+  return null;
+}
+
 /**
  * @param {string} fromFile
  * @param {string} spec
@@ -87,6 +111,15 @@ function resolveLocalImport(fromFile, spec) {
   const resolved = resolveToFile(target);
   if (!resolved || !isProductionModule(resolved)) return null;
   return resolved;
+}
+
+/**
+ * Resolve any import spec to a production module (local, @/, or @dt/).
+ * @param {string} fromFile
+ * @param {string} spec
+ */
+function resolveImport(fromFile, spec) {
+  return resolveLocalImport(fromFile, spec) ?? resolveDtImport(spec);
 }
 
 /**
@@ -144,8 +177,11 @@ function buildModuleGraph() {
     const dt = parseDtComponents(content);
     const deps = new Set();
     for (const spec of parseImportSpecs(content)) {
-      const resolved = resolveLocalImport(file, spec);
-      if (resolved) deps.add(resolved);
+      const resolved = resolveImport(file, spec);
+      if (!resolved) continue;
+      deps.add(resolved);
+      const localComponent = componentNameFromResolvedPath(resolved);
+      if (localComponent) dt.add(localComponent);
     }
     graph.set(file, { dt, deps });
   }

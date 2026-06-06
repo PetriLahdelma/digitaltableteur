@@ -13,9 +13,9 @@
 | Phase | Focus | Status |
 |-------|--------|--------|
 | **13** | Green `npm test` + CI full gate | **Done** (#698) |
-| **14** | Alpha → beta promotions (patterns with stories) | **In progress** (NewsBulletin ✓, ContactInquiryPanel, PricingPageContent) |
+| **14** | Alpha → beta promotions (patterns with stories) | **Done** (#698) |
 | **15** | Figma capture loop (9 routes, surgical binding) | Pending |
-| **16** | Production consumer auto-sync + stable fleet growth | Pending |
+| **16** | Production consumer auto-sync + stable fleet growth | **Started** (transitive scan + release gate) |
 | **17** | AI-Ready DS Benchmark (public doc + consulting SKU) | **Started** |
 | **18** | npm export spike (`@digitaltableteur/ds`) | Pending |
 
@@ -46,7 +46,9 @@ Per `docs/FIGMA_DESIGN_SYSTEM_SYNC.md`:
 
 ## Phase 16 — Stable fleet + consumers
 
-- `npm run audit:consumers` in stable promotion workflow
+- `npm run audit:consumers` refreshes stable `consumers[]` from transitive import scan (`@dt/`, relative, `@/`)
+- `npm run check:consumers` wired into `release:gate`
+- `promote-stable-fleet.mjs` runs `audit:consumers` after promotions
 - Container Figma node-id when mapped
 - Visual baselines on stable fleet (`test:visual`)
 
