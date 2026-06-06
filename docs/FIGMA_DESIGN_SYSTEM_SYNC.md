@@ -61,6 +61,24 @@ Or batch via Cursor agent: apply all `nextjs-app/shared/foundations/figma/.use-f
 - `scripts/design-system/figma-config.mjs` — file key/slug (override with `FIGMA_FILE_KEY` / `FIGMA_FILE_SLUG`).
 - Contracts still use placeholder `node-id=dt-*` until real frames exist; run `npm run sync:figma` after publishing nodes.
 
+## Html-to-design route captures (Phase 15)
+
+Pixel-perfect references — **no bulk DS rebuild** on capture frames.
+
+```bash
+npm run dev:figma-capture          # injects capture.js via FIGMA_HTML_CAPTURE=1
+npm run figma:capture-routes       # queue status + open-URL helper
+```
+
+Agent workflow per route:
+
+1. `generate_figma_design({ fileKey: PC2UPdYwm8qGt6ZTg0AakF })` → `captureId`
+2. `node scripts/design-system/figma-html-capture-routes.mjs --route work --capture-id <id>` → open URL
+3. Poll `generate_figma_design` with `captureId` until `completed`
+4. Record new `nodeId` in `nextjs-app/shared/foundations/figma/dsb-state.json`
+
+Optional follow-up: surgical `use_figma` for header/footer variable binding only — not `figma-rebuild-route-views.mjs`.
+
 ## Resume
 
 State ledger pattern: `figma-generate-library` skill — tag nodes with `setSharedPluginData('dsb', …)` and re-run discovery if a session times out.
