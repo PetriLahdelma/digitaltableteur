@@ -126,6 +126,26 @@
       "storybookId": "patterns-sitefooter--default"
     },
     {
+      "name": "NewsBulletin",
+      "publicImport": "@dt/NewsBulletin",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "homepage news strip with three topical slots above footer",
+        "footer-adjacent bulletin cards with internal or external links"
+      ],
+      "avoidWhen": [
+        "full blog index or article grid",
+        "alert or toast feedback surfaces",
+        "inline card stack without region landmark"
+      ],
+      "composesWith": ["Link", "Icon", "Text"],
+      "variantNotes": {
+        "data": "Items default from NEWS_BULLETIN_ITEMS — keep copy in the data module for i18n."
+      },
+      "storybookId": "patterns-newsbulletin--example"
+    },
+    {
       "name": "ArticleHero",
       "publicImport": "@dt/ArticleHero",
       "tier": "pattern",

@@ -3,30 +3,71 @@
     "name": "NewsBulletin",
     "tier": "pattern",
     "group": "marketing",
-    "status": "alpha",
-    "description": "Homepage news bulletin strip with three topical slots.",
+    "status": "beta",
+    "description": "Homepage news bulletin strip with three topical slots above the footer.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=503-20",
     "radixPrimitive": null,
-    "element": "div",
+    "element": "section",
     "variants": {},
     "slots": [],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "Tab",
+            "Enter"
+        ],
+        "ariaRequirements": [
+            "region landmark",
+            "aria-label per bulletin card",
+            "external links open in new tab with rel noopener"
+        ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-06-06 — card labels, link targets, and ForcedColors story verified in Storybook.",
+        "forcedColorsVerified": true,
+        "playFunctionExempt": "Marquee animation defers to CSS; keyboard order follows DOM link sequence."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "className",
+        "items"
+    ],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/Home/HomePage.tsx",
+            "since": "2026-06-06"
+        }
+    ],
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "items": {
+            "optional": true,
+            "type": "NewsBulletinItem[]"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Link",
+        "Icon",
+        "Text"
+    ],
+    "forbiddenUse": [
+        "Use BlogGrid for full article listings instead of this strip.",
+        "Do not hardcode bulletin copy outside news-bulletin data module."
+    ]
 }

@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './NewsBulletin.stories.tsx';
+
+<Meta of={Stories} />
+
+# NewsBulletin
+
+**Status:** beta · **Tier:** pattern · **Group:** marketing
+
+## In use
+
+See the **Example** story for the canonical homepage composition (three topical slots above the footer).
+
+## How to use
+
+```tsx
+import { NewsBulletin } from '@dt/NewsBulletin';
+
+<NewsBulletin />
+```
+
+## When to use
+
+- Homepage footer-adjacent news strip with up to three topical items.
+- When items come from `NEWS_BULLETIN_ITEMS` or an equivalent typed list.
+
+## When not to use
+
+- Full blog index or article lists — use `BlogGrid` instead.
+- Alert or toast feedback — use `AlertBanner` or `Toast`.
+
+## Accessibility
+
+- Cards expose `aria-label` per item; interactive cards use native links.
+- Confirm **ForcedColors** before marking `forcedColorsVerified`.
+
+## Promotion notes
+
+- Beta: Example + ForcedColors stories, axe gate enabled.
+- Stable: production consumer documented, AT snapshots committed.

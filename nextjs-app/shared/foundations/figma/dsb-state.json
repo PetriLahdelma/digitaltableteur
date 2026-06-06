@@ -105,11 +105,14 @@
   ],
   "pendingSteps": [
     "phase4-pattern-instances",
-    "phase4-contract-sync"
+    "phase4-contract-sync",
+    "phase5-html-captures-remaining-routes"
   ],
+  "captureWorkflow": {
+    "preferred": "html-to-design via FIGMA_HTML_CAPTURE=1 + generate_figma_design",
+    "avoid": "Bulk DS instance replacement on capture frames (destroys pixel-perfect reference)"
+  },
   "refinementNotes": {
-    "tool": "plugin-figma-figma use_figma + scripts/design-system/figma-rebuild-route-views.mjs",
-    "npmScript": "npm run build:figma-rebuild-views",
     "applied": [
       "SiteHeader/SiteFooter DS instances on all 9 VIews frames",
       "NewsBulletin + CTASection pattern swaps (by frame name + CTA copy heuristics)",
