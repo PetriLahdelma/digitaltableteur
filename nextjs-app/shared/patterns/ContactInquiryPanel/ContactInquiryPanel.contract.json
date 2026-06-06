@@ -3,30 +3,85 @@
     "name": "ContactInquiryPanel",
     "tier": "pattern",
     "group": "forms",
-    "status": "alpha",
-    "description": "Contact page inquiry panel wrapping editorial form and copy.",
-    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-contact-inquiry-panel",
+    "status": "beta",
+    "description": "Contact page inquiry panel with message and book-a-call tabs wrapping the editorial form.",
+    "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=664-33",
     "radixPrimitive": null,
     "element": "div",
     "variants": {},
-    "slots": [],
+    "slots": [
+        "messagePanel"
+    ],
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "Tab",
+            "ArrowLeft",
+            "ArrowRight",
+            "Enter"
+        ],
+        "ariaRequirements": [
+            "tablist with aria-selected tabs",
+            "tabpanels linked via aria-controls",
+            "message form anchor id contact-form"
+        ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-06-06 — tab keyboard pattern, panel visibility, and ForcedColors story verified in Storybook.",
+        "forcedColorsVerified": true,
+        "playFunctionExempt": "Tab switching defers to native button focus; booking embed is third-party when configured."
     },
     "tokens": {
         "colors": [],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "bookingConfig",
+        "messagePanel",
+        "packageId",
+        "ref"
+    ],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
+            "since": "2026-06-06"
+        }
+    ],
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "initialMode": {
+            "optional": true,
+            "type": "ContactInquiryMode"
+        },
+        "packageId": {
+            "optional": true,
+            "type": "string"
+        },
+        "messagePanel": {
+            "optional": false,
+            "type": "React.ReactNode"
+        },
+        "bookingConfig": {
+            "optional": true,
+            "type": "SiteBookingConfig"
+        }
+    },
+    "composesWith": [
+        "Button",
+        "ContactFormEditorial",
+        "DonnyBookingEmbed"
+    ],
+    "forbiddenUse": [
+        "Use without a messagePanel slot — the form lives in the parent composition.",
+        "Duplicate tablist landmarks on the same contact page."
+    ]
 }

@@ -33,6 +33,7 @@ export interface ContactInquiryPanelHandle {
   scrollToMessageForm: () => void;
 }
 
+/** Contact page panel: message tab + book-a-call tab with composed form slot. */
 export const ContactInquiryPanel = forwardRef<
   ContactInquiryPanelHandle,
   ContactInquiryPanelProps

@@ -4,15 +4,15 @@
 Contact page inquiry panel wrapping editorial form and copy.
 
 ## Interaction contract
-- Keyboard: inherit from composed @dt/* primitives
-- Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Keyboard: Tab between tabs; ArrowLeft/ArrowRight switch tabs; Enter activates
+- Pointer: tab buttons and composed form controls
+- Screen readers: tablist with aria-selected; tabpanels linked via aria-controls
 
 ## Do / don't
-- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface
-- Do: treat this as a page assembly reference when matching production routes
-- Don't: invent parallel primitives inside this folder
-- Don't: promote to stable without production consumer evidence
+- Do: pass ContactFormEditorial (or success state) as `messagePanel`
+- Do: use on contact page via ContactPageContentEditorial
+- Don't: mount without messagePanel slot
+- Don't: duplicate tablist landmarks on the same page
 
 ## Design notes
 - Tokens: inherit from child components

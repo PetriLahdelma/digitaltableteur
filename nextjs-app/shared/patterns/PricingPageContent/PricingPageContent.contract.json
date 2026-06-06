@@ -3,8 +3,8 @@
     "name": "PricingPageContent",
     "tier": "pattern",
     "group": "marketing",
-    "status": "alpha",
-    "description": "Pricing page content assembly with tiers and FAQ.",
+    "status": "beta",
+    "description": "Pricing page content assembly with packages, agency comparison, and deliverables.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-pricing-page-content",
     "radixPrimitive": null,
     "element": "div",
@@ -13,20 +13,59 @@
     "asChild": false,
     "subParts": [],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "Tab",
+            "Enter"
+        ],
+        "ariaRequirements": [
+            "heading hierarchy for package tiers",
+            "comparison table semantics",
+            "CTA links route to contact with package prefill"
+        ],
         "reducedMotion": true,
-        "reviewed": false,
-        "forcedColorsVerified": false
+        "reviewed": true,
+        "reviewedNote": "2026-06-06 — package cards, comparison table, and ForcedColors story verified in Storybook.",
+        "forcedColorsVerified": true,
+        "playFunctionExempt": "Page assembly; interactive CTAs inherit Button and Link primitives."
     },
     "tokens": {
-        "colors": [],
+        "colors": [
+            "--color-white"
+        ],
         "spacing": []
     },
-    "lightDarkVerified": false,
+    "lightDarkVerified": true,
+    "argTypesProxyExempt": [
+        "className"
+    ],
+    "consumers": [
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/pages/PricingPage/PricingPage.tsx",
+            "since": "2026-06-06"
+        }
+    ],
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "composesWith": [
+        "Button",
+        "Icon",
+        "Text",
+        "Title"
+    ],
+    "forbiddenUse": [
+        "Inline pricing card without full page context.",
+        "Hardcode package copy outside i18n keys."
+    ]
 }

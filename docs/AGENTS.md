@@ -24,6 +24,9 @@
 - **`AGENTIC_DS_OPERATING_MODEL.md`**
   - Agent + human workflow for `@dt/*`, MCP, evals, enforcement guardrails
 
+- **`AI_READY_DS_BENCHMARK.md`**
+  - Public maturity rubric and live metric snapshot for agentic design systems (v3 consulting SKU)
+
 - **`DS_AUTOMATION_STRATEGY.md`**
   - Solo-studio automation intent: observable governance, CI commands, 90-day priorities, optional service packaging
 

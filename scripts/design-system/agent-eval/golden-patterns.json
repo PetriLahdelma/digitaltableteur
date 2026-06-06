@@ -51,6 +51,16 @@
       "id": "home-hero",
       "query": "homepage hero kinetic title scroll indicator",
       "expectedTop1": "HomeHero"
+    },
+    {
+      "id": "contact-inquiry",
+      "query": "contact page message or book call tab panel",
+      "expectedTop1": "ContactInquiryPanel"
+    },
+    {
+      "id": "pricing-page",
+      "query": "pricing page packages comparison tiers FAQ",
+      "expectedTop1": "PricingPageContent"
     }
   ]
 }
