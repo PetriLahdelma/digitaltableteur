@@ -163,6 +163,46 @@
         "metadata": "Expects article fields (date, author, tags) — compose rather than hardcoding."
       },
       "storybookId": null
+    },
+    {
+      "name": "ContactInquiryPanel",
+      "publicImport": "@dt/ContactInquiryPanel",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "contact page message vs book-a-call tab panel",
+        "editorial contact form with optional Donny booking embed"
+      ],
+      "avoidWhen": [
+        "standalone contact form without tab chrome",
+        "inline modal inquiry — prefer dedicated dialog pattern",
+        "pricing page package cards"
+      ],
+      "composesWith": ["Button", "ContactFormEditorial", "DonnyBookingEmbed"],
+      "variantNotes": {
+        "messagePanel": "Parent passes ContactFormEditorial (or success state) as messagePanel slot."
+      },
+      "storybookId": "patterns-contactinquirypanel--example"
+    },
+    {
+      "name": "PricingPageContent",
+      "publicImport": "@dt/PricingPageContent",
+      "tier": "pattern",
+      "status": "beta",
+      "useWhen": [
+        "pricing page with package tiers and agency comparison",
+        "productized offers with contact CTA prefill"
+      ],
+      "avoidWhen": [
+        "single pricing card inline on homepage",
+        "FAQ-only page without package tiers",
+        "contact inquiry tab panel — prefer ContactInquiryPanel"
+      ],
+      "composesWith": ["Button", "Icon", "Text", "Title"],
+      "variantNotes": {
+        "ctas": "Package CTAs link to /contact with packageId query for booking prefill."
+      },
+      "storybookId": "patterns-pricingpagecontent--example"
     }
   ]
 }
