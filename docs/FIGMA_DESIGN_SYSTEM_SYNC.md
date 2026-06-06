@@ -65,17 +65,22 @@ Or batch via Cursor agent: apply all `nextjs-app/shared/foundations/figma/.use-f
 
 Pixel-perfect references — **no bulk DS rebuild** on capture frames.
 
+**Viewport:** captures MUST run at **1728px** width. The Cursor IDE browser (~538px) is forbidden — layouts collapse to mobile.
+
 ```bash
 npm run dev:figma-capture          # injects capture.js via FIGMA_HTML_CAPTURE=1
-npm run figma:capture-routes       # queue status + open-URL helper
+npm run figma:capture-routes       # queue status
+npm run figma:run-capture -- --route work --capture-id <uuid>   # Playwright @ 1728px
 ```
 
 Agent workflow per route:
 
 1. `generate_figma_design({ fileKey: PC2UPdYwm8qGt6ZTg0AakF })` → `captureId`
-2. `node scripts/design-system/figma-html-capture-routes.mjs --route work --capture-id <id>` → open URL
+2. `npm run figma:run-capture -- --route <key> --capture-id <id>` (Playwright Chrome, **not** Cursor browser)
 3. Poll `generate_figma_design` with `captureId` until `completed`
-4. Record new `nodeId` in `nextjs-app/shared/foundations/figma/dsb-state.json`
+4. Record `nodeId` + `captureViewportWidth: 1728` in `dsb-state.json`
+
+Override width: `FIGMA_CAPTURE_WIDTH=1728` (default). Optional height: `FIGMA_CAPTURE_HEIGHT=1080`.
 
 Optional follow-up: surgical `use_figma` for header/footer variable binding only — not `figma-rebuild-route-views.mjs`.
 
