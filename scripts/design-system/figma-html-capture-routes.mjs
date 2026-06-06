@@ -1,51 +1,22 @@
 #!/usr/bin/env node
 /**
  * Route manifest for html-to-design Figma captures (Phase 15).
- * Does NOT mutate Figma — use generate_figma_design MCP + dev:figma-capture.
+ * Does NOT mutate Figma — use generate_figma_design MCP + figma:run-capture.
  *
  * Usage:
  *   npm run dev:figma-capture
- *   node scripts/design-system/figma-html-capture-routes.mjs
- *   node scripts/design-system/figma-html-capture-routes.mjs --route work --capture-id <uuid>
+ *   npm run figma:capture-routes
+ *   npm run figma:run-capture -- --route work --capture-id <uuid>
  */
-import { readFileSync } from "node:fs";
-import { join, resolve, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import { FIGMA_FILE_KEY, FIGMA_FILE_SLUG } from "./figma-config.mjs";
-
-const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const STATE_PATH = join(
-  ROOT,
-  "nextjs-app/shared/foundations/figma/dsb-state.json",
-);
-const DEV_PORT = process.env.PORT || "3001";
-const DEV_ORIGIN = `http://localhost:${DEV_PORT}`;
-
-/** @type {Record<string, { path: string, label: string }>} */
-export const CAPTURE_ROUTES = {
-  home: { path: "/", label: "Home" },
-  work: { path: "/work", label: "Work / portfolio" },
-  about: { path: "/about", label: "About" },
-  pricing: { path: "/pricing", label: "Pricing" },
-  contact: { path: "/contact", label: "Contact" },
-  blog: { path: "/blog", label: "Blog index" },
-  "blog-article": {
-    path: "/blog/agentic-design-systems-operating-models",
-    label: "Blog article (sample)",
-  },
-  sitemap: { path: "/sitemap", label: "Sitemap" },
-  dsharp: {
-    path: "/work/dsharp-design-system",
-    label: "DSharp case study",
-  },
-};
-
-function buildCaptureUrl(localPath, captureId) {
-  const endpoint = encodeURIComponent(
-    `https://mcp.figma.com/mcp/capture/${captureId}/submit`,
-  );
-  return `${DEV_ORIGIN}${localPath}#figmacapture=${captureId}&figmaendpoint=${endpoint}&figmadelay=3000`;
-}
+import {
+  buildCaptureUrl,
+  CAPTURE_ROUTES,
+  CAPTURE_VIEWPORT_WIDTH,
+  DEV_ORIGIN,
+  FIGMA_FILE_KEY,
+  FIGMA_FILE_SLUG,
+  readDsbState,
+} from "./figma-html-capture-lib.mjs";
 
 function main() {
   const routeArg = process.argv.indexOf("--route");
@@ -55,31 +26,39 @@ function main() {
   const captureId =
     captureArg >= 0 ? process.argv[captureArg + 1] : undefined;
 
-  const state = JSON.parse(readFileSync(STATE_PATH, "utf8"));
+  const state = readDsbState();
 
   console.log(`Figma file: ${FIGMA_FILE_KEY} (${FIGMA_FILE_SLUG})`);
-  console.log(`Dev origin: ${DEV_ORIGIN} (npm run dev:figma-capture)\n`);
+  console.log(`Dev origin: ${DEV_ORIGIN} (npm run dev:figma-capture)`);
+  console.log(`Capture viewport: ${CAPTURE_VIEWPORT_WIDTH}px wide (required)\n`);
 
   if (routeKey) {
     const route = CAPTURE_ROUTES[routeKey];
     if (!route) {
-      console.error(`Unknown route "${routeKey}". Keys: ${Object.keys(CAPTURE_ROUTES).join(", ")}`);
+      console.error(
+        `Unknown route "${routeKey}". Keys: ${Object.keys(CAPTURE_ROUTES).join(", ")}`,
+      );
       process.exit(1);
     }
     console.log(`Route: ${routeKey} — ${route.label}`);
     console.log(`Production: ${state.routeViews?.[routeKey]?.url ?? "—"}`);
     const view = state.routeViews?.[routeKey];
-    if (view?.captureMethod === "html-to-design") {
+    if (view?.captureMethod === "html-to-design" && !view?.needsRecapture) {
       console.log(`Current html-to-design node: ${view.nodeId}`);
       console.log(view.figmaUrl);
+    } else if (view?.needsRecapture) {
+      console.log(`Needs re-capture: ${view.recaptureReason ?? "viewport invalid"}`);
     } else if (view?.nodeId) {
       console.log(`Legacy VIews frame: ${view.nodeId} (replace via new capture)`);
     }
     if (captureId) {
-      console.log(`\nOpen in browser:\n${buildCaptureUrl(route.path, captureId)}`);
+      console.log(`\nCapture URL:\n${buildCaptureUrl(route.path, captureId)}`);
+      console.log(
+        `\nRun capture (Playwright @ ${CAPTURE_VIEWPORT_WIDTH}px — NOT Cursor browser):\n  npm run figma:run-capture -- --route ${routeKey} --capture-id ${captureId}`,
+      );
     } else {
       console.log(
-        "\nNext: call generate_figma_design MCP (fileKey only) → pass --capture-id to print open URL.",
+        "\nNext: generate_figma_design MCP → captureId → figma:run-capture",
       );
     }
     return;
@@ -88,12 +67,16 @@ function main() {
   console.log("Routes (html-to-design queue):\n");
   for (const [key, route] of Object.entries(CAPTURE_ROUTES)) {
     const view = state.routeViews?.[key];
-    const status =
-      view?.captureMethod === "html-to-design"
-        ? `✓ captured ${view.capturedAt ?? ""} → ${view.nodeId}`
-        : view?.nodeId
-          ? `legacy ${view.nodeId}`
-          : "pending";
+    let status;
+    if (view?.needsRecapture) {
+      status = `↻ re-capture (${view.captureViewportWidth ?? "?"}px → ${CAPTURE_VIEWPORT_WIDTH}px)`;
+    } else if (view?.captureMethod === "html-to-design") {
+      status = `✓ ${view.capturedAt ?? ""} @ ${view.captureViewportWidth ?? "?"}px → ${view.nodeId}`;
+    } else if (view?.nodeId) {
+      status = `legacy ${view.nodeId}`;
+    } else {
+      status = "pending";
+    }
     console.log(`  ${key.padEnd(14)} ${route.path.padEnd(42)} ${status}`);
   }
 
@@ -101,9 +84,10 @@ function main() {
 Workflow:
   1. npm run dev:figma-capture
   2. generate_figma_design({ fileKey: "${FIGMA_FILE_KEY}" }) → captureId
-  3. node scripts/design-system/figma-html-capture-routes.mjs --route <key> --capture-id <id>
-  4. Open printed URL; poll generate_figma_design with captureId until completed
-  5. Update dsb-state.json routeViews.<key> (nodeId, captureMethod, capturedAt)
+  3. npm run figma:run-capture -- --route <key> --capture-id <id>
+     (Playwright Chrome @ ${CAPTURE_VIEWPORT_WIDTH}px — never Cursor browser ~538px)
+  4. Poll generate_figma_design with captureId until completed
+  5. Update dsb-state.json (nodeId, captureViewportWidth: ${CAPTURE_VIEWPORT_WIDTH})
   Do NOT run figma-rebuild-route-views.mjs on capture frames.
 `);
 }

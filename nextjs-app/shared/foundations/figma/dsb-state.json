@@ -16,6 +16,9 @@
       "previousNodeId": "615:33",
       "captureMethod": "html-to-design",
       "capturedAt": "2026-06-06",
+      "captureViewportWidth": 538,
+      "needsRecapture": true,
+      "recaptureReason": "Captured via Cursor browser at 538px; require 1728px via npm run figma:run-capture",
       "page": "VIews",
       "url": "https://www.digitaltableteur.com/work",
       "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=671-2"
@@ -114,12 +117,17 @@
     "phase4-contract-sync"
   ],
   "htmlCaptureQueue": {
-    "completed": ["work"],
-    "remaining": ["home", "about", "pricing", "contact", "blog", "blog-article", "sitemap", "dsharp"]
+    "completed": [],
+    "needsRecapture": ["work"],
+    "remaining": ["home", "about", "pricing", "contact", "blog", "blog-article", "sitemap", "dsharp", "work"]
   },
   "captureWorkflow": {
-    "preferred": "html-to-design via FIGMA_HTML_CAPTURE=1 + generate_figma_design",
-    "avoid": "Bulk DS instance replacement on capture frames (destroys pixel-perfect reference)"
+    "preferred": "html-to-design via FIGMA_HTML_CAPTURE=1 + generate_figma_design + figma:run-capture",
+    "viewportWidthPx": 1728,
+    "forbidden": [
+      "Cursor IDE browser (~538px viewport)",
+      "Bulk DS instance replacement on capture frames (destroys pixel-perfect reference)"
+    ]
   },
   "refinementNotes": {
     "applied": [
