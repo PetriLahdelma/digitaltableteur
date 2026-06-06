@@ -12,8 +12,8 @@
 
 | Phase | Focus | Status |
 |-------|--------|--------|
-| **13** | Green `npm test` + CI full gate | **In progress** |
-| **14** | Alpha → beta promotions (patterns with stories) | **Started** (NewsBulletin) |
+| **13** | Green `npm test` + CI full gate | **Done** (#698) |
+| **14** | Alpha → beta promotions (patterns with stories) | **In progress** (NewsBulletin ✓, ContactInquiryPanel, PricingPageContent) |
 | **15** | Figma capture loop (9 routes, surgical binding) | Pending |
 | **16** | Production consumer auto-sync + stable fleet growth | Pending |
 | **17** | AI-Ready DS Benchmark (public doc + consulting SKU) | **Started** |
@@ -32,9 +32,9 @@
 Promote alpha assemblies that already have Storybook coverage:
 
 1. NewsBulletin ✓
-2. ContactInquiryPanel
+2. ContactInquiryPanel ✓
 3. HomeHero (already beta)
-4. PricingPageContent (needs Example + ForcedColors)
+4. PricingPageContent ✓
 
 ## Phase 15 — Figma captures
 

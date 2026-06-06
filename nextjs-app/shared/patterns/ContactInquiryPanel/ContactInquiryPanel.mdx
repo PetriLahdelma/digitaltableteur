@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './ContactInquiryPanel.stories.tsx';
+
+<Meta of={Stories} />
+
+# ContactInquiryPanel
+
+**Status:** beta · **Tier:** pattern · **Group:** forms
+
+## In use
+
+See the **Example** story for the contact page composition with `ContactFormEditorial` in the message tab.
+
+## How to use
+
+```tsx
+import { ContactInquiryPanel } from '@dt/ContactInquiryPanel';
+import { ContactFormEditorial } from '@dt/ContactFormEditorial';
+
+<ContactInquiryPanel messagePanel={<ContactFormEditorial />} />
+```
+
+## When to use
+
+- Contact page right column with message vs book-a-call tabs.
+- When the parent owns form submit state and passes the editorial form as `messagePanel`.
+
+## When not to use
+
+- Standalone contact form without tab chrome — use `ContactFormEditorial` directly.
+- Pricing package cards — use `PricingPageContent`.
+
+## Accessibility
+
+- Tablist with `aria-selected`, arrow-key navigation between tabs.
+- Message panel anchors at `#contact-form` for deep links and imperative scroll.
+- Confirm **ForcedColors** before marking `forcedColorsVerified`.
+
+## Promotion notes
+
+- Beta: Example + ForcedColors stories, axe gate enabled.
+- Stable: production consumer documented, AT snapshots committed.

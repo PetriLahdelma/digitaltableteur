@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import * as Stories from './PricingPageContent.stories.tsx';
+
+<Meta of={Stories} />
+
+# PricingPageContent
+
+**Status:** beta · **Tier:** pattern · **Group:** marketing
+
+## In use
+
+See the **Example** story for the full pricing page assembly (packages, comparison table, deliverables).
+
+## How to use
+
+```tsx
+import { PricingPageContent } from '@dt/PricingPageContent';
+
+<PricingPageContent />
+```
+
+## When to use
+
+- Full `/pricing` route content with package tiers and agency comparison.
+- CTAs that prefill contact booking via `packageId` query params.
+
+## When not to use
+
+- Single inline pricing card on the homepage — compose atoms instead.
+- Contact inquiry tabs — use `ContactInquiryPanel`.
+
+## Accessibility
+
+- Heading hierarchy for package tiers; comparison table uses semantic table markup.
+- Package CTAs are keyboard-reachable links and buttons.
+- Confirm **ForcedColors** before marking `forcedColorsVerified`.
+
+## Promotion notes
+
+- Beta: Example + ForcedColors stories, axe gate enabled.
+- Stable: visual baselines on stable fleet, production consumer documented.
