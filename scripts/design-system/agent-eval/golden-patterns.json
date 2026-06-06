@@ -33,6 +33,11 @@
       "expectedTop1": "SiteFooter"
     },
     {
+      "id": "news-bulletin",
+      "query": "homepage news bulletin strip footer",
+      "expectedTop1": "NewsBulletin"
+    },
+    {
       "id": "article-hero",
       "query": "blog article hero title metadata",
       "expectedTop1": "ArticleHero"

@@ -16,6 +16,7 @@ jobs:
       - run: npm run build:zod-catalog
       - run: npm run check:generated
       - run: npm run agent:eval
+      - run: npm run check:catalog-coverage
       - run: npm run lint:dt-usage
       - run: npm run lint:composition
       - run: npm run lint:dt-responsive-visibility -- --strict

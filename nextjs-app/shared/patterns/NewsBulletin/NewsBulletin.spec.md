@@ -1,19 +1,19 @@
 # NewsBulletin
 
 ## Intent
-Homepage news bulletin strip with three topical slots.
+Homepage news bulletin strip with three topical slots above the footer.
 
 ## Interaction contract
-- Keyboard: inherit from composed @dt/* primitives
-- Pointer: standard link/button targets where interactive
-- Screen readers: use landmarks and labels from child components
+- Keyboard: Tab through linked cards; Enter activates internal and external links
+- Pointer: Cards with links are fully clickable targets
+- Screen readers: Each card has an aria-label combining badge context and body text
 
 ## Do / don't
-- Do: compose from cataloged @dt/* atoms and molecules for new UI in this surface
-- Do: treat this as a page assembly reference when matching production routes
-- Don't: invent parallel primitives inside this folder
-- Don't: promote to stable without production consumer evidence
+- Do: use for homepage footer-adjacent topical snippets from `NEWS_BULLETIN_ITEMS`
+- Do: keep badge + body copy synchronized with the data module for all locales
+- Don't: use for full blog indexes or article lists
+- Don't: replace with generic Card stacks without region semantics
 
 ## Design notes
-- Tokens: inherit from child components
+- Tokens: bulletin surface uses pattern CSS module tokens
 - Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=503-20

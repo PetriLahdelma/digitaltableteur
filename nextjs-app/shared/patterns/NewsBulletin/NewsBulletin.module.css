@@ -207,7 +207,8 @@
   min-block-size: 1.506rem;
   justify-content: center;
   align-items: center;
-  background-color: #0085ca;
+  /* npm brand blue #0085ca is 4.03:1 on white @ ~13px — darken for WCAG AA */
+  background-color: #006da3;
   letter-spacing: -0.06em;
   color: #fff;
 }

@@ -61,7 +61,7 @@ See [PHASE-05-SUMMARY.md](../.planning/milestones/ai-native-design-system/PHASE-
 | Metric | Command / artifact |
 |--------|-------------------|
 | Intent retrieval | `npm run agent:eval` → golden-intents (20 cases, ≥85%) |
-| Pattern composition | `npm run agent:eval:patterns` — 3 layout recipes |
+| Pattern composition | `npm run agent:eval:patterns` — 10 layout recipes |
 | Local audit bundle | `npm run agentic-ds-audit` |
 | Manifest health | Schema, usage coverage, agent blocks, graph |
 | Contract drift | `npm run check:contract-drift --strict` |
@@ -76,6 +76,8 @@ node scripts/design-system/agent-eval/intent-retrieval-eval.mjs
 ---
 
 ## Roadmap
+
+Milestone v3: [`.planning/milestones/agentic-ds-v3/ROADMAP.md`](../.planning/milestones/agentic-ds-v3/ROADMAP.md) — proof under change, Figma captures, benchmark product.
 
 Milestone v2: [`.planning/milestones/agentic-ds-v2/ROADMAP.md`](../.planning/milestones/agentic-ds-v2/ROADMAP.md) — Figma loop, pattern composition MCP, portfolio proof, client audit playbook.
 
