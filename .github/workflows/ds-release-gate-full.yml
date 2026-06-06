@@ -1,0 +1,19 @@
+name: DS Release Gate (full)
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+jobs:
+  release-gate-full:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20.19.0
+      - run: npm ci
+      - run: npx playwright install chromium
+      - run: npm run release:gate -- --full

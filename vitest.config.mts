@@ -136,6 +136,11 @@ export default defineConfig({
             ],
             test: {
               name: "storybook",
+              // Run storybook browser tests sequentially to avoid Vite HMR WebSocket
+              // teardown races ("WebSocket closed without opened") on worker shutdown.
+              fileParallelism: false,
+              maxWorkers: 1,
+              pool: "forks",
               browser: {
                 enabled: shouldEnableStorybookBrowserTests,
                 ...(shouldEnableStorybookBrowserTests

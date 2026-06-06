@@ -226,14 +226,22 @@ const config: StorybookConfig = {
       noExternal: mergedNoExternal as any,
     };
 
-    // Ensure HMR is enabled and configured properly
+    const isVitest =
+      process.env.VITEST === "true" || process.env.VITEST === "1";
+
+    // Storybook dev HMR; disable under Vitest browser tests to avoid WebSocket
+    // teardown races ("WebSocket closed without opened") on worker shutdown.
     config.server = {
       ...config.server,
-      hmr: {
-        overlay: true,
-        // Avoid clashing with other Vite instances (default 24678)
-        port: 24680,
-      },
+      ...(isVitest
+        ? { hmr: false }
+        : {
+            hmr: {
+              overlay: true,
+              // Avoid clashing with other Vite instances (default 24678)
+              port: 24680,
+            },
+          }),
       watch: {
         usePolling: false,
         interval: 100,
@@ -241,11 +249,22 @@ const config: StorybookConfig = {
       },
     };
 
-    // Add esbuild options to help with HMR
-    config.esbuild = {
-      ...config.esbuild,
-      jsxDev: true,
-    };
+    if (isVitest) {
+      config.define = {
+        ...(config.define || {}),
+        "import.meta.hot": "undefined",
+      };
+      config.esbuild = {
+        ...config.esbuild,
+        jsxDev: false,
+      };
+    } else {
+      // Add esbuild options to help with HMR
+      config.esbuild = {
+        ...config.esbuild,
+        jsxDev: true,
+      };
+    }
 
     // Set base for production builds under /storybook/
     if (process.env.NODE_ENV === "production") {
