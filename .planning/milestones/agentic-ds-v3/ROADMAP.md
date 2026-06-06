@@ -14,7 +14,7 @@
 |-------|--------|--------|
 | **13** | Green `npm test` + CI full gate | **Done** (#698) |
 | **14** | Alpha → beta promotions (patterns with stories) | **Done** (#698) |
-| **15** | Figma capture loop (9 routes, surgical binding) | Pending |
+| **15** | Figma capture loop (9 routes, surgical binding) | **In progress** (work ✓ html-to-design `671:2`) |
 | **16** | Production consumer auto-sync + stable fleet growth | **Started** (transitive scan + release gate) |
 | **17** | AI-Ready DS Benchmark (public doc + consulting SKU) | **Started** |
 | **18** | npm export spike (`@digitaltableteur/ds`) | Pending |
