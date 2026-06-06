@@ -31,6 +31,7 @@ const steps = [
   },
   { name: "bundle-budgets", cmd: "npm", args: ["run", "check:bundle-budgets"] },
   { name: "validate:components", cmd: "npm", args: ["run", "validate:components"] },
+  { name: "check:consumers", cmd: "npm", args: ["run", "check:consumers"] },
   {
     name: "catalog-coverage",
     cmd: "node",
