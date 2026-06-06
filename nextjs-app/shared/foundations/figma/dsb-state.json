@@ -2,8 +2,8 @@
   "runId": "dt-dsb-2026-06-05",
   "fileKey": "PC2UPdYwm8qGt6ZTg0AakF",
   "fileSlug": "DT-Site-stuff",
-  "updatedAt": "2026-06-05T18:45:00.000Z",
-  "phase": "phase4-route-views-rebuilt",
+  "updatedAt": "2026-06-06T12:00:00.000Z",
+  "phase": "phase5-html-captures",
   "routeViews": {
     "home": {
       "nodeId": "606:3192",
@@ -12,10 +12,13 @@
       "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=606-3192"
     },
     "work": {
-      "nodeId": "615:33",
+      "nodeId": "671:2",
+      "previousNodeId": "615:33",
+      "captureMethod": "html-to-design",
+      "capturedAt": "2026-06-06",
       "page": "VIews",
       "url": "https://www.digitaltableteur.com/work",
-      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=615-33"
+      "figmaUrl": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=671-2"
     },
     "about": {
       "nodeId": "616:2",
@@ -101,13 +104,19 @@
     "phase1-variables",
     "phase2-file-structure",
     "phase3-in-scope-components",
-    "phase4-route-views-ds-refinement"
+    "phase4-route-views-ds-refinement",
+    "phase5-html-capture-work"
   ],
   "pendingSteps": [
+    "phase5-html-captures-about-pricing-blog-sitemap-dsharp-contact-home",
+    "phase5-surgical-token-binding-on-captures",
     "phase4-pattern-instances",
-    "phase4-contract-sync",
-    "phase5-html-captures-remaining-routes"
+    "phase4-contract-sync"
   ],
+  "htmlCaptureQueue": {
+    "completed": ["work"],
+    "remaining": ["home", "about", "pricing", "contact", "blog", "blog-article", "sitemap", "dsharp"]
+  },
   "captureWorkflow": {
     "preferred": "html-to-design via FIGMA_HTML_CAPTURE=1 + generate_figma_design",
     "avoid": "Bulk DS instance replacement on capture frames (destroys pixel-perfect reference)"

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/dev-banner.mjs && next dev -p 3001",
+    "dev:figma-capture": "FIGMA_HTML_CAPTURE=1 node scripts/dev-banner.mjs && FIGMA_HTML_CAPTURE=1 next dev -p 3001",
     "dev:webpack": "node scripts/dev-banner.mjs && next dev --webpack -p 3001",
     "dev:drafts": "node scripts/dev-with-drafts.mjs",
     "dev:full": "npm run generate:blog && npm run dev",
@@ -88,6 +89,7 @@
     "build:relationship-graph": "node scripts/design-system/generate-relationship-graph.mjs",
     "build:figma-variables": "node scripts/design-system/build-figma-variables-payload.mjs && node scripts/design-system/generate-figma-phase-scripts.mjs",
     "figma:apply-variables": "node scripts/design-system/apply-figma-variables-local.mjs",
+    "figma:capture-routes": "node scripts/design-system/figma-html-capture-routes.mjs",
     "verify:figma-in-scope": "node scripts/design-system/verify-figma-in-scope.mjs",
     "check:contrast": "node scripts/design-system/check-contrast.mjs",
     "check:token-descriptions": "tsx scripts/design-system/check-token-descriptions.ts",
