@@ -145,7 +145,7 @@ jobs:
 
       - name: TruffleHog OSS
         if: github.event_name == 'pull_request'
-        uses: trufflesecurity/trufflehog@v3.95.3
+        uses: trufflesecurity/trufflehog@v3.95.5
         with:
           path: ./
           base: ${{ github.event.pull_request.base.sha }}
@@ -155,7 +155,7 @@ jobs:
       - name: TruffleHog OSS (push)
         # Guard against null SHA on new branches or force pushes
         if: github.event_name == 'push' && github.event.before != github.sha && github.event.before != '0000000000000000000000000000000000000000'
-        uses: trufflesecurity/trufflehog@v3.95.3
+        uses: trufflesecurity/trufflehog@v3.95.5
         with:
           path: ./
           base: ${{ github.event.before }}
@@ -164,7 +164,7 @@ jobs:
 
       - name: TruffleHog OSS (other)
         if: github.event_name != 'pull_request' && github.event_name != 'push'
-        uses: trufflesecurity/trufflehog@v3.95.3
+        uses: trufflesecurity/trufflehog@v3.95.5
         with:
           path: ./
           extra_args: --only-verified
