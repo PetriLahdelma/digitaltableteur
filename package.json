@@ -180,7 +180,7 @@
     "ai": "^6.0.143",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.4.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "framer-motion": "^12.34.3",
