@@ -38,13 +38,17 @@ export const Footer = () => {
           </p>
           <p className={styles.billingDetails}>{t("footerBillingTitle")}</p>
           <p>
-            {t("footerBillingName")}
+            <strong>{t("footerBillingEInvoiceLabel")}</strong>
             <br />
-            {t("footerBillingAddress")}
+            {t("footerBillingEInvoice")}
             <br />
-            {t("footerBillingZip")}
+            <strong>{t("footerBillingOperatorLabel")}</strong>
             <br />
-            {t("footerBillingVat")}
+            {t("footerBillingOperator")}
+            <br />
+            <strong>{t("footerBillingOperatorIdLabel")}</strong>
+            <br />
+            {t("footerBillingOperatorId")}
           </p>
           <p className={styles.billingDetails}>{t("footerLegalTitle")}</p>
           <p>

@@ -107,13 +107,17 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerBillingTitle")}
             </p>
             <address className="font-body text-text-s text-muted-foreground not-italic leading-relaxed">
-              <span className="font-medium text-foreground">{t("footerBillingName")}</span>
+              <span className="font-medium text-foreground">{t("footerBillingEInvoiceLabel")}</span>
               <br />
-              {t("footerBillingAddress")}
+              {t("footerBillingEInvoice")}
               <br />
-              {t("footerBillingZip")}
+              <span className="font-medium text-foreground">{t("footerBillingOperatorLabel")}</span>
               <br />
-              {t("footerBillingVat")}
+              {t("footerBillingOperator")}
+              <br />
+              <span className="font-medium text-foreground">{t("footerBillingOperatorIdLabel")}</span>
+              <br />
+              {t("footerBillingOperatorId")}
             </address>
           </div>
 
