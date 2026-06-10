@@ -286,7 +286,7 @@
     "agent-browser": "^0.9.1",
     "chart.js": "^4.5.1",
     "commander": "^15.0.0",
-    "concurrently": "^9.2.1",
+    "concurrently": "^10.0.3",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.7",
     "eslint-config-prettier": "^10.1.8",
