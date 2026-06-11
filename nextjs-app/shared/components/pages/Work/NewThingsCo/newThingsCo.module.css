@@ -43,7 +43,7 @@
 .metaLabel {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -51,7 +51,7 @@
 .metaText {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -59,13 +59,13 @@
 .metaTools {
   display: flex;
   gap: var(--space-layout-16);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .metaOverview {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.7;
   color: var(--color-text);
 }
@@ -118,7 +118,7 @@
   margin-block: var(--space-layout-80);
   padding-block: var(--space-layout-48);
   padding-inline: var(--cs-page-inset);
-  background-color: var(--color-surface-secondary, #f8f9fa);
+  background-color: var(--color-light-bg);
 }
 
 .videoContainer {
@@ -135,9 +135,9 @@
 .videoCaption {
   margin-block-start: var(--space-layout-16);
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 /* Gallery section - full bleed */
@@ -189,15 +189,15 @@
   width: 100%;
   height: 280px;
   border-radius: var(--radius-md);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-light-bg);
   object-fit: cover;
 }
 
 .appCaption {
   margin-block-start: var(--space-layout-8);
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+  font-size: var(--font-size-text-s);
+  color: var(--secondary-text-color);
 }
 
 /* Outcomes section with top border */
@@ -249,13 +249,13 @@
 
 .resultLabel {
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
 }
 
 .resultDetail {
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   line-height: 1.4;
   opacity: 0.85;
 }

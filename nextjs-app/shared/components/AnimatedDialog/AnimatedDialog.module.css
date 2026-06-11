@@ -23,7 +23,7 @@
   margin: 0;
   font-family: var(--font-text);
   font-size: var(--font-size-text-s, 0.875rem);
-  color: var(--color-text-muted);
+  color: var(--color-gray);
 }
 
 .sizeSm {

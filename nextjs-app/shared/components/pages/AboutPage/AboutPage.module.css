@@ -158,7 +158,7 @@
 .manifesto {
   display: grid;
   padding: clamp(2rem, 6vw, 4rem);
-  gap: var(--space-layout-20);
+  gap: var(--space-layout-24);
   border-block-start: none;
   background: transparent;
 }

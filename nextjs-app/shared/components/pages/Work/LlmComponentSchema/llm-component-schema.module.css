@@ -32,7 +32,7 @@
   max-width: 720px;
   font-size: 0.875rem;
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
   font-style: italic;
 }
 
@@ -71,7 +71,7 @@
 .metaLabel {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -79,7 +79,7 @@
 .metaText {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -87,13 +87,13 @@
 .metaTools {
   display: flex;
   gap: var(--space-layout-16);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .metaOverview {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -106,9 +106,9 @@
 
 .schemaExample pre {
   padding: var(--space-layout-24);
-  border-radius: var(--border-radius-lg);
+  border-radius: var(--radius-lg);
   background-color: var(--color-surface);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   line-height: 1.5;
   overflow-x: auto;
 }

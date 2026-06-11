@@ -3,7 +3,7 @@
   inset-inline: 0;
   z-index: var(--z-index-sticky, 50);
   block-size: var(--space-internal-4);
-  background: var(--color-border-subtle, var(--color-border));
+  background: var(--color-border-light);
   transition: opacity var(--duration-normal) var(--ease-out-expo);
   opacity: 0;
   inset-block-start: 0;

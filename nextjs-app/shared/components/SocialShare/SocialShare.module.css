@@ -17,7 +17,7 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-gray);
 }
 
 .actions {
@@ -45,7 +45,7 @@
 
 .channelLink:hover {
   border-color: var(--color-primary);
-  background-color: var(--color-surface-muted, rgb(0 0 0 / 3%));
+  background-color: var(--color-light-bg);
 }
 
 .channelLink:focus-visible {

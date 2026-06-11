@@ -67,6 +67,8 @@
   --color-text: var(--primary-text-color, #041b23);
 
   /* Font family aliases - mapped to new typography system */
+  --font-mono:
+    source-code-pro, menlo, monaco, consolas, "Courier New", monospace;
   --primary-body-font: var(--font-body), system-ui, sans-serif;
   --secondary-body-font: var(--font-heading), system-ui, sans-serif;
   --primary-bold-font: var(--font-body), system-ui, sans-serif;

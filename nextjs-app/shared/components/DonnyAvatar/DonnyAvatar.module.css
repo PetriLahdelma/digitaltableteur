@@ -77,7 +77,7 @@
   font-family: var(--font-mono, monospace);
   font-size: 0.625rem;
   white-space: nowrap;
-  color: var(--color-text-muted);
+  color: var(--color-gray);
   transform: translateX(-50%);
   inset-block-end: -1.25rem;
   inset-inline-start: 50%;
@@ -514,7 +514,7 @@
   font-family: var(--font-mono, monospace);
   font-size: 0.625rem;
   white-space: nowrap;
-  color: var(--color-text-muted, #666);
+  color: var(--color-gray);
   animation: bubbleFloat 2s ease-in-out infinite;
   inset-block-start: -0.625rem;
   inset-inline-end: -1.25rem;

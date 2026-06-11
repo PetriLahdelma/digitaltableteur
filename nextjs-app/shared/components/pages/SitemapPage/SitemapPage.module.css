@@ -21,7 +21,7 @@
   margin-block: var(--space-layout-16) var(--space-layout-32);
   max-width: 55ch;
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .tree {

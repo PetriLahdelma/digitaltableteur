@@ -61,7 +61,7 @@
 .metaLabel {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -70,7 +70,7 @@
 .metaOverview {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -79,7 +79,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-layout-16);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .specimenFigure {
@@ -101,10 +101,10 @@
   margin: 0;
   padding-inline: var(--space-layout-8);
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   line-height: 1.5;
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 @media (width <= 768px) {

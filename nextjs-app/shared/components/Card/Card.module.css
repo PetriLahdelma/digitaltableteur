@@ -226,13 +226,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--space-m);
+  gap: var(--space-internal-16);
 }
 
 .headerMain {
   display: flex;
   align-items: center;
-  gap: var(--space-s);
+  gap: var(--space-internal-8);
 }
 
 .headerText {
@@ -260,17 +260,17 @@
 }
 
 .iconStart {
-  margin-inline-end: var(--space-s);
+  margin-inline-end: var(--space-internal-8);
   order: -1;
 }
 
 .iconEnd {
-  margin-inline-start: var(--space-s);
+  margin-inline-start: var(--space-internal-8);
   order: 1;
 }
 
 .iconTop {
-  margin-block-end: var(--space-xs);
+  margin-block-end: var(--space-internal-4);
   align-self: flex-start;
 }
 
@@ -290,14 +290,14 @@
 .extra {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-internal-4);
 }
 
 /* Cover Media */
 
 .cover {
-  margin-block: calc(var(--space-s) * -1) var(--space-s);
-  border-radius: var(--radius-m);
+  margin-block: calc(var(--space-internal-8) * -1) var(--space-internal-8);
+  border-radius: var(--radius-lg);
   background-color: rgb(0 0 0 / 4%);
   overflow: hidden;
 }
@@ -314,7 +314,7 @@
 .body {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: var(--space-internal-4);
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--primary-text-color);
@@ -336,16 +336,16 @@
 .actions {
   display: flex;
   justify-content: flex-end;
-  gap: var(--space-xs);
+  gap: var(--space-internal-4);
   border-top: 2px solid rgb(0 0 0 / 4%);
-  margin-top: var(--space-m);
-  padding-top: var(--space-s);
+  margin-top: var(--space-internal-16);
+  padding-top: var(--space-internal-8);
 }
 
 .footer {
   border-top: 2px solid rgb(0 0 0 / 6%);
-  margin-top: var(--space-m);
-  padding-top: var(--space-s);
+  margin-top: var(--space-internal-16);
+  padding-top: var(--space-internal-8);
 }
 
 /* Loading State */
@@ -418,7 +418,7 @@
 /* Size Variants */
 
 .s {
-  padding: var(--space-m);
+  padding: var(--space-internal-16);
   max-width: 20rem; /* 320px */
 }
 
@@ -449,7 +449,7 @@
 
 .statusMessage {
   padding: var(--space-internal-12) var(--card-header-padding);
-  border-top: 1px solid var(--color-border-subtle);
+  border-top: 1px solid var(--color-border-light);
 }
 
 .statusText {

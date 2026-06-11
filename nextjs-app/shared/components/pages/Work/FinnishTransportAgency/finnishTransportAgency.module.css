@@ -101,7 +101,7 @@
 .metaLabel {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -109,7 +109,7 @@
 .metaText {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -117,13 +117,13 @@
 .metaTools {
   display: flex;
   gap: var(--space-layout-16);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .metaOverview {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.7;
   color: var(--color-text);
 }
@@ -137,7 +137,7 @@
 .teamSection {
   padding-block: var(--space-layout-48);
   padding-inline: var(--cs-page-inset);
-  border-block-start: 1px solid var(--color-border-subtle);
+  border-block-start: 1px solid var(--color-border-light);
   background-color: var(--color-surface);
 }
 
@@ -152,8 +152,8 @@
   margin-block: var(--space-layout-64);
   padding-block: var(--space-layout-48);
   padding-inline: var(--cs-page-inset);
-  border-block: 1px solid var(--color-border-subtle, rgb(0 0 0 / 6%));
-  background-color: var(--color-surface-secondary, #f8f9fa);
+  border-block: 1px solid var(--color-border-light);
+  background-color: var(--color-light-bg);
 }
 
 .teamContent {
@@ -189,24 +189,24 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-light-bg);
   font-family: var(--font-sans);
   font-size: var(--font-size-xl);
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .teamName {
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   font-weight: 600;
   color: var(--color-text);
 }
 
 .teamRole {
   font-family: var(--font-sans);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
+  font-size: var(--font-size-text-s);
+  color: var(--secondary-text-color);
 }
 
 /* Story sections - structured rhythm distinct from VertaaUX */
@@ -227,7 +227,7 @@
   margin-block: var(--space-layout-64);
   padding-block: var(--space-layout-48);
   padding-inline: var(--cs-page-inset);
-  border-block: 1px solid var(--color-border-subtle);
+  border-block: 1px solid var(--color-border-light);
   background-color: var(--color-surface);
 }
 
@@ -263,22 +263,22 @@
   display: flex;
   margin: 0;
   flex-direction: column;
-  gap: var(--space-layout-12);
+  gap: var(--space-internal-12);
 }
 
 .appImage {
   width: 100%;
   height: auto;
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-md);
   background-color: var(--color-surface);
 }
 
 .appCaption {
   font-family: var(--font-sans);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-text-s);
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 /* Maritime grid */
@@ -296,7 +296,7 @@
 .outcomesSection {
   margin-block: var(--space-layout-64);
   padding-block-start: var(--space-layout-32);
-  border-block-start: 2px solid var(--color-border-subtle);
+  border-block-start: 2px solid var(--color-border-light);
 }
 
 /* Typography Section */
@@ -305,7 +305,7 @@
   margin-block: var(--space-layout-64);
   padding-block: var(--space-layout-48);
   padding-inline: var(--cs-page-inset);
-  background-color: var(--color-surface-secondary, #f8f9fa);
+  background-color: var(--color-light-bg);
 }
 
 .typographyContent {
@@ -324,7 +324,7 @@
   padding: var(--space-layout-32);
   flex-direction: column;
   gap: var(--space-layout-32);
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   background: var(--color-surface);
 }
@@ -337,10 +337,10 @@
 
 .waterfallLabel {
   font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-text-s);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .waterfallHeader {
@@ -370,16 +370,16 @@
 
 .waterfallCaption {
   font-family: "Felbridge Pro", var(--font-sans);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-text-s);
   font-weight: 300;
   line-height: 1.4;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
   font-style: italic;
 }
 
 .typographyNote {
   margin-block-start: var(--space-layout-16);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
   font-style: italic;
 }
 
@@ -439,7 +439,7 @@
 .resultLabel {
   margin-block-start: var(--space-layout-8);
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -449,7 +449,7 @@
 .resultDetail {
   margin-block-start: var(--space-layout-8);
   font-family: var(--font-sans);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-text-s);
   line-height: 1.5;
   color: rgb(255 255 255 / 70%);
 }
@@ -484,7 +484,7 @@
   }
 
   .resultItem {
-    padding: var(--space-layout-20);
+    padding: var(--space-layout-24);
   }
 
   .resultValue {

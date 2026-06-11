@@ -1,4 +1,8 @@
 .canvas {
+  /* Illustration artwork palette — parchment sky, fixed by design */
+  --dm-sky-top: #f7f0d8;
+  --dm-sky-bottom: #d8c69f;
+
   position: relative;
   margin: 0 auto;
   width: 100%;
@@ -8,19 +12,19 @@
 
   /* Focus indicator for keyboard accessibility */
   outline: none;
-  background: linear-gradient(180deg, #f7f0d8 0%, #d8c69f 100%);
+  background: linear-gradient(180deg, var(--dm-sky-top) 0%, var(--dm-sky-bottom) 100%);
   aspect-ratio: 16 / 9;
   image-rendering: pixelated;
   overflow: hidden;
 }
 
 .canvas:focus {
-  outline: 3px solid var(--color-focus, #3b82f6);
+  outline: 3px solid var(--focus-ring-color);
   outline-offset: 2px;
 }
 
 .canvas:focus-visible {
-  outline: 3px solid var(--color-focus, #3b82f6);
+  outline: 3px solid var(--focus-ring-color);
   outline-offset: 2px;
 }
 
