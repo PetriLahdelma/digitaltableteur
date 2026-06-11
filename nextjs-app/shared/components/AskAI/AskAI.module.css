@@ -233,34 +233,20 @@
   height: 1.275rem;
 }
 
-/* Personalize toggle checkbox - compact inline layout */
+/* Perplexity mark reads ~2px smaller than the others at the same box;
+   nudge it up to match optical weight (24px -> 26px). */
+.iconPerplexity {
+  width: 1.625rem;
+  height: 1.625rem;
+}
+
+/* Personalize toggle — wraps the @dt Checkbox (label sizing and checkbox
+   chrome come from the design system; 1rem label clears the 12px floor) */
 
 .personalizeToggle {
   display: flex;
   margin-block-start: var(--space-internal-4, 0.25rem);
   align-items: center;
-  gap: var(--space-internal-4, 0.25rem);
-  cursor: pointer;
-  user-select: none;
-}
-
-.personalizeCheckbox {
-  margin: 0;
-  width: 0.875rem;
-  height: 0.875rem;
-  cursor: pointer;
-  accent-color: var(--color-primary, #041B23);
-}
-
-.personalizeLabel {
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  color: var(--secondary-text-color, #64748b);
-}
-
-.personalizeHint {
-  display: none;
 }
 
 /* Mobile: bottom placement */
@@ -424,17 +410,9 @@
   background: linear-gradient(135deg, var(--askai-grad-sheen) 0%, var(--inverted-text-color, #fff) 100%);
 }
 
-:global(.themeDark) .personalizeToggle,
-:global(.dark) .personalizeToggle {
-  border-color: rgb(255 255 255 / 20%);
-}
-
-:global(.themeDark) .personalizeLabel,
-:global(.dark) .personalizeLabel {
+/* The @dt Checkbox label is var(--color-primary), which matches this
+   panel's dark background — force readable label text on the dark panel. */
+:global(.themeDark) .personalizeToggle label,
+:global(.dark) .personalizeToggle label {
   color: var(--inverted-text-color, #fff);
-}
-
-:global(.themeDark) .personalizeHint,
-:global(.dark) .personalizeHint {
-  color: rgb(255 255 255 / 60%);
 }
