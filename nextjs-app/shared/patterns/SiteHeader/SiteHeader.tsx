@@ -154,7 +154,9 @@ export function SiteHeader({
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-3 group"
+          // rounded-sm matches the LanguageSwitcher so the focus outline
+          // renders with the same corner rounding as the other header controls.
+          className="flex items-center gap-3 group rounded-sm"
           onMouseEnter={() => setIsLogoHovered(true)}
           onMouseLeave={() => setIsLogoHovered(false)}
         >
