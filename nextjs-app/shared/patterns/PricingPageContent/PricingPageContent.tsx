@@ -473,7 +473,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
               <Text as="p" size="M" terminals="sans" className={styles.aaasSummary}>
                 {t(
                   "pricingAaasSummary",
-                  "Autonomous DesignOps packages — agents that do the work, supervised by your team.",
+                  "Autonomous DesignOps packages. Agents that do the work, supervised by your team.",
                 )}
               </Text>
               <ul className={styles.packageList}>

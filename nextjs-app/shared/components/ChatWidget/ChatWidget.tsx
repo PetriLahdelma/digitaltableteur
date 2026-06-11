@@ -941,9 +941,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
           <ChatHeader
             title={resolvedTitle}
             description={resolvedDescription}
-            onReset={handleReset}
             onMinimize={closeChat}
-            isSending={isStreaming}
             avatarState={avatarState}
             enableIdleExpressions={avatarState === "idle"}
             trackMouse
@@ -975,6 +973,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             value={draft}
             onValueChange={setDraft}
             onSubmit={handleSubmit}
+            onReset={handleReset}
             isSending={isStreaming}
             maxLength={1_000}
           />

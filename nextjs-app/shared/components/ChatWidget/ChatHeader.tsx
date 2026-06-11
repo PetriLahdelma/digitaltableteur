@@ -13,9 +13,7 @@ import Icon from "@dt/Icon";
  * @interface ChatHeaderProps
  * @property {string} title - Main heading displayed in the chat header
  * @property {string} description - Descriptive text shown below the title
- * @property {function} onReset - Callback fired when the reset button is clicked
  * @property {function} onMinimize - Callback fired when the minimize button is clicked
- * @property {boolean} isSending - Whether a message is currently being sent (disables reset button)
  * @property {DonnyState} [avatarState] - Current state of Donny avatar animation
  * @property {boolean} [enableIdleExpressions] - Enable random expressions when Donny is idle
  * @property {Date} [currentDate] - Optional override for current date/time (used in tests to simulate open/closed hours). Defaults to new Date() when omitted.
@@ -23,9 +21,7 @@ import Icon from "@dt/Icon";
 export interface ChatHeaderProps {
   title: string;
   description: string;
-  onReset: () => void;
   onMinimize: () => void;
-  isSending: boolean;
   /**
    * Current state for Donny avatar animation.
    * Maps to chat interaction states like idle, listening, thinking, success, error.
@@ -57,9 +53,7 @@ export interface ChatHeaderProps {
 const ChatHeader: React.FC<ChatHeaderProps> = ({
   title,
   description,
-  onReset,
   onMinimize,
-  isSending,
   avatarState = "idle",
   enableIdleExpressions = false,
   trackMouse = false,
@@ -69,8 +63,6 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
 }) => {
   const { t } = useTranslation();
   const tagline = t("chatTagline", "DT Donny");
-  const resetLabel = t("chatReset", "Reset");
-  const resetAriaLabel = t("chatResetAria", "Reset conversation");
   const minimizeAriaLabel = t("chatMinimizeAria", "Minimize chat");
 
   // Finnish (Europe/Helsinki) business hours: Mon–Fri 09:00–17:00 local time (inclusive start, exclusive end)
@@ -155,18 +147,6 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
         </Title>
       </div>
       <div className={styles.headerActions}>
-        <Button
-          type="button"
-          onClick={onReset}
-          isDisabled={isSending}
-          aria-label={resetAriaLabel}
-          variant="tertiary"
-          size="m"
-          icon={<Icon name="arrow-clockwise" ariaLabel={resetAriaLabel} />}
-          className={styles.resetButton}
-        >
-          {resetLabel}
-        </Button>
         <Button
           type="button"
           onClick={onMinimize}
