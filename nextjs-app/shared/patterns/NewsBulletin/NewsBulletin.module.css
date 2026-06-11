@@ -2,12 +2,13 @@
 
 .section {
   /*
-   * Theming scheme (agreed 2026-06): light + dark keep the brand navy band
-   * with white copy/mark and the lime 50% badge; HC themes go true
-   * high-contrast (HCB black band, HCW white band) and the badge follows
-   * the --logo-background/--logo-color pair, which is designed to invert
-   * per theme. Never pair --logo-background with --color-primary — they
-   * collide (white-on-white in HCB, black-on-black in HCW).
+   * Theming scheme (revised 2026-06-11): the percent badge follows the
+   * --logo-background/--logo-color pair in ALL themes, so it renders lime
+   * in light, purple in dark, and inverts in HC themes alongside the logo.
+   * Light + dark keep the brand navy band with white copy/mark; HC themes
+   * go true high-contrast (HCB black band, HCW white band). Never pair
+   * --logo-background with --color-primary — they collide (white-on-white
+   * in HCB, black-on-black in HCW).
    * --bulletin-mix is the hover/nav mix target: the opposite pole of the
    * band surface so hovers stay visible on both dark and light bands.
    */
@@ -15,8 +16,8 @@
   --bulletin-copy: #fff;
   --bulletin-mark-color: #fff;
   --bulletin-mix: #fff;
-  --bulletin-percent-bg: #dfff00;
-  --bulletin-percent-color: #041b23;
+  --bulletin-percent-bg: var(--logo-background);
+  --bulletin-percent-color: var(--logo-color);
   --bulletin-card-gap: var(--space-layout-24);
   --bulletin-content-gap: var(--space-layout-32);
   --bulletin-card-padding-inline: var(--space-layout-24);
@@ -33,8 +34,6 @@
 
 :global(.themeHCB) .section {
   --bulletin-card-bg: #000;
-  --bulletin-percent-bg: var(--logo-background); /* #fff */
-  --bulletin-percent-color: var(--logo-color); /* #000 */
 }
 
 :global(.themeHCW) .section {
@@ -42,8 +41,6 @@
   --bulletin-copy: #000;
   --bulletin-mark-color: #000;
   --bulletin-mix: #000;
-  --bulletin-percent-bg: var(--logo-background); /* #000 */
-  --bulletin-percent-color: var(--logo-color); /* #fff */
 }
 
 .viewport {
