@@ -36,7 +36,9 @@ export function NavLink({
     <Link
       href={href}
       className={cn(
-        "font-body text-text-m transition-colors",
+        // rounded-sm matches the LanguageSwitcher buttons so the global
+        // :focus-visible outline renders with the same corner rounding.
+        "font-body text-text-m transition-colors rounded-sm",
         className,
         isActive ? activeClassName : inactiveClassName
       )}
