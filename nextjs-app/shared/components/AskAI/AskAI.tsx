@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import type { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
+import Checkbox from "@dt/Checkbox";
 import { cn } from "@/lib/utils";
 import {
   ChatGPTIcon,
@@ -215,7 +216,14 @@ export function AskAI({ className }: AskAIProps) {
                 className={cn(styles.iconLink, isPersonalized && styles.iconLinkPersonalized)}
                 aria-label={t("askAIOpenWith", { model: model.name, defaultValue: `Ask ${model.name}` })}
               >
-                <Icon className={cn(styles.icon, model.id === "gemini" && styles.iconGemini)} aria-hidden="true" />
+                <Icon
+                  className={cn(
+                    styles.icon,
+                    model.id === "gemini" && styles.iconGemini,
+                    model.id === "perplexity" && styles.iconPerplexity,
+                  )}
+                  aria-hidden="true"
+                />
               </a>
               <span className={styles.tooltip}>
                 {model.name}
@@ -226,17 +234,15 @@ export function AskAI({ className }: AskAIProps) {
         })}
       </ul>
 
-      <label className={styles.personalizeToggle}>
-        <input
-          type="checkbox"
-          checked={personalizeContext}
-          onChange={(e) => setPersonalizeContext(e.target.checked)}
-          className={styles.personalizeCheckbox}
+      <div className={styles.personalizeToggle}>
+        <Checkbox
+          id="askai-personalize"
+          size="S"
+          label={t("askAIPersonalizeLabel", "Help me")}
+          isChecked={personalizeContext}
+          onCheckedChange={setPersonalizeContext}
         />
-        <span className={styles.personalizeLabel}>
-          {t("askAIPersonalizeLabel", "Help me")}
-        </span>
-      </label>
+      </div>
     </aside>,
     document.body
   );
