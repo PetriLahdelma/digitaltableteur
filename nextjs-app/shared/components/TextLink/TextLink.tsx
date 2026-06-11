@@ -36,7 +36,9 @@ export function TextLink({
   const isExternal = external ?? (!href.startsWith("/") && !href.startsWith("#"));
 
   const linkClasses = cn(
-    "inline-flex items-center gap-1 transition-colors font-body",
+    // rounded-sm matches header controls so the :focus-visible outline
+    // renders with consistent corner rounding site-wide.
+    "inline-flex items-center gap-1 transition-colors font-body rounded-sm",
     variantClasses[variant],
     underlineClasses[underline],
     className
