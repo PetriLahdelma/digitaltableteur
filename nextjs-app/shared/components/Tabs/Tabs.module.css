@@ -4,7 +4,7 @@
   display: flex;
   position: relative;
   gap: 0;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-lg);
   background: transparent;
 }
 
@@ -18,7 +18,7 @@
 .pills {
   padding: var(--space-internal-4);
   gap: var(--space-internal-4);
-  border-radius: var(--radius-l);
+  border-radius: var(--radius-lg);
   background: var(--color-light-bg, #f9f9f9);
 }
 
@@ -91,7 +91,7 @@
 }
 
 .pills .tab {
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-md);
   color: var(--color-text, var(--primary-text-color));
 }
 

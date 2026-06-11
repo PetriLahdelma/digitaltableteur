@@ -71,7 +71,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-text);
-  font-size: var(--font-size-text-xs, 0.75rem);
+  font-size: var(--font-size-text-s);
   color: rgb(255 255 255 / 50%);
 }
 

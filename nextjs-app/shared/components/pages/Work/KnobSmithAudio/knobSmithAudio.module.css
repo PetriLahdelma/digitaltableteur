@@ -48,7 +48,7 @@
 .metaLabel {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -56,7 +56,7 @@
 .metaText {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -64,13 +64,13 @@
 .metaTools {
   display: flex;
   gap: var(--space-layout-16);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .metaOverview {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.7;
   color: var(--color-text);
 }
@@ -149,7 +149,7 @@
   max-width: 1777px;
   justify-content: center;
   align-items: center;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-lg);
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
@@ -166,7 +166,7 @@
   width: 44%;
   max-width: 355px;
   height: 66.67%;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
@@ -212,7 +212,7 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-lg);
   background-color: #2b2f33;
 }
 
@@ -338,7 +338,7 @@
 
 .swatchDescription {
   margin-block-start: var(--space-internal-8);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .typographySection {
@@ -446,7 +446,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .typeSampleGeist {
@@ -515,7 +515,7 @@
 .ogImage {
   width: 100%;
   height: auto;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-lg);
   box-shadow: 0 4px 24px rgb(0 0 0 / 10%);
 }
 

@@ -1,8 +1,23 @@
 /* Figma DT-Site-stuff node 310:899 — full-bleed band, horizontal cards, 32px badge→copy */
 
 .section {
+  /*
+   * Theming scheme (revised 2026-06-11): the percent badge follows the
+   * --logo-background/--logo-color pair in ALL themes, so it renders lime
+   * in light, purple in dark, and inverts in HC themes alongside the logo.
+   * Light + dark keep the brand navy band with white copy/mark; HC themes
+   * go true high-contrast (HCB black band, HCW white band). Never pair
+   * --logo-background with --color-primary — they collide (white-on-white
+   * in HCB, black-on-black in HCW).
+   * --bulletin-mix is the hover/nav mix target: the opposite pole of the
+   * band surface so hovers stay visible on both dark and light bands.
+   */
   --bulletin-card-bg: #041b23;
   --bulletin-copy: #fff;
+  --bulletin-mark-color: #fff;
+  --bulletin-mix: #fff;
+  --bulletin-percent-bg: var(--logo-background);
+  --bulletin-percent-color: var(--logo-color);
   --bulletin-card-gap: var(--space-layout-24);
   --bulletin-content-gap: var(--space-layout-32);
   --bulletin-card-padding-inline: var(--space-layout-24);
@@ -15,12 +30,17 @@
   max-width: 100vw;
   background-color: var(--bulletin-card-bg);
   color: var(--bulletin-copy);
-
-  --bulletin-mark-color: var(--color-white);
 }
 
-:global(.themeDark) .section {
-  --bulletin-mark-color: var(--logo-color);
+:global(.themeHCB) .section {
+  --bulletin-card-bg: #000;
+}
+
+:global(.themeHCW) .section {
+  --bulletin-card-bg: #fff;
+  --bulletin-copy: #000;
+  --bulletin-mark-color: #000;
+  --bulletin-mix: #000;
 }
 
 .viewport {
@@ -53,14 +73,22 @@
   align-items: center;
   border: 0;
   border-radius: 0;
-  background-color: color-mix(in srgb, var(--bulletin-card-bg) 72%, white);
+  background-color: color-mix(
+    in srgb,
+    var(--bulletin-card-bg) 72%,
+    var(--bulletin-mix)
+  );
   color: var(--bulletin-copy);
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .navButton:hover {
-  background-color: color-mix(in srgb, var(--bulletin-card-bg) 60%, white);
+  background-color: color-mix(
+    in srgb,
+    var(--bulletin-card-bg) 60%,
+    var(--bulletin-mix)
+  );
 }
 
 .navButton:focus-visible {
@@ -130,7 +158,11 @@
 }
 
 .cardInteractive:hover {
-  background-color: color-mix(in srgb, var(--bulletin-card-bg) 88%, white);
+  background-color: color-mix(
+    in srgb,
+    var(--bulletin-card-bg) 88%,
+    var(--bulletin-mix)
+  );
 }
 
 .cardInteractive:focus-visible {
@@ -156,9 +188,9 @@
 .logoColorMark {
   display: block;
   flex-shrink: 0;
-  background-color: var(--bulletin-mark-color, var(--color-white));
-  mask-repeat: no-repeat;
+  background-color: var(--bulletin-mark-color, #fff);
   mask-position: center;
+  mask-repeat: no-repeat;
   mask-size: contain;
 }
 
@@ -170,13 +202,13 @@
   justify-content: center;
   align-items: center;
   border-radius: 999px;
-  background-color: var(--logo-background, #dfff00);
+  background-color: var(--bulletin-percent-bg, #dfff00);
   font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.05em;
-  color: var(--color-primary, #041b23);
+  color: var(--bulletin-percent-color, #041b23);
 }
 
 .npmBadge {
@@ -207,6 +239,7 @@
   min-block-size: 1.506rem;
   justify-content: center;
   align-items: center;
+
   /* npm brand blue #0085ca is 4.03:1 on white @ ~13px — darken for WCAG AA */
   background-color: #006da3;
   letter-spacing: -0.06em;
@@ -245,5 +278,17 @@
   .card,
   .navButton {
     border: 1px solid CanvasText;
+  }
+
+  /* Fixed band colors don't exist here — follow the system palette */
+
+  .logoColorMark {
+    background-color: CanvasText;
+  }
+
+  .percentBadge {
+    border: 1px solid CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
   }
 }

@@ -1,10 +1,10 @@
 .root {
   display: flex;
   position: relative;
-  padding: var(--space-m);
+  padding: var(--space-internal-16);
   flex-direction: column;
-  gap: var(--space-s);
-  border: 1px solid var(--color-border-subtle);
+  gap: var(--space-internal-8);
+  border: 1px solid var(--color-border-light);
   border-radius: 1rem;
   background: var(--color-light-bg, #f9f9f9);
   box-shadow: 0 2px 6px rgb(0 0 0 / 6%);
@@ -37,21 +37,21 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--space-s);
+  gap: var(--space-internal-8);
 }
 
 .titleGroup {
   display: flex;
   align-items: baseline;
-  gap: var(--space-xs);
+  gap: var(--space-internal-4);
   font-family: var(--font-text);
 }
 
 .stubBadge {
   padding-block: 2px;
   padding-inline: 6px;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
   background: var(--color-neutral-bg, #e2e8f0);
   font-family: var(--font-text);
   font-size: var(--font-size-2xs);
@@ -68,7 +68,7 @@
   min-width: 2.25ch;
   justify-content: center;
   align-items: center;
-  border-radius: var(--radius-s);
+  border-radius: var(--radius-md);
   background: var(--color-primary);
   font-family: var(--font-text);
   font-size: var(--font-size-m);
@@ -82,7 +82,7 @@
   margin: 0;
   padding: 0;
   flex-direction: column;
-  gap: var(--space-s);
+  gap: var(--space-internal-8);
   list-style: none;
   list-style-type: " ";
 }
@@ -90,11 +90,11 @@
 .issue {
   display: flex;
   position: relative;
-  padding: var(--space-s) var(--space-m);
+  padding: var(--space-internal-8) var(--space-internal-16);
   flex-direction: column;
   gap: 0.35rem;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-m);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
   background: var(--color-white);
   transition:
     background 0.25s ease,
@@ -122,7 +122,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75ch;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-text-s);
   line-height: 1.4;
   color: var(--color-text-subtle);
 }

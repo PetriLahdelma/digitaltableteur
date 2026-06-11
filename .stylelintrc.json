@@ -93,6 +93,69 @@
         ],
         "selector-class-pattern": null
       }
+    },
+    {
+      "files": [
+        "nextjs-app/shared/components/**/*.module.css"
+      ],
+      "rules": {
+        "scale-unlimited/declaration-strict-value": [
+          [
+            "/color/",
+            "fill",
+            "stroke"
+          ],
+          {
+            "ignoreKeywords": [
+              "currentColor",
+              "currentcolor",
+              "inherit",
+              "transparent",
+              "initial",
+              "unset",
+              "none",
+              "Canvas",
+              "CanvasText",
+              "Highlight",
+              "HighlightText",
+              "ButtonText",
+              "ButtonFace",
+              "LinkText"
+            ],
+            "ignoreValues": [
+              "/^rgb/",
+              "/^linear-gradient/",
+              "/^radial-gradient/",
+              "/^color-mix/"
+            ],
+            "severity": "error",
+            "message": "Color values in shared components must come from design tokens (variables.css) or component-local custom properties. Shorthand props (background, border) are gated by scripts/design-system/semantic-token-codemod.mjs --check."
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "nextjs-app/shared/components/pages/**/*.module.css"
+      ],
+      "rules": {
+        "scale-unlimited/declaration-strict-value": [
+          [
+            "/color/",
+            "fill",
+            "stroke"
+          ],
+          {
+            "ignoreKeywords": [
+              "currentColor",
+              "inherit",
+              "transparent"
+            ],
+            "severity": "warning",
+            "message": "Work case studies may use deliberate per-project palettes; tokens still preferred."
+          }
+        ]
+      }
     }
   ],
   "rules": {

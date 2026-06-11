@@ -43,7 +43,7 @@
 .metaLabel {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -51,7 +51,7 @@
 .metaText {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -59,13 +59,13 @@
 .metaTools {
   display: flex;
   gap: var(--space-layout-16);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .metaOverview {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.7;
   color: var(--color-text);
 }
@@ -122,7 +122,7 @@
 .videoCaption {
   margin-block-start: var(--space-layout-16);
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   text-align: center;
   color: rgb(255 255 255 / 70%);
 }
@@ -222,7 +222,7 @@
 
 .colorLabel {
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   font-weight: 500;
   color: white;
 }
@@ -266,14 +266,14 @@
   width: 100%;
   height: auto;
   border-radius: var(--radius-md);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-light-bg);
 }
 
 .appCaption {
   margin-block-start: var(--space-layout-8);
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+  font-size: var(--font-size-text-s);
+  color: var(--secondary-text-color);
 }
 
 /* Outcomes section with top border */
@@ -325,13 +325,13 @@
 
 .resultLabel {
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
 }
 
 .resultDetail {
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   line-height: 1.4;
   opacity: 0.85;
 }

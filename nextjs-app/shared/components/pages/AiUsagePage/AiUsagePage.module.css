@@ -55,8 +55,8 @@
 
 .policyPage a:hover,
 .emailLink:hover {
-  color: var(--color-primary-dark, var(--color-primary));
-  text-decoration-color: var(--color-primary-dark, var(--color-primary));
+  color: var(--color-primary);
+  text-decoration-color: var(--color-primary);
 }
 
 @media (width <= 768px) {

@@ -1,10 +1,10 @@
 .root {
-  --site-tree-indent: var(--space-layout-20, 1.25rem);
+  --site-tree-indent: var(--space-layout-24);
   --site-tree-row-gap: var(--space-internal-8, 0.5rem);
   --site-tree-branch-gap: var(--space-internal-4, 0.25rem);
 
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   color: var(--color-text);
 }
 
@@ -32,7 +32,7 @@
 .branch > .list {
   margin-block-start: var(--site-tree-row-gap);
   padding-inline-start: var(--site-tree-indent);
-  border-inline-start: 1px solid var(--color-border-subtle, rgb(0 0 0 / 8%));
+  border-inline-start: 1px solid var(--color-border-light);
 }
 
 .summary {
@@ -40,7 +40,7 @@
   align-items: center;
   gap: var(--site-tree-branch-gap);
   padding-block: var(--space-internal-4);
-  border-radius: var(--radius-s, 4px);
+  border-radius: var(--radius-md);
   cursor: pointer;
   list-style: none;
   list-style-type: " ";
@@ -66,7 +66,7 @@
 
 .caret {
   flex-shrink: 0;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
   transition: transform 0.15s ease;
 }
 

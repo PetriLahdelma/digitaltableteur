@@ -23,5 +23,5 @@
 .authorLink:hover,
 .authorLink:focus {
   text-decoration: underline;
-  color: var(--color-primary-dark, var(--color-primary));
+  color: var(--color-primary);
 }

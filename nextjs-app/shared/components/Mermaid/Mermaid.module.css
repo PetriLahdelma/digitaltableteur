@@ -102,7 +102,7 @@
 .caption {
   font-size: 0.875rem;
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
   font-style: italic;
 }
 
@@ -132,7 +132,7 @@
   padding: var(--space-300);
   border: 1px solid var(--color-error, #b00);
   border-radius: var(--radius-200);
-  background-color: var(--color-error-surface, #fee);
+  background-color: var(--color-error-bg);
   font-size: 0.875rem;
   color: var(--color-error, #b00);
 }
