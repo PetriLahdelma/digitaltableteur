@@ -4,18 +4,20 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import {
-  Check,
   Code,
-  ChevronRight,
   Sparkles,
-  ChevronUp,
-  ChevronDown,
   UserCheck,
   Network,
   ClipboardCheck,
   RefreshCw,
   KeyRound,
 } from "lucide-react";
+import {
+  Trophy,
+  HandsClapping,
+  HeadCircuit,
+  PuzzlePiece,
+} from "@phosphor-icons/react";
 
 import { AboutHero } from "../AboutHero";
 import { ContentSection } from "../ContentSection";
@@ -44,7 +46,7 @@ export function AboutPageContent({
   const values: ValueItem[] = useMemo(
     () => [
       {
-        icon: <Check className="w-6 h-6" />,
+        icon: <Trophy className="w-6 h-6" />,
         title: t("aboutValueDesignTitle"),
         description: t("aboutValueDesignDescription"),
       },
@@ -54,17 +56,17 @@ export function AboutPageContent({
         description: t("aboutValueDevelopmentDescription"),
       },
       {
-        icon: <ChevronRight className="w-6 h-6" />,
+        icon: <HandsClapping className="w-6 h-6" />,
         title: t("aboutValueCollaborationTitle"),
         description: t("aboutValueCollaborationDescription"),
       },
       {
-        icon: <ChevronUp className="w-6 h-6" />,
+        icon: <HeadCircuit className="w-6 h-6" />,
         title: t("aboutValueAITitle"),
         description: t("aboutValueAIDescription"),
       },
       {
-        icon: <ChevronDown className="w-6 h-6" />,
+        icon: <PuzzlePiece className="w-6 h-6" />,
         title: t("aboutValueSystemsTitle"),
         description: t("aboutValueSystemsDescription"),
       },
