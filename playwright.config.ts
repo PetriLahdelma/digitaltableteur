@@ -23,6 +23,13 @@ export default defineConfig({
       name: "a11y",
       use: { ...devices["Desktop Chrome"] },
     },
+    {
+      // Revenue-critical user journeys and API contracts (chat, contact,
+      // CV download, GDPR). Run with: npx playwright test --project=e2e
+      name: "e2e",
+      testDir: "./e2e",
+      use: { ...devices["Desktop Chrome"] },
+    },
   ],
   webServer: {
     command: "npm run dev",
