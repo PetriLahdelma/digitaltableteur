@@ -135,7 +135,7 @@
   margin: 0;
   padding: 0;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-internal-8, 0.5rem);
+  gap: var(--space-internal-16, 1rem);
   list-style: none;
   list-style-type: " ";
 }
@@ -146,8 +146,12 @@
 
 .iconLink {
   display: flex;
-  width: 3rem;
-  height: 3rem;
+
+  /* Fill the grid column so the 2x2 tiles align flush with the split
+     button above (Figma node 310:899 sidebar) — fixed widths left the
+     right column ragged. Mobile override keeps fixed 2.75rem tiles. */
+  width: 100%;
+  aspect-ratio: 1;
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-md, 8px);
