@@ -10,7 +10,11 @@
   width: 24px;
   height: 24px;
   border: 1px solid var(--color-primary);
-  border-radius: var(--radius-lg);
+
+  /* --radius-md (4px), not --radius-lg (8px): the radius is absolute, so on
+     the 18px small box 8px read as ~89% circular. 4px holds a rounded-square
+     at every size (S/M/L = 18/24/30px). */
+  border-radius: var(--radius-md);
   cursor: pointer;
   appearance: none;
   background-color: var(--color-light-bg);
