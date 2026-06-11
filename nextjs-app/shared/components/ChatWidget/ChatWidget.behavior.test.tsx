@@ -80,7 +80,7 @@ describe("ChatWidget behaviors", () => {
     await screen.findByText(/lost the connection/i);
 
     fireEvent.click(screen.getByRole("button", { name: /Chat with Donny/i }));
-    fireEvent.click(screen.getByRole("button", { name: /Reset/i }));
+    fireEvent.click(screen.getByRole("button", { name: /Clear/i }));
 
     expect(mockClearError).toHaveBeenCalled();
     expect(mockSetMessages).toHaveBeenCalledWith(

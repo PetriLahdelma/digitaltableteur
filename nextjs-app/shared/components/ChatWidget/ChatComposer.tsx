@@ -19,6 +19,7 @@ import Icon from "@dt/Icon";
  * @property {string} value - Current value of the textarea (controlled)
  * @property {function} onValueChange - Callback fired when textarea value changes
  * @property {function} onSubmit - Callback fired when form is submitted
+ * @property {function} [onReset] - Callback fired when the inline reset button is clicked; button is hidden when omitted
  * @property {boolean} isSending - Whether a message is currently being sent (disables input)
  * @property {number} [maxLength] - Maximum character length (default: 1000)
  * @property {number} [minRows] - Minimum number of visible rows (controls initial height)
@@ -33,6 +34,7 @@ export interface ChatComposerProps {
   value: string;
   onValueChange: (value: string) => void;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  onReset?: () => void;
   isSending: boolean;
   maxLength?: number;
   minRows?: number; // controls initial height
@@ -60,6 +62,7 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
       value,
       onValueChange,
       onSubmit,
+      onReset,
       isSending,
       maxLength = 1_000,
     },
@@ -71,6 +74,15 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
       t("chatPlaceholder", "Ask about a project, service, or approach…");
     const resolvedLabel = label ?? t("chatInputLabel", "Ask Donny a question");
     const resolvedSendLabel = sendLabel ?? t("chatSend", "Send message");
+    // Visible label; resolvedSendLabel stays the accessible name and
+    // contains it, satisfying WCAG 2.5.3 Label in Name.
+    const sendButtonText = t("chatSendLabel", "Send");
+    const resetLabel = t("chatReset", "Clear");
+    const resetAriaLabel = t("chatResetAria", "Clear conversation");
+    const resetShortcutTitle = t(
+      "chatResetShortcutTitle",
+      "Clear conversation (⌘ + Shift + ⌫ on Mac, Ctrl + Shift + Backspace on Windows)",
+    );
     const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
     useImperativeHandle(
@@ -91,51 +103,90 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
           {resolvedLabel}
         </Label>
         <div className={styles.inputRow}>
-          <ChatTextArea
-            id={inputId}
-            aria-labelledby={labelId}
-            className={styles.input}
-            placeholder={resolvedPlaceholder}
-            value={value}
-            onValueChange={onValueChange}
-            minRows={1}
-            maxRows={6}
-            maxLength={maxLength}
-            disabled={isSending}
-            aria-live="polite"
-            ref={textAreaRef}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
-                // Trigger submit programmatically while preserving normal Enter behavior for newlines.
-                const form = e.currentTarget.form;
-                if (form) {
-                  e.preventDefault();
-                  // Construct a synthetic submit event to reuse existing logic.
-                  const submitEvent = new Event("submit", {
-                    cancelable: true,
-                    bubbles: true,
-                  });
-                  form.dispatchEvent(submitEvent);
+          {/* Column wrapper keeps the textarea and the hint/clear row the
+              same width, so one padding rule aligns both with the input. */}
+          <div className={styles.inputColumn}>
+            {/* Relative shell lets the send button sit inside the input's
+                borders while remaining a real submit button right after the
+                textarea in DOM and tab order. */}
+            <div className={styles.inputShell}>
+              <ChatTextArea
+              id={inputId}
+              aria-labelledby={labelId}
+              className={styles.input}
+              placeholder={resolvedPlaceholder}
+              value={value}
+              onValueChange={onValueChange}
+              minRows={1}
+              maxRows={6}
+              maxLength={maxLength}
+              disabled={isSending}
+              aria-live="polite"
+              ref={textAreaRef}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                  // Trigger submit programmatically while preserving normal Enter behavior for newlines.
+                  const form = e.currentTarget.form;
+                  if (form) {
+                    e.preventDefault();
+                    // Construct a synthetic submit event to reuse existing logic.
+                    const submitEvent = new Event("submit", {
+                      cancelable: true,
+                      bubbles: true,
+                    });
+                    form.dispatchEvent(submitEvent);
+                  }
+                  return;
                 }
-              }
-            }}
-          />
-          <Button
-            type="submit"
-            className={styles.sendButton}
-            aria-label={resolvedSendLabel}
-            isDisabled={isSending || !(value ?? "").trim()}
-            icon={<Icon name="paper-plane-tilt" />}
-            variant="primary"
-            size="m"
-          />
+                // ⌘/Ctrl + Shift + Backspace clears the conversation,
+                // mirroring the inline clear button next to the shortcut hint.
+                if (
+                  e.key === "Backspace" &&
+                  e.shiftKey &&
+                  (e.metaKey || e.ctrlKey) &&
+                  onReset &&
+                  !isSending
+                ) {
+                  e.preventDefault();
+                  onReset();
+                }
+              }}
+            />
+              <Button
+                type="submit"
+                className={styles.sendButton}
+                aria-label={resolvedSendLabel}
+                isDisabled={isSending || !(value ?? "").trim()}
+                icon={<Icon name="paper-plane-tilt" size="sm" />}
+                variant="tertiary"
+                size="m"
+              >
+                {sendButtonText}
+              </Button>
+            </div>
+            <div className={styles.hintRow}>
+              <HelperText className={styles.shortcutHint}>
+                {t(
+                  "chatShortcutSubmit",
+                  "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.",
+                )}
+              </HelperText>
+              {onReset && (
+                <button
+                  type="button"
+                  className={styles.resetInline}
+                  onClick={onReset}
+                  disabled={isSending}
+                  aria-label={resetAriaLabel}
+                  title={resetShortcutTitle}
+                >
+                  <Icon name="arrow-clockwise" size="xs" />
+                  {resetLabel}
+                </button>
+              )}
+            </div>
+          </div>
         </div>
-        <HelperText className={styles.shortcutHint}>
-          {t(
-            "chatShortcutSubmit",
-            "Press '⌘ + Enter' (Mac) or 'Ctrl + Enter' to send.",
-          )}
-        </HelperText>
       </form>
     );
   },
