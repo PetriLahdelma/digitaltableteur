@@ -111,5 +111,13 @@
         "ship a Select with `value` and `defaultValue` both set —",
         "use Select for a freeform value with suggestions. Use an",
         "wrap the native chevron with a button overlay. The native"
+    ],
+    "composesWith": [
+        "Inputs",
+        "Button",
+        "Modal",
+        "FileUpload",
+        "PhoneInput",
+        "CheckboxGroup"
     ]
 }

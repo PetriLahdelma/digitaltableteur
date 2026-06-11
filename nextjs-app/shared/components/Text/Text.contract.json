@@ -195,5 +195,13 @@
     ],
     "prefersOver": [
         "raw paragraph elements"
+    ],
+    "composesWith": [
+        "Title",
+        "StoryBlock",
+        "ProjectDetailLayout",
+        "ProjectHero",
+        "RelatedProjects",
+        "GridBlock"
     ]
 }

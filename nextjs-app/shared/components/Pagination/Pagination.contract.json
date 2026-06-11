@@ -76,5 +76,12 @@
     "forbiddenUse": [
         "Remove Previous/Next on edges — use `aria-disabled` so the visual stays stable.",
         "Render more than ~10 page numbers inline — switch to a 'Page X of Y' label with prev/next only."
+    ],
+    "composesWith": [
+        "Container",
+        "Section",
+        "BlogCategoryFilter",
+        "BlogGrid",
+        "EnhancedArticleCard"
     ]
 }

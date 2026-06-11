@@ -3,7 +3,7 @@
 **Version:** 1.0 (2026-06-06)  
 **Audience:** CTOs, design-system leads, and agents evaluating DS agent-readiness.
 
-Digitaltableteur publishes this benchmark as a **repeatable audit** — the same checks run locally via `npm run agentic-ds-audit` and `npm run release:gate`.
+Digitaltableteur publishes this benchmark as a **repeatable audit** — the same checks run locally via `npm run agentic-ds-audit` and `npm run release:gate`. See also the [consulting audit playbook](./AGENTIC_DS_AUDIT_PLAYBOOK.md).
 
 ---
 
@@ -32,13 +32,18 @@ Digitaltableteur publishes this benchmark as a **repeatable audit** — the same
 | Catalog gap | 0 | ✓ |
 | Stable components | 10 | ✓ |
 | Intent golden set | 20/20 (100%) | ✓ |
-| Pattern golden set | 10/10 (100%) | ✓ |
+| Pattern golden set | 12/12 (100%) | ✓ |
 | Agent blocks | 164 | ✓ |
+| Production usage evidence | 44/164 cataloged | ✓ |
+| `check:consumers` | Wired in `release:gate` | ✓ |
 | MCP tools | 6 DS + consulting | ✓ |
+| Figma route captures | 6/9 confirmed @ 1728px | ✓ (partial) |
 | `release:gate` (fast) | Green | ✓ |
-| Full `npm test` | 1010/1010 pass; teardown noise | ⚠ |
+| Full `npm test` | 1013/1013 pass | ✓ |
 | Code Connect | Skipped (Figma Pro) | N/A |
 | npm export | Workspace `@dt/*` only | Pending |
+
+**Weighted score:** 100/100 (all eight dimensions pass). Level **4** certified; Level **5** blocked on npm export + remaining Figma routes/token binding.
 
 ---
 

@@ -138,5 +138,13 @@
     ],
     "prefersOver": [
         "Button with href for body-copy links"
+    ],
+    "composesWith": [
+        "Button",
+        "Text",
+        "Badge",
+        "Title",
+        "Grid",
+        "ArticleCard"
     ]
 }

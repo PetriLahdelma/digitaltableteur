@@ -100,5 +100,9 @@
     },
     "forbiddenUse": [
         "use for single-select — use `Combobox` instead."
+    ],
+    "composesWith": [
+        "Button",
+        "FileUpload"
     ]
 }
