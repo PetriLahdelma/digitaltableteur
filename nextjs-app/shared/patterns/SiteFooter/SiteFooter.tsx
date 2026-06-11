@@ -84,7 +84,10 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {t("footerAddressTitle")}
             </p>
             <address className="font-body text-text-m text-muted-foreground not-italic leading-relaxed">
-              <Link href="/" className="font-medium text-foreground hover:underline">
+              <Link
+                href="/"
+                className="font-medium text-foreground hover:underline rounded-sm"
+              >
                 Digitaltableteur
               </Link>
               <br />
@@ -94,7 +97,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
               <br />
               <a
                 href="mailto:mail@digitaltableteur.com"
-                className="text-foreground hover:underline"
+                className="text-foreground hover:underline rounded-sm"
               >
                 mail@digitaltableteur.com
               </a>
@@ -181,7 +184,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+                className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-sm"
                 aria-label={t(label)}
               >
                 <Icon className="size-5" />
