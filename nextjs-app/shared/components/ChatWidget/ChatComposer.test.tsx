@@ -66,6 +66,117 @@ describe("ChatComposer keyboard submit", () => {
   });
 });
 
+describe("ChatComposer inline reset", () => {
+  function setupWithReset(
+    overrides: Partial<Parameters<typeof ChatComposer>[0]> = {},
+  ) {
+    const onSubmit = vi.fn((e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+    });
+    const onReset = vi.fn();
+    render(
+      <ChatComposer
+        inputId="chat-input"
+        value="Hello"
+        onValueChange={vi.fn()}
+        onSubmit={onSubmit}
+        onReset={onReset}
+        isSending={false}
+        label="Label"
+        sendLabel="Send"
+        {...overrides}
+      />,
+    );
+    return { onReset };
+  }
+
+  it("renders the clear button and calls onReset on click", () => {
+    const { onReset } = setupWithReset();
+    const resetButton = screen.getByRole("button", {
+      name: /clear conversation/i,
+    });
+    fireEvent.click(resetButton);
+    expect(onReset).toHaveBeenCalledTimes(1);
+  });
+
+  it("disables the clear button while sending", () => {
+    setupWithReset({ isSending: true });
+    expect(
+      screen.getByRole("button", { name: /clear conversation/i }),
+    ).toBeDisabled();
+  });
+
+  it("resets on Cmd+Shift+Backspace (macOS)", () => {
+    const { onReset } = setupWithReset();
+    const textarea = screen.getByLabelText(/Label/i);
+    fireEvent.keyDown(textarea, {
+      key: "Backspace",
+      metaKey: true,
+      shiftKey: true,
+    });
+    expect(onReset).toHaveBeenCalledTimes(1);
+  });
+
+  it("resets on Ctrl+Shift+Backspace (Windows/Linux)", () => {
+    const { onReset } = setupWithReset();
+    const textarea = screen.getByLabelText(/Label/i);
+    fireEvent.keyDown(textarea, {
+      key: "Backspace",
+      ctrlKey: true,
+      shiftKey: true,
+    });
+    expect(onReset).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not reset on plain Backspace", () => {
+    const { onReset } = setupWithReset();
+    const textarea = screen.getByLabelText(/Label/i);
+    fireEvent.keyDown(textarea, { key: "Backspace" });
+    expect(onReset).not.toHaveBeenCalled();
+  });
+
+  it("does not reset via shortcut while sending", () => {
+    const { onReset } = setupWithReset({ isSending: true });
+    const textarea = screen.getByLabelText(/Label/i);
+    fireEvent.keyDown(textarea, {
+      key: "Backspace",
+      metaKey: true,
+      shiftKey: true,
+    });
+    expect(onReset).not.toHaveBeenCalled();
+  });
+
+  it("does not render a clear button when onReset is omitted", () => {
+    const onSubmit = vi.fn();
+    render(
+      <ChatComposer
+        inputId="chat-input"
+        value="Hello"
+        onValueChange={vi.fn()}
+        onSubmit={onSubmit}
+        isSending={false}
+      />,
+    );
+    expect(screen.queryByRole("button", { name: /clear|reset/i })).toBeNull();
+  });
+
+  it("has no accessibility violations with the clear button visible", async () => {
+    const onSubmit = vi.fn();
+    const { container } = render(
+      <ChatComposer
+        inputId="chat-input"
+        value="Hello"
+        onValueChange={vi.fn()}
+        onSubmit={onSubmit}
+        onReset={vi.fn()}
+        isSending={false}
+      />,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+});
+
 describe("ChatComposer accessibility", () => {
   it("has no accessibility violations in default state", async () => {
     const onSubmit = vi.fn();

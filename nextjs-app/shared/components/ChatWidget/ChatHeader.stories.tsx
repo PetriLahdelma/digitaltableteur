@@ -13,9 +13,7 @@ const meta: Meta<typeof ChatHeader> = {
   args: {
     title: "Chat with Donny",
     description: "DT-specific answers, no fluff.",
-    onReset: noop,
     onMinimize: noop,
-    isSending: false,
   },
 };
 
@@ -32,8 +30,6 @@ export const Default: Story = {
     },
   },
 };
-
-export const Sending: Story = { args: { isSending: true } };
 
 const chatHeaderComplianceRules: ComplianceRule[] = [
   {
@@ -66,7 +62,8 @@ const chatHeaderComplianceRules: ComplianceRule[] = [
     id: "3",
     rule: "3 Component API",
     status: "pass",
-    details: "Clean props API with callbacks for reset and minimize actions",
+    details:
+      "Clean props API with minimize callback (reset lives in ChatComposer)",
   },
   {
     id: "4",

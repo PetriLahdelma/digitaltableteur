@@ -16,9 +16,7 @@ function withI18n(ui: React.ReactElement) {
 describe("ChatHeader offline title logic", () => {
   const baseProps = {
     description: "desc",
-    onReset: () => {},
     onMinimize: () => {},
-    isSending: false,
   };
 
   it("shows normal title during open hours (weekday 10:00)", () => {
@@ -83,21 +81,11 @@ describe("ChatHeader accessibility", () => {
   const baseProps = {
     title: "Chat with Donny",
     description: "DT-specific answers, no fluff.",
-    onReset: () => {},
     onMinimize: () => {},
-    isSending: false,
   };
 
   it("has no accessibility violations in default state", async () => {
     const { container } = render(withI18n(<ChatHeader {...baseProps} />));
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
-  });
-
-  it("has no accessibility violations when sending", async () => {
-    const { container } = render(
-      withI18n(<ChatHeader {...baseProps} isSending={true} />),
-    );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
@@ -111,12 +99,9 @@ describe("ChatHeader accessibility", () => {
     expect(results).toHaveNoViolations();
   });
 
-  it("has proper ARIA labels on buttons", () => {
+  it("has proper ARIA label on minimize button", () => {
     render(withI18n(<ChatHeader {...baseProps} />));
 
-    expect(
-      screen.getByRole("button", { name: /reset conversation/i }),
-    ).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /minimize chat/i }),
     ).toBeInTheDocument();
@@ -127,20 +112,8 @@ describe("ChatHeader button interactions", () => {
   const baseProps = {
     title: "Chat with Donny",
     description: "DT-specific answers, no fluff.",
-    onReset: vi.fn(),
     onMinimize: vi.fn(),
-    isSending: false,
   };
-
-  it("calls onReset when reset button clicked", async () => {
-    const onReset = vi.fn();
-    render(withI18n(<ChatHeader {...baseProps} onReset={onReset} />));
-
-    const resetButton = screen.getByRole("button", { name: /reset/i });
-    await userEvent.click(resetButton);
-
-    expect(onReset).toHaveBeenCalledTimes(1);
-  });
 
   it("calls onMinimize when minimize button clicked", async () => {
     const onMinimize = vi.fn();
@@ -152,24 +125,11 @@ describe("ChatHeader button interactions", () => {
     expect(onMinimize).toHaveBeenCalledTimes(1);
   });
 
-  it("disables reset button when isSending is true", () => {
-    render(withI18n(<ChatHeader {...baseProps} isSending={true} />));
-
-    const resetButton = screen.getByRole("button", { name: /reset/i });
-    expect(resetButton).toBeDisabled();
-  });
-
-  it("does not disable minimize button when isSending", () => {
-    render(withI18n(<ChatHeader {...baseProps} isSending={true} />));
-
-    const minimizeButton = screen.getByRole("button", { name: /minimize/i });
-    expect(minimizeButton).not.toBeDisabled();
-  });
-
-  it("reset button has visible text label on desktop", () => {
+  // Clear (formerly Reset) moved to ChatComposer, inline next to the
+  // shortcut hint. See ChatComposer.test.tsx for its interaction tests.
+  it("does not render a clear/reset button", () => {
     render(withI18n(<ChatHeader {...baseProps} />));
 
-    const resetButton = screen.getByRole("button", { name: /reset/i });
-    expect(resetButton).toHaveTextContent(/reset/i);
+    expect(screen.queryByRole("button", { name: /clear|reset/i })).toBeNull();
   });
 });
