@@ -185,10 +185,10 @@
 .messages {
   display: flex;
   padding: 1rem 1.25rem;
+  min-block-size: 0;
   flex: 1 1 auto;
   flex-direction: column;
   gap: 0.75rem;
-  min-block-size: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
 }
@@ -322,6 +322,7 @@
 
 .inputRow {
   display: flex;
+
   /* Top-align: the column next to the send button now holds the textarea
      plus the hint/clear row, so centering would drag the button down. */
   align-items: flex-start;
@@ -333,10 +334,10 @@
 
 .inputColumn {
   display: flex;
+  min-width: 0;
   flex: 1 1 auto;
   flex-direction: column;
   gap: 0.45rem;
-  min-width: 0;
 }
 
 /* Anchor for the send button, which sits inside the input's borders. */
@@ -348,6 +349,7 @@
 
 .input {
   padding: 0.76rem 0.85rem;
+
   /* Keep typed text clear of the in-field icon+label send button; sized for
      the widest locale label (FI "Lähetä" / SV "Skicka"). */
   padding-inline-end: 6.5rem;
@@ -378,13 +380,15 @@
 
 .sendButton {
   display: inline-flex;
+
   /* Inside the input's borders, vertically centered. 2.25rem (36px) tall
      keeps the target well above the 24px WCAG 2.5.8 minimum while fitting
      the single-row input. */
   position: absolute;
-  inset-block-start: 50%;
-  inset-inline-end: 0.375rem;
-  translate: 0 -50%;
+
+  /* Colors and icon-text spacing come from the Button tertiary variant;
+     this class only handles in-field layout. */
+  padding-inline: 0.65rem;
   width: auto;
   height: 2.25rem;
   justify-content: center;
@@ -392,15 +396,15 @@
   border: none;
   /* stylelint-disable-next-line declaration-no-important -- Override Button component styles */
   border-radius: 0.5rem !important;
-  /* Colors and icon-text spacing come from the Button tertiary variant;
-     this class only handles in-field layout. */
-  padding-inline: 0.65rem;
   cursor: pointer;
   transition:
     transform 0.2s ease,
     opacity 0.2s ease,
     background-color 0.2s ease;
   appearance: none;
+  inset-block-start: 50%;
+  inset-inline-end: 0.375rem;
+  translate: 0 -50%;
 }
 
 .sendButton:hover:not(:disabled) {
@@ -511,12 +515,13 @@
 
 .hintRow {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
+
   /* One rule pads both the hint (left) and the clear button (right)
      symmetrically inside the input column. */
   padding-inline: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .shortcutHint {
@@ -534,16 +539,16 @@
 
 .resetInline {
   display: inline-flex;
+  margin: 0;
+  padding: 0;
   align-items: center;
   gap: 0.3rem;
-  margin: 0;
   border: 0;
-  padding: 0;
   background: none;
   font-family: Moderat, sans-serif;
   font-size: 0.85rem;
-  color: var(--shortcut-hint-strong-color, #1f2937);
   white-space: nowrap;
+  color: var(--shortcut-hint-strong-color, #1f2937);
   cursor: pointer;
 }
 
@@ -559,8 +564,8 @@
 
 .resetInline:disabled {
   color: var(--shortcut-hint-color, #4b5563);
-  opacity: 0.6;
   cursor: not-allowed;
+  opacity: 0.6;
 }
 
 /* Dark theme: the panel surface is dark, so "more prominent than the hint"
@@ -616,6 +621,7 @@
    --cookie-banner-height by CookieConsentBanner) so it clears the bar across
    locales and wrapped buttons. Scoped to the closed toggle so it never fights
    the open-state hide transform. */
+
 :global(body[data-cookie-banner-open="true"]) .toggle:not([data-open="true"]) {
   transform: translateY(
     calc(-1 * (var(--cookie-banner-height, 8rem) + 0.75rem))
@@ -695,6 +701,7 @@
 }
 
 /* Header avatar: white body + black eyes on dark panel */
+
 :global(.themeHCB) .headerAvatar {
   --donny-primary: #fff;
   --donny-eyes: #000;
@@ -768,6 +775,7 @@
 }
 
 /* DonnyAvatar on purple toggle / dark chat header */
+
 :global(.themeDark) .toggleAvatar,
 :global(.themeDark) .headerAvatar {
   --donny-primary: #fff;
@@ -907,12 +915,12 @@
 }
 
 .projectCardThumb {
-  flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
+  flex-shrink: 0;
   border-radius: var(--radius-md);
-  object-fit: contain;
   background: var(--color-light-bg);
+  object-fit: contain;
 }
 
 .projectCardBody {
@@ -1002,8 +1010,8 @@
 .followUpDraftActions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-internal-12);
   align-items: center;
+  gap: var(--space-internal-12);
 }
 
 .followUpDraftCopy {
