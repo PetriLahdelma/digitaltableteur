@@ -92,10 +92,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Divider",
-        "Layout"
-    ],
     "forbiddenUse": [
         "Use as a button — opening a dialog or running a side-effect is a `Button` job.",
         "Style as an icon — wrap an icon link in `IconButton` (with `aria-label`) instead."

@@ -71,14 +71,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "HomeHero",
-        "ServicesSection",
-        "CTASection",
-        "NewsBulletin",
-        "DesignSprintsSection",
-        "HighlightSection"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

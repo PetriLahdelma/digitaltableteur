@@ -189,14 +189,6 @@
             ]
         }
     },
-    "composesWith": [
-        "Title",
-        "StoryBlock",
-        "ProjectDetailLayout",
-        "ProjectHero",
-        "RelatedProjects",
-        "Button"
-    ],
     "forbiddenUse": [
         "nest a `<Text as=\"p\">` inside another `<p>`. HTML rejects nested",
         "override font-size via inline `style`. The ladder is the contract;"

@@ -28,5 +28,46 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "nav": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "hero": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "sidebar": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "relatedPosts": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "showReadingProgress": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "contentRef": {
+            "optional": true,
+            "type": "RefObject<HTMLElement | null>"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "lang": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

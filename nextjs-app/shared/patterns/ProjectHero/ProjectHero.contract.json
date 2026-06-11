@@ -38,5 +38,59 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "image": {
+            "optional": true,
+            "type": "ProjectHeroImage"
+        },
+        "video": {
+            "optional": true,
+            "type": "ProjectHeroVideo"
+        },
+        "category": {
+            "optional": true,
+            "type": "string"
+        },
+        "tags": {
+            "optional": true,
+            "type": "string[]"
+        },
+        "date": {
+            "optional": true,
+            "type": "string"
+        },
+        "liveUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "full-width",
+                "contained",
+                "split"
+            ]
+        },
+        "showScrollIndicator": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

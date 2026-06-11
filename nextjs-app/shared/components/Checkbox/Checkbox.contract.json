@@ -113,14 +113,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Inputs",
-        "Button",
-        "Label",
-        "Text",
-        "Grid",
-        "ArticleCard"
-    ],
     "forbiddenUse": [
         "use `checked` directly. The prefixed `isChecked` name is the",
         "rely on the native `indeterminate` HTML attribute — there is"

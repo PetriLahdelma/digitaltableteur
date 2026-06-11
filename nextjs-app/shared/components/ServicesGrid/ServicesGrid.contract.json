@@ -48,12 +48,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "MarkdownMessage",
-        "OpenHours",
-        "StudioMap",
-        "DonnyBookingEmbed"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

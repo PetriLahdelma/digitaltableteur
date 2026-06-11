@@ -72,14 +72,6 @@
             "type": "(value: string | undefined) => void"
         }
     },
-    "composesWith": [
-        "Inputs",
-        "Button",
-        "Modal",
-        "Select",
-        "FileUpload",
-        "CheckboxGroup"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

@@ -28,5 +28,39 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "tokens": {
+            "optional": false,
+            "type": "ManifestoToken[]"
+        },
+        "interval": {
+            "optional": true,
+            "type": "number"
+        },
+        "separator": {
+            "optional": true,
+            "type": "string"
+        },
+        "background": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "muted",
+                "gradient",
+                "transparent"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

@@ -28,5 +28,62 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "services": {
+            "optional": false,
+            "type": "string[]"
+        },
+        "duration": {
+            "optional": true,
+            "type": "string"
+        },
+        "tools": {
+            "optional": true,
+            "type": "ToolItem[]"
+        },
+        "team": {
+            "optional": true,
+            "type": "TeamMember[]"
+        },
+        "client": {
+            "optional": true,
+            "type": "ClientInfo"
+        },
+        "overview": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "background": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "muted",
+                "accent"
+            ]
+        },
+        "maxWidth": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg",
+                "xl",
+                "full"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "donnyTarget": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

@@ -72,13 +72,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "ThemeProvider",
-        "IconButton",
-        "Container",
-        "LanguageSwitcher",
-        "SkipLink"
-    ],
     "forbiddenUse": [
         "Use inside body prose — that is `TextLink`.",
         "Use as a button — primary actions belong on `Button`."

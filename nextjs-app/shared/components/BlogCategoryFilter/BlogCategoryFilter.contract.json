@@ -47,5 +47,52 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "tags": {
+            "optional": false,
+            "type": "string[]"
+        },
+        "selectedTag": {
+            "optional": false,
+            "type": "string | null"
+        },
+        "onTagChange": {
+            "optional": false,
+            "type": "(tag: string | null) => void"
+        },
+        "showCounts": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "tagCounts": {
+            "optional": true,
+            "type": "Record<string, number>"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "pills",
+                "underline",
+                "minimal"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

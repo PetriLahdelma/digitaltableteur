@@ -50,13 +50,6 @@
     "consumers": [],
     "schemaVersion": 2,
     "props": {},
-    "composesWith": [
-        "FormField",
-        "Inputs",
-        "Button",
-        "Text",
-        "CheckboxGroup"
-    ],
     "forbiddenUse": [
         "pass props. The component intentionally accepts none. If",
         "swallow the `/api/contact` endpoint. The submit handler",

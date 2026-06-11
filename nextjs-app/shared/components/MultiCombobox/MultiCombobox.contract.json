@@ -98,10 +98,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Button",
-        "FileUpload"
-    ],
     "forbiddenUse": [
         "use for single-select — use `Combobox` instead."
     ]

@@ -98,10 +98,6 @@
             ]
         }
     },
-    "composesWith": [
-        "Button",
-        "Icon"
-    ],
     "forbiddenUse": [
         "Pair AlertBanner with blocking Modal for the same user outcome — pick one surface",
         "make errors dismissable. Letting the user hide a blocking",

@@ -53,14 +53,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "ServicesSection",
-        "WorkMagneticField",
-        "CTASection",
-        "NewsBulletin",
-        "DesignSprintsSection",
-        "HighlightSection"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

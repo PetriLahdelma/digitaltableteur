@@ -55,13 +55,8 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Link",
-        "Icon",
-        "Text"
-    ],
     "forbiddenUse": [
-        "Use BlogGrid for full article listings instead of this strip.",
-        "Do not hardcode bulletin copy outside news-bulletin data module."
+        "use for full blog indexes or article lists",
+        "replace with generic Card stacks without region semantics"
     ]
 }

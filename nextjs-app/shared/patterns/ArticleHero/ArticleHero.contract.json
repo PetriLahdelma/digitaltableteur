@@ -38,5 +38,47 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "image": {
+            "optional": true,
+            "type": "{\n    src: string;\n    alt: string;\n    caption?: string;\n  }"
+        },
+        "author": {
+            "optional": true,
+            "type": "{\n    name: string;\n    slug?: string;\n    imageUrl?: string;\n  }"
+        },
+        "publishedAt": {
+            "optional": true,
+            "type": "string"
+        },
+        "readTime": {
+            "optional": true,
+            "type": "string"
+        },
+        "tags": {
+            "optional": true,
+            "type": "string[]"
+        },
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "minimal",
+                "full-width",
+                "contained"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

@@ -1,6 +1,6 @@
 # Design system health
 
-Generated: 2026-06-04T14:07:07.365Z
+Generated: 2026-06-11T11:38:56.769Z
 
 ## Governance checks
 
@@ -10,9 +10,9 @@ Generated: 2026-06-04T14:07:07.365Z
 ## shadcn import inventory (informational)
 
 - `app`: 0 import line(s)
-- `nextjs-app/shared/components`: 17 import line(s)
+- `nextjs-app/shared/components`: 7 import line(s)
 - `nextjs-app/shared/patterns`: 0 import line(s)
-- **Total:** 17 (see report.json for paths)
+- **Total:** 7 (see report.json for paths)
 
 ## Migration boards
 
@@ -25,7 +25,7 @@ Generated: 2026-06-04T14:07:07.365Z
 ## Last visual matrix
 
 - 96/96 passed
-- Report time: 2026-06-04T12:56:27.686Z
+- Report time: 2026-06-05T13:10:40.288Z
 
 ## Before merging DS changes
 

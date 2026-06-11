@@ -58,10 +58,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Title",
-        "PageLayout"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

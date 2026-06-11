@@ -66,14 +66,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Button",
-        "Text",
-        "Inputs",
-        "DonnyAvatar",
-        "Header",
-        "Footer"
-    ],
     "forbiddenUse": [
         "gate the widget behind user authentication. The widget is",
         "store chat history in cookies. The current storage is",

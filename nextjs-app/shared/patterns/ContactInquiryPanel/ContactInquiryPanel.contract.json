@@ -54,7 +54,11 @@
     "props": {
         "initialMode": {
             "optional": true,
-            "type": "ContactInquiryMode"
+            "type": "union",
+            "values": [
+                "message",
+                "book"
+            ]
         },
         "packageId": {
             "optional": true,
@@ -69,13 +73,8 @@
             "type": "SiteBookingConfig"
         }
     },
-    "composesWith": [
-        "Button",
-        "ContactFormEditorial",
-        "DonnyBookingEmbed"
-    ],
     "forbiddenUse": [
-        "Use without a messagePanel slot — the form lives in the parent composition.",
-        "Duplicate tablist landmarks on the same contact page."
+        "mount without messagePanel slot",
+        "duplicate tablist landmarks on the same page"
     ]
 }

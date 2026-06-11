@@ -192,14 +192,6 @@
             ]
         }
     },
-    "composesWith": [
-        "Text",
-        "Button",
-        "ProjectDetailLayout",
-        "StoryBlock",
-        "ProjectHero",
-        "RelatedProjects"
-    ],
     "forbiddenUse": [
         "Default Title typography on pattern headings that already define font-display or module classes — use unstyled + existing className",
         "visually size a heading by passing custom inline styles — use the",
