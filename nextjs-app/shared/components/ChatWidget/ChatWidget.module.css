@@ -567,11 +567,11 @@
    flips to lighter, not darker. The light-theme #1f2937 is unreadable here. */
 
 :global(.themeDark) .resetInline {
-  color: #e5e7eb;
+  color: var(--color-text);
 }
 
 :global(.themeDark) .resetInline:disabled {
-  color: #9ca3af;
+  color: var(--secondary-text-color);
 }
 
 @media (width <= 768px) {
@@ -638,6 +638,11 @@
 }
 
 /* High Contrast Black (HCB) theme support */
+
+/* stylelint-disable scale-unlimited/declaration-strict-value --
+   HC themes are definitionally pure black/white, and the dark-theme toggle
+   needs guaranteed white-on-purple; literals scoped to these theme blocks
+   guarantee WCAG contrast without token indirection. */
 
 :global(.themeHCB) .panel {
   border-color: #fff;
@@ -811,6 +816,8 @@
   --donny-eyes: #000;
 }
 
+/* stylelint-enable scale-unlimited/declaration-strict-value */
+
 /* Tool result cards — NavigateLink */
 
 .toolResultSection {
@@ -831,7 +838,7 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--color-text-muted, #777);
+  color: var(--color-gray);
 }
 
 .toolResultMetaLabel {
@@ -858,7 +865,7 @@
   padding: 0.5rem 1rem;
   align-items: center;
   gap: 0.25rem;
-  border-radius: var(--radius-m, 0.5rem);
+  border-radius: var(--radius-lg);
   background-color: var(--color-primary, #041B23);
   font-family: var(--font-sans);
   font-size: 0.875rem;
@@ -893,7 +900,7 @@
   align-items: flex-start;
   gap: 0.75rem;
   border: 1px solid var(--color-border, #e5e5e5);
-  border-radius: var(--radius-m, 0.5rem);
+  border-radius: var(--radius-lg);
   background-color: var(--color-surface, #fff);
   text-decoration: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -903,9 +910,9 @@
   flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: var(--radius-xs, 0.25rem);
+  border-radius: var(--radius-md);
   object-fit: contain;
-  background: var(--color-surface-muted, #f5f5f5);
+  background: var(--color-light-bg);
 }
 
 .projectCardBody {
@@ -932,7 +939,7 @@
   font-family: var(--font-sans);
   font-size: 0.75rem;
   text-transform: capitalize;
-  color: var(--color-text-secondary, #666);
+  color: var(--secondary-text-color);
 }
 
 .projectCardDesc {
@@ -940,7 +947,7 @@
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   line-height: 1.4;
-  color: var(--color-text-secondary, #666);
+  color: var(--secondary-text-color);
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
@@ -975,9 +982,9 @@
 
 .followUpDraftBody {
   margin: 0;
-  padding: var(--space-layout-12, 0.75rem);
+  padding: var(--space-internal-12);
   border-radius: var(--radius-sm, 0.375rem);
-  background: var(--color-surface-muted, rgb(0 0 0 / 4%));
+  background: var(--color-light-bg);
   font-family: var(--font-mono, monospace);
   font-size: 0.75rem;
   line-height: 1.5;
@@ -989,13 +996,13 @@
   margin: 0;
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  color: var(--color-text-muted, #666);
+  color: var(--color-gray);
 }
 
 .followUpDraftActions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-layout-12, 0.75rem);
+  gap: var(--space-internal-12);
   align-items: center;
 }
 
@@ -1010,5 +1017,5 @@
 }
 
 .followUpDraftCopy:hover {
-  background: var(--color-surface-muted, rgb(0 0 0 / 4%));
+  background: var(--color-light-bg);
 }

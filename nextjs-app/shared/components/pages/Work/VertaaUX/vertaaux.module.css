@@ -82,7 +82,7 @@
 .metaLabel {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
   color: var(--color-text);
 }
@@ -90,7 +90,7 @@
 .metaText {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.6;
   color: var(--color-text);
 }
@@ -98,13 +98,13 @@
 .metaTools {
   display: flex;
   gap: var(--space-layout-16);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .metaOverview {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   line-height: 1.7;
   color: var(--color-text);
 }
@@ -300,7 +300,7 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
   font-style: italic;
 }
 
@@ -455,7 +455,7 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
   font-style: italic;
 }
 
@@ -509,7 +509,7 @@
 .waterfallLabel {
   margin-block-end: var(--space-layout-16);
   font-family: var(--font-sans);
-  font-size: var(--font-size-text-xs);
+  font-size: var(--font-size-text-s);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -596,7 +596,7 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
   text-align: center;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 /* Outcomes section */
@@ -656,13 +656,13 @@
 
 .metricLabel {
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-text);
   font-weight: 600;
 }
 
 .metricDetail {
   font-family: var(--font-sans);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-text-s);
   line-height: 1.4;
   opacity: 0.85;
 }

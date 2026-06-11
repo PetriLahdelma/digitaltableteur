@@ -38,10 +38,10 @@
 /* Pull-quote inspired subtitle treatment */
 
 .storySection [data-story-subtitle] {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-text-s);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 /* Process phase titles - editorial weight */
@@ -55,14 +55,14 @@
 .outcomesSection {
   margin-block: var(--space-layout-96, 6rem);
   padding-block: var(--space-layout-48);
-  border-block-start: 1px solid var(--color-border-subtle, rgb(0 0 0 / 10%));
+  border-block-start: 1px solid var(--color-border-light);
 }
 
 /* Magazine-style image captions */
 
 .storySection figcaption,
 .imageGrid figcaption {
-  margin-block-start: var(--space-layout-12);
-  color: var(--color-text-secondary);
+  margin-block-start: var(--space-internal-12);
+  color: var(--secondary-text-color);
   font-style: italic;
 }

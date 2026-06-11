@@ -1,8 +1,11 @@
 .container {
+  /* Fixed dark canvas so logo construction guides read identically in every theme */
+  --logo-canvas-bg: #2b2f33;
+
   width: 100%;
   max-width: 100%;
   border-radius: var(--radius-lg, 12px);
-  background-color: #2b2f33;
+  background-color: var(--logo-canvas-bg);
   aspect-ratio: 1848 / 621;
   overflow: hidden;
 }

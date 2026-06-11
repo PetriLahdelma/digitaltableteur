@@ -8,7 +8,7 @@
 .detailedView {
   display: flex;
   flex-direction: column;
-  gap: var(--space-m);
+  gap: var(--space-internal-16);
 }
 
 .description {
@@ -24,7 +24,7 @@
   margin: 0;
   margin-block-start: 1rem;
   font-size: var(--font-size-body-s);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 .policyLink a {
@@ -33,14 +33,14 @@
 }
 
 .policyLink a:hover {
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
 }
 
 /* Category controls */
 
 .categories {
   display: flex;
-  margin-block: var(--space-m);
+  margin-block: var(--space-internal-16);
   padding-block: var(--space-layout-16);
   flex-direction: column;
   gap: 1rem;
@@ -51,7 +51,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--space-m);
+  gap: var(--space-internal-16);
 }
 
 .categoryInfo {
@@ -61,9 +61,9 @@
 
 .categoryTitle {
   display: flex;
-  margin: 0 0 var(--space-xs) 0;
+  margin: 0 0 var(--space-internal-4) 0;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-internal-4);
   font-size: var(--font-size-body-l);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-m);
@@ -74,7 +74,7 @@
   margin: 0;
   font-size: var(--font-size-body-s);
   line-height: var(--line-height-m);
-  color: var(--color-text-secondary);
+  color: var(--secondary-text-color);
 }
 
 /* Toggle switch (inspired by HDS but using DT tokens) */
@@ -109,12 +109,15 @@
 }
 
 .slider::before {
+  /* Knob stays white in every theme, like native platform switches */
+  --cookie-knob: #fff;
+
   position: absolute;
   bottom: 3px;
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background-color: white;
+  background-color: var(--cookie-knob);
   transition: transform 0.2s ease;
   content: "";
   inset-inline-start: 3px;
@@ -145,7 +148,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-m);
+  gap: var(--space-internal-16);
 }
 
 .leftActions {
@@ -163,7 +166,7 @@
   .footerActions {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-m);
+    gap: var(--space-internal-16);
   }
 
   .leftActions {
@@ -181,7 +184,7 @@
 
   .categoryRow {
     flex-direction: column;
-    gap: var(--space-s);
+    gap: var(--space-internal-8);
   }
 
   .categoryToggle {

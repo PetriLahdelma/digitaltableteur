@@ -1,8 +1,8 @@
 .container {
   display: grid;
-  gap: var(--space-layout-12, 12px);
+  gap: var(--space-internal-12);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-l, 12px);
+  border-radius: var(--radius-lg);
   background:
     linear-gradient(
       135deg,
@@ -20,8 +20,8 @@
 }
 
 .compact {
-  padding-block: var(--space-layout-12, 12px);
-  padding-inline: var(--space-layout-12, 12px);
+  padding-block: var(--space-internal-12);
+  padding-inline: var(--space-internal-12);
 }
 
 .header {
@@ -29,7 +29,7 @@
   padding-block-end: var(--space-layout-8, 8px);
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: var(--space-layout-12, 12px);
+  gap: var(--space-internal-12);
   border-block-end: 1px solid var(--color-border);
 }
 
@@ -38,24 +38,31 @@
   gap: var(--space-layout-8, 8px);
 }
 
+/* macOS traffic-light chrome — fixed system colors, deliberately untokenized */
+
 .dot {
+  --mac-bezel: rgb(0 0 0 / 10%);
+  --mac-close: #ff5f57;
+  --mac-minimize: #febc2e;
+  --mac-maximize: #28c840;
+
   display: inline-flex;
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #000 10%, transparent);
+  box-shadow: inset 0 0 0 1px var(--mac-bezel);
 }
 
 .close {
-  background: #ff5f57;
+  background: var(--mac-close);
 }
 
 .minimize {
-  background: #febc2e;
+  background: var(--mac-minimize);
 }
 
 .maximize {
-  background: #28c840;
+  background: var(--mac-maximize);
 }
 
 .title {
@@ -75,7 +82,7 @@
 .body {
   padding-block: var(--space-layout-16);
   padding-inline: var(--space-layout-16);
-  border-radius: var(--radius-m, 8px);
+  border-radius: var(--radius-lg);
 }
 
 .content {
@@ -90,8 +97,8 @@
   }
 
   .body {
-    padding-block: var(--space-layout-20, 20px);
-    padding-inline: var(--space-layout-20, 20px);
+    padding-block: var(--space-layout-24);
+    padding-inline: var(--space-layout-24);
   }
 }
 

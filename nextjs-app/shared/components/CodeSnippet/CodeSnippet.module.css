@@ -5,7 +5,7 @@
 .inline {
   display: inline-block;
   padding: 0.125rem 0.375rem;
-  border-radius: var(--radius-s, 4px);
+  border-radius: var(--radius-md);
   background: var(--color-neutral-bg, rgb(0 0 0 / 10%));
   font-family: var(--font-mono);
   font-size: 0.9em;
@@ -52,9 +52,9 @@
   padding: 1rem;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-layout-12, 0.75rem);
+  gap: var(--space-internal-12);
   border: 2px solid var(--color-primary, rgb(255 255 255 / 8%));
-  border-radius: var(--radius-m, 12px) var(--radius-m, 12px) 0 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   background: var(--color-neutral-bg, rgb(0 0 0 / 35%));
   text-transform: capitalize;
   color: var(--color-text, #e5e7eb);
@@ -71,7 +71,9 @@
 
 :global(.themeDark) .toolbar,
 :global([data-theme="dark"]) .toolbar {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value -- contrast-tuned surface, see comment above */
   border-color: #2d2d2d;
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value -- contrast-tuned surface, see comment above */
   background: #1e1e1e;
 }
 
@@ -123,7 +125,7 @@
   margin: 0;
   padding: 1rem;
   border: 2px solid var(--code-border);
-  border-radius: 0 0 var(--radius-m, 12px) var(--radius-m, 12px);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   background: var(--code-bg);
   font-family: var(--font-mono);
   font-size: var(--font-size-text-s, 0.9375rem);
@@ -196,7 +198,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: start;
-  gap: var(--space-layout-12, 0.75rem);
+  gap: var(--space-internal-12);
   white-space: pre-wrap;
   overflow-wrap: break-word;
 }
@@ -313,9 +315,9 @@
 /* Expand control for multi-line with maxLines */
 
 .expandControl {
-  padding: var(--space-layout-12, 0.75rem);
+  padding: var(--space-internal-12);
   border: 2px solid var(--color-primary);
-  border-radius: 0 0 var(--radius-m, 12px) var(--radius-m, 12px);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   background: var(--color-neutral-bg, rgb(0 0 0 / 35%));
   text-align: center;
   border-top: none;

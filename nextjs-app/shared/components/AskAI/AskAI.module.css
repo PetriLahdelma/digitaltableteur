@@ -48,7 +48,7 @@
   min-width: 5rem;
   background: var(--color-primary, #041B23);
   font-family: var(--font-body);
-  font-size: var(--font-size-text-xs, 0.75rem);
+  font-size: var(--font-size-text-s);
   font-weight: 500;
   text-align: center;
   color: var(--inverted-text-color, #fff);
@@ -109,7 +109,7 @@
   border-radius: var(--radius-sm, 4px);
   background: transparent;
   font-family: var(--font-body);
-  font-size: var(--font-size-text-xs, 0.75rem);
+  font-size: var(--font-size-text-s);
   font-weight: 500;
   text-align: start;
   color: var(--primary-text-color, #041B23);
@@ -188,7 +188,7 @@
   border-radius: var(--radius-sm, 4px);
   background: var(--color-primary, #041B23);
   font-family: var(--font-body);
-  font-size: var(--font-size-text-xs, 0.75rem);
+  font-size: var(--font-size-text-s);
   font-weight: 500;
   white-space: nowrap;
   color: var(--inverted-text-color, #fff);
@@ -209,13 +209,17 @@
 /* Personalized icon highlight */
 
 .iconLinkPersonalized {
-  background: linear-gradient(135deg, var(--color-primary, #041B23) 0%, #1a3a4a 100%);
+  /* Hand-tuned gradient stops: deep teal lift for light, silver sheen for dark */
+  --askai-grad-deep: #1a3a4a;
+  --askai-grad-sheen: #e2e8f0;
+
+  background: linear-gradient(135deg, var(--color-primary, #041B23) 0%, var(--askai-grad-deep) 100%);
   box-shadow: 0 0 0 2px var(--color-accent, #0ea5e9);
   color: var(--inverted-text-color, #fff);
 }
 
 .iconLinkPersonalized:hover {
-  background: linear-gradient(135deg, #1a3a4a 0%, var(--color-primary, #041B23) 100%);
+  background: linear-gradient(135deg, var(--askai-grad-deep) 0%, var(--color-primary, #041B23) 100%);
 }
 
 /* Gemini icon needs to be slightly smaller to match visual weight */
@@ -278,7 +282,7 @@
   }
 
   .title {
-    font-size: var(--font-size-text-xs, 0.75rem);
+    font-size: var(--font-size-text-s);
   }
 
   .splitButton {
@@ -406,14 +410,14 @@
 
 :global(.themeDark) .iconLinkPersonalized,
 :global(.dark) .iconLinkPersonalized {
-  background: linear-gradient(135deg, var(--inverted-text-color, #fff) 0%, #e2e8f0 100%);
+  background: linear-gradient(135deg, var(--inverted-text-color, #fff) 0%, var(--askai-grad-sheen) 100%);
   box-shadow: 0 0 0 2px var(--color-accent, #0ea5e9);
   color: var(--color-primary, #041B23);
 }
 
 :global(.themeDark) .iconLinkPersonalized:hover,
 :global(.dark) .iconLinkPersonalized:hover {
-  background: linear-gradient(135deg, #e2e8f0 0%, var(--inverted-text-color, #fff) 100%);
+  background: linear-gradient(135deg, var(--askai-grad-sheen) 0%, var(--inverted-text-color, #fff) 100%);
 }
 
 :global(.themeDark) .personalizeToggle,

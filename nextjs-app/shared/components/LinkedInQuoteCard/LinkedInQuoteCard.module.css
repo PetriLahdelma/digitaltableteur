@@ -21,11 +21,12 @@
 }
 
 .wrapper[data-variant="muted"] {
-  background-color: #9ca3af; /* LinkedIn-style muted gray */
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value -- LinkedIn-style muted gray, brand mimicry */
+  background-color: #9ca3af;
 }
 
 .card {
-  padding: var(--space-layout-20, 1.25rem) var(--space-layout-24, 1.5rem);
+  padding: var(--space-layout-24) var(--space-layout-24, 1.5rem);
   inline-size: 100%;
   max-inline-size: 480px;
   border-radius: 0.5rem;
@@ -39,7 +40,7 @@
   display: flex;
   margin-block-end: var(--space-layout-16, 1rem);
   align-items: flex-start;
-  gap: var(--space-layout-12, 0.75rem);
+  gap: var(--space-internal-12);
 }
 
 .avatar {
@@ -147,6 +148,9 @@
  * Use explicit dark surface + LinkedIn-style muted text tokens that hold a
  * >=4.5:1 contrast in every supported theme. */
 
+/* stylelint-disable scale-unlimited/declaration-strict-value --
+   contrast-audited LinkedIn mimicry palette, see comment above */
+
 [data-theme="dark"] .card {
   background: #1f1f1f;
   box-shadow:
@@ -172,6 +176,8 @@
 [data-theme="dark"] .titleCompany {
   color: rgb(255 255 255 / 75%);
 }
+
+/* stylelint-enable scale-unlimited/declaration-strict-value */
 
 /* Wrapper dark variant adjustments */
 

@@ -1,11 +1,11 @@
 .container {
   display: grid;
-  padding-block: var(--space-layout-12, 12px);
-  padding-inline: var(--space-layout-12, 12px);
+  padding-block: var(--space-internal-12);
+  padding-inline: var(--space-internal-12);
   align-items: center;
   gap: var(--space-layout-16, 16px);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-m, 8px);
+  border-radius: var(--radius-lg);
   background: var(--color-light-bg);
 }
 
@@ -24,7 +24,7 @@
   /* `--color-primary-disabled` is intentionally low alpha for backgrounds; for
    * disabled status text we need a solid color that still meets 4.5:1 contrast
    * on the card surface. */
-  color: var(--color-text-muted, #4b5563);
+  color: var(--color-gray);
 }
 
 [data-status="loading"] .status {

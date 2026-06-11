@@ -1,15 +1,38 @@
 /* EmailSignatureGenerator.module.css */
 
-/* Container with warm beige background and fade-up animation */
+/*
+ * Local component tokens. The generator is a deliberately warm-neutral
+ * mini-app distinct from the global palette, so values live here instead of
+ * variables.css. Dark values are redefined once in the themeDark block at the
+ * bottom — never hardcode a color in a rule, add a token.
+ */
 
 .container {
+  --esg-page-bg: #f5f0eb;
+  --esg-ink: #1a1a1a;
+  --esg-ink-soft: #374151;
+  --esg-text-secondary: #4b5563;
+  --esg-text-muted: #6b7280;
+  --esg-text-faint: #9ca3af;
+  --esg-border: #e5e7eb;
+  --esg-border-strong: #d1d5db;
+  --esg-surface: #fff;
+  --esg-surface-dim: #f3f4f6;
+  --esg-surface-hover: #e5e7eb;
+  --esg-toggle-active-bg: #fff;
+  --esg-import-border: #9ca3af;
+  --esg-import-hover-bg: #f9fafb;
+  --esg-button-bg: #1a1a1a;
+  --esg-button-bg-hover: #333;
+  --esg-button-fg: #fff;
+
   display: flex;
   padding-block: var(--space-layout-48);
   padding-inline: var(--space-layout-24);
   min-height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color: #f5f0eb;
+  background-color: var(--esg-page-bg);
   animation: fadeUp 0.6s var(--ease-out-expo) forwards;
 }
 
@@ -40,12 +63,12 @@
 .title {
   margin-block-end: var(--space-internal-8);
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--esg-ink);
 }
 
 .subtitle {
   font-size: 1rem;
-  color: #4b5563;
+  color: var(--esg-text-secondary);
 }
 
 /* Form Grid - 2 columns */
@@ -79,13 +102,13 @@
   padding-inline: var(--space-internal-24);
   padding-inline-end: var(--space-internal-48);
   width: 100%;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--esg-border);
   border-radius: 100px;
-  background-color: #fff;
+  background-color: var(--esg-surface);
   box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
   font-family: var(--font-text);
   font-size: 1rem;
-  color: #1a1a1a;
+  color: var(--esg-ink);
   transition:
     box-shadow var(--duration-fast) ease,
     border-color var(--duration-fast) ease,
@@ -93,16 +116,16 @@
 }
 
 .input::placeholder {
-  color: #9ca3af;
+  color: var(--esg-text-faint);
 }
 
 .input:hover {
-  border-color: #d1d5db;
+  border-color: var(--esg-border-strong);
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
 }
 
 .input:focus {
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid var(--esg-ink);
   outline-offset: 2px;
 }
 
@@ -117,7 +140,7 @@
   border: none;
   border-radius: 50%;
   background: transparent;
-  color: #9ca3af;
+  color: var(--esg-text-faint);
   cursor: pointer;
   transition:
     color var(--duration-fast) ease,
@@ -126,12 +149,12 @@
 }
 
 .clearButton:hover {
-  background-color: #e5e7eb;
-  color: #374151;
+  background-color: var(--esg-surface-hover);
+  color: var(--esg-ink-soft);
 }
 
 .clearButton:focus-visible {
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid var(--esg-ink);
   outline-offset: 2px;
 }
 
@@ -145,13 +168,23 @@
   position: relative;
   padding: var(--space-internal-24);
   border-radius: 16px;
-  background-color: #fff;
+  background-color: var(--esg-surface);
   box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
 }
 
-/* Signature Preview */
+/*
+ * Signature Preview — mimics how email clients render the exported
+ * signature, so its palette is fixed and independent of the site theme.
+ * The .dark variant is the user-selected signature theme, not themeDark.
+ */
 
 .signaturePreview {
+  --esg-preview-name: #1a1a1a;
+  --esg-preview-title: #6b7280;
+  --esg-preview-link: #6b7280;
+  --esg-preview-link-hover: #374151;
+  --esg-preview-bullet: #d1d5db;
+
   padding: var(--space-internal-16);
   border-radius: 12px;
   transition:
@@ -160,7 +193,14 @@
 }
 
 .signaturePreview.dark {
-  background-color: #1f2937;
+  --esg-preview-name: #f9fafb;
+  --esg-preview-title: #9ca3af;
+  --esg-preview-link: #9ca3af;
+  --esg-preview-link-hover: #d1d5db;
+  --esg-preview-bullet: #6b7280;
+  --esg-preview-dark-bg: #1f2937;
+
+  background-color: var(--esg-preview-dark-bg);
 }
 
 .logoLink {
@@ -178,11 +218,7 @@
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
-  color: #1a1a1a;
-}
-
-.signaturePreview.dark .signatureName {
-  color: #f9fafb;
+  color: var(--esg-preview-name);
 }
 
 .signatureTitle {
@@ -190,11 +226,7 @@
   font-family: var(--font-text);
   font-size: 0.875rem;
   line-height: 1.4;
-  color: #6b7280;
-}
-
-.signaturePreview.dark .signatureTitle {
-  color: #9ca3af;
+  color: var(--esg-preview-title);
 }
 
 .signatureContact {
@@ -209,28 +241,16 @@
 
 .contactLink {
   text-decoration: none;
-  color: #6b7280;
+  color: var(--esg-preview-link);
   transition: color var(--duration-fast) ease;
 }
 
 .contactLink:hover {
-  color: #374151;
-}
-
-.signaturePreview.dark .contactLink {
-  color: #9ca3af;
-}
-
-.signaturePreview.dark .contactLink:hover {
-  color: #d1d5db;
+  color: var(--esg-preview-link-hover);
 }
 
 .bullet {
-  color: #d1d5db;
-}
-
-.signaturePreview.dark .bullet {
-  color: #6b7280;
+  color: var(--esg-preview-bullet);
 }
 
 /* Theme Toggle Group - Segmented control */
@@ -241,7 +261,7 @@
   padding: 4px;
   gap: 2px;
   border-radius: 8px;
-  background-color: #f3f4f6;
+  background-color: var(--esg-surface-dim);
   inset-block-start: var(--space-internal-16);
   inset-inline-end: var(--space-internal-16);
 }
@@ -256,7 +276,7 @@
   border: none;
   border-radius: 6px;
   background: transparent;
-  color: #9ca3af;
+  color: var(--esg-text-faint);
   cursor: pointer;
   transition:
     color var(--duration-fast) ease,
@@ -264,17 +284,17 @@
 }
 
 .themeToggleButton:hover {
-  color: #6b7280;
+  color: var(--esg-text-muted);
 }
 
 .themeToggleButton.active {
-  background-color: #fff;
+  background-color: var(--esg-toggle-active-bg);
   box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
-  color: #1a1a1a;
+  color: var(--esg-ink);
 }
 
 .themeToggleButton:focus-visible {
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid var(--esg-ink);
   outline-offset: 2px;
 }
 
@@ -295,27 +315,27 @@
 .copyButton {
   padding-block: var(--space-internal-16) !important;
   border-radius: 100px !important;
-  background-color: #1a1a1a !important;
+  background-color: var(--esg-button-bg) !important;
   font-weight: 500 !important;
-  color: #fff !important;
+  color: var(--esg-button-fg) !important;
 }
 
 .copyButton:hover {
-  background-color: #333 !important;
+  background-color: var(--esg-button-bg-hover) !important;
 }
 
 .importButton {
   padding-block: var(--space-internal-16) !important;
-  border: 1px solid #9ca3af !important;
+  border: 1px solid var(--esg-import-border) !important;
   border-radius: 100px !important;
   background-color: transparent !important;
   font-weight: 500 !important;
-  color: #1a1a1a !important;
+  color: var(--esg-ink) !important;
 }
 
 .importButton:hover {
-  border-color: #9ca3af !important;
-  background-color: #f9fafb !important;
+  border-color: var(--esg-import-border) !important;
+  background-color: var(--esg-import-hover-bg) !important;
 }
 
 /* Back to site link */
@@ -333,31 +353,27 @@
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
-  color: #4b5563;
+  color: var(--esg-text-secondary);
   transition: color var(--duration-fast) ease;
 }
 
 .backLinkAnchor:hover {
-  color: #1a1a1a;
+  color: var(--esg-ink);
 }
 
 .backLinkAnchor:focus-visible {
   border-radius: 4px;
-  outline: 2px solid #1a1a1a;
+  outline: 2px solid var(--esg-ink);
   outline-offset: 2px;
-}
-
-:global(.themeDark) .backLinkAnchor {
-  color: #9ca3af;
-}
-
-:global(.themeDark) .backLinkAnchor:hover {
-  color: #f9fafb;
 }
 
 /* Modal Content */
 
 .modalContent {
+  /* Modal portals to document.body, outside .container — tokens used in the
+     modal subtree must be (re)defined here. */
+  --esg-ink-soft: #374151;
+
   display: flex;
   flex-direction: column;
   gap: var(--space-layout-32);
@@ -375,7 +391,7 @@
   font-family: var(--font-text);
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: #374151;
+  color: var(--esg-ink-soft);
 }
 
 .instructionList li {
@@ -392,7 +408,7 @@
   font-family: var(--font-text);
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: #374151;
+  color: var(--esg-ink-soft);
   list-style-type: disc;
 }
 
@@ -432,48 +448,27 @@
   }
 }
 
-/* Dark theme container override */
+/*
+ * Dark theme — token redefinition only. Fixes two pre-existing dark-mode
+ * bugs: subtitle and focus outlines previously kept their light values.
+ */
+
+/* Specificity bump: the Title component's own color rule outranks a single
+   class, so the heading needs a theme-scoped override like the original had. */
+:global(.themeDark) .title {
+  color: var(--esg-ink);
+}
 
 :global(.themeDark) .container {
-  background-color: #1a1a1a;
-}
-
-:global(.themeDark) .title {
-  color: #f9fafb;
-}
-
-:global(.themeDark) .input {
-  border-color: #4b5563;
-  background-color: #2d2d2d;
-  color: #f9fafb;
-}
-
-:global(.themeDark) .input:hover {
-  border-color: #6b7280;
-}
-
-:global(.themeDark) .input::placeholder {
-  color: #6b7280;
-}
-
-:global(.themeDark) .previewCard {
-  background-color: #2d2d2d;
-}
-
-:global(.themeDark) .themeToggleGroup {
-  background-color: #374151;
-}
-
-:global(.themeDark) .themeToggleButton.active {
-  background-color: #4b5563;
-  color: #f9fafb;
-}
-
-:global(.themeDark) .importButton {
-  border-color: #4b5563 !important;
-  color: #f9fafb !important;
-}
-
-:global(.themeDark) .importButton:hover {
-  background-color: #2d2d2d !important;
+  --esg-page-bg: #1a1a1a;
+  --esg-ink: #f9fafb;
+  --esg-text-secondary: #9ca3af;
+  --esg-border: #4b5563;
+  --esg-border-strong: #6b7280;
+  --esg-text-faint: #6b7280;
+  --esg-surface: #2d2d2d;
+  --esg-surface-dim: #374151;
+  --esg-toggle-active-bg: #4b5563;
+  --esg-import-border: #4b5563;
+  --esg-import-hover-bg: #2d2d2d;
 }
