@@ -2,6 +2,8 @@
 
 Client-facing checklist for assessing how **agent-ready** a design system is. All steps run **locally** — no dependency on GitHub Actions quota.
 
+For scored maturity levels and pass thresholds, see **[AI_READY_DS_BENCHMARK.md](./AI_READY_DS_BENCHMARK.md)**.
+
 ---
 
 ## When to use
