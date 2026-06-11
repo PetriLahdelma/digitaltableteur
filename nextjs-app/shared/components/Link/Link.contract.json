@@ -131,15 +131,8 @@
             ]
         }
     },
-    "composesWith": [
-        "Button",
-        "Text",
-        "Badge",
-        "Title",
-        "Grid",
-        "ArticleCard"
-    ],
     "forbiddenUse": [
+        "rely on the component's URL sanitisation. Don't pre-sanitise — the",
         "use Link for actions. Buttons are for actions; anchors are for",
         "override the underline via inline styles. The token-driven"
     ],

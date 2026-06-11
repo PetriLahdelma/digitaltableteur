@@ -28,5 +28,62 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "src": {
+            "optional": false,
+            "type": "string"
+        },
+        "alt": {
+            "optional": false,
+            "type": "string"
+        },
+        "fill": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "width": {
+            "optional": true,
+            "type": "number"
+        },
+        "height": {
+            "optional": true,
+            "type": "number"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "priority": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "sizes": {
+            "optional": true,
+            "type": "string"
+        },
+        "onLoad": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "onError": {
+            "optional": true,
+            "type": "() => void"
+        },
+        "fit": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "cover",
+                "contain"
+            ]
+        },
+        "fluid": {
+            "optional": true,
+            "type": "boolean"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

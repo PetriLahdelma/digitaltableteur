@@ -332,14 +332,6 @@
             "type": "boolean"
         }
     },
-    "composesWith": [
-        "Title",
-        "Text",
-        "Icon",
-        "Inputs",
-        "Modal",
-        "CheckboxGroup"
-    ],
     "forbiddenUse": [
         "tertiary on dark or inverse backgrounds without explicit contrast verification",
         "isInverse on primary over transparent or gradient parents — use surface instead",

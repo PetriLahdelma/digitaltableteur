@@ -130,15 +130,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Title",
-        "Text",
-        "ProjectDetailLayout",
-        "ProjectHero",
-        "RelatedProjects",
-        "ProcessBlock",
-        "GridBlock"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

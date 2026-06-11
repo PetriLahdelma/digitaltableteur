@@ -150,14 +150,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Link",
-        "ArticleCard",
-        "Avatar",
-        "Checkbox",
-        "CheckboxGroup",
-        "FlexBox"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

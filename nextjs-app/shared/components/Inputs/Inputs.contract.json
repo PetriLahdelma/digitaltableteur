@@ -128,14 +128,6 @@
             "type": "(value: string | number) => void"
         }
     },
-    "composesWith": [
-        "Button",
-        "Text",
-        "Modal",
-        "CheckboxGroup",
-        "Checkbox",
-        "Select"
-    ],
     "forbiddenUse": [
         "ship a form that relies on the email validator as the only",
         "pass a `value` plus a `defaultValue`. The component treats",

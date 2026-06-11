@@ -68,10 +68,6 @@
             "type": "boolean"
         }
     },
-    "composesWith": [
-        "Section",
-        "Container"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

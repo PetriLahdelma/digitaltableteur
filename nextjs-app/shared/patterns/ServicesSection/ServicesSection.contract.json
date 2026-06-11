@@ -69,8 +69,8 @@
             "type": "union",
             "values": [
                 "default",
-                "elevated",
                 "minimal",
+                "elevated",
                 "bordered"
             ]
         },
@@ -87,14 +87,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "HomeHero",
-        "WorkMagneticField",
-        "CTASection",
-        "NewsBulletin",
-        "DesignSprintsSection",
-        "HighlightSection"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

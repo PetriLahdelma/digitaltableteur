@@ -28,5 +28,44 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "subtitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "values": {
+            "optional": false,
+            "type": "ValueItem[]"
+        },
+        "cardVariant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "elevated",
+                "bordered"
+            ]
+        },
+        "background": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "muted",
+                "accent"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

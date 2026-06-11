@@ -83,8 +83,8 @@
             "type": "union",
             "values": [
                 "default",
-                "elevated",
                 "minimal",
+                "elevated",
                 "bordered"
             ]
         },

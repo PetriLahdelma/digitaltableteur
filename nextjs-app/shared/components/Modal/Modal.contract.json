@@ -184,15 +184,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Button",
-        "Title",
-        "Text",
-        "Inputs",
-        "Select",
-        "FileUpload",
-        "PhoneInput"
-    ],
     "forbiddenUse": [
         "Nested modals — swap content in place inside one overlay",
         "Lazy-mounting Modal only when isOpen — mount always and toggle isOpen for focus restore",

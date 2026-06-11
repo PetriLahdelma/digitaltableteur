@@ -28,5 +28,44 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "images": {
+            "optional": false,
+            "type": "GalleryImage[]"
+        },
+        "columns": {
+            "optional": true,
+            "type": "2 | 3 | 4"
+        },
+        "gap": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "aspectRatio": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "mixed",
+                "video",
+                "square"
+            ]
+        },
+        "enableLightbox": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

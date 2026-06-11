@@ -184,9 +184,9 @@
             "optional": true,
             "type": "union",
             "values": [
-                "both",
                 "horizontal",
-                "vertical"
+                "vertical",
+                "both"
             ]
         },
         "spin": {
@@ -210,14 +210,6 @@
             "type": "boolean"
         }
     },
-    "composesWith": [
-        "Button",
-        "Title",
-        "ComplianceCard",
-        "CodeSnippet",
-        "Text",
-        "HelperText"
-    ],
     "forbiddenUse": [
         "pass both `ariaLabel` and `decorative`. The component prefers",
         "import a Phosphor component directly from `@phosphor-icons/react`"

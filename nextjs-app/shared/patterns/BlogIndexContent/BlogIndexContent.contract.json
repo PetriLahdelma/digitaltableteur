@@ -28,5 +28,59 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "postsPerPage": {
+            "optional": true,
+            "type": "number"
+        },
+        "showHero": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "heroVariant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "full",
+                "compact"
+            ]
+        },
+        "showFilter": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "filterVariant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "pills",
+                "underline",
+                "minimal"
+            ]
+        },
+        "showPagination": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "gridLayout": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "standard",
+                "featured-first"
+            ]
+        },
+        "hideImages": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

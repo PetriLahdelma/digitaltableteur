@@ -68,14 +68,6 @@
             "type": "React.ReactNode"
         }
     },
-    "composesWith": [
-        "Inputs",
-        "Button",
-        "Modal",
-        "Text",
-        "CheckboxGroup",
-        "Toast"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

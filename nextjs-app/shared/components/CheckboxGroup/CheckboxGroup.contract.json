@@ -88,14 +88,6 @@
             "type": "(selectedOptions: string[]) => void"
         }
     },
-    "composesWith": [
-        "Inputs",
-        "Button",
-        "Text",
-        "Grid",
-        "ArticleCard",
-        "Avatar"
-    ],
     "forbiddenUse": [
         "render a CheckboxGroup with one option. It's an awkward",
         "nest a CheckboxGroup inside another CheckboxGroup. AT",

@@ -83,11 +83,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Label",
-        "Inputs",
-        "HelperText"
-    ],
     "forbiddenUse": [
         "Render a bare `<label>` + `<input>` next to a `FormField` in the same form — the visual rhythm desyncs.",
         "Put two controls inside one `FormField` — wrap each in its own."

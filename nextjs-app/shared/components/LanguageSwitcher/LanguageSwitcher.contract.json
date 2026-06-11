@@ -83,11 +83,5 @@
             "optional": true,
             "type": "string"
         }
-    },
-    "composesWith": [
-        "ThemeProvider",
-        "NavLink",
-        "Container",
-        "IconButton"
-    ]
+    }
 }

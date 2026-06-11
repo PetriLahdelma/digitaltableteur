@@ -28,5 +28,38 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "post": {
+            "optional": false,
+            "type": "BlogPostEntry"
+        },
+        "nav": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "shareBaseUrl": {
+            "optional": true,
+            "type": "string"
+        },
+        "showTOC": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "showRelated": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "showReadingProgress": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

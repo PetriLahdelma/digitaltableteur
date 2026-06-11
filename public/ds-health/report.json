@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-04T14:07:07.365Z",
+  "generatedAt": "2026-06-11T11:38:56.769Z",
   "checks": [
     {
       "name": "lint:dt-usage",
       "ok": true,
       "status": 0,
-      "stdout": "> nextjs-app@2.0.0 lint:dt-usage\n> node scripts/design-system/lint-dt-usage.mjs --strict --strict\n\n✓ lint:dt-usage — no violations in app/",
+      "stdout": "> nextjs-app@2.0.0 lint:dt-usage\n> node scripts/design-system/lint-dt-usage.mjs --strict --strict\n\n✓ lint:dt-usage — no violations in app, nextjs-app/shared/patterns, nextjs-app/shared/components/pages, nextjs-app/shared/components",
       "stderr": ""
     },
     {
@@ -19,46 +19,6 @@
   "shadcnByArea": {
     "app": [],
     "nextjs-app/shared/components": [
-      {
-        "file": "nextjs-app/shared/components/AnimatedDialog/AnimatedDialog.tsx",
-        "line": 14
-      },
-      {
-        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
-        "line": 7
-      },
-      {
-        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
-        "line": 8
-      },
-      {
-        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
-        "line": 9
-      },
-      {
-        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
-        "line": 10
-      },
-      {
-        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
-        "line": 11
-      },
-      {
-        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
-        "line": 18
-      },
-      {
-        "file": "nextjs-app/shared/components/EnhancedContactForm/EnhancedContactForm.tsx",
-        "line": 26
-      },
-      {
-        "file": "nextjs-app/shared/components/Lightbox/Lightbox.tsx",
-        "line": 9
-      },
-      {
-        "file": "nextjs-app/shared/components/SkillsGrid/SkillsGrid.tsx",
-        "line": 10
-      },
       {
         "file": "nextjs-app/shared/components/TailwindTest/TailwindTest.tsx",
         "line": 4
@@ -90,7 +50,7 @@
     ],
     "nextjs-app/shared/patterns": []
   },
-  "shadcnTotal": 17,
+  "shadcnTotal": 7,
   "migrationBoards": {
     "buttonSurfaces": "approved",
     "buttonContexts": "migrated",
@@ -100,7 +60,7 @@
   },
   "migrationMatrix": {
     "present": true,
-    "generatedAt": "2026-06-04T12:56:27.686Z",
+    "generatedAt": "2026-06-05T13:10:40.288Z",
     "passed": 96,
     "total": 96,
     "failed": 0,
