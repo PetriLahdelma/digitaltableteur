@@ -52,14 +52,8 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "Button",
-        "Icon",
-        "Text",
-        "Title"
-    ],
     "forbiddenUse": [
-        "Inline pricing card without full page context.",
-        "Hardcode package copy outside i18n keys."
+        "embed single package card without page context",
+        "promote to stable without visual baseline on stable fleet"
     ]
 }

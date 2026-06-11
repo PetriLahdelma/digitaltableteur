@@ -60,11 +60,6 @@
             "type": "(code: string) => void"
         }
     },
-    "composesWith": [
-        "Button",
-        "ChatWidget",
-        "Footer"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]

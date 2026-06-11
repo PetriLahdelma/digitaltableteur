@@ -126,13 +126,6 @@
             ]
         }
     },
-    "composesWith": [
-        "Title",
-        "Text",
-        "Link",
-        "Button",
-        "Badge"
-    ],
     "forbiddenUse": [
         "nest tablists inside another tablist. APG explicitly disallows",
         "use Tabs for non-mutually-exclusive content. Two panels open",

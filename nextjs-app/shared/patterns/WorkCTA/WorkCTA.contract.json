@@ -28,5 +28,22 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "description": {
+            "optional": true,
+            "type": "string"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

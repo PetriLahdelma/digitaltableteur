@@ -28,5 +28,39 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "subtitle": {
+            "optional": true,
+            "type": "string"
+        },
+        "background": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "image",
+                "minimal",
+                "gradient"
+            ]
+        },
+        "backgroundImage": {
+            "optional": true,
+            "type": "string"
+        },
+        "showScrollIndicator": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

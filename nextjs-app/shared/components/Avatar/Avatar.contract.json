@@ -136,14 +136,6 @@
             "type": "number"
         }
     },
-    "composesWith": [
-        "Text",
-        "Title",
-        "Grid",
-        "ArticleCard",
-        "Checkbox",
-        "CheckboxGroup"
-    ],
     "forbiddenUse": [
         "render two interactive children inside Avatar (link plus menu);",
         "nest an Avatar inside a Button. Pick one — Avatar already owns"

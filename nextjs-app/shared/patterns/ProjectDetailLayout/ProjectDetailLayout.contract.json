@@ -28,5 +28,42 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "nav": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "hero": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "children": {
+            "optional": false,
+            "type": "ReactNode"
+        },
+        "cta": {
+            "optional": true,
+            "type": "ReactNode | null"
+        },
+        "relatedProjects": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "showScrollProgress": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        },
+        "donnyTarget": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

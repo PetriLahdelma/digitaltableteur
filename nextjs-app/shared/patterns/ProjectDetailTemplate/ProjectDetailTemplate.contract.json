@@ -28,5 +28,42 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "project": {
+            "optional": false,
+            "type": "Project"
+        },
+        "hero": {
+            "optional": false,
+            "type": "{\n    image: ProjectHeroImage;\n    variant?: \"full-width\" | \"contained\" | \"split\";\n  }"
+        },
+        "meta": {
+            "optional": false,
+            "type": "{\n    services: string[];\n    duration?: string;\n    tools?: ToolItem[];\n    team?: TeamMember[];\n    client?: ClientInf"
+        },
+        "sections": {
+            "optional": false,
+            "type": "ContentSectionProps[]"
+        },
+        "gallery": {
+            "optional": true,
+            "type": "GalleryImage[]"
+        },
+        "relatedEnabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "nav": {
+            "optional": true,
+            "type": "ReactNode"
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

@@ -28,5 +28,32 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "title": {
+            "optional": true,
+            "type": "string"
+        },
+        "stats": {
+            "optional": false,
+            "type": "StatItem[]"
+        },
+        "background": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "muted",
+                "primary",
+                "accent"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

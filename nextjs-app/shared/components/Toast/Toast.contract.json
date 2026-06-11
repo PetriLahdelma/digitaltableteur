@@ -140,14 +140,6 @@
             "type": "() => void"
         }
     },
-    "composesWith": [
-        "Button",
-        "Text",
-        "Modal",
-        "Inputs",
-        "CheckboxGroup",
-        "Select"
-    ],
     "forbiddenUse": [
         "stack toasts. The provider queues them — calling `showToast`",
         "rely on Toast for compliance acknowledgements (cookie consent,",

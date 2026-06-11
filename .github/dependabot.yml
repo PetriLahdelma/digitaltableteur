@@ -19,25 +19,24 @@ updates:
     commit-message:
       prefix: "chore(deps)"
       include: "scope"
-    # Group non-security updates to reduce PR noise
+    # Group ALL minor+patch updates into two PRs; majors stay individual.
+    # Previous pattern-based groups were too narrow and produced ~15
+    # single-bump PRs per week.
     groups:
       development-dependencies:
-        patterns:
-          - "@types/*"
-          - "eslint*"
-          - "prettier"
-          - "@testing-library/*"
-          - "vitest*"
+        dependency-type: "development"
         update-types:
           - "minor"
           - "patch"
       production-dependencies:
-        patterns:
-          - "react*"
-          - "next*"
-          - "@vercel/*"
+        dependency-type: "production"
         update-types:
+          - "minor"
           - "patch"
+    ignore:
+      # Pinned at 5.5.0 — 5.6 drops Adobe SI icons used on work pages
+      # (see CLAUDE.md gotchas). Bump only with a verified icon audit.
+      - dependency-name: "react-icons"
     # Security updates always get individual PRs
     versioning-strategy: "increase"
 
@@ -94,6 +93,13 @@ updates:
     commit-message:
       prefix: "chore(deps)"
       include: "scope"
+    groups:
+      blog-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
@@ -109,3 +115,10 @@ updates:
       - "github-actions"
     commit-message:
       prefix: "chore(ci)"
+    groups:
+      ci-actions:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"

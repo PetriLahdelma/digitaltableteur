@@ -28,5 +28,52 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "props": {
+        "title": {
+            "optional": false,
+            "type": "string"
+        },
+        "slug": {
+            "optional": false,
+            "type": "string"
+        },
+        "thumbnail": {
+            "optional": false,
+            "type": "string"
+        },
+        "category": {
+            "optional": true,
+            "type": "string"
+        },
+        "tags": {
+            "optional": true,
+            "type": "string[]"
+        },
+        "aspectRatio": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "video",
+                "square",
+                "portrait",
+                "landscape"
+            ]
+        },
+        "titlePosition": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "overlay",
+                "below"
+            ]
+        },
+        "className": {
+            "optional": true,
+            "type": "string"
+        }
+    },
+    "forbiddenUse": [
+        "invent parallel primitives inside this folder",
+        "promote to stable without production consumer evidence"
+    ]
 }

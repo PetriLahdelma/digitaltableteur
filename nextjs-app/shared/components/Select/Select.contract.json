@@ -107,14 +107,6 @@
             "type": "(value: string) => void"
         }
     },
-    "composesWith": [
-        "Inputs",
-        "Button",
-        "Modal",
-        "FileUpload",
-        "PhoneInput",
-        "CheckboxGroup"
-    ],
     "forbiddenUse": [
         "ship a Select with `value` and `defaultValue` both set —",
         "use Select for a freeform value with suggestions. Use an",

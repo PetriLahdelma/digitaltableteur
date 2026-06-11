@@ -122,14 +122,6 @@
             "type": "string"
         }
     },
-    "composesWith": [
-        "HomeHero",
-        "ServicesSection",
-        "WorkMagneticField",
-        "CTASection",
-        "NewsBulletin",
-        "DesignSprintsSection"
-    ],
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
     ]
