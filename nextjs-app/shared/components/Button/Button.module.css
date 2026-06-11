@@ -52,6 +52,19 @@
   outline-color: var(--color-white);
 }
 
+/* Surface-aware focus rings. On dark/brand bands the default ring color
+   (--color-primary) can match the band itself (e.g. the navy CTA band in
+   light theme), making focus invisible. Use the surface's contrast pole. */
+
+.button.onDark:focus-visible {
+  outline-color: var(--color-white);
+}
+
+.button.onBrand:focus-visible {
+  /* Brand band is --logo-background; --logo-color is its paired contrast. */
+  outline-color: var(--logo-color);
+}
+
 /* Windows High Contrast Mode support */
 @media (forced-colors: active) {
   .button:focus-visible {
