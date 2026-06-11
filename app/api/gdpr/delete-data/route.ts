@@ -57,26 +57,24 @@ function isGdprRateLimited(email: string): boolean {
   return false;
 }
 
-// Rate limiting for GET endpoint to prevent email enumeration
-// Keyed by IP (not email) since the attacker controls the email parameter
-const GDPR_GET_RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
-const GDPR_GET_RATE_LIMIT_MAX = 10; // lookups per window per IP
-const gdprGetBuckets = new Map<
-  string,
-  { count: number; windowStart: number }
->();
+// Per-IP rate limiting for both methods. The per-email POST limit alone
+// does not stop enumeration: an attacker rotating email addresses gets a
+// fresh bucket every request, so the IP itself must also be limited.
+const GDPR_IP_RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
+const GDPR_IP_RATE_LIMIT_MAX = 10; // requests per window per IP
+const gdprIpBuckets = new Map<string, { count: number; windowStart: number }>();
 
-function isGdprGetRateLimited(ip: string): boolean {
-  pruneExpiredBuckets(gdprGetBuckets, GDPR_GET_RATE_LIMIT_WINDOW_MS);
+function isGdprIpRateLimited(ip: string): boolean {
+  pruneExpiredBuckets(gdprIpBuckets, GDPR_IP_RATE_LIMIT_WINDOW_MS);
   const now = Date.now();
-  const bucket = gdprGetBuckets.get(ip);
+  const bucket = gdprIpBuckets.get(ip);
 
-  if (!bucket || now - bucket.windowStart > GDPR_GET_RATE_LIMIT_WINDOW_MS) {
-    gdprGetBuckets.set(ip, { count: 1, windowStart: now });
+  if (!bucket || now - bucket.windowStart > GDPR_IP_RATE_LIMIT_WINDOW_MS) {
+    gdprIpBuckets.set(ip, { count: 1, windowStart: now });
     return false;
   }
 
-  if (bucket.count >= GDPR_GET_RATE_LIMIT_MAX) {
+  if (bucket.count >= GDPR_IP_RATE_LIMIT_MAX) {
     return true;
   }
 
@@ -114,8 +112,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Rate limiting to prevent enumeration attacks
-    if (isGdprRateLimited(email)) {
+    // Rate limiting to prevent abuse: per IP (enumeration across many
+    // emails) and per email (hammering a single address)
+    if (isGdprIpRateLimited(ip) || isGdprRateLimited(email)) {
       SecurityLogger.logDataDeletion(
         ip,
         userAgent,
@@ -125,8 +124,7 @@ export async function POST(request: NextRequest) {
       );
       return NextResponse.json(
         {
-          error:
-            "Too many deletion requests for this email. Please try again in 1 hour.",
+          error: "Too many deletion requests. Please try again later.",
         },
         { status: 429, headers: { "Retry-After": "3600" } },
       );
@@ -136,30 +134,13 @@ export async function POST(request: NextRequest) {
       const db = await getDatabase();
       const contacts = db.collection("contacts");
 
-      // Check if data exists
-      const existingData = await contacts.findOne({ email });
-
-      if (!existingData) {
-        SecurityLogger.logDataDeletion(
-          ip,
-          userAgent,
-          email,
-          false,
-          "No data found for email",
-        );
-        return NextResponse.json(
-          {
-            message: "No data found for this email address",
-            deleted: false,
-          },
-          { status: 404 },
-        );
-      }
-
-      // Delete all data associated with this email
+      // Delete any data associated with this email. No existence check
+      // first: the response must be identical whether or not records
+      // existed, so the endpoint cannot be used to probe which email
+      // addresses are stored. The actual count goes to the audit trail only.
       const deletionResult = await contacts.deleteMany({ email });
 
-      // Log the deletion for audit trail (before actual deletion)
+      // Log the request for the audit trail
       await db.collection("deletion_requests").insertOne({
         email,
         reason: reason || "User request",
@@ -174,9 +155,9 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json(
         {
-          message: "Your data has been successfully deleted",
+          message:
+            "If data was associated with this email address, it has been deleted.",
           deleted: true,
-          recordsDeleted: deletionResult.deletedCount,
         },
         { status: 200 },
       );
@@ -212,14 +193,18 @@ export async function POST(request: NextRequest) {
 
 /**
  * GET /api/gdpr/delete-data
- * Check if data exists for an email (without deleting)
+ *
+ * Previously returned { exists: boolean } for an email, which let anyone
+ * enumerate which addresses are stored in the database. No code in this
+ * repo consumed that response, so the existence check has been removed.
+ * The route now returns a static instruction and never touches the
+ * database.
  */
 export async function GET(request: NextRequest) {
   const ip = getClientIp(request);
   const userAgent = getUserAgent(request);
 
-  // Rate limit to prevent email enumeration
-  if (isGdprGetRateLimited(ip)) {
+  if (isGdprIpRateLimited(ip)) {
     SecurityLogger.logRateLimitExceeded(
       ip,
       userAgent,
@@ -231,55 +216,10 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  try {
-    const { searchParams } = new URL(request.url);
-    const rawEmail = searchParams.get("email");
-    const email = rawEmail ? sanitize(rawEmail) : null;
-
-    if (!email) {
-      return NextResponse.json(
-        { error: "Email parameter required" },
-        { status: 400 },
-      );
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-    }
-
-    try {
-      const db = await getDatabase();
-      const contacts = db.collection("contacts");
-
-      const count = await contacts.countDocuments({ email });
-
-      SecurityLogger.logDataAccess(
-        ip,
-        userAgent,
-        "/api/gdpr/delete-data",
-        "GET",
-        true,
-        { exists: count > 0 },
-      );
-
-      return NextResponse.json({
-        exists: count > 0,
-      });
-    } catch (err) {
-      console.error("MongoDB query error:", err);
-      return NextResponse.json(
-        { error: "Failed to check data" },
-        { status: 500 },
-      );
-    }
-  } catch (error) {
-    console.error("GDPR data check error:", error);
-    return NextResponse.json(
-      { error: "Failed to check data" },
-      { status: 500 },
-    );
-  }
+  return NextResponse.json({
+    message:
+      "To request deletion of your personal data, send a POST request with your email address. The request is processed the same way whether or not data exists.",
+  });
 }
 
 export async function OPTIONS(request: Request) {
