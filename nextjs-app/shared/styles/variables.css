@@ -96,6 +96,12 @@
   --logo-background: #dfff00;
   --logo-color: #000; /* Black logo on light themes */
 
+  /* Focus ring. Several module stylesheets and the agent docs reference
+     --color-focus-ring; it was never defined, which made those outline
+     declarations invalid (invisible focus). Tracks --color-primary so it
+     follows every theme, matching the global :focus-visible rule. */
+  --color-focus-ring: var(--color-primary);
+
   /* Greyscale palette */
   --color-black: #000;
   --color-white: #fff;
