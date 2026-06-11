@@ -54,5 +54,12 @@
         "pass props. The component intentionally accepts none. If",
         "swallow the `/api/contact` endpoint. The submit handler",
         "remove the honeypot. It catches a meaningful share of bot"
+    ],
+    "composesWith": [
+        "FormField",
+        "Inputs",
+        "Button",
+        "Text",
+        "CheckboxGroup"
     ]
 }

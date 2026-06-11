@@ -133,5 +133,13 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
+    ],
+    "composesWith": [
+        "Badge",
+        "Title",
+        "Grid",
+        "ArticleCard",
+        "Avatar",
+        "Checkbox"
     ]
 }

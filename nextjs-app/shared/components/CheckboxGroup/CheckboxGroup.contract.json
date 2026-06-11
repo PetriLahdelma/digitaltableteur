@@ -92,5 +92,13 @@
         "render a CheckboxGroup with one option. It's an awkward",
         "nest a CheckboxGroup inside another CheckboxGroup. AT",
         "rely on the master label translation key without testing the"
+    ],
+    "composesWith": [
+        "Inputs",
+        "Button",
+        "Text",
+        "Grid",
+        "ArticleCard",
+        "Avatar"
     ]
 }

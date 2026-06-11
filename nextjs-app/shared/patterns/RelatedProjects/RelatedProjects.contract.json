@@ -49,5 +49,13 @@
     "forbiddenUse": [
         "invent parallel primitives inside this folder",
         "promote to stable without production consumer evidence"
+    ],
+    "composesWith": [
+        "Text",
+        "StoryBlock",
+        "ProjectDetailLayout",
+        "ProjectHero",
+        "GridBlock",
+        "ProcessBlock"
     ]
 }

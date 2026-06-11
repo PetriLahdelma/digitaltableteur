@@ -82,5 +82,13 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
+    ],
+    "composesWith": [
+        "AuthorBio",
+        "DashLeadList",
+        "ArticleContent",
+        "TableOfContents",
+        "EnhancedAuthorCard",
+        "ArticleShareSection"
     ]
 }

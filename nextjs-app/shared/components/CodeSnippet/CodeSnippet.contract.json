@@ -113,5 +113,12 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
+    ],
+    "composesWith": [
+        "Icon",
+        "ComplianceCard",
+        "Button",
+        "Text",
+        "Card"
     ]
 }

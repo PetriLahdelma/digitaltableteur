@@ -116,5 +116,13 @@
     "forbiddenUse": [
         "use `checked` directly. The prefixed `isChecked` name is the",
         "rely on the native `indeterminate` HTML attribute — there is"
+    ],
+    "composesWith": [
+        "Inputs",
+        "Button",
+        "Label",
+        "Text",
+        "Grid",
+        "ArticleCard"
     ]
 }

@@ -199,5 +199,13 @@
     ],
     "prefersOver": [
         "raw heading elements"
+    ],
+    "composesWith": [
+        "Text",
+        "ProjectDetailLayout",
+        "StoryBlock",
+        "ProjectHero",
+        "RelatedProjects",
+        "ProcessBlock"
     ]
 }

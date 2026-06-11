@@ -70,5 +70,13 @@
     },
     "forbiddenUse": [
         "Bypass design tokens or skip forced-colors verification at beta."
+    ],
+    "composesWith": [
+        "Inputs",
+        "Button",
+        "Modal",
+        "Text",
+        "CheckboxGroup",
+        "Toast"
     ]
 }

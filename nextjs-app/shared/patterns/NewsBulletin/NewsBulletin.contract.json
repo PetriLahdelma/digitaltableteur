@@ -58,5 +58,13 @@
     "forbiddenUse": [
         "use for full blog indexes or article lists",
         "replace with generic Card stacks without region semantics"
+    ],
+    "composesWith": [
+        "HomeHero",
+        "ServicesSection",
+        "WorkMagneticField",
+        "CTASection",
+        "DesignSprintsSection",
+        "HighlightSection"
     ]
 }

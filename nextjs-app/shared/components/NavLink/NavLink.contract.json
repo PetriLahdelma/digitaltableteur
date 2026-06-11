@@ -75,5 +75,12 @@
     "forbiddenUse": [
         "Use inside body prose — that is `TextLink`.",
         "Use as a button — primary actions belong on `Button`."
+    ],
+    "composesWith": [
+        "ThemeProvider",
+        "IconButton",
+        "Container",
+        "LanguageSwitcher",
+        "SkipLink"
     ]
 }
