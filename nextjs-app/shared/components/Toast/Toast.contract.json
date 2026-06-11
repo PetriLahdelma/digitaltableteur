@@ -147,5 +147,13 @@
     ],
     "prefersOver": [
         "AlertBanner for page-level persistent status"
+    ],
+    "composesWith": [
+        "Button",
+        "Text",
+        "Modal",
+        "Inputs",
+        "CheckboxGroup",
+        "Select"
     ]
 }

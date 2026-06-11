@@ -342,5 +342,13 @@
     "prefersOver": [
         "raw button",
         "Link for in-copy navigation"
+    ],
+    "composesWith": [
+        "Title",
+        "Text",
+        "Icon",
+        "Inputs",
+        "Modal",
+        "CheckboxGroup"
     ]
 }

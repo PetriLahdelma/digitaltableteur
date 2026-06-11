@@ -14,9 +14,9 @@
 |-------|--------|--------|
 | **13** | Green `npm test` + CI full gate | **Done** (#698) |
 | **14** | Alpha → beta promotions (patterns with stories) | **Done** (#698) |
-| **15** | Figma capture loop (9 routes, surgical binding) | **In progress** (1728px Playwright; `/work` needs re-capture) |
+| **15** | Figma capture loop (9 routes, surgical binding) | **Partial** (6/9 confirmed @ 1728px) |
 | **16** | Production consumer auto-sync + stable fleet growth | **Started** (transitive scan + release gate) |
-| **17** | AI-Ready DS Benchmark (public doc + consulting SKU) | **Started** |
+| **17** | AI-Ready DS Benchmark (public doc + consulting SKU) | **In progress** |
 | **18** | npm export spike (`@digitaltableteur/ds`) | Pending |
 
 ---
@@ -41,8 +41,9 @@ Promote alpha assemblies that already have Storybook coverage:
 Per `docs/FIGMA_DESIGN_SYSTEM_SYNC.md`:
 
 - html-to-design captures only (no bulk DS rebuild)
-- Remaining routes: work, about, pricing, blog, sitemap, dsharp
-- Surgical variable + text-style binding
+- **Confirmed @ 1728px (6/9):** home, work, about, contact, sitemap, dsharp — see `dsb-state.json` `htmlCaptureQueue.confirmed`
+- **Deferred:** pricing, blog, blog-article (legacy VIews frames)
+- Next: surgical variable + text-style binding on confirmed frames
 
 ## Phase 16 — Stable fleet + consumers
 

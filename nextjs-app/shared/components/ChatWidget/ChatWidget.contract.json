@@ -70,5 +70,13 @@
         "gate the widget behind user authentication. The widget is",
         "store chat history in cookies. The current storage is",
         "tamper with the email-workflow reducer state from outside."
+    ],
+    "composesWith": [
+        "Button",
+        "Text",
+        "Inputs",
+        "DonnyAvatar",
+        "Header",
+        "Footer"
     ]
 }

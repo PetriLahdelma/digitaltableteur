@@ -75,5 +75,11 @@
     ],
     "prefersOver": [
         "AlertBanner for field-level hints"
+    ],
+    "composesWith": [
+        "Label",
+        "Icon",
+        "Button",
+        "Inputs"
     ]
 }

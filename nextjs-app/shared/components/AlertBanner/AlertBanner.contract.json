@@ -106,5 +106,9 @@
     ],
     "prefersOver": [
         "Toast for non-persistent status"
+    ],
+    "composesWith": [
+        "Button",
+        "Icon"
     ]
 }

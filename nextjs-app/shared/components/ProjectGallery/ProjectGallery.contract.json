@@ -67,5 +67,10 @@
     "forbiddenUse": [
         "invent parallel primitives inside this folder",
         "promote to stable without production consumer evidence"
+    ],
+    "composesWith": [
+        "ProjectNav",
+        "Container",
+        "Section"
     ]
 }

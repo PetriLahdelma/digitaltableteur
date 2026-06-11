@@ -191,5 +191,14 @@
         "nest a Modal inside another Modal. AT focus order becomes",
         "render a Modal lazily (e.g. only mount it when `isOpen`).",
         "add `aria-live` to the dialog root. The role implies"
+    ],
+    "composesWith": [
+        "Button",
+        "Title",
+        "Text",
+        "Inputs",
+        "Select",
+        "FileUpload",
+        "PhoneInput"
     ]
 }

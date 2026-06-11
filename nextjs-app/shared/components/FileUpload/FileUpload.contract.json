@@ -132,5 +132,13 @@
         "render two FileUploads in the same form without unique",
         "rely on `value` for \"the file is already on the server\".",
         "skip the Clear button. Users who picked the wrong file have"
+    ],
+    "composesWith": [
+        "Button",
+        "Inputs",
+        "Modal",
+        "Select",
+        "PhoneInput",
+        "CheckboxGroup"
     ]
 }
