@@ -72,6 +72,10 @@
             "optional": false,
             "type": "string"
         },
+        "iconClassName": {
+            "optional": true,
+            "type": "string"
+        },
         "variant": {
             "optional": true,
             "type": "union",

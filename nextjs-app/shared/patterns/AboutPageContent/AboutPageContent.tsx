@@ -4,20 +4,12 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import {
-  Code,
-  Sparkles,
   UserCheck,
   Network,
   ClipboardCheck,
   RefreshCw,
   KeyRound,
 } from "lucide-react";
-import {
-  Trophy,
-  HandsClapping,
-  HeadCircuit,
-  PuzzlePiece,
-} from "@phosphor-icons/react";
 
 import { AboutHero } from "../AboutHero";
 import { ContentSection } from "../ContentSection";
@@ -46,32 +38,98 @@ export function AboutPageContent({
   const values: ValueItem[] = useMemo(
     () => [
       {
-        icon: <Trophy className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            01
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueDesignTitle"),
         description: t("aboutValueDesignDescription"),
       },
       {
-        icon: <Code className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            02
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueDevelopmentTitle"),
         description: t("aboutValueDevelopmentDescription"),
       },
       {
-        icon: <HandsClapping className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            03
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueCollaborationTitle"),
         description: t("aboutValueCollaborationDescription"),
       },
       {
-        icon: <HeadCircuit className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            04
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueAITitle"),
         description: t("aboutValueAIDescription"),
       },
       {
-        icon: <PuzzlePiece className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            05
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueSystemsTitle"),
         description: t("aboutValueSystemsDescription"),
       },
       {
-        icon: <Sparkles className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            06
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueCraftTitle"),
         description: t("aboutValueCraftDescription"),
       },
@@ -148,14 +206,30 @@ export function AboutPageContent({
         values={values}
         cardVariant="bordered"
         background="muted"
+        columns="two"
       />
 
       {/* Stats Section */}
       <StatsSection
         stats={[
-          { value: 20, suffix: "+", label: t("statsYearsExperience", "Years of experience"), duration: 2 },
-          { value: 8, suffix: "K+", label: t("statsComponentsBuilt", "Design system components built"), duration: 2.5 },
-          { value: 300, suffix: "+", label: t("statsProjectsDelivered", "Projects delivered"), duration: 2 },
+          {
+            value: 20,
+            suffix: "+",
+            label: t("statsYearsExperience", "Years of experience"),
+            duration: 2,
+          },
+          {
+            value: 8,
+            suffix: "K+",
+            label: t("statsComponentsBuilt", "Design system components built"),
+            duration: 2.5,
+          },
+          {
+            value: 300,
+            suffix: "+",
+            label: t("statsProjectsDelivered", "Projects delivered"),
+            duration: 2,
+          },
         ]}
         background="primary"
       />
