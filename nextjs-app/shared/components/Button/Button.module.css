@@ -18,22 +18,15 @@
   overflow: hidden;
 }
 
-/* Ensure label slots inherit the variant color so AA contrast holds inside any
- * coloured Button background (white-on-info, primary-on-warning, etc). */
-
 .button > :is([data-button-slot="text"], .text),
 .button > :is([data-button-slot="icon"], [data-button-slot="end-icon"]) {
   color: inherit;
 }
 
-/* Focus states for accessibility (WCAG 2.4.7 Focus Visible) */
-
 .button:focus-visible {
   outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
   outline-offset: var(--focus-ring-offset, 2px);
 }
-
-/* Ensure focus ring is visible on all variants */
 
 .button.primary:focus-visible,
 .button.secondary:focus-visible,
@@ -46,26 +39,18 @@
   outline-offset: var(--focus-ring-offset, 2px);
 }
 
-/* Inverse variants need contrasting focus ring */
-
 .button.inverse:focus-visible {
   outline-color: var(--color-white);
 }
-
-/* Surface-aware focus rings. On dark/brand bands the default ring color
-   (--color-primary) can match the band itself (e.g. the navy CTA band in
-   light theme), making focus invisible. Use the surface's contrast pole. */
 
 .button.onDark:focus-visible {
   outline-color: var(--color-white);
 }
 
 .button.onBrand:focus-visible {
-  /* Brand band is --logo-background; --logo-color is its paired contrast. */
   outline-color: var(--logo-color);
 }
 
-/* Windows High Contrast Mode support */
 @media (forced-colors: active) {
   .button:focus-visible {
     outline: 3px solid Highlight;
@@ -74,7 +59,6 @@
   }
 }
 
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .button {
     transition: none;
@@ -99,16 +83,12 @@
   color: var(--color-error);
 }
 
-/* Inverse modifier: swap primary blue text/border to white for contrast on dark backgrounds */
-
 .button.inverse {
   color: var(--color-primary);
 }
 
 .button.primary.inverse {
   background-color: var(--color-white);
-
-  /* Text color adapts to ancestor surface via JS-set CSS variable */
   color: var(--dt-button-inverse-fg, var(--color-primary));
 }
 
@@ -120,8 +100,6 @@
 .button.tertiary.inverse {
   color: var(--color-white);
 }
-
-/* Surface: onDark — static contrast for primary/gradient/dark bands (CTA, hero) */
 
 .button.primary.onDark {
   border: none;
@@ -152,8 +130,6 @@
 .button.tertiary.onDark:hover {
   background-color: color-mix(in srgb, var(--color-white) 8%, transparent);
 }
-
-/* Surface: onBrand — logo token pair (homepage brand CTA) */
 
 .button.primary.onBrand {
   border: none;
@@ -261,10 +237,8 @@
 .button .text {
   display: inline-flex;
   align-items: center;
-  line-height: 1; /* avoid extra vertical space from font metrics */
+  line-height: 1;
 }
-
-/* (moved tertiary spacing override below generic spacing rules) */
 
 .button.iconOnly .icon {
   display: flex;
@@ -282,30 +256,26 @@
   margin-inline-start: 0.5rem;
 }
 
-/* Use data attribute selectors for reliable cross-module spacing */
-
 .button [data-button-slot="icon"] + [data-button-slot="text"],
 .button > :not(:last-child):is(svg, .icon) + .text {
-  margin-inline-start: 0.5rem; /* Add padding between icon and text */
+  margin-inline-start: 0.5rem;
 }
 
 .button [data-button-slot="text"] + [data-button-slot="end-icon"],
 .button > .text + :is(svg, .endIcon) {
-  margin-inline-start: 0.5rem; /* Add padding between text and icon when icon is on the right */
+  margin-inline-start: 0.5rem;
 }
 
 .button > .text + .icon {
-  margin-inline-start: 0.5rem; /* Add padding between text and icon when icon appears after the text */
+  margin-inline-start: 0.5rem;
 }
 
-/* Tertiary variant: slightly tighter icon-text spacing */
-
 .button.tertiary [data-button-slot="icon"] {
-  margin-inline-end: var(--space-internal-2); /* tighter spacing */
+  margin-inline-end: var(--space-internal-2);
 }
 
 .button.tertiary [data-button-slot="text"] {
-  margin-inline-start: var(--space-internal-2); /* tighter spacing */
+  margin-inline-start: var(--space-internal-2);
 }
 
 .button.s {
@@ -328,8 +298,6 @@
   min-block-size: 3rem;
   font-size: var(--font-size-button-l);
 }
-
-/* Modern size variants (v1.1.0) - aliases for legacy sizes */
 
 .button.sm {
   padding-block: var(--space-internal-4);
@@ -373,8 +341,6 @@
   min-inline-size: 3rem;
 }
 
-/* Modern size iconOnly variants (v1.1.0) */
-
 .button.sm.iconOnly {
   padding: 0;
   block-size: 1.5rem;
@@ -396,13 +362,9 @@
   min-inline-size: 3rem;
 }
 
-/* Reduced specificity: generic icon svg size */
-
 .button.iconOnly svg {
   font-size: 0.75rem;
 }
-
-/* Reduced specificity: large size icon override */
 
 .button.l.iconOnly svg {
   font-size: 1.25rem;
@@ -412,10 +374,8 @@
   border-radius: 9999px;
 }
 
-/* Split button specific styles */
-
 .button.splitMain {
-  margin-inline-end: -1px; /* collapse adjoining border */
+  margin-inline-end: -1px;
   border-end-end-radius: 0;
   border-start-end-radius: 0;
 }
@@ -436,25 +396,17 @@
   inset-inline-start: 0;
 }
 
-/* Primary variant: white divider on primary background */
-
 .button.primary.splitToggle::before {
   background-color: color-mix(in srgb, var(--color-white) 50%, transparent);
 }
-
-/* Secondary variant: primary color divider */
 
 .button.secondary.splitToggle::before {
   background-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
 }
 
-/* Tertiary variant: primary color divider */
-
 .button.tertiary.splitToggle::before {
   background-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
 }
-
-/* Disabled variant: muted color divider */
 
 .button:disabled.splitToggle::before {
   background-color: color-mix(in srgb, var(--color-muted) 50%, transparent);
@@ -486,21 +438,17 @@
     padding-block: var(--space-internal-16);
   }
 
-  /* OPER-06: Touch targets must be at least 44x44px on mobile (WCAG 2.1 SC 2.5.5) */
-
   .button.sm.iconOnly,
   .button.s.iconOnly {
-    block-size: 2.75rem; /* 44px */
-    inline-size: 2.75rem; /* 44px */
+    block-size: 2.75rem;
+    inline-size: 2.75rem;
     min-inline-size: 2.75rem;
   }
 
-  /* md.iconOnly is 40px (2.5rem), slightly below 44px - increase for compliance */
-
   .button.md.iconOnly,
   .button.m.iconOnly {
-    block-size: 2.75rem; /* 44px */
-    inline-size: 2.75rem; /* 44px */
+    block-size: 2.75rem;
+    inline-size: 2.75rem;
     min-inline-size: 2.75rem;
   }
 }
