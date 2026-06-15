@@ -24,19 +24,26 @@
 .control {
   display: flex;
   position: relative;
-  align-items: stretch;
   width: 100%;
   min-height: 44px;
+  align-items: stretch;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: transparent;
   cursor: pointer;
-  transition: border-color var(--duration-fast) var(--ease-out-cubic);
+  transition:
+    border-color var(--duration-fast) var(--ease-out-cubic),
+    outline-color var(--duration-fast) var(--ease-out-cubic);
 }
 
 .controlOpen,
 .control:focus-within {
   border-color: var(--color-primary);
+}
+
+.control:focus-within {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .controlError {
@@ -45,11 +52,11 @@
 
 .trigger {
   display: flex;
-  flex: 1;
-  align-items: center;
   padding: var(--space-internal-12) var(--space-internal-16);
   padding-inline-end: calc(var(--space-internal-32) + var(--space-internal-8));
   min-width: 0;
+  flex: 1;
+  align-items: center;
   border: none;
   outline: none;
   background: transparent;
@@ -61,6 +68,10 @@
   cursor: pointer;
 }
 
+.trigger:focus-visible {
+  outline: none;
+}
+
 .triggerPlaceholder {
   /* No opacity: it would drop --color-muted below the WCAG AA 4.5:1 ratio on
      the field background. --color-muted alone is AA-compliant. */
@@ -68,38 +79,36 @@
 }
 
 .triggerLabel {
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .chevronButton {
   display: flex;
   position: absolute;
   inset-block: 0;
-  inset-inline-end: 0;
-  width: calc(var(--space-internal-32) + var(--space-internal-8));
-  align-items: center;
-  justify-content: flex-end;
   padding: 0;
   padding-inline-end: calc(var(--space-internal-12) + var(--space-internal-8));
+  width: calc(var(--space-internal-32) + var(--space-internal-8));
+  justify-content: flex-end;
+  align-items: center;
   border: none;
   background: transparent;
   color: var(--color-muted);
   cursor: pointer;
+  inset-inline-end: 0;
 }
 
 .chevronButton:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  outline: none;
 }
 
 .chevron {
   display: block;
   flex-shrink: 0;
-  transition: transform var(--duration-normal) var(--ease-out-expo);
   pointer-events: none;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
 }
 
 .chevronOpen,
@@ -122,20 +131,20 @@
   border-radius: var(--radius-lg);
   background: var(--main-body-background-color, var(--color-surface));
   box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
-  overflow-y: auto;
-  overscroll-behavior: contain;
   list-style: none;
   list-style-type: " ";
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .option {
   display: flex;
+  padding: var(--space-internal-12) var(--space-internal-16);
+  width: 100%;
+  min-height: 44px;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-internal-12);
-  padding: var(--space-internal-12) var(--space-internal-16);
-  min-height: 44px;
-  width: 100%;
   border: none;
   border-radius: var(--radius-md);
   background: transparent;
@@ -148,14 +157,14 @@
   transition: background-color var(--duration-fast) var(--ease-out-cubic);
 }
 
-.option:hover:not(:disabled),
-.optionHighlighted {
-  background: color-mix(in srgb, var(--color-border) 25%, transparent);
-}
-
 .option:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: -2px;
+}
+
+.option:hover:not(:disabled),
+.optionHighlighted {
+  background: color-mix(in srgb, var(--color-border) 25%, transparent);
 }
 
 .optionSelected {
@@ -181,7 +190,7 @@
 }
 
 .disabled {
-  opacity: 0.6;
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.6;
 }

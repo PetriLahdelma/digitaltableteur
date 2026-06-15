@@ -31,7 +31,9 @@
   font-family: var(--font-body);
   font-size: var(--font-size-text);
   color: var(--color-text);
-  transition: border-color var(--duration-fast) var(--ease-out-cubic);
+  transition:
+    border-color var(--duration-fast) var(--ease-out-cubic),
+    outline-color var(--duration-fast) var(--ease-out-cubic);
 }
 
 .input::placeholder {
@@ -41,6 +43,8 @@
 
 .input:focus {
   border-color: var(--color-primary);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .input.hasError {
@@ -60,7 +64,9 @@
   font-family: var(--font-body);
   font-size: var(--font-size-text);
   color: var(--color-text);
-  transition: border-color var(--duration-fast) var(--ease-out-cubic);
+  transition:
+    border-color var(--duration-fast) var(--ease-out-cubic),
+    outline-color var(--duration-fast) var(--ease-out-cubic);
   resize: vertical;
 }
 
@@ -71,6 +77,8 @@
 
 .textarea:focus {
   border-color: var(--color-primary);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .textarea.hasError {
@@ -87,6 +95,7 @@
 
 .select {
   padding: var(--space-internal-12) var(--space-internal-16);
+  padding-inline-end: calc(var(--space-internal-32) + var(--space-internal-8));
   width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -96,13 +105,16 @@
   font-size: var(--font-size-text);
   color: var(--color-text);
   cursor: pointer;
-  transition: border-color var(--duration-fast) var(--ease-out-cubic);
+  transition:
+    border-color var(--duration-fast) var(--ease-out-cubic),
+    outline-color var(--duration-fast) var(--ease-out-cubic);
   appearance: none;
-  padding-inline-end: calc(var(--space-internal-32) + var(--space-internal-8));
 }
 
 .select:focus {
   border-color: var(--color-primary);
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
 
 .select.hasError {
@@ -119,12 +131,12 @@
   display: flex;
   position: absolute;
   inset-block: 0;
-  inset-inline-end: 0;
-  width: calc(var(--space-internal-32) + var(--space-internal-8));
-  align-items: center;
-  justify-content: flex-end;
   padding-inline-end: calc(var(--space-internal-12) + var(--space-internal-8));
+  width: calc(var(--space-internal-32) + var(--space-internal-8));
+  justify-content: flex-end;
+  align-items: center;
   pointer-events: none;
+  inset-inline-end: 0;
 }
 
 .chevron {

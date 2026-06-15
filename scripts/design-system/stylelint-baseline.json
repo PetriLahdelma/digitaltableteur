@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 496,
+  "warningCount": 475,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -568,123 +568,6 @@
       "rule": "no-descending-specificity",
       "severity": "warning",
       "text": "Expected selector \".pre\" to come before selector \".single .pre\", at line 40 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::102::3::order/properties-order::Expected \"pointer-events\" to come before \"transition\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 102,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"pointer-events\" to come before \"transition\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::127::3::order/properties-order::Expected \"list-style\" to come before \"overscroll-behavior\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 127,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"list-style\" to come before \"overscroll-behavior\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::136::3::order/properties-order::Expected \"padding\" to come before \"gap\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 136,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"gap\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::138::3::order/properties-order::Expected \"width\" to come before \"min-height\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 138,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"width\" to come before \"min-height\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::156::1::no-descending-specificity::Expected selector \".option:focus-visible\" to come before selector \".option:hover:not(:disabled)\", at line 151 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 156,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".option:focus-visible\" to come before selector \".option:hover:not(:disabled)\", at line 151 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::185::3::order/properties-order::Expected \"cursor\" to come before \"opacity\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 185,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"cursor\" to come before \"opacity\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::28::3::order/properties-order::Expected \"width\" to come before \"align-items\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 28,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"width\" to come before \"align-items\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::50::3::order/properties-order::Expected \"padding\" to come before \"align-items\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 50,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"align-items\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::72::3::order/properties-order::Expected \"text-overflow\" to come before \"overflow\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 72,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"text-overflow\" to come before \"overflow\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::81::3::order/properties-order::Expected \"width\" to come before \"inset-inline-end\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 81,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"width\" to come before \"inset-inline-end\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::83::3::order/properties-order::Expected \"justify-content\" to come before \"align-items\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 83,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"justify-content\" to come before \"align-items\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::84::3::order/properties-order::Expected \"padding\" to come before \"justify-content\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 84,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"justify-content\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Combobox/ComboboxField.module.css::95::3::order/properties-order::Expected \"border-radius\" to come before \"outline-offset\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Combobox/ComboboxField.module.css",
-      "line": 95,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"border-radius\" to come before \"outline-offset\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/components/ComplianceCard/ComplianceCard.module.css::135::22::declaration-no-important::Disallowed !important (declaration-no-important)",
@@ -1263,42 +1146,6 @@
       "text": "Too high specificity in \".chart:hover .innerRing path:hover\", maximum \"0,4,0\" (selector-max-specificity)"
     },
     {
-      "id": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css::101::3::order/properties-order::Expected \"padding-inline-end\" to come before \"transition\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 101,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-inline-end\" to come before \"transition\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css::123::3::order/properties-order::Expected \"width\" to come before \"inset-inline-end\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 123,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"width\" to come before \"inset-inline-end\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css::125::3::order/properties-order::Expected \"justify-content\" to come before \"align-items\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 125,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"justify-content\" to come before \"align-items\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css::126::3::order/properties-order::Expected \"padding-inline-end\" to come before \"justify-content\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/FormFieldEditorial/FormFieldEditorial.module.css",
-      "line": 126,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-inline-end\" to come before \"justify-content\" (order/properties-order)"
-    },
-    {
       "id": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css::13::3::order/properties-order::Expected \"z-index\" to come before \"inset-inline-end\" (order/properties-order)",
       "file": "nextjs-app/shared/components/LanguageSwitcher/LanguageSwitcher.module.css",
       "line": 13,
@@ -1810,42 +1657,6 @@
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"padding\" to come before \"height\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.module.css::19::3::order/properties-order::Expected \"min-width\" to come before \"flex\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.module.css",
-      "line": 19,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"min-width\" to come before \"flex\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.module.css::20::3::order/properties-order::Expected \"padding\" to come before \"min-width\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.module.css",
-      "line": 20,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"min-width\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.module.css::51::3::order/properties-order::Expected \"text-overflow\" to come before \"overflow\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.module.css",
-      "line": 51,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"text-overflow\" to come before \"overflow\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.module.css::7::3::order/properties-order::Expected \"padding\" to come before \"gap\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/MultiCombobox/MultiCombobox.module.css",
-      "line": 7,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding\" to come before \"gap\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/components/pages/Colophon/colophon.module.css::43::3::order/properties-order::Expected \"text-decoration\" to come before \"color\" (order/properties-order)",
