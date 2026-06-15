@@ -28,11 +28,15 @@ import {
   trimChatHistory,
 } from "../../lib/chat-stream-fallback";
 import { selectDonnyToolsForChat } from "../../lib/chat-tool-selection";
+import { checkRateLimit } from "../../lib/rate-limit";
+import { getClientIp } from "../../lib/security-logger";
 
 const MAX_TOKENS = 4000;
 const MAX_OUTPUT_TOKENS = 900;
 const TOKEN_USAGE_WARNING_THRESHOLD = 3000;
 const CHAT_MAX_STEPS = 2;
+const CHAT_RATE_LIMIT_WINDOW_MS = 60_000;
+const CHAT_RATE_LIMIT_MAX = 12;
 
 type IncomingUiMessages = Parameters<typeof convertToModelMessages>[0];
 
@@ -170,12 +174,32 @@ export async function POST(request: NextRequest) {
               .join(" ")
           : "";
 
-    const ipAddress =
-      request.headers.get("x-forwarded-for")?.split(",")[0] ||
-      request.headers.get("x-real-ip") ||
-      "unknown";
+    const ipAddress = getClientIp(request);
 
     const guardrailCheck = checkPromptInjection(lastContent, ipAddress);
+
+    const rateLimitResult = await checkRateLimit({
+      scope: "chat",
+      key: ipAddress,
+      windowMs: CHAT_RATE_LIMIT_WINDOW_MS,
+      max: CHAT_RATE_LIMIT_MAX,
+      failureMode: "block",
+    });
+
+    if (rateLimitResult.limited) {
+      return NextResponse.json(
+        {
+          error: "Too many chat requests. Please retry shortly.",
+        },
+        {
+          status: 429,
+          headers: {
+            ...corsHeaders,
+            "Retry-After": String(rateLimitResult.retryAfterSeconds),
+          },
+        },
+      );
+    }
 
     if (guardrailCheck.isBlocked) {
       console.warn("[chat] Prompt injection blocked:", guardrailCheck.reason);

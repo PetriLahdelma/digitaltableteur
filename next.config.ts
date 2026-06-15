@@ -215,13 +215,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // TODO: Remove ignoreBuildErrors once the ~23 pre-existing type errors are resolved.
-  // Root cause: dual @types/react versions from dependency tree conflicts.
-  // CI enforces typecheck separately via .github/workflows/pr-validation.yml.
   // Next.js 16 removed the eslint config key — lint runs via npm run lint in CI.
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   turbopack: {
     // Turbopack aliases must be project-relative (absolute paths get `./` prefixed and break).
     resolveAlias: {

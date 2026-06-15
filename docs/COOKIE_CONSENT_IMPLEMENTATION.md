@@ -38,7 +38,7 @@ CookieConsent.module.css   - HDS-inspired styling with DT tokens
 index.ts                   - Component exports
 ```
 
-### Translations (`shared/locales/{en,fi,sv}/translation.json`)
+### Translations (`nextjs-app/shared/locales/{en,fi,sv}/translation.json`)
 
 ```json
 "cookieConsent": {

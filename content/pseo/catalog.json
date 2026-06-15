@@ -115,7 +115,7 @@
       ],
       "typicalTimeline": "2–3 weeks",
       "pricingPackageSlug": "ai-ready-designops",
-      "packageFitReason": "AI-Ready DesignOps packages workflow setup, governance, and tooling hooks in three weeks.",
+      "packageFitReason": "AI-Ready Ops packages workflow setup, governance, and tooling hooks in three weeks.",
       "relatedWorkSlugs": ["dsharp-design-system", "llm-component-schema"],
       "proofReasons": {
         "dsharp-design-system": "MCP, CLI, and Rhythmguard enforcement for AI-assisted design systems.",

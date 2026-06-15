@@ -7,40 +7,37 @@ import {
   getUserAgent,
 } from "../../lib/security-logger";
 import { createCorsHeaders } from "../chat-shared";
+import { checkRateLimit } from "../../lib/rate-limit";
 
-// Simple in-memory rate limiter (best-effort; serverless cold starts reset this)
-// Security audit recommendation: 3 submissions per 15 minutes to prevent spam amplification
 const RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
 const RATE_LIMIT_MAX = 3; // requests per window per IP
-const buckets = new Map<string, { count: number; windowStart: number }>();
 const ALLOWED_CONTACT_TYPES = new Set(["newsletter"]);
 const ALLOWED_CONTACT_SOURCES = new Set(["waitlist"]);
-
-function rateLimit(key: string): boolean {
-  const now = Date.now();
-  const bucket = buckets.get(key);
-  if (!bucket || now - bucket.windowStart > RATE_LIMIT_WINDOW_MS) {
-    buckets.set(key, { count: 1, windowStart: now });
-    return false;
-  }
-  if (bucket.count >= RATE_LIMIT_MAX) return true;
-  bucket.count += 1;
-  return false;
-}
 
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request);
   const userAgent = getUserAgent(request);
 
   // Rate limit check FIRST - before any expensive operations (JSON parsing, DB calls)
-  if (rateLimit(ip)) {
+  const rateLimitResult = await checkRateLimit({
+    scope: "save-contact",
+    key: ip,
+    windowMs: RATE_LIMIT_WINDOW_MS,
+    max: RATE_LIMIT_MAX,
+    failureMode: "block",
+  });
+
+  if (rateLimitResult.limited) {
     SecurityLogger.logRateLimitExceeded(ip, userAgent, "/api/save-contact");
     return NextResponse.json(
       {
         error:
           "Too many contact form submissions. Please try again in 15 minutes.",
       },
-      { status: 429, headers: { "Retry-After": "900" } },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimitResult.retryAfterSeconds) },
+      },
     );
   }
 
@@ -65,7 +62,10 @@ export async function POST(request: NextRequest) {
         ? rawSource
         : null;
 
-    if ((rawType !== null && type === null) || (rawSource !== null && source === null)) {
+    if (
+      (rawType !== null && type === null) ||
+      (rawSource !== null && source === null)
+    ) {
       SecurityLogger.logDataAccess(
         ip,
         userAgent,

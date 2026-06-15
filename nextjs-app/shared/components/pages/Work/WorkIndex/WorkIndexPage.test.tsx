@@ -6,7 +6,9 @@ import { WorkIndexPage } from "./WorkIndexPage";
 describe("WorkIndexPage", () => {
   it("renders page title", () => {
     renderWithProviders(<WorkIndexPage />);
-    expect(screen.getByText(/Work/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Selected projects/i }),
+    ).toBeInTheDocument();
   });
 
   it("renders work examples", () => {

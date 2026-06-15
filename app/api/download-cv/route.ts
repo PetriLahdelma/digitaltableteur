@@ -8,12 +8,8 @@ import {
   getUserAgent,
 } from "../../lib/security-logger";
 import { createCorsHeaders } from "../chat-shared";
+import { checkRateLimit, clearRateLimit } from "../../lib/rate-limit";
 
-/**
- * Rate limiting for CV password attempts
- * Prevents brute force attacks by limiting attempts per IP
- */
-const authAttempts = new Map<string, { count: number; windowStart: number }>();
 const MAX_AUTH_ATTEMPTS = 5;
 const AUTH_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 
@@ -31,47 +27,20 @@ function constantTimeCompare(a: string, b: string): boolean {
   return timingSafeEqual(bufA, bufB) && a.length === b.length;
 }
 
-/**
- * Check if IP has exceeded rate limit
- */
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const bucket = authAttempts.get(ip);
-
-  if (!bucket || now - bucket.windowStart > AUTH_WINDOW_MS) {
-    return false;
-  }
-
-  return bucket.count >= MAX_AUTH_ATTEMPTS;
-}
-
-/**
- * Increment failed attempt counter for IP
- */
-function recordFailedAttempt(ip: string): void {
-  const now = Date.now();
-  const bucket = authAttempts.get(ip);
-
-  if (!bucket || now - bucket.windowStart > AUTH_WINDOW_MS) {
-    authAttempts.set(ip, { count: 1, windowStart: now });
-  } else {
-    bucket.count += 1;
-  }
-}
-
-/**
- * Reset attempt counter on successful authentication
- */
-function resetAttempts(ip: string): void {
-  authAttempts.delete(ip);
-}
-
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request);
   const userAgent = getUserAgent(request);
 
   // Check rate limit BEFORE password verification (prevent timing attacks)
-  if (isRateLimited(ip)) {
+  const rateLimitResult = await checkRateLimit({
+    scope: "download-cv",
+    key: ip,
+    windowMs: AUTH_WINDOW_MS,
+    max: MAX_AUTH_ATTEMPTS,
+    failureMode: "block",
+  });
+
+  if (rateLimitResult.limited) {
     SecurityLogger.logRateLimitExceeded(ip, userAgent, "/api/download-cv", {
       reason: "Too many failed authentication attempts",
       maxAttempts: MAX_AUTH_ATTEMPTS,
@@ -81,9 +50,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         error: "Too many failed attempts. Please try again in 15 minutes.",
-        retryAfter: 900, // seconds
+        retryAfter: rateLimitResult.retryAfterSeconds,
       },
-      { status: 429 },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimitResult.retryAfterSeconds) },
+      },
     );
   }
 
@@ -121,28 +93,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Fail closed: if CV_PASSWORD is not configured, refuse all attempts
-    if (!process.env.CV_PASSWORD) {
-      SecurityLogger.logAuthAttempt(
-        ip,
-        userAgent,
-        "/api/download-cv",
-        false,
-        "CV_PASSWORD not configured",
-      );
-      return NextResponse.json(
-        { error: "Service temporarily unavailable" },
-        { status: 503 },
-      );
-    }
-
     // Validate password with timing-safe comparison
     const isValid = constantTimeCompare(password, process.env.CV_PASSWORD);
 
     if (!isValid) {
-      // Record failed attempt AFTER password check (timing-safe)
-      recordFailedAttempt(ip);
-
       SecurityLogger.logAuthAttempt(
         ip,
         userAgent,
@@ -154,7 +108,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Reset rate limit counter on successful authentication
-    resetAttempts(ip);
+    await clearRateLimit({ scope: "download-cv", key: ip });
 
     // Log successful authentication
     SecurityLogger.logAuthAttempt(

@@ -47,7 +47,9 @@ describe("Blog pages", () => {
   it("lists blog posts with cards", () => {
     renderWithProviders(<BlogPage />);
 
-    expect(screen.getByRole("heading", { name: /Blog/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Our thoughts/i }),
+    ).toBeInTheDocument();
     expect(
       screen.getAllByRole("link", { name: /first post|second post/i }),
     ).toHaveLength(2);

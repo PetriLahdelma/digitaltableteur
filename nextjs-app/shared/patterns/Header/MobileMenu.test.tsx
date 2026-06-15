@@ -1,7 +1,5 @@
 import React from "react";
 import { describe, it, expect } from "vitest";
-import { MemoryRouter } from "react-router-dom";
-import * as ReactRouter from "react-router-dom";
 import { vi, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import MobileMenu from "./MobileMenu";
@@ -9,23 +7,23 @@ import { ThemeProvider } from "@dt/ThemeProvider";
 import i18n from "../../i18n";
 import { I18nextProvider } from "react-i18next";
 
+const { mockUsePathname } = vi.hoisted(() => ({
+  mockUsePathname: vi.fn(() => "/work/client"),
+}));
+
+vi.mock("next/navigation", () => ({
+  usePathname: mockUsePathname,
+}));
+
 // Helper render with providers
 const renderWithProviders = (
   ui: React.ReactElement,
   route: string = "/work/client",
 ) => {
-  vi.spyOn(ReactRouter, "useLocation").mockReturnValue({
-    pathname: route,
-    search: "",
-    hash: "",
-    state: null,
-    key: "test",
-  });
+  mockUsePathname.mockReturnValue(route);
   return render(
     <I18nextProvider i18n={i18n}>
-      <MemoryRouter initialEntries={[route]}>
-        <ThemeProvider>{ui}</ThemeProvider>
-      </MemoryRouter>
+      <ThemeProvider>{ui}</ThemeProvider>
     </I18nextProvider>,
   );
 };

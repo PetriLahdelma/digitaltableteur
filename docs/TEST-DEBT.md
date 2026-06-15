@@ -66,7 +66,7 @@ Numbers refer to **failing test assertions**, not files. A file usually owns
 | 5 | `vi.mocked(require(...).useChat).mockImplementation is not a function` (all in `ChatWidget.coverage.test.tsx`) | Switch to ESM import + `vi.hoisted` for the per-test mock reconfiguration (pattern landed in NextHeader fix) |
 | 16 | `Designerman.test.tsx` — canvas + sprite-sheet timing under fake timers | Rewrite to drive the requestAnimationFrame loop deterministically |
 | 4 | `toBeDisabled` / state-mismatch assertions (cookie consent stays open, persistent theme stays light) | Real component regressions — the user's P1 list. Each needs the matching component fix, not a test edit |
-| 12 | `useContext null` — page-tests render a tree that crashes outside React Router | Migrate `WorkNav`/`BlogNav` from `react-router-dom` to `next/navigation`, then wrap the rest in mocks |
+| 12 | `useContext null` — page-tests render a tree that crashes outside the App Router boundary | Keep page tests on `next/navigation` mocks and avoid reintroducing React Router wrappers |
 | 10 | Icon-only button accessible-name drift (`close`/`edit`/`retry`) | Component or i18n key now uses a different name; align tests to current contract |
 | 9  | `interactive-state` assertions (`toBeDisabled`, `toHaveAttribute`) on refactored controls | Update to current ARIA shape |
 | 9  | Link-copy drift (`back to work`, `mail@…`) | Probably moved/renamed; update selectors |

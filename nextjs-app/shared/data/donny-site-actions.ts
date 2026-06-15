@@ -176,7 +176,7 @@ export const DONNY_SITE_TARGETS: DonnyTarget[] = [
   target({
     id: "pricing.package.aiReadyDesignOps",
     route: "/pricing",
-    label: "AI-Ready DesignOps package",
+    label: "AI-Ready Ops package",
     summary:
       "Three-week DesignOps setup with component governance and AI tooling hooks.",
     allowedModes: CARD_MODES,

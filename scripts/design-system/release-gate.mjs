@@ -3,8 +3,8 @@
  * Unified design-system release gate — contract, MCP evals, bundle budgets,
  * and optional visual/a11y suites.
  *
- * Fast (CI default): typecheck, lint, tokens, agent:eval, contract drift,
- * bundle budgets, validate:components, catalog ≥85%.
+ * Fast (CI default): typecheck, lint, generated artifacts, agent:eval,
+ * contract drift, bundle budgets, validate:components, catalog ≥85%, build.
  *
  * Full (--full): adds test:ci, test:visual:ci (Storybook), test:a11y:pages (Playwright).
  *
@@ -22,7 +22,9 @@ const full = process.argv.includes("--full");
 const steps = [
   { name: "typecheck", cmd: "npm", args: ["run", "typecheck"] },
   { name: "lint", cmd: "npm", args: ["run", "lint"] },
-  { name: "build:tokens", cmd: "npm", args: ["run", "build:tokens"] },
+  { name: "lint:css", cmd: "npm", args: ["run", "lint:css"] },
+  { name: "validate:translations", cmd: "npm", args: ["run", "validate:translations"] },
+  { name: "check:generated", cmd: "npm", args: ["run", "check:generated"] },
   { name: "agent:eval (MCP + golden sets)", cmd: "npm", args: ["run", "agent:eval"] },
   {
     name: "contract-drift",
@@ -38,6 +40,7 @@ const steps = [
     cmd: "node",
     args: ["scripts/design-system/check-catalog-coverage-gate.mjs"],
   },
+  { name: "build", cmd: "npm", args: ["run", "build"] },
 ];
 
 if (full) {

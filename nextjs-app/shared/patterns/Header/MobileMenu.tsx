@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
-import { useLocation, Link } from "react-router-dom";
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { type Theme } from "@dt/ThemeProvider";
 import styles from "./MobileMenu.module.css";
@@ -59,7 +61,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   id,
 }) => {
   const { t, i18n } = useTranslation();
-  const location = useLocation();
   const { theme, cycleTheme } = usePersistentTheme();
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const panelRef = React.useRef<HTMLDivElement | null>(null);
@@ -271,14 +272,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           </div>
           <div className={styles.footerLinks}>
             <Link
-              to="/privacy-policy-full"
+              href="/privacy-policy-full"
               className={styles.footerLink}
               onClick={handleNavigate}
             >
               {t("navMenuCookiePolicy")}
             </Link>
             <Link
-              to="/ai-use"
+              href="/ai-use"
               className={styles.footerLink}
               onClick={handleNavigate}
             >

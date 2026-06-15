@@ -77,16 +77,6 @@ vi.mock("@/nextjs-app/shared/lib/gsap", () => {
   };
 });
 
-vi.mock("react-router-dom", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("react-router-dom")>();
-  return {
-    ...actual,
-    useNavigate: () => vi.fn(),
-    useLocation: () => ({ pathname: "/", search: "", hash: "", state: null, key: "default" }),
-    useParams: () => ({}),
-  };
-});
-
 vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: vi.fn(),

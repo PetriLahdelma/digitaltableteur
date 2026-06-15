@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 
 import { AboutHero } from "../AboutHero";
-import { ContentSection } from "../ContentSection";
 import { ValuesSection, type ValueItem } from "../ValuesSection";
 import { StatsSection } from "../../patterns/StatsSection/StatsSection";
 import { ManifestoSection, type ManifestoToken } from "../ManifestoSection";
@@ -170,6 +169,78 @@ export function AboutPageContent({
     [t, i18n.language],
   );
 
+  // Operating model — folds the "how we work" story into the current About page
+  // instead of creating a separate generic process page.
+  const operatingValues: ValueItem[] = useMemo(
+    () => [
+      {
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-4xl font-semibold leading-none tracking-normal"
+          >
+            01
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-5 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
+        title: t("aboutOperatingDiagnoseTitle"),
+        description: t("aboutOperatingDiagnoseDescription"),
+      },
+      {
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-4xl font-semibold leading-none tracking-normal"
+          >
+            02
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-5 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
+        title: t("aboutOperatingShapeTitle"),
+        description: t("aboutOperatingShapeDescription"),
+      },
+      {
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-4xl font-semibold leading-none tracking-normal"
+          >
+            03
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-5 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
+        title: t("aboutOperatingBuildTitle"),
+        description: t("aboutOperatingBuildDescription"),
+      },
+      {
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-4xl font-semibold leading-none tracking-normal"
+          >
+            04
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-5 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
+        title: t("aboutOperatingScaleTitle"),
+        description: t("aboutOperatingScaleDescription"),
+      },
+    ],
+    [t, i18n.language],
+  );
+
   // Manifesto tokens (intro + highlightable phrases)
   const manifestoTokens: ManifestoToken[] = useMemo(
     () => [
@@ -243,43 +314,14 @@ export function AboutPageContent({
         background="default"
       />
 
-      {/* What I Do - Design */}
-      <ContentSection
-        subtitle={t("aboutDesignSubtitle")}
-        title={t("aboutDesignTitle")}
-        content={
-          <p className="text-muted-foreground leading-relaxed">
-            {t("aboutDesignText")}
-          </p>
-        }
-        background="default"
-        centered
-      />
-
-      {/* What I Do - Development */}
-      <ContentSection
-        subtitle={t("aboutDevelopmentSubtitle")}
-        title={t("aboutDevelopmentTitle")}
-        content={
-          <p className="text-muted-foreground leading-relaxed">
-            {t("aboutDevelopmentText")}
-          </p>
-        }
-        background="default"
-        centered
-      />
-
-      {/* What I Do - Collaboration */}
-      <ContentSection
-        subtitle={t("aboutCollaborationSubtitle")}
-        title={t("aboutCollaborationTitle")}
-        content={
-          <p className="text-muted-foreground leading-relaxed">
-            {t("aboutCollaborationText")}
-          </p>
-        }
-        background="default"
-        centered
+      {/* Strategy to scale */}
+      <ValuesSection
+        title={t("aboutOperatingTitle")}
+        subtitle={t("aboutOperatingSubtitle")}
+        values={operatingValues}
+        cardVariant="bordered"
+        background="muted"
+        columns="two"
       />
 
       {/* Manifesto Section */}

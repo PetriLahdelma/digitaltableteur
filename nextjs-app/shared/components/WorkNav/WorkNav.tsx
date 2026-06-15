@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
 import Button from "@dt/Button";
 import styles from "./worknav.module.css";
-import { useNavigate } from "react-router-dom";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 
@@ -17,9 +19,9 @@ const workPages = [
 
 const WorkNav: React.FC = () => {
   const { t } = useTranslation();
-  const currentPath = window.location.pathname;
+  const currentPath = usePathname() ?? "/";
   const currentIndex = workPages.findIndex((p) => p.path === currentPath);
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <>
       <div className={styles.workNavBar}>
@@ -27,7 +29,7 @@ const WorkNav: React.FC = () => {
           variant="tertiary"
           size="m"
           icon={<Icon name="briefcase" ariaLabel={t("workNavBackToWork")} />}
-          onClick={() => navigate("/work")}
+          onClick={() => router.push("/work")}
         >
           {t("workNavBackToWork")}
         </Button>
@@ -38,7 +40,7 @@ const WorkNav: React.FC = () => {
             icon={<Icon name="arrow-left" ariaLabel={t("workNavPrev")} />}
             isDisabled={currentIndex <= 0}
             onClick={() => {
-              if (currentIndex > 0) navigate(workPages[currentIndex - 1].path);
+              if (currentIndex > 0) router.push(workPages[currentIndex - 1].path);
             }}
           >
             {t("workNavPrev")}
@@ -50,7 +52,7 @@ const WorkNav: React.FC = () => {
             isDisabled={currentIndex === workPages.length - 1}
             onClick={() => {
               if (currentIndex < workPages.length - 1)
-                navigate(workPages[currentIndex + 1].path);
+                router.push(workPages[currentIndex + 1].path);
             }}
           >
             {t("workNavNext")}

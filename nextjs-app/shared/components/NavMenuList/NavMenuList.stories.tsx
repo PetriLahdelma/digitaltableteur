@@ -2,7 +2,6 @@ import contract from "./NavMenuList.contract.json";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import NavMenuList from "@dt/NavMenuList";
-import { MemoryRouter, useInRouterContext } from "react-router-dom";
 import ComplianceCard from "@dt/ComplianceCard";
 import type { ComplianceRule } from "@dt/ComplianceCard";
 import Icon from "@dt/Icon";
@@ -34,21 +33,6 @@ const meta: Meta<typeof NavMenuList> = {
     contractStatus: contract.status,
     a11y: { test: "error" },
   },
-  decorators: [
-    (Story) => {
-      // If a parent preview already provides a router, don't nest another
-      const Guard: React.FC = () => {
-        const inRouter = useInRouterContext();
-        if (inRouter) return <Story />;
-        return (
-          <MemoryRouter initialEntries={["/work/client"]}>
-            <Story />
-          </MemoryRouter>
-        );
-      };
-      return <Guard />;
-    },
-  ],
 };
 export default meta;
 
