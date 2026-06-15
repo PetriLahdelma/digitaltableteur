@@ -361,7 +361,7 @@ export function MultiCombobox({
           <button
             type="button"
             data-chevron-toggle
-            className={fieldStyles.chevronButton}
+            className={cn(fieldStyles.chevronButton, styles.chevronButton)}
             aria-label={t("multiComboboxToggleOptions", "Toggle options")}
             aria-expanded={open}
             disabled={isDisabled}

@@ -49,6 +49,12 @@
 /* Content wrapper - handles overflow during animation */
 
 .content {
+  --expandable-focus-bleed: calc(
+    var(--focus-ring-width, 2px) + var(--focus-ring-offset, 2px)
+  );
+
+  margin: calc(-1 * var(--expandable-focus-bleed));
+  padding: var(--expandable-focus-bleed);
   overflow: hidden;
 }
 

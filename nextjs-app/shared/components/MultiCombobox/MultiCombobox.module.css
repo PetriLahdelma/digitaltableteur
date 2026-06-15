@@ -1,23 +1,28 @@
 .inner {
   display: flex;
+  padding: var(--space-internal-12)
+    calc(var(--space-internal-32) + var(--space-internal-8))
+    var(--space-internal-12) var(--space-internal-16);
+  padding-inline-end: 0;
+  min-width: 0;
   flex: 1;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-internal-6);
-  padding: var(--space-internal-12)
-    calc(var(--space-internal-32) + var(--space-internal-8))
-    var(--space-internal-12) var(--space-internal-16);
-  min-width: 0;
 }
 
 .control {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) calc(var(--space-internal-32) + var(--space-internal-8));
   cursor: text;
 }
 
 .input {
-  flex: 1 1 6rem;
-  min-width: 6rem;
   padding: var(--space-internal-4) 0;
+  min-width: min(6rem, 100%);
+  max-width: 100%;
+  flex: 1 1 6rem;
   border: none;
   outline: none;
   background: transparent;
@@ -27,9 +32,22 @@
   color: var(--color-text);
 }
 
+.input:focus-visible {
+  outline: none;
+}
+
 .input::placeholder {
   color: var(--color-muted);
   opacity: 0.7;
+}
+
+.control .chevronButton {
+  position: static;
+  inset: auto;
+  padding: 0;
+  padding-inline-end: calc(var(--space-internal-12) + var(--space-internal-8));
+  width: calc(var(--space-internal-32) + var(--space-internal-8));
+  justify-content: flex-end;
 }
 
 .input:disabled {
@@ -47,7 +65,7 @@
 
 .badgeLabel {
   display: block;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
