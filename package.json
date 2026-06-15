@@ -174,7 +174,7 @@
     "@sanity/block-content-to-markdown": "^1.0.1",
     "@sanity/client": "^7.22.1",
     "@sanity/image-url": "^1.2.0",
-    "@sanity/vision": "^5.31.1",
+    "@sanity/vision": "^6.0.0",
     "@sentry/nextjs": "^10.58.0",
     "@storybook/addon-vitest": "^10.4.5",
     "@swc/helpers": "^0.5.23",
