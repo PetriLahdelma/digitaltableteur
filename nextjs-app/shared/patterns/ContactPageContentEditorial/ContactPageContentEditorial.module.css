@@ -57,7 +57,7 @@
 
 .headline {
   margin: 0;
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: var(--font-size-display);
   font-weight: 700;
   line-height: var(--line-height-tight);
@@ -355,4 +355,3 @@
 .pullQuoteText::after {
   content: "\201D";
 }
-

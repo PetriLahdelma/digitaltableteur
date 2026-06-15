@@ -84,7 +84,7 @@ const PACKAGES: PackageItem[] = [
   },
   {
     titleKey: "pricingPackage2Title",
-    titleDefault: "AI-Ready DesignOps",
+    titleDefault: "AI-Ready Ops",
     priceKey: "pricingPackage2Price",
     priceDefault: "€11–17k",
     durationKey: "pricingPackage2Duration",
@@ -96,7 +96,7 @@ const PACKAGES: PackageItem[] = [
     proofDefault:
       "Agent-ready tokens and governance — see AI DesignOps case studies.",
     ctaKey: "pricingPackageCtaAiReady",
-    ctaDefault: "Book AI-Ready DesignOps",
+    ctaDefault: "Book AI-Ready Ops",
     contactPackageId: "ai-ready-designops",
     donnyTarget: "pricing.package.aiReadyDesignOps",
   },
@@ -165,7 +165,7 @@ const AAAS_PACKAGES: AaasPackageItem[] = [
   },
   {
     titleKey: "pricingAaasCopilotTitle",
-    titleDefault: "DesignOps Copilot",
+    titleDefault: "DesignOps Pilot",
     priceKey: "pricingAaasCopilotPrice",
     priceDefault: "€5–8k / mo",
     durationKey: "pricingAaasCopilotDuration",
@@ -174,7 +174,7 @@ const AAAS_PACKAGES: AaasPackageItem[] = [
     descriptionDefault:
       "A supervised agent that triages components, keeps tokens honest and drafts release notes your team approves.",
     ctaKey: "pricingAaasCopilotCta",
-    ctaDefault: "Book DesignOps Copilot",
+    ctaDefault: "Book DesignOps Pilot",
     contactPackageId: "designops-copilot",
   },
 ];

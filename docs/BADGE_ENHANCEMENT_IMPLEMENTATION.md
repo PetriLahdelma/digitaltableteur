@@ -35,9 +35,9 @@ Successfully implemented three high-priority features from the Badge Enhancement
 
 ### Internationalization (All 3 Languages)
 
-- ✅ `shared/locales/en/translation.json` - English translations
-- ✅ `shared/locales/fi/translation.json` - Finnish translations
-- ✅ `shared/locales/sv/translation.json` - Swedish translations
+- ✅ `nextjs-app/shared/locales/en/translation.json` - English translations
+- ✅ `nextjs-app/shared/locales/fi/translation.json` - Finnish translations
+- ✅ `nextjs-app/shared/locales/sv/translation.json` - Swedish translations
 
 ---
 

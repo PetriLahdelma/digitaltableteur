@@ -9,12 +9,11 @@ import {
   buildContactNotificationText,
   type ContactNotificationPayload,
 } from "../../lib/contact-notification-email";
+import { checkRateLimit } from "../../lib/rate-limit";
+import { getClientIp, getUserAgent } from "../../lib/security-logger";
 
-// Simple in-memory rate limiter (best-effort; serverless cold starts reset this)
-// Security audit recommendation: 3 submissions per 15 minutes to prevent spam amplification
 const RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
 const RATE_LIMIT_MAX = 3; // requests per window per IP
-const buckets = new Map<string, { count: number; windowStart: number }>();
 
 const contactSchema = z.object({
   name: z.string().min(2).max(200),
@@ -34,18 +33,6 @@ const contactSchema = z.object({
   requestPortfolioMaterials: z.boolean().optional().nullable(),
   time: z.string().max(200).optional().nullable(),
 });
-
-function rateLimit(key: string) {
-  const now = Date.now();
-  const bucket = buckets.get(key);
-  if (!bucket || now - bucket.windowStart > RATE_LIMIT_WINDOW_MS) {
-    buckets.set(key, { count: 1, windowStart: now });
-    return false;
-  }
-  if (bucket.count >= RATE_LIMIT_MAX) return true;
-  bucket.count += 1;
-  return false;
-}
 
 async function sendEmailViaResend(payload: ContactNotificationPayload) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -91,19 +78,24 @@ async function sendEmailViaResend(payload: ContactNotificationPayload) {
   });
 
   if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Resend send failed: ${res.status} ${body}`);
+    throw new Error(`Resend send failed: ${res.status}`);
   }
 }
 
 export async function POST(req: NextRequest) {
   const corsHeaders = createCorsHeaders(req.headers.get("origin"));
-  const ip =
-    req.headers.get("x-real-ip") ||
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    "unknown";
+  const ip = getClientIp(req);
+  const userAgent = getUserAgent(req);
 
-  if (rateLimit(ip)) {
+  const rateLimitResult = await checkRateLimit({
+    scope: "contact",
+    key: ip,
+    windowMs: RATE_LIMIT_WINDOW_MS,
+    max: RATE_LIMIT_MAX,
+    failureMode: "block",
+  });
+
+  if (rateLimitResult.limited) {
     return NextResponse.json(
       {
         error:
@@ -111,7 +103,10 @@ export async function POST(req: NextRequest) {
       },
       {
         status: 429,
-        headers: { ...corsHeaders, "Retry-After": "900" },
+        headers: {
+          ...corsHeaders,
+          "Retry-After": String(rateLimitResult.retryAfterSeconds),
+        },
       },
     );
   }
@@ -155,27 +150,60 @@ export async function POST(req: NextRequest) {
   };
 
   try {
-    // Send email first; if this fails, return 500 so the client shows an error.
-    await sendEmailViaResend(sanitizedParsed);
-
-    // Store in MongoDB
     const db = await getDatabase();
     const collection = db.collection("contacts");
 
-    await collection.insertOne({
+    const insertResult = await collection.insertOne({
       ...sanitizedParsed,
       submittedFrom: ip,
-      userAgent: req.headers.get("user-agent") || "unknown",
+      userAgent,
+      emailDeliveryStatus: "pending",
       createdAt: new Date(),
     });
+
+    try {
+      await sendEmailViaResend(sanitizedParsed);
+    } catch (emailError) {
+      await collection.updateOne(
+        { _id: insertResult.insertedId },
+        {
+          $set: {
+            emailDeliveryStatus: "failed",
+            emailDeliveryError:
+              emailError instanceof Error ? emailError.message : "Unknown",
+            emailDeliveryUpdatedAt: new Date(),
+          },
+        },
+      );
+      throw emailError;
+    }
+
+    try {
+      await collection.updateOne(
+        { _id: insertResult.insertedId },
+        {
+          $set: {
+            emailDeliveryStatus: "sent",
+            emailDeliveryUpdatedAt: new Date(),
+          },
+        },
+      );
+    } catch (updateError) {
+      console.warn(
+        "Contact email status update failed:",
+        updateError instanceof Error ? updateError.message : "Unknown",
+      );
+    }
 
     return NextResponse.json(
       { status: "ok" },
       { status: 200, headers: corsHeaders },
     );
-  } catch (err: any) {
-     
-    console.error("Contact handler failed:", err);
+  } catch (err) {
+    console.error(
+      "Contact handler failed:",
+      err instanceof Error ? err.message : "Unknown",
+    );
     return NextResponse.json(
       { error: "Failed to process contact form" },
       { status: 500, headers: corsHeaders },

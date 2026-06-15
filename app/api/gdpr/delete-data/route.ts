@@ -13,6 +13,7 @@ import {
   getUserAgent,
 } from "../../../lib/security-logger";
 import { createCorsHeaders } from "../../chat-shared";
+import { checkRateLimit } from "../../../lib/rate-limit";
 
 interface DeleteDataRequest {
   email: string;
@@ -20,67 +21,10 @@ interface DeleteDataRequest {
   confirmationToken?: string;
 }
 
-// Rate limiting to prevent enumeration attacks
-// Security audit recommendation: 3 requests per hour per email
 const GDPR_RATE_LIMIT_WINDOW_MS = 3_600_000; // 1 hour
 const GDPR_RATE_LIMIT_MAX = 3; // requests per window per email
-const gdprBuckets = new Map<string, { count: number; windowStart: number }>();
-
-function pruneExpiredBuckets(
-  buckets: Map<string, { count: number; windowStart: number }>,
-  windowMs: number,
-) {
-  const now = Date.now();
-
-  for (const [key, bucket] of buckets.entries()) {
-    if (now - bucket.windowStart > windowMs) {
-      buckets.delete(key);
-    }
-  }
-}
-
-function isGdprRateLimited(email: string): boolean {
-  pruneExpiredBuckets(gdprBuckets, GDPR_RATE_LIMIT_WINDOW_MS);
-  const now = Date.now();
-  const bucket = gdprBuckets.get(email);
-
-  if (!bucket || now - bucket.windowStart > GDPR_RATE_LIMIT_WINDOW_MS) {
-    gdprBuckets.set(email, { count: 1, windowStart: now });
-    return false;
-  }
-
-  if (bucket.count >= GDPR_RATE_LIMIT_MAX) {
-    return true;
-  }
-
-  bucket.count += 1;
-  return false;
-}
-
-// Per-IP rate limiting for both methods. The per-email POST limit alone
-// does not stop enumeration: an attacker rotating email addresses gets a
-// fresh bucket every request, so the IP itself must also be limited.
 const GDPR_IP_RATE_LIMIT_WINDOW_MS = 900_000; // 15 minutes
 const GDPR_IP_RATE_LIMIT_MAX = 10; // requests per window per IP
-const gdprIpBuckets = new Map<string, { count: number; windowStart: number }>();
-
-function isGdprIpRateLimited(ip: string): boolean {
-  pruneExpiredBuckets(gdprIpBuckets, GDPR_IP_RATE_LIMIT_WINDOW_MS);
-  const now = Date.now();
-  const bucket = gdprIpBuckets.get(ip);
-
-  if (!bucket || now - bucket.windowStart > GDPR_IP_RATE_LIMIT_WINDOW_MS) {
-    gdprIpBuckets.set(ip, { count: 1, windowStart: now });
-    return false;
-  }
-
-  if (bucket.count >= GDPR_IP_RATE_LIMIT_MAX) {
-    return true;
-  }
-
-  bucket.count += 1;
-  return false;
-}
 
 /**
  * POST /api/gdpr/delete-data
@@ -112,9 +56,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Rate limiting to prevent abuse: per IP (enumeration across many
-    // emails) and per email (hammering a single address)
-    if (isGdprIpRateLimited(ip) || isGdprRateLimited(email)) {
+    const ipRateLimit = await checkRateLimit({
+      scope: "gdpr:ip",
+      key: ip,
+      windowMs: GDPR_IP_RATE_LIMIT_WINDOW_MS,
+      max: GDPR_IP_RATE_LIMIT_MAX,
+      failureMode: "block",
+    });
+
+    if (ipRateLimit.limited) {
       SecurityLogger.logDataDeletion(
         ip,
         userAgent,
@@ -126,7 +76,41 @@ export async function POST(request: NextRequest) {
         {
           error: "Too many deletion requests. Please try again later.",
         },
-        { status: 429, headers: { "Retry-After": "3600" } },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(ipRateLimit.retryAfterSeconds),
+          },
+        },
+      );
+    }
+
+    const emailRateLimit = await checkRateLimit({
+      scope: "gdpr:email",
+      key: email,
+      windowMs: GDPR_RATE_LIMIT_WINDOW_MS,
+      max: GDPR_RATE_LIMIT_MAX,
+      failureMode: "block",
+    });
+
+    if (emailRateLimit.limited) {
+      SecurityLogger.logDataDeletion(
+        ip,
+        userAgent,
+        email,
+        false,
+        "Rate limit exceeded",
+      );
+      return NextResponse.json(
+        {
+          error: "Too many deletion requests. Please try again later.",
+        },
+        {
+          status: 429,
+          headers: {
+            "Retry-After": String(emailRateLimit.retryAfterSeconds),
+          },
+        },
       );
     }
 
@@ -204,7 +188,15 @@ export async function GET(request: NextRequest) {
   const ip = getClientIp(request);
   const userAgent = getUserAgent(request);
 
-  if (isGdprIpRateLimited(ip)) {
+  const rateLimitResult = await checkRateLimit({
+    scope: "gdpr:ip",
+    key: ip,
+    windowMs: GDPR_IP_RATE_LIMIT_WINDOW_MS,
+    max: GDPR_IP_RATE_LIMIT_MAX,
+    failureMode: "block",
+  });
+
+  if (rateLimitResult.limited) {
     SecurityLogger.logRateLimitExceeded(
       ip,
       userAgent,
@@ -212,7 +204,10 @@ export async function GET(request: NextRequest) {
     );
     return NextResponse.json(
       { error: "Too many requests. Please try again later." },
-      { status: 429, headers: { "Retry-After": "900" } },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimitResult.retryAfterSeconds) },
+      },
     );
   }
 

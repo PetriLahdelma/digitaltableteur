@@ -1,6 +1,5 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
 import BlogNav from "@dt/BlogNav";
 import { vi, beforeEach, describe, it, expect } from "vitest";
 
@@ -18,35 +17,26 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: mockT }),
 }));
 
-// Mock react-router-dom navigate
-const mockNavigate = vi.fn();
-vi.mock("react-router-dom", async () => {
-  const actual = await vi.importActual("react-router-dom");
-  return {
-    ...actual,
-    useNavigate: () => mockNavigate,
-  };
-});
+const { mockPush, mockUsePathname } = vi.hoisted(() => ({
+  mockPush: vi.fn(),
+  mockUsePathname: vi.fn(() => "/blog/petri-lahdelma-bio"),
+}));
 
-// Mock window.location
-const mockLocation = vi.fn();
-Object.defineProperty(window, "location", {
-  value: { pathname: "/blog/petri-lahdelma-bio" },
-  writable: true,
+vi.mock("next/navigation", () => {
+  return {
+    usePathname: mockUsePathname,
+    useRouter: () => ({ push: mockPush }),
+  };
 });
 
 describe("BlogNav", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    window.location.pathname = "/blog/petri-lahdelma-bio";
+    mockUsePathname.mockReturnValue("/blog/petri-lahdelma-bio");
   });
 
   const renderWithRouter = () => {
-    return render(
-      <MemoryRouter>
-        <BlogNav />
-      </MemoryRouter>,
-    );
+    return render(<BlogNav />);
   };
 
   it("renders back to articles button", () => {
@@ -70,26 +60,27 @@ describe("BlogNav", () => {
       name: /back to articles/i,
     });
     fireEvent.click(backButton);
-    expect(mockNavigate).toHaveBeenCalledWith("/blog");
+    expect(mockPush).toHaveBeenCalledWith("/blog");
   });
 
   it("disables previous button when on first article", () => {
-    window.location.pathname = "/blog/petri-lahdelma-bio"; // First article
+    mockUsePathname.mockReturnValue("/blog/petri-lahdelma-bio");
     renderWithRouter();
     const prevButton = screen.getByRole("button", { name: /previous/i });
     expect(prevButton).toBeDisabled();
   });
 
   it("disables next button when on last article", () => {
-    window.location.pathname =
-      "/blog/design-system-meets-ai-building-the-self-evolving-component-library-pt-2"; // Last article
+    mockUsePathname.mockReturnValue(
+      "/blog/design-system-meets-ai-building-the-self-evolving-component-library-pt-2",
+    );
     renderWithRouter();
     const nextButton = screen.getByRole("button", { name: /next/i });
     expect(nextButton).toBeDisabled();
   });
 
   it("enables both navigation buttons when on middle article", () => {
-    window.location.pathname = "/blog/digital-craftsmanship"; // Middle article
+    mockUsePathname.mockReturnValue("/blog/digital-craftsmanship");
     renderWithRouter();
     const prevButton = screen.getByRole("button", { name: /previous/i });
     const nextButton = screen.getByRole("button", { name: /next/i });
@@ -98,23 +89,23 @@ describe("BlogNav", () => {
   });
 
   it("navigates to previous article when previous button clicked", () => {
-    window.location.pathname = "/blog/digital-craftsmanship"; // Second article
+    mockUsePathname.mockReturnValue("/blog/digital-craftsmanship");
     renderWithRouter();
     const prevButton = screen.getByRole("button", { name: /previous/i });
     fireEvent.click(prevButton);
-    expect(mockNavigate).toHaveBeenCalledWith("/blog/petri-lahdelma-bio");
+    expect(mockPush).toHaveBeenCalledWith("/blog/petri-lahdelma-bio");
   });
 
   it("navigates to next article when next button clicked", () => {
-    window.location.pathname = "/blog/petri-lahdelma-bio"; // First article
+    mockUsePathname.mockReturnValue("/blog/petri-lahdelma-bio");
     renderWithRouter();
     const nextButton = screen.getByRole("button", { name: /next/i });
     fireEvent.click(nextButton);
-    expect(mockNavigate).toHaveBeenCalledWith("/blog/digital-craftsmanship");
+    expect(mockPush).toHaveBeenCalledWith("/blog/digital-craftsmanship");
   });
 
   it("handles unknown path gracefully", () => {
-    window.location.pathname = "/blog/unknown-article";
+    mockUsePathname.mockReturnValue("/blog/unknown-article");
     renderWithRouter();
     const prevButton = screen.getByRole("button", { name: /previous/i });
     const nextButton = screen.getByRole("button", { name: /next/i });

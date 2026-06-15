@@ -141,6 +141,19 @@ const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (!isOpen || !onClose || typeof document === "undefined") return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) {
     return null;
   }
@@ -182,11 +195,6 @@ const Modal: React.FC<ModalProps> = ({
       className={styles.overlay}
       onClick={(e) => {
         if (e.target === e.currentTarget && onClose) {
-          onClose();
-        }
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Escape" && onClose) {
           onClose();
         }
       }}

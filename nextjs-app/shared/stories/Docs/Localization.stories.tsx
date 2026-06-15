@@ -32,7 +32,7 @@ const LocalizationDocsContent = () => {
                 <code>en</code>
               </td>
               <td>
-                <code>shared/locales/en/translation.json</code>
+                <code>nextjs-app/shared/locales/en/translation.json</code>
               </td>
               <td>✅ Primary</td>
             </tr>
@@ -42,7 +42,7 @@ const LocalizationDocsContent = () => {
                 <code>fi</code>
               </td>
               <td>
-                <code>shared/locales/fi/translation.json</code>
+                <code>nextjs-app/shared/locales/fi/translation.json</code>
               </td>
               <td>✅ Complete</td>
             </tr>
@@ -52,7 +52,7 @@ const LocalizationDocsContent = () => {
                 <code>sv</code>
               </td>
               <td>
-                <code>shared/locales/sv/translation.json</code>
+                <code>nextjs-app/shared/locales/sv/translation.json</code>
               </td>
               <td>✅ Complete</td>
             </tr>
@@ -245,17 +245,17 @@ describe("Translation Coverage", () => { it("has complete FI translations", () =
           When adding a new translation key, add it to all three language files:
         </p>
         <pre className={styles.code}>
-          {`// 1. Add to shared/locales/en/translation.json
+          {`// 1. Add to nextjs-app/shared/locales/en/translation.json
 {
   "myNewKey": "My new English text"
 }
 
-// 2. Add to shared/locales/fi/translation.json
+// 2. Add to nextjs-app/shared/locales/fi/translation.json
 {
   "myNewKey": "Minun uusi suomenkielinen teksti"
 }
 
-// 3. Add to shared/locales/sv/translation.json
+// 3. Add to nextjs-app/shared/locales/sv/translation.json
 {
   "myNewKey": "Min nya svenska text"
 }
@@ -395,7 +395,7 @@ function GoodComponent() { const { t } = useTranslation();
         <ol>
           <li>
             Review English source in{" "}
-            <code>shared/locales/en/translation.json</code>
+            <code>nextjs-app/shared/locales/en/translation.json</code>
           </li>
           <li>Edit FI/SV files with culturally appropriate translations</li>
           <li>Maintain consistent terminology across translations</li>
@@ -477,7 +477,7 @@ function FormattedContent() { const { i18n } = useTranslation();
           <tbody>
             <tr>
               <td>
-                <code>shared/locales/*/translation.json</code>
+                <code>nextjs-app/shared/locales/*/translation.json</code>
               </td>
               <td>Translation files for each language</td>
             </tr>

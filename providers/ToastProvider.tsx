@@ -27,12 +27,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
   const [message, setMessage] = useState("");
   const [duration, setDuration] = useState(3000);
 
-  React.useEffect(() => {
-    console.log("ToastProvider mounted");
-  }, []);
-
   const showToast = useCallback((msg: string, dur: number = 3000) => {
-    console.log("Toast triggered:", msg);
     setMessage(msg);
     setDuration(dur);
     setIsOpen(true);

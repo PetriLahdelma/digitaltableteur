@@ -1,7 +1,5 @@
 import React from "react";
 import { describe, expect, it, beforeEach, vi } from "vitest";
-import { MemoryRouter } from "react-router-dom";
-import * as ReactRouter from "react-router-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import Header from "./Header";
@@ -24,6 +22,13 @@ const mockT = vi.fn(
 );
 const mockCycleTheme = vi.fn(() => "dark");
 const mockOnThemeCycle = vi.fn();
+const { mockUsePathname } = vi.hoisted(() => ({
+  mockUsePathname: vi.fn(() => "/work"),
+}));
+
+vi.mock("next/navigation", () => ({
+  usePathname: mockUsePathname,
+}));
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -61,17 +66,9 @@ describe("Header", () => {
   });
 
   const renderHeader = (initialPath = "/work") => {
-    vi.spyOn(ReactRouter, "useLocation").mockReturnValue({
-      pathname: initialPath,
-      search: "",
-      hash: "",
-      state: null,
-      key: "test",
-    });
+    mockUsePathname.mockReturnValue(initialPath);
     return render(
-      <MemoryRouter initialEntries={[initialPath]}>
-        <Header navItems={testNavItems} onThemeCycle={mockOnThemeCycle} />
-      </MemoryRouter>,
+      <Header navItems={testNavItems} onThemeCycle={mockOnThemeCycle} />,
     );
   };
 

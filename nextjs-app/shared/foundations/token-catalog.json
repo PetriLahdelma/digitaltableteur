@@ -1,8 +1,8 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-06-05T23:18:19.075Z",
-  "tokenCount": 163,
-  "usageCoverage": 131,
+  "generatedAt": "2026-06-13T09:53:27.042Z",
+  "tokenCount": 164,
+  "usageCoverage": 132,
   "themes": [
     {
       "id": "light",
@@ -628,6 +628,13 @@
           "name": "--logo-color",
           "value": "#000",
           "usage": "",
+          "category": "color",
+          "subgroup": "Semantic"
+        },
+        {
+          "name": "--color-focus-ring",
+          "value": "var(--color-primary)",
+          "usage": "Color token (focus-ring).",
           "category": "color",
           "subgroup": "Semantic"
         },

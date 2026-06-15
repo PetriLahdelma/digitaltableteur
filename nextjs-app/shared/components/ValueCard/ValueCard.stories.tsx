@@ -30,6 +30,11 @@ const meta = {
     icon: { control: false, description: "Decorative leading icon" },
     title: { control: "text", description: "Card heading" },
     description: { control: "text", description: "Supporting copy" },
+    iconClassName: {
+      control: "text",
+      description: "Icon wrapper class names",
+      table: { disable: true },
+    },
     variant: {
       control: "select",
       options: ["default", "bordered", "elevated"],

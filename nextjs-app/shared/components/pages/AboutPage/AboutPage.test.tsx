@@ -4,11 +4,15 @@ import { renderWithProviders } from "../../../../../test-utils/render";
 import { AboutPage } from "./AboutPage";
 
 describe("AboutPage", () => {
-  it("renders hero title", () => {
+  it("renders operating model", () => {
     renderWithProviders(<AboutPage />);
     expect(
-      screen.getAllByText(/What we do/i).length,
-    ).toBeGreaterThan(0);
+      screen.getByRole("heading", { name: "Strategy to scale" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Diagnose" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Shape" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Build" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Scale" })).toBeInTheDocument();
   });
 
   it("renders manifesto section", () => {

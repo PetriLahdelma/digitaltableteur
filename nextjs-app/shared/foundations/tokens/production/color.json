@@ -95,6 +95,13 @@
       "$description": "Default body copy color.",
       "$type": "color"
     },
+    "focus": {
+      "ring": {
+        "$value": "var(--color-primary)",
+        "$description": "Color token (focus-ring).",
+        "$type": "color"
+      }
+    },
     "dark": {
       "$value": "#222",
       "$description": "Color token (dark).",

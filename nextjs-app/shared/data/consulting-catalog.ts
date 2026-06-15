@@ -73,7 +73,7 @@ export const CONSULTING_PACKAGES: ConsultingPackage[] = [
   },
   {
     id: "ai-ready-designops",
-    name: "AI-Ready DesignOps",
+    name: "AI-Ready Ops",
     priceRangeEur: "€11–17k",
     duration: "3 weeks",
     description:

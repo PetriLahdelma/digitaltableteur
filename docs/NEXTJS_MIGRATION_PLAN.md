@@ -212,9 +212,9 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 // Import shared translations
-import enTranslation from "../../shared/locales/en/translation.json";
-import fiTranslation from "../../shared/locales/fi/translation.json";
-import svTranslation from "../../shared/locales/sv/translation.json";
+import enTranslation from "../../nextjs-app/shared/locales/en/translation.json";
+import fiTranslation from "../../nextjs-app/shared/locales/fi/translation.json";
+import svTranslation from "../../nextjs-app/shared/locales/sv/translation.json";
 
 if (!i18n.isInitialized) {
   i18n

@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 import "../../styles/variables.css";
 import "../../styles/fonts.css";
@@ -57,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const { theme, cycleTheme } = usePersistentTheme();
   const { t, i18n } = useTranslation();
-  const location = useLocation();
+  const pathname = usePathname() ?? "/";
   const [isMobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const languages = React.useMemo(
     () => [
@@ -164,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   React.useEffect(() => {
     setMobileMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   React.useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -184,7 +187,7 @@ export const Header: React.FC<HeaderProps> = ({
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <div className={styles.left}>
-          <Link to="/" className={styles.logoLink}>
+          <Link href="/" className={styles.logoLink}>
             {isMobile ? (
               <svg
                 className={styles.logoMobile}
@@ -207,13 +210,12 @@ export const Header: React.FC<HeaderProps> = ({
           <ul className={styles.nav}>
             {resolvedNavItems.map((item) => {
               const isActive = item.exact
-                ? location.pathname === item.to
-                : location.pathname === item.to ||
-                  location.pathname.startsWith(`${item.to}/`);
+                ? pathname === item.to
+                : pathname === item.to || pathname.startsWith(`${item.to}/`);
               return (
                 <li key={item.to}>
                   <Link
-                    to={item.to}
+                    href={item.to}
                     className={isActive ? styles.selected : undefined}
                     aria-current={isActive ? "page" : undefined}
                   >

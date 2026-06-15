@@ -14,6 +14,10 @@ export interface ValueItem {
   title: string;
   /** Value description */
   description: string;
+  /** Optional className for the icon wrapper */
+  iconClassName?: string;
+  /** Optional per-card className */
+  className?: string;
 }
 
 export interface ValuesSectionProps {
@@ -27,14 +31,27 @@ export interface ValuesSectionProps {
   cardVariant?: "default" | "bordered" | "elevated";
   /** Background variant */
   background?: "default" | "muted" | "accent";
+  /** Responsive grid column preset */
+  columns?: "two" | "three";
   /** Custom className */
   className?: string;
 }
 
-const backgroundClasses: Record<NonNullable<ValuesSectionProps["background"]>, string> = {
+const backgroundClasses: Record<
+  NonNullable<ValuesSectionProps["background"]>,
+  string
+> = {
   default: "bg-background",
   muted: "bg-muted/30",
   accent: "bg-primary/5",
+};
+
+const gridColumnClasses: Record<
+  NonNullable<ValuesSectionProps["columns"]>,
+  string
+> = {
+  two: "grid-cols-1 desktop:grid-cols-2",
+  three: "grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3",
 };
 
 export function ValuesSection({
@@ -43,6 +60,7 @@ export function ValuesSection({
   values,
   cardVariant = "bordered",
   background = "default",
+  columns = "three",
   className,
 }: ValuesSectionProps) {
   return (
@@ -59,7 +77,7 @@ export function ValuesSection({
               className={cn(
                 "font-display font-bold",
                 "text-2xl tablet:text-3xl desktop:text-4xl",
-                "text-foreground mb-4"
+                "text-foreground mb-4",
               )}
             >
               {title}
@@ -72,7 +90,7 @@ export function ValuesSection({
                 className={cn(
                   "font-body text-lg",
                   "text-muted-foreground",
-                  "max-w-2xl mx-auto"
+                  "max-w-2xl mx-auto",
                 )}
               >
                 {subtitle}
@@ -85,7 +103,7 @@ export function ValuesSection({
         <div
           className={cn(
             "grid gap-6",
-            "grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3"
+            gridColumnClasses[columns],
           )}
         >
           {values.map((value, index) => (
@@ -99,7 +117,9 @@ export function ValuesSection({
                 icon={value.icon}
                 title={value.title}
                 description={value.description}
+                iconClassName={value.iconClassName}
                 variant={cardVariant}
+                className={value.className}
               />
             </FadeIn>
           ))}

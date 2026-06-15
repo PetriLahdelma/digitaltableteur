@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
 import Button from "@dt/Button";
 import styles from "./blognav.module.css";
-import { useNavigate } from "react-router-dom";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import Icon from "@dt/Icon";
 
@@ -36,12 +38,12 @@ const normalizePath = (value: string) => value.replace(/\/+$/, "") || "/";
 
 const BlogNav: React.FC = () => {
   const { t } = useTranslation();
-  const currentPath = normalizePath(window.location.pathname);
+  const currentPath = normalizePath(usePathname() ?? "/");
   const currentIndex = blogPages.findIndex(
     (p) => normalizePath(p.path) === currentPath,
   );
   const isArticleRoute = currentIndex >= 0;
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <>
       <div className={styles.blogNavBar}>
@@ -54,7 +56,7 @@ const BlogNav: React.FC = () => {
               ariaLabel={t("blogNavBackToArticles")}
             />
           }
-          onClick={() => navigate("/blog")}
+          onClick={() => router.push("/blog")}
         >
           <span className={styles.buttonLabel}>
             {t("blogNavBackToArticles")}
@@ -68,7 +70,7 @@ const BlogNav: React.FC = () => {
             isDisabled={!isArticleRoute || currentIndex <= 0}
             onClick={() => {
               if (!isArticleRoute) return;
-              if (currentIndex > 0) navigate(blogPages[currentIndex - 1].path);
+              if (currentIndex > 0) router.push(blogPages[currentIndex - 1].path);
             }}
           >
             <span className={styles.buttonLabel}>{t("blogNavPrev")}</span>
@@ -83,7 +85,7 @@ const BlogNav: React.FC = () => {
             onClick={() => {
               if (!isArticleRoute) return;
               if (currentIndex < blogPages.length - 1)
-                navigate(blogPages[currentIndex + 1].path);
+                router.push(blogPages[currentIndex + 1].path);
             }}
           >
             <span className={styles.buttonLabel}>{t("blogNavNext")}</span>
