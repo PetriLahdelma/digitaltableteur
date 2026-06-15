@@ -36,7 +36,9 @@ describe("Static content pages", () => {
 
   it("renders about page", () => {
     renderWithProviders(<AboutPage />);
-    expect(screen.getAllByText(/What we do/i).length).toBeGreaterThan(0);
+    expect(
+      screen.getByRole("heading", { name: /Strategy to scale/i }),
+    ).toBeInTheDocument();
   });
 
   it("renders home page hero", () => {

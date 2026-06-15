@@ -16,4 +16,5 @@ Studio values section for about page.
 
 ## Design notes
 - Tokens: inherit from child components
+- Grid: `columns="three"` defaults to 1 / 2 / 3 across mobile / tablet / desktop; `columns="two"` renders 1 mobile column and 2 desktop columns.
 - Figma: https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-values-section

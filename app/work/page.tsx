@@ -13,7 +13,7 @@ const projectNames = projects.map((p) => p.title).join(", ");
 
 export const metadata: Metadata = {
   title: "Work & Portfolio | Digitaltableteur",
-  description: `Explore our portfolio of design systems, UX design, and creative projects. See case studies from ${projectNames}, and more.`,
+  description: `Explore our portfolio of design systems, UX design and creative projects. See case studies from ${projectNames}, and more.`,
   keywords: [
     "design systems",
     "UX design",
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Work & Portfolio | Digitaltableteur",
-    description: `Explore our portfolio of design systems, UX design, and creative projects. See case studies from ${projectNames}, and more.`,
+    description: `Explore our portfolio of design systems, UX design and creative projects. See case studies from ${projectNames}, and more.`,
     type: "website",
     siteName: "Digitaltableteur",
   },
   twitter: {
     card: "summary_large_image",
     title: "Work & Portfolio | Digitaltableteur",
-    description: `Explore our portfolio of design systems, UX design, and creative projects. See case studies from ${projectNames}, and more.`,
+    description: `Explore our portfolio of design systems, UX design and creative projects. See case studies from ${projectNames}, and more.`,
   },
   alternates: {
     canonical: "/work",

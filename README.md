@@ -569,7 +569,7 @@ The site supports three languages with complete translation coverage:
 
 **Structure**:
 
-- Translation files: `shared/locales/{en,fi,sv}/translation.json`
+- Translation files: `nextjs-app/shared/locales/{en,fi,sv}/translation.json`
 - Namespace organization for maintainability
 - 100% coverage requirement enforced by tests
 

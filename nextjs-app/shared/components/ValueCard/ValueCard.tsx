@@ -10,6 +10,8 @@ export interface ValueCardProps {
   title: string;
   /** Card description */
   description: string;
+  /** Optional className for the icon wrapper */
+  iconClassName?: string;
   /** Card variant */
   variant?: "default" | "bordered" | "elevated";
   /** Custom className */
@@ -32,53 +34,57 @@ export function ValueCard({
   icon,
   title,
   description,
+  iconClassName,
   variant = "default",
   className,
 }: ValueCardProps) {
   return (
     <article
       className={cn(
-        "group relative p-6 rounded-lg",
+        "group relative overflow-hidden p-6 rounded-lg",
         "transition-all duration-300 ease-out",
         variantClasses[variant],
         hoverClasses[variant],
-        className
+        className,
       )}
     >
-      {/* Icon */}
-      <div
-        className={cn(
-          "flex items-center justify-center",
-          "w-12 h-12 rounded-lg mb-4",
-          "bg-primary/10 text-primary",
-          "transition-colors duration-300",
-          "group-hover:bg-primary/20"
-        )}
-      >
-        {icon}
+      <div className="relative z-10">
+        {/* Icon */}
+        <div
+          className={cn(
+            "flex items-center justify-center",
+            "w-12 h-12 rounded-lg mb-4",
+            "bg-primary/10 text-primary",
+            "transition-colors duration-300",
+            "group-hover:bg-primary/20",
+            iconClassName,
+          )}
+        >
+          {icon}
+        </div>
+
+        {/* Title */}
+        <h3
+          className={cn(
+            "font-display font-semibold",
+            "text-lg tablet:text-xl",
+            "text-foreground mb-2",
+          )}
+        >
+          {title}
+        </h3>
+
+        {/* Description */}
+        <p
+          className={cn(
+            "font-body text-sm tablet:text-base",
+            "text-muted-foreground",
+            "leading-relaxed",
+          )}
+        >
+          {description}
+        </p>
       </div>
-
-      {/* Title */}
-      <h3
-        className={cn(
-          "font-display font-semibold",
-          "text-lg tablet:text-xl",
-          "text-foreground mb-2"
-        )}
-      >
-        {title}
-      </h3>
-
-      {/* Description */}
-      <p
-        className={cn(
-          "font-body text-sm tablet:text-base",
-          "text-muted-foreground",
-          "leading-relaxed"
-        )}
-      >
-        {description}
-      </p>
     </article>
   );
 }

@@ -1,9 +1,15 @@
 import React from "react";
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { MemoryRouter } from "react-router-dom";
-import * as ReactRouter from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import NavMenuList, { NavMenuItem } from "@dt/NavMenuList";
+
+const { mockUsePathname } = vi.hoisted(() => ({
+  mockUsePathname: vi.fn(() => "/"),
+}));
+
+vi.mock("next/navigation", () => ({
+  usePathname: mockUsePathname,
+}));
 
 const items: NavMenuItem[] = [
   { to: "/", label: "Home", exact: true },
@@ -17,18 +23,8 @@ describe("NavMenuList", () => {
   });
 
   const renderNav = (pathname: string) => {
-    vi.spyOn(ReactRouter, "useLocation").mockReturnValue({
-      pathname,
-      search: "",
-      hash: "",
-      state: null,
-      key: "test",
-    });
-    return render(
-      <MemoryRouter initialEntries={[pathname]}>
-        <NavMenuList items={items} />
-      </MemoryRouter>,
-    );
+    mockUsePathname.mockReturnValue(pathname);
+    return render(<NavMenuList items={items} />);
   };
 
   it("renders all items", () => {

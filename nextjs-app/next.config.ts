@@ -12,9 +12,6 @@ const nextConfig: NextConfig = {
   },
   outputFileTracingRoot: path.join(__dirname, ".."),
   pageExtensions: ["ts", "tsx", "md", "mdx"],
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   webpack: (config) => {
     // Legacy Vite pages moved to shared/vite-pages to prevent routing conflicts
     config.watchOptions = {

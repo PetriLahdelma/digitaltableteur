@@ -5,6 +5,7 @@
  */
 
 import * as Sentry from "@sentry/nextjs";
+import { createHash } from "crypto";
 
 export interface AccessLogEntry {
   timestamp: string;
@@ -28,11 +29,100 @@ export enum SecurityEventType {
   DATA_DELETION = "data_deletion",
 }
 
+const HASH_PREFIX_LENGTH = 16;
+
+export function hashSecurityIdentifier(value: string | null | undefined): string {
+  const normalized = (value ?? "unknown").trim().toLowerCase() || "unknown";
+  return `sha256:${createHash("sha256")
+    .update(normalized)
+    .digest("hex")
+    .slice(0, HASH_PREFIX_LENGTH)}`;
+}
+
+const hashMetadataKeys = new Set([
+  "email",
+  "emailaddress",
+  "ip",
+  "requestip",
+  "submittedfrom",
+  "useragent",
+  "userid",
+]);
+
+const redactMetadataKeys = new Set([
+  "attachmentdata",
+  "authorization",
+  "cookie",
+  "message",
+  "name",
+  "password",
+  "phone",
+  "prompt",
+  "token",
+]);
+
+function normalizeMetadataKey(key: string): string {
+  return key.replace(/[-_\s]/g, "").toLowerCase();
+}
+
+function sanitizeMetadataValue(key: string, value: unknown): unknown {
+  const normalizedKey = normalizeMetadataKey(key);
+
+  if (hashMetadataKeys.has(normalizedKey)) {
+    return hashSecurityIdentifier(String(value ?? ""));
+  }
+
+  if (redactMetadataKeys.has(normalizedKey)) {
+    return "[redacted]";
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => sanitizeMetadataValue(key, item));
+  }
+
+  if (value && typeof value === "object") {
+    return sanitizeMetadata(value as Record<string, unknown>);
+  }
+
+  if (
+    typeof value === "string" &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+  ) {
+    return hashSecurityIdentifier(value);
+  }
+
+  return value;
+}
+
+function sanitizeMetadata(
+  metadata: Record<string, unknown> | undefined,
+): Record<string, unknown> | undefined {
+  if (!metadata) return undefined;
+
+  return Object.fromEntries(
+    Object.entries(metadata).map(([key, value]) => [
+      key,
+      sanitizeMetadataValue(key, value),
+    ]),
+  );
+}
+
 export class SecurityLogger {
+  private static sanitizeEntry(entry: AccessLogEntry): AccessLogEntry {
+    return {
+      ...entry,
+      ip: hashSecurityIdentifier(entry.ip),
+      userAgent: hashSecurityIdentifier(entry.userAgent),
+      userId: entry.userId ? hashSecurityIdentifier(entry.userId) : undefined,
+      metadata: sanitizeMetadata(entry.metadata),
+    };
+  }
+
   private static logToConsole(entry: AccessLogEntry) {
+    const safeEntry = this.sanitizeEntry(entry);
     const logLevel = entry.success ? "info" : "warn";
     console[logLevel](
-      `[SECURITY] ${entry.timestamp} | ${entry.method} ${entry.endpoint} | IP: ${entry.ip} | Success: ${entry.success}${entry.reason ? ` | Reason: ${entry.reason}` : ""}`,
+      `[SECURITY] ${safeEntry.timestamp} | ${safeEntry.method} ${safeEntry.endpoint} | IP: ${safeEntry.ip} | Success: ${safeEntry.success}${safeEntry.reason ? ` | Reason: ${safeEntry.reason}` : ""}`,
     );
   }
 
@@ -41,17 +131,18 @@ export class SecurityLogger {
     entry: AccessLogEntry,
   ) {
     if (!entry.success) {
+      const safeEntry = this.sanitizeEntry(entry);
       // Log failures as Sentry events for alerting
       Sentry.captureEvent({
         message: `Security Event: ${eventType}`,
         level: this.getSentryLevel(eventType),
         tags: {
           security_event: eventType,
-          endpoint: entry.endpoint,
-          ip: entry.ip,
+          endpoint: safeEntry.endpoint,
+          ip_hash: safeEntry.ip,
         },
         extra: {
-          access_log: entry,
+          access_log: safeEntry,
         },
       });
     }
@@ -194,7 +285,7 @@ export class SecurityLogger {
       method: "POST",
       success,
       reason,
-      metadata: { email },
+      metadata: { emailHash: hashSecurityIdentifier(email) },
     };
 
     this.logToConsole(entry);

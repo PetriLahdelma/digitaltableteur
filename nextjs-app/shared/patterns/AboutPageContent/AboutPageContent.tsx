@@ -4,23 +4,14 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import {
-  Code,
-  Sparkles,
   UserCheck,
   Network,
   ClipboardCheck,
   RefreshCw,
   KeyRound,
 } from "lucide-react";
-import {
-  Trophy,
-  HandsClapping,
-  HeadCircuit,
-  PuzzlePiece,
-} from "@phosphor-icons/react";
 
 import { AboutHero } from "../AboutHero";
-import { ContentSection } from "../ContentSection";
 import { ValuesSection, type ValueItem } from "../ValuesSection";
 import { StatsSection } from "../../patterns/StatsSection/StatsSection";
 import { ManifestoSection, type ManifestoToken } from "../ManifestoSection";
@@ -46,32 +37,98 @@ export function AboutPageContent({
   const values: ValueItem[] = useMemo(
     () => [
       {
-        icon: <Trophy className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            01
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueDesignTitle"),
         description: t("aboutValueDesignDescription"),
       },
       {
-        icon: <Code className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            02
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueDevelopmentTitle"),
         description: t("aboutValueDevelopmentDescription"),
       },
       {
-        icon: <HandsClapping className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            03
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueCollaborationTitle"),
         description: t("aboutValueCollaborationDescription"),
       },
       {
-        icon: <HeadCircuit className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            04
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueAITitle"),
         description: t("aboutValueAIDescription"),
       },
       {
-        icon: <PuzzlePiece className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            05
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueSystemsTitle"),
         description: t("aboutValueSystemsDescription"),
       },
       {
-        icon: <Sparkles className="w-6 h-6" />,
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-6xl font-semibold leading-none tracking-normal tablet:text-7xl"
+          >
+            06
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-6 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
         title: t("aboutValueCraftTitle"),
         description: t("aboutValueCraftDescription"),
       },
@@ -107,6 +164,78 @@ export function AboutPageContent({
         icon: <KeyRound className="w-6 h-6" />,
         title: t("aboutDeliveryOwnershipTitle"),
         description: t("aboutDeliveryOwnershipDescription"),
+      },
+    ],
+    [t, i18n.language],
+  );
+
+  // Operating model — folds the "how we work" story into the current About page
+  // instead of creating a separate generic process page.
+  const operatingValues: ValueItem[] = useMemo(
+    () => [
+      {
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-4xl font-semibold leading-none tracking-normal"
+          >
+            01
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-5 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
+        title: t("aboutOperatingDiagnoseTitle"),
+        description: t("aboutOperatingDiagnoseDescription"),
+      },
+      {
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-4xl font-semibold leading-none tracking-normal"
+          >
+            02
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-5 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
+        title: t("aboutOperatingShapeTitle"),
+        description: t("aboutOperatingShapeDescription"),
+      },
+      {
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-4xl font-semibold leading-none tracking-normal"
+          >
+            03
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-5 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
+        title: t("aboutOperatingBuildTitle"),
+        description: t("aboutOperatingBuildDescription"),
+      },
+      {
+        icon: (
+          <span
+            aria-hidden="true"
+            className="font-display text-4xl font-semibold leading-none tracking-normal"
+          >
+            04
+          </span>
+        ),
+        iconClassName: cn(
+          "mb-5 h-auto w-auto justify-start rounded-none bg-transparent",
+          "text-foreground group-hover:bg-transparent",
+        ),
+        title: t("aboutOperatingScaleTitle"),
+        description: t("aboutOperatingScaleDescription"),
       },
     ],
     [t, i18n.language],
@@ -148,14 +277,30 @@ export function AboutPageContent({
         values={values}
         cardVariant="bordered"
         background="muted"
+        columns="two"
       />
 
       {/* Stats Section */}
       <StatsSection
         stats={[
-          { value: 20, suffix: "+", label: t("statsYearsExperience", "Years of experience"), duration: 2 },
-          { value: 8, suffix: "K+", label: t("statsComponentsBuilt", "Design system components built"), duration: 2.5 },
-          { value: 300, suffix: "+", label: t("statsProjectsDelivered", "Projects delivered"), duration: 2 },
+          {
+            value: 20,
+            suffix: "+",
+            label: t("statsYearsExperience", "Years of experience"),
+            duration: 2,
+          },
+          {
+            value: 8,
+            suffix: "K+",
+            label: t("statsComponentsBuilt", "Design system components built"),
+            duration: 2.5,
+          },
+          {
+            value: 300,
+            suffix: "+",
+            label: t("statsProjectsDelivered", "Projects delivered"),
+            duration: 2,
+          },
         ]}
         background="primary"
       />
@@ -169,43 +314,14 @@ export function AboutPageContent({
         background="default"
       />
 
-      {/* What I Do - Design */}
-      <ContentSection
-        subtitle={t("aboutDesignSubtitle")}
-        title={t("aboutDesignTitle")}
-        content={
-          <p className="text-muted-foreground leading-relaxed">
-            {t("aboutDesignText")}
-          </p>
-        }
-        background="default"
-        centered
-      />
-
-      {/* What I Do - Development */}
-      <ContentSection
-        subtitle={t("aboutDevelopmentSubtitle")}
-        title={t("aboutDevelopmentTitle")}
-        content={
-          <p className="text-muted-foreground leading-relaxed">
-            {t("aboutDevelopmentText")}
-          </p>
-        }
-        background="default"
-        centered
-      />
-
-      {/* What I Do - Collaboration */}
-      <ContentSection
-        subtitle={t("aboutCollaborationSubtitle")}
-        title={t("aboutCollaborationTitle")}
-        content={
-          <p className="text-muted-foreground leading-relaxed">
-            {t("aboutCollaborationText")}
-          </p>
-        }
-        background="default"
-        centered
+      {/* Strategy to scale */}
+      <ValuesSection
+        title={t("aboutOperatingTitle")}
+        subtitle={t("aboutOperatingSubtitle")}
+        values={operatingValues}
+        cardVariant="bordered"
+        background="muted"
+        columns="two"
       />
 
       {/* Manifesto Section */}

@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./NavMenuList.module.css";
 
 export type NavMenuItem = {
@@ -27,14 +30,13 @@ const NavMenuList: React.FC<NavMenuListProps> = ({
   listClassName,
   itemClassName,
 }) => {
-  const location = useLocation();
+  const pathname = usePathname() ?? "/";
   return (
     <ul className={listClassName ?? styles.nav}>
       {items.map((item) => {
         const isActive = item.exact
-          ? location.pathname === item.to
-          : location.pathname === item.to ||
-            location.pathname.startsWith(`${item.to}/`);
+          ? pathname === item.to
+          : pathname === item.to || pathname.startsWith(`${item.to}/`);
         const linkClass = [styles.navLink, itemClassName]
           .filter(Boolean)
           .join(" ");
@@ -47,7 +49,7 @@ const NavMenuList: React.FC<NavMenuListProps> = ({
         return (
           <li key={item.to} className={styles.navItem}>
             <Link
-              to={item.to}
+              href={item.to}
               className={finalClass}
               aria-current={isActive ? "page" : undefined}
               onClick={onNavigate}

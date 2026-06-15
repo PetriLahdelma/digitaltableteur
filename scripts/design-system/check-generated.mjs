@@ -28,7 +28,10 @@ const trackedDistFiles = execSync(
   { cwd: ROOT, encoding: "utf8" },
 ).trim();
 
-const pathsToCheck = ["app/tailwind.css"];
+const pathsToCheck = [
+  "app/tailwind.css",
+  "nextjs-app/shared/foundations/token-catalog.json",
+];
 if (trackedDistFiles) {
   pathsToCheck.push("nextjs-app/shared/foundations/dist");
 }
@@ -45,7 +48,7 @@ if (dirty) {
   console.error(dirty);
   if (!trackedDistFiles) {
     console.error(
-      "Note: foundations/dist is not tracked in git; only app/tailwind.css is checked for drift.",
+      "Note: foundations/dist is not tracked in git; app/tailwind.css and token-catalog.json are checked for drift.",
     );
   }
   process.exit(1);

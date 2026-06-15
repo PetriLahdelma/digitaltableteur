@@ -14,12 +14,14 @@
  * Created: Phase 12-2 Launch Preparation
  */
 
-import { readFileSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const localesDir = resolve(__dirname, "../nextjs-app/shared/locales");
+const legacyLocalesDir = resolve(__dirname, "../shared/locales");
+const languages = ["en", "fi", "sv"];
 
 /**
  * Recursively extracts all keys from a nested JSON object
@@ -51,6 +53,21 @@ function loadTranslation(lang) {
     console.error(`Error loading ${lang}/translation.json:`, error.message);
     process.exit(1);
   }
+}
+
+const legacyTranslationFiles = languages
+  .map((lang) => resolve(legacyLocalesDir, lang, "translation.json"))
+  .filter((filePath) => existsSync(filePath));
+
+if (legacyTranslationFiles.length > 0) {
+  console.error("FAIL: legacy translation mirror still exists.");
+  console.error(
+    "Use nextjs-app/shared/locales/{en,fi,sv}/translation.json as the canonical source."
+  );
+  legacyTranslationFiles.forEach((filePath) => {
+    console.error(`  - ${filePath}`);
+  });
+  process.exit(1);
 }
 
 // Load all translation files

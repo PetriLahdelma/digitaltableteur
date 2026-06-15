@@ -2,7 +2,7 @@
 /**
  * Extract production tokens + contrast audit into foundations/token-catalog.json
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -61,6 +61,32 @@ function inferUsage(name) {
   if (name.startsWith("--modal-") || name.startsWith("--gallery-")) return "Overlay or elevation token.";
   if (name.startsWith("--color-")) return `Color token (${name.replace("--color-", "")}).`;
   return "";
+}
+
+function withoutGeneratedAt(catalog) {
+  const { generatedAt: _generatedAt, ...rest } = catalog;
+  return rest;
+}
+
+function resolveGeneratedAt(nextCatalog) {
+  if (!existsSync(OUT_JSON)) {
+    return new Date().toISOString();
+  }
+
+  try {
+    const previous = JSON.parse(readFileSync(OUT_JSON, "utf8"));
+    if (
+      previous.generatedAt &&
+      JSON.stringify(withoutGeneratedAt(previous)) ===
+        JSON.stringify(withoutGeneratedAt(nextCatalog))
+    ) {
+      return previous.generatedAt;
+    }
+  } catch {
+    // Fall through to a fresh timestamp if the existing catalog is unreadable.
+  }
+
+  return new Date().toISOString();
 }
 
 function parseProps(block) {
@@ -200,9 +226,8 @@ function main() {
 
   const usageCoverage = tokens.filter((t) => t.usage).length;
 
-  const catalog = {
+  const catalogPayload = {
     source: "nextjs-app/shared/styles/variables.css",
-    generatedAt: new Date().toISOString(),
     tokenCount: tokens.length,
     usageCoverage,
     themes: themes.map(({ id, className, label }) => ({ id, className, label })),
@@ -211,6 +236,16 @@ function main() {
     groups: Object.values(groups).sort(
       (a, b) => a.category.localeCompare(b.category) || a.subgroup.localeCompare(b.subgroup),
     ),
+  };
+  const catalog = {
+    source: catalogPayload.source,
+    generatedAt: resolveGeneratedAt(catalogPayload),
+    tokenCount: catalogPayload.tokenCount,
+    usageCoverage: catalogPayload.usageCoverage,
+    themes: catalogPayload.themes,
+    contrastPairs: catalogPayload.contrastPairs,
+    contrastByTheme: catalogPayload.contrastByTheme,
+    groups: catalogPayload.groups,
   };
 
   writeFileSync(OUT_JSON, `${JSON.stringify(catalog, null, 2)}\n`);

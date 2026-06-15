@@ -1,16 +1,17 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
 import { vi } from "vitest";
 import WorkNav from "@dt/WorkNav";
 
-// Mock react-router-dom navigate
-const mockNavigate = vi.fn();
-vi.mock("react-router-dom", async () => {
-  const actual = await vi.importActual("react-router-dom");
+const { mockPush, mockUsePathname } = vi.hoisted(() => ({
+  mockPush: vi.fn(),
+  mockUsePathname: vi.fn(() => "/work/new-things-co"),
+}));
+
+vi.mock("next/navigation", () => {
   return {
-    ...actual,
-    useNavigate: () => mockNavigate,
+    usePathname: mockUsePathname,
+    useRouter: () => ({ push: mockPush }),
   };
 });
 
@@ -32,17 +33,8 @@ vi.mock("react-i18next", () => ({
 }));
 
 const renderWorkNav = (initialPath = "/work/new-things-co") => {
-  // Mock window.location.pathname
-  Object.defineProperty(window, "location", {
-    value: { pathname: initialPath },
-    writable: true,
-  });
-
-  return render(
-    <MemoryRouter initialEntries={[initialPath]}>
-      <WorkNav />
-    </MemoryRouter>,
-  );
+  mockUsePathname.mockReturnValue(initialPath);
+  return render(<WorkNav />);
 };
 
 describe("WorkNav", () => {
@@ -64,7 +56,7 @@ describe("WorkNav", () => {
     const backButton = screen.getByText("Work");
     fireEvent.click(backButton);
 
-    expect(mockNavigate).toHaveBeenCalledWith("/work");
+    expect(mockPush).toHaveBeenCalledWith("/work");
   });
 
   describe("navigation state", () => {
@@ -104,7 +96,7 @@ describe("WorkNav", () => {
       const prevButton = screen.getByText("Prev");
       fireEvent.click(prevButton);
 
-      expect(mockNavigate).toHaveBeenCalledWith("/work/new-things-co");
+      expect(mockPush).toHaveBeenCalledWith("/work/new-things-co");
     });
 
     it("navigates to next page when next button is clicked", () => {
@@ -113,7 +105,7 @@ describe("WorkNav", () => {
       const nextButton = screen.getByText("Next");
       fireEvent.click(nextButton);
 
-      expect(mockNavigate).toHaveBeenCalledWith("/work/illustrations");
+      expect(mockPush).toHaveBeenCalledWith("/work/illustrations");
     });
 
     it("does not navigate when prev is clicked on first page", () => {
@@ -123,7 +115,7 @@ describe("WorkNav", () => {
       fireEvent.click(prevButton);
 
       // Should only have been called once for the back to work button test setup
-      expect(mockNavigate).not.toHaveBeenCalledWith(
+      expect(mockPush).not.toHaveBeenCalledWith(
         expect.stringContaining("work/"),
       );
     });
@@ -134,7 +126,7 @@ describe("WorkNav", () => {
       const nextButton = screen.getByText("Next");
       fireEvent.click(nextButton);
 
-      expect(mockNavigate).not.toHaveBeenCalledWith(
+      expect(mockPush).not.toHaveBeenCalledWith(
         expect.stringContaining("work/"),
       );
     });
