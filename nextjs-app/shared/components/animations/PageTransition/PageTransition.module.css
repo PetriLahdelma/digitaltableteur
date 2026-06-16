@@ -1,0 +1,15 @@
+.root {
+  min-block-size: 100%;
+  transform-origin: 50% 0;
+}
+
+.root[data-route-transitioning="true"] {
+  backface-visibility: hidden;
+  contain: paint;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transform: none;
+  }
+}

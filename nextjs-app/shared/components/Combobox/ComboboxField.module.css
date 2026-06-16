@@ -25,15 +25,24 @@
   display: flex;
   position: relative;
   width: 100%;
-  min-height: 44px;
+  min-height: 48px;
   align-items: stretch;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: transparent;
+  outline: var(--focus-ring-width) solid transparent;
+  outline-offset: 0;
+  background: color-mix(
+    in srgb,
+    var(--main-body-background-color) 96%,
+    var(--color-primary)
+  );
+  box-shadow: inset 0 0 0 0 transparent;
   cursor: pointer;
   transition:
     border-color var(--duration-fast) var(--ease-out-cubic),
-    outline-color var(--duration-fast) var(--ease-out-cubic);
+    outline-color var(--duration-fast) var(--ease-out-cubic),
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    box-shadow var(--duration-fast) var(--ease-out-cubic);
 }
 
 .controlOpen,
@@ -42,8 +51,21 @@
 }
 
 .control:focus-within {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  outline-color: var(--focus-ring-color);
+}
+
+.control:not(:focus-within):hover:not(.disabled) {
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 44%,
+    var(--color-border)
+  );
+  background: color-mix(
+    in srgb,
+    var(--main-body-background-color) 92%,
+    var(--color-primary)
+  );
 }
 
 .controlError {
@@ -52,8 +74,9 @@
 
 .trigger {
   display: flex;
-  padding: var(--space-internal-12) var(--space-internal-16);
-  padding-inline-end: calc(var(--space-internal-32) + var(--space-internal-8));
+  padding-block: var(--space-internal-12);
+  padding-inline: var(--space-internal-16)
+    calc(var(--space-internal-32) + var(--space-internal-8));
   min-width: 0;
   flex: 1;
   align-items: center;
@@ -97,6 +120,7 @@
   background: transparent;
   color: var(--color-muted);
   cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out-cubic);
   inset-inline-end: 0;
 }
 
@@ -108,7 +132,9 @@
   display: block;
   flex-shrink: 0;
   pointer-events: none;
-  transition: transform var(--duration-normal) var(--ease-out-expo);
+  transition:
+    color var(--duration-fast) var(--ease-out-cubic),
+    transform var(--duration-normal) var(--ease-out-expo);
 }
 
 .chevronOpen,
@@ -130,15 +156,20 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--main-body-background-color, var(--color-surface));
-  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+  box-shadow:
+    0 20px 60px color-mix(in srgb, var(--color-primary) 14%, transparent),
+    0 2px 12px color-mix(in srgb, var(--color-primary) 8%, transparent);
+  animation: dropdown-enter var(--duration-fast) var(--ease-out-cubic);
   list-style: none;
   list-style-type: " ";
   overflow-y: auto;
   overscroll-behavior: contain;
+  transform-origin: top center;
 }
 
 .option {
   display: flex;
+  position: relative;
   padding: var(--space-internal-12) var(--space-internal-16);
   width: 100%;
   min-height: 44px;
@@ -154,21 +185,26 @@
   text-align: start;
   color: var(--color-text);
   cursor: pointer;
-  transition: background-color var(--duration-fast) var(--ease-out-cubic);
+  transition:
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    color var(--duration-fast) var(--ease-out-cubic),
+    transform var(--duration-fast) var(--ease-out-cubic);
 }
 
 .option:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: -2px;
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: calc(-1 * var(--focus-ring-width));
 }
 
 .option:hover:not(:disabled),
 .optionHighlighted {
-  background: color-mix(in srgb, var(--color-border) 25%, transparent);
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  transform: translateX(var(--space-internal-2));
 }
 
 .optionSelected {
-  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  color: var(--color-primary);
 }
 
 .optionLabel {
@@ -193,4 +229,31 @@
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.6;
+}
+
+@keyframes dropdown-enter {
+  from {
+    transform: translateY(calc(-1 * var(--space-internal-4))) scale(0.98);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron,
+  .control,
+  .dropdown,
+  .option {
+    transition: none;
+    animation: none;
+  }
+
+  .option:hover:not(:disabled),
+  .optionHighlighted {
+    transform: none;
+  }
 }

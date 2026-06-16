@@ -102,23 +102,30 @@ noscript ~ .cardWrapper,
   overflow: hidden;
 }
 
-/* Override EnhancedProjectCard hover effects inside magnetic field */
+/* Override EnhancedProjectCard hover effects inside magnetic field. */
 
-.cardContainer :global(.group:hover) img,
-.cardContainer :global(.group:hover) video {
-  transform: none !important;
+.cardContainer
+  :global([data-enhanced-project-card]:hover [data-project-card-asset]),
+.cardContainer
+  :global([data-enhanced-project-card]:focus-visible [data-project-card-asset]) {
+  transform: none;
 }
 
-/* Tags always visible */
+/* Tags always visible. */
 
-.cardContainer :global(.flex.flex-wrap) {
-  opacity: 1 !important;
+.cardContainer :global([data-project-card-tags]) {
+  transform: none;
+  opacity: 1;
 }
 
-/* Remove hover shadow from image container inside card */
+/* Remove hover shadow from image container inside card. */
 
-.cardContainer :global(.group-hover\:shadow-lg) {
-  box-shadow: none !important;
+.cardContainer
+  :global([data-enhanced-project-card]:hover [data-project-card-media]),
+.cardContainer
+  :global([data-enhanced-project-card]:focus-visible [data-project-card-media]) {
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-primary) 8%, transparent);
+  transform: none;
 }
 
 /* Mobile view-all link */

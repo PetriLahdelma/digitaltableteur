@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 475,
+  "warningCount": 472,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -4012,33 +4012,6 @@
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
       "line": 203,
       "column": 33,
-      "rule": "declaration-no-important",
-      "severity": "warning",
-      "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::109::19::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css",
-      "line": 109,
-      "column": 19,
-      "rule": "declaration-no-important",
-      "severity": "warning",
-      "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::115::14::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css",
-      "line": 115,
-      "column": 14,
-      "rule": "declaration-no-important",
-      "severity": "warning",
-      "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::121::20::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css",
-      "line": 121,
-      "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"

@@ -1,32 +1,62 @@
 .themeIcon {
-  display: inline-flex;
+  display: inline-grid;
+  block-size: 1.25rem;
+  inline-size: 1.25rem;
+  place-items: center;
+  transition:
+    color var(--duration-fast) var(--ease-out-cubic),
+    transform var(--duration-fast) var(--ease-out-cubic);
   transform-origin: center;
 }
 
 .themeIconAnimating {
-  animation: theme-toggle-pop 0.45s ease;
+  animation: theme-toggle-settle 520ms var(--ease-out-expo);
 }
 
-@keyframes theme-toggle-pop {
+.themeIconAnimating svg {
+  animation: theme-toggle-glyph 520ms var(--ease-out-expo);
+}
+
+@keyframes theme-toggle-settle {
   0% {
-    transform: scale(1) rotate(0deg);
+    transform: scale(1);
   }
 
-  30% {
-    transform: scale(1.25) rotate(15deg);
+  34% {
+    transform: scale(0.82);
   }
 
-  60% {
-    transform: scale(0.9) rotate(-8deg);
+  68% {
+    transform: scale(1.12);
   }
 
   100% {
-    transform: scale(1) rotate(0deg);
+    transform: scale(1);
+  }
+}
+
+@keyframes theme-toggle-glyph {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.72;
+  }
+
+  45% {
+    transform: rotate(92deg);
+    opacity: 0.96;
+  }
+
+  100% {
+    transform: rotate(180deg);
+    opacity: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .themeIconAnimating {
+  .themeIcon,
+  .themeIconAnimating,
+  .themeIconAnimating svg {
+    transition: none;
     animation: none;
   }
 }

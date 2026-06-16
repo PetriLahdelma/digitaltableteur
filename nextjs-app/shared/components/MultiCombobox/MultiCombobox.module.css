@@ -1,9 +1,7 @@
 .inner {
   display: flex;
-  padding: var(--space-internal-12)
-    calc(var(--space-internal-32) + var(--space-internal-8))
-    var(--space-internal-12) var(--space-internal-16);
-  padding-inline-end: 0;
+  padding-block: var(--space-internal-8);
+  padding-inline: var(--space-internal-16) 0;
   min-width: 0;
   flex: 1;
   flex-wrap: wrap;
@@ -15,14 +13,16 @@
   display: grid;
   grid-template-columns:
     minmax(0, 1fr) calc(var(--space-internal-32) + var(--space-internal-8));
+  align-items: stretch;
   cursor: text;
 }
 
 .input {
-  padding: var(--space-internal-4) 0;
-  min-width: min(6rem, 100%);
+  padding-block: var(--space-internal-4);
+  padding-inline: 0 var(--space-internal-8);
+  min-width: min(10rem, 100%);
   max-width: 100%;
-  flex: 1 1 6rem;
+  flex: 1 1 10rem;
   border: none;
   outline: none;
   background: transparent;
@@ -38,7 +38,7 @@
 
 .input::placeholder {
   color: var(--color-muted);
-  opacity: 0.7;
+  opacity: 0.78;
 }
 
 .control .chevronButton {
@@ -48,6 +48,7 @@
   padding-inline-end: calc(var(--space-internal-12) + var(--space-internal-8));
   width: calc(var(--space-internal-32) + var(--space-internal-8));
   justify-content: flex-end;
+  align-items: center;
 }
 
 .input:disabled {

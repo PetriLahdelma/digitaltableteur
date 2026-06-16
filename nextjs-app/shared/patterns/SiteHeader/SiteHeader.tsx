@@ -113,13 +113,17 @@ export function SiteHeader({
   const ThemeIcon = themeIcons[theme];
 
   const handleThemeToggle = () => {
-    if (!isThemeAnimating) {
-      setIsThemeAnimating(true);
-      themeAnimationTimeout.current = setTimeout(() => {
-        setIsThemeAnimating(false);
-        themeAnimationTimeout.current = null;
-      }, 450);
+    if (themeAnimationTimeout.current) {
+      clearTimeout(themeAnimationTimeout.current);
     }
+
+    setIsThemeAnimating(false);
+    window.requestAnimationFrame(() => setIsThemeAnimating(true));
+    themeAnimationTimeout.current = setTimeout(() => {
+      setIsThemeAnimating(false);
+      themeAnimationTimeout.current = null;
+    }, 520);
+
     const nextTheme = cycleTheme() as Theme;
     const label = t(themeNames[nextTheme], nextTheme);
     showToast(t("themeChanged", { theme: label }), 3000);
@@ -302,9 +306,10 @@ export function SiteHeader({
                       styles.themeIcon,
                       isThemeAnimating && styles.themeIconAnimating,
                     )}
+                    data-theme={theme}
                     aria-hidden
                   >
-                    <ThemeIcon weight="bold" className="size-5" />
+                    <ThemeIcon key={theme} weight="bold" className="size-5" />
                   </span>
                 }
                 label={t("toggleDarkMode")}
@@ -335,6 +340,7 @@ export function SiteHeader({
         currentLang={currentLang}
         onLanguageChange={handleLanguageChange}
         onThemeToggle={handleThemeToggle}
+        isThemeAnimating={isThemeAnimating}
         theme={theme}
       />
     </>

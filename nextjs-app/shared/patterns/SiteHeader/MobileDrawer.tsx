@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { NavLink } from "@/nextjs-app/shared/components/NavLink";
 import { IconButton } from "@/nextjs-app/shared/components/IconButton";
 import { X, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
+import styles from "./SiteHeader.module.css";
 import type { NavItem } from "./SiteHeader";
 import type { Theme } from "@dt/ThemeProvider";
 
@@ -18,6 +19,7 @@ interface MobileDrawerProps {
   currentLang: string;
   onLanguageChange: (code: string) => void;
   onThemeToggle: () => void;
+  isThemeAnimating?: boolean;
   theme: Theme;
 }
 
@@ -35,6 +37,7 @@ export function MobileDrawer({
   currentLang,
   onLanguageChange,
   onThemeToggle,
+  isThemeAnimating = false,
   theme,
 }: MobileDrawerProps) {
   const { t } = useTranslation();
@@ -220,7 +223,18 @@ export function MobileDrawer({
               {t("navMenuTheme")}
             </span>
             <IconButton
-              icon={<ThemeIcon weight="bold" className="size-5" />}
+              icon={
+                <span
+                  className={cn(
+                    styles.themeIcon,
+                    isThemeAnimating && styles.themeIconAnimating,
+                  )}
+                  data-theme={theme}
+                  aria-hidden
+                >
+                  <ThemeIcon key={theme} weight="bold" className="size-5" />
+                </span>
+              }
               label={t("navMenuThemeToggle")}
               onClick={onThemeToggle}
               variant="outline"

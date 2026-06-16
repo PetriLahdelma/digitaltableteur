@@ -220,6 +220,7 @@ export function MultiCombobox({
         width: dropdownStyle.width,
       }}
       data-testid={`${fieldId}-dropdown`}
+      data-state="open"
       data-lenis-prevent=""
       data-lenis-prevent-wheel=""
       data-lenis-prevent-touch=""
@@ -292,6 +293,7 @@ export function MultiCombobox({
             error && fieldStyles.controlError,
             isDisabled && fieldStyles.disabled,
           )}
+          data-state={open ? "open" : "closed"}
           onMouseDown={(event) => {
             if ((event.target as HTMLElement).closest("[data-chip-remove]")) {
               return;
