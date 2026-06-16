@@ -63,7 +63,7 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 ### 2. Google Search Console Verification ✅ FIXED
 
-**Previous Issue**: Verification tag was only in legacy Vite app (`vite-app/index.html`), not in production Next.js app.
+**Previous Issue**: Verification tag was only in the legacy Vite app, not in the production Next.js app.
 
 **Fix Applied**: Added `verification` metadata to `app/layout.tsx`
 
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
 
 **Status**: ✅ **Ready for deployment**
 
-**Verification Code Origin**: Migrated from `vite-app/index.html` where it was originally set up.
+**Verification Code Origin**: Migrated from the legacy Vite app where it was originally set up.
 
 ---
 

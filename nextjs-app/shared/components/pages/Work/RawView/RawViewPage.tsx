@@ -11,11 +11,7 @@ import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
-import {
-  SiAdobeillustrator,
-  SiAdobeindesign,
-  SiAdobephotoshop,
-} from "react-icons/si";
+import { AdobeToolIcon } from "../AdobeToolIcon";
 
 import styles from "./rawView.module.css";
 
@@ -53,17 +49,17 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
         tools={[
           {
             key: "indesign",
-            icon: <SiAdobeindesign size={24} />,
+            icon: <AdobeToolIcon tool="indesign" />,
             name: "InDesign",
           },
           {
             key: "illustrator",
-            icon: <SiAdobeillustrator size={24} />,
+            icon: <AdobeToolIcon tool="illustrator" />,
             name: "Illustrator",
           },
           {
             key: "photoshop",
-            icon: <SiAdobephotoshop size={24} />,
+            icon: <AdobeToolIcon tool="photoshop" />,
             name: "Photoshop",
           },
         ]}

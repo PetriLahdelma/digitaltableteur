@@ -9,8 +9,6 @@ import GridBlock from "../../../../patterns/GridBlock";
 import Image from "next/image";
 import {
   SiSlack,
-  SiAdobephotoshop,
-  SiAdobeillustrator,
   SiFigma,
   SiSketch,
 } from "react-icons/si";
@@ -22,6 +20,7 @@ import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
+import { AdobeToolIcon } from "../AdobeToolIcon";
 
 export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
   const project = getProjectBySlug("helsinki-design-system");
@@ -81,12 +80,12 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           },
           {
             key: "illustrator",
-            icon: <SiAdobeillustrator size={24} />,
+            icon: <AdobeToolIcon tool="illustrator" />,
             name: "Illustrator",
           },
           {
             key: "photoshop",
-            icon: <SiAdobephotoshop size={24} />,
+            icon: <AdobeToolIcon tool="photoshop" />,
             name: "Photoshop",
           },
         ]}

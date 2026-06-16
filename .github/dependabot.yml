@@ -33,49 +33,8 @@ updates:
         update-types:
           - "minor"
           - "patch"
-    ignore:
-      # Pinned at 5.5.0 — 5.6 drops Adobe SI icons used on work pages
-      # (see CLAUDE.md gotchas). Bump only with a verified icon audit.
-      - dependency-name: "react-icons"
     # Security updates always get individual PRs
     versioning-strategy: "increase"
-
-  # Legacy nextjs-app mirror — not deployed; security scanning only via root /
-  # open-pull-requests-limit: 0 disables version-update PRs for this directory.
-  - package-ecosystem: "npm"
-    directory: "/nextjs-app"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 0
-    reviewers:
-      - "PetriLahdelma"
-    labels:
-      - "dependencies"
-      - "nextjs"
-      - "security"
-    commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
-
-  # Legacy Vite app — being phased out; no version-update PRs
-  - package-ecosystem: "npm"
-    directory: "/vite-app"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 0
-    reviewers:
-      - "PetriLahdelma"
-    labels:
-      - "dependencies"
-      - "vite-legacy"
-      - "security"
-    commit-message:
-      prefix: "chore(deps)"
-      include: "scope"
 
   # Sanity CMS studio (still used via npm run sanity:dev)
   - package-ecosystem: "npm"

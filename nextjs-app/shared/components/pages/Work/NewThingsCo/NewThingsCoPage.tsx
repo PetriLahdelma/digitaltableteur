@@ -12,7 +12,8 @@ import { ProjectHero } from "../../../../patterns/ProjectHero";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
-import { SiFigma, SiAdobeillustrator, SiReact } from "react-icons/si";
+import { SiFigma, SiReact } from "react-icons/si";
+import { AdobeToolIcon } from "../AdobeToolIcon";
 
 import styles from "./newThingsCo.module.css";
 
@@ -64,7 +65,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
               <Title as="h3" unstyled className={styles.metaLabel}>Tools used</Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
-                <SiAdobeillustrator size={24} title="Illustrator" />
+                <AdobeToolIcon tool="illustrator" />
                 <SiReact size={24} title="React" />
               </div>
             </div>

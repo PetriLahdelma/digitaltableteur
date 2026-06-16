@@ -15,12 +15,14 @@ const isVercel =
   process.env.VERCEL === "true" ||
   process.env.NOW_REGION !== undefined;
 const isCI = process.env.CI === "1" || process.env.CI === "true";
+const shouldRunStorybookTests =
+  process.env.RUN_STORYBOOK_TESTS === "1" ||
+  process.env.RUN_STORYBOOK_TESTS === "true";
 const shouldSkipStorybookTests =
-  // Vercel deploy builds shouldn't run Storybook/Vitest addon projects.
-  // They rely on Storybook config + (optionally) Playwright browsers, and are
-  // both slow and flaky in that environment.
+  // Keep npm test on the existing unit-test contract. Storybook browser tests
+  // remain available as an explicit project when RUN_STORYBOOK_TESTS=1.
+  !shouldRunStorybookTests ||
   isVercel ||
-  isCI ||
   process.env.SKIP_STORYBOOK_TESTS === "1" ||
   process.env.SKIP_STORYBOOK_TESTS === "true";
 const shouldEnableStorybookBrowserTests =
@@ -54,6 +56,95 @@ const stubMdxInTests = {
   },
 };
 
+const unitTestProject = {
+  extends: true as const,
+  test: {
+    name: "unit",
+    sequence: {
+      groupOrder: 0,
+    },
+    // Avoid worker teardown races ("Closing rpc while fetch was pending") under CI load.
+    fileParallelism: isCI ? false : true,
+    maxWorkers: isCI ? 1 : undefined,
+    environment: "jsdom",
+    setupFiles: "./vitest.setup.ts",
+    globals: true,
+    include: [
+      "nextjs-app/**/*.test.{ts,tsx}",
+      "app/**/*.test.{ts,tsx}",
+      "providers/**/*.test.{ts,tsx}",
+      "lib/**/*.test.{ts,tsx}",
+      "components/**/*.test.{ts,tsx}",
+      "tests/**/*.test.{ts,tsx}",
+    ],
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      ".claude/**",
+    ],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "lcov", "json-summary"],
+      reportsDirectory: "coverage",
+      include: [
+        "shared/components/**/*.{ts,tsx}",
+        "app/**/*.{ts,tsx}",
+        "components/**/*.{ts,tsx}",
+        "nextjs-app/shared/components/**/*.{ts,tsx}",
+        "nextjs-app/shared/patterns/**/*.{ts,tsx}",
+        "nextjs-app/shared/utils/**/*.{ts,tsx}",
+      ],
+      exclude: [
+        "**/*.stories.{ts,tsx}",
+        "**/*.test.{ts,tsx}",
+        "**/index.{ts,tsx}",
+        ".claude/**",
+      ],
+    },
+  },
+};
+
+const storybookTestProject = {
+  extends: true as const,
+  plugins: [
+    // The plugin runs tests for the stories defined in .storybook/main.ts.
+    storybookTest({
+      configDir: path.join(dirname, ".storybook"),
+      // Disable tags to avoid import.meta.env issues in browser mode.
+      tags: {
+        skip: [],
+      },
+    }),
+  ],
+  test: {
+    name: "storybook",
+    sequence: {
+      groupOrder: 1,
+    },
+    // Run storybook browser tests sequentially to avoid Vite HMR WebSocket
+    // teardown races ("WebSocket closed without opened") on worker shutdown.
+    fileParallelism: false,
+    maxWorkers: 1,
+    pool: "forks",
+    browser: {
+      enabled: shouldEnableStorybookBrowserTests,
+      ...(shouldEnableStorybookBrowserTests
+        ? {
+            headless: true,
+            provider: playwright({}),
+            instances: [
+              {
+                browser: "chromium" as const,
+              },
+            ],
+          }
+        : {}),
+    },
+    // Prevent import.meta.env cloning issues.
+    isolate: false,
+  },
+};
+
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [stubMdxInTests, react()],
@@ -76,100 +167,16 @@ export default defineConfig({
     ],
   },
   test: {
-    // Avoid worker teardown races ("Closing rpc while fetch was pending") under CI load.
-    fileParallelism: isCI ? false : true,
-    maxWorkers: isCI ? 1 : undefined,
-    environment: "jsdom",
-    setupFiles: "./vitest.setup.ts",
-    globals: true,
-    include: [
-      "nextjs-app/**/*.test.{ts,tsx}",
-      "app/**/*.test.{ts,tsx}",
-      "providers/**/*.test.{ts,tsx}",
-      "lib/**/*.test.{ts,tsx}",
-      "components/**/*.test.{ts,tsx}",
-      "tests/**/*.test.{ts,tsx}",
-    ],
-    exclude: [
-      "**/node_modules/**",
-      "**/dist/**",
-      "src-legacy-vite-DO-NOT-USE/**",
-      "vite-app/**",
-      ".claude/**",
-    ],
-    coverage: {
-      provider: "v8",
-      reporter: ["text", "lcov", "json-summary"],
-      reportsDirectory: "coverage",
-      include: [
-        "shared/components/**/*.{ts,tsx}",
-        "app/**/*.{ts,tsx}",
-        "components/**/*.{ts,tsx}",
-        "nextjs-app/shared/components/**/*.{ts,tsx}",
-        "nextjs-app/shared/patterns/**/*.{ts,tsx}",
-        "nextjs-app/shared/utils/**/*.{ts,tsx}",
-      ],
-      exclude: [
-        "**/*.stories.{ts,tsx}",
-        "**/*.test.{ts,tsx}",
-        "**/index.{ts,tsx}",
-        "src-legacy-vite-DO-NOT-USE/**",
-        "vite-app/**",
-      ".claude/**",
-      ],
-    },
     projects: shouldSkipStorybookTests
-      ? undefined
-      : [
-          {
-            extends: true,
-            plugins: [
-              // The plugin will run tests for the stories defined in your Storybook config
-              // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-              storybookTest({
-                configDir: path.join(dirname, ".storybook"),
-                // Disable tags to avoid import.meta.env issues in browser mode
-                tags: {
-                  skip: [],
-                },
-              }),
-            ],
-            test: {
-              name: "storybook",
-              // Run storybook browser tests sequentially to avoid Vite HMR WebSocket
-              // teardown races ("WebSocket closed without opened") on worker shutdown.
-              fileParallelism: false,
-              maxWorkers: 1,
-              pool: "forks",
-              browser: {
-                enabled: shouldEnableStorybookBrowserTests,
-                ...(shouldEnableStorybookBrowserTests
-                  ? {
-                      headless: true,
-                      provider: playwright({}),
-                      instances: [
-                        {
-                          browser: "chromium",
-                        },
-                      ],
-                    }
-                  : {}),
-              },
-              setupFiles: [".storybook/vitest.setup.ts"],
-              // Prevent import.meta.env cloning issues
-              isolate: false,
-              // Don't specify include here - let Storybook plugin handle story discovery
-            },
-          },
-        ],
+      ? [unitTestProject]
+      : [unitTestProject, storybookTestProject],
   },
   resolve: {
     // `dedupe` is the Vite-blessed way to force one copy of each package
-    // across the entire test graph. Without this, the nested `nextjs-app/
-    // node_modules/react*` install (created by nextjs-app/prebuild) pulls in
-    // a second React, which surfaces as `Cannot read properties of null
-    // (reading 'useContext')` when react-i18next's hook calls into a
-    // different React than the test harness loaded.
+    // across the entire test graph. Without this, local nested installs or
+    // linked worktrees can pull in a second React, which surfaces as
+    // `Cannot read properties of null (reading 'useContext')` when hooks call
+    // into a different React than the test harness loaded.
     dedupe: [
       "react",
       "react-dom",
@@ -178,10 +185,8 @@ export default defineConfig({
       "react-i18next",
       "i18next",
       "scheduler",
-      // The nested nextjs-app/node_modules install ships its own copy of
-      // these UI packages, which each carry their own React instance and
-      // cause useContext-null crashes under jsdom. Dedupe ensures Vite
-      // resolves a single copy across the module graph.
+      // These UI packages can each carry their own React instance when linked
+      // through local tooling. Dedupe ensures Vite resolves a single copy.
       "@phosphor-icons/react",
       "framer-motion",
       "motion-utils",

@@ -10,9 +10,9 @@
 ## Setup & Run
 
 ```bash
-npm run dev:next       # Dev server at http://localhost:3000
-npm run build:next     # Production build
-npm run start:next     # Start production server
+npm run dev            # Dev server at http://localhost:3001
+npm run build          # Production build
+npm run start          # Start production server
 ```
 
 ---
@@ -105,7 +105,7 @@ rg -n "export const metadata" app/
 ## Pre-PR Checks
 
 ```bash
-npm run typecheck && npm run lint && npm test && npm run build:next
+npm run typecheck && npm run lint && npm test && npm run build
 ```
 
 ---

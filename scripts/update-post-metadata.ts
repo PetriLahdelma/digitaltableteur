@@ -32,8 +32,6 @@ const DRAFTS_DIR = path.join(ROOT, "content", "drafts");
 const OUTPUTS = [
   // Next.js App Router (production)
   path.join(ROOT, "app", "blog", "postMetadata.ts"),
-  // Legacy Next.js folder (still referenced by some tooling/docs)
-  path.join(ROOT, "nextjs-app", "app", "blog", "postMetadata.ts"),
 ];
 
 const SHOW_UNPUBLISHED_POSTS =

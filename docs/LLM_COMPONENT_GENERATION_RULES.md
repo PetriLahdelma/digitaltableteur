@@ -39,9 +39,9 @@
 **Next.js Migration Context (November 2025):**
 
 - **Primary platform:** Next.js 16.2.x App Router (repo root `app/`, `next.config.ts`)
-- **Legacy platform:** Vite-based SPA in `vite-app/` (parallel; not production)
+- **Vite usage:** Storybook and Vitest tooling only; there is no active Vite app.
 - **Shared components:** `nextjs-app/shared/components/` (import via `@dt/*`)
-- **Platform-specific code:** Root `app/` for routes/API; `vite-app/` for Vite-only surfaces
+- **Platform-specific code:** Root `app/` for routes/API; `nextjs-app/shared/` for reusable design-system code.
 
 **Example:**
 
@@ -119,10 +119,10 @@ ComponentName/
 
 **Component Location Strategy:**
 
-- **Shared components** (usable in both Next.js and Vite): Place in `shared/components/`
-- **Vite-only components** (legacy): Keep in `src/components/`
-- **Next.js pages/routes**: Place in `nextjs-app/app/[route]/page.tsx`
-- **Next.js-specific utilities**: Place in `nextjs-app/components/` or `nextjs-app/lib/`
+- **Shared components**: Place in `nextjs-app/shared/components/`
+- **Shared patterns**: Place in `nextjs-app/shared/patterns/`
+- **Next.js pages/routes**: Place in root `app/[route]/page.tsx`
+- **Next.js-specific utilities**: Place in root `lib/`, `components/`, or the closest route folder.
 
 **Default: Always use `shared/components/` for new UI components unless there's a platform-specific reason.**
 
@@ -1352,11 +1352,11 @@ vi.mock("react-i18next", () => ({
   }),
 }));
 
-// 2. Router mocks
-vi.mock("react-router-dom", () => ({
-  ...vi.importActual("react-router-dom"),
-  useNavigate: () => vi.fn(),
-  useLocation: () => ({ pathname: "/" }),
+// 2. Next navigation mocks
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({ push: vi.fn(), replace: vi.fn(), prefetch: vi.fn() }),
+  usePathname: () => "/",
+  useSearchParams: () => new URLSearchParams(),
 }));
 
 // 3. API mocks
@@ -1844,7 +1844,7 @@ npm run test:visual        # Run visual regression tests
    - Test interactive stories (play functions) work correctly
 
 3. **Run Component Tests:**
-   - Execute unit tests: `npm test -- ComponentName` (in vite-app directory)
+   - Execute unit tests: `npm test -- ComponentName` from the repo root
    - Verify all tests pass (100% pass rate required)
    - Check test coverage meets >80% threshold
    - Run accessibility tests if applicable
@@ -1938,9 +1938,8 @@ npm run test:visual        # Run visual regression tests
 
 **Development Servers:**
 
-- **Vite (Storybook/Legacy):** `npm run dev` (port 5173)
-- **Next.js:** `npm run dev:next` from root OR `cd nextjs-app && npm run dev` (port 3000+)
-- **Storybook:** `npm run storybook` (port 6006)
+- **Next.js:** `npm run dev` from repo root (port 3001)
+- **Storybook:** `npm run storybook` (port 6010)
 
 **ONLY commit when all checks pass.**
 
