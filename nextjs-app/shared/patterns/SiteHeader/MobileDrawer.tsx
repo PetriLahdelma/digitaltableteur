@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { NavLink } from "@/nextjs-app/shared/components/NavLink";
 import { IconButton } from "@/nextjs-app/shared/components/IconButton";
 import { X, Sun, Moon, CircleHalf } from "@phosphor-icons/react";
-import styles from "./SiteHeader.module.css";
 import type { NavItem } from "./SiteHeader";
 import type { Theme } from "@dt/ThemeProvider";
 
@@ -221,15 +220,7 @@ export function MobileDrawer({
               {t("navMenuTheme")}
             </span>
             <IconButton
-              icon={
-                <span
-                  className={styles.themeIcon}
-                  data-theme={theme}
-                  aria-hidden
-                >
-                  <ThemeIcon weight="bold" className="size-5" />
-                </span>
-              }
+              icon={<ThemeIcon weight="bold" className="size-5" />}
               label={t("navMenuThemeToggle")}
               onClick={onThemeToggle}
               variant="outline"

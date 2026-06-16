@@ -1,6 +1,32 @@
 .themeIcon {
-  display: inline-grid;
-  block-size: 1.25rem;
-  inline-size: 1.25rem;
-  place-items: center;
+  display: inline-flex;
+  transform-origin: center;
+}
+
+.themeIconAnimating {
+  animation: theme-toggle-pop 0.45s ease;
+}
+
+@keyframes theme-toggle-pop {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  30% {
+    transform: scale(1.25) rotate(15deg);
+  }
+
+  60% {
+    transform: scale(0.9) rotate(-8deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .themeIconAnimating {
+    animation: none;
+  }
 }

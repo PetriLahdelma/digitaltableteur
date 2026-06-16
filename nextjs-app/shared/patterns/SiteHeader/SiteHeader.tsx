@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
@@ -82,8 +82,20 @@ export function SiteHeader({
   const { theme, cycleTheme } = usePersistentTheme();
   const { showToast } = useToast();
   const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useNavigation();
+  const [isThemeAnimating, setIsThemeAnimating] = useState(false);
+  const themeAnimationTimeout = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      if (themeAnimationTimeout.current) {
+        clearTimeout(themeAnimationTimeout.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,6 +113,13 @@ export function SiteHeader({
   const ThemeIcon = themeIcons[theme];
 
   const handleThemeToggle = () => {
+    if (!isThemeAnimating) {
+      setIsThemeAnimating(true);
+      themeAnimationTimeout.current = setTimeout(() => {
+        setIsThemeAnimating(false);
+        themeAnimationTimeout.current = null;
+      }, 450);
+    }
     const nextTheme = cycleTheme() as Theme;
     const label = t(themeNames[nextTheme], nextTheme);
     showToast(t("themeChanged", { theme: label }), 3000);
@@ -279,8 +298,10 @@ export function SiteHeader({
               <IconButton
                 icon={
                   <span
-                    className={styles.themeIcon}
-                    data-theme={theme}
+                    className={cn(
+                      styles.themeIcon,
+                      isThemeAnimating && styles.themeIconAnimating,
+                    )}
                     aria-hidden
                   >
                     <ThemeIcon weight="bold" className="size-5" />
