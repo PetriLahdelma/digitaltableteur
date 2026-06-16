@@ -19,7 +19,6 @@ interface MobileDrawerProps {
   currentLang: string;
   onLanguageChange: (code: string) => void;
   onThemeToggle: () => void;
-  isThemeAnimating?: boolean;
   theme: Theme;
 }
 
@@ -37,7 +36,6 @@ export function MobileDrawer({
   currentLang,
   onLanguageChange,
   onThemeToggle,
-  isThemeAnimating = false,
   theme,
 }: MobileDrawerProps) {
   const { t } = useTranslation();
@@ -225,14 +223,11 @@ export function MobileDrawer({
             <IconButton
               icon={
                 <span
-                  className={cn(
-                    styles.themeIcon,
-                    isThemeAnimating && styles.themeIconAnimating,
-                  )}
+                  className={styles.themeIcon}
                   data-theme={theme}
                   aria-hidden
                 >
-                  <ThemeIcon key={theme} weight="bold" className="size-5" />
+                  <ThemeIcon weight="bold" className="size-5" />
                 </span>
               }
               label={t("navMenuThemeToggle")}

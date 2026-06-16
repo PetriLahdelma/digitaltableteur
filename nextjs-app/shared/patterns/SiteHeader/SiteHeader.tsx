@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
@@ -82,20 +82,8 @@ export function SiteHeader({
   const { theme, cycleTheme } = usePersistentTheme();
   const { showToast } = useToast();
   const { isMobileMenuOpen, openMobileMenu, closeMobileMenu } = useNavigation();
-  const [isThemeAnimating, setIsThemeAnimating] = useState(false);
-  const themeAnimationTimeout = useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
-
-  useEffect(() => {
-    return () => {
-      if (themeAnimationTimeout.current) {
-        clearTimeout(themeAnimationTimeout.current);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,17 +101,6 @@ export function SiteHeader({
   const ThemeIcon = themeIcons[theme];
 
   const handleThemeToggle = () => {
-    if (themeAnimationTimeout.current) {
-      clearTimeout(themeAnimationTimeout.current);
-    }
-
-    setIsThemeAnimating(false);
-    window.requestAnimationFrame(() => setIsThemeAnimating(true));
-    themeAnimationTimeout.current = setTimeout(() => {
-      setIsThemeAnimating(false);
-      themeAnimationTimeout.current = null;
-    }, 520);
-
     const nextTheme = cycleTheme() as Theme;
     const label = t(themeNames[nextTheme], nextTheme);
     showToast(t("themeChanged", { theme: label }), 3000);
@@ -302,14 +279,11 @@ export function SiteHeader({
               <IconButton
                 icon={
                   <span
-                    className={cn(
-                      styles.themeIcon,
-                      isThemeAnimating && styles.themeIconAnimating,
-                    )}
+                    className={styles.themeIcon}
                     data-theme={theme}
                     aria-hidden
                   >
-                    <ThemeIcon key={theme} weight="bold" className="size-5" />
+                    <ThemeIcon weight="bold" className="size-5" />
                   </span>
                 }
                 label={t("toggleDarkMode")}
@@ -340,7 +314,6 @@ export function SiteHeader({
         currentLang={currentLang}
         onLanguageChange={handleLanguageChange}
         onThemeToggle={handleThemeToggle}
-        isThemeAnimating={isThemeAnimating}
         theme={theme}
       />
     </>

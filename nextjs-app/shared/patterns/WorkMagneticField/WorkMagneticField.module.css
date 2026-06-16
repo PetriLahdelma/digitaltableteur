@@ -124,7 +124,7 @@ noscript ~ .cardWrapper,
   :global([data-enhanced-project-card]:hover [data-project-card-media]),
 .cardContainer
   :global([data-enhanced-project-card]:focus-visible [data-project-card-media]) {
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-primary) 8%, transparent);
+  box-shadow: none;
   transform: none;
 }
 

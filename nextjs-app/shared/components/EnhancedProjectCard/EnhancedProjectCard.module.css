@@ -13,16 +13,14 @@
 .media {
   position: relative;
   width: 100%;
-  border: 1px solid color-mix(in srgb, var(--color-border) 64%, transparent);
   border-radius: var(--radius-lg);
   background: color-mix(
     in srgb,
     var(--main-body-background-color) 86%,
     var(--color-primary)
   );
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-primary) 8%, transparent);
+  box-shadow: none;
   transition:
-    border-color var(--duration-normal) var(--ease-out-cubic),
     box-shadow var(--duration-normal) var(--ease-out-cubic),
     transform var(--duration-normal) var(--ease-out-cubic);
   transform: translateZ(0);
@@ -140,20 +138,16 @@
 
 .card:hover .media,
 .card:focus-visible .media {
-  border-color: color-mix(
-    in srgb,
-    var(--color-primary) 42%,
-    var(--color-border)
-  );
   box-shadow:
-    0 20px 44px color-mix(in srgb, var(--color-primary) 12%, transparent),
-    0 2px 10px color-mix(in srgb, var(--color-primary) 8%, transparent);
+    0 18px 38px color-mix(in srgb, var(--color-primary) 10%, transparent),
+    0 2px 8px color-mix(in srgb, var(--color-primary) 6%, transparent);
   transform: translateY(calc(-1 * var(--space-internal-2)));
 }
 
-.card:focus-visible .media {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+.card:focus-visible .title {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
 .card:hover .asset,
@@ -181,7 +175,7 @@
 }
 
 .card:active .media {
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-primary) 8%, transparent);
+  box-shadow: none;
   transform: translateY(0);
 }
 

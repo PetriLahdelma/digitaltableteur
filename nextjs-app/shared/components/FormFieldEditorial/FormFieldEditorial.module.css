@@ -26,14 +26,17 @@
   width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  outline: none;
+  outline: 1px solid transparent;
+  outline-offset: var(--space-internal-2);
   background: transparent;
+  box-shadow: 0 0 0 0 transparent;
   font-family: var(--font-body);
   font-size: var(--font-size-text);
   color: var(--color-text);
   transition:
     border-color var(--duration-fast) var(--ease-out-cubic),
-    outline-color var(--duration-fast) var(--ease-out-cubic);
+    outline-color var(--duration-fast) var(--ease-out-cubic),
+    box-shadow var(--duration-fast) var(--ease-out-cubic);
 }
 
 .input::placeholder {
@@ -42,9 +45,14 @@
 }
 
 .input:focus {
-  border-color: var(--color-primary);
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 32%,
+    var(--color-border)
+  );
+  box-shadow: 0 0 0 4px
+    color-mix(in srgb, var(--color-primary) 8%, transparent);
+  outline-color: color-mix(in srgb, var(--color-primary) 24%, transparent);
 }
 
 .input.hasError {
@@ -59,14 +67,17 @@
   min-height: 140px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  outline: none;
+  outline: 1px solid transparent;
+  outline-offset: var(--space-internal-2);
   background: transparent;
+  box-shadow: 0 0 0 0 transparent;
   font-family: var(--font-body);
   font-size: var(--font-size-text);
   color: var(--color-text);
   transition:
     border-color var(--duration-fast) var(--ease-out-cubic),
-    outline-color var(--duration-fast) var(--ease-out-cubic);
+    outline-color var(--duration-fast) var(--ease-out-cubic),
+    box-shadow var(--duration-fast) var(--ease-out-cubic);
   resize: vertical;
 }
 
@@ -76,9 +87,14 @@
 }
 
 .textarea:focus {
-  border-color: var(--color-primary);
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 32%,
+    var(--color-border)
+  );
+  box-shadow: 0 0 0 4px
+    color-mix(in srgb, var(--color-primary) 8%, transparent);
+  outline-color: color-mix(in srgb, var(--color-primary) 24%, transparent);
 }
 
 .textarea.hasError {
@@ -99,22 +115,30 @@
   width: 100%;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  outline: none;
+  outline: 1px solid transparent;
+  outline-offset: var(--space-internal-2);
   background: transparent;
+  box-shadow: 0 0 0 0 transparent;
   font-family: var(--font-body);
   font-size: var(--font-size-text);
   color: var(--color-text);
   cursor: pointer;
   transition:
     border-color var(--duration-fast) var(--ease-out-cubic),
-    outline-color var(--duration-fast) var(--ease-out-cubic);
+    outline-color var(--duration-fast) var(--ease-out-cubic),
+    box-shadow var(--duration-fast) var(--ease-out-cubic);
   appearance: none;
 }
 
 .select:focus {
-  border-color: var(--color-primary);
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 32%,
+    var(--color-border)
+  );
+  box-shadow: 0 0 0 4px
+    color-mix(in srgb, var(--color-primary) 8%, transparent);
+  outline-color: color-mix(in srgb, var(--color-primary) 24%, transparent);
 }
 
 .select.hasError {
