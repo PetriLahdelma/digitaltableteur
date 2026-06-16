@@ -1,6 +1,6 @@
 # Next.js Migration Plan: Parallel Hybrid Approach
 
-> **Current truth (2026):** Production runs **Next.js 16.2.x** at the **repo root** (`app/`, `next.config.ts`). Vite remains in `vite-app/` for legacy/Storybook-adjacent workflows. This document describes the **historical** Vite → Next migration; for the 15 → 16 bump see [`NEXTJS_16_UPGRADE_PLAN.md`](NEXTJS_16_UPGRADE_PLAN.md).
+> **Current truth (2026):** Production runs **Next.js 16.2.x** at the **repo root** (`app/`, `next.config.ts`). The legacy Vite app and duplicate `nextjs-app` application shell have been removed; Vite remains only as Storybook/Vitest tooling. This document describes the **historical** Vite → Next migration; for the 15 → 16 bump see [`NEXTJS_16_UPGRADE_PLAN.md`](NEXTJS_16_UPGRADE_PLAN.md).
 
 **Status:** Largely complete (production on root App Router)  
 **Start Date:** November 2025  
@@ -118,7 +118,7 @@ ln -s ../src/data data
 
 ### Step 1.4: Install Dependencies
 
-**`nextjs-app/package.json` additions:**
+**Former nested app package additions:**
 
 ```json
 {
@@ -645,28 +645,11 @@ npx lighthouse https://digitaltableteur.com/about \
 - [ ] Validate Lighthouse scores
 - [ ] Collect user feedback
 
-### Step 8.3: Decommission Vite (Optional)
+### Step 8.3: Decommission Legacy App Shells
 
-**Only after 2+ weeks of stable Next.js operation:**
-
-```bash
-# Archive Vite app
-git checkout -b archive/vite-app
-git add src/ vite.config.ts
-git commit -m "Archive: Vite SPA (pre-Next.js migration)"
-git push origin archive/vite-app
-
-# Clean up main branch
-git checkout main
-rm -rf src/pages  # Keep src/components (now symlinked)
-# Remove Vite-specific configs
-```
-
-**Keep Vite infrastructure until:**
-
-- Next.js proven stable for 1+ month
-- All critical business metrics stable/improved
-- Team comfortable with Next.js DX
+The production site now runs from the root Next.js app. The hollow legacy Vite
+app and the stale `nextjs-app` application/package mirrors have been removed.
+Vite remains only as build infrastructure for Storybook/Vitest.
 
 ---
 
@@ -806,7 +789,7 @@ const Component = dynamic(() => import("./Component"), { ssr: false });
 
 **Issue:** Different router APIs
 
-**Vite (React Router):**
+**Former Vite/React Router pattern:**
 
 ```tsx
 import { useNavigate } from "react-router-dom";
@@ -822,7 +805,7 @@ const router = useRouter();
 router.push("/about");
 ```
 
-**Solution:** Keep navigation in route-specific code, not shared components. Use `<Link>` from respective frameworks.
+**Solution:** Keep navigation in route-specific code, not shared components. Use `<Link>` from `next/link` and hooks from `next/navigation`.
 
 ### 6. Hydration Mismatches
 
@@ -842,11 +825,9 @@ router.push("/about");
 
 ### 8. MDX / Sanity-to-MDX Workflow (Blog)
 
-- Next is configured with `@next/mdx` + `@mdx-js/loader`, `remark-frontmatter`, `remark-mdx-frontmatter`, and `remark-gfm` in `nextjs-app/next.config.ts` (pageExtensions include md/mdx).
-- Shared loader `src/data/blogPosts.ts` now falls back to explicit MDX imports when `import.meta.glob` is unavailable (Next). **When adding a new post, also add an explicit import to that fallback map** until we introduce an automated manifest step.
-- Blog/article rendering in Next currently uses client wrappers (`app/blog/[slug]/ClientArticle.tsx`, `ClientAuthor.tsx`) to dodge server MDX typing issues; metadata for posts is basic. Improve later by revisiting server MDX once types are stable.
-- Rewrites for `/blog`, `/blog/:slug`, `/blog/authors/:slug` point to the placeholder Next URL—replace with the real deployment URL before shipping.
-- Automation: run `npm run sync:blog-metadata` after adding/updating MDX posts (from Sanity export or manual edits). The script reads `content/posts/*.mdx` frontmatter and regenerates `nextjs-app/app/blog/postMetadata.ts` (slug/title/description/publishedAt/image) so `generateMetadata` stays in sync without loading MDX on the server.
+- Next is configured with `@next/mdx` + `@mdx-js/loader`, `remark-frontmatter`, `remark-mdx-frontmatter`, and `remark-gfm` in the root `next.config.ts` (pageExtensions include md/mdx).
+- Blog/article rendering in Next uses the root `app/blog` route tree and page-local client wrappers where interaction requires client state.
+- Automation: run `npm run sync:blog-metadata` after adding/updating MDX posts. The script reads `content/posts/*.mdx` frontmatter and regenerates `app/blog/postMetadata.ts` (slug/title/description/publishedAt/image) so `generateMetadata` stays in sync without loading MDX on the server.
 
 ---
 

@@ -15,10 +15,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT_DIR = process.cwd();
-const CONTENT_DIRS = [
-  path.join(ROOT_DIR, "content/posts"),
-  path.join(ROOT_DIR, "nextjs-app/content/posts"),
-];
+const CONTENT_DIRS = [path.join(ROOT_DIR, "content/posts")];
 
 const ISSUES = {
   UNWRAPPED_FIGCAPTION: "unwrapped-figcaption",

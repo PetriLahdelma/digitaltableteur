@@ -57,7 +57,7 @@ npm run validate:mdx
 **What it checks:**
 
 - ✅ All `<figcaption>` tags are inside `<figure>` elements
-- ✅ Scans both `content/posts/` and `nextjs-app/content/posts/`
+- ✅ Scans `content/posts/`
 - ✅ Exits with error code if issues found (CI-ready)
 
 **Output:**
@@ -144,7 +144,6 @@ grep -n "^<figcaption>" content/posts/*.mdx
 ## Related Issues
 
 - Fixed in: `content/posts/thoughts-on-future-branding.mdx`
-- Fixed in: `nextjs-app/content/posts/thoughts-on-future-branding.mdx`
 - Date: 2025-11-27
 
 ## Technical Details

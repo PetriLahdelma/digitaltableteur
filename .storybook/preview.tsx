@@ -1,4 +1,3 @@
-import * as ReactRouterDom from "react-router-dom";
 import { ThemeProvider } from "@dt/ThemeProvider";
 import type { Preview } from "@storybook/react-vite";
 import type { Decorator, StoryContext, StoryFn } from "@storybook/react";
@@ -12,7 +11,6 @@ if (typeof globalThis !== "undefined") {
   ).React = React;
 }
 
-const { MemoryRouter } = ReactRouterDom;
 import { I18nextProvider } from "react-i18next";
 import { MotionConfig } from "framer-motion";
 import * as storybookIcons from "@storybook/icons";
@@ -237,18 +235,16 @@ const withI18next: Decorator = (Story: StoryFn, context: StoryContext) => {
   }, [locale]);
   return (
     <I18nextProvider i18n={i18n}>
-      <MemoryRouter>
-        <ThemeProvider forcedTheme={theme}>
-          {/* MotionConfig with reducedMotion="user" makes framer-motion skip
+      <ThemeProvider forcedTheme={theme}>
+        {/* MotionConfig with reducedMotion="user" makes framer-motion skip
               transition tweens when prefers-reduced-motion is set (we force
               that in test-runner.preVisit). Without this the motion library
               still animates opacity 0->1 over its default duration, which axe
               samples mid-flight and reports as a color-contrast violation. */}
-          <MotionConfig reducedMotion="user">
-            <Story />
-          </MotionConfig>
-        </ThemeProvider>
-      </MemoryRouter>
+        <MotionConfig reducedMotion="user">
+          <Story />
+        </MotionConfig>
+      </ThemeProvider>
     </I18nextProvider>
   );
 };

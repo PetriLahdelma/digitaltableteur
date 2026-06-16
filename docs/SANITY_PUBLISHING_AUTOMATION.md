@@ -47,7 +47,6 @@ The publishing process handles:
    - Scans all MDX files in `content/posts/`
    - Extracts frontmatter (title, slug, publishedAt, etc.)
    - Generates `app/blog/postMetadata.ts` (production Next.js App Router)
-   - Also updates `nextjs-app/app/blog/postMetadata.ts` (legacy/compat)
 
 3. **Routing Setup** (automatic via Next.js)
    - MDX files are automatically imported via `import.meta.glob` in `nextjs-app/shared/data/blogPosts.ts`
@@ -93,7 +92,7 @@ Option A: **Manual Trigger**
 
 ```bash
 npm run sanity:publish           # Sync all articles
-git add content/posts app/blog/postMetadata.ts nextjs-app/app/blog/postMetadata.ts
+git add content/posts app/blog/postMetadata.ts
 git commit -m "feat: publish new article(s)"
 git push
 ```
@@ -139,7 +138,6 @@ npx tsx scripts/update-post-metadata.ts
 | ------------------------------------- | ---------------------- | ------------ |
 | `content/posts/*.mdx`                 | Article content        | ✅ Yes       |
 | `app/blog/postMetadata.ts`            | Blog routing metadata  | ✅ Yes       |
-| `nextjs-app/app/blog/postMetadata.ts` | Legacy blog metadata   | ✅ Yes       |
 | `nextjs-app/shared/data/blogPosts.ts` | MDX imports (fallback) | ❌ Manual    |
 
 ## Environment Variables

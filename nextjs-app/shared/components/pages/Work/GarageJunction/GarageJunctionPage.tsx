@@ -11,7 +11,8 @@ import { ProjectHero } from "../../../../patterns/ProjectHero";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
-import { SiFigma, SiAdobeillustrator, SiAdobeaftereffects } from "react-icons/si";
+import { SiFigma } from "react-icons/si";
+import { AdobeToolIcon } from "../AdobeToolIcon";
 
 import styles from "./garageJunction.module.css";
 
@@ -63,8 +64,8 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
               <Title as="h3" unstyled className={styles.metaLabel}>Tools used</Title>
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
-                <SiAdobeillustrator size={24} title="Illustrator" />
-                <SiAdobeaftereffects size={24} title="After Effects" />
+                <AdobeToolIcon tool="illustrator" />
+                <AdobeToolIcon tool="after-effects" />
               </div>
             </div>
           </div>
