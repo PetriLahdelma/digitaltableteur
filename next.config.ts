@@ -322,7 +322,6 @@ const nextConfig: NextConfig = {
         "**/storybook-static/**",
         "**/shared/vite-pages/**",
         "**/app/blog/postMetadata.ts",
-        "**/nextjs-app/app/blog/postMetadata.ts",
         "**/nextjs-app/shared/data/blogManifest.ts",
         "**/nextjs-app/shared/components/CodeBlockWindow/codeBlockFixtures.ts",
       ],

@@ -13,8 +13,9 @@ import { ProjectHero } from "../../../../patterns/ProjectHero";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
-import { SiFigma, SiAdobeillustrator } from "react-icons/si";
+import { SiFigma } from "react-icons/si";
 import { ClaudeIcon } from "../../../AskAI/ai-icons";
+import { AdobeToolIcon } from "../AdobeToolIcon";
 
 import styles from "./knobSmithAudio.module.css";
 
@@ -69,7 +70,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
               <div className={styles.metaTools}>
                 <SiFigma size={24} title="Figma" />
                 <ClaudeIcon width={24} height={24} aria-label="Claude AI" />
-                <SiAdobeillustrator size={24} title="Illustrator" />
+                <AdobeToolIcon tool="illustrator" />
               </div>
             </div>
           </div>

@@ -177,7 +177,6 @@ const config: StorybookConfig = {
       "chart.js",
       "mermaid",
       "react-chartjs-2",
-      "@storybook/testing-library",
       "@gsap/react",
       "gsap",
       "@phosphor-icons/react",

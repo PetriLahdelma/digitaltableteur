@@ -4,8 +4,6 @@ import React from "react";
 import ServicesBlock from "./ServicesBlock";
 import Text from "@dt/Text";
 import {
-  SiAdobeillustrator,
-  SiAdobephotoshop,
   SiFigma,
   SiSketch,
   SiSlack,
@@ -14,6 +12,7 @@ import {
   SiGithub,
   SiVercel,
 } from "react-icons/si";
+import { AdobeToolIcon } from "../../components/pages/Work/AdobeToolIcon";
 
 /**
  * ServicesBlock is a reusable pattern component for displaying project metadata,
@@ -130,12 +129,12 @@ export const Default: Story = {
       { key: "sketch", icon: <SiSketch size={24} />, ariaLabel: "Sketch" },
       {
         key: "illustrator",
-        icon: <SiAdobeillustrator size={24} />,
+        icon: <AdobeToolIcon tool="illustrator" />,
         ariaLabel: "Adobe Illustrator",
       },
       {
         key: "photoshop",
-        icon: <SiAdobephotoshop size={24} />,
+        icon: <AdobeToolIcon tool="photoshop" />,
         ariaLabel: "Adobe Photoshop",
       },
     ],
@@ -209,7 +208,7 @@ export const DesignOnlyProject: Story = {
       { key: "figma", icon: <SiFigma size={24} />, ariaLabel: "Figma" },
       {
         key: "illustrator",
-        icon: <SiAdobeillustrator size={24} />,
+        icon: <AdobeToolIcon tool="illustrator" />,
         ariaLabel: "Adobe Illustrator",
       },
     ],

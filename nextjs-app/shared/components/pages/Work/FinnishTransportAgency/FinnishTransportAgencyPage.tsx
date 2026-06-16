@@ -12,8 +12,8 @@ import { ProjectHero } from "../../../../patterns/ProjectHero";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
-import { SiAdobeillustrator, SiAdobeindesign } from "react-icons/si";
 import { ColorPalette } from "../../../FinnishTransportAgency/ColorPalette";
+import { AdobeToolIcon } from "../AdobeToolIcon";
 
 import styles from "./finnishTransportAgency.module.css";
 
@@ -64,8 +64,8 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.metaBlock}>
               <Title as="h3" unstyled className={styles.metaLabel}>Tools used</Title>
               <div className={styles.metaTools}>
-                <SiAdobeillustrator size={24} title="Illustrator" />
-                <SiAdobeindesign size={24} title="InDesign" />
+                <AdobeToolIcon tool="illustrator" />
+                <AdobeToolIcon tool="indesign" />
               </div>
             </div>
           </div>

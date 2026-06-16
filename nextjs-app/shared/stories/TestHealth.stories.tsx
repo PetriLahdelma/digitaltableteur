@@ -14,7 +14,7 @@ import {
   Filler,
 } from "chart.js";
 import { Bar, Doughnut, Line } from "react-chartjs-2";
-import metrics from "../../docs/test-metrics.json";
+import metrics from "../../../docs/test-metrics.json";
 import styles from "./TestHealth.module.css";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@dt/ThemeProvider";

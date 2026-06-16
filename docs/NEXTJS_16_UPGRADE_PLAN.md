@@ -15,7 +15,7 @@
 |--------|-------------------------|
 | **Turbopack default** | Dev compiles were ~1 min/route on Webpack; Turbopack is the intended fix after icon-registry + cache work on 15.5 |
 | **Official path** | Next 16 removes sync request APIs, deprecates `middleware.ts`, drops `next lint` |
-| **Already on React 19 + Node 20** | Prerequisites met (CI uses Node 20.19) |
+| **Already on React 19 + Node 22** | Prerequisites met (repo uses Node 22.12+) |
 
 ---
 
@@ -25,9 +25,9 @@
 |------|-------|-------|
 | **Production app root** | `/` (`app/`, `next.config.ts`, root `package.json`) | **Authoritative** — not `nextjs-app/` |
 | **Next.js (root)** | `^16.2.6` | Upgraded on `chore/nextjs-16-upgrade` |
-| **Next.js (nextjs-app/)** | `16.2.1` | Legacy/subfolder; **do not treat as production** |
+| **Next.js (nextjs-app/)** | N/A | Legacy app shell removed; `nextjs-app/shared/` remains active design-system code |
 | **React** | `^19.2.6` | OK for 16 |
-| **Node (CI)** | `20.19.0` | Meets 16 minimum (20.9+) |
+| **Node (local/CI)** | `22.12.0+` | Required by Sanity Studio 6; above Next 16 minimum |
 | **Bundler (dev)** | **Turbopack (default)** | `next dev -p 3001` — MDX plugins use string names; `dev:webpack` fallback retained |
 | **Bundler (build)** | **Turbopack (default)** | `next build` — ~22s local vs ~90s webpack; `analyze` uses Turbopack too |
 | **Lint** | Custom `scripts/lint-banner.mjs` → local ESLint | Already off `next lint` |
@@ -54,8 +54,7 @@
 
 ### Out of scope (separate work)
 
-- Removing Vite legacy (`src/`, `vite-app/`) — see `docs/NEXTJS_MIGRATION_PLAN.md`
-- Deleting duplicate `nextjs-app/` tree (optional cleanup after 16 is stable on root)
+- Removing shared design-system code under `nextjs-app/shared/`
 - Cache Components / `"use cache"` adoption (evaluate post-upgrade, not required for bump)
 - Production `next build --turbopack` as default until bundle-size A/B passes
 
@@ -110,7 +109,7 @@ Use official guide: https://nextjs.org/docs/app/guides/upgrading/version-16
 3. `npm install`
 4. Fix TypeScript/eslint peer warnings.
 
-**Do not** upgrade `nextjs-app/package.json` unless explicitly consolidating that folder — root is production.
+The former `nextjs-app` package mirror has been removed; root is production.
 
 **Exit criteria:** `npm ls next` shows one 16.x at root; install succeeds.
 
@@ -209,7 +208,7 @@ Fix any stragglers the codemod missed (especially layouts, helpers passing `para
 
 Verify workflows:
 
-- `.github/workflows/pr-validation.yml` — Node 20.19, no `next lint`
+- `.github/workflows/pr-validation.yml` — Node 22.12, no `next lint`
 - Vercel build command matches local `npm run build`
 
 **Exit criteria:** CI green on PR branch.

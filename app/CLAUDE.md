@@ -15,15 +15,15 @@
 
 ```bash
 # From project root
-npm run dev:next       # Start Next.js dev server at http://localhost:3000
-npm run build:next     # Build for production
-npm run start:next     # Start production server
+npm run dev            # Start Next.js dev server at http://localhost:3001
+npm run build          # Build for production
+npm run start          # Start production server
 ```
 
 ### Pre-PR Checklist
 
 ```bash
-npm run typecheck && npm run lint && npm test && npm run build:next
+npm run typecheck && npm run lint && npm test && npm run build
 ```
 
 ---
@@ -202,7 +202,7 @@ const router = useRouter();
 router.push("/contact");
 ```
 
-❌ **DON'T**: Use `react-router-dom` (Vite-specific)
+❌ **DON'T**: Use `react-router-dom` (use `next/link` and `next/navigation`)
 
 ---
 
@@ -357,7 +357,7 @@ import styles from "@/styles/Component.module.css";
 Run before creating a PR:
 
 ```bash
-npm run typecheck && npm run lint && npm test && npm run build:next
+npm run typecheck && npm run lint && npm test && npm run build
 ```
 
 Ensure:

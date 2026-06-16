@@ -13,7 +13,7 @@
 // scripts/generate-blog-manifest.mjs (which uses real fs walking at
 // prebuild time and emits JSON the runtime can `import` statically).
 
-import petriAuthor from "../../content/authors/petri-lahdelma.json";
+import petriAuthor from "../../../content/authors/petri-lahdelma.json";
 
 export type AuthorEntry = {
   name: string;

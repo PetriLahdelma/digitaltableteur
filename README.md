@@ -119,14 +119,11 @@ See `.env.example` for complete list with descriptions.
 ### Development Servers
 
 ```bash
-# Vite dev server (legacy app)
-npm run dev                    # http://localhost:5173
-
 # Next.js dev server (production app)
-npm run dev:next               # http://localhost:3000
+npm run dev                    # http://localhost:3001
 
 # Storybook component development
-npm run storybook              # http://localhost:6012
+npm run storybook              # http://localhost:6010
 ```
 
 ### Code Quality & Testing
@@ -182,11 +179,8 @@ npm run generate-sentry-summary                      # Generate dashboard data
 ### Build Commands
 
 ```bash
-# Vite production build
-npm run build                  # Output: dist/
-
 # Next.js production build
-npm run build:next             # Output: .next/
+npm run build                  # Output: .next/
 
 # Storybook static build
 npm run build-storybook        # Output: storybook-static/
@@ -605,9 +599,8 @@ The site supports three languages with complete translation coverage:
 **Next.js App**:
 
 ```bash
-npm run build:next               # Build Next.js app (production)
+npm run build                    # Build Next.js app (production)
 npm run start                    # Start Next.js production server
-npm run preview:next             # Local production preview
 ```
 
 **Vite App** (legacy):

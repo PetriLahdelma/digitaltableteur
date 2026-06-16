@@ -10,7 +10,8 @@ import { ProjectMetaSection } from "../../../../patterns/ProjectMetaSection";
 import { RelatedProjects } from "../../../../patterns/RelatedProjects";
 import { ProjectNav } from "../../../ProjectNav";
 import { getProjectBySlug } from "../../../../data/projects";
-import { SiAdobeillustrator, SiAdobeindesign, SiFigma } from "react-icons/si";
+import { SiFigma } from "react-icons/si";
+import { AdobeToolIcon } from "../AdobeToolIcon";
 
 import styles from "./tulli.module.css";
 
@@ -51,12 +52,12 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
           { key: "figma", icon: <SiFigma size={24} />, name: "Figma" },
           {
             key: "illustrator",
-            icon: <SiAdobeillustrator size={24} />,
+            icon: <AdobeToolIcon tool="illustrator" />,
             name: "Illustrator",
           },
           {
             key: "indesign",
-            icon: <SiAdobeindesign size={24} />,
+            icon: <AdobeToolIcon tool="indesign" />,
             name: "InDesign",
           },
         ]}
