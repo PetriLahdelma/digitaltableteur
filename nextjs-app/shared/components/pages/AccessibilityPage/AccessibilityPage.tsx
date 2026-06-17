@@ -235,15 +235,13 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
           {t("accessibilityFeedbackTitle")}
         </Title>
         <p>{t("accessibilityFeedbackIntro")}</p>
+        <p>{t("accessibilityFeedbackEmail")}</p>
         <p>
-          {t("accessibilityFeedbackEmail")}
-          <p>
-            {renderContactLinks(
-              t("accessibilityContactBody"),
-              "mail@digitaltableteur.com",
-              "+358 45 657 4469",
-            )}
-          </p>
+          {renderContactLinks(
+            t("accessibilityContactBody"),
+            "mail@digitaltableteur.com",
+            "+358 45 657 4469",
+          )}
         </p>
         <p>{t("accessibilityFeedbackResponse")}</p>
       </section>

@@ -60,9 +60,8 @@ const Toast: React.FC<ToastProps> = ({
   const isVisible = Boolean(isOpen);
   const displayMessage = isVisible ? message : "";
 
-  // Determine aria-live based on severity
-  const ariaLive =
-    severity === "error" || severity === "warning" ? "assertive" : "polite";
+  const liveRole =
+    severity === "error" || severity === "warning" ? "alert" : "status";
 
   // Get icon for severity (color independence - WCAG 1.4.1)
   const severityIcon = severity ? severityIcons[severity] : null;
@@ -78,8 +77,7 @@ const Toast: React.FC<ToastProps> = ({
       ]
         .filter(Boolean)
         .join(" ")}
-      role="status"
-      aria-live={ariaLive}
+      role={liveRole}
       aria-atomic="true"
     >
       {severityIcon && (

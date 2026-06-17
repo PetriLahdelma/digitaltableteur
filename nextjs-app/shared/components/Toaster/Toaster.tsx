@@ -116,7 +116,6 @@ export function ToasterProvider({
           positionClasses[position]
         )}
         role="status"
-        aria-live="polite"
         aria-label="Notifications"
       >
         {toasts.map((t) => (

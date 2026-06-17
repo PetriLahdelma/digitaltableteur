@@ -227,7 +227,7 @@
   color: white;
 }
 
-.colorLabelDark {
+.colorLabelDark, .colorRed .colorLabel, .colorOrange .colorLabel {
   color: #000;
 }
 

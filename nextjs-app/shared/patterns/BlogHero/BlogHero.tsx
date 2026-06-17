@@ -81,7 +81,7 @@ export function BlogHero({
             <p
               className={cn(
                 "font-body text-lg tablet:text-xl",
-                "text-muted-foreground",
+                "text-foreground",
                 "leading-relaxed"
               )}
             >

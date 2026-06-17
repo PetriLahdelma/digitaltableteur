@@ -136,7 +136,7 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
       </div>
       <div className={styles.border} aria-hidden="true" />
       <div className={styles.container}>
-        <div className={styles.content}>
+        <div className={styles.copy}>
           {overline && (
             <Text
               as="span"

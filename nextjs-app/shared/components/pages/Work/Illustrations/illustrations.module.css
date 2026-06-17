@@ -228,7 +228,7 @@
 .dragHint {
   font-size: 0.875rem;
   color: var(--color-gray);
-  opacity: 0.7;
+  opacity: 1;
   margin-top: var(--space-internal-8);
 }
 

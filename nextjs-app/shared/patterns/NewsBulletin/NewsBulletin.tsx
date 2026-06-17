@@ -27,7 +27,7 @@ function cardLabel(item: NewsBulletinItem): string {
 
 function BulletinCardContent({ item }: { item: NewsBulletinItem }) {
   return (
-    <div className={styles.cardContent}>
+    <div className={styles.cardLayout}>
       <NewsBulletinBadgeMark badge={item.badge} />
       <p className={styles.body}>{item.body}</p>
     </div>

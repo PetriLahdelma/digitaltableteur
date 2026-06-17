@@ -29,7 +29,6 @@ export function DonnyActionProvider({ children }: DonnyActionProviderProps) {
       />
       <div
         className={styles.liveRegion}
-        aria-live="polite"
         aria-atomic="true"
         role="status"
       >

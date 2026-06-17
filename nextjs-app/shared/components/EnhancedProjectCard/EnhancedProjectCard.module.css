@@ -79,7 +79,11 @@
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: color-mix(
+    in srgb,
+    var(--primary-text-color) 90%,
+    var(--main-body-background-color)
+  );
   transition: color var(--duration-fast) var(--ease-out-cubic);
 }
 
@@ -99,11 +103,15 @@
   font-family: var(--font-body);
   font-size: 0.875rem;
   line-height: 1.55;
-  color: var(--color-muted);
+  color: color-mix(
+    in srgb,
+    var(--primary-text-color) 90%,
+    var(--main-body-background-color)
+  );
   transition:
     color var(--duration-fast) var(--ease-out-cubic),
     opacity var(--duration-fast) var(--ease-out-cubic);
-  opacity: 0.76;
+  opacity: 1;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;

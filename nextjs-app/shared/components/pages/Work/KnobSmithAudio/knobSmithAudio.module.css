@@ -179,7 +179,7 @@
 
 .videoCaption {
   text-align: center;
-  color: var(--color-muted);
+  color: var(--color-gray);
 }
 
 .logoWordmarkSection {
@@ -333,7 +333,7 @@
   font-size: 0.875rem;
   font-weight: 400;
   text-transform: uppercase;
-  color: #ed4b9b;
+  color: #a81761;
 }
 
 .swatchDescription {
@@ -371,7 +371,7 @@
 .typeSample {
   font-family: "JetBrains Mono", monospace;
   line-height: 1.2;
-  color: #ed4b9b;
+  color: #a81761;
 }
 
 .typeDisplay {
@@ -452,7 +452,7 @@
 .typeSampleGeist {
   font-family: "Geist Mono", monospace;
   line-height: 1.2;
-  color: #ed4b9b;
+  color: #a81761;
 }
 
 .typographySectionDivider {

@@ -94,7 +94,7 @@ export function BlogCategoryFilter({
               <span
                 className={cn(
                   "ml-1.5",
-                  isActive ? "text-background/70" : "text-muted-foreground/70"
+                  isActive ? "text-background" : "text-muted-foreground"
                 )}
               >
                 ({option.count})
@@ -140,7 +140,7 @@ export function BlogCategoryFilter({
           >
             {option.label}
             {option.count !== undefined && (
-              <span className="ml-1.5 text-muted-foreground/70">
+              <span className="ml-1.5 text-muted-foreground">
                 ({option.count})
               </span>
             )}
@@ -183,7 +183,7 @@ export function BlogCategoryFilter({
           >
             {option.label}
             {option.count !== undefined && (
-              <span className="ml-1.5 text-muted-foreground/70">
+              <span className="ml-1.5 text-muted-foreground">
                 ({option.count})
               </span>
             )}

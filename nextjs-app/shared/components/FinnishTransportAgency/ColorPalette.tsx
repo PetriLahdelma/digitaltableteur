@@ -94,6 +94,7 @@ function Swatch({ color, size = "normal" }: { color: ColorSwatch; size?: "normal
       <div
         className={styles.color}
         style={{ backgroundColor: color.hex }}
+        role="img"
         aria-label={`${color.name} color swatch`}
       />
       <div className={styles.info}>
