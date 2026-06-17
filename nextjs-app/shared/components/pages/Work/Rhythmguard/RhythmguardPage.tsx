@@ -57,7 +57,7 @@ export function RhythmguardPage({ nav }: { nav?: React.ReactNode }) {
             </div>
             <div className={styles.metaBlock}>
               <Title as="h3" unstyled className={styles.metaLabel}>Version</Title>
-              <p className={styles.metaText}>v1.5.0</p>
+              <p className={styles.metaText}>v2.0.1</p>
             </div>
             <div className={styles.metaBlock}>
               <Title as="h3" unstyled className={styles.metaLabel}>Stack</Title>
