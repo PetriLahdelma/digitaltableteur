@@ -158,7 +158,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         {removable && (
           <Button
             variant="tertiary"
-            size={size === "s" ? "s" : size === "l" ? "l" : "m"}
+            size={size === "s" ? "sm" : size === "l" ? "lg" : "md"}
             type="button"
             icon={<Icon name="x" ariaLabel={t("badgeRemove")} />}
             className={styles.closeButton}

@@ -152,7 +152,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           onClick={onMinimize}
           aria-label={minimizeAriaLabel}
           variant="tertiary"
-          size="m"
+          size="md"
           icon={<Icon name="caret-down" ariaLabel={minimizeAriaLabel} />}
           className={styles.minimizeButton}
         />

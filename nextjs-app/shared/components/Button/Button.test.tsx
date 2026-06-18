@@ -36,20 +36,26 @@ describe("Button", () => {
     expect(button.className).toMatch(/loading/);
   });
 
-  it("renders secondaryError variant", () => {
+  it("composes a destructive secondary button from variant + tone", () => {
     const { container } = render(
-      <Button variant="secondaryError">Error</Button>,
+      <Button variant="secondary" tone="error">
+        Delete
+      </Button>,
     );
     const button = container.firstChild as HTMLElement;
-    expect(button.className).toMatch(/secondaryError/);
+    expect(button.className).toMatch(/secondary/);
+    expect(button.className).toMatch(/error/);
   });
 
-  it("renders tertiaryError variant", () => {
+  it("composes a destructive tertiary button from variant + tone", () => {
     const { container } = render(
-      <Button variant="tertiaryError">Error</Button>,
+      <Button variant="tertiary" tone="error">
+        Delete
+      </Button>,
     );
     const button = container.firstChild as HTMLElement;
-    expect(button.className).toMatch(/tertiaryError/);
+    expect(button.className).toMatch(/tertiary/);
+    expect(button.className).toMatch(/error/);
   });
 
   it("applies custom className", () => {
@@ -61,14 +67,14 @@ describe("Button", () => {
     );
   });
 
-  it("applies inverse modifier class when inverse prop is true", () => {
+  it("applies onBrand surface class", () => {
     const { container } = render(
-      <Button variant="secondary" inverse>
-        Inverse
+      <Button variant="primary" surface="onBrand">
+        CTA
       </Button>,
     );
     const el = container.firstChild as HTMLElement;
-    expect(el.className).toMatch(/inverse/);
+    expect(el.className).toMatch(/onBrand/);
   });
 
   it("applies onDark surface class for contrast on dark bands", () => {
@@ -194,7 +200,7 @@ describe("Button", () => {
         const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
         render(<Button icon="search" />);
         expect(consoleSpy).toHaveBeenCalledWith(
-          expect.stringContaining("Icon-only button detected without accessible name")
+          expect.stringContaining("Icon-only button without an accessible name")
         );
         consoleSpy.mockRestore();
       });
@@ -242,7 +248,7 @@ describe("Button", () => {
 
     describe("loading state", () => {
       it("should have aria-busy when loading", () => {
-        render(<Button isLoading>Submit</Button>);
+        render(<Button loading>Submit</Button>);
         const button = screen.getByRole("button");
         expect(button).toHaveAttribute("aria-busy", "true");
       });
@@ -253,10 +259,9 @@ describe("Button", () => {
         expect(button).not.toHaveAttribute("aria-busy");
       });
 
-      it("should have aria-busy when using legacy loading prop", () => {
+      it("is disabled while loading", () => {
         render(<Button loading>Submit</Button>);
-        const button = screen.getByRole("button");
-        expect(button).toHaveAttribute("aria-busy", "true");
+        expect(screen.getByRole("button")).toBeDisabled();
       });
     });
   });

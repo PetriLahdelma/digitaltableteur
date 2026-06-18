@@ -2,179 +2,96 @@
 
 import React from "react";
 import styles from "./Button.module.css";
-import {
-  getSemanticIcon,
-  type SemanticStatus,
-} from "../../utils/semanticIcons";
+import { getSemanticIcon, type SemanticStatus } from "../../utils/semanticIcons";
 import Icon from "@dt/Icon";
-import { warnPropRename } from "../../utils/deprecationWarning";
-import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
-/**
- * Semantic severity for status buttons
- */
-export type ButtonSeverity = "error" | "warning" | "success" | "info";
+/** Visual weight of the button. */
+export type ButtonVariant = "primary" | "secondary" | "tertiary";
 
-/**
- * Visual style variant
- */
-export type ButtonVariantVisual = "primary" | "secondary" | "tertiary";
+/** Semantic color, matching the design-token palette. */
+export type ButtonTone = "neutral" | "error" | "warning" | "success" | "info";
 
-/**
- * Surface context for contrast-safe styling (static CSS — no ancestor sampling).
- */
+/** Surface the button sits on, for contrast-safe styling (static CSS, no ancestor sampling). */
 export type ButtonSurface = "default" | "onDark" | "onBrand";
 
-/**
- * Legacy size format
- */
-type ButtonSizeLegacy = "s" | "m" | "l";
+/** Control size scale. */
+export type ButtonSize = "sm" | "md" | "lg";
 
-/**
- * Base properties shared by button and link variants.
- */
+const TONE_TO_STATUS: Partial<Record<ButtonTone, SemanticStatus>> = {
+  error: "error",
+  warning: "warning",
+  success: "success",
+  info: "info",
+};
+
+/** Properties shared by the button and link renderings. */
 interface BaseButtonProps {
-  // NEW PROPS (v1.1.0)
-  /** Disables the button (v1.1.0+) */
-  isDisabled?: boolean;
-  /** Shows loading state with pulsing animation (v1.1.0+) */
-  isLoading?: boolean;
-  /** Button size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats */
-  size?: SizeUnified | ButtonSizeLegacy;
-  /** Replaces primary text/border color with white for dark backgrounds (v1.1.0+) */
-  isInverse?: boolean;
-  /**
-   * Surface behind the button. Prefer `onDark` / `onBrand` on tinted bands instead of
-   * `isInverse` on gradients (ancestor sampling can mis-read transparent parents).
-   */
+  /** Visual weight. @default "primary" */
+  variant?: ButtonVariant;
+  /** Semantic color, orthogonal to `variant`. @default "neutral" */
+  tone?: ButtonTone;
+  /** Size. @default "md" */
+  size?: ButtonSize;
+  /** Surface the button renders on; prefer this over absolute colors on tinted bands. @default "default" */
   surface?: ButtonSurface;
-  /** Applies rounded corners to the button (v1.1.0+) */
-  isRounded?: boolean;
-  /** Semantic severity for status-based styling (v1.1.0+) */
-  severity?: ButtonSeverity;
-
-  // EXISTING PROPS (updated descriptions)
-  /** Visual style variant of the button */
-  variant?:
-    | ButtonVariantVisual
-    | "secondaryError"
-    | "tertiaryError"
-    | ButtonSeverity;
-  /** Icon can be a React element, component, or a Phosphor icon name string (e.g., "spinner-gap") */
-  icon?: React.ReactNode | string;
-  /** Icon displayed at the end of the button content */
-  endIcon?: React.ReactNode | string;
-  /** Button label content */
-  children?: React.ReactNode | React.ReactNode[];
-  /** ARIA description for additional context */
-  accessibleDescription?: string;
-  /** ARIA label for accessible name override */
-  accessibleName?: string;
-  /** ID reference for aria-labelledby */
-  accessibleNameRef?: string;
-  /** ARIA role override (defaults to semantic element role) */
-  accessibleRole?: "button" | "link";
-  /** Tooltip text displayed on hover */
-  tooltip?: string;
-
-  // DEPRECATED PROPS
-  /** @deprecated Use isDisabled instead. Will be removed in v2.0.0 */
+  /** Disables interaction and dims the control. @default false */
   disabled?: boolean;
-  /** @deprecated Use isLoading instead. Will be removed in v2.0.0 */
+  /** Shows a loading state and blocks interaction; sets `aria-busy`. @default false */
   loading?: boolean;
-  /** @deprecated Use isInverse instead. Will be removed in v2.0.0 */
-  inverse?: boolean;
-  /** @deprecated Use isRounded instead. Will be removed in v2.0.0 */
+  /** Fully rounded (pill) corners. @default false */
   rounded?: boolean;
+  /** Leading icon: a React node, a component, or a Phosphor icon name (e.g. `"arrow-left"`). */
+  icon?: React.ReactNode | string;
+  /** Trailing icon: a React node, a component, or a Phosphor icon name. */
+  endIcon?: React.ReactNode | string;
+  /** Button label. */
+  children?: React.ReactNode;
+  /** Accessible name; required for icon-only buttons. Maps to `aria-label`. */
+  accessibleName?: string;
+  /** id of an element that labels this button. Maps to `aria-labelledby`. */
+  accessibleNameRef?: string;
+  /** Extra context for assistive tech. Maps to `aria-describedby`. */
+  accessibleDescription?: string;
+  /** Native tooltip text; also used as an accessible-name fallback for icon-only buttons. */
+  tooltip?: string;
 }
 
-/**
- * Button rendered as a native `<button>` element.
- */
+/** Button rendered as a native `<button>`. */
 export interface ButtonAsButton
   extends BaseButtonProps,
     Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseButtonProps> {
-  /** When true, button type becomes "submit" */
+  /** When true, sets `type="submit"`. @default false */
   submits?: boolean;
   href?: never;
   target?: never;
   rel?: never;
 }
 
-/**
- * Button rendered as an `<a>` element for navigation.
- */
+/** Button rendered as an `<a>` for navigation. */
 export interface ButtonAsLink
   extends BaseButtonProps,
     Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseButtonProps> {
-  /** URL to navigate to. When provided, renders as an anchor element */
+  /** Destination URL. When provided, the button renders as an anchor. */
   href: string;
   submits?: never;
 }
 
 /**
- * Button component with polymorphic rendering (button or link).
+ * Primary action control with an orthogonal `variant` (visual weight) and `tone`
+ * (semantic color) model, optional loading state, and polymorphic button/link rendering.
  *
  * @example
  * ```tsx
- * // Primary button
- * <Button variant="primary" onClick={handleClick}>Submit</Button>
- *
- * // Secondary button with icon
- * <Button variant="secondary" icon="arrow-left">Back</Button>
- *
- * // Button as link
- * <Button href="/about" variant="tertiary">Learn More</Button>
- *
- * // Inverse button on dark background
- * <Button variant="primary" inverse>Contrast Button</Button>
+ * <Button variant="primary" onClick={save}>Save</Button>
+ * <Button variant="secondary" tone="error">Delete</Button>
+ * <Button variant="tertiary" icon="arrow-left">Back</Button>
+ * <Button href="/about" variant="secondary">Learn more</Button>
+ * <Button variant="primary" surface="onDark">On a dark band</Button>
  * ```
  */
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
-type ButtonVariant = NonNullable<ButtonProps["variant"]>;
-const VARIANT_TO_STATUS: Partial<Record<ButtonVariant, SemanticStatus>> = {
-  error: "error",
-  secondaryError: "error",
-  tertiaryError: "error",
-  warning: "warning",
-  success: "success",
-  info: "info",
-};
-
-const isTransparentColor = (value?: string | null) => {
-  if (!value) return true;
-  const normalized = value.trim().toLowerCase();
-  if (!normalized) return true;
-  if (
-    normalized === "transparent" ||
-    normalized === "inherit" ||
-    normalized === "initial" ||
-    normalized === "unset"
-  ) {
-    return true;
-  }
-  if (normalized.startsWith("rgba(")) {
-    const alpha = normalized.split(",").pop()?.replace(")", "").trim();
-    if (alpha === "0" || alpha === "0.0") return true;
-  }
-  return normalized === "rgba(0,0,0,0)";
-};
-
-const getElementBackgroundColor = (element: Element | null): string | null => {
-  if (!element || typeof window === "undefined") return null;
-  const styles = window.getComputedStyle(element);
-  const background = styles?.backgroundColor;
-  if (background && !isTransparentColor(background)) {
-    return background;
-  }
-  return null;
-};
-
-const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
-
-/** Primary action control with variants, loading, and optional link rendering. */
+/** Primary action control with `variant` (visual weight) and `tone` (semantic color), loading state, and polymorphic button/link rendering. */
 const Button = React.forwardRef<
   HTMLButtonElement | HTMLAnchorElement,
   ButtonProps
@@ -182,262 +99,71 @@ const Button = React.forwardRef<
   (
     {
       variant = "primary",
-      severity,
-      // New props (v1.1.0)
-      isDisabled,
-      isLoading,
-      isInverse,
+      tone = "neutral",
+      size = "md",
       surface = "default",
-      isRounded,
-      // Deprecated props
       disabled = false,
       loading = false,
       rounded = false,
-      inverse = false,
-      // Other props
       icon,
       endIcon,
       children,
-      accessibleDescription,
       accessibleName,
       accessibleNameRef,
-      accessibleRole,
+      accessibleDescription,
       tooltip,
       className = "",
-      size = "md",
       ...rest
     },
     ref,
   ) => {
-    // Deprecation warnings (development only)
-    if (process.env.NODE_ENV !== "production") {
-      if (disabled !== false && isDisabled === undefined) {
-        warnPropRename("Button", "disabled", "isDisabled");
-      }
-      if (loading !== false && isLoading === undefined) {
-        warnPropRename("Button", "loading", "isLoading");
-      }
-      if (inverse !== false && isInverse === undefined) {
-        warnPropRename("Button", "inverse", "isInverse");
-      }
-      if (rounded !== false && isRounded === undefined) {
-        warnPropRename("Button", "rounded", "isRounded");
-      }
-    }
-
     const ariaLabelFromRest =
       typeof rest["aria-label"] === "string" ? rest["aria-label"].trim() : "";
 
-    // Icon-only button accessibility warning (development only)
-    // This runs after normalization so we check the raw icon prop
     if (process.env.NODE_ENV !== "production") {
-      const isIconOnly = !children && icon;
+      const isIconOnly = !children && !!icon;
       const hasAccessibleName = !!(
         accessibleName ||
         accessibleNameRef ||
         tooltip ||
         ariaLabelFromRest
       );
-
       if (isIconOnly && !hasAccessibleName) {
         // eslint-disable-next-line no-console
         console.warn(
-          "[Button] Icon-only button detected without accessible name. " +
-          "Add accessibleName, accessibleNameRef, or tooltip prop for screen reader users. " +
-          'Example: <Button icon="search" accessibleName="Search" />'
+          "[Button] Icon-only button without an accessible name. " +
+            "Add accessibleName, accessibleNameRef, or tooltip. " +
+            'Example: <Button icon="search" accessibleName="Search" />',
         );
       }
     }
 
-    // Resolve effective values (new props take precedence)
-    const effectiveDisabled = isDisabled ?? disabled;
-    const effectiveLoading = isLoading ?? loading;
-    const effectiveInverse = isInverse ?? inverse;
-    const effectiveRounded = isRounded ?? rounded;
-
-    // Normalize size (supports both legacy s/m/l and modern sm/md/lg)
-    const normalizedSize = size === "s" ? "sm" : size === "m" ? "md" : size === "l" ? "lg" : normalizeSizeProp(size as SizeUnified);
     const isLink = "href" in rest && rest.href !== undefined;
-    const submits = "submits" in rest ? rest.submits : false;
-    const type = "type" in rest ? rest.type : "button";
-    const onClick = "onClick" in rest ? rest.onClick : undefined;
 
-    // Determine icon color based on variant
-    const getIconColor = (): string | undefined => {
-      // Primary, error, success, info buttons use white icons
-      if (
-        variant === "primary" ||
-        variant === "error" ||
-        variant === "success" ||
-        variant === "info"
-      ) {
-        return "var(--color-white)";
-      }
-      // Warning uses specific contrast color
-      if (variant === "warning") {
-        return "var(--color-warning-text)";
-      }
-      // Secondary and tertiary inherit color from button text
-      return undefined;
-    };
-
-    const iconColor = getIconColor();
-
-    const lookupIcon = (candidate: unknown): unknown => {
+    // Icons inherit the button's resolved text color via currentColor, so no
+    // per-variant color computation is needed.
+    const renderIcon = (candidate: React.ReactNode | string): React.ReactNode => {
+      if (candidate == null || candidate === false) return undefined;
       if (typeof candidate === "string") {
         const trimmed = candidate.trim();
         if (!trimmed) return undefined;
-        return (
-          <Icon
-            name={trimmed}
-            ariaLabel={trimmed}
-            color={iconColor}
-            data-button-string-icon={trimmed}
-          />
-        );
+        return <Icon name={trimmed} ariaLabel={trimmed} color="currentColor" />;
       }
-      return candidate;
-    };
-
-    const resolvedStartIcon =
-      lookupIcon(icon) ??
-      (VARIANT_TO_STATUS[variant]
-        ? getSemanticIcon(VARIANT_TO_STATUS[variant]!)
-        : undefined);
-
-    const normalizeMaybeIcon = (candidate: unknown): React.ReactNode => {
-      if (!candidate) return undefined;
-      // Accept function components or class components
       if (typeof candidate === "function") {
         return React.createElement(candidate as React.ComponentType);
       }
-      // Accept already constructed elements - clone with color if it's an Icon
-      if (React.isValidElement(candidate)) {
-        // If the element accepts a color prop and we have an icon color, clone with color
-        const props = candidate.props as Record<string, unknown> | undefined;
-        if (iconColor && props && "color" in props) {
-          return React.cloneElement(candidate as React.ReactElement<any>, {
-            color: iconColor,
-          });
-        }
-        return candidate;
-      }
-      // Accept memo/forwardRef wrapped components provided as objects with $$typeof symbol
-      if (
-        typeof candidate === "object" &&
-        candidate !== null &&
-        // React internals: forwardRef/memo have $$typeof symbol and a 'render' or 'type'
-        // We avoid referencing symbols directly; do a heuristic check.
-        ((candidate as any).type || (candidate as any).render)
-      ) {
-        try {
-          return React.createElement(candidate as React.ComponentType);
-        } catch {
-          // fall through to ignore
-        }
-      }
-      // Primitive allowed but not typical for icons
-      if (typeof candidate === "string" || typeof candidate === "number") {
-        return candidate;
-      }
-      if (process.env.NODE_ENV !== "production") {
-        // eslint-disable-next-line no-console
-        console.warn(
-          "[Button] Ignoring invalid icon prop (expected React component or element):",
-          candidate,
-        );
-      }
+      if (React.isValidElement(candidate)) return candidate;
       return undefined;
     };
 
-    const normalizedIcon = normalizeMaybeIcon(resolvedStartIcon);
-    const normalizedEndIcon = normalizeMaybeIcon(lookupIcon(endIcon));
+    const resolvedIcon =
+      renderIcon(icon as React.ReactNode | string) ??
+      (TONE_TO_STATUS[tone]
+        ? getSemanticIcon(TONE_TO_STATUS[tone]!)
+        : undefined);
+    const resolvedEndIcon = renderIcon(endIcon as React.ReactNode | string);
+    const iconOnly = !children && !!resolvedIcon;
 
-    const buttonRef = React.useRef<
-      HTMLButtonElement | HTMLAnchorElement | null
-    >(null);
-
-    const setInverseColorFromSurface = React.useCallback(() => {
-      if (
-        !effectiveInverse ||
-        variant !== "primary" ||
-        typeof window === "undefined" ||
-        !buttonRef.current
-      ) {
-        buttonRef.current?.style.removeProperty("--dt-button-inverse-fg");
-        return;
-      }
-
-      let ancestor: HTMLElement | null = buttonRef.current.parentElement;
-      while (ancestor) {
-        const bg = getElementBackgroundColor(ancestor);
-        if (bg) {
-          // Use ancestor background as foreground (text) color for inverse primary.
-          buttonRef.current.style.setProperty("--dt-button-inverse-fg", bg);
-          return;
-        }
-        ancestor = ancestor.parentElement;
-      }
-      buttonRef.current.style.removeProperty("--dt-button-inverse-fg");
-    }, [effectiveInverse, variant]);
-
-    useIsomorphicLayoutEffect(() => {
-      setInverseColorFromSurface();
-      if (!effectiveInverse || variant !== "primary" || !buttonRef.current) {
-        return;
-      }
-
-      const handleWindowChange = () => {
-        setInverseColorFromSurface();
-      };
-
-      window.addEventListener("resize", handleWindowChange);
-      window.addEventListener("scroll", handleWindowChange, true);
-
-      const resizeObserver =
-        typeof ResizeObserver !== "undefined"
-          ? new ResizeObserver(() => setInverseColorFromSurface())
-          : null;
-      const mutationObserver =
-        typeof MutationObserver !== "undefined"
-          ? new MutationObserver(() => setInverseColorFromSurface())
-          : null;
-
-      const observedNodes: Element[] = [];
-      let ancestor = buttonRef.current.parentElement;
-      while (ancestor) {
-        observedNodes.push(ancestor);
-        mutationObserver?.observe(ancestor, {
-          attributes: true,
-          attributeFilter: ["style", "class"],
-        });
-        resizeObserver?.observe(ancestor);
-        ancestor = ancestor.parentElement;
-      }
-
-      return () => {
-        window.removeEventListener("resize", handleWindowChange);
-        window.removeEventListener("scroll", handleWindowChange, true);
-        mutationObserver?.disconnect();
-        resizeObserver?.disconnect();
-      };
-    }, [effectiveInverse, setInverseColorFromSurface, variant]);
-
-    const assignRefs = (node: HTMLButtonElement | HTMLAnchorElement | null) => {
-      buttonRef.current = node;
-      if (!ref) return;
-      if (typeof ref === "function") {
-        ref(node);
-      } else {
-        (
-          ref as React.MutableRefObject<
-            HTMLButtonElement | HTMLAnchorElement | null
-          >
-        ).current = node;
-      }
-    };
-
-    // Use tooltip / native aria-label as accessible name fallbacks for icon-only buttons
     const effectiveAriaLabel =
       accessibleName ||
       (tooltip && !accessibleNameRef ? tooltip : undefined) ||
@@ -448,33 +174,28 @@ const Button = React.forwardRef<
       className: [
         styles.button,
         styles[variant],
-        styles[normalizedSize],
-        !children && normalizedIcon ? styles["iconOnly"] : "",
-        effectiveInverse ? styles.inverse : "",
+        tone !== "neutral" ? styles[tone] : "",
+        styles[size],
         surface !== "default" ? styles[surface] : "",
-        effectiveRounded ? styles.rounded : "",
-        effectiveLoading ? styles.loading : "",
+        iconOnly ? styles.iconOnly : "",
+        rounded ? styles.rounded : "",
+        loading ? styles.loading : "",
         className,
       ]
         .filter(Boolean)
         .join(" "),
-      "aria-describedby": accessibleDescription,
       "aria-label": effectiveAriaLabel,
       "aria-labelledby": accessibleNameRef,
-      "aria-busy": effectiveLoading || undefined,
-      role: accessibleRole,
+      "aria-describedby": accessibleDescription,
+      "aria-busy": loading || undefined,
       title: tooltip,
     };
 
     const content = (
       <>
-        {normalizedIcon && (
-          <span
-            className={styles.icon}
-            data-size={normalizedSize}
-            data-button-slot="icon"
-          >
-            {normalizedIcon}
+        {resolvedIcon && (
+          <span className={styles.icon} data-button-slot="icon">
+            {resolvedIcon}
           </span>
         )}
         {children && (
@@ -482,13 +203,9 @@ const Button = React.forwardRef<
             {children}
           </span>
         )}
-        {normalizedEndIcon && (
-          <span
-            className={styles.icon}
-            data-size={normalizedSize}
-            data-button-slot="end-icon"
-          >
-            {normalizedEndIcon}
+        {resolvedEndIcon && (
+          <span className={styles.icon} data-button-slot="end-icon">
+            {resolvedEndIcon}
           </span>
         )}
       </>
@@ -498,12 +215,11 @@ const Button = React.forwardRef<
       const { href, target, rel, ...linkRest } = rest as ButtonAsLink;
       return (
         <a
-          ref={assignRefs as React.Ref<HTMLAnchorElement>}
+          ref={ref as React.Ref<HTMLAnchorElement>}
           href={href}
           target={target}
           rel={rel || (target === "_blank" ? "noopener noreferrer" : undefined)}
-          onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}
-          aria-disabled={effectiveDisabled || effectiveLoading || undefined}
+          aria-disabled={disabled || loading || undefined}
           {...commonProps}
           {...linkRest}
         >
@@ -512,22 +228,12 @@ const Button = React.forwardRef<
       );
     }
 
-    const {
-      submits: _submits,
-      type: _type,
-      ...buttonRest
-    } = rest as ButtonAsButton;
-
+    const { submits = false, type, ...buttonRest } = rest as ButtonAsButton;
     return (
       <button
-        ref={assignRefs as React.Ref<HTMLButtonElement>}
-        disabled={effectiveDisabled || effectiveLoading}
-        type={
-          submits
-            ? "submit"
-            : (_type as "button" | "submit" | "reset" | undefined) || "button"
-        }
-        onClick={onClick as React.MouseEventHandler<HTMLButtonElement>}
+        ref={ref as React.Ref<HTMLButtonElement>}
+        disabled={disabled || loading}
+        type={submits ? "submit" : (type ?? "button")}
         {...commonProps}
         {...buttonRest}
       >

@@ -49,7 +49,7 @@ const BlogNav: React.FC = () => {
       <div className={styles.blogNavBar}>
         <Button
           variant="tertiary"
-          size="m"
+          size="md"
           icon={
             <Icon
               name="text-align-left"
@@ -65,9 +65,9 @@ const BlogNav: React.FC = () => {
         <div className={styles.rightNavGroup}>
           <Button
             variant="tertiary"
-            size="m"
+            size="md"
             icon={<Icon name="arrow-left" ariaLabel={t("blogNavPrev")} />}
-            isDisabled={!isArticleRoute || currentIndex <= 0}
+            disabled={!isArticleRoute || currentIndex <= 0}
             onClick={() => {
               if (!isArticleRoute) return;
               if (currentIndex > 0) router.push(blogPages[currentIndex - 1].path);
@@ -77,9 +77,9 @@ const BlogNav: React.FC = () => {
           </Button>
           <Button
             variant="tertiary"
-            size="m"
+            size="md"
             endIcon={<Icon name="arrow-right" ariaLabel={t("blogNavNext")} />}
-            isDisabled={
+            disabled={
               !isArticleRoute || currentIndex === blogPages.length - 1
             }
             onClick={() => {

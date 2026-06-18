@@ -623,7 +623,7 @@ export function ContactFormEditorial({
       <Button
         submits
         variant="primary"
-        isLoading={isSubmitting}
+        loading={isSubmitting}
         disabled={!isFormValid}
         className={styles.submitButton}
       >

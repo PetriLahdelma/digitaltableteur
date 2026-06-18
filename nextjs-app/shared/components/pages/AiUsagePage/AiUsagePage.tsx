@@ -136,7 +136,7 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
             marginBottom: "1.5rem",
           }}
         >
-          <Button variant="secondary" size="m" onClick={onBack}>
+          <Button variant="secondary" size="md" onClick={onBack}>
             <Icon
               name="arrow-left"
               ariaLabel={t("back")}

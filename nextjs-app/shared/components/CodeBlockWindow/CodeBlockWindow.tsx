@@ -278,10 +278,10 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
         <div className={styles.actions}>
           <Button
             variant="tertiary"
-            size="s"
+            size="sm"
             className={styles.copyButton}
             onClick={handleCopy}
-            isDisabled={!codeText}
+            disabled={!codeText}
             accessibleName={t("codeBlockWindow.copyAriaLabel")}
           >
             {copyLabel}

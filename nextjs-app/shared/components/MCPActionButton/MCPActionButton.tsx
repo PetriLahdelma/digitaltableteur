@@ -82,10 +82,9 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
     onError,
     children,
     disabled,
-    isDisabled,
     className = "",
   } = props;
-  const effectiveDisabled = isDisabled ?? disabled;
+  const effectiveDisabled = disabled;
 
   const statusKey = effectiveDisabled
     ? "mcpActionButton.status.notReady"
@@ -110,7 +109,7 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
 
   const commonProps = {
     className: mergedClassName,
-    isDisabled: effectiveDisabled || status === "loading",
+    disabled: effectiveDisabled || status === "loading",
     onClick: handleClick,
     accessibleDescription: t("mcpActionButton.actionDescription"),
   };
@@ -127,7 +126,6 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
         onError: _onError,
         children: _children,
         disabled: _disabled,
-        isDisabled: _isDisabled,
         className: _className,
         ...rest
       } = props;
@@ -148,7 +146,6 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
       onError: _onError,
       children: _children,
       disabled: _disabled,
-      isDisabled: _isDisabled,
       className: _className,
       ...rest
     } = props;

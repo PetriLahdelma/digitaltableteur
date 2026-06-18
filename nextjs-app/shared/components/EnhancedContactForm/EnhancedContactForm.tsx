@@ -498,15 +498,15 @@ export function EnhancedContactForm({
             type="button"
             variant="secondary"
             onClick={resetFormState}
-            isDisabled={isSubmitting}
+            disabled={isSubmitting}
           >
             {t("contactClear")}
           </Button>
           <Button
             type="submit"
             variant="primary"
-            isDisabled={isSubmitting || !isFormValid}
-            isLoading={isSubmitting}
+            disabled={isSubmitting || !isFormValid}
+            loading={isSubmitting}
             className="flex-1"
           >
             {t("contactSubmit")}

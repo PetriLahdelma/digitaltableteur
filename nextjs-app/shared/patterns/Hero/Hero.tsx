@@ -132,8 +132,8 @@ export const Hero: React.FC<HeroProps> = ({
                   >
                     <Button
                       variant={action.variant || "primary"}
-                      size={action.size || "l"}
-                      inverse={action.inverse}
+                      size={action.size === "s" ? "sm" : action.size === "m" ? "md" : "lg"}
+                      surface={action.inverse ? "onDark" : "default"}
                       onClick={action.onClick}
                     >
                       {action.label}
@@ -146,8 +146,8 @@ export const Hero: React.FC<HeroProps> = ({
                 <Button
                   key={action.key}
                   variant={action.variant || "primary"}
-                  size={action.size || "l"}
-                  inverse={action.inverse}
+                  size={action.size === "s" ? "sm" : action.size === "m" ? "md" : "lg"}
+                  surface={action.inverse ? "onDark" : "default"}
                   onClick={action.onClick}
                 >
                   {action.label}
@@ -231,8 +231,8 @@ export const Hero: React.FC<HeroProps> = ({
                       >
                         <Button
                           variant={action.variant || "primary"}
-                          size={action.size || "l"}
-                          inverse={action.inverse}
+                          size={action.size === "s" ? "sm" : action.size === "m" ? "md" : "lg"}
+                          surface={action.inverse ? "onDark" : "default"}
                           onClick={action.onClick}
                         >
                           {action.label}
@@ -245,8 +245,8 @@ export const Hero: React.FC<HeroProps> = ({
                     <Button
                       key={action.key}
                       variant={action.variant || "primary"}
-                      size={action.size || "l"}
-                      inverse={action.inverse}
+                      size={action.size === "s" ? "sm" : action.size === "m" ? "md" : "lg"}
+                      surface={action.inverse ? "onDark" : "default"}
                       onClick={action.onClick}
                     >
                       {action.label}

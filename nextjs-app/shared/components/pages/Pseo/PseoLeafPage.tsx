@@ -226,7 +226,7 @@ export function PseoLeafPageView({
               <Button
                 href="/pricing"
                 variant="secondary"
-                size="m"
+                size="md"
                 data-donny-interest="pseo-pricing"
               >
                 View pricing
@@ -234,7 +234,7 @@ export function PseoLeafPageView({
               <Button
                 href="/contact?mode=book"
                 variant="primary"
-                size="m"
+                size="md"
                 data-donny-interest="pseo-contact"
               >
                 Book a call
@@ -308,7 +308,7 @@ export function PseoLeafPageView({
             <Button
               href="/contact"
               variant="primary"
-              size="l"
+              size="lg"
               data-donny-interest="pseo-contact"
             >
               Contact
@@ -316,7 +316,7 @@ export function PseoLeafPageView({
             <Button
               href="/work"
               variant="secondary"
-              size="l"
+              size="lg"
               data-donny-interest="work-cta"
             >
               See work

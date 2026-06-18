@@ -103,9 +103,9 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
       <div className={`${styles.container} ${className || ""}`}>
         <Button
           onClick={handleTransform}
-          isDisabled={disabled}
+          disabled={disabled}
           variant="primary"
-          size="l"
+          size="lg"
           className={styles.triggerButton}
         >
           {t("newsletterWaitlist.trigger")}
@@ -144,14 +144,14 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
             <Button
               type="button"
               onClick={handleCancel}
-              isDisabled={disabled || isSubmitting}
+              disabled={disabled || isSubmitting}
               variant="secondary"
             >
               {t("newsletterWaitlist.cancel")}
             </Button>
             <AdaptiveLoadingButton
               type="submit"
-              isDisabled={disabled || isSubmitting || !email.trim()}
+              disabled={disabled || isSubmitting || !email.trim()}
               variant="primary"
               loading={isSubmitting}
               loadingLabelKey="newsletterWaitlist.submitting"

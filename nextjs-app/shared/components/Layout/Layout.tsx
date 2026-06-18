@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className={styles.layout}>
       <Button
         variant="primary"
-        accessibleRole="link"
+        role="link"
         className={styles.skipLink}
         onClick={(e) => {
           e.preventDefault();

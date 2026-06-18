@@ -288,7 +288,7 @@ function PackageCard({
         <Button
           href={packageContactHref(pkg.contactPackageId)}
           variant="primary"
-          size="m"
+          size="md"
         >
           {t(pkg.ctaKey, pkg.ctaDefault)}
         </Button>

@@ -34,7 +34,7 @@ export function NextBlogNav() {
       <div className={styles.row}>
         <Button
           variant="tertiary"
-          size="m"
+          size="md"
           icon={<Icon name="text-align-left" ariaLabel="Articles" />}
           onClick={() => router.push("/blog")}
         >
@@ -43,9 +43,9 @@ export function NextBlogNav() {
         <div className={styles.navButtons}>
           <Button
             variant="tertiary"
-            size="m"
+            size="md"
             icon={<Icon name="arrow-left" ariaLabel="Previous article" />}
-            isDisabled={!isArticleRoute || currentIndex <= 0}
+            disabled={!isArticleRoute || currentIndex <= 0}
             onClick={() => {
               if (!isArticleRoute) return;
               if (currentIndex > 0)
@@ -56,9 +56,9 @@ export function NextBlogNav() {
           </Button>
           <Button
             variant="tertiary"
-            size="m"
+            size="md"
             endIcon={<Icon name="arrow-right" ariaLabel="Next article" />}
-            isDisabled={
+            disabled={
               !isArticleRoute || currentIndex === blogPages.length - 1
             }
             onClick={() => {

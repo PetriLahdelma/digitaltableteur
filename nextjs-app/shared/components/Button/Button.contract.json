@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "interaction",
     "status": "stable",
-    "description": "Primary interaction control with variant, severity, loading, and link modes.",
+    "description": "Primary action control with an orthogonal variant (visual weight) and tone (semantic color) model, loading state, and polymorphic button/link rendering.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=406-1569",
     "radixPrimitive": null,
     "element": "button",
@@ -13,15 +13,20 @@
             "values": [
                 "primary",
                 "secondary",
-                "tertiary",
-                "secondaryError",
-                "tertiaryError",
+                "tertiary"
+            ],
+            "default": "primary",
+            "propSourced": true
+        },
+        "tone": {
+            "values": [
+                "neutral",
                 "error",
                 "warning",
                 "success",
                 "info"
             ],
-            "default": "primary",
+            "default": "neutral",
             "propSourced": true
         },
         "surface": {
@@ -33,27 +38,11 @@
             "default": "default",
             "propSourced": true
         },
-        "severity": {
-            "values": [
-                "error",
-                "warning",
-                "success",
-                "info"
-            ],
-            "default": "error",
-            "propSourced": true
-        },
         "size": {
             "values": [
                 "sm",
                 "md",
-                "lg",
-                "s",
-                "m",
-                "l",
-                "S",
-                "M",
-                "L"
+                "lg"
             ],
             "default": "md",
             "propSourced": true
@@ -83,52 +72,57 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — keyboard, loading, forced-colors verified in Storybook.",
+        "reviewedNote": "2026-06-18 — platinum pass: variant/tone API, scale(0.97) press feedback, tokenized motion, forced-colors + reduced-motion handled. AT snapshots refreshed.",
         "forcedColorsVerified": true,
         "accessibilityTreeVerified": true,
         "realBrowserForcedColorsVerified": true,
-        "axeTestExempt": "Interaction atom; axe on Default/Primary and compliance stories."
+        "axeTestExempt": "Interaction atom; axe asserted on Default/Primary and per-variant a11y tests."
     },
     "tokens": {
         "colors": [
-            "--color-warning-text",
-            "--color-white"
+            "--color-primary",
+            "--color-white",
+            "--color-error",
+            "--color-warning-contrast",
+            "--color-success",
+            "--color-info",
+            "--color-disabled-bg",
+            "--color-muted",
+            "--logo-color",
+            "--logo-background"
         ],
-        "spacing": []
+        "spacing": [
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-24"
+        ]
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
-        "ariaDescribedBy",
-        "ariaLabel",
-        "ariaLabelledBy",
-        "as",
-        "asChild",
+        "accessibleDescription",
+        "accessibleName",
+        "accessibleNameRef",
         "children",
         "className",
         "disabled",
-        "download",
+        "endIcon",
         "form",
         "href",
         "icon",
-        "iconEnd",
         "id",
-        "inverse",
-        "isDisabled",
-        "isInverse",
-        "isLoading",
-        "isRounded",
         "loading",
         "name",
         "onClick",
         "ref",
         "rel",
-        "role",
         "rounded",
-        "severity",
         "size",
-        "style",
-        "submit",
+        "submits",
+        "surface",
         "target",
+        "tone",
         "tooltip",
         "type",
         "value",
@@ -137,52 +131,12 @@
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/BlogArticleMdxBody.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/BlogArticleShare.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ClientArticleShell.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleContent.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/[slug]/ServerArticleMain.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/blog/NextBlogNav.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/code-window/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/error.tsx",
+            "since": "2026-06-04"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "app/not-found.tsx",
             "since": "2026-06-04"
         },
         {
@@ -192,15 +146,98 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/not-found.tsx",
-            "since": "2026-06-04"
+            "path": "nextjs-app/shared/components/Card/Card.tsx",
+            "since": "2026-06-18"
+        },
+        {
+            "repo": "digitaltableteur/digitaltableteur",
+            "path": "nextjs-app/shared/components/Button/SplitButton.tsx",
+            "since": "2026-06-18"
         }
     ],
     "schemaVersion": 2,
     "props": {
+        "variant": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "primary",
+                "secondary",
+                "tertiary"
+            ]
+        },
+        "tone": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "neutral",
+                "error",
+                "warning",
+                "success",
+                "info"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
+            ]
+        },
+        "surface": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "default",
+                "onDark",
+                "onBrand"
+            ]
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "loading": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "rounded": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "icon": {
+            "optional": true,
+            "type": "React.ReactNode | string"
+        },
+        "endIcon": {
+            "optional": true,
+            "type": "React.ReactNode | string"
+        },
+        "children": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "accessibleName": {
+            "optional": true,
+            "type": "string"
+        },
+        "accessibleNameRef": {
+            "optional": true,
+            "type": "string"
+        },
+        "accessibleDescription": {
+            "optional": true,
+            "type": "string"
+        },
+        "tooltip": {
+            "optional": true,
+            "type": "string"
+        },
         "submits": {
             "optional": true,
-            "type": "never"
+            "type": "boolean"
         },
         "href": {
             "optional": false,
@@ -213,131 +250,14 @@
         "rel": {
             "optional": true,
             "type": "string | undefined"
-        },
-        "isDisabled": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "isLoading": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "size": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg",
-                "s",
-                "m",
-                "l",
-                "S",
-                "M",
-                "L"
-            ]
-        },
-        "isInverse": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "surface": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "default",
-                "onDark",
-                "onBrand"
-            ]
-        },
-        "isRounded": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "severity": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "info",
-                "success",
-                "warning",
-                "error"
-            ]
-        },
-        "variant": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "info",
-                "success",
-                "warning",
-                "error",
-                "primary",
-                "secondary",
-                "tertiary",
-                "secondaryError",
-                "tertiaryError"
-            ]
-        },
-        "icon": {
-            "optional": true,
-            "type": "React.ReactNode | string"
-        },
-        "endIcon": {
-            "optional": true,
-            "type": "React.ReactNode | string"
-        },
-        "children": {
-            "optional": true,
-            "type": "React.ReactNode | React.ReactNode[]"
-        },
-        "accessibleDescription": {
-            "optional": true,
-            "type": "string"
-        },
-        "accessibleName": {
-            "optional": true,
-            "type": "string"
-        },
-        "accessibleNameRef": {
-            "optional": true,
-            "type": "string"
-        },
-        "accessibleRole": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "button",
-                "link"
-            ]
-        },
-        "tooltip": {
-            "optional": true,
-            "type": "string"
-        },
-        "disabled": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "loading": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "inverse": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "rounded": {
-            "optional": true,
-            "type": "boolean"
         }
     },
     "forbiddenUse": [
-        "tertiary on dark or inverse backgrounds without explicit contrast verification",
-        "isInverse on primary over transparent or gradient parents — use surface instead",
-        "pair an icon-only button with a tooltip as the *only* accessible",
-        "nest a Button inside another interactive control. Buttons are",
-        "use a Button for inline navigation in body copy. Use **Link**."
+        "tertiary on low-contrast surfaces without verifying contrast",
+        "surface onBrand without verifying brand-color contrast",
+        "an icon-only button with a tooltip as the only accessible name",
+        "nesting a Button inside another interactive control",
+        "a Button for inline navigation in body copy. Use Link instead."
     ],
     "prefersOver": [
         "raw button",
@@ -347,8 +267,6 @@
         "Title",
         "Text",
         "Icon",
-        "Inputs",
-        "Modal",
-        "CheckboxGroup"
+        "Modal"
     ]
 }

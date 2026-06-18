@@ -56,7 +56,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       {dismissible && (
         <Button
           variant="tertiary"
-          size="s"
+          size="sm"
           className={styles.dismiss}
           onClick={onDismiss}
           aria-label="Dismiss alert"

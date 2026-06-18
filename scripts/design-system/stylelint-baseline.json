@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 472,
+  "warningCount": 464,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -109,78 +109,6 @@
       "rule": "order/properties-order",
       "severity": "warning",
       "text": "Expected \"block-size\" to come before \"cursor\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::155::1::no-descending-specificity::Expected selector \".button.tertiary\" to come before selector \".button.tertiary:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 155,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.tertiary\" to come before selector \".button.tertiary:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::167::1::no-descending-specificity::Expected selector \".button.error\" to come before selector \".button.error:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 167,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.error\" to come before selector \".button.error:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::173::1::no-descending-specificity::Expected selector \".button.warning\" to come before selector \".button.warning:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 173,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.warning\" to come before selector \".button.warning:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::179::1::no-descending-specificity::Expected selector \".button.success\" to come before selector \".button.success:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 179,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.success\" to come before selector \".button.success:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::185::1::no-descending-specificity::Expected selector \".button.info\" to come before selector \".button.info:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 185,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.info\" to come before selector \".button.info:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::68::1::no-descending-specificity::Expected selector \".button.primary\" to come before selector \".button.primary:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 68,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.primary\" to come before selector \".button.primary:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::74::1::no-descending-specificity::Expected selector \".button.secondary\" to come before selector \".button.secondary:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 74,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.secondary\" to come before selector \".button.secondary:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::86::1::no-descending-specificity::Expected selector \".button.inverse\" to come before selector \".button.inverse:focus-visible\", at line 42 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 86,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.inverse\" to come before selector \".button.inverse:focus-visible\", at line 42 (no-descending-specificity)"
     },
     {
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::283::1::no-descending-specificity::Expected selector \".fullWidthComponent > *\" to come before selector \".header .tagline *\", at line 124 (no-descending-specificity)",

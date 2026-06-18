@@ -70,13 +70,13 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
           </p>
         </div>
         <div className={styles.actions}>
-          <Button variant="tertiary" size="m" onClick={onCustomize}>
+          <Button variant="tertiary" size="md" onClick={onCustomize}>
             {t("cookieConsent.customizeButton")}
           </Button>
-          <Button variant="secondary" size="m" onClick={acceptEssentialOnly}>
+          <Button variant="secondary" size="md" onClick={acceptEssentialOnly}>
             {t("cookieConsent.acceptEssentialButton")}
           </Button>
-          <Button variant="primary" size="m" onClick={acceptAll}>
+          <Button variant="primary" size="md" onClick={acceptAll}>
             {t("cookieConsent.acceptAllButton")}
           </Button>
         </div>

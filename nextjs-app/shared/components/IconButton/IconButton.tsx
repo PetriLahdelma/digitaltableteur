@@ -73,7 +73,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         size={sizeMap[size]}
         accessibleName={ariaLabelledBy ? undefined : label}
         aria-labelledby={ariaLabelledBy}
-        isRounded
+        rounded
         icon={icon}
         disabled={disabled}
         onClick={onClick}
