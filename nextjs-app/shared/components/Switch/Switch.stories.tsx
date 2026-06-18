@@ -103,19 +103,19 @@ const meta: Meta<typeof Switch> = {
 
     // State (v2.0.0)
 
-    isChecked: {
+    checked: {
       control: "boolean",
       description: "Checked state (controlled) (v2.0.0+)",
       table: { category: "State", type: { summary: "boolean" } },
     },
 
-    isDisabled: {
+    disabled: {
       control: "boolean",
       description: "Disables the switch (v2.0.0+)",
       table: { category: "State", type: { summary: "boolean" } },
     },
 
-    isLoading: {
+    loading: {
       control: "boolean",
       description: "Shows loading state with spinner (v2.0.0+)",
       table: { category: "State", type: { summary: "boolean" } },
@@ -132,10 +132,10 @@ const meta: Meta<typeof Switch> = {
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
-      description: "Size variant (v2.0.0+)",
+      description: "Size variant",
       table: {
         category: "Appearance",
-        type: { summary: "SizeUnified" },
+        type: { summary: "sm | md | lg" },
         defaultValue: { summary: "md" },
       },
     },
@@ -170,9 +170,9 @@ const meta: Meta<typeof Switch> = {
     },
   },
   args: {
-    isChecked: false,
-    isLoading: false,
-    isDisabled: false,
+    checked: false,
+    loading: false,
+    disabled: false,
     label: "Enable notifications",
     labelPlacement: "right",
   },
@@ -197,17 +197,17 @@ Z_SwitchCompliance.parameters = { docs: { disable: true } };
 
 const ControlledTemplate = (args: SwitchProps) => {
   const [checked, setChecked] = React.useState<boolean>(
-    args.isChecked ?? false,
+    args.checked ?? false,
   );
 
   React.useEffect(() => {
-    setChecked(args.isChecked ?? false);
-  }, [args.isChecked]);
+    setChecked(args.checked ?? false);
+  }, [args.checked]);
 
   return (
     <Switch
       {...args}
-      isChecked={checked}
+      checked={checked}
       onCheckedChange={(next) => {
         setChecked(next);
         args.onCheckedChange?.(next);
@@ -235,7 +235,7 @@ export const Default: Story = {
 };
 
 export const Loading: Story = {
-  args: { isLoading: true, isChecked: true },
+  args: { loading: true, checked: true },
   render: (args) => <ControlledTemplate {...args} />,
 };
 
@@ -278,19 +278,19 @@ export const WithHelperText: Story = {
 // v2.0.0 Showcase Stories
 export const SizeSmall: Story = {
   name: "Size Small (v2.0.0)",
-  args: { label: "Small switch", isChecked: true, size: "sm" },
+  args: { label: "Small switch", checked: true, size: "sm" },
   render: (args) => <ControlledTemplate {...args} />,
 };
 
 export const SizeMedium: Story = {
   name: "Size Medium (v2.0.0)",
-  args: { label: "Medium switch (default)", isChecked: true, size: "md" },
+  args: { label: "Medium switch (default)", checked: true, size: "md" },
   render: (args) => <ControlledTemplate {...args} />,
 };
 
 export const SizeLarge: Story = {
   name: "Size Large (v2.0.0)",
-  args: { label: "Large switch", isChecked: true, size: "lg" },
+  args: { label: "Large switch", checked: true, size: "lg" },
   render: (args) => <ControlledTemplate {...args} />,
 };
 
@@ -298,9 +298,9 @@ export const AllSizes: Story = {
   name: "All Sizes (v2.0.0)",
   render: () => (
     <div className={styles.sizesContainer}>
-      <Switch label="Small (sm)" isChecked={true} size="sm" />
-      <Switch label="Medium (md)" isChecked={true} size="md" />
-      <Switch label="Large (lg)" isChecked={true} size="lg" />
+      <Switch label="Small (sm)" checked={true} size="sm" />
+      <Switch label="Medium (md)" checked={true} size="md" />
+      <Switch label="Large (lg)" checked={true} size="lg" />
     </div>
   ),
 };
