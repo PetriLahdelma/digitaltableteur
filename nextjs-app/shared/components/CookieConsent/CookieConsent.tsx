@@ -102,7 +102,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = () => {
           footer={
             <div className={styles.footerActions}>
               <div className={styles.leftActions}>
-                <Link href="/privacy-policy" size="S">
+                <Link href="/privacy-policy" size="sm">
                   {t("cookieConsent.viewFullPolicy")}
                 </Link>
               </div>

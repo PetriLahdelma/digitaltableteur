@@ -10,8 +10,10 @@ import styles from "./Link.module.css";
 import "../../styles/variables.css";
 import Icon from "@dt/Icon";
 
-export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  size?: "S" | "M" | "L";
+export interface LinkProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  /** Size. @default "md" */
+  size?: "sm" | "md" | "lg";
 }
 
 const INTERNAL_HOST = "digitaltableteur.com";
@@ -101,51 +103,54 @@ function extractTextContent(children: React.ReactNode): string {
   return "";
 }
 
-/** Accessible inline link with size tokens and optional trailing icon. */
-const Link: React.FC<LinkProps> = ({
-  href = "#",
-  size = "M",
-  children,
-  className = "",
-  ...rest
-}) => {
-  const normalizedHref = React.useMemo(() => normalizeHref(href), [href]);
-  const isExternal = React.useMemo(
-    () => isExternalHref(normalizedHref),
-    [normalizedHref],
-  );
+const SIZE_CLASS = {
+  sm: styles.linkSm,
+  md: styles.linkMd,
+  lg: styles.linkLg,
+} as const;
 
-  // Check if children contains actual text content
-  const hasTextContent: boolean = React.useMemo((): boolean => {
-    return extractTextContent(children).trim().length > 0;
-  }, [children]);
+const ICON_SIZE = { sm: 20, md: 24, lg: 32 } as const;
 
-  // Map link size to icon size
-  const iconSize = size === "S" ? 20 : size === "L" ? 32 : 24;
+/** Accessible inline link with size tokens, a focus ring, and an optional external-link icon. */
+const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
+  ({ href = "#", size = "md", children, className = "", ...rest }, ref) => {
+    const normalizedHref = React.useMemo(() => normalizeHref(href), [href]);
+    const isExternal = React.useMemo(
+      () => isExternalHref(normalizedHref),
+      [normalizedHref],
+    );
+    const hasTextContent = React.useMemo(
+      () => extractTextContent(children).trim().length > 0,
+      [children],
+    );
 
-  return (
-    <a
-      href={normalizedHref}
-      {...rest}
-      rel={
-        isExternal
-          ? [rest.rel, "noopener", "noreferrer"].filter(Boolean).join(" ")
-          : rest.rel
-      }
-      className={`${styles.link} ${styles[`link${size}`]} wavyUnderline ${className}`.trim()}
-    >
-      {children}
-      {isExternal && hasTextContent && (
-        <span className={styles.externalIcon}>
-          <Icon
-            name="arrow-square-out"
-            size={iconSize}
-            ariaLabel="External link"
-          />
-        </span>
-      )}
-    </a>
-  );
-};
+    return (
+      <a
+        ref={ref}
+        href={normalizedHref}
+        {...rest}
+        rel={
+          isExternal
+            ? [rest.rel, "noopener", "noreferrer"].filter(Boolean).join(" ")
+            : rest.rel
+        }
+        className={`${styles.link} ${SIZE_CLASS[size]} wavyUnderline ${className}`.trim()}
+      >
+        {children}
+        {isExternal && hasTextContent && (
+          <span className={styles.externalIcon}>
+            <Icon
+              name="arrow-square-out"
+              size={ICON_SIZE[size]}
+              ariaLabel="External link"
+            />
+          </span>
+        )}
+      </a>
+    );
+  },
+);
+
+Link.displayName = "Link";
 
 export default Link;

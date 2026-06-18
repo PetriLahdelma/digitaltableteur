@@ -64,7 +64,7 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
           <p className={styles.copyText}>
             {t("cookieConsent.bannerSummary")}{" "}
             {t("cookieConsent.readOur")}{" "}
-            <Link href="/privacy-policy" size="M">
+            <Link href="/privacy-policy" size="md">
               {t("cookieConsent.policyLinkText")}
             </Link>
           </p>

@@ -4,19 +4,20 @@
   font-family: var(--font-text);
   text-decoration: none;
   color: var(--link-color);
+  transition: color var(--duration-fast) var(--ease-out-cubic);
 }
 
-.linkS {
+.linkSm {
   gap: 0.3rem;
   font-size: 1rem;
 }
 
-.linkM {
+.linkMd {
   gap: 0.5rem;
   font-size: 1.125rem;
 }
 
-.linkL {
+.linkLg {
   gap: 0.5rem;
   font-size: 1.5rem;
 }
@@ -31,8 +32,15 @@
   translate: 0 -2px;
 }
 
-.linkS .externalIcon {
+.linkSm .externalIcon {
   translate: 0 -1px;
+}
+
+.link:focus-visible {
+  border-radius: 2px;
+  outline: var(--focus-ring-width, 2px) solid
+    var(--focus-ring-color, var(--color-primary));
+  outline-offset: 2px;
 }
 
 .link.disabled {

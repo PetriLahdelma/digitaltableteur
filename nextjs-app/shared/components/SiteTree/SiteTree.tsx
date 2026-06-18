@@ -61,7 +61,7 @@ function SiteTreeLeaf({ node, depth }: SiteTreeLeafProps) {
         {href ? (
           <Link
             href={href}
-            size="S"
+            size="sm"
             className={styles.link}
             {...(external
               ? { target: "_blank", rel: "noopener noreferrer" }
