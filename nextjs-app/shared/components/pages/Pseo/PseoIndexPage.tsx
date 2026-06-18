@@ -19,17 +19,17 @@ export function PseoIndexPage({
   return (
     <PageLayout as="main" maxWidth="lg" spacing="comfortable">
       <div className={styles.root}>
-        <Title terminals="sans" level={1} size="L">
+        <Title terminals="sans" level={1} size="l">
           Design system playbooks
         </Title>
-        <Text className={styles.lead} size="L" terminals="sans">
+        <Text className={styles.lead} size="l" terminals="sans">
           Practical guides for design systems and DesignOps—organized by
           service, stack, and team context. Each playbook includes a situation
           brief, failure modes, checklist, and links to relevant case work.
         </Text>
 
         <section className={styles.section}>
-          <Title terminals="sans" level={2} size="S">
+          <Title terminals="sans" level={2} size="s">
             Start by service
           </Title>
           <div className={`${styles.grid} ${styles.gridTwo}`.trim()}>
@@ -45,12 +45,12 @@ export function PseoIndexPage({
                 titleProps={{
                   terminals: "sans",
                   level: 3,
-                  size: "S",
+                  size: "s",
                   as: "h3",
                 }}
                 description={service.shortDescription}
                 descriptionProps={{
-                  size: "S",
+                  size: "s",
                   as: "p",
                   className: styles.cardBody,
                 }}
@@ -60,7 +60,7 @@ export function PseoIndexPage({
         </section>
 
         <section className={styles.section}>
-          <Title terminals="sans" level={2} size="S">
+          <Title terminals="sans" level={2} size="s">
             Browse by stack
           </Title>
           <div className={`${styles.grid} ${styles.gridTwo}`.trim()}>
@@ -76,12 +76,12 @@ export function PseoIndexPage({
                 titleProps={{
                   terminals: "sans",
                   level: 3,
-                  size: "S",
+                  size: "s",
                   as: "h3",
                 }}
                 description={stack.shortDescription}
                 descriptionProps={{
-                  size: "S",
+                  size: "s",
                   as: "p",
                   className: styles.cardBody,
                 }}
@@ -91,7 +91,7 @@ export function PseoIndexPage({
         </section>
 
         <section className={styles.section}>
-          <Title terminals="sans" level={2} size="S">
+          <Title terminals="sans" level={2} size="s">
             Browse by audience
           </Title>
           <div className={`${styles.grid} ${styles.gridThree}`.trim()}>
@@ -107,12 +107,12 @@ export function PseoIndexPage({
                 titleProps={{
                   terminals: "sans",
                   level: 3,
-                  size: "S",
+                  size: "s",
                   as: "h3",
                 }}
                 description={audience.shortDescription}
                 descriptionProps={{
-                  size: "S",
+                  size: "s",
                   as: "p",
                   className: styles.cardBody,
                 }}
@@ -122,7 +122,7 @@ export function PseoIndexPage({
         </section>
 
         <section className={styles.section}>
-          <Title terminals="sans" level={2} size="S">
+          <Title terminals="sans" level={2} size="s">
             Featured playbooks
           </Title>
           <Text terminals="sans">

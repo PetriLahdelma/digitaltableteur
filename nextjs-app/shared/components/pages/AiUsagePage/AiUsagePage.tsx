@@ -147,13 +147,13 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
         </div>
       ) : null}
 
-      <Title level={1} terminals="sans" size="XS">
+      <Title level={1} terminals="sans" size="xs">
         {t("aiPolicyHeading")}
       </Title>
       <p>{t("aiPolicyIntro")}</p>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicyPrinciplesTitle")}
         </Title>
         <ul>
@@ -169,7 +169,7 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicyUseCasesTitle")}
         </Title>
         <ul>
@@ -185,14 +185,14 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicyNotUsedTitle")}
         </Title>
         <p>{t("aiPolicyNotUsedBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicyProvidersTitle")}
         </Title>
         <p>{t("aiPolicyProvidersIntro")}</p>
@@ -210,7 +210,7 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicyDataTitle")}
         </Title>
         <p>{t("aiPolicyDataIntro")}</p>
@@ -228,7 +228,7 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicySafeguardsTitle")}
         </Title>
         <ul>
@@ -244,14 +244,14 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicyLimitationsTitle")}
         </Title>
         <p>{t("aiPolicyLimitationsBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicyRightsTitle")}
         </Title>
         <ul>
@@ -273,14 +273,14 @@ export function AiUsagePage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicyChangesTitle")}
         </Title>
         <p>{t("aiPolicyChangesBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("aiPolicyContactTitle")}
         </Title>
         <p>

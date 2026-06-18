@@ -111,9 +111,9 @@ export default {
 
     size: {
       control: { type: "select" },
-      options: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
+      options: ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
       description: "Display size token for the heading",
-      table: { defaultValue: { summary: "L" } },
+      table: { defaultValue: { summary: "l" } },
     },
 
     children: {
@@ -160,10 +160,10 @@ export const AllSizes = () => {
   const { t } = useTranslation();
   return (
     <>
-      <Title size="S">{t("storyTitleSmall")}</Title>
-      <Title size="M">{t("storyTitleMedium")}</Title>
-      <Title size="L">{t("storyTitleLarge")}</Title>
-      <Title size="XL">{t("storyTitleXL")}</Title>
+      <Title size="s">{t("storyTitleSmall")}</Title>
+      <Title size="m">{t("storyTitleMedium")}</Title>
+      <Title size="l">{t("storyTitleLarge")}</Title>
+      <Title size="xl">{t("storyTitleXL")}</Title>
     </>
   );
 };
@@ -185,7 +185,7 @@ export const AllLevels = () => {
 export const CustomTagAndClass = () => {
   const { t } = useTranslation();
   return (
-    <Title as="div" className="custom-class" size="M">
+    <Title as="div" className="custom-class" size="m">
       {t("storyTitleCustom")}
     </Title>
   );
@@ -195,7 +195,7 @@ export const Playground = (args: any) => {
   const { t } = useTranslation();
   return <Title {...args}>{t(args.children)}</Title>;
 };
-Playground.args = { level: 2, size: "M", children: "storyTitlePlayground" };
+Playground.args = { level: 2, size: "m", children: "storyTitlePlayground" };
 
 export const Default = Playground;
 export const LineHeights = () => {
@@ -302,7 +302,7 @@ export const Example: Story = {
   render: () => {
     const { t } = useTranslation();
     return (
-      <Title terminals="sans" level={1} size="L">
+      <Title terminals="sans" level={1} size="l">
         {t("storyTitlePlayground")}
       </Title>
     );
@@ -316,7 +316,7 @@ export const ForcedColors: Story = {
   args: {
     children: "Heading under forced-colors",
     level: 2,
-    size: "M",
+    size: "m",
     terminals: "sans",
   },
 };

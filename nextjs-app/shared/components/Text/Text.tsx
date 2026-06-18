@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Text.module.css";
 import "../../styles/variables.css";
 
-type TextSize = "XXS" | "XS" | "S" | "M" | "L" | "XL" | "XXL";
+type TextSize = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
 type LineHeight = "tight" | "snug" | "normal" | "relaxed" | "loose";
 type TextTag = "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
@@ -15,13 +15,13 @@ export type TextProps = {
 } & React.HTMLAttributes<HTMLElement>;
 
 const sizeClassMap: Record<TextSize, string> = {
-  XXS: styles["textXXS"] || "",
-  XS: styles["textXS"] || "",
-  S: styles["textS"] || "",
-  M: styles["textM"] || "",
-  L: styles["textL"] || "",
-  XL: styles["textXL"] || "",
-  XXL: styles["textXXL"] || "",
+  xxs: styles["textXXS"] || "",
+  xs: styles["textXS"] || "",
+  s: styles["textS"] || "",
+  m: styles["textM"] || "",
+  l: styles["textL"] || "",
+  xl: styles["textXL"] || "",
+  xxl: styles["textXXL"] || "",
 };
 
 const lineHeightClassMap: Record<LineHeight, string> = {
@@ -38,7 +38,7 @@ const Text = ({
   as = "p",
   className = "",
   terminals = "sans",
-  size = "M",
+  size = "m",
   lineHeight,
   style,
   ...rest

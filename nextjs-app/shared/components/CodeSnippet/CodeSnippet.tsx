@@ -197,7 +197,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
       data-variant={variant}
     >
       <div className={styles.toolbar} aria-hidden={!allowCopy}>
-        <Text as="span" size="XXS" className={styles.language}>
+        <Text as="span" size="xxs" className={styles.language}>
           {language}
         </Text>
         {allowCopy && (

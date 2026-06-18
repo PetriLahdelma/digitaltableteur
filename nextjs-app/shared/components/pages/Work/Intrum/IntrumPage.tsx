@@ -54,7 +54,7 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         client={{ name: "Intrum Justitia" }}
         overview={
-          <Text size="S">
+          <Text size="s">
             The Compass program mapped Intrum Justitia's receivable life cycle
             and aligned teams across debt collection, debt surveillance, and
             legal affairs. The work combined business process mapping with deep
@@ -76,13 +76,13 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Research"
         title="Personas from the Call Center Floor"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Service advisors described daily work split between outbound calls,
             email shifts, and manual list management. Many tasks required
             jumping between Rekondis, Bevis, and SLS/LARE, which made it hard to
             keep context while speaking with debtors.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Pain points consistently pointed to fragmented instructions and the
             need for automation: payment plans were too complex to complete
             during a call, and critical information was buried behind too many
@@ -107,13 +107,13 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Process Mapping"
         title="Aligning the Receivable Life Cycle"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Compass documented the full receivable journey from sales and
             invoicing through payment, collection, and legal affairs. The maps
             surfaced the differences between B2B and B2C collections, debt
             surveillance, and the handoffs into legal processes.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             This clarity was essential for designing a shared system that could
             guide teams through the right actions at the right time.
           </Text>,
@@ -144,7 +144,7 @@ export function IntrumPage({ nav }: { nav?: React.ReactNode }) {
             type: "text",
             innerPadding: true,
             content: (
-              <Text size="S">
+              <Text size="s">
                 The product direction focused on reducing paper-based tasks,
                 automating daily call lists, and guiding users with the options
                 each client actually allows. A unified system would keep

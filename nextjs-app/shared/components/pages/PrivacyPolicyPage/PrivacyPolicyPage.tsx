@@ -129,7 +129,7 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
         </div>
       ) : null}
 
-      <Title level={1} terminals="sans" size="XS">
+      <Title level={1} terminals="sans" size="xs">
         {t("privacyPolicyHeading")}
       </Title>
       <p>{t("privacyPolicyIntro")}</p>
@@ -138,7 +138,7 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
       </p>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyControllerTitle")}
         </Title>
         <p style={{ whiteSpace: "pre-line" }}>
@@ -147,17 +147,17 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyPurposeTitle")}
         </Title>
         <p>{t("privacyPolicyPurposeBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyWhatWeCollectTitle")}
         </Title>
-        <Title level={3} terminals="sans" size="XXS">
+        <Title level={3} terminals="sans" size="xxs">
           {t("privacyPolicyContactFormSubtitle")}
         </Title>
         <p>{t("privacyPolicyContactFormIntro")}</p>
@@ -170,7 +170,7 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
         </ul>
         <p>{t("privacyPolicyContactFormUsage")}</p>
 
-        <Title level={3} terminals="sans" size="XXS">
+        <Title level={3} terminals="sans" size="xxs">
           {t("privacyPolicyWebsiteVisitorsSubtitle")}
         </Title>
         <p>{t("privacyPolicyWebsiteVisitorsIntro")}</p>
@@ -185,14 +185,14 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyLegalBasisTitle")}
         </Title>
         <p>{t("privacyPolicyLegalBasisBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicySharingTitle")}
         </Title>
         <p>{t("privacyPolicySharingIntro")}</p>
@@ -207,14 +207,14 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyTransfersTitle")}
         </Title>
         <p>{t("privacyPolicyTransfersBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyCookiesTitle")}
         </Title>
         <p>{t("privacyPolicyCookiesIntro")}</p>
@@ -230,14 +230,14 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyRetentionTitle")}
         </Title>
         <p>{t("privacyPolicyRetentionBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyYourRightsTitle")}
         </Title>
         <p>{t("privacyPolicyYourRightsIntro")}</p>
@@ -253,7 +253,7 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicySecurityTitle")}
         </Title>
         <p>{t("privacyPolicySecurityIntro")}</p>
@@ -268,14 +268,14 @@ export function PrivacyPolicyPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyChangesTitle")}
         </Title>
         <p>{t("privacyPolicyChangesBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("privacyPolicyContactTitle")}
         </Title>
         <p>

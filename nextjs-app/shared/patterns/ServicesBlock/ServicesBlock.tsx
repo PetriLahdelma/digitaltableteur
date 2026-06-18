@@ -95,7 +95,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
               <div className={styles.section}>
                 <Title
                   terminals="sans"
-                  size="XS"
+                  size="xs"
                   level={3}
                   className={styles.sectionTitle}
                 >
@@ -103,7 +103,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
                 </Title>
                 <List
                   items={services.map((s) => s.label)}
-                  size="S"
+                  size="s"
                   terminals="sans"
                 />
               </div>
@@ -113,13 +113,13 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
               <div className={styles.section}>
                 <Title
                   terminals="sans"
-                  size="XS"
+                  size="xs"
                   level={3}
                   className={styles.sectionTitle}
                 >
                   {durationTitle}
                 </Title>
-                <Text size="S">{duration}</Text>
+                <Text size="s">{duration}</Text>
               </div>
             )}
 
@@ -127,7 +127,7 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
               <div className={styles.section}>
                 <Title
                   terminals="sans"
-                  size="XS"
+                  size="xs"
                   level={3}
                   className={styles.sectionTitle}
                 >
@@ -164,14 +164,14 @@ export const ServicesBlock: React.FC<ServicesBlockProps> = ({
         <div className={styles.overview}>
           <Title
             terminals="sans"
-            size="XS"
+            size="xs"
             level={3}
             className={styles.sectionTitle}
           >
             {overviewTitle}
           </Title>
           {typeof overview === "string" ? (
-            <Text size="S">{overview}</Text>
+            <Text size="s">{overview}</Text>
           ) : (
             <div className={styles.overviewContent}>{overview}</div>
           )}

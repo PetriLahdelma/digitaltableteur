@@ -145,12 +145,12 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Why This Matters"
         title="UX Audits Are Slow and Subjective"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Most digital products fail because the experience is confusing,
             unclear, inaccessible, or unoptimized. Traditional UX audits are
             slow, expensive, manual, and often inconsistent.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             VertaaUX compresses that timeline into seconds, delivering
             actionable UX direction without heavy consulting overhead.
           </Text>,
@@ -195,7 +195,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           subtitle="The Approach"
           title="AI-Driven UX Analysis"
           content={[
-            <Text key="p1" size="S">
+            <Text key="p1" size="s">
               <span style={{ fontWeight: 600 }}>
                 The technical foundation combines predictive modeling with
                 real-time analysis, running 90+ automated checks in under 30 seconds.
@@ -203,7 +203,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
               This is 25x faster than initial performance targets, with simple
               sites completing in just seconds.
             </Text>,
-            <Text key="p2" size="S">
+            <Text key="p2" size="s">
               The hierarchical AI system coordinates specialized agents for each
               audit dimension, producing severity-weighted findings that help
               teams prioritize by business impact rather than arbitrary severity
@@ -227,14 +227,14 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
           subtitle="How It Works"
           title="Seven Audit Dimensions"
           content={[
-            <Text key="p1" size="S">
+            <Text key="p1" size="s">
               The engine analyzes pages across seven key dimensions: usability
               scoring based on Nielsen heuristics and cognitive load, clarity
               analysis including visual hierarchy and CTA effectiveness,
               information architecture assessment, and full WCAG 2.2 accessibility
               compliance checking.
             </Text>,
-            <Text key="p2" size="S">
+            <Text key="p2" size="s">
               Each dimension produces a 0-100 score with severity-weighted findings,
               enabling teams to prioritize fixes by impact. The hierarchical AI
               system coordinates 15+ specialized agents to deliver comprehensive
@@ -260,7 +260,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Brand Identity"
         title="Visual Language for UX Intelligence"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             <span style={{ fontWeight: 600 }}>
               For dev teams who treat accessibility as craft, not compliance.
             </span>{" "}
@@ -269,7 +269,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             (the product speaks through clarity and measured output), and
             Craft Over Compliance (accessibility as a discipline, not a checklist).
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Typography pairs Geist Sans for everything human with Geist Mono
             for everything data — scores, selectors, code references. The neon
             teal (#00FFCC) accent is used as a signal color, never decorative.
@@ -408,7 +408,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Color"
         title="The Palette"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Dark-biased surfaces with neon teal (#00FFCC) as a signal color — used
             sparingly for CTAs, scores, and key data. Never decorative. Semantic
             score states map to Excellent, Good, Fair, and Poor with WCAG AA
@@ -459,7 +459,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Typography"
         title="The Type System"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Geist Sans for everything human. Geist Mono for everything data.
             The font pairing has clear semantic roles — Sans for prose, headings,
             and UI labels; Mono for scores, selectors, code references, and
@@ -538,7 +538,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Interface"
         title="The Components"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Neon glow as a signature effect on primary CTAs — used sparingly,
             max one per screen. Score badges, metric cards, and issue rows follow
             a consistent 8px card radius, 4px input radius system.
@@ -583,13 +583,13 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Product"
         title="Dashboard Experience"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The interface prioritizes clarity and speed, presenting complex UX
             data in an instantly scannable format. Users can run guest audits
             without creating an account, or sign in to access audit history,
             shareable reports, and team collaboration features.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Enterprise plans include SAML SSO, multi-tenant support, API access,
             and developer documentation for integration into existing CI/CD
             pipelines and quality assurance workflows.
@@ -651,7 +651,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Results & Impact"
         title="Building the Future of AI driven UX Assessment"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             <span style={{ fontWeight: 600 }}>
               VertaaUX.ai launched in 2025 and is now in production.
             </span>{" "}
@@ -660,7 +660,7 @@ export function VertaaUXPage({ nav }: { nav?: React.ReactNode }) {
             than industry benchmarks and completes audits 25x faster than
             original performance targets.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             With 91+ automated checks across seven audit dimensions and WCAG 2.2
             compliance testing with less than 5% false positive rate, the platform
             democratizes UX expertise for teams without dedicated specialists.

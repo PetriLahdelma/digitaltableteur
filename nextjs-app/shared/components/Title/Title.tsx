@@ -1,18 +1,8 @@
 import React from "react";
-import { cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
-
-export const titleVariants = cva("", {
-  variants: {
-    size: { XXS: "", XS: "", S: "", M: "", L: "", XL: "", XXL: "" },
-    terminals: { sans: "", serif: "" },
-  },
-  defaultVariants: { size: "L", terminals: "serif" },
-});
 import styles from "./Title.module.css";
 import "../../styles/variables.css";
 
-type TitleSize = "XXS" | "XS" | "S" | "M" | "L" | "XL" | "XXL";
+type TitleSize = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
 type TitleTerminals = "sans" | "serif";
 type LineHeight = "tight" | "snug" | "normal" | "relaxed" | "loose";
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -30,13 +20,13 @@ export type TitleProps = {
 } & React.HTMLAttributes<HTMLHeadingElement>;
 
 const sizeClassMap: Record<TitleSize, string> = {
-  XXS: styles["titleXXS"] || "",
-  XS: styles["titleXS"] || "",
-  S: styles["titleS"] || "",
-  M: styles["titleM"] || "",
-  L: styles["titleL"] || "",
-  XL: styles["titleXL"] || "",
-  XXL: styles["titleXXL"] || "",
+  xxs: styles["titleXXS"] || "",
+  xs: styles["titleXS"] || "",
+  s: styles["titleS"] || "",
+  m: styles["titleM"] || "",
+  l: styles["titleL"] || "",
+  xl: styles["titleXL"] || "",
+  xxl: styles["titleXXL"] || "",
 };
 
 const terminalsClassMap: Record<TitleTerminals, string> = {
@@ -58,7 +48,7 @@ const Title: React.FC<TitleProps> = ({
   as,
   className = "",
   unstyled = false,
-  size = "L",
+  size = "l",
   level,
   terminals = "serif",
   lineHeight,

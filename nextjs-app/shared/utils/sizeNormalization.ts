@@ -57,26 +57,40 @@ const SIZE_MAP: Record<string, SizeModern> = {
 };
 
 /**
- * Title size mapping from any format to legacy uppercase
- * (Title component currently uses uppercase internally)
+ * Title typography size, lowercase single-letter scale (what Title/Text accept).
  */
-const TITLE_SIZE_MAP: Record<string, TitleSizeLegacy> = {
-  // Modern lowercase
-  xxs: "XXS",
-  xs: "XS",
-  sm: "S",
-  md: "M",
-  lg: "L",
-  xl: "XL",
-  xxl: "XXL",
-  // Legacy uppercase (passthrough)
-  XXS: "XXS",
-  XS: "XS",
-  S: "S",
-  M: "M",
-  L: "L",
-  XL: "XL",
-  XXL: "XXL",
+export type TitleSizeTypography =
+  | "xxs"
+  | "xs"
+  | "s"
+  | "m"
+  | "l"
+  | "xl"
+  | "xxl";
+
+/**
+ * Title size mapping from any accepted format to the lowercase typography scale.
+ */
+const TITLE_SIZE_MAP: Record<string, TitleSizeTypography> = {
+  // Modern lowercase / control aliases
+  xxs: "xxs",
+  xs: "xs",
+  s: "s",
+  sm: "s",
+  m: "m",
+  md: "m",
+  l: "l",
+  lg: "l",
+  xl: "xl",
+  xxl: "xxl",
+  // Legacy uppercase
+  XXS: "xxs",
+  XS: "xs",
+  S: "s",
+  M: "m",
+  L: "l",
+  XL: "xl",
+  XXL: "xxl",
 };
 
 /**
@@ -109,15 +123,15 @@ export function normalizeSizeProp(size?: SizeUnified): SizeModern {
  *
  * @example
  * ```typescript
- * normalizeTitleSize("sm")   // → "S"
- * normalizeTitleSize("M")    // → "M"
- * normalizeTitleSize("xl")   // → "XL"
- * normalizeTitleSize()       // → "M" (default)
+ * normalizeTitleSize("sm")   // → "s"
+ * normalizeTitleSize("M")    // → "m"
+ * normalizeTitleSize("xl")   // → "xl"
+ * normalizeTitleSize()       // → "m" (default)
  * ```
  */
-export function normalizeTitleSize(size?: TitleSizeUnified): TitleSizeLegacy {
-  if (!size) return "M";
-  return TITLE_SIZE_MAP[size] || "M";
+export function normalizeTitleSize(size?: TitleSizeUnified): TitleSizeTypography {
+  if (!size) return "m";
+  return TITLE_SIZE_MAP[size] || "m";
 }
 
 /**

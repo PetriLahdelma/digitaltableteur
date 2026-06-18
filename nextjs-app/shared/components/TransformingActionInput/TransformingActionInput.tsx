@@ -119,10 +119,10 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
       data-mode={mode}
     >
       <div className={styles.metaRow} aria-live="polite">
-        <Text as="span" size="S" className={styles.metaLabel}>
+        <Text as="span" size="s" className={styles.metaLabel}>
           {t("transformingActionInput.identity")}
         </Text>
-        <Text as="span" size="S" className={styles.metaValue}>
+        <Text as="span" size="s" className={styles.metaValue}>
           {mode === "button"
             ? t("transformingActionInput.state.button")
             : t("transformingActionInput.state.input")}
@@ -158,7 +158,7 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
             aria-label={t(inputLabelKey)}
           />
           {shouldShowHelper ? (
-            <Text as="p" size="S" className={styles.helper} id={helperTextId}>
+            <Text as="p" size="s" className={styles.helper} id={helperTextId}>
               {t(helperTextKey)}
             </Text>
           ) : null}

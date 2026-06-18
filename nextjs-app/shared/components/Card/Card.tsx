@@ -31,7 +31,7 @@ export interface CardProps {
   /** Title configuration options */
   titleProps?: {
     level?: 1 | 2 | 3 | 4 | 5 | 6;
-    size?: "S" | "M" | "L" | "XL";
+    size?: "s" | "m" | "l" | "xl";
     terminals?: "sans" | "serif";
     as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     className?: string;
@@ -40,7 +40,7 @@ export interface CardProps {
   subTitle?: string;
   /** Subtitle configuration options */
   subTitleProps?: {
-    size?: "S" | "M" | "L";
+    size?: "s" | "m" | "l";
     as?: "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     className?: string;
   };
@@ -48,13 +48,13 @@ export interface CardProps {
   description?: string;
   /** Description configuration options */
   descriptionProps?: {
-    size?: "S" | "M" | "L";
+    size?: "s" | "m" | "l";
     as?: "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     className?: string;
   };
   /** Body text configuration options */
   bodyProps?: {
-    size?: "S" | "M" | "L";
+    size?: "s" | "m" | "l";
     as?: "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     className?: string;
   };
@@ -108,7 +108,7 @@ export interface CardProps {
   /** Status message configuration */
   statusMessageProps?: {
     state?: "success" | "info" | "error" | "warning";
-    size?: "S" | "M" | "L";
+    size?: "s" | "m" | "l";
     className?: string;
   };
   /** Accessible label for link cards */
@@ -286,7 +286,7 @@ const Card: React.FC<CardProps> = ({
           {title && (
             <Title
               level={titleProps.level || 3}
-              size={titleProps.size || "M"}
+              size={titleProps.size || "m"}
               terminals={titleProps.terminals || "serif"}
               as={titleProps.as || "h3"}
               className={[styles.title, titleProps.className]
@@ -299,7 +299,7 @@ const Card: React.FC<CardProps> = ({
           {subTitle && (
             <Text
               as={subTitleProps.as || "span"}
-              size={subTitleProps.size || "S"}
+              size={subTitleProps.size || "s"}
               className={[styles.subTitle, subTitleProps.className]
                 .filter(Boolean)
                 .join(" ")}
@@ -309,7 +309,7 @@ const Card: React.FC<CardProps> = ({
           )}
           {description && (
             <Text
-              size={descriptionProps.size || "S"}
+              size={descriptionProps.size || "s"}
               as={descriptionProps.as || "p"}
               className={[styles.description, descriptionProps.className]
                 .filter(Boolean)
@@ -346,7 +346,7 @@ const Card: React.FC<CardProps> = ({
           .join(" ")}
         role={statusMessageProps.state === "error" ? "alert" : "status"}
       >
-        <Text size={statusMessageProps.size || "S"} as="span">
+        <Text size={statusMessageProps.size || "s"} as="span">
           {statusMessage}
         </Text>
       </div>
@@ -371,7 +371,7 @@ const Card: React.FC<CardProps> = ({
     >
       {body && (
         <Text
-          size={bodyProps.size || "M"}
+          size={bodyProps.size || "m"}
           as={bodyProps.as || "p"}
           className={[styles.bodyText, bodyProps.className]
             .filter(Boolean)

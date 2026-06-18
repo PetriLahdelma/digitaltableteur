@@ -1905,7 +1905,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Tokens before components"
         title="Base layer is platform-agnostic JSON"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             The first commitment was that the brand, the rhythm, and the
             semantic palettes had to exist before the first button. The tokens
             ship as W3C DTCG JSON in <code>@dsharp/tokens</code> with no runtime
@@ -1914,7 +1914,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             <code>@dsharp/tokens-css</code>. A Windows or mobile target later
             becomes a sibling transform package, not a fork of the source.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             An early lesson came from the logo atom. Its first version bound the
             mark to a primitive brand token, which flattened it when the surface
             inverted in dark mode; DTCG primitives, by design, do not
@@ -1949,7 +1949,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="The medallion problem"
         title="Domain vocabulary belongs in the type system"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             DSharp&rsquo;s data work is organised around two closed
             vocabularies. The medallion architecture sorts every table into one
             of four layers, <code>source</code>, <code>bronze</code>,{" "}
@@ -1959,7 +1959,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             or <code>role</code>. These show up in tables, navigation, diagrams,
             mapping screens, and forty-odd other surfaces.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             The shortest path would have been a generic <code>Badge</code> with{" "}
             <code>variant=&ldquo;bronze&rdquo;</code>. The longer path we took
             was <code>LayerBadge</code>, <code>QualityBadge</code>, and{" "}
@@ -1992,7 +1992,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="A contract per component"
         title="The file AI agents read"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             Every component in <code>@dsharp/react</code> ships four files: the
             React source, a JSON manifest, a markdown spec, and Storybook
             stories. The manifest is the file built for agents. It declares the
@@ -2002,7 +2002,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             files pre-wired; the team rule is that no component is ever
             hand-written.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             A validator runs on every push and on every CI build. It enforces
             parity between the CVA variant definition and the manifest, story
             coverage for every declared variant, and a status lifecycle that
@@ -2035,7 +2035,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Composition, continued"
         title="Organisms encode the work, not the page"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             Scout is a task-based workbench rather than a CRUD app, which puts
             more weight on the organism layer than on the templates above it.
             LayerNav, ConceptCard, Inspector, AIToolbar, MappingGrid,
@@ -2045,7 +2045,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             a refinement template assembles the same parts in a different
             proportion.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             Inside the heavier organisms, the work split is DSharp-owned visual,
             library-owned mechanics. DataTable wraps TanStack Table;
             ConceptDiagram and LineageGraph wrap <code>@xyflow/react</code>. The
@@ -2094,7 +2094,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Closing the gap"
         title="Where the rhythm could still leak"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             One discipline did not survive the move from tokens to composition.{" "}
             <a className={styles.inlineLink} href="/work/rhythmguard">
               Rhythmguard
@@ -2106,7 +2106,7 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             values in the spec sheet and the values in the code stay in
             agreement.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             Stylelint cannot reach JSX inline styles or Tailwind arbitrary
             brackets, so spacing could still leak through composition. The
             answer was a small set of layout primitives, <code>Stack</code>,{" "}
@@ -2135,8 +2135,8 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">112+ components</Text>
-                <Text size="S">
+                <Text size="l">112+ components</Text>
+                <Text size="s">
                   Across five tiers: atoms, molecules, organisms, patterns,
                   templates. Each under the same four-file contract.
                 </Text>
@@ -2148,8 +2148,8 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">5 packages</Text>
-                <Text size="S">
+                <Text size="l">5 packages</Text>
+                <Text size="s">
                   <code>@dsharp/tokens</code>, <code>@dsharp/tokens-css</code>,{" "}
                   <code>@dsharp/react</code>, <code>@dsharp/cli</code>, and{" "}
                   <code>@dsharp/mcp</code>. Published on a project-scoped Azure
@@ -2163,8 +2163,8 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">2 consumer apps</Text>
-                <Text size="S">
+                <Text size="l">2 consumer apps</Text>
+                <Text size="s">
                   Scout renders organisms from <code>@dsharp/react</code> in its
                   UI shell. Studio consumes the same package inside its desktop
                   surface. PathFinder is porting in, view by view.
@@ -2177,8 +2177,8 @@ export function DSharpDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">0.1.0 -&gt; 0.59.0</Text>
-                <Text size="S">First packaged release shipped April 2026.</Text>
+                <Text size="l">0.1.0 -&gt; 0.59.0</Text>
+                <Text size="s">First packaged release shipped April 2026.</Text>
               </>
             ),
           },

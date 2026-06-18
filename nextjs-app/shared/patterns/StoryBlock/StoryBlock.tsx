@@ -66,8 +66,8 @@ export interface StoryBlockProps {
  *   subtitle="Discovery Process"
  *   title="Research and Analysis"
  *   content={[
- *     <Text size="S">First paragraph...</Text>,
- *     <Text size="S">Second paragraph...</Text>,
+ *     <Text size="s">First paragraph...</Text>,
+ *     <Text size="s">Second paragraph...</Text>,
  *   ]}
  *   images={[
  *     { src: "/image1.png", alt: "Image 1", width: 738, height: 506, caption: "Caption 1" },
@@ -126,14 +126,14 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
             {subtitle && (
               <Title
                 level={4}
-                size="XS"
+                size="xs"
                 terminals="sans"
                 className={styles.subtitle}
               >
                 {subtitle}
               </Title>
             )}
-            <Title level={4} size="S" terminals="sans" className={styles.title}>
+            <Title level={4} size="s" terminals="sans" className={styles.title}>
               {title}
             </Title>
             {content.map((paragraph, index) => (
@@ -165,7 +165,7 @@ const StoryBlock: React.FC<StoryBlockProps> = ({
                 {image.caption && (
                   <figcaption>
                     <Text
-                      size="XS"
+                      size="xs"
                       style={{
                         fontStyle: "italic",
                         textAlign: "center",

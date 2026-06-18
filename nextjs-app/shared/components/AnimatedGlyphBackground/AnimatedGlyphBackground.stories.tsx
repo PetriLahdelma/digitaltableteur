@@ -47,10 +47,10 @@ const StoryFrame: React.FC<AnimatedGlyphBackgroundProps> = (args) => {
     <div className={styles.stage}>
       <AnimatedGlyphBackground {...args} />
       <div className={styles.content}>
-        <Title level={2} size="L" terminals="serif">
+        <Title level={2} size="l" terminals="serif">
           {t("homeCtaTitle", "Ready to create something extraordinary?")}
         </Title>
-        <Text as="p" size="M" terminals="sans">
+        <Text as="p" size="m" terminals="sans">
           {t("homeCtaLink", "Let's talk")}
         </Text>
       </div>

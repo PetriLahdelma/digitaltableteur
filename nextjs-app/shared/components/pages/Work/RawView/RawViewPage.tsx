@@ -65,7 +65,7 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         client={{ name: "Raw View" }}
         overview={
-          <Text size="S">
+          <Text size="s">
             Raw View marks a new beginning for the former Photo Raw magazine. The
             relaunch shifted the publication into a bookazine format, expanded the
             page count to 160 pages, and introduced both English and Finnish
@@ -134,13 +134,13 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Relaunch"
         title="A Bookazine for a New Era"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The relaunch from Photo Raw to Raw View was designed to signal a
             fresh start. Moving to a bookazine format allowed the team to deepen
             the storytelling with 160-page issues and a more book-like presence
             in print.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Each issue is published in both English and Finnish, with the print
             edition complemented by an e-magazine and website for wider reach.
           </Text>,
@@ -163,13 +163,13 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Editorial Vision"
         title="Documentary Photography First"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Raw View champions carefully crafted documentary projects that take
             an artistic approach to societal subjects. The goal is to inspire,
             stimulate, and entertain while staying grounded in journalistic
             integrity.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             The magazine is intentionally non-commercial, supporting the
             photography community and preserving the tactile experience of
             print through thoughtful material and layout choices.
@@ -201,7 +201,7 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
             type: "text",
             innerPadding: true,
             content: (
-              <Text size="S">
+              <Text size="s">
                 The relaunch brought new contributors and an expanded editorial
                 team, including international advisors and two photo editors.
                 The visual appearance was shaped to feel clear, dynamic, and
@@ -225,13 +225,13 @@ export function RawViewPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Outcomes"
         title="A Platform for Documentary Photography"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The relaunch successfully transformed a photography magazine into a premium
             bookazine format, expanding from its original scope to 160 thoughtfully
             designed pages. Publishing in both English and Finnish editions opened the
             publication to international audiences while maintaining its Finnish roots.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Complementing print with an e-magazine and website ensures the documentary
             photography stories reach readers beyond traditional distribution. The visual
             system—designed to support immersive long-form photo essays—gives photographers

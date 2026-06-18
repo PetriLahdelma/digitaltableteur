@@ -168,7 +168,7 @@ export function DialogTitle({
   children: ReactNode;
 }) {
   return (
-    <Title level={2} size="S" className={className}>
+    <Title level={2} size="s" className={className}>
       {children}
     </Title>
   );

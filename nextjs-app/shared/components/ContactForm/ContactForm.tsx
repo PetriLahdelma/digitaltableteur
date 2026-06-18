@@ -389,7 +389,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             <Text
               as="p"
               terminals="sans"
-              size="XS"
+              size="xs"
               className={styles["attachmentNotice"]}
             >
               {attachmentEmailNotice}
@@ -417,7 +417,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           <Text
             as="p"
             terminals="sans"
-            size="XS"
+            size="xs"
             className={styles["privacyPolicy"]}
           >
             *{t("contactPrivacyPolicy1")}{" "}

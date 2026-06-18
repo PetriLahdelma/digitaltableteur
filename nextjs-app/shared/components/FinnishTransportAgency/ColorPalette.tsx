@@ -149,7 +149,7 @@ export function ColorPalette({ showProportions = true }: ColorPaletteProps) {
         <div className={styles.proportionsSection}>
           <div className={styles.proportionsText}>
             <h4 className={styles.sectionTitle}>Color Proportions</h4>
-            <Text size="S">
+            <Text size="s">
               The donut chart shows recommended color relationships. Primary blues
               dominate applications, with neutrals and accents used sparingly to
               maintain the identity&apos;s cohesion across all touchpoints.

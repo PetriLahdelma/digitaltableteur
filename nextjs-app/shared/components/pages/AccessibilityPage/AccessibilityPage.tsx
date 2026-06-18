@@ -113,7 +113,7 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
         </div>
       ) : null}
 
-      <Title level={1} terminals="sans" size="XS">
+      <Title level={1} terminals="sans" size="xs">
         {t("accessibilityHeading")}
       </Title>
       <p>{t("accessibilityIntro")}</p>
@@ -122,7 +122,7 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
       </p>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityConformanceTitle")}
         </Title>
         <p>{t("accessibilityConformanceBody")}</p>
@@ -130,7 +130,7 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityMeasuresTitle")}
         </Title>
         <p>{t("accessibilityMeasuresIntro")}</p>
@@ -144,14 +144,14 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityStandardsTitle")}
         </Title>
         <p>{t("accessibilityStandardsBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityTechnicalTitle")}
         </Title>
         <p>{t("accessibilityTechnicalIntro")}</p>
@@ -165,14 +165,14 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityCompatibilityTitle")}
         </Title>
         <p>{t("accessibilityCompatibilityBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityLimitationsTitle")}
         </Title>
         <p>{t("accessibilityLimitationsIntro")}</p>
@@ -187,7 +187,7 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityShortcomingsTitle")}
         </Title>
         <p>{t("accessibilityShortcomingsIntro")}</p>
@@ -202,14 +202,14 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityTestingTitle")}
         </Title>
         <p>{t("accessibilityTestingBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityMonitoringTitle")}
         </Title>
         <p>{t("accessibilityMonitoringBody")}</p>
@@ -222,7 +222,7 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityPublicationTitle")}
         </Title>
         <p>{t("accessibilityPublicationWebsite")}</p>
@@ -231,7 +231,7 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityFeedbackTitle")}
         </Title>
         <p>{t("accessibilityFeedbackIntro")}</p>
@@ -247,21 +247,21 @@ export function AccessibilityPage({ onBack }: { onBack?: () => void }) {
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityComplaintTitle")}
         </Title>
         <p>{t("accessibilityComplaintBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityAlternativeTitle")}
         </Title>
         <p>{t("accessibilityAlternativeBody")}</p>
       </section>
 
       <section>
-        <Title level={2} terminals="sans" size="XXS">
+        <Title level={2} terminals="sans" size="xxs">
           {t("accessibilityContactTitle")}
         </Title>
         <p>

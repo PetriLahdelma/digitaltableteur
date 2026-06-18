@@ -42,7 +42,7 @@ describe("List", () => {
   });
 
   it("applies size class", () => {
-    const { container } = render(<List items={items} size="L" />);
+    const { container } = render(<List items={items} size="l" />);
     expect(container.firstChild).toHaveClass(styles.textL);
   });
 

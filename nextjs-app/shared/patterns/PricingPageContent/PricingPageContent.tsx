@@ -206,7 +206,7 @@ function ComparisonList({
         isUs ? styles.comparisonColumnUs : styles.comparisonColumnThem,
       )}
     >
-      <Title level={2} size="S" terminals="sans" className={styles.comparisonTitle}>
+      <Title level={2} size="s" terminals="sans" className={styles.comparisonTitle}>
         {title}
       </Title>
       <ul className={styles.comparisonList}>
@@ -233,7 +233,7 @@ function ComparisonList({
               </span>
               <Text
                 as="span"
-                size="M"
+                size="m"
                 lineHeight="normal"
                 terminals="sans"
                 className={isUs ? styles.comparisonTextUs : styles.comparisonTextThem}
@@ -266,21 +266,21 @@ function PackageCard({
       {...(donnyTarget ? { "data-donny-target": donnyTarget } : {})}
     >
       <div className={styles.packageHeader}>
-        <Title level={3} size="S" terminals="sans">
+        <Title level={3} size="s" terminals="sans">
           {t(pkg.titleKey, pkg.titleDefault)}
         </Title>
-        <Text as="p" size="M" terminals="sans" className={styles.packagePrice}>
+        <Text as="p" size="m" terminals="sans" className={styles.packagePrice}>
           {t(pkg.priceKey, pkg.priceDefault)}
         </Text>
       </div>
-      <Text as="p" size="S" terminals="sans" className={styles.packageDuration}>
+      <Text as="p" size="s" terminals="sans" className={styles.packageDuration}>
         {t(pkg.durationKey, pkg.durationDefault)}
       </Text>
-      <Text as="p" size="M" terminals="sans" className={styles.packageDescription}>
+      <Text as="p" size="m" terminals="sans" className={styles.packageDescription}>
         {t(pkg.descriptionKey, pkg.descriptionDefault)}
       </Text>
       {hasProof ? (
-        <Text as="p" size="S" terminals="sans" className={styles.packageProof}>
+        <Text as="p" size="s" terminals="sans" className={styles.packageProof}>
           {t(pkg.proofKey, pkg.proofDefault)}
         </Text>
       ) : null}
@@ -325,7 +325,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
         <div className={styles.heroBleedContent}>
           <Title
             level={1}
-            size="XL"
+            size="xl"
             terminals="sans"
             lineHeight="tight"
             className={styles.heroTitle}
@@ -371,7 +371,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
           <blockquote className={styles.testimonialInner}>
             <Text
               as="p"
-              size="L"
+              size="l"
               lineHeight="relaxed"
               terminals="serif"
               className={styles.testimonialQuote}
@@ -392,7 +392,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
         >
           <Title
             level={2}
-            size="L"
+            size="l"
             terminals="sans"
             lineHeight="tight"
             className={styles.deliverablesTitle}
@@ -410,7 +410,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
           >
             <Title
               level={3}
-              size="S"
+              size="s"
               terminals="sans"
               lineHeight="tight"
               className={styles.packagesHeading}
@@ -470,7 +470,7 @@ export function PricingPageContent({ className }: PricingPageContentProps) {
               aria-labelledby={aaasHeadingId}
               hidden={!aaasOpen}
             >
-              <Text as="p" size="M" terminals="sans" className={styles.aaasSummary}>
+              <Text as="p" size="m" terminals="sans" className={styles.aaasSummary}>
                 {t(
                   "pricingAaasSummary",
                   "Autonomous DesignOps packages. Agents that do the work, supervised by your team.",

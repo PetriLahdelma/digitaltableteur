@@ -8,7 +8,7 @@ import styles from "./GridBlock.module.css";
 describe("GridBlock", () => {
   const textCell = {
     type: "text" as const,
-    content: <Text size="M">Text content</Text>,
+    content: <Text size="m">Text content</Text>,
   };
 
   const imageCell = {

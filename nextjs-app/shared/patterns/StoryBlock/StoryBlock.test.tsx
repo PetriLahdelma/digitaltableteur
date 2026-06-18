@@ -6,10 +6,10 @@ import Text from "@dt/Text";
 
 describe("StoryBlock", () => {
   const basicContent = [
-    <Text key="1" size="S">
+    <Text key="1" size="s">
       First paragraph
     </Text>,
-    <Text key="2" size="S">
+    <Text key="2" size="s">
       Second paragraph
     </Text>,
   ];

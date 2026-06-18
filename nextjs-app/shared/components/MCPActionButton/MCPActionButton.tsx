@@ -166,7 +166,7 @@ export const MCPActionButton: React.FC<MCPActionButtonProps> = (props) => {
       {renderButton()}
       <Text
         as="div"
-        size="S"
+        size="s"
         role="status"
         aria-live="polite"
         className={`${styles.status} ${effectiveDisabled ? styles.disabled : ""}`}

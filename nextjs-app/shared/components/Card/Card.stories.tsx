@@ -163,11 +163,11 @@ export const WithIconTop = {
 export const CustomizedTypography = {
   args: {
     title: "Custom Typography",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     subTitle: "Subtitle with custom styling",
-    subTitleProps: { size: "M" },
+    subTitleProps: { size: "m" },
     body: "Body text with customized appearance through nested props.",
-    bodyProps: { size: "L" },
+    bodyProps: { size: "l" },
     variant: "outlined",
   },
 };
@@ -175,10 +175,10 @@ export const CustomizedTypography = {
 export const DescriptionVariant = {
   args: {
     title: "With Description",
-    titleProps: { size: "M" },
+    titleProps: { size: "m" },
     description:
       "This card uses the description prop instead of body for semantic clarity.",
-    descriptionProps: { size: "M" },
+    descriptionProps: { size: "m" },
     variant: "elevated",
   },
 };
@@ -187,7 +187,7 @@ export const DescriptionVariant = {
 export const WithCover = {
   args: {
     title: "Media Card",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     cover: (
       <ImagePlaceholder
         {...ImagePlaceholderPresets.cardCover}
@@ -265,11 +265,11 @@ export const SmallSize = {
 export const LargeSize = {
   args: {
     title: "Spacious Card",
-    titleProps: { size: "XL" },
+    titleProps: { size: "xl" },
     icon: <Icon name="heart" ariaLabel="heart" />,
     iconProps: { position: "top", size: "lg" },
     body: "Generous spacing for prominent content areas.",
-    bodyProps: { size: "L" },
+    bodyProps: { size: "l" },
     size: "L",
     variant: "elevated",
     hoverable: true,
@@ -280,7 +280,7 @@ export const LargeSize = {
 export const ProfileCard = {
   args: {
     title: "Sarah Johnson",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     subTitle: "Senior Designer",
     icon: <Icon name="user" ariaLabel="user" />,
     iconProps: { position: "start" },
@@ -301,11 +301,11 @@ export const ProfileCard = {
 export const MetricCard = {
   args: {
     title: "Page Views",
-    titleProps: { size: "M" },
+    titleProps: { size: "m" },
     body: "12,847",
-    bodyProps: { size: "L" },
+    bodyProps: { size: "l" },
     description: "↗ 23% from last week",
-    descriptionProps: { size: "S" },
+    descriptionProps: { size: "s" },
     icon: <Icon name="eye" ariaLabel="eye" />,
     iconProps: { position: "end", size: "sm" },
     variant: "outlined",
@@ -316,7 +316,7 @@ export const MetricCard = {
 export const EventCard = {
   args: {
     title: "Design System Workshop",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     subTitle: "Online Event",
     icon: <Icon name="calendar" ariaLabel="calendar" />,
     iconProps: { position: "start" },
@@ -365,7 +365,7 @@ export const Tabbed = { render: () => <TabbedStoryComponent /> };
 export const ProjectCard = {
   args: {
     title: "Digital Portfolio",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "start" },
     cover: (
@@ -386,12 +386,12 @@ export const ProjectCard = {
 export const ServiceHighlight = {
   args: {
     title: "Creative Development",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "top", size: "lg" },
     description:
       "Building digital experiences that combine aesthetic excellence with functional innovation.",
-    descriptionProps: { size: "M" },
+    descriptionProps: { size: "m" },
     variant: "elevated",
     hoverable: true,
     size: "L",
@@ -522,7 +522,7 @@ export const SizeFullWidth = {
 export const ComplexExample = {
   args: {
     title: "Feature Request",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "start", size: "md" },
     badge: "High Priority",

@@ -96,7 +96,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div className={styles.heroText}>
         <Title
           level={titleLevel}
-          size="XL"
+          size="xl"
           terminals="sans"
           className={styles.heroTitle}
         >
@@ -105,7 +105,7 @@ export const Hero: React.FC<HeroProps> = ({
 
         {subtitle && (
           <Text
-            size="L"
+            size="l"
             terminals="sans"
             className={styles.heroSubtitle}
             as="p"
@@ -115,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({
         )}
 
         {description && (
-          <Text size="M" className={styles.heroDescription} as="p">
+          <Text size="m" className={styles.heroDescription} as="p">
             {description}
           </Text>
         )}
@@ -195,7 +195,7 @@ export const Hero: React.FC<HeroProps> = ({
           <div className={styles.heroText}>
             <Title
               level={titleLevel}
-              size="XL"
+              size="xl"
               terminals="sans"
               className={styles.heroTitle}
             >
@@ -204,7 +204,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             {subtitle && (
               <Text
-                size="L"
+                size="l"
                 terminals="sans"
                 className={styles.heroSubtitle}
                 as="p"
@@ -214,7 +214,7 @@ export const Hero: React.FC<HeroProps> = ({
             )}
 
             {description && (
-              <Text size="M" className={styles.heroDescription} as="p">
+              <Text size="m" className={styles.heroDescription} as="p">
                 {description}
               </Text>
             )}

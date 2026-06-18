@@ -73,7 +73,7 @@ export const MacWindowFrame: React.FC<MacWindowFrameProps> = ({
           <span className={`${styles.dot} ${styles.minimize}`} />
           <span className={`${styles.dot} ${styles.maximize}`} />
         </div>
-        <Title as="h3" level={3} size="M" className={styles.title}>
+        <Title as="h3" level={3} size="m" className={styles.title}>
           {t(titleKey)}
         </Title>
         {hasAction ? (
@@ -94,7 +94,7 @@ export const MacWindowFrame: React.FC<MacWindowFrameProps> = ({
         role="group"
         aria-label={t("macWindowFrame.bodyLabel")}
       >
-        <Text as="div" size="M" className={styles.content}>
+        <Text as="div" size="m" className={styles.content}>
           {children}
         </Text>
       </div>
