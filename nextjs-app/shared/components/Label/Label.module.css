@@ -27,9 +27,3 @@
   clip-path: inset(50%);
   overflow: hidden;
 }
-
-.tooltip {
-  margin-inline-start: 0.5rem; /* 8px logical */
-  font-size: 0.875rem; /* 14px */
-  color: var(--color-muted);
-}
