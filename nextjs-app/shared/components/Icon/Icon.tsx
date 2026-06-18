@@ -5,10 +5,16 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { resolvePhosphorIcon } from "./iconRegistry";
 
-export const iconVariants = cva("inline-flex shrink-0 items-center justify-center", {
+export const iconVariants = cva(styles.base, {
   variants: {
     size: {
-      "2xs": "h-3 w-3", xs: "h-4 w-4", sm: "h-5 w-5", md: "h-6 w-6", lg: "h-8 w-8", xl: "h-12 w-12", "2xl": "h-16 w-16",
+      "2xs": styles.size2xs,
+      xs: styles.sizeXs,
+      sm: styles.sizeSm,
+      md: styles.sizeMd,
+      lg: styles.sizeLg,
+      xl: styles.sizeXl,
+      "2xl": styles.size2xl,
     },
   },
   defaultVariants: { size: "md" },
@@ -138,25 +144,12 @@ const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
           }
         : undefined;
 
-    const sizeClassMap: Record<NamedSize, string> = {
-      "2xs": styles.size2xs,
-      xs: styles.sizeXs,
-      sm: styles.sizeSm,
-      md: styles.sizeMd,
-      lg: styles.sizeLg,
-      xl: styles.sizeXl,
-      "2xl": styles.size2xl,
-    };
-
-    const sizeClass =
-      typeof size === "string"
-        ? (sizeClassMap[size as NamedSize] ?? sizeClassMap.md)
-        : undefined;
-
+    // String sizes get a tokenized size class; numeric sizes let the wrapper
+    // shrink-wrap the explicitly-sized SVG so the box always matches the glyph.
     const mergedClassName = cn(
-      styles.base,
-      typeof size === "string" ? iconVariants({ size: size as NamedSize }) : iconVariants({ size: "md" }),
-      sizeClass,
+      typeof size === "string"
+        ? iconVariants({ size: size as NamedSize })
+        : styles.base,
       animationClass,
       className,
     );
