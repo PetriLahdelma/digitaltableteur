@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 464,
+  "warningCount": 462,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -91,24 +91,6 @@
       "rule": "rule-empty-line-before",
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::112::3::order/properties-order::Expected \"margin-inline-start\" to come before \"flex-shrink\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 112,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-inline-start\" to come before \"flex-shrink\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::119::3::order/properties-order::Expected \"block-size\" to come before \"cursor\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 119,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"cursor\" (order/properties-order)"
     },
     {
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::283::1::no-descending-specificity::Expected selector \".fullWidthComponent > *\" to come before selector \".header .tagline *\", at line 124 (no-descending-specificity)",

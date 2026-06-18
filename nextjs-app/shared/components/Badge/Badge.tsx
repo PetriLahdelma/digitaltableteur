@@ -13,14 +13,9 @@ export const badgeVariants = cva(styles.badge, {
 });
 
 import React, { isValidElement, useState } from "react";
-import Button from "@dt/Button";
 import Icon from "@dt/Icon";
 import { useTranslation } from "react-i18next";
-import {
-  getSemanticIcon,
-  type SemanticStatus,
-  STATUS_ICON_NAMES,
-} from "../../utils/semanticIcons";
+import { type SemanticStatus, STATUS_ICON_NAMES } from "../../utils/semanticIcons";
 
 /** Visual weight. */
 export type BadgeVariant = "primary" | "secondary";
@@ -36,15 +31,6 @@ const TONE_TO_STATUS: Partial<
   info: "info",
   error: "error",
   warning: "warning",
-};
-
-// Icon colours for filled (primary) badges, which need high contrast.
-const PRIMARY_ICON_COLORS: Record<BadgeTone, string> = {
-  success: "var(--color-white)",
-  info: "var(--color-white)",
-  error: "var(--color-white)",
-  warning: "var(--color-white)",
-  neutral: "var(--color-black)",
 };
 
 export interface BadgeProps {
@@ -99,16 +85,15 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 
     let resolvedIcon: React.ReactNode = icon;
     if (resolvedIcon == null && tone && semanticStatus) {
-      if (variant === "primary") {
-        resolvedIcon = (
-          <Icon
-            name={STATUS_ICON_NAMES[semanticStatus]}
-            color={PRIMARY_ICON_COLORS[tone]}
-          />
-        );
-      } else {
-        resolvedIcon = getSemanticIcon(semanticStatus);
-      }
+      // The badge already sets a contrast-correct text color per variant×tone,
+      // so the semantic icon inherits it via currentColor.
+      resolvedIcon = (
+        <Icon
+          name={STATUS_ICON_NAMES[semanticStatus]}
+          color="currentColor"
+          decorative
+        />
+      );
     }
     if (resolvedIcon && typeof resolvedIcon === "function") {
       try {
@@ -162,18 +147,17 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
           {typeof children === "string" ? t(children) : children}
         </span>
         {removable && (
-          <Button
-            variant="tertiary"
-            size={size}
+          <button
             type="button"
-            icon={<Icon name="x" ariaLabel={t("badgeRemove")} />}
             className={styles.closeButton}
-            accessibleName={t("badgeRemove")}
+            aria-label={t("badgeRemove")}
             onClick={() => {
               setVisible(false);
               if (onRemove) onRemove();
             }}
-          />
+          >
+            <Icon name="x" color="currentColor" size={14} decorative />
+          </button>
         )}
       </span>
     );

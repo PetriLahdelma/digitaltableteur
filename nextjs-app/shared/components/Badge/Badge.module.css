@@ -108,27 +108,52 @@
 }
 
 .removable .closeButton {
-  flex-shrink: 0;
+  display: inline-flex;
   margin-inline-start: 0.125rem;
   padding: 0;
-  border: none;
-  border-radius: 999px;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
   block-size: 1.125rem;
   inline-size: 1.125rem;
   min-block-size: 1.125rem;
   min-inline-size: 1.125rem;
-  transition: background-color var(--duration-instant) var(--ease-out-cubic);
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  line-height: 0;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-instant) var(--ease-out-cubic),
+    transform var(--duration-instant) var(--ease-out-cubic);
+  appearance: none;
 }
 
-.removable .closeButton:hover {
-  background: color-mix(in srgb, currentcolor 12%, transparent);
+@media (hover: hover) and (pointer: fine) {
+  .removable .closeButton:hover {
+    background: color-mix(in srgb, currentcolor 16%, transparent);
+  }
+}
+
+.removable .closeButton:active {
+  transform: scale(0.9);
 }
 
 .removable .closeButton:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid
+    var(--focus-ring-color, currentcolor);
   outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .removable .closeButton {
+    transition: background-color var(--duration-instant) var(--ease-out-cubic);
+  }
+
+  .removable .closeButton:active {
+    transform: none;
+  }
 }
 
 .icon {

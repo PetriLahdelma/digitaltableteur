@@ -2,8 +2,8 @@
 
 import React from "react";
 import styles from "./Button.module.css";
-import { getSemanticIcon, type SemanticStatus } from "../../utils/semanticIcons";
-import Icon from "@dt/Icon";
+import { STATUS_ICON_NAMES, type SemanticStatus } from "../../utils/semanticIcons";
+import Icon, { type IconProps } from "@dt/Icon";
 
 /** Visual weight of the button. */
 export type ButtonVariant = "primary" | "secondary" | "tertiary";
@@ -140,14 +140,19 @@ const Button = React.forwardRef<
 
     const isLink = "href" in rest && rest.href !== undefined;
 
-    // Icons inherit the button's resolved text color via currentColor, so no
-    // per-variant color computation is needed.
+    // Icons are decorative (the button supplies the accessible name) and inherit
+    // the button's resolved text color via currentColor, so no per-variant color
+    // computation is needed. Icon size tracks the control size.
+    const iconSize: IconProps["size"] =
+      size === "sm" ? "xs" : size === "lg" ? "md" : "sm";
     const renderIcon = (candidate: React.ReactNode | string): React.ReactNode => {
       if (candidate == null || candidate === false) return undefined;
       if (typeof candidate === "string") {
         const trimmed = candidate.trim();
         if (!trimmed) return undefined;
-        return <Icon name={trimmed} ariaLabel={trimmed} color="currentColor" />;
+        return (
+          <Icon name={trimmed} color="currentColor" size={iconSize} decorative />
+        );
       }
       if (typeof candidate === "function") {
         return React.createElement(candidate as React.ComponentType);
@@ -156,11 +161,17 @@ const Button = React.forwardRef<
       return undefined;
     };
 
+    const semanticStatus = TONE_TO_STATUS[tone];
     const resolvedIcon =
       renderIcon(icon as React.ReactNode | string) ??
-      (TONE_TO_STATUS[tone]
-        ? getSemanticIcon(TONE_TO_STATUS[tone]!)
-        : undefined);
+      (semanticStatus ? (
+        <Icon
+          name={STATUS_ICON_NAMES[semanticStatus]}
+          color="currentColor"
+          size={iconSize}
+          decorative
+        />
+      ) : undefined);
     const resolvedEndIcon = renderIcon(endIcon as React.ReactNode | string);
     const iconOnly = !children && !!resolvedIcon;
 

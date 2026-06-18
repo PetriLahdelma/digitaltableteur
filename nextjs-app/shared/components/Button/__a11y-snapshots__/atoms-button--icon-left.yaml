@@ -1,4 +1,1 @@
-- status: Work in progress (beta)
-- button "arrow-left Left Icon":
-  - img "arrow-left"
-  - text: Left Icon
+- button "Left Icon"
