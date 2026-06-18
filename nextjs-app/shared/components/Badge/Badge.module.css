@@ -19,12 +19,12 @@
   vertical-align: middle;
 }
 
-.s {
+.sm {
   padding: var(--space-internal-4) var(--space-internal-12);
   font-size: 0.75rem;
 }
 
-.l {
+.lg {
   padding: var(--space-internal-12) var(--space-internal-16);
   font-size: 1.25rem;
 }
@@ -45,7 +45,7 @@
   color: var(--color-primary);
 }
 
-/* Secondary badges with states should maintain no background */
+/* Secondary badges with a tone keep a transparent background. */
 
 .secondary.success {
   border-color: var(--color-success);
@@ -120,6 +120,7 @@
   inline-size: 1.125rem;
   min-block-size: 1.125rem;
   min-inline-size: 1.125rem;
+  transition: background-color var(--duration-instant) var(--ease-out-cubic);
 }
 
 .removable .closeButton:hover {
@@ -139,19 +140,19 @@
   line-height: 0;
 }
 
-.removable.s {
+.removable.sm {
   padding: var(--space-internal-2) var(--space-internal-12);
   padding-inline-end: var(--space-internal-2);
   font-size: 0.75rem;
 }
 
-.removable.m {
+.removable.md {
   padding: var(--space-internal-6) var(--space-internal-16);
   padding-inline-end: var(--space-internal-4);
   font-size: 1rem;
 }
 
-.removable.l {
+.removable.lg {
   padding: var(--space-internal-12) var(--space-internal-16);
   font-size: 1.25rem;
 }

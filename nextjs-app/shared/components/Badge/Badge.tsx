@@ -4,12 +4,12 @@ import styles from "./Badge.module.css";
 export const badgeVariants = cva(styles.badge, {
   variants: {
     size: {
-      s: styles.s,
-      m: "",
-      l: styles.l,
+      sm: styles.sm,
+      md: "",
+      lg: styles.lg,
     },
   },
-  defaultVariants: { size: "m" },
+  defaultVariants: { size: "md" },
 });
 
 import React, { isValidElement, useState } from "react";
@@ -22,10 +22,15 @@ import {
   STATUS_ICON_NAMES,
 } from "../../utils/semanticIcons";
 
-type BadgeState = "success" | "info" | "error" | "warning" | "neutral";
+/** Visual weight. */
+export type BadgeVariant = "primary" | "secondary";
+/** Semantic colour, matching the design-token palette. */
+export type BadgeTone = "neutral" | "error" | "warning" | "success" | "info";
+/** Size. */
+export type BadgeSize = "sm" | "md" | "lg";
 
-const STATE_TO_STATUS: Partial<
-  Record<Exclude<BadgeState, "neutral">, SemanticStatus>
+const TONE_TO_STATUS: Partial<
+  Record<Exclude<BadgeTone, "neutral">, SemanticStatus>
 > = {
   success: "success",
   info: "info",
@@ -33,8 +38,8 @@ const STATE_TO_STATUS: Partial<
   warning: "warning",
 };
 
-// Icon colors for primary badges (need high contrast)
-const PRIMARY_ICON_COLORS: Record<BadgeState, string> = {
+// Icon colours for filled (primary) badges, which need high contrast.
+const PRIMARY_ICON_COLORS: Record<BadgeTone, string> = {
   success: "var(--color-white)",
   info: "var(--color-white)",
   error: "var(--color-white)",
@@ -44,44 +49,43 @@ const PRIMARY_ICON_COLORS: Record<BadgeState, string> = {
 
 export interface BadgeProps {
   children: React.ReactNode;
-  design?: "primary" | "secondary";
-  state?: BadgeState;
+  /** Visual weight. @default "primary" */
+  variant?: BadgeVariant;
+  /** Semantic colour, orthogonal to `variant`. @default "neutral" */
+  tone?: BadgeTone;
+  /** Size. @default "md" */
+  size?: BadgeSize;
   className?: string;
+  /** Renders a dismiss control that removes the badge. */
   removable?: boolean;
+  /** Called after the badge is dismissed. */
   onRemove?: () => void;
+  /** Leading icon; a semantic icon is supplied automatically for non-neutral tones. */
   icon?: React.ReactNode;
-  square?: boolean; // New prop for square badge
-  size?: "s" | "m" | "l"; // New size prop
-  title?: string; // Optional title prop
+  /** Square (non-pill) corners. */
+  square?: boolean;
+  /** Native tooltip text. */
+  title?: string;
   /**
-   * ARIA role for accessibility.
-   * - undefined (default): No role, suitable for static decorative badges
-   * - "status": Use for dynamic content that updates (e.g., notification counts)
-   *   Screen readers will announce changes with aria-live="polite"
-   *
-   * @example
-   * // Static badge (no announcements)
-   * <Badge state="success">Completed</Badge>
-   *
-   * // Dynamic badge (announces updates)
-   * <Badge role="status" state="info">{unreadCount} new</Badge>
+   * ARIA role. `"status"` makes dynamic updates announce via `aria-live="polite"`
+   * (e.g. a live notification count). Omit for static decorative badges.
    */
   role?: "status";
 }
 
-/** Compact status label with semantic state, size, and optional icon. */
+/** Compact status label with semantic tone, size, and an optional icon. */
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   (
     {
       children,
-      design = "primary",
-      state,
+      variant = "primary",
+      tone,
       removable = false,
       onRemove,
       icon,
       className,
       square = false,
-      size = "m",
+      size = "md",
       title,
       role,
       ...rest
@@ -91,21 +95,21 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     const { t } = useTranslation();
     const [visible, setVisible] = useState(true);
     const semanticStatus =
-      state && state !== "neutral" ? STATE_TO_STATUS[state] : undefined;
-    // Normalize incoming icon prop; guard against plain objects or other invalid types.
+      tone && tone !== "neutral" ? TONE_TO_STATUS[tone] : undefined;
+
     let resolvedIcon: React.ReactNode = icon;
-    if (resolvedIcon == null && state && semanticStatus) {
-      // For primary badges, use manual icon with proper contrast color
-      if (design === "primary") {
-        const iconName = STATUS_ICON_NAMES[semanticStatus];
-        const iconColor = PRIMARY_ICON_COLORS[state];
-        resolvedIcon = <Icon name={iconName} color={iconColor} />;
+    if (resolvedIcon == null && tone && semanticStatus) {
+      if (variant === "primary") {
+        resolvedIcon = (
+          <Icon
+            name={STATUS_ICON_NAMES[semanticStatus]}
+            color={PRIMARY_ICON_COLORS[tone]}
+          />
+        );
       } else {
-        // For secondary badges, use semantic icon with semantic colors
         resolvedIcon = getSemanticIcon(semanticStatus);
       }
     }
-    // If caller passed a component function/class instead of an element, create it
     if (resolvedIcon && typeof resolvedIcon === "function") {
       try {
         const MaybeComponent = resolvedIcon as React.ComponentType;
@@ -114,14 +118,13 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         resolvedIcon = null;
       }
     }
-    // Reject non-element objects (e.g., plain object icon prop)
     if (
       resolvedIcon &&
       typeof resolvedIcon === "object" &&
       !isValidElement(resolvedIcon)
     ) {
-      // eslint-disable-next-line no-console
       if (process.env.NODE_ENV !== "production") {
+        // eslint-disable-next-line no-console
         console.warn(
           "[Badge] Ignoring invalid icon prop (expected React element/component).",
           resolvedIcon,
@@ -129,17 +132,20 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       }
       resolvedIcon = null;
     }
+
     if (!visible) return null;
+
     return (
       <span
         ref={ref}
         role={role}
         aria-live={role === "status" ? "polite" : undefined}
+        title={title}
         {...rest}
         className={[
           badgeVariants({ size }),
-          styles[design],
-          state ? styles[state] : "",
+          styles[variant],
+          tone ? styles[tone] : "",
           className,
           square ? styles.square : "",
           removable ? styles.removable : "",
@@ -158,7 +164,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         {removable && (
           <Button
             variant="tertiary"
-            size={size === "s" ? "sm" : size === "l" ? "lg" : "md"}
+            size={size}
             type="button"
             icon={<Icon name="x" ariaLabel={t("badgeRemove")} />}
             className={styles.closeButton}

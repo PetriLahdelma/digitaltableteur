@@ -140,7 +140,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = () => {
                   </div>
                   <div className={styles.categoryToggle}>
                     {consent.required ? (
-                      <Badge size="s" design="secondary" state="info">
+                      <Badge size="sm" variant="secondary" tone="info">
                         {t("cookieConsent.required")}
                       </Badge>
                     ) : null}

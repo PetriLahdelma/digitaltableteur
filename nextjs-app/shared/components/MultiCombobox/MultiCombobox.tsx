@@ -318,9 +318,9 @@ export function MultiCombobox({
                   onMouseDown={(event) => event.stopPropagation()}
                 >
                   <Badge
-                    design="secondary"
-                    state="neutral"
-                    size="s"
+                    variant="secondary"
+                    tone="neutral"
+                    size="sm"
                     removable={!isDisabled}
                     className={styles.badge}
                     onRemove={() => removeOption(selectedValue)}

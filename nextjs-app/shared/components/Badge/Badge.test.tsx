@@ -9,8 +9,8 @@ describe("Badge", () => {
     expect(screen.getByText("Test Badge")).toBeInTheDocument();
   });
 
-  it("applies design variant", () => {
-    const { container } = render(<Badge state="success">Success</Badge>);
+  it("applies the tone class", () => {
+    const { container } = render(<Badge tone="success">Success</Badge>);
     // Check for CSS module class containing 'success'
     expect((container.firstChild as HTMLElement).className).toMatch(/success/);
   });

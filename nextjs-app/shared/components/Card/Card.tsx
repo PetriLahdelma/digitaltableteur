@@ -98,9 +98,9 @@ export interface CardProps {
   badge?: React.ReactNode;
   /** Badge configuration options */
   badgeProps?: {
-    design?: "primary" | "secondary";
-    state?: "success" | "info" | "error" | "warning" | "neutral";
-    size?: "s" | "m" | "l";
+    variant?: "primary" | "secondary";
+    tone?: "neutral" | "error" | "warning" | "success" | "info";
+    size?: "sm" | "md" | "lg";
     position?: "start" | "end";
   };
   /** Status/error message displayed below header */
@@ -235,8 +235,8 @@ const Card: React.FC<CardProps> = ({
     <div className={styles.badgeContainer}>
       {typeof badge === "string" || typeof badge === "number" ? (
         <Badge
-          design={badgeProps.design}
-          state={badgeProps.state}
+          variant={badgeProps.variant}
+          tone={badgeProps.tone}
           size={badgeProps.size}
         >
           {badge}

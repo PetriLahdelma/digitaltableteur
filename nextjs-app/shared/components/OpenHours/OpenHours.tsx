@@ -34,10 +34,10 @@ export const OpenHours: React.FC<OpenHoursProps> = ({
       <div className={styles.headerRow}>
         <strong>{t("openHours.heading", "Open hours")}</strong>
         <Badge
-          design="primary"
-          state={open ? "success" : "error"}
+          variant="primary"
+          tone={open ? "success" : "error"}
           square={false}
-          size="s"
+          size="sm"
           className={styles.badge}
           aria-live="polite"
           icon={

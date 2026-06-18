@@ -5,35 +5,31 @@ import * as Stories from './Badge.stories.tsx';
 
 # Badge
 
-**Status:** beta · **Tier:** atom · **Group:** display
+**Status:** stable · **Tier:** atom · **Group:** display
 
-Compact status label. Badge carries a short string of meaning — a state,
-a count, a tag — and renders with a semantic colour (`success`, `info`,
-`error`, `warning`, `neutral`) and an optional auto-resolved status icon.
-Two designs cover the visual weight: `primary` for filled emphasis,
-`secondary` for outlined or tonal subtlety. Badges can be removable
-(with a built-in close affordance) or live (`role="status"` for screen-
-reader announcements when the content changes).
+Compact status label. Badge carries a short string of meaning — a state, a
+count, a tag — with two orthogonal axes: `variant` for visual weight
+(`primary` filled, `secondary` outlined) and `tone` for semantic colour
+(`neutral` / `error` / `warning` / `success` / `info`). A matching status icon
+is auto-resolved for non-neutral tones. Badges can be removable (built-in
+dismiss affordance) or live (`role="status"` for screen-reader announcements).
 
 ## In use
 
-Used inside `ServiceCard` headers (a status tag next to the title), in
-filter chips on the work index, and as unread counters on chat-style
-surfaces. The **Example** story shows the canonical state + icon
-composition.
+Used inside card headers (a status tag next to the title), as filter chips on
+the work index, and as counters on chat-style surfaces. The **Example** story
+shows the canonical tone + icon composition.
 
 Two compositions worth cribbing:
 
-- **Filter chip with remove.** `removable` plus `onRemove` gives a built-
-  in dismiss affordance; the close button is an internal Button atom with
-  the right hit-target size and `accessibleName` translation. Use this for
-  the active filter pills.
-- **Live counter.** `role="status"` adds `aria-live="polite"` so screen
-  readers announce updates without yanking focus. Use for unread counters
-  or notification dots that mutate at runtime.
+- **Filter chip with remove.** `removable` plus `onRemove` gives a built-in
+  dismiss; the close button is an internal Button atom with the right hit-target
+  and a translated `accessibleName`.
+- **Live counter.** `role="status"` adds `aria-live="polite"` so screen readers
+  announce updates without yanking focus.
 
-Anti-pattern to avoid: shipping a static badge with `role="status"`. The
-live-region churn is wasted when the content doesn't change.
+Anti-pattern to avoid: shipping a static badge with `role="status"` — the
+live-region churn is wasted when the content never changes.
 
 ## How to use
 
@@ -41,73 +37,57 @@ live-region churn is wasted when the content doesn't change.
 import Badge from '@dt/Badge';
 
 // Static status tag
-<Badge state="success">Completed</Badge>
+<Badge tone="success">Completed</Badge>
 
-// Outlined secondary design
-<Badge design="secondary" state="info">Beta</Badge>
+// Outlined, secondary weight
+<Badge variant="secondary" tone="info">Beta</Badge>
 
 // Removable filter chip
-<Badge removable onRemove={() => removeFilter('Helsinki')}>
-  Helsinki
-</Badge>
+<Badge removable onRemove={() => removeFilter('Helsinki')}>Helsinki</Badge>
 
 // Live count
-<Badge role="status" state="info">{unreadCount} new</Badge>
+<Badge role="status" tone="info">{unreadCount} new</Badge>
 
 // Custom icon
-<Badge state="warning" icon={<Icon name="warning-circle" />}>
-  Action required
-</Badge>
+<Badge tone="warning" icon={<Icon name="warning-circle" />}>Action required</Badge>
 ```
 
-Required consumer wiring: nothing. Translations route through the project's
+Required consumer wiring: none. Translations route through the project's
 `react-i18next` instance, so the close button label localises automatically.
 
-Theme & forced-colors notes: the **ForcedColors** story verifies that each
-state survives the system palette. The primary design's status icons swap
-to high-contrast white on filled surfaces; the secondary design uses
-semantic colours that pass AA on both light and dark surfaces.
+Theme & forced-colors: the **ForcedColors** story verifies each tone survives
+the system palette. Filled (`primary`) status icons swap to high-contrast white;
+outlined (`secondary`) tones use semantic colours that pass AA on both themes.
 
 ## When to use
 
 - A short status or category label next to a heading, list item, or row.
-- A filter chip that can be removed by the user.
+- A filter chip the user can remove.
 - A live counter (unread, queue length) that updates at runtime.
 
 ## When not to use
 
 - A standalone interactive action — use **Button**.
-- An inline status sentence in body copy — use a `<Text as="strong">` with
-  the right colour rather than wrapping a phrase in a Badge.
-- A toggle or selection state — use **Switch** or **Checkbox**; Badge does
-  not own a pressed/checked state.
-- A persistent on-page indicator that you would also caption visually
-  ("New", "Updated") — consider whether a Toast or AlertBanner expresses
-  the intent more clearly.
+- An inline status phrase in body copy — use `<Text as="strong">` with the right
+  colour rather than wrapping a phrase in a Badge.
+- A toggle or selection state — use **Switch** or **Checkbox**; Badge owns no
+  pressed/checked state.
 
 ## Accessibility
 
-- **Default semantic:** a plain `<span>` with no role. Decorative status
-  badges do not announce on their own — the surrounding heading or text
-  carries the meaning.
-- **Live semantic:** `role="status"` adds `aria-live="polite"`. Screen
-  readers announce changes to the text content without interrupting the
-  current speech. Use sparingly to avoid noisy announcements.
-- **Removable affordance:** the close button is a Button atom with
-  `accessibleName` translated via `t("badgeRemove")`. Focus moves to the
-  next focusable sibling on remove because the badge unmounts cleanly.
-- **Icon contrast:** primary-design icons get an explicit colour pair from
-  `PRIMARY_ICON_COLORS` to keep contrast on the filled surface; secondary-
-  design icons inherit the semantic palette.
-- **Reduced motion:** Badge has no motion. The removable transition is
+- **Default semantic:** a plain `<span>` with no role; the surrounding heading
+  or text carries the meaning.
+- **Live semantic:** `role="status"` adds `aria-live="polite"`. Use sparingly.
+- **Removable affordance:** the close button is a Button atom with a translated
+  `accessibleName` (`t("badgeRemove")`); focus moves cleanly on remove.
+- **Tone contrast:** filled (`primary`) icons get an explicit high-contrast
+  colour pair; outlined (`secondary`) tones inherit the semantic palette.
+- **Reduced motion:** the badge is static; the removable hover/press is
   CSS-only and respects `prefers-reduced-motion: reduce`.
 
 ## Promotion notes
 
-- Bulk-author target for Honest Beta phase. Reviewed against the live
-  filter chips on the work index and the status tags on ServiceCard.
-- Stable promotion blockers: a11y-tree snapshots for the four required
-  stories, real-browser forced-colors run, documented production consumers.
-- Known debt: the size prop accepts the legacy `s|m|l` shorthand. New
-  consumers should pass the modern `size="m"` form (matches Button's
-  normalised contract).
+- 2026-06-18 platinum pass: `variant`/`tone` API, `sm`/`md`/`lg` sizes, tonal
+  hover + Button press feedback on the removable affordance, forced-colors
+  verified.
+- Compose colour with `tone`; there is no `state` or `design` prop.
