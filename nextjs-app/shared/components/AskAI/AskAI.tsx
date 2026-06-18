@@ -237,9 +237,9 @@ export function AskAI({ className }: AskAIProps) {
       <div className={styles.personalizeToggle}>
         <Checkbox
           id="askai-personalize"
-          size="S"
+          size="sm"
           label={t("askAIPersonalizeLabel", "Help me")}
-          isChecked={personalizeContext}
+          checked={personalizeContext}
           onCheckedChange={setPersonalizeContext}
         />
       </div>

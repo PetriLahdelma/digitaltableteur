@@ -1,14 +1,6 @@
-import { cva } from "class-variance-authority";
-
-export const checkboxVariants = cva("", {
-  variants: { size: { sm: "", md: "", lg: "" } },
-  defaultVariants: { size: "md" },
-});
-
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import Label from "@dt/Label";
 import styles from "./Checkbox.module.css";
-import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
 export interface CheckboxProps
   extends Omit<
@@ -17,21 +9,18 @@ export interface CheckboxProps
   > {
   label?: string;
   showLabel?: boolean;
-
-  // v2.0.0 PROPS
-  /** Checked state (controlled) */
-  isChecked?: boolean;
-  /** Indeterminate state */
-  isIndeterminate?: boolean;
-  /** Disables the checkbox */
-  isDisabled?: boolean;
-  /** Initial checked state for uncontrolled component */
+  /** Checked state (controlled). */
+  checked?: boolean;
+  /** Indeterminate (mixed) state. @default false */
+  indeterminate?: boolean;
+  /** Disables interaction and dims the control. @default false */
+  disabled?: boolean;
+  /** Initial checked state for uncontrolled use. */
   defaultChecked?: boolean;
-  /** Size variant */
-  size?: SizeUnified;
-  /** Checked change handler */
+  /** Size. @default "md" */
+  size?: "sm" | "md" | "lg";
+  /** Called with the next checked value when toggled. */
   onCheckedChange?: (checked: boolean) => void;
-
   id?: string;
 }
 
@@ -41,9 +30,9 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     {
       label,
       showLabel = true,
-      isChecked,
-      isIndeterminate,
-      isDisabled = false,
+      checked,
+      indeterminate,
+      disabled = false,
       defaultChecked,
       size = "md",
       onCheckedChange,
@@ -51,30 +40,23 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref,
   ) => {
-    const normalizedSize = normalizeSizeProp(size);
-
     // Uncontrolled state management
-    const [internalChecked, setInternalChecked] = useState(defaultChecked ?? false);
-    const isControlled = isChecked !== undefined;
-    const actualChecked = isControlled ? isChecked : internalChecked;
-    // local ref so component always has access to the input element even when no ref
-    // is forwarded from the parent
+    const [internalChecked, setInternalChecked] = useState(
+      defaultChecked ?? false,
+    );
+    const isControlled = checked !== undefined;
+    const actualChecked = isControlled ? checked : internalChecked;
+    // Local ref so the component can reach the input element even when the
+    // parent does not forward a ref.
     const innerRef = useRef<HTMLInputElement | null>(null);
 
-    // combine forwarded ref and local ref
+    // Merge the forwarded ref with the local ref.
     const setRefs = (el: HTMLInputElement | null) => {
       innerRef.current = el;
-      if (!ref) return;
       if (typeof ref === "function") {
-        try {
-          ref(el);
-        } catch (err) {
-          // ignore
-        }
-      } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore - assign to forwarded ref object
-        ref.current = el;
+        ref(el);
+      } else if (ref) {
+        (ref as React.MutableRefObject<HTMLInputElement | null>).current = el;
       }
     };
 
@@ -83,10 +65,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       if (!element) return;
 
       // Set indeterminate property (native property, not an attribute)
-      element.indeterminate = !!isIndeterminate;
+      element.indeterminate = !!indeterminate;
 
       // Update visual state classes - CSS handles all styling
-      if (isIndeterminate) {
+      if (indeterminate) {
         element.classList.remove(styles.checkedState);
         element.classList.add(styles.indeterminateState);
       } else if (actualChecked) {
@@ -96,19 +78,17 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         element.classList.remove(styles.indeterminateState);
         element.classList.remove(styles.checkedState);
       }
-    }, [actualChecked, isIndeterminate, props.id]);
+    }, [actualChecked, indeterminate, props.id]);
 
-    const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    const handleClick = () => {
       const element = innerRef.current;
-      if (isIndeterminate && element) {
+      if (indeterminate && element) {
         // Clear indeterminate and notify parent. Do NOT prevent default so the
         // browser can toggle the native checked state and the change event will
         // fire and keep everything consistent.
         element.indeterminate = false;
         element.classList.remove(styles.indeterminateState);
-        // Notify parent that checkbox should be checked; parent may set checked
-        // prop accordingly in response to the onChange event which follows.
-        if (onCheckedChange) onCheckedChange(true);
+        onCheckedChange?.(true);
       }
     };
 
@@ -117,12 +97,12 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <input
           id={props.id || "checkbox"}
           type="checkbox"
-          className={`${styles.checkbox} ${styles[`checkbox--${normalizedSize}`]} ${actualChecked ? styles.checkedState : ""}`}
+          className={`${styles.checkbox} ${styles[`checkbox--${size}`]} ${actualChecked ? styles.checkedState : ""}`}
           ref={setRefs}
           checked={actualChecked}
           onClick={handleClick}
           onChange={(e) => {
-            const isChecked = e.target.checked;
+            const nextChecked = e.target.checked;
 
             // Update the visual state classes - CSS handles all styling
             const element = innerRef.current;
@@ -130,7 +110,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               // Clear indeterminate state when user clicks
               element.indeterminate = false;
 
-              if (isChecked) {
+              if (nextChecked) {
                 element.classList.add(styles.checkedState);
               } else {
                 element.classList.remove(styles.checkedState);
@@ -139,19 +119,17 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
             // Update internal state for uncontrolled mode
             if (!isControlled) {
-              setInternalChecked(isChecked);
+              setInternalChecked(nextChecked);
             }
 
-            if (onCheckedChange) {
-              onCheckedChange(isChecked);
-            }
+            onCheckedChange?.(nextChecked);
           }}
-          disabled={isDisabled}
+          disabled={disabled}
           {...props}
         />
         <Label
           htmlFor={props.id || "checkbox"}
-          disabled={isDisabled}
+          disabled={disabled}
           className={styles.label}
         >
           {showLabel && label}

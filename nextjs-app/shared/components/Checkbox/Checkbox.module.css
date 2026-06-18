@@ -13,16 +13,17 @@
 
   /* --radius-md (4px), not --radius-lg (8px): the radius is absolute, so on
      the 18px small box 8px read as ~89% circular. 4px holds a rounded-square
-     at every size (S/M/L = 18/24/30px). */
+     at every size (sm/md/lg = 18/24/30px). */
   border-radius: var(--radius-md);
   cursor: pointer;
   appearance: none;
   background-color: var(--color-light-bg);
   position: relative;
   transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color var(--duration-fast) var(--ease-out-cubic),
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    box-shadow var(--duration-fast) var(--ease-out-cubic),
+    transform var(--duration-instant) var(--ease-out-cubic);
 }
 
 /* Size variants (v1.1.0) */
@@ -68,9 +69,24 @@
   }
 }
 
-.checkbox:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 10%, transparent);
+@media (hover: hover) and (pointer: fine) {
+  .checkbox:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .checkbox {
+    transition:
+      border-color var(--duration-fast) var(--ease-out-cubic),
+      background-color var(--duration-fast) var(--ease-out-cubic),
+      box-shadow var(--duration-fast) var(--ease-out-cubic);
+  }
+
+  .checkbox:active {
+    transform: none;
+  }
 }
 
 .checkbox:focus {
@@ -85,6 +101,12 @@
   outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
   outline-offset: var(--focus-ring-offset, 2px);
   box-shadow: none; /* Use outline instead of box-shadow */
+}
+
+/* Press: subtle squeeze confirming the toggle. */
+
+.checkbox:active {
+  transform: scale(0.92);
 }
 
 /* Forced colors mode (Windows High Contrast) */
