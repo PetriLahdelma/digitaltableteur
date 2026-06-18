@@ -141,10 +141,11 @@ const Button = React.forwardRef<
     const isLink = "href" in rest && rest.href !== undefined;
 
     // Icons are decorative (the button supplies the accessible name) and inherit
-    // the button's resolved text color via currentColor, so no per-variant color
-    // computation is needed. Icon size tracks the control size.
+    // the button's resolved text color via currentColor. The icon's rendered
+    // size is owned by CSS (`--btn-icon-size`), which overrides any icon
+    // source; this numeric size only sets a sensible fallback box.
     const iconSize: IconProps["size"] =
-      size === "sm" ? "xs" : size === "lg" ? "md" : "sm";
+      size === "sm" ? 18 : size === "lg" ? 24 : 20;
     const renderIcon = (candidate: React.ReactNode | string): React.ReactNode => {
       if (candidate == null || candidate === false) return undefined;
       if (typeof candidate === "string") {

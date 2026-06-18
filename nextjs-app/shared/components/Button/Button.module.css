@@ -221,6 +221,16 @@
   line-height: 0;
 }
 
+/* The button owns its icon size so every icon source renders consistently —
+   a Phosphor element (width="1em" + a utility class), an @dt Icon, or a raw
+   svg. CSS width/height beat the intrinsic 1em and any utility class. */
+
+.button .icon svg {
+  width: var(--btn-icon-size, 1.25rem);
+  height: var(--btn-icon-size, 1.25rem);
+  flex-shrink: 0;
+}
+
 .button .text {
   display: inline-flex;
   align-items: center;
@@ -240,6 +250,8 @@
   min-block-size: 2rem;
   gap: var(--space-internal-4);
   font-size: var(--font-size-button-s);
+
+  --btn-icon-size: 1.125rem; /* 18px */
 }
 
 .button.md {
@@ -247,6 +259,8 @@
   padding-inline: var(--space-internal-16);
   min-block-size: 2.5rem;
   font-size: var(--font-size-button-m);
+
+  --btn-icon-size: 1.25rem; /* 20px */
 }
 
 .button.lg {
@@ -254,24 +268,34 @@
   padding-inline: var(--space-internal-24);
   min-block-size: 3rem;
   font-size: var(--font-size-button-l);
+
+  --btn-icon-size: 1.5rem; /* 24px */
 }
+
+/* Icon-only buttons carry all the visual weight in the icon, so it reads larger. */
 
 .button.sm.iconOnly {
   block-size: 2rem;
   inline-size: 2rem;
   min-inline-size: 2rem;
+
+  --btn-icon-size: 1.25rem; /* 20px */
 }
 
 .button.md.iconOnly {
   block-size: 2.5rem;
   inline-size: 2.5rem;
   min-inline-size: 2.5rem;
+
+  --btn-icon-size: 1.5rem; /* 24px */
 }
 
 .button.lg.iconOnly {
   block-size: 3rem;
   inline-size: 3rem;
   min-inline-size: 3rem;
+
+  --btn-icon-size: 1.75rem; /* 28px */
 }
 
 .button.rounded {
