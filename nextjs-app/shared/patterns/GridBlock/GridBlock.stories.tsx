@@ -76,8 +76,8 @@ export const Default: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="L">Design Philosophy</Text>
-            <Text size="S">
+            <Text size="l">Design Philosophy</Text>
+            <Text size="s">
               Our approach combines user-centered design with technical
               excellence to create meaningful digital experiences that solve
               real problems.
@@ -90,8 +90,8 @@ export const Default: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="L">Development Process</Text>
-            <Text size="S">
+            <Text size="l">Development Process</Text>
+            <Text size="s">
               We follow an iterative methodology that emphasizes collaboration,
               testing, and continuous improvement throughout the development
               lifecycle.
@@ -116,8 +116,8 @@ export const TextAndImages: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="L">Mobile-First Design</Text>
-            <Text size="S">
+            <Text size="l">Mobile-First Design</Text>
+            <Text size="s">
               Every interface is crafted with mobile users in mind, ensuring
               seamless experiences across all device sizes and contexts.
             </Text>
@@ -147,8 +147,8 @@ export const TextAndImages: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="L">Responsive Excellence</Text>
-            <Text size="S">
+            <Text size="l">Responsive Excellence</Text>
+            <Text size="s">
               Interfaces adapt intelligently to different screen sizes,
               maintaining usability and aesthetic quality across platforms.
             </Text>
@@ -172,8 +172,8 @@ export const SingleColumn: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="XL">Project Overview</Text>
-            <Text size="M">
+            <Text size="xl">Project Overview</Text>
+            <Text size="m">
               This comprehensive case study explores the design and development
               process behind a major digital transformation initiative.
             </Text>
@@ -194,8 +194,8 @@ export const SingleColumn: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="L">Research Phase</Text>
-            <Text size="S">
+            <Text size="l">Research Phase</Text>
+            <Text size="s">
               Initial research involved stakeholder interviews, user testing,
               and competitive analysis to establish a solid foundation for the
               project.
@@ -264,8 +264,8 @@ export const ThreeColumns: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="M">Discover</Text>
-            <Text size="S">
+            <Text size="m">Discover</Text>
+            <Text size="s">
               Research and understand user needs through interviews and
               analysis.
             </Text>
@@ -277,8 +277,8 @@ export const ThreeColumns: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="M">Define</Text>
-            <Text size="S">
+            <Text size="m">Define</Text>
+            <Text size="s">
               Synthesize insights to define problems and opportunities.
             </Text>
           </>
@@ -289,8 +289,8 @@ export const ThreeColumns: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="M">Deliver</Text>
-            <Text size="S">
+            <Text size="m">Deliver</Text>
+            <Text size="s">
               Build, test, and iterate on solutions with real users.
             </Text>
           </>
@@ -313,8 +313,8 @@ export const NoGap: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="L">Seamless Layout</Text>
-            <Text size="S">
+            <Text size="l">Seamless Layout</Text>
+            <Text size="s">
               Content blocks can be arranged without gaps for a more compact,
               unified appearance.
             </Text>
@@ -326,8 +326,8 @@ export const NoGap: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="L">Flexible Spacing</Text>
-            <Text size="S">
+            <Text size="l">Flexible Spacing</Text>
+            <Text size="s">
               The gap property controls spacing between cells, with options from
               none to large.
             </Text>
@@ -351,7 +351,7 @@ export const CompactSpacing: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="S">Compact design for tight layouts</Text>
+            <Text size="s">Compact design for tight layouts</Text>
           </>
         ),
       },
@@ -360,7 +360,7 @@ export const CompactSpacing: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="S">Minimal spacing between elements</Text>
+            <Text size="s">Minimal spacing between elements</Text>
           </>
         ),
       },
@@ -389,12 +389,12 @@ export const MixedContent: Story = {
         innerPadding: true,
         content: (
           <>
-            <Text size="L">Component Architecture</Text>
-            <Text size="S">
+            <Text size="l">Component Architecture</Text>
+            <Text size="s">
               A well-structured component library ensures consistency and
               maintainability across the entire design system.
             </Text>
-            <Text size="S">
+            <Text size="s">
               Each component is built with accessibility, performance, and
               reusability in mind.
             </Text>

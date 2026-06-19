@@ -4,18 +4,18 @@
     "tier": "atom",
     "group": "navigation",
     "status": "stable",
-    "description": "Accessible inline link with size tokens and optional trailing icon.",
+    "description": "Accessible inline link with sm/md/lg sizes, a focus ring, URL sanitisation, and an optional external-link icon.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=371-30",
     "radixPrimitive": null,
     "element": "a",
     "variants": {
         "size": {
             "values": [
-                "S",
-                "M",
-                "L"
+                "sm",
+                "md",
+                "lg"
             ],
-            "default": "M",
+            "default": "md",
             "propSourced": true
         }
     },
@@ -38,7 +38,7 @@
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — focus and forced-colors verified in Storybook.",
+        "reviewedNote": "2026-06-18 — platinum pass: sm/md/lg sizes, tokenized focus ring + colour transition, forced-colors verified.",
         "forcedColorsVerified": true,
         "accessibilityTreeVerified": true,
         "realBrowserForcedColorsVerified": true
@@ -53,44 +53,17 @@
         "asChild",
         "children",
         "className",
+        "href",
         "id",
         "ref",
-        "style"
+        "rel",
+        "style",
+        "target"
     ],
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "app/layout.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/lib/siteStructure.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/SitemapPage/index.ts",
             "since": "2026-06-04"
         },
         {
@@ -100,22 +73,12 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/CVDownloadSection/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/patterns/Footer/Footer.tsx",
             "since": "2026-06-04"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/index.ts",
+            "path": "nextjs-app/shared/patterns/CVDownloadSection/CVDownloadSection.tsx",
             "since": "2026-06-04"
         }
     ],
@@ -125,16 +88,16 @@
             "optional": true,
             "type": "union",
             "values": [
-                "S",
-                "M",
-                "L"
+                "sm",
+                "md",
+                "lg"
             ]
         }
     },
     "forbiddenUse": [
-        "rely on the component's URL sanitisation. Don't pre-sanitise — the",
-        "use Link for actions. Buttons are for actions; anchors are for",
-        "override the underline via inline styles. The token-driven"
+        "pre-sanitise the href — the component sanitises and rejects unsafe protocols",
+        "use Link for actions. Buttons are for actions; anchors are for navigation",
+        "override the underline via inline styles. The token-driven treatment owns it"
     ],
     "prefersOver": [
         "Button with href for body-copy links"

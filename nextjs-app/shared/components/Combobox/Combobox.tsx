@@ -187,6 +187,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
           width: dropdownStyle.width,
         }}
         data-testid={`${fieldId}-dropdown`}
+        data-state="open"
         data-lenis-prevent=""
         data-lenis-prevent-wheel=""
         data-lenis-prevent-touch=""
@@ -258,6 +259,7 @@ export const Combobox = forwardRef<HTMLButtonElement, ComboboxProps>(
               error && styles.controlError,
               isDisabled && styles.disabled,
             )}
+            data-state={open ? "open" : "closed"}
           >
             <button
               ref={ref}

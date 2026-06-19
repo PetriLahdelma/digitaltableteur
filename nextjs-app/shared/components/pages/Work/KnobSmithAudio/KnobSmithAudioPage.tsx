@@ -96,12 +96,12 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="The Problem"
         title="Audio Plugin UX Is Stuck"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Many audio plugins still emulate vintage hardware with pixel-perfect
             recreations of knobs and meters. While visually appealing, these
             interfaces often sacrifice usability for aesthetics.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             KnobSmith focuses on removing friction from everyday workflows by
             rethinking control affordances, feedback loops, and parameter
             discoverability.
@@ -159,7 +159,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
               Your browser does not support the video tag.
             </video>
           </div>
-          <Text size="XS" className={styles.videoCaption}>
+          <Text size="xs" className={styles.videoCaption}>
             Exploration of layout, controls, and real-time feedback.
           </Text>
         </div>
@@ -168,12 +168,12 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           subtitle="Interaction Design"
           title="Precision Controls, Modern Feedback"
           content={[
-            <Text key="p1" size="S">
+            <Text key="p1" size="s">
               Interaction patterns prioritize clarity: larger touch targets,
               explicit value readouts, and smooth animated feedback for every
               parameter change.
             </Text>,
-            <Text key="p2" size="S">
+            <Text key="p2" size="s">
               Visual exploration balanced high-fidelity knob rendering with
               modern typography and grid-based layouts so the interface stays
               legible in the studio and on the go.
@@ -191,13 +191,13 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Visual Feedback"
         title="Metering That Speaks"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Great metering is more than eye candy. It&apos;s a real-time
             conversation between the plugin and the producer. The VU meter
             design balances analog warmth with pixel-perfect accuracy, providing
             instant feedback on dynamics without overwhelming the interface.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Needle physics were tuned to feel natural: responsive enough for
             transients, yet smooth enough to read sustained levels at a glance.
             The glow and shadow work together to make the meter readable in any
@@ -229,7 +229,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
               Your browser does not support the video tag.
             </video>
           </div>
-          <Text size="XS" className={styles.videoCaption}>
+          <Text size="xs" className={styles.videoCaption}>
             VU meter with analog-style needle physics and dark theming.
           </Text>
         </div>
@@ -239,13 +239,13 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Brand Presence"
         title="Online Identity"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             A cohesive digital presence extends the plugin&apos;s personality
             across web and mobile. The website balances dark studio aesthetics
             with clear product information, while the mobile experience keeps
             producers connected on the go.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Typography, color, and interface patterns remain consistent from
             desktop to pocket, reinforcing brand recognition whether users are
             browsing demos or managing licenses.
@@ -295,7 +295,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             className={styles.ogImage}
           />
         </div>
-        <Text size="XS" className={styles.ogImageCaption}>
+        <Text size="xs" className={styles.ogImageCaption}>
           The Open Graph image ensures consistent brand presence when links are
           shared across social platforms.
         </Text>
@@ -305,12 +305,12 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Brand Identity"
         title="The Mark"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The KnobSmith Audio identity centers on a minimal, iconic mark that
             evokes the tactile rotation of a hardware knob. Paired with a clean
             wordmark, it scales from plugin splash screens to social avatars.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             The animated reveal sequence adds a premium touch to loading states
             and first impressions. Mechanical yet refined, like the tools
             themselves.
@@ -331,7 +331,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             className={styles.logoWordmarkImage}
           />
         </div>
-        <Text size="XS" className={styles.logoWordmarkCaption}>
+        <Text size="xs" className={styles.logoWordmarkCaption}>
           The complete KnobSmith Audio lockup: logo paired with wordmark.
         </Text>
       </div>
@@ -349,7 +349,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
           wordmarkHeight={84}
           enableHover={true}
         />
-        <Text size="XS" className={styles.logoRevealCaption}>
+        <Text size="xs" className={styles.logoRevealCaption}>
           Some animated logo reveals: icon emerges first, wordmark follows.
         </Text>
       </div>
@@ -358,7 +358,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Logo Construction"
         title="Building the Mark"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The KnobSmith Audio logomark is constructed from three concentric
             ellipses that form the foundation of the knob silhouette. These
             geometric guides establish the proportions before the final mark
@@ -385,13 +385,13 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Brand Identity"
         title="Logo Variations"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The identity adapts to different contexts with two primary color
             treatments. The white-on-dark variant dominates the plugin UI and
             studio environments, where low-contrast visuals reduce eye strain
             during long sessions.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             The pink-on-white inversion brings energy to marketing materials,
             social media, and lighter web contexts, ensuring the brand stands
             out whether it&apos;s embedded in a DAW or scrolling through a feed.
@@ -428,7 +428,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Brand Identity"
         title="Color Palette"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The KnobSmith Audio color palette is intentionally minimal, focusing
             on three core colors that create maximum impact with restraint. Each
             color serves a specific functional purpose across the brand system.
@@ -451,7 +451,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.swatchInfo}>
               <span className={styles.swatchName}>Signature Pink</span>
               <span className={styles.swatchHex}>#ED4B9B</span>
-              <Text size="XS" className={styles.swatchDescription}>
+              <Text size="xs" className={styles.swatchDescription}>
                 The brand&apos;s primary accent. Use for interactive elements,
                 CTAs, key highlights, and anywhere the brand needs to assert
                 itself. Energetic and unmistakable.
@@ -467,7 +467,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.swatchInfo}>
               <span className={styles.swatchName}>Studio Dark</span>
               <span className={styles.swatchHex}>#2B2F33</span>
-              <Text size="XS" className={styles.swatchDescription}>
+              <Text size="xs" className={styles.swatchDescription}>
                 The foundation color for plugin interfaces and dark UI. Use for
                 backgrounds, body text on light surfaces, and anywhere stability
                 and focus are paramount.
@@ -486,7 +486,7 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
             <div className={styles.swatchInfo}>
               <span className={styles.swatchName}>Pure White</span>
               <span className={styles.swatchHex}>#FFFFFF</span>
-              <Text size="XS" className={styles.swatchDescription}>
+              <Text size="xs" className={styles.swatchDescription}>
                 The breathing room. Use for light backgrounds, text on dark
                 surfaces, and negative space. Creates contrast and clarity
                 without competing for attention.
@@ -500,14 +500,14 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Typography"
         title="JetBrains Mono"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The brand typography uses JetBrains Mono, a developer-focused
             monospace typeface that bridges the gap between technical precision
             and creative expression. Its clean geometry and excellent legibility
             at all sizes make it ideal for both UI labels and marketing
             headlines.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Paired with the signature pink (#ED4B9B), the type system creates a
             distinctive voice that feels both technical and approachable.
           </Text>,
@@ -562,13 +562,13 @@ export function KnobSmithAudioPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Typography"
         title="Geist Mono"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Geist Mono offers a contemporary alternative with its clean,
             geometric forms and excellent screen rendering. Developed by Vercel,
             it brings a modern sensibility that complements the technical
             aesthetic of audio software.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Its slightly wider letterforms and balanced proportions make it
             particularly readable for longer text blocks while maintaining the
             precision expected from a monospace typeface.

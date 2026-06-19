@@ -106,6 +106,30 @@ export const BrandIcon: Story = {
   args: { name: "github", size: "2xl", color: "#111", ariaLabel: "GitHub" },
 };
 
+export const Sizes: Story = {
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: "flex", gap: "1.5rem", alignItems: "flex-end" }}>
+      {(["2xs", "xs", "sm", "md", "lg", "xl", "2xl"] as const).map((size) => (
+        <div
+          key={size}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.5rem",
+          }}
+        >
+          <Icon name="circle-info" size={size} decorative />
+          <span style={{ fontSize: "0.75rem", color: "var(--color-muted)" }}>
+            {size}
+          </span>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
 export const Animated: Story = {
   args: { name: "circle-notch", spin: true, ariaLabel: "Loading" },
 };

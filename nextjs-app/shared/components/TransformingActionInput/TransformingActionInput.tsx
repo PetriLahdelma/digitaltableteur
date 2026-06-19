@@ -119,10 +119,10 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
       data-mode={mode}
     >
       <div className={styles.metaRow} aria-live="polite">
-        <Text as="span" size="S" className={styles.metaLabel}>
+        <Text as="span" size="s" className={styles.metaLabel}>
           {t("transformingActionInput.identity")}
         </Text>
-        <Text as="span" size="S" className={styles.metaValue}>
+        <Text as="span" size="s" className={styles.metaValue}>
           {mode === "button"
             ? t("transformingActionInput.state.button")
             : t("transformingActionInput.state.input")}
@@ -133,7 +133,7 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
         <Button
           variant="primary"
           onClick={handleTransform}
-          isDisabled={disabled}
+          disabled={disabled}
           accessibleName={t(actionLabelKey)}
           className={styles.trigger}
         >
@@ -158,7 +158,7 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
             aria-label={t(inputLabelKey)}
           />
           {shouldShowHelper ? (
-            <Text as="p" size="S" className={styles.helper} id={helperTextId}>
+            <Text as="p" size="s" className={styles.helper} id={helperTextId}>
               {t(helperTextKey)}
             </Text>
           ) : null}
@@ -167,14 +167,14 @@ export const TransformingActionInput: React.FC<TransformingActionInputProps> = (
               variant="secondary"
               type="button"
               onClick={() => setMode("button")}
-              isDisabled={disabled}
+              disabled={disabled}
             >
               {t("transformingActionInput.cancel")}
             </Button>
             <Button
               variant="primary"
               type="submit"
-              isDisabled={disabled}
+              disabled={disabled}
               accessibleDescription={t(
                 "transformingActionInput.submitDescription",
               )}

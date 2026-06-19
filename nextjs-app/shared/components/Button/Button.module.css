@@ -1,9 +1,16 @@
+/* stylelint-disable no-descending-specificity -- rules are grouped by concern (base, variant, tone, surface, then states) for readability rather than by specificity; the cascade here is intentional and conflict-free. */
+
 .button {
+  /* One accent variable drives variant (treatment) x tone (color). */
+  --btn-accent: var(--color-primary);
+  --btn-on-accent: var(--color-white);
+
   display: inline-flex;
   padding-block: var(--space-internal-8);
   padding-inline: var(--space-internal-16);
   justify-content: center;
   align-items: center;
+  gap: var(--space-internal-8);
   border-radius: var(--radius-lg);
   font-family: var(--primary-body-font);
   font-size: var(--font-size-button-m);
@@ -12,43 +19,29 @@
   white-space: nowrap;
   cursor: pointer;
   transition:
-    background-color 0.3s,
-    color 0.3s,
-    outline-color 0.15s;
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    border-color var(--duration-fast) var(--ease-out-cubic),
+    color var(--duration-fast) var(--ease-out-cubic),
+    filter var(--duration-fast) var(--ease-out-cubic),
+    transform var(--duration-instant) var(--ease-out-cubic),
+    outline-color var(--duration-instant) var(--ease-out-cubic);
   overflow: hidden;
 }
 
-.button > :is([data-button-slot="text"], .text),
-.button > :is([data-button-slot="icon"], [data-button-slot="end-icon"]) {
+.button > :is([data-button-slot="text"], [data-button-slot="icon"], [data-button-slot="end-icon"]) {
   color: inherit;
 }
 
+/* Press feedback: instant, subtle scale confirming the press. */
+
+.button:active:not(:disabled, [aria-disabled="true"]) {
+  transform: scale(0.97);
+}
+
 .button:focus-visible {
-  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
+  outline: var(--focus-ring-width, 2px) solid
+    var(--focus-ring-color, var(--color-primary));
   outline-offset: var(--focus-ring-offset, 2px);
-}
-
-.button.primary:focus-visible,
-.button.secondary:focus-visible,
-.button.tertiary:focus-visible,
-.button.error:focus-visible,
-.button.warning:focus-visible,
-.button.success:focus-visible,
-.button.info:focus-visible {
-  outline: var(--focus-ring-width, 2px) solid var(--focus-ring-color, var(--color-primary));
-  outline-offset: var(--focus-ring-offset, 2px);
-}
-
-.button.inverse:focus-visible {
-  outline-color: var(--color-white);
-}
-
-.button.onDark:focus-visible {
-  outline-color: var(--color-white);
-}
-
-.button.onBrand:focus-visible {
-  outline-color: var(--logo-color);
 }
 
 @media (forced-colors: active) {
@@ -61,152 +54,102 @@
 
 @media (prefers-reduced-motion: reduce) {
   .button {
-    transition: none;
+    transition:
+      background-color var(--duration-fast) var(--ease-out-cubic),
+      border-color var(--duration-fast) var(--ease-out-cubic),
+      color var(--duration-fast) var(--ease-out-cubic),
+      outline-color var(--duration-instant) var(--ease-out-cubic);
+  }
+
+  .button:active:not(:disabled, [aria-disabled="true"]) {
+    transform: none;
+  }
+
+  .button.loading {
+    animation: none;
   }
 }
 
+/* Tone: recolor the accent. */
+
+.button.error {
+  --btn-accent: var(--color-error);
+}
+
+.button.warning {
+  --btn-accent: var(--color-warning-contrast);
+  --btn-on-accent: var(--color-white);
+}
+
+.button.success {
+  --btn-accent: var(--color-success);
+}
+
+.button.info {
+  --btn-accent: var(--color-info);
+}
+
+/* Variant: how the accent is applied. */
+
 .button.primary {
   border: none;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--btn-accent);
+  color: var(--btn-on-accent);
 }
 
 .button.secondary {
-  border: 0.125rem solid var(--color-primary);
+  border: 0.125rem solid var(--btn-accent);
   background-color: transparent;
-  color: var(--color-primary);
-}
-
-.button.secondaryError {
-  border: 0.125rem solid var(--color-error);
-  background-color: transparent;
-  color: var(--color-error);
-}
-
-.button.inverse {
-  color: var(--color-primary);
-}
-
-.button.primary.inverse {
-  background-color: var(--color-white);
-  color: var(--dt-button-inverse-fg, var(--color-primary));
-}
-
-.button.secondary.inverse {
-  border-color: var(--color-white);
-  color: var(--color-white);
-}
-
-.button.tertiary.inverse {
-  color: var(--color-white);
-}
-
-.button.primary.onDark {
-  border: none;
-  background-color: var(--color-white);
-  color: var(--color-primary);
-}
-
-.button.primary.onDark:hover {
-  background-color: color-mix(in srgb, var(--color-white) 90%, transparent);
-}
-
-.button.secondary.onDark {
-  border: 0.125rem solid var(--color-white);
-  background-color: transparent;
-  color: var(--color-white);
-}
-
-.button.secondary.onDark:hover {
-  background-color: color-mix(in srgb, var(--color-white) 10%, transparent);
-}
-
-.button.tertiary.onDark {
-  border: none;
-  background-color: transparent;
-  color: var(--color-white);
-}
-
-.button.tertiary.onDark:hover {
-  background-color: color-mix(in srgb, var(--color-white) 8%, transparent);
-}
-
-.button.primary.onBrand {
-  border: none;
-  background-color: var(--logo-color, #000);
-  color: var(--logo-background, #dfff00);
-}
-
-.button.primary.onBrand:hover {
-  background-color: color-mix(in srgb, var(--logo-color, #000) 85%, transparent);
-  color: var(--logo-background, #dfff00);
-}
-
-.button.secondary.onBrand {
-  border: 0.125rem solid var(--logo-color, #000);
-  background-color: transparent;
-  color: var(--logo-color, #000);
-}
-
-.button.secondary.onBrand:hover {
-  background-color: color-mix(in srgb, var(--logo-color, #000) 8%, transparent);
+  color: var(--btn-accent);
 }
 
 .button.tertiary {
   border: none;
   background-color: transparent;
-  color: var(--color-primary);
+  color: var(--btn-accent);
 }
 
-.button.tertiaryError {
-  border: none;
-  background-color: transparent;
-  color: var(--color-error);
+@media (hover: hover) and (pointer: fine) {
+  .button.primary:hover {
+    filter: brightness(0.94);
+  }
+
+  .button.secondary:hover,
+  .button.tertiary:hover {
+    background-color: color-mix(in srgb, var(--btn-accent) 10%, transparent);
+  }
 }
 
-.button.error {
-  border: none;
-  background-color: var(--button-error-bg, #b91c1c);
-  color: var(--color-white);
-}
+/* Disabled (button + anchor). */
 
-.button.warning {
-  border: none;
-  background-color: var(--color-warning-contrast);
-  color: var(--color-white);
-}
-
-.button.success {
-  border: none;
-  background-color: var(--color-success);
-  color: var(--color-white);
-}
-
-.button.info {
-  border: none;
-  background-color: var(--color-info);
-  color: var(--color-white);
-}
-
-.button:disabled {
-  background-color: var(--color-disabled-bg);
-  color: var(--color-muted);
+.button:disabled,
+.button[aria-disabled="true"] {
   cursor: not-allowed;
 }
 
-.button.tertiary:disabled {
-  background-color: transparent;
+.button.primary:disabled,
+.button.primary[aria-disabled="true"] {
+  background-color: var(--color-disabled-bg);
+  color: var(--color-muted);
+  filter: none;
+}
+
+.button.secondary:disabled,
+.button.secondary[aria-disabled="true"],
+.button.tertiary:disabled,
+.button.tertiary[aria-disabled="true"] {
   opacity: 0.5;
 }
 
+/* Loading: gentle pulse, suppressed under reduced motion (see above). */
+
 .button.loading {
-  position: relative;
   cursor: wait;
   pointer-events: none;
-  animation: loading-pulse 1.5s ease-in-out infinite;
+  animation: button-loading-pulse var(--duration-slower) var(--ease-in-out-quart) infinite;
 }
 
-@keyframes loading-pulse {
+@keyframes button-loading-pulse {
   0%,
   100% {
     opacity: 0.6;
@@ -217,21 +160,86 @@
   }
 }
 
-.button.iconOnly {
-  display: flex;
-  padding: 0;
-  justify-content: center;
-  align-items: center;
-  line-height: 1;
-  text-align: center;
+/* Surface: contrast-safe styling on dark / brand bands. */
+
+.button.onDark.primary {
+  background-color: var(--color-white);
+  color: var(--color-primary);
 }
 
-.icon {
+.button.onDark.secondary {
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.button.onDark.tertiary {
+  color: var(--color-white);
+}
+
+.button.onBrand.primary {
+  background-color: var(--logo-color);
+  color: var(--logo-background);
+}
+
+.button.onBrand.secondary {
+  border-color: var(--logo-color);
+  color: var(--logo-color);
+}
+
+.button.onBrand.tertiary {
+  color: var(--logo-color);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button.onDark.secondary:hover,
+  .button.onDark.tertiary:hover {
+    background-color: color-mix(in srgb, var(--color-white) 12%, transparent);
+    filter: none;
+  }
+
+  .button.onBrand.secondary:hover,
+  .button.onBrand.tertiary:hover {
+    background-color: color-mix(in srgb, var(--logo-color) 10%, transparent);
+    filter: none;
+  }
+}
+
+.button.onDark:focus-visible {
+  outline-color: var(--color-white);
+}
+
+.button.onBrand:focus-visible {
+  outline-color: var(--logo-color);
+}
+
+/* Icon slots. */
+
+.button .icon {
   display: inline-flex;
-  margin-inline-end: 0;
   justify-content: center;
   align-items: center;
-  vertical-align: middle;
+  line-height: 0;
+}
+
+/* The button supplies a DEFAULT icon size (via --btn-icon-size) so every icon
+   source renders at a sensible size out of the box — a Phosphor element
+   (width="1em"), an @dt Icon, or a raw svg — including in Storybook, where the
+   icon would otherwise collapse to its intrinsic size. This sits in
+   @layer components so a consumer's Tailwind size utility on the icon (e.g.
+   SiteHeader's `size-5`, emitted into @layer utilities) wins by layer order;
+   string @dt Icons and unsized element icons carry no utility, so they keep
+   this default. (Specificity can't achieve this: a CSS-module rule is unlayered
+   and would beat any utility regardless of selector weight.) */
+
+@layer components {
+  .button .icon svg {
+    width: var(--btn-icon-size, 1.25rem);
+    height: var(--btn-icon-size, 1.25rem);
+  }
+}
+
+.button .icon svg {
+  flex-shrink: 0;
 }
 
 .button .text {
@@ -240,70 +248,21 @@
   line-height: 1;
 }
 
-.button.iconOnly .icon {
-  display: flex;
-  margin: 0;
-  justify-content: center;
-  align-items: center;
+.button.iconOnly {
+  padding: 0;
+  gap: 0;
 }
 
-.icon svg {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.endIcon {
-  margin-inline-start: 0.5rem;
-}
-
-.button [data-button-slot="icon"] + [data-button-slot="text"],
-.button > :not(:last-child):is(svg, .icon) + .text {
-  margin-inline-start: 0.5rem;
-}
-
-.button [data-button-slot="text"] + [data-button-slot="end-icon"],
-.button > .text + :is(svg, .endIcon) {
-  margin-inline-start: 0.5rem;
-}
-
-.button > .text + .icon {
-  margin-inline-start: 0.5rem;
-}
-
-.button.tertiary [data-button-slot="icon"] {
-  margin-inline-end: var(--space-internal-2);
-}
-
-.button.tertiary [data-button-slot="text"] {
-  margin-inline-start: var(--space-internal-2);
-}
-
-.button.s {
-  padding-block: var(--space-internal-4);
-  padding-inline: var(--space-internal-12);
-  min-block-size: 1.5rem;
-  font-size: var(--font-size-button-s);
-}
-
-.button.m {
-  padding-block: var(--space-internal-8);
-  padding-inline: var(--space-internal-16);
-  min-block-size: 2.5rem;
-  font-size: var(--font-size-button-m);
-}
-
-.button.l {
-  padding-block: var(--space-internal-12);
-  padding-inline: var(--space-internal-24);
-  min-block-size: 3rem;
-  font-size: var(--font-size-button-l);
-}
+/* Sizes. */
 
 .button.sm {
   padding-block: var(--space-internal-4);
   padding-inline: var(--space-internal-12);
-  min-block-size: 1.5rem;
+  min-block-size: 2rem;
+  gap: var(--space-internal-4);
   font-size: var(--font-size-button-s);
+
+  --btn-icon-size: 1.125rem; /* 18px */
 }
 
 .button.md {
@@ -311,6 +270,8 @@
   padding-inline: var(--space-internal-16);
   min-block-size: 2.5rem;
   font-size: var(--font-size-button-m);
+
+  --btn-icon-size: 1.25rem; /* 20px */
 }
 
 .button.lg {
@@ -318,61 +279,56 @@
   padding-inline: var(--space-internal-24);
   min-block-size: 3rem;
   font-size: var(--font-size-button-l);
+
+  --btn-icon-size: 1.5rem; /* 24px */
 }
 
-.button.s.iconOnly {
-  padding: 0;
-  block-size: 1.5rem;
-  inline-size: 1.5rem;
-  min-inline-size: 1.5rem;
-}
-
-.button.m.iconOnly {
-  padding: 0;
-  block-size: 2.5rem;
-  inline-size: 2.5rem;
-  min-inline-size: 2.5rem;
-}
-
-.button.l.iconOnly {
-  padding: 0;
-  block-size: 3rem;
-  inline-size: 3rem;
-  min-inline-size: 3rem;
-}
+/* Icon-only buttons carry all the visual weight in the icon, so it reads larger. */
 
 .button.sm.iconOnly {
-  padding: 0;
-  block-size: 1.5rem;
-  inline-size: 1.5rem;
-  min-inline-size: 1.5rem;
+  block-size: 2rem;
+  inline-size: 2rem;
+  min-inline-size: 2rem;
+
+  --btn-icon-size: 1.25rem; /* 20px */
 }
 
 .button.md.iconOnly {
-  padding: 0;
   block-size: 2.5rem;
   inline-size: 2.5rem;
   min-inline-size: 2.5rem;
+
+  --btn-icon-size: 1.5rem; /* 24px */
 }
 
 .button.lg.iconOnly {
-  padding: 0;
   block-size: 3rem;
   inline-size: 3rem;
   min-inline-size: 3rem;
-}
 
-.button.iconOnly svg {
-  font-size: 0.75rem;
-}
-
-.button.l.iconOnly svg {
-  font-size: 1.25rem;
+  --btn-icon-size: 1.75rem; /* 28px */
 }
 
 .button.rounded {
   border-radius: 9999px;
 }
+
+/* Touch targets: ensure >= 44px on coarse pointers. */
+@media (width <= 768px) {
+  .button.sm,
+  .button.md {
+    min-block-size: 2.75rem;
+  }
+
+  .button.sm.iconOnly,
+  .button.md.iconOnly {
+    block-size: 2.75rem;
+    inline-size: 2.75rem;
+    min-inline-size: 2.75rem;
+  }
+}
+
+/* Split button composition (consumed by SplitButton via className). */
 
 .button.splitMain {
   margin-inline-end: -1px;
@@ -392,63 +348,16 @@
   position: absolute;
   inset-block: 0.5rem;
   inline-size: 1px;
+  background-color: color-mix(in srgb, var(--btn-on-accent) 50%, transparent);
   content: "";
   inset-inline-start: 0;
 }
 
-.button.primary.splitToggle::before {
-  background-color: color-mix(in srgb, var(--color-white) 50%, transparent);
-}
-
-.button.secondary.splitToggle::before {
-  background-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
-}
-
+.button.secondary.splitToggle::before,
 .button.tertiary.splitToggle::before {
-  background-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  background-color: color-mix(in srgb, var(--btn-accent) 50%, transparent);
 }
 
 .button:disabled.splitToggle::before {
   background-color: color-mix(in srgb, var(--color-muted) 50%, transparent);
-}
-
-.button.splitSecondaryMain,
-.button.splitSecondaryToggle {
-  border: none;
-  background: transparent;
-  box-shadow: none;
-  color: var(--color-primary);
-}
-
-.button.splitTertiaryMain,
-.button.splitTertiaryToggle {
-  margin-inline-end: 0;
-  border: none;
-  background: transparent;
-  box-shadow: none;
-  color: var(--color-primary);
-}
-
-@media (width <= 768px) {
-  .button.s {
-    padding-block: var(--space-internal-16);
-  }
-
-  .button.m {
-    padding-block: var(--space-internal-16);
-  }
-
-  .button.sm.iconOnly,
-  .button.s.iconOnly {
-    block-size: 2.75rem;
-    inline-size: 2.75rem;
-    min-inline-size: 2.75rem;
-  }
-
-  .button.md.iconOnly,
-  .button.m.iconOnly {
-    block-size: 2.75rem;
-    inline-size: 2.75rem;
-    min-inline-size: 2.75rem;
-  }
 }

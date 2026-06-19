@@ -104,15 +104,15 @@ const ChatWidgetStoryDemo = () => {
       style={{
         minHeight: "100vh",
         padding: "2rem",
-        background: "var(--main-body-background-color, #f5f5f5)",
-        color: "var(--color-text, #111)",
+        background: "var(--main-body-background-color)",
+        color: "var(--color-text)",
       }}
     >
       <div style={{ maxWidth: "32rem", marginBottom: "6rem" }}>
-        <Text size="M" terminals="sans">
+        <Text size="m" terminals="sans">
           Donny Preview
         </Text>
-        <Text size="S">
+        <Text size="s">
           Click the chat bubble in the bottom-right corner to open the demo. You
           can type a prompt and Donny will answer with a prerecorded reply so
           you can explore the flow without calling the real API.

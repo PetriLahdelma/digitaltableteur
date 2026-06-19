@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "feedback",
     "status": "beta",
-    "description": "Transient status message with severity, position, and auto-dismiss.",
+    "description": "Transient status message with tone, position, and auto-dismiss.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=393-35",
     "radixPrimitive": null,
     "element": "div",
@@ -13,16 +13,13 @@
             "values": [
                 "sm",
                 "md",
-                "lg",
-                "S",
-                "M",
-                "L"
+                "lg"
             ],
             "default": "md",
             "forwarded": true,
             "forwardedTo": "CSS module size classes"
         },
-        "severity": {
+        "tone": {
             "values": [
                 "success",
                 "error",
@@ -77,30 +74,30 @@
         "className",
         "duration",
         "id",
-        "isOpen",
         "message",
         "onClose",
+        "open",
         "position",
         "ref",
-        "severity",
         "size",
-        "style"
+        "style",
+        "tone"
     ],
     "consumers": [],
     "schemaVersion": 2,
     "props": {
-        "isOpen": {
+        "open": {
             "optional": true,
             "type": "boolean"
         },
-        "severity": {
+        "tone": {
             "optional": true,
             "type": "union",
             "values": [
-                "info",
                 "success",
+                "error",
                 "warning",
-                "error"
+                "info"
             ]
         },
         "position": {
@@ -121,10 +118,7 @@
             "values": [
                 "sm",
                 "md",
-                "lg",
-                "S",
-                "M",
-                "L"
+                "lg"
             ]
         },
         "message": {

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./List.module.css";
 import "../../styles/variables.css";
 
-type TextSize = "XXS" | "XS" | "S" | "M" | "L" | "XL" | "XXL";
+type TextSize = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
 type LineHeight = "tight" | "snug" | "normal" | "relaxed" | "loose";
 type ListType = "ul" | "ol";
 type ListStyleType =
@@ -31,13 +31,13 @@ export interface ListProps {
 }
 
 const sizeClassMap: Record<TextSize, string> = {
-  XXS: styles["textXXS"] || "",
-  XS: styles["textXS"] || "",
-  S: styles["textS"] || "",
-  M: styles["textM"] || "",
-  L: styles["textL"] || "",
-  XL: styles["textXL"] || "",
-  XXL: styles["textXXL"] || "",
+  xxs: styles["textXXS"] || "",
+  xs: styles["textXS"] || "",
+  s: styles["textS"] || "",
+  m: styles["textM"] || "",
+  l: styles["textL"] || "",
+  xl: styles["textXL"] || "",
+  xxl: styles["textXXL"] || "",
 };
 
 const lineHeightClassMap: Record<LineHeight, string> = {
@@ -57,19 +57,27 @@ const spacingClassMap: Record<string, string> = {
 /**
  * List component.
  */
-export const List: React.FC<ListProps> = ({
-  items,
-  as = "ul",
-  className = "",
-  terminals = "sans",
-  size = "M",
-  lineHeight,
-  style,
-  listStyleType,
-  spacing = "normal",
-  role,
-}) => {
-  const Tag = as;
+export const List = React.forwardRef<
+  HTMLUListElement | HTMLOListElement,
+  ListProps
+>(function List(
+  {
+    items,
+    as = "ul",
+    className = "",
+    terminals = "sans",
+    size = "m",
+    lineHeight,
+    style,
+    listStyleType,
+    spacing = "normal",
+    role,
+  },
+  ref,
+) {
+  // Polymorphic tag (ul/ol): widen to ElementType so the forwarded ref types
+  // cleanly against both list elements.
+  const Tag = as as React.ElementType;
   const terminalClass = terminals === "serif" ? styles.serif : styles.sans;
   const sizeClass = sizeClassMap[size] || "";
   const lineHeightClass = lineHeight
@@ -87,6 +95,7 @@ export const List: React.FC<ListProps> = ({
 
   return (
     <Tag
+      ref={ref}
       className={`${styles.list} ${terminalClass} ${sizeClass} ${lineHeightClass} ${spacingClass} ${className}`.trim()}
       style={combinedStyle}
       role={role}
@@ -96,6 +105,8 @@ export const List: React.FC<ListProps> = ({
       ))}
     </Tag>
   );
-};
+});
+
+List.displayName = "List";
 
 export default List;

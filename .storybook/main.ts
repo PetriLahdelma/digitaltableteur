@@ -2,6 +2,7 @@ import type { StorybookConfig } from "@storybook/react-vite";
 import { config as loadEnv } from "dotenv";
 import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
+import remarkGfm from "remark-gfm";
 
 const repoRoot = fileURLToPath(new URL("..", import.meta.url));
 loadEnv({ path: resolve(repoRoot, ".env.local") });
@@ -79,7 +80,20 @@ const config: StorybookConfig = {
     "../nextjs-app/shared/foundations/**/*.mdx",
   ],
   addons: [
-    "@storybook/addon-docs",
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        // @mdx-js/mdx (what addon-docs runs) does NOT enable GFM syntax by
+        // default, so markdown tables in foundation .mdx docs render as raw
+        // pipe text. Register remark-gfm so tables/strikethrough/task-lists
+        // parse. remark-gfm is already a direct dependency.
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
     "@storybook/addon-designs",
     "@storybook/addon-a11y",
     "@storybook/addon-mcp",
@@ -180,10 +194,49 @@ const config: StorybookConfig = {
       "@gsap/react",
       "gsap",
       "@phosphor-icons/react",
+      // The JSX runtime is injected by the esbuild/SWC transform, not written as
+      // an import, so optimizeDeps.entries scanning never sees it — pin it so it
+      // is pre-bundled at boot instead of discovered (and reloaded) on first
+      // story render. Both variants: jsx-dev-runtime for Storybook dev
+      // (esbuild.jsxDev = true), jsx-runtime for the Vitest path below.
+      "react/jsx-dev-runtime",
+      "react/jsx-runtime",
     ];
+
+    // Storybook serves stories as lazy dynamic imports, so Vite's dependency
+    // scanner — which only crawls the entries it knows at boot — never sees
+    // story-only deps (Radix primitives, react-icons/si, lucide-react, leaflet,
+    // prismjs, …). They get discovered on first story view, which forces a
+    // re-optimize + full preview reload; any story import in flight during that
+    // reload rejects with "Failed to fetch dynamically imported module", which
+    // surfaces as *every* story failing during the cold-cache window.
+    //
+    // Pointing optimizeDeps.entries at preview.tsx + the story globs makes the
+    // scanner crawl the whole story graph at boot, so the entire dep set is
+    // pre-bundled in a single pass and no mid-session re-optimize/reload occurs.
+    // preview.tsx is listed first so deps Vite already scanned from the preview
+    // graph stay covered when `entries` overrides Vite's default entry crawl.
+    const optimizeEntries = [
+      ".storybook/preview.tsx",
+      "nextjs-app/shared/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+      "nextjs-app/shared/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+      "nextjs-app/shared/patterns/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+      "nextjs-app/shared/templates/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+      "nextjs-app/shared/foundations/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    ].map((entry) => resolve(rootPath, entry));
+
+    const existingEntries = config.optimizeDeps?.entries;
+    const normalizedExistingEntries = Array.isArray(existingEntries)
+      ? existingEntries
+      : existingEntries
+        ? [existingEntries]
+        : [];
 
     config.optimizeDeps = {
       ...(config.optimizeDeps || {}),
+      entries: Array.from(
+        new Set([...normalizedExistingEntries, ...optimizeEntries]),
+      ),
       exclude: Array.from(
         new Set([
           ...(config.optimizeDeps?.exclude || []),

@@ -139,7 +139,7 @@ export const Default: Story = {
       },
     ],
     overview: (
-      <Text size="S">
+      <Text size="s">
         <strong>The city of Helsinki</strong> offers hundreds of disparate
         digital services, from daycare applications to cultural services.
         Without a unified design system, each service risked looking and
@@ -213,7 +213,7 @@ export const DesignOnlyProject: Story = {
       },
     ],
     overview: (
-      <Text size="S">
+      <Text size="s">
         Created a comprehensive brand identity system including logo, color
         palette, typography guidelines, and UI component library for a
         sustainable fashion startup.
@@ -300,7 +300,7 @@ export const WideLayout: Story = {
       { key: "github", icon: <SiGithub size={24} />, ariaLabel: "GitHub" },
     ],
     overview: (
-      <Text size="S">
+      <Text size="s">
         Led a comprehensive redesign of an enterprise SaaS platform serving
         50,000+ users. The project involved extensive user research, information
         architecture restructuring, and implementation of a new design system.
@@ -344,19 +344,19 @@ export const RichOverview: Story = {
     ],
     overview: (
       <>
-        <Text size="S">
+        <Text size="s">
           <strong>The Challenge:</strong> A growing e-commerce platform needed
           to scale its design language across web, mobile, and native apps while
           maintaining consistency and accessibility standards.
         </Text>
         <br />
-        <Text size="S">
+        <Text size="s">
           <strong>Our Approach:</strong> We conducted a comprehensive audit of
           existing patterns, interviewed stakeholders across product teams, and
           built a modular design system with reusable components.
         </Text>
         <br />
-        <Text size="S">
+        <Text size="s">
           <strong>The Result:</strong> Reduced design-to-development time by
           50%, improved cross-platform consistency, and achieved WCAG AAA
           compliance for core user flows.

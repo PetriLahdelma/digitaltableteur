@@ -34,7 +34,7 @@ describe("Switch Accessibility", () => {
 
     it("has no violations when checked", async () => {
       const { container } = render(
-        <Switch label="Enable notifications" isChecked />
+        <Switch label="Enable notifications" checked />
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -42,7 +42,7 @@ describe("Switch Accessibility", () => {
 
     it("has no violations when disabled", async () => {
       const { container } = render(
-        <Switch label="Enable notifications" isDisabled />
+        <Switch label="Enable notifications" disabled />
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -50,7 +50,7 @@ describe("Switch Accessibility", () => {
 
     it("has no violations when loading", async () => {
       const { container } = render(
-        <Switch label="Enable notifications" isLoading />
+        <Switch label="Enable notifications" loading />
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -112,7 +112,7 @@ describe("Switch Accessibility", () => {
       render(
         <Switch
           label="Enable notifications"
-          isChecked
+          checked
           onCheckedChange={onCheckedChange}
         />
       );
@@ -129,7 +129,7 @@ describe("Switch Accessibility", () => {
       render(
         <Switch
           label="Enable notifications"
-          isDisabled
+          disabled
           onCheckedChange={onCheckedChange}
         />
       );
@@ -154,12 +154,12 @@ describe("Switch Accessibility", () => {
     });
 
     it("has aria-checked=false when unchecked", () => {
-      render(<Switch label="Enable notifications" isChecked={false} />);
+      render(<Switch label="Enable notifications" checked={false} />);
       expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "false");
     });
 
     it("has aria-checked=true when checked", () => {
-      render(<Switch label="Enable notifications" isChecked />);
+      render(<Switch label="Enable notifications" checked />);
       expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true");
     });
 
@@ -175,12 +175,12 @@ describe("Switch Accessibility", () => {
     });
 
     it("indicates loading state with aria-busy", () => {
-      render(<Switch label="Enable notifications" isLoading />);
+      render(<Switch label="Enable notifications" loading />);
       expect(screen.getByRole("switch")).toHaveAttribute("aria-busy", "true");
     });
 
     it("indicates disabled state", () => {
-      render(<Switch label="Enable notifications" isDisabled />);
+      render(<Switch label="Enable notifications" disabled />);
       expect(screen.getByRole("switch")).toBeDisabled();
     });
   });

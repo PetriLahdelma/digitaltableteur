@@ -41,15 +41,15 @@ describe("Link", () => {
   });
 
   it("renders with different sizes", () => {
-    const { rerender } = render(<Link size="S">Small Link</Link>);
+    const { rerender } = render(<Link size="sm">Small Link</Link>);
     // Check for CSS module classes that include the size
-    expect(screen.getByRole("link").className).toContain("linkS");
+    expect(screen.getByRole("link").className).toContain("linkSm");
 
-    rerender(<Link size="M">Medium Link</Link>);
-    expect(screen.getByRole("link").className).toContain("linkM");
+    rerender(<Link size="md">Medium Link</Link>);
+    expect(screen.getByRole("link").className).toContain("linkMd");
 
-    rerender(<Link size="L">Large Link</Link>);
-    expect(screen.getByRole("link").className).toContain("linkL");
+    rerender(<Link size="lg">Large Link</Link>);
+    expect(screen.getByRole("link").className).toContain("linkLg");
   });
 
   it("passes through additional props", () => {

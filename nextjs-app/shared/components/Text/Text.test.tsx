@@ -40,4 +40,10 @@ describe("Text", () => {
       expect(container.firstChild).toHaveClass(styles[expectedClass]);
     });
   });
+
+  it("forwards ref to the rendered element", () => {
+    const ref = React.createRef<HTMLElement>();
+    render(<Text ref={ref}>Text</Text>);
+    expect(ref.current?.tagName).toBe("P");
+  });
 });

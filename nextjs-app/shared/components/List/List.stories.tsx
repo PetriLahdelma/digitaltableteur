@@ -131,9 +131,9 @@ const meta: Meta<typeof List> = {
 
     size: {
       control: { type: "select" },
-      options: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
+      options: ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
       description: "Text size variant",
-      table: { defaultValue: { summary: "S" } },
+      table: { defaultValue: { summary: "s" } },
     },
 
     terminals: {
@@ -233,31 +233,31 @@ export const DifferentSizes: StoryFn = () => {
     <div style={{ display: "grid", gap: "2rem" }}>
       <div>
         <p style={{ marginBottom: "0.5rem", fontWeight: "600" }}>XXS</p>
-        <List items={items} size="XXS" />
+        <List items={items} size="xxs" />
       </div>
       <div>
         <p style={{ marginBottom: "0.5rem", fontWeight: "600" }}>XS</p>
-        <List items={items} size="XS" />
+        <List items={items} size="xs" />
       </div>
       <div>
         <p style={{ marginBottom: "0.5rem", fontWeight: "600" }}>S</p>
-        <List items={items} size="S" />
+        <List items={items} size="s" />
       </div>
       <div>
         <p style={{ marginBottom: "0.5rem", fontWeight: "600" }}>M (Default)</p>
-        <List items={items} size="M" />
+        <List items={items} size="m" />
       </div>
       <div>
         <p style={{ marginBottom: "0.5rem", fontWeight: "600" }}>L</p>
-        <List items={items} size="L" />
+        <List items={items} size="l" />
       </div>
       <div>
         <p style={{ marginBottom: "0.5rem", fontWeight: "600" }}>XL</p>
-        <List items={items} size="XL" />
+        <List items={items} size="xl" />
       </div>
       <div>
         <p style={{ marginBottom: "0.5rem", fontWeight: "600" }}>XXL</p>
-        <List items={items} size="XXL" />
+        <List items={items} size="xxl" />
       </div>
     </div>
   );

@@ -84,7 +84,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
     return (
       <Button
         type="button"
-        isRounded
+        rounded
         className={styles.toggle}
         ref={ref}
         data-open={isOpen}
@@ -113,7 +113,7 @@ const ChatToggle = React.forwardRef<HTMLButtonElement, ChatToggleProps>(
         aria-controls={controlsId}
         aria-label={ariaLabel}
         variant="primary"
-        size="m"
+        size="md"
       >
         <span className={styles.toggleLabel}>{toggleLabel}</span>
       </Button>

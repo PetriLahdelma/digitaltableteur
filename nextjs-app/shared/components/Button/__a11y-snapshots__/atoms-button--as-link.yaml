@@ -1,13 +1,6 @@
-- status: Work in progress (beta)
-- link "Internal Link":
+- link "Internal link":
   - /url: /about
-- link "External Link":
+- link "External link":
   - /url: https://example.com
-- link "arrow-right Link with Icon":
+- link "Link with icon":
   - /url: /contact
-  - img "arrow-right"
-  - text: Link with Icon
-- link "Disabled Link" [disabled]:
-  - /url: /disabled
-- link "Rounded Link":
-  - /url: /rounded

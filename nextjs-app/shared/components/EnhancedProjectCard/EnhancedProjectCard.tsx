@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "../../../../lib/utils";
+import styles from "./EnhancedProjectCard.module.css";
 
 export interface EnhancedProjectCardProps {
   /** Project title */
@@ -36,10 +37,10 @@ const aspectRatioClasses: Record<
   NonNullable<EnhancedProjectCardProps["aspectRatio"]>,
   string
 > = {
-  square: "aspect-square",
-  video: "aspect-video",
-  portrait: "aspect-[3/4]",
-  landscape: "aspect-[4/3]",
+  square: styles.square,
+  video: styles.video,
+  portrait: styles.portrait,
+  landscape: styles.landscape,
 };
 
 /**
@@ -109,10 +110,11 @@ export function EnhancedProjectCard({
   return (
     <Link
       href={`/work/${slug}`}
-      className={cn("group block", className)}
+      className={cn(styles.card, className)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       aria-describedby={description ? descriptionId : undefined}
+      data-enhanced-project-card=""
       data-donny-interest="portfolio-project"
     >
       {/* Screen reader accessible description */}
@@ -127,18 +129,14 @@ export function EnhancedProjectCard({
       {/* Media Container - Clean, no overlays */}
       <div
         className={cn(
-          "relative overflow-hidden rounded-lg",
-          "transition-all duration-300 ease-out",
-          // Subtle hover: lift with shadow
-          "group-hover:shadow-lg group-hover:shadow-black/8",
-          // Focus states for keyboard navigation
-          "group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2",
-          aspectRatioClasses[aspectRatio]
+          styles.media,
+          aspectRatioClasses[aspectRatio],
         )}
+        data-project-card-media=""
       >
         {/* Skeleton loading state */}
         {!imageLoaded && !isVideoThumbnail && (
-          <div className="absolute inset-0 bg-muted animate-pulse" />
+          <div className={styles.skeleton} />
         )}
 
         {/* Video thumbnail */}
@@ -151,11 +149,8 @@ export function EnhancedProjectCard({
             playsInline
             autoPlay={autoPlayVideo && !prefersReducedMotion}
             aria-hidden="true"
-            className={cn(
-              "absolute inset-0 w-full h-full object-cover",
-              "transition-transform duration-500 ease-out",
-              "group-hover:scale-105"
-            )}
+            className={styles.asset}
+            data-project-card-asset=""
           />
         ) : (
           /* Static image thumbnail */
@@ -164,11 +159,10 @@ export function EnhancedProjectCard({
             alt="" // Decorative - full description in sr-only span
             fill
             className={cn(
-              "object-cover",
-              "transition-all duration-500 ease-out",
-              "group-hover:scale-105",
-              !imageLoaded && "opacity-0"
+              styles.asset,
+              !imageLoaded && styles.assetLoading,
             )}
+            data-project-card-asset=""
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             onLoad={() => setImageLoaded(true)}
           />
@@ -176,66 +170,31 @@ export function EnhancedProjectCard({
       </div>
 
       {/* Caption Area - External, below image */}
-      <div className="mt-4 space-y-1">
+      <div className={styles.caption}>
         {/* Category label */}
         {showCategory && category && (
-          <span
-            className={cn(
-              "block text-[11px] font-body uppercase tracking-wider",
-              "text-muted-foreground"
-            )}
-          >
+          <span className={styles.category}>
             {category}
           </span>
         )}
 
         {/* Title */}
-        <h3
-          className={cn(
-            "font-display font-semibold text-foreground",
-            "text-base tablet:text-lg",
-            "leading-tight"
-          )}
-        >
+        <h3 className={styles.title}>
           {title}
         </h3>
 
         {/* Description - visible on hover for desktop, always for mobile */}
         {showDescription && description && (
-          <p
-            className={cn(
-              "font-body text-sm text-muted-foreground",
-              "line-clamp-2",
-              "leading-relaxed",
-              // Subtle reveal on hover
-              "opacity-70 group-hover:opacity-100",
-              "transition-opacity duration-300"
-            )}
-          >
+          <p className={styles.description}>
             {description}
           </p>
         )}
 
         {/* Tags */}
         {tags && tags.length > 0 && (
-          <div
-            className={cn(
-              "flex flex-wrap gap-1.5 pt-2",
-              // Fade in on hover
-              "opacity-0 group-hover:opacity-100",
-              "group-focus-visible:opacity-100",
-              "transition-opacity duration-300"
-            )}
-          >
+          <div className={styles.tags} data-project-card-tags="">
             {tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className={cn(
-                  "text-xs font-body",
-                  "text-foreground/80",
-                  "bg-foreground/8 px-2.5 py-1 rounded-full"
-                )}
-              >
+              <span key={tag} className={styles.tag}>
                 {tag}
               </span>
             ))}

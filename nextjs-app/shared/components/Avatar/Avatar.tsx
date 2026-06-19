@@ -414,7 +414,7 @@ const Avatar = React.forwardRef<HTMLButtonElement, AvatarProps>(
                 )}
                 <Text
                   as="span"
-                  size="S"
+                  size="s"
                   terminals="sans"
                   className={styles.avatarMenuText}
                 >

@@ -9,7 +9,7 @@ import * as Stories from './Toast.stories.tsx';
 
 Transient notification that surfaces, announces, and auto-dismisses.
 Toast is the right primitive for "confirmation after action" — settings
-saved, message sent, copied to clipboard. Four severity levels match
+saved, message sent, copied to clipboard. Four tone levels match
 AlertBanner (`info` / `success` / `warning` / `error`); six positions
 cover the corners and top / bottom centre.
 
@@ -43,8 +43,8 @@ import { useToast } from '@/providers/ToastProvider';
 
 // Direct (rare — the provider does this for you)
 <Toast
-  isOpen
-  severity="success"
+  open
+  tone="success"
   message="Settings saved"
   position="bottom-center"
   duration={3000}
@@ -59,9 +59,9 @@ showToast(t('contactSubmitSuccess'), 4000);
 Required consumer wiring: mount `<ToastProvider>` at the app shell
 (already done in `app/layout.tsx`). Consumers then use the hook.
 
-Theme & forced-colors notes: severity styling uses
-`--color-<severity>-surface` for the toast surface and
-`--color-<severity>-text` for the message. Forced-colors collapses to
+Theme & forced-colors notes: tone styling uses
+`--color-<tone>-surface` for the toast surface and
+`--color-<tone>-text` for the message. Forced-colors collapses to
 the system palette and keeps the leading icon (filled Phosphor glyph)
 as the sole signal.
 
@@ -82,15 +82,15 @@ as the sole signal.
 
 ## Accessibility
 
-- **Roles:** `role="status"` for `info` / `success`; `role="alert"` is
-  derived implicitly via `aria-live="assertive"` for `warning` /
+- **Roles:** `role="status"` with `aria-live="polite"` for `info` /
+  `success`; `role="alert"` with `aria-live="assertive"` for `warning` /
   `error`. `aria-atomic="true"` ensures the full message is read on
   every announcement, not just the diff.
 - **Live region:** the toast root inside `ToastProvider` is a single
   shared live region; rendering an empty message string between
   announcements gives the AT a beat to reset.
 - **Auto-dismiss:** the `duration` prop (default 3000 ms) starts a
-  `setTimeout` on mount; on unmount or `isOpen=false` the timer is
+  `setTimeout` on mount; on unmount or `open=false` the timer is
   cleared. The user cannot pause auto-dismiss — for long-form
   messages, use **AlertBanner** instead.
 - **Reduced motion:** the slide-in animation is suppressed under
@@ -100,7 +100,7 @@ as the sole signal.
 
 ## Promotion notes
 
-- Stable promotion blockers: AT-tree snapshots for each severity,
+- Stable promotion blockers: AT-tree snapshots for each tone,
   forced-colors run, and a documented production consumer (the
   ToastProvider is the canonical consumer; the contact form is the
   shipping use).

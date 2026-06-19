@@ -35,7 +35,7 @@ describe("Checkbox Accessibility", () => {
 
     it("has no violations when checked", async () => {
       const { container } = render(
-        <Checkbox id="terms" label="I agree to terms" isChecked />
+        <Checkbox id="terms" label="I agree to terms" checked />
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -43,7 +43,7 @@ describe("Checkbox Accessibility", () => {
 
     it("has no violations when disabled", async () => {
       const { container } = render(
-        <Checkbox id="terms" label="I agree to terms" isDisabled />
+        <Checkbox id="terms" label="I agree to terms" disabled />
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -51,7 +51,7 @@ describe("Checkbox Accessibility", () => {
 
     it("has no violations in indeterminate state", async () => {
       const { container } = render(
-        <Checkbox id="selectAll" label="Select all" isIndeterminate />
+        <Checkbox id="selectAll" label="Select all" indeterminate />
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -97,7 +97,7 @@ describe("Checkbox Accessibility", () => {
         <Checkbox
           id="terms"
           label="I agree"
-          isChecked
+          checked
           onCheckedChange={onCheckedChange}
         />
       );
@@ -117,7 +117,7 @@ describe("Checkbox Accessibility", () => {
           <Checkbox
             id="terms"
             label="I agree"
-            isDisabled
+            disabled
             onCheckedChange={onCheckedChange}
           />
           <button>After</button>
@@ -150,17 +150,17 @@ describe("Checkbox Accessibility", () => {
     });
 
     it("indicates checked state", () => {
-      render(<Checkbox id="terms" label="I agree" isChecked />);
+      render(<Checkbox id="terms" label="I agree" checked />);
       expect(screen.getByRole("checkbox")).toBeChecked();
     });
 
     it("indicates unchecked state", () => {
-      render(<Checkbox id="terms" label="I agree" isChecked={false} />);
+      render(<Checkbox id="terms" label="I agree" checked={false} />);
       expect(screen.getByRole("checkbox")).not.toBeChecked();
     });
 
     it("indicates disabled state", () => {
-      render(<Checkbox id="terms" label="I agree" isDisabled />);
+      render(<Checkbox id="terms" label="I agree" disabled />);
       expect(screen.getByRole("checkbox")).toBeDisabled();
     });
   });
@@ -172,7 +172,7 @@ describe("Checkbox Accessibility", () => {
    */
   describe("indeterminate state", () => {
     it("native indeterminate property is set", () => {
-      render(<Checkbox id="selectAll" label="Select all" isIndeterminate />);
+      render(<Checkbox id="selectAll" label="Select all" indeterminate />);
       const checkbox = screen.getByRole("checkbox") as HTMLInputElement;
       expect(checkbox.indeterminate).toBe(true);
     });
@@ -184,7 +184,7 @@ describe("Checkbox Accessibility", () => {
         <Checkbox
           id="selectAll"
           label="Select all"
-          isIndeterminate
+          indeterminate
           onCheckedChange={onCheckedChange}
         />
       );

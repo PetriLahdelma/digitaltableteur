@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - img "github-logo"
 - heading "Tabbed Interface" [level=3]
 - tablist "Navigate between tabs":
@@ -6,4 +5,5 @@
   - tab "Details"
   - tab "Specifications"
   - tab "Disabled" [disabled]
-- paragraph: This is the overview tab with general information.
+- tabpanel "Overview":
+  - paragraph: This is the overview tab with general information.

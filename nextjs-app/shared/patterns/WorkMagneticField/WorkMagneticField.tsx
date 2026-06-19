@@ -211,7 +211,7 @@ export function WorkMagneticField({
     >
       <Container size="lg">
         {/* Section Header */}
-        <div className={styles.header}>
+        <header className={styles.header}>
           {title && (
             <h2
               id={`${id}-title`}
@@ -229,7 +229,7 @@ export function WorkMagneticField({
               <ChevronRight className={styles.viewAllIcon} aria-hidden="true" />
             </Link>
           )}
-        </div>
+        </header>
 
         {/* Magnetic Grid */}
         <div ref={gridRef} className={styles.grid} role="list">

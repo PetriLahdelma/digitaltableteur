@@ -1,6 +1,12 @@
 "use client";
 
-import { type ReactNode, useRef } from "react";
+import {
+  cloneElement,
+  isValidElement,
+  type ReactElement,
+  type ReactNode,
+  useRef,
+} from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
@@ -169,7 +175,18 @@ export function ProjectMetaSection({
                         title={tool.name}
                       >
                         <span className="sr-only">{tool.name}</span>
-                        {tool.icon}
+                        {isValidElement(tool.icon)
+                          ? cloneElement(
+                              tool.icon as ReactElement<{
+                                "aria-hidden"?: boolean;
+                                focusable?: boolean;
+                              }>,
+                              {
+                                "aria-hidden": true,
+                                focusable: false,
+                              },
+                            )
+                          : tool.icon}
                       </div>
                     ))}
                   </div>

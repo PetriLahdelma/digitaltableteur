@@ -1,5 +1,4 @@
-- status: Work in progress (beta)
-- link "View portfolio project details":
+- link "arrow-square-out Portfolio Project This entire card functions as a clickable link while maintaining semantic structure. External link":
   - /url: https://example.com
   - img "arrow-square-out"
   - heading "Portfolio Project" [level=3]

@@ -81,14 +81,14 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         overview={
           <>
-            <Text size="S">
+            <Text size="s">
               <span style={{ fontWeight: 600 }}>SAP Build Apps</span> is SAP&apos;s
               flagship low-code platform, evolved from AppGyver following its 2021
               acquisition. It enables business users and developers to create
               enterprise-grade applications with drag-and-drop UI, 400+ formula
               functions, and deep SAP BTP integration.
             </Text>
-            <Text size="S">
+            <Text size="s">
               <span style={{ fontWeight: 600 }}>The challenge:</span> Create a
               unified design language that bridges the gap between design and
               development, enabling seamless handoff and consistent implementation
@@ -150,14 +150,14 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="The Challenge"
         title="Scaling Design Consistency"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>Serving 300+ developers and designers</span>{" "}
             working across multiple teams and time zones, maintaining visual
             consistency was becoming increasingly difficult. Components were
             being recreated with slight variations, leading to fragmented user
             experiences across a platform serving enterprise customers globally.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             The existing design files were scattered and lacked clear
             documentation, making onboarding new team members a time-consuming
             process. As enterprise adoption of low-code platforms accelerated,
@@ -174,7 +174,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Approach"
         title="Centralized Component Lifecycle"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               We established the Design System Guild
             </span>
@@ -182,7 +182,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             the design system. This included designers, developers, and product
             managers who met bi-weekly to review proposals and prioritize work.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             Every component followed a defined lifecycle: from initial proposal
             through design exploration, development implementation,
             documentation, and finally release with proper versioning.
@@ -206,7 +206,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Foundation"
         title="Design Tokens & Visual Language"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               The foundation of the system was built on design tokens
             </span>{" "}
@@ -215,7 +215,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             consumed by both Figma and ReactTS, ensuring seamless integration
             with SAP BTP and compatibility with SAP&apos;s enterprise ecosystem.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             The SAP Horizon theme provided the base color system, with semantic
             tokens for consistent theming across light and dark modes. Typography
             followed a modular scale optimized for enterprise applications.
@@ -261,7 +261,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Components"
         title="Building the Library"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               Core components were designed with accessibility-first principles.
             </span>{" "}
@@ -269,7 +269,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             documentation of behavior patterns, all WCAG 2.1 AA compliant with
             keyboard navigation and screen reader support.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             The button system alone covered primary, secondary, ghost, and
             destructive variants, each with hover, active, focus, and disabled
             states across multiple sizes. The library grew to 100+ components
@@ -316,7 +316,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Data Components"
         title="Tables & Data Visualization"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               I led the design and specification of a comprehensive table component
             </span>{" "}
@@ -326,7 +326,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             support, built for seamless integration with SAP data sources including
             S/4HANA and OData services.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             <span style={{ fontWeight: 600 }}>
               Data visualization components for analytics dashboards
             </span>{" "}
@@ -362,7 +362,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Enterprise Ready"
         title="SAP BTP Integration"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               Deployment on SAP Business Technology Platform (BTP)
             </span>{" "}
@@ -371,7 +371,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             SuccessFactors, and third-party systems via REST and OData, supporting
             real-time data flows common in low-code applications.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             Each component was built to handle large datasets while maintaining
             performance and accessibility, ensuring consistent user experiences
             across the diverse applications built with SAP Build Apps.
@@ -395,8 +395,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">100+ Components</Text>
-                <Text size="S">
+                <Text size="l">100+ Components</Text>
+                <Text size="s">
                   Comprehensive library covering form controls, data display,
                   navigation, feedback, and layout patterns.
                 </Text>
@@ -408,8 +408,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">300+ Served</Text>
-                <Text size="S">
+                <Text size="l">300+ Served</Text>
+                <Text size="s">
                   Design system serving 300+ developers and designers building
                   enterprise applications worldwide.
                 </Text>
@@ -421,8 +421,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">Design-to-Code Parity</Text>
-                <Text size="S">
+                <Text size="l">Design-to-Code Parity</Text>
+                <Text size="s">
                   1:1 mapping between Figma components and ReactTS
                   implementations with shared tokens.
                 </Text>
@@ -434,8 +434,8 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">Accessibility First</Text>
-                <Text size="S">
+                <Text size="l">Accessibility First</Text>
+                <Text size="s">
                   WCAG 2.1 AA compliant components with keyboard navigation and
                   screen reader support.
                 </Text>
@@ -449,7 +449,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Results"
         title="Impact & Outcomes"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               Over nearly four years, the design system transformed how the team
               builds UI
@@ -459,7 +459,7 @@ export function SapBuildAppsPage({ nav }: { nav?: React.ReactNode }) {
             through 1:1 Figma-to-code parity and comprehensive Storybook
             documentation.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             The unified system continues to evolve with SAP Build Apps. The
             design system serves as the foundation for the platform&apos;s UI,
             maintained through a structured component lifecycle and regular

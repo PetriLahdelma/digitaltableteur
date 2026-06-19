@@ -48,13 +48,13 @@ export const ProofBlock: React.FC<ProofBlockProps> = ({
               {title}
             </Title>
             {subTitle && (
-              <Text size="M" terminals="sans" className={styles.metricsSubtitle}>
+              <Text size="m" terminals="sans" className={styles.metricsSubtitle}>
                 {subTitle}
               </Text>
             )}
           </div>
           {caption && (
-            <Text size="S" terminals="sans" className={styles.metricsCaption}>
+            <Text size="s" terminals="sans" className={styles.metricsCaption}>
               {caption}
             </Text>
           )}
@@ -68,11 +68,11 @@ export const ProofBlock: React.FC<ProofBlockProps> = ({
               <Title level={3} unstyled className={styles.metricValue}>
                 {metric.value}
               </Title>
-              <Text size="S" className={styles.metricLabel}>
+              <Text size="s" className={styles.metricLabel}>
                 {metric.label}
               </Text>
               {metric.detail && (
-                <Text size="S" className={styles.metricDetail}>
+                <Text size="s" className={styles.metricDetail}>
                   {metric.detail}
                 </Text>
               )}

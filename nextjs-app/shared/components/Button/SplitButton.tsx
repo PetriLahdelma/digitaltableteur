@@ -36,7 +36,7 @@ export type SplitButtonOption =
 export interface SplitButtonProps
   extends Pick<
     ButtonProps,
-    "variant" | "size" | "inverse" | "rounded" | "tooltip" | "accessibleName"
+    "variant" | "size" | "surface" | "rounded" | "tooltip" | "accessibleName"
   > {
   /** Main label rendered on the primary segment */
   label: React.ReactNode;
@@ -70,8 +70,8 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
       onPrimaryClick,
       options,
       variant = "primary",
-      size = "m",
-      inverse = false,
+      size = "md",
+      surface = "default",
       rounded = false,
       tooltip,
       accessibleName,
@@ -443,12 +443,12 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
         <Button
           variant={variant}
           size={size}
-          inverse={inverse}
+          surface={surface}
           rounded={rounded}
           tooltip={tooltip}
           accessibleName={accessibleName}
           onClick={onPrimaryClick}
-          isDisabled={disabled}
+          disabled={disabled}
           className={[
             buttonStyles.splitMain,
             isTertiary ? buttonStyles.splitTertiaryMain : "",
@@ -462,7 +462,7 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
         <Button
           variant={variant}
           size={size}
-          inverse={inverse}
+          surface={surface}
           rounded={rounded}
           aria-label={defaultToggleLabel}
           aria-haspopup="menu"
@@ -494,7 +494,7 @@ const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>(
               });
             }
           }}
-          isDisabled={disabled || !hasOptions}
+          disabled={disabled || !hasOptions}
           className={[
             buttonStyles.splitToggle,
             isTertiary ? buttonStyles.splitTertiaryToggle : "",

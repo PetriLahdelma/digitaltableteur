@@ -28,17 +28,17 @@ export function PseoClusterBadges({
   return (
     <div className={className} aria-label="Explore this cluster">
       <Link href={serviceHref} className={linkClassName}>
-        <Badge design="secondary" state="neutral" removable={false} size="m">
+        <Badge variant="secondary" tone="neutral" removable={false} size="md">
           <span>Service: {serviceName}</span>
         </Badge>
       </Link>
       <Link href={stackHref} className={linkClassName}>
-        <Badge design="secondary" state="neutral" removable={false} size="m">
+        <Badge variant="secondary" tone="neutral" removable={false} size="md">
           <span>Stack: {stackName}</span>
         </Badge>
       </Link>
       <Link href={audienceHref} className={linkClassName}>
-        <Badge design="secondary" state="neutral" removable={false} size="m">
+        <Badge variant="secondary" tone="neutral" removable={false} size="md">
           <span>Audience: {audienceName}</span>
         </Badge>
       </Link>

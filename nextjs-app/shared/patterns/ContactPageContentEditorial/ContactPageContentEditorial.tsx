@@ -238,7 +238,7 @@ export function ContactPageContentEditorial({
               <div className={styles.newBusinessContent}>
                 <Title
                   level={2}
-                  size="M"
+                  size="m"
                   terminals="sans"
                   lineHeight="tight"
                   className={styles.newBusinessHeading}
@@ -252,7 +252,7 @@ export function ContactPageContentEditorial({
                     <div className={styles.newBusinessBody}>
                       <Text
                         as="p"
-                        size="M"
+                        size="m"
                         terminals="sans"
                         className={styles.newBusinessLine}
                       >
@@ -260,7 +260,7 @@ export function ContactPageContentEditorial({
                       </Text>
                       <Text
                         as="p"
-                        size="S"
+                        size="s"
                         terminals="sans"
                         lineHeight="normal"
                         className={styles.newBusinessLineMuted}
@@ -301,7 +301,7 @@ export function ContactPageContentEditorial({
             >
               <Text
                 as="p"
-                size="L"
+                size="l"
                 lineHeight="relaxed"
                 terminals="serif"
                 className={styles.pullQuoteText}

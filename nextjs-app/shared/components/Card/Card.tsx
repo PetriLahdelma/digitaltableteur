@@ -31,7 +31,7 @@ export interface CardProps {
   /** Title configuration options */
   titleProps?: {
     level?: 1 | 2 | 3 | 4 | 5 | 6;
-    size?: "S" | "M" | "L" | "XL";
+    size?: "s" | "m" | "l" | "xl";
     terminals?: "sans" | "serif";
     as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     className?: string;
@@ -40,7 +40,7 @@ export interface CardProps {
   subTitle?: string;
   /** Subtitle configuration options */
   subTitleProps?: {
-    size?: "S" | "M" | "L";
+    size?: "s" | "m" | "l";
     as?: "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     className?: string;
   };
@@ -48,13 +48,13 @@ export interface CardProps {
   description?: string;
   /** Description configuration options */
   descriptionProps?: {
-    size?: "S" | "M" | "L";
+    size?: "s" | "m" | "l";
     as?: "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     className?: string;
   };
   /** Body text configuration options */
   bodyProps?: {
-    size?: "S" | "M" | "L";
+    size?: "s" | "m" | "l";
     as?: "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
     className?: string;
   };
@@ -70,8 +70,8 @@ export interface CardProps {
   hoverable?: boolean;
   /** Toggle card border */
   bordered?: boolean;
-  /** Card padding size */
-  size?: "S" | "M" | "L" | "full";
+  /** Card padding size. @default "md" */
+  size?: "sm" | "md" | "lg" | "full";
   /** Card presentation variant */
   variant?: "elevated" | "filled" | "outlined";
   /** Tab navigation within card */
@@ -98,17 +98,17 @@ export interface CardProps {
   badge?: React.ReactNode;
   /** Badge configuration options */
   badgeProps?: {
-    design?: "primary" | "secondary";
-    state?: "success" | "info" | "error" | "warning" | "neutral";
-    size?: "s" | "m" | "l";
+    variant?: "primary" | "secondary";
+    tone?: "neutral" | "error" | "warning" | "success" | "info";
+    size?: "sm" | "md" | "lg";
     position?: "start" | "end";
   };
   /** Status/error message displayed below header */
   statusMessage?: string;
   /** Status message configuration */
   statusMessageProps?: {
-    state?: "success" | "info" | "error" | "warning";
-    size?: "S" | "M" | "L";
+    tone?: "success" | "info" | "error" | "warning";
+    size?: "s" | "m" | "l";
     className?: string;
   };
   /** Accessible label for link cards */
@@ -130,7 +130,7 @@ export interface CardProps {
 }
 
 /** Composable surface for grouped content with header, body, media, and actions. */
-const Card: React.FC<CardProps> = ({
+const Card = React.forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>(function Card({
   title,
   titleProps = {},
   subTitle,
@@ -144,7 +144,7 @@ const Card: React.FC<CardProps> = ({
   loading = false,
   hoverable = false,
   bordered = true,
-  size = "M",
+  size = "md",
   variant = "outlined",
   tabs,
   activeTabKey,
@@ -166,7 +166,7 @@ const Card: React.FC<CardProps> = ({
   headStyle,
   footer,
   children,
-}) => {
+}, ref) {
   const { t } = useTranslation();
 
   // Tab state (uncontrolled fallback)
@@ -177,6 +177,9 @@ const Card: React.FC<CardProps> = ({
     if (!activeTabKey) setInternalTab(key);
     onTabChange?.(key);
   };
+
+  // Card owns sm|md|lg|full; nested controls (Tabs, action Buttons) take sm|md|lg.
+  const controlSize = size === "full" ? "md" : size;
 
   // Convert CardTab[] to TabItem[] for Tabs component
   const tabItems: TabItem[] | undefined = tabs?.map((tab) => ({
@@ -191,7 +194,7 @@ const Card: React.FC<CardProps> = ({
       activeTab={effectiveActiveTab}
       onTabChange={handleTabClick}
       variant="underline"
-      size={size === "full" ? "M" : size}
+      size={controlSize}
       className={styles.cardTabs}
     />
   );
@@ -202,9 +205,9 @@ const Card: React.FC<CardProps> = ({
         <Button
           key={action.key}
           variant={action.variant || "secondary"}
-          isDisabled={action.disabled}
+          disabled={action.disabled}
           onClick={() => action.onClick?.(action.key)}
-          size={size === "L" ? "l" : size === "S" ? "s" : "m"}
+          size={controlSize}
         >
           {action.label}
         </Button>
@@ -212,14 +215,10 @@ const Card: React.FC<CardProps> = ({
     </div>
   );
 
-  // Map size API to CSS class names
-  const sizeClass =
-    size === "S" ? "s" : size === "M" ? "m" : size === "L" ? "l" : size;
-
   const stateClasses = [
     hoverable ? styles.hoverable : "",
     bordered ? styles.bordered : styles.unbordered,
-    styles[sizeClass],
+    styles[size],
     loading ? styles.loading : "",
     styles[variant],
   ].filter(Boolean);
@@ -235,8 +234,8 @@ const Card: React.FC<CardProps> = ({
     <div className={styles.badgeContainer}>
       {typeof badge === "string" || typeof badge === "number" ? (
         <Badge
-          design={badgeProps.design}
-          state={badgeProps.state}
+          variant={badgeProps.variant}
+          tone={badgeProps.tone}
           size={badgeProps.size}
         >
           {badge}
@@ -286,7 +285,7 @@ const Card: React.FC<CardProps> = ({
           {title && (
             <Title
               level={titleProps.level || 3}
-              size={titleProps.size || "M"}
+              size={titleProps.size || "m"}
               terminals={titleProps.terminals || "serif"}
               as={titleProps.as || "h3"}
               className={[styles.title, titleProps.className]
@@ -299,7 +298,7 @@ const Card: React.FC<CardProps> = ({
           {subTitle && (
             <Text
               as={subTitleProps.as || "span"}
-              size={subTitleProps.size || "S"}
+              size={subTitleProps.size || "s"}
               className={[styles.subTitle, subTitleProps.className]
                 .filter(Boolean)
                 .join(" ")}
@@ -309,7 +308,7 @@ const Card: React.FC<CardProps> = ({
           )}
           {description && (
             <Text
-              size={descriptionProps.size || "S"}
+              size={descriptionProps.size || "s"}
               as={descriptionProps.as || "p"}
               className={[styles.description, descriptionProps.className]
                 .filter(Boolean)
@@ -336,17 +335,17 @@ const Card: React.FC<CardProps> = ({
       <div
         className={[
           styles.statusText,
-          statusMessageProps.state &&
+          statusMessageProps.tone &&
             styles[
-              `status${statusMessageProps.state.charAt(0).toUpperCase() + statusMessageProps.state.slice(1)}`
+              `status${statusMessageProps.tone.charAt(0).toUpperCase() + statusMessageProps.tone.slice(1)}`
             ],
           statusMessageProps.className,
         ]
           .filter(Boolean)
           .join(" ")}
-        role={statusMessageProps.state === "error" ? "alert" : "status"}
+        role={statusMessageProps.tone === "error" ? "alert" : "status"}
       >
-        <Text size={statusMessageProps.size || "S"} as="span">
+        <Text size={statusMessageProps.size || "s"} as="span">
           {statusMessage}
         </Text>
       </div>
@@ -371,7 +370,7 @@ const Card: React.FC<CardProps> = ({
     >
       {body && (
         <Text
-          size={bodyProps.size || "M"}
+          size={bodyProps.size || "m"}
           as={bodyProps.as || "p"}
           className={[styles.bodyText, bodyProps.className]
             .filter(Boolean)
@@ -433,6 +432,7 @@ const Card: React.FC<CardProps> = ({
 
   return link ? (
     <Link
+      ref={ref as React.Ref<HTMLAnchorElement>}
       href={link}
       className={baseClasses}
       aria-label={linkAccessibleName}
@@ -442,6 +442,7 @@ const Card: React.FC<CardProps> = ({
     </Link>
   ) : (
     <div
+      ref={ref as React.Ref<HTMLDivElement>}
       className={baseClasses}
       tabIndex={isInteractive ? 0 : undefined}
       role={isInteractive ? "button" : undefined}
@@ -451,6 +452,8 @@ const Card: React.FC<CardProps> = ({
       {innerContent}
     </div>
   );
-};
+});
+
+Card.displayName = "Card";
 
 export default Card;

@@ -1,4 +1,1 @@
-- status: Work in progress (beta)
-- button "Right Icon arrow-right":
-  - text: Right Icon
-  - img "arrow-right"
+- button "Right Icon"

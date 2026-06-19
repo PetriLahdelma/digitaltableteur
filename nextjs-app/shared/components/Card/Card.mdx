@@ -12,7 +12,7 @@ Composable surface for grouped content. Card carries an optional header
 accepts either a `body` string or arbitrary `children`, an optional cover
 slot for media at the top, and a footer slot for actions. The component is
 intentionally large because it absorbs the variation work — variants
-(`elevated` / `filled` / `outlined`), sizes (`S` / `M` / `L` / `full`),
+(`elevated` / `filled` / `outlined`), sizes (`sm` / `md` / `lg` / `full`),
 hoverable, bordered, loading, interactive, and link-rendered forms — so
 that consumers don't fork it.
 
@@ -113,8 +113,8 @@ and `--color-border` for outlines. Hoverable mode bumps elevation via
 - **Headings:** the `title` renders as `Title level={titleProps.level ?? 3}`
   so the consumer controls heading rank. Don't ship a page with multiple
   card titles at `level=1` — pick the right rank for the document outline.
-- **Status messages:** `statusMessage` with `statusMessageProps.state="error"`
-  renders `role="alert"`; other states use `role="status"`. The polite /
+- **Status messages:** `statusMessage` with `statusMessageProps.tone="error"`
+  renders `role="alert"`; other tones use `role="status"`. The polite /
   assertive distinction follows the underlying ARIA contract.
 - **Loading:** the skeleton has `role="status"`, `aria-busy="true"`, and a
   translated `aria-label` from `t('card.loading')`. Screen readers

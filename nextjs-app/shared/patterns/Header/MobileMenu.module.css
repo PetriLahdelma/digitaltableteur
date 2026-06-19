@@ -6,7 +6,7 @@
   padding: var(--space-layout-24, 1.5rem);
   justify-content: flex-end;
   align-items: stretch;
-  background: color-mix(in srgb, var(--color-dark, #000) 70%, transparent);
+  background: color-mix(in srgb, var(--color-dark) 70%, transparent);
   pointer-events: auto;
 }
 
@@ -17,10 +17,10 @@
   width: min(22rem, 100%);
   flex-direction: column;
   border-radius: var(--radius-lg);
-  background: var(--main-body-background-color, #fff);
+  background: var(--main-body-background-color);
   box-shadow:
     0 1.5rem 3rem -0.5rem rgb(0 0 0 / 35%),
-    0 0 0 1px color-mix(in srgb, var(--color-border, #c0c0c0) 40%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--color-border) 40%, transparent);
 
   /* GSAP controls transform + opacity for open/close animation */
 }
@@ -33,7 +33,7 @@
   flex-direction: column;
   gap: var(--space-internal-24, 1.5rem);
   border-radius: var(--radius-lg);
-  background: var(--main-body-background-color, #fff);
+  background: var(--main-body-background-color);
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -46,7 +46,7 @@
 .panelContent nav {
   padding: var(--space-internal-24, 1.5rem) var(--space-internal-24, 1.5rem)
     var(--space-internal-32, 2rem);
-  background: var(--main-body-background-color, #fff);
+  background: var(--main-body-background-color);
 }
 
 /* Sticky header at top of scroll */
@@ -61,7 +61,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: var(--radius-lg);
-  background: var(--main-body-background-color, #fff);
+  background: var(--main-body-background-color);
   padding-bottom: var(--space-internal-8, 0.5rem);
 }
 
@@ -71,7 +71,7 @@
   position: sticky;
   bottom: 0;
   z-index: 2;
-  background: var(--main-body-background-color, #fff);
+  background: var(--main-body-background-color);
   margin-top: auto; /* push to bottom within flex column */
   padding-top: var(--space-internal-16, 1rem);
 }
@@ -109,7 +109,7 @@
   font-size: var(--font-size-title-s, 1.5rem);
   font-weight: var(--font-weight-title, 700);
   line-height: 1.1;
-  color: var(--primary-text-color, #041B23);
+  color: var(--primary-text-color);
 }
 
 .closeButton {
@@ -161,7 +161,7 @@
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--primary-text-color, #041B23);
+  color: var(--primary-text-color);
   transition:
     background-color 160ms ease,
     color 160ms ease;
@@ -193,7 +193,7 @@
 
 .footer {
   height: 18rem;
-  background: var(--main-body-background-color, #fff);
+  background: var(--main-body-background-color);
 }
 
 .footerLinks {
@@ -232,7 +232,7 @@
   padding-block: 1rem;
   width: fit-content;
   font-family: var(--primary-bold-font, sans-serif);
-  color: var(--secondary-text-color, #5e5e5e);
+  color: var(--secondary-text-color);
 }
 
 .languageList {
@@ -255,7 +255,7 @@
   font-size: var(--font-size-text-s, 0.875rem);
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--primary-text-color, #041B23);
+  color: var(--primary-text-color);
   cursor: pointer;
   transition:
     background-color 140ms ease,
@@ -294,7 +294,7 @@
   border: 2px solid var(--color-primary);
   background-color: transparent;
   font-size: 1.25rem;
-  color: var(--primary-text-color, #041B23);
+  color: var(--primary-text-color);
   cursor: pointer;
   transition:
     color 160ms ease,

@@ -389,7 +389,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
             <Text
               as="p"
               terminals="sans"
-              size="XS"
+              size="xs"
               className={styles["attachmentNotice"]}
             >
               {attachmentEmailNotice}
@@ -417,7 +417,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           <Text
             as="p"
             terminals="sans"
-            size="XS"
+            size="xs"
             className={styles["privacyPolicy"]}
           >
             *{t("contactPrivacyPolicy1")}{" "}
@@ -429,7 +429,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               type="button"
               variant="tertiary"
               onClick={handleClearForm}
-              isDisabled={isSubmitting}
+              disabled={isSubmitting}
             >
               {t("contactClear")}
             </Button>
@@ -439,7 +439,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
               variant="primary"
               loading={isSubmitting}
               loadingLabelKey="busyIndicator.loading"
-              isDisabled={isSubmitting || !isFormValid}
+              disabled={isSubmitting || !isFormValid}
             >
               {t("contactSubmit")}
             </AdaptiveLoadingButton>
@@ -448,7 +448,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       </form>
       <Toast
         message={t("contactSuccessMessage")}
-        isOpen={isToastOpen}
+        open={isToastOpen}
         duration={5000}
         onClose={() => setIsToastOpen(false)}
       />

@@ -63,7 +63,7 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
         ]}
         client={{ name: "Finnish Customs (Tulli)" }}
         overview={
-          <Text size="S">
+          <Text size="s">
             NettiAsiointiKanava defined the online service for Finnish Customs
             enterprise customers. The first phase focused on the general service
             framework and Intrastat statistical reporting for import and export
@@ -84,14 +84,14 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Service Definition"
         title="Enterprise Roles and Secure Access"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The service defines clear roles for enterprise users: individual
             users, reporters responsible for Intrastat reporting, and agents
             acting on behalf of companies. Login and role selection are critical
             entry points into the service, paired with language selection and
             an anonymous front page for first-time visitors.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Case tracking is anchored by the Ilmoitukset view, where recent
             declarations and actions are listed with filters, sorting, and
             status visibility.
@@ -115,13 +115,13 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Intrastat Workflow"
         title="From Declaration to Submission"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The Intrastat flow supports new declarations created manually, by
             copying previous entries, or by importing CSV and ASCII files. Users
             move through header data, line items, and summary steps before
             submitting reports to Customs.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             The workflow also includes correction requests, printing tools, and
             summary views that confirm successful submissions.
           </Text>,
@@ -152,7 +152,7 @@ export function TulliPage({ nav }: { nav?: React.ReactNode }) {
             type: "text",
             innerPadding: true,
             content: (
-              <Text size="S">
+              <Text size="s">
                 The Tulli styleguide defines the visual system: a blue and
                 yellow core palette, Gill Sans typography, and a 12-column grid
                 for large screens and tablets. The image line follows Customs

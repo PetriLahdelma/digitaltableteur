@@ -156,10 +156,10 @@ const ChatComposer = React.forwardRef<ChatComposerHandle, ChatComposerProps>(
                 type="submit"
                 className={styles.sendButton}
                 aria-label={resolvedSendLabel}
-                isDisabled={isSending || !(value ?? "").trim()}
+                disabled={isSending || !(value ?? "").trim()}
                 icon={<Icon name="paper-plane-tilt" size="sm" />}
                 variant="tertiary"
-                size="m"
+                size="md"
               >
                 {sendButtonText}
               </Button>

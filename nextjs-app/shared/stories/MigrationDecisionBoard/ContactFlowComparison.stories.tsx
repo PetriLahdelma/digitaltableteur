@@ -26,7 +26,7 @@ export const Editorial: Story = {
         <>
           Production path: ContactFormEditorial + ContactFormSuccessEditorial. Keep
           editorial module classes on @dt Button; use <code>submits</code> and{" "}
-          <code>isLoading</code> for submit.
+          <code>loading</code> for submit.
         </>
       }
     >
@@ -41,18 +41,18 @@ export const Editorial: Story = {
           variant="wrong"
           title="Wrong — @dt primary without editorial class (loses layout)"
         >
-          <DtButton variant="primary" isLoading>
+          <DtButton variant="primary" loading>
             Sending…
           </DtButton>
         </MigrationDecisionBlock>
         <MigrationDecisionBlock
           variant="proposed"
-          title="Proposed — @dt submits + isLoading + submitButton class"
+          title="Proposed — @dt submits + loading + submitButton class"
         >
           <DtButton
             submits
             variant="primary"
-            isLoading
+            loading
             className={editorialStyles.submitButton}
           >
             Sending…

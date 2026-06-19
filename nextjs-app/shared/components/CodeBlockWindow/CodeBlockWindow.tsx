@@ -264,13 +264,13 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
           <span className={`${styles.dot} ${styles.close}`} />
           <span className={`${styles.dot} ${styles.minimize}`} />
           <span className={`${styles.dot} ${styles.maximize}`} />
-          <Text as="span" size="XXS" className={styles.language}>
+          <Text as="span" size="xxs" className={styles.language}>
             {languageLabel}
           </Text>
         </div>
         <div className={styles.headerInfo}>
           {title ? (
-            <Text as="span" size="XS" className={styles.title}>
+            <Text as="span" size="xs" className={styles.title}>
               {title}
             </Text>
           ) : null}
@@ -278,10 +278,10 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
         <div className={styles.actions}>
           <Button
             variant="tertiary"
-            size="s"
+            size="sm"
             className={styles.copyButton}
             onClick={handleCopy}
-            isDisabled={!codeText}
+            disabled={!codeText}
             accessibleName={t("codeBlockWindow.copyAriaLabel")}
           >
             {copyLabel}
@@ -289,7 +289,7 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
           {statusMessage ? (
             <Text
               as="span"
-              size="XS"
+              size="xs"
               className={styles.status}
               role="status"
               aria-live="polite"
@@ -310,7 +310,7 @@ export const CodeBlockWindow: React.FC<CodeBlockWindowProps> = ({
       </div>
       {caption ? (
         <figcaption className={styles.caption}>
-          <Text as="span" size="XS">
+          <Text as="span" size="xs">
             {caption}
           </Text>
         </figcaption>

@@ -48,48 +48,48 @@
 
 .brandBackground {
   margin-block: 0;
-  background-color: var(--logo-background, #dfff00);
-  color: var(--logo-color, #000);
+  background-color: var(--logo-background);
+  color: var(--logo-color);
 }
 
 .brandPrimaryButton.brandPrimaryButton {
-  background-color: var(--logo-color, #000) !important;
+  background-color: var(--logo-color) !important;
   text-decoration: none !important;
-  color: var(--logo-background, #dfff00) !important;
+  color: var(--logo-background) !important;
   text-decoration-color: transparent !important;
 }
 
 .brandPrimaryButton.brandPrimaryButton:hover {
   background-color: color-mix(
     in srgb,
-    var(--logo-color, #000) 85%,
+    var(--logo-color) 85%,
     transparent
   ) !important;
   text-decoration: none !important;
-  color: var(--logo-background, #dfff00) !important;
+  color: var(--logo-background) !important;
 }
 
 .brandOutlineButton.brandOutlineButton {
-  border: 1px solid var(--logo-color, #000) !important;
+  border: 1px solid var(--logo-color) !important;
   background-color: transparent !important;
   text-decoration: none !important;
-  color: var(--logo-color, #000) !important;
+  color: var(--logo-color) !important;
   text-decoration-color: transparent !important;
 }
 
 .brandOutlineButton.brandOutlineButton:hover {
   background-color: color-mix(
     in srgb,
-    var(--logo-color, #000) 8%,
+    var(--logo-color) 8%,
     transparent
   ) !important;
   text-decoration: none !important;
-  color: var(--logo-color, #000) !important;
+  color: var(--logo-color) !important;
 }
 
 .brandDescription {
   /* Keep a hint of softness while staying >=4.5:1 in both light (#000 on
    * chartreuse) and dark (#fff on purple) brand themes. The previous 70%
    * mix fell to 3.43 on the dark `#812eff` background. */
-  color: color-mix(in srgb, var(--logo-color, #000) 90%, transparent);
+  color: color-mix(in srgb, var(--logo-color) 90%, transparent);
 }

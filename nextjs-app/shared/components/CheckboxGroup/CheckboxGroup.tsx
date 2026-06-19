@@ -106,8 +106,8 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
             if (!translated || translated === "contactAll") return "All";
             return translated;
           })()}
-          isChecked={allChecked}
-          isIndeterminate={someChecked}
+          checked={allChecked}
+          indeterminate={someChecked}
           onCheckedChange={(checked: boolean) =>
             handleMasterCheckboxChange(checked)
           }
@@ -121,7 +121,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
             <Checkbox
               key={option.value}
               label={option.label}
-              isChecked={checkedStates[index]}
+              checked={checkedStates[index]}
               onCheckedChange={(checked: boolean) =>
                 handleCheckboxChange(index, checked)
               }

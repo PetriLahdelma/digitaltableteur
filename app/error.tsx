@@ -27,13 +27,13 @@ export default function Error({
       <div className={styles.actions}>
         <Button
           variant="primary"
-          size="l"
+          size="lg"
           onClick={reset}
           icon={<Icon name="arrowClockwise" />}
         >
           {t("errorRetry", "Try again")}
         </Button>
-        <Button variant="secondary" size="l" href="/" icon={<Icon name="house" />}>
+        <Button variant="secondary" size="lg" href="/" icon={<Icon name="house" />}>
           {t("notFoundButton", "Go home")}
         </Button>
       </div>

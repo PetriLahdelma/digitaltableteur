@@ -3,7 +3,7 @@
   position: relative;
   border-radius: 4px;
 
-  --skeleton-base: var(--color-muted, #e2e8f0);
+  --skeleton-base: var(--color-muted);
   --skeleton-highlight: var(--skeleton-base);
 
   background: linear-gradient(
@@ -31,7 +31,7 @@
 }
 
 .static {
-  background: var(--color-gray, #d4d4d4);
+  background: var(--color-gray);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -61,7 +61,7 @@
   background: none;
 
   /* Inherit skeleton variables for child lines */
-  --skeleton-base: var(--color-muted, #e2e8f0);
+  --skeleton-base: var(--color-muted);
   --skeleton-highlight: var(--skeleton-base);
 }
 
@@ -104,7 +104,7 @@
 }
 
 .text.static .line {
-  background: var(--color-gray, #d4d4d4);
+  background: var(--color-gray);
 }
 
 .circle {

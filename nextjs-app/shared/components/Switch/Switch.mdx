@@ -27,7 +27,7 @@ Two compositions worth cribbing:
   explanation. The label can wrap or float depending on `labelPlacement`
   (`right` default, `left`, or `top`).
 - **Async setting.** When the change requires a network round-trip, set
-  `isLoading={pending}` while the request is in flight. The control is
+  `loading={pending}` while the request is in flight. The control is
   disabled and a spinner replaces the thumb; releasing the loading state
   reflects the new value.
 
@@ -43,7 +43,7 @@ import Switch from '@dt/Switch';
 // Controlled toggle
 <Switch
   label="Reduced motion"
-  isChecked={reducedMotion}
+  checked={reducedMotion}
   onCheckedChange={setReducedMotion}
 />
 
@@ -51,20 +51,20 @@ import Switch from '@dt/Switch';
 <Switch
   label="Notifications"
   helperText="Receive email when someone replies."
-  isChecked={emailReplies}
+  checked={emailReplies}
   onCheckedChange={setEmailReplies}
 />
 
 // Async with loading
 <Switch
   label="Sync calendar"
-  isLoading={pending}
-  isChecked={synced}
+  loading={pending}
+  checked={synced}
   onCheckedChange={onToggleSync}
 />
 
 // Top-placed label
-<Switch label="Dark mode" labelPlacement="top" isChecked={isDark} onCheckedChange={setIsDark} />
+<Switch label="Dark mode" labelPlacement="top" checked={isDark} onCheckedChange={setIsDark} />
 ```
 
 Required consumer wiring: nothing. The label is rendered inline by the
@@ -98,8 +98,8 @@ forced-colors mode uses the system's `Highlight` for the on state and
 - **Keyboard:** Space and Enter both toggle. Tab follows DOM order. The
   control receives focus directly; the label does not steal focus.
 - **State:** `aria-checked` is set to `true` / `false` to match
-  `isChecked`. `aria-disabled` is set when `isDisabled` or `isLoading`.
-- **Loading:** `aria-busy` is added while `isLoading`; the click handler
+  `checked`. `aria-disabled` is set when `disabled` or `loading`.
+- **Loading:** `aria-busy` is added while `loading`; the click handler
   is suppressed so a second tap during a pending request does not flip
   the visual state before the server confirms.
 - **Reduced motion:** the thumb slide transition is suppressed under

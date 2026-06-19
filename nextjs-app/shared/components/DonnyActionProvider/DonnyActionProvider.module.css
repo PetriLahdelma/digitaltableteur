@@ -9,7 +9,7 @@
 .spotlightFrame,
 .spotlightFrameStatic {
   position: fixed;
-  border: 2px solid var(--color-primary, #041b23);
+  border: 2px solid var(--color-primary);
   border-radius: var(--radius-md, 8px);
   box-shadow:
     0 0 0 9999px rgb(4 27 35 / 28%),

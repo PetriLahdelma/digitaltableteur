@@ -22,12 +22,9 @@
             "values": [
                 "sm",
                 "md",
-                "lg",
-                "S",
-                "M",
-                "L"
+                "lg"
             ],
-            "default": "sm",
+            "default": "md",
             "propSourced": true
         }
     },
@@ -98,10 +95,7 @@
             "values": [
                 "sm",
                 "md",
-                "lg",
-                "S",
-                "M",
-                "L"
+                "lg"
             ]
         },
         "tabs": {

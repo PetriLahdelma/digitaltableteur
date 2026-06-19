@@ -43,12 +43,12 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       <Icon name={toneIcon[tone]} ariaLabel={tone} size="md" />
       <div className={styles.content}>
         {title && (
-          <Title size="S" terminals="sans" className={styles.title}>
+          <Title size="s" terminals="sans" className={styles.title}>
             {title}
           </Title>
         )}
         {description && (
-          <Text size="M" terminals="sans" className={styles.description}>
+          <Text size="m" terminals="sans" className={styles.description}>
             {description}
           </Text>
         )}
@@ -56,7 +56,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       {dismissible && (
         <Button
           variant="tertiary"
-          size="s"
+          size="sm"
           className={styles.dismiss}
           onClick={onDismiss}
           aria-label="Dismiss alert"

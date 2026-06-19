@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Text.module.css";
 import "../../styles/variables.css";
 
-type TextSize = "XXS" | "XS" | "S" | "M" | "L" | "XL" | "XXL";
+type TextSize = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl";
 type LineHeight = "tight" | "snug" | "normal" | "relaxed" | "loose";
 type TextTag = "p" | "span" | "div" | "strong" | "em" | "cite" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
@@ -15,13 +15,13 @@ export type TextProps = {
 } & React.HTMLAttributes<HTMLElement>;
 
 const sizeClassMap: Record<TextSize, string> = {
-  XXS: styles["textXXS"] || "",
-  XS: styles["textXS"] || "",
-  S: styles["textS"] || "",
-  M: styles["textM"] || "",
-  L: styles["textL"] || "",
-  XL: styles["textXL"] || "",
-  XXL: styles["textXXL"] || "",
+  xxs: styles["textXXS"] || "",
+  xs: styles["textXS"] || "",
+  s: styles["textS"] || "",
+  m: styles["textM"] || "",
+  l: styles["textL"] || "",
+  xl: styles["textXL"] || "",
+  xxl: styles["textXXL"] || "",
 };
 
 const lineHeightClassMap: Record<LineHeight, string> = {
@@ -33,17 +33,22 @@ const lineHeightClassMap: Record<LineHeight, string> = {
 };
 
 /** Body and inline typography with size, terminal, and line-height tokens. */
-const Text = ({
-  children,
-  as = "p",
-  className = "",
-  terminals = "sans",
-  size = "M",
-  lineHeight,
-  style,
-  ...rest
-}: TextProps) => {
-  const Tag = as;
+const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
+  {
+    children,
+    as = "p",
+    className = "",
+    terminals = "sans",
+    size = "m",
+    lineHeight,
+    style,
+    ...rest
+  },
+  ref,
+) {
+  // Polymorphic tag: widen to ElementType so the single forwarded ref types
+  // against every allowed element (p/span/div/headings) without per-tag casts.
+  const Tag = as as React.ElementType;
   const terminalClass = terminals === "serif" ? styles.serif : styles.sans;
   const sizeClass = sizeClassMap[size] || "";
   const lineHeightClass = lineHeight
@@ -51,6 +56,7 @@ const Text = ({
     : "";
   return (
     <Tag
+      ref={ref}
       className={`${styles.text} ${terminalClass} ${sizeClass} ${lineHeightClass} ${className}`.trim()}
       style={style}
       {...rest}
@@ -58,6 +64,8 @@ const Text = ({
       {children}
     </Tag>
   );
-};
+});
+
+Text.displayName = "Text";
 
 export default Text;

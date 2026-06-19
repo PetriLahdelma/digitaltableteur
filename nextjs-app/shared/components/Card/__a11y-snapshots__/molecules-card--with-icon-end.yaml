@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - img "arrow-square-out"
 - heading "External Link" [level=3]
 - paragraph: Card with trailing icon to indicate external navigation.

@@ -131,9 +131,9 @@ const ScreenshotWrapper: React.FC<ScreenshotWrapperProps> = ({
   const getBackgroundColor = () => {
     switch (variant) {
       case "light":
-        return "var(--color-white, #ffffff)";
+        return "var(--color-white)";
       case "dark":
-        return "var(--color-gray-dark, #1f2937)";
+        return "var(--color-gray-dark)";
       case "muted":
       default:
         return "#9ca3af";

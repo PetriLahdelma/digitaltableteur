@@ -74,7 +74,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   }
   return (
     <a href={link} className={`${styles.card} ${className}`.trim()}>
-      <Title level={2} size="S" terminals="serif" className={styles.title}>
+      <Title level={2} size="s" terminals="serif" className={styles.title}>
         {title}
       </Title>
       {lead ? (

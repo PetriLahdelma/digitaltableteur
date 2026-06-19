@@ -118,7 +118,7 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
               <Text
                 as="div"
                 terminals="sans"
-                size="S"
+                size="s"
                 className={styles.headerDate}
               >
                 {t("complianceCard.lastReviewed", { date: formattedDate })}
@@ -140,7 +140,7 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
                 <Text
                   as="span"
                   terminals="sans"
-                  size="S"
+                  size="s"
                   className={styles.ruleLabel}
                 >
                   {rule.rule}
@@ -155,7 +155,7 @@ export const ComplianceCard: React.FC<ComplianceCardProps> = ({
               <Text
                 as="div"
                 terminals="sans"
-                size="S"
+                size="s"
                 className={styles.ruleDetails}
               >
                 {rule.details}

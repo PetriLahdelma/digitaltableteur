@@ -243,7 +243,7 @@ export const SocialShare = ({
 
         {supportsNativeShare ? (
           <Button
-            size={isMobile ? "s" : "l"}
+            size={isMobile ? "sm" : "lg"}
             variant="secondary"
             icon={<Icon name="share-network" ariaLabel={t("share")} />}
             className={styles.copyButton}
@@ -258,7 +258,7 @@ export const SocialShare = ({
           </Button>
         ) : (
           <Button
-            size={isMobile ? "s" : "l"}
+            size={isMobile ? "sm" : "lg"}
             variant="secondary"
             icon={
               <Icon name="copy-simple" ariaLabel={t("copyLinkToClipboard")} />
@@ -278,7 +278,7 @@ export const SocialShare = ({
 
       <Toast
         message={t("linkCopied")}
-        isOpen={toastOpen}
+        open={toastOpen}
         onClose={() => setToastOpen(false)}
       />
     </section>

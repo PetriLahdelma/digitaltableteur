@@ -142,13 +142,13 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="The Challenge"
         title="From Lab of New to New Things Co"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The existing identity lacked a unified visual language, making it
             challenging to communicate their values and expertise effectively.
             Their online presence needed a complete overhaul to match their
             ambition and culture.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             The task was comprehensive: rename the company, establish strategic
             pillars and purpose, create the complete visual identity, and deliver
             all assets needed for marketing, events, recruitment, and internal
@@ -167,14 +167,14 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Brand Identity"
         title="A Fresh Start for Innovation"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             <span style={{ fontWeight: 600 }}>
               The name "New Things Co" captured their experimental spirit
             </span>{" "}
             while being memorable and approachable. The visual identity uses bold
             typography and a vibrant green palette that signals energy and growth.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             The logo system was designed for flexibility across digital and print
             applications, from business cards to office signage and social media
             profiles.
@@ -242,7 +242,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Print Collateral"
         title="Business Cards & Stationery"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The stationery system uses recycled paper stock to align with the
             company&apos;s environmental values. Business cards feature a bold,
             minimal design with the logo on one side and contact details on
@@ -277,7 +277,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Digital Presence"
         title="Website & Social Media"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The website design reflects the brand&apos;s personality: bold,
             direct, and human. Social media templates ensure consistent
             presentation across platforms for recruitment, events, and company
@@ -347,7 +347,7 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
       <section className={styles.gallerySection}>
         <div className={styles.galleryHeader}>
           <Title level={3} terminals="sans">Culture & Merch</Title>
-          <Text size="S">
+          <Text size="s">
             Internal culture assets including apparel, event materials, and office
             decorations helped build team identity and employer brand.
           </Text>
@@ -399,13 +399,13 @@ export function NewThingsCoPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Outcome"
         title="Establishing the Brand"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The branding work helped establish New Things Co as a fresh player in
             the Finnish IT market. The cohesive identity made recruitment easier
             and helped communicate their developer-first culture to potential
             clients and employees.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             The company grew from the founding team to over 100 employees, with
             the brand system scaling across all touchpoints from digital presence
             to office environment and company events.

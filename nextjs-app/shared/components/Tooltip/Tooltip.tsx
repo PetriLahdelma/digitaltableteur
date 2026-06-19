@@ -18,8 +18,28 @@ export function TooltipProvider({
   );
 }
 
-export function Tooltip({ children }: { children: ReactNode }) {
-  return <TooltipPrimitive.Root>{children}</TooltipPrimitive.Root>;
+export function Tooltip({
+  children,
+  open,
+  defaultOpen,
+  onOpenChange,
+}: {
+  children: ReactNode;
+  /** Controlled open state. */
+  open?: boolean;
+  /** Initial open state when uncontrolled. */
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}) {
+  return (
+    <TooltipPrimitive.Root
+      open={open}
+      defaultOpen={defaultOpen}
+      onOpenChange={onOpenChange}
+    >
+      {children}
+    </TooltipPrimitive.Root>
+  );
 }
 
 export function TooltipTrigger({

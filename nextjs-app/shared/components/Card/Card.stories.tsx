@@ -24,27 +24,27 @@ const CardStoryMeta = {
   argTypes: {
     size: {
       control: { type: "select" },
-      options: ["S", "M", "L", "full"],
+      options: ["sm", "md", "lg", "full"],
       description:
-        "Card size with max-width constraints: S(320px), M(480px), L(600px), full(100%)",
-      table: { defaultValue: { summary: "M" } },
+        "Card size with max-width constraints: sm(320px), md(480px), lg(600px), full(100%)",
+      table: { defaultValue: { summary: "md" } },
     },
 
     variant: {
       control: { type: "select" },
       options: ["outlined", "filled", "elevated"],
       description: "Card visual variant",
-      table: { defaultValue: { summary: "elevated" } },
+      table: { defaultValue: { summary: "outlined" } },
     },
 
     badge: {
       control: { type: "text" },
       description: "Badge content (text/number) or custom React element",
     },
-    "badgeProps.state": {
+    "badgeProps.tone": {
       control: { type: "select" },
       options: ["success", "info", "error", "warning", "neutral"],
-      description: "Badge semantic state",
+      description: "Badge semantic tone",
     },
     "badgeProps.position": {
       control: { type: "select" },
@@ -56,10 +56,10 @@ const CardStoryMeta = {
       control: { type: "text" },
       description: "Status/error message below header",
     },
-    "statusMessageProps.state": {
+    "statusMessageProps.tone": {
       control: { type: "select" },
       options: ["success", "info", "error", "warning"],
-      description: "Status message state",
+      description: "Status message tone",
     },
     "iconProps.position": {
       control: { type: "select" },
@@ -96,9 +96,9 @@ export const Playground = {
     icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "start", size: "md" },
     badge: "Demo",
-    badgeProps: { state: "info", position: "end" },
+    badgeProps: { tone: "info", position: "end" },
     variant: "outlined",
-    size: "M",
+    size: "md",
     hoverable: true,
   },
 };
@@ -163,11 +163,11 @@ export const WithIconTop = {
 export const CustomizedTypography = {
   args: {
     title: "Custom Typography",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     subTitle: "Subtitle with custom styling",
-    subTitleProps: { size: "M" },
+    subTitleProps: { size: "m" },
     body: "Body text with customized appearance through nested props.",
-    bodyProps: { size: "L" },
+    bodyProps: { size: "l" },
     variant: "outlined",
   },
 };
@@ -175,10 +175,10 @@ export const CustomizedTypography = {
 export const DescriptionVariant = {
   args: {
     title: "With Description",
-    titleProps: { size: "M" },
+    titleProps: { size: "m" },
     description:
       "This card uses the description prop instead of body for semantic clarity.",
-    descriptionProps: { size: "M" },
+    descriptionProps: { size: "m" },
     variant: "elevated",
   },
 };
@@ -187,7 +187,7 @@ export const DescriptionVariant = {
 export const WithCover = {
   args: {
     title: "Media Card",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     cover: (
       <ImagePlaceholder
         {...ImagePlaceholderPresets.cardCover}
@@ -257,7 +257,7 @@ export const SmallSize = {
     icon: <Icon name="star" ariaLabel="star" />,
     iconProps: { position: "start", size: "sm" },
     body: "Reduced padding for dense layouts.",
-    size: "S",
+    size: "sm",
     variant: "filled",
   },
 };
@@ -265,12 +265,12 @@ export const SmallSize = {
 export const LargeSize = {
   args: {
     title: "Spacious Card",
-    titleProps: { size: "XL" },
+    titleProps: { size: "xl" },
     icon: <Icon name="heart" ariaLabel="heart" />,
     iconProps: { position: "top", size: "lg" },
     body: "Generous spacing for prominent content areas.",
-    bodyProps: { size: "L" },
-    size: "L",
+    bodyProps: { size: "l" },
+    size: "lg",
     variant: "elevated",
     hoverable: true,
   },
@@ -280,7 +280,7 @@ export const LargeSize = {
 export const ProfileCard = {
   args: {
     title: "Sarah Johnson",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     subTitle: "Senior Designer",
     icon: <Icon name="user" ariaLabel="user" />,
     iconProps: { position: "start" },
@@ -301,22 +301,22 @@ export const ProfileCard = {
 export const MetricCard = {
   args: {
     title: "Page Views",
-    titleProps: { size: "M" },
+    titleProps: { size: "m" },
     body: "12,847",
-    bodyProps: { size: "L" },
+    bodyProps: { size: "l" },
     description: "↗ 23% from last week",
-    descriptionProps: { size: "S" },
+    descriptionProps: { size: "s" },
     icon: <Icon name="eye" ariaLabel="eye" />,
     iconProps: { position: "end", size: "sm" },
     variant: "outlined",
-    size: "S",
+    size: "sm",
   },
 };
 
 export const EventCard = {
   args: {
     title: "Design System Workshop",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     subTitle: "Online Event",
     icon: <Icon name="calendar" ariaLabel="calendar" />,
     iconProps: { position: "start" },
@@ -365,7 +365,7 @@ export const Tabbed = { render: () => <TabbedStoryComponent /> };
 export const ProjectCard = {
   args: {
     title: "Digital Portfolio",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "start" },
     cover: (
@@ -386,15 +386,15 @@ export const ProjectCard = {
 export const ServiceHighlight = {
   args: {
     title: "Creative Development",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "top", size: "lg" },
     description:
       "Building digital experiences that combine aesthetic excellence with functional innovation.",
-    descriptionProps: { size: "M" },
+    descriptionProps: { size: "m" },
     variant: "elevated",
     hoverable: true,
-    size: "L",
+    size: "lg",
   },
 };
 
@@ -403,7 +403,7 @@ export const WithBadgeEnd = {
   args: {
     title: "New Feature",
     badge: "Beta",
-    badgeProps: { state: "info", position: "end" },
+    badgeProps: { tone: "info", position: "end" },
     body: "This card demonstrates badge positioning at the end of the header.",
     variant: "outlined",
   },
@@ -413,7 +413,7 @@ export const WithBadgeStart = {
   args: {
     title: "Critical Issue",
     badge: "3",
-    badgeProps: { state: "error", position: "start", size: "s" },
+    badgeProps: { tone: "error", position: "start", size: "sm" },
     icon: <Icon name="bug" ariaLabel="bug" />,
     iconProps: { position: "end", size: "sm" },
     body: "Badge positioned at the start of the header with an icon at the end.",
@@ -428,7 +428,7 @@ export const WithCustomBadge = {
       <Icon
         name="star"
         ariaLabel="star"
-        style={{ color: "var(--color-warning, #fbbf24)" }}
+        style={{ color: "var(--color-warning)" }}
       />
     ),
     body: "Custom React element as badge content.",
@@ -443,7 +443,7 @@ export const WithSuccessMessage = {
     icon: <Icon name="check" ariaLabel="check" />,
     iconProps: { position: "start", size: "md" },
     statusMessage: "Your information has been successfully saved.",
-    statusMessageProps: { state: "success" },
+    statusMessageProps: { tone: "success" },
     body: "Thank you for your submission. You will receive a confirmation email shortly.",
     variant: "elevated",
   },
@@ -455,7 +455,7 @@ export const WithErrorMessage = {
     icon: <Icon name="warning" ariaLabel="warning" />,
     iconProps: { position: "start", size: "md" },
     statusMessage: "Please check the required fields and try again.",
-    statusMessageProps: { state: "error" },
+    statusMessageProps: { tone: "error" },
     body: "Some fields contain invalid data that needs to be corrected.",
     variant: "outlined",
   },
@@ -465,7 +465,7 @@ export const WithWarningMessage = {
   args: {
     title: "Storage Almost Full",
     statusMessage: "You have used 90% of your storage quota.",
-    statusMessageProps: { state: "warning" },
+    statusMessageProps: { tone: "warning" },
     body: "Consider upgrading your plan or removing unused files.",
     variant: "filled",
     hoverable: true,
@@ -476,9 +476,9 @@ export const WithWarningMessage = {
 export const SizeSmall = {
   args: {
     title: "Compact Card",
-    size: "S",
+    size: "sm",
     badge: "New",
-    badgeProps: { state: "success", size: "s" },
+    badgeProps: { tone: "success", size: "sm" },
     body: "Small card with 320px max-width for dense layouts.",
     variant: "outlined",
   },
@@ -487,7 +487,7 @@ export const SizeSmall = {
 export const SizeMedium = {
   args: {
     title: "Medium Card",
-    size: "M",
+    size: "md",
     icon: <Icon name="user" ariaLabel="user" />,
     iconProps: { position: "start" },
     body: "Medium card with 480px max-width for balanced content.",
@@ -498,7 +498,7 @@ export const SizeMedium = {
 export const SizeLarge = {
   args: {
     title: "Large Card",
-    size: "L",
+    size: "lg",
     icon: <Icon name="chart-line-up" ariaLabel="chart-line-up" />,
     iconProps: { position: "top", size: "lg" },
     body: "Large card with 600px max-width for detailed content and generous spacing.",
@@ -512,7 +512,7 @@ export const SizeFullWidth = {
     title: "Full-Width Card",
     size: "full",
     statusMessage: "This card spans the full width of its container.",
-    statusMessageProps: { state: "info" },
+    statusMessageProps: { tone: "info" },
     body: "Full-width cards adapt to their container and are useful for dashboard layouts.",
     variant: "elevated",
   },
@@ -522,17 +522,17 @@ export const SizeFullWidth = {
 export const ComplexExample = {
   args: {
     title: "Feature Request",
-    titleProps: { size: "L" },
+    titleProps: { size: "l" },
     icon: <Icon name="palette" ariaLabel="palette" />,
     iconProps: { position: "start", size: "md" },
     badge: "High Priority",
-    badgeProps: { state: "warning", position: "end" },
+    badgeProps: { tone: "warning", position: "end" },
     statusMessage: "Waiting for product team review",
-    statusMessageProps: { state: "info" },
+    statusMessageProps: { tone: "info" },
     body: "A comprehensive example showcasing multiple Card features working together.",
     variant: "elevated",
     hoverable: true,
-    size: "L",
+    size: "lg",
   },
 };
 
@@ -542,7 +542,7 @@ export const Example = {
   args: ComplexExample.args,
 };
 
-export const ForcedColors: Story = {
+export const ForcedColors = {
   parameters: { a11y: { disable: true, test: "off" } },
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },

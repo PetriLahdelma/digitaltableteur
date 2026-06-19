@@ -119,7 +119,7 @@
 /* Success state overrides placed after positional rules */
 
 .progressDots.success .dot {
-  background: var(--color-success, #2ecc71);
+  background: var(--color-success);
   animation: success-pulse 0.8s ease-in-out 1;
   opacity: 1;
 }

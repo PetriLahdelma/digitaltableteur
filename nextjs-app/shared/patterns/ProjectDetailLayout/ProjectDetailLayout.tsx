@@ -79,7 +79,7 @@ export function ProjectDetailLayout({
       >
         {/* Navigation - sticky below header */}
         {nav && (
-          <div className="sticky top-20 z-30 border-b border-border flex items-center" style={{ backgroundColor: 'var(--logo-background, #DFFF00)', color: 'var(--logo-color, #000)', ['--color-primary' as string]: 'var(--logo-color, #000)' }}>
+          <div className="sticky top-20 z-30 border-b border-border flex items-center" style={{ backgroundColor: 'var(--logo-background)', color: 'var(--logo-color)', ['--color-primary' as string]: 'var(--logo-color)' }}>
             {nav}
           </div>
         )}

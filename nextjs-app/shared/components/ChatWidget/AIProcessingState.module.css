@@ -27,7 +27,7 @@
   background: linear-gradient(
     90deg,
     rgb(var(--color-text-rgb, 17, 17, 17), 0.4) 0%,
-    var(--color-primary, #0070f3) 50%,
+    var(--color-primary) 50%,
     rgb(var(--color-text-rgb, 17, 17, 17), 0.4) 100%
   );
   background-size: 200% auto;

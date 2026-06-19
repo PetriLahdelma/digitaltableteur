@@ -40,10 +40,10 @@ export function PseoPillarPage({
   return (
     <PageLayout as="main" maxWidth="lg" spacing="comfortable">
       <div className={styles.root}>
-        <Title terminals="sans" level={1} size="L">
+        <Title terminals="sans" level={1} size="l">
           {item.name}
         </Title>
-        <Text terminals="sans" size="L">
+        <Text terminals="sans" size="l">
           {item.shortDescription}
         </Text>
 
@@ -66,12 +66,12 @@ export function PseoPillarPage({
               titleProps={{
                 terminals: "sans",
                 level: 3,
-                size: "S",
+                size: "s",
                 as: "h3",
               }}
               description={page.description}
               descriptionProps={{
-                size: "S",
+                size: "s",
                 as: "p",
                 className: styles.cardDescription,
               }}

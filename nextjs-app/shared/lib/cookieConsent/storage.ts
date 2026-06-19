@@ -124,16 +124,6 @@ export function hasGivenConsent(): boolean {
 }
 
 /**
- * Get current consent status for a specific category
- */
-export function getCategoryConsent(category: CookieCategory): boolean {
-  const state = loadConsentState();
-  if (!state) return category === "essential"; // Only essential before consent
-
-  return state.categories[category] ?? DEFAULT_CONSENTS[category];
-}
-
-/**
  * Cookie definitions for documentation (used in settings page)
  */
 /**

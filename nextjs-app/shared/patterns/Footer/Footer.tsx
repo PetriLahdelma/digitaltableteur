@@ -1,7 +1,6 @@
 /** Props for Footer. */
 export interface FooterProps { className?: string }
 
-import React from "react";
 import styles from "./Footer.module.css";
 import Grid from "@dt/Grid";
 import Link from "@dt/Link";

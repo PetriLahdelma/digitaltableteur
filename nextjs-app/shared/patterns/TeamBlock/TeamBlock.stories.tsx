@@ -47,7 +47,7 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
     >
       <PageLayout maxWidth={maxWidth} spacing={spacing} as="div">
         {sectionTitle && (
-          <Title level={2} terminals="sans" size="XL" className={styles.title}>
+          <Title level={2} terminals="sans" size="xl" className={styles.title}>
             {sectionTitle}
           </Title>
         )}
@@ -55,7 +55,7 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
         {description && (
           <div className={styles.description}>
             {typeof description === "string" ? (
-              <Text size="M">{description}</Text>
+              <Text size="m">{description}</Text>
             ) : (
               description
             )}
@@ -100,12 +100,12 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
                 <Title
                   level={3}
                   terminals="sans"
-                  size="XS"
+                  size="xs"
                   className={styles.memberName}
                 >
                   {member.name}
                 </Title>
-                <Text size="S" className={styles.memberTitle}>
+                <Text size="s" className={styles.memberTitle}>
                   {member.title}
                 </Text>
               </MemberWrapper>
