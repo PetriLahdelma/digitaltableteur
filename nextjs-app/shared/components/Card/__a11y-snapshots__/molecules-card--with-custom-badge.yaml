@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - heading "Premium Service" [level=3]
 - img "star"
 - paragraph: Custom React element as badge content.

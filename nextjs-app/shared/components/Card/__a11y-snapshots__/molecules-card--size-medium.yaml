@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - img "user"
 - heading "Medium Card" [level=3]
 - paragraph: Medium card with 480px max-width for balanced content.

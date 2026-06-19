@@ -82,6 +82,20 @@ describe("Card", () => {
     expect(skeleton).toHaveAttribute("aria-busy", "true");
   });
 
+  it("forwards ref to the card element (div mode)", () => {
+    const ref = React.createRef<HTMLDivElement>();
+    render(<Card title="Ref Card" ref={ref} />);
+    expect(ref.current).toBeInstanceOf(HTMLDivElement);
+  });
+
+  it("forwards ref to the anchor in link mode", () => {
+    const ref = React.createRef<HTMLAnchorElement>();
+    render(
+      withI18n(<Card title="Linked" link="/x" linkLabel="Linked" ref={ref} />),
+    );
+    expect(ref.current).toBeInstanceOf(HTMLAnchorElement);
+  });
+
   it("renders tabs and switches active (uncontrolled)", () => {
     const tabs: CardTab[] = [
       { key: "one", label: "One" },

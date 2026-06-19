@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - heading "Full-Width Card" [level=3]
 - status: This card spans the full width of its container.
 - paragraph: Full-width cards adapt to their container and are useful for dashboard layouts.

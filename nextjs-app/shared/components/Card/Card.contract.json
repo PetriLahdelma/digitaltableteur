@@ -15,17 +15,17 @@
                 "filled",
                 "outlined"
             ],
-            "default": "elevated",
+            "default": "outlined",
             "propSourced": true
         },
         "size": {
             "values": [
-                "S",
-                "M",
-                "L",
+                "sm",
+                "md",
+                "lg",
                 "full"
             ],
-            "default": "M",
+            "default": "md",
             "propSourced": true
         }
     },
@@ -80,7 +80,6 @@
         "defaultActiveTabKey",
         "description",
         "descriptionProps",
-        "design",
         "extra",
         "footer",
         "headStyle",
@@ -98,7 +97,6 @@
         "position",
         "ref",
         "size",
-        "state",
         "statusMessage",
         "statusMessageProps",
         "style",
@@ -152,8 +150,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "M",
-                "L",
+                "m",
+                "l",
                 "h2",
                 "h3",
                 "h4",
@@ -168,7 +166,7 @@
             "optional": true,
             "type": "union",
             "values": [
-                "M",
+                "m",
                 "span",
                 "div",
                 "strong",
@@ -189,7 +187,7 @@
             "optional": true,
             "type": "union",
             "values": [
-                "M",
+                "m",
                 "span",
                 "div",
                 "strong",
@@ -206,7 +204,7 @@
             "optional": true,
             "type": "union",
             "values": [
-                "M",
+                "m",
                 "span",
                 "div",
                 "strong",
@@ -247,10 +245,10 @@
             "optional": true,
             "type": "union",
             "values": [
-                "full",
-                "S",
-                "M",
-                "L"
+                "sm",
+                "md",
+                "lg",
+                "full"
             ]
         },
         "variant": {
@@ -306,10 +304,10 @@
             "optional": true,
             "type": "union",
             "values": [
-                "info",
                 "error",
                 "warning",
-                "m"
+                "success",
+                "md"
             ]
         },
         "statusMessage": {
@@ -322,7 +320,7 @@
             "values": [
                 "info",
                 "error",
-                "M"
+                "m"
             ]
         },
         "linkLabel": {

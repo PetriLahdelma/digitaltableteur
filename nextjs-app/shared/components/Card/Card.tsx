@@ -70,8 +70,8 @@ export interface CardProps {
   hoverable?: boolean;
   /** Toggle card border */
   bordered?: boolean;
-  /** Card padding size */
-  size?: "S" | "M" | "L" | "full";
+  /** Card padding size. @default "md" */
+  size?: "sm" | "md" | "lg" | "full";
   /** Card presentation variant */
   variant?: "elevated" | "filled" | "outlined";
   /** Tab navigation within card */
@@ -107,7 +107,7 @@ export interface CardProps {
   statusMessage?: string;
   /** Status message configuration */
   statusMessageProps?: {
-    state?: "success" | "info" | "error" | "warning";
+    tone?: "success" | "info" | "error" | "warning";
     size?: "s" | "m" | "l";
     className?: string;
   };
@@ -130,7 +130,7 @@ export interface CardProps {
 }
 
 /** Composable surface for grouped content with header, body, media, and actions. */
-const Card: React.FC<CardProps> = ({
+const Card = React.forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>(function Card({
   title,
   titleProps = {},
   subTitle,
@@ -144,7 +144,7 @@ const Card: React.FC<CardProps> = ({
   loading = false,
   hoverable = false,
   bordered = true,
-  size = "M",
+  size = "md",
   variant = "outlined",
   tabs,
   activeTabKey,
@@ -166,7 +166,7 @@ const Card: React.FC<CardProps> = ({
   headStyle,
   footer,
   children,
-}) => {
+}, ref) {
   const { t } = useTranslation();
 
   // Tab state (uncontrolled fallback)
@@ -177,6 +177,9 @@ const Card: React.FC<CardProps> = ({
     if (!activeTabKey) setInternalTab(key);
     onTabChange?.(key);
   };
+
+  // Card owns sm|md|lg|full; nested controls (Tabs, action Buttons) take sm|md|lg.
+  const controlSize = size === "full" ? "md" : size;
 
   // Convert CardTab[] to TabItem[] for Tabs component
   const tabItems: TabItem[] | undefined = tabs?.map((tab) => ({
@@ -191,7 +194,7 @@ const Card: React.FC<CardProps> = ({
       activeTab={effectiveActiveTab}
       onTabChange={handleTabClick}
       variant="underline"
-      size={size === "L" ? "lg" : size === "S" ? "sm" : "md"}
+      size={controlSize}
       className={styles.cardTabs}
     />
   );
@@ -204,7 +207,7 @@ const Card: React.FC<CardProps> = ({
           variant={action.variant || "secondary"}
           disabled={action.disabled}
           onClick={() => action.onClick?.(action.key)}
-          size={size === "L" ? "lg" : size === "S" ? "sm" : "md"}
+          size={controlSize}
         >
           {action.label}
         </Button>
@@ -212,14 +215,10 @@ const Card: React.FC<CardProps> = ({
     </div>
   );
 
-  // Map size API to CSS class names
-  const sizeClass =
-    size === "S" ? "s" : size === "M" ? "m" : size === "L" ? "l" : size;
-
   const stateClasses = [
     hoverable ? styles.hoverable : "",
     bordered ? styles.bordered : styles.unbordered,
-    styles[sizeClass],
+    styles[size],
     loading ? styles.loading : "",
     styles[variant],
   ].filter(Boolean);
@@ -336,15 +335,15 @@ const Card: React.FC<CardProps> = ({
       <div
         className={[
           styles.statusText,
-          statusMessageProps.state &&
+          statusMessageProps.tone &&
             styles[
-              `status${statusMessageProps.state.charAt(0).toUpperCase() + statusMessageProps.state.slice(1)}`
+              `status${statusMessageProps.tone.charAt(0).toUpperCase() + statusMessageProps.tone.slice(1)}`
             ],
           statusMessageProps.className,
         ]
           .filter(Boolean)
           .join(" ")}
-        role={statusMessageProps.state === "error" ? "alert" : "status"}
+        role={statusMessageProps.tone === "error" ? "alert" : "status"}
       >
         <Text size={statusMessageProps.size || "s"} as="span">
           {statusMessage}
@@ -433,6 +432,7 @@ const Card: React.FC<CardProps> = ({
 
   return link ? (
     <Link
+      ref={ref as React.Ref<HTMLAnchorElement>}
       href={link}
       className={baseClasses}
       aria-label={linkAccessibleName}
@@ -442,6 +442,7 @@ const Card: React.FC<CardProps> = ({
     </Link>
   ) : (
     <div
+      ref={ref as React.Ref<HTMLDivElement>}
       className={baseClasses}
       tabIndex={isInteractive ? 0 : undefined}
       role={isInteractive ? "button" : undefined}
@@ -451,6 +452,8 @@ const Card: React.FC<CardProps> = ({
       {innerContent}
     </div>
   );
-};
+});
+
+Card.displayName = "Card";
 
 export default Card;
