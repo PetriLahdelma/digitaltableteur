@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, createEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { axe, toHaveNoViolations } from "jest-axe";
 import Button from "@dt/Button";
@@ -153,6 +153,53 @@ describe("Button", () => {
     );
     const link = screen.getByText("Disabled Link").closest("a");
     expect(link).toHaveAttribute("aria-disabled", "true");
+  });
+
+  it("makes a disabled link non-navigable (drops href, removes from tab order)", () => {
+    render(
+      <Button href="/disabled-link" disabled>
+        Disabled Link
+      </Button>,
+    );
+    const link = screen.getByText("Disabled Link").closest("a");
+    expect(link).not.toHaveAttribute("href");
+    expect(link).toHaveAttribute("tabindex", "-1");
+    expect(link).toHaveAttribute("role", "link");
+  });
+
+  it("suppresses click navigation on a disabled link and skips onClick", () => {
+    const onClick = vi.fn();
+    render(
+      <Button href="/disabled-link" disabled onClick={onClick}>
+        Disabled Link
+      </Button>,
+    );
+    const link = screen.getByText("Disabled Link").closest("a") as HTMLElement;
+    const clickEvent = createEvent.click(link);
+    fireEvent(link, clickEvent);
+    expect(clickEvent.defaultPrevented).toBe(true);
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it("treats a loading link as non-navigable too", () => {
+    render(
+      <Button href="/loading-link" loading>
+        Loading Link
+      </Button>,
+    );
+    const link = screen.getByText("Loading Link").closest("a");
+    expect(link).not.toHaveAttribute("href");
+    expect(link).toHaveAttribute("aria-disabled", "true");
+  });
+
+  it("has no accessibility violations as a disabled link", async () => {
+    const { container } = render(
+      <Button href="/disabled-link" disabled>
+        Disabled Link
+      </Button>,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 
   it("renders link with icon and maintains visual structure", () => {

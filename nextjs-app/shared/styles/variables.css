@@ -501,21 +501,8 @@
   --main-body-background-color: #fff;
   --color-title: #000;
 
-  /* High contrast decorative overrides */
-
-  /* High contrast decorative overrides */
-
-  /* Reduced selector specificity by removing descendant chain; rely on contextual class hooks */
-
-  .themeHCB .badge {
-    /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
-    forced-color-adjust: none;
-  }
-
-  .themeHCB .toast {
-    /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
-    forced-color-adjust: none;
-  }
+  /* HCB badge/toast forced-colors opt-out moved to top level (was mis-nested
+     here under .themeHCW, which compiled to an unreachable selector). */
 
   /* View Transition future hook (commented until adopted) */
 
@@ -581,6 +568,16 @@
   --focus-ring-color: #000;
   --focus-ring-width: 3px;
   --focus-ring-offset: 3px;
+}
+
+/* HCB badge/toast: honor the theme's own high-contrast colors instead of the
+   UA forced-colors palette. Relocated from a mis-nested rule inside .themeHCW
+   (where it compiled to the unreachable selector ".themeHCW :root .themeHCB …"). */
+
+.themeHCB .badge,
+.themeHCB .toast {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  forced-color-adjust: none;
 }
 
 /* Forced colors (Windows High Contrast mode)
