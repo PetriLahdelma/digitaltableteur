@@ -11,15 +11,15 @@
     "variants": {
         "size": {
             "values": [
-                "S",
-                "M",
-                "L",
-                "XXS",
-                "XS",
-                "XL",
-                "XXL"
+                "s",
+                "m",
+                "l",
+                "xxs",
+                "xs",
+                "xl",
+                "xxl"
             ],
-            "default": "S",
+            "default": "m",
             "propSourced": true
         },
         "terminals": {
@@ -95,13 +95,13 @@
             "optional": true,
             "type": "union",
             "values": [
-                "S",
-                "M",
-                "L",
-                "XXS",
-                "XS",
-                "XL",
-                "XXL"
+                "s",
+                "m",
+                "l",
+                "xxs",
+                "xs",
+                "xl",
+                "xxl"
             ]
         },
         "lineHeight": {

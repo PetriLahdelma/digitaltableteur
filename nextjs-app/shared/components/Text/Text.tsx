@@ -33,17 +33,22 @@ const lineHeightClassMap: Record<LineHeight, string> = {
 };
 
 /** Body and inline typography with size, terminal, and line-height tokens. */
-const Text = ({
-  children,
-  as = "p",
-  className = "",
-  terminals = "sans",
-  size = "m",
-  lineHeight,
-  style,
-  ...rest
-}: TextProps) => {
-  const Tag = as;
+const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
+  {
+    children,
+    as = "p",
+    className = "",
+    terminals = "sans",
+    size = "m",
+    lineHeight,
+    style,
+    ...rest
+  },
+  ref,
+) {
+  // Polymorphic tag: widen to ElementType so the single forwarded ref types
+  // against every allowed element (p/span/div/headings) without per-tag casts.
+  const Tag = as as React.ElementType;
   const terminalClass = terminals === "serif" ? styles.serif : styles.sans;
   const sizeClass = sizeClassMap[size] || "";
   const lineHeightClass = lineHeight
@@ -51,6 +56,7 @@ const Text = ({
     : "";
   return (
     <Tag
+      ref={ref}
       className={`${styles.text} ${terminalClass} ${sizeClass} ${lineHeightClass} ${className}`.trim()}
       style={style}
       {...rest}
@@ -58,6 +64,8 @@ const Text = ({
       {children}
     </Tag>
   );
-};
+});
+
+Text.displayName = "Text";
 
 export default Text;

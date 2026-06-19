@@ -54,4 +54,10 @@ describe("Title", () => {
       expect(container.firstChild).toHaveClass(styles[expectedClass]);
     });
   });
+
+  it("forwards ref to the heading element", () => {
+    const ref = React.createRef<HTMLHeadingElement>();
+    render(<Title ref={ref}>Title</Title>);
+    expect(ref.current?.tagName).toBe("H1");
+  });
 });

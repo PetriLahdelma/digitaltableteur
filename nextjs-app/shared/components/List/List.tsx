@@ -57,19 +57,27 @@ const spacingClassMap: Record<string, string> = {
 /**
  * List component.
  */
-export const List: React.FC<ListProps> = ({
-  items,
-  as = "ul",
-  className = "",
-  terminals = "sans",
-  size = "m",
-  lineHeight,
-  style,
-  listStyleType,
-  spacing = "normal",
-  role,
-}) => {
-  const Tag = as;
+export const List = React.forwardRef<
+  HTMLUListElement | HTMLOListElement,
+  ListProps
+>(function List(
+  {
+    items,
+    as = "ul",
+    className = "",
+    terminals = "sans",
+    size = "m",
+    lineHeight,
+    style,
+    listStyleType,
+    spacing = "normal",
+    role,
+  },
+  ref,
+) {
+  // Polymorphic tag (ul/ol): widen to ElementType so the forwarded ref types
+  // cleanly against both list elements.
+  const Tag = as as React.ElementType;
   const terminalClass = terminals === "serif" ? styles.serif : styles.sans;
   const sizeClass = sizeClassMap[size] || "";
   const lineHeightClass = lineHeight
@@ -87,6 +95,7 @@ export const List: React.FC<ListProps> = ({
 
   return (
     <Tag
+      ref={ref}
       className={`${styles.list} ${terminalClass} ${sizeClass} ${lineHeightClass} ${spacingClass} ${className}`.trim()}
       style={combinedStyle}
       role={role}
@@ -96,6 +105,8 @@ export const List: React.FC<ListProps> = ({
       ))}
     </Tag>
   );
-};
+});
+
+List.displayName = "List";
 
 export default List;

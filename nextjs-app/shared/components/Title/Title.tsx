@@ -43,22 +43,24 @@ const lineHeightClassMap: Record<LineHeight, string> = {
 };
 
 /** Page and section headings with size and terminal (serif/sans) variants. */
-const Title: React.FC<TitleProps> = ({
-  children,
-  as,
-  className = "",
-  unstyled = false,
-  size = "l",
-  level,
-  terminals = "serif",
-  lineHeight,
-  ...rest
-}) => {
-  const Tag =
-    as || (level ? (`h${level}` as HeadingTag) : "h1");
+const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(function Title(
+  {
+    children,
+    as,
+    className = "",
+    unstyled = false,
+    size = "l",
+    level,
+    terminals = "serif",
+    lineHeight,
+    ...rest
+  },
+  ref,
+) {
+  const Tag = as || (level ? (`h${level}` as HeadingTag) : "h1");
   if (unstyled) {
     return (
-      <Tag className={className.trim() || undefined} {...rest}>
+      <Tag ref={ref} className={className.trim() || undefined} {...rest}>
         {children}
       </Tag>
     );
@@ -70,12 +72,15 @@ const Title: React.FC<TitleProps> = ({
     : "";
   return (
     <Tag
+      ref={ref}
       className={`${styles.title} ${sizeClass} ${terminalsClass} ${lineHeightClass} ${className}`.trim()}
       {...rest}
     >
       {children}
     </Tag>
   );
-};
+});
+
+Title.displayName = "Title";
 
 export default Title;

@@ -92,4 +92,10 @@ describe("List", () => {
     expect(screen.getByText("Complex 1")).toBeInTheDocument();
     expect(screen.getByText("Complex 2")).toBeInTheDocument();
   });
+
+  it("forwards ref to the list element", () => {
+    const ref = React.createRef<HTMLUListElement>();
+    render(<List items={["a"]} ref={ref} />);
+    expect(ref.current?.tagName).toBe("UL");
+  });
 });
