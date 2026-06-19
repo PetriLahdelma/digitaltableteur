@@ -27,32 +27,18 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-/* Tab Sizes (legacy uppercase - kept for backwards compatibility) */
+/* Tab Sizes */
 
-.s {
+.tabs--sm {
   font-size: var(--font-size-button-s);
 }
 
-.m {
+.tabs--md {
   font-size: var(--font-size-button-m);
 }
 
-.l {
-  font-size: var(--font-size-button-l);
-}
-
-/* Size variants (v1.1.0 - modern lowercase) */
-
-.tabs--sm {
-  font-size: 0.875rem;
-}
-
-.tabs--md {
-  font-size: 1rem;
-}
-
 .tabs--lg {
-  font-size: 1.125rem;
+  font-size: var(--font-size-button-l);
 }
 
 /* Individual Tab Base Styles */
@@ -71,16 +57,25 @@
   line-height: 1.2;
   cursor: pointer;
   transition:
-    color 0.2s ease,
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    color var(--duration-fast) var(--ease-out-cubic),
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    border-color var(--duration-fast) var(--ease-out-cubic),
+    box-shadow var(--duration-fast) var(--ease-out-cubic),
+    transform var(--duration-instant) var(--ease-out-cubic);
 }
 
 .tab:focus-visible {
   z-index: 1;
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+/* Press feedback. Disabled tabs set the `disabled` attribute and are inert,
+   so a plain :active never fires on them — no :not(:disabled) needed (which
+   would out-rank later pseudo rules and trip no-descending-specificity). */
+
+.tab:active {
+  transform: scale(0.97);
 }
 
 /* Base variant styles - must come before specific variants */
@@ -96,7 +91,7 @@
 }
 
 .underline .tab {
-  color: var(--color-text-subtle, rgb(0 0 0 / 65%));
+  color: var(--secondary-text-color);
   border-bottom: 2px solid transparent;
 }
 
@@ -106,25 +101,26 @@
   border-inline-end: none;
 }
 
-/* Hover states */
+/* Hover states (pointer devices only) */
+@media (hover: hover) and (pointer: fine) {
+  .default .tab:hover:not(:disabled) {
+    background: var(--color-white);
+    color: var(--color-primary);
+  }
 
-.default .tab:hover:not(:disabled) {
-  background: var(--color-white);
-  color: var(--color-primary);
-}
+  .pills .tab:hover:not(:disabled) {
+    background: var(--color-white);
+    color: var(--color-primary);
+  }
 
-.pills .tab:hover:not(:disabled) {
-  background: var(--color-white);
-  color: var(--color-primary);
-}
-
-.underline .tab:hover:not(:disabled) {
-  color: var(--color-primary);
-  border-bottom-color: color-mix(
-    in srgb,
-    var(--color-primary) 30%,
-    transparent
-  );
+  .underline .tab:hover:not(:disabled) {
+    color: var(--color-primary);
+    border-bottom-color: color-mix(
+      in srgb,
+      var(--color-primary) 30%,
+      transparent
+    );
+  }
 }
 
 /* Active states */
@@ -155,8 +151,8 @@
   border-radius: 1px;
   background: var(--color-primary);
   transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+    opacity var(--duration-fast) var(--ease-out-cubic),
+    transform var(--duration-fast) var(--ease-out-cubic);
   transform: scaleX(0);
   opacity: 0;
 }
@@ -193,17 +189,16 @@
     padding: var(--space-internal-6) var(--space-internal-12);
     font-size: 0.9em;
   }
-
-  .s .tab {
-    padding: var(--space-internal-4) var(--space-internal-8);
-    font-size: 0.8em;
-  }
 }
 
-/* Reduced motion */
+/* Reduced motion: keep color changes, drop movement */
 @media (prefers-reduced-motion: reduce) {
   .tab,
   .tabIndicator {
     transition: none;
+  }
+
+  .tab:active {
+    transform: none;
   }
 }

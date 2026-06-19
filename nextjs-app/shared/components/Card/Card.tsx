@@ -191,7 +191,7 @@ const Card: React.FC<CardProps> = ({
       activeTab={effectiveActiveTab}
       onTabChange={handleTabClick}
       variant="underline"
-      size={size === "full" ? "M" : size}
+      size={size === "L" ? "lg" : size === "S" ? "sm" : "md"}
       className={styles.cardTabs}
     />
   );
