@@ -1,17 +1,17 @@
-import React, { useEffect, type ReactNode } from "react";
+import { forwardRef, useEffect, type ReactNode } from "react";
 import styles from "./Toast.module.css";
-import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 import { CheckCircle, Warning, XCircle, Info } from "@phosphor-icons/react";
 
-export type ToastSeverity = "success" | "error" | "warning" | "info";
+export type ToastTone = "success" | "error" | "warning" | "info";
 
-// Direct Phosphor icons for better alignment (matches Toaster pattern)
-const severityIcons: Record<ToastSeverity, ReactNode> = {
+// Direct Phosphor icons for color-independent meaning (WCAG 1.4.1).
+const toneIcons: Record<ToastTone, ReactNode> = {
   success: <CheckCircle weight="fill" aria-hidden="true" />,
   error: <XCircle weight="fill" aria-hidden="true" />,
   warning: <Warning weight="fill" aria-hidden="true" />,
   info: <Info weight="fill" aria-hidden="true" />,
 };
+
 export type ToastPosition =
   | "top-left"
   | "top-center"
@@ -21,73 +21,70 @@ export type ToastPosition =
   | "bottom-right";
 
 export interface ToastProps {
-  // v2.0.0 PROPS
-  /** Controls visibility */
-  isOpen?: boolean;
-  /** Semantic severity level */
-  severity?: ToastSeverity;
-  /** Position on screen */
+  /** Controls visibility. */
+  open?: boolean;
+  /** Semantic colour. */
+  tone?: ToastTone;
+  /** Position on screen. @default "bottom-center" */
   position?: ToastPosition;
-  /** Size variant */
-  size?: SizeUnified;
-
-  // EXISTING PROPS
+  /** Size. @default "md" */
+  size?: "sm" | "md" | "lg";
   message: string;
+  /** Auto-dismiss delay in ms. @default 3000 */
   duration?: number;
   onClose?: () => void;
 }
 
-/** Transient toast notification with severity and auto-dismiss. */
-const Toast: React.FC<ToastProps> = ({
-  isOpen,
-  severity,
-  position = "bottom-center",
-  size = "md",
-  message,
-  duration = 3000,
-  onClose,
-}) => {
-  const normalizedSize = normalizeSizeProp(size);
-
+/**
+ * Transient toast notification with tone and auto-dismiss. The element stays
+ * mounted as a live region (the message swaps in/out) so assistive tech reliably
+ * announces it; visibility is animated via opacity/translate rather than an
+ * AnimatePresence mount/unmount, which would defeat the live region.
+ */
+const Toast = forwardRef<HTMLDivElement, ToastProps>(function Toast(
+  { open, tone, position = "bottom-center", size = "md", message, duration = 3000, onClose },
+  ref,
+) {
   useEffect(() => {
-    if (!isOpen) return;
+    if (!open) return;
     const timer = setTimeout(() => {
       onClose?.();
     }, duration);
     return () => clearTimeout(timer);
-  }, [isOpen, duration, onClose]);
+  }, [open, duration, onClose]);
 
-  const isVisible = Boolean(isOpen);
+  const isVisible = Boolean(open);
   const displayMessage = isVisible ? message : "";
 
-  const liveRole =
-    severity === "error" || severity === "warning" ? "alert" : "status";
+  // Error/warning interrupt (assertive); everything else is a polite status.
+  const isAssertive = tone === "error" || tone === "warning";
 
-  // Get icon for severity (color independence - WCAG 1.4.1)
-  const severityIcon = severity ? severityIcons[severity] : null;
+  const toneIcon = tone ? toneIcons[tone] : null;
 
   return (
     <div
+      ref={ref}
       className={[
         styles.toast,
-        styles[`toast--${normalizedSize}`],
-        severity ? styles[`toast--${severity}`] : "",
+        styles[`toast--${size}`],
+        tone ? styles[`toast--${tone}`] : "",
         styles[`toast--${position}`],
         !isVisible ? styles["toast--hidden"] : "",
       ]
         .filter(Boolean)
         .join(" ")}
-      role={liveRole}
+      role={isAssertive ? "alert" : "status"}
+      aria-live={isAssertive ? "assertive" : "polite"}
       aria-atomic="true"
     >
-      {severityIcon && (
+      {toneIcon && (
         <span className={styles.icon} aria-hidden="true">
-          {severityIcon}
+          {toneIcon}
         </span>
       )}
       <span className={styles.message}>{displayMessage}</span>
     </div>
   );
-};
+});
 
 export default Toast;

@@ -19,7 +19,7 @@ anything that should stay until dismissed, AlertBanner.
 ## Do / don't
 - Do: keep the message ≤ 60 characters so it fits on a single line.
   Two-line toasts get cropped at the bottom of mobile viewports.
-- Do: pair `severity="error"` with an actionable next step ("Retry" in
+- Do: pair `tone="error"` with an actionable next step ("Retry" in
   the message text) so the user knows what to do. Use AlertBanner for
   persistent errors that can't be auto-resolved.
 - Don't: stack toasts. The provider queues them — calling `showToast`
@@ -31,7 +31,7 @@ anything that should stay until dismissed, AlertBanner.
   from the error source; use HelperText.
 
 ## Design notes
-- Tokens: severity surfaces use the same `--color-<severity>-surface`
+- Tokens: tone surfaces use the same `--color-<tone>-surface`
   tokens as AlertBanner so the visual language is consistent. Radius is
   `--radius-md`; elevation is `--shadow-lg` since Toast floats above
   content.

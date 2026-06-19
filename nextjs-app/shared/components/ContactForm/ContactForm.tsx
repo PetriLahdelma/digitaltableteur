@@ -448,7 +448,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
       </form>
       <Toast
         message={t("contactSuccessMessage")}
-        isOpen={isToastOpen}
+        open={isToastOpen}
         duration={5000}
         onClose={() => setIsToastOpen(false)}
       />

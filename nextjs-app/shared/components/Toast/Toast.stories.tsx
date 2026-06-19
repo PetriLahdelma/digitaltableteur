@@ -98,19 +98,19 @@ const meta: Meta<typeof Toast> = {
 
     // State (v1.1.0)
 
-    isOpen: {
+    open: {
       control: "boolean",
-      description: "Controls toast visibility (v1.1.0+)",
+      description: "Controls toast visibility.",
       table: { category: "State", type: { summary: "boolean" } },
     },
 
-    severity: {
+    tone: {
       control: { type: "select" },
       options: ["success", "error", "warning", "info"],
-      description: "Semantic severity level (v1.1.0+)",
+      description: "Semantic colour.",
       table: {
         category: "State",
-        type: { summary: "ToastSeverity" },
+        type: { summary: '"success" | "error" | "warning" | "info"' },
         defaultValue: { summary: "info" },
       },
     },
@@ -123,7 +123,7 @@ const meta: Meta<typeof Toast> = {
       description: "Size variant (v1.1.0+)",
       table: {
         category: "Appearance",
-        type: { summary: "SizeUnified" },
+        type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: "md" },
       },
     },
@@ -185,7 +185,7 @@ const Template: StoryFn<ToastProps> = () => {
       <Button onClick={() => setOpen(true)}>Show Toast</Button>
       <Toast
         message="Toast notification!"
-        isOpen={open}
+        open={open}
         onClose={() => setOpen(false)}
       />
     </>
@@ -215,7 +215,7 @@ export const LongDuration = () => {
       <Button onClick={() => setOpen(true)}>Show Long Toast</Button>
       <Toast
         message="This toast will stay for 6 seconds"
-        isOpen={open}
+        open={open}
         duration={6000}
         onClose={() => setOpen(false)}
       />
@@ -243,8 +243,8 @@ export const SeveritySuccess: StoryFn = () => {
       <Button onClick={() => setOpen(true)}>Show Success (v1.1.0)</Button>
       <Toast
         message="Operation completed successfully!"
-        isOpen={open}
-        severity="success"
+        open={open}
+        tone="success"
         onClose={() => setOpen(false)}
       />
     </>
@@ -258,8 +258,8 @@ export const SeverityError: StoryFn = () => {
       <Button onClick={() => setOpen(true)}>Show Error (v1.1.0)</Button>
       <Toast
         message="An error occurred. Please try again."
-        isOpen={open}
-        severity="error"
+        open={open}
+        tone="error"
         onClose={() => setOpen(false)}
       />
     </>
@@ -273,8 +273,8 @@ export const SeverityWarning: StoryFn = () => {
       <Button onClick={() => setOpen(true)}>Show Warning (v1.1.0)</Button>
       <Toast
         message="Your session will expire soon."
-        isOpen={open}
-        severity="warning"
+        open={open}
+        tone="warning"
         onClose={() => setOpen(false)}
       />
     </>
@@ -288,8 +288,8 @@ export const SeverityInfo: StoryFn = () => {
       <Button onClick={() => setOpen(true)}>Show Info (v1.1.0)</Button>
       <Toast
         message="New features available! Check them out."
-        isOpen={open}
-        severity="info"
+        open={open}
+        tone="info"
         onClose={() => setOpen(false)}
       />
     </>
@@ -303,7 +303,7 @@ export const PositionTopLeft: StoryFn = () => {
       <Button onClick={() => setOpen(true)}>Top Left (v1.1.0)</Button>
       <Toast
         message="Top left toast"
-        isOpen={open}
+        open={open}
         position="top-left"
         onClose={() => setOpen(false)}
       />
@@ -318,7 +318,7 @@ export const PositionTopCenter: StoryFn = () => {
       <Button onClick={() => setOpen(true)}>Top Center (v1.1.0)</Button>
       <Toast
         message="Top center toast"
-        isOpen={open}
+        open={open}
         position="top-center"
         onClose={() => setOpen(false)}
       />
@@ -333,7 +333,7 @@ export const PositionTopRight: StoryFn = () => {
       <Button onClick={() => setOpen(true)}>Top Right (v1.1.0)</Button>
       <Toast
         message="Top right toast"
-        isOpen={open}
+        open={open}
         position="top-right"
         onClose={() => setOpen(false)}
       />
@@ -348,7 +348,7 @@ export const SizeSmall: StoryFn = () => {
       <Button onClick={() => setOpen(true)}>Small Toast (v1.1.0)</Button>
       <Toast
         message="Small size toast"
-        isOpen={open}
+        open={open}
         size="sm"
         onClose={() => setOpen(false)}
       />
@@ -363,7 +363,7 @@ export const SizeLarge: StoryFn = () => {
       <Button onClick={() => setOpen(true)}>Large Toast (v1.1.0)</Button>
       <Toast
         message="Large size toast"
-        isOpen={open}
+        open={open}
         size="lg"
         onClose={() => setOpen(false)}
       />
@@ -385,8 +385,8 @@ export const Example: Story = {
     return (
       <Toast
         message="Saved successfully."
-        isOpen={open}
-        severity="success"
+        open={open}
+        tone="success"
         onClose={() => setOpen(false)}
       />
     );

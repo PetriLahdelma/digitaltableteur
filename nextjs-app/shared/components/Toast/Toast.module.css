@@ -12,6 +12,9 @@
   box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
   font-family: var(--font-text);
   color: var(--color-white);
+  transition:
+    opacity var(--duration-fast) var(--ease-out-cubic),
+    translate var(--duration-fast) var(--ease-out-cubic);
   transform: translateX(-50%);
 }
 
@@ -42,23 +45,24 @@
 .toast--hidden {
   pointer-events: none;
   opacity: 0;
+  translate: 0 0.5rem;
 }
 
-/* Size variants (v1.1.0) */
+/* Size variants */
 
 .toast--sm {
   padding: var(--space-internal-8) var(--space-internal-12);
-  font-size: 0.875rem;
+  font-size: var(--font-size-button-s);
 }
 
 .toast--md {
   padding: var(--space-internal-12) var(--space-internal-16);
-  font-size: 1rem;
+  font-size: var(--font-size-button-m);
 }
 
 .toast--lg {
   padding: var(--space-internal-16) var(--space-internal-20);
-  font-size: 1.125rem;
+  font-size: var(--font-size-button-l);
 }
 
 /* Severity variants (v1.1.0) */
@@ -118,4 +122,15 @@
   bottom: var(--space-layout-24);
   left: auto;
   transform: none;
+}
+
+/* Reduced motion: keep the toast, drop the fade/slide */
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition: none;
+  }
+
+  .toast--hidden {
+    translate: none;
+  }
 }

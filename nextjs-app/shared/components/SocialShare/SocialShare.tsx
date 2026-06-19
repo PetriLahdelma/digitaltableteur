@@ -278,7 +278,7 @@ export const SocialShare = ({
 
       <Toast
         message={t("linkCopied")}
-        isOpen={toastOpen}
+        open={toastOpen}
         onClose={() => setToastOpen(false)}
       />
     </section>

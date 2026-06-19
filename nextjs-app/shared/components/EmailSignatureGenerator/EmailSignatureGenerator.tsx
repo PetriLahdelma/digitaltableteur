@@ -779,9 +779,9 @@ export const EmailSignatureGenerator: React.FC<EmailSignatureGeneratorProps> = (
 
       {/* Toast Notification */}
       <Toast
-        isOpen={toastOpen}
+        open={toastOpen}
         message={toastMessage}
-        severity={toastSeverity}
+        tone={toastSeverity}
         position="bottom-center"
         duration={3000}
         onClose={() => setToastOpen(false)}
