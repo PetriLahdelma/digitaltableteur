@@ -165,7 +165,7 @@ const meta: Meta<typeof Tabs> = {
       description: "Tablist size.",
       table: {
         category: "Appearance",
-        type: { summary: '"sm" | "md" | "lg"' },
+        type: { summary: "\"sm\" | \"md\" | \"lg\"" },
         defaultValue: { summary: "md" },
       },
     },

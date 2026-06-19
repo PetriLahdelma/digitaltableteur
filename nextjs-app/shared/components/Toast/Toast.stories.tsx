@@ -110,7 +110,7 @@ const meta: Meta<typeof Toast> = {
       description: "Semantic colour.",
       table: {
         category: "State",
-        type: { summary: '"success" | "error" | "warning" | "info"' },
+        type: { summary: "\"success\" | \"error\" | \"warning\" | \"info\"" },
         defaultValue: { summary: "info" },
       },
     },
@@ -123,7 +123,7 @@ const meta: Meta<typeof Toast> = {
       description: "Size variant (v1.1.0+)",
       table: {
         category: "Appearance",
-        type: { summary: '"sm" | "md" | "lg"' },
+        type: { summary: "\"sm\" | \"md\" | \"lg\"" },
         defaultValue: { summary: "md" },
       },
     },
