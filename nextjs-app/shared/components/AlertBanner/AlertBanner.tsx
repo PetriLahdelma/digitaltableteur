@@ -32,13 +32,18 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
   description,
   dismissible = false,
   onDismiss,
-  "aria-live": ariaLive = "polite",
+  "aria-live": ariaLive,
 }) => {
+  // Error banners must interrupt assistive tech (role=alert / assertive);
+  // other tones are polite status updates. An explicit aria-live prop wins.
+  const isError = tone === "error";
+  const role = isError ? "alert" : "status";
+  const liveRegion = ariaLive ?? (isError ? "assertive" : "polite");
   return (
     <div
       className={`${styles.banner} ${styles[tone]}`.trim()}
-      role="status"
-      aria-live={ariaLive}
+      role={role}
+      aria-live={liveRegion}
     >
       <Icon name={toneIcon[tone]} ariaLabel={tone} size="md" />
       <div className={styles.content}>

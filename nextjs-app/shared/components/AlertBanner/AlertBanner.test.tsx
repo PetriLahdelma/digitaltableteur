@@ -75,6 +75,18 @@ describe("AlertBanner", () => {
     );
   });
 
+  it("error tone announces assertively via role=alert", () => {
+    render(<AlertBanner tone="error" title="Something failed" />);
+    const banner = screen.getByRole("alert");
+    expect(banner).toHaveAttribute("aria-live", "assertive");
+  });
+
+  it("non-error tone stays a polite status region", () => {
+    render(<AlertBanner tone="success" title="Saved" />);
+    const banner = screen.getByRole("status");
+    expect(banner).toHaveAttribute("aria-live", "polite");
+  });
+
   it("renders description as React node", () => {
     render(
       <AlertBanner
