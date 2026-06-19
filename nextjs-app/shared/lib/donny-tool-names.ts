@@ -46,7 +46,3 @@ export function adaptToolRecordKeys<T extends Record<string, unknown>>(
   }
   return adapted;
 }
-
-export function adaptPromptForOpenAiToolNames(text: string): string {
-  return text.replace(/\bstudio\.([a-zA-Z0-9_]+)/g, "studio_$1");
-}

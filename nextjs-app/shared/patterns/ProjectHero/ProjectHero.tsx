@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";

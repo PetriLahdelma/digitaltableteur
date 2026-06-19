@@ -7,7 +7,6 @@ import styles from "./Header.module.css";
 import "../../styles/variables.css";
 import "../../styles/fonts.css";
 import Logo from "../../assets/images/01jy60fd46fxwvk450w70bmyzm_1750401080.webp";
-import LogoOutline from "../../../public/dt-outline.svg";
 import { type Theme } from "@dt/ThemeProvider";
 import { useTranslation } from "react-i18next";
 import { usePersistentTheme } from "../../hooks/usePersistentTheme";

@@ -22,10 +22,6 @@
   font-size: 1.5rem;
 }
 
-.icon {
-  font-size: 0.75em; /* 12px */
-}
-
 .externalIcon {
   display: inline-flex;
   align-items: center;
@@ -41,10 +37,4 @@
   outline: var(--focus-ring-width, 2px) solid
     var(--focus-ring-color, var(--color-primary));
   outline-offset: 2px;
-}
-
-.link.disabled {
-  color: var(--color-gray-medium);
-  pointer-events: none;
-  opacity: 0.5;
 }

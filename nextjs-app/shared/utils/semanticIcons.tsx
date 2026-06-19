@@ -1,4 +1,3 @@
-import React from "react";
 import Icon, { type IconProps } from "@dt/Icon";
 
 export type SemanticStatus = "success" | "info" | "warning" | "error";
