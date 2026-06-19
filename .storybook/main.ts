@@ -178,10 +178,36 @@ const config: StorybookConfig = {
       ]),
     );
 
-    // Define process.env for Next.js Image component
+    // SECURITY: only inline non-secret env vars that the bundled client code
+    // actually reads. Inlining the whole `process.env` (with .env.local loaded
+    // above) baked secrets — API keys, tokens, the Mongo URI, the CV password —
+    // into the deployed storybook-static bundle, because at every `process.env.X`
+    // site Vite replaced `process.env` with the full env object. Bare
+    // `process.env` now resolves to `{}`, so any unlisted var (every secret) is
+    // `undefined` in the bundle rather than exposed. Allow only what the preview
+    // and stories use: NODE_ENV, a few test/CI toggles, and the public-by-
+    // convention NEXT_PUBLIC_ / STORYBOOK_ / DT_ families.
+    const isSafeEnvKey = (key: string): boolean =>
+      key === "NODE_ENV" ||
+      key === "CI" ||
+      key === "VITEST" ||
+      key === "TARGET_URL" ||
+      key.startsWith("NEXT_PUBLIC_") ||
+      key.startsWith("STORYBOOK_") ||
+      key.startsWith("DT_");
+    const safeEnvDefines = Object.fromEntries(
+      Object.entries(process.env)
+        .filter(
+          ([key, value]) => isSafeEnvKey(key) && typeof value === "string",
+        )
+        .map(([key, value]) => [`process.env.${key}`, JSON.stringify(value)]),
+    );
     config.define = {
       ...(config.define || {}),
-      "process.env": JSON.stringify(process.env),
+      ...safeEnvDefines,
+      // Bare `process.env` reads resolve to an empty object literal (a valid
+      // esbuild define value): unlisted vars become `undefined`, no leakage.
+      "process.env": "{}",
       "process.env.NODE_ENV": JSON.stringify(
         process.env.NODE_ENV || "development",
       ),
