@@ -221,13 +221,24 @@
   line-height: 0;
 }
 
-/* The button owns its icon size so every icon source renders consistently —
-   a Phosphor element (width="1em" + a utility class), an @dt Icon, or a raw
-   svg. CSS width/height beat the intrinsic 1em and any utility class. */
+/* The button supplies a DEFAULT icon size (via --btn-icon-size) so every icon
+   source renders at a sensible size out of the box — a Phosphor element
+   (width="1em"), an @dt Icon, or a raw svg — including in Storybook, where the
+   icon would otherwise collapse to its intrinsic size. This sits in
+   @layer components so a consumer's Tailwind size utility on the icon (e.g.
+   SiteHeader's `size-5`, emitted into @layer utilities) wins by layer order;
+   string @dt Icons and unsized element icons carry no utility, so they keep
+   this default. (Specificity can't achieve this: a CSS-module rule is unlayered
+   and would beat any utility regardless of selector weight.) */
+
+@layer components {
+  .button .icon svg {
+    width: var(--btn-icon-size, 1.25rem);
+    height: var(--btn-icon-size, 1.25rem);
+  }
+}
 
 .button .icon svg {
-  width: var(--btn-icon-size, 1.25rem);
-  height: var(--btn-icon-size, 1.25rem);
   flex-shrink: 0;
 }
 

@@ -220,7 +220,7 @@ export function MobileDrawer({
               {t("navMenuTheme")}
             </span>
             <IconButton
-              icon={<ThemeIcon weight="bold" className="size-5" />}
+              icon={<ThemeIcon weight="bold" className="size-4" />}
               label={t("navMenuThemeToggle")}
               onClick={onThemeToggle}
               variant="outline"
