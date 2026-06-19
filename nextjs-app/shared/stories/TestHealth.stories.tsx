@@ -476,19 +476,19 @@ const TestHealthOverview = () => {
           <h2>{t("dashboardVitestHeading")}</h2>
           <p>{t("dashboardVitestDescription")}</p>
           <div className={styles.badgeRow}>
-            <Badge design="secondary">
+            <Badge variant="secondary">
               {(metricsData as any).vitest?.totalSuites ?? 78}{" "}
               {t("dashboardSuites")}
             </Badge>
-            <Badge design="secondary">
+            <Badge variant="secondary">
               {(metricsData as any).vitest?.totalTests ?? 442}{" "}
               {t("dashboardTotalTests")}
             </Badge>
-            <Badge design="primary" state="success">
+            <Badge variant="primary" tone="success">
               {(metricsData as any).vitest?.passedTests ?? 440}{" "}
               {t("dashboardPassed")}
             </Badge>
-            <Badge design="primary" state="error">
+            <Badge variant="primary" tone="error">
               {(metricsData as any).vitest?.failedTests ?? 2}{" "}
               {t("dashboardFailed")}
             </Badge>
@@ -499,17 +499,17 @@ const TestHealthOverview = () => {
           <h2>{t("dashboardA11yHeading")}</h2>
           <p>{t("dashboardA11yDescription")}</p>
           <div className={styles.badgeRow}>
-            <Badge design="secondary">
+            <Badge variant="secondary">
               {(metricsData as any).accessibilityPages?.total ?? 128}{" "}
               {t("dashboardTotalRoutes")}
             </Badge>
-            <Badge design="primary" state="success">
+            <Badge variant="primary" tone="success">
               {(metricsData as any).accessibilityPages?.passed ??
                 (metricsData as any).a11y?.passes ??
                 128}{" "}
               {t("dashboardPassed")}
             </Badge>
-            <Badge design="primary" state="error">
+            <Badge variant="primary" tone="error">
               {(metricsData as any).accessibilityPages?.failed ??
                 (metricsData as any).a11y?.violations ??
                 0}{" "}
@@ -522,15 +522,15 @@ const TestHealthOverview = () => {
           <h2>{t("dashboardStorybookHeading")}</h2>
           <p>{t("dashboardStoriesDescription")}</p>
           <div className={styles.badgeRow}>
-            <Badge design="secondary">
+            <Badge variant="secondary">
               {(metricsData as any).accessibilityStories?.total ?? 240}{" "}
               {t("dashboardTotalStories")}
             </Badge>
-            <Badge design="primary" state="success">
+            <Badge variant="primary" tone="success">
               {(metricsData as any).accessibilityStories?.passed ?? 240}{" "}
               {t("dashboardPassed")}
             </Badge>
-            <Badge design="primary" state="error">
+            <Badge variant="primary" tone="error">
               {(metricsData as any).accessibilityStories?.failed ?? 0}{" "}
               {t("dashboardFailed")}
             </Badge>
@@ -575,8 +575,8 @@ const TestHealthOverview = () => {
           </div>
           <div className={styles.visualMeta}>
             <Badge
-              design="primary"
-              state={visualDiffCount > 0 ? "warning" : "success"}
+              variant="primary"
+              tone={visualDiffCount > 0 ? "warning" : "success"}
             >
               {t("dashboardVisualChangeCount", { count: visualDiffCount })}
             </Badge>
@@ -587,9 +587,9 @@ const TestHealthOverview = () => {
             ) : null}
             {visualError ? (
               <Badge
-                design="primary"
-                state="info"
-                size="m"
+                variant="primary"
+                tone="info"
+                size="md"
                 icon={<Icon name="info" ariaLabel="Info" />}
                 title={visualError}
               >
