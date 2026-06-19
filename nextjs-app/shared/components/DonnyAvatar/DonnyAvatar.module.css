@@ -16,7 +16,7 @@
 /* Dark theme: white body + brand purple features for contrast on purple/dark surfaces */
 :global(.themeDark) .container {
   --donny-primary: #fff;
-  --donny-eyes: var(--logo-background, var(--accent-purple, #812eff));
+  --donny-eyes: var(--logo-background, var(--accent-purple));
 }
 
 .avatar {
@@ -507,9 +507,9 @@
   position: absolute;
   z-index: 1;
   padding: 0.125rem 0.375rem;
-  border: 1px solid var(--color-border, #e0e0e0);
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
-  background: var(--color-surface, #fff);
+  background: var(--color-surface);
   box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
   font-family: var(--font-mono, monospace);
   font-size: 0.625rem;

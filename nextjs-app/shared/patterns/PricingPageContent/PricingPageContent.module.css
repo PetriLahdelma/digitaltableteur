@@ -202,7 +202,7 @@
   width: 100%;
   padding-block: var(--space-layout-96);
   background-color: var(--color-primary);
-  color: var(--inverted-text-color, #fff);
+  color: var(--inverted-text-color);
 }
 
 @media (width >= 1024px) {
@@ -242,7 +242,7 @@
 
 .testimonial .testimonialQuote {
   margin: 0;
-  color: var(--inverted-text-color, #fff);
+  color: var(--inverted-text-color);
 }
 
 /* Hung opening quote — straight typographic left edge on body text */

@@ -3027,10 +3027,10 @@
       "text": "Expected variable, function or keyword for \"#0a2530\" of \"background-color\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::56::45::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::56::39::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 56,
-      "column": 45,
+      "column": 39,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
@@ -3045,10 +3045,10 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::58::42::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::58::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 58,
-      "column": 42,
+      "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
@@ -3081,19 +3081,19 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::69::42::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::69::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 69,
-      "column": 42,
+      "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::73::45::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::73::39::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 73,
-      "column": 45,
+      "column": 39,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
@@ -3117,10 +3117,10 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::76::34::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::76::28::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 76,
-      "column": 34,
+      "column": 28,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
@@ -3153,10 +3153,10 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::87::34::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::87::28::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 87,
-      "column": 34,
+      "column": 28,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"

@@ -176,7 +176,6 @@ export const Hero: React.FC<HeroProps> = ({
               fill
               className={styles.heroImage}
               priority
-              style={{ objectFit: "cover" }}
             />
           )}
         </div>
@@ -276,7 +275,6 @@ export const Hero: React.FC<HeroProps> = ({
                 fill
                 className={styles.heroImage}
                 priority
-                style={{ objectFit: "cover" }}
               />
             )}
           </div>

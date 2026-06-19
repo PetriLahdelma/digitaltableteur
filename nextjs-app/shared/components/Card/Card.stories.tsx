@@ -428,7 +428,7 @@ export const WithCustomBadge = {
       <Icon
         name="star"
         ariaLabel="star"
-        style={{ color: "var(--color-warning, #fbbf24)" }}
+        style={{ color: "var(--color-warning)" }}
       />
     ),
     body: "Custom React element as badge content.",

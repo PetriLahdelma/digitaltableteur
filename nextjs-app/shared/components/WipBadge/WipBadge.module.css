@@ -17,11 +17,11 @@
   border-radius: var(--radius-sm, 4px);
   background: var(
     --color-surface-elevated,
-    var(--main-body-background-color, #fff)
+    var(--main-body-background-color)
   );
   box-shadow: 0 0 0 1px var(--color-border-light), 0 2px 4px rgb(0 0 0 / 12%);
   font-size: var(--font-size-text-s);
-  color: var(--color-text, #111);
+  color: var(--color-text);
   pointer-events: auto;
 }
 
@@ -44,10 +44,10 @@
      through the label. Mirrors the canvas variant's surface fill. */
   background: var(
     --color-surface-elevated,
-    var(--main-body-background-color, #fff)
+    var(--main-body-background-color)
   );
   box-shadow: 0 0 0 1px rgb(0 0 0 / 8%), 0 8px 24px rgb(15 23 42 / 12%);
   font-size: var(--font-size-text-s);
-  color: var(--color-text, #111);
+  color: var(--color-text);
   pointer-events: auto;
 }

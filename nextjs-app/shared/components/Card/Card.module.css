@@ -6,7 +6,7 @@
   --card-container-surface-tint: transparent;
   --card-outline-color: var(--color-primary);
   --card-outline-width: 2px;
-  --card-filled-bg: var(--color-light-bg, #f9f9f9);
+  --card-filled-bg: var(--color-light-bg);
 
   /* Sophisticated Shadow System (layered depth) */
   --card-shadow-sm:
@@ -325,7 +325,7 @@
 .description {
   margin: 0;
   line-height: 1.5;
-  color: var(--color-primary, rgb(0 0 0 / 65%));
+  color: var(--color-primary);
 }
 
 /* Footer Actions */
@@ -393,7 +393,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .interactive:hover {
-    background: var(--color-light-bg, #f7f7f7);
+    background: var(--color-light-bg);
     box-shadow: var(--card-shadow-lg);
   }
 }
@@ -476,14 +476,14 @@
 
 .statusError {
   border-color: var(--color-error-border, rgb(239 68 68 / 20%));
-  background-color: var(--color-error-bg, rgb(239 68 68 / 10%));
+  background-color: var(--color-error-bg);
   color: var(--color-error);
 }
 
 .statusWarning {
   border-color: var(--color-warning-border, rgb(245 158 11 / 20%));
   background-color: var(--color-warning-bg, rgb(245 158 11 / 10%));
-  color: var(--color-warning-text, #8d5a00);
+  color: var(--color-warning-text);
 }
 
 /* Border Variants */

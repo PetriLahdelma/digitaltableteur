@@ -104,8 +104,8 @@ const ChatWidgetStoryDemo = () => {
       style={{
         minHeight: "100vh",
         padding: "2rem",
-        background: "var(--main-body-background-color, #f5f5f5)",
-        color: "var(--color-text, #111)",
+        background: "var(--main-body-background-color)",
+        color: "var(--color-text)",
       }}
     >
       <div style={{ maxWidth: "32rem", marginBottom: "6rem" }}>
