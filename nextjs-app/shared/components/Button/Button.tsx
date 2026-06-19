@@ -224,16 +224,34 @@ const Button = React.forwardRef<
     );
 
     if (isLink) {
-      const { href, target, rel, ...linkRest } = rest as ButtonAsLink;
+      const { href, target, rel, onClick, ...linkRest } = rest as ButtonAsLink;
+      // A disabled/loading link must not navigate: drop href (so there is no
+      // target for mouse, keyboard, or programmatic activation), remove it from
+      // the tab order, keep it announced as a disabled link, and swallow clicks.
+      const linkDisabled = disabled || loading;
       return (
         <a
           ref={ref as React.Ref<HTMLAnchorElement>}
-          href={href}
-          target={target}
-          rel={rel || (target === "_blank" ? "noopener noreferrer" : undefined)}
-          aria-disabled={disabled || loading || undefined}
           {...commonProps}
           {...linkRest}
+          href={linkDisabled ? undefined : href}
+          target={linkDisabled ? undefined : target}
+          rel={
+            linkDisabled
+              ? undefined
+              : rel || (target === "_blank" ? "noopener noreferrer" : undefined)
+          }
+          role={linkDisabled ? "link" : undefined}
+          aria-disabled={linkDisabled || undefined}
+          tabIndex={linkDisabled ? -1 : undefined}
+          onClick={
+            linkDisabled
+              ? (event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+              : onClick
+          }
         >
           {content}
         </a>

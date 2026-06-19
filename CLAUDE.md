@@ -78,7 +78,7 @@ export default async function Page({ params }: Props) {
 
 **Framer Motion + Strict Mode:** wrap in `<AnimatePresence mode="wait">` with unique `key`.
 
-**react-icons:** pinned at **5.5.0** (5.6 drops Adobe SI icons on work pages).
+**react-icons:** pinned **exact** at `5.5.0` (no caret in package.json). 5.6 drops Simple Icons (`react-icons/si`) used on Work pages; do not bump without re-verifying those imports.
 
 **OG images:** use colocated `opengraph-image.tsx`; do not set `logo512.png` in page metadata.
 
