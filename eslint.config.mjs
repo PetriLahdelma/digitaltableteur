@@ -26,7 +26,6 @@ export default [
       ".sanity/",
       ".history/",
       "__visual__/",
-      "debug-env.js",
       "digitaltableteur-blog/",
       "node_modules/",
       "private/",
