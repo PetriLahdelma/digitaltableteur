@@ -140,7 +140,7 @@ export const CtaBands: Story = {
       lead={
         <>
           Decision: add <code>surface=&quot;onDark&quot; | &quot;onBrand&quot;</code> on @dt/Button
-          (static CSS). Do not use <code>isInverse</code> on primary for gradient bands. More
+          (static CSS) for gradient bands rather than ad-hoc color inversion. More
           boards: Storybook → <strong>Design system / Migration boards</strong> → Review hub.
         </>
       }

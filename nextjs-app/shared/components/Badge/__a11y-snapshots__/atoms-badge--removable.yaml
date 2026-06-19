@@ -1,4 +1,2 @@
-- status: Work in progress (beta)
 - text: Removable Badge
-- button "Remove badge":
-  - img "Remove badge"
+- button "Remove badge"

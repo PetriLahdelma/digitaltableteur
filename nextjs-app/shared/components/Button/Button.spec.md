@@ -3,47 +3,46 @@
 ## Intent
 Provide the canonical "act" or "navigate-as-action" affordance for the site.
 Button is the primary control consumers reach for when they want a user to do
-something — submit a form, open a flow, head somewhere intentional. The
-visual hierarchy (primary / secondary / tertiary) and the semantic severity
-modes (error / warning / success / info) encode importance without forcing
-the consumer to author parallel components.
+something: submit a form, open a flow, head somewhere intentional. Two
+orthogonal axes encode meaning without parallel components: `variant` sets
+visual weight (primary / secondary / tertiary) and `tone` sets semantic colour
+(neutral / error / warning / success / info).
 
 ## Interaction contract
 - Keyboard: Enter and Space activate; tab order follows DOM order. The
   component never traps or rebinds keys.
-- Pointer: hover and active states have explicit visual feedback per
-  variant; loading state suppresses click handlers and surfaces a pulse.
+- Pointer: hover feedback is gated to fine pointers; `:active` gives a
+  `scale(0.97)` press confirmation; loading suppresses interaction.
 - Screen readers: accessible name resolves from `accessibleName`,
-  `accessibleNameRef`, or visible `children`; `aria-busy` is announced
-  while loading; `aria-disabled` is announced in link mode (anchor) when
-  disabled. Inverse mode is purely visual and adds no SR semantics.
+  `accessibleNameRef`, or visible `children`; `aria-busy` is announced while
+  loading; `aria-disabled` is announced in link mode (anchor) when disabled.
+  `surface` is purely visual and adds no screen-reader semantics.
 
 ## Do / don't
-- Do: use `submits` (not raw `type="submit"`) for form submission so the
-  contract is grep-able across the codebase.
+- Do: use `submits` (not raw `type="submit"`) so form submission is grep-able.
 - Do: pass `href` to render the same visual as an anchor when the destination
   is a URL, not a handler.
+- Do: compose destructive actions as `variant` + `tone="error"` rather than a
+  bespoke variant.
 - Do: provide `accessibleName` on icon-only buttons. The dev-mode warning
   catches missing names locally; production must not ship without one.
-- Don't: pair an icon-only button with a tooltip as the *only* accessible
-  name on mobile — tooltips don't fire on touch. Use `accessibleName` too.
-- Don't: nest a Button inside another interactive control. Buttons are
-  terminal — use a parent `Card` with a single primary action instead.
+- Don't: pair an icon-only button with a tooltip as the *only* accessible name
+  on mobile; tooltips don't fire on touch. Use `accessibleName` too.
+- Don't: nest a Button inside another interactive control. Buttons are terminal.
 - Don't: use a Button for inline navigation in body copy. Use **Link**.
 
 ## Design notes
-- Tokens: variants pull from `--color-primary`, `--color-secondary`,
-  `--color-warning-text`, `--color-white`, and the matching contrast tokens
-  in `variables.css`. Spacing uses `--space-internal-8` (block) and
-  `--space-internal-16` (inline). Radius is `--radius-lg` (rounded mode
-  bumps to `--radius-pill`).
-- Figma: https://www.figma.com/design/digitaltableteur/button — keep
-  variant naming aligned with the Figma component set so designer handoff
-  is mechanical.
-- Inverse mode samples the nearest non-transparent ancestor background at
-  mount and sets `--dt-button-inverse-fg` inline. This works for arbitrary
-  nesting depth and updates on resize, scroll, and DOM mutations on the
-  ancestor chain.
-- Size normalisation: `s` / `m` / `l` legacy values map to `sm` / `md` /
-  `lg` so older consumers continue to compile. New code should use the
-  modern names.
+- Colour: a single `--btn-accent` (with `--btn-on-accent`) drives every
+  variant/tone pairing; `tone` only recolours the accent, so the variant x tone
+  matrix stays consistent. Filled `primary` darkens on hover via
+  `filter: brightness`; `secondary` / `tertiary` tint via `color-mix`.
+- Motion: easing and duration come from `--ease-*` / `--duration-*` tokens;
+  transitions name explicit properties (no `transition: all`); the `:active`
+  press and movement are suppressed under `prefers-reduced-motion`.
+- Surface: `surface="onDark" | "onBrand"` swaps to contrast-safe colours via
+  static CSS, with no ancestor background sampling.
+- Spacing: `--space-internal-*`; radius `--radius-lg` (pill in rounded mode).
+- Size: `sm | md | lg`; touch targets grow to at least 44px under
+  `(width <= 768px)`.
+- Figma: keep variant/tone naming aligned with the Figma component set so
+  designer handoff is mechanical.

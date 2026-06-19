@@ -33,7 +33,7 @@
   /* `--color-text-muted` is not a published token in `variables.css`; fall back
    * to the theme-aware secondary text token so contrast stays >=4.5:1 in
    * light (#041b23), dark (#aaa), and forced-colors (CanvasText) modes. */
-  color: var(--secondary-text-color, #4b5563);
+  color: var(--secondary-text-color);
   inset-block-start: 100%;
   inset-inline-end: var(--space-internal-8);
 }

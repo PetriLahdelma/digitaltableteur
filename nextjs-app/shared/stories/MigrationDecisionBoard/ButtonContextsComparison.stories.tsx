@@ -30,7 +30,7 @@ export const AllContexts: Story = {
         <>
           Decision: migrate with <code>surface=default</code> on light cards. Map
           shadcn <code>ghost</code> → <code>tertiary</code>, <code>outline</code> →{" "}
-          <code>secondary</code>. Icon-only uses <code>isRounded</code> +{" "}
+          <code>secondary</code>. Icon-only uses <code>rounded</code> +{" "}
           <code>accessibleName</code>.
         </>
       }
@@ -92,20 +92,20 @@ export const AllContexts: Story = {
         </MigrationDecisionBlock>
         <MigrationDecisionBlock
           variant="proposed"
-          title="Proposed — @dt icon-only + isRounded"
+          title="Proposed — @dt icon-only + rounded"
         >
           <DtButton
             accessibleName="Share"
             variant="tertiary"
             size="sm"
-            isRounded
+            rounded
             icon={<Share className="h-5 w-5" aria-hidden />}
           />
           <DtButton
             accessibleName="Share"
             variant="secondary"
             size="sm"
-            isRounded
+            rounded
             icon={<Share className="h-5 w-5" aria-hidden />}
           />
         </MigrationDecisionBlock>

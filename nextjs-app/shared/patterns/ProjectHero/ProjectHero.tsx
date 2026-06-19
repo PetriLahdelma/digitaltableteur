@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { gsap, useGSAP } from "@/nextjs-app/shared/lib/gsap";
@@ -198,7 +198,7 @@ export function ProjectHero({
                   <p
                     className={cn(
                       "font-body text-lg tablet:text-xl",
-                      "text-muted-foreground",
+                      "text-foreground",
                       "max-w-xl leading-relaxed",
                     )}
                   >
@@ -215,7 +215,7 @@ export function ProjectHero({
                       <span
                         key={tag}
                         data-tag
-                        className="px-2.5 py-1 text-xs font-body text-foreground/80 bg-foreground/8 rounded-full"
+                        className="px-2.5 py-1 text-xs font-body text-foreground bg-foreground/8 rounded-full"
                       >
                         {tag}
                       </span>
@@ -231,7 +231,7 @@ export function ProjectHero({
                     href={liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors pt-2"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-foreground/80 transition-colors pt-2"
                   >
                     Visit Live Site
                     <svg
@@ -346,7 +346,7 @@ export function ProjectHero({
                 <p
                   className={cn(
                     "font-body text-lg tablet:text-xl",
-                    isFullWidth ? "text-white/80" : "text-muted-foreground",
+                    isFullWidth ? "text-white/80" : "text-foreground",
                     "max-w-2xl leading-relaxed",
                   )}
                 >
@@ -367,7 +367,7 @@ export function ProjectHero({
                         "px-2.5 py-1 text-xs font-body rounded-full",
                         isFullWidth
                           ? "bg-white/10 text-white/90"
-                          : "text-foreground/80 bg-foreground/8",
+                          : "text-foreground bg-foreground/8",
                       )}
                     >
                       {tag}
@@ -388,7 +388,7 @@ export function ProjectHero({
                     "inline-flex items-center gap-2 text-sm font-medium transition-colors pt-2",
                     isFullWidth
                       ? "text-white hover:text-white/80"
-                      : "text-primary hover:text-primary/80",
+                      : "text-foreground hover:text-foreground/80",
                   )}
                 >
                   Visit Live Site

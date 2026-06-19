@@ -136,11 +136,11 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
       </div>
       <div className={styles.border} aria-hidden="true" />
       <div className={styles.container}>
-        <div className={styles.content}>
+        <div className={styles.copy}>
           {overline && (
             <Text
               as="span"
-              size="S"
+              size="s"
               terminals="sans"
               className={styles.overline}
             >
@@ -149,7 +149,7 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
           )}
           <Title
             level={2}
-            size="L"
+            size="l"
             terminals="sans"
             lineHeight="tight"
             className={styles.title}
@@ -158,7 +158,7 @@ const HighlightSection: React.FC<HighlightSectionProps> = ({
           </Title>
           <Text
             as="p"
-            size="L"
+            size="l"
             terminals="sans"
             lineHeight="relaxed"
             className={styles.description}

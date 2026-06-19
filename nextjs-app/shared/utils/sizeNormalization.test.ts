@@ -43,34 +43,34 @@ describe("sizeNormalization", () => {
   });
 
   describe("normalizeTitleSize", () => {
-    it("should normalize modern lowercase to legacy uppercase", () => {
-      expect(normalizeTitleSize("xxs")).toBe("XXS");
-      expect(normalizeTitleSize("xs")).toBe("XS");
-      expect(normalizeTitleSize("sm")).toBe("S");
-      expect(normalizeTitleSize("md")).toBe("M");
-      expect(normalizeTitleSize("lg")).toBe("L");
-      expect(normalizeTitleSize("xl")).toBe("XL");
-      expect(normalizeTitleSize("xxl")).toBe("XXL");
+    it("should map modern and control aliases to the typography scale", () => {
+      expect(normalizeTitleSize("xxs")).toBe("xxs");
+      expect(normalizeTitleSize("xs")).toBe("xs");
+      expect(normalizeTitleSize("sm")).toBe("s");
+      expect(normalizeTitleSize("md")).toBe("m");
+      expect(normalizeTitleSize("lg")).toBe("l");
+      expect(normalizeTitleSize("xl")).toBe("xl");
+      expect(normalizeTitleSize("xxl")).toBe("xxl");
     });
 
-    it("should pass through legacy uppercase unchanged", () => {
-      expect(normalizeTitleSize("XXS")).toBe("XXS");
-      expect(normalizeTitleSize("XS")).toBe("XS");
-      expect(normalizeTitleSize("S")).toBe("S");
-      expect(normalizeTitleSize("M")).toBe("M");
-      expect(normalizeTitleSize("L")).toBe("L");
-      expect(normalizeTitleSize("XL")).toBe("XL");
-      expect(normalizeTitleSize("XXL")).toBe("XXL");
+    it("should map legacy uppercase to the typography scale", () => {
+      expect(normalizeTitleSize("XXS")).toBe("xxs");
+      expect(normalizeTitleSize("XS")).toBe("xs");
+      expect(normalizeTitleSize("S")).toBe("s");
+      expect(normalizeTitleSize("M")).toBe("m");
+      expect(normalizeTitleSize("L")).toBe("l");
+      expect(normalizeTitleSize("XL")).toBe("xl");
+      expect(normalizeTitleSize("XXL")).toBe("xxl");
     });
 
-    it("should return default 'M' when size is undefined", () => {
-      expect(normalizeTitleSize()).toBe("M");
-      expect(normalizeTitleSize(undefined)).toBe("M");
+    it("should return default 'm' when size is undefined", () => {
+      expect(normalizeTitleSize()).toBe("m");
+      expect(normalizeTitleSize(undefined)).toBe("m");
     });
 
-    it("should return default 'M' for invalid sizes", () => {
-      expect(normalizeTitleSize("invalid" as any)).toBe("M");
-      expect(normalizeTitleSize("huge" as any)).toBe("M");
+    it("should return default 'm' for invalid sizes", () => {
+      expect(normalizeTitleSize("invalid" as any)).toBe("m");
+      expect(normalizeTitleSize("huge" as any)).toBe("m");
     });
   });
 
@@ -196,9 +196,9 @@ describe("sizeNormalization", () => {
       const normalizedLegacy = normalizeTitleSize(legacyTitleSize);
       const normalizedModern = normalizeTitleSize(modernTitleSize);
 
-      // Both should normalize to legacy format for Title component
-      expect(normalizedLegacy).toBe("L");
-      expect(normalizedModern).toBe("L");
+      // Both normalize to the lowercase typography scale Title accepts.
+      expect(normalizedLegacy).toBe("l");
+      expect(normalizedModern).toBe("l");
     });
 
     it("should provide type-safe conversions", () => {

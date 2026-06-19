@@ -30,7 +30,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
           return (
             <li key={`${item.label}-${idx}`} className={styles.item}>
               {item.href && !isLast ? (
-                <Link href={item.href} size="S" className={styles.link}>
+                <Link href={item.href} size="sm" className={styles.link}>
                   {item.label}
                 </Link>
               ) : (

@@ -17,17 +17,17 @@ export default function CodeWindowDemoPage() {
   return (
     <Container size="lg" className={styles.page}>
       <header className={styles.header}>
-        <Title level={1} size="L" terminals="serif">
+        <Title level={1} size="l" terminals="serif">
           Code Window Demo
         </Title>
-        <Text as="p" size="M">
+        <Text as="p" size="m">
           This page showcases the macOS-style code block window with Shiki-ready
           markup, copy controls, and line numbers.
         </Text>
       </header>
 
       <section className={styles.section}>
-        <Title level={2} size="M" terminals="serif">
+        <Title level={2} size="m" terminals="serif">
           TypeScript + Title
         </Title>
         <CodeBlockWindow
@@ -40,14 +40,14 @@ export default function CodeWindowDemoPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} size="M" terminals="serif">
+        <Title level={2} size="m" terminals="serif">
           Bash / Curl
         </Title>
         <CodeBlockWindow language="bash">{fixture.bash}</CodeBlockWindow>
       </section>
 
       <section className={styles.section}>
-        <Title level={2} size="M" terminals="serif">
+        <Title level={2} size="m" terminals="serif">
           JSON Payload
         </Title>
         <CodeBlockWindow title="payload.json" language="json">
@@ -56,7 +56,7 @@ export default function CodeWindowDemoPage() {
       </section>
 
       <section className={styles.section}>
-        <Title level={2} size="M" terminals="serif">
+        <Title level={2} size="m" terminals="serif">
           Long Line (Scroll)
         </Title>
         <CodeBlockWindow title="long-line.ts" language="ts">
@@ -65,7 +65,7 @@ export default function CodeWindowDemoPage() {
       </section>
 
       <section className={`${styles.section} ${styles.darkPreview} themeDark`}>
-        <Title level={2} size="M" terminals="serif">
+        <Title level={2} size="m" terminals="serif">
           Dark Mode Preview
         </Title>
         <CodeBlockWindow

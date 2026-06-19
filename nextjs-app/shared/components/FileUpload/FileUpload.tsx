@@ -223,9 +223,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
         <Button
           type="button"
           variant="secondary"
-          size="m"
+          size="md"
           onClick={handleBrowseClick}
-          isDisabled={disabled}
+          disabled={disabled}
         >
           {uploadButtonLabel}
         </Button>
@@ -233,9 +233,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
           <Button
             type="button"
             variant="tertiary"
-            size="s"
+            size="sm"
             onClick={handleClear}
-            isDisabled={disabled}
+            disabled={disabled}
           >
             {clearButtonLabel}
           </Button>

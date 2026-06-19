@@ -163,8 +163,20 @@ export const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
   return (
     <>
       <Button
-        variant={buttonVariant}
-        inverse={inverse}
+        variant={
+          buttonVariant === "secondary" || buttonVariant === "tertiary"
+            ? buttonVariant
+            : "primary"
+        }
+        tone={
+          buttonVariant === "error" ||
+          buttonVariant === "warning" ||
+          buttonVariant === "success" ||
+          buttonVariant === "info"
+            ? buttonVariant
+            : undefined
+        }
+        surface={inverse ? "onDark" : "default"}
         onClick={() => setShowModal(true)}
       >
         {buttonText || t("downloadResumeButton")}
@@ -181,14 +193,14 @@ export const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
             <Button
               variant="secondary"
               onClick={handleClose}
-              isDisabled={loading}
+              disabled={loading}
             >
               {t("downloadResumeCancel")}
             </Button>
             <Button
               variant="primary"
               onClick={handleDownload}
-              isDisabled={loading || !isValidPassword}
+              disabled={loading || !isValidPassword}
             >
               {loading
                 ? t("downloadResumeDownloading")

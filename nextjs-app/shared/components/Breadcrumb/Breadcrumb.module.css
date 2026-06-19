@@ -4,7 +4,7 @@
   gap: 0.5rem;
   font-family: var(--font-text);
   font-size: 0.95rem;
-  color: var(--secondary-text-color, #334155);
+  color: var(--secondary-text-color);
 }
 
 .list {
@@ -25,12 +25,12 @@
 
 .separator {
   font-size: 0.9rem;
-  color: var(--color-border, #cbd5e1);
+  color: var(--color-border);
 }
 
 .link {
   text-decoration: none;
-  color: var(--link-color, #0f62fe);
+  color: var(--link-color);
 }
 
 .link:hover,
@@ -40,5 +40,5 @@
 
 .current {
   font-weight: 600;
-  color: var(--primary-text-color, #0f172a);
+  color: var(--primary-text-color);
 }

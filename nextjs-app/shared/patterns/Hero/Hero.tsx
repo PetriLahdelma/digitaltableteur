@@ -96,7 +96,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div className={styles.heroText}>
         <Title
           level={titleLevel}
-          size="XL"
+          size="xl"
           terminals="sans"
           className={styles.heroTitle}
         >
@@ -105,7 +105,7 @@ export const Hero: React.FC<HeroProps> = ({
 
         {subtitle && (
           <Text
-            size="L"
+            size="l"
             terminals="sans"
             className={styles.heroSubtitle}
             as="p"
@@ -115,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({
         )}
 
         {description && (
-          <Text size="M" className={styles.heroDescription} as="p">
+          <Text size="m" className={styles.heroDescription} as="p">
             {description}
           </Text>
         )}
@@ -132,8 +132,8 @@ export const Hero: React.FC<HeroProps> = ({
                   >
                     <Button
                       variant={action.variant || "primary"}
-                      size={action.size || "l"}
-                      inverse={action.inverse}
+                      size={action.size === "s" ? "sm" : action.size === "m" ? "md" : "lg"}
+                      surface={action.inverse ? "onDark" : "default"}
                       onClick={action.onClick}
                     >
                       {action.label}
@@ -146,8 +146,8 @@ export const Hero: React.FC<HeroProps> = ({
                 <Button
                   key={action.key}
                   variant={action.variant || "primary"}
-                  size={action.size || "l"}
-                  inverse={action.inverse}
+                  size={action.size === "s" ? "sm" : action.size === "m" ? "md" : "lg"}
+                  surface={action.inverse ? "onDark" : "default"}
                   onClick={action.onClick}
                 >
                   {action.label}
@@ -176,7 +176,6 @@ export const Hero: React.FC<HeroProps> = ({
               fill
               className={styles.heroImage}
               priority
-              style={{ objectFit: "cover" }}
             />
           )}
         </div>
@@ -195,7 +194,7 @@ export const Hero: React.FC<HeroProps> = ({
           <div className={styles.heroText}>
             <Title
               level={titleLevel}
-              size="XL"
+              size="xl"
               terminals="sans"
               className={styles.heroTitle}
             >
@@ -204,7 +203,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             {subtitle && (
               <Text
-                size="L"
+                size="l"
                 terminals="sans"
                 className={styles.heroSubtitle}
                 as="p"
@@ -214,7 +213,7 @@ export const Hero: React.FC<HeroProps> = ({
             )}
 
             {description && (
-              <Text size="M" className={styles.heroDescription} as="p">
+              <Text size="m" className={styles.heroDescription} as="p">
                 {description}
               </Text>
             )}
@@ -231,8 +230,8 @@ export const Hero: React.FC<HeroProps> = ({
                       >
                         <Button
                           variant={action.variant || "primary"}
-                          size={action.size || "l"}
-                          inverse={action.inverse}
+                          size={action.size === "s" ? "sm" : action.size === "m" ? "md" : "lg"}
+                          surface={action.inverse ? "onDark" : "default"}
                           onClick={action.onClick}
                         >
                           {action.label}
@@ -245,8 +244,8 @@ export const Hero: React.FC<HeroProps> = ({
                     <Button
                       key={action.key}
                       variant={action.variant || "primary"}
-                      size={action.size || "l"}
-                      inverse={action.inverse}
+                      size={action.size === "s" ? "sm" : action.size === "m" ? "md" : "lg"}
+                      surface={action.inverse ? "onDark" : "default"}
                       onClick={action.onClick}
                     >
                       {action.label}
@@ -276,7 +275,6 @@ export const Hero: React.FC<HeroProps> = ({
                 fill
                 className={styles.heroImage}
                 priority
-                style={{ objectFit: "cover" }}
               />
             )}
           </div>

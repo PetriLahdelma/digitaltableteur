@@ -216,7 +216,7 @@ export function NextMobileMenu({
       >
         <div className={styles.panelContent} tabIndex={-1}>
           <div className={styles.header} suppressHydrationWarning>
-            <Title size="S" level={2} className={styles.title}>
+            <Title size="s" level={2} className={styles.title}>
               {t("navMenuTitle")}
             </Title>
             <button

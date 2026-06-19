@@ -398,16 +398,16 @@ export function IllustrationsPage({ nav }: { nav?: React.ReactNode }) {
             Illustrations
           </Title>
           <FlexBox className={styles.badges} gap={8}>
-            <Badge size="s" design="secondary">
+            <Badge size="sm" variant="secondary">
               Pencil & Paper
             </Badge>
-            <Badge size="s" design="secondary">
+            <Badge size="sm" variant="secondary">
               Brush & Paint
             </Badge>
-            <Badge size="s" design="secondary">
+            <Badge size="sm" variant="secondary">
               Vector
             </Badge>
-            <Badge size="s" design="secondary">
+            <Badge size="sm" variant="secondary">
               Pixel
             </Badge>
           </FlexBox>

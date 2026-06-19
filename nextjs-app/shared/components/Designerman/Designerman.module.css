@@ -7,7 +7,7 @@
   margin: 0 auto;
   width: 100%;
   max-width: 640px;
-  border: 2px solid var(--color-border, #1f2937);
+  border: 2px solid var(--color-border);
   border-radius: var(--radius-md, 12px);
 
   /* Focus indicator for keyboard accessibility */

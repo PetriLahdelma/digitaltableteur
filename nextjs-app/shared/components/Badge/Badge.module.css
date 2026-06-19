@@ -19,12 +19,12 @@
   vertical-align: middle;
 }
 
-.s {
+.sm {
   padding: var(--space-internal-4) var(--space-internal-12);
   font-size: 0.75rem;
 }
 
-.l {
+.lg {
   padding: var(--space-internal-12) var(--space-internal-16);
   font-size: 1.25rem;
 }
@@ -45,7 +45,7 @@
   color: var(--color-primary);
 }
 
-/* Secondary badges with states should maintain no background */
+/* Secondary badges with a tone keep a transparent background. */
 
 .secondary.success {
   border-color: var(--color-success);
@@ -108,26 +108,52 @@
 }
 
 .removable .closeButton {
-  flex-shrink: 0;
+  display: inline-flex;
   margin-inline-start: 0.125rem;
   padding: 0;
-  border: none;
-  border-radius: 999px;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
   block-size: 1.125rem;
   inline-size: 1.125rem;
   min-block-size: 1.125rem;
   min-inline-size: 1.125rem;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  line-height: 0;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-instant) var(--ease-out-cubic),
+    transform var(--duration-instant) var(--ease-out-cubic);
+  appearance: none;
 }
 
-.removable .closeButton:hover {
-  background: color-mix(in srgb, currentcolor 12%, transparent);
+@media (hover: hover) and (pointer: fine) {
+  .removable .closeButton:hover {
+    background: color-mix(in srgb, currentcolor 16%, transparent);
+  }
+}
+
+.removable .closeButton:active {
+  transform: scale(0.9);
 }
 
 .removable .closeButton:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid
+    var(--focus-ring-color, currentcolor);
   outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .removable .closeButton {
+    transition: background-color var(--duration-instant) var(--ease-out-cubic);
+  }
+
+  .removable .closeButton:active {
+    transform: none;
+  }
 }
 
 .icon {
@@ -139,19 +165,19 @@
   line-height: 0;
 }
 
-.removable.s {
+.removable.sm {
   padding: var(--space-internal-2) var(--space-internal-12);
   padding-inline-end: var(--space-internal-2);
   font-size: 0.75rem;
 }
 
-.removable.m {
+.removable.md {
   padding: var(--space-internal-6) var(--space-internal-16);
   padding-inline-end: var(--space-internal-4);
   font-size: 1rem;
 }
 
-.removable.l {
+.removable.lg {
   padding: var(--space-internal-12) var(--space-internal-16);
   font-size: 1.25rem;
 }

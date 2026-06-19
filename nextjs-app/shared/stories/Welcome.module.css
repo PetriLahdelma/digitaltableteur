@@ -33,7 +33,7 @@
   gap: 0.75rem;
   border: 1px solid rgb(148 163 184 / 20%);
   border-radius: 12px;
-  background: var(--color-white, #fff);
+  background: var(--color-white);
   box-shadow: 0 10px 30px rgb(15 23 42 / 5%);
 }
 

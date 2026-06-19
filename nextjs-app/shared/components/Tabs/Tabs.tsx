@@ -1,7 +1,6 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./Tabs.module.css";
-import { normalizeSizeProp, type SizeUnified } from "../../utils/sizeNormalization";
 
 export interface TabItem {
   key: string;
@@ -15,8 +14,8 @@ export interface TabsProps {
   activeTab?: string;
   /** Default active tab shorthand */
   defaultActiveTab?: string;
-  /** Size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats */
-  size?: SizeUnified;
+  /** Size. @default "md" */
+  size?: "sm" | "md" | "lg";
 
   // EXISTING PROPS
   tabs: TabItem[];
@@ -53,17 +52,19 @@ export interface TabsProps {
  */
 
 /** Tablist navigation with keyboard support and visual variants. */
-const Tabs: React.FC<TabsProps> = ({
-  activeTab,
-  defaultActiveTab,
-  size = "md",
-  tabs,
-  onTabChange,
-  className = "",
-  variant = "default",
-}) => {
+const Tabs = forwardRef<HTMLDivElement, TabsProps>(function Tabs(
+  {
+    activeTab,
+    defaultActiveTab,
+    size = "md",
+    tabs,
+    onTabChange,
+    className = "",
+    variant = "default",
+  },
+  ref,
+) {
   const { t } = useTranslation();
-  const normalizedSize = normalizeSizeProp(size);
 
   // Tab state (uncontrolled fallback)
   const [internalTab, setInternalTab] = React.useState(
@@ -132,10 +133,11 @@ const Tabs: React.FC<TabsProps> = ({
 
   return (
     <div
+      ref={ref}
       className={[
         styles.tabs,
         styles[variant],
-        styles[`tabs--${normalizedSize}`],
+        styles[`tabs--${size}`],
         className,
       ]
         .filter(Boolean)
@@ -177,7 +179,9 @@ const Tabs: React.FC<TabsProps> = ({
       })}
     </div>
   );
-};
+});
+
+Tabs.displayName = "Tabs";
 
 /**
  * Helper to generate tabpanel props for accessibility compliance.

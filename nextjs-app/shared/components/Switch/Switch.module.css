@@ -31,11 +31,12 @@
   align-items: center;
   border: none;
   border-radius: 999px;
-  background-color: var(--switch-track-off, var(--color-border-light, #c5cbd5));
+  background-color: var(--switch-track-off, var(--color-border-light));
   cursor: pointer;
   transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    box-shadow var(--duration-fast) var(--ease-out-cubic),
+    transform var(--duration-instant) var(--ease-out-cubic);
 }
 
 /* Size variants (v1.1.0) */
@@ -56,7 +57,7 @@
 }
 
 .switch[data-checked="true"] {
-  background-color: var(--switch-track-on, var(--color-primary, #0f62fe));
+  background-color: var(--switch-track-on, var(--color-primary));
 }
 
 .switch[data-disabled="true"] {
@@ -90,8 +91,9 @@
   background-color: var(--switch-handle-bg, #fff);
   box-shadow: 0 2px 6px rgb(15 23 42 / 18%);
   transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
+    transform var(--duration-fast) var(--ease-out-cubic),
+    background-color var(--duration-fast) var(--ease-out-cubic),
+    box-shadow var(--duration-fast) var(--ease-out-cubic);
 }
 
 .switch[data-checked="true"] .handle {
@@ -100,20 +102,41 @@
   );
 }
 
+/* Press: subtle squeeze confirming the toggle. */
+
+.switch:active:not([data-disabled="true"]) {
+  transform: scale(0.96);
+}
+
+/* Hover: lift the handle slightly on pointer-capable devices. */
+
+@media (hover: hover) and (pointer: fine) {
+  .switch:hover:not([data-disabled="true"]) .handle {
+    box-shadow: 0 2px 9px rgb(15 23 42 / 28%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch,
+  .handle {
+    /* Keep colour/shadow feedback; the thumb moves instantly, no press scale. */
+    transition:
+      background-color var(--duration-fast) var(--ease-out-cubic),
+      box-shadow var(--duration-fast) var(--ease-out-cubic);
+  }
+
+  .switch:active:not([data-disabled="true"]) {
+    transform: none;
+  }
+}
+
 .spinner {
   width: 0.8rem;
   height: 0.8rem;
   border: 2px solid rgb(15 23 42 / 15%);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
-  border-top-color: var(--color-primary, #0f62fe);
-}
-
-.loadingOverlay {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background-color: transparent;
+  border-top-color: var(--color-primary);
 }
 
 .label {

@@ -100,7 +100,7 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
         {sectionTitle && (
           <Title
             level={2}
-            size="M"
+            size="m"
             terminals="sans"
             className={styles.sectionTitle}
             data-process-title
@@ -112,7 +112,7 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
         {description && (
           <div className={styles.description}>
             {typeof description === "string" ? (
-              <Text size="M">{description}</Text>
+              <Text size="m">{description}</Text>
             ) : (
               description
             )}
@@ -123,7 +123,7 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
           {phases.map((phase, index) => (
             <div key={phase.title || index} className={styles.col}>
               <Title
-                size="XS"
+                size="xs"
                 terminals="sans"
                 level={3}
                 className={styles.phaseTitle}
@@ -132,7 +132,7 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
               </Title>
               <List
                 items={phase.activities}
-                size="S"
+                size="s"
                 terminals="sans"
                 className={styles.activityList}
                 listStyleType="none"

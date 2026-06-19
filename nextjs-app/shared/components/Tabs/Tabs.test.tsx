@@ -160,11 +160,11 @@ describe("Tabs", () => {
   });
 
   it("applies variant and size classes", () => {
-    render(<Tabs tabs={defaultTabs} variant="pills" size="l" />);
+    render(<Tabs tabs={defaultTabs} variant="pills" size="lg" />);
 
     const tablist = screen.getByRole("tablist");
     expect(tablist.className).toContain("pills");
-    expect(tablist.className).toContain("l");
+    expect(tablist.className).toContain("lg");
   });
 
   it("renders underline indicator for underline variant", () => {

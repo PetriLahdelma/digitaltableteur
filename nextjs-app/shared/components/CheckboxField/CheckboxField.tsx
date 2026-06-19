@@ -37,10 +37,10 @@ export function CheckboxField({
       <Checkbox
         id={id}
         label={label}
-        isChecked={checked}
+        checked={checked}
         defaultChecked={defaultChecked}
         onCheckedChange={onCheckedChange}
-        isDisabled={disabled}
+        disabled={disabled}
         required={required}
         aria-invalid={error ? true : undefined}
       />

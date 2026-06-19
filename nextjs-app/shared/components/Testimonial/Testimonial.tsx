@@ -49,7 +49,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
 }) => {
   return (
     <blockquote className={`${styles.testimonial} ${className}`}>
-      <Text className={styles.quote} size="M">
+      <Text className={styles.quote} size="m">
         &ldquo;{quote}&rdquo;
       </Text>
       <footer className={styles.attribution}>
@@ -83,7 +83,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
               </Link>
             )}
           </div>
-          <Text size="S" className={styles.titleCompany}>
+          <Text size="s" className={styles.titleCompany}>
             {title} • {company}
           </Text>
         </div>

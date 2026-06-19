@@ -2,8 +2,10 @@
 
 import { useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 import { gsap } from "@/nextjs-app/shared/lib/gsap";
 import { useAnimationContext } from "@/providers/AnimationProvider";
+import styles from "./PageTransition.module.css";
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -22,18 +24,47 @@ export function PageTransition({ children, className }: PageTransitionProps) {
       return;
     }
 
-    if (motionPreference === "reduced" || !containerRef.current) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    // Animate in the new page content
-    gsap.fromTo(
-      containerRef.current,
-      { opacity: 0, y: 12 },
-      { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+    gsap.killTweensOf(container);
+
+    if (motionPreference === "reduced") {
+      delete container.dataset.routeTransitioning;
+      gsap.set(container, {
+        clearProps: "opacity,visibility,transform,willChange",
+      });
+      return;
+    }
+
+    container.dataset.routeTransitioning = "true";
+
+    const transition = gsap.fromTo(
+      container,
+      { autoAlpha: 0, y: 10, willChange: "opacity, transform" },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.42,
+        ease: "power3.out",
+        clearProps: "opacity,visibility,transform,willChange",
+        onComplete: () => {
+          delete container.dataset.routeTransitioning;
+        },
+      },
     );
+
+    return () => {
+      transition.kill();
+      delete container.dataset.routeTransitioning;
+      gsap.set(container, {
+        clearProps: "opacity,visibility,transform,willChange",
+      });
+    };
   }, [pathname, motionPreference]);
 
   return (
-    <div ref={containerRef} className={className}>
+    <div ref={containerRef} className={cn(styles.root, className)}>
       {children}
     </div>
   );

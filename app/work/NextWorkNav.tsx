@@ -55,9 +55,9 @@ export function NextWorkNav() {
       <div className={styles.row}>
         <Button
           variant="tertiary"
-          size="m"
+          size="md"
           icon={<Icon name="briefcase" ariaLabel="Back to work" />}
-          isDisabled={isPending}
+          disabled={isPending}
           onClick={() => navigate("/work")}
         >
           <span className={styles.buttonLabel}>Back to work</span>
@@ -65,9 +65,9 @@ export function NextWorkNav() {
         <div className={styles.navButtons}>
           <Button
             variant="tertiary"
-            size="m"
+            size="md"
             icon={<Icon name="arrow-left" ariaLabel="Previous" />}
-            isDisabled={navDisabled || currentIndex <= 0}
+            disabled={navDisabled || currentIndex <= 0}
             onClick={() => {
               if (prevPath) navigate(prevPath);
             }}
@@ -76,9 +76,9 @@ export function NextWorkNav() {
           </Button>
           <Button
             variant="tertiary"
-            size="m"
+            size="md"
             endIcon={<Icon name="arrow-right" ariaLabel="Next" />}
-            isDisabled={navDisabled || currentIndex === workPages.length - 1}
+            disabled={navDisabled || currentIndex === workPages.length - 1}
             onClick={() => {
               if (nextPath) navigate(nextPath);
             }}

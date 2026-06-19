@@ -53,7 +53,7 @@ describe("Button Accessibility", () => {
 
     it("has no violations in error variant", async () => {
       const { container } = render(
-        <Button variant="error">Error Button</Button>
+        <Button tone="error">Error Button</Button>
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -61,7 +61,7 @@ describe("Button Accessibility", () => {
 
     it("has no violations in warning variant", async () => {
       const { container } = render(
-        <Button variant="warning">Warning Button</Button>
+        <Button tone="warning">Warning Button</Button>
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
@@ -69,37 +69,37 @@ describe("Button Accessibility", () => {
 
     it("has no violations in success variant", async () => {
       const { container } = render(
-        <Button variant="success">Success Button</Button>
+        <Button tone="success">Success Button</Button>
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
     it("has no violations in info variant", async () => {
-      const { container } = render(<Button variant="info">Info Button</Button>);
+      const { container } = render(<Button tone="info">Info Button</Button>);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
     it("has no violations when disabled", async () => {
       const { container } = render(
-        <Button isDisabled>Disabled Button</Button>
+        <Button disabled>Disabled Button</Button>
       );
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
     it("has no violations when loading", async () => {
-      const { container } = render(<Button isLoading>Loading Button</Button>);
+      const { container } = render(<Button loading>Loading Button</Button>);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
-    it("has no violations in inverse mode", async () => {
+    it("has no violations on a dark surface", async () => {
       const { container } = render(
         <div style={{ backgroundColor: "#000", padding: "20px" }}>
-          <Button variant="primary" isInverse>
-            Inverse Button
+          <Button variant="primary" surface="onDark">
+            On dark
           </Button>
         </div>
       );
@@ -158,7 +158,7 @@ describe("Button Accessibility", () => {
     it("does not respond to keyboard when disabled", async () => {
       const onClick = vi.fn();
       render(
-        <Button onClick={onClick} isDisabled>
+        <Button onClick={onClick} disabled>
           Disabled
         </Button>
       );
@@ -171,7 +171,7 @@ describe("Button Accessibility", () => {
     it("does not respond to keyboard when loading", async () => {
       const onClick = vi.fn();
       render(
-        <Button onClick={onClick} isLoading>
+        <Button onClick={onClick} loading>
           Loading
         </Button>
       );
@@ -265,13 +265,13 @@ describe("Button Accessibility", () => {
     });
 
     it("indicates disabled state via disabled attribute", () => {
-      render(<Button isDisabled>Disabled</Button>);
+      render(<Button disabled>Disabled</Button>);
       expect(screen.getByRole("button")).toBeDisabled();
     });
 
     it("link button indicates disabled state via aria-disabled", () => {
       render(
-        <Button href="/about" isDisabled>
+        <Button href="/about" disabled>
           Disabled Link
         </Button>
       );
@@ -333,7 +333,7 @@ describe("Button Accessibility", () => {
 
     // Legacy sizes
     it("legacy small size has no violations", async () => {
-      const { container } = render(<Button size="s">Small Legacy</Button>);
+      const { container } = render(<Button size="sm">Small Legacy</Button>);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
@@ -361,7 +361,7 @@ describe("Button Accessibility", () => {
       render(
         <>
           <Button>First</Button>
-          <Button isDisabled>Disabled</Button>
+          <Button disabled>Disabled</Button>
           <Button>Third</Button>
         </>
       );

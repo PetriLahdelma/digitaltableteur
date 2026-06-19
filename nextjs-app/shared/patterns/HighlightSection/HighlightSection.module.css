@@ -102,9 +102,9 @@
   max-inline-size: var(--container-lg);
 }
 
-/* Content wrapper */
+/* Copy wrapper */
 
-.content {
+.copy {
   display: flex;
   padding-block: var(--space-layout-56, 3.5rem);
   padding-inline: var(--space-layout-40);
@@ -115,19 +115,19 @@
 
 /* Size variants */
 
-.compact .content {
+.compact .copy {
   padding-block: var(--space-layout-32);
   padding-inline: var(--space-layout-16);
   gap: var(--space-layout-24);
 }
 
-.comfortable .content {
+.comfortable .copy {
   padding-block: var(--space-layout-56, 3.5rem);
   padding-inline: var(--space-layout-40);
   gap: var(--space-layout-32);
 }
 
-.spacious .content {
+.spacious .copy {
   padding-block: var(--space-layout-64);
   padding-inline: var(--space-layout-32);
   gap: var(--space-layout-48);
@@ -186,17 +186,17 @@
 
 /* Tablet (768px+) */
 @media (width >= 768px) {
-  .content {
+  .copy {
     padding-block: var(--space-layout-56, 3.5rem);
     padding-inline: var(--space-layout-40);
   }
 
-  .compact .content {
+  .compact .copy {
     padding-block: var(--space-layout-40);
     padding-inline: var(--space-layout-24);
   }
 
-  .spacious .content {
+  .spacious .copy {
     padding-block: var(--space-layout-80);
     padding-inline: var(--space-layout-48);
   }
@@ -212,19 +212,19 @@
 
 /* Desktop (1024px+) */
 @media (width >= 1024px) {
-  .content {
+  .copy {
     padding-block: var(--space-layout-64);
     padding-inline: var(--space-layout-48);
     gap: var(--space-layout-40);
   }
 
-  .compact .content {
+  .compact .copy {
     padding-block: var(--space-layout-48);
     padding-inline: var(--space-layout-32);
     gap: var(--space-layout-32);
   }
 
-  .spacious .content {
+  .spacious .copy {
     padding-block: var(--space-layout-96);
     padding-inline: var(--space-layout-64);
     gap: var(--space-layout-64);
@@ -233,7 +233,7 @@
 
 /* Wide screens (1440px+) */
 @media (width >= 1440px) {
-  .spacious .content {
+  .spacious .copy {
     padding-inline: var(--space-layout-80);
   }
 }

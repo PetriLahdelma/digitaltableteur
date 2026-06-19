@@ -130,7 +130,7 @@ const EdgeTemplate: StoryFn<EdgeDetectionArgs> = ({
           padding: "1.5rem",
           inlineSize: computedWidth ? `${computedWidth}px` : "100%",
           blockSize: computedHeight ? `${computedHeight}px` : undefined,
-          border: "1px dashed var(--color-border, #c0c0c0)",
+          border: "1px dashed var(--color-border)",
           boxSizing: "border-box",
           width: "100%",
         }}

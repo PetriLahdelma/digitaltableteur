@@ -183,14 +183,14 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Concept"
         title="The Conductor of Finland's Transport"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The logo structure is a graphic interpretation of a polyphonic musical
             score, positioning Liikennevirasto as the conductor orchestrating
             Finland's roads, rails, and waterways. The cascading word parts create
             a unique, human-friendly wordmark that signals a fresh start for the
             merged organization.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Unlike traditional government marks, the moving letters invite a second
             look. Staff and citizens get a memorable symbol that challenges
             expectations of what a transport agency can be.
@@ -208,7 +208,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Multilingual"
         title="Language Lockups"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The identity supports three official languages: Finnish (Liikennevirasto),
             Swedish (Trafikverket), and English (Finnish Transport Agency). Each
             lockup maintains the cascading wordmark with language descriptors in
@@ -234,7 +234,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Construction"
         title="Minimum Clear Space"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The protection zone is defined by the height of the lowercase "i"
             as the base unit (x). A minimum of 5x clear space above and x on
             each side ensures the mark breathes across all applications, from
@@ -269,7 +269,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Guidelines"
         title="Usage Rules"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Five basic rules govern logo usage: always use official files, never
             modify element relationships, never alter colors, respect protection
             zones, and avoid adding effects like drop shadows or gradients. The
@@ -294,7 +294,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       <section className={styles.colorSection}>
         <div className={styles.colorContent}>
           <Title level={3} terminals="sans">Color System</Title>
-          <Text size="S" className={styles.colorIntro}>
+          <Text size="s" className={styles.colorIntro}>
             Four primary blues form the wordmark, supported by warm grays and
             accent colors. The palette was specified for Pantone (print), CMYK
             (process), and RGB (screen) to ensure consistency across all media.
@@ -307,7 +307,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
       <section className={styles.typographySection}>
         <div className={styles.typographyContent}>
           <Title level={3} terminals="sans">Typography</Title>
-          <Text size="S" className={styles.typographyIntro}>
+          <Text size="s" className={styles.typographyIntro}>
             The identity uses Agfa Monotype Felbridge Pro, designed by Robin
             Nicholas in 2003 specifically for electronic display. Its letter
             shapes reproduce clearly at low resolutions while maintaining elegance
@@ -341,7 +341,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
               </span>
             </div>
           </div>
-          <Text size="S" className={styles.typographyNote}>
+          <Text size="s" className={styles.typographyNote}>
             Specimen rendered in Felbridge Pro, designed by Robin Nicholas for Agfa Monotype.
           </Text>
         </div>
@@ -352,7 +352,7 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Official Seals"
         title="Stamp Logos"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             For official documents and certificates, circular stamp variations
             combine the wordmark with trilingual descriptors. Different center
             treatments (open, filled, arrow, striped) allow hierarchical
@@ -451,13 +451,13 @@ export function FinnishTransportAgencyPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Outcome"
         title="One Voice for Three Modes"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The identity unified three historically separate agencies under a
             single visual language. The musical score concept gave staff across
             road, rail, and maritime divisions a shared symbol, one that
             communicates movement, coordination, and national reach.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             Trilingual support (Finnish, Swedish, English) ensures accessibility
             for all citizens, while strict construction rules maintain consistency
             from business cards to highway signs. The system scaled successfully

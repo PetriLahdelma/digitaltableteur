@@ -24,7 +24,7 @@ export function PseoPillarMetaBadgeLinks({
     <div className={className} aria-label={ariaLabel}>
       {links.map((link) => (
         <Link key={link.href} href={link.href} className={linkClassName}>
-          <Badge design="secondary" state="neutral" removable={false} size="m">
+          <Badge variant="secondary" tone="neutral" removable={false} size="md">
             <span>{link.label}</span>
           </Badge>
         </Link>

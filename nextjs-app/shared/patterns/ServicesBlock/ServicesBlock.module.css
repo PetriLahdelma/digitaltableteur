@@ -47,17 +47,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-text, #333);
+  color: var(--color-text);
   transition: color 0.2s ease;
 }
 
 .toolsIcons > div:hover {
-  color: var(--color-primary, #06c);
+  color: var(--color-primary);
 }
 
 .overviewContent {
   line-height: var(--line-height-relaxed, 1.6);
-  color: var(--color-text, #333);
+  color: var(--color-text);
 }
 
 /* Progressive enhancement for gap */

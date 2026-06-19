@@ -141,14 +141,14 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="The Concept"
         title="Where Underground Meets Helsinki"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             The name "Garage Junction" references both UK garage music and the
             idea of a meeting point for diverse sounds and people. The visual
             identity uses bold typography and a checkerboard pattern inspired
             by the Helsinki Underground/Subway, or as Finns call it, the metro
             and its high-contrast two-tone aesthetics.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             The color palette combines high-energy orange with soft blue and
             clean white, creating contrast that works across dark club
             environments and bright social media feeds.
@@ -191,7 +191,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Brand Identity"
         title="Bold and Flexible"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             <span style={{ fontWeight: 600 }}>
               The logo system was designed for maximum impact
             </span>{" "}
@@ -227,7 +227,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
       <section className={styles.colorSection}>
         <div className={styles.colorContent}>
           <Title level={3} terminals="sans">Color Palette</Title>
-          <Text size="S">
+          <Text size="s">
             High contrast colors optimized for club environments and social media.
           </Text>
           <div className={styles.colorComposition}>
@@ -255,7 +255,7 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Social Media"
         title="Event Promotion"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Square format assets for Instagram and Facebook with consistent
             branding. Each post maintains the bold visual identity while
             allowing space for event-specific details and guest DJ information.
@@ -350,13 +350,13 @@ export function GarageJunctionPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Outcome"
         title="Building a Scene"
         content={[
-          <Text key="p1" size="S">
+          <Text key="p1" size="s">
             Garage Junction quickly gained recognition as a fresh and authentic
             addition to Helsinki&apos;s nightlife. The brand identity helped attract
             a loyal following and fostered a collaborative community around music
             and art.
           </Text>,
-          <Text key="p2" size="S">
+          <Text key="p2" size="s">
             The flexible design system allowed for easy event-to-event variation
             while maintaining strong brand recognition across all touchpoints.
           </Text>,

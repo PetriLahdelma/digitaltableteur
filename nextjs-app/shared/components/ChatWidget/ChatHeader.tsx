@@ -142,7 +142,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
             </span>
           )}
         </Text>
-        <Title level={2} terminals="sans" size="S" className={styles.title}>
+        <Title level={2} terminals="sans" size="s" className={styles.title}>
           {title}
         </Title>
       </div>
@@ -152,7 +152,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           onClick={onMinimize}
           aria-label={minimizeAriaLabel}
           variant="tertiary"
-          size="m"
+          size="md"
           icon={<Icon name="caret-down" ariaLabel={minimizeAriaLabel} />}
           className={styles.minimizeButton}
         />

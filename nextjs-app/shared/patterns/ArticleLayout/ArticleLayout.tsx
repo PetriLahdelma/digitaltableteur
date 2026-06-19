@@ -58,9 +58,9 @@ export function ArticleLayout({
         <div
           className="sticky top-20 z-30 flex w-full items-center border-b border-border"
           style={{
-            backgroundColor: "var(--logo-background, #DFFF00)",
-            color: "var(--logo-color, #000)",
-            ["--color-primary" as string]: "var(--logo-color, #000)",
+            backgroundColor: "var(--logo-background)",
+            color: "var(--logo-color)",
+            ["--color-primary" as string]: "var(--logo-color)",
           }}
         >
           {nav}

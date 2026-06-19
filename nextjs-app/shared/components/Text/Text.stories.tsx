@@ -106,10 +106,10 @@ export default {
     },
 
     size: {
-      control: { type: "radio" },
-      options: ["S", "M", "L"],
+      control: { type: "select" },
+      options: ["xxs", "xs", "s", "m", "l", "xl", "xxl"],
       description: "Text size variant",
-      table: { defaultValue: { summary: "M" } },
+      table: { defaultValue: { summary: "m" } },
     },
 
     terminals: {
@@ -154,7 +154,7 @@ export const Playground: any = Template.bind({});
 Playground.args = {
   children: "storyTextPlayground",
   as: "p",
-  size: "M",
+  size: "m",
   terminals: "sans",
   className: "",
 };
@@ -203,9 +203,9 @@ export const Sizes = () => {
   const { t } = useTranslation();
   return (
     <>
-      <Text size="S">{t("storyTextSmall")}</Text>
-      <Text size="M">{t("storyTextMedium")}</Text>
-      <Text size="L">{t("storyTextLarge")}</Text>
+      <Text size="s">{t("storyTextSmall")}</Text>
+      <Text size="m">{t("storyTextMedium")}</Text>
+      <Text size="l">{t("storyTextLarge")}</Text>
     </>
   );
 };
@@ -270,10 +270,10 @@ export const Example: Story = {
     const { t } = useTranslation();
     return (
       <>
-        <Title terminals="sans" level={1} size="L">
+        <Title terminals="sans" level={1} size="l">
           {t("storyTitlePlayground")}
         </Title>
-        <Text terminals="sans" size="L" as="p">
+        <Text terminals="sans" size="l" as="p">
           {t("storyTextDefault")}
         </Text>
       </>

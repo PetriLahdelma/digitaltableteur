@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - 'button "github-logo Interactive Card Clickable surface Set `interactive` or `onClick` to make the card behave like a button without wrapping it in a link."':
   - img "github-logo"
   - heading "Interactive Card" [level=3]

@@ -162,7 +162,7 @@ export const InChatContext: Story = {
           fontFamily: "Moderat, sans-serif",
           fontSize: "0.9rem",
           lineHeight: 1.5,
-          color: "var(--color-text, #111)",
+          color: "var(--color-text)",
         }}
       >
         <Story />

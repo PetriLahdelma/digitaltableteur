@@ -107,19 +107,19 @@ export default {
 
     // State (v1.1.0)
 
-    isChecked: {
+    checked: {
       control: "boolean",
       description: "Checked state (controlled) (v1.1.0+)",
       table: { category: "State", type: { summary: "boolean" } },
     },
 
-    isIndeterminate: {
+    indeterminate: {
       control: "boolean",
       description: "Indeterminate state (v1.1.0+)",
       table: { category: "State", type: { summary: "boolean" } },
     },
 
-    isDisabled: {
+    disabled: {
       control: "boolean",
       description: "Disables the checkbox (v1.1.0+)",
       table: { category: "State", type: { summary: "boolean" } },
@@ -139,7 +139,7 @@ export default {
       description: "Size variant (v1.1.0+)",
       table: {
         category: "Appearance",
-        type: { summary: "SizeUnified" },
+        type: { summary: "sm | md | lg" },
         defaultValue: { summary: "md" },
       },
     },
@@ -191,7 +191,7 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 };
 
 export const Checked = Template.bind({});
-Checked.args = { label: "Checked checkbox", isChecked: true };
+Checked.args = { label: "Checked checkbox", checked: true };
 Checked.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
   await canvas.findByLabelText(/checked checkbox/i);
@@ -202,8 +202,8 @@ Indeterminate.args = {
   label: "Indeterminate checkbox",
   // Indeterminate means neither checked nor unchecked visually.
   // Keep checked false and set indeterminate true so CSS shows the indeterminate variant.
-  isChecked: false,
-  isIndeterminate: true,
+  checked: false,
+  indeterminate: true,
 };
 Indeterminate.play = async ({
   canvasElement,
@@ -218,37 +218,37 @@ Indeterminate.play = async ({
 export const Disabled = Template.bind({});
 Disabled.args = {
   label: "Disabled checkbox",
-  isChecked: false,
-  isDisabled: true,
+  checked: false,
+  disabled: true,
 };
 
 export const DisabledChecked = Template.bind({});
 DisabledChecked.args = {
   label: "Disabled checked",
-  isChecked: true,
-  isDisabled: true,
+  checked: true,
+  disabled: true,
 };
 
 export const AllStates: StoryFn = () => (
   <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-    <Checkbox label="Unchecked" isChecked={false} onCheckedChange={() => {}} />
-    <Checkbox label="Checked" isChecked={true} onCheckedChange={() => {}} />
+    <Checkbox label="Unchecked" checked={false} onCheckedChange={() => {}} />
+    <Checkbox label="Checked" checked={true} onCheckedChange={() => {}} />
     <Checkbox
       label="Indeterminate"
-      isChecked={false}
-      isIndeterminate={true}
+      checked={false}
+      indeterminate={true}
       onCheckedChange={() => {}}
     />
     <Checkbox
       label="Disabled unchecked"
-      isChecked={false}
-      isDisabled={true}
+      checked={false}
+      disabled={true}
       onCheckedChange={() => {}}
     />
     <Checkbox
       label="Disabled checked"
-      isChecked={true}
-      isDisabled={true}
+      checked={true}
+      disabled={true}
       onCheckedChange={() => {}}
     />
   </div>
@@ -256,23 +256,23 @@ export const AllStates: StoryFn = () => (
 
 // v1.1.0 Showcase Stories
 export const SizeSmall = Template.bind({});
-SizeSmall.args = { label: "Small checkbox", isChecked: true, size: "sm" };
+SizeSmall.args = { label: "Small checkbox", checked: true, size: "sm" };
 
 export const SizeMedium = Template.bind({});
 SizeMedium.args = {
   label: "Medium checkbox (default)",
-  isChecked: true,
+  checked: true,
   size: "md",
 };
 
 export const SizeLarge = Template.bind({});
-SizeLarge.args = { label: "Large checkbox", isChecked: true, size: "lg" };
+SizeLarge.args = { label: "Large checkbox", checked: true, size: "lg" };
 
 export const AllSizes: StoryFn = () => (
   <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-    <Checkbox label="Small (sm)" isChecked={true} size="sm" />
-    <Checkbox label="Medium (md)" isChecked={true} size="md" />
-    <Checkbox label="Large (lg)" isChecked={true} size="lg" />
+    <Checkbox label="Small (sm)" checked={true} size="sm" />
+    <Checkbox label="Medium (md)" checked={true} size="md" />
+    <Checkbox label="Large (lg)" checked={true} size="lg" />
   </div>
 );
 
@@ -295,7 +295,7 @@ export const Example: Story = {
   render: () => (
     <Checkbox
       label="Accept terms"
-      isChecked={false}
+      checked={false}
       onCheckedChange={() => undefined}
     />
   ),
@@ -307,7 +307,7 @@ export const ForcedColors: Story = {
   render: () => (
     <Checkbox
       label="Accept terms"
-      isChecked={false}
+      checked={false}
       onCheckedChange={() => undefined}
     />
   ),

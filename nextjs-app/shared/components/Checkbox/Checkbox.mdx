@@ -8,7 +8,7 @@ import * as Stories from './Checkbox.stories.tsx';
 **Status:** beta · **Tier:** atom · **Group:** form
 
 Single binary control with optional label, indeterminate state, and the
-controlled/uncontrolled distinction made explicit via `isChecked` vs
+controlled/uncontrolled distinction made explicit via `checked` vs
 `defaultChecked`. Indeterminate is a true tri-state for "some children
 selected, not all"; the visual class is wired separately from the native
 `indeterminate` property so styling and SR semantics stay in sync.
@@ -22,18 +22,18 @@ form-field composition.
 
 Two compositions worth cribbing:
 
-- **Controlled with label.** Pass `isChecked` + `onCheckedChange` and let
+- **Controlled with label.** Pass `checked` + `onCheckedChange` and let
   the parent own the state. The internal label uses the project's Label
   atom and the right `htmlFor`/`id` plumbing happens automatically when
   you pass `id`.
-- **Group parent.** Set `isIndeterminate` on a parent checkbox when only
+- **Group parent.** Set `indeterminate` on a parent checkbox when only
   some children in a group are selected. The native `indeterminate`
   property toggles independently of `checked` so the visual matches the
   semantic.
 
-Anti-pattern to avoid: using `checked` (the native prop) instead of
-`isChecked`. The new prefixed names are the contract; the unprefixed
-legacy aliases will be removed in v2.
+Controlled state uses the unprefixed `checked` / `indeterminate` props —
+the platinum API contract — paired with `onCheckedChange`. There are no
+`is*`-prefixed aliases.
 
 ## How to use
 
@@ -44,7 +44,7 @@ import Checkbox from '@dt/Checkbox';
 <Checkbox
   id="terms"
   label="I agree to the terms"
-  isChecked={agreed}
+  checked={agreed}
   onCheckedChange={setAgreed}
 />
 
@@ -55,7 +55,7 @@ import Checkbox from '@dt/Checkbox';
 <Checkbox
   id="select-all"
   label="Select all"
-  isIndeterminate
+  indeterminate
   onCheckedChange={onSelectAll}
 />
 
@@ -109,6 +109,6 @@ check glyph.
   email export flow.
 - Stable promotion blockers: a11y-tree snapshots for the four required
   stories, real-browser forced-colors run, documented production consumers.
-- Known debt: the unprefixed `checked` / `disabled` legacy props are
-  still accepted as aliases. They will be removed in v2.0.0 once the
-  `is*` prefixes have soaked across consumers.
+- API: controlled state is `checked` / `indeterminate` / `disabled`
+  (unprefixed — the platinum clean-break contract); no `is*` aliases
+  exist.

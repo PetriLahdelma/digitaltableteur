@@ -20,7 +20,7 @@ composition used in the blog routes and `patterns/AboutPageContent`.
 
 Two compositions worth cribbing:
 
-- **Lede paragraph.** `size="L"` with `lineHeight="snug"` directly under a
+- **Lede paragraph.** `size="l"` with `lineHeight="snug"` directly under a
   hero Title — gives the editorial introduction its weight without
   shrinking the line-length.
 - **Inline emphasis.** `<Text as="strong">` inside a paragraph for
@@ -41,7 +41,7 @@ import Text from '@dt/Text';
 <Text>We design clarity for ambitious teams.</Text>
 
 // Lede paragraph at larger size, snug line-height
-<Text size="L" lineHeight="snug">
+<Text size="l" lineHeight="snug">
   A studio for the people who care about the line where craft and product meet.
 </Text>
 
@@ -51,7 +51,7 @@ import Text from '@dt/Text';
 </p>
 
 // Caption-sized supporting copy
-<Text size="XS" terminals="sans">2026 · Helsinki</Text>
+<Text size="xs" terminals="sans">2026 · Helsinki</Text>
 ```
 
 Required consumer wiring: nothing. The element resolves typography tokens

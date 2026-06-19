@@ -103,9 +103,9 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
       <div className={`${styles.container} ${className || ""}`}>
         <Button
           onClick={handleTransform}
-          isDisabled={disabled}
+          disabled={disabled}
           variant="primary"
-          size="l"
+          size="lg"
           className={styles.triggerButton}
         >
           {t("newsletterWaitlist.trigger")}
@@ -119,10 +119,10 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
       <div className={`${styles.container} ${className || ""}`}>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.content}>
-            <Title level={2} size="M" className={styles.title}>
+            <Title level={2} size="m" className={styles.title}>
               {t("newsletterWaitlist.title")}
             </Title>
-            <Text size="S" className={styles.promise}>
+            <Text size="s" className={styles.promise}>
               {t("newsletterWaitlist.promise")}
             </Text>
           </div>
@@ -144,14 +144,14 @@ const NewsletterWaitlist: React.FC<NewsletterWaitlistProps> = ({
             <Button
               type="button"
               onClick={handleCancel}
-              isDisabled={disabled || isSubmitting}
+              disabled={disabled || isSubmitting}
               variant="secondary"
             >
               {t("newsletterWaitlist.cancel")}
             </Button>
             <AdaptiveLoadingButton
               type="submit"
-              isDisabled={disabled || isSubmitting || !email.trim()}
+              disabled={disabled || isSubmitting || !email.trim()}
               variant="primary"
               loading={isSubmitting}
               loadingLabelKey="newsletterWaitlist.submitting"

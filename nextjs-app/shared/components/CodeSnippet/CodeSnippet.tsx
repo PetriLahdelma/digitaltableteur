@@ -183,7 +183,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
         />
         <Toast
           message={toastMessage}
-          isOpen={toastOpen}
+          open={toastOpen}
           onClose={() => setToastOpen(false)}
         />
       </>
@@ -197,14 +197,14 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
       data-variant={variant}
     >
       <div className={styles.toolbar} aria-hidden={!allowCopy}>
-        <Text as="span" size="XXS" className={styles.language}>
+        <Text as="span" size="xxs" className={styles.language}>
           {language}
         </Text>
         {allowCopy && (
           <div className={styles.actions}>
             {variant === "single" ? (
               <Button
-                size="m"
+                size="md"
                 variant="secondary"
                 onClick={() => void copyToClipboard("raw")}
                 aria-label="Copy code to clipboard"
@@ -213,7 +213,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
               </Button>
             ) : (
               <SplitButton
-                size="m"
+                size="md"
                 variant="secondary"
                 label="Copy"
                 onPrimaryClick={() => void copyToClipboard("raw")}
@@ -242,7 +242,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
       {hasOverflow && (
         <div className={styles.expandControl}>
           <Button
-            size="m"
+            size="md"
             variant="tertiary"
             onClick={() => setIsExpanded(!isExpanded)}
             aria-expanded={isExpanded}
@@ -254,7 +254,7 @@ export const CodeSnippet: React.FC<CodeSnippetProps> = ({
       )}
       <Toast
         message={toastMessage}
-        isOpen={toastOpen}
+        open={toastOpen}
         onClose={() => setToastOpen(false)}
       />
     </figure>

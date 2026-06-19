@@ -1,13 +1,9 @@
 import contract from "./Button.contract.json";
-import { userEvent, within } from "storybook/test";
-/* stylelint-disable value-keyword-case, scale-unlimited/declaration-strict-value */
+import { userEvent, within, expect } from "storybook/test";
 import React from "react";
 import { Meta, StoryFn, type StoryObj } from "@storybook/react-vite";
 import Button from "@dt/Button";
-import Icon from "@dt/Icon";
-import ComplianceCard, { type ComplianceRule } from "@dt/ComplianceCard";
 import { useTranslation } from "react-i18next";
-import CodeSnippet from "@dt/CodeSnippet";
 import schema from "./schema.json";
 
 export default {
@@ -24,217 +20,129 @@ export default {
     llm: { schema },
   },
   argTypes: {
-    // Content
-
     children: {
       control: "text",
-      description: "Button label content",
+      description: "Button label.",
       table: { category: "Content", type: { summary: "ReactNode" } },
     },
-
     icon: {
       control: "text",
       description:
-        "Icon at the start - can be React element, component, or Phosphor icon name (e.g., 'arrow-left')",
+        "Leading icon: a React node, a component, or a Phosphor icon name (e.g. 'arrow-left').",
       table: { category: "Content", type: { summary: "ReactNode | string" } },
     },
-
     endIcon: {
       control: "text",
-      description: "Icon displayed at the end of the button content",
+      description: "Trailing icon: a React node, a component, or an icon name.",
       table: { category: "Content", type: { summary: "ReactNode | string" } },
     },
-
-    // Appearance
-
     variant: {
-      control: { type: "select" },
-      options: [
-        "primary",
-        "secondary",
-        "tertiary",
-        "secondaryError",
-        "tertiaryError",
-        "error",
-        "warning",
-        "success",
-        "info",
-      ],
-      description: "Visual style variant of the button",
+      control: { type: "inline-radio" },
+      options: ["primary", "secondary", "tertiary"],
+      description: "Visual weight.",
       table: {
         category: "Appearance",
-        type: { summary: "ButtonVariantVisual | ButtonSeverity" },
+        type: { summary: "primary | secondary | tertiary" },
         defaultValue: { summary: "primary" },
       },
     },
-
-    severity: {
-      control: { type: "select" },
-      options: ["error", "warning", "success", "info"],
-      description: "Semantic severity for status-based styling (v1.1.0+)",
+    tone: {
+      control: { type: "inline-radio" },
+      options: ["neutral", "error", "warning", "success", "info"],
+      description: "Semantic color, orthogonal to variant. Matches design tokens.",
       table: {
         category: "Appearance",
-        type: { summary: "ButtonSeverity" },
-        defaultValue: { summary: "error" },
+        type: { summary: "neutral | error | warning | success | info" },
+        defaultValue: { summary: "neutral" },
       },
     },
-
     size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg", "s", "m", "l"],
-      description:
-        "Button size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats",
+      control: { type: "inline-radio" },
+      options: ["sm", "md", "lg"],
+      description: "Control size.",
       table: {
         category: "Appearance",
-        type: { summary: "SizeUnified | ButtonSizeLegacy" },
+        type: { summary: "sm | md | lg" },
         defaultValue: { summary: "md" },
       },
     },
-
-    isInverse: {
-      control: "boolean",
-      description:
-        "Replaces primary text/border color with white for dark backgrounds (v1.1.0+)",
-      table: { category: "Appearance", type: { summary: "boolean" } },
-    },
-
     surface: {
-      control: { type: "select" },
+      control: { type: "inline-radio" },
       options: ["default", "onDark", "onBrand"],
       description:
-        "Surface behind the button — use onDark/onBrand on tinted bands instead of isInverse on gradients",
+        "Surface the button sits on; prefer this over absolute colors on tinted bands.",
       table: {
         category: "Appearance",
-        type: { summary: "ButtonSurface" },
+        type: { summary: "default | onDark | onBrand" },
         defaultValue: { summary: "default" },
       },
     },
-
-    isRounded: {
-      control: "boolean",
-      description: "Applies rounded corners to the button (v1.1.0+)",
-      table: { category: "Appearance", type: { summary: "boolean" } },
-    },
-
-    // State
-
-    isDisabled: {
-      control: "boolean",
-      description: "Disables the button (v1.1.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    isLoading: {
-      control: "boolean",
-      description: "Shows loading state with pulsing animation (v1.1.0+)",
-      table: { category: "State", type: { summary: "boolean" } },
-    },
-
-    // Behavior
-    onClick: {
-      action: "clicked",
-      description: "Click event handler",
-      table: {
-        category: "Behavior",
-        type: { summary: "(event: MouseEvent) => void" },
-      },
-    },
-
-    href: {
-      control: "text",
-      description:
-        "URL to navigate to - when provided, renders as an anchor element",
-      table: { category: "Behavior", type: { summary: "string" } },
-    },
-
-    submits: {
-      control: "boolean",
-      description: "When true, button type becomes 'submit'",
-      table: { category: "Behavior", type: { summary: "boolean" } },
-    },
-
-    target: {
-      control: "text",
-      description: "Link target (only for href buttons)",
-      table: { category: "Behavior", type: { summary: "string" } },
-    },
-
-    // Accessibility
-
-    accessibleName: {
-      control: "text",
-      description: "ARIA label for accessible name override",
-      table: { category: "Accessibility", type: { summary: "string" } },
-    },
-
-    accessibleDescription: {
-      control: "text",
-      description: "ARIA description for additional context",
-      table: { category: "Accessibility", type: { summary: "string" } },
-    },
-
-    accessibleNameRef: {
-      control: "text",
-      description: "ID reference for aria-labelledby",
-      table: { category: "Accessibility", type: { summary: "string" } },
-    },
-
-    accessibleRole: {
-      control: { type: "select" },
-      options: ["button", "link"],
-      description: "ARIA role override",
-      table: { category: "Accessibility", type: { summary: "button | link" } },
-    },
-
-    tooltip: {
-      control: "text",
-      description: "Tooltip text displayed on hover",
-      table: { category: "Accessibility", type: { summary: "string" } },
-    },
-
-    // Advanced
-
-    className: {
-      control: "text",
-      description: "Additional CSS classes",
-      table: { category: "Advanced", type: { summary: "string" } },
-    },
-
-    // Deprecated
-
-    disabled: {
-      control: "boolean",
-      description:
-        "⚠️ Deprecated: Use isDisabled instead. Will be removed in v2.0.0",
-      table: { category: "Deprecated", type: { summary: "boolean" } },
-    },
-
-    loading: {
-      control: "boolean",
-      description:
-        "⚠️ Deprecated: Use isLoading instead. Will be removed in v2.0.0",
-      table: { category: "Deprecated", type: { summary: "boolean" } },
-    },
-
-    inverse: {
-      control: "boolean",
-      description:
-        "⚠️ Deprecated: Use isInverse instead. Will be removed in v2.0.0",
-      table: { category: "Deprecated", type: { summary: "boolean" } },
-    },
-
     rounded: {
       control: "boolean",
-      description:
-        "⚠️ Deprecated: Use isRounded instead. Will be removed in v2.0.0",
-      table: { category: "Deprecated", type: { summary: "boolean" } },
+      description: "Fully rounded (pill) corners.",
+      table: { category: "Appearance", type: { summary: "boolean" } },
+    },
+    disabled: {
+      control: "boolean",
+      description: "Disables interaction and dims the control.",
+      table: { category: "State", type: { summary: "boolean" } },
+    },
+    loading: {
+      control: "boolean",
+      description: "Shows a loading state and blocks interaction; sets aria-busy.",
+      table: { category: "State", type: { summary: "boolean" } },
+    },
+    onClick: {
+      action: "clicked",
+      description: "Click handler. On link buttons, fires alongside navigation.",
+      table: { category: "Behavior", type: { summary: "(e: MouseEvent) => void" } },
+    },
+    href: {
+      control: "text",
+      description: "When set, the button renders as an anchor.",
+      table: { category: "Behavior", type: { summary: "string" } },
+    },
+    submits: {
+      control: "boolean",
+      description: "When true, sets type='submit'.",
+      table: { category: "Behavior", type: { summary: "boolean" } },
+    },
+    target: {
+      control: "text",
+      description: "Anchor target (link buttons only); _blank auto-adds rel='noopener noreferrer'.",
+      table: { category: "Behavior", type: { summary: "string" } },
+    },
+    accessibleName: {
+      control: "text",
+      description: "Accessible name; required for icon-only buttons.",
+      table: { category: "Accessibility", type: { summary: "string" } },
+    },
+    accessibleDescription: {
+      control: "text",
+      description: "Extra context for assistive tech. Maps to aria-describedby.",
+      table: { category: "Accessibility", type: { summary: "string" } },
+    },
+    accessibleNameRef: {
+      control: "text",
+      description: "id of an element that labels this button. Maps to aria-labelledby.",
+      table: { category: "Accessibility", type: { summary: "string" } },
+    },
+    tooltip: {
+      control: "text",
+      description: "Native tooltip text; also a fallback accessible name for icon-only buttons.",
+      table: { category: "Accessibility", type: { summary: "string" } },
+    },
+    className: {
+      control: "text",
+      description: "Additional CSS classes merged onto the rendered element.",
+      table: { category: "Advanced", type: { summary: "string" } },
     },
   },
 } as Meta;
 
 type Story = StoryObj<typeof Button>;
 
-const ButtonStoryLabel = ({ tKey }: { tKey: string }) => {
+const Label = ({ tKey }: { tKey: string }) => {
   const { t } = useTranslation();
   return <>{t(tKey)}</>;
 };
@@ -243,387 +151,189 @@ const Template: StoryFn = (args: React.ComponentProps<typeof Button>) => (
   <Button {...args} />
 );
 
-const visuallyHiddenStyle: React.CSSProperties = {
-  position: "absolute",
-  width: 1,
-  height: 1,
-  padding: 0,
-  margin: -1,
-  overflow: "hidden",
-  clip: "rect(0, 0, 0, 0)",
-  whiteSpace: "nowrap",
-  border: 0,
-};
-
-const INVERSE_SWATCHES = [
-  { label: "Primary", color: "var(--color-primary)" },
-  { label: "Accent Pink", color: "var(--accent-pink)" },
-  { label: "Error", color: "var(--color-error)" },
-  { label: "Success", color: "var(--color-success)" },
-] as const;
+const Row = ({ children }: { children: React.ReactNode }) => (
+  <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+    {children}
+  </div>
+);
 
 export const Primary = Template.bind({});
 export const Default = Primary;
 Primary.args = {
   variant: "primary",
-  children: <ButtonStoryLabel tKey="buttonPrimary" />,
-  icon: "",
+  children: <Label tKey="buttonPrimary" />,
 };
-Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+Primary.play = async ({ canvasElement, args }) => {
   const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /primary/i });
+  const button = canvas.getByRole("button");
   await userEvent.click(button);
-  // Focus test
+  expect(args.onClick).toHaveBeenCalled();
   await userEvent.tab();
+  expect(button).toHaveFocus();
 };
 
 export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: "secondary",
-  children: <ButtonStoryLabel tKey="buttonSecondary" />,
-};
-Secondary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /secondary/i });
-  await userEvent.click(button);
-  await userEvent.tab();
-};
-
-export const SecondaryError = Template.bind({});
-SecondaryError.args = {
-  variant: "secondaryError",
-  children: "Secondary Error",
-};
-SecondaryError.play = async ({
-  canvasElement,
-}: {
-  canvasElement: HTMLElement;
-}) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", {
-    name: /secondary error/i,
-  });
-  await userEvent.click(button);
-  await userEvent.tab();
-};
+Secondary.args = { variant: "secondary", children: <Label tKey="buttonSecondary" /> };
 
 export const Tertiary = Template.bind({});
-Tertiary.args = {
-  variant: "tertiary",
-  children: <ButtonStoryLabel tKey="buttonTertiary" />,
-};
-Tertiary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /tertiary/i });
-  await userEvent.click(button);
-  await userEvent.tab();
-};
+Tertiary.args = { variant: "tertiary", children: <Label tKey="buttonTertiary" /> };
 
-export const TertiaryError = Template.bind({});
-TertiaryError.args = { variant: "tertiaryError", children: "Tertiary Error" };
-TertiaryError.play = async ({
-  canvasElement,
-}: {
-  canvasElement: HTMLElement;
-}) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /tertiary error/i });
-  await userEvent.click(button);
-  await userEvent.tab();
-};
+export const Tones = () => (
+  <Row>
+    <Button tone="neutral">Neutral</Button>
+    <Button tone="error">Error</Button>
+    <Button tone="warning">Warning</Button>
+    <Button tone="success">Success</Button>
+    <Button tone="info">Info</Button>
+  </Row>
+);
 
-export const Error = Template.bind({});
-Error.args = {
-  variant: "error",
-  children: <ButtonStoryLabel tKey="buttonError" />,
-};
-Error.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /error/i });
-  await userEvent.click(button);
-  await userEvent.tab();
-};
+export const DestructiveActions = () => (
+  <Row>
+    <Button variant="primary" tone="error">
+      Delete
+    </Button>
+    <Button variant="secondary" tone="error">
+      Delete
+    </Button>
+    <Button variant="tertiary" tone="error">
+      Delete
+    </Button>
+  </Row>
+);
 
-export const Warning = Template.bind({});
-Warning.args = {
-  variant: "warning",
-  children: <ButtonStoryLabel tKey="buttonWarning" />,
-};
-Warning.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /warning/i });
-  await userEvent.click(button);
-  await userEvent.tab();
-};
-
-export const Success = Template.bind({});
-Success.args = {
-  variant: "success",
-  children: <ButtonStoryLabel tKey="buttonSuccess" />,
-};
-Success.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /success/i });
-  await userEvent.click(button);
-  await userEvent.tab();
-};
-
-export const Info = Template.bind({});
-Info.args = {
-  variant: "info",
-  children: <ButtonStoryLabel tKey="buttonInfo" />,
-};
-Info.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /info/i });
-  await userEvent.click(button);
-  await userEvent.tab();
-};
-
-export const IconOnly = Template.bind({});
-IconOnly.args = {
-  variant: "primary",
-  icon: "magnifying-glass",
-  tooltip: "Search",
-};
-IconOnly.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = canvas.getByRole("button");
-  await userEvent.hover(button);
-  await userEvent.tab();
-};
+export const Sizes = () => (
+  <Row>
+    <Button size="sm">
+      <Label tKey="buttonSmall" />
+    </Button>
+    <Button size="md">
+      <Label tKey="buttonMedium" />
+    </Button>
+    <Button size="lg">
+      <Label tKey="buttonLarge" />
+    </Button>
+  </Row>
+);
 
 export const IconLeft = Template.bind({});
 IconLeft.args = {
   variant: "primary",
   icon: "arrow-left",
-  children: <ButtonStoryLabel tKey="buttonLeftIcon" />,
-};
-IconLeft.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /left icon/i });
-  await userEvent.click(button);
-  await userEvent.tab();
+  children: <Label tKey="buttonLeftIcon" />,
 };
 
 export const IconRight = Template.bind({});
 IconRight.args = {
   variant: "primary",
   endIcon: "arrow-right",
-  children: <ButtonStoryLabel tKey="buttonRightIcon" />,
-};
-IconRight.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /right icon/i });
-  await userEvent.click(button);
-  await userEvent.tab();
+  children: <Label tKey="buttonRightIcon" />,
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
+export const IconOnly = Template.bind({});
+IconOnly.args = {
   variant: "primary",
-  children: <ButtonStoryLabel tKey="buttonDisabled" />,
-  disabled: true,
-};
-Disabled.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /disabled/i });
-  await userEvent.tab();
+  icon: "magnifying-glass",
+  accessibleName: "Search",
+  tooltip: "Search",
 };
 
-export const Loading = Template.bind({});
-Loading.args = { variant: "primary", children: "Loading...", loading: true };
-Loading.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  const canvas = within(canvasElement);
-  const button = await canvas.findByRole("button", { name: /loading/i });
-  // Button should be disabled when loading
-  await userEvent.tab();
-};
-
-export const AllVariants = () => (
-  <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-    <Button variant="primary">
-      <ButtonStoryLabel tKey="buttonPrimary" />
-    </Button>
-    <Button variant="secondary">
-      <ButtonStoryLabel tKey="buttonSecondary" />
-    </Button>
-    <Button variant="secondaryError">Secondary Error</Button>
-    <Button variant="tertiary">
-      <ButtonStoryLabel tKey="buttonTertiary" />
-    </Button>
-    <Button variant="tertiaryError">Tertiary Error</Button>
-    <Button variant="error">
-      <ButtonStoryLabel tKey="buttonError" />
-    </Button>
-    <Button variant="warning">
-      <ButtonStoryLabel tKey="buttonWarning" />
-    </Button>
-    <Button variant="success">
-      <ButtonStoryLabel tKey="buttonSuccess" />
-    </Button>
-    <Button variant="info">
-      <ButtonStoryLabel tKey="buttonInfo" />
+export const States = () => (
+  <Row>
+    <Button variant="primary">Default</Button>
+    <Button variant="primary" disabled>
+      Disabled
     </Button>
     <Button variant="primary" loading>
-      Loading...
+      Loading
+    </Button>
+    <Button variant="primary" rounded>
+      Rounded
+    </Button>
+  </Row>
+);
+
+export const Loading = Template.bind({});
+Loading.args = { variant: "primary", loading: true, children: "Saving..." };
+Loading.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const button = canvas.getByRole("button");
+  expect(button).toBeDisabled();
+  expect(button).toHaveAttribute("aria-busy", "true");
+};
+
+// Edge case: long label and a long Finnish/Swedish locale string must not break layout.
+export const LongLabel = () => (
+  <div style={{ display: "grid", gap: "1rem", maxWidth: 320 }}>
+    <Button variant="primary">
+      Download the complete annual accessibility report
+    </Button>
+    <Button variant="secondary" icon="arrow-left">
+      Takaisin etusivulle ja hakutuloksiin
     </Button>
   </div>
 );
 
-export const Inverse = () => {
-  // Static primary surface; show all inverse variants (no swatches).
-  return (
+export const Surfaces = () => (
+  <div style={{ display: "grid", gap: "1rem" }}>
     <div
       style={{
         display: "flex",
         gap: "1rem",
-        alignItems: "center",
-        padding: "2rem",
         flexWrap: "wrap",
-        /* stylelint-disable-next-line scale-unlimited/declaration-strict-value, value-keyword-case */
+        padding: "1.5rem",
         backgroundColor: "var(--color-primary)",
-        borderRadius: "var(--radius-md, 0.5rem)",
+        borderRadius: "var(--radius-lg)",
       }}
     >
-      <Button variant="primary" size="l" inverse>
-        Inverse primary
+      <Button variant="primary" surface="onDark">
+        Primary
       </Button>
-      <Button variant="secondary" size="l" inverse>
-        Inverse secondary
+      <Button variant="secondary" surface="onDark">
+        Secondary
       </Button>
-      <Button variant="tertiary" size="l" inverse>
-        Inverse tertiary
+      <Button variant="tertiary" surface="onDark">
+        Tertiary
       </Button>
     </div>
-  );
-};
-
-export const AllSizes = () => (
-  <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-    <Button size="s">
-      <ButtonStoryLabel tKey="buttonSmall" />
-    </Button>
-    <Button size="m">
-      <ButtonStoryLabel tKey="buttonMedium" />
-    </Button>
-    <Button size="l">
-      <ButtonStoryLabel tKey="buttonLarge" />
-    </Button>
+    <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        flexWrap: "wrap",
+        padding: "1.5rem",
+        backgroundColor: "var(--logo-background)",
+        borderRadius: "var(--radius-lg)",
+      }}
+    >
+      <Button variant="primary" surface="onBrand">
+        Primary
+      </Button>
+      <Button variant="secondary" surface="onBrand">
+        Secondary
+      </Button>
+    </div>
   </div>
 );
 
 export const AsLink = () => (
-  <div style={{ display: "flex", gap: "1rem", flexDirection: "column" }}>
-    <div style={{ display: "flex", gap: "1rem" }}>
-      <Button href="/about" variant="primary">
-        Internal Link
-      </Button>
-      <Button href="https://example.com" variant="secondary" target="_blank">
-        External Link
-      </Button>
-      <Button href="/contact" variant="tertiary" icon="arrow-right">
-        Link with Icon
-      </Button>
-    </div>
-    <div style={{ display: "flex", gap: "1rem" }}>
-      <Button href="/disabled" variant="primary" disabled>
-        Disabled Link
-      </Button>
-      <Button href="/rounded" variant="secondary" rounded>
-        Rounded Link
-      </Button>
-    </div>
-  </div>
+  <Row>
+    <Button href="/about" variant="primary">
+      Internal link
+    </Button>
+    <Button href="https://example.com" variant="secondary" target="_blank">
+      External link
+    </Button>
+    <Button href="/contact" variant="tertiary" endIcon="arrow-right">
+      Link with icon
+    </Button>
+  </Row>
 );
-
-// Compliance tracking
-const buttonComplianceRules: ComplianceRule[] = [
-  {
-    id: "design-system",
-    rule: "1.1 Design System First",
-    status: "pass",
-    details: "Uses design tokens from variables.css for all styling",
-  },
-  {
-    id: "component-reuse",
-    rule: "1.1.1 Component Reuse",
-    status: "pass",
-    details: "Uses Icon component, integrates with semantic icon system",
-  },
-  {
-    id: "file-structure",
-    rule: "1.2 Component Structure",
-    status: "pass",
-    details: "Complete file structure with tsx/css/test/stories/index",
-  },
-  {
-    id: "typescript-strict",
-    rule: "1.3 TypeScript Strictness",
-    status: "pass",
-    details: "Exported types with comprehensive JSDoc, forwardRef, displayName",
-  },
-  {
-    id: "css-modules",
-    rule: "2.1 CSS Modules",
-    status: "pass",
-    details:
-      "CSS Modules with logical properties (padding-inline, margin-block)",
-  },
-  {
-    id: "design-tokens",
-    rule: "2.2 Design Token Usage",
-    status: "pass",
-    details: "All design tokens used without fallback values",
-  },
-  {
-    id: "theme-support",
-    rule: "2.4 Theme Support",
-    status: "pass",
-    details: "Theme-aware via tokens, includes inverse mode for dark surfaces",
-  },
-  {
-    id: "props-interface",
-    rule: "3.1 Props Interface",
-    status: "pass",
-    details: "Polymorphic ButtonProps (button/link variants) with full JSDoc",
-  },
-  {
-    id: "i18n",
-    rule: "4.1 i18n Requirements",
-    status: "pass",
-    details: "Translation keys for all story labels (EN/FI/SV)",
-  },
-  {
-    id: "semantic-html",
-    rule: "6.1 Semantic HTML",
-    status: "pass",
-    details: "Renders semantic <button> or <a>, proper ARIA attributes",
-  },
-  {
-    id: "test-structure",
-    rule: "7.1 Test Structure",
-    status: "pass",
-    details: "Comprehensive tests (125 lines, 18+ test cases)",
-  },
-  {
-    id: "component-files",
-    rule: "10.1 Component Files",
-    status: "pass",
-    details: "All required files including ButtonProps type export",
-  },
-];
-
-export const Z_ButtonCompliance: StoryFn = () => (
-  <ComplianceCard
-    title="Button Compliance: 12/12"
-    titleIcon={
-      <Icon name="check-fat" color="var(--color-success)" weight="fill" />
-    }
-    rules={buttonComplianceRules}
-    lastReviewed="2025-11-24"
-  />
-);
+AsLink.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const external = canvas.getByRole("link", { name: /external link/i });
+  expect(external).toHaveAttribute("rel", "noopener noreferrer");
+};
 
 export const Playground: Story = {
   parameters: { a11y: { disable: true, test: "off" } },

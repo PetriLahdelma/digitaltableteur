@@ -4,18 +4,38 @@
     "tier": "atom",
     "group": "display",
     "status": "stable",
-    "description": "Compact status label with semantic state, size, and optional icon.",
+    "description": "Compact status label with an orthogonal variant (visual weight) and tone (semantic colour), a size, and an optional icon.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=400-1249",
     "radixPrimitive": null,
     "element": "span",
     "variants": {
+        "variant": {
+            "values": [
+                "primary",
+                "secondary"
+            ],
+            "default": "primary",
+            "propSourced": true
+        },
+        "tone": {
+            "values": [
+                "neutral",
+                "error",
+                "warning",
+                "success",
+                "info"
+            ],
+            "default": "neutral",
+            "propSourced": true
+        },
         "size": {
             "values": [
-                "s",
-                "m",
-                "l"
+                "sm",
+                "md",
+                "lg"
             ],
-            "default": "m"
+            "default": "md",
+            "propSourced": true
         }
     },
     "slots": [
@@ -32,11 +52,12 @@
     "a11y": {
         "keyboard": [],
         "ariaRequirements": [
-            "meaningful text or aria-label when icon-only"
+            "meaningful text or aria-label when icon-only",
+            "do not rely on colour alone — pair tone with the icon"
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — contrast and forced-colors verified in Storybook.",
+        "reviewedNote": "2026-06-18 — platinum pass: variant/tone API, sm/md/lg sizes, contrast and forced-colors verified.",
         "forcedColorsVerified": true,
         "accessibilityTreeVerified": true,
         "realBrowserForcedColorsVerified": true
@@ -54,7 +75,6 @@
         "asChild",
         "children",
         "className",
-        "design",
         "icon",
         "id",
         "onRemove",
@@ -63,30 +83,21 @@
         "role",
         "size",
         "square",
-        "state",
         "style",
-        "title"
+        "title",
+        "tone",
+        "variant"
     ],
     "consumers": [
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/dev/tailwind-test/page.tsx",
-            "since": "2026-06-04"
+            "path": "nextjs-app/shared/components/CookieConsent/CookieConsent.tsx",
+            "since": "2026-06-18"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "app/layout.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/ContactPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/ContactPage/index.ts",
-            "since": "2026-06-04"
+            "path": "nextjs-app/shared/components/Card/Card.tsx",
+            "since": "2026-06-18"
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
@@ -95,37 +106,7 @@
         },
         {
             "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoIndexPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoLeafPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarMetaBadgeLinks.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Pseo/PseoPillarPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
             "path": "nextjs-app/shared/components/pages/Work/Illustrations/IllustrationsPage.tsx",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/components/pages/Work/Illustrations/index.ts",
-            "since": "2026-06-04"
-        },
-        {
-            "repo": "digitaltableteur/digitaltableteur",
-            "path": "nextjs-app/shared/patterns/ContactPageContentEditorial/ContactPageContentEditorial.tsx",
             "since": "2026-06-04"
         }
     ],
@@ -135,7 +116,7 @@
             "optional": false,
             "type": "React.ReactNode"
         },
-        "design": {
+        "variant": {
             "optional": true,
             "type": "union",
             "values": [
@@ -143,15 +124,24 @@
                 "secondary"
             ]
         },
-        "state": {
+        "tone": {
             "optional": true,
             "type": "union",
             "values": [
-                "info",
-                "success",
-                "warning",
+                "neutral",
                 "error",
-                "neutral"
+                "warning",
+                "success",
+                "info"
+            ]
+        },
+        "size": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "sm",
+                "md",
+                "lg"
             ]
         },
         "className": {
@@ -174,15 +164,6 @@
             "optional": true,
             "type": "boolean"
         },
-        "size": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "s",
-                "m",
-                "l"
-            ]
-        },
         "title": {
             "optional": true,
             "type": "string"
@@ -193,8 +174,8 @@
         }
     },
     "forbiddenUse": [
-        "rely on colour alone to convey state — pair with the icon (the",
-        "nest a Button inside a Badge. The removable affordance is"
+        "rely on colour alone to convey tone — pair with the icon",
+        "nest a Button inside a Badge beyond the built-in removable affordance"
     ],
     "composesWith": [
         "Title",

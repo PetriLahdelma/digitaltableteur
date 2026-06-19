@@ -117,7 +117,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           },
         ]}
         overview={
-          <Text size="S">
+          <Text size="s">
             <span style={{ fontWeight: 600 }}>The city of Helsinki</span> offers
             hundreds or thousands of disparate digital services, from daycare
             applications to cultural services, public health booking to job
@@ -199,7 +199,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Discovery Process"
         title="Research and Analysis"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               The initial phase of the Helsinki Design System
             </span>{" "}
@@ -214,7 +214,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             abilities, ensuring the system reflects the city&apos;s commitment
             to inclusivity and equality.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             Audits of existing digital services are performed to identify
             fragmentation, redundant patterns, visual inconsistencies, and
             usability gaps. Benchmarking against other public sector design
@@ -224,7 +224,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             performance considerations, and integration needs within the
             city&apos;s digital infrastructure.
           </Text>,
-          <Text key="3" size="S">
+          <Text key="3" size="s">
             This phase culminated in discovering core design principles, with
             the brand design agency Werklig, rooted in transparency,
             accessibility, trust, and usability, as well as identifying
@@ -262,7 +262,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Discovery Process"
         title="Personas and Journey Mapping"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               Building on the insights gathered during the research phase
             </span>
@@ -278,7 +278,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             points, enabling design and development teams to ground their
             decisions in real-world contexts rather than assumptions.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             Journey mapping was then used to visualise how these personas engage
             with Helsinki&apos;s digital services across different touch points
             and channels. From discovering a service through the city portal, to
@@ -289,7 +289,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             accessibility barriers, while also highlighting opportunities to
             simplify navigation, improve clarity, and reduce cognitive load.
           </Text>,
-          <Text key="3" size="S">
+          <Text key="3" size="s">
             These personas and journey maps directly informed the structure and
             prioritisation of HDS components and patterns. By aligning design
             decisions with concrete user journeys, the design system ensured
@@ -325,7 +325,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Discovery Process"
         title="Ideation and Concept Development"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               During the ideation and concept development phase
             </span>
@@ -341,7 +341,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             interaction patterns should function across multiple platforms and
             service contexts.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             Design thinking methodologies were central to this phase, with
             structured ideation exercises encouraging teams to challenge
             existing conventions and rethink how public services can be
@@ -353,7 +353,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             and functional directions without committing to a single rigid
             approach too early.
           </Text>,
-          <Text key="3" size="S">
+          <Text key="3" size="s">
             The outcome of this phase was a clearly articulated design vision
             for HDS, supported by conceptual models, preliminary component
             frameworks, and defined design principles. These concepts
@@ -381,7 +381,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Design Process"
         title="Low-Fidelity Wireframing"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               Leveraging the insights from research{" "}
             </span>
@@ -394,7 +394,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             branding details. This approach allowed the team to validate
             structural clarity, usability, and scalability at an early stage.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             The wireframes illustrated how key HDS components and patterns
             function within real service contexts, including layout templates
             for service pages, form flows, dashboards, and navigation systems.
@@ -403,7 +403,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             completion, and accessibility requirements such as legibility,
             logical focus order and consistent interaction patterns.
           </Text>,
-          <Text key="3" size="S">
+          <Text key="3" size="s">
             These low-fidelity wireframes acted as a blueprint for both design
             and development teams, aligning stakeholders around shared
             structural standards before high-fidelity design and UI development
@@ -432,7 +432,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Design Process"
         title="Iterative Prototyping and User Testing"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               High-fidelity prototypes for communicating design decisions{" "}
             </span>
@@ -457,7 +457,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Design Process"
         title="Continuous Delivery & Design Deliverables"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>
               The iterative component creation process{" "}
             </span>
@@ -472,7 +472,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             that components remain practical, adaptable, and aligned with the
             needs of multiple departments and service contexts.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             The continuous delivery pipeline supported this iterative model,
             enabling the HDS team to release updates frequently and reliably.
             Updates were also delivered on the design front. Each new version
@@ -504,7 +504,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           />,
           <Text
             key="caption"
-            size="XS"
+            size="xs"
             style={{
               fontStyle: "italic",
               textAlign: "center",
@@ -514,7 +514,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
           >
             HDS Dev Deliverables
           </Text>,
-          <Text key="3" size="S">
+          <Text key="3" size="s">
             <span style={{ fontWeight: 600 }}>
               Several obstacles had to be addressed{" "}
             </span>
@@ -530,7 +530,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             strategies, and experimental component phases, allowing new ideas to
             be tested before full integration.
           </Text>,
-          <Text key="4" size="S">
+          <Text key="4" size="s">
             Through this disciplined yet flexible approach, the Helsinki Design
             System team established a scalable, living system that continuously
             adapts to evolving service requirements while maintaining coherence,
@@ -565,8 +565,8 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">Implementation for Mobile</Text>
-                <Text size="S">
+                <Text size="l">Implementation for Mobile</Text>
+                <Text size="s">
                   On mobile, HDS ensures that patterns remain consistent and
                   intuitive, regardless of screen size or context of use.
                   Designers and developers rely on its predefined components and
@@ -600,10 +600,10 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">
+                <Text size="l">
                   HDS in the every day lives of the Helsinki people
                 </Text>
-                <Text size="S">
+                <Text size="s">
                   The Helsinki Design System plays a foundational role when
                   integrated into digital infrastructures, ensuring that
                   services remain consistent and beautifully designed. Its
@@ -622,7 +622,7 @@ export function HelsinkiDesignSystemPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Design Process"
         title="Conclusion"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>The Helsinki Design System </span>
             represents a comprehensive, user-centred effort to unify and elevate
             the quality of digital services across the City of Helsinki. Through

@@ -40,14 +40,14 @@ consumers stop reinventing tiles.
 - Tokens: surfaces pull from `--color-surface`, `--color-surface-muted`,
   and `--color-surface-emphasis`. Borders use `--color-border`. Elevation
   uses `--shadow-sm` (default) / `--shadow-md` (hoverable). Spacing is
-  `--space-internal-16` (M), `--space-internal-12` (S), `--space-internal-24`
-  (L). Radius is `--radius-lg`.
+  `--space-internal-16` (md), `--space-internal-12` (sm), `--space-internal-24`
+  (lg). Radius is `--radius-lg`.
 - Figma: https://www.figma.com/design/digitaltableteur/cards — variant
-  naming maps 1:1 to the `variant` prop, and size names map S/M/L/full.
+  naming maps 1:1 to the `variant` prop, and size names map sm/md/lg/full.
 - Status messages render through a separate semantic role so a noisy
   inline error doesn't get swallowed by the header's heading semantics.
 - Tab-in-card uses the same `<Tabs />` primitive (no fork) and forwards
-  size: `S` → `m`, `M` → `m`, `L` → `l`, `full` → `m`.
+  size: `sm` → `sm`, `md` → `md`, `lg` → `lg`, `full` → `md`.
 - The `link` mode never injects `target="_blank"` automatically — consumers
   pass that through props if needed; the safety wiring (`rel="noopener"`)
   lives inside `<Link>` already.

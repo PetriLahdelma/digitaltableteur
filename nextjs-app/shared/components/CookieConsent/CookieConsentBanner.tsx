@@ -64,19 +64,19 @@ const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
           <p className={styles.copyText}>
             {t("cookieConsent.bannerSummary")}{" "}
             {t("cookieConsent.readOur")}{" "}
-            <Link href="/privacy-policy" size="M">
+            <Link href="/privacy-policy" size="md">
               {t("cookieConsent.policyLinkText")}
             </Link>
           </p>
         </div>
         <div className={styles.actions}>
-          <Button variant="tertiary" size="m" onClick={onCustomize}>
+          <Button variant="tertiary" size="md" onClick={onCustomize}>
             {t("cookieConsent.customizeButton")}
           </Button>
-          <Button variant="secondary" size="m" onClick={acceptEssentialOnly}>
+          <Button variant="secondary" size="md" onClick={acceptEssentialOnly}>
             {t("cookieConsent.acceptEssentialButton")}
           </Button>
-          <Button variant="primary" size="m" onClick={acceptAll}>
+          <Button variant="primary" size="md" onClick={acceptAll}>
             {t("cookieConsent.acceptAllButton")}
           </Button>
         </div>

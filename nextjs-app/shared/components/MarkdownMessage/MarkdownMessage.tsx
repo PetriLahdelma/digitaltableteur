@@ -35,7 +35,7 @@ function MarkdownMessage({
   fallback,
   "data-role": dataRole,
   renderWithDesignSystem = false,
-  designSystemTextSize = "M",
+  designSystemTextSize = "m",
   density = "default",
 }: MarkdownMessageProps) {
   const safe = content?.trim();
@@ -82,7 +82,7 @@ function MarkdownMessage({
               ),
             h1: ({ children }) =>
               renderWithDesignSystem ? (
-                <Title terminals="sans" level={1} size="L">
+                <Title terminals="sans" level={1} size="l">
                   {children}
                 </Title>
               ) : (
@@ -90,7 +90,7 @@ function MarkdownMessage({
               ),
             h2: ({ children }) =>
               renderWithDesignSystem ? (
-                <Title terminals="sans" level={2} size="S">
+                <Title terminals="sans" level={2} size="s">
                   {children}
                 </Title>
               ) : (
@@ -98,7 +98,7 @@ function MarkdownMessage({
               ),
             h3: ({ children }) =>
               renderWithDesignSystem ? (
-                <Title terminals="sans" level={3} size="XS">
+                <Title terminals="sans" level={3} size="xs">
                   {children}
                 </Title>
               ) : (

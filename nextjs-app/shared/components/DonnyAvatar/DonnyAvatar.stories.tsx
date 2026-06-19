@@ -447,7 +447,7 @@ function EyeTrackingDemo() {
           style={{
             padding: "1rem 2rem",
             fontSize: "1rem",
-            background: "var(--color-primary, #041B23)",
+            background: "var(--color-primary)",
             color: "white",
             border: "none",
             borderRadius: "8px",
@@ -462,7 +462,7 @@ function EyeTrackingDemo() {
           style={{
             padding: "1rem 2rem",
             fontSize: "1rem",
-            background: "var(--color-success, #22C55E)",
+            background: "var(--color-success)",
             color: "white",
             border: "none",
             borderRadius: "8px",

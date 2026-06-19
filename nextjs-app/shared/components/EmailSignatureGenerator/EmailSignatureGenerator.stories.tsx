@@ -28,7 +28,7 @@ const meta: Meta<typeof EmailSignatureGenerator> = {
     (Story) => (
       <div>
         <div style={{ marginBottom: "1rem" }}>
-          <Badge state="warning" size="s">
+          <Badge tone="warning" size="sm">
             Work in progress
           </Badge>
         </div>

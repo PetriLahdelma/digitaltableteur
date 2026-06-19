@@ -1,4 +1,3 @@
-- status: Work in progress (beta)
 - img "warning"
 - heading "Validation Error" [level=3]
 - alert: Please check the required fields and try again.

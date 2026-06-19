@@ -145,7 +145,7 @@
   scroll-snap-align: start;
 }
 
-.cardContent {
+.cardLayout {
   display: flex;
   min-block-size: 3rem;
   align-items: center;

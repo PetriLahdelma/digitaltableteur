@@ -160,7 +160,7 @@
 
 .memberLink:focus-visible {
   border-radius: var(--radius-m, 8px);
-  outline: 2px solid var(--color-primary, #06f);
+  outline: 2px solid var(--color-primary);
   outline-offset: 4px;
 }
 
@@ -194,7 +194,7 @@
   /* Use the theme-aware secondary text token so dark mode resolves to a
    * lighter gray (#aaa) instead of the hard-coded #666 fallback that
    * fails 4.5:1 on the dark background. */
-  color: var(--secondary-text-color, #495057);
+  color: var(--secondary-text-color);
 }
 
 /* Accessibility */

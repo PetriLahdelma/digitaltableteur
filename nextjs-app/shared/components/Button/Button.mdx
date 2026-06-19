@@ -5,33 +5,31 @@ import * as Stories from './Button.stories.tsx';
 
 # Button
 
-**Status:** beta · **Tier:** molecule · **Group:** interaction
+**Status:** stable · **Tier:** molecule · **Group:** interaction
 
-Primary action control. Polymorphic — renders a native `<button>` for actions
-and an `<a>` for navigation, with the same visual contract on both. Variants
-encode hierarchy (`primary` / `secondary` / `tertiary`) and severity
-(`error` / `warning` / `success` / `info`). Loading and disabled are first-class
-states with the matching ARIA wiring; an inverse mode adapts the foreground
-to whatever surface the button sits on so it stays readable on dark sections.
+Primary action control. Polymorphic: renders a native `<button>` for actions
+and an `<a>` for navigation with the same visual contract. Two orthogonal axes
+encode meaning: `variant` for visual weight (`primary` / `secondary` /
+`tertiary`) and `tone` for semantic colour (`neutral` / `error` / `warning` /
+`success` / `info`). Loading and disabled are first-class states with the
+matching ARIA wiring; `surface` adapts the colours to dark or brand bands.
 
 ## In use
 
-The canonical composition lives in the **Example** story above. The most
-common consumers in this repo are the contact form submit, the hero CTAs in
-`patterns/Hero`, and the inline article CTAs surfaced by `patterns/CTASection`.
+The canonical composition lives in the **Example** story above. The most common
+consumers in this repo are the contact-form submit, the hero CTAs in
+`patterns/Hero`, and the inline CTAs in `patterns/CTASection`.
 
 Two compositions worth cribbing:
 
-- **Form submit with loading.** Disable the button while the request is in
-  flight by setting `isLoading={pending}`. The component flips `aria-busy`
-  and applies the loading style; screen readers announce the change without
+- **Form submit with loading.** Set `loading={pending}`; the component flips
+  `aria-busy`, disables the control, and applies the loading style without
   losing focus.
 - **Link styled as a button.** Pass `href` and the component renders an `<a>`
-  with the same visual treatment. Add `target="_blank"` and the component
-  auto-injects `rel="noopener noreferrer"` so you don't have to remember it.
+  with the same visual treatment. Add `target="_blank"` and it auto-injects
+  `rel="noopener noreferrer"`.
 
-Anti-pattern to avoid: an icon-only button without an accessible name. The
-dev-mode console will warn, but production should never ship one. Provide
+Anti-pattern to avoid: an icon-only button without an accessible name. Provide
 `accessibleName`, `accessibleNameRef`, or `tooltip`.
 
 ## How to use
@@ -42,76 +40,66 @@ import Button from '@dt/Button';
 // Primary action
 <Button variant="primary" onClick={onSave}>Save</Button>
 
+// Destructive action (variant x tone)
+<Button variant="secondary" tone="error" onClick={onDelete}>Delete</Button>
+
 // Form submit with loading
-<Button variant="primary" isLoading={pending} submits>
-  Send
-</Button>
+<Button variant="primary" loading={pending} submits>Send</Button>
 
 // Link styled as a button
-<Button href="/contact" variant="tertiary">
-  Get in touch
-</Button>
+<Button href="/contact" variant="tertiary">Get in touch</Button>
 
-// Icon-only with accessible name
+// On a dark band
+<Button variant="primary" surface="onDark">Book a call</Button>
+
+// Icon-only with an accessible name
 <Button icon="search" accessibleName="Search" variant="secondary" />
 ```
 
-Required consumer wiring: nothing. Button reads design tokens directly from
-`variables.css` via the theme provider already mounted at the layout level,
-so a bare `<Button />` works inside any `nextjs-app/shared/patterns/*` page.
+Required consumer wiring: none. Button reads design tokens from `variables.css`
+via the theme provider already mounted at the layout level.
 
-Theme & forced-colors notes: every variant has an explicit forced-colors
-fallback verified in the **ForcedColors** story. The inverse mode reads its
-foreground from the nearest ancestor with a non-transparent background, so
-it works inside arbitrarily-nested layouts without consumer plumbing.
+Theme & forced-colors: every variant has a forced-colors fallback verified in
+the **ForcedColors** story; `surface` swaps colours via static CSS, so it works
+inside any layout without consumer plumbing.
 
 ## When to use
 
 - Primary or secondary action on a page, form, or modal.
-- Submitting a form (`submits` prop sets `type="submit"`).
-- Destructive actions — use `variant="error"` and pair with a confirm step.
-- Navigation that needs to *feel* like an action (CTAs on marketing surfaces).
-  Pass `href` to render as an anchor while keeping the button visual.
+- Submitting a form (`submits` sets `type="submit"`).
+- Destructive actions: `tone="error"`, paired with a confirm step.
+- Navigation that needs to *feel* like an action; pass `href` to render an
+  anchor while keeping the button visual.
 
 ## When not to use
 
-- Plain in-text navigation — use **Link** for inline anchors that should look
-  like links, not actions.
-- On/off state — use **Switch**.
-- Multi-select within a group — use **Checkbox** or **CheckboxGroup**.
-- A non-interactive section heading or status badge — use **Title** or **Badge**.
-- A toggle that *looks* like a button but holds state — render two Buttons
-  with `aria-pressed`, or step up to **Tabs** / **Switch**.
+- Plain in-text navigation: use **Link**.
+- On/off state: use **Switch**.
+- Multi-select within a group: use **Checkbox** or **CheckboxGroup**.
+- A non-interactive heading or status chip: use **Title** or **Badge**.
 
 ## Accessibility
 
-- **Keyboard:** Enter and Space activate the button (native behaviour, not
-  overridden). Tab order follows DOM order; nothing custom.
-- **Focus:** `focus-visible` only — keyboard users see the focus ring, mouse
-  clicks do not. Ring uses `var(--focus-ring-color, var(--color-primary))`.
-- **States:** `aria-busy` is set while `isLoading`; the underlying button is
-  also `disabled` so click handlers don't fire mid-request. In link mode
-  (`href`), `aria-disabled` is used instead because native anchors have no
-  disabled attribute.
-- **Names:** an icon-only button without `accessibleName` /
-  `accessibleNameRef` / `tooltip` triggers a dev-mode console warning. The
-  validator does not gate this yet — it is on the contract owner to keep
-  consumers honest.
-- **Reduced motion:** the loading pulse respects
-  `prefers-reduced-motion: reduce`. No transform or opacity animation runs
-  when the user has motion suppressed.
-- **Forced colors:** every variant has tested fallbacks under Chromium
-  `emulateMedia({ forcedColors: 'active' })`. The inverse-foreground sampling
-  is bypassed in forced-colors mode (the system palette wins).
+- **Keyboard:** Enter and Space activate (native, not overridden). Tab order
+  follows DOM order.
+- **Focus:** `focus-visible` only; ring uses
+  `var(--focus-ring-color, var(--color-primary))` and survives forced-colors via
+  a `Highlight` outline.
+- **States:** `aria-busy` is set while `loading` and the control is also
+  `disabled`; link mode uses `aria-disabled` since anchors have no disabled
+  attribute.
+- **Names:** an icon-only button without `accessibleName` / `accessibleNameRef`
+  / `tooltip` triggers a dev-mode console warning.
+- **Reduced motion:** the press `scale`, the loading pulse, and movement
+  transitions are suppressed under `prefers-reduced-motion`; colour transitions
+  remain for comprehension.
+- **Forced colors:** every variant tested under Chromium
+  `emulateMedia({ forcedColors: 'active' })`.
 
 ## Promotion notes
 
-- a11y reviewed 2026-05-26: keyboard, loading-busy, inverse-on-dark,
-  forced-colors, reduced-motion checked in Storybook. Note in
+- a11y reviewed 2026-06-18: variant/tone API, `scale(0.97)` press feedback,
+  forced-colors, and reduced-motion verified. See
   `Button.contract.json#a11y.reviewedNote`.
-- Stable promotion blockers: accessibility-tree snapshots for the four
-  required stories, real-browser forced-colors run, and at least one
-  documented production consumer (`Button.contract.json#consumers`).
-- Known debt: legacy prop aliases (`disabled`, `loading`, `inverse`,
-  `rounded`) still emit deprecation warnings. Remove in v2.0.0 once the
-  `is*` prefixed names have soaked.
+- Compose destructive and semantic buttons with `tone`; there is no `error`
+  variant and no `severity` prop.

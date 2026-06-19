@@ -277,10 +277,10 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Schema Anatomy"
         title="What a component contract defines"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>Props &amp; variants.</span> Every prop typed with allowed values, defaults, and constraints. Two style packs: <code>base</code> (styling-agnostic) and <code>tailwind</code> (class-name-aware). Same schema shape, different <code>stylingSystem</code>.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             <span style={{ fontWeight: 600 }}>Accessibility contract.</span> Required ARIA attributes, keyboard interaction patterns, focus management rules. Per variant, not per component. <span style={{ fontWeight: 600 }}>Token bindings.</span> Which tokens map to which visual properties. No ambiguity.
           </Text>,
         ]}
@@ -295,10 +295,10 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Published Packages"
         title="Contracts + CLI"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>@petritapanilahdelma/llm-component-cli</span> ships four commands: <code>validate</code> (strict structure + JSON contract checks), <code>drift-check</code> (compare schema against component props and Storybook args), <code>migrate</code> (v1 → v2 schema upgrade), and <code>init</code> (scaffold a full component starter).
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             Both packages versioned in lockstep via npm workspace root. Tag-release workflow publishes immutable artifacts: schema pack archive, validator output, drift report, eval report, dashboard snapshot.
           </Text>,
         ]}
@@ -313,10 +313,10 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Enforcement"
         title="Drift detection &amp; agent evals"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>Drift detection is a failing build, not a warning.</span> The CI workflow treats contract drift the same way Project Spine treats export drift. If the schema and the component diverge, the pipeline stops. The golden test corpus provides permanent regression coverage.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             <span style={{ fontWeight: 600 }}>The eval harness scores agent output against the contract</span> so the feedback loop is measurable. The <code>failing-examples/</code> library provides intentionally bad fixtures as anti-pattern regression tests.
           </Text>,
           <ContractPipelineDiagram key="pipeline" />,
@@ -332,10 +332,10 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Governance"
         title="Schema evolution as reviewed process"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>Schema change-request and system-health-review templates live in-repo</span> so contract evolution is reviewed, not ambient. When a component needs a new prop or variant, the change goes through the governance template: documenting why, what breaks, and what the migration path is.
           </Text>,
-          <Text key="2" size="S">
+          <Text key="2" size="s">
             The contract pattern here is the ancestor of per-component <code>.contract.json</code> files in client projects. This repo is where the pattern was proven before being deployed in production design systems.
           </Text>,
         ]}
@@ -358,8 +358,8 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">2 npm Packages</Text>
-                <Text size="S">Contracts + CLI, versioned in lockstep. Workspace root at packages/.</Text>
+                <Text size="l">2 npm Packages</Text>
+                <Text size="s">Contracts + CLI, versioned in lockstep. Workspace root at packages/.</Text>
               </>
             ),
           },
@@ -368,8 +368,8 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">4 CLI Commands</Text>
-                <Text size="S">validate, drift-check, migrate, init. CI enforcement on every push.</Text>
+                <Text size="l">4 CLI Commands</Text>
+                <Text size="s">validate, drift-check, migrate, init. CI enforcement on every push.</Text>
               </>
             ),
           },
@@ -378,8 +378,8 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">2 Style Packs</Text>
-                <Text size="S">Base (styling-agnostic) and Tailwind (class-name-aware). Same schema shape.</Text>
+                <Text size="l">2 Style Packs</Text>
+                <Text size="s">Base (styling-agnostic) and Tailwind (class-name-aware). Same schema shape.</Text>
               </>
             ),
           },
@@ -388,8 +388,8 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
             innerPadding: true,
             content: (
               <>
-                <Text size="L">Eval Harness</Text>
-                <Text size="S">Agent output scored against contracts. Failing-examples library as regression surface.</Text>
+                <Text size="l">Eval Harness</Text>
+                <Text size="s">Agent output scored against contracts. Failing-examples library as regression surface.</Text>
               </>
             ),
           },
@@ -401,7 +401,7 @@ export function LlmComponentSchemaPage({ nav }: { nav?: React.ReactNode }) {
         subtitle="Positioning"
         title="Component-level context for agents"
         content={[
-          <Text key="1" size="S">
+          <Text key="1" size="s">
             <span style={{ fontWeight: 600 }}>Where Project Spine compiles repo-level agent context, LLM Component Schema compiles component-level context.</span> Both are repo-native. Both use hashed drift reports. Both address the core failure mode: generic agent prompts drift; explicit schemas + CI don&apos;t.
           </Text>,
         ]}

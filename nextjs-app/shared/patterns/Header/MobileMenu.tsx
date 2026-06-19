@@ -190,7 +190,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           role="document"
         >
           <header className={styles.header}>
-            <Title as="h2" size="S" terminals="sans" className={styles.title}>
+            <Title as="h2" size="s" terminals="sans" className={styles.title}>
               {t("navMenuTitle", "Menu")}
             </Title>
             <button

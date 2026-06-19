@@ -18,7 +18,7 @@
   border-block-start: 1px solid var(--color-border);
   background-color: color-mix(
     in srgb,
-    var(--main-body-background-color, #fff) 94%,
+    var(--main-body-background-color) 94%,
     transparent
   );
   backdrop-filter: blur(10px);

@@ -11,7 +11,7 @@ export default function NotFound() {
 
   return (
     <div className={styles.notFoundPage}>
-      <Button variant="primary" size="l" href="/" icon={<Icon name="house" />}>
+      <Button variant="primary" size="lg" href="/" icon={<Icon name="house" />}>
         {t("notFoundButton")}
       </Button>
     </div>

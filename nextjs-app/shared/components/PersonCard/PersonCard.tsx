@@ -156,7 +156,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
           </Text>
           <Text as="p">
             <Link
-              size="M"
+              size="md"
               href={`mailto:${email}`}
               className={`${styles.personEmail} wavyUnderline`.trim()}
             >
@@ -167,7 +167,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
         <div className={styles.socialLinks}>
           {linkedinUrl && (
             <Link
-              size="S"
+              size="sm"
               href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -183,7 +183,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
           )}
           {githubUrl && (
             <Link
-              size="S"
+              size="sm"
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -199,7 +199,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
           )}
           {facebookUrl && (
             <Link
-              size="S"
+              size="sm"
               href={facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -215,7 +215,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
           )}
           {twitterUrl && (
             <Link
-              size="S"
+              size="sm"
               href={twitterUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -231,7 +231,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
           )}
           {dribbbleUrl && (
             <Link
-              size="S"
+              size="sm"
               href={dribbbleUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -247,7 +247,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
           )}
           {mediumUrl && (
             <Link
-              size="S"
+              size="sm"
               href={mediumUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -263,7 +263,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
           )}
           {instagramUrl && (
             <Link
-              size="S"
+              size="sm"
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -279,7 +279,7 @@ export const PersonCard: React.FC<PersonCardProps> = ({
           )}
           {substackUrl && (
             <Link
-              size="S"
+              size="sm"
               href={substackUrl}
               target="_blank"
               rel="noopener noreferrer"

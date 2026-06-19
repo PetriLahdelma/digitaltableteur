@@ -35,7 +35,7 @@ const meta: Meta<typeof AskAI> = {
     (Story) => (
       <div style={{ minHeight: "32rem" }}>
         <div style={{ margin: "1rem" }}>
-          <Badge state="warning" size="s">
+          <Badge tone="warning" size="sm">
             Work in progress
           </Badge>
         </div>

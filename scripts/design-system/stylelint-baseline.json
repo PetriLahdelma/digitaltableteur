@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 475,
+  "warningCount": 462,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -91,96 +91,6 @@
       "rule": "rule-empty-line-before",
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::112::3::order/properties-order::Expected \"margin-inline-start\" to come before \"flex-shrink\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 112,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"margin-inline-start\" to come before \"flex-shrink\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Badge/Badge.module.css::119::3::order/properties-order::Expected \"block-size\" to come before \"cursor\" (order/properties-order)",
-      "file": "nextjs-app/shared/components/Badge/Badge.module.css",
-      "line": 119,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"block-size\" to come before \"cursor\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::155::1::no-descending-specificity::Expected selector \".button.tertiary\" to come before selector \".button.tertiary:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 155,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.tertiary\" to come before selector \".button.tertiary:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::167::1::no-descending-specificity::Expected selector \".button.error\" to come before selector \".button.error:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 167,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.error\" to come before selector \".button.error:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::173::1::no-descending-specificity::Expected selector \".button.warning\" to come before selector \".button.warning:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 173,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.warning\" to come before selector \".button.warning:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::179::1::no-descending-specificity::Expected selector \".button.success\" to come before selector \".button.success:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 179,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.success\" to come before selector \".button.success:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::185::1::no-descending-specificity::Expected selector \".button.info\" to come before selector \".button.info:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 185,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.info\" to come before selector \".button.info:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::68::1::no-descending-specificity::Expected selector \".button.primary\" to come before selector \".button.primary:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 68,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.primary\" to come before selector \".button.primary:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::74::1::no-descending-specificity::Expected selector \".button.secondary\" to come before selector \".button.secondary:focus-visible\", at line 31 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 74,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.secondary\" to come before selector \".button.secondary:focus-visible\", at line 31 (no-descending-specificity)"
-    },
-    {
-      "id": "nextjs-app/shared/components/Button/Button.module.css::86::1::no-descending-specificity::Expected selector \".button.inverse\" to come before selector \".button.inverse:focus-visible\", at line 42 (no-descending-specificity)",
-      "file": "nextjs-app/shared/components/Button/Button.module.css",
-      "line": 86,
-      "column": 1,
-      "rule": "no-descending-specificity",
-      "severity": "warning",
-      "text": "Expected selector \".button.inverse\" to come before selector \".button.inverse:focus-visible\", at line 42 (no-descending-specificity)"
     },
     {
       "id": "nextjs-app/shared/components/ChatWidget/ChatWidget.module.css::283::1::no-descending-specificity::Expected selector \".fullWidthComponent > *\" to come before selector \".header .tagline *\", at line 124 (no-descending-specificity)",
@@ -3117,10 +3027,10 @@
       "text": "Expected variable, function or keyword for \"#0a2530\" of \"background-color\" (scale-unlimited/declaration-strict-value)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::56::45::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::56::39::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 56,
-      "column": 45,
+      "column": 39,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
@@ -3135,10 +3045,10 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::58::42::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::58::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 58,
-      "column": 42,
+      "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
@@ -3171,19 +3081,19 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::69::42::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::69::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 69,
-      "column": 42,
+      "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::73::45::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::73::39::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 73,
-      "column": 45,
+      "column": 39,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
@@ -3207,10 +3117,10 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::76::34::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::76::28::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 76,
-      "column": 34,
+      "column": 28,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
@@ -3243,10 +3153,10 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::87::34::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/CTASection/CTASection.module.css::87::28::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/CTASection/CTASection.module.css",
       "line": 87,
-      "column": 34,
+      "column": 28,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
@@ -4012,33 +3922,6 @@
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
       "line": 203,
       "column": 33,
-      "rule": "declaration-no-important",
-      "severity": "warning",
-      "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::109::19::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css",
-      "line": 109,
-      "column": 19,
-      "rule": "declaration-no-important",
-      "severity": "warning",
-      "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::115::14::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css",
-      "line": 115,
-      "column": 14,
-      "rule": "declaration-no-important",
-      "severity": "warning",
-      "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css::121::20::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "nextjs-app/shared/patterns/WorkMagneticField/WorkMagneticField.module.css",
-      "line": 121,
-      "column": 20,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"

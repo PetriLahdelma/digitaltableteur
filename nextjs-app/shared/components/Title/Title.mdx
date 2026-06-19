@@ -22,10 +22,10 @@ hero composition used in `patterns/Hero` and `patterns/HighlightSection`.
 Two compositions worth cribbing:
 
 - **Hero headline with editorial weight.** Default `serif` terminal at
-  `size="XL"` or `"XXL"`, paired with a `Text` lede underneath at
-  `size="L"`. The serif/sans alternation is the site's primary editorial
+  `size="xl"` or `"xxl"`, paired with a `Text` lede underneath at
+  `size="l"`. The serif/sans alternation is the site's primary editorial
   signature.
-- **Section header in product chrome.** `terminals="sans"` at `size="M"`
+- **Section header in product chrome.** `terminals="sans"` at `size="m"`
   or `"S"` for inline section headers — closer to UI text than to magazine
   layout. Use this in dashboards and the chat widget panel.
 
@@ -39,13 +39,13 @@ first, then choose the visual size that fits the layout.
 import Title from '@dt/Title';
 
 // Hero h1 at largest serif size
-<Title level={1} size="XXL">We design clarity.</Title>
+<Title level={1} size="xxl">We design clarity.</Title>
 
 // Section h2 in sans
-<Title level={2} size="M" terminals="sans">Recent work</Title>
+<Title level={2} size="m" terminals="sans">Recent work</Title>
 
 // Visual-only heading inside a card (no semantic level — use `as="span"`)
-<Title as="span" size="S">Featured</Title>
+<Title as="span" size="s">Featured</Title>
 ```
 
 Required consumer wiring: nothing. Title resolves typography tokens from

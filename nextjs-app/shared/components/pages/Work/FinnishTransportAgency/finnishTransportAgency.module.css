@@ -416,14 +416,14 @@
   gap: 0;
   border: 1px solid rgb(255 255 255 / 15%);
   border-radius: var(--radius-lg);
-  background: rgb(255 255 255 / 10%);
+  background: #00649b;
   backdrop-filter: blur(10px);
   text-align: left;
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .resultItem:hover {
-  background: rgb(255 255 255 / 15%);
+  background: #005b8c;
   transform: translateY(-4px);
 }
 
@@ -443,7 +443,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 95%);
+  color: inherit;
 }
 
 .resultDetail {
@@ -451,7 +451,7 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
   line-height: 1.5;
-  color: rgb(255 255 255 / 70%);
+  color: rgb(255 255 255 / 90%);
 }
 
 /* Responsive */

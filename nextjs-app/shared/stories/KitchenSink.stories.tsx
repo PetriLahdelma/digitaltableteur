@@ -1,12 +1,12 @@
 import React, { Suspense } from "react";
 import { Meta } from "@storybook/react-vite";
 import {
-  AllVariants as ButtonVariants,
-  AllSizes as ButtonSizes,
+  Tones as ButtonVariants,
+  Sizes as ButtonSizes,
 } from "../components/Button/Button.stories";
 import {
-  AllVariants as BadgeVariantsStory,
-  AllSizes as BadgeSizesStory,
+  Tones as BadgeVariantsStory,
+  Sizes as BadgeSizesStory,
 } from "../components/Badge/Badge.stories";
 import Grid from "@dt/Grid";
 import {
@@ -560,41 +560,10 @@ const LinkPlaygroundWrap = () => {
   return <Link href={LinkStories.Playground.args?.href ?? "#"}>{content}</Link>;
 };
 
-const LinkSmallWrap = () => {
-  const { t } = useTranslation();
-  const children = LinkStories.Small.args?.children;
-  const content =
-    typeof children === "string" ? t(children) : (children ?? "Small Link");
-  return (
-    <Link href={LinkStories.Small.args?.href ?? "#"} size="S">
-      {content}
-    </Link>
-  );
-};
-
-const LinkMediumWrap = () => {
-  const { t } = useTranslation();
-  const children = LinkStories.Medium.args?.children;
-  const content =
-    typeof children === "string" ? t(children) : (children ?? "Medium Link");
-  return (
-    <Link href={LinkStories.Medium.args?.href ?? "#"} size="M">
-      {content}
-    </Link>
-  );
-};
-
-const LinkLargeWrap = () => {
-  const { t } = useTranslation();
-  const children = LinkStories.Large.args?.children;
-  const content =
-    typeof children === "string" ? t(children) : (children ?? "Large Link");
-  return (
-    <Link href={LinkStories.Large.args?.href ?? "#"} size="L">
-      {content}
-    </Link>
-  );
-};
+// The per-size Small/Medium/Large Link stories were consolidated into a single
+// `Sizes` story in the platinum Link pass, so render that instead of three dead
+// references. storyToComponent handles its object-with-render shape.
+const LinkSizes = storyToComponent(LinkStories.Sizes);
 
 type ComponentVariant = {
   name: string;
@@ -665,9 +634,7 @@ const COMPONENTS = [
   { name: "Label Required", Variants: LabelRequiredWrap },
   { name: "Label Disabled", Variants: LabelDisabledWrap },
   { name: "Link Playground", Variants: LinkPlaygroundWrap },
-  { name: "Link Small", Variants: LinkSmallWrap },
-  { name: "Link Medium", Variants: LinkMediumWrap },
-  { name: "Link Large", Variants: LinkLargeWrap },
+  { name: "Link Sizes", Variants: LinkSizes },
 ]
   .filter(
     (c) =>

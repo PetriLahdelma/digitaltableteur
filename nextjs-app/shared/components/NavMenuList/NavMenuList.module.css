@@ -23,7 +23,7 @@
   font-weight: 600;
   letter-spacing: 0.015em;
   text-decoration: none;
-  color: var(--primary-text-color, #041B23);
+  color: var(--primary-text-color);
   transition:
     background-color 160ms ease,
     color 160ms ease;

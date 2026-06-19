@@ -102,18 +102,18 @@ export const CookieConsent: React.FC<CookieConsentProps> = () => {
           footer={
             <div className={styles.footerActions}>
               <div className={styles.leftActions}>
-                <Link href="/privacy-policy" size="S">
+                <Link href="/privacy-policy" size="sm">
                   {t("cookieConsent.viewFullPolicy")}
                 </Link>
               </div>
               <div className={styles.rightActions}>
-                <Button variant="secondary" size="m" onClick={handleAcceptEssential}>
+                <Button variant="secondary" size="md" onClick={handleAcceptEssential}>
                   {t("cookieConsent.acceptEssentialButton")}
                 </Button>
-                <Button variant="primary" size="m" onClick={handleSaveCustom}>
+                <Button variant="primary" size="md" onClick={handleSaveCustom}>
                   {t("cookieConsent.saveButton")}
                 </Button>
-                <Button variant="primary" size="m" onClick={handleAcceptAll}>
+                <Button variant="primary" size="md" onClick={handleAcceptAll}>
                   {t("cookieConsent.acceptAllButton")}
                 </Button>
               </div>
@@ -140,7 +140,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = () => {
                   </div>
                   <div className={styles.categoryToggle}>
                     {consent.required ? (
-                      <Badge size="s" design="secondary" state="info">
+                      <Badge size="sm" variant="secondary" tone="info">
                         {t("cookieConsent.required")}
                       </Badge>
                     ) : null}

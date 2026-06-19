@@ -1,38 +1,37 @@
 # Badge
 
 ## Intent
-Carry a compact piece of status or category meaning. Badge is the
-typographic atom for "one short label, possibly with a state colour, and
-sometimes removable." The contract is the visual treatment plus the
-optional live-region semantics for dynamic content.
+Carry a compact piece of status or category meaning. Badge is the display atom
+for "one short label, optionally coloured by tone, and sometimes removable."
+Two orthogonal axes: `variant` (visual weight — filled vs outlined) and `tone`
+(semantic colour — neutral / error / warning / success / info).
 
 ## Interaction contract
-- Keyboard: none on the badge itself; the embedded remove button when
-  `removable` is a real Button (Enter / Space activate it).
-- Pointer: hover on the remove button shows the focus style; click
-  dismisses and calls `onRemove`.
-- Screen readers: silent by default. With `role="status"` the badge
-  becomes a polite live region and announces text changes.
+- Keyboard: none on the badge itself; the embedded remove button (when
+  `removable`) is a real Button (Enter / Space activate it, with press feedback).
+- Pointer: hover on the remove button shows a tonal highlight; click dismisses
+  and calls `onRemove`.
+- Screen readers: silent by default. With `role="status"` the badge becomes a
+  polite live region and announces text changes.
 
 ## Do / don't
-- Do: pick `design="primary"` for filled, emphasis-bearing tags (status,
-  errors) and `"secondary"` for tonal tags (categories, filters).
-- Do: pass `role="status"` only when the badge content actually changes
-  at runtime. Static tags don't need a live region.
-- Don't: rely on colour alone to convey state — pair with the icon (the
-  component resolves an icon automatically when `state` is set) or include
-  the state word in the badge text.
-- Don't: nest a Button inside a Badge. The removable affordance is
-  already a Button — multiple interactive children produce ambiguous
-  focus and SR behaviour.
+- Do: use `variant="primary"` for filled, emphasis-bearing tags and
+  `"secondary"` for outlined/tonal tags (categories, filters).
+- Do: set `tone` for semantic colour; a matching icon is supplied automatically
+  for non-neutral tones.
+- Do: pass `role="status"` only when the content actually changes at runtime.
+- Don't: rely on colour alone to convey tone — pair it with the icon or include
+  the state word in the text.
+- Don't: nest a Button inside a Badge beyond the built-in removable affordance.
 
 ## Design notes
-- Tokens: state colours come from the `--color-state-*` token family
-  (success, info, warning, error); neutral falls back to `--color-text`
-  contrast pairs. Border radius is `--radius-md` for default, `--radius-md`
-  with `--radius-sm` when `square` is set.
-- Figma: https://www.figma.com/design/digitaltableteur/badge — keep state
-  naming aligned with the Figma variant set; the auto-resolved icon map
-  in `STATUS_ICON_NAMES` is the source of truth in code.
-- Translation: the remove button label is `t("badgeRemove")`, ensuring
-  EN/FI/SV coverage across the locales bundled with the app.
+- Colour: filled (`variant="primary"`) tones fill with `--color-success` /
+  `--color-info` / `--color-error` / `--color-warning-contrast` (or
+  `--color-neutral-bg`) and white text; outlined (`secondary`) tones apply the
+  same colour to border and text over a transparent background.
+- Size: `sm | md | lg` adjust padding and font-size; pill radius (999px) by
+  default, squared via `square`.
+- Motion: the badge is static; the removable close button inherits Button's
+  tokenized press feedback plus a tonal hover, suppressed under
+  `prefers-reduced-motion`.
+- Translation: the remove button label is `t("badgeRemove")` (EN / FI / SV).

@@ -401,7 +401,7 @@ export function EnhancedContactForm({
             <Checkbox
               id="interest-all"
               label={t("contactAll")}
-              isChecked={allSelected}
+              checked={allSelected}
               onCheckedChange={handleSelectAllInterests}
             />
             <div className="grid grid-cols-1 tablet:grid-cols-2 gap-3 ml-6">
@@ -410,7 +410,7 @@ export function EnhancedContactForm({
                   key={option.value}
                   id={`interest-${option.value}`}
                   label={t(option.labelKey)}
-                  isChecked={selectedInterests.includes(option.value)}
+                  checked={selectedInterests.includes(option.value)}
                   onCheckedChange={(checked) =>
                     handleInterestToggle(option.value, checked)
                   }
@@ -498,15 +498,15 @@ export function EnhancedContactForm({
             type="button"
             variant="secondary"
             onClick={resetFormState}
-            isDisabled={isSubmitting}
+            disabled={isSubmitting}
           >
             {t("contactClear")}
           </Button>
           <Button
             type="submit"
             variant="primary"
-            isDisabled={isSubmitting || !isFormValid}
-            isLoading={isSubmitting}
+            disabled={isSubmitting || !isFormValid}
+            loading={isSubmitting}
             className="flex-1"
           >
             {t("contactSubmit")}

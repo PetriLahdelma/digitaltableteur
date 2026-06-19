@@ -27,7 +27,7 @@ const WorkNav: React.FC = () => {
       <div className={styles.workNavBar}>
         <Button
           variant="tertiary"
-          size="m"
+          size="md"
           icon={<Icon name="briefcase" ariaLabel={t("workNavBackToWork")} />}
           onClick={() => router.push("/work")}
         >
@@ -36,9 +36,9 @@ const WorkNav: React.FC = () => {
         <div className={styles.rightNavGroup}>
           <Button
             variant="tertiary"
-            size="m"
+            size="md"
             icon={<Icon name="arrow-left" ariaLabel={t("workNavPrev")} />}
-            isDisabled={currentIndex <= 0}
+            disabled={currentIndex <= 0}
             onClick={() => {
               if (currentIndex > 0) router.push(workPages[currentIndex - 1].path);
             }}
@@ -47,9 +47,9 @@ const WorkNav: React.FC = () => {
           </Button>
           <Button
             variant="tertiary"
-            size="m"
+            size="md"
             endIcon={<Icon name="arrow-right" ariaLabel={t("workNavNext")} />}
-            isDisabled={currentIndex === workPages.length - 1}
+            disabled={currentIndex === workPages.length - 1}
             onClick={() => {
               if (currentIndex < workPages.length - 1)
                 router.push(workPages[currentIndex + 1].path);

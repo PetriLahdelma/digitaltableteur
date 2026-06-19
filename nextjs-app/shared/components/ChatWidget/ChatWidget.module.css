@@ -23,9 +23,9 @@
   min-height: 24rem;
   max-height: min(70vh, 640px);
   flex-direction: column;
-  border: 1px solid var(--color-border, #232323);
+  border: 1px solid var(--color-border);
   border-radius: 1.25rem;
-  background-color: var(--main-body-background-color, #fff);
+  background-color: var(--main-body-background-color);
   box-shadow: 0 25px 60px rgb(0 0 0 / 15%);
   pointer-events: auto;
   overflow: hidden;
@@ -215,7 +215,7 @@
   font-family: Moderat, sans-serif;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: var(--color-text, #111);
+  color: var(--color-text);
 
   /* Email workflow blocks */
 
@@ -269,8 +269,8 @@
 .message[data-role="user"] {
   align-self: flex-end;
   border-radius: 1rem 1rem 0;
-  background: var(--color-primary, #0f62fe);
-  color: var(--inverted-text-color, #fff);
+  background: var(--color-primary);
+  color: var(--inverted-text-color);
 }
 
 .fullWidthComponent {
@@ -303,7 +303,7 @@
   font-family: Moderat, sans-serif;
   font-size: 0.85rem;
   line-height: 1.4;
-  color: var(--color-text, #111);
+  color: var(--color-text);
 }
 
 .composer {
@@ -430,12 +430,12 @@
   align-items: center;
   border: none;
   /* stylelint-disable-next-line declaration-no-important -- Override Button variant styles */
-  background: var(--logo-background, #dfff00) !important;
+  background: var(--logo-background) !important;
   box-shadow: 0 18px 40px rgb(0 0 0 / 20%);
   font-family: inherit;
   font-size: 0.95rem;
   /* stylelint-disable-next-line declaration-no-important -- Override Button variant styles */
-  color: var(--primary-text-color, #041b23) !important;
+  color: var(--primary-text-color) !important;
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -779,7 +779,7 @@
 :global(.themeDark) .toggleAvatar,
 :global(.themeDark) .headerAvatar {
   --donny-primary: #fff;
-  --donny-eyes: var(--logo-background, var(--accent-purple, #812eff));
+  --donny-eyes: var(--logo-background, var(--accent-purple));
 }
 
 /* Chat Toggle - High Contrast Black: white text on dark toggle */
@@ -861,7 +861,7 @@
   font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.35;
-  color: var(--color-text, #111);
+  color: var(--color-text);
 }
 
 .toolResultCard {
@@ -874,12 +874,12 @@
   align-items: center;
   gap: 0.25rem;
   border-radius: var(--radius-lg);
-  background-color: var(--color-primary, #041B23);
+  background-color: var(--color-primary);
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
-  color: var(--inverted-text-color, #fff);
+  color: var(--inverted-text-color);
   transition: opacity 0.15s ease;
 }
 
@@ -907,9 +907,9 @@
   padding: 0.75rem;
   align-items: flex-start;
   gap: 0.75rem;
-  border: 1px solid var(--color-border, #e5e5e5);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background-color: var(--color-surface, #fff);
+  background-color: var(--color-surface);
   text-decoration: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
@@ -932,7 +932,7 @@
 }
 
 .projectCard:hover {
-  border-color: var(--color-primary, #041B23);
+  border-color: var(--color-primary);
   box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
 }
 
@@ -940,7 +940,7 @@
   font-family: var(--font-sans);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--color-text, #111);
+  color: var(--color-text);
 }
 
 .projectCardMeta {
@@ -966,12 +966,12 @@
   font-family: var(--font-sans);
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--color-primary, #041B23);
+  color: var(--color-primary);
 }
 
 .packageRecommended {
-  border-color: var(--color-primary, #041B23);
-  box-shadow: inset 0 0 0 1px var(--color-primary, #041B23);
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
 }
 
 .followUpDraft {
@@ -1016,7 +1016,7 @@
 
 .followUpDraftCopy {
   padding: 0.375rem 0.75rem;
-  border: 1px solid var(--color-border, #ccc);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm, 0.375rem);
   background: transparent;
   font-family: var(--font-sans);

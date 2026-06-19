@@ -5,34 +5,33 @@ import * as Stories from './Link.stories.tsx';
 
 # Link
 
-**Status:** beta · **Tier:** atom · **Group:** navigation
+**Status:** stable · **Tier:** atom · **Group:** navigation
 
-Inline navigation anchor with built-in URL sanitisation and an
-external-link affordance. Link normalises and validates the `href` (only
-`http`/`https`/`mailto`/`tel` protocols, with relative paths preserved
-unchanged), then renders an external-icon hint when the destination is
-off-site. Hover, focus, and visited styling are token-driven so the
-contract survives theme swaps and forced-colors mode.
+Inline navigation anchor with built-in URL sanitisation and an external-link
+affordance. Link normalises and validates the `href` (only `http` / `https` /
+`mailto` / `tel`, with relative paths preserved), then renders a trailing icon
+when the destination is off-site. Colour, the focus ring, and the shared wavy
+underline are token-driven, so the contract survives theme swaps and
+forced-colors mode. Sizes are `sm` / `md` / `lg`.
 
 ## In use
 
 Used in body copy, navigation lists, footer columns, and the `Breadcrumb`
-component. The **Example** story shows the canonical inline anchor inside
-a paragraph; the External story exercises the off-site affordance.
+component. The **Example** story shows the canonical inline anchor; the
+**External** story exercises the off-site affordance.
 
 Two compositions worth cribbing:
 
 - **Inline body anchor.** Drop a `<Link href="/about">` inside a `<Text>`
-  paragraph. The default size matches the surrounding text; the underline
-  follows the system's `text-decoration` token.
-- **External link with hint.** Pass an off-site `href` (anything that
-  doesn't resolve to a `digitaltableteur.com` host or a relative path).
-  The component appends an external-icon glyph and adds
-  `rel="noopener noreferrer"` for `target="_blank"`.
+  paragraph; the wavy underline follows the token-driven treatment.
+- **External link with hint.** Pass an off-site `href` (anything that doesn't
+  resolve to a `digitaltableteur.com` host or a relative path). The component
+  appends an external icon and adds `rel="noopener noreferrer"` when
+  `target="_blank"` is set.
 
-Anti-pattern to avoid: using Link to render a button-shaped CTA. The
-visual idiom for actions is **Button**; use `Button` with `href` to get
-the button look on a navigation surface.
+Anti-pattern to avoid: using Link to render a button-shaped CTA. The idiom for
+actions is **Button** (use `Button` with `href` for the button look on a
+navigation surface).
 
 ## How to use
 
@@ -42,26 +41,23 @@ import Link from '@dt/Link';
 // Inline anchor
 <Link href="/about">About us</Link>
 
-// External link (auto-detects and adds icon + rel)
-<Link href="https://github.com/digitaltableteur" target="_blank">
-  GitHub
-</Link>
+// External link (auto-detects, adds the icon, and rel for target=_blank)
+<Link href="https://github.com/digitaltableteur" target="_blank">GitHub</Link>
 
 // Mailto / tel
 <Link href="mailto:hello@digitaltableteur.com">hello@…</Link>
 
 // Sized inline anchor in editorial copy
-<Link href="/work" size="L">See the work</Link>
+<Link href="/work" size="lg">See the work</Link>
 ```
 
-Required consumer wiring: nothing. The component sanitises `href`
-unconditionally — invalid protocols (`javascript:`, `data:`) are
-rewritten to `#` so a stray pasted URL cannot become an XSS surface.
+Required consumer wiring: none. The component sanitises `href` unconditionally —
+invalid protocols (`javascript:`, `data:`) are rewritten to `#`, so a stray
+pasted URL cannot become an XSS surface.
 
-Theme & forced-colors notes: link colour follows the system `LinkText`
-keyword in forced-colors mode; visited follows `VisitedText`. The
-external icon's stroke colour reads the parent's `color` and survives
-both themes.
+Theme & forced-colors: link colour reads `--link-color` and survives both
+themes; the focus ring uses `--focus-ring-*` and the **ForcedColors** story
+verifies the anchor under the system palette.
 
 ## When to use
 
@@ -72,32 +68,25 @@ both themes.
 ## When not to use
 
 - A primary action — use **Button**.
-- A "button styled as a link" — use **Button** with `variant="tertiary"`,
-  which preserves the right keyboard and ARIA contract.
-- A page-internal scroll target — anchors work but for in-page navigation
-  consider whether the layout would benefit from a Tabs or Breadcrumb
-  composition instead.
+- A button styled as a link — use **Button** with `variant="tertiary"`, which
+  preserves the right keyboard and ARIA contract.
 
 ## Accessibility
 
-- **Native anchor:** the underlying element is a real `<a>`. Keyboard and
-  focus behaviour is the platform's.
-- **External hint:** when the link is off-site, an icon is appended with
-  `aria-hidden="true"` and a visually hidden " (opens in a new window)"
-  is added when `target="_blank"`. Screen-reader users hear the new-tab
-  context before the browser opens it.
-- **URL sanitisation:** invalid protocols are rewritten to `#`. The
-  surface API cannot inject `javascript:` or `data:` URLs.
-- **Focus:** `focus-visible` outline only — keyboard focus shows the
-  ring, mouse clicks do not. Ring colour follows `--focus-ring-color`.
-- **Reduced motion:** Link has no motion to suppress.
+- **Native anchor:** the underlying element is a real `<a>`; keyboard and focus
+  behaviour is the platform's.
+- **External hint:** off-site links append an icon labelled "External link";
+  pass `target="_blank"` to open a new tab, and `rel="noopener noreferrer"` is
+  added automatically.
+- **URL sanitisation:** invalid protocols are rewritten to `#`; the surface API
+  cannot inject `javascript:` or `data:` URLs.
+- **Focus:** a `focus-visible` ring only (`--focus-ring-*`); mouse clicks do not
+  show it.
+- **Reduced motion:** only a colour transition runs; there is no movement.
 
 ## Promotion notes
 
-- Bulk-author target for Honest Beta phase. Reviewed against the
-  footer columns and the inline article links on the blog routes.
-- Stable promotion blockers: a11y-tree snapshots for the four required
-  stories, real-browser forced-colors run, documented production consumers.
-- Known debt: the size prop accepts only the legacy casing (`S`, `M`, `L`).
-  Aligning with the lowercase `sm|md|lg` ladder is a separate decision —
-  the visual ramp matches the typography ramp, not the form-atom ramp.
+- 2026-06-18 platinum pass: `sm`/`md`/`lg` sizes, `forwardRef`, tokenized focus
+  ring and colour transition, forced-colors verified.
+- Sizes use the lowercase `sm`/`md`/`lg` ladder, consistent with the other
+  control atoms.

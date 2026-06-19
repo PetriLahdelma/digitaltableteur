@@ -121,7 +121,7 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
         {sectionTitle && (
           <Title
             level={2}
-            size="M"
+            size="m"
             className={styles.sectionTitle}
             data-team-title
           >
@@ -132,7 +132,7 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
         {description && (
           <div className={styles.description}>
             {typeof description === "string" ? (
-              <Text size="M">{description}</Text>
+              <Text size="m">{description}</Text>
             ) : (
               description
             )}
@@ -167,12 +167,12 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
                 <Title
                   level={4}
                   terminals="sans"
-                  size="XS"
+                  size="xs"
                   className={styles.memberName}
                 >
                   {member.name}
                 </Title>
-                <Text size="S" className={styles.memberTitle}>
+                <Text size="s" className={styles.memberTitle}>
                   {member.title}
                 </Text>
               </MemberWrapper>

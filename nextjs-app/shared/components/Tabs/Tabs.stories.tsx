@@ -161,12 +161,11 @@ const meta: Meta<typeof Tabs> = {
 
     size: {
       control: { type: "select" },
-      options: ["sm", "md", "lg", "s", "m", "l"],
-      description:
-        "Size variant - supports both modern (sm/md/lg) and legacy (s/m/l) formats",
+      options: ["sm", "md", "lg"],
+      description: "Tablist size.",
       table: {
         category: "Appearance",
-        type: { summary: "SizeUnified" },
+        type: { summary: "\"sm\" | \"md\" | \"lg\"" },
         defaultValue: { summary: "md" },
       },
     },
@@ -229,7 +228,7 @@ Default.args = {
     { key: "tab3", label: "Tab 3" },
   ],
   variant: "default",
-  size: "m",
+  size: "md",
 };
 Default.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
