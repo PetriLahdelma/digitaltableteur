@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+# Local pre-commit quality gate. CI is quota-dead for this repo, so the design
+# system's checks must run locally. Cheapest checks first (fail fast). The
+# heavier per-push gate in .husky/pre-push still runs validate:components etc.
+# Bypass in a genuine emergency with: git commit --no-verify
+npm run check:contrast &&
+npm run lint:css &&
+npm run typecheck &&
+npm run lint
