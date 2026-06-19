@@ -127,6 +127,13 @@
   cursor: not-allowed;
 }
 
+/* Disabled anchor: belt-and-suspenders non-interactivity. The component also
+   drops href / tabIndex / click handling, so this only hardens the mouse path. */
+
+.button[aria-disabled="true"] {
+  pointer-events: none;
+}
+
 .button.primary:disabled,
 .button.primary[aria-disabled="true"] {
   background-color: var(--color-disabled-bg);
