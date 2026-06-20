@@ -520,7 +520,10 @@
   --color-error: #000;
   --color-warning: #000;
   --color-warning-contrast: #000;
-  --color-warning-text: #041b23;
+
+  /* White text for the dark (#000) warning surface (e.g. Toast .toast--warning).
+     On-canvas warning text uses --color-warning-contrast (HelperText, Card). */
+  --color-warning-text: #fff;
   --color-neutral-bg: #fff;
   --color-neutral-text: #000;
   --color-error-bg: #fff;

@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-06-13T09:53:27.042Z",
+  "generatedAt": "2026-06-20T09:49:47.707Z",
   "tokenCount": 164,
   "usageCoverage": 132,
   "themes": [
@@ -442,11 +442,11 @@
         "label": "Warning text on warning",
         "largeText": false,
         "themeId": "hcw",
-        "fgRaw": "#041b23",
+        "fgRaw": "#fff",
         "bgRaw": "#000",
-        "ratio": 1.19,
-        "level": "Fail",
-        "pass": false
+        "ratio": 21,
+        "level": "AAA",
+        "pass": true
       }
     ]
   },

@@ -11,7 +11,9 @@ const catalog = JSON.parse(
 );
 
 let failed = 0;
-const ENFORCED_THEMES = new Set(["light", "dark"]);
+// All four shipped themes are gated, including the two high-contrast themes —
+// the audit shipped an HCW warning-on-warning 1.19:1 fail because they weren't.
+const ENFORCED_THEMES = new Set(["light", "dark", "hcb", "hcw"]);
 for (const [themeId, rows] of Object.entries(catalog.contrastByTheme ?? {})) {
   if (!ENFORCED_THEMES.has(themeId)) continue;
   for (const row of rows) {

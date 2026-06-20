@@ -20,7 +20,9 @@
 }
 
 .warning {
-  color: var(--color-warning-text);
+  /* On-canvas warning text: use the accessible warning foreground, not
+     --color-warning-text (which is the text color *on* a warning fill). */
+  color: var(--color-warning-contrast);
 }
 
 .success {
