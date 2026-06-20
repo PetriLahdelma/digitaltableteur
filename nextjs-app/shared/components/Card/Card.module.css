@@ -429,7 +429,7 @@
 .statusWarning {
   border-color: var(--color-warning-border, rgb(245 158 11 / 20%));
   background-color: var(--color-warning-bg, rgb(245 158 11 / 10%));
-  color: var(--color-warning-text);
+  color: var(--color-warning-contrast);
 }
 
 /* Border Variants */
