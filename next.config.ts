@@ -69,7 +69,7 @@ const csp = isDev
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://api.resend.com https://*.google-analytics.com https://analytics.ahrefs.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu https://mcp.figma.com wss: ws:",
+      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://api.resend.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://analytics.ahrefs.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu https://mcp.figma.com wss: ws:",
       // Allow embedding trusted media providers in MDX (e.g. YouTube) during local dev.
       "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com https://player.vimeo.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu https://calendly.com https://*.calendly.com",
       "media-src 'self' https: data:",
@@ -83,7 +83,7 @@ const csp = isDev
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data:",
-      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://vercel.live https://api.resend.com https://*.google-analytics.com https://analytics.ahrefs.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu wss:",
+      "connect-src 'self' https://api.openai.com https://digitaltableteur.com https://vercel.com https://vercel.live https://api.resend.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://analytics.ahrefs.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu wss:",
       // Allow Vercel preview tooling + trusted embedded media providers (MDX embeds).
       "frame-src 'self' https://vercel.live https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com https://player.vimeo.com https://cal.com https://app.cal.com https://*.cal.com https://cal.eu https://app.cal.eu https://*.cal.eu https://calendly.com https://*.calendly.com",
       "media-src 'self' https: data:",
@@ -138,6 +138,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Emit source maps for production client bundles so the Best Practices
+  // "valid-source-maps" audit passes and prod stack traces stay debuggable.
+  productionBrowserSourceMaps: true,
   experimental: {
     externalDir: true,
     optimizePackageImports: [
