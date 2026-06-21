@@ -22,13 +22,13 @@
 .overview {
   display: flex;
   flex-direction: column;
-  gap: var(--space-component-s, 0.75rem);
+  gap: var(--space-internal-12);
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-component-xs, 0.5rem);
+  gap: var(--space-internal-8);
 }
 
 .sectionTitle {
@@ -39,7 +39,7 @@
 .toolsIcons {
   display: flex;
   align-items: center;
-  gap: var(--space-component-m, 1rem);
+  gap: var(--space-internal-16);
   flex-flow: row wrap;
 }
 
@@ -63,30 +63,30 @@
 /* Progressive enhancement for gap */
 @supports not (gap: 1rem) {
   .grid > * + * {
-    margin-block-start: var(--space-layout-m, 2rem);
+    margin-block-start: var(--space-layout-32);
   }
 
   @media (width >= 768px) {
     .grid > * + * {
       margin-block-start: 0;
-      margin-inline-start: var(--space-layout-l, 3rem);
+      margin-inline-start: var(--space-layout-48);
     }
   }
 
   .metadata > * + * {
-    margin-block-start: var(--space-layout-s, 1.5rem);
+    margin-block-start: var(--space-layout-24);
   }
 
   .overview > * + * {
-    margin-block-start: var(--space-component-s, 0.75rem);
+    margin-block-start: var(--space-internal-12);
   }
 
   .section > * + * {
-    margin-block-start: var(--space-component-xs, 0.5rem);
+    margin-block-start: var(--space-internal-8);
   }
 
   .toolsIcons > * + * {
-    margin-inline-start: var(--space-component-m, 1rem);
+    margin-inline-start: var(--space-internal-16);
   }
 }
 

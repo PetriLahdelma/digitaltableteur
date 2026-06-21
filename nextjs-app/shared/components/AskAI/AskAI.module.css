@@ -188,7 +188,7 @@
   top: 50%;
   right: 100%;
   margin-inline-end: var(--space-internal-8, 0.5rem);
-  padding: var(--space-internal-6, 0.375rem) var(--space-internal-10, 0.625rem);
+  padding: var(--space-internal-6) var(--space-internal-12);
   border-radius: var(--radius-sm, 4px);
   background: var(--color-primary);
   font-family: var(--font-body);

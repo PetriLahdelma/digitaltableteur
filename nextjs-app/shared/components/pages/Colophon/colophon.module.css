@@ -69,7 +69,7 @@
 }
 
 .cardLabel {
-  margin: 0 0 var(--space-8) 0;
+  margin: 0 0 var(--space-layout-32) 0;
   font-family: var(--font-sans);
   font-size: var(--font-size-text-s);
   font-weight: 600;
