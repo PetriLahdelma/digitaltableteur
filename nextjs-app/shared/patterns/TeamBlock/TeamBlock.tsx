@@ -110,7 +110,7 @@ const TeamBlock: React.FC<TeamBlockProps> = ({
 
   return (
     <Wrapper
-      className={`${styles.teamBlock} ${className}`}
+      className={[styles.teamBlock, className].filter(Boolean).join(" ")}
       style={{
         backgroundColor: bgColors[backgroundColor],
         paddingBlock: backgroundColor !== "transparent" ? "var(--space-xl, 3rem)" : "0",
