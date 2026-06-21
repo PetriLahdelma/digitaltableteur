@@ -36,7 +36,8 @@ export const AI_CRAWLER_USER_AGENTS = [
   "meta-externalagent",
 ] as const;
 
-/** robots.txt body — custom route; MetadataRoute.Robots `other` omits Content-Signal. */
+/** robots.txt body (custom route). Standard directives only; the non-standard
+ *  Content-Signal / LLMs-Txt lines were removed so robots.txt validates. */
 export function buildRobotsTxtBody(): string {
   const disallow = [
     "Disallow: /api",
@@ -59,11 +60,8 @@ export function buildRobotsTxtBody(): string {
     "",
     "# AI answer engines and LLM crawlers",
     ...aiCrawlerBlocks,
-    `Content-Signal: ${contentSignal}`,
-    "",
     `Host: ${baseUrl}`,
     `Sitemap: ${baseUrl}/sitemap.xml`,
-    `LLMs-Txt: ${baseUrl}/llms.txt`,
     "",
   ].join("\n");
 }
