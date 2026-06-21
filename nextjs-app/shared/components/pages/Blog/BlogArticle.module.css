@@ -51,7 +51,7 @@
 
 .article b,
 .article strong {
-  font-family: TiemposText-Bold, serif;
+  font-family: var(--font-heading, sans-serif);
   font-weight: 600;
 }
 

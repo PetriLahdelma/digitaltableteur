@@ -459,7 +459,7 @@
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
   max-width: 100%;
-  font-family: var(--secondary-body-font, "TiemposText-Regular"), serif;
+  font-family: var(--secondary-body-font), sans-serif;
   font-size: 1rem;
   color: var(--main-body-copy-color);
 }
@@ -477,7 +477,7 @@
 }
 
 .heroText h1 {
-  font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+  font-family: var(--primary-body-font), sans-serif;
   font-size: 2.8rem;
   margin-bottom: 1rem;
 }
@@ -596,7 +596,7 @@
 }
 
 .processStep h4 {
-  font-family: var(--primary-body-font, "Moderat-Bold"), serif;
+  font-family: var(--primary-body-font), sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;

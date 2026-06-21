@@ -54,7 +54,7 @@
 }
 
 .footer h2 a {
-  font-family: var(--primary-body-font, Moderat-Bold), sans-serif;
+  font-family: var(--primary-body-font), sans-serif;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.08rem;
@@ -64,7 +64,7 @@
 }
 
 .footer p {
-  font-family: Moderat-Regular, sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 1rem;
   color: var(--inverted-text-color);
 }

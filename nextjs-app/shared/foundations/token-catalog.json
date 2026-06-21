@@ -1,6 +1,6 @@
 {
   "source": "nextjs-app/shared/styles/variables.css",
-  "generatedAt": "2026-06-21T13:31:31.923Z",
+  "generatedAt": "2026-06-21T14:34:33.308Z",
   "tokenCount": 171,
   "usageCoverage": 139,
   "themes": [
@@ -1634,7 +1634,7 @@
         {
           "name": "--font-title",
           "value": "var(--font-heading), system-ui, sans-serif",
-          "usage": "Heading font stack (Syne via next/font).",
+          "usage": "Heading font stack (Satoshi via next/font).",
           "category": "typography",
           "subgroup": "Families & aliases"
         },

@@ -3,7 +3,7 @@
   "font": {
     "title": {
       "$value": "var(--font-heading), system-ui, sans-serif",
-      "$description": "Heading font stack (Syne via next/font).",
+      "$description": "Heading font stack (Satoshi via next/font).",
       "$type": "fontFamily"
     },
     "text": {

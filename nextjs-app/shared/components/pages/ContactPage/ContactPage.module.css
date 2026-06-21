@@ -208,7 +208,7 @@
 
 .contactForm p {
   margin: 0;
-  font-family: Moderat, sans-serif;
+  font-family: var(--font-body, sans-serif);
   font-size: 0.875rem;
   text-align: center;
   color: var(--color-gray-medium);

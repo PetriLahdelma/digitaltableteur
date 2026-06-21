@@ -26,7 +26,7 @@ const sizeClasses: Record<HeadingSize, string> = {
 
 /**
  * Heading component using Tailwind CSS utilities
- * Uses Syne font via font-heading for display/heading typography
+ * Uses Satoshi via font-heading for display/heading typography
  *
  * @example
  * <Heading level={1} size="xl">Page Title</Heading>
