@@ -1,0 +1,13 @@
+{
+  "audit": {
+    "ignore": [
+      "**/pages/Work/**",
+      "**/stories/**",
+      "**/*.stories.module.css",
+      "**/foundations/doc/**"
+    ],
+    "tokenSources": [
+      { "path": "./nextjs-app/shared/styles/variables.css", "format": "css" }
+    ]
+  }
+}
