@@ -3918,9 +3918,9 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::203::33::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css::209::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "line": 203,
+      "line": 209,
       "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",

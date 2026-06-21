@@ -1,6 +1,12 @@
 /* TeamBlock - Reusable team member display component */
 
-/* Container styles applied via inline style (background, padding) */
+/* Container. Background + padding are prop-driven and applied inline; this
+ * base rule gives the wrapper a stable, addressable class so it never falls
+ * back to a literal "undefined" class name in the production build. */
+
+.teamBlock {
+  position: relative;
+}
 
 .sectionTitle {
   display: flex;

@@ -89,7 +89,7 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
 
   return (
     <Wrapper
-      className={`${styles.processBlock} ${className}`}
+      className={[styles.processBlock, className].filter(Boolean).join(" ")}
       style={{
         backgroundColor: bgColors[backgroundColor],
         paddingBlock: "var(--space-xl, 3rem)",
