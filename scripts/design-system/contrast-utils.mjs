@@ -51,6 +51,8 @@ export function wcagLevel(ratio, largeText = false) {
 
 export const SEMANTIC_CONTRAST_PAIRS = [
   { id: "text-on-canvas", fg: "--color-text", bg: "--main-body-background-color", label: "Body text on canvas", largeText: false },
+  { id: "bodycopy-on-canvas", fg: "--main-body-copy-color", bg: "--main-body-background-color", label: "Body copy on canvas", largeText: false },
+  { id: "primary-text-on-canvas", fg: "--primary-text-color", bg: "--main-body-background-color", label: "Primary text ink on canvas", largeText: false },
   { id: "title-on-canvas", fg: "--color-title", bg: "--main-body-background-color", label: "Title on canvas", largeText: true },
   { id: "primary-on-canvas", fg: "--color-primary", bg: "--main-body-background-color", label: "Primary on canvas", largeText: false },
   { id: "link-on-canvas", fg: "--link-color", bg: "--main-body-background-color", label: "Link on canvas", largeText: false },
