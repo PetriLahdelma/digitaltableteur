@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem; /* 8px */
-  font-family: Moderat, sans-serif;
+  font-family: var(--font-body, sans-serif);
   font-size: 1rem;
   font-weight: 500;
   color: var(--color-primary);

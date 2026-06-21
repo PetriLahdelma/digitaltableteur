@@ -105,19 +105,13 @@ export default function RootLayout({
         {/*
          * Font Loading Strategy:
          * - next/font handles font preloading and optimization automatically
-         * - Syne (Google Fonts): Subset to latin, display: swap
-         * - Satoshi (local): Variable font with display: swap
-         * - Both fonts use CSS custom properties: --font-heading, --font-body
+         * - Satoshi (local): single variable typeface for the whole site
+         * - Exposed via --font-body; --font-heading follows it (all Satoshi)
+         * - Syne removed: no separate heading face, no Google Fonts dependency
          *
          * No manual preload needed - next/font injects optimal preload tags
          */}
         {/* Preconnect to external domains for faster resource loading */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         {process.env.FIGMA_HTML_CAPTURE === "1" ? (
           <Script

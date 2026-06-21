@@ -194,8 +194,8 @@ function ThemeToggle() { const { theme, setTheme, toggleTheme, cycleTheme } = us
         <h3>Typography Tokens</h3>
         <pre className={styles.code}>
           {`/* Font families */
---font-title           /* TiemposHeadline-Regular (serif) */
---font-text            /* Moderat (sans-serif) */
+--font-title           /* Satoshi (sans-serif) */
+--font-text            /* Satoshi (sans-serif) */
 
 /* Font sizes (responsive with clamp) */
 --font-size-text-xs    /* 0.75rem - 0.9375rem */

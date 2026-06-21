@@ -258,7 +258,7 @@ cubic-bezier(0.34, 1.56, 0.64, 1)  /* Elastic overshoot */
 ### Header
 
 **Title**:
-- Font: `var(--font-title)` (TiemposHeadline-Regular, serif)
+- Font: `var(--font-title)` (Satoshi)
 - Size: Configurable via `titleProps.size` (S/M/L/XL)
 - Weight: 700 (bold)
 - Color: `var(--color-title)`
@@ -276,7 +276,7 @@ cubic-bezier(0.34, 1.56, 0.64, 1)  /* Elastic overshoot */
 ```
 
 **Description**:
-- Font: `var(--font-text)` (Moderat, sans-serif)
+- Font: `var(--font-text)` (Satoshi)
 - Size: Small (14px)
 - Color: `var(--color-primary)` with 65% opacity
 

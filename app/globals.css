@@ -7,7 +7,6 @@
 
 /* Design system CSS custom properties and styles */
 @import url("../nextjs-app/shared/styles/variables.css");
-@import url("../nextjs-app/shared/styles/fonts.css");
 @import url("../nextjs-app/shared/styles/typography.css");
 @import url("../nextjs-app/shared/styles/grain.css");
 

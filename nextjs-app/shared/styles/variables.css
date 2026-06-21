@@ -8,10 +8,10 @@
  * font flickering on client-side navigation.
  */
 
-/* Storybook fallback layer (lowest priority, overridden by next/font classes) */
+/* Fallback layer (overridden by next/font). Satoshi is the single typeface; --font-heading follows --font-body. */
 @layer storybook-fallbacks {
   :root {
-    --font-heading: "Syne", system-ui, sans-serif;
+    --font-heading: var(--font-body);
     --font-body: "Satoshi", system-ui, sans-serif;
   }
 }
@@ -20,7 +20,7 @@
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
 
-  /* Typography tokens - updated for Syne + Satoshi (next/font provides --font-heading, --font-body) */
+  /* Typography tokens - Satoshi everywhere (next/font provides --font-body; --font-heading follows it) */
   --font-title: var(--font-heading), system-ui, sans-serif;
   --font-text: var(--font-body), system-ui, sans-serif;
   --font-size-text: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);

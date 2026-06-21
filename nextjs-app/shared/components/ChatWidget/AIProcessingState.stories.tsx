@@ -159,7 +159,7 @@ export const InChatContext: Story = {
           maxWidth: "83%",
           borderRadius: "1rem 1rem 1rem 0",
           background: "rgb(0 0 0 / 4%)",
-          fontFamily: "Moderat, sans-serif",
+          fontFamily: "var(--font-body, sans-serif)",
           fontSize: "0.9rem",
           lineHeight: 1.5,
           color: "var(--color-text)",
@@ -183,7 +183,7 @@ export const KitchenSink: Story = {
           style={{
             marginBottom: "1rem",
             fontWeight: 600,
-            fontFamily: "Moderat, sans-serif",
+            fontFamily: "var(--font-body, sans-serif)",
           }}
         >
           Modes
@@ -200,7 +200,7 @@ export const KitchenSink: Story = {
           style={{
             marginBottom: "1rem",
             fontWeight: 600,
-            fontFamily: "Moderat, sans-serif",
+            fontFamily: "var(--font-body, sans-serif)",
           }}
         >
           Intensities
@@ -247,7 +247,7 @@ export const KitchenSink: Story = {
           style={{
             marginBottom: "1rem",
             fontWeight: 600,
-            fontFamily: "Moderat, sans-serif",
+            fontFamily: "var(--font-body, sans-serif)",
           }}
         >
           Custom Message

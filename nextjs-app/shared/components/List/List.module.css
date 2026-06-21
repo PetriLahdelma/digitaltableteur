@@ -34,10 +34,10 @@
 
 /* Typography */
 .serif {
-  font-family: Tiempos, serif;
+  font-family: var(--font-heading, sans-serif);
 }
 .sans {
-  font-family: Moderat, sans-serif;
+  font-family: var(--font-body, sans-serif);
 }
 
 /* Size classes */

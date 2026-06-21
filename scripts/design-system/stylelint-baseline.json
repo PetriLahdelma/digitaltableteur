@@ -12,6 +12,15 @@
       "text": "Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)"
     },
     {
+      "id": "app/globals.css::227::21::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "file": "app/globals.css",
+      "line": 227,
+      "column": 21,
+      "rule": "declaration-no-important",
+      "severity": "warning",
+      "text": "Disallowed !important (declaration-no-important)"
+    },
+    {
       "id": "app/globals.css::228::21::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "app/globals.css",
       "line": 228,
@@ -21,27 +30,18 @@
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "app/globals.css::229::21::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "app/globals.css::55::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "app/globals.css",
-      "line": 229,
-      "column": 21,
-      "rule": "declaration-no-important",
-      "severity": "warning",
-      "text": "Disallowed !important (declaration-no-important)"
-    },
-    {
-      "id": "app/globals.css::56::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
-      "file": "app/globals.css",
-      "line": 56,
+      "line": 55,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",
       "text": "Expected empty line before rule (rule-empty-line-before)"
     },
     {
-      "id": "app/globals.css::77::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
+      "id": "app/globals.css::76::1::rule-empty-line-before::Expected empty line before rule (rule-empty-line-before)",
       "file": "app/globals.css",
-      "line": 77,
+      "line": 76,
       "column": 1,
       "rule": "rule-empty-line-before",
       "severity": "warning",

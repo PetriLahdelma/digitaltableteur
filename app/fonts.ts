@@ -1,22 +1,11 @@
-import { Syne } from "next/font/google";
 import localFont from "next/font/local";
 
 /**
- * Syne — Display/heading font (variable, 400-800)
- * Experimental, widening weights for bold studio aesthetic
- * Source: Google Fonts
- */
-export const syne = Syne({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-heading",
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-/**
- * Satoshi — Body/text font (variable, 300-900)
- * Clean geometric sans-serif for excellent readability
- * Source: Fontshare (Indian Type Foundry)
+ * Satoshi — the single typeface for the whole site (display, headings, body).
+ * Variable font, 300-900. Source: Fontshare (Indian Type Foundry).
+ *
+ * Exposed via --font-body. variables.css maps --font-heading -> var(--font-body)
+ * so the entire type system resolves to Satoshi (no separate heading face).
  */
 export const satoshi = localFont({
   src: [
@@ -34,6 +23,6 @@ export const satoshi = localFont({
 });
 
 /**
- * CSS classes for applying fonts to the document root
+ * CSS class for applying the font variable to the document root.
  */
-export const fontVariables = `${syne.variable} ${satoshi.variable}`;
+export const fontVariables = satoshi.variable;

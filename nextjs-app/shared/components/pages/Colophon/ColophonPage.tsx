@@ -176,7 +176,7 @@ export function ColophonPage() {
           <div className={styles.card}>
             <p className={styles.cardLabel}>Typography</p>
             <p className={styles.cardValue}>
-              Syne for headings, Satoshi for body. Fluid sizing via clamp() — no
+              Satoshi throughout, headings and body. Fluid sizing via clamp(), no
               breakpoint-based font scales. Title and Text components wrap every
               typographic surface.
             </p>
