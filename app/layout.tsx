@@ -18,6 +18,7 @@ import { ToasterProvider } from "@/nextjs-app/shared/components/interactive";
 import { NextLayout } from "@dt/NextLayout";
 import { WebMcpProvider } from "../providers/WebMcpProvider";
 import { HtmlLangSync } from "./components/HtmlLangSync";
+import { DeferredAnalytics } from "./components/DeferredAnalytics";
 import "./globals.css";
 
 const siteUrl =
@@ -119,36 +120,9 @@ export default function RootLayout({
             strategy="beforeInteractive"
           />
         ) : null}
-        {/* Analytics deferred to lazyOnload (browser idle, after load) so GTM/GA
-            stay off the critical path — cuts unused JS, TBT and main-thread work. */}
-        <Script id="gtm-base" strategy="lazyOnload">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-NJ654G92');
-          `}
-        </Script>
-        {process.env.NODE_ENV === "production" ? (
-          <Script
-            src="https://analytics.ahrefs.com/analytics.js"
-            data-key="iO1vJe+oY/MXihktNC/upw"
-            strategy="lazyOnload"
-          />
-        ) : null}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-          strategy="lazyOnload"
-        />
-        <Script id="gtag-config" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gaMeasurementId}');
-          `}
-        </Script>
+        {/* GTM + GA4 (+ ahrefs) are interaction-gated in <DeferredAnalytics>
+            (rendered in the body) so ~280 KiB of third-party JS stays off the
+            critical path and out of the Lighthouse/PSI trace entirely. */}
       </head>
       <body suppressHydrationWarning>
         <noscript>
@@ -176,6 +150,7 @@ export default function RootLayout({
           }}
         />
         <Analytics />
+        <DeferredAnalytics gaMeasurementId={gaMeasurementId} />
         <WebMcpProvider>
           <NextThemeProvider>
             <I18nProvider>
