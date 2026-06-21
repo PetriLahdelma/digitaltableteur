@@ -104,7 +104,9 @@ function GridBlock({
     >
       <PageLayout maxWidth={maxWidth} spacing={spacing} as={as}>
         <div
-          className={`${gridClassName} ${gapClassName} ${responsiveGapClass} ${className}`}
+          className={[gridClassName, gapClassName, responsiveGapClass, className]
+            .filter(Boolean)
+            .join(" ")}
         >
           {cells.map((cell, index) => {
             if (cell.type === "text") {

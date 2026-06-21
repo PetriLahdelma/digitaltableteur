@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-06-21T14:37:30.849Z",
+  "createdAt": "2026-06-21T20:07:05.249Z",
   "directory": "nextjs-app/shared",
   "findings": [
     {
@@ -6785,8 +6785,8 @@
     {
       "column": 25,
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css\u001f157\u001f25\u001f-4px\u001fUnexpected raw scale value \"-4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 157,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css\u001f163\u001f25\u001f-4px\u001fUnexpected raw scale value \"-4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 163,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"-4px\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -6795,8 +6795,8 @@
     {
       "column": 17,
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css\u001f184\u001f17\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 184,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css\u001f190\u001f17\u001f1rem\u001fUnexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 190,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"1rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",
@@ -6805,8 +6805,8 @@
     {
       "column": 22,
       "file": "nextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css",
-      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css\u001f184\u001f22\u001f0.25rem\u001fUnexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
-      "line": 184,
+      "key": "rhythmguard/prefer-token\u001ftoken-opportunity\u001fnextjs-app/shared/patterns/TeamBlock/TeamBlock.module.css\u001f190\u001f22\u001f0.25rem\u001fUnexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
+      "line": 190,
       "rule": "rhythmguard/prefer-token",
       "text": "Unexpected raw scale value \"0.25rem\". Use design tokens for scale decisions. (rhythmguard/prefer-token)",
       "type": "token-opportunity",

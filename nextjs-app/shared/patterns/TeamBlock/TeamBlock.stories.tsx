@@ -32,12 +32,12 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
     white: "var(--color-white)",
     transparent: "transparent",
   };
-  const gridClass = `${styles.grid} ${styles[`grid${columns}Col`]}`;
-  const imageClass = roundImages ? styles.roundImage : styles.image;
+  const gridClass = styles[`grid${columns}Col`];
+  const imageClass = roundImages ? styles.roundImage : styles.teamImage;
 
   return (
     <Wrapper
-      className={`${styles.teamBlock} ${className}`}
+      className={[styles.teamBlock, className].filter(Boolean).join(" ")}
       style={{
         backgroundColor: bgColors[backgroundColor],
         paddingBlock:
@@ -47,7 +47,12 @@ const TeamBlockForStorybook: React.FC<TeamBlockProps> = ({
     >
       <PageLayout maxWidth={maxWidth} spacing={spacing} as="div">
         {sectionTitle && (
-          <Title level={2} terminals="sans" size="xl" className={styles.title}>
+          <Title
+            level={2}
+            terminals="sans"
+            size="xl"
+            className={styles.sectionTitle}
+          >
             {sectionTitle}
           </Title>
         )}
