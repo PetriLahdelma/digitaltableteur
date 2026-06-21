@@ -119,8 +119,9 @@ export default function RootLayout({
             strategy="beforeInteractive"
           />
         ) : null}
-        {/* GTM uses afterInteractive to avoid blocking LCP */}
-        <Script id="gtm-base" strategy="afterInteractive">
+        {/* Analytics deferred to lazyOnload (browser idle, after load) so GTM/GA
+            stay off the critical path — cuts unused JS, TBT and main-thread work. */}
+        <Script id="gtm-base" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -133,14 +134,14 @@ export default function RootLayout({
           <Script
             src="https://analytics.ahrefs.com/analytics.js"
             data-key="iO1vJe+oY/MXihktNC/upw"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
           />
         ) : null}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="gtag-config" strategy="afterInteractive">
+        <Script id="gtag-config" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
