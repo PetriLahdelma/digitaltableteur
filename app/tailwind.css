@@ -166,11 +166,18 @@
   --text-dt-text-l: var(--font-size-text-l);
   --text-dt-text-m: var(--font-size-text-m);
   --text-dt-text-s: var(--font-size-text-s);
+  --text-dt-text-xl: var(--font-size-text-xl);
+  --text-dt-text-xs: var(--font-size-text-xs);
+  --text-dt-text-xxl: var(--font-size-text-xxl);
+  --text-dt-text-xxs: var(--font-size-text-xxs);
   --text-dt-title: var(--font-size-title);
   --text-dt-title-l: var(--font-size-title-l);
   --text-dt-title-m: var(--font-size-title-m);
   --text-dt-title-s: var(--font-size-title-s);
   --text-dt-title-xl: var(--font-size-title-xl);
+  --text-dt-title-xs: var(--font-size-title-xs);
+  --text-dt-title-xxl: var(--font-size-title-xxl);
+  --text-dt-title-xxs: var(--font-size-title-xxs);
   --color-dt-link: var(--link-color);
   --radius-dt-lg: var(--radius-lg);
   --radius-dt-md: var(--radius-md);

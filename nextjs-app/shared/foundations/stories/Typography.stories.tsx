@@ -33,6 +33,15 @@ const scale = [
     },
   },
   {
+    token: "--font-size-title-xxl",
+    sample: "Title XXL",
+    style: {
+      fontSize: "var(--font-size-title-xxl)",
+      fontFamily: "var(--font-title)",
+      lineHeight: "var(--line-height-tight)",
+    },
+  },
+  {
     token: "--font-size-title-xl",
     sample: "Title XL",
     style: {
@@ -67,6 +76,38 @@ const scale = [
     },
   },
   {
+    token: "--font-size-title-xs",
+    sample: "Title XS",
+    style: {
+      fontSize: "var(--font-size-title-xs)",
+      fontFamily: "var(--font-title)",
+    },
+  },
+  {
+    token: "--font-size-title-xxs",
+    sample: "Title XXS",
+    style: {
+      fontSize: "var(--font-size-title-xxs)",
+      fontFamily: "var(--font-title)",
+    },
+  },
+  {
+    token: "--font-size-text-xxl",
+    sample: "Body XXL",
+    style: {
+      fontSize: "var(--font-size-text-xxl)",
+      fontFamily: "var(--font-text)",
+    },
+  },
+  {
+    token: "--font-size-text-xl",
+    sample: "Body XL",
+    style: {
+      fontSize: "var(--font-size-text-xl)",
+      fontFamily: "var(--font-text)",
+    },
+  },
+  {
     token: "--font-size-text-l",
     sample: "Body L",
     style: {
@@ -87,6 +128,22 @@ const scale = [
     sample: "Body S",
     style: {
       fontSize: "var(--font-size-text-s)",
+      fontFamily: "var(--font-text)",
+    },
+  },
+  {
+    token: "--font-size-text-xs",
+    sample: "Body XS",
+    style: {
+      fontSize: "var(--font-size-text-xs)",
+      fontFamily: "var(--font-text)",
+    },
+  },
+  {
+    token: "--font-size-text-xxs",
+    sample: "Body XXS",
+    style: {
+      fontSize: "var(--font-size-text-xxs)",
       fontFamily: "var(--font-text)",
     },
   },
