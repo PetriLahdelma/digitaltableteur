@@ -16,7 +16,7 @@
 
 /* Spacing classes */
 .spacingCompact li {
-  margin-block-end: var(--space-1);
+  margin-block-end: var(--space-internal-4);
 }
 .spacingNormal li {
   margin-block-end: var(--space-internal-8);

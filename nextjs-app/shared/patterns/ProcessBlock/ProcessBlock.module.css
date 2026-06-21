@@ -88,7 +88,7 @@
 .col {
   display: flex;
   flex-direction: column;
-  gap: var(--space-component-m, 1rem);
+  gap: var(--space-internal-16);
 }
 
 /* Fallback for browsers without gap support */
@@ -98,7 +98,7 @@
   }
 
   .col > .phaseTitle {
-    margin-block-end: var(--space-component-m, 1rem);
+    margin-block-end: var(--space-internal-16);
   }
 }
 
@@ -146,10 +146,10 @@
   .grid2Col,
   .grid3Col,
   .grid4Col {
-    gap: var(--space-layout-m, 3rem);
+    gap: var(--space-layout-48);
   }
 
   .col {
-    gap: var(--space-component-m, 1rem);
+    gap: var(--space-internal-16);
   }
 }
