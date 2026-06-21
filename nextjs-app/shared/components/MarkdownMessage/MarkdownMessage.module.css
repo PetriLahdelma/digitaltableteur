@@ -33,7 +33,7 @@
 }
 
 .root code {
-  padding: 0 var(--space-1);
+  padding: 0 var(--space-internal-4);
   border-radius: var(--radius-md);
   background: var(--color-surface-alt);
   font-family: var(--font-family-mono, monospace);
@@ -69,12 +69,12 @@
   margin: 1rem;
 
   /* Increase indentation by additional 1rem */
-  padding-inline-start: calc(var(--space-5) + 1rem);
+  padding-inline-start: calc(var(--space-internal-24) + 1rem);
   font-size: 1rem;
 }
 
 .root li + li {
-  margin-top: var(--space-1);
+  margin-top: var(--space-internal-4);
 }
 
 .root blockquote {
@@ -129,7 +129,7 @@
 
 .root th,
 .root td {
-  padding: var(--space-1) var(--space-internal-8);
+  padding: var(--space-internal-4) var(--space-internal-8);
   border: 1px solid var(--color-border);
   text-align: left;
   vertical-align: top;
