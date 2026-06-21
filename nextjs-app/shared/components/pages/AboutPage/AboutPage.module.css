@@ -34,7 +34,7 @@
   margin-block: 0;
   margin-inline: auto;
   max-inline-size: 40rem;
-  font-family: var(--secondary-body-font, "TiemposHeadline-Regular"), serif;
+  font-family: var(--secondary-body-font), sans-serif;
   font-size: clamp(1.25rem, 1.5vw + 1rem, 2rem);
   line-height: 1.4;
   color: var(--color-white);
@@ -67,7 +67,7 @@
 .section h2 {
   margin-block: 0;
   margin-inline: 0;
-  font-family: var(--secondary-heading-font, "Moderat"), serif;
+  font-family: var(--secondary-heading-font), sans-serif;
   font-size: clamp(2rem, 3vw + 1.5rem, 3.25rem);
   font-weight: var(--secondary-heading-weight, 400);
 }
@@ -76,7 +76,7 @@
   margin-block: 0;
   margin-inline: 0;
   max-inline-size: 50rem;
-  font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
+  font-family: var(--primary-body-font), sans-serif;
   font-size: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
   line-height: 1.6;
   color: var(--color-primary);
@@ -173,7 +173,7 @@
   margin: 0;
   flex-wrap: wrap;
   gap: 0.45rem;
-  font-family: var(--primary-body-font, "Moderat-Regular"), sans-serif;
+  font-family: var(--primary-body-font), sans-serif;
   font-size: clamp(1.05rem, 0.6vw + 1rem, 1.25rem);
   line-height: 1.5;
   color: var(--color-primary);

@@ -10,7 +10,7 @@ export interface DisplayProps extends React.HTMLAttributes<HTMLElement> {
 
 /**
  * Display component for hero and large text
- * Uses Syne font at display size for maximum visual impact
+ * Uses Satoshi at display size for maximum visual impact
  *
  * @example
  * <Display>Hero Title</Display>

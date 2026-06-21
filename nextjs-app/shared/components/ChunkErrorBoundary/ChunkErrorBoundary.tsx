@@ -46,7 +46,7 @@ class ChunkErrorBoundary extends Component<Props, State> {
             style={{
               padding: "2rem",
               textAlign: "center",
-              fontFamily: "Moderat, sans-serif",
+              fontFamily: "var(--font-body, sans-serif)",
             }}
           >
             <Title level={2}>Loading Error</Title>

@@ -28,7 +28,7 @@ const USAGE_OVERRIDES = {
   "--color-border": "Default 1px borders on inputs, cards, and dividers.",
   "--link-color": "Hyperlink color in prose and inline links.",
   "--focus-ring-color": "Keyboard focus outline color (WCAG focus appearance).",
-  "--font-title": "Heading font stack (Syne via next/font).",
+  "--font-title": "Heading font stack (Satoshi via next/font).",
   "--font-text": "Body/UI font stack (Satoshi via next/font).",
   "--selection-background": "Text selection highlight background.",
   "--selection-color": "Text selection foreground.",

@@ -5,7 +5,7 @@
   max-width: 960px;
   flex-direction: column;
   gap: 2rem;
-  font-family: var(--primary-body-font, "Moderat", sans-serif);
+  font-family: var(--primary-body-font, sans-serif);
   color: var(--primary-text-color);
 }
 
@@ -17,7 +17,7 @@
 
 .header h1,
 .section h2 {
-  font-family: var(--primary-bold-font, "Moderat-Bold", sans-serif);
+  font-family: var(--primary-bold-font, sans-serif);
 }
 
 .lead {

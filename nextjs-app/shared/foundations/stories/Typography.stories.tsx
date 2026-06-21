@@ -166,14 +166,14 @@ function TypographyFoundations() {
   return (
     <FoundationPage
       title="Typography"
-      lead="Fluid type scale via clamp(), Syne for headings and Satoshi for body (injected by next/font). Pair Title and Text components with these tokens — do not invent pixel sizes."
+      lead="Fluid type scale via clamp(), Satoshi for headings and body (injected by next/font). Pair Title and Text components with these tokens, do not invent pixel sizes."
     >
       <DocSection
         title="Families"
         description="--font-title and --font-text map to production heading/body stacks."
       >
         <TypeSpecimen
-          sample="Heading — Syne"
+          sample="Heading — Satoshi"
           token="--font-title"
           meta="Headings, display"
           style={{
