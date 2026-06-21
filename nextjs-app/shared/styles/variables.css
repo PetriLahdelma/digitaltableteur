@@ -339,10 +339,10 @@
   --selection-background: var(--color-primary);
   --selection-color: var(--color-white);
   --main-body-background-color: #181a1b;
-  --color-title: #6fa8ff;
+  --color-title: #f5f7f8; /* Heading ink - brightest step, ~16:1 on #181a1b */
   --color-text: #e0e0e0;
-  --primary-text-color: #6fa8ff;
-  --main-body-copy-color: #6fa8ff;
+  --primary-text-color: #e0e0e0; /* Base text ink -> body, was #6fa8ff (blue collided with --color-primary) */
+  --main-body-copy-color: #e0e0e0; /* Body copy, was #6fa8ff; accent blue now reserved for interactive */
   --secondary-text-color: #aaa;
   --inverted-text-color: #181a1b;
   --link-color: #71efff;
