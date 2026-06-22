@@ -1,5 +1,6 @@
 import withMDX from "@next/mdx";
 import bundleAnalyzer from "@next/bundle-analyzer";
+import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 import path from "path";
 import webpack from "webpack";
@@ -361,5 +362,20 @@ const withMdx = withMDX({
   },
 });
 
-// Compose plugins: withMdx -> withBundleAnalyzer
-export default withBundleAnalyzer(withMdx(nextConfig));
+// Compose plugins: withMdx -> withBundleAnalyzer -> withSentryConfig (outermost)
+export default withSentryConfig(withBundleAnalyzer(withMdx(nextConfig)), {
+  // Source-map upload + release creation auth (from env; CI/Vercel must set these).
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  // Quiet locally, verbose in CI.
+  silent: !process.env.CI,
+  // Upload the wider set of client bundles so prod stack frames resolve.
+  widenClientFileUpload: true,
+  // Route browser events through a same-origin path (server forwards to Sentry
+  // ingest) so the strict CSP connect-src and ad blockers don't drop them.
+  tunnelRoute: "/monitoring",
+  // Tree-shake Sentry debug logging out of the client bundle (v10 API).
+  bundleSizeOptimizations: { excludeDebugStatements: true },
+  telemetry: false,
+});
