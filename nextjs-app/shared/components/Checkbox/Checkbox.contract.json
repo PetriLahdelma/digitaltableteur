@@ -76,15 +76,15 @@
             "optional": true,
             "type": "boolean"
         },
-        "isChecked": {
+        "checked": {
             "optional": true,
             "type": "boolean"
         },
-        "isIndeterminate": {
+        "indeterminate": {
             "optional": true,
             "type": "boolean"
         },
-        "isDisabled": {
+        "disabled": {
             "optional": true,
             "type": "boolean"
         },
@@ -98,10 +98,7 @@
             "values": [
                 "sm",
                 "md",
-                "lg",
-                "S",
-                "M",
-                "L"
+                "lg"
             ]
         },
         "onCheckedChange": {
