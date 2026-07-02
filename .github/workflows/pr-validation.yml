@@ -41,6 +41,10 @@ jobs:
       - run: npm run lint
       - run: npm run lint:css
       - run: npm run test:stories:smoke
+      # The story matrix drives real Chromium. The farm runner container doesn't ship browsers,
+      # but it mounts a persistent volume at /home/runner/.cache — exactly Playwright's browser
+      # cache — so this download happens once per browser build, then no-ops (~2s) every run.
+      - run: npx playwright install chromium
       - run: npm run test:stories:matrix:ci
       - run: npm run test:ci
       - run: npm run build
