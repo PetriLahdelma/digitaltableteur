@@ -1,0 +1,5 @@
+- status: Work in progress (beta)
+- button "Open modal"
+- dialog "Busy":
+  - heading "Busy" [level=2]
+  - text: Loading, please wait...
