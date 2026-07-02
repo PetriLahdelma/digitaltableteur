@@ -103,16 +103,16 @@
                 "md",
                 "lg",
                 "xl",
+                "xs",
                 "S",
                 "M",
                 "L",
-                "xs",
+                "xxs",
+                "xxl",
                 "XXS",
                 "XS",
                 "XL",
-                "XXL",
-                "xxs",
-                "xxl"
+                "XXL"
             ]
         },
         "iconSize": {

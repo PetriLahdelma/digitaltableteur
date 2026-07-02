@@ -159,12 +159,12 @@
             "optional": true,
             "type": "union",
             "values": [
+                "xl",
                 "s",
                 "m",
                 "l",
-                "xxs",
                 "xs",
-                "xl",
+                "xxs",
                 "xxl"
             ]
         },
