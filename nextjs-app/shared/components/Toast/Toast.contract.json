@@ -94,10 +94,10 @@
             "optional": true,
             "type": "union",
             "values": [
+                "info",
                 "success",
-                "error",
                 "warning",
-                "info"
+                "error"
             ]
         },
         "position": {

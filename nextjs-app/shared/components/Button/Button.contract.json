@@ -157,6 +157,22 @@
     ],
     "schemaVersion": 2,
     "props": {
+        "submits": {
+            "optional": true,
+            "type": "never"
+        },
+        "href": {
+            "optional": false,
+            "type": "string"
+        },
+        "target": {
+            "optional": true,
+            "type": "HTMLAttributeAnchorTarget | undefined"
+        },
+        "rel": {
+            "optional": true,
+            "type": "string | undefined"
+        },
         "variant": {
             "optional": true,
             "type": "union",
@@ -170,11 +186,11 @@
             "optional": true,
             "type": "union",
             "values": [
-                "neutral",
-                "error",
-                "warning",
+                "info",
                 "success",
-                "info"
+                "warning",
+                "error",
+                "neutral"
             ]
         },
         "size": {
@@ -234,30 +250,14 @@
         "tooltip": {
             "optional": true,
             "type": "string"
-        },
-        "submits": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "href": {
-            "optional": false,
-            "type": "string"
-        },
-        "target": {
-            "optional": true,
-            "type": "HTMLAttributeAnchorTarget | undefined"
-        },
-        "rel": {
-            "optional": true,
-            "type": "string | undefined"
         }
     },
     "forbiddenUse": [
-        "tertiary on low-contrast surfaces without verifying contrast",
-        "surface onBrand without verifying brand-color contrast",
-        "an icon-only button with a tooltip as the only accessible name",
-        "nesting a Button inside another interactive control",
-        "a Button for inline navigation in body copy. Use Link instead."
+        "tertiary on dark or inverse backgrounds without explicit contrast verification",
+        "isInverse on primary over transparent or gradient parents — use surface instead",
+        "pair an icon-only button with a tooltip as the *only* accessible name",
+        "nest a Button inside another interactive control. Buttons are terminal.",
+        "use a Button for inline navigation in body copy. Use **Link**."
     ],
     "prefersOver": [
         "raw button",
@@ -266,7 +266,9 @@
     "composesWith": [
         "Title",
         "Text",
+        "Inputs",
         "Icon",
-        "Modal"
+        "Modal",
+        "CheckboxGroup"
     ]
 }

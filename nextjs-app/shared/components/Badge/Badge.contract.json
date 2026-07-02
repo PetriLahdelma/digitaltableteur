@@ -128,11 +128,11 @@
             "optional": true,
             "type": "union",
             "values": [
-                "neutral",
-                "error",
-                "warning",
+                "info",
                 "success",
-                "info"
+                "warning",
+                "error",
+                "neutral"
             ]
         },
         "size": {
@@ -174,15 +174,15 @@
         }
     },
     "forbiddenUse": [
-        "rely on colour alone to convey tone — pair with the icon",
-        "nest a Button inside a Badge beyond the built-in removable affordance"
+        "rely on colour alone to convey tone — pair it with the icon or include",
+        "nest a Button inside a Badge beyond the built-in removable affordance."
     ],
     "composesWith": [
         "Title",
         "Link",
         "Button",
-        "Text",
         "FlexBox",
+        "Text",
         "Grid"
     ]
 }

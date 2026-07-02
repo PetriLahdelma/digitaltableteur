@@ -69,19 +69,19 @@
     "consumers": [],
     "schemaVersion": 2,
     "props": {
-        "isChecked": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "isDisabled": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "isLoading": {
+        "checked": {
             "optional": true,
             "type": "boolean"
         },
         "defaultChecked": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "disabled": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "loading": {
             "optional": true,
             "type": "boolean"
         },
@@ -91,10 +91,7 @@
             "values": [
                 "sm",
                 "md",
-                "lg",
-                "S",
-                "M",
-                "L"
+                "lg"
             ]
         },
         "onCheckedChange": {

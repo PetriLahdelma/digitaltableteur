@@ -95,9 +95,8 @@
         }
     },
     "forbiddenUse": [
-        "pre-sanitise the href — the component sanitises and rejects unsafe protocols",
-        "use Link for actions. Buttons are for actions; anchors are for navigation",
-        "override the underline via inline styles. The token-driven treatment owns it"
+        "use Link for actions. Buttons are for actions; anchors are for",
+        "override the underline via inline styles; the token-driven treatment"
     ],
     "prefersOver": [
         "Button with href for body-copy links"
