@@ -91,6 +91,11 @@ async function main() {
     {
       stdio: "pipe",
       env: { ...process.env, BROWSER: "none" },
+      // Own process group (POSIX): npm does NOT forward signals to its children, so killing
+      // only the wrapper leaves the storybook/vite tree alive holding this process's stdio
+      // pipes — on the Linux CI runners that pinned the event loop and hung the step forever
+      // AFTER the smoke had already passed (macOS happened to tear the tree down).
+      detached: process.platform !== "win32",
     },
   );
 
@@ -100,7 +105,8 @@ async function main() {
 
   const cleanup = () => {
     try {
-      storybook.kill("SIGTERM");
+      if (process.platform === "win32") storybook.kill("SIGTERM");
+      else process.kill(-storybook.pid, "SIGTERM"); // negative pid = the whole group
     } catch {
       // ignore
     }
@@ -146,9 +152,15 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  // eslint-disable-next-line no-console
-  console.error(error instanceof Error ? error.message : error);
-  process.exit(1);
-});
+main()
+  .then(() => {
+    // Explicit exit: even a stray survivor of the group kill must not keep this process
+    // (and therefore the CI step) alive via a lingering pipe. exitCode carries failures.
+    process.exit(process.exitCode ?? 0);
+  })
+  .catch((error) => {
+    // eslint-disable-next-line no-console
+    console.error(error instanceof Error ? error.message : error);
+    process.exit(1);
+  });
 

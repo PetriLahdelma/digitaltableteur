@@ -1,0 +1,4 @@
+- link "Playground Link External link":
+  - /url: https://example.com
+  - text: Playground Link
+  - img "External link"
