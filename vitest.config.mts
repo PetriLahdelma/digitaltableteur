@@ -77,6 +77,12 @@ const unitTestProject = {
       "components/**/*.test.{ts,tsx}",
       "tests/**/*.test.{ts,tsx}",
       "scripts/design-system/*.test.mjs",
+      // Storybook-only resolver for contract playground.defaults element
+      // descriptors (Astryx Phase 2). Scoped to this single file, not a
+      // blanket .storybook/lib/**/*.test.tsx glob, so future Storybook
+      // config/helper files don't accidentally get pulled into the unit
+      // suite.
+      ".storybook/lib/resolveElements.test.tsx",
     ],
     exclude: [
       "**/node_modules/**",
