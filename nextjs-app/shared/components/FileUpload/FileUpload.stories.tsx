@@ -133,17 +133,15 @@ SelectAndClear.play = async ({ canvasElement }) => {
   const file = new File(["hello"], "brief.pdf", { type: "application/pdf" });
   await userEvent.upload(hiddenInput, file);
 
-  await waitFor(() =>
-    expect(canvas.getByDisplayValue(/brief\.pdf/)).toBeInTheDocument(),
-  );
+  // The readonly summary field (not the hidden file input) shows "name (size)".
+  const summary = canvas.getByRole("textbox") as HTMLInputElement;
+  await waitFor(() => expect(summary.value).toMatch(/brief\.pdf/));
 
   const clearButton = await canvas.findByRole("button", {
     name: /remove file/i,
   });
   await userEvent.click(clearButton);
-  await waitFor(() =>
-    expect(canvas.queryByDisplayValue(/brief\.pdf/)).not.toBeInTheDocument(),
-  );
+  await waitFor(() => expect(summary.value).not.toMatch(/brief\.pdf/));
 };
 
 /** A file over maxSizeInBytes is rejected and removed with an error. */
@@ -178,7 +176,8 @@ SizeRejection.play = async ({ canvasElement }) => {
       canvas.getByText(/exceeds the 10 byte demo limit/i),
     ).toBeInTheDocument(),
   );
-  expect(canvas.queryByDisplayValue(/too-big\.pdf/)).not.toBeInTheDocument();
+  const summary = canvas.getByRole("textbox") as HTMLInputElement;
+  expect(summary.value).not.toMatch(/too-big\.pdf/);
 };
 
 export const Editorial = Template.bind({});
