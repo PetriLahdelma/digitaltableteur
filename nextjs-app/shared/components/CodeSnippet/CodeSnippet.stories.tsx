@@ -65,7 +65,7 @@ const meta: Meta<typeof CodeSnippet> = {
   },
   title: "Content/CodeSnippet",
   component: CodeSnippet,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -110,6 +110,11 @@ export default meta;
 type Story = StoryObj<typeof CodeSnippet>;
 
 export const Inline: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "The inline variant is for short fragments beside prose; full blocks get the copy button and line numbers." } },
+  },
   args: {
     variant: "inline",
     code: "npm install @digitaltableteur/components",
@@ -137,10 +142,20 @@ export const Multi: Story = {
 };
 
 export const Typescript: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Set language explicitly for real highlighting — typescript here; the supported set covers the languages the site writes about." } },
+  },
   args: { variant: "multi", language: "typescript" },
 };
 
 export const Python: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "Each language gets its own grammar; unhighlighted code in docs reads as a bug." } },
+  },
   args: {
     variant: "multi",
     language: "python",
@@ -152,6 +167,11 @@ print(greet("world"))`,
 };
 
 export const WithMaxLines: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: { description: { story: "maxLines clamps tall listings behind a scroll so the surrounding prose stays reachable." } },
+  },
   args: {
     variant: "multi",
     code: longMultiLineCode,

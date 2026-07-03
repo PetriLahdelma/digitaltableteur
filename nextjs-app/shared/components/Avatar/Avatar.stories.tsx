@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 export default {
   title: "Content/Avatar",
   component: Avatar,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -162,12 +162,27 @@ DefaultVariant.parameters = {
 };
 
 export const WithImage = Template.bind({});
+WithImage.tags = ["example"];
+WithImage.parameters = {
+  controls: { disable: true },
+  docs: { description: { story: "Photographic avatar: imageUrl renders the image; still pass name in real use — it is the fallback and the accessible name." } },
+};
 WithImage.args = { imageUrl: peteVaultBoy, name: undefined, variant: "image" };
 
 export const WithInitials = Template.bind({});
+WithInitials.tags = ["example"];
+WithInitials.parameters = {
+  controls: { disable: true },
+  docs: { description: { story: "No image, no problem: initials derive from name. This is the honest fallback, not a style choice for broken pipelines." } },
+};
 WithInitials.args = { name: "Petri Lahdelma", variant: "initials" };
 
 export const WithMenu = Template.bind({});
+WithMenu.tags = ["example"];
+WithMenu.parameters = {
+  controls: { disable: true },
+  docs: { description: { story: "menuItems + menuLabel turn the avatar into an account-menu trigger with an in-place dropdown; the label names the menu, not the person." } },
+};
 WithMenu.args = {
   imageUrl: peteVaultBoy,
   name: "Petri Lahdelma",

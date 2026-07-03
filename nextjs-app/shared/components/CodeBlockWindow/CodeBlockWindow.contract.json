@@ -84,11 +84,75 @@
         "Bypass design tokens or skip forced-colors verification at beta."
     ],
     "composesWith": [
-        "AuthorBio",
-        "DashLeadList",
-        "ArticleContent",
-        "TableOfContents",
-        "EnhancedAuthorCard",
-        "ArticleShareSection"
-    ]
+        "CodeSnippet",
+        "Prose"
+    ],
+    "displayName": "CodeBlockWindow",
+    "keywords": [
+        "code window",
+        "code frame",
+        "filename",
+        "caption",
+        "shiki",
+        "article code"
+    ],
+    "dense": "Framed code: header w/ title (filename) + language label, caption below, context default|article (prose width, 35vh scroll); children expect highlighted pre/code (Shiki), not raw strings",
+    "usage": {
+        "description": "CodeBlockWindow is the presentation frame around highlighted code: a header with `title` (usually the filename) and `language` label, an optional `caption` below, and a `context` switch where `article` fits prose width and caps height for long listings. It wraps already-highlighted markup (Shiki `pre`/`code` from the blog pipeline) — the anatomy is the value: frame, header, code region, caption. For raw strings with a copy button, use CodeSnippet directly.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use title for the filename — readers orient by file, not by language."
+            },
+            {
+                "guidance": true,
+                "description": "Use context=\"article\" inside prose so long listings scroll instead of dominating the page."
+            },
+            {
+                "guidance": true,
+                "description": "Put the point of the example in caption; the code shows how, the caption says why."
+            },
+            {
+                "guidance": true,
+                "description": "Let line numbers follow the Shiki output; override showLineNumbers only when the source pipeline gets it wrong."
+            },
+            {
+                "guidance": false,
+                "description": "Do not pass raw code strings as children — it expects highlighted pre/code markup; raw strings belong in CodeSnippet."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest it inside MacWindowFrame — two chromes compete; pick the one that matches the context."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Frame",
+                "required": true,
+                "description": "The window surface and border carrying the code presentation."
+            },
+            {
+                "name": "Header",
+                "required": false,
+                "description": "title (filename) left, language label right; renders when either is set."
+            },
+            {
+                "name": "Code region",
+                "required": true,
+                "description": "The highlighted pre/code children; article context adds width/height constraints."
+            },
+            {
+                "name": "Caption",
+                "required": false,
+                "description": "Prose line under the code explaining why the example matters."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "title": "tokens.config.ts",
+            "language": "ts",
+            "caption": "Layer 0: DTCG source of truth."
+        }
+    }
 }
