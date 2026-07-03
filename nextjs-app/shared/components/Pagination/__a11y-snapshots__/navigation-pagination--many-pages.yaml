@@ -1,0 +1,9 @@
+- status: Work in progress (beta)
+- navigation "Page":
+  - button "Previous"
+  - button "Page 1": "1"
+  - button "Page 24": "24"
+  - button "Page 25": "25"
+  - button "Page 26": "26"
+  - button "Page 50": "50"
+  - button "Next"

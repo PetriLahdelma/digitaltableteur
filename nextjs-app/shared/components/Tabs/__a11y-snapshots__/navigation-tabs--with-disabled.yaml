@@ -3,3 +3,5 @@
   - tab "Active"
   - tab "Disabled" [disabled]
   - tab "Active" [selected]
+- tabpanel "Active":
+  - paragraph: Active content

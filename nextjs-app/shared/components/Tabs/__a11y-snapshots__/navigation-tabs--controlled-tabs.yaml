@@ -6,3 +6,5 @@
   - tab "First" [selected]
   - tab "Second"
   - tab "Third"
+- tabpanel "First":
+  - paragraph: First content

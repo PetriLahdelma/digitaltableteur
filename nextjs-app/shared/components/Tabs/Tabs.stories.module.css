@@ -1,3 +1,9 @@
 .demoText {
   margin-block-end: 1rem;
 }
+
+.sizesColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-internal-24, 1.5rem);
+}

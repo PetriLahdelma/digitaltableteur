@@ -22,8 +22,10 @@ const defaultActiveButtonClassName =
 const defaultOpenTriggerClassName =
   "bg-foreground/5 border-foreground text-foreground hover:border-foreground";
 
+/* text-foreground (not muted): the fanned-out options are interactive text
+   and must meet 4.5:1 — muted-foreground measures ~2.9:1 on light surfaces. */
 const defaultFloatedButtonClassName =
-  "font-semibold text-muted-foreground hover:text-foreground";
+  "font-semibold text-foreground/80 hover:text-foreground";
 
 export interface LanguageSwitcherProps {
   languages: LanguageSwitcherOption[];

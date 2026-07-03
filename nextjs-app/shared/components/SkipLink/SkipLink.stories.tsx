@@ -11,7 +11,7 @@ const defaultArgs = {
 const meta = {
   title: "Navigation/SkipLink",
   component: SkipLink,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -64,4 +64,75 @@ export const ForcedColors: Story = {
   tags: ["beta-matrix"],
   globals: { forcedColors: "active" },
   args: defaultArgs,
+};
+
+/** Press Tab: the visually hidden link surfaces as a high-contrast pill. */
+export const FocusReveal: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "Hidden until keyboard focus lands on it, then rendered as a high-contrast pill. The play function tabs once so the revealed state is what you see here.",
+      },
+    },
+  },
+  render: () => <SkipLink />,
+  play: async ({ canvasElement }) => {
+    within(canvasElement);
+    await userEvent.tab();
+  },
+};
+
+/** First focusable element of the layout, ahead of the primary nav. */
+export const InLayout: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "Placement is the whole trick: render it before the header so the first Tab press on any page offers the bypass, and give the main wrapper the matching id.",
+      },
+    },
+  },
+  render: () => (
+    <div>
+      <SkipLink href="#demo-main" />
+      <nav aria-label="Primary" style={{ display: "flex", gap: "1rem" }}>
+        <a href="#one">Home</a>
+        <a href="#two">Work</a>
+        <a href="#three">Contact</a>
+      </nav>
+      <main id="demo-main" style={{ marginTop: "1rem" }}>
+        Main content starts here.
+      </main>
+    </div>
+  ),
+};
+
+/** The label is announced in isolation — keep it an action phrase. */
+export const CustomTarget: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    layout: "padded",
+    docs: {
+      description: {
+        story:
+          "href points anywhere with a stable id — a search results region, a data table. Keep the label explicit about the destination.",
+      },
+    },
+  },
+  args: {
+    href: "#results",
+    children: "Skip to search results",
+  },
+  play: async ({ canvasElement }) => {
+    within(canvasElement);
+    await userEvent.tab();
+  },
 };

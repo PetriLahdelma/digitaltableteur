@@ -221,14 +221,14 @@ Family-level prerequisite: the field-wrapper convention (4.1). All form docs sha
 
 | Component | Status | Deltas and specifics |
 |---|---|---|
-| **Link** | stable, clean | D2/D3. Examples: Tones, Underline-styles, External (rel/target + icon), OnDark. |
-| **NavLink** | beta; no css, no test | D8, D2/D3. Active-state contract with Next.js routing documented. |
-| **TextLink** | beta; no css, no test | Phase 0: absorb into Link or justify in dense lines. |
-| **Breadcrumb** | beta, clean | D2/D3. Examples: Basic, Collapsed-middle, WithIcons. a11y: nav landmark + aria-current. |
-| **Tabs** | beta, clean (platinum set) | D2/D3. Examples: Basic, Controlled (URL-synced like our own docs frame will use), WithIcons, Overflow. |
-| **Pagination** | beta; no css, no test | D8, D2/D3. Astryx trick to replicate: wire `onPageChange(page)` back to knob state so the docs preview is actually clickable. |
-| **SkipLink** | beta; no test | D7, D2 light. |
-| **LanguageSwitcher** | beta, clean | D2/D3. Showcase piece for the i18n story (en/fi/sv); example embeds locale toolbar interplay. |
+| **Link** | ADOPTED (gap-fill wave) | Already doc-adopted before batch 6. |
+| **NavLink** | **DONE (Phase 3 batch 6, 2026-07-04)** | Doc-adopted + test file added (usePathname mocked; prefix/exact/null-pathname/aria-current + axe). Examples: PrimaryNav, ExactMatching, CustomStyling. className-driven Tailwind styling documented as intentional (per-surface classes, shared active-state contract) — no .module.css conversion; owner call recorded. |
+| **TextLink** | **GONE (absorbed pre-batch-6)** | Component no longer exists; Link is the only inline link. Decision moot. |
+| **Breadcrumb** | **DONE (Phase 3 batch 6, 2026-07-04)** | Doc-adopted with 5-part anatomy. Examples: DeepTrail, LinklessMiddle, CustomLabel. Collapsed-middle not supported — documented as a don't (hand-authored "…" items), feature backlog. WithIcons not supported by the item model — backlog, not doc scope. |
+| **Tabs** | **DONE (Phase 3 batch 6, 2026-07-04)** | Doc-adopted (tablist-only contract + getTabPanelProps documented in anatomy). ComplianceCard story deleted w/ stale yamls; SizeSmall/Medium/Large consolidated into one Sizes example (unique keys + panels — bare tablists with dangling aria-controls fail axe). Examples: Pills, Underline, WithDisabled, Sizes, ControlledTabs (real consumer references folded in from deleted MDX). WithIcons/Overflow not supported — backlog. |
+| **Pagination** | **DONE (Phase 3 batch 6, 2026-07-04)** | Doc-adopted + test file added (window/ellipsis/edges/aria-current + axe). Examples: ManyPages, SiblingCount, Interactive (play asserts the controlled round trip — the Astryx clickable-preview trick via the existing stateful demo wrapper). Tailwind styling documented as-is, same owner call as NavLink. |
+| **SkipLink** | **DONE (Phase 3 batch 6, 2026-07-04)** | Doc-adopted + test file added (default target/custom target/focusable + axe). Examples: FocusReveal (play tabs to reveal), InLayout, CustomTarget. |
+| **LanguageSwitcher** | **DONE (Phase 3 batch 6, 2026-07-04)** | Doc-adopted. Examples: FanOpen (play opens tray; waits for the Framer spring to settle because axe measures blended mid-animation colors), AccessibleNames, ControlledWiring. **Real a11y fix**: fanned-out options were text-muted-foreground (2.9:1) — hidden until now because the old play closed the tray before axe ran; bumped to text-foreground/80. |
 | **TableOfContents** | alpha; tsx+index only | Full build-out or Tier 2 demotion (it is blog-specific; recommend Tier 2). |
 
 ### 5.6 Layout & structure (13)
@@ -266,7 +266,7 @@ Batches sized to one PR each, ordered so shared conventions are settled before d
 3. Advanced inputs: Combobox, MultiCombobox, PhoneInput, FileUpload.
 4. Feedback: AlertBanner, Toast, Progress, Spinner, Skeleton, Tooltip. **DONE 2026-07-03** (+ Toaster and BusyIndicator deleted).
 5. Overlays: Modal family, Lightbox. **DONE 2026-07-04** (Modal doc-adopted; AnimatedDialog was folded in Phase 0, Lightbox is catalog-exempt).
-6. Navigation: Link family, Breadcrumb, Tabs, Pagination, SkipLink, LanguageSwitcher.
+6. Navigation: Link family, Breadcrumb, Tabs, Pagination, SkipLink, LanguageSwitcher. **DONE 2026-07-04** (Link was already adopted; TableOfContents stays Tier 2 per the 5.5 recommendation).
 7. Layout: Card, Grid, Container, Stack/FlexBox/Center/Spacer, Accordion, Divider, AspectRatio, Section.
 8. Content: Avatar, List, Prose, CodeSnippet, CodeBlockWindow, Display.
 9. Tier 2 D2-lite sweep (scriptable: backfill dense lines + keywords, one PR).

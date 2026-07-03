@@ -78,10 +78,52 @@
         "Render more than ~10 page numbers inline — switch to a 'Page X of Y' label with prev/next only."
     ],
     "composesWith": [
-        "Container",
-        "Section",
-        "BlogCategoryFilter",
-        "BlogGrid",
-        "EnhancedArticleCard"
-    ]
+        "Link"
+    ],
+    "displayName": "Pagination",
+    "keywords": [
+        "pagination",
+        "pager",
+        "page numbers",
+        "next previous",
+        "ellipsis",
+        "listing"
+    ],
+    "dense": "Numbered pager: prev/next chevrons + sibling window w/ ellipsis; controlled (1-indexed currentPage + onPageChange); aria-current=page on active; labels en/fi/sv; null when totalPages<=1",
+    "usage": {
+        "description": "Pagination is the controlled pager for content collections (blog listings, search results). Hold the page in state or the URL, pass it as `currentPage` (1-indexed), and re-render from `onPageChange`. It shows first/last pages plus a `siblingCount` window around the current page with ellipsis in between, previous/next chevrons at the ends, and `aria-current=\"page\"` on the active number. Labels come from i18next (en/fi/sv). With one page or fewer it renders nothing.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Treat it as fully controlled: update state (or the URL) in onPageChange and pass the new currentPage back down."
+            },
+            {
+                "guidance": true,
+                "description": "Sync the page with the URL (searchParams) so paginated views deep-link and survive refresh."
+            },
+            {
+                "guidance": true,
+                "description": "Tune siblingCount to available width; the default 1 keeps the row compact on mobile."
+            },
+            {
+                "guidance": true,
+                "description": "Let it self-hide: it renders null when totalPages <= 1, so no outer conditional is needed."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it for wizard steps — steps need progress semantics, not a content pager."
+            },
+            {
+                "guidance": false,
+                "description": "Do not fetch on click without updating currentPage; the active highlight and aria-current derive from props alone."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "currentPage": 2,
+            "totalPages": 8,
+            "siblingCount": 1
+        }
+    }
 }

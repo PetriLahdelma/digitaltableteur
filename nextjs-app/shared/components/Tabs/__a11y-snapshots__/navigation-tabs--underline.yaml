@@ -3,3 +3,5 @@
   - tab "Home"
   - tab "Profile"
   - tab "Messages" [selected]
+- tabpanel "Messages":
+  - paragraph: Messages content

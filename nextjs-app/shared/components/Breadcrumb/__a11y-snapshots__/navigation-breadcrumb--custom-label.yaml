@@ -1,0 +1,12 @@
+- status: Work in progress (beta)
+- navigation "Archive location":
+  - list:
+    - listitem:
+      - link "Archive":
+        - /url: /archive
+      - text: /
+    - listitem:
+      - link "Projects":
+        - /url: /archive/projects
+      - text: /
+    - listitem: "2025"
