@@ -4,7 +4,7 @@
     "tier": "molecule",
     "group": "form",
     "status": "beta",
-    "description": "PhoneInput — production @dt component (Storybook beta).",
+    "description": "International phone field: country selector + formatted number input with field chrome.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-phone-input",
     "radixPrimitive": null,
     "element": "div",
@@ -19,16 +19,32 @@
         "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
+        "keyboard": [
+            "Tab",
+            "Arrow keys (country select)",
+            "typing digits"
+        ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "ariaRequirements": [],
+        "ariaRequirements": [
+            "label associated via htmlFor/id",
+            "error via HelperText linked with aria-describedby + aria-invalid",
+            "country select has its own accessible name from the library"
+        ],
         "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--color-error",
+            "--color-error-bg",
+            "--color-primary",
+            "--color-white"
+        ],
+        "spacing": [],
+        "typography": [
+            "--font-text"
+        ]
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
@@ -70,17 +86,95 @@
         "onChange": {
             "optional": true,
             "type": "(value: string | undefined) => void"
+        },
+        "required": {
+            "optional": true,
+            "type": "boolean"
+        },
+        "id": {
+            "optional": true,
+            "type": "string"
+        },
+        "defaultCountry": {
+            "optional": true,
+            "type": "Country"
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "bypass onChange and read the DOM input value; it is the display format, not the E.164 value."
     ],
     "composesWith": [
-        "TextInput",
-        "Button",
-        "CheckboxGroup",
-        "Modal",
-        "Toast",
-        "TextArea"
-    ]
+        "Label",
+        "HelperText",
+        "ContactForm",
+        "TextInput"
+    ],
+    "displayName": "PhoneInput",
+    "keywords": [
+        "phone",
+        "telephone",
+        "tel",
+        "country code",
+        "international",
+        "E.164",
+        "contact"
+    ],
+    "dense": "international phone field wrapping react-phone-number-input; flag + country select + formatted input, own label/error/helperText, defaultCountry FI, emits E.164 via onChange(value)",
+    "usage": {
+        "description": "PhoneInput wraps react-phone-number-input with the design-system field chrome: Label, error and helper wiring, and token-based styling over the library's country selector and input. It formats as you type and emits the E.164 value (or undefined while incomplete) through onChange. The default country is FI; override defaultCountry per audience.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Validate with isValidPhoneNumber from react-phone-number-input on submit; the field formats but does not block invalid numbers."
+            },
+            {
+                "guidance": true,
+                "description": "Store and send the emitted E.164 value verbatim; it is the interchange format your backend and SMS providers expect."
+            },
+            {
+                "guidance": true,
+                "description": "Set defaultCountry to the audience you actually serve; users typing a local number get the right prefix for free."
+            },
+            {
+                "guidance": true,
+                "description": "Treat onChange emitting undefined as \"incomplete\", not as an error; only validate on blur or submit."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use TextInput type=tel for international audiences; you lose country selection and normalization."
+            },
+            {
+                "guidance": false,
+                "description": "Do not pre-split country code and number into two fields; the combined control is the accessible, error-proof pattern."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Label",
+                "required": true,
+                "description": "@dt/Label tied to the input via htmlFor; shows the required marker and disabled dimming."
+            },
+            {
+                "name": "Country select",
+                "required": true,
+                "description": "Flag button + native select from the library, restyled with design tokens; picks the calling code."
+            },
+            {
+                "name": "Number input",
+                "required": true,
+                "description": "Formats as you type for the chosen country; carries aria-invalid and aria-describedby when error/helper present."
+            },
+            {
+                "name": "HelperText",
+                "required": false,
+                "description": "Helper or error line below the field; error wins."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Phone number",
+            "placeholder": "+358 40 123 4567"
+        }
+    }
 }

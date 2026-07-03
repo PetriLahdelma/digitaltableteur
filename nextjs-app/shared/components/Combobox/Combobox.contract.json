@@ -40,8 +40,27 @@
         "forcedColorsVerified": true
     },
     "tokens": {
-        "colors": [],
-        "spacing": []
+        "colors": [
+            "--color-border",
+            "--color-error",
+            "--color-muted",
+            "--color-primary",
+            "--color-surface",
+            "--color-text",
+            "--focus-ring-color"
+        ],
+        "spacing": [
+            "--space-internal-2",
+            "--space-internal-4",
+            "--space-internal-8",
+            "--space-internal-12",
+            "--space-internal-16",
+            "--space-internal-32"
+        ],
+        "typography": [
+            "--font-body",
+            "--font-size-text"
+        ]
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
@@ -88,7 +107,7 @@
             "optional": true,
             "type": "boolean"
         },
-        "isDisabled": {
+        "disabled": {
             "optional": true,
             "type": "boolean"
         },
@@ -99,5 +118,108 @@
     },
     "forbiddenUse": [
         "nest inside containers with `overflow: hidden` without portaling (dropdown renders on `document.body`)."
+    ],
+    "displayName": "Combobox",
+    "keywords": [
+        "combobox",
+        "autocomplete",
+        "dropdown",
+        "single select",
+        "listbox",
+        "picker",
+        "typeahead"
+    ],
+    "dense": "controlled single-select combobox; button trigger + portaled listbox, full APG keyboard model, own label/error/helperText; options support per-option disabled; onValueChange(value)",
+    "usage": {
+        "description": "Combobox is the styled single-select for editorial forms: a button trigger that opens a portaled listbox with the full APG keyboard model. It is controlled — pair value with onValueChange. It owns its field chrome (label, error, helperText), and shares its look and dropdown behavior with MultiCombobox. Reach for it when the native Select styling is not enough; the option list stays flat strings only.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Always control it: pass value and onValueChange together; there is no uncontrolled mode."
+            },
+            {
+                "guidance": true,
+                "description": "Prefer native Select for plain forms; Combobox earns its cost when the design needs the styled dropdown or per-option disabling."
+            },
+            {
+                "guidance": true,
+                "description": "Load async options into state and pass the current array; the empty state renders a localized \"no matching options\" row on its own."
+            },
+            {
+                "guidance": true,
+                "description": "Set placeholder for the empty value so the closed trigger never renders blank."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Combobox for free text with suggestions; it only emits option values (no free-solo mode). Use TextInput plus your own suggestion list."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use it for multiple selection; MultiCombobox owns chips and type-to-filter."
+            },
+            {
+                "guidance": false,
+                "description": "Do not render it inside overflow-hidden containers without accepting the portal: the listbox mounts on document.body and positions itself."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Label",
+                "required": true,
+                "description": "Visible label tied to the trigger via aria-labelledby; required adds the asterisk plus sr-only hint."
+            },
+            {
+                "name": "Trigger",
+                "required": true,
+                "description": "role=combobox button showing the selected label or placeholder; carries aria-expanded/aria-controls/aria-activedescendant."
+            },
+            {
+                "name": "Chevron",
+                "required": true,
+                "description": "Secondary toggle button (tabindex -1) with the caret icon; rotates while open."
+            },
+            {
+                "name": "Listbox",
+                "required": true,
+                "description": "Portaled role=listbox positioned under the trigger; Lenis-safe scrolling, empty state row when no options."
+            },
+            {
+                "name": "Option",
+                "required": true,
+                "description": "role=option buttons with aria-selected and a check icon on the selected row; per-option disabled supported."
+            },
+            {
+                "name": "HelperText",
+                "required": false,
+                "description": "Helper or error line below the field; error wins, sets aria-invalid and aria-describedby."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "label": "Timeline",
+            "placeholder": "Select…",
+            "value": "",
+            "options": [
+                {
+                    "value": "asap",
+                    "label": "ASAP"
+                },
+                {
+                    "value": "1-2-months",
+                    "label": "1–2 months"
+                },
+                {
+                    "value": "flexible",
+                    "label": "Flexible"
+                }
+            ]
+        }
+    },
+    "composesWith": [
+        "FormFieldEditorial",
+        "MultiCombobox",
+        "HelperText",
+        "Icon"
     ]
 }

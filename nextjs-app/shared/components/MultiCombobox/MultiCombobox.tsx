@@ -20,7 +20,7 @@ import styles from "./MultiCombobox.module.css";
 export interface MultiComboboxOption {
   value: string;
   label: string;
-  isDisabled?: boolean;
+  disabled?: boolean;
 }
 
 export interface MultiComboboxProps {
@@ -33,7 +33,7 @@ export interface MultiComboboxProps {
   helperText?: string;
   error?: string;
   required?: boolean;
-  isDisabled?: boolean;
+  disabled?: boolean;
   className?: string;
 }
 
@@ -48,7 +48,7 @@ export function MultiCombobox({
   helperText,
   error,
   required = false,
-  isDisabled = false,
+  disabled = false,
   className,
 }: MultiComboboxProps) {
   const { t } = useTranslation();
@@ -89,12 +89,12 @@ export function MultiCombobox({
   }, []);
 
   const openDropdown = useCallback(() => {
-    if (isDisabled) return;
+    if (disabled) return;
     setOpen(true);
-  }, [isDisabled]);
+  }, [disabled]);
 
   const toggleDropdown = useCallback(() => {
-    if (isDisabled) return;
+    if (disabled) return;
     setOpen((current) => {
       if (current) {
         setQuery("");
@@ -102,7 +102,7 @@ export function MultiCombobox({
       }
       return !current;
     });
-  }, [isDisabled]);
+  }, [disabled]);
 
   const toggleOption = useCallback(
     (optionValue: string) => {
@@ -146,7 +146,7 @@ export function MultiCombobox({
   }, [highlightedIndex, listRef, open]);
 
   const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (isDisabled) return;
+    if (disabled) return;
 
     switch (event.key) {
       case "ArrowDown": {
@@ -180,7 +180,7 @@ export function MultiCombobox({
           return;
         }
         const option = filteredOptions[highlightedIndex];
-        if (option && !option.isDisabled) {
+        if (option && !option.disabled) {
           toggleOption(option.value);
         }
         break;
@@ -232,7 +232,7 @@ export function MultiCombobox({
       ) : (
         filteredOptions.map((option, index) => {
           const selected = value.includes(option.value);
-          const optionDisabled = isDisabled || option.isDisabled;
+          const optionDisabled = disabled || option.disabled;
           const optionId = `${fieldId}-option-${option.value}`;
 
           return (
@@ -291,7 +291,7 @@ export function MultiCombobox({
             styles.control,
             open && fieldStyles.controlOpen,
             error && fieldStyles.controlError,
-            isDisabled && fieldStyles.disabled,
+            disabled && fieldStyles.disabled,
           )}
           data-state={open ? "open" : "closed"}
           onMouseDown={(event) => {
@@ -321,7 +321,7 @@ export function MultiCombobox({
                     variant="secondary"
                     tone="neutral"
                     size="sm"
-                    removable={!isDisabled}
+                    removable={!disabled}
                     className={styles.badge}
                     onRemove={() => removeOption(selectedValue)}
                   >
@@ -340,7 +340,7 @@ export function MultiCombobox({
               spellCheck={false}
               className={styles.input}
               value={query}
-              disabled={isDisabled}
+              disabled={disabled}
               placeholder={value.length === 0 ? placeholder : undefined}
               aria-labelledby={`${fieldId}-label`}
               aria-describedby={describedBy || undefined}
@@ -366,7 +366,7 @@ export function MultiCombobox({
             className={cn(fieldStyles.chevronButton, styles.chevronButton)}
             aria-label={t("multiComboboxToggleOptions", "Toggle options")}
             aria-expanded={open}
-            disabled={isDisabled}
+            disabled={disabled}
             onMouseDown={(event) => {
               event.preventDefault();
               event.stopPropagation();

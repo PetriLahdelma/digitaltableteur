@@ -41,13 +41,6 @@
   outline-offset: 0;
 }
 
-.errorMessage {
-  font-family: var(--font-text);
-  font-size: 1rem;
-  color: var(--color-error);
-  margin-top: 0.5rem;
-}
-
 /* Override library styles to match design system */
 
 .phone-input :global(.PhoneInputInput) {

@@ -889,6 +889,7 @@
   "badgeRemove": "Ta bort märke",
   "multiComboboxNoResults": "Inga matchande alternativ",
   "multiComboboxToggleOptions": "Visa alternativ",
+  "fileUploadSizeError": "Filen är för stor. Max {{maxSize}} MB. Filen togs bort.",
   "badgePrimary": "Primär",
   "badgeSecondary": "Sekundär",
   "badgeSuccess": "Lyckades",

@@ -879,6 +879,7 @@
   "badgeRemove": "Poista tunniste",
   "multiComboboxNoResults": "Ei vastaavia vaihtoehtoja",
   "multiComboboxToggleOptions": "Avaa vaihtoehdot",
+  "fileUploadSizeError": "Tiedosto on liian suuri. Enintään {{maxSize}} Mt. Tiedosto poistettu.",
   "badgePrimary": "Ensisijainen",
   "badgeSecondary": "Toissijainen",
   "badgeSuccess": "Onnistui",

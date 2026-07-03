@@ -31,7 +31,7 @@ function MultiComboboxDemo(
 const meta = {
   title: "Forms/MultiCombobox",
   component: MultiCombobox,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     contractStatus: contract.status,
     a11y: { test: "error" },
@@ -80,7 +80,7 @@ const meta = {
       description: "Marks the field required",
       table: { category: "Validation" },
     },
-    isDisabled: {
+    disabled: {
       control: "boolean",
       description: "Disables the control",
       table: { category: "State" },
@@ -112,9 +112,17 @@ export const Playground: Story = {
 };
 
 export const Example: Story = {
-  tags: ["beta-matrix"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "none" },
-  parameters: { controls: { disable: true } },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Tokenized selection: each chosen value renders as a removable Badge chip inside the field.",
+      },
+    },
+  },
   render: () => (
     <MultiComboboxDemo
       value={["design", "accessibility"]}
@@ -123,9 +131,69 @@ export const Example: Story = {
   ),
 };
 
+/** Form-level cap on selections — the field itself never blocks input. */
+export const MaxItems: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Cap selections in your handler: ignore additions past the limit and surface the cap as an error.",
+      },
+    },
+  },
+  render: function MaxItemsStory() {
+    const MAX = 2;
+    const [value, setValue] = useState<string[]>(["research"]);
+    const overLimit = value.length >= MAX;
+    return (
+      <MultiCombobox
+        label="Disciplines (max 2)"
+        options={OPTIONS}
+        placeholder="Add disciplines…"
+        value={value}
+        onValueChange={(next) => {
+          if (next.length > MAX) return;
+          setValue(next);
+        }}
+        error={overLimit ? "Limit reached — remove one to add another." : undefined}
+        helperText="Pick up to two."
+      />
+    );
+  },
+};
+
+export const Overflow: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Many chips wrap onto new rows and the field grows; keep option labels short to keep the field compact.",
+      },
+    },
+  },
+  render: () => (
+    <MultiComboboxDemo
+      value={["research", "design", "frontend", "accessibility"]}
+      helperText="The field grows with every chip."
+    />
+  ),
+};
+
 /** Type-to-filter to a single match, then select it with Enter — keyboard-only. */
 export const KeyboardMultiSelect: Story = {
-  tags: ["beta-matrix"],
+  tags: ["beta-matrix", "example"],
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Type-to-filter plus Enter to toggle, asserted by the play function; Backspace with an empty filter removes the last chip.",
+      },
+    },
+  },
   render: () => <MultiComboboxDemo />,
   play: async ({ canvasElement }) => {
     const input = within(canvasElement).getByRole("combobox");
