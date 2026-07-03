@@ -54,6 +54,13 @@ const setCookie = (name: string, value: string, days = 365) => {
   document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
 };
 
+/**
+ * Mobile sheet for the legacy Header pattern.
+ *
+ * @deprecated Deprecated together with Header — SiteHeader owns mobile
+ * navigation (MobileDrawer). `MobileMenu.module.css` remains in use by
+ * NextMobileMenu and is not deprecated.
+ */
 const MobileMenu: React.FC<MobileMenuProps> = ({
   isOpen,
   onClose,
