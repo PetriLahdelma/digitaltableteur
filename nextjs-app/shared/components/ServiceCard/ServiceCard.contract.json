@@ -82,8 +82,8 @@
             "optional": true,
             "type": "union",
             "values": [
-                "default",
                 "minimal",
+                "default",
                 "elevated",
                 "bordered"
             ]

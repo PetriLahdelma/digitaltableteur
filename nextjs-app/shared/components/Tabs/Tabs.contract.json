@@ -114,9 +114,9 @@
             "optional": true,
             "type": "union",
             "values": [
-                "default",
                 "pills",
-                "underline"
+                "underline",
+                "default"
             ]
         }
     },

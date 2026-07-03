@@ -51,6 +51,7 @@ const LinkStory: React.FC<React.ComponentProps<typeof Link>> = (args) => {
 };
 
 export const Playground: Story = {
+  tags: ["beta-matrix"],
   render: (args) => <LinkStory {...args} />,
   args: { size: "md", href: "https://example.com", children: "storyLinkPlayground" },
 };

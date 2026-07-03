@@ -130,13 +130,13 @@
             "optional": true,
             "type": "string"
         },
-        "onChange": {
-            "optional": true,
-            "type": "(value: string | number) => void"
-        },
         "disabled": {
             "optional": true,
             "type": "boolean"
+        },
+        "onChange": {
+            "optional": true,
+            "type": "(value: string | number) => void"
         }
     },
     "forbiddenUse": [

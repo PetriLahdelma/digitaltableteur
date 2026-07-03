@@ -90,25 +90,73 @@
     "lightDarkVerified": false,
     "schemaVersion": 2,
     "displayName": "SplitButton",
-    "keywords": ["split button", "dropdown", "menu button", "secondary actions", "save as", "export", "combo action"],
+    "keywords": [
+        "split button",
+        "dropdown",
+        "menu button",
+        "secondary actions",
+        "save as",
+        "export",
+        "combo action"
+    ],
     "dense": "primary action + menu toggle for related actions; Button-matched variant/size/surface, collision-aware menu, nested submenus, roving-tabindex keyboard model",
     "usage": {
         "description": "SplitButton pairs one dominant action with a menu of close variants of that same action: Save with Save as / Save a copy, Export with format choices. Both segments share Button's weight, size, and surface so the pair reads as a single control.",
         "bestPractices": [
-            { "guidance": true, "description": "Make the primary segment the safest, most common choice; the menu holds variants of it, not unrelated commands." },
-            { "guidance": true, "description": "Keep options parallel in wording (Save as, Save a copy, Save to cloud) so the menu scans as one family." },
-            { "guidance": true, "description": "Give every option an id; labels can be translated, ids anchor analytics and tests." },
-            { "guidance": true, "description": "Set usePortal when the trigger lives inside an overflow-hidden container, otherwise the menu clips." },
-            { "guidance": true, "description": "Provide toggleLabel when the menu is not generic more options, for example Choose export format." },
-            { "guidance": false, "description": "Do not use SplitButton as a general dropdown menu; if there is no dominant default action, use a plain menu trigger instead." },
-            { "guidance": false, "description": "Do not mix destructive options into a constructive menu; Delete does not belong under Save." },
-            { "guidance": false, "description": "Do not nest submenus more than one level; the component supports exactly one level by design." }
+            {
+                "guidance": true,
+                "description": "Make the primary segment the safest, most common choice; the menu holds variants of it, not unrelated commands."
+            },
+            {
+                "guidance": true,
+                "description": "Keep options parallel in wording (Save as, Save a copy, Save to cloud) so the menu scans as one family."
+            },
+            {
+                "guidance": true,
+                "description": "Give every option an id; labels can be translated, ids anchor analytics and tests."
+            },
+            {
+                "guidance": true,
+                "description": "Set usePortal when the trigger lives inside an overflow-hidden container, otherwise the menu clips."
+            },
+            {
+                "guidance": true,
+                "description": "Provide toggleLabel when the menu is not generic more options, for example Choose export format."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use SplitButton as a general dropdown menu; if there is no dominant default action, use a plain menu trigger instead."
+            },
+            {
+                "guidance": false,
+                "description": "Do not mix destructive options into a constructive menu; Delete does not belong under Save."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest submenus more than one level; the component supports exactly one level by design."
+            }
         ],
         "anatomy": [
-            { "name": "Primary action", "required": true, "description": "A full @dt/Button carrying label and onPrimaryClick; the default and most common choice." },
-            { "name": "Menu toggle", "required": true, "description": "The caret segment; opens the option menu, carries aria-haspopup/aria-expanded and the toggleLabel accessible name." },
-            { "name": "Menu", "required": true, "description": "role=menu list of options with roving tabindex, collision-aware placement, optional portal rendering." },
-            { "name": "Submenu", "required": false, "description": "One optional nested level per option via children; opens on hover, ArrowRight, or Enter." }
+            {
+                "name": "Primary action",
+                "required": true,
+                "description": "A full @dt/Button carrying label and onPrimaryClick; the default and most common choice."
+            },
+            {
+                "name": "Menu toggle",
+                "required": true,
+                "description": "The caret segment; opens the option menu, carries aria-haspopup/aria-expanded and the toggleLabel accessible name."
+            },
+            {
+                "name": "Menu",
+                "required": true,
+                "description": "role=menu list of options with roving tabindex, collision-aware placement, optional portal rendering."
+            },
+            {
+                "name": "Submenu",
+                "required": false,
+                "description": "One optional nested level per option via children; opens on hover, ArrowRight, or Enter."
+            }
         ]
     },
     "playground": {
@@ -117,9 +165,21 @@
             "variant": "primary",
             "size": "md",
             "options": [
-                { "id": "save-as", "label": "Save as", "icon": "pencil" },
-                { "id": "save-cloud", "label": "Save to cloud", "icon": "cloud-arrow-up" },
-                { "id": "save-copy", "label": "Save a copy", "icon": "copy" }
+                {
+                    "id": "save-as",
+                    "label": "Save as",
+                    "icon": "pencil"
+                },
+                {
+                    "id": "save-cloud",
+                    "label": "Save to cloud",
+                    "icon": "cloud-arrow-up"
+                },
+                {
+                    "id": "save-copy",
+                    "label": "Save a copy",
+                    "icon": "copy"
+                }
             ]
         }
     },
@@ -134,54 +194,14 @@
         },
         "options": {
             "optional": false,
-            "type": "SplitButtonOption[]",
-            "description": "Menu entries. Leaf options carry onSelect (sync or async); parent options carry children (one nested level) and cannot have onSelect — enforced by a discriminated union."
-        },
-        "variant": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "primary",
-                "secondary",
-                "tertiary"
-            ]
-        },
-        "size": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "sm",
-                "md",
-                "lg"
-            ]
-        },
-        "surface": {
-            "optional": true,
-            "type": "union",
-            "values": [
-                "default",
-                "onDark",
-                "onBrand"
-            ]
-        },
-        "rounded": {
-            "optional": true,
-            "type": "boolean"
-        },
-        "tooltip": {
-            "optional": true,
-            "type": "string"
-        },
-        "accessibleName": {
-            "optional": true,
-            "type": "string"
+            "type": "SplitButtonOption[]"
         },
         "menuAlign": {
             "optional": true,
             "type": "union",
             "values": [
-                "start",
-                "end"
+                "end",
+                "start"
             ]
         },
         "disabled": {
@@ -192,13 +212,13 @@
             "optional": true,
             "type": "string"
         },
-        "usePortal": {
-            "optional": true,
-            "type": "boolean"
-        },
         "className": {
             "optional": true,
             "type": "string"
+        },
+        "usePortal": {
+            "optional": true,
+            "type": "boolean"
         }
     },
     "forbiddenUse": [

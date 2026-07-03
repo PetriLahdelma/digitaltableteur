@@ -59,9 +59,9 @@
             "optional": true,
             "type": "union",
             "values": [
-                "default",
                 "muted",
-                "accent"
+                "accent",
+                "default"
             ]
         },
         "centered": {

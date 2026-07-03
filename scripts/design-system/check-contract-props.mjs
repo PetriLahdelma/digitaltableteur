@@ -82,11 +82,17 @@ for (const base of roots) {
       }
     }
 
-    for (const issue of diffSemanticFields(
-      contract,
-      expectedSemanticFields(agent),
-    )) {
-      failures.push({ name, ...issue });
+    // Doc-adopted contracts (the Astryx ratchet predicate: usage authored) own
+    // their semantic fields: composesWith / prefersOver / forbiddenUse are
+    // curated content rendered by the docs frame, not derived co-usage data.
+    // Derivation drift only gates contracts that never adopted doc fields.
+    if (!contract.usage?.description) {
+      for (const issue of diffSemanticFields(
+        contract,
+        expectedSemanticFields(agent),
+      )) {
+        failures.push({ name, ...issue });
+      }
     }
   }
 }

@@ -117,6 +117,7 @@
     "composesWith": [
         "Icon",
         "ComplianceCard",
+        "Button",
         "Card"
     ]
 }
