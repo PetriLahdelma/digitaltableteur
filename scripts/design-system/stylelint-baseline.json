@@ -1,6 +1,6 @@
 {
   "generatedBy": "npm run lint:css:update",
-  "warningCount": 450,
+  "warningCount": 448,
   "warnings": [
     {
       "id": "app/blog/NextBlogNav.module.css::7::3::order/properties-order::Expected \"margin-inline\" to come before \"max-width\" (order/properties-order)",
@@ -3684,36 +3684,27 @@
       "text": "Expected \"color\" to come before \"text-wrap\" (order/properties-order)"
     },
     {
-      "id": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css::120::3::order/properties-order::Expected \"padding-inline-start\" to come before \"max-inline-size\" (order/properties-order)",
+      "id": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css::135::33::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css",
-      "line": 120,
-      "column": 3,
-      "rule": "order/properties-order",
-      "severity": "warning",
-      "text": "Expected \"padding-inline-start\" to come before \"max-inline-size\" (order/properties-order)"
-    },
-    {
-      "id": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css::132::33::declaration-no-important::Disallowed !important (declaration-no-important)",
-      "file": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css",
-      "line": 132,
+      "line": 135,
       "column": 33,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css::133::32::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css::136::32::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css",
-      "line": 133,
+      "line": 136,
       "column": 32,
       "rule": "declaration-no-important",
       "severity": "warning",
       "text": "Disallowed !important (declaration-no-important)"
     },
     {
-      "id": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css::134::34::declaration-no-important::Disallowed !important (declaration-no-important)",
+      "id": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css::137::34::declaration-no-important::Disallowed !important (declaration-no-important)",
       "file": "nextjs-app/shared/patterns/ProcessBlock/ProcessBlock.module.css",
-      "line": 134,
+      "line": 137,
       "column": 34,
       "rule": "declaration-no-important",
       "severity": "warning",

@@ -123,7 +123,7 @@ const ProcessBlock: React.FC<ProcessBlockProps> = ({
           {phases.map((phase, index) => (
             <div key={phase.title || index} className={styles.col}>
               <Title
-                size="xs"
+                size="xxs"
                 terminals="sans"
                 level={3}
                 className={styles.phaseTitle}

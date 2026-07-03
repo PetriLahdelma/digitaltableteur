@@ -116,14 +116,17 @@
 
 .activityList :global(li) {
   /* List defaults to 20ch; process activities need full column width when stacked */
-  max-inline-size: 100%;
+  position: relative;
   padding-inline-start: 1.5em;
-  text-indent: -1.5em;
+  max-inline-size: 100%;
 }
 
+/* Marker lives in the padding so wrapped lines stay flush with first-line text */
+
 .activityList :global(li)::before {
-  margin-inline-end: 0.5rem;
-  content: "— ";
+  position: absolute;
+  content: "—";
+  inset-inline-start: 0;
 }
 
 /* Accessibility */
