@@ -5,7 +5,8 @@ import Button from "@dt/Button";
 import Text from "@dt/Text";
 import styles from "./SecureCVDownload.module.css";
 import Input from "@dt/TextInput";
-import BusyIndicator from "@dt/BusyIndicator";
+import Spinner from "@dt/Spinner";
+import Icon from "@dt/Icon";
 
 export interface SecureCVDownloadProps {
   /** Button text to trigger the modal */
@@ -226,20 +227,22 @@ export const SecureCVDownload: React.FC<SecureCVDownloadProps> = ({
             />
             {isValidating && (
               <div className={styles.validationIndicator}>
-                <BusyIndicator
-                  size="s"
+                <Spinner
+                  size="sm"
                   label={t("busyIndicator.loading")}
                   className={styles.inlineBusy}
                 />
               </div>
             )}
             {isValidPassword && !isValidating && (
-              <div className={styles.validationIndicator}>
-                <BusyIndicator
-                  size="s"
-                  label={t("downloadResumeValid", "Valid")}
-                  className={styles.inlineSuccess}
-                  progress={1}
+              <div
+                className={`${styles.validationIndicator} ${styles.inlineSuccess}`}
+                role="status"
+              >
+                <Icon
+                  name="check-circle"
+                  size="sm"
+                  ariaLabel={t("downloadResumeValid", "Valid")}
                 />
               </div>
             )}

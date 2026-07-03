@@ -206,13 +206,13 @@ Family-level prerequisite: the field-wrapper convention (4.1). All form docs sha
 
 | Component | Status | Deltas and specifics |
 |---|---|---|
-| **AlertBanner** | beta, clean | D2/D3. Examples: Tones, Dismissible, WithAction, Inline-vs-page. Astryx "Banner" parity check: action slot, icon override. |
-| **Toast** (+Toaster) | beta/alpha | Merge docs (4.1). Examples: Tones, WithAction, Promise-toast (loading to success), Placement. Document the imperative API alongside (Astryx documents hooks with params/returns tables; reuse that block for our `toast()` fn). |
-| **Progress** | beta, clean | D2/D3. Examples: Determinate, Indeterminate, WithLabel, Sizes. |
-| **Spinner** | beta, clean | D2/D3 light. bestPractice: Spinner for <=1s-unknown, Progress for known, Skeleton for layout. |
-| **BusyIndicator** | beta, clean | Clarify vs Spinner in both dense lines; consider deprecating one (Phase 0 review). |
-| **Skeleton** | beta, clean | D2/D3. Examples: TextLines, Card, Avatar, ComposedPage. |
-| **Tooltip** | beta; no mdx | D8, D2/D3 (platinum set). Examples: Placements, WithIconButton, Delay. a11y section: hover+focus trigger, Escape dismiss. |
+| **AlertBanner** | **DONE (Phase 3 batch 4, 2026-07-03)** | Astryx Banner parity shipped: `action` slot + `icon` override added; dismiss strings localized (en/fi/sv, EN output unchanged). Examples: Info, Warning, Dismissible (keyboard play), WithAction. |
+| **Toast** (+Toaster) | **DONE (Phase 3 batch 4, 2026-07-03)** | Toaster DELETED (Tailwind duplicate host; app mounted two toast systems). `providers/ToastProvider` is the single imperative host; `showToast(message, number \| {tone, duration, position})` extended back-compatibly; ContactFormEditorial + TailwindTest migrated. Hook documented in the contract usage block. Examples: Tones, Placement, ProviderDriven. WithAction/Promise-toast not supported by the component — documented as don'ts, feature backlog. |
+| **Progress** | **DONE (Phase 3 batch 4, 2026-07-03)** | `indeterminate` mode added (sweeping bar, aria-valuenow dropped, reduced-motion slows not freezes). Examples: Determinate, Indeterminate, WithLabel, Sizes. |
+| **Spinner** | **DONE (Phase 3 batch 4, 2026-07-03)** | Family triad documented in dense + bestPractices (Spinner <=1s-unknown, Progress known/long, Skeleton layouts). Examples: Sizes, WithVisibleLabel (AppLoading pattern). |
+| **BusyIndicator** | **DELETED (Phase 3 batch 4, 2026-07-03)** | Dedup call resolved by deletion: off-convention s/m/l sizes, determinate dots duplicated Progress, 2 consumers. AppLoading -> Spinner lg + visible label; SecureCVDownload -> Spinner sm + Icon check-circle. Never documented (never-document-duplicates principle, same as Tag). |
+| **Skeleton** | **DONE (Phase 3 batch 4, 2026-07-03)** | Group moved structure -> feedback (loading family). Examples: TextLines, Card, Avatar, Shapes, ComposedPage (single labelled status wrapping aria-hidden composition), Static. |
+| **Tooltip** | **DONE (Phase 3 batch 4, 2026-07-03; stays alpha)** | Contract was alpha (audit matrix said beta). `side` prop exposed on TooltipContent; subParts + anatomy authored; keyboard contract (focus opens, Escape dismisses, aria-describedby) asserted in play + unit tests. Examples: Placements, WithIconButton, Delay, Example (keyboard play). lightDark/forcedColors verification pending before beta promotion. |
 | **Modal** | beta, clean | Overlay family owner (4.1). Examples: Sizes, Scrollable, Form-in-modal, Confirmation. a11y: focus trap, return focus, Escape. |
 | **AnimatedDialog** | beta; no test | Fold into Modal docs as motion variant, or document delta only. |
 | **Lightbox** | alpha; no stories/test | Full build-out under overlay family. Examples: ImageGallery, Zoom, Keyboard-nav. |
@@ -264,7 +264,7 @@ Batches sized to one PR each, ordered so shared conventions are settled before d
 1. Actions + Typography core (Button, IconButton, Tag, Text, Title, Badge, Icon) - conventions showcase, proves the frame.
 2. Forms family (after wrapper decision): Label, HelperText, FormField, TextInput, TextArea, Select, Checkbox*, Radio*, Switch.
 3. Advanced inputs: Combobox, MultiCombobox, PhoneInput, FileUpload.
-4. Feedback: AlertBanner, Toast, Progress, Spinner, Skeleton, Tooltip.
+4. Feedback: AlertBanner, Toast, Progress, Spinner, Skeleton, Tooltip. **DONE 2026-07-03** (+ Toaster and BusyIndicator deleted).
 5. Overlays: Modal family, Lightbox.
 6. Navigation: Link family, Breadcrumb, Tabs, Pagination, SkipLink, LanguageSwitcher.
 7. Layout: Card, Grid, Container, Stack/FlexBox/Center/Spacer, Accordion, Divider, AspectRatio, Section.

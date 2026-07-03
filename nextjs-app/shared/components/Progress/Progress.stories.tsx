@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import Progress from "./Progress";
+import Text from "@dt/Text";
 import contract from "./Progress.contract.json";
 
 const meta = {
   title: "Feedback/Progress",
   component: Progress,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -43,6 +44,11 @@ const meta = {
       description: "Semantic fill color",
       table: { category: "Appearance", defaultValue: { summary: "neutral" } },
     },
+    indeterminate: {
+      control: "boolean",
+      description: "Unknown duration: sweeping bar, aria-valuenow dropped",
+      table: { category: "Value", defaultValue: { summary: "false" } },
+    },
     className: {
       control: false,
       description: "Optional utility classes on the root",
@@ -71,10 +77,116 @@ export const Default: Story = {
   ...Playground,
 };
 
+/** Known completion: value against max drives the fill. */
+export const Determinate: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Measurable work: value against max (default 100) scales the fill; aria-valuenow tracks it for assistive tech.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ inlineSize: "min(20rem, 100%)" }}>
+      <Progress value={45} label="Upload progress" />
+    </div>
+  ),
+};
+
+/** Unknown duration: a sweeping bar instead of a fill. */
+export const Indeterminate: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Unknown duration: the bar sweeps instead of filling and aria-valuenow is omitted. Reduced motion slows the sweep rather than freezing it.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ inlineSize: "min(20rem, 100%)" }}>
+      <Progress indeterminate label="Loading panel" />
+    </div>
+  ),
+};
+
+/** Compose a visible label and value with Text; the bar alone shows proportion, not numbers. */
+export const WithLabel: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "When precision matters, compose a visible Text label and value above the bar; the label prop still names the work for assistive tech.",
+      },
+    },
+  },
+  render: () => (
+    <div style={{ inlineSize: "min(20rem, 100%)" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBlockEnd: "0.25rem",
+        }}
+      >
+        <Text size="s" terminals="sans">
+          Uploading portfolio.pdf
+        </Text>
+        <Text size="s" terminals="sans">
+          72%
+        </Text>
+      </div>
+      <Progress value={72} label="Uploading portfolio.pdf" />
+    </div>
+  ),
+};
+
+/** Track heights: sm, md, lg. */
+export const Sizes: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Three track heights. sm suits dense UI (table rows, cards); lg reads at page level.",
+      },
+    },
+  },
+  render: () => (
+    <div
+      style={{
+        inlineSize: "min(20rem, 100%)",
+        display: "grid",
+        gap: "0.75rem",
+      }}
+    >
+      <Progress value={60} size="sm" label="Small track" />
+      <Progress value={60} size="md" label="Medium track" />
+      <Progress value={60} size="lg" label="Large track" />
+    </div>
+  ),
+};
+
 export const Example: Story = {
-  tags: ["beta-matrix"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "none" },
-  parameters: { controls: { disable: true } },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "Completion state in context: a finished measure recolored with state=success.",
+      },
+    },
+  },
   render: () => (
     <div style={{ inlineSize: "min(20rem, 100%)" }}>
       <Progress value={72} state="success" label="Profile completeness" />

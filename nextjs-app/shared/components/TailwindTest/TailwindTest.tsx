@@ -49,7 +49,7 @@ import {
 import Badge from "@dt/Badge";
 import Checkbox from "@dt/Checkbox";
 import Link from "@dt/Link";
-import { useToast } from "@/nextjs-app/shared/components/interactive";
+import { useToast } from "@/providers/ToastProvider";
 import { Lightbox } from "@/nextjs-app/shared/components/Lightbox";
 import { ArrowRight, Heart, Share, Star, Image as ImageIcon } from "@phosphor-icons/react";
 import { NavLink } from "@/nextjs-app/shared/patterns/navigation";
@@ -60,7 +60,7 @@ import { NavLink } from "@/nextjs-app/shared/patterns/navigation";
  */
 export default function TailwindTest() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const { toast } = useToast();
+  const { showToast } = useToast();
 
   return (
     <div className="p-8 bg-background border border-border rounded-lg max-w-2xl mx-auto my-8">
@@ -553,25 +553,25 @@ export default function TailwindTest() {
             <Stack direction="horizontal" gap="sm" wrap>
               <Button
                 variant="outline"
-                onClick={() => toast("This is a success message!", { severity: "success" })}
+                onClick={() => showToast("This is a success message!", { tone: "success" })}
               >
                 Success Toast
               </Button>
               <Button
                 variant="outline"
-                onClick={() => toast("Something went wrong.", { severity: "error" })}
+                onClick={() => showToast("Something went wrong.", { tone: "error" })}
               >
                 Error Toast
               </Button>
               <Button
                 variant="outline"
-                onClick={() => toast("Please check your input.", { severity: "warning" })}
+                onClick={() => showToast("Please check your input.", { tone: "warning" })}
               >
                 Warning Toast
               </Button>
               <Button
                 variant="outline"
-                onClick={() => toast("Here is some information.", { severity: "info" })}
+                onClick={() => showToast("Here is some information.", { tone: "info" })}
               >
                 Info Toast
               </Button>

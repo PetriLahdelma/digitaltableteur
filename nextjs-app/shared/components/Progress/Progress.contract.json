@@ -4,7 +4,7 @@
     "tier": "atom",
     "group": "feedback",
     "status": "beta",
-    "description": "Determinate linear progress indicator.",
+    "description": "Linear progress indicator with determinate and indeterminate modes.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=369-15",
     "radixPrimitive": null,
     "element": "div",
@@ -33,11 +33,15 @@
     ],
     "a11y": {
         "keyboard": [],
-        "ariaRequirements": [],
+        "ariaRequirements": [
+            "role=progressbar with aria-valuemin/aria-valuemax",
+            "aria-valuenow reflects value; omitted in indeterminate mode",
+            "aria-label from the label prop"
+        ],
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
+        "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled. 2026-07-03 (batch 4) — indeterminate mode added: sweeping bar, aria-valuenow dropped, reduced motion slows the sweep instead of freezing it."
     },
     "tokens": {
         "colors": [
@@ -82,12 +86,74 @@
                 "neutral"
             ]
         },
+        "indeterminate": {
+            "optional": true,
+            "type": "boolean"
+        },
         "className": {
             "optional": true,
             "type": "string"
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "use Progress as a skeleton or layout placeholder; Skeleton owns loading layouts.",
+        "leave the default \"Progress\" aria-label on user-facing bars; name the work being done."
+    ],
+    "prefersOver": [
+        "Spinner when completion percentage is known or the wait is long enough to show movement"
+    ],
+    "displayName": "Progress",
+    "keywords": [
+        "progress",
+        "progress bar",
+        "loading",
+        "percentage",
+        "upload",
+        "indeterminate",
+        "determinate"
+    ],
+    "dense": "linear progressbar; determinate value/max or indeterminate sweep; sm/md/lg track, semantic state fill; aria-valuenow dropped when indeterminate",
+    "usage": {
+        "description": "Progress is the linear bar for work with visible movement: pass value (against max, default 100) when completion is measurable, or indeterminate when the duration is unknown but you want a bar-shaped affordance (e.g. a full-width page or panel load). The state prop recolors the fill semantically — success for a finished upload, error for a failed one. Rule of thumb across the loading family: Spinner for sub-second unknown waits, Progress for known or long-running work, Skeleton for placeholder layouts.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Name the work in the label prop (\"Upload progress\", \"Profile completeness\") — it is the aria-label AT users hear."
+            },
+            {
+                "guidance": true,
+                "description": "Switch state to success or error at completion so the outcome is visible without reading numbers."
+            },
+            {
+                "guidance": true,
+                "description": "Use indeterminate for unknown durations that deserve a bar (panel or page loads); the sweep keeps motion under reduced-motion by slowing, not freezing."
+            },
+            {
+                "guidance": true,
+                "description": "Pair the bar with a visible Text value or label when precision matters; the bar alone communicates proportion, not numbers."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Progress as a placeholder for content that is loading — Skeleton mirrors the layout; Progress claims measurable work."
+            },
+            {
+                "guidance": false,
+                "description": "Do not animate value backwards or reset it mid-task; regressing progress reads as an error even when it is not."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "value": 45,
+            "max": 100,
+            "label": "Upload progress",
+            "size": "md",
+            "state": "info"
+        }
+    },
+    "composesWith": [
+        "Text",
+        "Spinner",
+        "Skeleton"
     ]
 }

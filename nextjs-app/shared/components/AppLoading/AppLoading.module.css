@@ -35,3 +35,17 @@
     will-change: auto;
   }
 }
+
+/* Spinner + visible label lockup (replaces the deleted BusyIndicator overlay variant) */
+
+.loading {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-internal-16, 1rem);
+  font-family: var(--font-text);
+  color: var(--color-text);
+}
+
+.label {
+  line-height: 1;
+}

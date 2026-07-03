@@ -5,7 +5,7 @@ import contract from "./Spinner.contract.json";
 const meta = {
   title: "Feedback/Spinner",
   component: Spinner,
-  tags: ["beta", "!autodocs"],
+  tags: ["beta", "autodocs"],
   parameters: {
     design: {
       type: "figma",
@@ -53,7 +53,16 @@ export const Default: Story = {
   ...Playground,
 };
 export const Sizes: Story = {
-  parameters: { controls: { disable: true } },
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "sm sits inside inputs and buttons, md stands alone, lg reads at region level.",
+      },
+    },
+  },
   render: () => (
     <div
       style={{
@@ -69,10 +78,44 @@ export const Sizes: Story = {
   ),
 };
 export const Example: Story = {
-  tags: ["beta-matrix"],
+  tags: ["beta-matrix", "example"],
   globals: { forcedColors: "none" },
-  parameters: { controls: { disable: true } },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "The bare default: role=status with the fallback \"Loading\" label. Name the actual wait in real usage.",
+      },
+    },
+  },
   render: () => <Spinner />,
+};
+
+/** Spinner + visible label lockup; the visible copy is aria-hidden so the announcement stays single. */
+export const WithVisibleLabel: Story = {
+  tags: ["example"],
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "For waits sighted users watch, compose a visible Text label; keep it aria-hidden and let the Spinner label carry the announcement (this is the AppLoading pattern).",
+      },
+    },
+  },
+  render: () => (
+    <span
+      style={{
+        display: "inline-flex",
+        gap: "var(--space-internal-16, 1rem)",
+        alignItems: "center",
+      }}
+    >
+      <Spinner size="lg" label="Loading application" />
+      <span aria-hidden="true">Loading</span>
+    </span>
+  ),
 };
 export const ForcedColors: Story = {
   tags: ["beta-matrix"],

@@ -11,15 +11,44 @@
     "variants": {},
     "slots": [],
     "asChild": false,
-    "subParts": [],
+    "subParts": [
+        {
+            "name": "TooltipProvider",
+            "element": "none"
+        },
+        {
+            "name": "Tooltip",
+            "element": "none"
+        },
+        {
+            "name": "TooltipTrigger",
+            "element": "button"
+        },
+        {
+            "name": "TooltipContent",
+            "element": "div"
+        }
+    ],
     "requiredStories": [
-        "Default"
+        "Default",
+        "Playground",
+        "Example",
+        "ForcedColors"
     ],
     "a11y": {
-        "keyboard": [],
-        "ariaRequirements": [],
+        "keyboard": [
+            "Tab",
+            "Escape"
+        ],
+        "ariaRequirements": [
+            "opens on hover AND keyboard focus of the trigger",
+            "Escape dismisses without moving focus",
+            "content is linked to the trigger via aria-describedby (Radix)",
+            "content must be supplementary — never put essential or interactive content in a tooltip"
+        ],
         "reducedMotion": true,
-        "reviewed": false,
+        "reviewed": true,
+        "reviewedNote": "2026-07-03 (batch 4) — hover+focus trigger, Escape dismiss, and aria-describedby wiring asserted in the play function and unit tests; axe clean on Default/Placements/WithIconButton. lightDark/forcedColors verification still pending before beta.",
         "forcedColorsVerified": false
     },
     "tokens": {
@@ -28,5 +57,86 @@
     },
     "lightDarkVerified": false,
     "schemaVersion": 2,
-    "composesWith": []
+    "forbiddenUse": [
+        "put interactive content (links, buttons) inside a tooltip; it cannot be reached by keyboard or touch — use a Modal or disclosure instead.",
+        "use a tooltip as the only label of a control; give the control a real accessible name and let the tooltip add detail.",
+        "attach tooltips to non-focusable elements; hover-only hints exclude keyboard and touch users."
+    ],
+    "prefersOver": [
+        "title attribute (unstyled, mouse-only, slow to appear)"
+    ],
+    "displayName": "Tooltip",
+    "keywords": [
+        "tooltip",
+        "hint",
+        "popover hint",
+        "hover",
+        "icon label",
+        "describedby",
+        "radix"
+    ],
+    "dense": "Radix tooltip set: Provider (delayDuration) > Tooltip > Trigger asChild + Content (side top|right|bottom|left); opens on hover+focus, Escape dismisses, aria-describedby wired",
+    "usage": {
+        "description": "Tooltip is the composed Radix primitive set for supplementary hints on focusable controls — most often icon-only buttons. Wrap a subtree in `TooltipProvider` (sets `delayDuration`, default 200ms), then per hint: `Tooltip` (open state) containing `TooltipTrigger asChild` around the real control and `TooltipContent` with the text and a `side` placement (top by default, flips when out of room). It opens on hover and keyboard focus, dismisses on Escape, and Radix links the content to the trigger via aria-describedby. The content is description, not a name: the trigger still needs its own accessible label.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Wrap the trigger with asChild so your real Button/IconButton receives the tooltip wiring instead of a nested extra button."
+            },
+            {
+                "guidance": true,
+                "description": "Use one TooltipProvider per surface (page or toolbar) so the open delay is shared and hopping between adjacent triggers feels instant."
+            },
+            {
+                "guidance": true,
+                "description": "Keep content to a short phrase; the tooltip supplements the control's accessible name (aria-describedby), it does not replace it."
+            },
+            {
+                "guidance": true,
+                "description": "Pick side by surrounding space; Radix flips automatically when the preferred side runs out of room."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put links, buttons, or anything interactive inside TooltipContent — it is unreachable by keyboard and touch."
+            },
+            {
+                "guidance": false,
+                "description": "Do not rely on a tooltip as the only label of an icon-only control; give the control aria-label and use the tooltip for the visible hint."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "TooltipProvider",
+                "required": true,
+                "description": "Context host setting delayDuration (default 200ms); one per surface, not per tooltip."
+            },
+            {
+                "name": "Tooltip",
+                "required": true,
+                "description": "Radix Root owning open state; supports open/defaultOpen/onOpenChange for controlled use."
+            },
+            {
+                "name": "TooltipTrigger",
+                "required": true,
+                "description": "Wraps the focusable control (use asChild); receives hover/focus handlers and aria-describedby."
+            },
+            {
+                "name": "TooltipContent",
+                "required": true,
+                "description": "Portaled bubble with arrow; side sets preferred placement, sideOffset the gap; fade/scale animation drops under reduced motion."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "side": "top",
+            "sideOffset": 4,
+            "children": "Helpful hint about this action."
+        }
+    },
+    "composesWith": [
+        "Button",
+        "IconButton",
+        "Icon"
+    ]
 }

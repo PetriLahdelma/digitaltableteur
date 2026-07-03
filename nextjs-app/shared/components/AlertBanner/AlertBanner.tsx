@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./AlertBanner.module.css";
 import Icon from "@dt/Icon";
 import Button from "@dt/Button";
@@ -13,6 +14,10 @@ export type AlertBannerProps = {
   tone?: Tone;
   title?: string;
   description?: React.ReactNode;
+  /** Optional action slot rendered under the description (e.g. a tertiary Button). */
+  action?: React.ReactNode;
+  /** Override the tone icon with another registered icon name. */
+  icon?: string;
   dismissible?: boolean;
   onDismiss?: () => void;
   "aria-live"?: "polite" | "assertive" | "off";
@@ -25,15 +30,18 @@ const toneIcon: Record<Tone, string> = {
   error: "x-circle",
 };
 
-/** Inline alert banner with semantic tones and optional dismiss. */
+/** Inline alert banner with semantic tones, action slot, and optional dismiss. */
 const AlertBanner: React.FC<AlertBannerProps> = ({
   tone = "info",
   title,
   description,
+  action,
+  icon,
   dismissible = false,
   onDismiss,
   "aria-live": ariaLive,
 }) => {
+  const { t } = useTranslation();
   // Error banners must interrupt assistive tech (role=alert / assertive);
   // other tones are polite status updates. An explicit aria-live prop wins.
   const isError = tone === "error";
@@ -45,7 +53,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       role={role}
       aria-live={liveRegion}
     >
-      <Icon name={toneIcon[tone]} ariaLabel={tone} size="md" />
+      <Icon name={icon ?? toneIcon[tone]} ariaLabel={tone} size="md" />
       <div className={styles.content}>
         {title && (
           <Title size="s" terminals="sans" className={styles.title}>
@@ -57,6 +65,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
             {description}
           </Text>
         )}
+        {action && <div className={styles.action}>{action}</div>}
       </div>
       {dismissible && (
         <Button
@@ -64,9 +73,9 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
           size="sm"
           className={styles.dismiss}
           onClick={onDismiss}
-          aria-label="Dismiss alert"
+          aria-label={t("alertBanner.dismissLabel", "Dismiss alert")}
         >
-          Close
+          {t("alertBanner.close", "Close")}
         </Button>
       )}
     </div>

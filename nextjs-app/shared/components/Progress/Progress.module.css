@@ -22,3 +22,28 @@
 .info { background: var(--color-info); }
 .warning { background: var(--color-warning); }
 .error { background: var(--color-error); }
+
+/* Indeterminate: a 40%-wide bar sweeps across; reduced motion slows it instead
+   of freezing so "still working" stays perceivable. */
+
+.indeterminate {
+  inline-size: 40%;
+  transition: none;
+  animation: progress-sweep var(--duration-slower, 1.4s) ease-in-out infinite;
+}
+
+@keyframes progress-sweep {
+  from {
+    transform: translateX(-100%) scaleX(1);
+  }
+
+  to {
+    transform: translateX(250%) scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indeterminate {
+    animation-duration: 2.8s;
+  }
+}

@@ -21,7 +21,8 @@
         }
     },
     "slots": [
-        "description"
+        "description",
+        "action"
     ],
     "asChild": false,
     "subParts": [],
@@ -33,15 +34,18 @@
     ],
     "a11y": {
         "keyboard": [
-            "Escape"
+            "Tab",
+            "Enter",
+            "Space"
         ],
         "ariaRequirements": [
-            "role=alert or status",
-            "dismiss button labeled"
+            "role=alert + assertive for error tone; role=status + polite otherwise",
+            "tone icon announced by name (color is never the sole signal)",
+            "dismiss button carries a localized aria-label"
         ],
         "reducedMotion": true,
         "reviewed": true,
-        "reviewedNote": "2026-05-26 — tones and dismiss control reviewed in Storybook.",
+        "reviewedNote": "2026-05-26 — tones and dismiss control reviewed in Storybook. 2026-07-03 (batch 4) — action slot + icon override added; dismiss strings moved to i18next (en/fi/sv, EN output unchanged).",
         "forcedColorsVerified": true
     },
     "tokens": {
@@ -50,6 +54,7 @@
     },
     "lightDarkVerified": true,
     "argTypesProxyExempt": [
+        "action",
         "as",
         "asChild",
         "children",
@@ -80,6 +85,14 @@
             "optional": true,
             "type": "React.ReactNode"
         },
+        "action": {
+            "optional": true,
+            "type": "React.ReactNode"
+        },
+        "icon": {
+            "optional": true,
+            "type": "string"
+        },
         "dismissible": {
             "optional": true,
             "type": "boolean"
@@ -99,16 +112,96 @@
         }
     },
     "forbiddenUse": [
-        "Pair AlertBanner with blocking Modal for the same user outcome — pick one surface",
-        "make errors dismissable. Letting the user hide a blocking",
-        "stack more than one banner on the same page. Two competing",
-        "animate the banner in on every render. AlertBanner is for"
+        "pair AlertBanner with a blocking Modal for the same user outcome — pick one surface.",
+        "make error banners dismissible: letting the user hide a blocking problem strands them mid-flow.",
+        "stack more than one banner on the same page; two competing persistent messages cancel each other out.",
+        "animate the banner in on every render; it is persistent chrome, not a transition."
     ],
     "prefersOver": [
         "Toast for non-persistent status"
     ],
+    "displayName": "AlertBanner",
+    "keywords": [
+        "alert",
+        "banner",
+        "notification",
+        "callout",
+        "status message",
+        "warning",
+        "inline alert"
+    ],
+    "dense": "persistent inline status banner; tone info|success|warning|error drives icon + live-region politeness; title/description/action slots; opt-in dismissible with localized control",
+    "usage": {
+        "description": "AlertBanner is the persistent, page-level status surface: it encodes severity through both color and an announced icon, carries an optional title, rich description, and action slot, and stays put until the user reads (or dismisses) it. Errors interrupt assistive tech automatically (role=alert, assertive); every other tone is a polite status. It has no auto-dismiss by design — transient confirmations belong to Toast.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Pick tone by outcome severity; the error tone switches to role=alert with assertive announcement on its own — no ARIA wiring needed."
+            },
+            {
+                "guidance": true,
+                "description": "Pass both title and description for messages that read as a small document; description accepts nodes, so links and inline formatting are fine."
+            },
+            {
+                "guidance": true,
+                "description": "Put the follow-up in the action slot (a tertiary Button works best) instead of burying a link inside the prose."
+            },
+            {
+                "guidance": true,
+                "description": "Use dismissible with onDismiss for non-critical notices the user should acknowledge once; persist the dismissal in the consumer."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use AlertBanner for transient feedback — it has no auto-dismiss because \"sit here until acknowledged\" is its job. Use Toast for post-action confirmations."
+            },
+            {
+                "guidance": false,
+                "description": "Do not make error banners dismissible; the user should not be able to hide the explanation of a blocked flow."
+            },
+            {
+                "guidance": false,
+                "description": "Do not stack multiple banners on one page; consolidate into the single most severe message."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Icon",
+                "required": true,
+                "description": "Tone icon announced by name (WCAG 1.4.1 double-encoding); override the glyph with the icon prop without losing the tone semantics."
+            },
+            {
+                "name": "Title",
+                "required": false,
+                "description": "Bold heading line (Title size=s) for scannable banners."
+            },
+            {
+                "name": "Description",
+                "required": false,
+                "description": "Body copy slot; accepts ReactNode for links and formatting."
+            },
+            {
+                "name": "Action",
+                "required": false,
+                "description": "Follow-up slot rendered under the description — one action, usually a tertiary Button."
+            },
+            {
+                "name": "Dismiss",
+                "required": false,
+                "description": "Localized tertiary Button (only tabbable part); rendered when dismissible."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "tone": "info",
+            "title": "Heads up",
+            "description": "This is an informational message."
+        }
+    },
     "composesWith": [
         "Button",
-        "Icon"
+        "Icon",
+        "Title",
+        "Text"
     ]
 }

@@ -1150,6 +1150,8 @@
   "busyIndicator.loading": "Ladataan",
   "busyIndicator.loadingPercent": "Ladataan {{percent}}%",
   "busyIndicator.complete": "Valmis",
+  "alertBanner.dismissLabel": "Sulje ilmoitus",
+  "alertBanner.close": "Sulje",
   "observability.sentry.title": "Sentry-ongelmat",
   "observability.sentry.unresolvedHeading": "Ongelmat",
   "observability.sentry.empty": "Ei vastaavia ongelmia",

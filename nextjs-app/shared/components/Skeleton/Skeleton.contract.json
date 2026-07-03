@@ -2,9 +2,9 @@
     "$schema": "../../../scripts/design-system/contract.schema.v2.json",
     "name": "Skeleton",
     "tier": "atom",
-    "group": "structure",
+    "group": "feedback",
     "status": "beta",
-    "description": "Skeleton — production @dt component (Storybook beta).",
+    "description": "Loading placeholder that mirrors the layout of incoming content.",
     "figma": "https://www.figma.com/design/PC2UPdYwm8qGt6ZTg0AakF/DT-Site-stuff?node-id=dt-skeleton",
     "radixPrimitive": null,
     "element": "div",
@@ -35,7 +35,10 @@
         "reducedMotion": true,
         "reviewed": true,
         "forcedColorsVerified": true,
-        "ariaRequirements": [],
+        "ariaRequirements": [
+            "role=status with aria-label naming what is loading",
+            "shimmer suppressed under prefers-reduced-motion"
+        ],
         "reviewedNote": "2026-05-28 — Promoted from alpha: Example + ForcedColors stories present; Storybook axe gate enabled."
     },
     "tokens": {
@@ -98,9 +101,64 @@
         }
     },
     "forbiddenUse": [
-        "Bypass design tokens or skip forced-colors verification at beta."
+        "use Skeleton for measurable work (uploads, multi-step jobs); that is Progress territory.",
+        "leave skeletons on screen after content fails to load; resolve to an error state instead."
     ],
+    "prefersOver": [
+        "Spinner when the loading region has a layout worth mirroring"
+    ],
+    "displayName": "Skeleton",
+    "keywords": [
+        "skeleton",
+        "placeholder",
+        "loading",
+        "shimmer",
+        "ghost",
+        "content loading",
+        "lazy"
+    ],
+    "dense": "layout-mirroring loading placeholder; variant text|circle|rect|avatar|card, text takes lines, free width/height; role=status, shimmer respects reduced motion",
+    "usage": {
+        "description": "Skeleton holds the shape of content that is still loading so the layout never jumps: pick the variant that mirrors what will appear (text with a lines count, avatar, card, or free-form rect/circle sized via width/height) and compose several to sketch the incoming view. Each skeleton is a polite role=status with an aria-label; the shimmer is decorative and turns off under prefers-reduced-motion. Family rule: Skeleton for layouts, Spinner for sub-second unknown waits, Progress for measurable work.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Mirror the real layout — same widths, heights, and rhythm as the content that will replace it — so the swap is seamless."
+            },
+            {
+                "guidance": true,
+                "description": "Name what is loading in the label prop (\"Loading article\", not \"Loading content\") for assistive tech."
+            },
+            {
+                "guidance": true,
+                "description": "Compose variants (avatar + text lines inside a card) to sketch whole modules; see the ComposedPage example."
+            },
+            {
+                "guidance": true,
+                "description": "Give one composed region one label and mark the rest decorative where possible; a page of chattering live regions is noise."
+            },
+            {
+                "guidance": false,
+                "description": "Do not keep skeletons on screen when loading fails — resolve to an error state; a forever-shimmer reads as a hang."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Skeleton for measurable work like uploads; Progress communicates completion, Skeleton only promises layout."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "variant": "text",
+            "lines": 3,
+            "animate": true
+        }
+    },
     "composesWith": [
-        "Text"
+        "Text",
+        "Card",
+        "Avatar",
+        "Spinner",
+        "Progress"
     ]
 }

@@ -1150,6 +1150,8 @@
   "busyIndicator.loading": "Loading",
   "busyIndicator.loadingPercent": "Loading {{percent}}%",
   "busyIndicator.complete": "Complete",
+  "alertBanner.dismissLabel": "Dismiss alert",
+  "alertBanner.close": "Close",
   "observability.sentry.title": "Sentry Issues",
   "observability.sentry.unresolvedHeading": "Issues",
   "observability.sentry.empty": "No matching issues",

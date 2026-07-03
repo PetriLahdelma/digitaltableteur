@@ -58,10 +58,13 @@ export function TooltipTrigger({
 
 export function TooltipContent({
   className,
+  side = "top",
   sideOffset = 4,
   children,
 }: {
   className?: string;
+  /** Preferred placement relative to the trigger; flips when out of room. */
+  side?: "top" | "right" | "bottom" | "left";
   sideOffset?: number;
   children: ReactNode;
 }) {
@@ -69,6 +72,7 @@ export function TooltipContent({
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
+        side={side}
         sideOffset={sideOffset}
         className={mergedClassName}
       >

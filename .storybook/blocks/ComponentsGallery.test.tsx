@@ -18,9 +18,9 @@ describe("ComponentsGallery", () => {
 
   it("falls back to a monogram when a component has no playground defaults", () => {
     const { container } = render(<ComponentsGallery />);
-    // Spinner has no playground.defaults yet (Phase 3 feedback batch).
-    const spinner = screen.getByText("Spinner").closest("a");
-    expect(spinner?.querySelector("[class*='monogram']")).not.toBeNull();
+    // Modal has no playground.defaults yet (Phase 3 overlays batch).
+    const modal = screen.getByText("Modal").closest("a");
+    expect(modal?.querySelector("[class*='monogram']")).not.toBeNull();
     expect(container.querySelectorAll("[class*='monogram']").length).toBeGreaterThan(0);
   });
 });

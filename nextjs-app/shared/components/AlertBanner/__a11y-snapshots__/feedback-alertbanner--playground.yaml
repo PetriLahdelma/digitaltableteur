@@ -1,3 +1,5 @@
 - status: Work in progress (beta)
 - status:
   - img "info"
+  - heading "Heads up" [level=1]
+  - paragraph: This is an informational message.
