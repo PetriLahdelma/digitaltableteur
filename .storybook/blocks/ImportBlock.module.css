@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-internal-8);
+  margin-block: var(--space-internal-16);
+  padding: var(--space-internal-12) var(--space-internal-16);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md, 8px);
+  background: var(--color-surface-elevated, var(--main-body-background-color));
+}
+
+.pre {
+  margin: 0;
+  flex: 1;
+  overflow-x: auto;
+  font-size: var(--font-size-text-s);
+  line-height: 1.6;
+}
+
+.copy {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm, 4px);
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--font-size-text-s);
+  padding: var(--space-internal-4) var(--space-internal-12);
+  cursor: pointer;
+}
+
+.copy:hover {
+  background: var(--color-border-light);
+}
+
+.copy:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

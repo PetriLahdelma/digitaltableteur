@@ -224,5 +224,74 @@
         "FlexBox",
         "Text",
         "Grid"
-    ]
+    ],
+    "keywords": [
+        "badge",
+        "status",
+        "tag",
+        "chip",
+        "count",
+        "pill",
+        "indicator",
+        "filter"
+    ],
+    "dense": "compact status pill; variant (filled/outlined) x tone matrix, sm/md/lg, auto status icon per tone, removable filter-chip mode, optional role=status live counter",
+    "usage": {
+        "description": "Badge carries a short piece of meaning, a state, a count, or a tag, in a compact pill. Two orthogonal axes encode the look: variant for visual weight (primary filled, secondary outlined) and tone for semantic color. A matching status icon is auto-resolved for non-neutral tones, and removable turns the badge into a dismissible filter chip.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use tone to encode state (success, warning, error, info) and keep the label to a word or two."
+            },
+            {
+                "guidance": true,
+                "description": "Use removable with onRemove for filter chips; the built-in dismiss button ships with a translated accessible name."
+            },
+            {
+                "guidance": true,
+                "description": "Use role=status only for live counters that update at runtime; aria-live=polite announces changes without moving focus."
+            },
+            {
+                "guidance": true,
+                "description": "Use variant=secondary (outlined) when a filled badge would compete with nearby primary actions."
+            },
+            {
+                "guidance": false,
+                "description": "Do not put role=status on a static badge; live-region churn is wasted when the content never changes."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Badge as an interactive action or toggle; use Button for actions and Switch or Checkbox for state."
+            },
+            {
+                "guidance": false,
+                "description": "Do not encode meaning with tone alone; the label must carry the meaning for color-blind users."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Icon",
+                "required": false,
+                "description": "Auto-resolved status icon for non-neutral tones, or a custom node via the icon slot. Filled badges swap it to the high-contrast pair."
+            },
+            {
+                "name": "Label",
+                "required": true,
+                "description": "Short text passed as children; a word or two, the surrounding content carries the full meaning."
+            },
+            {
+                "name": "Remove button",
+                "required": false,
+                "description": "Rendered in removable mode; an internal Button atom with a translated accessibleName and a full-size hit target."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "Completed",
+            "tone": "success",
+            "variant": "primary",
+            "size": "md"
+        }
+    }
 }

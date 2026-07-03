@@ -368,5 +368,75 @@
         "PageLayout",
         "MarkdownMessage",
         "Icon"
-    ]
+    ],
+    "keywords": [
+        "card",
+        "surface",
+        "container",
+        "panel",
+        "cover",
+        "actions",
+        "linked",
+        "tabs"
+    ],
+    "dense": "grouped-content surface; header (title/subtitle/description/icon/badge/extra), cover, body, footer actions; elevated/filled/outlined, sm-full, hoverable/loading/interactive/link modes, optional tabs",
+    "usage": {
+        "description": "Card is the composable surface for grouped content: an optional header (title, subtitle, description, icon, badge, extra), a body from either the body prop or children, a cover slot for media, and a footer for actions. Variants (elevated, filled, outlined), sizes (sm to full) and the hoverable, loading, interactive and link-rendered forms absorb the variation work so consumers do not fork the component.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Use link for whole-card navigation; the surface becomes a single anchor named by linkLabel or title."
+            },
+            {
+                "guidance": true,
+                "description": "Use interactive (or onClick) when the action is not navigation, for example opening a modal; Enter and Space activate."
+            },
+            {
+                "guidance": true,
+                "description": "Use the loading prop for skeleton states instead of composing Skeleton by hand."
+            },
+            {
+                "guidance": true,
+                "description": "Host alternating content with the tabs prop instead of re-mounting sibling cards."
+            },
+            {
+                "guidance": false,
+                "description": "Do not combine link with actions; the anchor swallows the surface and footer buttons become unreachable. One affordance per card."
+            },
+            {
+                "guidance": false,
+                "description": "Do not nest interactive controls inside a linked card; an anchor inside an anchor is invalid HTML."
+            }
+        ],
+        "anatomy": [
+            {
+                "name": "Header",
+                "required": false,
+                "description": "Title, subtitle and description plus the icon, badge and extra slots; omitted entirely when none are set."
+            },
+            {
+                "name": "Cover",
+                "required": false,
+                "description": "Media slot rendered above the header and body, typically an image or illustration."
+            },
+            {
+                "name": "Body",
+                "required": true,
+                "description": "Content area from the body prop or children; the loading skeleton replaces it while loading."
+            },
+            {
+                "name": "Footer",
+                "required": false,
+                "description": "Actions row (or the footer slot); unreachable in link mode, so pick one affordance per card."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "title": "Design sprint",
+            "subTitle": "One week, one prototype",
+            "description": "A focused engagement to validate a hypothesis before committing roadmap.",
+            "variant": "outlined"
+        }
+    }
 }

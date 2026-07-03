@@ -207,5 +207,51 @@
         "ProjectHero",
         "RelatedProjects",
         "ProcessBlock"
-    ]
+    ],
+    "keywords": [
+        "title",
+        "heading",
+        "h1",
+        "display",
+        "serif",
+        "section",
+        "outline"
+    ],
+    "dense": "page/section headings; semantic level (h1-h6 via level/as) decoupled from visual size (xxs-xxl) and terminals (serif/sans); lineHeight ladder shared with Text",
+    "usage": {
+        "description": "Title renders page and section headings with the semantic level decoupled from the visual scale: pick the h1 to h6 tag with level or as, then choose size (xxs to xxl) and terminal family (serif for editorial weight, sans for product chrome) independently, so the document outline stays honest while the layout gets the right optics.",
+        "bestPractices": [
+            {
+                "guidance": true,
+                "description": "Decide the semantic level from the document outline first, then pick the visual size that fits the layout."
+            },
+            {
+                "guidance": true,
+                "description": "Always pass level or as when the page already has an h1; the default tag is h1."
+            },
+            {
+                "guidance": true,
+                "description": "Use the serif terminal at size xl or xxl for hero headlines; the serif/sans alternation is the site's editorial signature."
+            },
+            {
+                "guidance": true,
+                "description": "Use terminals=sans at size m or s for section headers in product chrome, and as=span for display text with no place in the outline."
+            },
+            {
+                "guidance": false,
+                "description": "Do not let the visual size choose the heading level; skipped levels break rotor navigation."
+            },
+            {
+                "guidance": false,
+                "description": "Do not use Title for body copy or form labels; Text and Label own those semantics."
+            }
+        ]
+    },
+    "playground": {
+        "defaults": {
+            "children": "We design clarity.",
+            "as": "h2",
+            "size": "l"
+        }
+    }
 }

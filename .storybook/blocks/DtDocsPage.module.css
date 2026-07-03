@@ -1,0 +1,4 @@
+.page {
+  /* The docs container brings its own max-width; the frame only owns rhythm. */
+  padding-block-end: var(--space-layout-48, 3rem);
+}

@@ -630,8 +630,24 @@ export function validateComponentsDir(root: string): ValidationResult {
                 errors.push(`${name}.contract.json: ${manifest.status} with a11y.reviewed=true requires a11y.reviewedNote (free-text evidence note recording what was checked, date, reviewer, tools, known limitations)`)
             }
             const mdxPath = join(dir, `${name}.mdx`)
-            if (!existsSync(mdxPath)) {
-                errors.push(`${name}.contract.json: ${manifest.status} requires a Carbon-style MDX page at ${name}.mdx (When to use / When not to use / Anatomy / Variants / Accessibility / Keyboard / Common mistakes / Promotion notes — see Button.mdx for the canonical shape)`)
+            // Frame adoption (Astryx Phase 2): once a contract adopts the doc
+            // fields (`usage` present — same predicate as the doc-fields
+            // ratchet), the component's docs page is the DT autodocs frame
+            // (.storybook/blocks/DtDocsPage) rendered from the contract, and
+            // the Carbon-style MDX bar is superseded by the stricter
+            // docFieldErrors bar above. A colocated MDX page must then be
+            // REMOVED: it would attach a second docs page to the same meta,
+            // which breaks the Storybook index with a docs-id conflict
+            // (hard 500 on /index.json). Migrate unique MDX prose into the
+            // contract (usage.*, a11y.ariaRequirements, forbiddenUse) before
+            // deleting, and tag the stories meta with "autodocs".
+            const frameAdopted = Boolean((manifest as any).usage)
+            if (frameAdopted) {
+                if (existsSync(mdxPath)) {
+                    errors.push(`${name}.mdx: contract has adopted doc fields (usage present), so docs render via the DT autodocs frame; delete ${name}.mdx after migrating unique prose into the contract (a second docs page on the same meta breaks the Storybook index)`)
+                }
+            } else if (!existsSync(mdxPath)) {
+                errors.push(`${name}.contract.json: ${manifest.status} requires a Carbon-style MDX page at ${name}.mdx (When to use / When not to use / Anatomy / Variants / Accessibility / Keyboard / Common mistakes / Promotion notes — see Button.mdx for the canonical shape) or contract doc-field adoption (usage/bestPractices/keywords/dense) with the autodocs frame`)
             } else {
                 // MDX heading enforcement: verify the canonical Carbon-style
                 // structure is in place. Required headings (verified by line-
