@@ -38,3 +38,29 @@
     var(--focus-ring-color, var(--color-primary));
   outline-offset: 2px;
 }
+
+/* underline="hover": keep the wavy underline's reserved space (padding-bottom
+   from the global .wavyUnderline rule) so nothing shifts, but reveal the wave
+   only on hover / keyboard focus. .link.underlineHover outranks the global
+   .wavyUnderline::after regardless of stylesheet order. */
+
+.link.underlineHover::after {
+  transition: opacity var(--duration-fast) var(--ease-out-cubic);
+  opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link.underlineHover:hover::after {
+    opacity: 0.9;
+  }
+}
+
+.link.underlineHover:focus-visible::after {
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link.underlineHover::after {
+    transition: none;
+  }
+}

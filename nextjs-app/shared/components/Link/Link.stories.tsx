@@ -25,6 +25,13 @@ const meta: Meta<typeof Link> = {
       description: "Size.",
       table: { defaultValue: { summary: "md" } },
     },
+    underline: {
+      control: { type: "inline-radio" },
+      options: ["always", "hover", "none"],
+      description:
+        "Wavy underline mode: permanent, revealed on hover/focus (nav lists), or omitted.",
+      table: { defaultValue: { summary: "always" } },
+    },
     href: {
       control: "text",
       description: "Destination URL; sanitised, and external links get rel=noopener noreferrer.",
@@ -68,6 +75,22 @@ const SizesContent: React.FC = () => {
 };
 
 export const Sizes: Story = { render: () => <SizesContent /> };
+
+const UnderlineModesContent: React.FC = () => (
+  <div style={{ display: "flex", gap: "1.5rem", alignItems: "baseline" }}>
+    <Link href="/about" underline="always">
+      Always underlined
+    </Link>
+    <Link href="/about" underline="hover">
+      Underline on hover
+    </Link>
+    <Link href="/about" underline="none">
+      No underline
+    </Link>
+  </div>
+);
+
+export const UnderlineModes: Story = { render: () => <UnderlineModesContent /> };
 
 export const External: Story = {
   render: () => (

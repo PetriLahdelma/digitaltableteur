@@ -7,6 +7,12 @@ export interface LinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   /** Size. @default "md" */
   size?: "sm" | "md" | "lg";
+  /**
+   * Wavy underline mode. "always" shows it permanently, "hover" reveals it
+   * on hover and keyboard focus (nav lists like the site footer), "none"
+   * omits it entirely. @default "always"
+   */
+  underline?: "always" | "hover" | "none";
 }
 
 const INTERNAL_HOST = "digitaltableteur.com";
@@ -104,9 +110,25 @@ const SIZE_CLASS = {
 
 const ICON_SIZE = { sm: 20, md: 24, lg: 32 } as const;
 
-/** Accessible inline link with size tokens, a focus ring, and an optional external-link icon. */
+const UNDERLINE_CLASS = {
+  always: "wavyUnderline",
+  hover: `wavyUnderline ${styles.underlineHover}`,
+  none: "",
+} as const;
+
+/** Accessible inline link with size tokens, a focus ring, an optional external-link icon, and always/hover/none wavy underline modes. */
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ href = "#", size = "md", children, className = "", ...rest }, ref) => {
+  (
+    {
+      href = "#",
+      size = "md",
+      underline = "always",
+      children,
+      className = "",
+      ...rest
+    },
+    ref,
+  ) => {
     const normalizedHref = React.useMemo(() => normalizeHref(href), [href]);
     const isExternal = React.useMemo(
       () => isExternalHref(normalizedHref),
@@ -127,7 +149,9 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
             ? [rest.rel, "noopener", "noreferrer"].filter(Boolean).join(" ")
             : rest.rel
         }
-        className={`${styles.link} ${SIZE_CLASS[size]} wavyUnderline ${className}`.trim()}
+        className={`${styles.link} ${SIZE_CLASS[size]} ${UNDERLINE_CLASS[underline]} ${className}`
+          .replace(/\s+/g, " ")
+          .trim()}
       >
         {children}
         {isExternal && hasTextContent && (

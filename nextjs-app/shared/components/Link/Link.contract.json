@@ -17,6 +17,15 @@
             ],
             "default": "md",
             "propSourced": true
+        },
+        "underline": {
+            "values": [
+                "always",
+                "hover",
+                "none"
+            ],
+            "default": "always",
+            "propSourced": true
         }
     },
     "slots": [],
@@ -131,6 +140,15 @@
                 "sm",
                 "md",
                 "lg"
+            ]
+        },
+        "underline": {
+            "optional": true,
+            "type": "union",
+            "values": [
+                "always",
+                "hover",
+                "none"
             ]
         }
     },
